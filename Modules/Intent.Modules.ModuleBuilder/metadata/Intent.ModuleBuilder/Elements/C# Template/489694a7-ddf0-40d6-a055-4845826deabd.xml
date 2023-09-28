@@ -6,6 +6,7 @@
   <genericTypes />
   <typeReference id="587a7cc8-4472-4c40-8324-432c537abd09">
     <typeId>99cb461f-ec82-4dde-a804-e3393a5e2a8d</typeId>
+    <typeName>File Per Model</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

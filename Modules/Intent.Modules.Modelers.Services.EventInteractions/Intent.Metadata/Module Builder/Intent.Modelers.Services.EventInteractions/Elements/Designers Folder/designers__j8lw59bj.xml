@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="c74586eb-ad94-490a-b773-1da145ed05da" type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
+  <name>designers</name>
+  <display>designers</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</parentFolderId>
+  <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
+  <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

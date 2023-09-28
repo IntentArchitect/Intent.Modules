@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>bcc2079b-d8d7-4d7a-a3b5-79ebd687a02e</id>
+  <name>Services CQRS Domain Interactions</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions>
+    <packageExtension type="Services Package" typeId="df45eaf6-9202-4c25-8dd5-677e9ba1e906">
+      <requiredPackages />
+      <creationOptions>
+        <option type="element">
+          <text>New Integration Event Handler</text>
+          <shortcut>ctrl + shift + i</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <specializationType>Integration Event Handler</specializationType>
+          <specializationTypeId>c0582230-22f5-4f74-8eb0-ec6fc9364900</specializationTypeId>
+          <defaultName>NewIntegrationEventHandler</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>Integration Event Handler</type>
+      </typeOrder>
+    </packageExtension>
+  </packageExtensions>
+  <elementSettings>
+    <elementSetting type="Integration Event Handler" typeId="c0582230-22f5-4f74-8eb0-ec6fc9364900">
+      <icon type="UrlImagePath" source="data:image/png;base64,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" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Subscribe Integration Event Target End</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="association">
+          <text>Subscribe to Integration Event</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAB/FJREFUeF7tnH2MXFUZxp/n3Du72936gVYkkUTwIxobEQlbNKIWP7BggwkuY4lQupXGdi0Ewx+oUdMQoiHRqFh2wVJaKoY6XTWYGtqqKRiMxCX4gSUaJWLApIhYUHb2Y+49j7m7TN0OO3PPmTszu2vv/W9n3/c97/vb95zn3HPvLJFfmQgwk3fujBxgxibIAeYAMxLI6J53YA4wI4GM7nkH/j8C3HLuvotE3Uzi7Ul9Eh6leMPIw5fdl7Helrsvqg4c6i+dLeKbAN5fp9IHKFw3PFb8bctJNBlwUQDc/K57zoANv0JoHZC6N5XAvTDRF2576PInmqy7ZW4LCnDL+d87BVPhl0EOAejyrGoa0jC6oxtHHvzkMU/flpkvCMANq3f19Iz3XUficwBekbGa5wF9daK3/K3d9w9OZozl7d5xgFvO2zco6UYCpzfMlvyzlW5ObAx5A6Q3N7IX8JQRvnTq2GN7tmGb9SbRpEPHANYqa4N8j1rylknb/WNjrBI7aw17zNQlRroWwGkNQXZYsdsO0EFZZ3mQ/4G0Yzwwdwc2nJoPUmyi7r7YXgFyE6SXpTRNRxS7bQA9lLUC8J4KzUiM4N8uMylA/PJQGiJsotqFBj5tV+yWA/RQVok8EEHfiNH1dxdwtTYBpl8Xgp+ltCZl+9M2xW4ZQD9l5W+sgpumjfljM+BqfQqyKwPEnwf0zpR4LVfszAC3YZt5+ryVVzkpq/B4DPP1igkfaAW42hhdtrLaANeDekOnFDsTQFdlJfCMZLZPhOGPaBG3A141pgyCnrhyKaGtAFa0W7GbAuisrELZkjunjdkNBR3d5AbQsgDxoLF2EERvuxTbC6CrsgqKSbMvjoJbK6H5Vzs7Li12IbKvMkF8DWA/TjBotWI7Axx6W2m5luMHAC5sfAeBn0UyX4sYPplWXCd/34XoDMpeT+ADDccVDnIcA8OPFV9wyc8Z4OZzS1tNoIskXlwn8BExvGkK5vcuAy+UTTfsWVT0RQAr6+RwUBb7b3u4uN0lR2eAW/pLh0kZge+rE/hPMYI7EfTcV7GVtgqFS2Hz2RRMIWBcvthAgwDeMm8c4f7k85Gx4gUu43gBhFEE8UMpgY8CvGuq0DWqSGWXJNptw5C9XZXpywitT7uXBnAIQlebAJpnIZsATD2CojQeM9gbiXusCf7ZbkjzxTc2XhFS6wPF60T2OeTwPMGfSlrRHoDJyQgxScpCPCv1SGo244qE/ZbBzgqDvzoUkdmkoPhMo/hTJNam3CtXx3pS1KMSjRF62jeFTyhNlAn2APYzFM5xqFoAfxGDuyoMxxzsvU0KtP2hjTYKeK/DowGIeAQwt9LG6wHOHJ1Vr7Z14NxBxhkOJD/3In43oK2c3eKkrqsC/iBgV2TDQzYwmQ4/TWxNaKILDbCxgbLOTVsCDlkE354EH0p+0adotPav1VGA1cGXwZ5paK+V9AmCqc84klNkC3NXxfCH3ncqjHsKVpca6CpCjU+3k0ej0DTJ71uZWyZgTlhKFg3AKshu4NUG0acNkGwXTnGYi88B3Bup8N3I4LlG9qHFK0NWrgR0uYuYATgm6s5Yhe9MAc/OF3vRAawm2RsUehBNXEnDzZBenwaS4pQl7rUMd1bAp+baF6DTqejqQLhEVHdaLBB/s9IIg967y3Gl4X34ogU4t8he2o9ByTqZemY34ybw5xbB7YAKBnYjoQ+mQkv8XhSGssy9LvaLag10STgRHELXAPiwi+C4xJx9+wOHAG4vI/iVo89xsyXRgbVF+QrOfFAaCYMPxCUJMIPgJK7HLLDLIry9njCcNACrhXZRy0IbX9FQcDyE4aQDWC04qESmu8AhEOsovfXFz4+ApjQ5bUfiQphp472ktjE+XXCCYisqEijO/UxAqcyw1GzMRn5Leg2cr7DeHGC2PskBZuOHHGAO8KUEkmcitZ9Wj7My8nqJe96BGYnmAHOA+RRekBPpjI133D2fwhlJ5gBzgPkamK+BHrMgP0zwgJUfZ2WElQPMAaYTOGm2MbE1WyYD80w6Ej+LTgLsie1rAmNHajPsiArPDqojFmFpgjzih6m+dScALpNWGkRFgPO+6tt6gKtKd0B4Y72yZfAEYu0vm8LMK7JZrnYC7LWV1SQuqAduJm/i8ZFfF692qSH1VbRqkKFzSm9SgB1pQUn+A8BPoMLhF2ibesW31QCXy/RaTa0yxhQlnZpaQ4xNw48U/5JmN8va4xrqL60RsRVC6uuyosoQ91trDvuuk60COAMO02tBraWY9mWbhMY4he3DY8UDrli8ACZBk++LoA/nC9gA4LVOAxkcjiNTcgWZFeCMMIS2CJtMVafraQK7MY4HXb8fUo3qDXBuOklHWoM1tHiHU5qOgtMswEQYyOijFFe55COD3xmLAz4dVxs3E8BqsE39pbMDYoDCexwTbyg4vgCdhGFOYiJ+GQujO1rw/2daAvC40PSXTrPABgIfcQFZT3BcAPoKQ5KPgIMG2D08Vjzqkp+LTUsBHgc5u04OiBhoRnAaAWxSGEYxjlHf9W3BANaA9BacGf9aATCYfazaAWFwAdcSEfEZyF9wfKL/z7YVwuAzclumcKMEfAXHtZhWCoPrmIldxwE2Kzj1imqHMCwJgM0Kzozf7B1D24RhSQH0FJym7xh8oPjYLtgUbpRkreB0WhiWPECfAhbadlF24EJD8Rk/B+hDax7bHGAOMCOBjO7/BQuo5Y2wTOY0AAAAAElFTkSuQmCC" />
+          <specializationType>Subscribe Integration Event Target End</specializationType>
+          <specializationTypeId>16fa2952-79e6-4150-b5ab-45aa4c106de4</specializationTypeId>
+          <defaultName>NewSubscribeIntegrationEventTargetEnd</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
+  </elementSettings>
+  <elementExtensions>
+    <elementExtension type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
+      <creationOptions>
+        <option type="association">
+          <text>Publish Integration Event</text>
+          <shortcut>ctrl + shift + p</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+          <specializationType>Publish Integration Event</specializationType>
+          <specializationTypeId>580b6b26-eab5-4602-a408-e76e2d292d2c</specializationTypeId>
+          <defaultName>NewPublishIntegrationEvent</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <typeOrder>
+        <type>Publish Integration Event</type>
+      </typeOrder>
+      <mappingSettings />
+    </elementExtension>
+    <elementExtension type="Diagram" typeId="8c90aca5-86f4-47f1-bd58-116fe79f5c55">
+      <mappingSettings />
+      <diagramSettings>
+        <addNewElementsTo>Package</addNewElementsTo>
+        <creationOptions>
+          <option type="element">
+            <text>New Integration Event Handler</text>
+            <icon type="UrlImagePath" source="data:image/png;base64,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" />
+            <specializationType>Integration Event Handler</specializationType>
+            <specializationTypeId>c0582230-22f5-4f74-8eb0-ec6fc9364900</specializationTypeId>
+            <defaultName>NewIntegrationEventHandler</defaultName>
+            <allowMultiple>true</allowMultiple>
+          </option>
+        </creationOptions>
+        <scriptOptions />
+        <elementVisualSettings>
+          <visualSettings type="Integration Event Handler" typeId="c0582230-22f5-4f74-8eb0-ec6fc9364900">
+            <size width="${w}" height="70" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawText>
+                <text>return getName();</text>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+                <size width="${w}" height="18" />
+                <position x="${x}" y="${y + 48}" />
+              </drawText>
+              <drawSvgResource>
+                <path>ingress.svg</path>
+                <size width="${w}" height="40" />
+                <position x="${x}" y="${y + 6}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="${x}" height="70" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings>
+              <childElementVisualSetting type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4">
+                <size width="`${parent.w}`" height="18" />
+                <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 66}`" />
+                <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
+                <display>
+                  <drawText>
+                    <text>return `handles: ${typeReference.display}`</text>
+                    <size width="${w - 26}" height="${h}" />
+                    <position x="${x + 24}" y="${y}" />
+                  </drawText>
+                  <drawSvgResource>
+                    <path>method.svg</path>
+                    <size width="20" height="20" />
+                    <position x="${x}" y="${y}" />
+                  </drawSvgResource>
+                </display>
+                <defaultSize width="`${parent.w}`" height="18" />
+                <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+                <childElementVisualSettings />
+              </childElementVisualSetting>
+            </childElementVisualSettings>
+          </visualSettings>
+          <visualSettings type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
+            <size width="${w}" height="70" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawText>
+                <text>return getName();</text>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+                <size width="${w}" height="18" />
+                <position x="${x}" y="${y + 48}" />
+              </drawText>
+              <drawSvgResource>
+                <path>message.svg</path>
+                <size width="${w}" height="40" />
+                <position x="${x}" y="${y + 6}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="${x}" height="70" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings />
+          </visualSettings>
+        </elementVisualSettings>
+        <associationVisualSettings />
+      </diagramSettings>
+    </elementExtension>
+    <elementExtension type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
+      <creationOptions>
+        <option type="association">
+          <text>Add Handler</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABGpJREFUeF7tWk1vE1cUPfdlgUWFknGqLlD5WrZFrQpS6YqSik/ROKzYAO2qP6BItkNV6EQqNGNX/ACWwMorPOarJZBCNyAkkBCt1FWBrmu7qhSEBHOrCXZij+fjzcybwZJntnlz7rnnnXtz3xsTRvyhEc8fmQCZA0ZcgawERtwAWRPMSiArgRFXICuBETdA9l8gK4HYJVCrjU38tWYnCbEHzBs6eM+YeaH9/OFt6LoVK0atNjb+NPeZYOwBbHxiEP3NlnWjveXFHRw+/CoOfiwH5Ocv72NhnQXwvgeJ3wl0vFma/iUKyXylvp9BNv57Hu//QZY43pz94uco+PY7kQXQKvUSQD8CEAHBLTDNtsrT1TAkNcMsg3BGCh98olWaqYTB766NJEDeqOtM9H2ogASjVSzMyryTr5hzDJySWbuyJgR+L25oASIlvyp3oAhJ4ztFDSVALHISIiSN7+YoaQGUkOswIOa5ZnlG7yW0WV/M/bv2v18B7AhlfZfFbvhemFICqEzer2a1+do4RO46gE/jigDJnhAoQCLJ+zihI8ItANviiiDjBF8BkkzezwlvG/X1r4juA1gfV4QgJ3gKkEryPk4Yr5qfC8bN2ALYw45Lz/GdAzpDyLyK4PIYXHYOM5rRuAzig/IYfisH8V0nwc74eUViAlPDaxXFItCB3rF50mh8YhHfUxRoAH9QgFptTHuSe+Qz2yvi4gnzZ2tp3VboUy+7K7SK+QTAJkWBB/D7esCEUZ8iIrsDv7GHiabaxWl7Hlh+NKN+DkRfqyLkxO8TQKs2zoD5hKpgkXAYp1vlwnerAjSKII500HGN78DvF6BSvwjQkUjEVb1EuNAqFr5cEaBaPwqmC6rg4cB3CGDagY4qCxYJiM+3SjNfdV+dMMxjRDgfCcrdAn34TgFOA/hWXbDwSAT+oVmaOZlUCTjx+5tgtbGLmBfD01b3BgO72qXC7cSaoAO/fxLUdaGt3fYQwIfqUgqF9Li19OCjlXtEZtKq5jOA3g2F4r24H9/tSixfaexl8LU3MQgJsvb9Uzy00OU/Wb20w2JxV1HylhPfxnU9C3Tu+wxFgaVgCCg2S4WfehdrhnkVhANSAAGL3PA9BbD/kOZhiIn0dnF6rjeHyeql3RaLGyqSd8Pv4voeh9M4FLmR0+bNjSRwn4F34grgl7yvA7qBk3SCe/K1cVBuEYSPk05eSgB7URJO8Exe5OyPHLHvBYN2XqoEendApRPcyKm8FJVNXtoBq0PJ8teaWBclfuRUOC1M8qEFiFsOMuTiiCCD7+wrgbfCbo0oCskw5JLG780pkgCvnbB8TrfLIfDjKAFl55AT1OGTxg/dBN0Id8Zm+/P1Bx4JPRZkfdM73gYl3td4X4/lieFH6gEDCei6mHhr+06yeDcENi6DMj+1QAvtpQe/xf6BRML4kUsgzE4O89pMgGHenTS4ZQ5IQ+VhjpE5YJh3Jw1umQPSUHmYY2QOGObdSYNb5oA0VB7mGJkDhnl30uD2P6Sq8VCQLRDUAAAAAElFTkSuQmCC" />
+          <specializationType>Subscribe Integration Event Source End</specializationType>
+          <specializationTypeId>5d8f5c33-f9c9-4629-b637-fad9b0096894</specializationTypeId>
+          <defaultName>NewSubscribeIntegrationEventSourceEnd</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="association">
+          <text>Send Command</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+          <specializationType>Send Command Target End</specializationType>
+          <specializationTypeId>d3096261-1268-440f-8db3-0a6b8b4786cc</specializationTypeId>
+          <defaultName>NewSendCommandTargetEnd</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <typeOrder>
+        <type>Subscribe Integration Event Source End</type>
+        <type>Send Command Target End</type>
+      </typeOrder>
+      <mappingSettings />
+    </elementExtension>
+    <elementExtension type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
+      <creationOptions />
+      <scriptOptions />
+      <mappingOptions />
+      <typeOrder />
+      <mappingSettings />
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings>
+    <associationSetting type="Publish Integration Event" typeId="580b6b26-eab5-4602-a408-e76e2d292d2c">
+      <sourceEnd type="Publish Integration Event Source End" typeId="eab91b3a-9903-40a2-90e8-ddb714883eab">
+        <displayFunction>return `published by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
+        <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABGpJREFUeF7tWk1vE1cUPfdlgUWFknGqLlD5WrZFrQpS6YqSik/ROKzYAO2qP6BItkNV6EQqNGNX/ACWwMorPOarJZBCNyAkkBCt1FWBrmu7qhSEBHOrCXZij+fjzcybwZJntnlz7rnnnXtz3xsTRvyhEc8fmQCZA0ZcgawERtwAWRPMSiArgRFXICuBETdA9l8gK4HYJVCrjU38tWYnCbEHzBs6eM+YeaH9/OFt6LoVK0atNjb+NPeZYOwBbHxiEP3NlnWjveXFHRw+/CoOfiwH5Ocv72NhnQXwvgeJ3wl0vFma/iUKyXylvp9BNv57Hu//QZY43pz94uco+PY7kQXQKvUSQD8CEAHBLTDNtsrT1TAkNcMsg3BGCh98olWaqYTB766NJEDeqOtM9H2ogASjVSzMyryTr5hzDJySWbuyJgR+L25oASIlvyp3oAhJ4ztFDSVALHISIiSN7+YoaQGUkOswIOa5ZnlG7yW0WV/M/bv2v18B7AhlfZfFbvhemFICqEzer2a1+do4RO46gE/jigDJnhAoQCLJ+zihI8ItANviiiDjBF8BkkzezwlvG/X1r4juA1gfV4QgJ3gKkEryPk4Yr5qfC8bN2ALYw45Lz/GdAzpDyLyK4PIYXHYOM5rRuAzig/IYfisH8V0nwc74eUViAlPDaxXFItCB3rF50mh8YhHfUxRoAH9QgFptTHuSe+Qz2yvi4gnzZ2tp3VboUy+7K7SK+QTAJkWBB/D7esCEUZ8iIrsDv7GHiabaxWl7Hlh+NKN+DkRfqyLkxO8TQKs2zoD5hKpgkXAYp1vlwnerAjSKII500HGN78DvF6BSvwjQkUjEVb1EuNAqFr5cEaBaPwqmC6rg4cB3CGDagY4qCxYJiM+3SjNfdV+dMMxjRDgfCcrdAn34TgFOA/hWXbDwSAT+oVmaOZlUCTjx+5tgtbGLmBfD01b3BgO72qXC7cSaoAO/fxLUdaGt3fYQwIfqUgqF9Li19OCjlXtEZtKq5jOA3g2F4r24H9/tSixfaexl8LU3MQgJsvb9Uzy00OU/Wb20w2JxV1HylhPfxnU9C3Tu+wxFgaVgCCg2S4WfehdrhnkVhANSAAGL3PA9BbD/kOZhiIn0dnF6rjeHyeql3RaLGyqSd8Pv4voeh9M4FLmR0+bNjSRwn4F34grgl7yvA7qBk3SCe/K1cVBuEYSPk05eSgB7URJO8Exe5OyPHLHvBYN2XqoEendApRPcyKm8FJVNXtoBq0PJ8teaWBclfuRUOC1M8qEFiFsOMuTiiCCD7+wrgbfCbo0oCskw5JLG780pkgCvnbB8TrfLIfDjKAFl55AT1OGTxg/dBN0Id8Zm+/P1Bx4JPRZkfdM73gYl3td4X4/lieFH6gEDCei6mHhr+06yeDcENi6DMj+1QAvtpQe/xf6BRML4kUsgzE4O89pMgGHenTS4ZQ5IQ+VhjpE5YJh3Jw1umQPSUHmYY2QOGObdSYNb5oA0VB7mGJkDhnl30uD2P6Sq8VCQLRDUAAAAAElFTkSuQmCC" />
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>Command</type>
+            <type>Domain Event Handler Association Target End</type>
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </sourceEnd>
+      <targetEnd type="Publish Integration Event Target End" typeId="6feb1511-849a-4aa3-85eb-d0c736ac1fec">
+        <displayFunction>return `publish: ${typeReference.display}`</displayFunction>
+        <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>Message</type>
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+        <typeOrder />
+        <creationOptions />
+        <scriptOptions />
+        <mappingOptions>
+          <option mappingType="Publish Message Mapping" mappingTypeId="7ff48a4c-ee8b-4e66-9dbb-c014eb0542fb">
+            <text>Map to Message</text>
+            <shortcut>ctrl + shift + m</shortcut>
+            <icon type="FontAwesome" source="arrow-circle-right" />
+          </option>
+        </mappingOptions>
+      </targetEnd>
+      <visualSettings>
+        <lineType>Curved</lineType>
+        <lineDashArray>return "3,7";</lineDashArray>
+        <sourceEnd>
+          <pointIndicator>
+            <path>return `a 4,4 0 1,0 4,4 
+        a 4,4 0 1,0 -4,4`;</path>
+          </pointIndicator>
+        </sourceEnd>
+        <targetEnd>
+          <pointIndicator>
+            <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>
+          </pointIndicator>
+        </targetEnd>
+      </visualSettings>
+    </associationSetting>
+    <associationSetting type="Send Command" typeId="38a3de5a-ca88-4f6e-88b9-88e5953936b2">
+      <sourceEnd type="Send Command Source End" typeId="6b9e34dd-b50f-4998-a3cf-93dde7b2d51e">
+        <displayFunction>return `published by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
+        <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABGpJREFUeF7tWk1vE1cUPfdlgUWFknGqLlD5WrZFrQpS6YqSik/ROKzYAO2qP6BItkNV6EQqNGNX/ACWwMorPOarJZBCNyAkkBCt1FWBrmu7qhSEBHOrCXZij+fjzcybwZJntnlz7rnnnXtz3xsTRvyhEc8fmQCZA0ZcgawERtwAWRPMSiArgRFXICuBETdA9l8gK4HYJVCrjU38tWYnCbEHzBs6eM+YeaH9/OFt6LoVK0atNjb+NPeZYOwBbHxiEP3NlnWjveXFHRw+/CoOfiwH5Ocv72NhnQXwvgeJ3wl0vFma/iUKyXylvp9BNv57Hu//QZY43pz94uco+PY7kQXQKvUSQD8CEAHBLTDNtsrT1TAkNcMsg3BGCh98olWaqYTB766NJEDeqOtM9H2ogASjVSzMyryTr5hzDJySWbuyJgR+L25oASIlvyp3oAhJ4ztFDSVALHISIiSN7+YoaQGUkOswIOa5ZnlG7yW0WV/M/bv2v18B7AhlfZfFbvhemFICqEzer2a1+do4RO46gE/jigDJnhAoQCLJ+zihI8ItANviiiDjBF8BkkzezwlvG/X1r4juA1gfV4QgJ3gKkEryPk4Yr5qfC8bN2ALYw45Lz/GdAzpDyLyK4PIYXHYOM5rRuAzig/IYfisH8V0nwc74eUViAlPDaxXFItCB3rF50mh8YhHfUxRoAH9QgFptTHuSe+Qz2yvi4gnzZ2tp3VboUy+7K7SK+QTAJkWBB/D7esCEUZ8iIrsDv7GHiabaxWl7Hlh+NKN+DkRfqyLkxO8TQKs2zoD5hKpgkXAYp1vlwnerAjSKII500HGN78DvF6BSvwjQkUjEVb1EuNAqFr5cEaBaPwqmC6rg4cB3CGDagY4qCxYJiM+3SjNfdV+dMMxjRDgfCcrdAn34TgFOA/hWXbDwSAT+oVmaOZlUCTjx+5tgtbGLmBfD01b3BgO72qXC7cSaoAO/fxLUdaGt3fYQwIfqUgqF9Li19OCjlXtEZtKq5jOA3g2F4r24H9/tSixfaexl8LU3MQgJsvb9Uzy00OU/Wb20w2JxV1HylhPfxnU9C3Tu+wxFgaVgCCg2S4WfehdrhnkVhANSAAGL3PA9BbD/kOZhiIn0dnF6rjeHyeql3RaLGyqSd8Pv4voeh9M4FLmR0+bNjSRwn4F34grgl7yvA7qBk3SCe/K1cVBuEYSPk05eSgB7URJO8Exe5OyPHLHvBYN2XqoEendApRPcyKm8FJVNXtoBq0PJ8teaWBclfuRUOC1M8qEFiFsOMuTiiCCD7+wrgbfCbo0oCskw5JLG780pkgCvnbB8TrfLIfDjKAFl55AT1OGTxg/dBN0Id8Zm+/P1Bx4JPRZkfdM73gYl3td4X4/lieFH6gEDCei6mHhr+06yeDcENi6DMj+1QAvtpQe/xf6BRML4kUsgzE4O89pMgGHenTS4ZQ5IQ+VhjpE5YJh3Jw1umQPSUHmYY2QOGObdSYNb5oA0VB7mGJkDhnl30uD2P6Sq8VCQLRDUAAAAAElFTkSuQmCC" />
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>Subscribe Integration Event Target End</type>
+            <type>Message</type>
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </sourceEnd>
+      <targetEnd type="Send Command Target End" typeId="d3096261-1268-440f-8db3-0a6b8b4786cc">
+        <displayFunction>return `publish: ${typeReference.display}`</displayFunction>
+        <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>Command</type>
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+        <typeOrder />
+        <creationOptions />
+        <scriptOptions />
+        <mappingOptions>
+          <option mappingType="Integration Event Handler to Command Mapping" mappingTypeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
+            <text>Map to Command</text>
+            <shortcut>ctrl + shift + m</shortcut>
+            <icon type="FontAwesome" source="arrow-circle-right" />
+          </option>
+        </mappingOptions>
+      </targetEnd>
+      <visualSettings>
+        <lineType>Curved</lineType>
+        <lineDashArray>return "3,7";</lineDashArray>
+        <sourceEnd>
+          <pointIndicator>
+            <path>return `a 4,4 0 1,0 4,4 
+        a 4,4 0 1,0 -4,4`;</path>
+          </pointIndicator>
+        </sourceEnd>
+        <targetEnd>
+          <pointIndicator>
+            <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>
+          </pointIndicator>
+        </targetEnd>
+      </visualSettings>
+    </associationSetting>
+    <associationSetting type="Subscribe Integration Event" typeId="80aa7f6d-64e5-4d24-a81e-6bc212925ca7">
+      <sourceEnd type="Subscribe Integration Event Source End" typeId="5d8f5c33-f9c9-4629-b637-fad9b0096894">
+        <displayFunction>return `handled by: ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
+        <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABGpJREFUeF7tWk1vE1cUPfdlgUWFknGqLlD5WrZFrQpS6YqSik/ROKzYAO2qP6BItkNV6EQqNGNX/ACWwMorPOarJZBCNyAkkBCt1FWBrmu7qhSEBHOrCXZij+fjzcybwZJntnlz7rnnnXtz3xsTRvyhEc8fmQCZA0ZcgawERtwAWRPMSiArgRFXICuBETdA9l8gK4HYJVCrjU38tWYnCbEHzBs6eM+YeaH9/OFt6LoVK0atNjb+NPeZYOwBbHxiEP3NlnWjveXFHRw+/CoOfiwH5Ocv72NhnQXwvgeJ3wl0vFma/iUKyXylvp9BNv57Hu//QZY43pz94uco+PY7kQXQKvUSQD8CEAHBLTDNtsrT1TAkNcMsg3BGCh98olWaqYTB766NJEDeqOtM9H2ogASjVSzMyryTr5hzDJySWbuyJgR+L25oASIlvyp3oAhJ4ztFDSVALHISIiSN7+YoaQGUkOswIOa5ZnlG7yW0WV/M/bv2v18B7AhlfZfFbvhemFICqEzer2a1+do4RO46gE/jigDJnhAoQCLJ+zihI8ItANviiiDjBF8BkkzezwlvG/X1r4juA1gfV4QgJ3gKkEryPk4Yr5qfC8bN2ALYw45Lz/GdAzpDyLyK4PIYXHYOM5rRuAzig/IYfisH8V0nwc74eUViAlPDaxXFItCB3rF50mh8YhHfUxRoAH9QgFptTHuSe+Qz2yvi4gnzZ2tp3VboUy+7K7SK+QTAJkWBB/D7esCEUZ8iIrsDv7GHiabaxWl7Hlh+NKN+DkRfqyLkxO8TQKs2zoD5hKpgkXAYp1vlwnerAjSKII500HGN78DvF6BSvwjQkUjEVb1EuNAqFr5cEaBaPwqmC6rg4cB3CGDagY4qCxYJiM+3SjNfdV+dMMxjRDgfCcrdAn34TgFOA/hWXbDwSAT+oVmaOZlUCTjx+5tgtbGLmBfD01b3BgO72qXC7cSaoAO/fxLUdaGt3fYQwIfqUgqF9Li19OCjlXtEZtKq5jOA3g2F4r24H9/tSixfaexl8LU3MQgJsvb9Uzy00OU/Wb20w2JxV1HylhPfxnU9C3Tu+wxFgaVgCCg2S4WfehdrhnkVhANSAAGL3PA9BbD/kOZhiIn0dnF6rjeHyeql3RaLGyqSd8Pv4voeh9M4FLmR0+bNjSRwn4F34grgl7yvA7qBk3SCe/K1cVBuEYSPk05eSgB7URJO8Exe5OyPHLHvBYN2XqoEendApRPcyKm8FJVNXtoBq0PJ8teaWBclfuRUOC1M8qEFiFsOMuTiiCCD7+wrgbfCbo0oCskw5JLG780pkgCvnbB8TrfLIfDjKAFl55AT1OGTxg/dBN0Id8Zm+/P1Bx4JPRZkfdM73gYl3td4X4/lieFH6gEDCei6mHhr+06yeDcENi6DMj+1QAvtpQe/xf6BRML4kUsgzE4O89pMgGHenTS4ZQ5IQ+VhjpE5YJh3Jw1umQPSUHmYY2QOGObdSYNb5oA0VB7mGJkDhnl30uD2P6Sq8VCQLRDUAAAAAElFTkSuQmCC" />
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>Integration Event Handler</type>
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </sourceEnd>
+      <targetEnd type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4">
+        <displayFunction>return `handles: ${typeReference.display}`</displayFunction>
+        <icon type="UrlImagePath" source="data:image/png;base64,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" />
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>Message</type>
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+        <typeOrder>
+          <type order="0">Send Command</type>
+        </typeOrder>
+        <creationOptions>
+          <option type="association">
+            <text>Send Command</text>
+            <shortcut>ctrl + shift + a</shortcut>
+            <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+            <specializationType>Send Command</specializationType>
+            <specializationTypeId>38a3de5a-ca88-4f6e-88b9-88e5953936b2</specializationTypeId>
+            <defaultName>NewSendCommand</defaultName>
+            <allowMultiple>true</allowMultiple>
+          </option>
+        </creationOptions>
+        <scriptOptions />
+        <mappingOptions />
+      </targetEnd>
+      <visualSettings type="Subscribe Integration Event" typeId="80aa7f6d-64e5-4d24-a81e-6bc212925ca7">
+        <lineType>Curved</lineType>
+        <flowDirectionReversed>true</flowDirectionReversed>
+        <sourceEnd>
+          <pointIndicator>
+            <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>
+          </pointIndicator>
+        </sourceEnd>
+        <targetEnd>
+          <pointIndicator>
+            <path>return `a 4,4 0 1,0 4,4         a 4,4 0 1,0 -4,4`;</path>
+          </pointIndicator>
+        </targetEnd>
+      </visualSettings>
+    </associationSetting>
+  </associationSettings>
+  <associationExtensions>
+    <associationExtension type="Domain Event Handler Association" typeId="90831494-f069-44eb-b488-ab2dba7518ea">
+      <sourceEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes />
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </sourceEndExtension>
+      <targetEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes />
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+        <creationOptions>
+          <option type="association">
+            <text>Publish Integration Event</text>
+            <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+            <specializationType>Publish Integration Event Target End</specializationType>
+            <specializationTypeId>6feb1511-849a-4aa3-85eb-d0c736ac1fec</specializationTypeId>
+            <defaultName>NewPublishIntegrationEventTargetEnd</defaultName>
+            <allowMultiple>true</allowMultiple>
+          </option>
+        </creationOptions>
+        <scriptOptions />
+        <mappingOptions />
+      </targetEndExtension>
+      <macros />
+    </associationExtension>
+  </associationExtensions>
+  <mappingSettings>
+    <mappingSetting type="Integration Event Handler to Command Mapping" typeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
+      <title>Integration Event Handler to Command Mapping</title>
+      <sourceMappings>
+        <mapping id="2893a19b-523a-49e9-b828-2961b0fba28f" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>b5626f4a-fc65-4cdd-b921-e7d1b347c9f4</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <mapsTo>
+                <mappingId>7829c6b8-a045-4a3e-b9c2-13795f128879</mappingId>
+              </mapsTo>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="b5626f4a-fc65-4cdd-b921-e7d1b347c9f4" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>b5626f4a-fc65-4cdd-b921-e7d1b347c9f4</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <mapsTo>
+                <mappingId>7829c6b8-a045-4a3e-b9c2-13795f128879</mappingId>
+              </mapsTo>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="4b0cdf16-f119-438d-98a3-7ced24aafba3" name="Subscribe Integration Event" type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes>
+            <mappingId>2893a19b-523a-49e9-b828-2961b0fba28f</mappingId>
+          </traversableTypes>
+          <canBeModified>false</canBeModified>
+          <mapsTo />
+          <childSettings />
+        </mapping>
+      </sourceMappings>
+      <targetMappings>
+        <mapping id="7f5d49dd-fd48-4f29-8126-b1b0c881a99c" name="Send Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="7829c6b8-a045-4a3e-b9c2-13795f128879" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>8dd4a85c-056b-4d02-859c-e6d274b89580</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <mapsTo />
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="8dd4a85c-056b-4d02-859c-e6d274b89580" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
+          <mapsTo />
+          <useChildSettingsFrom>7f5d49dd-fd48-4f29-8126-b1b0c881a99c</useChildSettingsFrom>
+          <childSettings />
+        </mapping>
+      </targetMappings>
+    </mappingSetting>
+    <mappingSetting type="Publish Message Mapping" typeId="7ff48a4c-ee8b-4e66-9dbb-c014eb0542fb">
+      <title>Publish Message Mapping</title>
+      <sourceMappings>
+        <mapping id="39b8fb93-4d76-4151-8961-a7b3d2266993" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="d5d4257c-3e82-4843-824d-cd84877c72f7" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>fec56eb6-de77-4180-84f8-5578f0f908c4</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <mapsTo>
+                <mappingId>a7d2076d-4c3a-45bd-9d55-165fb4572557</mappingId>
+                <mappingId>972c5a10-0416-4760-9f84-de002d4ef2a7</mappingId>
+              </mapsTo>
+              <childSettings />
+            </childSetting>
+            <childSetting id="c44c9979-10ea-4811-b72e-7ff1e55829eb" name="Create Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <mapsTo />
+              <childSettings />
+            </childSetting>
+            <childSetting id="4e15f8c8-3277-42e6-923f-13d6a53170db" name="Update Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <mapsTo />
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="fec56eb6-de77-4180-84f8-5578f0f908c4" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
+          <mapsTo />
+          <useChildSettingsFrom>39b8fb93-4d76-4151-8961-a7b3d2266993</useChildSettingsFrom>
+          <childSettings />
+        </mapping>
+        <mapping id="a5471c22-a058-4137-9ba5-29b71efa10d7" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="f309f99d-4104-41f7-82b4-a783fe53712d" name="Update Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+              <represents>data</represents>
+              <isRequiredFunction>return element.hasStereotype("Primary Key");</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>0940039a-eb90-42e3-8284-b2b13215e2ab</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <mapsTo>
+                <mappingId>a7d2076d-4c3a-45bd-9d55-165fb4572557</mappingId>
+                <mappingId>972c5a10-0416-4760-9f84-de002d4ef2a7</mappingId>
+              </mapsTo>
+              <childSettings />
+            </childSetting>
+            <childSetting id="cc259acd-75c4-4b1e-be12-77eaba119415" name="Update Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+              <represents>data</represents>
+              <isRequiredFunction>return false;</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
+                <mappingId>0940039a-eb90-42e3-8284-b2b13215e2ab</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <mapsTo>
+                <mappingId>a7d2076d-4c3a-45bd-9d55-165fb4572557</mappingId>
+                <mappingId>972c5a10-0416-4760-9f84-de002d4ef2a7</mappingId>
+              </mapsTo>
+              <useChildSettingsFrom>a5471c22-a058-4137-9ba5-29b71efa10d7</useChildSettingsFrom>
+              <childSettings />
+            </childSetting>
+            <childSetting id="45eab8e7-3299-4973-bd01-8ef5e6c96900" name="Invoke Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return element.typeReference?.getType() != null &amp;&amp; element.getChildren().length == 0;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <mapsTo>
+                <mappingId>a7d2076d-4c3a-45bd-9d55-165fb4572557</mappingId>
+                <mappingId>972c5a10-0416-4760-9f84-de002d4ef2a7</mappingId>
+              </mapsTo>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="0940039a-eb90-42e3-8284-b2b13215e2ab" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="0abd5a93-e96d-4ed5-9ca4-f5359ce0af7c" name="Value Object Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+              <represents>data</represents>
+              <isRequiredFunction>return true;</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>0940039a-eb90-42e3-8284-b2b13215e2ab</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <mapsTo>
+                <mappingId>a7d2076d-4c3a-45bd-9d55-165fb4572557</mappingId>
+                <mappingId>972c5a10-0416-4760-9f84-de002d4ef2a7</mappingId>
+              </mapsTo>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="15794498-a110-4cd6-a692-4bb30ef9eaf3" name="Domain Event Handler" type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes>
+            <mappingId>3dd3a327-e1eb-4fc2-9272-96c180bd1d92</mappingId>
+          </traversableTypes>
+          <canBeModified>false</canBeModified>
+          <mapsTo />
+          <childSettings />
+        </mapping>
+        <mapping id="3dd3a327-e1eb-4fc2-9272-96c180bd1d92" name="Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="6859b560-e0ea-400a-9f3d-408f82727367" name="Domain Event Property" type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
+                <mappingId>0940039a-eb90-42e3-8284-b2b13215e2ab</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <mapsTo />
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+      </sourceMappings>
+      <targetMappings>
+        <mapping id="5522e13c-4b8a-464d-802a-83a6d1e5b211" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="a7d2076d-4c3a-45bd-9d55-165fb4572557" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>4155744e-cc1e-495e-9a82-b3702548afe0</mappingId>
+                <mappingId>4bebd0c2-e53b-41a9-9d18-68f7fc4bec81</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <mapsTo />
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="4155744e-cc1e-495e-9a82-b3702548afe0" name="Publish Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <createNameFunction>return element.getParent('Message').getName() + element.getName() + 'Dto'</createNameFunction>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="972c5a10-0416-4760-9f84-de002d4ef2a7" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>4155744e-cc1e-495e-9a82-b3702548afe0</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <mapsTo />
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="4bebd0c2-e53b-41a9-9d18-68f7fc4bec81" name="Publish DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <createNameFunction>return element.getParent('Message').getName() + element.getName() + 'Dto'</createNameFunction>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="ff7ac0b8-9196-42c9-8196-241846f0ef60" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>4bebd0c2-e53b-41a9-9d18-68f7fc4bec81</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <mapsTo />
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+      </targetMappings>
+    </mappingSetting>
+  </mappingSettings>
+</settings>

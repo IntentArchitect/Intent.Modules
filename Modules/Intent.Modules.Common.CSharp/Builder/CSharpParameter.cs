@@ -5,10 +5,11 @@ using System.Linq;
 using System.Reflection.Metadata;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpParameter : ICSharpParameter
+public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParameter, IHasCSharpName
 {
     public string Type { get; }
     public string Name { get; }
@@ -18,7 +19,7 @@ public class CSharpParameter : ICSharpParameter
     public string XmlDocComment { get; private set; }
     public string ParameterModifier { get; private set; } = "";
 
-    public CSharpParameter(string type, string name)
+    public CSharpParameter(string type, string name, CSharpClassMethod method)
     {
         if (string.IsNullOrWhiteSpace(type))
         {
@@ -32,6 +33,12 @@ public class CSharpParameter : ICSharpParameter
 
         Type = type;
         Name = name;
+        File = method?.File;
+    }
+
+    public string GetReferenceName()
+    {
+        return Name;
     }
 
     public CSharpParameter AddAttribute(string name, Action<CSharpAttribute> configure = null)

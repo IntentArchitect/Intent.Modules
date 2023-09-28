@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStatements, IHasICSharpParameters
+public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStatements, IHasICSharpParameters, IHasCSharpName
 {
+    private readonly CSharpClass _class;
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     protected string AsyncMode { get; private set; } = string.Empty;
     protected string AccessModifier { get; private set; } = "public ";
@@ -23,7 +25,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
 
 
-    public CSharpClassMethod(string returnType, string name)
+    public CSharpClassMethod(string returnType, string name, CSharpClass @class)
     {
         if (string.IsNullOrWhiteSpace(returnType))
         {
@@ -35,6 +37,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
+        _class = @class;
+        File = @class.File;
         ReturnType = returnType;
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
@@ -47,9 +51,62 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
         return this;
     }
 
+
+    /// <summary>
+    /// Resolves the parameter name from the <paramref name="model"/>. Registers this parameter as the representative of the <paramref name="model"/>.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="model"></param>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public CSharpClassMethod AddParameter<TModel>(string type, TModel model, Action<CSharpParameter> configure = null) where TModel
+        : IMetadataModel, IHasName, IHasTypeReference
+    {
+        return AddParameter(type, model.Name.ToParameterName(), param =>
+        {
+            param.RepresentsModel(model);
+            configure?.Invoke(param);
+        });
+    }
+
+    /// <summary>
+    /// Resolves the type name and parameter name from the <paramref name="model"/> using the <see cref="ICSharpFileBuilderTemplate"/>
+    /// template that was passed into the <see cref="CSharpFile"/>. Registers this parameter as representative of the <paramref name="model"/>.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="model"></param>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public CSharpClassMethod AddParameter<TModel>(TModel model, Action<CSharpParameter> configure = null) where TModel 
+        : IMetadataModel, IHasName, IHasTypeReference
+    {
+        return AddParameter(_class.GetModelType(model), model.Name.ToParameterName(), param =>
+        {
+            param.RepresentsModel(model);
+            configure?.Invoke(param);
+        });
+    }
+
+    /// <summary>
+    /// Calls <see cref="AddParameter{TModel}(TModel,System.Action{Intent.Modules.Common.CSharp.Builder.CSharpParameter})"/> for each of the supplied <paramref name="models"/>
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="models"></param>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public CSharpClassMethod AddParameters<TModel>(IEnumerable<TModel> models, Action<CSharpParameter> configure = null) where TModel
+        : IMetadataModel, IHasName, IHasTypeReference
+    {
+        foreach (var model in models)
+        {
+            AddParameter(model, configure);
+        }
+        return this;
+    }
+
     public CSharpClassMethod AddParameter(string type, string name, Action<CSharpParameter> configure = null)
     {
-        var param = new CSharpParameter(type, name);
+        var param = new CSharpParameter(type, name, this);
         Parameters.Add(param);
         configure?.Invoke(param);
         return this;

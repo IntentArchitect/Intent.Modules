@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -10,9 +11,12 @@ public class CSharpFile
 {
     private readonly IList<(Action Action, int Order)> _configurations = new List<(Action Action, int Order)>();
     private readonly IList<(Action Action, int Order)> _configurationsAfter = new List<(Action Action, int Order)>();
+    private readonly Dictionary<string, IHasCSharpName> _modelReferenceRegistry = new();
+
     public IList<CSharpUsing> Usings { get; } = new List<CSharpUsing>();
     public string Namespace { get; }
     public string RelativeLocation { get; }
+    public ICSharpFileBuilderTemplate Template { get; }
     public string DefaultIntentManaged { get; private set; } = "Mode.Fully";
     public IList<CSharpInterface> Interfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpClass> TypeDeclarations { get; } = new List<CSharpClass>();
@@ -35,6 +39,11 @@ public class CSharpFile
         RelativeLocation = relativeLocation;
     }
 
+    public CSharpFile(string @namespace, string relativeLocation, ICSharpFileBuilderTemplate template) : this(@namespace, relativeLocation)
+    {
+        Template = template;
+    }
+
     public CSharpFile AddUsing(string @namespace)
     {
         Usings.Add(new CSharpUsing(@namespace));
@@ -43,7 +52,7 @@ public class CSharpFile
 
     public CSharpFile AddClass(string name, Action<CSharpClass> configure = null)
     {
-        var @class = new CSharpClass(name);
+        var @class = new CSharpClass(name, CSharpClass.Type.Class, this);
         TypeDeclarations.Add(@class);
         if (_isBuilt)
         {
@@ -103,6 +112,26 @@ public class CSharpFile
         }
 
         return this;
+    }
+
+    internal CSharpFile RegisterReference(string modelId, IHasCSharpName reference)
+    {
+        if (_modelReferenceRegistry.ContainsKey(modelId))
+        {
+            throw new InvalidOperationException($"Cannot add CSharp reference '{reference.Name}' for the model with id {modelId}: A reference with this key already exists '{GetReferenceForModel(modelId).Name}'.");
+        }
+        _modelReferenceRegistry.Add(modelId, reference);
+        return this;
+    }
+
+    public IHasCSharpName GetReferenceForModel(string modelId)
+    {
+        return _modelReferenceRegistry.ContainsKey(modelId) ? _modelReferenceRegistry[modelId] : null;
+    }
+
+    public IHasCSharpName GetReferenceForModel(IMetadataModel model)
+    {
+        return _modelReferenceRegistry.ContainsKey(model.Id) ? _modelReferenceRegistry[model.Id] : null;
     }
 
     public CSharpFile IntentManagedFully()

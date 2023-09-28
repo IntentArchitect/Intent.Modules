@@ -1,4 +1,9 @@
-﻿### Version 3.3.41
+﻿### Version 3.4.0
+
+- Added: `CSharpAssignmentStatement` which takes in a left-hand and right-hand set of statements for standard variable and property assignements.
+- Added: `IHasCSharpName GetReferenceForModel(...)` on `CSharpFile` to support resolving reference names for methods, properties and parameters.
+
+### Version 3.3.40
 
 - Improvement: Added Blazor WebAssembly configuration options for `launchsettings.json`.
 - Improvement: CSharpConstructorParameter now has ability to store metadata.

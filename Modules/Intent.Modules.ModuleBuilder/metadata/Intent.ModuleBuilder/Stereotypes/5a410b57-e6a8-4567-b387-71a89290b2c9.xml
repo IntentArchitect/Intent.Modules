@@ -39,7 +39,9 @@
       <placeholder />
       <valueOptions />
       <lookupTypes>
-        <type>element settings</type>
+        <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
+        <type>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</type>
+        <type>c4c61fdc-464d-41d2-8e0e-5a734d588302</type>
       </lookupTypes>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
@@ -53,6 +55,37 @@
       <valueOptions />
       <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
+    </property>
+    <property id="6bf94b78-382a-4002-ac88-a569b59e16e6">
+      <name>Name Accessibility</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(default)</placeholder>
+      <defaultValue>Optional</defaultValue>
+      <valueOptions>
+        <option>Optional</option>
+        <option>Required</option>
+        <option>Disabled</option>
+        <option>Hidden</option>
+      </valueOptions>
+      <lookupTypes />
+      <apiTypeDefinition>association-api</apiTypeDefinition>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="5e68cf49-e0f7-461a-8f5a-436a5ec91060">
+      <name>Default Name Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <defaultValue />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>association-api</apiTypeDefinition>
+      <isActiveFunction>let nameAccessibility = getProperty("6bf94b78-382a-4002-ac88-a569b59e16e6").getValue();
+
+return nameAccessibility == "Required" || nameAccessibility == "Disabled";</isActiveFunction>
     </property>
     <property id="b534060a-c8a3-4631-b4a9-db0baeecd1b3">
       <name>Api Property Name</name>

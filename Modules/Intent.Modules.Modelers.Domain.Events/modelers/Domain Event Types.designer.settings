@@ -9,12 +9,12 @@
       <requiredPackages />
       <creationOptions>
         <option type="element">
-          <specializationType>Domain Event</specializationType>
-          <specializationTypeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</specializationTypeId>
           <text>New Domain Event</text>
           <shortcut>ctrl + shift + v</shortcut>
-          <defaultName>NewDomainEvent</defaultName>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <specializationType>Domain Event</specializationType>
+          <specializationTypeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</specializationTypeId>
+          <defaultName>NewDomainEvent</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -44,25 +44,26 @@
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Property</specializationType>
-          <specializationTypeId>b4d69073-5abb-4968-b41b-545b2f7408ed</specializationTypeId>
           <text>Add Property</text>
           <shortcut>ctrl + shift + a</shortcut>
-          <defaultName>NewProperty</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Attribute_256x.png" />
+          <specializationType>Property</specializationType>
+          <specializationTypeId>b4d69073-5abb-4968-b41b-545b2f7408ed</specializationTypeId>
+          <defaultName>NewProperty</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="association">
-          <specializationType>Domain Event Association</specializationType>
-          <specializationTypeId>8014b71d-627b-4349-b6d7-5011dfa1bb09</specializationTypeId>
           <text>Add Handler</text>
           <shortcut>ctrl + shift + c</shortcut>
-          <defaultName>NewDomainEventAssociation</defaultName>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+          <specializationType>Domain Event Association</specializationType>
+          <specializationTypeId>8014b71d-627b-4349-b6d7-5011dfa1bb09</specializationTypeId>
+          <defaultName>NewDomainEventAssociation</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings>
         <mappingSetting id="fe437011-d386-4a35-be0c-21a4180821ba">
           <name>Map from Class</name>
@@ -163,16 +164,16 @@
         </mappingSetting>
       </mappingSettings>
       <visualSettings type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
-        <size width="${w}" height="120" />
+        <size width="${w}" height="70" />
         <position x="${x}" y="${y}" />
         <display>
           <drawPath>
-            <condition>return h &gt;= 100;</condition>
+            <condition>return visual.isAutoResizeEnabled();</condition>
             <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
             <fillColor>return theme.isDark ? "#5A2610" : "#F0BB62"</fillColor>
           </drawPath>
           <drawText>
-            <condition>return h &gt;= 100;</condition>
+            <condition>return visual.isAutoResizeEnabled();</condition>
             <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
@@ -182,7 +183,7 @@ white-space: inherit;`</style>
             <position x="${x}" y="${y + 8}" />
           </drawText>
           <drawText>
-            <condition>return h &lt; 100;</condition>
+            <condition>return !visual.isAutoResizeEnabled();</condition>
             <text>return getName();</text>
             <style>`font-size: 12px; 
 font-family: Helvetica; 
@@ -194,8 +195,8 @@ vertical-align: center`</style>
             <position x="${x}" y="${y + 48}" />
           </drawText>
           <drawSvgResource>
-            <condition>return h &lt; 100</condition>
-            <path>lightning.svg</path>
+            <condition>return !visual.isAutoResizeEnabled();</condition>
+            <path>domain-event.svg</path>
             <size width="${w}" height="40" />
             <position x="${x}" y="${y + 6}" />
           </drawSvgResource>
@@ -204,7 +205,8 @@ vertical-align: center`</style>
           <size width="${w}" height="18" />
           <position x="${x}" y="${y}" />
         </stereotypesVisualSettings>
-        <defaultSize width="${x}" height="120" />
+        <defaultSize width="${x}" height="70" />
+        <autoResizeEnabledByDefault>false</autoResizeEnabledByDefault>
         <childElementVisualSettings>
           <childElementVisualSetting type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed">
             <size width="`${parent.w}`" height="18" />
@@ -226,6 +228,7 @@ vertical-align: center`</style>
               <position x="${x}" y="${y}" />
             </stereotypesVisualSettings>
             <defaultSize width="`${parent.w}`" height="18" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings />
           </childElementVisualSetting>
         </childElementVisualSettings>
@@ -263,6 +266,7 @@ vertical-align: center`</style>
           <typeOrder />
           <creationOptions />
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -273,16 +277,17 @@ vertical-align: center`</style>
     <elementExtension type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
       <creationOptions>
         <option type="association">
-          <specializationType>Domain Event Origin Association</specializationType>
-          <specializationTypeId>4c0cc50b-8a9d-43cd-b731-9f354f69f3c9</specializationTypeId>
           <text>Publish Domain Event</text>
           <shortcut>ctrl + shift + c</shortcut>
-          <defaultName>NewDomainEventOriginAssociation</defaultName>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+          <specializationType>Domain Event Origin Association</specializationType>
+          <specializationTypeId>4c0cc50b-8a9d-43cd-b731-9f354f69f3c9</specializationTypeId>
+          <defaultName>NewDomainEventOriginAssociation</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type>Domain Event Origin Association</type>
       </typeOrder>
@@ -294,12 +299,12 @@ vertical-align: center`</style>
         <addNewElementsTo>Package</addNewElementsTo>
         <creationOptions>
           <option type="element">
-            <specializationType>Domain Event</specializationType>
-            <specializationTypeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</specializationTypeId>
             <text>New Domain Event</text>
             <shortcut>ctrl + shift + v</shortcut>
-            <defaultName>NewDomainEvent</defaultName>
             <icon type="UrlImagePath" source="data:image/png;base64,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" />
+            <specializationType>Domain Event</specializationType>
+            <specializationTypeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</specializationTypeId>
+            <defaultName>NewDomainEvent</defaultName>
             <allowMultiple>true</allowMultiple>
           </option>
         </creationOptions>
@@ -311,16 +316,17 @@ vertical-align: center`</style>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
       <creationOptions>
         <option type="element">
-          <specializationType>Domain Event</specializationType>
-          <specializationTypeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</specializationTypeId>
           <text>New Domain Event</text>
           <shortcut>ctrl + shift + v</shortcut>
-          <defaultName>NewDomainEvent</defaultName>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <specializationType>Domain Event</specializationType>
+          <specializationTypeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</specializationTypeId>
+          <defaultName>NewDomainEvent</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type>Domain Event</type>
       </typeOrder>
@@ -329,16 +335,17 @@ vertical-align: center`</style>
     <elementExtension type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
       <creationOptions>
         <option type="association">
-          <specializationType>Domain Event Origin Association</specializationType>
-          <specializationTypeId>4c0cc50b-8a9d-43cd-b731-9f354f69f3c9</specializationTypeId>
           <text>Publish Domain Event</text>
           <shortcut>ctrl + shift + c</shortcut>
-          <defaultName>NewDomainEventOriginAssociation</defaultName>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+          <specializationType>Domain Event Origin Association</specializationType>
+          <specializationTypeId>4c0cc50b-8a9d-43cd-b731-9f354f69f3c9</specializationTypeId>
+          <defaultName>NewDomainEventOriginAssociation</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type>Domain Event Origin Association</type>
       </typeOrder>
@@ -384,6 +391,7 @@ vertical-align: center`</style>
         </typeReferenceSetting>
       </targetEnd>
       <visualSettings>
+        <lineType>Curved</lineType>
         <lineDashArray>3,8</lineDashArray>
         <sourceEnd />
         <targetEnd>
@@ -430,8 +438,19 @@ vertical-align: center`</style>
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
+        <typeOrder />
+        <creationOptions />
+        <scriptOptions />
+        <mappingOptions>
+          <option mappingType="Class to Domain Event Mapping" mappingTypeId="86cb62b5-412d-493b-a901-d6e08cf88059">
+            <text>Map Domain Event</text>
+            <shortcut>ctrl + shift + m</shortcut>
+            <icon type="FontAwesome" source="arrow-circle-right" />
+          </option>
+        </mappingOptions>
       </targetEnd>
       <visualSettings>
+        <lineType>Curved</lineType>
         <lineDashArray>return "3,7";</lineDashArray>
         <sourceEnd>
           <pointIndicator>
@@ -448,4 +467,135 @@ vertical-align: center`</style>
     </associationSetting>
   </associationSettings>
   <associationExtensions />
+  <mappingSettings>
+    <mappingSetting type="Class to Domain Event Mapping" typeId="86cb62b5-412d-493b-a901-d6e08cf88059">
+      <title>Class to Domain Event Mapping</title>
+      <sourceRootElementFunction>return element.getParent().id;</sourceRootElementFunction>
+      <sourceMappings>
+        <mapping id="fb2aeb24-f5ce-44c3-abd4-976bb1d504a6" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <mapsTo>
+            <mappingId>6cd32dd1-da53-4fb0-8a71-1d7d2b2b6cb5</mappingId>
+          </mapsTo>
+          <childSettings>
+            <childSetting id="f8cd5cd4-6003-4405-8edb-1f7356542719" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+              <represents>data</represents>
+              <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; 
+    element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <mapsTo>
+                <mappingId>6cd32dd1-da53-4fb0-8a71-1d7d2b2b6cb5</mappingId>
+              </mapsTo>
+              <childSettings />
+            </childSetting>
+            <childSetting id="92401a20-e4cf-4937-94f1-6144a2872093" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+              <represents>data</represents>
+              <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
+              <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; 
+    element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <mapsTo>
+                <mappingId>6cd32dd1-da53-4fb0-8a71-1d7d2b2b6cb5</mappingId>
+              </mapsTo>
+              <useChildSettingsFrom>fb2aeb24-f5ce-44c3-abd4-976bb1d504a6</useChildSettingsFrom>
+              <childSettings />
+            </childSetting>
+            <childSetting id="d68afc8d-bac5-41bf-9f90-0c439803c0b6" name="Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
+              <represents>data</represents>
+              <filterFunction>return element.id == mappingContext.sourceElementId</filterFunction>
+              <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <mapsTo />
+              <childSettings>
+                <childSetting id="dc91a865-687d-4cef-b60c-5869c0c9219f" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+                  <represents>data</represents>
+                  <isRequiredFunction>return true;</isRequiredFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <traversableTypes>
+                    <mappingId>414e85c8-56c8-4001-8454-035285386f5e</mappingId>
+                  </traversableTypes>
+                  <canBeModified>false</canBeModified>
+                  <mapsTo>
+                    <mappingId>6cd32dd1-da53-4fb0-8a71-1d7d2b2b6cb5</mappingId>
+                  </mapsTo>
+                  <childSettings />
+                </childSetting>
+              </childSettings>
+            </childSetting>
+            <childSetting id="a8510cb4-4dc7-4567-9bb5-5b8eb7e1e5e3" name="Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+              <represents>data</represents>
+              <filterFunction>return element.id == mappingContext.sourceElementId</filterFunction>
+              <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <mapsTo />
+              <childSettings>
+                <childSetting id="cbd95458-54cd-4540-aa82-51c829f6ab60" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+                  <represents>data</represents>
+                  <isRequiredFunction>return true;</isRequiredFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <traversableTypes>
+                    <mappingId>414e85c8-56c8-4001-8454-035285386f5e</mappingId>
+                  </traversableTypes>
+                  <canBeModified>false</canBeModified>
+                  <mapsTo>
+                    <mappingId>6cd32dd1-da53-4fb0-8a71-1d7d2b2b6cb5</mappingId>
+                  </mapsTo>
+                  <childSettings />
+                </childSetting>
+              </childSettings>
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="414e85c8-56c8-4001-8454-035285386f5e" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <mapsTo />
+          <useChildSettingsFrom>fb2aeb24-f5ce-44c3-abd4-976bb1d504a6</useChildSettingsFrom>
+          <childSettings />
+        </mapping>
+      </sourceMappings>
+      <targetMappings>
+        <mapping id="9d360937-0a83-474d-a1e3-8a19c1f4e29e" name="Create Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="6cd32dd1-da53-4fb0-8a71-1d7d2b2b6cb5" name="Set Property" type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>true</canBeModified>
+              <mapsTo />
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+      </targetMappings>
+    </mappingSetting>
+  </mappingSettings>
 </settings>

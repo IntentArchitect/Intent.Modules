@@ -45,6 +45,11 @@ namespace Intent.Modelers.Services.Api
             .Select(x => new EnumModel(x))
             .ToList();
 
+        public IList<DiagramModel> Diagrams => UnderlyingPackage.ChildElements
+            .GetElementsOfType(DiagramModel.SpecializationTypeId)
+            .Select(x => new DiagramModel(x))
+            .ToList();
+
         public IList<FolderModel> Folders => UnderlyingPackage.ChildElements
             .GetElementsOfType(FolderModel.SpecializationTypeId)
             .Select(x => new FolderModel(x))

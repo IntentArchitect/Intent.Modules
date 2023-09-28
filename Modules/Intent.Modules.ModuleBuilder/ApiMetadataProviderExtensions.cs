@@ -102,6 +102,13 @@ namespace Intent.ModuleBuilder.Api
                 .ToList();
         }
 
+        public static IList<MappingTypeSettingsModel> GetMappingTypeSettingsModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(MappingTypeSettingsModel.SpecializationTypeId)
+                .Select(x => new MappingTypeSettingsModel(x))
+                .ToList();
+        }
+
         public static IList<ModuleSettingsConfigurationModel> GetModuleSettingsConfigurationModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(ModuleSettingsConfigurationModel.SpecializationTypeId)

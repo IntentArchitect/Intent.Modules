@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="82432a2d-a836-429a-8f68-4ce1fed69c95" type="Diagram Settings" typeId="67d711dd-3918-4b28-b2a0-4d845884e17a">
+  <name>NewDiagramSettings</name>
+  <display>[diagram]</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <order>0</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>820a3322-e2c2-4e96-b704-9dca6ba43df1</parentFolderId>
+  <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+  <packageName>Intent.Modelers.Services.CQRS</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="0b8cdab4-1b44-4ed5-82b0-96093b3dac37" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>82432a2d-a836-429a-8f68-4ce1fed69c95</parentFolderId>
+      <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+      <packageName>Intent.Modelers.Services.CQRS</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="c5a5ac92-a4b9-4384-94ae-fc4cc615f53e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Command</name>
+          <display>New Command: Command</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="12fb17ce-a985-4821-9ca6-3c3db666c9f6">
+            <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services.CQRS</typePackageName>
+            <typePackageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>0b8cdab4-1b44-4ed5-82b0-96093b3dac37</parentFolderId>
+          <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+          <packageName>Intent.Modelers.Services.CQRS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + c" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="1" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="bb22cc96-5552-4ab9-96b5-cf5860989623" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Query</name>
+          <display>New Query: Query</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="2df74d67-c252-4387-9365-861c6bb6efb0">
+            <typeId>e71b0662-e29d-4db2-868b-8a12464b25d0</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services.CQRS</typePackageName>
+            <typePackageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>0b8cdab4-1b44-4ed5-82b0-96093b3dac37</parentFolderId>
+          <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+          <packageName>Intent.Modelers.Services.CQRS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + q" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="1" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

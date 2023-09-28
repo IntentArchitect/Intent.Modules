@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="b3505e6c-d16c-4464-a896-ebd53d8551e8" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
   <name>[visual]</name>
-  <display>[visual]</display>
+  <display>[visual]: void</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
+  <typeReference id="31477a8c-c804-43f5-a898-f6d30eecebf3">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>8014b71d-627b-4349-b6d7-5011dfa1bb09</parentFolderId>
   <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
@@ -15,9 +23,11 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
+        <property name="3ff8fe05-f379-4b5e-a965-cc6f6cab4c21" display="Line Type" value="Curved" isActive="true" />
         <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" value="" isActive="true" />
         <property name="f248a382-66c9-4107-aa92-5ee83dd3d08c" display="Line Width" isActive="true" />
         <property name="93499f0b-8590-42ea-bdbf-e943597e8e1e" display="Line Dash Array" value="3,8" isActive="true" />
+        <property name="85aa1be2-62f1-45d1-84d0-acb5bb5d1752" display="Reverse Flow Direction" value="false" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

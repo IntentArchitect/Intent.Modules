@@ -11,56 +11,64 @@
       <requiredPackages />
       <creationOptions>
         <option type="element">
-          <specializationType>Service</specializationType>
-          <specializationTypeId>b16578a5-27b1-4047-a8df-f0b783d706bd</specializationTypeId>
           <text>New Service</text>
           <shortcut>ctrl + shift + s</shortcut>
-          <defaultName>NewService</defaultName>
           <icon type="UrlImagePath" source="./img/icons/services/Service_256x.png" />
+          <specializationType>Service</specializationType>
+          <specializationTypeId>b16578a5-27b1-4047-a8df-f0b783d706bd</specializationTypeId>
+          <defaultName>NewService</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>DTO</specializationType>
-          <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
           <text>New DTO</text>
           <shortcut>ctrl + shift + d</shortcut>
-          <defaultName>NewDto</defaultName>
           <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
+          <specializationType>DTO</specializationType>
+          <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
+          <defaultName>NewDto</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Type-Definition</specializationType>
-          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
           <text>New Type</text>
           <shortcut>ctrl + shift + t</shortcut>
-          <defaultName>NewType</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />
+          <specializationType>Type-Definition</specializationType>
+          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
+          <defaultName>NewType</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option order="0" type="element">
-          <specializationType>Folder</specializationType>
-          <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
           <text>New Folder</text>
           <shortcut>ctrl + shift + f</shortcut>
-          <defaultName>NewFolder</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
+          <specializationType>Folder</specializationType>
+          <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
+          <defaultName>NewFolder</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Enum</specializationType>
-          <specializationTypeId>85fba0e9-9161-4c85-a603-a229ef312beb</specializationTypeId>
           <text>New Enum</text>
           <shortcut>ctrl + shift + e</shortcut>
-          <defaultName>NewEnum</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
+          <specializationType>Enum</specializationType>
+          <specializationTypeId>85fba0e9-9161-4c85-a603-a229ef312beb</specializationTypeId>
+          <defaultName>NewEnum</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <text>New Diagram</text>
+          <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
+          <specializationType>Diagram</specializationType>
+          <specializationTypeId>8c90aca5-86f4-47f1-bd58-116fe79f5c55</specializationTypeId>
+          <defaultName>NewDiagram</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="stereotype-definition">
+          <text>New Stereotype-Definition</text>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
           <specializationType>Stereotype-Definition</specializationType>
           <specializationTypeId>Stereotype-Definition</specializationTypeId>
-          <text>New Stereotype-Definition</text>
           <defaultName>NewStereotypeDefinition</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -71,7 +79,8 @@
         <type order="2">DTO</type>
         <type order="3">Type-Definition</type>
         <type order="4">Enum</type>
-        <type order="5">Stereotype-Definition</type>
+        <type order="5">Diagram</type>
+        <type order="6">Stereotype-Definition</type>
       </typeOrder>
       <macros>
         <macro trigger="on-loaded">
@@ -99,6 +108,29 @@ const metadataKeyName = "initialized";
   </packageSettings>
   <packageExtensions />
   <elementSettings>
+    <elementSetting type="Diagram" typeId="8c90aca5-86f4-47f1-bd58-116fe79f5c55">
+      <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>true</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <mappingSettings />
+      <diagramSettings>
+        <addNewElementsTo>Package</addNewElementsTo>
+        <creationOptions />
+        <scriptOptions />
+        <elementVisualSettings />
+        <associationVisualSettings />
+      </diagramSettings>
+      <childElementSettings />
+    </elementSetting>
     <elementSetting type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
       <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
       <saveAsOwnFile>true</saveAsOwnFile>
@@ -124,21 +156,21 @@ return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>DTO-Field</specializationType>
-          <specializationTypeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</specializationTypeId>
           <text>Add Field</text>
           <shortcut>ctrl + shift + f</shortcut>
-          <defaultName>field</defaultName>
           <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
+          <specializationType>DTO-Field</specializationType>
+          <specializationTypeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</specializationTypeId>
+          <defaultName>field</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="association">
-          <specializationType>Generalization</specializationType>
-          <specializationTypeId>5ba12bbf-122f-4c3e-af3c-4a88dc554597</specializationTypeId>
           <text>New Inheritance</text>
           <shortcut>ctrl + shift + i</shortcut>
-          <defaultName>NewGeneralization</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+          <specializationType>Generalization</specializationType>
+          <specializationTypeId>5ba12bbf-122f-4c3e-af3c-4a88dc554597</specializationTypeId>
+          <defaultName>NewGeneralization</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -759,12 +791,12 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Operation</specializationType>
-          <specializationTypeId>e030c97a-e066-40a7-8188-808c275df3cb</specializationTypeId>
           <text>Add Operation</text>
           <shortcut>ctrl + shift + o</shortcut>
-          <defaultName>Operation</defaultName>
           <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
+          <specializationType>Operation</specializationType>
+          <specializationTypeId>e030c97a-e066-40a7-8188-808c275df3cb</specializationTypeId>
+          <defaultName>Operation</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -846,12 +878,12 @@ return validateOperation(lookup(id));
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Parameter</specializationType>
-              <specializationTypeId>00208d20-469d-41cb-8501-768fd5eb796b</specializationTypeId>
               <text>Add Parameter</text>
               <shortcut>ctrl + shift + p</shortcut>
-              <defaultName>param</defaultName>
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
+              <specializationType>Parameter</specializationType>
+              <specializationTypeId>00208d20-469d-41cb-8501-768fd5eb796b</specializationTypeId>
+              <defaultName>param</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
@@ -948,47 +980,55 @@ return validateOperationParameter(lookup(id));
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
       <creationOptions>
         <option type="element">
-          <specializationType>Service</specializationType>
-          <specializationTypeId>b16578a5-27b1-4047-a8df-f0b783d706bd</specializationTypeId>
           <text>New Service</text>
           <shortcut>ctrl + shift + s</shortcut>
-          <defaultName>NewService</defaultName>
           <icon type="UrlImagePath" source="./img/icons/services/Service_256x.png" />
+          <specializationType>Service</specializationType>
+          <specializationTypeId>b16578a5-27b1-4047-a8df-f0b783d706bd</specializationTypeId>
+          <defaultName>NewService</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>DTO</specializationType>
-          <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
           <text>New DTO</text>
           <shortcut>ctrl + shift + d</shortcut>
-          <defaultName>NewDto</defaultName>
           <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
+          <specializationType>DTO</specializationType>
+          <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
+          <defaultName>NewDto</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Type-Definition</specializationType>
-          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
           <text>New Type</text>
           <shortcut>ctrl + shift + t</shortcut>
-          <defaultName>NewType</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />
+          <specializationType>Type-Definition</specializationType>
+          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
+          <defaultName>NewType</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Enum</specializationType>
-          <specializationTypeId>85fba0e9-9161-4c85-a603-a229ef312beb</specializationTypeId>
           <text>New Enum</text>
           <shortcut>ctrl + shift + e</shortcut>
-          <defaultName>NewEnum</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
+          <specializationType>Enum</specializationType>
+          <specializationTypeId>85fba0e9-9161-4c85-a603-a229ef312beb</specializationTypeId>
+          <defaultName>NewEnum</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option order="0" type="element">
+          <text>New Diagram</text>
+          <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
+          <specializationType>Diagram</specializationType>
+          <specializationTypeId>8c90aca5-86f4-47f1-bd58-116fe79f5c55</specializationTypeId>
+          <defaultName>NewDiagram</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="stereotype-definition">
+          <text>New Stereotype-Definition</text>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
           <specializationType>Stereotype-Definition</specializationType>
           <specializationTypeId>Stereotype-Definition</specializationTypeId>
-          <text>New Stereotype-Definition</text>
           <defaultName>NewStereotypeDefinition</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -998,6 +1038,7 @@ return validateOperationParameter(lookup(id));
         <type>DTO</type>
         <type>Type-Definition</type>
         <type>Enum</type>
+        <type order="0">Diagram</type>
         <type>Stereotype-Definition</type>
       </typeOrder>
       <mappingSettings />
@@ -1040,4 +1081,5 @@ return validateOperationParameter(lookup(id));
     </associationSetting>
   </associationSettings>
   <associationExtensions />
+  <mappingSettings />
 </settings>

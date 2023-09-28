@@ -47,9 +47,9 @@ namespace Intent.ModuleBuilder.Api
             return this.GetSettings().TargetTypes().Any(t => t.Id == elementSettingsId);
         }
 
-        public List<ElementSettingsModel> TargetTypes()
+        public List<IElement> TargetTypes()
         {
-            return this.GetSettings().TargetTypes().Select(x => new ElementSettingsModel(x)).ToList();
+            return this.GetSettings().TargetTypes().ToList();
         }
 
         public AssociationEndSettingsPersistable ToPersistable()
@@ -59,6 +59,8 @@ namespace Intent.ModuleBuilder.Api
                 SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
+                NameAccessibilityMode = Enum.Parse<FieldAccessibilityMode>(this.GetSettings().NameAccessibility().Value),
+                DefaultNameFunction = this.GetSettings().DefaultNameFunction(),
                 Icon = this.GetSettings().Icon().ToPersistable(),
                 TypeReferenceSetting = new TypeReferenceSettingPersistable()
                 {
@@ -77,6 +79,8 @@ namespace Intent.ModuleBuilder.Api
                     .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
                     .ToList(),
+                ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
+                MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
             };
         }
 

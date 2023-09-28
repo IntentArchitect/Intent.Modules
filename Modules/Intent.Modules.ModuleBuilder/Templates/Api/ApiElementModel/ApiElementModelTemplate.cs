@@ -273,14 +273,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             this.Write("        public ");
             
             #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(FormatForCollection(creationOption.ApiModelName, creationOption.AllowMultiple())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName.FormatForCollection(creationOption.AllowMultiple())));
             
             #line default
             #line hidden
             this.Write(" ");
             
             #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionName(creationOption)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.GetCreationOptionName()));
             
             #line default
             #line hidden

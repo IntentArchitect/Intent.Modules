@@ -9,11 +9,11 @@
       <requiredPackages />
       <creationOptions>
         <option order="-1" type="element">
+          <text>Add Designers Folder</text>
+          <icon type="UrlImagePath" source="./img/icons/uml/Folder_03_256x.png" />
           <specializationType>Designers Folder</specializationType>
           <specializationTypeId>dbb71aa5-0db2-4a2a-97a9-501950f36f99</specializationTypeId>
-          <text>Add Designers Folder</text>
           <defaultName>designers</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/uml/Folder_03_256x.png" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
@@ -56,31 +56,32 @@
       </typeOrder>
       <creationOptions>
         <option type="element">
+          <text>Add Source End</text>
+          <icon type="CharacterBox" source="S|#00f7ff" />
           <specializationType>Association Source End Extension</specializationType>
           <specializationTypeId>66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3</specializationTypeId>
-          <text>Add Source End</text>
           <defaultName>${name} Source End</defaultName>
-          <icon type="CharacterBox" source="S|#00f7ff" />
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Target End</text>
+          <icon type="CharacterBox" source="D|#00f7ff" />
           <specializationType>Association Target End Extension</specializationType>
           <specializationTypeId>1cc6c731-af5f-41a0-9e82-44486f45b903</specializationTypeId>
-          <text>Add Target End</text>
           <defaultName>[target end extension]</defaultName>
-          <icon type="CharacterBox" source="D|#00f7ff" />
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Event Settings</text>
+          <icon type="FontAwesome" source="bolt" />
           <specializationType>Association Event Settings</specializationType>
           <specializationTypeId>1bdee938-8569-4fbf-84b4-8522d2cbee32</specializationTypeId>
-          <text>Add Event Settings</text>
           <defaultName>NewAssociationEventSettings</defaultName>
-          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
@@ -104,6 +105,22 @@ createElement("Association Event Settings", "[events]", element.id);</script>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Context Menu</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <text>Add Menu Options</text>
+              <shortcut>ctrl + shift + c</shortcut>
+              <icon type="CharacterBox" source="C|#ad2121" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[context menu]</defaultName>
+              <allowMultiple>false</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -121,6 +138,22 @@ createElement("Association Event Settings", "[events]", element.id);</script>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Context Menu</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <text>Add Menu Options</text>
+              <shortcut>ctrl + shift + c</shortcut>
+              <icon type="CharacterBox" source="C|#ad2121" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[context menu]</defaultName>
+              <allowMultiple>false</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -147,42 +180,43 @@ createElement("Association Event Settings", "[events]", element.id);</script>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Association Source End Settings</specializationType>
-          <specializationTypeId>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</specializationTypeId>
           <text>Add Source End</text>
           <shortcut>ctrl + shift + s</shortcut>
-          <defaultName>${name} Source End</defaultName>
           <icon type="CharacterBox" source="S|#00f7ff" />
+          <specializationType>Association Source End Settings</specializationType>
+          <specializationTypeId>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</specializationTypeId>
+          <defaultName>${name} Source End</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Association Destination End Settings</specializationType>
-          <specializationTypeId>c4c61fdc-464d-41d2-8e0e-5a734d588302</specializationTypeId>
           <text>Add Target End</text>
           <shortcut>ctrl + shift + d</shortcut>
-          <defaultName>${name} Target End</defaultName>
           <icon type="CharacterBox" source="D|#00f7ff" />
+          <specializationType>Association Destination End Settings</specializationType>
+          <specializationTypeId>c4c61fdc-464d-41d2-8e0e-5a734d588302</specializationTypeId>
+          <defaultName>${name} Target End</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Association Visual Settings</specializationType>
-          <specializationTypeId>153a4063-82a1-4515-87f1-44c189004fad</specializationTypeId>
           <text>Add Visual Settings</text>
           <shortcut>ctrl + shift + s</shortcut>
-          <defaultName>[visual]</defaultName>
           <icon type="CharacterBox" source="V|#AB47BC" />
+          <specializationType>Association Visual Settings</specializationType>
+          <specializationTypeId>153a4063-82a1-4515-87f1-44c189004fad</specializationTypeId>
+          <defaultName>[visual]</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Event Settings</text>
+          <icon type="FontAwesome" source="bolt" />
           <specializationType>Association Event Settings</specializationType>
           <specializationTypeId>1bdee938-8569-4fbf-84b4-8522d2cbee32</specializationTypeId>
-          <text>Add Event Settings</text>
           <defaultName>NewAssociationEventSettings</defaultName>
-          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
@@ -202,7 +236,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
         <childElementSetting type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
           <icon type="CharacterBox" source="V|#AB47BC" />
           <saveAsOwnFile>true</saveAsOwnFile>
-          <displayFunction>[visual]</displayFunction>
+          <displayFunction>return `[visual]${(hasType ? ": " + typeReference.display : "")}`;</displayFunction>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>
           <allowGenericTypes>false</allowGenericTypes>
@@ -210,32 +244,45 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <allowSorting>true</allowSorting>
           <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>false</allowFindInView>
-          <allowTypeReference>false</allowTypeReference>
+          <allowTypeReference>true</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>false</isRequired>
+            <targetTypes>
+              <type>Association Settings</type>
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>true</allowIsNullable>
+            <allowIsCollection>true</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
           <typeOrder>
             <type order="0">Association Source End Visual Settings</type>
             <type order="1">Association Destination End Visual Settings</type>
           </typeOrder>
           <creationOptions>
             <option type="element">
+              <text>Add Source Visual</text>
+              <icon type="CharacterBox" source="S|#BA68C8" />
               <specializationType>Association Source End Visual Settings</specializationType>
               <specializationTypeId>77fdd377-950a-46e4-8d25-ab3c962d6105</specializationTypeId>
-              <text>Add Source Visual</text>
               <defaultName>[source]</defaultName>
-              <icon type="CharacterBox" source="S|#BA68C8" />
               <allowMultiple>false</allowMultiple>
             </option>
             <option type="element">
+              <text>Add Destination Visual</text>
+              <icon type="CharacterBox" source="D|#BA68C8" />
               <specializationType>Association Destination End Visual Settings</specializationType>
               <specializationTypeId>b59113a4-209c-45d6-b395-352362864fd1</specializationTypeId>
-              <text>Add Destination Visual</text>
               <defaultName>[desintation]</defaultName>
-              <icon type="CharacterBox" source="D|#BA68C8" />
               <allowMultiple>false</allowMultiple>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
@@ -252,6 +299,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -269,6 +317,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -292,16 +341,17 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Context Menu</specializationType>
-              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
               <text>Add Menu Options</text>
               <shortcut>ctrl + shift + c</shortcut>
-              <defaultName>[context menu]</defaultName>
               <icon type="CharacterBox" source="C|#ad2121" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[context menu]</defaultName>
               <allowMultiple>false</allowMultiple>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -323,16 +373,17 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Context Menu</specializationType>
-              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
               <text>Add Menu Options</text>
               <shortcut>ctrl + shift + c</shortcut>
-              <defaultName>[context menu]</defaultName>
               <icon type="CharacterBox" source="C|#ad2121" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[context menu]</defaultName>
               <allowMultiple>false</allowMultiple>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -355,55 +406,56 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Association Event Handler</specializationType>
-              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <text>On Loaded Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <defaultName>On Loaded</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Association Event Handler</specializationType>
-              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <text>On Created Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <defaultName>On Created</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Association Event Handler</specializationType>
-              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <text>On Changed Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <defaultName>On Changed</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Association Event Handler</specializationType>
-              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <text>On Name Changed Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <defaultName>On Name Changed</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Association Event Handler</specializationType>
-              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <text>On Type Changed Event</text>
-              <defaultName>On Type Changed</defaultName>
               <icon type="FontAwesome" source="code" />
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
+              <defaultName>On Type Changed</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>On Deleted</text>
+              <icon type="FontAwesome" source="code" />
               <specializationType>Association Event Handler</specializationType>
               <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
-              <text>On Deleted</text>
               <defaultName>On Deleted</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
@@ -432,6 +484,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -458,45 +511,56 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
         <type order="1">Association Creation Option</type>
         <type order="2">Stereotype-Definition Creation Option</type>
         <type order="3">Run Script Option</type>
+        <type order="4">Mapping Option</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Element Creation Option</specializationType>
-          <specializationTypeId>5fa12f89-da1e-49c5-b8e9-427b22407f19</specializationTypeId>
           <text>Add Element Creation</text>
           <shortcut>ctrl + shift + e</shortcut>
-          <defaultName>New Element</defaultName>
           <icon type="CharacterBox" source="E|#04007a" />
+          <specializationType>Element Creation Option</specializationType>
+          <specializationTypeId>5fa12f89-da1e-49c5-b8e9-427b22407f19</specializationTypeId>
+          <defaultName>New Element</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Association Creation Option</specializationType>
-          <specializationTypeId>3dcfa78b-17ee-45b6-be03-8407d089ce76</specializationTypeId>
           <text>Add Association Creation</text>
           <shortcut>ctrl + shift + a</shortcut>
-          <defaultName>New Association</defaultName>
           <icon type="CharacterBox" source="A|#04007a" />
+          <specializationType>Association Creation Option</specializationType>
+          <specializationTypeId>3dcfa78b-17ee-45b6-be03-8407d089ce76</specializationTypeId>
+          <defaultName>New Association</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Stereotype-Definition Creation Option</specializationType>
-          <specializationTypeId>0c721d5d-7721-414c-adaf-4c9f5c5531a9</specializationTypeId>
           <text>Add Stereotype-Definition Creation</text>
           <shortcut>ctrl + shift + s</shortcut>
-          <defaultName>New Stereotype-Definition</defaultName>
           <icon type="CharacterBox" source="S|#04007a" />
+          <specializationType>Stereotype-Definition Creation Option</specializationType>
+          <specializationTypeId>0c721d5d-7721-414c-adaf-4c9f5c5531a9</specializationTypeId>
+          <defaultName>New Stereotype-Definition</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Run Script Option</text>
+          <icon type="FontAwesome" source="code" />
           <specializationType>Run Script Option</specializationType>
           <specializationTypeId>345d46fb-c500-409a-88c7-26720572c9af</specializationTypeId>
-          <text>Add Run Script Option</text>
           <defaultName>NewRunScriptOption</defaultName>
-          <icon type="FontAwesome" source="code" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <text>Add Mapping Option</text>
+          <shortcut>ctrl + shift + m</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABQCAYAAAC3dkP2AAAAAXNSR0IArs4c6QAAA5JJREFUeF7t299LU2EYB/Dvs5mFM0OTSLP0JpQyrOgiyssCwcAldBt010V3kY7ovhKJoH+gu+4iiRTKLkKy1CbFXGZphc7jTAXtF5Tb3njVreUvzp6z0cb7vNfn+5x3n/O8Zzs/RpDBEqDmsDquYshjpQ0OkddS8wB2GGzA+ugCx2IDBE7gmALMmHScwDEFmDHpOC5cff/3aRAVMvPGxgi+oQUARcYKMD+4wAkcU4AZM6LjiAClmEIbxIyA21legF2VhRh+8SVtekbAlVZ4cPJsJd71zWCkfyYteMbA1TdXAQoI9k5jdHDW8dI1C26l14Z6whh7PecIz0g47ecUz1g4jfe2dxrvX82yznm24fYfK2XtIBtCnqJ8VNUWrzsVDacBUx224MhFaLp0INXaObG9/n2nvyyCz1PDMx5OH10OnsCtrAuN98Fvf9kK3ApcNBLDQGcI4c/fbJ1iBA5AdDEG/5NJWKNfbaHpjYyHi0YU/I9DKaHZhyNC48Ua20cj2zYkIrjzaM20VExhoCsEa8x+p8WL2Oq4JWHX2h1nG9BG8ynds3yRv3q8fDiO8Cd757TVWdtwuYK03jz13ZGli/yk4QTN9lLNZTQ999VwTtGMg1NKof/RBKY+8pZncgMZs1RPNFVisHsSoRH9UM/5MAKuZHcBPMX5mBjWb7SlZxgBlx6qf6sIHFNV4ASOKcCMEXyBK1C0lZk3Npa711H/+ZAJHPMACBwbrnXoPAj5zDxAFMD1g32JfMubCrjcDex6OhiJ3kN73Y94Da+lvEqB/5jNBaujjDrj9c4p5f5t4YKTORJ8wQVA8V8sVLiFm7WXE5PwBRsA1eVkUohF96KtLpQE5wdwlF2T8PRBGZ1KwE2okkU35tj1lu8ACxwHUOA4atJxTDWBE7jNBeTLgdkhAidwmwvI7zhmhwicwG0sIJdczO4QOIFLRUCuVVPRStpWP+WyAGxn5vUbtHdw49DVv/fjAqfhovv8egBiedVoq9HzWhpeS/UAOMytqYBnHeV0Jp5vnFfFW35inFtP5+QOMFNP4ASOKcCMScex4VqD3SB4mPnMxCKRJrTXJf6V67XUXUWozszOeFWz892RdF+r8mw2TQkcE1XgBI4pwIxJxwkcU4AZk44TOKYAMyYdJ3BMAWZMOk7gmALMmHScwDEFmDHpODZcS6AdRNuY+czEfi1ew+0jib/6eadUi4phX2Z2xqv6B9/8BuKJJ4dXAAAAAElFTkSuQmCC" />
+          <specializationType>Mapping Option</specializationType>
+          <specializationTypeId>00a1eb98-1fc4-4421-9d1c-8733f6bc2111</specializationTypeId>
+          <defaultName>NewMappingOption</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
@@ -525,6 +589,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -555,6 +620,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -583,6 +649,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -615,6 +682,36 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <typeOrder />
           <creationOptions />
           <scriptOptions />
+          <mappingOptions />
+          <mappingSettings />
+          <childElementSettings />
+        </childElementSetting>
+        <childElementSetting type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABQCAYAAAC3dkP2AAAAAXNSR0IArs4c6QAAA5JJREFUeF7t299LU2EYB/Dvs5mFM0OTSLP0JpQyrOgiyssCwcAldBt010V3kY7ovhKJoH+gu+4iiRTKLkKy1CbFXGZphc7jTAXtF5Tb3njVreUvzp6z0cb7vNfn+5x3n/O8Zzs/RpDBEqDmsDquYshjpQ0OkddS8wB2GGzA+ugCx2IDBE7gmALMmHScwDEFmDHpOC5cff/3aRAVMvPGxgi+oQUARcYKMD+4wAkcU4AZM6LjiAClmEIbxIyA21legF2VhRh+8SVtekbAlVZ4cPJsJd71zWCkfyYteMbA1TdXAQoI9k5jdHDW8dI1C26l14Z6whh7PecIz0g47ecUz1g4jfe2dxrvX82yznm24fYfK2XtIBtCnqJ8VNUWrzsVDacBUx224MhFaLp0INXaObG9/n2nvyyCz1PDMx5OH10OnsCtrAuN98Fvf9kK3ApcNBLDQGcI4c/fbJ1iBA5AdDEG/5NJWKNfbaHpjYyHi0YU/I9DKaHZhyNC48Ua20cj2zYkIrjzaM20VExhoCsEa8x+p8WL2Oq4JWHX2h1nG9BG8ynds3yRv3q8fDiO8Cd757TVWdtwuYK03jz13ZGli/yk4QTN9lLNZTQ999VwTtGMg1NKof/RBKY+8pZncgMZs1RPNFVisHsSoRH9UM/5MAKuZHcBPMX5mBjWb7SlZxgBlx6qf6sIHFNV4ASOKcCMEXyBK1C0lZk3Npa711H/+ZAJHPMACBwbrnXoPAj5zDxAFMD1g32JfMubCrjcDex6OhiJ3kN73Y94Da+lvEqB/5jNBaujjDrj9c4p5f5t4YKTORJ8wQVA8V8sVLiFm7WXE5PwBRsA1eVkUohF96KtLpQE5wdwlF2T8PRBGZ1KwE2okkU35tj1lu8ACxwHUOA4atJxTDWBE7jNBeTLgdkhAidwmwvI7zhmhwicwG0sIJdczO4QOIFLRUCuVVPRStpWP+WyAGxn5vUbtHdw49DVv/fjAqfhovv8egBiedVoq9HzWhpeS/UAOMytqYBnHeV0Jp5vnFfFW35inFtP5+QOMFNP4ASOKcCMScex4VqD3SB4mPnMxCKRJrTXJf6V67XUXUWozszOeFWz892RdF+r8mw2TQkcE1XgBI4pwIxJxwkcU4AZk44TOKYAMyYdJ3BMAWZMOk7gmALMmHScwDEFmDHpODZcS6AdRNuY+czEfi1ew+0jib/6eadUi4phX2Z2xqv6B9/8BuKJJ4dXAAAAAElFTkSuQmCC" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>true</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type>Mapping Type Settings</type>
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -633,6 +730,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -654,15 +752,16 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       </typeOrder>
       <creationOptions>
         <option type="element">
+          <text>Add Designer Reference</text>
+          <icon type="CharacterBox" source="R|#00BFA5" />
           <specializationType>Designer Reference</specializationType>
           <specializationTypeId>ace8c966-1a7f-487e-b21b-dd601e57f13f</specializationTypeId>
-          <text>Add Designer Reference</text>
           <defaultName>reference</defaultName>
-          <icon type="CharacterBox" source="R|#00BFA5" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
@@ -693,6 +792,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <typeOrder />
           <creationOptions />
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -719,87 +819,98 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
         <type order="4">Association Extension</type>
         <type order="5">Package Settings</type>
         <type order="6">Package Extension</type>
-        <type order="7">Core Type</type>
-        <type order="8">Script</type>
+        <type order="7">Mapping Type Settings</type>
+        <type order="8">Core Type</type>
+        <type order="9">Script</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
+          <text>Add Designer Reference</text>
+          <icon type="CharacterBox" source="R|#00BFA5" />
           <specializationType>Designer Reference</specializationType>
           <specializationTypeId>ace8c966-1a7f-487e-b21b-dd601e57f13f</specializationTypeId>
-          <text>Add Designer Reference</text>
           <defaultName>reference</defaultName>
-          <icon type="CharacterBox" source="R|#00BFA5" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Element Settings</specializationType>
-          <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
           <text>New Element Type</text>
           <shortcut>ctrl + shift + e</shortcut>
-          <defaultName>New Element Type</defaultName>
           <icon type="CharacterBox" source="E|#095c00" />
+          <specializationType>Element Settings</specializationType>
+          <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
+          <defaultName>New Element Type</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Element Extension</specializationType>
-          <specializationTypeId>e3c7b1ca-f080-45c1-b56f-8d44226c8e20</specializationTypeId>
           <text>New Element Extension</text>
           <shortcut>ctrl + shift + x</shortcut>
-          <defaultName>New Element Extension</defaultName>
           <icon type="CharacterBox" source="X|#095c00" />
+          <specializationType>Element Extension</specializationType>
+          <specializationTypeId>e3c7b1ca-f080-45c1-b56f-8d44226c8e20</specializationTypeId>
+          <defaultName>New Element Extension</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Association Type</text>
+          <icon type="CharacterBox" source="A|#ff8000" />
           <specializationType>Association Settings</specializationType>
           <specializationTypeId>16d21684-d5ea-4fde-b648-f88d292fa272</specializationTypeId>
-          <text>New Association Type</text>
           <defaultName>NewAssociationType</defaultName>
-          <icon type="CharacterBox" source="A|#ff8000" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Association Extension</text>
+          <icon type="CharacterBox" source="X|#ff8000" />
           <specializationType>Association Extension</specializationType>
           <specializationTypeId>41cb9c1a-063e-4ff4-889a-7501235351eb</specializationTypeId>
-          <text>New Association Extension</text>
           <defaultName>NewAssociationExtension</defaultName>
-          <icon type="CharacterBox" source="X|#ff8000" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Package Settings</specializationType>
-          <specializationTypeId>89333f72-3960-4159-bf61-9c40d4b65088</specializationTypeId>
           <text>New Package Type</text>
           <shortcut>ctrl + shift + p</shortcut>
-          <defaultName>Package</defaultName>
           <icon type="CharacterBox" source="P|#7d7d7d" />
+          <specializationType>Package Settings</specializationType>
+          <specializationTypeId>89333f72-3960-4159-bf61-9c40d4b65088</specializationTypeId>
+          <defaultName>Package</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Package Extension</text>
+          <icon type="CharacterBox" source="X|#7d7d7d" />
           <specializationType>Package Extension</specializationType>
           <specializationTypeId>ab4152df-3add-4a08-81b6-0fefc7cbb204</specializationTypeId>
-          <text>New Package Extension</text>
           <defaultName>Package Extension</defaultName>
-          <icon type="CharacterBox" source="X|#7d7d7d" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Mapping Type</text>
+          <shortcut>ctrl + shift + m</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABQCAYAAAC3dkP2AAAAAXNSR0IArs4c6QAAA5JJREFUeF7t299LU2EYB/Dvs5mFM0OTSLP0JpQyrOgiyssCwcAldBt010V3kY7ovhKJoH+gu+4iiRTKLkKy1CbFXGZphc7jTAXtF5Tb3njVreUvzp6z0cb7vNfn+5x3n/O8Zzs/RpDBEqDmsDquYshjpQ0OkddS8wB2GGzA+ugCx2IDBE7gmALMmHScwDEFmDHpOC5cff/3aRAVMvPGxgi+oQUARcYKMD+4wAkcU4AZM6LjiAClmEIbxIyA21legF2VhRh+8SVtekbAlVZ4cPJsJd71zWCkfyYteMbA1TdXAQoI9k5jdHDW8dI1C26l14Z6whh7PecIz0g47ecUz1g4jfe2dxrvX82yznm24fYfK2XtIBtCnqJ8VNUWrzsVDacBUx224MhFaLp0INXaObG9/n2nvyyCz1PDMx5OH10OnsCtrAuN98Fvf9kK3ApcNBLDQGcI4c/fbJ1iBA5AdDEG/5NJWKNfbaHpjYyHi0YU/I9DKaHZhyNC48Ua20cj2zYkIrjzaM20VExhoCsEa8x+p8WL2Oq4JWHX2h1nG9BG8ynds3yRv3q8fDiO8Cd757TVWdtwuYK03jz13ZGli/yk4QTN9lLNZTQ999VwTtGMg1NKof/RBKY+8pZncgMZs1RPNFVisHsSoRH9UM/5MAKuZHcBPMX5mBjWb7SlZxgBlx6qf6sIHFNV4ASOKcCMEXyBK1C0lZk3Npa711H/+ZAJHPMACBwbrnXoPAj5zDxAFMD1g32JfMubCrjcDex6OhiJ3kN73Y94Da+lvEqB/5jNBaujjDrj9c4p5f5t4YKTORJ8wQVA8V8sVLiFm7WXE5PwBRsA1eVkUohF96KtLpQE5wdwlF2T8PRBGZ1KwE2okkU35tj1lu8ACxwHUOA4atJxTDWBE7jNBeTLgdkhAidwmwvI7zhmhwicwG0sIJdczO4QOIFLRUCuVVPRStpWP+WyAGxn5vUbtHdw49DVv/fjAqfhovv8egBiedVoq9HzWhpeS/UAOMytqYBnHeV0Jp5vnFfFW35inFtP5+QOMFNP4ASOKcCMScex4VqD3SB4mPnMxCKRJrTXJf6V67XUXUWozszOeFWz892RdF+r8mw2TQkcE1XgBI4pwIxJxwkcU4AZk44TOKYAMyYdJ3BMAWZMOk7gmALMmHScwDEFmDHpODZcS6AdRNuY+czEfi1ew+0jib/6eadUi4phX2Z2xqv6B9/8BuKJJ4dXAAAAAElFTkSuQmCC" />
+          <specializationType>Mapping Type Settings</specializationType>
+          <specializationTypeId>a901c634-6482-4993-ae3c-bd1b637f78d4</specializationTypeId>
+          <defaultName>Package</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <text>New Core Type</text>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
           <specializationType>Core Type</specializationType>
           <specializationTypeId>dc79fd61-7e57-44c8-ad40-14a7643b89c8</specializationTypeId>
-          <text>New Core Type</text>
           <defaultName>NewCoreType</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Script Type</text>
+          <icon type="FontAwesome" source="file-code-o" />
           <specializationType>Script</specializationType>
           <specializationTypeId>101fd5b6-3159-4810-9490-a103ef323e9c</specializationTypeId>
-          <text>New Script Type</text>
           <defaultName>NewScript</defaultName>
-          <icon type="FontAwesome" source="file-code-o" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -823,23 +934,24 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       </typeOrder>
       <creationOptions>
         <option type="element">
+          <text>New Designer</text>
+          <icon type="CharacterBox" source="D|#00ffc8" />
           <specializationType>Designer</specializationType>
           <specializationTypeId>7f5fcc9f-c721-4a31-bfe2-7909f4289420</specializationTypeId>
-          <text>New Designer</text>
           <defaultName>NewDesigner</defaultName>
-          <icon type="CharacterBox" source="D|#00ffc8" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Designer Settings</text>
+          <icon type="CharacterBox" source="S|#00ffc8" />
           <specializationType>Designer Settings</specializationType>
           <specializationTypeId>7a6411a8-ffef-4209-91c6-8d12755a806a</specializationTypeId>
-          <text>New Designer Settings</text>
           <defaultName>NewDesignerSettings</defaultName>
-          <icon type="CharacterBox" source="S|#00ffc8" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -876,41 +988,42 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Context Menu</specializationType>
-          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
           <text>Add Menu Options</text>
           <shortcut>ctrl + shift + c</shortcut>
-          <defaultName>[context menu]</defaultName>
           <icon type="CharacterBox" source="C|#ad2121" />
+          <specializationType>Context Menu</specializationType>
+          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+          <defaultName>[context menu]</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Diagram Settings</text>
+          <icon type="CharacterBox" source="D|#21abad" />
           <specializationType>Diagram Settings</specializationType>
           <specializationTypeId>67d711dd-3918-4b28-b2a0-4d845884e17a</specializationTypeId>
-          <text>Add Diagram Settings</text>
           <defaultName>NewDiagramSettings</defaultName>
-          <icon type="CharacterBox" source="D|#21abad" />
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Mapping Settings</specializationType>
-          <specializationTypeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</specializationTypeId>
           <text>Add Mapping Settings</text>
           <shortcut>ctrl + shift + m</shortcut>
-          <defaultName>NewMappingSettings</defaultName>
           <icon type="CharacterBox" source="M|#1A237E" />
+          <specializationType>Mapping Settings</specializationType>
+          <specializationTypeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</specializationTypeId>
+          <defaultName>NewMappingSettings</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Event Settings</text>
+          <icon type="FontAwesome" source="bolt" />
           <specializationType>Element Event Settings</specializationType>
           <specializationTypeId>3c628ab0-2407-4fb0-8507-ddde986cff2e</specializationTypeId>
-          <text>Add Event Settings</text>
           <defaultName>NewElementEventSettings</defaultName>
-          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -946,58 +1059,59 @@ return null;</iconFunction>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Context Menu</specializationType>
-          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
           <text>Add Menu Options</text>
           <shortcut>ctrl + shift + c</shortcut>
-          <defaultName>[context menu]</defaultName>
           <icon type="CharacterBox" source="C|#ad2121" />
+          <specializationType>Context Menu</specializationType>
+          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+          <defaultName>[context menu]</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Element Settings</text>
+          <icon type="CharacterBox" source="E|#095c00" />
           <specializationType>Element Settings</specializationType>
           <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
-          <text>Add Element Settings</text>
           <defaultName>NewElementSettings</defaultName>
-          <icon type="CharacterBox" source="E|#095c00" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Mapping Settings</specializationType>
-          <specializationTypeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</specializationTypeId>
           <text>Add Mapping Settings</text>
           <shortcut>ctrl + shift + m</shortcut>
-          <defaultName>NewMappingSettings</defaultName>
           <icon type="CharacterBox" source="M|#1A237E" />
+          <specializationType>Mapping Settings</specializationType>
+          <specializationTypeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</specializationTypeId>
+          <defaultName>NewMappingSettings</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Diagram Settings</text>
+          <icon type="CharacterBox" source="D|#21abad" />
           <specializationType>Diagram Settings</specializationType>
           <specializationTypeId>67d711dd-3918-4b28-b2a0-4d845884e17a</specializationTypeId>
-          <text>Add Diagram Settings</text>
           <defaultName>[diagram]</defaultName>
-          <icon type="CharacterBox" source="D|#21abad" />
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Element Visual Settings</specializationType>
-          <specializationTypeId>5eea5fba-15df-4971-8541-6f19bad4297d</specializationTypeId>
           <text>Add Visual Settings</text>
           <shortcut>ctrl + shift + v</shortcut>
-          <defaultName>[visual]</defaultName>
           <icon type="CharacterBox" source="V|#FFEE58" />
+          <specializationType>Element Visual Settings</specializationType>
+          <specializationTypeId>5eea5fba-15df-4971-8541-6f19bad4297d</specializationTypeId>
+          <defaultName>[visual]</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Event Settings</text>
+          <icon type="FontAwesome" source="bolt" />
           <specializationType>Element Event Settings</specializationType>
           <specializationTypeId>3c628ab0-2407-4fb0-8507-ddde986cff2e</specializationTypeId>
-          <text>Add Event Settings</text>
           <defaultName>NewElementEventSettings</defaultName>
-          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
@@ -1024,16 +1138,17 @@ return null;</iconFunction>
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Element Mapping</specializationType>
-              <specializationTypeId>4a16943b-702c-4fb0-bfcc-2afd98b8814c</specializationTypeId>
               <text>Add Mapping</text>
               <shortcut>ctrl + shift + m</shortcut>
-              <defaultName>NewElementMapping</defaultName>
               <icon type="CharacterBox" source="M|#095cff" />
+              <specializationType>Element Mapping</specializationType>
+              <specializationTypeId>4a16943b-702c-4fb0-bfcc-2afd98b8814c</specializationTypeId>
+              <defaultName>NewElementMapping</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
@@ -1062,16 +1177,17 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               </typeOrder>
               <creationOptions>
                 <option type="element">
-                  <specializationType>Element Mapping</specializationType>
-                  <specializationTypeId>4a16943b-702c-4fb0-bfcc-2afd98b8814c</specializationTypeId>
                   <text>Add Child Mapping</text>
                   <shortcut>ctrl + shift + m</shortcut>
-                  <defaultName>NewElementMapping</defaultName>
                   <icon type="CharacterBox" source="M|#095cff" />
+                  <specializationType>Element Mapping</specializationType>
+                  <specializationTypeId>4a16943b-702c-4fb0-bfcc-2afd98b8814c</specializationTypeId>
+                  <defaultName>NewElementMapping</defaultName>
                   <allowMultiple>true</allowMultiple>
                 </option>
               </creationOptions>
               <scriptOptions />
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1096,63 +1212,64 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Loaded Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <defaultName>On Loaded</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Created Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <defaultName>On Created</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Changed Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <defaultName>On Changed</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Name Changed Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <defaultName>On Name Changed</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Type Changed Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <defaultName>On Type Changed</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Mapped Event</text>
-              <defaultName>On Mapped</defaultName>
               <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <defaultName>On Mapped</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>On Deleted</text>
+              <icon type="FontAwesome" source="code" />
               <specializationType>Element Event Handler</specializationType>
               <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
-              <text>On Deleted</text>
               <defaultName>On Deleted</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
@@ -1181,6 +1298,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1222,47 +1340,48 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           </typeOrder>
           <creationOptions>
             <option type="element">
+              <text>Add Path</text>
+              <icon type="CharacterBox" source="D|#FBC02D" />
               <specializationType>Path Draw Settings</specializationType>
               <specializationTypeId>ac56c1f1-b259-4de8-acc9-ce0030ad4f99</specializationTypeId>
-              <text>Add Path</text>
               <defaultName>NewPathDrawSettings</defaultName>
-              <icon type="CharacterBox" source="D|#FBC02D" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>Add Text</text>
+              <icon type="CharacterBox" source="T|#FBC02D" />
               <specializationType>Text Draw Settings</specializationType>
               <specializationTypeId>0250c934-455b-4bb6-b5d9-077c6e1ce72c</specializationTypeId>
-              <text>Add Text</text>
               <defaultName>Text</defaultName>
-              <icon type="CharacterBox" source="T|#FBC02D" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>Add SVG Visual</text>
+              <icon type="CharacterBox" source="M|#FBC02D" />
               <specializationType>SVG Resource Draw Settings</specializationType>
               <specializationTypeId>b5566ace-3353-4009-9370-475b561451a0</specializationTypeId>
-              <text>Add SVG Visual</text>
               <defaultName>Symbol</defaultName>
-              <icon type="CharacterBox" source="M|#FBC02D" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>Add Stereotypes Visual</text>
+              <icon type="CharacterBox" source="S|#FBC02D" />
               <specializationType>Stereotypes Visual Settings</specializationType>
               <specializationTypeId>08620c8b-f6d3-472e-86b6-926fe110d526</specializationTypeId>
-              <text>Add Stereotypes Visual</text>
               <defaultName>NewStereotypesVisualSettings</defaultName>
-              <icon type="CharacterBox" source="S|#FBC02D" />
               <allowMultiple>false</allowMultiple>
             </option>
             <option type="element">
+              <text>Add Child Visual</text>
+              <icon type="CharacterBox" source="V|#FFEE58" />
               <specializationType>Element Visual Settings</specializationType>
               <specializationTypeId>5eea5fba-15df-4971-8541-6f19bad4297d</specializationTypeId>
-              <text>Add Child Visual</text>
               <defaultName>NewElementVisualSettings</defaultName>
-              <icon type="CharacterBox" source="V|#FFEE58" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
@@ -1279,6 +1398,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1296,6 +1416,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1313,6 +1434,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1330,6 +1452,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1356,32 +1479,182 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Context Menu</specializationType>
-              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
               <text>Add Menu Options</text>
               <shortcut>ctrl + shift + c</shortcut>
-              <defaultName>[context menu]</defaultName>
               <icon type="CharacterBox" source="C|#ad2121" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[context menu]</defaultName>
               <allowMultiple>false</allowMultiple>
             </option>
             <option type="element">
+              <text>Add Element Visual Settings</text>
+              <icon type="CharacterBox" source="V|#FFEE58" />
               <specializationType>Element Visual Settings</specializationType>
               <specializationTypeId>5eea5fba-15df-4971-8541-6f19bad4297d</specializationTypeId>
-              <text>Add Element Visual Settings</text>
               <defaultName>[element visual]</defaultName>
-              <icon type="CharacterBox" source="V|#FFEE58" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>Add Association Visual Settings</text>
+              <icon type="CharacterBox" source="V|#AB47BC" />
               <specializationType>Association Visual Settings</specializationType>
               <specializationTypeId>153a4063-82a1-4515-87f1-44c189004fad</specializationTypeId>
-              <text>Add Association Visual Settings</text>
               <defaultName>[association visual]</defaultName>
-              <icon type="CharacterBox" source="V|#AB47BC" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
+          <mappingSettings />
+          <childElementSettings />
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
+    <elementSetting type="Mapping Type Settings" typeId="a901c634-6482-4993-ae3c-bd1b637f78d4">
+      <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABQCAYAAAC3dkP2AAAAAXNSR0IArs4c6QAAA5JJREFUeF7t299LU2EYB/Dvs5mFM0OTSLP0JpQyrOgiyssCwcAldBt010V3kY7ovhKJoH+gu+4iiRTKLkKy1CbFXGZphc7jTAXtF5Tb3njVreUvzp6z0cb7vNfn+5x3n/O8Zzs/RpDBEqDmsDquYshjpQ0OkddS8wB2GGzA+ugCx2IDBE7gmALMmHScwDEFmDHpOC5cff/3aRAVMvPGxgi+oQUARcYKMD+4wAkcU4AZM6LjiAClmEIbxIyA21legF2VhRh+8SVtekbAlVZ4cPJsJd71zWCkfyYteMbA1TdXAQoI9k5jdHDW8dI1C26l14Z6whh7PecIz0g47ecUz1g4jfe2dxrvX82yznm24fYfK2XtIBtCnqJ8VNUWrzsVDacBUx224MhFaLp0INXaObG9/n2nvyyCz1PDMx5OH10OnsCtrAuN98Fvf9kK3ApcNBLDQGcI4c/fbJ1iBA5AdDEG/5NJWKNfbaHpjYyHi0YU/I9DKaHZhyNC48Ua20cj2zYkIrjzaM20VExhoCsEa8x+p8WL2Oq4JWHX2h1nG9BG8ynds3yRv3q8fDiO8Cd757TVWdtwuYK03jz13ZGli/yk4QTN9lLNZTQ999VwTtGMg1NKof/RBKY+8pZncgMZs1RPNFVisHsSoRH9UM/5MAKuZHcBPMX5mBjWb7SlZxgBlx6qf6sIHFNV4ASOKcCMEXyBK1C0lZk3Npa711H/+ZAJHPMACBwbrnXoPAj5zDxAFMD1g32JfMubCrjcDex6OhiJ3kN73Y94Da+lvEqB/5jNBaujjDrj9c4p5f5t4YKTORJ8wQVA8V8sVLiFm7WXE5PwBRsA1eVkUohF96KtLpQE5wdwlF2T8PRBGZ1KwE2okkU35tj1lu8ACxwHUOA4atJxTDWBE7jNBeTLgdkhAidwmwvI7zhmhwicwG0sIJdczO4QOIFLRUCuVVPRStpWP+WyAGxn5vUbtHdw49DVv/fjAqfhovv8egBiedVoq9HzWhpeS/UAOMytqYBnHeV0Jp5vnFfFW35inFtP5+QOMFNP4ASOKcCMScex4VqD3SB4mPnMxCKRJrTXJf6V67XUXUWozszOeFWz892RdF+r8mw2TQkcE1XgBI4pwIxJxwkcU4AZk44TOKYAMyYdJ3BMAWZMOk7gmALMmHScwDEFmDHpODZcS6AdRNuY+czEfi1ew+0jib/6eadUi4phX2Z2xqv6B9/8BuKJJ4dXAAAAAElFTkSuQmCC" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Source Mapping Settings</type>
+        <type order="1">Target Mapping Settings</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <text>Add Source Mapping</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAABC1JREFUeF7t3T1oE2EYB/D/c21pgkM3C63iB0S0ia2Furiog4OC1Bah4KYoHRQHUazocEXEpIoKHUSrLg7ioFYFdVDEQRAXP6lVUKzSKrQEv5s0TR65S6yxTe4jb1Ja78kSLn2e93353XN37+XuUto4wMGyCqyDvKYIaGW4cbWa3lnRUMsgb2PCefGbKpBkbLpZS9cFsMDqEMAC4f6kCaAAKgoopksFCqCigGK6owps/sRbiXHBoq84E54ojmVGphNjJYCyfINzBOhgHjjQW0MLZ6SA4qA2DfEXAFUWzbT01lCv6jxQAC0EnZyJCKAA5haQTVj2gYoCiulSgQKoKKCYXpQKbB7krUSWE+n/9ijcMsTLoOWfSMe+48PtAH2TeaBipQqgAJZQQLFp75yJHOxbgERqMbpC9xXN/kn3DuCBp0vAFX3g5E5E6s8UC9FjgOWv03Csw3flMHQ9pQrpUUAARN2oxF7owTEVRO8CptUuYTy5A8cbfhaK6HVAY3N+AI43I9L0tRBEATTVaADxr8twctWoW0QB/CPGiMI/pxb6opgbxNIA7n/eDiJyM5CSx7I2F8SdNv18R6p8JbqWZo7W9qMqDWDHyyQAzb77GRkxhiQ141jwjpPRCWAuJQYDaEck1GOHKICWQtyJcKgTIAM050sA7UqM6TT8dbuh03iuUAG0A0yf+t3CT18rugPxyeEC6AjQDHqFaKwBZ5sS2SkC6BwQYIzgV+W87EoUQDeA5taMKMp5BY4s/2iew5Tk5qLZPQ+0J2V8AWvr0VX3SADtuXJHMI+CeYsAFgoIxAABLJTvGwgbcDT0UCrQLaGx/6NEI8KN7+Ug4haPEEXlcC30tRNfeUkFOkVkfgu/Vjf5GooAOgEk3EOsaiNOzp/yjbUA2gLyRfi07fmu3gmgFSDjBPzBfdAp7/VjAcwP2IFwKGJXoAI4VShlTJARXn7ZDq+E05gXPWDMrItK4CqQttkahWJIYTW6go+d4JUO0Gnv0xl3qC+A8dQbiy5/IEkBHAt+djOs0mzCbkYwXbHWgCOIJQI41Wg8+uXqJYBAH6hyDY4Ghl3JZYI9Dkh34UMb9GC0EDyP7wPpMnwwJsg/CsXzLiCjB37apXpvoAcBuR9IdcN3ZU8x7k71GGD/IiTG2hCpD6tsspNzvXMQKaZaVlsCqAgrgAKoKKCY7ukKtHvclYHW6zV0zcpYAC1+9kQAbTZPqUDF/ZcACqCigGK6VKAAKgoophelAuXn7/L/akexpjGK63n2pgug4roTQAFUFFBMlwoUQEUBxXSpwOkAtPt3GEwo11Ig4/Fpzn43BqcBGpvPgv79e3rQ5o1FlHkHpZfNuMy7+TS20V7WMmfizNSs/ow4I36if+PGJSOTMp9ntTvRZqatzFPf5hIZeZPazdu/0byGc9eq6ZnVevgNfhZ+sqhAvz8AAAAASUVORK5CYII=" />
+          <specializationType>Source Mapping Settings</specializationType>
+          <specializationTypeId>1536425c-35f4-48e1-abe4-1f8f56533545</specializationTypeId>
+          <defaultName>Source</defaultName>
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <text>Add Target Mapping</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA0xJREFUeF7t28tu01AQBuBxmqoqFbBCrIBKvANsEIINrBBIVSXYsWDDE4DEO7BkTdrmAoUXIE3TNu8AYhHHqRBsSmnS3BxfDhpLRggBcTTJ8RxrvK3nxP78n4svtWAe24vP18BTl+fRNKs2LeVaczmg559KAPBoLm1zalTBkQBSLogAUvQAQAAFkChALJcECiBRgFguCRRAogCxXBIogEQBYrkkUACJAsRySaAAEgWI5ZJAASQKEMslgQJIFCCWSwIzAri0nIdc3oLhqUc8I83lXBJ45twi3Hq4CrulFox6vmYFws9xArzz+Cp44xDqpRYMuoYkkRsgZiHwQ6iXHej9GBOioamUI2CMuFdx4PSYOSJXQGOSyBkwRqxtMR4TuQMiYjSxFFsw4LjEMQEQEcejAPbKDj9EUwDZIiLgelOdd8/ChVlO/AdF56XnhveStrm8kocba5O/hvOxO5cd6HeYzM4I+OCbegoKXiU92bT3w3UimyWOiYDx7Lz/pg3d726619NUQDaLbZMBY8TdYgv6nZTunU0HREScWBAxlXViFgBTXeJkBfAXYsXR+ygsS4BRd/bC6I6ld6JpnZg1QETsHrtQLzmgQjX/JU7WAHE2rhVtCH0NeHh5sgSIt3fVDRtPSt+WFUB8h1ItNEHpxMtKAhGvtmVDoKvb/p5v0xPYPxnD/nYbxsNAX7fNCiCOeY33h+m+RzY1gf2uB4137XTx4jHw/ld1N2fBk1n2gaMvg+vuMLiUtM2FfA4urq4k2h0//6hXnPS67Z9dONFRT7vTlP8vjJ924JcJk7Zhz4edzSYEnu7p9h9HZtI7EUxetWBDqOMOY9KVjP9uCiAmr/q6yQsvHgOTYk+13wy78Kjvw86GHT0oYLdxT+Cw5wG++0BElhtnQMRrbB+m86Q56dXiCoiJO3jb5o3HdQx0B360zjPiS1VuCRwNfKht2uC5DCeMv3VrToA316/Ah0JT38PQpOPc//bjAri4tBA9gme5VDEBcBZhSKUNLglM5eRn8aMCSFQUQAEkChDLJYECSBQglksCBZAoQCyXBAogUYBYLgkUQKIAsVwSKIBEAWK5JFAAiQLEckmgABIFiOXzS+DHZ6Cs28TDM6BcdX4CKKm+Xscy3A0AAAAASUVORK5CYII=" />
+          <specializationType>Target Mapping Settings</specializationType>
+          <specializationTypeId>a812bff7-017a-4692-8ec7-1caad0a1dd88</specializationTypeId>
+          <defaultName>Target</defaultName>
+          <allowMultiple>false</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <mappingSettings />
+      <childElementSettings>
+        <childElementSetting type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <displayName>Target Type</displayName>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type>Element Settings</type>
+              <type>Association Destination End Settings</type>
+              <type>Association Source End Settings</type>
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <typeOrder>
+            <type order="0">Element Mapping Settings</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <text>Add Element Mapping</text>
+              <icon type="UrlImagePath" source="data:image/png;base64,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" />
+              <specializationType>Element Mapping Settings</specializationType>
+              <specializationTypeId>62e5b1a9-0d36-4969-9d22-ce748155afbf</specializationTypeId>
+              <defaultName>NewElementMappingSettings</defaultName>
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingOptions />
+          <mappingSettings />
+          <childElementSettings />
+        </childElementSetting>
+        <childElementSetting type="Source Mapping Settings" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAABC1JREFUeF7t3T1oE2EYB/D/c21pgkM3C63iB0S0ia2Furiog4OC1Bah4KYoHRQHUazocEXEpIoKHUSrLg7ioFYFdVDEQRAXP6lVUKzSKrQEv5s0TR65S6yxTe4jb1Ja78kSLn2e93353XN37+XuUto4wMGyCqyDvKYIaGW4cbWa3lnRUMsgb2PCefGbKpBkbLpZS9cFsMDqEMAC4f6kCaAAKgoopksFCqCigGK6owps/sRbiXHBoq84E54ojmVGphNjJYCyfINzBOhgHjjQW0MLZ6SA4qA2DfEXAFUWzbT01lCv6jxQAC0EnZyJCKAA5haQTVj2gYoCiulSgQKoKKCYXpQKbB7krUSWE+n/9ijcMsTLoOWfSMe+48PtAH2TeaBipQqgAJZQQLFp75yJHOxbgERqMbpC9xXN/kn3DuCBp0vAFX3g5E5E6s8UC9FjgOWv03Csw3flMHQ9pQrpUUAARN2oxF7owTEVRO8CptUuYTy5A8cbfhaK6HVAY3N+AI43I9L0tRBEATTVaADxr8twctWoW0QB/CPGiMI/pxb6opgbxNIA7n/eDiJyM5CSx7I2F8SdNv18R6p8JbqWZo7W9qMqDWDHyyQAzb77GRkxhiQ141jwjpPRCWAuJQYDaEck1GOHKICWQtyJcKgTIAM050sA7UqM6TT8dbuh03iuUAG0A0yf+t3CT18rugPxyeEC6AjQDHqFaKwBZ5sS2SkC6BwQYIzgV+W87EoUQDeA5taMKMp5BY4s/2iew5Tk5qLZPQ+0J2V8AWvr0VX3SADtuXJHMI+CeYsAFgoIxAABLJTvGwgbcDT0UCrQLaGx/6NEI8KN7+Ug4haPEEXlcC30tRNfeUkFOkVkfgu/Vjf5GooAOgEk3EOsaiNOzp/yjbUA2gLyRfi07fmu3gmgFSDjBPzBfdAp7/VjAcwP2IFwKGJXoAI4VShlTJARXn7ZDq+E05gXPWDMrItK4CqQttkahWJIYTW6go+d4JUO0Gnv0xl3qC+A8dQbiy5/IEkBHAt+djOs0mzCbkYwXbHWgCOIJQI41Wg8+uXqJYBAH6hyDY4Ghl3JZYI9Dkh34UMb9GC0EDyP7wPpMnwwJsg/CsXzLiCjB37apXpvoAcBuR9IdcN3ZU8x7k71GGD/IiTG2hCpD6tsspNzvXMQKaZaVlsCqAgrgAKoKKCY7ukKtHvclYHW6zV0zcpYAC1+9kQAbTZPqUDF/ZcACqCigGK6VKAAKgoophelAuXn7/L/akexpjGK63n2pgug4roTQAFUFFBMlwoUQEUBxXSpwOkAtPt3GEwo11Ig4/Fpzn43BqcBGpvPgv79e3rQ5o1FlHkHpZfNuMy7+TS20V7WMmfizNSs/ow4I36if+PGJSOTMp9ntTvRZqatzFPf5hIZeZPazdu/0byGc9eq6ZnVevgNfhZ+sqhAvz8AAAAASUVORK5CYII=" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Element Mapping Settings</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <text>Add Element Mapping</text>
+              <icon type="UrlImagePath" source="data:image/png;base64,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" />
+              <specializationType>Element Mapping Settings</specializationType>
+              <specializationTypeId>62e5b1a9-0d36-4969-9d22-ce748155afbf</specializationTypeId>
+              <defaultName>NewElementMappingSettings</defaultName>
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingOptions />
+          <mappingSettings />
+          <childElementSettings />
+        </childElementSetting>
+        <childElementSetting type="Target Mapping Settings" typeId="a812bff7-017a-4692-8ec7-1caad0a1dd88">
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA0xJREFUeF7t28tu01AQBuBxmqoqFbBCrIBKvANsEIINrBBIVSXYsWDDE4DEO7BkTdrmAoUXIE3TNu8AYhHHqRBsSmnS3BxfDhpLRggBcTTJ8RxrvK3nxP78n4svtWAe24vP18BTl+fRNKs2LeVaczmg559KAPBoLm1zalTBkQBSLogAUvQAQAAFkChALJcECiBRgFguCRRAogCxXBIogEQBYrkkUACJAsRySaAAEgWI5ZJAASQKEMslgQJIFCCWSwIzAri0nIdc3oLhqUc8I83lXBJ45twi3Hq4CrulFox6vmYFws9xArzz+Cp44xDqpRYMuoYkkRsgZiHwQ6iXHej9GBOioamUI2CMuFdx4PSYOSJXQGOSyBkwRqxtMR4TuQMiYjSxFFsw4LjEMQEQEcejAPbKDj9EUwDZIiLgelOdd8/ChVlO/AdF56XnhveStrm8kocba5O/hvOxO5cd6HeYzM4I+OCbegoKXiU92bT3w3UimyWOiYDx7Lz/pg3d726619NUQDaLbZMBY8TdYgv6nZTunU0HREScWBAxlXViFgBTXeJkBfAXYsXR+ygsS4BRd/bC6I6ld6JpnZg1QETsHrtQLzmgQjX/JU7WAHE2rhVtCH0NeHh5sgSIt3fVDRtPSt+WFUB8h1ItNEHpxMtKAhGvtmVDoKvb/p5v0xPYPxnD/nYbxsNAX7fNCiCOeY33h+m+RzY1gf2uB4137XTx4jHw/ld1N2fBk1n2gaMvg+vuMLiUtM2FfA4urq4k2h0//6hXnPS67Z9dONFRT7vTlP8vjJ924JcJk7Zhz4edzSYEnu7p9h9HZtI7EUxetWBDqOMOY9KVjP9uCiAmr/q6yQsvHgOTYk+13wy78Kjvw86GHT0oYLdxT+Cw5wG++0BElhtnQMRrbB+m86Q56dXiCoiJO3jb5o3HdQx0B360zjPiS1VuCRwNfKht2uC5DCeMv3VrToA316/Ah0JT38PQpOPc//bjAri4tBA9gme5VDEBcBZhSKUNLglM5eRn8aMCSFQUQAEkChDLJYECSBQglksCBZAoQCyXBAogUYBYLgkUQKIAsVwSKIBEAWK5JFAAiQLEckmgABIFiOXzS+DHZ6Cs28TDM6BcdX4CKKm+Xscy3A0AAAAASUVORK5CYII=" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Element Mapping Settings</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <text>Add Element Mapping</text>
+              <icon type="UrlImagePath" source="data:image/png;base64,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" />
+              <specializationType>Element Mapping Settings</specializationType>
+              <specializationTypeId>62e5b1a9-0d36-4969-9d22-ce748155afbf</specializationTypeId>
+              <defaultName>NewElementMappingSettings</defaultName>
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -1418,24 +1691,25 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Context Menu</specializationType>
-          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
           <text>Add Menu Options</text>
           <shortcut>ctrl + shift + c</shortcut>
-          <defaultName>[context menu]</defaultName>
           <icon type="CharacterBox" source="C|#ad2121" />
+          <specializationType>Context Menu</specializationType>
+          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+          <defaultName>[context menu]</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Event Settings</text>
+          <icon type="FontAwesome" source="bolt" />
           <specializationType>Package Event Settings</specializationType>
           <specializationTypeId>48bcdd5f-690c-425b-8f5e-99097a7188dc</specializationTypeId>
-          <text>Add Event Settings</text>
           <defaultName>NewPackageEventSettings</defaultName>
-          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
@@ -1463,24 +1737,25 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Context Menu</specializationType>
-          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
           <text>Add Menu Options</text>
           <shortcut>ctrl + shift + c</shortcut>
-          <defaultName>[context menu]</defaultName>
           <icon type="CharacterBox" source="C|#ad2121" />
+          <specializationType>Context Menu</specializationType>
+          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+          <defaultName>[context menu]</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Event Settings</text>
+          <icon type="FontAwesome" source="bolt" />
           <specializationType>Package Event Settings</specializationType>
           <specializationTypeId>48bcdd5f-690c-425b-8f5e-99097a7188dc</specializationTypeId>
-          <text>Add Event Settings</text>
           <defaultName>NewPackageEventSettings</defaultName>
-          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
@@ -1507,31 +1782,32 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Loaded Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <defaultName>On Loaded</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Created Event</text>
-              <defaultName>On Created</defaultName>
               <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <defaultName>On Created</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>On Changed Event</text>
+              <icon type="FontAwesome" source="code" />
               <specializationType>Element Event Handler</specializationType>
               <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
-              <text>On Changed Event</text>
               <defaultName>On Changed</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Package Event Handler" typeId="e59f6c30-69ba-427c-9a73-33d69e44f765">
@@ -1560,6 +1836,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1580,6 +1857,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -1587,4 +1865,5 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
   <elementExtensions />
   <associationSettings />
   <associationExtensions />
+  <mappingSettings />
 </settings>

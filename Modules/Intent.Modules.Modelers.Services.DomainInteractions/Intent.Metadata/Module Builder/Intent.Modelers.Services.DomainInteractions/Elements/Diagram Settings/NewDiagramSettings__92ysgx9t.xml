@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d0b49a83-9c9d-405b-9cdd-08000fa32ca7" type="Diagram Settings" typeId="67d711dd-3918-4b28-b2a0-4d845884e17a">
+  <name>NewDiagramSettings</name>
+  <display>[diagram]</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <order>0</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>41e7ccc5-c192-4ecf-9d72-5675578e7918</parentFolderId>
+  <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+  <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

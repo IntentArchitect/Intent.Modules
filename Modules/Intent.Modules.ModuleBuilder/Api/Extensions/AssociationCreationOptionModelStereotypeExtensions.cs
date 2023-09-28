@@ -72,6 +72,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Allow Multiple");
             }
 
+            public string IsOptionVisibleFunction()
+            {
+                return _stereotype.GetProperty<string>("Is Option Visible Function");
+            }
+
         }
 
     }

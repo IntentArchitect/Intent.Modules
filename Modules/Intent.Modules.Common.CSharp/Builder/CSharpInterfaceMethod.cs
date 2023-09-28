@@ -53,7 +53,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCS
 
     public CSharpInterfaceMethod AddParameter(string type, string name, Action<CSharpParameter> configure = null)
     {
-        var param = new CSharpParameter(type, name);
+        var param = new CSharpParameter(type, name, null);
         Parameters.Add(param);
         configure?.Invoke(param);
         return this;

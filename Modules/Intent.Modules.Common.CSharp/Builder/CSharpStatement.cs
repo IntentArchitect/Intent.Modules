@@ -17,6 +17,7 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
 
     protected string Text { get; set; }
     protected string RelativeIndentation { get; private set; } = "";
+    protected char? TrailingCharacter = null;
     public CSharpStatement SeparatedFromPrevious()
     {
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
@@ -38,6 +39,12 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
     public CSharpStatement SetIndent(string relativeIndentation)
     {
         RelativeIndentation = relativeIndentation;
+        return this;
+    }
+
+    public virtual CSharpStatement WithSemicolon()
+    {
+        TrailingCharacter = ';';
         return this;
     }
 
@@ -112,7 +119,7 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
 
     public virtual string GetText(string indentation)
     {
-        return $"{indentation}{RelativeIndentation}{Text}";
+        return $"{indentation}{RelativeIndentation}{Text}{(TrailingCharacter != null && !Text.EndsWith(TrailingCharacter.Value) ? TrailingCharacter.Value : "")}";
     }
 
     public override string ToString()

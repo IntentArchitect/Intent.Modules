@@ -90,6 +90,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<int?>("Type Order");
             }
 
+            public string IsOptionVisibleFunction()
+            {
+                return _stereotype.GetProperty<string>("Is Option Visible Function");
+            }
+
         }
 
         public class ScriptSettings

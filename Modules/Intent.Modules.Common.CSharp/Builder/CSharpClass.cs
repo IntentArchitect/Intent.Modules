@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
+public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, IHasCSharpName
 {
     private readonly Type _type;
     private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.NewLine;
@@ -23,6 +25,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
 
         _type = type;
         Name = name;
+    }
+
+    protected internal CSharpClass(string name, Type type, CSharpFile file) : this(name, type)
+    {
+        File = file;
     }
 
     public CSharpClass(string name) : this(name, Type.Class)
@@ -45,7 +52,6 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
     public IList<CSharpClass> NestedClasses { get; } = new List<CSharpClass>();
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
     public IList<CSharpCodeBlock> CodeBlocks { get; } = new List<CSharpCodeBlock>();
-
     public CSharpClass WithBaseType(string type)
     {
         return ExtendsClass(type, Enumerable.Empty<string>());
@@ -130,6 +136,41 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
         return this;
     }
 
+    /// <summary>
+    /// Resolves the property name from the <paramref name="model"/>. Registers this property as representative of the <paramref name="model"/>.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="model"></param>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public CSharpClass AddProperty<TModel>(string type, TModel model, Action<CSharpProperty> configure = null)
+        where TModel : IMetadataModel, IHasName
+    {
+        return AddProperty(type, model.Name.ToPropertyName(), prop =>
+        {
+            prop.RepresentsModel(model);
+            configure?.Invoke(prop);
+        });
+    }
+
+    /// <summary>
+    /// Resolves the type name and property name from the <paramref name="model"/> using the <see cref="ICSharpFileBuilderTemplate"/>
+    /// template that was passed into the <see cref="CSharpFile"/>. Registers this property as representative of the <paramref name="model"/>.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="model"></param>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public CSharpClass AddProperty<TModel>(TModel model, Action<CSharpProperty> configure = null)
+        where TModel : IMetadataModel, IHasName
+    {
+        return AddProperty(GetModelType(model), model.Name.ToPropertyName(), prop =>
+        {
+            prop.RepresentsModel(model);
+            configure?.Invoke(prop);
+        });
+    }
+
     public CSharpClass InsertProperty(int index, string type, string name, Action<CSharpProperty> configure = null)
     {
         var property = new CSharpProperty(type, name, this)
@@ -153,6 +194,41 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
     public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod> configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
+    }
+
+    /// <summary>
+    /// Resolves the method name from the <paramref name="model"/>. Registers this method as representative of the <paramref name="model"/>.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="model"></param>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public CSharpClass AddMethod<TModel>(string returnType, TModel model, Action<CSharpClassMethod> configure = null)
+        where TModel : IMetadataModel, IHasName
+    {
+        return AddMethod(returnType, model.Name.ToPropertyName(), prop =>
+        {
+            prop.RepresentsModel(model);
+            configure?.Invoke(prop);
+        });
+    }
+
+    /// <summary>
+    /// Resolves the type name and method name from the <paramref name="model"/> using the <see cref="ICSharpFileBuilderTemplate"/>
+    /// template that was passed into the <see cref="CSharpFile"/>. Registers this method as representative of the <paramref name="model"/>.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="model"></param>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public CSharpClass AddMethod<TModel>(TModel model, Action<CSharpClassMethod> configure = null)
+        where TModel : IMetadataModel, IHasName
+    {
+        return AddMethod(GetModelType(model), model.Name.ToPropertyName(), method =>
+        {
+            method.RepresentsModel(model);
+            configure?.Invoke(method);
+        });
     }
 
     public CSharpClass AddCodeBlock(string codeLine)
@@ -193,7 +269,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
 
     public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod> configure = null)
     {
-        var method = new CSharpClassMethod(returnType, name);
+        var method = new CSharpClassMethod(returnType, name, this);
         Methods.Insert(index, method);
         configure?.Invoke(method);
         return this;
@@ -416,6 +492,22 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
 
         return $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";
+    }
+
+    internal string GetModelType<T>(T model) where T : IMetadataModel, IHasName
+    {
+        if (File?.Template == null)
+        {
+            throw new InvalidOperationException("Cannot add property with model. Please add the template as an argument to this CSharpFile's constructor.");
+        }
+
+        var type = model switch
+        {
+            IHasTypeReference hasType => File.Template.GetTypeName(hasType.TypeReference),
+            ITypeReference typeRef => File.Template.GetTypeName(typeRef),
+            _ => throw new ArgumentException($"model {model.Name} must implement either IHasTypeReference or ITypeReference", nameof(model))
+        };
+        return type;
     }
 
     protected internal enum Type

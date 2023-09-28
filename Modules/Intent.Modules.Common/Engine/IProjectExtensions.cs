@@ -53,6 +53,12 @@ namespace Intent.Modules.Common
             return project.ExecutionContext.FindTemplateInstances(templateDependency.TemplateId, templateDependency.IsMatch).Cast<TTemplate>();
         }
 
+        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this IOutputTarget project, string templateIdOrRole) where TTemplate : class
+        {
+            // TODO: Use overload without predicate with SDK 3.5.0
+            return project.ExecutionContext.FindTemplateInstances(templateIdOrRole, () => true).Cast<TTemplate>();
+        }
+
         /// <summary>
         /// Obsolete. Use <see cref="SoftwareFactoryExecutionContextExtensions.FindTemplateInstances{TTemplate}"/> instead.
         /// </summary>

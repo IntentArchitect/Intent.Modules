@@ -56,6 +56,7 @@ namespace Intent.ModuleBuilder.Api
                         this.GetCriteriaSettings().HasChildren().IsNo() ? false : (bool?)null,
                     IsCollection = this.GetCriteriaSettings().IsCollection().IsYes() ? true :
                         this.GetCriteriaSettings().IsCollection().IsNo() ? false : (bool?)null,
+                    FilterFunction = this.GetCriteriaSettings().FilterFunction()
                 },
                 MapTo = new ElementMappingMapToSettingPersistable()
                 {

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -83,10 +84,12 @@ namespace Intent.Modelers.Domain.Events.Api
         public DomainEventOriginAssociationTargetEndModel(IAssociationEnd associationEnd, DomainEventOriginAssociationModel association) : base(associationEnd, association)
         {
         }
+
+        public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
     }
 
     [IntentManaged(Mode.Fully)]
-    public class DomainEventOriginAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class DomainEventOriginAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly DomainEventOriginAssociationModel _association;
@@ -108,6 +111,7 @@ namespace Intent.Modelers.Domain.Events.Api
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public DomainEventOriginAssociationModel Association => _association;
+        public IElement InternalElement => _associationEnd;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
         public IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;

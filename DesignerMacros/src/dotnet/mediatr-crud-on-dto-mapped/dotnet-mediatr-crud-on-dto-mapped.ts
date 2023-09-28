@@ -9,7 +9,7 @@ const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
 const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
 
 let fields = element.getChildren("DTO-Field")
-    .filter(x => x.typeReference.getType() == null && x.getMapping().getElement().specialization === "Association");
+    .filter(x => x.typeReference.getType()?.specialization != "DTO" && x.getMapping().getElement().specialization.startsWith("Association"));
 
 fields.forEach(fieldElement => {
     const mappedElement = fieldElement.getMapping().getElement();

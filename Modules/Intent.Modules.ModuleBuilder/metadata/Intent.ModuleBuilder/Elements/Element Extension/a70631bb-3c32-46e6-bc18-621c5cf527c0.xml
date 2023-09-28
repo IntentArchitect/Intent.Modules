@@ -7,6 +7,7 @@
   <genericTypes />
   <typeReference id="cd943cfc-d65f-4d00-9b14-34dfe469cf9a">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
+    <typeName>Folder</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -67,6 +68,7 @@
           <genericTypes />
           <typeReference id="975a9ee9-c5e7-4430-82ea-5ca2281457a8">
             <typeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</typeId>
+            <typeName>File Template</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -93,6 +95,7 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -106,6 +109,7 @@
           <genericTypes />
           <typeReference id="1b184f13-02a1-462b-a480-5698272b0aca">
             <typeId>b795a763-296d-476f-ab0a-1a52710444db</typeId>
+            <typeName>Static Content Template</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -132,6 +136,7 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -145,6 +150,7 @@
           <genericTypes />
           <typeReference id="02364e82-d9d7-44a7-8404-37f46b3ffa5a">
             <typeId>f0f46278-29ea-42bd-9206-0e7034f623bc</typeId>
+            <typeName>Template Decorator</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -171,6 +177,7 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -184,6 +191,7 @@
           <genericTypes />
           <typeReference id="ab24fbf7-69a3-4fc4-95d4-611211526901">
             <typeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</typeId>
+            <typeName>Template Registration</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -210,6 +218,7 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -223,6 +232,7 @@
           <genericTypes />
           <typeReference id="3f6e52e1-17bf-496f-bd04-dd00ae7d817f">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
+            <typeName>Type-Definition</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -249,6 +259,7 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -262,6 +273,7 @@
           <genericTypes />
           <typeReference id="881e0a60-3bc1-4b91-ab97-a9ecdaacce56">
             <typeId>7d008e84-bb28-4b10-ba28-7439202fca76</typeId>
+            <typeName>Factory Extension</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -288,6 +300,7 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -301,6 +314,7 @@
           <genericTypes />
           <typeReference id="c20d2250-5954-4fa0-8210-5a2fa6602e49">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
+            <typeName>Stereotype-Definition</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -327,6 +341,7 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

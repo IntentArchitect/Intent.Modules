@@ -66,6 +66,7 @@ namespace Intent.ModuleBuilder.Api
                 IconFunction = this.GetSettings().IconFunction(),
                 AllowRename = this.GetSettings().AllowRename(),
                 AllowAbstract = this.GetSettings().AllowAbstract(),
+                AllowStatic = this.GetSettings().AllowStatic(),
                 AllowSetValue = this.GetSettings().AllowSetValue(),
                 AllowGenericTypes = this.GetSettings().AllowGenericTypes(),
                 AllowMapping = this.MappingSettings.Any(),
@@ -91,9 +92,10 @@ namespace Intent.ModuleBuilder.Api
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : Array.Empty<ElementCreationOption>())
                     .ToList(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
+                MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = this.MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
                 VisualSettings = this.VisualSettings?.ToPersistable(),
-                Macros = EventSettings?.ToPersistable()
+                Macros = EventSettings?.ToPersistable(),
             };
         }
 

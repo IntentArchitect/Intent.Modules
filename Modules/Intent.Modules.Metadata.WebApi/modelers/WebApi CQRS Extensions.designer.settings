@@ -1570,4 +1570,5 @@ execute();</script>
   </elementExtensions>
   <associationSettings />
   <associationExtensions />
+  <mappingSettings />
 </settings>

@@ -90,7 +90,7 @@ namespace <#= Namespace #>
         foreach(var creationOption in Model.MenuOptions.ElementCreations) { 
             if (ExistsInBase(creationOption))
                 continue;#>
-        public <#= FormatForCollection(creationOption.ApiModelName, creationOption.AllowMultiple()) #> <#= GetCreationOptionName(creationOption) #> => _element.ChildElements
+        public <#= creationOption.ApiModelName.FormatForCollection(creationOption.AllowMultiple()) #> <#= creationOption.GetCreationOptionName() #> => _element.ChildElements
             .GetElementsOfType(<#= creationOption.ApiModelName #>.SpecializationTypeId)
             .Select(x => new <#= creationOption.ApiModelName #>(x))
 <#          if (creationOption.GetOptionSettings().AllowMultiple()) { #>
