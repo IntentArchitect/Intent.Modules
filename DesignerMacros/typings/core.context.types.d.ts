@@ -1,5 +1,8 @@
 // By having these in a separate file, it can still be referred to manually by the .api.d.ts file
 // but also be available to rest of the TypeScript project so that we can ensure the types match.
+declare let debugConsole: Console;
+type IElementApi = MacroApi.Context.IElementApi;
+type IAssociationApi = MacroApi.Context.IAssociationApi;
 
 declare namespace MacroApi.Context {
     interface IDialogService {

@@ -1,31 +1,28 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
-let commands = lookupTypesOf("Command");
-commands.filter(x => x.getName().startsWith("Create") && x.isMapped()).forEach(command => {
+let command = element;
+if (command.isMapped()) {
     let entity = command.getMapping().getElement();
-    let action = createAssociation("Create Entity Action", command.id, entity.id);
-    let mapping = action.createMapping(command.id, entity.id);
-    mapContract(command, [command.id], [entity.id], mapping);
-})
-
-commands.filter(x => x.getName().startsWith("Update") && x.isMapped()).forEach(command => {
-    let entity = command.getMapping().getElement();
-    let action = createAssociation("Update Entity Action", command.id, entity.id);
-    let mapping = action.createMapping(command.id, entity.id);
-    let idField = command.getChildren("DTO-Field").find(x => !x.isMapped() && (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
-    let entityPk = entity.getChildren("Attribute").find(x => x.hasStereotype("Primary Key"));
-    if (idField && entityPk) {
-        mapping.addMappedEnd([idField.id], [entityPk.id]);
+    if (command.getName().startsWith("Create")) {
+        let action = createAssociation("Create Entity Action", command.id, entity.id);
+        let mapping = action.createMapping(command.id, entity.id);
+        mapContract(command, [command.id], [entity.id], mapping);
+    } else if (command.getName().startsWith("Update")) {
+        let entity = command.getMapping().getElement();
+        let action = createAssociation("Update Entity Action", command.id, entity.id);
+        let mapping = action.createMapping(command.id, entity.id);
+        let idField = command.getChildren("DTO-Field").find(x => !x.isMapped() && (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
+        let entityPk = entity.getChildren("Attribute").find(x => x.hasStereotype("Primary Key"));
+        if (idField && entityPk) {
+            mapping.addMappedEnd([idField.id], [entityPk.id]);
+        }
+        mapContract(command, [command.id], [entity.id], mapping);
+    } else if (command.getName().startsWith("Delete")) {
+        let action = createAssociation("Delete Entity Action", command.id, entity.id);
+        let mapping = action.createMapping(command.id, entity.id);
+        mapContract(command, [command.id], [entity.id], mapping);
     }
-    mapContract(command, [command.id], [entity.id], mapping);
-})
-
-commands.filter(x => x.getName().startsWith("Delete") && x.isMapped()).forEach(command => {
-    let entity = command.getMapping().getElement();
-    let action = createAssociation("Delete Entity Action", command.id, entity.id);
-    let mapping = action.createMapping(command.id, entity.id);
-    mapContract(command, [command.id], [entity.id], mapping);
-})
+}
 
 function mapContract(dto: MacroApi.Context.IElementApi, sourcePath: string[], targetPathIds: string[], mapping: MacroApi.Context.IElementToElementMappingApi): void {
     console.log("mapContract: " + dto.getName())

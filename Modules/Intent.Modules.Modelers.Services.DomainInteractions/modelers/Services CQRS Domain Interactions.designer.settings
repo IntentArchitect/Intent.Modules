@@ -64,7 +64,53 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
-      <scriptOptions />
+      <scriptOptions>
+        <option>
+          <text>Convert to new mapping system</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+let command = element;
+if (command.isMapped()) {
+    let entity = command.getMapping().getElement();
+    if (command.getName().startsWith("Create")) {
+        let action = createAssociation("Create Entity Action", command.id, entity.id);
+        let mapping = action.createMapping(command.id, entity.id);
+        mapContract(command, [command.id], [entity.id], mapping);
+    }
+    else if (command.getName().startsWith("Update")) {
+        let entity = command.getMapping().getElement();
+        let action = createAssociation("Update Entity Action", command.id, entity.id);
+        let mapping = action.createMapping(command.id, entity.id);
+        let idField = command.getChildren("DTO-Field").find(x =&gt; !x.isMapped() &amp;&amp; (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
+        let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
+        if (idField &amp;&amp; entityPk) {
+            mapping.addMappedEnd([idField.id], [entityPk.id]);
+        }
+        mapContract(command, [command.id], [entity.id], mapping);
+    }
+    else if (command.getName().startsWith("Delete")) {
+        let action = createAssociation("Delete Entity Action", command.id, entity.id);
+        let mapping = action.createMapping(command.id, entity.id);
+        mapContract(command, [command.id], [entity.id], mapping);
+    }
+}
+function mapContract(dto, sourcePath, targetPathIds, mapping) {
+    console.log("mapContract: " + dto.getName());
+    dto.getChildren("DTO-Field").filter(x =&gt; x.isMapped()).forEach(field =&gt; {
+        if (field.typeReference.getType().specialization != "DTO" || field.typeReference.getIsCollection()) {
+            console.log("addMappedEnd: " + dto.getName() + "." + field.getName() + " - " + field.isMapped() + " : " + field.getMapping());
+            mapping.addMappedEnd(sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));
+        }
+        if (field.typeReference.getType().specialization == "DTO") {
+            mapContract(field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)), mapping);
+        }
+        field.clearMapping();
+    });
+    dto.clearMapping();
+}
+</script>
+        </option>
+      </scriptOptions>
       <mappingOptions>
         <option mappingType="Map Return Type" mappingTypeId="b7ae8bf5-f2fd-4a5c-b57e-05410687bfc4">
           <text>Map Return Type</text>

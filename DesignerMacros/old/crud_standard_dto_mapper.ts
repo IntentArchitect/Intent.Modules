@@ -8,7 +8,7 @@ const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
 var globals = initGlobals();
 
 let fields = element.getChildren("DTO-Field")
-    .filter(x => x.typeReference.getType() == null && x.getMapping().getElement().specialization === "Association");
+    .filter(x => x.typeReference.getType() == null && x.getMapping().getElement().specialization.startsWith("Association"));
 
 fields.forEach(f => {
     let mappedElement = f.getMapping().getElement();

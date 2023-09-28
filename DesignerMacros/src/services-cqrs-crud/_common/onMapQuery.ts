@@ -4,14 +4,14 @@ function onMapQuery(element: MacroApi.Context.IElementApi): void {
     var complexTypes: Array<string> = ["Data Contract", "Value Object"];
 
     let fields = element.getChildren("DTO-Field")
-        .filter(x => x.typeReference.getType() == null && x.getMapping().getElement().specialization === "Association");
+        .filter(x => x.typeReference.getType()?.specialization != "DTO" && x.getMapping().getElement().specialization.startsWith("Association"));
 
     fields.forEach(f => {
         getOrCreateQueryCrudDto(element, f);
     });
 
     let complexAttributes = element.getChildren("DTO-Field")
-        .filter(x => x.typeReference.getType() == null
+        .filter(x => x.typeReference.getType()?.specialization != "DTO"
             && (complexTypes.includes(x.getMapping()?.getElement()?.typeReference?.getType()?.specialization)
             ));
 

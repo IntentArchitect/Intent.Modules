@@ -43,7 +43,7 @@ function onMapCommand(
     }
 
     const fields = element.getChildren("DTO-Field")
-        .filter(x => x.typeReference.getType() == null && x.getMapping().getElement().specialization === "Association");
+        .filter(x => x.typeReference.getType()?.specialization != "DTO" && x.getMapping()?.getElement().specialization.startsWith("Association"));
 
     fields.forEach(field => {
         getOrCreateCommandCrudDto(element, field, true, projectMappingSettingId);
@@ -51,7 +51,7 @@ function onMapCommand(
 
     const complexFields = element.getChildren("DTO-Field")
         .filter(x =>
-            x.typeReference.getType() == null &&
+            x.typeReference.getType()?.specialization != "DTO" &&
             isComplexType(x.getMapping()?.getElement()?.typeReference?.getType()));
 
     complexFields.forEach(cf => {
@@ -59,6 +59,9 @@ function onMapCommand(
     });
 
     function isComplexType(element: MacroApi.Context.IElementApi): boolean {
+        if (element == null) {
+            console.warn("isComplexType element parameter received null")
+        }
         return element?.specialization === "Data Contract" ||
             element?.specialization === "Value Object";
     }
