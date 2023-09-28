@@ -178,6 +178,7 @@ namespace Intent.Modules.Common.CSharp.Tests.TypeResolvers
             public string SpecializationType { get; set; }
             public string SpecializationTypeId { get; set; }
             public string Name { get; set; }
+            public string DisplayText { get; set; }
             public string Comment { get; set; }
             public ITypeReference TypeReference { get; set; }
             public IPackage Package { get; set; }
