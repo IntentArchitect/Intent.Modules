@@ -1,4 +1,8 @@
-﻿### Version 3.3.41
+﻿### Version 3.3.42
+
+- Improvement: Added CSharpWhileStatement for adding `while(true) { }` statements.
+
+### Version 3.3.41
 
 - Improvement: Added Blazor WebAssembly configuration options for `launchsettings.json`.
 - Improvement: CSharpConstructorParameter now has ability to store metadata.

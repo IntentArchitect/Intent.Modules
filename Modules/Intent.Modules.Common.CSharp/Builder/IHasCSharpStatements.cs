@@ -167,6 +167,23 @@ public static class HasCSharpStatementsExtensions
     {
         return parent.AddStatement(new (iterationVariable, sourceCollection), configure);
     }
+    
+    /// <summary>
+    /// Adds a while block to the <paramref name="parent"/>.
+    /// <code>
+    /// while (true)
+    /// {
+    ///     ...
+    /// }
+    /// </code>
+    /// </summary>
+    public static TParent AddWhileStatement<TParent>(this TParent parent,
+        string expression,
+        Action<CSharpWhileStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new (expression), configure);
+    }
 
     /// <summary>
     /// Adds a try block to the <paramref name="parent"/>.

@@ -314,6 +314,23 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+    
+    [Fact]
+    public async Task WhileLoopsTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddStatement("var done = false;");
+                    method.AddWhileStatement("!done", c => c
+                        .AddStatement("done = true;"));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 
     [Fact]
     public async Task TryCatchFinallyBlocksTest()
