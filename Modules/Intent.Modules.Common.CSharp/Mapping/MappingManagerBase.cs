@@ -17,18 +17,32 @@ public class MappingModel
     {
     }
 
-    private MappingModel(string mappingType,
-        string mappingTypeId, 
-        ICanBeReferencedType model, 
-        IList<IElementToElementMappedEnd> mappings, 
-        MappingManagerBase manager, 
+    public MappingModel(string mappingType,
+        string mappingTypeId,
+        IElementToElementMappedEnd mapping,
+        MappingManagerBase manager) : this(
+            mappingType: mappingType,
+            mappingTypeId: mappingTypeId,
+            model: mapping.TargetElement,
+            mappings: new List<IElementToElementMappedEnd>() { mapping },
+            manager: manager,
+            level: mapping.TargetPath.Count)
+    {
+    }
+
+    private MappingModel(
+        string mappingType,
+        string mappingTypeId,
+        ICanBeReferencedType model,
+        IList<IElementToElementMappedEnd> mappings,
+        MappingManagerBase manager,
         int level = 1)
     {
         MappingType = mappingType;
         MappingTypeId = mappingTypeId;
         _manager = manager;
         Model = model;
-        Mapping = mappings.SingleOrDefault(x => x.TargetPath.Last().Element == model);
+        Mapping = mappings.SingleOrDefault(x => x.TargetElement == model);
         Children = mappings.Where(x => x.TargetPath.Count > level)
             .GroupBy(x => x.TargetPath.Skip(level).First(), x => x)
             .Select(x => new MappingModel(mappingType, mappingTypeId, x.Key.Element, x.ToList(), manager, level + 1))
@@ -80,6 +94,18 @@ public abstract class MappingManagerBase
         ApplyReplacements(mapping);
 
         return mapping.GetMappingStatements().ToList();
+    }
+
+    public CSharpStatement GenerateSourceStatementForMapping(IElementToElementMapping model, IElementToElementMappedEnd mappingEnd)
+    {
+        //var mapping = CreateMapping(new MappingModel(model, this), GetUpdateMappingType);
+        //ApplyReplacements(mapping);
+
+        var mappingModel = new MappingModel(model.MappingType, model.MappingTypeId, mappingEnd, this);
+        var mapping = ResolveMappings(mappingModel);//, new ObjectUpdateMapping(mappingModel, _template));
+        ApplyReplacements(mapping);
+
+        return mapping.GetSourceStatement();
     }
 
     public void SetFromReplacement(IMetadataModel type, string replacement)

@@ -39,7 +39,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
         public override CSharpStatement GetSourceStatement()
         {
-            if (Mapping == null)
+            if (Model.TypeReference == null)
             {
                 SetTargetReplacement(Model, null);
                 return GetConstructorStatement();
@@ -76,10 +76,10 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
         private CSharpStatement GetConstructorStatement()
         {
-            var ctor = Children.SingleOrDefault(x => x is ImplicitConstructorMapping && x.Model.TypeReference == null);
+            var ctor = Children.SingleOrDefault(x => x is ConstructorMapping && x.Model.TypeReference == null);
             if (ctor != null)
             {
-                var children = Children.Where(x => x is not ImplicitConstructorMapping || x.Model.TypeReference != null).ToList();
+                var children = Children.Where(x => x is not ConstructorMapping || x.Model.TypeReference != null).ToList();
                 if (!children.Any())
                 {
                     return ctor.GetSourceStatement();

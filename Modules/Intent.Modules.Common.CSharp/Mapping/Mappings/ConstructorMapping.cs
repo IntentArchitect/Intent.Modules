@@ -9,16 +9,16 @@ using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.CSharp.Mapping;
 
-public class ImplicitConstructorMapping : CSharpMappingBase
+public class ConstructorMapping : CSharpMappingBase
 {
     private readonly ICSharpFileBuilderTemplate _template;
 
-    public ImplicitConstructorMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
+    public ConstructorMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
     {
         _template = template;
     }
 
-    public ImplicitConstructorMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
+    public ConstructorMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
     {
         _template = template;
     }

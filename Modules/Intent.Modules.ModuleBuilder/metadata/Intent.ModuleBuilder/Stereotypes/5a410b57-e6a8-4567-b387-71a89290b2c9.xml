@@ -62,7 +62,7 @@
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <placeholder>(default)</placeholder>
-      <defaultValue>Optional</defaultValue>
+      <defaultValue>Required</defaultValue>
       <valueOptions>
         <option>Optional</option>
         <option>Required</option>
