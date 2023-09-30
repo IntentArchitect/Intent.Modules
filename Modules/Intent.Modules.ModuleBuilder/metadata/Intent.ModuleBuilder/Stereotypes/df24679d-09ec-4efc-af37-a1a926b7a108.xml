@@ -35,6 +35,7 @@
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41">
+      <hint>Filters whether this setting can be applied to the underlying element.</hint>
       <name>Filter Function</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -59,6 +60,7 @@
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="fe1fd512-566d-427a-a9a8-ed16c6ae8f98">
+      <hint>Determines whether this mapping node can be mapped.</hint>
       <name>Is Mappable Function</name>
       <type>string</type>
       <controlType>function</controlType>
