@@ -9,7 +9,6 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStatements, IHasICSharpParameters, IHasCSharpName
 {
-    private readonly CSharpClass _class;
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     protected string AsyncMode { get; private set; } = string.Empty;
     protected string AccessModifier { get; private set; } = "public ";
@@ -23,6 +22,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
     public string ExplicitImplementationFor { get; private set; }
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
+    public CSharpClass Class { get; }
 
 
     public CSharpClassMethod(string returnType, string name, CSharpClass @class)
@@ -37,7 +37,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
-        _class = @class;
+        Class = @class;
         File = @class.File;
         ReturnType = returnType;
         Name = name;
@@ -80,7 +80,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     public CSharpClassMethod AddParameter<TModel>(TModel model, Action<CSharpParameter> configure = null) where TModel 
         : IMetadataModel, IHasName, IHasTypeReference
     {
-        return AddParameter(_class.GetModelType(model), model.Name.ToParameterName(), param =>
+        return AddParameter(Class.GetModelType(model), model.Name.ToParameterName(), param =>
         {
             param.RepresentsModel(model);
             configure?.Invoke(param);

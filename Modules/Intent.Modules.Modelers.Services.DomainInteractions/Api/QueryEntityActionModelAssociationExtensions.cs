@@ -12,7 +12,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     public static class QueryEntityActionModelAssociationExtensions
     {
         [IntentManaged(Mode.Fully)]
-        public static IList<QueryEntityActionTargetEndModel> QueriedEntities(this QueryModel model)
+        public static IList<QueryEntityActionTargetEndModel> QueryEntityActions(this QueryModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == QueryEntityActionModel.SpecializationType && x.IsTargetEnd())
@@ -21,7 +21,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<QueryEntityActionSourceEndModel> Queries(this ClassModel model)
+        public static IList<QueryEntityActionSourceEndModel> QueryEntitySources(this ClassModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == QueryEntityActionModel.SpecializationType && x.IsSourceEnd())

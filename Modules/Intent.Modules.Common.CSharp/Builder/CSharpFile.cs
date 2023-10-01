@@ -7,7 +7,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpFile
+public class CSharpFile : CSharpMetadataBase<CSharpFile>
 {
     private readonly IList<(Action Action, int Order)> _configurations = new List<(Action Action, int Order)>();
     private readonly IList<(Action Action, int Order)> _configurationsAfter = new List<(Action Action, int Order)>();
