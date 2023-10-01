@@ -1,6 +1,7 @@
 ﻿### Version 3.3.42
 
 - Improvement: Added CSharpWhileStatement for adding `while(true) { }` statements.
+- Improvement: It is now possible specify `when` expressions on `CSharpCatchBlock`s.
 
 ### Version 3.3.41
 
