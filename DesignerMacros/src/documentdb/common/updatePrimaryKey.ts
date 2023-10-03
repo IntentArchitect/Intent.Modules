@@ -1,6 +1,5 @@
 /// <reference path="isAggregateRoot.ts" />
 /// <reference path="getDefaultIdType.ts" />
-type IElementApi = MacroApi.Context.IElementApi;
 
 function updatePrimaryKey(element: IElementApi): void {
     if (element.specialization !== "Class") {

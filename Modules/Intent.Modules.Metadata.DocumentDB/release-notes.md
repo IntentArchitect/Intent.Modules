@@ -1,3 +1,7 @@
+### Version 1.1.5
+
+- Fixed: Foreign Keys that aren't linked with an Association (i.e. orphaned) are now getting removed.
+
 ### Version 1.1.3
 
 - Improvement: Support for multiple document DB providers added.
