@@ -7,6 +7,7 @@
   <genericTypes />
   <typeReference id="d464ada8-dc38-4c73-8213-564209934550">
     <typeId>dec2bd12-4699-4f45-8ec9-3b62dc692d2b</typeId>
+    <typeName>Class Constructor</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -67,6 +68,7 @@
           <genericTypes />
           <typeReference id="13b7efc9-6ed2-49da-84ac-45122ca02cfd">
             <typeId>4c0cc50b-8a9d-43cd-b731-9f354f69f3c9</typeId>
+            <typeName>Domain Event Origin Association</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

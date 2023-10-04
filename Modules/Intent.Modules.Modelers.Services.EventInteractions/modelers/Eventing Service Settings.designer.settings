@@ -17,6 +17,7 @@ const derivedFrom = association != null
 return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
       <allowRename>true</allowRename>
       <allowAbstract>true</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>true</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -62,6 +63,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
 }</validateFunction>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -95,6 +97,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -136,6 +139,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -170,6 +174,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
   <associationSettings>
     <associationSetting type="Generalization" typeId="ccf59371-009d-44dd-9417-a907b463b223">
       <sourceEnd type="Generalization Source End" typeId="62984ee8-c933-4ad3-861f-51663756b44b">
+        <nameAccessibilityMode>required</nameAccessibilityMode>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
@@ -186,6 +191,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Generalization Target End" typeId="71b21217-2424-496d-be62-a147c8c3c1e7">
+        <nameAccessibilityMode>required</nameAccessibilityMode>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>

@@ -58,6 +58,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#faa9cff1-6710-4dee-9249-f352c19306bc</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/OperationExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>OperationExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#405a2857-b911-431f-8142-719a0e9f15f3</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ProcessingActionModel.cs</ApplicationRelativeFilePath>

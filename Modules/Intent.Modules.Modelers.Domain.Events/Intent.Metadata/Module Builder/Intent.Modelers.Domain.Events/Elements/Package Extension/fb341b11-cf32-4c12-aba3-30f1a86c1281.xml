@@ -7,6 +7,7 @@
   <genericTypes />
   <typeReference id="21dab22a-4d96-4ae1-8217-bc416cf83d76">
     <typeId>df45eaf6-9202-4c25-8dd5-677e9ba1e906</typeId>
+    <typeName>Services Package</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -43,6 +44,7 @@
           <genericTypes />
           <typeReference id="8491d3a4-9e49-40ce-a79d-84012994bba1">
             <typeId>d80e61c5-7e4c-4175-9df1-0413f664824c</typeId>
+            <typeName>Domain Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

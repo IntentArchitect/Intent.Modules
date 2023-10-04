@@ -7,6 +7,7 @@
   <genericTypes />
   <typeReference id="8887a94a-0d16-4a79-8913-505d461b8621">
     <typeId>90831494-f069-44eb-b488-ab2dba7518ea</typeId>
+    <typeName>Domain Event Handler Association</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -99,6 +100,7 @@
               <genericTypes />
               <typeReference id="256a39bf-ba7b-4a9d-be0e-51e3524ef1eb">
                 <typeId>6feb1511-849a-4aa3-85eb-d0c736ac1fec</typeId>
+                <typeName>Publish Integration Event Target End</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>

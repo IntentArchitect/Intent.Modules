@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="e75da448-69ee-4f99-82e0-8e56ac7c74dc" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
-  <name>Folder Extension</name>
-  <display>Folder Extension: Folder</display>
+<class id="bd74cc0c-eeae-4461-b3a0-23a7ec7349ea" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>Services Folder Extension</name>
+  <display>Services Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="a21a1b23-d76c-454e-9370-610db74ee542">
+  <typeReference id="a6e48a01-a8d1-4064-b594-a8eaa0367b71">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
     <typeName>Folder</typeName>
     <isNavigable>true</isNavigable>
@@ -18,7 +18,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>79480502-761f-4883-a4f3-3b03654db367</parentFolderId>
+  <parentFolderId>68643ac1-c91e-44e3-ab19-9c5c5ed6ef76</parentFolderId>
   <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
   <packageName>Intent.Modelers.Domain.Events</packageName>
   <stereotypes>
@@ -48,27 +48,27 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="18b56c8b-d281-4620-b5dd-47d5847edfef" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="e81cf139-31b9-4379-944a-11a8e19e08e6" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>e75da448-69ee-4f99-82e0-8e56ac7c74dc</parentFolderId>
+      <parentFolderId>bd74cc0c-eeae-4461-b3a0-23a7ec7349ea</parentFolderId>
       <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
       <packageName>Intent.Modelers.Domain.Events</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="9cfa6bda-f3e5-4427-a957-410b0df19fc8" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Domain Event</name>
-          <display>New Domain Event: Domain Event</display>
+        <childElement id="21380ca2-3d4e-4a24-8aec-b6475e118321" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Domain Event Handler</name>
+          <display>New Domain Event Handler: Domain Event Handler</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="cc2680ba-9e9c-42c9-840e-2021ab8c466d">
-            <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>
-            <typeName>Domain Event</typeName>
+          <typeReference id="5ac4eae0-b80f-4c19-98ed-26ec9fac09f2">
+            <typeId>d80e61c5-7e4c-4175-9df1-0413f664824c</typeId>
+            <typeName>Domain Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -79,7 +79,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>18b56c8b-d281-4620-b5dd-47d5847edfef</parentFolderId>
+          <parentFolderId>e81cf139-31b9-4379-944a-11a8e19e08e6</parentFolderId>
           <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
           <packageName>Intent.Modelers.Domain.Events</packageName>
           <stereotypes>
@@ -89,7 +89,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + v" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />

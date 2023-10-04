@@ -33,6 +33,7 @@
           <genericTypes />
           <typeReference id="33f6cc03-3818-4384-9d9c-bb9321301eec">
             <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>
+            <typeName>Domain Event</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

@@ -42,6 +42,7 @@
           <genericTypes />
           <typeReference id="2ca05348-fa33-45df-a8e0-6fb2232f7f4f">
             <typeId>cbe970af-5bad-4d92-a3ed-a24b9fdaa23e</typeId>
+            <typeName>Message</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -84,6 +85,7 @@
               <genericTypes />
               <typeReference id="f49c9ead-c44b-4ca9-886e-03b44c8e452d">
                 <typeId>bde29850-5fb9-4f47-9941-b9e182fd9bdc</typeId>
+                <typeName>Property</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -130,6 +132,7 @@
           <genericTypes />
           <typeReference id="52be24e5-92e3-471d-89bd-a744c8d69546">
             <typeId>544f1d57-27ce-4985-a4ec-cc01568d72b0</typeId>
+            <typeName>Eventing DTO</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -172,6 +175,7 @@
               <genericTypes />
               <typeReference id="b1a9f316-321b-4db5-8441-0bb8d49b0ab5">
                 <typeId>93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7</typeId>
+                <typeName>Eventing DTO-Field</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -217,6 +221,7 @@
           <genericTypes />
           <typeReference id="de91a253-a484-4146-a8f3-5198b423fb7f">
             <typeId>16fa2952-79e6-4150-b5ab-45aa4c106de4</typeId>
+            <typeName>Subscribe Integration Event Target End</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -285,6 +290,7 @@
           <genericTypes />
           <typeReference id="22e99b20-6f62-462e-a7e0-58fe9fcc2cc1">
             <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
+            <typeName>Command</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -327,6 +333,7 @@
               <genericTypes />
               <typeReference id="8484b92f-b2bf-4205-adee-3426448c62cc">
                 <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
+                <typeName>DTO-Field</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -372,6 +379,7 @@
           <genericTypes />
           <typeReference id="848e4250-f0af-45b5-bafd-32f026727a87">
             <typeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</typeId>
+            <typeName>DTO</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

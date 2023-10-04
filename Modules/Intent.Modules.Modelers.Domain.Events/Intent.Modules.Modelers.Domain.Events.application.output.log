@@ -121,6 +121,14 @@
       <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#bd74cc0c-eeae-4461-b3a0-23a7ec7349ea</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ServicesFolderExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServicesFolderExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>54740661-e598-4671-ade3-d2f798401653</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

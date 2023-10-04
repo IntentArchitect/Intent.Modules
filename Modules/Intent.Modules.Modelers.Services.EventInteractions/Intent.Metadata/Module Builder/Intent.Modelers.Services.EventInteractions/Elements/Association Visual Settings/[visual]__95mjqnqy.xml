@@ -7,6 +7,7 @@
   <genericTypes />
   <typeReference id="115ddd2a-7f62-434c-a42b-e78b9ac7835c">
     <typeId>80aa7f6d-64e5-4d24-a81e-6bc212925ca7</typeId>
+    <typeName>Subscribe Integration Event</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

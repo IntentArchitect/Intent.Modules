@@ -7,6 +7,7 @@
   <genericTypes />
   <typeReference id="eb3995ce-33cd-4c13-adc7-8fbdfbf2783c">
     <typeId>cbe970af-5bad-4d92-a3ed-a24b9fdaa23e</typeId>
+    <typeName>Message</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -67,6 +68,7 @@
           <genericTypes />
           <typeReference id="741c4c39-5659-490f-906e-a5d839508e92">
             <typeId>5d8f5c33-f9c9-4629-b637-fad9b0096894</typeId>
+            <typeName>Subscribe Integration Event Source End</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -106,6 +108,7 @@
           <genericTypes />
           <typeReference id="622f5b08-93c0-49f6-b108-e1c246a38f6f">
             <typeId>d3096261-1268-440f-8db3-0a6b8b4786cc</typeId>
+            <typeName>Send Command Target End</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

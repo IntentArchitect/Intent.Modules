@@ -7,6 +7,7 @@
   <genericTypes />
   <typeReference id="edd1a023-be4c-48e1-b185-a40201898ea7">
     <typeId>8c90aca5-86f4-47f1-bd58-116fe79f5c55</typeId>
+    <typeName>Diagram</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

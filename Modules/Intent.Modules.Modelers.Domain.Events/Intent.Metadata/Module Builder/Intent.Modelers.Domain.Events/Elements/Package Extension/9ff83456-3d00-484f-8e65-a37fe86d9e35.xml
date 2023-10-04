@@ -7,6 +7,7 @@
   <genericTypes />
   <typeReference id="6d7e48b5-95f7-438f-80f6-6f4f3fbf5bcb">
     <typeId>1a824508-4623-45d9-accc-f572091ade5a</typeId>
+    <typeName>Domain Package</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -43,6 +44,7 @@
           <genericTypes />
           <typeReference id="5d91590b-2d46-476b-9f12-9f85068eb828">
             <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>
+            <typeName>Domain Event</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

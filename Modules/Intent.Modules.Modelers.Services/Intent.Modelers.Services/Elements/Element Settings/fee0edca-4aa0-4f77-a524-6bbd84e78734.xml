@@ -68,6 +68,7 @@
           <genericTypes />
           <typeReference id="57919b3d-1eeb-493b-b49f-4aabc30fed1e">
             <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
+            <typeName>DTO-Field</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -107,6 +108,7 @@
           <genericTypes />
           <typeReference id="8c2c7f93-c69c-4b30-98c9-7c057e31b097">
             <typeId>5ba12bbf-122f-4c3e-af3c-4a88dc554597</typeId>
+            <typeName>Generalization</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -1051,6 +1053,7 @@
           <genericTypes />
           <typeReference id="1c02d064-1b0a-4eaa-8ff4-03829d24aa95">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

@@ -121,12 +121,59 @@ const metadataKeyName = "initialized";
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingOptions />
       <mappingSettings />
       <diagramSettings>
         <addNewElementsTo>Package</addNewElementsTo>
         <creationOptions />
         <scriptOptions />
-        <elementVisualSettings />
+        <elementVisualSettings>
+          <visualSettings type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
+            <size width="${w}" height="70" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawText>
+                <text>return getName();</text>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+                <size width="${w}" height="18" />
+                <position x="${x}" y="${y + 48}" />
+              </drawText>
+              <drawSvgResource>
+                <path>service.svg</path>
+                <size width="${w}" height="40" />
+                <position x="${x}" y="${y + 6}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="${x}" height="70" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings>
+              <childElementVisualSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+                <size width="`${parent.w}`" height="18" />
+                <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 66}`" />
+                <display>
+                  <drawText>
+                    <text>return label;</text>
+                    <size width="${w - 26}" height="${h}" />
+                    <position x="${x + 24}" y="${y}" />
+                  </drawText>
+                  <drawSvgResource>
+                    <path>method.svg</path>
+                    <size width="20" height="20" />
+                    <position x="${x}" y="${y}" />
+                  </drawSvgResource>
+                </display>
+                <defaultSize width="`${parent.w}`" height="18" />
+                <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+                <childElementVisualSettings />
+              </childElementVisualSetting>
+            </childElementVisualSettings>
+          </visualSettings>
+        </elementVisualSettings>
         <associationVisualSettings />
       </diagramSettings>
       <childElementSettings />
@@ -175,6 +222,7 @@ return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings>
         <mappingSetting id="1f747d14-681c-4a20-8c68-34223f41b825">
           <name>Map from Domain</name>
@@ -768,6 +816,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -801,6 +850,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
@@ -888,6 +938,7 @@ return validateOperation(lookup(id));
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <macros>
             <macro trigger="on-changed">
@@ -968,6 +1019,7 @@ return validateOperationParameter(lookup(id));
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1047,6 +1099,7 @@ return validateOperationParameter(lookup(id));
   <associationSettings>
     <associationSetting type="Generalization" typeId="5ba12bbf-122f-4c3e-af3c-4a88dc554597">
       <sourceEnd type="Generalization Source End" typeId="5ce8666c-89d2-4c9c-b30c-6e5fe42e1766">
+        <nameAccessibilityMode>unknown</nameAccessibilityMode>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
@@ -1061,8 +1114,11 @@ return validateOperationParameter(lookup(id));
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
+        <scriptOptions />
+        <mappingOptions />
       </sourceEnd>
       <targetEnd type="Generalization Target End" typeId="e1b3d4e4-0ad0-4aec-97fb-780ab9e476db">
+        <nameAccessibilityMode>unknown</nameAccessibilityMode>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
@@ -1077,6 +1133,7 @@ return validateOperationParameter(lookup(id));
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
+        <mappingOptions />
       </targetEnd>
     </associationSetting>
   </associationSettings>

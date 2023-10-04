@@ -42,6 +42,7 @@
           <genericTypes />
           <typeReference id="988c1957-7c98-4f21-8928-d49809f5fa90">
             <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
+            <typeName>Class</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -84,6 +85,7 @@
               <genericTypes />
               <typeReference id="884fc4d5-4d65-45c4-b542-7c1657cd1584">
                 <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
+                <typeName>Attribute</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -127,6 +129,7 @@
               <genericTypes />
               <typeReference id="f7a8509f-86fd-47b8-bdf6-9cc46fc481e8">
                 <typeId>0a66489f-30aa-417b-a75d-b945863366fd</typeId>
+                <typeName>Association Target End</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -171,6 +174,7 @@
               <genericTypes />
               <typeReference id="60961ace-8bb6-460d-9438-2191fda13fff">
                 <typeId>dec2bd12-4699-4f45-8ec9-3b62dc692d2b</typeId>
+                <typeName>Class Constructor</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -213,6 +217,7 @@
                   <genericTypes />
                   <typeReference id="54914101-9c17-47e5-b5d8-e80234ab088b">
                     <typeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</typeId>
+                    <typeName>Parameter</typeName>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
                     <isCollection>false</isCollection>
@@ -259,6 +264,7 @@
               <genericTypes />
               <typeReference id="88490a2d-6b2f-432a-9913-2d6d407ce80f">
                 <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
+                <typeName>Operation</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -301,6 +307,7 @@
                   <genericTypes />
                   <typeReference id="372bc1d4-1bf8-4455-b5e8-9b4d17a5eb9e">
                     <typeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</typeId>
+                    <typeName>Parameter</typeName>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
                     <isCollection>false</isCollection>
@@ -348,6 +355,7 @@
           <genericTypes />
           <typeReference id="cb0a2997-46aa-4674-8468-aa7b9854b8cf">
             <typeId>5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5</typeId>
+            <typeName>Value Object</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -416,6 +424,7 @@
           <genericTypes />
           <typeReference id="de720a7d-e113-4463-9ba3-737fd9c69470">
             <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>
+            <typeName>Domain Event</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -458,6 +467,7 @@
               <genericTypes />
               <typeReference id="6646c648-d7b7-4e25-a165-1b3bded56ec3">
                 <typeId>b4d69073-5abb-4968-b41b-545b2f7408ed</typeId>
+                <typeName>Property</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>

@@ -51,9 +51,9 @@
           <properties>
             <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="return `a 4,4 0 1,0 4,4 &#xD;&#xA;        a 4,4 0 1,0 -4,4`;" isActive="true" />
             <property name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" isActive="true" />
-            <property name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" isActive="true" />
+            <property name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" value="return 3;" isActive="true" />
             <property name="33bc633b-e627-49df-b105-398e32e080ee" display="Line Dash Array" isActive="true" />
-            <property name="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f" display="Fill Color" isActive="true" />
+            <property name="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f" display="Fill Color" value="return 'dodgerblue'" isActive="true" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="6b16c65c-f348-40b1-96b0-6423917b9356" name="Label Settings">
