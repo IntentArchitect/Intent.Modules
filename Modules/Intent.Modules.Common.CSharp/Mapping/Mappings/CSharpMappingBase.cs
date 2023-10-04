@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.CSharp.Mapping;
 
@@ -128,9 +129,11 @@ public abstract class CSharpMappingBase : ICSharpMapping
         return text;
     }
 
-    private IEnumerable<string> ExtractPaths(string str){
+    private IEnumerable<string> ExtractPaths(string str)
+    {
         var results = new List<string>();
-        while (str.IndexOf("{", StringComparison.Ordinal) != -1 && str.IndexOf("}", StringComparison.Ordinal) != -1) {
+        while (str.IndexOf("{", StringComparison.Ordinal) != -1 && str.IndexOf("}", StringComparison.Ordinal) != -1)
+        {
             results.Add(str[(str.IndexOf("{", StringComparison.Ordinal) + 1)..str.IndexOf("}", StringComparison.Ordinal)]);
             str = str[(str.IndexOf("}", StringComparison.Ordinal) + 1)..];
         }
@@ -153,7 +156,18 @@ public abstract class CSharpMappingBase : ICSharpMapping
             }
             else
             {
-                var referenceName = Template.CSharpFile.GetReferenceForModel(mappingPathTarget.Id)?.Name ?? mappingPathTarget.Element.Name;
+                var referenceName = default(string);
+                if (mappingPathTarget.Element is IElement element)
+                {
+                    // try parent type's template:
+                    referenceName = (Template.GetTypeInfo(element.ParentElement.AsTypeReference())
+                            ?.Template as ICSharpFileBuilderTemplate)?.CSharpFile.GetReferenceForModel(mappingPathTarget.Id)?.Name;
+                }
+                // try this template:
+                referenceName ??= Template.CSharpFile.GetReferenceForModel(mappingPathTarget.Id)?.Name;
+                // fall back on using the element's name from the metadata:
+                referenceName ??= mappingPathTarget.Element.Name;
+
                 result += $"{(result.Length > 0 ? "." : "")}{referenceName}";
                 if (mappingPathTarget.Element.TypeReference?.IsNullable == true && mappingPath.Last() != mappingPathTarget)
                 {

@@ -2,8 +2,12 @@
 
 - Added: `CSharpAssignmentStatement` which takes in a left-hand and right-hand set of statements for standard variable and property assignements.
 - Added: `IHasCSharpName GetReferenceForModel(...)` on `CSharpFile` to support resolving reference names for methods, properties and parameters.
+### Version 3.3.42
 
-### Version 3.3.40
+- Improvement: Added CSharpWhileStatement for adding `while(true) { }` statements.
+- Improvement: It is now possible specify `when` expressions on `CSharpCatchBlock`s.
+
+### Version 3.3.41
 
 - Improvement: Added Blazor WebAssembly configuration options for `launchsettings.json`.
 - Improvement: CSharpConstructorParameter now has ability to store metadata.

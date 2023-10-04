@@ -374,7 +374,7 @@ function updatePrimaryKey(element) {
         });
     }
     function updateDerivedTypePks(element) {
-        var derivedTypes = element.getAssociations("Generalization")
+        const derivedTypes = element.getAssociations("Generalization")
             .filter(generalization =&gt; generalization.isSourceEnd())
             .map(generalization =&gt; generalization.typeReference.getType());
         for (const derivedType of derivedTypes) {
@@ -517,6 +517,19 @@ function updateForeignKeysForElement(element) {
         }
         if (requiresForeignKey(association.getOtherEnd())) {
             updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
+        }
+    }
+    removeOrphanedAssociations(element);
+}
+function removeOrphanedAssociations(element) {
+    let existingAssociations = element.getAssociations();
+    let existingAttributes = element.getChildren("Attribute");
+    for (let attr of existingAttributes) {
+        if (!attr.getMetadata("association")) {
+            continue;
+        }
+        if (!existingAssociations.some(x =&gt; attr.getMetadata("association") == x.id)) {
+            attr.delete();
         }
     }
 }

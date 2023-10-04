@@ -1,0 +1,18 @@
+﻿
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public void Method()
+        {
+            try
+            {
+            }
+            catch (Exception e) when (e.Message == "Hello World!")
+            {
+            }
+        }
+    }
+}

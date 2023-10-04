@@ -20,4 +20,20 @@ function updateForeignKeysForElement(element: MacroApi.Context.IElementApi) {
             updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
         }
     }
+
+    removeOrphanedAssociations(element);
 }
+
+function removeOrphanedAssociations(element: MacroApi.Context.IElementApi) {
+    let existingAssociations = element.getAssociations();
+    let existingAttributes = element.getChildren("Attribute");
+    for (let attr of existingAttributes) {
+        if (! attr.getMetadata("association")) {
+            continue;
+        }
+        if (! existingAssociations.some(x => attr.getMetadata("association") == x.id)) {
+            attr.delete();
+        }
+    }
+}
+

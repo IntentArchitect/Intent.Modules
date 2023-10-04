@@ -1,19 +1,23 @@
+### Version 3.4.8
+
+- Improvement : Upgraded CRUD Scripts to be forwards compatible with Intent Architect v4.1.
+
 ### Version 3.4.7
 
-- New : Duplicate `Operation` validation check added.
+- New Feature : Duplicate `Operation` validation check added.
 
 ### Version 3.4.5
 
-- Update: Moved `Project to Domain` script into `Services Designer` and out of the individual CRUD modules.
-- Update: DTOs will ignore mapping certain Class Attributes that are internally marked as `set-by-infrastructure` so as to not exposing them to the public unintentionally.
+- Improvement : Moved `Project to Domain` script into `Services Designer` and out of the individual CRUD modules.
+- Improvement : DTOs will ignore mapping certain Class Attributes that are internally marked as `set-by-infrastructure` so as to not exposing them to the public unintentionally.
 
 ### Version 3.4.3
 
-- Support default values parameters for Services, Domain and Http Metadata.
+- Improvement : Support default values parameters for Services, Domain and Http Metadata.
 
 ### Version 3.4.2
 
-- Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
+- Improvement : Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
 
 ### Version 3.3.9
 
@@ -21,7 +25,7 @@
 
 ### Version 3.3.8
 
-- Update: Validation added to DTO Fields to ensure that the names are unique.
+- Improvement : Validation added to DTO Fields to ensure that the names are unique.
 
 ### Version 3.3.7
 
