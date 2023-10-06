@@ -2,6 +2,7 @@
 
 - Improvement: Added CSharpWhileStatement for adding `while(true) { }` statements.
 - Improvement: It is now possible specify `when` expressions on `CSharpCatchBlock`s.
+- Improvement: Introduced `DefaultIntentManaged` and `IntentTagMode` attributes for File Builder.
 
 ### Version 3.3.41
 

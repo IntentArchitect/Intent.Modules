@@ -55,6 +55,7 @@ public class CSharpIntentManagedAttribute : CSharpAttribute
     {
         return WithBodySetTo("Mode.Fully");
     }
+    
     public CSharpIntentManagedAttribute WithBodyMerge()
     {
         return WithBodySetTo("Mode.Merge");
