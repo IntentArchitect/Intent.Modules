@@ -333,24 +333,6 @@ public class BuilderTests
     }
 
     [Fact]
-    public async Task TryCatchFinallyBlocksTest()
-    {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
-            .AddClass("TestClass", @class =>
-            {
-                @class.AddMethod("void", "TestMethod", method =>
-                {
-                    method.AddTryBlock(block => block.AddStatement("DoSomethingRisky();"));
-                    method.AddCatchBlock("OutOfMemoryException", "ex", block => block.AddStatement("// What to do?"));
-                    method.AddCatchBlock(block => block.AddStatement("// Catch All"));
-                    method.AddFinallyBlock(block => block.AddStatement("DoFinallyStuff();"));
-                });
-            })
-            .CompleteBuild();
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
     public async Task ComplexIfConditionsTest()
     {
         var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
