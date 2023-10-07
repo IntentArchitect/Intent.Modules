@@ -8,7 +8,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpParameter : ICSharpParameter
+public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParameter
 {
     public string Type { get; }
     public string Name { get; }
