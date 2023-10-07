@@ -51,6 +51,10 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
     {
         _constructor.Class.AddField(Type, Name.ToPrivateMemberName(), field =>
         {
+            if (TryGetMetadata<object>("model", out var modelValue))
+            {
+                field.AddMetadata("model", modelValue);
+            }
             var statement = new CSharpFieldAssignmentStatement(field.Name, Name);
             _constructor.AddStatement(statement);
             configure?.Invoke(field, statement);
@@ -81,6 +85,10 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
     {
         _constructor.Class.AddProperty(Type, Name.ToPropertyName(), property =>
         {
+            if (TryGetMetadata<object>("model", out var modelValue))
+            {
+                property.AddMetadata("model", modelValue);
+            }
             var statement = new CSharpFieldAssignmentStatement(property.Name, Name);
             _constructor.AddStatement(statement);
             configure?.Invoke(property, statement);
