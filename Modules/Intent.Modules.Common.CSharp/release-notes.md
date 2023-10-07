@@ -4,7 +4,7 @@
 - Improvement: It is now possible specify `when` expressions on `CSharpCatchBlock`s.
 - Improvement: Introduced `DefaultIntentManaged` and `IntentTagMode` attributes for File Builder.
 - Improvement: CSharpParameter now has ability to store metadata.
-- Improvement: CSharpConstructorParameter will propagate the Model metadata to created fields and properties.
+- Improvement: CSharpConstructorParameter will propagate metadata to created fields and properties.
 
 ### Version 3.3.41
 
