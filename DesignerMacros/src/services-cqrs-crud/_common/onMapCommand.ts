@@ -43,7 +43,7 @@ function onMapCommand(
     }
 
     const fields = element.getChildren("DTO-Field")
-        .filter(x => x.typeReference.getType()?.specialization != "DTO" && x.getMapping()?.getElement().specialization.startsWith("Association"));
+        .filter(x => x.typeReference.getType()?.specialization != "DTO" && x.isMapped() && x.getMapping()?.getElement().specialization.startsWith("Association"));
 
     fields.forEach(field => {
         getOrCreateCommandCrudDto(element, field, true, projectMappingSettingId);
