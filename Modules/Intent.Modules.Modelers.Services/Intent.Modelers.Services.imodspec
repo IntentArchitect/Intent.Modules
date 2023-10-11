@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services</id>
-  <version>3.4.8</version>
+  <version>3.4.9-pre.0</version>
   <supportedClientVersions>[3.3.0-pre.0, 5.0.0-a)</supportedClientVersions>
   <summary>Services modeler for describing an application's web services.</summary>
   <description>Services modeler for describing an application's web services.</description>
@@ -12,14 +12,26 @@
   <releaseNotes>release-notes.md</releaseNotes>
   <templates></templates>
   <decorators></decorators>
+  <interoperability>
+  <!-- Minimum Compatible Versions -->
+  <!--
+    The Intent Client isn't smart enough to resolve this unfortunately as it gets "stuck" that it can't fulfill all dependencies
+    <detect id="Intent.Application.Dtos.Pagination">
+      <install>
+        <package id="Intent.Application.Dtos.Pagination" version="4.0.7-pre.0" metadataOnly="true" />
+      </install>
+    </detect>
+    -->
+  <!-- /Minimum Compatible Versions -->
+  </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="3.4.1" />
+    <dependency id="Intent.Common" version="3.4.3" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
   </dependencies>
   <metadata>
     <install src="modelers/Services Types.designer.settings" externalReference="55e213e3-1e43-4bb5-abe6-6ff77af23f39" />
     <install src="modelers/Services.designer.config" externalReference="81104ae6-2bc5-4bae-b05a-f987b0372d81" />
-    <install src="Intent.Modelers.Services/Intent.Modelers.Services.pkg.config" externalReference="4ba53041-59f9-4446-a207-6da4fbdf86fe" target="Services;Module Builder" />
+    <install src="Intent.Modelers.Services/Intent.Modelers.Services.pkg.config" externalReference="4ba53041-59f9-4446-a207-6da4fbdf86fe" target="Services;Module Builder;Service Proxies" />
   </metadata>
   <files></files>
   <factoryExtensions />

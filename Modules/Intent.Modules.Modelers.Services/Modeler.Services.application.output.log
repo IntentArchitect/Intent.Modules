@@ -176,13 +176,5 @@
       <ProjectRelativeFilePath>Services.designer.config</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
-    <FileLog>
-      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
   </FileLogs>
 </outputLog>

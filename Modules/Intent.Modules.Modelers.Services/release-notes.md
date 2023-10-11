@@ -1,3 +1,7 @@
+### Version 3.4.9
+
+- Improvement: `PagedResult<TData>` Type-Definition moved into this module from the `Intent.Application.Dtos.Pagination` module.
+
 ### Version 3.4.8
 
 - Improvement : Upgraded CRUD Scripts to be forwards compatible with Intent Architect v4.1.

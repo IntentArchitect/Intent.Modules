@@ -11,56 +11,56 @@
       <requiredPackages />
       <creationOptions>
         <option type="element">
-          <specializationType>Service</specializationType>
-          <specializationTypeId>b16578a5-27b1-4047-a8df-f0b783d706bd</specializationTypeId>
           <text>New Service</text>
           <shortcut>ctrl + shift + s</shortcut>
-          <defaultName>NewService</defaultName>
           <icon type="UrlImagePath" source="./img/icons/services/Service_256x.png" />
+          <specializationType>Service</specializationType>
+          <specializationTypeId>b16578a5-27b1-4047-a8df-f0b783d706bd</specializationTypeId>
+          <defaultName>NewService</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>DTO</specializationType>
-          <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
           <text>New DTO</text>
           <shortcut>ctrl + shift + d</shortcut>
-          <defaultName>NewDto</defaultName>
           <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
+          <specializationType>DTO</specializationType>
+          <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
+          <defaultName>NewDto</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Type-Definition</specializationType>
-          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
           <text>New Type</text>
           <shortcut>ctrl + shift + t</shortcut>
-          <defaultName>NewType</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />
+          <specializationType>Type-Definition</specializationType>
+          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
+          <defaultName>NewType</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option order="0" type="element">
-          <specializationType>Folder</specializationType>
-          <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
           <text>New Folder</text>
           <shortcut>ctrl + shift + f</shortcut>
-          <defaultName>NewFolder</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
+          <specializationType>Folder</specializationType>
+          <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
+          <defaultName>NewFolder</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Enum</specializationType>
-          <specializationTypeId>85fba0e9-9161-4c85-a603-a229ef312beb</specializationTypeId>
           <text>New Enum</text>
           <shortcut>ctrl + shift + e</shortcut>
-          <defaultName>NewEnum</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
+          <specializationType>Enum</specializationType>
+          <specializationTypeId>85fba0e9-9161-4c85-a603-a229ef312beb</specializationTypeId>
+          <defaultName>NewEnum</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="stereotype-definition">
+          <text>New Stereotype-Definition</text>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
           <specializationType>Stereotype-Definition</specializationType>
           <specializationTypeId>Stereotype-Definition</specializationTypeId>
-          <text>New Stereotype-Definition</text>
           <defaultName>NewStereotypeDefinition</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -124,25 +124,26 @@ return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>DTO-Field</specializationType>
-          <specializationTypeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</specializationTypeId>
           <text>Add Field</text>
           <shortcut>ctrl + shift + f</shortcut>
-          <defaultName>field</defaultName>
           <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
+          <specializationType>DTO-Field</specializationType>
+          <specializationTypeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</specializationTypeId>
+          <defaultName>field</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="association">
-          <specializationType>Generalization</specializationType>
-          <specializationTypeId>5ba12bbf-122f-4c3e-af3c-4a88dc554597</specializationTypeId>
           <text>New Inheritance</text>
           <shortcut>ctrl + shift + i</shortcut>
-          <defaultName>NewGeneralization</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+          <specializationType>Generalization</specializationType>
+          <specializationTypeId>5ba12bbf-122f-4c3e-af3c-4a88dc554597</specializationTypeId>
+          <defaultName>NewGeneralization</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings>
         <mappingSetting id="1f747d14-681c-4a20-8c68-34223f41b825">
           <name>Map from Domain</name>
@@ -683,6 +684,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -706,16 +708,17 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Operation</specializationType>
-          <specializationTypeId>e030c97a-e066-40a7-8188-808c275df3cb</specializationTypeId>
           <text>Add Operation</text>
           <shortcut>ctrl + shift + o</shortcut>
-          <defaultName>Operation</defaultName>
           <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
+          <specializationType>Operation</specializationType>
+          <specializationTypeId>e030c97a-e066-40a7-8188-808c275df3cb</specializationTypeId>
+          <defaultName>Operation</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
@@ -793,16 +796,17 @@ return validateOperation(lookup(id));
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Parameter</specializationType>
-              <specializationTypeId>00208d20-469d-41cb-8501-768fd5eb796b</specializationTypeId>
               <text>Add Parameter</text>
               <shortcut>ctrl + shift + p</shortcut>
-              <defaultName>param</defaultName>
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
+              <specializationType>Parameter</specializationType>
+              <specializationTypeId>00208d20-469d-41cb-8501-768fd5eb796b</specializationTypeId>
+              <defaultName>param</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <macros>
             <macro trigger="on-changed">
@@ -883,6 +887,7 @@ return validateOperationParameter(lookup(id));
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -895,47 +900,47 @@ return validateOperationParameter(lookup(id));
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
       <creationOptions>
         <option type="element">
-          <specializationType>Service</specializationType>
-          <specializationTypeId>b16578a5-27b1-4047-a8df-f0b783d706bd</specializationTypeId>
           <text>New Service</text>
           <shortcut>ctrl + shift + s</shortcut>
-          <defaultName>NewService</defaultName>
           <icon type="UrlImagePath" source="./img/icons/services/Service_256x.png" />
+          <specializationType>Service</specializationType>
+          <specializationTypeId>b16578a5-27b1-4047-a8df-f0b783d706bd</specializationTypeId>
+          <defaultName>NewService</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>DTO</specializationType>
-          <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
           <text>New DTO</text>
           <shortcut>ctrl + shift + d</shortcut>
-          <defaultName>NewDto</defaultName>
           <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
+          <specializationType>DTO</specializationType>
+          <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
+          <defaultName>NewDto</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Type-Definition</specializationType>
-          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
           <text>New Type</text>
           <shortcut>ctrl + shift + t</shortcut>
-          <defaultName>NewType</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />
+          <specializationType>Type-Definition</specializationType>
+          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
+          <defaultName>NewType</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Enum</specializationType>
-          <specializationTypeId>85fba0e9-9161-4c85-a603-a229ef312beb</specializationTypeId>
           <text>New Enum</text>
           <shortcut>ctrl + shift + e</shortcut>
-          <defaultName>NewEnum</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
+          <specializationType>Enum</specializationType>
+          <specializationTypeId>85fba0e9-9161-4c85-a603-a229ef312beb</specializationTypeId>
+          <defaultName>NewEnum</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="stereotype-definition">
+          <text>New Stereotype-Definition</text>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
           <specializationType>Stereotype-Definition</specializationType>
           <specializationTypeId>Stereotype-Definition</specializationTypeId>
-          <text>New Stereotype-Definition</text>
           <defaultName>NewStereotypeDefinition</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -953,6 +958,7 @@ return validateOperationParameter(lookup(id));
   <associationSettings>
     <associationSetting type="Generalization" typeId="5ba12bbf-122f-4c3e-af3c-4a88dc554597">
       <sourceEnd type="Generalization Source End" typeId="5ce8666c-89d2-4c9c-b30c-6e5fe42e1766">
+        <nameAccessibilityMode>unknown</nameAccessibilityMode>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
@@ -967,8 +973,11 @@ return validateOperationParameter(lookup(id));
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
+        <scriptOptions />
+        <mappingOptions />
       </sourceEnd>
       <targetEnd type="Generalization Target End" typeId="e1b3d4e4-0ad0-4aec-97fb-780ab9e476db">
+        <nameAccessibilityMode>unknown</nameAccessibilityMode>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
@@ -983,8 +992,10 @@ return validateOperationParameter(lookup(id));
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
+        <mappingOptions />
       </targetEnd>
     </associationSetting>
   </associationSettings>
   <associationExtensions />
+  <mappingSettings />
 </settings>
