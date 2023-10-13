@@ -25,15 +25,17 @@ function updatePrimaryKey(element: IElementApi): void {
     const stringTypeId: string = "d384db9c-a279-45e1-801e-e4e8099625f2";
 
     var docDbStereotype = element.getPackage().getStereotype(documentStoreId);
-    let providers = lookupTypesOf("Document Db Provider").filter(x => x.getName() != "Custom");
+    let providers = lookupTypesOf("Document Db Provider").filter((elem, index) => lookupTypesOf("Document Db Provider").findIndex(obj => obj.id == elem.id) === index && elem.getName() != "Custom");
 
-    if ((docDbStereotype.getProperty("Provider")?.getValue() && providers.length > 0 && providers[0].id == tableStorageProvider)|| 
+    if ((!docDbStereotype.getProperty("Provider")?.getValue() && providers.length == 1 && providers[0].id == tableStorageProvider)|| 
         (docDbStereotype.getProperty("Provider")?.getValue() as MacroApi.Context.IElementApi).id == tableStorageProvider){
         //Table Storage PK
         let idAttrs = element.getChildren("Attribute").filter(x => x.hasStereotype(primaryKeyStereotypeId));
-        if (idAttrs.length != 2 && idAttrs[0].getName() != "PartitionKey"){
-            idAttrs.forEach(key => key.delete());
-
+        //Keys arn't right
+        if (!(idAttrs.length == 2 && idAttrs[0].getName() == "PartitionKey"&& idAttrs[1].getName() == "RowKey")){
+            if (idAttrs.length > 0){
+                idAttrs.forEach(key => key.delete());
+            }
             let rowKeyAttr = createElement("Attribute", "RowKey", element.id);
             rowKeyAttr.setOrder(0);
             rowKeyAttr.typeReference.setType(stringTypeId);
@@ -42,10 +44,9 @@ function updatePrimaryKey(element: IElementApi): void {
             let partitionKeyAttr = createElement("Attribute", "PartitionKey", element.id);
             partitionKeyAttr.setOrder(0);
             partitionKeyAttr.typeReference.setType(stringTypeId);
-            partitionKeyAttr.addStereotype(primaryKeyStereotypeId);            
-        }
-    }
-    else {
+            partitionKeyAttr.addStereotype(primaryKeyStereotypeId);                    
+        }        
+    } else {
 
         if (idAttr == null) {
             const classNameWithId = `${element.getName()}Id`.toLowerCase();
