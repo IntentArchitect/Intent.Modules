@@ -35,12 +35,12 @@ namespace <#= Namespace #>
 <#
         }
         else { #>
-        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name<T>(this IIntentTemplate<T> template) where T: <#= template.GetModelType() #>
+        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name<T>(this IIntentTemplate<T> template) where T: <#= UseType(template.GetModelType()) #>
         {
             return template.GetTypeName(<#= GetTypeName(template.Id, templateModel) #>.TemplateId, template.Model);
         }
 
-        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name(this IIntentTemplate template, <#= template.GetModelType() #> model)
+        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name(this IIntentTemplate template, <#= UseType(template.GetModelType()) #> model)
         {
             return template.GetTypeName(<#= GetTypeName(template.Id, templateModel) #>.TemplateId, model);
         }
