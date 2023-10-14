@@ -13,7 +13,7 @@ public class MappingModel
 {
     private readonly MappingManagerBase _manager;
 
-    public MappingModel(IElementToElementMapping mapping, MappingManagerBase manager) : this(mapping.MappingType, mapping.MappingTypeId, mapping.TargetElement, mapping.MappedEnds, manager)
+    public MappingModel(IElementToElementMapping mapping, MappingManagerBase manager) : this(mapping.Type, mapping.TypeId, mapping.TargetElement, mapping.MappedEnds, manager)
     {
     }
 
@@ -101,7 +101,7 @@ public abstract class MappingManagerBase
         //var mapping = CreateMapping(new MappingModel(model, this), GetUpdateMappingType);
         //ApplyReplacements(mapping);
 
-        var mappingModel = new MappingModel(model.MappingType, model.MappingTypeId, mappingEnd, this);
+        var mappingModel = new MappingModel(model.Type, model.TypeId, mappingEnd, this);
         var mapping = ResolveMappings(mappingModel);//, new ObjectUpdateMapping(mappingModel, _template));
         ApplyReplacements(mapping);
 
