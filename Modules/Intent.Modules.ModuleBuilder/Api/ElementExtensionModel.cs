@@ -45,9 +45,9 @@ namespace Intent.ModuleBuilder.Api
         public string Id => _element.Id;
 
         [IntentManaged(Mode.Fully)]
-        public IList<MappingSettingsModel> MappingSettings => _element.ChildElements
-            .GetElementsOfType(MappingSettingsModel.SpecializationTypeId)
-            .Select(x => new MappingSettingsModel(x))
+        public IList<MappingProjectionSettingsModel> MappingSettings => _element.ChildElements
+            .GetElementsOfType(MappingProjectionSettingsModel.SpecializationTypeId)
+            .Select(x => new MappingProjectionSettingsModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]

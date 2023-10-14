@@ -10,20 +10,20 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class MappingSettingsModelStereotypeExtensions
+    public static class MappingProjectionSettingsModelStereotypeExtensions
     {
-        public static MappingSettings GetMappingSettings(this MappingSettingsModel model)
+        public static MappingSettings GetMappingSettings(this MappingProjectionSettingsModel model)
         {
             var stereotype = model.GetStereotype("Mapping Settings");
             return stereotype != null ? new MappingSettings(stereotype) : null;
         }
 
-        public static bool HasMappingSettings(this MappingSettingsModel model)
+        public static bool HasMappingSettings(this MappingProjectionSettingsModel model)
         {
             return model.HasStereotype("Mapping Settings");
         }
 
-        public static bool TryGetMappingSettings(this MappingSettingsModel model, out MappingSettings stereotype)
+        public static bool TryGetMappingSettings(this MappingProjectionSettingsModel model, out MappingSettings stereotype)
         {
             if (!HasMappingSettings(model))
             {

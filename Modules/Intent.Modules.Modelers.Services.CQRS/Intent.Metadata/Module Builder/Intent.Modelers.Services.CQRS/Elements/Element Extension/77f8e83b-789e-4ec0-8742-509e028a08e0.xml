@@ -6,6 +6,7 @@
   <genericTypes />
   <typeReference id="92c82272-1056-4269-80b3-afaf53400e3d">
     <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
+    <typeName>Parameter</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

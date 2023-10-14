@@ -47,11 +47,6 @@ namespace Intent.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
-            public RepresentsOptions Represents()
-            {
-                return new RepresentsOptions(_stereotype.GetProperty<string>("Represents"));
-            }
-
             public bool CanBeModified()
             {
                 return _stereotype.GetProperty<bool>("Can Be Modified");
@@ -100,44 +95,6 @@ namespace Intent.ModuleBuilder.Api
             public IElement UseChildMappingsFrom()
             {
                 return _stereotype.GetProperty<IElement>("Use Child Mappings From");
-            }
-
-            public class RepresentsOptions
-            {
-                public readonly string Value;
-
-                public RepresentsOptions(string value)
-                {
-                    Value = value;
-                }
-
-                public RepresentsOptionsEnum AsEnum()
-                {
-                    switch (Value)
-                    {
-                        case "Data":
-                            return RepresentsOptionsEnum.Data;
-                        case "Invokable":
-                            return RepresentsOptionsEnum.Invokable;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                }
-
-                public bool IsData()
-                {
-                    return Value == "Data";
-                }
-                public bool IsInvokable()
-                {
-                    return Value == "Invokable";
-                }
-            }
-
-            public enum RepresentsOptionsEnum
-            {
-                Data,
-                Invokable
             }
 
         }

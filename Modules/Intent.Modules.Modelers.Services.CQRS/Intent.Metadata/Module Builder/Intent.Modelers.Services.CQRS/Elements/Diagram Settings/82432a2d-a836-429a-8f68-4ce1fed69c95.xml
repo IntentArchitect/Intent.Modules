@@ -33,6 +33,7 @@
           <genericTypes />
           <typeReference id="12fb17ce-a985-4821-9ca6-3c3db666c9f6">
             <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
+            <typeName>Command</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -73,6 +74,7 @@
           <genericTypes />
           <typeReference id="2df74d67-c252-4387-9365-861c6bb6efb0">
             <typeId>e71b0662-e29d-4db2-868b-8a12464b25d0</typeId>
+            <typeName>Query</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

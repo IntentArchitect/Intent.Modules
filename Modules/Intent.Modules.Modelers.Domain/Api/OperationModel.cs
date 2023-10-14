@@ -45,6 +45,7 @@ namespace Intent.Modelers.Domain.Api
         public ITypeReference ReturnType => TypeReference?.Element != null ? TypeReference : null;
 
         public bool IsAbstract => _element.IsAbstract;
+        public bool IsStatic => _element.IsStatic;
 
         [IntentManaged(Mode.Ignore)] public ClassModel ParentClass => new ClassModel(InternalElement.ParentElement);
 

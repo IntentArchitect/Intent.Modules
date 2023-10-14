@@ -12,35 +12,35 @@ namespace Intent.ModuleBuilder.Api
 {
     public static class SourceMappingSettingsModelStereotypeExtensions
     {
-        public static MappingTypeSettings GetMappingTypeSettings(this SourceMappingSettingsModel model)
+        public static MappingEndSettings GetMappingEndSettings(this SourceMappingSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Mapping Type Settings");
-            return stereotype != null ? new MappingTypeSettings(stereotype) : null;
+            var stereotype = model.GetStereotype("Mapping End Settings");
+            return stereotype != null ? new MappingEndSettings(stereotype) : null;
         }
 
 
-        public static bool HasMappingTypeSettings(this SourceMappingSettingsModel model)
+        public static bool HasMappingEndSettings(this SourceMappingSettingsModel model)
         {
-            return model.HasStereotype("Mapping Type Settings");
+            return model.HasStereotype("Mapping End Settings");
         }
 
-        public static bool TryGetMappingTypeSettings(this SourceMappingSettingsModel model, out MappingTypeSettings stereotype)
+        public static bool TryGetMappingEndSettings(this SourceMappingSettingsModel model, out MappingEndSettings stereotype)
         {
-            if (!HasMappingTypeSettings(model))
+            if (!HasMappingEndSettings(model))
             {
                 stereotype = null;
                 return false;
             }
 
-            stereotype = new MappingTypeSettings(model.GetStereotype("Mapping Type Settings"));
+            stereotype = new MappingEndSettings(model.GetStereotype("Mapping End Settings"));
             return true;
         }
 
-        public class MappingTypeSettings
+        public class MappingEndSettings
         {
             private IStereotype _stereotype;
 
-            public MappingTypeSettings(IStereotype stereotype)
+            public MappingEndSettings(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }

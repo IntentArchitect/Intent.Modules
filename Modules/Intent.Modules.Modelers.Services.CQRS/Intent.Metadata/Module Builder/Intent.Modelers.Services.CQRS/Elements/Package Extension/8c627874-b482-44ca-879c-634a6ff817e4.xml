@@ -7,6 +7,7 @@
   <genericTypes />
   <typeReference id="9a2d32cb-7c5a-42a1-a2d7-4c5986b30600">
     <typeId>df45eaf6-9202-4c25-8dd5-677e9ba1e906</typeId>
+    <typeName>Services Package</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -43,6 +44,7 @@
           <genericTypes />
           <typeReference id="09f535cb-6e63-4024-9043-f4e7e3488f3c">
             <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
+            <typeName>Command</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -83,6 +85,7 @@
           <genericTypes />
           <typeReference id="b428fcb8-f969-471e-9d93-b9470a2d61c4">
             <typeId>e71b0662-e29d-4db2-868b-8a12464b25d0</typeId>
+            <typeName>Query</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

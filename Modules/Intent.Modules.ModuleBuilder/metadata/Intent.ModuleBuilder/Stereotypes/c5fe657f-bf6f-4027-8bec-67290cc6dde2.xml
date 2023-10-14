@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="c5fe657f-bf6f-4027-8bec-67290cc6dde2" version="3.1.0">
-  <name>Mapping Type Settings</name>
+  <name>Mapping End Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
     <type id="1536425c-35f4-48e1-abe4-1f8f56533545">Source Mapping Settings</type>

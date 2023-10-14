@@ -146,12 +146,12 @@
         </childElement>
         <childElement id="ce0ea4ee-0f0b-4c35-b6ff-2e298842ba8e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Mapping Settings</name>
-          <display>Add Mapping Settings: Mapping Settings</display>
+          <display>Add Mapping Settings: Mapping Projection Settings</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="4b5532e4-45b6-4bbb-ad09-c8546702cbad">
             <typeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</typeId>
-            <typeName>Mapping Settings</typeName>
+            <typeName>Mapping Projection Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

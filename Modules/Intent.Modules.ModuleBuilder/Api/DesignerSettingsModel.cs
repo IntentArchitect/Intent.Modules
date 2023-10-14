@@ -130,9 +130,9 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new PackageExtensionModel(x))
             .ToList();
 
-        public IList<MappingTypeSettingsModel> MappingTypes => _element.ChildElements
-            .GetElementsOfType(MappingTypeSettingsModel.SpecializationTypeId)
-            .Select(x => new MappingTypeSettingsModel(x))
+        public IList<MappingSettingsModel> MappingTypes => _element.ChildElements
+            .GetElementsOfType(MappingSettingsModel.SpecializationTypeId)
+            .Select(x => new MappingSettingsModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]

@@ -20,20 +20,6 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
-    <property id="6ee5b3e3-628e-4996-87b5-08649e101887">
-      <name>Represents</name>
-      <type>string</type>
-      <controlType>select</controlType>
-      <optionsSource>options</optionsSource>
-      <placeholder />
-      <defaultValue>Data</defaultValue>
-      <valueOptions>
-        <option>Data</option>
-        <option>Invokable</option>
-      </valueOptions>
-      <lookupTypes />
-      <isRequiredFunction>return true;</isRequiredFunction>
-    </property>
     <property id="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41">
       <hint>Filters whether this setting can be applied to the underlying element.</hint>
       <name>Filter Function</name>
@@ -74,6 +60,7 @@
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="54dec827-b00b-4045-850d-c5d49c5777b2">
+      <comment>Delete</comment>
       <name>Maps To</name>
       <type>string</type>
       <controlType>multi-select</controlType>

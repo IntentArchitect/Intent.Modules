@@ -137,60 +137,14 @@ public abstract class MappingManagerBase
             }
         }
 
-        return defaultMapping ?? new DefaultCSharpMapping(model, _template);
-        //throw new Exception($"No mapping could be resolved for model: {model.Model.Name} [{model.Model.SpecializationType}] with mapping [{model.MappingType}]");
-        //var key = model.Model.TypeReference?.Element?.SpecializationType ?? ""; // what about operations that return?
-        //if (!_mappingResolvers.ContainsKey(key))
-        //{
-        //    key = model.Model.SpecializationType;
-        //}
-        //if (!_mappingResolvers.ContainsKey(key))
-        //{
-        //    key = "__default";
-        //}
-        //if (!_mappingResolvers.ContainsKey(key))
-        //{
-        //    return null; // throw?
-        //}
-
-        //var mapping = _mappingResolvers[key](model);
-        //foreach (var replacement in _fromReplacements)
-        //{
-        //    mapping.SetFromReplacement(replacement.Key, replacement.Value);
-        //}
-        //foreach (var replacement in _toReplacements)
-        //{
-        //    mapping.SetToReplacement(replacement.Key, replacement.Value);
-        //}
-        //return mapping;
+        return defaultMapping ?? (model.Mapping != null ? new DefaultCSharpMapping(model, _template) : new MapChildrenMapping(model, _template));
     }
-
-    //public ICSharpMapping ResolveUpdateMappings(MappingModel model)
-    //{
-    //    foreach (var resolver in _mappingResolvers)
-    //    {
-    //        var found = resolver.ResolveMappings(model);
-    //        if (found != null)
-    //        {
-    //            return found;
-    //        }
-    //    }
-
-    //    return null;
-    //}
+    
 
     public void AddMappingResolver(IMappingTypeResolver resolver)
     {
         _mappingResolvers.Add(resolver);
     }
-
-    //private ICSharpMapping CreateMapping(MappingModel model, Func<ICanBeReferencedType, IElementToElementMappedEnd, List<ICSharpMapping>, ICSharpMapping> mappingResolver)
-    //{
-    //    var children = model.Children
-    //        .Select(x => mappingResolver(x.Model, x.Mapping, x.Children.Select(c => CreateMapping(c, mappingResolver)).ToList()))
-    //        .ToList();
-    //    return mappingResolver(model.Model, model.Mapping, children);
-    //}
 
     private ICSharpMapping CreateMapping(
         ICanBeReferencedType model,

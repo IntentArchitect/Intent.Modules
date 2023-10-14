@@ -351,12 +351,12 @@
         </childElement>
         <childElement id="b880391c-843f-4472-bdcf-ce4480dc6e8c" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Mapping Type</name>
-          <display>New Mapping Type: Mapping Type Settings</display>
+          <display>New Mapping Type: Mapping Settings</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="1cf7edc7-8036-481f-8ece-eb4b35b2908a">
             <typeId>a901c634-6482-4993-ae3c-bd1b637f78d4</typeId>
-            <typeName>Mapping Type Settings</typeName>
+            <typeName>Mapping Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

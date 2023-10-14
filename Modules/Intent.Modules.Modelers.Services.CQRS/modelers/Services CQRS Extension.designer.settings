@@ -40,6 +40,7 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>true</allowMapping>
       <allowSorting>true</allowSorting>
@@ -232,6 +233,7 @@ element.getChildren("DTO-Field").forEach(x =&gt; {
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>true</allowMapping>
       <allowSorting>true</allowSorting>
@@ -431,6 +433,10 @@ vertical-align: center`</style>
                 <position x="${x}" y="${y + 6}" />
               </drawSvgResource>
             </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
             <defaultSize width="${x}" height="70" />
             <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings />
@@ -461,6 +467,7 @@ vertical-align: center`</style>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type order="1">Command</type>
         <type order="1">Query</type>
@@ -545,6 +552,7 @@ function setIfEmpty(stereotype, propertyName, defaultValue) {
     <elementExtension type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
       <creationOptions />
       <scriptOptions />
+      <mappingOptions />
       <typeOrder />
       <mappingSettings />
     </elementExtension>

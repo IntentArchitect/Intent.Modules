@@ -7,6 +7,7 @@
   <genericTypes />
   <typeReference id="922a2560-24ec-4df3-82d3-871922d35a40">
     <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
+    <typeName>Operation</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -67,6 +68,7 @@
           <genericTypes />
           <typeReference id="5130ceca-ba2f-4df4-8f8c-406351e3b4ef">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

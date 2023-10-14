@@ -16,7 +16,7 @@ namespace Intent.ModuleBuilder.Api
     public class MappingTypeSettingsModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Mapping Type Settings";
-        public const string SpecializationTypeId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
+        public const string SpecializationTypeId = "dd8e8a63-140c-41c8-b812-0dc923012fac";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
@@ -38,16 +38,6 @@ namespace Intent.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         public IElement InternalElement => _element;
-
-        public SourceMappingSettingsModel SourceMapping => _element.ChildElements
-            .GetElementsOfType(SourceMappingSettingsModel.SpecializationTypeId)
-            .Select(x => new SourceMappingSettingsModel(x))
-            .SingleOrDefault();
-
-        public TargetMappingSettingsModel TargetMapping => _element.ChildElements
-            .GetElementsOfType(TargetMappingSettingsModel.SpecializationTypeId)
-            .Select(x => new TargetMappingSettingsModel(x))
-            .SingleOrDefault();
 
         public override string ToString()
         {
@@ -72,18 +62,20 @@ namespace Intent.ModuleBuilder.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
-        [IntentManaged(Mode.Ignore)]
-        public MappingElementToElementSettingsPersistable ToPersistable()
+        [IntentIgnore]
+        public MappingElementToElementMappingTypePersistable ToPersistable()
         {
-            return new MappingElementToElementSettingsPersistable()
+            return new MappingElementToElementMappingTypePersistable
             {
                 MappingTypeId = Id,
                 MappingType = Name,
-                SourceRootElementFunction = SourceMapping.GetMappingTypeSettings().RootElementFunction(),
-                TargetRootElementFunction = TargetMapping.GetMappingTypeSettings().RootElementFunction(),
-                Title = Name,
-                SourceMappings = SourceMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
-                TargetMappings = TargetMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
+                Sources = this.GetMappingTypeSettings().Sources().Select(x => new MappingElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
+                Targets = this.GetMappingTypeSettings().Targets().Select(x => new MappingElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
+                Represents = Enum.TryParse<ElementMappingRepresentation>(this.GetMappingTypeSettings().Represents().Value, out var represents) ? represents : ElementMappingRepresentation.Unknown,
+                LineColor = this.GetMappingTypeSettings().LineColor(),
+                LineDashArray = this.GetMappingTypeSettings().LineDashArray(),
+                ValidationFunction = this.GetMappingTypeSettings().ValidationFunction(),
+                AllowAutoMap = true, // TODO
             };
         }
     }

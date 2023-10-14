@@ -404,11 +404,15 @@ if (namingConvention == "pascal-case") {
             </option>
           </creationOptions>
           <scriptOptions />
-          <mappingOptions />
+          <mappingOptions>
+            <option mappingType="Domain Entity Mapping" mappingTypeId="d2a7e80f-a237-4d2d-97b4-eb88363b680f">
+              <text>Map To Entity</text>
+              <shortcut>ctrl + shift + m</shortcut>
+            </option>
+          </mappingOptions>
           <mappingSettings>
             <mappingSetting id="7590bd83-04bc-40fe-8b5c-118277c049d4">
               <name>Map Operation</name>
-              <shortcut>ctrl + shift + m</shortcut>
               <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
               <optionsSource>lookup-element</optionsSource>
               <lookupElementFunction>return getParent().id</lookupElementFunction>
@@ -542,11 +546,15 @@ if (namingConvention == "pascal-case") {
             </option>
           </creationOptions>
           <scriptOptions />
-          <mappingOptions />
+          <mappingOptions>
+            <option mappingType="Domain Entity Mapping" mappingTypeId="d2a7e80f-a237-4d2d-97b4-eb88363b680f">
+              <text>Map To Entity</text>
+              <shortcut>ctrl + shift + m</shortcut>
+            </option>
+          </mappingOptions>
           <mappingSettings>
             <mappingSetting id="d6d0abfd-893c-4bec-92cb-419934ba5ba8">
               <name>Map Constructor</name>
-              <shortcut>ctrl + shift + m</shortcut>
               <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
               <optionsSource>lookup-element</optionsSource>
               <lookupElementFunction>return getParent().id</lookupElementFunction>
@@ -1049,5 +1057,87 @@ return null;</lineDashArray>
     </associationSetting>
   </associationSettings>
   <associationExtensions />
-  <mappingSettings />
+  <mappingSettings>
+    <mappingSetting type="Domain Entity Mapping" typeId="d2a7e80f-a237-4d2d-97b4-eb88363b680f">
+      <title>Domain Entity Mapping</title>
+      <targetRootElementFunction>return element.getParent().id</targetRootElementFunction>
+      <sourceMappings>
+        <mapping id="df69461f-6d06-4424-a4e9-ababff4369eb" name="Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="6279b832-87aa-45ec-9f57-c2f8b6a73b47" name="Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <mapsTo>
+                <mappingId>d3c49802-55d0-4188-8f2e-1b3a8a414a0b</mappingId>
+                <mappingId>0d551f4a-96fb-48d8-b3ed-31617ba3bb02</mappingId>
+              </mapsTo>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="5eaea40a-cd82-4029-9a1d-f48a74faeaed" name="Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="2d77b87e-862d-412b-bfb0-cbd1f1f2f719" name="Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <mapsTo>
+                <mappingId>d3c49802-55d0-4188-8f2e-1b3a8a414a0b</mappingId>
+                <mappingId>0d551f4a-96fb-48d8-b3ed-31617ba3bb02</mappingId>
+              </mapsTo>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+      </sourceMappings>
+      <targetMappings>
+        <mapping id="d47d5dc6-bf39-42bd-8df4-806f2e3d4afb" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+          <represents>data</represents>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <mapsTo />
+          <childSettings>
+            <childSetting id="d3c49802-55d0-4188-8f2e-1b3a8a414a0b" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+              <represents>data</represents>
+              <filterFunction>return !element.hasStereotype("Primary Key")</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <mapsTo />
+              <childSettings />
+            </childSetting>
+            <childSetting id="0d551f4a-96fb-48d8-b3ed-31617ba3bb02" name="Association" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+              <represents>data</represents>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <mapsTo />
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+      </targetMappings>
+    </mappingSetting>
+  </mappingSettings>
 </settings>

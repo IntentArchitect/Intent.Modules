@@ -63,7 +63,7 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParam
 
     public CSharpParameter WithDefaultValue(string defaultValue)
     {
-        DefaultValue = defaultValue;
+        DefaultValue = string.IsNullOrWhiteSpace(defaultValue) ? null : defaultValue;
         return this;
     }
 

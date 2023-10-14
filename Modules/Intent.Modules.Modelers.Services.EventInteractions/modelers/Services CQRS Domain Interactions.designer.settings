@@ -465,168 +465,145 @@ vertical-align: center`</style>
       <title>Integration Event Handler to Command Mapping</title>
       <sourceMappings>
         <mapping id="2893a19b-523a-49e9-b828-2961b0fba28f" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <traversableTypes />
           <canBeModified>false</canBeModified>
-          <mapsTo />
           <childSettings>
             <childSetting id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc">
-              <represents>data</represents>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
                 <mappingId>b5626f4a-fc65-4cdd-b921-e7d1b347c9f4</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
-              <mapsTo>
-                <mappingId>7829c6b8-a045-4a3e-b9c2-13795f128879</mappingId>
-              </mapsTo>
               <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
         <mapping id="b5626f4a-fc65-4cdd-b921-e7d1b347c9f4" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <traversableTypes />
           <canBeModified>false</canBeModified>
-          <mapsTo />
           <childSettings>
             <childSetting id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7">
-              <represents>data</represents>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
                 <mappingId>b5626f4a-fc65-4cdd-b921-e7d1b347c9f4</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
-              <mapsTo>
-                <mappingId>7829c6b8-a045-4a3e-b9c2-13795f128879</mappingId>
-              </mapsTo>
               <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
         <mapping id="4b0cdf16-f119-438d-98a3-7ced24aafba3" name="Subscribe Integration Event" type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <traversableTypes>
             <mappingId>2893a19b-523a-49e9-b828-2961b0fba28f</mappingId>
           </traversableTypes>
           <canBeModified>false</canBeModified>
-          <mapsTo />
           <childSettings />
         </mapping>
       </sourceMappings>
       <targetMappings>
         <mapping id="7f5d49dd-fd48-4f29-8126-b1b0c881a99c" name="Send Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
           <canBeModified>true</canBeModified>
-          <mapsTo />
           <childSettings>
             <childSetting id="7829c6b8-a045-4a3e-b9c2-13795f128879" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
-              <represents>data</represents>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
                 <mappingId>8dd4a85c-056b-4d02-859c-e6d274b89580</mappingId>
               </traversableTypes>
               <canBeModified>true</canBeModified>
-              <mapsTo />
               <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
         <mapping id="8dd4a85c-056b-4d02-859c-e6d274b89580" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
-          <mapsTo />
           <useChildSettingsFrom>7f5d49dd-fd48-4f29-8126-b1b0c881a99c</useChildSettingsFrom>
           <childSettings />
         </mapping>
       </targetMappings>
+      <mappingTypes>
+        <mappingType type="Data Mapping" typeId="1ad97d12-2aa8-4f03-8cb0-3a8a4e71b4d9">
+          <represents>data</represents>
+          <sources>
+            <source id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" name="Property" />
+            <source id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" />
+          </sources>
+          <targets>
+            <target id="7829c6b8-a045-4a3e-b9c2-13795f128879" name="Field" />
+          </targets>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+      </mappingTypes>
     </mappingSetting>
     <mappingSetting type="Publish Message Mapping" typeId="7ff48a4c-ee8b-4e66-9dbb-c014eb0542fb">
       <title>Publish Message Mapping</title>
       <sourceMappings>
         <mapping id="39b8fb93-4d76-4151-8961-a7b3d2266993" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
           <canBeModified>true</canBeModified>
-          <mapsTo />
           <childSettings>
             <childSetting id="d5d4257c-3e82-4843-824d-cd84877c72f7" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
-              <represents>data</represents>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
                 <mappingId>fec56eb6-de77-4180-84f8-5578f0f908c4</mappingId>
               </traversableTypes>
               <canBeModified>true</canBeModified>
-              <mapsTo>
-                <mappingId>a7d2076d-4c3a-45bd-9d55-165fb4572557</mappingId>
-                <mappingId>972c5a10-0416-4760-9f84-de002d4ef2a7</mappingId>
-              </mapsTo>
               <childSettings />
             </childSetting>
             <childSetting id="c44c9979-10ea-4811-b72e-7ff1e55829eb" name="Create Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016">
-              <represents>data</represents>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <traversableTypes>
                 <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
-              <mapsTo />
               <childSettings />
             </childSetting>
             <childSetting id="4e15f8c8-3277-42e6-923f-13d6a53170db" name="Update Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452">
-              <represents>data</represents>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <traversableTypes>
                 <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
-              <mapsTo />
               <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
         <mapping id="fec56eb6-de77-4180-84f8-5578f0f908c4" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
-          <mapsTo />
           <useChildSettingsFrom>39b8fb93-4d76-4151-8961-a7b3d2266993</useChildSettingsFrom>
           <childSettings />
         </mapping>
         <mapping id="a5471c22-a058-4137-9ba5-29b71efa10d7" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
           <canBeModified>false</canBeModified>
-          <mapsTo />
           <childSettings>
             <childSetting id="f309f99d-4104-41f7-82b4-a783fe53712d" name="Update Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-              <represents>data</represents>
               <isRequiredFunction>return element.hasStereotype("Primary Key");</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -634,53 +611,36 @@ vertical-align: center`</style>
                 <mappingId>0940039a-eb90-42e3-8284-b2b13215e2ab</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
-              <mapsTo>
-                <mappingId>a7d2076d-4c3a-45bd-9d55-165fb4572557</mappingId>
-                <mappingId>972c5a10-0416-4760-9f84-de002d4ef2a7</mappingId>
-              </mapsTo>
               <childSettings />
             </childSetting>
             <childSetting id="cc259acd-75c4-4b1e-be12-77eaba119415" name="Update Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
-              <represents>data</represents>
               <isRequiredFunction>return false;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
+              <isMappableFunction>return element.typeReference.getIsCollection();</isMappableFunction>
               <traversableTypes>
                 <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
                 <mappingId>0940039a-eb90-42e3-8284-b2b13215e2ab</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
-              <mapsTo>
-                <mappingId>a7d2076d-4c3a-45bd-9d55-165fb4572557</mappingId>
-                <mappingId>972c5a10-0416-4760-9f84-de002d4ef2a7</mappingId>
-              </mapsTo>
               <useChildSettingsFrom>a5471c22-a058-4137-9ba5-29b71efa10d7</useChildSettingsFrom>
               <childSettings />
             </childSetting>
             <childSetting id="45eab8e7-3299-4973-bd01-8ef5e6c96900" name="Invoke Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
-              <represents>data</represents>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return element.typeReference?.getType() != null &amp;&amp; element.getChildren().length == 0;</isMappableFunction>
               <traversableTypes />
               <canBeModified>false</canBeModified>
-              <mapsTo>
-                <mappingId>a7d2076d-4c3a-45bd-9d55-165fb4572557</mappingId>
-                <mappingId>972c5a10-0416-4760-9f84-de002d4ef2a7</mappingId>
-              </mapsTo>
               <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
         <mapping id="0940039a-eb90-42e3-8284-b2b13215e2ab" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
           <canBeModified>false</canBeModified>
-          <mapsTo />
           <childSettings>
             <childSetting id="0abd5a93-e96d-4ed5-9ca4-f5359ce0af7c" name="Value Object Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-              <represents>data</represents>
               <isRequiredFunction>return true;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -688,35 +648,26 @@ vertical-align: center`</style>
                 <mappingId>0940039a-eb90-42e3-8284-b2b13215e2ab</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
-              <mapsTo>
-                <mappingId>a7d2076d-4c3a-45bd-9d55-165fb4572557</mappingId>
-                <mappingId>972c5a10-0416-4760-9f84-de002d4ef2a7</mappingId>
-              </mapsTo>
               <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
         <mapping id="15794498-a110-4cd6-a692-4bb30ef9eaf3" name="Domain Event Handler" type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes>
             <mappingId>3dd3a327-e1eb-4fc2-9272-96c180bd1d92</mappingId>
           </traversableTypes>
           <canBeModified>false</canBeModified>
-          <mapsTo />
           <childSettings />
         </mapping>
         <mapping id="3dd3a327-e1eb-4fc2-9272-96c180bd1d92" name="Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
           <canBeModified>false</canBeModified>
-          <mapsTo />
           <childSettings>
             <childSetting id="6859b560-e0ea-400a-9f3d-408f82727367" name="Domain Event Property" type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed">
-              <represents>data</represents>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
@@ -724,7 +675,6 @@ vertical-align: center`</style>
                 <mappingId>0940039a-eb90-42e3-8284-b2b13215e2ab</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
-              <mapsTo />
               <childSettings />
             </childSetting>
           </childSettings>
@@ -732,15 +682,12 @@ vertical-align: center`</style>
       </sourceMappings>
       <targetMappings>
         <mapping id="5522e13c-4b8a-464d-802a-83a6d1e5b211" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
           <canBeModified>true</canBeModified>
-          <mapsTo />
           <childSettings>
             <childSetting id="a7d2076d-4c3a-45bd-9d55-165fb4572557" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc">
-              <represents>data</represents>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
@@ -748,56 +695,64 @@ vertical-align: center`</style>
                 <mappingId>4bebd0c2-e53b-41a9-9d18-68f7fc4bec81</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
-              <mapsTo />
               <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
         <mapping id="4155744e-cc1e-495e-9a82-b3702548afe0" name="Publish Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <createNameFunction>return element.getParent('Message').getName() + element.getName() + 'Dto'</createNameFunction>
-          <mapsTo />
           <childSettings>
             <childSetting id="972c5a10-0416-4760-9f84-de002d4ef2a7" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7">
-              <represents>data</represents>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
                 <mappingId>4155744e-cc1e-495e-9a82-b3702548afe0</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
-              <mapsTo />
               <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
         <mapping id="4bebd0c2-e53b-41a9-9d18-68f7fc4bec81" name="Publish DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
-          <represents>data</represents>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <createNameFunction>return element.getParent('Message').getName() + element.getName() + 'Dto'</createNameFunction>
-          <mapsTo />
           <childSettings>
             <childSetting id="ff7ac0b8-9196-42c9-8196-241846f0ef60" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
-              <represents>data</represents>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
                 <mappingId>4bebd0c2-e53b-41a9-9d18-68f7fc4bec81</mappingId>
               </traversableTypes>
               <canBeModified>true</canBeModified>
-              <mapsTo />
               <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
       </targetMappings>
+      <mappingTypes>
+        <mappingType type="NewMappingType" typeId="d12e5102-45f3-4dde-8f63-f6a630e75771">
+          <represents>data</represents>
+          <sources>
+            <source id="d5d4257c-3e82-4843-824d-cd84877c72f7" name="Field" />
+            <source id="f309f99d-4104-41f7-82b4-a783fe53712d" name="Update Attribute" />
+            <source id="6859b560-e0ea-400a-9f3d-408f82727367" name="Domain Event Property" />
+            <source id="cc259acd-75c4-4b1e-be12-77eaba119415" name="Update Association Target End" />
+          </sources>
+          <targets>
+            <target id="a7d2076d-4c3a-45bd-9d55-165fb4572557" name="Property" />
+            <target id="972c5a10-0416-4760-9f84-de002d4ef2a7" name="Eventing DTO Field" />
+            <target id="ff7ac0b8-9196-42c9-8196-241846f0ef60" name="Field" />
+          </targets>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+      </mappingTypes>
     </mappingSetting>
   </mappingSettings>
 </settings>

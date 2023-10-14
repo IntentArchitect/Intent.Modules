@@ -145,7 +145,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="fe437011-d386-4a35-be0c-21a4180821ba" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+    <childElement id="fe437011-d386-4a35-be0c-21a4180821ba" type="Mapping Projection Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
       <name>Map from Class</name>
       <display>[mappings]: Map from Class</display>
       <isAbstract>false</isAbstract>
