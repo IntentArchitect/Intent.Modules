@@ -6,8 +6,8 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions", Version = "1.0")]
 
 namespace Intent.Modelers.Services.Api
 {

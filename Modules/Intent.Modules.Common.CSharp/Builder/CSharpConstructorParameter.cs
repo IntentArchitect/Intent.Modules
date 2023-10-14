@@ -52,6 +52,10 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
     {
         _constructor.Class.AddField(Type, Name.ToPrivateMemberName(), field =>
         {
+            foreach (var kvp in Metadata)
+            {
+                field.AddMetadata(kvp.Key, kvp.Value);
+            }
             var statement = new CSharpFieldAssignmentStatement(field.Name, Name);
             _constructor.AddStatement(statement);
             configure?.Invoke(field, statement);
@@ -82,6 +86,10 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
     {
         _constructor.Class.AddProperty(Type, Name.ToPropertyName(), property =>
         {
+            foreach (var kvp in Metadata)
+            {
+                property.AddMetadata(kvp.Key, kvp.Value);
+            }
             var statement = new CSharpFieldAssignmentStatement(property.Name, Name);
             _constructor.AddStatement(statement);
             configure?.Invoke(property, statement);

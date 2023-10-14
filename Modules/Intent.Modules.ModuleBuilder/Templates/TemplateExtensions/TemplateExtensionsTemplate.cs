@@ -119,7 +119,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
             this.Write("Name<T>(this IIntentTemplate<T> template) where T: ");
             
             #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(template.GetModelType()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(UseType(template.GetModelType())));
             
             #line default
             #line hidden
@@ -140,7 +140,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
             this.Write("Name(this IIntentTemplate template, ");
             
             #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(template.GetModelType()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(UseType(template.GetModelType())));
             
             #line default
             #line hidden

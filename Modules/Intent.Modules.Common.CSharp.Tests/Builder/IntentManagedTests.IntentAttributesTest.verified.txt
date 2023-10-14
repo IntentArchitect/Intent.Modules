@@ -1,0 +1,16 @@
+﻿
+[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: IntentTagModeExplicit]
+[assembly: IntentTagModeImplicit]
+[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Ignore)]
+
+namespace Namespace
+{
+    [IntentManaged(Mode.Fully)]
+    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Ignore)]
+    public class Class
+    {
+    }
+}

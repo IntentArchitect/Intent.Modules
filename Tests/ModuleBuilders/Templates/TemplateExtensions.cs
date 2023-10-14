@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using ModuleBuilders.Templates.CSharp.CSharpCustomBuilder;
@@ -66,42 +67,42 @@ namespace ModuleBuilders.Templates
             return template.GetTypeName(CSharpCustomT4Template.TemplateId);
         }
 
-        public static string GetCSharpFilePerModelBuilderTemplateName<T>(this IIntentTemplate<T> template) where T : Intent.Modelers.Domain.Api.ClassModel
+        public static string GetCSharpFilePerModelBuilderTemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
         {
             return template.GetTypeName(CSharpFilePerModelBuilderTemplate.TemplateId, template.Model);
         }
 
-        public static string GetCSharpFilePerModelBuilderTemplateName(this IIntentTemplate template, Intent.Modelers.Domain.Api.ClassModel model)
+        public static string GetCSharpFilePerModelBuilderTemplateName(this IIntentTemplate template, ClassModel model)
         {
             return template.GetTypeName(CSharpFilePerModelBuilderTemplate.TemplateId, model);
         }
 
-        public static string GetCSharpFilePerModelCustomTemplateName<T>(this IIntentTemplate<T> template) where T : Intent.Modelers.Domain.Api.ClassModel
+        public static string GetCSharpFilePerModelCustomTemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
         {
             return template.GetTypeName(CSharpFilePerModelCustomTemplate.TemplateId, template.Model);
         }
 
-        public static string GetCSharpFilePerModelCustomTemplateName(this IIntentTemplate template, Intent.Modelers.Domain.Api.ClassModel model)
+        public static string GetCSharpFilePerModelCustomTemplateName(this IIntentTemplate template, ClassModel model)
         {
             return template.GetTypeName(CSharpFilePerModelCustomTemplate.TemplateId, model);
         }
 
-        public static string GetCSharpFilePerModelStringInterTemplateName<T>(this IIntentTemplate<T> template) where T : Intent.Modelers.Domain.Api.ClassModel
+        public static string GetCSharpFilePerModelStringInterTemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
         {
             return template.GetTypeName(CSharpFilePerModelStringInterTemplate.TemplateId, template.Model);
         }
 
-        public static string GetCSharpFilePerModelStringInterTemplateName(this IIntentTemplate template, Intent.Modelers.Domain.Api.ClassModel model)
+        public static string GetCSharpFilePerModelStringInterTemplateName(this IIntentTemplate template, ClassModel model)
         {
             return template.GetTypeName(CSharpFilePerModelStringInterTemplate.TemplateId, model);
         }
 
-        public static string GetCSharpFilePerModelT4TemplateName<T>(this IIntentTemplate<T> template) where T : Intent.Modelers.Domain.Api.ClassModel
+        public static string GetCSharpFilePerModelT4TemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
         {
             return template.GetTypeName(CSharpFilePerModelT4Template.TemplateId, template.Model);
         }
 
-        public static string GetCSharpFilePerModelT4TemplateName(this IIntentTemplate template, Intent.Modelers.Domain.Api.ClassModel model)
+        public static string GetCSharpFilePerModelT4TemplateName(this IIntentTemplate template, ClassModel model)
         {
             return template.GetTypeName(CSharpFilePerModelT4Template.TemplateId, model);
         }
@@ -146,42 +147,42 @@ namespace ModuleBuilders.Templates
             return template.GetTypeName(JavaCustomT4Template.TemplateId);
         }
 
-        public static string GetJavaFilePerModelBuilderTemplateName<T>(this IIntentTemplate<T> template) where T : Intent.Modelers.Domain.Api.ClassModel
+        public static string GetJavaFilePerModelBuilderTemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
         {
             return template.GetTypeName(JavaFilePerModelBuilderTemplate.TemplateId, template.Model);
         }
 
-        public static string GetJavaFilePerModelBuilderTemplateName(this IIntentTemplate template, Intent.Modelers.Domain.Api.ClassModel model)
+        public static string GetJavaFilePerModelBuilderTemplateName(this IIntentTemplate template, ClassModel model)
         {
             return template.GetTypeName(JavaFilePerModelBuilderTemplate.TemplateId, model);
         }
 
-        public static string GetJavaFilePerModelCustomTemplateName<T>(this IIntentTemplate<T> template) where T : Intent.Modelers.Domain.Api.ClassModel
+        public static string GetJavaFilePerModelCustomTemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
         {
             return template.GetTypeName(JavaFilePerModelCustomTemplate.TemplateId, template.Model);
         }
 
-        public static string GetJavaFilePerModelCustomTemplateName(this IIntentTemplate template, Intent.Modelers.Domain.Api.ClassModel model)
+        public static string GetJavaFilePerModelCustomTemplateName(this IIntentTemplate template, ClassModel model)
         {
             return template.GetTypeName(JavaFilePerModelCustomTemplate.TemplateId, model);
         }
 
-        public static string GetJavaFilePerModelStringInterTemplateName<T>(this IIntentTemplate<T> template) where T : Intent.Modelers.Domain.Api.ClassModel
+        public static string GetJavaFilePerModelStringInterTemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
         {
             return template.GetTypeName(JavaFilePerModelStringInterTemplate.TemplateId, template.Model);
         }
 
-        public static string GetJavaFilePerModelStringInterTemplateName(this IIntentTemplate template, Intent.Modelers.Domain.Api.ClassModel model)
+        public static string GetJavaFilePerModelStringInterTemplateName(this IIntentTemplate template, ClassModel model)
         {
             return template.GetTypeName(JavaFilePerModelStringInterTemplate.TemplateId, model);
         }
 
-        public static string GetJavaFilePerModelT4TemplateName<T>(this IIntentTemplate<T> template) where T : Intent.Modelers.Domain.Api.ClassModel
+        public static string GetJavaFilePerModelT4TemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
         {
             return template.GetTypeName(JavaFilePerModelT4Template.TemplateId, template.Model);
         }
 
-        public static string GetJavaFilePerModelT4TemplateName(this IIntentTemplate template, Intent.Modelers.Domain.Api.ClassModel model)
+        public static string GetJavaFilePerModelT4TemplateName(this IIntentTemplate template, ClassModel model)
         {
             return template.GetTypeName(JavaFilePerModelT4Template.TemplateId, model);
         }
@@ -226,42 +227,42 @@ namespace ModuleBuilders.Templates
             return template.GetTypeName(TypeScriptCustomT4Template.TemplateId);
         }
 
-        public static string GetTypeScriptFilePerModelBuilderTemplateName<T>(this IIntentTemplate<T> template) where T : Intent.Modelers.Domain.Api.ClassModel
+        public static string GetTypeScriptFilePerModelBuilderTemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
         {
             return template.GetTypeName(TypeScriptFilePerModelBuilderTemplate.TemplateId, template.Model);
         }
 
-        public static string GetTypeScriptFilePerModelBuilderTemplateName(this IIntentTemplate template, Intent.Modelers.Domain.Api.ClassModel model)
+        public static string GetTypeScriptFilePerModelBuilderTemplateName(this IIntentTemplate template, ClassModel model)
         {
             return template.GetTypeName(TypeScriptFilePerModelBuilderTemplate.TemplateId, model);
         }
 
-        public static string GetTypeScriptFilePerModelCustomTemplateName<T>(this IIntentTemplate<T> template) where T : Intent.Modelers.Domain.Api.ClassModel
+        public static string GetTypeScriptFilePerModelCustomTemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
         {
             return template.GetTypeName(TypeScriptFilePerModelCustomTemplate.TemplateId, template.Model);
         }
 
-        public static string GetTypeScriptFilePerModelCustomTemplateName(this IIntentTemplate template, Intent.Modelers.Domain.Api.ClassModel model)
+        public static string GetTypeScriptFilePerModelCustomTemplateName(this IIntentTemplate template, ClassModel model)
         {
             return template.GetTypeName(TypeScriptFilePerModelCustomTemplate.TemplateId, model);
         }
 
-        public static string GetTypeScriptFilePerModelStringInterTemplateName<T>(this IIntentTemplate<T> template) where T : Intent.Modelers.Domain.Api.ClassModel
+        public static string GetTypeScriptFilePerModelStringInterTemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
         {
             return template.GetTypeName(TypeScriptFilePerModelStringInterTemplate.TemplateId, template.Model);
         }
 
-        public static string GetTypeScriptFilePerModelStringInterTemplateName(this IIntentTemplate template, Intent.Modelers.Domain.Api.ClassModel model)
+        public static string GetTypeScriptFilePerModelStringInterTemplateName(this IIntentTemplate template, ClassModel model)
         {
             return template.GetTypeName(TypeScriptFilePerModelStringInterTemplate.TemplateId, model);
         }
 
-        public static string GetTypeScriptFilePerModelT4TemplateName<T>(this IIntentTemplate<T> template) where T : Intent.Modelers.Domain.Api.ClassModel
+        public static string GetTypeScriptFilePerModelT4TemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
         {
             return template.GetTypeName(TypeScriptFilePerModelT4Template.TemplateId, template.Model);
         }
 
-        public static string GetTypeScriptFilePerModelT4TemplateName(this IIntentTemplate template, Intent.Modelers.Domain.Api.ClassModel model)
+        public static string GetTypeScriptFilePerModelT4TemplateName(this IIntentTemplate template, ClassModel model)
         {
             return template.GetTypeName(TypeScriptFilePerModelT4Template.TemplateId, model);
         }

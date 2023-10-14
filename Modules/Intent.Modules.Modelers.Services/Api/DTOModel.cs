@@ -7,8 +7,8 @@ using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Utils;
 
-[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modelers.Services.Api
 {

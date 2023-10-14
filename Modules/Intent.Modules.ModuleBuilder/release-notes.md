@@ -1,3 +1,7 @@
+### Version 3.6.13
+
+- Improvement: `TemplateExtensions` will now simply fully qualified type names and add using directives as appropriate.
+
 ### Version 3.6.11
 
 - Fixed: Internal module dependency updates to be on the latest versions.
