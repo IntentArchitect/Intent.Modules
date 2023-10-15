@@ -78,23 +78,28 @@ function updatePrimaryKey(element) {
         updateDerivedTypePks(element);
         return;
     }
-    if (idAttr == null) {
-        const classNameWithId = `${element.getName()}Id`.toLowerCase();
-        idAttr = element.getChildren("Attribute")
-            .find(attribute =&gt; {
-            const attributeName = attribute.getName().toLowerCase();
-            return attributeName === "id" || attributeName === classNameWithId;
-        });
+    if (isTableStorage(element)) {
+        updateTableStoragePk(element);
     }
-    if (idAttr == null) {
-        idAttr = createElement("Attribute", "Id", element.id);
-        idAttr.setOrder(0);
-        if (idAttr.typeReference == null)
-            throw new Error("typeReference is not defined");
-        idAttr.typeReference.setType(getDefaultIdType());
-    }
-    if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
-        idAttr.addStereotype(primaryKeyStereotypeId);
+    else {
+        if (idAttr == null) {
+            const classNameWithId = `${element.getName()}Id`.toLowerCase();
+            idAttr = element.getChildren("Attribute")
+                .find(attribute =&gt; {
+                const attributeName = attribute.getName().toLowerCase();
+                return attributeName === "id" || attributeName === classNameWithId;
+            });
+        }
+        if (idAttr == null) {
+            idAttr = createElement("Attribute", "Id", element.id);
+            idAttr.setOrder(0);
+            if (idAttr.typeReference == null)
+                throw new Error("typeReference is not defined");
+            idAttr.typeReference.setType(getDefaultIdType());
+        }
+        if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
+            idAttr.addStereotype(primaryKeyStereotypeId);
+        }
     }
     updateDerivedTypePks(element);
     function derivedFromTypeHasPk(element) {
@@ -112,11 +117,46 @@ function updatePrimaryKey(element) {
         });
     }
     function updateDerivedTypePks(element) {
-        var derivedTypes = element.getAssociations("Generalization")
+        const derivedTypes = element.getAssociations("Generalization")
             .filter(generalization =&gt; generalization.isSourceEnd())
             .map(generalization =&gt; generalization.typeReference.getType());
         for (const derivedType of derivedTypes) {
             updatePrimaryKey(derivedType);
+        }
+    }
+}
+function isTableStorage(element) {
+    var _a, _b;
+    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    const tableStorageProvider = "1d05ee8e-747f-4120-9647-29ac784ef633";
+    var docDbStereotype = element.getPackage().getStereotype(documentStoreId);
+    let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
+    return ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == tableStorageProvider) ||
+        ((_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()).id == tableStorageProvider);
+}
+function updateTableStoragePk(element) {
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+    let idAttrs = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
+    if (!isAggregateRoot(element)) {
+        if (idAttrs.length &gt; 0) {
+            idAttrs.forEach(key =&gt; key.delete());
+        }
+    }
+    else {
+        //Keys arn't right
+        if (!(idAttrs.length == 2 &amp;&amp; idAttrs[0].getName() == "PartitionKey" &amp;&amp; idAttrs[1].getName() == "RowKey")) {
+            if (idAttrs.length &gt; 0) {
+                idAttrs.forEach(key =&gt; key.delete());
+            }
+            let rowKeyAttr = createElement("Attribute", "RowKey", element.id);
+            rowKeyAttr.setOrder(0);
+            rowKeyAttr.typeReference.setType(stringTypeId);
+            rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let partitionKeyAttr = createElement("Attribute", "PartitionKey", element.id);
+            partitionKeyAttr.setOrder(0);
+            partitionKeyAttr.typeReference.setType(stringTypeId);
+            partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
         }
     }
 }
@@ -340,23 +380,28 @@ function updatePrimaryKey(element) {
         updateDerivedTypePks(element);
         return;
     }
-    if (idAttr == null) {
-        const classNameWithId = `${element.getName()}Id`.toLowerCase();
-        idAttr = element.getChildren("Attribute")
-            .find(attribute =&gt; {
-            const attributeName = attribute.getName().toLowerCase();
-            return attributeName === "id" || attributeName === classNameWithId;
-        });
+    if (isTableStorage(element)) {
+        updateTableStoragePk(element);
     }
-    if (idAttr == null) {
-        idAttr = createElement("Attribute", "Id", element.id);
-        idAttr.setOrder(0);
-        if (idAttr.typeReference == null)
-            throw new Error("typeReference is not defined");
-        idAttr.typeReference.setType(getDefaultIdType());
-    }
-    if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
-        idAttr.addStereotype(primaryKeyStereotypeId);
+    else {
+        if (idAttr == null) {
+            const classNameWithId = `${element.getName()}Id`.toLowerCase();
+            idAttr = element.getChildren("Attribute")
+                .find(attribute =&gt; {
+                const attributeName = attribute.getName().toLowerCase();
+                return attributeName === "id" || attributeName === classNameWithId;
+            });
+        }
+        if (idAttr == null) {
+            idAttr = createElement("Attribute", "Id", element.id);
+            idAttr.setOrder(0);
+            if (idAttr.typeReference == null)
+                throw new Error("typeReference is not defined");
+            idAttr.typeReference.setType(getDefaultIdType());
+        }
+        if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
+            idAttr.addStereotype(primaryKeyStereotypeId);
+        }
     }
     updateDerivedTypePks(element);
     function derivedFromTypeHasPk(element) {
@@ -379,6 +424,41 @@ function updatePrimaryKey(element) {
             .map(generalization =&gt; generalization.typeReference.getType());
         for (const derivedType of derivedTypes) {
             updatePrimaryKey(derivedType);
+        }
+    }
+}
+function isTableStorage(element) {
+    var _a, _b;
+    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    const tableStorageProvider = "1d05ee8e-747f-4120-9647-29ac784ef633";
+    var docDbStereotype = element.getPackage().getStereotype(documentStoreId);
+    let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
+    return ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == tableStorageProvider) ||
+        ((_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()).id == tableStorageProvider);
+}
+function updateTableStoragePk(element) {
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+    let idAttrs = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
+    if (!isAggregateRoot(element)) {
+        if (idAttrs.length &gt; 0) {
+            idAttrs.forEach(key =&gt; key.delete());
+        }
+    }
+    else {
+        //Keys arn't right
+        if (!(idAttrs.length == 2 &amp;&amp; idAttrs[0].getName() == "PartitionKey" &amp;&amp; idAttrs[1].getName() == "RowKey")) {
+            if (idAttrs.length &gt; 0) {
+                idAttrs.forEach(key =&gt; key.delete());
+            }
+            let rowKeyAttr = createElement("Attribute", "RowKey", element.id);
+            rowKeyAttr.setOrder(0);
+            rowKeyAttr.typeReference.setType(stringTypeId);
+            rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let partitionKeyAttr = createElement("Attribute", "PartitionKey", element.id);
+            partitionKeyAttr.setOrder(0);
+            partitionKeyAttr.typeReference.setType(stringTypeId);
+            partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
         }
     }
 }
@@ -519,19 +599,6 @@ function updateForeignKeysForElement(element) {
             updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
         }
     }
-    removeOrphanedAssociations(element);
-}
-function removeOrphanedAssociations(element) {
-    let existingAssociations = element.getAssociations();
-    let existingAttributes = element.getChildren("Attribute");
-    for (let attr of existingAttributes) {
-        if (!attr.getMetadata("association")) {
-            continue;
-        }
-        if (!existingAssociations.some(x =&gt; attr.getMetadata("association") == x.id)) {
-            attr.delete();
-        }
-    }
 }
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
@@ -580,7 +647,6 @@ function getDefaultIdType() {
 /// &lt;reference path="isAggregateRoot.ts" /&gt;
 /// &lt;reference path="getDefaultIdType.ts" /&gt;
 function updatePrimaryKey(element) {
-    var _a, _b;
     if (element.specialization !== "Class") {
         return;
     }
@@ -596,29 +662,8 @@ function updatePrimaryKey(element) {
         updateDerivedTypePks(element);
         return;
     }
-    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
-    const tableStorageProvider = "1d05ee8e-747f-4120-9647-29ac784ef633";
-    const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
-    var docDbStereotype = element.getPackage().getStereotype(documentStoreId);
-    let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
-    if ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == tableStorageProvider) ||
-        ((_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()).id == tableStorageProvider) {
-        //Table Storage PK
-        let idAttrs = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
-        //Keys arn't right
-        if (!(idAttrs.length == 2 &amp;&amp; idAttrs[0].getName() == "PartitionKey" &amp;&amp; idAttrs[1].getName() == "RowKey")) {
-            if (idAttrs.length &gt; 0) {
-                idAttrs.forEach(key =&gt; key.delete());
-            }
-            let rowKeyAttr = createElement("Attribute", "RowKey", element.id);
-            rowKeyAttr.setOrder(0);
-            rowKeyAttr.typeReference.setType(stringTypeId);
-            rowKeyAttr.addStereotype(primaryKeyStereotypeId);
-            let partitionKeyAttr = createElement("Attribute", "PartitionKey", element.id);
-            partitionKeyAttr.setOrder(0);
-            partitionKeyAttr.typeReference.setType(stringTypeId);
-            partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
-        }
+    if (isTableStorage(element)) {
+        updateTableStoragePk(element);
     }
     else {
         if (idAttr == null) {
@@ -661,6 +706,41 @@ function updatePrimaryKey(element) {
             .map(generalization =&gt; generalization.typeReference.getType());
         for (const derivedType of derivedTypes) {
             updatePrimaryKey(derivedType);
+        }
+    }
+}
+function isTableStorage(element) {
+    var _a, _b;
+    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    const tableStorageProvider = "1d05ee8e-747f-4120-9647-29ac784ef633";
+    var docDbStereotype = element.getPackage().getStereotype(documentStoreId);
+    let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
+    return ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == tableStorageProvider) ||
+        ((_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()).id == tableStorageProvider);
+}
+function updateTableStoragePk(element) {
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+    let idAttrs = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
+    if (!isAggregateRoot(element)) {
+        if (idAttrs.length &gt; 0) {
+            idAttrs.forEach(key =&gt; key.delete());
+        }
+    }
+    else {
+        //Keys arn't right
+        if (!(idAttrs.length == 2 &amp;&amp; idAttrs[0].getName() == "PartitionKey" &amp;&amp; idAttrs[1].getName() == "RowKey")) {
+            if (idAttrs.length &gt; 0) {
+                idAttrs.forEach(key =&gt; key.delete());
+            }
+            let rowKeyAttr = createElement("Attribute", "RowKey", element.id);
+            rowKeyAttr.setOrder(0);
+            rowKeyAttr.typeReference.setType(stringTypeId);
+            rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let partitionKeyAttr = createElement("Attribute", "PartitionKey", element.id);
+            partitionKeyAttr.setOrder(0);
+            partitionKeyAttr.typeReference.setType(stringTypeId);
+            partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
         }
     }
 }
@@ -889,23 +969,28 @@ function updatePrimaryKey(element) {
         updateDerivedTypePks(element);
         return;
     }
-    if (idAttr == null) {
-        const classNameWithId = `${element.getName()}Id`.toLowerCase();
-        idAttr = element.getChildren("Attribute")
-            .find(attribute =&gt; {
-            const attributeName = attribute.getName().toLowerCase();
-            return attributeName === "id" || attributeName === classNameWithId;
-        });
+    if (isTableStorage(element)) {
+        updateTableStoragePk(element);
     }
-    if (idAttr == null) {
-        idAttr = createElement("Attribute", "Id", element.id);
-        idAttr.setOrder(0);
-        if (idAttr.typeReference == null)
-            throw new Error("typeReference is not defined");
-        idAttr.typeReference.setType(getDefaultIdType());
-    }
-    if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
-        idAttr.addStereotype(primaryKeyStereotypeId);
+    else {
+        if (idAttr == null) {
+            const classNameWithId = `${element.getName()}Id`.toLowerCase();
+            idAttr = element.getChildren("Attribute")
+                .find(attribute =&gt; {
+                const attributeName = attribute.getName().toLowerCase();
+                return attributeName === "id" || attributeName === classNameWithId;
+            });
+        }
+        if (idAttr == null) {
+            idAttr = createElement("Attribute", "Id", element.id);
+            idAttr.setOrder(0);
+            if (idAttr.typeReference == null)
+                throw new Error("typeReference is not defined");
+            idAttr.typeReference.setType(getDefaultIdType());
+        }
+        if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
+            idAttr.addStereotype(primaryKeyStereotypeId);
+        }
     }
     updateDerivedTypePks(element);
     function derivedFromTypeHasPk(element) {
@@ -923,11 +1008,46 @@ function updatePrimaryKey(element) {
         });
     }
     function updateDerivedTypePks(element) {
-        var derivedTypes = element.getAssociations("Generalization")
+        const derivedTypes = element.getAssociations("Generalization")
             .filter(generalization =&gt; generalization.isSourceEnd())
             .map(generalization =&gt; generalization.typeReference.getType());
         for (const derivedType of derivedTypes) {
             updatePrimaryKey(derivedType);
+        }
+    }
+}
+function isTableStorage(element) {
+    var _a, _b;
+    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    const tableStorageProvider = "1d05ee8e-747f-4120-9647-29ac784ef633";
+    var docDbStereotype = element.getPackage().getStereotype(documentStoreId);
+    let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
+    return ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == tableStorageProvider) ||
+        ((_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()).id == tableStorageProvider);
+}
+function updateTableStoragePk(element) {
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+    let idAttrs = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
+    if (!isAggregateRoot(element)) {
+        if (idAttrs.length &gt; 0) {
+            idAttrs.forEach(key =&gt; key.delete());
+        }
+    }
+    else {
+        //Keys arn't right
+        if (!(idAttrs.length == 2 &amp;&amp; idAttrs[0].getName() == "PartitionKey" &amp;&amp; idAttrs[1].getName() == "RowKey")) {
+            if (idAttrs.length &gt; 0) {
+                idAttrs.forEach(key =&gt; key.delete());
+            }
+            let rowKeyAttr = createElement("Attribute", "RowKey", element.id);
+            rowKeyAttr.setOrder(0);
+            rowKeyAttr.typeReference.setType(stringTypeId);
+            rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let partitionKeyAttr = createElement("Attribute", "PartitionKey", element.id);
+            partitionKeyAttr.setOrder(0);
+            partitionKeyAttr.typeReference.setType(stringTypeId);
+            partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
         }
     }
 }
