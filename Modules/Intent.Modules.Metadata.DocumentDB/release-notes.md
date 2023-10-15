@@ -1,3 +1,7 @@
+### Version 1.1.6
+
+- Improvement: Updated Document db Domain Modeler scripts to support Table Storage paradigm.
+
 ### Version 1.1.5
 
 - Fixed: Foreign Keys that aren't linked with an Association (i.e. orphaned) are now getting removed.
