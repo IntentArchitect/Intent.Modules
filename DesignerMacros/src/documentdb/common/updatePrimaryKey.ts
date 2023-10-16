@@ -85,7 +85,7 @@ function isTableStorage(element: IElementApi): boolean {
     let providers = lookupTypesOf("Document Db Provider").filter((elem, index) => lookupTypesOf("Document Db Provider").findIndex(obj => obj.id == elem.id) === index && elem.getName() != "Custom");
 
     return ((!docDbStereotype.getProperty("Provider")?.getValue() && providers.length == 1 && providers[0].id == tableStorageProvider)|| 
-        (docDbStereotype.getProperty("Provider")?.getValue() as MacroApi.Context.IElementApi).id == tableStorageProvider);
+        (docDbStereotype.getProperty("Provider")?.getValue() as MacroApi.Context.IElementApi)?.id == tableStorageProvider);
 }
 
 function updateTableStoragePk(element: IElementApi): void {
