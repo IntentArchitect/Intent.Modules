@@ -126,13 +126,13 @@ function updatePrimaryKey(element) {
     }
 }
 function isTableStorage(element) {
-    var _a, _b;
+    var _a, _b, _c;
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
     const tableStorageProvider = "1d05ee8e-747f-4120-9647-29ac784ef633";
     var docDbStereotype = element.getPackage().getStereotype(documentStoreId);
     let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
     return ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == tableStorageProvider) ||
-        ((_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()).id == tableStorageProvider);
+        ((_c = (_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == tableStorageProvider);
 }
 function updateTableStoragePk(element) {
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
@@ -144,7 +144,7 @@ function updateTableStoragePk(element) {
         }
     }
     else {
-        //Keys arn't right
+        //Keys are not right
         if (!(idAttrs.length == 2 &amp;&amp; idAttrs[0].getName() == "PartitionKey" &amp;&amp; idAttrs[1].getName() == "RowKey")) {
             if (idAttrs.length &gt; 0) {
                 idAttrs.forEach(key =&gt; key.delete());
@@ -428,13 +428,13 @@ function updatePrimaryKey(element) {
     }
 }
 function isTableStorage(element) {
-    var _a, _b;
+    var _a, _b, _c;
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
     const tableStorageProvider = "1d05ee8e-747f-4120-9647-29ac784ef633";
     var docDbStereotype = element.getPackage().getStereotype(documentStoreId);
     let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
     return ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == tableStorageProvider) ||
-        ((_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()).id == tableStorageProvider);
+        ((_c = (_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == tableStorageProvider);
 }
 function updateTableStoragePk(element) {
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
@@ -446,7 +446,7 @@ function updateTableStoragePk(element) {
         }
     }
     else {
-        //Keys arn't right
+        //Keys are not right
         if (!(idAttrs.length == 2 &amp;&amp; idAttrs[0].getName() == "PartitionKey" &amp;&amp; idAttrs[1].getName() == "RowKey")) {
             if (idAttrs.length &gt; 0) {
                 idAttrs.forEach(key =&gt; key.delete());
@@ -710,13 +710,13 @@ function updatePrimaryKey(element) {
     }
 }
 function isTableStorage(element) {
-    var _a, _b;
+    var _a, _b, _c;
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
     const tableStorageProvider = "1d05ee8e-747f-4120-9647-29ac784ef633";
     var docDbStereotype = element.getPackage().getStereotype(documentStoreId);
     let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
     return ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == tableStorageProvider) ||
-        ((_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()).id == tableStorageProvider);
+        ((_c = (_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == tableStorageProvider);
 }
 function updateTableStoragePk(element) {
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
@@ -728,7 +728,7 @@ function updateTableStoragePk(element) {
         }
     }
     else {
-        //Keys arn't right
+        //Keys are not right
         if (!(idAttrs.length == 2 &amp;&amp; idAttrs[0].getName() == "PartitionKey" &amp;&amp; idAttrs[1].getName() == "RowKey")) {
             if (idAttrs.length &gt; 0) {
                 idAttrs.forEach(key =&gt; key.delete());
@@ -1017,13 +1017,13 @@ function updatePrimaryKey(element) {
     }
 }
 function isTableStorage(element) {
-    var _a, _b;
+    var _a, _b, _c;
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
     const tableStorageProvider = "1d05ee8e-747f-4120-9647-29ac784ef633";
     var docDbStereotype = element.getPackage().getStereotype(documentStoreId);
     let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
     return ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == tableStorageProvider) ||
-        ((_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()).id == tableStorageProvider);
+        ((_c = (_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == tableStorageProvider);
 }
 function updateTableStoragePk(element) {
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
@@ -1035,7 +1035,7 @@ function updateTableStoragePk(element) {
         }
     }
     else {
-        //Keys arn't right
+        //Keys are not right
         if (!(idAttrs.length == 2 &amp;&amp; idAttrs[0].getName() == "PartitionKey" &amp;&amp; idAttrs[1].getName() == "RowKey")) {
             if (idAttrs.length &gt; 0) {
                 idAttrs.forEach(key =&gt; key.delete());
