@@ -42,7 +42,6 @@
           <genericTypes />
           <typeReference id="65920c0a-206f-4876-8b41-e551776e7df0">
             <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
-            <typeName>Command</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -84,7 +83,6 @@
               <genericTypes />
               <typeReference id="9e3ba109-e6ca-407d-80b4-3fd53b646104">
                 <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
-                <typeName>DTO-Field</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -127,7 +125,6 @@
               <genericTypes />
               <typeReference id="a9b8f87d-79d4-4465-b067-77d0c94c4b9b">
                 <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
-                <typeName>DTO-Field</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -172,7 +169,6 @@
           <genericTypes />
           <typeReference id="8913a9f0-4417-4837-ad72-4897696f1188">
             <typeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</typeId>
-            <typeName>DTO</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -216,7 +212,6 @@
           <genericTypes />
           <typeReference id="1ea69fa1-2d02-48e3-92e4-5b7b43367c5b">
             <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
-            <typeName>Operation</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -258,7 +253,6 @@
               <genericTypes />
               <typeReference id="951347c1-1401-4d51-8461-5b192c9dd81e">
                 <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
-                <typeName>Parameter</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -301,7 +295,6 @@
               <genericTypes />
               <typeReference id="29b81bd1-8015-4d89-9257-2b086b59d83e">
                 <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
-                <typeName>Parameter</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -371,7 +364,6 @@
           <genericTypes />
           <typeReference id="172ecd91-c5b5-412e-9c5a-bc0d48be3db4">
             <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
-            <typeName>Class</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -413,7 +405,6 @@
               <genericTypes />
               <typeReference id="cd53d1c0-8d05-4185-a972-cfc49a45b7f7">
                 <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
-                <typeName>Attribute</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -456,7 +447,6 @@
               <genericTypes />
               <typeReference id="1561d96f-b6be-41b2-8148-552e2fbf5889">
                 <typeId>0a66489f-30aa-417b-a75d-b945863366fd</typeId>
-                <typeName>Association Target End</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -500,7 +490,6 @@
               <genericTypes />
               <typeReference id="bd073e39-1ea9-4a65-9e7f-a5b34cb1d3bc">
                 <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
-                <typeName>Operation</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -542,7 +531,6 @@
                   <genericTypes />
                   <typeReference id="32a7943d-7cd0-4c40-9321-dc77de3094c3">
                     <typeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</typeId>
-                    <typeName>Parameter</typeName>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
                     <isCollection>false</isCollection>
@@ -590,7 +578,6 @@
           <genericTypes />
           <typeReference id="11e9a33e-6eca-4b0b-b513-15393861d4bf">
             <typeId>5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5</typeId>
-            <typeName>Value Object</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -632,7 +619,6 @@
               <genericTypes />
               <typeReference id="22ddc9a8-1f27-47d2-94cd-20a200779275">
                 <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
-                <typeName>Attribute</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -687,7 +673,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;b2f0849a-864b-447d-b896-300b597bbb02&quot;,&quot;36780dcc-1942-42cf-b50a-f5b2571cf218&quot;]" isActive="true" />
+            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;b2f0849a-864b-447d-b896-300b597bbb02&quot;,&quot;bf848a07-0fcd-4599-9a8a-0824085fb9f6&quot;,&quot;36780dcc-1942-42cf-b50a-f5b2571cf218&quot;,&quot;3b4ddbc4-154e-40ac-8f17-7a1603270f8c&quot;]" isActive="true" />
             <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Targets" value="[&quot;7e59bbbb-eb82-4b16-b8b3-0547d86e41d8&quot;]" isActive="true" />
             <property name="6ee5b3e3-628e-4996-87b5-08649e101887" display="Represents" value="Invokable" isActive="true" />
             <property name="ace10cc2-ece7-458a-bafb-2fc185f99335" display="Line Color" isActive="true" />
@@ -714,35 +700,8 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;cb557bfc-e7c7-49ab-b842-0124959fe5ec&quot;,&quot;b29d236f-473a-4ad5-871b-38d5c652bf1a&quot;]" isActive="true" />
+            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;cb557bfc-e7c7-49ab-b842-0124959fe5ec&quot;,&quot;b29d236f-473a-4ad5-871b-38d5c652bf1a&quot;,&quot;bf848a07-0fcd-4599-9a8a-0824085fb9f6&quot;,&quot;3b4ddbc4-154e-40ac-8f17-7a1603270f8c&quot;]" isActive="true" />
             <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Targets" value="[&quot;f36d1424-356d-44f1-8518-2a3c5b4887f7&quot;,&quot;0601475b-1210-42ae-a51a-f8c714e141a1&quot;,&quot;33263133-596d-44ea-b713-840113c226ba&quot;,&quot;1f8058b9-55bc-4ab4-ab8c-8ebde1a99018&quot;]" isActive="true" />
-            <property name="6ee5b3e3-628e-4996-87b5-08649e101887" display="Represents" value="Data" isActive="true" />
-            <property name="ace10cc2-ece7-458a-bafb-2fc185f99335" display="Line Color" isActive="true" />
-            <property name="715395d8-db84-459f-bf9e-f910e2aff883" display="Line Dash Array" isActive="true" />
-            <property name="78717792-0cfa-4792-9ec2-57ab39d5e1e0" display="Validation Function" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <metadata />
-      <childElements />
-    </childElement>
-    <childElement id="e79df6d7-a6bb-4266-b7bc-b3b700d0cd41" type="Mapping Type Settings" typeId="dd8e8a63-140c-41c8-b812-0dc923012fac">
-      <name>Data Collection Mapping</name>
-      <display>Data Collection Mapping</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>01721b1a-a85d-4320-a5cd-8bd39247196a</parentFolderId>
-      <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
-      <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="5112db0d-9496-4a00-aff2-50c438050da6" name="Mapping Type Settings">
-          <addedByDefault>true</addedByDefault>
-          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-          <properties>
-            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;bf848a07-0fcd-4599-9a8a-0824085fb9f6&quot;,&quot;3b4ddbc4-154e-40ac-8f17-7a1603270f8c&quot;]" isActive="true" />
-            <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Targets" value="[&quot;f36d1424-356d-44f1-8518-2a3c5b4887f7&quot;,&quot;0601475b-1210-42ae-a51a-f8c714e141a1&quot;,&quot;33263133-596d-44ea-b713-840113c226ba&quot;,&quot;1f8058b9-55bc-4ab4-ab8c-8ebde1a99018&quot;,&quot;7e59bbbb-eb82-4b16-b8b3-0547d86e41d8&quot;]" isActive="true" />
             <property name="6ee5b3e3-628e-4996-87b5-08649e101887" display="Represents" value="Data" isActive="true" />
             <property name="ace10cc2-ece7-458a-bafb-2fc185f99335" display="Line Color" isActive="true" />
             <property name="715395d8-db84-459f-bf9e-f910e2aff883" display="Line Dash Array" isActive="true" />

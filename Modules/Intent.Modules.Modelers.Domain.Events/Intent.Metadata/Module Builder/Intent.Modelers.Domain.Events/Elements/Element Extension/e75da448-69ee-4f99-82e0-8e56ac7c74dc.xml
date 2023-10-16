@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="a21a1b23-d76c-454e-9370-610db74ee542">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
-    <typeName>Folder</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -68,7 +67,6 @@
           <genericTypes />
           <typeReference id="cc2680ba-9e9c-42c9-840e-2021ab8c466d">
             <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>
-            <typeName>Domain Event</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

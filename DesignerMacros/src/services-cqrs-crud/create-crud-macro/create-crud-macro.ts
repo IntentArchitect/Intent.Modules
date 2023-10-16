@@ -6,39 +6,43 @@
 const privateSettersOnly = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")?.value == "true";
 const mapToDomainOperationSettingId = "7c31c459-6229-4f10-bf13-507348cd8828";
 
-async function execute(element: IElementApi) {
-    let entity = await DomainHelper.openSelectEntityDialog();
-    if (entity == null) {
-        return;
+namespace cqrsCrud {
+
+    export async function execute(element: IElementApi) {
+        let entity = await DomainHelper.openSelectEntityDialog();
+        if (entity == null) {
+            return;
+        }
+
+        const owningEntity = DomainHelper.getOwningAggregate(entity);
+        const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
+        const folder = element.getChildren().find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), element.id);
+
+        const resultDto = createCqrsResultTypeDto(entity, folder);
+
+        if (owningEntity == null || !privateSettersOnly) {
+            createCqrsCreateCommand(entity, folder);
+        }
+
+        createCqrsFindByIdQuery(entity, folder, resultDto);
+        createCqrsFindAllQuery(entity, folder, resultDto);
+
+        if (!privateSettersOnly) {
+            createCqrsUpdateCommand(entity, folder);
+        }
+
+        const operations = entity.getChildren("Operation").filter(x => x.typeReference.getType() == null);
+        for (const operation of operations) {
+            createCqrsCallOperationCommand(entity, operation, folder);
+        }
+
+        if (owningEntity == null || !privateSettersOnly) {
+            createCqrsDeleteCommand(entity, folder);
+        }
     }
 
-    const owningEntity = DomainHelper.getOwningAggregate(entity);
-    const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
-    const folder = element.getChildren().find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), element.id);
 
-    const resultDto = createCqrsResultTypeDto(entity, folder);
-
-    if (owningEntity == null || !privateSettersOnly) {
-        createCqrsCreateCommand(entity, folder);
-    }
-
-    createCqrsFindByIdQuery(entity, folder, resultDto);
-    createCqrsFindAllQuery(entity, folder, resultDto);
-
-    if (!privateSettersOnly) {
-        createCqrsUpdateCommand(entity, folder);
-    }
-
-    const operations = entity.getChildren("Operation").filter(x => x.typeReference.getType() == null);
-    for (const operation of operations) {
-        createCqrsCallOperationCommand(entity, operation, folder);
-    }
-
-    if (owningEntity == null || !privateSettersOnly) {
-        createCqrsDeleteCommand(entity, folder);
-    }
-
-    function createCqrsCreateCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
+    export function createCqrsCreateCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let baseName = getBaseNameForElement(owningAggregate, entity, false);
         let expectedCommandName = `Create${baseName}Command`;
@@ -48,7 +52,7 @@ async function execute(element: IElementApi) {
         if (folder.getChildren().some(x => x.getName() == expectedCommandName)) {
             let command = folder.getChildren().filter(x => x.getName() == expectedCommandName)[0];
             command.typeReference.setType(primaryKeys[0].typeId);
-            return;
+            return command;
         }
 
         let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
@@ -83,15 +87,16 @@ async function execute(element: IElementApi) {
 
         onMapCommand(command.getElement(), true, true);
         command.collapse();
+        return command.getElement();
     }
 
-    function createCqrsFindByIdQuery(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi, resultDto: MacroApi.Context.IElementApi) {
+    export function createCqrsFindByIdQuery(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi, resultDto: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let baseName = getBaseNameForElement(owningAggregate, entity, false);
         let expectedQueryName = `Get${baseName}ByIdQuery`;
 
         if (folder.getChildren().some(x => x.getName() == expectedQueryName)) {
-            return;
+            return folder.getChildren().find(x => x.getName() == expectedQueryName);
         }
 
         let query = createElement("Query", expectedQueryName, folder.id);
@@ -115,15 +120,16 @@ async function execute(element: IElementApi) {
 
         onMapQuery(query);
         query.collapse();
+        return query;
     }
 
-    function createCqrsFindAllQuery(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi, resultDto: MacroApi.Context.IElementApi) {
+    export function createCqrsFindAllQuery(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi, resultDto: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let baseName = getBaseNameForElement(owningAggregate, entity, true);
         let expectedQueryName = `Get${baseName}Query`;
 
         if (folder.getChildren().some(x => x.getName() == expectedQueryName)) {
-            return;
+            return folder.getChildren().find(x => x.getName() == expectedQueryName);
         }
 
         let query = createElement("Query", expectedQueryName, folder.id);
@@ -144,15 +150,16 @@ async function execute(element: IElementApi) {
         }
 
         query.collapse();
+        return query;
     }
 
-    function createCqrsUpdateCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
+    export function createCqrsUpdateCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let baseName = getBaseNameForElement(owningAggregate, entity, false);
         let expectedCommandName = `Update${baseName}Command`;
 
         if (folder.getChildren().some(x => x.getName() == expectedCommandName)) {
-            return;
+            return folder.getChildren().find(x => x.getName() == expectedCommandName);
         }
 
         let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
@@ -166,9 +173,10 @@ async function execute(element: IElementApi) {
 
         onMapCommand(command.getElement(), true);
         command.collapse();
+        return command.getElement();
     }
 
-    function createCqrsCallOperationCommand(entity: MacroApi.Context.IElementApi, operation: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
+    export function createCqrsCallOperationCommand(entity: MacroApi.Context.IElementApi, operation: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
         const owningAggregate = DomainHelper.getOwningAggregate(entity);
         const baseName = owningAggregate?.getName() ?? "";
 
@@ -178,10 +186,11 @@ async function execute(element: IElementApi) {
 
         const commandName = `${operationName}${entity.getName()}Command`;
 
-        if (folder.getChildren().some(
+        const existing = folder.getChildren().find(
             x => x.getName() == commandName ||
-                x.getMapping()?.getElement()?.id === operation.id)) {
-            return;
+                x.getMapping()?.getElement()?.id === operation.id);
+        if (existing) {
+            return existing;
         }
 
         const commandElement = createElement("Command", commandName, folder.id);
@@ -200,15 +209,16 @@ async function execute(element: IElementApi) {
 
         onMapCommand(commandElement, true);
         commandManager.collapse();
+        return commandManager.getElement();
     }
 
-    function createCqrsDeleteCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
+    export function createCqrsDeleteCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let baseName = getBaseNameForElement(owningAggregate, entity, false);
         let expectedCommandName = `Delete${baseName}Command`;
 
         if (folder.getChildren().some(x => x.getName() == expectedCommandName)) {
-            return;
+            return folder.getChildren().find(x => x.getName() == expectedCommandName);
         }
 
         let command = createElement("Command", expectedCommandName, folder.id);
@@ -231,10 +241,11 @@ async function execute(element: IElementApi) {
 
         onMapCommand(command, true);
         command.collapse();
+        return command;
     }
 
 
-    function createCqrsResultTypeDto(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
+    export function createCqrsResultTypeDto(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let baseName = getBaseNameForElement(owningAggregate, entity, false);
         let expectedDtoName = `${baseName}Dto`;
@@ -311,17 +322,16 @@ async function execute(element: IElementApi) {
             return traverseInheritanceHierarchy(generalization.typeReference.getType(), results, generalizationStack);
         }
     }
-}
 
-function getBaseNameForElement(owningAggregate: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi, entityIsMany: boolean): string {
-    let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
-    return owningAggregate ? `${toPascalCase(owningAggregate.getName())}${entityName}` : entityName;
+    function getBaseNameForElement(owningAggregate: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi, entityIsMany: boolean): string {
+        let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
+        return owningAggregate ? `${toPascalCase(owningAggregate.getName())}${entityName}` : entityName;
+    }
 }
-
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro/create-crud-macro.ts
  */
-//await execute(element);
+//await cqrsCrud.execute(element);

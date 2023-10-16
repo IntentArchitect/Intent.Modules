@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="78b2ef61-e542-4050-8205-8f2f1f584c2a">
     <typeId>4c0cc50b-8a9d-43cd-b731-9f354f69f3c9</typeId>
-    <typeName>Domain Event Origin Association</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

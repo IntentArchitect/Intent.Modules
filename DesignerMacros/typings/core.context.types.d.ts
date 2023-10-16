@@ -67,7 +67,7 @@ declare namespace MacroApi.Context {
         mappingType: string;
         getSourceElement(): IElementApi;
         getTargetElement(): IElementApi;
-        addMappedEnd(sourcePath: string[], targetPath: string[], mappingExpression?: string): void;
+        addMappedEnd(mappingTypeNameOrId: string, sourcePath: string[], targetPath: string[], mappingExpression?: string): void;
     }
     
     interface IElementMappingApi {

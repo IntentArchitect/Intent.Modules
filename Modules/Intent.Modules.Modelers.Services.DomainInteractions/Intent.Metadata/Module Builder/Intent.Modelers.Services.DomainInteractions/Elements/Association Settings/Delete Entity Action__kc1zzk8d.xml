@@ -104,7 +104,6 @@
               <genericTypes />
               <typeReference id="f8365bd6-99f7-40f0-af02-aeecaef7d080">
                 <typeId>25f25af9-c38b-4053-9474-b0fabe9d7ea7</typeId>
-                <typeName>Query Entity Mapping</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -160,7 +159,6 @@
           <genericTypes />
           <typeReference id="082284a0-9ccf-423d-9b8c-258c5155f547">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

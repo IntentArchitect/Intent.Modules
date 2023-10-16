@@ -104,7 +104,6 @@
               <genericTypes />
               <typeReference id="e13417c3-c83b-42ad-a790-d302474ef76b">
                 <typeId>405a2857-b911-431f-8142-719a0e9f15f3</typeId>
-                <typeName>Processing Action</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -145,7 +144,6 @@
               <genericTypes />
               <typeReference id="eb7c9ec6-2fdd-4b57-9dce-683568103f32">
                 <typeId>5f172141-fdba-426b-980e-163e782ff53e</typeId>
-                <typeName>Create Entity Mapping</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>

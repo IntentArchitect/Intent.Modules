@@ -104,7 +104,6 @@
               <genericTypes />
               <typeReference id="8810de1d-6372-4575-a401-2023d28c89bc">
                 <typeId>405a2857-b911-431f-8142-719a0e9f15f3</typeId>
-                <typeName>Processing Action</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -145,7 +144,6 @@
               <genericTypes />
               <typeReference id="6eebfa90-235a-4038-a8ce-f4e057d25459">
                 <typeId>25f25af9-c38b-4053-9474-b0fabe9d7ea7</typeId>
-                <typeName>Query Entity Mapping</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -184,7 +182,6 @@
               <genericTypes />
               <typeReference id="582c581d-4a3c-4f14-9df8-cf04adc15603">
                 <typeId>01721b1a-a85d-4320-a5cd-8bd39247196a</typeId>
-                <typeName>Update Entity Mapping</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -240,7 +237,6 @@
           <genericTypes />
           <typeReference id="814e3fd8-9871-4b30-b9a8-dfaf708932e2">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

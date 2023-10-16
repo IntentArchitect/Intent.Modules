@@ -6,7 +6,6 @@
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="8fa8ef39-7a4f-435d-a91e-4dea4c72514d">
-    <typeName>void</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

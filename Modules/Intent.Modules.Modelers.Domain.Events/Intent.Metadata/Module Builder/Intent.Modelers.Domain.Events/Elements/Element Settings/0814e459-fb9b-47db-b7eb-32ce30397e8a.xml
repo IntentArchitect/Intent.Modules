@@ -69,7 +69,6 @@
           <genericTypes />
           <typeReference id="c0481a9a-7d46-4a93-8754-53e9bf00409e">
             <typeId>b4d69073-5abb-4968-b41b-545b2f7408ed</typeId>
-            <typeName>Property</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -110,7 +109,6 @@
           <genericTypes />
           <typeReference id="46c40316-41f1-4816-86af-860213f8ac08">
             <typeId>8014b71d-627b-4349-b6d7-5011dfa1bb09</typeId>
-            <typeName>Domain Event Association</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

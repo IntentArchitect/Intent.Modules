@@ -4,7 +4,1279 @@
   <name>Services CQRS Domain Interactions</name>
   <designerReferences />
   <packageSettings />
-  <packageExtensions />
+  <packageExtensions>
+    <packageExtension type="Services Package" typeId="df45eaf6-9202-4c25-8dd5-677e9ba1e906">
+      <requiredPackages />
+      <creationOptions />
+      <scriptOptions>
+        <option>
+          <text>Create CRUD CQRS Services</text>
+          <icon type="FontAwesome" source="code" />
+          <script>/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
+function getSurrogateKeyType() {
+    var _a, _b, _c;
+    const commonTypes = {
+        guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
+        long: "33013006-E404-48C2-AC46-24EF5A5774FD",
+        int: "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"
+    };
+    const javaTypes = {
+        long: "e9e575eb-f8de-4ce4-9838-2d09665a752d",
+        int: "b3e5cb3b-8a26-4346-810b-9789afa25a82"
+    };
+    const typeNameToIdMap = new Map();
+    typeNameToIdMap.set("guid", commonTypes.guid);
+    typeNameToIdMap.set("int", lookup(javaTypes.int) != null ? javaTypes.int : commonTypes.int);
+    typeNameToIdMap.set("long", lookup(javaTypes.long) != null ? javaTypes.long : commonTypes.long);
+    let typeName = (_c = (_b = (_a = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Type")) === null || _b === void 0 ? void 0 : _b.value) !== null &amp;&amp; _c !== void 0 ? _c : "int";
+    if (typeNameToIdMap.has(typeName)) {
+        return typeNameToIdMap.get(typeName);
+    }
+    return typeNameToIdMap.get("guid");
+}
+/// &lt;reference path="getSurrogateKeyType.ts"/&gt;
+class DomainHelper {
+    static async openSelectEntityDialog(options) {
+        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.isAggregateRoot(x) || ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x)) || x.hasStereotype("Repository"));
+        if (classes.length == 0) {
+            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
+            return null;
+        }
+        let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
+            id: x.id,
+            name: this.getFriendlyDisplayNameForClassSelection(x)
+        })));
+        if (classId == null) {
+            await dialogService.error(`No class found with id "${classId}".`);
+            return null;
+        }
+        let foundEntity = lookup(classId);
+        return foundEntity;
+    }
+    static getFriendlyDisplayNameForClassSelection(element) {
+        let found = DomainHelper.getOwningAggregate(element);
+        return !found ? element.getName() : `${element.getName()} (${found.getName()})`;
+    }
+    static isAggregateRoot(element) {
+        let result = !element.getAssociations("Association")
+            .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
+        return result;
+    }
+    static getOwningAggregate(entity) {
+        var _a;
+        let result = (_a = entity.getAssociations("Association")
+            .filter(x =&gt; this.isAggregateRoot(x.typeReference.getType()) &amp;&amp; isOwnedBy(x) &amp;&amp;
+            // Let's only target collections for now as part of the nested compositional crud support
+            // as one-to-one relationships are more expensive to address and possibly not going to
+            // be needed.
+            x.getOtherEnd().typeReference.isCollection)[0]) === null || _a === void 0 ? void 0 : _a.typeReference.getType();
+        return result;
+        function isOwnedBy(association) {
+            return association.isSourceEnd() &amp;&amp;
+                !association.typeReference.isNullable &amp;&amp;
+                !association.typeReference.isCollection;
+        }
+    }
+    static ownerIsAggregateRoot(entity) {
+        let result = DomainHelper.getOwningAggregate(entity);
+        return result ? true : false;
+    }
+    static getPrimaryKeys(entity) {
+        if (!entity) {
+            throw new Error("entity not specified");
+        }
+        let primaryKeys = DomainHelper.getPrimaryKeysMap(entity);
+        if (Object.keys(primaryKeys).length == 0) {
+            return [
+                {
+                    id: null,
+                    name: DomainHelper.getAttributeNameFormat("Id"),
+                    typeId: DomainHelper.getSurrogateKeyType(),
+                    mapPath: null,
+                    isNullable: false,
+                    isCollection: false
+                }
+            ];
+        }
+        return Object.values(primaryKeys);
+    }
+    static getPrimaryKeysMap(entity) {
+        let keydict = Object.create(null);
+        let keys = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+        keys.forEach(key =&gt; keydict[key.id] = {
+            id: key.id,
+            name: key.getName(),
+            typeId: key.typeReference.typeId,
+            mapPath: [key.id],
+            isNullable: false,
+            isCollection: false
+        });
+        traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);
+        return keydict;
+        function traverseInheritanceHierarchyForPrimaryKeys(keydict, curEntity, generalizationStack) {
+            if (!curEntity) {
+                return;
+            }
+            let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+            if (generalizations.length == 0) {
+                return;
+            }
+            let generalization = generalizations[0];
+            generalizationStack.push(generalization.id);
+            let nextEntity = generalization.typeReference.getType();
+            let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+            baseKeys.forEach(key =&gt; {
+                keydict[key.id] = {
+                    id: key.id,
+                    name: key.getName(),
+                    typeId: key.typeReference.typeId,
+                    mapPath: generalizationStack.concat([key.id]),
+                    isNullable: key.typeReference.isNullable,
+                    isCollection: key.typeReference.isCollection
+                };
+            });
+            traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
+        }
+    }
+    static getForeignKeys(entity, owningAggregate) {
+        var _a;
+        if (!entity) {
+            throw new Error("entity not specified");
+        }
+        if (!owningAggregate) {
+            throw new Error("nestedCompOwner not specified");
+        }
+        // Use the new Associated property on the FK stereotype method for FK Attribute lookup
+        let foreignKeys = [];
+        for (let attr of entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Foreign Key"))) {
+            let associationId = (_a = attr.getStereotype("Foreign Key").getProperty("Association")) === null || _a === void 0 ? void 0 : _a.getValue();
+            if (owningAggregate.getAssociations("Association").some(x =&gt; x.id == associationId)) {
+                foreignKeys.push(attr);
+            }
+        }
+        // Backward compatible lookup method
+        if (foreignKeys.length == 0) {
+            let foundFk = entity.getChildren("Attribute")
+                .filter(x =&gt; x.getName().toLowerCase().indexOf(owningAggregate.getName().toLowerCase()) &gt;= 0 &amp;&amp; x.hasStereotype("Foreign Key"))[0];
+            if (foundFk) {
+                foreignKeys.push(foundFk);
+            }
+        }
+        if (foreignKeys.length &gt; 0) {
+            return foreignKeys.map(x =&gt; ({
+                name: DomainHelper.getAttributeNameFormat(x.getName()),
+                typeId: x.typeReference.typeId,
+                id: x.id,
+                mapPath: [x.id],
+                isCollection: x.typeReference.isCollection,
+                isNullable: x.typeReference.isNullable
+            }));
+        }
+        // Implicit FKs:
+        return [{
+                name: DomainHelper.getAttributeNameFormat(`${owningAggregate.getName()}Id`),
+                typeId: DomainHelper.getPrimaryKeys(owningAggregate)[0].typeId,
+                id: null,
+                mapPath: null,
+                isCollection: false,
+                isNullable: false
+            }];
+    }
+    static getChildrenOfType(entity, type) {
+        let attrDict = Object.create(null);
+        let attributes = entity.getChildren(type);
+        attributes.forEach(attr =&gt; attrDict[attr.id] = {
+            id: attr.id,
+            name: attr.getName(),
+            typeId: attr.typeReference.typeId,
+            mapPath: [attr.id],
+            isNullable: false,
+            isCollection: false
+        });
+        return Object.values(attrDict);
+    }
+    static getAttributesWithMapPath(entity) {
+        let attrDict = Object.create(null);
+        let attributes = entity
+            .getChildren("Attribute")
+            .filter(x =&gt; {
+            var _a;
+            return !x.hasStereotype("Primary Key") &amp;&amp;
+                !DomainHelper.legacyPartitionKey(x) &amp;&amp;
+                (x["hasMetadata"] &amp;&amp; (!x.hasMetadata("set-by-infrastructure") || ((_a = x.getMetadata("set-by-infrastructure")) === null || _a === void 0 ? void 0 : _a.toLocaleLowerCase()) != "true"));
+        });
+        attributes.forEach(attr =&gt; attrDict[attr.id] = {
+            id: attr.id,
+            name: attr.getName(),
+            typeId: attr.typeReference.typeId,
+            mapPath: [attr.id],
+            isNullable: false,
+            isCollection: false
+        });
+        traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
+        return Object.values(attrDict);
+        function traverseInheritanceHierarchyForAttributes(attrDict, curEntity, generalizationStack) {
+            if (!curEntity) {
+                return;
+            }
+            let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+            if (generalizations.length == 0) {
+                return;
+            }
+            let generalization = generalizations[0];
+            generalizationStack.push(generalization.id);
+            let nextEntity = generalization.typeReference.getType();
+            let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !DomainHelper.legacyPartitionKey(x));
+            baseKeys.forEach(attr =&gt; {
+                attrDict[attr.id] = {
+                    id: attr.id,
+                    name: attr.getName(),
+                    typeId: attr.typeReference.typeId,
+                    mapPath: generalizationStack.concat([attr.id]),
+                    isNullable: attr.typeReference.isNullable,
+                    isCollection: attr.typeReference.isCollection
+                };
+            });
+            traverseInheritanceHierarchyForAttributes(attrDict, nextEntity, generalizationStack);
+        }
+    }
+    static getAttributeNameFormat(str) {
+        let convention = DomainHelper.getDomainAttributeNamingConvention();
+        switch (convention) {
+            case "pascal-case":
+                return toPascalCase(str);
+            case "camel-case":
+                return toCamelCase(str);
+        }
+        return str;
+    }
+    static getDomainAttributeNamingConvention() {
+        var _a, _b, _c;
+        const domainSettingsId = "c4d1e35c-7c0d-4926-afe0-18f17563ce17";
+        return (_c = (_b = (_a = application.getSettings(domainSettingsId)) === null || _a === void 0 ? void 0 : _a.getField("Attribute Naming Convention")) === null || _b === void 0 ? void 0 : _b.value) !== null &amp;&amp; _c !== void 0 ? _c : "pascal-case";
+    }
+    static getSurrogateKeyType() {
+        return getSurrogateKeyType();
+    }
+    // Just in case someone still uses this convention. Used to filter out those attributes when mapping
+    // to domain entities that are within a Cosmos DB paradigm.
+    static legacyPartitionKey(attribute) {
+        return attribute.hasStereotype("Partition Key") &amp;&amp; attribute.getName() === "PartitionKey";
+    }
+    static requiresForeignKey(associationEnd) {
+        return DomainHelper.isManyToVariantsOfOne(associationEnd) || DomainHelper.isSelfReferencingZeroToOne(associationEnd);
+    }
+    static isManyToVariantsOfOne(associationEnd) {
+        return !associationEnd.typeReference.isCollection &amp;&amp; associationEnd.getOtherEnd().typeReference.isCollection;
+    }
+    static isSelfReferencingZeroToOne(associationEnd) {
+        return !associationEnd.typeReference.isCollection &amp;&amp; associationEnd.typeReference.isNullable &amp;&amp;
+            associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
+    }
+}
+;
+class ServicesConstants {
+}
+ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
+ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+class ServicesHelper {
+    static addDtoFieldsFromDomain(dto, attributes) {
+        var _a;
+        for (let key of attributes) {
+            if (dto &amp;&amp; !dto.getChildren("DTO-Field").some(x =&gt; x.getName() == ServicesHelper.getFieldFormat(key.name))) {
+                let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(key.name), dto.id);
+                field.typeReference.setType(key.typeId);
+                if (((_a = key.mapPath) !== null &amp;&amp; _a !== void 0 ? _a : []).length &gt; 0) {
+                    field.setMapping(key.mapPath);
+                }
+            }
+        }
+    }
+    static getParameterFormat(str) {
+        return toCamelCase(str);
+    }
+    static getRoutingFormat(str) {
+        return pluralize(str);
+    }
+    static getFieldFormat(str) {
+        return toPascalCase(str);
+    }
+}
+class ElementManager {
+    constructor(command, settings) {
+        var _a;
+        this.command = command;
+        this.settings = settings;
+        this.mappedElement = (_a = command.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    }
+    get id() { return this.command.id; }
+    ;
+    setReturnType(typeId, isCollection) {
+        this.command.typeReference.setType(typeId);
+        if (isCollection != null) {
+            this.command.typeReference.setIsCollection(isCollection);
+        }
+        return this;
+    }
+    addChild(name, type) {
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
+        const typeReferenceDetails = type == null
+            ? null
+            : typeof (type) === "string"
+                ? { id: type, isNullable: false, isCollection: false }
+                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
+        if (typeReferenceDetails != null) {
+            field.typeReference.setType(typeReferenceDetails.id);
+            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
+            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
+        }
+        return field;
+    }
+    addChildrenFrom(elements, options) {
+        let order = 0;
+        elements.forEach(e =&gt; {
+            if (e.mapPath != null) {
+                if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; { var _a, _b; return ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) == e.id; })) {
+                    return;
+                }
+            }
+            else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
+                return;
+            }
+            let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
+            field.typeReference.setIsCollection(e.isCollection);
+            field.typeReference.setIsNullable(e.isNullable);
+            if (options === null || options === void 0 ? void 0 : options.addToTop) {
+                field.setOrder(order++);
+            }
+            if (this.mappedElement != null &amp;&amp; e.mapPath) {
+                field.setMapping(e.mapPath);
+            }
+        });
+        return this;
+    }
+    mapToElement(param1, mappingSettingsId) {
+        let elementIds;
+        let element;
+        if (Array.isArray(param1)) {
+            elementIds = param1;
+            element = lookup(elementIds[elementIds.length - 1]);
+        }
+        else {
+            elementIds = [param1.id];
+            element = param1;
+        }
+        this.mappedElement = element;
+        this.command.setMapping(elementIds, mappingSettingsId);
+        return this;
+    }
+    getElement() {
+        return this.command;
+    }
+    collapse() {
+        this.command.collapse();
+    }
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../common/getSurrogateKeyType.ts" /&gt;
+const constants = {
+    PKSpecialization: {
+        Implicit: "implicit",
+        Explicit: "explicit",
+        ExplicitComposite: "explicit_composite",
+        Unknown: "unknown"
+    },
+    FKSpecialization: {
+        Implicit: "implicit",
+        Explicit: "explicit",
+    }
+};
+function getFieldFormat(str) {
+    return toPascalCase(str);
+}
+function getDomainAttributeNameFormat(str) {
+    let convention = getDomainAttributeNamingConvention();
+    switch (convention) {
+        case "pascal-case":
+            return toPascalCase(str);
+        case "camel-case":
+            return toCamelCase(str);
+        default:
+            return str;
+    }
+}
+function getOrCreateDto(elementName, parentElement) {
+    const expectedDtoName = `${elementName}Dto`;
+    let existingDto = parentElement.getChildren("DTO").filter(x =&gt; x.getName() === expectedDtoName)[0];
+    if (existingDto) {
+        return existingDto;
+    }
+    let dto = createElement("DTO", expectedDtoName, parentElement.id);
+    return dto;
+}
+function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
+    var _a, _b, _c;
+    let dtoUpdated = false;
+    let domainElement = mappedElement
+        .typeReference
+        .getType();
+    let attributesWithMapPaths = getAttributesWithMapPath(domainElement);
+    let isCreateMode = ((_b = (_a = dto.getMetadata("originalVerb")) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === null || _b === void 0 ? void 0 : _b.startsWith("create")) == true;
+    for (var keyName of Object.keys(attributesWithMapPaths)) {
+        let entry = attributesWithMapPaths[keyName];
+        if (isCreateMode &amp;&amp; ((_c = entry.name) === null || _c === void 0 ? void 0 : _c.toLowerCase()) === "id") {
+            continue;
+        }
+        if (isCreateMode &amp;&amp; isOwnerForeignKey(entry.name, domainElement)) {
+            continue;
+        }
+        if (dto.getChildren("DTO-Field").some(x =&gt; x.getName() == entry.name)) {
+            continue;
+        }
+        let field = createElement("DTO-Field", entry.name, dto.id);
+        field.typeReference.setType(entry.typeId);
+        field.typeReference.setIsNullable(entry.isNullable);
+        field.typeReference.setIsCollection(entry.isCollection);
+        field.setMapping(entry.mapPath);
+        dtoUpdated = true;
+    }
+    if (autoAddPrimaryKey &amp;&amp; !isCreateMode) {
+        addPrimaryKeys(dto, domainElement, true);
+    }
+    if (dtoUpdated) {
+        dto.collapse();
+    }
+}
+function isOwnerForeignKey(attributeName, domainElement) {
+    for (let association of domainElement.getAssociations().filter(x =&gt; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
+        if (attributeName.toLowerCase().indexOf(association.getName().toLowerCase()) &gt;= 0) {
+            return true;
+        }
+    }
+    return false;
+}
+function addPrimaryKeys(dto, entity, map) {
+    const primaryKeys = getPrimaryKeysWithMapPath(entity);
+    if (primaryKeys.length == 0) {
+        // Implicit key:
+        primaryKeys.push({
+            id: null,
+            name: "Id",
+            typeId: getSurrogateKeyType(),
+            mapPath: null,
+            isNullable: false,
+            isCollection: false
+        });
+    }
+    for (const primaryKey of primaryKeys) {
+        const name = getDomainAttributeNameFormat(primaryKey.name);
+        if (dto.getChildren("DTO-Field").some(x =&gt; x.getName().toLowerCase() == name.toLowerCase())) {
+            continue;
+        }
+        const dtoField = createElement("DTO-Field", getFieldFormat(name), dto.id);
+        dtoField.typeReference.setType(primaryKey.typeId);
+        if (map &amp;&amp; primaryKey.mapPath != null) {
+            console.log(`Doing mapping for ${dtoField.id}`);
+            dtoField.setMapping(primaryKey.mapPath);
+        }
+    }
+}
+function getPrimaryKeysWithMapPath(entity) {
+    let keydict = Object.create(null);
+    let keys = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+    keys.forEach(key =&gt; keydict[key.id] = {
+        id: key.id,
+        name: key.getName(),
+        typeId: key.typeReference.typeId,
+        mapPath: [key.id],
+        isNullable: false,
+        isCollection: false
+    });
+    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);
+    return Object.values(keydict);
+    function traverseInheritanceHierarchyForPrimaryKeys(keydict, curEntity, generalizationStack) {
+        if (!curEntity) {
+            return;
+        }
+        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return;
+        }
+        let generalization = generalizations[0];
+        generalizationStack.push(generalization.id);
+        let nextEntity = generalization.typeReference.getType();
+        let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+        baseKeys.forEach(key =&gt; {
+            keydict[key.id] = {
+                id: key.id,
+                name: key.getName(),
+                typeId: key.typeReference.typeId,
+                mapPath: generalizationStack.concat([key.id]),
+                isNullable: key.typeReference.isNullable,
+                isCollection: key.typeReference.isCollection
+            };
+        });
+        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
+    }
+}
+function getAttributesWithMapPath(entity) {
+    let attrDict = Object.create(null);
+    let attributes = entity.getChildren("Attribute")
+        .filter(x =&gt; {
+        var _a;
+        return !x.hasStereotype("Primary Key") &amp;&amp;
+            !legacyPartitionKey(x) &amp;&amp;
+            (x["hasMetadata"] &amp;&amp; (!x.hasMetadata("set-by-infrastructure") || ((_a = x.getMetadata("set-by-infrastructure")) === null || _a === void 0 ? void 0 : _a.toLocaleLowerCase()) != "true"));
+    });
+    attributes.forEach(attr =&gt; attrDict[attr.id] = {
+        id: attr.id,
+        name: attr.getName(),
+        typeId: attr.typeReference.typeId,
+        mapPath: [attr.id],
+        isNullable: false,
+        isCollection: false
+    });
+    traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
+    return attrDict;
+    function traverseInheritanceHierarchyForAttributes(attrDict, curEntity, generalizationStack) {
+        if (!curEntity) {
+            return;
+        }
+        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return;
+        }
+        let generalization = generalizations[0];
+        generalizationStack.push(generalization.id);
+        let nextEntity = generalization.typeReference.getType();
+        let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !legacyPartitionKey(x));
+        baseKeys.forEach(attr =&gt; {
+            attrDict[attr.id] = {
+                id: attr.id,
+                name: attr.getName(),
+                typeId: attr.typeReference.typeId,
+                mapPath: generalizationStack.concat([attr.id]),
+                isNullable: attr.typeReference.isNullable,
+                isCollection: attr.typeReference.isCollection
+            };
+        });
+        traverseInheritanceHierarchyForAttributes(attrDict, nextEntity, generalizationStack);
+    }
+}
+function getDomainAttributeNamingConvention() {
+    var _a, _b, _c;
+    const domainSettingsId = "c4d1e35c-7c0d-4926-afe0-18f17563ce17";
+    return (_c = (_b = (_a = application.getSettings(domainSettingsId)) === null || _a === void 0 ? void 0 : _a.getField("Attribute Naming Convention")) === null || _b === void 0 ? void 0 : _b.value) !== null &amp;&amp; _c !== void 0 ? _c : "pascal-case";
+}
+// Just in case someone still uses this convention. Used to filter out those attributes when mapping
+// to domain entities that are within a Cosmos DB paradigm.
+function legacyPartitionKey(attribute) {
+    return attribute.hasStereotype("Partition Key") &amp;&amp; attribute.getName() === "PartitionKey";
+}
+/**
+ * Workaround for element's from referenced packages not having getParent()
+ * @param element The element whose parent should be searched for
+ * @param parentSpecializationType The specialization type of the parent
+ */
+function getParent(element, parentSpecializationType) {
+    const elements = lookupTypesOf(parentSpecializationType);
+    const parent = elements
+        .find(x =&gt; x.getChildren(element.specialization)
+        .some(child =&gt; child.id === element.id));
+    if (parent == null) {
+        throw new Error("Could not find parent");
+    }
+    return parent;
+}
+/// &lt;reference path="../common/domainHelper.ts" /&gt;
+/// &lt;reference path="../common/servicesHelper.ts" /&gt;
+/// &lt;reference path="../common/getParent.ts" /&gt;
+/**
+ * Gets select details of a mapped Command/Query. Intended for centralized logic of working out
+ * things like keys (including implicit ones) for both the entity and owning entity if applicable.
+ *
+ * If the Command is for entity creation (either due to being mapped to a constructor or being
+ * prefixed with "Create"), then primary keys for the entity are not populated.
+ * @param request The Command or Query that has been mapped
+ */
+function getMappedRequestDetails(request) {
+    var _a;
+    const mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    if (mappedElement == null) {
+        return null;
+    }
+    let entity = mappedElement;
+    if (entity.specialization !== "Class") {
+        entity = getParent(entity, "Class");
+    }
+    const result = {
+        entity: entity,
+        mappingTargetType: mappedElement.specialization,
+        entityKeyFields: [],
+        ownerKeyFields: []
+    };
+    result.owningEntity = DomainHelper.getOwningAggregate(entity);
+    // As long as it's not for creation, populate the PKs of the entity:
+    if (result.mappingTargetType !== "Class Constructor" &amp;&amp;
+        !request.getName().toLowerCase().startsWith("Create")) {
+        result.entityKeyFields = result.mappingTargetType === "Class"
+            ? getKeysForClassMapping(request, entity)
+            : getKeysForOperationMapping(request, entity);
+    }
+    // If the entity is owned, populate its fields:
+    if (result.owningEntity != null) {
+        result.ownerKeyFields = result.mappingTargetType === "Class"
+            ? getKeysForClassMapping(request, entity, result.owningEntity)
+            : getKeysForOperationMapping(request, entity, result.owningEntity);
+    }
+    return result;
+    /**
+     * Return field details for primary keys. As requests mapped to operations and constructors can
+     * never possibly map the attributes, these fields can only ever be matched by name.
+     * @param request The CQRS Command or Query entity
+     * @param owningEntity The Owning Aggregate Class
+     */
+    function getKeysForOperationMapping(request, entity, owningEntity) {
+        const pks = DomainHelper.getPrimaryKeys(owningEntity !== null &amp;&amp; owningEntity !== void 0 ? owningEntity : entity);
+        return pks.map(pk =&gt; {
+            let fieldName = toPascalCase(pk.name);
+            if (owningEntity != null) {
+                fieldName = removePrefix(fieldName, toPascalCase(owningEntity.getName()));
+                fieldName = `${owningEntity.getName()}${toCamelCase(fieldName)}`;
+            }
+            fieldName = ServicesHelper.getFieldFormat(fieldName);
+            const existingField = request.getChildren("DTO-Field").find(field =&gt; field.getName().toLowerCase() == fieldName.toLowerCase());
+            return {
+                existingId: existingField === null || existingField === void 0 ? void 0 : existingField.id,
+                mappingPath: [],
+                name: fieldName,
+                typeId: pk.typeId,
+                isCollection: pk.isCollection,
+                isNullable: pk.isNullable
+            };
+        });
+    }
+    function getKeysForClassMapping(request, entity, owningEntity) {
+        const keys = owningEntity != null
+            ? DomainHelper.getForeignKeys(entity, owningEntity)
+            : DomainHelper.getPrimaryKeys(entity);
+        return keys.map(pk =&gt; {
+            const existingField = request.getChildren("DTO-Field").find(field =&gt; {
+                if (field.getMapping() != null) {
+                    return field.getMapping().getPath().some(x =&gt; x.id == pk.id);
+                }
+                return (pk.name.toLowerCase() === field.getName().toLowerCase());
+            });
+            return {
+                existingId: existingField === null || existingField === void 0 ? void 0 : existingField.id,
+                mappingPath: pk.mapPath,
+                name: pk.name,
+                typeId: pk.typeId,
+                isCollection: pk.isCollection,
+                isNullable: pk.isNullable
+            };
+        });
+    }
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
+/**
+ * Ensures that for the provided contract, it has the provided field creating it if necessary and
+ * then ensure the field has the correct typeReference details and order.
+ * The field's element is returned.
+ */
+function ensureHasField(options) {
+    const { contract, fieldDetail, mappingSettingsId, order } = options;
+    let field = fieldDetail.existingId != null
+        ? contract.getChildren("DTO-Field").find(x =&gt; x.id === fieldDetail.existingId)
+        : createElement("DTO-Field", fieldDetail.name, contract.id);
+    field.typeReference.setType(fieldDetail.typeId);
+    field.typeReference.setIsCollection(fieldDetail.isCollection);
+    field.typeReference.setIsNullable(fieldDetail.isNullable);
+    if (order != null) {
+        field.setOrder(order);
+    }
+    if (mappingSettingsId != null) {
+        field.setMapping(fieldDetail.mappingPath, mappingSettingsId);
+    }
+    return field;
+}
+/// &lt;reference path="./onMapFunctions.ts" /&gt;
+/// &lt;reference path="../../common/domainHelper.ts" /&gt;
+/// &lt;reference path="../../common/servicesHelper.ts" /&gt;
+/// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
+/// &lt;reference path="ensureHasField.ts" /&gt;
+function onMapCommand(element, isForCrudScript, isForCreate = false) {
+    var _a, _b, _c;
+    const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
+    const mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+    // const mapToDomainDataSettingsId = "735c87d0-06fc-4491-8b5f-5adc6f953c54";
+    const mappingDetails = getMappedRequestDetails(element);
+    if (mappingDetails == null) {
+        return;
+    }
+    if (isForCrudScript ||
+        mappingDetails.mappingTargetType !== "Class") {
+        let order = 0;
+        let keyFields = mappingDetails.ownerKeyFields;
+        if (!isForCreate) {
+            keyFields = keyFields.concat(mappingDetails.entityKeyFields);
+        }
+        for (const keyField of keyFields) {
+            ensureHasField({
+                contract: element,
+                fieldDetail: keyField,
+                order: order++
+            });
+        }
+    }
+    if (mappingDetails.mappingTargetType === "Operation" &amp;&amp;
+        isComplexType((_c = (_b = (_a = element.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.typeReference) === null || _c === void 0 ? void 0 : _c.getType())) {
+        getOrCreateCommandCrudDto(element, element, false, mapFromDomainMappingSettingId);
+    }
+    const fields = element.getChildren("DTO-Field")
+        .filter(x =&gt; { var _a, _b; return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" &amp;&amp; x.isMapped() &amp;&amp; ((_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement().specialization.startsWith("Association")); });
+    fields.forEach(field =&gt; {
+        getOrCreateCommandCrudDto(element, field, true, projectMappingSettingId);
+    });
+    const complexFields = element.getChildren("DTO-Field")
+        .filter(x =&gt; {
+        var _a, _b, _c, _d;
+        return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" &amp;&amp;
+            isComplexType((_d = (_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.typeReference) === null || _d === void 0 ? void 0 : _d.getType());
+    });
+    complexFields.forEach(cf =&gt; {
+        getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId);
+    });
+    function isComplexType(element) {
+        if (element == null) {
+            console.warn("isComplexType element parameter received null");
+        }
+        return (element === null || element === void 0 ? void 0 : element.specialization) === "Data Contract" ||
+            (element === null || element === void 0 ? void 0 : element.specialization) === "Value Object";
+    }
+    function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId) {
+        let mappedElement = dtoField.getMapping().getElement();
+        if (mappedElement.typeReference == null)
+            throw new Error("TypeReference is undefined");
+        let originalVerb = (command.getName().split(/(?=[A-Z])/))[0];
+        let domainName = mappedElement.typeReference.getType().getName();
+        let baseName = command.getMetadata("baseName")
+            ? `${command.getMetadata("baseName")}${domainName}`
+            : domainName;
+        let dtoName = `${originalVerb}${baseName}`;
+        let dto = getOrCreateDto(dtoName, command.getParent());
+        dto.setMetadata("originalVerb", originalVerb);
+        dto.setMetadata("baseName", baseName);
+        dto.setMapping(mappedElement.typeReference.getTypeId(), mappingTypeSettingId);
+        ensureDtoFields(autoAddPrimaryKey, mappedElement, dto);
+        dtoField.typeReference.setType(dto.id);
+    }
+}
+/// &lt;reference path="./onMapFunctions.ts" /&gt;
+const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+function onMapDto(element) {
+    var complexTypes = ["Data Contract", "Value Object"];
+    let fields = element.getChildren("DTO-Field")
+        .filter(x =&gt; { var _a, _b, _c; return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" &amp;&amp; ((_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.specialization.startsWith("Association")); });
+    fields.forEach(f =&gt; {
+        getOrCreateDtoCrudDto(element, f, true);
+    });
+    let complexAttributes = element.getChildren("DTO-Field")
+        .filter(x =&gt; {
+        var _a, _b, _c, _d, _e;
+        return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO"
+            &amp;&amp; (complexTypes.includes((_e = (_d = (_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.typeReference) === null || _d === void 0 ? void 0 : _d.getType()) === null || _e === void 0 ? void 0 : _e.specialization));
+    });
+    complexAttributes.forEach(f =&gt; {
+        getOrCreateDtoCrudDto(element, f, false);
+    });
+}
+function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey) {
+    const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
+    const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+    let mappedElement = dtoField.getMapping().getElement();
+    let originalVerb = "";
+    if (element.hasMetadata("originalVerb")) {
+        originalVerb = element.getMetadata("originalVerb");
+        // In the event that the prefix is no longer the same as the
+        // originally called verb, then don't propagate this any further
+        // as end users might get confused.
+        if (element.getName().indexOf(originalVerb) &lt; 0) {
+            originalVerb = "";
+        }
+    }
+    let targetMappingSettingId = dtoField.getParent().getMapping().mappingSettingsId;
+    let domainName = mappedElement.typeReference.getType().getName();
+    let baseName = element.getMetadata("baseName")
+        ? `${element.getMetadata("baseName")}${domainName}`
+        : domainName;
+    let dtoName = `${originalVerb}${baseName}`;
+    let dto = getOrCreateDto(dtoName, element.getParent());
+    dto.setMapping(mappedElement.typeReference.getTypeId(), targetMappingSettingId);
+    if (originalVerb !== "") {
+        dto.setMetadata("originalVerb", originalVerb);
+    }
+    dto.setMetadata("baseName", baseName);
+    ensureDtoFields(autoAddPrimaryKey, mappedElement, dto);
+    dtoField.typeReference.setType(dto.id);
+}
+/// &lt;reference path="./onMapFunctions.ts" /&gt;
+function onMapQuery(element) {
+    var complexTypes = ["Data Contract", "Value Object"];
+    let fields = element.getChildren("DTO-Field")
+        .filter(x =&gt; { var _a; return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" &amp;&amp; x.isMapped() &amp;&amp; x.getMapping().getElement().specialization.startsWith("Association"); });
+    fields.forEach(f =&gt; {
+        getOrCreateQueryCrudDto(element, f);
+    });
+    let complexAttributes = element.getChildren("DTO-Field")
+        .filter(x =&gt; {
+        var _a, _b, _c, _d, _e;
+        return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO"
+            &amp;&amp; (complexTypes.includes((_e = (_d = (_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.typeReference) === null || _d === void 0 ? void 0 : _d.getType()) === null || _e === void 0 ? void 0 : _e.specialization));
+    });
+    complexAttributes.forEach(f =&gt; {
+        getOrCreateQueryCrudDto(element, f);
+    });
+}
+function getOrCreateQueryCrudDto(element, dtoField) {
+    const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
+    let mappedElement = dtoField.getMapping().getElement();
+    let domainName = mappedElement.typeReference.getType().getName();
+    let baseName = element.getMetadata("baseName")
+        ? `${element.getMetadata("baseName")}${domainName}`
+        : `${domainName}`;
+    let dtoName = baseName;
+    let dto = getOrCreateDto(dtoName, element.getParent());
+    dto.setMapping(mappedElement.typeReference.getTypeId(), projectMappingSettingId);
+    dto.setMetadata("baseName", baseName);
+    ensureDtoFieldsQuery(mappedElement, dto);
+    dtoField.typeReference.setType(dto.id);
+}
+function ensureDtoFieldsQuery(mappedElement, dto) {
+    let dtoUpdated = false;
+    let mappedElementAttributes = mappedElement
+        .typeReference
+        .getType()
+        .getChildren("Attribute");
+    let dtoFields = dto.getChildren("DTO-Field");
+    for (let attribute of mappedElementAttributes.filter(x =&gt; !dtoFields.some(y =&gt; x.getName() === y.getName()))) {
+        if (dto.getChildren("DTO-Field").some(x =&gt; x.getName() == attribute.getName())) {
+            continue;
+        }
+        let field = createElement("DTO-Field", attribute.getName(), dto.id);
+        field.typeReference.setType(attribute.typeReference.typeId);
+        field.typeReference.setIsNullable(attribute.typeReference.isNullable);
+        field.typeReference.setIsCollection(attribute.typeReference.isCollection);
+        field.setMapping(attribute.id);
+        dtoUpdated = true;
+    }
+    if (dtoUpdated) {
+        dto.collapse();
+    }
+}
+var _a, _b;
+/// &lt;reference path="../../common/domainHelper.ts" /&gt;
+/// &lt;reference path="../../common/servicesHelper.ts" /&gt;
+/// &lt;reference path="../_common/onMapCommand.ts" /&gt;
+/// &lt;reference path="../_common/onMapDto.ts" /&gt;
+/// &lt;reference path="../_common/onMapQuery.ts" /&gt;
+const privateSettersOnly = ((_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")) === null || _b === void 0 ? void 0 : _b.value) == "true";
+const mapToDomainOperationSettingId = "7c31c459-6229-4f10-bf13-507348cd8828";
+var cqrsCrud;
+(function (cqrsCrud) {
+    async function execute(element) {
+        var _a;
+        let entity = await DomainHelper.openSelectEntityDialog();
+        if (entity == null) {
+            return;
+        }
+        const owningEntity = DomainHelper.getOwningAggregate(entity);
+        const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
+        const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+        const resultDto = createCqrsResultTypeDto(entity, folder);
+        if (owningEntity == null || !privateSettersOnly) {
+            createCqrsCreateCommand(entity, folder);
+        }
+        createCqrsFindByIdQuery(entity, folder, resultDto);
+        createCqrsFindAllQuery(entity, folder, resultDto);
+        if (!privateSettersOnly) {
+            createCqrsUpdateCommand(entity, folder);
+        }
+        const operations = entity.getChildren("Operation").filter(x =&gt; x.typeReference.getType() == null);
+        for (const operation of operations) {
+            createCqrsCallOperationCommand(entity, operation, folder);
+        }
+        if (owningEntity == null || !privateSettersOnly) {
+            createCqrsDeleteCommand(entity, folder);
+        }
+    }
+    cqrsCrud.execute = execute;
+    function createCqrsCreateCommand(entity, folder) {
+        let owningAggregate = DomainHelper.getOwningAggregate(entity);
+        let baseName = getBaseNameForElement(owningAggregate, entity, false);
+        let expectedCommandName = `Create${baseName}Command`;
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        if (folder.getChildren().some(x =&gt; x.getName() == expectedCommandName)) {
+            let command = folder.getChildren().filter(x =&gt; x.getName() == expectedCommandName)[0];
+            command.typeReference.setType(primaryKeys[0].typeId);
+            return command;
+        }
+        let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
+            childSpecialization: "DTO-Field"
+        });
+        let entityCtor = entity
+            .getChildren("Class Constructor")
+            .filter(x =&gt; x.getChildren("Parameter").length &gt; 0)
+            .sort((a, b) =&gt; {
+            // In descending order:
+            return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
+        })[0];
+        if (entityCtor != null) {
+            command.mapToElement(entityCtor, mapToDomainOperationSettingId);
+            command.getElement().setMapping([entity.id, entityCtor.id], mapToDomainOperationSettingId);
+        }
+        else if (!privateSettersOnly) {
+            command.mapToElement(entity);
+        }
+        command.getElement().setMetadata("baseName", baseName);
+        if (primaryKeys[0].typeId) {
+            command.setReturnType(primaryKeys[0].typeId);
+        }
+        if (entityCtor) {
+            command.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter"));
+        }
+        else {
+            command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+            command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
+        }
+        onMapCommand(command.getElement(), true, true);
+        command.collapse();
+        return command.getElement();
+    }
+    cqrsCrud.createCqrsCreateCommand = createCqrsCreateCommand;
+    function createCqrsFindByIdQuery(entity, folder, resultDto) {
+        let owningAggregate = DomainHelper.getOwningAggregate(entity);
+        let baseName = getBaseNameForElement(owningAggregate, entity, false);
+        let expectedQueryName = `Get${baseName}ByIdQuery`;
+        if (folder.getChildren().some(x =&gt; x.getName() == expectedQueryName)) {
+            return folder.getChildren().find(x =&gt; x.getName() == expectedQueryName);
+        }
+        let query = createElement("Query", expectedQueryName, folder.id);
+        query.typeReference.setType(resultDto.id);
+        query.setMapping(entity.id);
+        query.setMetadata("baseName", baseName);
+        if (owningAggregate) {
+            let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
+            foreignKeys.forEach(fk =&gt; {
+                let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(fk.name), query.id);
+                field.typeReference.setType(fk.typeId);
+                if (fk.mapPath) {
+                    field.setMapping(fk.mapPath);
+                }
+            });
+        }
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        ServicesHelper.addDtoFieldsFromDomain(query, primaryKeys);
+        onMapQuery(query);
+        query.collapse();
+        return query;
+    }
+    cqrsCrud.createCqrsFindByIdQuery = createCqrsFindByIdQuery;
+    function createCqrsFindAllQuery(entity, folder, resultDto) {
+        let owningAggregate = DomainHelper.getOwningAggregate(entity);
+        let baseName = getBaseNameForElement(owningAggregate, entity, true);
+        let expectedQueryName = `Get${baseName}Query`;
+        if (folder.getChildren().some(x =&gt; x.getName() == expectedQueryName)) {
+            return folder.getChildren().find(x =&gt; x.getName() == expectedQueryName);
+        }
+        let query = createElement("Query", expectedQueryName, folder.id);
+        query.typeReference.setType(resultDto.id);
+        query.typeReference.setIsCollection(true);
+        query.setMapping(entity.id);
+        query.setMetadata("baseName", baseName);
+        if (owningAggregate) {
+            let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
+            foreignKeys.forEach(fk =&gt; {
+                let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(fk.name), query.id);
+                field.typeReference.setType(fk.typeId);
+                if (fk.mapPath) {
+                    field.setMapping(fk.mapPath);
+                }
+            });
+        }
+        query.collapse();
+        return query;
+    }
+    cqrsCrud.createCqrsFindAllQuery = createCqrsFindAllQuery;
+    function createCqrsUpdateCommand(entity, folder) {
+        let owningAggregate = DomainHelper.getOwningAggregate(entity);
+        let baseName = getBaseNameForElement(owningAggregate, entity, false);
+        let expectedCommandName = `Update${baseName}Command`;
+        if (folder.getChildren().some(x =&gt; x.getName() == expectedCommandName)) {
+            return folder.getChildren().find(x =&gt; x.getName() == expectedCommandName);
+        }
+        let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
+            childSpecialization: "DTO-Field"
+        });
+        command.mapToElement(entity);
+        command.getElement().setMetadata("baseName", baseName);
+        command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+        command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
+        onMapCommand(command.getElement(), true);
+        command.collapse();
+        return command.getElement();
+    }
+    cqrsCrud.createCqrsUpdateCommand = createCqrsUpdateCommand;
+    function createCqrsCallOperationCommand(entity, operation, folder) {
+        var _a;
+        const owningAggregate = DomainHelper.getOwningAggregate(entity);
+        const baseName = (_a = owningAggregate === null || owningAggregate === void 0 ? void 0 : owningAggregate.getName()) !== null &amp;&amp; _a !== void 0 ? _a : "";
+        let operationName = operation.getName();
+        operationName = removeSuffix(operationName, "Async");
+        operationName = toPascalCase(operationName);
+        const commandName = `${operationName}${entity.getName()}Command`;
+        const existing = folder.getChildren().find(x =&gt; {
+            var _a, _b;
+            return x.getName() == commandName ||
+                ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) === operation.id;
+        });
+        if (existing) {
+            return existing;
+        }
+        const commandElement = createElement("Command", commandName, folder.id);
+        commandElement.setMetadata("baseName", baseName);
+        const commandManager = new ElementManager(commandElement, { childSpecialization: "DTO-Field" });
+        commandManager.mapToElement([entity.id, operation.id], mapToDomainOperationSettingId);
+        const primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        for (const key of primaryKeys) {
+            commandManager.addChild(key.name, lookup(key.id).typeReference);
+        }
+        commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter")
+            .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
+        onMapCommand(commandElement, true);
+        commandManager.collapse();
+        return commandManager.getElement();
+    }
+    cqrsCrud.createCqrsCallOperationCommand = createCqrsCallOperationCommand;
+    function createCqrsDeleteCommand(entity, folder) {
+        let owningAggregate = DomainHelper.getOwningAggregate(entity);
+        let baseName = getBaseNameForElement(owningAggregate, entity, false);
+        let expectedCommandName = `Delete${baseName}Command`;
+        if (folder.getChildren().some(x =&gt; x.getName() == expectedCommandName)) {
+            return folder.getChildren().find(x =&gt; x.getName() == expectedCommandName);
+        }
+        let command = createElement("Command", expectedCommandName, folder.id);
+        command.setMapping(entity.id);
+        command.setMetadata("baseName", baseName);
+        if (owningAggregate) {
+            let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
+            foreignKeys.forEach(fk =&gt; {
+                let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(fk.name), command.id);
+                field.typeReference.setType(fk.typeId);
+                if (fk.mapPath) {
+                    field.setMapping(fk.mapPath);
+                }
+            });
+        }
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        ServicesHelper.addDtoFieldsFromDomain(command, primaryKeys);
+        onMapCommand(command, true);
+        command.collapse();
+        return command;
+    }
+    cqrsCrud.createCqrsDeleteCommand = createCqrsDeleteCommand;
+    function createCqrsResultTypeDto(entity, folder) {
+        let owningAggregate = DomainHelper.getOwningAggregate(entity);
+        let baseName = getBaseNameForElement(owningAggregate, entity, false);
+        let expectedDtoName = `${baseName}Dto`;
+        let existing = folder.getChildren().find(x =&gt; x.getName() == expectedDtoName);
+        if (existing) {
+            return existing;
+        }
+        let dto = createElement("DTO", expectedDtoName, folder.id);
+        dto.setMetadata("baseName", baseName);
+        dto.setMapping(entity.id);
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        if (owningAggregate) {
+            let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
+            foreignKeys.forEach(fk =&gt; {
+                let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(fk.name), dto.id);
+                field.typeReference.setType(fk.typeId);
+                if (fk.mapPath) {
+                    field.setMapping(fk.mapPath);
+                }
+            });
+        }
+        ServicesHelper.addDtoFieldsFromDomain(dto, primaryKeys);
+        let attributesWithMapPaths = DomainHelper.getAttributesWithMapPath(entity);
+        for (var attr of attributesWithMapPaths) {
+            if (dto.getChildren("DTO-Field").some(x =&gt; { var _a, _b; return ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) == attr.id; })) {
+                continue;
+            }
+            let field = createElement("DTO-Field", attr.name, dto.id);
+            field.typeReference.setType(attr.typeId);
+            field.setMapping(attr.mapPath);
+        }
+        onMapDto(dto);
+        dto.collapse();
+        return dto;
+    }
+    cqrsCrud.createCqrsResultTypeDto = createCqrsResultTypeDto;
+    function getMandatoryAssociationsWithMapPath(entity) {
+        return traverseInheritanceHierarchy(entity, [], []);
+        function traverseInheritanceHierarchy(entity, results, generalizationStack) {
+            entity
+                .getAssociations("Association")
+                .filter(x =&gt; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable &amp;&amp; x.typeReference.isNavigable &amp;&amp;
+                !x.getOtherEnd().typeReference.isCollection &amp;&amp; !x.getOtherEnd().typeReference.isNullable)
+                .forEach(association =&gt; {
+                return results.push({
+                    id: association.id,
+                    name: association.getName(),
+                    typeId: null,
+                    mapPath: generalizationStack.concat([association.id]),
+                    isNullable: false,
+                    isCollection: false
+                });
+            });
+            let generalizations = entity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+            if (generalizations.length == 0) {
+                return results;
+            }
+            let generalization = generalizations[0];
+            generalizationStack.push(generalization.id);
+            return traverseInheritanceHierarchy(generalization.typeReference.getType(), results, generalizationStack);
+        }
+    }
+    function getBaseNameForElement(owningAggregate, entity, entityIsMany) {
+        let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
+        return owningAggregate ? `${toPascalCase(owningAggregate.getName())}${entityName}` : entityName;
+    }
+})(cqrsCrud || (cqrsCrud = {}));
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro/create-crud-macro.ts
+ */
+//await cqrsCrud.execute(element);
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+var convertToE2EMapping;
+(function (convertToE2EMapping) {
+    function execute() {
+        if (element.isMapped() &amp;&amp; element.specialization == "Command") {
+            convertCommand(element);
+        }
+        else if (element.isMapped() &amp;&amp; element.specialization == "Query") {
+            convertQuery(element);
+        }
+    }
+    convertToE2EMapping.execute = execute;
+    function convertCommand(command) {
+        var _a;
+        let target = command.getMapping().getElement();
+        let entity = (_a = target.getParent("Class")) !== null &amp;&amp; _a !== void 0 ? _a : target;
+        if (command.getName().startsWith("Create")) {
+            let action = createAssociation("Create Entity Action", command.id, target.id);
+            let mapping = action.createMapping(command.id, entity.id);
+            mapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
+            mapContract("Data Mapping", command, [command.id], [target.id], mapping);
+        }
+        else if (command.getName().startsWith("Delete")) {
+            let action = createAssociation("Delete Entity Action", command.id, entity.id);
+            let mapping = action.createMapping(command.id, entity.id);
+            let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
+            let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
+            if (idField &amp;&amp; entityPk) {
+                mapping.addMappedEnd("Filter Mapping", [idField.id], [entityPk.id]);
+            }
+            mapContract("Filter Mapping", command, [command.id], [target.id], mapping);
+        }
+        else if (command.isMapped()) {
+            let action = createAssociation("Update Entity Action", command.id, target.id);
+            // Query Entity Mapping
+            let queryMapping = action.createMapping(command.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
+            let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
+            if (idField &amp;&amp; entityPk) {
+                queryMapping.addMappedEnd("Filter Mapping", [idField.id], [entityPk.id]);
+            }
+            // Update Entity Mapping
+            let updateMapping = action.createMapping(command.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
+            if (target.id != entity.id) {
+                updateMapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
+            }
+            mapContract("Data Mapping", command, [command.id], [target.id], updateMapping);
+        }
+    }
+    convertToE2EMapping.convertCommand = convertCommand;
+    function convertQuery(query) {
+        let entity = query.getMapping().getElement();
+        let action = createAssociation("Query Entity Action", query.id, entity.id);
+        if (query.typeReference.getIsCollection()) {
+            action.typeReference.setIsCollection(true);
+        }
+        let mapping = action.createMapping(query.id, entity.id);
+        mapContract("Filter Mapping", query, [query.id], [entity.id], mapping);
+    }
+    convertToE2EMapping.convertQuery = convertQuery;
+    function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping) {
+        console.log("mapContract: " + dto.getName());
+        dto.getChildren("DTO-Field").filter(x =&gt; x.isMapped() &amp;&amp; !(dto.specialization == "Command" &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key"))).forEach(field =&gt; {
+            if (field.typeReference.getType().specialization != "DTO" || field.typeReference.getIsCollection()) {
+                mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));
+            }
+            if (field.typeReference.getType().specialization == "DTO") {
+                mapContract(mappingType, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)), mapping);
+            }
+            field.clearMapping();
+        });
+        dto.clearMapping();
+    }
+})(convertToE2EMapping || (convertToE2EMapping = {}));
+//convertToE2EMapping.execute();
+/// &lt;reference path="../create-crud-macro/create-crud-macro.ts"/&gt;
+/// &lt;reference path="../convert-to-e2e-mapping/convert-to-e2e-mapping.ts"/&gt;
+async function execute(element) {
+    var _a;
+    let entity = await DomainHelper.openSelectEntityDialog();
+    if (entity == null) {
+        return;
+    }
+    const owningEntity = DomainHelper.getOwningAggregate(entity);
+    const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
+    const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+    const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, folder);
+    if (owningEntity == null || !privateSettersOnly) {
+        convertToE2EMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, folder));
+    }
+    convertToE2EMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, folder, resultDto));
+    convertToE2EMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, folder, resultDto));
+    if (!privateSettersOnly) {
+        convertToE2EMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, folder));
+    }
+    const operations = entity.getChildren("Operation").filter(x =&gt; x.typeReference.getType() == null);
+    for (const operation of operations) {
+        convertToE2EMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, folder));
+    }
+    if (owningEntity == null || !privateSettersOnly) {
+        convertToE2EMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, folder));
+    }
+}
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro-e2e-mapping/create-crud-macro-e2e-mapping.ts
+ */
+await execute(element);
+</script>
+        </option>
+      </scriptOptions>
+      <typeOrder />
+    </packageExtension>
+  </packageExtensions>
   <elementSettings>
     <elementSetting type="Processing Action" typeId="405a2857-b911-431f-8142-719a0e9f15f3">
       <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAB3VJREFUeF7tnVlsVFUYgL9/prIIRR8oiUpETY2RKG1DogajLyoaE4kJEBNf3BK2aX0wStAHY9yqUaMRWypEFGNU1CqKoiBoNK4o0orBhbKordCiiJYywMyd35zp3NpOO525S6czk3sTHkjPv5zv/nfOuef857/CKF2VdTqpHKZaCU4T4VyU8wUqUaYSogLlVJRxSfeEYwiHUbpQ2lXYjbJThbZwnP3dY2hvWy7/jkZXJK9G52t4RgVXCSwU4VJgfOpf2JUfQhzlGBBV5XNCNLV2spnXxXKlz4XQiAM871YtH3sys0MJ5iBcAZzhwk8nIu3AZlXWx2DTzkY54kTYadsRAzhzgZ4SK2NeSKgHKpw65lP7Lglx1xhY9/UIPeK+AzTg4mUsE+EG4GyfQHhVswdYG47x6LaV8o9XZf3lfQNYWadjyy2u096Iq/TTSd90KbsE7ukOs75tuRz3Q68vAKffrmeOsWgGqoEyPxwbQR1m4Nkeh7k/NMrvXu14AmiibkKCm0S5FxnxwcFrXwfIK7SLcv+JKazZeZ+ccKvcNcCZC/TkeBlPiLAwOVMrzktRVoTj3LVtpRx10wVXHa+p04qERbMIl7kxWoAyn4bHMXfbE/KnU98cA7ywVi8MK+uBaU6NFXj7fZYwZ8czssOJn44AVi3SMyTMV8BUJ0aKqG27WlzS2iQdufqcM8BU5G0oYXg2s3ZLuDbXSMwJ4MwFOtkq4xuEs3K9M0Xebm84xkXbVmb/TcwK0Iy21km8D1xe5FCcua98Eo5zbbbReViAZp43McGTwGJn1kujtcLyWAV3DjdPHBZgVUQXCDQV8TzP650088SFLY2yKpOijABrIjotucZWZG8YXomly5s3lliYS3c+Lb8NpXtIgMlH1+JLhBq/HSpGfQrf9YSYNdQCxJAAq2t1PsrLRbAwkK/7ESfBjS0r5PV0g4MAmvU86yS+LdglqXwhG2xndzjGzPT1xEEAq5ZovQjLRs/PgrZc39Ig9/T3cADAVPRtL6CV5EKjuWdsiJr+2wMDAFYt1lskxOp8eT1xPPREQfNl0Ac7Cre1Nkgfoz6AZvds/Dj2IEz2wU5OKl5eCms/hbfN8kTxXAdPKOfYu319AGfU6tyQ8kY++7HpIZg8Cd74DJo2wKHufFp3b0uVua2N8qbR0AewOqIvADe5V+tc0gCsOKX3ET5wCO5YCT+ZXd3Cv9a0NMjN/wOcr+HqCn7N91uHDdDm1X0Unv8QXv0Eoq53KfJAX+loOcg0kwGRjMCqOp0tCTbmwfQAE+kA7T9+8SMsWw3d0Xx75MBenNktz8qHvQCX6FsiXO9A3JemmQAa5fsPwePN8FGrL6Z8V6LQ3Nog8+TiOp10PEHbaKRfDAfQ9FgVXtwCz20syGjsik6gUmrqdLom+BqY6PttyqIwG0Ab4v6/obYR9h7It4fD2jsicS6WGRG9IkTy989dipmHPuUC0Fb/17+w6gNY9yUcj3kw6p9oPCFcLTURXazQ6J/e3DU5AWhr3fQdPPAKHCmAAUaVRVId0WeASO7d9q+lG4DG+r5OqF8LW3/xzxc3msySv1RF9H2Ba9wo8CrjFqD927jiPXjpY4j6kmflqjcbpLpWd6Bc4Erco5AXgMZ0QnsHlkgDdB726Iw78e9NBHYKTHEn703KK0DbetdhaHgX3tsKVsKbT06kFQ5I1RKNiqSy4Z1I+9DWL4D2I/3OV/BYM/SYtPP8XD1mEDH3LOsG+0j44ydA279fOuChV+H7vSPh8SCdVskB3NUBD+YTYPAIe4rUnmAQ8cAvOYgU+zRm3wFY0gidf3sg4V40OY0p2ol0U2oifXRUJ9LF+ir3Gmz92X3o+CGZfJULFhPco0wuJgTLWa4BppazFup0LQsWVF1gPBJXLpLzlmr5+B52B0v6jhF2RaNUBptKjrn1CvRtKpn/BNuaLij239Yk2Fh3RjB9Y91IF0Rqxyr4yfMBVGcsXLZOS+0AguSi3FEOmVwUpLflDHDo9LbkYBIkWGalmDHB0kgGKb5Z+Q2f4puMwlqtFw2SzDOgHD7JvF8UBsccBhPM7ZhDckoTHLRJx5f7QRsjGRz1GsjP8VEvIx4cNky98yodsTJmOTpsaPMPjrvi/rir/ShPsHhKhEVZB/gSbOD5wHVqVA6O/A8THDmldCSLTvSe4Cy1WjGZ0PhXdMK2EJQ9GZp1ThHYN6iUeuEdoV3jI1R4Jy0SS7H006+WcF2uBXdsHo4i0BYqxeJjEmLe9uVy0OlkwhVAe3QuifJ3CZrCFndmK7CTCaxrgH3zxGItwKh0INzfE2KNl3KgngDad6XoSoDC9rgWQAnQ/mGdXIBQ5qA8XMAVP9pEubvgitD2BxmUQXY6DGVo31eIGx7JZx2GNHe6gKXhGOv8rh/taRrjhHFaKfgrgdOdyLtoa4oGbElYrI+H2Fi0peCH7HjqYwQIi0Iwy/PHCMB8dMAcOzyqyhcl+TGCTBFkInPCOKbGhdPTP4ehwhSBckgeAApB6nMYCcxE13wOow3hR1V2lSl/9Byj/efVMio1P/4DVZlkAcv1M3UAAAAASUVORK5CYII=" />
@@ -83,8 +1355,8 @@ function convertCommand(command) {
     if (command.getName().startsWith("Create")) {
         let action = createAssociation("Create Entity Action", command.id, target.id);
         let mapping = action.createMapping(command.id, entity.id);
-        mapping.addMappedEnd([command.id], [target.id]);
-        mapContract(command, [command.id], [target.id], mapping);
+        mapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
+        mapContract("Data Mapping", command, [command.id], [target.id], mapping);
     }
     else if (command.getName().startsWith("Delete")) {
         let action = createAssociation("Delete Entity Action", command.id, entity.id);
@@ -92,9 +1364,9 @@ function convertCommand(command) {
         let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
         let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
         if (idField &amp;&amp; entityPk) {
-            mapping.addMappedEnd([idField.id], [entityPk.id]);
+            mapping.addMappedEnd("Filter Mapping", [idField.id], [entityPk.id]);
         }
-        mapContract(command, [command.id], [target.id], mapping);
+        mapContract("Filter Mapping", command, [command.id], [target.id], mapping);
     }
     else if (command.isMapped()) {
         let action = createAssociation("Update Entity Action", command.id, target.id);
@@ -103,14 +1375,14 @@ function convertCommand(command) {
         let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
         let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
         if (idField &amp;&amp; entityPk) {
-            queryMapping.addMappedEnd([idField.id], [entityPk.id]);
+            queryMapping.addMappedEnd("Filter Mapping", [idField.id], [entityPk.id]);
         }
         // Update Entity Mapping
         let updateMapping = action.createMapping(command.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
         if (target.id != entity.id) {
-            updateMapping.addMappedEnd([command.id], [target.id]);
+            updateMapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
         }
-        mapContract(command, [command.id], [target.id], updateMapping);
+        mapContract("Data Mapping", command, [command.id], [target.id], updateMapping);
     }
 }
 function convertQuery(query) {
@@ -120,16 +1392,16 @@ function convertQuery(query) {
         action.typeReference.setIsCollection(true);
     }
     let mapping = action.createMapping(query.id, entity.id);
-    mapContract(query, [query.id], [entity.id], mapping);
+    mapContract("Filter Mapping", query, [query.id], [entity.id], mapping);
 }
-function mapContract(dto, sourcePath, targetPathIds, mapping) {
+function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping) {
     console.log("mapContract: " + dto.getName());
     dto.getChildren("DTO-Field").filter(x =&gt; x.isMapped() &amp;&amp; !(dto.specialization == "Command" &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key"))).forEach(field =&gt; {
         if (field.typeReference.getType().specialization != "DTO" || field.typeReference.getIsCollection()) {
-            mapping.addMappedEnd(sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));
+            mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));
         }
         if (field.typeReference.getType().specialization == "DTO") {
-            mapContract(field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)), mapping);
+            mapContract(mappingType, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)), mapping);
         }
         field.clearMapping();
     });
@@ -323,8 +1595,8 @@ function convertCommand(command) {
     if (command.getName().startsWith("Create")) {
         let action = createAssociation("Create Entity Action", command.id, target.id);
         let mapping = action.createMapping(command.id, entity.id);
-        mapping.addMappedEnd([command.id], [target.id]);
-        mapContract(command, [command.id], [target.id], mapping);
+        mapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
+        mapContract("Data Mapping", command, [command.id], [target.id], mapping);
     }
     else if (command.getName().startsWith("Delete")) {
         let action = createAssociation("Delete Entity Action", command.id, entity.id);
@@ -332,9 +1604,9 @@ function convertCommand(command) {
         let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
         let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
         if (idField &amp;&amp; entityPk) {
-            mapping.addMappedEnd([idField.id], [entityPk.id]);
+            mapping.addMappedEnd("Filter Mapping", [idField.id], [entityPk.id]);
         }
-        mapContract(command, [command.id], [target.id], mapping);
+        mapContract("Filter Mapping", command, [command.id], [target.id], mapping);
     }
     else if (command.isMapped()) {
         let action = createAssociation("Update Entity Action", command.id, target.id);
@@ -343,14 +1615,14 @@ function convertCommand(command) {
         let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
         let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
         if (idField &amp;&amp; entityPk) {
-            queryMapping.addMappedEnd([idField.id], [entityPk.id]);
+            queryMapping.addMappedEnd("Filter Mapping", [idField.id], [entityPk.id]);
         }
         // Update Entity Mapping
         let updateMapping = action.createMapping(command.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
         if (target.id != entity.id) {
-            updateMapping.addMappedEnd([command.id], [target.id]);
+            updateMapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
         }
-        mapContract(command, [command.id], [target.id], updateMapping);
+        mapContract("Data Mapping", command, [command.id], [target.id], updateMapping);
     }
 }
 function convertQuery(query) {
@@ -360,16 +1632,16 @@ function convertQuery(query) {
         action.typeReference.setIsCollection(true);
     }
     let mapping = action.createMapping(query.id, entity.id);
-    mapContract(query, [query.id], [entity.id], mapping);
+    mapContract("Filter Mapping", query, [query.id], [entity.id], mapping);
 }
-function mapContract(dto, sourcePath, targetPathIds, mapping) {
+function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping) {
     console.log("mapContract: " + dto.getName());
     dto.getChildren("DTO-Field").filter(x =&gt; x.isMapped() &amp;&amp; !(dto.specialization == "Command" &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key"))).forEach(field =&gt; {
         if (field.typeReference.getType().specialization != "DTO" || field.typeReference.getIsCollection()) {
-            mapping.addMappedEnd(sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));
+            mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));
         }
         if (field.typeReference.getType().specialization == "DTO") {
-            mapContract(field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)), mapping);
+            mapContract(mappingType, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)), mapping);
         }
         field.clearMapping();
     });
@@ -1257,6 +2529,8 @@ return (!element.hasStereotype('Primary Key') || element.getParent().specializat
           <sources>
             <source id="b585bde3-d87d-411e-81b4-2919bb0e4c9f" name="Update Command" />
             <source id="41ceeb7e-4ec5-4a64-b69a-42c16df26343" name="Update Operation" />
+            <source id="90553c32-fb23-4231-8776-77d495014a72" name="Update Collection Field" />
+            <source id="1b0e5a36-0fdb-4ca5-90a2-dbd15ab51c1c" name="Collection Parameter" />
           </sources>
           <targets>
             <target id="f53131e5-cb81-4eeb-94a6-62fd1f76c9dc" name="Invoke Class Operation" />
@@ -1268,18 +2542,6 @@ return (!element.hasStereotype('Primary Key') || element.getParent().specializat
           <sources>
             <source id="766bd1a3-0d5d-490b-b31c-c5af9e1394d9" name="Update Field" />
             <source id="ace00d89-ecb6-42a6-8a95-e2be8223b669" name="Parameter" />
-          </sources>
-          <targets>
-            <target id="d91737ab-e838-493f-aff5-e38e43f8ac47" name="Update Attribute" />
-            <target id="c919dea4-c764-4d7d-b0af-0b96bf101567" name="Update Association Target End" />
-            <target id="5f9b4556-02df-45c3-8d48-20e2ed859963" name="Operation Parameter" />
-            <target id="90a27716-2e2b-4403-b4ff-ca310e5dad1a" name="Value Object Attribute" />
-          </targets>
-          <allowAutoMap>true</allowAutoMap>
-        </mappingType>
-        <mappingType type="Data Collection Mapping" typeId="3bd4983e-377b-417c-8e65-da2f31169710">
-          <represents>data</represents>
-          <sources>
             <source id="90553c32-fb23-4231-8776-77d495014a72" name="Update Collection Field" />
             <source id="1b0e5a36-0fdb-4ca5-90a2-dbd15ab51c1c" name="Collection Parameter" />
           </sources>
@@ -1288,7 +2550,6 @@ return (!element.hasStereotype('Primary Key') || element.getParent().specializat
             <target id="c919dea4-c764-4d7d-b0af-0b96bf101567" name="Update Association Target End" />
             <target id="5f9b4556-02df-45c3-8d48-20e2ed859963" name="Operation Parameter" />
             <target id="90a27716-2e2b-4403-b4ff-ca310e5dad1a" name="Value Object Attribute" />
-            <target id="f53131e5-cb81-4eeb-94a6-62fd1f76c9dc" name="Invoke Class Operation" />
           </targets>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
@@ -1566,7 +2827,9 @@ return (!element.hasStereotype('Primary Key') || element.getParent().specializat
           <represents>invokable</represents>
           <sources>
             <source id="b2f0849a-864b-447d-b896-300b597bbb02" name="Update Command" />
+            <source id="bf848a07-0fcd-4599-9a8a-0824085fb9f6" name="Update Collection Field" />
             <source id="36780dcc-1942-42cf-b50a-f5b2571cf218" name="Update Operation" />
+            <source id="3b4ddbc4-154e-40ac-8f17-7a1603270f8c" name="Collection Parameter" />
           </sources>
           <targets>
             <target id="7e59bbbb-eb82-4b16-b8b3-0547d86e41d8" name="Invoke Class Operation" />
@@ -1578,18 +2841,6 @@ return (!element.hasStereotype('Primary Key') || element.getParent().specializat
           <sources>
             <source id="cb557bfc-e7c7-49ab-b842-0124959fe5ec" name="Update Field" />
             <source id="b29d236f-473a-4ad5-871b-38d5c652bf1a" name="Parameter" />
-          </sources>
-          <targets>
-            <target id="f36d1424-356d-44f1-8518-2a3c5b4887f7" name="Update Attribute" />
-            <target id="0601475b-1210-42ae-a51a-f8c714e141a1" name="Update Association Target End" />
-            <target id="33263133-596d-44ea-b713-840113c226ba" name="Operation Parameter" />
-            <target id="1f8058b9-55bc-4ab4-ab8c-8ebde1a99018" name="Value Object Attribute" />
-          </targets>
-          <allowAutoMap>true</allowAutoMap>
-        </mappingType>
-        <mappingType type="Data Collection Mapping" typeId="e79df6d7-a6bb-4266-b7bc-b3b700d0cd41">
-          <represents>data</represents>
-          <sources>
             <source id="bf848a07-0fcd-4599-9a8a-0824085fb9f6" name="Update Collection Field" />
             <source id="3b4ddbc4-154e-40ac-8f17-7a1603270f8c" name="Collection Parameter" />
           </sources>
@@ -1598,7 +2849,6 @@ return (!element.hasStereotype('Primary Key') || element.getParent().specializat
             <target id="0601475b-1210-42ae-a51a-f8c714e141a1" name="Update Association Target End" />
             <target id="33263133-596d-44ea-b713-840113c226ba" name="Operation Parameter" />
             <target id="1f8058b9-55bc-4ab4-ab8c-8ebde1a99018" name="Value Object Attribute" />
-            <target id="7e59bbbb-eb82-4b16-b8b3-0547d86e41d8" name="Invoke Class Operation" />
           </targets>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>

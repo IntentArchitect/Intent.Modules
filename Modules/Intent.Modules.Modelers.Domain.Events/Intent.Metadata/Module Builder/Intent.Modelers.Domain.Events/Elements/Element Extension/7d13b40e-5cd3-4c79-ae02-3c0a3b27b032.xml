@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="5ec8ea91-7786-4988-8c65-88d852d49760">
     <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
-    <typeName>Operation</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -68,7 +67,6 @@
           <genericTypes />
           <typeReference id="5c637727-6cd9-4a04-ac04-8c64bf74c38e">
             <typeId>4c0cc50b-8a9d-43cd-b731-9f354f69f3c9</typeId>
-            <typeName>Domain Event Origin Association</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

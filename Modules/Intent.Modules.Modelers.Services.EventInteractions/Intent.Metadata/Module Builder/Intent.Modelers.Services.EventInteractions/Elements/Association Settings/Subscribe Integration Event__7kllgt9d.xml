@@ -104,7 +104,6 @@
               <genericTypes />
               <typeReference id="c443da45-e950-4c76-bc6f-9a660cd965ff">
                 <typeId>38a3de5a-ca88-4f6e-88b9-88e5953936b2</typeId>
-                <typeName>Send Command</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>

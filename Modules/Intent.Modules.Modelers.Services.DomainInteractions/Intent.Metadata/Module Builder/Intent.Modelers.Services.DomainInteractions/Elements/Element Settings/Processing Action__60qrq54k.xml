@@ -69,7 +69,6 @@
           <genericTypes />
           <typeReference id="48ad3e13-6cd3-4ed0-871e-8f41f29def66">
             <typeId>01bc7593-a6a2-45aa-8497-b4b6a269ab68</typeId>
-            <typeName>Process Action Mapping</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

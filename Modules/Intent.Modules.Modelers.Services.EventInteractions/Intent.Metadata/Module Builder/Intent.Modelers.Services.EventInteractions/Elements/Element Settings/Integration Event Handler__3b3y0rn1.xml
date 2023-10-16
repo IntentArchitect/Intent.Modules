@@ -69,7 +69,6 @@
           <genericTypes />
           <typeReference id="cc1535f7-8f24-4572-89a1-74d916420be6">
             <typeId>16fa2952-79e6-4150-b5ab-45aa4c106de4</typeId>
-            <typeName>Subscribe Integration Event Target End</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

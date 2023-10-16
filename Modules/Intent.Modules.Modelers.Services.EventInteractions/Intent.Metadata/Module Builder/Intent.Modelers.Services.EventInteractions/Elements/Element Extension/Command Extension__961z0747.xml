@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="be3ae527-7798-4b80-affe-edaaac487efd">
     <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
-    <typeName>Command</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -68,7 +67,6 @@
           <genericTypes />
           <typeReference id="843d98c8-92a2-4dc0-b673-2bfb77dfe39d">
             <typeId>580b6b26-eab5-4602-a408-e76e2d292d2c</typeId>
-            <typeName>Publish Integration Event</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

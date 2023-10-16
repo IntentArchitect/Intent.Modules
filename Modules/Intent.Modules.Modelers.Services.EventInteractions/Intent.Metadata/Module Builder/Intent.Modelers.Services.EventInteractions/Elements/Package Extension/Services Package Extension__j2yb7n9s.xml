@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="da30e5cf-46d6-4d62-89ff-cb088d79c411">
     <typeId>df45eaf6-9202-4c25-8dd5-677e9ba1e906</typeId>
-    <typeName>Services Package</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -44,7 +43,6 @@
           <genericTypes />
           <typeReference id="f8cdaa82-f81a-4014-9cfe-d14076b6abd2">
             <typeId>c0582230-22f5-4f74-8eb0-ec6fc9364900</typeId>
-            <typeName>Integration Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

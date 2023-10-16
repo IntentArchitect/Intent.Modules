@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="e081eaf2-3167-4c3e-8530-7dee568d3000">
     <typeId>90831494-f069-44eb-b488-ab2dba7518ea</typeId>
-    <typeName>Domain Event Handler Association</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

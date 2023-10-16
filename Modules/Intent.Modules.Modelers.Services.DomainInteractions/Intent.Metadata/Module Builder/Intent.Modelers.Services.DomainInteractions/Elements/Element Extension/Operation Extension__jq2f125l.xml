@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="ef66d9d3-9727-491e-9c8b-81853a4c1afd">
     <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
-    <typeName>Operation</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -68,7 +67,6 @@
           <genericTypes />
           <typeReference id="f9c80b88-eb5c-41fc-90f6-349550d919b7">
             <typeId>7a3f0474-3cf8-4249-baac-8c07c49465e0</typeId>
-            <typeName>Create Entity Action</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -108,7 +106,6 @@
           <genericTypes />
           <typeReference id="6f40e0ab-7aa3-46a8-8c4c-f9234844986b">
             <typeId>9ea0382a-4617-412a-a8c8-af987bbce226</typeId>
-            <typeName>Update Entity Action</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -148,7 +145,6 @@
           <genericTypes />
           <typeReference id="6a65f020-cedd-4f6a-9186-f19d3a768261">
             <typeId>bfc823fb-60ab-451d-ba62-12671fe7e28e</typeId>
-            <typeName>Delete Entity Action</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -188,7 +184,6 @@
           <genericTypes />
           <typeReference id="24cb5f50-926f-4260-8a77-4fae02203ccb">
             <typeId>47ab5888-a258-4bec-a9fc-a83de69eb79d</typeId>
-            <typeName>Query Entity Action</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

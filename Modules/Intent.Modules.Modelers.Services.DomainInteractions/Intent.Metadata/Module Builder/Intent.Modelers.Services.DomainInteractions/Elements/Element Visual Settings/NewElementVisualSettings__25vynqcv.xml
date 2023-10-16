@@ -8,7 +8,6 @@
   <genericTypes />
   <typeReference id="34e8b108-a8b2-4bbc-9ad7-27ad43fa5159">
     <typeId>dec2bd12-4699-4f45-8ec9-3b62dc692d2b</typeId>
-    <typeName>Class Constructor</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

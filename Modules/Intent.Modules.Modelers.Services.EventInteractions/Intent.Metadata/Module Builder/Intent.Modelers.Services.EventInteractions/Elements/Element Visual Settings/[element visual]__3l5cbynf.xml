@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="48460f47-4483-4d66-a8c6-ccceef8b6268">
     <typeId>c0582230-22f5-4f74-8eb0-ec6fc9364900</typeId>
-    <typeName>Integration Event Handler</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

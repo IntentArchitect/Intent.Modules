@@ -104,7 +104,6 @@
               <genericTypes />
               <typeReference id="813b381b-466a-4ae0-941f-8e07919f561f">
                 <typeId>86cb62b5-412d-493b-a901-d6e08cf88059</typeId>
-                <typeName>Class to Domain Event Mapping</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>

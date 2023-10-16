@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="01d1e0b0-aa1c-4d08-856b-289f4a0c249e">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
-    <typeName>Folder</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -68,7 +67,6 @@
           <genericTypes />
           <typeReference id="cac78cbf-7906-4dfc-ba23-beeda1af59d5">
             <typeId>c0582230-22f5-4f74-8eb0-ec6fc9364900</typeId>
-            <typeName>Integration Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

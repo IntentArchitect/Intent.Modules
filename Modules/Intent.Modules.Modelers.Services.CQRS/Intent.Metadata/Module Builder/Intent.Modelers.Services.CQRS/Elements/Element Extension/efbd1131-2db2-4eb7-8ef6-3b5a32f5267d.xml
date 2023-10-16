@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="efb24a0c-a04e-44b1-8abc-77fd220a6ce6">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
-    <typeName>Folder</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -68,7 +67,6 @@
           <genericTypes />
           <typeReference id="b0a5b1cc-56c5-473a-b01e-a2042c3c6274">
             <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
-            <typeName>Command</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -109,7 +107,6 @@
           <genericTypes />
           <typeReference id="e8032086-eef3-48b9-9531-0a1a5d196dff">
             <typeId>e71b0662-e29d-4db2-868b-8a12464b25d0</typeId>
-            <typeName>Query</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
