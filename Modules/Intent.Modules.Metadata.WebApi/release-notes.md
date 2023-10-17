@@ -1,3 +1,7 @@
+### Version 4.3.1
+
+- Improvement: Added a new `OpenAPI Settings` stereotype which can be used to control `operationId`s for endpoints.
+
 ### Version 4.3.0
 
 - Improvement: Scripts updated to cater for Default Route Prefix for API Services.

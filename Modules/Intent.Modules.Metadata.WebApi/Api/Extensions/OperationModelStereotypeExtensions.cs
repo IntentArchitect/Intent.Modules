@@ -59,6 +59,30 @@ namespace Intent.Metadata.WebApi.Api
             return true;
         }
 
+        public static OpenAPISettings GetOpenAPISettings(this OperationModel model)
+        {
+            var stereotype = model.GetStereotype("OpenAPI Settings");
+            return stereotype != null ? new OpenAPISettings(stereotype) : null;
+        }
+
+
+        public static bool HasOpenAPISettings(this OperationModel model)
+        {
+            return model.HasStereotype("OpenAPI Settings");
+        }
+
+        public static bool TryGetOpenAPISettings(this OperationModel model, out OpenAPISettings stereotype)
+        {
+            if (!HasOpenAPISettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new OpenAPISettings(model.GetStereotype("OpenAPI Settings"));
+            return true;
+        }
+
         public static Secured GetSecured(this OperationModel model)
         {
             var stereotype = model.GetStereotype("Secured");
@@ -245,6 +269,24 @@ namespace Intent.Metadata.WebApi.Api
                 Default,
                 ApplicationJson
             }
+        }
+
+        public class OpenAPISettings
+        {
+            private IStereotype _stereotype;
+
+            public OpenAPISettings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string OperationId()
+            {
+                return _stereotype.GetProperty<string>("OperationId");
+            }
+
         }
 
         public class Secured
