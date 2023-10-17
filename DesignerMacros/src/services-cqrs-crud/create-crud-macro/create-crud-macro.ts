@@ -51,9 +51,9 @@ namespace cqrsCrud {
 
         if (folder.getChildren().some(x => x.getName() == expectedCommandName)) {
             let command = folder.getChildren().filter(x => x.getName() == expectedCommandName)[0];
-            
+
             let returnType = primaryKeys[0].typeId;
-            if (primaryKeys.length > 1){
+            if (primaryKeys.length > 1) {
                 returnType = null;
             }
             command.typeReference.setType(returnType);
@@ -87,8 +87,8 @@ namespace cqrsCrud {
         if (entityCtor) {
             command.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter"));
         } else {
-            if (!surrogateKey){
-                ServicesHelper.addDtoFieldsFromDomain(command.getElement(), primaryKeys);        
+            if (!surrogateKey) {
+                ServicesHelper.addDtoFieldsFromDomain(command.getElement(), primaryKeys);
             }
             command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
             command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
