@@ -41,7 +41,6 @@ namespace cqrsCrud {
         }
     }
 
-
     export function createCqrsCreateCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let baseName = getBaseNameForElement(owningAggregate, entity, false);
@@ -60,7 +59,7 @@ namespace cqrsCrud {
             return command;
         }
 
-        let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
+        let commandManager = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
             childSpecialization: "DTO-Field"
         });
 
@@ -72,31 +71,32 @@ namespace cqrsCrud {
                 return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
             })[0];
         if (entityCtor != null) {
-            command.mapToElement(entityCtor, mapToDomainOperationSettingId);
-            command.getElement().setMapping([entity.id, entityCtor.id], mapToDomainOperationSettingId);
+            commandManager.mapToElement(entityCtor, mapToDomainOperationSettingId);
+            commandManager.getElement().setMapping([entity.id, entityCtor.id], mapToDomainOperationSettingId);
         } else if (!privateSettersOnly) {
-            command.mapToElement(entity);
+            commandManager.mapToElement(entity);
         }
-        command.getElement().setMetadata("baseName", baseName);
+        commandManager.getElement().setMetadata("baseName", baseName);
 
         let surrogateKey = primaryKeys.length === 1;
         if (surrogateKey) {
-            command.setReturnType(primaryKeys[0].typeId);
+            commandManager.setReturnType(primaryKeys[0].typeId);
         }
 
         if (entityCtor) {
-            command.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter"));
+            commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter")
+                .filter(x => x.typeId != null && lookup(x.typeId).specialization !== "Domain Service"));
         } else {
             if (!surrogateKey) {
-                ServicesHelper.addDtoFieldsFromDomain(command.getElement(), primaryKeys);
+                ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), primaryKeys);
             }
-            command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
-            command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
+            commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+            commandManager.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
         }
 
-        onMapCommand(command.getElement(), true, true);
-        command.collapse();
-        return command.getElement();
+        onMapCommand(commandManager.getElement(), true, true);
+        commandManager.collapse();
+        return commandManager.getElement();
     }
 
     export function createCqrsFindByIdQuery(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi, resultDto: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
