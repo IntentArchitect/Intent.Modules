@@ -2,6 +2,11 @@
 
 - Added: `CSharpAssignmentStatement` which takes in a left-hand and right-hand set of statements for standard variable and property assignements.
 - Added: `IHasCSharpName GetReferenceForModel(...)` on `CSharpFile` to support resolving reference names for methods, properties and parameters.
+
+### Version 3.3.43
+
+- Improvement: Added support for `await` on `foreach` statements.
+
 ### Version 3.3.42
 
 - Improvement: Added CSharpWhileStatement for adding `while(true) { }` statements.

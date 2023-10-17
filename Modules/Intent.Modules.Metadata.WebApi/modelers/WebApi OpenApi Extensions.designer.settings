@@ -58,6 +58,7 @@ return `V${ver}.0`;</defaultName>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Version" typeId="95f4362b-8193-41cb-bd65-c17d6be3f96b">
@@ -76,6 +77,7 @@ return `V${ver}.0`;</defaultName>
           <typeOrder />
           <creationOptions />
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <macros>
             <macro trigger="on-created">
