@@ -1,6 +1,7 @@
 ﻿### Version 3.3.43
 
 - Improvement: Added support for `await` on `foreach` statements.
+- Improvement: Added support for `required` on `Field`s and `Property`s statements.
 
 ### Version 3.3.42
 
