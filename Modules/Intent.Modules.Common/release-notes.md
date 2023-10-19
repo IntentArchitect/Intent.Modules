@@ -1,3 +1,7 @@
+### Version 3.4.4
+
+- Fixed: Changed the default behaviour or Singularize and Pularize methods to not assume the current state of the word.
+
 ### Version 3.4.3
 
 - Offers a useful extension method overload for finding templates: `IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole)`
