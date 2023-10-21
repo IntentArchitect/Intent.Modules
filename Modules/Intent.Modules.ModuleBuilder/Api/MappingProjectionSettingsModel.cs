@@ -81,6 +81,7 @@ namespace Intent.ModuleBuilder.Api
                 Symbol = this.GetMappingSettings().Symbol(),
                 StyleFunction = this.GetMappingSettings().Style(),
                 MappedTypes = this.Mappings.Select(x => x.ToPersistable()).ToList(),
+                IsOptionVisibleFunction = this.GetMappingSettings().IsOptionVisibleFunction()
             };
         }
 

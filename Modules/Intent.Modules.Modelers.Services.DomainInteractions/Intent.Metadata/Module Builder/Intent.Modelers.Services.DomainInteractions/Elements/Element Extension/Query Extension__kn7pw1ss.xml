@@ -146,6 +146,7 @@
           <childElements />
         </childElement>
         <childElement id="0087236d-2b1c-44e9-9d1e-6a798ec2c0b0" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
+          <comment>disabled for now</comment>
           <name>Map Return Type</name>
           <display>Map Return Type: Map Return Type</display>
           <isAbstract>false</isAbstract>
@@ -176,7 +177,7 @@
                 <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
                 <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
                 <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
-                <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" value="return typeReference?.isTypeFound() || true;" isActive="true" />
+                <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" value="return false &amp;&amp; typeReference?.isTypeFound();" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

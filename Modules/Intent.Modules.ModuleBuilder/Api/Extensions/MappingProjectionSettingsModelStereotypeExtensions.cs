@@ -92,6 +92,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Style");
             }
 
+            public string IsOptionVisibleFunction()
+            {
+                return _stereotype.GetProperty<string>("Is Option Visible Function");
+            }
+
             public class OptionSourceOptions
             {
                 public readonly string Value;

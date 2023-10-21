@@ -83,6 +83,10 @@
         <mappingSetting id="735c87d0-06fc-4491-8b5f-5adc6f953c54">
           <name>Map to Domain Data</name>
           <shortcut>ctrl + shift + m</shortcut>
+          <isOptionVisibleFunction>// hide if not mapped and advanced mapping mode selected in Domain Interaction Settings:
+return isMapped() ||
+    // Domain Interaction Settings -&gt; Mapping Mode
+    application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad")?.getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa")?.value !== "advanced";</isOptionVisibleFunction>
           <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
           <optionsSource>elements-of-type</optionsSource>
           <autoSyncTypeReferences>true</autoSyncTypeReferences>
@@ -148,6 +152,10 @@
         <mappingSetting id="7c31c459-6229-4f10-bf13-507348cd8828">
           <name>Map to Domain Operation</name>
           <shortcut>ctrl + shift + o</shortcut>
+          <isOptionVisibleFunction>// hide if not mapped and advanced mapping mode selected in Domain Interaction Settings:
+return isMapped() ||
+    // Domain Interaction Settings -&gt; Mapping Mode
+    application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad")?.getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa")?.value !== "advanced";</isOptionVisibleFunction>
           <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
           <optionsSource>elements-of-type</optionsSource>
           <autoSyncTypeReferences>true</autoSyncTypeReferences>
@@ -277,6 +285,10 @@ element.getChildren("DTO-Field").forEach(x =&gt; {
         <mappingSetting id="50c4872d-f029-48ec-a818-58b426e8166a">
           <name>Project from Domain</name>
           <shortcut>ctrl + shift + m</shortcut>
+          <isOptionVisibleFunction>// hide if not mapped and advanced mapping mode selected in Domain Interaction Settings:
+return isMapped() ||
+    // Domain Interaction Settings -&gt; Mapping Mode
+    application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad")?.getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa")?.value !== "advanced";</isOptionVisibleFunction>
           <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
           <optionsSource>elements-of-type</optionsSource>
           <autoSyncTypeReferences>true</autoSyncTypeReferences>

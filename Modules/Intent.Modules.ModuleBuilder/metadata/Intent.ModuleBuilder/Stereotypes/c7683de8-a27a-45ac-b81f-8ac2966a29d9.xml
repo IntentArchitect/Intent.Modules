@@ -126,5 +126,15 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="227be852-5202-4bc7-a8ce-db0ed31b2e14">
+      <name>Is Option Visible Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-api</apiTypeDefinition>
+    </property>
   </properties>
 </stereotypeDefinition>
