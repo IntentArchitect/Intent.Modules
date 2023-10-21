@@ -1,6 +1,10 @@
-### Version 3.4.4
+### Version 3.5.0
 
 - New Feature: Support for binary based templates, including `File Template` and `Static Content Template` being enhanced to support binary files.
+
+### Version 3.4.4
+
+- Fixed: Changed the default behaviour or Singularize and Pularize methods to not assume the current state of the word.
 
 ### Version 3.4.3
 

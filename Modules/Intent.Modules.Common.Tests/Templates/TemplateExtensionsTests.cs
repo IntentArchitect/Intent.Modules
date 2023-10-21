@@ -53,7 +53,7 @@ namespace Intent.Modules.Common.Tests.Templates
             [InlineData("Apple", "Apples", null)]
             [InlineData("People", "People", false)]
             [InlineData("People", "Peoples", true)]
-            [InlineData("People", "Peoples", null)]
+            [InlineData("People", "People", null)]
             [InlineData("Person", "People", false)]
             [InlineData("Person", "People", true)]
             [InlineData("Person", "People", null)]

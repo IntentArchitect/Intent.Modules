@@ -166,7 +166,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="word">Word to be pluralized</param>
         /// <param name="inputIsKnownToBeSingular">Normally you call Pluralize on singular words; but if you're unsure call it with false</param>
-        public static string Pluralize(this string word, bool inputIsKnownToBeSingular = true)
+        public static string Pluralize(this string word, bool inputIsKnownToBeSingular = false)
         {
             return InflectorExtensions.Pluralize(word, inputIsKnownToBeSingular);
         }
@@ -176,7 +176,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="word">Word to be singularized</param>
         /// <param name="inputIsKnownToBePlural">Normally you call Singularize on plural words; but if you're unsure call it with false</param>
-        public static string Singularize(this string word, bool inputIsKnownToBePlural = true)
+        public static string Singularize(this string word, bool inputIsKnownToBePlural = false)
         {
             return InflectorExtensions.Singularize(word, inputIsKnownToBePlural);
         }

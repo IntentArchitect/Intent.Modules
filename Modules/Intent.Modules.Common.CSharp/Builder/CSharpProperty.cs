@@ -12,6 +12,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, IHasCSharpName
     public string Name { get; }
     public bool IsReadOnly { get; private set; }
     public bool IsStatic { get; private set; }
+    public bool IsRequired { get; private set; }
     public string InitialValue { get; private set; }
     public string ExplicitlyImplementing { get; private set; }
     public CSharpPropertyAccessor Getter { get; } = CSharpPropertyAccessor.Getter();
@@ -81,6 +82,11 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, IHasCSharpName
     public CSharpProperty Static()
     {
         IsStatic = true;
+        return this;
+    }
+    public CSharpProperty Required()
+    {
+        IsRequired = true;
         return this;
     }
 
@@ -164,7 +170,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, IHasCSharpName
             ? $"{ExplicitlyImplementing}."
             : string.Empty;
 
-        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{modifiers}{(IsStatic ? "static " : "")}{Type} {explicitlyImplementing}{Name}";
+        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{modifiers}{(IsStatic ? "static " : "")}{(IsRequired ? "required " : "")}{Type} {explicitlyImplementing}{Name}";
         if (Getter.IsExpression && IsReadOnly)
         {
             return $@"{declaration} => {Getter.Implementation};";
