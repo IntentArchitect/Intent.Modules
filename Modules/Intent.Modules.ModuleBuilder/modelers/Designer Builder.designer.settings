@@ -655,6 +655,10 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
         </childElementSetting>
         <childElementSetting type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
           <icon type="FontAwesome" source="code" />
+          <iconFunction>if (!getStereotype("Option Settings")?.getProperty("Icon")?.getValue()) {
+    return null;
+}
+return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFunction>
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>

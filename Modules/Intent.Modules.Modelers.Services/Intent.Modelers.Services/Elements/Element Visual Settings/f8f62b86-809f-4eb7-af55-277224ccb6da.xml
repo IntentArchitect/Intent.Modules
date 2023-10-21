@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="a9af6a9a-48e6-45e7-b9ce-956c802bc815">
     <typeId>b16578a5-27b1-4047-a8df-f0b783d706bd</typeId>
-    <typeName>Service</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

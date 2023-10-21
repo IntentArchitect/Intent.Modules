@@ -43,7 +43,6 @@
           <genericTypes />
           <typeReference id="8aedeb6a-308b-409e-ae9a-6e17751a761d">
             <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
-            <typeName>Class</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -84,7 +83,6 @@
           <genericTypes />
           <typeReference id="653ec654-a7b7-4036-8ddb-fd9861462a4c">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
-            <typeName>Type-Definition</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -125,7 +123,6 @@
           <genericTypes />
           <typeReference id="fd912adf-8488-4471-a763-ae82985cbaf6">
             <typeId>85fba0e9-9161-4c85-a603-a229ef312beb</typeId>
-            <typeName>Enum</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -166,7 +163,6 @@
           <genericTypes />
           <typeReference id="98f81fc1-4b5a-443e-89cc-4db600f91a1e">
             <typeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</typeId>
-            <typeName>Comment</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -207,7 +203,6 @@
           <genericTypes />
           <typeReference id="14a3eb5e-379a-40f9-97aa-d9b3aa9948fe">
             <typeId>4d66fecd-e9b8-436f-aa50-c59040ad0879</typeId>
-            <typeName>Diagram</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -248,7 +243,6 @@
           <genericTypes />
           <typeReference id="02e43da8-8397-400a-adbe-bc45237c110d">
             <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
-            <typeName>Folder</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -289,7 +283,6 @@
           <genericTypes />
           <typeReference id="0afd14b7-7eec-4548-a3cc-5777351d46d3">
             <typeId>4464fabe-c59e-4d90-81fc-c9245bdd1afd</typeId>
-            <typeName>Data Contract</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -330,7 +323,6 @@
           <genericTypes />
           <typeReference id="1242321a-4cc1-4af9-86c5-1b0a73d7e524">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
-            <typeName>Stereotype-Definition</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -351,7 +343,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
@@ -386,7 +378,6 @@
           <genericTypes />
           <typeReference id="978d4e82-a2b2-4328-a509-dc09d72fa772">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -420,7 +411,6 @@
           <genericTypes />
           <typeReference id="18325c4a-0aa1-47f1-a539-5ea57cc46aef">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

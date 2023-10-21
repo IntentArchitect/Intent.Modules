@@ -69,7 +69,6 @@
           <genericTypes />
           <typeReference id="bc8defc2-2ffb-42b2-a04d-2bfee374b6a6">
             <typeId>5264c135-e856-468d-8bd7-154b75842256</typeId>
-            <typeName>Comment Association</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

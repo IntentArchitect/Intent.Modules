@@ -60,10 +60,10 @@ namespace convertToE2EMapping {
     function mapContract(mappingType: string, dto: MacroApi.Context.IElementApi, sourcePath: string[], targetPathIds: string[], mapping: MacroApi.Context.IElementToElementMappingApi): void {
         console.log("mapContract: " + dto.getName())
         dto.getChildren("DTO-Field").filter(x => x.isMapped() && !(dto.specialization == "Command" && x.getMapping().getElement().hasStereotype("Primary Key"))).forEach(field => {
-            if (field.typeReference.getType().specialization != "DTO" || field.typeReference.getIsCollection()) {
+            if (field.typeReference.getType()?.specialization != "DTO" || field.typeReference.getIsCollection()) {
                 mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)))
             }
-            if (field.typeReference.getType().specialization == "DTO") {
+            if (field.typeReference.getType()?.specialization == "DTO") {
                 mapContract(mappingType, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)), mapping);
             }
             field.clearMapping();

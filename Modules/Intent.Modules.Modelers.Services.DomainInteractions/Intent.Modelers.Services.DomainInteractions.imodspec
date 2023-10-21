@@ -10,7 +10,21 @@
   <templates></templates>
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
-  <moduleSettings></moduleSettings>
+  <moduleSettings>
+    <group id="0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad" title="Domain Interaction Settings" externalReference="0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad">
+      <settings>
+        <setting id="14bc1e98-930b-494c-97a9-5da4e1f3a5fa" title="Default Mapping Mode" type="select">
+          <isRequired>true</isRequired>
+          <hint>Determines which mapping Services designer CRUD scripts will execute</hint>
+          <defaultValue>advanced</defaultValue>
+          <options>
+            <option value="basic" description="Basic Mapping (will be deprecated)" />
+            <option value="advanced" description="Advanced Mapping" />
+          </options>
+        </setting>
+      </settings>
+    </group>
+  </moduleSettings>
   <dependencies>
     <dependency id="Intent.Common" version="3.4.3" />
     <dependency id="Intent.Common.Types" version="3.3.9" />

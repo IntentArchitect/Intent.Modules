@@ -13,8 +13,8 @@
   <templates></templates>
   <decorators></decorators>
   <interoperability>
-  <!-- Minimum Compatible Versions -->
-  <!--
+    <!-- Minimum Compatible Versions -->
+    <!--
     The Intent Client isn't smart enough to resolve this unfortunately as it gets "stuck" that it can't fulfill all dependencies
     <detect id="Intent.Application.Dtos.Pagination">
       <install>
@@ -22,7 +22,7 @@
       </install>
     </detect>
     -->
-  <!-- /Minimum Compatible Versions -->
+    <!-- /Minimum Compatible Versions -->
   </interoperability>
   <dependencies>
     <dependency id="Intent.Common" version="3.4.3" />

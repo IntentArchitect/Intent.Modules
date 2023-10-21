@@ -70,7 +70,6 @@
           <genericTypes />
           <typeReference id="c233df2b-eb63-4f30-b171-0d79639d2289">
             <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>
-            <typeName>Context Menu</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -111,7 +110,6 @@
           <genericTypes />
           <typeReference id="d5e70db5-3b0a-413f-9f1e-69fe7cba9c36">
             <typeId>48bcdd5f-690c-425b-8f5e-99097a7188dc</typeId>
-            <typeName>Package Event Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -167,7 +165,6 @@
           <genericTypes />
           <typeReference id="6540df06-5af3-4988-ae9d-cac9569a44fd">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

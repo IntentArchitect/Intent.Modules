@@ -29,7 +29,6 @@
       <genericTypes />
       <typeReference id="8a374479-5c95-48ed-b05f-ff4a31bba17d">
         <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>
-        <typeName>Common Types</typeName>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -54,7 +53,6 @@
       <genericTypes />
       <typeReference id="ae080325-0215-4a7c-9898-7658aea37b30">
         <typeId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</typeId>
-        <typeName>Designer Builder</typeName>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -79,7 +77,6 @@
       <genericTypes />
       <typeReference id="3d06db36-fcea-4c7a-ab44-eb647e365456">
         <typeId>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</typeId>
-        <typeName>Module Builder</typeName>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>

@@ -70,7 +70,6 @@
           <genericTypes />
           <typeReference id="0592074d-8727-49b9-aff4-5961aa885009">
             <typeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</typeId>
-            <typeName>Association Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -111,7 +110,6 @@
           <genericTypes />
           <typeReference id="5e8a2280-ba69-4066-b29f-1c8c3eeffbf8">
             <typeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</typeId>
-            <typeName>Association Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -152,7 +150,6 @@
           <genericTypes />
           <typeReference id="018c8d0b-f489-4e23-8504-6cae76ec2e63">
             <typeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</typeId>
-            <typeName>Association Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -193,7 +190,6 @@
           <genericTypes />
           <typeReference id="42c96ecd-c774-4b9e-8732-3a9923327034">
             <typeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</typeId>
-            <typeName>Association Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -234,7 +230,6 @@
           <genericTypes />
           <typeReference id="c1cae991-608a-4fcc-9e5e-1bb580f17812">
             <typeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</typeId>
-            <typeName>Association Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -275,7 +270,6 @@
           <genericTypes />
           <typeReference id="9dafad5e-8a34-44c8-aa2f-d0385ce7f49c">
             <typeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</typeId>
-            <typeName>Association Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

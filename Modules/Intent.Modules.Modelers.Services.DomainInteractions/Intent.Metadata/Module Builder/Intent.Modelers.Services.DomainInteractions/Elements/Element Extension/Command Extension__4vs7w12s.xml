@@ -178,8 +178,8 @@
           <childElements />
         </childElement>
         <childElement id="6eadf6d2-5d29-46c6-9efa-9e240a07f69a" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
-          <name>Convert to new mapping system</name>
-          <display>Convert to new mapping system: Script</display>
+          <name>Convert to advanced mapping system</name>
+          <display>Convert to advanced mapping system: Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="1fe8959d-c2a7-48f5-a5c1-edffc236e44d">

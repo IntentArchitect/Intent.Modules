@@ -57,6 +57,7 @@
         </option>
         <option type="element">
           <text>New Diagram</text>
+          <shortcut>ctrl + shift + v</shortcut>
           <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
           <specializationType>Diagram</specializationType>
           <specializationTypeId>8c90aca5-86f4-47f1-bd58-116fe79f5c55</specializationTypeId>
@@ -1016,6 +1017,7 @@ return validateOperationParameter(lookup(id));
         </option>
         <option order="0" type="element">
           <text>New Diagram</text>
+          <shortcut>ctrl + shift + v</shortcut>
           <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
           <specializationType>Diagram</specializationType>
           <specializationTypeId>8c90aca5-86f4-47f1-bd58-116fe79f5c55</specializationTypeId>

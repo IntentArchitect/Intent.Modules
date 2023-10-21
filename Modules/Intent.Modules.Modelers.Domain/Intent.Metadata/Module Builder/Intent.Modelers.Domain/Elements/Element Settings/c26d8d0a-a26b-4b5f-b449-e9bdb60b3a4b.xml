@@ -70,7 +70,6 @@
           <genericTypes />
           <typeReference id="66ccb2ab-a5ea-405c-b154-8175073bad2a">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

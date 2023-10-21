@@ -146,7 +146,7 @@ declare namespace MacroApi.Context {
         /**
          * Automatically lays out the specified elements and associations using the Dagre algorithm around the provided position.
          */
-        layoutVisuals: (elementIds: string | string[] | any, position: { x: number, y: number }) => void;
+        layoutVisuals: (elementIds: string | string[] | any, position?: { x: number, y: number }, includeAllChildren?: boolean) => void;
 
         /**
          * Adds an element visual to the diagram.
@@ -518,6 +518,13 @@ declare namespace MacroApi.Context {
         description: string;
         settings: IApplicationSettings[];
         getSettings(identifier: string): IApplicationSettings;
+        installedModules: IModuleIdentifier[];
+        isModuleInstalled(moduleId: string): boolean;
+    }
+
+    interface IModuleIdentifier {
+        id: string,
+        version: string
     }
 
     interface IApplicationSettings {

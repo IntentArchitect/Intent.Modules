@@ -8,7 +8,6 @@
   <genericTypes />
   <typeReference id="68df2b19-cb42-4e35-80c7-77b07bc91e82">
     <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
-    <typeName>Attribute</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

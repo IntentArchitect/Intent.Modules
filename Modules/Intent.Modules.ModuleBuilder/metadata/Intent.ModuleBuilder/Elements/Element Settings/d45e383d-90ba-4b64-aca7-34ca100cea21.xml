@@ -69,7 +69,6 @@
           <genericTypes />
           <typeReference id="981d1230-72f6-4fc2-a6c2-bc0e780f1efe">
             <typeId>5fa12f89-da1e-49c5-b8e9-427b22407f19</typeId>
-            <typeName>Element Creation Option</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -110,7 +109,6 @@
           <genericTypes />
           <typeReference id="256d2a44-0203-477f-8b45-d9227dbd2dc4">
             <typeId>3dcfa78b-17ee-45b6-be03-8407d089ce76</typeId>
-            <typeName>Association Creation Option</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -151,7 +149,6 @@
           <genericTypes />
           <typeReference id="fd5f291c-1d0e-4b27-9d6c-8ef0881b03c9">
             <typeId>0c721d5d-7721-414c-adaf-4c9f5c5531a9</typeId>
-            <typeName>Stereotype-Definition Creation Option</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -192,7 +189,6 @@
           <genericTypes />
           <typeReference id="3fbe7cae-0eb0-48ca-8b01-5b782435b2d0">
             <typeId>345d46fb-c500-409a-88c7-26720572c9af</typeId>
-            <typeName>Run Script Option</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -233,7 +229,6 @@
           <genericTypes />
           <typeReference id="b2bf58ad-843a-4608-9613-0bc2d581426c">
             <typeId>00a1eb98-1fc4-4421-9d1c-8733f6bc2111</typeId>
-            <typeName>Mapping Option</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

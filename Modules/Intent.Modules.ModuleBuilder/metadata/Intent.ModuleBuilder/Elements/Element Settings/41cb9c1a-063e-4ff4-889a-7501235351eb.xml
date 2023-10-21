@@ -69,7 +69,6 @@
           <genericTypes />
           <typeReference id="3a1cdf38-2620-4548-85a9-4ba96b3c2bb1">
             <typeId>66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3</typeId>
-            <typeName>Association Source End Extension</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -110,7 +109,6 @@
           <genericTypes />
           <typeReference id="02699e82-d1a6-488d-9104-993f899ff026">
             <typeId>1cc6c731-af5f-41a0-9e82-44486f45b903</typeId>
-            <typeName>Association Target End Extension</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -151,7 +149,6 @@
           <genericTypes />
           <typeReference id="45e83449-0f04-425d-b73f-ada0b589931b">
             <typeId>1bdee938-8569-4fbf-84b4-8522d2cbee32</typeId>
-            <typeName>Association Event Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -207,7 +204,6 @@
           <genericTypes />
           <typeReference id="e73b087e-9525-4a66-b021-36deedfa3a80">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

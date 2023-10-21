@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="80b765b0-cd1b-43f6-bed8-f8cd1696746c">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
-    <typeName>Folder</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -68,7 +67,6 @@
           <genericTypes />
           <typeReference id="877cd4ab-4540-44ea-83eb-b4589e8046cf">
             <typeId>b16578a5-27b1-4047-a8df-f0b783d706bd</typeId>
-            <typeName>Service</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -108,7 +106,6 @@
           <genericTypes />
           <typeReference id="8a8c2bca-2c74-442f-be3b-9c56d4b0c7da">
             <typeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</typeId>
-            <typeName>DTO</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -148,7 +145,6 @@
           <genericTypes />
           <typeReference id="2f19b9cc-6dbc-455a-b668-282e54549485">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
-            <typeName>Type-Definition</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -188,7 +184,6 @@
           <genericTypes />
           <typeReference id="1955c34d-b5c7-4987-8e06-3788fea952d9">
             <typeId>85fba0e9-9161-4c85-a603-a229ef312beb</typeId>
-            <typeName>Enum</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -228,7 +223,6 @@
           <genericTypes />
           <typeReference id="ef867d0e-a687-49f8-a4f0-9af059954629">
             <typeId>8c90aca5-86f4-47f1-bd58-116fe79f5c55</typeId>
-            <typeName>Diagram</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -249,7 +243,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + v" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="0" isActive="true" />
@@ -268,7 +262,6 @@
           <genericTypes />
           <typeReference id="4bfc3588-539e-4ca3-9b9e-372cd826c740">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
-            <typeName>Stereotype-Definition</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

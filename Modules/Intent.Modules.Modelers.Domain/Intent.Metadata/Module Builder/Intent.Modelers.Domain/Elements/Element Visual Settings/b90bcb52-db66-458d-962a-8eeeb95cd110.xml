@@ -8,7 +8,6 @@
   <genericTypes />
   <typeReference id="ea44734b-b901-4d8e-86e2-a902cae30ffa">
     <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
-    <typeName>Operation</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

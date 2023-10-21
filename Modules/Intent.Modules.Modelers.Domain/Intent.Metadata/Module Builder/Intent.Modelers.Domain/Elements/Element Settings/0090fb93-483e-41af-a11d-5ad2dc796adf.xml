@@ -70,7 +70,6 @@
           <genericTypes />
           <typeReference id="dab6c402-309d-46b4-8d9b-dd24b9bd146b">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -104,7 +103,6 @@
           <genericTypes />
           <typeReference id="a3477cbb-c18f-41d7-8450-fee5ae119bc4">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

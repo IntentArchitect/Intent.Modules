@@ -70,7 +70,6 @@
           <genericTypes />
           <typeReference id="93f9d9fb-69ed-4097-89e9-9349c08f4323">
             <typeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</typeId>
-            <typeName>Parameter</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -111,7 +110,6 @@
           <genericTypes />
           <typeReference id="d2069628-e06e-4d0e-98ba-ec2bd8631487">
             <typeId>d2a7e80f-a237-4d2d-97b4-eb88363b680f</typeId>
-            <typeName>Domain Entity Mapping</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -145,7 +143,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="d6d0abfd-893c-4bec-92cb-419934ba5ba8" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+    <childElement id="d6d0abfd-893c-4bec-92cb-419934ba5ba8" type="Mapping Projection Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
       <name>Map Constructor</name>
       <display>[mappings]: Map Constructor</display>
       <isAbstract>false</isAbstract>

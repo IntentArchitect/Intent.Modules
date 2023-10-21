@@ -70,7 +70,6 @@
           <genericTypes />
           <typeReference id="1895cfec-94a1-4e5a-b166-b438ceae7ce7">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
-            <typeName>Element Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -111,7 +110,6 @@
           <genericTypes />
           <typeReference id="69377f74-e3d2-4fd7-9f10-9aa7a075891e">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
-            <typeName>Element Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -152,7 +150,6 @@
           <genericTypes />
           <typeReference id="f2ee1d31-849c-4946-aeb4-321a259f4e57">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
-            <typeName>Element Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -193,7 +190,6 @@
           <genericTypes />
           <typeReference id="c40037b0-41be-4fc2-a177-59c696ab32e2">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
-            <typeName>Element Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -234,7 +230,6 @@
           <genericTypes />
           <typeReference id="2d5deaa9-2900-4057-b522-4b3bdbe5b114">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
-            <typeName>Element Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -275,7 +270,6 @@
           <genericTypes />
           <typeReference id="1fe587da-53b1-4883-a1fb-a7d9c22024c8">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
-            <typeName>Element Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -316,7 +310,6 @@
           <genericTypes />
           <typeReference id="dc31f622-a741-40d0-9b1b-a22e77c60ac5">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
-            <typeName>Element Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

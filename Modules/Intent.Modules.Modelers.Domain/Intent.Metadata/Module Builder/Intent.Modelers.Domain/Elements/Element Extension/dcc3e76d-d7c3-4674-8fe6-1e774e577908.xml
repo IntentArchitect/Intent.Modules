@@ -7,7 +7,6 @@
   <genericTypes />
   <typeReference id="1d0cd222-69d7-457f-bb49-349592fdab0b">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
-    <typeName>Folder</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -68,7 +67,6 @@
           <genericTypes />
           <typeReference id="587b7475-b3f1-4dd4-8122-45ae5154f61d">
             <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
-            <typeName>Class</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -109,7 +107,6 @@
           <genericTypes />
           <typeReference id="c4ef3d03-e73a-460a-9566-c7b9988502c5">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
-            <typeName>Type-Definition</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -150,7 +147,6 @@
           <genericTypes />
           <typeReference id="1da135b7-87ba-4003-a6b0-8d1fec1a84ad">
             <typeId>85fba0e9-9161-4c85-a603-a229ef312beb</typeId>
-            <typeName>Enum</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -191,7 +187,6 @@
           <genericTypes />
           <typeReference id="90a6fe29-a4d1-4959-b5f1-27d6f4c38323">
             <typeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</typeId>
-            <typeName>Comment</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -232,7 +227,6 @@
           <genericTypes />
           <typeReference id="b0415995-bc9d-4c61-ac1c-1d4a42454202">
             <typeId>4d66fecd-e9b8-436f-aa50-c59040ad0879</typeId>
-            <typeName>Diagram</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -273,7 +267,6 @@
           <genericTypes />
           <typeReference id="5199071a-6e83-438a-9116-551ed26c7b0a">
             <typeId>4464fabe-c59e-4d90-81fc-c9245bdd1afd</typeId>
-            <typeName>Data Contract</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -314,7 +307,6 @@
           <genericTypes />
           <typeReference id="73707a0d-482d-4009-aa41-344fc276552f">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
-            <typeName>Stereotype-Definition</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -335,7 +327,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />

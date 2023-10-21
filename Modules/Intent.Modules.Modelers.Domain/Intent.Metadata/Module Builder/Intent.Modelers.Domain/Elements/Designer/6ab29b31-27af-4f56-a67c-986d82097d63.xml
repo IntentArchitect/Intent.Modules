@@ -29,7 +29,6 @@
       <genericTypes />
       <typeReference id="b527f987-2dc4-4255-acce-6b334c0a7001">
         <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>
-        <typeName>Common Types</typeName>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -54,7 +53,6 @@
       <genericTypes />
       <typeReference id="548604d8-4ec7-4a75-8e54-0406e5a5c000">
         <typeId>db2f5755-5256-46d1-bb45-72bf2c7cde42</typeId>
-        <typeName>Domain Types</typeName>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>

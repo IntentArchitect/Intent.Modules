@@ -32,11 +32,16 @@ async function execute(element: IElementApi) {
     if (owningEntity == null || !privateSettersOnly) {
         convertToE2EMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, folder));
     }
+
+    const diagramElement = createElement("Diagram", folderName, folder.id)
+    diagramElement.loadDiagram();
+    const diagram = getCurrentDiagram();
+    diagram.layoutVisuals(folder, null, true);
 }
 
 
 /**
- * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
+ * Used by Intent.Modelers.Services.DomainInteractions
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro-e2e-mapping/create-crud-macro-e2e-mapping.ts

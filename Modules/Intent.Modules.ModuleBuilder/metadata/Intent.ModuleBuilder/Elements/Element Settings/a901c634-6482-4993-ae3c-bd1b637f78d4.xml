@@ -70,7 +70,6 @@
           <genericTypes />
           <typeReference id="239a1b73-9aa0-4f4b-98de-2999e0fe80c6">
             <typeId>1536425c-35f4-48e1-abe4-1f8f56533545</typeId>
-            <typeName>Source Mapping Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -112,7 +111,6 @@
           <genericTypes />
           <typeReference id="a5b36a9c-9c87-46ce-b4ee-6ac95d4ffe11">
             <typeId>a812bff7-017a-4692-8ec7-1caad0a1dd88</typeId>
-            <typeName>Target Mapping Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -153,7 +151,6 @@
           <genericTypes />
           <typeReference id="21a29740-a0a1-4b2a-9df8-c90d3448742b">
             <typeId>dd8e8a63-140c-41c8-b812-0dc923012fac</typeId>
-            <typeName>Mapping Type Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -209,7 +206,6 @@
           <genericTypes />
           <typeReference id="df8ae579-c80e-4e67-840b-c01e66303f0d">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

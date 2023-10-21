@@ -70,7 +70,6 @@
           <genericTypes />
           <typeReference id="70201d2e-29ba-45c9-9b5e-f8b5838dc44c">
             <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>
-            <typeName>Context Menu</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

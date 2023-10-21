@@ -8,7 +8,6 @@
   <genericTypes />
   <typeReference id="9474870f-44e4-48a5-8645-e39fcf72df93">
     <typeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</typeId>
-    <typeName>Comment</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
