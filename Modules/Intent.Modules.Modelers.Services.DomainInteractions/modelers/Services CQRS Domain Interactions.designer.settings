@@ -451,7 +451,7 @@ function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
     }
 }
 function isOwnerForeignKey(attributeName, domainElement) {
-    for (let association of domainElement.getAssociations().filter(x =&gt; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
+    for (let association of domainElement.getAssociations().filter(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
         if (attributeName.toLowerCase().indexOf(association.getName().toLowerCase()) &gt;= 0) {
             return true;
         }
@@ -929,7 +929,7 @@ var cqrsCrud;
             command.typeReference.setType(returnType);
             return command;
         }
-        let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
+        let commandManager = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
             childSpecialization: "DTO-Field"
         });
         let entityCtor = entity
@@ -940,30 +940,31 @@ var cqrsCrud;
             return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
         })[0];
         if (entityCtor != null) {
-            command.mapToElement(entityCtor, mapToDomainOperationSettingId);
-            command.getElement().setMapping([entity.id, entityCtor.id], mapToDomainOperationSettingId);
+            commandManager.mapToElement(entityCtor, mapToDomainOperationSettingId);
+            commandManager.getElement().setMapping([entity.id, entityCtor.id], mapToDomainOperationSettingId);
         }
         else if (!privateSettersOnly) {
-            command.mapToElement(entity);
+            commandManager.mapToElement(entity);
         }
-        command.getElement().setMetadata("baseName", baseName);
+        commandManager.getElement().setMetadata("baseName", baseName);
         let surrogateKey = primaryKeys.length === 1;
         if (surrogateKey) {
-            command.setReturnType(primaryKeys[0].typeId);
+            commandManager.setReturnType(primaryKeys[0].typeId);
         }
         if (entityCtor) {
-            command.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter"));
+            commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter")
+                .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
         }
         else {
             if (!surrogateKey) {
-                ServicesHelper.addDtoFieldsFromDomain(command.getElement(), primaryKeys);
+                ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), primaryKeys);
             }
-            command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
-            command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
+            commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+            commandManager.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
         }
-        onMapCommand(command.getElement(), true, true);
-        command.collapse();
-        return command.getElement();
+        onMapCommand(commandManager.getElement(), true, true);
+        commandManager.collapse();
+        return commandManager.getElement();
     }
     cqrsCrud.createCqrsCreateCommand = createCqrsCreateCommand;
     function createCqrsFindByIdQuery(entity, folder, resultDto) {
@@ -1168,7 +1169,7 @@ var cqrsCrud;
     }
 })(cqrsCrud || (cqrsCrud = {}));
 /**
- * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
+ * Used by Intent.Modelers.Services.DomainInteractions
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro/create-crud-macro.ts
@@ -1618,7 +1619,7 @@ function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
     }
 }
 function isOwnerForeignKey(attributeName, domainElement) {
-    for (let association of domainElement.getAssociations().filter(x =&gt; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
+    for (let association of domainElement.getAssociations().filter(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
         if (attributeName.toLowerCase().indexOf(association.getName().toLowerCase()) &gt;= 0) {
             return true;
         }
@@ -2089,10 +2090,14 @@ var cqrsCrud;
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         if (folder.getChildren().some(x =&gt; x.getName() == expectedCommandName)) {
             let command = folder.getChildren().filter(x =&gt; x.getName() == expectedCommandName)[0];
-            command.typeReference.setType(primaryKeys[0].typeId);
+            let returnType = primaryKeys[0].typeId;
+            if (primaryKeys.length &gt; 1) {
+                returnType = null;
+            }
+            command.typeReference.setType(returnType);
             return command;
         }
-        let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
+        let commandManager = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
             childSpecialization: "DTO-Field"
         });
         let entityCtor = entity
@@ -2103,26 +2108,31 @@ var cqrsCrud;
             return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
         })[0];
         if (entityCtor != null) {
-            command.mapToElement(entityCtor, mapToDomainOperationSettingId);
-            command.getElement().setMapping([entity.id, entityCtor.id], mapToDomainOperationSettingId);
+            commandManager.mapToElement(entityCtor, mapToDomainOperationSettingId);
+            commandManager.getElement().setMapping([entity.id, entityCtor.id], mapToDomainOperationSettingId);
         }
         else if (!privateSettersOnly) {
-            command.mapToElement(entity);
+            commandManager.mapToElement(entity);
         }
-        command.getElement().setMetadata("baseName", baseName);
-        if (primaryKeys[0].typeId) {
-            command.setReturnType(primaryKeys[0].typeId);
+        commandManager.getElement().setMetadata("baseName", baseName);
+        let surrogateKey = primaryKeys.length === 1;
+        if (surrogateKey) {
+            commandManager.setReturnType(primaryKeys[0].typeId);
         }
         if (entityCtor) {
-            command.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter"));
+            commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter")
+                .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
         }
         else {
-            command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
-            command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
+            if (!surrogateKey) {
+                ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), primaryKeys);
+            }
+            commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+            commandManager.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
         }
-        onMapCommand(command.getElement(), true, true);
-        command.collapse();
-        return command.getElement();
+        onMapCommand(commandManager.getElement(), true, true);
+        commandManager.collapse();
+        return commandManager.getElement();
     }
     cqrsCrud.createCqrsCreateCommand = createCqrsCreateCommand;
     function createCqrsFindByIdQuery(entity, folder, resultDto) {
@@ -2193,6 +2203,8 @@ var cqrsCrud;
         command.getElement().setMetadata("baseName", baseName);
         command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
         command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        ServicesHelper.addDtoFieldsFromDomain(command.getElement(), primaryKeys);
         onMapCommand(command.getElement(), true);
         command.collapse();
         return command.getElement();
@@ -2325,7 +2337,7 @@ var cqrsCrud;
     }
 })(cqrsCrud || (cqrsCrud = {}));
 /**
- * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
+ * Used by Intent.Modelers.Services.DomainInteractions
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro/create-crud-macro.ts
@@ -2411,11 +2423,6 @@ var convertToE2EMapping;
 /// &lt;reference path="../convert-to-e2e-mapping/convert-to-e2e-mapping.ts"/&gt;
 async function execute(element) {
     var _a;
-    // Settings: Domain Interaction Settings -&gt; Default Mapping Mode
-    if (application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa").value == "basic") {
-        cqrsCrud.execute(element);
-        return;
-    }
     let entity = await DomainHelper.openSelectEntityDialog();
     if (entity == null) {
         return;
@@ -2445,7 +2452,7 @@ async function execute(element) {
     diagram.layoutVisuals(folder, null, true);
 }
 /**
- * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
+ * Used by Intent.Modelers.Services.DomainInteractions
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro-e2e-mapping/create-crud-macro-e2e-mapping.ts
@@ -3140,7 +3147,7 @@ function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
     }
 }
 function isOwnerForeignKey(attributeName, domainElement) {
-    for (let association of domainElement.getAssociations().filter(x =&gt; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
+    for (let association of domainElement.getAssociations().filter(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
         if (attributeName.toLowerCase().indexOf(association.getName().toLowerCase()) &gt;= 0) {
             return true;
         }
@@ -3618,7 +3625,7 @@ var cqrsCrud;
             command.typeReference.setType(returnType);
             return command;
         }
-        let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
+        let commandManager = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
             childSpecialization: "DTO-Field"
         });
         let entityCtor = entity
@@ -3629,30 +3636,31 @@ var cqrsCrud;
             return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
         })[0];
         if (entityCtor != null) {
-            command.mapToElement(entityCtor, mapToDomainOperationSettingId);
-            command.getElement().setMapping([entity.id, entityCtor.id], mapToDomainOperationSettingId);
+            commandManager.mapToElement(entityCtor, mapToDomainOperationSettingId);
+            commandManager.getElement().setMapping([entity.id, entityCtor.id], mapToDomainOperationSettingId);
         }
         else if (!privateSettersOnly) {
-            command.mapToElement(entity);
+            commandManager.mapToElement(entity);
         }
-        command.getElement().setMetadata("baseName", baseName);
+        commandManager.getElement().setMetadata("baseName", baseName);
         let surrogateKey = primaryKeys.length === 1;
         if (surrogateKey) {
-            command.setReturnType(primaryKeys[0].typeId);
+            commandManager.setReturnType(primaryKeys[0].typeId);
         }
         if (entityCtor) {
-            command.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter"));
+            commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter")
+                .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
         }
         else {
             if (!surrogateKey) {
-                ServicesHelper.addDtoFieldsFromDomain(command.getElement(), primaryKeys);
+                ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), primaryKeys);
             }
-            command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
-            command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
+            commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+            commandManager.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
         }
-        onMapCommand(command.getElement(), true, true);
-        command.collapse();
-        return command.getElement();
+        onMapCommand(commandManager.getElement(), true, true);
+        commandManager.collapse();
+        return commandManager.getElement();
     }
     cqrsCrud.createCqrsCreateCommand = createCqrsCreateCommand;
     function createCqrsFindByIdQuery(entity, folder, resultDto) {
@@ -3857,7 +3865,7 @@ var cqrsCrud;
     }
 })(cqrsCrud || (cqrsCrud = {}));
 /**
- * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
+ * Used by Intent.Modelers.Services.DomainInteractions
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro/create-crud-macro.ts
@@ -4307,7 +4315,7 @@ function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
     }
 }
 function isOwnerForeignKey(attributeName, domainElement) {
-    for (let association of domainElement.getAssociations().filter(x =&gt; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
+    for (let association of domainElement.getAssociations().filter(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
         if (attributeName.toLowerCase().indexOf(association.getName().toLowerCase()) &gt;= 0) {
             return true;
         }
@@ -4778,10 +4786,14 @@ var cqrsCrud;
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         if (folder.getChildren().some(x =&gt; x.getName() == expectedCommandName)) {
             let command = folder.getChildren().filter(x =&gt; x.getName() == expectedCommandName)[0];
-            command.typeReference.setType(primaryKeys[0].typeId);
+            let returnType = primaryKeys[0].typeId;
+            if (primaryKeys.length &gt; 1) {
+                returnType = null;
+            }
+            command.typeReference.setType(returnType);
             return command;
         }
-        let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
+        let commandManager = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
             childSpecialization: "DTO-Field"
         });
         let entityCtor = entity
@@ -4792,26 +4804,31 @@ var cqrsCrud;
             return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
         })[0];
         if (entityCtor != null) {
-            command.mapToElement(entityCtor, mapToDomainOperationSettingId);
-            command.getElement().setMapping([entity.id, entityCtor.id], mapToDomainOperationSettingId);
+            commandManager.mapToElement(entityCtor, mapToDomainOperationSettingId);
+            commandManager.getElement().setMapping([entity.id, entityCtor.id], mapToDomainOperationSettingId);
         }
         else if (!privateSettersOnly) {
-            command.mapToElement(entity);
+            commandManager.mapToElement(entity);
         }
-        command.getElement().setMetadata("baseName", baseName);
-        if (primaryKeys[0].typeId) {
-            command.setReturnType(primaryKeys[0].typeId);
+        commandManager.getElement().setMetadata("baseName", baseName);
+        let surrogateKey = primaryKeys.length === 1;
+        if (surrogateKey) {
+            commandManager.setReturnType(primaryKeys[0].typeId);
         }
         if (entityCtor) {
-            command.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter"));
+            commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter")
+                .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
         }
         else {
-            command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
-            command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
+            if (!surrogateKey) {
+                ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), primaryKeys);
+            }
+            commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+            commandManager.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
         }
-        onMapCommand(command.getElement(), true, true);
-        command.collapse();
-        return command.getElement();
+        onMapCommand(commandManager.getElement(), true, true);
+        commandManager.collapse();
+        return commandManager.getElement();
     }
     cqrsCrud.createCqrsCreateCommand = createCqrsCreateCommand;
     function createCqrsFindByIdQuery(entity, folder, resultDto) {
@@ -4882,6 +4899,8 @@ var cqrsCrud;
         command.getElement().setMetadata("baseName", baseName);
         command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
         command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        ServicesHelper.addDtoFieldsFromDomain(command.getElement(), primaryKeys);
         onMapCommand(command.getElement(), true);
         command.collapse();
         return command.getElement();
@@ -5014,7 +5033,7 @@ var cqrsCrud;
     }
 })(cqrsCrud || (cqrsCrud = {}));
 /**
- * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
+ * Used by Intent.Modelers.Services.DomainInteractions
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro/create-crud-macro.ts
@@ -5100,11 +5119,6 @@ var convertToE2EMapping;
 /// &lt;reference path="../convert-to-e2e-mapping/convert-to-e2e-mapping.ts"/&gt;
 async function execute(element) {
     var _a;
-    // Settings: Domain Interaction Settings -&gt; Default Mapping Mode
-    if (application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa").value == "basic") {
-        cqrsCrud.execute(element);
-        return;
-    }
     let entity = await DomainHelper.openSelectEntityDialog();
     if (entity == null) {
         return;
@@ -5134,7 +5148,7 @@ async function execute(element) {
     diagram.layoutVisuals(folder, null, true);
 }
 /**
- * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
+ * Used by Intent.Modelers.Services.DomainInteractions
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro-e2e-mapping/create-crud-macro-e2e-mapping.ts

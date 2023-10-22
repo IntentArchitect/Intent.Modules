@@ -69,7 +69,7 @@
       <creationOptions>
         <option type="element">
           <text>Add Property</text>
-          <shortcut>ctrl + shift + p</shortcut>
+          <shortcut>ctrl + shift + a</shortcut>
           <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
           <specializationType>DTO-Field</specializationType>
           <specializationTypeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</specializationTypeId>
@@ -271,7 +271,7 @@ element.getChildren("DTO-Field").forEach(x =&gt; {
       <creationOptions>
         <option type="element">
           <text>Add Property</text>
-          <shortcut>ctrl + shift + p</shortcut>
+          <shortcut>ctrl + shift + a</shortcut>
           <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
           <specializationType>DTO-Field</specializationType>
           <specializationTypeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</specializationTypeId>

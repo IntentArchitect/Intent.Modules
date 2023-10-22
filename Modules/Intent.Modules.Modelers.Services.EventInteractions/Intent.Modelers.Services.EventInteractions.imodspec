@@ -27,8 +27,7 @@
   <releaseNotes>release-notes.md</releaseNotes>
   <moduleSettingsExtensions />
   <metadata>
-    <install target="Services" src="modelers/Services CQRS Domain Interactions.designer.settings" externalReference="bcc2079b-d8d7-4d7a-a3b5-79ebd687a02e" />
+    <install target="Services" src="modelers/Services Event Interactions.designer.settings" externalReference="bcc2079b-d8d7-4d7a-a3b5-79ebd687a02e" />
     <install target="Services;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Services.EventInteractions/Intent.Modelers.Services.EventInteractions.pkg.config" externalReference="014c4929-4a23-47d6-89d1-8dd4cb3a879c" />
-    <install target="Services" src="modelers/Eventing Service Settings.designer.settings" externalReference="e7de5ddc-01fc-4c68-91b6-53fd6857df59" />
   </metadata>
 </package>

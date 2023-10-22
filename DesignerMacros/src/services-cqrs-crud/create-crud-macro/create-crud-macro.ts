@@ -341,7 +341,7 @@ namespace cqrsCrud {
     }
 }
 /**
- * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
+ * Used by Intent.Modelers.Services.DomainInteractions
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro/create-crud-macro.ts

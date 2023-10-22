@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="9f9f5163-1953-45c9-9bba-d54387ffb552" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
   <name>Operation Extension</name>
-  <display>Operation Extension: Operation</display>
+  <display>Operation Extension: &lt;type not found&gt;</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
@@ -11,8 +11,6 @@
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
-    <typePackageName>Intent.Modelers.Services</typePackageName>
-    <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>

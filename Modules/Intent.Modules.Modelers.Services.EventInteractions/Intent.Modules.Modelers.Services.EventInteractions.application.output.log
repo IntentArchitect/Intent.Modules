@@ -26,43 +26,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/EventingDTOFieldModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>EventingDTOFieldModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#544f1d57-27ce-4985-a4ec-cc01568d72b0</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/EventingDTOModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>EventingDTOModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#a7f8da59-460f-4764-89ee-6fb5dbd67642</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#ccf59371-009d-44dd-9417-a907b463b223</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/GeneralizationModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>GeneralizationModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#ccf59371-009d-44dd-9417-a907b463b223</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/GeneralizationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>GeneralizationModelAssociationExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
@@ -79,22 +47,6 @@
       <ApplicationRelativeFilePath>Api/MessageExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>MessageExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#cbe970af-5bad-4d92-a3ed-a24b9fdaa23e</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/MessageModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>MessageModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#bde29850-5fb9-4f47-9941-b9e182fd9bdc</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/PropertyModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>PropertyModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
@@ -186,18 +138,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>351c541f-0060-4a6d-ad47-8adc3723a575</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#e7de5ddc-01fc-4c68-91b6-53fd6857df59</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/Eventing Service Settings.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Eventing Service Settings.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>351c541f-0060-4a6d-ad47-8adc3723a575</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#bcc2079b-d8d7-4d7a-a3b5-79ebd687a02e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/Services CQRS Domain Interactions.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Services CQRS Domain Interactions.designer.settings</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>modelers/Services Event Interactions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Services Event Interactions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
