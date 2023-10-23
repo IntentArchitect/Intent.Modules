@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services</id>
-  <version>3.4.9-pre.0</version>
+  <version>3.4.9</version>
   <supportedClientVersions>[3.3.0-pre.0, 5.0.0-a)</supportedClientVersions>
   <summary>Services modeler for describing an application's web services.</summary>
   <description>Services modeler for describing an application's web services.</description>
@@ -13,8 +13,8 @@
   <templates></templates>
   <decorators></decorators>
   <interoperability>
-  <!-- Minimum Compatible Versions -->
-  <!--
+    <!-- Minimum Compatible Versions -->
+    <!--
     The Intent Client isn't smart enough to resolve this unfortunately as it gets "stuck" that it can't fulfill all dependencies
     <detect id="Intent.Application.Dtos.Pagination">
       <install>
@@ -22,7 +22,7 @@
       </install>
     </detect>
     -->
-  <!-- /Minimum Compatible Versions -->
+    <!-- /Minimum Compatible Versions -->
   </interoperability>
   <dependencies>
     <dependency id="Intent.Common" version="3.4.3" />
