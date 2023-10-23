@@ -532,7 +532,21 @@ function getParent(element, parentSpecializationType) {
  */
 function getMappedRequestDetails(request) {
     var _a;
-    const mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    const queryEntityMappingTypeId = "25f25af9-c38b-4053-9474-b0fabe9d7ea7";
+    const createEntityMappingTypeId = "5f172141-fdba-426b-980e-163e782ff53e";
+    // Basic mapping:
+    let mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    // Advanced mapping:
+    if (mappedElement == null) {
+        const advancedMappings = request.getAssociations()
+            .filter(x =&gt; x.hasMappings(queryEntityMappingTypeId) ||
+            x.hasMappings(createEntityMappingTypeId))
+            .map(x =&gt; x.getMapping(queryEntityMappingTypeId) ||
+            x.getMapping(createEntityMappingTypeId));
+        if (advancedMappings.length === 1) {
+            mappedElement = advancedMappings[0].getTargetElement();
+        }
+    }
     if (mappedElement == null) {
         return null;
     }
@@ -1318,7 +1332,21 @@ function getParent(element, parentSpecializationType) {
  */
 function getMappedRequestDetails(request) {
     var _a;
-    const mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    const queryEntityMappingTypeId = "25f25af9-c38b-4053-9474-b0fabe9d7ea7";
+    const createEntityMappingTypeId = "5f172141-fdba-426b-980e-163e782ff53e";
+    // Basic mapping:
+    let mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    // Advanced mapping:
+    if (mappedElement == null) {
+        const advancedMappings = request.getAssociations()
+            .filter(x =&gt; x.hasMappings(queryEntityMappingTypeId) ||
+            x.hasMappings(createEntityMappingTypeId))
+            .map(x =&gt; x.getMapping(queryEntityMappingTypeId) ||
+            x.getMapping(createEntityMappingTypeId));
+        if (advancedMappings.length === 1) {
+            mappedElement = advancedMappings[0].getTargetElement();
+        }
+    }
     if (mappedElement == null) {
         return null;
     }

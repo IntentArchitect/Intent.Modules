@@ -1,5 +1,3 @@
-// By having these in a separate file, it can still be referred to manually by the .api.d.ts file
-// but also be available to rest of the TypeScript project so that we can ensure the types match.
 declare let debugConsole: Console;
 type IElementApi = MacroApi.Context.IElementApi;
 type IAssociationApi = MacroApi.Context.IAssociationApi;
@@ -134,6 +132,7 @@ declare namespace MacroApi.Context {
          * The mouse position of the last user activated event.
          */
         mousePosition: IPoint;
+
         /**
          * Returns true if a visual with the specified element identifier is in the diagram.
          */
@@ -472,15 +471,19 @@ declare namespace MacroApi.Context {
         getChildren(type: string): IElementApi[];
         /**
          * Returns true if there are mappings associated with this association end.
-         * */
-        hasMappings(): boolean;
+         */
+        hasMappings(mappingTypeNameOrId?: string): boolean;
+        /**
+         * Returns the mapping model for the supplied mapping type name or id. Returns null if the mapping does not exist.
+         */
+        getMapping(mappingTypeNameOrId: string): IElementToElementMappingApi;
         /**
          * Creates a new element-to-element mapping and returns its API. If the sourceId and/or targetId are not provided,
          * then the mapping will by default be between the sourceEnd and targetEnd elements of this association. 
          * 
          * If the mappingTypeId is not provided and there is only one mapping type configured, then that mapping type will
          * be used. Otherwise, an error will be thrown.
-         * */
+         */
         createMapping(sourceId?: string, targetId?: string, mappingTypeId?: string): IElementToElementMappingApi;
         /**
          * Gets the metadata value for the specified key.

@@ -1,3 +1,7 @@
+### Version 4.4.0
+
+- Improvement: _Expose as Http Endpoint_ script updated to work with new Advanced Mappings.
+
 ### Version 4.3.1
 
 - Improvement: Added a new `OpenAPI Settings` stereotype which can be used to control `operationId`s for endpoints.
