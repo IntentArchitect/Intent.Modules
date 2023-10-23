@@ -70,5 +70,29 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="0eda3468-a61e-4cc9-b1fe-6c6814830dd0" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: Eventing Designer Types</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="478f7663-7244-474e-80b1-59959f28e6d4">
+        <typeId>103ef2ed-815f-4a0c-acf9-1a29c9470897</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Eventing</typePackageName>
+        <typePackageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>822e4254-9ced-4dd1-ad56-500b861f7e4d</parentFolderId>
+      <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+      <packageName>Intent.Modelers.Eventing</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
   </childElements>
 </class>

@@ -42,7 +42,7 @@ namespace <#= Namespace #>
 
         <#  if (Model.MenuOptions != null) {
         foreach(var creationOption in Model.MenuOptions.ElementCreations) {#>
-        public <#= creationOption.ApiModelName.FormatForCollection(creationOption.AllowMultiple()) #> <#= creationOption.GetCreationOptionName() #> => _element.ChildElements
+        public <#= creationOption.ApiModelName.FormatForCollection(creationOption.AllowMultiple()) #> <#= creationOption.GetCreationOptionName() #> => UnderlyingPackage.ChildElements
             .GetElementsOfType(<#= creationOption.ApiModelName #>.SpecializationTypeId)
             .Select(x => new <#= creationOption.ApiModelName #>(x))
 <#          if (creationOption.GetOptionSettings().AllowMultiple()) { #>

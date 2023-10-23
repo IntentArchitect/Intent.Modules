@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="77f8e83b-789e-4ec0-8742-509e028a08e0" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
   <name>Parameter Extension</name>
-  <display>Parameter Extension: &lt;type not found&gt;</display>
+  <display>Parameter Extension: Parameter</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <typeReference id="92c82272-1056-4269-80b3-afaf53400e3d">
@@ -10,6 +10,8 @@
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Services</typePackageName>
+    <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>

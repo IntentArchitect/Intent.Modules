@@ -52,6 +52,7 @@
       <name>Domain Event Association Target End</name>
       <display>Domain Event Association Target End</display>
       <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>8014b71d-627b-4349-b6d7-5011dfa1bb09</parentFolderId>
@@ -82,7 +83,62 @@
         </stereotype>
       </stereotypes>
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="82c16985-ac45-4327-a724-a8ffbebed83f" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+          <name>[context menu]</name>
+          <display>[context menu]</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-manually</sort-children>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>fe0d0f78-fb7e-4685-ab2d-bae88054a78e</parentFolderId>
+          <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+          <packageName>Intent.Modelers.Domain.Events</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements>
+            <childElement id="4fa8bc25-f59c-4e23-92c8-915c2689314b" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
+              <comment>GCB - This has been disabled for now since it is quite complex what we want to do here. Should it be a create or an update or a delete. My thinking should all be separate</comment>
+              <name>Map to Entity</name>
+              <display>Map to Entity: Domain Event to Entity Mapping</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="b6d454a4-d06f-4d6e-806c-af9bc7cdd0c3">
+                <typeId>6c77ca45-fb33-42d2-be23-ea2c2c90ea4e</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <isRequired>true</isRequired>
+                <typePackageName>Intent.Modelers.Domain.Events</typePackageName>
+                <typePackageId>31710880-215c-4fed-9c79-a129a4b9cdb1</typePackageId>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>82c16985-ac45-4327-a724-a8ffbebed83f</parentFolderId>
+              <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+              <packageName>Intent.Modelers.Domain.Events</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="6c209f86-87f6-4fc3-802e-e6e553dfbeca" name="Option Settings">
+                  <comment />
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" value="ctrl + shift + m" isActive="true" />
+                    <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
+                    <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
+                    <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
+                    <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" value="return false" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
     </childElement>
   </childElements>
 </class>

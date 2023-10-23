@@ -99,7 +99,7 @@
           <childElements>
             <childElement id="699d1e0f-6266-4f54-a807-f7502808b1f9" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
               <name>Map Domain Event</name>
-              <display>Map Domain Event: Class to Domain Event Mapping</display>
+              <display>Map Domain Event: Entity to Domain Event Mapping</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="813b381b-466a-4ae0-941f-8e07919f561f">

@@ -109,7 +109,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
             
             #line default
             #line hidden
-            this.Write(" => _element.ChildElements\r\n            .GetElementsOfType(");
+            this.Write(" => UnderlyingPackage.ChildElements\r\n            .GetElementsOfType(");
             
             #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName));

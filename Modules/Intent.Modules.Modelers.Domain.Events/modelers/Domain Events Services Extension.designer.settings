@@ -63,7 +63,7 @@
       <diagramSettings>
         <addNewElementsTo>Package</addNewElementsTo>
         <creationOptions>
-          <option type="element">
+          <option order="2" type="element">
             <text>New Domain Event Handler</text>
             <icon type="UrlImagePath" source="data:image/png;base64,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" />
             <specializationType>Domain Event Handler</specializationType>
@@ -151,7 +151,7 @@ vertical-align: center`</style>
     </elementExtension>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
       <creationOptions>
-        <option type="element">
+        <option order="2" type="element">
           <text>New Domain Event Handler</text>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAACIhJREFUeF7tXEt6FDcQ/gU228AJAidIOAH2CbAXNF9WwAkwJ8A+QcwJMl7lo71gOEHsE8ScIOYEsbeJQXwlqWf6IamqunuGmcFazuhVv6pK9VIbLLjZEr8C+Fu0zBc8Mr/hUtR3xE62hG1PZwoYyRKiTpKJUn1siWMAr0VzGLwxz1z/pbZVB/AfAA+FiFyYAo+FfdXd7Afcx//4AOCNKXBRTcABmBpH4xfKgSrxrahZkBgHEP4CnEq5gsE+LF4A2ANwP3Ia1OcYNzjBXQe6Hwfs1sFfNIBy8a0oWIAYt8BTc25rQANENYD2FDvYwoXZd6eRbbaERnyruURi7ED5D0/Nc5yw+zjFJHAb11X6/2dTeLWkAtCWeAngj8DKU3zBUfvWdGJLomGcaEh1X3vjdBOfweDEPMNZ/U/7Jx7iLt4Cbi/UJqbAqxzlgQNpnl+kCGX6XQPYqcRYDGANvPbcEyLU/WgdYTsjbLI+xSVMAMi625wOpt0usI3dnFQE4EkiYu0zgCms042kD2mNn6M9DXbrhyoCMAPeyFgNmu4CX7CfsiPtexzCuAOut2sYHMZMJ3uKA1j83tmRl4qK+3kRXhPwKjo7t2T1hy3xb+e2ZS6sBIhXpsCDat4sB64ZeHUQyc6bxOy7GkfNLoKs/iydZxQX59wlsqbg1bGgi4UuvFR7ZwoccEqD86SiHOhMFQsyOte5nQN4kiTA4sg8xyFHYEJ3zobFAfQuD7HuT9wCK/u/wS7DBIvjQAKFQ35lgfMbOzcFdhgdeGkKPOLo4JyB5CUSjM+xuPAjjDOIL8jWqoxQZ3R7u4uMb7Ifn3IEif5v2WqOIUrnOTUlqt8tfG2Kue+cv4XjtpOIBgDXsDjGPRxL3D5HpHfPDmCccu+rPhz3tTdp4+4cgXpoCrzr9C+d0d4NrbV0Zx7AvrrQ4kgDXGfzcyDbhi9/eBHuc4fjXcCUJ3IJiynu4ApfcT/rhmo9kcTJpQghP/GAbDCeUr5HMKWIC+TcGBNfzwhVKItfON9DHo0Jp0bh+Fi8rL1Mw8keustqfIgpkv6UgnhmCuzW11cygWTrsmgMZ0S2Vno1FudF9FEVBZIQR30eNyLOngOXH42J+o8xEoRGqZT66BK6C61j47VCWhRE2MNX7GQuLOozxQ0OcRfTEArrSFnajJF7I9fYxkPxTVs674DC49QoeEoeA9uUZlXUxgtzEBikp7U5kc442nQHwLAIBR7JzeFje0Lus6d4C5twnXxI6YhDUWnc+5uVwk81sKLcPSSt6S6KO4ErjAOs4g6OHv//Nh5kA5k+L0xOPTcvcQTp0RlndHSh12UUltK2LJhcVi63mGHcHW6jH00RjRDPxtnSJdU58Kr+bD7Elk4f9fZYpAlzjvDq/2EAcq6QJqle7YhRCclIsZDiVQOwkR/oiFxEt0jozBE5NNS2WgC27K06OIMITbhjNH+vZH1tYysFIMMp8aSMiAXzNTJD9PYtgJ4LO9VUknNxdpuw6ko835DNtF2mWxGWwj67w5tJ5ttLRA9gtp5P6Tn41X8oMwaQGNLkWUhrUj6ZIm90r54hTa7cFvZgXbmClNA5r8pcOQqwcnN/ooKhBblyn2AwwQ2mY5cQN4IJzi/WgikNJuTCUWPM0VU/CwOtvlQ6nMWUNNQmucI2HonDWRQmq4ezWuVrKTUcokSU05BEx0VlG1qVH+ufA1BeXSrkoCEbVkbHRUnzIfuZGyKJWXq4TCsb0h8DqNQcXHUW5RHS9SXNWZOlZUMICAdJGTWJ6NJSSxNf59nkiOsRECAQXWnZENCqsSGtSUWOUvCIomyEaIx9iS4RZ9PK8yLNfRkcYgvvpBdLx4PxifW3IeGjo3mlABwW/fXvLBRAupv2Bq9hXWmHnOuaEHfywroT0PVO38L5UgjdKlTATVX3VFwEUHGOy3sE/UYJcwr5k3kTKyDXrrVUMc6lNcd+W6EHov+IKBcmLYsBr6NyBZZ9sl/9SR57ZLzELW7bDngdtcklvt0amfTLKTYbqLYDN6HI3FXq+1wyPSqkYEkuvUp6eYJtnNStB1v6QvXUayjOkNYW9YwtiH3no2dob7CFFz1u9NgrTdpH9EkZ+1JpAzix7yHExnVAZAEM5gbHib6SyTozRFrHNyZhy5yr4fOLAMyA2KiDDgWZZASnH+vpST2n92xumC9Okvrm+pX4EZ1KNDGALRDZAvJgc5HZ0Idg/3rS651GsVFwL78PkJGwnQrAmX8sfXDdz5dm8yI1P52ApMAFqZg+B8XzXL1HxOBWA6hZMZgQOoO8h1FrS1dAztcyAh9hMcE9nJGpEp5VUJUqHQBf8TUGB2oADGKvycoBSrdKGDFyJb3t1+91WsI8pDZyl2AnfbFQDgwAylMDgEh8G4Tz3Cd+PSB6EdCSkGUAyJlAczyU4ss8nvHzKuODAo5uuH2LB1ATFhOKb62OuzKZUpqFTfzHBgqS9/OSYa1OW4X+4oIoi33z3JlDqmbfYw/GfWyHbQvnQHYHPTqIAWSqJlJLi1RDGLzRAA6pBZQe0kYDyD3BSHKg4jnFZgN4qwPjPKIogpqaAvtaNWtLd4HkElxzX107+ar1t6ULNqRL58a3AxvG/lqKcMsF414DiEtORGUky/ZEFs2xwlec7oOLAl+YRDeX0B8WD1w0GH3nV9Ri0+vNCbZwPovG3OBJqM7lk/rfIxrTFxTNOI3hq5m303fZ8cBBm1UMVnCgYtZo107+eP0vEW/0Skt/hwJI4xuZufUHsF/aoD+Q2g8w9l9peSOXlrtugUcUrj0HVscUAbH6mIU22eQzjl8xwR28nH3VIwLeRgFIxAQQiWj6iIX7+q8iDerflWxh0qiN8Tp2L1W2vDEcyCmMYOpQfiaWfVPnYqr1fhgAHTemIs3KXEz9sH4sAFP5GWEuJsbl3wAcftPABim7wQAAAABJRU5ErkJggg==" />
           <specializationType>Domain Event Handler</specializationType>
@@ -163,7 +163,7 @@ vertical-align: center`</style>
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type>Domain Event Handler</type>
+        <type order="2">Domain Event Handler</type>
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -221,6 +221,19 @@ vertical-align: center`</style>
           </pointIndicator>
         </targetEnd>
       </visualSettings>
+      <macros>
+        <macro trigger="on-created">
+          <script>if (!association.isTargetEnd) {
+    return;
+}
+const handler = association.getOtherEnd().typeReference.getType();
+// hasn't been added YET (NOTE this could be buggy later if we )
+if (handler.getAssociations("Domain Event Handler Association").length == 0) {
+    handler.setName(association.typeReference.getType().getName() + "Handler")
+}
+</script>
+        </macro>
+      </macros>
     </associationSetting>
   </associationSettings>
   <associationExtensions />

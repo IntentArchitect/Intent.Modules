@@ -84,5 +84,53 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="e56e6fa0-97b2-4e58-9350-98b967006bb3" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
+      <name>NewAssociationEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>90831494-f069-44eb-b488-ab2dba7518ea</parentFolderId>
+      <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+      <packageName>Intent.Modelers.Domain.Events</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="ee9ed477-23c8-44d3-8c20-6d8dceb0a951" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="226b820e-f91c-4ed5-aace-4a8435570e38">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>e56e6fa0-97b2-4e58-9350-98b967006bb3</parentFolderId>
+          <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+          <packageName>Intent.Modelers.Domain.Events</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1f88f1ac-b96a-4ae7-9047-883c2fa3b3df" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="if (!association.isTargetEnd) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;const handler = association.getOtherEnd().typeReference.getType();&#xD;&#xA;// hasn't been added YET (NOTE this could be buggy later if we )&#xD;&#xA;if (handler.getAssociations(&quot;Domain Event Handler Association&quot;).length == 0) {&#xD;&#xA;    handler.setName(association.typeReference.getType().getName() + &quot;Handler&quot;)&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>

@@ -84,6 +84,8 @@ namespace Intent.Modelers.Domain.Events.Api
         public DomainEventAssociationTargetEndModel(IAssociationEnd associationEnd, DomainEventAssociationModel association) : base(associationEnd, association)
         {
         }
+
+        public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
     }
 
     [IntentManaged(Mode.Fully)]

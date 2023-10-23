@@ -64,7 +64,7 @@
       <childElements>
         <childElement id="dc8292c9-d5e4-4cc6-a19c-26160fe7c2e0" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Property</name>
-          <display>Add Property: &lt;type not found&gt;</display>
+          <display>Add Property: DTO-Field</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="a7adacbc-3a98-4ed9-b17f-fe685b9689d1">
@@ -73,6 +73,8 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services</typePackageName>
+            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>

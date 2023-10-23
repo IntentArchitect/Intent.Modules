@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="b18f069e-0a19-4f1d-8be3-693239d2438b" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
   <name>Service Extension</name>
-  <display>Service Extension: &lt;type not found&gt;</display>
+  <display>Service Extension: Service</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
@@ -11,6 +11,8 @@
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Services</typePackageName>
+    <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>

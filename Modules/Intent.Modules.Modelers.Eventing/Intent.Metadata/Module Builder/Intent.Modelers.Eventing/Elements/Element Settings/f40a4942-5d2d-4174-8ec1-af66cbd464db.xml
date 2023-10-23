@@ -6,7 +6,7 @@
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>f49d67ab-c0ef-4f48-a69d-db7a7a287260</parentFolderId>
+  <parentFolderId>103ef2ed-815f-4a0c-acf9-1a29c9470897</parentFolderId>
   <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
   <packageName>Intent.Modelers.Eventing</packageName>
   <stereotypes>
@@ -18,7 +18,7 @@
         <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
         <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
         <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
-        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="null" isActive="false" />
         <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
         <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
         <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
@@ -33,10 +33,12 @@
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
@@ -92,6 +94,7 @@
                 <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
                 <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -130,132 +133,7 @@
                 <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
                 <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
-    </childElement>
-    <childElement id="5e3bcb67-9293-4ada-8a4e-d465ab1f3386" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
-      <name>[visual]</name>
-      <display>[visual]: Application</display>
-      <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
-      <genericTypes />
-      <typeReference id="2f08523d-0461-4517-8ef8-f3ec58b07f7f">
-        <typeId>f40a4942-5d2d-4174-8ec1-af66cbd464db</typeId>
-        <isNavigable>true</isNavigable>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <isRequired>true</isRequired>
-        <comment />
-        <typePackageName>Intent.Modelers.Eventing</typePackageName>
-        <typePackageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</typePackageId>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>f40a4942-5d2d-4174-8ec1-af66cbd464db</parentFolderId>
-      <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
-      <packageName>Intent.Modelers.Eventing</packageName>
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
-          <addedByDefault>true</addedByDefault>
-          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-          <properties>
-            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" isActive="true" />
-            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" isActive="true" />
-            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" isActive="true" />
-            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="60" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <metadata />
-      <childElements>
-        <childElement id="5a4a0054-a4a9-463e-95ed-165f1e5ede7d" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
-          <name>Rectangle</name>
-          <display>[draw path]: Rectangle</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>5e3bcb67-9293-4ada-8a4e-d465ab1f3386</parentFolderId>
-          <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
-          <packageName>Intent.Modelers.Eventing</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="a82e406f-efc6-4d9c-86ea-6c28d9509da4" name="Path Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="27138300-900e-4a82-ad06-8abcedf0864a" display="Path" value="`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`" isActive="true" />
-                <property name="8996260d-790c-4e7b-8607-65fa2dd4ac24" display="Condition" isActive="true" />
-                <property name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" value="" isActive="true" />
-                <property name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" value="" isActive="true" />
-                <property name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" isActive="true" />
-                <property name="4fb316a4-ebee-45c1-96e0-636698f52976" display="Fill Color" value="return theme.isDark ? &quot;#22465e&quot; : &quot;#a5d6f7&quot;" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="9031227d-ca01-49c3-b6ce-5ee809bb94ff" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-          <name>Display Text</name>
-          <display>[draw text]: Display Text</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>5e3bcb67-9293-4ada-8a4e-d465ab1f3386</parentFolderId>
-          <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
-          <packageName>Intent.Modelers.Eventing</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="" isActive="true" />
-                <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
-                <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 16px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;&#xD;&#xA;vertical-align: center`" isActive="true" />
-              </properties>
-            </stereotype>
-            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
-                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + h/2 - 9}" isActive="true" />
-                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
-                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="2b0fb18c-9686-4255-af55-882ef9daee7e" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
-          <name>Stereotype Icons</name>
-          <display>[stereotypes]: Stereotype Icons</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>5e3bcb67-9293-4ada-8a4e-d465ab1f3386</parentFolderId>
-          <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
-          <packageName>Intent.Modelers.Eventing</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
-                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
-                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
-                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+                <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

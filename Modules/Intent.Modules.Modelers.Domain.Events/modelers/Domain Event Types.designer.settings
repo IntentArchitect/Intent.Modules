@@ -393,14 +393,28 @@ vertical-align: center`</style>
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
+        <typeOrder />
+        <creationOptions />
+        <scriptOptions />
+        <mappingOptions>
+          <option mappingType="Domain Event to Entity Mapping" mappingTypeId="6c77ca45-fb33-42d2-be23-ea2c2c90ea4e">
+            <text>Map to Entity</text>
+            <shortcut>ctrl + shift + m</shortcut>
+            <isOptionVisibleFunction>return false</isOptionVisibleFunction>
+          </option>
+        </mappingOptions>
       </targetEnd>
       <visualSettings>
         <lineType>Curved</lineType>
         <lineDashArray>3,8</lineDashArray>
-        <sourceEnd />
+        <sourceEnd>
+          <pointIndicator>
+            <path>return `a 4,4 0 1,0 4,4         a 4,4 0 1,0 -4,4`;</path>
+          </pointIndicator>
+        </sourceEnd>
         <targetEnd>
           <pointIndicator>
-            <path>return `l 3 5 l -6 0 l 3 -5 Z`</path>
+            <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>
           </pointIndicator>
         </targetEnd>
       </visualSettings>
@@ -448,7 +462,7 @@ vertical-align: center`</style>
         <creationOptions />
         <scriptOptions />
         <mappingOptions>
-          <option mappingType="Class to Domain Event Mapping" mappingTypeId="86cb62b5-412d-493b-a901-d6e08cf88059">
+          <option mappingType="Entity to Domain Event Mapping" mappingTypeId="86cb62b5-412d-493b-a901-d6e08cf88059">
             <text>Map Domain Event</text>
             <shortcut>ctrl + shift + m</shortcut>
           </option>
@@ -473,8 +487,202 @@ vertical-align: center`</style>
   </associationSettings>
   <associationExtensions />
   <mappingSettings>
-    <mappingSetting type="Class to Domain Event Mapping" typeId="86cb62b5-412d-493b-a901-d6e08cf88059">
-      <title>Class to Domain Event Mapping</title>
+    <mappingSetting type="Domain Event to Entity Mapping" typeId="6c77ca45-fb33-42d2-be23-ea2c2c90ea4e">
+      <title>Domain Event to Entity Mapping</title>
+      <sourceMappings>
+        <mapping id="93d177aa-ae15-4dd5-bac1-97aadff81ad8" name="Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <childSettings>
+            <childSetting id="f7905d89-1299-479e-a74d-1f23183c5dfd" name="Property" type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>dbae92b7-c273-44f1-be84-e37dc8197519</mappingId>
+                <mappingId>24586df9-d22f-4ec3-aede-43f3e3b31343</mappingId>
+                <mappingId>455faaff-9b74-406b-a6d8-9a72d6b78419</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="dbae92b7-c273-44f1-be84-e37dc8197519" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <childSettings>
+            <childSetting id="23424a09-1428-426d-bc66-3cf2bf30f896" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+              <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; 
+    element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <childSettings />
+            </childSetting>
+            <childSetting id="6a855c61-ef23-40e9-9ace-cd8cf1ce02aa" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+              <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
+              <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; 
+    element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <useChildSettingsFrom>dbae92b7-c273-44f1-be84-e37dc8197519</useChildSettingsFrom>
+              <childSettings />
+            </childSetting>
+            <childSetting id="94b0ac33-1aa8-44ba-a1fe-578a051e4a77" name="Invoke Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+              <filterFunction>return element.id == mappingContext.sourceElementId</filterFunction>
+              <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="24586df9-d22f-4ec3-aede-43f3e3b31343" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <useChildSettingsFrom>dbae92b7-c273-44f1-be84-e37dc8197519</useChildSettingsFrom>
+          <childSettings />
+        </mapping>
+        <mapping id="455faaff-9b74-406b-a6d8-9a72d6b78419" name="Data Contract" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <useChildSettingsFrom>dbae92b7-c273-44f1-be84-e37dc8197519</useChildSettingsFrom>
+          <childSettings />
+        </mapping>
+      </sourceMappings>
+      <targetMappings>
+        <mapping id="f14fbc1b-2247-4093-a880-95a38e46453f" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <childSettings>
+            <childSetting id="28f06c17-9ba1-4762-b9f1-9444546eff15" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+              <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; 
+    element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <childSettings />
+            </childSetting>
+            <childSetting id="badf62a0-857f-476c-a192-37ed8f4426a8" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+              <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
+              <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; 
+    element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <useChildSettingsFrom>f14fbc1b-2247-4093-a880-95a38e46453f</useChildSettingsFrom>
+              <childSettings />
+            </childSetting>
+            <childSetting id="abc9b77a-1d7c-4839-9ff4-f3f946f82547" name="Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
+              <filterFunction>return element.id == mappingContext.sourceElementId</filterFunction>
+              <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <childSettings>
+                <childSetting id="d5d596fb-1deb-4254-b9ea-7e15ca690729" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+                  <isRequiredFunction>return true;</isRequiredFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <traversableTypes>
+                    <mappingId>9b0a23ed-c1da-4d1f-94fa-9a9c1d008770</mappingId>
+                    <mappingId>9872a1d5-f09b-42a5-908e-591ce5f33abc</mappingId>
+                  </traversableTypes>
+                  <canBeModified>false</canBeModified>
+                  <childSettings />
+                </childSetting>
+              </childSettings>
+            </childSetting>
+            <childSetting id="f5cf331e-3e2a-42a1-942a-7dc4c198d4f9" name="Invoke Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+              <filterFunction>return element.id == mappingContext.sourceElementId</filterFunction>
+              <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <childSettings>
+                <childSetting id="84e1b554-e4fe-4eae-8743-3e82e511de7c" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+                  <isRequiredFunction>return true;</isRequiredFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <traversableTypes>
+                    <mappingId>9b0a23ed-c1da-4d1f-94fa-9a9c1d008770</mappingId>
+                    <mappingId>9872a1d5-f09b-42a5-908e-591ce5f33abc</mappingId>
+                  </traversableTypes>
+                  <canBeModified>false</canBeModified>
+                  <childSettings />
+                </childSetting>
+              </childSettings>
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="9b0a23ed-c1da-4d1f-94fa-9a9c1d008770" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <useChildSettingsFrom>f14fbc1b-2247-4093-a880-95a38e46453f</useChildSettingsFrom>
+          <childSettings />
+        </mapping>
+        <mapping id="9872a1d5-f09b-42a5-908e-591ce5f33abc" name="Data Contract" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <useChildSettingsFrom>f14fbc1b-2247-4093-a880-95a38e46453f</useChildSettingsFrom>
+          <childSettings />
+        </mapping>
+      </targetMappings>
+      <mappingTypes>
+        <mappingType type="Data Mapping" typeId="34dca018-42b2-4669-935b-b1377efeaafb">
+          <represents>data</represents>
+          <sources>
+            <source id="f7905d89-1299-479e-a74d-1f23183c5dfd" name="Property" />
+            <source id="23424a09-1428-426d-bc66-3cf2bf30f896" name="Attribute" />
+            <source id="94b0ac33-1aa8-44ba-a1fe-578a051e4a77" name="Invoke Operation" />
+            <source id="6a855c61-ef23-40e9-9ace-cd8cf1ce02aa" name="Association Target End" />
+          </sources>
+          <targets>
+            <target id="28f06c17-9ba1-4762-b9f1-9444546eff15" name="Attribute" />
+            <target id="badf62a0-857f-476c-a192-37ed8f4426a8" name="Association Target End" />
+            <target id="d5d596fb-1deb-4254-b9ea-7e15ca690729" name="Constructor Parameter" />
+            <target id="84e1b554-e4fe-4eae-8743-3e82e511de7c" name="Constructor Parameter" />
+          </targets>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+        <mappingType type="Invocation Mapping" typeId="af7d44b5-c56f-49be-abfd-97b2ec1c2273">
+          <represents>invokable</represents>
+          <sources>
+            <source id="93d177aa-ae15-4dd5-bac1-97aadff81ad8" name="Domain Event" />
+          </sources>
+          <targets>
+            <target id="abc9b77a-1d7c-4839-9ff4-f3f946f82547" name="Constructor" />
+            <target id="f5cf331e-3e2a-42a1-942a-7dc4c198d4f9" name="Invoke Operation" />
+          </targets>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+      </mappingTypes>
+    </mappingSetting>
+    <mappingSetting type="Entity to Domain Event Mapping" typeId="86cb62b5-412d-493b-a901-d6e08cf88059">
+      <title>Entity to Domain Event Mapping</title>
       <sourceRootElementFunction>return element.getParent().id;</sourceRootElementFunction>
       <sourceMappings>
         <mapping id="fb2aeb24-f5ce-44c3-abd4-976bb1d504a6" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
@@ -517,6 +725,7 @@ vertical-align: center`</style>
                   <isMappableFunction>return true;</isMappableFunction>
                   <traversableTypes>
                     <mappingId>414e85c8-56c8-4001-8454-035285386f5e</mappingId>
+                    <mappingId>c3a77e38-96c7-4038-99dd-bb6de4ce7408</mappingId>
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
                   <childSettings />
@@ -537,6 +746,7 @@ vertical-align: center`</style>
                   <isMappableFunction>return true;</isMappableFunction>
                   <traversableTypes>
                     <mappingId>414e85c8-56c8-4001-8454-035285386f5e</mappingId>
+                    <mappingId>c3a77e38-96c7-4038-99dd-bb6de4ce7408</mappingId>
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
                   <childSettings />
@@ -548,6 +758,14 @@ vertical-align: center`</style>
         <mapping id="414e85c8-56c8-4001-8454-035285386f5e" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <useChildSettingsFrom>fb2aeb24-f5ce-44c3-abd4-976bb1d504a6</useChildSettingsFrom>
+          <childSettings />
+        </mapping>
+        <mapping id="c3a77e38-96c7-4038-99dd-bb6de4ce7408" name="Data Contract" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <useChildSettingsFrom>fb2aeb24-f5ce-44c3-abd4-976bb1d504a6</useChildSettingsFrom>

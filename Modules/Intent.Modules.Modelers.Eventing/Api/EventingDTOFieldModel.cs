@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Eventing.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class EventingDTOFieldModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class EventingDTOFieldModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "Eventing DTO-Field";
         public const string SpecializationTypeId = "93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7";

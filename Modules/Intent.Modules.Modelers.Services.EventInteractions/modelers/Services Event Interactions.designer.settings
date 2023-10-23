@@ -305,7 +305,7 @@ vertical-align: center`</style>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
           <allowIsCollection>false</allowIsCollection>
-          <isNavigableDefault>true</isNavigableDefault>
+          <isNavigableDefault>false</isNavigableDefault>
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
@@ -369,7 +369,7 @@ vertical-align: center`</style>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
           <allowIsCollection>false</allowIsCollection>
-          <isNavigableDefault>true</isNavigableDefault>
+          <isNavigableDefault>false</isNavigableDefault>
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
@@ -423,6 +423,19 @@ vertical-align: center`</style>
           </pointIndicator>
         </targetEnd>
       </visualSettings>
+      <macros>
+        <macro trigger="on-created">
+          <script>if (!association.isTargetEnd) {
+    return;
+}
+const handler = association.getOtherEnd().typeReference.getType();
+// hasn't been added YET (NOTE this could be buggy later if we )
+if (handler.getAssociations("Subscribe Integration Event").length == 0) {
+    handler.setName(association.typeReference.getType().getName() + "Handler")
+}
+</script>
+        </macro>
+      </macros>
     </associationSetting>
   </associationSettings>
   <associationExtensions>
@@ -469,7 +482,7 @@ vertical-align: center`</style>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <traversableTypes />
-          <canBeModified>false</canBeModified>
+          <canBeModified>true</canBeModified>
           <childSettings>
             <childSetting id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -486,7 +499,8 @@ vertical-align: center`</style>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <traversableTypes />
-          <canBeModified>false</canBeModified>
+          <canBeModified>true</canBeModified>
+          <createNameFunction>return element.getParent('Message').getName() + element.getName() + 'Dto'</createNameFunction>
           <childSettings>
             <childSetting id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7">
               <allowMultipleMappings>true</allowMultipleMappings>
