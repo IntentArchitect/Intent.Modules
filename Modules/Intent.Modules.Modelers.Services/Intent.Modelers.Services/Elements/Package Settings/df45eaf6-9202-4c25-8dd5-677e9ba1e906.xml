@@ -43,7 +43,6 @@
           <genericTypes />
           <typeReference id="ad5e8a48-7f34-4e96-a2de-d2fce4c3b881">
             <typeId>b16578a5-27b1-4047-a8df-f0b783d706bd</typeId>
-            <typeName>Service</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -83,7 +82,6 @@
           <genericTypes />
           <typeReference id="514d21f0-be41-4b12-b2c0-b90a1012b048">
             <typeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</typeId>
-            <typeName>DTO</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -123,7 +121,6 @@
           <genericTypes />
           <typeReference id="c9000d10-b6d7-4f21-bcbc-651c641ed18d">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
-            <typeName>Type-Definition</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -163,7 +160,6 @@
           <genericTypes />
           <typeReference id="11b0b3a3-7abc-4ad1-a184-cd5d3208c11c">
             <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
-            <typeName>Folder</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -203,7 +199,6 @@
           <genericTypes />
           <typeReference id="13aa1a36-09f6-4772-9732-144bd7f1615a">
             <typeId>85fba0e9-9161-4c85-a603-a229ef312beb</typeId>
-            <typeName>Enum</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -243,7 +238,6 @@
           <genericTypes />
           <typeReference id="f9d9459c-7b94-4515-87b3-ba64e8862f2d">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
-            <typeName>Stereotype-Definition</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -298,7 +292,6 @@
           <genericTypes />
           <typeReference id="3de6e99b-7d7c-4e24-8acd-59e4ade632f9">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

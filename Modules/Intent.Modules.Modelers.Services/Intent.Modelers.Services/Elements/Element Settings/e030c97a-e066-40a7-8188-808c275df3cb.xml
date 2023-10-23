@@ -69,7 +69,6 @@
           <genericTypes />
           <typeReference id="939f0104-dd25-4fc2-a761-b9c3f1ff8edd">
             <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
-            <typeName>Parameter</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -124,7 +123,6 @@
           <genericTypes />
           <typeReference id="758dfb3a-647c-44c8-8d95-dd8b8452d684">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

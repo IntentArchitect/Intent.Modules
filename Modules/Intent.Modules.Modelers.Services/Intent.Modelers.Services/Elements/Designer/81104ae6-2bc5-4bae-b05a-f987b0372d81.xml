@@ -29,7 +29,6 @@
       <genericTypes />
       <typeReference id="e4816569-3255-46fa-9255-056b61350dbe">
         <typeId>55e213e3-1e43-4bb5-abe6-6ff77af23f39</typeId>
-        <typeName>Services Types</typeName>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -54,7 +53,6 @@
       <genericTypes />
       <typeReference id="653610a4-0f32-4fe9-8da3-40bc4275581f">
         <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>
-        <typeName>Common Types</typeName>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
