@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modelers.Domain.Api;
+using Intent.Modelers.Domain.Events.Api;
 using Intent.Modelers.Services.CQRS.Api;
 using Intent.RoslynWeaver.Attributes;
 using OperationModel = Intent.Modelers.Services.Api.OperationModel;
@@ -23,6 +24,15 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
 
         [IntentManaged(Mode.Fully)]
         public static IList<CreateEntityActionTargetEndModel> CreateEntityActions(this OperationModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == CreateEntityActionModel.SpecializationType && x.IsTargetEnd())
+                .Select(x => CreateEntityActionModel.CreateFromEnd(x).TargetEnd)
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public static IList<CreateEntityActionTargetEndModel> CreateEntityActions(this DomainEventHandlerAssociationTargetEndModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == CreateEntityActionModel.SpecializationType && x.IsTargetEnd())
