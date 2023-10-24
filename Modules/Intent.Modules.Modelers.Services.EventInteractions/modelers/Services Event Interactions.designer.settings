@@ -666,7 +666,26 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
             <mappingId>3dd3a327-e1eb-4fc2-9272-96c180bd1d92</mappingId>
           </traversableTypes>
           <canBeModified>false</canBeModified>
-          <childSettings />
+          <childSettings>
+            <childSetting id="6a44f7c8-5732-4c11-972e-552fbde51db1" name="Create Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <childSettings />
+            </childSetting>
+            <childSetting id="a91b6600-7dbd-461c-bca5-71cac8e403d1" name="Update Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <childSettings />
+            </childSetting>
+          </childSettings>
         </mapping>
         <mapping id="3dd3a327-e1eb-4fc2-9272-96c180bd1d92" name="Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -701,7 +720,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
                 <mappingId>4155744e-cc1e-495e-9a82-b3702548afe0</mappingId>
                 <mappingId>4bebd0c2-e53b-41a9-9d18-68f7fc4bec81</mappingId>
               </traversableTypes>
-              <canBeModified>false</canBeModified>
+              <canBeModified>true</canBeModified>
               <childSettings />
             </childSetting>
             <childSetting id="d10bbf9f-34ba-42dd-ad3a-ca51722aa2a2" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
@@ -746,7 +765,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
               <traversableTypes>
                 <mappingId>4155744e-cc1e-495e-9a82-b3702548afe0</mappingId>
               </traversableTypes>
-              <canBeModified>false</canBeModified>
+              <canBeModified>true</canBeModified>
               <childSettings />
             </childSetting>
           </childSettings>
@@ -767,6 +786,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
             <target id="d10bbf9f-34ba-42dd-ad3a-ca51722aa2a2" name="Message DTO-Field" />
             <target id="a7d2076d-4c3a-45bd-9d55-165fb4572557" name="Property" />
             <target id="4155744e-cc1e-495e-9a82-b3702548afe0" name="Publish Eventing DTO" />
+            <target id="972c5a10-0416-4760-9f84-de002d4ef2a7" name="Eventing DTO Field" />
           </targets>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>

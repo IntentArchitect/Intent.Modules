@@ -177,6 +177,11 @@ vertical-align: center`</style>
         </elementVisualSettings>
         <associationVisualSettings />
       </diagramSettings>
+      <macros>
+        <macro trigger="on-created">
+          <script>element.loadDiagram();</script>
+        </macro>
+      </macros>
       <childElementSettings />
     </elementSetting>
     <elementSetting type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
