@@ -75,6 +75,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     }
                     else
                     {
+                        SetTargetReplacement(GetTargetPath().Last().Element, null);
                         return GetConstructorStatement();
                     }
                 }
