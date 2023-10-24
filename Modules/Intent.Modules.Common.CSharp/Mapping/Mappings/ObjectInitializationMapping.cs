@@ -69,7 +69,14 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 }
                 else
                 {
-                    return GetSourcePathText();
+                    if (Mapping != null)
+                    {
+                        return GetSourcePathText();
+                    }
+                    else
+                    {
+                        return GetConstructorStatement();
+                    }
                 }
             }
         }
