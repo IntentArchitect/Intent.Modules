@@ -31,15 +31,15 @@
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="true" isActive="true" />
             <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Determines which mapping Services designer CRUD scripts will execute" isActive="true" />
-            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="advanced" isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="basic" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
       <metadata />
       <childElements>
         <childElement id="4e3aa907-5442-45e0-b1ab-d1dc032911e9" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Basic Mapping (will be deprecated)</name>
-          <display>Basic Mapping (will be deprecated) = basic</display>
+          <name>Basic Mapping</name>
+          <display>Basic Mapping = basic</display>
           <isAbstract>false</isAbstract>
           <value>basic</value>
           <genericTypes />

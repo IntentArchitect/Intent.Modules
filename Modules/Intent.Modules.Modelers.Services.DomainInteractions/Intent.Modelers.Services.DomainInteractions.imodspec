@@ -16,9 +16,9 @@
         <setting id="14bc1e98-930b-494c-97a9-5da4e1f3a5fa" title="Default Mapping Mode" type="select">
           <isRequired>true</isRequired>
           <hint>Determines which mapping Services designer CRUD scripts will execute</hint>
-          <defaultValue>advanced</defaultValue>
+          <defaultValue>basic</defaultValue>
           <options>
-            <option value="basic" description="Basic Mapping (will be deprecated)" />
+            <option value="basic" description="Basic Mapping" />
             <option value="advanced" description="Advanced Mapping" />
           </options>
         </setting>
