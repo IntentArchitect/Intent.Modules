@@ -143,7 +143,7 @@ return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
       <creationOptions>
         <option type="element">
           <text>Add Field</text>
-          <shortcut>ctrl + shift + f</shortcut>
+          <shortcut>ctrl + shift + a</shortcut>
           <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
           <specializationType>Eventing DTO-Field</specializationType>
           <specializationTypeId>93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7</specializationTypeId>

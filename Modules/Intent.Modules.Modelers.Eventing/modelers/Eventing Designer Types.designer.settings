@@ -106,7 +106,7 @@ vertical-align: center`</style>
           <position x="${x}" y="${y}" />
         </stereotypesVisualSettings>
         <defaultSize width="${x}" height="60" />
-        <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+        <autoResizeEnabledByDefault>false</autoResizeEnabledByDefault>
         <childElementVisualSettings />
       </visualSettings>
       <childElementSettings />

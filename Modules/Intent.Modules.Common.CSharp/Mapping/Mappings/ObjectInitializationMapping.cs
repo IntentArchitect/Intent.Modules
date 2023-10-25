@@ -75,6 +75,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     }
                     else
                     {
+                        // TODO: add ternary check for when the source path could be nullable.
                         SetTargetReplacement(GetTargetPath().Last().Element, null);
                         return GetConstructorStatement();
                     }
