@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services</id>
-  <version>3.5.0-pre.0</version>
-  <supportedClientVersions>[3.3.0-pre.0, 5.0.0-a)</supportedClientVersions>
+  <version>3.5.0-beta.0</version>
+  <supportedClientVersions>[4.1.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Services modeler for describing an application's web services.</summary>
   <description>Services modeler for describing an application's web services.</description>
   <authors>Intent Architect</authors>
