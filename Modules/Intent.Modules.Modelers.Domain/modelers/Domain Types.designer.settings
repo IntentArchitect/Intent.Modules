@@ -780,6 +780,11 @@ if (namingConvention == "pascal-case") {
         <elementVisualSettings />
         <associationVisualSettings />
       </diagramSettings>
+      <macros>
+        <macro trigger="on-created">
+          <script>element.loadDiagram();</script>
+        </macro>
+      </macros>
       <childElementSettings />
     </elementSetting>
   </elementSettings>

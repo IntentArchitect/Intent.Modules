@@ -214,11 +214,11 @@ vertical-align: center`</style>
             <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 36}`" />
             <display>
               <drawPath>
-                <condition>return $firstOfType &amp;&amp; parent.h &gt;=100;</condition>
+                <condition>return parent.visual.isAutoResizeEnabled() &amp;&amp; $firstOfType;</condition>
                 <path>`M${x},${y - 6} h${w}`</path>
               </drawPath>
               <drawText>
-                <condition>return parent.h &gt;=100</condition>
+                <condition>return parent.visual.isAutoResizeEnabled()</condition>
                 <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
                 <size width="${w}" height="${h}" />
                 <position x="${x}" y="${y}" />
