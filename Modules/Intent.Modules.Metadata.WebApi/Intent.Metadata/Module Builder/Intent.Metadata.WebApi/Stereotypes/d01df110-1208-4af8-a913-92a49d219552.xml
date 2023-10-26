@@ -35,7 +35,17 @@
     
     return "[From Query]";
 }
-return `[${properties["Source"].value}]`;</displayFunction>
+
+if (properties["Source"].value === "From Header" &amp;&amp; properties["Header Name"].value) {
+    return `[From Header(Name = "${properties["Header Name"].value}")]`
+}
+
+if (properties["Source"].value === "From Query" &amp;&amp; properties["Query String Name"].value) {
+    return `[From Query(Name = "${properties["Query String Name"].value}")]`
+}
+
+return `[${properties["Source"].value}]`;
+</displayFunction>
   <displayAsAnnotation>true</displayAsAnnotation>
   <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
@@ -72,6 +82,16 @@ return `[${properties["Source"].value}]`;</displayFunction>
       <valueOptions />
       <lookupTypes />
       <isActiveFunction>return properties["Source"].value === "From Header";</isActiveFunction>
+    </property>
+    <property id="c8caa58e-972a-42f2-983e-652ceee762b2">
+      <name>Query String Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return properties["Source"].value === "From Query";</isActiveFunction>
     </property>
   </properties>
 </stereotypeDefinition>
