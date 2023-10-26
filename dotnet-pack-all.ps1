@@ -1,3 +1,5 @@
+#!/usr/bin/env pwsh
+
 # "dotnet pack" all projects. We want to dynamically work out which projects to pack so that if
 # new projects to pack are added to the repository, then they will also be included automatically
 # as opposed to us needing to update a list somewhere.
