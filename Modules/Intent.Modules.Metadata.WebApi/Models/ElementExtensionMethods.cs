@@ -105,14 +105,14 @@ public static class ElementExtensionMethods
 
         var source = stereotype.GetProperty<string>("Source");
         var headerName = stereotype.GetProperty<string>("Header Name");
+        var queryStringName = stereotype.GetProperty<string>("Query String Name");
 
-        parameterSettings = new ParameterSettings
-        {
-            Source = string.IsNullOrWhiteSpace(source) || string.Equals(source, "default", StringComparison.OrdinalIgnoreCase)
+        parameterSettings = new ParameterSettings(
+            source: string.IsNullOrWhiteSpace(source) || string.Equals(source, "default", StringComparison.OrdinalIgnoreCase)
                 ? null
                 : Enum.Parse<HttpInputSource>(source.Replace(" ", ""), ignoreCase: true),
-            HeaderName = headerName
-        };
+            headerName: headerName,
+            queryStringName: queryStringName);
         return true;
     }
 

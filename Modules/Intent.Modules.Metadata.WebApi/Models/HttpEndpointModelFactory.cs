@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.Types.Api;
@@ -39,7 +38,7 @@ public static class HttpEndpointModelFactory
 
         var baseRoute = GetBaseRoute(element, defaultBasePath);
         var subRoute = httpSettings!.Route;
-        
+
         return new HttpEndpointModel(
             name: element.SpecializationTypeId switch
             {
@@ -81,7 +80,7 @@ public static class HttpEndpointModelFactory
             .Trim('/')
             .Replace("[controller]", serviceName)
             .Replace("[action]", actionName);
-        
+
         if (element.TryGetApiVersion(out var apiVersion))
         {
             var version = apiVersion!.ApplicableVersions.Max(x => x.Version);
@@ -115,7 +114,7 @@ public static class HttpEndpointModelFactory
         {
             return version;
         }
-        
+
         var mutableComponents = components.ToList();
         for (var index = components.Length - 1; index > 0; index--)
         {
@@ -205,6 +204,7 @@ public static class HttpEndpointModelFactory
                 typeReference: childElement.TypeReference,
                 source: parameterSettings?.Source ?? GetHttpInputSource(childElement),
                 headerName: parameterSettings?.HeaderName,
+                queryStringName: parameterSettings?.QueryStringName,
                 mappedPayloadProperty: childElement,
                 value: childElement.Value);
         }
@@ -220,8 +220,9 @@ public static class HttpEndpointModelFactory
                     _ => throw new InvalidOperationException($"Unknown type: \"{element.SpecializationType}\" ({element.SpecializationTypeId})")
                 },
                 typeReference: element.AsTypeReference(),
-                source: Models.HttpInputSource.FromBody,
+                source: HttpInputSource.FromBody,
                 headerName: null,
+                queryStringName: null,
                 mappedPayloadProperty: null,
                 value: null);
         }

@@ -5,6 +5,14 @@ namespace Intent.Modules.Metadata.WebApi.Stereotypes;
 
 public class ParameterSettings
 {
-    public HttpInputSource? Source { get; set; }
-    public string? HeaderName { get; set; }
+    public ParameterSettings(HttpInputSource? source, string? headerName, string? queryStringName)
+    {
+        Source = source;
+        HeaderName = headerName;
+        QueryStringName = queryStringName;
+    }
+
+    public HttpInputSource? Source { get; }
+    public string? HeaderName { get; }
+    public string? QueryStringName { get; }
 }

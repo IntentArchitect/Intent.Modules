@@ -10,7 +10,8 @@ internal class HttpEndpointInputModel : IHttpEndpointInputModel
         string name,
         ITypeReference typeReference,
         HttpInputSource? source,
-        string? headerName, 
+        string? headerName,
+        string? queryStringName,
         ICanBeReferencedType? mappedPayloadProperty,
         string? value)
     {
@@ -19,6 +20,7 @@ internal class HttpEndpointInputModel : IHttpEndpointInputModel
         TypeReference = typeReference;
         Source = source;
         HeaderName = headerName;
+        QueryStringName = queryStringName;
         MappedPayloadProperty = mappedPayloadProperty;
         Value = value;
     }
@@ -28,6 +30,7 @@ internal class HttpEndpointInputModel : IHttpEndpointInputModel
     public string Id { get; }
     public HttpInputSource? Source { get; }
     public string? HeaderName { get; }
+    public string? QueryStringName { get; }
     public ICanBeReferencedType? MappedPayloadProperty { get; }
     public string? Value { get; }
 }

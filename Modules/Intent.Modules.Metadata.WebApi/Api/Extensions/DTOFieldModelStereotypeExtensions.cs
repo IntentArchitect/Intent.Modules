@@ -81,6 +81,11 @@ namespace Intent.Metadata.WebApi.Api
                 return _stereotype.GetProperty<string>("Header Name");
             }
 
+            public string QueryStringName()
+            {
+                return _stereotype.GetProperty<string>("Query String Name");
+            }
+
             public class SourceOptions
             {
                 public readonly string Value;
