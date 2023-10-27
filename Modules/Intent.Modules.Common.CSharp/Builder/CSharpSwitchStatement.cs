@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using JetBrains.Annotations;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
