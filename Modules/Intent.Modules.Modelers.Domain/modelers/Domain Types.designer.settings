@@ -410,6 +410,7 @@ if (namingConvention == "pascal-case") {
             <option mappingType="Domain Entity Mapping" mappingTypeId="d2a7e80f-a237-4d2d-97b4-eb88363b680f">
               <text>Map To Entity</text>
               <shortcut>ctrl + shift + m</shortcut>
+              <isOptionVisibleFunction>return getParent()?.specialization == "Class";</isOptionVisibleFunction>
             </option>
           </mappingOptions>
           <mappingSettings>
