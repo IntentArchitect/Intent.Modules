@@ -913,4 +913,5 @@ execute();
   </elementExtensions>
   <associationSettings />
   <associationExtensions />
+  <mappingSettings />
 </settings>
