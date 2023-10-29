@@ -145,6 +145,7 @@ namespace Intent.Modelers.Domain.Api
     public class CommentSourceEndModel : CommentAssociationEndModel
     {
         public const string SpecializationTypeId = "7e98213c-4a9c-4d6f-98fc-f185948cc9e8";
+        public const string SpecializationType = "Comment Source End";
 
         public CommentSourceEndModel(IAssociationEnd associationEnd, CommentAssociationModel association) : base(associationEnd, association)
         {
@@ -155,6 +156,7 @@ namespace Intent.Modelers.Domain.Api
     public class CommentTargetEndModel : CommentAssociationEndModel
     {
         public const string SpecializationTypeId = "b7edce45-ccf0-47ed-b79f-86d5145c9f62";
+        public const string SpecializationType = "Comment Target End";
 
         public CommentTargetEndModel(IAssociationEnd associationEnd, CommentAssociationModel association) : base(associationEnd, association)
         {

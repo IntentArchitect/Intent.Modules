@@ -70,6 +70,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     public class DeleteEntityActionSourceEndModel : DeleteEntityActionEndModel
     {
         public const string SpecializationTypeId = "8c2d9fed-bd14-44b2-9f98-8a801aaf157e";
+        public const string SpecializationType = "Delete Entity Action Source End";
 
         public DeleteEntityActionSourceEndModel(IAssociationEnd associationEnd, DeleteEntityActionModel association) : base(associationEnd, association)
         {
@@ -80,6 +81,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     public class DeleteEntityActionTargetEndModel : DeleteEntityActionEndModel
     {
         public const string SpecializationTypeId = "4a04cfc2-5841-438c-9c16-fb58b784b365";
+        public const string SpecializationType = "Delete Entity Action Target End";
 
         public DeleteEntityActionTargetEndModel(IAssociationEnd associationEnd, DeleteEntityActionModel association) : base(associationEnd, association)
         {

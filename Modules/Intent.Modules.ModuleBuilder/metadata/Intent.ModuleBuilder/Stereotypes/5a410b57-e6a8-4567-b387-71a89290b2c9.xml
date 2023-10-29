@@ -83,9 +83,7 @@
       <valueOptions />
       <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
-      <isActiveFunction>let nameAccessibility = getProperty("6bf94b78-382a-4002-ac88-a569b59e16e6").getValue();
-
-return nameAccessibility == "Required" || nameAccessibility == "Disabled";</isActiveFunction>
+      <isActiveFunction />
     </property>
     <property id="b534060a-c8a3-4631-b4a9-db0baeecd1b3">
       <name>Api Property Name</name>

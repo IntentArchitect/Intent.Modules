@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.EventInteractions</id>
-  <version>1.0.0-beta.0</version>
+  <version>1.0.0-beta.1</version>
   <supportedClientVersions>[4.1.0-a,5.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>

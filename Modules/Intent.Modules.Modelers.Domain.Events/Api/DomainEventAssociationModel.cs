@@ -70,6 +70,7 @@ namespace Intent.Modelers.Domain.Events.Api
     public class DomainEventAssociationSourceEndModel : DomainEventAssociationEndModel
     {
         public const string SpecializationTypeId = "ad8998ec-ee85-4544-9267-8ec150a2f257";
+        public const string SpecializationType = "Domain Event Association Source End";
 
         public DomainEventAssociationSourceEndModel(IAssociationEnd associationEnd, DomainEventAssociationModel association) : base(associationEnd, association)
         {
@@ -80,6 +81,7 @@ namespace Intent.Modelers.Domain.Events.Api
     public class DomainEventAssociationTargetEndModel : DomainEventAssociationEndModel
     {
         public const string SpecializationTypeId = "fe0d0f78-fb7e-4685-ab2d-bae88054a78e";
+        public const string SpecializationType = "Domain Event Association Target End";
 
         public DomainEventAssociationTargetEndModel(IAssociationEnd associationEnd, DomainEventAssociationModel association) : base(associationEnd, association)
         {

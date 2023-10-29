@@ -70,6 +70,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     public class CreateEntityActionSourceEndModel : CreateEntityActionEndModel
     {
         public const string SpecializationTypeId = "a3e7c59e-b0a1-47e1-ba29-66f2c7047b0a";
+        public const string SpecializationType = "Create Entity Action Source End";
 
         public CreateEntityActionSourceEndModel(IAssociationEnd associationEnd, CreateEntityActionModel association) : base(associationEnd, association)
         {
@@ -80,6 +81,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     public class CreateEntityActionTargetEndModel : CreateEntityActionEndModel
     {
         public const string SpecializationTypeId = "328f54e5-7bad-4b5f-90ca-03ce3105d016";
+        public const string SpecializationType = "Create Entity Action Target End";
 
         public CreateEntityActionTargetEndModel(IAssociationEnd associationEnd, CreateEntityActionModel association) : base(associationEnd, association)
         {

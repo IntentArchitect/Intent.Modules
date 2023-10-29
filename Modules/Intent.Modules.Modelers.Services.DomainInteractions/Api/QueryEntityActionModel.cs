@@ -70,6 +70,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     public class QueryEntityActionSourceEndModel : QueryEntityActionEndModel
     {
         public const string SpecializationTypeId = "32a65f26-2555-4616-8a2c-6a90805600bb";
+        public const string SpecializationType = "Query Entity Action Source End";
 
         public QueryEntityActionSourceEndModel(IAssociationEnd associationEnd, QueryEntityActionModel association) : base(associationEnd, association)
         {
@@ -80,6 +81,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     public class QueryEntityActionTargetEndModel : QueryEntityActionEndModel
     {
         public const string SpecializationTypeId = "93ef6675-cba4-4998-adff-cb22d5343ed4";
+        public const string SpecializationType = "Query Entity Action Target End";
 
         public QueryEntityActionTargetEndModel(IAssociationEnd associationEnd, QueryEntityActionModel association) : base(associationEnd, association)
         {

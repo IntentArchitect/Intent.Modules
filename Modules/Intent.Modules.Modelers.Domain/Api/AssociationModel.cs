@@ -172,6 +172,7 @@ namespace Intent.Modelers.Domain.Api
     public class AssociationSourceEndModel : AssociationEndModel
     {
         public const string SpecializationTypeId = "8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58";
+        public const string SpecializationType = "Association Source End";
 
         public AssociationSourceEndModel(IAssociationEnd associationEnd, AssociationModel association) : base(associationEnd, association)
         {
@@ -182,6 +183,7 @@ namespace Intent.Modelers.Domain.Api
     public class AssociationTargetEndModel : AssociationEndModel
     {
         public const string SpecializationTypeId = "0a66489f-30aa-417b-a75d-b945863366fd";
+        public const string SpecializationType = "Association Target End";
 
         public AssociationTargetEndModel(IAssociationEnd associationEnd, AssociationModel association) : base(associationEnd, association)
         {

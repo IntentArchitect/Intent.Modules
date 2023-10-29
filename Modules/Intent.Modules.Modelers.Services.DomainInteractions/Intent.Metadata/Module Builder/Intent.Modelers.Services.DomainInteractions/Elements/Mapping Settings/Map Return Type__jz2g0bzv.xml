@@ -248,7 +248,7 @@
           <childElements>
             <childElement id="c4f786ba-6fd6-4d17-8cb5-1ddbaa8bd76f" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Create Field</name>
-              <display>Create Field: DTO-Field</display>
+              <display>Create Field: &lt;target type not found&gt;</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="dc153b01-a4aa-4347-890e-bb8f64933bd9">
@@ -257,8 +257,6 @@
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services</typePackageName>
-                <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
@@ -464,7 +462,7 @@
         </childElement>
         <childElement id="cc0e4c6e-ac32-4694-9a3b-62c97d9e0e24" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>DTO</name>
-          <display>DTO: DTO</display>
+          <display>DTO: &lt;target type not found&gt;</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="cba4d030-9049-4328-b226-d160570c7e24">
@@ -473,8 +471,6 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services</typePackageName>
-            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -590,7 +586,7 @@
             </childElement>
             <childElement id="529a376e-a39e-42ba-95da-b06bb8a76ebe" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Create Field</name>
-              <display>Create Field: DTO-Field</display>
+              <display>Create Field: &lt;target type not found&gt;</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="ce1acdb2-651a-4b9c-8c3c-aac69fa8ea9f">
@@ -599,8 +595,6 @@
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services</typePackageName>
-                <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
@@ -744,7 +738,7 @@
       <childElements>
         <childElement id="7e501670-11af-47fa-bf05-b0da94c85225" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Return DTO</name>
-          <display>Return DTO: DTO</display>
+          <display>Return DTO: &lt;target type not found&gt;</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-manually</sort-children>
           <genericTypes />
@@ -754,8 +748,6 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services</typePackageName>
-            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -786,7 +778,7 @@
           <childElements>
             <childElement id="ee4038a2-7109-4ae2-b667-983ef574070b" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Return DTO-Field</name>
-              <display>Return DTO-Field: DTO-Field</display>
+              <display>Return DTO-Field: &lt;target type not found&gt;</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="75544ff4-59b6-4654-967f-a2643dfb59a6">
@@ -795,8 +787,6 @@
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services</typePackageName>
-                <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
