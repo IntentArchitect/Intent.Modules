@@ -61,13 +61,90 @@ declare namespace MacroApi.Context {
     }
 
     interface IElementToElementMappingApi {
-        mappingTypeId: string;
         mappingType: string;
+        mappingTypeId: string;
         getSourceElement(): IElementApi;
         getTargetElement(): IElementApi;
         addMappedEnd(mappingTypeNameOrId: string, sourcePath: string[], targetPath: string[], mappingExpression?: string): void;
+        getMappedEnds(): IElementToElementMappedEndApi[];
     }
-    
+
+    interface IElementToElementMappedEndApi {
+        /**
+         * The name of the mapping type settings of the first {@link sources}, if one exists.
+         */
+        readonly mappingType: string;
+
+        /**
+         * The identifier of the mapping type settings of the first {@link sources}, if one exists.
+         */
+        readonly mappingTypeId: string;
+
+        /**
+         * The expression for this mapped end.
+         */
+        readonly mappingExpression: string;
+
+        /**
+         * The mapping target path.
+         */
+        readonly targetPath: IElementMappingPathApi[];
+
+        /**
+         * The ultimate element of the {@link targetPath}.
+         */
+        getTargetElement(): IElementApi;
+
+        /**
+         * The source mappings for this mapped end.
+         */
+        readonly sources: IElementToElementMappedEndSourceApi[];
+
+        /**
+         * Returns the {@link IElementToElementMappedEndSourceApi} for the provided {@link identifier}.
+         * Will throw an exception if a source cannot be found.
+         */
+        getSource(identifier: string): IElementToElementMappedEndSourceApi;
+
+        /**
+         * If there is a single source, will return that source's SourcePath. If there are more 
+         * than one source, will return the common SourcePath to all of them.
+         */
+        readonly sourcePath: IElementMappingPathApi[];
+
+        /**
+         * The ultimate element of the {@link sourcePath).
+         */
+        getSourceElement(): IElementApi;
+    }
+
+    interface IElementToElementMappedEndSourceApi {
+        /**
+         * The name of the mapping type settings for this source connection.
+         */
+        readonly mappingType: string;
+
+        /**
+         * The identifier of the mapping type settings for this source connection.
+         */
+        readonly mappingTypeId: string;
+
+        /**
+         * The string identifier used in the {@link IElementToElementMappedEndApi.mappingExpression}.
+         */
+        readonly expressionIdentifier: string;
+
+        /**
+         * The mapping target path.
+         */
+        readonly path: IElementMappingPathApi[];
+
+        /**
+         * The ultimate element of the {@link path}.
+         */
+        getElement(): IElementApi;
+    }
+
     interface IElementMappingApi {
         applicationId: string;
         metadataId: string;
@@ -477,6 +554,7 @@ declare namespace MacroApi.Context {
          * Returns the mapping model for the supplied mapping type name or id. Returns null if the mapping does not exist.
          */
         getMapping(mappingTypeNameOrId: string): IElementToElementMappingApi;
+        getMappings(): IElementToElementMappingApi[];
         /**
          * Creates a new element-to-element mapping and returns its API. If the sourceId and/or targetId are not provided,
          * then the mapping will by default be between the sourceEnd and targetEnd elements of this association. 

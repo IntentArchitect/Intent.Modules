@@ -1,7 +1,6 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
-/// <reference path="../../common/getMappedRequestDetails.ts" />
 
-function getFolderParts(request: IElementApi, mappedDetails: IMappedRequestDetails): string[] {
+function getFolderParts(request: IElementApi, entity: IElementApi, owningEntity: IElementApi): string[] {
     let depth = 0;
     let currentElement = request.getParent();
     let folderParts: string[] = [];
@@ -9,11 +8,11 @@ function getFolderParts(request: IElementApi, mappedDetails: IMappedRequestDetai
     while (currentElement.specialization === "Folder") {
         let folderName = currentElement.getName();
 
-        if (depth === 0 && mappedDetails != null) {
+        if (depth === 0 && entity != null) {
             const singularizedFolderName = singularize(folderName);
-            const singularizedAggregateRootName = singularize((mappedDetails.owningEntity ?? mappedDetails.entity).getName());
+            const singularizedAggregateRootName = singularize((owningEntity ?? entity).getName());
 
-            if (singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()){            
+            if (singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
                 folderName = singularizedFolderName;
             }
         }
