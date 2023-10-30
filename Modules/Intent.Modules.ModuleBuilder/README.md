@@ -20,7 +20,7 @@ This setting is only relevant for Text based files and allow you to choose which
 
 ## `Static Content Template`
 
-This template can be used to to output a relatively static set of files. This template does support some basic search and replace functionality allowing you to do some basic customization to the outputted files.
+This template can be used to output a relatively static set of files. This template does support some basic search and replace functionality allowing you to do some basic customization to the outputted files.
 
 ### Template Settings - Content Subfolder
 
