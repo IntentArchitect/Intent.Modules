@@ -8,8 +8,8 @@
 function getMappedEntity(
     request: MacroApi.Context.IElementApi
 ): {
-    entity: IElementApi;
-    owningEntity: IElementApi;
+    entity?: IElementApi;
+    owningEntity?: IElementApi;
 } {
     const queryEntityMappingTypeId = "25f25af9-c38b-4053-9474-b0fabe9d7ea7";
     const createEntityMappingTypeId = "5f172141-fdba-426b-980e-163e782ff53e";
@@ -57,7 +57,7 @@ function getMappedEntity(
     }
 
     if (entity == null) {
-        return null;
+        return {};
     }
 
     return {

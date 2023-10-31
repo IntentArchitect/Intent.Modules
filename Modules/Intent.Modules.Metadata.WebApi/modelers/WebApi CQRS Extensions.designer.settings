@@ -819,7 +819,7 @@ function getMappedEntity(request) {
         }
     }
     if (entity == null) {
-        return null;
+        return {};
     }
     return {
         entity: entity,
@@ -1739,7 +1739,7 @@ function getMappedEntity(request) {
         }
     }
     if (entity == null) {
-        return null;
+        return {};
     }
     return {
         entity: entity,
