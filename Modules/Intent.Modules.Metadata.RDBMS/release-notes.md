@@ -1,3 +1,7 @@
+### Version 3.5.10
+
+- Improvement: Index naming respects table naming conventions.
+
 ### Version 3.5.9
 
 - Improvement: Moving the on-load script from Attributes to a package level can have drastically faster load times.

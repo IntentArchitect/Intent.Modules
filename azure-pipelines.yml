@@ -4,6 +4,7 @@ trigger:
     include:
     - master
     - development
+    - development-*
 
 resources:
   pipelines:
@@ -15,6 +16,10 @@ resources:
         - 'refs/tags/publish/client/*'
 
 variables:
+- name: 'isDevelopment'
+  value: $[or(startsWith(variables['Build.SourceBranch'], 'refs/heads/development-'), in(variables['Build.SourceBranch'], 'refs/heads/development'))]
+- name: 'isMaster'
+  value: $[in(variables['Build.SourceBranch'], 'refs/heads/master')]
 - name: 'vstsFeed'
   value: '4bb4c1b9-5b56-4972-8bac-0ad3fa64204e/intentarchitect-feed'
 - name: 'vstsFeedUrl'
@@ -107,6 +112,19 @@ steps:
     filePath: 'dotnet-pack-all.ps1'
     arguments: '-dotnetPackOutputDirectory $(Build.ArtifactStagingDirectory) -vstsFeedUrl $(vstsFeedUrl)'
 
+# Push the NuGet packages to the DevOps artifact feed so that it's available to other pipelines
+- task: NuGetCommand@2
+  displayName: 'nuget push'
+  condition: and(succeeded(), in(true, variables.isMaster, variables.isDevelopment))
+  inputs:
+      command: 'push'
+      feedsToUse: 'select'
+      includeNuGetOrg: false
+      publishVstsFeed: $(vstsFeed)
+      allowPackageConflicts: true
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+      nuGetFeedType: 'internal'
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   env:
@@ -119,15 +137,13 @@ steps:
 
 - task: PowerShell@2
   displayName: 'Update Project URLs in imodspecs'
+  condition: and(succeeded(), in(true, variables.isDevelopment))
   inputs:
     targetType: 'inline'
     pwsh: true
     script: |
-      $isMaster = '$(Build.SourceBranch)' -eq 'refs/heads/master'
-      if ($isMaster -eq $true) {
-        Get-ChildItem -Recurse -Filter "*.imodspec" | ForEach-Object {
-          (Get-Content $_.FullName) -replace '/development/', '/master/' | Set-Content $_.FullName
-        }
+      Get-ChildItem -Recurse -Filter "*.imodspec" | ForEach-Object {
+        (Get-Content $_.FullName) -replace '/development/', '/master/' | Set-Content $_.FullName
       }
 
 - task: DotNetCoreCLI@2
@@ -153,7 +169,7 @@ steps:
   inputs:
     targetType: 'inline'
     pwsh: true
-    script: dotnet tool install Intent.SoftwareFactory.CLI --global --version 4.0.5-pre.1
+    script: dotnet tool install Intent.SoftwareFactory.CLI --global --prerelease
 
 - task: PowerShell@2
   displayName: 'Template Testing'
@@ -168,22 +184,9 @@ steps:
       ./prepare-intent-testing.ps1
       intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH"
 
-# Push the NuGet packages to the DevOps artifact feed so that it's available to other pipelines
-- task: NuGetCommand@2
-  displayName: 'nuget push'
-  condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/development'))
-  inputs:
-      command: 'push'
-      feedsToUse: 'select'
-      includeNuGetOrg: false
-      publishVstsFeed: $(vstsFeed)
-      allowPackageConflicts: true
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-      nuGetFeedType: 'internal'
-
 - task: PowerShell@2
   displayName: 'install intent packager'
-  condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/development'))
+  condition: and(succeeded(), in(true, variables.isMaster, variables.isDevelopment))
   inputs:
     targetType: 'inline'
     pwsh: true
@@ -192,7 +195,7 @@ steps:
 
 - task: PowerShell@2
   displayName: 'filter modules to publish'
-  condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/development'))
+  condition: and(succeeded(), in(true, variables.isMaster, variables.isDevelopment))
   inputs:
     targetType: inline
     pwsh: true
@@ -225,7 +228,7 @@ steps:
 
 - task: PowerShell@2
   displayName: 'publish modules'
-  condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/development'))
+  condition: and(succeeded(), in(true, variables.isMaster, variables.isDevelopment))
   env:
     DOTNET_NOLOGO: '1'
   inputs:
