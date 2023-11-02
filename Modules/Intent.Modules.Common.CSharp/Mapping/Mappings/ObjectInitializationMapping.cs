@@ -114,6 +114,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
         public override CSharpStatement GetTargetStatement()
         {
+            // TODO: Please revisit, this only writing out the property name and doesn't allow for accessor variables
             return Model.Name.ToPascalCase();
         }
     }
