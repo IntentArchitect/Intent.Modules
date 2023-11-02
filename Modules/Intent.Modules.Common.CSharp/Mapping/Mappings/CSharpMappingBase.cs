@@ -145,10 +145,10 @@ public abstract class CSharpMappingBase : ICSharpMapping
         return GetPathText(GetTargetPath(), _targetReplacements);
     }
 
-    protected string GetPathText(IList<IElementMappingPathTarget> mappingPath, IDictionary<string, string> replacements)
+    protected string GetPathText(IList<IElementMappingPathTarget> mappingPaths, IDictionary<string, string> replacements)
     {
         var result = "";
-        foreach (var mappingPathTarget in mappingPath)
+        foreach (var mappingPathTarget in mappingPaths)
         {
             if (replacements.ContainsKey(mappingPathTarget.Element.Id))
             {
@@ -156,25 +156,42 @@ public abstract class CSharpMappingBase : ICSharpMapping
             }
             else
             {
-                var referenceName = default(string);
-                if (mappingPathTarget.Element is IElement element)
+                if (!TryGetReferenceName(mappingPathTarget, out var referenceName))
                 {
-                    // try parent type's template:
-                    referenceName = (Template.GetTypeInfo(element.ParentElement.AsTypeReference())
+                    if (mappingPathTarget.Element is IElement element)
+                    {
+                        // try parent type's template:
+                        referenceName = (Template.GetTypeInfo(element.ParentElement.AsTypeReference())
                             ?.Template as ICSharpFileBuilderTemplate)?.CSharpFile.GetReferenceForModel(mappingPathTarget.Id)?.Name;
+                    }
+
+                    // try this template:
+                    referenceName ??= Template.CSharpFile.GetReferenceForModel(mappingPathTarget.Id)?.Name;
+                    // fall back on using the element's name from the metadata:
+                    referenceName ??= mappingPathTarget.Element.Name;
                 }
-                // try this template:
-                referenceName ??= Template.CSharpFile.GetReferenceForModel(mappingPathTarget.Id)?.Name;
-                // fall back on using the element's name from the metadata:
-                referenceName ??= mappingPathTarget.Element.Name;
 
                 result += $"{(result.Length > 0 ? "." : "")}{referenceName}";
-                if (mappingPathTarget.Element.TypeReference?.IsNullable == true && mappingPath.Last() != mappingPathTarget)
+                if (mappingPathTarget.Element.TypeReference?.IsNullable == true && mappingPaths.Last() != mappingPathTarget)
                 {
                     result += "?";
                 }
             }
         }
         return result;
+    }
+
+    /// <summary>
+    /// Resolve the reference name after all replacement have been applied for this specified <paramref name="mappingPath"/>
+    /// By default this method will return false and supply a null <paramref name="reference"/>. Override this method for your
+    /// particular use case if required.
+    /// </summary>
+    /// <param name="mappingPath"></param>
+    /// <param name="reference"></param>
+    /// <returns></returns>
+    protected virtual bool TryGetReferenceName(IElementMappingPathTarget mappingPath, out string reference)
+    {
+        reference = null;
+        return false;
     }
 }
