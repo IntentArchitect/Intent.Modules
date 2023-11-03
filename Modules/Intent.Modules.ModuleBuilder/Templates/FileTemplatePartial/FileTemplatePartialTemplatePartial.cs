@@ -78,14 +78,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
 
         private string GetTemplateBaseClass()
         {
-            if (Model.GetFileSettings().OutputFileContent().IsText())
-            {
-                return nameof(IntentTemplateBase);
-            }
-            else
-            {
-                return nameof(IntentBinaryTemplateBase);
-            }
+            return Model.GetFileSettings().OutputFileContent().IsBinary()
+                ? nameof(IntentBinaryTemplateBase)
+                : nameof(IntentTemplateBase);
         }
     }
 }

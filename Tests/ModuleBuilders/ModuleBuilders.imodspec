@@ -2,7 +2,7 @@
 <package>
   <id>ModuleBuilders</id>
   <version>1.0.0</version>
-  <supportedClientVersions>[3.4.0,5.0.0)</supportedClientVersions>
+  <supportedClientVersions>[4.1.0,5.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.Tests.</summary>
   <description>A custom module for Intent.Modules.Tests.</description>
   <authors>Intent.Modules.Tests</authors>
@@ -246,8 +246,8 @@
     <dependency id="Intent.Common.Java" version="3.4.3" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
     <dependency id="Intent.Common.TypeScript" version="3.4.3" />
-    <dependency id="Intent.Modelers.Domain" version="3.4.6" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="4.1.1" />
+    <dependency id="Intent.Modelers.Domain" version="3.5.0-beta.1" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="4.3.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

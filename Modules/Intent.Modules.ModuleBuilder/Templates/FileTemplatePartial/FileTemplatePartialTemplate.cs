@@ -54,7 +54,7 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    partial class ");
+            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    partial class ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
@@ -76,7 +76,8 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("\";\r\n\r\n\t    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n        public ");
+            this.Write("\";\r\n\r\n        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n        public" +
+                    " ");
             
             #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
