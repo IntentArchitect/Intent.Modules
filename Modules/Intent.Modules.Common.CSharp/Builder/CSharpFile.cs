@@ -84,7 +84,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
 
     public CSharpFile AddInterface(string name, Action<CSharpInterface> configure = null)
     {
-        var @interface = new CSharpInterface(name);
+        var @interface = new CSharpInterface(name, this);
         Interfaces.Add(@interface);
         if (_isBuilt)
         {

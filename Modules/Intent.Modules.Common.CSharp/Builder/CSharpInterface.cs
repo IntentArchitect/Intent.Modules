@@ -6,7 +6,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpInterface : CSharpDeclaration<CSharpInterface>
+public class CSharpInterface : CSharpDeclaration<CSharpInterface>, IHasCSharpName
 {
     private CSharpCodeSeparatorType _fieldsSeparator = CSharpCodeSeparatorType.NewLine;
     private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.NewLine;
@@ -20,6 +20,11 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
         }
 
         Name = name.ToCSharpIdentifier();
+    }
+
+    public CSharpInterface(string name, CSharpFile file) : this(name)
+    {
+        File = file;
     }
 
     public string Name { get; }
@@ -73,7 +78,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 
     public CSharpInterface AddProperty(string type, string name, Action<CSharpInterfaceProperty> configure = null)
     {
-        var property = new CSharpInterfaceProperty(type, name)
+        var property = new CSharpInterfaceProperty(type, name, File)
         {
             BeforeSeparator = _propertiesSeparator,
             AfterSeparator = _propertiesSeparator
@@ -85,7 +90,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 
     public CSharpInterface InsertProperty(int index, string type, string name, Action<CSharpInterfaceProperty> configure = null)
     {
-        var property = new CSharpInterfaceProperty(type, name)
+        var property = new CSharpInterfaceProperty(type, name, File)
         {
             BeforeSeparator = _propertiesSeparator,
             AfterSeparator = _propertiesSeparator
