@@ -1,0 +1,16 @@
+﻿Field1 = "Value1"
+
+SomeDictionary {
+  Name = "Value"
+
+  #NestedArray = ["1", {
+  #  Key = "Something"
+  #  OtherKey = "Something else"
+  #}, "2", [1, 2]]
+}
+AnotherValue = "The other value's contents"
+
+#AnotherDictionary {
+#  1 = "1"
+#  2 = "2"
+#}

@@ -54,7 +54,14 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    partial class ");
+            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    ");
+            
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(IsFileBuilder ? "public" : "partial"));
+            
+            #line default
+            #line hidden
+            this.Write(" class ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
@@ -76,71 +83,233 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("\";\r\n\r\n        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n        public" +
-                    " ");
+            this.Write("\";\r\n\r\n");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+  if (IsFileBuilder) { 
+            
+            #line default
+            #line hidden
+            this.Write("        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]\r\n");
+            
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+  } else { 
+            
+            #line default
+            #line hidden
+            this.Write("        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n");
+            
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("        public ");
+            
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IOutputTarget outputTarget, ");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
             #line hidden
             this.Write(" model");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType() == null ? " = null" : ""));
             
             #line default
             #line hidden
-            this.Write(@") : base(TemplateId, outputTarget, model)
-        {
-        }
-
-        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
-        public override ITemplateFileConfig GetTemplateFileConfig()
-        {
-            return new TemplateFileConfig(
-                fileName: $""");
+            this.Write(") : base(TemplateId, outputTarget, model)\r\n        {\r\n");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration()  ? "{Model.Name}" : Model.Name.Replace("Template", "")));
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+  if (Model.GetFileSettings().TemplatingMethod().IsIndentedFileBuilder()) { 
+            
+            #line default
+            #line hidden
+            this.Write("            ");
+            
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetFilePropertyName()));
+            
+            #line default
+            #line hidden
+            this.Write(" = new ");
+            
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetBuilderType()));
+            
+            #line default
+            #line hidden
+            this.Write("($\"");
+            
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetDefaultName()));
+            
+            #line default
+            #line hidden
+            this.Write("\", \"");
+            
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileSettings().FileExtension()));
+            
+            #line default
+            #line hidden
+            this.Write(@""")
+                .WithItems(items =>
+                {
+                    items.WithContent(""// Sample JSON:"");
+                    items.WithContent(""{"");
+                    items.WithItems(i =>
+                    {
+                        i.WithContent(""\""fieldName\"": \""value\"""");
+                    });
+                    items.WithContent(""}"");
+                });
+");
+            
+            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+  } else if (Model.GetFileSettings().TemplatingMethod().IsDataFileBuilder()) { 
+            
+            #line default
+            #line hidden
+            this.Write("            ");
+            
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetFilePropertyName()));
+            
+            #line default
+            #line hidden
+            this.Write(" = new ");
+            
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetBuilderType()));
+            
+            #line default
+            #line hidden
+            this.Write("($\"");
+            
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetDefaultName()));
+            
+            #line default
+            #line hidden
+            this.Write("\")\r\n                ");
+            
+            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetWriterType()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n                .WithRootDictionary(this, dictionary =>\r\n                {\r\n   " +
+                    "                 dictionary\r\n                        .WithValue(\"fieldName\", \"fi" +
+                    "eldValue\")\r\n                    ;\r\n                });\r\n");
+            
+            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("        }\r\n\r\n");
+            
+            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+  if (IsFileBuilder) { 
+            
+            #line default
+            #line hidden
+            this.Write("        [IntentManaged(Mode.Fully)]\r\n        public I");
+            
+            #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetBuilderType()));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetFilePropertyName()));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; }\r\n\r\n        [IntentManaged(Mode.Fully)]\r\n        public override ITempla" +
+                    "teFileConfig GetTemplateFileConfig() => ");
+            
+            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetFilePropertyName()));
+            
+            #line default
+            #line hidden
+            this.Write(".GetConfig();\r\n");
+            
+            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+  } else { 
+            
+            #line default
+            #line hidden
+            this.Write("        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]\r\n        public override " +
+                    "ITemplateFileConfig GetTemplateFileConfig()\r\n        {\r\n            return new T" +
+                    "emplateFileConfig(\r\n                fileName: $\"");
+            
+            #line 72 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetDefaultName()));
             
             #line default
             #line hidden
             this.Write("\",\r\n                fileExtension: \"");
             
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            #line 73 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileSettings().FileExtension()));
             
             #line default
             #line hidden
             this.Write("\"\r\n            );\r\n        }\r\n");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            #line 76 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 78 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
   if (Model.GetFileSettings().OutputFileContent().IsBinary()) { 
             
             #line default
             #line hidden
             this.Write("        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]\r\n        public override " +
                     "byte[] RunBinaryTemplate()\r\n        {\r\n            throw new NotImplementedExcep" +
-                    "tion(\"Implement custom template here\");\r\n        }\r\n\r\n");
+                    "tion(\"Implement custom template here\");\r\n        }\r\n");
             
-            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
   } else if (Model.GetFileSettings().TemplatingMethod().IsCustom()) { 
             
             #line default
             #line hidden
-            this.Write("\r\n        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]\r\n        public overrid" +
-                    "e string TransformText()\r\n        {\r\n            throw new NotImplementedExcepti" +
-                    "on(\"Implement custom template here\");\r\n        }\r\n");
+            this.Write("        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]\r\n        public override " +
+                    "string TransformText()\r\n        {\r\n            throw new NotImplementedException" +
+                    "(\"Implement custom template here\");\r\n        }\r\n");
             
-            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            #line 90 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+  } else if (IsFileBuilder) { 
+            
+            #line default
+            #line hidden
+            this.Write("        [IntentManaged(Mode.Fully)]\r\n        public override string TransformText" +
+                    "() => ");
+            
+            #line 92 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetFilePropertyName()));
+            
+            #line default
+            #line hidden
+            this.Write(".ToString();\r\n");
+            
+            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
   } 
             
             #line default

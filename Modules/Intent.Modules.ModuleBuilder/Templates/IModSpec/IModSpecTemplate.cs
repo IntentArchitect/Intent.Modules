@@ -98,7 +98,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             if (doc.Element("package").Element("supportedClientVersions") != null)
             {
                 // update 4.0.0 constraint to 5.0.0 because SDK (and V4) is essentially backward compatible
-                doc.Element("package").SetElementValue("supportedClientVersions", doc.Element("package").Element("supportedClientVersions").Value.Replace("[3.3.0", "[4.1.0").Replace("[3.4.0", "[4.1.0").Replace("4.0.0)", "5.0.0)"));
+                doc.Element("package").SetElementValue("supportedClientVersions", doc.Element("package").Element("supportedClientVersions").Value
+                    .Replace("[3.3.0", "[4.1.0")
+                    .Replace("[3.4.0", "[4.1.0")
+                    .Replace("4.0.0)", "5.0.0)"));
             }
 
             if (ExecutionContext.GetApplicationConfig().Description != null)
