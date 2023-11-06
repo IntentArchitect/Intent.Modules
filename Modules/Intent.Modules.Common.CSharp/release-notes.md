@@ -1,4 +1,8 @@
-﻿### Version 3.3.43
+﻿### Version 3.3.44
+
+- Improvement: Added support changing `ReturnType` on class and interface methods using `WithReturnType`.
+
+### Version 3.3.43
 
 - Improvement: Added support for `await` on `foreach` statements.
 - Improvement: Added support for `required` on `Field`s and `Property`s statements.
