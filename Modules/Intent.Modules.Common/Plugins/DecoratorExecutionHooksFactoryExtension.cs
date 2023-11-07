@@ -13,34 +13,27 @@ namespace Intent.Modules.Common.Plugins
         public override string Id => "Intent.Common.DecoratorExecutionHooks";
         public override int Order => -1;
 
-        public void OnStep(IApplication application, string step)
+        protected override void OnBeforeTemplateExecution(IApplication application)
         {
-            if (step == ExecutionLifeCycleSteps.BeforeTemplateExecution)
-            {
-                // This will only return the method name. This is done in order to make reflection
-                // names part of static analysis instead of just being a plain string that will only
-                // reveal at runtime if there are problems
-                var getDecoratorsName = nameof(IHasDecorators<DummyDecorator>.GetDecorators);
+            // This will only return the method name. This is done in order to make reflection
+            // names part of static analysis instead of just being a plain string that will only
+            // reveal at runtime if there are problems
+            var getDecoratorsName = nameof(IHasDecorators<ITemplateDecorator>.GetDecorators);
 
-                application.Projects
-                    .SelectMany(x => x.TemplateInstances)
-                    .Where(p => p
-                        .GetType()
-                        .GetInterfaces()
-                        .Any(q => q.IsGenericType && q.GetGenericTypeDefinition() == typeof(IHasDecorators<>)))
-                    .SelectMany(s => s.GetType()
-                        .GetMethod(getDecoratorsName, BindingFlags.Public | BindingFlags.Instance)
-                        .Invoke(s, null) as IEnumerable<object>)
-                    .OfType<IDecoratorExecutionHooks>()
-                    .ToList()
-                    .ForEach(x => x.BeforeTemplateExecution());
-            }
-        }
+            application.Projects
+                .SelectMany(x => x.TemplateInstances)
+                .Where(p => p
+                    .GetType()
+                    .GetInterfaces()
+                    .Any(q => q.IsGenericType && q.GetGenericTypeDefinition() == typeof(IHasDecorators<>)))
+                .SelectMany(s => s.GetType()
+                    .GetMethod(getDecoratorsName, BindingFlags.Public | BindingFlags.Instance)
+                    .Invoke(s, null) as IEnumerable<object>)
+                .OfType<IDecoratorExecutionHooks>()
+                .ToList()
+                .ForEach(x => x.BeforeTemplateExecution());
 
-        // This class solely exists for the "nameof" statement to work since the interface needs a generic parameter
-        private class DummyDecorator : ITemplateDecorator
-        {
-            public int Priority => throw new System.NotImplementedException();
+            base.OnBeforeTemplateExecution(application);
         }
     }
 }
