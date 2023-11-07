@@ -290,6 +290,102 @@
     </FileLog>
     <FileLog>
       <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#f7487470-2141-4953-87c0-2151d93b9437</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/DataFileBuilderFilePerModelJson/DataFileBuilderFilePerModelJsonTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/DataFileBuilderFilePerModelJson/DataFileBuilderFilePerModelJsonTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#f7487470-2141-4953-87c0-2151d93b9437</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/DataFileBuilderFilePerModelJson/DataFileBuilderFilePerModelJsonTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/DataFileBuilderFilePerModelJson/DataFileBuilderFilePerModelJsonTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#a8f3f489-5a90-4e6c-8a7d-133f91e761b0</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/DataFileBuilderFilePerModelOcl/DataFileBuilderFilePerModelOclTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/DataFileBuilderFilePerModelOcl/DataFileBuilderFilePerModelOclTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#a8f3f489-5a90-4e6c-8a7d-133f91e761b0</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/DataFileBuilderFilePerModelOcl/DataFileBuilderFilePerModelOclTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/DataFileBuilderFilePerModelOcl/DataFileBuilderFilePerModelOclTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#3ec2e92b-8f66-4bfc-8191-972dc8e29248</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/DataFileBuilderFilePerModelYaml/DataFileBuilderFilePerModelYamlTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/DataFileBuilderFilePerModelYaml/DataFileBuilderFilePerModelYamlTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#3ec2e92b-8f66-4bfc-8191-972dc8e29248</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/DataFileBuilderFilePerModelYaml/DataFileBuilderFilePerModelYamlTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/DataFileBuilderFilePerModelYaml/DataFileBuilderFilePerModelYamlTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#1420e36c-229a-4d7a-9e49-9944fab619ec</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/DataFileBuilderSingleJson/DataFileBuilderSingleJsonTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/DataFileBuilderSingleJson/DataFileBuilderSingleJsonTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#1420e36c-229a-4d7a-9e49-9944fab619ec</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/DataFileBuilderSingleJson/DataFileBuilderSingleJsonTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/DataFileBuilderSingleJson/DataFileBuilderSingleJsonTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#980fc7ae-c747-43b9-a093-de51777ecc46</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/DataFileBuilderSingleOcl/DataFileBuilderSingleOclTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/DataFileBuilderSingleOcl/DataFileBuilderSingleOclTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#980fc7ae-c747-43b9-a093-de51777ecc46</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/DataFileBuilderSingleOcl/DataFileBuilderSingleOclTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/DataFileBuilderSingleOcl/DataFileBuilderSingleOclTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#d5410352-7ef0-4dc2-9b88-39f1ebc2112b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/DataFileBuilderSingleYaml/DataFileBuilderSingleYamlTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/DataFileBuilderSingleYaml/DataFileBuilderSingleYamlTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#d5410352-7ef0-4dc2-9b88-39f1ebc2112b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/DataFileBuilderSingleYaml/DataFileBuilderSingleYamlTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/DataFileBuilderSingleYaml/DataFileBuilderSingleYamlTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#2a74ba7b-8b62-40a2-afe9-6f4a79aebecb</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/File/FileCustomCustom/FileCustomCustomTemplatePartial.cs</ApplicationRelativeFilePath>
@@ -502,6 +598,38 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/File/FileSingleFileT4/FileSingleFileT4TemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>File/FileSingleFileT4/FileSingleFileT4TemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#28ccb787-1612-4bf2-99e8-b7a0b6d716fe</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/IndentedFileBuilderFilePerModel/IndentedFileBuilderFilePerModelTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/IndentedFileBuilderFilePerModel/IndentedFileBuilderFilePerModelTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#28ccb787-1612-4bf2-99e8-b7a0b6d716fe</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/IndentedFileBuilderFilePerModel/IndentedFileBuilderFilePerModelTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/IndentedFileBuilderFilePerModel/IndentedFileBuilderFilePerModelTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#7bd2214e-4551-4ec6-b718-12928e1afb60</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/IndentedFileBuilderSingle/IndentedFileBuilderSingleTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/IndentedFileBuilderSingle/IndentedFileBuilderSingleTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#7bd2214e-4551-4ec6-b718-12928e1afb60</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/File/IndentedFileBuilderSingle/IndentedFileBuilderSingleTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>File/IndentedFileBuilderSingle/IndentedFileBuilderSingleTemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
