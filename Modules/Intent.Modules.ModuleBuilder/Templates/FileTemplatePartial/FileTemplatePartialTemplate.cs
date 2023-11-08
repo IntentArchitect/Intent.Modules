@@ -206,9 +206,9 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("\r\n                .WithRootDictionary(this, dictionary =>\r\n                {\r\n   " +
-                    "                 dictionary\r\n                        .WithValue(\"fieldName\", \"fi" +
-                    "eldValue\")\r\n                    ;\r\n                });\r\n");
+            this.Write("\r\n                .WithRootObject(this, @object =>\r\n                {\r\n          " +
+                    "          @object\r\n                        .WithValue(\"fieldName\", \"fieldValue\")" +
+                    "\r\n                    ;\r\n                });\r\n");
             
             #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
   } 

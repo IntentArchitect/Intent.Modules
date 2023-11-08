@@ -8,23 +8,23 @@ public class DataFileOclWriter : DataFileWriter
     {
     }
 
-    public override void Visit(IDataFileDictionaryValue dictionary)
+    public override void Visit(IDataFileObjectValue @object)
     {
-        if (dictionary.Parent != null)
+        if (@object.Parent != null)
         {
             PushIndentation();
             StringBuilder.AppendLine("{");
         }
 
         var index = 0;
-        foreach (var (name, value) in dictionary)
+        foreach (var (name, value) in @object)
         {
             if (value.IsCommentedOut)
             {
                 PushIndentation(CommentSyntax);
             }
 
-            if (value is not IDataFileScalarValue && (index != 0 || dictionary.Parent != null))
+            if (value is not IDataFileScalarValue && (index != 0 || @object.Parent != null))
             {
                 StringBuilder.AppendLine();
             }
@@ -45,7 +45,7 @@ public class DataFileOclWriter : DataFileWriter
             index++;
         }
 
-        if (dictionary.Parent != null)
+        if (@object.Parent != null)
         {
             PopIndentation();
             StringBuilder.Append(Indentation);

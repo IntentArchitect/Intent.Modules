@@ -49,9 +49,9 @@ namespace <#= Namespace #>
 <#  } else if (Model.GetFileSettings().TemplatingMethod().IsDataFileBuilder()) { #>
             <#= GetFilePropertyName() #> = new <#= GetBuilderType() #>($"<#= GetDefaultName() #>")
                 <#= GetWriterType() #>
-                .WithRootDictionary(this, dictionary =>
+                .WithRootObject(this, @object =>
                 {
-                    dictionary
+                    @object
                         .WithValue("fieldName", "fieldValue")
                     ;
                 });

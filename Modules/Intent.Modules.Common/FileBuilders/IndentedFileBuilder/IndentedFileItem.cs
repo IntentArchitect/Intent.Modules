@@ -4,7 +4,7 @@ namespace Intent.Modules.Common.FileBuilders.IndentedFileBuilder;
 
 public abstract class IndentedFileItem : IIndentedFileItem
 {
-    public Dictionary<string, object> Metadata { get; } = new();
+    public IDictionary<string, object> Metadata { get; } = new Dictionary<string, object>();
 
     public bool TryGetMetadata<TValue>(string key, out TValue value)
     {

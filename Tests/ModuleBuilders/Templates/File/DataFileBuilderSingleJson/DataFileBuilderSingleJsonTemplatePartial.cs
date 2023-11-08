@@ -25,9 +25,9 @@ namespace ModuleBuilders.Templates.File.DataFileBuilderSingleJson
         {
             DataFile = new DataFile($"DataFileBuilderSingleJson")
                 .WithJsonWriter()
-                .WithRootDictionary(this, dictionary =>
+                .WithRootObject(this, @object =>
                 {
-                    dictionary
+                    @object
                         .WithValue("fieldName", "fieldValue")
                     ;
                 });

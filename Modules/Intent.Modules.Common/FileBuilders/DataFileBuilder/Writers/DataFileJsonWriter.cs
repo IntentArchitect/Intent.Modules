@@ -9,9 +9,9 @@ public class DataFileJsonWriter : DataFileWriter
     {
     }
 
-    public override void Visit(IDataFileDictionaryValue dictionary)
+    public override void Visit(IDataFileObjectValue @object)
     {
-        if (dictionary.Parent != null)
+        if (@object.Parent != null)
         {
             PushIndentation();
         }
@@ -19,7 +19,7 @@ public class DataFileJsonWriter : DataFileWriter
         StringBuilder.AppendLine("{");
 
         var index = 0;
-        foreach (var (name, value) in dictionary)
+        foreach (var (name, value) in @object)
         {
             PushIndentation();
 
@@ -36,7 +36,7 @@ public class DataFileJsonWriter : DataFileWriter
 
             Visit(value);
 
-            if (index != dictionary.Count - 1)
+            if (index != @object.Count - 1)
             {
                 StringBuilder.Append(",");
             }
@@ -56,7 +56,7 @@ public class DataFileJsonWriter : DataFileWriter
         StringBuilder.Append(Indentation);
         StringBuilder.Append("}");
 
-        if (dictionary.Parent != null)
+        if (@object.Parent != null)
         {
             PopIndentation();
         }

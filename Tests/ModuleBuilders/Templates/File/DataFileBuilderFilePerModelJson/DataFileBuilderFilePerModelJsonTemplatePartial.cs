@@ -26,9 +26,9 @@ namespace ModuleBuilders.Templates.File.DataFileBuilderFilePerModelJson
         {
             DataFile = new DataFile($"{Model.Name}")
                 .WithJsonWriter()
-                .WithRootDictionary(this, dictionary =>
+                .WithRootObject(this, @object =>
                 {
-                    dictionary
+                    @object
                         .WithValue("fieldName", "fieldValue")
                     ;
                 });

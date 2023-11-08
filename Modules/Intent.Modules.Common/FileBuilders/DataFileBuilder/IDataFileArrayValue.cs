@@ -9,8 +9,8 @@ public interface IDataFileArrayValue : IDataFileValue<IDataFileArrayValue>, ILis
 
     IDataFileArrayValue WithArray(Action<IDataFileArrayValue> configure = default);
     IDataFileArrayValue WithArray(int index, Action<IDataFileArrayValue> configure = default);
-    IDataFileArrayValue WithDictionary(Action<IDataFileDictionaryValue> configure = default);
-    IDataFileArrayValue WithDictionary(int index, Action<IDataFileDictionaryValue> configure = default);
+    IDataFileArrayValue WithObject(Action<IDataFileObjectValue> configure = default);
+    IDataFileArrayValue WithObject(int index, Action<IDataFileObjectValue> configure = default);
     IDataFileArrayValue WithValue(bool value, Action<IDataFileScalarValue> configure = default);
     IDataFileArrayValue WithValue(bool value, int index, Action<IDataFileScalarValue> configure = default);
     IDataFileArrayValue WithValue(byte value, Action<IDataFileScalarValue> configure = default);

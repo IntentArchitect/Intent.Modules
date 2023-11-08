@@ -25,9 +25,9 @@ namespace ModuleBuilders.Templates.File.DataFileBuilderSingleYaml
         {
             DataFile = new DataFile($"DataFileBuilderSingleYaml")
                 .WithYamlWriter()
-                .WithRootDictionary(this, dictionary =>
+                .WithRootObject(this, @object =>
                 {
-                    dictionary
+                    @object
                         .WithValue("fieldName", "fieldValue")
                     ;
                 });

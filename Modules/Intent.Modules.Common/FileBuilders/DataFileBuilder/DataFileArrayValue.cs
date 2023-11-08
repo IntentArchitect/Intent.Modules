@@ -12,8 +12,8 @@ public class DataFileArrayValue : DataFileValue<IDataFileArrayValue>, IDataFileA
 
     public IDataFileArrayValue WithArray(Action<IDataFileArrayValue> configure = default) => WithValue(new DataFileArrayValue(), configure);
     public IDataFileArrayValue WithArray(int index, Action<IDataFileArrayValue> configure = default) => WithValue(new DataFileArrayValue(), index, configure);
-    public IDataFileArrayValue WithDictionary(Action<IDataFileDictionaryValue> configure = default) => WithValue(new DataFileDictionaryValue(), configure);
-    public IDataFileArrayValue WithDictionary(int index, Action<IDataFileDictionaryValue> configure = default) => WithValue(new DataFileDictionaryValue(), index, configure);
+    public IDataFileArrayValue WithObject(Action<IDataFileObjectValue> configure = default) => WithValue(new DataFileObjectValue(), configure);
+    public IDataFileArrayValue WithObject(int index, Action<IDataFileObjectValue> configure = default) => WithValue(new DataFileObjectValue(), index, configure);
     public IDataFileArrayValue WithValue(bool value, Action<IDataFileScalarValue> configure = default) => WithValue((DataFileScalarValue)value, configure);
     public IDataFileArrayValue WithValue(bool value, int index, Action<IDataFileScalarValue> configure = default) => WithValue((DataFileScalarValue)value, index, configure);
     public IDataFileArrayValue WithValue(byte value, Action<IDataFileScalarValue> configure = default) => WithValue((DataFileScalarValue)value, configure);

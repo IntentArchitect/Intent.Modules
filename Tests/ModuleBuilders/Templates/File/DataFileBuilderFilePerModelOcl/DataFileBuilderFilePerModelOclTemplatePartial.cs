@@ -26,9 +26,9 @@ namespace ModuleBuilders.Templates.File.DataFileBuilderFilePerModelOcl
         {
             DataFile = new DataFile($"{Model.Name}")
                 .WithOclWriter()
-                .WithRootDictionary(this, dictionary =>
+                .WithRootObject(this, @object =>
                 {
-                    dictionary
+                    @object
                         .WithValue("fieldName", "fieldValue")
                     ;
                 });

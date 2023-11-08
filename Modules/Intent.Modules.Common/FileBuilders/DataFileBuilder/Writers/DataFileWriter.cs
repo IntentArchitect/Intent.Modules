@@ -22,7 +22,7 @@ public abstract class DataFileWriter : IDataFileValueVisitor
     {
         switch (value)
         {
-            case IDataFileDictionaryValue castValue:
+            case IDataFileObjectValue castValue:
                 Visit(castValue);
                 break;
             case IDataFileArrayValue castValue:
@@ -39,7 +39,7 @@ public abstract class DataFileWriter : IDataFileValueVisitor
     protected string CommentSyntax { get; }
     protected string PreviousIndentation { get; private set; }
     protected string Indentation { get; private set; }
-    public abstract void Visit(IDataFileDictionaryValue dictionary);
+    public abstract void Visit(IDataFileObjectValue @object);
     public abstract void Visit(IDataFileArrayValue array);
     public abstract void Visit(IDataFileScalarValue scalar);
 

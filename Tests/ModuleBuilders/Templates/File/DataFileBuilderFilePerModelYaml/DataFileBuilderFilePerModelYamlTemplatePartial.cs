@@ -26,9 +26,9 @@ namespace ModuleBuilders.Templates.File.DataFileBuilderFilePerModelYaml
         {
             DataFile = new DataFile($"{Model.Name}")
                 .WithYamlWriter()
-                .WithRootDictionary(this, dictionary =>
+                .WithRootObject(this, @object =>
                 {
-                    dictionary
+                    @object
                         .WithValue("fieldName", "fieldValue")
                     ;
                 });

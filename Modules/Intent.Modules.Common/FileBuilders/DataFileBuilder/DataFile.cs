@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.FileBuilders.DataFileBuilder;
 
 public class DataFile : FileBuilderBase<IDataFile>, IDataFile
 {
-    private IDataFileDictionaryValue _rootElement;
+    private IDataFileObjectValue _rootElement;
 
     public DataFile(
         string fileName,
@@ -19,10 +19,10 @@ public class DataFile : FileBuilderBase<IDataFile>, IDataFile
 
     public Func<DataFileWriter> WriterProvider { get; private set; } = () => new DataFileJsonWriter();
 
-    public IDataFileDictionaryValue RootDictionary
+    public IDataFileObjectValue RootObject
     {
         get => _rootElement;
-        private set => _rootElement = value ?? throw new InvalidOperationException($"{nameof(RootDictionary)} is not set, ensure the {nameof(WithRootDictionary)} has been called");
+        private set => _rootElement = value ?? throw new InvalidOperationException($"{nameof(RootObject)} is not set, ensure the {nameof(WithRootObject)} has been called");
     }
 
     public IDataFile WithJsonWriter() => WithWriter(() => new DataFileJsonWriter(), "json");
@@ -37,17 +37,17 @@ public class DataFile : FileBuilderBase<IDataFile>, IDataFile
         return WithFileExtension(fileExtension);
     }
 
-    public IDataFile WithRootDictionary(IDataFileBuilderTemplate template, Action<IDataFileDictionaryValue> configure)
+    public IDataFile WithRootObject(IDataFileBuilderTemplate template, Action<IDataFileObjectValue> configure)
     {
-        var dataFileDictionaryValue = new DataFileDictionaryValue();
-        dataFileDictionaryValue.AttachToParent(template: template, parent: null);
-        RootDictionary = dataFileDictionaryValue;
-        OnBuild(_ => configure(dataFileDictionaryValue));
+        var dataFileObjectValue = new DataFileObjectValue();
+        dataFileObjectValue.AttachToParent(template: template, parent: null);
+        RootObject = dataFileObjectValue;
+        OnBuild(_ => configure(dataFileObjectValue));
         return this;
     }
 
     public override string ToString()
     {
-        return RootDictionary.ToString();
+        return RootObject.ToString();
     }
 }

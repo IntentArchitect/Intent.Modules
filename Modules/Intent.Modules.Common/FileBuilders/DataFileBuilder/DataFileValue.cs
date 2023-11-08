@@ -12,7 +12,7 @@ public abstract class DataFileValue : IDataFileValue
 
     public bool IsCommentedOut { get; set; }
 
-    public Dictionary<string, object> Metadata { get; } = new();
+    public IDictionary<string, object> Metadata { get; } = new Dictionary<string, object>();
 
     public bool TryGetMetadata<T>(string key, out T value)
     {

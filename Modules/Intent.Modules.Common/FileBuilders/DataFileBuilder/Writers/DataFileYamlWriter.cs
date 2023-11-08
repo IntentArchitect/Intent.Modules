@@ -15,15 +15,15 @@ public class DataFileYamlWriter : DataFileWriter
         _alwaysQuoteStrings = alwaysQuoteStrings;
     }
 
-    public override void Visit(IDataFileDictionaryValue dictionary)
+    public override void Visit(IDataFileObjectValue @object)
     {
-        if (dictionary.Parent != null)
+        if (@object.Parent != null)
         {
             PushIndentation();
         }
 
         var index = 0;
-        foreach (var (name, value) in dictionary)
+        foreach (var (name, value) in @object)
         {
             if (value.IsCommentedOut)
             {
@@ -32,12 +32,12 @@ public class DataFileYamlWriter : DataFileWriter
 
             if (index == 0)
             {
-                switch (dictionary.Parent)
+                switch (@object.Parent)
                 {
                     case DataFileArrayValue:
                         StringBuilder.Append(' ');
                         break;
-                    case DataFileDictionaryValue:
+                    case DataFileObjectValue:
                         StringBuilder.AppendLine();
                         StringBuilder.Append(Indentation);
                         break;
@@ -50,7 +50,7 @@ public class DataFileYamlWriter : DataFileWriter
             }
             else
             {
-                if (dictionary.BlankLinesBetweenItems)
+                if (@object.BlankLinesBetweenItems)
                 {
                     StringBuilder.AppendLine();
                 }
@@ -71,7 +71,7 @@ public class DataFileYamlWriter : DataFileWriter
             index++;
         }
 
-        if (dictionary.Parent != null)
+        if (@object.Parent != null)
         {
             PopIndentation();
         }
