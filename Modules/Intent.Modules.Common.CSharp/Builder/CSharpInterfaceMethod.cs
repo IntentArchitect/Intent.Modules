@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCSharpStatements, IHasICSharpParameters
 {
-    public string ReturnType { get; }
+    public string ReturnType { get; private set; }
     public string Name { get; }
     public bool IsAbstract { get; set; } = true;
     public bool IsStatic { get; set; }
@@ -113,6 +113,17 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCS
 
         configure?.Invoke(statement);
 
+        return this;
+    }
+
+    public CSharpInterfaceMethod WithReturnType(string returnType)
+    {
+        if (string.IsNullOrWhiteSpace(returnType))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(returnType));
+        }
+
+        ReturnType = returnType;
         return this;
     }
 

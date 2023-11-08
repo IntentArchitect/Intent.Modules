@@ -211,6 +211,17 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
         return this;
     }
 
+    public CSharpClassMethod WithReturnType(string returnType)
+    {
+        if (string.IsNullOrWhiteSpace(returnType))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(returnType));
+        }
+
+        ReturnType = returnType;
+        return this;
+    }
+
     public CSharpClassMethod WithoutAccessModifier()
     {
         AccessModifier = "";
