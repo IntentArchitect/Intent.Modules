@@ -6,6 +6,7 @@
 ### Version 3.3.44
 
 - Improvement: Added support changing `ReturnType` on class and interface methods using `WithReturnType`.
+- Improvement: Added `InsertParameter` method to method builders.
 
 ### Version 3.3.43
 
