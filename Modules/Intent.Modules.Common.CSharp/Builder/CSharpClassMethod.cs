@@ -114,7 +114,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
 
     public CSharpClassMethod InsertParameter(int index, string type, string name, Action<CSharpParameter> configure = null)
     {
-        var param = new CSharpParameter(type, name);
+        var param = new CSharpParameter(type, name, this);
         Parameters.Insert(index, param);
         configure?.Invoke(param);
         return this;

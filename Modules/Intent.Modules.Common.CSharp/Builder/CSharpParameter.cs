@@ -36,6 +36,24 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParam
         File = method?.File;
     }
 
+    public CSharpParameter(string type, string name, CSharpInterfaceMethod method)
+    {
+        if (string.IsNullOrWhiteSpace(type))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(type));
+        }
+
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+
+        Type = type;
+        Name = name;
+        File = method?.File;
+    }
+
+
     public string GetReferenceName()
     {
         return Name;
