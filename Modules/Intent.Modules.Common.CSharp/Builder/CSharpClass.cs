@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using Intent.Metadata.Models;
@@ -30,6 +29,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, IHasCShar
     protected internal CSharpClass(string name, Type type, CSharpFile file) : this(name, type)
     {
         File = file;
+        Parent = file;
     }
 
     public CSharpClass(string name) : this(name, Type.Class)

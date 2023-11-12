@@ -35,6 +35,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, IHasCSharpName
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;
         AfterSeparator = CSharpCodeSeparatorType.NewLine;
         _class = @class;
+        Parent = @class;
         File = @class?.File; // can be null because of CSharpInterfaceProperty :(
     }
 

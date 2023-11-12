@@ -176,7 +176,7 @@
       <childElements>
         <childElement id="f8730104-973b-46a2-b03d-050983a8808c" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: Class -&gt; Operation (Map to Type)</display>
+          <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
@@ -220,7 +220,7 @@
           <childElements>
             <childElement id="4c5e6154-3d01-47fd-b36b-fb94078a1301" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Attribute -&gt; Parameter (Map to Type)</display>
+              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -264,7 +264,7 @@
             </childElement>
             <childElement id="aaffaada-2f0a-4c86-bd2f-5636e16ed656" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Association Target End -&gt; Parameter (Map to Type)</display>
+              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -308,7 +308,7 @@
             </childElement>
             <childElement id="beb27aec-ae0a-4738-b01b-64f4689dbba9" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Association Source End -&gt; Parameter (Map to Type)</display>
+              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -352,7 +352,7 @@
             </childElement>
             <childElement id="0148afc9-d327-4b53-8985-695d6689276e" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Generalization Target End -&gt; [None] (Traverse)</display>
+              <display>[mapping]: undefined -&gt; [None] (Traverse)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>

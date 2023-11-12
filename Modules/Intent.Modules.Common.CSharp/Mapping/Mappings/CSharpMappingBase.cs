@@ -17,6 +17,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
     public IList<ICSharpMapping> Children { get; }
     public IElementToElementMappedEnd Mapping { get; set; }
     protected readonly ICSharpFileBuilderTemplate Template;
+    protected ICSharpCodeContext Context { get; }
 
     protected CSharpMappingBase(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template)
     {
@@ -24,6 +25,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         Model = model;
         Mapping = mapping;
         Children = children.Select(x => x.GetMapping()).ToList();
+        Context = template.CSharpFile;
     }
 
     protected CSharpMappingBase(MappingModel model, ICSharpFileBuilderTemplate template)
@@ -32,6 +34,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         Model = model.Model;
         Mapping = model.Mapping;
         Children = model.Children.Select(x => x.GetMapping()).ToList();
+        Context = model.CodeContext;
     }
 
     //protected CSharpMappingBase(MappingModel mappingModel, ICSharpFileBuilderTemplate template)
@@ -120,7 +123,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     protected string GetSourcePathText()
     {
-        var text = Mapping.MappingExpression;
+        var text = Mapping?.MappingExpression ?? throw new Exception($"Could not resolve source path. Mapping expected on {Model.Name} [{Model.SpecializationType}]");
         var paths = ExtractPaths(Mapping.MappingExpression);
         foreach (var path in paths)
         {
@@ -156,20 +159,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
             }
             else
             {
-                if (!TryGetReferenceName(mappingPathTarget, out var referenceName))
-                {
-                    if (mappingPathTarget.Element is IElement element)
-                    {
-                        // try parent type's template:
-                        referenceName = (Template.GetTypeInfo(element.ParentElement.AsTypeReference())
-                            ?.Template as ICSharpFileBuilderTemplate)?.CSharpFile.GetReferenceForModel(mappingPathTarget.Id)?.Name;
-                    }
-
-                    // try this template:
-                    referenceName ??= Template.CSharpFile.GetReferenceForModel(mappingPathTarget.Id)?.Name;
-                    // fall back on using the element's name from the metadata:
-                    referenceName ??= mappingPathTarget.Element.Name;
-                }
+                var referenceName = GetReferenceName(mappingPathTarget);
 
                 result += $"{(result.Length > 0 ? "." : "")}{referenceName}";
                 if (mappingPathTarget.Element.TypeReference?.IsNullable == true && mappingPaths.Last() != mappingPathTarget)
@@ -179,6 +169,35 @@ public abstract class CSharpMappingBase : ICSharpMapping
             }
         }
         return result;
+    }
+
+    private string GetReferenceName(IElementMappingPathTarget mappingPathTarget)
+    {
+        if (TryGetReferenceName(mappingPathTarget, out var referenceName))
+        {
+            return referenceName;
+        }
+
+        if (Context?.TryGetReferenceForModel(mappingPathTarget.Id, out var reference) == true)
+        {
+            return reference.Name;
+        }
+
+        // try parent type's template:
+        if (mappingPathTarget.Element is IElement element && (Template.GetTypeInfo(element.ParentElement.AsTypeReference())
+                ?.Template as ICSharpFileBuilderTemplate)?.CSharpFile.TryGetReferenceForModel(mappingPathTarget.Id, out reference) == true)
+        {
+            return reference.Name;
+        }
+
+        // try this template:
+        if (Template.CSharpFile.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
+        {
+            return reference.Name;
+        }
+
+        // fall back on using the element's name from the metadata:
+        return mappingPathTarget.Element.Name;
     }
 
     /// <summary>

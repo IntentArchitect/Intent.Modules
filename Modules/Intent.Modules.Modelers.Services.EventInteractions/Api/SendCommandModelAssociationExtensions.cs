@@ -22,15 +22,6 @@ namespace Intent.Modelers.Services.EventInteractions
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<SendCommandTargetEndModel> SentCommandDestinations(this MessageModel model)
-        {
-            return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == SendCommandModel.SpecializationType && x.IsTargetEnd())
-                .Select(x => SendCommandModel.CreateFromEnd(x).TargetEnd)
-                .ToList();
-        }
-
-        [IntentManaged(Mode.Fully)]
         public static IList<SendCommandSourceEndModel> SentCommandSources(this CommandModel model)
         {
             return model.InternalElement.AssociatedElements

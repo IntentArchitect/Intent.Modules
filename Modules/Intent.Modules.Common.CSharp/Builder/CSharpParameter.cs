@@ -1,11 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Reflection.Metadata;
 using Intent.Metadata.Models;
-using Intent.Modules.Common.CSharp.Templates;
-using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -39,6 +35,7 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParam
         Type = type;
         Name = name;
         File = file;
+        Parent = method;
     }
 
     public CSharpParameter(string type, string name, CSharpInterfaceMethod method)

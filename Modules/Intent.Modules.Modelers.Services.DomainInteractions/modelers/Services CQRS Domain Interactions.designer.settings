@@ -2644,6 +2644,7 @@ vertical-align: center`</style>
               <childElementVisualSetting type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
                 <size width="`${parent.w}`" height="18" />
                 <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 66}`" />
+                <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
                 <display>
                   <drawText>
                     <text>return label;</text>
@@ -5161,6 +5162,45 @@ await execute(element);
       <typeOrder />
       <mappingSettings />
     </elementExtension>
+    <elementExtension type="Integration Event Handler" typeId="c0582230-22f5-4f74-8eb0-ec6fc9364900">
+      <creationOptions>
+        <option type="association">
+          <text>Create Entity</text>
+          <shortcut>ctrl + shift + c</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+          <specializationType>Create Entity Action</specializationType>
+          <specializationTypeId>7a3f0474-3cf8-4249-baac-8c07c49465e0</specializationTypeId>
+          <defaultName>NewCreateEntityAction</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="association">
+          <text>Update Entity</text>
+          <shortcut>ctrl + shift + u</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+          <specializationType>Update Entity Action</specializationType>
+          <specializationTypeId>9ea0382a-4617-412a-a8c8-af987bbce226</specializationTypeId>
+          <defaultName>NewUpdateEntityAction</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="association">
+          <text>Delete Entity</text>
+          <shortcut>ctrl + shift + d</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+          <specializationType>Delete Entity Action</specializationType>
+          <specializationTypeId>bfc823fb-60ab-451d-ba62-12671fe7e28e</specializationTypeId>
+          <defaultName>NewDeleteEntityAction</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <typeOrder>
+        <type>Create Entity Action</type>
+        <type>Update Entity Action</type>
+        <type>Delete Entity Action</type>
+      </typeOrder>
+      <mappingSettings />
+    </elementExtension>
     <elementExtension type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
       <creationOptions>
         <option type="association">
@@ -5323,6 +5363,7 @@ function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping) {
             <type>Command</type>
             <type>Operation</type>
             <type>Domain Event Handler Association Target End</type>
+            <type>Integration Event Handler</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -5335,7 +5376,10 @@ function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping) {
       <targetEnd type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016">
         <displayFunction>return `[create] ${getName()}: ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
-        <defaultNameFunction>return (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName().toLowerCase() ?? "entity";</defaultNameFunction>
+        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName() ?? "entity"
+return typeReference.getIsCollection() 
+    ? pluralize(toCamelCase(name))
+    : toCamelCase(name);</defaultNameFunction>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
@@ -5404,6 +5448,7 @@ function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping) {
             <type>Command</type>
             <type>Operation</type>
             <type>Domain Event Handler Association Target End</type>
+            <type>Integration Event Handler</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -5416,10 +5461,10 @@ function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping) {
       <targetEnd type="Delete Entity Action Target End" typeId="4a04cfc2-5841-438c-9c16-fb58b784b365">
         <displayFunction>return `[delete] ${getName()}: ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
-        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName().toLowerCase() ?? "entity"
+        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName() ?? "entity"
 return typeReference.getIsCollection() 
-    ? pluralize(name)
-    : name;</defaultNameFunction>
+    ? pluralize(toCamelCase(name))
+    : toCamelCase(name);</defaultNameFunction>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
@@ -5505,10 +5550,10 @@ association.typeReference.getType().getChildren("Attribute")
       <targetEnd type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4">
         <displayFunction>return `[query] ${getName()}: ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
-        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName().toLowerCase() ?? "entity"
+        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName() ?? "entity"
 return typeReference.getIsCollection() 
-    ? pluralize(name)
-    : name;</defaultNameFunction>
+    ? pluralize(toCamelCase(name))
+    : toCamelCase(name);</defaultNameFunction>
         <icon type="UrlImagePath" source="data:image/png;base64,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" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
@@ -5577,6 +5622,7 @@ return typeReference.getIsCollection()
             <type>Command</type>
             <type>Operation</type>
             <type>Domain Event Handler Association Target End</type>
+            <type>Integration Event Handler</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -5589,10 +5635,10 @@ return typeReference.getIsCollection()
       <targetEnd type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452">
         <displayFunction>return `[update] ${getName()}: ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
-        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName().toLowerCase() ?? "entity"
+        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName() ?? "entity"
 return typeReference.getIsCollection() 
-    ? pluralize(name)
-    : name;</defaultNameFunction>
+    ? pluralize(toCamelCase(name))
+    : toCamelCase(name);</defaultNameFunction>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
@@ -5749,6 +5795,17 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
           <canBeModified>true</canBeModified>
           <childSettings>
             <childSetting id="cda28aa7-8ea4-49b1-9595-5b2c074691d7" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+              <filterFunction>return !element.typeReference.getIsCollection();</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>588ef54a-51eb-4244-8fd0-24d8d8ad49f6</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <childSettings />
+            </childSetting>
+            <childSetting id="d77a05b6-115a-4419-92c2-ebb475bca1d0" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+              <filterFunction>return element.typeReference.getIsCollection();</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
@@ -5905,19 +5962,20 @@ return element.getParent("Class").id == mappingContext.targetElementId || elemen
               <childSettings />
             </childSetting>
             <childSetting id="1fba46e9-3cf7-4154-ad38-451c9696c413" name="Invoke Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
-              <filterFunction>return element.id == mappingContext.targetElementId</filterFunction>
-              <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
+              <isRequiredFunction>return element.id == mappingContext.targetElementId || element.getParent().getChildren("Class Constructor").length == 1</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return element.id == mappingContext.targetElementId</isMappableFunction>
+              <isMappableFunction>return element.id == mappingContext.targetElementId || element.getParent("Class Constructor")?.id == mappingContext.targetElementId;</isMappableFunction>
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <childSettings>
                 <childSetting id="8ec45776-c6cc-4174-84f8-efb5d4308ed4" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
                   <isRequiredFunction>return true;</isRequiredFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
-                  <isMappableFunction>return true;</isMappableFunction>
+                  <isMappableFunction>return element.getParent()?.getIsMapped();</isMappableFunction>
                   <traversableTypes>
                     <mappingId>8829efad-54fa-4ea6-a5c8-14f556cb528d</mappingId>
+                    <mappingId>e04ab087-8c1a-42b9-aac7-d76ed674e319</mappingId>
+                    <mappingId>15b84be5-c79b-41bf-881c-447fe70f5f5b</mappingId>
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
                   <childSettings />
@@ -5927,6 +5985,14 @@ return element.getParent("Class").id == mappingContext.targetElementId || elemen
           </childSettings>
         </mapping>
         <mapping id="8829efad-54fa-4ea6-a5c8-14f556cb528d" name="Create Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <useChildSettingsFrom>e04ab087-8c1a-42b9-aac7-d76ed674e319</useChildSettingsFrom>
+          <childSettings />
+        </mapping>
+        <mapping id="15b84be5-c79b-41bf-881c-447fe70f5f5b" name="Create Data Contract" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
@@ -5958,6 +6024,7 @@ return element.getParent("Class").id == mappingContext.targetElementId || elemen
             <source id="6942833b-530d-4fa1-92a3-567320798d5b" name="Association Target End" />
             <source id="4f4cc6b1-8ca5-4cc0-991e-f7da06100f31" name="Invoke Domain Operation" />
             <source id="c8af32ed-5a8e-49b4-bc55-6ba4826f4007" name="Property" />
+            <source id="d77a05b6-115a-4419-92c2-ebb475bca1d0" name="Collection Field" />
           </sources>
           <targets>
             <target id="53e8bc33-5930-4364-9526-7f8f181b14a1" name="Set Attribute" />

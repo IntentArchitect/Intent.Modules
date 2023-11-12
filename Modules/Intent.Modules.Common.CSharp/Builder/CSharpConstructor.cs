@@ -22,6 +22,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
     {
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
+        Parent = @class;
         Class = @class;
         File = @class.File;
     }

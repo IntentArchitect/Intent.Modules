@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Modelers.Domain.Events.Api;
 using Intent.Modelers.Eventing.Api;
+using Intent.Modelers.Services.Api;
 using Intent.Modelers.Services.CQRS.Api;
 using Intent.RoslynWeaver.Attributes;
 
@@ -23,6 +24,24 @@ namespace Intent.Modelers.Services.EventInteractions
 
         [IntentManaged(Mode.Fully)]
         public static IList<PublishIntegrationEventTargetEndModel> PublishedIntegrationEvents(this DomainEventHandlerAssociationTargetEndModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == PublishIntegrationEventModel.SpecializationType && x.IsTargetEnd())
+                .Select(x => PublishIntegrationEventModel.CreateFromEnd(x).TargetEnd)
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public static IList<PublishIntegrationEventTargetEndModel> PublishedIntegrationEvents(this OperationModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == PublishIntegrationEventModel.SpecializationType && x.IsTargetEnd())
+                .Select(x => PublishIntegrationEventModel.CreateFromEnd(x).TargetEnd)
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public static IList<PublishIntegrationEventTargetEndModel> PublishedIntegrationEvents(this SubscribeIntegrationEventTargetEndModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == PublishIntegrationEventModel.SpecializationType && x.IsTargetEnd())

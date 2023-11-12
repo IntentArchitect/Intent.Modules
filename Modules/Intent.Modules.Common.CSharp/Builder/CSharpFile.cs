@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +11,6 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
 {
     private readonly IList<(Action Action, int Order)> _configurations = new List<(Action Action, int Order)>();
     private readonly IList<(Action Action, int Order)> _configurationsAfter = new List<(Action Action, int Order)>();
-    private readonly Dictionary<string, IHasCSharpName> _modelReferenceRegistry = new();
 
     public IList<CSharpUsing> Usings { get; } = new List<CSharpUsing>();
     public string Namespace { get; }
@@ -136,26 +134,6 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
         }
 
         return this;
-    }
-
-    internal CSharpFile RegisterReference(string modelId, IHasCSharpName reference)
-    {
-        if (_modelReferenceRegistry.ContainsKey(modelId))
-        {
-            throw new InvalidOperationException($"Cannot add CSharp reference '{reference.Name}' for the model with id {modelId}: A reference with this key already exists '{GetReferenceForModel(modelId).Name}'.");
-        }
-        _modelReferenceRegistry.Add(modelId, reference);
-        return this;
-    }
-
-    public IHasCSharpName GetReferenceForModel(string modelId)
-    {
-        return _modelReferenceRegistry.ContainsKey(modelId) ? _modelReferenceRegistry[modelId] : null;
-    }
-
-    public IHasCSharpName GetReferenceForModel(IMetadataModel model)
-    {
-        return _modelReferenceRegistry.ContainsKey(model.Id) ? _modelReferenceRegistry[model.Id] : null;
     }
 
     public CSharpFile IntentManagedFully()

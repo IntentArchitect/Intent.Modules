@@ -26,7 +26,7 @@ public class ConstructorMapping : CSharpMappingBase
     public override CSharpStatement GetSourceStatement()
     {
         var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
-        if (typeTemplate?.CSharpFile.GetReferenceForModel(Model.Id) is CSharpConstructor)
+        if (typeTemplate?.CSharpFile.Classes.First().TryGetReferenceForModel(Model.Id, out _) == true)
         {
             var i = new CSharpInvocationStatement($"new {_template.GetTypeName(((IElement)Model).ParentElement)}").WithoutSemicolon();
             foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))

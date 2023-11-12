@@ -52,9 +52,9 @@ namespace Intent.Modules.Common
         /// <br/>
         /// If more than once instance is found an exception is thrown.
         /// </summary>
-        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency) where TTemplate : ITemplate
+        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency) where TTemplate : class, ITemplate
         {
-            return (TTemplate)executionContext.FindTemplateInstance(templateDependency);
+            return executionContext.FindTemplateInstance(templateDependency) as TTemplate;
         }
 
         /// <summary>
@@ -63,23 +63,23 @@ namespace Intent.Modules.Common
         /// </summary>
         public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole) where TTemplate : class
         {
-            return (TTemplate)executionContext.FindTemplateInstance(templateIdOrRole);
+            return executionContext.FindTemplateInstance(templateIdOrRole) as TTemplate;
         }
 
         /// <summary>
         /// Finds the template with <see cref="ITemplate.Id" /> of <paramref name="templateIdOrRole" />
         /// which is also a <see cref="ITemplateWithModel" /> whose
         /// <see cref="ITemplateWithModel.Model" />'s reference matches that of the provided
-        /// <paramref name="model" /> and casts the result to <typeparamref name="TTemplate"/>.
+        /// <paramref name="model" /> and return the ones that implement <typeparamref name="TTemplate"/>.
         /// </summary>
         public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole, object model) where TTemplate : class
         {
-            return (TTemplate)executionContext.FindTemplateInstance(templateIdOrRole, model);
+            return executionContext.FindTemplateInstance(templateIdOrRole, model) as TTemplate;
         }
 
         /// <summary>
         /// Finds a template instance which has the provided <paramref name="templateIdOrRole"/> and
-        /// <paramref name="modelId"/> and casts the result to <typeparamref name="TTemplate"/>.
+        /// <paramref name="modelId"/> and return the ones that implement <typeparamref name="TTemplate"/>.
         /// </summary>
         public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole, string modelId)
             where TTemplate : class
@@ -89,7 +89,7 @@ namespace Intent.Modules.Common
 
         /// <summary>
         /// Finds all template instances which match the provided <paramref name="templateDependency"/>
-        /// and casts the results to <typeparamref name="TTemplate"/>.
+        /// and return the ones that implement <typeparamref name="TTemplate"/>.
         /// </summary>
         public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency)
             where TTemplate : class
@@ -98,13 +98,13 @@ namespace Intent.Modules.Common
                 ? fastLookupTemplateDependency.LookupTemplateInstances(executionContext)
                 : executionContext.FindTemplateInstances(templateDependency.TemplateId, templateDependency.IsMatch);
 
-            return templateInstances.Cast<TTemplate>();
+            return templateInstances.OfType<TTemplate>();
         }
 
 
         /// <summary>
         /// Finds all template instances which match the provided <paramref name="templateIdOrRole"/>
-        /// and casts the results to <typeparamref name="TTemplate"/>.
+        /// and return the ones that implement <typeparamref name="TTemplate"/>.
         /// </summary>
         public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole)
             where TTemplate : class

@@ -13,19 +13,22 @@ public class MappingModel
 {
     private readonly MappingManagerBase _manager;
 
-    public MappingModel(IElementToElementMapping mapping, MappingManagerBase manager) : this(mapping.Type, mapping.TypeId, mapping.TargetElement, mapping.MappedEnds, manager)
+    public MappingModel(IElementToElementMapping mapping, ICSharpCodeContext context, MappingManagerBase manager) 
+        : this(mapping.Type, mapping.TypeId, mapping.TargetElement, mapping.MappedEnds, context, manager)
     {
     }
 
     public MappingModel(string mappingType,
         string mappingTypeId,
         IElementToElementMappedEnd mapping,
+        ICSharpCodeContext context,
         MappingManagerBase manager) : this(
-            mappingType: mappingType,
+        mappingType: mappingType,
             mappingTypeId: mappingTypeId,
             model: mapping.TargetElement,
             mappings: new List<IElementToElementMappedEnd>() { mapping },
             manager: manager,
+            context: context,
             level: mapping.TargetPath.Count)
     {
     }
@@ -35,6 +38,7 @@ public class MappingModel
         string mappingTypeId,
         ICanBeReferencedType model,
         IList<IElementToElementMappedEnd> mappings,
+        ICSharpCodeContext context,
         MappingManagerBase manager,
         int level = 1)
     {
@@ -43,9 +47,10 @@ public class MappingModel
         _manager = manager;
         Model = model;
         Mapping = mappings.SingleOrDefault(x => x.TargetElement == model);
+        CodeContext = context;
         Children = mappings.Where(x => x.TargetPath.Count > level)
             .GroupBy(x => x.TargetPath.Skip(level).First(), x => x)
-            .Select(x => new MappingModel(mappingType, mappingTypeId, x.Key.Element, x.ToList(), manager, level + 1))
+            .Select(x => new MappingModel(mappingType, mappingTypeId, x.Key.Element, x.ToList(), context, manager, level + 1))
             .OrderBy(x => ((IElement)x.Model).Order)
             .ToList();
     }
@@ -55,6 +60,7 @@ public class MappingModel
     public ICanBeReferencedType Model { get; set; }
     public IElementToElementMappedEnd Mapping { get; set; }
     public IList<MappingModel> Children { get; set; }
+    public ICSharpCodeContext CodeContext { get; set; }
 
     public ICSharpMapping GetMapping()
     {
@@ -76,8 +82,13 @@ public abstract class MappingManagerBase
 
     public CSharpStatement GenerateCreationStatement(IElementToElementMapping model)
     {
+        return GenerateCreationStatement(model, _template.CSharpFile);
+    }
+
+    public CSharpStatement GenerateCreationStatement(IElementToElementMapping model, ICSharpCodeContext context)
+    {
         //var mapping = CreateMapping(new MappingModel(model), GetCreateMappingType);
-        var mappingModel = new MappingModel(model, this);
+        var mappingModel = new MappingModel(model, context, this);
         var mapping = ResolveMappings(mappingModel);
         ApplyReplacements(mapping);
 
@@ -86,10 +97,15 @@ public abstract class MappingManagerBase
 
     public IList<CSharpStatement> GenerateUpdateStatements(IElementToElementMapping model)
     {
+        return GenerateUpdateStatements(model, _template.CSharpFile);
+    }
+
+    public IList<CSharpStatement> GenerateUpdateStatements(IElementToElementMapping model, ICSharpCodeContext context)
+    {
         //var mapping = CreateMapping(new MappingModel(model, this), GetUpdateMappingType);
         //ApplyReplacements(mapping);
 
-        var mappingModel = new MappingModel(model, this);
+        var mappingModel = new MappingModel(model, context, this);
         var mapping = ResolveMappings(mappingModel);//, new ObjectUpdateMapping(mappingModel, _template));
         ApplyReplacements(mapping);
 
@@ -98,10 +114,15 @@ public abstract class MappingManagerBase
 
     public CSharpStatement GenerateSourceStatementForMapping(IElementToElementMapping model, IElementToElementMappedEnd mappingEnd)
     {
+        return GenerateSourceStatementForMapping(model, mappingEnd, _template.CSharpFile);
+    }
+
+    public CSharpStatement GenerateSourceStatementForMapping(IElementToElementMapping model, IElementToElementMappedEnd mappingEnd, ICSharpCodeContext context)
+    {
         //var mapping = CreateMapping(new MappingModel(model, this), GetUpdateMappingType);
         //ApplyReplacements(mapping);
 
-        var mappingModel = new MappingModel(model.Type, model.TypeId, mappingEnd, this);
+        var mappingModel = new MappingModel(model.Type, model.TypeId, mappingEnd, context, this);
         var mapping = ResolveMappings(mappingModel);//, new ObjectUpdateMapping(mappingModel, _template));
         ApplyReplacements(mapping);
 
@@ -117,6 +138,11 @@ public abstract class MappingManagerBase
         _fromReplacements.Add(type, replacement);
     }
 
+    public string GetFromReplacement(IMetadataModel type)
+    {
+        return _fromReplacements.TryGetValue(type, out var replacement) ? replacement : null;
+    }
+
     public void SetToReplacement(IMetadataModel type, string replacement)
     {
         if (_toReplacements.ContainsKey(type))
@@ -124,6 +150,11 @@ public abstract class MappingManagerBase
             _toReplacements.Remove(type);
         }
         _toReplacements.Add(type, replacement);
+    }
+
+    public string GetToReplacement(IMetadataModel type)
+    {
+        return _toReplacements.TryGetValue(type, out var replacement) ? replacement : null;
     }
 
     public ICSharpMapping ResolveMappings(MappingModel model, ICSharpMapping defaultMapping = null)
@@ -139,7 +170,7 @@ public abstract class MappingManagerBase
 
         return defaultMapping ?? (model.Mapping != null ? new DefaultCSharpMapping(model, _template) : new MapChildrenMapping(model, _template));
     }
-    
+
 
     public void AddMappingResolver(IMappingTypeResolver resolver)
     {

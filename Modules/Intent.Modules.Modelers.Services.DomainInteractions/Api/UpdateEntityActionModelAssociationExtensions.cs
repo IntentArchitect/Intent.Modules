@@ -3,6 +3,7 @@ using System.Linq;
 using Intent.Modelers.Domain.Api;
 using Intent.Modelers.Domain.Events.Api;
 using Intent.Modelers.Services.CQRS.Api;
+using Intent.Modelers.Services.EventInteractions;
 using Intent.RoslynWeaver.Attributes;
 using OperationModel = Intent.Modelers.Services.Api.OperationModel;
 
@@ -33,6 +34,15 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
 
         [IntentManaged(Mode.Fully)]
         public static IList<UpdateEntityActionTargetEndModel> UpdateEntityActions(this DomainEventHandlerAssociationTargetEndModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == UpdateEntityActionModel.SpecializationType && x.IsTargetEnd())
+                .Select(x => UpdateEntityActionModel.CreateFromEnd(x).TargetEnd)
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public static IList<UpdateEntityActionTargetEndModel> UpdateEntityActions(this IntegrationEventHandlerModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == UpdateEntityActionModel.SpecializationType && x.IsTargetEnd())

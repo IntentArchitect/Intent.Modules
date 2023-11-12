@@ -1082,7 +1082,7 @@ return null;</lineDashArray>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes />
-              <canBeModified>false</canBeModified>
+              <canBeModified>true</canBeModified>
               <childSettings />
             </childSetting>
           </childSettings>
@@ -1097,7 +1097,7 @@ return null;</lineDashArray>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes />
-              <canBeModified>false</canBeModified>
+              <canBeModified>true</canBeModified>
               <childSettings />
             </childSetting>
           </childSettings>
@@ -1119,6 +1119,7 @@ return null;</lineDashArray>
               <childSettings />
             </childSetting>
             <childSetting id="0d551f4a-96fb-48d8-b3ed-31617ba3bb02" name="Association" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+              <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes />

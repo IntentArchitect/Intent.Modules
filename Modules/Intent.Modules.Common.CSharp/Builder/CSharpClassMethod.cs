@@ -37,6 +37,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
+        Parent = @class;
         Class = @class;
         File = @class.File;
         ReturnType = returnType;
