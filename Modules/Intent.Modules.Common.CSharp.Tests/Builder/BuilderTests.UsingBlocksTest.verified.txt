@@ -1,5 +1,4 @@
-﻿
-[assembly: DefaultIntentManaged(Mode.Fully)]
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace Testing.Namespace
 {

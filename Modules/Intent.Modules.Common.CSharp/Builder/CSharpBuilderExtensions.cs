@@ -20,19 +20,24 @@ public static class CSharpBuilderExtensions
         }
     }
 
-    internal static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation, Func<string, string> codeTextTransformer)
+    internal static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation, Func<string, string> codeTextTransformer = null)
     {
-        return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, string.Empty, codeTextTransformer)}"));
-    }
-    
-    internal static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation)
-    {
-        return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, string.Empty)}"));
+        // It's conventional to always have local methods at the bottom of a code block
+        var orderedCodeBlocks = codeBlocks
+            .OrderBy(x => x is CSharpLocalMethod)
+            .ToArray();
+
+        return string.Concat(orderedCodeBlocks.Select(s => $"{orderedCodeBlocks.DetermineSeparator(s, indentation, string.Empty, codeTextTransformer)}"));
     }
 
     internal static string JoinCode(this IEnumerable<ICodeBlock> codeBlocks, string separator, string indentation)
     {
-        return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, separator)}"));
+        // It's conventional to always have local methods at the bottom of a code block
+        var orderedCodeBlocks = codeBlocks
+            .OrderBy(x => x is CSharpLocalMethod)
+            .ToArray();
+
+        return string.Concat(orderedCodeBlocks.Select(s => $"{orderedCodeBlocks.DetermineSeparator(s, indentation, separator)}"));
     }
 
     private static string DetermineSeparator(this IEnumerable<ICodeBlock> codeBlocks, ICodeBlock currentCodeBlock, string indentation, string separator = "", Func<string, string> codeTextTransformer = null)

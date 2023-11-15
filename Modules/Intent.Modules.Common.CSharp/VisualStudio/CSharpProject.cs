@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
@@ -34,6 +35,10 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
             {
                 TargetFrameworks = targetFrameworks as IEnumerable<string>;
             }
+            if (_outputTarget.Metadata.TryGetValue("InternalElement", out var internalElement))
+            {
+                InternalElement = internalElement as IElement;
+            }
         }
 
         public string Id => _outputTarget.Id;
@@ -48,6 +53,7 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         public ISoftwareFactoryExecutionContext ExecutionContext => _outputTarget.ExecutionContext;
         public string LanguageVersion { get; }
         public bool NullableEnabled { get; }
+        public IElement InternalElement { get; }
         public IEnumerable<string> TargetFrameworks { get; }
         public bool IsNullableAwareContext() => _isNullableAwareContext.Value;
         public bool IsNetCore2App => GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp2"));

@@ -58,7 +58,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCS
         configure?.Invoke(param);
         return this;
     }
-
+    
     public CSharpInterfaceMethod InsertParameter(int index, string type, string name, Action<CSharpParameter> configure = null)
     {
         var param = new CSharpParameter(type, name, this);
