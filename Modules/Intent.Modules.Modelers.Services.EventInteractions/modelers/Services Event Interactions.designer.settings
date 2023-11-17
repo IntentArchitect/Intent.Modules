@@ -258,8 +258,8 @@ vertical-align: center`</style>
         <creationOptions />
         <scriptOptions />
         <mappingOptions>
-          <option mappingType="Integration Event Handler to Command Mapping" mappingTypeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
-            <text>Map to Command</text>
+          <option mappingType="Integration Event Handler Mapping" mappingTypeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
+            <text>Map to Service Operation</text>
             <shortcut>ctrl + shift + m</shortcut>
           </option>
         </mappingOptions>
@@ -389,7 +389,7 @@ vertical-align: center`</style>
         <creationOptions />
         <scriptOptions />
         <mappingOptions>
-          <option mappingType="Integration Event Handler to Command Mapping" mappingTypeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
+          <option mappingType="Integration Event Handler Mapping" mappingTypeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
             <text>Map to Command</text>
             <shortcut>ctrl + shift + m</shortcut>
           </option>
@@ -550,8 +550,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
     </associationExtension>
   </associationExtensions>
   <mappingSettings>
-    <mappingSetting type="Integration Event Handler to Command Mapping" typeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
-      <title>Integration Event Handler to Command Mapping</title>
+    <mappingSetting type="Integration Event Handler Mapping" typeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
+      <title>Integration Event Handler Mapping</title>
       <sourceRootElementFunction>return element.typeReference.typeId</sourceRootElementFunction>
       <sourceMappings>
         <mapping id="2893a19b-523a-49e9-b828-2961b0fba28f" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
@@ -618,6 +618,23 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
           <useChildSettingsFrom>7f5d49dd-fd48-4f29-8126-b1b0c881a99c</useChildSettingsFrom>
           <childSettings />
         </mapping>
+        <mapping id="41f6e850-b45a-46b2-8909-0e562f8b5a7e" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <childSettings>
+            <childSetting id="e369f4ec-cd31-415c-b5f3-6a5247462615" name="Service Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>8dd4a85c-056b-4d02-859c-e6d274b89580</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
       </targetMappings>
       <mappingTypes>
         <mappingType type="Data Mapping" typeId="1ad97d12-2aa8-4f03-8cb0-3a8a4e71b4d9">
@@ -628,6 +645,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
           </sources>
           <targets>
             <target id="7829c6b8-a045-4a3e-b9c2-13795f128879" name="Field" />
+            <target id="e369f4ec-cd31-415c-b5f3-6a5247462615" name="Service Parameter" />
           </targets>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>

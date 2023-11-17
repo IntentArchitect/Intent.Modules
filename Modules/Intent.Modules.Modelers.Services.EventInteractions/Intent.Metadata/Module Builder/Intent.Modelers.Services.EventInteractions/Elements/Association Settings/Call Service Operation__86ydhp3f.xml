@@ -98,8 +98,8 @@
           <metadata />
           <childElements>
             <childElement id="ac95887d-1f69-4dc0-8bfd-50eb75a13546" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
-              <name>Map to Command</name>
-              <display>Map to Command: Integration Event Handler to Command Mapping</display>
+              <name>Map to Service Operation</name>
+              <display>Map to Service Operation: Integration Event Handler Mapping</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="70c79b16-4574-4486-bb7b-3a16a2587fed">

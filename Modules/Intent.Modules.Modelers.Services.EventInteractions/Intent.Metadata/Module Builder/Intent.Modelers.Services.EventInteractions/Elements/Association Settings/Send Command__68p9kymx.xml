@@ -99,7 +99,7 @@
           <childElements>
             <childElement id="71096cd1-34dd-4d5e-b1f7-f439425d0394" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
               <name>Map to Command</name>
-              <display>Map to Command: Integration Event Handler to Command Mapping</display>
+              <display>Map to Command: Integration Event Handler Mapping</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="e7e50638-26a6-418d-bbe5-4e5c96804970">

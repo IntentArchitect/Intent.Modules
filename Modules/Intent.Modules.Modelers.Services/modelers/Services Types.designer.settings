@@ -126,7 +126,16 @@ const metadataKeyName = "initialized";
       <mappingSettings />
       <diagramSettings>
         <addNewElementsTo>Package</addNewElementsTo>
-        <creationOptions />
+        <creationOptions>
+          <option type="element">
+            <text>New Service</text>
+            <icon type="UrlImagePath" source="./img/icons/services/Service_256x.png" />
+            <specializationType>Service</specializationType>
+            <specializationTypeId>b16578a5-27b1-4047-a8df-f0b783d706bd</specializationTypeId>
+            <defaultName>NewService</defaultName>
+            <allowMultiple>true</allowMultiple>
+          </option>
+        </creationOptions>
         <scriptOptions />
         <elementVisualSettings>
           <visualSettings type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
