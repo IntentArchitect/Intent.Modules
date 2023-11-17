@@ -15,12 +15,7 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParam
     public string XmlDocComment { get; private set; }
     public string ParameterModifier { get; private set; } = "";
 
-    public CSharpParameter(string type, string name, CSharpClassMethod method)
-        : this(type, name, method?.File)
-    {
-    }
-
-    public CSharpParameter(string type, string name, CSharpFile file)
+    public CSharpParameter(string type, string name, CSharpMetadataBase parent)
     {
         if (string.IsNullOrWhiteSpace(type))
         {
@@ -34,8 +29,8 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParam
 
         Type = type;
         Name = name;
-        File = file;
-        Parent = method;
+        File = parent.File;
+        Parent = parent;
     }
 
     public CSharpParameter(string type, string name, CSharpInterfaceMethod method)
