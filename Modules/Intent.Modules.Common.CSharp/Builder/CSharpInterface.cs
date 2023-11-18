@@ -24,6 +24,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, IHasCSharpNam
     public CSharpInterface(string name, CSharpFile file) : this(name)
     {
         File = file;
+        Parent = file;
     }
 
     public string Name { get; }
@@ -77,7 +78,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, IHasCSharpNam
 
     public CSharpInterface AddProperty(string type, string name, Action<CSharpInterfaceProperty> configure = null)
     {
-        var property = new CSharpInterfaceProperty(type, name, File)
+        var property = new CSharpInterfaceProperty(type, name, this)
         {
             BeforeSeparator = _propertiesSeparator,
             AfterSeparator = _propertiesSeparator
@@ -89,7 +90,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, IHasCSharpNam
 
     public CSharpInterface InsertProperty(int index, string type, string name, Action<CSharpInterfaceProperty> configure = null)
     {
-        var property = new CSharpInterfaceProperty(type, name, File)
+        var property = new CSharpInterfaceProperty(type, name, this)
         {
             BeforeSeparator = _propertiesSeparator,
             AfterSeparator = _propertiesSeparator

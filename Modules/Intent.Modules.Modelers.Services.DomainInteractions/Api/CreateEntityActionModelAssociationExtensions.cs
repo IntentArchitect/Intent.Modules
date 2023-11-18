@@ -1,11 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modelers.Domain.Api;
-using Intent.Modelers.Domain.Events.Api;
-using Intent.Modelers.Services.CQRS.Api;
-using Intent.Modelers.Services.EventInteractions;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
-using OperationModel = Intent.Modelers.Services.Api.OperationModel;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions", Version = "1.0")]
@@ -14,35 +11,9 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
 {
     public static class CreateEntityActionModelAssociationExtensions
     {
-        [IntentManaged(Mode.Fully)]
-        public static IList<CreateEntityActionTargetEndModel> CreateEntityActions(this CommandModel model)
-        {
-            return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == CreateEntityActionModel.SpecializationType && x.IsTargetEnd())
-                .Select(x => CreateEntityActionModel.CreateFromEnd(x).TargetEnd)
-                .ToList();
-        }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<CreateEntityActionTargetEndModel> CreateEntityActions(this OperationModel model)
-        {
-            return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == CreateEntityActionModel.SpecializationType && x.IsTargetEnd())
-                .Select(x => CreateEntityActionModel.CreateFromEnd(x).TargetEnd)
-                .ToList();
-        }
-
-        [IntentManaged(Mode.Fully)]
-        public static IList<CreateEntityActionTargetEndModel> CreateEntityActions(this DomainEventHandlerAssociationTargetEndModel model)
-        {
-            return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == CreateEntityActionModel.SpecializationType && x.IsTargetEnd())
-                .Select(x => CreateEntityActionModel.CreateFromEnd(x).TargetEnd)
-                .ToList();
-        }
-
-        [IntentManaged(Mode.Fully)]
-        public static IList<CreateEntityActionTargetEndModel> CreateEntityActions(this IntegrationEventHandlerModel model)
+        public static IList<CreateEntityActionTargetEndModel> CreateEntityActions(this IProcessingHandlerModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == CreateEntityActionModel.SpecializationType && x.IsTargetEnd())

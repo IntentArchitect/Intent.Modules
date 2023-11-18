@@ -11,8 +11,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.Domain.Events.Api
 {
-    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DomainEventHandlerModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
+    [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
+    public class DomainEventHandlerModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder, IProcessingHandlerModel
     {
         public const string SpecializationType = "Domain Event Handler";
         public const string SpecializationTypeId = "d80e61c5-7e4c-4175-9df1-0413f664824c";

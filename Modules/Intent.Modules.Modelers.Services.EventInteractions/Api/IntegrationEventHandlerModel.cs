@@ -11,8 +11,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.Services.EventInteractions
 {
-    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class IntegrationEventHandlerModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
+    [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
+    public class IntegrationEventHandlerModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder, IProcessingHandlerModel
     {
         public const string SpecializationType = "Integration Event Handler";
         public const string SpecializationTypeId = "c0582230-22f5-4f74-8eb0-ec6fc9364900";

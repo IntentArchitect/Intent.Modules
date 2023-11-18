@@ -14,7 +14,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.CQRS.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class QueryModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder, IElementWrapper
+    public class QueryModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder, IElementWrapper, IProcessingHandlerModel
     {
         public const string SpecializationType = "Query";
         public const string SpecializationTypeId = "e71b0662-e29d-4db2-868b-8a12464b25d0";

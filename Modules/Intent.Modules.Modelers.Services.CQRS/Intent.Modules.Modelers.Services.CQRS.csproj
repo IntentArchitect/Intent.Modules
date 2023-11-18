@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>4.1.0-beta.0</Version>
+    <Version>4.1.0-beta.1</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent Architect</Product>
@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.4.3" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.5.0-beta.3" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.9" />
     <PackageReference Include="Intent.Modules.Modelers.Services" Version="3.4.9-pre.0" />
     <PackageReference Include="Intent.Packager" Version="3.4.0">
