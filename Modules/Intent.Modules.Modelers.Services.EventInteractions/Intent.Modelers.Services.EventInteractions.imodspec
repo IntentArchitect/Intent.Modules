@@ -16,8 +16,7 @@
     <dependency id="Intent.Common.Types" version="3.3.9" />
     <dependency id="Intent.Modelers.Domain" version="3.4.3" />
     <dependency id="Intent.Modelers.Eventing" version="4.0.4" />
-    <dependency id="Intent.Modelers.Services" version="3.5.0-beta.0" />
-    <dependency id="Intent.Modelers.Services.CQRS" version="4.1.0-beta.0" />
+    <dependency id="Intent.Modelers.Services" version="3.5.0-beta.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
