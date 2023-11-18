@@ -42,7 +42,7 @@ public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, IHasICSh
 
     public CSharpLocalMethod AddParameter(string type, string name, Action<CSharpParameter> configure = null)
     {
-        var param = new CSharpParameter(type, name, File);
+        var param = new CSharpParameter(type, name, this);
         Parameters.Add(param);
         configure?.Invoke(param);
         return this;
