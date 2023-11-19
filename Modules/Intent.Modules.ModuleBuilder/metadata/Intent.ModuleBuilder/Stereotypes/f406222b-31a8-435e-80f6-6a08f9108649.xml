@@ -155,6 +155,7 @@
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <placeholder>(default)</placeholder>
+      <defaultValue>By type then name</defaultValue>
       <valueOptions>
         <option>Manually</option>
         <option>By type then manually</option>
