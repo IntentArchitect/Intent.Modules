@@ -48,6 +48,10 @@ function getOperationPath(operation: MacroApi.Context.IElementApi): string {
     let operationPath = httpSettings.getProperty("Route").value;
     if (operation.getParent().getStereotype(serviceHttpServiceSettingsId) && operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value != "") {
         let servicePath = operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value;
+        if (servicePath.toLocaleLowerCase().includes('[controller]'))
+        {
+            servicePath = servicePath.replace(/\[controller\]/gi, `[${operation.getParent().getName()}]`);
+        }
         return `${servicePath}/${operationPath}`;
     }
     //We don't know how the service name will be transformed so we add [{ServiceName}] to represent the transform
