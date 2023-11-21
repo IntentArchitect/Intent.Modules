@@ -48,8 +48,12 @@ function getOperationPath(operation) {
     let operationPath = httpSettings.getProperty("Route").value;
     if (operation.getParent().getStereotype(serviceHttpServiceSettingsId) &amp;&amp; operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value != "") {
         let servicePath = operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value;
+        if (servicePath.toLocaleLowerCase().includes('[controller]')) {
+            servicePath = servicePath.replace(/\[controller\]/gi, `[${operation.getParent().getName()}]`);
+        }
         return `${servicePath}/${operationPath}`;
     }
+    //We don't know how the service name will be transformed so we add [{ServiceName}] to represent the transform
     return `[${operation.getParent().getName()}]/${operationPath}`;
 }
 function matchCommandOrQuery(possibleDuplicate, changingElement, routeToCheck, verbToCheck) {
@@ -968,8 +972,12 @@ function getOperationPath(operation) {
     let operationPath = httpSettings.getProperty("Route").value;
     if (operation.getParent().getStereotype(serviceHttpServiceSettingsId) &amp;&amp; operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value != "") {
         let servicePath = operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value;
+        if (servicePath.toLocaleLowerCase().includes('[controller]')) {
+            servicePath = servicePath.replace(/\[controller\]/gi, `[${operation.getParent().getName()}]`);
+        }
         return `${servicePath}/${operationPath}`;
     }
+    //We don't know how the service name will be transformed so we add [{ServiceName}] to represent the transform
     return `[${operation.getParent().getName()}]/${operationPath}`;
 }
 function matchCommandOrQuery(possibleDuplicate, changingElement, routeToCheck, verbToCheck) {

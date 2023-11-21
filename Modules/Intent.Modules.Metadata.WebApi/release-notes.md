@@ -2,6 +2,10 @@
 
 - Improvement: _Expose as Http Endpoint_ script updated to work with new Advanced Mappings.
 
+### Version 4.3.3
+
+- Fixed: Duplicate route detection validation to accommodate `[controller]` in rest routes.
+
 ### Version 4.3.2
 
 - Improvement: It is now possible to specify a [custom name for query strings](https://github.com/IntentArchitect/Intent.Modules/blob/development/Modules/Intent.Modules.Metadata.WebApi/README.md#parameter-settings-query-string-name-property) on HTTP endpoint parameters.
