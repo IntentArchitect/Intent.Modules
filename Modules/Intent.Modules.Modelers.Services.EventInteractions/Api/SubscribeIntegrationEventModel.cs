@@ -86,7 +86,7 @@ namespace Intent.Modelers.Services.EventInteractions
         }
     }
 
-    [IntentManaged(Mode.Fully)]
+    [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
     public class SubscribeIntegrationEventEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper, IProcessingHandlerModel
     {
         protected readonly IAssociationEnd _associationEnd;
