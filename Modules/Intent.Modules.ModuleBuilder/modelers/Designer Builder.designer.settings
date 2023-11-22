@@ -1160,9 +1160,9 @@ return null;</iconFunction>
               <saveAsOwnFile>false</saveAsOwnFile>
               <displayFunction>
 function getTypeName(stereotypeName, propertyName) {
-    var type = getStereotype(stereotypeName).properties[propertyName].getSelected();
+    var type = getStereotype(stereotypeName).getProperty(propertyName).getSelected();
     if (type) {
-        return type.name;
+        return type.getName();
     }
 }
 return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getTypeName("Output Settings", "To Type") || "[None]"} (${ getStereotype("Output Settings").properties["Child Mapping Mode"].value })`;</displayFunction>

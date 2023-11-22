@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Types.ServiceProxies.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class ParameterModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class ParameterModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IElementWrapper
     {
         public const string SpecializationType = "Parameter";
         public const string SpecializationTypeId = "f11273c1-217f-4f42-b690-3d8b488f95a8";
