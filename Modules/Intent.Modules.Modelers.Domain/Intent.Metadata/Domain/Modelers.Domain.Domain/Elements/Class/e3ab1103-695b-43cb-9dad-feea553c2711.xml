@@ -16,7 +16,6 @@
       <name>attribute</name>
       <display>attribute: string</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="d0bc9642-41b2-4ef6-8323-bb352488eb7b">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -41,7 +40,6 @@
       <name>Constructor</name>
       <display>TestClass(param: string)</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e3ab1103-695b-43cb-9dad-feea553c2711</parentFolderId>
@@ -54,7 +52,6 @@
           <name>param</name>
           <display>in : param: string</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="693beb96-4727-4620-ab80-925ab2036fd7">
             <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>

@@ -25,7 +25,6 @@
       <name>Characters</name>
       <display>Characters: CharacterDTO[*]?</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="c976cc97-a450-40ac-96bf-2ab718e983ad">
         <typeId>640558b4-4104-4a96-baea-8b97643314cb</typeId>

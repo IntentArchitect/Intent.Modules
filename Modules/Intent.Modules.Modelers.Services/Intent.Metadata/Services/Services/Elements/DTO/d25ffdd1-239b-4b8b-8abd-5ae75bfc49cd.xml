@@ -25,7 +25,6 @@
       <name>xxx</name>
       <display>xxx: string</display>
       <isAbstract>true</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="c0326c77-fb38-4230-ac2a-7a7a209b4bb1">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>

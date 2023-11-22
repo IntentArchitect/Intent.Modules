@@ -31,7 +31,6 @@
       <name>attribute</name>
       <display>attribute: NewType</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="bd2e1030-d0a0-4e5e-b41d-829ba6d713ba">
         <typeId>074dee25-3c96-494e-9b0f-339eeabed1e6</typeId>
@@ -65,7 +64,6 @@
       <name>Operation</name>
       <display>Operation(): void</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <typeReference id="8f2e93d7-6281-4ab5-a31f-122e7ed66b97">
         <isNavigable>true</isNavigable>

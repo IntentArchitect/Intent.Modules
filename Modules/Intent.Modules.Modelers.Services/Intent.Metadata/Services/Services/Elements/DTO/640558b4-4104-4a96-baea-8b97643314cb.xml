@@ -25,7 +25,6 @@
       <name>name</name>
       <display>name: string</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="7bbae95a-ad15-438b-8d0e-5fa13145e790">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -56,7 +55,6 @@
       <name>isVillain</name>
       <display>isVillain: bool</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <typeReference id="225019e3-a4b2-4992-804d-ac30d3cd06de">
         <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
