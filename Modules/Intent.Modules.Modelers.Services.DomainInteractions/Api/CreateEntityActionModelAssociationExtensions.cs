@@ -4,7 +4,7 @@ using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Ignore)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions", Version = "1.0")]
 
 namespace Intent.Modelers.Services.DomainInteractions.Api
@@ -12,7 +12,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     public static class CreateEntityActionModelAssociationExtensions
     {
 
-        [IntentManaged(Mode.Fully)]
+        [IntentManaged(Mode.Ignore)]
         public static IList<CreateEntityActionTargetEndModel> CreateEntityActions(this IProcessingHandlerModel model)
         {
             return model.InternalElement.AssociatedElements

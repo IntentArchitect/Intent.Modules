@@ -18,7 +18,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
                 .Select(x => DeleteEntityActionModel.CreateFromEnd(x).TargetEnd)
                 .ToList();
         }
-        
+
         public static IList<DeleteEntityActionSourceEndModel> DeleteEntityCommands(this ClassModel model)
         {
             return model.InternalElement.AssociatedElements

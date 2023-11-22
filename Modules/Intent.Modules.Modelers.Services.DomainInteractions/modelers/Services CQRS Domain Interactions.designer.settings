@@ -6760,7 +6760,7 @@ return !element.hasStereotype('Primary Key')
           <canBeModified>false</canBeModified>
           <childSettings>
             <childSetting id="f36d1424-356d-44f1-8518-2a3c5b4887f7" name="Update Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-              <isRequiredFunction>return element.getParent().typeReference?.getIsCollection()</isRequiredFunction>
+              <isRequiredFunction>return !element.getParent().hasType || element.getParent().typeReference?.getIsCollection()</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>let fkAssociation = element.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected();  
 return (!element.hasStereotype('Primary Key') || element.getParent().specialization == "Association Target End")     
