@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Intent.Modules.Common.CSharp.Templates;
-using Intent.Modules.Common.Templates;
+using Shouldly;
 using Xunit;
 
 namespace Intent.Modules.Common.Tests
@@ -32,8 +32,8 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Solution.Application.Contracts.Internal.CompanyDetailsManagement",
                 fullyQualifiedType: "Solution.Common.Types.Country",
-                knownOtherPaths: ProjectNames,
-                usingPaths: new string[]
+                knownOtherNamespaceNames: ProjectNames,
+                usingPaths: new[]
                 {
                     "System",
                     "System.Collections.Generic",
@@ -42,7 +42,7 @@ namespace Intent.Modules.Common.Tests
                 },
                 knownTypesByNamespace: new Dictionary<string, ISet<string>>());
 
-            Assert.Equal("Solution.Common.Types.Country", result);
+            Assert.Equal("Common.Types.Country", result);
         }
 
         [Fact]
@@ -51,8 +51,8 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Solution.Application.Contracts.Internal.CompanyDetailsManagement",
                 fullyQualifiedType: "Solution.Common.Types.Country",
-                knownOtherPaths: ProjectNames,
-                usingPaths: new string[]
+                knownOtherNamespaceNames: ProjectNames,
+                usingPaths: new[]
                 {
                     "System",
                     "System.Collections.Generic",
@@ -71,8 +71,8 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Solution.Application.ApplicationLayer",
                 fullyQualifiedType: "Solution.Application.Contracts.Internal.CompanyDetailsManagement.StatutoryInfoDTO",
-                knownOtherPaths: ProjectNames,
-                usingPaths: new string[]
+                knownOtherNamespaceNames: ProjectNames,
+                usingPaths: new[]
                 {
                     "System.Runtime.Serialization",
                     "AutoMapper",
@@ -89,10 +89,8 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Solution.Application.Contracts.Internal.CompanyDetailsManagement",
                 fullyQualifiedType: "Solution.Application.Common.Enums.CompanyDetails.SocialMediaType",
-                knownOtherPaths: ProjectNames,
-                usingPaths: new string[]
-                {
-                },
+                knownOtherNamespaceNames: ProjectNames,
+                usingPaths: Array.Empty<string>(),
                 knownTypesByNamespace: new Dictionary<string, ISet<string>>());
 
             Assert.Equal("Common.Enums.CompanyDetails.SocialMediaType", result);
@@ -104,14 +102,14 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "MyCompany.Movies.Api",
                 fullyQualifiedType: "MyCompany.Movies.Application.Movies",
-                knownOtherPaths: new string[]
+                knownOtherNamespaceNames: new[]
                 {
                     "MyCompany.Movies.Infrastructure.Data",
                     "MyCompany.Movies.Application",
                     "MyCompany.Movies.Application.ServiceCallHandlers.Movies",
                     "MyCompany.Movies.Domain"
                 },
-                usingPaths: new string[]
+                usingPaths: new[]
                 {
                     "MyCompany.Movies.Infrastructure.Data",
                     "MyCompany.Movies.Application",
@@ -129,7 +127,7 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Intent.Modules.Application.MediatR.Templates.QueryModel",
                 fullyQualifiedType: "Intent.Modelers.Services.CQRS.Api.QueryModel",
-                knownOtherPaths: new string[]
+                knownOtherNamespaceNames: new[]
                 {
                     "System.Collections.Generic",
                     "Intent.Engine",
@@ -139,7 +137,7 @@ namespace Intent.Modules.Common.Tests
                     "Intent.RoslynWeaver.Attributes",
                     "Intent.Templates"
                 },
-                usingPaths: new string[]
+                usingPaths: new[]
                 {
                     "System.Collections.Generic",
                     "Intent.Engine",
@@ -160,7 +158,7 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Intent.Modules.Application.DependencyInjection.Templates.DependencyInjection",
                 fullyQualifiedType: "Intent.Modules.Application.DependencyInjection.Templates.DependencyInjection.DependencyInjectionDecorator",
-                knownOtherPaths: new string[]
+                knownOtherNamespaceNames: new[]
                 {
                     "System",
                     "System.Collections.Generic",
@@ -171,7 +169,7 @@ namespace Intent.Modules.Common.Tests
                     "Intent.RoslynWeaver.Attributes",
                     "Intent.Templates",
                 },
-                usingPaths: new string[]
+                usingPaths: new[]
                 {
                     "System",
                     "System.Collections.Generic",
@@ -193,7 +191,7 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Intent.Modules.Application",
                 fullyQualifiedType: "Intent.Modules.Application.MyModel.MyModel",
-                knownOtherPaths: new string[]
+                knownOtherNamespaceNames: new[]
                 {
                     "System",
                     "System.Collections.Generic",
@@ -204,7 +202,7 @@ namespace Intent.Modules.Common.Tests
                     "Intent.RoslynWeaver.Attributes",
                     "Intent.Templates",
                 },
-                usingPaths: new string[]
+                usingPaths: new[]
                 {
                     "System",
                     "System.Collections.Generic",
@@ -226,12 +224,12 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Root",
                 fullyQualifiedType: "Root.Sub1.TypeName",
-                knownOtherPaths: new string[]
+                knownOtherNamespaceNames: new[]
                 {
                     "Root.Sub1.TypeName",
                     "Root.Sub2.TypeName"
                 },
-                usingPaths: new string[]
+                usingPaths: new[]
                 {
                     "Root.Sub1",
                     "Root.Sub2"
@@ -251,18 +249,15 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Namespace0",
                 fullyQualifiedType: "Namespace1.TypeName",
-                knownOtherPaths: new string[]
+                knownOtherNamespaceNames: new[]
                 {
                     "Namespace1.TypeName",
                 },
-                usingPaths: new string[]
+                usingPaths: new[]
                 {
                     "Namespace1",
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>()
-                {
-                    ["Namespace1.TypeName"] = new HashSet<string> { "TypeName" }
-                });
+                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
 
             Assert.Equal("TypeName", result);
         }
@@ -273,16 +268,16 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "NewApplication32.Domain.Repositories.Sec",
                 fullyQualifiedType: "NewApplication32.Domain.Entities.Sec.Action",
-                knownOtherPaths: Array.Empty<string>(),
-                usingPaths: new string[]
+                knownOtherNamespaceNames: Array.Empty<string>(),
+                usingPaths: new[]
                 {
                     "System",
                     "NewApplication32.Domain.Entities.Sec"
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>() 
-                    { 
-                        [ "System" ] = new HashSet<string>() { "Action" }
-                    });
+                knownTypesByNamespace: new Dictionary<string, ISet<string>>()
+                {
+                    ["System"] = new HashSet<string>() { "Action" }
+                });
 
             Assert.Equal("Entities.Sec.Action", result);
         }
@@ -293,16 +288,14 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Customer1.Domain.Repositories.Mas",
                 fullyQualifiedType: "Customer1.Domain.Entities.Mas.Log",
-                knownOtherPaths: Array.Empty<string>(),
-                usingPaths: new string[]
+                knownOtherNamespaceNames: Array.Empty<string>(),
+                usingPaths: new[]
                 {
-                    "System",
-                    "Customer1.Domain.Entities.Mas",
+                    "Customer1.Domain.Entities.Mas"
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>()
+                knownTypesByNamespace: new Dictionary<string, ISet<string>>
                 {
-                    ["System"] = new HashSet<string>() { "Action" },
-                    ["Customer1.Domain.Repositories.Log"] = new HashSet<string>() { "ILogRepository" }
+                    ["Customer1.Domain.Repositories.Log"] = new HashSet<string> { "ILogRepository" }
                 });
 
             Assert.Equal("Entities.Mas.Log", result);
@@ -314,8 +307,8 @@ namespace Intent.Modules.Common.Tests
             var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Customer1.Api",
                 fullyQualifiedType: "Customer1.Domain.Conflict",
-                knownOtherPaths: Array.Empty<string>(),
-                usingPaths: new string[]
+                knownOtherNamespaceNames: Array.Empty<string>(),
+                usingPaths: new[]
                 {
                     "System",
                     "Customer1.Domain",
@@ -328,6 +321,91 @@ namespace Intent.Modules.Common.Tests
             Assert.Equal("Domain.Conflict", result);
         }
 
+        [Fact]
+        public void Scenario14()
+        {
+            var result = CSharpTemplateBase.NormalizeNamespace(
+                localNamespace: "ApplicationName.Application.Invoices.CreateInvoice",
+                fullyQualifiedType: "ApplicationName.Domain.Entities.Invoice",
+                knownOtherNamespaceNames: Array.Empty<string>(),
+                usingPaths: new[]
+                {
+                    "ApplicationName.Domain.Entities"
+                },
+                knownTypesByNamespace: new Dictionary<string, ISet<string>>
+                {
+                    ["ApplicationName.Application.Invoices"] = new HashSet<string> { "Invoice" }
+                });
 
+            Assert.Equal("Domain.Entities.Invoice", result);
+        }
+
+        [Fact]
+        public void Scenario15()
+        {
+            var result = CSharpTemplateBase.NormalizeNamespace(
+                localNamespace: "ApplicationName.Application.Invoices.CreateInvoice",
+                fullyQualifiedType: "ApplicationName.Application.Invoices.Invoice",
+                knownOtherNamespaceNames: Array.Empty<string>(),
+                usingPaths: Array.Empty<string>(),
+                knownTypesByNamespace: new Dictionary<string, ISet<string>>
+                {
+                    ["ApplicationName.Application.Invoices"] = new HashSet<string> { "Invoice" }
+                });
+
+            Assert.Equal("Invoice", result);
+        }
+
+        [Fact]
+        public void Scenario16()
+        {
+            var result = CSharpTemplateBase.NormalizeNamespace(
+                localNamespace: "ApplicationName.Domain.Repositories",
+                fullyQualifiedType: "ApplicationName.Domain.Entities.Invoices",
+                knownOtherNamespaceNames: Array.Empty<string>(),
+                usingPaths: new[]
+                {
+                    "ApplicationName.Domain.Entities"
+                },
+                knownTypesByNamespace: new Dictionary<string, ISet<string>>
+                {
+                    ["ApplicationName.Application.Invoices"] = new HashSet<string> { "TypeName" }
+                });
+
+            Assert.Equal("Invoices", result);
+        }
+
+        [Fact]
+        public void Scenario17()
+        {
+            var result = CSharpTemplateBase.NormalizeNamespace(
+                localNamespace: "Solution.Api.Controllers",
+                fullyQualifiedType: "Solution.Application.Orders.OrderConfirmed.OrderConfirmed",
+                knownOtherNamespaceNames: Array.Empty<string>(),
+                usingPaths: new[]
+                {
+                    "Solution.Application.Orders",
+                    "Solution.Application.Orders.OrderConfirmed"
+                },
+                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+
+            Assert.Equal("OrderConfirmed", result);
+        }
+
+        [Fact]
+        public void Scenario18()
+        {
+            var result = CSharpTemplateBase.NormalizeNamespace(
+                localNamespace: "Solution.Application.Validators.Customers.GetPagedWithParameters",
+                fullyQualifiedType: "Solution.Application.Customers.GetPagedWithParameters.Something.GetPagedWithParameters",
+                knownOtherNamespaceNames: Array.Empty<string>(),
+                usingPaths: new[]
+                {
+                    "Solution.Application.Customers.GetPagedWithParameters.Something",
+                },
+                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+
+            result.ShouldBe("Application.Customers.GetPagedWithParameters.Something.GetPagedWithParameters");
+        }
     }
 }

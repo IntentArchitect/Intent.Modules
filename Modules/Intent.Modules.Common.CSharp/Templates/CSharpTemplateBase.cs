@@ -258,22 +258,61 @@ namespace Intent.Modules.Common.CSharp.Templates
             return NormalizeNamespace(
                        localNamespace: localNamespace,
                        fullyQualifiedType: foreignType,
-                       knownOtherPaths: knownOtherPaths,
+                       knownOtherNamespaceNames: knownOtherPaths,
                        usingPaths: usingPaths,
                        knownTypesByNamespace: KnownCSharpTypesCache.GetKnownTypesByNamespace()) +
                    (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>{nullable}" : nullable);
         }
 
+        private class Registry
+        {
+            private readonly Member _members = new();
+
+            public bool ContainsEntry(string @namespace)
+            {
+                var split = @namespace.Split('.');
+                var current = _members;
+
+                foreach (var item in split)
+                {
+                    if (!current.TryGetValue(item, out current))
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            public void Add(string @namespace)
+            {
+                var split = @namespace.Split('.');
+                var current = _members;
+
+                foreach (var item in split)
+                {
+                    if (current.ContainsKey(item))
+                    {
+                        current = current[item];
+                    }
+                    else
+                    {
+                        current[item] = current = new Member();
+                    }
+                }
+            }
+
+            private class Member : Dictionary<string, Member> { }
+        }
+
         internal static string NormalizeNamespace(
             string localNamespace,
             string fullyQualifiedType,
-            string[] knownOtherPaths,
+            string[] knownOtherNamespaceNames,
             string[] usingPaths,
             IReadOnlyDictionary<string, ISet<string>> knownTypesByNamespace)
         {
             // NB: If changing this method, please run the unit tests against it
-
-            var localNamespaceParts = localNamespace.Split('.').ToArray();
 
             var typeParts = fullyQualifiedType.Split('.').ToArray();
             if (typeParts.Length == 1)
@@ -281,140 +320,109 @@ namespace Intent.Modules.Common.CSharp.Templates
                 return fullyQualifiedType;
             }
 
-            if (localNamespaceParts.SequenceEqual(typeParts.Take(typeParts.Length - 1)))
-            {
-                return typeParts.Last();
-            }
+            var typeNamespace = string.Join('.', typeParts.Take(typeParts.Length - 1));
+            var typeUnqualified = typeParts.Last();
 
-            var otherPathsToCheck = knownOtherPaths
+            var allPaths = Enumerable.Empty<string>()
                 .Append(localNamespace)
+                .Append(typeNamespace)
+                .Concat(knownOtherNamespaceNames)
                 .Concat(usingPaths)
-                .Distinct()
-                .ToArray();
+                .Concat(knownTypesByNamespace.SelectMany(x => x.Value, (x, y) => $"{x.Key}.{y}"))
+                .Where(x => x != fullyQualifiedType)
+                .Distinct();
 
-            // Is there already a using which matches qualifier:
+            var registry = new Registry();
+            foreach (var path in allPaths)
             {
-                var typeQualifier = string.Join('.', typeParts.Take(typeParts.Length - 1));
-                var typeName = typeParts.Last();
-
-                if (usingPaths.Contains(typeQualifier) &&
-                    AllUsingPathsAreNotForeignType() &&
-                    LocalNamespacePartsDoNotContainType() &&
-                    !ConflictingTypeExists() &&
-                    !ConflictingNamespaceTypeExists())
-                {
-                    return typeName;
-                }
-
-                // It's not immediately clear what scenario this covers, if you know/find out, please
-                // document by adding unit test to cover scenario.
-                bool AllUsingPathsAreNotForeignType() => usingPaths.All(x => x != fullyQualifiedType);
-
-                // If name exists in local namespace, can't use name as is.
-                bool LocalNamespacePartsDoNotContainType() => !localNamespaceParts.Contains(typeName);
-
-                // Ensure there are no other known types in usings with the same name:
-                bool ConflictingTypeExists() => usingPaths.Append(localNamespace)
-                    .Any(usingPath => usingPath != typeQualifier &&
-                                      knownTypesByNamespace.TryGetValue(usingPath, out var types) &&
-                                      types.Contains(typeName));
-
-                // Check for conflicting namespaces, try all permutations of the local namespace
-                // with the class name of the type we are trying to resolve
-                bool ConflictingNamespaceTypeExists()
-                {
-                    for (int i = 0; i < localNamespaceParts.Length; i++)
-                    {
-                        var partialPathList = localNamespaceParts.Take(i + 1).ToList();
-                        partialPathList.Add(typeName);
-                        var localPartialPotentialConflict = string.Join(".", partialPathList);
-
-                        if (knownTypesByNamespace.ContainsKey(localPartialPotentialConflict))
-                        {
-                            return true;
-                        }
-                    }
-
-                    return false;
-                }
+                registry.Add(path);
             }
 
-            // To minimize the chance that simplifying the path of the foreign type causes a compile time error due to a
-            // conflicting path, we pre-compute known sub paths for each part of the namespace. To try summarize the logic,
-            // for each part of the local namespace, find all their respective immediate sub path parts and select with
-            // some other data for easier debugging.
-            var namespacePartsSubPaths = localNamespaceParts
-                .Select((_, index) =>
-                {
-                    var namespacePartPath = string.Join('.', localNamespaceParts.Take(index + 1));
+            // C# always tries to resolve first from the namespace (or gives precedence to using
+            // directives inside the namespace, but Intent at this time isn't aware of them), so we
+            // don't even have to consider usings initially.
+            var namespaceParts = localNamespace.Split('.');
+            var namespaceTypeConflictAtPartNumber = (int?)null;
 
-                    return new
-                    {
-                        LocalNamespacePartPath = namespacePartPath,
-                        LocalNamespacePartSubPaths = otherPathsToCheck
-                            .Where(y => y.StartsWith(namespacePartPath + "."))
-                            .Select(otherPath => new
-                            {
-                                OtherPathSubPart = otherPath[(namespacePartPath + ".").Length..].Split('.').First(),
-                                OtherPathFull = otherPath,
-                                LocalNamespacePartPath = namespacePartPath,
-                            })
-                            .GroupBy(x => x.OtherPathSubPart)
-                            .ToDictionary(x => x.Key, x => x.ToList())
-                    };
-                })
-                .Where(x => x.LocalNamespacePartSubPaths.Count > 0)
-                .ToArray();
-
-            var commonPartsCount = 0;
-            for (var i = 0; i < localNamespaceParts.Length && i < typeParts.Length; i++)
+            for (var number = namespaceParts.Length; number > 0; number--)
             {
-                var localPart = localNamespaceParts[i];
-                var foreignPart = typeParts[i];
-                var proposedFirstForeignPart = typeParts.Skip(i + 1).FirstOrDefault();
-                var proposedPathToOmit = string.Join('.', typeParts.Take(i + 1));
+                var typeWithinCurrentNamespace = string.Join('.', namespaceParts.Take(number).Append(typeUnqualified));
 
-                // Simple check first:
-                if (localPart != foreignPart)
+                if (!namespaceTypeConflictAtPartNumber.HasValue &&
+                    typeWithinCurrentNamespace == fullyQualifiedType)
                 {
-                    break;
+                    return typeUnqualified;
                 }
 
-                if (proposedFirstForeignPart == null)
+                var currentPart = namespaceParts[number - 1];
+                var previousPart = number < namespaceParts.Length
+                    ? namespaceParts[number]
+                    : null;
+
+                // Is the current part of the namespace that same as the type name
+                if (currentPart == typeUnqualified)
                 {
-                    commonPartsCount++;
+                    namespaceTypeConflictAtPartNumber = number;
                     continue;
                 }
 
-                var conflicts = namespacePartsSubPaths
-                    // C# gives precedence to resolving types from the most to the least specific from the namespace
-                    .Skip(i + 1)
-
-                    // For namespaces with a matching sub-part:
-                    .Where(x => x.LocalNamespacePartSubPaths.ContainsKey(proposedFirstForeignPart))
-
-                    // Select filtered results (for easier debugging):
-                    .Select(x => new
-                    {
-                        x.LocalNamespacePartPath,
-                        Conflicts = x.LocalNamespacePartSubPaths[proposedFirstForeignPart]
-                            .Where(y => y.LocalNamespacePartPath != proposedPathToOmit)
-                            .ToArray()
-                    })
-
-                    // Where not empty:
-                    .Where(x => x.Conflicts.Length != 0)
-                    .ToArray();
-
-                if (conflicts.Length != 0)
+                // Is there some other known "type" somewhere (but only if we didn't match
+                // on the type name part above in the previous loop).
+                if (previousPart != typeUnqualified &&
+                    registry.ContainsEntry(typeWithinCurrentNamespace))
                 {
+                    // We still continue looping because we need to find the most generalized conflict
+                    namespaceTypeConflictAtPartNumber = number;
+                }
+            }
+
+            // If there is a namespace conflict then regardless of the usings situation we will
+            // always need to qualify the type.
+            if (namespaceTypeConflictAtPartNumber.HasValue)
+            {
+                // Skip over common parts after the conflict, but make sure the first part of our
+                // remaining type part doesn't appear later in the namespace parts.
+                var skipCount = 0;
+                for (; skipCount < typeParts.Length && skipCount < namespaceParts.Length; skipCount++)
+                {
+                    if (skipCount <= namespaceTypeConflictAtPartNumber.Value &&
+                        namespaceParts[skipCount] == typeParts[skipCount] &&
+                        namespaceParts.Skip(skipCount + 2).All(x => x != typeParts[skipCount +1]))
+                    {
+                        continue;
+                    }
+
                     break;
                 }
 
-                commonPartsCount++;
+                return string.Join('.', typeParts.Skip(skipCount));
             }
 
-            return string.Join('.', typeParts.Skip(commonPartsCount));
+            // Only one using exists with the type on it
+            var hasSingleUsingWithType = usingPaths
+                .Count(@using => @using == typeNamespace ||
+                                 (knownTypesByNamespace.TryGetValue(@using, out var types) && types.Contains(typeUnqualified))) == 1;
+            if (hasSingleUsingWithType)
+            {
+                return typeUnqualified;
+            }
+
+            // Either multiple or no usings with the type, meaning we can't use the usings to help
+            // at all, so we work out the shortest required qualifier when considering our namespace
+            {
+                var skipCount = 0;
+                for (; skipCount < typeParts.Length && skipCount < namespaceParts.Length; skipCount++)
+                {
+                    if (namespaceParts[skipCount] == typeParts[skipCount])
+                    {
+                        continue;
+                    }
+
+                    break;
+                }
+
+                return string.Join('.', typeParts.Skip(skipCount));
+            }
         }
 
         private static IEnumerable<string> GetUsingsFromContent(string existingContent)
