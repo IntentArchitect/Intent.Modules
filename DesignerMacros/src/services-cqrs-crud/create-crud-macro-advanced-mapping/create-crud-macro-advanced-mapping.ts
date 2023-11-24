@@ -1,5 +1,5 @@
 /// <reference path="../create-crud-macro/create-crud-macro.ts"/>
-/// <reference path="../convert-to-e2e-mapping/convert-to-e2e-mapping.ts"/>
+/// <reference path="../convert-to-advanced-mapping/convert-to-advanced-mapping.ts"/>
 
 async function execute(element: IElementApi) {
     let entity = await DomainHelper.openSelectEntityDialog();
@@ -14,23 +14,23 @@ async function execute(element: IElementApi) {
     const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, folder);
 
     if (owningEntity == null || !privateSettersOnly) {
-        convertToE2EMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, folder));
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, folder));
     }
 
-    convertToE2EMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, folder, resultDto));
-    convertToE2EMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, folder, resultDto));
+    convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, folder, resultDto));
+    convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, folder, resultDto));
 
     if (!privateSettersOnly) {
-        convertToE2EMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, folder));
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, folder));
     }
 
     const operations = entity.getChildren("Operation").filter(x => x.typeReference.getType() == null);
     for (const operation of operations) {
-        convertToE2EMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, folder));
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, folder));
     }
 
     if (owningEntity == null || !privateSettersOnly) {
-        convertToE2EMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, folder));
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, folder));
     }
 
     const diagramElement = createElement("Diagram", folderName, folder.id)

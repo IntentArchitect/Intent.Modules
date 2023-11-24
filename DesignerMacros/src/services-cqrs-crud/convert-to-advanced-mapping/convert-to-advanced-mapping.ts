@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
-namespace convertToE2EMapping {
+namespace convertToAdvancedMapping {
 
     export function execute(): void {
         if (element.isMapped() && element.specialization == "Command") {
