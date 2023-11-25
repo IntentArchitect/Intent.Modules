@@ -44,6 +44,6 @@ async function execute(element: IElementApi) {
  * Used by Intent.Modelers.Services.DomainInteractions
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro-e2e-mapping/create-crud-macro-e2e-mapping.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro-advanced-mapping/create-crud-macro-advanced-mapping.ts
  */
 //await execute(element);
