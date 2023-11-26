@@ -8246,11 +8246,17 @@ return typeReference.getIsCollection()
 association.typeReference.getType().getChildren("Attribute")
     .filter(x =&gt; x.hasStereotype("Primary Key"))
     .forEach(attr =&gt; {
-        let command = association.getOtherEnd().typeReference.getType();
-        let pkField = command.getChildren("DTO-Field").find(x =&gt; x.getName().toLowerCase() == attr.getName().toLowerCase()
+        let handler = association.getOtherEnd().typeReference.getType();
+        let childSpecialization = handler.specialization == "Command" ? "DTO-Field"
+            : handler.specialization == "Operation" ? "Parameter"
+            : null
+        if (childSpecialization == null) {
+            return;
+        }
+        let pkField = handler.getChildren(childSpecialization).find(x =&gt; x.getName().toLowerCase() == attr.getName().toLowerCase()
             &amp;&amp; x.typeReference.getTypeId() == attr.typeReference.getTypeId())
         if (!pkField) {
-            let newField = createElement("DTO-Field", attr.getName(), command.id);
+            let newField = createElement(childSpecialization, attr.getName(), handler.id);
             newField.typeReference.setType(attr.typeReference.getTypeId());
             newField.typeReference.setIsNullable(attr.typeReference.getIsNullable())
             newField.typeReference.setIsCollection(attr.typeReference.getIsCollection())
