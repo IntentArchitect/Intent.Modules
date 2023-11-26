@@ -50,7 +50,7 @@ namespace Intent.ModuleBuilder.Api
 
         public string ApiModelName => _element.GetApiModelName();
 
-        public string ApiPropertyName => this.GetSettings().ApiPropertyName();
+        public string ApiPropertyName => this.GetSettings().ApiPropertyName() ?? Name.RemoveSuffix("End").ToCSharpIdentifier().Pluralize(true);
 
         public AssociationEndSettingsPersistable ToPersistable()
         {

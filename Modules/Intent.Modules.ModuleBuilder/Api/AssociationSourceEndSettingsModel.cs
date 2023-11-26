@@ -37,7 +37,7 @@ namespace Intent.ModuleBuilder.Api
 
         public string ApiModelName => $"{Name.ToCSharpIdentifier()}Model";
 
-        public string ApiPropertyName => this.GetSettings().ApiPropertyName();
+        public string ApiPropertyName => this.GetSettings().ApiPropertyName() ?? Name.RemoveSuffix("End").ToCSharpIdentifier().Pluralize(true);
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;

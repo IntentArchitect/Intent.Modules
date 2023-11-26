@@ -90,10 +90,10 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
+      <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
-      <isRequiredFunction>return true;</isRequiredFunction>
+      <isRequiredFunction>return false;</isRequiredFunction>
     </property>
     <property id="c81dddd3-8e13-4fe9-b923-1ad339b30746">
       <name>Is Navigable Enabled</name>

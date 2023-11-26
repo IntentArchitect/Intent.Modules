@@ -172,7 +172,7 @@
       <childElements>
         <childElement id="e45defc1-8775-49c0-bf70-5ec59684e944" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+          <display>[mapping]: Class -&gt; DTO (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
@@ -215,7 +215,7 @@
           <childElements>
             <childElement id="a4c91030-1ba4-4939-8896-1a219e98de3e" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+              <display>[mapping]: Attribute -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -258,7 +258,7 @@
             </childElement>
             <childElement id="8988ddc1-c496-4ff3-9606-bebef9015fcd" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+              <display>[mapping]: Operation -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -301,7 +301,7 @@
             </childElement>
             <childElement id="0a66170b-1599-42d0-99e8-411a9aa5ccde" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+              <display>[mapping]: Association Target End -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -344,7 +344,7 @@
             </childElement>
             <childElement id="608eb600-d24e-4bee-9318-b6523c9b3f17" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Traverse)</display>
+              <display>[mapping]: Association Target End -&gt; DTO-Field (Traverse)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -387,7 +387,7 @@
             </childElement>
             <childElement id="0fe6af5f-1263-4204-9513-d506e68fa190" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+              <display>[mapping]: Association Source End -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -430,7 +430,7 @@
             </childElement>
             <childElement id="c9ca92a7-3c61-431b-aa16-a9518fb04b83" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Traverse)</display>
+              <display>[mapping]: Association Source End -&gt; DTO-Field (Traverse)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -473,7 +473,7 @@
             </childElement>
             <childElement id="b8c4aa5c-58a7-477a-a7a0-6e388e013d2b" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Traverse)</display>
+              <display>[mapping]: Generalization Target End -&gt; [None] (Traverse)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -518,7 +518,7 @@
         </childElement>
         <childElement id="f3a62eb7-d203-467a-88d2-b44561df78fd" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+          <display>[mapping]: Value Object -&gt; DTO (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
@@ -561,7 +561,7 @@
           <childElements>
             <childElement id="bb61725d-afb2-42e9-85e0-8a0eb036e78b" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+              <display>[mapping]: Attribute -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -606,7 +606,7 @@
         </childElement>
         <childElement id="09e5c0b2-d4db-4eff-86b0-496d0ef90ec0" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+          <display>[mapping]: Data Contract -&gt; DTO (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
@@ -649,7 +649,7 @@
           <childElements>
             <childElement id="c40b9c3f-8042-4015-876c-b0e561d13aee" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+              <display>[mapping]: Attribute -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -726,7 +726,7 @@
       <childElements>
         <childElement id="40d1cbba-635e-4bd0-a8db-10876ea756bd" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+          <display>[mapping]: Class -&gt; DTO (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
@@ -769,7 +769,7 @@
           <childElements>
             <childElement id="3aaf50d0-80e1-4c6a-890d-936be9f7c678" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+              <display>[mapping]: Attribute -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -812,7 +812,7 @@
             </childElement>
             <childElement id="a04cbd98-ecbf-4635-a815-d5c9592f4688" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+              <display>[mapping]: Association Target End -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -855,7 +855,7 @@
             </childElement>
             <childElement id="e109d7f1-e2c0-4404-a0f5-c761f0f20a9f" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+              <display>[mapping]: Association Source End -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -898,7 +898,7 @@
             </childElement>
             <childElement id="80db94cb-ec11-412a-835d-b057615c75df" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Traverse)</display>
+              <display>[mapping]: Generalization Target End -&gt; [None] (Traverse)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -943,7 +943,7 @@
         </childElement>
         <childElement id="6dbab0ce-42d9-4523-9a4b-b351021d7a11" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+          <display>[mapping]: Value Object -&gt; DTO (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
@@ -986,7 +986,7 @@
           <childElements>
             <childElement id="4d84c2c6-914b-4807-8627-f6c3505bbaa6" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: undefined -&gt; [None] (Map to Type)</display>
+              <display>[mapping]: Attribute -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
