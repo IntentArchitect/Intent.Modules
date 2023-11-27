@@ -129,6 +129,18 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+    
+    [Fact]
+    public async Task StaticGenericMethodTest()
+    {
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
+            .AddClass("ClassWithStaticMembers", @class =>
+            {
+                @class.AddMethod("void", "staticMethod", method => method.Static().AddGenericParameter("T"));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 
     [Fact]
     public async Task StatementBlocks()

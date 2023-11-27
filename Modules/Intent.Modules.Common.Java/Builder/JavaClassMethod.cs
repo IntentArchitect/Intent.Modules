@@ -170,7 +170,7 @@ public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{GetGenericParameters()}{OverrideModifier}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}) {GetCheckedExceptions()}{{{Statements.ConcatCode($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{OverrideModifier}{GetGenericParameters()}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}) {GetCheckedExceptions()}{{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
 

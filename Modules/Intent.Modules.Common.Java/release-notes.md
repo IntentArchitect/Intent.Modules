@@ -1,3 +1,7 @@
+### Version 3.4.6
+
+- Fixed: `static` keyword (along with other modifiers) will be placed before generic `<T>` parameters.
+
 ### Version 3.4.5
 
 - Improvement: `Exclusions`, `Type` and `Scope` properties have been added to `JavaDependency` so that it now covers all [available dependency options](https://maven.apache.org/pom.html#dependencies).

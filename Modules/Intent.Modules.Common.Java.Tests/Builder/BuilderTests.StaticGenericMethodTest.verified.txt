@@ -1,0 +1,8 @@
+﻿package test.namespace;
+
+
+
+public class ClassWithStaticMembers {
+    public static <T> void staticMethod() {
+    }
+}
