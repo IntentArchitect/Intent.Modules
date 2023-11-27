@@ -142,7 +142,7 @@ foreach ($project in $projects) {
 
 foreach ($project in $projects) {
     Invoke-Expression "dotnet restore $project --verbosity normal"
-    Invoke-Expression "dotnet build $project --verbosity normal"
+    Invoke-Expression "dotnet build $project --verbosity normal --configuration Release"
     Invoke-Expression "dotnet pack $project --verbosity normal$packOutputParam"
 }
 
