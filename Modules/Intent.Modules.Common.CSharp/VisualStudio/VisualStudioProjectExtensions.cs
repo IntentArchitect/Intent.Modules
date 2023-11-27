@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.CSharp.VisualStudio;
@@ -132,6 +133,18 @@ namespace Intent.Modules.Common.VisualStudio
         {
             var startsWith = $"net{version:D}";
             return outputTarget.GetSupportedFrameworks().Any(x => x.StartsWith(startsWith));
+        }
+
+        /// <inheritdoc cref="ICSharpProject.TryGetMaxNetAppVersion"/>
+        public static bool TryGetMaxNetAppVersion(this IOutputTarget outputTarget, out MajorMinorVersion majorMinorVersion)
+        {
+            return CSharpProject.TryGetMaxNetAppVersion(outputTarget.GetProject().GetSupportedFrameworks().ToArray(), out majorMinorVersion);
+        }
+
+        /// <inheritdoc cref="ICSharpProject.GetMaxNetAppVersion"/>
+        public static MajorMinorVersion GetMaxNetAppVersion(this IOutputTarget outputTarget)
+        {
+            return CSharpProject.GetMaxNetAppVersion(outputTarget.GetProject().GetSupportedFrameworks().ToArray());
         }
     }
 }

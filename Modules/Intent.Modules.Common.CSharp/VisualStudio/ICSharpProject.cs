@@ -29,6 +29,18 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         bool IsNet6App { get; }
         bool IsNetApp(byte version);
 
+        /// <summary>
+        /// Determines if the project targets at least one .NET 5+ framework and provides the highest
+        /// version thereof.
+        /// </summary>
+        bool TryGetMaxNetAppVersion(out MajorMinorVersion majorMinorVersion);
+
+        /// <summary>
+        /// Returns the highest targeted .NET 5+ version of the project. If the project does not have
+        /// a .NET5+ target then an exception is thrown.
+        /// </summary>
+        MajorMinorVersion GetMaxNetAppVersion();
+
         Version[] TargetDotNetFrameworks { get; }
         bool IsNullableAwareContext();
     }

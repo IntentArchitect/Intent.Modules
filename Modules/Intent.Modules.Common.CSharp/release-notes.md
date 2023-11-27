@@ -6,6 +6,7 @@
 - Added: `AddTopLevelStatements` on `CSharpFile` for support of [top-level statements](https://learn.microsoft.com/dotnet/csharp/fundamentals/program-structure/top-level-statements).
 - Added: Abstractions for working with `Program.cs` and `Startup.cs` files in a way where you don't have to be aware of whether or not _top-level statements_ and/or _use minimal hosting model_ have been selected.
 - Fixed: Necessary type disambiguation would not occur when one of the current class's namespace parts contained a type with the same name as the type being resolved.
+- Fixed: When a .NET project was set to use .NET 8 the software factory would show the following warning: `Assuming language version "11.0" for project "<Name>" targeting "net8.0"`. .NET 8 projects will now use language version `12.0`.
 
 ### Version 3.3.44
 

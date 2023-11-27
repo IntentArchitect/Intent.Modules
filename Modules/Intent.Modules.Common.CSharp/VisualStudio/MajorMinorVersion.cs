@@ -168,4 +168,10 @@ public struct MajorMinorVersion : IComparable<MajorMinorVersion>, IComparable, I
     {
         return $"{Major:D}.{Minor:D}";
     }
+
+    public void Deconstruct(out int major, out int minor)
+    {
+        major = Major;
+        minor = Minor;
+    }
 }

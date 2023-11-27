@@ -74,6 +74,16 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
             return GetSupportedFrameworks().Any(x => x.StartsWith(startsWith));
         }
 
+        public bool TryGetMaxNetAppVersion(out MajorMinorVersion majorMinorVersion)
+        {
+            return TryGetMaxNetAppVersion(GetSupportedFrameworks().ToArray(), out majorMinorVersion);
+        }
+
+        public MajorMinorVersion GetMaxNetAppVersion()
+        {
+            return GetMaxNetAppVersion(GetSupportedFrameworks().ToArray());
+        }
+
         public Version[] TargetDotNetFrameworks => GetSupportedFrameworks()
             .Select(x => Version.TryParse($"{x.RemovePrefix("netcoreapp", "net")}.0", out var ver)
                 ? ver
@@ -203,7 +213,10 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
                         return MajorMinorVersion.Create(10, 0);
                     case 7:
                         return MajorMinorVersion.Create(11, 0);
+                    case 8:
+                        return MajorMinorVersion.Create(12, 0);
                     default:
+                        // See https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version#defaults
                         Logging.Log.Warning(
                             $"Assuming language version \"{PreviewLanguageVersion}\" for project \"{Name}\" targeting " +
                             $"\"{frameworkMoniker}\". Try seeing if a new version of the \"Intent.Modules.Common.CSharp\"" +
@@ -214,6 +227,47 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
             }
 
             throw new Exception($"Could not determine default language version for framework moniker \"{frameworkMoniker}\"");
+        }
+
+        internal static MajorMinorVersion GetMaxNetAppVersion(string[] supportedFrameworks)
+        {
+            if (TryGetMaxNetAppVersion(supportedFrameworks, out var majorMinorVersion))
+            {
+                return majorMinorVersion;
+            }
+
+            throw new InvalidOperationException($"Project's frameworks ({string.Join('.', supportedFrameworks)}) do not target .NET 5 or greater.");
+        }
+
+        internal static bool TryGetMaxNetAppVersion(string[] supportedFrameworks, out MajorMinorVersion majorMinorVersion)
+        {
+            majorMinorVersion = supportedFrameworks
+                .Select(frameworkMoniker =>
+                {
+                    // Match for strings like net5.0, net6.0, etc.
+                    if (!frameworkMoniker.StartsWith("net") ||
+                        !frameworkMoniker.Contains(".") ||
+                        !decimal.TryParse(frameworkMoniker[3..], NumberStyles.Any, CultureInfo.InvariantCulture, out var version) ||
+                        version < 5)
+                    {
+                        return default;
+                    }
+
+                    var parts = frameworkMoniker[3..].Split('.');
+                    if (parts.Length != 2 ||
+                        !int.TryParse(parts[0], out var major) ||
+                        !int.TryParse(parts[1], out var minor))
+                    {
+                        return default;
+                    }
+
+                    return MajorMinorVersion.Create(major, minor);
+                })
+                .Where(x => x != default)
+                .DefaultIfEmpty()
+                .Max();
+
+            return majorMinorVersion != default;
         }
     }
 }
