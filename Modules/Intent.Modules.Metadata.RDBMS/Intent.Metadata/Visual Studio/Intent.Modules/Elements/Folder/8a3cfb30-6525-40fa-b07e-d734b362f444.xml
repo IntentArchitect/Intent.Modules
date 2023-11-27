@@ -26,7 +26,6 @@
       <display>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>8a3cfb30-6525-40fa-b07e-d734b362f444</parentFolderId>
@@ -41,7 +40,6 @@
       <display>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>8a3cfb30-6525-40fa-b07e-d734b362f444</parentFolderId>

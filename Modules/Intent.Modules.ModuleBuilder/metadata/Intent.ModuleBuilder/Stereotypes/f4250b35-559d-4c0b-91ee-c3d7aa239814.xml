@@ -95,5 +95,15 @@ return `[${shortcut}]`;</displayFunction>
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="77a9993c-40ba-47a9-a2a4-0974548a3f27">
+      <name>Is Option Visible Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-api</apiTypeDefinition>
+    </property>
   </properties>
 </stereotypeDefinition>

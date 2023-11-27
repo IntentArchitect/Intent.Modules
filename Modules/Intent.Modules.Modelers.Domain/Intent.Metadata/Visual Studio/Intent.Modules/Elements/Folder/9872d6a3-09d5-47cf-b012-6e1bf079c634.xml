@@ -25,7 +25,6 @@
       <name>Intent.ModuleBuilder.DecoratorRegistration.Template</name>
       <display>Intent.ModuleBuilder.DecoratorRegistration.Template</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9872d6a3-09d5-47cf-b012-6e1bf079c634</parentFolderId>
@@ -39,7 +38,6 @@
       <name>Intent.ModuleBuilder.DecoratorTemplate</name>
       <display>Intent.ModuleBuilder.DecoratorTemplate</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9872d6a3-09d5-47cf-b012-6e1bf079c634</parentFolderId>
@@ -54,7 +52,6 @@
       <display>Intent.ModuleBuilder.Templates.TemplateDecorator</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>2</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9872d6a3-09d5-47cf-b012-6e1bf079c634</parentFolderId>
@@ -69,7 +66,6 @@
       <display>Intent.ModuleBuilder.Templates.TemplateDecoratorRegistration</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>3</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9872d6a3-09d5-47cf-b012-6e1bf079c634</parentFolderId>
@@ -83,7 +79,6 @@
       <name>ModuleBuilder.Templates.TemplateDecorator</name>
       <display>ModuleBuilder.Templates.TemplateDecorator</display>
       <isAbstract>false</isAbstract>
-      <order>4</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9872d6a3-09d5-47cf-b012-6e1bf079c634</parentFolderId>
@@ -97,7 +92,6 @@
       <name>ModuleBuilder.Templates.TemplateDecoratorRegistration</name>
       <display>ModuleBuilder.Templates.TemplateDecoratorRegistration</display>
       <isAbstract>false</isAbstract>
-      <order>5</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9872d6a3-09d5-47cf-b012-6e1bf079c634</parentFolderId>

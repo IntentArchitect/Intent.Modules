@@ -1,14 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Reflection.Metadata;
 using Intent.Metadata.Models;
-using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParameter
+public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParameter, IHasCSharpName
 {
     public string Type { get; }
     public string Name { get; }
@@ -18,7 +15,7 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParam
     public string XmlDocComment { get; private set; }
     public string ParameterModifier { get; private set; } = "";
 
-    public CSharpParameter(string type, string name)
+    public CSharpParameter(string type, string name, CSharpMetadataBase parent)
     {
         if (string.IsNullOrWhiteSpace(type))
         {
@@ -32,6 +29,31 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParam
 
         Type = type;
         Name = name;
+        File = parent.File;
+        Parent = parent;
+    }
+
+    public CSharpParameter(string type, string name, CSharpInterfaceMethod method)
+    {
+        if (string.IsNullOrWhiteSpace(type))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(type));
+        }
+
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+
+        Type = type;
+        Name = name;
+        File = method?.File;
+    }
+
+
+    public string GetReferenceName()
+    {
+        return Name;
     }
 
     public CSharpParameter AddAttribute(string name, Action<CSharpAttribute> configure = null)
@@ -56,7 +78,7 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParam
 
     public CSharpParameter WithDefaultValue(string defaultValue)
     {
-        DefaultValue = defaultValue;
+        DefaultValue = string.IsNullOrWhiteSpace(defaultValue) ? null : defaultValue;
         return this;
     }
 

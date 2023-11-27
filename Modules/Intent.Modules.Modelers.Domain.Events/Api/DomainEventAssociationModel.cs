@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -69,6 +70,7 @@ namespace Intent.Modelers.Domain.Events.Api
     public class DomainEventAssociationSourceEndModel : DomainEventAssociationEndModel
     {
         public const string SpecializationTypeId = "ad8998ec-ee85-4544-9267-8ec150a2f257";
+        public const string SpecializationType = "Domain Event Association Source End";
 
         public DomainEventAssociationSourceEndModel(IAssociationEnd associationEnd, DomainEventAssociationModel association) : base(associationEnd, association)
         {
@@ -79,14 +81,17 @@ namespace Intent.Modelers.Domain.Events.Api
     public class DomainEventAssociationTargetEndModel : DomainEventAssociationEndModel
     {
         public const string SpecializationTypeId = "fe0d0f78-fb7e-4685-ab2d-bae88054a78e";
+        public const string SpecializationType = "Domain Event Association Target End";
 
         public DomainEventAssociationTargetEndModel(IAssociationEnd associationEnd, DomainEventAssociationModel association) : base(associationEnd, association)
         {
         }
+
+        public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
     }
 
     [IntentManaged(Mode.Fully)]
-    public class DomainEventAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class DomainEventAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly DomainEventAssociationModel _association;
@@ -108,6 +113,7 @@ namespace Intent.Modelers.Domain.Events.Api
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public DomainEventAssociationModel Association => _association;
+        public IElement InternalElement => _associationEnd;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
         public IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;

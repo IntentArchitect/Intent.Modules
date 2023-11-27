@@ -21,32 +21,75 @@ using System.Linq;
 
 namespace <#= Namespace #>
 {
-	[IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class <#= ClassName #> : <#= GetBaseType() #>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    <#= IsFileBuilder ? "public" : "partial" #> class <#= ClassName #> : <#= GetBaseType() #>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";
 
-	    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+<#  if (IsFileBuilder) { #>
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+<#  } else { #>
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+<#  } #>
         public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : ""#>) : base(TemplateId, outputTarget, model)
         {
+<#  if (Model.GetFileSettings().TemplatingMethod().IsIndentedFileBuilder()) { #>
+            <#= GetFilePropertyName() #> = new <#= GetBuilderType() #>($"<#= GetDefaultName() #>", "<#= Model.GetFileSettings().FileExtension() #>")
+                .WithItems(items =>
+                {
+                    items.WithContent("// Sample JSON:");
+                    items.WithContent("{");
+                    items.WithItems(i =>
+                    {
+                        i.WithContent("\"fieldName\": \"value\"");
+                    });
+                    items.WithContent("}");
+                });
+<#  } else if (Model.GetFileSettings().TemplatingMethod().IsDataFileBuilder()) { #>
+            <#= GetFilePropertyName() #> = new <#= GetBuilderType() #>($"<#= GetDefaultName() #>")
+                <#= GetWriterType() #>
+                .WithRootObject(this, @object =>
+                {
+                    @object
+                        .WithValue("fieldName", "fieldValue")
+                    ;
+                });
+<#  } #>
         }
 
+<#  if (IsFileBuilder) { #>
+        [IntentManaged(Mode.Fully)]
+        public I<#= GetBuilderType() #> <#= GetFilePropertyName() #> { get; }
+
+        [IntentManaged(Mode.Fully)]
+        public override ITemplateFileConfig GetTemplateFileConfig() => <#= GetFilePropertyName() #>.GetConfig();
+<#  } else { #>
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new TemplateFileConfig(
-                fileName: $"<#= Model.IsFilePerModelTemplateRegistration()  ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileName: $"<#= GetDefaultName() #>",
                 fileExtension: "<#= Model.GetFileSettings().FileExtension() #>"
             );
         }
-<#  if (Model.GetFileSettings().TemplatingMethod().IsCustom()) { #>
+<#  } #>
 
+<#  if (Model.GetFileSettings().OutputFileContent().IsBinary()) { #>
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override byte[] RunBinaryTemplate()
+        {
+            throw new NotImplementedException("Implement custom template here");
+        }
+<#  } else if (Model.GetFileSettings().TemplatingMethod().IsCustom()) { #>
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             throw new NotImplementedException("Implement custom template here");
         }
+<#  } else if (IsFileBuilder) { #>
+        [IntentManaged(Mode.Fully)]
+        public override string TransformText() => <#= GetFilePropertyName() #>.ToString();
 <#  } #>
     }
 }

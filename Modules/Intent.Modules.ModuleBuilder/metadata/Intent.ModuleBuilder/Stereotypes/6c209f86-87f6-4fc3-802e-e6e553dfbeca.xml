@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="6c209f86-87f6-4fc3-802e-e6e553dfbeca" version="3.1.0">
+  <comment />
+  <name>Option Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">Mapping Option</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="check-square" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction>var macOsShortcut = properties["Shortcut (macOS)"].value;
+var shortcut = properties["Shortcut"].value;
+
+if (!shortcut) {
+    return "[No Shortcut]";
+}
+
+if (macOsShortcut) {
+    return `[${shortcut} / ${macOsShortcut}]`
+}
+
+return `[${shortcut}]`;</displayFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>ea7ccdb1-1f68-4cf0-87a7-f060b69e364d</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3">
+      <name>Shortcut</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="36d5eeba-2483-450e-b51b-b156836f6d3a">
+      <comment>Optional. If unspecified, then the "Shortcut" property is automatically used with uses of "Ctrl" changed to "Command".</comment>
+      <name>Shortcut (macOS)</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="08fac0bc-4cf9-45ec-8362-e452a185efee">
+      <comment>Sets the order of the type against the other types</comment>
+      <name>Type Order</name>
+      <type>number</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="5e97216b-6c99-4fa2-971d-575a27f212cc">
+      <name>Icon</name>
+      <type>string</type>
+      <controlType>icon</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="63039244-aaad-49eb-84bf-0396a6dd0fe9">
+      <name>Is Option Visible Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-api</apiTypeDefinition>
+    </property>
+  </properties>
+</stereotypeDefinition>

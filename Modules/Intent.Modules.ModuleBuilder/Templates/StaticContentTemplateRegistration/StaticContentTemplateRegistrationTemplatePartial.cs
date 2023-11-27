@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
@@ -46,6 +47,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.StaticContentTemplateRegistrati
                 @namespace: $"{this.GetNamespace(AdditionalFolderName)}",
                 relativeLocation: $"{this.GetFolderPath(AdditionalFolderName)}",
                 fileName: name);
+        }
+
+        public string GetGlobStrings(string binaryGlobbingPattern)
+        {
+            var sp = binaryGlobbingPattern.Replace("\r\n", "\n").Split("\n");
+            return string.Join(", ", sp.Select(x => $"\"{x}\""));
         }
 
         public string GetTemplateId() => $"{Namespace}.{ClassName}";

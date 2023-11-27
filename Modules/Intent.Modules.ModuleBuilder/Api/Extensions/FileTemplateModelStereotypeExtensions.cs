@@ -18,6 +18,7 @@ namespace Intent.ModuleBuilder.Api
             return stereotype != null ? new FileSettings(stereotype) : null;
         }
 
+
         public static bool HasFileSettings(this FileTemplateModel model)
         {
             return model.HasStereotype("File Settings");
@@ -35,7 +36,6 @@ namespace Intent.ModuleBuilder.Api
             return true;
         }
 
-
         public class FileSettings
         {
             private IStereotype _stereotype;
@@ -47,9 +47,9 @@ namespace Intent.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
-            public string FileExtension()
+            public OutputFileContentOptions OutputFileContent()
             {
-                return _stereotype.GetProperty<string>("File Extension");
+                return new OutputFileContentOptions(_stereotype.GetProperty<string>("Output File Content"));
             }
 
             public TemplatingMethodOptions TemplatingMethod()
@@ -57,6 +57,53 @@ namespace Intent.ModuleBuilder.Api
                 return new TemplatingMethodOptions(_stereotype.GetProperty<string>("Templating Method"));
             }
 
+            public DataFileOutputTypeOptions DataFileOutputType()
+            {
+                return new DataFileOutputTypeOptions(_stereotype.GetProperty<string>("Data File Output Type"));
+            }
+
+            public string FileExtension()
+            {
+                return _stereotype.GetProperty<string>("File Extension");
+            }
+
+            public class OutputFileContentOptions
+            {
+                public readonly string Value;
+
+                public OutputFileContentOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public OutputFileContentOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Text":
+                            return OutputFileContentOptionsEnum.Text;
+                        case "Binary":
+                            return OutputFileContentOptionsEnum.Binary;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsText()
+                {
+                    return Value == "Text";
+                }
+                public bool IsBinary()
+                {
+                    return Value == "Binary";
+                }
+            }
+
+            public enum OutputFileContentOptionsEnum
+            {
+                Text,
+                Binary
+            }
             public class TemplatingMethodOptions
             {
                 public readonly string Value;
@@ -70,10 +117,14 @@ namespace Intent.ModuleBuilder.Api
                 {
                     switch (Value)
                     {
-                        case "T4 Template":
-                            return TemplatingMethodOptionsEnum.T4Template;
+                        case "Indented File Builder":
+                            return TemplatingMethodOptionsEnum.IndentedFileBuilder;
+                        case "Data File Builder":
+                            return TemplatingMethodOptionsEnum.DataFileBuilder;
                         case "String Interpolation":
                             return TemplatingMethodOptionsEnum.StringInterpolation;
+                        case "T4 Template":
+                            return TemplatingMethodOptionsEnum.T4Template;
                         case "Custom":
                             return TemplatingMethodOptionsEnum.Custom;
                         default:
@@ -81,13 +132,21 @@ namespace Intent.ModuleBuilder.Api
                     }
                 }
 
-                public bool IsT4Template()
+                public bool IsIndentedFileBuilder()
                 {
-                    return Value == "T4 Template";
+                    return Value == "Indented File Builder";
+                }
+                public bool IsDataFileBuilder()
+                {
+                    return Value == "Data File Builder";
                 }
                 public bool IsStringInterpolation()
                 {
                     return Value == "String Interpolation";
+                }
+                public bool IsT4Template()
+                {
+                    return Value == "T4 Template";
                 }
                 public bool IsCustom()
                 {
@@ -97,8 +156,61 @@ namespace Intent.ModuleBuilder.Api
 
             public enum TemplatingMethodOptionsEnum
             {
-                T4Template,
+                IndentedFileBuilder,
+                DataFileBuilder,
                 StringInterpolation,
+                T4Template,
+                Custom
+            }
+            public class DataFileOutputTypeOptions
+            {
+                public readonly string Value;
+
+                public DataFileOutputTypeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public DataFileOutputTypeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "JSON":
+                            return DataFileOutputTypeOptionsEnum.JSON;
+                        case "YAML":
+                            return DataFileOutputTypeOptionsEnum.YAML;
+                        case "OCL":
+                            return DataFileOutputTypeOptionsEnum.OCL;
+                        case "Custom":
+                            return DataFileOutputTypeOptionsEnum.Custom;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsJSON()
+                {
+                    return Value == "JSON";
+                }
+                public bool IsYAML()
+                {
+                    return Value == "YAML";
+                }
+                public bool IsOCL()
+                {
+                    return Value == "OCL";
+                }
+                public bool IsCustom()
+                {
+                    return Value == "Custom";
+                }
+            }
+
+            public enum DataFileOutputTypeOptionsEnum
+            {
+                JSON,
+                YAML,
+                OCL,
                 Custom
             }
         }

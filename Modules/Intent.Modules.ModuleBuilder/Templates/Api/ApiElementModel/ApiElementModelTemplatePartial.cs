@@ -61,7 +61,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
 
         public string GetInterfaces()
         {
-            var interfaces = new List<string> { "IMetadataModel", "IHasStereotypes", "IHasName" };
+            var interfaces = new List<string> { "IMetadataModel", "IHasStereotypes", "IHasName", "IElementWrapper" };
             if (!Model.GetTypeReferenceSettings().Mode().IsDisabled() && Model.GetTypeReferenceSettings().Represents().IsReference())
             {
                 interfaces.Add("IHasTypeReference");
@@ -73,21 +73,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             }
 
             return string.Join(", ", interfaces);
-        }
-
-        private static string FormatForCollection(string name, bool asCollection)
-        {
-            return asCollection ? $"IList<{name}>" : name;
-        }
-
-        private static string GetCreationOptionName(ElementCreationOptionModel option)
-        {
-            if (option.GetOptionSettings().ApiModelName() != null)
-            {
-                return option.GetOptionSettings().ApiModelName();
-            }
-            var name = option.Name.Replace("Add ", "").Replace("New ", "").ToCSharpIdentifier();
-            return option.GetOptionSettings().AllowMultiple() ? name.ToPluralName() : name;
         }
 
         private bool ExistsInBase(ElementCreationOptionModel creationOption)

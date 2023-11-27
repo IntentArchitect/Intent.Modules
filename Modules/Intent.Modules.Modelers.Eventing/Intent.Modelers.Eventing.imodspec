@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Eventing</id>
-  <version>4.0.4</version>
-  <supportedClientVersions>[4.0.0-beta.4, 5.0.0-a)</supportedClientVersions>
+  <version>5.0.0-beta.0</version>
+  <supportedClientVersions>[4.1.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Eventing modeller for describing event messages and defining publishers and subscribers.</summary>
   <description>Eventing modeller for describing event messages and defining publishers and subscribers.</description>
   <authors>Intent Architect</authors>
@@ -10,9 +10,10 @@
   <releaseNotes>release-notes.md</releaseNotes>
   <templates></templates>
   <decorators></decorators>
+  <tags>eventing message publish subscribe pubsub designer</tags>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.4.1" />
+    <dependency id="Intent.Common" version="3.4.3" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
   </dependencies>
   <files>
@@ -20,9 +21,10 @@
     <file src="$outDir$/$id$.pdb" />
   </files>
   <metadata>
-    <install src="modelers/Core Eventing Types.designer.settings" externalReference="f49d67ab-c0ef-4f48-a69d-db7a7a287260" />
+    <install target="Services;Module Builder" src="modelers/Core Eventing Types.designer.settings" externalReference="f49d67ab-c0ef-4f48-a69d-db7a7a287260" />
     <install src="modelers/Eventing.designer.config" externalReference="822e4254-9ced-4dd1-ad56-500b861f7e4d" />
     <install target="Module Builder;Eventing" src="Intent.Metadata/Module Builder/Intent.Modelers.Eventing/Intent.Modelers.Eventing.pkg.config" externalReference="73db16ce-8cc2-4b89-8348-9a8bda3fda4c" />
+    <install target="Module Builder" src="modelers/Eventing Designer Types.designer.settings" externalReference="103ef2ed-815f-4a0c-acf9-1a29c9470897" />
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />

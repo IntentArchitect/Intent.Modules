@@ -25,7 +25,6 @@
       <name>id</name>
       <display>id: guid</display>
       <isAbstract>true</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="ff7a254d-55e9-4689-8abe-2f2bb4053e18">
         <typeId>6b649125-18ea-48fd-a6ba-0bfff0d8f488</typeId>
@@ -56,7 +55,6 @@
       <name>isDisputeAllowed</name>
       <display>isDisputeAllowed: bool</display>
       <isAbstract>true</isAbstract>
-      <order>1</order>
       <genericTypes />
       <typeReference id="55749bb8-a9c6-45b3-a812-094385cb1f25">
         <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
@@ -88,7 +86,6 @@
       <name>isShownExternally</name>
       <display>isShownExternally: bool</display>
       <isAbstract>true</isAbstract>
-      <order>2</order>
       <genericTypes />
       <typeReference id="0ae8f6e5-2fdf-4eac-8e83-59e713b30f98">
         <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
@@ -120,7 +117,6 @@
       <name>clientResponsePeriod</name>
       <display>clientResponsePeriod: int?</display>
       <isAbstract>true</isAbstract>
-      <order>3</order>
       <genericTypes />
       <typeReference id="dd17bfb5-3c22-4a75-8bb0-71341c33bcf7">
         <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
@@ -151,7 +147,6 @@
       <name>subjectResponsePeriod</name>
       <display>subjectResponsePeriod: int?</display>
       <isAbstract>true</isAbstract>
-      <order>4</order>
       <genericTypes />
       <typeReference id="a1292b61-3bcf-4ab4-bd39-6b9a0e1780dd">
         <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
@@ -182,7 +177,6 @@
       <name>monitoringPeriod</name>
       <display>monitoringPeriod: int?</display>
       <isAbstract>true</isAbstract>
-      <order>5</order>
       <genericTypes />
       <typeReference id="15e09bed-40cb-47ab-82fb-9c7e72a6de79">
         <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
@@ -213,7 +207,6 @@
       <name>GetSomething</name>
       <display>GetSomething: string</display>
       <isAbstract>true</isAbstract>
-      <order>6</order>
       <genericTypes />
       <typeReference id="d0b07aa1-05ef-4b89-bfab-36411691ed47">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -244,7 +237,6 @@
       <name>xxx</name>
       <display>xxx: string</display>
       <isAbstract>true</isAbstract>
-      <order>7</order>
       <genericTypes />
       <typeReference id="c67412fe-3f1b-484e-888f-cce877fd7a5e">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -278,7 +270,6 @@
       <name>field</name>
       <display>field: string</display>
       <isAbstract>true</isAbstract>
-      <order>8</order>
       <genericTypes />
       <typeReference id="8c0502ac-8c47-4617-91de-0075ae771243">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -311,7 +302,6 @@
       <name>association</name>
       <display>association: string</display>
       <isAbstract>true</isAbstract>
-      <order>9</order>
       <genericTypes />
       <typeReference id="7dfd9096-3d84-474b-9d31-a8864247f2fb">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>

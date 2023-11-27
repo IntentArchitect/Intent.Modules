@@ -1,11 +1,10 @@
 using System;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
-using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorParameter>, ICSharpParameter
+public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorParameter>, ICSharpParameter, IHasCSharpName
 {
     private readonly CSharpConstructor _constructor;
     public string Type { get; }
@@ -26,6 +25,8 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
         }
 
         _constructor = constructor;
+        Parent = constructor;
+        File = constructor.File;
         Type = type;
         Name = name;
     }

@@ -10,7 +10,22 @@
   <icon type="FontAwesome" source="file" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
-  <displayFunction>return `[.${this.properties['File Extension'].value}]`;</displayFunction>
+  <displayFunction>const dataFileOutputType = properties["Data File Output Type"].value;
+
+if (properties["Templating Method"].value === "Data File Builder" &amp;&amp; dataFileOutputType !== "Custom") {
+    switch (dataFileOutputType) {
+        case "OCL":
+            return "[.ocl]";
+        case "JSON":
+            return "[.json]";
+        case "YAML":
+            return "[.yaml]";
+        default:
+            return `[(Unknown "Data File Output Type" of "${dataFileOutputType}"!]`
+    }
+}
+
+return `[.${this.properties['File Extension'].value}]`;</displayFunction>
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
@@ -20,15 +35,19 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
-    <property id="329d0550-b81b-4db6-a99b-05d90360d432">
-      <name>File Extension</name>
+    <property id="db83691e-fc21-467b-a004-427b23f9ed9b">
+      <name>Output File Content</name>
       <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder>(required)</placeholder>
-      <defaultValue>txt</defaultValue>
-      <valueOptions />
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Text</defaultValue>
+      <valueOptions>
+        <option>Text</option>
+        <option>Binary</option>
+      </valueOptions>
       <lookupTypes />
+      <isActiveFunction />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe">
@@ -39,11 +58,43 @@
       <placeholder>(required)</placeholder>
       <defaultValue>String Interpolation</defaultValue>
       <valueOptions>
-        <option>T4 Template</option>
+        <option>Indented File Builder</option>
+        <option>Data File Builder</option>
         <option>String Interpolation</option>
+        <option>T4 Template</option>
         <option>Custom</option>
       </valueOptions>
       <lookupTypes />
+      <isActiveFunction>return OutputFileContent === "Text";</isActiveFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="add2c4a0-5e44-4b93-9851-be809230751c">
+      <name>Data File Output Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>JSON</defaultValue>
+      <valueOptions>
+        <option>JSON</option>
+        <option>YAML</option>
+        <option>OCL</option>
+        <option>Custom</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction>return OutputFileContent === "Text" &amp;&amp; TemplatingMethod === "Data File Builder";</isActiveFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="329d0550-b81b-4db6-a99b-05d90360d432">
+      <name>File Extension</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(required)</placeholder>
+      <defaultValue>txt</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return TemplatingMethod !== "Data File Builder" || DataFileOutputType === "Custom";</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>

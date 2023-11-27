@@ -7,6 +7,7 @@ using Intent.Modules.Common.Registrations;
 using Intent.Registrations;
 using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
+using Microsoft.Extensions.FileSystemGlobbing;
 using SearchOption = System.IO.SearchOption;
 
 namespace Intent.Modules.Common.Templates.StaticContent
@@ -48,6 +49,9 @@ namespace Intent.Modules.Common.Templates.StaticContent
         /// </example>
         public virtual string ContentSubFolder => "/";
 
+        public virtual string[] BinaryFileGlobbingPatterns => new string[0];
+
+
         /// <summary>
         /// Will look for keys in this format <code>&lt;#= {element.Key} #&gt;</code> and substitute them with <code>{element.Value}</code>.
         /// </summary>
@@ -58,19 +62,41 @@ namespace Intent.Modules.Common.Templates.StaticContent
         protected override void Register(ITemplateInstanceRegistry registry, IApplication application)
         {
             var location = Path.GetFullPath(Path.Join(Path.GetDirectoryName(GetType().Assembly.Location), "../content", ContentSubFolder.NormalizePath()));
-            var files = Directory
-                .EnumerateFiles(location, "*.*", SearchOption.AllDirectories)
-                .Select(x => new
-                {
-                    FullPath = x,
-                    RelativePath = x.Substring(location.Length).Trim(Path.DirectorySeparatorChar)
-                })
-                .ToArray();
+            var allFiles = Directory
+                .EnumerateFiles(location, "*.*", SearchOption.AllDirectories);
 
-            foreach (var file in files)
+            var binaries = GetBinaryFiles(location, allFiles);
+            var textFiles = allFiles.Except(binaries).Select(x => new
+            {
+                FullPath = x,
+                RelativePath = x.Substring(location.Length).Trim(Path.DirectorySeparatorChar)
+            }).ToArray();
+            var binaryFiles = binaries.Select(x => new
+            {
+                FullPath = x,
+                RelativePath = x.Substring(location.Length).Trim(Path.DirectorySeparatorChar)
+            }).ToArray();
+
+            foreach (var file in textFiles)
             {
                 registry.RegisterTemplate(TemplateId, outputTarget => CreateTemplate(outputTarget, file.FullPath, file.RelativePath, DefaultOverrideBehaviour));
             }
+
+            foreach (var file in binaryFiles)
+            {
+                registry.RegisterTemplate(TemplateId, outputTarget => CreateBinaryTemplate(outputTarget, file.FullPath, file.RelativePath, DefaultOverrideBehaviour));
+            }
+        }
+
+        private IEnumerable<string> GetBinaryFiles(string location, IEnumerable<string> allfiles)
+        {
+            if (BinaryFileGlobbingPatterns.Length > 0)
+            {
+                var matcher = new Matcher();
+                matcher.AddIncludePatterns(BinaryFileGlobbingPatterns);
+                return matcher.GetResultsInFullPath(location);
+            }
+            return new List<string>();
         }
 
         /// <summary>
@@ -81,6 +107,28 @@ namespace Intent.Modules.Common.Templates.StaticContent
         {
             return CreateTemplate(outputTarget, fileFullPath, fileRelativePath, OverwriteBehaviour.OverwriteDisabled);
         }
+
+        /// <summary>
+        /// Factory method for creating the binary template instance.
+        /// </summary>
+        /// <remarks>
+        /// The default implementation creates an instance of <see cref="StaticContentTemplate"/>.
+        /// </remarks>
+        /// <param name="outputTarget">The <see cref="IOutputTarget"/> for the template registration.</param>
+        /// <param name="fileFullPath">The full file path of the source file, used to read the source file content.</param>
+        /// <param name="fileRelativePath">The relative path of the file to the "root" content, used to determine where on the file system to output the file.</param>
+        /// <param name="defaultOverwriteBehaviour">The incoming value is the value of <see cref="OverwriteBehaviour"/>.</param>
+        protected virtual ITemplate CreateBinaryTemplate(IOutputTarget outputTarget, string fileFullPath, string fileRelativePath, OverwriteBehaviour defaultOverwriteBehaviour)
+        {
+            return new StaticBinaryContentTemplate(
+                sourcePath: fileFullPath,
+                relativeOutputPath: fileRelativePath,
+                templateId: TemplateId,
+                outputTarget: outputTarget,
+                replacements: Replacements(outputTarget),
+                overwriteBehaviour: defaultOverwriteBehaviour);
+        }
+
 
         /// <summary>
         /// Factory method for creating the template instance.

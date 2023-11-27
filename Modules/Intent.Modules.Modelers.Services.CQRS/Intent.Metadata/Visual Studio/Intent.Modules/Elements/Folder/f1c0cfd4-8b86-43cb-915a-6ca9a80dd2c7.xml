@@ -26,7 +26,6 @@
       <display>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>f1c0cfd4-8b86-43cb-915a-6ca9a80dd2c7</parentFolderId>

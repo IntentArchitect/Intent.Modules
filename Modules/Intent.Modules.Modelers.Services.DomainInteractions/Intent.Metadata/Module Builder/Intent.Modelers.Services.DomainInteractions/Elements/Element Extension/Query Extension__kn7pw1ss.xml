@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="6e296dff-c5b2-447e-9a38-062ceb3e1a46" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>Query Extension</name>
+  <display>Query Extension: Query</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <typeReference id="cd218c21-47ae-45c8-a553-20c050d2b06e">
+    <typeId>e71b0662-e29d-4db2-868b-8a12464b25d0</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Services.CQRS</typePackageName>
+    <typePackageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>f36cb21a-faf9-46ff-85e7-41f38345253d</parentFolderId>
+  <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+  <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="35226a83-3965-4224-8aef-20c68a0c5180" display="Mode" value="Inherit" isActive="true" />
+        <property name="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0" display="Display Name" isActive="false" />
+        <property name="17223dbd-8df0-4700-8b81-02274ca3ed7f" display="Hint" isActive="false" />
+        <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" value="null" isActive="false" />
+        <property name="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e" display="Default Type Id" isActive="false" />
+        <property name="7a0c4185-1c08-4d3e-9185-14683d7a3bd0" display="Allow Collection" value="Inherit" isActive="false" />
+        <property name="e3dc90ec-4f5f-4f20-b271-e28a5094dc91" display="Allow Nullable" value="Inherit" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="312eab00-f6db-492e-bbb4-e41383c8d3d8" name="Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" value="" isActive="true" />
+        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="79675729-f303-4f17-a19f-35d1656f601e" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>6e296dff-c5b2-447e-9a38-062ceb3e1a46</parentFolderId>
+      <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+      <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="85a46bec-c433-4542-adb4-f48a1296e2eb" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Query Entity</name>
+          <display>Query Entity: Query Entity Action</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e0ed8143-fd9a-43af-be51-a40a5a38687a">
+            <typeId>47ab5888-a258-4bec-a9fc-a83de69eb79d</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
+            <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>79675729-f303-4f17-a19f-35d1656f601e</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + q" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="1b554aeb-79ee-49db-822b-44b21ac51141" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Convert to advanced mapping system</name>
+          <display>Convert to advanced mapping system: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="7c4e35ff-bc1b-426f-8f9f-ad8eb1d59691">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>79675729-f303-4f17-a19f-35d1656f601e</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;if (element.isMapped() &amp;&amp; element.specialization == &quot;Command&quot;) {&#xD;&#xA;    convertCommand(element);&#xD;&#xA;}&#xD;&#xA;else if (element.isMapped() &amp;&amp; element.specialization == &quot;Query&quot;) {&#xD;&#xA;    convertQuery(element);&#xD;&#xA;}&#xD;&#xA;function convertCommand(command) {&#xD;&#xA;    var _a;&#xD;&#xA;    let target = command.getMapping().getElement();&#xD;&#xA;    let entity = (_a = target.getParent(&quot;Class&quot;)) !== null &amp;&amp; _a !== void 0 ? _a : target;&#xD;&#xA;    if (command.getName().startsWith(&quot;Create&quot;)) {&#xD;&#xA;        let action = createAssociation(&quot;Create Entity Action&quot;, command.id, target.id);&#xD;&#xA;        let mapping = action.createMapping(command.id, entity.id);&#xD;&#xA;        mapping.addMappedEnd(&quot;Invocation Mapping&quot;, [command.id], [target.id]);&#xD;&#xA;        mapContract(&quot;Data Mapping&quot;, command, [command.id], [target.id], mapping);&#xD;&#xA;    }&#xD;&#xA;    else if (command.getName().startsWith(&quot;Delete&quot;)) {&#xD;&#xA;        let action = createAssociation(&quot;Delete Entity Action&quot;, command.id, entity.id);&#xD;&#xA;        let mapping = action.createMapping(command.id, entity.id);&#xD;&#xA;        let idField = command.getChildren(&quot;DTO-Field&quot;).find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype(&quot;PrimaryKey&quot;)) || (x.getName() == &quot;Id&quot; || x.getName() == `${entity.getName()}Id`));&#xD;&#xA;        let entityPk = entity.getChildren(&quot;Attribute&quot;).find(x =&gt; x.hasStereotype(&quot;Primary Key&quot;));&#xD;&#xA;        if (idField &amp;&amp; entityPk) {&#xD;&#xA;            mapping.addMappedEnd(&quot;Filter Mapping&quot;, [idField.id], [entityPk.id]);&#xD;&#xA;        }&#xD;&#xA;        mapContract(&quot;Filter Mapping&quot;, command, [command.id], [target.id], mapping);&#xD;&#xA;    }&#xD;&#xA;    else if (command.isMapped()) {&#xD;&#xA;        let action = createAssociation(&quot;Update Entity Action&quot;, command.id, target.id);&#xD;&#xA;        // Query Entity Mapping&#xD;&#xA;        let queryMapping = action.createMapping(command.id, entity.id, &quot;25f25af9-c38b-4053-9474-b0fabe9d7ea7&quot;);&#xD;&#xA;        let idField = command.getChildren(&quot;DTO-Field&quot;).find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype(&quot;PrimaryKey&quot;)) || (x.getName() == &quot;Id&quot; || x.getName() == `${entity.getName()}Id`));&#xD;&#xA;        let entityPk = entity.getChildren(&quot;Attribute&quot;).find(x =&gt; x.hasStereotype(&quot;Primary Key&quot;));&#xD;&#xA;        if (idField &amp;&amp; entityPk) {&#xD;&#xA;            queryMapping.addMappedEnd(&quot;Filter Mapping&quot;, [idField.id], [entityPk.id]);&#xD;&#xA;        }&#xD;&#xA;        // Update Entity Mapping&#xD;&#xA;        let updateMapping = action.createMapping(command.id, entity.id, &quot;01721b1a-a85d-4320-a5cd-8bd39247196a&quot;);&#xD;&#xA;        if (target.id != entity.id) {&#xD;&#xA;            updateMapping.addMappedEnd(&quot;Invocation Mapping&quot;, [command.id], [target.id]);&#xD;&#xA;        }&#xD;&#xA;        mapContract(&quot;Data Mapping&quot;, command, [command.id], [target.id], updateMapping);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;function convertQuery(query) {&#xD;&#xA;    let entity = query.getMapping().getElement();&#xD;&#xA;    let action = createAssociation(&quot;Query Entity Action&quot;, query.id, entity.id);&#xD;&#xA;    if (query.typeReference.getIsCollection()) {&#xD;&#xA;        action.typeReference.setIsCollection(true);&#xD;&#xA;    }&#xD;&#xA;    let mapping = action.createMapping(query.id, entity.id);&#xD;&#xA;    mapContract(&quot;Filter Mapping&quot;, query, [query.id], [entity.id], mapping);&#xD;&#xA;}&#xD;&#xA;function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping) {&#xD;&#xA;    console.log(&quot;mapContract: &quot; + dto.getName());&#xD;&#xA;    dto.getChildren(&quot;DTO-Field&quot;).filter(x =&gt; x.isMapped() &amp;&amp; !(dto.specialization == &quot;Command&quot; &amp;&amp; x.getMapping().getElement().hasStereotype(&quot;Primary Key&quot;))).forEach(field =&gt; {&#xD;&#xA;        if (field.typeReference.getType().specialization != &quot;DTO&quot; || field.typeReference.getIsCollection()) {&#xD;&#xA;            mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));&#xD;&#xA;        }&#xD;&#xA;        if (field.typeReference.getType().specialization == &quot;DTO&quot;) {&#xD;&#xA;            mapContract(mappingType, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)), mapping);&#xD;&#xA;        }&#xD;&#xA;        field.clearMapping();&#xD;&#xA;    });&#xD;&#xA;    dto.clearMapping();&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAACwdJREFUeF7tmmlUFFcWx19V7w1004IojdAIKgqiqCiQiMuMMSbGbVRC0CQTjaKYGA2O0ZFJONGcGI/GSKIxRjlJzFEGE05cwEHNqFEDKiCiaCsIiOzQNEs3vVbVnDKDcaG7lleNfqj+wof633v/99e3unjvFQL4DxQBBCqaDwY8QMgh4AHyACEJQIbzE8gDhCQAGc5PIA8QkgBkOD+BPEBIApDh/ATyACEJQIbzE8gDhCQAGf7MTeCVJkPEO8fuRAKCmHunzfRIe+4iAZg4UIn5uou3bpo88Axk75yEP3WAUd8WjqjutKgHq+SpZa2mKIJBW/4KCQjylG4pbjKc/iDGv3DRaN9mBuGcSJ8awExt88wNJ6s+M9kxtR0nFDDdoAgChChSMy/U2/D51OBhMLmYxvY6wNj0ouWdNmJZg8E6gqlZOvp+biKgM9uWxqhlOYfiImrpxMBoehXglP0lN0qbjcMIJvcpy+4QAKyro/tHrX1+YDHLFLTCegVgQpZ2wW93276x44QbLVcciSQCFIhQsL98ZdQbHKV8Io3LAX587u6nX1+uW9cbU+cIklyEnl8W7jN/7eSBDVyDdDlA0nBgWv4Os41YybV5JvkCPaUtE/wV8VumBv/KJI5K2ysA2whCFfnV5WyDFYuhMiRAEIAi4B5AQJMNI2yP6z3EAoXJjmvY/Bz4KySNH0wImDQvxFtL5YPu9V4BSJrZWdrk/nNhvfZGc5dfT+aUEgEYo1a8d6mm7dLAvp7VJ+JDmhEEeQJgmY5QzM0sCXCTEH44Tuy9224eQLdZUqf2ELckjvYdlhipbmES50jbawBJA4sOa2f+Wtl+2ILhD/y4iwTaUWr3nw/NC01h09CcjOsjrzZ2rbPheLwNp/d4RwCxrz75ubfZ1Hs8plcBksWHfVWk0VssVQgCgARBE0YolMeOLB7aCdtM8vGyFw/c1B0jCEJIJ9ffQrzO73plSCwdrTNNrwO8fxttvTh7nL9c/Mur4ZmwDTweH/51QV5zly2aKq8QRdo0Kun4C3+PKKXSPnMAYQzTiZ38/dUz2pauiVQ39Dg/xbUj8WFQKyJOJ7C0yTxof0mtavOU4Mt0GnWVZunRAvntVtFZbUtXJFWNuGFeK9NeHvIllc7lD5E1ueXDfyxtLhrh49YwZ7gqZnmEv8vXoVRNB2zPq7LiQONMJ0DA2eluohf2JEY+8cSnyk9e52QCV2TfGXKsrDnXghGBZNJBfaS1KRMDp08LUl2lY8JVmjXHK0ZkV+ry9Ca73FENIYrYPFAQdvO96DI2PqABbs+vmZd2sXafyY4/siU1UaOs9pGLwr98eXAHG2NcxcSkF+2r1FsWOcv38hCvI+kzhsxiUxMKYPqV+jWbL9Rs6rDYJT0Vl4kEp17q7zZnV1yYgY05LmIqCUI6Z0+RqcFgdZhOgCKgdnU0Kxasgkgn7+WWLT5R3rZDb7Y73WHx9ZAcXBPttWLBCI2eCyBsckw/cH1VYX3ndmexS8b4rtg4KXAX0/ysAK4/Vb7y+5KW7ThBoHQK9nMT5x6IHT0zLAxxPAZ0EvWgOVnRuiHMR16gdpfmOkrx8dl74d9eqf3dhhHuDp+mCNhd/37McqY2GAOcnXFt+dVG4xaT3bGZnkz4KyVZp+YHL1Eqla1MTTrTB2w/F2QjhPkEAfo60kkECLDiBKDYUruCIMgjX4KPmxj4e4iBr4fYePKO/vL0EG/7OH8F/ubwvqe7azEC+Pov2k0n7+g3sAUwUCXLylsUMZdtvLM4v+35BszFG7YiAYItGO7z0+YpQfGMAc44ULL7Vqs5scOCwfWPIPsb3o/mfId45X/KJ2eWNp8AANBaC7Np4i+BqrcPzB267+FYWhM44bvilAq9eaOd5m4HDXNbGpJjPqChYyRJyq6MyK1oyTdae/6vgFGyh8QiFOlYFzNg9oroAQ9uXdoTGPlt0d5Gg3Ux3a0iuiYFKPh37eqYB7cC3TgqXVJ2WWqWtuUjKh2T62qFOLTw7dFaBEGeWF47ncDgtEspZju+EXPRgYZYgGyuXhW9nkkzdLQTvyv+rLLNvNaKUW0nOM8mEaI6ASBiKpysUhwCDEq7uNtkwxPhLDg3SBb3losOXlsemUAHDF1NaiqBnhhwJaui3cJqdUHWCVBKQIfZ5q19J0rnrG6PALO0umlfXqrZYLUTwGIngNFmv59Db/7jr5+7eJCHVNhfb7KBRiOrNfgDT+QZiK+78POCpZHJdAHR1Wl25P9gsROv09V36wI9pbdDfeRx6TNCKNfytB4ijgxk3GiOX3W8/KAzg2IUjK9eHXOBaRNc6ftvyz8LADGBbr7xAcpbP80PHUpXDwWQLOK7Lc/pL6SXTHSzNCkylK4hV+hG7yk8VtdpnU6Ve5BKlrY4Sv3pW2E+tM+PoQGO3l24s85oTXJmLmms31sfTgj4jqoBV13fW9reJ+1c2dUmo83hCZ6fUrprxuKId1MR5M8TLxqGoAEG77g0zYRhx539i+gpEWqf8/cYlz4L/vCIRk89SnLKmkZtPl+Xc7vV1P9hwX0AKFhSvzpmL5vc0ADPVzer3zxcedloxdTODEwKVG3MmDv0QzYmuYqZd/DmJG2b8XRL1x8PPvLdGXcR+knpirGsjlTJHNAAySRxh7Qpv1XrN1I1OqiPLPn8WxGfU+lcef3VjOsjC5u7islVVWhftyU5CcNZTV63R04AksnCvi6o0nXZnJ4/9JWLwGAv+StZcaHZroRElTt8V0HCYJVMnPVaGPTvMmcAh+28lKQ3YzupzAtQBJ8WrErcNzME6pt3VKegvnNypK/HE2tWKl9sr3MGkDQw9ceSGyWNRspXbKVCFACCWH9gbtSO5/yRR98kZ9mJTqdTRPxwe61UJNjgKRHtyZ7ll+zj4+PyowROAZK9B35x0WDGcFovUo7zcwdVerxfitctXVxcHKt9svmZhKDo7u9e3ip53t12c9Cfv03osvrkqG9Yfh+0wzgHOD/zxgvn7rWT+3K0PjIhasVwkDt7qPfutJeCc2gF/V+0+OjthJPlrQkYQUzBCPDIwdb9dbZMtOlaUuS/mORkquUcIGlgf3F9esrZ6oUWOy5iYoi8tb3l4sR7HZaS8H4yUNVqqlkY7gW6AAD3dLh7hd7gWdVhA15S9Pk2C7aVantSJkSBRiV97cwbIzOY+GCidQnA1NOnhdWdvjtyyvROVyjOjMpFKDDb8Rq5SHBfRgDgYcMIJTmuTD4iAWpMGuO7cn1sQDqTOLpalwDsLv6PU3e+yLjessSG4Q7fDKBrFEanUUrK3x2uGbMw2ovzQ36XAszMzBQYgidM/OeZSk7fS2YKM2msejz+34C81FRm61w6dVwKsNvAqN1FI30VwsyieuMQOqa40gzqIyuqa++cU7EqtpqrnI/n6RWA3UWfT7+yplJv+QQHhNhVDZF5hQhi9XYTLixOjDzkyjpk7l4FSBb88apuQKa2fl1RbecKO8fnBUIUAUP7yLYuiu2/NSGoX6Or4T0VgN1NEQQhTTx264ec8rYxIgGiMdnwPx63DD9uIoHVjOF340P7ntw6NehdhOF+HsNyT8h7fQIfd1BQVyfflt8RfaaqVTzSRxFfbzC/SXXOolFKyMOoXUUNnUdnhnh3/TXQlh8XFsb5ezd04D51gFQmf69ufxEjEGOsRnGeSvs0rj/zAJ8GFCY1eYBMaPWg5QHyACEJQIbzE8gDhCQAGc5PIA8QkgBkOD+BPEBIApDh/ATyACEJQIbzE8gDhCQAGc5PICTA/wHanrJ+wePL4QAAAABJRU5ErkJggg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return isMapped();" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="0087236d-2b1c-44e9-9d1e-6a798ec2c0b0" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
+          <comment>disabled for now</comment>
+          <name>Map Return Type</name>
+          <display>Map Return Type: Map Return Type</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="d9a869de-5c55-44af-b27f-6d52c3f2ed7c">
+            <typeId>b7ae8bf5-f2fd-4a5c-b57e-05410687bfc4</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
+            <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>79675729-f303-4f17-a19f-35d1656f601e</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="6c209f86-87f6-4fc3-802e-e6e553dfbeca" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" value="ctrl + shift + m" isActive="true" />
+                <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
+                <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
+                <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
+                <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" value="return false &amp;&amp; typeReference?.isTypeFound();" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

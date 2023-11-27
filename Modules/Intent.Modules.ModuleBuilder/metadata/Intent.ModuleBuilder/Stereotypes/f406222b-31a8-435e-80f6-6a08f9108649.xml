@@ -109,6 +109,16 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="ad2bbaa1-becc-477b-83d2-97179678e4bb">
+      <name>Allow Static</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536">
       <name>Allow Set Value</name>
       <type>boolean</type>
@@ -145,6 +155,7 @@
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <placeholder>(default)</placeholder>
+      <defaultValue>By type then name</defaultValue>
       <valueOptions>
         <option>Manually</option>
         <option>By type then manually</option>

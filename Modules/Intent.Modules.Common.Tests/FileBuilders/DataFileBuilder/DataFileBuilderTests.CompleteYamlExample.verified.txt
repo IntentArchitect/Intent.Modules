@@ -1,0 +1,53 @@
+﻿trigger:
+  branches:
+    include:
+    - '*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+- name: 'buildConfiguration'
+  value: 'debug'
+- name: 'intentSolutionPath'
+  value: 'intent'
+# - group: 'Intent Architect Credentials'
+
+steps:
+- task: 'DotNetCoreCLI@2'
+  displayName: 'dotnet build $(buildConfiguration)'
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: 'DotNetCoreCLI@2'
+  displayName: 'dotnet test'
+  inputs:
+    command: 'test'
+    projects: '**/*Tests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: 'PowerShell@2'
+  displayName: 'install intent cli'
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: 'dotnet tool install Intent.SoftwareFactory.CLI --global'
+
+- task: 'PowerShell@2'
+  displayName: 'run intent cli'
+  env:
+    INTENT_USER: '$(intent-architect-user)'
+    INTENT_PASS: '$(intent-architect-password)'
+    INTENT_SOLUTION_PATH: '$(intentSolutionPath)'
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      if (($Env:INTENT_USER -Eq $null) -or ($Env:INTENT_USER -Like "`$(*")) {
+        Write-Host "##vso[task.logissue type=warning;]Intent Architect Credentials not configured, see https://github.com/IntentArchitect/Intent.Modules.NET/blob/development/Modules/Intent.Modules.ContinuousIntegration.AzurePipelines/README.md#configuring-intent-architect-credentials for more information."
+        Return
+      }
+
+      intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH"

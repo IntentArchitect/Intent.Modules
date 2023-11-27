@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
@@ -27,6 +28,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
         public string AssociationEndClassName => $"{Model.Name.ToCSharpIdentifier()}EndModel";
         public string AssociationSourceEndClassName => $"{Model.SourceEnd.Name.ToCSharpIdentifier()}Model";
         public string AssociationTargetEndClassName => $"{Model.TargetEnd.Name.ToCSharpIdentifier()}Model";
+
+        private static string FormatForCollection(string name, bool asCollection)
+        {
+            return asCollection ? $"IList<{name}>" : name;
+        }
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()

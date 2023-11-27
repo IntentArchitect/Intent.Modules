@@ -6,7 +6,7 @@
     "outFile": "./_dist.js",
     "removeComments": false,
     "sourceMap": false,
-    "target": "ES2017",
+    "target": "ES2019",
     "types": []
   },
   "include": [

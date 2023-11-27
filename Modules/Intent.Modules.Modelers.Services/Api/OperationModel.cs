@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public partial class OperationModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public partial class OperationModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IProcessingHandlerModel
     {
         public const string SpecializationType = "Operation";
         protected readonly IElement _element;

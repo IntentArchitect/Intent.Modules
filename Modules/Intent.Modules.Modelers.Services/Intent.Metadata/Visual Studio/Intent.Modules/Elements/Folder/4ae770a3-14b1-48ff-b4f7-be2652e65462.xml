@@ -25,7 +25,6 @@
       <name>Intent.ModuleBuilder.DesignerConfig</name>
       <display>Intent.ModuleBuilder.DesignerConfig</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>4ae770a3-14b1-48ff-b4f7-be2652e65462</parentFolderId>
@@ -39,7 +38,6 @@
       <name>Intent.ModuleBuilder.DesignerSettings</name>
       <display>Intent.ModuleBuilder.DesignerSettings</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>4ae770a3-14b1-48ff-b4f7-be2652e65462</parentFolderId>

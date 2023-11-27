@@ -11,7 +11,7 @@
 const mappingSettingId = "e437007c-33fd-46d5-9293-d4529b4b82e6";
 
 let properties = element.getChildren()
-    .filter(x => x.typeReference.getType() == null && x.getMapping().getElement().specialization === "Association");
+    .filter(x => x.typeReference.getType()?.specialization != "Eventing DTO" && x.getMapping().getElement().specialization.startsWith("Association"));
 
 for (const property of properties) {
     MappingHelper.ensureMappedToType({

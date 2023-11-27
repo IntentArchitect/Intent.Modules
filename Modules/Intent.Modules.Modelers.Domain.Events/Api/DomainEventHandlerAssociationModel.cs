@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -69,6 +70,7 @@ namespace Intent.Modelers.Domain.Events.Api
     public class DomainEventHandlerAssociationSourceEndModel : DomainEventHandlerAssociationEndModel
     {
         public const string SpecializationTypeId = "79f048d4-4c09-4405-be8f-95473a981556";
+        public const string SpecializationType = "Domain Event Handler Association Source End";
 
         public DomainEventHandlerAssociationSourceEndModel(IAssociationEnd associationEnd, DomainEventHandlerAssociationModel association) : base(associationEnd, association)
         {
@@ -79,14 +81,15 @@ namespace Intent.Modelers.Domain.Events.Api
     public class DomainEventHandlerAssociationTargetEndModel : DomainEventHandlerAssociationEndModel
     {
         public const string SpecializationTypeId = "f45dfee9-f62b-45ac-bfce-a3878e04b73f";
+        public const string SpecializationType = "Domain Event Handler Association Target End";
 
         public DomainEventHandlerAssociationTargetEndModel(IAssociationEnd associationEnd, DomainEventHandlerAssociationModel association) : base(associationEnd, association)
         {
         }
     }
 
-    [IntentManaged(Mode.Fully)]
-    public class DomainEventHandlerAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    [IntentManaged(Mode.Fully, Body = Mode.Merge)]
+    public class DomainEventHandlerAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper, IProcessingHandlerModel
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly DomainEventHandlerAssociationModel _association;
@@ -108,6 +111,7 @@ namespace Intent.Modelers.Domain.Events.Api
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public DomainEventHandlerAssociationModel Association => _association;
+        public IElement InternalElement => _associationEnd;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
         public IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;

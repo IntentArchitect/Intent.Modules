@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DataContractModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder
+    public class DataContractModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference, IHasFolder
     {
         public const string SpecializationType = "Data Contract";
         public const string SpecializationTypeId = "4464fabe-c59e-4d90-81fc-c9245bdd1afd";

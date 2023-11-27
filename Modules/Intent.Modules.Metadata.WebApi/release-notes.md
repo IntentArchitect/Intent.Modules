@@ -1,3 +1,7 @@
+### Version 4.4.0
+
+- Improvement: _Expose as Http Endpoint_ script updated to work with new Advanced Mappings.
+
 ### Version 4.3.3
 
 - Fixed: Duplicate route detection validation to accommodate `[controller]` in rest routes.

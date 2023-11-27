@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 using Intent.SdkEvolutionHelpers;
 
@@ -71,7 +72,7 @@ namespace Intent.Modelers.Domain.Api
 
     [FixFor_Version4("Should implement IHasTypeReference and NOT ITypeReference")]
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class AssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class AssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly AssociationModel _association;
@@ -88,6 +89,7 @@ namespace Intent.Modelers.Domain.Api
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public AssociationModel Association => _association;
+        public IElement InternalElement => _associationEnd;
         public bool IsNavigable => _associationEnd.IsNavigable;
         public bool IsNullable => _associationEnd.TypeReference.IsNullable;
         public bool IsCollection => _associationEnd.TypeReference.IsCollection;
@@ -170,6 +172,7 @@ namespace Intent.Modelers.Domain.Api
     public class AssociationSourceEndModel : AssociationEndModel
     {
         public const string SpecializationTypeId = "8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58";
+        public const string SpecializationType = "Association Source End";
 
         public AssociationSourceEndModel(IAssociationEnd associationEnd, AssociationModel association) : base(associationEnd, association)
         {
@@ -180,6 +183,7 @@ namespace Intent.Modelers.Domain.Api
     public class AssociationTargetEndModel : AssociationEndModel
     {
         public const string SpecializationTypeId = "0a66489f-30aa-417b-a75d-b945863366fd";
+        public const string SpecializationType = "Association Target End";
 
         public AssociationTargetEndModel(IAssociationEnd associationEnd, AssociationModel association) : base(associationEnd, association)
         {

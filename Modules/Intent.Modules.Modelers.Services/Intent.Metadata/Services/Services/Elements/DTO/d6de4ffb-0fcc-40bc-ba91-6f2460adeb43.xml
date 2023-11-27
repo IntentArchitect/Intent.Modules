@@ -25,7 +25,6 @@
       <name>isDisputeAllowed</name>
       <display>isDisputeAllowed: bool</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="53212dec-785b-4e5b-9d5a-26485ba34dce">
         <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
@@ -56,7 +55,6 @@
       <name>clientResponsePeriod</name>
       <display>clientResponsePeriod: int?</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <typeReference id="4c82635a-b032-4508-be42-56468b827a55">
         <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
@@ -87,7 +85,6 @@
       <name>subjectResponsePeriod</name>
       <display>subjectResponsePeriod: int?</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
       <genericTypes />
       <typeReference id="5c978b33-5060-4c51-962a-8c94d156b717">
         <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
@@ -118,7 +115,6 @@
       <name>monitoringPeriod</name>
       <display>monitoringPeriod: int?</display>
       <isAbstract>false</isAbstract>
-      <order>3</order>
       <genericTypes />
       <typeReference id="8b62a077-caec-4f69-aec2-8d4a96b84362">
         <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
@@ -149,7 +145,6 @@
       <name>GetSomething</name>
       <display>GetSomething: string</display>
       <isAbstract>false</isAbstract>
-      <order>4</order>
       <genericTypes />
       <typeReference id="8907092e-3424-4fd1-a7e7-5884b72ab98c">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -180,7 +175,6 @@
       <name>field</name>
       <display>field: string</display>
       <isAbstract>false</isAbstract>
-      <order>5</order>
       <genericTypes />
       <typeReference id="5283de5e-092d-4b39-a26f-817630c7ea97">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>

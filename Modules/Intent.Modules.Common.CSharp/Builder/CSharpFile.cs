@@ -1,21 +1,25 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpFile
+public class CSharpFile : CSharpMetadataBase<CSharpFile>
 {
     private readonly IList<(Action Action, int Order)> _configurations = new List<(Action Action, int Order)>();
     private readonly IList<(Action Action, int Order)> _configurationsAfter = new List<(Action Action, int Order)>();
+
     public IList<CSharpUsing> Usings { get; } = new List<CSharpUsing>();
     public string Namespace { get; }
     public string RelativeLocation { get; }
+    public ICSharpFileBuilderTemplate Template { get; }
     public string DefaultIntentManaged { get; private set; } = "Mode.Fully";
     public IList<CSharpInterface> Interfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpClass> TypeDeclarations { get; } = new List<CSharpClass>();
+    public CSharpTopLevelStatements TopLevelStatements { get; private set; }
 
     public IList<CSharpClass> Classes => TypeDeclarations
         .Where(td => td.TypeDefinitionType == CSharpClass.Type.Class)
@@ -35,6 +39,12 @@ public class CSharpFile
         RelativeLocation = relativeLocation;
     }
 
+    public CSharpFile(string @namespace, string relativeLocation, ICSharpFileBuilderTemplate template) : this(
+        @namespace, relativeLocation)
+    {
+        Template = template;
+    }
+
     public CSharpFile AddUsing(string @namespace)
     {
         Usings.Add(new CSharpUsing(@namespace));
@@ -43,7 +53,12 @@ public class CSharpFile
 
     public CSharpFile AddClass(string name, Action<CSharpClass> configure = null)
     {
-        var @class = new CSharpClass(name);
+        return AddClass(name, configure, 0);
+    }
+
+    public CSharpFile AddClass(string name, Action<CSharpClass> configure, int priority)
+    {
+        var @class = new CSharpClass(name, CSharpClass.Type.Class, this);
         TypeDeclarations.Add(@class);
         if (_isBuilt)
         {
@@ -51,7 +66,23 @@ public class CSharpFile
         }
         else if (configure != null)
         {
-            _configurations.Add((() => configure(@class), 0));
+            _configurations.Add((() => configure(@class), priority));
+        }
+
+        return this;
+    }
+
+    public CSharpFile AddTopLevelStatements(Action<CSharpTopLevelStatements> configure = null, int priority = 0)
+    {
+        TopLevelStatements ??= new CSharpTopLevelStatements();
+
+        if (_isBuilt)
+        {
+            configure?.Invoke(TopLevelStatements);
+        }
+        else if (configure != null)
+        {
+            _configurations.Add((() => configure(TopLevelStatements), priority));
         }
 
         return this;
@@ -75,7 +106,7 @@ public class CSharpFile
 
     public CSharpFile AddInterface(string name, Action<CSharpInterface> configure = null)
     {
-        var @interface = new CSharpInterface(name);
+        var @interface = new CSharpInterface(name, this);
         Interfaces.Add(@interface);
         if (_isBuilt)
         {
@@ -125,14 +156,22 @@ public class CSharpFile
 
     public CSharpFileConfig GetConfig()
     {
+        var className = TopLevelStatements != null
+            ? "Program"
+            : Enumerable.Empty<string>()
+                  .Concat(Interfaces.Select(s => s.Name))
+                  .Concat(Classes.Select(s => s.Name))
+                  .Concat(Records.Select(s => s.Name))
+                  .Concat(Enums.Select(s => s.Name))
+                  .FirstOrDefault();
+
+        if (className == null)
+        {
+            throw new Exception("Either a file must use top level statements or at least one type must be specified for C# file");
+        }
+
         return new CSharpFileConfig(
-            className: Interfaces
-                           .Select(s => s.Name)
-                           .Concat(Classes.Select(s => s.Name))
-                           .Concat(Records.Select(s => s.Name))
-                           .Concat(Enums.Select(s => s.Name))
-                           .FirstOrDefault()
-                       ?? throw new Exception("At least one type must be specified for C# file"),
+            className: className,
             @namespace: Namespace,
             relativeLocation: RelativeLocation);
     }
@@ -228,19 +267,59 @@ public class CSharpFile
                 "Build() needs to be called before ToString(). Check that your template implements ICSharpFileBuilderTemplate, or ensure that Build() is called manually.");
         }
 
-        return $@"{string.Join(@"
-", Usings)}
-[assembly: DefaultIntentManaged({DefaultIntentManaged})]{string.Concat(AssemblyAttributes.Select(x => $"{Environment.NewLine}{x}"))}
+        var sb = new StringBuilder();
 
-namespace {Namespace}
-{{
-{string.Join(@"
+        for (var index = 0; index < Usings.Count; index++)
+        {
+            var @using = Usings[index];
+            sb.AppendLine(@using.ToString());
 
-", Interfaces
-    .Select(x => x.ToString("    "))
-    .Concat(Classes.Select(x => x.ToString("    ")))
-    .Concat(Records.Select(x => x.ToString("    ")))
-    .Concat(Enums.Select(x => x.ToString("    "))))}
-}}";
+            if (index == Usings.Count - 1)
+            {
+                sb.AppendLine();
+            }
+        }
+
+        sb.AppendLine($"[assembly: DefaultIntentManaged({DefaultIntentManaged})]");
+
+        foreach (var assemblyAttribute in AssemblyAttributes)
+        {
+            sb.AppendLine(assemblyAttribute.ToString());
+        }
+
+        if (TopLevelStatements != null)
+        {
+            sb.AppendLine();
+            sb.AppendLine(TopLevelStatements.ToString());
+        }
+
+        var typeDeclarations = Enumerable.Empty<string>()
+            .Concat(Interfaces.Select(x => x.ToString("    ")))
+            .Concat(Classes.Select(x => x.ToString("    ")))
+            .Concat(Records.Select(x => x.ToString("    ")))
+            .Concat(Enums.Select(x => x.ToString("    ")))
+            .ToArray();
+
+        if (typeDeclarations.Length > 0)
+        {
+            sb.AppendLine();
+            sb.AppendLine($"namespace {Namespace}");
+            sb.AppendLine("{");
+
+            for (var index = 0; index < typeDeclarations.Length; index++)
+            {
+                var typeDeclaration = typeDeclarations[index];
+                if (index != 0)
+                {
+                    sb.AppendLine();
+                }
+
+                sb.AppendLine(typeDeclaration);
+            }
+
+            sb.Append("}");
+        }
+
+        return sb.ToString();
     }
 }

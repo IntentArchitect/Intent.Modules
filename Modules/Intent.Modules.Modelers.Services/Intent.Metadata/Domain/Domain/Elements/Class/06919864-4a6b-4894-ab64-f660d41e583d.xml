@@ -16,7 +16,6 @@
       <name>isVillain</name>
       <display>isVillain: bool</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="2656c0d9-cce3-45ec-a293-836919cf857c">
         <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
@@ -41,7 +40,6 @@
       <name>name</name>
       <display>name: string</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <typeReference id="8db4bd64-5afd-4d88-8a6d-33bd92adb2fc">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>

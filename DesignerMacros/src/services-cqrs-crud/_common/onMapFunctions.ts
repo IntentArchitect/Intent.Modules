@@ -1,3 +1,4 @@
+
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../common/getSurrogateKeyType.ts" />
 
@@ -78,7 +79,7 @@ function ensureDtoFields(autoAddPrimaryKey: boolean, mappedElement: MacroApi.Con
 }
 
 function isOwnerForeignKey(attributeName: string, domainElement: MacroApi.Context.IElementApi): boolean {
-    for (let association of domainElement.getAssociations().filter(x => !x.typeReference.isCollection && !x.typeReference.isNullable)) {
+    for (let association of domainElement.getAssociations().filter(x => x.isSourceEnd() && !x.typeReference.isCollection && !x.typeReference.isNullable)) {
         if (attributeName.toLowerCase().indexOf(association.getName().toLowerCase()) >= 0) {
             return true;
         }

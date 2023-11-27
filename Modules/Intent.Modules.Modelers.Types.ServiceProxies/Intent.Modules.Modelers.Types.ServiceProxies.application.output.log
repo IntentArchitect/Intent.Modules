@@ -54,7 +54,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modelers.Types.ServiceProxies.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modelers.Types.ServiceProxies.imodspec</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>5d8691be-86ed-4521-861f-d0045712fb9a</ProjectId>
@@ -70,14 +70,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Service Proxy Types.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Service Proxy Types.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>5d8691be-86ed-4521-861f-d0045712fb9a</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

@@ -17,6 +17,11 @@ namespace Intent.Modelers.Eventing.Api
                 .ToList();
         }
 
+        public static bool IsEventingPackageModel(this IPackage package)
+        {
+            return package?.SpecializationTypeId == EventingPackageModel.SpecializationTypeId;
+        }
+
 
     }
 }

@@ -2,53 +2,68 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
+using Intent.IArchitect.Agent.Persistence.Model.Mappings;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.ModuleBuilder.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class MappingSettingsModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Mapping Settings";
+        public const string SpecializationTypeId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
         protected readonly IElement _element;
 
-        [IntentManaged(Mode.Ignore)]
+        [IntentManaged(Mode.Fully)]
         public MappingSettingsModel(IElement element, string requiredType = SpecializationType)
         {
-            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new Exception($"Cannot create a 'MappingSettingsModel' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+                throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
         }
 
-        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
 
-        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
-        [IntentManaged(Mode.Fully)]
+        public string Comment => _element.Comment;
+
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        [IntentManaged(Mode.Fully)]
-        public IList<ElementMappingModel> Mappings => _element.ChildElements
-            .GetElementsOfType(ElementMappingModel.SpecializationTypeId)
-            .Select(x => new ElementMappingModel(x))
+        public IElement InternalElement => _element;
+
+        public SourceMappingSettingsModel SourceMapping => _element.ChildElements
+            .GetElementsOfType(SourceMappingSettingsModel.SpecializationTypeId)
+            .Select(x => new SourceMappingSettingsModel(x))
+            .SingleOrDefault();
+
+        public TargetMappingSettingsModel TargetMapping => _element.ChildElements
+            .GetElementsOfType(TargetMappingSettingsModel.SpecializationTypeId)
+            .Select(x => new TargetMappingSettingsModel(x))
+            .SingleOrDefault();
+
+        public IList<MappingTypeSettingsModel> MappingTypes => _element.ChildElements
+            .GetElementsOfType(MappingTypeSettingsModel.SpecializationTypeId)
+            .Select(x => new MappingTypeSettingsModel(x))
             .ToList();
 
-        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
+
         public bool Equals(MappingSettingsModel other)
         {
             return Equals(_element, other?._element);
         }
 
-        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -57,70 +72,26 @@ namespace Intent.ModuleBuilder.Api
             return Equals((MappingSettingsModel)obj);
         }
 
-        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
-        public MappingSettingPersistable ToPersistable()
+        [IntentManaged(Mode.Ignore)]
+        public MappingElementToElementSettingsPersistable ToPersistable()
         {
-            return new MappingSettingPersistable()
+            return new MappingElementToElementSettingsPersistable()
             {
-                Id = Id,
-                Name = Name,
-                Shortcut = this.GetMappingSettings().Shortcut(),
-                DefaultModeler = this.GetMappingSettings().DefaultDesigner().Id,
-                OptionsSource = GetOptionsSourceEnumValue(),
-                LookupElementFunction = this.GetMappingSettings().OptionSource().IsLookupElement()
-                    ? this.GetMappingSettings().LookupElementFunction() : null,
-                AutoSyncTypeReferences = this.GetMappingSettings().AutoSyncTypeReferences(),
-                LookupTypes = this.GetMappingSettings().OptionSource().IsElementsOfType()
-                    ? this.GetMappingSettings().LookupTypes().Select(x => new TargetTypeOption() { SpecializationType = x.Id, DisplayText = x.Name }).ToList() : null,
-                MapFrom = GetMapFromEnumValue(),
-                Symbol = this.GetMappingSettings().Symbol(),
-                StyleFunction = this.GetMappingSettings().Style(),
-                MappedTypes = this.Mappings.Select(x => x.ToPersistable()).ToList(),
+                MappingTypeId = Id,
+                MappingType = Name,
+                SourceRootElementFunction = SourceMapping.GetMappingEndSettings().RootElementFunction(),
+                TargetRootElementFunction = TargetMapping.GetMappingEndSettings().RootElementFunction(),
+                Title = Name,
+                SourceSettings = SourceMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
+                TargetSettings = TargetMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
+                MappingTypes = MappingTypes.Select(x => x.ToPersistable()).ToList()
             };
         }
-
-        private MappingMapFrom GetMapFromEnumValue()
-        {
-            if (this.GetMappingSettings().MapFrom().IsRootElement())
-            {
-                return MappingMapFrom.RootElement;
-            }
-            if (this.GetMappingSettings().MapFrom().IsChildElements())
-            {
-                return MappingMapFrom.ChildElements;
-            }
-            throw new Exception("Mapping 'Map From' value must be specified.");
-        }
-
-        private MappingOptionsSource GetOptionsSourceEnumValue()
-        {
-            if (this.GetMappingSettings().OptionSource().IsElementsOfType())
-            {
-                return MappingOptionsSource.ElementsOfType;
-            }
-            if (this.GetMappingSettings().OptionSource().IsLookupElement())
-            {
-                return MappingOptionsSource.LookupElement;
-            }
-            throw new Exception("Mapping 'Option Source' value must be specified.");
-        }
-
-        [IntentManaged(Mode.Fully)]
-        public override string ToString()
-        {
-            return _element.ToString();
-        }
-
-        [IntentManaged(Mode.Fully)]
-        public IElement InternalElement => _element;
-        public const string SpecializationTypeId = "178c2f55-9ca1-484d-be43-a91bdd5554dc";
-
-        public string Comment => _element.Comment;
     }
 
     [IntentManaged(Mode.Fully)]

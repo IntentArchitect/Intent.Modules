@@ -1,4 +1,5 @@
 ﻿using System;
+
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace Testing.Namespace

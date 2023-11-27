@@ -1,5 +1,4 @@
-﻿
-[assembly: DefaultIntentManaged(Mode.Fully)]
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTagModeExplicit]
 [assembly: IntentTagModeImplicit]
 [assembly: DefaultIntentManaged(Mode.Merge)]

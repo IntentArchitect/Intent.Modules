@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Eventing.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class PropertyModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class PropertyModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IElementWrapper
     {
         public const string SpecializationType = "Property";
         public const string SpecializationTypeId = "bde29850-5fb9-4f47-9941-b9e182fd9bdc";

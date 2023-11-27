@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common</id>
-  <version>3.4.4</version>
-  <supportedClientVersions>[4.0.0-beta.9, 5.0.0-a)</supportedClientVersions>
+  <version>3.5.0-beta.3</version>
+  <supportedClientVersions>[4.1.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Base Implementation and Helper classes for modules.</summary>
   <description>Base Implementation and Helper classes for modules.</description>
   <authors>Intent Architect</authors>
@@ -11,11 +11,13 @@
   <templates />
   <dependencies />
   <factoryExtensions>
-    <factoryExtension id="Intent.Common.TemplateLifeCycleHooks" />
     <factoryExtension id="Intent.Common.DecoratorExecutionHooks" />
+    <factoryExtension id="Intent.Common.FileBuilderFactoryExtension" />
+    <factoryExtension id="Intent.Common.TemplateLifeCycleHooks" />
   </factoryExtensions>
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
+    <file src="$outDir$/Microsoft.Extensions.FileSystemGlobbing.dll" inspect="false" />
   </files>
 </package>

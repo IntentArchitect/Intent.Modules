@@ -18,6 +18,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>3259a0db-6077-4d70-a7f2-fa1b77d73aaf</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#820a3322-e2c2-4e96-b704-9dca6ba43df1</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DiagramExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DiagramExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3259a0db-6077-4d70-a7f2-fa1b77d73aaf</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#efbd1131-2db2-4eb7-8ef6-3b5a32f5267d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
@@ -86,14 +94,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Services CQRS Extension.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Services CQRS Extension.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ffbf27c5-a296-4dbc-9af5-acf0bff187a2</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

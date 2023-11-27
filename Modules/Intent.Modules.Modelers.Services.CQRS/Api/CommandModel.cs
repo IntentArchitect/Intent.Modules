@@ -14,7 +14,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.CQRS.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class CommandModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder
+    public class CommandModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder, IElementWrapper, IProcessingHandlerModel
     {
         public const string SpecializationType = "Command";
         public const string SpecializationTypeId = "ccf14eb6-3a55-4d81-b5b9-d27311c70cb9";
@@ -98,21 +98,29 @@ namespace Intent.Modelers.Services.CQRS.Api
             return type.IsCommandModel() ? new CommandModel((IElement)type) : null;
         }
 
+        [Obsolete("Use HasMapToDomainDataMapping")]
+        [IntentManaged(Mode.Ignore)] // For backward compatibility
         public static bool HasMapToDomainDataMapping(this CommandModel type)
         {
             return type.Mapping?.MappingSettingsId == "735c87d0-06fc-4491-8b5f-5adc6f953c54";
         }
 
+        [Obsolete("Use HasMapToDomainDataMapping")]
+        [IntentManaged(Mode.Ignore)] // For backward compatibility
         public static IElementMapping GetMapToDomainDataMapping(this CommandModel type)
         {
             return type.HasMapToDomainDataMapping() ? type.Mapping : null;
         }
 
+        [Obsolete("Use HasMapToDomainDataMapping")]
+        [IntentManaged(Mode.Ignore)] // For backward compatibility
         public static bool HasMapToDomainOperationMapping(this CommandModel type)
         {
             return type.Mapping?.MappingSettingsId == "7c31c459-6229-4f10-bf13-507348cd8828";
         }
 
+        [Obsolete("Use HasMapToDomainDataMapping")]
+        [IntentManaged(Mode.Ignore)] // For backward compatibility
         public static IElementMapping GetMapToDomainOperationMapping(this CommandModel type)
         {
             return type.HasMapToDomainOperationMapping() ? type.Mapping : null;

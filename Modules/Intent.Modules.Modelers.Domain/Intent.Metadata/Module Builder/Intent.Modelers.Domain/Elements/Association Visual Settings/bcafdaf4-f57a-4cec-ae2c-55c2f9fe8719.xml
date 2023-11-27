@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="bcafdaf4-f57a-4cec-ae2c-55c2f9fe8719" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
   <name>[visual]</name>
-  <display>[visual]</display>
+  <display>[visual]: void</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
+  <typeReference id="b92d4a8b-1d1c-4cb9-a2c2-e366c5d5662a">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</parentFolderId>
   <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
@@ -15,9 +23,11 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
+        <property name="3ff8fe05-f379-4b5e-a965-cc6f6cab4c21" display="Line Type" value="Elbow Connector" isActive="true" />
         <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" isActive="true" />
         <property name="f248a382-66c9-4107-aa92-5ee83dd3d08c" display="Line Width" isActive="true" />
         <property name="93499f0b-8590-42ea-bdbf-e943597e8e1e" display="Line Dash Array" value="if (!getOtherEnd().typeReference.getIsNullable() &amp;&amp; !getOtherEnd().typeReference.getIsCollection()) {&#xD;&#xA;    return null;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const documentStoreId = &quot;8b68020c-6652-484b-85e8-6c33e1d8031f&quot;;&#xD;&#xA;if (getOtherEnd().typeReference.getType()?.getPackage().hasStereotype(documentStoreId)) {&#xD;&#xA;    return &quot;5,5&quot;;&#xD;&#xA;}&#xD;&#xA;console.warn('unable to determine')&#xD;&#xA;return null;" isActive="true" />
+        <property name="85aa1be2-62f1-45d1-84d0-acb5bb5d1752" display="Reverse Flow Direction" value="false" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

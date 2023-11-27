@@ -16,7 +16,6 @@
       <name>clientResponsePeriod</name>
       <display>clientResponsePeriod: int?</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="6d255e62-c6de-47b6-b835-f200a44e6899">
         <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
@@ -41,7 +40,6 @@
       <name>monitoringPeriod</name>
       <display>monitoringPeriod: int?</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <typeReference id="02ea7a61-266c-4c6b-b99f-06ce72972771">
         <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
@@ -66,7 +64,6 @@
       <name>expiryPeriod</name>
       <display>expiryPeriod: &lt;type not set&gt;</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
       <genericTypes />
       <typeReference id="13ce5519-5e6d-48d9-8cde-3f6c2ef8ab59">
         <isNavigable>true</isNavigable>
@@ -88,7 +85,6 @@
       <name>subjectResponsePeriod</name>
       <display>subjectResponsePeriod: int?</display>
       <isAbstract>false</isAbstract>
-      <order>3</order>
       <genericTypes />
       <typeReference id="f078190a-0ad5-4584-b1f8-19b27b2c3ead">
         <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
@@ -113,7 +109,6 @@
       <name>listingType</name>
       <display>listingType: bool</display>
       <isAbstract>false</isAbstract>
-      <order>4</order>
       <genericTypes />
       <typeReference id="b13bd726-286d-4bc4-995a-715b2751c621">
         <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
@@ -138,7 +133,6 @@
       <name>isDisputeAllowed</name>
       <display>isDisputeAllowed: bool</display>
       <isAbstract>false</isAbstract>
-      <order>5</order>
       <genericTypes />
       <typeReference id="155a1081-5fe2-4c39-a1ba-85dcfe595a5e">
         <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
@@ -163,7 +157,6 @@
       <name>ChangeDetails</name>
       <display>ChangeDetails(details: &lt;type not set&gt;): void</display>
       <isAbstract>false</isAbstract>
-      <order>6</order>
       <genericTypes />
       <typeReference id="794ced38-a7ea-411d-a77a-063dec76fec1">
         <isNavigable>true</isNavigable>
@@ -184,7 +177,6 @@
           <name>details</name>
           <display>in : details: &lt;type not set&gt;</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="e97a1ce3-af2a-449b-b93c-413a5b7d1e3b">
             <isNavigable>true</isNavigable>
@@ -208,7 +200,6 @@
       <name>ChangeUsageBands</name>
       <display>ChangeUsageBands(usageBands: &lt;type not set&gt;[*], countries: &lt;type not set&gt;[*]): void</display>
       <isAbstract>false</isAbstract>
-      <order>7</order>
       <genericTypes />
       <typeReference id="777662ed-88f0-4061-b396-59edea99e6b0">
         <isNavigable>true</isNavigable>
@@ -229,7 +220,6 @@
           <name>usageBands</name>
           <display>in : usageBands: &lt;type not set&gt;[*]</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="9898ef56-27f9-4a97-85cc-54aa928b712c">
             <isNavigable>true</isNavigable>
@@ -251,7 +241,6 @@
           <name>countries</name>
           <display>in : countries: &lt;type not set&gt;[*]</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="95bcb7ba-985f-45cb-863d-cd7de83138c3">
             <isNavigable>true</isNavigable>
@@ -275,7 +264,6 @@
       <name>GetSomething</name>
       <display>GetSomething(): string</display>
       <isAbstract>false</isAbstract>
-      <order>8</order>
       <genericTypes />
       <typeReference id="941cb6c4-054b-4e5c-a3a0-c5085b0de76d">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -300,7 +288,6 @@
       <name>GetThis</name>
       <display>GetThis(param: bool, param2: string): string</display>
       <isAbstract>false</isAbstract>
-      <order>9</order>
       <genericTypes />
       <typeReference id="f63f03e4-dc6e-426c-b987-ded2ab8a5ff5">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -324,7 +311,6 @@
           <name>param</name>
           <display>in : param: bool</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="19942c73-3f34-4432-a425-daaa9c7ffecc">
             <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
@@ -349,7 +335,6 @@
           <name>param2</name>
           <display>in : param2: string</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="028f377d-4333-457c-b15c-9980ea0ceed7">
             <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -376,7 +361,6 @@
       <name>ChangeReasons</name>
       <display>ChangeReasons(reasons: string[*]): void</display>
       <isAbstract>false</isAbstract>
-      <order>10</order>
       <genericTypes />
       <typeReference id="3bdedf91-8dd3-4cd5-806b-a09de88ab497">
         <isNavigable>true</isNavigable>
@@ -397,7 +381,6 @@
           <name>reasons</name>
           <display>in : reasons: string[*]</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="55b480ae-b88d-457b-b647-d15d68f4ef97">
             <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>

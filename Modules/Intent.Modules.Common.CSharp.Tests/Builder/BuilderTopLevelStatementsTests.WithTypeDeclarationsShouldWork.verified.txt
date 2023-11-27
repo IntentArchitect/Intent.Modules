@@ -1,0 +1,29 @@
+﻿using System;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+Console.WriteLine("Hello world!");
+
+static async Task LocalMethod(object parameter)
+{
+    var variable = new object();
+}
+
+namespace Namespace
+{
+    public interface IInterface
+    {
+    }
+
+    public class Class
+    {
+    }
+
+    public record Record
+    {
+    }
+
+    public enum Enum
+    {
+    }
+}

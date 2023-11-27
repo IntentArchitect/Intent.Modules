@@ -1,4 +1,3 @@
-type IElementApi = MacroApi.Context.IElementApi;
 type IElementMappingApi = MacroApi.Context.IElementMappingApi;
 
 class MappingHelper {

@@ -5,16 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Roslyn\**" />
-    <EmbeddedResource Remove="Roslyn\**" />
-    <None Remove="Roslyn\**" />
-    <None Update="Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>CSharpStringInterpolationTemplate.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.3.19" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.3.30" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.7" />
@@ -28,22 +18,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Roslyn\**" />
+    <EmbeddedResource Remove="Roslyn\**" />
+    <None Remove="Roslyn\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CSharpTemplatePartial.cs</LastGenOutput>
     </None>
     <None Update="Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplate\CSharpTemplate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CSharpTemplate.cs</LastGenOutput>
     </None>
     <None Update="Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CSharpTemplatePartialTemplate.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+    <None Update="Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CSharpStringInterpolationTemplate.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -67,6 +63,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>CSharpTemplatePartialTemplate.tt</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.CSharp.VisualStudio
@@ -8,6 +9,7 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
     {
         string LanguageVersion { get; }
         bool NullableEnabled { get; }
+        IElement InternalElement { get; }
         bool IsNetCore2App { get; }
         bool IsNetCore3App { get; }
         /// <summary>

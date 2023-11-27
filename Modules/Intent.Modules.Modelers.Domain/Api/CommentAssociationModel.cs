@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -66,7 +67,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class CommentAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class CommentAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly CommentAssociationModel _association;
@@ -88,6 +89,7 @@ namespace Intent.Modelers.Domain.Api
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public CommentAssociationModel Association => _association;
+        public IElement InternalElement => _associationEnd;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
         public IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;
@@ -143,6 +145,7 @@ namespace Intent.Modelers.Domain.Api
     public class CommentSourceEndModel : CommentAssociationEndModel
     {
         public const string SpecializationTypeId = "7e98213c-4a9c-4d6f-98fc-f185948cc9e8";
+        public const string SpecializationType = "Comment Source End";
 
         public CommentSourceEndModel(IAssociationEnd associationEnd, CommentAssociationModel association) : base(associationEnd, association)
         {
@@ -153,6 +156,7 @@ namespace Intent.Modelers.Domain.Api
     public class CommentTargetEndModel : CommentAssociationEndModel
     {
         public const string SpecializationTypeId = "b7edce45-ccf0-47ed-b79f-86d5145c9f62";
+        public const string SpecializationType = "Comment Target End";
 
         public CommentTargetEndModel(IAssociationEnd associationEnd, CommentAssociationModel association) : base(associationEnd, association)
         {

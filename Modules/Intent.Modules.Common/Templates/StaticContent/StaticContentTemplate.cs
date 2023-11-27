@@ -19,7 +19,7 @@ namespace Intent.Modules.Common.Templates.StaticContent
         private readonly string _relativeOutputPath;
 
         /// <summary>
-        /// Obsolete. Use <see cref="StaticContentTemplate(string,string,string,IOutputTarget,IReadOnlyDictionary{string,string},OverwriteBehaviour"/> instead.
+        /// Obsolete. Use <see cref="StaticContentTemplate(string,string,string,IOutputTarget,IReadOnlyDictionary{string,string},OverwriteBehaviour)"/> instead.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
         public StaticContentTemplate(

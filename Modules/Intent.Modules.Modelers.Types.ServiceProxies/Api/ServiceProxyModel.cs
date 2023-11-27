@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Types.ServiceProxies.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ServiceProxyModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class ServiceProxyModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
     {
         public const string SpecializationType = "Service Proxy";
         public const string SpecializationTypeId = "07d8d1a9-6b9f-4676-b7d3-8db06299e35c";

@@ -78,7 +78,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DomainPackageModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DomainPackageModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>5313bf46-dda7-4531-860a-3ce63561db80</ProjectId>

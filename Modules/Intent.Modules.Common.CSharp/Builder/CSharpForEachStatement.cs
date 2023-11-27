@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Intent.Modules.Common.CSharp.Builder;
+﻿namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpForEachStatement : CSharpStatementBlock
 {

@@ -18,6 +18,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#abb9b6ac-69d2-41a7-a30d-fb08621e08d9</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/BasicFolderExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>BasicFolderExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/EventingDTOFieldModel.cs</ApplicationRelativeFilePath>
@@ -30,6 +38,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/EventingDTOModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>EventingDTOModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#15236514-ffdb-4a43-a114-c462734a866e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/EventingPackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>EventingPackageExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -147,7 +163,7 @@
     <FileLog>
       <ProjectId>556e7bcc-4e9b-45ee-8a05-6022c1084a2c</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#556e7bcc-4e9b-45ee-8a05-6022c1084a2c</CorrelationId>
-      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Eventing.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Eventing.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -162,18 +178,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>fda0a824-c6ee-41d3-b86b-b477bbc9537c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#103ef2ed-815f-4a0c-acf9-1a29c9470897</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Eventing Designer Types.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Eventing Designer Types.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fda0a824-c6ee-41d3-b86b-b477bbc9537c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerConfig#822e4254-9ced-4dd1-ad56-500b861f7e4d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Eventing.designer.config</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Eventing.designer.config</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>556e7bcc-4e9b-45ee-8a05-6022c1084a2c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

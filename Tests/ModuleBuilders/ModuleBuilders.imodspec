@@ -2,7 +2,7 @@
 <package>
   <id>ModuleBuilders</id>
   <version>1.0.0</version>
-  <supportedClientVersions>[3.4.0,5.0.0)</supportedClientVersions>
+  <supportedClientVersions>[4.1.0,5.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.Tests.</summary>
   <description>A custom module for Intent.Modules.Tests.</description>
   <authors>Intent.Modules.Tests</authors>
@@ -104,6 +104,30 @@
       <role>Default</role>
       <location></location>
     </template>
+    <template id="ModuleBuilders.File.DataFileBuilderFilePerModelJson" externalReference="f7487470-2141-4953-87c0-2151d93b9437">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.File.DataFileBuilderFilePerModelOcl" externalReference="a8f3f489-5a90-4e6c-8a7d-133f91e761b0">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.File.DataFileBuilderFilePerModelYaml" externalReference="3ec2e92b-8f66-4bfc-8191-972dc8e29248">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.File.DataFileBuilderSingleJson" externalReference="1420e36c-229a-4d7a-9e49-9944fab619ec">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.File.DataFileBuilderSingleOcl" externalReference="980fc7ae-c747-43b9-a093-de51777ecc46">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.File.DataFileBuilderSingleYaml" externalReference="d5410352-7ef0-4dc2-9b88-39f1ebc2112b">
+      <role>Default</role>
+      <location></location>
+    </template>
     <template id="ModuleBuilders.File.FileCustomCustomTemplate" externalReference="2a74ba7b-8b62-40a2-afe9-6f4a79aebecb">
       <role>Default</role>
       <location></location>
@@ -137,6 +161,14 @@
       <location></location>
     </template>
     <template id="ModuleBuilders.File.FileSingleFileT4Template" externalReference="ae46b8dc-178e-478d-961a-26612cfe15c6">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.File.IndentedFileBuilderFilePerModel" externalReference="28ccb787-1612-4bf2-99e8-b7a0b6d716fe">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.File.IndentedFileBuilderSingle" externalReference="7bd2214e-4551-4ec6-b718-12928e1afb60">
       <role>Default</role>
       <location></location>
     </template>
@@ -246,8 +278,8 @@
     <dependency id="Intent.Common.Java" version="3.4.3" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
     <dependency id="Intent.Common.TypeScript" version="3.4.3" />
-    <dependency id="Intent.Modelers.Domain" version="3.4.6" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="4.1.1" />
+    <dependency id="Intent.Modelers.Domain" version="3.5.0-beta.2" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="4.3.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

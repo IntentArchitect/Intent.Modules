@@ -62,6 +62,16 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Display Text Function");
             }
 
+            public string DefaultNameFunction()
+            {
+                return _stereotype.GetProperty<string>("Default Name Function");
+            }
+
+            public NameAccessibilityOptions NameAccessibility()
+            {
+                return new NameAccessibilityOptions(_stereotype.GetProperty<string>("Name Accessibility"));
+            }
+
             public string ApiPropertyName()
             {
                 return _stereotype.GetProperty<string>("Api Property Name");
@@ -110,6 +120,58 @@ namespace Intent.ModuleBuilder.Api
             public SortChildrenOptions SortChildren()
             {
                 return new SortChildrenOptions(_stereotype.GetProperty<string>("Sort Children"));
+            }
+
+            public class NameAccessibilityOptions
+            {
+                public readonly string Value;
+
+                public NameAccessibilityOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public NameAccessibilityOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Optional":
+                            return NameAccessibilityOptionsEnum.Optional;
+                        case "Required":
+                            return NameAccessibilityOptionsEnum.Required;
+                        case "Disabled":
+                            return NameAccessibilityOptionsEnum.Disabled;
+                        case "Hidden":
+                            return NameAccessibilityOptionsEnum.Hidden;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsOptional()
+                {
+                    return Value == "Optional";
+                }
+                public bool IsRequired()
+                {
+                    return Value == "Required";
+                }
+                public bool IsDisabled()
+                {
+                    return Value == "Disabled";
+                }
+                public bool IsHidden()
+                {
+                    return Value == "Hidden";
+                }
+            }
+
+            public enum NameAccessibilityOptionsEnum
+            {
+                Optional,
+                Required,
+                Disabled,
+                Hidden
             }
 
             public class SortChildrenOptions

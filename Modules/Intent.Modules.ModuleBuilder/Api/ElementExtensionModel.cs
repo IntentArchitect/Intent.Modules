@@ -45,9 +45,9 @@ namespace Intent.ModuleBuilder.Api
         public string Id => _element.Id;
 
         [IntentManaged(Mode.Fully)]
-        public IList<MappingSettingsModel> MappingSettings => _element.ChildElements
-            .GetElementsOfType(MappingSettingsModel.SpecializationTypeId)
-            .Select(x => new MappingSettingsModel(x))
+        public IList<MappingProjectionSettingsModel> MappingSettings => _element.ChildElements
+            .GetElementsOfType(MappingProjectionSettingsModel.SpecializationTypeId)
+            .Select(x => new MappingProjectionSettingsModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
@@ -78,6 +78,7 @@ namespace Intent.ModuleBuilder.Api
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
                     .ToList(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
+                MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
                 MappingSettings = MappingSettings.Select(x => x.ToPersistable()).ToList(),
                 DiagramSettings = DiagramSettings?.ToPersistable(),

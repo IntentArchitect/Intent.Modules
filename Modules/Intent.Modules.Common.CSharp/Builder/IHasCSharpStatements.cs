@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -306,6 +305,21 @@ public static class HasCSharpStatementsExtensions
             statement.Parent = parent;
         }
         configure?.Invoke(arrayed);
+
+        return parent;
+    }
+
+    public static TParent AddLocalMethod<TParent>(this TParent parent, string returnType, string name, Action<CSharpLocalMethod> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        if (parent is not CSharpMetadataBase metadataBase)
+        {
+            throw new Exception($"{parent?.GetType()} is not {nameof(CSharpMetadataBase)}");
+        }
+
+        var localMethodStatement = new CSharpLocalMethod(returnType, name, metadataBase.File);
+        parent.AddStatement(localMethodStatement);
+        configure?.Invoke(localMethodStatement);
 
         return parent;
     }

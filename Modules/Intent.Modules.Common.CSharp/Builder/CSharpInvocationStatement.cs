@@ -1,8 +1,39 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.CSharp.AppStartup;
 
 namespace Intent.Modules.Common.CSharp.Builder;
+
+public class CSharpAccessMemberStatement : CSharpStatement
+{
+    private bool _withSemicolon = false;
+    public CSharpAccessMemberStatement(CSharpStatement reference, CSharpStatement memberName) : base($"{reference.ToString().TrimEnd()}.{memberName}")
+    {
+        Reference = reference;
+        Member = memberName;
+    }
+
+    private CSharpStatement Reference { get; }
+    private CSharpStatement Member { get; }
+
+    public CSharpAccessMemberStatement WithSemicolon()
+    {
+        _withSemicolon = true;
+        return this;
+    }
+
+    public CSharpAccessMemberStatement WithoutSemicolon()
+    {
+        _withSemicolon = false;
+        return this;
+    }
+
+    public override string GetText(string indentation)
+    {
+        return $"{Reference.GetText(indentation).TrimEnd()}.{Member}{(_withSemicolon ? ";" : string.Empty)}";
+    }
+}
 
 public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 {
@@ -10,6 +41,10 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
     private CSharpCodeSeparatorType _defaultArgumentSeparator = CSharpCodeSeparatorType.None;
 
     public CSharpInvocationStatement(string invocation) : base(invocation)
+    {
+    }
+
+    public CSharpInvocationStatement(CSharpStatement reference, string methodName) : base($"{reference.ToString().TrimEnd()}.{methodName}")
     {
     }
 

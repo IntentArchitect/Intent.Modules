@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="058e6046-75fc-4d9f-92ff-a27306f61db7" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>Command Extension</name>
+  <display>Command Extension: Command</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <typeReference id="5b217ad5-879b-46b8-bc84-5ce76de63e58">
+    <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Services.CQRS</typePackageName>
+    <typePackageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>f36cb21a-faf9-46ff-85e7-41f38345253d</parentFolderId>
+  <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+  <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="35226a83-3965-4224-8aef-20c68a0c5180" display="Mode" value="Inherit" isActive="true" />
+        <property name="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0" display="Display Name" isActive="false" />
+        <property name="17223dbd-8df0-4700-8b81-02274ca3ed7f" display="Hint" isActive="false" />
+        <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" value="null" isActive="false" />
+        <property name="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e" display="Default Type Id" isActive="false" />
+        <property name="7a0c4185-1c08-4d3e-9185-14683d7a3bd0" display="Allow Collection" value="Inherit" isActive="false" />
+        <property name="e3dc90ec-4f5f-4f20-b271-e28a5094dc91" display="Allow Nullable" value="Inherit" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="312eab00-f6db-492e-bbb4-e41383c8d3d8" name="Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" value="" isActive="true" />
+        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="c93fd61a-75f3-417c-9cf3-2e78f420eccf" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>058e6046-75fc-4d9f-92ff-a27306f61db7</parentFolderId>
+      <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+      <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="313a5399-18d5-4f40-b67c-594ddeccf107" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Create Entity</name>
+          <display>Create Entity: Create Entity Action</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="1054ed92-0bce-4b5c-a4d8-bb04b59366c8">
+            <typeId>7a3f0474-3cf8-4249-baac-8c07c49465e0</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
+            <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>c93fd61a-75f3-417c-9cf3-2e78f420eccf</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + c" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="c38e2afd-3d0a-438a-ab89-16fa0db9c8f6" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Update Entity</name>
+          <display>Update Entity: Update Entity Action</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="8ba1c529-0a1c-4a15-a309-4899e0074b54">
+            <typeId>9ea0382a-4617-412a-a8c8-af987bbce226</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
+            <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>c93fd61a-75f3-417c-9cf3-2e78f420eccf</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + u" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="61f41afd-5ebe-46e7-90f9-564e2b858c8e" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Delete Entity</name>
+          <display>Delete Entity: Delete Entity Action</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="cdd3c4fe-3e96-4743-a797-9c120c140945">
+            <typeId>bfc823fb-60ab-451d-ba62-12671fe7e28e</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
+            <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>c93fd61a-75f3-417c-9cf3-2e78f420eccf</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + d" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="6eadf6d2-5d29-46c6-9efa-9e240a07f69a" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Convert to advanced mapping system</name>
+          <display>Convert to advanced mapping system: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="1fe8959d-c2a7-48f5-a5c1-edffc236e44d">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>c93fd61a-75f3-417c-9cf3-2e78f420eccf</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;if (element.isMapped() &amp;&amp; element.specialization == &quot;Command&quot;) {&#xD;&#xA;    convertCommand(element);&#xD;&#xA;}&#xD;&#xA;else if (element.isMapped() &amp;&amp; element.specialization == &quot;Query&quot;) {&#xD;&#xA;    convertQuery(element);&#xD;&#xA;}&#xD;&#xA;function convertCommand(command) {&#xD;&#xA;    var _a;&#xD;&#xA;    let target = command.getMapping().getElement();&#xD;&#xA;    let entity = (_a = target.getParent(&quot;Class&quot;)) !== null &amp;&amp; _a !== void 0 ? _a : target;&#xD;&#xA;    if (command.getName().startsWith(&quot;Create&quot;)) {&#xD;&#xA;        let action = createAssociation(&quot;Create Entity Action&quot;, command.id, target.id);&#xD;&#xA;        let mapping = action.createMapping(command.id, entity.id);&#xD;&#xA;        mapping.addMappedEnd(&quot;Invocation Mapping&quot;, [command.id], [target.id]);&#xD;&#xA;        mapContract(&quot;Data Mapping&quot;, command, [command.id], [target.id], mapping);&#xD;&#xA;    }&#xD;&#xA;    else if (command.getName().startsWith(&quot;Delete&quot;)) {&#xD;&#xA;        let action = createAssociation(&quot;Delete Entity Action&quot;, command.id, entity.id);&#xD;&#xA;        let mapping = action.createMapping(command.id, entity.id);&#xD;&#xA;        let idField = command.getChildren(&quot;DTO-Field&quot;).find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype(&quot;PrimaryKey&quot;)) || (x.getName() == &quot;Id&quot; || x.getName() == `${entity.getName()}Id`));&#xD;&#xA;        let entityPk = entity.getChildren(&quot;Attribute&quot;).find(x =&gt; x.hasStereotype(&quot;Primary Key&quot;));&#xD;&#xA;        if (idField &amp;&amp; entityPk) {&#xD;&#xA;            mapping.addMappedEnd(&quot;Filter Mapping&quot;, [idField.id], [entityPk.id]);&#xD;&#xA;        }&#xD;&#xA;        mapContract(&quot;Filter Mapping&quot;, command, [command.id], [target.id], mapping);&#xD;&#xA;    }&#xD;&#xA;    else if (command.isMapped()) {&#xD;&#xA;        let action = createAssociation(&quot;Update Entity Action&quot;, command.id, target.id);&#xD;&#xA;        // Query Entity Mapping&#xD;&#xA;        let queryMapping = action.createMapping(command.id, entity.id, &quot;25f25af9-c38b-4053-9474-b0fabe9d7ea7&quot;);&#xD;&#xA;        let idField = command.getChildren(&quot;DTO-Field&quot;).find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype(&quot;PrimaryKey&quot;)) || (x.getName() == &quot;Id&quot; || x.getName() == `${entity.getName()}Id`));&#xD;&#xA;        let entityPk = entity.getChildren(&quot;Attribute&quot;).find(x =&gt; x.hasStereotype(&quot;Primary Key&quot;));&#xD;&#xA;        if (idField &amp;&amp; entityPk) {&#xD;&#xA;            queryMapping.addMappedEnd(&quot;Filter Mapping&quot;, [idField.id], [entityPk.id]);&#xD;&#xA;        }&#xD;&#xA;        // Update Entity Mapping&#xD;&#xA;        let updateMapping = action.createMapping(command.id, entity.id, &quot;01721b1a-a85d-4320-a5cd-8bd39247196a&quot;);&#xD;&#xA;        if (target.id != entity.id) {&#xD;&#xA;            updateMapping.addMappedEnd(&quot;Invocation Mapping&quot;, [command.id], [target.id]);&#xD;&#xA;        }&#xD;&#xA;        mapContract(&quot;Data Mapping&quot;, command, [command.id], [target.id], updateMapping);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;function convertQuery(query) {&#xD;&#xA;    let entity = query.getMapping().getElement();&#xD;&#xA;    let action = createAssociation(&quot;Query Entity Action&quot;, query.id, entity.id);&#xD;&#xA;    if (query.typeReference.getIsCollection()) {&#xD;&#xA;        action.typeReference.setIsCollection(true);&#xD;&#xA;    }&#xD;&#xA;    let mapping = action.createMapping(query.id, entity.id);&#xD;&#xA;    mapContract(&quot;Filter Mapping&quot;, query, [query.id], [entity.id], mapping);&#xD;&#xA;}&#xD;&#xA;function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping) {&#xD;&#xA;    console.log(&quot;mapContract: &quot; + dto.getName());&#xD;&#xA;    dto.getChildren(&quot;DTO-Field&quot;).filter(x =&gt; x.isMapped() &amp;&amp; !(dto.specialization == &quot;Command&quot; &amp;&amp; x.getMapping().getElement().hasStereotype(&quot;Primary Key&quot;))).forEach(field =&gt; {&#xD;&#xA;        if (field.typeReference.getType().specialization != &quot;DTO&quot; || field.typeReference.getIsCollection()) {&#xD;&#xA;            mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));&#xD;&#xA;        }&#xD;&#xA;        if (field.typeReference.getType().specialization == &quot;DTO&quot;) {&#xD;&#xA;            mapContract(mappingType, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)), mapping);&#xD;&#xA;        }&#xD;&#xA;        field.clearMapping();&#xD;&#xA;    });&#xD;&#xA;    dto.clearMapping();&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return isMapped();" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="d5cdc726-2aee-4744-94d2-198177348713" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
+          <comment>disabled for now</comment>
+          <name>Map Return Type</name>
+          <display>Map Return Type: Map Return Type</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="d2a9c048-87ff-439e-9974-6ec823d3ab4a">
+            <typeId>b7ae8bf5-f2fd-4a5c-b57e-05410687bfc4</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
+            <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>c93fd61a-75f3-417c-9cf3-2e78f420eccf</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="6c209f86-87f6-4fc3-802e-e6e553dfbeca" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" value="ctrl + shift + m" isActive="true" />
+                <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
+                <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
+                <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAEbtJREFUeF7tXQl4VdW1/te5QxIgAwmEMSEDoBIGFZUqAjcCCejXOtVaZ+sTJ5TBOk9UK9X3ROMAKFrE8T1rW8GB0YeJyhOrIAK5ARWBEISQkeQmJLnDWf3WicEEcs7ZN0MD9q3vu1/gO/vsvdZ/9tl7TXsdQqcQk8ezOwI4GOlyRXXTXdxDDwaiwegBjXowO3qA9WjStHiGHk9MPRkcT0Q9mdGdCG6AnAx2CXsECgAcZIafCLVMXEk6VTBzJWlaBet6BUjzEYVqoHMNCDWa0+XTAlQTCNQdAuLq8/JSGgDijhaXOqrDsWPXRbu6x5+nEf9C13kUiBJAHEeg7gBcYHKC2AGwBpD8COAOGl+AYfnpAOlgCoE4CCDA4FowHQS4jECfh5jWBWoO5q5ff1ZdR8jeZgGmTv0uojYUGKORfi6BMsF8CoiMGXMsE7M8NaoH6ZuY6DME8W6Uy/3lypVDGtrCd9gAXnKJ111cTcMd0OcTtDGNM+p4JtIZ/Bk4NM1X7v9+48bTAuFIExaA4ydvGuLQ3PMAZAOICGeg46DtIYBWBYL+e9etPflbVX6VABx2idedWKVdRhR6CqB41c6Py3aMcp312TUVw9/auFE2L2uyBXD06A2umIRuC0B8rbEZ/HtQgEGLfWWHZti90pYATpy4LUF36jkALgPg/PfA7rCUoja95Qhps9auPancTHZTAGXmRSdELCHSrugM4ESJ0TQylJnGH0H7UbkxxiNCE3OG8iZayo9/dF3+y42KCwO6bAMdruE1Ss2MN3zlddeZzcRWAWxc87CQCNe0deYJKA4Hwe0mxPV0IT7ehZ7xLsTFOhET60S3bg5ERmqIiNDgdMqP4JCfg6AJoM3AbNLwdAZCIUYoyAgaPx0NDTrq63UcOhRCVVUQVQeDqKwMoKIigIOVAfj9bNzTDoBlJr5aEotbCv6a4T9yMrUKoGey91rS8GI4a57LRejTNwKDBkViUEoUkpIiEZ/gQo8eTmOGdQUJaDW+oAFm0Z56FBbWobCwHgeKGxAIhDVlA8zatLw1J71qC+D4SVtPcmj0GYjiVIVOHxyFyy7vh1693HC5tS4DzI5fAdTv11FW5sdbb+7H99+rGyMMVIJDZ+WtGbm9+Tgt5oZYF3Uh/1IiTLVjRq4n9nHjvPN6Y9Qp0XC7jy99WoD8elM1ViwvQ8mBo95ME/FpeaTmuri51dICwAkT80/XnLQOEGPemgYMiMD02wYhrufxvTlXVgSwYP4e7PtByZLzs66PzftwxIYmdA4DeOaZRVGRMdUC3qlK4M0YhLi44xu8JjkPHgxi0cIiY420JeaN9b7qcU3OiMMAerILJoF5TTPtodW++vZ1Y8bslJ8NeE1C+nxBPP1kIfbvt56JhjOCMTn3w4y1hrbV1IEnKz+HiGbZPYFbbk3G8BE97Jodl9fzt/qwcH6RPe9MOblrht3eAsDM7ILNAI+0uvvU0dH43X8MNHS1nyOJQr74z3uxaaPPRjzekrt6+KjDAI6b+lVvpx65HxCHZ+skSu99D6YZqsrxQKKytEX/LC/z40+P7kJdXchKzJAW1PqIiWdMpcws73UgLLa6Iy09CjNnp0AU5mOVBLTvdxzC/62rRG1tCD17ujDe0xP9+0cqgykWzrNPF2LHd4csxdRDoes+/t+RSww0PNn5Swgk3hZTyspOwAUX9TlWsTNMu4/WlmP5+6UtrAxZbn57eV+cNbanMojLlpZgzaoyS1mZsThvTcb15PHkOhGRuI6AMVZ33HBTEk4+JfqYBVA2gEXP7zXs3iNJlPw77k7BwIGRSvxv/lr6st5MmPE5/CXjyOPx9qAIbAQw1Kx38ZLMeWQwevc+dte/Z3IK8c32WlOAhp7QDTNnpRhOCjsqLfHj4Tk7IF4fC/qWGzCaPJ4NvcgdlQ+C6fsp6968nBOP2fVPzLIH7/8OvmrzhT82zok5Dw82PEB2JI6GO2Zvt3Q4MOOAI6Rl0NhJ3mS3A5sBmDoPZDGe+/gQu3G77LrsmHMe2IGaGnMAxYX24Jx0dO9uqmi04P++u7+FWCgWdNAfwigaN9E7zOnEPwCYasepqVG4857ULgPIbuDOAPC/Ht+F3bssTbuaUMh1Bo3L9p7hBD4GYLrCnnJqDKbdONBOji673hkAvrSoCJu+slSo63Xi8SQ2MDGvAJkHjDLPiccll/btMoDsBu4MAN9+az/ycivNh2YOQKOplDlp60VwaG8DMF0cfnV+Iqac28tOji673hkArlxeivffK7WSKcRMv6bM7PyrAXqluWPhyLsuv7Ifzh7Xs8sAshu4MwBc90kl/vvN/VZDS4rINfIKzyTw02YtxZ687voBGH1arJ0cbbpeXR2ErzqIiEgNcXEuI7gULnUGgBs3VOHlP/9gHYxifSZNyPbO1YD7zJiW0ONN05MwfHjHurBE11r692J8+UW1oW9pDiAh3oWrrx2ApGQ1i6GJ584AMD+/Bi8sKDJCpmbEzI/ShKz8BRrRLWaNZEbcOiMZQ0+QLLWOIYmS/f3tYnz9te+oJyxhzutvGIiMMB5YZwD47Te1eO7ZPUYI1RRAYD55sryvE+FKs0Zihcy6fRBS07p1CHrlZQE892yhZSAnPb0bZt+RYgTaVagzANy18xBynipE0DL8ya9RZrZ3GYDzzRgVQ/z3d6UYcd720raCGrzx+n5IIMeKxNwSs0vMLxXqDAAljjzviV0I+M1nIDGWkSc7/yMjQdKE5JW6695U9OvX9mw2WUe8+TV47dV9qLUwt5pYkGXjoT+ko5ei80I2oocf2oG6OnPrPzbWiYceTkdUlJopt39fA8QakcwHi1d4LWVm5X8OIlNXlsyGe+5PQ2Ji2z0xX35RhTdf32ekWahQdLQDjzw6xNiZVWhvUT0e/9NOS++J2PNzHklXjl9LrFj6lLQR800En1NmdsFGgE1DmYYr/4E05dnQfDBxB637tBLv/K1YGTy5/+zxcbj8iv4q2BltVq0sw3vLSizbJw+KxN33pik7VUtL/XjsURsAwRtlE9lKhOFmo0dFSSwkHQkJ4aUGint96xYfFr+0VzkPRXTO/gMiMGPWIERHq61/8oo99cRuFBXVWwIYrjnaGBvZabksALxFNhHJ9TjBHEAH7n8ozciuCofktX3jtX3K4EnfY8+Ow4UX9zEyt1RIvM/L3jmA3I8q7JyfuOOuFKSlq2sSFeUBzP2jAGjuImNgG3myvdsIONESwAfTjEwrVZLAzosvFMHns4xsHe5OVKWs7F6Yel4vI2dQhSQGsnpVKVZ8UGabutY70W34AsOxctQA5O3kySrYQsQjLF/hB9KR0EsNQMkxyXlqt9JuK2MKeL+7fgBGjoxWAk8SKwt31ePtt4uxp7De0lJokmni5ARc/OvwAmKSwSVroNXODpDxCks8xHITufeBNKV4iCQ2yswr3G29HjV/WBJnGTzE/tUS4GRHlHjFgQN+IwqnQjLrRA1TDSg19SnjPDZXbRNZT4RfmDFjqDH3pRmpbFYU8OtYuGAPvtluHU9VEbqj2sim9KsLEpE9JXxXnJIaA1pPmVnetSCcY8a0oUjfk4p+/c0VadlxP3i/BKtXliu9Uh0FkF0/kvgpKXgqgaQj+9q3rwFPKCnStqYc4fd3pVqaclUHA3jgvh2txmTthOys66L433BzEvpbPHirsYv21GHeE7stTTlmLJU18DUAV5l1puJM+O7bWuQ8WdhZWITdr0TeZswe1C77fef3h/B0joIzwZOdP59A0824NNxZM5MxdKi5O6twdx3+87FdYQvaGTekpkXhyqv6Wy45KuOqubN4PmVmb5sL6JYO1ZunJ1n658QakEj+wUrLOKoK321uI2/KqJOjcdkV/ZQdBlaD5W+twQsL7RyqmCsO1dka0VNmnam69LdvqzXySay8F21Gx+JG8RmOGhUNz8QEpKdHKemSKnyouPQZNIs8WfnXENGS9gaVZCdeuaIUK5eXhbWZCACq1kfT4R05eyKZBknJERgzJg7iKFDtQwU8afPpJ5X4H5ugEsDXUuakbRfBoVuGNX95fiKmKoQ1xTZd+rdi5OZW2ppXTYIMGdoNl17Wz9ZLIgaevKbuCA0uOdnkorBMM1XgmtqtWF6KD2zCmqTTJTQha+tkDdpyq8C6JzMev/mtWmBdEhuXLN6LAq95plRzYWRWjRjZwwBRfHbHCv3lrf342CawzqSdS+dke89g29SOaEy7MUlZNjnDJhnvO3cqHBv4sdeBSZG48eaksN1mykyF2fClF/Zi06Zqq7vqg8AEmjjVO0zXbZKL0qJw593hJReJLSkHWNRPAcGwt6+8uj/kte5qUkkuCgYxhiZN8iaHOim9TZwLz88vwt696s4F0TtvuTUJJ57UsXHocB+IcnqbkWAZEZUPWCVYangy5wRj4Q6X5MipJG0XF6ueRwPSB3fD7Xek2G4s4fKi2l4SNu+8/Ru1BMvGFF+SuEinpfjK6/zKyz9gl3W+3WH5jLDmI4MhkbSuIImHSJTPOsWXvnFxQFJ8c51wJ35q5dISIWSBF02/rRQI6Fg4X83dJZn14kG2c6G1lRe7+7Zu9uH5hTZJ5qD1aDgwvvGcyBTvIjBusOpYfGrnX5hoN7bl9ZqaIN57txSfrau0fLoxMU784Y/piIxUi420i6lWbn7v3RKsWmF9zAGMRblrMm5qBDC74GqAjzqN3bxvWZckWtbegzaibL//bgk+zqs0NfsklU5S6rqCVA/aMOGqvFUZbxgAnpntjY8EH5CCX2ZMR0p4U+LDHXDUS9aWrzdV4ZWX9x3lmpcUEvH+qIY1OxrkxliI7VGvQD2q+q5ffVZFs+Ou3q8IOMWKodGnxeDa6wZ0yGFDsZ3FDSbK6oFiv1GcQlxmp50R2yYPckcAKXGXJYt/wIYvLRVoGeqr3NUZo+UfhwGckOV9RiPMsGPk5luTMGJE2zcTu/678nqBtwbzn91jywIDz+StzjCOBv80A6ds80DXP7I7cD1gQCRum5UMWeh/TiQ2fM683ZBYiBU1HrjWMnM/PElONvwE4JlnfhYVERP7MQGn2wGTnByJm6cnK6ef2fXX1del3syLzxep6qn/4IZunry8VMO8amFaeCZ7TyYNn6tUZhMQp8/ousW+o0CXo/4Lnt2DPXuUzM2GAHjMutXD5WSXQS0AlNqAZdUQ36BpwmVzxvv2jcAvL+htZBUcb6fYRZ3astkH0flkE1MhZizrHYtL/9qsgtFRxu34rO2pGoW+IEA5Gj1yVDQuvDgR8fFuw8nZlpPiKgK0t43s/KLnVZT7sfSdEgNAVWJQqc7amE/WnNgiemZV+umlcOpmSQBeslhTUqMMF7vEY6VmluhzXQWoACavqDg0ZHOQXBqxx4v3N4QZuzEK4F6ft2a4fekneSJSfKxPFeWAeFo49bOaP81Wi48JoDEOo56WxG4FdJebWrjofyo+9tNMbiw+xmgqPmYUHgswAkHdSNz0N+jGEX8xFeXIa1PxMfkrOc7tLD4mtQRfLInh25WLjwkQHg87ye1dDKKrVad5uO0ay921LIFnzFap3nZEZ40l8H6s1dus9J0ovzYHo8Nlq0V7Bl5BQ8m0vLzMVmO2/1+A0RxeowBjBGHm6tUZFWbNbD2kRiHG+MiFpJHUEjx2oj7tmle2NweY8bKvvO62dpUAbRpm2DCvO3EAfgMNOeHszrZsHoMNmLmcWZtd+gP/paDg6IKLR7JsOwOb33D2xC1pTodzHmmYAuaoY1D+9rBUy8AqAPfkrc7YodpRWAAe3qGrMYSZnyOi8VbnjFWZ6OJ2ITByQ+y/pbYitNvulW3XDGx+s6yN3RMiTtckuMzsAWgUw/iQQNgP5V8JoGzg8rECMG8gok9Zd7zvq6jZHC5wTTx3mLCG2uMqmECETB18FkC9Wv8YAeT4kfjqO2zsH4URTUeOBbT6MQIClzLoEy2of6jrZV+YqSXhPsyOFqJJllY/h8GaK5pYjyVQDLPei0jro4NjiTkGhB4Mkk9mRB3+HAazq1En/OlzGCDUEdjHTD4QfBqoilk/QKSVMbiaSasiPeD7V30O45+WOt/BqOJnNgAAAABJRU5ErkJggg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" value="return false &amp;&amp; typeReference?.isTypeFound();" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

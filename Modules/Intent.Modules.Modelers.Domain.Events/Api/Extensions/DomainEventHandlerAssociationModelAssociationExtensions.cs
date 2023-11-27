@@ -11,7 +11,7 @@ namespace Intent.Modelers.Domain.Events.Api
     public static class DomainEventHandlerAssociationModelAssociationExtensions
     {
         [IntentManaged(Mode.Fully)]
-        public static IList<DomainEventHandlerAssociationTargetEndModel> PublishedDomainEvents(this ServiceModel model)
+        public static IList<DomainEventHandlerAssociationTargetEndModel> HandledDomainEvents(this DomainEventHandlerModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == DomainEventHandlerAssociationModel.SpecializationType && x.IsTargetEnd())
@@ -20,7 +20,7 @@ namespace Intent.Modelers.Domain.Events.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<DomainEventHandlerAssociationSourceEndModel> DomainEventSources(this DomainEventModel model)
+        public static IList<DomainEventHandlerAssociationSourceEndModel> DomainEventHandlers(this DomainEventModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == DomainEventHandlerAssociationModel.SpecializationType && x.IsSourceEnd())

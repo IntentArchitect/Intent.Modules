@@ -1,16 +1,19 @@
+using Intent.Metadata.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStatements, IHasICSharpParameters
+public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStatements, IHasICSharpParameters, IHasCSharpName
 {
     public CSharpClass Class { get; }
     public string AccessModifier { get; private set; } = "public ";
     public CSharpConstructorCall ConstructorCall { get; private set; }
     public IList<CSharpConstructorParameter> Parameters { get; } = new List<CSharpConstructorParameter>();
     public List<CSharpStatement> Statements { get; } = new();
+    public string Name => Class.Name;
 
     IList<CSharpStatement> IHasCSharpStatements.Statements => this.Statements;
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
@@ -19,7 +22,54 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
     {
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
+        Parent = @class;
         Class = @class;
+        File = @class.File;
+    }
+
+    /// <summary>
+    /// Resolves the parameter name from the <paramref name="model"/>. Registers this parameter as the representative of the <paramref name="model"/>.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="model"></param>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public CSharpConstructor AddParameter<TModel>(string type, TModel model, Action<CSharpConstructorParameter> configure = null) where TModel
+        : IMetadataModel, IHasName, IHasTypeReference
+    {
+        return AddParameter(type, model.Name.ToParameterName(), param =>
+        {
+            param.RepresentsModel(model);
+            configure?.Invoke(param);
+        });
+    }
+
+    /// <summary>
+    /// Resolves the type name and parameter name from the <paramref name="model"/> using the <see cref="ICSharpFileBuilderTemplate"/>
+    /// template that was passed into the <see cref="CSharpFile"/>. Registers this parameter as representative of the <paramref name="model"/>.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="model"></param>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public CSharpConstructor AddParameter<TModel>(TModel model, Action<CSharpConstructorParameter> configure = null) where TModel
+        : IMetadataModel, IHasName, IHasTypeReference
+    {
+        return AddParameter(Class.GetModelType(model), model.Name.ToParameterName(), param =>
+        {
+            param.RepresentsModel(model);
+            configure?.Invoke(param);
+        });
+    }
+
+    public CSharpConstructor AddParameters<TModel>(IEnumerable<TModel> models, Action<CSharpConstructorParameter> configure = null) where TModel
+        : IMetadataModel, IHasName, IHasTypeReference
+    {
+        foreach (var model in models)
+        {
+            AddParameter(model, configure);
+        }
+        return this;
     }
 
     public CSharpConstructor AddParameter(string type, string name, Action<CSharpConstructorParameter> configure = null)
@@ -121,4 +171,5 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
             return string.Join(", ", Parameters.Select(x => x.ToString()));
         }
     }
+
 }

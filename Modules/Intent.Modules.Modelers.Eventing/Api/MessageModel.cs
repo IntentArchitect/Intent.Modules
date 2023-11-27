@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Eventing.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class MessageModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class MessageModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder, IElementWrapper
     {
         public const string SpecializationType = "Message";
         public const string SpecializationTypeId = "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e";

@@ -56,7 +56,8 @@
       <lookupTypes>
         <type>4a16943b-702c-4fb0-bfcc-2afd98b8814c</type>
       </lookupTypes>
-      <lookupInternalTargetPropertyId>return element.getParent("Mapping Settings").id;</lookupInternalTargetPropertyId>
+      <lookupInternalTargetPropertyId>const mappingProjectionSettingsId = "178c2f55-9ca1-484d-be43-a91bdd5554dc";
+return element.getParent(mappingProjectionSettingsId).id;</lookupInternalTargetPropertyId>
     </property>
   </properties>
 </stereotypeDefinition>

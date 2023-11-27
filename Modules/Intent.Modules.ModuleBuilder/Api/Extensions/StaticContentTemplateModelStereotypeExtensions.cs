@@ -52,6 +52,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Content Subfolder");
             }
 
+            public string BinaryFileGlobbingPatterns()
+            {
+                return _stereotype.GetProperty<string>("Binary File Globbing Patterns");
+            }
+
             public string Role()
             {
                 return _stereotype.GetProperty<string>("Role");

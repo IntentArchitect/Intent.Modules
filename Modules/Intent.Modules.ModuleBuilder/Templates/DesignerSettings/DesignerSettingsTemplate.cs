@@ -37,18 +37,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
 
         public override string TransformText()
         {
-            var modelerSettings = new DesignerSettingsPersistable
-            {
-                Id = Model.Id,
-                Name = Model.Name,
-                DesignerReferences = Model.DesignerReferences.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                PackageSettings = Model.PackageTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                PackageExtensions = Model.PackageExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                ElementExtensions = Model.ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                AssociationSettings = Model.AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                AssociationExtensions = Model.AssociationExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
-            };
+            var modelerSettings = Model.ToPersistable();
 
             return Serialize(modelerSettings);
         }

@@ -25,7 +25,6 @@
       <name>firstAttr</name>
       <display>firstAttr: string</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="0868421f-95f9-420e-9e8c-82937502c79e">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -50,7 +49,6 @@
       <name>attribute</name>
       <display>attribute: string</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <typeReference id="4766271a-c33f-43db-970a-22026d4b83a8">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -75,7 +73,6 @@
       <name>attribute</name>
       <display>attribute: NewType</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
       <genericTypes />
       <typeReference id="56bd3c57-4d81-4b6e-89ad-e17916224f14">
         <typeId>074dee25-3c96-494e-9b0f-339eeabed1e6</typeId>
@@ -117,7 +114,6 @@
       <name>attribute</name>
       <display>attribute: string</display>
       <isAbstract>false</isAbstract>
-      <order>3</order>
       <genericTypes />
       <typeReference id="bc8d3d77-e2d2-4a71-82f1-c85a1e0554d8">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -142,7 +138,6 @@
       <name>attribute</name>
       <display>attribute: string</display>
       <isAbstract>false</isAbstract>
-      <order>4</order>
       <genericTypes />
       <typeReference id="c831eaaa-7e6f-4c75-82ec-06a80aeda762">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -167,7 +162,6 @@
       <name>Constructor</name>
       <display>NewClass1(firstAttr: string, attribute: string, EmptyClass: TestClass)</display>
       <isAbstract>false</isAbstract>
-      <order>5</order>
       <genericTypes />
       <isMapped>true</isMapped>
       <mappedClass>
@@ -189,7 +183,6 @@
           <name>firstAttr</name>
           <display>in : firstAttr: string</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="1232eb31-be13-4fea-bdc7-fda642896fee">
             <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -220,7 +213,6 @@
           <name>attribute</name>
           <display>in : attribute: string</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="124942dc-fe5e-4f28-bb08-705846246c2e">
             <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -251,7 +243,6 @@
           <name>EmptyClass</name>
           <display>in : EmptyClass: TestClass</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="d8aa9b79-2bfb-47cd-a5fc-b48ff7ff6c35">
             <typeId>e3ab1103-695b-43cb-9dad-feea553c2711</typeId>
@@ -284,7 +275,6 @@
       <name>Operation</name>
       <display>Operation(param: NewClass2, param: NewType): void</display>
       <isAbstract>false</isAbstract>
-      <order>6</order>
       <genericTypes />
       <typeReference id="0cd36cdf-4b30-4beb-8730-5d05426adf48">
         <isNavigable>true</isNavigable>
@@ -305,7 +295,6 @@
           <name>param</name>
           <display>in : param: NewClass2</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="87f8f873-f7e3-4e31-a8e6-130d85355185">
             <typeId>7c7ea20f-0a80-4beb-a1b1-44b1bcd63a6e</typeId>
@@ -330,7 +319,6 @@
           <name>param</name>
           <display>in : param: NewType</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="cdc186f6-33d1-4787-b3ef-496f61618d72">
             <typeId>074dee25-3c96-494e-9b0f-339eeabed1e6</typeId>
@@ -357,7 +345,6 @@
       <name>Operation</name>
       <display>Operation(): void</display>
       <isAbstract>false</isAbstract>
-      <order>7</order>
       <genericTypes />
       <typeReference id="a4a6ee58-3326-4fd1-993b-987774e397ca">
         <isNavigable>true</isNavigable>
@@ -379,7 +366,6 @@
       <name>Operation</name>
       <display>Operation(): void</display>
       <isAbstract>false</isAbstract>
-      <order>8</order>
       <genericTypes />
       <typeReference id="e59201f4-08a2-436d-a530-11f39f9f1203">
         <isNavigable>true</isNavigable>

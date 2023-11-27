@@ -60,7 +60,8 @@ namespace Intent.ModuleBuilder.Api
                 MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
                 DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
                 Icon = Icon?.ToPersistable(),
-                AllowMultiple = this.GetOptionSettings().AllowMultiple()
+                AllowMultiple = this.GetOptionSettings().AllowMultiple(),
+                IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
             };
         }
 

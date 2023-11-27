@@ -56,7 +56,8 @@ namespace Intent.ModuleBuilder.Api
                 Shortcut = this.GetOptionSettings().Shortcut(),
                 MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
                 Icon = this.GetOptionSettings().Icon()?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "code" },
-                Script = this.Script
+                Script = this.Script,
+                IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction()
             };
         }
     }

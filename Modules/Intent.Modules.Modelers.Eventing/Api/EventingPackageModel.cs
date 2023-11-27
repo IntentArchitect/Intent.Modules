@@ -34,17 +34,12 @@ namespace Intent.Modelers.Eventing.Api
         public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
         public string FileLocation => UnderlyingPackage.FileLocation;
 
-        public ApplicationModel Application => UnderlyingPackage.ChildElements
-            .GetElementsOfType(ApplicationModel.SpecializationTypeId)
-            .Select(x => new ApplicationModel(x))
-            .SingleOrDefault();
-
         public IList<MessageModel> Messages => UnderlyingPackage.ChildElements
             .GetElementsOfType(MessageModel.SpecializationTypeId)
             .Select(x => new MessageModel(x))
             .ToList();
 
-        public IList<EventingDTOModel> DTOs => UnderlyingPackage.ChildElements
+        public IList<EventingDTOModel> EventingDTOs => UnderlyingPackage.ChildElements
             .GetElementsOfType(EventingDTOModel.SpecializationTypeId)
             .Select(x => new EventingDTOModel(x))
             .ToList();

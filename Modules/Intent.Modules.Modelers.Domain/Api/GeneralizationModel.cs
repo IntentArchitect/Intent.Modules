@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -66,7 +67,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class GeneralizationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class GeneralizationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
 
@@ -100,6 +101,7 @@ namespace Intent.Modelers.Domain.Api
 
         private readonly GeneralizationModel _association;
         public GeneralizationModel Association => _association;
+        public IElement InternalElement => _associationEnd;
         public string Comment => _associationEnd.Comment;
         public ICanBeReferencedType Element => _associationEnd.TypeReference.Element;
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.TypeReference.GenericTypeParameters;
@@ -150,6 +152,7 @@ namespace Intent.Modelers.Domain.Api
     public class GeneralizationSourceEndModel : GeneralizationEndModel
     {
         public const string SpecializationTypeId = "8190bf43-222c-4b53-8a44-14626efe3574";
+        public const string SpecializationType = "Generalization Source End";
 
         public GeneralizationSourceEndModel(IAssociationEnd associationEnd, GeneralizationModel association) : base(associationEnd, association)
         {
@@ -160,6 +163,7 @@ namespace Intent.Modelers.Domain.Api
     public class GeneralizationTargetEndModel : GeneralizationEndModel
     {
         public const string SpecializationTypeId = "4686cc1d-b4d8-4b99-b45b-f77bd5496946";
+        public const string SpecializationType = "Generalization Target End";
 
         public GeneralizationTargetEndModel(IAssociationEnd associationEnd, GeneralizationModel association) : base(associationEnd, association)
         {

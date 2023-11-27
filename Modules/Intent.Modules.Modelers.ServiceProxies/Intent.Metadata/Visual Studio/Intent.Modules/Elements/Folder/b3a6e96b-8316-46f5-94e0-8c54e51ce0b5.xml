@@ -25,7 +25,6 @@
       <name>ModuleBuilder.Templates.FactoryExtension</name>
       <display>ModuleBuilder.Templates.FactoryExtension</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>b3a6e96b-8316-46f5-94e0-8c54e51ce0b5</parentFolderId>

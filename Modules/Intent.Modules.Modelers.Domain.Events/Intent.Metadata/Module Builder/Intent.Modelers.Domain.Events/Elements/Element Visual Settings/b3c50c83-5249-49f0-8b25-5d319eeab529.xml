@@ -33,6 +33,15 @@
         <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="96a4fa17-6283-4626-835e-a8f013d98b19" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="838dcc53-b73e-4381-a3d2-db0afaf230b2" display="Anchor Points" isActive="true" />
+        <property name="43c4e468-1139-42b3-a064-fb49f679b72b" display="Auto-Resize Default" value="true" isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements>
@@ -52,7 +61,7 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="27138300-900e-4a82-ad06-8abcedf0864a" display="Path" value="`M${x},${y - 6} h${w}`" isActive="true" />
-            <property name="8996260d-790c-4e7b-8607-65fa2dd4ac24" display="Condition" value="return $firstOfType &amp;&amp; parent.h &gt;=100;" isActive="true" />
+            <property name="8996260d-790c-4e7b-8607-65fa2dd4ac24" display="Condition" value="return parent.visual.isAutoResizeEnabled() &amp;&amp; $firstOfType;" isActive="true" />
             <property name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" value="" isActive="true" />
             <property name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" isActive="true" />
             <property name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" isActive="true" />
@@ -79,7 +88,7 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="" isActive="true" />
-            <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" value="return parent.h &gt;=100" isActive="true" />
+            <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" value="return parent.visual.isAutoResizeEnabled()" isActive="true" />
             <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`" isActive="true" />
           </properties>
         </stereotype>

@@ -38,6 +38,7 @@
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
@@ -94,6 +95,7 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -102,7 +104,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="df491bea-8a85-4bc9-a93d-41b7abb80ffb" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+    <childElement id="df491bea-8a85-4bc9-a93d-41b7abb80ffb" type="Mapping Projection Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
       <name>Service Reference</name>
       <display>[mappings]: Service Reference</display>
       <isAbstract>false</isAbstract>
@@ -127,6 +129,7 @@
             <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="true" isActive="true" />
             <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-right" isActive="true" />
             <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" isActive="true" />
+            <property name="227be852-5202-4bc7-a8ce-db0ed31b2e14" display="Is Option Visible Function" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -162,6 +165,7 @@
                 <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                 <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                 <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -212,6 +216,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;return element.hasStereotype(httpSettingsId)" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -258,6 +263,7 @@
                 <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                 <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                 <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -301,6 +307,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="return element.getChildren(&quot;Command&quot;).length &gt; 0 || element.getChildren(&quot;Query&quot;).length &gt; 0" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -343,6 +350,7 @@
                         <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                         <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                         <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                        <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;&#xD;&#xA;return element.hasStereotype(httpSettingsId)" isActive="true" />
                       </properties>
                     </stereotype>
                   </stereotypes>
@@ -386,6 +394,7 @@
                         <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                         <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                         <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                        <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;return element.hasStereotype(httpSettingsId)" isActive="true" />
                       </properties>
                     </stereotype>
                   </stereotypes>
@@ -393,6 +402,50 @@
                   <childElements />
                 </childElement>
               </childElements>
+            </childElement>
+            <childElement id="7746e02b-1804-4aaf-a74b-fd572381bfbf" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Folder -&gt; [None] (Traverse)</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>be57ff66-f953-48da-8e7f-6cb9a7b33332</parentFolderId>
+              <packageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</packageId>
+              <packageName>Intent.Modelers.Types.ServiceProxies</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Traverse" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" value="be57ff66-f953-48da-8e7f-6cb9a7b33332" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="4d95d53a-8855-4f35-aa82-e312643f5c5f" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="return element.getChildren(&quot;Command&quot;).length == 0 &amp;&amp; element.getChildren(&quot;Query&quot;).length == 0" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
             </childElement>
           </childElements>
         </childElement>

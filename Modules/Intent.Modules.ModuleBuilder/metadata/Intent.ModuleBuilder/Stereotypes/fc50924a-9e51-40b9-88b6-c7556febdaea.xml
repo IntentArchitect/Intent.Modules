@@ -19,7 +19,7 @@
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>9cd801bb-6b69-4eac-8d08-23c4e6ade03c</parentFolderId>
-  <order>0</order>
+  <order>1</order>
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>

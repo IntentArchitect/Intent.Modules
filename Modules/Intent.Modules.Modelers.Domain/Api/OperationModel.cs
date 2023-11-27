@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class OperationModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class OperationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "Operation";
         protected readonly IElement _element;
@@ -45,6 +45,7 @@ namespace Intent.Modelers.Domain.Api
         public ITypeReference ReturnType => TypeReference?.Element != null ? TypeReference : null;
 
         public bool IsAbstract => _element.IsAbstract;
+        public bool IsStatic => _element.IsStatic;
 
         [IntentManaged(Mode.Ignore)] public ClassModel ParentClass => new ClassModel(InternalElement.ParentElement);
 

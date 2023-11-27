@@ -16,7 +16,6 @@
       <name>attribute</name>
       <display>attribute: string</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="08ebd79f-7a2e-4656-99ea-90d56f293b79">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>

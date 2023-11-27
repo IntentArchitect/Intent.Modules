@@ -36,7 +36,26 @@ interface IMappedRequestDetails {
 function getMappedRequestDetails(
     request: MacroApi.Context.IElementApi
 ): IMappedRequestDetails {
-    const mappedElement = request.getMapping()?.getElement();
+    const queryEntityMappingTypeId = "25f25af9-c38b-4053-9474-b0fabe9d7ea7";
+    const createEntityMappingTypeId = "5f172141-fdba-426b-980e-163e782ff53e";
+
+    // Basic mapping:
+    let mappedElement = request.getMapping()?.getElement();
+
+    // Advanced mapping:
+    if (mappedElement == null) {
+        const advancedMappings = request.getAssociations()
+            .filter(x =>
+                x.hasMappings(queryEntityMappingTypeId) ||
+                x.hasMappings(createEntityMappingTypeId))
+            .map(x =>
+                x.getMapping(queryEntityMappingTypeId) ||
+                x.getMapping(createEntityMappingTypeId));
+
+        if (advancedMappings.length === 1) {
+            mappedElement = advancedMappings[0].getTargetElement();
+        }
+    }
 
     if (mappedElement == null) {
         return null;

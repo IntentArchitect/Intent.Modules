@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad" type="Module Settings Configuration" typeId="37e678f8-370a-4b05-ae44-69bb3d2b39b6">
+  <name>Domain Interaction Settings</name>
+  <display>Domain Interaction Settings</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>manually</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>bff48d8d-9246-4ad7-9dda-9703b7139b86</parentFolderId>
+  <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+  <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="14bc1e98-930b-494c-97a9-5da4e1f3a5fa" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Default Mapping Mode</name>
+      <display>Default Mapping Mode</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad</parentFolderId>
+      <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+      <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="true" isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Determines which mapping Services designer CRUD scripts will execute" isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="basic" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="4e3aa907-5442-45e0-b1ab-d1dc032911e9" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Basic Mapping</name>
+          <display>Basic Mapping = basic</display>
+          <isAbstract>false</isAbstract>
+          <value>basic</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>14bc1e98-930b-494c-97a9-5da4e1f3a5fa</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="54b7d6fa-1e63-4a07-a4de-29835cd39500" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Advanced Mapping</name>
+          <display>Advanced Mapping = advanced</display>
+          <isAbstract>false</isAbstract>
+          <value>advanced</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>14bc1e98-930b-494c-97a9-5da4e1f3a5fa</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

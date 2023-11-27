@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
@@ -78,24 +79,60 @@ namespace <#= Namespace #>
     public class <#=AssociationSourceEndClassName #> : <#=AssociationEndClassName #>
     {
         public const string SpecializationTypeId = "<#= Model.SourceEnd.Id #>";
+        public const string SpecializationType = "<#= Model.SourceEnd.Name #>";
 
         public <#=AssociationSourceEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association) : base(associationEnd, association)
         {
         }
+<# if (Model.TargetEnd.MenuOptions?.MappingOptions.Any() != true && Model.SourceEnd.MenuOptions?.MappingOptions.Any() == true) { #>
+        
+        public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
+<# } #>
+<#  if (Model.SourceEnd.MenuOptions != null) {
+        foreach(var creationOption in Model.SourceEnd.MenuOptions.ElementCreations) { #>
+        public <#= creationOption.ApiModelName.FormatForCollection(creationOption.AllowMultiple()) #> <#= creationOption.GetCreationOptionName() #> => InternalElement.ChildElements
+            .GetElementsOfType(<#= creationOption.ApiModelName #>.SpecializationTypeId)
+            .Select(x => new <#= creationOption.ApiModelName #>(x))
+<#          if (creationOption.GetOptionSettings().AllowMultiple()) { #>
+            .ToList();
+<#          } else { #>
+            .SingleOrDefault();
+<#          } #>
+
+<#      } #>
+<#  } #>
     }
 
     [IntentManaged(Mode.Fully)]
     public class <#=AssociationTargetEndClassName #> : <#=AssociationEndClassName #>
     {
         public const string SpecializationTypeId = "<#= Model.TargetEnd.Id #>";
+        public const string SpecializationType = "<#= Model.TargetEnd.Name #>";
 
         public <#=AssociationTargetEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association) : base(associationEnd, association)
         {
         }
+<#  if (Model.TargetEnd.MenuOptions != null) {
+        foreach(var creationOption in Model.TargetEnd.MenuOptions.ElementCreations) { #>
+        public <#= creationOption.ApiModelName.FormatForCollection(creationOption.AllowMultiple()) #> <#= creationOption.GetCreationOptionName() #> => InternalElement.ChildElements
+            .GetElementsOfType(<#= creationOption.ApiModelName #>.SpecializationTypeId)
+            .Select(x => new <#= creationOption.ApiModelName #>(x))
+<#          if (creationOption.GetOptionSettings().AllowMultiple()) { #>
+            .ToList();
+<#          } else { #>
+            .SingleOrDefault();
+<#          } #>
+
+<#      } #>
+<#  } #>
+<# if (Model.TargetEnd.MenuOptions?.MappingOptions.Any() == true && Model.SourceEnd.MenuOptions?.MappingOptions.Any() != true) { #>
+        
+        public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
+<# } #>
     }
 
     [IntentManaged(Mode.Fully)]
-    public class <#=AssociationEndClassName #> : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class <#=AssociationEndClassName #> : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly <#= ClassName #> _association;
@@ -117,6 +154,7 @@ namespace <#= Namespace #>
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public <#= ClassName #> Association => _association;
+        public IElement InternalElement => _associationEnd;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
         public IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;
@@ -128,6 +166,9 @@ namespace <#= Namespace #>
         public IPackage Package => Element?.Package;
         public string Comment => _associationEnd.Comment;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
+<# if (Model.TargetEnd.MenuOptions?.MappingOptions.Any() == true && Model.SourceEnd.MenuOptions?.MappingOptions.Any() == true) { #>
+        public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
+<# } #>
 
         public <#=AssociationEndClassName #> OtherEnd()
         {

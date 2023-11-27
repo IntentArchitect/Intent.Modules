@@ -1,4 +1,13 @@
-﻿### Version 3.3.44
+﻿### Version 3.4.0
+
+- Added: Advanced Mapping support with the `CSharpClassMappingManager`
+- Added: `CSharpAssignmentStatement` which takes in a left-hand and right-hand set of statements for standard variable and property assignements.
+- Added: `IHasCSharpName GetReferenceForModel(...)` on `CSharpFile` to support resolving reference names for methods, properties and parameters.
+- Added: `AddTopLevelStatements` on `CSharpFile` for support of [top-level statements](https://learn.microsoft.com/dotnet/csharp/fundamentals/program-structure/top-level-statements).
+- Added: Abstractions for working with `Program.cs` and `Startup.cs` files in a way where you don't have to be aware of whether or not _top-level statements_ and/or _use minimal hosting model_ have been selected.
+- Fixed: Necessary type disambiguation would not occur when one of the current class's namespace parts contained a type with the same name as the type being resolved.
+
+### Version 3.3.44
 
 - Improvement: Added support changing `ReturnType` on class and interface methods using `WithReturnType`.
 - Improvement: Added `InsertParameter` method to method builders.
