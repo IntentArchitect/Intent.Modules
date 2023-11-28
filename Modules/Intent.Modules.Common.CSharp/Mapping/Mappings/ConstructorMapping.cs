@@ -28,8 +28,8 @@ public class ConstructorMapping : CSharpMappingBase
         var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
         // Determine if this model is a constructor on the class:
         if (typeTemplate?.CSharpFile.Classes.First().TryGetReferenceForModel(Model.Id, out var ctor) == true && ctor is CSharpConstructor) 
-        {
-            var i = new CSharpInvocationStatement($"new {ctor.Name}").WithoutSemicolon();
+        {            
+            var i = new CSharpInvocationStatement($"new {((IntentTemplateBase)_template).GetTypeName(typeTemplate)}").WithoutSemicolon();
             foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
             {
                 i.AddArgument(child.GetSourceStatement());
