@@ -19,6 +19,7 @@ public interface IIntentTemplate : ITemplate
     void AddTypeSource(ITypeSource typeSource);
     ClassTypeSource AddTypeSource(string templateId);
     string GetTypeName(IElement typeReference);
+    string GetTypeName(ITemplate template, TemplateDiscoveryOptions options = null);
     string GetTypeName(ITypeReference typeReference, string collectionFormat = null);
     string GetTypeName(string templateIdOrRole, TemplateDiscoveryOptions options = null);
     string GetTypeName(string templateIdOrRole, string modelId, TemplateDiscoveryOptions options = null);
