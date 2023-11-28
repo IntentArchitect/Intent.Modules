@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class TargetMappingSettingsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class CommonMappableElementsModel : IMetadataModel, IHasStereotypes, IHasName
     {
-        public const string SpecializationType = "Target Mapping Settings";
-        public const string SpecializationTypeId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
+        public const string SpecializationType = "Common Mappable Elements";
+        public const string SpecializationTypeId = "aa2eab42-5ffc-4028-b4b6-95ff719705d4";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public TargetMappingSettingsModel(IElement element, string requiredType = SpecializationType)
+        public CommonMappableElementsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -37,9 +37,9 @@ namespace Intent.ModuleBuilder.Api
 
         public IElement InternalElement => _element;
 
-        public IList<ElementMappingSettingsModel> ElementMappings => _element.ChildElements
-            .GetElementsOfType(ElementMappingSettingsModel.SpecializationTypeId)
-            .Select(x => new ElementMappingSettingsModel(x))
+        public IList<MappableElementSettingsModel> MappableElements => _element.ChildElements
+            .GetElementsOfType(MappableElementSettingsModel.SpecializationTypeId)
+            .Select(x => new MappableElementSettingsModel(x))
             .ToList();
 
         public override string ToString()
@@ -47,7 +47,7 @@ namespace Intent.ModuleBuilder.Api
             return _element.ToString();
         }
 
-        public bool Equals(TargetMappingSettingsModel other)
+        public bool Equals(CommonMappableElementsModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -57,7 +57,7 @@ namespace Intent.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((TargetMappingSettingsModel)obj);
+            return Equals((CommonMappableElementsModel)obj);
         }
 
         public override int GetHashCode()
@@ -67,17 +67,17 @@ namespace Intent.ModuleBuilder.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class TargetMappingSettingsModelExtensions
+    public static class CommonMappableElementsModelExtensions
     {
 
-        public static bool IsTargetMappingSettingsModel(this ICanBeReferencedType type)
+        public static bool IsCommonMappableElementsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == TargetMappingSettingsModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == CommonMappableElementsModel.SpecializationTypeId;
         }
 
-        public static TargetMappingSettingsModel AsTargetMappingSettingsModel(this ICanBeReferencedType type)
+        public static CommonMappableElementsModel AsCommonMappableElementsModel(this ICanBeReferencedType type)
         {
-            return type.IsTargetMappingSettingsModel() ? new TargetMappingSettingsModel((IElement)type) : null;
+            return type.IsCommonMappableElementsModel() ? new CommonMappableElementsModel((IElement)type) : null;
         }
     }
 }

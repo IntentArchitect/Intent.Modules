@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Architect.Persistence" Version="3.5.0-pre.1" />
+    <PackageReference Include="Intent.Architect.Persistence" Version="3.5.0-pre.2" />
     <PackageReference Include="Intent.Modules.Common" Version="3.5.0-beta.3" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.3.35" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.9" />

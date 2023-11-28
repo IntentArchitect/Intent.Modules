@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="c5fe657f-bf6f-4027-8bec-67290cc6dde2" version="3.1.0">
-  <name>Mapping End Settings</name>
+<stereotypeDefinition id="5a9e055a-5282-4412-90fe-c6adbe8fcd17" version="3.1.0">
+  <name>Mappable Reference Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="1536425c-35f4-48e1-abe4-1f8f56533545">Source Mappable Elements</type>
-    <type id="a812bff7-017a-4692-8ec7-1caad0a1dd88">Target Mappable Elements</type>
+    <type id="072515e1-3a1e-4472-a27e-e322a683d299">Mappable Element Reference</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>
@@ -21,15 +20,19 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
-    <property id="a43f67e1-742f-46c7-b6eb-e73c3d7232dd">
-      <name>Root Element Function</name>
+    <property id="3e5c0461-b70b-4bfb-a412-a879c8645a6a">
+      <name>Reference Target</name>
       <type>string</type>
-      <controlType>function</controlType>
-      <optionsSource>n/a</optionsSource>
+      <controlType>select</controlType>
+      <optionsSource>lookup-children</optionsSource>
       <placeholder />
       <valueOptions />
-      <lookupTypes />
-      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <lookupTypes>
+        <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
+      </lookupTypes>
+      <lookupInternalTargetPropertyId>const commonMappableElementsTypeId = "aa2eab42-5ffc-4028-b4b6-95ff719705d4";
+return lookupTypesOf(commonMappableElementsTypeId)[0].id;</lookupInternalTargetPropertyId>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

@@ -39,14 +39,14 @@ namespace Intent.ModuleBuilder.Api
 
         public IElement InternalElement => _element;
 
-        public SourceMappingSettingsModel SourceMapping => _element.ChildElements
-            .GetElementsOfType(SourceMappingSettingsModel.SpecializationTypeId)
-            .Select(x => new SourceMappingSettingsModel(x))
+        public SourceMappableElementsModel SourceMapping => _element.ChildElements
+            .GetElementsOfType(SourceMappableElementsModel.SpecializationTypeId)
+            .Select(x => new SourceMappableElementsModel(x))
             .SingleOrDefault();
 
-        public TargetMappingSettingsModel TargetMapping => _element.ChildElements
-            .GetElementsOfType(TargetMappingSettingsModel.SpecializationTypeId)
-            .Select(x => new TargetMappingSettingsModel(x))
+        public TargetMappableElementsModel TargetMapping => _element.ChildElements
+            .GetElementsOfType(TargetMappableElementsModel.SpecializationTypeId)
+            .Select(x => new TargetMappableElementsModel(x))
             .SingleOrDefault();
 
         public IList<MappingTypeSettingsModel> MappingTypes => _element.ChildElements
@@ -78,17 +78,17 @@ namespace Intent.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Ignore)]
-        public MappingElementToElementSettingsPersistable ToPersistable()
+        public AdvancedMappingSettingsPersistable ToPersistable()
         {
-            return new MappingElementToElementSettingsPersistable()
+            return new AdvancedMappingSettingsPersistable()
             {
                 MappingTypeId = Id,
                 MappingType = Name,
                 SourceRootElementFunction = SourceMapping.GetMappingEndSettings().RootElementFunction(),
                 TargetRootElementFunction = TargetMapping.GetMappingEndSettings().RootElementFunction(),
                 Title = Name,
-                SourceSettings = SourceMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
-                TargetSettings = TargetMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
+                SourceMappableElements = SourceMapping?.GetMappableElementPersistables(),
+                TargetMappableElements = TargetMapping?.GetMappableElementPersistables(),
                 MappingTypes = MappingTypes.Select(x => x.ToPersistable()).ToList()
             };
         }

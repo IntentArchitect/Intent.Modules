@@ -10,21 +10,21 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class TargetMappingSettingsModelStereotypeExtensions
+    public static class TargetMappableElementsModelStereotypeExtensions
     {
-        public static MappingEndSettings GetMappingEndSettings(this TargetMappingSettingsModel model)
+        public static MappingEndSettings GetMappingEndSettings(this TargetMappableElementsModel model)
         {
             var stereotype = model.GetStereotype("Mapping End Settings");
             return stereotype != null ? new MappingEndSettings(stereotype) : null;
         }
 
 
-        public static bool HasMappingEndSettings(this TargetMappingSettingsModel model)
+        public static bool HasMappingEndSettings(this TargetMappableElementsModel model)
         {
             return model.HasStereotype("Mapping End Settings");
         }
 
-        public static bool TryGetMappingEndSettings(this TargetMappingSettingsModel model, out MappingEndSettings stereotype)
+        public static bool TryGetMappingEndSettings(this TargetMappableElementsModel model, out MappingEndSettings stereotype)
         {
             if (!HasMappingEndSettings(model))
             {

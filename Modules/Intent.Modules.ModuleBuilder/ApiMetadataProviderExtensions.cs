@@ -32,6 +32,13 @@ namespace Intent.ModuleBuilder.Api
                 .ToList();
         }
 
+        public static IList<CommonMappableElementsModel> GetCommonMappableElementsModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(CommonMappableElementsModel.SpecializationTypeId)
+                .Select(x => new CommonMappableElementsModel(x))
+                .ToList();
+        }
+
         public static IList<CoreTypeModel> GetCoreTypeModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(CoreTypeModel.SpecializationTypeId)

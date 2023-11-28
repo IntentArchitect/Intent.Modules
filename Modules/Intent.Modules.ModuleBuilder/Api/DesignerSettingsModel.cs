@@ -14,7 +14,7 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 
 namespace Intent.ModuleBuilder.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class DesignerSettingsModel : IMetadataModel, IHasStereotypes, IHasName
     {
         protected readonly IElement _element;
@@ -49,6 +49,7 @@ namespace Intent.ModuleBuilder.Api
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
+        [IntentIgnore]
         public virtual string MetadataName()
         {
             return Name;
@@ -98,6 +99,7 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new CoreTypeModel(x))
             .ToList();
 
+        [IntentIgnore]
         public virtual bool IsReference()
         {
             return this.GetDesignerSettings().IsReference();
@@ -130,10 +132,15 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new PackageExtensionModel(x))
             .ToList();
 
-        public IList<MappingSettingsModel> MappingTypes => _element.ChildElements
+        public IList<MappingSettingsModel> MappingSettings => _element.ChildElements
             .GetElementsOfType(MappingSettingsModel.SpecializationTypeId)
             .Select(x => new MappingSettingsModel(x))
             .ToList();
+
+        public CommonMappableElementsModel CommonMappableElements => _element.ChildElements
+            .GetElementsOfType(CommonMappableElementsModel.SpecializationTypeId)
+            .Select(x => new CommonMappableElementsModel(x))
+            .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
         public IList<PackageSettingsModel> PackageTypes => _element.ChildElements
@@ -149,6 +156,7 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
 
+        [IntentIgnore]
         public DesignerSettingsPersistable ToPersistable()
         {
             var modelerSettings = new DesignerSettingsPersistable
@@ -162,7 +170,8 @@ namespace Intent.ModuleBuilder.Api
                 ElementExtensions = ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 AssociationSettings = AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 AssociationExtensions = AssociationExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                MappingSettings = MappingTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
+                MappingSettings = MappingSettings.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                CommonMappableElements = CommonMappableElements.MappableElements.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
             };
             return modelerSettings;
         }

@@ -65,7 +65,7 @@
         <childElement id="30b27cca-83c1-4662-9139-a7c1e89c400d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <comment>hidden</comment>
           <name>Add Source Mapping</name>
-          <display>Add Source Mapping: Source Mapping Settings</display>
+          <display>Add Source Mapping: Source Mappable Elements</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="239a1b73-9aa0-4f4b-98de-2999e0fe80c6">
@@ -106,7 +106,7 @@
         <childElement id="d859061e-9276-4298-9ecb-6ae69460055a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <comment>hidden</comment>
           <name>Add Target Mapping</name>
-          <display>Add Target Mapping: Target Mapping Settings</display>
+          <display>Add Target Mapping: Target Mappable Elements</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="a5b36a9c-9c87-46ce-b4ee-6ac95d4ffe11">

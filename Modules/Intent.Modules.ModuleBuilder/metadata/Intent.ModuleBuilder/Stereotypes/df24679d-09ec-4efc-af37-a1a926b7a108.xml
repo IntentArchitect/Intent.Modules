@@ -3,7 +3,7 @@
   <name>Mapping Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="62e5b1a9-0d36-4969-9d22-ce748155afbf">Element Mapping Settings</type>
+    <type id="62e5b1a9-0d36-4969-9d22-ce748155afbf">Mappable Element Settings</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>
@@ -59,23 +59,6 @@
       <isActiveFunction />
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
-    <property id="54dec827-b00b-4045-850d-c5d49c5777b2">
-      <comment>Delete</comment>
-      <name>Maps To</name>
-      <type>string</type>
-      <controlType>multi-select</controlType>
-      <optionsSource>lookup-children</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes>
-        <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
-      </lookupTypes>
-      <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
-let toMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
-return element.getParent(mappingTypeSettingsId).getChildren(toMappingSettingsId)[0].id;</lookupInternalTargetPropertyId>
-      <isActiveFunction>let fromMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
-return element.getParent(fromMappingSettingsId) != null</isActiveFunction>
-    </property>
     <property id="8729cf25-6468-4ad0-aed2-2f7c854c2438">
       <hint>Whether this type can be mapped multiple times</hint>
       <name>Allow Multiple Mappings</name>
@@ -100,10 +83,25 @@ return element.getParent(fromMappingSettingsId) != null</isActiveFunction>
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
-      <lookupInternalTargetPropertyId>let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
+      <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
+let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
 let targetMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
+let commonMappableSettingsId = "aa2eab42-5ffc-4028-b4b6-95ff719705d4";
+let mappableReferenceId = "072515e1-3a1e-4472-a27e-e322a683d299";
+let sourceMappables = element.getParent(sourceMappingSettingsId) 
+    ?? element.getParent(targetMappingSettingsId)
+    ?? element.getParent(commonMappableSettingsId)
+;
+let result = [sourceMappables.id];
 
-return element.getParent(sourceMappingSettingsId)?.id ?? element.getParent(targetMappingSettingsId).id;</lookupInternalTargetPropertyId>
+result.push(...sourceMappables.getChildren(mappableReferenceId).map(x =&gt; {
+    let settingStereotypeId = "5a9e055a-5282-4412-90fe-c6adbe8fcd17"; // Reference Settings
+    let propertyId = "3e5c0461-b70b-4bfb-a412-a879c8645a6a"; // Reference Target
+    let target = x.getStereotype(settingStereotypeId).getProperty(propertyId).getSelected();
+    return target?.id;
+}).filter(x =&gt; x != null));
+
+return result;</lookupInternalTargetPropertyId>
     </property>
     <property id="a6ec44d7-f928-4221-bed6-8589176a94c7">
       <name>Is Traversable Function</name>
@@ -149,10 +147,25 @@ return element.getParent(sourceMappingSettingsId)?.id ?? element.getParent(targe
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
-      <lookupInternalTargetPropertyId>let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
+      <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
+let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
 let targetMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
+let commonMappableSettingsId = "aa2eab42-5ffc-4028-b4b6-95ff719705d4";
+let mappableReferenceId = "072515e1-3a1e-4472-a27e-e322a683d299";
+let sourceMappables = element.getParent(sourceMappingSettingsId) 
+    ?? element.getParent(targetMappingSettingsId)
+    ?? element.getParent(commonMappableSettingsId)
+;
+let result = [sourceMappables.id];
 
-return element.getParent(sourceMappingSettingsId)?.id ?? element.getParent(targetMappingSettingsId).id;</lookupInternalTargetPropertyId>
+result.push(...sourceMappables.getChildren(mappableReferenceId).map(x =&gt; {
+    let settingStereotypeId = "5a9e055a-5282-4412-90fe-c6adbe8fcd17"; // Reference Settings
+    let propertyId = "3e5c0461-b70b-4bfb-a412-a879c8645a6a"; // Reference Target
+    let target = x.getStereotype(settingStereotypeId).getProperty(propertyId).getSelected();
+    return target?.id;
+}).filter(x =&gt; x != null));
+
+return result;</lookupInternalTargetPropertyId>
     </property>
   </properties>
 </stereotypeDefinition>

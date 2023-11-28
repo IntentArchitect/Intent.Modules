@@ -10,21 +10,21 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class ElementMappingSettingsModelStereotypeExtensions
+    public static class MappableElementSettingsModelStereotypeExtensions
     {
-        public static MappingSettings GetMappingSettings(this ElementMappingSettingsModel model)
+        public static MappingSettings GetMappingSettings(this MappableElementSettingsModel model)
         {
             var stereotype = model.GetStereotype("Mapping Settings");
             return stereotype != null ? new MappingSettings(stereotype) : null;
         }
 
 
-        public static bool HasMappingSettings(this ElementMappingSettingsModel model)
+        public static bool HasMappingSettings(this MappableElementSettingsModel model)
         {
             return model.HasStereotype("Mapping Settings");
         }
 
-        public static bool TryGetMappingSettings(this ElementMappingSettingsModel model, out MappingSettings stereotype)
+        public static bool TryGetMappingSettings(this MappableElementSettingsModel model, out MappingSettings stereotype)
         {
             if (!HasMappingSettings(model))
             {
@@ -85,11 +85,6 @@ namespace Intent.ModuleBuilder.Api
             public string IsTraversableFunction()
             {
                 return _stereotype.GetProperty<string>("Is Traversable Function");
-            }
-
-            public IElement[] MapsTo()
-            {
-                return _stereotype.GetProperty<IElement[]>("Maps To") ?? new IElement[0];
             }
 
             public IElement UseChildMappingsFrom()
