@@ -20,6 +20,18 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
+    <property id="e9377daa-8d59-419a-8fee-5087da9b6fa6">
+      <name>Common Settings</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>aa2eab42-5ffc-4028-b4b6-95ff719705d4</type>
+      </lookupTypes>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
     <property id="3e5c0461-b70b-4bfb-a412-a879c8645a6a">
       <name>Reference Target</name>
       <type>string</type>
@@ -30,8 +42,8 @@
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
-      <lookupInternalTargetPropertyId>const commonMappableElementsTypeId = "aa2eab42-5ffc-4028-b4b6-95ff719705d4";
-return lookupTypesOf(commonMappableElementsTypeId)[0].id;</lookupInternalTargetPropertyId>
+      <lookupInternalTargetPropertyId>const commonSettingsPropertyId = "e9377daa-8d59-419a-8fee-5087da9b6fa6";
+return getProperty(commonSettingsPropertyId).getSelected()?.id</lookupInternalTargetPropertyId>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>

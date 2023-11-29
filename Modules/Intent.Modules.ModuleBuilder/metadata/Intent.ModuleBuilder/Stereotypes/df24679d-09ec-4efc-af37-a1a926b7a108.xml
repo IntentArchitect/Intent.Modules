@@ -83,25 +83,27 @@
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
-      <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
-let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
+      <lookupInternalTargetPropertyId>let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
 let targetMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
-let commonMappableSettingsId = "aa2eab42-5ffc-4028-b4b6-95ff719705d4";
-let mappableReferenceId = "072515e1-3a1e-4472-a27e-e322a683d299";
-let sourceMappables = element.getParent(sourceMappingSettingsId) 
+let mappablePackageId = "aa2eab42-5ffc-4028-b4b6-95ff719705d4";
+let mappablePackage = element.getParent(sourceMappingSettingsId) 
     ?? element.getParent(targetMappingSettingsId)
-    ?? element.getParent(commonMappableSettingsId)
-;
-let result = [sourceMappables.id];
+    ?? element.getParent(mappablePackageId);
+    
+const getAllPackageIds = (mappablePackage) =&gt; {
+    let result = [mappablePackage.id];
+    let mappablePackageImportId = "90892fa1-b0b9-4af9-9f3b-4fdf37db9b05";
+    mappablePackage.getChildren(mappablePackageImportId)
+        .filter(x =&gt; x.typeReference.getType() != null)
+        .map(x =&gt; {
+            let packageIds = getAllPackageIds(x.typeReference.getType())
+            return packageIds;
+        })
+        .forEach(x =&gt; result.push(...x));
+    return result;
+}
 
-result.push(...sourceMappables.getChildren(mappableReferenceId).map(x =&gt; {
-    let settingStereotypeId = "5a9e055a-5282-4412-90fe-c6adbe8fcd17"; // Reference Settings
-    let propertyId = "3e5c0461-b70b-4bfb-a412-a879c8645a6a"; // Reference Target
-    let target = x.getStereotype(settingStereotypeId).getProperty(propertyId).getSelected();
-    return target?.id;
-}).filter(x =&gt; x != null));
-
-return result;</lookupInternalTargetPropertyId>
+return getAllPackageIds(mappablePackage);</lookupInternalTargetPropertyId>
     </property>
     <property id="a6ec44d7-f928-4221-bed6-8589176a94c7">
       <name>Is Traversable Function</name>
@@ -147,25 +149,27 @@ return result;</lookupInternalTargetPropertyId>
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
-      <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
-let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
+      <lookupInternalTargetPropertyId>let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
 let targetMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
-let commonMappableSettingsId = "aa2eab42-5ffc-4028-b4b6-95ff719705d4";
-let mappableReferenceId = "072515e1-3a1e-4472-a27e-e322a683d299";
-let sourceMappables = element.getParent(sourceMappingSettingsId) 
+let mappablePackageId = "aa2eab42-5ffc-4028-b4b6-95ff719705d4";
+let mappablePackage = element.getParent(sourceMappingSettingsId) 
     ?? element.getParent(targetMappingSettingsId)
-    ?? element.getParent(commonMappableSettingsId)
-;
-let result = [sourceMappables.id];
+    ?? element.getParent(mappablePackageId);
+    
+const getAllPackageIds = (mappablePackage) =&gt; {
+    let result = [mappablePackage.id];
+    let mappablePackageImportId = "90892fa1-b0b9-4af9-9f3b-4fdf37db9b05";
+    mappablePackage.getChildren(mappablePackageImportId)
+        .filter(x =&gt; x.typeReference.getType() != null)
+        .map(x =&gt; {
+            let packageIds = getAllPackageIds(x.typeReference.getType())
+            return packageIds;
+        })
+        .forEach(x =&gt; result.push(...x));
+    return result;
+}
 
-result.push(...sourceMappables.getChildren(mappableReferenceId).map(x =&gt; {
-    let settingStereotypeId = "5a9e055a-5282-4412-90fe-c6adbe8fcd17"; // Reference Settings
-    let propertyId = "3e5c0461-b70b-4bfb-a412-a879c8645a6a"; // Reference Target
-    let target = x.getStereotype(settingStereotypeId).getProperty(propertyId).getSelected();
-    return target?.id;
-}).filter(x =&gt; x != null));
-
-return result;</lookupInternalTargetPropertyId>
+return getAllPackageIds(mappablePackage);</lookupInternalTargetPropertyId>
     </property>
   </properties>
 </stereotypeDefinition>

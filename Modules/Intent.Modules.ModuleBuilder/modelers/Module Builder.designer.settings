@@ -474,5 +474,5 @@
   <associationSettings />
   <associationExtensions />
   <mappingSettings />
-  <commonMappableElementSettings />
+  <mappableElementPackages />
 </settings>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -11,14 +12,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class CommonMappableElementsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class MappableElementsPackageModel : IMetadataModel, IHasStereotypes, IHasName
     {
-        public const string SpecializationType = "Common Mappable Elements";
+        public const string SpecializationType = "Mappable Elements Package";
         public const string SpecializationTypeId = "aa2eab42-5ffc-4028-b4b6-95ff719705d4";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public CommonMappableElementsModel(IElement element, string requiredType = SpecializationType)
+        public MappableElementsPackageModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -37,6 +38,11 @@ namespace Intent.ModuleBuilder.Api
 
         public IElement InternalElement => _element;
 
+        public IList<MappableElementsPackageImportModel> ImportMappableElementsPackages => _element.ChildElements
+            .GetElementsOfType(MappableElementsPackageImportModel.SpecializationTypeId)
+            .Select(x => new MappableElementsPackageImportModel(x))
+            .ToList();
+
         public IList<MappableElementSettingsModel> MappableElements => _element.ChildElements
             .GetElementsOfType(MappableElementSettingsModel.SpecializationTypeId)
             .Select(x => new MappableElementSettingsModel(x))
@@ -47,7 +53,7 @@ namespace Intent.ModuleBuilder.Api
             return _element.ToString();
         }
 
-        public bool Equals(CommonMappableElementsModel other)
+        public bool Equals(MappableElementsPackageModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -57,27 +63,39 @@ namespace Intent.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((CommonMappableElementsModel)obj);
+            return Equals((MappableElementsPackageModel)obj);
         }
 
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentIgnore]
+        public MappableElementsPackagePersistable ToPersistable()
+        {
+            return new MappableElementsPackagePersistable
+            {
+                Id = Id,
+                Name = Name,
+                MappableElements = MappableElements.Select(x => x.ToPersistable()).ToList(),
+                PackageImports = ImportMappableElementsPackages.Select(x => x.ToPersistable()).ToList(),
+            };
+        }
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class CommonMappableElementsModelExtensions
+    public static class MappableElementsPackageModelExtensions
     {
 
-        public static bool IsCommonMappableElementsModel(this ICanBeReferencedType type)
+        public static bool IsMappableElementsPackageModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == CommonMappableElementsModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == MappableElementsPackageModel.SpecializationTypeId;
         }
 
-        public static CommonMappableElementsModel AsCommonMappableElementsModel(this ICanBeReferencedType type)
+        public static MappableElementsPackageModel AsMappableElementsPackageModel(this ICanBeReferencedType type)
         {
-            return type.IsCommonMappableElementsModel() ? new CommonMappableElementsModel((IElement)type) : null;
+            return type.IsMappableElementsPackageModel() ? new MappableElementsPackageModel((IElement)type) : null;
         }
     }
 }

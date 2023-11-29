@@ -47,6 +47,11 @@ namespace Intent.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
+            public IElement CommonSettings()
+            {
+                return _stereotype.GetProperty<IElement>("Common Settings");
+            }
+
             public IElement ReferenceTarget()
             {
                 return _stereotype.GetProperty<IElement>("Reference Target");

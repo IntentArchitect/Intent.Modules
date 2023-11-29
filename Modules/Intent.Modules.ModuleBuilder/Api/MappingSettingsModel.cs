@@ -87,8 +87,8 @@ namespace Intent.ModuleBuilder.Api
                 SourceRootElementFunction = SourceMapping.GetMappingEndSettings().RootElementFunction(),
                 TargetRootElementFunction = TargetMapping.GetMappingEndSettings().RootElementFunction(),
                 Title = Name,
-                SourceMappableElements = SourceMapping?.GetMappableElementPersistables(),
-                TargetMappableElements = TargetMapping?.GetMappableElementPersistables(),
+                SourceMappableSettings = SourceMapping?.GetMappableElementPersistables(),
+                TargetMappableSettings = TargetMapping?.GetMappableElementPersistables(),
                 MappingTypes = MappingTypes.Select(x => x.ToPersistable()).ToList()
             };
         }

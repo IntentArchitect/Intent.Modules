@@ -32,18 +32,22 @@
       </lookupTypes>
       <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
 let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
-let mappableReferenceId = "072515e1-3a1e-4472-a27e-e322a683d299";
 let sourceMappables = element.getParent(mappingTypeSettingsId).getChildren(sourceMappingSettingsId)[0];
-let result = [sourceMappables.id];
 
-result.push(...sourceMappables.getChildren(mappableReferenceId).map(x =&gt; {
-    let settingStereotypeId = "5a9e055a-5282-4412-90fe-c6adbe8fcd17";
-    let propertyId = "3e5c0461-b70b-4bfb-a412-a879c8645a6a"; // Reference Target
-    let target = x.getStereotype(settingStereotypeId).getProperty(propertyId).getSelected();
-    return target?.id;
-}).filter(x =&gt; x != null));
+const getAllPackageIds = (mappablePackage) =&gt; {
+    let result = [mappablePackage.id];
+    let mappablePackageImportId = "90892fa1-b0b9-4af9-9f3b-4fdf37db9b05";
+    mappablePackage.getChildren(mappablePackageImportId)
+        .filter(x =&gt; x.typeReference.getType() != null)
+        .map(x =&gt; {
+            let packageIds = getAllPackageIds(x.typeReference.getType())
+            return packageIds;
+        })
+        .forEach(x =&gt; result.push(...x));
+    return result;
+}
 
-return result;</lookupInternalTargetPropertyId>
+return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="8050a21c-c6ff-46fd-8677-eeda40f10719">
@@ -60,16 +64,21 @@ return result;</lookupInternalTargetPropertyId>
 let targetMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
 let mappableReferenceId = "072515e1-3a1e-4472-a27e-e322a683d299";
 let targetMappables = element.getParent(mappingTypeSettingsId).getChildren(targetMappingSettingsId)[0];
-let result = [targetMappables.id];
 
-result.push(...targetMappables.getChildren(mappableReferenceId).map(x =&gt; {
-    let settingStereotypeId = "5a9e055a-5282-4412-90fe-c6adbe8fcd17";
-    let propertyId = "3e5c0461-b70b-4bfb-a412-a879c8645a6a"; // Reference Target
-    let target = x.getStereotype(settingStereotypeId).getProperty(propertyId).getSelected();
-    return target?.id;
-}).filter(x =&gt; x != null));
+const getAllPackageIds = (mappablePackage) =&gt; {
+    let result = [mappablePackage.id];
+    let mappablePackageImportId = "90892fa1-b0b9-4af9-9f3b-4fdf37db9b05";
+    mappablePackage.getChildren(mappablePackageImportId)
+        .filter(x =&gt; x.typeReference.getType() != null)
+        .map(x =&gt; {
+            let packageIds = getAllPackageIds(x.typeReference.getType())
+            return packageIds;
+        })
+        .forEach(x =&gt; result.push(...x));
+    return result;
+}
 
-return result;</lookupInternalTargetPropertyId>
+return getAllPackageIds(targetMappables);</lookupInternalTargetPropertyId>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="6ee5b3e3-628e-4996-87b5-08649e101887">

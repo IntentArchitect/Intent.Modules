@@ -137,10 +137,10 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new MappingSettingsModel(x))
             .ToList();
 
-        public CommonMappableElementsModel CommonMappableElements => _element.ChildElements
-            .GetElementsOfType(CommonMappableElementsModel.SpecializationTypeId)
-            .Select(x => new CommonMappableElementsModel(x))
-            .SingleOrDefault();
+        public IList<MappableElementsPackageModel> MappableElementsPackages => _element.ChildElements
+            .GetElementsOfType(MappableElementsPackageModel.SpecializationTypeId)
+            .Select(x => new MappableElementsPackageModel(x))
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<PackageSettingsModel> PackageTypes => _element.ChildElements
@@ -171,7 +171,7 @@ namespace Intent.ModuleBuilder.Api
                 AssociationSettings = AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 AssociationExtensions = AssociationExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 MappingSettings = MappingSettings.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                CommonMappableElements = CommonMappableElements.MappableElements.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
+                MappableElementPackages = MappableElementsPackages.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
             };
             return modelerSettings;
         }
