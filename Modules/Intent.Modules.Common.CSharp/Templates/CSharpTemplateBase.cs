@@ -314,6 +314,11 @@ namespace Intent.Modules.Common.CSharp.Templates
         {
             // NB: If changing this method, please run the unit tests against it
 
+            if (fullyQualifiedType.EndsWith("Transaction"))
+            {
+
+            }
+
             var typeParts = fullyQualifiedType.Split('.').ToArray();
             if (typeParts.Length == 1)
             {

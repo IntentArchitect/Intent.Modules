@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Transactions;
 using Intent.Engine;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
@@ -37,15 +38,38 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
 
         private void AddCommonKnownTypes(Dictionary<string, ISet<string>> knownTypesByNamespace)
         {
-            AddCommonKnownType(knownTypesByNamespace, "System.Attribute");
-            AddCommonKnownType(knownTypesByNamespace, "System.Action");
+            // This forces these assemblies to be loaded prior to the call to
+            // AppDomain.CurrentDomain.GetAssemblies()
+            var additionalTypesToLoad = new[]
+                {
+                    typeof(Transaction)
+                }
+                .Select(x => x.Assembly)
+                .Distinct();
+            foreach (var type in additionalTypesToLoad)
+            {
+                Logging.Log.Debug($"Ensured types {type.GetName().Name} will be scanned for known types.");
+            }
+
+            var systemTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(x => x.GetName().Name?.Split('.')[0] == "System")
+                .SelectMany(c => c.GetExportedTypes())
+                .Where(x => !x.ContainsGenericParameters)
+                .Select(x => x.FullName)
+                .OrderBy(x => x)
+                .ToArray();
+
+            foreach (var type in systemTypes)
+            {
+                AddCommonKnownType(knownTypesByNamespace, type);
+            }
         }
 
         private void AddCommonKnownType(Dictionary<string, ISet<string>> knownTypesByNamespace, string fullTypeName)
         {
             int classStartIndex = fullTypeName.LastIndexOf(".");
             var namespaceName = fullTypeName.Substring(0, classStartIndex);
-            var className = fullTypeName.Substring(classStartIndex + 1); 
+            var className = fullTypeName.Substring(classStartIndex + 1);
 
             if (!knownTypesByNamespace.TryGetValue(namespaceName, out var systemKnownTypes))
             {
