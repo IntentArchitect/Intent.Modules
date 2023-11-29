@@ -8802,6 +8802,7 @@ return !element.hasStereotype('Primary Key')
         </mapping>
       </sourceMappings>
       <targetMappings>
+        <importSettings id="d7aea784-eb96-472e-919d-a0e71315a0ed" name="Common Domain Mappables" />
         <mapping id="e04ab087-8c1a-42b9-aac7-d76ed674e319" name="Create Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
           <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -8822,7 +8823,7 @@ return !element.hasStereotype('Primary Key')
               <isMappableFunction>// Attribute is under mapped to Class or Constructor
 return element.getParent("Class").id == mappingContext.targetElementId || element.getParent("Class Constructor")?.id == mappingContext.targetElementId</isMappableFunction>
               <traversableTypes>
-                <mappingId>8829efad-54fa-4ea6-a5c8-14f556cb528d</mappingId>
+                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <childSettings />
@@ -8836,7 +8837,7 @@ return element.getParent("Class").id == mappingContext.targetElementId || elemen
 return element.getParent("Class").id == mappingContext.targetElementId || element.getParent("Class Constructor")?.id == mappingContext.targetElementId</isMappableFunction>
               <traversableTypes>
                 <mappingId>e04ab087-8c1a-42b9-aac7-d76ed674e319</mappingId>
-                <mappingId>8829efad-54fa-4ea6-a5c8-14f556cb528d</mappingId>
+                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>e04ab087-8c1a-42b9-aac7-d76ed674e319</useChildSettingsFrom>
@@ -8854,9 +8855,9 @@ return element.getParent("Class").id == mappingContext.targetElementId || elemen
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return element.getParent()?.getIsMapped();</isMappableFunction>
                   <traversableTypes>
-                    <mappingId>8829efad-54fa-4ea6-a5c8-14f556cb528d</mappingId>
                     <mappingId>e04ab087-8c1a-42b9-aac7-d76ed674e319</mappingId>
                     <mappingId>15b84be5-c79b-41bf-881c-447fe70f5f5b</mappingId>
+                    <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
                   <childSettings />
@@ -8864,22 +8865,6 @@ return element.getParent("Class").id == mappingContext.targetElementId || elemen
               </childSettings>
             </childSetting>
           </childSettings>
-        </mapping>
-        <mapping id="8829efad-54fa-4ea6-a5c8-14f556cb528d" name="Create Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <useChildSettingsFrom>e04ab087-8c1a-42b9-aac7-d76ed674e319</useChildSettingsFrom>
-          <childSettings />
-        </mapping>
-        <mapping id="15b84be5-c79b-41bf-881c-447fe70f5f5b" name="Create Data Contract" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <useChildSettingsFrom>e04ab087-8c1a-42b9-aac7-d76ed674e319</useChildSettingsFrom>
-          <childSettings />
         </mapping>
       </targetMappings>
       <mappingTypes>
@@ -8911,6 +8896,8 @@ return element.getParent("Class").id == mappingContext.targetElementId || elemen
             <target id="53e8bc33-5930-4364-9526-7f8f181b14a1" name="Set Attribute" />
             <target id="a4a2572b-57d1-4782-8ace-dd22540211dc" name="Set Association Target End" />
             <target id="8ec45776-c6cc-4174-84f8-efb5d4308ed4" name="Constructor Parameter" />
+            <target id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" />
+            <target id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" />
           </targets>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
@@ -8920,218 +8907,11 @@ return element.getParent("Class").id == mappingContext.targetElementId || elemen
       <title>Domain Service Mapping</title>
       <targetRootElementFunction>return element.getParent("Class")?.id ?? element.id;</targetRootElementFunction>
       <sourceMappings>
-        <mapping id="5a3018a8-38bc-450f-bf82-631e2d9475b3" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>true</canBeModified>
-          <childSettings>
-            <childSetting id="98041049-0f91-4c21-99dc-50cd18fd1dae" name="Update Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
-              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
-              </traversableTypes>
-              <canBeModified>true</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="eb1478af-4b69-4d33-826f-3f195ebbed79" name="Update Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
-              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
-              </traversableTypes>
-              <canBeModified>true</canBeModified>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="16a7127a-946d-41a3-9dd9-4f2c5429c5e9" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>true</canBeModified>
-          <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
-          <useChildSettingsFrom>5a3018a8-38bc-450f-bf82-631e2d9475b3</useChildSettingsFrom>
-          <childSettings />
-        </mapping>
-        <mapping id="5ef8e1c3-9626-4501-8968-6d9e432fb3b5" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <childSettings>
-            <childSetting id="daf3a2fa-0b35-4549-8b65-26b3a74dc7e0" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>4b3a6208-67e4-44aa-b96e-7791b21659e9</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="c0682bc4-2b6a-4638-a35e-39188d253694" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
-              <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>4b3a6208-67e4-44aa-b96e-7791b21659e9</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <useChildSettingsFrom>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</useChildSettingsFrom>
-              <childSettings />
-            </childSetting>
-            <childSetting id="cfe9c4d4-9c26-4f11-a585-f1e3863fb658" name="Invoke Domain Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return element.typeReference.isTypeFound() &amp;&amp; element.getChildren("Parameter").length == 0;</isMappableFunction>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="4b3a6208-67e4-44aa-b96e-7791b21659e9" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <useChildSettingsFrom>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</useChildSettingsFrom>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <childSettings>
-            <childSetting id="7767267b-2e01-42cd-8a03-103d296a6306" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
-              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
-              </traversableTypes>
-              <canBeModified>true</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8" name="Collection Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
-              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
-              </traversableTypes>
-              <canBeModified>true</canBeModified>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="5b5676ef-333f-4f52-859d-925ee8c43578" name="Domain Event Handler Association" type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <traversableTypes>
-            <mappingId>92a0b71b-588d-408f-9096-5a3e335bdad7</mappingId>
-          </traversableTypes>
-          <canBeModified>false</canBeModified>
-          <childSettings>
-            <childSetting id="92a0b71b-588d-408f-9096-5a3e335bdad7" name="Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <childSettings>
-                <childSetting id="792374ff-6b97-45df-96de-01acd2488cc0" name="Property" type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed">
-                  <allowMultipleMappings>true</allowMultipleMappings>
-                  <isMappableFunction>return true;</isMappableFunction>
-                  <traversableTypes>
-                    <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
-                  </traversableTypes>
-                  <canBeModified>false</canBeModified>
-                  <childSettings />
-                </childSetting>
-              </childSettings>
-            </childSetting>
-          </childSettings>
-        </mapping>
+        <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
       </sourceMappings>
       <targetMappings>
-        <mapping id="72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <childSettings>
-            <childSetting id="84e9dcc5-8765-48ef-b2a6-39744498a4af" name="Update Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-              <isRequiredFunction>return !element.getParent().hasType || element.getParent().typeReference?.getIsCollection()</isRequiredFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>let fkAssociation = element.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected();  
-return (!element.hasStereotype('Primary Key') || element.getParent().specialization == "Association Target End")     
-    // mapping association is to Class, not Operation:
-    &amp;&amp; element.getParent("Class").id == mappingContext.targetElementId
-    // if is FK, include if is for aggregational relationahip:
-    &amp;&amp; (fkAssociation == null || fkAssociation.getOtherEnd().typeReference.getIsCollection() || fkAssociation.getOtherEnd().typeReference.getIsNullable());</isMappableFunction>
-              <traversableTypes>
-                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="8acf7530-30fd-49fc-b082-75e0060c249e" name="Update Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
-              <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
-              <isRequiredFunction>return false;</isRequiredFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return element.getParent("Class").id == mappingContext.targetElementId</isMappableFunction>
-              <traversableTypes>
-                <mappingId>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</mappingId>
-                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <useChildSettingsFrom>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</useChildSettingsFrom>
-              <childSettings />
-            </childSetting>
-            <childSetting id="091c6b4d-5cf7-4561-9d4c-b025905152e3" name="Invoke Class Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
-              <filterFunction>return element.id == mappingContext.targetElementId || element.getParent("Class").id == mappingContext.targetElementId</filterFunction>
-              <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return element.id == mappingContext.targetElementId || element.getParent("Class").id == mappingContext.targetElementId</isMappableFunction>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <childSettings>
-                <childSetting id="95db9e8b-5db5-4a46-815c-53948a16fe7c" name="Operation Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
-                  <isRequiredFunction>return true;</isRequiredFunction>
-                  <allowMultipleMappings>true</allowMultipleMappings>
-                  <isMappableFunction>return true;</isMappableFunction>
-                  <traversableTypes>
-                    <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
-                  </traversableTypes>
-                  <canBeModified>false</canBeModified>
-                  <childSettings />
-                </childSetting>
-              </childSettings>
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="32b2649c-7d86-42ba-807f-d9449ed15980" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <childSettings>
-            <childSetting id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Value Object Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-              <isRequiredFunction>return true;</isRequiredFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="120f60ff-f242-4f5c-ac03-14f0ecaafdcf" name="Domain Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+        <importSettings id="d7aea784-eb96-472e-919d-a0e71315a0ed" name="Common Domain Mappables" />
+        <mapping id="120f60ff-f242-4f5c-ac03-14f0ecaafdcf" name="Call Domain Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <traversableTypes />
@@ -9141,8 +8921,8 @@ return (!element.hasStereotype('Primary Key') || element.getParent().specializat
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
-                <mappingId>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</mappingId>
                 <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
+                <mappingId>15b84be5-c79b-41bf-881c-447fe70f5f5b</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <childSettings />
@@ -9161,8 +8941,7 @@ return (!element.hasStereotype('Primary Key') || element.getParent().specializat
             <source id="5b5676ef-333f-4f52-859d-925ee8c43578" name="Domain Event Handler Association" />
           </sources>
           <targets>
-            <target id="091c6b4d-5cf7-4561-9d4c-b025905152e3" name="Invoke Class Operation" />
-            <target id="120f60ff-f242-4f5c-ac03-14f0ecaafdcf" name="Domain Service Operation" />
+            <target id="120f60ff-f242-4f5c-ac03-14f0ecaafdcf" name="Call Domain Service Operation" />
           </targets>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
@@ -9179,11 +8958,9 @@ return (!element.hasStereotype('Primary Key') || element.getParent().specializat
             <source id="cfe9c4d4-9c26-4f11-a585-f1e3863fb658" name="Invoke Domain Operation" />
           </sources>
           <targets>
-            <target id="84e9dcc5-8765-48ef-b2a6-39744498a4af" name="Update Attribute" />
-            <target id="8acf7530-30fd-49fc-b082-75e0060c249e" name="Update Association Target End" />
-            <target id="95db9e8b-5db5-4a46-815c-53948a16fe7c" name="Operation Parameter" />
-            <target id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Value Object Attribute" />
+            <target id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" />
             <target id="ca7d6d11-0e19-4326-b95b-6451c9ca4d9d" name="Service Operation Parameter" />
+            <target id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" />
           </targets>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
@@ -9769,151 +9546,244 @@ return !element.hasStereotype('Primary Key')
       <title>Update Entity Mapping</title>
       <targetRootElementFunction>return element.getParent("Class")?.id ?? element.id;</targetRootElementFunction>
       <sourceMappings>
-        <mapping id="b2f0849a-864b-447d-b896-300b597bbb02" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>true</canBeModified>
-          <childSettings>
-            <childSetting id="cb557bfc-e7c7-49ab-b842-0124959fe5ec" name="Update Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
-              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>b91d2d99-42c9-43fe-a110-ea1294daae96</mappingId>
-              </traversableTypes>
-              <canBeModified>true</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="bf848a07-0fcd-4599-9a8a-0824085fb9f6" name="Update Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
-              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>b91d2d99-42c9-43fe-a110-ea1294daae96</mappingId>
-              </traversableTypes>
-              <canBeModified>true</canBeModified>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="b91d2d99-42c9-43fe-a110-ea1294daae96" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+        <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
+      </sourceMappings>
+      <targetMappings>
+        <importSettings id="128a6e65-c165-400a-800d-71c7e67e7b01" name="Update Entity Mappables" />
+      </targetMappings>
+      <mappingTypes>
+        <mappingType type="Invocation Mapping" typeId="d30bdba1-9c47-4917-b81d-29230fed5d6a">
+          <represents>invokable</represents>
+          <sources>
+            <source id="5a3018a8-38bc-450f-bf82-631e2d9475b3" name="Command" />
+            <source id="eb1478af-4b69-4d33-826f-3f195ebbed79" name="Update Collection Field" />
+            <source id="8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7" name="Service Operation" />
+            <source id="ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8" name="Collection Parameter" />
+            <source id="5b5676ef-333f-4f52-859d-925ee8c43578" name="Domain Event Handler Association" />
+          </sources>
+          <targets>
+            <target id="091c6b4d-5cf7-4561-9d4c-b025905152e3" name="Invoke Class Operation" />
+          </targets>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+        <mappingType type="Data Mapping" typeId="ca88649b-f20b-44db-a9c0-017c26155ba8">
+          <represents>data</represents>
+          <sources>
+            <source id="98041049-0f91-4c21-99dc-50cd18fd1dae" name="Update Field" />
+            <source id="7767267b-2e01-42cd-8a03-103d296a6306" name="Parameter" />
+            <source id="eb1478af-4b69-4d33-826f-3f195ebbed79" name="Update Collection Field" />
+            <source id="ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8" name="Collection Parameter" />
+            <source id="792374ff-6b97-45df-96de-01acd2488cc0" name="Property" />
+            <source id="daf3a2fa-0b35-4549-8b65-26b3a74dc7e0" name="Attribute" />
+            <source id="c0682bc4-2b6a-4638-a35e-39188d253694" name="Association Target End" />
+            <source id="cfe9c4d4-9c26-4f11-a585-f1e3863fb658" name="Invoke Domain Operation" />
+          </sources>
+          <targets>
+            <target id="84e9dcc5-8765-48ef-b2a6-39744498a4af" name="Set Attribute" />
+            <target id="8acf7530-30fd-49fc-b082-75e0060c249e" name="Set Association Target End" />
+            <target id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" />
+            <target id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" />
+            <target id="95db9e8b-5db5-4a46-815c-53948a16fe7c" name="Set Operation Parameter" />
+          </targets>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+      </mappingTypes>
+    </mappingSetting>
+  </mappingSettings>
+  <mappableElementPackages>
+    <mappableElementPackage id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables">
+      <imports />
+      <mappableElementSettings>
+        <mappableElement id="5ef8e1c3-9626-4501-8968-6d9e432fb3b5" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
-          <canBeModified>true</canBeModified>
-          <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
-          <useChildSettingsFrom>b2f0849a-864b-447d-b896-300b597bbb02</useChildSettingsFrom>
-          <childSettings />
-        </mapping>
-        <mapping id="36780dcc-1942-42cf-b50a-f5b2571cf218" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+          <canBeModified>false</canBeModified>
+          <childSettings>
+            <childSetting id="daf3a2fa-0b35-4549-8b65-26b3a74dc7e0" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>4b3a6208-67e4-44aa-b96e-7791b21659e9</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <childSettings />
+            </childSetting>
+            <childSetting id="c0682bc4-2b6a-4638-a35e-39188d253694" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+              <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>4b3a6208-67e4-44aa-b96e-7791b21659e9</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <useChildSettingsFrom>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</useChildSettingsFrom>
+              <childSettings />
+            </childSetting>
+            <childSetting id="cfe9c4d4-9c26-4f11-a585-f1e3863fb658" name="Invoke Domain Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return element.typeReference.isTypeFound() &amp;&amp; element.getChildren("Parameter").length == 0;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <childSettings />
+            </childSetting>
+            <childSetting id="4b3a6208-67e4-44aa-b96e-7791b21659e9" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <useChildSettingsFrom>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</useChildSettingsFrom>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="5a3018a8-38bc-450f-bf82-631e2d9475b3" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <traversableTypes />
-          <canBeModified>false</canBeModified>
+          <canBeModified>true</canBeModified>
           <childSettings>
-            <childSetting id="b29d236f-473a-4ad5-871b-38d5c652bf1a" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+            <childSetting id="98041049-0f91-4c21-99dc-50cd18fd1dae" name="Update Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
               <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
-                <mappingId>b91d2d99-42c9-43fe-a110-ea1294daae96</mappingId>
+                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <childSettings />
             </childSetting>
-            <childSetting id="3b4ddbc4-154e-40ac-8f17-7a1603270f8c" name="Collection Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+            <childSetting id="eb1478af-4b69-4d33-826f-3f195ebbed79" name="Update Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
               <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
-                <mappingId>b91d2d99-42c9-43fe-a110-ea1294daae96</mappingId>
+                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <childSettings />
             </childSetting>
           </childSettings>
-        </mapping>
-        <mapping id="0c8933f1-4df2-4bde-a50c-4f8f3bb29323" name="Domain Event Handler Association" type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f">
+        </mappableElement>
+        <mappableElement id="5b5676ef-333f-4f52-859d-925ee8c43578" name="Domain Event Handler Association" type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <traversableTypes>
-            <mappingId>b1f79bcc-4f4e-4b5e-8f49-c49b485e7987</mappingId>
+            <mappingId>92a0b71b-588d-408f-9096-5a3e335bdad7</mappingId>
           </traversableTypes>
           <canBeModified>false</canBeModified>
           <childSettings>
-            <childSetting id="b1f79bcc-4f4e-4b5e-8f49-c49b485e7987" name="Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
+            <childSetting id="92a0b71b-588d-408f-9096-5a3e335bdad7" name="Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <childSettings>
-                <childSetting id="47476752-e9aa-4250-b805-8474413ab402" name="Property" type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed">
+                <childSetting id="792374ff-6b97-45df-96de-01acd2488cc0" name="Property" type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed">
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <traversableTypes>
-                    <mappingId>5bc07df5-9804-4806-bc5c-15252656339b</mappingId>
+                    <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
-                  <childSettings>
-                    <childSetting id="5bc07df5-9804-4806-bc5c-15252656339b" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
-                      <allowMultipleMappings>true</allowMultipleMappings>
-                      <isMappableFunction>return false;</isMappableFunction>
-                      <traversableTypes />
-                      <canBeModified>false</canBeModified>
-                      <childSettings>
-                        <childSetting id="c7ae1336-1218-4f28-8634-22a114cbeb1b" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-                          <allowMultipleMappings>true</allowMultipleMappings>
-                          <isMappableFunction>return true;</isMappableFunction>
-                          <traversableTypes>
-                            <mappingId>084158c1-8dec-462b-a450-54e9c5988eae</mappingId>
-                          </traversableTypes>
-                          <canBeModified>false</canBeModified>
-                          <childSettings />
-                        </childSetting>
-                        <childSetting id="276b73a8-e17f-4985-a1ba-9b4253489b82" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
-                          <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
-                          <allowMultipleMappings>true</allowMultipleMappings>
-                          <isMappableFunction>return true;</isMappableFunction>
-                          <traversableTypes>
-                            <mappingId>084158c1-8dec-462b-a450-54e9c5988eae</mappingId>
-                          </traversableTypes>
-                          <canBeModified>false</canBeModified>
-                          <useChildSettingsFrom>5bc07df5-9804-4806-bc5c-15252656339b</useChildSettingsFrom>
-                          <childSettings />
-                        </childSetting>
-                        <childSetting id="2ac46697-cbc5-4b3d-a64f-edb74a64f761" name="Invoke Domain Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
-                          <allowMultipleMappings>true</allowMultipleMappings>
-                          <isMappableFunction>return element.typeReference.isTypeFound() &amp;&amp; element.getChildren("Parameter").length == 0;</isMappableFunction>
-                          <traversableTypes />
-                          <canBeModified>false</canBeModified>
-                          <childSettings />
-                        </childSetting>
-                        <childSetting id="084158c1-8dec-462b-a450-54e9c5988eae" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
-                          <allowMultipleMappings>true</allowMultipleMappings>
-                          <isMappableFunction>return false;</isMappableFunction>
-                          <traversableTypes />
-                          <canBeModified>false</canBeModified>
-                          <useChildSettingsFrom>5bc07df5-9804-4806-bc5c-15252656339b</useChildSettingsFrom>
-                          <childSettings />
-                        </childSetting>
-                      </childSettings>
-                    </childSetting>
-                  </childSettings>
+                  <childSettings />
                 </childSetting>
               </childSettings>
             </childSetting>
           </childSettings>
-        </mapping>
-      </sourceMappings>
-      <targetMappings>
-        <mapping id="40237ee3-1071-4635-b3e9-4b4a0662d83d" name="Update Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+        </mappableElement>
+        <mappableElement id="16a7127a-946d-41a3-9dd9-4f2c5429c5e9" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
+          <useChildSettingsFrom>5a3018a8-38bc-450f-bf82-631e2d9475b3</useChildSettingsFrom>
+          <childSettings />
+        </mappableElement>
+        <mappableElement id="8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <childSettings>
+            <childSetting id="7767267b-2e01-42cd-8a03-103d296a6306" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <childSettings />
+            </childSetting>
+            <childSetting id="ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8" name="Collection Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackage>
+    <mappableElementPackage id="d7aea784-eb96-472e-919d-a0e71315a0ed" name="Common Domain Mappables">
+      <imports />
+      <mappableElementSettings>
+        <mappableElement id="15b84be5-c79b-41bf-881c-447fe70f5f5b" name="Create Data Contract" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <childSettings>
-            <childSetting id="f36d1424-356d-44f1-8518-2a3c5b4887f7" name="Update Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+            <childSetting id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+              <isRequiredFunction>return true;</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="32b2649c-7d86-42ba-807f-d9449ed15980" name="Create Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <childSettings>
+            <childSetting id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+              <isRequiredFunction>return true;</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackage>
+    <mappableElementPackage id="128a6e65-c165-400a-800d-71c7e67e7b01" name="Update Entity Mappables">
+      <imports>
+        <import id="d7aea784-eb96-472e-919d-a0e71315a0ed" name="Common Domain Mappables" />
+      </imports>
+      <mappableElementSettings>
+        <mappableElement id="72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8" name="Update Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <childSettings>
+            <childSetting id="84e9dcc5-8765-48ef-b2a6-39744498a4af" name="Set Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
               <isRequiredFunction>return !element.getParent().hasType || element.getParent().typeReference?.getIsCollection()</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>let fkAssociation = element.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected();  
@@ -9923,25 +9793,25 @@ return (!element.hasStereotype('Primary Key') || element.getParent().specializat
     // if is FK, include if is for aggregational relationahip:
     &amp;&amp; (fkAssociation == null || fkAssociation.getOtherEnd().typeReference.getIsCollection() || fkAssociation.getOtherEnd().typeReference.getIsNullable());</isMappableFunction>
               <traversableTypes>
-                <mappingId>21c1865a-d426-4b55-bb99-20d88b0891b7</mappingId>
+                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <childSettings />
             </childSetting>
-            <childSetting id="0601475b-1210-42ae-a51a-f8c714e141a1" name="Update Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+            <childSetting id="8acf7530-30fd-49fc-b082-75e0060c249e" name="Set Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
               <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
               <isRequiredFunction>return false;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return element.getParent("Class").id == mappingContext.targetElementId</isMappableFunction>
               <traversableTypes>
-                <mappingId>40237ee3-1071-4635-b3e9-4b4a0662d83d</mappingId>
-                <mappingId>21c1865a-d426-4b55-bb99-20d88b0891b7</mappingId>
+                <mappingId>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</mappingId>
+                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
-              <useChildSettingsFrom>40237ee3-1071-4635-b3e9-4b4a0662d83d</useChildSettingsFrom>
+              <useChildSettingsFrom>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</useChildSettingsFrom>
               <childSettings />
             </childSetting>
-            <childSetting id="7e59bbbb-eb82-4b16-b8b3-0547d86e41d8" name="Invoke Class Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+            <childSetting id="091c6b4d-5cf7-4561-9d4c-b025905152e3" name="Invoke Class Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
               <filterFunction>return element.id == mappingContext.targetElementId || element.getParent("Class").id == mappingContext.targetElementId</filterFunction>
               <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -9949,12 +9819,12 @@ return (!element.hasStereotype('Primary Key') || element.getParent().specializat
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <childSettings>
-                <childSetting id="33263133-596d-44ea-b713-840113c226ba" name="Operation Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+                <childSetting id="95db9e8b-5db5-4a46-815c-53948a16fe7c" name="Set Operation Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
                   <isRequiredFunction>return true;</isRequiredFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <traversableTypes>
-                    <mappingId>21c1865a-d426-4b55-bb99-20d88b0891b7</mappingId>
+                    <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
                   <childSettings />
@@ -9962,62 +9832,8 @@ return (!element.hasStereotype('Primary Key') || element.getParent().specializat
               </childSettings>
             </childSetting>
           </childSettings>
-        </mapping>
-        <mapping id="21c1865a-d426-4b55-bb99-20d88b0891b7" name="Update Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <childSettings>
-            <childSetting id="1f8058b9-55bc-4ab4-ab8c-8ebde1a99018" name="Value Object Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-              <isRequiredFunction>return true;</isRequiredFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>21c1865a-d426-4b55-bb99-20d88b0891b7</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-      </targetMappings>
-      <mappingTypes>
-        <mappingType type="Invocation Mapping" typeId="d30bdba1-9c47-4917-b81d-29230fed5d6a">
-          <represents>invokable</represents>
-          <sources>
-            <source id="b2f0849a-864b-447d-b896-300b597bbb02" name="Command" />
-            <source id="bf848a07-0fcd-4599-9a8a-0824085fb9f6" name="Update Collection Field" />
-            <source id="36780dcc-1942-42cf-b50a-f5b2571cf218" name="Service Operation" />
-            <source id="3b4ddbc4-154e-40ac-8f17-7a1603270f8c" name="Collection Parameter" />
-            <source id="0c8933f1-4df2-4bde-a50c-4f8f3bb29323" name="Domain Event Handler Association" />
-          </sources>
-          <targets>
-            <target id="7e59bbbb-eb82-4b16-b8b3-0547d86e41d8" name="Invoke Class Operation" />
-          </targets>
-          <allowAutoMap>true</allowAutoMap>
-        </mappingType>
-        <mappingType type="Data Mapping" typeId="ca88649b-f20b-44db-a9c0-017c26155ba8">
-          <represents>data</represents>
-          <sources>
-            <source id="cb557bfc-e7c7-49ab-b842-0124959fe5ec" name="Update Field" />
-            <source id="b29d236f-473a-4ad5-871b-38d5c652bf1a" name="Parameter" />
-            <source id="bf848a07-0fcd-4599-9a8a-0824085fb9f6" name="Update Collection Field" />
-            <source id="3b4ddbc4-154e-40ac-8f17-7a1603270f8c" name="Collection Parameter" />
-            <source id="47476752-e9aa-4250-b805-8474413ab402" name="Property" />
-            <source id="c7ae1336-1218-4f28-8634-22a114cbeb1b" name="Attribute" />
-            <source id="276b73a8-e17f-4985-a1ba-9b4253489b82" name="Association Target End" />
-            <source id="2ac46697-cbc5-4b3d-a64f-edb74a64f761" name="Invoke Domain Operation" />
-          </sources>
-          <targets>
-            <target id="f36d1424-356d-44f1-8518-2a3c5b4887f7" name="Update Attribute" />
-            <target id="0601475b-1210-42ae-a51a-f8c714e141a1" name="Update Association Target End" />
-            <target id="33263133-596d-44ea-b713-840113c226ba" name="Operation Parameter" />
-            <target id="1f8058b9-55bc-4ab4-ab8c-8ebde1a99018" name="Value Object Attribute" />
-          </targets>
-          <allowAutoMap>true</allowAutoMap>
-        </mappingType>
-      </mappingTypes>
-    </mappingSetting>
-  </mappingSettings>
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackage>
+  </mappableElementPackages>
 </settings>
