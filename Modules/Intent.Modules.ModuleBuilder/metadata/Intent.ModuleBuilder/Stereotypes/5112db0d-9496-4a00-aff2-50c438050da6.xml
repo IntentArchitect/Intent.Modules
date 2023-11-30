@@ -7,7 +7,7 @@
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>
-  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
   <displayFunction />
@@ -32,7 +32,22 @@
       </lookupTypes>
       <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
 let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
-return element.getParent(mappingTypeSettingsId).getChildren(sourceMappingSettingsId)[0].id;</lookupInternalTargetPropertyId>
+let sourceMappables = element.getParent(mappingTypeSettingsId).getChildren(sourceMappingSettingsId)[0];
+
+const getAllPackageIds = (mappablePackage) =&gt; {
+    let result = [mappablePackage.id];
+    let mappablePackageImportId = "90892fa1-b0b9-4af9-9f3b-4fdf37db9b05";
+    mappablePackage.getChildren(mappablePackageImportId)
+        .filter(x =&gt; x.typeReference.getType() != null)
+        .map(x =&gt; {
+            let packageIds = getAllPackageIds(x.typeReference.getType())
+            return packageIds;
+        })
+        .forEach(x =&gt; result.push(...x));
+    return result;
+}
+
+return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="8050a21c-c6ff-46fd-8677-eeda40f10719">
@@ -47,7 +62,23 @@ return element.getParent(mappingTypeSettingsId).getChildren(sourceMappingSetting
       </lookupTypes>
       <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
 let targetMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
-return element.getParent(mappingTypeSettingsId).getChildren(targetMappingSettingsId)[0].id;</lookupInternalTargetPropertyId>
+let mappableReferenceId = "072515e1-3a1e-4472-a27e-e322a683d299";
+let targetMappables = element.getParent(mappingTypeSettingsId).getChildren(targetMappingSettingsId)[0];
+
+const getAllPackageIds = (mappablePackage) =&gt; {
+    let result = [mappablePackage.id];
+    let mappablePackageImportId = "90892fa1-b0b9-4af9-9f3b-4fdf37db9b05";
+    mappablePackage.getChildren(mappablePackageImportId)
+        .filter(x =&gt; x.typeReference.getType() != null)
+        .map(x =&gt; {
+            let packageIds = getAllPackageIds(x.typeReference.getType())
+            return packageIds;
+        })
+        .forEach(x =&gt; result.push(...x));
+    return result;
+}
+
+return getAllPackageIds(targetMappables);</lookupInternalTargetPropertyId>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="6ee5b3e3-628e-4996-87b5-08649e101887">
@@ -56,7 +87,7 @@ return element.getParent(mappingTypeSettingsId).getChildren(targetMappingSetting
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <placeholder />
-      <defaultValue>Data</defaultValue>
+      <defaultValue>[]</defaultValue>
       <valueOptions>
         <option>Data</option>
         <option>Invokable</option>

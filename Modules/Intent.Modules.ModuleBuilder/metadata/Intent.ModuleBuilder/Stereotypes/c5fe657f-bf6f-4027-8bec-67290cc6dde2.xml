@@ -3,12 +3,12 @@
   <name>Mapping End Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="1536425c-35f4-48e1-abe4-1f8f56533545">Source Mapping Settings</type>
-    <type id="a812bff7-017a-4692-8ec7-1caad0a1dd88">Target Mapping Settings</type>
+    <type id="1536425c-35f4-48e1-abe4-1f8f56533545">Source Mappable Elements</type>
+    <type id="a812bff7-017a-4692-8ec7-1caad0a1dd88">Target Mappable Elements</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>
-  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
   <displayFunction />

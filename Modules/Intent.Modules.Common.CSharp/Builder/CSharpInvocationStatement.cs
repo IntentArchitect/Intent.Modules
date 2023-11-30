@@ -60,6 +60,11 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
         return this;
     }
 
+    public CSharpInvocationStatement AddArgument(CSharpArgument argument, Action<CSharpArgument> configure = null)
+    {
+        return AddArgument((CSharpStatement)argument, configure != null ? x => configure((CSharpArgument)x) : null);
+    }
+
     public CSharpInvocationStatement WithArgumentsOnNewLines()
     {
         foreach (var argument in Statements)

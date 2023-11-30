@@ -202,14 +202,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#62e5b1a9-0d36-4969-9d22-ce748155afbf</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ElementMappingSettingsModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ElementMappingSettingsModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#727577aa-3e07-4b41-be7d-7359bb1e48c8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ElementSettingsModel.cs</ApplicationRelativeFilePath>
@@ -354,14 +346,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#62e5b1a9-0d36-4969-9d22-ce748155afbf</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/Extensions/ElementMappingSettingsModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ElementMappingSettingsModelStereotypeExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#727577aa-3e07-4b41-be7d-7359bb1e48c8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/ElementSettingsModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
@@ -390,6 +374,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/IntentModuleModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>IntentModuleModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#62e5b1a9-0d36-4969-9d22-ce748155afbf</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/MappableElementSettingsModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MappableElementSettingsModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -452,8 +444,8 @@
       <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#1536425c-35f4-48e1-abe4-1f8f56533545</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/Extensions/SourceMappingSettingsModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>SourceMappingSettingsModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/Extensions/SourceMappableElementsModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>SourceMappableElementsModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -492,8 +484,8 @@
       <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#a812bff7-017a-4692-8ec7-1caad0a1dd88</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/Extensions/TargetMappingSettingsModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>TargetMappingSettingsModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/Extensions/TargetMappableElementsModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TargetMappableElementsModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -542,6 +534,30 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/IntentModuleModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>IntentModuleModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#62e5b1a9-0d36-4969-9d22-ce748155afbf</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/MappableElementSettingsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MappableElementSettingsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#90892fa1-b0b9-4af9-9f3b-4fdf37db9b05</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/MappableElementsPackageImportModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MappableElementsPackageImportModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#aa2eab42-5ffc-4028-b4b6-95ff719705d4</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/MappableElementsPackageModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MappableElementsPackageModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -668,8 +684,8 @@
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#1536425c-35f4-48e1-abe4-1f8f56533545</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/SourceMappingSettingsModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>SourceMappingSettingsModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/SourceMappableElementsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>SourceMappableElementsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -708,8 +724,8 @@
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#a812bff7-017a-4692-8ec7-1caad0a1dd88</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/TargetMappingSettingsModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>TargetMappingSettingsModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/TargetMappableElementsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TargetMappableElementsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
