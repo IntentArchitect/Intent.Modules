@@ -5,9 +5,9 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
 {
-    public CSharpStatement(string invocation)
+    public CSharpStatement(string statement)
     {
-        Text = invocation?.Trim();
+        Text = statement?.Trim();
     }
 
     public IHasCSharpStatements Parent { get; set; }
