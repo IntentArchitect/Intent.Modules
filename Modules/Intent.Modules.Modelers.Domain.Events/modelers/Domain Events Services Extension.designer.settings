@@ -239,4 +239,5 @@ if (handler.getAssociations("Domain Event Handler Association").length == 0) {
   </associationSettings>
   <associationExtensions />
   <mappingSettings />
+  <mappableElementPackages />
 </settings>

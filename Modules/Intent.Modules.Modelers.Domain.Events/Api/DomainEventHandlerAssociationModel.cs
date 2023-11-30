@@ -89,7 +89,7 @@ namespace Intent.Modelers.Domain.Events.Api
     }
 
     [IntentManaged(Mode.Fully, Body = Mode.Merge)]
-    public class DomainEventHandlerAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper, IProcessingHandlerModel
+    public class DomainEventHandlerAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly DomainEventHandlerAssociationModel _association;

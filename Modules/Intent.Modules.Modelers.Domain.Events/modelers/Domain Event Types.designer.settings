@@ -258,6 +258,7 @@ vertical-align: center`</style>
               <type>Value Object</type>
               <type>Data Contract</type>
             </targetTypes>
+            <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
             <allowIsCollection>true</allowIsCollection>
@@ -270,6 +271,26 @@ vertical-align: center`</style>
           <scriptOptions />
           <mappingOptions />
           <mappingSettings />
+          <macros>
+            <macro trigger="on-created">
+              <script>var namingConvention = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("c3789138-6649-47e4-901b-5f6469583cb7")?.value;
+
+if (namingConvention == "pascal-case") {
+    element.setName(toPascalCase(element.getName()))
+} else if (namingConvention == "camel-case") {
+    element.setName(toCamelCase(element.getName()))
+}</script>
+            </macro>
+            <macro trigger="on-name-changed">
+              <script>var namingConvention = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("c3789138-6649-47e4-901b-5f6469583cb7")?.value;
+
+if (namingConvention == "pascal-case") {
+    element.setName(toPascalCase(element.getName()))
+} else if (namingConvention == "camel-case") {
+    element.setName(toCamelCase(element.getName()))
+}</script>
+            </macro>
+          </macros>
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
@@ -807,4 +828,5 @@ vertical-align: center`</style>
       </mappingTypes>
     </mappingSetting>
   </mappingSettings>
+  <mappableElementPackages />
 </settings>
