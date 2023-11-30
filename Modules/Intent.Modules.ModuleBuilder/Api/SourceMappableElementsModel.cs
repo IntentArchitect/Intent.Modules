@@ -42,11 +42,6 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new MappableElementSettingsModel(x))
             .ToList();
 
-        public IList<MappableElementReferenceModel> MappableElementReferences => _element.ChildElements
-            .GetElementsOfType(MappableElementReferenceModel.SpecializationTypeId)
-            .Select(x => new MappableElementReferenceModel(x))
-            .ToList();
-
         public IList<MappableElementsPackageImportModel> ImportMappableElementsPackages => _element.ChildElements
             .GetElementsOfType(MappableElementsPackageImportModel.SpecializationTypeId)
             .Select(x => new MappableElementsPackageImportModel(x))
@@ -58,7 +53,6 @@ namespace Intent.ModuleBuilder.Api
             return _element.ChildElements.Select(x =>
             {
                 if (x.IsMappableElementSettingsModel()) return (object)x.AsMappableElementSettingsModel().ToPersistable();
-                if (x.IsMappableElementReferenceModel()) return (object)x.AsMappableElementReferenceModel().ToPersistable();
                 if (x.IsMappableElementsPackageImportModel()) return (object)x.AsMappableElementsPackageImportModel().ToPersistable();
                 return null;
             }).Where(x => x is not null).ToList();
