@@ -39,7 +39,9 @@ public class ConstructorMapping : CSharpMappingBase
         // Determine if this model is a constructor on the class:
         if (typeTemplate?.CSharpFile.Classes.First().TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpConstructor ctor) 
         {
-            var i = new CSharpInvocationStatement($"new {reference.Name}").WithoutSemicolon();
+            //var i = new CSharpInvocationStatement($"new {reference.Name}").WithoutSemicolon(); (replaced by below)
+            //This is to ensure that full typename resolution is taken. Consider exposing the full type via the IHasCSharpName interface.
+            var i = new CSharpInvocationStatement($"new {((IntentTemplateBase)_template).GetTypeName(typeTemplate)}").WithoutSemicolon();
             foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
             {
                 i.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
