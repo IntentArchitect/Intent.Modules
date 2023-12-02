@@ -87,5 +87,23 @@ namespace Intent.Modules.Common.CSharp.Templates
             get => bool.TryParse(CustomMetadata[nameof(ApplyNamespaceFormatting)], out var parsed) && parsed;
             set => CustomMetadata[nameof(ApplyNamespaceFormatting)] = value.ToString();
         }
+
+        /// <summary>
+        /// Sets the default Roslyn Weaver Tag Mode for the template to be <c>Explicit</c>.
+        /// </summary>
+        public CSharpFileConfig IntentTagModeExplicit()
+        {
+            CustomMetadata["RoslynWeaverTagMode"] = "Explicit";
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the default Roslyn Weaver Tag Mode for the template to be <c>Implicit</c>.
+        /// </summary>
+        public CSharpFileConfig IntentTagModeImplicit()
+        {
+            CustomMetadata["RoslynWeaverTagMode"] = "Implicit";
+            return this;
+        }
     }
 }

@@ -11,6 +11,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
 {
     private readonly IList<(Action Action, int Order)> _configurations = new List<(Action Action, int Order)>();
     private readonly IList<(Action Action, int Order)> _configurationsAfter = new List<(Action Action, int Order)>();
+    private readonly List<Action<CSharpFileConfig>> _cSharpFileConfigActions = new();
 
     public IList<CSharpUsing> Usings { get; } = new List<CSharpUsing>();
     public string Namespace { get; }
@@ -170,10 +171,17 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
             throw new Exception("Either a file must use top level statements or at least one type must be specified for C# file");
         }
 
-        return new CSharpFileConfig(
+        var configuration = new CSharpFileConfig(
             className: className,
             @namespace: Namespace,
             relativeLocation: RelativeLocation);
+
+        foreach (var action in _cSharpFileConfigActions)
+        {
+            action(configuration);
+        }
+
+        return configuration;
     }
 
     private bool _isBuilt;
@@ -188,6 +196,20 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
     {
         AssemblyAttributes.Add(attribute);
         configure?.Invoke(attribute);
+        return this;
+    }
+
+    /// <inheritdoc cref="CSharpFileConfig.IntentTagModeExplicit"/>
+    public CSharpFile IntentTagModeExplicit()
+    {
+        _cSharpFileConfigActions.Add(config => config.IntentTagModeExplicit());
+        return this;
+    }
+
+    /// <inheritdoc cref="CSharpFileConfig.IntentTagModeImplicit"/>
+    public CSharpFile IntentTagModeImplicit()
+    {
+        _cSharpFileConfigActions.Add(config => config.IntentTagModeImplicit());
         return this;
     }
 

@@ -5,6 +5,7 @@
 - Added: `IHasCSharpName GetReferenceForModel(...)` on `CSharpFile` to support resolving reference names for methods, properties and parameters.
 - Added: `AddTopLevelStatements` on `CSharpFile` for support of [top-level statements](https://learn.microsoft.com/dotnet/csharp/fundamentals/program-structure/top-level-statements).
 - Added: Abstractions for working with `Program.cs` and `Startup.cs` files in a way where you don't have to be aware of whether or not _top-level statements_ and/or _use minimal hosting model_ have been selected.
+- Improvement: `CSharpFile` and `CSharpFileConfig` now have `IntentTagMode(Ex/Im)plicit()` methods which can be used by templates to individually override the application's default Tag Mode for themselves. Requires at least  version 4.4.0 of the `Intent.OutputManager.RoslynWeaver` module for this option to be respected.
 - Fixed: Necessary type disambiguation would not occur when one of the current class's namespace parts contained a type with the same name as the type being resolved.
 - Fixed: When a .NET project was set to use .NET 8 the software factory would show the following warning: `Assuming language version "11.0" for project "<Name>" targeting "net8.0"`. .NET 8 projects will now use language version `12.0`.
 
