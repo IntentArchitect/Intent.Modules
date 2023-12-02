@@ -304,6 +304,11 @@ white-space: inherit;`</style>
           </childElementVisualSetting>
         </childElementVisualSettings>
       </visualSettings>
+      <macros>
+        <macro trigger="on-name-changed">
+          <script>element.getChildren("Class Constructor").forEach(x =&gt; x.refresh ? x.refresh() : null)</script>
+        </macro>
+      </macros>
       <childElementSettings>
         <childElementSetting type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
           <icon type="UrlImagePath" source="./img/icons/uml/Attribute_256x.png" />
@@ -1145,4 +1150,5 @@ return null;</lineDashArray>
       </mappingTypes>
     </mappingSetting>
   </mappingSettings>
+  <mappableElementPackages />
 </settings>
