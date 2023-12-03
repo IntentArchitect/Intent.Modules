@@ -274,7 +274,7 @@
           <childElements>
             <childElement id="7829c6b8-a045-4a3e-b9c2-13795f128879" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Field</name>
-              <display>Field: &lt;target type not found&gt;</display>
+              <display>Field: DTO-Field</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="8484b92f-b2bf-4205-adee-3426448c62cc">
@@ -283,6 +283,8 @@
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
+                <typePackageName>Intent.Modelers.Services</typePackageName>
+                <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
@@ -316,7 +318,7 @@
         </childElement>
         <childElement id="8dd4a85c-056b-4d02-859c-e6d274b89580" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>DTO</name>
-          <display>DTO: &lt;target type not found&gt;</display>
+          <display>DTO: DTO</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="848e4250-f0af-45b5-bafd-32f026727a87">
@@ -325,6 +327,8 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services</typePackageName>
+            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -356,7 +360,7 @@
         </childElement>
         <childElement id="41f6e850-b45a-46b2-8909-0e562f8b5a7e" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Service Operation</name>
-          <display>Service Operation: &lt;target type not found&gt;</display>
+          <display>Service Operation: Operation</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-manually</sort-children>
           <genericTypes />
@@ -366,6 +370,8 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services</typePackageName>
+            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -396,7 +402,7 @@
           <childElements>
             <childElement id="e369f4ec-cd31-415c-b5f3-6a5247462615" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Service Parameter</name>
-              <display>Service Parameter: &lt;target type not found&gt;</display>
+              <display>Service Parameter: Parameter</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="b526ff6f-b95e-4334-8fb1-5347fc4737f6">
@@ -405,6 +411,8 @@
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
+                <typePackageName>Intent.Modelers.Services</typePackageName>
+                <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
