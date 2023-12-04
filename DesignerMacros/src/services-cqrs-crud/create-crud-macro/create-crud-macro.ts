@@ -65,7 +65,6 @@ namespace cqrsCrud {
 
         let entityCtor: MacroApi.Context.IElementApi = entity
             .getChildren("Class Constructor")
-            .filter(x => x.getChildren("Parameter").length > 0)
             .sort((a, b) => {
                 // In descending order:
                 return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
