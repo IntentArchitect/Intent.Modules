@@ -65,8 +65,12 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationApi): void {
             }
             fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
 
+            let isSelfReferencing = () => thisEnd.typeReference.getTypeId() === thisEnd.getOtherEnd().typeReference.getTypeId();
+
             fkAttribute.typeReference.setType(pk.typeId);
-            fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
+            if (thisEnd.isTargetEnd() || !isSelfReferencing()) {
+                fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
+            }
         });
 
         thisEndType.getChildren().filter(x => x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) => {

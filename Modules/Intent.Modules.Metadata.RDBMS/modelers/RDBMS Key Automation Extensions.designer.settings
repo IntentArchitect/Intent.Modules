@@ -707,8 +707,11 @@ function updateForeignKeys(thisEnd) {
                 fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
             }
             fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
+            let isSelfReferencing = () =&gt; thisEnd.typeReference.getTypeId() === thisEnd.getOtherEnd().typeReference.getTypeId();
             fkAttribute.typeReference.setType(pk.typeId);
-            fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
+            if (thisEnd.isTargetEnd() || !isSelfReferencing()) {
+                fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
+            }
         });
         thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) =&gt; {
             if (index &gt;= pkAttributes.length) {
