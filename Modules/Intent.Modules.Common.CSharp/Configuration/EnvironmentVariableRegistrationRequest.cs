@@ -34,6 +34,7 @@ namespace Intent.Modules.Common.CSharp.Configuration
             Key = key;
             Value = value;
             TargetProfiles = targetProfiles;
+            ForProjectWithRole = forProjectWithRole;
         }
 
         /// <summary>
