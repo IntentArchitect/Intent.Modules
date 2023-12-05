@@ -1,3 +1,7 @@
+### Version 3.5.11
+
+- Fixed: Self-referencing Classes will handle Foreign Keys correctly.
+
 ### Version 3.5.10
 
 - Improvement: Index naming respects table naming conventions.

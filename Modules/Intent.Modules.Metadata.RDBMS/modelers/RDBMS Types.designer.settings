@@ -246,4 +246,5 @@ if ((element.getParent().specialization == "Class" || element.getParent().specia
   <associationSettings />
   <associationExtensions />
   <mappingSettings />
+  <mappableElementPackages />
 </settings>

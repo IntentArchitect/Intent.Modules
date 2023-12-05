@@ -559,7 +559,8 @@ execute();
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
-          <script>function getSurrogateKeyType() {
+          <script>/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
+function getSurrogateKeyType() {
     var _a, _b, _c;
     const commonTypes = {
         guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
@@ -641,6 +642,7 @@ function updatePrimaryKeys(element) {
         }
     }
 }
+/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
 /**
  * Applies camelCasing or PascalCasing naming convention according to the setting configured for the current application.
  */
@@ -724,6 +726,8 @@ function updateForeignKeys(thisEnd) {
         }
     }
     function requiresForeignKey(associationEnd) {
+        const isSelfReferencingWithoutManyToMany = () =&gt; associationEnd.typeReference.getTypeId() === associationEnd.getOtherEnd().typeReference.getTypeId() &amp;&amp;
+            (!associationEnd.typeReference.isCollection || !associationEnd.getOtherEnd().typeReference.isCollection);
         const isManyToVariantsOfOne = () =&gt; !associationEnd.typeReference.isCollection &amp;&amp;
             associationEnd.getOtherEnd().typeReference.isCollection;
         const isSelfReferencingZeroToOne = () =&gt; !associationEnd.typeReference.isCollection &amp;&amp;
@@ -733,7 +737,7 @@ function updateForeignKeys(thisEnd) {
             !associationEnd.typeReference.isCollection &amp;&amp;
             !associationEnd.getOtherEnd().typeReference.isCollection &amp;&amp;
             associationEnd.getOtherEnd().typeReference.isNullable;
-        return isManyToVariantsOfOne() || isSelfReferencingZeroToOne() || isAggregationalOneToOne();
+        return isSelfReferencingWithoutManyToMany() || isManyToVariantsOfOne() || isSelfReferencingZeroToOne() || isAggregationalOneToOne();
     }
     function getPrimaryKeys(element) {
         let currentClass = element;
@@ -914,4 +918,5 @@ execute();
   <associationSettings />
   <associationExtensions />
   <mappingSettings />
+  <mappableElementPackages />
 </settings>
