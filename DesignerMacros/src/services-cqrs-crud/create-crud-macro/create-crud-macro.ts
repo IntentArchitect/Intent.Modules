@@ -74,6 +74,8 @@ namespace cqrsCrud {
             commandManager.getElement().setMapping([entity.id, entityCtor.id], mapToDomainOperationSettingId);
         } else if (!privateSettersOnly) {
             commandManager.mapToElement(entity);
+        } else {
+            console.warn(`Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order for '${expectedCommandName}' to map to that entity, either disable private setters or model a constructor element and try again.`);
         }
         commandManager.getElement().setMetadata("baseName", baseName);
 

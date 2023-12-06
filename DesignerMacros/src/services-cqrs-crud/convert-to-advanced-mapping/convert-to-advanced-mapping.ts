@@ -9,7 +9,11 @@ namespace convertToAdvancedMapping {
         }
     }
 
-    export function convertCommand(command: IElementApi) {
+    export function convertCommand(command: IElementApi): void {
+        if (!command.getMapping()) {
+            console.warn(`Could not convert Command '${command.getName()}' without it mapping to an Entity.`);
+            return;
+        }
         let target = command.getMapping().getElement();
         let entity = target.getParent("Class") ?? target;
         if (command.getName().startsWith("Create")) {

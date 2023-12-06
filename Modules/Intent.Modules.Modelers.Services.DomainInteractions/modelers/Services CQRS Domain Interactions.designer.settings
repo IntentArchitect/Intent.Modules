@@ -3371,6 +3371,9 @@ var cqrsCrud;
         else if (!privateSettersOnly) {
             commandManager.mapToElement(entity);
         }
+        else {
+            console.warn(`Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order for '${expectedCommandName}' to map to that entity, either disable private setters or model a constructor element and try again.`);
+        }
         commandManager.getElement().setMetadata("baseName", baseName);
         let surrogateKey = primaryKeys.length === 1;
         if (surrogateKey) {
@@ -3614,6 +3617,10 @@ var convertToAdvancedMapping;
     convertToAdvancedMapping.execute = execute;
     function convertCommand(command) {
         var _a;
+        if (!command.getMapping()) {
+            console.warn(`Could not convert Command '${command.getName()}' without it mapping to an Entity.`);
+            return;
+        }
         let target = command.getMapping().getElement();
         let entity = (_a = target.getParent("Class")) !== null &amp;&amp; _a !== void 0 ? _a : target;
         if (command.getName().startsWith("Create")) {
@@ -7386,6 +7393,9 @@ var cqrsCrud;
         else if (!privateSettersOnly) {
             commandManager.mapToElement(entity);
         }
+        else {
+            console.warn(`Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order for '${expectedCommandName}' to map to that entity, either disable private setters or model a constructor element and try again.`);
+        }
         commandManager.getElement().setMetadata("baseName", baseName);
         let surrogateKey = primaryKeys.length === 1;
         if (surrogateKey) {
@@ -7629,6 +7639,10 @@ var convertToAdvancedMapping;
     convertToAdvancedMapping.execute = execute;
     function convertCommand(command) {
         var _a;
+        if (!command.getMapping()) {
+            console.warn(`Could not convert Command '${command.getName()}' without it mapping to an Entity.`);
+            return;
+        }
         let target = command.getMapping().getElement();
         let entity = (_a = target.getParent("Class")) !== null &amp;&amp; _a !== void 0 ? _a : target;
         if (command.getName().startsWith("Create")) {
