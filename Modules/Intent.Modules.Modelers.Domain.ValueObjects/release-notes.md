@@ -1,3 +1,7 @@
+### Version 3.4.1
+
+- Fixed: Operation return types can also now be Value Objects.
+
 ### Version 3.4.0
 
 - New: Serialization Settings stereotype added.

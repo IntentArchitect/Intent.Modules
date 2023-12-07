@@ -19,6 +19,7 @@ namespace Intent.Modelers.Domain.ValueObjects.Api
         {
         }
 
+        [IntentManaged(Mode.Fully)]
         public IList<ValueObjectModel> ValueObjects => UnderlyingPackage.ChildElements
             .GetElementsOfType(ValueObjectModel.SpecializationTypeId)
             .Select(x => new ValueObjectModel(x))
