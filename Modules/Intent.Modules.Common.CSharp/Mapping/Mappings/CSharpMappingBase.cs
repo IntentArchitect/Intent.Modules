@@ -108,6 +108,11 @@ public abstract class CSharpMappingBase : ICSharpMapping
         }
     }
 
+    public string GetSourceReplacement(IMetadataModel type)
+    {
+        return _sourceReplacements.TryGetValue(type.Id, out var value) ? value : null;
+    }
+
     public void SetTargetReplacement(IMetadataModel type, string replacement)
     {
         if (_targetReplacements.ContainsKey(type.Id))
@@ -119,6 +124,11 @@ public abstract class CSharpMappingBase : ICSharpMapping
         {
             child.SetTargetReplacement(type, replacement);
         }
+    }
+
+    public string GetTargetReplacement(IMetadataModel type)
+    {
+        return _targetReplacements.TryGetValue(type.Id, out var value) ? value : null;
     }
 
     protected string GetSourcePathText()
