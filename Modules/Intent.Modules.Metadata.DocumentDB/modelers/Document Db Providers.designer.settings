@@ -9,11 +9,11 @@
       <requiredPackages />
       <creationOptions>
         <option type="element">
+          <text>New Document Db Provider</text>
+          <icon type="FontAwesome" source="database" />
           <specializationType>Document Db Provider</specializationType>
           <specializationTypeId>fcfbd83f-a3eb-4eff-b341-5a812b016d31</specializationTypeId>
-          <text>New Document Db Provider</text>
           <defaultName>NewDocumentDbProvider</defaultName>
-          <icon type="FontAwesome" source="database" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -40,6 +40,7 @@
       <typeOrder />
       <creationOptions />
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -48,11 +49,11 @@
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
       <creationOptions>
         <option type="element">
+          <text>New Document Db Provider</text>
+          <icon type="FontAwesome" source="database" />
           <specializationType>Document Db Provider</specializationType>
           <specializationTypeId>fcfbd83f-a3eb-4eff-b341-5a812b016d31</specializationTypeId>
-          <text>New Document Db Provider</text>
           <defaultName>NewDocumentDbProvider</defaultName>
-          <icon type="FontAwesome" source="database" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -65,4 +66,6 @@
   </elementExtensions>
   <associationSettings />
   <associationExtensions />
+  <mappingSettings />
+  <mappableElementPackages />
 </settings>

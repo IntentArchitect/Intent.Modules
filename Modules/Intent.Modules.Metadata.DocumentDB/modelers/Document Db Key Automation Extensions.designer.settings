@@ -371,9 +371,9 @@ function updatePrimaryKey(element) {
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     let idAttr = element.getChildren("Attribute")
         .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
-    const isToOneRelationshipTarget = () =&gt; element.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.getOtherEnd().typeReference.isCollection);
-    if ((!isAggregateRoot(element) &amp;&amp; isToOneRelationshipTarget()) || derivedFromTypeHasPk(element)) {
+    const isToCompositionalOneRelationshipTarget = () =&gt; element.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable &amp;&amp; !x.getOtherEnd().typeReference.isCollection);
+    if ((!isAggregateRoot(element) &amp;&amp; isToCompositionalOneRelationshipTarget()) || derivedFromTypeHasPk(element)) {
         if (idAttr != null) {
             idAttr.delete();
         }
@@ -597,6 +597,19 @@ function updateForeignKeysForElement(element) {
         }
         if (requiresForeignKey(association.getOtherEnd())) {
             updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
+        }
+    }
+    removeOrphanedAssociations(element);
+}
+function removeOrphanedAssociations(element) {
+    let existingAssociations = element.getAssociations();
+    let existingAttributes = element.getChildren("Attribute");
+    for (let attr of existingAttributes) {
+        if (!attr.getMetadata("association")) {
+            continue;
+        }
+        if (!existingAssociations.some(x =&gt; attr.getMetadata("association") == x.id)) {
+            attr.delete();
         }
     }
 }
@@ -653,9 +666,9 @@ function updatePrimaryKey(element) {
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     let idAttr = element.getChildren("Attribute")
         .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
-    const isToOneRelationshipTarget = () =&gt; element.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.getOtherEnd().typeReference.isCollection);
-    if ((!isAggregateRoot(element) &amp;&amp; isToOneRelationshipTarget()) || derivedFromTypeHasPk(element)) {
+    const isToCompositionalOneRelationshipTarget = () =&gt; element.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable &amp;&amp; !x.getOtherEnd().typeReference.isCollection);
+    if ((!isAggregateRoot(element) &amp;&amp; isToCompositionalOneRelationshipTarget()) || derivedFromTypeHasPk(element)) {
         if (idAttr != null) {
             idAttr.delete();
         }
@@ -879,6 +892,19 @@ function updateForeignKeysForElement(element) {
         }
         if (requiresForeignKey(association.getOtherEnd())) {
             updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
+        }
+    }
+    removeOrphanedAssociations(element);
+}
+function removeOrphanedAssociations(element) {
+    let existingAssociations = element.getAssociations();
+    let existingAttributes = element.getChildren("Attribute");
+    for (let attr of existingAttributes) {
+        if (!attr.getMetadata("association")) {
+            continue;
+        }
+        if (!existingAssociations.some(x =&gt; attr.getMetadata("association") == x.id)) {
+            attr.delete();
         }
     }
 }
@@ -960,9 +986,9 @@ function updatePrimaryKey(element) {
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     let idAttr = element.getChildren("Attribute")
         .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
-    const isToOneRelationshipTarget = () =&gt; element.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.getOtherEnd().typeReference.isCollection);
-    if ((!isAggregateRoot(element) &amp;&amp; isToOneRelationshipTarget()) || derivedFromTypeHasPk(element)) {
+    const isToCompositionalOneRelationshipTarget = () =&gt; element.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable &amp;&amp; !x.getOtherEnd().typeReference.isCollection);
+    if ((!isAggregateRoot(element) &amp;&amp; isToCompositionalOneRelationshipTarget()) || derivedFromTypeHasPk(element)) {
         if (idAttr != null) {
             idAttr.delete();
         }
@@ -1244,4 +1270,6 @@ execute();
       </macros>
     </associationExtension>
   </associationExtensions>
+  <mappingSettings />
+  <mappableElementPackages />
 </settings>

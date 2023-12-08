@@ -10,9 +10,9 @@ function updatePrimaryKey(element: IElementApi): void {
     let idAttr = element.getChildren("Attribute")
         .find(x => x.hasStereotype(primaryKeyStereotypeId));
 
-    const isToOneRelationshipTarget = () => element.getAssociations("Association")
-        .some(x => x.isSourceEnd() && !x.getOtherEnd().typeReference.isCollection);
-    if ((!isAggregateRoot(element) && isToOneRelationshipTarget()) || derivedFromTypeHasPk(element)) {
+    const isToCompositionalOneRelationshipTarget = () => element.getAssociations("Association")
+        .some(x => x.isSourceEnd() && !x.typeReference.isCollection && !x.typeReference.isNullable && !x.getOtherEnd().typeReference.isCollection);
+    if ((!isAggregateRoot(element) && isToCompositionalOneRelationshipTarget()) || derivedFromTypeHasPk(element)) {
         if (idAttr != null) {
             idAttr.delete();
         }
