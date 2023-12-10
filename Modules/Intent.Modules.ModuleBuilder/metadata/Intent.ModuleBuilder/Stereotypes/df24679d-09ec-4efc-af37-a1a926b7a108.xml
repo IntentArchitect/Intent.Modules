@@ -86,13 +86,18 @@
       <lookupInternalTargetPropertyId>let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
 let targetMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
 let mappablePackageId = "aa2eab42-5ffc-4028-b4b6-95ff719705d4";
+let mappablePackageExtensionId = "bddb69f0-e2c8-4373-b5cb-d701f311f935";
+
 let mappablePackage = element.getParent(sourceMappingSettingsId) 
     ?? element.getParent(targetMappingSettingsId)
-    ?? element.getParent(mappablePackageId);
+    ?? element.getParent(mappablePackageId)
+    ?? element.getParent(mappablePackageExtensionId);
     
 const getAllPackageIds = (mappablePackage) =&gt; {
     let result = [mappablePackage.id];
     let mappablePackageImportId = "90892fa1-b0b9-4af9-9f3b-4fdf37db9b05";
+
+    // Add imported packages:
     mappablePackage.getChildren(mappablePackageImportId)
         .filter(x =&gt; x.typeReference.getType() != null)
         .map(x =&gt; {
@@ -100,6 +105,18 @@ const getAllPackageIds = (mappablePackage) =&gt; {
             return packageIds;
         })
         .forEach(x =&gt; result.push(...x));
+
+    // Add package extensions:
+    let mappablePackageExtensionId = "bddb69f0-e2c8-4373-b5cb-d701f311f935";
+    lookupTypesOf(mappablePackageExtensionId)
+        .filter(x =&gt; x.typeReference.getTypeId() == mappablePackage.id)
+        .forEach(x =&gt; result.push(x.id));
+
+    // If is package extension, add extended package:
+    if (mappablePackage.specializationId == mappablePackageExtensionId) {
+        result.push(...getAllPackageIds(mappablePackage.typeReference.getType()))
+    }
+
     return result;
 }
 
@@ -152,13 +169,18 @@ return getAllPackageIds(mappablePackage);</lookupInternalTargetPropertyId>
       <lookupInternalTargetPropertyId>let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
 let targetMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
 let mappablePackageId = "aa2eab42-5ffc-4028-b4b6-95ff719705d4";
+let mappablePackageExtensionId = "bddb69f0-e2c8-4373-b5cb-d701f311f935";
+
 let mappablePackage = element.getParent(sourceMappingSettingsId) 
     ?? element.getParent(targetMappingSettingsId)
-    ?? element.getParent(mappablePackageId);
+    ?? element.getParent(mappablePackageId)
+    ?? element.getParent(mappablePackageExtensionId);
     
 const getAllPackageIds = (mappablePackage) =&gt; {
     let result = [mappablePackage.id];
     let mappablePackageImportId = "90892fa1-b0b9-4af9-9f3b-4fdf37db9b05";
+
+    // Add imported packages:
     mappablePackage.getChildren(mappablePackageImportId)
         .filter(x =&gt; x.typeReference.getType() != null)
         .map(x =&gt; {
@@ -166,6 +188,18 @@ const getAllPackageIds = (mappablePackage) =&gt; {
             return packageIds;
         })
         .forEach(x =&gt; result.push(...x));
+
+    // Add package extensions:
+    let mappablePackageExtensionId = "bddb69f0-e2c8-4373-b5cb-d701f311f935";
+    lookupTypesOf(mappablePackageExtensionId)
+        .filter(x =&gt; x.typeReference.getTypeId() == mappablePackage.id)
+        .forEach(x =&gt; result.push(x.id));
+
+    // If is package extension, add extended package:
+    if (mappablePackage.specializationId == mappablePackageExtensionId) {
+        result.push(...getAllPackageIds(mappablePackage.typeReference.getType()))
+    }
+
     return result;
 }
 

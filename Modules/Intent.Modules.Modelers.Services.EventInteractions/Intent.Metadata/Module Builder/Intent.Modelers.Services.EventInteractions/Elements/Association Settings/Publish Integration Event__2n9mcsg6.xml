@@ -31,7 +31,7 @@
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;ccf14eb6-3a55-4d81-b5b9-d27311c70cb9&quot;,&quot;f45dfee9-f62b-45ac-bfce-a3878e04b73f&quot;,&quot;e030c97a-e066-40a7-8188-808c275df3cb&quot;,&quot;16fa2952-79e6-4150-b5ab-45aa4c106de4&quot;]" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return `published by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
-            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="false" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="IntegrationEventsSources" isActive="true" />
             <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
             <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
@@ -68,7 +68,7 @@
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;cbe970af-5bad-4d92-a3ed-a24b9fdaa23e&quot;]" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return `[publish] ${typeReference.display}`" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
-            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="false" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="PublishedIntegrationEvents" isActive="true" />
             <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
             <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />

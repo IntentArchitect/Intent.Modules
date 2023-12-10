@@ -37,6 +37,8 @@ let sourceMappables = element.getParent(mappingTypeSettingsId).getChildren(sourc
 const getAllPackageIds = (mappablePackage) =&gt; {
     let result = [mappablePackage.id];
     let mappablePackageImportId = "90892fa1-b0b9-4af9-9f3b-4fdf37db9b05";
+
+    // Add imported packages:
     mappablePackage.getChildren(mappablePackageImportId)
         .filter(x =&gt; x.typeReference.getType() != null)
         .map(x =&gt; {
@@ -44,6 +46,13 @@ const getAllPackageIds = (mappablePackage) =&gt; {
             return packageIds;
         })
         .forEach(x =&gt; result.push(...x));
+
+    // Add package extensions:
+    let mappablePackageExtensionId = "bddb69f0-e2c8-4373-b5cb-d701f311f935";
+    lookupTypesOf(mappablePackageExtensionId)
+        .filter(x =&gt; x.typeReference.getTypeId() == mappablePackage.id)
+        .forEach(x =&gt; result.push(x.id));
+
     return result;
 }
 
@@ -68,6 +77,8 @@ let targetMappables = element.getParent(mappingTypeSettingsId).getChildren(targe
 const getAllPackageIds = (mappablePackage) =&gt; {
     let result = [mappablePackage.id];
     let mappablePackageImportId = "90892fa1-b0b9-4af9-9f3b-4fdf37db9b05";
+
+    // Add imported packages:
     mappablePackage.getChildren(mappablePackageImportId)
         .filter(x =&gt; x.typeReference.getType() != null)
         .map(x =&gt; {
@@ -75,6 +86,13 @@ const getAllPackageIds = (mappablePackage) =&gt; {
             return packageIds;
         })
         .forEach(x =&gt; result.push(...x));
+
+    // Add package extensions:
+    let mappablePackageExtensionId = "bddb69f0-e2c8-4373-b5cb-d701f311f935";
+    lookupTypesOf(mappablePackageExtensionId)
+        .filter(x =&gt; x.typeReference.getTypeId() == mappablePackage.id)
+        .forEach(x =&gt; result.push(x.id));
+
     return result;
 }
 

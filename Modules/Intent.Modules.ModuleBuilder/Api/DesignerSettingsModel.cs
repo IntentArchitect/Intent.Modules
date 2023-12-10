@@ -142,6 +142,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new MappableElementsPackageModel(x))
             .ToList();
 
+        public IList<MappableElementsPackageExtensionModel> MappableElementsPackageExtensions => _element.ChildElements
+            .GetElementsOfType(MappableElementsPackageExtensionModel.SpecializationTypeId)
+            .Select(x => new MappableElementsPackageExtensionModel(x))
+            .ToList();
+
         [IntentManaged(Mode.Fully)]
         public IList<PackageSettingsModel> PackageTypes => _element.ChildElements
             .GetElementsOfType(PackageSettingsModel.SpecializationTypeId)
@@ -171,7 +176,8 @@ namespace Intent.ModuleBuilder.Api
                 AssociationSettings = AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 AssociationExtensions = AssociationExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 MappingSettings = MappingSettings.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                MappableElementPackages = MappableElementsPackages.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
+                MappableElementPackages = MappableElementsPackages.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                MappableElementPackageExtensions = MappableElementsPackageExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
             };
             return modelerSettings;
         }

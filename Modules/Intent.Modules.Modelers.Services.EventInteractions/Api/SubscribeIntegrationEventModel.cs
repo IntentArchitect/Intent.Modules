@@ -70,6 +70,7 @@ namespace Intent.Modelers.Services.EventInteractions
     public class SubscribeIntegrationEventSourceEndModel : SubscribeIntegrationEventEndModel
     {
         public const string SpecializationTypeId = "5d8f5c33-f9c9-4629-b637-fad9b0096894";
+        public const string SpecializationType = "Subscribe Integration Event Source End";
 
         public SubscribeIntegrationEventSourceEndModel(IAssociationEnd associationEnd, SubscribeIntegrationEventModel association) : base(associationEnd, association)
         {
@@ -80,6 +81,7 @@ namespace Intent.Modelers.Services.EventInteractions
     public class SubscribeIntegrationEventTargetEndModel : SubscribeIntegrationEventEndModel
     {
         public const string SpecializationTypeId = "16fa2952-79e6-4150-b5ab-45aa4c106de4";
+        public const string SpecializationType = "Subscribe Integration Event Target End";
 
         public SubscribeIntegrationEventTargetEndModel(IAssociationEnd associationEnd, SubscribeIntegrationEventModel association) : base(associationEnd, association)
         {

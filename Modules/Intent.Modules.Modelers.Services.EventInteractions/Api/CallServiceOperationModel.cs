@@ -70,6 +70,7 @@ namespace Intent.Modelers.Services.EventInteractions
     public class CallServiceOperationSourceEndModel : CallServiceOperationEndModel
     {
         public const string SpecializationTypeId = "01693f59-b89f-4e03-934a-dfcb4cbd90df";
+        public const string SpecializationType = "Call Service Operation Source End";
 
         public CallServiceOperationSourceEndModel(IAssociationEnd associationEnd, CallServiceOperationModel association) : base(associationEnd, association)
         {
@@ -80,6 +81,7 @@ namespace Intent.Modelers.Services.EventInteractions
     public class CallServiceOperationTargetEndModel : CallServiceOperationEndModel
     {
         public const string SpecializationTypeId = "752c289a-5961-4172-9017-0eca6fa09fd9";
+        public const string SpecializationType = "Call Service Operation Target End";
 
         public CallServiceOperationTargetEndModel(IAssociationEnd associationEnd, CallServiceOperationModel association) : base(associationEnd, association)
         {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.DomainInteractions</id>
-  <version>1.0.0-beta.8</version>
-  <supportedClientVersions>[4.1.0-beta.17,5.0.0)</supportedClientVersions>
+  <version>1.0.0-beta.9</version>
+  <supportedClientVersions>[4.1.0-beta.21,5.0.0)</supportedClientVersions>
   <summary>Services modeler extensions for describing interactions between an application's services and its domain.</summary>
   <description>Services modeler extensions for describing interactions between an application's services and its domain.</description>
   <authors>Intent Architect</authors>
@@ -29,7 +29,7 @@
     <dependency id="Intent.Common" version="3.4.3" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
     <dependency id="Intent.Modelers.Domain" version="3.4.3" />
-    <dependency id="Intent.Modelers.Services" version="3.5.0-beta.0" />
+    <dependency id="Intent.Modelers.Services" version="3.5.0-beta.2" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

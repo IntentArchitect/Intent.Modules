@@ -45,8 +45,8 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-            <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+            <typePackageName>Intent.Modelers.Services</typePackageName>
+            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>

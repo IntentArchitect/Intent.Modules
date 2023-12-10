@@ -240,4 +240,38 @@ if (handler.getAssociations("Domain Event Handler Association").length == 0) {
   <associationExtensions />
   <mappingSettings />
   <mappableElementPackages />
+  <mappableElementPackageExtensions>
+    <mappableElementPackageExtension id="83860de0-4b82-4175-aa24-327a6afaa995" name="Domain Event Handler Exension" extendPackageId="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" extendPackage="Application Source Mappables">
+      <imports />
+      <mappableElementSettings>
+        <mappableElement id="5b5676ef-333f-4f52-859d-925ee8c43578" name="Domain Event Handler Association" type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes>
+            <mappingId>92a0b71b-588d-408f-9096-5a3e335bdad7</mappingId>
+          </traversableTypes>
+          <canBeModified>false</canBeModified>
+          <childSettings>
+            <childSetting id="92a0b71b-588d-408f-9096-5a3e335bdad7" name="Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <childSettings>
+                <childSetting id="792374ff-6b97-45df-96de-01acd2488cc0" name="Property" type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <traversableTypes>
+                    <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
+                  </traversableTypes>
+                  <canBeModified>false</canBeModified>
+                  <childSettings />
+                </childSetting>
+              </childSettings>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackageExtension>
+  </mappableElementPackageExtensions>
 </settings>

@@ -70,6 +70,7 @@ namespace Intent.Modelers.Services.EventInteractions
     public class SendCommandSourceEndModel : SendCommandEndModel
     {
         public const string SpecializationTypeId = "6b9e34dd-b50f-4998-a3cf-93dde7b2d51e";
+        public const string SpecializationType = "Send Command Source End";
 
         public SendCommandSourceEndModel(IAssociationEnd associationEnd, SendCommandModel association) : base(associationEnd, association)
         {
@@ -80,6 +81,7 @@ namespace Intent.Modelers.Services.EventInteractions
     public class SendCommandTargetEndModel : SendCommandEndModel
     {
         public const string SpecializationTypeId = "d3096261-1268-440f-8db3-0a6b8b4786cc";
+        public const string SpecializationType = "Send Command Target End";
 
         public SendCommandTargetEndModel(IAssociationEnd associationEnd, SendCommandModel association) : base(associationEnd, association)
         {

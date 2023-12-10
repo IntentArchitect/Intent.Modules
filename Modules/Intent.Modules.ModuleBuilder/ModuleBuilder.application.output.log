@@ -546,6 +546,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#bddb69f0-e2c8-4373-b5cb-d701f311f935</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/MappableElementsPackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MappableElementsPackageExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#90892fa1-b0b9-4af9-9f3b-4fdf37db9b05</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/MappableElementsPackageImportModel.cs</ApplicationRelativeFilePath>

@@ -11,7 +11,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
 {
     public static class CallDomainServiceOperationModelAssociationExtensions
     {
-        public static IList<CallDomainServiceOperationTargetEndModel> CallDomainServiceOperationTargets(this IProcessingHandlerModel model)
+        public static IList<CallDomainServiceOperationTargetEndModel> CallDomainServiceOperationActions(this IProcessingHandlerModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == CallDomainServiceOperationModel.SpecializationType && x.IsTargetEnd())

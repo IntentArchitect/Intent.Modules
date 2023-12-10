@@ -23,6 +23,7 @@
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="true" isActive="true" />
+        <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="true" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
@@ -94,6 +95,7 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -132,6 +134,7 @@
                 <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
                 <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -140,7 +143,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="1f747d14-681c-4a20-8c68-34223f41b825" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+    <childElement id="1f747d14-681c-4a20-8c68-34223f41b825" type="Mapping Projection Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
       <name>Map from Domain</name>
       <display>[mappings]: Map from Domain</display>
       <isAbstract>false</isAbstract>
@@ -165,6 +168,7 @@
             <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="true" isActive="true" />
             <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-left" isActive="true" />
             <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" isActive="true" />
+            <property name="227be852-5202-4bc7-a8ce-db0ed31b2e14" display="Is Option Visible Function" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -200,6 +204,7 @@
                 <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                 <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                 <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -242,6 +247,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="No" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -285,6 +291,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="No" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -328,6 +335,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Yes" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -371,6 +379,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -414,6 +423,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Yes" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -457,6 +467,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -500,6 +511,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -546,6 +558,7 @@
                 <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                 <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                 <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -588,6 +601,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="No" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -634,6 +648,7 @@
                 <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                 <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                 <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -676,6 +691,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="No" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
@@ -694,7 +710,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="942eae46-49f1-450e-9274-a92d40ac35fa" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+    <childElement id="942eae46-49f1-450e-9274-a92d40ac35fa" type="Mapping Projection Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
       <name>Project to Domain</name>
       <display>[mappings]: Project to Domain</display>
       <isAbstract>false</isAbstract>
@@ -719,6 +735,7 @@
             <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="true" isActive="true" />
             <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-right" isActive="true" />
             <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" isActive="true" />
+            <property name="227be852-5202-4bc7-a8ce-db0ed31b2e14" display="Is Option Visible Function" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -762,6 +779,7 @@
                 <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                 <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                 <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -804,6 +822,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="No" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -847,6 +866,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -890,6 +910,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -933,6 +954,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -979,6 +1001,7 @@
                 <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                 <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                 <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -1021,6 +1044,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="No" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>

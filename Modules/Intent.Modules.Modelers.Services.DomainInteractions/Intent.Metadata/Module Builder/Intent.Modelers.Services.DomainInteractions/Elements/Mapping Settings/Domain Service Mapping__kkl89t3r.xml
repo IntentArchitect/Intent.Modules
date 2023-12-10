@@ -45,8 +45,8 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-            <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+            <typePackageName>Intent.Modelers.Services</typePackageName>
+            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -76,7 +76,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="return element.getParent(&quot;Class&quot;)?.id ?? element.id;" isActive="true" />
+            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -207,7 +207,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;5a3018a8-38bc-450f-bf82-631e2d9475b3&quot;,&quot;eb1478af-4b69-4d33-826f-3f195ebbed79&quot;,&quot;8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7&quot;,&quot;ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8&quot;,&quot;5b5676ef-333f-4f52-859d-925ee8c43578&quot;]" isActive="true" />
+            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;5a3018a8-38bc-450f-bf82-631e2d9475b3&quot;,&quot;eb1478af-4b69-4d33-826f-3f195ebbed79&quot;,&quot;8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7&quot;,&quot;ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8&quot;,&quot;5b5676ef-333f-4f52-859d-925ee8c43578&quot;,&quot;0556825b-177b-4093-b13a-5dfabb13c9b6&quot;]" isActive="true" />
             <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Targets" value="[&quot;120f60ff-f242-4f5c-ac03-14f0ecaafdcf&quot;]" isActive="true" />
             <property name="6ee5b3e3-628e-4996-87b5-08649e101887" display="Represents" value="Invokable" isActive="true" />
             <property name="ace10cc2-ece7-458a-bafb-2fc185f99335" display="Line Color" isActive="true" />

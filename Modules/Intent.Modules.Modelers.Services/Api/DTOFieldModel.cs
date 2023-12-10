@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public partial class DTOFieldModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public partial class DTOFieldModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "DTO-Field";
         protected readonly IElement _element;

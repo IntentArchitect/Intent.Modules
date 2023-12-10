@@ -829,4 +829,5 @@ if (namingConvention == "pascal-case") {
     </mappingSetting>
   </mappingSettings>
   <mappableElementPackages />
+  <mappableElementPackageExtensions />
 </settings>

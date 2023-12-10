@@ -13,7 +13,7 @@ using Intent.Utils;
 namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public partial class DTOModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public partial class DTOModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
     {
         protected readonly IElement _element;
         public const string SpecializationType = "DTO";

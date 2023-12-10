@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public partial class ServiceModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasName
+    public partial class ServiceModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Service";
         public const string SpecializationTypeId = "b16578a5-27b1-4047-a8df-f0b783d706bd";

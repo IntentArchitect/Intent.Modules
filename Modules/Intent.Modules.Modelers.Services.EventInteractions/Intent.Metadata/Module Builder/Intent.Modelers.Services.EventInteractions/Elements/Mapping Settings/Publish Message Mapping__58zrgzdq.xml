@@ -12,11 +12,11 @@
   <stereotypes />
   <metadata />
   <childElements>
-    <childElement id="ae265391-cbea-4ec3-b449-d25622e44564" type="Source Mapping Settings" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
+    <childElement id="ae265391-cbea-4ec3-b449-d25622e44564" type="Source Mappable Elements" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
       <name>Source</name>
       <display>Source</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>7ff48a4c-ee8b-4e66-9dbb-c014eb0542fb</parentFolderId>
@@ -34,943 +34,7 @@
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="39b8fb93-4d76-4151-8961-a7b3d2266993" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <name>Command</name>
-          <display>Command: Command</display>
-          <isAbstract>false</isAbstract>
-          <sort-children>by-type-then-manually</sort-children>
-          <genericTypes />
-          <typeReference id="6dda325f-822a-47ca-ab37-8f222958a01e">
-            <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services.CQRS</typePackageName>
-            <typePackageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>ae265391-cbea-4ec3-b449-d25622e44564</parentFolderId>
-          <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-          <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
-                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="true" isActive="true" />
-                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="true" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements>
-            <childElement id="d5d4257c-3e82-4843-824d-cd84877c72f7" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Field</name>
-              <display>Field: DTO-Field</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="0cc6292e-98e4-462d-8a9c-a6a8f10551b5">
-                <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services</typePackageName>
-                <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>39b8fb93-4d76-4151-8961-a7b3d2266993</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[&quot;a7d2076d-4c3a-45bd-9d55-165fb4572557&quot;,&quot;972c5a10-0416-4760-9f84-de002d4ef2a7&quot;]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;fec56eb6-de77-4180-84f8-5578f0f908c4&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="true" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="true" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="c44c9979-10ea-4811-b72e-7ff1e55829eb" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Create Action</name>
-              <display>Create Action: Create Entity Action Target End</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="250dc283-1c6a-4f20-9b72-5a87f823e2b2">
-                <typeId>328f54e5-7bad-4b5f-90ca-03ce3105d016</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>39b8fb93-4d76-4151-8961-a7b3d2266993</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="4e15f8c8-3277-42e6-923f-13d6a53170db" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Update Action</name>
-              <display>Update Action: Update Entity Action Target End</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="06685358-9ed9-42e8-8e93-d707d2985dbe">
-                <typeId>516069f6-09cc-4de8-8e31-3c71ca823452</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>39b8fb93-4d76-4151-8961-a7b3d2266993</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="e71ca3c0-9ac7-4341-b00c-d7c532d46900" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Query Action</name>
-              <display>Query Action: Query Entity Action Target End</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="b93f6f0f-08b3-4705-80b0-efb960acb551">
-                <typeId>93ef6675-cba4-4998-adff-cb22d5343ed4</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>39b8fb93-4d76-4151-8961-a7b3d2266993</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-          </childElements>
-        </childElement>
-        <childElement id="fec56eb6-de77-4180-84f8-5578f0f908c4" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <name>DTO</name>
-          <display>DTO: DTO</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="0b1642e6-d7e8-4a0b-abb6-f46802d82eeb">
-            <typeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services</typePackageName>
-            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>ae265391-cbea-4ec3-b449-d25622e44564</parentFolderId>
-          <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-          <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
-                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="true" isActive="true" />
-                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="return element.getParent('Command').getName() + element.getName() + 'Dto'" isActive="true" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" value="39b8fb93-4d76-4151-8961-a7b3d2266993" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="a5471c22-a058-4137-9ba5-29b71efa10d7" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <name>Class</name>
-          <display>Class: Class</display>
-          <isAbstract>false</isAbstract>
-          <sort-children>by-type-then-manually</sort-children>
-          <genericTypes />
-          <typeReference id="6600b039-0ba5-4d4b-88a1-5519ab800e7a">
-            <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Domain</typePackageName>
-            <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>ae265391-cbea-4ec3-b449-d25622e44564</parentFolderId>
-          <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-          <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
-                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements>
-            <childElement id="f309f99d-4104-41f7-82b4-a783fe53712d" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Class Attribute</name>
-              <display>Class Attribute: Attribute</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="746330c3-7a2c-43ed-8c91-c64474c8a547">
-                <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Domain</typePackageName>
-                <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>a5471c22-a058-4137-9ba5-29b71efa10d7</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return element.hasStereotype(&quot;Primary Key&quot;);" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[&quot;a7d2076d-4c3a-45bd-9d55-165fb4572557&quot;,&quot;972c5a10-0416-4760-9f84-de002d4ef2a7&quot;]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;0940039a-eb90-42e3-8284-b2b13215e2ab&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="cc259acd-75c4-4b1e-be12-77eaba119415" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Class Association Target End</name>
-              <display>Class Association Target End: Association Target End</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="ec9aace4-4930-4a6d-aa91-7977b2512278">
-                <typeId>0a66489f-30aa-417b-a75d-b945863366fd</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Domain</typePackageName>
-                <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>a5471c22-a058-4137-9ba5-29b71efa10d7</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return false;" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return element.typeReference.getIsCollection();" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[&quot;a7d2076d-4c3a-45bd-9d55-165fb4572557&quot;,&quot;972c5a10-0416-4760-9f84-de002d4ef2a7&quot;]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;,&quot;0940039a-eb90-42e3-8284-b2b13215e2ab&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" value="a5471c22-a058-4137-9ba5-29b71efa10d7" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="45eab8e7-3299-4973-bd01-8ef5e6c96900" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Invoke Operation</name>
-              <display>Invoke Operation: Operation</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="1a30bf12-0dea-4652-b972-65ceeb49511a">
-                <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Domain</typePackageName>
-                <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>a5471c22-a058-4137-9ba5-29b71efa10d7</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return element.typeReference?.getType() != null &amp;&amp; element.getChildren().length == 0;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[&quot;a7d2076d-4c3a-45bd-9d55-165fb4572557&quot;,&quot;972c5a10-0416-4760-9f84-de002d4ef2a7&quot;]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-          </childElements>
-        </childElement>
-        <childElement id="0940039a-eb90-42e3-8284-b2b13215e2ab" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <name>Value Object</name>
-          <display>Value Object: Value Object</display>
-          <isAbstract>false</isAbstract>
-          <sort-children>by-type-then-manually</sort-children>
-          <genericTypes />
-          <typeReference id="59d304b2-5ac3-4067-85ac-c897da312787">
-            <typeId>5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Domain.ValueObjects</typePackageName>
-            <typePackageId>94454582-ba60-4ab4-ae61-6f53b914b76d</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>ae265391-cbea-4ec3-b449-d25622e44564</parentFolderId>
-          <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-          <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
-                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements>
-            <childElement id="0abd5a93-e96d-4ed5-9ca4-f5359ce0af7c" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Value Object Attribute</name>
-              <display>Value Object Attribute: Attribute</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="a66a4901-d77e-4de5-a1ce-1c1616cc1d04">
-                <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Domain</typePackageName>
-                <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>0940039a-eb90-42e3-8284-b2b13215e2ab</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return true;" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[&quot;a7d2076d-4c3a-45bd-9d55-165fb4572557&quot;,&quot;972c5a10-0416-4760-9f84-de002d4ef2a7&quot;]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;0940039a-eb90-42e3-8284-b2b13215e2ab&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-          </childElements>
-        </childElement>
-        <childElement id="15794498-a110-4cd6-a692-4bb30ef9eaf3" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <name>Domain Event Handler</name>
-          <display>Domain Event Handler: Domain Event Handler Association Target End</display>
-          <isAbstract>false</isAbstract>
-          <sort-children>by-type-then-manually</sort-children>
-          <genericTypes />
-          <typeReference id="c34e7555-50b3-4130-9488-d100860539cc">
-            <typeId>f45dfee9-f62b-45ac-bfce-a3878e04b73f</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Domain.Events</typePackageName>
-            <typePackageId>31710880-215c-4fed-9c79-a129a4b9cdb1</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>ae265391-cbea-4ec3-b449-d25622e44564</parentFolderId>
-          <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-          <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="true" />
-                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;3dd3a327-e1eb-4fc2-9272-96c180bd1d92&quot;]" isActive="true" />
-                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements>
-            <childElement id="6a44f7c8-5732-4c11-972e-552fbde51db1" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Create Action</name>
-              <display>Create Action: Create Entity Action Target End</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="3e2fa00e-267c-41ed-b1fd-8bc48b15a539">
-                <typeId>328f54e5-7bad-4b5f-90ca-03ce3105d016</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>15794498-a110-4cd6-a692-4bb30ef9eaf3</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="a91b6600-7dbd-461c-bca5-71cac8e403d1" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Update Action</name>
-              <display>Update Action: Update Entity Action Target End</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="3aed337b-e949-4f9f-8443-47e997132440">
-                <typeId>516069f6-09cc-4de8-8e31-3c71ca823452</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>15794498-a110-4cd6-a692-4bb30ef9eaf3</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-          </childElements>
-        </childElement>
-        <childElement id="3dd3a327-e1eb-4fc2-9272-96c180bd1d92" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <name>Domain Event</name>
-          <display>Domain Event: Domain Event</display>
-          <isAbstract>false</isAbstract>
-          <sort-children>by-type-then-manually</sort-children>
-          <genericTypes />
-          <typeReference id="82b27124-9c25-40ce-b564-188c1cad690d">
-            <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Domain.Events</typePackageName>
-            <typePackageId>31710880-215c-4fed-9c79-a129a4b9cdb1</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>ae265391-cbea-4ec3-b449-d25622e44564</parentFolderId>
-          <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-          <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
-                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements>
-            <childElement id="6859b560-e0ea-400a-9f3d-408f82727367" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Domain Event Property</name>
-              <display>Domain Event Property: Property</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="75748888-96ba-4c11-9f43-e7f05dfe3dd4">
-                <typeId>b4d69073-5abb-4968-b41b-545b2f7408ed</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Domain.Events</typePackageName>
-                <typePackageId>31710880-215c-4fed-9c79-a129a4b9cdb1</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>3dd3a327-e1eb-4fc2-9272-96c180bd1d92</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;,&quot;0940039a-eb90-42e3-8284-b2b13215e2ab&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-          </childElements>
-        </childElement>
-        <childElement id="5d489756-0dca-45e6-84b3-cbf7946169e8" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <name>Service Operation</name>
-          <display>Service Operation: Operation</display>
-          <isAbstract>false</isAbstract>
-          <sort-children>by-type-then-manually</sort-children>
-          <genericTypes />
-          <typeReference id="04f8c3ca-8ec8-4b62-b366-17e0d1af6544">
-            <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services</typePackageName>
-            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>ae265391-cbea-4ec3-b449-d25622e44564</parentFolderId>
-          <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-          <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="true" />
-                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="true" />
-                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements>
-            <childElement id="8e2020f6-cc8c-418f-8bfb-b68e05b5a454" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Service Parameter</name>
-              <display>Service Parameter: Parameter</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="f9fe9a3a-65d8-40b6-92a3-8973dcc96d30">
-                <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services</typePackageName>
-                <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>5d489756-0dca-45e6-84b3-cbf7946169e8</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;fec56eb6-de77-4180-84f8-5578f0f908c4&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="1e867475-da45-4c70-9c7b-15de8ae87949" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Create Action</name>
-              <display>Create Action: Create Entity Action Target End</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="0e543f47-4a66-479c-be76-a9a2e84c466f">
-                <typeId>328f54e5-7bad-4b5f-90ca-03ce3105d016</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>5d489756-0dca-45e6-84b3-cbf7946169e8</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="c9398458-0002-4d67-9bff-1a2db4507033" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Update Action</name>
-              <display>Update Action: Update Entity Action Target End</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="91b8a9cc-3ea0-4fee-96ad-cda334bf6fd5">
-                <typeId>516069f6-09cc-4de8-8e31-3c71ca823452</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>5d489756-0dca-45e6-84b3-cbf7946169e8</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="6794ed69-cb6b-4022-b21c-9702142ce5b1" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Query Action</name>
-              <display>Query Action: Query Entity Action Target End</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="3bb0b3c9-cafa-4c40-b146-961224c2afc0">
-                <typeId>93ef6675-cba4-4998-adff-cb22d5343ed4</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>5d489756-0dca-45e6-84b3-cbf7946169e8</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
-                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;]" isActive="true" />
-                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-          </childElements>
-        </childElement>
-        <childElement id="265955ac-b061-484b-9cf8-76789b1f364a" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="265955ac-b061-484b-9cf8-76789b1f364a" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Integration Event Handler</name>
           <display>Integration Event Handler: Subscribe Integration Event Target End</display>
           <isAbstract>false</isAbstract>
@@ -1000,7 +64,6 @@
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="true" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;667fcad0-81e1-4a54-840c-d0c26ebc21b0&quot;]" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1012,7 +75,7 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="43641e69-b46d-4841-bc67-0b0f723f6f6d" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="43641e69-b46d-4841-bc67-0b0f723f6f6d" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Create Action</name>
               <display>Create Action: Create Entity Action Target End</display>
               <isAbstract>false</isAbstract>
@@ -1041,9 +104,8 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;]" isActive="true" />
+                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;5ef8e1c3-9626-4501-8968-6d9e432fb3b5&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
                     <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                     <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
@@ -1054,7 +116,7 @@
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="3decf5a5-f780-4db7-9071-f17da45182c6" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="3decf5a5-f780-4db7-9071-f17da45182c6" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Update Action</name>
               <display>Update Action: Update Entity Action Target End</display>
               <isAbstract>false</isAbstract>
@@ -1083,9 +145,8 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;]" isActive="true" />
+                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;5ef8e1c3-9626-4501-8968-6d9e432fb3b5&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
                     <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                     <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
@@ -1096,7 +157,7 @@
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="a30606c9-594e-4fff-8cab-225e0b3d1d68" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="a30606c9-594e-4fff-8cab-225e0b3d1d68" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Query Action</name>
               <display>Query Action: Query Entity Action Target End</display>
               <isAbstract>false</isAbstract>
@@ -1125,9 +186,8 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;a5471c22-a058-4137-9ba5-29b71efa10d7&quot;]" isActive="true" />
+                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;5ef8e1c3-9626-4501-8968-6d9e432fb3b5&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
                     <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                     <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
@@ -1138,7 +198,7 @@
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="667fcad0-81e1-4a54-840c-d0c26ebc21b0" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="667fcad0-81e1-4a54-840c-d0c26ebc21b0" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Message</name>
               <display>Message: Message</display>
               <isAbstract>false</isAbstract>
@@ -1168,7 +228,6 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1180,7 +239,7 @@
               </stereotypes>
               <metadata />
               <childElements>
-                <childElement id="678ea51f-f715-4219-82bf-1b42c8e3caad" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+                <childElement id="678ea51f-f715-4219-82bf-1b42c8e3caad" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
                   <name>Message Property</name>
                   <display>Message Property: Property</display>
                   <isAbstract>false</isAbstract>
@@ -1209,7 +268,6 @@
                         <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                         <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                         <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                        <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
                         <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                         <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;3bfa697e-b0e8-4776-b4b4-b34f9101ea34&quot;]" isActive="true" />
                         <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1222,7 +280,7 @@
                   <metadata />
                   <childElements />
                 </childElement>
-                <childElement id="3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+                <childElement id="3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
                   <name>Message DTO-Field</name>
                   <display>Message DTO-Field: DTO-Field</display>
                   <isAbstract>false</isAbstract>
@@ -1251,7 +309,6 @@
                         <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                         <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                         <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                        <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
                         <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                         <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;3bfa697e-b0e8-4776-b4b4-b34f9101ea34&quot;]" isActive="true" />
                         <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1266,7 +323,7 @@
                 </childElement>
               </childElements>
             </childElement>
-            <childElement id="3bfa697e-b0e8-4776-b4b4-b34f9101ea34" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="3bfa697e-b0e8-4776-b4b4-b34f9101ea34" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Eventing DTO</name>
               <display>Eventing DTO: Eventing DTO</display>
               <isAbstract>false</isAbstract>
@@ -1296,7 +353,6 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1308,7 +364,7 @@
               </stereotypes>
               <metadata />
               <childElements>
-                <childElement id="4a6afd7d-ae76-4831-9010-39f18999a595" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+                <childElement id="4a6afd7d-ae76-4831-9010-39f18999a595" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
                   <name>Eventing DTO Field</name>
                   <display>Eventing DTO Field: Eventing DTO-Field</display>
                   <isAbstract>false</isAbstract>
@@ -1337,7 +393,6 @@
                         <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                         <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                         <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                        <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
                         <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                         <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;3bfa697e-b0e8-4776-b4b4-b34f9101ea34&quot;]" isActive="true" />
                         <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1354,13 +409,37 @@
             </childElement>
           </childElements>
         </childElement>
+        <childElement id="e5409a3d-a965-4c43-a7f9-2a665ea93425" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05">
+          <name>Import</name>
+          <display>[import] Application Source Mappables</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="b5c3cfbf-5f05-4274-9810-925b37f7117a">
+            <typeId>2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services</typePackageName>
+            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>ae265391-cbea-4ec3-b449-d25622e44564</parentFolderId>
+          <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
+          <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
       </childElements>
     </childElement>
-    <childElement id="76ccc851-3371-4049-b8fa-d5fdf10c80e0" type="Target Mapping Settings" typeId="a812bff7-017a-4692-8ec7-1caad0a1dd88">
+    <childElement id="76ccc851-3371-4049-b8fa-d5fdf10c80e0" type="Target Mappable Elements" typeId="a812bff7-017a-4692-8ec7-1caad0a1dd88">
       <name>Target</name>
       <display>Target</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>7ff48a4c-ee8b-4e66-9dbb-c014eb0542fb</parentFolderId>
@@ -1378,7 +457,7 @@
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="5522e13c-4b8a-464d-802a-83a6d1e5b211" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="5522e13c-4b8a-464d-802a-83a6d1e5b211" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Publish Message</name>
           <display>Publish Message: Message</display>
           <isAbstract>false</isAbstract>
@@ -1408,7 +487,6 @@
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="false" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1420,7 +498,7 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="a7d2076d-4c3a-45bd-9d55-165fb4572557" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="a7d2076d-4c3a-45bd-9d55-165fb4572557" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Property</name>
               <display>Property: Property</display>
               <isAbstract>false</isAbstract>
@@ -1449,7 +527,6 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="false" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;4155744e-cc1e-495e-9a82-b3702548afe0&quot;,&quot;4bebd0c2-e53b-41a9-9d18-68f7fc4bec81&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1462,7 +539,7 @@
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="d10bbf9f-34ba-42dd-ad3a-ca51722aa2a2" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="d10bbf9f-34ba-42dd-ad3a-ca51722aa2a2" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Message DTO-Field</name>
               <display>Message DTO-Field: DTO-Field</display>
               <isAbstract>false</isAbstract>
@@ -1491,7 +568,6 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="null" isActive="false" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;4bebd0c2-e53b-41a9-9d18-68f7fc4bec81&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1506,7 +582,7 @@
             </childElement>
           </childElements>
         </childElement>
-        <childElement id="4bebd0c2-e53b-41a9-9d18-68f7fc4bec81" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="4bebd0c2-e53b-41a9-9d18-68f7fc4bec81" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Publish DTO</name>
           <display>Publish DTO: DTO</display>
           <isAbstract>false</isAbstract>
@@ -1536,7 +612,6 @@
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="false" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1548,7 +623,7 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="ff7ac0b8-9196-42c9-8196-241846f0ef60" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="ff7ac0b8-9196-42c9-8196-241846f0ef60" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>DTO-Field</name>
               <display>DTO-Field: DTO-Field</display>
               <isAbstract>false</isAbstract>
@@ -1577,7 +652,6 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[&quot;a7d2076d-4c3a-45bd-9d55-165fb4572557&quot;,&quot;972c5a10-0416-4760-9f84-de002d4ef2a7&quot;]" isActive="false" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;4bebd0c2-e53b-41a9-9d18-68f7fc4bec81&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1592,7 +666,7 @@
             </childElement>
           </childElements>
         </childElement>
-        <childElement id="4155744e-cc1e-495e-9a82-b3702548afe0" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="4155744e-cc1e-495e-9a82-b3702548afe0" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Publish Eventing DTO</name>
           <display>Publish Eventing DTO: Eventing DTO</display>
           <isAbstract>false</isAbstract>
@@ -1622,7 +696,6 @@
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="null" isActive="false" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1634,7 +707,7 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="972c5a10-0416-4760-9f84-de002d4ef2a7" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="972c5a10-0416-4760-9f84-de002d4ef2a7" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Eventing DTO Field</name>
               <display>Eventing DTO Field: Eventing DTO-Field</display>
               <isAbstract>false</isAbstract>
@@ -1663,7 +736,6 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="null" isActive="false" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;4155744e-cc1e-495e-9a82-b3702548afe0&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -1695,7 +767,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;d5d4257c-3e82-4843-824d-cd84877c72f7&quot;,&quot;f309f99d-4104-41f7-82b4-a783fe53712d&quot;,&quot;6859b560-e0ea-400a-9f3d-408f82727367&quot;,&quot;cc259acd-75c4-4b1e-be12-77eaba119415&quot;,&quot;0abd5a93-e96d-4ed5-9ca4-f5359ce0af7c&quot;,&quot;39b8fb93-4d76-4151-8961-a7b3d2266993&quot;,&quot;678ea51f-f715-4219-82bf-1b42c8e3caad&quot;,&quot;3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1&quot;]" isActive="true" />
+            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;678ea51f-f715-4219-82bf-1b42c8e3caad&quot;,&quot;3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1&quot;,&quot;98041049-0f91-4c21-99dc-50cd18fd1dae&quot;,&quot;daf3a2fa-0b35-4549-8b65-26b3a74dc7e0&quot;,&quot;792374ff-6b97-45df-96de-01acd2488cc0&quot;,&quot;c0682bc4-2b6a-4638-a35e-39188d253694&quot;,&quot;5a3018a8-38bc-450f-bf82-631e2d9475b3&quot;]" isActive="true" />
             <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Targets" value="[&quot;ff7ac0b8-9196-42c9-8196-241846f0ef60&quot;,&quot;d10bbf9f-34ba-42dd-ad3a-ca51722aa2a2&quot;,&quot;a7d2076d-4c3a-45bd-9d55-165fb4572557&quot;,&quot;4155744e-cc1e-495e-9a82-b3702548afe0&quot;,&quot;972c5a10-0416-4760-9f84-de002d4ef2a7&quot;]" isActive="true" />
             <property name="6ee5b3e3-628e-4996-87b5-08649e101887" display="Represents" value="Data" isActive="true" />
             <property name="ace10cc2-ece7-458a-bafb-2fc185f99335" display="Line Color" isActive="true" />

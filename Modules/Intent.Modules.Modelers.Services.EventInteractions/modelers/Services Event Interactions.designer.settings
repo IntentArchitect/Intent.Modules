@@ -304,7 +304,7 @@ vertical-align: center`</style>
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Publish Integration Event Target End" typeId="6feb1511-849a-4aa3-85eb-d0c736ac1fec">
-        <displayFunction>return `publish: ${typeReference.display}`</displayFunction>
+        <displayFunction>return `[publish] ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
         <allowSorting>true</allowSorting>
@@ -654,204 +654,6 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
     <mappingSetting type="Publish Message Mapping" typeId="7ff48a4c-ee8b-4e66-9dbb-c014eb0542fb">
       <title>Publish Message Mapping</title>
       <sourceMappings>
-        <mapping id="39b8fb93-4d76-4151-8961-a7b3d2266993" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>true</canBeModified>
-          <childSettings>
-            <childSetting id="d5d4257c-3e82-4843-824d-cd84877c72f7" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>fec56eb6-de77-4180-84f8-5578f0f908c4</mappingId>
-              </traversableTypes>
-              <canBeModified>true</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="c44c9979-10ea-4811-b72e-7ff1e55829eb" name="Create Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="4e15f8c8-3277-42e6-923f-13d6a53170db" name="Update Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="e71ca3c0-9ac7-4341-b00c-d7c532d46900" name="Query Action" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="fec56eb6-de77-4180-84f8-5578f0f908c4" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>true</canBeModified>
-          <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
-          <useChildSettingsFrom>39b8fb93-4d76-4151-8961-a7b3d2266993</useChildSettingsFrom>
-          <childSettings />
-        </mapping>
-        <mapping id="a5471c22-a058-4137-9ba5-29b71efa10d7" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <childSettings>
-            <childSetting id="f309f99d-4104-41f7-82b4-a783fe53712d" name="Class Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-              <isRequiredFunction>return element.hasStereotype("Primary Key");</isRequiredFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>0940039a-eb90-42e3-8284-b2b13215e2ab</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="cc259acd-75c4-4b1e-be12-77eaba119415" name="Class Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
-              <isRequiredFunction>return false;</isRequiredFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return element.typeReference.getIsCollection();</isMappableFunction>
-              <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
-                <mappingId>0940039a-eb90-42e3-8284-b2b13215e2ab</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <useChildSettingsFrom>a5471c22-a058-4137-9ba5-29b71efa10d7</useChildSettingsFrom>
-              <childSettings />
-            </childSetting>
-            <childSetting id="45eab8e7-3299-4973-bd01-8ef5e6c96900" name="Invoke Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return element.typeReference?.getType() != null &amp;&amp; element.getChildren().length == 0;</isMappableFunction>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="0940039a-eb90-42e3-8284-b2b13215e2ab" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <childSettings>
-            <childSetting id="0abd5a93-e96d-4ed5-9ca4-f5359ce0af7c" name="Value Object Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-              <isRequiredFunction>return true;</isRequiredFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>0940039a-eb90-42e3-8284-b2b13215e2ab</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="15794498-a110-4cd6-a692-4bb30ef9eaf3" name="Domain Event Handler" type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes>
-            <mappingId>3dd3a327-e1eb-4fc2-9272-96c180bd1d92</mappingId>
-          </traversableTypes>
-          <canBeModified>false</canBeModified>
-          <childSettings>
-            <childSetting id="6a44f7c8-5732-4c11-972e-552fbde51db1" name="Create Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="a91b6600-7dbd-461c-bca5-71cac8e403d1" name="Update Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="3dd3a327-e1eb-4fc2-9272-96c180bd1d92" name="Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <childSettings>
-            <childSetting id="6859b560-e0ea-400a-9f3d-408f82727367" name="Domain Event Property" type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
-                <mappingId>0940039a-eb90-42e3-8284-b2b13215e2ab</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="5d489756-0dca-45e6-84b3-cbf7946169e8" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <childSettings>
-            <childSetting id="8e2020f6-cc8c-418f-8bfb-b68e05b5a454" name="Service Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>fec56eb6-de77-4180-84f8-5578f0f908c4</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="1e867475-da45-4c70-9c7b-15de8ae87949" name="Create Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="c9398458-0002-4d67-9bff-1a2db4507033" name="Update Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-            <childSetting id="6794ed69-cb6b-4022-b21c-9702142ce5b1" name="Query Action" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
         <mapping id="265955ac-b061-484b-9cf8-76789b1f364a" name="Integration Event Handler" type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
@@ -864,7 +666,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
+                <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <childSettings />
@@ -873,7 +675,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
+                <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <childSettings />
@@ -882,7 +684,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
-                <mappingId>a5471c22-a058-4137-9ba5-29b71efa10d7</mappingId>
+                <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <childSettings />
@@ -933,6 +735,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
             </childSetting>
           </childSettings>
         </mapping>
+        <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
       </sourceMappings>
       <targetMappings>
         <mapping id="5522e13c-4b8a-464d-802a-83a6d1e5b211" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
@@ -1003,14 +806,13 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
         <mappingType type="Data Mapping" typeId="d12e5102-45f3-4dde-8f63-f6a630e75771">
           <represents>data</represents>
           <sources>
-            <source id="d5d4257c-3e82-4843-824d-cd84877c72f7" name="Field" />
-            <source id="f309f99d-4104-41f7-82b4-a783fe53712d" name="Class Attribute" />
-            <source id="6859b560-e0ea-400a-9f3d-408f82727367" name="Domain Event Property" />
-            <source id="cc259acd-75c4-4b1e-be12-77eaba119415" name="Class Association Target End" />
-            <source id="0abd5a93-e96d-4ed5-9ca4-f5359ce0af7c" name="Value Object Attribute" />
-            <source id="39b8fb93-4d76-4151-8961-a7b3d2266993" name="Command" />
             <source id="678ea51f-f715-4219-82bf-1b42c8e3caad" name="Message Property" />
             <source id="3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1" name="Message DTO-Field" />
+            <source id="98041049-0f91-4c21-99dc-50cd18fd1dae" name="Field" />
+            <source id="daf3a2fa-0b35-4549-8b65-26b3a74dc7e0" name="Attribute" />
+            <source id="792374ff-6b97-45df-96de-01acd2488cc0" name="Property" />
+            <source id="c0682bc4-2b6a-4638-a35e-39188d253694" name="Association Target End" />
+            <source id="5a3018a8-38bc-450f-bf82-631e2d9475b3" name="Command" />
           </sources>
           <targets>
             <target id="ff7ac0b8-9196-42c9-8196-241846f0ef60" name="DTO-Field" />
@@ -1024,4 +826,6 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
       </mappingTypes>
     </mappingSetting>
   </mappingSettings>
+  <mappableElementPackages />
+  <mappableElementPackageExtensions />
 </settings>

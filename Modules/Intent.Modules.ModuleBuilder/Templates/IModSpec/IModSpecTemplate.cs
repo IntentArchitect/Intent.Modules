@@ -101,6 +101,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 doc.Element("package").SetElementValue("supportedClientVersions", doc.Element("package").Element("supportedClientVersions").Value
                     .Replace("[3.3.0", "[4.1.0")
                     .Replace("[3.4.0", "[4.1.0")
+                    .Replace("[4.1.0-a,", "[4.1.0-beta.21,")
                     .Replace("4.0.0)", "5.0.0)"));
             }
 
@@ -568,7 +569,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 <package>
   <id>{ModuleModel.Name}</id>
   <version>{ModuleModel.GetModuleSettings().Version()}</version>
-  <supportedClientVersions>[4.1.0-a,5.0.0)</supportedClientVersions>
+  <supportedClientVersions>[4.1.0-beta.21,5.0.0)</supportedClientVersions>
   <summary>{ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}"}.</summary>
   <description>{ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}"}.</description>
   <authors>{OutputTarget.Application.SolutionName}</authors>

@@ -572,4 +572,28 @@ function setIfEmpty(stereotype, propertyName, defaultValue) {
   <associationSettings />
   <associationExtensions />
   <mappingSettings />
+  <mappableElementPackages />
+  <mappableElementPackageExtensions>
+    <mappableElementPackageExtension id="25606af8-ba13-4ccc-ba99-7983530bced7" name="CQRS Application Mappables Extension" extendPackageId="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" extendPackage="Application Source Mappables">
+      <imports />
+      <mappableElementSettings>
+        <mappableElement id="5a3018a8-38bc-450f-bf82-631e2d9475b3" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <useChildSettingsFrom>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</useChildSettingsFrom>
+          <childSettings />
+        </mappableElement>
+        <mappableElement id="0556825b-177b-4093-b13a-5dfabb13c9b6" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <useChildSettingsFrom>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</useChildSettingsFrom>
+          <childSettings />
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackageExtension>
+  </mappableElementPackageExtensions>
 </settings>

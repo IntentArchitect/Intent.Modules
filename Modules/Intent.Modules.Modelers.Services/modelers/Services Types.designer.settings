@@ -114,6 +114,7 @@ const metadataKeyName = "initialized";
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -122,7 +123,6 @@ const metadataKeyName = "initialized";
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <mappingOptions />
       <mappingSettings />
       <diagramSettings>
         <addNewElementsTo>Package</addNewElementsTo>
@@ -159,6 +159,10 @@ vertical-align: center`</style>
                 <position x="${x}" y="${y + 6}" />
               </drawSvgResource>
             </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
             <defaultSize width="${x}" height="70" />
             <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings>
@@ -177,6 +181,10 @@ vertical-align: center`</style>
                     <position x="${x}" y="${y}" />
                   </drawSvgResource>
                 </display>
+                <stereotypesVisualSettings>
+                  <size width="${w}" height="18" />
+                  <position x="${x}" y="${y}" />
+                </stereotypesVisualSettings>
                 <defaultSize width="`${parent.w}`" height="18" />
                 <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
                 <childElementVisualSettings />
@@ -204,6 +212,7 @@ const derivedFrom = association != null
 return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
       <allowRename>true</allowRename>
       <allowAbstract>true</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>true</allowGenericTypes>
       <allowMapping>true</allowMapping>
       <allowSorting>true</allowSorting>
@@ -755,6 +764,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
 }</validateFunction>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -778,7 +788,6 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
-          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -789,6 +798,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -862,6 +872,7 @@ return validateOperation(lookup(id));
 </validateFunction>
           <allowRename>true</allowRename>
           <allowAbstract>true</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>true</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -958,6 +969,7 @@ return validateOperationParameter(lookup(id));
 </validateFunction>
               <allowRename>true</allowRename>
               <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
@@ -981,7 +993,6 @@ return validateOperationParameter(lookup(id));
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
-              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1048,6 +1059,7 @@ return validateOperationParameter(lookup(id));
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type>Service</type>
         <type>DTO</type>
@@ -1062,7 +1074,7 @@ return validateOperationParameter(lookup(id));
   <associationSettings>
     <associationSetting type="Generalization" typeId="5ba12bbf-122f-4c3e-af3c-4a88dc554597">
       <sourceEnd type="Generalization Source End" typeId="5ce8666c-89d2-4c9c-b30c-6e5fe42e1766">
-        <nameAccessibilityMode>unknown</nameAccessibilityMode>
+        <nameAccessibilityMode>required</nameAccessibilityMode>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
@@ -1077,11 +1089,9 @@ return validateOperationParameter(lookup(id));
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
-        <scriptOptions />
-        <mappingOptions />
       </sourceEnd>
       <targetEnd type="Generalization Target End" typeId="e1b3d4e4-0ad0-4aec-97fb-780ab9e476db">
-        <nameAccessibilityMode>unknown</nameAccessibilityMode>
+        <nameAccessibilityMode>required</nameAccessibilityMode>
         <icon type="UrlImagePath" source="data:image/png;base64,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" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
@@ -1097,10 +1107,117 @@ return validateOperationParameter(lookup(id));
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
-        <mappingOptions />
       </targetEnd>
     </associationSetting>
   </associationSettings>
   <associationExtensions />
   <mappingSettings />
+  <mappableElementPackages>
+    <mappableElementPackage id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables">
+      <imports />
+      <mappableElementSettings>
+        <mappableElement id="5ef8e1c3-9626-4501-8968-6d9e432fb3b5" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <childSettings>
+            <childSetting id="daf3a2fa-0b35-4549-8b65-26b3a74dc7e0" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>4b3a6208-67e4-44aa-b96e-7791b21659e9</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <childSettings />
+            </childSetting>
+            <childSetting id="c0682bc4-2b6a-4638-a35e-39188d253694" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>4b3a6208-67e4-44aa-b96e-7791b21659e9</mappingId>
+                <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <useChildSettingsFrom>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</useChildSettingsFrom>
+              <childSettings />
+            </childSetting>
+            <childSetting id="cfe9c4d4-9c26-4f11-a585-f1e3863fb658" name="Invoke Domain Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return element.typeReference.isTypeFound() &amp;&amp; element.getChildren("Parameter").length == 0;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <childSettings />
+            </childSetting>
+            <childSetting id="4b3a6208-67e4-44aa-b96e-7791b21659e9" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <useChildSettingsFrom>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</useChildSettingsFrom>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="16a7127a-946d-41a3-9dd9-4f2c5429c5e9" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
+          <childSettings>
+            <childSetting id="98041049-0f91-4c21-99dc-50cd18fd1dae" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <childSettings />
+            </childSetting>
+            <childSetting id="eb1478af-4b69-4d33-826f-3f195ebbed79" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <childSettings>
+            <childSetting id="7767267b-2e01-42cd-8a03-103d296a6306" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <childSettings />
+            </childSetting>
+            <childSetting id="ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8" name="Collection Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackage>
+  </mappableElementPackages>
+  <mappableElementPackageExtensions />
 </settings>

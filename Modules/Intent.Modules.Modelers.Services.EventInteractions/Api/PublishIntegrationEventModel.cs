@@ -70,6 +70,7 @@ namespace Intent.Modelers.Services.EventInteractions
     public class PublishIntegrationEventSourceEndModel : PublishIntegrationEventEndModel
     {
         public const string SpecializationTypeId = "eab91b3a-9903-40a2-90e8-ddb714883eab";
+        public const string SpecializationType = "Publish Integration Event Source End";
 
         public PublishIntegrationEventSourceEndModel(IAssociationEnd associationEnd, PublishIntegrationEventModel association) : base(associationEnd, association)
         {
@@ -80,6 +81,7 @@ namespace Intent.Modelers.Services.EventInteractions
     public class PublishIntegrationEventTargetEndModel : PublishIntegrationEventEndModel
     {
         public const string SpecializationTypeId = "6feb1511-849a-4aa3-85eb-d0c736ac1fec";
+        public const string SpecializationType = "Publish Integration Event Target End";
 
         public PublishIntegrationEventTargetEndModel(IAssociationEnd associationEnd, PublishIntegrationEventModel association) : base(associationEnd, association)
         {

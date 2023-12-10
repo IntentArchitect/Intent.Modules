@@ -12,11 +12,11 @@
   <stereotypes />
   <metadata />
   <childElements>
-    <childElement id="544f0130-39c6-4255-b0b4-5dcad72c1c0f" type="Source Mapping Settings" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
+    <childElement id="544f0130-39c6-4255-b0b4-5dcad72c1c0f" type="Source Mappable Elements" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
       <name>Source</name>
       <display>Source</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>a4c4c5cc-76df-48ed-9d4e-c35caf44b567</parentFolderId>
@@ -34,7 +34,7 @@
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="2893a19b-523a-49e9-b828-2961b0fba28f" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="2893a19b-523a-49e9-b828-2961b0fba28f" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Publish Message</name>
           <display>Publish Message: Message</display>
           <isAbstract>false</isAbstract>
@@ -64,7 +64,6 @@
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -76,7 +75,7 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Property</name>
               <display>Property: Property</display>
               <isAbstract>false</isAbstract>
@@ -105,7 +104,6 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[&quot;7829c6b8-a045-4a3e-b9c2-13795f128879&quot;]" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;b5626f4a-fc65-4cdd-b921-e7d1b347c9f4&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -120,7 +118,7 @@
             </childElement>
           </childElements>
         </childElement>
-        <childElement id="b5626f4a-fc65-4cdd-b921-e7d1b347c9f4" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="b5626f4a-fc65-4cdd-b921-e7d1b347c9f4" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Eventing DTO</name>
           <display>Eventing DTO: Eventing DTO</display>
           <isAbstract>false</isAbstract>
@@ -150,7 +148,6 @@
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="true" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -162,7 +159,7 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Eventing DTO Field</name>
               <display>Eventing DTO Field: Eventing DTO-Field</display>
               <isAbstract>false</isAbstract>
@@ -191,7 +188,6 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[&quot;7829c6b8-a045-4a3e-b9c2-13795f128879&quot;]" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;b5626f4a-fc65-4cdd-b921-e7d1b347c9f4&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -208,11 +204,11 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="39c23090-7825-447b-a6d8-eab3e94af76c" type="Target Mapping Settings" typeId="a812bff7-017a-4692-8ec7-1caad0a1dd88">
+    <childElement id="39c23090-7825-447b-a6d8-eab3e94af76c" type="Target Mappable Elements" typeId="a812bff7-017a-4692-8ec7-1caad0a1dd88">
       <name>Target</name>
       <display>Target</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>a4c4c5cc-76df-48ed-9d4e-c35caf44b567</parentFolderId>
@@ -230,7 +226,7 @@
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="7f5d49dd-fd48-4f29-8126-b1b0c881a99c" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="7f5d49dd-fd48-4f29-8126-b1b0c881a99c" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Send Command</name>
           <display>Send Command: Command</display>
           <isAbstract>false</isAbstract>
@@ -260,7 +256,6 @@
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="false" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -272,7 +267,7 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="7829c6b8-a045-4a3e-b9c2-13795f128879" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="7829c6b8-a045-4a3e-b9c2-13795f128879" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Field</name>
               <display>Field: DTO-Field</display>
               <isAbstract>false</isAbstract>
@@ -301,7 +296,6 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return !element.typeReference.getIsNullable() &amp;&amp; !element.typeReference.getIsCollection()" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[&quot;a7d2076d-4c3a-45bd-9d55-165fb4572557&quot;,&quot;972c5a10-0416-4760-9f84-de002d4ef2a7&quot;]" isActive="false" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;8dd4a85c-056b-4d02-859c-e6d274b89580&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -316,7 +310,7 @@
             </childElement>
           </childElements>
         </childElement>
-        <childElement id="8dd4a85c-056b-4d02-859c-e6d274b89580" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="8dd4a85c-056b-4d02-859c-e6d274b89580" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>DTO</name>
           <display>DTO: DTO</display>
           <isAbstract>false</isAbstract>
@@ -345,7 +339,6 @@
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[]" isActive="false" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -358,7 +351,7 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="41f6e850-b45a-46b2-8909-0e562f8b5a7e" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="41f6e850-b45a-46b2-8909-0e562f8b5a7e" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Service Operation</name>
           <display>Service Operation: Operation</display>
           <isAbstract>false</isAbstract>
@@ -388,7 +381,6 @@
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
-                <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="false" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
@@ -400,7 +392,7 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="e369f4ec-cd31-415c-b5f3-6a5247462615" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="e369f4ec-cd31-415c-b5f3-6a5247462615" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Service Parameter</name>
               <display>Service Parameter: Parameter</display>
               <isAbstract>false</isAbstract>
@@ -429,7 +421,6 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="false" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;8dd4a85c-056b-4d02-859c-e6d274b89580&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -69,6 +70,7 @@ namespace Intent.Modelers.Services.Api
     public class GeneralizationSourceEndModel : GeneralizationEndModel
     {
         public const string SpecializationTypeId = "5ce8666c-89d2-4c9c-b30c-6e5fe42e1766";
+        public const string SpecializationType = "Generalization Source End";
 
         public GeneralizationSourceEndModel(IAssociationEnd associationEnd, GeneralizationModel association) : base(associationEnd, association)
         {
@@ -79,6 +81,7 @@ namespace Intent.Modelers.Services.Api
     public class GeneralizationTargetEndModel : GeneralizationEndModel
     {
         public const string SpecializationTypeId = "e1b3d4e4-0ad0-4aec-97fb-780ab9e476db";
+        public const string SpecializationType = "Generalization Target End";
 
         public GeneralizationTargetEndModel(IAssociationEnd associationEnd, GeneralizationModel association) : base(associationEnd, association)
         {
@@ -86,7 +89,7 @@ namespace Intent.Modelers.Services.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class GeneralizationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class GeneralizationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly GeneralizationModel _association;
@@ -108,6 +111,7 @@ namespace Intent.Modelers.Services.Api
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public GeneralizationModel Association => _association;
+        public IElement InternalElement => _associationEnd;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
         public IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;
