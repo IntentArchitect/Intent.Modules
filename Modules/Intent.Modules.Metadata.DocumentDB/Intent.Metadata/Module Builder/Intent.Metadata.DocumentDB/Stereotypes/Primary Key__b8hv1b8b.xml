@@ -19,5 +19,22 @@
   <order>0</order>
   <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
   <packageName>Intent.Metadata.DocumentDB</packageName>
-  <properties />
+  <properties>
+    <property id="ce12cf69-e97f-401b-9b08-7e2c62171d4e">
+      <hint>How does this data of this primary key get set? i.e. by the system perhaps as a database generated identifier or by the user.</hint>
+      <name>Data source</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Default</defaultValue>
+      <valueOptions>
+        <option>Default</option>
+        <option>Auto-generated</option>
+        <option>User supplied</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return  true;</isRequiredFunction>
+    </property>
+  </properties>
 </stereotypeDefinition>

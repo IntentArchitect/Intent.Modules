@@ -8988,7 +8988,7 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
             <childSetting id="53e8bc33-5930-4364-9526-7f8f181b14a1" name="Set Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
               <filterFunction>let fkAssociation = element.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected();
 
-return !element.hasStereotype('Primary Key') 
+return (!element.hasStereotype('Primary Key') || (element.hasStereotype('Primary Key') &amp;&amp; element.getStereotype('Primary Key').getProperty('Data source')?.value == "User supplied") )
     // if has FK, is aggregation
     &amp;&amp; (fkAssociation == null || fkAssociation.getOtherEnd().typeReference.getIsCollection() || fkAssociation.getOtherEnd().typeReference.getIsNullable()); 
     </filterFunction>
@@ -9545,7 +9545,7 @@ return !element.hasStereotype('Primary Key')
             <childSetting id="84e9dcc5-8765-48ef-b2a6-39744498a4af" name="Set Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>let fkAssociation = element.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected();  
-return (!element.hasStereotype('Primary Key') || element.getParent().specialization == "Association Target End")
+return ((!element.hasStereotype('Primary Key') || (element.hasStereotype('Primary Key') &amp;&amp; element.getStereotype('Primary Key').getProperty('Data source')?.value == "User supplied")) || element.getParent().specialization == "Association Target End")
     // Entity Settings -&gt; Ensure Private Property Settings != true
     &amp;&amp; (application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")?.value != "true")
     // mapping association is not to an Operation:

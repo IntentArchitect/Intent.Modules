@@ -69,9 +69,9 @@ function updatePrimaryKey(element) {
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     let idAttr = element.getChildren("Attribute")
         .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
-    const isToOneRelationshipTarget = () =&gt; element.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.getOtherEnd().typeReference.isCollection);
-    if ((!isAggregateRoot(element) &amp;&amp; isToOneRelationshipTarget()) || derivedFromTypeHasPk(element)) {
+    const isToCompositionalOneRelationshipTarget = () =&gt; element.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable &amp;&amp; !x.getOtherEnd().typeReference.isCollection);
+    if ((!isAggregateRoot(element) &amp;&amp; isToCompositionalOneRelationshipTarget()) || derivedFromTypeHasPk(element)) {
         if (idAttr != null) {
             idAttr.delete();
         }
@@ -135,6 +135,7 @@ function isTableStorage(element) {
         ((_c = (_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == tableStorageProvider);
 }
 function updateTableStoragePk(element) {
+    var _a, _b;
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
     let idAttrs = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
@@ -152,11 +153,13 @@ function updateTableStoragePk(element) {
             let rowKeyAttr = createElement("Attribute", "RowKey", element.id);
             rowKeyAttr.setOrder(0);
             rowKeyAttr.typeReference.setType(stringTypeId);
-            rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let idPkSterotype = rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            (_a = idPkSterotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("User supplied");
             let partitionKeyAttr = createElement("Attribute", "PartitionKey", element.id);
             partitionKeyAttr.setOrder(0);
             partitionKeyAttr.typeReference.setType(stringTypeId);
-            partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let partitionPkStereotype = partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
+            (_b = partitionPkStereotype.getProperty("Data source")) === null || _b === void 0 ? void 0 : _b.setValue("User supplied");
         }
     }
 }
@@ -295,6 +298,19 @@ function updateForeignKeysForElement(element) {
         }
         if (requiresForeignKey(association.getOtherEnd())) {
             updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
+        }
+    }
+    removeOrphanedAssociations(element);
+}
+function removeOrphanedAssociations(element) {
+    let existingAssociations = element.getAssociations();
+    let existingAttributes = element.getChildren("Attribute");
+    for (let attr of existingAttributes) {
+        if (!attr.getMetadata("association")) {
+            continue;
+        }
+        if (!existingAssociations.some(x =&gt; attr.getMetadata("association") == x.id)) {
+            attr.delete();
         }
     }
 }
@@ -437,6 +453,7 @@ function isTableStorage(element) {
         ((_c = (_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == tableStorageProvider);
 }
 function updateTableStoragePk(element) {
+    var _a, _b;
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
     let idAttrs = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
@@ -454,11 +471,13 @@ function updateTableStoragePk(element) {
             let rowKeyAttr = createElement("Attribute", "RowKey", element.id);
             rowKeyAttr.setOrder(0);
             rowKeyAttr.typeReference.setType(stringTypeId);
-            rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let idPkSterotype = rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            (_a = idPkSterotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("User supplied");
             let partitionKeyAttr = createElement("Attribute", "PartitionKey", element.id);
             partitionKeyAttr.setOrder(0);
             partitionKeyAttr.typeReference.setType(stringTypeId);
-            partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let partitionPkStereotype = partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
+            (_b = partitionPkStereotype.getProperty("Data source")) === null || _b === void 0 ? void 0 : _b.setValue("User supplied");
         }
     }
 }
@@ -732,6 +751,7 @@ function isTableStorage(element) {
         ((_c = (_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == tableStorageProvider);
 }
 function updateTableStoragePk(element) {
+    var _a, _b;
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
     let idAttrs = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
@@ -749,11 +769,13 @@ function updateTableStoragePk(element) {
             let rowKeyAttr = createElement("Attribute", "RowKey", element.id);
             rowKeyAttr.setOrder(0);
             rowKeyAttr.typeReference.setType(stringTypeId);
-            rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let idPkSterotype = rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            (_a = idPkSterotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("User supplied");
             let partitionKeyAttr = createElement("Attribute", "PartitionKey", element.id);
             partitionKeyAttr.setOrder(0);
             partitionKeyAttr.typeReference.setType(stringTypeId);
-            partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let partitionPkStereotype = partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
+            (_b = partitionPkStereotype.getProperty("Data source")) === null || _b === void 0 ? void 0 : _b.setValue("User supplied");
         }
     }
 }
@@ -1052,6 +1074,7 @@ function isTableStorage(element) {
         ((_c = (_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == tableStorageProvider);
 }
 function updateTableStoragePk(element) {
+    var _a, _b;
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
     let idAttrs = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
@@ -1069,11 +1092,13 @@ function updateTableStoragePk(element) {
             let rowKeyAttr = createElement("Attribute", "RowKey", element.id);
             rowKeyAttr.setOrder(0);
             rowKeyAttr.typeReference.setType(stringTypeId);
-            rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let idPkSterotype = rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            (_a = idPkSterotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("User supplied");
             let partitionKeyAttr = createElement("Attribute", "PartitionKey", element.id);
             partitionKeyAttr.setOrder(0);
             partitionKeyAttr.typeReference.setType(stringTypeId);
-            partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let partitionPkStereotype = partitionKeyAttr.addStereotype(primaryKeyStereotypeId);
+            (_b = partitionPkStereotype.getProperty("Data source")) === null || _b === void 0 ? void 0 : _b.setValue("User supplied");
         }
     }
 }
@@ -1272,4 +1297,5 @@ execute();
   </associationExtensions>
   <mappingSettings />
   <mappableElementPackages />
+  <mappableElementPackageExtensions />
 </settings>

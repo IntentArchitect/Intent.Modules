@@ -107,13 +107,14 @@ function updateTableStoragePk(element: IElementApi): void {
             let rowKeyAttr = createElement("Attribute", "RowKey", element.id);
             rowKeyAttr.setOrder(0);
             rowKeyAttr.typeReference.setType(stringTypeId);
-            rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            let idPkSterotype = rowKeyAttr.addStereotype(primaryKeyStereotypeId);
+            idPkSterotype.getProperty("Data source")?.setValue("User supplied");
             
             let partitionKeyAttr = createElement("Attribute", "PartitionKey", element.id);
             partitionKeyAttr.setOrder(0);
             partitionKeyAttr.typeReference.setType(stringTypeId);
-            partitionKeyAttr.addStereotype(primaryKeyStereotypeId);                    
+            let partitionPkStereotype = partitionKeyAttr.addStereotype(primaryKeyStereotypeId);                    
+            partitionPkStereotype.getProperty("Data source")?.setValue("User supplied");
         }
     }        
-
 }
