@@ -92,7 +92,9 @@ function updatePartitionKeyAsPrimary(element: IElementApi, packageLoad : boolean
                     toAdjust.addStereotype(primaryKeyStereotypeId);
                 }        
                 let partitionPkStereotype = toAdjust.getStereotype(primaryKeyStereotypeId);      
-                if (!element.hasStereotype(multiTenancyStereotypeId)){
+                if (element.hasStereotype(multiTenancyStereotypeId)){
+                    partitionPkStereotype.getProperty("Data source")?.setValue("Default");
+                } else {
                     partitionPkStereotype.getProperty("Data source")?.setValue("User supplied");
                 }
                 toAdjust.setMetadata("partition-key", "true");

@@ -95,7 +95,7 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
         });
     }
     function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {
-        var _a;
+        var _a, _b;
         if (element.specialization !== "Class") {
             return;
         }
@@ -120,8 +120,11 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
                     toAdjust.addStereotype(primaryKeyStereotypeId);
                 }
                 let partitionPkStereotype = toAdjust.getStereotype(primaryKeyStereotypeId);
-                if (!element.hasStereotype(multiTenancyStereotypeId)) {
-                    (_a = partitionPkStereotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("User supplied");
+                if (element.hasStereotype(multiTenancyStereotypeId)) {
+                    (_a = partitionPkStereotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("Default");
+                }
+                else {
+                    (_b = partitionPkStereotype.getProperty("Data source")) === null || _b === void 0 ? void 0 : _b.setValue("User supplied");
                 }
                 toAdjust.setMetadata("partition-key", "true");
             }
@@ -523,7 +526,7 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
         });
     }
     function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {
-        var _a;
+        var _a, _b;
         if (element.specialization !== "Class") {
             return;
         }
@@ -548,8 +551,11 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
                     toAdjust.addStereotype(primaryKeyStereotypeId);
                 }
                 let partitionPkStereotype = toAdjust.getStereotype(primaryKeyStereotypeId);
-                if (!element.hasStereotype(multiTenancyStereotypeId)) {
-                    (_a = partitionPkStereotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("User supplied");
+                if (element.hasStereotype(multiTenancyStereotypeId)) {
+                    (_a = partitionPkStereotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("Default");
+                }
+                else {
+                    (_b = partitionPkStereotype.getProperty("Data source")) === null || _b === void 0 ? void 0 : _b.setValue("User supplied");
                 }
                 toAdjust.setMetadata("partition-key", "true");
             }
@@ -947,7 +953,7 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
         });
     }
     function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {
-        var _a;
+        var _a, _b;
         if (element.specialization !== "Class") {
             return;
         }
@@ -972,8 +978,11 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
                     toAdjust.addStereotype(primaryKeyStereotypeId);
                 }
                 let partitionPkStereotype = toAdjust.getStereotype(primaryKeyStereotypeId);
-                if (!element.hasStereotype(multiTenancyStereotypeId)) {
-                    (_a = partitionPkStereotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("User supplied");
+                if (element.hasStereotype(multiTenancyStereotypeId)) {
+                    (_a = partitionPkStereotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("Default");
+                }
+                else {
+                    (_b = partitionPkStereotype.getProperty("Data source")) === null || _b === void 0 ? void 0 : _b.setValue("User supplied");
                 }
                 toAdjust.setMetadata("partition-key", "true");
             }
@@ -1400,7 +1409,7 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
         });
     }
     function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {
-        var _a;
+        var _a, _b;
         if (element.specialization !== "Class") {
             return;
         }
@@ -1425,8 +1434,11 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
                     toAdjust.addStereotype(primaryKeyStereotypeId);
                 }
                 let partitionPkStereotype = toAdjust.getStereotype(primaryKeyStereotypeId);
-                if (!element.hasStereotype(multiTenancyStereotypeId)) {
-                    (_a = partitionPkStereotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("User supplied");
+                if (element.hasStereotype(multiTenancyStereotypeId)) {
+                    (_a = partitionPkStereotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("Default");
+                }
+                else {
+                    (_b = partitionPkStereotype.getProperty("Data source")) === null || _b === void 0 ? void 0 : _b.setValue("User supplied");
                 }
                 toAdjust.setMetadata("partition-key", "true");
             }
