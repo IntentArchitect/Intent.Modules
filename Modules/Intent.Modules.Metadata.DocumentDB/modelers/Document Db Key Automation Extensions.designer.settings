@@ -38,7 +38,6 @@ function getDefaultIdType() {
 function updatePartitionKeyAsPrimary(element, packageLoad = false) {
     if (!isCosmosDb(element))
         return;
-    console.warn(element.specialization);
     let allowedTypes = ["Class", "Folder", "Domain Package"];
     if (!allowedTypes.includes(element.specialization)) {
         return;
@@ -52,9 +51,7 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
         if (element.hasMetadata("currentPartitionKey") &amp;&amp; element.getMetadata("currentPartitionKey") === partitionKey) {
             return;
         }
-        console.warn();
     }
-    console.warn("Doing Check");
     if (element.specialization == "Class") {
         ensureCorrectPartitionKey(element, partitionKey, packageLoad);
     }
@@ -77,7 +74,6 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
         return result;
     }
     function updateDescendants(element, partitionKeyName, packageLoad) {
-        console.warn("checking :" + element.getName());
         let children = element.getChildren().filter(c =&gt; allowedTypes.includes(c.specialization));
         children.forEach(child =&gt; {
             var _a;
@@ -100,7 +96,6 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
     }
     function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {
         var _a;
-        console.warn("Updating class :" + element.getName());
         if (element.specialization !== "Class") {
             return;
         }
@@ -471,7 +466,6 @@ function removeOrphanedAssociations(element) {
 function updatePartitionKeyAsPrimary(element, packageLoad = false) {
     if (!isCosmosDb(element))
         return;
-    console.warn(element.specialization);
     let allowedTypes = ["Class", "Folder", "Domain Package"];
     if (!allowedTypes.includes(element.specialization)) {
         return;
@@ -485,9 +479,7 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
         if (element.hasMetadata("currentPartitionKey") &amp;&amp; element.getMetadata("currentPartitionKey") === partitionKey) {
             return;
         }
-        console.warn();
     }
-    console.warn("Doing Check");
     if (element.specialization == "Class") {
         ensureCorrectPartitionKey(element, partitionKey, packageLoad);
     }
@@ -510,7 +502,6 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
         return result;
     }
     function updateDescendants(element, partitionKeyName, packageLoad) {
-        console.warn("checking :" + element.getName());
         let children = element.getChildren().filter(c =&gt; allowedTypes.includes(c.specialization));
         children.forEach(child =&gt; {
             var _a;
@@ -533,7 +524,6 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
     }
     function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {
         var _a;
-        console.warn("Updating class :" + element.getName());
         if (element.specialization !== "Class") {
             return;
         }
@@ -900,7 +890,6 @@ function removeOrphanedAssociations(element) {
 function updatePartitionKeyAsPrimary(element, packageLoad = false) {
     if (!isCosmosDb(element))
         return;
-    console.warn(element.specialization);
     let allowedTypes = ["Class", "Folder", "Domain Package"];
     if (!allowedTypes.includes(element.specialization)) {
         return;
@@ -914,9 +903,7 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
         if (element.hasMetadata("currentPartitionKey") &amp;&amp; element.getMetadata("currentPartitionKey") === partitionKey) {
             return;
         }
-        console.warn();
     }
-    console.warn("Doing Check");
     if (element.specialization == "Class") {
         ensureCorrectPartitionKey(element, partitionKey, packageLoad);
     }
@@ -939,7 +926,6 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
         return result;
     }
     function updateDescendants(element, partitionKeyName, packageLoad) {
-        console.warn("checking :" + element.getName());
         let children = element.getChildren().filter(c =&gt; allowedTypes.includes(c.specialization));
         children.forEach(child =&gt; {
             var _a;
@@ -962,7 +948,6 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
     }
     function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {
         var _a;
-        console.warn("Updating class :" + element.getName());
         if (element.specialization !== "Class") {
             return;
         }
@@ -1358,7 +1343,6 @@ function getDefaultIdType() {
 function updatePartitionKeyAsPrimary(element, packageLoad = false) {
     if (!isCosmosDb(element))
         return;
-    console.warn(element.specialization);
     let allowedTypes = ["Class", "Folder", "Domain Package"];
     if (!allowedTypes.includes(element.specialization)) {
         return;
@@ -1372,9 +1356,7 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
         if (element.hasMetadata("currentPartitionKey") &amp;&amp; element.getMetadata("currentPartitionKey") === partitionKey) {
             return;
         }
-        console.warn();
     }
-    console.warn("Doing Check");
     if (element.specialization == "Class") {
         ensureCorrectPartitionKey(element, partitionKey, packageLoad);
     }
@@ -1397,7 +1379,6 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
         return result;
     }
     function updateDescendants(element, partitionKeyName, packageLoad) {
-        console.warn("checking :" + element.getName());
         let children = element.getChildren().filter(c =&gt; allowedTypes.includes(c.specialization));
         children.forEach(child =&gt; {
             var _a;
@@ -1420,7 +1401,6 @@ function updatePartitionKeyAsPrimary(element, packageLoad = false) {
     }
     function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {
         var _a;
-        console.warn("Updating class :" + element.getName());
         if (element.specialization !== "Class") {
             return;
         }
