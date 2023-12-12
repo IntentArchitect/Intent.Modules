@@ -81,6 +81,17 @@ class DomainHelper {
         return Object.values(primaryKeys);
     }
 
+    static isUserSuppliedPrimaryKey(pk: MacroApi.Context.IElementApi) : boolean{
+        if (pk == null) return false;
+        if (!pk.hasStereotype("Primary Key")) return false;
+        var pkStereotype = pk.getStereotype("Primary Key");
+        if (!pkStereotype.hasProperty("Data source"))
+        {
+            return false;
+        }
+        return pkStereotype.getProperty("Data source").value == "User supplied";
+    }
+
     static getPrimaryKeysMap(entity: MacroApi.Context.IElementApi): { [characterName: string]: IAttributeWithMapPath } {
         let keydict: { [characterName: string]: IAttributeWithMapPath } = Object.create(null);
         let keys = entity.getChildren("Attribute").filter(x => x.hasStereotype("Primary Key"));
@@ -160,7 +171,8 @@ class DomainHelper {
                 id: x.id,
                 mapPath: [x.id],
                 isCollection: x.typeReference.isCollection,
-                isNullable: x.typeReference.isNullable
+                isNullable: x.typeReference.isNullable,
+                element: x
             }));
         }
 

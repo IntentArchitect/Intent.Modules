@@ -28,7 +28,6 @@ namespace convertToAdvancedMapping {
 
             // Query Entity Mapping
             addFilterMapping(mapping, command, entity);
-            mapContract("Filter Mapping", command, [command.id], [target.id], mapping);
         } else if (command.isMapped()) {
             let action = createAssociation("Update Entity Action", command.id, target.id);
 
@@ -74,7 +73,7 @@ namespace convertToAdvancedMapping {
 
     function mapContract(mappingType: string, dto: MacroApi.Context.IElementApi, sourcePath: string[], targetPathIds: string[], mapping: MacroApi.Context.IElementToElementMappingApi): void {
         console.log("mapContract: " + dto.getName())
-        dto.getChildren("DTO-Field").filter(x => x.isMapped() && !(dto.specialization == "Command" && x.getMapping().getElement().hasStereotype("Primary Key"))).forEach(field => {
+        dto.getChildren("DTO-Field").filter(x => x.isMapped() && !fieldsToSkip(dto, x)).forEach(field => {
             if (field.typeReference.getType()?.specialization != "DTO" || field.typeReference.getIsCollection()) {
                 mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)))
             }
@@ -84,6 +83,12 @@ namespace convertToAdvancedMapping {
             field.clearMapping();
         })
         dto.clearMapping();
+    }
+
+    function fieldsToSkip(dto: MacroApi.Context.IElementApi, field:MacroApi.Context.IElementApi) : boolean{
+        return dto.specialization == "Command" && 
+            field.getMapping().getElement().hasStereotype("Primary Key") && 
+            (!field.getMapping().getElement().getStereotype("Primary Key").hasProperty("Data source") || field.getMapping().getElement().getStereotype("Primary Key").getProperty("Data source").value != "User supplied");
     }
 
 }
