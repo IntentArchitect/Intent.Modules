@@ -30,5 +30,20 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="a7a5e921-18b9-43b4-8078-b4ac4e5dae6f">
+      <name>Data source</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Default</defaultValue>
+      <valueOptions>
+        <option>Default</option>
+        <option>Auto-generated</option>
+        <option>User supplied</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return  true;</isRequiredFunction>
+    </property>
   </properties>
 </stereotypeDefinition>

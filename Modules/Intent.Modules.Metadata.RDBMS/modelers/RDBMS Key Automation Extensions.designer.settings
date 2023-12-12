@@ -922,4 +922,5 @@ execute();
   <associationExtensions />
   <mappingSettings />
   <mappableElementPackages />
+  <mappableElementPackageExtensions />
 </settings>

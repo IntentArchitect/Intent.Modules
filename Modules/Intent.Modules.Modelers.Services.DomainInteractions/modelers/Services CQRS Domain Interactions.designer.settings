@@ -3617,7 +3617,7 @@ var convertToAdvancedMapping;
     }
     convertToAdvancedMapping.execute = execute;
     function convertCommand(command) {
-        var _a, _b, _c, _d, _e;
+        var _a;
         if (!command.getMapping()) {
             console.warn(`Could not convert Command '${command.getName()}' without it mapping to an Entity.`);
             return;
@@ -3633,22 +3633,27 @@ var convertToAdvancedMapping;
         else if (command.getName().startsWith("Delete")) {
             let action = createAssociation("Delete Entity Action", command.id, entity.id);
             let mapping = action.createMapping(command.id, entity.id);
+            addFilterMapping(mapping, command, entity);
+            /*
             let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
             let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
             if (idField &amp;&amp; (idField.isMapped() || entityPk)) {
-                mapping.addMappedEnd("Filter Mapping", [idField.id], (_c = (_b = idField.getMapping()) === null || _b === void 0 ? void 0 : _b.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _c !== void 0 ? _c : [entityPk.id]);
+                mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x =&gt; x.id) ?? [entityPk.id]);
             }
+            */
             mapContract("Filter Mapping", command, [command.id], [target.id], mapping);
         }
         else if (command.isMapped()) {
             let action = createAssociation("Update Entity Action", command.id, target.id);
             // Query Entity Mapping
             let queryMapping = action.createMapping(command.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, command, entity);
+            /*
             let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
             let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
             if (idField &amp;&amp; (idField.isMapped() || entityPk)) {
-                queryMapping.addMappedEnd("Filter Mapping", [idField.id], (_e = (_d = idField.getMapping()) === null || _d === void 0 ? void 0 : _d.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _e !== void 0 ? _e : [entityPk.id]);
-            }
+                queryMapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x =&gt; x.id) ?? [entityPk.id]);
+            }*/
             // Update Entity Mapping
             let updateMapping = action.createMapping(command.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
             if (target.id != entity.id) {
@@ -3658,6 +3663,26 @@ var convertToAdvancedMapping;
         }
     }
     convertToAdvancedMapping.convertCommand = convertCommand;
+    function addFilterMapping(mapping, command, entity) {
+        var _a, _b;
+        let pkFields = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+        if (pkFields.length == 1) {
+            let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
+            let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
+            if (idField &amp;&amp; (idField.isMapped() || entityPk)) {
+                mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [entityPk.id]);
+            }
+        }
+        else {
+            pkFields.forEach(pk =&gt; {
+                var _a, _b;
+                let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey") &amp;&amp; x.getMapping().getElement().getName() == pk.getName()) || (x.getName() == pk.getName()));
+                if (idField) {
+                    mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [pk.id]);
+                }
+            });
+        }
+    }
     function convertQuery(query) {
         let entity = query.getMapping().getElement();
         let action = createAssociation("Query Entity Action", query.id, entity.id);
