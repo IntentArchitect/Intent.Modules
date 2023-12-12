@@ -26,14 +26,8 @@ namespace convertToAdvancedMapping {
             let action = createAssociation("Delete Entity Action", command.id, entity.id);
             let mapping = action.createMapping(command.id, entity.id);
 
+            // Query Entity Mapping
             addFilterMapping(mapping, command, entity);
-            /*
-            let idField = command.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
-            let entityPk = entity.getChildren("Attribute").find(x => x.hasStereotype("Primary Key"));
-            if (idField && (idField.isMapped() || entityPk)) {
-                mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? [entityPk.id]);
-            }
-            */
             mapContract("Filter Mapping", command, [command.id], [target.id], mapping);
         } else if (command.isMapped()) {
             let action = createAssociation("Update Entity Action", command.id, target.id);
@@ -41,12 +35,6 @@ namespace convertToAdvancedMapping {
             // Query Entity Mapping
             let queryMapping = action.createMapping(command.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7"); 
             addFilterMapping(queryMapping, command, entity);
-            /*
-            let idField = command.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
-            let entityPk = entity.getChildren("Attribute").find(x => x.hasStereotype("Primary Key"));
-            if (idField && (idField.isMapped() || entityPk)) {
-                queryMapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? [entityPk.id]);
-            }*/
             // Update Entity Mapping
             let updateMapping = action.createMapping(command.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a"); 
             if (target.id != entity.id) {

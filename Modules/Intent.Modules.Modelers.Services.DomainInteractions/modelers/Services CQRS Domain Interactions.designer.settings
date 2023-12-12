@@ -1150,22 +1150,14 @@ var convertToAdvancedMapping;
         else if (operation.getName().startsWith("Delete") &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Delete Entity Action", operation.id, entity.id);
             let mapping = action.createMapping(operation.id, entity.id);
-            let idField = operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id");
-            let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
-            if (idField &amp;&amp; entityPk) {
-                mapping.addMappedEnd("Filter Mapping", [idField.id], [entityPk.id]);
-            }
+            addFilterMapping(mapping, operation, entity);
             // UPDATE OPERATION:
         }
         else if (operation.getName().startsWith("Update") &amp;&amp; ((_b = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _b === void 0 ? void 0 : _b.getElement().id) == entity.id) {
             let action = createAssociation("Update Entity Action", operation.id, target.id);
             // Query Entity Mapping
             let queryMapping = action.createMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
-            let idField = operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id");
-            let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
-            if (idField &amp;&amp; entityPk) {
-                queryMapping.addMappedEnd("Filter Mapping", [idField.id], [entityPk.id]);
-            }
+            addFilterMapping(queryMapping, operation, entity);
             // Update Entity Mapping
             let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
             mapContract("Data Mapping", dto, [operation.id, dtoParam.id], [target.id], updateMapping);
@@ -1174,28 +1166,43 @@ var convertToAdvancedMapping;
         else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
             let queryMapping = action.createMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
-            let idField = operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id");
-            let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
-            if (idField &amp;&amp; entityPk) {
-                queryMapping.addMappedEnd("Filter Mapping", [idField.id], [entityPk.id]);
-            }
+            addFilterMapping(queryMapping, operation, entity);
             // FIND ALL OPERATION:
         }
         else if (operation.getName().startsWith("Find" + pluralize(entity.getName()))) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
             action.typeReference.setIsCollection(true);
             let queryMapping = action.createMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
-            let idField = operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id");
-            let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
-            if (idField &amp;&amp; entityPk) {
-                queryMapping.addMappedEnd("Filter Mapping", [idField.id], [entityPk.id]);
-            }
+            addFilterMapping(queryMapping, operation, entity);
         }
         else {
             console.warn(`Could not convert operation: ${operation.getName()} (For entity ${entity.getName()}. Has parameters: (${operation.getChildren("Parameter").map(x =&gt; x.getName())}))`);
         }
     }
     convertToAdvancedMapping.convertOperation = convertOperation;
+    function addFilterMapping(mapping, operation, entity) {
+        console.warn(operation.getName());
+        let pkFields = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+        if (pkFields.length == 1) {
+            let idField = operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id");
+            let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
+            if (idField &amp;&amp; entityPk) {
+                mapping.addMappedEnd("Filter Mapping", [idField.id], [entityPk.id]);
+            }
+        }
+        else {
+            pkFields.forEach(pk =&gt; {
+                let idField = operation.getChildren("Parameter").find(x =&gt; (x.getName().toLowerCase() == pk.getName().toLowerCase()));
+                if (idField) {
+                    console.warn("adding " + pk.getName());
+                    mapping.addMappedEnd("Filter Mapping", [idField.id], [pk.id]);
+                }
+                else {
+                    console.warn("No Mathc " + pk.getName());
+                }
+            });
+        }
+    }
     function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping, isNested = false) {
         console.log("mapContract: " + dto.getName());
         dto.getChildren("DTO-Field").filter(x =&gt; x.isMapped() &amp;&amp; (isNested || !x.getMapping().getElement().hasStereotype("Primary Key"))).forEach(field =&gt; {
