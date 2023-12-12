@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="746c2bbc-8c39-44e0-8b3f-0a5f02ad8e42" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>Folder Extension</name>
+  <display>Folder Extension: Folder</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <typeReference id="37280ecf-ce4b-4d3e-aa18-3d66c93bf59f">
+    <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Common.Types</typePackageName>
+    <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>4652d8dc-eea5-49cb-8c08-93ac1972962c</parentFolderId>
+  <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+  <packageName>Intent.Metadata.DocumentDB</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="35226a83-3965-4224-8aef-20c68a0c5180" display="Mode" value="Inherit" isActive="true" />
+        <property name="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0" display="Display Name" isActive="false" />
+        <property name="17223dbd-8df0-4700-8b81-02274ca3ed7f" display="Hint" isActive="false" />
+        <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" isActive="false" />
+        <property name="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e" display="Default Type Id" isActive="false" />
+        <property name="7a0c4185-1c08-4d3e-9185-14683d7a3bd0" display="Allow Collection" value="Inherit" isActive="false" />
+        <property name="e3dc90ec-4f5f-4f20-b271-e28a5094dc91" display="Allow Nullable" value="Inherit" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="312eab00-f6db-492e-bbb4-e41383c8d3d8" name="Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" value="" isActive="true" />
+        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="6e4fd377-e24b-445c-ac99-50b7d7aee01b" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>746c2bbc-8c39-44e0-8b3f-0a5f02ad8e42</parentFolderId>
+      <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+      <packageName>Intent.Metadata.DocumentDB</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="a012e00b-467b-470e-9dc8-cd16bb8db88e" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Changed</name>
+          <display>On Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="dc0c33de-2e3b-4339-95e5-4380bb052987">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>6e4fd377-e24b-445c-ac99-50b7d7aee01b</parentFolderId>
+          <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+          <packageName>Intent.Metadata.DocumentDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;function isAggregateRoot(element) {&#xD;&#xA;    return !element.getAssociations(&quot;Association&quot;)&#xD;&#xA;        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;function getDefaultIdType() {&#xD;&#xA;    var _a, _b;&#xD;&#xA;    const stringTypeId = &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot;;&#xD;&#xA;    const guidTypeId = &quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;;&#xD;&#xA;    const intTypeId = &quot;fb0a362d-e9e2-40de-b6ff-5ce8167cbe74&quot;;&#xD;&#xA;    const longTypeId = &quot;33013006-E404-48C2-AC46-24EF5A5774FD&quot;;&#xD;&#xA;    const documentDbSettingsId = &quot;d5581fe8-7385-4bb6-88dc-8940e20ec1d4&quot;;&#xD;&#xA;    switch ((_b = (_a = application.getSettings(documentDbSettingsId)) === null || _a === void 0 ? void 0 : _a.getField(&quot;Id Type&quot;)) === null || _b === void 0 ? void 0 : _b.value) {&#xD;&#xA;        default:&#xD;&#xA;            return stringTypeId;&#xD;&#xA;        case &quot;guid&quot;:&#xD;&#xA;            return guidTypeId;&#xD;&#xA;        case &quot;int&quot;:&#xD;&#xA;            return intTypeId;&#xD;&#xA;        case &quot;long&quot;:&#xD;&#xA;            return longTypeId;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;isAggregateRoot.ts&quot; /&gt;&#xD;&#xA;/// &lt;reference path=&quot;getDefaultIdType.ts&quot; /&gt;&#xD;&#xA;function updatePartitionKeyAsPrimary(element, packageLoad = false) {&#xD;&#xA;    if (!isCosmosDb(element))&#xD;&#xA;        return;&#xD;&#xA;    console.warn(element.specialization);&#xD;&#xA;    let allowedTypes = [&quot;Class&quot;, &quot;Folder&quot;, &quot;Domain Package&quot;];&#xD;&#xA;    if (!allowedTypes.includes(element.specialization)) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    const primaryKeyStereotypeId = &quot;64f6a994-4909-4a9d-a0a9-afc5adf2ef74&quot;;&#xD;&#xA;    const containerStereotypeId = &quot;ef9b1772-18e1-44ad-b606-66406221c805&quot;;&#xD;&#xA;    const multiTenancyStereotypeId = &quot;586eb05b-d647-4430-ac05-8d096fe3f79e&quot;;&#xD;&#xA;    let partitionKey = getPartitionKey(element);&#xD;&#xA;    if (!packageLoad &amp;&amp; [&quot;Folder&quot;, &quot;Domain Package&quot;].includes(element.specialization)) {&#xD;&#xA;        //prevent unnecessary package scans on every package change event.&#xD;&#xA;        if (element.hasMetadata(&quot;currentPartitionKey&quot;) &amp;&amp; element.getMetadata(&quot;currentPartitionKey&quot;) === partitionKey) {&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        console.warn();&#xD;&#xA;    }&#xD;&#xA;    console.warn(&quot;Doing Check&quot;);&#xD;&#xA;    if (element.specialization == &quot;Class&quot;) {&#xD;&#xA;        ensureCorrectPartitionKey(element, partitionKey, packageLoad);&#xD;&#xA;    }&#xD;&#xA;    else {&#xD;&#xA;        updateDescendants(element, partitionKey, packageLoad);&#xD;&#xA;    }&#xD;&#xA;    element.setMetadata(&quot;currentPartitionKey&quot;, partitionKey);&#xD;&#xA;    function getPartitionKey(element) {&#xD;&#xA;        var _a, _b;&#xD;&#xA;        let result = &quot;&quot;;&#xD;&#xA;        while (element) {&#xD;&#xA;            if (element.hasStereotype(containerStereotypeId) &amp;&amp; ((_a = element.getStereotype(containerStereotypeId).getProperty(&quot;Partition Key&quot;)) === null || _a === void 0 ? void 0 : _a.value)) {&#xD;&#xA;                let partitionKey = (_b = element.getStereotype(containerStereotypeId).getProperty(&quot;Partition Key&quot;)) === null || _b === void 0 ? void 0 : _b.value;&#xD;&#xA;                if (!partitionKey)&#xD;&#xA;                    partitionKey = &quot;&quot;;&#xD;&#xA;                return partitionKey;&#xD;&#xA;            }&#xD;&#xA;            element = element.getParent();&#xD;&#xA;        }&#xD;&#xA;        return result;&#xD;&#xA;    }&#xD;&#xA;    function updateDescendants(element, partitionKeyName, packageLoad) {&#xD;&#xA;        console.warn(&quot;checking :&quot; + element.getName());&#xD;&#xA;        let children = element.getChildren().filter(c =&gt; allowedTypes.includes(c.specialization));&#xD;&#xA;        children.forEach(child =&gt; {&#xD;&#xA;            var _a;&#xD;&#xA;            if (child.hasStereotype(containerStereotypeId)) {&#xD;&#xA;                if (packageLoad) {&#xD;&#xA;                    //On package load we check the entire tree not just the scope of the edited item&#xD;&#xA;                    partitionKeyName = (_a = child.getStereotype(containerStereotypeId).getProperty(&quot;Partition Key&quot;)) === null || _a === void 0 ? void 0 : _a.value;&#xD;&#xA;                }&#xD;&#xA;                else {&#xD;&#xA;                    return;&#xD;&#xA;                }&#xD;&#xA;            }&#xD;&#xA;            if (child.specialization == &quot;Class&quot;) {&#xD;&#xA;                ensureCorrectPartitionKey(child, partitionKeyName, packageLoad);&#xD;&#xA;            }&#xD;&#xA;            else {&#xD;&#xA;                updateDescendants(child, partitionKeyName, packageLoad);&#xD;&#xA;            }&#xD;&#xA;        });&#xD;&#xA;    }&#xD;&#xA;    function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {&#xD;&#xA;        var _a;&#xD;&#xA;        console.warn(&quot;Updating class :&quot; + element.getName());&#xD;&#xA;        if (element.specialization !== &quot;Class&quot;) {&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        if (!partitionKeyName) {&#xD;&#xA;            let toRemove = element.getChildren(&quot;Attribute&quot;)&#xD;&#xA;                .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.hasMetadata(&quot;partition-key&quot;));&#xD;&#xA;            if (toRemove != null) {&#xD;&#xA;                toRemove.delete();&#xD;&#xA;            }&#xD;&#xA;        }&#xD;&#xA;        else {&#xD;&#xA;            let toFix = element.getChildren(&quot;Attribute&quot;)&#xD;&#xA;                .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.hasMetadata(&quot;partition-key&quot;) &amp;&amp; x.getName().toLowerCase() != partitionKeyName.toLowerCase());&#xD;&#xA;            if (toFix != null) {&#xD;&#xA;                toFix.removeMetadata(&quot;partition-key&quot;);&#xD;&#xA;                toFix.removeStereotype(primaryKeyStereotypeId);&#xD;&#xA;            }&#xD;&#xA;            let toAdjust = element.getChildren(&quot;Attribute&quot;)&#xD;&#xA;                .find(x =&gt; x.getName().toLowerCase() == partitionKeyName.toLowerCase());&#xD;&#xA;            if (toAdjust != null) {&#xD;&#xA;                if (!toAdjust.hasStereotype(primaryKeyStereotypeId)) {&#xD;&#xA;                    toAdjust.addStereotype(primaryKeyStereotypeId);&#xD;&#xA;                }&#xD;&#xA;                let partitionPkStereotype = toAdjust.getStereotype(primaryKeyStereotypeId);&#xD;&#xA;                if (!element.hasStereotype(multiTenancyStereotypeId)) {&#xD;&#xA;                    (_a = partitionPkStereotype.getProperty(&quot;Data source&quot;)) === null || _a === void 0 ? void 0 : _a.setValue(&quot;User supplied&quot;);&#xD;&#xA;                }&#xD;&#xA;                toAdjust.setMetadata(&quot;partition-key&quot;, &quot;true&quot;);&#xD;&#xA;            }&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;    function isCosmosDb(element) {&#xD;&#xA;        var _a, _b, _c;&#xD;&#xA;        const documentStoreId = &quot;8b68020c-6652-484b-85e8-6c33e1d8031f&quot;;&#xD;&#xA;        const cosmosDbProvider = &quot;3e1a00f7-c6f1-4785-a544-bbcb17602b31&quot;;&#xD;&#xA;        let docDbStereotype = element.getPackage().getStereotype(documentStoreId);&#xD;&#xA;        let providers = lookupTypesOf(&quot;Document Db Provider&quot;).filter((elem, index) =&gt; lookupTypesOf(&quot;Document Db Provider&quot;).findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != &quot;Custom&quot;);&#xD;&#xA;        return ((!((_a = docDbStereotype.getProperty(&quot;Provider&quot;)) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == cosmosDbProvider) ||&#xD;&#xA;            ((_c = (_b = docDbStereotype.getProperty(&quot;Provider&quot;)) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == cosmosDbProvider);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;/**&#xD;&#xA; * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB&#xD;&#xA; *&#xD;&#xA; * Source code here:&#xD;&#xA; * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/folder-on-change/folder-on-change.ts&#xD;&#xA; */&#xD;&#xA;/// &lt;reference path=&quot;../common/updatePartitionKeyAsPrimary.ts&quot; /&gt;&#xD;&#xA;const package = element.getPackage();&#xD;&#xA;function execute() {&#xD;&#xA;    const documentStoreId = &quot;8b68020c-6652-484b-85e8-6c33e1d8031f&quot;;&#xD;&#xA;    if (!package.hasStereotype(documentStoreId)) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    updatePartitionKeyAsPrimary(element);&#xD;&#xA;}&#xD;&#xA;execute();&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

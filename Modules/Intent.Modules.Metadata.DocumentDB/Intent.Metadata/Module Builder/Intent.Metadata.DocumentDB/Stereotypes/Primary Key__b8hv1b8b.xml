@@ -21,7 +21,7 @@
   <packageName>Intent.Metadata.DocumentDB</packageName>
   <properties>
     <property id="ce12cf69-e97f-401b-9b08-7e2c62171d4e">
-      <hint>How does this data of this primary key get set? i.e. by the system perhaps as a database generated identifier or by the user.</hint>
+      <hint>Where does the data of this primary key come from i.e. captured by a user or system generated e.g. a database generated identifier.</hint>
       <name>Data source</name>
       <type>string</type>
       <controlType>select</controlType>

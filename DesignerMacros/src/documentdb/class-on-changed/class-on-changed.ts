@@ -6,6 +6,7 @@
  */
 /// <reference path="../common/updatePrimaryKey.ts" />
 /// <reference path="../common/updateForeignKeysForElement.ts" />
+/// <reference path="../common/updatePartitionKeyAsPrimary.ts" />
 
 function execute() {
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
@@ -15,6 +16,7 @@ function execute() {
 
     updatePrimaryKey(element);
     updateForeignKeysForElement(element);
+    updatePartitionKeyAsPrimary(element);
 }
 
 execute();

@@ -8,6 +8,158 @@
     <packageExtension type="Domain Package" typeId="1a824508-4623-45d9-accc-f572091ade5a">
       <requiredPackages />
       <macros>
+        <macro trigger="on-changed">
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isAggregateRoot(element) {
+    return !element.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function getDefaultIdType() {
+    var _a, _b;
+    const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+    const guidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
+    const intTypeId = "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74";
+    const longTypeId = "33013006-E404-48C2-AC46-24EF5A5774FD";
+    const documentDbSettingsId = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
+    switch ((_b = (_a = application.getSettings(documentDbSettingsId)) === null || _a === void 0 ? void 0 : _a.getField("Id Type")) === null || _b === void 0 ? void 0 : _b.value) {
+        default:
+            return stringTypeId;
+        case "guid":
+            return guidTypeId;
+        case "int":
+            return intTypeId;
+        case "long":
+            return longTypeId;
+    }
+}
+/// &lt;reference path="isAggregateRoot.ts" /&gt;
+/// &lt;reference path="getDefaultIdType.ts" /&gt;
+function updatePartitionKeyAsPrimary(element, packageLoad = false) {
+    if (!isCosmosDb(element))
+        return;
+    console.warn(element.specialization);
+    let allowedTypes = ["Class", "Folder", "Domain Package"];
+    if (!allowedTypes.includes(element.specialization)) {
+        return;
+    }
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    const containerStereotypeId = "ef9b1772-18e1-44ad-b606-66406221c805";
+    const multiTenancyStereotypeId = "586eb05b-d647-4430-ac05-8d096fe3f79e";
+    let partitionKey = getPartitionKey(element);
+    if (!packageLoad &amp;&amp; ["Folder", "Domain Package"].includes(element.specialization)) {
+        //prevent unnecessary package scans on every package change event.
+        if (element.hasMetadata("currentPartitionKey") &amp;&amp; element.getMetadata("currentPartitionKey") === partitionKey) {
+            return;
+        }
+        console.warn();
+    }
+    console.warn("Doing Check");
+    if (element.specialization == "Class") {
+        ensureCorrectPartitionKey(element, partitionKey, packageLoad);
+    }
+    else {
+        updateDescendants(element, partitionKey, packageLoad);
+    }
+    element.setMetadata("currentPartitionKey", partitionKey);
+    function getPartitionKey(element) {
+        var _a, _b;
+        let result = "";
+        while (element) {
+            if (element.hasStereotype(containerStereotypeId) &amp;&amp; ((_a = element.getStereotype(containerStereotypeId).getProperty("Partition Key")) === null || _a === void 0 ? void 0 : _a.value)) {
+                let partitionKey = (_b = element.getStereotype(containerStereotypeId).getProperty("Partition Key")) === null || _b === void 0 ? void 0 : _b.value;
+                if (!partitionKey)
+                    partitionKey = "";
+                return partitionKey;
+            }
+            element = element.getParent();
+        }
+        return result;
+    }
+    function updateDescendants(element, partitionKeyName, packageLoad) {
+        console.warn("checking :" + element.getName());
+        let children = element.getChildren().filter(c =&gt; allowedTypes.includes(c.specialization));
+        children.forEach(child =&gt; {
+            var _a;
+            if (child.hasStereotype(containerStereotypeId)) {
+                if (packageLoad) {
+                    //On package load we check the entire tree not just the scope of the edited item
+                    partitionKeyName = (_a = child.getStereotype(containerStereotypeId).getProperty("Partition Key")) === null || _a === void 0 ? void 0 : _a.value;
+                }
+                else {
+                    return;
+                }
+            }
+            if (child.specialization == "Class") {
+                ensureCorrectPartitionKey(child, partitionKeyName, packageLoad);
+            }
+            else {
+                updateDescendants(child, partitionKeyName, packageLoad);
+            }
+        });
+    }
+    function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {
+        var _a;
+        console.warn("Updating class :" + element.getName());
+        if (element.specialization !== "Class") {
+            return;
+        }
+        if (!partitionKeyName) {
+            let toRemove = element.getChildren("Attribute")
+                .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.hasMetadata("partition-key"));
+            if (toRemove != null) {
+                toRemove.delete();
+            }
+        }
+        else {
+            let toFix = element.getChildren("Attribute")
+                .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.hasMetadata("partition-key") &amp;&amp; x.getName().toLowerCase() != partitionKeyName.toLowerCase());
+            if (toFix != null) {
+                toFix.removeMetadata("partition-key");
+                toFix.removeStereotype(primaryKeyStereotypeId);
+            }
+            let toAdjust = element.getChildren("Attribute")
+                .find(x =&gt; x.getName().toLowerCase() == partitionKeyName.toLowerCase());
+            if (toAdjust != null) {
+                if (!toAdjust.hasStereotype(primaryKeyStereotypeId)) {
+                    toAdjust.addStereotype(primaryKeyStereotypeId);
+                }
+                let partitionPkStereotype = toAdjust.getStereotype(primaryKeyStereotypeId);
+                if (!element.hasStereotype(multiTenancyStereotypeId)) {
+                    (_a = partitionPkStereotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("User supplied");
+                }
+                toAdjust.setMetadata("partition-key", "true");
+            }
+        }
+    }
+    function isCosmosDb(element) {
+        var _a, _b, _c;
+        const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+        const cosmosDbProvider = "3e1a00f7-c6f1-4785-a544-bbcb17602b31";
+        let docDbStereotype = element.getPackage().getStereotype(documentStoreId);
+        let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
+        return ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == cosmosDbProvider) ||
+            ((_c = (_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == cosmosDbProvider);
+    }
+}
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/package-on-change/package-on-change.ts
+ */
+/// &lt;reference path="../common/updatePartitionKeyAsPrimary.ts" /&gt;
+const package = element.getPackage();
+function execute() {
+    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    if (!package.hasStereotype(documentStoreId)) {
+        return;
+    }
+    updatePartitionKeyAsPrimary(element);
+}
+execute();
+</script>
+        </macro>
         <macro trigger="on-loaded">
           <script>/**
  * Will run code against a package as needed based on the current (which is stored in metadata on the package) and a target version.
@@ -314,6 +466,115 @@ function removeOrphanedAssociations(element) {
         }
     }
 }
+/// &lt;reference path="isAggregateRoot.ts" /&gt;
+/// &lt;reference path="getDefaultIdType.ts" /&gt;
+function updatePartitionKeyAsPrimary(element, packageLoad = false) {
+    if (!isCosmosDb(element))
+        return;
+    console.warn(element.specialization);
+    let allowedTypes = ["Class", "Folder", "Domain Package"];
+    if (!allowedTypes.includes(element.specialization)) {
+        return;
+    }
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    const containerStereotypeId = "ef9b1772-18e1-44ad-b606-66406221c805";
+    const multiTenancyStereotypeId = "586eb05b-d647-4430-ac05-8d096fe3f79e";
+    let partitionKey = getPartitionKey(element);
+    if (!packageLoad &amp;&amp; ["Folder", "Domain Package"].includes(element.specialization)) {
+        //prevent unnecessary package scans on every package change event.
+        if (element.hasMetadata("currentPartitionKey") &amp;&amp; element.getMetadata("currentPartitionKey") === partitionKey) {
+            return;
+        }
+        console.warn();
+    }
+    console.warn("Doing Check");
+    if (element.specialization == "Class") {
+        ensureCorrectPartitionKey(element, partitionKey, packageLoad);
+    }
+    else {
+        updateDescendants(element, partitionKey, packageLoad);
+    }
+    element.setMetadata("currentPartitionKey", partitionKey);
+    function getPartitionKey(element) {
+        var _a, _b;
+        let result = "";
+        while (element) {
+            if (element.hasStereotype(containerStereotypeId) &amp;&amp; ((_a = element.getStereotype(containerStereotypeId).getProperty("Partition Key")) === null || _a === void 0 ? void 0 : _a.value)) {
+                let partitionKey = (_b = element.getStereotype(containerStereotypeId).getProperty("Partition Key")) === null || _b === void 0 ? void 0 : _b.value;
+                if (!partitionKey)
+                    partitionKey = "";
+                return partitionKey;
+            }
+            element = element.getParent();
+        }
+        return result;
+    }
+    function updateDescendants(element, partitionKeyName, packageLoad) {
+        console.warn("checking :" + element.getName());
+        let children = element.getChildren().filter(c =&gt; allowedTypes.includes(c.specialization));
+        children.forEach(child =&gt; {
+            var _a;
+            if (child.hasStereotype(containerStereotypeId)) {
+                if (packageLoad) {
+                    //On package load we check the entire tree not just the scope of the edited item
+                    partitionKeyName = (_a = child.getStereotype(containerStereotypeId).getProperty("Partition Key")) === null || _a === void 0 ? void 0 : _a.value;
+                }
+                else {
+                    return;
+                }
+            }
+            if (child.specialization == "Class") {
+                ensureCorrectPartitionKey(child, partitionKeyName, packageLoad);
+            }
+            else {
+                updateDescendants(child, partitionKeyName, packageLoad);
+            }
+        });
+    }
+    function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {
+        var _a;
+        console.warn("Updating class :" + element.getName());
+        if (element.specialization !== "Class") {
+            return;
+        }
+        if (!partitionKeyName) {
+            let toRemove = element.getChildren("Attribute")
+                .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.hasMetadata("partition-key"));
+            if (toRemove != null) {
+                toRemove.delete();
+            }
+        }
+        else {
+            let toFix = element.getChildren("Attribute")
+                .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.hasMetadata("partition-key") &amp;&amp; x.getName().toLowerCase() != partitionKeyName.toLowerCase());
+            if (toFix != null) {
+                toFix.removeMetadata("partition-key");
+                toFix.removeStereotype(primaryKeyStereotypeId);
+            }
+            let toAdjust = element.getChildren("Attribute")
+                .find(x =&gt; x.getName().toLowerCase() == partitionKeyName.toLowerCase());
+            if (toAdjust != null) {
+                if (!toAdjust.hasStereotype(primaryKeyStereotypeId)) {
+                    toAdjust.addStereotype(primaryKeyStereotypeId);
+                }
+                let partitionPkStereotype = toAdjust.getStereotype(primaryKeyStereotypeId);
+                if (!element.hasStereotype(multiTenancyStereotypeId)) {
+                    (_a = partitionPkStereotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("User supplied");
+                }
+                toAdjust.setMetadata("partition-key", "true");
+            }
+        }
+    }
+    function isCosmosDb(element) {
+        var _a, _b, _c;
+        const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+        const cosmosDbProvider = "3e1a00f7-c6f1-4785-a544-bbcb17602b31";
+        let docDbStereotype = element.getPackage().getStereotype(documentStoreId);
+        let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
+        return ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == cosmosDbProvider) ||
+            ((_c = (_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == cosmosDbProvider);
+    }
+}
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
  *
@@ -323,6 +584,7 @@ function removeOrphanedAssociations(element) {
 /// &lt;reference path="../../common/ensureIsAtTargetVersion.ts" /&gt;
 /// &lt;reference path="../common/updatePrimaryKey.ts" /&gt;
 /// &lt;reference path="../common/updateForeignKeysForElement.ts" /&gt;
+/// &lt;reference path="../common/updatePartitionKeyAsPrimary.ts" /&gt;
 const package = element.getPackage();
 function execute() {
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
@@ -341,6 +603,7 @@ function execute() {
         updatePrimaryKey(classElement);
         updateForeignKeysForElement(classElement);
     }
+    updatePartitionKeyAsPrimary(element, true);
 }
 execute();
 </script>
@@ -632,6 +895,115 @@ function removeOrphanedAssociations(element) {
         }
     }
 }
+/// &lt;reference path="isAggregateRoot.ts" /&gt;
+/// &lt;reference path="getDefaultIdType.ts" /&gt;
+function updatePartitionKeyAsPrimary(element, packageLoad = false) {
+    if (!isCosmosDb(element))
+        return;
+    console.warn(element.specialization);
+    let allowedTypes = ["Class", "Folder", "Domain Package"];
+    if (!allowedTypes.includes(element.specialization)) {
+        return;
+    }
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    const containerStereotypeId = "ef9b1772-18e1-44ad-b606-66406221c805";
+    const multiTenancyStereotypeId = "586eb05b-d647-4430-ac05-8d096fe3f79e";
+    let partitionKey = getPartitionKey(element);
+    if (!packageLoad &amp;&amp; ["Folder", "Domain Package"].includes(element.specialization)) {
+        //prevent unnecessary package scans on every package change event.
+        if (element.hasMetadata("currentPartitionKey") &amp;&amp; element.getMetadata("currentPartitionKey") === partitionKey) {
+            return;
+        }
+        console.warn();
+    }
+    console.warn("Doing Check");
+    if (element.specialization == "Class") {
+        ensureCorrectPartitionKey(element, partitionKey, packageLoad);
+    }
+    else {
+        updateDescendants(element, partitionKey, packageLoad);
+    }
+    element.setMetadata("currentPartitionKey", partitionKey);
+    function getPartitionKey(element) {
+        var _a, _b;
+        let result = "";
+        while (element) {
+            if (element.hasStereotype(containerStereotypeId) &amp;&amp; ((_a = element.getStereotype(containerStereotypeId).getProperty("Partition Key")) === null || _a === void 0 ? void 0 : _a.value)) {
+                let partitionKey = (_b = element.getStereotype(containerStereotypeId).getProperty("Partition Key")) === null || _b === void 0 ? void 0 : _b.value;
+                if (!partitionKey)
+                    partitionKey = "";
+                return partitionKey;
+            }
+            element = element.getParent();
+        }
+        return result;
+    }
+    function updateDescendants(element, partitionKeyName, packageLoad) {
+        console.warn("checking :" + element.getName());
+        let children = element.getChildren().filter(c =&gt; allowedTypes.includes(c.specialization));
+        children.forEach(child =&gt; {
+            var _a;
+            if (child.hasStereotype(containerStereotypeId)) {
+                if (packageLoad) {
+                    //On package load we check the entire tree not just the scope of the edited item
+                    partitionKeyName = (_a = child.getStereotype(containerStereotypeId).getProperty("Partition Key")) === null || _a === void 0 ? void 0 : _a.value;
+                }
+                else {
+                    return;
+                }
+            }
+            if (child.specialization == "Class") {
+                ensureCorrectPartitionKey(child, partitionKeyName, packageLoad);
+            }
+            else {
+                updateDescendants(child, partitionKeyName, packageLoad);
+            }
+        });
+    }
+    function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {
+        var _a;
+        console.warn("Updating class :" + element.getName());
+        if (element.specialization !== "Class") {
+            return;
+        }
+        if (!partitionKeyName) {
+            let toRemove = element.getChildren("Attribute")
+                .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.hasMetadata("partition-key"));
+            if (toRemove != null) {
+                toRemove.delete();
+            }
+        }
+        else {
+            let toFix = element.getChildren("Attribute")
+                .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.hasMetadata("partition-key") &amp;&amp; x.getName().toLowerCase() != partitionKeyName.toLowerCase());
+            if (toFix != null) {
+                toFix.removeMetadata("partition-key");
+                toFix.removeStereotype(primaryKeyStereotypeId);
+            }
+            let toAdjust = element.getChildren("Attribute")
+                .find(x =&gt; x.getName().toLowerCase() == partitionKeyName.toLowerCase());
+            if (toAdjust != null) {
+                if (!toAdjust.hasStereotype(primaryKeyStereotypeId)) {
+                    toAdjust.addStereotype(primaryKeyStereotypeId);
+                }
+                let partitionPkStereotype = toAdjust.getStereotype(primaryKeyStereotypeId);
+                if (!element.hasStereotype(multiTenancyStereotypeId)) {
+                    (_a = partitionPkStereotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("User supplied");
+                }
+                toAdjust.setMetadata("partition-key", "true");
+            }
+        }
+    }
+    function isCosmosDb(element) {
+        var _a, _b, _c;
+        const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+        const cosmosDbProvider = "3e1a00f7-c6f1-4785-a544-bbcb17602b31";
+        let docDbStereotype = element.getPackage().getStereotype(documentStoreId);
+        let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
+        return ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == cosmosDbProvider) ||
+            ((_c = (_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == cosmosDbProvider);
+    }
+}
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
  *
@@ -640,6 +1012,7 @@ function removeOrphanedAssociations(element) {
  */
 /// &lt;reference path="../common/updatePrimaryKey.ts" /&gt;
 /// &lt;reference path="../common/updateForeignKeysForElement.ts" /&gt;
+/// &lt;reference path="../common/updatePartitionKeyAsPrimary.ts" /&gt;
 function execute() {
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
     if (!element.getPackage().hasStereotype(documentStoreId)) {
@@ -647,6 +1020,7 @@ function execute() {
     }
     updatePrimaryKey(element);
     updateForeignKeysForElement(element);
+    updatePartitionKeyAsPrimary(element);
 }
 execute();
 </script>
@@ -945,6 +1319,163 @@ function execute() {
     }
     updatePrimaryKey(element);
     updateForeignKeysForElement(element);
+}
+execute();
+</script>
+        </macro>
+      </macros>
+    </elementExtension>
+    <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <mappingSettings />
+      <macros>
+        <macro trigger="on-changed">
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isAggregateRoot(element) {
+    return !element.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function getDefaultIdType() {
+    var _a, _b;
+    const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+    const guidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
+    const intTypeId = "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74";
+    const longTypeId = "33013006-E404-48C2-AC46-24EF5A5774FD";
+    const documentDbSettingsId = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
+    switch ((_b = (_a = application.getSettings(documentDbSettingsId)) === null || _a === void 0 ? void 0 : _a.getField("Id Type")) === null || _b === void 0 ? void 0 : _b.value) {
+        default:
+            return stringTypeId;
+        case "guid":
+            return guidTypeId;
+        case "int":
+            return intTypeId;
+        case "long":
+            return longTypeId;
+    }
+}
+/// &lt;reference path="isAggregateRoot.ts" /&gt;
+/// &lt;reference path="getDefaultIdType.ts" /&gt;
+function updatePartitionKeyAsPrimary(element, packageLoad = false) {
+    if (!isCosmosDb(element))
+        return;
+    console.warn(element.specialization);
+    let allowedTypes = ["Class", "Folder", "Domain Package"];
+    if (!allowedTypes.includes(element.specialization)) {
+        return;
+    }
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    const containerStereotypeId = "ef9b1772-18e1-44ad-b606-66406221c805";
+    const multiTenancyStereotypeId = "586eb05b-d647-4430-ac05-8d096fe3f79e";
+    let partitionKey = getPartitionKey(element);
+    if (!packageLoad &amp;&amp; ["Folder", "Domain Package"].includes(element.specialization)) {
+        //prevent unnecessary package scans on every package change event.
+        if (element.hasMetadata("currentPartitionKey") &amp;&amp; element.getMetadata("currentPartitionKey") === partitionKey) {
+            return;
+        }
+        console.warn();
+    }
+    console.warn("Doing Check");
+    if (element.specialization == "Class") {
+        ensureCorrectPartitionKey(element, partitionKey, packageLoad);
+    }
+    else {
+        updateDescendants(element, partitionKey, packageLoad);
+    }
+    element.setMetadata("currentPartitionKey", partitionKey);
+    function getPartitionKey(element) {
+        var _a, _b;
+        let result = "";
+        while (element) {
+            if (element.hasStereotype(containerStereotypeId) &amp;&amp; ((_a = element.getStereotype(containerStereotypeId).getProperty("Partition Key")) === null || _a === void 0 ? void 0 : _a.value)) {
+                let partitionKey = (_b = element.getStereotype(containerStereotypeId).getProperty("Partition Key")) === null || _b === void 0 ? void 0 : _b.value;
+                if (!partitionKey)
+                    partitionKey = "";
+                return partitionKey;
+            }
+            element = element.getParent();
+        }
+        return result;
+    }
+    function updateDescendants(element, partitionKeyName, packageLoad) {
+        console.warn("checking :" + element.getName());
+        let children = element.getChildren().filter(c =&gt; allowedTypes.includes(c.specialization));
+        children.forEach(child =&gt; {
+            var _a;
+            if (child.hasStereotype(containerStereotypeId)) {
+                if (packageLoad) {
+                    //On package load we check the entire tree not just the scope of the edited item
+                    partitionKeyName = (_a = child.getStereotype(containerStereotypeId).getProperty("Partition Key")) === null || _a === void 0 ? void 0 : _a.value;
+                }
+                else {
+                    return;
+                }
+            }
+            if (child.specialization == "Class") {
+                ensureCorrectPartitionKey(child, partitionKeyName, packageLoad);
+            }
+            else {
+                updateDescendants(child, partitionKeyName, packageLoad);
+            }
+        });
+    }
+    function ensureCorrectPartitionKey(element, partitionKeyName, packageLoad) {
+        var _a;
+        console.warn("Updating class :" + element.getName());
+        if (element.specialization !== "Class") {
+            return;
+        }
+        if (!partitionKeyName) {
+            let toRemove = element.getChildren("Attribute")
+                .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.hasMetadata("partition-key"));
+            if (toRemove != null) {
+                toRemove.delete();
+            }
+        }
+        else {
+            let toFix = element.getChildren("Attribute")
+                .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.hasMetadata("partition-key") &amp;&amp; x.getName().toLowerCase() != partitionKeyName.toLowerCase());
+            if (toFix != null) {
+                toFix.removeMetadata("partition-key");
+                toFix.removeStereotype(primaryKeyStereotypeId);
+            }
+            let toAdjust = element.getChildren("Attribute")
+                .find(x =&gt; x.getName().toLowerCase() == partitionKeyName.toLowerCase());
+            if (toAdjust != null) {
+                if (!toAdjust.hasStereotype(primaryKeyStereotypeId)) {
+                    toAdjust.addStereotype(primaryKeyStereotypeId);
+                }
+                let partitionPkStereotype = toAdjust.getStereotype(primaryKeyStereotypeId);
+                if (!element.hasStereotype(multiTenancyStereotypeId)) {
+                    (_a = partitionPkStereotype.getProperty("Data source")) === null || _a === void 0 ? void 0 : _a.setValue("User supplied");
+                }
+                toAdjust.setMetadata("partition-key", "true");
+            }
+        }
+    }
+    function isCosmosDb(element) {
+        var _a, _b, _c;
+        const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+        const cosmosDbProvider = "3e1a00f7-c6f1-4785-a544-bbcb17602b31";
+        let docDbStereotype = element.getPackage().getStereotype(documentStoreId);
+        let providers = lookupTypesOf("Document Db Provider").filter((elem, index) =&gt; lookupTypesOf("Document Db Provider").findIndex(obj =&gt; obj.id == elem.id) === index &amp;&amp; elem.getName() != "Custom");
+        return ((!((_a = docDbStereotype.getProperty("Provider")) === null || _a === void 0 ? void 0 : _a.getValue()) &amp;&amp; providers.length == 1 &amp;&amp; providers[0].id == cosmosDbProvider) ||
+            ((_c = (_b = docDbStereotype.getProperty("Provider")) === null || _b === void 0 ? void 0 : _b.getValue()) === null || _c === void 0 ? void 0 : _c.id) == cosmosDbProvider);
+    }
+}
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/folder-on-change/folder-on-change.ts
+ */
+/// &lt;reference path="../common/updatePartitionKeyAsPrimary.ts" /&gt;
+const package = element.getPackage();
+function execute() {
+    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    if (!package.hasStereotype(documentStoreId)) {
+        return;
+    }
+    updatePartitionKeyAsPrimary(element);
 }
 execute();
 </script>

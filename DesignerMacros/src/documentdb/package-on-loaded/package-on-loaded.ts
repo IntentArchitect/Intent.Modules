@@ -8,6 +8,7 @@
 /// <reference path="../../common/ensureIsAtTargetVersion.ts" />
 /// <reference path="../common/updatePrimaryKey.ts" />
 /// <reference path="../common/updateForeignKeysForElement.ts" />
+/// <reference path="../common/updatePartitionKeyAsPrimary.ts" />
 
 const package = element.getPackage();
 
@@ -32,6 +33,7 @@ function execute() {
         updatePrimaryKey(classElement);
         updateForeignKeysForElement(classElement);
     }
+    updatePartitionKeyAsPrimary(element, true);
 }
 
 execute();
