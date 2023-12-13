@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Intent.Configuration;
 using Intent.Engine;
+using Intent.Exceptions;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.OutputTargets.Folders.Api;
@@ -29,7 +30,7 @@ namespace Intent.Modules.OutputTargets.Folders.Registrations
                 registry.RegisterOutputTarget(rootFolder.ToOutputTargetConfig());
             }
             var folders = _metadataManager.FolderStructure(application).GetFolderModels();
-            foreach (var folder in folders)
+            foreach (var folder in folders.DetectDuplicates())
             {
                 registry.RegisterOutputTarget(folder.ToOutputTargetConfig());
             }
@@ -101,5 +102,23 @@ namespace Intent.Modules.OutputTargets.Folders.Registrations
         public IEnumerable<IOutputTargetRole> Roles => _model.Roles;
         public IEnumerable<IOutputTargetTemplate> Templates => _model.TemplateOutputs;
         public IDictionary<string, object> Metadata { get; }
+    }
+    
+    internal static class OutputTargetRegistrationExtensions
+    {
+        public static IEnumerable<FolderExtensionModel> DetectDuplicates(this IEnumerable<FolderExtensionModel> sequence)
+        {
+            var folderNameSet = new HashSet<string>();
+
+            foreach (var folderModel in sequence)
+            {
+                if (!folderNameSet.Add($"{folderModel.Folder?.Id ?? string.Empty}-{folderModel.Name}"))
+                {
+                    throw new ElementException(folderModel.InternalElement, $"Duplicate Folder found at same location.");
+                }
+
+                yield return folderModel;
+            }
+        }
     }
 }

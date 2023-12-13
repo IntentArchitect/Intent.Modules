@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Configuration;
+using Intent.Exceptions;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
@@ -83,6 +84,21 @@ namespace Intent.Modules.OutputTargets.Folders.Api
         public static TemplateOutputModel AsTemplateOutputModel(this ICanBeReferencedType type)
         {
             return type.IsTemplateOutputModel() ? new TemplateOutputModel((IElement)type) : null;
+        }
+        
+        [IntentManaged(Mode.Ignore)]
+        internal static IEnumerable<TemplateOutputModel> DetectDuplicates(this IEnumerable<TemplateOutputModel> sequence)
+        {
+            var templateNamesSet = new HashSet<string>();
+
+            foreach (var templateOutputModel in sequence)
+            {
+                if (!templateNamesSet.Add(templateOutputModel.Name))
+                {
+                    throw new ElementException(templateOutputModel.InternalElement, $"Duplicate Template Output found at same location.");
+                }
+                yield return templateOutputModel;
+            }
         }
     }
 }
