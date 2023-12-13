@@ -53,7 +53,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</parentFolderId>

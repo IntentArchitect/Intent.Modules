@@ -51,7 +51,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>dcc3e76d-d7c3-4674-8fe6-1e774e577908</parentFolderId>

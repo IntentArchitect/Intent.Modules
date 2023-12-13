@@ -12,16 +12,16 @@
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#3e69085c-fa2f-44bd-93eb-41075fd472f8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/CallDomainServiceOperationModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>CallDomainServiceOperationModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/CallServiceOperationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CallServiceOperationModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#3e69085c-fa2f-44bd-93eb-41075fd472f8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/CallDomainServiceOperationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>CallDomainServiceOperationModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/CallServiceOperationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CallServiceOperationModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

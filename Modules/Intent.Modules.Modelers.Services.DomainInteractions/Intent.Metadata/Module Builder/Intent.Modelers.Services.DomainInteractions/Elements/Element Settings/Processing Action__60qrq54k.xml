@@ -31,7 +31,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="As Child" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAehJREFUeF7t3L1NA0EQhuE55DrYJijAEiVQAh0QEVl3XRGQQwWk/qGQRYewRGCB5G93dr6ZcT723nOv5GS0k+QHEpig6RyWBAQjSMAEBAXA8WYFll15lI18HHfHN/BMVOMwYFnKg1R5FpG79cknmZbDfJipFIDDXg24nbebvexfROT+wu+/y408RajxasAVrcyl/vXyItTYFfAH13WNGoDfjl5rVAP0WqM2oLsahwB6qnEkoIsahwOy12gFkLZGU4CMNVoEpKrRLCBLjdYBzddIAWi5RiZAkzXSAVqrkRXQTI3UgBZq9AA4tEY3gKNq9AaoXqNLQM0aPQOq1OgesHeNUQC71RgKsEeNEQGb1hgWcFWstX6eltMtsFuEbaj+txuDHExjNgFB5QRMQFAAHM8CAcBW22IR/4Wb7iuGAmxV3e/wowA2rS4UYI/qogB2q849YO/qPAOqVOcSULM6b4Dq1bkBHFWdB8Ch1VEDWqiOFdBMdXSA1qpjAjRZHQWg5eqsA5qvziwgS3UWAamqMwXIWJ0VQNrqhgOyVzcS0EV1QwA9VacN6K46NUCv1bUEfM27s4D9knU0b28DAc/jeX9gI8hoXwPtxkTDuvS8CQhWkIAJCAqA41lgAoIC4HgWmICgADieBYKAX0uidGAd9hNhAAAAAElFTkSuQmCC&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
@@ -53,7 +53,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>405a2857-b911-431f-8142-719a0e9f15f3</parentFolderId>
@@ -63,8 +63,8 @@
       <metadata />
       <childElements>
         <childElement id="03d3e5f0-3ba2-434a-8c43-40182f31d460" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
-          <name>Map Update</name>
-          <display>Map Update: Process Action Mapping</display>
+          <name>Map Action</name>
+          <display>Map Action: Process Action Mapping</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="48ad3e13-6cd3-4ed0-871e-8f41f29def66">

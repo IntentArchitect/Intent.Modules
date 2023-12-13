@@ -20,6 +20,20 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
+    <property id="91a221f2-eb37-40cf-8cbf-9648853c3686">
+      <name>Represents</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Data</defaultValue>
+      <valueOptions>
+        <option>Data</option>
+        <option>Invokable</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
     <property id="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41">
       <hint>Filters whether this setting can be applied to the underlying element.</hint>
       <name>Filter Function</name>
@@ -73,6 +87,20 @@
       <isActiveFunction />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
+    <property id="6da92064-59ef-4361-8ad6-c73b54c18cc2">
+      <name>Traversable Mode</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Traverse Specific Types</defaultValue>
+      <valueOptions>
+        <option>Not Traversable</option>
+        <option>Traverse Specific Types</option>
+        <option>Traverse All Types</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
     <property id="3f279b0b-8772-4dd5-bf54-1fde024420e7">
       <name>Traversable Types</name>
       <type>string</type>
@@ -121,9 +149,13 @@ const getAllPackageIds = (mappablePackage) =&gt; {
 }
 
 return getAllPackageIds(mappablePackage);</lookupInternalTargetPropertyId>
+      <isActiveFunction>// Traversal Mode == Traverse Specific Types
+return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traverse Specific Types";</isActiveFunction>
+      <isRequiredFunction>// Traversal Mode == Traverse Specific Types
+return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traverse Specific Types";</isRequiredFunction>
     </property>
     <property id="a6ec44d7-f928-4221-bed6-8589176a94c7">
-      <name>Is Traversable Function</name>
+      <name>Get Traversable Type Function</name>
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
@@ -131,7 +163,8 @@ return getAllPackageIds(mappablePackage);</lookupInternalTargetPropertyId>
       <valueOptions />
       <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
-      <isActiveFunction />
+      <isActiveFunction>// Traversal Mode == Traverse Specific Types
+return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() != "Not Traversable";</isActiveFunction>
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3">

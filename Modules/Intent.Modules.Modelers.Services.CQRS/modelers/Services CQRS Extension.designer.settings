@@ -411,7 +411,7 @@ vertical-align: center`</style>
                 <position x="${x}" y="${y + 48}" />
               </drawText>
               <drawSvgResource>
-                <path>process-on-vm-line.svg</path>
+                <path>command.svg</path>
                 <size width="${w}" height="40" />
                 <position x="${x}" y="${y + 6}" />
               </drawSvgResource>
@@ -440,7 +440,7 @@ vertical-align: center`</style>
                 <position x="${x}" y="${y + 48}" />
               </drawText>
               <drawSvgResource>
-                <path>sql-query.svg</path>
+                <path>query.svg</path>
                 <size width="${w}" height="40" />
                 <position x="${x}" y="${y + 6}" />
               </drawSvgResource>
@@ -580,17 +580,21 @@ function setIfEmpty(stereotype, propertyName, defaultValue) {
         <mappableElement id="5a3018a8-38bc-450f-bf82-631e2d9475b3" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <useChildSettingsFrom>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</useChildSettingsFrom>
+          <represents>data</represents>
           <childSettings />
         </mappableElement>
         <mappableElement id="0556825b-177b-4093-b13a-5dfabb13c9b6" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <useChildSettingsFrom>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</useChildSettingsFrom>
+          <represents>data</represents>
           <childSettings />
         </mappableElement>
       </mappableElementSettings>

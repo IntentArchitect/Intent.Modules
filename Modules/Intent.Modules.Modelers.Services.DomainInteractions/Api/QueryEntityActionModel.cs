@@ -86,10 +86,6 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
         public QueryEntityActionTargetEndModel(IAssociationEnd associationEnd, QueryEntityActionModel association) : base(associationEnd, association)
         {
         }
-        public IList<ProcessingActionModel> ProcessingActions => InternalElement.ChildElements
-            .GetElementsOfType(ProcessingActionModel.SpecializationTypeId)
-            .Select(x => new ProcessingActionModel(x))
-            .ToList();
 
 
         public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;

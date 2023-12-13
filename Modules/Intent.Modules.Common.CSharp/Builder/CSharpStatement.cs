@@ -24,6 +24,12 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
         return this;
     }
 
+    public CSharpStatement SeparatedFromNext()
+    {
+        AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
+        return this;
+    }
+
     public CSharpStatement Indent()
     {
         RelativeIndentation += "    ";

@@ -76,19 +76,19 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="let updateType = element.getParent().typeReference.getType();&#xD;&#xA;return updateType.getParent(&quot;Class&quot;)?.id ?? updateType.id;" isActive="true" />
+            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="if (element.getParent().specializationId == &quot;&quot;) {&#xD;&#xA;    let updateType = element.getParent().typeReference.getType();&#xD;&#xA;    return updateType.getParent(&quot;Class&quot;)?.id ?? updateType.id;&#xD;&#xA;}&#xD;&#xA;return element.getParent(&quot;Command&quot;)?.id ?? element.getParent(&quot;Operation&quot;).id&#xD;&#xA;" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="2b1c5384-d443-4372-8ebe-800938c84271" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05">
+        <childElement id="c5c1cbfb-2ef9-4638-86a0-35ba7bfdcb65" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05">
           <name>Import</name>
-          <display>[import] Update In Process Mappables</display>
+          <display>[import] Application Target Mappables</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="fa3edf5c-332e-4295-bff4-aa83f0754dce">
-            <typeId>f338413b-58e2-47ce-939d-86c954cd191c</typeId>
+          <typeReference id="42ea21b5-9bd2-4a1d-8da7-8ca50193417a">
+            <typeId>93c752a0-161d-4ef5-9c88-09995f59c263</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -150,7 +150,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;98041049-0f91-4c21-99dc-50cd18fd1dae&quot;,&quot;7767267b-2e01-42cd-8a03-103d296a6306&quot;,&quot;eb1478af-4b69-4d33-826f-3f195ebbed79&quot;,&quot;ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8&quot;]" isActive="true" />
+            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;98041049-0f91-4c21-99dc-50cd18fd1dae&quot;,&quot;7767267b-2e01-42cd-8a03-103d296a6306&quot;,&quot;eb1478af-4b69-4d33-826f-3f195ebbed79&quot;,&quot;ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8&quot;,&quot;daf3a2fa-0b35-4549-8b65-26b3a74dc7e0&quot;,&quot;cfe9c4d4-9c26-4f11-a585-f1e3863fb658&quot;]" isActive="true" />
             <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Targets" value="[&quot;84e9dcc5-8765-48ef-b2a6-39744498a4af&quot;,&quot;e2ccdf82-ec44-4eb3-b32d-513ac3833d3b&quot;,&quot;82927c4e-1b48-4ab8-90ad-7c4d0b02067e&quot;,&quot;8acf7530-30fd-49fc-b082-75e0060c249e&quot;,&quot;95db9e8b-5db5-4a46-815c-53948a16fe7c&quot;]" isActive="true" />
             <property name="6ee5b3e3-628e-4996-87b5-08649e101887" display="Represents" value="Data" isActive="true" />
             <property name="ace10cc2-ece7-458a-bafb-2fc185f99335" display="Line Color" isActive="true" />

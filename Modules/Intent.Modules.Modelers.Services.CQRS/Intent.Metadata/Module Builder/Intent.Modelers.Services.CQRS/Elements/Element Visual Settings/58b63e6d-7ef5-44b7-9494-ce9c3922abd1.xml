@@ -94,7 +94,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="sql-query.svg" isActive="true" />
+            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="query.svg" isActive="true" />
             <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" value="" isActive="true" />
           </properties>
         </stereotype>

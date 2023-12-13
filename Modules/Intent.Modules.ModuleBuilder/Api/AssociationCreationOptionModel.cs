@@ -72,8 +72,8 @@ namespace Intent.ModuleBuilder.Api
             {
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
                 Type = ElementType.Association,
-                SpecializationTypeId = Type.Id,
-                SpecializationType = this.Type.Name,
+                SpecializationTypeId = Type.IsAssociationSettingsModel() ? Type.AsAssociationSettingsModel().TargetEnd.Id : Type.Id,
+                SpecializationType = Type.IsAssociationSettingsModel() ? Type.AsAssociationSettingsModel().TargetEnd.Name : Type.Name,
                 Text = this.Name,
                 Shortcut = this.GetOptionSettings().Shortcut(),
                 MacShortcut = this.GetOptionSettings().ShortcutMacOS(),

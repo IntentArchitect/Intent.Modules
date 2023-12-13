@@ -153,11 +153,11 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Attribute</type>
-        <type order="1">Class Constructor</type>
-        <type order="2">Operation</type>
-        <type order="3">Association</type>
-        <type order="4">Generalization</type>
+        <type order="0">Generalization Target End</type>
+        <type order="1">Attribute</type>
+        <type order="2">Class Constructor</type>
+        <type order="3">Operation</type>
+        <type order="4">Association Target End</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -191,17 +191,17 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
           <text>New Association</text>
           <shortcut>ctrl + shift + c</shortcut>
           <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
-          <specializationType>Association</specializationType>
-          <specializationTypeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</specializationTypeId>
+          <specializationType>Association Target End</specializationType>
+          <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
           <defaultName>NewAssociation</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
-        <option type="association">
+        <option order="0" type="association">
           <text>New Inheritance</text>
           <shortcut>ctrl + shift + i</shortcut>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
-          <specializationType>Generalization</specializationType>
-          <specializationTypeId>5de35973-3ac7-4e65-b48c-385605aec561</specializationTypeId>
+          <specializationType>Generalization Target End</specializationType>
+          <specializationTypeId>4686cc1d-b4d8-4b99-b45b-f77bd5496946</specializationTypeId>
           <defaultName>NewGeneralization</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
@@ -643,15 +643,15 @@ if (namingConvention == "pascal-case") {
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Comment Association</type>
+        <type order="0">Comment Target End</type>
       </typeOrder>
       <creationOptions>
         <option type="association">
           <text>New Association</text>
           <shortcut>ctrl + shift + c</shortcut>
           <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
-          <specializationType>Comment Association</specializationType>
-          <specializationTypeId>5264c135-e856-468d-8bd7-154b75842256</specializationTypeId>
+          <specializationType>Comment Target End</specializationType>
+          <specializationTypeId>b7edce45-ccf0-47ed-b79f-86d5145c9f62</specializationTypeId>
           <defaultName>NewCommentAssociation</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
@@ -1082,14 +1082,18 @@ return null;</lineDashArray>
         <mapping id="df69461f-6d06-4424-a4e9-ababff4369eb" name="Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
+          <represents>data</represents>
           <childSettings>
             <childSetting id="6279b832-87aa-45ec-9f57-c2f8b6a73b47" name="Operation Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>true</canBeModified>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
           </childSettings>
@@ -1097,14 +1101,18 @@ return null;</lineDashArray>
         <mapping id="5eaea40a-cd82-4029-9a1d-f48a74faeaed" name="Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
+          <represents>data</represents>
           <childSettings>
             <childSetting id="2d77b87e-862d-412b-bfb0-cbd1f1f2f719" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>true</canBeModified>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
           </childSettings>
@@ -1114,23 +1122,40 @@ return null;</lineDashArray>
         <mapping id="d47d5dc6-bf39-42bd-8df4-806f2e3d4afb" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
+          <represents>data</represents>
           <childSettings>
             <childSetting id="d3c49802-55d0-4188-8f2e-1b3a8a414a0b" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
               <filterFunction>return !element.hasStereotype("Primary Key")</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
             <childSetting id="0d551f4a-96fb-48d8-b3ed-31617ba3bb02" name="Association" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
               <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <childSettings />
+            </childSetting>
+            <childSetting id="f28d940f-346a-44ae-8413-ea0c59d4a3e8" name="Inheritance" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>d47d5dc6-bf39-42bd-8df4-806f2e3d4afb</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
           </childSettings>

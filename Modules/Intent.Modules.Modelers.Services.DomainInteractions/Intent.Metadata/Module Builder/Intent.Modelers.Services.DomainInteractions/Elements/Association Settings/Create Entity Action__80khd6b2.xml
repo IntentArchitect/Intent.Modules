@@ -88,7 +88,7 @@
           <name>[context menu]</name>
           <display>[context menu]</display>
           <isAbstract>false</isAbstract>
-          <sort-children>by-type-then-manually</sort-children>
+          <sort-children>manually</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>328f54e5-7bad-4b5f-90ca-03ce3105d016</parentFolderId>
@@ -98,6 +98,7 @@
           <metadata />
           <childElements>
             <childElement id="49a49386-7aee-451e-a3fe-888b31a1765a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+              <comment>Should not be used like this.</comment>
               <name>Add Processing Action</name>
               <display>Add Processing Action: Processing Action</display>
               <isAbstract>false</isAbstract>
@@ -130,7 +131,7 @@
                     <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                     <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                     <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-                    <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
+                    <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" value="return false;" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
