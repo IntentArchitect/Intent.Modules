@@ -2242,6 +2242,9 @@ var cqrsCrud;
             commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
             commandManager.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
         }
+        if (owningAggregate != null) {
+            addAggregatePkToCommandOrQuery(owningAggregate, commandManager.getElement());
+        }
         onMapCommand(commandManager.getElement(), true, true);
         commandManager.collapse();
         return commandManager.getElement();
@@ -2270,6 +2273,9 @@ var cqrsCrud;
         }
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(query, primaryKeys);
+        if (owningAggregate != null) {
+            addAggregatePkToCommandOrQuery(owningAggregate, query);
+        }
         onMapQuery(query);
         query.collapse();
         return query;
@@ -2296,6 +2302,7 @@ var cqrsCrud;
                     field.setMapping(fk.mapPath);
                 }
             });
+            addAggregatePkToCommandOrQuery(owningAggregate, query);
         }
         query.collapse();
         return query;
@@ -2317,6 +2324,9 @@ var cqrsCrud;
         command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(command.getElement(), primaryKeys);
+        if (owningAggregate != null) {
+            addAggregatePkToCommandOrQuery(owningAggregate, command.getElement());
+        }
         onMapCommand(command.getElement(), true);
         command.collapse();
         return command.getElement();
@@ -2348,6 +2358,9 @@ var cqrsCrud;
         }
         commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter")
             .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
+        if (owningAggregate != null) {
+            addAggregatePkToCommandOrQuery(owningAggregate, commandElement);
+        }
         onMapCommand(commandElement, true);
         commandManager.collapse();
         return commandManager.getElement();
@@ -2375,6 +2388,9 @@ var cqrsCrud;
         }
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(command, primaryKeys);
+        if (owningAggregate != null) {
+            addAggregatePkToCommandOrQuery(owningAggregate, command);
+        }
         onMapCommand(command, true);
         command.collapse();
         return command;
@@ -2417,6 +2433,21 @@ var cqrsCrud;
         return dto;
     }
     cqrsCrud.createCqrsResultTypeDto = createCqrsResultTypeDto;
+    function addAggregatePkToCommandOrQuery(owningAggregate, commandOrQuery) {
+        if (owningAggregate != null) {
+            var aggPks = DomainHelper.getPrimaryKeys(owningAggregate);
+            aggPks.forEach(x =&gt; {
+                if (x.name.toLowerCase() == "id") {
+                    x.name = `${owningAggregate.getName()}Id`;
+                }
+                x.id = null;
+                x.mapPath = null;
+                x.isCollection = false;
+                x.isNullable = false;
+            });
+            ServicesHelper.addDtoFieldsFromDomain(commandOrQuery, aggPks);
+        }
+    }
     function getMandatoryAssociationsWithMapPath(entity) {
         return traverseInheritanceHierarchy(entity, [], []);
         function traverseInheritanceHierarchy(entity, results, generalizationStack) {
@@ -3439,6 +3470,9 @@ var cqrsCrud;
             commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
             commandManager.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
         }
+        if (owningAggregate != null) {
+            addAggregatePkToCommandOrQuery(owningAggregate, commandManager.getElement());
+        }
         onMapCommand(commandManager.getElement(), true, true);
         commandManager.collapse();
         return commandManager.getElement();
@@ -3467,6 +3501,9 @@ var cqrsCrud;
         }
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(query, primaryKeys);
+        if (owningAggregate != null) {
+            addAggregatePkToCommandOrQuery(owningAggregate, query);
+        }
         onMapQuery(query);
         query.collapse();
         return query;
@@ -3493,6 +3530,7 @@ var cqrsCrud;
                     field.setMapping(fk.mapPath);
                 }
             });
+            addAggregatePkToCommandOrQuery(owningAggregate, query);
         }
         query.collapse();
         return query;
@@ -3514,6 +3552,9 @@ var cqrsCrud;
         command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(command.getElement(), primaryKeys);
+        if (owningAggregate != null) {
+            addAggregatePkToCommandOrQuery(owningAggregate, command.getElement());
+        }
         onMapCommand(command.getElement(), true);
         command.collapse();
         return command.getElement();
@@ -3545,6 +3586,9 @@ var cqrsCrud;
         }
         commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter")
             .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
+        if (owningAggregate != null) {
+            addAggregatePkToCommandOrQuery(owningAggregate, commandElement);
+        }
         onMapCommand(commandElement, true);
         commandManager.collapse();
         return commandManager.getElement();
@@ -3572,6 +3616,9 @@ var cqrsCrud;
         }
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(command, primaryKeys);
+        if (owningAggregate != null) {
+            addAggregatePkToCommandOrQuery(owningAggregate, command);
+        }
         onMapCommand(command, true);
         command.collapse();
         return command;
@@ -3614,6 +3661,21 @@ var cqrsCrud;
         return dto;
     }
     cqrsCrud.createCqrsResultTypeDto = createCqrsResultTypeDto;
+    function addAggregatePkToCommandOrQuery(owningAggregate, commandOrQuery) {
+        if (owningAggregate != null) {
+            var aggPks = DomainHelper.getPrimaryKeys(owningAggregate);
+            aggPks.forEach(x =&gt; {
+                if (x.name.toLowerCase() == "id") {
+                    x.name = `${owningAggregate.getName()}Id`;
+                }
+                x.id = null;
+                x.mapPath = null;
+                x.isCollection = false;
+                x.isNullable = false;
+            });
+            ServicesHelper.addDtoFieldsFromDomain(commandOrQuery, aggPks);
+        }
+    }
     function getMandatoryAssociationsWithMapPath(entity) {
         return traverseInheritanceHierarchy(entity, [], []);
         function traverseInheritanceHierarchy(entity, results, generalizationStack) {
@@ -3710,11 +3772,17 @@ var convertToAdvancedMapping;
             }
         }
         else {
+            console.warn(command.getName());
             pkFields.forEach(pk =&gt; {
                 var _a, _b;
+                console.warn("Pk:" + pk.getName());
                 let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey") &amp;&amp; x.getMapping().getElement().getName() == pk.getName()) || (x.getName() == pk.getName()));
                 if (idField) {
+                    console.warn("match");
                     mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [pk.id]);
+                }
+                else {
+                    console.warn("no match");
                 }
             });
         }

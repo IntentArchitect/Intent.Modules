@@ -79,7 +79,7 @@ function updatePartitionKeyAsPrimary(element: IElementApi, packageLoad : boolean
         else
         {
             let toFix = element.getChildren("Attribute")
-            .find(x => x.hasStereotype(primaryKeyStereotypeId) && x.hasMetadata("partition-key") && x.getName().toLowerCase() != partitionKeyName.toLowerCase());    
+                    .find(x => x.hasStereotype(primaryKeyStereotypeId) && x.hasMetadata("partition-key") && x.getName().toLowerCase() != partitionKeyName.toLowerCase());    
             if (toFix != null) {
                 toFix.removeMetadata("partition-key");
                 toFix.removeStereotype(primaryKeyStereotypeId);
@@ -88,16 +88,24 @@ function updatePartitionKeyAsPrimary(element: IElementApi, packageLoad : boolean
             let toAdjust = element.getChildren("Attribute")
             .find(x => x.getName().toLowerCase() == partitionKeyName.toLowerCase());    
             if (toAdjust != null) {
-                if (!toAdjust.hasStereotype(primaryKeyStereotypeId)) {
-                    toAdjust.addStereotype(primaryKeyStereotypeId);
-                }        
-                let partitionPkStereotype = toAdjust.getStereotype(primaryKeyStereotypeId);      
                 if (element.hasStereotype(multiTenancyStereotypeId)){
-                    partitionPkStereotype.getProperty("Data source")?.setValue("Default");
+                    if (toAdjust.hasStereotype(primaryKeyStereotypeId)) {
+                        toAdjust.removeStereotype(primaryKeyStereotypeId);                        
+                    }       
+                    toAdjust.setMetadata("partition-key", "true");                    
+                    //This is to stop this field being put into DTOs
+                    toAdjust.setMetadata("set-by-infrastructure", "true");                    
                 } else {
+                    if (!toAdjust.hasStereotype(primaryKeyStereotypeId)) {
+                        toAdjust.addStereotype(primaryKeyStereotypeId);
+                    }        
+                    let partitionPkStereotype = toAdjust.getStereotype(primaryKeyStereotypeId);      
                     partitionPkStereotype.getProperty("Data source")?.setValue("User supplied");
+                    toAdjust.setMetadata("partition-key", "true");
+                    if (toAdjust.hasMetadata("set-by-infrastructure")){
+                        toAdjust.removeMetadata("set-by-infrastructure");
+                    }
                 }
-                toAdjust.setMetadata("partition-key", "true");
             }    
         }
     }

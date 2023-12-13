@@ -96,7 +96,11 @@ namespace cqrsCrud {
             commandManager.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
         }
 
+        if (owningAggregate != null){
+            addAggregatePkToCommandOrQuery(owningAggregate, commandManager.getElement());
+        }
         onMapCommand(commandManager.getElement(), true, true);
+
         commandManager.collapse();
         return commandManager.getElement();
     }
@@ -129,6 +133,10 @@ namespace cqrsCrud {
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(query, primaryKeys);
 
+        if (owningAggregate != null){
+            addAggregatePkToCommandOrQuery(owningAggregate, query);
+        }
+
         onMapQuery(query);
         query.collapse();
         return query;
@@ -158,6 +166,7 @@ namespace cqrsCrud {
                     field.setMapping(fk.mapPath);
                 }
             })
+            addAggregatePkToCommandOrQuery(owningAggregate, query);
         }
 
         query.collapse();
@@ -184,6 +193,10 @@ namespace cqrsCrud {
 
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(command.getElement(), primaryKeys);
+
+        if (owningAggregate != null){
+            addAggregatePkToCommandOrQuery(owningAggregate, command.getElement());
+        }
 
         onMapCommand(command.getElement(), true);
         command.collapse();
@@ -221,6 +234,10 @@ namespace cqrsCrud {
         commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter")
             .filter(x => x.typeId != null && lookup(x.typeId).specialization !== "Domain Service"));
 
+        if (owningAggregate != null){
+            addAggregatePkToCommandOrQuery(owningAggregate, commandElement);
+        }
+    
         onMapCommand(commandElement, true);
         commandManager.collapse();
         return commandManager.getElement();
@@ -253,6 +270,9 @@ namespace cqrsCrud {
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(command, primaryKeys);
 
+        if (owningAggregate != null){
+            addAggregatePkToCommandOrQuery(owningAggregate, command);
+        }
         onMapCommand(command, true);
         command.collapse();
         return command;
@@ -300,6 +320,23 @@ namespace cqrsCrud {
         dto.collapse();
         return dto;
     }
+
+    function addAggregatePkToCommandOrQuery(owningAggregate: MacroApi.Context.IElementApi, commandOrQuery: MacroApi.Context.IElementApi) : void{
+        if (owningAggregate != null){
+            var aggPks = DomainHelper.getPrimaryKeys(owningAggregate);
+            aggPks.forEach(x => {
+                if (x.name.toLowerCase() == "id" ) 
+                {
+                    x.name = `${owningAggregate.getName()}Id`
+                } 
+                x.id = null;
+                x.mapPath = null;
+                x.isCollection = false;
+                x.isNullable = false;
+                });
+                ServicesHelper.addDtoFieldsFromDomain(commandOrQuery,aggPks);
+        }
+    }    
 
     function getMandatoryAssociationsWithMapPath(entity: MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
         return traverseInheritanceHierarchy(entity, [], []);

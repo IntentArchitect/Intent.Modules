@@ -53,6 +53,7 @@ namespace convertToAdvancedMapping {
             }
         } else {
             pkFields.forEach(pk => {
+                console.warn("Pk:" + pk.getName());
                 let idField = command.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("PrimaryKey") && x.getMapping().getElement().getName() == pk.getName()) || (x.getName() == pk.getName()));
                 if (idField) {
                     mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? [pk.id]);
