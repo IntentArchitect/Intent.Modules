@@ -38,7 +38,11 @@ function updatePartitionKeyAsPrimary(element: IElementApi, packageLoad : boolean
                 if (!partitionKey) partitionKey = "";
                 return partitionKey;
             }    
-            element = element.getParent();
+            if (element.getParent){            
+                element = element.getParent();
+            }else{
+                element = null;
+            }
         }
         return result;
     }
