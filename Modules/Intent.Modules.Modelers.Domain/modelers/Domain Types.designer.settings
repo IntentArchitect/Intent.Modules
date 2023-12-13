@@ -916,11 +916,13 @@ function getCardinality(end) {
 }</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
         <defaultNameFunction>  if (typeReference.isTypeFound()) {
-      var s = typeReference.getType().getName();
+      var associatedTypeName = typeReference.getType().getName();
       if (typeReference.getIsCollection()) {
-          return pluralize(s)
+          return pluralize(associatedTypeName)
+      } else if (typeReference.getTypeId() === getOtherEnd().typeReference.getTypeId()) {
+          return `${associatedTypeName}Reference`;
       } else {
-          return s;
+          return associatedTypeName;
       }
   }
   return null;</defaultNameFunction>
@@ -1151,4 +1153,5 @@ return null;</lineDashArray>
     </mappingSetting>
   </mappingSettings>
   <mappableElementPackages />
+  <mappableElementPackageExtensions />
 </settings>

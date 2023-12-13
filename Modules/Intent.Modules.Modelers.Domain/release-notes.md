@@ -1,4 +1,8 @@
-﻿### Version 3.4.6
+﻿### Version 3.5.0
+
+- Fixed: Making a self-referencing association will no longer default to the Class name but suffix with `Reference`. Example: `Node` -> `Node` will have an association of `NodeReference`.
+
+### Version 3.4.6
 
 - Update : Ability to map from association source ends for `Constructor` and `Operation` mappings.
 
