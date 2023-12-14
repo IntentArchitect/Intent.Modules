@@ -2,7 +2,7 @@
 <package>
   <id>Intent.OutputTargets.Folders</id>
   <version>3.4.0-pre.0</version>
-  <supportedClientVersions>[4.1.0-a, 5.0.0-a)</supportedClientVersions>
+  <supportedClientVersions>[4.1.0, 5.0.0-a)</supportedClientVersions>
   <summary>Generic Folder-based project layout designer</summary>
   <description>Generic Folder-based project layout designer</description>
   <authors>Intent Architect</authors>
