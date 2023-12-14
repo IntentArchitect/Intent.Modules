@@ -4400,7 +4400,7 @@ vertical-align: center`</style>
                 <position x="${x}" y="${y + 48}" />
               </drawText>
               <drawSvgResource>
-                <path>dynamodb-table.svg</path>
+                <path>domain-class.svg</path>
                 <size width="${w}" height="40" />
                 <position x="${x}" y="${y + 6}" />
               </drawSvgResource>
@@ -10373,7 +10373,7 @@ return ((!element.hasStereotype('Primary Key') || (element.hasStereotype('Primar
         </mappableElement>
         <mappableElement id="f11b799f-24a9-4a8c-ae3b-576c8571c771" name="Create Entity Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016">
           <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
+          <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>true</isTraversable>
           <getTraversableTypeFunction>return element.typeReference.getType().getParent("Class")?.id ?? element.typeReference.getType().id;</getTraversableTypeFunction>
           <traversableTypes>

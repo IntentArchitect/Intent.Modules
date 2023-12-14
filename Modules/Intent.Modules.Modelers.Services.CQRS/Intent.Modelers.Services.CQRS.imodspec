@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.CQRS</id>
-  <version>4.1.0-beta.3</version>
+  <version>4.1.0-beta.4</version>
   <supportedClientVersions>[4.1.0-beta.21, 5.0.0-a)</supportedClientVersions>
   <summary>Support for describing Commands and Queries in the Services designer.</summary>
   <description>Support for describing Commands and Queries in the Services designer.</description>
