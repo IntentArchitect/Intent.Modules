@@ -2,7 +2,7 @@
 <applicationTemplate>
   <id>Intent.ApplicationTemplate.ModuleBuilder</id>
   <version>3.3.47</version>
-  <supportedClientVersions>[3.3.0-pre.0, 5.0.0)</supportedClientVersions>
+  <supportedClientVersions>[4.1.0, 5.0.0-a)</supportedClientVersions>
   <displayName>Intent Module Builder</displayName>
   <shortDescription>Create an Intent Module to automate patterns &amp; code-structures specific to your project and technologies.</shortDescription>
   <authors>Intent Architect</authors>
