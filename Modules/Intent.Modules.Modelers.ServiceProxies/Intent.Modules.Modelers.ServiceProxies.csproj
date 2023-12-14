@@ -24,6 +24,7 @@
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.0.1" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.4.2" />
+    <PackageReference Include="Intent.Modules.Modelers.Types.ServiceProxies" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modules.Modelers.Types.ServiceProxies.csproj" />
+<!--    <ProjectReference Include="..\Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modules.Modelers.Types.ServiceProxies.csproj" />-->
   </ItemGroup>
 
 </Project>
