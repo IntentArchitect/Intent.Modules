@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>ModuleBuilders</id>
   <version>1.0.1</version>
@@ -273,7 +273,7 @@
   <factoryExtensions></factoryExtensions>
   <moduleSettings></moduleSettings>
   <dependencies>
-    <dependency id="Intent.Common" version="3.4.3" />
+    <dependency id="Intent.Common" version="3.5.0" />
     <dependency id="Intent.Common.CSharp" version="3.3.25" />
     <dependency id="Intent.Common.Java" version="3.4.3" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
