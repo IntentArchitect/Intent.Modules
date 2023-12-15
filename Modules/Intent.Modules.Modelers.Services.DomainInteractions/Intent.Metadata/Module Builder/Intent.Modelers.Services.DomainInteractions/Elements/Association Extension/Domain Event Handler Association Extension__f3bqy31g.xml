@@ -92,12 +92,90 @@
           <stereotypes />
           <metadata />
           <childElements>
-            <childElement id="29850577-f040-4f5e-8b18-e79dc3dc382d" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+            <childElement id="64112a16-9337-469b-a784-126e9c774d21" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+              <name>Query Entity</name>
+              <display>Query Entity: Query Entity Action</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="4d2ffd59-54cd-4956-839e-938e3525129c">
+                <typeId>47ab5888-a258-4bec-a9fc-a83de69eb79d</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <isRequired>true</isRequired>
+                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
+                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>23b4e18a-a654-490f-aeb7-c40d5bcb9bf8</parentFolderId>
+              <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+              <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+                  <comment />
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + q" isActive="true" />
+                    <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                    <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                    <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                    <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+            <childElement id="3d3f5de5-88e7-48d2-95ac-811b373edcfd" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+              <name>Call Service Operation</name>
+              <display>Call Service Operation: Call Service Operation</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="cce2d332-5e0d-45e9-b702-fcdccae130a7">
+                <typeId>3e69085c-fa2f-44bd-93eb-41075fd472f8</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <isRequired>true</isRequired>
+                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
+                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>23b4e18a-a654-490f-aeb7-c40d5bcb9bf8</parentFolderId>
+              <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+              <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+                  <comment />
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + o" isActive="true" />
+                    <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                    <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                    <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                    <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+            <childElement id="b0a4aa7d-0674-418c-bafd-1388f0f0f098" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
               <name>Create Entity</name>
               <display>Create Entity: Create Entity Action</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="51e11293-2ca9-4774-b488-b7654d0b34cf">
+              <typeReference id="75c82478-eebf-448c-8e90-8ecc79e99ebb">
                 <typeId>7a3f0474-3cf8-4249-baac-8c07c49465e0</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -131,12 +209,12 @@
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="f82b6de4-702a-4cd6-bd75-86892ee8625b" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+            <childElement id="2623ad91-b0aa-478c-8f9c-86a4c3f2d349" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
               <name>Update Entity</name>
               <display>Update Entity: Update Entity Action</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="f9d68f3b-bff2-4024-a46e-0022df5a15b0">
+              <typeReference id="850f40cf-eefc-4488-a14d-e882e40bfac8">
                 <typeId>9ea0382a-4617-412a-a8c8-af987bbce226</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -170,12 +248,12 @@
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="3e946c3a-96a3-4002-9f7f-ad8d3225c19a" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+            <childElement id="cd0f3f34-c6e1-4595-a595-01bf28f6419d" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
               <name>Delete Entity</name>
               <display>Delete Entity: Delete Entity Action</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="8182fdc5-808d-42c2-935d-7c46ad0dcb80">
+              <typeReference id="baf98f7b-0813-4424-9229-25eb1d510c42">
                 <typeId>bfc823fb-60ab-451d-ba62-12671fe7e28e</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -203,6 +281,46 @@
                     <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
                     <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
                     <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+            <childElement id="96699deb-76c1-4810-b22c-939513462b66" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+              <name>Add Processing Action</name>
+              <display>Add Processing Action: Processing Action</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="51f4a660-e7be-4293-89ee-22aab044367d">
+                <typeId>405a2857-b911-431f-8142-719a0e9f15f3</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <isRequired>true</isRequired>
+                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
+                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>23b4e18a-a654-490f-aeb7-c40d5bcb9bf8</parentFolderId>
+              <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+              <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+                  <comment />
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + p" isActive="true" />
+                    <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Action" isActive="true" />
+                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                    <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>

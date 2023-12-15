@@ -33,7 +33,7 @@ async function execute(element: IElementApi) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, folder));
     }
 
-    const diagramElement = createElement("Diagram", folderName, folder.id)
+    const diagramElement = folder.getChildren("Diagram").find(x => x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id)
     diagramElement.loadDiagram();
     const diagram = getCurrentDiagram();
     diagram.layoutVisuals(folder, null, true);

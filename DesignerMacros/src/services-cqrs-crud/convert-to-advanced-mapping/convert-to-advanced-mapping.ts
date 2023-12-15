@@ -11,6 +11,10 @@ namespace convertToAdvancedMapping {
     }
 
     export function convertCommand(command: IElementApi): void {
+        if (!command) {
+            console.warn(`Could not convert null Command.`);
+            return;
+        }
         if (!command.getMapping()) {
             console.warn(`Could not convert Command '${command.getName()}' without it mapping to an Entity.`);
             return;
@@ -28,6 +32,7 @@ namespace convertToAdvancedMapping {
 
             // Query Entity Mapping
             addFilterMapping(mapping, command, entity);
+            command.clearMapping();
         } else if (command.isMapped()) {
             let action = createAssociation("Update Entity Action", command.id, target.id);
 
@@ -43,26 +48,35 @@ namespace convertToAdvancedMapping {
         }
     }
 
-    function addFilterMapping( mapping: MacroApi.Context.IElementToElementMappingApi, command: IElementApi, entity: IElementApi) : void{
-        let pkFields = entity.getChildren("Attribute").filter(x => x.hasStereotype("Primary Key"));
+    function addFilterMapping(mapping: MacroApi.Context.IElementToElementMappingApi, command: IElementApi, entity: IElementApi) : void{
+        let pkFields = DomainHelper.getPrimaryKeys(entity);
         if (pkFields.length == 1) {
             let idField = command.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
             let entityPk = entity.getChildren("Attribute").find(x => x.hasStereotype("Primary Key"));
             if (idField && (idField.isMapped() || entityPk)) {
                 mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? [entityPk.id]);
+                idField.clearMapping();
             }
         } else {
             pkFields.forEach(pk => {
-                console.warn("Pk:" + pk.getName());
-                let idField = command.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("PrimaryKey") && x.getMapping().getElement().getName() == pk.getName()) || (x.getName() == pk.getName()));
+                let idField = command.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("PrimaryKey") && x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
                 if (idField) {
                     mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? [pk.id]);
+                    idField.clearMapping();
                 }    
             });
         }
     }
 
     export function convertQuery(query: IElementApi) {
+        if (!query) {
+            console.warn(`Could not convert null Query.`);
+            return;
+        }
+        if (!query.getMapping()) {
+            console.warn(`Could not convert Query '${query.getName()}' without it mapping to an Entity.`);
+            return;
+        }
         let entity = query.getMapping().getElement();
         let action = createAssociation("Query Entity Action", query.id, entity.id);
         if (query.typeReference.getIsCollection()) {

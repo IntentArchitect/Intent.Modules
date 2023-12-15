@@ -1,4 +1,5 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
+/// <reference path="../../common/domainHelper.ts" />
 namespace convertToAdvancedMapping {
 
     export function execute(): void {
@@ -65,24 +66,20 @@ namespace convertToAdvancedMapping {
         }
     }
 
-    function addFilterMapping( mapping: MacroApi.Context.IElementToElementMappingApi, operation: IElementApi, entity: IElementApi) : void{
-        console.warn(operation.getName());
-        let pkFields = entity.getChildren("Attribute").filter(x => x.hasStereotype("Primary Key"));
+    function addFilterMapping(mapping: MacroApi.Context.IElementToElementMappingApi, operation: IElementApi, entity: IElementApi) : void{
+        let pkFields = DomainHelper.getPrimaryKeys(entity);
         if (pkFields.length == 1) {
             let idField = operation.getChildren("Parameter").find(x => x.getName().toLowerCase() == "id");
-            let entityPk = entity.getChildren("Attribute").find(x => x.hasStereotype("Primary Key"));
-            if (idField && entityPk) {
-                mapping.addMappedEnd("Filter Mapping", [idField.id], [entityPk.id]);
+            let pk = pkFields[0];
+            if (idField && pk) {
+                mapping.addMappedEnd("Filter Mapping", [idField.id], pk.mapPath ?? [pk.id]);
             }
 
         } else {
             pkFields.forEach(pk => {
-                let idField = operation.getChildren("Parameter").find(x => (x.getName().toLowerCase() == pk.getName().toLowerCase()));
+                let idField = operation.getChildren("Parameter").find(x => (x.getName().toLowerCase() == pk.name.toLowerCase()));
                 if (idField) {
-                    console.warn("adding " + pk.getName());
-                    mapping.addMappedEnd("Filter Mapping", [idField.id], [pk.id]);
-                }else{
-                    console.warn("No Mathc " + pk.getName());
+                    mapping.addMappedEnd("Filter Mapping", [idField.id], pk.mapPath ?? [pk.id]);
                 }
             });
         }
