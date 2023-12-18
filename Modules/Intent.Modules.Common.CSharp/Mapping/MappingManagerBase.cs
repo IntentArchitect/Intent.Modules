@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
+using Intent.Exceptions;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
@@ -42,11 +43,17 @@ public class MappingModel
         MappingManagerBase manager,
         int level = 1)
     {
+        var matchedMapping = mappings.Where(x => x.TargetElement == model).ToList();
+        if (matchedMapping.Count() > 1)
+        {
+            throw new Exception($"Illegal Mapping: Multiple mappings were found for element {model.Name} [{model.Id}]");
+        }
+
         MappingType = mappingType;
         MappingTypeId = mappingTypeId;
         _manager = manager;
         Model = model;
-        Mapping = mappings.SingleOrDefault(x => x.TargetElement == model);
+        Mapping = matchedMapping.SingleOrDefault();
         CodeContext = context;
         Children = mappings.Where(x => x.TargetPath.Count > level)
             .GroupBy(x => x.TargetPath.Skip(level).First(), x => x)
