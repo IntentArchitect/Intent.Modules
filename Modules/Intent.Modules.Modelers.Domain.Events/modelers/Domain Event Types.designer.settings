@@ -41,7 +41,7 @@
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0">Property</type>
-        <type order="1">Domain Event Association</type>
+        <type order="1">Domain Event Association Target End</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -57,8 +57,8 @@
           <text>Add Handler</text>
           <shortcut>ctrl + shift + c</shortcut>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-          <specializationType>Domain Event Association</specializationType>
-          <specializationTypeId>8014b71d-627b-4349-b6d7-5011dfa1bb09</specializationTypeId>
+          <specializationType>Domain Event Association Target End</specializationType>
+          <specializationTypeId>fe0d0f78-fb7e-4685-ab2d-bae88054a78e</specializationTypeId>
           <defaultName>NewDomainEventAssociation</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
@@ -303,8 +303,8 @@ if (namingConvention == "pascal-case") {
           <text>Publish Domain Event</text>
           <shortcut>ctrl + shift + c</shortcut>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-          <specializationType>Domain Event Origin Association</specializationType>
-          <specializationTypeId>4c0cc50b-8a9d-43cd-b731-9f354f69f3c9</specializationTypeId>
+          <specializationType>Domain Event Origin Association Target End</specializationType>
+          <specializationTypeId>17046427-14e2-4081-8463-ef16c0fda399</specializationTypeId>
           <defaultName>NewDomainEventOriginAssociation</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
@@ -312,7 +312,7 @@ if (namingConvention == "pascal-case") {
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type>Domain Event Origin Association</type>
+        <type>Domain Event Origin Association Target End</type>
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -361,8 +361,8 @@ if (namingConvention == "pascal-case") {
           <text>Publish Domain Event</text>
           <shortcut>ctrl + shift + c</shortcut>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-          <specializationType>Domain Event Origin Association</specializationType>
-          <specializationTypeId>4c0cc50b-8a9d-43cd-b731-9f354f69f3c9</specializationTypeId>
+          <specializationType>Domain Event Origin Association Target End</specializationType>
+          <specializationTypeId>17046427-14e2-4081-8463-ef16c0fda399</specializationTypeId>
           <defaultName>NewDomainEventOriginAssociation</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
@@ -370,7 +370,7 @@ if (namingConvention == "pascal-case") {
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type>Domain Event Origin Association</type>
+        <type>Domain Event Origin Association Target End</type>
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -514,18 +514,22 @@ if (namingConvention == "pascal-case") {
         <mapping id="93d177aa-ae15-4dd5-bac1-97aadff81ad8" name="Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
+          <represents>data</represents>
           <childSettings>
             <childSetting id="f7905d89-1299-479e-a74d-1f23183c5dfd" name="Property" type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
               <traversableTypes>
                 <mappingId>dbae92b7-c273-44f1-be84-e37dc8197519</mappingId>
                 <mappingId>24586df9-d22f-4ec3-aede-43f3e3b31343</mappingId>
                 <mappingId>455faaff-9b74-406b-a6d8-9a72d6b78419</mappingId>
               </traversableTypes>
               <canBeModified>true</canBeModified>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
           </childSettings>
@@ -533,16 +537,20 @@ if (namingConvention == "pascal-case") {
         <mapping id="dbae92b7-c273-44f1-be84-e37dc8197519" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
+          <represents>data</represents>
           <childSettings>
             <childSetting id="23424a09-1428-426d-bc66-3cf2bf30f896" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
               <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; 
     element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
             <childSetting id="6a855c61-ef23-40e9-9ace-cd8cf1ce02aa" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
@@ -551,9 +559,11 @@ if (namingConvention == "pascal-case") {
     element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>dbae92b7-c273-44f1-be84-e37dc8197519</useChildSettingsFrom>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
             <childSetting id="94b0ac33-1aa8-44ba-a1fe-578a051e4a77" name="Invoke Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
@@ -561,8 +571,10 @@ if (namingConvention == "pascal-case") {
               <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
           </childSettings>
@@ -570,17 +582,21 @@ if (namingConvention == "pascal-case") {
         <mapping id="24586df9-d22f-4ec3-aede-43f3e3b31343" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <useChildSettingsFrom>dbae92b7-c273-44f1-be84-e37dc8197519</useChildSettingsFrom>
+          <represents>data</represents>
           <childSettings />
         </mapping>
         <mapping id="455faaff-9b74-406b-a6d8-9a72d6b78419" name="Data Contract" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <useChildSettingsFrom>dbae92b7-c273-44f1-be84-e37dc8197519</useChildSettingsFrom>
+          <represents>data</represents>
           <childSettings />
         </mapping>
       </sourceMappings>
@@ -588,16 +604,20 @@ if (namingConvention == "pascal-case") {
         <mapping id="f14fbc1b-2247-4093-a880-95a38e46453f" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
+          <represents>data</represents>
           <childSettings>
             <childSetting id="28f06c17-9ba1-4762-b9f1-9444546eff15" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
               <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; 
     element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
             <childSetting id="badf62a0-857f-476c-a192-37ed8f4426a8" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
@@ -606,9 +626,11 @@ if (namingConvention == "pascal-case") {
     element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>f14fbc1b-2247-4093-a880-95a38e46453f</useChildSettingsFrom>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
             <childSetting id="abc9b77a-1d7c-4839-9ff4-f3f946f82547" name="Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
@@ -616,18 +638,22 @@ if (namingConvention == "pascal-case") {
               <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
+              <represents>data</represents>
               <childSettings>
                 <childSetting id="d5d596fb-1deb-4254-b9ea-7e15ca690729" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
                   <isRequiredFunction>return true;</isRequiredFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
                   <traversableTypes>
                     <mappingId>9b0a23ed-c1da-4d1f-94fa-9a9c1d008770</mappingId>
                     <mappingId>9872a1d5-f09b-42a5-908e-591ce5f33abc</mappingId>
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
+                  <represents>data</represents>
                   <childSettings />
                 </childSetting>
               </childSettings>
@@ -637,18 +663,22 @@ if (namingConvention == "pascal-case") {
               <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
+              <represents>data</represents>
               <childSettings>
                 <childSetting id="84e1b554-e4fe-4eae-8743-3e82e511de7c" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
                   <isRequiredFunction>return true;</isRequiredFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
                   <traversableTypes>
                     <mappingId>9b0a23ed-c1da-4d1f-94fa-9a9c1d008770</mappingId>
                     <mappingId>9872a1d5-f09b-42a5-908e-591ce5f33abc</mappingId>
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
+                  <represents>data</represents>
                   <childSettings />
                 </childSetting>
               </childSettings>
@@ -658,17 +688,21 @@ if (namingConvention == "pascal-case") {
         <mapping id="9b0a23ed-c1da-4d1f-94fa-9a9c1d008770" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <useChildSettingsFrom>f14fbc1b-2247-4093-a880-95a38e46453f</useChildSettingsFrom>
+          <represents>data</represents>
           <childSettings />
         </mapping>
         <mapping id="9872a1d5-f09b-42a5-908e-591ce5f33abc" name="Data Contract" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <useChildSettingsFrom>f14fbc1b-2247-4093-a880-95a38e46453f</useChildSettingsFrom>
+          <represents>data</represents>
           <childSettings />
         </mapping>
       </targetMappings>
@@ -709,16 +743,20 @@ if (namingConvention == "pascal-case") {
         <mapping id="fb2aeb24-f5ce-44c3-abd4-976bb1d504a6" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
+          <represents>data</represents>
           <childSettings>
             <childSetting id="f8cd5cd4-6003-4405-8edb-1f7356542719" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
               <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; 
     element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
             <childSetting id="92401a20-e4cf-4937-94f1-6144a2872093" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
@@ -727,9 +765,11 @@ if (namingConvention == "pascal-case") {
     element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>fb2aeb24-f5ce-44c3-abd4-976bb1d504a6</useChildSettingsFrom>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
             <childSetting id="d68afc8d-bac5-41bf-9f90-0c439803c0b6" name="Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
@@ -737,18 +777,22 @@ if (namingConvention == "pascal-case") {
               <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
+              <represents>data</represents>
               <childSettings>
                 <childSetting id="dc91a865-687d-4cef-b60c-5869c0c9219f" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
                   <isRequiredFunction>return true;</isRequiredFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
                   <traversableTypes>
                     <mappingId>414e85c8-56c8-4001-8454-035285386f5e</mappingId>
                     <mappingId>c3a77e38-96c7-4038-99dd-bb6de4ce7408</mappingId>
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
+                  <represents>data</represents>
                   <childSettings />
                 </childSetting>
               </childSettings>
@@ -758,18 +802,22 @@ if (namingConvention == "pascal-case") {
               <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
+              <represents>data</represents>
               <childSettings>
                 <childSetting id="cbd95458-54cd-4540-aa82-51c829f6ab60" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
                   <isRequiredFunction>return true;</isRequiredFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
                   <traversableTypes>
                     <mappingId>414e85c8-56c8-4001-8454-035285386f5e</mappingId>
                     <mappingId>c3a77e38-96c7-4038-99dd-bb6de4ce7408</mappingId>
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
+                  <represents>data</represents>
                   <childSettings />
                 </childSetting>
               </childSettings>
@@ -779,17 +827,21 @@ if (namingConvention == "pascal-case") {
         <mapping id="414e85c8-56c8-4001-8454-035285386f5e" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <useChildSettingsFrom>fb2aeb24-f5ce-44c3-abd4-976bb1d504a6</useChildSettingsFrom>
+          <represents>data</represents>
           <childSettings />
         </mapping>
         <mapping id="c3a77e38-96c7-4038-99dd-bb6de4ce7408" name="Data Contract" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <useChildSettingsFrom>fb2aeb24-f5ce-44c3-abd4-976bb1d504a6</useChildSettingsFrom>
+          <represents>data</represents>
           <childSettings />
         </mapping>
       </sourceMappings>
@@ -797,14 +849,18 @@ if (namingConvention == "pascal-case") {
         <mapping id="9d360937-0a83-474d-a1e3-8a19c1f4e29e" name="Create Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
+          <represents>data</represents>
           <childSettings>
             <childSetting id="6cd32dd1-da53-4fb0-8a71-1d7d2b2b6cb5" name="Set Property" type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>true</canBeModified>
+              <represents>data</represents>
               <childSettings />
             </childSetting>
           </childSettings>

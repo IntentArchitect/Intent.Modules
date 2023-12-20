@@ -28,11 +28,23 @@ class ServicesHelper {
     static getFieldFormat(str: string): string {
         return toPascalCase(str);
     }
+
+    static formatName(str: string, type: "class" | "property" | "parameter"): string {
+        switch (type) {
+            case "property":
+            case "class":
+                return toPascalCase(str);
+            case "parameter":
+                return toCamelCase(str);
+            default:
+                return str;
+        }
+    }
 }
 
 interface IElementSettings {
     childSpecialization: string;
-    childNameFormat?: "camel-case" | "pascal-case";
+    childType?: "class" | "property" | "parameter";
 }
 
 class ElementManager {
@@ -53,7 +65,7 @@ class ElementManager {
     }
 
     addChild(name: string, type?: string | MacroApi.Context.ITypeReference): MacroApi.Context.IElementApi {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.command.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -82,7 +94,7 @@ class ElementManager {
                 return;
             }
 
-            let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
+            let field = this.addChild(e.name, e.typeId);
             field.typeReference.setIsCollection(e.isCollection);
             field.typeReference.setIsNullable(e.isNullable);
 

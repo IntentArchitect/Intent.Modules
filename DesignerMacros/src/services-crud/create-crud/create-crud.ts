@@ -73,6 +73,7 @@ namespace servicesCrud {
         });
         let operationManager = new ElementManager(createElement("Operation", `Create${entity.getName()}`, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         })
 
         dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
@@ -105,6 +106,7 @@ namespace servicesCrud {
         }
         let operationManager = new ElementManager(createElement("Operation", operationName, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
 
         operationManager.setReturnType(resultDto.id)
@@ -129,6 +131,7 @@ namespace servicesCrud {
         }
         let operationManager = new ElementManager(createElement("Operation", operationName, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
 
         operationManager.setReturnType(resultDto.id, true)
@@ -155,9 +158,11 @@ namespace servicesCrud {
 
         let dtoManager = new ElementManager(createElement("DTO", dtoName, folder.id), {
             childSpecialization: "DTO-Field",
+            childType: "property"
         });
         let operationManager = new ElementManager(createElement("Operation", `Update${entity.getName()}`, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
 
         dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
@@ -190,6 +195,7 @@ namespace servicesCrud {
 
         let operationManager = new ElementManager(createElement("Operation", `Delete${entity.getName()}`, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
 
         if (owningAggregate) {

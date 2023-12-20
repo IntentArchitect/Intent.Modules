@@ -628,6 +628,13 @@ class DomainHelper {
     }
     static getOwningAggregate(entity) {
         var _a;
+        let invalidAssociations = entity.getAssociations("Association").filter(x =&gt; x.typeReference.getType() == null);
+        if (invalidAssociations.length &gt; 0) {
+            console.warn("Invalid associations found:");
+            invalidAssociations.forEach(x =&gt; {
+                console.warn("Invalid associations: " + x.getName());
+            });
+        }
         let result = (_a = entity.getAssociations("Association")
             .filter(x =&gt; this.isAggregateRoot(x.typeReference.getType()) &amp;&amp; isOwnedBy(x) &amp;&amp;
             // Let's only target collections for now as part of the nested compositional crud support
@@ -877,6 +884,17 @@ class ServicesHelper {
     static getFieldFormat(str) {
         return toPascalCase(str);
     }
+    static formatName(str, type) {
+        switch (type) {
+            case "property":
+            case "class":
+                return toPascalCase(str);
+            case "parameter":
+                return toCamelCase(str);
+            default:
+                return str;
+        }
+    }
 }
 class ElementManager {
     constructor(command, settings) {
@@ -895,7 +913,8 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
+        var _a;
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.command.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -919,7 +938,7 @@ class ElementManager {
             else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
                 return;
             }
-            let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
+            let field = this.addChild(e.name, e.typeId);
             field.typeReference.setIsCollection(e.isCollection);
             field.typeReference.setIsNullable(e.isNullable);
             if (options === null || options === void 0 ? void 0 : options.addToTop) {
@@ -1019,6 +1038,7 @@ var servicesCrud;
         });
         let operationManager = new ElementManager(createElement("Operation", `Create${entity.getName()}`, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
         dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
         if (owningAggregate) {
@@ -1044,6 +1064,7 @@ var servicesCrud;
         }
         let operationManager = new ElementManager(createElement("Operation", operationName, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
         operationManager.setReturnType(resultDto.id);
         if (owningAggregate) {
@@ -1062,6 +1083,7 @@ var servicesCrud;
         }
         let operationManager = new ElementManager(createElement("Operation", operationName, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
         operationManager.setReturnType(resultDto.id, true);
         if (owningAggregate) {
@@ -1083,9 +1105,11 @@ var servicesCrud;
         }
         let dtoManager = new ElementManager(createElement("DTO", dtoName, folder.id), {
             childSpecialization: "DTO-Field",
+            childType: "property"
         });
         let operationManager = new ElementManager(createElement("Operation", `Update${entity.getName()}`, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
         dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
         if (owningAggregate) {
@@ -1109,6 +1133,7 @@ var servicesCrud;
         }
         let operationManager = new ElementManager(createElement("Operation", `Delete${entity.getName()}`, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
         if (owningAggregate) {
             let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
@@ -5153,6 +5178,13 @@ class DomainHelper {
     }
     static getOwningAggregate(entity) {
         var _a;
+        let invalidAssociations = entity.getAssociations("Association").filter(x =&gt; x.typeReference.getType() == null);
+        if (invalidAssociations.length &gt; 0) {
+            console.warn("Invalid associations found:");
+            invalidAssociations.forEach(x =&gt; {
+                console.warn("Invalid associations: " + x.getName());
+            });
+        }
         let result = (_a = entity.getAssociations("Association")
             .filter(x =&gt; this.isAggregateRoot(x.typeReference.getType()) &amp;&amp; isOwnedBy(x) &amp;&amp;
             // Let's only target collections for now as part of the nested compositional crud support
@@ -5402,6 +5434,17 @@ class ServicesHelper {
     static getFieldFormat(str) {
         return toPascalCase(str);
     }
+    static formatName(str, type) {
+        switch (type) {
+            case "property":
+            case "class":
+                return toPascalCase(str);
+            case "parameter":
+                return toCamelCase(str);
+            default:
+                return str;
+        }
+    }
 }
 class ElementManager {
     constructor(command, settings) {
@@ -5420,7 +5463,8 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
+        var _a;
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.command.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -5444,7 +5488,7 @@ class ElementManager {
             else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
                 return;
             }
-            let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
+            let field = this.addChild(e.name, e.typeId);
             field.typeReference.setIsCollection(e.isCollection);
             field.typeReference.setIsNullable(e.isNullable);
             if (options === null || options === void 0 ? void 0 : options.addToTop) {
@@ -5544,6 +5588,7 @@ var servicesCrud;
         });
         let operationManager = new ElementManager(createElement("Operation", `Create${entity.getName()}`, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
         dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
         if (owningAggregate) {
@@ -5569,6 +5614,7 @@ var servicesCrud;
         }
         let operationManager = new ElementManager(createElement("Operation", operationName, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
         operationManager.setReturnType(resultDto.id);
         if (owningAggregate) {
@@ -5587,6 +5633,7 @@ var servicesCrud;
         }
         let operationManager = new ElementManager(createElement("Operation", operationName, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
         operationManager.setReturnType(resultDto.id, true);
         if (owningAggregate) {
@@ -5608,9 +5655,11 @@ var servicesCrud;
         }
         let dtoManager = new ElementManager(createElement("DTO", dtoName, folder.id), {
             childSpecialization: "DTO-Field",
+            childType: "property"
         });
         let operationManager = new ElementManager(createElement("Operation", `Update${entity.getName()}`, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
         dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
         if (owningAggregate) {
@@ -5634,6 +5683,7 @@ var servicesCrud;
         }
         let operationManager = new ElementManager(createElement("Operation", `Delete${entity.getName()}`, service.id), {
             childSpecialization: "Parameter",
+            childType: "parameter"
         });
         if (owningAggregate) {
             let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
@@ -10256,24 +10306,28 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
           <represents>data</represents>
           <childSettings>
             <childSetting id="53e8bc33-5930-4364-9526-7f8f181b14a1" name="Set Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-              <filterFunction>let fkAssociation = element.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected();
+              <isRequiredFunction>let isPartOfAssociation = (element.getParent().specialization == "Association Target End" || element.getParent().specialization == "Association Source End");
+let isPartOfAggregationSubEntity = (isPartOfAssociation 
+    &amp;&amp; element.getParent().getOtherEnd().typeReference.getIsCollection() == false 
+    &amp;&amp; element.getParent().getOtherEnd().typeReference.getIsNullable() == false);
 
-return (!element.hasStereotype('Primary Key') || (element.hasStereotype('Primary Key') &amp;&amp; element.getStereotype('Primary Key').getProperty('Data source')?.value == "User supplied") )
-    // if has FK, is aggregation
-    &amp;&amp; (fkAssociation == null || fkAssociation.getOtherEnd().typeReference.getIsCollection() || fkAssociation.getOtherEnd().typeReference.getIsNullable()); 
-    </filterFunction>
-              <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; !element.typeReference.getIsCollection()
-    &amp;&amp; (element.getParent("Class").getIsMapped());</isRequiredFunction>
+return !element.typeReference.getIsNullable() &amp;&amp; !element.typeReference.getIsCollection()
+    &amp;&amp; (element.getParent("Class").getIsMapped())
+    &amp;&amp; !isPartOfAggregationSubEntity;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>// Attribute is under mapped to Class or Constructor
-let underClassOrCtor = element.getParent("Class").id == mappingContext.targetElementId || element.getParent("Class Constructor")?.id == mappingContext.targetElementId
+              <isMappableFunction>let fkAssociation = element.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected();
+let isFk = fkAssociation != null;
+let isChildOfTargetClassOrCtor = element.getParent("Class").id == mappingContext.targetElementId || element.getParent("Class Constructor")?.id == mappingContext.targetElementId
+let isAutoGeneratedPk = element.hasStereotype('Primary Key') &amp;&amp; element.getStereotype('Primary Key').getProperty('Data source')?.value !== "User supplied";
 
-let fkAssociation = element.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected();  
-return underClassOrCtor
+//let fkAssociation = element.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected();  
+return isChildOfTargetClassOrCtor
+    &amp;&amp; !isAutoGeneratedPk
     // Entity Settings -&gt; Ensure Private Property Settings != true
     &amp;&amp; (application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")?.value != "true")
-    // if is FK, include if is for aggregational relationahip:
-    &amp;&amp; (fkAssociation == null || fkAssociation.getOtherEnd().typeReference.getIsCollection() || fkAssociation.getOtherEnd().typeReference.getIsNullable());</isMappableFunction>
+    // if is FK under root class, include if is for aggregational relationahip:
+    &amp;&amp; (!isFk || element.getParent().specialization == "Class" || fkAssociation.getOtherEnd().typeReference.getIsCollection() || fkAssociation.getOtherEnd().typeReference.getIsNullable())
+    ;</isMappableFunction>
               <isTraversable>true</isTraversable>
               <traversableTypes>
                 <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
@@ -10283,9 +10337,12 @@ return underClassOrCtor
               <childSettings />
             </childSetting>
             <childSetting id="a4a2572b-57d1-4782-8ace-dd22540211dc" name="Set Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
-              <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
-              <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; !element.typeReference.getIsCollection()
-    &amp;&amp; element.getParent("Class").getIsMapped();</isRequiredFunction>
+              <filterFunction>return element.typeReference.isNavigable 
+    &amp;&amp; ((element.getOtherEnd().typeReference.getIsCollection() == false &amp;&amp; element.getOtherEnd().typeReference.getIsNullable() == false)
+        || application.isModuleInstalled("Intent.EntityFrameworkCore"))</filterFunction>
+              <isRequiredFunction>return !association.typeReference.getIsNullable() &amp;&amp; !association.typeReference.getIsCollection()
+    &amp;&amp; !association.getOtherEnd().typeReference.getIsNullable() &amp;&amp; !association.getOtherEnd().typeReference.getIsCollection()
+    &amp;&amp; association.getParent("Class").getIsMapped();</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>// Attribute is under mapped to Class or Constructor
 let underClassOrCtor = element.getParent("Class").id == mappingContext.targetElementId || element.getParent("Class Constructor")?.id == mappingContext.targetElementId
@@ -10293,6 +10350,22 @@ let underClassOrCtor = element.getParent("Class").id == mappingContext.targetEle
 return underClassOrCtor
     // Entity Settings -&gt; Ensure Private Property Settings != true
     &amp;&amp; (application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")?.value != "true")</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>e04ab087-8c1a-42b9-aac7-d76ed674e319</mappingId>
+                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <useChildSettingsFrom>e04ab087-8c1a-42b9-aac7-d76ed674e319</useChildSettingsFrom>
+              <represents>data</represents>
+              <childSettings />
+            </childSetting>
+            <childSetting id="adb76398-4759-40ce-9b58-f98c1358f8e9" name="Set Association Source End" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
+              <filterFunction>return element.typeReference.isNavigable &amp;&amp; application.isModuleInstalled("Intent.EntityFrameworkCore")</filterFunction>
+              <isRequiredFunction>return false;</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>// anemic mapping
+return element.getParent("Class")?.id == mappingContext.targetElementId</isMappableFunction>
               <isTraversable>true</isTraversable>
               <traversableTypes>
                 <mappingId>e04ab087-8c1a-42b9-aac7-d76ed674e319</mappingId>
@@ -10374,6 +10447,7 @@ return underClassOrCtor
             <target id="8ec45776-c6cc-4174-84f8-efb5d4308ed4" name="Constructor Parameter" />
             <target id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" />
             <target id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" />
+            <target id="adb76398-4759-40ce-9b58-f98c1358f8e9" name="Set Association Source End" />
           </targets>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
@@ -10464,6 +10538,7 @@ return element.getParent("Command")?.id ?? element.getParent("Operation").id
             <target id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" />
             <target id="8acf7530-30fd-49fc-b082-75e0060c249e" name="Set Association Target End" />
             <target id="95db9e8b-5db5-4a46-815c-53948a16fe7c" name="Set Operation Parameter" />
+            <target id="49bfbdb3-9697-4d84-9194-df60ee7dfd9a" name="Set Association Source End" />
           </targets>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
@@ -10543,6 +10618,8 @@ return element.getParent("Command")?.id ?? element.getParent("Operation").id
             <source id="daf3a2fa-0b35-4549-8b65-26b3a74dc7e0" name="Attribute" />
             <source id="c0682bc4-2b6a-4638-a35e-39188d253694" name="Association Target End" />
             <source id="cfe9c4d4-9c26-4f11-a585-f1e3863fb658" name="Invoke Domain Operation" />
+            <source id="792374ff-6b97-45df-96de-01acd2488cc0" name="Property" />
+            <source id="eb1478af-4b69-4d33-826f-3f195ebbed79" name="Collection Field" />
           </sources>
           <targets>
             <target id="a861cc4a-9aed-41f5-ad5d-fdc651497de4" name="Attribute" />
@@ -10685,6 +10762,7 @@ return element.getParent("Command")?.id ?? element.getParent("Operation").id
             <target id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" />
             <target id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" />
             <target id="95db9e8b-5db5-4a46-815c-53948a16fe7c" name="Set Operation Parameter" />
+            <target id="49bfbdb3-9697-4d84-9194-df60ee7dfd9a" name="Set Association Source End" />
           </targets>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
@@ -10888,14 +10966,21 @@ return element.getParent("Command")?.id ?? element.getParent("Operation").id
           <childSettings>
             <childSetting id="84e9dcc5-8765-48ef-b2a6-39744498a4af" name="Set Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
               <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>let fkAssociation = element.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected();  
-return ((!element.hasStereotype('Primary Key') || (element.hasStereotype('Primary Key') &amp;&amp; element.getStereotype('Primary Key').getProperty('Data source')?.value == "User supplied")) || element.getParent().specialization == "Association Target End")
+              <isMappableFunction>
+let fkAssociation = element.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected();
+let isFk = fkAssociation != null;
+let isAutoGeneratedPk = element.hasStereotype('Primary Key') &amp;&amp; element.getStereotype('Primary Key').getProperty('Data source')?.value !== "User supplied";
+let isPartOfAssociation = (element.getParent().specialization == "Association Target End" || element.getParent().specialization == "Association Source End");
+
+
+return (!isAutoGeneratedPk || isPartOfAssociation)
     // Entity Settings -&gt; Ensure Private Property Settings != true
     &amp;&amp; (application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")?.value != "true")
     // mapping association is not to an Operation:
     &amp;&amp; (lookup(mappingContext.targetElementId).specialization != "Operation")
-    // if is FK, include if is for aggregational relationahip:
-    &amp;&amp; (fkAssociation == null || fkAssociation.getOtherEnd().typeReference.getIsCollection() || fkAssociation.getOtherEnd().typeReference.getIsNullable());</isMappableFunction>
+    // if is FK under root class, include if is for aggregational relationahip:
+    &amp;&amp; (!isFk || element.getParent().specialization == "Class" || fkAssociation.getOtherEnd().typeReference.getIsCollection() || fkAssociation.getOtherEnd().typeReference.getIsNullable())
+    ;</isMappableFunction>
               <isTraversable>true</isTraversable>
               <traversableTypes>
                 <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
@@ -10905,10 +10990,29 @@ return ((!element.hasStereotype('Primary Key') || (element.hasStereotype('Primar
               <childSettings />
             </childSetting>
             <childSetting id="8acf7530-30fd-49fc-b082-75e0060c249e" name="Set Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
-              <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
+              <filterFunction>return element.typeReference.isNavigable 
+    &amp;&amp; ((element.getOtherEnd().typeReference.getIsCollection() == false &amp;&amp; element.getOtherEnd().typeReference.getIsNullable() == false)
+        || application.isModuleInstalled("Intent.EntityFrameworkCore"))</filterFunction>
               <isRequiredFunction>return false;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return element.getParent("Class")?.id == mappingContext.targetElementId</isMappableFunction>
+              <isMappableFunction>// anemic mapping
+return element.getParent("Class")?.id == mappingContext.targetElementId</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</mappingId>
+                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <useChildSettingsFrom>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</useChildSettingsFrom>
+              <represents>data</represents>
+              <childSettings />
+            </childSetting>
+            <childSetting id="49bfbdb3-9697-4d84-9194-df60ee7dfd9a" name="Set Association Source End" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
+              <filterFunction>return element.typeReference.isNavigable &amp;&amp; application.isModuleInstalled("Intent.EntityFrameworkCore")</filterFunction>
+              <isRequiredFunction>return false;</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>// anemic mapping
+return element.getParent("Class")?.id == mappingContext.targetElementId</isMappableFunction>
               <isTraversable>true</isTraversable>
               <traversableTypes>
                 <mappingId>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</mappingId>
