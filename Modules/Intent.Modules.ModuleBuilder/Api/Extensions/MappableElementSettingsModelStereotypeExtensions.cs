@@ -12,35 +12,35 @@ namespace Intent.ModuleBuilder.Api
 {
     public static class MappableElementSettingsModelStereotypeExtensions
     {
-        public static MappingSettings GetMappingSettings(this MappableElementSettingsModel model)
+        public static MappableSettings GetMappableSettings(this MappableElementSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Mapping Settings");
-            return stereotype != null ? new MappingSettings(stereotype) : null;
+            var stereotype = model.GetStereotype("Mappable Settings");
+            return stereotype != null ? new MappableSettings(stereotype) : null;
         }
 
 
-        public static bool HasMappingSettings(this MappableElementSettingsModel model)
+        public static bool HasMappableSettings(this MappableElementSettingsModel model)
         {
-            return model.HasStereotype("Mapping Settings");
+            return model.HasStereotype("Mappable Settings");
         }
 
-        public static bool TryGetMappingSettings(this MappableElementSettingsModel model, out MappingSettings stereotype)
+        public static bool TryGetMappableSettings(this MappableElementSettingsModel model, out MappableSettings stereotype)
         {
-            if (!HasMappingSettings(model))
+            if (!HasMappableSettings(model))
             {
                 stereotype = null;
                 return false;
             }
 
-            stereotype = new MappingSettings(model.GetStereotype("Mapping Settings"));
+            stereotype = new MappableSettings(model.GetStereotype("Mappable Settings"));
             return true;
         }
 
-        public class MappingSettings
+        public class MappableSettings
         {
             private IStereotype _stereotype;
 
-            public MappingSettings(IStereotype stereotype)
+            public MappableSettings(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }

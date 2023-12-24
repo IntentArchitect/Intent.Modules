@@ -24,7 +24,7 @@ namespace <#= Namespace #>
 <#  foreach(var stereotypeDefinition in Model.StereotypeDefinitions) { #>
         public static <#= stereotypeDefinition.Name.ToCSharpIdentifier() #> Get<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelClassName #> model)
         {
-            var stereotype = model.GetStereotype("<#= stereotypeDefinition.Name #>");
+            var stereotype = model.GetStereotype("<#= stereotypeDefinition.Id #>");
             return stereotype != null ? new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(stereotype) : null;
         }
 <#      if (stereotypeDefinition.AllowMultipleApplies) { #>
@@ -32,7 +32,7 @@ namespace <#= Namespace #>
         public static IReadOnlyCollection<<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>> Get<#= ForcePluralize(stereotypeDefinition.Name.ToCSharpIdentifier()) #>(this <#= ModelClassName #> model)
         {
             var stereotypes = model
-                .GetStereotypes("<#= stereotypeDefinition.Name #>")
+                .GetStereotypes("<#= stereotypeDefinition.Id #>")
                 .Select(stereotype => new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(stereotype))
                 .ToArray();
 
@@ -42,7 +42,7 @@ namespace <#= Namespace #>
 
         public static bool Has<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelClassName #> model)
         {
-            return model.HasStereotype("<#= stereotypeDefinition.Name #>");
+            return model.HasStereotype("<#= stereotypeDefinition.Id #>");
         }
 
         public static bool TryGet<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelClassName #> model, out <#= stereotypeDefinition.Name.ToCSharpIdentifier() #> stereotype)
@@ -53,7 +53,7 @@ namespace <#= Namespace #>
                 return false;
             }
 
-            stereotype = new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(model.GetStereotype("<#= stereotypeDefinition.Name #>"));
+            stereotype = new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(model.GetStereotype("<#= stereotypeDefinition.Id #>"));
             return true;
         }
 

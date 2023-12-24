@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="df24679d-09ec-4efc-af37-a1a926b7a108" version="3.1.0">
-  <name>Mapping Settings</name>
+  <name>Mappable Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
     <type id="62e5b1a9-0d36-4969-9d22-ce748155afbf">Mappable Element Settings</type>

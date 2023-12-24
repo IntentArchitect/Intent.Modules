@@ -81,7 +81,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             this.Write(" model)\r\n        {\r\n            var stereotype = model.GetStereotype(\"");
             
             #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Id));
             
             #line default
             #line hidden
@@ -124,7 +124,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
                     "eotypes(\"");
             
             #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Id));
             
             #line default
             #line hidden
@@ -160,7 +160,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             this.Write(" model)\r\n        {\r\n            return model.HasStereotype(\"");
             
             #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Id));
             
             #line default
             #line hidden
@@ -203,7 +203,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             this.Write("(model.GetStereotype(\"");
             
             #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Id));
             
             #line default
             #line hidden
