@@ -31,7 +31,7 @@
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;f40a4942-5d2d-4174-8ec1-af66cbd464db&quot;]" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return `subscriber: ${typeReference.display}`;" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
-            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="false" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="ConsumingApplications" isActive="true" />
             <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
             <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
@@ -67,7 +67,7 @@
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;cbe970af-5bad-4d92-a3ed-a24b9fdaa23e&quot;]" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return `subscribe: ${typeReference.display}`;" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
-            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="false" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="SubscribedMessages" isActive="true" />
             <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
             <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />

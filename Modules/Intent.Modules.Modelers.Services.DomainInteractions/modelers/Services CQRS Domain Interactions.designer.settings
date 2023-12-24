@@ -10299,11 +10299,17 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
         <mapping id="e04ab087-8c1a-42b9-aac7-d76ed674e319" name="Create Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
           <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return element.id == mappingContext.targetElementId &amp;&amp; element.getChildren("Class Constructor").length == 0</isMappableFunction>
+          <isMappableFunction>function getAllChildrenInHierarchy(element, type) {
+    let children = element.getChildren(type);
+    element.getChildren("Generalization Target End").forEach(x =&gt; children.push(...getAllChildrenInHierarchy(x, type)))
+    return children;
+}
+
+return element.id == mappingContext.targetElementId &amp;&amp; getAllChildrenInHierarchy(element, "Class Constructor").length == 0</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
-          <represents>data</represents>
+          <represents>invokable</represents>
           <childSettings>
             <childSetting id="53e8bc33-5930-4364-9526-7f8f181b14a1" name="Set Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
               <isRequiredFunction>let isPartOfAssociation = (element.getParent().specialization == "Association Target End" || element.getParent().specialization == "Association Source End");

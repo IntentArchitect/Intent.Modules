@@ -133,10 +133,10 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Invokable" isActive="true" />
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return element.id == mappingContext.targetElementId" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return element.id == mappingContext.targetElementId &amp;&amp; element.getChildren(&quot;Class Constructor&quot;).length == 0" isActive="true" />
+                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="function getAllChildrenInHierarchy(element, type) {&#xD;&#xA;    let children = element.getChildren(type);&#xD;&#xA;    element.getChildren(&quot;Generalization Target End&quot;).forEach(x =&gt; children.push(...getAllChildrenInHierarchy(x, type)))&#xD;&#xA;    return children;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return element.id == mappingContext.targetElementId &amp;&amp; getAllChildrenInHierarchy(element, &quot;Class Constructor&quot;).length == 0" isActive="true" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="false" />
