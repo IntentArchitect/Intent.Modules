@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class SVGResourceDrawSettingsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class SVGResourceDrawSettingsModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "SVG Resource Draw Settings";
         public const string SpecializationTypeId = "b5566ace-3353-4009-9370-475b561451a0";

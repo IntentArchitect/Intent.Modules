@@ -14,7 +14,7 @@ namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class PackageSettingsModel
-        : IMetadataModel, IHasStereotypes, IHasName
+        : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         protected readonly IElement _element;
         public const string SpecializationType = "Package Settings";

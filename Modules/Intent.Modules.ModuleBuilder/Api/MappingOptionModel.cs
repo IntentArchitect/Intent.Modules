@@ -14,7 +14,7 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class MappingOptionModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class MappingOptionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "Mapping Option";
         public const string SpecializationTypeId = "00a1eb98-1fc4-4421-9d1c-8733f6bc2111";

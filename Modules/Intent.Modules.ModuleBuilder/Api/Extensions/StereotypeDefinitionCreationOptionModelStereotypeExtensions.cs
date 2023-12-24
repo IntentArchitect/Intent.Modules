@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static OptionSettings GetOptionSettings(this StereotypeDefinitionCreationOptionModel model)
         {
-            var stereotype = model.GetStereotype("Option Settings");
+            var stereotype = model.GetStereotype("f4250b35-559d-4c0b-91ee-c3d7aa239814");
             return stereotype != null ? new OptionSettings(stereotype) : null;
         }
 
         public static bool HasOptionSettings(this StereotypeDefinitionCreationOptionModel model)
         {
-            return model.HasStereotype("Option Settings");
+            return model.HasStereotype("f4250b35-559d-4c0b-91ee-c3d7aa239814");
         }
 
         public static bool TryGetOptionSettings(this StereotypeDefinitionCreationOptionModel model, out OptionSettings stereotype)
@@ -31,7 +31,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new OptionSettings(model.GetStereotype("Option Settings"));
+            stereotype = new OptionSettings(model.GetStereotype("f4250b35-559d-4c0b-91ee-c3d7aa239814"));
             return true;
         }
 

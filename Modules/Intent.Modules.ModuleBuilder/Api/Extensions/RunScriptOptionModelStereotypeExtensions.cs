@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static OptionSettings GetOptionSettings(this RunScriptOptionModel model)
         {
-            var stereotype = model.GetStereotype("Option Settings");
+            var stereotype = model.GetStereotype("cbe77364-d1d0-400b-a8c4-646a4c869612");
             return stereotype != null ? new OptionSettings(stereotype) : null;
         }
 
         public static bool HasOptionSettings(this RunScriptOptionModel model)
         {
-            return model.HasStereotype("Option Settings");
+            return model.HasStereotype("cbe77364-d1d0-400b-a8c4-646a4c869612");
         }
 
         public static bool TryGetOptionSettings(this RunScriptOptionModel model, out OptionSettings stereotype)
@@ -31,19 +31,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new OptionSettings(model.GetStereotype("Option Settings"));
+            stereotype = new OptionSettings(model.GetStereotype("cbe77364-d1d0-400b-a8c4-646a4c869612"));
             return true;
         }
 
         public static ScriptSettings GetScriptSettings(this RunScriptOptionModel model)
         {
-            var stereotype = model.GetStereotype("Script Settings");
+            var stereotype = model.GetStereotype("56bc0465-c1fe-4bca-9493-2a3ce88a4047");
             return stereotype != null ? new ScriptSettings(stereotype) : null;
         }
 
         public static bool HasScriptSettings(this RunScriptOptionModel model)
         {
-            return model.HasStereotype("Script Settings");
+            return model.HasStereotype("56bc0465-c1fe-4bca-9493-2a3ce88a4047");
         }
 
         public static bool TryGetScriptSettings(this RunScriptOptionModel model, out ScriptSettings stereotype)
@@ -54,7 +54,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new ScriptSettings(model.GetStereotype("Script Settings"));
+            stereotype = new ScriptSettings(model.GetStereotype("56bc0465-c1fe-4bca-9493-2a3ce88a4047"));
             return true;
         }
 

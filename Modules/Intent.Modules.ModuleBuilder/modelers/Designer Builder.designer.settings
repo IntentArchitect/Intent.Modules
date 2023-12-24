@@ -29,6 +29,7 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -97,6 +98,7 @@ createElement("Association Event Settings", "[events]", element.id);</script>
           <displayFunction>return "[source end extension]";</displayFunction>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -130,6 +132,7 @@ createElement("Association Event Settings", "[events]", element.id);</script>
           <displayFunction>return "[target end extension]";</displayFunction>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -164,6 +167,7 @@ createElement("Association Event Settings", "[events]", element.id);</script>
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -239,6 +243,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <displayFunction>return `[visual]${(hasType ? ": " + typeReference.display : "")}`;</displayFunction>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -291,6 +296,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
               <displayFunction>[source]</displayFunction>
               <allowRename>false</allowRename>
               <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
@@ -299,7 +305,6 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
-              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -309,6 +314,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
               <displayFunction>[destination]</displayFunction>
               <allowRename>false</allowRename>
               <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
@@ -317,7 +323,6 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
-              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -328,6 +333,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -360,6 +366,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -393,6 +400,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <displayFunction>[events]</displayFunction>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -463,6 +471,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
               <saveAsOwnFile>false</saveAsOwnFile>
               <allowRename>false</allowRename>
               <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
@@ -484,7 +493,6 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
-              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -498,6 +506,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       <displayFunction>return "[context menu]"</displayFunction>
       <allowRename>false</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -568,6 +577,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -589,7 +599,6 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
-          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -598,6 +607,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -620,7 +630,6 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
-          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -629,6 +638,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -649,7 +659,6 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
-          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -662,6 +671,7 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -695,6 +705,7 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -715,7 +726,6 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
-          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -726,6 +736,7 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -734,7 +745,6 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -743,6 +753,7 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -773,6 +784,7 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -807,6 +819,7 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -942,6 +955,7 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
       <displayFunction>return "designers"</displayFunction>
       <allowRename>false</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -982,6 +996,7 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -1063,6 +1078,7 @@ return null;</iconFunction>
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -1147,6 +1163,7 @@ return null;</iconFunction>
           <displayFunction>return `[mappings]: ${name}`;</displayFunction>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -1186,6 +1203,7 @@ function getTypeName(stereotypeName, propertyName) {
 return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getTypeName("Output Settings", "To Type") || "[None]"} (${ getStereotype("Output Settings").properties["Child Mapping Mode"].value })`;</displayFunction>
               <allowRename>false</allowRename>
               <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
@@ -1221,6 +1239,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           <displayFunction>[events]</displayFunction>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -1299,6 +1318,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <saveAsOwnFile>false</saveAsOwnFile>
               <allowRename>false</allowRename>
               <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
@@ -1320,7 +1340,6 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
-              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1332,6 +1351,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           <displayFunction>return `[visual]: ${typeReference.display}`</displayFunction>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -1412,6 +1432,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <displayFunction>return `[draw text]: ${name}`;</displayFunction>
               <allowRename>true</allowRename>
               <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
@@ -1420,7 +1441,6 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
-              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1430,6 +1450,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <displayFunction>return `[stereotypes]: ${name}`;</displayFunction>
               <allowRename>true</allowRename>
               <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
@@ -1438,7 +1459,6 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
-              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1448,6 +1468,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <displayFunction>return `[draw path]: ${name}`;</displayFunction>
               <allowRename>true</allowRename>
               <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
@@ -1456,7 +1477,6 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
-              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1466,6 +1486,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <displayFunction>return `[draw svg]: ${name}`;</displayFunction>
               <allowRename>true</allowRename>
               <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
@@ -1474,7 +1495,6 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
-              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1486,6 +1506,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           <displayFunction>[diagram]</displayFunction>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -1538,6 +1559,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -1578,6 +1600,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -1631,6 +1654,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -1648,6 +1672,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
         <option type="element">
           <text>Add Source Mapping</text>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAABC1JREFUeF7t3T1oE2EYB/D/c21pgkM3C63iB0S0ia2Furiog4OC1Bah4KYoHRQHUazocEXEpIoKHUSrLg7ioFYFdVDEQRAXP6lVUKzSKrQEv5s0TR65S6yxTe4jb1Ja78kSLn2e93353XN37+XuUto4wMGyCqyDvKYIaGW4cbWa3lnRUMsgb2PCefGbKpBkbLpZS9cFsMDqEMAC4f6kCaAAKgoopksFCqCigGK6owps/sRbiXHBoq84E54ojmVGphNjJYCyfINzBOhgHjjQW0MLZ6SA4qA2DfEXAFUWzbT01lCv6jxQAC0EnZyJCKAA5haQTVj2gYoCiulSgQKoKKCYXpQKbB7krUSWE+n/9ijcMsTLoOWfSMe+48PtAH2TeaBipQqgAJZQQLFp75yJHOxbgERqMbpC9xXN/kn3DuCBp0vAFX3g5E5E6s8UC9FjgOWv03Csw3flMHQ9pQrpUUAARN2oxF7owTEVRO8CptUuYTy5A8cbfhaK6HVAY3N+AI43I9L0tRBEATTVaADxr8twctWoW0QB/CPGiMI/pxb6opgbxNIA7n/eDiJyM5CSx7I2F8SdNv18R6p8JbqWZo7W9qMqDWDHyyQAzb77GRkxhiQ141jwjpPRCWAuJQYDaEck1GOHKICWQtyJcKgTIAM050sA7UqM6TT8dbuh03iuUAG0A0yf+t3CT18rugPxyeEC6AjQDHqFaKwBZ5sS2SkC6BwQYIzgV+W87EoUQDeA5taMKMp5BY4s/2iew5Tk5qLZPQ+0J2V8AWvr0VX3SADtuXJHMI+CeYsAFgoIxAABLJTvGwgbcDT0UCrQLaGx/6NEI8KN7+Ug4haPEEXlcC30tRNfeUkFOkVkfgu/Vjf5GooAOgEk3EOsaiNOzp/yjbUA2gLyRfi07fmu3gmgFSDjBPzBfdAp7/VjAcwP2IFwKGJXoAI4VShlTJARXn7ZDq+E05gXPWDMrItK4CqQttkahWJIYTW6go+d4JUO0Gnv0xl3qC+A8dQbiy5/IEkBHAt+djOs0mzCbkYwXbHWgCOIJQI41Wg8+uXqJYBAH6hyDY4Ghl3JZYI9Dkh34UMb9GC0EDyP7wPpMnwwJsg/CsXzLiCjB37apXpvoAcBuR9IdcN3ZU8x7k71GGD/IiTG2hCpD6tsspNzvXMQKaZaVlsCqAgrgAKoKKCY7ukKtHvclYHW6zV0zcpYAC1+9kQAbTZPqUDF/ZcACqCigGK6VKAAKgoophelAuXn7/L/akexpjGK63n2pgug4roTQAFUFFBMlwoUQEUBxXSpwOkAtPt3GEwo11Ig4/Fpzn43BqcBGpvPgv79e3rQ5o1FlHkHpZfNuMy7+TS20V7WMmfizNSs/ow4I36if+PGJSOTMp9ntTvRZqatzFPf5hIZeZPazdu/0byGc9eq6ZnVevgNfhZ+sqhAvz8AAAAASUVORK5CYII=" />
+          <isOptionVisibleFunction>return false;</isOptionVisibleFunction>
           <specializationType>Source Mappable Elements</specializationType>
           <specializationTypeId>1536425c-35f4-48e1-abe4-1f8f56533545</specializationTypeId>
           <defaultName>Source</defaultName>
@@ -1656,6 +1681,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
         <option type="element">
           <text>Add Target Mapping</text>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA0xJREFUeF7t28tu01AQBuBxmqoqFbBCrIBKvANsEIINrBBIVSXYsWDDE4DEO7BkTdrmAoUXIE3TNu8AYhHHqRBsSmnS3BxfDhpLRggBcTTJ8RxrvK3nxP78n4svtWAe24vP18BTl+fRNKs2LeVaczmg559KAPBoLm1zalTBkQBSLogAUvQAQAAFkChALJcECiBRgFguCRRAogCxXBIogEQBYrkkUACJAsRySaAAEgWI5ZJAASQKEMslgQJIFCCWSwIzAri0nIdc3oLhqUc8I83lXBJ45twi3Hq4CrulFox6vmYFws9xArzz+Cp44xDqpRYMuoYkkRsgZiHwQ6iXHej9GBOioamUI2CMuFdx4PSYOSJXQGOSyBkwRqxtMR4TuQMiYjSxFFsw4LjEMQEQEcejAPbKDj9EUwDZIiLgelOdd8/ChVlO/AdF56XnhveStrm8kocba5O/hvOxO5cd6HeYzM4I+OCbegoKXiU92bT3w3UimyWOiYDx7Lz/pg3d726619NUQDaLbZMBY8TdYgv6nZTunU0HREScWBAxlXViFgBTXeJkBfAXYsXR+ygsS4BRd/bC6I6ld6JpnZg1QETsHrtQLzmgQjX/JU7WAHE2rhVtCH0NeHh5sgSIt3fVDRtPSt+WFUB8h1ItNEHpxMtKAhGvtmVDoKvb/p5v0xPYPxnD/nYbxsNAX7fNCiCOeY33h+m+RzY1gf2uB4137XTx4jHw/ld1N2fBk1n2gaMvg+vuMLiUtM2FfA4urq4k2h0//6hXnPS67Z9dONFRT7vTlP8vjJ924JcJk7Zhz4edzSYEnu7p9h9HZtI7EUxetWBDqOMOY9KVjP9uCiAmr/q6yQsvHgOTYk+13wy78Kjvw86GHT0oYLdxT+Cw5wG++0BElhtnQMRrbB+m86Q56dXiCoiJO3jb5o3HdQx0B360zjPiS1VuCRwNfKht2uC5DCeMv3VrToA316/Ah0JT38PQpOPc//bjAri4tBA9gme5VDEBcBZhSKUNLglM5eRn8aMCSFQUQAEkChDLJYECSBQglksCBZAoQCyXBAogUYBYLgkUQKIAsVwSKIBEAWK5JFAAiQLEckmgABIFiOXzS+DHZ6Cs28TDM6BcdX4CKKm+Xscy3A0AAAAASUVORK5CYII=" />
+          <isOptionVisibleFunction>return false;</isOptionVisibleFunction>
           <specializationType>Target Mappable Elements</specializationType>
           <specializationTypeId>a812bff7-017a-4692-8ec7-1caad0a1dd88</specializationTypeId>
           <defaultName>Target</defaultName>
@@ -1685,6 +1711,7 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -1725,6 +1752,7 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -1765,6 +1793,7 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -1812,6 +1841,7 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
           <displayFunction>return `[import] ${typeReference.display}`;</displayFunction>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -1845,6 +1875,7 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -1867,6 +1898,7 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -1925,6 +1957,7 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -1971,6 +2004,7 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
           <displayFunction>[events]</displayFunction>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -2017,6 +2051,7 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
               <saveAsOwnFile>false</saveAsOwnFile>
               <allowRename>false</allowRename>
               <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
@@ -2038,7 +2073,6 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
-              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -2051,6 +2085,7 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -2059,7 +2094,6 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>

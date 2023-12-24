@@ -15,7 +15,7 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public partial class ElementCreationOptionModel : IHasStereotypes, IMetadataModel, ICreationOptionModel, IHasName, IHasTypeReference
+    public partial class ElementCreationOptionModel : IHasStereotypes, IMetadataModel, ICreationOptionModel, IHasName, IHasTypeReference, IElementWrapper
     {
         protected readonly IElement _element;
         public const string SpecializationType = "Element Creation Option";

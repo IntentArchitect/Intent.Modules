@@ -14,7 +14,7 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class RunScriptOptionModel : ScriptModel, IMetadataModel, IHasStereotypes, IHasName
+    public class RunScriptOptionModel : ScriptModel, IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public new const string SpecializationType = "Run Script Option";
         public new const string SpecializationTypeId = "345d46fb-c500-409a-88c7-26720572c9af";

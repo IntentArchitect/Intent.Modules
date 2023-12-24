@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class DesignerReferenceModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class DesignerReferenceModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "Designer Reference";
         protected readonly IElement _element;

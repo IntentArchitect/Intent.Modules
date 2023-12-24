@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Api
     {
         public static PositionSettings GetPositionSettings(this SVGResourceDrawSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Position Settings");
+            var stereotype = model.GetStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea");
             return stereotype != null ? new PositionSettings(stereotype) : null;
         }
 
 
         public static bool HasPositionSettings(this SVGResourceDrawSettingsModel model)
         {
-            return model.HasStereotype("Position Settings");
+            return model.HasStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea");
         }
 
         public static bool TryGetPositionSettings(this SVGResourceDrawSettingsModel model, out PositionSettings stereotype)
@@ -32,20 +32,20 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new PositionSettings(model.GetStereotype("Position Settings"));
+            stereotype = new PositionSettings(model.GetStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea"));
             return true;
         }
 
         public static SVGResourceSettings GetSVGResourceSettings(this SVGResourceDrawSettingsModel model)
         {
-            var stereotype = model.GetStereotype("SVG Resource Settings");
+            var stereotype = model.GetStereotype("5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082");
             return stereotype != null ? new SVGResourceSettings(stereotype) : null;
         }
 
 
         public static bool HasSVGResourceSettings(this SVGResourceDrawSettingsModel model)
         {
-            return model.HasStereotype("SVG Resource Settings");
+            return model.HasStereotype("5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082");
         }
 
         public static bool TryGetSVGResourceSettings(this SVGResourceDrawSettingsModel model, out SVGResourceSettings stereotype)
@@ -56,7 +56,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new SVGResourceSettings(model.GetStereotype("SVG Resource Settings"));
+            stereotype = new SVGResourceSettings(model.GetStereotype("5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082"));
             return true;
         }
 

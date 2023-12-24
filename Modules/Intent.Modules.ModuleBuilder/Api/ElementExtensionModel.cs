@@ -14,7 +14,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ElementExtensionModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class ElementExtensionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "Element Extension";
         protected readonly IElement _element;

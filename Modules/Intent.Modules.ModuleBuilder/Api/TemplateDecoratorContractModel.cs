@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public partial class TemplateDecoratorContractModel : IMetadataModel, IHasStereotypes, IHasName
+    public partial class TemplateDecoratorContractModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Template Decorator Contract";
         public const string SpecializationTypeId = "ac1da322-377e-45cf-a2d9-d147a4d91457";

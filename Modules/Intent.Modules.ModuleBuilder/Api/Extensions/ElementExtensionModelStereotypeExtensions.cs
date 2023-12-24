@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Api
     {
         public static ExtensionSettings GetExtensionSettings(this ElementExtensionModel model)
         {
-            var stereotype = model.GetStereotype("Extension Settings");
+            var stereotype = model.GetStereotype("312eab00-f6db-492e-bbb4-e41383c8d3d8");
             return stereotype != null ? new ExtensionSettings(stereotype) : null;
         }
 
 
         public static bool HasExtensionSettings(this ElementExtensionModel model)
         {
-            return model.HasStereotype("Extension Settings");
+            return model.HasStereotype("312eab00-f6db-492e-bbb4-e41383c8d3d8");
         }
 
         public static bool TryGetExtensionSettings(this ElementExtensionModel model, out ExtensionSettings stereotype)
@@ -32,18 +32,18 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new ExtensionSettings(model.GetStereotype("Extension Settings"));
+            stereotype = new ExtensionSettings(model.GetStereotype("312eab00-f6db-492e-bbb4-e41383c8d3d8"));
             return true;
         }
         public static TypeReferenceExtensionSettings GetTypeReferenceExtensionSettings(this ElementExtensionModel model)
         {
-            var stereotype = model.GetStereotype("Type Reference Extension Settings");
+            var stereotype = model.GetStereotype("159cbc8e-a910-40f7-8e45-3edadbb863c2");
             return stereotype != null ? new TypeReferenceExtensionSettings(stereotype) : null;
         }
 
         public static bool HasTypeReferenceExtensionSettings(this ElementExtensionModel model)
         {
-            return model.HasStereotype("Type Reference Extension Settings");
+            return model.HasStereotype("159cbc8e-a910-40f7-8e45-3edadbb863c2");
         }
 
         public static bool TryGetTypeReferenceExtensionSettings(this ElementExtensionModel model, out TypeReferenceExtensionSettings stereotype)
@@ -54,7 +54,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new TypeReferenceExtensionSettings(model.GetStereotype("Type Reference Extension Settings"));
+            stereotype = new TypeReferenceExtensionSettings(model.GetStereotype("159cbc8e-a910-40f7-8e45-3edadbb863c2"));
             return true;
         }
 

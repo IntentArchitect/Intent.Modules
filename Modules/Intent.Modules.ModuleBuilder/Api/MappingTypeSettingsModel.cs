@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class MappingTypeSettingsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class MappingTypeSettingsModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Mapping Type Settings";
         public const string SpecializationTypeId = "dd8e8a63-140c-41c8-b812-0dc923012fac";

@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public partial class TemplateRegistrationModel : IHasFolder, IHasStereotypes, IMetadataModel, IHasName
+    public partial class TemplateRegistrationModel : IHasFolder, IHasStereotypes, IMetadataModel, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Template Registration";
         protected readonly IElement _element;

@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class AssociationEventSettingsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class AssociationEventSettingsModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Association Event Settings";
         public const string SpecializationTypeId = "1bdee938-8569-4fbf-84b4-8522d2cbee32";

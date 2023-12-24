@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Api
     {
         public static OptionSettings GetOptionSettings(this MappingOptionModel model)
         {
-            var stereotype = model.GetStereotype("Option Settings");
+            var stereotype = model.GetStereotype("6c209f86-87f6-4fc3-802e-e6e553dfbeca");
             return stereotype != null ? new OptionSettings(stereotype) : null;
         }
 
 
         public static bool HasOptionSettings(this MappingOptionModel model)
         {
-            return model.HasStereotype("Option Settings");
+            return model.HasStereotype("6c209f86-87f6-4fc3-802e-e6e553dfbeca");
         }
 
         public static bool TryGetOptionSettings(this MappingOptionModel model, out OptionSettings stereotype)
@@ -32,7 +32,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new OptionSettings(model.GetStereotype("Option Settings"));
+            stereotype = new OptionSettings(model.GetStereotype("6c209f86-87f6-4fc3-802e-e6e553dfbeca"));
             return true;
         }
 

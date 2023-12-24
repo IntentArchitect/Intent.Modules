@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DiagramSettingsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class DiagramSettingsModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Diagram Settings";
         public const string SpecializationTypeId = "67d711dd-3918-4b28-b2a0-4d845884e17a";

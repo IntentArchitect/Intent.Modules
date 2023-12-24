@@ -15,7 +15,7 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public partial class AssociationCreationOptionModel : IHasStereotypes, IMetadataModel, ICreationOptionModel, IHasName, IHasTypeReference
+    public partial class AssociationCreationOptionModel : IHasStereotypes, IMetadataModel, ICreationOptionModel, IHasName, IHasTypeReference, IElementWrapper
     {
         public const string SpecializationType = "Association Creation Option";
         protected readonly IElement _element;

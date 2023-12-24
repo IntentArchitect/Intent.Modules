@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static PositionSettings GetPositionSettings(this ElementVisualSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Position Settings");
+            var stereotype = model.GetStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea");
             return stereotype != null ? new PositionSettings(stereotype) : null;
         }
 
         public static bool HasPositionSettings(this ElementVisualSettingsModel model)
         {
-            return model.HasStereotype("Position Settings");
+            return model.HasStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea");
         }
 
         public static bool TryGetPositionSettings(this ElementVisualSettingsModel model, out PositionSettings stereotype)
@@ -31,20 +31,20 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new PositionSettings(model.GetStereotype("Position Settings"));
+            stereotype = new PositionSettings(model.GetStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea"));
             return true;
         }
 
         public static Settings GetSettings(this ElementVisualSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Settings");
+            var stereotype = model.GetStereotype("96a4fa17-6283-4626-835e-a8f013d98b19");
             return stereotype != null ? new Settings(stereotype) : null;
         }
 
 
         public static bool HasSettings(this ElementVisualSettingsModel model)
         {
-            return model.HasStereotype("Settings");
+            return model.HasStereotype("96a4fa17-6283-4626-835e-a8f013d98b19");
         }
 
         public static bool TryGetSettings(this ElementVisualSettingsModel model, out Settings stereotype)
@@ -55,7 +55,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new Settings(model.GetStereotype("Settings"));
+            stereotype = new Settings(model.GetStereotype("96a4fa17-6283-4626-835e-a8f013d98b19"));
             return true;
         }
 

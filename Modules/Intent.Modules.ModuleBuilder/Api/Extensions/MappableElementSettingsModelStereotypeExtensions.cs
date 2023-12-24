@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Api
     {
         public static MappableSettings GetMappableSettings(this MappableElementSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Mappable Settings");
+            var stereotype = model.GetStereotype("df24679d-09ec-4efc-af37-a1a926b7a108");
             return stereotype != null ? new MappableSettings(stereotype) : null;
         }
 
 
         public static bool HasMappableSettings(this MappableElementSettingsModel model)
         {
-            return model.HasStereotype("Mappable Settings");
+            return model.HasStereotype("df24679d-09ec-4efc-af37-a1a926b7a108");
         }
 
         public static bool TryGetMappableSettings(this MappableElementSettingsModel model, out MappableSettings stereotype)
@@ -32,7 +32,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new MappableSettings(model.GetStereotype("Mappable Settings"));
+            stereotype = new MappableSettings(model.GetStereotype("df24679d-09ec-4efc-af37-a1a926b7a108"));
             return true;
         }
 

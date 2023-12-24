@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static PackageSettings GetPackageSettings(this PackageSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Package Settings");
+            var stereotype = model.GetStereotype("0cda9040-7af2-4bb5-8f9d-919455abc878");
             return stereotype != null ? new PackageSettings(stereotype) : null;
         }
 
         public static bool HasPackageSettings(this PackageSettingsModel model)
         {
-            return model.HasStereotype("Package Settings");
+            return model.HasStereotype("0cda9040-7af2-4bb5-8f9d-919455abc878");
         }
 
         public static bool TryGetPackageSettings(this PackageSettingsModel model, out PackageSettings stereotype)
@@ -31,7 +31,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new PackageSettings(model.GetStereotype("Package Settings"));
+            stereotype = new PackageSettings(model.GetStereotype("0cda9040-7af2-4bb5-8f9d-919455abc878"));
             return true;
         }
 

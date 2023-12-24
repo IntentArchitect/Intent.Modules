@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class PackageExtensionModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class PackageExtensionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "Package Extension";
         protected readonly IElement _element;

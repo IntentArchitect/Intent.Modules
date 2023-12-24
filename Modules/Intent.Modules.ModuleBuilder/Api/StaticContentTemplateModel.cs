@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class StaticContentTemplateModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class StaticContentTemplateModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder, IElementWrapper
     {
         public const string SpecializationType = "Static Content Template";
         public const string SpecializationTypeId = "b795a763-296d-476f-ab0a-1a52710444db";

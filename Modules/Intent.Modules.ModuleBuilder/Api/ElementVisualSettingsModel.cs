@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ElementVisualSettingsModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class ElementVisualSettingsModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "Element Visual Settings";
         protected readonly IElement _element;

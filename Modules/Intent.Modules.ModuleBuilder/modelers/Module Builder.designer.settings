@@ -123,6 +123,7 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -131,7 +132,6 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -140,6 +140,7 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -183,6 +184,7 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -214,6 +216,7 @@
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -244,6 +247,7 @@
               <saveAsOwnFile>false</saveAsOwnFile>
               <allowRename>true</allowRename>
               <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>true</allowSorting>
@@ -268,6 +272,7 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -312,6 +317,7 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -332,6 +338,7 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -352,7 +359,6 @@
         <isNullableDefault>false</isNullableDefault>
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
-      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -361,6 +367,7 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -369,7 +376,6 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -378,6 +384,7 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>true</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -386,7 +393,6 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -459,6 +465,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type>File Template</type>
         <type>Static Content Template</type>

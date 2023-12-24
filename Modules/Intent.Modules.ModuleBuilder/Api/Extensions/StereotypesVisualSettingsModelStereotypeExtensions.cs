@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static PositionSettings GetPositionSettings(this StereotypesVisualSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Position Settings");
+            var stereotype = model.GetStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea");
             return stereotype != null ? new PositionSettings(stereotype) : null;
         }
 
         public static bool HasPositionSettings(this StereotypesVisualSettingsModel model)
         {
-            return model.HasStereotype("Position Settings");
+            return model.HasStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea");
         }
 
         public static bool TryGetPositionSettings(this StereotypesVisualSettingsModel model, out PositionSettings stereotype)
@@ -31,7 +31,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new PositionSettings(model.GetStereotype("Position Settings"));
+            stereotype = new PositionSettings(model.GetStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea"));
             return true;
         }
 

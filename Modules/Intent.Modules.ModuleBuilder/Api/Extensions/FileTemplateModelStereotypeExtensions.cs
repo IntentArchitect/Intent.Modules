@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Api
     {
         public static FileSettings GetFileSettings(this FileTemplateModel model)
         {
-            var stereotype = model.GetStereotype("File Settings");
+            var stereotype = model.GetStereotype("819dee60-184a-4cb7-9529-0d3910f82ee6");
             return stereotype != null ? new FileSettings(stereotype) : null;
         }
 
 
         public static bool HasFileSettings(this FileTemplateModel model)
         {
-            return model.HasStereotype("File Settings");
+            return model.HasStereotype("819dee60-184a-4cb7-9529-0d3910f82ee6");
         }
 
         public static bool TryGetFileSettings(this FileTemplateModel model, out FileSettings stereotype)
@@ -32,7 +32,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new FileSettings(model.GetStereotype("File Settings"));
+            stereotype = new FileSettings(model.GetStereotype("819dee60-184a-4cb7-9529-0d3910f82ee6"));
             return true;
         }
 

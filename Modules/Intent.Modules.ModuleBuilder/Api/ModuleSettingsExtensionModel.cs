@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ModuleSettingsExtensionModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class ModuleSettingsExtensionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "Module Settings Extension";
         public const string SpecializationTypeId = "72044cdf-1f96-4ad2-86be-8d5468725e67";

@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static PositionSettings GetPositionSettings(this TextDrawSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Position Settings");
+            var stereotype = model.GetStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea");
             return stereotype != null ? new PositionSettings(stereotype) : null;
         }
 
         public static bool HasPositionSettings(this TextDrawSettingsModel model)
         {
-            return model.HasStereotype("Position Settings");
+            return model.HasStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea");
         }
 
         public static bool TryGetPositionSettings(this TextDrawSettingsModel model, out PositionSettings stereotype)
@@ -31,19 +31,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new PositionSettings(model.GetStereotype("Position Settings"));
+            stereotype = new PositionSettings(model.GetStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea"));
             return true;
         }
 
         public static TextSettings GetTextSettings(this TextDrawSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Text Settings");
+            var stereotype = model.GetStereotype("1cb12b3c-f000-4331-b3fc-4250a5ced3fa");
             return stereotype != null ? new TextSettings(stereotype) : null;
         }
 
         public static bool HasTextSettings(this TextDrawSettingsModel model)
         {
-            return model.HasStereotype("Text Settings");
+            return model.HasStereotype("1cb12b3c-f000-4331-b3fc-4250a5ced3fa");
         }
 
         public static bool TryGetTextSettings(this TextDrawSettingsModel model, out TextSettings stereotype)
@@ -54,7 +54,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new TextSettings(model.GetStereotype("Text Settings"));
+            stereotype = new TextSettings(model.GetStereotype("1cb12b3c-f000-4331-b3fc-4250a5ced3fa"));
             return true;
         }
 

@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class MappingSettingsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class MappingSettingsModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Mapping Settings";
         public const string SpecializationTypeId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
@@ -90,7 +90,7 @@ namespace Intent.ModuleBuilder.Api
                 SourceMappableSettings = SourceMapping?.GetMappableElementPersistables(),
                 TargetMappableSettings = TargetMapping?.GetMappableElementPersistables(),
                 MappingTypes = MappingTypes.Select(x => x.ToPersistable()).ToList(),
-                IsRequiredFunction = this.GetMappingSettings().IsRequiredFunction()
+                IsRequiredFunction = this.GetMappingSettings()?.IsRequiredFunction()
             };
         }
     }

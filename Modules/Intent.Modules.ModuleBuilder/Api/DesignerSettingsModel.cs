@@ -15,7 +15,7 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DesignerSettingsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class DesignerSettingsModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         protected readonly IElement _element;
         public const string SpecializationType = "Designer Settings";

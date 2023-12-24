@@ -6,7 +6,7 @@
     <type id="a901c634-6482-4993-ae3c-bd1b637f78d4">Mapping Settings</type>
   </targetTypes>
   <targetReferenceTypes />
-  <applyMode>manually</applyMode>
+  <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>

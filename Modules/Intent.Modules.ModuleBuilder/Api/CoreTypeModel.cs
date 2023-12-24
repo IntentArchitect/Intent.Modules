@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public partial class CoreTypeModel : IHasStereotypes, IMetadataModel, ICreatableType, IHasName
+    public partial class CoreTypeModel : IHasStereotypes, IMetadataModel, ICreatableType, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Core Type";
         protected readonly IElement _element;

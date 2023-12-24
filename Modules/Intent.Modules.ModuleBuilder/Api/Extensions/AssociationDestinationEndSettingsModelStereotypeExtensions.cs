@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static Settings GetSettings(this AssociationDestinationEndSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Settings");
+            var stereotype = model.GetStereotype("5a410b57-e6a8-4567-b387-71a89290b2c9");
             return stereotype != null ? new Settings(stereotype) : null;
         }
 
         public static bool HasSettings(this AssociationDestinationEndSettingsModel model)
         {
-            return model.HasStereotype("Settings");
+            return model.HasStereotype("5a410b57-e6a8-4567-b387-71a89290b2c9");
         }
 
         public static bool TryGetSettings(this AssociationDestinationEndSettingsModel model, out Settings stereotype)
@@ -31,7 +31,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new Settings(model.GetStereotype("Settings"));
+            stereotype = new Settings(model.GetStereotype("5a410b57-e6a8-4567-b387-71a89290b2c9"));
             return true;
         }
 

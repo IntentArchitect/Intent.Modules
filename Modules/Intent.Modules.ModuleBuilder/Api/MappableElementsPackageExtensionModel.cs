@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class MappableElementsPackageExtensionModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class MappableElementsPackageExtensionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "Mappable Elements Package Extension";
         public const string SpecializationTypeId = "bddb69f0-e2c8-4373-b5cb-d701f311f935";

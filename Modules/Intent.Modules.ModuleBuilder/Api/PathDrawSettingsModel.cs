@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class PathDrawSettingsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class PathDrawSettingsModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Path Draw Settings";
         protected readonly IElement _element;

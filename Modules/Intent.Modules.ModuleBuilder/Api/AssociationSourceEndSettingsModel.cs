@@ -14,7 +14,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public partial class AssociationSourceEndSettingsModel : IHasStereotypes, IMetadataModel, ICreatableType, IHasName
+    public partial class AssociationSourceEndSettingsModel : IHasStereotypes, IMetadataModel, ICreatableType, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Association Source End Settings";
         protected readonly IElement _element;

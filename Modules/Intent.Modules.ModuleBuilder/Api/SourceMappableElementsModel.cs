@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class SourceMappableElementsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class SourceMappableElementsModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Source Mappable Elements";
         public const string SpecializationTypeId = "1536425c-35f4-48e1-abe4-1f8f56533545";

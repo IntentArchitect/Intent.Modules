@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static Setting GetSetting(this AssociationVisualSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Setting");
+            var stereotype = model.GetStereotype("e21d9a65-36b8-4664-9c61-d70f3615023c");
             return stereotype != null ? new Setting(stereotype) : null;
         }
 
         public static bool HasSetting(this AssociationVisualSettingsModel model)
         {
-            return model.HasStereotype("Setting");
+            return model.HasStereotype("e21d9a65-36b8-4664-9c61-d70f3615023c");
         }
 
         public static bool TryGetSetting(this AssociationVisualSettingsModel model, out Setting stereotype)
@@ -31,7 +31,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new Setting(model.GetStereotype("Setting"));
+            stereotype = new Setting(model.GetStereotype("e21d9a65-36b8-4664-9c61-d70f3615023c"));
             return true;
         }
 

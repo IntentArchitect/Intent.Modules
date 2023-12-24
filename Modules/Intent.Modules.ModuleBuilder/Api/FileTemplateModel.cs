@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class FileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class FileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
     {
         public FileTemplateModel(IElement element) : base(element, SpecializationType)
         {

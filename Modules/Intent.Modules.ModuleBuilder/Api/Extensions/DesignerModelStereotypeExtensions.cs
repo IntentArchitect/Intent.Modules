@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static DesignerConfig GetDesignerConfig(this DesignerModel model)
         {
-            var stereotype = model.GetStereotype("Designer Config");
+            var stereotype = model.GetStereotype("6761be76-7c09-4ad4-8a65-82c6d17992db");
             return stereotype != null ? new DesignerConfig(stereotype) : null;
         }
 
         public static bool HasDesignerConfig(this DesignerModel model)
         {
-            return model.HasStereotype("Designer Config");
+            return model.HasStereotype("6761be76-7c09-4ad4-8a65-82c6d17992db");
         }
 
         public static bool TryGetDesignerConfig(this DesignerModel model, out DesignerConfig stereotype)
@@ -31,19 +31,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new DesignerConfig(model.GetStereotype("Designer Config"));
+            stereotype = new DesignerConfig(model.GetStereotype("6761be76-7c09-4ad4-8a65-82c6d17992db"));
             return true;
         }
 
         public static OutputConfiguration GetOutputConfiguration(this DesignerModel model)
         {
-            var stereotype = model.GetStereotype("Output Configuration");
+            var stereotype = model.GetStereotype("82a8b98c-0306-4309-b564-146668de0e74");
             return stereotype != null ? new OutputConfiguration(stereotype) : null;
         }
 
         public static bool HasOutputConfiguration(this DesignerModel model)
         {
-            return model.HasStereotype("Output Configuration");
+            return model.HasStereotype("82a8b98c-0306-4309-b564-146668de0e74");
         }
 
         public static bool TryGetOutputConfiguration(this DesignerModel model, out OutputConfiguration stereotype)
@@ -54,7 +54,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new OutputConfiguration(model.GetStereotype("Output Configuration"));
+            stereotype = new OutputConfiguration(model.GetStereotype("82a8b98c-0306-4309-b564-146668de0e74"));
             return true;
         }
 

@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Api
     {
         public static MappingEndSettings GetMappingEndSettings(this TargetMappableElementsModel model)
         {
-            var stereotype = model.GetStereotype("Mapping End Settings");
+            var stereotype = model.GetStereotype("c5fe657f-bf6f-4027-8bec-67290cc6dde2");
             return stereotype != null ? new MappingEndSettings(stereotype) : null;
         }
 
 
         public static bool HasMappingEndSettings(this TargetMappableElementsModel model)
         {
-            return model.HasStereotype("Mapping End Settings");
+            return model.HasStereotype("c5fe657f-bf6f-4027-8bec-67290cc6dde2");
         }
 
         public static bool TryGetMappingEndSettings(this TargetMappableElementsModel model, out MappingEndSettings stereotype)
@@ -32,7 +32,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new MappingEndSettings(model.GetStereotype("Mapping End Settings"));
+            stereotype = new MappingEndSettings(model.GetStereotype("c5fe657f-bf6f-4027-8bec-67290cc6dde2"));
             return true;
         }
 

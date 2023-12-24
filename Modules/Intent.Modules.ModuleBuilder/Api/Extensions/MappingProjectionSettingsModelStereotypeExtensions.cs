@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static MappingSettings GetMappingSettings(this MappingProjectionSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Mapping Settings");
+            var stereotype = model.GetStereotype("c7683de8-a27a-45ac-b81f-8ac2966a29d9");
             return stereotype != null ? new MappingSettings(stereotype) : null;
         }
 
         public static bool HasMappingSettings(this MappingProjectionSettingsModel model)
         {
-            return model.HasStereotype("Mapping Settings");
+            return model.HasStereotype("c7683de8-a27a-45ac-b81f-8ac2966a29d9");
         }
 
         public static bool TryGetMappingSettings(this MappingProjectionSettingsModel model, out MappingSettings stereotype)
@@ -31,7 +31,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new MappingSettings(model.GetStereotype("Mapping Settings"));
+            stereotype = new MappingSettings(model.GetStereotype("c7683de8-a27a-45ac-b81f-8ac2966a29d9"));
             return true;
         }
 

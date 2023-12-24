@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static BehaviourSettings GetBehaviourSettings(this ElementMappingModel model)
         {
-            var stereotype = model.GetStereotype("Behaviour Settings");
+            var stereotype = model.GetStereotype("47ec6487-1f69-4691-9c8c-031e2da08c07");
             return stereotype != null ? new BehaviourSettings(stereotype) : null;
         }
 
         public static bool HasBehaviourSettings(this ElementMappingModel model)
         {
-            return model.HasStereotype("Behaviour Settings");
+            return model.HasStereotype("47ec6487-1f69-4691-9c8c-031e2da08c07");
         }
 
         public static bool TryGetBehaviourSettings(this ElementMappingModel model, out BehaviourSettings stereotype)
@@ -31,19 +31,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new BehaviourSettings(model.GetStereotype("Behaviour Settings"));
+            stereotype = new BehaviourSettings(model.GetStereotype("47ec6487-1f69-4691-9c8c-031e2da08c07"));
             return true;
         }
 
         public static CriteriaSettings GetCriteriaSettings(this ElementMappingModel model)
         {
-            var stereotype = model.GetStereotype("Criteria Settings");
+            var stereotype = model.GetStereotype("c677f491-8290-47ee-9e98-4c26bc76b592");
             return stereotype != null ? new CriteriaSettings(stereotype) : null;
         }
 
         public static bool HasCriteriaSettings(this ElementMappingModel model)
         {
-            return model.HasStereotype("Criteria Settings");
+            return model.HasStereotype("c677f491-8290-47ee-9e98-4c26bc76b592");
         }
 
         public static bool TryGetCriteriaSettings(this ElementMappingModel model, out CriteriaSettings stereotype)
@@ -54,19 +54,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new CriteriaSettings(model.GetStereotype("Criteria Settings"));
+            stereotype = new CriteriaSettings(model.GetStereotype("c677f491-8290-47ee-9e98-4c26bc76b592"));
             return true;
         }
 
         public static OutputSettings GetOutputSettings(this ElementMappingModel model)
         {
-            var stereotype = model.GetStereotype("Output Settings");
+            var stereotype = model.GetStereotype("740ed66f-c70d-45b0-80d5-6f663da53ed5");
             return stereotype != null ? new OutputSettings(stereotype) : null;
         }
 
         public static bool HasOutputSettings(this ElementMappingModel model)
         {
-            return model.HasStereotype("Output Settings");
+            return model.HasStereotype("740ed66f-c70d-45b0-80d5-6f663da53ed5");
         }
 
         public static bool TryGetOutputSettings(this ElementMappingModel model, out OutputSettings stereotype)
@@ -77,7 +77,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new OutputSettings(model.GetStereotype("Output Settings"));
+            stereotype = new OutputSettings(model.GetStereotype("740ed66f-c70d-45b0-80d5-6f663da53ed5"));
             return true;
         }
 

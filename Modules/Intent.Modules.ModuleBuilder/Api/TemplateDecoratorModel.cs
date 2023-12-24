@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public partial class TemplateDecoratorModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder
+    public partial class TemplateDecoratorModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder, IElementWrapper
     {
         public const string SpecializationType = "Template Decorator";
         public const string SpecializationTypeId = "f0f46278-29ea-42bd-9206-0e7034f623bc";
