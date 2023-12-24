@@ -9,31 +9,14 @@ using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.CSharp.Mapping
 {
-    public class ClassConstructionMapping : CSharpMappingBase
-    {
-        private readonly ICSharpFileBuilderTemplate _template;
-
-        public ClassConstructionMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
-        {
-            _template = template;
-        }
-
-        public ClassConstructionMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
-        {
-            _template = template;
-        }
-    }
-
     public class ObjectInitializationMapping : CSharpMappingBase
     {
+        private readonly MappingModel _mappingModel;
         private readonly ICSharpFileBuilderTemplate _template;
 
-        public ObjectInitializationMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
-        {
-            _template = template;
-        }
         public ObjectInitializationMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
         {
+            _mappingModel = model;
             _template = template;
         }
 
@@ -75,7 +58,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     }
                     else
                     {
-                        // TODO: add ternary check for when the source path could be nullable.
+                        // TODO: add ternary check to mappings for when the source path could be nullable.
                         SetTargetReplacement(GetTargetPath().Last().Element, null);
                         return GetConstructorStatement();
                     }
@@ -83,18 +66,53 @@ namespace Intent.Modules.Common.CSharp.Mapping
             }
         }
 
-        private CSharpStatement GetConstructorStatement()
+        private ConstructorMapping FindConstructorMappingInHierarchy(IList<ICSharpMapping> childMappings)
         {
-            var ctor = Children.SingleOrDefault(x => x is ConstructorMapping && x.Model.TypeReference == null);
+            var ctor = childMappings.SingleOrDefault(x => x is ConstructorMapping && x.Model.TypeReference == null);
             if (ctor != null)
             {
-                var children = Children.Where(x => x is not ConstructorMapping || x.Model.TypeReference != null).ToList();
+                return (ConstructorMapping)ctor;
+            }
+
+            foreach (var childrenMapping in childMappings.OfType<MapChildrenMapping>())
+            {
+                ctor = FindConstructorMappingInHierarchy(childrenMapping.Children);
+                if (ctor != null)
+                {
+                    return (ConstructorMapping)ctor;
+                }
+            }
+            return null;
+        }
+
+        private IList<ICSharpMapping> FindPropertyMappingsInHierarchy(IList<ICSharpMapping> childMappings)
+        {
+            if (!childMappings.Any())
+            {
+                return new List<ICSharpMapping>();
+            }
+
+            var results = childMappings.Where(x => (x is not ConstructorMapping and not MapChildrenMapping) && x.Model.TypeReference != null).ToList();
+            results.AddRange(FindPropertyMappingsInHierarchy(childMappings.OfType<MapChildrenMapping>().SelectMany(x => x.Children).ToList()));
+            return results;
+        }
+
+
+        private CSharpStatement GetConstructorStatement()
+        {
+            //var ctor = Children.SingleOrDefault(x => x is ConstructorMapping && x.Model.TypeReference == null);
+            var ctor = FindConstructorMappingInHierarchy(Children);
+            if (ctor != null)
+            {
+                var children = FindPropertyMappingsInHierarchy(Children).ToList();
                 if (!children.Any())
                 {
+                    // use constructor only:
                     return ctor.GetSourceStatement();
                 }
 
-                var init = new CSharpObjectInitializerBlock(ctor.GetSourceStatement());
+                // use constructor and object initialization syntax:
+                var init = new CSharpObjectInitializerBlock(ctor.GetSourceStatement()); 
                 init.AddStatements(children.Select(x => new CSharpAssignmentStatement(x.GetTargetStatement(), x.GetSourceStatement())));
                 return init;
             }

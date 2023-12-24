@@ -22,31 +22,6 @@ public class ObjectUpdateMapping : CSharpMappingBase
         _template = template;
     }
 
-    public override CSharpStatement GetSourceStatement()
-    {
-        if (Mapping == null) // is traversal
-        {
-            return GetPathText(GetSourcePath(), _sourceReplacements);
-        }
-        else
-        {
-            if (Children.Count == 0)
-            {
-                return $"{GetSourcePathText()}";
-            }
-            else if (Model.TypeReference.IsCollection)
-            {
-                var from = $"{_template.GetTypeName("Domain.Common.UpdateHelper")}.CreateOrUpdateCollection({GetTargetPathText()}, {GetSourcePathText()}, (e, d) => e.Id == d.Id, CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()})";
-
-                CreateUpdateMethod($"CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()}");
-
-                return from;
-            }
-        }
-
-        return null;
-    }
-
     public override IEnumerable<CSharpStatement> GetMappingStatements()
     {
         if (Mapping == null) // is traversal
@@ -70,6 +45,31 @@ public class ObjectUpdateMapping : CSharpMappingBase
         {
             yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
         }
+    }
+
+    public override CSharpStatement GetSourceStatement()
+    {
+        if (Mapping == null) // is traversal
+        {
+            return GetSourcePathText(GetSourcePath());
+        }
+        else
+        {
+            if (Children.Count == 0)
+            {
+                return $"{GetSourcePathText()}";
+            }
+            else if (Model.TypeReference.IsCollection)
+            {
+                var from = $"{_template.GetTypeName("Domain.Common.UpdateHelper")}.CreateOrUpdateCollection({GetTargetPathText()}, {GetSourcePathText()}, (e, d) => e.Id == d.Id, CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()})";
+
+                CreateUpdateMethod($"CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()}");
+
+                return from;
+            }
+        }
+
+        return null;
     }
 
     private void CreateUpdateMethod(string updateMethodName)

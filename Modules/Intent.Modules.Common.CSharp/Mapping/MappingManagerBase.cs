@@ -60,18 +60,52 @@ public class MappingModel
             .Select(x => new MappingModel(mappingType, mappingTypeId, x.Key.Element, x.ToList(), context, manager, level + 1))
             .OrderBy(x => ((IElement)x.Model).Order)
             .ToList();
+        foreach (var child in Children)
+        {
+            child.Parent = this;
+        }
     }
 
     public string MappingType { get; }
     public string MappingTypeId { get; }
-    public ICanBeReferencedType Model { get; set; }
-    public IElementToElementMappedEnd Mapping { get; set; }
+    public ICanBeReferencedType Model { get; }
+    public IElementToElementMappedEnd Mapping { get; }
     public IList<MappingModel> Children { get; set; }
+    public MappingModel Parent { get; private set;  }
     public ICSharpCodeContext CodeContext { get; set; }
 
     public ICSharpMapping GetMapping()
     {
         return _manager.ResolveMappings(this);
+    }
+
+    //public IEnumerable<MappingModel> GetAllChildren(Func<MappingModel, bool> predicate = null)
+    //{
+    //    var result = new List<MappingModel>();
+    //    foreach (var mappingModel in Children)
+    //    {
+    //        if (predicate == null || predicate(mappingModel))
+    //        {
+    //            result.Add(mappingModel);
+    //            result.AddRange(mappingModel.GetAllChildren(predicate));
+    //        }
+    //    }
+    //    return result;
+    //}
+
+    public MappingModel GetParent(Func<MappingModel, bool> predicate = null)
+    {
+        if (predicate == null)
+        {
+            return Parent;
+        }
+
+        var parent = Parent;
+        while (parent != null && predicate(parent) == false)
+        {
+            parent = parent.Parent;
+        }
+        return parent;
     }
 }
 

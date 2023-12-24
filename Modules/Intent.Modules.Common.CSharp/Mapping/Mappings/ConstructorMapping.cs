@@ -14,21 +14,18 @@ public class ConstructorMapping : CSharpMappingBase
 {
     private readonly ICSharpFileBuilderTemplate _template;
     private readonly ConstructorMappingOptions _options;
-
-    public ConstructorMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
-    {
-        _template = template;
-        _options = new ConstructorMappingOptions();
-    }
+    private readonly MappingModel _mappingMappingModel;
 
     public ConstructorMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
     {
+        _mappingMappingModel = model;
         _template = template;
         _options = new ConstructorMappingOptions();
     }
 
     public ConstructorMapping(MappingModel model, ICSharpFileBuilderTemplate template, ConstructorMappingOptions options) : base(model, template)
     {
+        _mappingMappingModel = model;
         _template = template;
         _options = options ?? new ConstructorMappingOptions();
     }
@@ -39,9 +36,12 @@ public class ConstructorMapping : CSharpMappingBase
         // Determine if this model is a constructor on the class:
         if (typeTemplate?.CSharpFile.Classes.First().TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpConstructor ctor) 
         {
+            //var concreteClassModel = (IElement)_mappingMappingModel.GetParent(x => x.Parent == null || x.Mapping != null)?.Model 
+            //                         ?? ((IElement)Model).ParentElement;
+
             //var i = new CSharpInvocationStatement($"new {reference.Name}").WithoutSemicolon(); (replaced by below)
             //This is to ensure that full typename resolution is taken. Consider exposing the full type via the IHasCSharpName interface.
-            var i = new CSharpInvocationStatement($"new {((IntentTemplateBase)_template).GetTypeName(typeTemplate)}").WithoutSemicolon();
+            var i = new CSharpInvocationStatement($"new {_template.GetTypeName(((IElement)Model).ParentElement)}").WithoutSemicolon();
             foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
             {
                 i.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
@@ -89,7 +89,7 @@ public class ConstructorMapping : CSharpMappingBase
 
     public override CSharpStatement GetTargetStatement()
     {
-        return GetPathText(Children.First(x => x.Mapping != null).Mapping.TargetPath.SkipLast(1).ToList(), _targetReplacements);
+        return GetSourcePathText(Children.First(x => x.Mapping != null).Mapping.TargetPath.SkipLast(1).ToList());
     }
 
     public override IEnumerable<CSharpStatement> GetMappingStatements()

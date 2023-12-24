@@ -7,6 +7,7 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 public interface ICSharpMapping
 {
     public ICanBeReferencedType Model { get; }
+    public ICSharpMapping Parent { get; internal set; }
     public IList<ICSharpMapping> Children { get; }
     public IElementToElementMappedEnd Mapping { get; set; }
     IEnumerable<CSharpStatement> GetMappingStatements();
@@ -14,6 +15,14 @@ public interface ICSharpMapping
     CSharpStatement GetSourceStatement();
     CSharpStatement GetTargetStatement();
 
-    void SetSourceReplacement(IMetadataModel type, string replacement);
-    void SetTargetReplacement(IMetadataModel type, string replacement);
+    bool TryGetSourceReplacement(IMetadataModel type, out string replacement);
+    bool TryGetTargetReplacement(IMetadataModel type, out string replacement);
+
+    internal void SetSourceReplacement(IMetadataModel type, string replacement);
+    internal void SetTargetReplacement(IMetadataModel type, string replacement);
+}
+
+public interface ICSharpModelReplacement
+{
+
 }

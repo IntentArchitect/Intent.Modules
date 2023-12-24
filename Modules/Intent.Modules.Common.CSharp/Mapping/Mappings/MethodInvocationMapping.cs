@@ -39,7 +39,7 @@ public class MethodInvocationMapping : CSharpMappingBase
 
     public override CSharpStatement GetTargetStatement()
     {
-        return GetPathText(Children.First(x => x.Mapping != null).Mapping.TargetPath.SkipLast(1).ToList(), _targetReplacements);
+        return GetSourcePathText(Children.First(x => x.Mapping != null).Mapping.TargetPath.SkipLast(1).ToList());
     }
 
     public override IEnumerable<CSharpStatement> GetMappingStatements()
