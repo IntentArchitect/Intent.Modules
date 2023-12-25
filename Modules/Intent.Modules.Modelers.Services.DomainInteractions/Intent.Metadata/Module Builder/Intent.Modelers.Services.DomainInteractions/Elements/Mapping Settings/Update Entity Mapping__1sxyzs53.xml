@@ -9,7 +9,16 @@
   <parentFolderId>f36cb21a-faf9-46ff-85e7-41f38345253d</parentFolderId>
   <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
   <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="cb5032a1-f531-40ee-8fe5-824ed8b89946" name="Mapping Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="dda7b2ec-461b-41e1-a0f3-a23268053ef4" display="Is Required Function" value="return true;" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <metadata />
   <childElements>
     <childElement id="7d12f6e8-8115-4c77-ab1c-412890d53716" type="Source Mappable Elements" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">

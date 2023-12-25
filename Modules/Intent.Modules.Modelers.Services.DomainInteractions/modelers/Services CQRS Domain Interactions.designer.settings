@@ -10040,10 +10040,10 @@ association.typeReference.getType().getChildren("Attribute")
             <type>Operation</type>
             <type>Command</type>
           </targetTypes>
-          <allowIsNavigable>true</allowIsNavigable>
-          <allowIsNullable>true</allowIsNullable>
-          <allowIsCollection>true</allowIsCollection>
-          <isNavigableDefault>true</isNavigableDefault>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>false</isNavigableDefault>
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
@@ -10290,6 +10290,7 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
   <mappingSettings>
     <mappingSetting type="Create Entity Mapping" typeId="5f172141-fdba-426b-980e-163e782ff53e">
       <title>Create Entity Mapping</title>
+      <isRequiredFunction>return true;</isRequiredFunction>
       <targetRootElementFunction>return element.getParent("Class")?.id ?? element.id;</targetRootElementFunction>
       <sourceMappings>
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
@@ -10501,12 +10502,9 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
     </mappingSetting>
     <mappingSetting type="Process Action Mapping" typeId="01bc7593-a6a2-45aa-8497-b4b6a269ab68">
       <title>Process Action Mapping</title>
-      <sourceRootElementFunction>return element.getParent("Command")?.id ?? element.getParent("Operation").id</sourceRootElementFunction>
-      <targetRootElementFunction>if (element.getParent().specializationId == "") {
-    let updateType = element.getParent().typeReference.getType();
-    return updateType.getParent("Class")?.id ?? updateType.id;
-}
-return element.getParent("Command")?.id ?? element.getParent("Operation").id
+      <isRequiredFunction>return true;</isRequiredFunction>
+      <sourceRootElementFunction>return element.getParent().id;</sourceRootElementFunction>
+      <targetRootElementFunction>return element.getParent().id;
 </targetRootElementFunction>
       <sourceMappings>
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
@@ -10552,6 +10550,7 @@ return element.getParent("Command")?.id ?? element.getParent("Operation").id
     </mappingSetting>
     <mappingSetting type="Query Entity Mapping" typeId="25f25af9-c38b-4053-9474-b0fabe9d7ea7">
       <title>Query Entity Mapping</title>
+      <isRequiredFunction>return true;</isRequiredFunction>
       <targetRootElementFunction>return element.getParent("Class")?.id ?? element.id;</targetRootElementFunction>
       <sourceMappings>
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
@@ -10638,6 +10637,7 @@ return element.getParent("Command")?.id ?? element.getParent("Operation").id
     </mappingSetting>
     <mappingSetting type="Service Operation Mapping" typeId="df692ffe-5d0c-40ee-9362-a483d929a8ec">
       <title>Service Operation Mapping</title>
+      <isRequiredFunction>return true;</isRequiredFunction>
       <sourceMappings>
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
       </sourceMappings>
@@ -10728,6 +10728,7 @@ return element.getParent("Command")?.id ?? element.getParent("Operation").id
     </mappingSetting>
     <mappingSetting type="Update Entity Mapping" typeId="01721b1a-a85d-4320-a5cd-8bd39247196a">
       <title>Update Entity Mapping</title>
+      <isRequiredFunction>return true;</isRequiredFunction>
       <targetRootElementFunction>return element.getParent("Class")?.id ?? element.id;</targetRootElementFunction>
       <sourceMappings>
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />

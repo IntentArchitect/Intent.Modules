@@ -9,7 +9,16 @@
   <parentFolderId>f36cb21a-faf9-46ff-85e7-41f38345253d</parentFolderId>
   <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
   <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="cb5032a1-f531-40ee-8fe5-824ed8b89946" name="Mapping Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="dda7b2ec-461b-41e1-a0f3-a23268053ef4" display="Is Required Function" value="return true;" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <metadata />
   <childElements>
     <childElement id="3ff40a00-10dc-432e-9db5-a3abf5da2529" type="Source Mappable Elements" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
@@ -104,7 +113,7 @@
           <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
           <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -146,7 +155,7 @@
               <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
               <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -189,7 +198,7 @@
               <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
               <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -232,7 +241,7 @@
               <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
               <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -277,7 +286,7 @@
           <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
           <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>

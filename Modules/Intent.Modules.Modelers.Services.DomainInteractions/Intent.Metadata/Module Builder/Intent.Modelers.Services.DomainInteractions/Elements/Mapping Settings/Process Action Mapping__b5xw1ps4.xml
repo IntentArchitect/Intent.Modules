@@ -9,7 +9,16 @@
   <parentFolderId>f36cb21a-faf9-46ff-85e7-41f38345253d</parentFolderId>
   <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
   <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="cb5032a1-f531-40ee-8fe5-824ed8b89946" name="Mapping Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="dda7b2ec-461b-41e1-a0f3-a23268053ef4" display="Is Required Function" value="return true;" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <metadata />
   <childElements>
     <childElement id="fd5bf7ae-8f9b-483d-afdd-e8fa293a9c41" type="Source Mappable Elements" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
@@ -28,7 +37,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="return element.getParent(&quot;Command&quot;)?.id ?? element.getParent(&quot;Operation&quot;).id" isActive="true" />
+            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="return element.getParent().id;" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -76,7 +85,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="if (element.getParent().specializationId == &quot;&quot;) {&#xD;&#xA;    let updateType = element.getParent().typeReference.getType();&#xD;&#xA;    return updateType.getParent(&quot;Class&quot;)?.id ?? updateType.id;&#xD;&#xA;}&#xD;&#xA;return element.getParent(&quot;Command&quot;)?.id ?? element.getParent(&quot;Operation&quot;).id&#xD;&#xA;" isActive="true" />
+            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="return element.getParent().id;&#xD;&#xA;" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

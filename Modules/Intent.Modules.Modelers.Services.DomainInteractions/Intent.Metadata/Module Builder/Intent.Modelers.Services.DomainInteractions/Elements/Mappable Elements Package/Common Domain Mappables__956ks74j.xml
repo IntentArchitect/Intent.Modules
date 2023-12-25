@@ -34,7 +34,7 @@
       <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
       <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
       <stereotypes>
-        <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+        <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
           <addedByDefault>true</addedByDefault>
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -76,7 +76,7 @@
           <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
           <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -122,7 +122,7 @@
       <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
       <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
       <stereotypes>
-        <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+        <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
           <addedByDefault>true</addedByDefault>
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -164,7 +164,7 @@
           <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
           <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
