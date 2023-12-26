@@ -75,10 +75,7 @@ namespace Intent.ModuleBuilder.Api
                 AllowSorting = this.GetSettings().AllowSorting(),
                 SortChildren = ToSortChildrenOptions(this.GetSettings().SortChildren()),
                 TypeOrder = this.MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
-                CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
-                    .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
-                    .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : Array.Empty<ElementCreationOption>())
-                    .ToList(),
+                CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList()
             };

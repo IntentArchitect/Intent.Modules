@@ -70,6 +70,19 @@ namespace Intent.ModuleBuilder.Api
 
         public IList<TypeOrder> TypeOrder { get; }
 
+        public List<Intent.IArchitect.Agent.Persistence.Model.Common.ElementCreationOption> ToCreationOptionsPersistable()
+        {
+            return _element.ChildElements.Select(x =>
+                {
+                    if (x.IsElementCreationOptionModel()) return x.AsElementCreationOptionModel().ToPersistable();
+                    if (x.IsAssociationCreationOptionModel()) return x.AsAssociationCreationOptionModel().ToPersistable();
+                    if (x.IsStereotypeDefinitionCreationOptionModel()) return x.AsStereotypeDefinitionCreationOptionModel().ToPersistable();
+                    return null;
+                })
+                .Where(x => x != null)
+                .ToList();
+        }
+
         [IntentManaged(Mode.Fully)]
         public bool Equals(ContextMenuModel other)
         {

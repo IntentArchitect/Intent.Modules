@@ -81,10 +81,7 @@ namespace Intent.ModuleBuilder.Api
                     DisplayName = this.GetAssociationEndExtensionSettings().DisplayName(),
                     Hint = this.GetAssociationEndExtensionSettings().Hint()
                 },
-                CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
-                    .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
-                    .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
-                    .ToList(),
+                CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList()
             };

@@ -73,10 +73,7 @@ namespace Intent.ModuleBuilder.Api
                 SpecializationTypeId = TypeReference.Element.Id,
                 DisplayFunctionOverride = this.GetExtensionSettings()?.DisplayTextFunction(),
                 ValidateFunctionOverride = this.GetExtensionSettings()?.ValidateFunction(),
-                CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
-                    .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
-                    .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
-                    .ToList(),
+                CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
