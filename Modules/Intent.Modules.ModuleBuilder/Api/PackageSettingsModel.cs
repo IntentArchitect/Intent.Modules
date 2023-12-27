@@ -68,7 +68,7 @@ namespace Intent.ModuleBuilder.Api
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
                     .ToList(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
-                TypeOrder = MenuOptions?.TypeOrder.Select(x => new TypeOrderPersistable() { Type = x.Type, Order = x.Order?.ToString() }).ToList(),
+                TypeOrder = MenuOptions?.TypeOrder.Select(x => x.ToPersistable()).ToList(),
                 RequiredPackages = new string[0],
                 Macros = this.EventSettings?.OnCreatedEvents.Select(x => x.ToPersistable()).ToList()
             };

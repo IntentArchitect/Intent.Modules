@@ -225,6 +225,11 @@ namespace Intent.ModuleBuilder.Api
         {
             return (Type != null ? Type.GetHashCode() : 0);
         }
+
+        public TypeOrderPersistable ToPersistable()
+        {
+            return new TypeOrderPersistable { Type = Type, Order = Order?.ToString() };
+        }
     }
 
     [IntentManaged(Mode.Fully)]

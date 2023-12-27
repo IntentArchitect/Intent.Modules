@@ -76,7 +76,7 @@ namespace Intent.ModuleBuilder.Api
                 CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
-                TypeOrder = MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
+                TypeOrder = MenuOptions?.TypeOrder.Select(x => x.ToPersistable()).ToList(),
                 MappingSettings = MappingSettings.Select(x => x.ToPersistable()).ToList(),
                 DiagramSettings = DiagramSettings?.ToPersistable(),
                 TypeReferenceExtensionSetting = !this.GetTypeReferenceExtensionSettings().Mode().IsInherit() ?
