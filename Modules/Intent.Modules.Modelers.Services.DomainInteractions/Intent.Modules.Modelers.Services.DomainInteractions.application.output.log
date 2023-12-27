@@ -164,8 +164,8 @@
       <ProjectId>9b946305-94cd-455c-a9f0-c6c5c6be8d69</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#f36cb21a-faf9-46ff-85e7-41f38345253d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/Services CQRS Domain Interactions.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Services CQRS Domain Interactions.designer.settings</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>modelers/Services Domain Interactions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Services Domain Interactions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

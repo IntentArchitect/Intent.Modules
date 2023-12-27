@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="f36cb21a-faf9-46ff-85e7-41f38345253d" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
-  <name>Services CQRS Domain Interactions</name>
-  <display>Services CQRS Domain Interactions</display>
+  <name>Services Domain Interactions</name>
+  <display>Services Domain Interactions</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />

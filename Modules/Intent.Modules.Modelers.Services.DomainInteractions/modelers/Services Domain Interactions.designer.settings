@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings version="3.1.1">
   <id>f36cb21a-faf9-46ff-85e7-41f38345253d</id>
-  <name>Services CQRS Domain Interactions</name>
+  <name>Services Domain Interactions</name>
   <designerReferences />
   <packageSettings />
   <packageExtensions>
@@ -3956,15 +3956,6 @@ await execute(element);
   <elementExtensions>
     <elementExtension type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
       <creationOptions>
-        <option type="element">
-          <text>Add Processing Action</text>
-          <shortcut>ctrl + shift + p</shortcut>
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAehJREFUeF7t3L1NA0EQhuE55DrYJijAEiVQAh0QEVl3XRGQQwWk/qGQRYewRGCB5G93dr6ZcT723nOv5GS0k+QHEpig6RyWBAQjSMAEBAXA8WYFll15lI18HHfHN/BMVOMwYFnKg1R5FpG79cknmZbDfJipFIDDXg24nbebvexfROT+wu+/y408RajxasAVrcyl/vXyItTYFfAH13WNGoDfjl5rVAP0WqM2oLsahwB6qnEkoIsahwOy12gFkLZGU4CMNVoEpKrRLCBLjdYBzddIAWi5RiZAkzXSAVqrkRXQTI3UgBZq9AA4tEY3gKNq9AaoXqNLQM0aPQOq1OgesHeNUQC71RgKsEeNEQGb1hgWcFWstX6eltMtsFuEbaj+txuDHExjNgFB5QRMQFAAHM8CAcBW22IR/4Wb7iuGAmxV3e/wowA2rS4UYI/qogB2q849YO/qPAOqVOcSULM6b4Dq1bkBHFWdB8Ch1VEDWqiOFdBMdXSA1qpjAjRZHQWg5eqsA5qvziwgS3UWAamqMwXIWJ0VQNrqhgOyVzcS0EV1QwA9VacN6K46NUCv1bUEfM27s4D9knU0b28DAc/jeX9gI8hoXwPtxkTDuvS8CQhWkIAJCAqA41lgAoIC4HgWmICgADieBYKAX0uidGAd9hNhAAAAAElFTkSuQmCC" />
-          <specializationType>Processing Action</specializationType>
-          <specializationTypeId>405a2857-b911-431f-8142-719a0e9f15f3</specializationTypeId>
-          <defaultName>Action</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
         <option type="association">
           <text>Query Entity</text>
           <shortcut>ctrl + shift + q</shortcut>
@@ -4008,6 +3999,15 @@ await execute(element);
           <specializationType>Delete Entity Action Target End</specializationType>
           <specializationTypeId>4a04cfc2-5841-438c-9c16-fb58b784b365</specializationTypeId>
           <defaultName>NewDeleteEntityAction</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <text>Add Processing Action</text>
+          <shortcut>ctrl + shift + p</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAehJREFUeF7t3L1NA0EQhuE55DrYJijAEiVQAh0QEVl3XRGQQwWk/qGQRYewRGCB5G93dr6ZcT723nOv5GS0k+QHEpig6RyWBAQjSMAEBAXA8WYFll15lI18HHfHN/BMVOMwYFnKg1R5FpG79cknmZbDfJipFIDDXg24nbebvexfROT+wu+/y408RajxasAVrcyl/vXyItTYFfAH13WNGoDfjl5rVAP0WqM2oLsahwB6qnEkoIsahwOy12gFkLZGU4CMNVoEpKrRLCBLjdYBzddIAWi5RiZAkzXSAVqrkRXQTI3UgBZq9AA4tEY3gKNq9AaoXqNLQM0aPQOq1OgesHeNUQC71RgKsEeNEQGb1hgWcFWstX6eltMtsFuEbaj+txuDHExjNgFB5QRMQFAAHM8CAcBW22IR/4Wb7iuGAmxV3e/wowA2rS4UYI/qogB2q849YO/qPAOqVOcSULM6b4Dq1bkBHFWdB8Ch1VEDWqiOFdBMdXSA1qpjAjRZHQWg5eqsA5qvziwgS3UWAamqMwXIWJ0VQNrqhgOyVzcS0EV1QwA9VacN6K46NUCv1bUEfM27s4D9knU0b28DAc/jeX9gI8hoXwPtxkTDuvS8CQhWkIAJCAqA41lgAoIC4HgWmICgADieBYKAX0uidGAd9hNhAAAAAElFTkSuQmCC" />
+          <specializationType>Processing Action</specializationType>
+          <specializationTypeId>405a2857-b911-431f-8142-719a0e9f15f3</specializationTypeId>
+          <defaultName>Action</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -8478,15 +8478,6 @@ await execute(element);
     </elementExtension>
     <elementExtension type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
       <creationOptions>
-        <option type="element">
-          <text>Add Processing Action</text>
-          <shortcut>ctrl + shift + p</shortcut>
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAehJREFUeF7t3L1NA0EQhuE55DrYJijAEiVQAh0QEVl3XRGQQwWk/qGQRYewRGCB5G93dr6ZcT723nOv5GS0k+QHEpig6RyWBAQjSMAEBAXA8WYFll15lI18HHfHN/BMVOMwYFnKg1R5FpG79cknmZbDfJipFIDDXg24nbebvexfROT+wu+/y408RajxasAVrcyl/vXyItTYFfAH13WNGoDfjl5rVAP0WqM2oLsahwB6qnEkoIsahwOy12gFkLZGU4CMNVoEpKrRLCBLjdYBzddIAWi5RiZAkzXSAVqrkRXQTI3UgBZq9AA4tEY3gKNq9AaoXqNLQM0aPQOq1OgesHeNUQC71RgKsEeNEQGb1hgWcFWstX6eltMtsFuEbaj+txuDHExjNgFB5QRMQFAAHM8CAcBW22IR/4Wb7iuGAmxV3e/wowA2rS4UYI/qogB2q849YO/qPAOqVOcSULM6b4Dq1bkBHFWdB8Ch1VEDWqiOFdBMdXSA1qpjAjRZHQWg5eqsA5qvziwgS3UWAamqMwXIWJ0VQNrqhgOyVzcS0EV1QwA9VacN6K46NUCv1bUEfM27s4D9knU0b28DAc/jeX9gI8hoXwPtxkTDuvS8CQhWkIAJCAqA41lgAoIC4HgWmICgADieBYKAX0uidGAd9hNhAAAAAElFTkSuQmCC" />
-          <specializationType>Processing Action</specializationType>
-          <specializationTypeId>405a2857-b911-431f-8142-719a0e9f15f3</specializationTypeId>
-          <defaultName>NewProcessingAction</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
         <option order="0" type="association">
           <text>Query Entity</text>
           <shortcut>ctrl + shift + q</shortcut>
@@ -8530,6 +8521,15 @@ await execute(element);
           <specializationType>Delete Entity Action Target End</specializationType>
           <specializationTypeId>4a04cfc2-5841-438c-9c16-fb58b784b365</specializationTypeId>
           <defaultName>NewDeleteEntityAction</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <text>Add Processing Action</text>
+          <shortcut>ctrl + shift + p</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAehJREFUeF7t3L1NA0EQhuE55DrYJijAEiVQAh0QEVl3XRGQQwWk/qGQRYewRGCB5G93dr6ZcT723nOv5GS0k+QHEpig6RyWBAQjSMAEBAXA8WYFll15lI18HHfHN/BMVOMwYFnKg1R5FpG79cknmZbDfJipFIDDXg24nbebvexfROT+wu+/y408RajxasAVrcyl/vXyItTYFfAH13WNGoDfjl5rVAP0WqM2oLsahwB6qnEkoIsahwOy12gFkLZGU4CMNVoEpKrRLCBLjdYBzddIAWi5RiZAkzXSAVqrkRXQTI3UgBZq9AA4tEY3gKNq9AaoXqNLQM0aPQOq1OgesHeNUQC71RgKsEeNEQGb1hgWcFWstX6eltMtsFuEbaj+txuDHExjNgFB5QRMQFAAHM8CAcBW22IR/4Wb7iuGAmxV3e/wowA2rS4UYI/qogB2q849YO/qPAOqVOcSULM6b4Dq1bkBHFWdB8Ch1VEDWqiOFdBMdXSA1qpjAjRZHQWg5eqsA5qvziwgS3UWAamqMwXIWJ0VQNrqhgOyVzcS0EV1QwA9VacN6K46NUCv1bUEfM27s4D9knU0b28DAc/jeX9gI8hoXwPtxkTDuvS8CQhWkIAJCAqA41lgAoIC4HgWmICgADieBYKAX0uidGAd9hNhAAAAAElFTkSuQmCC" />
+          <specializationType>Processing Action</specializationType>
+          <specializationTypeId>405a2857-b911-431f-8142-719a0e9f15f3</specializationTypeId>
+          <defaultName>NewProcessingAction</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -9789,7 +9789,7 @@ convertToAdvancedMapping.execute();
             <type>Operation</type>
             <type>Command</type>
             <type>Query</type>
-            <type>Domain Event Handler</type>
+            <type>Domain Event Handler Association Target End</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -10039,6 +10039,7 @@ association.typeReference.getType().getChildren("Attribute")
             <type>Query</type>
             <type>Operation</type>
             <type>Command</type>
+            <type>Domain Event Handler Association Target End</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -10226,15 +10227,6 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
           <allowIsCollection>inherit</allowIsCollection>
         </typeReferenceExtension>
         <creationOptions>
-          <option type="element">
-            <text>Add Processing Action</text>
-            <shortcut>ctrl + shift + p</shortcut>
-            <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAehJREFUeF7t3L1NA0EQhuE55DrYJijAEiVQAh0QEVl3XRGQQwWk/qGQRYewRGCB5G93dr6ZcT723nOv5GS0k+QHEpig6RyWBAQjSMAEBAXA8WYFll15lI18HHfHN/BMVOMwYFnKg1R5FpG79cknmZbDfJipFIDDXg24nbebvexfROT+wu+/y408RajxasAVrcyl/vXyItTYFfAH13WNGoDfjl5rVAP0WqM2oLsahwB6qnEkoIsahwOy12gFkLZGU4CMNVoEpKrRLCBLjdYBzddIAWi5RiZAkzXSAVqrkRXQTI3UgBZq9AA4tEY3gKNq9AaoXqNLQM0aPQOq1OgesHeNUQC71RgKsEeNEQGb1hgWcFWstX6eltMtsFuEbaj+txuDHExjNgFB5QRMQFAAHM8CAcBW22IR/4Wb7iuGAmxV3e/wowA2rS4UYI/qogB2q849YO/qPAOqVOcSULM6b4Dq1bkBHFWdB8Ch1VEDWqiOFdBMdXSA1qpjAjRZHQWg5eqsA5qvziwgS3UWAamqMwXIWJ0VQNrqhgOyVzcS0EV1QwA9VacN6K46NUCv1bUEfM27s4D9knU0b28DAc/jeX9gI8hoXwPtxkTDuvS8CQhWkIAJCAqA41lgAoIC4HgWmICgADieBYKAX0uidGAd9hNhAAAAAElFTkSuQmCC" />
-            <specializationType>Processing Action</specializationType>
-            <specializationTypeId>405a2857-b911-431f-8142-719a0e9f15f3</specializationTypeId>
-            <defaultName>Action</defaultName>
-            <allowMultiple>true</allowMultiple>
-          </option>
           <option type="association">
             <text>Query Entity</text>
             <shortcut>ctrl + shift + q</shortcut>
@@ -10278,6 +10270,15 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
             <specializationType>Delete Entity Action Target End</specializationType>
             <specializationTypeId>4a04cfc2-5841-438c-9c16-fb58b784b365</specializationTypeId>
             <defaultName>NewDeleteEntityAction</defaultName>
+            <allowMultiple>true</allowMultiple>
+          </option>
+          <option type="element">
+            <text>Add Processing Action</text>
+            <shortcut>ctrl + shift + p</shortcut>
+            <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAehJREFUeF7t3L1NA0EQhuE55DrYJijAEiVQAh0QEVl3XRGQQwWk/qGQRYewRGCB5G93dr6ZcT723nOv5GS0k+QHEpig6RyWBAQjSMAEBAXA8WYFll15lI18HHfHN/BMVOMwYFnKg1R5FpG79cknmZbDfJipFIDDXg24nbebvexfROT+wu+/y408RajxasAVrcyl/vXyItTYFfAH13WNGoDfjl5rVAP0WqM2oLsahwB6qnEkoIsahwOy12gFkLZGU4CMNVoEpKrRLCBLjdYBzddIAWi5RiZAkzXSAVqrkRXQTI3UgBZq9AA4tEY3gKNq9AaoXqNLQM0aPQOq1OgesHeNUQC71RgKsEeNEQGb1hgWcFWstX6eltMtsFuEbaj+txuDHExjNgFB5QRMQFAAHM8CAcBW22IR/4Wb7iuGAmxV3e/wowA2rS4UYI/qogB2q849YO/qPAOqVOcSULM6b4Dq1bkBHFWdB8Ch1VEDWqiOFdBMdXSA1qpjAjRZHQWg5eqsA5qvziwgS3UWAamqMwXIWJ0VQNrqhgOyVzcS0EV1QwA9VacN6K46NUCv1bUEfM27s4D9knU0b28DAc/jeX9gI8hoXwPtxkTDuvS8CQhWkIAJCAqA41lgAoIC4HgWmICgADieBYKAX0uidGAd9hNhAAAAAElFTkSuQmCC" />
+            <specializationType>Processing Action</specializationType>
+            <specializationTypeId>405a2857-b911-431f-8142-719a0e9f15f3</specializationTypeId>
+            <defaultName>Action</defaultName>
             <allowMultiple>true</allowMultiple>
           </option>
         </creationOptions>
@@ -11151,6 +11152,20 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <useChildSettingsFrom>13b6c853-ef60-4dc9-8c6b-a0fe24fc80b8</useChildSettingsFrom>
+          <represents>data</represents>
+          <childSettings />
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackageExtension>
+    <mappableElementPackageExtension id="b6d97897-19a6-475b-bd06-f51dd1a11bc6" name="Domain Event Mappable Extension" extendPackageId="93c752a0-161d-4ef5-9c88-09995f59c263" extendPackage="Application Target Mappables">
+      <imports />
+      <mappableElementSettings>
+        <mappableElement id="0d7e67b8-f056-443d-906d-665c0da26895" name="Domain Event Handler Target" type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>true</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
           <represents>data</represents>
           <childSettings />
         </mappableElement>
