@@ -10,6 +10,30 @@
     </FileLog>
     <FileLog>
       <ProjectId>ec67333c-966e-4ba1-9d7b-8a0cac8b8d13</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#6412d45e-71db-47e9-8832-b3b9b9b5fe00</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/CallExternalEndpointModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CallExternalEndpointModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ec67333c-966e-4ba1-9d7b-8a0cac8b8d13</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#d8c03213-e0ab-412e-b235-cc647ca51cff</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DiagramExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DiagramExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>cb3a44f0-20fa-4615-b2e7-081fecff8a10</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#6412d45e-71db-47e9-8832-b3b9b9b5fe00</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/CallExternalEndpointModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CallExternalEndpointModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ec67333c-966e-4ba1-9d7b-8a0cac8b8d13</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#dfa59f78-6e8b-4fd2-b2a4-7148bdd664fe</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FolderExtensionsModel.cs</ApplicationRelativeFilePath>
@@ -66,10 +90,26 @@
     </FileLog>
     <FileLog>
       <ProjectId>00c285fd-668c-4d5e-b67f-99b8c76032d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#fe730073-37a4-4662-91cd-1630f544f522</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Service Proxy Services Extension.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Service Proxy Services Extension.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>00c285fd-668c-4d5e-b67f-99b8c76032d1</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#8cf2b93d-9449-4e40-af62-12daf6f7e0f4</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Service Proxy Types.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Service Proxy Types.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5d8691be-86ed-4521-861f-d0045712fb9a</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#d7c57159-f977-472c-a63a-548d3b1a27d2</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>ServicesPackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServicesPackageExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

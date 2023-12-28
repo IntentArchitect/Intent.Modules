@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Types.ServiceProxies</id>
-  <version>5.1.0</version>
-  <supportedClientVersions>[4.0.0-a, 5.0.0-a)</supportedClientVersions>
+  <version>5.2.0-pre.0</version>
+  <supportedClientVersions>[4.1.0, 5.0.0-a)</supportedClientVersions>
   <summary>Additional support for describing proxies in the Proxies designer.</summary>
   <description>Additional support for describing proxies in the Proxies designer.</description>
   <authors>Intent.Modules.Net</authors>
@@ -24,6 +24,7 @@
   <metadata>
     <install src="modelers/Service Proxy Types.designer.settings" externalReference="8cf2b93d-9449-4e40-af62-12daf6f7e0f4" />
     <install src="Intent.Metadata/Module Builder/Intent.Modelers.Types.ServiceProxies/Intent.Modelers.Types.ServiceProxies.pkg.config" externalReference="b58a9e76-55b8-45ec-a22b-bcdfcb6fd833" target="Module Builder" />
+    <install target="Services" src="modelers/Service Proxy Services Extension.designer.settings" externalReference="fe730073-37a4-4662-91cd-1630f544f522" />
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />

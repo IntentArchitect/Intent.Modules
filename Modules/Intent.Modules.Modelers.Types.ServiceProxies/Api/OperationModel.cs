@@ -37,6 +37,11 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
 
         public IElement InternalElement => _element;
 
+        public IList<ParameterModel> Parameters => _element.ChildElements
+            .GetElementsOfType(ParameterModel.SpecializationTypeId)
+            .Select(x => new ParameterModel(x))
+            .ToList();
+
         [IntentManaged(Mode.Ignore)]
         public ITypeReference ReturnType => TypeReference.Element != null ? TypeReference : null;
 

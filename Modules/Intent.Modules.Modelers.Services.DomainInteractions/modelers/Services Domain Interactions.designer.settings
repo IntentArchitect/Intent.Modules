@@ -10210,6 +10210,7 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
   <associationExtensions>
     <associationExtension type="Domain Event Handler Association" typeId="90831494-f069-44eb-b488-ab2dba7518ea">
       <sourceEndExtension>
+        <typeOrder />
         <typeReferenceExtension>
           <isRequired>true</isRequired>
           <targetTypes />
@@ -10219,13 +10220,14 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
         </typeReferenceExtension>
       </sourceEndExtension>
       <targetEndExtension>
-        <typeReferenceExtension>
-          <isRequired>true</isRequired>
-          <targetTypes />
-          <allowIsNavigable>inherit</allowIsNavigable>
-          <allowIsNullable>inherit</allowIsNullable>
-          <allowIsCollection>inherit</allowIsCollection>
-        </typeReferenceExtension>
+        <typeOrder>
+          <type>Query Entity Action Target End</type>
+          <type>Call Service Operation Target End</type>
+          <type>Create Entity Action Target End</type>
+          <type>Update Entity Action Target End</type>
+          <type>Delete Entity Action Target End</type>
+          <type>Processing Action</type>
+        </typeOrder>
         <creationOptions>
           <option type="association">
             <text>Query Entity</text>
@@ -10284,6 +10286,13 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
         </creationOptions>
         <scriptOptions />
         <mappingOptions />
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes />
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
       </targetEndExtension>
       <macros />
     </associationExtension>
@@ -10656,10 +10665,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
-                <mappingId>15b84be5-c79b-41bf-881c-447fe70f5f5b</mappingId>
-              </traversableTypes>
+              <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <childSettings />
@@ -10687,6 +10693,61 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <childSettings />
             </childSetting>
           </childSettings>
+        </mapping>
+        <mapping id="2e036907-5caf-4598-bd61-33d079871677" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="fa557ba7-7faa-4ce3-bd23-32e821f71f84" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>2e036907-5caf-4598-bd61-33d079871677</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+              <childSettings />
+            </childSetting>
+            <childSetting id="24c8c608-ce45-4d64-a8b1-bbbd2486b186" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>2e036907-5caf-4598-bd61-33d079871677</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="8d23de60-8871-4365-ab36-2a2b4b5fa31d" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <useChildSettingsFrom>2e036907-5caf-4598-bd61-33d079871677</useChildSettingsFrom>
+          <represents>data</represents>
+          <childSettings />
+        </mapping>
+        <mapping id="10596d74-4283-4bfc-a6b5-043e5b9b1939" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <useChildSettingsFrom>2e036907-5caf-4598-bd61-33d079871677</useChildSettingsFrom>
+          <represents>data</represents>
+          <childSettings />
         </mapping>
       </targetMappings>
       <mappingTypes>
@@ -10722,6 +10783,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <target id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" />
             <target id="ca7d6d11-0e19-4326-b95b-6451c9ca4d9d" name="Application Service Operation Parameter" />
             <target id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" />
+            <target id="fa557ba7-7faa-4ce3-bd23-32e821f71f84" name="Field" />
+            <target id="24c8c608-ce45-4d64-a8b1-bbbd2486b186" name="Collection Field" />
           </targets>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
