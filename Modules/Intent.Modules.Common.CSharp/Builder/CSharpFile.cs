@@ -91,7 +91,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
 
     public CSharpFile AddRecord(string name, Action<CSharpRecord> configure = null)
     {
-        var record = new CSharpRecord(name);
+        var record = new CSharpRecord(name, this);
         TypeDeclarations.Add(record);
         if (_isBuilt)
         {
