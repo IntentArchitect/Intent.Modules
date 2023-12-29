@@ -87,11 +87,6 @@ public class ConstructorMapping : CSharpMappingBase
         return init;
     }
 
-    public override CSharpStatement GetTargetStatement()
-    {
-        return GetSourcePathText(Children.First(x => x.Mapping != null).Mapping.TargetPath.SkipLast(1).ToList());
-    }
-
     public override IEnumerable<CSharpStatement> GetMappingStatements()
     {
         yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
