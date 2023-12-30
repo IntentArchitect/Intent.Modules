@@ -3,7 +3,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpProperty : CSharpMember<CSharpProperty>, IHasCSharpName
+public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpReferenceable
 {
     private readonly CSharpClass _class;
     public string AccessModifier { get; protected set; } = "public ";

@@ -6,7 +6,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStatements, IHasICSharpParameters, IHasCSharpName
+public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStatements, IHasICSharpParameters, ICSharpReferenceable
 {
     public CSharpClass Class { get; }
     public string AccessModifier { get; private set; } = "public ";

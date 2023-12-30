@@ -22,7 +22,7 @@ public class TypeConvertingCSharpMapping : CSharpMappingBase
             Mapping.TargetElement.TypeReference.HasStringType() == true &&
             Mapping.SourceElement.TypeReference.HasStringType() == false)
         {
-            return new CSharpInvocationStatement(base.GetSourceStatement(), "ToString").WithoutSemicolon();
+            return new CSharpAccessMemberStatement(base.GetSourceStatement(), new CSharpInvocationStatement("ToString").WithoutSemicolon());
         }
         if (Mapping.IsOneToOne() &&
             Mapping.TargetElement.TypeReference.Element?.SpecializationType == "Enum" &&

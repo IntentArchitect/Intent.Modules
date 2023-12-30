@@ -3,19 +3,32 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
+public interface ICSharpExpression
 {
+    string GetText(string indentation);
+    string ToString();
+}
+
+public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock, ICSharpExpression
+{
+
     public CSharpStatement(string statement)
     {
         Text = statement?.Trim();
     }
 
-    public IHasCSharpStatements Parent { get; set; }
+    public CSharpStatement(string statement, ICSharpReferenceable reference)
+    {
+        Reference = reference;
+        Text = statement?.Trim();
+    }
 
+    public new IHasCSharpStatements Parent { get; set; }
+    public ICSharpReferenceable Reference { get; }
     public CSharpCodeSeparatorType BeforeSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
     public CSharpCodeSeparatorType AfterSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
 
-    protected string Text { get; set; }
+    public string Text { get; set; }
     protected string RelativeIndentation { get; private set; } = "";
     protected char? TrailingCharacter = null;
     public CSharpStatement SeparatedFromPrevious()

@@ -142,7 +142,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     protected string GetSourcePathText()
     {
-        var text = Mapping?.MappingExpression ?? throw new Exception($"Could not resolve source path. Mapping expected on {Model.Name} [{Model.SpecializationType}]");
+        var text = Mapping?.MappingExpression ?? throw new Exception($"Could not resolve source path. Mapping expected on '{Model.DisplayText ?? Model.Name}' [{Model.SpecializationType}]");
         var paths = ExtractPaths(Mapping.MappingExpression);
         foreach (var path in paths)
         {
@@ -164,25 +164,42 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     protected string GetSourcePathText(IList<IElementMappingPathTarget> mappingPaths)
     {
-        var result = "";
+        return GetSourcePathExpression(mappingPaths).ToString();
+    }
+
+    protected ICSharpExpression GetSourcePathExpression(IList<IElementMappingPathTarget> mappingPaths)
+    {
+        CSharpStatement result = default;
         foreach (var mappingPathTarget in mappingPaths)
         {
-            //if (replacements.ContainsKey(mappingPathTarget.Element.Id))
-            //{
-            //    result = replacements[mappingPathTarget.Element.Id] ?? ""; // if map to null, ignore
-            //}
             if (TryGetSourceReplacement(mappingPathTarget.Element, out var replacement))
             {
-                result = replacement ?? ""; // if map to null, ignore
+                if (!string.IsNullOrWhiteSpace(replacement))
+                    result = new CSharpStatement(replacement); // if map to null, ignore
             }
             else
             {
-                var referenceName = GetReferenceName(mappingPaths.Take(mappingPaths.IndexOf(mappingPathTarget) + 1).ToList());
-
-                result += $"{(result.Length > 0 ? "." : "")}{referenceName}";
-                if (mappingPathTarget.Element.TypeReference?.IsNullable == true && mappingPaths.Last() != mappingPathTarget)
+                CSharpStatement member = null;
+                var relativeMappingPath = mappingPaths.Take(mappingPaths.IndexOf(mappingPathTarget) + 1).ToList();
+                if (TryGetReferenceName(mappingPathTarget, out var referenceName))
                 {
-                    result += "?";
+                    member = new CSharpStatement(referenceName);
+                }
+                else if (TryGetReference(relativeMappingPath, out var reference))
+                {
+                    member = new CSharpStatement(reference.Name, (ICSharpReferenceable)reference);
+                }
+                else
+                {
+                    // fall back on using the element's name from the metadata:
+                    member = new CSharpStatement(mappingPathTarget.Element.Name);
+                }
+
+                result = result != null ? new CSharpAccessMemberStatement(result, member) : member;
+                if (mappingPathTarget.Element.TypeReference?.IsNullable == true && mappingPaths.Last() != mappingPathTarget
+                                                                                && result is CSharpAccessMemberStatement accessMember)
+                {
+                    accessMember.IsConditional();
                 }
             }
         }
@@ -191,45 +208,77 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     protected string GetTargetPathText()
     {
-        var result = "";
+        return GetTargetPathExpression().ToString();
+    }
+
+    protected ICSharpExpression GetTargetPathExpression()
+    {
+        CSharpStatement result = default;
         var mappingPaths = GetTargetPath();
         foreach (var mappingPathTarget in mappingPaths)
         {
             if (TryGetTargetReplacement(mappingPathTarget.Element, out var replacement))
             {
-                result = replacement ?? ""; // if map to null, ignore
+                if (!string.IsNullOrWhiteSpace(replacement))
+                    result = new CSharpStatement(replacement); // if map to null, ignore
             }
             else
             {
-                var referenceName = GetReferenceName(mappingPaths.Take(mappingPaths.IndexOf(mappingPathTarget) + 1).ToList());
-
-                result += $"{(result.Length > 0 ? "." : "")}{referenceName}";
-                if (mappingPathTarget.Element.TypeReference?.IsNullable == true && mappingPaths.Last() != mappingPathTarget)
+                CSharpStatement member = null;
+                var relativeMappingPath = mappingPaths.Take(mappingPaths.IndexOf(mappingPathTarget) + 1).ToList();
+                if (TryGetReferenceName(mappingPathTarget, out var referenceName))
                 {
-                    result += "?";
+                    member = new CSharpStatement(referenceName);
+                }
+                else if (TryGetReference(relativeMappingPath, out var reference))
+                {
+                    member = new CSharpStatement(reference.Name, (ICSharpReferenceable)reference);
+                }
+                else
+                {
+                    // fall back on using the element's name from the metadata:
+                    member = new CSharpStatement(mappingPathTarget.Element.Name);
+                }
+
+                result = result != null ? new CSharpAccessMemberStatement(result, member) : member;
+                if (mappingPathTarget.Element.TypeReference?.IsNullable == true && mappingPaths.Last() != mappingPathTarget
+                    && result is CSharpAccessMemberStatement accessMember)
+                {
+                    accessMember.IsConditional();
                 }
             }
         }
         return result;
     }
 
-    private string GetReferenceName(IList<IElementMappingPathTarget> mappingPath)
+    private bool TryGetReference(IList<IElementMappingPathTarget> mappingPath, out IHasCSharpName reference)
     {
         var mappingPathTarget = mappingPath.Last();
-        if (TryGetReferenceName(mappingPathTarget, out var referenceName))
+        //if (TryGetReferenceName(mappingPathTarget, out var referenceName))
+        //{
+        //    return new CSharpStatement(referenceName);
+        //}
+
+        if (Context?.TryGetReferenceForModel(mappingPathTarget.Id, out reference) == true)
         {
-            return referenceName;
+            return true;
         }
 
-        if (Context?.TryGetReferenceForModel(mappingPathTarget.Id, out var reference) == true)
-        {
-            return reference.Name;
-        }
-
-        // try parent type's template:
+        CSharpMetadataBase csharpElement = default;
+        // try find with type and then type's parent:
         if (Template.GetTypeInfo(mappingPath.First().Element.AsTypeReference())?.Template is ICSharpFileBuilderTemplate foundTypeTemplate)
         {
-            var csharpElement = foundTypeTemplate.CSharpFile as CSharpMetadataBase;
+            csharpElement = foundTypeTemplate.CSharpFile;
+        }
+        else if (Template.GetTypeInfo(((IElement)mappingPath.First().Element).ParentElement.AsTypeReference())?.Template is ICSharpFileBuilderTemplate foundParentTypeTemplate)
+        {
+            if (foundParentTypeTemplate.CSharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(mappingPath.First().Element, out reference) == true
+                || foundParentTypeTemplate.CSharpFile.Interfaces.FirstOrDefault()?.TryGetReferenceForModel(mappingPath.First().Element, out reference) == true)
+                csharpElement = reference as CSharpMetadataBase;
+        }
+
+        if (csharpElement != null)
+        {
             foreach (var pathTarget in mappingPath)
             {
                 if (csharpElement?.TryGetReferenceForModel(pathTarget.Id, out reference) == true)
@@ -252,18 +301,13 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
             if (csharpElement is IHasCSharpName hasName)
             {
-                return hasName.Name;
+                reference = hasName;
+                return true;
             }
         }
 
         // try this template:
-        if (Template.CSharpFile.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
-        {
-            return reference.Name;
-        }
-
-        // fall back on using the element's name from the metadata:
-        return mappingPathTarget.Element.Name;
+        return Template.CSharpFile.TryGetReferenceForModel(mappingPathTarget.Id, out reference);
     }
 
     /// <summary>

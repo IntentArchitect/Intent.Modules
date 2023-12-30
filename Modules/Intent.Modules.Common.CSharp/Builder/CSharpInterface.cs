@@ -5,7 +5,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpInterface : CSharpDeclaration<CSharpInterface>, IHasCSharpName
+public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpReferenceable
 {
     private CSharpCodeSeparatorType _fieldsSeparator = CSharpCodeSeparatorType.NewLine;
     private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.NewLine;
@@ -137,7 +137,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, IHasCSharpNam
 
     public CSharpInterface InsertMethod(int index, string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
     {
-        var method = new CSharpInterfaceMethod(returnType, name)
+        var method = new CSharpInterfaceMethod(returnType, name, this)
         {
             BeforeSeparator = _methodsSeparator,
             AfterSeparator = _methodsSeparator

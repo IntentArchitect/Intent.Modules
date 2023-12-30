@@ -5,7 +5,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParameter, IHasCSharpName
+public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParameter, ICSharpReferenceable
 {
     public string Type { get; }
     public string Name { get; }

@@ -5,7 +5,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCSharpStatements, IHasICSharpParameters
+public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCSharpStatements, IHasICSharpParameters, ICSharpReferenceable
 {
     public string ReturnType { get; private set; }
     public string Name { get; }
@@ -19,7 +19,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCS
 
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
 
-    public CSharpInterfaceMethod(string returnType, string name)
+    public CSharpInterfaceMethod(string returnType, string name, CSharpInterface parent)
     {
         if (string.IsNullOrWhiteSpace(returnType))
         {
@@ -33,6 +33,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCS
 
         ReturnType = returnType;
         Name = name;
+        Parent = parent;
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;
         AfterSeparator = CSharpCodeSeparatorType.NewLine;
     }

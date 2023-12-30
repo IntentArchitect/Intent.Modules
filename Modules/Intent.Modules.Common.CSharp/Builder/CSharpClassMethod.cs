@@ -7,7 +7,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStatements, IHasICSharpParameters, IHasCSharpName
+public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStatements, IHasICSharpParameters, ICSharpReferenceable
 {
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     protected string AsyncMode { get; private set; } = string.Empty;

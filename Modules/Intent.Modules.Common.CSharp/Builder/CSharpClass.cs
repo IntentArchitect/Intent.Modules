@@ -7,7 +7,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, IHasCSharpName
+public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpReferenceable
 {
     private readonly Type _type;
     private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.NewLine;

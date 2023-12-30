@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Intent.Modules.Common.CSharp.AppStartup;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -8,9 +9,10 @@ namespace Intent.Modules.Common.CSharp.Builder;
 public class CSharpAccessMemberStatement : CSharpStatement
 {
     private bool _withSemicolon = false;
-    public CSharpAccessMemberStatement(CSharpStatement reference, CSharpStatement memberName) : base($"{reference.ToString().TrimEnd()}.{memberName}")
+    private bool _isConditional = false;
+    public CSharpAccessMemberStatement(CSharpStatement expression, CSharpStatement memberName) : base($"{expression.ToString().TrimEnd()}.{memberName}")
     {
-        Reference = reference;
+        Reference = expression;
         Member = memberName;
     }
 
@@ -29,10 +31,25 @@ public class CSharpAccessMemberStatement : CSharpStatement
         return this;
     }
 
+    /// <summary>
+    /// Ensures that the member is accessed via the `?.` operator.
+    /// </summary>
+    /// <returns></returns>
+    public CSharpAccessMemberStatement IsConditional()
+    {
+        _isConditional = true;
+        return this;
+    }
+
     public override string GetText(string indentation)
     {
-        return $"{Reference.GetText(indentation).TrimEnd()}.{Member}{(_withSemicolon ? ";" : string.Empty)}";
+        return $"{Reference.GetText(indentation).TrimEnd()}{(_isConditional ? "?." : ".")}{Member}{(_withSemicolon ? ";" : string.Empty)}";
     }
+}
+
+public static class CSharpStatementBuilder
+{
+
 }
 
 public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
@@ -40,14 +57,22 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
     private bool _withSemicolon = true;
     private CSharpCodeSeparatorType _defaultArgumentSeparator = CSharpCodeSeparatorType.None;
 
-    public CSharpInvocationStatement(string invocation) : base(invocation)
+    public CSharpInvocationStatement(string invokable) : base(invokable)
     {
+        Expression = new CSharpStatement(invokable);
     }
 
-    public CSharpInvocationStatement(CSharpStatement reference, string methodName) : base($"{reference.ToString().TrimEnd()}.{methodName}")
+    public CSharpInvocationStatement(CSharpStatement expression, string member) : base($"{expression.ToString().TrimEnd()}.{member}")
     {
+        Expression = new CSharpAccessMemberStatement(expression, member);
     }
 
+    public CSharpInvocationStatement(CSharpStatement expression) : base($"{expression.ToString().TrimEnd()}")
+    {
+        Expression = expression;
+    }
+
+    public CSharpStatement Expression { get; } 
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
     public CSharpInvocationStatement AddArgument(CSharpStatement argument, Action<CSharpStatement> configure = null)
@@ -75,7 +100,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
         _defaultArgumentSeparator = CSharpCodeSeparatorType.NewLine;
         return this;
     }
-    
+
     public CSharpInvocationStatement WithoutSemicolon()
     {
         _withSemicolon = false;
@@ -84,7 +109,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 
     public override string GetText(string indentation)
     {
-        return $"{indentation}{RelativeIndentation}{Text}({GetArgumentsText(indentation)}){(_withSemicolon ? ";" : string.Empty)}";
+        return $"{RelativeIndentation}{Expression.GetText(indentation)}({GetArgumentsText(indentation)}){(_withSemicolon ? ";" : string.Empty)}";
     }
 
     private string GetArgumentsText(string indentation)

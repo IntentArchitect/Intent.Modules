@@ -5,6 +5,14 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
+public interface ICSharpReferenceable : IHasCSharpName
+{
+    IHasCSharpName GetReferenceForModel(string modelId);
+    IHasCSharpName GetReferenceForModel(IMetadataModel model);
+    bool TryGetReferenceForModel(string modelId, out IHasCSharpName reference);
+    bool TryGetReferenceForModel(IMetadataModel model, out IHasCSharpName reference);
+}
+
 public interface IHasCSharpName
 {
     string Name { get; }

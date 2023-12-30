@@ -4,7 +4,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorParameter>, ICSharpParameter, IHasCSharpName
+public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorParameter>, ICSharpParameter, ICSharpReferenceable
 {
     private readonly CSharpConstructor _constructor;
     public string Type { get; }
