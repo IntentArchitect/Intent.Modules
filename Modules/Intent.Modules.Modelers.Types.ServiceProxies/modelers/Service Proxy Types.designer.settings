@@ -202,6 +202,70 @@ execute(element);
           <script>element.launchMappingDialog("df491bea-8a85-4bc9-a93d-41b7abb80ffb");
 </script>
         </macro>
+        <macro trigger="on-loaded">
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function GetParameters(targetService) {
+    let httpSettings = targetService.getStereotype("Http Settings");
+    var isForCqrs = targetService.specialization == "Query" || targetService.specialization == "Command";
+    var verbAllowsBody = ["PUT", "PATCH", "POST"].some(x =&gt; x == httpSettings.getProperty("Verb").getValue());
+    var requiresBody = false;
+    let result = [];
+    targetService.getChildren("Parameter").concat(targetService.getChildren("DTO-Field")).forEach(childElement =&gt; {
+        var parameterSettings = childElement.getStereotype("d01df110-1208-4af8-a913-92a49d219552"); // "Paremeter Settings"
+        var routeContainsParameter = httpSettings.getProperty("Route").getValue().toString().toLowerCase().indexOf(`{${childElement.getName().toLowerCase()}}`) != -1;
+        if (isForCqrs &amp;&amp; !parameterSettings &amp;&amp; !routeContainsParameter &amp;&amp; verbAllowsBody) {
+            requiresBody = true;
+            return;
+        }
+        result.push({
+            id: childElement.id,
+            name: toCamelCase(childElement.getName()),
+            typeId: childElement.typeReference.getTypeId(),
+            isNullable: childElement.typeReference.getIsNullable(),
+            isCollection: childElement.typeReference.getIsCollection(),
+        });
+    });
+    if (isForCqrs &amp;&amp; requiresBody) {
+        result.push({
+            id: targetService.id,
+            name: targetService.specialization.toLowerCase(),
+            typeId: targetService.id,
+            isNullable: false,
+            isCollection: false,
+        });
+    }
+    return result;
+}
+function execute(proxyElement) {
+    proxyElement.getChildren("Operation").forEach(operation =&gt; {
+        let targetService = operation.getMapping().getElement();
+        let params = GetParameters(targetService);
+        params.forEach((param, index) =&gt; {
+            let existing = operation.getChildren("Parameter").find(x =&gt; x.getMetadata("endpoint-input-id") == param.id);
+            if (!existing) {
+                existing = createElement("Parameter", param.name, operation.id);
+            }
+            existing.setName(param.name);
+            existing.setOrder(index);
+            existing.typeReference.setType(param.typeId);
+            existing.typeReference.setIsCollection(param.isCollection);
+            existing.typeReference.setIsNullable(param.isNullable);
+            existing.setMetadata("endpoint-input-id", param.id);
+        });
+        operation.getChildren("Parameter")
+            .filter(x =&gt; params.every(p =&gt; p.id != x.getMetadata("endpoint-input-id")))
+            .forEach(x =&gt; x.delete());
+    });
+}
+/**
+ * Used by Intent.Modules\Modules\Intent.Modelers.Types.ServiceProxies
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/service-proxies/manage-parameters/service-proxies-manage-parameters.ts
+ */
+execute(element);
+</script>
+        </macro>
         <macro trigger="on-mapped">
           <script>if (element.getName() === "Service" || element.getName() === "NewServiceProxy") {
     const elementName = removeSuffix(element.getMapping().getElement().getName(), "Service", "Proxy");

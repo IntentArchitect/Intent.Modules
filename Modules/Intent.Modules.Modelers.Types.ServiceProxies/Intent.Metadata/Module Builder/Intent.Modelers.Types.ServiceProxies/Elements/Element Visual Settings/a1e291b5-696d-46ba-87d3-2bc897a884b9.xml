@@ -7,13 +7,13 @@
   <order>2</order>
   <genericTypes />
   <typeReference id="ebe35848-1da6-4381-a46d-91d9235c93a7">
-    <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
+    <typeId>aee6811e-b2f6-4562-a8eb-502029f63bc8</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
-    <typePackageName>Intent.Modelers.Domain</typePackageName>
-    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+    <typePackageName>Intent.Modelers.Types.ServiceProxies</typePackageName>
+    <typePackageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>

@@ -1,4 +1,8 @@
-﻿### Version 5.1.0
+﻿### Version 5.2.0
+
+- Support for visually representing proxies in the Service designer.
+
+### Version 5.1.0
 
 - Fixed: Mapping system not able to traverse into nested folders when mapping to Commands and Queries (required Intent Architect 4.1.x)
 
