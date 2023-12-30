@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCSharpStatements, IHasICSharpParameters, ICSharpReferenceable
+public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICSharpMethodDeclaration
 {
     public string ReturnType { get; private set; }
+    ICSharpExpression ICSharpMethodDeclaration.ReturnType => new CSharpStatement(ReturnType);
     public string Name { get; }
+    public bool IsAsync { get; private set; } = false;
     public bool IsAbstract { get; set; } = true;
     public bool IsStatic { get; set; }
     public bool HasExpressionBody { get; private set; }
@@ -34,6 +37,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCS
         ReturnType = returnType;
         Name = name;
         Parent = parent;
+        File = parent.File;
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;
         AfterSeparator = CSharpCodeSeparatorType.NewLine;
     }
@@ -42,6 +46,17 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCS
     {
         IsAbstract = false;
 
+        return this;
+    }
+
+    public CSharpInterfaceMethod Async()
+    {
+        IsAsync = true;
+        var taskType = File.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
+        if (!ReturnType.StartsWith(taskType))
+        {
+            ReturnType = ReturnType == "void" ? taskType : $"{taskType}<{ReturnType}>";
+        }
         return this;
     }
 

@@ -5,12 +5,8 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public interface ICSharpReferenceable : IHasCSharpName
+public interface ICSharpReferenceable : IHasCSharpName, ICSharpCodeContext
 {
-    IHasCSharpName GetReferenceForModel(string modelId);
-    IHasCSharpName GetReferenceForModel(IMetadataModel model);
-    bool TryGetReferenceForModel(string modelId, out IHasCSharpName reference);
-    bool TryGetReferenceForModel(IMetadataModel model, out IHasCSharpName reference);
 }
 
 public interface IHasCSharpName
@@ -28,13 +24,13 @@ public interface ICSharpCodeContext
 
 public abstract class CSharpMetadataBase : ICSharpCodeContext
 {
-    private readonly Dictionary<string, IHasCSharpName> _modelReferenceRegistry = new();
+    private readonly Dictionary<string, ICSharpReferenceable> _modelReferenceRegistry = new();
 
     protected internal CSharpMetadataBase Parent { get; set; }
     protected internal CSharpFile File { get; set; }
     public IDictionary<string, object> Metadata { get; } = new Dictionary<string, object>();
 
-    internal void RegisterReference(string modelId, IHasCSharpName reference)
+    internal void RegisterReferenceable(string modelId, ICSharpReferenceable reference)
     {
         if (_modelReferenceRegistry.ContainsKey(modelId))
         {
@@ -130,7 +126,7 @@ public abstract class CSharpMetadataBase<TCSharp> : CSharpMetadataBase
             throw new InvalidOperationException($"The parent has not been set for this type: {GetType().Name}. Please contact Intent Architect support.");
         }
 
-        Parent.RegisterReference(model.Id, (IHasCSharpName)this);
+        Parent.RegisterReferenceable(model.Id, (ICSharpReferenceable)this);
         return (TCSharp)this;
     }
 

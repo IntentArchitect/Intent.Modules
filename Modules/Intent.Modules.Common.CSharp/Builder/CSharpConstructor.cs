@@ -55,7 +55,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
     public CSharpConstructor AddParameter<TModel>(TModel model, Action<CSharpConstructorParameter> configure = null) where TModel
         : IMetadataModel, IHasName, IHasTypeReference
     {
-        return AddParameter(Class.GetModelType(model), model.Name.ToParameterName(), param =>
+        return AddParameter(File.GetModelType(model), model.Name.ToParameterName(), param =>
         {
             param.RepresentsModel(model);
             configure?.Invoke(param);

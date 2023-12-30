@@ -7,15 +7,22 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStatements, IHasICSharpParameters, ICSharpReferenceable
+public interface ICSharpMethodDeclaration : IHasICSharpParameters, ICSharpReferenceable, IHasCSharpStatements
+{
+    bool IsAsync { get; } 
+    public ICSharpExpression ReturnType { get; }
+}
+
+public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodDeclaration
 {
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
-    protected string AsyncMode { get; private set; } = string.Empty;
+    public bool IsAsync { get; private set; } = false;
     protected string AccessModifier { get; private set; } = "public ";
     protected string OverrideModifier { get; private set; } = string.Empty;
     public bool IsAbstract { get; private set; }
     public bool HasExpressionBody { get; private set; }
     public string ReturnType { get; private set; }
+    ICSharpExpression ICSharpMethodDeclaration.ReturnType => new CSharpStatement(ReturnType);
     public string Name { get; }
     public List<CSharpParameter> Parameters { get; } = new();
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
@@ -81,7 +88,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     public CSharpClassMethod AddParameter<TModel>(TModel model, Action<CSharpParameter> configure = null) where TModel 
         : IMetadataModel, IHasName, IHasTypeReference
     {
-        return AddParameter(Class.GetModelType(model), model.Name.ToParameterName(), param =>
+        return AddParameter(File.GetModelType(model), model.Name.ToParameterName(), param =>
         {
             param.RepresentsModel(model);
             configure?.Invoke(param);
@@ -271,7 +278,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
 
     public CSharpClassMethod Sync()
     {
-        AsyncMode = string.Empty;
+        IsAsync = false;
         if (ReturnType.StartsWith("Task"))
         {
             ReturnType = ReturnType == "Task" ? "void" : StripTask();
@@ -287,10 +294,11 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
 
     public CSharpClassMethod Async()
     {
-        AsyncMode = "async ";
-        if (!ReturnType.StartsWith("Task"))
+        IsAsync = true;
+        var taskType = File.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
+        if (!ReturnType.StartsWith(taskType))
         {
-            ReturnType = ReturnType == "void" ? "Task" : $"Task<{ReturnType}>";
+            ReturnType = ReturnType == "void" ? taskType : $"{taskType}<{ReturnType}>";
         }
         return this;
     }
@@ -326,7 +334,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
         }
 
         declaration.Append(OverrideModifier);
-        declaration.Append(AsyncMode);
+        declaration.Append(IsAsync ? "async " : "");
         declaration.Append(ReturnType);
         declaration.Append(' ');
 
@@ -365,7 +373,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
 
     private string GetParameters(string indentation)
     {
-        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}{GetGenericParameters()}(".Length + Parameters.Sum(x => x.ToString().Length) > 120)
+        // GCB - WTF: why rewrite out whole statement
+        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{OverrideModifier}{(IsAsync ? "async " : "")}{ReturnType} {Name}{GetGenericParameters()}(".Length + Parameters.Sum(x => x.ToString().Length) > 120)
         {
             return $@"
 {indentation}    {string.Join($@",

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -98,6 +99,24 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
         Properties.Insert(index, property);
         configure?.Invoke(property);
         return this;
+    }
+
+    /// <summary>
+    /// Resolves the type name and method name from the <paramref name="model"/> using the <see cref="ICSharpFileBuilderTemplate"/>
+    /// template that was passed into the <see cref="CSharpFile"/>. Registers this method as representative of the <paramref name="model"/>.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="model"></param>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public CSharpInterface AddMethod<TModel>(TModel model, Action<CSharpInterfaceMethod> configure = null)
+        where TModel : IMetadataModel, IHasName
+    {
+        return AddMethod(File.GetModelType(model), model.Name.ToPropertyName(), method =>
+        {
+            method.RepresentsModel(model);
+            configure?.Invoke(method);
+        });
     }
 
     public CSharpInterface AddMethod(string returnType, string name, Action<CSharpInterfaceMethod> configure = null)

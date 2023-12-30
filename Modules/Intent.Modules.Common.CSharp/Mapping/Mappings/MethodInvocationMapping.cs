@@ -22,7 +22,7 @@ public class MethodInvocationMapping : CSharpMappingBase
 
     public override CSharpStatement GetSourceStatement()
     {
-        var invocation = new CSharpInvocationStatement(GetTargetPathText());
+        var invocation = new CSharpInvocationStatement(GetTargetPathExpression());
 
         foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
         {
@@ -37,10 +37,10 @@ public class MethodInvocationMapping : CSharpMappingBase
         return invocation;
     }
 
-    public override CSharpStatement GetTargetStatement()
-    {
-        return GetSourcePathText(Children.First(x => x.Mapping != null).Mapping.TargetPath.SkipLast(1).ToList());
-    }
+    //public override CSharpStatement GetTargetStatement()
+    //{
+    //    return GetSourcePathText(Children.First(x => x.Mapping != null).Mapping.TargetPath.SkipLast(1).ToList());
+    //}
 
     public override IEnumerable<CSharpStatement> GetMappingStatements()
     {

@@ -164,7 +164,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     public CSharpClass AddProperty<TModel>(TModel model, Action<CSharpProperty> configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddProperty(GetModelType(model), model.Name.ToPropertyName(), prop =>
+        return AddProperty(File.GetModelType(model), model.Name.ToPropertyName(), prop =>
         {
             prop.RepresentsModel(model);
             configure?.Invoke(prop);
@@ -224,7 +224,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     public CSharpClass AddMethod<TModel>(TModel model, Action<CSharpClassMethod> configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddMethod(GetModelType(model), model.Name.ToPropertyName(), method =>
+        return AddMethod(File.GetModelType(model), model.Name.ToPropertyName(), method =>
         {
             method.RepresentsModel(model);
             configure?.Invoke(method);
@@ -492,22 +492,6 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
 
         return $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";
-    }
-
-    internal string GetModelType<T>(T model) where T : IMetadataModel, IHasName
-    {
-        if (File?.Template == null)
-        {
-            throw new InvalidOperationException("Cannot add property with model. Please add the template as an argument to this CSharpFile's constructor.");
-        }
-
-        var type = model switch
-        {
-            IHasTypeReference hasType => File.Template.GetTypeName(hasType.TypeReference),
-            ITypeReference typeRef => File.Template.GetTypeName(typeRef),
-            _ => throw new ArgumentException($"model {model.Name} must implement either IHasTypeReference or ITypeReference", nameof(model))
-        };
-        return type;
     }
 
     protected internal enum Type

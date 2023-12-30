@@ -213,6 +213,22 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
         return this;
     }
 
+    internal string GetModelType<T>(T model) where T : IMetadataModel, IHasName
+    {
+        if (Template == null)
+        {
+            throw new InvalidOperationException("Cannot add property with model. Please add the template as an argument to this CSharpFile's constructor.");
+        }
+
+        var type = model switch
+        {
+            IHasTypeReference hasType => Template.GetTypeName(hasType.TypeReference),
+            ITypeReference typeRef => Template.GetTypeName(typeRef),
+            _ => throw new ArgumentException($"model {model.Name} must implement either IHasTypeReference or ITypeReference", nameof(model))
+        };
+        return type;
+    }
+
     public CSharpFile OnBuild(Action<CSharpFile> configure, int order = 0)
     {
         if (_isBuilt)

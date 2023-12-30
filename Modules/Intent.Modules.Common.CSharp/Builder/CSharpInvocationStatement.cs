@@ -67,12 +67,12 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
         Expression = new CSharpAccessMemberStatement(expression, member);
     }
 
-    public CSharpInvocationStatement(CSharpStatement expression) : base($"{expression.ToString().TrimEnd()}")
+    public CSharpInvocationStatement(ICSharpExpression expression) : base($"{expression.ToString().TrimEnd()}")
     {
         Expression = expression;
     }
 
-    public CSharpStatement Expression { get; } 
+    public ICSharpExpression Expression { get; } 
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
     public CSharpInvocationStatement AddArgument(CSharpStatement argument, Action<CSharpStatement> configure = null)

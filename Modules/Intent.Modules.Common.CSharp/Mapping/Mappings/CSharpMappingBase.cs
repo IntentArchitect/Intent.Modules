@@ -174,8 +174,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         {
             if (TryGetSourceReplacement(mappingPathTarget.Element, out var replacement))
             {
-                if (!string.IsNullOrWhiteSpace(replacement))
-                    result = new CSharpStatement(replacement); // if map to null, ignore
+                result = !string.IsNullOrWhiteSpace(replacement) ? new CSharpStatement(replacement) : null;
             }
             else
             {
@@ -219,8 +218,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         {
             if (TryGetTargetReplacement(mappingPathTarget.Element, out var replacement))
             {
-                if (!string.IsNullOrWhiteSpace(replacement))
-                    result = new CSharpStatement(replacement); // if map to null, ignore
+                result = !string.IsNullOrWhiteSpace(replacement) ? new CSharpStatement(replacement) : null;
             }
             else
             {

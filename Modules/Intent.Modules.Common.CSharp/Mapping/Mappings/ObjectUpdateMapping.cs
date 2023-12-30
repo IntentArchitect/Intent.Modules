@@ -51,7 +51,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
     {
         if (Mapping == null) // is traversal
         {
-            return GetSourcePathText(GetSourcePath());
+            return GetSourcePathText();
         }
         else
         {
