@@ -6,8 +6,10 @@ using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
+using Intent.Modules.Common.VisualStudio;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -26,6 +28,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
         public ApiElementExtensionModelTemplate(IOutputTarget outputTarget, ElementExtensionModel model) : base(TemplateId, outputTarget, model)
         {
             AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
+
+            if (!string.IsNullOrWhiteSpace(GetBaseElementModel()?.ParentModule.NuGetPackageId) &&
+                outputTarget.GetProject().Name != GetBaseElementModel().ParentModule.NuGetPackageId)
+            {
+                AddNugetDependency(new NugetPackageInfo(GetBaseElementModel().ParentModule.NuGetPackageId, GetBaseElementModel().ParentModule.NuGetPackageVersion));
+            }
 
             if (Model.TypeReference.Element.Id == FolderModel.SpecializationTypeId)
             {

@@ -69,8 +69,8 @@ namespace Intent.ModuleBuilder.Api
             {
                 MappingTypeId = Id,
                 MappingType = Name,
-                Sources = this.GetMappingTypeSettings().Sources().Select(x => new MappableElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
-                Targets = this.GetMappingTypeSettings().Targets().Select(x => new MappableElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
+                Sources = this.GetMappingTypeSettings().SourceTypes()?.Select(x => new MappableElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
+                Targets = this.GetMappingTypeSettings().TargetTypes()?.Select(x => new MappableElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
                 Represents = Enum.TryParse<ElementMappingRepresentation>(this.GetMappingTypeSettings().Represents().Value, out var represents) ? represents : ElementMappingRepresentation.Unknown,
                 LineColor = this.GetMappingTypeSettings().LineColor(),
                 LineDashArray = this.GetMappingTypeSettings().LineDashArray(),

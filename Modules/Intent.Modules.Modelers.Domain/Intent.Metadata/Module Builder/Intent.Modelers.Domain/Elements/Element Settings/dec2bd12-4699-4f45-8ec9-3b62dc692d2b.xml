@@ -103,44 +103,6 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="0674ce4d-2dd9-4dd6-af73-5736cd73f335" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
-          <name>Map To Entity</name>
-          <display>Map To Entity: Domain Entity Mapping</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="d2069628-e06e-4d0e-98ba-ec2bd8631487">
-            <typeId>d2a7e80f-a237-4d2d-97b4-eb88363b680f</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Domain</typePackageName>
-            <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>689d90a9-618b-439d-8e77-1a9c3ced29d4</parentFolderId>
-          <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
-          <packageName>Intent.Modelers.Domain</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="6c209f86-87f6-4fc3-802e-e6e553dfbeca" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" value="ctrl + shift + m" isActive="true" />
-                <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
-                <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
-                <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
-                <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
       </childElements>
     </childElement>
     <childElement id="d6d0abfd-893c-4bec-92cb-419934ba5ba8" type="Mapping Projection Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">

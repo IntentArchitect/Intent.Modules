@@ -221,7 +221,8 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
 font-family: Helvetica; 
 font-weight: bold; 
 text-align: center; 
-white-space: inherit;`</style>
+white-space: inherit;
+padding: 0px 8px;`</style>
             <size width="${w}" height="18" />
             <position x="${x}" y="${y + 8}" />
           </drawText>
@@ -411,13 +412,7 @@ if (namingConvention == "pascal-case") {
             </option>
           </creationOptions>
           <scriptOptions />
-          <mappingOptions>
-            <option mappingType="Domain Entity Mapping" mappingTypeId="d2a7e80f-a237-4d2d-97b4-eb88363b680f">
-              <text>Map To Entity</text>
-              <shortcut>ctrl + shift + m</shortcut>
-              <isOptionVisibleFunction>return getParent()?.specialization == "Class";</isOptionVisibleFunction>
-            </option>
-          </mappingOptions>
+          <mappingOptions />
           <mappingSettings>
             <mappingSetting id="7590bd83-04bc-40fe-8b5c-118277c049d4">
               <name>Map Operation</name>
@@ -554,12 +549,7 @@ if (namingConvention == "pascal-case") {
             </option>
           </creationOptions>
           <scriptOptions />
-          <mappingOptions>
-            <option mappingType="Domain Entity Mapping" mappingTypeId="d2a7e80f-a237-4d2d-97b4-eb88363b680f">
-              <text>Map To Entity</text>
-              <shortcut>ctrl + shift + m</shortcut>
-            </option>
-          </mappingOptions>
+          <mappingOptions />
           <mappingSettings>
             <mappingSetting id="d6d0abfd-893c-4bec-92cb-419934ba5ba8">
               <name>Map Constructor</name>
@@ -1074,109 +1064,7 @@ return null;</lineDashArray>
     </associationSetting>
   </associationSettings>
   <associationExtensions />
-  <mappingSettings>
-    <mappingSetting type="Domain Entity Mapping" typeId="d2a7e80f-a237-4d2d-97b4-eb88363b680f">
-      <title>Domain Entity Mapping</title>
-      <targetRootElementFunction>return element.getParent().id</targetRootElementFunction>
-      <sourceMappings>
-        <mapping id="df69461f-6d06-4424-a4e9-ababff4369eb" name="Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>true</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="6279b832-87aa-45ec-9f57-c2f8b6a73b47" name="Operation Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>true</canBeModified>
-              <represents>data</represents>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="5eaea40a-cd82-4029-9a1d-f48a74faeaed" name="Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>true</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="2d77b87e-862d-412b-bfb0-cbd1f1f2f719" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>true</canBeModified>
-              <represents>data</represents>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-      </sourceMappings>
-      <targetMappings>
-        <mapping id="d47d5dc6-bf39-42bd-8df4-806f2e3d4afb" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="d3c49802-55d0-4188-8f2e-1b3a8a414a0b" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-              <filterFunction>return !element.hasStereotype("Primary Key")</filterFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-              <childSettings />
-            </childSetting>
-            <childSetting id="0d551f4a-96fb-48d8-b3ed-31617ba3bb02" name="Association" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
-              <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-              <childSettings />
-            </childSetting>
-            <childSetting id="f28d940f-346a-44ae-8413-ea0c59d4a3e8" name="Inheritance" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>d47d5dc6-bf39-42bd-8df4-806f2e3d4afb</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
-      </targetMappings>
-      <mappingTypes>
-        <mappingType type="Data Mapping" typeId="df822d0a-ba2e-48ac-b1c8-86b301416a51">
-          <represents>data</represents>
-          <sources>
-            <source id="6279b832-87aa-45ec-9f57-c2f8b6a73b47" name="Operation Parameter" />
-            <source id="2d77b87e-862d-412b-bfb0-cbd1f1f2f719" name="Constructor Parameter" />
-          </sources>
-          <targets>
-            <target id="d3c49802-55d0-4188-8f2e-1b3a8a414a0b" name="Attribute" />
-            <target id="0d551f4a-96fb-48d8-b3ed-31617ba3bb02" name="Association" />
-          </targets>
-          <allowAutoMap>true</allowAutoMap>
-        </mappingType>
-      </mappingTypes>
-    </mappingSetting>
-  </mappingSettings>
+  <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
 </settings>

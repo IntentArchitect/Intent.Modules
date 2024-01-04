@@ -20,8 +20,22 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
-    <property id="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf">
+    <property id="ce2db9f3-0c9d-4f01-832f-6f7f3801834c">
       <name>Sources</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Specific Types</defaultValue>
+      <valueOptions>
+        <option>Data Types</option>
+        <option>Invokable Types</option>
+        <option>Specific Types</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
+    <property id="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf">
+      <name>Source Types</name>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-children</optionsSource>
@@ -57,10 +71,25 @@ const getAllPackageIds = (mappablePackage) =&gt; {
 }
 
 return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
+      <isActiveFunction>return getProperty("Sources").getValue() == "Specific Types"</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
-    <property id="8050a21c-c6ff-46fd-8677-eeda40f10719">
+    <property id="68504875-ebf6-47d6-ac36-c506431cf57c">
       <name>Targets</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Specific Types</defaultValue>
+      <valueOptions>
+        <option>Data Types</option>
+        <option>Invokable Types</option>
+        <option>Specific Types</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
+    <property id="8050a21c-c6ff-46fd-8677-eeda40f10719">
+      <name>Target Types</name>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-children</optionsSource>
@@ -97,6 +126,7 @@ const getAllPackageIds = (mappablePackage) =&gt; {
 }
 
 return getAllPackageIds(targetMappables);</lookupInternalTargetPropertyId>
+      <isActiveFunction>return getProperty("Targets").getValue() == "Specific Types"</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="6ee5b3e3-628e-4996-87b5-08649e101887">

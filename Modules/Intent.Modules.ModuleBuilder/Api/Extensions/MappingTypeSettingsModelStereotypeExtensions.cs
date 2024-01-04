@@ -47,14 +47,24 @@ namespace Intent.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
-            public IElement[] Sources()
+            public SourcesOptions Sources()
             {
-                return _stereotype.GetProperty<IElement[]>("Sources") ?? new IElement[0];
+                return new SourcesOptions(_stereotype.GetProperty<string>("Sources"));
             }
 
-            public IElement[] Targets()
+            public IElement[] SourceTypes()
             {
-                return _stereotype.GetProperty<IElement[]>("Targets") ?? new IElement[0];
+                return _stereotype.GetProperty<IElement[]>("Source Types") ?? new IElement[0];
+            }
+
+            public TargetsOptions Targets()
+            {
+                return new TargetsOptions(_stereotype.GetProperty<string>("Targets"));
+            }
+
+            public IElement[] TargetTypes()
+            {
+                return _stereotype.GetProperty<IElement[]>("Target Types") ?? new IElement[0];
             }
 
             public RepresentsOptions Represents()
@@ -75,6 +85,95 @@ namespace Intent.ModuleBuilder.Api
             public string ValidationFunction()
             {
                 return _stereotype.GetProperty<string>("Validation Function");
+            }
+
+            public class SourcesOptions
+            {
+                public readonly string Value;
+
+                public SourcesOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public SourcesOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Data Types":
+                            return SourcesOptionsEnum.DataTypes;
+                        case "Invokable Types":
+                            return SourcesOptionsEnum.InvokableTypes;
+                        case "Specific Types":
+                            return SourcesOptionsEnum.SpecificTypes;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsDataTypes()
+                {
+                    return Value == "Data Types";
+                }
+                public bool IsInvokableTypes()
+                {
+                    return Value == "Invokable Types";
+                }
+                public bool IsSpecificTypes()
+                {
+                    return Value == "Specific Types";
+                }
+            }
+
+            public enum SourcesOptionsEnum
+            {
+                DataTypes,
+                InvokableTypes,
+                SpecificTypes
+            }
+            public class TargetsOptions
+            {
+                public readonly string Value;
+
+                public TargetsOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public TargetsOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Data Types":
+                            return TargetsOptionsEnum.DataTypes;
+                        case "Invokable Types":
+                            return TargetsOptionsEnum.InvokableTypes;
+                        case "Specific Types":
+                            return TargetsOptionsEnum.SpecificTypes;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsDataTypes()
+                {
+                    return Value == "Data Types";
+                }
+                public bool IsInvokableTypes()
+                {
+                    return Value == "Invokable Types";
+                }
+                public bool IsSpecificTypes()
+                {
+                    return Value == "Specific Types";
+                }
+            }
+
+            public enum TargetsOptionsEnum
+            {
+                DataTypes,
+                InvokableTypes,
+                SpecificTypes
             }
 
             public class RepresentsOptions

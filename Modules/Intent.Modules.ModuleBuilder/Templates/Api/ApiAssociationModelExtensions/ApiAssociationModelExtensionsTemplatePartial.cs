@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -22,6 +25,22 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public ApiAssociationModelExtensionsTemplate(IOutputTarget outputTarget, AssociationSettingsModel model) : base(TemplateId, outputTarget, model)
         {
+            foreach (var sourceTypes in Model.SourceEnd.TargetTypes().Select(x => x.AsElementSettingsModel()).Where(x => x != null))
+            {
+                if (!string.IsNullOrWhiteSpace(sourceTypes.ParentModule.NuGetPackageId) &&
+                    outputTarget.GetProject().Name != sourceTypes.ParentModule.NuGetPackageId)
+                {
+                    AddNugetDependency(new NugetPackageInfo(sourceTypes.ParentModule.NuGetPackageId, sourceTypes.ParentModule.NuGetPackageVersion));
+                }
+            }
+            foreach (var targetType in Model.TargetEnd.TargetTypes().Select(x => x.AsElementSettingsModel()).Where(x => x != null))
+            {
+                if (!string.IsNullOrWhiteSpace(targetType.ParentModule.NuGetPackageId) &&
+                    outputTarget.GetProject().Name != targetType.ParentModule.NuGetPackageId)
+                {
+                    AddNugetDependency(new NugetPackageInfo(targetType.ParentModule.NuGetPackageId, targetType.ParentModule.NuGetPackageVersion));
+                }
+            }
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
