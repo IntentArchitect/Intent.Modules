@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using Intent.Modules.Common.CSharp.Templates;
 using Shouldly;
 using Xunit;
 
-namespace Intent.Modules.Common.Tests
+namespace Intent.Modules.Common.CSharp.Tests
 {
     public class NormalizeNamespacePathTests
     {
@@ -40,7 +40,8 @@ namespace Intent.Modules.Common.Tests
                     "System.Runtime.Serialization",
                     "Intent.RoslynWeaver.Attributes",
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(Enumerable.Empty<string>()));
 
             Assert.Equal("Common.Types.Country", result);
         }
@@ -60,7 +61,8 @@ namespace Intent.Modules.Common.Tests
                     "Solution.Common.Types",
                     "Intent.RoslynWeaver.Attributes",
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(Enumerable.Empty<string>()));
 
             Assert.Equal("Country", result);
         }
@@ -78,7 +80,8 @@ namespace Intent.Modules.Common.Tests
                     "AutoMapper",
                     "Intent.RoslynWeaver.Attributes",
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(Enumerable.Empty<string>()));
 
             Assert.Equal("Contracts.Internal.CompanyDetailsManagement.StatutoryInfoDTO", result);
         }
@@ -91,7 +94,8 @@ namespace Intent.Modules.Common.Tests
                 fullyQualifiedType: "Solution.Application.Common.Enums.CompanyDetails.SocialMediaType",
                 knownOtherNamespaceNames: ProjectNames,
                 usingPaths: Array.Empty<string>(),
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(Enumerable.Empty<string>()));
 
             Assert.Equal("Common.Enums.CompanyDetails.SocialMediaType", result);
         }
@@ -116,7 +120,8 @@ namespace Intent.Modules.Common.Tests
                     "MyCompany.Movies.Application.ServiceCallHandlers.Movies",
                     "MyCompany.Movies.Domain"
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(Enumerable.Empty<string>()));
 
             Assert.Equal("Application.Movies", result);
         }
@@ -147,7 +152,8 @@ namespace Intent.Modules.Common.Tests
                     "Intent.RoslynWeaver.Attributes",
                     "Intent.Templates"
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(Enumerable.Empty<string>()));
 
             Assert.Equal("Modelers.Services.CQRS.Api.QueryModel", result);
         }
@@ -180,7 +186,8 @@ namespace Intent.Modules.Common.Tests
                     "Intent.RoslynWeaver.Attributes",
                     "Intent.Templates",
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(Enumerable.Empty<string>()));
 
             Assert.Equal("DependencyInjectionDecorator", result);
         }
@@ -213,7 +220,8 @@ namespace Intent.Modules.Common.Tests
                     "Intent.RoslynWeaver.Attributes",
                     "Intent.Templates",
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(Enumerable.Empty<string>()));
 
             Assert.Equal("MyModel.MyModel", result);
         }
@@ -234,11 +242,12 @@ namespace Intent.Modules.Common.Tests
                     "Root.Sub1",
                     "Root.Sub2"
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(new[]
                 {
-                    ["Root.Sub1"] = new HashSet<string> { "TypeName" },
-                    ["Root.Sub2"] = new HashSet<string> { "TypeName" }
-                });
+                    "Root.Sub1.TypeName",
+                    "Root.Sub2.TypeName"
+                }));
 
             Assert.Equal("Sub1.TypeName", result);
         }
@@ -257,7 +266,8 @@ namespace Intent.Modules.Common.Tests
                 {
                     "Namespace1",
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(Enumerable.Empty<string>()));
 
             Assert.Equal("TypeName", result);
         }
@@ -274,10 +284,11 @@ namespace Intent.Modules.Common.Tests
                     "System",
                     "NewApplication32.Domain.Entities.Sec"
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>()
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(new[]
                 {
-                    ["System"] = new HashSet<string>() { "Action" }
-                });
+                    "System.Action"
+                }));
 
             Assert.Equal("Entities.Sec.Action", result);
         }
@@ -293,10 +304,11 @@ namespace Intent.Modules.Common.Tests
                 {
                     "Customer1.Domain.Entities.Mas"
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(new[]
                 {
-                    ["Customer1.Domain.Repositories.Log"] = new HashSet<string> { "ILogRepository" }
-                });
+                    "Customer1.Domain.Repositories.Log.ILogRepository"
+                }));
 
             Assert.Equal("Entities.Mas.Log", result);
         }
@@ -313,10 +325,11 @@ namespace Intent.Modules.Common.Tests
                     "System",
                     "Customer1.Domain",
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>()
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(new[]
                 {
-                    ["Customer1.Api"] = new HashSet<string>() { "Conflict" }
-                });
+                    "Customer1.Api.Conflict"
+                }));
 
             Assert.Equal("Domain.Conflict", result);
         }
@@ -332,10 +345,11 @@ namespace Intent.Modules.Common.Tests
                 {
                     "ApplicationName.Domain.Entities"
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(new[]
                 {
-                    ["ApplicationName.Application.Invoices"] = new HashSet<string> { "Invoice" }
-                });
+                    "ApplicationName.Application.Invoices.Invoice"
+                }));
 
             Assert.Equal("Domain.Entities.Invoice", result);
         }
@@ -348,10 +362,11 @@ namespace Intent.Modules.Common.Tests
                 fullyQualifiedType: "ApplicationName.Application.Invoices.Invoice",
                 knownOtherNamespaceNames: Array.Empty<string>(),
                 usingPaths: Array.Empty<string>(),
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(new[]
                 {
-                    ["ApplicationName.Application.Invoices"] = new HashSet<string> { "Invoice" }
-                });
+                    "ApplicationName.Application.Invoices.Invoice"
+                }));
 
             Assert.Equal("Invoice", result);
         }
@@ -367,10 +382,11 @@ namespace Intent.Modules.Common.Tests
                 {
                     "ApplicationName.Domain.Entities"
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(new[]
                 {
-                    ["ApplicationName.Application.Invoices"] = new HashSet<string> { "TypeName" }
-                });
+                    "ApplicationName.Application.Invoices.TypeName"
+                }));
 
             Assert.Equal("Invoices", result);
         }
@@ -387,7 +403,8 @@ namespace Intent.Modules.Common.Tests
                     "Solution.Application.Orders",
                     "Solution.Application.Orders.OrderConfirmed"
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(Enumerable.Empty<string>()));
 
             Assert.Equal("OrderConfirmed", result);
         }
@@ -403,7 +420,8 @@ namespace Intent.Modules.Common.Tests
                 {
                     "Solution.Application.Customers.GetPagedWithParameters.Something",
                 },
-                knownTypesByNamespace: new Dictionary<string, ISet<string>>());
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: new TypeRegistry(Enumerable.Empty<string>()));
 
             result.ShouldBe("Application.Customers.GetPagedWithParameters.Something.GetPagedWithParameters");
         }

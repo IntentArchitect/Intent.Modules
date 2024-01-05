@@ -248,7 +248,6 @@ namespace Intent.Modules.Common.CSharp.Templates
                 .ToArray();
             var localNamespace = Namespace;
             var knownOtherPaths = usingPaths
-                .Concat(ExecutionContext.OutputTargets.Select(x => x.Name))
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Distinct()
                 .ToArray();
@@ -260,49 +259,35 @@ namespace Intent.Modules.Common.CSharp.Templates
                        fullyQualifiedType: foreignType,
                        knownOtherNamespaceNames: knownOtherPaths,
                        usingPaths: usingPaths,
-                       knownTypesByNamespace: KnownCSharpTypesCache.GetKnownTypesByNamespace()) +
+                       outputTargetNames: CSharpTypesCache.GetOutputTargetNames(),
+                       knownTypes: CSharpTypesCache.GetKnownTypes()) +
                    (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>{nullable}" : nullable);
         }
 
-        private class Registry
+        private class CompositeRegistry
         {
-            private readonly Member _members = new();
+            private readonly string _fullyQualifiedTypeToExclude;
+            private readonly TypeRegistry[] _registries;
+
+            public CompositeRegistry(
+                string fullyQualifiedTypeToExclude,
+                IEnumerable<string> paths,
+                IEnumerable<TypeRegistry> registries)
+            {
+                _fullyQualifiedTypeToExclude = fullyQualifiedTypeToExclude;
+                var pathsRegistry = new TypeRegistry(paths);
+                _registries = registries.Append(pathsRegistry).ToArray();
+            }
 
             public bool ContainsEntry(string @namespace)
             {
-                var split = @namespace.Split('.');
-                var current = _members;
-
-                foreach (var item in split)
+                if (@namespace == _fullyQualifiedTypeToExclude)
                 {
-                    if (!current.TryGetValue(item, out current))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
 
-                return true;
+                return _registries.Any(x => x.Contains(@namespace));
             }
-
-            public void Add(string @namespace)
-            {
-                var split = @namespace.Split('.');
-                var current = _members;
-
-                foreach (var item in split)
-                {
-                    if (current.ContainsKey(item))
-                    {
-                        current = current[item];
-                    }
-                    else
-                    {
-                        current[item] = current = new Member();
-                    }
-                }
-            }
-
-            private class Member : Dictionary<string, Member> { }
         }
 
         internal static string NormalizeNamespace(
@@ -310,14 +295,10 @@ namespace Intent.Modules.Common.CSharp.Templates
             string fullyQualifiedType,
             string[] knownOtherNamespaceNames,
             string[] usingPaths,
-            IReadOnlyDictionary<string, ISet<string>> knownTypesByNamespace)
+            TypeRegistry outputTargetNames,
+            TypeRegistry knownTypes)
         {
             // NB: If changing this method, please run the unit tests against it
-
-            if (fullyQualifiedType.EndsWith("Transaction"))
-            {
-
-            }
 
             var typeParts = fullyQualifiedType.Split('.').ToArray();
             if (typeParts.Length == 1)
@@ -328,20 +309,22 @@ namespace Intent.Modules.Common.CSharp.Templates
             var typeNamespace = string.Join('.', typeParts.Take(typeParts.Length - 1));
             var typeUnqualified = typeParts.Last();
 
-            var allPaths = Enumerable.Empty<string>()
+            var otherPaths = Enumerable.Empty<string>()
                 .Append(localNamespace)
                 .Append(typeNamespace)
                 .Concat(knownOtherNamespaceNames)
                 .Concat(usingPaths)
-                .Concat(knownTypesByNamespace.SelectMany(x => x.Value, (x, y) => $"{x.Key}.{y}"))
                 .Where(x => x != fullyQualifiedType)
                 .Distinct();
 
-            var registry = new Registry();
-            foreach (var path in allPaths)
-            {
-                registry.Add(path);
-            }
+            var typeRegistry = new CompositeRegistry(
+                fullyQualifiedTypeToExclude: fullyQualifiedType,
+                otherPaths,
+                new[]
+                {
+                    outputTargetNames,
+                    knownTypes
+                });
 
             // C# always tries to resolve first from the namespace (or gives precedence to using
             // directives inside the namespace, but Intent at this time isn't aware of them), so we
@@ -374,7 +357,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 // Is there some other known "type" somewhere (but only if we didn't match
                 // on the type name part above in the previous loop).
                 if (previousPart != typeUnqualified &&
-                    registry.ContainsEntry(typeWithinCurrentNamespace))
+                    typeRegistry.ContainsEntry(typeWithinCurrentNamespace))
                 {
                     // We still continue looping because we need to find the most generalized conflict
                     namespaceTypeConflictAtPartNumber = number;
@@ -392,7 +375,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 {
                     if (skipCount <= namespaceTypeConflictAtPartNumber.Value &&
                         namespaceParts[skipCount] == typeParts[skipCount] &&
-                        namespaceParts.Skip(skipCount + 2).All(x => x != typeParts[skipCount +1]))
+                        namespaceParts.Skip(skipCount + 2).All(x => x != typeParts[skipCount + 1]))
                     {
                         continue;
                     }
@@ -405,8 +388,7 @@ namespace Intent.Modules.Common.CSharp.Templates
 
             // Only one using exists with the type on it
             var hasSingleUsingWithType = usingPaths
-                .Count(@using => @using == typeNamespace ||
-                                 (knownTypesByNamespace.TryGetValue(@using, out var types) && types.Contains(typeUnqualified))) == 1;
+                .Count(@using => @using == typeNamespace || knownTypes.Contains(@using, typeUnqualified)) == 1;
             if (hasSingleUsingWithType)
             {
                 return typeUnqualified;

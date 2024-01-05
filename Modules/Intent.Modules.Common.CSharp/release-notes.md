@@ -1,4 +1,8 @@
-﻿### Version 3.4.0
+﻿### Version 3.4.1
+
+- Fixed: Before and After Template Execition phases of the Software Factory would be very slow for large applications.
+
+### Version 3.4.0
 
 - Added: Advanced Mapping support with the `CSharpClassMappingManager`
 - Added: `CSharpAssignmentStatement` which takes in a left-hand and right-hand set of statements for standard variable and property assignements.

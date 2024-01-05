@@ -938,7 +938,7 @@ namespace Intent.Modules.Common.Templates
         /// Software Factory execution.
         /// </remarks>
         /// <param name="content">The contents of the file if it exists.</param>
-        /// <returns>Whether or not there was an existing file for this template's output.</returns>
+        /// <returns>whether there was an existing file for this template's output.</returns>
         public bool TryGetExistingFileContent(out string content)
         {
             (var result, content) = _tryGetExistingFileContentCache.Value;
@@ -967,7 +967,7 @@ namespace Intent.Modules.Common.Templates
         /// factory execution time.
         /// <para>
         /// It is intentional that if a file exists at the current output path then the file at the
-        /// current output path is considered the "existing" file, regardless of whether or not the
+        /// current output path is considered the "existing" file, regardless of whether the
         /// output path is different compared to the previous software execution.
         /// </para>
         /// <para>
@@ -997,13 +997,13 @@ namespace Intent.Modules.Common.Templates
 
         /// <summary>
         /// If an existing file exists, returns <see langword="true"/> and populates the
-        /// <paramref name="path"/> with the existing files path.
+        /// <paramref name="path"/> with the existing file's path.
         /// </summary>
         /// <remarks>
         /// At the end of a software factory execution a template's output path is recorded in a
         /// log and this method reads the log to determine what the previous output path was.
         /// <para>
-        /// Regardless of whether or not the current output path is different compared to the
+        /// Regardless of whether the current output path is different compared to the
         /// previous software factory execution, if a file exists at the current output path, then
         /// the current output path is populated into the <paramref name="path"/> parameter.
         /// </para>
