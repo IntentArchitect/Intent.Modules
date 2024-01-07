@@ -152,6 +152,6 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock, 
 
     public static implicit operator CSharpStatement(string input)
     {
-        return new CSharpStatement(input);
+        return input != null ? new CSharpStatement(input) : null;
     }
 }

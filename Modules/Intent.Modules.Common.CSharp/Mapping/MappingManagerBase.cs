@@ -14,7 +14,7 @@ public class MappingModel
 {
     private readonly MappingManagerBase _manager;
 
-    public MappingModel(IElementToElementMapping mapping, ICSharpCodeContext context, MappingManagerBase manager) 
+    public MappingModel(IElementToElementMapping mapping, ICSharpCodeContext context, MappingManagerBase manager)
         : this(mapping.Type, mapping.TypeId, mapping.TargetElement, mapping.MappedEnds, context, manager)
     {
     }
@@ -71,7 +71,7 @@ public class MappingModel
     public ICanBeReferencedType Model { get; }
     public IElementToElementMappedEnd Mapping { get; }
     public IList<MappingModel> Children { get; set; }
-    public MappingModel Parent { get; private set;  }
+    public MappingModel Parent { get; private set; }
     public ICSharpCodeContext CodeContext { get; set; }
 
     public ICSharpMapping GetMapping()
@@ -112,8 +112,10 @@ public class MappingModel
 public abstract class MappingManagerBase
 {
     private readonly ICSharpFileBuilderTemplate _template;
-    protected Dictionary<IMetadataModel, string> _fromReplacements = new();
-    protected Dictionary<IMetadataModel, string> _toReplacements = new();
+    private readonly Dictionary<string, string> _fromReplacements = new();
+    private List<IMetadataModel> _fromReplacementModels = new(); // Used to maintain backward compatibility
+    private readonly Dictionary<string, string> _toReplacements = new();
+    private readonly List<IMetadataModel> _toReplacementModels = new(); // Used to maintain backward compatibility
     private readonly List<IMappingTypeResolver> _mappingResolvers = new();
 
     protected MappingManagerBase(ICSharpFileBuilderTemplate template)
@@ -172,30 +174,34 @@ public abstract class MappingManagerBase
 
     public void SetFromReplacement(IMetadataModel type, string replacement)
     {
-        if (_fromReplacements.ContainsKey(type))
+        if (_fromReplacements.ContainsKey(type.Id))
         {
-            _fromReplacements.Remove(type);
+            _fromReplacements.Remove(type.Id);
+            _fromReplacementModels.Remove(type);
         }
-        _fromReplacements.Add(type, replacement);
+        _fromReplacements.Add(type.Id, replacement);
+        _fromReplacementModels.Add(type);
     }
 
     public string GetFromReplacement(IMetadataModel type)
     {
-        return _fromReplacements.TryGetValue(type, out var replacement) ? replacement : null;
+        return _fromReplacements.TryGetValue(type.Id, out var replacement) ? replacement : null;
     }
 
     public void SetToReplacement(IMetadataModel type, string replacement)
     {
-        if (_toReplacements.ContainsKey(type))
+        if (_toReplacements.ContainsKey(type.Id))
         {
-            _toReplacements.Remove(type);
+            _toReplacements.Remove(type.Id);
+            _toReplacementModels.Remove(type);
         }
-        _toReplacements.Add(type, replacement);
+        _toReplacements.Add(type.Id, replacement);
+        _toReplacementModels.Add(type);
     }
 
     public string GetToReplacement(IMetadataModel type)
     {
-        return _toReplacements.TryGetValue(type, out var replacement) ? replacement : null;
+        return _toReplacements.TryGetValue(type.Id, out var replacement) ? replacement : null;
     }
 
     public ICSharpMapping ResolveMappings(MappingModel model, ICSharpMapping defaultMapping = null)
@@ -235,16 +241,48 @@ public abstract class MappingManagerBase
 
     private void ApplyReplacements(ICSharpMapping mapping)
     {
-        foreach (var fromReplacement in _fromReplacements)
+        foreach (var model in _fromReplacementModels)
         {
-            mapping.SetSourceReplacement(fromReplacement.Key, fromReplacement.Value);
+            mapping.SetSourceReplacement(model, GetFromReplacement(model));
         }
 
-        foreach (var toReplacement in _toReplacements)
+        foreach (var model in _toReplacementModels)
         {
-            mapping.SetTargetReplacement(toReplacement.Key, toReplacement.Value);
+            mapping.SetTargetReplacement(model, GetToReplacement(model));
         }
     }
 
+    //private class MetadataModelEqualityWrapper : IEquatable<IMetadataModel>
+    //{
+    //    public IMetadataModel Model { get; }
 
+    //    public MetadataModelEqualityWrapper(IMetadataModel model)
+    //    {
+    //        Model = model;
+    //    }
+
+
+    //    public bool Equals(MetadataModelEqualityWrapper other)
+    //    {
+    //        return Model.Id.Equals(other?.Model.Id);
+    //    }
+
+    //    public bool Equals(IMetadataModel other)
+    //    {
+    //        return Model.Id.Equals(other?.Id);
+    //    }
+
+    //    public override bool Equals(object obj)
+    //    {
+    //        if (ReferenceEquals(null, obj)) return false;
+    //        if (ReferenceEquals(this, obj)) return true;
+    //        if (obj.GetType() != this.GetType()) return false;
+    //        return Equals((MetadataModelEqualityWrapper)obj);
+    //    }
+
+    //    public override int GetHashCode()
+    //    {
+    //        return (Model != null ? Model.Id.GetHashCode() : 0);
+    //    }
+    //}
 }

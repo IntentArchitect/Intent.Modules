@@ -24,7 +24,7 @@ public static class CSharpBuilderExtensions
     {
         // It's conventional to always have local methods at the bottom of a code block
         var orderedCodeBlocks = codeBlocks
-            .OrderBy(x => x is CSharpLocalMethod)
+            //.OrderBy(x => x is CSharpLocalMethod) // we should not prescribe this, and it is hidden from the user and likely to lead to confusion
             .ToArray();
 
         return string.Concat(orderedCodeBlocks.Select(s => $"{orderedCodeBlocks.DetermineSeparator(s, indentation, string.Empty, codeTextTransformer)}"));
@@ -34,7 +34,7 @@ public static class CSharpBuilderExtensions
     {
         // It's conventional to always have local methods at the bottom of a code block
         var orderedCodeBlocks = codeBlocks
-            .OrderBy(x => x is CSharpLocalMethod)
+            //.OrderBy(x => x is CSharpLocalMethod) // we should not prescribe this, and it is hidden from the user and likely to lead to confusion
             .ToArray();
 
         return string.Concat(orderedCodeBlocks.Select(s => $"{orderedCodeBlocks.DetermineSeparator(s, indentation, separator)}"));
