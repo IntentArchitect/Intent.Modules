@@ -239,11 +239,11 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 }
 
                 result = result != null ? new CSharpAccessMemberStatement(result, member) : member;
-                var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
-                if (previousMappingPath?.Element.TypeReference?.IsNullable == true && result is CSharpAccessMemberStatement accessMember)
-                {
-                    accessMember.IsConditional();
-                }
+                //var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
+                //if (previousMappingPath?.Element.TypeReference?.IsNullable == true && result is CSharpAccessMemberStatement accessMember)
+                //{
+                //    accessMember.IsConditional();
+                //}
             }
         }
         return result;
