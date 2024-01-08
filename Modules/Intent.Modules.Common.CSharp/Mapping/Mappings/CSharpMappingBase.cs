@@ -195,8 +195,8 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 }
 
                 result = result != null ? new CSharpAccessMemberStatement(result, member) : member;
-                if (mappingPathTarget.Element.TypeReference?.IsNullable == true && mappingPaths.Last() != mappingPathTarget
-                                                                                && result is CSharpAccessMemberStatement accessMember)
+                var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
+                if (previousMappingPath?.Element.TypeReference?.IsNullable == true && result is CSharpAccessMemberStatement accessMember)
                 {
                     accessMember.IsConditional();
                 }
@@ -239,8 +239,8 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 }
 
                 result = result != null ? new CSharpAccessMemberStatement(result, member) : member;
-                if (mappingPathTarget.Element.TypeReference?.IsNullable == true && mappingPaths.Last() != mappingPathTarget
-                    && result is CSharpAccessMemberStatement accessMember)
+                var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
+                if (previousMappingPath?.Element.TypeReference?.IsNullable == true && result is CSharpAccessMemberStatement accessMember)
                 {
                     accessMember.IsConditional();
                 }

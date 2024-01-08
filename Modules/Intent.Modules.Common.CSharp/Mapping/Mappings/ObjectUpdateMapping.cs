@@ -6,6 +6,7 @@ using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
+using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.Common.CSharp.Mapping;
 
@@ -29,6 +30,19 @@ public class ObjectUpdateMapping : CSharpMappingBase
 
             if (Model.TypeReference == null)
             {
+                foreach (var statement in Children.SelectMany(x => x.GetMappingStatements()))
+                {
+                    yield return statement.WithSemicolon();
+                }
+            }
+            else if (Model is IAssociationEnd associationEnd
+                     && !associationEnd.OtherEnd().TypeReference.IsCollection
+                     && !associationEnd.OtherEnd().TypeReference.IsNullable)
+            {
+                if (associationEnd.TypeReference.IsNullable)
+                {
+                    yield return $"{GetTargetPathText()} ??= new {_template.GetTypeName((IElement)associationEnd.TypeReference.Element)}();";
+                }
                 foreach (var statement in Children.SelectMany(x => x.GetMappingStatements()))
                 {
                     yield return statement.WithSemicolon();
