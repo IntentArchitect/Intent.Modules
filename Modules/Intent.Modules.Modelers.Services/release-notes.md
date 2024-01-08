@@ -1,3 +1,11 @@
+### Version 3.5.1
+
+- Improvement: Updated icons. 
+
+### Version 3.5.0
+
+- New Feature: Upgraded mapping system to use advanced mapping capabilities.
+
 ### Version 3.4.9
 
 - Improvement: `PagedResult<TData>` Type-Definition moved into this module from the `Intent.Application.Dtos.Pagination` module.

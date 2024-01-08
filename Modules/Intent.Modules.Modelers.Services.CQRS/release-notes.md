@@ -1,3 +1,11 @@
+### Version 4.1.1
+
+- Improvement: Updated icons.
+
+### Version 4.1.0
+
+- New Feature: Upgraded mapping system to use advanced mapping capabilities.
+
 ### Version 4.0.2
 
 - Auto-apply casing conventions of the Domain to the Properties of Commands and Queries.
