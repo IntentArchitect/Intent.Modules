@@ -70,6 +70,7 @@ namespace Intent.Modelers.Eventing.Api
     public class MessageSubscribeAssocationSourceEndModel : MessageSubscribeAssocationEndModel
     {
         public const string SpecializationTypeId = "18780798-1ea8-462b-b4f9-b8605ad11636";
+        public const string SpecializationType = "Message Subscribe Assocation Source End";
 
         public MessageSubscribeAssocationSourceEndModel(IAssociationEnd associationEnd, MessageSubscribeAssocationModel association) : base(associationEnd, association)
         {
@@ -80,6 +81,7 @@ namespace Intent.Modelers.Eventing.Api
     public class MessageSubscribeAssocationTargetEndModel : MessageSubscribeAssocationEndModel
     {
         public const string SpecializationTypeId = "21c3df1c-5140-4f65-9814-a68e1a577768";
+        public const string SpecializationType = "Message Subscribe Assocation Target End";
 
         public MessageSubscribeAssocationTargetEndModel(IAssociationEnd associationEnd, MessageSubscribeAssocationModel association) : base(associationEnd, association)
         {

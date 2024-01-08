@@ -70,6 +70,7 @@ namespace Intent.Modelers.Eventing.Api
     public class MessagePublishAssocationSourceEndModel : MessagePublishAssocationEndModel
     {
         public const string SpecializationTypeId = "282eea12-2b98-4f0f-a28c-50c05b953c8e";
+        public const string SpecializationType = "Message Publish Assocation Source End";
 
         public MessagePublishAssocationSourceEndModel(IAssociationEnd associationEnd, MessagePublishAssocationModel association) : base(associationEnd, association)
         {
@@ -80,6 +81,7 @@ namespace Intent.Modelers.Eventing.Api
     public class MessagePublishAssocationTargetEndModel : MessagePublishAssocationEndModel
     {
         public const string SpecializationTypeId = "6be8d569-70b9-4451-bd1b-7b654499503e";
+        public const string SpecializationType = "Message Publish Assocation Target End";
 
         public MessagePublishAssocationTargetEndModel(IAssociationEnd associationEnd, MessagePublishAssocationModel association) : base(associationEnd, association)
         {

@@ -70,6 +70,7 @@ namespace Intent.Modelers.Eventing.Api
     public class GeneralizationSourceEndModel : GeneralizationEndModel
     {
         public const string SpecializationTypeId = "62984ee8-c933-4ad3-861f-51663756b44b";
+        public const string SpecializationType = "Generalization Source End";
 
         public GeneralizationSourceEndModel(IAssociationEnd associationEnd, GeneralizationModel association) : base(associationEnd, association)
         {
@@ -80,6 +81,7 @@ namespace Intent.Modelers.Eventing.Api
     public class GeneralizationTargetEndModel : GeneralizationEndModel
     {
         public const string SpecializationTypeId = "71b21217-2424-496d-be62-a147c8c3c1e7";
+        public const string SpecializationType = "Generalization Target End";
 
         public GeneralizationTargetEndModel(IAssociationEnd associationEnd, GeneralizationModel association) : base(associationEnd, association)
         {
