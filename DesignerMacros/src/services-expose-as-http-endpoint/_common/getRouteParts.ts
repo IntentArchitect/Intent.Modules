@@ -96,8 +96,9 @@ function getRouteParts(
         // Add the owning entity's ids as parts surrounded with curly braces
         if (owningEntity != null) {
             if (queryMapping != null) {
+                let applicableClassIds = getEntityInheritanceHierarchyIds(owningEntity);
                 routeParts.push(...queryMapping.getMappedEnds()
-                    .filter(x => getParent(x.getTargetElement(), "Class").id === owningEntity.id)
+                    .filter(end => applicableClassIds.some(x => x === getParent(end.getTargetElement(), "Class").id))
                     .map(x => `{${toCamelCase(x.getSourceElement().getName())}}`));
             }
 
@@ -107,8 +108,9 @@ function getRouteParts(
 
         // Add the entity's ids as parts surrounded with curly braces
         if (queryMapping != null) {
+            let applicableClassIds = getEntityInheritanceHierarchyIds(entity);
             routeParts.push(...queryMapping.getMappedEnds()
-                .filter(x => getParent(x.getTargetElement(), "Class").id === entity.id)
+                .filter(end => applicableClassIds.some(x => x === getParent(end.getTargetElement(), "Class").id))
                 .map(x => `{${toCamelCase(x.getSourceElement().getName())}}`));
         }
         
@@ -137,4 +139,13 @@ function getRouteParts(
     }
 
     return routeParts;
+
+    function getEntityInheritanceHierarchyIds(curEntity: IElementApi) : string[] {
+        let generalizations = curEntity.getAssociations("Generalization").filter(x => x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return [curEntity.id];
+        }
+        let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
+        return other.concat(curEntity.id);
+    }
 }

@@ -1,3 +1,7 @@
+### Version 4.4.1
+
+- Fixed: `Expose as Http Endpoint` didn't resolve ID route parameters for advanced mapping and class inheritance scenarios.  
+
 ### Version 4.4.0
 
 - Improvement: _Expose as Http Endpoint_ script updated to work with new Advanced Mappings.

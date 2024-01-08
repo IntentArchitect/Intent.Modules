@@ -215,6 +215,13 @@ class DomainHelper {
     }
     static getOwningAggregate(entity) {
         var _a;
+        let invalidAssociations = entity.getAssociations("Association").filter(x =&gt; x.typeReference.getType() == null);
+        if (invalidAssociations.length &gt; 0) {
+            console.warn("Invalid associations found:");
+            invalidAssociations.forEach(x =&gt; {
+                console.warn("Invalid associations: " + x.getName());
+            });
+        }
         let result = (_a = entity.getAssociations("Association")
             .filter(x =&gt; this.isAggregateRoot(x.typeReference.getType()) &amp;&amp; isOwnedBy(x) &amp;&amp;
             // Let's only target collections for now as part of the nested compositional crud support
@@ -250,6 +257,17 @@ class DomainHelper {
             ];
         }
         return Object.values(primaryKeys);
+    }
+    static isUserSuppliedPrimaryKey(pk) {
+        if (pk == null)
+            return false;
+        if (!pk.hasStereotype("Primary Key"))
+            return false;
+        var pkStereotype = pk.getStereotype("Primary Key");
+        if (!pkStereotype.hasProperty("Data source")) {
+            return false;
+        }
+        return pkStereotype.getProperty("Data source").value == "User supplied";
     }
     static getPrimaryKeysMap(entity) {
         let keydict = Object.create(null);
@@ -320,7 +338,8 @@ class DomainHelper {
                 id: x.id,
                 mapPath: [x.id],
                 isCollection: x.typeReference.isCollection,
-                isNullable: x.typeReference.isNullable
+                isNullable: x.typeReference.isNullable,
+                element: x
             }));
         }
         // Implicit FKs:
@@ -452,6 +471,17 @@ class ServicesHelper {
     static getFieldFormat(str) {
         return toPascalCase(str);
     }
+    static formatName(str, type) {
+        switch (type) {
+            case "property":
+            case "class":
+                return toPascalCase(str);
+            case "parameter":
+                return toCamelCase(str);
+            default:
+                return str;
+        }
+    }
 }
 class ElementManager {
     constructor(command, settings) {
@@ -470,7 +500,8 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
+        var _a;
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.command.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -494,7 +525,7 @@ class ElementManager {
             else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
                 return;
             }
-            let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
+            let field = this.addChild(e.name, e.typeId);
             field.typeReference.setIsCollection(e.isCollection);
             field.typeReference.setIsNullable(e.isNullable);
             if (options === null || options === void 0 ? void 0 : options.addToTop) {
@@ -723,8 +754,9 @@ function getRouteParts(request, entity, owningEntity) {
         // Add the owning entity's ids as parts surrounded with curly braces
         if (owningEntity != null) {
             if (queryMapping != null) {
+                let applicableClassIds = getEntityInheritanceHierarchyIds(owningEntity);
                 routeParts.push(...queryMapping.getMappedEnds()
-                    .filter(x =&gt; getParent(x.getTargetElement(), "Class").id === owningEntity.id)
+                    .filter(end =&gt; applicableClassIds.some(x =&gt; x === getParent(end.getTargetElement(), "Class").id))
                     .map(x =&gt; `{${toCamelCase(x.getSourceElement().getName())}}`));
             }
             // Add a part for name of the owned entity
@@ -732,8 +764,9 @@ function getRouteParts(request, entity, owningEntity) {
         }
         // Add the entity's ids as parts surrounded with curly braces
         if (queryMapping != null) {
+            let applicableClassIds = getEntityInheritanceHierarchyIds(entity);
             routeParts.push(...queryMapping.getMappedEnds()
-                .filter(x =&gt; getParent(x.getTargetElement(), "Class").id === entity.id)
+                .filter(end =&gt; applicableClassIds.some(x =&gt; x === getParent(end.getTargetElement(), "Class").id))
                 .map(x =&gt; `{${toCamelCase(x.getSourceElement().getName())}}`));
         }
         // Add the operation's name:
@@ -755,6 +788,14 @@ function getRouteParts(request, entity, owningEntity) {
         return routeParts;
     }
     return routeParts;
+    function getEntityInheritanceHierarchyIds(curEntity) {
+        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return [curEntity.id];
+        }
+        let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
+        return other.concat(curEntity.id);
+    }
 }
 function getDefaultRoutePrefix(includeLastPathSeparator) {
     var _a;
@@ -1139,6 +1180,13 @@ class DomainHelper {
     }
     static getOwningAggregate(entity) {
         var _a;
+        let invalidAssociations = entity.getAssociations("Association").filter(x =&gt; x.typeReference.getType() == null);
+        if (invalidAssociations.length &gt; 0) {
+            console.warn("Invalid associations found:");
+            invalidAssociations.forEach(x =&gt; {
+                console.warn("Invalid associations: " + x.getName());
+            });
+        }
         let result = (_a = entity.getAssociations("Association")
             .filter(x =&gt; this.isAggregateRoot(x.typeReference.getType()) &amp;&amp; isOwnedBy(x) &amp;&amp;
             // Let's only target collections for now as part of the nested compositional crud support
@@ -1174,6 +1222,17 @@ class DomainHelper {
             ];
         }
         return Object.values(primaryKeys);
+    }
+    static isUserSuppliedPrimaryKey(pk) {
+        if (pk == null)
+            return false;
+        if (!pk.hasStereotype("Primary Key"))
+            return false;
+        var pkStereotype = pk.getStereotype("Primary Key");
+        if (!pkStereotype.hasProperty("Data source")) {
+            return false;
+        }
+        return pkStereotype.getProperty("Data source").value == "User supplied";
     }
     static getPrimaryKeysMap(entity) {
         let keydict = Object.create(null);
@@ -1244,7 +1303,8 @@ class DomainHelper {
                 id: x.id,
                 mapPath: [x.id],
                 isCollection: x.typeReference.isCollection,
-                isNullable: x.typeReference.isNullable
+                isNullable: x.typeReference.isNullable,
+                element: x
             }));
         }
         // Implicit FKs:
@@ -1376,6 +1436,17 @@ class ServicesHelper {
     static getFieldFormat(str) {
         return toPascalCase(str);
     }
+    static formatName(str, type) {
+        switch (type) {
+            case "property":
+            case "class":
+                return toPascalCase(str);
+            case "parameter":
+                return toCamelCase(str);
+            default:
+                return str;
+        }
+    }
 }
 class ElementManager {
     constructor(command, settings) {
@@ -1394,7 +1465,8 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
+        var _a;
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.command.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -1418,7 +1490,7 @@ class ElementManager {
             else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
                 return;
             }
-            let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
+            let field = this.addChild(e.name, e.typeId);
             field.typeReference.setIsCollection(e.isCollection);
             field.typeReference.setIsNullable(e.isNullable);
             if (options === null || options === void 0 ? void 0 : options.addToTop) {
@@ -1647,8 +1719,9 @@ function getRouteParts(request, entity, owningEntity) {
         // Add the owning entity's ids as parts surrounded with curly braces
         if (owningEntity != null) {
             if (queryMapping != null) {
+                let applicableClassIds = getEntityInheritanceHierarchyIds(owningEntity);
                 routeParts.push(...queryMapping.getMappedEnds()
-                    .filter(x =&gt; getParent(x.getTargetElement(), "Class").id === owningEntity.id)
+                    .filter(end =&gt; applicableClassIds.some(x =&gt; x === getParent(end.getTargetElement(), "Class").id))
                     .map(x =&gt; `{${toCamelCase(x.getSourceElement().getName())}}`));
             }
             // Add a part for name of the owned entity
@@ -1656,8 +1729,9 @@ function getRouteParts(request, entity, owningEntity) {
         }
         // Add the entity's ids as parts surrounded with curly braces
         if (queryMapping != null) {
+            let applicableClassIds = getEntityInheritanceHierarchyIds(entity);
             routeParts.push(...queryMapping.getMappedEnds()
-                .filter(x =&gt; getParent(x.getTargetElement(), "Class").id === entity.id)
+                .filter(end =&gt; applicableClassIds.some(x =&gt; x === getParent(end.getTargetElement(), "Class").id))
                 .map(x =&gt; `{${toCamelCase(x.getSourceElement().getName())}}`));
         }
         // Add the operation's name:
@@ -1679,6 +1753,14 @@ function getRouteParts(request, entity, owningEntity) {
         return routeParts;
     }
     return routeParts;
+    function getEntityInheritanceHierarchyIds(curEntity) {
+        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return [curEntity.id];
+        }
+        let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
+        return other.concat(curEntity.id);
+    }
 }
 function getDefaultRoutePrefix(includeLastPathSeparator) {
     var _a;
@@ -1848,4 +1930,6 @@ execute();</script>
   <associationSettings />
   <associationExtensions />
   <mappingSettings />
+  <mappableElementPackages />
+  <mappableElementPackageExtensions />
 </settings>

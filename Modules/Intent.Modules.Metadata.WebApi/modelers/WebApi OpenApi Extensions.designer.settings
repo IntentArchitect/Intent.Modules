@@ -94,4 +94,6 @@ element.addStereotype(versionSettingsStereotypeId);</script>
   <associationSettings />
   <associationExtensions />
   <mappingSettings />
+  <mappableElementPackages />
+  <mappableElementPackageExtensions />
 </settings>
