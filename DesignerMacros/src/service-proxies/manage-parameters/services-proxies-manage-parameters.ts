@@ -11,6 +11,10 @@ function GetParameters(
     targetService: IElementApi): IHttpEndpointInputModel[]
 {
     let httpSettings = targetService.getStereotype("Http Settings")
+    if (!httpSettings) {
+        console.warn(`Could not process '${targetService.getName()}': Http Settings not found`)
+        return [];
+    }
     var isForCqrs = targetService.specialization == "Query" || targetService.specialization == "Command";
     var verbAllowsBody = ["PUT", "PATCH", "POST"].some(x => x == httpSettings.getProperty("Verb").getValue());
     var requiresBody = false;
@@ -58,17 +62,20 @@ function execute(proxyElement: IElementApi) {
             let existing = operation.getChildren("Parameter").find(x => x.getMetadata("endpoint-input-id") == param.id)
             if (!existing) {
                 existing = createElement("Parameter", param.name, operation.id);
+                operation.collapse();
             }
             existing.setName(param.name);
             existing.setOrder(index);
             existing.typeReference.setType(param.typeId);
             existing.typeReference.setIsCollection(param.isCollection);
-            existing.typeReference.setIsNullable(param.isNullable)
-            existing.setMetadata("endpoint-input-id", param.id)
+            existing.typeReference.setIsNullable(param.isNullable);
+            existing.setMetadata("endpoint-input-id", param.id);
         })
         operation.getChildren("Parameter")
             .filter(x => params.every(p => p.id != x.getMetadata("endpoint-input-id")))
             .forEach(x => x.delete());
+
+
     });
 }
 
@@ -78,4 +85,8 @@ function execute(proxyElement: IElementApi) {
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/service-proxies/manage-parameters/service-proxies-manage-parameters.ts
  */
-execute(element);
+if (element.specialization == "Service Proxy") {
+    execute(element);
+} else {
+    lookupTypesOf("Service Proxy").forEach(x => execute(x));
+}
