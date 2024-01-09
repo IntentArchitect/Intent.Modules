@@ -11,6 +11,7 @@
       <saveAsOwnFile>false</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>true</allowMapping>
       <allowSorting>true</allowSorting>
@@ -144,6 +145,7 @@ if (useDefaultName &amp;&amp; element.getMapping() != null) {
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
@@ -166,6 +168,7 @@ if (useDefaultName &amp;&amp; element.getMapping() != null) {
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -174,7 +177,6 @@ if (useDefaultName &amp;&amp; element.getMapping() != null) {
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -236,6 +238,7 @@ if ((element.getParent().specialization == "Class" || element.getParent().specia
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type>Index</type>
         <type>Trigger</type>

@@ -3,7 +3,7 @@
   <name>Metadata</name>
   <display>Metadata</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>5a625a18-c027-4cfe-ab4e-520a68684588</parentFolderId>

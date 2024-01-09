@@ -1,3 +1,7 @@
+### Version 3.5.12
+
+- Improvement: "Auto Manage Keys" is now only available on Relational DB Domain Models.
+
 ### Version 3.5.11
 
 - Fixed: Self-referencing Classes will handle Foreign Keys correctly.

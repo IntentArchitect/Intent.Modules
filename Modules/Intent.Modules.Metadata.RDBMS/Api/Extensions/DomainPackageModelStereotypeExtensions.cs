@@ -15,7 +15,7 @@ namespace Intent.Metadata.RDBMS.Api
     {
         public static RelationalDatabase GetRelationalDatabase(this DomainPackageModel model)
         {
-            var stereotype = model.GetStereotype("Relational Database");
+            var stereotype = model.GetStereotype("51a7bcf5-0eb9-4c9a-855e-3ead1048729c");
             return stereotype != null ? new RelationalDatabase(stereotype) : null;
         }
 
@@ -35,20 +35,20 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new RelationalDatabase(model.GetStereotype("Relational Database"));
+            stereotype = new RelationalDatabase(model.GetStereotype("51a7bcf5-0eb9-4c9a-855e-3ead1048729c"));
             return true;
         }
 
         public static Schema GetSchema(this DomainPackageModel model)
         {
-            var stereotype = model.GetStereotype("Schema");
+            var stereotype = model.GetStereotype("c0f17219-ada3-47ac-80c6-7a5750cbd322");
             return stereotype != null ? new Schema(stereotype) : null;
         }
 
 
         public static bool HasSchema(this DomainPackageModel model)
         {
-            return model.HasStereotype("Schema");
+            return model.HasStereotype("c0f17219-ada3-47ac-80c6-7a5750cbd322");
         }
 
         public static bool TryGetSchema(this DomainPackageModel model, out Schema stereotype)
@@ -59,7 +59,7 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new Schema(model.GetStereotype("Schema"));
+            stereotype = new Schema(model.GetStereotype("c0f17219-ada3-47ac-80c6-7a5750cbd322"));
             return true;
         }
 

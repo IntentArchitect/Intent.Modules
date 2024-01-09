@@ -16,7 +16,7 @@ namespace Intent.Metadata.RDBMS.Api
     {
         public static ForeignKey GetForeignKey(this AssociationSourceEndModel model)
         {
-            var stereotype = model.GetStereotype("Foreign Key");
+            var stereotype = model.GetStereotype("dfe17723-99ee-4554-9be3-f4c90dd48078");
             return stereotype != null ? new ForeignKey(stereotype) : null;
         }
 
@@ -37,7 +37,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasForeignKey(this AssociationSourceEndModel model)
         {
-            return model.HasStereotype("Foreign Key");
+            return model.HasStereotype("dfe17723-99ee-4554-9be3-f4c90dd48078");
         }
 
         public static bool TryGetForeignKey(this AssociationSourceEndModel model, out ForeignKey stereotype)
@@ -48,7 +48,7 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new ForeignKey(model.GetStereotype("Foreign Key"));
+            stereotype = new ForeignKey(model.GetStereotype("dfe17723-99ee-4554-9be3-f4c90dd48078"));
             return true;
         }
 

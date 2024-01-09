@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Metadata.RDBMS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class TriggerModel : IMetadataModel, IHasStereotypes, IHasName
+    public class TriggerModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Trigger";
         public const string SpecializationTypeId = "5b7b5e77-e627-464b-a157-6d01f2042641";

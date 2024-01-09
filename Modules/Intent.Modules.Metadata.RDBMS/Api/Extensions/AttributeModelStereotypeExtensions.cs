@@ -16,7 +16,7 @@ namespace Intent.Metadata.RDBMS.Api
     {
         public static Column GetColumn(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype("Column");
+            var stereotype = model.GetStereotype("0b630b29-9513-4bbb-87fa-6cb3e6f65199");
             return stereotype != null ? new Column(stereotype) : null;
         }
 
@@ -37,7 +37,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasColumn(this AttributeModel model)
         {
-            return model.HasStereotype("Column");
+            return model.HasStereotype("0b630b29-9513-4bbb-87fa-6cb3e6f65199");
         }
 
         public static bool TryGetColumn(this AttributeModel model, out Column stereotype)
@@ -48,13 +48,13 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new Column(model.GetStereotype("Column"));
+            stereotype = new Column(model.GetStereotype("0b630b29-9513-4bbb-87fa-6cb3e6f65199"));
             return true;
         }
 
         public static ComputedValue GetComputedValue(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype("Computed Value");
+            var stereotype = model.GetStereotype("05321832-016e-49f4-acae-f2923a16b4aa");
             return stereotype != null ? new ComputedValue(stereotype) : null;
         }
 
@@ -75,7 +75,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasComputedValue(this AttributeModel model)
         {
-            return model.HasStereotype("Computed Value");
+            return model.HasStereotype("05321832-016e-49f4-acae-f2923a16b4aa");
         }
 
         public static bool TryGetComputedValue(this AttributeModel model, out ComputedValue stereotype)
@@ -86,19 +86,19 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new ComputedValue(model.GetStereotype("Computed Value"));
+            stereotype = new ComputedValue(model.GetStereotype("05321832-016e-49f4-acae-f2923a16b4aa"));
             return true;
         }
 
         public static DecimalConstraints GetDecimalConstraints(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype("Decimal Constraints");
+            var stereotype = model.GetStereotype("8775f4d0-7ffd-4678-a6a8-fd7e0c6fbc87");
             return stereotype != null ? new DecimalConstraints(stereotype) : null;
         }
 
         public static bool HasDecimalConstraints(this AttributeModel model)
         {
-            return model.HasStereotype("Decimal Constraints");
+            return model.HasStereotype("8775f4d0-7ffd-4678-a6a8-fd7e0c6fbc87");
         }
 
         public static bool TryGetDecimalConstraints(this AttributeModel model, out DecimalConstraints stereotype)
@@ -109,13 +109,13 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new DecimalConstraints(model.GetStereotype("Decimal Constraints"));
+            stereotype = new DecimalConstraints(model.GetStereotype("8775f4d0-7ffd-4678-a6a8-fd7e0c6fbc87"));
             return true;
         }
 
         public static DefaultConstraint GetDefaultConstraint(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype("Default Constraint");
+            var stereotype = model.GetStereotype("f21339bf-9ce6-4584-828f-de82089e3b72");
             return stereotype != null ? new DefaultConstraint(stereotype) : null;
         }
 
@@ -136,7 +136,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasDefaultConstraint(this AttributeModel model)
         {
-            return model.HasStereotype("Default Constraint");
+            return model.HasStereotype("f21339bf-9ce6-4584-828f-de82089e3b72");
         }
 
         public static bool TryGetDefaultConstraint(this AttributeModel model, out DefaultConstraint stereotype)
@@ -147,13 +147,13 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new DefaultConstraint(model.GetStereotype("Default Constraint"));
+            stereotype = new DefaultConstraint(model.GetStereotype("f21339bf-9ce6-4584-828f-de82089e3b72"));
             return true;
         }
 
         public static ForeignKey GetForeignKey(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype("Foreign Key");
+            var stereotype = model.GetStereotype("793a5128-57a1-440b-a206-af5722b752a6");
             return stereotype != null ? new ForeignKey(stereotype) : null;
         }
 
@@ -174,7 +174,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasForeignKey(this AttributeModel model)
         {
-            return model.HasStereotype("Foreign Key");
+            return model.HasStereotype("793a5128-57a1-440b-a206-af5722b752a6");
         }
 
         public static bool TryGetForeignKey(this AttributeModel model, out ForeignKey stereotype)
@@ -185,20 +185,20 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new ForeignKey(model.GetStereotype("Foreign Key"));
+            stereotype = new ForeignKey(model.GetStereotype("793a5128-57a1-440b-a206-af5722b752a6"));
             return true;
         }
 
         public static Index GetIndex(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype("Index");
+            var stereotype = model.GetStereotype("bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b");
             return stereotype != null ? new Index(stereotype) : null;
         }
 
         public static IReadOnlyCollection<Index> GetIndices(this AttributeModel model)
         {
             var stereotypes = model
-                .GetStereotypes("Index")
+                .GetStereotypes("bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b")
                 .Select(stereotype => new Index(stereotype))
                 .ToArray();
 
@@ -207,7 +207,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasIndex(this AttributeModel model)
         {
-            return model.HasStereotype("Index");
+            return model.HasStereotype("bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b");
         }
 
         public static bool TryGetIndex(this AttributeModel model, out Index stereotype)
@@ -218,13 +218,13 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new Index(model.GetStereotype("Index"));
+            stereotype = new Index(model.GetStereotype("bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b"));
             return true;
         }
 
         public static PrimaryKey GetPrimaryKey(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype("Primary Key");
+            var stereotype = model.GetStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6");
             return stereotype != null ? new PrimaryKey(stereotype) : null;
         }
 
@@ -245,7 +245,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasPrimaryKey(this AttributeModel model)
         {
-            return model.HasStereotype("Primary Key");
+            return model.HasStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6");
         }
 
         public static bool TryGetPrimaryKey(this AttributeModel model, out PrimaryKey stereotype)
@@ -256,13 +256,13 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new PrimaryKey(model.GetStereotype("Primary Key"));
+            stereotype = new PrimaryKey(model.GetStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6"));
             return true;
         }
 
         public static TextConstraints GetTextConstraints(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype("Text Constraints");
+            var stereotype = model.GetStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A");
             return stereotype != null ? new TextConstraints(stereotype) : null;
         }
 
@@ -283,7 +283,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasTextConstraints(this AttributeModel model)
         {
-            return model.HasStereotype("Text Constraints");
+            return model.HasStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A");
         }
 
         public static bool TryGetTextConstraints(this AttributeModel model, out TextConstraints stereotype)
@@ -294,7 +294,7 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new TextConstraints(model.GetStereotype("Text Constraints"));
+            stereotype = new TextConstraints(model.GetStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A"));
             return true;
         }
 

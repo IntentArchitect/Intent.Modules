@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Metadata.RDBMS.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class IndexColumnModel : IMetadataModel, IHasStereotypes, IHasName
+    public class IndexColumnModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Index Column";
         public const string SpecializationTypeId = "c5ba925d-5c08-4809-a848-585a0cd4ddd3";

@@ -16,7 +16,7 @@ namespace Intent.Metadata.RDBMS.Api
     {
         public static ForeignKey GetForeignKey(this AssociationTargetEndModel model)
         {
-            var stereotype = model.GetStereotype("Foreign Key");
+            var stereotype = model.GetStereotype("dfe17723-99ee-4554-9be3-f4c90dd48078");
             return stereotype != null ? new ForeignKey(stereotype) : null;
         }
 
@@ -37,7 +37,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasForeignKey(this AssociationTargetEndModel model)
         {
-            return model.HasStereotype("Foreign Key");
+            return model.HasStereotype("dfe17723-99ee-4554-9be3-f4c90dd48078");
         }
 
         public static bool TryGetForeignKey(this AssociationTargetEndModel model, out ForeignKey stereotype)
@@ -48,20 +48,20 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new ForeignKey(model.GetStereotype("Foreign Key"));
+            stereotype = new ForeignKey(model.GetStereotype("dfe17723-99ee-4554-9be3-f4c90dd48078"));
             return true;
         }
 
         public static Index GetIndex(this AssociationTargetEndModel model)
         {
-            var stereotype = model.GetStereotype("Index");
+            var stereotype = model.GetStereotype("bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b");
             return stereotype != null ? new Index(stereotype) : null;
         }
 
         public static IReadOnlyCollection<Index> GetIndices(this AssociationTargetEndModel model)
         {
             var stereotypes = model
-                .GetStereotypes("Index")
+                .GetStereotypes("bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b")
                 .Select(stereotype => new Index(stereotype))
                 .ToArray();
 
@@ -70,7 +70,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasIndex(this AssociationTargetEndModel model)
         {
-            return model.HasStereotype("Index");
+            return model.HasStereotype("bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b");
         }
 
         public static bool TryGetIndex(this AssociationTargetEndModel model, out Index stereotype)
@@ -81,20 +81,20 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new Index(model.GetStereotype("Index"));
+            stereotype = new Index(model.GetStereotype("bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b"));
             return true;
         }
 
         public static JoinTable GetJoinTable(this AssociationTargetEndModel model)
         {
-            var stereotype = model.GetStereotype("Join Table");
+            var stereotype = model.GetStereotype("5679fb86-e403-4dc0-bf25-8446ef2d1d03");
             return stereotype != null ? new JoinTable(stereotype) : null;
         }
 
 
         public static bool HasJoinTable(this AssociationTargetEndModel model)
         {
-            return model.HasStereotype("Join Table");
+            return model.HasStereotype("5679fb86-e403-4dc0-bf25-8446ef2d1d03");
         }
 
         public static bool TryGetJoinTable(this AssociationTargetEndModel model, out JoinTable stereotype)
@@ -105,7 +105,7 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new JoinTable(model.GetStereotype("Join Table"));
+            stereotype = new JoinTable(model.GetStereotype("5679fb86-e403-4dc0-bf25-8446ef2d1d03"));
             return true;
         }
 
