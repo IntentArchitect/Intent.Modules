@@ -24,8 +24,8 @@ public static class HasCSharpStatementsExtensions
 
     public static T FindStatement<T>(this IHasCSharpStatements parent, Func<T, bool> matchFunc)
     {
-        return parent.Statements.OfType<T>().Where(matchFunc)
-            .Concat(parent.Statements.OfType<IHasCSharpStatements>().SelectMany(x => x.FindStatements(matchFunc)))
+        return parent.Statements.OfType<IHasCSharpStatements>().SelectMany(x => x.FindStatements(matchFunc)) 
+            .Concat(parent.Statements.OfType<T>().Where(matchFunc))
             .FirstOrDefault();
     }
 

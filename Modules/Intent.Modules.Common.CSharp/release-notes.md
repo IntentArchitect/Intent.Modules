@@ -1,6 +1,11 @@
-﻿### Version 3.4.1
+﻿
+### Version 3.5.0
 
-- Fixed: Before and After Template Execition phases of the Software Factory would be very slow for large applications.
+- Improvement: `IHasCSharpStatements`'s `FindStatement` method now returns the child statement match (the more specific match) rather than parent match if there are multiple matches.
+
+### Version 3.4.1
+
+- Fixed: Before and After Template Execution phases of the Software Factory would be very slow for large applications.
 
 ### Version 3.4.0
 
