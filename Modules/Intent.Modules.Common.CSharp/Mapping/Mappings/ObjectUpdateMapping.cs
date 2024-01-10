@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 using Intent.RoslynWeaver.Attributes;
@@ -86,16 +88,25 @@ public class ObjectUpdateMapping : CSharpMappingBase
         return null;
     }
 
+    //ExecutionContext.Settings.GetDomainSettings().CreateEntityInterfaces();
+    private static bool CreateEntityInterfaces(IApplicationSettingsProvider provider) => bool.TryParse(provider.GetGroup("c4d1e35c-7c0d-4926-afe0-18f17563ce17").GetSetting("0456dafe-a46e-466b-bf23-1fb35c094899")?.Value.ToPascalCase(), out var result) && result;
+
     private void CreateUpdateMethod(string updateMethodName)
     {
-        var domainTypeName = _template.GetTypeName((IElement)Model.TypeReference.Element);
+        var domainModel = (IElement)Model.TypeReference.Element;
+        var createEntityInterfaces = CreateEntityInterfaces(_template.ExecutionContext.Settings);
+        var implementationName = _template.GetTypeName("Domain.Entity.Primary"/*TemplateRoles.Domain.Entity.EntityImplementation*/, domainModel);
+        var interfaceName = createEntityInterfaces ? _template.GetTypeName("Domain.Entity.Interface"/*TemplateRoles.Domain.Entity.Interface*/, domainModel) : implementationName;
+
         var fromField = GetSourcePath().Last().Element;
         var fieldIsNullable = fromField.TypeReference.IsNullable;
+        var fromFieldNullable = fieldIsNullable ? "?" : string.Empty;
+        string nullableChar = _template.OutputTarget.GetProject().NullableEnabled ? "?" : "";
 
         var @class = _template.CSharpFile.Classes.First();
         var existingMethod = @class.FindMethod(x => x.Name == updateMethodName &&
-                                                    x.ReturnType == domainTypeName &&
-                                                    x.Parameters.FirstOrDefault()?.Type == domainTypeName &&
+                                                    x.ReturnType == interfaceName &&
+                                                    x.Parameters.FirstOrDefault()?.Type == interfaceName &&
                                                     x.Parameters.Skip(1).FirstOrDefault()?.Type == _template.GetTypeName((IElement)fromField.TypeReference.Element));
         if (existingMethod != null)
         {
@@ -103,11 +114,11 @@ public class ObjectUpdateMapping : CSharpMappingBase
         }
         _template.CSharpFile.AfterBuild(file =>
         {
-            file.Classes.First().AddMethod(domainTypeName, updateMethodName, method =>
+            file.Classes.First().AddMethod($"{interfaceName}{fromFieldNullable}", updateMethodName, method =>
             {
                 method.AddAttribute(CSharpIntentManagedAttribute.Fully());
                 method.Private().Static();
-                method.AddParameter(_template.GetTypeName(Model.TypeReference.Element.AsTypeReference(true, false)), "entity");
+                method.AddParameter($"{interfaceName}{nullableChar}", "entity");
                 method.AddParameter(_template.GetTypeName((IElement)GetSourcePath().Last().Element.TypeReference.Element), "dto");
 
                 if (fieldIsNullable)
@@ -116,7 +127,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
                         .AddStatement("return null;"));
                 }
 
-                method.AddStatement($"entity ??= new {_template.GetTypeName((IElement)Model.TypeReference.Element)}();");
+                method.AddStatement($"entity ??= new {implementationName}();");
 
                 SetSourceReplacement(GetSourcePath().Last().Element, "dto");
                 SetTargetReplacement(GetTargetPath().Last().Element, "entity");

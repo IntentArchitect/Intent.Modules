@@ -2,6 +2,7 @@
 ### Version 3.5.0
 
 - Improvement: `IHasCSharpStatements`'s `FindStatement` method now returns the child statement match (the more specific match) rather than parent match if there are multiple matches.
+- Improvement: CreateOrUpdate methods now support domain interfaces.
 
 ### Version 3.4.1
 
