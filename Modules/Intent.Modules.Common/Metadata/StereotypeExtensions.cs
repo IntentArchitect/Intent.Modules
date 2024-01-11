@@ -69,9 +69,10 @@ namespace Intent.Modules.Common
             {
                 return defaultIfNotFound;
             }
-            foreach (var property in stereotype.Properties)
+            //foreach (var property in stereotype.Properties)
+            if (stereotype.TryGetProperty(propertyName, out var property) && !string.IsNullOrWhiteSpace(property.Value))
             {
-                if (property.Key != propertyName || string.IsNullOrWhiteSpace(property.Value)) continue;
+                //if (property.Key != propertyName || string.IsNullOrWhiteSpace(property.Value)) continue;
 
                 if (Nullable.GetUnderlyingType(typeof(T)) != null) // is nullable type
                 {
