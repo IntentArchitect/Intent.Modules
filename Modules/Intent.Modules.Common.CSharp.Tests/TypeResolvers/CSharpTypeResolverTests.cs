@@ -200,6 +200,10 @@ namespace Intent.Modules.Common.CSharp.Tests.TypeResolvers
                 };
             }
 
+            public IStereotypeProperty GetProperty(string nameOrId) => throw new NotImplementedException();
+
+            public bool TryGetProperty(string nameOrId, out IStereotypeProperty property) => throw new NotImplementedException();
+
             public string DefinitionId { get; }
             public string Name => "C#";
 
