@@ -1,6 +1,10 @@
-﻿### Version 5.2.0
+﻿### Version 5.2.1
 
-- Support for visually representing proxies in the Service designer.
+- Fixed: Types.ServicesProxies on-loaded on every Service Proxy causing designer to hang on open.
+
+### Version 5.2.0
+
+- Improvement: Support for visually representing proxies in the Service designer.
 
 ### Version 5.1.0
 

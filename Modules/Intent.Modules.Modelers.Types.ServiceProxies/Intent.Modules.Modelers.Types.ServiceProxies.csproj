@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>5.2.0</Version>
+    <Version>5.2.1-pre.0</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent - Modules Service Proxy Types</Product>
@@ -23,7 +23,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.3" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.5.0-pre.6" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.5.0" />
   </ItemGroup>
 
   <ItemGroup>
