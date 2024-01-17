@@ -1,9 +1,9 @@
-﻿using Intent.Metadata.Models;
-using Intent.Modules.Common.CSharp.Builder;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 
