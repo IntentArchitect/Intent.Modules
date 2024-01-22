@@ -464,39 +464,6 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="9d4cafc2-927b-4b7f-be8f-ae4debcc193d" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Changed</name>
-          <display>On Changed: Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="fd9021bf-d15b-4d60-a263-e8438d181f26">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>e48a4276-34e2-455f-83e1-a1b15edf41f8</parentFolderId>
-          <packageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</packageId>
-          <packageName>Intent.Modelers.Types.ServiceProxies</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;function GetParameters(targetService) {&#xD;&#xA;    let httpSettings = targetService.getStereotype(&quot;Http Settings&quot;);&#xD;&#xA;    if (!httpSettings) {&#xD;&#xA;        console.warn(`Could not process '${targetService.getName()}': Http Settings not found`);&#xD;&#xA;        return [];&#xD;&#xA;    }&#xD;&#xA;    var isForCqrs = targetService.specialization == &quot;Query&quot; || targetService.specialization == &quot;Command&quot;;&#xD;&#xA;    var verbAllowsBody = [&quot;PUT&quot;, &quot;PATCH&quot;, &quot;POST&quot;].some(x =&gt; x == httpSettings.getProperty(&quot;Verb&quot;).getValue());&#xD;&#xA;    var requiresBody = false;&#xD;&#xA;    let result = [];&#xD;&#xA;    targetService.getChildren(&quot;Parameter&quot;).concat(targetService.getChildren(&quot;DTO-Field&quot;)).forEach(childElement =&gt; {&#xD;&#xA;        var parameterSettings = childElement.getStereotype(&quot;d01df110-1208-4af8-a913-92a49d219552&quot;); // &quot;Paremeter Settings&quot;&#xD;&#xA;        var routeContainsParameter = httpSettings.getProperty(&quot;Route&quot;).getValue().toString().toLowerCase().indexOf(`{${childElement.getName().toLowerCase()}}`) != -1;&#xD;&#xA;        if (isForCqrs &amp;&amp; !parameterSettings &amp;&amp; !routeContainsParameter &amp;&amp; verbAllowsBody) {&#xD;&#xA;            requiresBody = true;&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        result.push({&#xD;&#xA;            id: childElement.id,&#xD;&#xA;            name: toCamelCase(childElement.getName()),&#xD;&#xA;            typeId: childElement.typeReference.getTypeId(),&#xD;&#xA;            isNullable: childElement.typeReference.getIsNullable(),&#xD;&#xA;            isCollection: childElement.typeReference.getIsCollection(),&#xD;&#xA;        });&#xD;&#xA;    });&#xD;&#xA;    if (isForCqrs &amp;&amp; requiresBody) {&#xD;&#xA;        result.push({&#xD;&#xA;            id: targetService.id,&#xD;&#xA;            name: targetService.specialization.toLowerCase(),&#xD;&#xA;            typeId: targetService.id,&#xD;&#xA;            isNullable: false,&#xD;&#xA;            isCollection: false,&#xD;&#xA;        });&#xD;&#xA;    }&#xD;&#xA;    return result;&#xD;&#xA;}&#xD;&#xA;function execute(proxyElement) {&#xD;&#xA;    proxyElement.getChildren(&quot;Operation&quot;).forEach(operation =&gt; {&#xD;&#xA;        let targetService = operation.getMapping().getElement();&#xD;&#xA;        let params = GetParameters(targetService);&#xD;&#xA;        params.forEach((param, index) =&gt; {&#xD;&#xA;            let existing = operation.getChildren(&quot;Parameter&quot;).find(x =&gt; x.getMetadata(&quot;endpoint-input-id&quot;) == param.id);&#xD;&#xA;            if (!existing) {&#xD;&#xA;                existing = createElement(&quot;Parameter&quot;, param.name, operation.id);&#xD;&#xA;                operation.collapse();&#xD;&#xA;            }&#xD;&#xA;            existing.setName(param.name);&#xD;&#xA;            existing.setOrder(index);&#xD;&#xA;            existing.typeReference.setType(param.typeId);&#xD;&#xA;            existing.typeReference.setIsCollection(param.isCollection);&#xD;&#xA;            existing.typeReference.setIsNullable(param.isNullable);&#xD;&#xA;            existing.setMetadata(&quot;endpoint-input-id&quot;, param.id);&#xD;&#xA;        });&#xD;&#xA;        operation.getChildren(&quot;Parameter&quot;)&#xD;&#xA;            .filter(x =&gt; params.every(p =&gt; p.id != x.getMetadata(&quot;endpoint-input-id&quot;)))&#xD;&#xA;            .forEach(x =&gt; x.delete());&#xD;&#xA;    });&#xD;&#xA;}&#xD;&#xA;/**&#xD;&#xA; * Used by Intent.Modules\Modules\Intent.Modelers.Types.ServiceProxies&#xD;&#xA; *&#xD;&#xA; * Source code here:&#xD;&#xA; * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/service-proxies/manage-parameters/service-proxies-manage-parameters.ts&#xD;&#xA; */&#xD;&#xA;if (element.specialization == &quot;Service Proxy&quot;) {&#xD;&#xA;    execute(element);&#xD;&#xA;}&#xD;&#xA;else {&#xD;&#xA;    lookupTypesOf(&quot;Service Proxy&quot;).forEach(x =&gt; execute(x));&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
         <childElement id="99d85c52-5c96-44f2-bc23-d29af15e04ba" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
           <display>On Created: Script</display>
