@@ -20,6 +20,15 @@
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Integration Command</text>
+          <shortcut>ctrl + shift + c</shortcut>
+          <icon type="FontAwesome" source="envelope" />
+          <specializationType>Integration Command</specializationType>
+          <specializationTypeId>7f01ca8e-0e3c-4735-ae23-a45169f71625</specializationTypeId>
+          <defaultName>NewIntegrationCommand</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
           <text>New Eventing DTO</text>
           <shortcut>ctrl + shift + d</shortcut>
           <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
@@ -68,10 +77,11 @@
       <typeOrder>
         <type order="0">Folder</type>
         <type order="1">Message</type>
-        <type order="2">Eventing DTO</type>
-        <type order="3">Type-Definition</type>
-        <type order="4">Enum</type>
-        <type order="5">Stereotype-Definition</type>
+        <type order="2">Integration Command</type>
+        <type order="3">Eventing DTO</type>
+        <type order="4">Type-Definition</type>
+        <type order="5">Enum</type>
+        <type order="6">Stereotype-Definition</type>
       </typeOrder>
       <macros>
         <macro trigger="on-loaded">
@@ -201,6 +211,88 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
+    </elementSetting>
+    <elementSetting type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625">
+      <icon type="FontAwesome" source="envelope" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Property</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <text>Add Property</text>
+          <shortcut>ctrl + shift + a</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <specializationType>Property</specializationType>
+          <specializationTypeId>bde29850-5fb9-4f47-9941-b9e182fd9bdc</specializationTypeId>
+          <defaultName>NewProperty</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <mappingSettings />
+      <visualSettings type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625">
+        <size width="${w}" height="120" />
+        <position x="${x}" y="${y}" />
+        <display>
+          <drawPath>
+            <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+            <fillColor>return theme.isDark ? "#D0E5A" : "#BFC2FB"</fillColor>
+          </drawPath>
+          <drawText>
+            <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + 8}" />
+          </drawText>
+        </display>
+        <stereotypesVisualSettings>
+          <size width="${w}" height="18" />
+          <position x="${x}" y="${y}" />
+        </stereotypesVisualSettings>
+        <defaultSize width="${x}" height="120" />
+        <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+        <childElementVisualSettings>
+          <childElementVisualSetting type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc">
+            <size width="`${parent.w}`" height="18" />
+            <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 36}`" />
+            <display>
+              <drawPath>
+                <condition>return $firstOfType;</condition>
+                <path>`M${x},${y - 6} h${w}`</path>
+              </drawPath>
+              <drawText>
+                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
+                <size width="${w}" height="${h}" />
+                <position x="${x}" y="${y}" />
+              </drawText>
+            </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
+            <defaultSize width="`${parent.w}`" height="18" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings />
+          </childElementVisualSetting>
+        </childElementVisualSettings>
+      </visualSettings>
+      <childElementSettings />
     </elementSetting>
     <elementSetting type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
       <icon type="UrlImagePath" source="data:image/png;base64,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" />
@@ -352,6 +444,15 @@ white-space: inherit;`</style>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Integration Command</text>
+          <shortcut>ctrl + shift + c</shortcut>
+          <icon type="FontAwesome" source="envelope" />
+          <specializationType>Integration Command</specializationType>
+          <specializationTypeId>7f01ca8e-0e3c-4735-ae23-a45169f71625</specializationTypeId>
+          <defaultName>NewIntegrationCommand</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
           <text>New Eventing DTO</text>
           <shortcut>ctrl + shift + d</shortcut>
           <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
@@ -365,6 +466,7 @@ white-space: inherit;`</style>
       <mappingOptions />
       <typeOrder>
         <type>Message</type>
+        <type>Integration Command</type>
         <type>Eventing DTO</type>
       </typeOrder>
       <mappingSettings />

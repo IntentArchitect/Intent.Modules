@@ -77,6 +77,15 @@
             <defaultName>NewMessage</defaultName>
             <allowMultiple>true</allowMultiple>
           </option>
+          <option type="element">
+            <text>New Integration Command</text>
+            <shortcut>ctrl + shift + c</shortcut>
+            <icon type="FontAwesome" source="envelope" />
+            <specializationType>Integration Command</specializationType>
+            <specializationTypeId>7f01ca8e-0e3c-4735-ae23-a45169f71625</specializationTypeId>
+            <defaultName>NewIntegrationCommand</defaultName>
+            <allowMultiple>true</allowMultiple>
+          </option>
         </creationOptions>
         <scriptOptions />
         <elementVisualSettings />

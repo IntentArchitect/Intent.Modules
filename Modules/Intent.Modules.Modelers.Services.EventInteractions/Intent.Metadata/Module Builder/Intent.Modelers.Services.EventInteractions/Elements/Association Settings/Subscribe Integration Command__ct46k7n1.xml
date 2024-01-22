@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="80aa7f6d-64e5-4d24-a81e-6bc212925ca7" type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272">
-  <name>Subscribe Integration Event</name>
-  <display>Subscribe Integration Event</display>
+<class id="f485e4aa-a032-4b9a-aa85-5d2c62d75799" type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272">
+  <name>Subscribe Integration Command</name>
+  <display>Subscribe Integration Command</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
@@ -12,13 +12,13 @@
   <stereotypes />
   <metadata />
   <childElements>
-    <childElement id="5d8f5c33-f9c9-4629-b637-fad9b0096894" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
-      <name>Subscribe Integration Event Source End</name>
-      <display>Subscribe Integration Event Source End</display>
+    <childElement id="cdc0ae0a-1199-4450-8e21-2da80e03bc26" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
+      <name>Subscribe Integration Command Source End</name>
+      <display>Subscribe Integration Command Source End</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>80aa7f6d-64e5-4d24-a81e-6bc212925ca7</parentFolderId>
+      <parentFolderId>f485e4aa-a032-4b9a-aa85-5d2c62d75799</parentFolderId>
       <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
       <packageName>Intent.Modelers.Services.EventInteractions</packageName>
       <stereotypes>
@@ -28,11 +28,11 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABGpJREFUeF7tWk1vE1cUPfdlgUWFknGqLlD5WrZFrQpS6YqSik/ROKzYAO2qP6BItkNV6EQqNGNX/ACWwMorPOarJZBCNyAkkBCt1FWBrmu7qhSEBHOrCXZij+fjzcybwZJntnlz7rnnnXtz3xsTRvyhEc8fmQCZA0ZcgawERtwAWRPMSiArgRFXICuBETdA9l8gK4HYJVCrjU38tWYnCbEHzBs6eM+YeaH9/OFt6LoVK0atNjb+NPeZYOwBbHxiEP3NlnWjveXFHRw+/CoOfiwH5Ocv72NhnQXwvgeJ3wl0vFma/iUKyXylvp9BNv57Hu//QZY43pz94uco+PY7kQXQKvUSQD8CEAHBLTDNtsrT1TAkNcMsg3BGCh98olWaqYTB766NJEDeqOtM9H2ogASjVSzMyryTr5hzDJySWbuyJgR+L25oASIlvyp3oAhJ4ztFDSVALHISIiSN7+YoaQGUkOswIOa5ZnlG7yW0WV/M/bv2v18B7AhlfZfFbvhemFICqEzer2a1+do4RO46gE/jigDJnhAoQCLJ+zihI8ItANviiiDjBF8BkkzezwlvG/X1r4juA1gfV4QgJ3gKkEryPk4Yr5qfC8bN2ALYw45Lz/GdAzpDyLyK4PIYXHYOM5rRuAzig/IYfisH8V0nwc74eUViAlPDaxXFItCB3rF50mh8YhHfUxRoAH9QgFptTHuSe+Qz2yvi4gnzZ2tp3VboUy+7K7SK+QTAJkWBB/D7esCEUZ8iIrsDv7GHiabaxWl7Hlh+NKN+DkRfqyLkxO8TQKs2zoD5hKpgkXAYp1vlwnerAjSKII500HGN78DvF6BSvwjQkUjEVb1EuNAqFr5cEaBaPwqmC6rg4cB3CGDagY4qCxYJiM+3SjNfdV+dMMxjRDgfCcrdAn34TgFOA/hWXbDwSAT+oVmaOZlUCTjx+5tgtbGLmBfD01b3BgO72qXC7cSaoAO/fxLUdaGt3fYQwIfqUgqF9Li19OCjlXtEZtKq5jOA3g2F4r24H9/tSixfaexl8LU3MQgJsvb9Uzy00OU/Wb20w2JxV1HylhPfxnU9C3Tu+wxFgaVgCCg2S4WfehdrhnkVhANSAAGL3PA9BbD/kOZhiIn0dnF6rjeHyeql3RaLGyqSd8Pv4voeh9M4FLmR0+bNjSRwn4F34grgl7yvA7qBk3SCe/K1cVBuEYSPk05eSgB7URJO8Exe5OyPHLHvBYN2XqoEendApRPcyKm8FJVNXtoBq0PJ8teaWBclfuRUOC1M8qEFiFsOMuTiiCCD7+wrgbfCbo0oCskw5JLG780pkgCvnbB8TrfLIfDjKAFl55AT1OGTxg/dBN0Id8Zm+/P1Bx4JPRZkfdM73gYl3td4X4/lieFH6gEDCei6mHhr+06yeDcENi6DMj+1QAvtpQe/xf6BRML4kUsgzE4O89pMgGHenTS4ZQ5IQ+VhjpE5YJh3Jw1umQPSUHmYY2QOGObdSYNb5oA0VB7mGJkDhnl30uD2P6Sq8VCQLRDUAAAAAElFTkSuQmCC&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
-            <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;c0582230-22f5-4f74-8eb0-ec6fc9364900&quot;]" isActive="true" />
+            <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;138e98c1-b1c2-4b85-9309-8faf81c6cf3f&quot;]" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return `handled by: ${typeReference.getType().getParent().getName()}.${typeReference.display}`" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
             <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
-            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="IntegrationEventHandlers" isActive="true" />
+            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="IntegrationCommandHandlers" isActive="true" />
             <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
             <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
             <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="false" isActive="true" />
@@ -48,14 +48,14 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="16fa2952-79e6-4150-b5ab-45aa4c106de4" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
-      <name>Subscribe Integration Event Target End</name>
-      <display>Subscribe Integration Event Target End</display>
+    <childElement id="efa73bdb-69b7-4f52-aa10-15c19874b394" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
+      <name>Subscribe Integration Command Target End</name>
+      <display>Subscribe Integration Command Target End</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>80aa7f6d-64e5-4d24-a81e-6bc212925ca7</parentFolderId>
+      <parentFolderId>f485e4aa-a032-4b9a-aa85-5d2c62d75799</parentFolderId>
       <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
       <packageName>Intent.Modelers.Services.EventInteractions</packageName>
       <stereotypes>
@@ -69,7 +69,7 @@
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return `handles: ${typeReference.display}`" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
             <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
-            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="IntegrationEventSubscriptions" isActive="true" />
+            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="IntegrationCommandSubscriptions" isActive="true" />
             <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
             <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
             <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="false" isActive="true" />
@@ -84,25 +84,25 @@
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="6b5d0508-5d34-4a83-9155-361f52d57c1f" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+        <childElement id="f812ef07-bceb-4b2b-a30d-658d20f7ec56" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
           <name>[context menu]</name>
           <display>[context menu]</display>
           <isAbstract>false</isAbstract>
           <sort-children>manually</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
-          <parentFolderId>16fa2952-79e6-4150-b5ab-45aa4c106de4</parentFolderId>
+          <parentFolderId>efa73bdb-69b7-4f52-aa10-15c19874b394</parentFolderId>
           <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
           <packageName>Intent.Modelers.Services.EventInteractions</packageName>
           <stereotypes />
           <metadata />
           <childElements>
-            <childElement id="350b251c-887b-48a7-9421-32d9e445b024" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+            <childElement id="5a4c028f-e8fe-4cac-8fb5-d71a19c2532f" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
               <name>Send Command</name>
               <display>Send Command: Send Command</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="c443da45-e950-4c76-bc6f-9a660cd965ff">
+              <typeReference id="813bc982-a912-4704-b240-4cbc67d15619">
                 <typeId>38a3de5a-ca88-4f6e-88b9-88e5953936b2</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -114,7 +114,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>6b5d0508-5d34-4a83-9155-361f52d57c1f</parentFolderId>
+              <parentFolderId>f812ef07-bceb-4b2b-a30d-658d20f7ec56</parentFolderId>
               <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
               <packageName>Intent.Modelers.Services.EventInteractions</packageName>
               <stereotypes>
@@ -136,12 +136,12 @@
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="b8a5a871-b568-4fde-b3ba-f08c4142da56" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+            <childElement id="c76525af-695e-4b85-bc20-72d164d6e826" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
               <name>Call Service Operation</name>
               <display>Call Service Operation: Call Service Operation</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="9ca2f3e1-7881-42bb-86e7-5b5bccaa73c9">
+              <typeReference id="3ed0da8f-dd49-47e6-9188-db07a9b6085d">
                 <typeId>9510ff76-fba3-4eca-a5dd-0cfefc8f5bb6</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -153,7 +153,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>6b5d0508-5d34-4a83-9155-361f52d57c1f</parentFolderId>
+              <parentFolderId>f812ef07-bceb-4b2b-a30d-658d20f7ec56</parentFolderId>
               <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
               <packageName>Intent.Modelers.Services.EventInteractions</packageName>
               <stereotypes>
@@ -175,12 +175,12 @@
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="25ae6974-82c9-4193-9998-22c0dfac1921" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+            <childElement id="2953f28a-3b06-4050-9492-30b925599c61" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
               <name>Publish Integration Event</name>
               <display>Publish Integration Event: Publish Integration Event</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="f7d07b6d-5e07-4df6-b2a6-aaa8b367811e">
+              <typeReference id="cea7ecd8-9b3c-48fb-b544-07f459cf863a">
                 <typeId>580b6b26-eab5-4602-a408-e76e2d292d2c</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -192,7 +192,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>6b5d0508-5d34-4a83-9155-361f52d57c1f</parentFolderId>
+              <parentFolderId>f812ef07-bceb-4b2b-a30d-658d20f7ec56</parentFolderId>
               <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
               <packageName>Intent.Modelers.Services.EventInteractions</packageName>
               <stereotypes>
@@ -214,12 +214,12 @@
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="a5a8e47c-09a9-47c5-9406-d7f95436ca5e" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+            <childElement id="8894ab9b-a3f9-41e4-8336-d99a611a9f7b" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
               <name>Send Integration Command</name>
               <display>Send Integration Command: Send Integration Command</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="6a69e2af-95e4-4468-a2f4-86abc8911c66">
+              <typeReference id="f538a53e-f0a1-4712-928f-07ea390c6568">
                 <typeId>389a7478-a8f1-4acc-adff-a73ce4aa7e6d</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -231,7 +231,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>6b5d0508-5d34-4a83-9155-361f52d57c1f</parentFolderId>
+              <parentFolderId>f812ef07-bceb-4b2b-a30d-658d20f7ec56</parentFolderId>
               <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
               <packageName>Intent.Modelers.Services.EventInteractions</packageName>
               <stereotypes>
@@ -257,25 +257,25 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="28e5e543-8242-4f4c-bb93-17c1fe552afe" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
-      <name>NewAssociationEventSettings</name>
+    <childElement id="9b2f8c27-db0c-45f0-bab3-874b372444bc" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
+      <name>[events]</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>80aa7f6d-64e5-4d24-a81e-6bc212925ca7</parentFolderId>
+      <parentFolderId>f485e4aa-a032-4b9a-aa85-5d2c62d75799</parentFolderId>
       <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
       <packageName>Intent.Modelers.Services.EventInteractions</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="6cbbb262-cc00-4131-9d7b-d2203960140c" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
+        <childElement id="bb220d06-bbd5-4d06-928a-ec6b11d195b5" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="c3a815ed-e8d6-4771-b7b2-56b3e11135cb">
+          <typeReference id="d2e02c54-63f2-4056-b0fe-870f3cd2ab90">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -287,7 +287,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>28e5e543-8242-4f4c-bb93-17c1fe552afe</parentFolderId>
+          <parentFolderId>9b2f8c27-db0c-45f0-bab3-874b372444bc</parentFolderId>
           <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
           <packageName>Intent.Modelers.Services.EventInteractions</packageName>
           <stereotypes>
@@ -296,7 +296,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="if (!association.isTargetEnd) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;const handler = association.getOtherEnd().typeReference.getType();&#xD;&#xA;// hasn't been added YET (NOTE this could be buggy later if we )&#xD;&#xA;if (handler.getAssociations(&quot;Subscribe Integration Event&quot;).length == 0) {&#xD;&#xA;    handler.setName(association.typeReference.getType().getName() + &quot;Handler&quot;)&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="if (!association.isTargetEnd) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;const handler = association.getOtherEnd().typeReference.getType();&#xD;&#xA;// hasn't been added YET (NOTE this could be buggy later if we )&#xD;&#xA;if (handler.getAssociations(&quot;Subscribe Integration Command&quot;).length == 0) {&#xD;&#xA;    handler.setName(association.typeReference.getType().getName() + &quot;Handler&quot;)&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

@@ -82,6 +82,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7f01ca8e-0e3c-4735-ae23-a45169f71625</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/IntegrationCommandModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IntegrationCommandModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#cbe970af-5bad-4d92-a3ed-a24b9fdaa23e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/MessageModel.cs</ApplicationRelativeFilePath>

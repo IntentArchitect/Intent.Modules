@@ -12,6 +12,12 @@ namespace Intent.Modelers.Services.EventInteractions
 {
     public static class ApiMetadataProviderExtensions
     {
+        public static IList<IntegrationCommandHandlerModel> GetIntegrationCommandHandlerModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(IntegrationCommandHandlerModel.SpecializationTypeId)
+                .Select(x => new IntegrationCommandHandlerModel(x))
+                .ToList();
+        }
         public static IList<IntegrationEventHandlerModel> GetIntegrationEventHandlerModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(IntegrationEventHandlerModel.SpecializationTypeId)
