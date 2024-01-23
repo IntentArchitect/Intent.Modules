@@ -80,7 +80,7 @@ function execute(proxyElement: IElementApi) {
 }
 
 /**
- * Used by Intent.Modules\Modules\Intent.Modelers.Types.ServiceProxies
+ * Used by Intent.Modules\Modules\Intent.Modelers.ServiceProxies
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/service-proxies/manage-parameters/service-proxies-manage-parameters.ts
