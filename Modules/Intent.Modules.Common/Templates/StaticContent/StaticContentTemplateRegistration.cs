@@ -13,7 +13,7 @@ using SearchOption = System.IO.SearchOption;
 namespace Intent.Modules.Common.Templates.StaticContent
 {
     /// <summary>
-    /// Inherit from this class to generate static content for each file in a folder and it's sub-folders
+    /// Inherit from this class to generate static content for each file in a folder and its sub-folders
     /// in your module.
     /// </summary>
     public abstract class StaticContentTemplateRegistration : TemplateRegistrationBase
@@ -34,14 +34,14 @@ namespace Intent.Modules.Common.Templates.StaticContent
         /// Location of source in the "content" folder.
         /// </para>
         /// <para>
-        /// Allows to sub-divide the "content" folder, in the event of other Template Registrations
+        /// Allows to subdivide the "content" folder, in the event of other Template Registrations
         /// of type <see cref="StaticContentTemplateRegistration"/>
         /// having to scan for files, by specifying the sub-folder path where the relevant content is located.
         /// Specify only the sub-folder name (or sub-path, using '/' as path delimiter).
         /// </para>
         /// </summary>
         /// <remarks>
-        /// By default it will scan all files inside the "content" folder.
+        /// By default, it will scan all files inside the "content" folder.
         /// </remarks>
         /// <example>
         /// In your project's root folder you have the "content" folder. Inside of that folder there
@@ -49,7 +49,12 @@ namespace Intent.Modules.Common.Templates.StaticContent
         /// </example>
         public virtual string ContentSubFolder => "/";
 
-        public virtual string[] BinaryFileGlobbingPatterns => new string[0];
+        /// <summary>
+        /// The relative output path is prefixed with this value.
+        /// </summary>
+        public virtual string RelativeOutputPathPrefix => "";
+
+        public virtual string[] BinaryFileGlobbingPatterns => Array.Empty<string>();
 
 
         /// <summary>
@@ -63,18 +68,19 @@ namespace Intent.Modules.Common.Templates.StaticContent
         {
             var location = Path.GetFullPath(Path.Join(Path.GetDirectoryName(GetType().Assembly.Location), "../content", ContentSubFolder.NormalizePath()));
             var allFiles = Directory
-                .EnumerateFiles(location, "*.*", SearchOption.AllDirectories);
+                .EnumerateFiles(location, "*.*", SearchOption.AllDirectories)
+                .ToArray();
 
-            var binaries = GetBinaryFiles(location, allFiles);
+            var binaries = GetBinaryFiles(location);
             var textFiles = allFiles.Except(binaries).Select(x => new
             {
                 FullPath = x,
-                RelativePath = x.Substring(location.Length).Trim(Path.DirectorySeparatorChar)
+                RelativePath = x[location.Length..].Trim(Path.DirectorySeparatorChar)
             }).ToArray();
             var binaryFiles = binaries.Select(x => new
             {
                 FullPath = x,
-                RelativePath = x.Substring(location.Length).Trim(Path.DirectorySeparatorChar)
+                RelativePath = x[location.Length..].Trim(Path.DirectorySeparatorChar)
             }).ToArray();
 
             foreach (var file in textFiles)
@@ -88,15 +94,18 @@ namespace Intent.Modules.Common.Templates.StaticContent
             }
         }
 
-        private IEnumerable<string> GetBinaryFiles(string location, IEnumerable<string> allfiles)
+        private IReadOnlyCollection<string> GetBinaryFiles(string location)
         {
-            if (BinaryFileGlobbingPatterns.Length > 0)
+            if (BinaryFileGlobbingPatterns.Length <= 0)
             {
-                var matcher = new Matcher();
-                matcher.AddIncludePatterns(BinaryFileGlobbingPatterns);
-                return matcher.GetResultsInFullPath(location);
+                return Array.Empty<string>();
             }
-            return new List<string>();
+
+            var matcher = new Matcher();
+            matcher.AddIncludePatterns(BinaryFileGlobbingPatterns);
+
+            return matcher.GetResultsInFullPath(location).ToArray();
+
         }
 
         /// <summary>
@@ -129,7 +138,6 @@ namespace Intent.Modules.Common.Templates.StaticContent
                 overwriteBehaviour: defaultOverwriteBehaviour);
         }
 
-
         /// <summary>
         /// Factory method for creating the template instance.
         /// </summary>
@@ -140,11 +148,16 @@ namespace Intent.Modules.Common.Templates.StaticContent
         /// <param name="fileFullPath">The full file path of the source file, used to read the source file content.</param>
         /// <param name="fileRelativePath">The relative path of the file to the "root" content, used to determine where on the file system to output the file.</param>
         /// <param name="defaultOverwriteBehaviour">The incoming value is the value of <see cref="OverwriteBehaviour"/>.</param>
-        protected virtual ITemplate CreateTemplate(IOutputTarget outputTarget, string fileFullPath, string fileRelativePath, OverwriteBehaviour defaultOverwriteBehaviour)
+        protected virtual ITemplate CreateTemplate(
+            IOutputTarget outputTarget,
+            string fileFullPath,
+            string fileRelativePath,
+            OverwriteBehaviour defaultOverwriteBehaviour)
         {
             return new StaticContentTemplate(
                 sourcePath: fileFullPath,
                 relativeOutputPath: fileRelativePath,
+                relativeOutputPathPrefix: RelativeOutputPathPrefix,
                 templateId: TemplateId,
                 outputTarget: outputTarget,
                 replacements: Replacements(outputTarget),
@@ -154,6 +167,6 @@ namespace Intent.Modules.Common.Templates.StaticContent
         /// <summary>
         /// Change this value to change the default <see cref="OverwriteBehaviour"/> of templates.
         /// </summary>
-        protected virtual OverwriteBehaviour DefaultOverrideBehaviour { get; } = OverwriteBehaviour.Always;
+        protected virtual OverwriteBehaviour DefaultOverrideBehaviour => OverwriteBehaviour.Always;
     }
 }

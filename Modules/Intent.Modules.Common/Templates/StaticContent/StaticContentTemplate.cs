@@ -14,12 +14,13 @@ namespace Intent.Modules.Common.Templates.StaticContent
     public class StaticContentTemplate : IntentTemplateBase
     {
         private readonly string _sourcePath;
+        private readonly string _relativeOutputPathPrefix;
         private readonly OverwriteBehaviour _overwriteBehaviour;
         private readonly IReadOnlyDictionary<string, string> _replacements;
         private readonly string _relativeOutputPath;
 
         /// <summary>
-        /// Obsolete. Use <see cref="StaticContentTemplate(string,string,string,IOutputTarget,IReadOnlyDictionary{string,string},OverwriteBehaviour)"/> instead.
+        /// Obsolete. Use <see cref="StaticContentTemplate(string,string,string,string,IOutputTarget,IReadOnlyDictionary{string,string},OverwriteBehaviour)"/> instead.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
         public StaticContentTemplate(
@@ -29,21 +30,44 @@ namespace Intent.Modules.Common.Templates.StaticContent
             IOutputTarget outputTarget,
             IReadOnlyDictionary<string, string> replacements)
             : this(
-                sourcePath,
-                relativeOutputPath,
-                templateId,
-                outputTarget,
-                replacements,
-                OverwriteBehaviour.OverwriteDisabled)
+                sourcePath: sourcePath,
+                relativeOutputPath: relativeOutputPath,
+                relativeOutputPathPrefix: null,
+                templateId: templateId,
+                outputTarget: outputTarget,
+                replacements: replacements,
+                overwriteBehaviour: OverwriteBehaviour.OverwriteDisabled)
         {
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="StaticContentTemplate(string,string,string,string,IOutputTarget,IReadOnlyDictionary{string,string},OverwriteBehaviour)"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public StaticContentTemplate(
+            string sourcePath,
+            string relativeOutputPath,
+            string templateId,
+            IOutputTarget outputTarget,
+            IReadOnlyDictionary<string, string> replacements,
+            OverwriteBehaviour overwriteBehaviour)
+            : this(
+                sourcePath: sourcePath,
+                relativeOutputPath: relativeOutputPath,
+                relativeOutputPathPrefix: null,
+                templateId: templateId,
+                outputTarget: outputTarget,
+                replacements: replacements,
+                overwriteBehaviour: overwriteBehaviour)
+        {
+        }
         /// <summary>
         /// Creates a new instance of <see cref="StaticContentTemplate"/>.
         /// </summary>
         public StaticContentTemplate(
             string sourcePath,
             string relativeOutputPath,
+            string relativeOutputPathPrefix,
             string templateId,
             IOutputTarget outputTarget,
             IReadOnlyDictionary<string, string> replacements,
@@ -56,7 +80,15 @@ namespace Intent.Modules.Common.Templates.StaticContent
                 ["ApplicationName"] = outputTarget.ApplicationName(),
                 ["ApplicationNameAllLowerCase"] = outputTarget.ApplicationName().ToLowerInvariant()
             };
+
+            if (!string.IsNullOrWhiteSpace(relativeOutputPathPrefix))
+            {
+                relativeOutputPath = Path.Join(relativeOutputPathPrefix, relativeOutputPath);
+                _relativeOutputPathPrefix = relativeOutputPathPrefix;
+            }
+
             _relativeOutputPath = relativeOutputPath.NormalizePath();
+
         }
 
         /// <inheritdoc />
@@ -75,11 +107,18 @@ namespace Intent.Modules.Common.Templates.StaticContent
         /// <inheritdoc />
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TemplateFileConfig(
+            var config = new TemplateFileConfig(
                 fileName: Path.GetFileNameWithoutExtension(_relativeOutputPath),
                 fileExtension: Path.GetExtension(_relativeOutputPath)?.TrimStart('.') ?? string.Empty,
                 relativeLocation: Path.GetDirectoryName(_relativeOutputPath),
                 overwriteBehaviour: _overwriteBehaviour);
+
+            if (_relativeOutputPathPrefix != null)
+            {
+                config.CustomMetadata.Add("RelativeOutputPathPrefix", _relativeOutputPathPrefix);
+            }
+
+            return config;
         }
 
         /// <inheritdoc />

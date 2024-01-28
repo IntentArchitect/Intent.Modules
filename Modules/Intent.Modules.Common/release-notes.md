@@ -1,3 +1,11 @@
+### Version 3.5.2
+
+- Improvement: Added overrideable `RelativeOutputPathPrefix` to `StaticContentTemplateRegistration`. This can be used to add a prefix to the relative output path of all the files for the template.
+
+### Version 3.5.1
+
+- Fixed: The Software Factory would crash when trying to access a stereotype property whose package hadn't been added as a reference.
+
 ### Version 3.5.0
 
 - New Feature: Support for binary based templates, including `File Template` and `Static Content Template` being enhanced to support binary files.
