@@ -1,5 +1,5 @@
-/// <reference path="../../common/domainHelper.ts" />
-/// <reference path="../../common/getParent.ts" />
+/// <reference path="domainHelper.ts" />
+/// <reference path="getParent.ts" />
 
 /**
  * Gets the ultimate target entity and it's owning entity (if it has one) of a mapped Command/Query.

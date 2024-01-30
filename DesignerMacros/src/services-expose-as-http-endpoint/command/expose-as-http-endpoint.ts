@@ -1,7 +1,7 @@
 /// <reference path="../_common/getFolderParts.ts" />
 /// <reference path="../_common/getRouteParts.ts" />
 /// <reference path="../_common/getDefaultRoutePrefix.ts" />
-/// <reference path="../_common/getMappedEntity.ts" />
+/// <reference path="../../common/getMappedEntity.ts" />
 
 function exposeAsHttpEndPoint(command: MacroApi.Context.IElementApi): void {
     const { entity, owningEntity } = getMappedEntity(command);
