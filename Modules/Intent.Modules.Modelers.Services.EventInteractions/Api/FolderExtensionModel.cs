@@ -24,10 +24,5 @@ namespace Intent.Modelers.Services.EventInteractions
             .Select(x => new IntegrationEventHandlerModel(x))
             .ToList();
 
-        public IList<IntegrationCommandHandlerModel> IntegrationCommandHandlers => _element.ChildElements
-            .GetElementsOfType(IntegrationCommandHandlerModel.SpecializationTypeId)
-            .Select(x => new IntegrationCommandHandlerModel(x))
-            .ToList();
-
     }
 }

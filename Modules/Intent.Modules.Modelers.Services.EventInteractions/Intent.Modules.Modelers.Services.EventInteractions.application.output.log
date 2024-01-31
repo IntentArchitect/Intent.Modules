@@ -50,14 +50,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#138e98c1-b1c2-4b85-9309-8faf81c6cf3f</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/IntegrationCommandHandlerModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>IntegrationCommandHandlerModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c0582230-22f5-4f74-8eb0-ec6fc9364900</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/IntegrationEventHandlerModel.cs</ApplicationRelativeFilePath>

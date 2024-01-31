@@ -11,7 +11,7 @@ namespace Intent.Modelers.Services.EventInteractions
     public static class SubscribeIntegrationCommandModelAssociationExtensions
     {
         [IntentManaged(Mode.Fully)]
-        public static IList<SubscribeIntegrationCommandTargetEndModel> IntegrationCommandSubscriptions(this IntegrationCommandHandlerModel model)
+        public static IList<SubscribeIntegrationCommandTargetEndModel> IntegrationCommandSubscriptions(this IntegrationEventHandlerModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == SubscribeIntegrationCommandModel.SpecializationType && x.IsTargetEnd())
