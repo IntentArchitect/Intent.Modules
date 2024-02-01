@@ -11,7 +11,7 @@ namespace Intent.Modelers.Services.EventInteractions
 {
     public static class SendIntegrationCommandModelAssociationExtensions
     {
-        public static IList<SendIntegrationCommandTargetEndModel> PublishedIntegrationCommands(this IProcessingHandlerModel model)
+        public static IList<SendIntegrationCommandTargetEndModel> SentIntegrationCommands(this IProcessingHandlerModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == SendIntegrationCommandModel.SpecializationType && x.IsTargetEnd())
