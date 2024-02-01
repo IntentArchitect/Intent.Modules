@@ -15,6 +15,9 @@ public static class ApiMetadataManagerCustomExtensions
         return metadataManager.GetExplicitlyPublishedMessageModels(application)
             .SelectMany(x => x.Properties)
             .SelectMany(x => GetReferencedDtoModels(x.TypeReference))
+            .Concat(metadataManager.GetExplicitlySentIntegrationCommandModels(application)
+                .SelectMany(x => x.Properties)
+                .SelectMany(x => GetReferencedDtoModels(x.TypeReference)))
             .Distinct()
             .ToArray();
     }
@@ -24,6 +27,9 @@ public static class ApiMetadataManagerCustomExtensions
         return metadataManager.GetExplicitlyPublishedMessageModels(application)
             .SelectMany(x => x.Properties)
             .SelectMany(x => GetReferencedEnumModels(x.TypeReference))
+            .Concat(metadataManager.GetExplicitlySentIntegrationCommandModels(application)
+                .SelectMany(x => x.Properties)
+                .SelectMany(x => GetReferencedEnumModels(x.TypeReference)))
             .Distinct()
             .ToArray();
     }
@@ -36,11 +42,22 @@ public static class ApiMetadataManagerCustomExtensions
             .ToArray();
     }
 
+    public static IReadOnlyCollection<IntegrationCommandModel> GetExplicitlySentIntegrationCommandModels(this IMetadataManager metadataManager, IApplication application)
+    {
+        return metadataManager.Services(application).GetAssociationsOfType(SubscribeIntegrationCommandModel.SpecializationTypeId)
+            .Select(x => x.TargetEnd.TypeReference.Element.AsIntegrationCommandModel())
+            .Distinct()
+            .ToArray();
+    }
+
     public static IReadOnlyCollection<EventingDTOModel> GetExplicitlySubscribedToDtoModels(this IMetadataManager metadataManager, IApplication application)
     {
         return metadataManager.GetExplicitlySubscribedToMessageModels(application)
             .SelectMany(x => x.Properties)
             .SelectMany(x => GetReferencedDtoModels(x.TypeReference))
+            .Concat(metadataManager.GetExplicitlySubscribedToIntegrationCommandModels(application)
+                .SelectMany(x => x.Properties)
+                .SelectMany(x => GetReferencedDtoModels(x.TypeReference)))
             .Distinct()
             .ToArray();
     }
@@ -50,6 +67,9 @@ public static class ApiMetadataManagerCustomExtensions
         return metadataManager.GetExplicitlySubscribedToMessageModels(application)
             .SelectMany(x => x.Properties)
             .SelectMany(x => GetReferencedEnumModels(x.TypeReference))
+            .Concat(metadataManager.GetExplicitlySubscribedToIntegrationCommandModels(application)
+                .SelectMany(x => x.Properties)
+                .SelectMany(x => GetReferencedEnumModels(x.TypeReference)))
             .Distinct()
             .ToArray();
     }
@@ -58,6 +78,14 @@ public static class ApiMetadataManagerCustomExtensions
     {
         return metadataManager.Services(application).GetAssociationsOfType(PublishIntegrationEventModel.SpecializationTypeId)
             .Select(x => x.TargetEnd.TypeReference.Element.AsMessageModel())
+            .Distinct()
+            .ToArray();
+    }
+    
+    public static IReadOnlyCollection<IntegrationCommandModel> GetExplicitlySubscribedToIntegrationCommandModels(this IMetadataManager metadataManager, IApplication application)
+    {
+        return metadataManager.Services(application).GetAssociationsOfType(SendIntegrationCommandModel.SpecializationTypeId)
+            .Select(x => x.TargetEnd.TypeReference.Element.AsIntegrationCommandModel())
             .Distinct()
             .ToArray();
     }

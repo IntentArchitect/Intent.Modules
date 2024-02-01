@@ -11,7 +11,7 @@ namespace Intent.Modelers.Services.EventInteractions
 {
     public static class SendIntegrationCommandModelAssociationExtensions
     {
-        public static IList<SendIntegrationCommandTargetEndModel> PublishedIntegrationEvents(this IProcessingHandlerModel model)
+        public static IList<SendIntegrationCommandTargetEndModel> PublishedIntegrationCommands(this IProcessingHandlerModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == SendIntegrationCommandModel.SpecializationType && x.IsTargetEnd())
@@ -19,7 +19,7 @@ namespace Intent.Modelers.Services.EventInteractions
                 .ToList();
         }
 
-        public static IList<SendIntegrationCommandSourceEndModel> IntegrationEventsSources(this MessageModel model)
+        public static IList<SendIntegrationCommandSourceEndModel> IntegrationCommandSources(this MessageModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == SendIntegrationCommandModel.SpecializationType && x.IsSourceEnd())

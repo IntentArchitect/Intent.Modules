@@ -157,6 +157,26 @@ vertical-align: center`</style>
                 <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
                 <childElementVisualSettings />
               </childElementVisualSetting>
+              <childElementVisualSetting type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394">
+                <size width="`${parent.w}`" height="18" />
+                <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 66}`" />
+                <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
+                <display>
+                  <drawText>
+                    <text>return `handles: ${typeReference.display}`</text>
+                    <size width="${w - 26}" height="${h}" />
+                    <position x="${x + 24}" y="${y}" />
+                  </drawText>
+                  <drawSvgResource>
+                    <path>method.svg</path>
+                    <size width="20" height="20" />
+                    <position x="${x}" y="${y}" />
+                  </drawSvgResource>
+                </display>
+                <defaultSize width="`${parent.w}`" height="18" />
+                <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+                <childElementVisualSettings />
+              </childElementVisualSetting>
             </childElementVisualSettings>
           </visualSettings>
           <visualSettings type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625">
@@ -279,6 +299,7 @@ vertical-align: center`</style>
           <isRequired>true</isRequired>
           <targetTypes>
             <type>Subscribe Integration Event Target End</type>
+            <type>Subscribe Integration Command Target End</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -346,6 +367,7 @@ vertical-align: center`</style>
             <type>Domain Event Handler Association Target End</type>
             <type>Operation</type>
             <type>Subscribe Integration Event Target End</type>
+            <type>Subscribe Integration Command Target End</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -410,6 +432,7 @@ vertical-align: center`</style>
           <isRequired>true</isRequired>
           <targetTypes>
             <type>Subscribe Integration Event Target End</type>
+            <type>Subscribe Integration Command Target End</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -476,6 +499,8 @@ vertical-align: center`</style>
             <type>Command</type>
             <type>Domain Event Handler Association Target End</type>
             <type>Operation</type>
+            <type>Subscribe Integration Command Target End</type>
+            <type>Subscribe Integration Event Target End</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -494,7 +519,7 @@ vertical-align: center`</style>
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Message</type>
+            <type>Integration Command</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -556,7 +581,7 @@ vertical-align: center`</style>
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Message</type>
+            <type>Integration Command</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -843,6 +868,27 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
             </childSetting>
           </childSettings>
         </mapping>
+        <mapping id="5b3901e5-0d98-4df2-bc64-57d0edce0a3a" name="Send Integration Command" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="432fd702-af2b-43c0-9d8c-e6f1fef9860d" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>b5626f4a-fc65-4cdd-b921-e7d1b347c9f4</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
       </sourceMappings>
       <targetMappings>
         <mapping id="7f5d49dd-fd48-4f29-8126-b1b0c881a99c" name="Send Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
@@ -906,6 +952,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
           <sources>
             <source id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" name="Property" />
             <source id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" />
+            <source id="432fd702-af2b-43c0-9d8c-e6f1fef9860d" name="Property" />
           </sources>
           <targets>
             <target id="7829c6b8-a045-4a3e-b9c2-13795f128879" name="Field" />
@@ -1015,6 +1062,19 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
                 </childSetting>
               </childSettings>
             </childSetting>
+          </childSettings>
+        </mapping>
+        <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
+        <mapping id="f5afadc5-6bab-4385-8cb5-9aff339433c8" name="Integration Event Handler" type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>true</isTraversable>
+          <traversableTypes>
+            <mappingId>b30396fa-5a24-498c-ad0c-53b09f80c9b3</mappingId>
+          </traversableTypes>
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
             <childSetting id="b30396fa-5a24-498c-ad0c-53b09f80c9b3" name="Integration Command" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
@@ -1049,7 +1109,6 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
             </childSetting>
           </childSettings>
         </mapping>
-        <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
       </sourceMappings>
       <targetMappings>
         <mapping id="5522e13c-4b8a-464d-802a-83a6d1e5b211" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
@@ -1181,6 +1240,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
             <target id="a7d2076d-4c3a-45bd-9d55-165fb4572557" name="Property" />
             <target id="4155744e-cc1e-495e-9a82-b3702548afe0" name="Publish Eventing DTO" />
             <target id="972c5a10-0416-4760-9f84-de002d4ef2a7" name="Eventing DTO Field" />
+            <target id="3c2d6e4f-8701-41be-bde4-c9f566c10708" name="Property" />
           </targets>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
