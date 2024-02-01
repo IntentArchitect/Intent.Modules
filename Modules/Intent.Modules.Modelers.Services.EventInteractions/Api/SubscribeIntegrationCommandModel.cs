@@ -88,8 +88,8 @@ namespace Intent.Modelers.Services.EventInteractions
         }
     }
 
-    [IntentManaged(Mode.Fully)]
-    public class SubscribeIntegrationCommandEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
+    [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
+    public class SubscribeIntegrationCommandEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper, IProcessingHandlerModel
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly SubscribeIntegrationCommandModel _association;
