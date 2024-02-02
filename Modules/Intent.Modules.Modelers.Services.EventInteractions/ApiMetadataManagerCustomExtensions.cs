@@ -4,6 +4,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Eventing.Api;
 using Intent.Modelers.Services.Api;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
 
 namespace Intent.Modelers.Services.EventInteractions;
@@ -50,6 +51,15 @@ public static class ApiMetadataManagerCustomExtensions
             .ToArray();
     }
 
+    public static IReadOnlyCollection<SendIntegrationCommandTargetEndModel> GetExplicitlySentIntegrationCommandDispatches(
+        this IMetadataManager metadataManager, string applicationId)
+    {
+        return metadataManager.Services(applicationId)
+            .Associations
+            .GetSentIntegrationCommands()
+            .ToArray();
+    }
+
     public static IReadOnlyCollection<EventingDTOModel> GetExplicitlySubscribedToDtoModels(this IMetadataManager metadataManager, IApplication application)
     {
         return metadataManager.GetExplicitlySubscribedToMessageModels(application)
@@ -81,7 +91,7 @@ public static class ApiMetadataManagerCustomExtensions
             .Distinct()
             .ToArray();
     }
-    
+
     public static IReadOnlyCollection<IntegrationCommandModel> GetExplicitlySubscribedToIntegrationCommandModels(this IMetadataManager metadataManager, IApplication application)
     {
         return metadataManager.Services(application).GetAssociationsOfType(SendIntegrationCommandModel.SpecializationTypeId)
