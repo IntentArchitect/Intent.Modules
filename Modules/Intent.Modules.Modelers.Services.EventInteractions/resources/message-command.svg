@@ -4,21 +4,19 @@
 	 viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
 <g id="_x3C_Envelope_x3E_">
 	
-		<linearGradient id="_x3C_Fold_x3E__00000104664775655334709350000016299604241695587203_" gradientUnits="userSpaceOnUse" x1="25.2" y1="10.3544" x2="25.2" y2="-20.7398" gradientTransform="matrix(1 0 0 1 0 30)">
-		<stop  offset="0" style="stop-color:#416DB5"/>
-		<stop  offset="0" style="stop-color:#416DB5"/>
-		<stop  offset="0" style="stop-color:#426FB6"/>
-		<stop  offset="1" style="stop-color:#64CCEF"/>
+		<linearGradient id="_x3C_Fold_x3E__00000158728003136597856390000014549607501777195943_" gradientUnits="userSpaceOnUse" x1="25.2" y1="39.6456" x2="25.2" y2="70.7398" gradientTransform="matrix(1 0 0 -1 0 80)">
+		<stop  offset="0" style="stop-color:#00673C"/>
+		<stop  offset="1" style="stop-color:#3EAA5C"/>
 	</linearGradient>
-	<polygon id="_x3C_Fold_x3E_" fill="url(#_x3C_Fold_x3E__00000104664775655334709350000016299604241695587203_)" points="21,27 
+	<polygon id="_x3C_Fold_x3E_" fill="url(#_x3C_Fold_x3E__00000158728003136597856390000014549607501777195943_)" points="21,27 
 		25.2,30.5 29.3,27 37,33.4 40.8,33.4 40.8,32 32,24.8 40.8,17.5 40.8,16.1 37,16.1 25.2,26 13.3,16.1 9.6,16.1 9.6,17.5 18.3,24.7 
 		9.6,32 9.6,33.4 13.3,33.4 	"/>
 	
-		<linearGradient id="_x3C_Border_x3E__00000062159021476922847690000018103618711470487437_" gradientUnits="userSpaceOnUse" x1="25.2" y1="11.6594" x2="25.2" y2="-22.0575" gradientTransform="matrix(1 0 0 1 0 30)">
-		<stop  offset="5.695193e-02" style="stop-color:#406AB3"/>
-		<stop  offset="1" style="stop-color:#64CCEF"/>
+		<linearGradient id="_x3C_Border_x3E__00000046298218688341548240000011234517008864818606_" gradientUnits="userSpaceOnUse" x1="25.2" y1="38.3406" x2="25.2" y2="72.0575" gradientTransform="matrix(1 0 0 -1 0 80)">
+		<stop  offset="0" style="stop-color:#00673C"/>
+		<stop  offset="1" style="stop-color:#3EAA5C"/>
 	</linearGradient>
-	<path id="_x3C_Border_x3E_" fill="url(#_x3C_Border_x3E__00000062159021476922847690000018103618711470487437_)" d="M2.7,7.8v33.8
+	<path id="_x3C_Border_x3E_" fill="url(#_x3C_Border_x3E__00000046298218688341548240000011234517008864818606_)" d="M2.7,7.8v33.8
 		h45V7.8H2.7z M44.2,38.2H6.1V11.3h38.1C44.2,11.3,44.2,38.2,44.2,38.2z"/>
 </g>
 </svg>
