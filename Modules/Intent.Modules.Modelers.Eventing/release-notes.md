@@ -1,3 +1,7 @@
+### Version 5.0.2
+
+- Improvement: Added support for `Integration Command`s.
+
 ### Version 4.0.4
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.

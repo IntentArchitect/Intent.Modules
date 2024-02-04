@@ -61,12 +61,51 @@
       <metadata />
       <childElements>
         <childElement id="706d1c17-2089-451a-8f11-0f6997f7af73" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Handler</name>
-          <display>Add Handler: Subscribe Integration Event Source End</display>
+          <name>Add Event Handler</name>
+          <display>Add Event Handler: Subscribe Integration Event Source End</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="741c4c39-5659-490f-906e-a5d839508e92">
             <typeId>5d8f5c33-f9c9-4629-b637-fad9b0096894</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services.EventInteractions</typePackageName>
+            <typePackageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>f267867f-ff66-4cba-8d28-b99cf14dd95e</parentFolderId>
+          <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
+          <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="4178c6e0-ad4c-42d5-85c7-86e6b7574b46" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Add Command Handler</name>
+          <display>Add Command Handler: Subscribe Integration Command Source End</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="2b31bbe9-ff5a-4b2c-8cb4-3d4672fa5b7c">
+            <typeId>cdc0ae0a-1199-4450-8e21-2da80e03bc26</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

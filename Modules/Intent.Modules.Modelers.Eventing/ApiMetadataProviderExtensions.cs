@@ -25,6 +25,13 @@ namespace Intent.Modelers.Eventing.Api
                 .ToList();
         }
 
+        public static IList<IntegrationCommandModel> GetIntegrationCommandModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(IntegrationCommandModel.SpecializationTypeId)
+                .Select(x => new IntegrationCommandModel(x))
+                .ToList();
+        }
+
         public static IList<MessageModel> GetMessageModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(MessageModel.SpecializationTypeId)
