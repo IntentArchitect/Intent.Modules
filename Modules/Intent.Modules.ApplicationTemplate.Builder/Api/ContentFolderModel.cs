@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class ContentFolderModel : IMetadataModel, IHasStereotypes, IHasName
+    public class ContentFolderModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Content Folder";
         public const string SpecializationTypeId = "08725da5-d0cf-4ec8-ad65-a58d9927d32f";

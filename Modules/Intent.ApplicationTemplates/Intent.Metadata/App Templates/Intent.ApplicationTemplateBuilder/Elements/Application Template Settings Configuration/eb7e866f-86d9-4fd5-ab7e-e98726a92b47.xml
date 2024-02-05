@@ -15,7 +15,7 @@
   <childElements>
     <childElement id="370fa405-7877-4ed7-a507-b0f6d4509ad0" type="Application Template Settings Field Configuration" typeId="053d28c8-18c9-45b9-b3cb-184ec4b19679">
       <name>Target Framework</name>
-      <display>Target Framework = target-framework</display>
+      <display>Target Framework</display>
       <isAbstract>false</isAbstract>
       <value>target-framework</value>
       <genericTypes />

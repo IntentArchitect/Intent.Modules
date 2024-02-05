@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class ApplicationTemplateSettingsFieldOptionModel : IMetadataModel, IHasStereotypes, IHasName
+    public class ApplicationTemplateSettingsFieldOptionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Application Template Settings Field Option";
         public const string SpecializationTypeId = "7194651e-45da-4a0c-b1ab-0351a5c08fc8";

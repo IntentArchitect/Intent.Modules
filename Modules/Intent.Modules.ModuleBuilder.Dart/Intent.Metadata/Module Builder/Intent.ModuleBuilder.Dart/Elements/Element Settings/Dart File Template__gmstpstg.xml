@@ -31,12 +31,14 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Own File" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;https://user-images.githubusercontent.com/26507463/53453892-49908900-3a04-11e9-9dce-77ed3d694326.png&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIyLjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ImxvZ29feDVGX2ZpcmViYXNlX3g1Rl8xOTJweF94NUZfY2xyIgoJIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAxMDgwIDEwODAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDEwODAgMTA4MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZmlsbD0iIzAxNTc5QiIgZD0iTTIyNS42LDg1Mi4xNEw0NC44NCw2NzEuMzhjLTIxLjQxLTIyLjAxLTM0Ljc2LTUzLjA4LTM0Ljc2LTgzLjQzYzAtMTQuMDUsNy45NC0zNi4wMywxMy45LTQ4LjY3CgkJbDE2Ni44Ni0zNDcuNjJMMjI1LjYsODUyLjE0eiIvPgoJPHBhdGggZmlsbD0iIzQwQzRGRiIgZD0iTTg0NC4zNywyMjYuNDJMNjYzLjYxLDQ1LjY2Yy0xNS43OS0xNS44NS00OC42Ny0zNC43Ni03Ni40OC0zNC43NmMtMjMuOSwwLTQ3LjM2LDQuNzgtNjIuNTcsMTMuOQoJCUwxOTAuODQsMTkxLjY2TDg0NC4zNywyMjYuNDJ6Ii8+Cgk8cG9seWdvbiBmaWxsPSIjNDBDNEZGIiBwb2ludHM9IjQ0MS4xMywxMDY3LjY2IDg3OS4xMywxMDY3LjY2IDg3OS4xMyw4NzkuOTUgNTUyLjM3LDc3NS42NiAyNTMuNDEsODc5Ljk1IAkiLz4KCTxwYXRoIGZpbGw9IiMyOUI2RjYiIGQ9Ik0xOTAuODQsNzU0LjhjMCw1NS43Nyw2Ljk5LDY5LjQ1LDM0Ljc2LDk3LjMzbDI3LjgxLDI3LjgxaDYyNS43Mkw1NzMuMjIsNTMyLjMzTDE5MC44NCwxOTEuNjZWNzU0Ljh6Ii8+Cgk8cGF0aCBmaWxsPSIjMDE1NzlCIiBkPSJNNzQ3LjAzLDE5MS42NkgxOTAuODRsNjg4LjI5LDY4OC4yOWgxODcuNzFWNDQ4LjlMODQ0LjM3LDIyNi40MgoJCUM4MTMuMTIsMTk1LjA1LDc4NS4zNywxOTEuNjYsNzQ3LjAzLDE5MS42NnoiLz4KCTxwYXRoIG9wYWNpdHk9IjAuMiIgZmlsbD0iI0ZGRkZGRiIgZD0iTTIzMi41Niw4NTkuMDljLTI3LjgxLTI3LjkyLTM0Ljc2LTU1LjQzLTM0Ljc2LTEwNC4yOVYxOTguNjFsLTYuOTUtNi45NVY3NTQuOAoJCUMxOTAuODQsODAzLjY2LDE5MC44NCw4MTcuMjEsMjMyLjU2LDg1OS4wOWwyMC44NiwyMC44NmwwLDBMMjMyLjU2LDg1OS4wOXoiLz4KCTxwb2x5Z29uIG9wYWNpdHk9IjAuMiIgZmlsbD0iIzI2MzIzOCIgcG9pbnRzPSIxMDU5Ljg5LDQ0MS45NSAxMDU5Ljg5LDg3MyA4NzIuMTgsODczIDg3OS4xMyw4NzkuOTUgMTA2Ni44NSw4NzkuOTUgMTA2Ni44NSw0NDguOSAKCQkJIi8+Cgk8cGF0aCBvcGFjaXR5PSIwLjIiIGZpbGw9IiNGRkZGRkYiIGQ9Ik04NDQuMzcsMjI2LjQyYy0zNC40Ni0zNC40Ni02Mi43My0zNC43Ni0xMDQuMjktMzQuNzZIMTkwLjg0bDYuOTUsNi45NWg1NDIuMjkKCQlDNzYwLjg2LDE5OC42MSw4MTMuMiwxOTUuMTQsODQ0LjM3LDIyNi40Mkw4NDQuMzcsMjI2LjQyeiIvPgoJPHJhZGlhbEdyYWRpZW50IGlkPSJTVkdJRF8xXyIgY3g9IjUzOC40NjI2IiBjeT0iNTM5LjI4MDIiIHI9IjUyOC4zODI3IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0ZGRkZGRjtzdG9wLW9wYWNpdHk6MC4xIi8+CgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6I0ZGRkZGRjtzdG9wLW9wYWNpdHk6MCIvPgoJPC9yYWRpYWxHcmFkaWVudD4KCTxwYXRoIG9wYWNpdHk9IjAuMiIgZmlsbD0idXJsKCNTVkdJRF8xXykiIGQ9Ik0xMDU5Ljg5LDQ0MS45NUw4NDQuMzcsMjI2LjQyTDY2My42MSw0NS42NmMtMTUuNzktMTUuODUtNDguNjctMzQuNzYtNzYuNDgtMzQuNzYKCQljLTIzLjksMC00Ny4zNiw0Ljc4LTYyLjU3LDEzLjlMMTkwLjg0LDE5MS42NkwyMy45OCw1MzkuMjhjLTUuOTYsMTIuNjQtMTMuOSwzNC42MS0xMy45LDQ4LjY3YzAsMzAuMzUsMTMuMzUsNjEuNDEsMzQuNzYsODMuNDMKCQlsMTY2LjU4LDE2NS4zOGMzLjk5LDQuODYsOC42Niw5Ljg0LDE0LjE4LDE1LjM4bDYuOTUsNi45NWwyMC44NiwyMC44NmwxODAuNzYsMTgwLjc2bDYuOTUsNi45NWg0MzEuMDVoNi45NVY4NzkuOTVoMTg3Ljcxdi0wLjUKCQlWNDQ4LjlMMTA1OS44OSw0NDEuOTV6Ii8+CjwvZz4KPC9zdmc+Cg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
@@ -51,7 +53,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>755fcfd3-6232-4ed8-9bfc-2d09af503697</parentFolderId>
@@ -93,6 +95,7 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

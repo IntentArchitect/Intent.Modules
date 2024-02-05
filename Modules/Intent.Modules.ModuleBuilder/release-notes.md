@@ -1,3 +1,7 @@
+### Version 3.8.2
+
+- Improvement: Updated icon.
+
 ### Version 3.6.13
 
 - Improvement: `TemplateExtensions` will now simply fully qualified type names and add using directives as appropriate.

@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class ApplicationTemplateSettingsConfigurationModel : IMetadataModel, IHasStereotypes, IHasName
+    public class ApplicationTemplateSettingsConfigurationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Application Template Settings Configuration";
         public const string SpecializationTypeId = "69000b7e-8bc8-49d0-80f5-eb65a6f7653a";
@@ -35,6 +35,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        [IntentManaged(Mode.Ignore)]
         public string Value => _element.Value;
 
         public IElement InternalElement => _element;

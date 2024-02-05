@@ -1,3 +1,7 @@
+### Version 1.0.3
+
+- Improvement: Updated icon.
+
 ### Version 1.0.2
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.

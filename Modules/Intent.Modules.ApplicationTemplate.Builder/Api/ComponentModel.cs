@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class ComponentModel : IMetadataModel, IHasStereotypes, IHasName
+    public class ComponentModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Component";
         public const string SpecializationTypeId = "47064ef1-2295-4287-8301-c446910a1b1e";

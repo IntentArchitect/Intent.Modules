@@ -15,7 +15,7 @@
   <childElements>
     <childElement id="98a19e0c-acea-4c80-bad8-dfa03bb93fa5" type="Application Template Settings Field Configuration" typeId="053d28c8-18c9-45b9-b3cb-184ec4b19679">
       <name>Target Framework</name>
-      <display>Target Framework = target-framework</display>
+      <display>Target Framework</display>
       <isAbstract>false</isAbstract>
       <value>target-framework</value>
       <sort-children>manually</sort-children>
@@ -41,7 +41,7 @@
       <childElements>
         <childElement id="19e4a801-a0d8-4a7a-b4d7-32cb121ff138" type="Application Template Settings Field Option" typeId="7194651e-45da-4a0c-b1ab-0351a5c08fc8">
           <name>.NET 6.0</name>
-          <display>.NET 6.0 = 16d99e3e-7b91-42f8-ae3b-2686edde94b7</display>
+          <display>.NET 6.0</display>
           <isAbstract>false</isAbstract>
           <value>16d99e3e-7b91-42f8-ae3b-2686edde94b7</value>
           <genericTypes />
@@ -55,7 +55,7 @@
         </childElement>
         <childElement id="b471d451-e4ff-46fc-9287-6c378710b642" type="Application Template Settings Field Option" typeId="7194651e-45da-4a0c-b1ab-0351a5c08fc8">
           <name>.NET 5.0</name>
-          <display>.NET 5.0 = 9880b776-9b13-4ff6-87b3-2219cfa66652</display>
+          <display>.NET 5.0</display>
           <isAbstract>false</isAbstract>
           <value>9880b776-9b13-4ff6-87b3-2219cfa66652</value>
           <genericTypes />
@@ -69,7 +69,7 @@
         </childElement>
         <childElement id="a3958af4-cead-4d19-bd18-bdecc3fd0a2c" type="Application Template Settings Field Option" typeId="7194651e-45da-4a0c-b1ab-0351a5c08fc8">
           <name>.NET Core 3.1</name>
-          <display>.NET Core 3.1 = d603dbfd-3361-4406-b5c0-efc2ac6f33fc</display>
+          <display>.NET Core 3.1</display>
           <isAbstract>false</isAbstract>
           <value>d603dbfd-3361-4406-b5c0-efc2ac6f33fc</value>
           <genericTypes />

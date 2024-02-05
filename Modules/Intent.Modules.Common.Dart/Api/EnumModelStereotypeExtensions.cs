@@ -46,7 +46,17 @@ namespace Intent.Common.Dart.Api
                 _stereotype = stereotype;
             }
 
-            public string Name => _stereotype.Name;
+            public string StereotypeName => _stereotype.Name;
+
+            public string Name()
+            {
+                return _stereotype.GetProperty<string>("Name");
+            }
+
+            public string ImportSource()
+            {
+                return _stereotype.GetProperty<string>("Import Source");
+            }
 
         }
 

@@ -14,14 +14,14 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
     {
         public static ComponentGroupSettings GetComponentGroupSettings(this ComponentGroupModel model)
         {
-            var stereotype = model.GetStereotype("Component Group Settings");
+            var stereotype = model.GetStereotype("08b4c68f-3654-44cc-b3a1-87de79c23936");
             return stereotype != null ? new ComponentGroupSettings(stereotype) : null;
         }
 
 
         public static bool HasComponentGroupSettings(this ComponentGroupModel model)
         {
-            return model.HasStereotype("Component Group Settings");
+            return model.HasStereotype("08b4c68f-3654-44cc-b3a1-87de79c23936");
         }
 
         public static bool TryGetComponentGroupSettings(this ComponentGroupModel model, out ComponentGroupSettings stereotype)
@@ -32,7 +32,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return false;
             }
 
-            stereotype = new ComponentGroupSettings(model.GetStereotype("Component Group Settings"));
+            stereotype = new ComponentGroupSettings(model.GetStereotype("08b4c68f-3654-44cc-b3a1-87de79c23936"));
             return true;
         }
 

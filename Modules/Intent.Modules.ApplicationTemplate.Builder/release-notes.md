@@ -1,3 +1,7 @@
+### Version 3.8.2
+
+- Improvement: Updated icon.
+
 ### Version 3.4.6
 
 - Fixed: Packages will now assign the supported client version to include Intent Architect v5.

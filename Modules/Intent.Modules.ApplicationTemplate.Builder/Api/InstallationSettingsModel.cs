@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class InstallationSettingsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class InstallationSettingsModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Installation Settings";
         public const string SpecializationTypeId = "76db4fe8-5c95-4240-8f25-48b8079fa4ae";
