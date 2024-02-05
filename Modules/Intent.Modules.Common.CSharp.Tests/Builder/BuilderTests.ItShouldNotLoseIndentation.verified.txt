@@ -1,0 +1,16 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public void Method()
+        {
+            if (1 == 1 ||
+                2 == 2)
+            {
+                // Nested
+            }
+        }
+    }
+}

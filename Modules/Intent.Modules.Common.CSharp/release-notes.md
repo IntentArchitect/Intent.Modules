@@ -1,4 +1,8 @@
-﻿### Version 3.5.1
+﻿### Version 3.5.2
+
+- Fixed: Indentation would always get lost when using `.AddStatements(...)` with a single string to add multiline statements.
+
+### Version 3.5.1
 
 - Improvement: Added support for `Value Object` collection mapping.
 

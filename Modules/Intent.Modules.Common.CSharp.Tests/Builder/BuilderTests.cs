@@ -730,4 +730,25 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task ItShouldNotLoseIndentation()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "Method", m =>
+                {
+                    m.AddStatements(@"
+            if (1 == 1 ||
+                2 == 2)
+            {
+                // Nested
+            }");
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

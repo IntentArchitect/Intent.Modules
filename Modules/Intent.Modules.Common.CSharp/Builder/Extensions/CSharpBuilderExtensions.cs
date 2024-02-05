@@ -8,7 +8,37 @@ public static class CSharpBuilderExtensions
 {
     public static IEnumerable<CSharpStatement> ConvertToStatements(this string s)
     {
-        return s.Trim().Replace("\r\n", "\n").Split("\n").Select(x => new CSharpStatement(x));
+        var lines = s.TrimEnd().Replace("\r\n", "\n")
+            .Split("\n")
+            .SkipWhile(string.IsNullOrWhiteSpace)
+            .Select(x => x.TrimEnd())
+            .ToArray();
+
+        // We want to remove leading whitespace, but maintain indentation. This below algorithm
+        // will assume that first non-empty line dictates the "base" indentation.
+
+        var firstNonBlankLine = lines.FirstOrDefault();
+        if (firstNonBlankLine == null)
+        {
+            return lines.Select(x => new CSharpStatement(x));
+        }
+
+        var leadingWhitespaceLength = firstNonBlankLine.Length - firstNonBlankLine.TrimStart().Length;
+        var baseIndentation = firstNonBlankLine[..leadingWhitespaceLength];
+
+        return lines.Select(line =>
+        {
+            var withoutBaseIndentation = line.StartsWith(baseIndentation)
+                ? line[leadingWhitespaceLength..]
+                : line;
+
+            // The constructor automatically trims the parameter, hence us setting it by the property
+            var statement = new CSharpStatement(null)
+            {
+                Text = withoutBaseIndentation
+            };
+            return statement;
+        });
     }
 
     public static void SeparateAll(this IEnumerable<ICodeBlock> statements)
