@@ -58,6 +58,7 @@
     <application id="ff9288ff-0806-4d3d-9084-5c5ab8eebcaa" name="Intent.Modules.Modelers.Services.GraphQL" relativePath="Intent.Modules.Modelers.Services.GraphQL/Intent.Modules.Modelers.Services.GraphQL.application.config" />
     <application id="298790da-18e6-4f3a-9b63-1edaa8606bc8" name="Intent.Modules.Modelers.Services.DomainInteractions" relativePath="Intent.Modules.Modelers.Services.DomainInteractions/Intent.Modules.Modelers.Services.DomainInteractions.application.config" />
     <application id="ec72e814-e39a-47e3-9570-17eab35420ce" name="Intent.Modules.Modelers.Services.EventInteractions" relativePath="Intent.Modules.Modelers.Services.EventInteractions/Intent.Modules.Modelers.Services.EventInteractions.application.config" />
+    <application id="ceb815c5-d710-40ef-b963-541979dc5597" name="Intent.Modules.Modelers.UI" relativePath="Intent.Modules.Modelers.UI/Intent.Modules.Modelers.UI.application.config" />
     <application id="2f056b26-eec3-4f6b-8447-2b1382956315" name="Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config" relativePath="Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config/Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config.application.config" />
   </applications>
 </solution>
