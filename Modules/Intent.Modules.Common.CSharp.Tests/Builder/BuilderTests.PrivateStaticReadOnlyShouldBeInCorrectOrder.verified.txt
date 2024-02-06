@@ -1,0 +1,9 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        private static readonly object Field;
+    }
+}

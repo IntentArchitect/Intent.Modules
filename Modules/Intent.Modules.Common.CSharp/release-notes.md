@@ -1,6 +1,7 @@
 ﻿### Version 3.5.2
 
 - Fixed: Indentation would always get lost when using `.AddStatements(...)` with a single string to add multiline statements.
+- Fixed: Ordering of access modifiers would be incorrect for fields which were `static readonly`.
 
 ### Version 3.5.1
 

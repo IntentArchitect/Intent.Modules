@@ -751,4 +751,17 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task PrivateStaticReadOnlyShouldBeInCorrectOrder()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddClass("Class", @class =>
+            {
+                @class.AddField("object", "Field", f => f.PrivateReadOnly().Static());
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

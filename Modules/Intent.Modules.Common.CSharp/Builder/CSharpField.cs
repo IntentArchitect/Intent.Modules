@@ -95,7 +95,7 @@ public class CSharpField : CSharpMember<CSharpField>
 
     public override string GetText(string indentation)
     {
-        string assignment = string.Empty;
+        var assignment = string.Empty;
         if (Assignment is not null)
         {
             var result = Assignment.GetText(indentation).TrimStart();
@@ -105,6 +105,27 @@ public class CSharpField : CSharpMember<CSharpField>
             }
         }
 
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsStatic ? "static " : "")}{(IsRequired ? "required " : "")}{Type}{(_canBeNull ? "?" : "")} {Name}{assignment};";
+        var accessModifier = AccessModifier;
+        if (IsStatic)
+        {
+            if (accessModifier.StartsWith("public "))
+            {
+                accessModifier = accessModifier.Replace("public ", "public static ");
+            }
+            else if (accessModifier.StartsWith("private "))
+            {
+                accessModifier = accessModifier.Replace("private ", "private static ");
+            }
+            else if (accessModifier.StartsWith("internal "))
+            {
+                accessModifier = accessModifier.Replace("internal ", "internal static ");
+            }
+            else
+            {
+                accessModifier = $"static {accessModifier}";
+            }
+        }
+
+        return $"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{accessModifier}{(IsRequired ? "required " : "")}{Type}{(_canBeNull ? "?" : "")} {Name}{assignment};";
     }
 }
