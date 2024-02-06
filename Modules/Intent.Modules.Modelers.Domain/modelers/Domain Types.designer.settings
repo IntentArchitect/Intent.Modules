@@ -323,7 +323,7 @@ padding: 0px 8px;`</style>
 }
 const result = [{ text: `${ name }${ genericTypes }`, cssClass: "muted" } ];
 result.push({ text: ': ', cssClass: "annotation" });
-result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference) });
+result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId });
 return result;</displayFunction>
           <validateFunction>let otherAttributes = getParent().getChildren("Attribute").filter(x =&gt; x.id != id);
 if (otherAttributes.some(x =&gt; x.getName() == getName())) {
@@ -387,7 +387,7 @@ if (namingConvention == "pascal-case") {
         return "typeref";
     }
 }
-const result = [{ text: `${ getParent().getName() }${ genericTypes }(` }];
+const result = [{ text: `${ getName() }${ genericTypes }(` }];
 result.push(...children("Parameter")
     .map(x =&gt; [
         { text: `${ x.name }`, cssClass: "muted", targetId: x.id },
