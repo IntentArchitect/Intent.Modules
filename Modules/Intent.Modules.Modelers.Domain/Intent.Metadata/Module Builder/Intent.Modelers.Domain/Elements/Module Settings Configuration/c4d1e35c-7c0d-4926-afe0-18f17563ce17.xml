@@ -39,7 +39,7 @@
       <childElements>
         <childElement id="7a95c6d0-df90-4496-95eb-8ac8e88fec9c" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Manual</name>
-          <display>Manual = manual</display>
+          <display>Manual</display>
           <isAbstract>false</isAbstract>
           <value>manual</value>
           <genericTypes />
@@ -53,7 +53,7 @@
         </childElement>
         <childElement id="d9f2ed83-51e8-4b9c-9b54-a882d6f343d3" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Pascal Case</name>
-          <display>Pascal Case = pascal-case</display>
+          <display>Pascal Case</display>
           <isAbstract>false</isAbstract>
           <value>pascal-case</value>
           <genericTypes />
@@ -67,7 +67,7 @@
         </childElement>
         <childElement id="bb7a99cd-4960-46d9-92d2-def55837ca10" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Camel Case</name>
-          <display>Camel Case = camel-case</display>
+          <display>Camel Case</display>
           <isAbstract>false</isAbstract>
           <value>camel-case</value>
           <genericTypes />
