@@ -71,11 +71,20 @@ public static class HttpEndpointModelFactory
 
     private static string GetRoute(IElement element, string? baseRoute, string? subRoute)
     {
-        // It's a smell that we're applying a C# WebApi convention for this which is intended
+        // It's a smell that we're applying C# WebApi conventions for this which is intended
         // to be consumed by any kind of technology, but unlikely to cause an issue since
         // [controller]/[action] convention doesn't seem to be used elsewhere that we're aware of.
         var serviceName = (element.ParentElement?.Name ?? "Default").RemoveSuffix("Controller", "Service");
         var actionName = element.Name;
+
+        // "~/" at the start of the route means to ignore the controller route:
+        // https://learn.microsoft.com/aspnet/core/mvc/controllers/routing#attribute-routing-for-rest-apis
+        if (subRoute?.StartsWith("~/") == true)
+        {
+            baseRoute = null;
+            subRoute = subRoute[2..];
+        }
+
         var routeConstruction = $"{baseRoute?.Trim('/')}/{subRoute?.Trim('/')}"
             .Trim('/')
             .Replace("[controller]", serviceName)

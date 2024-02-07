@@ -1,3 +1,7 @@
+### Version 4.4.2
+
+- Fixed: Any [`~/`s at the start of a route for an operation / command / query](https://learn.microsoft.com/aspnet/core/mvc/controllers/routing#attribute-routing-for-rest-apis) were not being respected.
+
 ### Version 4.4.1
 
 - Fixed: `Expose as Http Endpoint` didn't resolve ID route parameters for advanced mapping and class inheritance scenarios.  
