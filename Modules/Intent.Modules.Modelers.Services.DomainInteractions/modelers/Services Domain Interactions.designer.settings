@@ -1338,7 +1338,7 @@ function getSurrogateKeyType() {
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
 class DomainHelper {
     static async openSelectEntityDialog(options) {
-        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.isAggregateRoot(x) || ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x)) || x.hasStereotype("Repository"));
+        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.isAggregateRoot(x) || ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x) &amp;&amp; DomainHelper.hasPrimaryKey(x)) || x.hasStereotype("Repository"));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
             return null;
@@ -1365,6 +1365,13 @@ class DomainHelper {
     }
     static getOwningAggregate(entity) {
         var _a;
+        let invalidAssociations = entity.getAssociations("Association").filter(x =&gt; x.typeReference.getType() == null);
+        if (invalidAssociations.length &gt; 0) {
+            console.warn("Invalid associations found:");
+            invalidAssociations.forEach(x =&gt; {
+                console.warn("Invalid associations: " + x.getName());
+            });
+        }
         let result = (_a = entity.getAssociations("Association")
             .filter(x =&gt; this.isAggregateRoot(x.typeReference.getType()) &amp;&amp; isOwnedBy(x) &amp;&amp;
             // Let's only target collections for now as part of the nested compositional crud support
@@ -1381,6 +1388,10 @@ class DomainHelper {
     static ownerIsAggregateRoot(entity) {
         let result = DomainHelper.getOwningAggregate(entity);
         return result ? true : false;
+    }
+    static hasPrimaryKey(entity) {
+        let keys = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+        return keys.length &gt; 0;
     }
     static getPrimaryKeys(entity) {
         if (!entity) {
@@ -1614,6 +1625,17 @@ class ServicesHelper {
     static getFieldFormat(str) {
         return toPascalCase(str);
     }
+    static formatName(str, type) {
+        switch (type) {
+            case "property":
+            case "class":
+                return toPascalCase(str);
+            case "parameter":
+                return toCamelCase(str);
+            default:
+                return str;
+        }
+    }
 }
 class ElementManager {
     constructor(command, settings) {
@@ -1632,7 +1654,8 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
+        var _a;
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.command.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -1656,7 +1679,7 @@ class ElementManager {
             else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
                 return;
             }
-            let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
+            let field = this.addChild(e.name, e.typeId);
             field.typeReference.setIsCollection(e.isCollection);
             field.typeReference.setIsNullable(e.isNullable);
             if (options === null || options === void 0 ? void 0 : options.addToTop) {
@@ -2566,7 +2589,7 @@ function getSurrogateKeyType() {
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
 class DomainHelper {
     static async openSelectEntityDialog(options) {
-        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.isAggregateRoot(x) || ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x)) || x.hasStereotype("Repository"));
+        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.isAggregateRoot(x) || ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x) &amp;&amp; DomainHelper.hasPrimaryKey(x)) || x.hasStereotype("Repository"));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
             return null;
@@ -2593,6 +2616,13 @@ class DomainHelper {
     }
     static getOwningAggregate(entity) {
         var _a;
+        let invalidAssociations = entity.getAssociations("Association").filter(x =&gt; x.typeReference.getType() == null);
+        if (invalidAssociations.length &gt; 0) {
+            console.warn("Invalid associations found:");
+            invalidAssociations.forEach(x =&gt; {
+                console.warn("Invalid associations: " + x.getName());
+            });
+        }
         let result = (_a = entity.getAssociations("Association")
             .filter(x =&gt; this.isAggregateRoot(x.typeReference.getType()) &amp;&amp; isOwnedBy(x) &amp;&amp;
             // Let's only target collections for now as part of the nested compositional crud support
@@ -2609,6 +2639,10 @@ class DomainHelper {
     static ownerIsAggregateRoot(entity) {
         let result = DomainHelper.getOwningAggregate(entity);
         return result ? true : false;
+    }
+    static hasPrimaryKey(entity) {
+        let keys = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+        return keys.length &gt; 0;
     }
     static getPrimaryKeys(entity) {
         if (!entity) {
@@ -2842,6 +2876,17 @@ class ServicesHelper {
     static getFieldFormat(str) {
         return toPascalCase(str);
     }
+    static formatName(str, type) {
+        switch (type) {
+            case "property":
+            case "class":
+                return toPascalCase(str);
+            case "parameter":
+                return toCamelCase(str);
+            default:
+                return str;
+        }
+    }
 }
 class ElementManager {
     constructor(command, settings) {
@@ -2860,7 +2905,8 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
+        var _a;
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.command.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -2884,7 +2930,7 @@ class ElementManager {
             else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
                 return;
             }
-            let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
+            let field = this.addChild(e.name, e.typeId);
             field.typeReference.setIsCollection(e.isCollection);
             field.typeReference.setIsNullable(e.isNullable);
             if (options === null || options === void 0 ? void 0 : options.addToTop) {
@@ -5888,7 +5934,7 @@ function getSurrogateKeyType() {
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
 class DomainHelper {
     static async openSelectEntityDialog(options) {
-        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.isAggregateRoot(x) || ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x)) || x.hasStereotype("Repository"));
+        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.isAggregateRoot(x) || ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x) &amp;&amp; DomainHelper.hasPrimaryKey(x)) || x.hasStereotype("Repository"));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
             return null;
@@ -5915,6 +5961,13 @@ class DomainHelper {
     }
     static getOwningAggregate(entity) {
         var _a;
+        let invalidAssociations = entity.getAssociations("Association").filter(x =&gt; x.typeReference.getType() == null);
+        if (invalidAssociations.length &gt; 0) {
+            console.warn("Invalid associations found:");
+            invalidAssociations.forEach(x =&gt; {
+                console.warn("Invalid associations: " + x.getName());
+            });
+        }
         let result = (_a = entity.getAssociations("Association")
             .filter(x =&gt; this.isAggregateRoot(x.typeReference.getType()) &amp;&amp; isOwnedBy(x) &amp;&amp;
             // Let's only target collections for now as part of the nested compositional crud support
@@ -5931,6 +5984,10 @@ class DomainHelper {
     static ownerIsAggregateRoot(entity) {
         let result = DomainHelper.getOwningAggregate(entity);
         return result ? true : false;
+    }
+    static hasPrimaryKey(entity) {
+        let keys = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+        return keys.length &gt; 0;
     }
     static getPrimaryKeys(entity) {
         if (!entity) {
@@ -6164,6 +6221,17 @@ class ServicesHelper {
     static getFieldFormat(str) {
         return toPascalCase(str);
     }
+    static formatName(str, type) {
+        switch (type) {
+            case "property":
+            case "class":
+                return toPascalCase(str);
+            case "parameter":
+                return toCamelCase(str);
+            default:
+                return str;
+        }
+    }
 }
 class ElementManager {
     constructor(command, settings) {
@@ -6182,7 +6250,8 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
+        var _a;
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.command.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -6206,7 +6275,7 @@ class ElementManager {
             else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
                 return;
             }
-            let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
+            let field = this.addChild(e.name, e.typeId);
             field.typeReference.setIsCollection(e.isCollection);
             field.typeReference.setIsNullable(e.isNullable);
             if (options === null || options === void 0 ? void 0 : options.addToTop) {
@@ -7116,7 +7185,7 @@ function getSurrogateKeyType() {
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
 class DomainHelper {
     static async openSelectEntityDialog(options) {
-        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.isAggregateRoot(x) || ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x)) || x.hasStereotype("Repository"));
+        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.isAggregateRoot(x) || ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x) &amp;&amp; DomainHelper.hasPrimaryKey(x)) || x.hasStereotype("Repository"));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
             return null;
@@ -7143,6 +7212,13 @@ class DomainHelper {
     }
     static getOwningAggregate(entity) {
         var _a;
+        let invalidAssociations = entity.getAssociations("Association").filter(x =&gt; x.typeReference.getType() == null);
+        if (invalidAssociations.length &gt; 0) {
+            console.warn("Invalid associations found:");
+            invalidAssociations.forEach(x =&gt; {
+                console.warn("Invalid associations: " + x.getName());
+            });
+        }
         let result = (_a = entity.getAssociations("Association")
             .filter(x =&gt; this.isAggregateRoot(x.typeReference.getType()) &amp;&amp; isOwnedBy(x) &amp;&amp;
             // Let's only target collections for now as part of the nested compositional crud support
@@ -7159,6 +7235,10 @@ class DomainHelper {
     static ownerIsAggregateRoot(entity) {
         let result = DomainHelper.getOwningAggregate(entity);
         return result ? true : false;
+    }
+    static hasPrimaryKey(entity) {
+        let keys = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+        return keys.length &gt; 0;
     }
     static getPrimaryKeys(entity) {
         if (!entity) {
@@ -7392,6 +7472,17 @@ class ServicesHelper {
     static getFieldFormat(str) {
         return toPascalCase(str);
     }
+    static formatName(str, type) {
+        switch (type) {
+            case "property":
+            case "class":
+                return toPascalCase(str);
+            case "parameter":
+                return toCamelCase(str);
+            default:
+                return str;
+        }
+    }
 }
 class ElementManager {
     constructor(command, settings) {
@@ -7410,7 +7501,8 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
+        var _a;
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.command.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -7434,7 +7526,7 @@ class ElementManager {
             else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
                 return;
             }
-            let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
+            let field = this.addChild(e.name, e.typeId);
             field.typeReference.setIsCollection(e.isCollection);
             field.typeReference.setIsNullable(e.isNullable);
             if (options === null || options === void 0 ? void 0 : options.addToTop) {

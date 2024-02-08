@@ -75,5 +75,43 @@ namespace Intent.Modules.Metadata.DocumentDB.Settings
             ObjectId,
             Guid,
         }
+
+        public KeyCreationModeOptions KeyCreationMode() => new KeyCreationModeOptions(_groupSettings.GetSetting("fbc6e85f-f59f-4968-85e6-ef71f88ab05b")?.Value);
+
+        public class KeyCreationModeOptions
+        {
+            public readonly string Value;
+
+            public KeyCreationModeOptions(string value)
+            {
+                Value = value;
+            }
+
+            public KeyCreationModeOptionsEnum AsEnum()
+            {
+                return Value switch
+                {
+                    "all" => KeyCreationModeOptionsEnum.All,
+                    "only-on-documents" => KeyCreationModeOptionsEnum.OnlyOnDocuments,
+                    _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
+                };
+            }
+
+            public bool IsAll()
+            {
+                return Value == "all";
+            }
+
+            public bool IsOnlyOnDocuments()
+            {
+                return Value == "only-on-documents";
+            }
+        }
+
+        public enum KeyCreationModeOptionsEnum
+        {
+            All,
+            OnlyOnDocuments,
+        }
     }
 }

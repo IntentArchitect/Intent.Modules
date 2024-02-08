@@ -1,3 +1,7 @@
+### Version 1.1.10
+
+- Improvement: Added the `Key Creation Mode` option to allow more control over how keys are managed in the designer.
+
 ### Version 1.1.6
 
 - Improvement: Updated Document db Domain Modeler scripts to support Table Storage paradigm.

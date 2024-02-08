@@ -6,6 +6,11 @@ function updatePrimaryKey(element: IElementApi): void {
         return;
     }
 
+    const documentDbSettingsId: string = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
+    const keyCreationMode: string = "fbc6e85f-f59f-4968-85e6-ef71f88ab05b";
+
+    let onlyKeyDocuments:boolean = application.getSettings(documentDbSettingsId)?.getField(keyCreationMode)?.value == "only-on-documents" ;
+
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     let idAttr = element.getChildren("Attribute")
         .find(x => x.hasStereotype(primaryKeyStereotypeId));
@@ -13,7 +18,7 @@ function updatePrimaryKey(element: IElementApi): void {
     const isToCompositionalOneRelationshipTarget = () => element.getAssociations("Association")
         .some(x => x.isSourceEnd() && !x.typeReference.isCollection && !x.typeReference.isNullable && !x.getOtherEnd().typeReference.isCollection);
     if ((!isAggregateRoot(element) && isToCompositionalOneRelationshipTarget()) || derivedFromTypeHasPk(element)) {
-        if (idAttr != null) {
+        if (idAttr != null && (!onlyKeyDocuments || (onlyKeyDocuments && idAttr.hasMetadata("managed")))) {
             idAttr.delete();
         }
 
@@ -23,7 +28,8 @@ function updatePrimaryKey(element: IElementApi): void {
 
     if (isTableStorage(element)){
         updateTableStoragePk(element)
-    } else {
+    } else if (!onlyKeyDocuments || (onlyKeyDocuments && isAggregateRoot(element))) {
+        
         if (idAttr == null) {
             const classNameWithId = `${element.getName()}Id`.toLowerCase();
 
@@ -36,6 +42,7 @@ function updatePrimaryKey(element: IElementApi): void {
 
         if (idAttr == null) {
             idAttr = createElement("Attribute", "Id", element.id);
+            idAttr.setMetadata("managed", "true");
             idAttr.setOrder(0);
             if (idAttr.typeReference == null) throw new Error("typeReference is not defined");
             idAttr.typeReference.setType(getDefaultIdType());

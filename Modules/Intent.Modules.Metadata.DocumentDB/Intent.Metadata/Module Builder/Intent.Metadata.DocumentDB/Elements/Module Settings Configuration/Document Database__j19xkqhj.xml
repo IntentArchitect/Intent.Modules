@@ -67,5 +67,60 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="fbc6e85f-f59f-4968-85e6-ef71f88ab05b" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Key Creation Mode</name>
+      <display>Key Creation Mode</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d5581fe8-7385-4bb6-88dc-8940e20ec1d4</parentFolderId>
+      <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+      <packageName>Intent.Metadata.DocumentDB</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Configure how the designer manages keys." isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="all" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="75029071-205f-4105-b824-b178a07c2de3" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>All</name>
+          <display>All = all</display>
+          <isAbstract>false</isAbstract>
+          <value>all</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>fbc6e85f-f59f-4968-85e6-ef71f88ab05b</parentFolderId>
+          <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+          <packageName>Intent.Metadata.DocumentDB</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="711e88e6-da78-40e1-9727-2aff9cb329af" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Only on Documents</name>
+          <display>Only on Documents = only-on-documents</display>
+          <isAbstract>false</isAbstract>
+          <value>only-on-documents</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>fbc6e85f-f59f-4968-85e6-ef71f88ab05b</parentFolderId>
+          <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+          <packageName>Intent.Metadata.DocumentDB</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>

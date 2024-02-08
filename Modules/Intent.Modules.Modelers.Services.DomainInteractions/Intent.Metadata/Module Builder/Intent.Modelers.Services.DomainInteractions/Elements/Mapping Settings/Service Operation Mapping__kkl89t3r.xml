@@ -525,8 +525,10 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;5a3018a8-38bc-450f-bf82-631e2d9475b3&quot;,&quot;eb1478af-4b69-4d33-826f-3f195ebbed79&quot;,&quot;8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7&quot;,&quot;ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8&quot;,&quot;5b5676ef-333f-4f52-859d-925ee8c43578&quot;,&quot;0556825b-177b-4093-b13a-5dfabb13c9b6&quot;]" isActive="true" />
-            <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Targets" value="[&quot;120f60ff-f242-4f5c-ac03-14f0ecaafdcf&quot;,&quot;842b0753-adfc-4215-a772-65f4a033aedd&quot;]" isActive="true" />
+            <property name="ce2db9f3-0c9d-4f01-832f-6f7f3801834c" display="Sources" value="Specific Types" isActive="true" />
+            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Source Types" value="[&quot;5a3018a8-38bc-450f-bf82-631e2d9475b3&quot;,&quot;eb1478af-4b69-4d33-826f-3f195ebbed79&quot;,&quot;8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7&quot;,&quot;ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8&quot;,&quot;5b5676ef-333f-4f52-859d-925ee8c43578&quot;,&quot;0556825b-177b-4093-b13a-5dfabb13c9b6&quot;]" isActive="true" />
+            <property name="68504875-ebf6-47d6-ac36-c506431cf57c" display="Targets" value="Specific Types" isActive="true" />
+            <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Target Types" value="[&quot;120f60ff-f242-4f5c-ac03-14f0ecaafdcf&quot;,&quot;842b0753-adfc-4215-a772-65f4a033aedd&quot;]" isActive="true" />
             <property name="6ee5b3e3-628e-4996-87b5-08649e101887" display="Represents" value="Invokable" isActive="true" />
             <property name="ace10cc2-ece7-458a-bafb-2fc185f99335" display="Line Color" isActive="true" />
             <property name="715395d8-db84-459f-bf9e-f910e2aff883" display="Line Dash Array" isActive="true" />
@@ -552,8 +554,10 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;98041049-0f91-4c21-99dc-50cd18fd1dae&quot;,&quot;7767267b-2e01-42cd-8a03-103d296a6306&quot;,&quot;eb1478af-4b69-4d33-826f-3f195ebbed79&quot;,&quot;ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8&quot;,&quot;792374ff-6b97-45df-96de-01acd2488cc0&quot;,&quot;daf3a2fa-0b35-4549-8b65-26b3a74dc7e0&quot;,&quot;c0682bc4-2b6a-4638-a35e-39188d253694&quot;,&quot;cfe9c4d4-9c26-4f11-a585-f1e3863fb658&quot;]" isActive="true" />
-            <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Targets" value="[&quot;e2ccdf82-ec44-4eb3-b32d-513ac3833d3b&quot;,&quot;ca7d6d11-0e19-4326-b95b-6451c9ca4d9d&quot;,&quot;82927c4e-1b48-4ab8-90ad-7c4d0b02067e&quot;,&quot;fa557ba7-7faa-4ce3-bd23-32e821f71f84&quot;,&quot;24c8c608-ce45-4d64-a8b1-bbbd2486b186&quot;]" isActive="true" />
+            <property name="ce2db9f3-0c9d-4f01-832f-6f7f3801834c" display="Sources" value="Specific Types" isActive="true" />
+            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Source Types" value="[&quot;98041049-0f91-4c21-99dc-50cd18fd1dae&quot;,&quot;7767267b-2e01-42cd-8a03-103d296a6306&quot;,&quot;eb1478af-4b69-4d33-826f-3f195ebbed79&quot;,&quot;ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8&quot;,&quot;792374ff-6b97-45df-96de-01acd2488cc0&quot;,&quot;daf3a2fa-0b35-4549-8b65-26b3a74dc7e0&quot;,&quot;c0682bc4-2b6a-4638-a35e-39188d253694&quot;,&quot;cfe9c4d4-9c26-4f11-a585-f1e3863fb658&quot;]" isActive="true" />
+            <property name="68504875-ebf6-47d6-ac36-c506431cf57c" display="Targets" value="Specific Types" isActive="true" />
+            <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Target Types" value="[&quot;e2ccdf82-ec44-4eb3-b32d-513ac3833d3b&quot;,&quot;ca7d6d11-0e19-4326-b95b-6451c9ca4d9d&quot;,&quot;82927c4e-1b48-4ab8-90ad-7c4d0b02067e&quot;,&quot;fa557ba7-7faa-4ce3-bd23-32e821f71f84&quot;,&quot;24c8c608-ce45-4d64-a8b1-bbbd2486b186&quot;]" isActive="true" />
             <property name="6ee5b3e3-628e-4996-87b5-08649e101887" display="Represents" value="Data" isActive="true" />
             <property name="ace10cc2-ece7-458a-bafb-2fc185f99335" display="Line Color" isActive="true" />
             <property name="715395d8-db84-459f-bf9e-f910e2aff883" display="Line Dash Array" isActive="true" />
