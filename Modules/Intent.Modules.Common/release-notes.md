@@ -1,3 +1,7 @@
+### Version 3.5.3
+
+- Improvement: Added a `strict` option to `ToCamelCase`, when true the algorithm is in-line with `System.Text.Json` camel case algorithm.
+
 ### Version 3.5.2
 
 - Improvement: Added overrideable `RelativeOutputPathPrefix` to `StaticContentTemplateRegistration`. This can be used to add a prefix to the relative output path of all the files for the template.

@@ -61,7 +61,7 @@ namespace Intent.Modules.Common.Templates
         }
 
         //public static string ToCamelCase(this string name) => name?.Replace('-', ' ').Camelize();
-        [FixFor_Version4("Use above commented out implementation instead which uses Humanizer's .Camelize()")]
+        [FixFor_Version4("Use above commented out implementation instead which uses Humanizer's .Camelize() Humaizer does not align with asp.net core")]
         public static string ToCamelCase(this string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -75,6 +75,55 @@ namespace Intent.Modules.Common.Templates
             }
 
             return char.ToLower(name[0]) + name[1..];
+        }
+
+        //This Algorithm is from System.Text.Json source code : `JsonCamelCaseNamingPolicy`
+        public static string ToCamelCase(this string name, bool strict)
+        {
+            if (!strict)
+            {
+                return name.ToCamelCase();
+            }
+
+            if (string.IsNullOrEmpty(name) || !char.IsUpper(name[0]))
+            {
+                return name;
+            }
+
+            return string.Create(name.Length, name, (chars, name) =>
+            {
+                //.AsSpan can be removed when we upgrade to .Net8
+                name.AsSpan().CopyTo(chars);
+                FixCasing(chars);
+            });
+
+        }
+
+        private static void FixCasing(Span<char> chars)
+        {
+            for (int i = 0; i < chars.Length; i++)
+            {
+                if (i == 1 && !char.IsUpper(chars[i]))
+                {
+                    break;
+                }
+
+                bool hasNext = (i + 1 < chars.Length);
+
+                // Stop when next char is already lowercase.
+                if (i > 0 && hasNext && !char.IsUpper(chars[i + 1]))
+                {
+                    // If the next char is a space, lowercase current char before exiting.
+                    if (chars[i + 1] == ' ')
+                    {
+                        chars[i] = char.ToLowerInvariant(chars[i]);
+                    }
+
+                    break;
+                }
+
+                chars[i] = char.ToLowerInvariant(chars[i]);
+            }
         }
 
         //public static string ToPascalCase(this string name) => name?.Replace('-', ' ').Pascalize();
