@@ -3,6 +3,7 @@
   <name>User Interface</name>
   <display>User Interface</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>283cda71-b053-4340-b543-625cd1fd318c</parentFolderId>
@@ -20,5 +21,54 @@
     </stereotype>
   </stereotypes>
   <metadata />
-  <childElements />
+  <childElements>
+    <childElement id="b2238040-a056-45b3-b4c7-73f1877abb70" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: Common Types</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="5c14a656-8bb0-4455-8610-5ce41fe8db74">
+        <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>c3272f56-ac56-4ac1-a9d6-bcb8cd73eec2</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="b24e1099-ccb4-42f6-b132-64dd1cbba748" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: User Interface Core Types</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="d105af0b-3d8b-4c50-bb90-171671145570">
+        <typeId>444f582b-b875-4c72-9671-697b47fa367c</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.UI</typePackageName>
+        <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>c3272f56-ac56-4ac1-a9d6-bcb8cd73eec2</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>
