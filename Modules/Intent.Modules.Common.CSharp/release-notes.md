@@ -2,6 +2,7 @@
 
 - Fixed: Indentation would always get lost when using `.AddStatements(...)` with a single string to add multiline statements.
 - Fixed: Ordering of access modifiers would be incorrect for fields which were `static readonly`.
+- Fixed: Ordering of CSharpFile build actions could vary by operating system, additionally, processing of build actions were only ordered within a particular template rather than holistically across all templates.
 
 ### Version 3.5.1
 

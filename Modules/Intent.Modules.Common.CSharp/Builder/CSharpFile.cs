@@ -9,8 +9,8 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpFile : CSharpMetadataBase<CSharpFile>
 {
-    private readonly IList<(Action Action, int Order)> _configurations = new List<(Action Action, int Order)>();
-    private readonly IList<(Action Action, int Order)> _configurationsAfter = new List<(Action Action, int Order)>();
+    private readonly IList<(Action Invoke, int Order)> _configurations = new List<(Action Invoke, int Order)>();
+    private readonly IList<(Action Invoke, int Order)> _configurationsAfter = new List<(Action Invoke, int Order)>();
     private readonly List<Action<CSharpFileConfig>> _cSharpFileConfigActions = new();
 
     public IList<CSharpUsing> Usings { get; } = new List<CSharpUsing>();
@@ -252,48 +252,34 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
         return this;
     }
 
-    public CSharpFile StartBuild()
+    internal List<(Action Invoke, int Order)> GetConfigurationDelegates()
     {
-        while (_configurations.Count > 0)
-        {
-            var toExecute = _configurations.OrderBy(x => x.Order).First();
-            toExecute.Action.Invoke();
-            _configurations.Remove(toExecute);
-        }
-
-        return this;
+        var toReturn = _configurations.ToList();
+        _configurations.Clear();
+        return toReturn;
     }
 
-    public CSharpFile CompleteBuild()
+    internal CSharpFile MarkCompleteBuildAsDone()
     {
-        while (_configurations.Count > 0)
-        {
-            var toExecute = _configurations.OrderBy(x => x.Order).First();
-            toExecute.Action.Invoke();
-            _configurations.Remove(toExecute);
-        }
-
         _isBuilt = true;
-
         return this;
     }
 
-    public CSharpFile AfterBuild()
+    internal List<(Action Invoke, int Order)> GetConfigurationAfterDelegates()
     {
-        while (_configurationsAfter.Count > 0)
-        {
-            var toExecute = _configurationsAfter.OrderBy(x => x.Order).First();
-            toExecute.Action.Invoke();
-            _configurationsAfter.Remove(toExecute);
-        }
+        var toReturn = _configurationsAfter.ToList();
+        _configurationsAfter.Clear();
+        return toReturn;
+    }
 
+    internal CSharpFile MarkAfterBuildAsDone()
+    {
         if (_configurations.Any())
         {
             throw new Exception("Pending configurations have not been executed. Please contact support@intentarchitect.com for assistance.");
         }
 
         _afterBuildRun = true;
-
         return this;
     }
 
