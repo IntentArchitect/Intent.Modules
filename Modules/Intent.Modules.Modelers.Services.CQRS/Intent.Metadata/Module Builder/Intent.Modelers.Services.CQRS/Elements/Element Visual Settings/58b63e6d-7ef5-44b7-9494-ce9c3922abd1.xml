@@ -59,7 +59,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return getName();" isActive="true" />
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return `${getName()}: ${typeReference.display}`;" isActive="true" />
             <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" value="" isActive="true" />
             <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;&#xD;&#xA;vertical-align: center`" isActive="true" />
           </properties>

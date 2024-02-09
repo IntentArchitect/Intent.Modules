@@ -1,3 +1,7 @@
+### Version 4.1.2
+
+- Improvement: Commands and Queries now show their return type in the diagrams.
+
 ### Version 4.1.1
 
 - Improvement: Updated icons.
