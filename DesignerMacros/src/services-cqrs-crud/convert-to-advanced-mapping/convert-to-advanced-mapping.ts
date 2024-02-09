@@ -30,6 +30,7 @@ namespace convertToAdvancedMapping {
             let action = createAssociation("Delete Entity Action", command.id, entity.id);
             let mapping = action.createMapping(command.id, entity.id);
 
+            console.warn("delete");
             // Query Entity Mapping
             addFilterMapping(mapping, command, entity);
             command.clearMapping();
@@ -51,15 +52,16 @@ namespace convertToAdvancedMapping {
     function addFilterMapping(mapping: MacroApi.Context.IElementToElementMappingApi, command: IElementApi, entity: IElementApi) : void{
         let pkFields = DomainHelper.getPrimaryKeys(entity);
         if (pkFields.length == 1) {
-            let idField = command.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
+            let idField = command.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("Primary Key")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
             let entityPk = entity.getChildren("Attribute").find(x => x.hasStereotype("Primary Key"));
             if (idField && (idField.isMapped() || entityPk)) {
+                console.warn("adding end");
                 mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? [entityPk.id]);
                 idField.clearMapping();
             }
         } else {
             pkFields.forEach(pk => {
-                let idField = command.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("PrimaryKey") && x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
+                let idField = command.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("Primary Key") && x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
                 if (idField) {
                     mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? [pk.id]);
                     idField.clearMapping();

@@ -3841,6 +3841,7 @@ var convertToAdvancedMapping;
         else if (command.getName().startsWith("Delete")) {
             let action = createAssociation("Delete Entity Action", command.id, entity.id);
             let mapping = action.createMapping(command.id, entity.id);
+            console.warn("delete");
             // Query Entity Mapping
             addFilterMapping(mapping, command, entity);
             command.clearMapping();
@@ -3863,9 +3864,10 @@ var convertToAdvancedMapping;
         var _a, _b;
         let pkFields = DomainHelper.getPrimaryKeys(entity);
         if (pkFields.length == 1) {
-            let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
+            let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
             let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
             if (idField &amp;&amp; (idField.isMapped() || entityPk)) {
+                console.warn("adding end");
                 mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [entityPk.id]);
                 idField.clearMapping();
             }
@@ -3873,7 +3875,7 @@ var convertToAdvancedMapping;
         else {
             pkFields.forEach(pk =&gt; {
                 var _a, _b;
-                let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey") &amp;&amp; x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
+                let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key") &amp;&amp; x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
                 if (idField) {
                     mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [pk.id]);
                     idField.clearMapping();
@@ -4369,7 +4371,6 @@ var convertToAdvancedMapping;
             let mapping = action.createMapping(command.id, entity.id);
             // Query Entity Mapping
             addFilterMapping(mapping, command, entity);
-            command.clearMapping();
         }
         else if (command.isMapped()) {
             let action = createAssociation("Update Entity Action", command.id, target.id);
@@ -4387,22 +4388,21 @@ var convertToAdvancedMapping;
     convertToAdvancedMapping.convertCommand = convertCommand;
     function addFilterMapping(mapping, command, entity) {
         var _a, _b;
-        let pkFields = DomainHelper.getPrimaryKeys(entity);
+        let pkFields = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
         if (pkFields.length == 1) {
             let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
             let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
             if (idField &amp;&amp; (idField.isMapped() || entityPk)) {
                 mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [entityPk.id]);
-                idField.clearMapping();
             }
         }
         else {
             pkFields.forEach(pk =&gt; {
                 var _a, _b;
-                let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey") &amp;&amp; x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
+                console.warn("Pk:" + pk.getName());
+                let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey") &amp;&amp; x.getMapping().getElement().getName() == pk.getName()) || (x.getName() == pk.getName()));
                 if (idField) {
                     mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [pk.id]);
-                    idField.clearMapping();
                 }
             });
         }
@@ -8437,6 +8437,7 @@ var convertToAdvancedMapping;
         else if (command.getName().startsWith("Delete")) {
             let action = createAssociation("Delete Entity Action", command.id, entity.id);
             let mapping = action.createMapping(command.id, entity.id);
+            console.warn("delete");
             // Query Entity Mapping
             addFilterMapping(mapping, command, entity);
             command.clearMapping();
@@ -8459,9 +8460,10 @@ var convertToAdvancedMapping;
         var _a, _b;
         let pkFields = DomainHelper.getPrimaryKeys(entity);
         if (pkFields.length == 1) {
-            let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
+            let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
             let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
             if (idField &amp;&amp; (idField.isMapped() || entityPk)) {
+                console.warn("adding end");
                 mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [entityPk.id]);
                 idField.clearMapping();
             }
@@ -8469,7 +8471,7 @@ var convertToAdvancedMapping;
         else {
             pkFields.forEach(pk =&gt; {
                 var _a, _b;
-                let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey") &amp;&amp; x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
+                let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key") &amp;&amp; x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
                 if (idField) {
                     mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [pk.id]);
                     idField.clearMapping();
@@ -9370,7 +9372,6 @@ var convertToAdvancedMapping;
             let mapping = action.createMapping(command.id, entity.id);
             // Query Entity Mapping
             addFilterMapping(mapping, command, entity);
-            command.clearMapping();
         }
         else if (command.isMapped()) {
             let action = createAssociation("Update Entity Action", command.id, target.id);
@@ -9388,22 +9389,21 @@ var convertToAdvancedMapping;
     convertToAdvancedMapping.convertCommand = convertCommand;
     function addFilterMapping(mapping, command, entity) {
         var _a, _b;
-        let pkFields = DomainHelper.getPrimaryKeys(entity);
+        let pkFields = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
         if (pkFields.length == 1) {
             let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
             let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
             if (idField &amp;&amp; (idField.isMapped() || entityPk)) {
                 mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [entityPk.id]);
-                idField.clearMapping();
             }
         }
         else {
             pkFields.forEach(pk =&gt; {
                 var _a, _b;
-                let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey") &amp;&amp; x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
+                console.warn("Pk:" + pk.getName());
+                let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("PrimaryKey") &amp;&amp; x.getMapping().getElement().getName() == pk.getName()) || (x.getName() == pk.getName()));
                 if (idField) {
                     mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [pk.id]);
-                    idField.clearMapping();
                 }
             });
         }

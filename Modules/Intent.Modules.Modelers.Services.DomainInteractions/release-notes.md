@@ -1,6 +1,7 @@
 ### Version 1.0.2
 
 - Improvement: CRUD Dialog no longer shows non-aggregate entities without primary keys.
+- Fixed: Fixed an issue around generating CQRS CRUD `Command`s and `Query`s, failing under certain circumstances related to custom named `Primary Keys`.
 
 ### Version 1.0.0
 
