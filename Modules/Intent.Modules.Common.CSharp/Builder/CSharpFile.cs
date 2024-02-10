@@ -252,9 +252,14 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
         return this;
     }
 
-    internal List<(Action Invoke, int Order)> GetConfigurationDelegates()
+    internal IReadOnlyCollection<(Action Invoke, int Order)> GetConfigurationDelegates()
     {
-        var toReturn = _configurations.ToList();
+        if (_configurations.Count == 0)
+        {
+            return Array.Empty<(Action Invoke, int Order)>();
+        }
+
+        var toReturn = _configurations.ToArray();
         _configurations.Clear();
         return toReturn;
     }
@@ -265,8 +270,13 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
         return this;
     }
 
-    internal List<(Action Invoke, int Order)> GetConfigurationAfterDelegates()
+    internal IReadOnlyCollection<(Action Invoke, int Order)> GetConfigurationAfterDelegates()
     {
+        if (_configurationsAfter.Count == 0)
+        {
+            return Array.Empty<(Action Invoke, int Order)>();
+        }
+
         var toReturn = _configurationsAfter.ToList();
         _configurationsAfter.Clear();
         return toReturn;

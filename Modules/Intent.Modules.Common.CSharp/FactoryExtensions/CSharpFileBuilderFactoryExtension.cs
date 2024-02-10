@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
-using System.Threading;
 using Intent.Engine;
 using Intent.Exceptions;
-using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
-using Intent.Plugins.FactoryExtensions;
-using Intent.Templates;
 
 namespace Intent.Modules.Common.Plugins
 {
@@ -22,11 +19,6 @@ namespace Intent.Modules.Common.Plugins
 
         protected override void OnAfterTemplateRegistrations(IApplication application)
         {
-            PerformConfiguration(
-                context: application,
-                getActions: t => t.CSharpFile.GetConfigurationDelegates(),
-                afterAllComplete: null);
-
             PerformConfiguration(
                 context: application,
                 getActions: t => t.CSharpFile.GetConfigurationDelegates(),
@@ -46,64 +38,109 @@ namespace Intent.Modules.Common.Plugins
             Func<ICSharpFileBuilderTemplate, IReadOnlyCollection<(Action Invoke, int Order)>> getActions,
             Action<ICSharpFileBuilderTemplate> afterAllComplete)
         {
-            var cSharpFileBuilderTemplates = context.OutputTargets.SelectMany(x => x.TemplateInstances)
+            var cSharpFileBuilderTemplates = context.OutputTargets
+                .SelectMany(x => x.TemplateInstances)
                 .Where(x => x.CanRunTemplate())
                 .OfType<ICSharpFileBuilderTemplate>()
                 .ToArray();
 
-            while (true)
+            var sortedSet = new SortedSet<Comparable>();
+            var initial = cSharpFileBuilderTemplates
+                .SelectMany(
+                    collectionSelector: getActions,
+                    resultSelector: (template, configuration) => new Comparable(template, configuration))
+                .ToArray();
+
+            sortedSet.UnionWith(initial);
+            Debug.Assert(initial.Length == sortedSet.Count);
+
+            while (sortedSet.Count != 0)
             {
-                var actions = cSharpFileBuilderTemplates
+                var action = sortedSet.First();
+
+                try
+                {
+                    action.Invoke();
+                }
+                catch (ElementException)
+                {
+                    throw;
+                }
+                catch (Exception e)
+                {
+                    var template = action.Template;
+
+                    if (template.TryGetModel<IElementWrapper>(out var model))
+                    {
+                        throw new ElementException(model.InternalElement,
+                            $"An unexpected error occurred while building C# file [{template.Namespace}.{template.ClassName}] from template [{template.Id}]. See inner exception for more details:",
+                            e);
+                    }
+
+                    throw new Exception(
+                        $"An unexpected error occurred while building C# file [{template.Namespace}.{template.ClassName}] from template [{template.Id}]. See inner exception for more details:",
+                        e);
+                }
+                finally
+                {
+                    sortedSet.Remove(action);
+                }
+
+                var toAdd = cSharpFileBuilderTemplates
                     .SelectMany(
                         collectionSelector: getActions,
-                        resultSelector: (template, configuration) => new
-                        {
-                            Template = template,
-                            TemplateType = template.GetType().ToString(),
-                            configuration.Order,
-                            configuration.Invoke
-                        })
-                    .OrderBy(x => x.Order)
-                    .ThenBy(x => x.TemplateType)
+                        resultSelector: (template, configuration) => new Comparable(template, configuration))
                     .ToArray();
 
-                if (actions.Length == 0)
-                {
-                    break;
-                }
-
-                foreach (var action in actions)
-                {
-                    try
-                    {
-                        action.Invoke();
-                    }
-                    catch (ElementException)
-                    {
-                        throw;
-                    }
-                    catch (Exception e)
-                    {
-                        var template = action.Template;
-
-                        if (template.TryGetModel<IElementWrapper>(out var model))
-                        {
-                            throw new ElementException(model.InternalElement, $"An unexpected error occurred while building C# file [{template.Namespace}.{template.ClassName}] from template [{template.Id}]. See inner exception for more details:", e);
-                        }
-
-                        throw new Exception($"An unexpected error occurred while building C# file [{template.Namespace}.{template.ClassName}] from template [{template.Id}]. See inner exception for more details:", e);
-                    }
-                }
-            }
-
-            if (afterAllComplete == null)
-            {
-                return;
+                var sortedSetBeforeCount = sortedSet.Count;
+                sortedSet.UnionWith(toAdd);
+                Debug.Assert(sortedSet.Count == sortedSetBeforeCount + toAdd.Length);
             }
 
             foreach (var template in cSharpFileBuilderTemplates)
             {
                 afterAllComplete(template);
+            }
+        }
+
+        private record Comparable : IComparable<Comparable>
+        {
+            private static ulong _counter;
+
+            private readonly int _order;
+            private readonly ulong _insertionOrder;
+            private readonly string _templateType;
+
+            public Comparable(ICSharpFileBuilderTemplate template, (Action Invoke, int Order) configuration)
+            {
+                _order = configuration.Order;
+                _insertionOrder = _counter++;
+                _templateType = template.GetType().FullName;
+                Template = template;
+                Invoke = configuration.Invoke;
+            }
+
+            public ICSharpFileBuilderTemplate Template { get; }
+            public Action Invoke { get; }
+
+            public int CompareTo(Comparable other)
+            {
+                if (ReferenceEquals(this, other)) return 0;
+                if (ReferenceEquals(null, other)) return 1;
+
+                var orderComparison = _order.CompareTo(other._order);
+                if (orderComparison != 0) return orderComparison;
+
+                var insertionOrderComparison = _insertionOrder.CompareTo(other._insertionOrder);
+                if (insertionOrderComparison != 0) return insertionOrderComparison;
+
+                var templateTypeComparison = string.Compare(_templateType, other._templateType, StringComparison.Ordinal);
+                if (templateTypeComparison != 0) return templateTypeComparison;
+
+                var templateComparison = ReferenceEquals(Template, other.Template) ? 0 : 1;
+                if (templateComparison != 0) return templateComparison;
+
+                return ReferenceEquals(Invoke, other.Invoke) ? 0 : 1;
             }
         }
     }
