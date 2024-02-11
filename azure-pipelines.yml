@@ -52,52 +52,9 @@ steps:
 - task: PowerShell@2
   displayName: 'Imodspec validation'
   inputs:
-    targetType: 'inline'
     pwsh: true
-    script: |
-      $hasError = $false
-
-      Get-ChildItem -Path . -Filter *.imodspec -Recurse -Depth 2 | ForEach-Object {
-          $file = $_.FullName
-          
-          [xml] $content = Get-Content $file
-          
-          $authors = $content.package.authors
-          $summary = $content.package.summary
-          $description = $content.package.description
-      
-          $reportedFileName = $false
-      
-          if ($authors -eq "Intent.Modules") {
-              if ($reportedFileName -eq $false) {
-                  Write-Host "$($file)"
-                  $reportedFileName = $true
-              }
-              Write-Host "Authors not set"
-              $hasError = $true
-          }
-          if ($summary -eq "A custom module for Intent.Modules.") {
-              if ($reportedFileName -eq $false) {
-                  Write-Host "$($file)"
-                  $reportedFileName = $true
-              }
-              Write-Host "Summary not set"
-              $hasError = $true
-          }
-          if ($description -eq "A custom module for Intent.Modules.") {
-              if ($reportedFileName -eq $false) {
-                  Write-Host "$($file)"
-                  $reportedFileName = $true
-              }
-              Write-Host "Description not set"
-              $hasError = $true
-          }
-      }
-      
-      if ($hasError -eq $true) {
-          Write-Error "Imodspec validation failed."
-          exit 1;
-      }
+    filePath: 'PipelineScripts/pre-build-validation.ps1'
+    arguments: '"Intent.Modules"'
 
 # Required for entry in NuGet.Config that is generated as part of 'dotnet pack'.
 - task: NuGetAuthenticate@1
@@ -109,7 +66,7 @@ steps:
     pwsh: true
     failOnStderr: true
     ignoreLASTEXITCODE: true
-    filePath: 'dotnet-pack-all.ps1'
+    filePath: 'PipelineScripts/dotnet-pack-all.ps1'
     arguments: '-dotnetPackOutputDirectory $(Build.ArtifactStagingDirectory) -vstsFeedUrl $(vstsFeedUrl)'
 
 # Push the NuGet packages to the DevOps artifact feed so that it's available to other pipelines
@@ -181,7 +138,7 @@ steps:
     targetType: 'inline'
     pwsh: true
     script: |
-      ./prepare-intent-testing.ps1
+      ./PipelineScripts/prepare-intent-testing.ps1
       intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH"
 
 - task: PowerShell@2
