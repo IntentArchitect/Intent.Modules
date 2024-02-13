@@ -1,4 +1,4 @@
-### Version 3.8.2
+### Version 3.4.7
 
 - Improvement: Updated icon.
 

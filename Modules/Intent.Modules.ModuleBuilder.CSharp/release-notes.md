@@ -1,3 +1,7 @@
+### Version 3.4.7
+
+- Updated dependencies.
+
 ### Version 3.4.6
 
 - Improved default implementation of interfaces.

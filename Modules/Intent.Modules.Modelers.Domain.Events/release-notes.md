@@ -1,3 +1,11 @@
+### Version 4.0.1
+
+- Improvement: Updated icon(s).
+
+### Version 4.0.0
+
+- Improvement: Upgraded module to support new 4.1 SDK features.
+
 ### Version 3.5.0
 
 - Supports indicating Domain Events being triggered from Class Constructors and Operations in the diagrams.

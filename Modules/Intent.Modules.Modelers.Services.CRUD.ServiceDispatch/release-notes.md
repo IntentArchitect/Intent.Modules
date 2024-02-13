@@ -1,3 +1,7 @@
+﻿### Version 5.0.0
+
+> ⚠️ This module is now obsolete, its funcationality has been moved to the `Intent.Modelers.Services.DomainInteractions` module which would have already been installed. This module can be safely uninstalled.
+
 ### Version 4.0.6
 
 - Fix: `Project to Domain` change patch for updating internal Id's.

@@ -1,4 +1,8 @@
-﻿### Version 5.2.1
+﻿### Version 5.2.2
+
+- Improvement: Moved auto-management of proxy parameters to the "Service Proxies" modeler.
+
+### Version 5.2.1
 
 - Fixed: Types.ServicesProxies on-loaded on every Service Proxy causing designer to hang on open.
 

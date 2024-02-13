@@ -1,4 +1,12 @@
-﻿### Version 5.0.0
+﻿### Version 5.0.2
+
+- Improvement: Moved auto-management of proxy parameters to the "Service Proxies" modeler.
+
+### Version 5.0.1
+
+- Improvement: Upgraded module to support new 4.1 SDK features.
+
+### Version 5.0.0
 
 > ⚠️ NOTE
 >
