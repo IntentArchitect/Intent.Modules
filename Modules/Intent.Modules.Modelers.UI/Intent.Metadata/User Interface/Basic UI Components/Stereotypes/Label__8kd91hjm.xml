@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="d877df7b-05ee-4c2d-aabc-3a599da18118" version="3.1.0">
+  <name>Label</name>
+  <targetMode>that-reference</targetMode>
+  <targetTypes>
+    <type id="866a90f7-4044-43b9-bb05-7270c7889796">Display Component</type>
+  </targetTypes>
+  <targetReferenceTypes>
+    <type id="6533b546-f363-41c2-9412-ca5ba9bfb653">Text Input</type>
+  </targetReferenceTypes>
+  <applyMode>on-create</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction>return getProperty("Text").getValue();</displayFunction>
+  <displayAsAnnotation>true</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>a709188c-535e-40f5-8685-697fa4a84d25</parentFolderId>
+  <order>0</order>
+  <packageId>dc45ba43-d2d2-4d25-acfd-cd47cabe5dd6</packageId>
+  <packageName>Basic UI Components</packageName>
+  <properties>
+    <property id="b2ef5bbc-d458-4e0e-8548-79691d4a4bd7">
+      <name>Text</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

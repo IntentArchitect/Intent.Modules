@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputLog>
+  <ApplicationId>62e3977a-20a5-4637-b195-5dd11b6939bb</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#1e0631db-65af-4d43-aac8-6905976318c5</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>995bbb4e-12c8-409c-88be-5e01173bea92</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#0400549c-8abc-4687-998f-e24bcbf31d3b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/UserInterfacePackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>UserInterfacePackageExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>0e97075b-8792-4b08-9023-3892d9f092a4</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#0e97075b-8792-4b08-9023-3892d9f092a4</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies.csproj</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>0e97075b-8792-4b08-9023-3892d9f092a4</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ebd19fe7-41de-4bb4-bed0-681ef1674aea</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#10144809-6397-4c64-bc01-b83b3d270ebe</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Service Proxies UI Extension.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Service Proxies UI Extension.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>0e97075b-8792-4b08-9023-3892d9f092a4</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>release-notes.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+  </FileLogs>
+</outputLog>
