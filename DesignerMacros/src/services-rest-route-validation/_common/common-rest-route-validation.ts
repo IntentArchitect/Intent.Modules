@@ -38,8 +38,8 @@ function validateRestRoutes(element: MacroApi.Context.IElementApi): String {
     message = checkForDuplicates(operations, element, absoluteRouteToCheck, verbToCheck, matchOperation);
     if (message != null) return message;
 
-    // message = matchParameters(element, absoluteRouteToCheck);
-    // if (message != null) return message;
+    message = matchParameters(element, absoluteRouteToCheck);
+    if (message != null) return message;
 
     return "";
 }
