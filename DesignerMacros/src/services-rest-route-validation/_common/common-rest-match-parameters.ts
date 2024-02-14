@@ -1,6 +1,9 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
 function matchParameters(element: MacroApi.Context.IElementApi, routeToCheck: string): string | null {
+    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe";//Api Version Setting
+
     // Extract all parameters from the route
     let routeParameters = routeToCheck.match(/{([^}]*)}/g) || [];
     let elementType = element.specialization; // Assuming this is how you identify the element type

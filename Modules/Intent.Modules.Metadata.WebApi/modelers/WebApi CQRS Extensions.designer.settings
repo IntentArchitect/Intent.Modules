@@ -1108,6 +1108,8 @@ function matchOperation(possibleDuplicate, changingElement, routeToCheck, verbTo
 }
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function matchParameters(element, routeToCheck) {
+    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; //Api Version Setting
     // Extract all parameters from the route
     let routeParameters = routeToCheck.match(/{([^}]*)}/g) || [];
     let elementType = element.specialization; // Assuming this is how you identify the element type
@@ -1168,9 +1170,8 @@ function validateRestRoutes(element) {
     message = checkForDuplicates(operations, element, absoluteRouteToCheck, verbToCheck, matchOperation);
     if (message != null)
         return message;
-    message = matchParameters(element, absoluteRouteToCheck);
-    if (message != null)
-        return message;
+    // message = matchParameters(element, absoluteRouteToCheck);
+    // if (message != null) return message;
     return "";
 }
 /// &lt;reference path="../_common/common-rest-route-validation.ts" /&gt;
