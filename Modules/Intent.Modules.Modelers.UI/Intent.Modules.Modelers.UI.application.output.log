@@ -58,6 +58,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#b1c481e1-e91e-4c29-9817-00ab9cad4b6b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ComponentModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ComponentModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#356fbe17-bc63-4e16-b915-feefbc063cbe</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ComponentPropertyModel.cs</ApplicationRelativeFilePath>

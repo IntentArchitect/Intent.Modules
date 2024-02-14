@@ -49,18 +49,5 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="66d09bd8-c7b0-472c-995d-16be3f713589" type="Component View" typeId="624513a6-cba8-4dde-8ebe-6b19f00f0364">
-      <name>[view]</name>
-      <display>[view]</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>6533b546-f363-41c2-9412-ca5ba9bfb653</parentFolderId>
-      <packageId>dc45ba43-d2d2-4d25-acfd-cd47cabe5dd6</packageId>
-      <packageName>Basic UI Components</packageName>
-      <stereotypes />
-      <metadata />
-      <childElements />
-    </childElement>
   </childElements>
 </class>
