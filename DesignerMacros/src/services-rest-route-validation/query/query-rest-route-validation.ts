@@ -1,4 +1,4 @@
-/// <reference path="../common/common-rest-route-validation.ts" />
+/// <reference path="../_common/common-rest-route-validation.ts" />
 
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
