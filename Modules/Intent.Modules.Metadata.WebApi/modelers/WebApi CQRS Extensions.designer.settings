@@ -9,35 +9,23 @@
   <elementExtensions>
     <elementExtension type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
       <validateFunctionOverride>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function validateRestRoutes(element) {
-    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    let httpSettings = element.getStereotype(httpSettingsId);
-    if (httpSettings == null) {
-        return "";
+function checkForDuplicates(elements, element, routeToCheck, verbToCheck, match) {
+    let duplicate;
+    elements.forEach(e =&gt; {
+        if (duplicate != null)
+            return;
+        if (e.id == element.id)
+            return;
+        if (match(e, element, routeToCheck, verbToCheck)) {
+            duplicate = e;
+        }
+    });
+    if (duplicate) {
+        return `Duplicate rest route ${element.getName()}(${element.specialization}) with ${duplicate.getName()}(${duplicate.specialization}) - ${routeToCheck}`;
     }
-    let absoluteRouteToCheck = httpSettings.getProperty("Route").value;
-    if (element.specialization == "Operation") {
-        absoluteRouteToCheck = getOperationPath(element);
-    }
-    //again need to resolve paths for this to work
-    if (absoluteRouteToCheck.toLocaleLowerCase().includes("[action]")) {
-        return "";
-    }
-    let verbToCheck = httpSettings.getProperty("Verb").value;
-    let commands = lookupTypesOf("Command");
-    let message = checkForDuplicates(commands, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
-    if (message != null)
-        return message;
-    let queries = lookupTypesOf("Query");
-    message = checkForDuplicates(queries, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
-    if (message != null)
-        return message;
-    let operations = lookupTypesOf("Operation");
-    message = checkForDuplicates(operations, element, absoluteRouteToCheck, verbToCheck, matchOperation);
-    if (message != null)
-        return message;
-    return "";
+    return null;
 }
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function getOperationPath(operation) {
     let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
     let serviceHttpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
@@ -56,6 +44,7 @@ function getOperationPath(operation) {
     //We don't know how the service name will be transformed so we add [{ServiceName}] to represent the transform
     return `[${operation.getParent().getName()}]/${operationPath}`;
 }
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function matchCommandOrQuery(possibleDuplicate, changingElement, routeToCheck, verbToCheck) {
     let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
     let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; //Api Version Setting
@@ -67,11 +56,12 @@ function matchCommandOrQuery(possibleDuplicate, changingElement, routeToCheck, v
     if (result &amp;&amp; changingElement.getStereotype(apiVersionSettingId)) {
         let changingVersions = JSON.parse(changingElement.getStereotype(apiVersionSettingId).getProperty("Applicable Versions").value);
         let duplicateVersions = JSON.parse(possibleDuplicate.getStereotype(apiVersionSettingId).getProperty("Applicable Versions").value);
-        let intersection = changingVersions.filter(value =&gt; duplicateVersions.includes(value));
+        let intersection = changingVersions.filter((value) =&gt; duplicateVersions.includes(value));
         return intersection.length &gt; 0;
     }
     return result;
 }
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function matchOperation(possibleDuplicate, changingElement, routeToCheck, verbToCheck) {
     let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
     let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; //Api Version Setting
@@ -110,23 +100,74 @@ function matchOperation(possibleDuplicate, changingElement, routeToCheck, verbTo
     }
     return result;
 }
-function checkForDuplicates(elements, element, routeToCheck, verbToCheck, match) {
-    let duplicate;
-    elements.forEach(e =&gt; {
-        if (duplicate != null)
-            return;
-        if (e.id == element.id)
-            return;
-        if (match(e, element, routeToCheck, verbToCheck)) {
-            duplicate = e;
-        }
-    });
-    if (duplicate) {
-        return `Duplicate rest route ${element.getName()}(${element.specialization}) with ${duplicate.getName()}(${duplicate.specialization}) - ${routeToCheck}`;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function matchParameters(element, routeToCheck) {
+    // Extract all parameters from the route
+    let routeParameters = routeToCheck.match(/{([^}]*)}/g) || [];
+    let elementType = element.specialization; // Assuming this is how you identify the element type
+    let elementChildren;
+    if (elementType === "Command" || elementType === "Query") {
+        // For Commands and Queries, consider children that are properties
+        elementChildren = element.getChildren("Property");
     }
-    return null;
+    else if (elementType === "Operation") {
+        // For Operations, consider children that are parameters
+        elementChildren = element.getChildren("Parameter");
+    }
+    else {
+        return null; // Return no message if element type is unrecognized
+    }
+    // Normalize route parameters by trimming braces
+    let normalizedRouteParameters = routeParameters.map(param =&gt; param.replace(/[{}]/g, ""));
+    // Collect all names of properties/parameters for the element
+    let elementNames = elementChildren.map(child =&gt; child.getName());
+    // Find any route parameters not present in element properties/parameters
+    let unmatchedParameters = normalizedRouteParameters.filter(param =&gt; !elementNames.includes(param));
+    if (unmatchedParameters.length &gt; 0) {
+        // If there are unmatched parameters, return a validation message
+        return "Route mismatch: some route parameters do not match element's properties/parameters.";
+    }
+    return null; // Return no message if all validations pass
 }
-/// &lt;reference path="../common/common-rest-route-validation.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="./common-rest-check-for-duplicates.ts" /&gt;
+/// &lt;reference path="./common-rest-get-operation-path.ts" /&gt;
+/// &lt;reference path="./common-rest-match-command-or-query.ts" /&gt;
+/// &lt;reference path="./common-rest-match-operation.ts" /&gt;
+/// &lt;reference path="./common-rest-match-parameters.ts" /&gt;
+function validateRestRoutes(element) {
+    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let httpSettings = element.getStereotype(httpSettingsId);
+    if (httpSettings == null) {
+        return "";
+    }
+    let absoluteRouteToCheck = httpSettings.getProperty("Route").value;
+    if (element.specialization == "Operation") {
+        absoluteRouteToCheck = getOperationPath(element);
+    }
+    //again need to resolve paths for this to work
+    if (absoluteRouteToCheck.toLocaleLowerCase().includes("[action]")) {
+        return "";
+    }
+    let verbToCheck = httpSettings.getProperty("Verb").value;
+    let commands = lookupTypesOf("Command");
+    let message = checkForDuplicates(commands, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
+    if (message != null)
+        return message;
+    let queries = lookupTypesOf("Query");
+    message = checkForDuplicates(queries, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
+    if (message != null)
+        return message;
+    let operations = lookupTypesOf("Operation");
+    message = checkForDuplicates(operations, element, absoluteRouteToCheck, verbToCheck, matchOperation);
+    if (message != null)
+        return message;
+    message = matchParameters(element, absoluteRouteToCheck);
+    if (message != null)
+        return message;
+    return "";
+}
+/// &lt;reference path="../_common/common-rest-route-validation.ts" /&gt;
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
  *
@@ -134,8 +175,8 @@ function checkForDuplicates(elements, element, routeToCheck, verbToCheck, match)
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-rest-route-validation/command/command-rest-route-validation.ts
  */
 //Comment / UnComment below when you publish
-//validateRestRoutes(element);
-return validateRestRoutes(lookup(id));
+validateRestRoutes(element);
+//return validateRestRoutes(lookup(id));
 </validateFunctionOverride>
       <creationOptions />
       <scriptOptions>
@@ -974,35 +1015,23 @@ execute();</script>
     </elementExtension>
     <elementExtension type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
       <validateFunctionOverride>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function validateRestRoutes(element) {
-    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    let httpSettings = element.getStereotype(httpSettingsId);
-    if (httpSettings == null) {
-        return "";
+function checkForDuplicates(elements, element, routeToCheck, verbToCheck, match) {
+    let duplicate;
+    elements.forEach(e =&gt; {
+        if (duplicate != null)
+            return;
+        if (e.id == element.id)
+            return;
+        if (match(e, element, routeToCheck, verbToCheck)) {
+            duplicate = e;
+        }
+    });
+    if (duplicate) {
+        return `Duplicate rest route ${element.getName()}(${element.specialization}) with ${duplicate.getName()}(${duplicate.specialization}) - ${routeToCheck}`;
     }
-    let absoluteRouteToCheck = httpSettings.getProperty("Route").value;
-    if (element.specialization == "Operation") {
-        absoluteRouteToCheck = getOperationPath(element);
-    }
-    //again need to resolve paths for this to work
-    if (absoluteRouteToCheck.toLocaleLowerCase().includes("[action]")) {
-        return "";
-    }
-    let verbToCheck = httpSettings.getProperty("Verb").value;
-    let commands = lookupTypesOf("Command");
-    let message = checkForDuplicates(commands, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
-    if (message != null)
-        return message;
-    let queries = lookupTypesOf("Query");
-    message = checkForDuplicates(queries, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
-    if (message != null)
-        return message;
-    let operations = lookupTypesOf("Operation");
-    message = checkForDuplicates(operations, element, absoluteRouteToCheck, verbToCheck, matchOperation);
-    if (message != null)
-        return message;
-    return "";
+    return null;
 }
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function getOperationPath(operation) {
     let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
     let serviceHttpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
@@ -1021,6 +1050,7 @@ function getOperationPath(operation) {
     //We don't know how the service name will be transformed so we add [{ServiceName}] to represent the transform
     return `[${operation.getParent().getName()}]/${operationPath}`;
 }
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function matchCommandOrQuery(possibleDuplicate, changingElement, routeToCheck, verbToCheck) {
     let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
     let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; //Api Version Setting
@@ -1032,11 +1062,12 @@ function matchCommandOrQuery(possibleDuplicate, changingElement, routeToCheck, v
     if (result &amp;&amp; changingElement.getStereotype(apiVersionSettingId)) {
         let changingVersions = JSON.parse(changingElement.getStereotype(apiVersionSettingId).getProperty("Applicable Versions").value);
         let duplicateVersions = JSON.parse(possibleDuplicate.getStereotype(apiVersionSettingId).getProperty("Applicable Versions").value);
-        let intersection = changingVersions.filter(value =&gt; duplicateVersions.includes(value));
+        let intersection = changingVersions.filter((value) =&gt; duplicateVersions.includes(value));
         return intersection.length &gt; 0;
     }
     return result;
 }
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function matchOperation(possibleDuplicate, changingElement, routeToCheck, verbToCheck) {
     let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
     let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; //Api Version Setting
@@ -1075,23 +1106,74 @@ function matchOperation(possibleDuplicate, changingElement, routeToCheck, verbTo
     }
     return result;
 }
-function checkForDuplicates(elements, element, routeToCheck, verbToCheck, match) {
-    let duplicate;
-    elements.forEach(e =&gt; {
-        if (duplicate != null)
-            return;
-        if (e.id == element.id)
-            return;
-        if (match(e, element, routeToCheck, verbToCheck)) {
-            duplicate = e;
-        }
-    });
-    if (duplicate) {
-        return `Duplicate rest route ${element.getName()}(${element.specialization}) with ${duplicate.getName()}(${duplicate.specialization}) - ${routeToCheck}`;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function matchParameters(element, routeToCheck) {
+    // Extract all parameters from the route
+    let routeParameters = routeToCheck.match(/{([^}]*)}/g) || [];
+    let elementType = element.specialization; // Assuming this is how you identify the element type
+    let elementChildren;
+    if (elementType === "Command" || elementType === "Query") {
+        // For Commands and Queries, consider children that are properties
+        elementChildren = element.getChildren("Property");
     }
-    return null;
+    else if (elementType === "Operation") {
+        // For Operations, consider children that are parameters
+        elementChildren = element.getChildren("Parameter");
+    }
+    else {
+        return null; // Return no message if element type is unrecognized
+    }
+    // Normalize route parameters by trimming braces
+    let normalizedRouteParameters = routeParameters.map(param =&gt; param.replace(/[{}]/g, ""));
+    // Collect all names of properties/parameters for the element
+    let elementNames = elementChildren.map(child =&gt; child.getName());
+    // Find any route parameters not present in element properties/parameters
+    let unmatchedParameters = normalizedRouteParameters.filter(param =&gt; !elementNames.includes(param));
+    if (unmatchedParameters.length &gt; 0) {
+        // If there are unmatched parameters, return a validation message
+        return "Route mismatch: some route parameters do not match element's properties/parameters.";
+    }
+    return null; // Return no message if all validations pass
 }
-/// &lt;reference path="../common/common-rest-route-validation.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="./common-rest-check-for-duplicates.ts" /&gt;
+/// &lt;reference path="./common-rest-get-operation-path.ts" /&gt;
+/// &lt;reference path="./common-rest-match-command-or-query.ts" /&gt;
+/// &lt;reference path="./common-rest-match-operation.ts" /&gt;
+/// &lt;reference path="./common-rest-match-parameters.ts" /&gt;
+function validateRestRoutes(element) {
+    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let httpSettings = element.getStereotype(httpSettingsId);
+    if (httpSettings == null) {
+        return "";
+    }
+    let absoluteRouteToCheck = httpSettings.getProperty("Route").value;
+    if (element.specialization == "Operation") {
+        absoluteRouteToCheck = getOperationPath(element);
+    }
+    //again need to resolve paths for this to work
+    if (absoluteRouteToCheck.toLocaleLowerCase().includes("[action]")) {
+        return "";
+    }
+    let verbToCheck = httpSettings.getProperty("Verb").value;
+    let commands = lookupTypesOf("Command");
+    let message = checkForDuplicates(commands, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
+    if (message != null)
+        return message;
+    let queries = lookupTypesOf("Query");
+    message = checkForDuplicates(queries, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
+    if (message != null)
+        return message;
+    let operations = lookupTypesOf("Operation");
+    message = checkForDuplicates(operations, element, absoluteRouteToCheck, verbToCheck, matchOperation);
+    if (message != null)
+        return message;
+    message = matchParameters(element, absoluteRouteToCheck);
+    if (message != null)
+        return message;
+    return "";
+}
+/// &lt;reference path="../_common/common-rest-route-validation.ts" /&gt;
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
  *
@@ -1099,8 +1181,8 @@ function checkForDuplicates(elements, element, routeToCheck, verbToCheck, match)
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-rest-route-validation/command/query-rest-route-validation.ts
  */
 //Comment / UnComment below when you publish
-//validateRestRoutes(element);
-return validateRestRoutes(lookup(id));
+validateRestRoutes(element);
+//return validateRestRoutes(lookup(id));
 </validateFunctionOverride>
       <creationOptions />
       <scriptOptions>
