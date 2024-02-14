@@ -1,4 +1,9 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
+/// <reference path="./common-rest-check-for-duplicates.ts" />
+/// <reference path="./common-rest-get-operation-path.ts" />
+/// <reference path="./common-rest-match-command-or-query.ts" />
+/// <reference path="./common-rest-match-operation.ts" />
+/// <reference path="./common-rest-match-parameters.ts" />
 
 function validateRestRoutes(element: MacroApi.Context.IElementApi): String {
 
@@ -33,7 +38,7 @@ function validateRestRoutes(element: MacroApi.Context.IElementApi): String {
     message = checkForDuplicates(operations, element, absoluteRouteToCheck, verbToCheck, matchOperation);
     if (message != null) return message;
 
-    message = matchParameters(element, absoluteRouteToCheck, verbToCheck);
+    message = matchParameters(element, absoluteRouteToCheck);
     if (message != null) return message;
 
     return "";

@@ -13,7 +13,7 @@ function matchCommandOrQuery(possibleDuplicate: MacroApi.Context.IElementApi, ch
     if (result && changingElement.getStereotype(apiVersionSettingId)) {
         let changingVersions = JSON.parse(changingElement.getStereotype(apiVersionSettingId).getProperty("Applicable Versions").value);
         let duplicateVersions = JSON.parse(possibleDuplicate.getStereotype(apiVersionSettingId).getProperty("Applicable Versions").value);
-        let intersection = changingVersions.filter(value => duplicateVersions.includes(value));
+        let intersection = changingVersions.filter((value: any) => duplicateVersions.includes(value));
         return intersection.length > 0;
     }
     return result;

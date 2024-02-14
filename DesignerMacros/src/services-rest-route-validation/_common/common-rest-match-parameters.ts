@@ -1,6 +1,6 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
-function matchParameters(element: MacroApi.Context.IElementApi, routeToCheck: string, verbToCheck: string): string? {
+function matchParameters(element: MacroApi.Context.IElementApi, routeToCheck: string): string | null {
     // Extract all parameters from the route
     let routeParameters = routeToCheck.match(/{([^}]*)}/g) || [];
     let elementType = element.specialization; // Assuming this is how you identify the element type
