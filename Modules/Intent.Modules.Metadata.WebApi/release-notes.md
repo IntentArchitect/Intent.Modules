@@ -1,3 +1,7 @@
+### Version 4.4.3
+
+- Fixed: Check for unmatched route parameters.
+
 ### Version 4.4.2
 
 - Fixed: Check for undefined route parameters.
