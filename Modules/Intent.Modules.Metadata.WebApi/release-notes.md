@@ -1,6 +1,7 @@
 ### Version 4.4.3
 
 - Fixed: Check for unmatched route parameters.
+- Improvement: Added a `FileTransfer` type, for modeling REST file upload and downloads
 
 ### Version 4.4.2
 
