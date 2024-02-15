@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="bb8b4603-1e92-43cb-97ed-31ca0a8c374c" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+  <name>UploadFile</name>
+  <display>UploadFile</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>269fcb2f-f5a2-42f3-b02b-2427037e9b86</parentFolderId>
+  <packageId>269fcb2f-f5a2-42f3-b02b-2427037e9b86</packageId>
+  <packageName>Intent.WebApi.Services</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="4560e4e0-dae2-407f-95d7-528f4054a68e" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+      <name>Filename</name>
+      <display>Filename: string?</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="6b9aab81-0281-473f-ab9d-ad0d46cbaacf">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>true</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>bb8b4603-1e92-43cb-97ed-31ca0a8c374c</parentFolderId>
+      <packageId>269fcb2f-f5a2-42f3-b02b-2427037e9b86</packageId>
+      <packageName>Intent.WebApi.Services</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="b231dc59-46b5-41d3-aedb-1f1c8b892124" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+      <name>ContentType</name>
+      <display>ContentType: string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="07a7d7fe-5c13-42ed-b62e-1879ecdf2f00">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>bb8b4603-1e92-43cb-97ed-31ca0a8c374c</parentFolderId>
+      <packageId>269fcb2f-f5a2-42f3-b02b-2427037e9b86</packageId>
+      <packageName>Intent.WebApi.Services</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="166c8824-11f0-48d3-a825-dae9313680a3" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+      <name>Stream</name>
+      <display>Stream: Stream</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="1a4f31c2-4659-47c4-ace9-670df3ef95f9">
+        <typeId>7d573054-7b6c-4e74-a119-4415b7582c0e</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.WebApi.Services</typePackageName>
+        <typePackageId>269fcb2f-f5a2-42f3-b02b-2427037e9b86</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>bb8b4603-1e92-43cb-97ed-31ca0a8c374c</parentFolderId>
+      <packageId>269fcb2f-f5a2-42f3-b02b-2427037e9b86</packageId>
+      <packageName>Intent.WebApi.Services</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>
