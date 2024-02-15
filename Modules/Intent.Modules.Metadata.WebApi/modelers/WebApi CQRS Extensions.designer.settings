@@ -104,6 +104,11 @@ function matchOperation(possibleDuplicate, changingElement, routeToCheck, verbTo
 function matchParameters(element, routeToCheck) {
     let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
     let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; // Api Version Setting
+    let elementHasApiVersion = element.getStereotype(apiVersionSettingId) !== null;
+    if (elementHasApiVersion) {
+        // Assuming routeToCheck is a string representing your route
+        routeToCheck = routeToCheck.replace(/{version}/g, '');
+    }
     // Extract all parameters from the route
     let routeParameters = routeToCheck.match(/{([^}]*)}/g) || [];
     let elementType = element.specialization; // Assuming this is how you identify the element type
@@ -1116,6 +1121,11 @@ function matchOperation(possibleDuplicate, changingElement, routeToCheck, verbTo
 function matchParameters(element, routeToCheck) {
     let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
     let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; // Api Version Setting
+    let elementHasApiVersion = element.getStereotype(apiVersionSettingId) !== null;
+    if (elementHasApiVersion) {
+        // Assuming routeToCheck is a string representing your route
+        routeToCheck = routeToCheck.replace(/{version}/g, '');
+    }
     // Extract all parameters from the route
     let routeParameters = routeToCheck.match(/{([^}]*)}/g) || [];
     let elementType = element.specialization; // Assuming this is how you identify the element type
