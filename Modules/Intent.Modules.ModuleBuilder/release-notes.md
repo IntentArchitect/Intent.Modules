@@ -1,3 +1,7 @@
+### Version 3.8.3
+
+- Improvement: Software Factory Extension classes now have `Intent.Modules.Common` added as a using directive by default.
+
 ### Version 3.8.2
 
 - Improvement: Updated icon.
