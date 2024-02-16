@@ -65,7 +65,7 @@
       <childElements>
         <childElement id="5fda96ce-f80b-486b-8d80-3a50b691adfb" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Always</name>
-          <display>Always</display>
+          <display>Always = always</display>
           <isAbstract>false</isAbstract>
           <value>always</value>
           <genericTypes />
@@ -79,7 +79,7 @@
         </childElement>
         <childElement id="5d369281-6211-4451-b9bb-6e550ab84638" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>If newer</name>
-          <display>If newer</display>
+          <display>If newer = if-newer</display>
           <isAbstract>false</isAbstract>
           <value>if-newer</value>
           <genericTypes />
@@ -93,7 +93,7 @@
         </childElement>
         <childElement id="15f6412a-d57a-4f1e-bb42-7aac8a3e03a5" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Never</name>
-          <display>Never</display>
+          <display>Never = never</display>
           <isAbstract>false</isAbstract>
           <value>never</value>
           <genericTypes />
