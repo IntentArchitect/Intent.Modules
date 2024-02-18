@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="fd4ead8e-92e9-47c2-97a6-81d898525ea0" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">
+  <name>Stream</name>
+  <display>Stream</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>0011387a-b122-45d7-9cdb-8e21b315ab9f</parentFolderId>
+  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+  <packageName>Intent.Metadata.WebApi</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="30c5995e-17ab-4cc7-8881-3e9561ab06fe" name="C#">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Common.CSharp</definitionPackageName>
+      <definitionPackageId>730e1275-0c32-44f7-991a-9619d07ca68d</definitionPackageId>
+      <properties>
+        <property name="67913852-1e61-4d9d-997e-cdfb7d9196fb" display="Type" value="Stream" isActive="true" />
+        <property name="8CCCD630-6AF9-41FA-8E5F-414860AD89BB" display="Namespace" value="System.IO" isActive="true" />
+        <property name="76668E7B-8FC2-4C14-B6AA-E36854E5E499" display="Is Primitive" value="false" isActive="true" />
+        <property name="0a577584-e2d4-4e5a-8649-296036a91575" display="Is Collection" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

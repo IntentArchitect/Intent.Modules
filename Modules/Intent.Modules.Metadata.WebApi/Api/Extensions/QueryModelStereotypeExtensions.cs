@@ -36,6 +36,30 @@ namespace Intent.Metadata.WebApi.Api
             stereotype = new ApiVersionSettings(model.GetStereotype("Api Version Settings"));
             return true;
         }
+
+        public static FileTransfer GetFileTransfer(this QueryModel model)
+        {
+            var stereotype = model.GetStereotype("File Transfer");
+            return stereotype != null ? new FileTransfer(stereotype) : null;
+        }
+
+
+        public static bool HasFileTransfer(this QueryModel model)
+        {
+            return model.HasStereotype("File Transfer");
+        }
+
+        public static bool TryGetFileTransfer(this QueryModel model, out FileTransfer stereotype)
+        {
+            if (!HasFileTransfer(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new FileTransfer(model.GetStereotype("File Transfer"));
+            return true;
+        }
         public static HttpSettings GetHttpSettings(this QueryModel model)
         {
             var stereotype = model.GetStereotype("Http Settings");
@@ -146,6 +170,19 @@ namespace Intent.Metadata.WebApi.Api
             {
                 return _stereotype.GetProperty<IElement[]>("Applicable Versions") ?? new IElement[0];
             }
+
+        }
+
+        public class FileTransfer
+        {
+            private IStereotype _stereotype;
+
+            public FileTransfer(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
 
         }
 
