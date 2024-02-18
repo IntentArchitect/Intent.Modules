@@ -105,6 +105,96 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="352f2037-a39e-4c77-a169-67f7cbed921a" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>As File Download</name>
+          <display>As File Download: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="f84b1983-2dfa-4d7a-9931-83d508f0c173">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2dc0cf1e-a1ae-4351-84b5-ca22bd4b9161</parentFolderId>
+          <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+          <packageName>Intent.Metadata.WebApi</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;function makeReturnTypeFileDownloadDto(element) {&#xD;&#xA;    var _a;&#xD;&#xA;    const commonTypes = {&#xD;&#xA;        string: &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot;,&#xD;&#xA;        stream: &quot;fd4ead8e-92e9-47c2-97a6-81d898525ea0&quot;&#xD;&#xA;    };&#xD;&#xA;    let returnResultType = lookupTypesOf(&quot;DTO&quot;).find(x =&gt; x.getName() == &quot;FileDownloadDto&quot;);&#xD;&#xA;    if (!returnResultType) {&#xD;&#xA;        let folderName = &quot;Common&quot;;&#xD;&#xA;        const folder = (_a = element.getPackage().getChildren(&quot;Folder&quot;).find(x =&gt; x.getName() == folderName)) !== null &amp;&amp; _a !== void 0 ? _a : createElement(&quot;Folder&quot;, folderName, element.getPackage().id);&#xD;&#xA;        returnResultType = createElement(&quot;DTO&quot;, &quot;FileDownloadDto&quot;, folder.id);&#xD;&#xA;        returnResultType.id;&#xD;&#xA;        let stream = createElement(&quot;DTO-Field&quot;, &quot;Content&quot;, returnResultType.id);&#xD;&#xA;        stream.typeReference.setType(commonTypes.stream);&#xD;&#xA;        let filename = createElement(&quot;DTO-Field&quot;, &quot;Filename&quot;, returnResultType.id);&#xD;&#xA;        filename.typeReference.setType(commonTypes.string);&#xD;&#xA;        filename.typeReference.setIsNullable(true);&#xD;&#xA;        let contentType = createElement(&quot;DTO-Field&quot;, &quot;ContentType&quot;, returnResultType.id);&#xD;&#xA;        contentType.typeReference.setType(commonTypes.string);&#xD;&#xA;        contentType.typeReference.setIsNullable(true);&#xD;&#xA;    }&#xD;&#xA;    element.typeReference.setType(returnResultType.id);&#xD;&#xA;    element.typeReference.setIsCollection(false);&#xD;&#xA;    element.typeReference.setIsNullable(false);&#xD;&#xA;}&#xD;&#xA;function applyFileTransferStereoType(element) {&#xD;&#xA;    var _a;&#xD;&#xA;    const fileTransferId = &quot;d30e48e8-389e-4b70-84fd-e3bac44cfe19&quot;;&#xD;&#xA;    (_a = element.getStereotype(fileTransferId)) !== null &amp;&amp; _a !== void 0 ? _a : element.addStereotype(fileTransferId);&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../common/common-file-transfer.ts&quot; /&gt;&#xD;&#xA;/**&#xD;&#xA; * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi&#xD;&#xA; *&#xD;&#xA; * Source code here:&#xD;&#xA; * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/download/as-file-download.ts&#xD;&#xA; */&#xD;&#xA;function configureDownload(element) {&#xD;&#xA;    applyFileTransferStereoType(element);&#xD;&#xA;    makeReturnTypeFileDownloadDto(element);&#xD;&#xA;}&#xD;&#xA;configureDownload(element);&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;file-download&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="3083ac54-18a0-4a56-9c5a-8f4086bc9207" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>As File Upload</name>
+          <display>As File Upload: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="c5a2268b-21b3-4ba3-ab7a-507b5910cb59">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2dc0cf1e-a1ae-4351-84b5-ca22bd4b9161</parentFolderId>
+          <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+          <packageName>Intent.Metadata.WebApi</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;function makeReturnTypeFileDownloadDto(element) {&#xD;&#xA;    var _a;&#xD;&#xA;    const commonTypes = {&#xD;&#xA;        string: &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot;,&#xD;&#xA;        stream: &quot;fd4ead8e-92e9-47c2-97a6-81d898525ea0&quot;&#xD;&#xA;    };&#xD;&#xA;    let returnResultType = lookupTypesOf(&quot;DTO&quot;).find(x =&gt; x.getName() == &quot;FileDownloadDto&quot;);&#xD;&#xA;    if (!returnResultType) {&#xD;&#xA;        let folderName = &quot;Common&quot;;&#xD;&#xA;        const folder = (_a = element.getPackage().getChildren(&quot;Folder&quot;).find(x =&gt; x.getName() == folderName)) !== null &amp;&amp; _a !== void 0 ? _a : createElement(&quot;Folder&quot;, folderName, element.getPackage().id);&#xD;&#xA;        returnResultType = createElement(&quot;DTO&quot;, &quot;FileDownloadDto&quot;, folder.id);&#xD;&#xA;        returnResultType.id;&#xD;&#xA;        let stream = createElement(&quot;DTO-Field&quot;, &quot;Content&quot;, returnResultType.id);&#xD;&#xA;        stream.typeReference.setType(commonTypes.stream);&#xD;&#xA;        let filename = createElement(&quot;DTO-Field&quot;, &quot;Filename&quot;, returnResultType.id);&#xD;&#xA;        filename.typeReference.setType(commonTypes.string);&#xD;&#xA;        filename.typeReference.setIsNullable(true);&#xD;&#xA;        let contentType = createElement(&quot;DTO-Field&quot;, &quot;ContentType&quot;, returnResultType.id);&#xD;&#xA;        contentType.typeReference.setType(commonTypes.string);&#xD;&#xA;        contentType.typeReference.setIsNullable(true);&#xD;&#xA;    }&#xD;&#xA;    element.typeReference.setType(returnResultType.id);&#xD;&#xA;    element.typeReference.setIsCollection(false);&#xD;&#xA;    element.typeReference.setIsNullable(false);&#xD;&#xA;}&#xD;&#xA;function applyFileTransferStereoType(element) {&#xD;&#xA;    var _a;&#xD;&#xA;    const fileTransferId = &quot;d30e48e8-389e-4b70-84fd-e3bac44cfe19&quot;;&#xD;&#xA;    (_a = element.getStereotype(fileTransferId)) !== null &amp;&amp; _a !== void 0 ? _a : element.addStereotype(fileTransferId);&#xD;&#xA;}&#xD;&#xA;function addUploadFields(element, childType) {&#xD;&#xA;    const commonTypes = {&#xD;&#xA;        string: &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot;,&#xD;&#xA;        stream: &quot;fd4ead8e-92e9-47c2-97a6-81d898525ea0&quot;&#xD;&#xA;    };&#xD;&#xA;    const parameterSettingId = &quot;d01df110-1208-4af8-a913-92a49d219552&quot;;&#xD;&#xA;    var existing = element.getChildren().find(x =&gt; x.getName() == &quot;Content&quot;);&#xD;&#xA;    if (!existing) {&#xD;&#xA;        let stream = createElement(childType, &quot;Content&quot;, element.id);&#xD;&#xA;        stream.typeReference.setType(commonTypes.stream);&#xD;&#xA;    }&#xD;&#xA;    var existing = element.getChildren().find(x =&gt; x.getName() == &quot;Filename&quot;);&#xD;&#xA;    if (!existing) {&#xD;&#xA;        let filename = createElement(childType, &quot;Filename&quot;, element.id);&#xD;&#xA;        filename.typeReference.setType(commonTypes.string);&#xD;&#xA;        filename.typeReference.setIsNullable(true);&#xD;&#xA;        let parameterSetting = filename.addStereotype(parameterSettingId);&#xD;&#xA;        parameterSetting.getProperty(&quot;Source&quot;).setValue(&quot;From Query&quot;);&#xD;&#xA;    }&#xD;&#xA;    var existing = element.getChildren().find(x =&gt; x.getName() == &quot;ContentType&quot;);&#xD;&#xA;    if (!existing) {&#xD;&#xA;        let contentType = createElement(childType, &quot;ContentType&quot;, element.id);&#xD;&#xA;        contentType.typeReference.setType(commonTypes.string);&#xD;&#xA;        contentType.typeReference.setIsNullable(true);&#xD;&#xA;        let parameterSetting = contentType.addStereotype(parameterSettingId);&#xD;&#xA;        parameterSetting.getProperty(&quot;Source&quot;).setValue(&quot;From Query&quot;);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../common/common-file-transfer.ts&quot; /&gt;&#xD;&#xA;/**&#xD;&#xA; * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi&#xD;&#xA; *&#xD;&#xA; * Source code here:&#xD;&#xA; * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/as-file-upload-service/as-file-upload-service.ts&#xD;&#xA; */&#xD;&#xA;function configureUpload(element) {&#xD;&#xA;    applyFileTransferStereoType(element);&#xD;&#xA;    addUploadFields(element, &quot;Parameter&quot;);&#xD;&#xA;}&#xD;&#xA;configureUpload(element);&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
       </childElements>
     </childElement>
     <childElement id="c4451f43-f06b-4eb1-88b8-3a4a4c374303" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
