@@ -22,7 +22,7 @@
     <file src="$outDir$/$id$.pdb" />
   </files>
   <metadata>
-    <install target="Services" src="Intent.Metadata/Module Builder/Intent.Metadata.WebApi/Intent.Metadata.WebApi.pkg.config" externalReference="0011387a-b122-45d7-9cdb-8e21b315ab9f" />
+    <install target="Services;Service Proxies" src="Intent.Metadata/Module Builder/Intent.Metadata.WebApi/Intent.Metadata.WebApi.pkg.config" externalReference="0011387a-b122-45d7-9cdb-8e21b315ab9f" />
     <install target="Services" src="modelers/WebApi CQRS Extensions.designer.settings" externalReference="03bfccb7-d845-411f-ba08-4fddb01bbbda" />
     <install target="Services" src="modelers/WebApi Services Extensions.designer.settings" externalReference="35553b8d-e014-46ef-88d4-429dbeba18ed" />
     <install src="modelers/WebApi OpenApi Extensions.designer.settings" externalReference="ffcc65bb-8e84-43f2-a025-777a000d245d" target="Services" />
