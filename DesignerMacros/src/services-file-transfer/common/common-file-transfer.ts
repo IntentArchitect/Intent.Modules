@@ -1,4 +1,5 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
+/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
 function makeReturnTypeFileDownloadDto(element: MacroApi.Context.IElementApi): void{   
 
@@ -37,9 +38,16 @@ function applyFileTransferStereoType(element: MacroApi.Context.IElementApi): voi
     element.getStereotype(fileTransferId) ?? element.addStereotype(fileTransferId);
 }
 
+function makePost(element: MacroApi.Context.IElementApi){
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    const httpSettings = element.getStereotype(httpSettingsId) ?? element.addStereotype(httpSettingsId);
+    httpSettings.getProperty("Verb").setValue("POST");
+}
+
 function addUploadFields(element: MacroApi.Context.IElementApi, childType: string): void{   
     const commonTypes = {
         string: "d384db9c-a279-45e1-801e-e4e8099625f2",
+        long: "33013006-E404-48C2-AC46-24EF5A5774FD",
         stream: "fd4ead8e-92e9-47c2-97a6-81d898525ea0"
     };
 
@@ -57,7 +65,6 @@ function addUploadFields(element: MacroApi.Context.IElementApi, childType: strin
         filename.typeReference.setType(commonTypes.string)
         filename.typeReference.setIsNullable(true)
         let parameterSetting = filename.addStereotype(parameterSettingId);
-        parameterSetting.getProperty("Source").setValue("From Query");
     }
 
     var existing = element.getChildren().find(x => x.getName() == "ContentType")
@@ -66,6 +73,16 @@ function addUploadFields(element: MacroApi.Context.IElementApi, childType: strin
         contentType.typeReference.setType(commonTypes.string)
         contentType.typeReference.setIsNullable(true)
         let parameterSetting = contentType.addStereotype(parameterSettingId);
-        parameterSetting.getProperty("Source").setValue("From Query");
+        parameterSetting.getProperty("Source").setValue("From Header");
+        parameterSetting.getProperty("Header Name").setValue("Content-Type");
+    }
+    var existing = element.getChildren().find(x => x.getName() == "ContentLength")
+    if (!existing){    
+        let contentType = createElement(childType, "ContentLength", element.id);
+        contentType.typeReference.setType(commonTypes.long)
+        contentType.typeReference.setIsNullable(true)
+        let parameterSetting = contentType.addStereotype(parameterSettingId);
+        parameterSetting.getProperty("Source").setValue("From Header");
+        parameterSetting.getProperty("Header Name").setValue("Content-Length");
     }
 }

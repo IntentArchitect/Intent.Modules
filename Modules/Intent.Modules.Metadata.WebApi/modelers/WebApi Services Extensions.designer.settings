@@ -284,57 +284,10 @@ exposeAsHttpEndPoint(element);
 </script>
         </option>
         <option>
-          <text>As File Download</text>
+          <text>Expose as Http File Download</text>
           <icon type="FontAwesome" source="file-download" />
           <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function makeReturnTypeFileDownloadDto(element) {
-    var _a;
-    const commonTypes = {
-        string: "d384db9c-a279-45e1-801e-e4e8099625f2",
-        stream: "fd4ead8e-92e9-47c2-97a6-81d898525ea0"
-    };
-    let returnResultType = lookupTypesOf("DTO").find(x =&gt; x.getName() == "FileDownloadDto");
-    if (!returnResultType) {
-        let folderName = "Common";
-        const folder = (_a = element.getPackage().getChildren("Folder").find(x =&gt; x.getName() == folderName)) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", folderName, element.getPackage().id);
-        returnResultType = createElement("DTO", "FileDownloadDto", folder.id);
-        returnResultType.id;
-        let stream = createElement("DTO-Field", "Content", returnResultType.id);
-        stream.typeReference.setType(commonTypes.stream);
-        let filename = createElement("DTO-Field", "Filename", returnResultType.id);
-        filename.typeReference.setType(commonTypes.string);
-        filename.typeReference.setIsNullable(true);
-        let contentType = createElement("DTO-Field", "ContentType", returnResultType.id);
-        contentType.typeReference.setType(commonTypes.string);
-        contentType.typeReference.setIsNullable(true);
-    }
-    element.typeReference.setType(returnResultType.id);
-    element.typeReference.setIsCollection(false);
-    element.typeReference.setIsNullable(false);
-}
-function applyFileTransferStereoType(element) {
-    var _a;
-    const fileTransferId = "d30e48e8-389e-4b70-84fd-e3bac44cfe19";
-    (_a = element.getStereotype(fileTransferId)) !== null &amp;&amp; _a !== void 0 ? _a : element.addStereotype(fileTransferId);
-}
-/// &lt;reference path="../common/common-file-transfer.ts" /&gt;
-/**
- * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
- *
- * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/download/as-file-download.ts
- */
-function configureDownload(element) {
-    applyFileTransferStereoType(element);
-    makeReturnTypeFileDownloadDto(element);
-}
-configureDownload(element);
-</script>
-        </option>
-        <option>
-          <text>As File Upload</text>
-          <icon type="FontAwesome" source="code" />
-          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function makeReturnTypeFileDownloadDto(element) {
     var _a;
     const commonTypes = {
@@ -368,6 +321,7 @@ function applyFileTransferStereoType(element) {
 function addUploadFields(element, childType) {
     const commonTypes = {
         string: "d384db9c-a279-45e1-801e-e4e8099625f2",
+        long: "33013006-E404-48C2-AC46-24EF5A5774FD",
         stream: "fd4ead8e-92e9-47c2-97a6-81d898525ea0"
     };
     const parameterSettingId = "d01df110-1208-4af8-a913-92a49d219552";
@@ -382,7 +336,6 @@ function addUploadFields(element, childType) {
         filename.typeReference.setType(commonTypes.string);
         filename.typeReference.setIsNullable(true);
         let parameterSetting = filename.addStereotype(parameterSettingId);
-        parameterSetting.getProperty("Source").setValue("From Query");
     }
     var existing = element.getChildren().find(x =&gt; x.getName() == "ContentType");
     if (!existing) {
@@ -390,19 +343,271 @@ function addUploadFields(element, childType) {
         contentType.typeReference.setType(commonTypes.string);
         contentType.typeReference.setIsNullable(true);
         let parameterSetting = contentType.addStereotype(parameterSettingId);
-        parameterSetting.getProperty("Source").setValue("From Query");
+        parameterSetting.getProperty("Source").setValue("From Header");
+        parameterSetting.getProperty("Header Name").setValue("Content-Type");
+    }
+    var existing = element.getChildren().find(x =&gt; x.getName() == "ContentLength");
+    if (!existing) {
+        let contentType = createElement(childType, "ContentLength", element.id);
+        contentType.typeReference.setType(commonTypes.long);
+        contentType.typeReference.setIsNullable(true);
+        let parameterSetting = contentType.addStereotype(parameterSettingId);
+        parameterSetting.getProperty("Source").setValue("From Header");
+        parameterSetting.getProperty("Header Name").setValue("Content-Length");
     }
 }
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    var _a;
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+    let settingsGroup = application.getSettings(apiSettingsId);
+    if (!settingsGroup) {
+        return defaultApiRoutePrefix;
+    }
+    let field = settingsGroup.getField("Default API Route Prefix");
+    if (!field) {
+        return defaultApiRoutePrefix;
+    }
+    let route = (_a = field.value) !== null &amp;&amp; _a !== void 0 ? _a : "";
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    }
+    else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+    return route;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
+function exposeAsHttpEndPoint(element) {
+    let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
+    if (!element.getParent().hasStereotype(httpServiceSettingsId)) {
+        element.getParent().addStereotype(httpServiceSettingsId);
+        let serviceBaseName = removeSuffix(element.getParent().getName(), "Service");
+        element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
+    }
+    applyHttpSettingsToOperations(element);
+}
+function getRoute(serviceBaseName) {
+    return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
+}
+function applyHttpSettingsToOperations(operation) {
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
+    const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    if (!operation.hasStereotype(httpSettingsId)) {
+        operation.addStereotype(httpSettingsId);
+    }
+    const httpSettings = operation.getStereotype(httpSettingsId);
+    if (operation.getName().startsWith("Create")) {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(``);
+    }
+    else if (operation.getName().startsWith("Update")) {
+        httpSettings.getProperty("Verb").setValue("PUT");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Delete")) {
+        httpSettings.getProperty("Verb").setValue("DELETE");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Get") || operation.getName().startsWith("Find") || operation.getName().startsWith("Lookup")) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.typeReference.getType() != null) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `/{id}` : "")}`);
+    }
+    else {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}`);
+    }
+    operation.getChildren("Parameter").forEach(parameter =&gt; {
+        if (!parameter.hasStereotype(parameterSettingsId)) {
+            parameter.addStereotype(parameterSettingsId);
+        }
+    });
+}
 /// &lt;reference path="../common/common-file-transfer.ts" /&gt;
+/// &lt;reference path="../../services-expose-as-http-endpoint/operation/shared.ts" /&gt;
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/as-file-upload-service/as-file-upload-service.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/expose-as-file-download-operation/expose-as-file-download-operation.ts
+ */
+function configureDownload(element) {
+    applyFileTransferStereoType(element);
+    makeReturnTypeFileDownloadDto(element);
+    exposeAsHttpEndPoint(element);
+}
+configureDownload(element);
+</script>
+        </option>
+        <option>
+          <text>Expose as Http File Upload</text>
+          <icon type="FontAwesome" source="file-upload" />
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function makeReturnTypeFileDownloadDto(element) {
+    var _a;
+    const commonTypes = {
+        string: "d384db9c-a279-45e1-801e-e4e8099625f2",
+        stream: "fd4ead8e-92e9-47c2-97a6-81d898525ea0"
+    };
+    let returnResultType = lookupTypesOf("DTO").find(x =&gt; x.getName() == "FileDownloadDto");
+    if (!returnResultType) {
+        let folderName = "Common";
+        const folder = (_a = element.getPackage().getChildren("Folder").find(x =&gt; x.getName() == folderName)) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", folderName, element.getPackage().id);
+        returnResultType = createElement("DTO", "FileDownloadDto", folder.id);
+        returnResultType.id;
+        let stream = createElement("DTO-Field", "Content", returnResultType.id);
+        stream.typeReference.setType(commonTypes.stream);
+        let filename = createElement("DTO-Field", "Filename", returnResultType.id);
+        filename.typeReference.setType(commonTypes.string);
+        filename.typeReference.setIsNullable(true);
+        let contentType = createElement("DTO-Field", "ContentType", returnResultType.id);
+        contentType.typeReference.setType(commonTypes.string);
+        contentType.typeReference.setIsNullable(true);
+    }
+    element.typeReference.setType(returnResultType.id);
+    element.typeReference.setIsCollection(false);
+    element.typeReference.setIsNullable(false);
+}
+function applyFileTransferStereoType(element) {
+    var _a;
+    const fileTransferId = "d30e48e8-389e-4b70-84fd-e3bac44cfe19";
+    (_a = element.getStereotype(fileTransferId)) !== null &amp;&amp; _a !== void 0 ? _a : element.addStereotype(fileTransferId);
+}
+function makePost(element) {
+    var _a;
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    const httpSettings = (_a = element.getStereotype(httpSettingsId)) !== null &amp;&amp; _a !== void 0 ? _a : element.addStereotype(httpSettingsId);
+    httpSettings.getProperty("Verb").setValue("POST");
+}
+function addUploadFields(element, childType) {
+    const commonTypes = {
+        string: "d384db9c-a279-45e1-801e-e4e8099625f2",
+        long: "33013006-E404-48C2-AC46-24EF5A5774FD",
+        stream: "fd4ead8e-92e9-47c2-97a6-81d898525ea0"
+    };
+    const parameterSettingId = "d01df110-1208-4af8-a913-92a49d219552";
+    var existing = element.getChildren().find(x =&gt; x.getName() == "Content");
+    if (!existing) {
+        let stream = createElement(childType, "Content", element.id);
+        stream.typeReference.setType(commonTypes.stream);
+    }
+    var existing = element.getChildren().find(x =&gt; x.getName() == "Filename");
+    if (!existing) {
+        let filename = createElement(childType, "Filename", element.id);
+        filename.typeReference.setType(commonTypes.string);
+        filename.typeReference.setIsNullable(true);
+        let parameterSetting = filename.addStereotype(parameterSettingId);
+    }
+    var existing = element.getChildren().find(x =&gt; x.getName() == "ContentType");
+    if (!existing) {
+        let contentType = createElement(childType, "ContentType", element.id);
+        contentType.typeReference.setType(commonTypes.string);
+        contentType.typeReference.setIsNullable(true);
+        let parameterSetting = contentType.addStereotype(parameterSettingId);
+        parameterSetting.getProperty("Source").setValue("From Header");
+        parameterSetting.getProperty("Header Name").setValue("Content-Type");
+    }
+    var existing = element.getChildren().find(x =&gt; x.getName() == "ContentLength");
+    if (!existing) {
+        let contentType = createElement(childType, "ContentLength", element.id);
+        contentType.typeReference.setType(commonTypes.long);
+        contentType.typeReference.setIsNullable(true);
+        let parameterSetting = contentType.addStereotype(parameterSettingId);
+        parameterSetting.getProperty("Source").setValue("From Header");
+        parameterSetting.getProperty("Header Name").setValue("Content-Length");
+    }
+}
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    var _a;
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+    let settingsGroup = application.getSettings(apiSettingsId);
+    if (!settingsGroup) {
+        return defaultApiRoutePrefix;
+    }
+    let field = settingsGroup.getField("Default API Route Prefix");
+    if (!field) {
+        return defaultApiRoutePrefix;
+    }
+    let route = (_a = field.value) !== null &amp;&amp; _a !== void 0 ? _a : "";
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    }
+    else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+    return route;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
+function exposeAsHttpEndPoint(element) {
+    let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
+    if (!element.getParent().hasStereotype(httpServiceSettingsId)) {
+        element.getParent().addStereotype(httpServiceSettingsId);
+        let serviceBaseName = removeSuffix(element.getParent().getName(), "Service");
+        element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
+    }
+    applyHttpSettingsToOperations(element);
+}
+function getRoute(serviceBaseName) {
+    return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
+}
+function applyHttpSettingsToOperations(operation) {
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
+    const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    if (!operation.hasStereotype(httpSettingsId)) {
+        operation.addStereotype(httpSettingsId);
+    }
+    const httpSettings = operation.getStereotype(httpSettingsId);
+    if (operation.getName().startsWith("Create")) {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(``);
+    }
+    else if (operation.getName().startsWith("Update")) {
+        httpSettings.getProperty("Verb").setValue("PUT");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Delete")) {
+        httpSettings.getProperty("Verb").setValue("DELETE");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Get") || operation.getName().startsWith("Find") || operation.getName().startsWith("Lookup")) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.typeReference.getType() != null) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `/{id}` : "")}`);
+    }
+    else {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}`);
+    }
+    operation.getChildren("Parameter").forEach(parameter =&gt; {
+        if (!parameter.hasStereotype(parameterSettingsId)) {
+            parameter.addStereotype(parameterSettingsId);
+        }
+    });
+}
+/// &lt;reference path="../common/common-file-transfer.ts" /&gt;
+/// &lt;reference path="../../services-expose-as-http-endpoint/operation/shared.ts" /&gt;
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/expose-as-file-upload-operation/expose-as-file-upload-operation.ts
  */
 function configureUpload(element) {
     applyFileTransferStereoType(element);
     addUploadFields(element, "Parameter");
+    exposeAsHttpEndPoint(element);
+    makePost(element);
 }
 configureUpload(element);
 </script>
