@@ -14,46 +14,64 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
             return element.Package.Name.Split('.');
         }
 
+        private const string HttpSettingsStereotypeName = "Http Settings";
+        private static readonly IReadOnlyCollection<string> HttpSettingsStereotypeOption = new[] { HttpSettingsStereotypeName };
+
         public static IList<DTOModel> GetMappedServiceProxyDTOModels(this IDesigner designer)
         {
+            return GetMappedServiceProxyDTOModels(designer, HttpSettingsStereotypeOption);
+        }
+
+        public static IList<DTOModel> GetMappedServiceProxyDTOModels(this IDesigner designer, IReadOnlyCollection<string> stereotypeNames)
+        {
             return designer.GetServiceProxyModels()
-                .SelectMany(GetReferencedDTOModels)
+                .SelectMany(proxyModel => GetReferencedDTOModels(proxyModel, stereotypeNames))
                 .Distinct()
                 .ToList();
         }
 
         public static IList<DTOModel> GetMappedServiceProxyInboundDTOModels(this IDesigner designer)
         {
+            return GetMappedServiceProxyInboundDTOModels(designer, HttpSettingsStereotypeOption);
+        }
+
+        public static IList<DTOModel> GetMappedServiceProxyInboundDTOModels(this IDesigner designer, IReadOnlyCollection<string> stereotypeNames)
+        {
             return designer.GetServiceProxyModels()
-                .SelectMany(model => GetReferencedDTOModels(model, includeReturnTypes: false))
+                .SelectMany(proxyModel => GetReferencedDTOModels(proxyModel, includeReturnTypes: false, stereotypeNames))
                 .Distinct()
                 .ToList();
         }
 
         public static IReadOnlyCollection<EnumModel> GetMappedServiceProxyEnumModels(this IDesigner designer)
         {
+            return GetMappedServiceProxyEnumModels(designer, HttpSettingsStereotypeOption);
+        }
+
+        public static IReadOnlyCollection<EnumModel> GetMappedServiceProxyEnumModels(this IDesigner designer, IReadOnlyCollection<string> stereotypeNames)
+        {
             return designer.GetServiceProxyModels()
-                .SelectMany(GetReferencedEnumModels)
+                .SelectMany(proxyModel => GetReferencedEnumModels(proxyModel, stereotypeNames))
                 .Distinct()
                 .ToList();
         }
 
-        internal static IEnumerable<DTOModel> GetReferencedDTOModels(this ServiceProxyModel proxy)
+        internal static IEnumerable<DTOModel> GetReferencedDTOModels(this ServiceProxyModel proxy, IReadOnlyCollection<string> stereotypeNames)
         {
-            return GetReferencedDTOModels(proxy, includeReturnTypes: true);
+            return GetReferencedDTOModels(proxy, includeReturnTypes: true, stereotypeNames);
         }
 
-        internal static IEnumerable<DTOModel> GetReferencedDTOModels(this ServiceProxyModel proxy, bool includeReturnTypes)
+        internal static IEnumerable<DTOModel> GetReferencedDTOModels(this ServiceProxyModel proxy, bool includeReturnTypes, IReadOnlyCollection<string> stereotypeNames)
         {
-            return DeepGetDistinctReferencedElements(GetMappedEndpoints(proxy), includeReturnTypes)
+            return DeepGetDistinctReferencedElements(GetMappedEndpoints(proxy, stereotypeNames), includeReturnTypes)
                 .Where(x => x.SpecializationTypeId is not (TypeDefinitionModel.SpecializationTypeId or EnumModel.SpecializationTypeId))
                 .Select(x => new DTOModel(x))
                 .ToList();
         }
 
-        internal static IEnumerable<EnumModel> GetReferencedEnumModels(this ServiceProxyModel proxy)
+        internal static IEnumerable<EnumModel> GetReferencedEnumModels(this ServiceProxyModel proxy, IReadOnlyCollection<string> stereotypeNames)
         {
-            return DeepGetDistinctReferencedElements(GetMappedEndpoints(proxy))
+            return DeepGetDistinctReferencedElements(GetMappedEndpoints(proxy, stereotypeNames))
                 .Where(x => x.SpecializationTypeId is EnumModel.SpecializationTypeId)
                 .Select(x => new EnumModel(x))
                 .ToList();
@@ -110,8 +128,10 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
             return referencedElements;
         }
 
-        private static IEnumerable<IElement> GetMappedEndpoints(ServiceProxyModel proxyModel)
+        private static IEnumerable<IElement> GetMappedEndpoints(ServiceProxyModel proxyModel, IReadOnlyCollection<string> stereotypeNames)
         {
+            var stereotypeSet = new HashSet<string>(stereotypeNames);
+
             if (proxyModel.Mapping?.Element?.IsServiceModel() == true)
             {
                 IEnumerable<Intent.Modelers.Services.Api.OperationModel> mappedOperations = proxyModel.MappedService.Operations;
@@ -123,15 +143,16 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
                         .Where(mappedOperation => proxyModel.Operations
                             .Any(proxyOperation => proxyOperation.Mapping?.ElementId == mappedOperation.Id));
                 }
+
                 return mappedOperations
                     .Select(x => x.InternalElement)
-                    .Where(x => x.Stereotypes.Any(s => s.Name == "Http Settings"));
+                    .Where(x => x.Stereotypes.Any(s => stereotypeSet.Contains(s.Name)));
             }
 
             return proxyModel.Operations
                 .Select(x => x.Mapping?.Element)
                 .Cast<IElement>()
-                .Where(x => x.Stereotypes.Any(s => s.Name == "Http Settings"));
+                .Where(x => x.Stereotypes.Any(s => stereotypeSet.Contains(s.Name)));
         }
     }
 }
