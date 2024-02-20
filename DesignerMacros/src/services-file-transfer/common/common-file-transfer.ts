@@ -64,7 +64,6 @@ function addUploadFields(element: MacroApi.Context.IElementApi, childType: strin
         let filename = createElement(childType, "Filename", element.id);
         filename.typeReference.setType(commonTypes.string)
         filename.typeReference.setIsNullable(true)
-        let parameterSetting = filename.addStereotype(parameterSettingId);
     }
 
     var existing = element.getChildren().find(x => x.getName() == "ContentType")
