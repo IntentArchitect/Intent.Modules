@@ -182,6 +182,16 @@ namespace Intent.Metadata.WebApi.Api
 
             public string Name => _stereotype.Name;
 
+            public string MimeTypeFilter()
+            {
+                return _stereotype.GetProperty<string>("Mime Type Filter");
+            }
+
+            public int? MaximumFileSizeInBytes()
+            {
+                return _stereotype.GetProperty<int?>("Maximum File Size (in bytes)");
+            }
+
         }
 
 

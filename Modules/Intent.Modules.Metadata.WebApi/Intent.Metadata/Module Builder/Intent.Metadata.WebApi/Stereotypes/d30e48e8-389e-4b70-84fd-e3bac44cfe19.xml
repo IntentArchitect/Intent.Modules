@@ -21,5 +21,26 @@
   <order>0</order>
   <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
   <packageName>Intent.Metadata.WebApi</packageName>
-  <properties />
+  <properties>
+    <property id="920234c1-6edb-4ceb-b6af-76f459bfb348">
+      <hint>Allowed mime types (e.g. image/png )</hint>
+      <name>Mime Type Filter</name>
+      <type>string</type>
+      <controlType>textarea</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>*/*</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="c0ea27fb-2e0b-4542-b294-da9d2b12565e">
+      <name>Maximum File Size (in bytes)</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
 </stereotypeDefinition>
