@@ -216,7 +216,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
-                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;return element.hasStereotype(httpSettingsId)" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;return element.hasStereotype(httpSettingsId);" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -350,7 +350,7 @@
                         <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                         <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                         <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
-                        <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;&#xD;&#xA;return element.hasStereotype(httpSettingsId)" isActive="true" />
+                        <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;const massTransitConsumer = &quot;b37b2302-97f4-4bc0-b3ad-bc04894c305a&quot;;&#xD;&#xA;&#xD;&#xA;return element.hasStereotype(httpSettingsId) || element.hasStereotype(massTransitConsumer);" isActive="true" />
                       </properties>
                     </stereotype>
                   </stereotypes>
@@ -394,7 +394,7 @@
                         <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                         <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                         <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
-                        <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;return element.hasStereotype(httpSettingsId)" isActive="true" />
+                        <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;const massTransitConsumer = &quot;b37b2302-97f4-4bc0-b3ad-bc04894c305a&quot;;&#xD;&#xA;&#xD;&#xA;return element.hasStereotype(httpSettingsId) || element.hasStereotype(massTransitConsumer);" isActive="true" />
                       </properties>
                     </stereotype>
                   </stereotypes>
