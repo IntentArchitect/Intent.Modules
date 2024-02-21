@@ -9,17 +9,21 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
 {
     public static class ExtensionMethods
     {
+        private static readonly IReadOnlyCollection<string> HttpSettingsStereotypeOption = ["Http Settings"];
+
         public static string[] GetPackageNamespaceParts(IElement element)
         {
             return element.Package.Name.Split('.');
         }
 
-        private const string HttpSettingsStereotypeName = "Http Settings";
-        private static readonly IReadOnlyCollection<string> HttpSettingsStereotypeOption = new[] { HttpSettingsStereotypeName };
-
         public static IList<DTOModel> GetMappedServiceProxyDTOModels(this IDesigner designer)
         {
             return GetMappedServiceProxyDTOModels(designer, HttpSettingsStereotypeOption);
+        }
+
+        public static IList<DTOModel> GetMappedServiceProxyDTOModels(this IDesigner designer, string stereotypeName)
+        {
+            return GetMappedServiceProxyDTOModels(designer, [stereotypeName]);
         }
 
         public static IList<DTOModel> GetMappedServiceProxyDTOModels(this IDesigner designer, IReadOnlyCollection<string> stereotypeNames)
@@ -35,6 +39,11 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
             return GetMappedServiceProxyInboundDTOModels(designer, HttpSettingsStereotypeOption);
         }
 
+        public static IList<DTOModel> GetMappedServiceProxyInboundDTOModels(this IDesigner designer, string stereotypeName)
+        {
+            return GetMappedServiceProxyInboundDTOModels(designer, [stereotypeName]);
+        }
+
         public static IList<DTOModel> GetMappedServiceProxyInboundDTOModels(this IDesigner designer, IReadOnlyCollection<string> stereotypeNames)
         {
             return designer.GetServiceProxyModels()
@@ -46,6 +55,11 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
         public static IReadOnlyCollection<EnumModel> GetMappedServiceProxyEnumModels(this IDesigner designer)
         {
             return GetMappedServiceProxyEnumModels(designer, HttpSettingsStereotypeOption);
+        }
+
+        public static IReadOnlyCollection<EnumModel> GetMappedServiceProxyEnumModels(this IDesigner designer, string stereotypeName)
+        {
+            return GetMappedServiceProxyEnumModels(designer, [stereotypeName]);
         }
 
         public static IReadOnlyCollection<EnumModel> GetMappedServiceProxyEnumModels(this IDesigner designer, IReadOnlyCollection<string> stereotypeNames)
