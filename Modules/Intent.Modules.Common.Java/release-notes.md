@@ -1,3 +1,7 @@
+### Version 4.0.0
+
+- Improvement: Refactored code to use separately installable `Intent.Code.Weaving.Html` module removing need for a "private" NuGet package.
+
 ### Version 3.4.7
 
 - Improvement: Java Weaver updated to support Java 17 syntax (includes support now for `"""` text block quotes).
