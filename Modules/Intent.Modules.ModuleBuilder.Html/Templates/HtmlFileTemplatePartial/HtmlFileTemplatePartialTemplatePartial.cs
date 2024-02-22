@@ -57,9 +57,15 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
                 templateType: "Html Template",
                 role: GetRole(),
                 location: Model.GetLocation()));
+
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Html",
-                moduleVersion: "3.3.0"));
+                moduleVersion: "4.0.0-pre.0"));
+
+            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                moduleId: "Intent.Code.Weaving.Html",
+                moduleVersion: "1.0.0"));
+
             if (Model.GetModelType() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
