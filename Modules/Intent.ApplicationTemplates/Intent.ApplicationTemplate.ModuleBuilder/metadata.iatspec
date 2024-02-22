@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <applicationTemplate>
   <id>Intent.ApplicationTemplate.ModuleBuilder</id>
-  <version>3.3.56</version>
+  <version>3.3.57</version>
   <supportedClientVersions>[4.1.0, 5.0.0-a)</supportedClientVersions>
   <displayName>Intent Module Builder</displayName>
   <shortDescription>Create an Intent Module to automate patterns &amp; code-structures specific to your project and technologies.</shortDescription>
@@ -187,9 +187,8 @@
           <defaultValue>16d99e3e-7b91-42f8-ae3b-2686edde94b7</defaultValue>
           <isRequired>true</isRequired>
           <options>
+            <option value="f8b1618d-1e64-4c2c-9787-e0725c3633a1" description=".NET 8.0" />
             <option value="16d99e3e-7b91-42f8-ae3b-2686edde94b7" description=".NET 6.0" />
-            <option value="9880b776-9b13-4ff6-87b3-2219cfa66652" description=".NET 5.0" />
-            <option value="d603dbfd-3361-4406-b5c0-efc2ac6f33fc" description=".NET Core 3.1" />
           </options>
         </setting>
       </settings>

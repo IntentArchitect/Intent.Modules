@@ -39,39 +39,25 @@
       </stereotypes>
       <metadata />
       <childElements>
+        <childElement id="119ebfda-307e-4c41-ae77-9b738c37308a" type="Application Template Settings Field Option" typeId="7194651e-45da-4a0c-b1ab-0351a5c08fc8">
+          <name>.NET 8.0</name>
+          <display>.NET 8.0</display>
+          <isAbstract>false</isAbstract>
+          <value>f8b1618d-1e64-4c2c-9787-e0725c3633a1</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>98a19e0c-acea-4c80-bad8-dfa03bb93fa5</parentFolderId>
+          <packageId>1edb3b6a-4388-43e1-aebd-f51dc1039e69</packageId>
+          <packageName>Intent.ApplicationTemplate.ModuleBuilder</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="19e4a801-a0d8-4a7a-b4d7-32cb121ff138" type="Application Template Settings Field Option" typeId="7194651e-45da-4a0c-b1ab-0351a5c08fc8">
           <name>.NET 6.0</name>
           <display>.NET 6.0</display>
           <isAbstract>false</isAbstract>
           <value>16d99e3e-7b91-42f8-ae3b-2686edde94b7</value>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>98a19e0c-acea-4c80-bad8-dfa03bb93fa5</parentFolderId>
-          <packageId>1edb3b6a-4388-43e1-aebd-f51dc1039e69</packageId>
-          <packageName>Intent.ApplicationTemplate.ModuleBuilder</packageName>
-          <stereotypes />
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="b471d451-e4ff-46fc-9287-6c378710b642" type="Application Template Settings Field Option" typeId="7194651e-45da-4a0c-b1ab-0351a5c08fc8">
-          <name>.NET 5.0</name>
-          <display>.NET 5.0</display>
-          <isAbstract>false</isAbstract>
-          <value>9880b776-9b13-4ff6-87b3-2219cfa66652</value>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>98a19e0c-acea-4c80-bad8-dfa03bb93fa5</parentFolderId>
-          <packageId>1edb3b6a-4388-43e1-aebd-f51dc1039e69</packageId>
-          <packageName>Intent.ApplicationTemplate.ModuleBuilder</packageName>
-          <stereotypes />
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="a3958af4-cead-4d19-bd18-bdecc3fd0a2c" type="Application Template Settings Field Option" typeId="7194651e-45da-4a0c-b1ab-0351a5c08fc8">
-          <name>.NET Core 3.1</name>
-          <display>.NET Core 3.1</display>
-          <isAbstract>false</isAbstract>
-          <value>d603dbfd-3361-4406-b5c0-efc2ac6f33fc</value>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>98a19e0c-acea-4c80-bad8-dfa03bb93fa5</parentFolderId>
