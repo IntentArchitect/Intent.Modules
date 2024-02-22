@@ -96,9 +96,9 @@ return element.hasStereotype(httpSettingsId);</filterFunction>
                         <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <filterFunction>const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-const massTransitConsumer = "b37b2302-97f4-4bc0-b3ad-bc04894c305a";
+const messageRequestEndpoint = "b37b2302-97f4-4bc0-b3ad-bc04894c305a";
 
-return element.hasStereotype(httpSettingsId) || element.hasStereotype(massTransitConsumer);</filterFunction>
+return element.hasStereotype(httpSettingsId) || element.hasStereotype(messageRequestEndpoint);</filterFunction>
                       </criteria>
                       <mapTo specializationType="Operation" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
@@ -110,9 +110,9 @@ return element.hasStereotype(httpSettingsId) || element.hasStereotype(massTransi
                         <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <filterFunction>const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-const massTransitConsumer = "b37b2302-97f4-4bc0-b3ad-bc04894c305a";
+const messageRequestEndpoint = "b37b2302-97f4-4bc0-b3ad-bc04894c305a";
 
-return element.hasStereotype(httpSettingsId) || element.hasStereotype(massTransitConsumer);</filterFunction>
+return element.hasStereotype(httpSettingsId) || element.hasStereotype(messageRequestEndpoint);</filterFunction>
                       </criteria>
                       <mapTo specializationType="Operation" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
