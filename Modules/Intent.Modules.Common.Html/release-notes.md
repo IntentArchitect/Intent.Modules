@@ -1,3 +1,7 @@
+### Version 4.0.0
+
+- Improvement: Refactored code to use separately installable `Intent.Code.Weaving.Html` removing need for a "private" NuGet package.
+
 ### Version 3.3.7
 
 - Updated dependency.
