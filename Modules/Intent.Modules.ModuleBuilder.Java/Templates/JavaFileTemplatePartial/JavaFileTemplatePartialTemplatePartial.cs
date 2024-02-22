@@ -56,7 +56,10 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Java",
-                moduleVersion: "3.4.3"));
+                moduleVersion: "4.0.0-pre.0"));
+            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                moduleId: "Intent.Code.Weaving.Java",
+                moduleVersion: "1.0.0"));
             if (Model.GetModelType() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
