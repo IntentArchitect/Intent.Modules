@@ -25,6 +25,6 @@
     <install src="modelers/User Interface.designer.config" externalReference="c3272f56-ac56-4ac1-a9d6-bcb8cd73eec2" />
     <install src="modelers/User Interface Core Types.designer.settings" externalReference="444f582b-b875-4c72-9671-697b47fa367c" />
     <install target="User Interface" src="Intent.Metadata/Module Builder/Intent.Modelers.UI/Intent.Modelers.UI.pkg.config" externalReference="5c4628ec-679e-4f3d-afda-137c978deae0" />
-    <install target="User Interface" src="Intent.Metadata/User Interface/Basic UI Components/Basic UI Components.pkg.config" />
+    <install src="modelers/Common UI Components.designer.settings" externalReference="3cd798f0-8cdf-42a4-b733-469632a86f27" />
   </metadata>
 </package>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Form</name>
+  <display>Form</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>3cd798f0-8cdf-42a4-b733-469632a86f27</parentFolderId>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iRW52ZWxvcGUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnIGlkPSJfeDNDX0VudmVsb3BlX3gzRV8iPg0KCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjQuOTc1NSIgeTE9IjIuODc2MyIgeDI9IjI1LjAxNjQiIHkyPSI0Ny44NDU4Ij4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzY0Q0NFRiIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNDA2QUIzIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZD0iTTM4LjUsOC43djM1LjRIMTEuNlY2aDI0LjFsLTMuNS0zLjVIOC4xdjQ1aDMzLjhWMTIuMUwzOC41LDguN3oiLz4NCjwvZz4NCjxnIGlkPSJfeDNDX0VudmVsb3BlX3gzRV9fMDAwMDAxNTI5Njk1NTAwMjU3NTk1NjA4MjAwMDAwMDg1MDI0OTA0NjYyODQ2NjU3NTlfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0JvcmRlcl94M0VfXzAwMDAwMTU0NDAzMTk1MTU0NTM5NDU5MzkwMDAwMDE1NTk3OTg0NDU5OTYxMjEzMDg1XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSI3Mi42OTkxIiB5MT0iNTkuOTE0OCIgeDI9IjgyLjM2NSIgeTI9IjU5Ljk3NjIiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoLTYuMTIzMjM0ZS0xNyAxIC0xIC02LjEyMzIzNGUtMTcgOTYuOTk5MiAtNzAuMDE4OSkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNjRDQ0VGIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19Cb3JkZXJfeDNFX18wMDAwMDEwMzIzOTg0MDc5MzQzNDMzMDU2MDAwMDAwNTI1NzQwNTMxMDI4MTA4Njg4Nl8iIGZpbGw9InVybCgjX3gzQ19Cb3JkZXJfeDNFX18wMDAwMDE1NDQwMzE5NTE1NDUzOTQ1OTM5MDAwMDAxNTU5Nzk4NDQ1OTk2MTIxMzA4NV8pIiBkPSINCgkJTTM4LjUsOC43TDM1LjcsNmwtMy41LTMuNXY5LjZoOS43TDM4LjUsOC43eiIvPg0KPC9nPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDExMTg4NDY5MDI5ODIxNzI4NzI2MDAwMDAxNjE5MzgyODQxNzU2NTYyMDE1Ml8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzYuNDkiIHkxPSIyLjUiIHgyPSIzNi40OSIgeTI9IjIuNSI+DQoJPHN0b3AgIG9mZnNldD0iNS42OTUxOTNlLTAyIiBzdHlsZT0ic3RvcC1jb2xvcjojNDA2QUIzIi8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzY0Q0NFRiIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAxMTE4ODQ2OTAyOTgyMTcyODcyNjAwMDAwMTYxOTM4Mjg0MTc1NjU2MjAxNTJfKSIgZD0iTTM2LjUsMi41Ii8+DQo8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMTQyODgxNDc4MzczODYxNzMzMDYwMDAwMDE1ODIzNjk3MjEwMDI0NDA2Njc3XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIxOS4zMTYxIiB5MT0iMjUuMDI1NCIgeDI9IjE5LjMxOTMiIHkyPSIyOC41MzA5Ij4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNjRDQ0VGIi8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzQwNkFCMyIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxyZWN0IHg9IjEzLjYiIHk9IjI1IiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTQyODgxNDc4MzczODYxNzMzMDYwMDAwMDE1ODIzNjk3MjEwMDI0NDA2Njc3XykiIHdpZHRoPSIxMS40IiBoZWlnaHQ9IjMuNSIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDE0OTM1ODM2Nzc4NDc4Njk2MjQ4MDAwMDAxNzc5NzI4MjUyMjg1ODg0MTUyMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjQuOTk4NCIgeTE9IjMxLjczNzciIHgyPSIyNS4wMDE2IiB5Mj0iMzUuMjUzNiI+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzY0Q0NFRiIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cmVjdCB4PSIxMy42IiB5PSIzMS43IiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTQ5MzU4MzY3Nzg0Nzg2OTYyNDgwMDAwMDE3Nzk3MjgyNTIyODU4ODQxNTIxXykiIHdpZHRoPSIyMi43IiBoZWlnaHQ9IjMuNSIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDE3OTYxNjY3NzkyMTAwNzE1MjIyMDAwMDAxMzkzNDM0MDY5MjYwNzQ3ODQwOV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjQuOTk4NCIgeTE9IjM4LjQ1NTEiIHgyPSIyNS4wMDE2IiB5Mj0iNDEuOTcxIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNjRDQ0VGIi8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzQwNkFCMyIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxyZWN0IHg9IjEzLjYiIHk9IjM4LjQiIGZpbGw9InVybCgjU1ZHSURfMDAwMDAxNzk2MTY2Nzc5MjEwMDcxNTIyMjAwMDAwMTM5MzQzNDA2OTI2MDc0Nzg0MDlfKSIgd2lkdGg9IjIyLjciIGhlaWdodD0iMy41Ii8+DQo8L3N2Zz4NCg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="By type then name" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="b407aace-ad14-484e-ac93-4762a3d182d8" name="@Component">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Modelers.UI</definitionPackageName>
+      <definitionPackageId>5c4628ec-679e-4f3d-afda-137c978deae0</definitionPackageId>
+      <properties />
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="3d73144b-24e2-4b8c-8763-1a2e1d68322c" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="4e6f6345-97db-40e3-b6ad-e0f7158b1042" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="36a94134-d795-4d2c-b8c8-e8bd23f93abd" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Changed</name>
+          <display>On Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="61580110-dc23-49be-80da-61fd0556ed6d">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>4e6f6345-97db-40e3-b6ad-e0f7158b1042</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const containerId = &quot;b97ea181-2462-431f-8f62-f90f79509b9e&quot;;&#xD;&#xA;&#xD;&#xA;let existingHeader = element.getChildren(containerId).filter(x =&gt; x.getName() == &quot;Header&quot;)[0];&#xD;&#xA;if (element.getStereotype(&quot;727ebe78-b982-45e4-977b-33a7f5b9d1c1&quot;).getProperty(&quot;4ace9db8-cdae-4e20-a60b-497aa905a372&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    existingHeader = existingHeader ?? createElement(containerId, &quot;Header&quot;, element.id);&#xD;&#xA;    existingHeader.setOrder(0);&#xD;&#xA;} else {&#xD;&#xA;    existingHeader?.delete();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let existingBody = element.getChildren(containerId).filter(x =&gt; x.getName() == &quot;Body&quot;)[0];&#xD;&#xA;if (element.getStereotype(&quot;727ebe78-b982-45e4-977b-33a7f5b9d1c1&quot;).getProperty(&quot;820e5bfe-d233-4767-8532-771ccc125919&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    existingBody = existingBody ?? createElement(containerId, &quot;Body&quot;, element.id);&#xD;&#xA;    existingBody.setOrder(1);&#xD;&#xA;} else {&#xD;&#xA;    existingBody?.delete();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let existingFooter = element.getChildren(containerId).filter(x =&gt; x.getName() == &quot;Footer&quot;)[0];&#xD;&#xA;if (element.getStereotype(&quot;727ebe78-b982-45e4-977b-33a7f5b9d1c1&quot;).getProperty(&quot;83d45738-ee3a-4e53-88b9-01cabd74cc4d&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    existingFooter = existingFooter ?? createElement(containerId, &quot;Footer&quot;, element.id);&#xD;&#xA;    existingFooter.setOrder(2);&#xD;&#xA;} else {&#xD;&#xA;    existingFooter?.delete();&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="4a9e6f1e-cd87-42e3-94df-7b51e30cd201" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="c8cf6f05-5039-49ea-a50c-3cf3a6e4ff91">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>4e6f6345-97db-40e3-b6ad-e0f7158b1042</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getStereotype(&quot;727ebe78-b982-45e4-977b-33a7f5b9d1c1&quot;).getProperty(&quot;4ace9db8-cdae-4e20-a60b-497aa905a372&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    createElement(&quot;Section&quot;, &quot;Header&quot;, element.id);&#xD;&#xA;}&#xD;&#xA;if (element.getStereotype(&quot;727ebe78-b982-45e4-977b-33a7f5b9d1c1&quot;).getProperty(&quot;820e5bfe-d233-4767-8532-771ccc125919&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    createElement(&quot;Section&quot;, &quot;Body&quot;, element.id);&#xD;&#xA;}&#xD;&#xA;if (element.getStereotype(&quot;727ebe78-b982-45e4-977b-33a7f5b9d1c1&quot;).getProperty(&quot;83d45738-ee3a-4e53-88b9-01cabd74cc4d&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    createElement(&quot;Section&quot;, &quot;Footer&quot;, element.id);&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

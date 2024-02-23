@@ -1262,6 +1262,10 @@ return result;
         </mappableElement>
       </mappableElementSettings>
     </mappableElementPackage>
+    <mappableElementPackage id="49bab9da-eb9b-4e17-a0bd-92e567c21e88" name="DTO Mappables">
+      <imports />
+      <mappableElementSettings />
+    </mappableElementPackage>
   </mappableElementPackages>
   <mappableElementPackageExtensions />
 </settings>

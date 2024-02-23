@@ -26,10 +26,177 @@
     </packageExtension>
   </packageExtensions>
   <elementSettings />
-  <elementExtensions />
+  <elementExtensions>
+    <elementExtension type="Service Proxy" typeId="07d8d1a9-6b9f-4676-b7d3-8db06299e35c">
+      <mappingSettings />
+      <macros>
+        <macro trigger="on-changed">
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function GetParameters(targetService) {
+    let httpSettings = targetService.getStereotype("Http Settings");
+    if (!httpSettings) {
+        console.warn(`Could not process '${targetService.getName()}': Http Settings not found`);
+        return [];
+    }
+    var isForCqrs = targetService.specialization == "Query" || targetService.specialization == "Command";
+    var verbAllowsBody = ["PUT", "PATCH", "POST"].some(x =&gt; x == httpSettings.getProperty("Verb").getValue());
+    var requiresBody = false;
+    let result = [];
+    targetService.getChildren("Parameter").concat(targetService.getChildren("DTO-Field")).forEach(childElement =&gt; {
+        var parameterSettings = childElement.getStereotype("d01df110-1208-4af8-a913-92a49d219552"); // "Paremeter Settings"
+        var routeContainsParameter = httpSettings.getProperty("Route").getValue().toString().toLowerCase().indexOf(`{${childElement.getName().toLowerCase()}}`) != -1;
+        if (isForCqrs &amp;&amp; !parameterSettings &amp;&amp; !routeContainsParameter &amp;&amp; verbAllowsBody) {
+            requiresBody = true;
+            return;
+        }
+        result.push({
+            id: childElement.id,
+            name: toCamelCase(childElement.getName()),
+            typeId: childElement.typeReference.getTypeId(),
+            isNullable: childElement.typeReference.getIsNullable(),
+            isCollection: childElement.typeReference.getIsCollection(),
+        });
+    });
+    if (isForCqrs &amp;&amp; requiresBody) {
+        result.push({
+            id: targetService.id,
+            name: targetService.specialization.toLowerCase(),
+            typeId: targetService.id,
+            isNullable: false,
+            isCollection: false,
+        });
+    }
+    return result;
+}
+function execute(proxyElement) {
+    proxyElement.getChildren("Operation").forEach(operation =&gt; {
+        let targetService = operation.getMapping().getElement();
+        let params = GetParameters(targetService);
+        params.forEach((param, index) =&gt; {
+            let existing = operation.getChildren("Parameter").find(x =&gt; x.getMetadata("endpoint-input-id") == param.id);
+            if (!existing) {
+                existing = createElement("Parameter", param.name, operation.id);
+                operation.collapse();
+            }
+            existing.setName(param.name);
+            existing.setOrder(index);
+            existing.typeReference.setType(param.typeId);
+            existing.typeReference.setIsCollection(param.isCollection);
+            existing.typeReference.setIsNullable(param.isNullable);
+            existing.setMetadata("endpoint-input-id", param.id);
+        });
+        operation.getChildren("Parameter")
+            .filter(x =&gt; params.every(p =&gt; p.id != x.getMetadata("endpoint-input-id")))
+            .forEach(x =&gt; x.delete());
+    });
+}
+/**
+ * Used by Intent.Modules\Modules\Intent.Modelers.Types.ServiceProxies
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/service-proxies/manage-parameters/service-proxies-manage-parameters.ts
+ */
+if (element.specialization == "Service Proxy") {
+    execute(element);
+}
+else {
+    lookupTypesOf("Service Proxy").forEach(x =&gt; execute(x));
+}
+</script>
+        </macro>
+      </macros>
+    </elementExtension>
+  </elementExtensions>
   <associationSettings />
-  <associationExtensions />
+  <associationExtensions>
+    <associationExtension type="Call Service Operation Action" typeId="fe5a5cd8-aabd-472f-8d42-f5c233e658dc">
+      <sourceEndExtension>
+        <typeOrder />
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes />
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </sourceEndExtension>
+      <targetEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>Operation</type>
+          </targetTypes>
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </targetEndExtension>
+      <macros />
+    </associationExtension>
+  </associationExtensions>
   <mappingSettings />
   <mappableElementPackages />
-  <mappableElementPackageExtensions />
+  <mappableElementPackageExtensions>
+    <mappableElementPackageExtension id="cd5df4be-78ba-4262-a5d2-1ca5d53f6f9c" name="Call Service Targets - Proxies" extendPackageId="80e250fa-91d8-4bb9-95b8-e9b355bf6720" extendPackage="Call Service Targets">
+      <imports />
+      <mappableElementSettings>
+        <mappableElement id="f18ae1b5-eeda-48ae-83b0-64b12fd331a2" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="bebd723b-8592-4540-9edd-fa54e1be4d78" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>f18ae1b5-eeda-48ae-83b0-64b12fd331a2</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+              <childSettings />
+            </childSetting>
+            <childSetting id="36c63ac0-fd8a-485e-9798-bbf3a4551060" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>f18ae1b5-eeda-48ae-83b0-64b12fd331a2</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="f0078741-2b1a-4103-bbc7-2737aa05b0cc" name="Service Proxy Operation" type="Operation" typeId="aee6811e-b2f6-4562-a8eb-502029f63bc8">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="3fc9e92a-7af5-4d45-9cb6-581a406476b4" name="Parameter" type="Parameter" typeId="f11273c1-217f-4f42-b690-3d8b488f95a8">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>f18ae1b5-eeda-48ae-83b0-64b12fd331a2</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackageExtension>
+  </mappableElementPackageExtensions>
 </settings>

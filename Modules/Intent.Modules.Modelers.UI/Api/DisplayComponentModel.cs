@@ -40,11 +40,6 @@ namespace Intent.Modelers.UI.Api
 
         public IElement InternalElement => _element;
 
-        public IList<DisplayComponentModel> Components => _element.ChildElements
-            .GetElementsOfType(DisplayComponentModel.SpecializationTypeId)
-            .Select(x => new DisplayComponentModel(x))
-            .ToList();
-
         public override string ToString()
         {
             return _element.ToString();

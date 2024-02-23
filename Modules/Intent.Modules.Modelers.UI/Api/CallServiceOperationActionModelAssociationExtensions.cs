@@ -27,14 +27,5 @@ namespace Intent.Modelers.UI.Api
                 .ToList();
         }
 
-        [IntentManaged(Mode.Fully)]
-        public static IList<CallServiceOperationActionSourceEndModel> CallServiceOperationActionSources(this ServiceModel model)
-        {
-            return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == CallServiceOperationActionModel.SpecializationType && x.IsSourceEnd())
-                .Select(x => CallServiceOperationActionModel.CreateFromEnd(x).SourceEnd)
-                .ToList();
-        }
-
     }
 }

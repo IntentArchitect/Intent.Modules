@@ -66,6 +66,11 @@ namespace Intent.Modelers.UI.Api
             .Select(x => new ModelDefinitionModel(x))
             .ToList();
 
+        public IList<ComponentModel> ChildComponents => _element.ChildElements
+            .GetElementsOfType(ComponentModel.SpecializationTypeId)
+            .Select(x => new ComponentModel(x))
+            .ToList();
+
         public override string ToString()
         {
             return _element.ToString();

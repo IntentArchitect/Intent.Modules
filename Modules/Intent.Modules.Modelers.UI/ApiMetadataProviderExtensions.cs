@@ -11,10 +11,30 @@ namespace Intent.Modelers.UI.Api
 {
     public static class ApiMetadataProviderExtensions
     {
+        public static IList<CheckboxModel> GetCheckboxModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(CheckboxModel.SpecializationTypeId)
+                .Select(x => new CheckboxModel(x))
+                .ToList();
+        }
         public static IList<ComponentModel> GetComponentModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(ComponentModel.SpecializationTypeId)
                 .Select(x => new ComponentModel(x))
+                .ToList();
+        }
+
+        public static IList<ContainerModel> GetContainerModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(ContainerModel.SpecializationTypeId)
+                .Select(x => new ContainerModel(x))
+                .ToList();
+        }
+
+        public static IList<FormModel> GetFormModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(FormModel.SpecializationTypeId)
+                .Select(x => new FormModel(x))
                 .ToList();
         }
 
@@ -25,10 +45,24 @@ namespace Intent.Modelers.UI.Api
                 .ToList();
         }
 
-        public static IList<ServiceModel> GetServiceModels(this IDesigner designer)
+        public static IList<TableModel> GetTableModels(this IDesigner designer)
         {
-            return designer.GetElementsOfType(ServiceModel.SpecializationTypeId)
-                .Select(x => new ServiceModel(x))
+            return designer.GetElementsOfType(TableModel.SpecializationTypeId)
+                .Select(x => new TableModel(x))
+                .ToList();
+        }
+
+        public static IList<TextModel> GetTextModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(TextModel.SpecializationTypeId)
+                .Select(x => new TextModel(x))
+                .ToList();
+        }
+
+        public static IList<TextInputModel> GetTextInputModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(TextInputModel.SpecializationTypeId)
+                .Select(x => new TextInputModel(x))
                 .ToList();
         }
 

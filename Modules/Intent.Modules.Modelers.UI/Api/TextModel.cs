@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ParameterModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    public class TextModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Parameter";
-        public const string SpecializationTypeId = "c0f79407-3da3-446c-8e49-0596fb0b7cc2";
+        public const string SpecializationType = "Text";
+        public const string SpecializationTypeId = "922150d2-42e6-4805-a002-f9580cdf7f6f";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public ParameterModel(IElement element, string requiredType = SpecializationType)
+        public TextModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -37,9 +37,6 @@ namespace Intent.Modelers.UI.Api
 
         public string Value => _element.Value;
 
-        public ITypeReference TypeReference => _element.TypeReference;
-
-
         public IElement InternalElement => _element;
 
         public override string ToString()
@@ -47,7 +44,7 @@ namespace Intent.Modelers.UI.Api
             return _element.ToString();
         }
 
-        public bool Equals(ParameterModel other)
+        public bool Equals(TextModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -57,7 +54,7 @@ namespace Intent.Modelers.UI.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ParameterModel)obj);
+            return Equals((TextModel)obj);
         }
 
         public override int GetHashCode()
@@ -67,17 +64,17 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ParameterModelExtensions
+    public static class TextModelExtensions
     {
 
-        public static bool IsParameterModel(this ICanBeReferencedType type)
+        public static bool IsTextModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ParameterModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == TextModel.SpecializationTypeId;
         }
 
-        public static ParameterModel AsParameterModel(this ICanBeReferencedType type)
+        public static TextModel AsTextModel(this ICanBeReferencedType type)
         {
-            return type.IsParameterModel() ? new ParameterModel((IElement)type) : null;
+            return type.IsTextModel() ? new TextModel((IElement)type) : null;
         }
     }
 }

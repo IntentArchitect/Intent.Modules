@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ServiceModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class ContainerModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Service";
-        public const string SpecializationTypeId = "f5b24d76-cd89-4733-b62d-f2c5d4a8ea66";
+        public const string SpecializationType = "Container";
+        public const string SpecializationTypeId = "b97ea181-2462-431f-8f62-f90f79509b9e";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public ServiceModel(IElement element, string requiredType = SpecializationType)
+        public ContainerModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -37,17 +37,12 @@ namespace Intent.Modelers.UI.Api
 
         public IElement InternalElement => _element;
 
-        public IList<OperationModel> Operations => _element.ChildElements
-            .GetElementsOfType(OperationModel.SpecializationTypeId)
-            .Select(x => new OperationModel(x))
-            .ToList();
-
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(ServiceModel other)
+        public bool Equals(ContainerModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -57,7 +52,7 @@ namespace Intent.Modelers.UI.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ServiceModel)obj);
+            return Equals((ContainerModel)obj);
         }
 
         public override int GetHashCode()
@@ -67,17 +62,17 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ServiceModelExtensions
+    public static class ContainerModelExtensions
     {
 
-        public static bool IsServiceModel(this ICanBeReferencedType type)
+        public static bool IsContainerModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ServiceModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == ContainerModel.SpecializationTypeId;
         }
 
-        public static ServiceModel AsServiceModel(this ICanBeReferencedType type)
+        public static ContainerModel AsContainerModel(this ICanBeReferencedType type)
         {
-            return type.IsServiceModel() ? new ServiceModel((IElement)type) : null;
+            return type.IsContainerModel() ? new ContainerModel((IElement)type) : null;
         }
     }
 }

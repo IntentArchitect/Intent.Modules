@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="2d5a04c9-1be1-456c-b557-49b3cdeec2f6" version="3.1.0">
+  <name>Appearance</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="b97ea181-2462-431f-8f62-f90f79509b9e">Container</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>5c4628ec-679e-4f3d-afda-137c978deae0</parentFolderId>
+  <order>0</order>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <properties />
+</stereotypeDefinition>

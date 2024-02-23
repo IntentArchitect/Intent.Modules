@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class OperationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    public class ColumnModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Operation";
-        public const string SpecializationTypeId = "8379e759-b247-4c32-b75a-e5db20b80524";
+        public const string SpecializationType = "Column";
+        public const string SpecializationTypeId = "d372c640-e649-4e67-84a8-4446f45288db";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public OperationModel(IElement element, string requiredType = SpecializationType)
+        public ColumnModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -35,25 +35,14 @@ namespace Intent.Modelers.UI.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
-
-        public ITypeReference TypeReference => _element.TypeReference;
-
-        public ITypeReference ReturnType => TypeReference?.Element != null ? TypeReference : null;
-
         public IElement InternalElement => _element;
-
-        public IList<ParameterModel> Parameters => _element.ChildElements
-            .GetElementsOfType(ParameterModel.SpecializationTypeId)
-            .Select(x => new ParameterModel(x))
-            .ToList();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(OperationModel other)
+        public bool Equals(ColumnModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -63,7 +52,7 @@ namespace Intent.Modelers.UI.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((OperationModel)obj);
+            return Equals((ColumnModel)obj);
         }
 
         public override int GetHashCode()
@@ -73,17 +62,17 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class OperationModelExtensions
+    public static class ColumnModelExtensions
     {
 
-        public static bool IsOperationModel(this ICanBeReferencedType type)
+        public static bool IsColumnModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == OperationModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == ColumnModel.SpecializationTypeId;
         }
 
-        public static OperationModel AsOperationModel(this ICanBeReferencedType type)
+        public static ColumnModel AsColumnModel(this ICanBeReferencedType type)
         {
-            return type.IsOperationModel() ? new OperationModel((IElement)type) : null;
+            return type.IsColumnModel() ? new ColumnModel((IElement)type) : null;
         }
     }
 }
