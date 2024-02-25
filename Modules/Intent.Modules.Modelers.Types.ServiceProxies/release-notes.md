@@ -1,4 +1,8 @@
-﻿### Version 5.2.2
+﻿### Version 5.2.3
+
+- Improvement: Enabled support for an additional endpoint type: `Message Triggered`.
+
+### Version 5.2.2
 
 - Improvement: Moved auto-management of proxy parameters to the "Service Proxies" modeler.
 

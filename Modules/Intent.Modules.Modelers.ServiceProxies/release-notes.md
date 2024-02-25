@@ -1,4 +1,8 @@
-﻿### Version 5.0.2
+﻿### Version 5.0.3
+
+- Improvement: Updated dependencies to latest.
+
+### Version 5.0.2
 
 - Improvement: Moved auto-management of proxy parameters to the "Service Proxies" modeler.
 
