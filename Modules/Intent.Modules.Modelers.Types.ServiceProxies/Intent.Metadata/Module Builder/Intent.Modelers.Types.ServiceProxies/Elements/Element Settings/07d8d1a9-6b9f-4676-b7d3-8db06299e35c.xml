@@ -35,7 +35,7 @@
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
-        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="let mappedService = getMapping()?.getElement();&#xD;&#xA;&#xD;&#xA;if (!mappedService) {&#xD;&#xA;    return &quot;&quot;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;const messageTriggered = &quot;5150384d-18a3-4c7e-a716-599e6658abde&quot;;&#xD;&#xA;&#xD;&#xA;let detectedEndpointTypes = getChildren(&quot;Operation&quot;)&#xD;&#xA;    .map(op =&gt; {&#xD;&#xA;        let mappedOp = op.getMapping()?.getElement();&#xD;&#xA;        if (!mappedOp) {&#xD;&#xA;            return null;&#xD;&#xA;        }&#xD;&#xA;        if (mappedOp.getStereotype(httpSettingsId)) {&#xD;&#xA;            return mappedOp.getStereotype(httpSettingsId).name;&#xD;&#xA;        }&#xD;&#xA;        if (mappedOp.getStereotype(messageTriggered)) {&#xD;&#xA;            return mappedOp.getStereotype(messageTriggered).name;&#xD;&#xA;        }&#xD;&#xA;        return null;&#xD;&#xA;    })&#xD;&#xA;    .filter(op =&gt; op != null);&#xD;&#xA;&#xD;&#xA;let distinctDetectedEndpointTypes = [...new Set(detectedEndpointTypes)];&#xD;&#xA;&#xD;&#xA;if (distinctDetectedEndpointTypes.length &lt; 2) {&#xD;&#xA;    return &quot;&quot;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return `Multiple endpoint types detected, a Service Proxy may only target one type of endpoint. Endpoint types found: [${distinctDetectedEndpointTypes.join(&quot;, &quot;)}]`;" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
@@ -216,7 +216,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
-                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;return element.hasStereotype(httpSettingsId)" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;return element.hasStereotype(httpSettingsId);" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -350,7 +350,7 @@
                         <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                         <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                         <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
-                        <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;&#xD;&#xA;return element.hasStereotype(httpSettingsId)" isActive="true" />
+                        <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;const messageTriggered = &quot;5150384d-18a3-4c7e-a716-599e6658abde&quot;;&#xD;&#xA;&#xD;&#xA;return element.hasStereotype(httpSettingsId) || element.hasStereotype(messageTriggered);" isActive="true" />
                       </properties>
                     </stereotype>
                   </stereotypes>
@@ -394,7 +394,7 @@
                         <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                         <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                         <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
-                        <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;return element.hasStereotype(httpSettingsId)" isActive="true" />
+                        <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;const messageTriggered = &quot;5150384d-18a3-4c7e-a716-599e6658abde&quot;;&#xD;&#xA;&#xD;&#xA;return element.hasStereotype(httpSettingsId) || element.hasStereotype(messageTriggered);" isActive="true" />
                       </properties>
                     </stereotype>
                   </stereotypes>
