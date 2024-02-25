@@ -9,6 +9,7 @@ class ImodSpecInfo {
     [Boolean]$IsObsolete
     [Dependency[]]$Dependencies
     [string]$ReleaseNotes
+    [string]$Tags
 
     ImodSpecInfo([string]$filePath, [xml]$content) {
         $this.FilePath = $filePath
@@ -21,6 +22,7 @@ class ImodSpecInfo {
         $this.IsObsolete = $this.Description.ToLower().Contains("obsolete")
         $this.Dependencies = $content.package.dependencies.dependency | Where-Object { $null -ne $_.Id } | ForEach-Object { [Dependency]::new($_.id, $_.version) }
         $this.ReleaseNotes = $content.package.releaseNotes
+        $this.Tags = $content.package.tags
     }
 }
 
@@ -73,7 +75,44 @@ class VersionInfo {
     }
 }
 
+function PrintError {
+    param (
+        [string]$Message,
+        [Boolean]$DevOps
+    )
+    if ($DevOps) {
+        Write-Host "##vso[task.logissue type=error;]$($Message)"
+    } else {
+        Write-Host "$($Message)" -ForegroundColor Red
+    }
+}
+
+function PrintWarning {
+    param (
+        [string]$Message,
+        [Boolean]$DevOps
+    )
+    if ($DevOps) {
+        Write-Host "##vso[task.logissue type=warning;]$($Message)"
+    } else {
+        Write-Host "$($Message)" -ForegroundColor DarkYellow
+    }
+}
+
+function PrintAffectedFileName {
+    param (
+        [string]$Name,
+        [Boolean]$DevOps
+    )
+    if ($DevOps) {
+        Write-Host "##[section]$($Name)"
+    } else {
+        Write-Host "# $($Name)" -ForegroundColor Green
+    }
+}
+
 $projectName = $args[0]
+$DevOps = [bool]$args[1]
 $imodSpecInfos = New-Object 'System.Collections.Generic.Dictionary[string, ImodSpecInfo]'
 $global:hasError = $false
 
@@ -89,7 +128,7 @@ Get-ChildItem -Path Modules -Filter *.imodspec -Recurse -Depth 2 | ForEach-Objec
 
     $spec = [ImodSpecInfo]::new($_.FullName, $content)
     if ($imodSpecInfos.ContainsKey($spec.Id)) {
-        Write-Host "There is a duplicate Module Id found: $($spec.Id)"
+        PrintError "There is a duplicate Module Id found: $($spec.Id)" $DevOps
         Write-Host "  - $($file)"
         Write-Host "  - $($imodSpecInfos[$spec.Id].FilePath)"
         $global:hasError = $true
@@ -164,18 +203,38 @@ $validationRules = @{
     }
 }
 
+$validationWarnings = @{
+    Tags = {
+        param([ImodSpecInfo]$info)
+        if (-not [System.String]::IsNullOrWhiteSpace($info.Tags)) {
+            return "No tags specified"
+        }
+    }
+}
+
 foreach ($info in $imodSpecInfos.Values) {
     $reportedFileName = $false
 
-    foreach ($rule in $validationRules.GetEnumerator()) {
-        $result = & $rule.Value $info
+    foreach ($validation in $validationRules.GetEnumerator()) {
+        $result = & $validation.Value $info
         if ($result) {
             if (-not $reportedFileName) {
-                Write-Host "# $($info.FilePath)"
+                PrintAffectedFileName "$($info.FilePath)" $DevOps
                 $reportedFileName = $true
             }
-            Write-Host "  - $($result)"
+            PrintError " - $($result)" $DevOps
             $global:hasError = $true
+        }
+    }
+
+    foreach ($validation in $validationWarnings.GetEnumerator()) {
+        $result = & $validation.Value $info
+        if ($result) {
+            if (-not $reportedFileName) {
+                PrintAffectedFileName "$($info.FilePath)" $DevOps
+                $reportedFileName = $true
+            }
+            PrintWarning " - $($result)" $DevOps
         }
     }
 }

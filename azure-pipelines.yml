@@ -54,7 +54,7 @@ steps:
   inputs:
     pwsh: true
     filePath: 'PipelineScripts/pre-build-validation.ps1'
-    arguments: '"Intent.Modules"'
+    arguments: '"Intent.Modules" true'
 
 # Required for entry in NuGet.Config that is generated as part of 'dotnet pack'.
 - task: NuGetAuthenticate@1
