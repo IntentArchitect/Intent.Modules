@@ -1,3 +1,7 @@
+### Version 3.6.0
+
+- Improvement: Updated additional icons. 
+
 ### Version 3.5.1
 
 - Improvement: Updated icons. 

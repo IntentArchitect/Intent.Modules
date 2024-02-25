@@ -1,4 +1,8 @@
-﻿### Version 3.6.0
+﻿### Version 3.7.0
+
+- Improvement: Updated icons.
+
+### Version 3.6.0
 
 - Improvement: Added support for [Syntax Highlighting introduced in Intent Architect 4.2](https://docs.intentarchitect.com/articles/release-notes/intent-architect-v4.2.html#syntax-highlighting-and-ctrl--click-navigation).
 
