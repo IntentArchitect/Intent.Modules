@@ -199,6 +199,15 @@ namespace Intent.Modules.Common.Java.Templates
             }
             return ImportType(fullyQualifiedType) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : "");
         }
+        
+        /// <inheritdoc />
+        public override string RunTemplate()
+        {
+            return WeaverProvider.InsertImportDirectives(
+                base.RunTemplate(), 
+                this.Package,
+                this.GetAll<IDeclareImports, string>(item => item.DeclareImports()).Where(import => !string.IsNullOrWhiteSpace(import)).Distinct().ToArray());
+        }
 
         /// <summary>
         /// Returns a string representation of the provided <paramref name="resolvedTypeInfo"/>,
