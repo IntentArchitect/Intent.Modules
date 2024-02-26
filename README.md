@@ -16,3 +16,12 @@ A module is a packaged collection patterns, software factory extensions, modeler
 ## Where can I get support?
 
 Please visit this [Github Repository](https://github.com/IntentSoftware/Support/issues) to ask questions, log bugs or request new features.
+
+## Contribution guide-lines
+
+When submitting contributions to this repository ensure that the following has been done:
+
+- The Module version has been updated according to the Semantic Versioning scheme.
+- The Module compiles and installs successfully.
+- Test cases have been added to the Tests Intent Architect solution.
+- Run the `run-validations.bat` to ensure that it passes our pre-build validation checks.
