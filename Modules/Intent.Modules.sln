@@ -48,7 +48,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Typ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.ServiceProxies", "Intent.Modules.Modelers.ServiceProxies\Intent.Modules.Modelers.ServiceProxies.csproj", "{817EC71F-A91D-4598-9A09-E05373EF4333}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.ApplicationTemplates", "Intent.ApplicationTemplates\Intent.ApplicationTemplates.csproj", "{45D36FA6-CF88-498B-9089-456EB751A331}"
+Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.ApplicationTemplates", "Intent.ApplicationTemplates\Intent.ApplicationTemplates.csproj", "{45D36FA6-CF88-498B-9089-456EB751A331}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application Templates", "Application Templates", "{CFF4E896-BD1F-4354-AAA8-8DB27FC8B102}"
 EndProject
@@ -116,23 +116,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilde
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Types.Tests", "Intent.Modules.Common.Types.Tests\Intent.Modules.Common.Types.Tests.csproj", "{0FA79695-9CB5-4A45-AE6D-3ADF13A0DCDA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Domain.Services", "Intent.Modules.Modelers.Domain.Services\Intent.Modules.Modelers.Domain.Services.csproj", "{A58BD37E-966F-49A4-A4A2-4A2245A9607A}"
+Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Domain.Services", "Intent.Modules.Modelers.Domain.Services\Intent.Modules.Modelers.Domain.Services.csproj", "{A58BD37E-966F-49A4-A4A2-4A2245A9607A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metadata", "Metadata", "{B7EEC0D7-6EF3-4512-AB35-9219432E62AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.DocumentDB", "Intent.Modules.Metadata.DocumentDB\Intent.Modules.Metadata.DocumentDB.csproj", "{3E1907E5-D07B-4803-9C2C-7C8904D02F00}"
+Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Metadata.DocumentDB", "Intent.Modules.Metadata.DocumentDB\Intent.Modules.Metadata.DocumentDB.csproj", "{3E1907E5-D07B-4803-9C2C-7C8904D02F00}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services.GraphQL", "Intent.Modules.Modelers.Services.GraphQL\Intent.Modules.Modelers.Services.GraphQL.csproj", "{7F93839B-96D1-493A-8ED8-D30B3F05A35E}"
+Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services.GraphQL", "Intent.Modules.Modelers.Services.GraphQL\Intent.Modules.Modelers.Services.GraphQL.csproj", "{7F93839B-96D1-493A-8ED8-D30B3F05A35E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services.DomainInteractions", "Intent.Modules.Modelers.Services.DomainInteractions\Intent.Modules.Modelers.Services.DomainInteractions.csproj", "{EAECF732-6A98-4D4F-9E18-02BD112C6E8E}"
+Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services.DomainInteractions", "Intent.Modules.Modelers.Services.DomainInteractions\Intent.Modules.Modelers.Services.DomainInteractions.csproj", "{EAECF732-6A98-4D4F-9E18-02BD112C6E8E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services.EventInteractions", "Intent.Modules.Modelers.Services.EventInteractions\Intent.Modules.Modelers.Services.EventInteractions.csproj", "{9BCD766F-1590-471F-AE5C-9F958ACA7130}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - Solution Items", "{17583A28-5C7E-4A7E-B842-0A8E250C85AF}"
-	ProjectSection(SolutionItems) = preProject
-		..\azure-pipelines.yml = ..\azure-pipelines.yml
-		..\Directory.Build.props = ..\Directory.Build.props
-	EndProjectSection
+Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services.EventInteractions", "Intent.Modules.Modelers.Services.EventInteractions\Intent.Modules.Modelers.Services.EventInteractions.csproj", "{9BCD766F-1590-471F-AE5C-9F958ACA7130}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
