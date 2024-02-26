@@ -46,13 +46,16 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFileTemplatePartia
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
-            Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+            ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
+            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                moduleId: "Intent.Common.Kotlin",
+                moduleVersion: "4.0.0-pre.0"));
+            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Kotlin",
                 moduleVersion: "3.3.0"));
             if (Model.GetModelType() != null)
             {
-                Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                     moduleId: Model.GetModelType().ParentModule.Name,
                     moduleVersion: Model.GetModelType().ParentModule.Version));
             }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Code.Weaving.Kotlin.Editor;
 using Intent.Modules.Common.Templates;
 using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
