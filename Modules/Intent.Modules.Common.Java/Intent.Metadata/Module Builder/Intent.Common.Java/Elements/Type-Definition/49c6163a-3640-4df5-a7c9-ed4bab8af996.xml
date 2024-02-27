@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="49c6163a-3640-4df5-a7c9-ed4bab8af996" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">
   <name>Map</name>
-  <display>Map&lt;K, V&gt;</display>
+  <display>Map</display>
   <isAbstract>false</isAbstract>
   <genericTypes>
     <genericType id="cd19b6e0-4c19-4457-a1b2-1258e11f1de6">
