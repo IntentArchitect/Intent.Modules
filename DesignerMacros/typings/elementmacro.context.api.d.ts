@@ -3,32 +3,32 @@
 /**
  * Returns information about the application and its settings.
  */
-declare const application: MacroApi.Context.IApplication;
+declare const application: IApplication;
 
 /**
  * @deprecated Use {@link element} instead.
  */
-declare const context: MacroApi.Context.IElementApi;
+declare const context: IElementApi;
 
 /**
  * Returns the element that triggered this script's execution.
  */
-declare let element: MacroApi.Context.IElementApi;
+declare let element: IElementApi;
 
 /**
  * Returns the element that triggered this script's execution.
  */
-declare let association: MacroApi.Context.IAssociationApi;
+declare let association: IAssociationApi;
 
 /**
  * Obsolete. Use {@link getCurrentDiagram} instead. This would only return the diagram which was open at the time the script execution began.
  */
-declare const currentDiagram: MacroApi.Context.IDiagramApi;
+declare const currentDiagram: IDiagramApi;
 
 /**
  * Returns the currently opened and displayed diagram.
  */
-declare function getCurrentDiagram(): MacroApi.Context.IDiagramApi;
+declare function getCurrentDiagram(): IDiagramApi;
 
 /**
  * Selects an element in the currently visible diagram with the provided {@link elementId}.
@@ -43,27 +43,28 @@ declare function selectElements(elementIds: string[] | any): void;
 /**
  * Creates an element of specialization type with the specified name, as a child of the specified parent.
  */
-declare function createElement(specialization: string, name: string, parentId: string): MacroApi.Context.IElementApi;
+declare function createElement(specialization: string, name: string, parentId: string): IElementApi;
 
 /**
  * Creates an association of specialization type with from a sourceElementId and optionally to a targetElementId.
  */
-declare function createAssociation(specialization: string, sourceElementId: string, targetElementId?: string): MacroApi.Context.IAssociationApi;
+declare function createAssociation(specialization: string, sourceElementId: string, targetElementId?: string): IAssociationApi;
 
 /**
  * Returns the packages currently loaded into the designer.
  */
-declare function getPackages(): MacroApi.Context.IPackageApi[];
+declare function getPackages(): IPackageApi[];
 
 /**
  * Finds the element with the specified id across all loaded packages.
  */
-declare function lookup(id: string): MacroApi.Context.IElementApi;
+declare function lookup(id: string): IElementApi;
 
 /**
  * Finds the elements of the specified type(s) across all loaded packages.
+ * @param includeReferences Defaults to false if unspecified
  */
-declare function lookupTypesOf(type: string | string[]): MacroApi.Context.IElementApi[];
+declare function lookupTypesOf(type: string | string[], includeReferences?: boolean): IElementApi[];
 
 /**
  * Removes the specified {@link prefixes} from the provided {@link string}.
@@ -108,12 +109,18 @@ declare function toKebabCase(word: string): string;
 declare function toSnakeCase(word: string): string;
 
 /**
- * Returns the singular form of the specified word.
+ * Executes the Module Task with the provided {@link taskTypeId} with the supplied {@link args}.
+ * Will asynchronously return a string.
  */
-declare const dialogService: MacroApi.Context.IDialogService;
+declare function executeModuleTask(taskTypeId: string, ...args: string[]): Promise<string>
+
+/**
+ * Present a popup dialog for user feedback or intervention.
+ */
+declare const dialogService: IDialogService;
 
 /**
  * Logs messages to the log window.
  */
 // Has to be commented out to prevent compilation issues.
-// declare const console: { debug(message: string): void, log(message: string): void, warn(message: string): void, error(message: string): void };
+//declare const console: { debug(message: string): void, log(message: string): void, warn(message: string): void, error(message: string): void };

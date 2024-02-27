@@ -54,7 +54,7 @@ class DomainHelper {
                 x.getOtherEnd().typeReference.isCollection)[0]?.typeReference.getType();
         return result;
 
-        function isOwnedBy(association: MacroApi.Context.IAssociationApi) {
+        function isOwnedBy(association: MacroApi.Context.IAssociationReadOnlyApi) {
             return association.isSourceEnd() &&
                 !association.typeReference.isNullable &&
                 !association.typeReference.isCollection;

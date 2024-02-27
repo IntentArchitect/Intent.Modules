@@ -1,6 +1,10 @@
 declare let debugConsole: Console;
+type IApplication = MacroApi.Context.IApplication;
 type IElementApi = MacroApi.Context.IElementApi;
 type IAssociationApi = MacroApi.Context.IAssociationApi;
+type IPackageApi = MacroApi.Context.IPackageApi;
+type IDialogService = MacroApi.Context.IDialogService;
+type IDiagramApi = MacroApi.Context.IDiagramApi;
 
 declare namespace MacroApi.Context {
     interface IDialogService {
@@ -35,6 +39,44 @@ declare namespace MacroApi.Context {
          * @param options The available options of which one can be selected.
          */
         lookupFromOptions(options: { id: string, name: string }[]): Promise<string>;
+
+        /**
+         * Shows a dynamic form dialog which displays fields as per it's provided config and returns
+         * the values as input by the user.
+         *
+         * Must be called with await.
+         * @param config The configuration of the form.
+         */
+        openForm(config: IDynamicFormConfig): Promise<IDynamicFormModel>;
+    }
+
+    interface IDynamicFormConfig {
+        title: string;
+        fields: IDynamicFormFieldConfig[];
+    }
+
+    interface IDynamicFormFieldConfig {
+        id: string;
+        fieldType: "text" | "select" | "checkbox"
+        label: string;
+        placeholder?: string,
+        hint?: string,
+        value?: string;
+        selectOptions?: IDynamicFormFieldSelectOption[]
+    }
+
+    interface IDynamicFormFieldSelectOption {
+        id: string,
+        description: string
+    }
+
+    interface IDynamicFormModel {
+        fields: IDynamicFormFieldModel[];
+    }
+
+    interface IDynamicFormFieldModel {
+        id: string;
+        value?: any;
     }
 
     interface IGenericTypeParameter {
@@ -44,20 +86,24 @@ declare namespace MacroApi.Context {
         genericTypeParameters?: IGenericTypeParameter[]
     }
 
-    interface ITypeReference {
+    interface ITypeReferenceReadOnly {
         typeId: string;
         isTypeFound(): boolean;
         getTypeId(): string;
-        getType(): IElementApi;
-        setType(typeId: string, genericTypeParameters?: IGenericTypeParameter[]): void;
+        getType(): IElementReadOnlyApi;
         getIsNullable(): boolean;
-        setIsNullable(value: boolean): void;
         getIsCollection(): boolean;
-        setIsCollection(value: boolean): void;
         isNavigable: boolean;
         isNullable: boolean;
         isCollection: boolean;
         display: string;
+    }
+
+    interface ITypeReference extends ITypeReferenceReadOnly {
+        getType(): IElementApi;
+        setType(typeId: string, genericTypeParameters?: IGenericTypeParameter[]): void;
+        setIsNullable(value: boolean): void;
+        setIsCollection(value: boolean): void;
     }
 
     interface IElementToElementMappingApi {
@@ -160,27 +206,55 @@ declare namespace MacroApi.Context {
         getElement(): IElementApi;
     }
 
-    interface IStereotypeApi {
+    interface IStereotypeReadOnlyApi {
         name: string;
-        properties: {};
-        lookup(id: string): IElementApi;
+        properties: object;
         hasProperty(property: string): boolean;
+        getProperty(property: string): IStereotypePropertyReadOnlyApi;
+    }
+
+    interface IStereotypeApi extends IStereotypeReadOnlyApi {
+        lookup(id: string): IElementApi;
         getProperty(property: string): IStereotypePropertyApi;
         element: IElementApi;
     }
 
-    interface IStereotypePropertyApi {
+    interface IStereotypePropertyReadOnlyApi {
+        value: string;
+        getValue(): string | boolean | number | IElementReadOnlyApi | IAssociationReadOnlyApi;
+        getSelected(): IElementReadOnlyApi;
+    }
+
+    interface IStereotypePropertyApi extends IStereotypePropertyReadOnlyApi {
         value: string;
         getValue(): string | boolean | number | IElementApi | IAssociationApi;
         setValue(value: any): void;
         getSelected(): IElementApi;
     }
 
-    interface IPackageApi {
+    interface IPackageReadOnlyApi {
         id: string;
         specialization: string;
         name: string;
         getName(): string;
+        getChildren(ofType: string): IElementReadOnlyApi[]
+        hasStereotype(nameOrDefinitionId: string): boolean;
+        getStereotypes(): IStereotypeReadOnlyApi[];
+        getStereotype(nameOrDefinitionId: string): IStereotypeReadOnlyApi;
+        getMetadata(key: string): string;
+        hasMetadata(key: string): boolean;
+        getPackage(): IPackageReadOnlyApi;
+        /**
+         * Expands this package in the designer model.
+         */
+        expand(): void;
+        /**
+         * Collapses this package in the designer model.
+         */
+        collapse(): void;
+    }
+
+    interface IPackageApi extends IPackageReadOnlyApi {
         setName(value: string): void;
         getChildren(ofType: string): IElementApi[]
         hasStereotype(nameOrDefinitionId: string): boolean;
@@ -255,6 +329,13 @@ declare namespace MacroApi.Context {
         isAutoResizeEnabled(): boolean;
     }
 
+    interface IDisplayTextComponent {
+        text: string;
+        cssClass?: string;
+        color?: string;
+        targetId?: string
+    }
+
     interface IDimensions {
         left: number;
         right: number;
@@ -291,9 +372,19 @@ declare namespace MacroApi.Context {
          * Obsolete - these are globally available methods
          */
         lookupTypesOf(type: string): IElementApi[];
+        /**
+         * Obsolete - use refresh()
+         */
+        notifyChanged(): void;
     }
 
-    interface IElementApi {
+    interface IBackwardCompatibleElementReadOnlyApi extends IElementReadOnlyApi {
+        name: string;
+        genericTypes: string;
+    }
+
+    interface IElementReadOnlyApi {
+        getDisplay(): string;
         /**
          * The human-readable specialization type (e.g. "Class", "Attribute", etc.)
          */
@@ -311,51 +402,27 @@ declare namespace MacroApi.Context {
          */
         getName(): string;
         /**
-         * Sets the name of the element.
-         */
-        setName(value: string): void;
-        /**
          * Returns the comment of the element.
          */
         getComment(): string;
-        /**
-         * Sets the comment of the element.
-         */
-        setComment(value: string): void;
         /**
          * Returns the value of the element.
          */
         getValue(): string;
         /**
-         * Sets the name of the element.
-         */
-        setValue(value: string): void;
-        /**
          * Returns true if the element has been indicated 'Is Abstract'.
          */
         getIsAbstract(): boolean;
-        /**
-         * Sets the 'Is Abstract' status of the element.
-         */
-        setIsAbstract(value: boolean): void;
         /**
          * Returns true if the element has been indicated 'Is Static'.
          */
         getIsStatic(): boolean;
         /**
-         * Sets the 'Is Static' status of the element.
-         */
-        setIsStatic(value: boolean): void;
-        /**
-         * Returns the value of the element.
+         * Returns the external reference value of the element, if it exists.
          */
         getExternalReference(): string;
         /**
-         * Sets the external reference of the element.
-         */
-        setExternalReference(value: string): void;
-        /**
-         * Returns the comment of the element.
+         * Returns the display text of the generic types associated with this element.
          */
         getGenericTypesDisplay(): string;
         /**
@@ -363,22 +430,87 @@ declare namespace MacroApi.Context {
          */
         hasType: boolean;
         /**
-         * The typeReference property of the element
+         * The typeReference property of the element. Will return null if no typeReference is configured for this element.
          */
         typeReference?: ITypeReference;
         /**
          * Returns all the child elements of this element. If a type argument is provided, the children will
          * be filtered to those that match on specialization. 
          */
-        getChildren(type?: string): IElementApi[];
+        getChildren(type?: string): IElementReadOnlyApi[];
+        /**
+         * Returns this element's parent
+         */
+        getParent(type?: string): IElementReadOnlyApi;
+        /**
+         * Returns the owning package for this element.
+         */
+        getPackage(): IPackageReadOnlyApi;
+        /**
+         * Returns true if this element is mapped.
+         */
+        isMapped(): boolean;
+        /**
+         * Returns the mapping model for this element.
+         */
+        getMapping(): IElementMappingApi;
+        /**
+         * Returns true if a stereotype that matches the specified name or definition identifier is applied to the element.
+         */
+        hasStereotype(nameOrDefinitionId: string): boolean;
+        /**
+         * Returns all stereotypes currently applied to the element.
+         */
+        getStereotypes(): IStereotypeReadOnlyApi[];
+        /**
+         * Returns the stereotype that matches the specified name or definition identifier
+         */
+        getStereotype(nameOrDefinitionId: string): IStereotypeReadOnlyApi;
+        /**
+         * Returns all the association connected to this element. If a type argument is provided, the associations will
+         * be filtered to those that match on specialization. 
+         */
+        getAssociations(type?: string): IAssociationReadOnlyApi[];
+        /**
+         * Gets the metadata value for the specified key.
+         */
+        getMetadata(key: string): string;
+        /**
+         * Returns true if a metadata value exists for the specified key.
+         */
+        hasMetadata(key: string): boolean;
+    }
+
+    interface IElementApi extends IElementReadOnlyApi {
+
+        /**
+         * Sets the name of the element.
+         */
+        setName(value: string): void;
+        /**
+         * Sets the comment of the element.
+         */
+        setComment(value: string): void;
+        /**
+         * Sets the name of the element.
+         */
+        setValue(value: string): void;
+        /**
+         * Sets the 'Is Abstract' status of the element.
+         */
+        setIsAbstract(value: boolean): void;
+        /**
+         * Sets the 'Is Static' status of the element.
+         */
+        setIsStatic(value: boolean): void;
+        /**
+         * Sets the external reference of the element.
+         */
+        setExternalReference(value: string): void;
         /**
          * Opens the diagram that this element represents, if it configured to support a diagram.
          */
         loadDiagram(): void;
-        /**
-         * Returns this element's parent
-         */
-        getParent(type?: string): IElementApi;
         /**
          * Sets this element's parent.
          */
@@ -388,17 +520,18 @@ declare namespace MacroApi.Context {
          */
         getPackage(): IPackageApi;
         /**
-         * Returns true if this element is mapped.
-         */
-        isMapped(): boolean;
-        /**
          * Clears the mapping model of this element.
          */
         clearMapping(): void;
         /**
-         * Returns the mapping model for this element.
+         * Returns all the child elements of this element. If a type argument is provided, the children will
+         * be filtered to those that match on specialization. 
          */
-        getMapping(): IElementMappingApi;
+        getChildren(type?: string): IElementApi[];
+        /**
+         * Returns this element's parent
+         */
+        getParent(type?: string): IElementApi;
         /**
          * Sets the mapping for this element.
          * @param elementId The unique identifier of the target element. If the mapping traverses more than one element in a hierarchy,
@@ -416,18 +549,6 @@ declare namespace MacroApi.Context {
          */
         launchMappingDialog(mappingSettingsId?: string): Promise<void>
         /**
-         * Returns true if a stereotype that matches the specified name or definition identifier is applied to the element.
-         */
-        hasStereotype(nameOrDefinitionId: string): boolean;
-        /**
-         * Returns all stereotypes currently applied to the element.
-         */
-        getStereotypes(): IStereotypeApi[];
-        /**
-         * Returns the stereotype that matches the specified name or definition identifier
-         */
-        getStereotype(nameOrDefinitionId: string): IStereotypeApi;
-        /**
          * Applies the stereotype with definition id of stereotypeDefinitionId to this element.
          */
         addStereotype(stereotypeDefinitionId: string): IStereotypeApi;
@@ -443,7 +564,6 @@ declare namespace MacroApi.Context {
          * Collapses this element in the designer model.
          */
         collapse(): void;
-
         /**
          * Activates the editing mode for this element.
          */
@@ -453,27 +573,14 @@ declare namespace MacroApi.Context {
          */
         delete(): void;
         /**
-         * Returns all the association connected to this element. If a type argument is provided, the associations will
-         * be filtered to those that match on specialization. 
-         */
-        getAssociations(type?: string): IAssociationApi[];
-        /**
          * Sets the order index of this element within it's parent.
          */
         setOrder(index: number): void;
         /**
-         * Notifies that this element has been changed, which would lead to a refresh of display text and errors. 
+         * Refresh of display text and errors. 
          * This can be useful when you want to force a refresh of the elements state within the designer.
          */
-        notifyChanged(): void;
-        /**
-         * Gets the metadata value for the specified key.
-         */
-        getMetadata(key: string): string;
-        /**
-         * Returns true if a metadata value exists for the specified key.
-         */
-        hasMetadata(key: string): boolean;
+        refresh(): void;
         /**
          * Add the metadata value for the specified key. Throws an error if metadata already exists for the specified key.
          */
@@ -488,11 +595,15 @@ declare namespace MacroApi.Context {
         removeMetadata(key: string): void;
     }
 
+    interface IBackwardCompatibleIAssociationReadOnlyApi extends IAssociationReadOnlyApi {
+        name: string;
+    }
+
     interface IBackwardCompatibleIAssociationApi extends IAssociationApi {
         name: string;
     }
 
-    interface IAssociationApi {
+    interface IAssociationReadOnlyApi {
         /**
          * The human-readable specialization type (e.g. "Class", "Attribute", etc.)
          */
@@ -506,10 +617,6 @@ declare namespace MacroApi.Context {
          */
         getName(): string;
         /**
-         * Sets the name of the element.
-         */
-        setName(value: string): void;
-        /**
          * The typeReference property of the element
          */
         typeReference: ITypeReference;
@@ -521,6 +628,59 @@ declare namespace MacroApi.Context {
          * Returns true if this association end is the target-end of the association.
          */
         isTargetEnd(): boolean;
+        /**
+         * Returns the other-end of the association.
+         */
+        getOtherEnd(): IAssociationReadOnlyApi;
+        /**
+         * Returns this association's parent
+         */
+        getParent(type?: string): IElementReadOnlyApi;
+        /**
+         * Returns the owning package for this element.
+         */
+        getPackage(): IPackageReadOnlyApi;
+        /**
+         * Returns all stereotypes currently applied to the element.
+         */
+        hasStereotype(nameOrDefinitionId: string): boolean;
+        /**
+         * Returns all stereotypes currently applied to the element.
+         */
+        getStereotypes(): IStereotypeReadOnlyApi[];
+        /**
+         * Returns the stereotype that matches the specified name or definition identifier
+         */
+        getStereotype(nameOrDefinitionId: string): IStereotypeReadOnlyApi;
+        /**
+         * Returns all the child elements of this element. If a type argument is provided, the children will
+         * be filtered to those that match on specialization. 
+         */
+        getChildren(type: string): IElementApi[];
+        /**
+         * Returns true if there are mappings associated with this association end.
+         */
+        hasMappings(mappingTypeNameOrId?: string): boolean;
+        /**
+         * Returns the mapping model for the supplied mapping type name or id. Returns null if the mapping does not exist.
+         */
+        getMapping(mappingTypeNameOrId: string): IElementToElementMappingApi;
+        getMappings(): IElementToElementMappingApi[];
+        /**
+         * Gets the metadata value for the specified key.
+         */
+        getMetadata(key: string): string;
+        /**
+         * Returns true if a metadata value exists for the specified key.
+         */
+        hasMetadata(key: string): boolean;
+    }
+
+    interface IAssociationApi extends IAssociationReadOnlyApi {
+        /**
+         * Sets the name of the element.
+         */
+        setName(value: string): void;
         /**
          * Returns the other-end of the association.
          */
