@@ -175,7 +175,7 @@ namespace Intent.Modules.Common.TypeScript.Templates
         public override string RunTemplate()
         {
             var typescriptImports = new List<Intent.Modules.Common.TypeScript.Utils.TypeScriptImport>();
-            
+
             var dependencies = this.GetTemplateDependencies().Select(this.ExecutionContext.FindTemplateInstance<ITemplate>).Distinct();
             foreach (var dependency in dependencies)
             {
@@ -183,26 +183,21 @@ namespace Intent.Modules.Common.TypeScript.Templates
                 {
                     continue;
                 }
-            
+
                 if (string.IsNullOrWhiteSpace(classProvider.ClassName))
                 {
                     continue;
                 }
-                
-                typescriptImports.Add(new Utils.TypeScriptImport(classProvider.ClassName, GetRelativePath(this, classProvider)));
+
+                typescriptImports.Add(new Utils.TypeScriptImport(classProvider.ClassName, this.GetRelativePath(classProvider)));
             }
-            
+
             foreach (var import in this.Imports)
             {
                 typescriptImports.Add(new Utils.TypeScriptImport(import.Type, import.Location));
             }
 
             return WeaverProvider.InsertImportDirectives(base.RunTemplate(), typescriptImports);
-        }
-        
-        private static string GetRelativePath<T>(TypeScriptTemplateBase<T> template, ITemplate dependency)
-        {
-            return "./" + template.GetMetadata().GetFullLocationPath().GetRelativePath(dependency.GetMetadata().GetFilePathWithoutExtension());
         }
     }
 }
