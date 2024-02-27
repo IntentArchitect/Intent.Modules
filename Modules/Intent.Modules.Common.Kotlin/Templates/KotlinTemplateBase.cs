@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Code.Weaving.Kotlin.Editor;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Kotlin.TypeResolvers;
+using Intent.Modules.Common.Kotlin.Utils;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Templates;
@@ -175,14 +175,6 @@ namespace Intent.Modules.Common.Kotlin.Templates
             return GetTemplate<IClassProvider>(templateDependency, options).ClassName;
         }
 
-        /// <summary>
-        /// Gets the <see cref="KotlinFile"/> of the template output.
-        /// </summary>
-        public KotlinFile GetTemplateFile()
-        {
-            return KotlinFile.Parse(base.RunTemplate());
-        }
-
         /// <inheritdoc />
         public override string GetTypeName(ITypeReference typeReference)
         {
@@ -214,11 +206,10 @@ namespace Intent.Modules.Common.Kotlin.Templates
         /// <inheritdoc />
         public override string RunTemplate()
         {
-            var file = GetTemplateFile();
-
-            this.ResolveAndAddImports(file);
-
-            return file.GetSource();
+            return WeaverProvider.InsertImportDirectives(
+                base.RunTemplate(), 
+                this.Package,
+                this.ResolveAllImports());
         }
 
         /// <summary>

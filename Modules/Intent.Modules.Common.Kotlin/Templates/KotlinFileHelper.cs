@@ -10,22 +10,6 @@ namespace Intent.Modules.Common.Kotlin.Templates
 {
     public static class KotlinFileHelper
     {
-        public static void ResolveAndAddImports<T>(this KotlinTemplateBase<T> template, KotlinFile file)
-        {
-            var dependencies = template.GetTemplateDependencies().Select(template.ExecutionContext.FindTemplateInstance<ITemplate>).Distinct();
-            foreach (var import in template.ResolveAllImports())
-            {
-
-                if (file.ImportExists(import) || template.Package == FixImport(import).RemoveSuffix("." + FixImport(import).Split('.').Last()))
-                {
-                    continue;
-                }
-
-                file.AddImport($@"
-{import}");
-            }
-        }
-
         public static string[] ResolveAllImports<T>(this KotlinTemplateBase<T> template, params string[] importsToIgnore)
         {
             var imports = template
@@ -54,9 +38,6 @@ namespace Intent.Modules.Common.Kotlin.Templates
                 .ToArray();
 
             return imports;
-            //return usings.Any()
-            //    ? usings.Aggregate((x, y) => x + Environment.NewLine + y)
-            //    : string.Empty;
         }
 
         private static string FixImport(string @using)
