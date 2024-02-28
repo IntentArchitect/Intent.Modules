@@ -111,15 +111,9 @@ function PrintAffectedFileName {
     }
 }
 
-$projectName = $args[0]
-$DevOps = [bool]$args[1]
+$DevOps = [bool]$args[0]
 $imodSpecInfos = New-Object 'System.Collections.Generic.Dictionary[string, ImodSpecInfo]'
 $global:hasError = $false
-
-if ([System.String]::IsNullOrWhiteSpace($projectName)) {
-    Write-Error "First argument not set: Project name."
-    exit 1;
-}
 
 Get-ChildItem -Path Modules -Filter *.imodspec -Recurse -Depth 2 | ForEach-Object {
     $file = $_.FullName
@@ -141,19 +135,19 @@ Get-ChildItem -Path Modules -Filter *.imodspec -Recurse -Depth 2 | ForEach-Objec
 $validationRules = @{
     Authors = { 
         param([ImodSpecInfo]$info) 
-        if ($info.Authors -eq $projectName) { 
+        if ([string]::IsNullOrEmpty($info.Authors) -or ($info.Authors -like "Intent.*")) {
             return "Authors not set" 
         } 
     }
     Summary = { 
         param([ImodSpecInfo]$info) 
-        if ($info.Summary -eq "A custom module for $($projectName).") { 
+        if ([string]::IsNullOrEmpty($info.Summary) -or ($info.Summary -like "A custom module for*")) {
             return "Summary not set" 
         } 
     }
     Description = { 
         param([ImodSpecInfo]$info) 
-        if ($info.Description -eq "A custom module for $($projectName).") { 
+        if ([string]::IsNullOrEmpty($info.Description) -or ($info.Description -like "A custom module for*")) {
             return "Description not set" 
         } 
     }
