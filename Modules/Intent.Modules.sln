@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Ser
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metadata", "Metadata", "{E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder", "Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj", "{ADF69C43-E3B2-4048-866E-FBE9BFF55EC6}"
+Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder", "Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj", "{ADF69C43-E3B2-4048-866E-FBE9BFF55EC6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common", "Intent.Modules.Common\Intent.Modules.Common.csproj", "{2149B693-AA4E-43F3-AA72-D1EF8FA14E6D}"
 EndProject

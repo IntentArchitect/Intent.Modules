@@ -57,6 +57,16 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<IElement[]>("Source Types") ?? new IElement[0];
             }
 
+            public string SourceTypesFilter()
+            {
+                return _stereotype.GetProperty<string>("Source Types Filter");
+            }
+
+            public SourceArrowTypeOptions SourceArrowType()
+            {
+                return new SourceArrowTypeOptions(_stereotype.GetProperty<string>("Source Arrow Type"));
+            }
+
             public TargetsOptions Targets()
             {
                 return new TargetsOptions(_stereotype.GetProperty<string>("Targets"));
@@ -65,6 +75,16 @@ namespace Intent.ModuleBuilder.Api
             public IElement[] TargetTypes()
             {
                 return _stereotype.GetProperty<IElement[]>("Target Types") ?? new IElement[0];
+            }
+
+            public string TargetTypesFilter()
+            {
+                return _stereotype.GetProperty<string>("Target Types Filter");
+            }
+
+            public TargetArrowTypeOptions TargetArrowType()
+            {
+                return new TargetArrowTypeOptions(_stereotype.GetProperty<string>("Target Arrow Type"));
             }
 
             public RepresentsOptions Represents()
@@ -106,6 +126,8 @@ namespace Intent.ModuleBuilder.Api
                             return SourcesOptionsEnum.InvokableTypes;
                         case "Specific Types":
                             return SourcesOptionsEnum.SpecificTypes;
+                        case "All Types":
+                            return SourcesOptionsEnum.AllTypes;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
@@ -123,13 +145,55 @@ namespace Intent.ModuleBuilder.Api
                 {
                     return Value == "Specific Types";
                 }
+                public bool IsAllTypes()
+                {
+                    return Value == "All Types";
+                }
             }
 
             public enum SourcesOptionsEnum
             {
                 DataTypes,
                 InvokableTypes,
-                SpecificTypes
+                SpecificTypes,
+                AllTypes
+            }
+            public class SourceArrowTypeOptions
+            {
+                public readonly string Value;
+
+                public SourceArrowTypeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public SourceArrowTypeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "None":
+                            return SourceArrowTypeOptionsEnum.None;
+                        case "Solid Arrow":
+                            return SourceArrowTypeOptionsEnum.SolidArrow;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsNone()
+                {
+                    return Value == "None";
+                }
+                public bool IsSolidArrow()
+                {
+                    return Value == "Solid Arrow";
+                }
+            }
+
+            public enum SourceArrowTypeOptionsEnum
+            {
+                None,
+                SolidArrow
             }
             public class TargetsOptions
             {
@@ -150,6 +214,8 @@ namespace Intent.ModuleBuilder.Api
                             return TargetsOptionsEnum.InvokableTypes;
                         case "Specific Types":
                             return TargetsOptionsEnum.SpecificTypes;
+                        case "All Types":
+                            return TargetsOptionsEnum.AllTypes;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
@@ -167,13 +233,55 @@ namespace Intent.ModuleBuilder.Api
                 {
                     return Value == "Specific Types";
                 }
+                public bool IsAllTypes()
+                {
+                    return Value == "All Types";
+                }
             }
 
             public enum TargetsOptionsEnum
             {
                 DataTypes,
                 InvokableTypes,
-                SpecificTypes
+                SpecificTypes,
+                AllTypes
+            }
+            public class TargetArrowTypeOptions
+            {
+                public readonly string Value;
+
+                public TargetArrowTypeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public TargetArrowTypeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "None":
+                            return TargetArrowTypeOptionsEnum.None;
+                        case "Solid Arrow":
+                            return TargetArrowTypeOptionsEnum.SolidArrow;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsNone()
+                {
+                    return Value == "None";
+                }
+                public bool IsSolidArrow()
+                {
+                    return Value == "Solid Arrow";
+                }
+            }
+
+            public enum TargetArrowTypeOptionsEnum
+            {
+                None,
+                SolidArrow
             }
 
             public class RepresentsOptions
