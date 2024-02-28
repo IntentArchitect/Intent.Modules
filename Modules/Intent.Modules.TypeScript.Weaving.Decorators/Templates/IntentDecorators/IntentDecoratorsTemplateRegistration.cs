@@ -18,6 +18,7 @@ namespace Intent.Modules.TypeScript.Weaving.Decorators.Templates.IntentDecorator
     {
         public override string TemplateId => IntentDecoratorsTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget)
         {
             return new IntentDecoratorsTemplate(outputTarget);
