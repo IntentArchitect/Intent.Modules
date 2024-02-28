@@ -1,4 +1,8 @@
-﻿### Version 3.5.2
+﻿### Version 3.5.3
+
+- Improvement: Added support for protected fields.
+
+### Version 3.5.2
 
 - Fixed: Indentation would always get lost when using `.AddStatements(...)` with a single string to add multiline statements.
 - Fixed: Ordering of access modifiers would be incorrect for fields which were `static readonly`.

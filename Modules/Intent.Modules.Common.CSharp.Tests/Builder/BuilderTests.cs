@@ -91,6 +91,8 @@ public class BuilderTests
                 @class.AddMethod("void", "PrivateMethod", method => { method.Private(); });
                 @class.AddMethod("void", "ProtectedMethod", method => { method.Protected(); });
                 @class.AddField("string", "_test", field => field.Private());
+                @class.AddField("string", "_testProtected", field => field.Protected());
+                @class.AddField("string", "_testProtectedReadOnly", field => field.ProtectedReadOnly());
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
