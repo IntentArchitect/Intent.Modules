@@ -29,7 +29,6 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
         public JavaFileTemplatePartialTemplate(IOutputTarget outputTarget, JavaFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
             AddNugetDependency(IntentNugetPackages.IntentModulesCommonJava);
-            AddNugetDependency(IntentNugetPackages.IntentModulesJavaWeavingAnnotations);
 
             if (Model.GetModelType() != null)
             {
