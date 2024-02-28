@@ -27,6 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileT4
 
         public override string TemplateId => JavaFileT4Template.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, JavaFileTemplateModel model)
         {
             return new JavaFileT4Template(outputTarget, model);

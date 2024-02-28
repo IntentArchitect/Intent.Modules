@@ -27,6 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFile
 
         public override string TemplateId => KotlinFileTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, KotlinFileTemplateModel model)
         {
             return new KotlinFileTemplate(outputTarget, model);

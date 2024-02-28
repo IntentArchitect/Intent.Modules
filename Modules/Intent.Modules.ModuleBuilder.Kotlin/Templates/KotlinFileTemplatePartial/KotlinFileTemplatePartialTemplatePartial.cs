@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
@@ -26,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFileTemplatePartia
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public KotlinFileTemplatePartialTemplate(IOutputTarget outputTarget, KotlinFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Kotlin", "3.3.0");
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommonKotlin);
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
@@ -48,11 +49,11 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFileTemplatePartia
         {
             ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
-                moduleId: "Intent.Common.Kotlin",
-                moduleVersion: "4.0.0-pre.0"));
+                moduleId: IntentModule.IntentCommonKotlin.Name,
+                moduleVersion: IntentModule.IntentCommonKotlin.Version));
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
-                moduleId: "Intent.Common.Kotlin",
-                moduleVersion: "3.3.0"));
+                moduleId: IntentModule.IntentCodeWeavingKotlin.Name,
+                moduleVersion: IntentModule.IntentCodeWeavingKotlin.Version));
             if (Model.GetModelType() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(

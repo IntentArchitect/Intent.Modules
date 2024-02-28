@@ -15,13 +15,13 @@ namespace Intent.Modules.Common.TypeScript.Api
     {
         public static TypeScript GetTypeScript(this EnumModel model)
         {
-            var stereotype = model.GetStereotype("TypeScript");
+            var stereotype = model.GetStereotype("822c6b64-82c2-4e5b-9d07-b79adc9a09e7");
             return stereotype != null ? new TypeScript(stereotype) : null;
         }
 
         public static bool HasTypeScript(this EnumModel model)
         {
-            return model.HasStereotype("TypeScript");
+            return model.HasStereotype("822c6b64-82c2-4e5b-9d07-b79adc9a09e7");
         }
 
         public static bool TryGetTypeScript(this EnumModel model, out TypeScript stereotype)
@@ -32,7 +32,7 @@ namespace Intent.Modules.Common.TypeScript.Api
                 return false;
             }
 
-            stereotype = new TypeScript(model.GetStereotype("TypeScript"));
+            stereotype = new TypeScript(model.GetStereotype("822c6b64-82c2-4e5b-9d07-b79adc9a09e7"));
             return true;
         }
 

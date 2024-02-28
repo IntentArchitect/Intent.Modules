@@ -3,6 +3,12 @@
   <ApplicationId>4c43397f-638c-4889-bb6b-fb7b064d5562</ApplicationId>
   <FileLogs>
     <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#55fb9209-8ea6-4141-92ba-731604c129b2</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>43a7c52b-f246-4b39-a873-1bb154a2d59d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -13,7 +19,7 @@
     <FileLog>
       <ProjectId>43a7c52b-f246-4b39-a873-1bb154a2d59d</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#43a7c52b-f246-4b39-a873-1bb154a2d59d</CorrelationId>
-      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Common.Sql.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Sql.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.TypeScript.Api
     {
         public static TypeScriptTemplateSettings GetTypeScriptTemplateSettings(this TypescriptFileTemplateModel model)
         {
-            var stereotype = model.GetStereotype("TypeScript Template Settings");
+            var stereotype = model.GetStereotype("8f73a680-1a9e-4df6-a396-759bb078a99e");
             return stereotype != null ? new TypeScriptTemplateSettings(stereotype) : null;
         }
 
 
         public static bool HasTypeScriptTemplateSettings(this TypescriptFileTemplateModel model)
         {
-            return model.HasStereotype("TypeScript Template Settings");
+            return model.HasStereotype("8f73a680-1a9e-4df6-a396-759bb078a99e");
         }
 
         public static bool TryGetTypeScriptTemplateSettings(this TypescriptFileTemplateModel model, out TypeScriptTemplateSettings stereotype)
@@ -32,7 +32,7 @@ namespace Intent.ModuleBuilder.TypeScript.Api
                 return false;
             }
 
-            stereotype = new TypeScriptTemplateSettings(model.GetStereotype("TypeScript Template Settings"));
+            stereotype = new TypeScriptTemplateSettings(model.GetStereotype("8f73a680-1a9e-4df6-a396-759bb078a99e"));
             return true;
         }
 

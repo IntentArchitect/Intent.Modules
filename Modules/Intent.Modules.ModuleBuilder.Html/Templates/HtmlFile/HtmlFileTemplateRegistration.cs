@@ -27,9 +27,10 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFile
 
         public override string TemplateId => HtmlFileTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project, HtmlFileTemplateModel model)
+        [IntentManaged(Mode.Fully)]
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, HtmlFileTemplateModel model)
         {
-            return new HtmlFileTemplate(project, model);
+            return new HtmlFileTemplate(outputTarget, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

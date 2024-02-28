@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
@@ -25,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Dart.Templates.DartFileTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public DartFileTemplatePartialTemplate(IOutputTarget outputTarget, DartFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Dart", "1.0.0-pre.0");
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommonDart);
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
@@ -48,8 +49,8 @@ namespace Intent.Modules.ModuleBuilder.Dart.Templates.DartFileTemplatePartial
             ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
 
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
-                moduleId: "Intent.Common.Dart",
-                moduleVersion: "1.0.0-pre.0"));
+                moduleId: IntentModule.IntentCommonDart.Name,
+                moduleVersion: IntentModule.IntentCommonDart.Version));
             if (Model.GetModelType() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(

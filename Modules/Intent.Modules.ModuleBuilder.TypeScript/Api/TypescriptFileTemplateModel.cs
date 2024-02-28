@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.TypeScript.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class TypescriptFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class TypescriptFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
     {
         public new const string SpecializationType = "Typescript File Template";
         public new const string SpecializationTypeId = "e6e41d88-2829-41b6-a791-065d2bb44eb3";

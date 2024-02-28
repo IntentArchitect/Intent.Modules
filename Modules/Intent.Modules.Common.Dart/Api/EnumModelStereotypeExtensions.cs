@@ -15,14 +15,14 @@ namespace Intent.Common.Dart.Api
     {
         public static Dart GetDart(this EnumModel model)
         {
-            var stereotype = model.GetStereotype("Dart");
+            var stereotype = model.GetStereotype("0c734e67-bc65-4132-ab09-645a61945567");
             return stereotype != null ? new Dart(stereotype) : null;
         }
 
 
         public static bool HasDart(this EnumModel model)
         {
-            return model.HasStereotype("Dart");
+            return model.HasStereotype("0c734e67-bc65-4132-ab09-645a61945567");
         }
 
         public static bool TryGetDart(this EnumModel model, out Dart stereotype)
@@ -33,7 +33,7 @@ namespace Intent.Common.Dart.Api
                 return false;
             }
 
-            stereotype = new Dart(model.GetStereotype("Dart"));
+            stereotype = new Dart(model.GetStereotype("0c734e67-bc65-4132-ab09-645a61945567"));
             return true;
         }
 

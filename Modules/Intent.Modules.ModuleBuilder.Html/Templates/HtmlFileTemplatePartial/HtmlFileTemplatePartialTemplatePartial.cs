@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
@@ -27,11 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public HtmlFileTemplatePartialTemplate(IOutputTarget outputTarget, HtmlFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Html", "3.3.0");
-            //if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
-            //{
-            //    AddNugetDependency(new NugetPackageInfo(Model.GetModule().NuGetPackageId, Model.GetModule().NuGetPackageVersion));
-            //}
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommonHtml);
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
@@ -59,12 +56,12 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
                 location: Model.GetLocation()));
 
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
-                moduleId: "Intent.Common.Html",
-                moduleVersion: "4.0.0-pre.0"));
+                moduleId: IntentModule.IntentCommonHtml.Name,
+                moduleVersion: IntentModule.IntentCommonHtml.Version));
 
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
-                moduleId: "Intent.Code.Weaving.Html",
-                moduleVersion: "1.0.0"));
+                moduleId: IntentModule.IntentCodeWeavingHtml.Name,
+                moduleVersion: IntentModule.IntentCodeWeavingHtml.Version));
 
             if (Model.GetModelType() != null)
             {

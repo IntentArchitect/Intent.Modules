@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
@@ -27,13 +28,10 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public SqlFileTemplatePartialTemplate(IOutputTarget outputTarget, SqlTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Sql", "3.3.0");
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommonSql);
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
-        //public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
-        //public string FolderPath => string.Join("/", OutputFolder);
-        //public string FolderNamespace => string.Join(".", OutputFolder);
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
@@ -55,8 +53,8 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
                 location: Model.GetLocation()));
 
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
-                moduleId: "Intent.Common.Sql",
-                moduleVersion: "3.3.0"));
+                moduleId: IntentModule.IntentCommonSql.Name,
+                moduleVersion: IntentModule.IntentCommonSql.Version));
             if (Model.GetModelType() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(

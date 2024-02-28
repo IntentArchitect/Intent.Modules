@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Kotlin.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class KotlinFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class KotlinFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IHasFolder, IElementWrapper
     {
         public new const string SpecializationType = "Kotlin File Template";
         public new const string SpecializationTypeId = "fd5375d4-5380-4a04-b164-0617a8d64624";

@@ -19,6 +19,7 @@ namespace Intent.ModuleBuilder.Html.Api
         {
         }
 
+        [IntentManaged(Mode.Fully)]
         public IList<HtmlFileTemplateModel> HtmlFiles => UnderlyingPackage.ChildElements
             .GetElementsOfType(HtmlFileTemplateModel.SpecializationTypeId)
             .Select(x => new HtmlFileTemplateModel(x))

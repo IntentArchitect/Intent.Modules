@@ -45,6 +45,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFile
         public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name.ToCSharpIdentifier().RemoveSuffix("Template") }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             if (TryGetExistingFileContent(out var content))

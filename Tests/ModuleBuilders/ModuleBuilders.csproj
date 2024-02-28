@@ -145,6 +145,66 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>TypeScriptSingleFileT4Template.tt</DependentUpon>
     </Compile>
+    <Compile Update="Templates\Dart\DartCustomT4\DartCustomT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DartCustomT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Dart\DartFilePerModelT4\DartFilePerModelT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DartFilePerModelT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Dart\DartSingleFileT4\DartSingleFileT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DartSingleFileT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Kotlin\KotlinCustom\KotlinCustomTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>KotlinCustomTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Kotlin\KotlinFilePerModel\KotlinFilePerModelTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>KotlinFilePerModelTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Kotlin\KotlinSingleFile\KotlinSingleFileTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>KotlinSingleFileTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Html\HtmlFilePerModel\HtmlFilePerModelTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HtmlFilePerModelTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Html\HtmlSingleFile\HtmlSingleFileTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HtmlSingleFileTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Html\HtmlCustom\HtmlCustomTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HtmlCustomTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Sql\SqlCustom\SqlCustomTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SqlCustomTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Sql\SqlFilePerModel\SqlFilePerModelTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SqlFilePerModelTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Sql\SqlSingleFile\SqlSingleFileTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SqlSingleFileTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -260,14 +320,66 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TypeScriptSingleFileT4Template.cs</LastGenOutput>
     </None>
+    <None Update="Templates\Dart\DartCustomT4\DartCustomT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DartCustomT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Dart\DartFilePerModelT4\DartFilePerModelT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DartFilePerModelT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Dart\DartSingleFileT4\DartSingleFileT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DartSingleFileT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Html\HtmlFilePerModel\HtmlFilePerModelTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HtmlFilePerModelTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Html\HtmlSingleFile\HtmlSingleFileTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HtmlSingleFileTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Kotlin\KotlinCustom\KotlinCustomTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>KotlinCustomTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Kotlin\KotlinFilePerModel\KotlinFilePerModelTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>KotlinFilePerModelTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Kotlin\KotlinSingleFile\KotlinSingleFileTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>KotlinSingleFileTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Html\HtmlCustom\HtmlCustomTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HtmlCustomTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Sql\SqlCustom\SqlCustomTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SqlCustomTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Sql\SqlFilePerModel\SqlFilePerModelTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SqlFilePerModelTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Sql\SqlSingleFile\SqlSingleFileTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SqlSingleFileTemplate.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.5.0" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.5.2" />
-    <PackageReference Include="Intent.Modules.Common.Java" Version="3.4.3" />
-    <PackageReference Include="Intent.Modules.Common.TypeScript" Version="3.4.3" />
-    <PackageReference Include="Intent.Modules.Java.Weaving.Annotations" Version="3.3.1" />
+    <PackageReference Include="Intent.Modules.Common.Dart" Version="1.1.0-pre.0" />
+    <PackageReference Include="Intent.Modules.Common.Html" Version="4.0.0-pre.1" />
+    <PackageReference Include="Intent.Modules.Common.Java" Version="4.0.0-pre.1" />
+    <PackageReference Include="Intent.Modules.Common.Kotlin" Version="4.0.0-pre.0" />
+    <PackageReference Include="Intent.Modules.Common.Sql" Version="3.4.0-pre.0" />
+    <PackageReference Include="Intent.Modules.Common.TypeScript" Version="4.0.0-pre.0" />
+    <PackageReference Include="Intent.Modules.Java.Weaving.Annotations" Version="4.0.0-pre.0" />
     <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.6.0" />
     <PackageReference Include="Intent.Packager" Version="3.4.0">
       <PrivateAssets>all</PrivateAssets>
@@ -275,6 +387,10 @@
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.4" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Templates\Html\" />
   </ItemGroup>
 
 </Project>

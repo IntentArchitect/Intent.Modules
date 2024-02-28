@@ -19,6 +19,7 @@ namespace Intent.ModuleBuilder.Sql.Api
         {
         }
 
+        [IntentManaged(Mode.Fully)]
         public IList<SqlTemplateModel> SqlTemplates => UnderlyingPackage.ChildElements
             .GetElementsOfType(SqlTemplateModel.SpecializationTypeId)
             .Select(x => new SqlTemplateModel(x))

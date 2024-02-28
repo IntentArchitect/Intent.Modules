@@ -19,6 +19,7 @@ namespace Intent.ModuleBuilder.Kotlin.Api
         {
         }
 
+        [IntentManaged(Mode.Fully)]
         public IList<KotlinFileTemplateModel> KotlinFiles => UnderlyingPackage.ChildElements
             .GetElementsOfType(KotlinFileTemplateModel.SpecializationTypeId)
             .Select(x => new KotlinFileTemplateModel(x))

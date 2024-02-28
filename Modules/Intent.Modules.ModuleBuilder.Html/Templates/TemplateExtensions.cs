@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Intent.ModuleBuilder.Html.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial;
 using Intent.RoslynWeaver.Attributes;
@@ -10,12 +11,12 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates
 {
     public static class TemplateExtensions
     {
-        public static string GetHtmlFileTemplatePartialName<T>(this IntentTemplateBase<T> template) where T : Intent.ModuleBuilder.Html.Api.HtmlFileTemplateModel
+        public static string GetHtmlFileTemplatePartialName<T>(this IIntentTemplate<T> template) where T : HtmlFileTemplateModel
         {
             return template.GetTypeName(HtmlFileTemplatePartialTemplate.TemplateId, template.Model);
         }
 
-        public static string GetHtmlFileTemplatePartialName(this IntentTemplateBase template, Intent.ModuleBuilder.Html.Api.HtmlFileTemplateModel model)
+        public static string GetHtmlFileTemplatePartialName(this IIntentTemplate template, HtmlFileTemplateModel model)
         {
             return template.GetTypeName(HtmlFileTemplatePartialTemplate.TemplateId, model);
         }
