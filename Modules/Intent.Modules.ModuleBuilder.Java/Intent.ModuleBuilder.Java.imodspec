@@ -37,7 +37,7 @@
   <dependencies>
     <dependency id="Intent.Common" version="3.5.0" />
     <dependency id="Intent.Common.CSharp" version="3.5.2" />
-    <dependency id="Intent.Common.Java" version="3.4.4" />
+    <dependency id="Intent.Common.Java" version="4.0.0-pre.1" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
     <dependency id="Intent.ModuleBuilder" version="3.8.4" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="4.5.1" />
