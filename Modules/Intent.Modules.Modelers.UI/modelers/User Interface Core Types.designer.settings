@@ -831,7 +831,10 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
         <mappingType type="Data Mapping" typeId="ce70308a-e29d-4644-8410-f9e6bbd214fc">
           <represents>data</represents>
           <sources />
+          <sourceFilterFunction>return element.represents == 'data'</sourceFilterFunction>
           <targets />
+          <targetFilterFunction>return element.represents == 'data'</targetFilterFunction>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
         <mappingType type="Invocation Mapping" typeId="ab447316-1252-49bc-a695-f34cb00a3cdc">
@@ -840,6 +843,8 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
             <source id="dac3e0f8-cc81-4409-8159-19c0103e1d88" name="Component" />
           </sources>
           <targets />
+          <targetFilterFunction>return element.represents == 'invokable'</targetFilterFunction>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
       </mappingTypes>
@@ -945,6 +950,7 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <targets>
             <target id="46518920-54e6-4b77-8c29-cfcc453d6754" name="Model Definition Field" />
           </targets>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
       </mappingTypes>
@@ -1147,18 +1153,11 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
       <mappingTypes>
         <mappingType type="Data Mapping" typeId="ee19a932-0cea-4b90-bd3c-857d7942d390">
           <represents>data</represents>
-          <sources>
-            <source id="c648af56-8a41-40e2-a996-d0e025462b30" name="Component Input" />
-            <source id="dd00e457-f34b-47ea-bca6-138a3f52c385" name="Component Property" />
-            <source id="165adfac-8ab7-42d1-829e-e699651eaa3d" name="Model Definition Field" />
-            <source id="5dacc38f-5bdd-43f5-8d2f-5ad3f12071ee" name="DTO-Field" />
-          </sources>
-          <targets>
-            <target id="6fd90a34-c61f-4425-8039-348ad40372fe" name="Component Input" />
-            <target id="797ad7f2-390b-49f2-ab16-d3ce01e51fc0" name="Component Property" />
-            <target id="23274fdf-3186-4ba3-89cb-2feda16f4524" name="Table" />
-            <target id="715a5637-9cfe-4036-a86f-6b410346e7ac" name="Column" />
-          </targets>
+          <sources />
+          <sourceFilterFunction>return element.represents == 'data'</sourceFilterFunction>
+          <targets />
+          <targetFilterFunction>return element.represents == 'data'</targetFilterFunction>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
       </mappingTypes>
