@@ -1,3 +1,7 @@
+### Version 3.8.4
+
+- Improvement: Uses more recent version of the `Intent.OutputManager.RoslynWeaver` module.
+
 ### Version 3.8.3
 
 - Improvement: Software Factory Extension classes now have `Intent.Modules.Common` added as a using directive by default.
