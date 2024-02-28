@@ -1,3 +1,10 @@
+### Version 3.4.0
+
+- Improvement: Will now add module dependencies on the following as needed:
+    - Intent.Modules.Common.TypeScript 4.0.0.
+    - Intent.Code.Weaving.TypeScript 1.0.0.
+- Improvement: Ensure that this module is running on the latest patterns and dependencies.
+
 ### Version 3.3.10
 
 - Fixed: Support for `ITypescriptFileBuilderTemplate` added and File Builder is now default option.

@@ -1,8 +1,9 @@
-### Version 3.3.5
+### Version 3.4.0
 
 - Improvement: Will now add module dependencies on the following as needed:
   - Intent.Modules.Common.Html 4.0.0.
   - Intent.Code.Weaving.Html 1.0.0.
+- Improvement: Ensure that this module is running on the latest patterns and dependencies.
 
 ### Version 3.3.4
 
