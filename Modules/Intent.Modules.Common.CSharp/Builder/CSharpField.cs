@@ -34,6 +34,21 @@ public class CSharpField : CSharpMember<CSharpField>
         Name = name;
     }
 
+    public CSharpField ProtectedReadOnly()
+    {
+        AccessModifier = "protected readonly ";
+        return this;
+    }
+
+    public CSharpField Protected() => Protected(null);
+
+    public CSharpField Protected(string value)
+    {
+        AccessModifier = "protected ";
+        Assignment = value;
+        return this;
+    }
+
     public CSharpField PrivateReadOnly()
     {
         AccessModifier = "private readonly ";
