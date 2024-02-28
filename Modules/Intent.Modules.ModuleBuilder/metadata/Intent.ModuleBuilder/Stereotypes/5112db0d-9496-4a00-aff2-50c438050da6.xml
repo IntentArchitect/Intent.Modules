@@ -31,6 +31,7 @@
         <option>Data Types</option>
         <option>Invokable Types</option>
         <option>Specific Types</option>
+        <option>All Types</option>
       </valueOptions>
       <lookupTypes />
     </property>
@@ -74,6 +75,32 @@ return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
       <isActiveFunction>return getProperty("Sources").getValue() == "Specific Types"</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
+    <property id="7149c438-f5de-432e-8cd7-356d691aee9e">
+      <name>Source Types Filter</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(Ignored)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <isActiveFunction>return getProperty("Sources").getValue() == "Specific Types" || getProperty("Sources").getValue() == "All Types"</isActiveFunction>
+      <isRequiredFunction>return false</isRequiredFunction>
+    </property>
+    <property id="8c6140d1-311a-4233-b4c9-6ee41f15a606">
+      <name>Source Arrow Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(Default)</placeholder>
+      <defaultValue>None</defaultValue>
+      <valueOptions>
+        <option>None</option>
+        <option>Solid Arrow</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
     <property id="68504875-ebf6-47d6-ac36-c506431cf57c">
       <name>Targets</name>
       <type>string</type>
@@ -85,6 +112,7 @@ return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
         <option>Data Types</option>
         <option>Invokable Types</option>
         <option>Specific Types</option>
+        <option>All Types</option>
       </valueOptions>
       <lookupTypes />
     </property>
@@ -128,6 +156,31 @@ const getAllPackageIds = (mappablePackage) =&gt; {
 return getAllPackageIds(targetMappables);</lookupInternalTargetPropertyId>
       <isActiveFunction>return getProperty("Targets").getValue() == "Specific Types"</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="ff744541-57a1-4975-a312-b47035a158a3">
+      <name>Target Types Filter</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(Ignored)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <isActiveFunction>return getProperty("Sources").getValue() == "Specific Types" || getProperty("Sources").getValue() == "All Types"</isActiveFunction>
+      <isRequiredFunction>return false</isRequiredFunction>
+    </property>
+    <property id="ba0f1099-248b-4bf1-ac12-adb78d44ff03">
+      <name>Target Arrow Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(Default)</placeholder>
+      <defaultValue>Solid Arrow</defaultValue>
+      <valueOptions>
+        <option>None</option>
+        <option>Solid Arrow</option>
+      </valueOptions>
+      <lookupTypes />
     </property>
     <property id="6ee5b3e3-628e-4996-87b5-08649e101887">
       <name>Represents</name>

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.IArchitect.Agent.Persistence.Model.Mappings;
@@ -69,8 +70,18 @@ namespace Intent.ModuleBuilder.Api
             {
                 MappingTypeId = Id,
                 MappingType = Name,
-                Sources = this.GetMappingTypeSettings().SourceTypes()?.Select(x => new MappableElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
-                Targets = this.GetMappingTypeSettings().TargetTypes()?.Select(x => new MappableElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
+                SourceTypes = this.GetMappingTypeSettings().SourceTypes()?.Select(x => new MappableElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
+                SourceFilterFunction = this.GetMappingTypeSettings().Sources().IsDataTypes() ? "return element.represents == 'data'"
+                    : this.GetMappingTypeSettings().Sources().IsInvokableTypes() ? "return element.represents == 'invokable'"
+                    : this.GetMappingTypeSettings().SourceTypesFilter(),
+                SourceArrowFunction = this.GetMappingTypeSettings().SourceArrowType().IsSolidArrow()
+                    ? "return `M ${x} ${y} l 10 5 l 0 -10 z`" : null,
+                TargetTypes = this.GetMappingTypeSettings().TargetTypes()?.Select(x => new MappableElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
+                TargetFilterFunction = this.GetMappingTypeSettings().Targets().IsDataTypes() ? "return element.represents == 'data'"
+                    : this.GetMappingTypeSettings().Targets().IsInvokableTypes() ? "return element.represents == 'invokable'"
+                    : this.GetMappingTypeSettings().SourceTypesFilter(),
+                TargetArrowFunction = this.GetMappingTypeSettings().TargetArrowType().IsSolidArrow()
+                    ? "return `M ${x} ${y} l -10 5 l 0 -10 z`" : null,
                 Represents = Enum.TryParse<ElementMappingRepresentation>(this.GetMappingTypeSettings().Represents().Value, out var represents) ? represents : ElementMappingRepresentation.Unknown,
                 LineColor = this.GetMappingTypeSettings().LineColor(),
                 LineDashArray = this.GetMappingTypeSettings().LineDashArray(),
