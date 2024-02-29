@@ -505,18 +505,6 @@ function getSurrogateKeyType() {
 }
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../common/getSurrogateKeyType.ts" /&gt;
-const constants = {
-    PKSpecialization: {
-        Implicit: "implicit",
-        Explicit: "explicit",
-        ExplicitComposite: "explicit_composite",
-        Unknown: "unknown"
-    },
-    FKSpecialization: {
-        Implicit: "implicit",
-        Explicit: "explicit",
-    }
-};
 function getFieldFormat(str) {
     return toPascalCase(str);
 }
@@ -574,7 +562,7 @@ function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
     }
 }
 function isOwnerForeignKey(attributeName, domainElement) {
-    for (let association of domainElement.getAssociations().filter(x =&gt; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
+    for (let association of domainElement.getAssociations().filter(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
         if (attributeName.toLowerCase().indexOf(association.getName().toLowerCase()) &gt;= 0) {
             return true;
         }
@@ -749,7 +737,7 @@ function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey) {
 }
 /// &lt;reference path="../_common/onMapDto.ts" /&gt;
 /**
- * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
+ * Used by Intent.Modules\Modules\Intent.Modules.Modelers.Services
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/dto-on-map/dto-on-map.ts

@@ -107,4 +107,4 @@ namespace convertToAdvancedMapping {
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-crud/convert-to-advanced-mapping/convert-to-advanced-mapping.ts
  */
-//convertToAdvancedMapping.execute();
+convertToAdvancedMapping.execute();

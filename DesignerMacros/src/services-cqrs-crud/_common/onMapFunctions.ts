@@ -2,19 +2,6 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../common/getSurrogateKeyType.ts" />
 
-const constants = {
-    PKSpecialization: {
-        Implicit: "implicit",
-        Explicit: "explicit",
-        ExplicitComposite: "explicit_composite",
-        Unknown: "unknown"
-    },
-    FKSpecialization: {
-        Implicit: "implicit",
-        Explicit: "explicit",
-    }
-};
-
 function getFieldFormat(str: string): string {
     return toPascalCase(str);
 }

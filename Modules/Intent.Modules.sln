@@ -26,17 +26,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{41EB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.CSharp", "Intent.Modules.ModuleBuilder.CSharp\Intent.Modules.ModuleBuilder.CSharp.csproj", "{FC0DF4DD-975B-40A0-8534-871752B685B5}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.TypeScript", "Intent.Modules.ModuleBuilder.TypeScript\Intent.Modules.ModuleBuilder.TypeScript.csproj", "{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.TypeScript", "Intent.Modules.ModuleBuilder.TypeScript\Intent.Modules.ModuleBuilder.TypeScript.csproj", "{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Types", "Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj", "{ED404A63-FC25-4C42-AB4C-619815D8A6EB}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.Sql", "Intent.Modules.Common.Sql\Intent.Modules.Common.Sql.csproj", "{A412121D-D444-44CC-9974-A603F2372BDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Sql", "Intent.Modules.Common.Sql\Intent.Modules.Common.Sql.csproj", "{A412121D-D444-44CC-9974-A603F2372BDC}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.Sql", "Intent.Modules.ModuleBuilder.Sql\Intent.Modules.ModuleBuilder.Sql.csproj", "{3EFDFF8D-5841-49E9-B091-C4F1ABEC3D76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Sql", "Intent.Modules.ModuleBuilder.Sql\Intent.Modules.ModuleBuilder.Sql.csproj", "{3EFDFF8D-5841-49E9-B091-C4F1ABEC3D76}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.Java", "Intent.Modules.ModuleBuilder.Java\Intent.Modules.ModuleBuilder.Java.csproj", "{1486EC79-2FBD-4DA7-AF1F-7DC8F7CC0AAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Java", "Intent.Modules.ModuleBuilder.Java\Intent.Modules.ModuleBuilder.Java.csproj", "{1486EC79-2FBD-4DA7-AF1F-7DC8F7CC0AAB}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.Html", "Intent.Modules.ModuleBuilder.Html\Intent.Modules.ModuleBuilder.Html.csproj", "{4493CCFC-6BF3-4971-9E55-DA3E0E8ED660}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Html", "Intent.Modules.ModuleBuilder.Html\Intent.Modules.ModuleBuilder.Html.csproj", "{4493CCFC-6BF3-4971-9E55-DA3E0E8ED660}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.OutputTargets.Folders", "Intent.Modules.OutputTargets.Folders\Intent.Modules.OutputTargets.Folders.csproj", "{33437816-211B-4808-8AD9-E5866A7DCB27}"
 EndProject
@@ -48,7 +48,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Typ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.ServiceProxies", "Intent.Modules.Modelers.ServiceProxies\Intent.Modules.Modelers.ServiceProxies.csproj", "{817EC71F-A91D-4598-9A09-E05373EF4333}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.ApplicationTemplates", "Intent.ApplicationTemplates\Intent.ApplicationTemplates.csproj", "{45D36FA6-CF88-498B-9089-456EB751A331}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.ApplicationTemplates", "Intent.ApplicationTemplates\Intent.ApplicationTemplates.csproj", "{45D36FA6-CF88-498B-9089-456EB751A331}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application Templates", "Application Templates", "{CFF4E896-BD1F-4354-AAA8-8DB27FC8B102}"
 EndProject
@@ -58,9 +58,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.CShar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.CSharp.Tests", "Intent.Modules.Common.CSharp.Tests\Intent.Modules.Common.CSharp.Tests.csproj", "{A895DE2E-64EF-4750-A485-748ED052EFD3}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.Java", "Intent.Modules.Common.Java\Intent.Modules.Common.Java.csproj", "{1E028CA1-8132-4E7C-9856-50406F7F76C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Java", "Intent.Modules.Common.Java\Intent.Modules.Common.Java.csproj", "{1E028CA1-8132-4E7C-9856-50406F7F76C7}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.TypeScript", "Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj", "{E77CFD3A-9486-426C-8D00-5469A1229054}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.TypeScript", "Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj", "{E77CFD3A-9486-426C-8D00-5469A1229054}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Html", "Intent.Modules.Common.Html\Intent.Modules.Common.Html.csproj", "{21D5B8AB-C920-4FAB-B3BA-3A8367F9C059}"
 EndProject
@@ -72,11 +72,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilde
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Eventing", "Intent.Modules.Modelers.Eventing\Intent.Modules.Modelers.Eventing.csproj", "{556E7BCC-4E9B-45EE-8A05-6022C1084A2C}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.TypeScript.Weaving.Decorators", "Intent.Modules.TypeScript.Weaving.Decorators\Intent.Modules.TypeScript.Weaving.Decorators.csproj", "{68A6B5AA-3C9A-40F6-B191-6D46EA2F9D5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.TypeScript.Weaving.Decorators", "Intent.Modules.TypeScript.Weaving.Decorators\Intent.Modules.TypeScript.Weaving.Decorators.csproj", "{68A6B5AA-3C9A-40F6-B191-6D46EA2F9D5F}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.Kotlin", "Intent.Modules.Common.Kotlin\Intent.Modules.Common.Kotlin.csproj", "{4E438778-934D-4851-BD5A-D1A222C73C28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Kotlin", "Intent.Modules.Common.Kotlin\Intent.Modules.Common.Kotlin.csproj", "{4E438778-934D-4851-BD5A-D1A222C73C28}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.Kotlin", "Intent.Modules.ModuleBuilder.Kotlin\Intent.Modules.ModuleBuilder.Kotlin.csproj", "{430DA63E-E53B-4257-9EA7-B62823D045EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Kotlin", "Intent.Modules.ModuleBuilder.Kotlin\Intent.Modules.ModuleBuilder.Kotlin.csproj", "{430DA63E-E53B-4257-9EA7-B62823D045EF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Tests", "Intent.Modules.Common.Tests\Intent.Modules.Common.Tests.csproj", "{C551F279-7F20-43EF-9EC9-190C25A912E7}"
 EndProject
@@ -88,9 +88,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.TypeScript.Tests", "Intent.Modules.Common.TypeScript.Tests\Intent.Modules.Common.TypeScript.Tests.csproj", "{3E3FD03E-6D22-4090-A8B4-DF38C5F99F76}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.Dart", "Intent.Modules.Common.Dart\Intent.Modules.Common.Dart.csproj", "{C5D19ADB-2268-4C81-BFC1-D4D2D92147BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Dart", "Intent.Modules.Common.Dart\Intent.Modules.Common.Dart.csproj", "{C5D19ADB-2268-4C81-BFC1-D4D2D92147BE}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.Dart", "Intent.Modules.ModuleBuilder.Dart\Intent.Modules.ModuleBuilder.Dart.csproj", "{3606077E-C2CC-4C5D-8B55-9B57A36987AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Dart", "Intent.Modules.ModuleBuilder.Dart\Intent.Modules.ModuleBuilder.Dart.csproj", "{3606077E-C2CC-4C5D-8B55-9B57A36987AA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Types.Tests", "Intent.Modules.Common.Types.Tests\Intent.Modules.Common.Types.Tests.csproj", "{0FA79695-9CB5-4A45-AE6D-3ADF13A0DCDA}"
 EndProject
@@ -110,7 +110,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - S
 		..\Directory.Build.props = ..\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Java.Weaving.Annotations", "Intent.Modules.Java.Weaving.Annotations\Intent.Modules.Java.Weaving.Annotations.csproj", "{AB7B334C-A6CF-4138-92DD-5F89BAF9505B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Java.Weaving.Annotations", "Intent.Modules.Java.Weaving.Annotations\Intent.Modules.Java.Weaving.Annotations.csproj", "{AB7B334C-A6CF-4138-92DD-5F89BAF9505B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

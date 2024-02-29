@@ -1,3 +1,7 @@
+### Version 1.0.3
+
+- Improvement: Removed support for implicit keys, allowing keyless entities to now be modelled.
+
 ### Version 1.0.2
 
 - Improvement: CRUD Dialog no longer shows non-aggregate entities without primary keys.

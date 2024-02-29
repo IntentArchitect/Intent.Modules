@@ -7,7 +7,7 @@ interface IISelectEntityDialogOptions {
 class DomainHelper {
 
     static async openSelectEntityDialog(options?: IISelectEntityDialogOptions): Promise<MacroApi.Context.IElementApi> {
-        let classes = lookupTypesOf("Class").filter(x => DomainHelper.isAggregateRoot(x) || (options?.includeOwnedRelationships != false && DomainHelper.ownerIsAggregateRoot(x) && DomainHelper.hasPrimaryKey(x) ) || x.hasStereotype("Repository"));
+        let classes = lookupTypesOf("Class").filter(x => DomainHelper.isAggregateRoot(x) || (options?.includeOwnedRelationships != false && DomainHelper.ownerIsAggregateRoot(x) && DomainHelper.hasPrimaryKey(x)) || x.hasStereotype("Repository"));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
             return null;
@@ -69,7 +69,7 @@ class DomainHelper {
     static hasPrimaryKey(entity: MacroApi.Context.IElementApi): boolean {
         let keys = entity.getChildren("Attribute").filter(x => x.hasStereotype("Primary Key"));
         return keys.length > 0;
-    } 
+    }
 
     static getPrimaryKeys(entity: MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
         if (!entity) {
@@ -78,27 +78,14 @@ class DomainHelper {
 
         let primaryKeys = DomainHelper.getPrimaryKeysMap(entity);
 
-        if (Object.keys(primaryKeys).length == 0) {
-            return [
-                {
-                    id: null,
-                    name: DomainHelper.getAttributeNameFormat("Id"),
-                    typeId: DomainHelper.getSurrogateKeyType(),
-                    mapPath: null,
-                    isNullable: false,
-                    isCollection: false
-                }
-            ];
-        }
         return Object.values(primaryKeys);
     }
 
-    static isUserSuppliedPrimaryKey(pk: MacroApi.Context.IElementApi) : boolean{
+    static isUserSuppliedPrimaryKey(pk: MacroApi.Context.IElementApi): boolean {
         if (pk == null) return false;
         if (!pk.hasStereotype("Primary Key")) return false;
         var pkStereotype = pk.getStereotype("Primary Key");
-        if (!pkStereotype.hasProperty("Data source"))
-        {
+        if (!pkStereotype.hasProperty("Data source")) {
             return false;
         }
         return pkStereotype.getProperty("Data source").value == "User supplied";
@@ -176,27 +163,15 @@ class DomainHelper {
             }
         }
 
-        if (foreignKeys.length > 0) {
-            return foreignKeys.map(x => ({
-                name: DomainHelper.getAttributeNameFormat(x.getName()),
-                typeId: x.typeReference.typeId,
-                id: x.id,
-                mapPath: [x.id],
-                isCollection: x.typeReference.isCollection,
-                isNullable: x.typeReference.isNullable,
-                element: x
-            }));
-        }
-
-        // Implicit FKs:
-        return [{
-            name: DomainHelper.getAttributeNameFormat(`${owningAggregate.getName()}Id`),
-            typeId: DomainHelper.getPrimaryKeys(owningAggregate)[0].typeId,
-            id: null,
-            mapPath: null,
-            isCollection: false,
-            isNullable: false
-        }];
+        return foreignKeys.map(x => ({
+            name: DomainHelper.getAttributeNameFormat(x.getName()),
+            typeId: x.typeReference.typeId,
+            id: x.id,
+            mapPath: [x.id],
+            isCollection: x.typeReference.isCollection,
+            isNullable: x.typeReference.isNullable,
+            element: x
+        }));
     }
 
     static getChildrenOfType(entity: MacroApi.Context.IElementApi, type: string): IAttributeWithMapPath[] {
@@ -246,7 +221,7 @@ class DomainHelper {
             if (generalizations.length == 0) {
                 return;
             }
-            
+
             let generalization = generalizations[0];
             generalizationStack.push(generalization.id);
             let nextEntity = generalization.typeReference.getType();

@@ -27,7 +27,7 @@ interface IMappedRequestDetails {
 
 /**
  * Gets select details of a mapped Command/Query. Intended for centralized logic of working out
- * things like keys (including implicit ones) for both the entity and owning entity if applicable.
+ * things like keys for both the entity and owning entity if applicable.
  * 
  * If the Command is for entity creation (either due to being mapped to a constructor or being
  * prefixed with "Create"), then primary keys for the entity are not populated.
