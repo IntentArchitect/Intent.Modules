@@ -1,5 +1,5 @@
+/// <reference path="../_common/convertToAdvancedMapping.ts"/>
 /// <reference path="../create-crud/create-crud.ts"/>
-/// <reference path="../convert-to-advanced-mapping/convert-to-advanced-mapping.ts"/>
 
 async function execute(element: IElementApi) {
     let package = element.getPackage();

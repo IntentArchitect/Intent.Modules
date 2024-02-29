@@ -1,5 +1,5 @@
 /// <reference path="../create-crud-macro/create-crud-macro.ts"/>
-/// <reference path="../convert-to-advanced-mapping/convert-to-advanced-mapping.ts"/>
+/// <reference path="../_common/convertToAdvancedMapping.ts"/>
 
 async function execute(element: IElementApi) {
     let entity = await DomainHelper.openSelectEntityDialog();
