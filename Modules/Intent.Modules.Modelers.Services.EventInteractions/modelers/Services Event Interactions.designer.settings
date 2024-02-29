@@ -1263,6 +1263,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
             <source id="792374ff-6b97-45df-96de-01acd2488cc0" name="Property" />
             <source id="c0682bc4-2b6a-4638-a35e-39188d253694" name="Association Target End" />
             <source id="5a3018a8-38bc-450f-bf82-631e2d9475b3" name="Command" />
+            <source id="df404369-916e-4385-a29b-cbf86aa99846" name="Call Operation Action" />
           </sources>
           <targets>
             <target id="ff7ac0b8-9196-42c9-8196-241846f0ef60" name="DTO-Field" />
