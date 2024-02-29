@@ -1,3 +1,7 @@
+### Version 3.4.8
+
+- Fixed: Bug in Java parsing of certain annotations.
+
 ### Version 3.4.7
 
 - Improvement: Java Weaver updated to support Java 17 syntax (includes support now for `"""` text block quotes).
