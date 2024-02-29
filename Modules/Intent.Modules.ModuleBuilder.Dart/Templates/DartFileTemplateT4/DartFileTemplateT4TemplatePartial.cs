@@ -43,6 +43,7 @@ namespace Intent.Modules.ModuleBuilder.Dart.Templates.DartFileTemplateT4
                 relativeLocation: $"{FolderPath}");
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             if (TryGetExistingFileContent(out var content))

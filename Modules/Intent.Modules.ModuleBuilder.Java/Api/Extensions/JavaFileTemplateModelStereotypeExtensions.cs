@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Java.Api
     {
         public static JavaTemplateSettings GetJavaTemplateSettings(this JavaFileTemplateModel model)
         {
-            var stereotype = model.GetStereotype("Java Template Settings");
+            var stereotype = model.GetStereotype("d9a52e8e-dfa4-4604-9c04-8e023f2f7418");
             return stereotype != null ? new JavaTemplateSettings(stereotype) : null;
         }
 
 
         public static bool HasJavaTemplateSettings(this JavaFileTemplateModel model)
         {
-            return model.HasStereotype("Java Template Settings");
+            return model.HasStereotype("d9a52e8e-dfa4-4604-9c04-8e023f2f7418");
         }
 
         public static bool TryGetJavaTemplateSettings(this JavaFileTemplateModel model, out JavaTemplateSettings stereotype)
@@ -32,7 +32,7 @@ namespace Intent.ModuleBuilder.Java.Api
                 return false;
             }
 
-            stereotype = new JavaTemplateSettings(model.GetStereotype("Java Template Settings"));
+            stereotype = new JavaTemplateSettings(model.GetStereotype("d9a52e8e-dfa4-4604-9c04-8e023f2f7418"));
             return true;
         }
 

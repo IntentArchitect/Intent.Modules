@@ -60,14 +60,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>430da63e-e53b-4257-9ea7-b62823d045ef</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/README.txt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>430da63e-e53b-4257-9ea7-b62823d045ef</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#dd6c7fe3-cfd5-4bc1-8ea8-1f09e206147e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Templates/KotlinFile/KotlinFileTemplatePartial.cs</ApplicationRelativeFilePath>
@@ -123,7 +115,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#8bf30047-22ff-4a7e-a629-72747dc92a4a</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#8bf30047-22ff-4a7e-a629-72747dc92a4a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>

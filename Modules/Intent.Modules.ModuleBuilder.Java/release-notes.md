@@ -1,3 +1,10 @@
+### Version 3.5.0
+
+- Improvement: Will now add module dependencies on the following as needed:
+  - Intent.Modules.Common.Java 4.0.0.
+  - Intent.Code.Weaving.Java 1.0.0.
+- Improvement: Ensure that this module is running on the latest patterns and dependencies.
+
 ### Version 3.4.2
 
 - Fixed: Custom templates had a missing System using for NotImplementedException code.

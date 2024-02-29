@@ -41,6 +41,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFile
                 fileExtension: "tt");
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             if (TryGetExistingFileContent(out var content))

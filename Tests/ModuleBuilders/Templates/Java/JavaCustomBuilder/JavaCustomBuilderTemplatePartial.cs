@@ -9,7 +9,7 @@ using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial", Version = "1.0")]
 
@@ -21,11 +21,11 @@ namespace ModuleBuilders.Templates.Java.JavaCustomBuilder
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilders.Java.JavaCustomBuilder";
 
-        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        [IntentManaged(Mode.Fully, Body = Mode.Fully)]
         public JavaCustomBuilderTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             JavaFile = new JavaFile(this.GetPackage(), this.GetFolderPath())
-                .AddClass($"CustomBuilder", @class =>
+                .AddClass($"JavaCustomBuilder", @class =>
                 {
                     @class.AddConstructor(ctor =>
                     {

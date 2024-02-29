@@ -7,6 +7,8 @@
 <#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.ModuleBuilder.Dart.Api" #>
+using System;
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Dart.Templates;
@@ -40,6 +42,13 @@ namespace <#= Namespace #>
                 fileName: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name.ToKebabCase()}" : Model.Name.Replace("Template", "").ToKebabCase() #>"
             );
         }
+<#  if (Model.GetDartTemplateSettings()?.TemplatingMethod().IsCustom() == true) { #>
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override string TransformText()
+        {
+            throw new NotImplementedException("Implement custom template here");
+        }
+<#  } #>
     }
 }

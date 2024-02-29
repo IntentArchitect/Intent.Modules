@@ -3,7 +3,7 @@
   <ApplicationId>7cd27b49-d1d3-4c20-85b8-5090b0805098</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#f7a28819-512e-42c2-90c7-9fd845997fd2</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#f7a28819-512e-42c2-90c7-9fd845997fd2</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -11,7 +11,7 @@
     <FileLog>
       <ProjectId>68a6b5aa-3c9a-40f6-b191-6d46ea2f9d5f</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#68a6b5aa-3c9a-40f6-b191-6d46ea2f9d5f</CorrelationId>
-      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.TypeScript.Weaving.Decorators.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.TypeScript.Weaving.Decorators.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -25,14 +25,6 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>68a6b5aa-3c9a-40f6-b191-6d46ea2f9d5f</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <ProjectId>2c5f4eff-0292-4aad-9cef-186981febccc</ProjectId>
       <CorrelationId>ModuleBuilder.Typescript.Templates.TypescriptTemplate.PreProcessT4#739ac9eb-cc95-4aa2-9a64-fcf89a8e0888</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -42,7 +34,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>2c5f4eff-0292-4aad-9cef-186981febccc</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplate#739ac9eb-cc95-4aa2-9a64-fcf89a8e0888</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateT4#739ac9eb-cc95-4aa2-9a64-fcf89a8e0888</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/IntentDecorators/IntentDecoratorsTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>IntentDecorators/IntentDecoratorsTemplate.tt</ProjectRelativeFilePath>
@@ -62,6 +54,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/IntentDecorators/IntentDecoratorsTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>IntentDecorators/IntentDecoratorsTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c5f4eff-0292-4aad-9cef-186981febccc</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.TemplateExtensions</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/TemplateExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TemplateExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

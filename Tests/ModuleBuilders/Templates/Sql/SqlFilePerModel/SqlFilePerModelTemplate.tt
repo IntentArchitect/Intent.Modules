@@ -1,0 +1,11 @@
+<#@ template language="C#" inherits="SqlTemplateBase<Intent.Modelers.Domain.Api.ClassModel>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Sql.Templates" #>
+<#@ import namespace="Intent.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modelers.Domain.Api" #>
+
+-- Create your SQL template here.

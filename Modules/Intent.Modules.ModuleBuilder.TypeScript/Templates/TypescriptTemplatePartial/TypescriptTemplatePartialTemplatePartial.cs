@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public TypescriptTemplatePartialTemplate(IOutputTarget outputTarget, TypescriptFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.TypeScript", "3.4.3");
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommonTypeScript);
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
@@ -51,8 +51,12 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
             ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
 
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
-                moduleId: "Intent.Common.TypeScript",
-                moduleVersion: "3.4.3"));
+                moduleId: IntentModule.IntentCommonTypeScript.Name,
+                moduleVersion: IntentModule.IntentCommonTypeScript.Version));
+            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                moduleId: IntentModule.IntentCodeWeavingTypeScript.Name,
+                moduleVersion: IntentModule.IntentCodeWeavingTypeScript.Version));
+            
             if (Model.GetModelType() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(

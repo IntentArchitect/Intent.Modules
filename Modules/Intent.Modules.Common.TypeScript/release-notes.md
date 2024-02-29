@@ -1,3 +1,8 @@
+### Version 4.0.0
+
+- Improvement: Refactored code to use separately installable `Intent.Code.Weaving.TypeScript` module removing need for a "private" NuGet package.
+- Improvement: Ensure that this module is running on the latest patterns and dependencies.
+ 
 ### Version 3.4.3
 
 - Fixed: An exception would be thrown when the same decorator was applied more than once to a syntax node.

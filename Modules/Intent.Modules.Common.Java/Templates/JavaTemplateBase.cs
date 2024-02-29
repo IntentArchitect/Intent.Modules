@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Code.Weaving.Java.Editor;
 using Intent.Engine;
 using Intent.Modules.Common.Java.TypeResolvers;
 using Intent.Modules.Common.Templates;
@@ -162,14 +161,6 @@ namespace Intent.Modules.Common.Java.Templates
         public virtual IEnumerable<string> DeclareImports() => _imports;
 
         /// <summary>
-        /// Gets the <see cref="JavaFile"/> of the template output.
-        /// </summary>
-        public JavaFile GetTemplateFile()
-        {
-            return JavaFile.Parse(base.RunTemplate());
-        }
-
-        /// <summary>
         /// Resolves the type name of the <paramref name="templateDependency"/> as a string.
         /// Will automatically import types if necessary.
         /// </summary>
@@ -208,15 +199,14 @@ namespace Intent.Modules.Common.Java.Templates
             }
             return ImportType(fullyQualifiedType) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : "");
         }
-
+        
         /// <inheritdoc />
         public override string RunTemplate()
         {
-            var file = GetTemplateFile();
-
-            this.ResolveAndAddImports(file);
-
-            return file.GetSource();
+            return WeaverProvider.InsertImportDirectives(
+                base.RunTemplate(), 
+                this.Package,
+                this.GetAll<IDeclareImports, string>(item => item.DeclareImports()).Where(import => !string.IsNullOrWhiteSpace(import)).Distinct().ToArray());
         }
 
         /// <summary>

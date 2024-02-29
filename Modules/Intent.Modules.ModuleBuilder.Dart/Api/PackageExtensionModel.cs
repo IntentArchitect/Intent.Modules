@@ -19,6 +19,7 @@ namespace Intent.ModuleBuilder.Dart.Api
         {
         }
 
+        [IntentManaged(Mode.Fully)]
         public IList<DartFileTemplateModel> DartTemplates => UnderlyingPackage.ChildElements
             .GetElementsOfType(DartFileTemplateModel.SpecializationTypeId)
             .Select(x => new DartFileTemplateModel(x))

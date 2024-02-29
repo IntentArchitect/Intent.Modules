@@ -27,6 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Dart.Templates.DartFileTemplateT4
 
         public override string TemplateId => DartFileTemplateT4Template.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, DartFileTemplateModel model)
         {
             return new DartFileTemplateT4Template(outputTarget, model);

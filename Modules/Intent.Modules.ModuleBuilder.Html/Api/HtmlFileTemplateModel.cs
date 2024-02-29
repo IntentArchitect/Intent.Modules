@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Html.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class HtmlFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class HtmlFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
     {
         public new const string SpecializationType = "Html File Template";
 

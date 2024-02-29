@@ -27,6 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Dart.Templates.DartFileTemplatePartial
 
         public override string TemplateId => DartFileTemplatePartialTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, DartFileTemplateModel model)
         {
             return new DartFileTemplatePartialTemplate(outputTarget, model);

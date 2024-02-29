@@ -27,9 +27,10 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
 
         public override string TemplateId => SqlFileTemplatePartialTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project, SqlTemplateModel model)
+        [IntentManaged(Mode.Fully)]
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, SqlTemplateModel model)
         {
-            return new SqlFileTemplatePartialTemplate(project, model);
+            return new SqlFileTemplatePartialTemplate(outputTarget, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

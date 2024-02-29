@@ -27,6 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Dart.Templates.DartFileStringInterpolatio
 
         public override string TemplateId => DartFileStringInterpolationTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, DartFileTemplateModel model)
         {
             return new DartFileStringInterpolationTemplate(outputTarget, model);

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Code.Weaving.TypeScript.Editor;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript.TypeResolvers;
+using Intent.Modules.Common.TypeScript.Utils;
 using Intent.Templates;
 using Intent.Utils;
 
@@ -112,19 +112,19 @@ namespace Intent.Modules.Common.TypeScript.Templates
         /// <summary>
         /// Gets the <see cref="TypeScriptFile"/> of the template output.
         /// </summary>
-        public TypeScriptFile GetTemplateFile()
-        {
-            try
-            {
-                return new TypeScriptFileEditor(base.RunTemplate()).File;
-            }
-            catch
-            {
-                Logging.Log.Failure($@"Failed to parse TypesScript output file:
-{base.RunTemplate()}");
-                throw;
-            }
-        }
+//         public TypeScriptFile GetTemplateFile()
+//         {
+//             try
+//             {
+//                 return new TypeScriptFileEditor(base.RunTemplate()).File;
+//             }
+//             catch
+//             {
+//                 Logging.Log.Failure($@"Failed to parse TypesScript output file:
+// {base.RunTemplate()}");
+//                 throw;
+//             }
+//         }
 
         /// <summary>
         /// Adds an import with the specified information to this template and returns the
@@ -174,11 +174,30 @@ namespace Intent.Modules.Common.TypeScript.Templates
         /// <inheritdoc />
         public override string RunTemplate()
         {
-            var file = GetTemplateFile();
+            var typescriptImports = new List<Intent.Modules.Common.TypeScript.Utils.TypeScriptImport>();
 
-            file.AddDependencyImports(this);
+            var dependencies = this.GetTemplateDependencies().Select(this.ExecutionContext.FindTemplateInstance<ITemplate>).Distinct();
+            foreach (var dependency in dependencies)
+            {
+                if (dependency is not IClassProvider classProvider)
+                {
+                    continue;
+                }
 
-            return file.GetSource();
+                if (string.IsNullOrWhiteSpace(classProvider.ClassName))
+                {
+                    continue;
+                }
+
+                typescriptImports.Add(new Utils.TypeScriptImport(classProvider.ClassName, this.GetRelativePath(classProvider)));
+            }
+
+            foreach (var import in this.Imports)
+            {
+                typescriptImports.Add(new Utils.TypeScriptImport(import.Type, import.Location));
+            }
+
+            return WeaverProvider.InsertImportDirectives(base.RunTemplate(), typescriptImports);
         }
     }
 }

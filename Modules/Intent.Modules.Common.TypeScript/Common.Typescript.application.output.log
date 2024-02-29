@@ -3,7 +3,7 @@
   <ApplicationId>45b6cbb2-bbe2-4a28-a65b-1100ec6a550c</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#c023bb5c-7fb8-4e2d-9fd5-ae504020e5bb</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#c023bb5c-7fb8-4e2d-9fd5-ae504020e5bb</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -43,7 +43,7 @@
     <FileLog>
       <ProjectId>601e229b-c0be-440e-8a38-4553f62d54b9</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#601e229b-c0be-440e-8a38-4553f62d54b9</CorrelationId>
-      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Common.TypeScript.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.TypeScript.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

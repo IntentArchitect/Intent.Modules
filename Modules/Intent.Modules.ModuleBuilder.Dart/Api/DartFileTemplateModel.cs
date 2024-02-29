@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Dart.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DartFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class DartFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
     {
         public new const string SpecializationType = "Dart File Template";
         public new const string SpecializationTypeId = "755fcfd3-6232-4ed8-9bfc-2d09af503697";

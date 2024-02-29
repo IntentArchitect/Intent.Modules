@@ -39,7 +39,7 @@
       <childElements>
         <childElement id="7c216890-3f73-4de3-b10d-04dbca2db4a5" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>guid</name>
-          <display>guid = guid</display>
+          <display>guid</display>
           <isAbstract>false</isAbstract>
           <value>guid</value>
           <genericTypes />
@@ -53,7 +53,7 @@
         </childElement>
         <childElement id="155d19d9-6021-4123-ba8e-38d4f088602b" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>long</name>
-          <display>long = long</display>
+          <display>long</display>
           <isAbstract>false</isAbstract>
           <value>long</value>
           <genericTypes />
@@ -67,7 +67,7 @@
         </childElement>
         <childElement id="836ace2d-f119-4fc9-9df2-5aba083a5d3b" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>int</name>
-          <display>int = int</display>
+          <display>int</display>
           <isAbstract>false</isAbstract>
           <value>int</value>
           <genericTypes />
@@ -108,7 +108,7 @@
       <childElements>
         <childElement id="80f5cb0d-327d-4767-a066-089ce2534974" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Manually add PKs and FKs</name>
-          <display>Manually add PKs and FKs = manual</display>
+          <display>Manually add PKs and FKs</display>
           <isAbstract>false</isAbstract>
           <value>manual</value>
           <genericTypes />
@@ -122,7 +122,7 @@
         </childElement>
         <childElement id="b0baec9c-8f61-4f81-ab93-68e30c7c767c" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Explicitly add PKs and FKs automatically</name>
-          <display>Explicitly add PKs and FKs automatically = explicit</display>
+          <display>Explicitly add PKs and FKs automatically</display>
           <isAbstract>false</isAbstract>
           <value>explicit</value>
           <genericTypes />
@@ -136,7 +136,7 @@
         </childElement>
         <childElement id="8ecefc89-95dd-4dc8-9ad4-1e6ab1b1aa53" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Remove all managed PKs and FKs</name>
-          <display>Remove all managed PKs and FKs = implicit</display>
+          <display>Remove all managed PKs and FKs</display>
           <isAbstract>false</isAbstract>
           <value>implicit</value>
           <genericTypes />

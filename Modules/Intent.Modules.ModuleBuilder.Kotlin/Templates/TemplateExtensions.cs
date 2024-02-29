@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Intent.ModuleBuilder.Kotlin.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFileTemplatePartial;
 using Intent.RoslynWeaver.Attributes;
@@ -10,12 +11,12 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates
 {
     public static class TemplateExtensions
     {
-        public static string GetKotlinFileTemplatePartialName<T>(this IntentTemplateBase<T> template) where T : Intent.ModuleBuilder.Kotlin.Api.KotlinFileTemplateModel
+        public static string GetKotlinFileTemplatePartialName<T>(this IIntentTemplate<T> template) where T : KotlinFileTemplateModel
         {
             return template.GetTypeName(KotlinFileTemplatePartialTemplate.TemplateId, template.Model);
         }
 
-        public static string GetKotlinFileTemplatePartialName(this IntentTemplateBase template, Intent.ModuleBuilder.Kotlin.Api.KotlinFileTemplateModel model)
+        public static string GetKotlinFileTemplatePartialName(this IIntentTemplate template, KotlinFileTemplateModel model)
         {
             return template.GetTypeName(KotlinFileTemplatePartialTemplate.TemplateId, model);
         }

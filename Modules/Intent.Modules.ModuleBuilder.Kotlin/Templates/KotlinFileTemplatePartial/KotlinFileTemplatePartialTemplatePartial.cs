@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
@@ -26,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFileTemplatePartia
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public KotlinFileTemplatePartialTemplate(IOutputTarget outputTarget, KotlinFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Kotlin", "3.3.0");
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommonKotlin);
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
@@ -46,13 +47,16 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFileTemplatePartia
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
-            Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
-                moduleId: "Intent.Common.Kotlin",
-                moduleVersion: "3.3.0"));
+            ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
+            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                moduleId: IntentModule.IntentCommonKotlin.Name,
+                moduleVersion: IntentModule.IntentCommonKotlin.Version));
+            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                moduleId: IntentModule.IntentCodeWeavingKotlin.Name,
+                moduleVersion: IntentModule.IntentCodeWeavingKotlin.Version));
             if (Model.GetModelType() != null)
             {
-                Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                     moduleId: Model.GetModelType().ParentModule.Name,
                     moduleVersion: Model.GetModelType().ParentModule.Version));
             }

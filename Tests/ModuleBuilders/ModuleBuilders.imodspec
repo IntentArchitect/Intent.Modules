@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>ModuleBuilders</id>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <supportedClientVersions>[4.1.0,5.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.Tests.</summary>
   <description>A custom module for Intent.Modules.Tests.</description>
@@ -104,6 +104,42 @@
       <role>Default</role>
       <location></location>
     </template>
+    <template id="ModuleBuilders.Dart.DartCustomCustom" externalReference="4c723539-438e-4ff8-aa30-9513efd7bfb5">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Dart.DartCustomStringInter" externalReference="c7b82253-6042-442f-9191-7b46a6839cfd">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Dart.DartCustomT4" externalReference="c901714e-284f-4e3a-af51-64260010f43c">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Dart.DartFilePerModelCustom" externalReference="70d8cc10-9fc3-4c76-9244-7ff0ce886d7a">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Dart.DartFilePerModelStringInter" externalReference="79b4d772-eb7f-483c-aba9-f47fbef4842c">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Dart.DartFilePerModelT4" externalReference="6cf2ec8b-81b3-423e-a278-21c6f200708f">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Dart.DartSingleFileCustom" externalReference="0df165b2-9271-44d8-81f0-c3631f407bbf">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Dart.DartSingleFileStringInter" externalReference="731e0d09-f0f9-4006-8c9a-11e0e904f7d7">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Dart.DartSingleFileT4" externalReference="ec1c4861-d1a0-46b6-9f44-958b578a4d43">
+      <role>Default</role>
+      <location></location>
+    </template>
     <template id="ModuleBuilders.File.DataFileBuilderFilePerModelJson" externalReference="f7487470-2141-4953-87c0-2151d93b9437">
       <role>Default</role>
       <location></location>
@@ -172,6 +208,18 @@
       <role>Default</role>
       <location></location>
     </template>
+    <template id="ModuleBuilders.Html.HtmlCustom" externalReference="428c5851-9b18-4e40-8145-6b29956a296c">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Html.HtmlFilePerModel" externalReference="7a6f1fd8-87de-41b7-b684-5a263df9160d">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Html.HtmlSingleFile" externalReference="bf4691c3-4796-48cc-8d85-69c357433ef7">
+      <role>Default</role>
+      <location></location>
+    </template>
     <template id="ModuleBuilders.Java.JavaCustomBuilder" externalReference="0a791609-c7ae-44a3-8740-55fb146133d9">
       <role>Default</role>
       <location></location>
@@ -217,6 +265,30 @@
       <location></location>
     </template>
     <template id="ModuleBuilders.Java.JavaSingleFileT4" externalReference="18ad0b47-6745-4bb9-b6bf-ed38735b250e">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Kotlin.KotlinCustom" externalReference="ab506c21-6992-45a9-a7bf-539573871e2e">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Kotlin.KotlinFilePerModel" externalReference="f491ba08-8980-47e1-83e0-344e9341ef9f">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Kotlin.KotlinSingleFile" externalReference="3a81c574-e058-4f70-8940-c0c73bdfbaa2">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Sql.SqlCustomTemplate" externalReference="db15e6a1-4554-4d0f-8edd-1032f1217996">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Sql.SqlFilePerModelTemplate" externalReference="9330f608-95d0-4619-b7cb-8030cf02d4d7">
+      <role>Default</role>
+      <location></location>
+    </template>
+    <template id="ModuleBuilders.Sql.SqlSingleFileTemplate" externalReference="4175b48a-2cbf-462a-b5a0-57a7bc0c51b9">
       <role>Default</role>
       <location></location>
     </template>
@@ -273,13 +345,21 @@
   <factoryExtensions></factoryExtensions>
   <moduleSettings></moduleSettings>
   <dependencies>
+    <dependency id="Intent.Code.Weaving.Html" version="1.0.0" />
+    <dependency id="Intent.Code.Weaving.Java" version="1.0.0" />
+    <dependency id="Intent.Code.Weaving.Kotlin" version="1.0.0" />
+    <dependency id="Intent.Code.Weaving.TypeScript" version="1.0.0" />
     <dependency id="Intent.Common" version="3.5.0" />
-    <dependency id="Intent.Common.CSharp" version="3.3.25" />
-    <dependency id="Intent.Common.Java" version="3.4.3" />
+    <dependency id="Intent.Common.CSharp" version="3.5.2" />
+    <dependency id="Intent.Common.Dart" version="1.1.0-pre.0" />
+    <dependency id="Intent.Common.Html" version="4.0.0-pre.1" />
+    <dependency id="Intent.Common.Java" version="4.0.0-pre.1" />
+    <dependency id="Intent.Common.Kotlin" version="4.0.0-pre.0" />
+    <dependency id="Intent.Common.Sql" version="3.4.0-pre.0" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
-    <dependency id="Intent.Common.TypeScript" version="3.4.3" />
+    <dependency id="Intent.Common.TypeScript" version="4.0.0-pre.0" />
     <dependency id="Intent.Modelers.Domain" version="3.7.0-pre.0" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="4.3.1" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="4.5.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

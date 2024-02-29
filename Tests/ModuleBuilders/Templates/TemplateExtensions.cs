@@ -14,6 +14,15 @@ using ModuleBuilders.Templates.CSharp.CSharpSingleFileBuilder;
 using ModuleBuilders.Templates.CSharp.CSharpSingleFileCustom;
 using ModuleBuilders.Templates.CSharp.CSharpSingleFileStringInter;
 using ModuleBuilders.Templates.CSharp.CSharpSingleFileT4;
+using ModuleBuilders.Templates.Dart.DartCustomCustom;
+using ModuleBuilders.Templates.Dart.DartCustomStringInter;
+using ModuleBuilders.Templates.Dart.DartCustomT4;
+using ModuleBuilders.Templates.Dart.DartFilePerModelCustom;
+using ModuleBuilders.Templates.Dart.DartFilePerModelStringInter;
+using ModuleBuilders.Templates.Dart.DartFilePerModelT4;
+using ModuleBuilders.Templates.Dart.DartSingleFileCustom;
+using ModuleBuilders.Templates.Dart.DartSingleFileStringInter;
+using ModuleBuilders.Templates.Dart.DartSingleFileT4;
 using ModuleBuilders.Templates.Java.JavaCustomBuilder;
 using ModuleBuilders.Templates.Java.JavaCustomCustom;
 using ModuleBuilders.Templates.Java.JavaCustomStringInter;
@@ -26,6 +35,9 @@ using ModuleBuilders.Templates.Java.JavaSingleFileBuilder;
 using ModuleBuilders.Templates.Java.JavaSingleFileCustom;
 using ModuleBuilders.Templates.Java.JavaSingleFileStringInter;
 using ModuleBuilders.Templates.Java.JavaSingleFileT4;
+using ModuleBuilders.Templates.Kotlin.KotlinCustom;
+using ModuleBuilders.Templates.Kotlin.KotlinFilePerModel;
+using ModuleBuilders.Templates.Kotlin.KotlinSingleFile;
 using ModuleBuilders.Templates.TypeScript.TypeScriptCustomBuilder;
 using ModuleBuilders.Templates.TypeScript.TypeScriptCustomCustom;
 using ModuleBuilders.Templates.TypeScript.TypeScriptCustomStringInter;
@@ -127,6 +139,66 @@ namespace ModuleBuilders.Templates
             return template.GetTypeName(CSharpSingleFileT4Template.TemplateId);
         }
 
+        public static string GetDartCustomCustomTemplateName(this IIntentTemplate template)
+        {
+            return template.GetTypeName(DartCustomCustomTemplate.TemplateId);
+        }
+
+        public static string GetDartCustomStringInterTemplateName(this IIntentTemplate template)
+        {
+            return template.GetTypeName(DartCustomStringInterTemplate.TemplateId);
+        }
+
+        public static string GetDartCustomT4TemplateName(this IIntentTemplate template)
+        {
+            return template.GetTypeName(DartCustomT4Template.TemplateId);
+        }
+
+        public static string GetDartFilePerModelCustomTemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
+        {
+            return template.GetTypeName(DartFilePerModelCustomTemplate.TemplateId, template.Model);
+        }
+
+        public static string GetDartFilePerModelCustomTemplateName(this IIntentTemplate template, ClassModel model)
+        {
+            return template.GetTypeName(DartFilePerModelCustomTemplate.TemplateId, model);
+        }
+
+        public static string GetDartFilePerModelStringInterTemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
+        {
+            return template.GetTypeName(DartFilePerModelStringInterTemplate.TemplateId, template.Model);
+        }
+
+        public static string GetDartFilePerModelStringInterTemplateName(this IIntentTemplate template, ClassModel model)
+        {
+            return template.GetTypeName(DartFilePerModelStringInterTemplate.TemplateId, model);
+        }
+
+        public static string GetDartFilePerModelT4TemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
+        {
+            return template.GetTypeName(DartFilePerModelT4Template.TemplateId, template.Model);
+        }
+
+        public static string GetDartFilePerModelT4TemplateName(this IIntentTemplate template, ClassModel model)
+        {
+            return template.GetTypeName(DartFilePerModelT4Template.TemplateId, model);
+        }
+
+        public static string GetDartSingleFileCustomTemplateName(this IIntentTemplate template)
+        {
+            return template.GetTypeName(DartSingleFileCustomTemplate.TemplateId);
+        }
+
+        public static string GetDartSingleFileStringInterTemplateName(this IIntentTemplate template)
+        {
+            return template.GetTypeName(DartSingleFileStringInterTemplate.TemplateId);
+        }
+
+        public static string GetDartSingleFileT4TemplateName(this IIntentTemplate template)
+        {
+            return template.GetTypeName(DartSingleFileT4Template.TemplateId);
+        }
+
         public static string GetJavaCustomBuilderTemplateName(this IIntentTemplate template)
         {
             return template.GetTypeName(JavaCustomBuilderTemplate.TemplateId);
@@ -205,6 +277,26 @@ namespace ModuleBuilders.Templates
         public static string GetJavaSingleFileT4TemplateName(this IIntentTemplate template)
         {
             return template.GetTypeName(JavaSingleFileT4Template.TemplateId);
+        }
+
+        public static string GetKotlinCustomTemplateName(this IIntentTemplate template)
+        {
+            return template.GetTypeName(KotlinCustomTemplate.TemplateId);
+        }
+
+        public static string GetKotlinFilePerModelTemplateName<T>(this IIntentTemplate<T> template) where T : ClassModel
+        {
+            return template.GetTypeName(KotlinFilePerModelTemplate.TemplateId, template.Model);
+        }
+
+        public static string GetKotlinFilePerModelTemplateName(this IIntentTemplate template, ClassModel model)
+        {
+            return template.GetTypeName(KotlinFilePerModelTemplate.TemplateId, model);
+        }
+
+        public static string GetKotlinSingleFileTemplateName(this IIntentTemplate template)
+        {
+            return template.GetTypeName(KotlinSingleFileTemplate.TemplateId);
         }
 
         public static string GetTypeScriptCustomBuilderTemplateName(this IIntentTemplate template)

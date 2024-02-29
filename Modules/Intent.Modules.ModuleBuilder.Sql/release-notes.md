@@ -1,3 +1,7 @@
+### Version 3.4.0
+
+- Improvement: Ensure that this module is running on the latest patterns and dependencies.
+
 ### Version 3.3.3
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.

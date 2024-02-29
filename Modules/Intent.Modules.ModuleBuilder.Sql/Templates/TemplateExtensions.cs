@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Intent.ModuleBuilder.Sql.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial;
 using Intent.RoslynWeaver.Attributes;
@@ -10,12 +11,12 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates
 {
     public static class TemplateExtensions
     {
-        public static string GetSqlFileTemplatePartialName<T>(this IntentTemplateBase<T> template) where T : Intent.ModuleBuilder.Sql.Api.SqlTemplateModel
+        public static string GetSqlFileTemplatePartialName<T>(this IIntentTemplate<T> template) where T : SqlTemplateModel
         {
             return template.GetTypeName(SqlFileTemplatePartialTemplate.TemplateId, template.Model);
         }
 
-        public static string GetSqlFileTemplatePartialName(this IntentTemplateBase template, Intent.ModuleBuilder.Sql.Api.SqlTemplateModel model)
+        public static string GetSqlFileTemplatePartialName(this IIntentTemplate template, SqlTemplateModel model)
         {
             return template.GetTypeName(SqlFileTemplatePartialTemplate.TemplateId, model);
         }

@@ -1,18 +1,22 @@
+### Version 3.4.8
+
+- Improvement: Uses newer version of the `Intent.Common.CSharp` module.
+
 ### Version 3.4.7
 
-- Updated dependencies.
+- Improvement: Updated dependencies.
 
 ### Version 3.4.6
 
-- Improved default implementation of interfaces.
+- Improvement: Improved default implementation of interfaces.
 
 ### Version 3.4.5
 
-- Implements a default interface implementation for CSharp Templates that's name is suffixed with `Interface`.
+- Improvement: Implements a default interface implementation for CSharp Templates that's name is suffixed with `Interface`.
 
 ### Version 3.4.4
 
-- Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
+- Improvement: Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
 
 ### Version 3.4.3
 - Fix: Custom Templates not compiling out the box, added missing `using Systerm` clause. 

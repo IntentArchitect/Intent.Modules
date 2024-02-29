@@ -1,3 +1,7 @@
+### Version 1.1.0
+
+- Improvement: Ensure that this module is running on the latest patterns and dependencies.
+
 ### Version 1.0.3
 
 - Improvement: Updated icon.

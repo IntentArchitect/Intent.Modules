@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Java.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class JavaFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class JavaFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
     {
         public new const string SpecializationType = "Java File Template";
 

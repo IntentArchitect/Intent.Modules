@@ -27,9 +27,10 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
 
         public override string TemplateId => JavaFileTemplatePartialTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project, JavaFileTemplateModel model)
+        [IntentManaged(Mode.Fully)]
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, JavaFileTemplateModel model)
         {
-            return new JavaFileTemplatePartialTemplate(project, model);
+            return new JavaFileTemplatePartialTemplate(outputTarget, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

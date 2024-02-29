@@ -51,8 +51,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
 
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
-                moduleId: "Intent.Common.CSharp",
-                moduleVersion: "3.3.25"));
+                moduleId: IntentModule.IntentCommonCSharp.Name,
+                moduleVersion: IntentModule.IntentCommonCSharp.Version));
             if (Model.GetDesigner() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(

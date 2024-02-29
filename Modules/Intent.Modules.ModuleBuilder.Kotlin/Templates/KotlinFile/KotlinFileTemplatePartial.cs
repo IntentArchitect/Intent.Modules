@@ -46,6 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFile
                 relativeLocation: $"{FolderPath}");
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             var content = GetExistingTemplateContent();
