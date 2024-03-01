@@ -1,3 +1,7 @@
+### Version 3.9.0
+
+- Improvement: Supports additional options for the Advanced Mapping settings.
+
 ### Version 3.8.4
 
 - Improvement: Uses more recent version of the `Intent.OutputManager.RoslynWeaver` module.
