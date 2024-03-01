@@ -1,3 +1,7 @@
+### Version 3.4.9
+
+- Fixed: Better test coverage for Java parsing to iron out remaining issues.
+
 ### Version 3.4.8
 
 - Fixed: Bug in Java parsing of certain annotations.
