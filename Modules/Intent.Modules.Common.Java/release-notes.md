@@ -3,6 +3,10 @@
 - Improvement: Refactored code to use separately installable `Intent.Code.Weaving.Java` module removing need for a "private" NuGet package.
 - Improvement: Ensure that this module is running on the latest patterns and dependencies.
 
+### Version 3.4.9
+
+- Fixed: Better test coverage for Java parsing to iron out remaining issues.
+
 ### Version 3.4.8
 
 - Fixed: Bug in Java parsing of certain annotations.
