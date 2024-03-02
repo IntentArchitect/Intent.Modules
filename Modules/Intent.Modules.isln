@@ -37,19 +37,8 @@
     <application id="3517d53b-f6f7-4d96-8315-efcc6d5622ec" name="Common.CSharp" relativePath="Intent.Modules.Common.CSharp/Common.CSharp.application.config" />
     <application id="e52a0850-142f-406c-aa52-8c8bc5b261ed" name="Common.Java" relativePath="Intent.Modules.Common.Java/Common.Java.application.config" />
     <application id="ac4c4f4d-6091-4b04-9201-07a98b58f3ff" name="Intent.ApplicationTemplates.Metadata.ModuleBuilder" relativePath="Intent.ApplicationTemplates.Metadata.ModuleBuilder/Intent.ApplicationTemplates.Metadata.ModuleBuilder.application.config" />
-    <application id="ada97aea-2d45-46ab-844d-6dc369d484bb" name="Intent.Modules.Modelers.Services.CRUD.ServiceDispatch" relativePath="Intent.Modules.Modelers.Services.CRUD.ServiceDispatch/Intent.Modules.Modelers.Services.CRUD.ServiceDispatch.application.config" />
     <application id="0dd467e5-63fe-41f9-8a0a-f4454ff6cca9" name="Intent.Modules.Modelers.Domain.ValueObjects" relativePath="Intent.Modules.Modelers.Domain.ValueObjects/Intent.Modules.Modelers.Domain.ValueObjects.application.config" />
     <application id="15f6f6c5-bac3-414f-8dd2-f1474dbf94e2" name="Intent.Modules.Modelers.Domain.Repositories" relativePath="Intent.Modules.Modelers.Domain.Repositories/Intent.Modules.Modelers.Domain.Repositories.application.config" />
-    <application id="33d8ae8a-b8df-47c3-8c54-bf86b4221af7" name="Intent.Modules.Modelers.AWS" relativePath="Intent.Modules.Modelers.AWS/Intent.Modules.Modelers.AWS.application.config" />
-    <application id="9fcb0bf5-3ecd-4325-b78c-7fe19c1a275e" name="Intent.Modules.Modelers.Application" relativePath="Intent.Modules.Modelers.Application/Intent.Modules.Modelers.Application.application.config" />
-    <application id="7b78286c-163e-4e75-a2fd-14d027cb9df5" name="Intent.Modules.Modelers.AWS.DynamoDB" relativePath="Intent.Modules.Modelers.AWS.DynamoDB/Intent.Modules.Modelers.AWS.DynamoDB.application.config" />
-    <application id="898f4a2c-0f24-413b-bb8d-27240afe2ab5" name="Intent.Modules.Modelers.AWS.Lambda" relativePath="Intent.Modules.Modelers.AWS.Lambda/Intent.Modules.Modelers.AWS.Lambda.application.config" />
-    <application id="bdfd1bcb-c6d8-4e57-8797-909f72bc44db" name="Intent.Modules.Modelers.AWS.SQS" relativePath="Intent.Modules.Modelers.AWS.SQS/Intent.Modules.Modelers.AWS.SQS.application.config" />
-    <application id="1978d2c0-d825-4045-9df7-e453eae64401" name="Intent.Modules.Modelers.AWS.StepFunctions" relativePath="Intent.Modules.Modelers.AWS.StepFunctions/Intent.Modules.Modelers.AWS.StepFunctions.application.config" />
-    <application id="7434cb26-b5cd-4500-a6af-416ddebbdb3b" name="Modelers.AWS.ApiGateway" relativePath="Intent.Modules.Modelers.AWS.ApiGateway/Intent.Modules.Modelers.AWS.ApiGateway.application.config" />
-    <application id="c6135b48-c5cb-4f08-b06e-dc189c0d8b9b" name="Intent.Modules.Modelers.AWS.S3" relativePath="Intent.Modules.Modelers.AWS.S3/Intent.Modules.Modelers.AWS.S3.application.config" />
-    <application id="f7e143e9-b91c-4747-9e70-2d1e1fa5e660" name="Intent.Modules.Modelers.AWS.AppSync" relativePath="Intent.Modules.Modelers.AWS.AppSync/Intent.Modules.Modelers.AWS.AppSync.application.config" />
-    <application id="5b229996-bc39-4e98-ba95-efe1df210c15" name="Intent.Modules.Modelers.AWS.CDK" relativePath="Intent.Modules.Modelers.AWS.CDK/Intent.Modules.Modelers.AWS.CDK.application.config" />
     <application id="1b952c0f-d987-4027-b6e9-767e3ad01e16" name="Intent.Modules.Common.Dart" relativePath="Intent.Modules.Common.Dart/Intent.Modules.Common.Dart.application.config" />
     <application id="9d8529f0-1571-4889-aeba-df2b4497716b" name="Intent.Modules.ModuleBuilder.Dart" relativePath="Intent.Modules.ModuleBuilder.Dart/Intent.Modules.ModuleBuilder.Dart.application.config" />
     <application id="8091eea0-0ab6-48c1-9aef-0ec7ae2b5b0c" name="Intent.Modules.Modelers.Domain.Services" relativePath="Intent.Modules.Modelers.Domain.Services/Intent.Modules.Modelers.Domain.Services.application.config" />
@@ -60,7 +49,7 @@
     <application id="ec72e814-e39a-47e3-9570-17eab35420ce" name="Intent.Modules.Modelers.Services.EventInteractions" relativePath="Intent.Modules.Modelers.Services.EventInteractions/Intent.Modules.Modelers.Services.EventInteractions.application.config" />
     <application id="ceb815c5-d710-40ef-b963-541979dc5597" name="Intent.Modules.Modelers.UI" relativePath="Intent.Modules.Modelers.UI/Intent.Modules.Modelers.UI.application.config" />
     <application id="2f056b26-eec3-4f6b-8447-2b1382956315" name="Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config" relativePath="Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config/Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config.application.config" />
-	<application id="34ab81e4-7133-42aa-a9ac-72dc515be606" name="Intent.Modules.Java.Weaving.Annotations" relativePath="Intent.Modules.Java.Weaving.Annotations/Intent.Modules.Java.Weaving.Annotations.application.config" />
+    <application id="34ab81e4-7133-42aa-a9ac-72dc515be606" name="Intent.Modules.Java.Weaving.Annotations" relativePath="Intent.Modules.Java.Weaving.Annotations/Intent.Modules.Java.Weaving.Annotations.application.config" />
     <application id="62e3977a-20a5-4637-b195-5dd11b6939bb" name="Intent.Modules.Modelers.UI.ServiceProxies" relativePath="Intent.Modules.Modelers.UI.ServiceProxies/Intent.Modules.Modelers.UI.ServiceProxies.application.config" />
   </applications>
 </solution>
