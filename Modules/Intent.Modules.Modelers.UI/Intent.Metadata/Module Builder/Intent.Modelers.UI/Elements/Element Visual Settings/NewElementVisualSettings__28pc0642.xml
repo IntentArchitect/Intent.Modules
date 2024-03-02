@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="1f69fe20-07aa-47c7-a856-f82f5e91f733" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>NewElementVisualSettings</name>
-  <display>[visual]: Component Command</display>
+  <display>[visual]: Event Emitter</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <order>3</order>

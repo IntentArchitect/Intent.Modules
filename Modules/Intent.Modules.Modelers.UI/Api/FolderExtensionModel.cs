@@ -29,15 +29,5 @@ namespace Intent.Modelers.UI.Api
             .Select(x => new ModelDefinitionModel(x))
             .ToList();
 
-        public IList<TypeDefinitionModel> TypeDefinitions => _element.ChildElements
-            .GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
-            .Select(x => new TypeDefinitionModel(x))
-            .ToList();
-
-        public IList<EnumModel> Enums => _element.ChildElements
-            .GetElementsOfType(EnumModel.SpecializationTypeId)
-            .Select(x => new EnumModel(x))
-            .ToList();
-
     }
 }

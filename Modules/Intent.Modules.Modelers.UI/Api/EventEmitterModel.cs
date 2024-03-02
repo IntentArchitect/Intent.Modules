@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ComponentInputModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    public class EventEmitterModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
-        public const string SpecializationType = "Component Input";
-        public const string SpecializationTypeId = "807bc2cd-cdba-482d-a47e-d2aa546200fc";
+        public const string SpecializationType = "Event Emitter";
+        public const string SpecializationTypeId = "d6739ffc-30e6-4170-a105-bf28e69aa578";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public ComponentInputModel(IElement element, string requiredType = SpecializationType)
+        public EventEmitterModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -40,12 +40,17 @@ namespace Intent.Modelers.UI.Api
 
         public IElement InternalElement => _element;
 
+        public IList<ParameterModel> Parameters => _element.ChildElements
+            .GetElementsOfType(ParameterModel.SpecializationTypeId)
+            .Select(x => new ParameterModel(x))
+            .ToList();
+
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(ComponentInputModel other)
+        public bool Equals(EventEmitterModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -55,7 +60,7 @@ namespace Intent.Modelers.UI.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ComponentInputModel)obj);
+            return Equals((EventEmitterModel)obj);
         }
 
         public override int GetHashCode()
@@ -65,17 +70,17 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ComponentInputModelExtensions
+    public static class EventEmitterModelExtensions
     {
 
-        public static bool IsComponentInputModel(this ICanBeReferencedType type)
+        public static bool IsEventEmitterModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ComponentInputModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == EventEmitterModel.SpecializationTypeId;
         }
 
-        public static ComponentInputModel AsComponentInputModel(this ICanBeReferencedType type)
+        public static EventEmitterModel AsEventEmitterModel(this ICanBeReferencedType type)
         {
-            return type.IsComponentInputModel() ? new ComponentInputModel((IElement)type) : null;
+            return type.IsEventEmitterModel() ? new EventEmitterModel((IElement)type) : null;
         }
     }
 }

@@ -47,9 +47,9 @@ namespace Intent.Modelers.UI.Api
 
         public IElement InternalElement => _element;
 
-        public IList<ModelDefinitionFieldModel> Fields => _element.ChildElements
-            .GetElementsOfType(ModelDefinitionFieldModel.SpecializationTypeId)
-            .Select(x => new ModelDefinitionFieldModel(x))
+        public IList<PropertyModel> Properties => _element.ChildElements
+            .GetElementsOfType(PropertyModel.SpecializationTypeId)
+            .Select(x => new PropertyModel(x))
             .ToList();
 
         public override string ToString()

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="d6739ffc-30e6-4170-a105-bf28e69aa578" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Component Command</name>
-  <display>Component Command</display>
+  <name>Event Emitter</name>
+  <display>Event Emitter</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>4</order>
+  <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>b1c481e1-e91e-4c29-9817-00ab9cad4b6b</parentFolderId>
@@ -65,11 +65,11 @@
       <childElements>
         <childElement id="3feceaff-65df-4c11-8971-6666ed9dcc5e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Parameter</name>
-          <display>Add Parameter: Command Parameter</display>
+          <display>Add Parameter: Parameter</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="4bbc638f-e784-44f2-9c0c-512e42c1d73d">
-            <typeId>4a1ce2a9-e79f-4e93-96af-24b44728ecbc</typeId>
+            <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

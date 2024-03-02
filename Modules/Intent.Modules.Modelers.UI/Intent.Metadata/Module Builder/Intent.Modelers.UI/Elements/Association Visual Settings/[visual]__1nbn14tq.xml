@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="1ce1f617-893c-43ba-938a-e70cfcf231fe" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
   <name>[visual]</name>
-  <display>[visual]: void</display>
+  <display>[visual]: Navigation</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="cd199328-e1cf-489e-9d8b-127b0cdfdd71">
+    <typeId>6d2b2070-c1cb-4cd2-88b4-4e5f8414bd9e</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.UI</typePackageName>
+    <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>

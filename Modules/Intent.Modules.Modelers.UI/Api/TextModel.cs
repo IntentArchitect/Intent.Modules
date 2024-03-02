@@ -39,6 +39,11 @@ namespace Intent.Modelers.UI.Api
 
         public IElement InternalElement => _element;
 
+        public IList<PropertyModel> BindableProperties => _element.ChildElements
+            .GetElementsOfType(PropertyModel.SpecializationTypeId)
+            .Select(x => new PropertyModel(x))
+            .ToList();
+
         public override string ToString()
         {
             return _element.ToString();

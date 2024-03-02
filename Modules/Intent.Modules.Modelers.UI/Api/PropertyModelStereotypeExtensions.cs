@@ -10,21 +10,21 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.UI.Api
 {
-    public static class ComponentPropertyModelStereotypeExtensions
+    public static class PropertyModelStereotypeExtensions
     {
-        public static Input GetInput(this ComponentPropertyModel model)
+        public static Input GetInput(this PropertyModel model)
         {
             var stereotype = model.GetStereotype("12ba7bea-ceb9-44d4-8819-835fe36af7b3");
             return stereotype != null ? new Input(stereotype) : null;
         }
 
 
-        public static bool HasInput(this ComponentPropertyModel model)
+        public static bool HasInput(this PropertyModel model)
         {
             return model.HasStereotype("12ba7bea-ceb9-44d4-8819-835fe36af7b3");
         }
 
-        public static bool TryGetInput(this ComponentPropertyModel model, out Input stereotype)
+        public static bool TryGetInput(this PropertyModel model, out Input stereotype)
         {
             if (!HasInput(model))
             {
@@ -36,19 +36,19 @@ namespace Intent.Modelers.UI.Api
             return true;
         }
 
-        public static Output GetOutput(this ComponentPropertyModel model)
+        public static Output GetOutput(this PropertyModel model)
         {
             var stereotype = model.GetStereotype("228b4b42-0ee0-407a-b5e8-6c2a1335baef");
             return stereotype != null ? new Output(stereotype) : null;
         }
 
 
-        public static bool HasOutput(this ComponentPropertyModel model)
+        public static bool HasOutput(this PropertyModel model)
         {
             return model.HasStereotype("228b4b42-0ee0-407a-b5e8-6c2a1335baef");
         }
 
-        public static bool TryGetOutput(this ComponentPropertyModel model, out Output stereotype)
+        public static bool TryGetOutput(this PropertyModel model, out Output stereotype)
         {
             if (!HasOutput(model))
             {

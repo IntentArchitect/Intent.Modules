@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ComponentPropertyModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    public class ParameterModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
-        public const string SpecializationType = "Component Property";
-        public const string SpecializationTypeId = "356fbe17-bc63-4e16-b915-feefbc063cbe";
+        public const string SpecializationType = "Parameter";
+        public const string SpecializationTypeId = "00208d20-469d-41cb-8501-768fd5eb796b";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public ComponentPropertyModel(IElement element, string requiredType = SpecializationType)
+        public ParameterModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -35,6 +35,8 @@ namespace Intent.Modelers.UI.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public string Value => _element.Value;
+
         public ITypeReference TypeReference => _element.TypeReference;
 
 
@@ -45,7 +47,7 @@ namespace Intent.Modelers.UI.Api
             return _element.ToString();
         }
 
-        public bool Equals(ComponentPropertyModel other)
+        public bool Equals(ParameterModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -55,7 +57,7 @@ namespace Intent.Modelers.UI.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ComponentPropertyModel)obj);
+            return Equals((ParameterModel)obj);
         }
 
         public override int GetHashCode()
@@ -65,17 +67,17 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ComponentPropertyModelExtensions
+    public static class ParameterModelExtensions
     {
 
-        public static bool IsComponentPropertyModel(this ICanBeReferencedType type)
+        public static bool IsParameterModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ComponentPropertyModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == ParameterModel.SpecializationTypeId;
         }
 
-        public static ComponentPropertyModel AsComponentPropertyModel(this ICanBeReferencedType type)
+        public static ParameterModel AsParameterModel(this ICanBeReferencedType type)
         {
-            return type.IsComponentPropertyModel() ? new ComponentPropertyModel((IElement)type) : null;
+            return type.IsParameterModel() ? new ParameterModel((IElement)type) : null;
         }
     }
 }

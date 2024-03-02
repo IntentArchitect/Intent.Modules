@@ -62,49 +62,9 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="caf4d278-a9b2-48b1-996d-a0a85c1b1052" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Input</name>
-          <display>Add Input: Component Input</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="291abda5-c3b7-4a85-9603-e335f206e20e">
-            <typeId>807bc2cd-cdba-482d-a47e-d2aa546200fc</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.UI</typePackageName>
-            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>1477276d-8293-4b3e-8b5a-25082aa7a00b</parentFolderId>
-          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-          <packageName>Intent.Modelers.UI</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
         <childElement id="4fedda05-bcdb-4e94-a593-441ed184ee9b" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Property</name>
-          <display>Add Property: Component Property</display>
+          <display>Add Property: Property</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="e1461bf9-c162-4f51-8b4f-6f3a453b0223">
@@ -144,7 +104,7 @@
         </childElement>
         <childElement id="0250eaa3-4d9b-49e5-9a51-64dc7dd80579" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Command</name>
-          <display>Add Command: Component Command</display>
+          <display>Add Command: Event Emitter</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="3a34762f-d6d8-45f0-84ce-3595e2c16347">

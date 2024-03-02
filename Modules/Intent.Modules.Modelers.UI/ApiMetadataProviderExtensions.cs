@@ -17,6 +17,7 @@ namespace Intent.Modelers.UI.Api
                 .Select(x => new CheckboxModel(x))
                 .ToList();
         }
+
         public static IList<ComponentModel> GetComponentModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(ComponentModel.SpecializationTypeId)

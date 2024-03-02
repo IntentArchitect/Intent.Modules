@@ -37,24 +37,9 @@ namespace Intent.Modelers.UI.Api
 
         public IElement InternalElement => _element;
 
-        public IList<DisplayComponentModel> Components => _element.ChildElements
+        public IList<DisplayComponentModel> CustomComponents => _element.ChildElements
             .GetElementsOfType(DisplayComponentModel.SpecializationTypeId)
             .Select(x => new DisplayComponentModel(x))
-            .ToList();
-
-        public IList<TextInputModel> TextInputs => _element.ChildElements
-            .GetElementsOfType(TextInputModel.SpecializationTypeId)
-            .Select(x => new TextInputModel(x))
-            .ToList();
-
-        public IList<FormModel> Forms => _element.ChildElements
-            .GetElementsOfType(FormModel.SpecializationTypeId)
-            .Select(x => new FormModel(x))
-            .ToList();
-
-        public IList<TableModel> Tables => _element.ChildElements
-            .GetElementsOfType(TableModel.SpecializationTypeId)
-            .Select(x => new TableModel(x))
             .ToList();
 
         public override string ToString()

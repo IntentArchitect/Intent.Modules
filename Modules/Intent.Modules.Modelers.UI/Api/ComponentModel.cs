@@ -41,19 +41,14 @@ namespace Intent.Modelers.UI.Api
 
         public IElement InternalElement => _element;
 
-        public IList<ComponentInputModel> Inputs => _element.ChildElements
-            .GetElementsOfType(ComponentInputModel.SpecializationTypeId)
-            .Select(x => new ComponentInputModel(x))
+        public IList<PropertyModel> Properties => _element.ChildElements
+            .GetElementsOfType(PropertyModel.SpecializationTypeId)
+            .Select(x => new PropertyModel(x))
             .ToList();
 
-        public IList<ComponentPropertyModel> Properties => _element.ChildElements
-            .GetElementsOfType(ComponentPropertyModel.SpecializationTypeId)
-            .Select(x => new ComponentPropertyModel(x))
-            .ToList();
-
-        public IList<ComponentCommandModel> Commands => _element.ChildElements
-            .GetElementsOfType(ComponentCommandModel.SpecializationTypeId)
-            .Select(x => new ComponentCommandModel(x))
+        public IList<EventEmitterModel> Commands => _element.ChildElements
+            .GetElementsOfType(EventEmitterModel.SpecializationTypeId)
+            .Select(x => new EventEmitterModel(x))
             .ToList();
 
         public ComponentViewModel View => _element.ChildElements

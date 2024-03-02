@@ -62,13 +62,13 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="4ee57d47-41f2-452a-8c62-e896a10ebc8f" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Field</name>
-          <display>Add Field: Model Definition Field</display>
+        <childElement id="8dcadb63-3085-44fc-a857-d21d45a3698e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Property</name>
+          <display>Add Property: Property</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="cd587317-9be4-4e75-88b6-918c4dd7ff1b">
-            <typeId>0dfc489c-7456-4a3d-a28b-50a633631a48</typeId>
+          <typeReference id="169dc634-d413-4de9-9012-6bc01937b1a8">
+            <typeId>356fbe17-bc63-4e16-b915-feefbc063cbe</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -89,9 +89,9 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + a" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="model" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
@@ -181,7 +181,7 @@
           <childElements>
             <childElement id="c5641347-726d-4153-abc9-8d5f9a9b4c93" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: DTO-Field -&gt; Model Definition Field (Map to Type)</display>
+              <display>[mapping]: DTO-Field -&gt; Property (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -195,7 +195,7 @@
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
                     <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
-                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="0dfc489c-7456-4a3d-a28b-50a633631a48" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="356fbe17-bc63-4e16-b915-feefbc063cbe" isActive="true" />
                     <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
                   </properties>
                 </stereotype>

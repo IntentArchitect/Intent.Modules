@@ -19,7 +19,7 @@ namespace Intent.Modelers.UI.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<CallServiceOperationActionTargetEndModel> CallServiceOperationActionTargets(this ComponentCommandModel model)
+        public static IList<CallServiceOperationActionTargetEndModel> CallServiceOperationActionTargets(this EventEmitterModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == CallServiceOperationActionModel.SpecializationType && x.IsTargetEnd())
