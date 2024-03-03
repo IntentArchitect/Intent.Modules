@@ -181,7 +181,7 @@ else {
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
-          <represents>data</represents>
+          <represents>invokable</represents>
           <childSettings>
             <childSetting id="3fc9e92a-7af5-4d45-9cb6-581a406476b4" name="Parameter" type="Parameter" typeId="f11273c1-217f-4f42-b690-3d8b488f95a8">
               <allowMultipleMappings>true</allowMultipleMappings>

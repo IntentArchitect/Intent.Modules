@@ -2,23 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modelers.UI.Api;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modelers.UI.Api
+namespace Intent.Modelers.UI.Core.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ContainerModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class CheckboxModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Container";
-        public const string SpecializationTypeId = "b97ea181-2462-431f-8f62-f90f79509b9e";
+        public const string SpecializationType = "Checkbox";
+        public const string SpecializationTypeId = "be9ecdbd-6ded-4057-af76-1b09f3a6cea3";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public ContainerModel(IElement element, string requiredType = SpecializationType)
+        public CheckboxModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -37,12 +38,22 @@ namespace Intent.Modelers.UI.Api
 
         public IElement InternalElement => _element;
 
+        public IList<EventEmitterModel> EventEmitters => _element.ChildElements
+            .GetElementsOfType(EventEmitterModel.SpecializationTypeId)
+            .Select(x => new EventEmitterModel(x))
+            .ToList();
+
+        public IList<PropertyModel> Properties => _element.ChildElements
+            .GetElementsOfType(PropertyModel.SpecializationTypeId)
+            .Select(x => new PropertyModel(x))
+            .ToList();
+
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(ContainerModel other)
+        public bool Equals(CheckboxModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -52,7 +63,7 @@ namespace Intent.Modelers.UI.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ContainerModel)obj);
+            return Equals((CheckboxModel)obj);
         }
 
         public override int GetHashCode()
@@ -62,17 +73,17 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ContainerModelExtensions
+    public static class CheckboxModelExtensions
     {
 
-        public static bool IsContainerModel(this ICanBeReferencedType type)
+        public static bool IsCheckboxModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ContainerModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == CheckboxModel.SpecializationTypeId;
         }
 
-        public static ContainerModel AsContainerModel(this ICanBeReferencedType type)
+        public static CheckboxModel AsCheckboxModel(this ICanBeReferencedType type)
         {
-            return type.IsContainerModel() ? new ContainerModel((IElement)type) : null;
+            return type.IsCheckboxModel() ? new CheckboxModel((IElement)type) : null;
         }
     }
 }

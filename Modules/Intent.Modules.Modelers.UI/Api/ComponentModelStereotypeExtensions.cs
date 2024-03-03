@@ -12,6 +12,29 @@ namespace Intent.Modelers.UI.Api
 {
     public static class ComponentModelStereotypeExtensions
     {
+        public static Component GetComponent(this ComponentModel model)
+        {
+            var stereotype = model.GetStereotype("b407aace-ad14-484e-ac93-4762a3d182d8");
+            return stereotype != null ? new Component(stereotype) : null;
+        }
+
+
+        public static bool HasComponent(this ComponentModel model)
+        {
+            return model.HasStereotype("b407aace-ad14-484e-ac93-4762a3d182d8");
+        }
+
+        public static bool TryGetComponent(this ComponentModel model, out Component stereotype)
+        {
+            if (!HasComponent(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Component(model.GetStereotype("b407aace-ad14-484e-ac93-4762a3d182d8"));
+            return true;
+        }
         public static ComponentSettings GetComponentSettings(this ComponentModel model)
         {
             var stereotype = model.GetStereotype("93f869a6-f3e1-498e-bf40-6cfe99f012c5");
@@ -81,6 +104,19 @@ namespace Intent.Modelers.UI.Api
 
             stereotype = new SupportForChildren(model.GetStereotype("a41c8945-0ca4-4597-b760-66473153b6ab"));
             return true;
+        }
+
+        public class Component
+        {
+            private IStereotype _stereotype;
+
+            public Component(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
         }
 
         public class ComponentSettings

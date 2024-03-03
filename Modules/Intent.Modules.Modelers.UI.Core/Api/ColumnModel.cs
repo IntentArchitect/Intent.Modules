@@ -8,17 +8,17 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modelers.UI.Api
+namespace Intent.Modelers.UI.Core.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class TableModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    public class ColumnModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Table";
-        public const string SpecializationTypeId = "eee93c29-3d58-4e42-aea9-c00451d17469";
+        public const string SpecializationType = "Column";
+        public const string SpecializationTypeId = "d372c640-e649-4e67-84a8-4446f45288db";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public TableModel(IElement element, string requiredType = SpecializationType)
+        public ColumnModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -35,21 +35,14 @@ namespace Intent.Modelers.UI.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public ITypeReference TypeReference => _element.TypeReference;
-
         public IElement InternalElement => _element;
-
-        public IList<ColumnModel> Columns => _element.ChildElements
-            .GetElementsOfType(ColumnModel.SpecializationTypeId)
-            .Select(x => new ColumnModel(x))
-            .ToList();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(TableModel other)
+        public bool Equals(ColumnModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -59,7 +52,7 @@ namespace Intent.Modelers.UI.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((TableModel)obj);
+            return Equals((ColumnModel)obj);
         }
 
         public override int GetHashCode()
@@ -69,17 +62,17 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class TableModelExtensions
+    public static class ColumnModelExtensions
     {
 
-        public static bool IsTableModel(this ICanBeReferencedType type)
+        public static bool IsColumnModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == TableModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == ColumnModel.SpecializationTypeId;
         }
 
-        public static TableModel AsTableModel(this ICanBeReferencedType type)
+        public static ColumnModel AsColumnModel(this ICanBeReferencedType type)
         {
-            return type.IsTableModel() ? new TableModel((IElement)type) : null;
+            return type.IsColumnModel() ? new ColumnModel((IElement)type) : null;
         }
     }
 }

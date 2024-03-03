@@ -46,7 +46,7 @@
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
-    <stereotype stereotypeDefinitionId="b407aace-ad14-484e-ac93-4762a3d182d8" name="@Component">
+    <stereotype stereotypeDefinitionId="b407aace-ad14-484e-ac93-4762a3d182d8" name="[Component]">
       <addedByDefault>false</addedByDefault>
       <definitionPackageName>Intent.Modelers.UI</definitionPackageName>
       <definitionPackageId>5c4628ec-679e-4f3d-afda-137c978deae0</definitionPackageId>
@@ -69,8 +69,8 @@
       <metadata />
       <childElements>
         <childElement id="59e11cd2-279e-4023-986b-5f71a3e19537" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Bindable Property</name>
-          <display>Bindable Property: Property</display>
+          <name>Property</name>
+          <display>Property: Property</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="5ecdfebf-8c2e-4e69-8c84-9f73172e4ed3">
@@ -108,7 +108,109 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="9fad6629-25d5-4190-b082-d61e0b63cfa1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Event Emitter</name>
+          <display>Event Emitter: Event Emitter</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e9f84950-aed3-47d3-a8f6-318699277f86">
+            <typeId>d6739ffc-30e6-4170-a105-bf28e69aa578</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI</typePackageName>
+            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>efe4c035-56af-4cee-b3ae-23f4d22e8f42</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" value="return false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
       </childElements>
+    </childElement>
+    <childElement id="67f7d60a-f0e4-4305-a8ad-f0c0d0df870c" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe">
+      <name>model</name>
+      <display>model: string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="d5363011-d5fe-448d-96e8-9a8089004abe">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>4803bf60-c626-4cbe-94ed-0f1eafff9fe3</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="12ba7bea-ceb9-44d4-8819-835fe36af7b3" name="[Bindable]">
+          <addedByDefault>false</addedByDefault>
+          <definitionPackageName>Intent.Modelers.UI</definitionPackageName>
+          <definitionPackageId>5c4628ec-679e-4f3d-afda-137c978deae0</definitionPackageId>
+          <properties />
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="a7a5418f-f119-49b6-b61e-322bf602d6b2" type="Event Emitter" typeId="d6739ffc-30e6-4170-a105-bf28e69aa578">
+      <name>modelChanged</name>
+      <display>modelChanged&lt;bool&gt;</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="af9c0e29-91c3-4549-93fd-1f74148393b6">
+        <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>4803bf60-c626-4cbe-94ed-0f1eafff9fe3</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="12ba7bea-ceb9-44d4-8819-835fe36af7b3" name="[Bindable]">
+          <addedByDefault>false</addedByDefault>
+          <definitionPackageName>Intent.Modelers.UI</definitionPackageName>
+          <definitionPackageId>5c4628ec-679e-4f3d-afda-137c978deae0</definitionPackageId>
+          <properties />
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
     </childElement>
     <childElement id="4a175a11-15aa-4696-985a-476e651a196a" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
       <name>NewElementEventSettings</name>
@@ -149,7 +251,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const propertyId = &quot;356fbe17-bc63-4e16-b915-feefbc063cbe&quot;;&#xD;&#xA;const inputId = &quot;12ba7bea-ceb9-44d4-8819-835fe36af7b3&quot;;&#xD;&#xA;const outputId = &quot;12ba7bea-ceb9-44d4-8819-835fe36af7b3&quot;;&#xD;&#xA;const model = createElement(propertyId, &quot;model&quot;, element.id)&#xD;&#xA;model.addStereotype(inputId);&#xD;&#xA;model.addStereotype(outputId); // two way binding&#xD;&#xA;&#xD;&#xA;const modelChanged = createElement(propertyId, &quot;modelChanged&quot;, element.id)&#xD;&#xA;&#xD;&#xA;" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const propertyId = &quot;356fbe17-bc63-4e16-b915-feefbc063cbe&quot;;&#xD;&#xA;const eventEmitterId = &quot;d6739ffc-30e6-4170-a105-bf28e69aa578&quot;;&#xD;&#xA;&#xD;&#xA;const settingType = lookup(element.specializationId);&#xD;&#xA;settingType.getChildren(propertyId).forEach(p =&gt; {&#xD;&#xA;    let property = createElement(propertyId, p.getName(), element.id);&#xD;&#xA;    p.getStereotypes().forEach(x =&gt; {&#xD;&#xA;        property.addStereotype(x.definitionId)&#xD;&#xA;    });&#xD;&#xA;})&#xD;&#xA;&#xD;&#xA;settingType.getChildren(eventEmitterId).forEach(p =&gt; {&#xD;&#xA;    let property = createElement(eventEmitterId, p.getName(), element.id);&#xD;&#xA;    p.getStereotypes().forEach(x =&gt; {&#xD;&#xA;        property.addStereotype(x.definitionId)&#xD;&#xA;    });&#xD;&#xA;})&#xD;&#xA;&#xD;&#xA;element.collapse();&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

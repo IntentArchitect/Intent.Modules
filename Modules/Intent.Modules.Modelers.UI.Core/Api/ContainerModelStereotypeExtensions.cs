@@ -8,20 +8,20 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions", Version = "1.0")]
 
-namespace Intent.Modelers.UI.Api
+namespace Intent.Modelers.UI.Core.Api
 {
     public static class ContainerModelStereotypeExtensions
     {
         public static Appearance GetAppearance(this ContainerModel model)
         {
-            var stereotype = model.GetStereotype("2d5a04c9-1be1-456c-b557-49b3cdeec2f6");
+            var stereotype = model.GetStereotype("7513c78d-4825-442f-9e1d-5cb76fde6de9");
             return stereotype != null ? new Appearance(stereotype) : null;
         }
 
 
         public static bool HasAppearance(this ContainerModel model)
         {
-            return model.HasStereotype("2d5a04c9-1be1-456c-b557-49b3cdeec2f6");
+            return model.HasStereotype("7513c78d-4825-442f-9e1d-5cb76fde6de9");
         }
 
         public static bool TryGetAppearance(this ContainerModel model, out Appearance stereotype)
@@ -32,7 +32,7 @@ namespace Intent.Modelers.UI.Api
                 return false;
             }
 
-            stereotype = new Appearance(model.GetStereotype("2d5a04c9-1be1-456c-b557-49b3cdeec2f6"));
+            stereotype = new Appearance(model.GetStereotype("7513c78d-4825-442f-9e1d-5cb76fde6de9"));
             return true;
         }
 

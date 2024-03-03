@@ -2,23 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modelers.UI.Api;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modelers.UI.Api
+namespace Intent.Modelers.UI.Core.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class FormModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class TextModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Form";
-        public const string SpecializationTypeId = "1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd";
+        public const string SpecializationType = "Text";
+        public const string SpecializationTypeId = "922150d2-42e6-4805-a002-f9580cdf7f6f";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public FormModel(IElement element, string requiredType = SpecializationType)
+        public TextModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -35,14 +36,21 @@ namespace Intent.Modelers.UI.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public string Value => _element.Value;
+
         public IElement InternalElement => _element;
+
+        public IList<PropertyModel> BindableProperties => _element.ChildElements
+            .GetElementsOfType(PropertyModel.SpecializationTypeId)
+            .Select(x => new PropertyModel(x))
+            .ToList();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(FormModel other)
+        public bool Equals(TextModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -52,7 +60,7 @@ namespace Intent.Modelers.UI.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((FormModel)obj);
+            return Equals((TextModel)obj);
         }
 
         public override int GetHashCode()
@@ -62,17 +70,17 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class FormModelExtensions
+    public static class TextModelExtensions
     {
 
-        public static bool IsFormModel(this ICanBeReferencedType type)
+        public static bool IsTextModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == FormModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == TextModel.SpecializationTypeId;
         }
 
-        public static FormModel AsFormModel(this ICanBeReferencedType type)
+        public static TextModel AsTextModel(this ICanBeReferencedType type)
         {
-            return type.IsFormModel() ? new FormModel((IElement)type) : null;
+            return type.IsTextModel() ? new TextModel((IElement)type) : null;
         }
     }
 }

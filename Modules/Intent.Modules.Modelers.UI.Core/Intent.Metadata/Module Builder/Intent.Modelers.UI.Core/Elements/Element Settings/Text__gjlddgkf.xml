@@ -46,7 +46,7 @@
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
-    <stereotype stereotypeDefinitionId="b407aace-ad14-484e-ac93-4762a3d182d8" name="@Component">
+    <stereotype stereotypeDefinitionId="b407aace-ad14-484e-ac93-4762a3d182d8" name="[Component]">
       <addedByDefault>false</addedByDefault>
       <definitionPackageName>Intent.Modelers.UI</definitionPackageName>
       <definitionPackageId>5c4628ec-679e-4f3d-afda-137c978deae0</definitionPackageId>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="2d5a04c9-1be1-456c-b557-49b3cdeec2f6" version="3.1.0">
+<stereotypeDefinition id="7513c78d-4825-442f-9e1d-5cb76fde6de9" version="3.1.0">
   <name>Appearance</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -15,9 +15,9 @@
   <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
-  <parentFolderId>5c4628ec-679e-4f3d-afda-137c978deae0</parentFolderId>
+  <parentFolderId>a2a95421-3e55-43c7-96ad-355610b43c4d</parentFolderId>
   <order>0</order>
-  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-  <packageName>Intent.Modelers.UI</packageName>
+  <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+  <packageName>Intent.Modelers.UI.Core</packageName>
   <properties />
 </stereotypeDefinition>

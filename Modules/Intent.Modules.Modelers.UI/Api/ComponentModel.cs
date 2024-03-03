@@ -46,9 +46,14 @@ namespace Intent.Modelers.UI.Api
             .Select(x => new PropertyModel(x))
             .ToList();
 
-        public IList<EventEmitterModel> Commands => _element.ChildElements
+        public IList<EventEmitterModel> EventEmitters => _element.ChildElements
             .GetElementsOfType(EventEmitterModel.SpecializationTypeId)
             .Select(x => new EventEmitterModel(x))
+            .ToList();
+
+        public IList<OperationModel> Operations => _element.ChildElements
+            .GetElementsOfType(OperationModel.SpecializationTypeId)
+            .Select(x => new OperationModel(x))
             .ToList();
 
         public ComponentViewModel View => _element.ChildElements
@@ -59,11 +64,6 @@ namespace Intent.Modelers.UI.Api
         public IList<ModelDefinitionModel> ModelDefinitions => _element.ChildElements
             .GetElementsOfType(ModelDefinitionModel.SpecializationTypeId)
             .Select(x => new ModelDefinitionModel(x))
-            .ToList();
-
-        public IList<ComponentModel> ChildComponents => _element.ChildElements
-            .GetElementsOfType(ComponentModel.SpecializationTypeId)
-            .Select(x => new ComponentModel(x))
             .ToList();
 
         public override string ToString()

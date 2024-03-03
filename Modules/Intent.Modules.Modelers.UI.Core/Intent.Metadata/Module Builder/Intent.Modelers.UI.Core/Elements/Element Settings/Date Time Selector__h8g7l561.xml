@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="be9ecdbd-6ded-4057-af76-1b09f3a6cea3" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Checkbox</name>
-  <display>Checkbox</display>
+<class id="9451fcdc-9406-4323-b354-2eaaabbf9ac5" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Date Time Selector</name>
+  <display>Date Time Selector</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
@@ -18,7 +18,7 @@
         <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
         <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
         <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
-        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="null" isActive="false" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
         <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
         <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
         <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
@@ -31,7 +31,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGVuY2lsIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDUwIDUwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MCA1MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGVuY2lsX3gzRV9fMDAwMDAxMjM0MTk4MjU5MTU4Njc4MTU5MzAwMDAwMDEyMzk3NjczNjYwNjk5MjkzODdfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI1LjE1IiB5MT0iNDcuOTA5IiB4Mj0iMjUuMTUiIHkyPSIzLjcxODIiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGRUUwNEYiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojRjk5RjIxIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggaWQ9Il94M0NfUGVuY2lsX3gzRV8iIGZpbGw9InVybCgjX3gzQ19QZW5jaWxfeDNFX18wMDAwMDEyMzQxOTgyNTkxNTg2NzgxNTkzMDAwMDAwMTIzOTc2NzM2NjA2OTkyOTM4N18pIiBkPSJNMzUuMiwyLjINCglMNiwzMS40bC0wLjQsMC4zbC0zLDE1LjZsMTUuNS0zbDI5LjYtMjkuNkwzNS4yLDIuMnogTTE2LjUsNDEuMkw2LjksNDNsMS44LTkuNmwxNi45LTE2LjlsMi43LDIuN0wxMSwzNi41bDIuNCwyLjRsMTcuMy0xNy4zDQoJbDIuNywyLjdMMTYuNSw0MS4yeiBNMzUuOCwyMS45TDI4LDE0LjJsMi40LTIuNGw3LjcsNy43TDM1LjgsMjEuOXogTTMyLjgsOS40TDM1LjIsN2w3LjcsNy43bC0yLjQsMi40TDMyLjgsOS40eiIvPg0KPC9zdmc+DQo=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;calendar&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
@@ -55,108 +55,26 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="285d61dd-c42f-44cb-adf4-86938f5c6da2" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="5405fc60-22f2-477f-8084-bde3511775ed" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>be9ecdbd-6ded-4057-af76-1b09f3a6cea3</parentFolderId>
+      <parentFolderId>9451fcdc-9406-4323-b354-2eaaabbf9ac5</parentFolderId>
       <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
       <packageName>Intent.Modelers.UI.Core</packageName>
       <stereotypes />
       <metadata />
-      <childElements>
-        <childElement id="65b82bbe-c043-4a31-844d-25935c74e69a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Event Emitter</name>
-          <display>Event Emitter: Event Emitter</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="1c6bd856-97d6-40f4-bb30-d798e7d80dce">
-            <typeId>d6739ffc-30e6-4170-a105-bf28e69aa578</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.UI</typePackageName>
-            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>285d61dd-c42f-44cb-adf4-86938f5c6da2</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" value="return false" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="c8187137-516f-4e3a-a639-08b245a6a1d8" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Property</name>
-          <display>Property: Property</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="bf7b3690-db55-4ae8-bb0b-f72ecea1e4a0">
-            <typeId>356fbe17-bc63-4e16-b915-feefbc063cbe</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.UI</typePackageName>
-            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>285d61dd-c42f-44cb-adf4-86938f5c6da2</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" value="return false" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
+      <childElements />
     </childElement>
-    <childElement id="aa20a27f-a497-435b-b147-34c7977a0ac5" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe">
+    <childElement id="3f740a2d-9121-4762-bdbf-edc63833ba5a" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe">
       <name>model</name>
-      <display>model: string</display>
+      <display>model: datetime</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
-      <typeReference id="790283d2-2841-4633-86ab-8bc9a2d6c1ca">
-        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+      <typeReference id="2af0ffa7-f6cb-4b4b-bac0-da4729f9b004">
+        <typeId>a4107c29-7851-4121-9416-cf1236908f1e</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -167,11 +85,11 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <parentFolderId>be9ecdbd-6ded-4057-af76-1b09f3a6cea3</parentFolderId>
+      <parentFolderId>9451fcdc-9406-4323-b354-2eaaabbf9ac5</parentFolderId>
       <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
       <packageName>Intent.Modelers.UI.Core</packageName>
       <stereotypes>
-        <stereotype stereotypeDefinitionId="12ba7bea-ceb9-44d4-8819-835fe36af7b3" name="[Bindable]">
+        <stereotype stereotypeDefinitionId="146856d2-c3c0-4ecb-9149-1685ac8e407c" name="[Two-Way Bindable]">
           <addedByDefault>false</addedByDefault>
           <definitionPackageName>Intent.Modelers.UI</definitionPackageName>
           <definitionPackageId>5c4628ec-679e-4f3d-afda-137c978deae0</definitionPackageId>
@@ -181,13 +99,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="239473ba-b8be-4625-9b72-6a603147ca7b" type="Event Emitter" typeId="d6739ffc-30e6-4170-a105-bf28e69aa578">
+    <childElement id="41f360f8-5a23-46c9-87ce-f5e6573d6723" type="Event Emitter" typeId="d6739ffc-30e6-4170-a105-bf28e69aa578">
       <name>modelChanged</name>
-      <display>modelChanged&lt;bool&gt;</display>
+      <display>modelChanged&lt;datetime&gt;</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
-      <typeReference id="cfda91fc-269f-4200-b63d-e453a49e65eb">
-        <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
+      <typeReference id="288d5c42-a7a4-4ea9-8a15-49b18b15ab6e">
+        <typeId>a4107c29-7851-4121-9416-cf1236908f1e</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -198,7 +116,7 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <parentFolderId>be9ecdbd-6ded-4057-af76-1b09f3a6cea3</parentFolderId>
+      <parentFolderId>9451fcdc-9406-4323-b354-2eaaabbf9ac5</parentFolderId>
       <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
       <packageName>Intent.Modelers.UI.Core</packageName>
       <stereotypes>
@@ -212,25 +130,25 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="cd8157e5-e472-4c7b-96ed-ab17feac2601" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+    <childElement id="aed7390b-1601-43f0-a379-219c95b4fd5c" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>be9ecdbd-6ded-4057-af76-1b09f3a6cea3</parentFolderId>
+      <parentFolderId>9451fcdc-9406-4323-b354-2eaaabbf9ac5</parentFolderId>
       <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
       <packageName>Intent.Modelers.UI.Core</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="30e4a458-df9e-4022-a7fd-d79d2eca9fff" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+        <childElement id="574b1e33-dfb7-4cc8-a851-398d9913b869" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="81ad0591-151a-4a98-a04c-01ae948d21b7">
+          <typeReference id="577f82a2-83a0-4378-806c-c860c5bf68fa">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -242,7 +160,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>cd8157e5-e472-4c7b-96ed-ab17feac2601</parentFolderId>
+          <parentFolderId>aed7390b-1601-43f0-a379-219c95b4fd5c</parentFolderId>
           <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
           <packageName>Intent.Modelers.UI.Core</packageName>
           <stereotypes>

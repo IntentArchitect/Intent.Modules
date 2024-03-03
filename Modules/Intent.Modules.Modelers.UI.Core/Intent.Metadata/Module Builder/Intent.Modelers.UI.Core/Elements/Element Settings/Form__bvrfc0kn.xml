@@ -41,12 +41,12 @@
         <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
-        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
-        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="By type then name" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="Manually" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
-    <stereotype stereotypeDefinitionId="b407aace-ad14-484e-ac93-4762a3d182d8" name="@Component">
+    <stereotype stereotypeDefinitionId="b407aace-ad14-484e-ac93-4762a3d182d8" name="[Component]">
       <addedByDefault>false</addedByDefault>
       <definitionPackageName>Intent.Modelers.UI</definitionPackageName>
       <definitionPackageId>5c4628ec-679e-4f3d-afda-137c978deae0</definitionPackageId>
@@ -59,6 +59,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd</parentFolderId>
@@ -66,7 +67,48 @@
       <packageName>Intent.Modelers.UI.Core</packageName>
       <stereotypes />
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="85f2e2a9-53da-42f8-867a-c46ae989f9d3" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Container</name>
+          <display>Add Container: Container</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="82373aa4-9380-4b0b-9464-274d38756129">
+            <typeId>b97ea181-2462-431f-8f62-f90f79509b9e</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3d73144b-24e2-4b8c-8763-1a2e1d68322c</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" value="return false;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
     </childElement>
     <childElement id="4e6f6345-97db-40e3-b6ad-e0f7158b1042" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
       <name>NewElementEventSettings</name>
@@ -107,7 +149,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const containerId = &quot;b97ea181-2462-431f-8f62-f90f79509b9e&quot;;&#xD;&#xA;&#xD;&#xA;let existingHeader = element.getChildren(containerId).filter(x =&gt; x.getName() == &quot;Header&quot;)[0];&#xD;&#xA;if (element.getStereotype(&quot;727ebe78-b982-45e4-977b-33a7f5b9d1c1&quot;).getProperty(&quot;4ace9db8-cdae-4e20-a60b-497aa905a372&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    existingHeader = existingHeader ?? createElement(containerId, &quot;Header&quot;, element.id);&#xD;&#xA;    existingHeader.setOrder(0);&#xD;&#xA;} else {&#xD;&#xA;    existingHeader?.delete();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let existingBody = element.getChildren(containerId).filter(x =&gt; x.getName() == &quot;Body&quot;)[0];&#xD;&#xA;if (element.getStereotype(&quot;727ebe78-b982-45e4-977b-33a7f5b9d1c1&quot;).getProperty(&quot;820e5bfe-d233-4767-8532-771ccc125919&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    existingBody = existingBody ?? createElement(containerId, &quot;Body&quot;, element.id);&#xD;&#xA;    existingBody.setOrder(1);&#xD;&#xA;} else {&#xD;&#xA;    existingBody?.delete();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let existingFooter = element.getChildren(containerId).filter(x =&gt; x.getName() == &quot;Footer&quot;)[0];&#xD;&#xA;if (element.getStereotype(&quot;727ebe78-b982-45e4-977b-33a7f5b9d1c1&quot;).getProperty(&quot;83d45738-ee3a-4e53-88b9-01cabd74cc4d&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    existingFooter = existingFooter ?? createElement(containerId, &quot;Footer&quot;, element.id);&#xD;&#xA;    existingFooter.setOrder(2);&#xD;&#xA;} else {&#xD;&#xA;    existingFooter?.delete();&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const containerId = &quot;b97ea181-2462-431f-8f62-f90f79509b9e&quot;;&#xD;&#xA;const contentId = &quot;7f7bc148-138f-4b61-8fa1-a8d725dbed52&quot;;&#xD;&#xA;&#xD;&#xA;let existingHeader = element.getChildren(containerId).filter(x =&gt; x.getName() == &quot;Header&quot;)[0];&#xD;&#xA;if (element.getStereotype(contentId).getProperty(&quot;Header&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    existingHeader = existingHeader ?? createElement(containerId, &quot;Header&quot;, element.id);&#xD;&#xA;    existingHeader.setOrder(0);&#xD;&#xA;} else {&#xD;&#xA;    existingHeader?.delete();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let existingBody = element.getChildren(containerId).filter(x =&gt; x.getName() == &quot;Body&quot;)[0];&#xD;&#xA;if (element.getStereotype(contentId).getProperty(&quot;Body&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    existingBody = existingBody ?? createElement(containerId, &quot;Body&quot;, element.id);&#xD;&#xA;    console.warn(&quot;body: &quot; + Math.min(1, element.getChildren(containerId).length - 1))&#xD;&#xA;    existingBody.setOrder(Math.min(1, element.getChildren(containerId).length - 1));&#xD;&#xA;} else {&#xD;&#xA;    existingBody?.delete();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let existingFooter = element.getChildren(containerId).filter(x =&gt; x.getName() == &quot;Footer&quot;)[0];&#xD;&#xA;if (element.getStereotype(contentId).getProperty(&quot;Footer&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    existingFooter = existingFooter ?? createElement(containerId, &quot;Footer&quot;, element.id);&#xD;&#xA;    console.warn(&quot;footer: &quot; + Math.min(2, element.getChildren(containerId).length - 1))&#xD;&#xA;    existingFooter.setOrder(Math.min(2, element.getChildren(containerId).length - 1));&#xD;&#xA;} else {&#xD;&#xA;    existingFooter?.delete();&#xD;&#xA;}" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -140,7 +182,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getStereotype(&quot;727ebe78-b982-45e4-977b-33a7f5b9d1c1&quot;).getProperty(&quot;4ace9db8-cdae-4e20-a60b-497aa905a372&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    createElement(&quot;Section&quot;, &quot;Header&quot;, element.id);&#xD;&#xA;}&#xD;&#xA;if (element.getStereotype(&quot;727ebe78-b982-45e4-977b-33a7f5b9d1c1&quot;).getProperty(&quot;820e5bfe-d233-4767-8532-771ccc125919&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    createElement(&quot;Section&quot;, &quot;Body&quot;, element.id);&#xD;&#xA;}&#xD;&#xA;if (element.getStereotype(&quot;727ebe78-b982-45e4-977b-33a7f5b9d1c1&quot;).getProperty(&quot;83d45738-ee3a-4e53-88b9-01cabd74cc4d&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    createElement(&quot;Section&quot;, &quot;Footer&quot;, element.id);&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const contentId = &quot;7f7bc148-138f-4b61-8fa1-a8d725dbed52&quot;;&#xD;&#xA;&#xD;&#xA;if (element.getStereotype(contentId).getProperty(&quot;Header&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    createElement(&quot;Section&quot;, &quot;Header&quot;, element.id);&#xD;&#xA;}&#xD;&#xA;if (element.getStereotype(contentId).getProperty(&quot;Body&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    createElement(&quot;Section&quot;, &quot;Body&quot;, element.id);&#xD;&#xA;}&#xD;&#xA;if (element.getStereotype(contentId).getProperty(&quot;Footer&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    createElement(&quot;Section&quot;, &quot;Footer&quot;, element.id);&#xD;&#xA;}" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

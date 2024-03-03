@@ -41,8 +41,8 @@
         <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
-        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
-        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="By type then name" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="Manually" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
@@ -62,12 +62,12 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="9ab4eb9a-0459-4e5a-a80c-b070b7b2b48b" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+        <childElement id="f2f13778-61be-48f7-bc5a-3088041e3b93" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
           <name>Add Component</name>
           <display>Add Component: Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="c48d8a47-e235-4545-9616-a0893bdccdb3">
+          <typeReference id="73a52e40-b47e-4b73-921a-7d0622699386">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -88,7 +88,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let selection = await dialogService.openForm({&#xD;&#xA;    title: &quot;Add Component&quot;,&#xD;&#xA;    fields: [{&#xD;&#xA;        id: &quot;component-type&quot;,&#xD;&#xA;        fieldType: &quot;select&quot;,&#xD;&#xA;        label: &quot;Component Type&quot;,&#xD;&#xA;        selectOptions: lookupTypesOf(&quot;Element Settings&quot;)&#xD;&#xA;            .filter(x =&gt; x.hasStereotype(&quot;@Component&quot;))&#xD;&#xA;            .map(x =&gt; ( {id: x.id, description: x.getDisplay() })),&#xD;&#xA;        placeholder: &quot;Search components&quot;,&#xD;&#xA;        autoFocus: true&#xD;&#xA;    }]&#xD;&#xA;})&#xD;&#xA;&#xD;&#xA;console.warn(selection);&#xD;&#xA;let componentType = lookup(selection.fields[0].value);&#xD;&#xA;let component = createElement(componentType.id, componentType.getName(), element.id);" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const componentId = &quot;b407aace-ad14-484e-ac93-4762a3d182d8&quot;;&#xD;&#xA;let result = await dialogService.openForm({&#xD;&#xA;    title: &quot;Add Component&quot;,&#xD;&#xA;    fields: [{&#xD;&#xA;        id: &quot;component-type&quot;,&#xD;&#xA;        fieldType: &quot;select&quot;,&#xD;&#xA;        label: &quot;Component Type&quot;,&#xD;&#xA;        selectOptions: lookupTypesOf(&quot;Element Settings&quot;)&#xD;&#xA;            .filter(x =&gt; x.hasStereotype(componentId))&#xD;&#xA;            .map(x =&gt; ( {id: x.id, description: x.getDisplay() })),&#xD;&#xA;        placeholder: &quot;Search components&quot;&#xD;&#xA;    }]&#xD;&#xA;})&#xD;&#xA;&#xD;&#xA;console.warn(result);&#xD;&#xA;let componentType = lookup(result[&quot;component-type&quot;]);&#xD;&#xA;let component = createElement(componentType.id, componentType.getName(), element.id);" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">

@@ -8,17 +8,17 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modelers.UI.Api
+namespace Intent.Modelers.UI.Core.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ColumnModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class ButtonModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Column";
-        public const string SpecializationTypeId = "d372c640-e649-4e67-84a8-4446f45288db";
+        public const string SpecializationType = "Button";
+        public const string SpecializationTypeId = "4474d808-f6fd-405f-a9c7-6998cd000ede";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public ColumnModel(IElement element, string requiredType = SpecializationType)
+        public ButtonModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -42,7 +42,7 @@ namespace Intent.Modelers.UI.Api
             return _element.ToString();
         }
 
-        public bool Equals(ColumnModel other)
+        public bool Equals(ButtonModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -52,7 +52,7 @@ namespace Intent.Modelers.UI.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ColumnModel)obj);
+            return Equals((ButtonModel)obj);
         }
 
         public override int GetHashCode()
@@ -62,17 +62,17 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ColumnModelExtensions
+    public static class ButtonModelExtensions
     {
 
-        public static bool IsColumnModel(this ICanBeReferencedType type)
+        public static bool IsButtonModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ColumnModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == ButtonModel.SpecializationTypeId;
         }
 
-        public static ColumnModel AsColumnModel(this ICanBeReferencedType type)
+        public static ButtonModel AsButtonModel(this ICanBeReferencedType type)
         {
-            return type.IsColumnModel() ? new ColumnModel((IElement)type) : null;
+            return type.IsButtonModel() ? new ButtonModel((IElement)type) : null;
         }
     }
 }

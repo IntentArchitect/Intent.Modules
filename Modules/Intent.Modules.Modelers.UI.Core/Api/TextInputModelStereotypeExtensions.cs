@@ -8,20 +8,20 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions", Version = "1.0")]
 
-namespace Intent.Modelers.UI.Api
+namespace Intent.Modelers.UI.Core.Api
 {
     public static class TextInputModelStereotypeExtensions
     {
         public static LabelAddon GetLabelAddon(this TextInputModel model)
         {
-            var stereotype = model.GetStereotype("52c441a0-ad03-45e9-9d46-7babedfc10ff");
+            var stereotype = model.GetStereotype("2c099977-e5ca-4a80-ba70-6f2edc593681");
             return stereotype != null ? new LabelAddon(stereotype) : null;
         }
 
 
         public static bool HasLabelAddon(this TextInputModel model)
         {
-            return model.HasStereotype("52c441a0-ad03-45e9-9d46-7babedfc10ff");
+            return model.HasStereotype("2c099977-e5ca-4a80-ba70-6f2edc593681");
         }
 
         public static bool TryGetLabelAddon(this TextInputModel model, out LabelAddon stereotype)
@@ -32,7 +32,7 @@ namespace Intent.Modelers.UI.Api
                 return false;
             }
 
-            stereotype = new LabelAddon(model.GetStereotype("52c441a0-ad03-45e9-9d46-7babedfc10ff"));
+            stereotype = new LabelAddon(model.GetStereotype("2c099977-e5ca-4a80-ba70-6f2edc593681"));
             return true;
         }
 

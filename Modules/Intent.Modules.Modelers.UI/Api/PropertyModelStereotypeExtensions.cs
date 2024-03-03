@@ -12,59 +12,59 @@ namespace Intent.Modelers.UI.Api
 {
     public static class PropertyModelStereotypeExtensions
     {
-        public static Input GetInput(this PropertyModel model)
+        public static Bindable GetBindable(this PropertyModel model)
         {
             var stereotype = model.GetStereotype("12ba7bea-ceb9-44d4-8819-835fe36af7b3");
-            return stereotype != null ? new Input(stereotype) : null;
+            return stereotype != null ? new Bindable(stereotype) : null;
         }
 
 
-        public static bool HasInput(this PropertyModel model)
+        public static bool HasBindable(this PropertyModel model)
         {
             return model.HasStereotype("12ba7bea-ceb9-44d4-8819-835fe36af7b3");
         }
 
-        public static bool TryGetInput(this PropertyModel model, out Input stereotype)
+        public static bool TryGetBindable(this PropertyModel model, out Bindable stereotype)
         {
-            if (!HasInput(model))
+            if (!HasBindable(model))
             {
                 stereotype = null;
                 return false;
             }
 
-            stereotype = new Input(model.GetStereotype("12ba7bea-ceb9-44d4-8819-835fe36af7b3"));
+            stereotype = new Bindable(model.GetStereotype("12ba7bea-ceb9-44d4-8819-835fe36af7b3"));
             return true;
         }
 
-        public static Output GetOutput(this PropertyModel model)
+        public static TwoWayBindable GetTwoWayBindable(this PropertyModel model)
         {
-            var stereotype = model.GetStereotype("228b4b42-0ee0-407a-b5e8-6c2a1335baef");
-            return stereotype != null ? new Output(stereotype) : null;
+            var stereotype = model.GetStereotype("146856d2-c3c0-4ecb-9149-1685ac8e407c");
+            return stereotype != null ? new TwoWayBindable(stereotype) : null;
         }
 
 
-        public static bool HasOutput(this PropertyModel model)
+        public static bool HasTwoWayBindable(this PropertyModel model)
         {
-            return model.HasStereotype("228b4b42-0ee0-407a-b5e8-6c2a1335baef");
+            return model.HasStereotype("146856d2-c3c0-4ecb-9149-1685ac8e407c");
         }
 
-        public static bool TryGetOutput(this PropertyModel model, out Output stereotype)
+        public static bool TryGetTwoWayBindable(this PropertyModel model, out TwoWayBindable stereotype)
         {
-            if (!HasOutput(model))
+            if (!HasTwoWayBindable(model))
             {
                 stereotype = null;
                 return false;
             }
 
-            stereotype = new Output(model.GetStereotype("228b4b42-0ee0-407a-b5e8-6c2a1335baef"));
+            stereotype = new TwoWayBindable(model.GetStereotype("146856d2-c3c0-4ecb-9149-1685ac8e407c"));
             return true;
         }
 
-        public class Input
+        public class Bindable
         {
             private IStereotype _stereotype;
 
-            public Input(IStereotype stereotype)
+            public Bindable(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }
@@ -73,11 +73,11 @@ namespace Intent.Modelers.UI.Api
 
         }
 
-        public class Output
+        public class TwoWayBindable
         {
             private IStereotype _stereotype;
 
-            public Output(IStereotype stereotype)
+            public TwoWayBindable(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }

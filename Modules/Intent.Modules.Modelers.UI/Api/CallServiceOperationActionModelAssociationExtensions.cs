@@ -10,16 +10,7 @@ namespace Intent.Modelers.UI.Api
     public static class CallServiceOperationActionModelAssociationExtensions
     {
         [IntentManaged(Mode.Fully)]
-        public static IList<CallServiceOperationActionTargetEndModel> CallServiceOperationActionTargets(this ComponentModel model)
-        {
-            return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == CallServiceOperationActionModel.SpecializationType && x.IsTargetEnd())
-                .Select(x => CallServiceOperationActionModel.CreateFromEnd(x).TargetEnd)
-                .ToList();
-        }
-
-        [IntentManaged(Mode.Fully)]
-        public static IList<CallServiceOperationActionTargetEndModel> CallServiceOperationActionTargets(this EventEmitterModel model)
+        public static IList<CallServiceOperationActionTargetEndModel> CallServiceOperationActionTargets(this OperationModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == CallServiceOperationActionModel.SpecializationType && x.IsTargetEnd())

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="228b4b42-0ee0-407a-b5e8-6c2a1335baef" version="3.1.0">
-  <name>@Output</name>
+<stereotypeDefinition id="146856d2-c3c0-4ecb-9149-1685ac8e407c" version="3.1.0">
+  <name>[Two-Way Bindable]</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
     <type id="356fbe17-bc63-4e16-b915-feefbc063cbe">Property</type>
@@ -10,9 +10,9 @@
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
-  <displayFunction />
-  <displayAsAnnotation>false</displayAsAnnotation>
-  <displayAsText>true</displayAsText>
+  <displayFunction>[Two-Way Bindable]</displayFunction>
+  <displayAsAnnotation>true</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>5c4628ec-679e-4f3d-afda-137c978deae0</parentFolderId>
