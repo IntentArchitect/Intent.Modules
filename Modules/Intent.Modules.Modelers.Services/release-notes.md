@@ -1,7 +1,10 @@
+### Version 3.6.1
+
+- Improvement: Removed support for implicit keys, allowing keyless entities to now be modelled.
+
 ### Version 3.6.0
 
 - Improvement: Updated additional icons. 
-- Improvement: Removed support for implicit keys, allowing keyless entities to now be modelled.
 
 ### Version 3.5.1
 
