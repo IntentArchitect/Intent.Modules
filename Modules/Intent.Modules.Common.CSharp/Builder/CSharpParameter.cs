@@ -106,6 +106,12 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParam
         return this;
     }
 
+    public CSharpParameter WithParamsParameterModifier()
+    {
+        ParameterModifier = "params ";
+        return this;
+    }
+
     public override string ToString()
     {
         var name = Name.EnsureNotKeyword();

@@ -1,4 +1,8 @@
-﻿### Version 3.5.3
+﻿### Version 3.5.4
+
+- Improvement: Added `WithParamsParameterModifier()` method to `CSharpParameter`.
+
+### Version 3.5.3
 
 - Improvement: Added support for protected fields.
 
