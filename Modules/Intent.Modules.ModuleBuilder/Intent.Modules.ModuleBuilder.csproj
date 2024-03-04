@@ -55,11 +55,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiMetadataProviderExtensionsTemplate.cs</LastGenOutput>
     </None>
-    <Compile Update="modelers\Module Builder.designer.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Module Builder.designer.settings</DependentUpon>
-    </Compile>
     <Compile Update="Templates\Api\ApiElementModelPartial\ApiElementModelPartialTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
