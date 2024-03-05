@@ -3,33 +3,41 @@
 /// <reference path="../../common/servicesHelper.ts" />
 namespace servicesCrud {
     export async function execute() {
-        let package = element.getPackage();
-        let entity = await DomainHelper.openSelectEntityDialog({
+        const package = element.getPackage();
+        const entity = await DomainHelper.openSelectEntityDialog({
             includeOwnedRelationships: false
         });
         if (!entity) { return; }
 
-        let serviceName =`${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
-        var existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x => x.getName() == pluralize(serviceName));
-        let service = existingService || createElement("Service", serviceName, package.id);
-        
-        let folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
-        var existingFolder = package.getChildren("Folder").find(x => x.getName() == pluralize(folderName));
-        var folder = existingFolder || createElement("Folder", pluralize(folderName), package.id);
+        const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
+        const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x => x.getName() == pluralize(serviceName));
+        const service = existingService || createElement("Service", serviceName, package.id);
 
-        let resultDto = createMappedResultDto(entity, folder);
+        const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
+        const existingFolder = package.getChildren("Folder").find(x => x.getName() == pluralize(folderName));
+        const folder = existingFolder || createElement("Folder", pluralize(folderName), package.id);
+        const primaryKeys = DomainHelper.getPrimaryKeys(entity);
+
+        const resultDto = createMappedResultDto(entity, folder);
         createStandardCreateOperation(service, entity, folder);
-        createStandardFindByIdOperation(service, entity, resultDto);
+
+        if (primaryKeys.length > 0) {
+            createStandardFindByIdOperation(service, entity, resultDto);
+        }
+
         createStandardFindAllOperation(service, entity, resultDto);
-        createStandardUpdateOperation(service, entity, folder);
-        createStandardDeleteOperation(service, entity);
+
+        if (primaryKeys.length > 0) {
+            createStandardUpdateOperation(service, entity, folder);
+            createStandardDeleteOperation(service, entity);
+        }
     };
 
     export function createMappedResultDto(entity: IElementApi, folder: IElementApi): MacroApi.Context.IElementApi {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let baseName = getBaseNameForElement(owningAggregate, entity, false);
         let dtoName = `${baseName}Dto`;
-        
+
         let existing = folder.getChildren().find(x => x.getName() == dtoName)
         if (existing) {
             return existing;
@@ -60,7 +68,7 @@ namespace servicesCrud {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let baseName = getBaseNameForElement(owningAggregate, entity, false);
         let dtoName = `${baseName}CreateDto`;
-        
+
         if (service.getChildren().some(x => x.getName() == `Create${entity.getName()}`)) {
             let operation = service.getChildren().filter(x => x.getName() == `Create${entity.getName()}`)[0];
             let pks = DomainHelper.getPrimaryKeys(entity);
@@ -100,7 +108,7 @@ namespace servicesCrud {
     export function createStandardFindByIdOperation(service: IElementApi, entity: IElementApi, resultDto: IElementApi) {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let operationName = `Find${entity.getName()}ById`;
-        
+
         if (service.getChildren().some(x => x.getName() == operationName)) {
             return;
         }
@@ -125,7 +133,7 @@ namespace servicesCrud {
     export function createStandardFindAllOperation(service: IElementApi, entity: IElementApi, resultDto: IElementApi) {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let operationName = `Find${pluralize(entity.getName())}`;
-        
+
         if (service.getChildren().some(x => x.getName() == operationName)) {
             return;
         }
@@ -148,7 +156,7 @@ namespace servicesCrud {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let baseName = getBaseNameForElement(owningAggregate, entity, false);
         let dtoName = `${baseName}UpdateDto`;
-        
+
         if (service.getChildren().some(x => x.getName() == `Update${entity.getName()}`)) {
             let operation = service.getChildren().filter(x => x.getName() == `Update${entity.getName()}`)[0];
             let pks = DomainHelper.getPrimaryKeys(entity);
@@ -166,7 +174,7 @@ namespace servicesCrud {
         });
 
         dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
-        
+
         if (owningAggregate) {
             let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
             dtoManager.addChildrenFrom(foreignKeys)
@@ -188,7 +196,7 @@ namespace servicesCrud {
 
     export function createStandardDeleteOperation(service: IElementApi, entity: IElementApi) {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
-        
+
         if (service.getChildren().some(x => x.getName() == `Delete${entity.getName()}`)) {
             return;
         }
@@ -209,7 +217,7 @@ namespace servicesCrud {
         operationManager.collapse();
     }
 
-    function getBaseNameForElement(owningAggregate: IElementApi, entity: IElementApi, entityIsMany: boolean) : string {
+    function getBaseNameForElement(owningAggregate: IElementApi, entity: IElementApi, entityIsMany: boolean): string {
         let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
         return owningAggregate ? `${toPascalCase(owningAggregate.getName())}${entityName}` : entityName;
     }

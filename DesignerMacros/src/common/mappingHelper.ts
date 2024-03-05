@@ -55,17 +55,6 @@ class MappingHelper {
             typeUpdated = true;
         }
 
-        const implicitPkName = MappingHelper.applyNamingConvention("id");
-        if (includeKeys &&
-            !primaryKeyFound &&
-            !type.getChildren(typePropertySpecialization).some(x => x.getName().toLowerCase() === implicitPkName.toLowerCase())
-        ) {
-            const typeProperty = createElement(typePropertySpecialization, implicitPkName, MappingHelper.getSurrogateKeyType());
-            typeProperty.setOrder(0);
-
-            typeUpdated = true;
-        }
-
         if (typeUpdated) {
             type.collapse();
         }

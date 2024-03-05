@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>3.6.0</Version>
+    <Version>3.6.1-pre.0</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent - Modules Services Modeller</Product>
@@ -18,7 +18,7 @@
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.5.0" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.9" />
-    <PackageReference Include="Intent.Packager" Version="3.4.0">
+    <PackageReference Include="Intent.Packager" Version="3.4.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

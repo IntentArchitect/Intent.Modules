@@ -17,17 +17,22 @@ namespace cqrsCrud {
         const owningEntity = DomainHelper.getOwningAggregate(entity);
         const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
         const folder = element.getChildren().find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), element.id);
+        const primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        const hasPrimaryKey = primaryKeys.length > 0;
 
         const resultDto = createCqrsResultTypeDto(entity, folder);
 
         if (owningEntity == null || !privateSettersOnly) {
-            createCqrsCreateCommand(entity, folder);
+            createCqrsCreateCommand(entity, folder, primaryKeys);
         }
 
-        createCqrsFindByIdQuery(entity, folder, resultDto);
+        if (hasPrimaryKey) {
+            createCqrsFindByIdQuery(entity, folder, resultDto);
+        }
+
         createCqrsFindAllQuery(entity, folder, resultDto);
 
-        if (!privateSettersOnly) {
+        if (hasPrimaryKey && !privateSettersOnly) {
             createCqrsUpdateCommand(entity, folder);
         }
 
@@ -36,34 +41,35 @@ namespace cqrsCrud {
             createCqrsCallOperationCommand(entity, operation, folder);
         }
 
-        if (owningEntity == null || !privateSettersOnly) {
+        if (hasPrimaryKey && (owningEntity == null || !privateSettersOnly)) {
             createCqrsDeleteCommand(entity, folder);
         }
     }
 
-    export function createCqrsCreateCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
-        let owningAggregate = DomainHelper.getOwningAggregate(entity);
-        let baseName = getBaseNameForElement(owningAggregate, entity, false);
-        let expectedCommandName = `Create${baseName}Command`;
-
-        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+    export function createCqrsCreateCommand(
+        entity: MacroApi.Context.IElementApi,
+        folder: MacroApi.Context.IElementApi,
+        primaryKeys: IAttributeWithMapPath[]
+    ): MacroApi.Context.IElementApi {
+        const owningAggregate = DomainHelper.getOwningAggregate(entity);
+        const baseName = getBaseNameForElement(owningAggregate, entity, false);
+        const expectedCommandName = `Create${baseName}Command`;
 
         if (folder.getChildren().some(x => x.getName() == expectedCommandName)) {
-            let command = folder.getChildren().filter(x => x.getName() == expectedCommandName)[0];
+            const returnType = primaryKeys.length == 1
+                ? primaryKeys[0].typeId
+                : null;
 
-            let returnType = primaryKeys[0].typeId;
-            if (primaryKeys.length > 1) {
-                returnType = null;
-            }
+            const command = folder.getChildren().filter(x => x.getName() == expectedCommandName)[0];
             command.typeReference.setType(returnType);
             return command;
         }
 
-        let commandManager = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
+        const commandManager = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
             childSpecialization: "DTO-Field"
         });
 
-        let entityCtor: MacroApi.Context.IElementApi = entity
+        const entityCtor: MacroApi.Context.IElementApi = entity
             .getChildren("Class Constructor")
             .sort((a, b) => {
                 // In descending order:
@@ -79,7 +85,7 @@ namespace cqrsCrud {
         }
         commandManager.getElement().setMetadata("baseName", baseName);
 
-        let surrogateKey = primaryKeys.length === 1;
+        const surrogateKey = primaryKeys.length === 1;
         if (surrogateKey) {
             commandManager.setReturnType(primaryKeys[0].typeId);
         }
@@ -88,15 +94,15 @@ namespace cqrsCrud {
             commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter")
                 .filter(x => x.typeId != null && lookup(x.typeId).specialization !== "Domain Service"));
         } else {
-            if (!surrogateKey) {          
-                let toAdd = primaryKeys.filter(x => DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+            if (!surrogateKey) {
+                const toAdd = primaryKeys.filter(x => DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
                 ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), toAdd);
             }
             commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
             commandManager.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
         }
 
-        if (owningAggregate != null){
+        if (owningAggregate != null) {
             addAggregatePkToCommandOrQuery(owningAggregate, commandManager.getElement());
         }
         onMapCommand(commandManager.getElement(), true, true);
@@ -133,7 +139,7 @@ namespace cqrsCrud {
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(query, primaryKeys);
 
-        if (owningAggregate != null){
+        if (owningAggregate != null) {
             addAggregatePkToCommandOrQuery(owningAggregate, query);
         }
 
@@ -194,7 +200,7 @@ namespace cqrsCrud {
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(command.getElement(), primaryKeys);
 
-        if (owningAggregate != null){
+        if (owningAggregate != null) {
             addAggregatePkToCommandOrQuery(owningAggregate, command.getElement());
         }
 
@@ -234,10 +240,10 @@ namespace cqrsCrud {
         commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter")
             .filter(x => x.typeId != null && lookup(x.typeId).specialization !== "Domain Service"));
 
-        if (owningAggregate != null){
+        if (owningAggregate != null) {
             addAggregatePkToCommandOrQuery(owningAggregate, commandElement);
         }
-    
+
         onMapCommand(commandElement, true);
         commandManager.collapse();
         return commandManager.getElement();
@@ -270,7 +276,7 @@ namespace cqrsCrud {
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(command, primaryKeys);
 
-        if (owningAggregate != null){
+        if (owningAggregate != null) {
             addAggregatePkToCommandOrQuery(owningAggregate, command);
         }
         onMapCommand(command, true);
@@ -321,22 +327,21 @@ namespace cqrsCrud {
         return dto;
     }
 
-    function addAggregatePkToCommandOrQuery(owningAggregate: MacroApi.Context.IElementApi, commandOrQuery: MacroApi.Context.IElementApi) : void{
-        if (owningAggregate != null){
+    function addAggregatePkToCommandOrQuery(owningAggregate: MacroApi.Context.IElementApi, commandOrQuery: MacroApi.Context.IElementApi): void {
+        if (owningAggregate != null) {
             var aggPks = DomainHelper.getPrimaryKeys(owningAggregate);
             aggPks.forEach(x => {
-                if (x.name.toLowerCase() == "id" ) 
-                {
+                if (x.name.toLowerCase() == "id") {
                     x.name = `${owningAggregate.getName()}Id`
-                } 
+                }
                 x.id = null;
                 x.mapPath = null;
                 x.isCollection = false;
                 x.isNullable = false;
-                });
-                ServicesHelper.addDtoFieldsFromDomain(commandOrQuery,aggPks);
+            });
+            ServicesHelper.addDtoFieldsFromDomain(commandOrQuery, aggPks);
         }
-    }    
+    }
 
     function getMandatoryAssociationsWithMapPath(entity: MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
         return traverseInheritanceHierarchy(entity, [], []);
