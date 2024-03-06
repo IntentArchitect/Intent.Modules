@@ -1,3 +1,7 @@
+### Version 3.4.10
+
+- Fixed: Better handling of Java annotation merging.
+
 ### Version 3.4.9
 
 - Fixed: Better test coverage for Java parsing to iron out remaining issues.
