@@ -167,7 +167,7 @@
                 <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="alt + c" isActive="true" />
                 <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                 <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
-                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return application.isModuleInstalled(&quot;Intent.Modelers.Services.CQRS&quot;) &amp;&amp;&#xD;&#xA;    application.getSettings(&quot;0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad&quot;).getField(&quot;14bc1e98-930b-494c-97a9-5da4e1f3a5fa&quot;).value == &quot;basic&quot;;" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="function hasCommandOrQueries(element) {&#xD;&#xA;    return element.getChildren(&quot;Command&quot;).length &gt; 0 || element.getChildren(&quot;Query&quot;).length &gt; 0;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return application.isModuleInstalled(&quot;Intent.Modelers.Services.CQRS&quot;) &amp;&amp;&#xD;&#xA;    application.getSettings(&quot;0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad&quot;).getField(&quot;14bc1e98-930b-494c-97a9-5da4e1f3a5fa&quot;).value == &quot;basic&quot; &amp;&amp;&#xD;&#xA;    !hasCommandOrQueries(element);" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -213,7 +213,7 @@
                 <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="alt + c" isActive="true" />
                 <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                 <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
-                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return application.isModuleInstalled(&quot;Intent.Modelers.Services.CQRS&quot;) &amp;&amp;&#xD;&#xA;    application.getSettings(&quot;0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad&quot;).getField(&quot;14bc1e98-930b-494c-97a9-5da4e1f3a5fa&quot;).value == &quot;advanced&quot;;" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="function hasCommandOrQueries(element) {&#xD;&#xA;    return element.getChildren(&quot;Command&quot;).length &gt; 0 || element.getChildren(&quot;Query&quot;).length &gt; 0;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return application.isModuleInstalled(&quot;Intent.Modelers.Services.CQRS&quot;) &amp;&amp;&#xD;&#xA;    application.getSettings(&quot;0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad&quot;).getField(&quot;14bc1e98-930b-494c-97a9-5da4e1f3a5fa&quot;).value == &quot;advanced&quot; &amp;&amp;&#xD;&#xA;    !hasCommandOrQueries(element);" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
