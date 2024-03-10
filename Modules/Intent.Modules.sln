@@ -100,7 +100,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.Doc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services.GraphQL", "Intent.Modules.Modelers.Services.GraphQL\Intent.Modules.Modelers.Services.GraphQL.csproj", "{7F93839B-96D1-493A-8ED8-D30B3F05A35E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services.DomainInteractions", "Intent.Modules.Modelers.Services.DomainInteractions\Intent.Modules.Modelers.Services.DomainInteractions.csproj", "{EAECF732-6A98-4D4F-9E18-02BD112C6E8E}"
+Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services.DomainInteractions", "Intent.Modules.Modelers.Services.DomainInteractions\Intent.Modules.Modelers.Services.DomainInteractions.csproj", "{EAECF732-6A98-4D4F-9E18-02BD112C6E8E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services.EventInteractions", "Intent.Modules.Modelers.Services.EventInteractions\Intent.Modules.Modelers.Services.EventInteractions.csproj", "{9BCD766F-1590-471F-AE5C-9F958ACA7130}"
 EndProject
@@ -111,6 +111,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - S
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Java.Weaving.Annotations", "Intent.Modules.Java.Weaving.Annotations\Intent.Modules.Java.Weaving.Annotations.csproj", "{AB7B334C-A6CF-4138-92DD-5F89BAF9505B}"
+EndProject
+Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Domain.StoredProcedures", "Intent.Modules.Modelers.Domain.StoredProcedures\Intent.Modules.Modelers.Domain.StoredProcedures.csproj", "{9DB519CC-52B4-4875-9A8F-1AAEA9AD450B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -298,6 +300,10 @@ Global
 		{AB7B334C-A6CF-4138-92DD-5F89BAF9505B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB7B334C-A6CF-4138-92DD-5F89BAF9505B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB7B334C-A6CF-4138-92DD-5F89BAF9505B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DB519CC-52B4-4875-9A8F-1AAEA9AD450B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DB519CC-52B4-4875-9A8F-1AAEA9AD450B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DB519CC-52B4-4875-9A8F-1AAEA9AD450B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DB519CC-52B4-4875-9A8F-1AAEA9AD450B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -353,6 +359,7 @@ Global
 		{EAECF732-6A98-4D4F-9E18-02BD112C6E8E} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{9BCD766F-1590-471F-AE5C-9F958ACA7130} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{AB7B334C-A6CF-4138-92DD-5F89BAF9505B} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
+		{9DB519CC-52B4-4875-9A8F-1AAEA9AD450B} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}
