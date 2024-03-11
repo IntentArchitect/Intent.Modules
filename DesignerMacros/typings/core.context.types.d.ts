@@ -58,12 +58,13 @@ declare namespace MacroApi.Context {
 
     interface IDynamicFormFieldConfig {
         id: string;
-        fieldType: "text" | "select" | "checkbox"
+        fieldType: "text" | "select" | "checkbox"| "textarea";
         label: string;
-        placeholder?: string,
-        hint?: string,
+        placeholder?: string;
+        hint?: string;
         value?: string;
-        selectOptions?: IDynamicFormFieldSelectOption[]
+        isRequired?: boolean;
+        selectOptions?: IDynamicFormFieldSelectOption[];
     }
 
     interface IDynamicFormFieldSelectOption {

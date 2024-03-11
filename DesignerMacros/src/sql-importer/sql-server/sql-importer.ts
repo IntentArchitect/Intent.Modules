@@ -35,6 +35,7 @@ async function  importSqlDatabase(element: MacroApi.Context.IElementApi): Promis
             label: "Connection String",
             placeholder: null,
             hint: null,
+            isRequired: true,
             value: defaults.connectionString 
     };
         
@@ -141,11 +142,13 @@ async function  importSqlDatabase(element: MacroApi.Context.IElementApi): Promis
         settingPersistence: inputs.settingPersistence,        
     };
     let jsonResponse = await executeModuleTask("Intent.Modules.SqlServerImporter.Tasks.DatabaseImport", JSON.stringify(importConfig));
-    console.warn(jsonResponse);
     let result = JSON.parse(jsonResponse);
     if (result?.errorMessage){
-        dialogService.error(result?.errorMessage);
+        await dialogService.error(result?.errorMessage);
+    } else {
+        await dialogService.info("Import complete.");
     }
+
 }
 
 function getDialogDefaults(element: MacroApi.Context.IElementApi) : ISqlImporterSettings{
