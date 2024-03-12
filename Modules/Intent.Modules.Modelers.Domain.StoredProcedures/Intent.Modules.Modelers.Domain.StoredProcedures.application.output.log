@@ -44,8 +44,8 @@
       <ProjectId>4907bbc9-4561-4b73-972e-d1efc0da41d0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#276019e5-fc1a-401e-9450-ef8468606781</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/NewDesignerSettings.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>NewDesignerSettings.designer.settings</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>modelers/Domain Stored Procedure.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Domain Stored Procedure.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

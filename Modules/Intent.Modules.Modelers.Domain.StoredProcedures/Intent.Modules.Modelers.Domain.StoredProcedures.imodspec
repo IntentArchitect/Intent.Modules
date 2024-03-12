@@ -23,7 +23,7 @@
   <tags />
   <moduleSettingsExtensions />
   <metadata>
-    <install src="modelers/NewDesignerSettings.designer.settings" externalReference="276019e5-fc1a-401e-9450-ef8468606781" />
+    <install src="modelers/Domain Stored Procedure.designer.settings" externalReference="276019e5-fc1a-401e-9450-ef8468606781" target="Domain" />
     <install target="Domain;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modules.Modelers.Domain.StoredProcedures/Intent.Modules.Modelers.Domain.StoredProcedures.pkg.config" externalReference="e3eb7873-c66f-4636-a7c8-8cb1f7b34d71" />
   </metadata>
 </package>
