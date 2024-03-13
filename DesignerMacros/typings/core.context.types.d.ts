@@ -592,6 +592,14 @@ declare namespace MacroApi.Context {
          * Removes the metadata value for the specified key.
          */
         removeMetadata(key: string): void;
+        /**
+         * Returns all stereotypes currently applied to the element.
+         */
+        getStereotypes(): IStereotypeApi[];
+        /**
+         * Returns the stereotype that matches the specified name or definition identifier
+         */
+        getStereotype(nameOrDefinitionId: string): IStereotypeApi;
     }
 
     interface IBackwardCompatibleIAssociationReadOnlyApi extends IAssociationReadOnlyApi {

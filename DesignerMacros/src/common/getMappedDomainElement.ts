@@ -1,19 +1,17 @@
-/// <reference path="domainHelper.ts" />
-/// <reference path="getParent.ts" />
+/// <reference path="mappedDomainElement.ts" />
 
 /**
  * Gets the ultimate target entity and it's owning entity (if it has one) of a mapped Command/Query.
  * @param request The Command or Query that has been mapped
  */
-function getMappedEntity(
-    request: MacroApi.Context.IElementApi
-): {
-    entity?: IElementApi;
-    owningEntity?: IElementApi;
-} {
+function getMappedDomainElement(request: MacroApi.Context.IElementApi): MappedDomainElement {
     const queryEntityMappingTypeId = "25f25af9-c38b-4053-9474-b0fabe9d7ea7";
     const createEntityMappingTypeId = "5f172141-fdba-426b-980e-163e782ff53e";
     const mappingTypeIds = [queryEntityMappingTypeId, createEntityMappingTypeId];
+    const mappableElements = ["Class", "Repository"];
+    const isMappableElement = function (element: MacroApi.Context.IElementApi): Boolean {
+        return mappableElements.some(x => element?.specialization === x);
+    };
 
     let entity: IElementApi = null;
 
@@ -22,12 +20,12 @@ function getMappedEntity(
     if (mappedElement != null) {
         let element = mappedElement;
         while (element != null) {
-            if (element?.specialization === "Class") {
+            if (isMappableElement(element)) {
                 entity = element;
                 break;
             }
 
-            element = getParent(element, "Class");
+            element = element.getParent();
         }
     }
 
@@ -39,11 +37,11 @@ function getMappedEntity(
                 .map(mapping => {
                     let element = mapping.getTargetElement();
                     while (element != null) {
-                        if (element.specialization === "Class") {
+                        if (isMappableElement(element)) {
                             return element;
                         }
 
-                        element = getParent(element, "Class");
+                        element = element.getParent();
                     }
 
                     return null;
@@ -57,11 +55,8 @@ function getMappedEntity(
     }
 
     if (entity == null) {
-        return {};
+        return null;
     }
 
-    return {
-        entity: entity,
-        owningEntity: DomainHelper.getOwningAggregate(entity)
-    };
+    return new MappedDomainElement(entity);
 }

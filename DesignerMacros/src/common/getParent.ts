@@ -3,7 +3,7 @@
  * @param element The element whose parent should be searched for
  * @param parentSpecializationType The specialization type of the parent
  */
-function getParent(element: MacroApi.Context.IElementApi, parentSpecializationType: string): MacroApi.Context.IElementApi {
+function getParent(element: MacroApi.Context.IElementApi, parentSpecializationType?: string): MacroApi.Context.IElementApi {
     const elements = lookupTypesOf(parentSpecializationType);
 
     const parent = elements
