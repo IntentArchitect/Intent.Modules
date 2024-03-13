@@ -1,4 +1,5 @@
 declare let debugConsole: Console;
+
 type IApplication = MacroApi.Context.IApplication;
 type IElementApi = MacroApi.Context.IElementApi;
 type IAssociationApi = MacroApi.Context.IAssociationApi;
@@ -47,7 +48,7 @@ declare namespace MacroApi.Context {
          * Must be called with await.
          * @param config The configuration of the form.
          */
-        openForm(config: IDynamicFormConfig): Promise<IDynamicFormModel>;
+        openForm(config: IDynamicFormConfig): Promise<any>;
     }
 
     interface IDynamicFormConfig {
@@ -57,21 +58,18 @@ declare namespace MacroApi.Context {
 
     interface IDynamicFormFieldConfig {
         id: string;
-        fieldType: "text" | "select" | "checkbox"
+        fieldType: "text" | "select" | "checkbox"| "textarea";
         label: string;
-        placeholder?: string,
-        hint?: string,
+        placeholder?: string;
+        hint?: string;
         value?: string;
-        selectOptions?: IDynamicFormFieldSelectOption[]
+        isRequired?: boolean;
+        selectOptions?: IDynamicFormFieldSelectOption[];
     }
 
     interface IDynamicFormFieldSelectOption {
         id: string,
         description: string
-    }
-
-    interface IDynamicFormModel {
-        fields: IDynamicFormFieldModel[];
     }
 
     interface IDynamicFormFieldModel {
@@ -207,6 +205,7 @@ declare namespace MacroApi.Context {
     }
 
     interface IStereotypeReadOnlyApi {
+        definitionId: string;
         name: string;
         properties: object;
         hasProperty(property: string): boolean;

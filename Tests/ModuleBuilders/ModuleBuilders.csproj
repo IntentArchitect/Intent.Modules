@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -373,12 +373,12 @@
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.5.0" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.5.2" />
-    <PackageReference Include="Intent.Modules.Common.Dart" Version="1.1.0-pre.0" />
-    <PackageReference Include="Intent.Modules.Common.Html" Version="4.0.0-pre.1" />
-    <PackageReference Include="Intent.Modules.Common.Java" Version="4.0.0-pre.1" />
-    <PackageReference Include="Intent.Modules.Common.Kotlin" Version="4.0.0-pre.0" />
-    <PackageReference Include="Intent.Modules.Common.Sql" Version="3.4.0-pre.0" />
-    <PackageReference Include="Intent.Modules.Common.TypeScript" Version="4.0.0-pre.0" />
+    <PackageReference Include="Intent.Modules.Common.Dart" Version="1.1.0" />
+    <PackageReference Include="Intent.Modules.Common.Html" Version="4.0.0" />
+    <PackageReference Include="Intent.Modules.Common.Java" Version="4.0.0" />
+    <PackageReference Include="Intent.Modules.Common.Kotlin" Version="4.0.0" />
+    <PackageReference Include="Intent.Modules.Common.Sql" Version="3.4.0" />
+    <PackageReference Include="Intent.Modules.Common.TypeScript" Version="4.0.0" />
     <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.7.0" />
     <PackageReference Include="Intent.Packager" Version="3.4.2">
       <PrivateAssets>all</PrivateAssets>
