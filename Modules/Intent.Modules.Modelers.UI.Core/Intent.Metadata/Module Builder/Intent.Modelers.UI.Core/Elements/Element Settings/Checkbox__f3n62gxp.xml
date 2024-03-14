@@ -68,13 +68,13 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="65b82bbe-c043-4a31-844d-25935c74e69a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Event Emitter</name>
-          <display>Event Emitter: Event Emitter</display>
+        <childElement id="c8187137-516f-4e3a-a639-08b245a6a1d8" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Property</name>
+          <display>Property: Property</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="1c6bd856-97d6-40f4-bb30-d798e7d80dce">
-            <typeId>d6739ffc-30e6-4170-a105-bf28e69aa578</typeId>
+          <typeReference id="bf7b3690-db55-4ae8-bb0b-f72ecea1e4a0">
+            <typeId>356fbe17-bc63-4e16-b915-feefbc063cbe</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -108,13 +108,13 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="c8187137-516f-4e3a-a639-08b245a6a1d8" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Property</name>
-          <display>Property: Property</display>
+        <childElement id="65b82bbe-c043-4a31-844d-25935c74e69a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Event Emitter</name>
+          <display>Event Emitter: Event Emitter</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="bf7b3690-db55-4ae8-bb0b-f72ecea1e4a0">
-            <typeId>356fbe17-bc63-4e16-b915-feefbc063cbe</typeId>
+          <typeReference id="1c6bd856-97d6-40f4-bb30-d798e7d80dce">
+            <typeId>d6739ffc-30e6-4170-a105-bf28e69aa578</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

@@ -19,6 +19,13 @@ namespace Intent.Modelers.UI.Api
                 .ToList();
         }
 
+        public static IList<ComponentViewModel> GetComponentViewModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(ComponentViewModel.SpecializationTypeId)
+                .Select(x => new ComponentViewModel(x))
+                .ToList();
+        }
+
         public static IList<ModelDefinitionModel> GetModelDefinitionModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(ModelDefinitionModel.SpecializationTypeId)
