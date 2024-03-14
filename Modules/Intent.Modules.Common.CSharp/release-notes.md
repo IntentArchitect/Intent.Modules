@@ -1,5 +1,6 @@
 ﻿### Version 3.5.5
 
+- Improvement: New `AddKnownType(string fullyQualifiedTypeName)` method added to `CSharpTemplateBase` which can be used to disambiguate type references in cases where multiple using directive namespaces have types with the same.
 - Improvement: `AddNestedInterface` added to `CSharpClass`.
 - Fixed: When using `.Async()` in the C# File Builder on a nested class, a null reference exception would be thrown.
 

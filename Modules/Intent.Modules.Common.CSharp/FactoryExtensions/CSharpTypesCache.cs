@@ -20,7 +20,8 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
 
         private static TypeRegistry _knownTypes;
         private static TypeRegistry _outputTargetNames;
-        private static readonly TypeRegistry Empty = new(Enumerable.Empty<string>());
+        private static readonly TypeRegistry Empty = new([]);
+        private static readonly List<string> ManuallyAddedKnownTypes = new();
 
         /// <inheritdoc />
         public override int Order { get; set; } = int.MinValue;
@@ -33,12 +34,17 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
                 .Select(x => string.IsNullOrWhiteSpace(x.Namespace) ? x.ClassName : $"{x.Namespace}.{x.ClassName}");
             var commonKnownTypes = GetCommonKnownTypes();
 
-            var knownTypes = knownTypesByNamespace.Union(commonKnownTypes).ToArray();
+            var knownTypes = knownTypesByNamespace
+                .Union(commonKnownTypes)
+                .Union(ManuallyAddedKnownTypes)
+                .ToArray();
             var outputTargetNames = application.OutputTargets.Select(x => x.Name).ToArray();
 
             _knownTypes = new TypeRegistry(knownTypes);
             _outputTargetNames = new TypeRegistry(outputTargetNames);
         }
+
+        internal static void AddKnownType(string fullyQualifiedTypeName) => ManuallyAddedKnownTypes.Add(fullyQualifiedTypeName);
 
         private static IEnumerable<string> GetCommonKnownTypes()
         {
