@@ -766,4 +766,20 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task AsyncOnNestedClassesShouldWork()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddClass("Class", @class =>
+            {
+                @class.AddNestedClass("NestedClass", nestedClass =>
+                {
+                    nestedClass.AddMethod("void", "Method", method => method.Async());
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

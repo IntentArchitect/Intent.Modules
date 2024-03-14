@@ -26,10 +26,18 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         Name = name;
     }
 
-    protected internal CSharpClass(string name, Type type, CSharpFile file) : this(name, type)
+    protected internal CSharpClass(string name, Type type, CSharpFile file) : this(
+        name: name,
+        type: type,
+        file: file,
+        parent: file)
+    {
+    }
+
+    protected internal CSharpClass(string name, Type type, CSharpFile file, CSharpMetadataBase parent) : this(name, type)
     {
         File = file;
-        Parent = file;
+        Parent = parent;
     }
 
     public CSharpClass(string name) : this(name, Type.Class)
@@ -261,7 +269,12 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
 
     public CSharpClass AddNestedClass(string name, Action<CSharpClass> configure = null)
     {
-        var @class = new CSharpClass(name);
+        var @class = new CSharpClass(
+            name: name,
+            type: Type.Class,
+            file: File,
+            parent: this);
+
         configure?.Invoke(@class);
         NestedClasses.Add(@class);
         return this;

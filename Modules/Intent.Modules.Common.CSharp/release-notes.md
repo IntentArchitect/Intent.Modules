@@ -1,4 +1,8 @@
-﻿### Version 3.5.4
+﻿### Version 3.5.5
+
+- Fixed: When using `.Async()` in the C# File Builder on a nested class, a null reference exception would be thrown.
+
+### Version 3.5.4
 
 - Improvement: Added `WithParamsParameterModifier()` method to `CSharpParameter`.
 
