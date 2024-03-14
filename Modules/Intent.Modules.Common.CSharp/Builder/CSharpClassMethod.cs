@@ -129,10 +129,20 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     }
 
 
+    /// <summary>
+    /// Use <see cref="AddOptionalCancellationTokenParameter"/> instead.
+    /// </summary>
+    [Obsolete]
     public CSharpClassMethod AddOptionalCancellationTokenParameter<T>(CSharpTemplateBase<T> template) =>
         AddParameter(
             $"{template.UseType("System.Threading.CancellationToken")}", "cancellationToken",
             parameter => parameter.WithDefaultValue("default"));
+
+    public CSharpClassMethod AddOptionalCancellationTokenParameter() =>
+        AddParameter(
+            type: File.Template.UseType("System.Threading.CancellationToken"),
+            name: "cancellationToken",
+            configure: parameter => parameter.WithDefaultValue("default"));
 
     public CSharpClassMethod AddGenericParameter(string typeName)
     {

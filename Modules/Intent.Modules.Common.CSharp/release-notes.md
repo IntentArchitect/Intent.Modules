@@ -1,5 +1,6 @@
 ﻿### Version 3.5.5
 
+- Improvement: `AddNestedInterface` added to `CSharpClass`.
 - Fixed: When using `.Async()` in the C# File Builder on a nested class, a null reference exception would be thrown.
 
 ### Version 3.5.4
