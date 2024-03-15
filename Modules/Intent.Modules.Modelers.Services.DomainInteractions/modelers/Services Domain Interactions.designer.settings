@@ -9442,6 +9442,7 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
           <targetTypes>
             <type>Operation</type>
             <type>Operation</type>
+            <type>Stored Procedure</type>
           </targetTypes>
           <allowIsNavigable>true</allowIsNavigable>
           <allowIsNullable>true</allowIsNullable>
@@ -9701,7 +9702,6 @@ return typeReference.getIsCollection()
           <isRequired>true</isRequired>
           <targetTypes>
             <type>Class</type>
-            <type>Stored Procedure</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>true</allowIsNullable>
@@ -10265,25 +10265,6 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <represents>data</represents>
           <childSettings />
         </mapping>
-        <mapping id="809a0d2b-fbb6-4f09-9302-5d13a19d1607" name="Stored Procedure" type="Stored Procedure" typeId="575edd35-9438-406d-b0a7-b99d6f29b560">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="dba64983-a232-4042-89f6-fe70e966fa32" name="Stored Procedure Parameter" type="Stored Procedure Parameter" typeId="5823b192-eb03-47c8-90d8-5501c922e9a5">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-              <childSettings />
-            </childSetting>
-          </childSettings>
-        </mapping>
       </targetMappings>
       <mappingTypes>
         <mappingType type="Filter Mapping" typeId="01d09a7f-0e7c-4670-b7bc-395d7e893ef2">
@@ -10301,7 +10282,6 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <targets>
             <target id="a861cc4a-9aed-41f5-ad5d-fdc651497de4" name="Attribute" />
             <target id="4e6c69aa-dfdb-4f34-b9dd-80ad18cfe855" name="Association Target End" />
-            <target id="dba64983-a232-4042-89f6-fe70e966fa32" name="Stored Procedure Parameter" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <lineColor>lawngreen</lineColor>
@@ -10413,6 +10393,25 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <represents>data</represents>
           <childSettings />
         </mapping>
+        <mapping id="809a0d2b-fbb6-4f09-9302-5d13a19d1607" name="Stored Procedure" type="Stored Procedure" typeId="575edd35-9438-406d-b0a7-b99d6f29b560">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="dba64983-a232-4042-89f6-fe70e966fa32" name="Stored Procedure Parameter" type="Stored Procedure Parameter" typeId="5823b192-eb03-47c8-90d8-5501c922e9a5">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
       </targetMappings>
       <mappingTypes>
         <mappingType type="Invocation Mapping" typeId="10fc25ac-92c7-49a5-9c42-4dd842a97500">
@@ -10428,6 +10427,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <targets>
             <target id="120f60ff-f242-4f5c-ac03-14f0ecaafdcf" name="Call Application Service Operation" />
             <target id="842b0753-adfc-4215-a772-65f4a033aedd" name="Call Domain Service Operation" />
+            <target id="809a0d2b-fbb6-4f09-9302-5d13a19d1607" name="Stored Procedure" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
@@ -10450,6 +10450,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <target id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" />
             <target id="fa557ba7-7faa-4ce3-bd23-32e821f71f84" name="Field" />
             <target id="24c8c608-ce45-4d64-a8b1-bbbd2486b186" name="Collection Field" />
+            <target id="dba64983-a232-4042-89f6-fe70e966fa32" name="Stored Procedure Parameter" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
