@@ -200,7 +200,7 @@ $validationRules = @{
 $validationWarnings = @{
     Tags = {
         param([ImodSpecInfo]$info)
-        if (-not [System.String]::IsNullOrWhiteSpace($info.Tags)) {
+        if ([System.String]::IsNullOrWhiteSpace($info.Tags)) {
             return "No tags specified"
         }
     }
