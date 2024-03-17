@@ -10402,10 +10402,23 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <represents>data</represents>
           <childSettings>
             <childSetting id="dba64983-a232-4042-89f6-fe70e966fa32" name="Stored Procedure Parameter" type="Stored Procedure Parameter" typeId="5823b192-eb03-47c8-90d8-5501c922e9a5">
+              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>false</isTraversable>
               <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <childSettings />
+            </childSetting>
+            <childSetting id="5cf85beb-5228-4f1a-969c-bc72b0c14a0c" name="Collection Stored Procedure Parameter" type="Stored Procedure Parameter" typeId="5823b192-eb03-47c8-90d8-5501c922e9a5">
+              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>15b84be5-c79b-41bf-881c-447fe70f5f5b</mappingId>
+              </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <childSettings />
@@ -10451,6 +10464,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <target id="fa557ba7-7faa-4ce3-bd23-32e821f71f84" name="Field" />
             <target id="24c8c608-ce45-4d64-a8b1-bbbd2486b186" name="Collection Field" />
             <target id="dba64983-a232-4042-89f6-fe70e966fa32" name="Stored Procedure Parameter" />
+            <target id="5cf85beb-5228-4f1a-969c-bc72b0c14a0c" name="Collection Stored Procedure Parameter" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>

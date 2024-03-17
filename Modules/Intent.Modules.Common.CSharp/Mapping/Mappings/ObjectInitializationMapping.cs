@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -40,6 +41,10 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     var select = new CSharpInvocationStatement($"Select").WithoutSemicolon();
 
                     var variableName = string.Join("", Model.Name.Where(char.IsUpper).Select(char.ToLower));
+                    if (string.IsNullOrEmpty(variableName))
+                    {
+                        variableName = Char.ToLower(Model.Name[0]).ToString();
+                    }
                     SetSourceReplacement(GetSourcePath().Last().Element, variableName);
                     SetTargetReplacement(GetTargetPath().Last().Element, null);
 
