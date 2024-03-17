@@ -34,19 +34,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="modelers\Domain Event Types.designer.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Domain Event Types.designer.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="modelers\Domain Event Types.designer.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Domain Event Types.designer.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
 </Project>

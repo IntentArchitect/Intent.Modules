@@ -36,6 +36,30 @@ namespace Intent.Modelers.UI.Core.Api
             return true;
         }
 
+        public static Interaction GetInteraction(this FormModel model)
+        {
+            var stereotype = model.GetStereotype("e242cccf-5826-478f-9e7a-c1fd9df4e5c8");
+            return stereotype != null ? new Interaction(stereotype) : null;
+        }
+
+
+        public static bool HasInteraction(this FormModel model)
+        {
+            return model.HasStereotype("e242cccf-5826-478f-9e7a-c1fd9df4e5c8");
+        }
+
+        public static bool TryGetInteraction(this FormModel model, out Interaction stereotype)
+        {
+            if (!HasInteraction(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Interaction(model.GetStereotype("e242cccf-5826-478f-9e7a-c1fd9df4e5c8"));
+            return true;
+        }
+
         public class Content
         {
             private IStereotype _stereotype;
@@ -46,6 +70,11 @@ namespace Intent.Modelers.UI.Core.Api
             }
 
             public string Name => _stereotype.Name;
+
+            public string Model()
+            {
+                return _stereotype.GetProperty<string>("Model");
+            }
 
             public bool Header()
             {
@@ -60,6 +89,24 @@ namespace Intent.Modelers.UI.Core.Api
             public bool Footer()
             {
                 return _stereotype.GetProperty<bool>("Footer");
+            }
+
+        }
+
+        public class Interaction
+        {
+            private IStereotype _stereotype;
+
+            public Interaction(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string OnSubmit()
+            {
+                return _stereotype.GetProperty<string>("On Submit");
             }
 
         }

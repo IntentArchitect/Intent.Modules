@@ -12,6 +12,29 @@ namespace Intent.Modelers.UI.Core.Api
 {
     public static class TextInputModelStereotypeExtensions
     {
+        public static Content GetContent(this TextInputModel model)
+        {
+            var stereotype = model.GetStereotype("6e04ff81-f043-4ac6-8632-798aedbaaf20");
+            return stereotype != null ? new Content(stereotype) : null;
+        }
+
+
+        public static bool HasContent(this TextInputModel model)
+        {
+            return model.HasStereotype("6e04ff81-f043-4ac6-8632-798aedbaaf20");
+        }
+
+        public static bool TryGetContent(this TextInputModel model, out Content stereotype)
+        {
+            if (!HasContent(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Content(model.GetStereotype("6e04ff81-f043-4ac6-8632-798aedbaaf20"));
+            return true;
+        }
         public static LabelAddon GetLabelAddon(this TextInputModel model)
         {
             var stereotype = model.GetStereotype("2c099977-e5ca-4a80-ba70-6f2edc593681");
@@ -34,6 +57,24 @@ namespace Intent.Modelers.UI.Core.Api
 
             stereotype = new LabelAddon(model.GetStereotype("2c099977-e5ca-4a80-ba70-6f2edc593681"));
             return true;
+        }
+
+        public class Content
+        {
+            private IStereotype _stereotype;
+
+            public Content(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string Model()
+            {
+                return _stereotype.GetProperty<string>("Model");
+            }
+
         }
 
         public class LabelAddon

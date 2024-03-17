@@ -20,6 +20,15 @@
   <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
   <packageName>Intent.Modelers.UI.Core</packageName>
   <properties>
+    <property id="f980aa79-3b16-4f43-acd3-3c0e34032183">
+      <name>Model</name>
+      <type>string</type>
+      <controlType>mappable</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="229e8f01-3a9b-40d1-9de8-87ecbc2bc744">
       <name>Header</name>
       <type>string</type>

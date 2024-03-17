@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="a7de29e5-4bee-4e5d-93f0-740569ac6130" version="3.1.0">
+  <name>Interaction</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="4474d808-f6fd-405f-a9c7-6998cd000ede">Button</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>a2a95421-3e55-43c7-96ad-355610b43c4d</parentFolderId>
+  <order>0</order>
+  <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+  <packageName>Intent.Modelers.UI.Core</packageName>
+  <properties>
+    <property id="d05f7b5b-fe45-4cbb-b938-380a4b68c0df">
+      <name>On Click</name>
+      <type>string</type>
+      <controlType>mappable</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>
