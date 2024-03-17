@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Intent.Modules.ModuleBuilder.Templates.Api
+﻿namespace Intent.Modules.ModuleBuilder.Templates.Api
 {
     public class NotifyModelHasParentFolderEvent
     {

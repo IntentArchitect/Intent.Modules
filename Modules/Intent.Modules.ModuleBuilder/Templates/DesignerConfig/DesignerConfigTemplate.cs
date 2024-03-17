@@ -1,21 +1,14 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Intent.Engine;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
-using Intent.IArchitect.Agent.Persistence.Model.Common;
-using Intent.IArchitect.Agent.Persistence.Model.Common;
-using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.ModuleBuilder.Api;
-using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-using IconType = Intent.IArchitect.Common.Types.IconType;
 
 namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
 {

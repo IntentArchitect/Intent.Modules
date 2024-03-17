@@ -8,7 +8,6 @@ using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Settings;
-using Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelPartial;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 

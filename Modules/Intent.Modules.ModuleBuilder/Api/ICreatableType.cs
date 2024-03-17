@@ -1,6 +1,3 @@
-using System;
-using Intent.Metadata.Models;
-
 namespace Intent.ModuleBuilder.Api
 {
     public interface ICreatableType

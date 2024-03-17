@@ -75,6 +75,7 @@ namespace <#= Namespace #>
             case StereotypePropertyControlType.TextBox:
             case StereotypePropertyControlType.TextArea:
             case StereotypePropertyControlType.Function:
+            case StereotypePropertyControlType.Mappable:
             #>
             public string <#= property.Name.ToCSharpIdentifier() #>() {
                 return _stereotype.GetProperty<string>("<#= property.Name #>");
