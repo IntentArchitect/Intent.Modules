@@ -4316,6 +4316,31 @@ vertical-align: center`</style>
               </childElementVisualSetting>
             </childElementVisualSettings>
           </visualSettings>
+          <visualSettings type="Stored Procedure" typeId="575edd35-9438-406d-b0a7-b99d6f29b560">
+            <size width="${w}" height="${h}" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawText>
+                <text>return getName();</text>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+                <size width="${w}" height="18" />
+                <position x="${x}" y="${y + 48}" />
+              </drawText>
+              <drawSvgResource>
+                <path>stored-procedure.svg</path>
+                <size width="${w}" height="40" />
+                <position x="${x}" y="${y + 6}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="${x}" height="${y}" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings />
+          </visualSettings>
           <visualSettings type="Domain Service" typeId="07f936ea-3756-48c8-babd-24ac7271daac">
             <size width="${w}" height="70" />
             <position x="${x}" y="${y}" />
