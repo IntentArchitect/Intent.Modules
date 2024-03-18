@@ -3,6 +3,7 @@
 - Improvement: New `AddKnownType(string fullyQualifiedTypeName)` method added to `CSharpTemplateBase` which can be used to disambiguate type references in cases where multiple using directive namespaces have types with the same.
 - Improvement: For the advanced mapping system, `ConstructorMapping` now has better handling of un-mapped constructor parameters, similarly for `MethodInvocationMapping`.
 - Improvement: `AddNestedInterface` added to `CSharpClass`.
+- Improvement: Adding `DataContractInstantiationMapping` to allow for creating mapping cases that will instantiate `Data Contract` types with a constructor.
 - Fixed: When using `.Async()` in the C# File Builder on a nested class, a null reference exception would be thrown.
 
 ### Version 3.5.4
