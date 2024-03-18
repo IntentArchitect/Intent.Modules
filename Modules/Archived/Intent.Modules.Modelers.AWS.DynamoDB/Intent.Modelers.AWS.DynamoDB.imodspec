@@ -11,6 +11,7 @@
   <templates></templates>
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
+  <tags>aws</tags>
   <moduleSettings></moduleSettings>
   <dependencies>
     <dependency id="Intent.Common" version="3.3.17" />
