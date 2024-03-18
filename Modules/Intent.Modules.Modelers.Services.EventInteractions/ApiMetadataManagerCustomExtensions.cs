@@ -37,7 +37,7 @@ public static class ApiMetadataManagerCustomExtensions
 
     public static IReadOnlyCollection<MessageModel> GetExplicitlyPublishedMessageModels(this IMetadataManager metadataManager, IApplication application)
     {
-        return metadataManager.Services(application).GetAssociationsOfType(SubscribeIntegrationEventModel.SpecializationTypeId)
+        return metadataManager.Services(application).GetAssociationsOfType(PublishIntegrationEventModel.SpecializationTypeId)
             .Select(x => x.TargetEnd.TypeReference.Element.AsMessageModel())
             .Distinct()
             .ToArray();
@@ -86,7 +86,7 @@ public static class ApiMetadataManagerCustomExtensions
 
     public static IReadOnlyCollection<MessageModel> GetExplicitlySubscribedToMessageModels(this IMetadataManager metadataManager, IApplication application)
     {
-        return metadataManager.Services(application).GetAssociationsOfType(PublishIntegrationEventModel.SpecializationTypeId)
+        return metadataManager.Services(application).GetAssociationsOfType(SubscribeIntegrationEventModel.SpecializationTypeId)
             .Select(x => x.TargetEnd.TypeReference.Element.AsMessageModel())
             .Distinct()
             .ToArray();
