@@ -1,7 +1,10 @@
+### Version 1.0.4
+
+- Fixed: Removed `Create CRUD CQRS Operations` script from menu if commands and queries are already present in a folder.
+
 ### Version 1.0.3
 
 - Improvement: Removed support for implicit keys, allowing keyless entities to now be modelled.
-- Fixed: Removed `Create CRUD CQRS Operations` script from menu if commands and queries are already present in a folder.
 
 ### Version 1.0.2
 
