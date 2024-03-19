@@ -32,6 +32,7 @@ public class ConstructorMapping : CSharpMappingBase
 
     public override CSharpStatement GetSourceStatement()
     {
+        // Model assumes to be the Constructor element and it needs to access the owner of this Constructor to fetch the Template
         var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
         // Determine if this model is a constructor on the class:
         if (typeTemplate?.CSharpFile.Classes.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpConstructor ctor) 
@@ -74,7 +75,7 @@ public class ConstructorMapping : CSharpMappingBase
 
             return i;
         }
-        // Implicit constructor:
+        // Implicit constructor (this assumes a 1->1 mapping in the exact order):
         var init = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
             ? new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}").WithoutSemicolon()
             : new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model)}").WithoutSemicolon();
