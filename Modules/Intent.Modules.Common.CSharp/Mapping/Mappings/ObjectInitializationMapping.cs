@@ -144,7 +144,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
         private IReadOnlyList<CSharpConstructor> GetFileBuilderConstructors()
         {
-            var returnTypeElement = ((IElement)_mappingModel.Model).TypeReference.Element;
+            var returnTypeElement = ((IElement)_mappingModel.Model)?.TypeReference?.Element;
             if (returnTypeElement is null)
             {
                 return ArraySegment<CSharpConstructor>.Empty;
