@@ -34,7 +34,7 @@ public class ConstructorMapping : CSharpMappingBase
     {
         var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
         // Determine if this model is a constructor on the class:
-        if (typeTemplate?.CSharpFile.Classes.First().TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpConstructor ctor) 
+        if (typeTemplate?.CSharpFile.Classes.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpConstructor ctor) 
         {
             //var concreteClassModel = (IElement)_mappingMappingModel.GetParent(x => x.Parent == null || x.Mapping != null)?.Model 
             //                         ?? ((IElement)Model).ParentElement;

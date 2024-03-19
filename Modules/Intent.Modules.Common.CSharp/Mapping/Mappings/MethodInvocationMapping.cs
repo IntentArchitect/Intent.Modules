@@ -32,7 +32,7 @@ public class MethodInvocationMapping : CSharpMappingBase
 
 		var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
 		// Determine if this model is a method on the class:
-		if (typeTemplate?.CSharpFile.Classes.First().TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpClassMethod method)
+		if (typeTemplate?.CSharpFile.Classes.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpClassMethod method)
         {
 			foreach (var parameter in method.Parameters)
 			{
