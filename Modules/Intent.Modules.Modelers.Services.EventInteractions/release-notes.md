@@ -1,3 +1,7 @@
+### Version 1.0.4
+
+- Fixed: The `GetExplicitlyPublishedMessageModels` and `GetExplicitlySubscribedToMessageModels` extension methods had their implementations swapped between each other.
+
 ### Version 1.0.3
 
 - Improvement: Added mapping scenario for a call operation to map in the services designer

@@ -44,6 +44,11 @@ namespace Intent.Modules.Common.Plugins
                 .OfType<ICSharpFileBuilderTemplate>()
                 .ToArray();
 
+            foreach (var template in cSharpFileBuilderTemplates)
+            {
+                template.CSharpFile.Template ??= template;
+            }
+
             var sortedSet = new SortedSet<Comparable>();
             var initial = cSharpFileBuilderTemplates
                 .SelectMany(

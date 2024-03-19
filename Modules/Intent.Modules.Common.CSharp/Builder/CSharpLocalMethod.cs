@@ -48,10 +48,20 @@ public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, IHasICSh
         return this;
     }
 
+    /// <summary>
+    /// Use <see cref="AddOptionalCancellationTokenParameter"/> instead.
+    /// </summary>
+    [Obsolete]
     public CSharpLocalMethod AddOptionalCancellationTokenParameter<T>(CSharpTemplateBase<T> template) =>
         AddParameter(
             $"{template.UseType("System.Threading.CancellationToken")}", "cancellationToken",
             parameter => parameter.WithDefaultValue("default"));
+
+    public CSharpLocalMethod AddOptionalCancellationTokenParameter() =>
+        AddParameter(
+            type: File.Template.UseType("System.Threading.CancellationToken"),
+            name: "cancellationToken",
+            configure: parameter => parameter.WithDefaultValue("default"));
 
     public CSharpLocalMethod AddGenericParameter(string typeName)
     {
