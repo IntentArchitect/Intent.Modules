@@ -36,7 +36,10 @@ namespace cqrsCrud {
             createCqrsUpdateCommand(entity, folder);
         }
 
-        const operations = entity.getChildren("Operation").filter(x => x.typeReference.getType() == null);
+        const allowedOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"]
+        const operations = entity.getChildren("Operation").filter(
+            operation => operation.typeReference.getType() == null || 
+            !allowedOperationNames.some(allowedOperationName => operation.getName().startsWith(allowedOperationName)));
         for (const operation of operations) {
             createCqrsCallOperationCommand(entity, operation, folder);
         }
