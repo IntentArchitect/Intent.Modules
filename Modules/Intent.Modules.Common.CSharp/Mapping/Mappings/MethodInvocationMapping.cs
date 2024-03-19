@@ -27,9 +27,6 @@ public class MethodInvocationMapping : CSharpMappingBase
     {
         var invocation = new CSharpInvocationStatement(GetTargetPathExpression());
 
-
-		var paths = GetTargetPath();
-
 		var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
 		// Determine if this model is a method on the class:
 		if (typeTemplate?.CSharpFile.Classes.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpClassMethod method)
@@ -51,7 +48,6 @@ public class MethodInvocationMapping : CSharpMappingBase
 			{
 				invocation.WithArgumentsOnNewLines();
 			}
-
 		}
 		else
         {
