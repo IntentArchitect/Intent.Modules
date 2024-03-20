@@ -11,8 +11,8 @@ using Intent.Utils;
 
 namespace Intent.Modules.Common.CSharp.VisualStudio
 {
-    internal class CSharpProject : ICSharpProject
-    {
+    internal class CSharpProject : ICSharpProject, IHasStereotypes
+	{
         private static readonly MajorMinorVersion LatestLanguageVersion = MajorMinorVersion.Create(11, 0);
         private static readonly MajorMinorVersion PreviewLanguageVersion = MajorMinorVersion.Create(11, 0);
         private readonly Lazy<bool> _isNullableAwareContext;
@@ -91,7 +91,9 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
             .Where(x => x != null)
             .ToArray();
 
-        public bool Equals(IOutputTarget other)
+		public IEnumerable<IStereotype> Stereotypes => InternalElement.Stereotypes;
+
+		public bool Equals(IOutputTarget other)
         {
             return _outputTarget.Equals(other);
         }
