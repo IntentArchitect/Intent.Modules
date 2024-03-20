@@ -23,7 +23,7 @@
     <property id="f980aa79-3b16-4f43-acd3-3c0e34032183">
       <name>Model</name>
       <type>string</type>
-      <controlType>mappable</controlType>
+      <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
       <valueOptions />

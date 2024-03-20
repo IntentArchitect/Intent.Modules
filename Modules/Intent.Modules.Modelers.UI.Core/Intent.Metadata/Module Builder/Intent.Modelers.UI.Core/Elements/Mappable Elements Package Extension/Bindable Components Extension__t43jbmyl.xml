@@ -95,7 +95,7 @@
             <property id="5d45b952-3ac4-4631-a69e-c0c6b3b29624" name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
             <property id="6c573466-715e-40a3-852f-5f1953719d3e" name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
             <property id="b340b229-40c9-4277-bc4e-a5596b827910" name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-            <property id="c73c75e9-4fd8-4351-af34-79b0aa1e8c00" name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+            <property id="c73c75e9-4fd8-4351-af34-79b0aa1e8c00" name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
             <property id="ef1ae82a-a074-45fe-b93f-88abeeed5c92" name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
             <property id="7466d700-d937-442a-a00d-de93cfb62bba" name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
             <property id="139c37e6-d517-4511-8c2e-fca57c18ac8c" name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="false" />
@@ -355,7 +355,7 @@
             <property id="c1ac9d4c-f5cb-4f4d-85f9-9a8ace36f8e8" name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
             <property id="6b4ae8b2-3f0f-4477-994a-d7accea7f433" name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
             <property id="745b1a34-addc-4592-8387-32dfefb877ee" name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-            <property id="f7e681d6-fbd0-4ecf-b571-4d51a94121d1" name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+            <property id="f7e681d6-fbd0-4ecf-b571-4d51a94121d1" name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
             <property id="7491d477-27ee-426c-8676-ecc7780c9a24" name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
             <property id="6f53e5db-64ee-4d2f-b063-a2fa9bbae40d" name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
             <property id="e92abb05-40a1-4782-9578-e7f5c8569282" name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="false" />

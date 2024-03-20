@@ -24,9 +24,34 @@
     <property id="cb3fe26a-7f84-4459-8f27-aa83284224f8">
       <name>Model</name>
       <type>string</type>
-      <controlType>mappable</controlType>
+      <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
+      <isMappable>True</isMappable>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="a230fb6d-62fc-47c6-b09a-ff1b98359967">
+      <name>Is Required</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <isMappable>True</isMappable>
+      <represents>data</represents>
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="b9d6ff0c-3fe9-4faf-b966-20016a5989a3">
+      <name>Is Enabled</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <isMappable>True</isMappable>
+      <represents>data</represents>
+      <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>

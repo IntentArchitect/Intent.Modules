@@ -109,6 +109,11 @@ namespace Intent.Modelers.UI.Core.Api
                 return _stereotype.GetProperty<string>("On Submit");
             }
 
+            public string OnInvalidSubmit()
+            {
+                return _stereotype.GetProperty<string>("On Invalid Submit");
+            }
+
         }
 
     }

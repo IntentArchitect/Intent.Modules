@@ -75,6 +75,16 @@ namespace Intent.Modelers.UI.Core.Api
                 return _stereotype.GetProperty<string>("Model");
             }
 
+            public bool IsRequired()
+            {
+                return _stereotype.GetProperty<bool>("Is Required");
+            }
+
+            public bool IsEnabled()
+            {
+                return _stereotype.GetProperty<bool>("Is Enabled");
+            }
+
         }
 
         public class LabelAddon

@@ -110,53 +110,5 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="df982be5-d59b-4ba9-8fd1-2ac819653387" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
-      <name>NewElementEventSettings</name>
-      <display>[events]</display>
-      <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-by-name</sort-children>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>eee93c29-3d58-4e42-aea9-c00451d17469</parentFolderId>
-      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-      <packageName>Intent.Modelers.UI.Core</packageName>
-      <stereotypes />
-      <metadata />
-      <childElements>
-        <childElement id="5d5e5b41-3b3a-4446-b7e5-220cefe71af4" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Created</name>
-          <display>On Created: Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="0160ca12-262b-4b56-9972-37bff3811b57">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>df982be5-d59b-4ba9-8fd1-2ac819653387</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property id="dc5602ae-eb13-48c6-9820-23bbdde0a4d0" name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="//createElement(&quot;Component Property&quot;, &quot;items&quot;, element.id)" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
-    </childElement>
   </childElements>
 </class>

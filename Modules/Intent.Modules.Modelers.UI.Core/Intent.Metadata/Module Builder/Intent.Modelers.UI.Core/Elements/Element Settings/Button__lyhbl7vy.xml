@@ -3,7 +3,6 @@
   <name>Button</name>
   <display>Button</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3cd798f0-8cdf-42a4-b733-469632a86f27</parentFolderId>
@@ -54,88 +53,5 @@
     </stereotype>
   </stereotypes>
   <metadata />
-  <childElements>
-    <childElement id="688c2bca-11dc-4e2c-a74a-dded8b5fb3de" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
-      <name>[context menu]</name>
-      <display>[context menu]</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>4474d808-f6fd-405f-a9c7-6998cd000ede</parentFolderId>
-      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-      <packageName>Intent.Modelers.UI.Core</packageName>
-      <stereotypes />
-      <metadata />
-      <childElements />
-    </childElement>
-    <childElement id="be8d64a6-5df4-4e40-baa2-d81ee13c3520" type="Event Emitter" typeId="d6739ffc-30e6-4170-a105-bf28e69aa578">
-      <name>clicked</name>
-      <display>clicked&lt;void&gt;</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <typeReference id="1813e9dd-59ed-46e2-a253-3607e8c937c6">
-        <isNavigable>true</isNavigable>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <isRequired>true</isRequired>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>4474d808-f6fd-405f-a9c7-6998cd000ede</parentFolderId>
-      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-      <packageName>Intent.Modelers.UI.Core</packageName>
-      <stereotypes />
-      <metadata />
-      <childElements />
-    </childElement>
-    <childElement id="81ff0910-350b-4531-8818-6f6a31a5b91a" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
-      <name>NewElementEventSettings</name>
-      <display>[events]</display>
-      <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-by-name</sort-children>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>4474d808-f6fd-405f-a9c7-6998cd000ede</parentFolderId>
-      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-      <packageName>Intent.Modelers.UI.Core</packageName>
-      <stereotypes />
-      <metadata />
-      <childElements>
-        <childElement id="7259919d-28ca-47d7-b762-88adb994e31e" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Created</name>
-          <display>On Created: Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="c5dc2c8b-0677-417c-9ac9-5103b2594cf5">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>81ff0910-350b-4531-8818-6f6a31a5b91a</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property id="d60397ac-3976-4dad-8e6d-8a966107a194" name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const propertyId = &quot;356fbe17-bc63-4e16-b915-feefbc063cbe&quot;;&#xD;&#xA;const eventEmitterId = &quot;d6739ffc-30e6-4170-a105-bf28e69aa578&quot;;&#xD;&#xA;&#xD;&#xA;const settingType = lookup(element.specializationId);&#xD;&#xA;settingType.getChildren(propertyId).forEach(p =&gt; {&#xD;&#xA;    let property = createElement(propertyId, p.getName(), element.id);&#xD;&#xA;    p.getStereotypes().forEach(x =&gt; {&#xD;&#xA;        property.addStereotype(x.definitionId)&#xD;&#xA;    });&#xD;&#xA;})&#xD;&#xA;&#xD;&#xA;settingType.getChildren(eventEmitterId).forEach(p =&gt; {&#xD;&#xA;    let property = createElement(eventEmitterId, p.getName(), element.id);&#xD;&#xA;    p.getStereotypes().forEach(x =&gt; {&#xD;&#xA;        property.addStereotype(x.definitionId)&#xD;&#xA;    });&#xD;&#xA;})&#xD;&#xA;&#xD;&#xA;element.collapse();&#xD;&#xA;" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
-    </childElement>
-  </childElements>
+  <childElements />
 </class>

@@ -23,9 +23,10 @@
     <property id="d05f7b5b-fe45-4cbb-b938-380a4b68c0df">
       <name>On Click</name>
       <type>string</type>
-      <controlType>mappable</controlType>
+      <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
+      <isMappable>True</isMappable>
       <valueOptions />
       <lookupTypes />
     </property>

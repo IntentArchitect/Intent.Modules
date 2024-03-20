@@ -23,7 +23,16 @@
     <property id="be7dd551-1c92-4f03-91e7-f4495f97e504">
       <name>On Submit</name>
       <type>string</type>
-      <controlType>mappable</controlType>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="e307ef52-161b-4375-a4d1-f070b6b3430a">
+      <name>On Invalid Submit</name>
+      <type>string</type>
+      <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
       <valueOptions />

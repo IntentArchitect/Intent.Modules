@@ -36,17 +36,9 @@ namespace Intent.Modelers.UI.Core.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public string Value => _element.Value;
+
         public IElement InternalElement => _element;
-
-        public IList<PropertyModel> Properties => _element.ChildElements
-            .GetElementsOfType(PropertyModel.SpecializationTypeId)
-            .Select(x => new PropertyModel(x))
-            .ToList();
-
-        public IList<EventEmitterModel> EventEmitters => _element.ChildElements
-            .GetElementsOfType(EventEmitterModel.SpecializationTypeId)
-            .Select(x => new EventEmitterModel(x))
-            .ToList();
 
         public override string ToString()
         {
