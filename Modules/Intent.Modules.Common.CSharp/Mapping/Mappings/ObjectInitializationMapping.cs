@@ -126,8 +126,8 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 var childMappings = FindPropertyMappingsInHierarchy(Children).ToList();
                 foreach (var ctorParameter in targetCtor.Ctor.Parameters)
                 {
-                    var match = childMappings.First(child => ctorParameter.TryGetReferenceForModel(child.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name);
-                    ctorInit.AddArgument(match.GetSourceStatement());
+                    var match = childMappings.FirstOrDefault(child => ctorParameter.TryGetReferenceForModel(child.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name);
+                    ctorInit.AddArgument(match?.GetSourceStatement() ?? "default");
                 }
                 return ctorInit;
             }
