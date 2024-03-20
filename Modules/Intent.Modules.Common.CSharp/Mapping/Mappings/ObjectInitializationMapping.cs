@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.CSharp.Mapping
 {
@@ -39,7 +41,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     var chain = new CSharpMethodChainStatement($"{GetSourcePathText()}{(Mapping.SourceElement.TypeReference.IsNullable ? "?" : "")}").WithoutSemicolon();
                     var select = new CSharpInvocationStatement($"Select").WithoutSemicolon();
 
-                    var variableName = string.Join("", Model.Name.Where(char.IsUpper).Select(char.ToLower));
+                    var variableName = GetVariableNameForSelect();
                     SetSourceReplacement(GetSourcePath().Last().Element, variableName);
                     SetTargetReplacement(GetTargetPath().Last().Element, null);
 
@@ -100,34 +102,77 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
         private CSharpStatement GetConstructorStatement()
         {
-            //var ctor = Children.SingleOrDefault(x => x is ConstructorMapping && x.Model.TypeReference == null);
-            var ctor = FindConstructorMappingInHierarchy(Children);
-            if (ctor != null)
+            var ctorMapping = FindConstructorMappingInHierarchy(Children);
+            if (ctorMapping != null)
             {
                 var children = FindPropertyMappingsInHierarchy(Children).ToList();
                 if (!children.Any())
                 {
                     // use constructor only:
-                    return ctor.GetSourceStatement();
+                    return ctorMapping.GetSourceStatement();
                 }
 
                 // use constructor and object initialization syntax:
-                var init = new CSharpObjectInitializerBlock(ctor.GetSourceStatement()); 
-                init.AddStatements(children.Select(x => new CSharpAssignmentStatement(x.GetTargetStatement(), x.GetSourceStatement())));
-                return init;
+                var hybridInit = new CSharpObjectInitializerBlock(ctorMapping.GetSourceStatement()); 
+                hybridInit.AddStatements(children.Select(x => new CSharpAssignmentStatement(x.GetTargetStatement(), x.GetSourceStatement())));
+                return hybridInit;
             }
-            else
+
+            var fileBuilderCtors = GetFileBuilderConstructors();
+            if (fileBuilderCtors.Any())
             {
-                var init = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
-                    ? new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}")
-                    : new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model)}");
-                foreach (var child in Children)
+                var targetCtor = fileBuilderCtors.First();
+                var ctorInit = new CSharpInvocationStatement($"new {targetCtor.Name}").WithoutSemicolon();
+                var childMappings = FindPropertyMappingsInHierarchy(Children).ToList();
+                foreach (var ctorParameter in targetCtor.Parameters)
                 {
-                    init.AddStatements(child.GetMappingStatements());
+                    var match = childMappings.First(child => ctorParameter.TryGetReferenceForModel(child.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name);
+                    ctorInit.AddArgument(match.GetSourceStatement());
                 }
-                //init.AddStatements(Children.Select(x => new CSharpObjectInitStatement(x.GetToStatement().GetText(""), x.GetFromStatement())));
-                return init;
+                return ctorInit;
             }
+            
+            var propInit = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
+                ? new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}")
+                : new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model)}");
+            foreach (var child in Children)
+            {
+                propInit.AddStatements(child.GetMappingStatements());
+            }
+            return propInit;
+        }
+
+        private IReadOnlyList<CSharpConstructor> GetFileBuilderConstructors()
+        {
+            var returnTypeElement = ((IElement)_mappingModel.Model)?.TypeReference?.Element;
+            if (returnTypeElement is null)
+            {
+                return ArraySegment<CSharpConstructor>.Empty;
+            }
+
+            if (_template.GetTypeInfo(returnTypeElement.AsTypeReference())?.Template is not ICSharpFileBuilderTemplate template)
+            {
+                return ArraySegment<CSharpConstructor>.Empty;
+            }
+
+            var constructors = template.CSharpFile.TypeDeclarations.SelectMany(s => s.Constructors).ToArray();
+            var mapTargetElements = FindPropertyMappingsInHierarchy(Children).Select(s => s.Mapping.TargetElement).ToList();
+
+            return constructors
+                .Where(ctor => mapTargetElements
+                    .All(target => ctor.Parameters.Any(param => param.TryGetReferenceForModel(target, out var match) && param.Name == match.Name)))
+                .ToList();
+        }
+
+        private string GetVariableNameForSelect()
+        {
+            var variableName = string.Join("", Model.Name.Where(char.IsUpper).Select(char.ToLower));
+            if (string.IsNullOrEmpty(variableName))
+            {
+                variableName = Char.ToLower(Model.Name[0]).ToString();
+            }
+
+            return variableName;
         }
 
         public override CSharpStatement GetTargetStatement()

@@ -12,6 +12,7 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <moduleSettings></moduleSettings>
+  <tags>application</tags>
   <dependencies>
     <dependency id="Intent.Common" version="3.3.10" />
     <dependency id="Intent.Common.Types" version="3.3.1" />

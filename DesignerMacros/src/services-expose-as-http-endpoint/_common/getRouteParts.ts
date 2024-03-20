@@ -1,12 +1,8 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../common/getMappedRequestDetails.ts" />
 
-function getRouteParts(
-    request: IElementApi,
-    entity: IElementApi,
-    owningEntity: IElementApi
-): string[] {
-    if (entity == null) {
+function getRouteParts(request: IElementApi, domainElement: MappedDomainElement): string[] {
+    if (domainElement == null) {
         throw new Error("entity is required");
     }
 
@@ -18,7 +14,7 @@ function getRouteParts(
         const mappedDetails = getMappedRequestDetails(request);
 
         // Add the owning entity's ids as parts surrounded with curly braces
-        if (owningEntity != null) {
+        if (domainElement.entityDomainElementDetails?.hasOwningEntity() == true) {
             routeParts.push(...mappedDetails.ownerKeyFields
                 .filter(x => x.existingId != null)
                 .map(x => {
@@ -30,7 +26,7 @@ function getRouteParts(
                 }))
 
             // Add a part for name of the owned entity
-            routeParts.push(toKebabCase(singularize(entity.getName())));
+            routeParts.push(toKebabCase(singularize(domainElement.getName())));
         }
 
         // Add the entity's ids as parts surrounded with curly braces
@@ -46,7 +42,7 @@ function getRouteParts(
 
         // Add the operation's name:
         if (mappedDetails.mappingTargetType === "Operation") {
-            const entityName = entity.getName();
+            const entityName = domainElement.getName();
 
             let routePart = removePrefix(mappedElement.getName(), "Create", "Update", "Delete", "Add", "Remove");
             routePart = removeSuffix(routePart, "Request", "Query", "Command");
@@ -84,7 +80,7 @@ function getRouteParts(
                     return false;
                 }
 
-                return element.id === entity.id;
+                return element.id === domainElement.getId();
             }));
 
     if (associationWithMapping != null) {
@@ -94,21 +90,21 @@ function getRouteParts(
         const updateMapping = mappings.find(x => x.mappingTypeId === updateEntityMappingTypeId);
 
         // Add the owning entity's ids as parts surrounded with curly braces
-        if (owningEntity != null) {
+        if (domainElement.entityDomainElementDetails?.hasOwningEntity() == true) {
             if (queryMapping != null) {
-                let applicableClassIds = getEntityInheritanceHierarchyIds(owningEntity);
+                let applicableClassIds = getEntityInheritanceHierarchyIds(domainElement?.entityDomainElementDetails?.owningEntity);
                 routeParts.push(...queryMapping.getMappedEnds()
                     .filter(end => applicableClassIds.some(x => x === getParent(end.getTargetElement(), "Class").id))
                     .map(x => `{${toCamelCase(x.getSourceElement().getName())}}`));
             }
 
             // Add a part for name of the owned entity
-            routeParts.push(toKebabCase(singularize(entity.getName())));
+            routeParts.push(toKebabCase(singularize(domainElement.getName())));
         }
 
         // Add the entity's ids as parts surrounded with curly braces
         if (queryMapping != null) {
-            let applicableClassIds = getEntityInheritanceHierarchyIds(entity);
+            let applicableClassIds = getEntityInheritanceHierarchyIds(domainElement?.entityDomainElementDetails?.entity);
             routeParts.push(...queryMapping.getMappedEnds()
                 .filter(end => applicableClassIds.some(x => x === getParent(end.getTargetElement(), "Class").id))
                 .map(x => `{${toCamelCase(x.getSourceElement().getName())}}`));
@@ -127,7 +123,7 @@ function getRouteParts(
 
         const mappedElement = mappingEnd.getTargetElement();
         if (mappedElement?.specialization === "Operation") {
-            const entityName = entity.getName();
+            const entityName = domainElement.getName();
 
             let routePart = removePrefix(mappedElement.getName(), "Create", "Update", "Delete", "Add", "Remove");
             routePart = removeSuffix(routePart, "Request", "Query", "Command");

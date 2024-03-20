@@ -50,6 +50,7 @@
     <application id="ceb815c5-d710-40ef-b963-541979dc5597" name="Intent.Modules.Modelers.UI" relativePath="Intent.Modules.Modelers.UI/Intent.Modules.Modelers.UI.application.config" />
     <application id="2f056b26-eec3-4f6b-8447-2b1382956315" name="Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config" relativePath="Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config/Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config.application.config" />
     <application id="34ab81e4-7133-42aa-a9ac-72dc515be606" name="Intent.Modules.Java.Weaving.Annotations" relativePath="Intent.Modules.Java.Weaving.Annotations/Intent.Modules.Java.Weaving.Annotations.application.config" />
+    <application id="0961b73a-4137-44db-98a8-530e1dbe2528" name="Intent.Modules.Modelers.Domain.StoredProcedures" relativePath="Intent.Modules.Modelers.Domain.StoredProcedures/Intent.Modules.Modelers.Domain.StoredProcedures.application.config" />
     <application id="62e3977a-20a5-4637-b195-5dd11b6939bb" name="Intent.Modules.Modelers.UI.ServiceProxies" relativePath="Intent.Modules.Modelers.UI.ServiceProxies/Intent.Modules.Modelers.UI.ServiceProxies.application.config" />
     <application id="854cb9ab-83bb-4cfa-8468-e72690f40c6b" name="Intent.Modules.Modelers.UI.Core" relativePath="Intent.Modules.Modelers.UI.Core/Intent.Modules.Modelers.UI.Core.application.config" />
   </applications>

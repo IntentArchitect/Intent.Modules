@@ -39,6 +39,10 @@ class DomainHelper {
     }
 
     static getOwningAggregate(entity: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
+        if (!entity || entity.specialization != "Class") {
+            return null;
+        }
+        
         let invalidAssociations = entity.getAssociations("Association").filter(x => x.typeReference.getType() == null);
         if (invalidAssociations.length > 0) {
             console.warn("Invalid associations found:")

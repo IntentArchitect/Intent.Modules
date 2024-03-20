@@ -6,13 +6,27 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpReferenceable
+public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpReferenceable, ICodeBlock
 {
     private CSharpCodeSeparatorType _fieldsSeparator = CSharpCodeSeparatorType.NewLine;
     private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.NewLine;
     private CSharpCodeSeparatorType _methodsSeparator = CSharpCodeSeparatorType.NewLine;
 
-    public CSharpInterface(string name)
+    public CSharpInterface(string name) : this(
+        name: name,
+        file: null,
+        parent: null)
+    {
+    }
+
+    public CSharpInterface(string name, CSharpFile file) : this(
+        name: name,
+        file: file,
+        parent: file)
+    {
+    }
+
+    public CSharpInterface(string name, CSharpFile file, CSharpMetadataBase parent)
     {
         if (string.IsNullOrWhiteSpace(name))
         {
@@ -20,13 +34,12 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
         }
 
         Name = name.ToCSharpIdentifier();
+        File = file;
+        Parent = parent;
     }
 
-    public CSharpInterface(string name, CSharpFile file) : this(name)
-    {
-        File = file;
-        Parent = file;
-    }
+    public CSharpCodeSeparatorType BeforeSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
+    public CSharpCodeSeparatorType AfterSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
 
     public string Name { get; }
     protected string AccessModifier { get; private set; } = "public ";
@@ -37,7 +50,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
     public IList<CSharpInterfaceGenericParameter> GenericParameters { get; } = new List<CSharpInterfaceGenericParameter>();
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
     public IList<CSharpCodeBlock> CodeBlocks { get; } = new List<CSharpCodeBlock>();
-    
+
     public CSharpInterface ExtendsInterface(string type)
     {
         if (string.IsNullOrWhiteSpace(type))
@@ -123,7 +136,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
     }
-    
+
     public CSharpInterface AddCodeBlock(string codeLine)
     {
         CodeBlocks.Add(new CSharpCodeBlock(codeLine));
@@ -137,7 +150,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
         GenericParameters.Add(param);
         return this;
     }
-    
+
     public CSharpInterface AddGenericParameter(string typeName, out CSharpInterfaceGenericParameter param, Action<CSharpInterfaceGenericParameter> configure = null)
     {
         param = new CSharpInterfaceGenericParameter(typeName);
@@ -145,7 +158,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
         GenericParameters.Add(param);
         return this;
     }
-    
+
     public CSharpInterface AddGenericTypeConstraint(string genericParameterName, Action<CSharpGenericTypeConstraint> configure)
     {
         var param = new CSharpGenericTypeConstraint(genericParameterName);
@@ -231,7 +244,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
 {indentation}{{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
-    
+
     private string GetGenericTypeConstraints(string indentation)
     {
         if (!GenericTypeConstraints.Any())
@@ -275,5 +288,10 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
 
         return !codeBlocks.Any() ? "" : $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";
+    }
+
+    public string GetText(string indentation)
+    {
+        return ToString(indentation);
     }
 }

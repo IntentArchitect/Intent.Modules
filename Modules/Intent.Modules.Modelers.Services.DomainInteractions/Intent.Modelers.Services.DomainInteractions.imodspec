@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.DomainInteractions</id>
-  <version>1.0.3</version>
+  <version>1.0.4-pre.3</version>
   <supportedClientVersions>[4.1.0,5.0.0-a)</supportedClientVersions>
   <summary>Services modeler extensions for describing interactions between an application's services and its domain.</summary>
   <description>Services modeler extensions for describing interactions between an application's services and its domain.</description>
@@ -28,14 +28,15 @@
   <dependencies>
     <dependency id="Intent.Common" version="3.5.0" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
-    <dependency id="Intent.Modelers.Domain" version="3.4.6" />
-    <dependency id="Intent.Modelers.Services" version="3.5.0" />
+    <dependency id="Intent.Modelers.Domain" version="3.5.1" />
+    <dependency id="Intent.Modelers.Services" version="3.5.1" />
+    <dependency id="Intent.Modules.Modelers.Domain.StoredProcedures" version="1.0.0-pre.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
   </files>
-  <tags />
+  <tags>mapping domain interaction crud</tags>
   <releaseNotes>release-notes.md</releaseNotes>
   <moduleSettingsExtensions />
   <metadata>

@@ -16,7 +16,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
     public IList<CSharpUsing> Usings { get; } = new List<CSharpUsing>();
     public string Namespace { get; }
     public string RelativeLocation { get; }
-    public ICSharpFileBuilderTemplate Template { get; }
+    public ICSharpFileBuilderTemplate Template { get; internal set; }
     public string DefaultIntentManaged { get; private set; } = "Mode.Fully";
     public IList<CSharpInterface> Interfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpClass> TypeDeclarations { get; } = new List<CSharpClass>();
@@ -107,7 +107,11 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
 
     public CSharpFile AddInterface(string name, Action<CSharpInterface> configure = null)
     {
-        var @interface = new CSharpInterface(name, this);
+        var @interface = new CSharpInterface(
+            name: name,
+            file: this,
+            parent: this);
+
         Interfaces.Add(@interface);
         if (_isBuilt)
         {

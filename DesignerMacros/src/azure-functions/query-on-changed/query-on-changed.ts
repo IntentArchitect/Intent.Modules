@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
-/// <reference path="../../common/getMappedEntity.ts" />
+/// <reference path="../../common/getMappedDomainElement.ts" />
 
 /**
  * Used by Intent.Modules.NET\Modules\Intent.Modules.AzureFunctions
@@ -23,7 +23,7 @@
     const httpSettings = element.getStereotype(httpSettingsId) ?? element.addStereotype(httpSettingsId);
 
     const folderName = element.getParent().getName();
-    const mappedEntityName = getMappedEntity(element)?.entity?.getName();
+    const mappedEntityName = getMappedDomainElement(element)?.getName();
 
     if (httpSettings.getProperty("Route").getValue()) {
         return;

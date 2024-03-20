@@ -151,10 +151,20 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         return this;
     }
 
+    /// <summary>
+    /// Use <see cref="AddOptionalCancellationTokenParameter"/> instead.
+    /// </summary>
+    [Obsolete]
     public CSharpInterfaceMethod AddOptionalCancellationTokenParameter<T>(CSharpTemplateBase<T> template) =>
         AddParameter(
             $"{template.UseType("System.Threading.CancellationToken")}", "cancellationToken",
             parameter => parameter.WithDefaultValue("default"));
+
+    public CSharpInterfaceMethod AddOptionalCancellationTokenParameter() =>
+        AddParameter(
+            type: File.Template.UseType("System.Threading.CancellationToken"),
+            name: "cancellationToken",
+            configure: parameter => parameter.WithDefaultValue("default"));
 
     public override string GetText(string indentation)
     {

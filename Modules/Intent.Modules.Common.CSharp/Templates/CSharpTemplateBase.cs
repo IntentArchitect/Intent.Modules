@@ -143,6 +143,16 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
+        /// Adds the <paramref name="fullyQualifiedTypeName"/> as a known type for purposes of
+        /// being able to disambiguating type references in cases where multiple using directives
+        /// have types with the same.
+        /// </summary>
+        public void AddKnownType(string fullyQualifiedTypeName)
+        {
+            CSharpTypesCache.AddKnownType(fullyQualifiedTypeName);
+        }
+
+        /// <summary>
         /// Add the using clause with the specified <paramref name="namespace"/> to this template's file.
         /// </summary>
         public void AddUsing(string @namespace)

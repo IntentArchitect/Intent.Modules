@@ -1,3 +1,7 @@
+### Version 4.4.4
+
+- Improvement: Add support for exposing HTTP endpoints for Commands / Queries mapping to elements that are not Classes (limited currently to Repositories).
+
 ### Version 4.4.3
 
 - Fixed: Check for unmatched route parameters.

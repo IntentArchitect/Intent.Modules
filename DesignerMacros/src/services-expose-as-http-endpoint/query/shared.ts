@@ -2,19 +2,19 @@
 /// <reference path="../_common/getRouteParts.ts" />
 /// <reference path="../../common/getMappedRequestDetails.ts" />
 /// <reference path="../_common/getDefaultRoutePrefix.ts" />
-/// <reference path="../../common/getMappedEntity.ts" />
+/// <reference path="../../common/getMappedDomainElement.ts" />
 
 function exposeAsHttpEndPoint(request: MacroApi.Context.IElementApi): void {
-    const { entity, owningEntity } = getMappedEntity(request);
+    const domainElement = getMappedDomainElement(request);
 
     // Add the folder parts
     const routeParts: string[] = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(request, entity, owningEntity));
+    routeParts.push(...getFolderParts(request, domainElement));
 
-    if (entity != null) {
-        routeParts.push(...getRouteParts(request, entity, owningEntity));
+    if (domainElement != null) {
+        routeParts.push(...getRouteParts(request, domainElement));
     }
     else if (!["Get", "Find", "Lookup"].some(x => request.getName().startsWith(x))) {
         routeParts.push(toKebabCase(removeSuffix(request.getName(), "Request", "Query")));

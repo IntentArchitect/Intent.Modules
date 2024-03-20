@@ -32,9 +32,10 @@ public class ConstructorMapping : CSharpMappingBase
 
     public override CSharpStatement GetSourceStatement()
     {
+        // Model assumes to be the Constructor element and it needs to access the owner of this Constructor to fetch the Template
         var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
         // Determine if this model is a constructor on the class:
-        if (typeTemplate?.CSharpFile.Classes.First().TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpConstructor ctor) 
+        if (typeTemplate?.CSharpFile.Classes.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpConstructor ctor) 
         {
             //var concreteClassModel = (IElement)_mappingMappingModel.GetParent(x => x.Parent == null || x.Mapping != null)?.Model 
             //                         ?? ((IElement)Model).ParentElement;
@@ -42,28 +43,39 @@ public class ConstructorMapping : CSharpMappingBase
             //var i = new CSharpInvocationStatement($"new {reference.Name}").WithoutSemicolon(); (replaced by below)
             //This is to ensure that full typename resolution is taken. Consider exposing the full type via the IHasCSharpName interface.
             var i = new CSharpInvocationStatement($"new {_template.GetTypeName(((IElement)Model).ParentElement)}").WithoutSemicolon();
-            foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
+
+            foreach (var parameter in ctor.Parameters)
             {
-                i.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
+                bool optional = parameter.DefaultValue != null;
+                var child = Children.FirstOrDefault(c => string.Compare(c.Mapping.TargetElement.Name, parameter.Name, true) == 0);
+                if ( child != null)
                 {
-                    if (_options.AddArgumentNames)
+					i.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
+					{
+						if (_options.AddArgumentNames)
+						{
+							arg.WithName(parameter.Name);
+						}
+					});
+				}
+				else if (!optional)
+                {
+                    i.AddArgument(new CSharpArgument("default"), arg => 
                     {
-                        var index = Children.IndexOf(child);
-                        if (index >= ctor.Parameters.Count)
+						if (_options.AddArgumentNames)
                         {
-                            throw new ElementException(Model, "Too many arguments specified in mapping to this constructor");
-                        }
-                        var argumentName = ctor.Parameters[index];
-                        arg.WithName(argumentName.Name);
-                    }
-                });
-            }
+							arg.WithName(parameter.Name);
+						}
+
+					});
+    			}
+			}
 
             i.WithArgumentsOnNewLines();
 
             return i;
         }
-        // Implicit constructor:
+        // Implicit constructor (this assumes a 1->1 mapping in the exact order):
         var init = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
             ? new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}").WithoutSemicolon()
             : new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model)}").WithoutSemicolon();

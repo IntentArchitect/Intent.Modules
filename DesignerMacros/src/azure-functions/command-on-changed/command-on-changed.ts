@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
-/// <reference path="../../common/getMappedEntity.ts" />
+/// <reference path="../../common/getMappedDomainElement.ts" />
 
 /**
  * Used by Intent.Modules.NET\Modules\Intent.Modules.AzureFunctions
@@ -28,7 +28,7 @@
     }
 
     const folderName = element.getParent().getName();
-    const mappedEntityName = getMappedEntity(element)?.entity?.getName();
+    const mappedEntityName = getMappedDomainElement(element)?.getName();
 
     const serviceRoute = toKebabCase(folderName);
     const serviceRouteIdentifier = element.getChildren().some(x => x.getName().toLowerCase() == `${singularize(folderName.toLowerCase())}id`)

@@ -129,10 +129,20 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     }
 
 
+    /// <summary>
+    /// Use <see cref="AddOptionalCancellationTokenParameter"/> instead.
+    /// </summary>
+    [Obsolete]
     public CSharpClassMethod AddOptionalCancellationTokenParameter<T>(CSharpTemplateBase<T> template) =>
         AddParameter(
             $"{template.UseType("System.Threading.CancellationToken")}", "cancellationToken",
             parameter => parameter.WithDefaultValue("default"));
+
+    public CSharpClassMethod AddOptionalCancellationTokenParameter() =>
+        AddParameter(
+            type: File.Template.UseType("System.Threading.CancellationToken"),
+            name: "cancellationToken",
+            configure: parameter => parameter.WithDefaultValue("default"));
 
     public CSharpClassMethod AddGenericParameter(string typeName)
     {
@@ -296,9 +306,16 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     {
         IsAsync = true;
         var taskType = File.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
-        if (!ReturnType.StartsWith(taskType))
+        if (!ReturnType.StartsWith(taskType) )
         {
-            ReturnType = ReturnType == "void" ? taskType : $"{taskType}<{ReturnType}>";
+            if (taskType == "System.Threading.Tasks.Task" && ReturnType.StartsWith("Task<"))
+            {
+				ReturnType = "System.Threading.Tasks." + ReturnType;
+			}
+            else
+            {
+                ReturnType = ReturnType == "void" ? taskType : $"{taskType}<{ReturnType}>";
+            }
         }
         return this;
     }

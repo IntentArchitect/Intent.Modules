@@ -1,3 +1,8 @@
+### Version 1.0.4
+
+- Fixed: Removed `Create CRUD CQRS Operations` script from menu if commands and queries are already present in a folder.
+- Improvement: Added support for Service Operations to also work against Stored Procedures.
+
 ### Version 1.0.3
 
 - Improvement: Removed support for implicit keys, allowing keyless entities to now be modelled.

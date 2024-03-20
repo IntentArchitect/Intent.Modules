@@ -15,7 +15,23 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
 
     internal Type TypeDefinitionType => _type;
 
-    protected internal CSharpClass(string name, Type type)
+    protected internal CSharpClass(string name, Type type) : this(
+        name: name,
+        type: type,
+        file: null,
+        parent: null)
+    {
+    }
+
+    protected internal CSharpClass(string name, Type type, CSharpFile file) : this(
+        name: name,
+        type: type,
+        file: file,
+        parent: file)
+    {
+    }
+
+    protected internal CSharpClass(string name, Type type, CSharpFile file, CSharpMetadataBase parent)
     {
         if (string.IsNullOrWhiteSpace(name))
         {
@@ -24,12 +40,8 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
 
         _type = type;
         Name = name;
-    }
-
-    protected internal CSharpClass(string name, Type type, CSharpFile file) : this(name, type)
-    {
         File = file;
-        Parent = file;
+        Parent = parent;
     }
 
     public CSharpClass(string name) : this(name, Type.Class)
@@ -50,6 +62,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     public IList<CSharpClassMethod> Methods { get; } = new List<CSharpClassMethod>();
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
     public IList<CSharpClass> NestedClasses { get; } = new List<CSharpClass>();
+    public IList<CSharpInterface> NestedInterfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
     public IList<CSharpCodeBlock> CodeBlocks { get; } = new List<CSharpCodeBlock>();
     public CSharpClass WithBaseType(string type)
@@ -261,9 +274,26 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
 
     public CSharpClass AddNestedClass(string name, Action<CSharpClass> configure = null)
     {
-        var @class = new CSharpClass(name);
+        var @class = new CSharpClass(
+            name: name,
+            type: Type.Class,
+            file: File,
+            parent: this);
+
         configure?.Invoke(@class);
         NestedClasses.Add(@class);
+        return this;
+    }
+
+    public CSharpClass AddNestedInterface(string name, Action<CSharpInterface> configure = null)
+    {
+        var @interface = new CSharpInterface(
+            name: name,
+            file: File,
+            parent: this);
+
+        configure?.Invoke(@interface);
+        NestedInterfaces.Add(@interface);
         return this;
     }
 
@@ -488,6 +518,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         codeBlocks.AddRange(Properties);
         codeBlocks.AddRange(Methods);
         codeBlocks.AddRange(NestedClasses);
+        codeBlocks.AddRange(NestedInterfaces);
         codeBlocks.AddRange(CodeBlocks);
 
         return $@"{string.Join(@"
