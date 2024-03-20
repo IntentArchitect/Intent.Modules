@@ -18,5 +18,10 @@
         public const string CoreCSharpLibrary = "52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE";
         public const string AzureFunctionsProject = "73e51385-5e20-4e2c-aa0b-6eb2dc8de52e";
         public const string CoreConsoleApp = "27b265c8-e185-4c33-9908-8d23d5e945d1";
-    }
+
+
+		//This seems to be the new standard for these things
+		// https://github.com/dotnet/project-system/blob/main/docs/opening-with-new-project-system.md
+		public const string SdkCSharpProject = "9A19103F-16F7-4668-BE54-9A1E7A4F7556";
+	}
 }

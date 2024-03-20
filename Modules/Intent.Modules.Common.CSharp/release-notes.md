@@ -1,5 +1,6 @@
 ﻿### Version 3.5.5
 
+- Improvement: Aligned VS Solution Project Type Ids to the new project system ids (https://github.com/dotnet/project-system/blob/main/docs/opening-with-new-project-system.md).
 - Improvement: New `AddKnownType(string fullyQualifiedTypeName)` method added to `CSharpTemplateBase` which can be used to disambiguate type references in cases where multiple using directive namespaces have types with the same.
 - Improvement: For the advanced mapping system, `ConstructorMapping` now has better handling of un-mapped constructor parameters, similarly for `MethodInvocationMapping`.
 - Improvement: `AddNestedInterface` added to `CSharpClass`.
