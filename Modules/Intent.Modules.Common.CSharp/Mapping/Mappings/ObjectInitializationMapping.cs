@@ -122,9 +122,9 @@ namespace Intent.Modules.Common.CSharp.Mapping
             if (fileBuilderCtors.Any())
             {
                 var targetCtor = fileBuilderCtors.First();
-                var ctorInit = new CSharpInvocationStatement($"new {targetCtor.Name}").WithoutSemicolon();
+                var ctorInit = new CSharpInvocationStatement($"new {_template.GetTypeName(targetCtor.Element)}").WithoutSemicolon();
                 var childMappings = FindPropertyMappingsInHierarchy(Children).ToList();
-                foreach (var ctorParameter in targetCtor.Parameters)
+                foreach (var ctorParameter in targetCtor.Ctor.Parameters)
                 {
                     var match = childMappings.First(child => ctorParameter.TryGetReferenceForModel(child.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name);
                     ctorInit.AddArgument(match.GetSourceStatement());
@@ -142,17 +142,17 @@ namespace Intent.Modules.Common.CSharp.Mapping
             return propInit;
         }
 
-        private IReadOnlyList<CSharpConstructor> GetFileBuilderConstructors()
+        private IReadOnlyList<(CSharpConstructor Ctor, IElement Element)> GetFileBuilderConstructors()
         {
             var returnTypeElement = ((IElement)_mappingModel.Model)?.TypeReference?.Element;
             if (returnTypeElement is null)
             {
-                return ArraySegment<CSharpConstructor>.Empty;
+                return ArraySegment<(CSharpConstructor, IElement)>.Empty;
             }
 
             if (_template.GetTypeInfo(returnTypeElement.AsTypeReference())?.Template is not ICSharpFileBuilderTemplate template)
             {
-                return ArraySegment<CSharpConstructor>.Empty;
+                return ArraySegment<(CSharpConstructor, IElement)>.Empty;
             }
 
             var constructors = template.CSharpFile.TypeDeclarations.SelectMany(s => s.Constructors).ToArray();
@@ -161,6 +161,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             return constructors
                 .Where(ctor => mapTargetElements
                     .All(target => ctor.Parameters.Any(param => param.TryGetReferenceForModel(target, out var match) && param.Name == match.Name)))
+                .Select(s => (Ctor: s, MetadataElement: (IElement)returnTypeElement))
                 .ToList();
         }
 
