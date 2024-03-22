@@ -11153,6 +11153,17 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <represents>data</represents>
               <childSettings />
             </childSetting>
+            <childSetting id="153c412a-5f90-48b1-9059-6ea19b76d70e" name="Inheritance" type="Data Contract Generalization Target End" typeId="4ea029c6-e963-46c7-8d2f-e4ea73e05a07">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>15b84be5-c79b-41bf-881c-447fe70f5f5b</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <childSettings />
+            </childSetting>
           </childSettings>
         </mappableElement>
         <mappableElement id="32b2649c-7d86-42ba-807f-d9449ed15980" name="Create Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">

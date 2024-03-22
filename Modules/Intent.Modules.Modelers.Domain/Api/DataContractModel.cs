@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DataContractModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference, IHasFolder
+    public class DataContractModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
     {
         public const string SpecializationType = "Data Contract";
         public const string SpecializationTypeId = "4464fabe-c59e-4d90-81fc-c9245bdd1afd";
@@ -41,10 +41,17 @@ namespace Intent.Modelers.Domain.Api
 
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
 
+        [Obsolete("Data Contracts no longer use TypeReference to depict inheritance, please use BaseDataContract instead")]
+        [IntentManaged(Mode.Ignore)]
         public ITypeReference TypeReference => _element.TypeReference;
 
+        [Obsolete("Data Contracts no longer use BaseType to depict inheritance, please use the BaseDataContract instead")]
+        [IntentManaged(Mode.Ignore)]
         public ITypeReference BaseType => TypeReference?.Element != null ? TypeReference : null;
 
+        [IntentManaged(Mode.Ignore)]
+        public DataContractModel BaseDataContract => this.Generalizations().Select(x => new DataContractModel((IElement)x.Element)).SingleOrDefault();
+        
         public IElement InternalElement => _element;
 
         public IList<AttributeModel> Attributes => _element.ChildElements
