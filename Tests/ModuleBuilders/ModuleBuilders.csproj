@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -379,7 +379,7 @@
     <PackageReference Include="Intent.Modules.Common.Kotlin" Version="4.0.0" />
     <PackageReference Include="Intent.Modules.Common.Sql" Version="3.4.0" />
     <PackageReference Include="Intent.Modules.Common.TypeScript" Version="4.0.0" />
-    <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.7.0" />
+    <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.8.0-pre.0" />
     <PackageReference Include="Intent.Packager" Version="3.4.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
