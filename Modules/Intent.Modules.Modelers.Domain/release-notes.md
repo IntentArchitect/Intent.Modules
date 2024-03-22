@@ -1,4 +1,8 @@
-﻿### Version 3.7.0
+﻿### Version 3.8.0
+
+- Improvement: `Data Contract` elements no longer use the `Base Type` (since its a  Type Reference) for doing inheritance but now it has its own `Generalization` association.
+
+### Version 3.7.0
 
 - Improvement: Updated icons.
 

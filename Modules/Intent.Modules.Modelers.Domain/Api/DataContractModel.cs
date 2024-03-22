@@ -41,6 +41,7 @@ namespace Intent.Modelers.Domain.Api
 
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
 
+        // DEV NOTE: If see this after April 2024 - please delete these obsolete properties
         [Obsolete("Data Contracts no longer use TypeReference to depict inheritance, please use BaseDataContract instead")]
         [IntentManaged(Mode.Ignore)]
         public ITypeReference TypeReference => _element.TypeReference;
