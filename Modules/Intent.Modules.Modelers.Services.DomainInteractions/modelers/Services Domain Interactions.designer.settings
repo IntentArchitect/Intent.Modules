@@ -2585,6 +2585,9 @@ class DomainHelper {
     }
     static getOwningAggregate(entity) {
         var _a;
+        if (!entity || entity.specialization != "Class") {
+            return null;
+        }
         let invalidAssociations = entity.getAssociations("Association").filter(x =&gt; x.typeReference.getType() == null);
         if (invalidAssociations.length &gt; 0) {
             console.warn("Invalid associations found:");
@@ -3744,7 +3747,161 @@ var cqrsCrud;
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro/create-crud-macro.ts
  */
-await cqrsCrud.execute(element);
+//await cqrsCrud.execute(element);
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../common/domainHelper.ts" /&gt;
+var convertToAdvancedMapping;
+(function (convertToAdvancedMapping) {
+    function execute() {
+        if (element.isMapped() &amp;&amp; element.specialization == "Command") {
+            convertCommand(element);
+        }
+        else if (element.isMapped() &amp;&amp; element.specialization == "Query") {
+            convertQuery(element);
+        }
+    }
+    convertToAdvancedMapping.execute = execute;
+    function convertCommand(command) {
+        var _a;
+        if (!command) {
+            console.warn(`Could not convert null Command.`);
+            return;
+        }
+        if (!command.getMapping()) {
+            console.warn(`Could not convert Command '${command.getName()}' without it mapping to an Entity.`);
+            return;
+        }
+        let target = command.getMapping().getElement();
+        let entity = (_a = target.getParent("Class")) !== null &amp;&amp; _a !== void 0 ? _a : target;
+        if (command.getName().startsWith("Create")) {
+            let action = createAssociation("Create Entity Action", command.id, target.id);
+            let mapping = action.createMapping(command.id, entity.id);
+            mapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
+            mapContract("Data Mapping", command, [command.id], [target.id], mapping);
+        }
+        else if (command.getName().startsWith("Delete")) {
+            let action = createAssociation("Delete Entity Action", command.id, entity.id);
+            let mapping = action.createMapping(command.id, entity.id);
+            // Query Entity Mapping
+            addFilterMapping(mapping, command, entity);
+            command.clearMapping();
+        }
+        else if (command.isMapped()) {
+            let action = createAssociation("Update Entity Action", command.id, target.id);
+            // Query Entity Mapping
+            let queryMapping = action.createMapping(command.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, command, entity);
+            // Update Entity Mapping
+            let updateMapping = action.createMapping(command.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
+            if (target.id != entity.id) {
+                updateMapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
+            }
+            mapContract("Data Mapping", command, [command.id], [target.id], updateMapping);
+        }
+    }
+    convertToAdvancedMapping.convertCommand = convertCommand;
+    function addFilterMapping(mapping, command, entity) {
+        var _a, _b;
+        let pkFields = DomainHelper.getPrimaryKeys(entity);
+        if (pkFields.length == 1) {
+            let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
+            let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
+            if (idField &amp;&amp; (idField.isMapped() || entityPk)) {
+                mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [entityPk.id]);
+                idField.clearMapping();
+            }
+        }
+        else {
+            pkFields.forEach(pk =&gt; {
+                var _a, _b;
+                let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key") &amp;&amp; x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
+                if (idField) {
+                    mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [pk.id]);
+                    idField.clearMapping();
+                }
+            });
+        }
+    }
+    function convertQuery(query) {
+        if (!query) {
+            console.warn(`Could not convert null Query.`);
+            return;
+        }
+        if (!query.getMapping()) {
+            console.warn(`Could not convert Query '${query.getName()}' without it mapping to an Entity.`);
+            return;
+        }
+        let entity = query.getMapping().getElement();
+        let action = createAssociation("Query Entity Action", query.id, entity.id);
+        if (query.typeReference.getIsCollection()) {
+            action.typeReference.setIsCollection(true);
+        }
+        let mapping = action.createMapping(query.id, entity.id);
+        mapContract("Filter Mapping", query, [query.id], [entity.id], mapping);
+    }
+    convertToAdvancedMapping.convertQuery = convertQuery;
+    function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping) {
+        dto.getChildren("DTO-Field").filter(x =&gt; x.isMapped() &amp;&amp; !fieldsToSkip(dto, x)).forEach(field =&gt; {
+            var _a, _b;
+            if (((_a = field.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" || field.typeReference.getIsCollection()) {
+                mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));
+            }
+            if (((_b = field.typeReference.getType()) === null || _b === void 0 ? void 0 : _b.specialization) == "DTO") {
+                mapContract(mappingType, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)), mapping);
+            }
+            field.clearMapping();
+        });
+        dto.clearMapping();
+    }
+    function fieldsToSkip(dto, field) {
+        return dto.specialization == "Command" &amp;&amp;
+            field.getMapping().getElement().hasStereotype("Primary Key") &amp;&amp;
+            (!field.getMapping().getElement().getStereotype("Primary Key").hasProperty("Data source") || field.getMapping().getElement().getStereotype("Primary Key").getProperty("Data source").value != "User supplied");
+    }
+})(convertToAdvancedMapping || (convertToAdvancedMapping = {}));
+/// &lt;reference path="../create-crud-macro/create-crud-macro.ts"/&gt;
+/// &lt;reference path="../_common/convertToAdvancedMapping.ts"/&gt;
+async function execute(element) {
+    var _a, _b;
+    let entity = await DomainHelper.openSelectEntityDialog();
+    if (entity == null) {
+        return;
+    }
+    const owningEntity = DomainHelper.getOwningAggregate(entity);
+    const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
+    const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+    const primaryKeys = DomainHelper.getPrimaryKeys(entity);
+    const hasPrimaryKey = primaryKeys.length &gt; 0;
+    const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, folder);
+    if (owningEntity == null || !privateSettersOnly) {
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, folder, primaryKeys));
+    }
+    if (hasPrimaryKey) {
+        convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, folder, resultDto));
+    }
+    convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, folder, resultDto));
+    if (hasPrimaryKey &amp;&amp; !privateSettersOnly) {
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, folder));
+    }
+    const operations = entity.getChildren("Operation").filter(x =&gt; x.typeReference.getType() == null);
+    for (const operation of operations) {
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, folder));
+    }
+    if (hasPrimaryKey &amp;&amp; (owningEntity == null || !privateSettersOnly)) {
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, folder));
+    }
+    const diagramElement = (_b = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName)) !== null &amp;&amp; _b !== void 0 ? _b : createElement("Diagram", folderName, folder.id);
+    diagramElement.loadDiagram();
+    const diagram = getCurrentDiagram();
+    diagram.layoutVisuals(folder, null, true);
+}
+/**
+ * Used by Intent.Modelers.Services.DomainInteractions
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro-advanced-mapping/create-crud-macro-advanced-mapping.ts
+ */
+await execute(element);
 </script>
         </option>
       </scriptOptions>
@@ -6986,6 +7143,9 @@ class DomainHelper {
     }
     static getOwningAggregate(entity) {
         var _a;
+        if (!entity || entity.specialization != "Class") {
+            return null;
+        }
         let invalidAssociations = entity.getAssociations("Association").filter(x =&gt; x.typeReference.getType() == null);
         if (invalidAssociations.length &gt; 0) {
             console.warn("Invalid associations found:");
@@ -8145,7 +8305,161 @@ var cqrsCrud;
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro/create-crud-macro.ts
  */
-await cqrsCrud.execute(element);
+//await cqrsCrud.execute(element);
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../common/domainHelper.ts" /&gt;
+var convertToAdvancedMapping;
+(function (convertToAdvancedMapping) {
+    function execute() {
+        if (element.isMapped() &amp;&amp; element.specialization == "Command") {
+            convertCommand(element);
+        }
+        else if (element.isMapped() &amp;&amp; element.specialization == "Query") {
+            convertQuery(element);
+        }
+    }
+    convertToAdvancedMapping.execute = execute;
+    function convertCommand(command) {
+        var _a;
+        if (!command) {
+            console.warn(`Could not convert null Command.`);
+            return;
+        }
+        if (!command.getMapping()) {
+            console.warn(`Could not convert Command '${command.getName()}' without it mapping to an Entity.`);
+            return;
+        }
+        let target = command.getMapping().getElement();
+        let entity = (_a = target.getParent("Class")) !== null &amp;&amp; _a !== void 0 ? _a : target;
+        if (command.getName().startsWith("Create")) {
+            let action = createAssociation("Create Entity Action", command.id, target.id);
+            let mapping = action.createMapping(command.id, entity.id);
+            mapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
+            mapContract("Data Mapping", command, [command.id], [target.id], mapping);
+        }
+        else if (command.getName().startsWith("Delete")) {
+            let action = createAssociation("Delete Entity Action", command.id, entity.id);
+            let mapping = action.createMapping(command.id, entity.id);
+            // Query Entity Mapping
+            addFilterMapping(mapping, command, entity);
+            command.clearMapping();
+        }
+        else if (command.isMapped()) {
+            let action = createAssociation("Update Entity Action", command.id, target.id);
+            // Query Entity Mapping
+            let queryMapping = action.createMapping(command.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, command, entity);
+            // Update Entity Mapping
+            let updateMapping = action.createMapping(command.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
+            if (target.id != entity.id) {
+                updateMapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
+            }
+            mapContract("Data Mapping", command, [command.id], [target.id], updateMapping);
+        }
+    }
+    convertToAdvancedMapping.convertCommand = convertCommand;
+    function addFilterMapping(mapping, command, entity) {
+        var _a, _b;
+        let pkFields = DomainHelper.getPrimaryKeys(entity);
+        if (pkFields.length == 1) {
+            let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
+            let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
+            if (idField &amp;&amp; (idField.isMapped() || entityPk)) {
+                mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [entityPk.id]);
+                idField.clearMapping();
+            }
+        }
+        else {
+            pkFields.forEach(pk =&gt; {
+                var _a, _b;
+                let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key") &amp;&amp; x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
+                if (idField) {
+                    mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [pk.id]);
+                    idField.clearMapping();
+                }
+            });
+        }
+    }
+    function convertQuery(query) {
+        if (!query) {
+            console.warn(`Could not convert null Query.`);
+            return;
+        }
+        if (!query.getMapping()) {
+            console.warn(`Could not convert Query '${query.getName()}' without it mapping to an Entity.`);
+            return;
+        }
+        let entity = query.getMapping().getElement();
+        let action = createAssociation("Query Entity Action", query.id, entity.id);
+        if (query.typeReference.getIsCollection()) {
+            action.typeReference.setIsCollection(true);
+        }
+        let mapping = action.createMapping(query.id, entity.id);
+        mapContract("Filter Mapping", query, [query.id], [entity.id], mapping);
+    }
+    convertToAdvancedMapping.convertQuery = convertQuery;
+    function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping) {
+        dto.getChildren("DTO-Field").filter(x =&gt; x.isMapped() &amp;&amp; !fieldsToSkip(dto, x)).forEach(field =&gt; {
+            var _a, _b;
+            if (((_a = field.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" || field.typeReference.getIsCollection()) {
+                mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));
+            }
+            if (((_b = field.typeReference.getType()) === null || _b === void 0 ? void 0 : _b.specialization) == "DTO") {
+                mapContract(mappingType, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)), mapping);
+            }
+            field.clearMapping();
+        });
+        dto.clearMapping();
+    }
+    function fieldsToSkip(dto, field) {
+        return dto.specialization == "Command" &amp;&amp;
+            field.getMapping().getElement().hasStereotype("Primary Key") &amp;&amp;
+            (!field.getMapping().getElement().getStereotype("Primary Key").hasProperty("Data source") || field.getMapping().getElement().getStereotype("Primary Key").getProperty("Data source").value != "User supplied");
+    }
+})(convertToAdvancedMapping || (convertToAdvancedMapping = {}));
+/// &lt;reference path="../create-crud-macro/create-crud-macro.ts"/&gt;
+/// &lt;reference path="../_common/convertToAdvancedMapping.ts"/&gt;
+async function execute(element) {
+    var _a, _b;
+    let entity = await DomainHelper.openSelectEntityDialog();
+    if (entity == null) {
+        return;
+    }
+    const owningEntity = DomainHelper.getOwningAggregate(entity);
+    const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
+    const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+    const primaryKeys = DomainHelper.getPrimaryKeys(entity);
+    const hasPrimaryKey = primaryKeys.length &gt; 0;
+    const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, folder);
+    if (owningEntity == null || !privateSettersOnly) {
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, folder, primaryKeys));
+    }
+    if (hasPrimaryKey) {
+        convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, folder, resultDto));
+    }
+    convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, folder, resultDto));
+    if (hasPrimaryKey &amp;&amp; !privateSettersOnly) {
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, folder));
+    }
+    const operations = entity.getChildren("Operation").filter(x =&gt; x.typeReference.getType() == null);
+    for (const operation of operations) {
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, folder));
+    }
+    if (hasPrimaryKey &amp;&amp; (owningEntity == null || !privateSettersOnly)) {
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, folder));
+    }
+    const diagramElement = (_b = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName)) !== null &amp;&amp; _b !== void 0 ? _b : createElement("Diagram", folderName, folder.id);
+    diagramElement.loadDiagram();
+    const diagram = getCurrentDiagram();
+    diagram.layoutVisuals(folder, null, true);
+}
+/**
+ * Used by Intent.Modelers.Services.DomainInteractions
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro-advanced-mapping/create-crud-macro-advanced-mapping.ts
+ */
+await execute(element);
 </script>
         </option>
       </scriptOptions>
