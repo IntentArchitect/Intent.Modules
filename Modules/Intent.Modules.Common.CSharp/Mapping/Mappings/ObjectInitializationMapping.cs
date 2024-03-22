@@ -35,6 +35,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 {
                     return $"{GetSourcePathText()}";
                 }
+
                 if (Model.TypeReference.IsCollection)
                 {
                     Template.CSharpFile.AddUsing("System.Linq");
@@ -43,7 +44,12 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
                     var variableName = GetVariableNameForSelect();
                     SetSourceReplacement(GetSourcePath().Last().Element, variableName);
-                    SetTargetReplacement(GetTargetPath().Last().Element, null);
+                    var lastTargetPathElement = GetTargetPath().Last().Element;
+                    SetTargetReplacement(lastTargetPathElement, null); // Needed for inheritance mappings - path element to be removed from invocation path
+                    if (lastTargetPathElement.TypeReference.Element is not null)
+                    {
+                        SetTargetReplacement(lastTargetPathElement.TypeReference.Element, null); // Same as above but for parameter types
+                    }
 
                     select.AddArgument(new CSharpLambdaBlock(variableName).WithExpressionBody(GetConstructorStatement()));
 
@@ -61,7 +67,12 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     else
                     {
                         // TODO: add ternary check to mappings for when the source path could be nullable.
-                        SetTargetReplacement(GetTargetPath().Last().Element, null);
+                        var lastTargetPathElement = GetTargetPath().Last().Element;
+                        SetTargetReplacement(lastTargetPathElement, null); // Needed for inheritance mappings - path element to be removed from invocation path
+                        if (lastTargetPathElement.TypeReference.Element is not null)
+                        {
+                            SetTargetReplacement(lastTargetPathElement.TypeReference.Element, null); // Same as above but for parameter types
+                        }
                         return GetConstructorStatement();
                     }
                 }
@@ -84,6 +95,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     return (ConstructorMapping)ctor;
                 }
             }
+
             return null;
         }
 
@@ -113,7 +125,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 }
 
                 // use constructor and object initialization syntax:
-                var hybridInit = new CSharpObjectInitializerBlock(ctorMapping.GetSourceStatement()); 
+                var hybridInit = new CSharpObjectInitializerBlock(ctorMapping.GetSourceStatement());
                 hybridInit.AddStatements(children.Select(x => new CSharpAssignmentStatement(x.GetTargetStatement(), x.GetSourceStatement())));
                 return hybridInit;
             }
@@ -126,12 +138,14 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 var childMappings = FindPropertyMappingsInHierarchy(Children).ToList();
                 foreach (var ctorParameter in targetCtor.Ctor.Parameters)
                 {
-                    var match = childMappings.FirstOrDefault(child => ctorParameter.TryGetReferenceForModel(child.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name);
+                    var match = childMappings.FirstOrDefault(child =>
+                        ctorParameter.TryGetReferenceForModel(child.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name);
                     ctorInit.AddArgument(match?.GetSourceStatement() ?? "default");
                 }
+
                 return ctorInit;
             }
-            
+
             var propInit = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
                 ? new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}")
                 : new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model)}");
@@ -139,6 +153,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             {
                 propInit.AddStatements(child.GetMappingStatements());
             }
+
             return propInit;
         }
 
