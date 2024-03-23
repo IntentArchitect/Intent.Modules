@@ -35,6 +35,8 @@ namespace Intent.Modelers.UI.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public string Value => _element.Value;
+
         public ITypeReference TypeReference => _element.TypeReference;
 
 

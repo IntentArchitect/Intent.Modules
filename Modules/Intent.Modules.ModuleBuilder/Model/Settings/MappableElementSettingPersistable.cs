@@ -20,11 +20,17 @@ public class MappableElementSettingPersistable
     [XmlAttribute("typeId")]
     public string SpecializationTypeId { get; set; }
 
+    [XmlAttribute("version")]
+    public string Version { get; set; } = "2.0.0";
+
     [XmlElement("filterFunction")]
     public string FilterFunction { get; set; }
 
     [XmlElement("isRequiredFunction")]
     public string IsRequiredFunction { get; set; }
+
+    [XmlElement("mustBeMappedBeforeChildren")]
+    public bool? MustBeMappedBeforeChildren { get; set; }
 
     [XmlElement("allowMultipleMappings")]
     public bool? AllowMultipleMappings { get; set; }

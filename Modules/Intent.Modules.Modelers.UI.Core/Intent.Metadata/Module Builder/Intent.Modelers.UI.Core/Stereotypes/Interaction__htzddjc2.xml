@@ -26,7 +26,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <isMappable>True</isMappable>
       <valueOptions />
       <lookupTypes />
     </property>

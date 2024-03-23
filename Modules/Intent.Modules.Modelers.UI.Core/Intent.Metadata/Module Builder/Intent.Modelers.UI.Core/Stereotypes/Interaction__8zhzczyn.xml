@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="6e04ff81-f043-4ac6-8632-798aedbaaf20" version="3.1.0">
-  <name>Content</name>
+  <name>Interaction</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
     <type id="4803bf60-c626-4cbe-94ed-0f1eafff9fe3">Text Input</type>
@@ -21,24 +21,12 @@
   <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
   <packageName>Intent.Modelers.UI.Core</packageName>
   <properties>
-    <property id="cb3fe26a-7f84-4459-8f27-aa83284224f8">
-      <name>Model</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <isMappable>True</isMappable>
-      <valueOptions />
-      <lookupTypes />
-    </property>
     <property id="a230fb6d-62fc-47c6-b09a-ff1b98359967">
       <name>Is Required</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <isMappable>True</isMappable>
-      <represents>data</represents>
       <defaultValue>false</defaultValue>
       <valueOptions />
       <lookupTypes />
@@ -49,8 +37,6 @@
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <isMappable>True</isMappable>
-      <represents>data</represents>
       <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />

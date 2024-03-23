@@ -151,6 +151,60 @@ let component = createElement(componentType.id, componentType.getName(), element
       <scriptOptions />
       <mappingOptions />
       <mappingSettings />
+      <macros>
+        <macro trigger="on-changed">
+          <script>const containerId = "b97ea181-2462-431f-8f62-f90f79509b9e";
+const contentId = "7f7bc148-138f-4b61-8fa1-a8d725dbed52";
+
+let existingHeader = element.getChildren(containerId).filter(x =&gt; x.getName() == "Header")[0];
+if (element.getStereotype(contentId).getProperty("Header").getValue())
+{
+    existingHeader = existingHeader ?? createElement(containerId, "Header", element.id);
+    existingHeader.setOrder(0);
+} else {
+    existingHeader?.delete();
+}
+
+let existingBody = element.getChildren(containerId).filter(x =&gt; x.getName() == "Body")[0];
+if (element.getStereotype(contentId).getProperty("Body").getValue())
+{
+    existingBody = existingBody ?? createElement(containerId, "Body", element.id);
+    console.warn("body: " + Math.min(1, element.getChildren(containerId).length - 1))
+    existingBody.setOrder(Math.min(1, element.getChildren(containerId).length - 1));
+} else {
+    existingBody?.delete();
+}
+
+let existingFooter = element.getChildren(containerId).filter(x =&gt; x.getName() == "Footer")[0];
+if (element.getStereotype(contentId).getProperty("Footer").getValue())
+{
+    existingFooter = existingFooter ?? createElement(containerId, "Footer", element.id);
+    console.warn("footer: " + Math.min(2, element.getChildren(containerId).length - 1))
+    existingFooter.setOrder(Math.min(2, element.getChildren(containerId).length - 1));
+} else {
+    existingFooter?.delete();
+}
+console.log('done')
+
+</script>
+        </macro>
+        <macro trigger="on-created">
+          <script>const contentId = "7f7bc148-138f-4b61-8fa1-a8d725dbed52";
+
+if (element.getStereotype(contentId).getProperty("Header").getValue())
+{
+    createElement("Section", "Header", element.id);
+}
+if (element.getStereotype(contentId).getProperty("Body").getValue())
+{
+    createElement("Section", "Body", element.id);
+}
+if (element.getStereotype(contentId).getProperty("Footer").getValue())
+{
+    createElement("Section", "Footer", element.id);
+}</script>
+        </macro>
+      </macros>
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Table" typeId="eee93c29-3d58-4e42-aea9-c00451d17469">
@@ -238,11 +292,6 @@ let component = createElement(componentType.id, componentType.getName(), element
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <macros>
-            <macro trigger="on-created">
-              <script>//createElement("Component Property", "model", element.id)</script>
-            </macro>
-          </macros>
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
@@ -337,7 +386,7 @@ let component = createElement(componentType.id, componentType.getName(), element
           <childSettings>
             <childSetting id="3bab648d-87f9-4b3d-a931-63ee8c75d535" name="Column" type="Column" typeId="d372c640-e649-4e67-84a8-4446f45288db">
               <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
+              <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>

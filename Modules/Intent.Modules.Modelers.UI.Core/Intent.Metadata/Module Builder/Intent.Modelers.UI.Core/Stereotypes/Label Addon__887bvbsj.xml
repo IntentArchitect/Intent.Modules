@@ -6,7 +6,7 @@
     <type id="4803bf60-c626-4cbe-94ed-0f1eafff9fe3">Text Input</type>
   </targetTypes>
   <targetReferenceTypes />
-  <applyMode>manually</applyMode>
+  <applyMode>on-create</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>

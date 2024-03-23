@@ -12,45 +12,40 @@ namespace Intent.Modelers.UI.Core.Api
 {
     public static class CheckboxModelStereotypeExtensions
     {
-        public static Content GetContent(this CheckboxModel model)
+        public static Interaction GetInteraction(this CheckboxModel model)
         {
             var stereotype = model.GetStereotype("6e04ff81-f043-4ac6-8632-798aedbaaf20");
-            return stereotype != null ? new Content(stereotype) : null;
+            return stereotype != null ? new Interaction(stereotype) : null;
         }
 
 
-        public static bool HasContent(this CheckboxModel model)
+        public static bool HasInteraction(this CheckboxModel model)
         {
             return model.HasStereotype("6e04ff81-f043-4ac6-8632-798aedbaaf20");
         }
 
-        public static bool TryGetContent(this CheckboxModel model, out Content stereotype)
+        public static bool TryGetInteraction(this CheckboxModel model, out Interaction stereotype)
         {
-            if (!HasContent(model))
+            if (!HasInteraction(model))
             {
                 stereotype = null;
                 return false;
             }
 
-            stereotype = new Content(model.GetStereotype("6e04ff81-f043-4ac6-8632-798aedbaaf20"));
+            stereotype = new Interaction(model.GetStereotype("6e04ff81-f043-4ac6-8632-798aedbaaf20"));
             return true;
         }
 
-        public class Content
+        public class Interaction
         {
             private IStereotype _stereotype;
 
-            public Content(IStereotype stereotype)
+            public Interaction(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }
 
             public string Name => _stereotype.Name;
-
-            public string Model()
-            {
-                return _stereotype.GetProperty<string>("Model");
-            }
 
             public bool IsRequired()
             {
