@@ -6,6 +6,7 @@
 - Improvement: `AddNestedInterface` added to `CSharpClass`.
 - Improvement: `ObjectInitializationMapping` is now able to also detect `ctors` from File Builder Templates when no `ctor` mappings are present.
 - Improvement: `ObjectInitializationMapping` updated to help facilitate inheritance mappings found through Element Type Reference.
+- Improvement: Overload added to `AddOptionalCancellationTokenParameter` to allow specifying name of the parameter.
 - Fixed: When using `.Async()` in the C# File Builder on a nested class, a null reference exception would be thrown.
 
 ### Version 3.5.4
