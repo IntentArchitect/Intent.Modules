@@ -12,13 +12,19 @@ namespace Intent.Modules.Common.CSharp.Mapping
     public class ValueObjectCollectionCreationMapping : CSharpMappingBase
     {
         private readonly MappingModel _mappingModel;
-        private readonly ICSharpFileBuilderTemplate _template;
+        private readonly ICSharpTemplate _template;
 
-        public ValueObjectCollectionCreationMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
+        public ValueObjectCollectionCreationMapping(MappingModel model, ICSharpTemplate template) : base(model, template)
         {
             _mappingModel = model;
             _template = template;
         }
+
+        [Obsolete("Use constructor which accepts ICSharpTemplate instead of ICSharpFileBuilderTemplate. This will be removed in later version.")]
+        public ValueObjectCollectionCreationMapping(MappingModel model, ICSharpFileBuilderTemplate template) : this(model, (ICSharpTemplate)template)
+        {
+        }
+
         public override CSharpStatement GetSourceStatement()
         {
             if (Children.Count == 0)
@@ -26,7 +32,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 return $"{GetSourcePathText()}";
             }
 
-            Template.CSharpFile.AddUsing("System.Linq");
+            Template.AddUsing("System.Linq");
             var chain = new CSharpMethodChainStatement($"{GetSourcePathText()}{(Mapping.SourceElement.TypeReference.IsNullable ? "?" : "")}").WithoutSemicolon();
             var select = new CSharpInvocationStatement($"Select").WithoutSemicolon();
 

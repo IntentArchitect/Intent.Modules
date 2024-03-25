@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
@@ -10,7 +11,7 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public class ForLoopMethodInvocationMapping : MethodInvocationMapping
 {
-    public ForLoopMethodInvocationMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
+    public ForLoopMethodInvocationMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpTemplate template) : base(model, mapping, children, template)
     {
         if (mapping == null)
         {
@@ -18,7 +19,12 @@ public class ForLoopMethodInvocationMapping : MethodInvocationMapping
         }
     }
 
-    public ForLoopMethodInvocationMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
+    public ForLoopMethodInvocationMapping(MappingModel model, ICSharpTemplate template) : base(model, template)
+    {
+    }
+
+    [Obsolete("Use constructor which accepts ICSharpTemplate instead of ICSharpFileBuilderTemplate. This will be removed in later version.")]
+    public ForLoopMethodInvocationMapping(MappingModel model, ICSharpFileBuilderTemplate template) : this(model, (ICSharpTemplate)template)
     {
     }
 

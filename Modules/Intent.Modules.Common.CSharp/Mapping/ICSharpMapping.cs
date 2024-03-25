@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Mapping;
 

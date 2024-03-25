@@ -16,6 +16,11 @@ public class MapChildrenMapping : CSharpMappingBase
     {
     }
 
+    public MapChildrenMapping(MappingModel model, ICSharpTemplate template) : base(model, template)
+    {
+    }
+
+
     public override IEnumerable<CSharpStatement> GetMappingStatements()
     {
         return Children.SelectMany(x => x.GetMappingStatements()).ToList();

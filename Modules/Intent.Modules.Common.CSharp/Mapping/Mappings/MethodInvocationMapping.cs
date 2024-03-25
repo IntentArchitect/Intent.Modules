@@ -11,16 +11,21 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public class MethodInvocationMapping : CSharpMappingBase
 {
-    private readonly ICSharpFileBuilderTemplate _template;
+    private readonly ICSharpTemplate _template;
 
-    public MethodInvocationMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
+    public MethodInvocationMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpTemplate template) : base(model, mapping, children, template)
     {
         _template = template;
     }
 
-    public MethodInvocationMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
+    public MethodInvocationMapping(MappingModel model, ICSharpTemplate template) : base(model, template)
     {
         _template = template;
+    }
+
+    [Obsolete("Use constructor which accepts ICSharpTemplate instead of ICSharpFileBuilderTemplate. This will be removed in later version.")]
+    public MethodInvocationMapping(MappingModel model, ICSharpFileBuilderTemplate template) : this(model, (ICSharpTemplate)template)
+    {
     }
 
     public override CSharpStatement GetSourceStatement()

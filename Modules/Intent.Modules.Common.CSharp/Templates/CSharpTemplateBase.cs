@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.FactoryExtensions;
 using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.CSharp.VisualStudio;
@@ -151,6 +152,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         {
             CSharpTypesCache.AddKnownType(fullyQualifiedTypeName);
         }
+
+        public virtual ICSharpCodeContext RootCodeContext => this is ICSharpFileBuilderTemplate builder ? builder.CSharpFile : null;
 
         /// <summary>
         /// Add the using clause with the specified <paramref name="namespace"/> to this template's file.

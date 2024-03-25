@@ -12,23 +12,26 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public class ConstructorMapping : CSharpMappingBase
 {
-    private readonly ICSharpFileBuilderTemplate _template;
+    private readonly ICSharpTemplate _template;
     private readonly ConstructorMappingOptions _options;
     private readonly MappingModel _mappingMappingModel;
 
-    public ConstructorMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
+    public ConstructorMapping(MappingModel model, ICSharpTemplate template) : base(model, template)
     {
         _mappingMappingModel = model;
         _template = template;
         _options = new ConstructorMappingOptions();
     }
 
-    public ConstructorMapping(MappingModel model, ICSharpFileBuilderTemplate template, ConstructorMappingOptions options) : base(model, template)
+    public ConstructorMapping(MappingModel model, ICSharpTemplate template, ConstructorMappingOptions options) : base(model, template)
     {
         _mappingMappingModel = model;
         _template = template;
         _options = options ?? new ConstructorMappingOptions();
     }
+
+    [Obsolete("Use constructor which accepts ICSharpTemplate instead of ICSharpFileBuilderTemplate. This will be removed in later version.")]
+    public ConstructorMapping(MappingModel model, ICSharpFileBuilderTemplate template) : this(model, (ICSharpTemplate)template) { }
 
     public override CSharpStatement GetSourceStatement()
     {

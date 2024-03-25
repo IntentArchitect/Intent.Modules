@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public class DefaultCSharpMapping : CSharpMappingBase
 {
-    public DefaultCSharpMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
+    public DefaultCSharpMapping(MappingModel model, ICSharpTemplate template) : base(model, template)
     {
     }
 }

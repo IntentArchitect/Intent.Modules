@@ -8,4 +8,8 @@ public class CSharpClassMappingManager : MappingManagerBase
     public CSharpClassMappingManager(ICSharpFileBuilderTemplate template) : base(template)
     {
     }
+
+    public CSharpClassMappingManager(ICSharpTemplate template) : base(template)
+    {
+    }
 }

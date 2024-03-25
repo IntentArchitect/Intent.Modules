@@ -50,7 +50,7 @@ public static class CSharpBuilderExtensions
         }
     }
 
-    internal static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation, Func<string, string> codeTextTransformer = null)
+    public static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation, Func<string, string> codeTextTransformer = null)
     {
         // It's conventional to always have local methods at the bottom of a code block
         var orderedCodeBlocks = codeBlocks
@@ -60,7 +60,7 @@ public static class CSharpBuilderExtensions
         return string.Concat(orderedCodeBlocks.Select(s => $"{orderedCodeBlocks.DetermineSeparator(s, indentation, string.Empty, codeTextTransformer)}"));
     }
 
-    internal static string JoinCode(this IEnumerable<ICodeBlock> codeBlocks, string separator, string indentation)
+    public static string JoinCode(this IEnumerable<ICodeBlock> codeBlocks, string separator, string indentation)
     {
         // It's conventional to always have local methods at the bottom of a code block
         var orderedCodeBlocks = codeBlocks

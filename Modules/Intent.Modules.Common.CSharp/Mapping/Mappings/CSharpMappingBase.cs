@@ -13,33 +13,42 @@ public abstract class CSharpMappingBase : ICSharpMapping
     protected Dictionary<string, string> _sourceReplacements = new();
     protected Dictionary<string, string> _targetReplacements = new();
 
+
     public ICanBeReferencedType Model { get; }
     public IList<ICSharpMapping> Children { get; }
     public ICSharpMapping Parent { get; set; }
     public IElementToElementMappedEnd Mapping { get; set; }
-    protected readonly ICSharpFileBuilderTemplate Template;
-    protected ICSharpCodeContext Context { get; }
 
-    protected CSharpMappingBase(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template)
+    protected readonly ICSharpTemplate Template;
+
+    [Obsolete("Use constructor which accepts ICSharpTemplate instead of ICSharpFileBuilderTemplate. This will be removed in later version.")]
+    protected CSharpMappingBase(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : this(model, mapping, children, (ICSharpTemplate)template)
+    {
+    }
+
+    protected CSharpMappingBase(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpTemplate template)
     {
         Template = template;
         Model = model;
         Mapping = mapping;
         Children = children.Select(x => x.GetMapping()).ToList();
-        Context = template.CSharpFile;
         foreach (var child in Children)
         {
             child.Parent = this;
         }
     }
 
-    protected CSharpMappingBase(MappingModel model, ICSharpFileBuilderTemplate template)
+    [Obsolete("Use constructor which accepts ICSharpTemplate instead of ICSharpFileBuilderTemplate. This will be removed in later version.")]
+    protected CSharpMappingBase(MappingModel model, ICSharpFileBuilderTemplate template) : this(model, (ICSharpTemplate)template)
+    {
+    }
+
+    protected CSharpMappingBase(MappingModel model, ICSharpTemplate template)
     {
         Template = template;
         Model = model.Model;
         Mapping = model.Mapping;
         Children = model.Children.Select(x => x.GetMapping()).ToList();
-        Context = model.CodeContext;
         foreach (var child in Children)
         {
             child.Parent = this;
@@ -251,13 +260,10 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     private bool TryGetReference(IList<IElementMappingPathTarget> mappingPath, out IHasCSharpName reference)
     {
+        reference = null;
         var mappingPathTarget = mappingPath.Last();
-        //if (TryGetReferenceName(mappingPathTarget, out var referenceName))
-        //{
-        //    return new CSharpStatement(referenceName);
-        //}
 
-        if (Context?.TryGetReferenceForModel(mappingPathTarget.Id, out reference) == true)
+        if (Template.RootCodeContext?.TryGetReferenceForModel(mappingPathTarget.Id, out reference) == true)
         {
             return true;
         }
@@ -304,8 +310,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
             }
         }
 
-        // try this template:
-        return Template.CSharpFile.TryGetReferenceForModel(mappingPathTarget.Id, out reference);
+        return false;
     }
 
     /// <summary>

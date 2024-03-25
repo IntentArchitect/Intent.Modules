@@ -14,22 +14,20 @@ public class MappingModel
 {
     private readonly MappingManagerBase _manager;
 
-    public MappingModel(IElementToElementMapping mapping, ICSharpCodeContext context, MappingManagerBase manager)
-        : this(mapping.Type, mapping.TypeId, mapping.TargetElement, mapping.MappedEnds, context, manager)
+    public MappingModel(IElementToElementMapping mapping, MappingManagerBase manager)
+        : this(mapping.Type, mapping.TypeId, mapping.TargetElement, mapping.MappedEnds, manager)
     {
     }
 
     public MappingModel(string mappingType,
         string mappingTypeId,
         IElementToElementMappedEnd mapping,
-        ICSharpCodeContext context,
         MappingManagerBase manager) : this(
         mappingType: mappingType,
             mappingTypeId: mappingTypeId,
             model: mapping.TargetElement,
             mappings: new List<IElementToElementMappedEnd>() { mapping },
             manager: manager,
-            context: context,
             level: mapping.TargetPath.Count)
     {
     }
@@ -39,7 +37,6 @@ public class MappingModel
         string mappingTypeId,
         ICanBeReferencedType model,
         IList<IElementToElementMappedEnd> mappings,
-        ICSharpCodeContext context,
         MappingManagerBase manager,
         int level = 1)
     {
@@ -54,10 +51,9 @@ public class MappingModel
         _manager = manager;
         Model = model;
         Mapping = matchedMapping.SingleOrDefault();
-        CodeContext = context;
         Children = mappings.Where(x => x.TargetPath.Count > level)
             .GroupBy(x => x.TargetPath.Skip(level).First(), x => x)
-            .Select(x => new MappingModel(mappingType, mappingTypeId, x.Key.Element, x.ToList(), context, manager, level + 1))
+            .Select(x => new MappingModel(mappingType, mappingTypeId, x.Key.Element, x.ToList(), manager, level + 1))
             .OrderBy(x => ((IElement)x.Model).Order)
             .ToList();
         foreach (var child in Children)
@@ -111,27 +107,27 @@ public class MappingModel
 
 public abstract class MappingManagerBase
 {
-    private readonly ICSharpFileBuilderTemplate _template;
+    private readonly ICSharpTemplate _template;
     private readonly Dictionary<string, string> _fromReplacements = new();
     private List<IMetadataModel> _fromReplacementModels = new(); // Used to maintain backward compatibility
     private readonly Dictionary<string, string> _toReplacements = new();
     private readonly List<IMetadataModel> _toReplacementModels = new(); // Used to maintain backward compatibility
     private readonly List<IMappingTypeResolver> _mappingResolvers = new();
 
-    protected MappingManagerBase(ICSharpFileBuilderTemplate template)
+    protected MappingManagerBase(ICSharpTemplate template)
     {
         _template = template;
     }
 
     public CSharpStatement GenerateCreationStatement(IElementToElementMapping model)
     {
-        return GenerateCreationStatement(model, _template.CSharpFile);
+        return GenerateCreationStatement(model, _template.RootCodeContext);
     }
 
     public CSharpStatement GenerateCreationStatement(IElementToElementMapping model, ICSharpCodeContext context)
     {
         //var mapping = CreateMapping(new MappingModel(model), GetCreateMappingType);
-        var mappingModel = new MappingModel(model, context, this);
+        var mappingModel = new MappingModel(model, this);
         var mapping = ResolveMappings(mappingModel);
         ApplyReplacements(mapping);
 
@@ -140,7 +136,7 @@ public abstract class MappingManagerBase
 
     public IList<CSharpStatement> GenerateUpdateStatements(IElementToElementMapping model)
     {
-        return GenerateUpdateStatements(model, _template.CSharpFile);
+        return GenerateUpdateStatements(model, _template.RootCodeContext);
     }
 
     public IList<CSharpStatement> GenerateUpdateStatements(IElementToElementMapping model, ICSharpCodeContext context)
@@ -148,7 +144,7 @@ public abstract class MappingManagerBase
         //var mapping = CreateMapping(new MappingModel(model, this), GetUpdateMappingType);
         //ApplyReplacements(mapping);
 
-        var mappingModel = new MappingModel(model, context, this);
+        var mappingModel = new MappingModel(model, this);
         var mapping = ResolveMappings(mappingModel);//, new ObjectUpdateMapping(mappingModel, _template));
         ApplyReplacements(mapping);
 
@@ -157,7 +153,7 @@ public abstract class MappingManagerBase
 
     public CSharpStatement GenerateSourceStatementForMapping(IElementToElementMapping model, IElementToElementMappedEnd mappingEnd)
     {
-        return GenerateSourceStatementForMapping(model, mappingEnd, _template.CSharpFile);
+        return GenerateSourceStatementForMapping(model, mappingEnd, _template.RootCodeContext);
     }
 
     public CSharpStatement GenerateSourceStatementForMapping(IElementToElementMapping model, IElementToElementMappedEnd mappingEnd, ICSharpCodeContext context)
@@ -165,7 +161,7 @@ public abstract class MappingManagerBase
         //var mapping = CreateMapping(new MappingModel(model, this), GetUpdateMappingType);
         //ApplyReplacements(mapping);
 
-        var mappingModel = new MappingModel(model.Type, model.TypeId, mappingEnd, context, this);
+        var mappingModel = new MappingModel(model.Type, model.TypeId, mappingEnd, this);
         var mapping = ResolveMappings(mappingModel);//, new ObjectUpdateMapping(mappingModel, _template));
         ApplyReplacements(mapping);
 

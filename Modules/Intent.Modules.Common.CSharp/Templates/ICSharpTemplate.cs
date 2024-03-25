@@ -9,6 +9,10 @@ namespace Intent.Modules.Common.CSharp.Templates;
 
 public interface ICSharpTemplate : IIntentTemplate, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IHasFrameworkDependencies
 {
+    /// <summary>
+    /// Used by the advanced mapping system to resolve references from models.
+    /// </summary>
+    ICSharpCodeContext RootCodeContext { get; }
     void AddUsing(string @namespace);
     string UseType(string fullName);
     void AddNugetDependency(INugetPackageInfo nugetPackageInfo);

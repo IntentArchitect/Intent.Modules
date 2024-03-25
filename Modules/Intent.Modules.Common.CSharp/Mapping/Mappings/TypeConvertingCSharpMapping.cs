@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public class TypeConvertingCSharpMapping : CSharpMappingBase
 {
-    public TypeConvertingCSharpMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
+    public TypeConvertingCSharpMapping(MappingModel model, ICSharpTemplate template) : base(model, template)
     {
     }
 

@@ -46,7 +46,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
 
         Parent = @class;
         Class = @class;
-        File = @class.File;
+        File = @class?.File;
         ReturnType = returnType;
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;

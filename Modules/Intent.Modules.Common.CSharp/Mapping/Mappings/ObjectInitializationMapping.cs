@@ -14,12 +14,17 @@ namespace Intent.Modules.Common.CSharp.Mapping
     public class ObjectInitializationMapping : CSharpMappingBase
     {
         private readonly MappingModel _mappingModel;
-        private readonly ICSharpFileBuilderTemplate _template;
+        private readonly ICSharpTemplate _template;
 
-        public ObjectInitializationMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
+        public ObjectInitializationMapping(MappingModel model, ICSharpTemplate template) : base(model, template)
         {
             _mappingModel = model;
             _template = template;
+        }
+
+        [Obsolete("Use constructor which accepts ICSharpTemplate instead of ICSharpFileBuilderTemplate. This will be removed in later version.")]
+        public ObjectInitializationMapping(MappingModel model, ICSharpFileBuilderTemplate template) : this(model, (ICSharpTemplate)template)
+        {
         }
 
         public override CSharpStatement GetSourceStatement()
@@ -37,7 +42,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 }
                 if (Model.TypeReference.IsCollection)
                 {
-                    Template.CSharpFile.AddUsing("System.Linq");
+                    Template.AddUsing("System.Linq");
                     var chain = new CSharpMethodChainStatement($"{GetSourcePathText()}{(Mapping.SourceElement.TypeReference.IsNullable ? "?" : "")}").WithoutSemicolon();
                     var select = new CSharpInvocationStatement($"Select").WithoutSemicolon();
 
@@ -113,7 +118,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 }
 
                 // use constructor and object initialization syntax:
-                var hybridInit = new CSharpObjectInitializerBlock(ctorMapping.GetSourceStatement()); 
+                var hybridInit = new CSharpObjectInitializerBlock(ctorMapping.GetSourceStatement());
                 hybridInit.AddStatements(children.Select(x => new CSharpAssignmentStatement(x.GetTargetStatement(), x.GetSourceStatement())));
                 return hybridInit;
             }
@@ -131,7 +136,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 }
                 return ctorInit;
             }
-            
+
             var propInit = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
                 ? new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}")
                 : new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model)}");
