@@ -51,9 +51,9 @@ namespace Intent.Modelers.UI.Api
             .Select(x => new EventEmitterModel(x))
             .ToList();
 
-        public IList<OperationModel> Operations => _element.ChildElements
-            .GetElementsOfType(OperationModel.SpecializationTypeId)
-            .Select(x => new OperationModel(x))
+        public IList<ComponentOperationModel> Operations => _element.ChildElements
+            .GetElementsOfType(ComponentOperationModel.SpecializationTypeId)
+            .Select(x => new ComponentOperationModel(x))
             .ToList();
 
         public ComponentViewModel View => _element.ChildElements

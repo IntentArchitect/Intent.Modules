@@ -10,15 +10,15 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.UI.Api
 {
-    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class OperationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
+    public class ComponentOperationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference, IProcessingHandlerModel
     {
-        public const string SpecializationType = "Operation";
+        public const string SpecializationType = "Component Operation";
         public const string SpecializationTypeId = "e030c97a-e066-40a7-8188-808c275df3cb";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public OperationModel(IElement element, string requiredType = SpecializationType)
+        public ComponentOperationModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -53,7 +53,7 @@ namespace Intent.Modelers.UI.Api
             return _element.ToString();
         }
 
-        public bool Equals(OperationModel other)
+        public bool Equals(ComponentOperationModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -63,7 +63,7 @@ namespace Intent.Modelers.UI.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((OperationModel)obj);
+            return Equals((ComponentOperationModel)obj);
         }
 
         public override int GetHashCode()
@@ -73,17 +73,17 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class OperationModelExtensions
+    public static class ComponentOperationModelExtensions
     {
 
-        public static bool IsOperationModel(this ICanBeReferencedType type)
+        public static bool IsComponentOperationModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == OperationModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == ComponentOperationModel.SpecializationTypeId;
         }
 
-        public static OperationModel AsOperationModel(this ICanBeReferencedType type)
+        public static ComponentOperationModel AsComponentOperationModel(this ICanBeReferencedType type)
         {
-            return type.IsOperationModel() ? new OperationModel((IElement)type) : null;
+            return type.IsComponentOperationModel() ? new ComponentOperationModel((IElement)type) : null;
         }
     }
 }

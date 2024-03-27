@@ -19,6 +19,15 @@ namespace Intent.Modelers.UI.Api
         }
 
         [IntentManaged(Mode.Fully)]
+        public static IList<NavigationTargetEndModel> NavigateToComponents(this ComponentOperationModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == NavigationModel.SpecializationType && x.IsTargetEnd())
+                .Select(x => NavigationModel.CreateFromEnd(x).TargetEnd)
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Fully)]
         public static IList<NavigationSourceEndModel> NavigateBackComponents(this ComponentModel model)
         {
             return model.InternalElement.AssociatedElements

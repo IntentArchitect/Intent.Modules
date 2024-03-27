@@ -70,7 +70,7 @@ namespace Intent.Modelers.UI.Api
     public class NavigationSourceEndModel : NavigationEndModel
     {
         public const string SpecializationTypeId = "97a3de8a-c9bf-4cf2-bc0a-b8692b02211b";
-        public const string SpecializationType = "NavigationSourceEnd";
+        public const string SpecializationType = "Navigation Source End";
 
         public NavigationSourceEndModel(IAssociationEnd associationEnd, NavigationModel association) : base(associationEnd, association)
         {
@@ -81,11 +81,15 @@ namespace Intent.Modelers.UI.Api
     public class NavigationTargetEndModel : NavigationEndModel
     {
         public const string SpecializationTypeId = "2b191288-ecae-4743-b069-cbdd927ef349";
-        public const string SpecializationType = "NavigationTargetEnd";
+        public const string SpecializationType = "Navigation Target End";
 
         public NavigationTargetEndModel(IAssociationEnd associationEnd, NavigationModel association) : base(associationEnd, association)
         {
         }
+        public IList<ParameterModel> Parameters => InternalElement.ChildElements
+            .GetElementsOfType(ParameterModel.SpecializationTypeId)
+            .Select(x => new ParameterModel(x))
+            .ToList();
     }
 
     [IntentManaged(Mode.Fully)]

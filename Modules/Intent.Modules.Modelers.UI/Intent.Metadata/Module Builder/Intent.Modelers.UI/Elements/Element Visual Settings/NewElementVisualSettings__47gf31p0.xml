@@ -27,10 +27,10 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="`${parent.x}`" isActive="true" />
-        <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="`${parent.y + ($index * 18) + 36}`" isActive="true" />
-        <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="`${parent.w}`" isActive="true" />
-        <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+        <property id="c60cecca-e5ce-4dd8-b28d-eac30c2d2c22" name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="`${parent.x}`" isActive="true" />
+        <property id="27f0fd3d-8b14-4f05-b41e-255daacfddf4" name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="`${parent.y + ($index * 18) + 36}`" isActive="true" />
+        <property id="fd67f536-1c88-42ac-a369-490f03be45f1" name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="`${parent.w}`" isActive="true" />
+        <property id="1e6659b2-2046-453a-ba8a-87277432bf56" name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="96a4fa17-6283-4626-835e-a8f013d98b19" name="Settings">
@@ -38,8 +38,8 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="838dcc53-b73e-4381-a3d2-db0afaf230b2" display="Anchor Points" isActive="true" />
-        <property name="43c4e468-1139-42b3-a064-fb49f679b72b" display="Auto-Resize Default" value="true" isActive="true" />
+        <property id="0312be3e-33ce-43f6-882c-4d69e23be6ae" name="838dcc53-b73e-4381-a3d2-db0afaf230b2" display="Anchor Points" isActive="true" />
+        <property id="d9adf7f9-407a-4590-9bc3-7e0f90d34f93" name="43c4e468-1139-42b3-a064-fb49f679b72b" display="Auto-Resize Default" value="true" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
@@ -60,12 +60,12 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="27138300-900e-4a82-ad06-8abcedf0864a" display="Path" value="`M${x},${y - 6} h${w}`" isActive="true" />
-            <property name="8996260d-790c-4e7b-8607-65fa2dd4ac24" display="Condition" value="return $firstOfType;" isActive="true" />
-            <property name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" value="#0077b6" isActive="true" />
-            <property name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" isActive="true" />
-            <property name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" isActive="true" />
-            <property name="4fb316a4-ebee-45c1-96e0-636698f52976" display="Fill Color" isActive="true" />
+            <property id="252baa6c-68ba-44f0-b526-852447aa38d3" name="27138300-900e-4a82-ad06-8abcedf0864a" display="Path" value="`M${x},${y - 6} h${w}`" isActive="true" />
+            <property id="887f968c-0568-444e-90c3-230be468b57b" name="8996260d-790c-4e7b-8607-65fa2dd4ac24" display="Condition" value="return $firstOfType;" isActive="true" />
+            <property id="4d964550-84ba-4c48-a829-fd76e3c48d0c" name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" value="#0077b6" isActive="true" />
+            <property id="840ba960-8f80-44a3-8f3e-1e2a9555a4d7" name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" isActive="true" />
+            <property id="d2f9da4a-8284-4260-8285-8aa6870c76f3" name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" isActive="true" />
+            <property id="3b5623e4-6ae6-4860-8e31-e0dcf7d9ac3d" name="4fb316a4-ebee-45c1-96e0-636698f52976" display="Fill Color" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -87,9 +87,9 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="" isActive="true" />
-            <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
-            <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`" isActive="true" />
+            <property id="96e8c04b-0f96-47f9-8729-351d355deeac" name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="" isActive="true" />
+            <property id="8e11931d-23a4-4e9b-a6f8-e040ef0e6b0b" name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
+            <property id="e3898979-8a83-41e6-87ed-9fa123916aa0" name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`" isActive="true" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
@@ -97,10 +97,10 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
-            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
-            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
-            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="${h}" isActive="true" />
+            <property id="0c77086c-6db6-43b8-a9d8-e488f738f13b" name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+            <property id="0c530ccc-2f02-4e18-a142-dad55db92488" name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
+            <property id="633bd0b1-56a3-4e83-af62-95542640a3a2" name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+            <property id="25c21973-c40c-4c6c-9b13-b2a2eef4f89b" name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="${h}" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

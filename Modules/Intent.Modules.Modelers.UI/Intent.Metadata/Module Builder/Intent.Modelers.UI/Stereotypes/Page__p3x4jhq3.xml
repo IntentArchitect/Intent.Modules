@@ -10,9 +10,9 @@
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
-  <displayFunction />
-  <displayAsAnnotation>false</displayAsAnnotation>
-  <displayAsText>true</displayAsText>
+  <displayFunction>return `@page "${getProperty("Route").getValue()}"`</displayFunction>
+  <displayAsAnnotation>true</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>5c4628ec-679e-4f3d-afda-137c978deae0</parentFolderId>

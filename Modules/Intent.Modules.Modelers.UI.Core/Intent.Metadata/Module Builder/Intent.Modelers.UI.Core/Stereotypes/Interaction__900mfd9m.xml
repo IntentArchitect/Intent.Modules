@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="6e04ff81-f043-4ac6-8632-798aedbaaf20" version="3.1.0">
+<stereotypeDefinition id="74533b82-2078-44e1-84bb-4cd34d00ef16" version="3.1.0">
   <name>Interaction</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="4803bf60-c626-4cbe-94ed-0f1eafff9fe3">Text Input</type>
-    <type id="be9ecdbd-6ded-4057-af76-1b09f3a6cea3">Checkbox</type>
+    <type id="eee93c29-3d58-4e42-aea9-c00451d17469">Table</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>
@@ -21,27 +20,14 @@
   <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
   <packageName>Intent.Modelers.UI.Core</packageName>
   <properties>
-    <property id="a230fb6d-62fc-47c6-b09a-ff1b98359967">
-      <name>Is Required</name>
+    <property id="fbb0d0b4-effb-4ab1-8ee2-df0d28b21163">
+      <name>On Row Click</name>
       <type>string</type>
-      <controlType>checkbox</controlType>
+      <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
       <isMappable>True</isMappable>
-      <represents>data</represents>
-      <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
-    </property>
-    <property id="b9d6ff0c-3fe9-4faf-b966-20016a5989a3">
-      <name>Is Enabled</name>
-      <type>string</type>
-      <controlType>checkbox</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <isMappable>True</isMappable>
-      <represents>data</represents>
-      <defaultValue>true</defaultValue>
+      <represents>invokable</represents>
       <valueOptions />
       <lookupTypes />
     </property>

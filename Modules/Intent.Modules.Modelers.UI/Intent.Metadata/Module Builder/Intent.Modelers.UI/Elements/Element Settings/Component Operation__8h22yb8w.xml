@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="e030c97a-e066-40a7-8188-808c275df3cb" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Component Operation</name>
+  <display>Component Operation</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <order>3</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>b1c481e1-e91e-4c29-9817-00ab9cad4b6b</parentFolderId>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property id="4db0f9b1-2a88-4961-ad3c-6a3271b5b251" name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="As Child" isActive="true" />
+        <property id="c26b7eb8-db82-4828-aee9-084e1510d6af" name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property id="1165ec5d-e717-4528-bf55-d7cb3ab7ae97" name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property id="050e2229-04d4-44ea-9fee-c0bb703c344e" name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
+        <property id="40bdf0e8-3717-4681-9d2f-1488d1b23f1a" name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="const getTypeReferenceCssClass = (typeReference) =&gt; {&#xD;&#xA;    if (typeReference.typeId == null || typeReference.getType()?.specialization == &quot;Type-Definition&quot;) {&#xD;&#xA;        return &quot;keyword&quot;;&#xD;&#xA;    } else {&#xD;&#xA;        return &quot;typeref&quot;;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;const result = [{ text: `${ getName() }${ genericTypes }(` }];&#xD;&#xA;result.push(...children(&quot;Parameter&quot;)&#xD;&#xA;    .map(x =&gt; [&#xD;&#xA;        { text: `${ x.name }`, cssClass: &quot;muted&quot;, targetId: x.id },&#xD;&#xA;        { text: ': ' },&#xD;&#xA;        { text: x.typeReference.display, cssClass: getTypeReferenceCssClass(x.typeReference), targetId: x.typeReference.typeId }&#xD;&#xA;    ])&#xD;&#xA;    .reduce((x, y) =&gt; x.concat(x.length &gt; 0 ? [{ text: ', ' }] : []).concat(y), []));&#xD;&#xA;    result.push({ text: ')' });&#xD;&#xA;if (typeReference) {&#xD;&#xA;    result.push({ text: ': ' });&#xD;&#xA;    result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId });&#xD;&#xA;}&#xD;&#xA;return result;" isActive="true" />
+        <property id="6514c7ea-04a0-45a8-a6cc-55f36c9e898d" name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;function validateDuplicateOperation(operation) {&#xD;&#xA;    var possibleDuplicates = findPeerOperations(operation);&#xD;&#xA;    let operationSignature = calculateSignature(operation);&#xD;&#xA;    let duplicate;&#xD;&#xA;    possibleDuplicates.forEach(possibleDuplicate =&gt; {&#xD;&#xA;        if (duplicate != null)&#xD;&#xA;            return;&#xD;&#xA;        if (operationSignature == calculateSignature(possibleDuplicate)) {&#xD;&#xA;            duplicate = possibleDuplicate;&#xD;&#xA;        }&#xD;&#xA;    });&#xD;&#xA;    if (duplicate) {&#xD;&#xA;        return `Duplicate operation ${operation.getName()} - ${operationSignature}`;&#xD;&#xA;    }&#xD;&#xA;    return &quot;&quot;;&#xD;&#xA;}&#xD;&#xA;function calculateSignature(operation) {&#xD;&#xA;    let result = `${operation.getName()}(`;&#xD;&#xA;    let params = operation.getChildren(&quot;Parameter&quot;);&#xD;&#xA;    result += params.map((p) =&gt; p.typeReference.getType().getName()).join(', ');&#xD;&#xA;    result += &quot;)&quot;;&#xD;&#xA;    return result;&#xD;&#xA;}&#xD;&#xA;function findPeerOperations(operation) {&#xD;&#xA;    return operation.getParent().getChildren(&quot;Operation&quot;).filter(x =&gt; x.id != operation.id);&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../common/operation-validation.ts&quot; /&gt;&#xD;&#xA;/**&#xD;&#xA; * Used by Intent.Modules\Modules\Intent.Modules.Modelers.Services&#xD;&#xA; *&#xD;&#xA; * Source code here:&#xD;&#xA; * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-operation-validation/operation/operation-validation.ts&#xD;&#xA; */&#xD;&#xA;function validateOperation(element) {&#xD;&#xA;    return validateDuplicateOperation(element);&#xD;&#xA;}&#xD;&#xA;//Comment / UnComment below when you publish&#xD;&#xA;//validateOperation(element);&#xD;&#xA;return validateOperation(lookup(id));&#xD;&#xA;" isActive="true" />
+        <property id="2dfb7d62-6df3-436d-95f6-b27faa717907" name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property id="8d05807d-2b07-4727-8a52-e257143c141f" name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="true" isActive="true" />
+        <property id="8ffb9588-3b30-45ad-9525-73012be5c14f" name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
+        <property id="50e04c5a-50c2-4406-965e-321123cf467d" name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property id="a2e03acb-7119-4838-8e23-5f7a15f22a14" name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="true" isActive="true" />
+        <property id="af719a1b-781e-476d-bb1d-581aa9e3ba28" name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property id="023158ae-2cf2-40ce-968d-f9264a267134" name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" isActive="true" />
+        <property id="17d3ba14-196c-46b3-ab21-182246313e67" name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property id="4b8fc60a-4eab-4724-ac0e-2fa27359d7b8" name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Optional" isActive="true" />
+        <property id="3acc0fa8-7452-446b-9af8-fdea050e6dd5" name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" value="Return Type" isActive="true" />
+        <property id="f7eca3a7-0f4e-4833-9fb5-523f78207e4d" name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="true" />
+        <property id="f9c73663-af40-43e6-b803-ed408102f567" name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;fee0edca-4aa0-4f77-a524-6bbd84e78734&quot;,&quot;d4e577cd-ad05-4180-9a2e-fff4ddea0e1e&quot;,&quot;85fba0e9-9161-4c85-a603-a229ef312beb&quot;,&quot;bd3941b5-e3b3-4a40-96e6-b9c87cea0101&quot;]" isActive="true" />
+        <property id="e9ddfd08-35b2-4c16-b085-693a727e0ebf" name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="true" />
+        <property id="cce6fc0e-5e31-4918-a41f-0df840ce35e0" name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="true" />
+        <property id="a242aa7c-1667-4f0d-97e0-f4af6a60eb4f" name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="true" />
+        <property id="05675a4f-0c11-4879-8e26-c136b325f22c" name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="751935f8-b90a-432f-85cb-ccf6665bfc57" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>Creation Options</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>e030c97a-e066-40a7-8188-808c275df3cb</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="efe63fa6-92fc-4775-af54-9105b38f2aef" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Parameter</name>
+          <display>Add Parameter: Parameter</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="939f0104-dd25-4fc2-a761-b9c3f1ff8edd">
+            <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI</typePackageName>
+            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>751935f8-b90a-432f-85cb-ccf6665bfc57</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment>Overrides the default creation option settings.</comment>
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property id="2772c0ed-d5fe-4834-8425-8e91f3fc4384" name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + a" isActive="true" />
+                <property id="cb673a2b-2359-4884-b7fe-01c72c52caae" name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property id="5b0d4b0f-0658-4b9a-8975-4076c2ae4427" name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="param" isActive="true" />
+                <property id="7af0558c-65dd-4b91-a4b1-5a0b75d08f3f" name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property id="77d8e9e2-6407-4051-893d-f6c92cbc2dcb" name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property id="63c12c95-5143-4dea-abf5-493df6a87057" name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property id="07eaa43a-4624-43c7-a064-ef825442c2e3" name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="e12d6251-886a-4bb8-a94b-ae6a0b80b0c3" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Call Operation Action</name>
+          <display>Call Operation Action: Call Service Operation Action Target End</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="f4ec40b9-faa2-43bf-a21c-59b6a53589af">
+            <typeId>475f0810-2b4a-40da-8eb8-697cb62f7dbe</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI</typePackageName>
+            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>751935f8-b90a-432f-85cb-ccf6665bfc57</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property id="cfb79c09-9fa6-48ad-bf57-795a6d89cc42" name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
+                <property id="b47b7f5e-4eb6-449c-8646-bf2d457fc32c" name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property id="b227990f-25a2-48d4-93b1-6cdbafeb0b61" name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property id="369756a4-4a6d-41f7-83bd-44fe2fbbd76a" name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property id="a6654524-ebe7-4bd5-bd5f-a5b57f801317" name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property id="e93a6c41-740b-42c4-894e-e8d8b601adaa" name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="b551e340-d6fe-4e7c-8229-af73e37dfb1d" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Call Navigation</name>
+          <display>Call Navigation: Navigation</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="75409c01-681b-47d4-86e9-2ba02c96a9ca">
+            <typeId>6d2b2070-c1cb-4cd2-88b4-4e5f8414bd9e</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI</typePackageName>
+            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>751935f8-b90a-432f-85cb-ccf6665bfc57</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property id="866efe89-a08a-46d4-9c4d-c5a5a4c143fd" name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
+                <property id="add3d6a3-f213-464c-87da-abed9f0e0c1e" name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property id="41b8ca46-2da9-4345-8637-d9edf20af841" name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property id="14a92288-f051-4a62-a5dd-3f820e24d95d" name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property id="033efba8-338c-4e7c-9ce9-8e9fdfe07593" name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property id="56718186-f3e5-4e4d-a6af-0c0fbb83b73e" name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

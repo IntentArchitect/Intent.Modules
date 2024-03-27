@@ -75,7 +75,7 @@ function execute(proxyElement) {
         params.forEach((param, index) =&gt; {
             let existing = operation.getChildren("Parameter").find(x =&gt; x.getMetadata("endpoint-input-id") == param.id);
             if (!existing) {
-                existing = createElement("Parameter", param.name, operation.id);
+                existing = createElement("f11273c1-217f-4f42-b690-3d8b488f95a8", param.name, operation.id);
                 operation.collapse();
             }
             existing.setName(param.name);
@@ -140,7 +140,19 @@ else {
     <mappableElementPackageExtension id="cd5df4be-78ba-4262-a5d2-1ca5d53f6f9c" name="Call Service Targets - Proxies" extendPackageId="80e250fa-91d8-4bb9-95b8-e9b355bf6720" extendPackage="Call Service Targets">
       <imports />
       <mappableElementSettings>
-        <mappableElement id="f18ae1b5-eeda-48ae-83b0-64b12fd331a2" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+        <mappableElement id="761bbe63-9722-422e-8ac8-3750ee664ff8" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" version="1.0.0">
+          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <useChildSettingsFrom>f18ae1b5-eeda-48ae-83b0-64b12fd331a2</useChildSettingsFrom>
+          <represents>data</represents>
+          <childSettings />
+        </mappableElement>
+        <mappableElement id="f18ae1b5-eeda-48ae-83b0-64b12fd331a2" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="1.0.0">
+          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -149,8 +161,9 @@ else {
           <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="bebd723b-8592-4540-9edd-fa54e1be4d78" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+            <childSetting id="bebd723b-8592-4540-9edd-fa54e1be4d78" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="1.0.0">
               <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
+              <mustBeMappedBeforeChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -161,8 +174,9 @@ else {
               <represents>data</represents>
               <childSettings />
             </childSetting>
-            <childSetting id="36c63ac0-fd8a-485e-9798-bbf3a4551060" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+            <childSetting id="36c63ac0-fd8a-485e-9798-bbf3a4551060" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="1.0.0">
               <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
+              <mustBeMappedBeforeChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -175,7 +189,19 @@ else {
             </childSetting>
           </childSettings>
         </mappableElement>
-        <mappableElement id="f0078741-2b1a-4103-bbc7-2737aa05b0cc" name="Service Proxy Operation" type="Operation" typeId="aee6811e-b2f6-4562-a8eb-502029f63bc8">
+        <mappableElement id="777ba105-412e-4c75-8585-23ff9c931e5d" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" version="1.0.0">
+          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <useChildSettingsFrom>f18ae1b5-eeda-48ae-83b0-64b12fd331a2</useChildSettingsFrom>
+          <represents>data</represents>
+          <childSettings />
+        </mappableElement>
+        <mappableElement id="f0078741-2b1a-4103-bbc7-2737aa05b0cc" name="Service Proxy Operation" type="Operation" typeId="aee6811e-b2f6-4562-a8eb-502029f63bc8" version="1.0.0">
+          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -183,13 +209,12 @@ else {
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
           <childSettings>
-            <childSetting id="3fc9e92a-7af5-4d45-9cb6-581a406476b4" name="Parameter" type="Parameter" typeId="f11273c1-217f-4f42-b690-3d8b488f95a8">
+            <childSetting id="3fc9e92a-7af5-4d45-9cb6-581a406476b4" name="Parameter" type="Parameter" typeId="f11273c1-217f-4f42-b690-3d8b488f95a8" version="1.0.0">
+              <mustBeMappedBeforeChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>f18ae1b5-eeda-48ae-83b0-64b12fd331a2</mappingId>
-              </traversableTypes>
+              <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <childSettings />

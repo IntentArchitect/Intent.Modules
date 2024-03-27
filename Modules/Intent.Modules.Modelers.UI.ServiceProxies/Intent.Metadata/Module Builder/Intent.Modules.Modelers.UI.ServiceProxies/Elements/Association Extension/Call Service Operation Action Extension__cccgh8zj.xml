@@ -38,13 +38,13 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
-            <property name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
-            <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" isActive="true" />
-            <property name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" isActive="true" />
-            <property name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
-            <property name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />
-            <property name="558c27e8-dc8b-40ae-8633-fd42f0077268" display="Allow Collection" value="Inherit" isActive="true" />
+            <property id="1f763c70-b24d-4f90-ad3f-341c2e3b9399" name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
+            <property id="24e3e778-da58-4811-8701-7e58d7118be2" name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
+            <property id="f39249ea-6b98-4d73-98dc-1b0aadf7018c" name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" isActive="true" />
+            <property id="02a97998-6eff-4889-8542-3f0493945f95" name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" isActive="true" />
+            <property id="031ca1fb-c478-404f-9977-11071e000787" name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
+            <property id="9e650327-9322-43a7-a441-c868a8542636" name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />
+            <property id="b807e769-ca6e-4a59-b0d3-1247e89fa79b" name="558c27e8-dc8b-40ae-8633-fd42f0077268" display="Allow Collection" value="Inherit" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -66,13 +66,13 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
-            <property name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
-            <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" value="[&quot;aee6811e-b2f6-4562-a8eb-502029f63bc8&quot;]" isActive="true" />
-            <property name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" isActive="true" />
-            <property name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
-            <property name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />
-            <property name="558c27e8-dc8b-40ae-8633-fd42f0077268" display="Allow Collection" value="Inherit" isActive="true" />
+            <property id="d7b616ce-c3ad-4b23-8e32-97a9ce45c6d5" name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
+            <property id="432849e9-c492-4126-94e6-bd742f92cd3c" name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
+            <property id="8f4a0099-3fa3-411a-b19f-7ae70bff5286" name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" value="[&quot;aee6811e-b2f6-4562-a8eb-502029f63bc8&quot;]" isActive="true" />
+            <property id="a68a1bdc-209d-46f6-827f-6d8d67c07de9" name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" isActive="true" />
+            <property id="c671136d-785e-4f0d-92c9-bc611c2abab8" name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
+            <property id="dd6b349d-603d-4b35-8ad4-b8ab5880bada" name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />
+            <property id="b53824cf-b675-498a-9fd2-60b03a562092" name="558c27e8-dc8b-40ae-8633-fd42f0077268" display="Allow Collection" value="Inherit" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
