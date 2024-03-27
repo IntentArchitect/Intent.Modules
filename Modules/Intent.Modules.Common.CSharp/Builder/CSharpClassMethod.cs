@@ -32,7 +32,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     public CSharpClass Class { get; }
 
 
-    public CSharpClassMethod(string returnType, string name, CSharpClass @class)
+    public CSharpClassMethod(string returnType, string name, ICSharpCodeContext @class)
     {
         if (string.IsNullOrWhiteSpace(returnType))
         {
@@ -45,7 +45,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         }
 
         Parent = @class;
-        Class = @class;
+        Class = @class as CSharpClass;
         File = @class?.File;
         ReturnType = returnType;
         Name = name;

@@ -19,14 +19,14 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
     {
     }
 
-    public CSharpInterface(string name, CSharpFile file) : this(
+    public CSharpInterface(string name, ICSharpFile file) : this(
         name: name,
         file: file,
         parent: file)
     {
     }
 
-    public CSharpInterface(string name, CSharpFile file, CSharpMetadataBase parent)
+    public CSharpInterface(string name, ICSharpFile file, ICSharpCodeContext parent)
     {
         if (string.IsNullOrWhiteSpace(name))
         {

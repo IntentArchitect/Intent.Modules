@@ -7,7 +7,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpFile : CSharpMetadataBase<CSharpFile>
+public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
 {
     private readonly IList<(Action Invoke, int Order)> _configurations = new List<(Action Invoke, int Order)>();
     private readonly IList<(Action Invoke, int Order)> _configurationsAfter = new List<(Action Invoke, int Order)>();
@@ -16,7 +16,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
     public IList<CSharpUsing> Usings { get; } = new List<CSharpUsing>();
     public string Namespace { get; }
     public string RelativeLocation { get; }
-    public ICSharpFileBuilderTemplate Template { get; internal set; }
+    public ICSharpTemplate Template { get; internal set; }
     public string DefaultIntentManaged { get; private set; } = "Mode.Fully";
     public IList<CSharpInterface> Interfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpClass> TypeDeclarations { get; } = new List<CSharpClass>();
@@ -217,7 +217,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>
         return this;
     }
 
-    internal string GetModelType<T>(T model) where T : IMetadataModel, IHasName
+    public string GetModelType<T>(T model) where T : IMetadataModel, IHasName
     {
         if (Template == null)
         {

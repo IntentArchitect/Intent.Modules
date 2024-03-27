@@ -18,7 +18,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpReferenceable
     public CSharpPropertyAccessor Getter { get; } = CSharpPropertyAccessor.Getter();
     public CSharpPropertyAccessor Setter { get; } = CSharpPropertyAccessor.Setter();
 
-    public CSharpProperty(string type, string name, CSharpClass @class)
+    public CSharpProperty(string type, string name, ICSharpCodeContext @class)
     {
         if (string.IsNullOrWhiteSpace(type))
         {
@@ -34,7 +34,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpReferenceable
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;
         AfterSeparator = CSharpCodeSeparatorType.NewLine;
-        _class = @class;
+        _class = @class as CSharpClass;
         Parent = @class;
         File = @class?.File; // can be null because of CSharpInterfaceProperty :(
     }

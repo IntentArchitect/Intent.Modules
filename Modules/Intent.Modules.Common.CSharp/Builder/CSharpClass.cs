@@ -23,7 +23,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     {
     }
 
-    protected internal CSharpClass(string name, Type type, CSharpFile file) : this(
+    protected internal CSharpClass(string name, Type type, ICSharpFile file) : this(
         name: name,
         type: type,
         file: file,
@@ -31,7 +31,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     {
     }
 
-    protected internal CSharpClass(string name, Type type, CSharpFile file, CSharpMetadataBase parent)
+    protected internal CSharpClass(string name, Type type, ICSharpFile file, ICSharpCodeContext parent)
     {
         if (string.IsNullOrWhiteSpace(name))
         {

@@ -9,7 +9,8 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, IHasICSharpParameters
 {
-    public CSharpLocalMethod(string returnType, string name, CSharpFile file) : base(string.Empty)
+    public CSharpLocalMethod(string returnType, string name, CSharpFile file) : this(returnType, name, (ICSharpFile)file) {}
+    public CSharpLocalMethod(string returnType, string name, ICSharpFile file) : base(string.Empty)
     {
         if (string.IsNullOrWhiteSpace(returnType))
         {

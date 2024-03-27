@@ -168,6 +168,15 @@ public abstract class MappingManagerBase
         return mapping.GetSourceStatement();
     }
 
+    public CSharpStatement GenerateTargetStatementForMapping(IElementToElementMapping model, IElementToElementMappedEnd mappingEnd)
+    {
+        var mappingModel = new MappingModel(model.Type, model.TypeId, mappingEnd, this);
+        var mapping = ResolveMappings(mappingModel);//, new ObjectUpdateMapping(mappingModel, _template));
+        ApplyReplacements(mapping);
+
+        return mapping.GetTargetStatement();
+    }
+
     public void SetFromReplacement(IMetadataModel type, string replacement)
     {
         if (_fromReplacements.ContainsKey(type.Id))
