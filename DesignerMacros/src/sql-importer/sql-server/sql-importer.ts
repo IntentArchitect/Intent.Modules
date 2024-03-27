@@ -159,7 +159,11 @@ async function  importSqlDatabase(element: MacroApi.Context.IElementApi): Promis
     if (result?.errorMessage){
         await dialogService.error(result?.errorMessage);
     } else {
-        await dialogService.info("Import complete.");
+        if (result?.warnings){
+            await dialogService.warn("Import complete.\r\n\r\n" + result?.warnings);
+        }else{
+            await dialogService.info("Import complete.");
+        }
     }
 
 }
