@@ -154,7 +154,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#68bcd9b7-51db-4d6b-996a-3f0ec6a5f6d6</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#911c35b4-4ba3-404c-a0c6-e5258e53333a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/UserInterfacePackageModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>UserInterfacePackageModel.cs</ProjectRelativeFilePath>
@@ -218,7 +218,15 @@
     </FileLog>
     <FileLog>
       <ProjectId>1cf7c6ee-1399-4f11-b00f-719c44882e8c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.DesignerConfig#c3272f56-ac56-4ac1-a9d6-bcb8cd73eec2</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#93058b8a-4d1d-4f88-ac14-332c87666418</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/User Interface Packages.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>User Interface Packages.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1cf7c6ee-1399-4f11-b00f-719c44882e8c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerConfig#f492faed-0665-4513-9853-5a230721786f</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/User Interface.designer.config</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>User Interface.designer.config</ProjectRelativeFilePath>

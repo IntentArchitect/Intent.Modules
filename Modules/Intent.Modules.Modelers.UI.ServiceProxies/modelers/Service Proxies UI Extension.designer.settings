@@ -7,7 +7,7 @@
   </designerReferences>
   <packageSettings />
   <packageExtensions>
-    <packageExtension type="User Interface Package" typeId="68bcd9b7-51db-4d6b-996a-3f0ec6a5f6d6">
+    <packageExtension type="User Interface Package" typeId="911c35b4-4ba3-404c-a0c6-e5258e53333a">
       <requiredPackages />
       <creationOptions>
         <option type="element">
@@ -32,6 +32,7 @@
       <macros>
         <macro trigger="on-changed">
           <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+const parameterTypeId = "f11273c1-217f-4f42-b690-3d8b488f95a8";
 function GetParameters(targetService) {
     let httpSettings = targetService.getStereotype("Http Settings");
     if (!httpSettings) {
@@ -75,7 +76,7 @@ function execute(proxyElement) {
         params.forEach((param, index) =&gt; {
             let existing = operation.getChildren("Parameter").find(x =&gt; x.getMetadata("endpoint-input-id") == param.id);
             if (!existing) {
-                existing = createElement("f11273c1-217f-4f42-b690-3d8b488f95a8", param.name, operation.id);
+                existing = createElement(parameterTypeId, param.name, operation.id);
                 operation.collapse();
             }
             existing.setName(param.name);

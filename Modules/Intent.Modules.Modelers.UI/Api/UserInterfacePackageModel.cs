@@ -15,7 +15,7 @@ namespace Intent.Modelers.UI.Api
     public class UserInterfacePackageModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "User Interface Package";
-        public const string SpecializationTypeId = "68bcd9b7-51db-4d6b-996a-3f0ec6a5f6d6";
+        public const string SpecializationTypeId = "911c35b4-4ba3-404c-a0c6-e5258e53333a";
 
         [IntentManaged(Mode.Ignore)]
         public UserInterfacePackageModel(IPackage package)

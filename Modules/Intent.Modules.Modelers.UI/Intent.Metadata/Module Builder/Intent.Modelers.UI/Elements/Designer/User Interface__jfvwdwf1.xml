@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="f492faed-0665-4513-9853-5a230721786f" type="Designer" typeId="7f5fcc9f-c721-4a31-bfe2-7909f4289420">
+  <name>User Interface</name>
+  <display>User Interface</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>283cda71-b053-4340-b543-625cd1fd318c</parentFolderId>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="6761be76-7c09-4ad4-8a65-82c6d17992db" name="Designer Config">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property id="420a252b-2cf3-4806-a0d8-616bc846b563" name="84ac204b-f187-45b7-b3c3-efb26db2d9d8" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property id="27d814ba-05cf-47c6-b967-4e1018e36789" name="179da558-7e6e-43b0-ab61-5d76a2b879d0" display="Display Order" value="-5" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="99431f87-6866-47a0-b6a8-4e30df7cbb05" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: User Interface Packages</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="91f40355-b509-4e21-8a18-c7b117922572">
+        <typeId>93058b8a-4d1d-4f88-ac14-332c87666418</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.UI</typePackageName>
+        <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>f492faed-0665-4513-9853-5a230721786f</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="8ca8ab75-e186-43de-be8b-4ea25b96b448" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: Common Types</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="329e6592-974b-451e-a7db-391fca251d2d">
+        <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>f492faed-0665-4513-9853-5a230721786f</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="bf8d7f93-086c-4d5a-8c7f-1f02884b52e0" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: User Interface Core Types</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="e7c1be16-78fe-4b28-a760-f746dded6b7a">
+        <typeId>444f582b-b875-4c72-9671-697b47fa367c</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.UI</typePackageName>
+        <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>f492faed-0665-4513-9853-5a230721786f</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

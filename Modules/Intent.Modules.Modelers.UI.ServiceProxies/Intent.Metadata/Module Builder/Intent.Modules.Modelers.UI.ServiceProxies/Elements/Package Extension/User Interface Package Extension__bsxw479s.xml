@@ -6,7 +6,7 @@
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <typeReference id="9d635539-54c9-4447-9105-170e3e4a525f">
-    <typeId>68bcd9b7-51db-4d6b-996a-3f0ec6a5f6d6</typeId>
+    <typeId>911c35b4-4ba3-404c-a0c6-e5258e53333a</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
