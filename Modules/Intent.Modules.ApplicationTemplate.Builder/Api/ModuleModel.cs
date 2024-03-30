@@ -10,14 +10,14 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class ModuleModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Module";
-        public const string SpecializationTypeId = "ef75f8f0-520c-4ab8-814f-5e75f4877dd7";
+        public const string SpecializationTypeId = "6a811790-b322-4340-8b68-84dae5ffafa8";
         protected readonly IElement _element;
 
-        [IntentManaged(Mode.Ignore)]
+        [IntentManaged(Mode.Fully)]
         public ModuleModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -31,21 +31,13 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         public string Name => _element.Name;
 
+        public string Comment => _element.Comment;
+
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public string Value => _element.Value;
+
         public IElement InternalElement => _element;
-
-        [IntentManaged(Mode.Ignore)]
-        public string Version => this.GetModuleSettings().Version();
-
-        [IntentManaged(Mode.Ignore)]
-        public bool IsIncludedByDefault => this.GetModuleSettings().IncludeByDefault();
-
-        [IntentManaged(Mode.Ignore)]
-        public bool IsRequired => this.GetModuleSettings().IsRequired();
-
-        [IntentManaged(Mode.Ignore)]
-        public bool InstallMetadataOnly => this.GetModuleSettings().InstallMetadataOnly();
 
         public override string ToString()
         {
@@ -69,8 +61,6 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        public string Comment => _element.Comment;
     }
 
     [IntentManaged(Mode.Fully)]

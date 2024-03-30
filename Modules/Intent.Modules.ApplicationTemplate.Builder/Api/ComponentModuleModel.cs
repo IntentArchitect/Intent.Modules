@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class ComponentModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class ComponentModuleModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Component";
-        public const string SpecializationTypeId = "47064ef1-2295-4287-8301-c446910a1b1e";
+        public const string SpecializationType = "Component Module";
+        public const string SpecializationTypeId = "ef75f8f0-520c-4ab8-814f-5e75f4877dd7";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Ignore)]
-        public ComponentModel(IElement element, string requiredType = SpecializationType)
+        public ComponentModuleModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -35,29 +35,24 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         public IElement InternalElement => _element;
 
-        public IList<ComponentModuleModel> Modules => _element.ChildElements
-            .GetElementsOfType(ComponentModuleModel.SpecializationTypeId)
-            .Select(x => new ComponentModuleModel(x))
-            .ToList();
+        [IntentManaged(Mode.Ignore)]
+        public string Version => this.GetModuleSettings().Version();
 
         [IntentManaged(Mode.Ignore)]
-        public bool IncludeByDefault => this.GetComponentSettings().IncludeByDefault();
+        public bool IsIncludedByDefault => this.GetModuleSettings().IncludeByDefault();
 
         [IntentManaged(Mode.Ignore)]
-        public bool IsRequired => this.GetComponentSettings().IsRequired();
+        public bool IsRequired => this.GetModuleSettings().IsRequired();
 
         [IntentManaged(Mode.Ignore)]
-        public string Description => this.GetComponentSettings().Description();
-
-        [IntentManaged(Mode.Ignore)]
-        public IIconModel Icon => this.GetComponentSettings().Icon();
+        public bool InstallMetadataOnly => this.GetModuleSettings().InstallMetadataOnly();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(ComponentModel other)
+        public bool Equals(ComponentModuleModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -67,7 +62,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ComponentModel)obj);
+            return Equals((ComponentModuleModel)obj);
         }
 
         public override int GetHashCode()
@@ -79,17 +74,17 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ComponentModelExtensions
+    public static class ComponentModuleModelExtensions
     {
 
-        public static bool IsComponentModel(this ICanBeReferencedType type)
+        public static bool IsComponentModuleModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ComponentModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == ComponentModuleModel.SpecializationTypeId;
         }
 
-        public static ComponentModel AsComponentModel(this ICanBeReferencedType type)
+        public static ComponentModuleModel AsComponentModuleModel(this ICanBeReferencedType type)
         {
-            return type.IsComponentModel() ? new ComponentModel((IElement)type) : null;
+            return type.IsComponentModuleModel() ? new ComponentModuleModel((IElement)type) : null;
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Intent.Engine;
+using Intent.Exceptions;
 using Intent.IArchitect.Agent.Persistence.Model;
 using Intent.IArchitect.Agent.Persistence.Model.ApplicationTemplate;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
@@ -14,9 +16,11 @@ using Intent.Metadata.Models;
 using Intent.Modules.ApplicationTemplate.Builder.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using NuGet.Versioning;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -121,7 +125,22 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
                             Description = o.Name
                         }).ToList()
                     }).ToList()
-                }).ToList()
+                }).ToList(),
+                MinimumDependencyVersions = Model.MinimumDependencyVersions?.Modules
+                    .Select(m =>
+                    {
+                        if (!SemanticVersion.TryParse(m.Value, out _))
+                        {
+                            throw new ElementException(m.InternalElement, "Value must be a valid semantic version 2 string");
+                        }
+
+                        return new MinimumDependencyVersion
+                        {
+                            Id = m.Name,
+                            Version = m.Value
+                        };
+                    })
+                    .ToList()
             };
 
             if (result.AdditionalSettings.SelectMany(x => x.Settings).GroupBy(x => x.Id.ToLower()).Any(x => x.Count() > 1))

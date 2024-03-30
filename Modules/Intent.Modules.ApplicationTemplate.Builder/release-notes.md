@@ -1,3 +1,7 @@
+### Version 3.4.8
+
+- Improvement: It is now possible to specify minimum versions of module dependencies.
+
 ### Version 3.4.7
 
 - Improvement: Updated icon.

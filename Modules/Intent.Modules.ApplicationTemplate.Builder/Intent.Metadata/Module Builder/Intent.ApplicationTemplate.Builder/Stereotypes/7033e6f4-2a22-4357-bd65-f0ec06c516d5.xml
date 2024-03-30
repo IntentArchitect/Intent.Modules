@@ -3,7 +3,7 @@
   <name>Module Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="ef75f8f0-520c-4ab8-814f-5e75f4877dd7">Module</type>
+    <type id="ef75f8f0-520c-4ab8-814f-5e75f4877dd7">Component Module</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>
