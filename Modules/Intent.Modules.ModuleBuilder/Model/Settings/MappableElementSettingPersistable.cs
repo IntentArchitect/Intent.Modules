@@ -6,6 +6,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common;
 
 public class MappableElementSettingPersistable
 {
+    public const string SyncWithValue = "value";
+    public const string SyncWithStereotypeProperty = "stereotype-property";
+
     private bool? _isTraversable;
 
     [XmlAttribute("id")]
@@ -21,7 +24,7 @@ public class MappableElementSettingPersistable
     public string SpecializationTypeId { get; set; }
 
     [XmlAttribute("version")]
-    public string Version { get; set; } = "2.0.0";
+    public string Version { get; set; } = "1.0.0";
 
     [XmlElement("filterFunction")]
     public string FilterFunction { get; set; }
@@ -31,6 +34,7 @@ public class MappableElementSettingPersistable
 
     [XmlElement("mustBeMappedBeforeChildren")]
     public bool? MustBeMappedBeforeChildren { get; set; }
+    public bool ShouldSerializeMustBeMappedBeforeChildren() => MustBeMappedBeforeChildren.HasValue;
 
     [XmlElement("allowMultipleMappings")]
     public bool? AllowMultipleMappings { get; set; }
@@ -50,7 +54,7 @@ public class MappableElementSettingPersistable
 
     [XmlArray("traversableTypes")]
     [XmlArrayItem("mappingId")]
-    public List<string> TraversableTypes { get; set; } = new ();
+    public List<string> TraversableTypes { get; set; } = new();
 
     [XmlElement("canBeModified")]
     public bool CanBeModified { get; set; }
@@ -63,6 +67,24 @@ public class MappableElementSettingPersistable
 
     [XmlElement("represents")]
     public string Represents { get; set; }
+
+    [XmlElement("iconOverride")]
+    public IconModelPersistable IconOverride { get; set; }
+
+    [XmlElement("syncWith")]
+    public string SyncWith { get; set; }
+
+    [XmlElement("syncStereotypeId")]
+    public string SyncStereotypeId { get; set; }
+    public bool ShouldSerializeSyncStereotypeId() => SyncWith == SyncWithStereotypeProperty;
+
+    [XmlElement("syncStereotypePropertyId")]
+    public string SyncStereotypePropertyId { get; set; }
+    public bool ShouldSerializeSyncStereotypePropertyId() => SyncWith == SyncWithStereotypeProperty;
+
+    [XmlArray("staticMappableSettings")]
+    [XmlArrayItem("staticMappableSetting")]
+    public List<MappableElementSettingPersistable> StaticMappableSettings { get; set; }
 
     [XmlArray("childSettings")]
     [XmlArrayItem("childSetting")]

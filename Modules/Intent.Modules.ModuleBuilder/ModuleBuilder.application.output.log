@@ -466,6 +466,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#c776bc38-c0e8-4535-87dd-79cfd33be2ad</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/StaticMappableSettingsModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>StaticMappableSettingsModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#0c721d5d-7721-414c-adaf-4c9f5c5531a9</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/StereotypeDefinitionCreationOptionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
@@ -710,6 +718,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/StaticContentTemplateModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>StaticContentTemplateModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c776bc38-c0e8-4535-87dd-79cfd33be2ad</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/StaticMappableSettingsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>StaticMappableSettingsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

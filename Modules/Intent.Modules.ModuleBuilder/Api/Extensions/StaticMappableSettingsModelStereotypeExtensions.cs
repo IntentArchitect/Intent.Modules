@@ -10,21 +10,21 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class MappableElementSettingsModelStereotypeExtensions
+    public static class StaticMappableSettingsModelStereotypeExtensions
     {
-        public static MappableSettings GetMappableSettings(this MappableElementSettingsModel model)
+        public static MappableSettings GetMappableSettings(this StaticMappableSettingsModel model)
         {
             var stereotype = model.GetStereotype("df24679d-09ec-4efc-af37-a1a926b7a108");
             return stereotype != null ? new MappableSettings(stereotype) : null;
         }
 
 
-        public static bool HasMappableSettings(this MappableElementSettingsModel model)
+        public static bool HasMappableSettings(this StaticMappableSettingsModel model)
         {
             return model.HasStereotype("df24679d-09ec-4efc-af37-a1a926b7a108");
         }
 
-        public static bool TryGetMappableSettings(this MappableElementSettingsModel model, out MappableSettings stereotype)
+        public static bool TryGetMappableSettings(this StaticMappableSettingsModel model, out MappableSettings stereotype)
         {
             if (!HasMappableSettings(model))
             {
@@ -55,16 +55,6 @@ namespace Intent.ModuleBuilder.Api
             public IIconModel IconOverride()
             {
                 return _stereotype.GetProperty<IIconModel>("Icon Override");
-            }
-
-            public bool CanBeModified()
-            {
-                return _stereotype.GetProperty<bool>("Can Be Modified");
-            }
-
-            public string CreateNameFunction()
-            {
-                return _stereotype.GetProperty<string>("Create Name Function");
             }
 
             public string FilterFunction()
@@ -117,6 +107,16 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Sync Stereotype Property");
             }
 
+            public bool CanBeModified()
+            {
+                return _stereotype.GetProperty<bool>("Can Be Modified");
+            }
+
+            public string CreateNameFunction()
+            {
+                return _stereotype.GetProperty<string>("Create Name Function");
+            }
+
             public IElement UseChildMappingsFrom()
             {
                 return _stereotype.GetProperty<IElement>("Use Child Mappings From");
@@ -159,7 +159,6 @@ namespace Intent.ModuleBuilder.Api
                 Data,
                 Invokable
             }
-
             public class TraversableModeOptions
             {
                 public readonly string Value;
@@ -248,7 +247,6 @@ namespace Intent.ModuleBuilder.Api
                 ElementValue,
                 StereotypePropertyValue
             }
-
         }
 
     }
