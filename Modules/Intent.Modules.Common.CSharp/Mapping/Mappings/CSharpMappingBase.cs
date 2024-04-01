@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
@@ -152,23 +153,38 @@ public abstract class CSharpMappingBase : ICSharpMapping
     protected string GetSourcePathText()
     {
         var text = Mapping?.MappingExpression ?? throw new Exception($"Could not resolve source path. Mapping expected on '{Model.DisplayText ?? Model.Name}' [{Model.SpecializationType}]");
-        var paths = ExtractPaths(Mapping.MappingExpression);
-        foreach (var path in paths)
-        {
-            text = text.Replace($"{{{path}}}", GetSourcePathText(Mapping.GetSource(path).Path));
-        }
+        text = ParseAndReplaceExpression(text, path => GetSourcePathText(Mapping.GetSource(path).Path));
         return text;
     }
 
-    private IEnumerable<string> ExtractPaths(string str)
+    private string ParseAndReplaceExpression(string str, Func<string, string> replacePathFunc)
     {
-        var results = new List<string>();
+        var result = str;
         while (str.IndexOf("{", StringComparison.Ordinal) != -1 && str.IndexOf("}", StringComparison.Ordinal) != -1)
         {
-            results.Add(str[(str.IndexOf("{", StringComparison.Ordinal) + 1)..str.IndexOf("}", StringComparison.Ordinal)]);
+            var fromPos = str.IndexOf("{", StringComparison.Ordinal) + 1;
+            var toPos = str.IndexOf("}", StringComparison.Ordinal);
+            var expression = str[fromPos..toPos];
+            var expressionFromPos = 0;
+            var resultExpression = expression;
+            foreach (var part in Regex.Split(expression, @"[\(\)?:!=]").Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x.Trim()))
+            {
+                if (part == "true" ||
+                    part == "false" ||
+                    part == "null" ||
+                    (part.StartsWith('"') && part.EndsWith('"')))
+                {
+                    continue;
+                }
+
+                expressionFromPos = expression.IndexOf(part, expressionFromPos, StringComparison.Ordinal);
+                resultExpression = resultExpression.Remove(expressionFromPos, part.Length).Insert(expressionFromPos, replacePathFunc(part));
+            }
+
+            result = result.Replace($"{{{expression}}}", resultExpression);
             str = str[(str.IndexOf("}", StringComparison.Ordinal) + 1)..];
         }
-        return results;
+        return result;
     }
 
     protected string GetSourcePathText(IList<IElementMappingPathTarget> mappingPaths)
