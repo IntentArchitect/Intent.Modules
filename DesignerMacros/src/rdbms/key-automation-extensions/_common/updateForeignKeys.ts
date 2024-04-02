@@ -47,6 +47,7 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationApi): void {
                 createElement("Attribute", "", thisEndType.id);
 
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
+            //If you change the logic around determining FK Name make sure to update the SQL Importer to have the same logic
             let fkNameToUse = `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
             if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
                 if (!fkAttribute.hasMetadata(metadataKey.fkOriginalName) || (fkAttribute.getMetadata(metadataKey.fkOriginalName) == fkAttribute.getName())) {
