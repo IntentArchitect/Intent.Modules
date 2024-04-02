@@ -7,7 +7,7 @@
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.Metadata</metadataRelativePath>
   <modulesCacheRelativePath>.intent/modules</modulesCacheRelativePath>
-  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="3.3.59" />
+  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.EmptyVisualStudioSolution" version="3.3.43" />
   <applications>
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp\ModuleBuilder.CSharp.application.config" />
@@ -50,5 +50,6 @@
     <application id="2f056b26-eec3-4f6b-8447-2b1382956315" name="Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config" relativePath="Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config/Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config.application.config" />
     <application id="34ab81e4-7133-42aa-a9ac-72dc515be606" name="Intent.Modules.Java.Weaving.Annotations" relativePath="Intent.Modules.Java.Weaving.Annotations/Intent.Modules.Java.Weaving.Annotations.application.config" />
     <application id="0961b73a-4137-44db-98a8-530e1dbe2528" name="Intent.Modules.Modelers.Domain.StoredProcedures" relativePath="Intent.Modules.Modelers.Domain.StoredProcedures/Intent.Modules.Modelers.Domain.StoredProcedures.application.config" />
+    <application id="8bbfc5a8-8482-42f0-a76a-54378d457ab1" name="Intent.Modules.Modelers.ServiceProxies.Metadata" relativePath="Intent.Modules.Modelers.ServiceProxies.Metadata/Intent.Modules.Modelers.ServiceProxies.Metadata.application.config" />
   </applications>
 </solution>

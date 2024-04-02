@@ -1,4 +1,8 @@
-﻿### Version 5.0.3
+﻿### Version 5.0.4
+
+- Improvement: A package is now created by default for the Service Proxies designer.
+
+### Version 5.0.3
 
 - Improvement: Updated dependencies to latest.
 
