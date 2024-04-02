@@ -174,6 +174,8 @@ namespace Intent.Modules.Common.TypeScript.Templates
         /// <inheritdoc />
         public override string RunTemplate()
         {
+            var existingContent = base.RunTemplate(); // Populates Imports in most cases first.
+            
             var typescriptImports = new List<Intent.Modules.Common.TypeScript.Utils.TypeScriptImport>();
 
             var dependencies = this.GetTemplateDependencies().Select(this.ExecutionContext.FindTemplateInstance<ITemplate>).Distinct();
@@ -197,7 +199,7 @@ namespace Intent.Modules.Common.TypeScript.Templates
                 typescriptImports.Add(new Utils.TypeScriptImport(import.Type, import.Location));
             }
 
-            return WeaverProvider.InsertImportDirectives(base.RunTemplate(), typescriptImports);
+            return WeaverProvider.InsertImportDirectives(existingContent, typescriptImports);
         }
     }
 }
