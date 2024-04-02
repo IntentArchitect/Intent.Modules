@@ -196,14 +196,22 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
                 result = result != null ? new CSharpAccessMemberStatement(result, member) : member;
                 var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
-                if (previousMappingPath?.Element.TypeReference?.IsNullable == true && result is CSharpAccessMemberStatement accessMember)
+                if (IsTransitional(previousMappingPath, mappingPathTarget))
                 {
-                    accessMember.IsConditional();
+                    if (previousMappingPath?.Element.TypeReference?.IsNullable == true && result is CSharpAccessMemberStatement accessMember)
+                    {
+                        accessMember.IsConditional();
+                    }
                 }
             }
         }
         return result;
     }
+
+    private bool IsTransitional(IElementMappingPathTarget previousMappingPath, IElementMappingPathTarget mappingPathTarget)
+    {
+        return !((IElement)previousMappingPath?.Element).ChildElements.Contains((IElement)mappingPathTarget?.Element);
+	}
 
     protected string GetTargetPathText()
     {

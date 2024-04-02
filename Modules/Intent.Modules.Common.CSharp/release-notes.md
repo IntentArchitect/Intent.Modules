@@ -1,4 +1,8 @@
-﻿### Version 3.5.5
+﻿### Version 3.5.6
+
+- Fixed: Advanced mappings not generating compiling in certain scenarios.
+- 
+### Version 3.5.5
 
 - Improvement: Aligned VS Solution Project Type Ids to the new project system ids (https://github.com/dotnet/project-system/blob/main/docs/opening-with-new-project-system.md).
 - Improvement: New `AddKnownType(string fullyQualifiedTypeName)` method added to `CSharpTemplateBase` which can be used to disambiguate type references in cases where multiple using directive namespaces have types with the same.
