@@ -210,6 +210,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     private bool IsTransitional(IElementMappingPathTarget previousMappingPath, IElementMappingPathTarget mappingPathTarget)
     {
+        if (previousMappingPath == null) return false;
         return !((IElement)previousMappingPath?.Element).ChildElements.Contains((IElement)mappingPathTarget?.Element);
 	}
 
