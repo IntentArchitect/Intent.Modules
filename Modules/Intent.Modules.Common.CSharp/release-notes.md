@@ -1,7 +1,7 @@
 ﻿### Version 3.5.6
 
 - Fixed: Advanced mappings not generating compiling in certain scenarios.
-- 
+
 ### Version 3.5.5
 
 - Improvement: Aligned VS Solution Project Type Ids to the new project system ids (https://github.com/dotnet/project-system/blob/main/docs/opening-with-new-project-system.md).
