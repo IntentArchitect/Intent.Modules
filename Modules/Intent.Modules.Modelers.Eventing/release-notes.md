@@ -1,3 +1,7 @@
+### Version 5.0.3
+
+- Improvement: `${application.name}.Eventing.Messages` package will now be created in the Services designer.
+
 ### Version 5.0.2
 
 - Improvement: Added support for `Integration Command`s.
