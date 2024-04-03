@@ -97,6 +97,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     .Replace("[3.3.0", "[4.1.0")
                     .Replace("[3.4.0", "[4.1.0")
                     .Replace("[4.1.0-a,", "[4.1.0-beta.21,")
+                    .Replace("[4.1.0-beta.21,", "[4.2.3,")
                     .Replace("4.0.0)", "5.0.0)"));
             }
 

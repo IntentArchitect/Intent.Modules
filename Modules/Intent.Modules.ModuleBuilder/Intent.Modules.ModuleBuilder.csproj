@@ -46,10 +46,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiElementModelPartialTemplate.cs</LastGenOutput>
     </None>
-    <None Update="Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiMetadataDesignerExtensionsTemplate.cs</LastGenOutput>
-    </None>
     <None Update="Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensionsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiMetadataProviderExtensionsTemplate.cs</LastGenOutput>
@@ -58,11 +54,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiElementModelPartialTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Update="Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ApiMetadataDesignerExtensionsTemplate.tt</DependentUpon>
     </Compile>
     <Compile Update="Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensionsTemplate.cs">
       <DesignTime>True</DesignTime>
