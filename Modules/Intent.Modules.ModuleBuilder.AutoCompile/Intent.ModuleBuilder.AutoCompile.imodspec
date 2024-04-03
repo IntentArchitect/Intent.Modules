@@ -16,7 +16,7 @@
   <dependencies>
     <dependency id="Intent.Common" version="3.6.0-pre.0" />
     <dependency id="Intent.Common.Types" version="3.4.0-pre.0" />
-    <dependency id="Intent.ModuleBuilder" version="3.10.0-pre.0" />
+    <dependency id="Intent.ModuleBuilder" version="3.8.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

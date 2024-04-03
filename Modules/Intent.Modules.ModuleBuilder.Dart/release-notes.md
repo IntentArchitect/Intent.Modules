@@ -1,3 +1,7 @@
+### Verion 1.2.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
 ### Version 1.1.0
 
 - Improvement: Ensure that this module is running on the latest patterns and dependencies.

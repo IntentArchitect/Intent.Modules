@@ -1,6 +1,6 @@
 ﻿### Version 3.9.0
 
-- Improvement: Updated Module from .NET Core 3.5 to .NET 6.
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
 
 ### Version 3.8.0
 

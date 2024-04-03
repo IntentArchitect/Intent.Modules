@@ -1,3 +1,7 @@
+### Version 3.5.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
 ### Version 3.4.0
 
 - Improvement: Will now add module dependencies on the following as needed:

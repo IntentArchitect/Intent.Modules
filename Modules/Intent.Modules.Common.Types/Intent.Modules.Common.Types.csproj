@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <PackageId>Intent.Modules.Common.Types</PackageId>
     <Version>3.4.0-pre.0</Version>
     <Authors>Intent Architect</Authors>

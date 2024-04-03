@@ -45,12 +45,5 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 .ToList();
         }
 
-        public static IList<ModuleModel> GetModuleModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(ModuleModel.SpecializationTypeId)
-                .Select(x => new ModuleModel(x))
-                .ToList();
-        }
-
     }
 }

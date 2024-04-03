@@ -1,6 +1,6 @@
 ### Verion 4.1.0
 
-- Improvement: Updated Module from .NET Core 3.5 to .NET 6.
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
 
 ### Version 4.0.1
 
