@@ -13,15 +13,15 @@
     <factoryExtension id="Intent.Common.CSharp.CSharpFileBuilderFactoryExtension" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.5.0" />
-    <dependency id="Intent.Common.Types" version="3.3.9" />
+    <dependency id="Intent.Common" version="3.6.0-pre.0" />
+    <dependency id="Intent.Common.Types" version="3.4.0-pre.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
   </files>
   <metadata>
-    <install src="../.intent/modules/Intent.Common.CSharp.3.5.5/packages/Intent.Common.CSharp/Intent.Common.CSharp.pkg.config" externalReference="730e1275-0c32-44f7-991a-9619d07ca68d" target="*" />
+    <install src="Intent.Metadata/Module Builder/Intent.Common.CSharp/Intent.Common.CSharp.pkg.config" externalReference="730e1275-0c32-44f7-991a-9619d07ca68d" target="*" />
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />
