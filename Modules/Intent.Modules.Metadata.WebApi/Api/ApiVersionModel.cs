@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Metadata.WebApi.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ApiVersionModel : IMetadataModel, IHasStereotypes, IHasName
+    public class ApiVersionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Api Version";
         public const string SpecializationTypeId = "0ec760ae-98d8-4e8e-953c-d00691ff7e28";

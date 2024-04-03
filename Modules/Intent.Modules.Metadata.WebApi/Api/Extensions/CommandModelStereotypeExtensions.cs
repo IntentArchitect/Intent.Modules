@@ -15,14 +15,14 @@ namespace Intent.Metadata.WebApi.Api
     {
         public static ApiVersionSettings GetApiVersionSettings(this CommandModel model)
         {
-            var stereotype = model.GetStereotype("Api Version Settings");
+            var stereotype = model.GetStereotype("20855f03-c663-4ec6-b106-de06be98f1fe");
             return stereotype != null ? new ApiVersionSettings(stereotype) : null;
         }
 
 
         public static bool HasApiVersionSettings(this CommandModel model)
         {
-            return model.HasStereotype("Api Version Settings");
+            return model.HasStereotype("20855f03-c663-4ec6-b106-de06be98f1fe");
         }
 
         public static bool TryGetApiVersionSettings(this CommandModel model, out ApiVersionSettings stereotype)
@@ -33,20 +33,20 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new ApiVersionSettings(model.GetStereotype("Api Version Settings"));
+            stereotype = new ApiVersionSettings(model.GetStereotype("20855f03-c663-4ec6-b106-de06be98f1fe"));
             return true;
         }
 
         public static FileTransfer GetFileTransfer(this CommandModel model)
         {
-            var stereotype = model.GetStereotype("File Transfer");
+            var stereotype = model.GetStereotype("d30e48e8-389e-4b70-84fd-e3bac44cfe19");
             return stereotype != null ? new FileTransfer(stereotype) : null;
         }
 
 
         public static bool HasFileTransfer(this CommandModel model)
         {
-            return model.HasStereotype("File Transfer");
+            return model.HasStereotype("d30e48e8-389e-4b70-84fd-e3bac44cfe19");
         }
 
         public static bool TryGetFileTransfer(this CommandModel model, out FileTransfer stereotype)
@@ -57,19 +57,19 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new FileTransfer(model.GetStereotype("File Transfer"));
+            stereotype = new FileTransfer(model.GetStereotype("d30e48e8-389e-4b70-84fd-e3bac44cfe19"));
             return true;
         }
         public static HttpSettings GetHttpSettings(this CommandModel model)
         {
-            var stereotype = model.GetStereotype("Http Settings");
+            var stereotype = model.GetStereotype("b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6");
             return stereotype != null ? new HttpSettings(stereotype) : null;
         }
 
 
         public static bool HasHttpSettings(this CommandModel model)
         {
-            return model.HasStereotype("Http Settings");
+            return model.HasStereotype("b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6");
         }
 
         public static bool TryGetHttpSettings(this CommandModel model, out HttpSettings stereotype)
@@ -80,20 +80,20 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new HttpSettings(model.GetStereotype("Http Settings"));
+            stereotype = new HttpSettings(model.GetStereotype("b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"));
             return true;
         }
 
         public static OpenAPISettings GetOpenAPISettings(this CommandModel model)
         {
-            var stereotype = model.GetStereotype("OpenAPI Settings");
+            var stereotype = model.GetStereotype("b6197544-7e0e-4900-a6e2-9747fb7e4ac4");
             return stereotype != null ? new OpenAPISettings(stereotype) : null;
         }
 
 
         public static bool HasOpenAPISettings(this CommandModel model)
         {
-            return model.HasStereotype("OpenAPI Settings");
+            return model.HasStereotype("b6197544-7e0e-4900-a6e2-9747fb7e4ac4");
         }
 
         public static bool TryGetOpenAPISettings(this CommandModel model, out OpenAPISettings stereotype)
@@ -104,20 +104,20 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new OpenAPISettings(model.GetStereotype("OpenAPI Settings"));
+            stereotype = new OpenAPISettings(model.GetStereotype("b6197544-7e0e-4900-a6e2-9747fb7e4ac4"));
             return true;
         }
 
         public static Secured GetSecured(this CommandModel model)
         {
-            var stereotype = model.GetStereotype("Secured");
+            var stereotype = model.GetStereotype("a9eade71-1d56-4be7-a80c-81046c0c978b");
             return stereotype != null ? new Secured(stereotype) : null;
         }
 
 
         public static bool HasSecured(this CommandModel model)
         {
-            return model.HasStereotype("Secured");
+            return model.HasStereotype("a9eade71-1d56-4be7-a80c-81046c0c978b");
         }
 
         public static bool TryGetSecured(this CommandModel model, out Secured stereotype)
@@ -128,20 +128,20 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new Secured(model.GetStereotype("Secured"));
+            stereotype = new Secured(model.GetStereotype("a9eade71-1d56-4be7-a80c-81046c0c978b"));
             return true;
         }
 
         public static Unsecured GetUnsecured(this CommandModel model)
         {
-            var stereotype = model.GetStereotype("Unsecured");
+            var stereotype = model.GetStereotype("8b65c29e-1448-43ac-a92a-0e0f86efd6c6");
             return stereotype != null ? new Unsecured(stereotype) : null;
         }
 
 
         public static bool HasUnsecured(this CommandModel model)
         {
-            return model.HasStereotype("Unsecured");
+            return model.HasStereotype("8b65c29e-1448-43ac-a92a-0e0f86efd6c6");
         }
 
         public static bool TryGetUnsecured(this CommandModel model, out Unsecured stereotype)
@@ -152,7 +152,7 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new Unsecured(model.GetStereotype("Unsecured"));
+            stereotype = new Unsecured(model.GetStereotype("8b65c29e-1448-43ac-a92a-0e0f86efd6c6"));
             return true;
         }
 

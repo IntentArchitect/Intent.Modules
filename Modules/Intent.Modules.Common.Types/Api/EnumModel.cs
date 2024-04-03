@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.Common.Types.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class EnumModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasFolder<IFolder>, IHasName
+    public class EnumModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasFolder<IFolder>, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Enum";
         public const string SpecializationTypeId = "85fba0e9-9161-4c85-a603-a229ef312beb";

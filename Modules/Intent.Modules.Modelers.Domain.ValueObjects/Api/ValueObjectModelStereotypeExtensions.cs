@@ -14,14 +14,14 @@ namespace Intent.Modelers.Domain.ValueObjects.Api
     {
         public static SerializationSettings GetSerializationSettings(this ValueObjectModel model)
         {
-            var stereotype = model.GetStereotype("Serialization Settings");
+            var stereotype = model.GetStereotype("4ced3df6-2827-461d-bf1b-6512f521f2c6");
             return stereotype != null ? new SerializationSettings(stereotype) : null;
         }
 
 
         public static bool HasSerializationSettings(this ValueObjectModel model)
         {
-            return model.HasStereotype("Serialization Settings");
+            return model.HasStereotype("4ced3df6-2827-461d-bf1b-6512f521f2c6");
         }
 
         public static bool TryGetSerializationSettings(this ValueObjectModel model, out SerializationSettings stereotype)
@@ -32,7 +32,7 @@ namespace Intent.Modelers.Domain.ValueObjects.Api
                 return false;
             }
 
-            stereotype = new SerializationSettings(model.GetStereotype("Serialization Settings"));
+            stereotype = new SerializationSettings(model.GetStereotype("4ced3df6-2827-461d-bf1b-6512f521f2c6"));
             return true;
         }
 

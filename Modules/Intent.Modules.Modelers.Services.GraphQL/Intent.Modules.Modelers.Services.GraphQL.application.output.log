@@ -3,7 +3,7 @@
   <ApplicationId>ff9288ff-0806-4d3d-9084-5c5ab8eebcaa</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#be66850b-7cb9-4b15-bcfd-3f3d4e23a3db</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#be66850b-7cb9-4b15-bcfd-3f3d4e23a3db</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -134,14 +134,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/GraphQL Types.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>GraphQL Types.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>7f93839b-96d1-493a-8ed8-d30b3f05a35e</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

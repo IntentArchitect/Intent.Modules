@@ -1,4 +1,8 @@
-﻿### Version 3.8.0
+﻿### Version 3.9.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 6.
+
+### Version 3.8.0
 
 - Improvement: `Data Contract` elements no longer use the `Base Type` (since its a  Type Reference) for doing inheritance but now it has its own `Generalization` association.
 

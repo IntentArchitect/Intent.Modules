@@ -1,3 +1,7 @@
+### Version 3.4.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
 ### Version 3.3.7
 
 - Now sets `DOTNET_CLI_UI_LANGUAGE` environment variable to `en` for `dotnet build` to ensure it is using the English UI language so that fallback strategy of looking for `Time Elapsed` in the output still works.

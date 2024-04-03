@@ -2702,6 +2702,7 @@ configureUpload(element);
 </script>
         </option>
       </scriptOptions>
+      <mappingOptions />
       <typeOrder />
       <mappingSettings />
       <macros>
@@ -4569,6 +4570,7 @@ configureDownload(element);
 </script>
         </option>
       </scriptOptions>
+      <mappingOptions />
       <typeOrder />
       <mappingSettings />
       <macros>

@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>3.5.3</Version>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>3.6.0-pre.0</Version>
     <Authors>Intent Architect</Authors>
     <Product>Intent - Modules Common</Product>
     <Description>Base classes and helpers for building your own modules for Intent Architect.</Description>

@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.GraphQL.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class GraphQLParameterModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class GraphQLParameterModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "GraphQL Parameter";
         public const string SpecializationTypeId = "22565fd3-564a-4406-a502-81d2b6b0691f";

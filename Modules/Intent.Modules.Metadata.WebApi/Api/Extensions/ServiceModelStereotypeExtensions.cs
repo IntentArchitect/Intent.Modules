@@ -15,14 +15,14 @@ namespace Intent.Metadata.WebApi.Api
     {
         public static ApiVersionSettings GetApiVersionSettings(this ServiceModel model)
         {
-            var stereotype = model.GetStereotype("Api Version Settings");
+            var stereotype = model.GetStereotype("20855f03-c663-4ec6-b106-de06be98f1fe");
             return stereotype != null ? new ApiVersionSettings(stereotype) : null;
         }
 
 
         public static bool HasApiVersionSettings(this ServiceModel model)
         {
-            return model.HasStereotype("Api Version Settings");
+            return model.HasStereotype("20855f03-c663-4ec6-b106-de06be98f1fe");
         }
 
         public static bool TryGetApiVersionSettings(this ServiceModel model, out ApiVersionSettings stereotype)
@@ -33,18 +33,18 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new ApiVersionSettings(model.GetStereotype("Api Version Settings"));
+            stereotype = new ApiVersionSettings(model.GetStereotype("20855f03-c663-4ec6-b106-de06be98f1fe"));
             return true;
         }
         public static HttpServiceSettings GetHttpServiceSettings(this ServiceModel model)
         {
-            var stereotype = model.GetStereotype("Http Service Settings");
+            var stereotype = model.GetStereotype("c29224ec-d473-4b95-ad4a-ec55c676c4fd");
             return stereotype != null ? new HttpServiceSettings(stereotype) : null;
         }
 
         public static bool HasHttpServiceSettings(this ServiceModel model)
         {
-            return model.HasStereotype("Http Service Settings");
+            return model.HasStereotype("c29224ec-d473-4b95-ad4a-ec55c676c4fd");
         }
 
         public static bool TryGetHttpServiceSettings(this ServiceModel model, out HttpServiceSettings stereotype)
@@ -55,19 +55,19 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new HttpServiceSettings(model.GetStereotype("Http Service Settings"));
+            stereotype = new HttpServiceSettings(model.GetStereotype("c29224ec-d473-4b95-ad4a-ec55c676c4fd"));
             return true;
         }
 
         public static Secured GetSecured(this ServiceModel model)
         {
-            var stereotype = model.GetStereotype("Secured");
+            var stereotype = model.GetStereotype("a9eade71-1d56-4be7-a80c-81046c0c978b");
             return stereotype != null ? new Secured(stereotype) : null;
         }
 
         public static bool HasSecured(this ServiceModel model)
         {
-            return model.HasStereotype("Secured");
+            return model.HasStereotype("a9eade71-1d56-4be7-a80c-81046c0c978b");
         }
 
         public static bool TryGetSecured(this ServiceModel model, out Secured stereotype)
@@ -78,19 +78,19 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new Secured(model.GetStereotype("Secured"));
+            stereotype = new Secured(model.GetStereotype("a9eade71-1d56-4be7-a80c-81046c0c978b"));
             return true;
         }
 
         public static Unsecured GetUnsecured(this ServiceModel model)
         {
-            var stereotype = model.GetStereotype("Unsecured");
+            var stereotype = model.GetStereotype("8b65c29e-1448-43ac-a92a-0e0f86efd6c6");
             return stereotype != null ? new Unsecured(stereotype) : null;
         }
 
         public static bool HasUnsecured(this ServiceModel model)
         {
-            return model.HasStereotype("Unsecured");
+            return model.HasStereotype("8b65c29e-1448-43ac-a92a-0e0f86efd6c6");
         }
 
         public static bool TryGetUnsecured(this ServiceModel model, out Unsecured stereotype)
@@ -101,7 +101,7 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new Unsecured(model.GetStereotype("Unsecured"));
+            stereotype = new Unsecured(model.GetStereotype("8b65c29e-1448-43ac-a92a-0e0f86efd6c6"));
             return true;
         }
 

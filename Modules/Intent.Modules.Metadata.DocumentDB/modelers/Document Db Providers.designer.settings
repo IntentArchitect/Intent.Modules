@@ -29,6 +29,7 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -58,6 +59,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type>Document Db Provider</type>
       </typeOrder>

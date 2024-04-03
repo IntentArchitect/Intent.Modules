@@ -27,6 +27,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpStringInterpolatio
 
         public override string TemplateId => CSharpStringInterpolationTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, CSharpTemplateModel model)
         {
             return new CSharpStringInterpolationTemplate(outputTarget, model);

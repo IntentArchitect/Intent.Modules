@@ -1,3 +1,7 @@
+### Version 3.7.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 6.
+
 ### Version 3.6.1
 
 - Improvement: Removed support for implicit keys, allowing keyless entities to now be modelled.

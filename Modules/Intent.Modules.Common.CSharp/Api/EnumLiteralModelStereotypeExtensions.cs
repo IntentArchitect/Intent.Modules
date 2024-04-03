@@ -15,14 +15,14 @@ namespace Intent.Modules.Common.CSharp.Api
     {
         public static Description GetDescription(this EnumLiteralModel model)
         {
-            var stereotype = model.GetStereotype("Description");
+            var stereotype = model.GetStereotype("6d95bcb3-896e-49b2-89e4-82cf71141777");
             return stereotype != null ? new Description(stereotype) : null;
         }
 
 
         public static bool HasDescription(this EnumLiteralModel model)
         {
-            return model.HasStereotype("Description");
+            return model.HasStereotype("6d95bcb3-896e-49b2-89e4-82cf71141777");
         }
 
         public static bool TryGetDescription(this EnumLiteralModel model, out Description stereotype)
@@ -33,7 +33,7 @@ namespace Intent.Modules.Common.CSharp.Api
                 return false;
             }
 
-            stereotype = new Description(model.GetStereotype("Description"));
+            stereotype = new Description(model.GetStereotype("6d95bcb3-896e-49b2-89e4-82cf71141777"));
             return true;
         }
 

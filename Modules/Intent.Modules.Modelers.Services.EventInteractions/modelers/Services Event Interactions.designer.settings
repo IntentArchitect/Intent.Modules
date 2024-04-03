@@ -818,7 +818,10 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
         </typeReferenceExtension>
       </sourceEndExtension>
       <targetEndExtension>
-        <typeOrder />
+        <typeOrder>
+          <type>Publish Integration Event Target End</type>
+          <type>Send Integration Command Target End</type>
+        </typeOrder>
         <creationOptions>
           <option type="association">
             <text>Publish Integration Event</text>
@@ -988,6 +991,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
             <target id="7829c6b8-a045-4a3e-b9c2-13795f128879" name="Field" />
             <target id="e369f4ec-cd31-415c-b5f3-6a5247462615" name="Service Parameter" />
           </targets>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
       </mappingTypes>
@@ -1273,6 +1277,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0) {
             <target id="972c5a10-0416-4760-9f84-de002d4ef2a7" name="Eventing DTO Field" />
             <target id="3c2d6e4f-8701-41be-bde4-c9f566c10708" name="Property" />
           </targets>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
       </mappingTypes>

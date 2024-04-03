@@ -1,3 +1,7 @@
+### Version 1.2.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 6.
+
 ### Version 1.1.10
 
 - Improvement: Added the `Key Creation Mode` option to allow more control over how keys are managed in the designer.

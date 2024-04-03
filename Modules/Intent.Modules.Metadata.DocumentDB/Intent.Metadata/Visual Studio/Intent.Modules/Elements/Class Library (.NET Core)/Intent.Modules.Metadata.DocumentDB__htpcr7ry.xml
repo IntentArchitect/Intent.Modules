@@ -59,22 +59,6 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="59d229b3-85b1-4ade-b461-43150338f2cc" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.ReadMe</name>
-      <display>Intent.ModuleBuilder.ReadMe</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>3e1907e5-d07b-4803-9c2c-7c8904d02f00</parentFolderId>
-      <packageId>4aa97e11-44cf-4f3c-a11d-4d4cbe14a09d</packageId>
-      <packageName>Intent.Modules</packageName>
-      <stereotypes />
-      <metadata>
-        <entry key="status" value="assigned" />
-      </metadata>
-      <childElements />
-    </childElement>
     <childElement id="31a06c33-7ae6-445b-ae91-a4e4d14bb4b0" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</name>
       <display>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</display>
@@ -110,6 +94,22 @@
     <childElement id="1fd88913-015c-45e8-98cb-c0b1e75675ee" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</name>
       <display>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3e1907e5-d07b-4803-9c2c-7c8904d02f00</parentFolderId>
+      <packageId>4aa97e11-44cf-4f3c-a11d-4d4cbe14a09d</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="d8dee977-f9d0-4e1f-9822-cc33e3d9a905" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.ReleaseNotes</name>
+      <display>Intent.ModuleBuilder.Templates.ReleaseNotes</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
@@ -207,20 +207,6 @@
       <packageName>Intent.Modules</packageName>
       <stereotypes />
       <metadata />
-      <childElements />
-    </childElement>
-    <childElement id="d8dee977-f9d0-4e1f-9822-cc33e3d9a905" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.Templates.ReleaseNotes</name>
-      <display>Intent.ModuleBuilder.Templates.ReleaseNotes</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>3e1907e5-d07b-4803-9c2c-7c8904d02f00</parentFolderId>
-      <stereotypes />
-      <metadata>
-        <entry key="status" value="assigned" />
-      </metadata>
       <childElements />
     </childElement>
   </childElements>

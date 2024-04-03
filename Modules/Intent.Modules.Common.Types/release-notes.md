@@ -1,3 +1,7 @@
+### Version 3.4.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 6.
+
 ### Version 3.3.9
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.

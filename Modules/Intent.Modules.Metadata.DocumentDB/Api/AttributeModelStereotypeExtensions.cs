@@ -15,14 +15,14 @@ namespace Intent.Metadata.DocumentDB.Api
     {
         public static ForeignKey GetForeignKey(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype("Foreign Key");
+            var stereotype = model.GetStereotype("ced3e970-e900-4f99-bd04-b993228fe17d");
             return stereotype != null ? new ForeignKey(stereotype) : null;
         }
 
 
         public static bool HasForeignKey(this AttributeModel model)
         {
-            return model.HasStereotype("Foreign Key");
+            return model.HasStereotype("ced3e970-e900-4f99-bd04-b993228fe17d");
         }
 
         public static bool TryGetForeignKey(this AttributeModel model, out ForeignKey stereotype)
@@ -33,20 +33,20 @@ namespace Intent.Metadata.DocumentDB.Api
                 return false;
             }
 
-            stereotype = new ForeignKey(model.GetStereotype("Foreign Key"));
+            stereotype = new ForeignKey(model.GetStereotype("ced3e970-e900-4f99-bd04-b993228fe17d"));
             return true;
         }
 
         public static PrimaryKey GetPrimaryKey(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype("Primary Key");
+            var stereotype = model.GetStereotype("64f6a994-4909-4a9d-a0a9-afc5adf2ef74");
             return stereotype != null ? new PrimaryKey(stereotype) : null;
         }
 
 
         public static bool HasPrimaryKey(this AttributeModel model)
         {
-            return model.HasStereotype("Primary Key");
+            return model.HasStereotype("64f6a994-4909-4a9d-a0a9-afc5adf2ef74");
         }
 
         public static bool TryGetPrimaryKey(this AttributeModel model, out PrimaryKey stereotype)
@@ -57,7 +57,7 @@ namespace Intent.Metadata.DocumentDB.Api
                 return false;
             }
 
-            stereotype = new PrimaryKey(model.GetStereotype("Primary Key"));
+            stereotype = new PrimaryKey(model.GetStereotype("64f6a994-4909-4a9d-a0a9-afc5adf2ef74"));
             return true;
         }
 

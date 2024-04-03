@@ -33,6 +33,15 @@
         <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="96a4fa17-6283-4626-835e-a8f013d98b19" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="838dcc53-b73e-4381-a3d2-db0afaf230b2" display="Anchor Points" isActive="true" />
+        <property name="43c4e468-1139-42b3-a064-fb49f679b72b" display="Auto-Resize Default" value="true" isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements>

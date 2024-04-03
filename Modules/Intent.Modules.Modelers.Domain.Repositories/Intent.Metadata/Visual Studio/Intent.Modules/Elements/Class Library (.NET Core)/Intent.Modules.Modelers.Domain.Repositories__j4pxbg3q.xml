@@ -17,7 +17,7 @@
       <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
       <properties>
         <property name="4756bd10-23e2-473b-9957-d7083759cd42" display="Target Multiple Frameworks" value="false" isActive="true" />
-        <property name="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40" display="Target Framework" value="d603dbfd-3361-4406-b5c0-efc2ac6f33fc" isActive="true" />
+        <property name="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40" display="Target Framework" value="16d99e3e-7b91-42f8-ae3b-2686edde94b7" isActive="true" />
         <property name="5215b600-32fc-4a6d-af72-9eb88a6f30e7" display="Target Frameworks" value="" isActive="false" />
         <property name="7bfda3d8-b249-488e-b7d4-315d5f2b25f4" display="Runtime Identifiers" isActive="true" />
         <property name="bb694bf2-6758-492d-ae65-5a8626704786" display="Configurations" isActive="true" />
@@ -44,22 +44,6 @@
     <childElement id="1b88fef0-532f-432a-b863-10f6df06d557" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.IModSpecFile</name>
       <display>Intent.ModuleBuilder.IModSpecFile</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>4608b4e9-66a1-47ce-beea-2c155b3e43cc</parentFolderId>
-      <packageId>cf3d9c28-eb69-45fa-9dd4-32bf40f0f9f9</packageId>
-      <packageName>Intent.Modules</packageName>
-      <stereotypes />
-      <metadata>
-        <entry key="status" value="assigned" />
-      </metadata>
-      <childElements />
-    </childElement>
-    <childElement id="d85da40f-b1b6-49fd-84ff-54b76ab05347" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.ReadMe</name>
-      <display>Intent.ModuleBuilder.ReadMe</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
@@ -205,6 +189,20 @@
       <packageName>Intent.Modules</packageName>
       <stereotypes />
       <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="0ebc8c17-597c-4520-97e1-971373639b27" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.ReleaseNotes</name>
+      <display>Intent.ModuleBuilder.Templates.ReleaseNotes</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>4608b4e9-66a1-47ce-beea-2c155b3e43cc</parentFolderId>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
       <childElements />
     </childElement>
   </childElements>

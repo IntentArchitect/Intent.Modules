@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.Common.Types.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class EnumLiteralModel : IHasStereotypes, IMetadataModel, IHasName
+    public class EnumLiteralModel : IHasStereotypes, IMetadataModel, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Enum-Literal";
         public const string SpecializationTypeId = "4215f417-25d2-4509-9309-5076a1452eaa";

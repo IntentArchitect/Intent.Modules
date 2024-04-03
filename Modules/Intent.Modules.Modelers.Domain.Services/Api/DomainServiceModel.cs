@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Services.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DomainServiceModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class DomainServiceModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
     {
         public const string SpecializationType = "Domain Service";
         public const string SpecializationTypeId = "07f936ea-3756-48c8-babd-24ac7271daac";

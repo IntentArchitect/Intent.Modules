@@ -39,7 +39,7 @@
       <childElements>
         <childElement id="e83dbe2f-9d73-48d7-8a3e-47e995adf6db" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Object ID</name>
-          <display>Object ID = object-id</display>
+          <display>Object ID</display>
           <isAbstract>false</isAbstract>
           <value>object-id</value>
           <genericTypes />
@@ -53,7 +53,7 @@
         </childElement>
         <childElement id="85102d2a-039b-4c41-944a-97cfde7f332f" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>GUID</name>
-          <display>GUID = guid</display>
+          <display>GUID</display>
           <isAbstract>false</isAbstract>
           <value>guid</value>
           <genericTypes />
@@ -94,7 +94,7 @@
       <childElements>
         <childElement id="75029071-205f-4105-b824-b178a07c2de3" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>All</name>
-          <display>All = all</display>
+          <display>All</display>
           <isAbstract>false</isAbstract>
           <value>all</value>
           <genericTypes />
@@ -108,7 +108,7 @@
         </childElement>
         <childElement id="711e88e6-da78-40e1-9727-2aff9cb329af" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Only on Documents</name>
-          <display>Only on Documents = only-on-documents</display>
+          <display>Only on Documents</display>
           <isAbstract>false</isAbstract>
           <value>only-on-documents</value>
           <genericTypes />

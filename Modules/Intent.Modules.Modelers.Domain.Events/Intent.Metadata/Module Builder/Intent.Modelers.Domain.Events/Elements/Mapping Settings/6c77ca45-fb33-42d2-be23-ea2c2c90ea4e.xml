@@ -9,7 +9,16 @@
   <parentFolderId>79480502-761f-4883-a4f3-3b03654db367</parentFolderId>
   <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
   <packageName>Intent.Modelers.Domain.Events</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="cb5032a1-f531-40ee-8fe5-824ed8b89946" name="Mapping Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="dda7b2ec-461b-41e1-a0f3-a23268053ef4" display="Is Required Function" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <metadata />
   <childElements>
     <childElement id="4a87dbd6-ae24-4bda-b096-dbe5c008bbb1" type="Source Mappable Elements" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
@@ -56,7 +65,7 @@
           <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
           <packageName>Intent.Modelers.Domain.Events</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -98,7 +107,7 @@
               <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
               <packageName>Intent.Modelers.Domain.Events</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -144,7 +153,7 @@
           <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
           <packageName>Intent.Modelers.Domain.Events</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -186,7 +195,7 @@
               <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
               <packageName>Intent.Modelers.Domain.Events</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -229,7 +238,7 @@
               <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
               <packageName>Intent.Modelers.Domain.Events</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -272,7 +281,7 @@
               <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
               <packageName>Intent.Modelers.Domain.Events</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -317,7 +326,7 @@
           <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
           <packageName>Intent.Modelers.Domain.Events</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -360,7 +369,7 @@
           <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
           <packageName>Intent.Modelers.Domain.Events</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -428,7 +437,7 @@
           <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
           <packageName>Intent.Modelers.Domain.Events</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -470,7 +479,7 @@
               <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
               <packageName>Intent.Modelers.Domain.Events</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -513,7 +522,7 @@
               <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
               <packageName>Intent.Modelers.Domain.Events</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -557,7 +566,7 @@
               <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
               <packageName>Intent.Modelers.Domain.Events</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -599,7 +608,7 @@
                   <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
                   <packageName>Intent.Modelers.Domain.Events</packageName>
                   <stereotypes>
-                    <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                    <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                       <addedByDefault>true</addedByDefault>
                       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -645,7 +654,7 @@
               <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
               <packageName>Intent.Modelers.Domain.Events</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -687,7 +696,7 @@
                   <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
                   <packageName>Intent.Modelers.Domain.Events</packageName>
                   <stereotypes>
-                    <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                    <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                       <addedByDefault>true</addedByDefault>
                       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -734,7 +743,7 @@
           <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
           <packageName>Intent.Modelers.Domain.Events</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -777,7 +786,7 @@
           <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
           <packageName>Intent.Modelers.Domain.Events</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -816,8 +825,14 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;f7905d89-1299-479e-a74d-1f23183c5dfd&quot;,&quot;23424a09-1428-426d-bc66-3cf2bf30f896&quot;,&quot;94b0ac33-1aa8-44ba-a1fe-578a051e4a77&quot;,&quot;6a855c61-ef23-40e9-9ace-cd8cf1ce02aa&quot;]" isActive="true" />
-            <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Targets" value="[&quot;28f06c17-9ba1-4762-b9f1-9444546eff15&quot;,&quot;badf62a0-857f-476c-a192-37ed8f4426a8&quot;,&quot;d5d596fb-1deb-4254-b9ea-7e15ca690729&quot;,&quot;84e1b554-e4fe-4eae-8743-3e82e511de7c&quot;]" isActive="true" />
+            <property name="ce2db9f3-0c9d-4f01-832f-6f7f3801834c" display="Sources" value="Specific Types" isActive="true" />
+            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Source Types" value="[&quot;f7905d89-1299-479e-a74d-1f23183c5dfd&quot;,&quot;23424a09-1428-426d-bc66-3cf2bf30f896&quot;,&quot;94b0ac33-1aa8-44ba-a1fe-578a051e4a77&quot;,&quot;6a855c61-ef23-40e9-9ace-cd8cf1ce02aa&quot;]" isActive="true" />
+            <property name="7149c438-f5de-432e-8cd7-356d691aee9e" display="Source Types Filter" isActive="true" />
+            <property name="8c6140d1-311a-4233-b4c9-6ee41f15a606" display="Source Arrow Type" value="None" isActive="true" />
+            <property name="68504875-ebf6-47d6-ac36-c506431cf57c" display="Targets" value="Specific Types" isActive="true" />
+            <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Target Types" value="[&quot;28f06c17-9ba1-4762-b9f1-9444546eff15&quot;,&quot;badf62a0-857f-476c-a192-37ed8f4426a8&quot;,&quot;d5d596fb-1deb-4254-b9ea-7e15ca690729&quot;,&quot;84e1b554-e4fe-4eae-8743-3e82e511de7c&quot;]" isActive="true" />
+            <property name="ff744541-57a1-4975-a312-b47035a158a3" display="Target Types Filter" isActive="true" />
+            <property name="ba0f1099-248b-4bf1-ac12-adb78d44ff03" display="Target Arrow Type" value="Solid Arrow" isActive="true" />
             <property name="6ee5b3e3-628e-4996-87b5-08649e101887" display="Represents" value="Data" isActive="true" />
             <property name="ace10cc2-ece7-458a-bafb-2fc185f99335" display="Line Color" isActive="true" />
             <property name="715395d8-db84-459f-bf9e-f910e2aff883" display="Line Dash Array" isActive="true" />
@@ -843,8 +858,14 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Sources" value="[&quot;93d177aa-ae15-4dd5-bac1-97aadff81ad8&quot;]" isActive="true" />
-            <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Targets" value="[&quot;abc9b77a-1d7c-4839-9ff4-f3f946f82547&quot;,&quot;f5cf331e-3e2a-42a1-942a-7dc4c198d4f9&quot;]" isActive="true" />
+            <property name="ce2db9f3-0c9d-4f01-832f-6f7f3801834c" display="Sources" value="Specific Types" isActive="true" />
+            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Source Types" value="[&quot;93d177aa-ae15-4dd5-bac1-97aadff81ad8&quot;]" isActive="true" />
+            <property name="7149c438-f5de-432e-8cd7-356d691aee9e" display="Source Types Filter" isActive="true" />
+            <property name="8c6140d1-311a-4233-b4c9-6ee41f15a606" display="Source Arrow Type" value="None" isActive="true" />
+            <property name="68504875-ebf6-47d6-ac36-c506431cf57c" display="Targets" value="Specific Types" isActive="true" />
+            <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Target Types" value="[&quot;abc9b77a-1d7c-4839-9ff4-f3f946f82547&quot;,&quot;f5cf331e-3e2a-42a1-942a-7dc4c198d4f9&quot;]" isActive="true" />
+            <property name="ff744541-57a1-4975-a312-b47035a158a3" display="Target Types Filter" isActive="true" />
+            <property name="ba0f1099-248b-4bf1-ac12-adb78d44ff03" display="Target Arrow Type" value="Solid Arrow" isActive="true" />
             <property name="6ee5b3e3-628e-4996-87b5-08649e101887" display="Represents" value="Invokable" isActive="true" />
             <property name="ace10cc2-ece7-458a-bafb-2fc185f99335" display="Line Color" isActive="true" />
             <property name="715395d8-db84-459f-bf9e-f910e2aff883" display="Line Dash Array" isActive="true" />

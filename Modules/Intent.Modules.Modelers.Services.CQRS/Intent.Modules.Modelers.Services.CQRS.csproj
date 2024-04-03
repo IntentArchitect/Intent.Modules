@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>4.1.2</Version>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>4.2.0-pre.0</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent Architect</Product>
@@ -18,14 +18,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.5.0" />
-    <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.9" />
-    <PackageReference Include="Intent.Modules.Modelers.Services" Version="3.5.0" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.6.0-pre.0" />
+    <PackageReference Include="Intent.Modules.Common.Types" Version="3.4.0-pre.0" />
+    <PackageReference Include="Intent.Modules.Modelers.Services" Version="3.7.0-pre.0" />
     <PackageReference Include="Intent.Packager" Version="3.4.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.1" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.4" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.5.0" />
   </ItemGroup>
 

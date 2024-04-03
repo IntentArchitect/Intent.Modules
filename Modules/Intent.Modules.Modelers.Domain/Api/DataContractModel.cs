@@ -52,7 +52,7 @@ namespace Intent.Modelers.Domain.Api
 
         [IntentManaged(Mode.Ignore)]
         public DataContractModel BaseDataContract => this.Generalizations().Select(x => new DataContractModel((IElement)x.Element)).SingleOrDefault();
-        
+
         public IElement InternalElement => _element;
 
         public IList<AttributeModel> Attributes => _element.ChildElements

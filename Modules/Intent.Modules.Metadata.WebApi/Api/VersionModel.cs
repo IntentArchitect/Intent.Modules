@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Metadata.WebApi.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class VersionModel : IMetadataModel, IHasStereotypes, IHasName
+    public class VersionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Version";
         public const string SpecializationTypeId = "95f4362b-8193-41cb-bd65-c17d6be3f96b";

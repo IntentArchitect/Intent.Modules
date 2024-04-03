@@ -612,6 +612,7 @@ configureUpload(element);
 </script>
         </option>
       </scriptOptions>
+      <mappingOptions />
       <typeOrder />
       <mappingSettings />
       <macros>
@@ -730,6 +731,7 @@ exposeAsHttpEndPoint(element);
 </script>
         </option>
       </scriptOptions>
+      <mappingOptions />
       <typeOrder />
       <mappingSettings />
       <macros>

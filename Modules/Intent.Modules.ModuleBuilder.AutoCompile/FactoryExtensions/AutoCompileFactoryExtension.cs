@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Intent.Engine;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;

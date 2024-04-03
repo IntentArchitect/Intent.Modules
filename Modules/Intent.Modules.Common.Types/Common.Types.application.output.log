@@ -3,7 +3,7 @@
   <ApplicationId>ff3070c6-4626-4a8b-85ab-7d56887a1445</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#eae2d6bc-9572-4814-8feb-43953ea41f6a</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#eae2d6bc-9572-4814-8feb-43953ea41f6a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -54,12 +54,12 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Common.Types.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Common.Types.imodspec</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#8cc9168a-63e5-4b42-8c7e-fb8e12875801</CorrelationId>
-      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Common.Types.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Types.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
