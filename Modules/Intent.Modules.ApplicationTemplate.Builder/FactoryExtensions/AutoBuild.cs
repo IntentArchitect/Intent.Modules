@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpecFile;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Plugins.FactoryExtensions;

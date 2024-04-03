@@ -10,20 +10,20 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
-    public static class ModuleModelStereotypeExtensions
+    public static class ComponentModuleModelStereotypeExtensions
     {
-        public static ModuleSettings GetModuleSettings(this ModuleModel model)
+        public static ModuleSettings GetModuleSettings(this ComponentModuleModel model)
         {
             var stereotype = model.GetStereotype("7033e6f4-2a22-4357-bd65-f0ec06c516d5");
             return stereotype != null ? new ModuleSettings(stereotype) : null;
         }
 
-        public static bool HasModuleSettings(this ModuleModel model)
+        public static bool HasModuleSettings(this ComponentModuleModel model)
         {
             return model.HasStereotype("7033e6f4-2a22-4357-bd65-f0ec06c516d5");
         }
 
-        public static bool TryGetModuleSettings(this ModuleModel model, out ModuleSettings stereotype)
+        public static bool TryGetModuleSettings(this ComponentModuleModel model, out ModuleSettings stereotype)
         {
             if (!HasModuleSettings(model))
             {

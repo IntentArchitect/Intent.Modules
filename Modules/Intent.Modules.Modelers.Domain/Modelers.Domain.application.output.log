@@ -58,6 +58,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#4199ae15-0ecc-4086-82f3-bfa885c9d3e8</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DataContractGeneralizationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DataContractGeneralizationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4464fabe-c59e-4d90-81fc-c9245bdd1afd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DataContractModel.cs</ApplicationRelativeFilePath>
@@ -94,6 +102,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/CommentAssociationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>CommentAssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5313bf46-dda7-4531-860a-3ce63561db80</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#4199ae15-0ecc-4086-82f3-bfa885c9d3e8</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/DataContractGeneralizationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DataContractGeneralizationModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

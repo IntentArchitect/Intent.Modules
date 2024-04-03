@@ -10,6 +10,7 @@ interface ISqlImporterSettings {
     includeTables: string;
     includeViews: string;
     includeStoredProcedures: string;
+    includeIndexes: string;
     settingPersistence: string;
 }
 
@@ -92,6 +93,14 @@ async function  importSqlDatabase(element: MacroApi.Context.IElementApi): Promis
             value: defaults.includeStoredProcedures 
     };
 
+    let includeIndexes: IDynamicFormFieldConfig = {
+        id: "includeIndexes", 
+            fieldType: "checkbox", 
+            label: "Include Indexes",
+            hint: "Export SQL indexes",
+            value: defaults.includeIndexes 
+    };
+
     let settingPersistence: IDynamicFormFieldConfig = {
         id: "settingPersistence", 
             fieldType: "select", 
@@ -111,6 +120,7 @@ async function  importSqlDatabase(element: MacroApi.Context.IElementApi): Promis
                 includeTables, 
                 includeViews, 
                 includeStoredProcedures,
+                includeIndexes, 
                 settingPersistence,
             ]
     }
@@ -126,6 +136,9 @@ async function  importSqlDatabase(element: MacroApi.Context.IElementApi): Promis
     }
     if (inputs.includeStoredProcedures == "true"){
         typesToExport.push("StoredProcedure");
+    }
+    if (inputs.includeIndexes == "true"){
+        typesToExport.push("Index");
     }
 
     const domainDesignerId: string = "6ab29b31-27af-4f56-a67c-986d82097d63";
@@ -146,7 +159,11 @@ async function  importSqlDatabase(element: MacroApi.Context.IElementApi): Promis
     if (result?.errorMessage){
         await dialogService.error(result?.errorMessage);
     } else {
-        await dialogService.info("Import complete.");
+        if (result?.warnings){
+            await dialogService.warn("Import complete.\r\n\r\n" + result?.warnings);
+        }else{
+            await dialogService.info("Import complete.");
+        }
     }
 
 }
@@ -158,11 +175,13 @@ function getDialogDefaults(element: MacroApi.Context.IElementApi) : ISqlImporter
     let includeTables = "true";
     let includeViews = "true";
     let includeStoredProcedures = "true";
+    let includeIndexes = "true";
     if (persistedValue)
     {
         includeTables = "false";
         includeViews = "false";
         includeStoredProcedures = "false";
+        includeIndexes = "false";
         persistedValue.split(";").forEach(i =>{
             switch (i.toLocaleLowerCase()) {
                 case 'table':
@@ -173,6 +192,9 @@ function getDialogDefaults(element: MacroApi.Context.IElementApi) : ISqlImporter
                     break;
                 case 'storedprocedure':
                     includeStoredProcedures = "true";
+                    break;
+                case 'index':
+                    includeIndexes = "true";
                     break;
                 default:
                     break;
@@ -187,6 +209,7 @@ function getDialogDefaults(element: MacroApi.Context.IElementApi) : ISqlImporter
         includeTables: includeTables,
         includeViews: includeViews,
         includeStoredProcedures: includeStoredProcedures,
+        includeIndexes: includeIndexes,
         settingPersistence: getSettingValue(package, "sql-import:settingPersistence", "None"),
         };
     return result;

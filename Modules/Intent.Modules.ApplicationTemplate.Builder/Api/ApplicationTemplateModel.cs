@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -39,6 +40,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             .GetElementsOfType(ComponentGroupModel.SpecializationTypeId)
             .Select(x => new ComponentGroupModel(x))
             .ToList();
+
+        public MinimumDependencyVersionsModel MinimumDependencyVersions => UnderlyingPackage.ChildElements
+            .GetElementsOfType(MinimumDependencyVersionsModel.SpecializationTypeId)
+            .Select(x => new MinimumDependencyVersionsModel(x))
+            .SingleOrDefault();
 
         public IList<ApplicationTemplateSettingsConfigurationModel> SettingsConfigurations => UnderlyingPackage.ChildElements
             .GetElementsOfType(ApplicationTemplateSettingsConfigurationModel.SpecializationTypeId)

@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.CSharp.Mapping;
@@ -92,6 +93,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         {
             return mapping.SourcePath.Take(mapping.SourcePath.Count - 1).ToList();
         }
+
         var toPath = mapping.SourcePath.Take(mapping.SourcePath.IndexOf(
                 mapping.SourcePath.Last(x => childMappings.All(c => c.Mapping.SourcePath.Contains(x)))) + 1) // + 1 (inclusive)
             .ToList();
@@ -104,6 +106,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         {
             return Mapping.TargetPath;
         }
+
         var mapping = GetAllChildren().First(x => x.Mapping != null).Mapping;
         var targetPath = mapping.TargetPath.Take(mapping.TargetPath.IndexOf(mapping.TargetPath.Single(x => x.Element == Model)) + 1).ToList();
         return targetPath;
@@ -120,6 +123,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         {
             _sourceReplacements.Remove(type.Id);
         }
+
         _sourceReplacements.Add(type.Id, replacement);
         //foreach (var child in Children)
         //{
@@ -138,6 +142,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         {
             _targetReplacements.Remove(type.Id);
         }
+
         _targetReplacements.Add(type.Id, replacement);
         //foreach (var child in Children)
         //{
@@ -152,8 +157,11 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     protected string GetSourcePathText()
     {
-        var text = Mapping?.MappingExpression ?? throw new Exception($"Could not resolve source path. Mapping expected on '{Model.DisplayText ?? Model.Name}' [{Model.SpecializationType}]");
+        var text = Mapping?.MappingExpression ??
+                   throw new Exception(
+                       $"Could not resolve source path. Mapping expected on '{Model.DisplayText ?? Model.Name}' [{Model.SpecializationType}]. Check that you have a MappingTypeResolver that addresses this scenario.");
         text = ParseAndReplaceExpression(text, path => GetSourcePathText(Mapping.GetSource(path).Path));
+
         return text;
     }
 
@@ -221,14 +229,24 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
                 result = result != null ? new CSharpAccessMemberStatement(result, member) : member;
                 var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
-                if (previousMappingPath?.Element.TypeReference?.IsNullable == true && result is CSharpAccessMemberStatement accessMember)
+                if (IsTransitional(previousMappingPath, mappingPathTarget))
                 {
-                    accessMember.IsConditional();
+                    if (previousMappingPath?.Element.TypeReference?.IsNullable == true && result is CSharpAccessMemberStatement accessMember)
+                    {
+                        accessMember.IsConditional();
+                    }
                 }
             }
         }
+
         return result;
     }
+
+    private bool IsTransitional(IElementMappingPathTarget previousMappingPath, IElementMappingPathTarget mappingPathTarget)
+    {
+        if (previousMappingPath == null) return false;
+        return !((IElement)previousMappingPath?.Element).ChildElements.Contains((IElement)mappingPathTarget?.Element);
+	}
 
     protected string GetTargetPathText()
     {
@@ -271,6 +289,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 //}
             }
         }
+
         return result;
     }
 
@@ -285,16 +304,21 @@ public abstract class CSharpMappingBase : ICSharpMapping
         }
 
         CSharpMetadataBase csharpElement = default;
-        // try find with type and then type's parent:
-        if (Template.GetTypeInfo(mappingPath.First().Element.AsTypeReference())?.Template is ICSharpFileBuilderTemplate foundTypeTemplate)
+
+        var mappingElement = (IElement)mappingPath.First().Element;
+
+        if (TryFindTemplate(mappingElement, out ICSharpFileBuilderTemplate foundTypeTemplate))
         {
             csharpElement = foundTypeTemplate.CSharpFile;
         }
-        else if (Template.GetTypeInfo(((IElement)mappingPath.First().Element).ParentElement.AsTypeReference())?.Template is ICSharpFileBuilderTemplate foundParentTypeTemplate)
+        else if (TryFindTemplate(mappingElement.ParentElement, out ICSharpFileBuilderTemplate foundParentTypeTemplate) &&
+                 HasFoundMappingElement(mappingElement, out reference, foundParentTypeTemplate))
         {
-            if (foundParentTypeTemplate.CSharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(mappingPath.First().Element, out reference) == true
-                || foundParentTypeTemplate.CSharpFile.Interfaces.FirstOrDefault()?.TryGetReferenceForModel(mappingPath.First().Element, out reference) == true)
-                csharpElement = reference as CSharpMetadataBase;
+            csharpElement = reference as CSharpMetadataBase;
+        }
+        else if (TryFindTemplateForMappingElement((IElement)mappingElement.ParentElement?.TypeReference.Element, mappingElement, out reference))
+        {
+            csharpElement = reference as CSharpMetadataBase;
         }
 
         if (csharpElement != null)
@@ -306,15 +330,19 @@ public abstract class CSharpMappingBase : ICSharpMapping
                     csharpElement = reference as CSharpMetadataBase;
                     continue;
                 }
+
                 if (mappingPath.IndexOf(pathTarget) > 0)
                 {
-                    var foundSubTypeTemplate = Template.GetTypeInfo(mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.TypeReference.Element.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
+                    var foundSubTypeTemplate =
+                        Template.GetTypeInfo(mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.TypeReference.Element.AsTypeReference())?.Template as
+                            ICSharpFileBuilderTemplate;
                     if (foundSubTypeTemplate?.CSharpFile.Classes.First().TryGetReferenceForModel(pathTarget.Id, out reference) == true)
                     {
                         csharpElement = reference as CSharpMetadataBase;
                         continue;
                     }
                 }
+
                 csharpElement = null;
                 break;
             }
@@ -326,6 +354,69 @@ public abstract class CSharpMappingBase : ICSharpMapping
             }
         }
 
+        return false;
+    }
+
+    private bool TryFindTemplateForMappingElement(IElement mappedBaseElement, IElement mappedMemberElement, out IHasCSharpName reference)
+    {
+        if (mappedBaseElement is null || mappedMemberElement is null)
+        {
+            reference = null;
+            return false;
+        }
+
+        var templateInstances = Template.ExecutionContext.OutputTargets
+            .SelectMany(s => s.TemplateInstances)
+            .Where(ti => ti.TryGetModel<IMetadataModel>(out var curModel) && curModel.Id == mappedBaseElement.Id && ti is ICSharpFileBuilderTemplate)
+            .Cast<ICSharpFileBuilderTemplate>();
+
+        foreach (var templateInstance in templateInstances)
+        {
+            if (HasFoundMappingElement(mappedBaseElement, out reference, templateInstance) && HasMember(templateInstance, mappedMemberElement))
+            {
+                return true;
+            }
+        }
+        
+        reference = null;
+        return false;
+    }
+
+    private bool HasMember(ICSharpFileBuilderTemplate templateInstance, IElement memberElement)
+    {
+        return templateInstance.CSharpFile.TypeDeclarations.SelectMany(s => s.Methods).Cast<ICSharpCodeContext>()
+            .Concat(templateInstance.CSharpFile.TypeDeclarations.SelectMany(s => s.Properties))
+            .Concat(templateInstance.CSharpFile.Interfaces.SelectMany(s => s.Methods))
+            .Concat(templateInstance.CSharpFile.Interfaces.SelectMany(s => s.Properties))
+            .Any(x => x.TryGetReferenceForModel(memberElement, out _));
+    }
+
+    private static bool HasFoundMappingElement(IElement mappedElement, out IHasCSharpName reference, ICSharpFileBuilderTemplate template)
+    {
+        reference = null;
+
+        var result = template.CSharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(mappedElement, out reference) == true
+                     || template.CSharpFile.Interfaces.FirstOrDefault()?.TryGetReferenceForModel(mappedElement, out reference) == true;
+
+        return result;
+    }
+
+    private bool TryFindTemplate(IElement elementToLookup, out ICSharpFileBuilderTemplate template)
+    {
+        if (elementToLookup is null)
+        {
+            template = null;
+            return false;
+        }
+
+        var result = Template.GetTypeInfo(elementToLookup.AsTypeReference());
+        if (result.Template is ICSharpFileBuilderTemplate foundTemplate)
+        {
+            template = foundTemplate;
+            return true;
+        }
+
+        template = null;
         return false;
     }
 

@@ -1,3 +1,7 @@
+### Version 4.0.1
+
+- Fixed: In some cases imports would not be generated.
+
 ### Version 4.0.0
 
 - Improvement: Refactored code to use separately installable `Intent.Code.Weaving.TypeScript` module removing need for a "private" NuGet package.

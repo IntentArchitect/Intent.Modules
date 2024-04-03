@@ -40,6 +40,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 {
                     return $"{GetSourcePathText()}";
                 }
+
                 if (Model.TypeReference.IsCollection)
                 {
                     Template.AddUsing("System.Linq");
@@ -48,7 +49,12 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
                     var variableName = GetVariableNameForSelect();
                     SetSourceReplacement(GetSourcePath().Last().Element, variableName);
-                    SetTargetReplacement(GetTargetPath().Last().Element, null);
+                    var lastTargetPathElement = GetTargetPath().Last().Element;
+                    SetTargetReplacement(lastTargetPathElement, null); // Needed for inheritance mappings - path element to be removed from invocation path
+                    if (lastTargetPathElement.TypeReference.Element is not null)
+                    {
+                        SetTargetReplacement(lastTargetPathElement.TypeReference.Element, null); // Same as above but for parameter types
+                    }
 
                     select.AddArgument(new CSharpLambdaBlock(variableName).WithExpressionBody(GetConstructorStatement()));
 
@@ -66,7 +72,12 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     else
                     {
                         // TODO: add ternary check to mappings for when the source path could be nullable.
-                        SetTargetReplacement(GetTargetPath().Last().Element, null);
+                        var lastTargetPathElement = GetTargetPath().Last().Element;
+                        SetTargetReplacement(lastTargetPathElement, null); // Needed for inheritance mappings - path element to be removed from invocation path
+                        if (lastTargetPathElement.TypeReference.Element is not null)
+                        {
+                            SetTargetReplacement(lastTargetPathElement.TypeReference.Element, null); // Same as above but for parameter types
+                        }
                         return GetConstructorStatement();
                     }
                 }
@@ -89,6 +100,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     return (ConstructorMapping)ctor;
                 }
             }
+
             return null;
         }
 
@@ -127,13 +139,15 @@ namespace Intent.Modules.Common.CSharp.Mapping
             if (fileBuilderCtors.Any())
             {
                 var targetCtor = fileBuilderCtors.First();
-                var ctorInit = new CSharpInvocationStatement($"new {targetCtor.Name}").WithoutSemicolon();
+                var ctorInit = new CSharpInvocationStatement($"new {_template.GetTypeName(targetCtor.Element)}").WithoutSemicolon();
                 var childMappings = FindPropertyMappingsInHierarchy(Children).ToList();
-                foreach (var ctorParameter in targetCtor.Parameters)
+                foreach (var ctorParameter in targetCtor.Ctor.Parameters)
                 {
-                    var match = childMappings.First(child => ctorParameter.TryGetReferenceForModel(child.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name);
-                    ctorInit.AddArgument(match.GetSourceStatement());
+                    var match = childMappings.FirstOrDefault(child =>
+                        ctorParameter.TryGetReferenceForModel(child.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name);
+                    ctorInit.AddArgument(match?.GetSourceStatement() ?? "default");
                 }
+
                 return ctorInit;
             }
 
@@ -144,20 +158,21 @@ namespace Intent.Modules.Common.CSharp.Mapping
             {
                 propInit.AddStatements(child.GetMappingStatements());
             }
+
             return propInit;
         }
 
-        private IReadOnlyList<CSharpConstructor> GetFileBuilderConstructors()
+        private IReadOnlyList<(CSharpConstructor Ctor, IElement Element)> GetFileBuilderConstructors()
         {
             var returnTypeElement = ((IElement)_mappingModel.Model)?.TypeReference?.Element;
             if (returnTypeElement is null)
             {
-                return ArraySegment<CSharpConstructor>.Empty;
+                return ArraySegment<(CSharpConstructor, IElement)>.Empty;
             }
 
             if (_template.GetTypeInfo(returnTypeElement.AsTypeReference())?.Template is not ICSharpFileBuilderTemplate template)
             {
-                return ArraySegment<CSharpConstructor>.Empty;
+                return ArraySegment<(CSharpConstructor, IElement)>.Empty;
             }
 
             var constructors = template.CSharpFile.TypeDeclarations.SelectMany(s => s.Constructors).ToArray();
@@ -166,6 +181,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             return constructors
                 .Where(ctor => mapTargetElements
                     .All(target => ctor.Parameters.Any(param => param.TryGetReferenceForModel(target, out var match) && param.Name == match.Name)))
+                .Select(s => (Ctor: s, MetadataElement: (IElement)returnTypeElement))
                 .ToList();
         }
 

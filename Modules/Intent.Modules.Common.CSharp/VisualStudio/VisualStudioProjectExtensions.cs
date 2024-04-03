@@ -81,8 +81,9 @@ namespace Intent.Modules.Common.VisualStudio
                     VisualStudioProjectTypeIds.CoreCSharpLibrary,
                     VisualStudioProjectTypeIds.SQLServerDatabaseProject,
                     VisualStudioProjectTypeIds.AzureFunctionsProject,
-                    VisualStudioProjectTypeIds.CoreConsoleApp
-            }.Contains(outputTarget.Type);
+                    VisualStudioProjectTypeIds.CoreConsoleApp,
+					VisualStudioProjectTypeIds.SdkCSharpProject
+			}.Contains(outputTarget.Type);
         }
 
         public static List<INugetPackageInfo> NugetPackages(this IOutputTarget outputTarget)

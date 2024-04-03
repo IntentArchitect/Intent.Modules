@@ -35,9 +35,9 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         public IElement InternalElement => _element;
 
-        public IList<ModuleModel> Modules => _element.ChildElements
-            .GetElementsOfType(ModuleModel.SpecializationTypeId)
-            .Select(x => new ModuleModel(x))
+        public IList<ComponentModuleModel> Modules => _element.ChildElements
+            .GetElementsOfType(ComponentModuleModel.SpecializationTypeId)
+            .Select(x => new ComponentModuleModel(x))
             .ToList();
 
         [IntentManaged(Mode.Ignore)]

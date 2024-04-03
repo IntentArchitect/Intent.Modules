@@ -1,9 +1,16 @@
-﻿### Version 3.5.5
+﻿### Version 3.5.6
 
+- Fixed: Advanced mappings not generating compiling in certain scenarios.
+
+### Version 3.5.5
+
+- Improvement: Aligned VS Solution Project Type Ids to the new project system ids (https://github.com/dotnet/project-system/blob/main/docs/opening-with-new-project-system.md).
 - Improvement: New `AddKnownType(string fullyQualifiedTypeName)` method added to `CSharpTemplateBase` which can be used to disambiguate type references in cases where multiple using directive namespaces have types with the same.
 - Improvement: For the advanced mapping system, `ConstructorMapping` now has better handling of un-mapped constructor parameters, similarly for `MethodInvocationMapping`.
 - Improvement: `AddNestedInterface` added to `CSharpClass`.
-- Improvement: `ObjectInitializationMapping` is now able to also detect `ctors` from File Builder Templates when no `ctor` mappings are present. 
+- Improvement: `ObjectInitializationMapping` is now able to also detect `ctors` from File Builder Templates when no `ctor` mappings are present.
+- Improvement: `ObjectInitializationMapping` updated to help facilitate inheritance mappings found through Element Type Reference.
+- Improvement: Overload added to `AddOptionalCancellationTokenParameter` to allow specifying name of the parameter.
 - Fixed: When using `.Async()` in the C# File Builder on a nested class, a null reference exception would be thrown.
 
 ### Version 3.5.4

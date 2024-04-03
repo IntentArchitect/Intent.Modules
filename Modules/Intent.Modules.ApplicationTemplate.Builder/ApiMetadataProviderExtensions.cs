@@ -38,5 +38,19 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 .ToList();
         }
 
+        public static IList<MinimumDependencyVersionsModel> GetMinimumDependencyVersionsModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(MinimumDependencyVersionsModel.SpecializationTypeId)
+                .Select(x => new MinimumDependencyVersionsModel(x))
+                .ToList();
+        }
+
+        public static IList<ModuleModel> GetModuleModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(ModuleModel.SpecializationTypeId)
+                .Select(x => new ModuleModel(x))
+                .ToList();
+        }
+
     }
 }

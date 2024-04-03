@@ -3,10 +3,10 @@
   <ApplicationId>d80e91fc-ff6c-4960-b18c-7fb30c4e81e3</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#f917caa4-f97b-43a2-9853-5c5dfa533768</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#f917caa4-f97b-43a2-9853-5c5dfa533768</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>b26e86c5-02ad-48c2-ac24-9091f1278430</ProjectId>
@@ -90,6 +90,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>b26e86c5-02ad-48c2-ac24-9091f1278430</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ef75f8f0-520c-4ab8-814f-5e75f4877dd7</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ComponentModuleModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ComponentModuleModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>b26e86c5-02ad-48c2-ac24-9091f1278430</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#ef75f8f0-520c-4ab8-814f-5e75f4877dd7</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ComponentModuleModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ComponentModuleModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>b26e86c5-02ad-48c2-ac24-9091f1278430</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#08725da5-d0cf-4ec8-ad65-a58d9927d32f</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ContentFolderModel.cs</ApplicationRelativeFilePath>
@@ -106,18 +122,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>b26e86c5-02ad-48c2-ac24-9091f1278430</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ef75f8f0-520c-4ab8-814f-5e75f4877dd7</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#63605213-ab56-4042-b801-907bb5a79c08</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ModuleModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ModuleModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/MinimumDependencyVersionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MinimumDependencyVersionsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>b26e86c5-02ad-48c2-ac24-9091f1278430</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#ef75f8f0-520c-4ab8-814f-5e75f4877dd7</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#6a811790-b322-4340-8b68-84dae5ffafa8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ModuleModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ModuleModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/ModuleModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ModuleModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

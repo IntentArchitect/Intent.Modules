@@ -65,7 +65,7 @@
       <childElements>
         <childElement id="0add10c0-885f-4138-9a6f-9d56ef1d5953" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Module</name>
-          <display>Add Module: Module</display>
+          <display>Add Module: Component Module</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="c14ee35e-7232-4394-832e-97e92bed74ae">
