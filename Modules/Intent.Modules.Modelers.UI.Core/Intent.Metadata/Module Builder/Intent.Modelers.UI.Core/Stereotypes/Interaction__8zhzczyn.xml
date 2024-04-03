@@ -17,7 +17,7 @@
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>a2a95421-3e55-43c7-96ad-355610b43c4d</parentFolderId>
-  <order>0</order>
+  <order>10</order>
   <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
   <packageName>Intent.Modelers.UI.Core</packageName>
   <properties>

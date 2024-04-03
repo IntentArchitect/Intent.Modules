@@ -44,6 +44,8 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public FolderModel Folder { get; }
+
+        [IntentIgnore]
         IFolder IHasFolder<IFolder>.Folder => Folder;
 
         [IntentManaged(Mode.Fully)]
