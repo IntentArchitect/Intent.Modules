@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Modelers.UI</id>
   <version>1.0.0-alpha.0</version>
-  <supportedClientVersions>[4.1.0-beta.21,5.0.0)</supportedClientVersions>
+  <supportedClientVersions>[4.2.3,5.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
   <authors>Intent.Modules</authors>
