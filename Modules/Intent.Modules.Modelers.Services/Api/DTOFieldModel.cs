@@ -40,6 +40,7 @@ namespace Intent.Modelers.Services.Api
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
 
+        [IntentIgnore]
         public IElementMapping Mapping => _element.MappedElement;
 
         [IntentManaged(Mode.Fully)]
