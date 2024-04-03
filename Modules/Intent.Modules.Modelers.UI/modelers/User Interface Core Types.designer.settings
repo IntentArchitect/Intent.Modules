@@ -849,7 +849,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
       <sourceRootElementFunction>return element.getParent("Component")?.id ?? element.id;</sourceRootElementFunction>
       <sourceMappings>
         <mapping id="dac3e0f8-cc81-4409-8159-19c0103e1d88" name="Component" type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -859,7 +858,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
           <childSettings />
         </mapping>
         <mapping id="b8cdff9f-3b97-41d6-94f0-c5bed689aed7" name="Model Definition" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -869,7 +867,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
           <childSettings />
         </mapping>
         <mapping id="9cdca127-3a66-4ed0-9241-73512d63f326" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -878,7 +875,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
           <represents>data</represents>
           <childSettings>
             <childSetting id="0f9dc6cd-d0c6-42d2-bb7b-63cc99d8ef8c" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="1.0.0">
-              <mustBeMappedBeforeChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -892,7 +888,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
           </childSettings>
         </mapping>
         <mapping id="0b571a97-6506-408a-8806-4307a14a459a" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -936,7 +931,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
       <targetRootElementFunction>return hostElement.getParent("Component").id</targetRootElementFunction>
       <sourceMappings>
         <mapping id="216e13ce-0c29-461d-889c-30f1058fe0cd" name="Call Service Operation Action Target End" type="Call Service Operation Action Target End" typeId="475f0810-2b4a-40da-8eb8-697cb62f7dbe" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -949,7 +943,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <childSettings />
         </mapping>
         <mapping id="1dbd5867-c6a4-403e-bc5d-e404cd31c52e" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -958,7 +951,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <represents>data</represents>
           <childSettings>
             <childSetting id="bb35b2cf-81e2-45cd-aadf-58453da35223" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="1.0.0">
-              <mustBeMappedBeforeChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -974,7 +966,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
       </sourceMappings>
       <targetMappings>
         <mapping id="f6bbd47c-dd03-46c2-9524-26fbd6c97c21" name="Component" type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -985,7 +976,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
         </mapping>
         <mapping id="dd876d42-e151-4c51-b3e9-a0231ba36b32" name="Model Definition" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" version="1.0.0">
           <filterFunction>return false;</filterFunction>
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -995,7 +985,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <childSettings />
         </mapping>
         <mapping id="105c8e25-8f08-4470-bdaa-8a8ffe0d6ad1" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -1028,7 +1017,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
       <sourceRootElementFunction>return element.getParent("Component")?.id ?? element.id;</sourceRootElementFunction>
       <sourceMappings>
         <mapping id="623961a3-9b82-411e-b1e5-28c14a495d65" name="Component" type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -1038,7 +1026,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <childSettings />
         </mapping>
         <mapping id="854ba3a2-cc26-44a1-9e83-01f1b55b0508" name="Model Definition" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -1048,7 +1035,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <childSettings />
         </mapping>
         <mapping id="44c0579d-d730-4c8c-ad04-eb14599ce56c" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -1057,7 +1043,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <represents>data</represents>
           <childSettings>
             <childSetting id="5dacc38f-5bdd-43f5-8d2f-5ad3f12071ee" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="1.0.0">
-              <mustBeMappedBeforeChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1071,7 +1056,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           </childSettings>
         </mapping>
         <mapping id="dd00e457-f34b-47ea-bca6-138a3f52c385" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -1081,28 +1065,15 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <childSettings />
         </mapping>
         <mapping id="a7d178d8-0e93-4784-a5c7-24d05df7875f" name="Operation" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
-          <childSettings>
-            <childSetting id="9d12990d-6def-4229-abe3-9da4db890f4c" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="1.0.0">
-              <mustBeMappedBeforeChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-              <childSettings />
-            </childSetting>
-          </childSettings>
+          <childSettings />
         </mapping>
         <mapping id="3e0d7b15-8756-4692-9dcf-6c072bc91ad2" name="Navigation Target End" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -1111,7 +1082,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <represents>invokable</represents>
           <childSettings>
             <childSetting id="9239fc31-6df8-4cf9-b0c4-09f58b75d54b" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="1.0.0">
-              <mustBeMappedBeforeChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>false</isTraversable>
@@ -1126,7 +1096,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
       <targetMappings>
         <importSettings id="ddf81941-f0b0-4ab0-a8d6-42ddc9e5da99" name="Bindable Components" />
         <mapping id="7df7efbd-a074-4f54-8b05-95e2e6b3f27d" name="View" type="Component View" typeId="624513a6-cba8-4dde-8ebe-6b19f00f0364" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -1135,7 +1104,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <represents>data</represents>
           <childSettings>
             <childSetting id="9590c94b-71dd-4d0d-86b1-298d0b09b2c6" name="Display Component" type="Display Component" typeId="866a90f7-4044-43b9-bb05-7270c7889796" version="1.0.0">
-              <mustBeMappedBeforeChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1149,7 +1117,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           </childSettings>
         </mapping>
         <mapping id="5f53a678-36da-46f0-9680-8fb295da6ddb" name="Component" type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -1160,7 +1127,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
         </mapping>
         <mapping id="8e7e9ba1-c3f9-494a-ae5d-6628774c01a1" name="Model Definition" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" version="1.0.0">
           <filterFunction>return false;</filterFunction>
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -1170,7 +1136,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <childSettings />
         </mapping>
         <mapping id="797ad7f2-390b-49f2-ab16-d3ce01e51fc0" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -1182,7 +1147,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <childSettings />
         </mapping>
         <mapping id="b5dac39d-db1d-40ff-8763-3a9fd5612af7" name="Event Emitter" type="Event Emitter" typeId="d6739ffc-30e6-4170-a105-bf28e69aa578" version="1.0.0">
-          <mustBeMappedBeforeChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>

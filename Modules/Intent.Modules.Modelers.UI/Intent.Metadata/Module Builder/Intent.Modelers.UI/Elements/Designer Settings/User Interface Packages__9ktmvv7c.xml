@@ -15,8 +15,8 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property id="69972ce7-4260-4d4c-bf54-ce7378190811" name="9566aa04-ab84-4fbc-b039-6e676159ed82" display="Is Reference" value="false" isActive="true" />
-        <property id="df426295-b83b-4cbf-802c-a48a53d1ca2f" name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" value="[&quot;f492faed-0665-4513-9853-5a230721786f&quot;]" isActive="true" />
+        <property name="9566aa04-ab84-4fbc-b039-6e676159ed82" display="Is Reference" value="false" isActive="true" />
+        <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" value="[&quot;f492faed-0665-4513-9853-5a230721786f&quot;]" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

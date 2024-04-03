@@ -27,21 +27,21 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property id="2f4aa25d-7eb2-437c-a491-8309a90eaaf8" name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
-            <property id="cc99e55b-1d8e-4e6e-a609-a84b57a3bb17" name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;e030c97a-e066-40a7-8188-808c275df3cb&quot;]" isActive="true" />
-            <property id="d7efd218-bda6-4864-b5c6-fdacb2822c9f" name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="" isActive="true" />
-            <property id="a74b19cf-0b1c-450a-a726-16710bcaaebf" name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
-            <property id="4333f495-c02a-4ae7-ae3b-b7aeb0996925" name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
-            <property id="50feea4e-642d-4091-aeda-c2c66ee6f84b" name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" isActive="true" />
-            <property id="4c13477c-ffc1-4711-a4bc-165f5b73ecf8" name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
-            <property id="50acd75d-42ac-4abb-ad8e-c81b0f90da12" name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
-            <property id="894febb5-0e83-478a-a0bf-b6766ee45281" name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="false" isActive="true" />
-            <property id="81df7728-e13b-4259-9bcf-a684489b687b" name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="false" isActive="true" />
-            <property id="4f06e108-cea5-4d3b-9e6c-9b0de0160e57" name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
-            <property id="c5d257f9-2557-4b0d-a6b5-4433738edd57" name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
-            <property id="b4a0e4bc-cd50-45b2-8309-1e996129948c" name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="true" isActive="true" />
-            <property id="1da9bf2a-ee4a-4c08-9fa1-95bc7edbb95f" name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="false" isActive="true" />
-            <property id="3a361e8b-41b1-40e0-99a3-abc9367e5edf" name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
+            <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
+            <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;e030c97a-e066-40a7-8188-808c275df3cb&quot;]" isActive="true" />
+            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="" isActive="true" />
+            <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
+            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" isActive="true" />
+            <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
+            <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
+            <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="false" isActive="true" />
+            <property name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="false" isActive="true" />
+            <property name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
+            <property name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
+            <property name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="true" isActive="true" />
+            <property name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="false" isActive="true" />
+            <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -64,21 +64,21 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property id="a5b2354a-6974-41d7-976e-6a9bbd126551" name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
-            <property id="a398616b-e046-44fe-b710-a3a509b41144" name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[]" isActive="true" />
-            <property id="6ec93eaa-0e15-45cf-aef5-24bbdd3a31cd" name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="const display = [&#xD;&#xA;    { text: &quot;[call] &quot;, cssClass: &quot;keyword&quot; },&#xD;&#xA;    { text: `${typeReference.getType()?.getDisplay() ?? &quot;&lt;not-set&gt;&quot;}`, cssClass: &quot;function&quot;, targetId: typeReference.typeId },&#xD;&#xA;];&#xD;&#xA;return display;&#xD;&#xA;" isActive="true" />
-            <property id="475e5f30-8b37-4aec-9678-bff295366495" name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Optional" isActive="true" />
-            <property id="62d3ce2e-e41a-46ed-84ab-c9d3361c48aa" name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="return &quot;result&quot;;" isActive="true" />
-            <property id="6a1ebae2-7542-464a-a7d8-10dbd65b0292" name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" isActive="true" />
-            <property id="a922ed7f-1170-4162-9f8e-7bc6a06cbb20" name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="true" isActive="true" />
-            <property id="a771d4ae-6f33-4b25-9f6d-ed68ad22744c" name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="true" isActive="true" />
-            <property id="88e45d01-0ce9-4635-807a-f0d11b23aa9a" name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="true" isActive="true" />
-            <property id="4c759134-f2af-44ff-b483-7883e77e1ca9" name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="true" isActive="true" />
-            <property id="fe0e227e-de95-4b59-8fe9-c72cf7213d52" name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
-            <property id="d070e767-176c-4763-a95e-169b800d0ff5" name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
-            <property id="8742a390-97a7-4176-8495-d25b5a835455" name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="true" isActive="true" />
-            <property id="477eae51-5b7e-4098-bc2e-55957f907905" name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="true" isActive="true" />
-            <property id="674c8f28-03bc-4d7d-ac24-8f7caff33d02" name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
+            <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
+            <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[]" isActive="true" />
+            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="const display = [&#xD;&#xA;    { text: &quot;[call] &quot;, cssClass: &quot;keyword&quot; },&#xD;&#xA;    { text: `${typeReference.getType()?.getDisplay() ?? &quot;&lt;not-set&gt;&quot;}`, cssClass: &quot;function&quot;, targetId: typeReference.typeId },&#xD;&#xA;];&#xD;&#xA;return display;&#xD;&#xA;" isActive="true" />
+            <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Optional" isActive="true" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="return &quot;result&quot;;" isActive="true" />
+            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" isActive="true" />
+            <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="true" isActive="true" />
+            <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="true" isActive="true" />
+            <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="true" isActive="true" />
+            <property name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="true" isActive="true" />
+            <property name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
+            <property name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
+            <property name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="true" isActive="true" />
+            <property name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="true" isActive="true" />
+            <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -124,11 +124,11 @@
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
-                    <property id="140bd0d5-cdf8-442b-b3b1-d8eec8596b94" name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" isActive="true" />
-                    <property id="c3357dd9-7b25-4f86-9d8c-116f0b4df866" name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
-                    <property id="1d1c15b6-d8c3-4408-bf2a-23b0bfb13b8b" name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
-                    <property id="f5f65c44-db03-488b-a780-bababbdf303a" name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
-                    <property id="8bc688c7-6429-4910-9320-c866b47b717b" name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" isActive="true" />
+                    <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" isActive="true" />
+                    <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
+                    <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
+                    <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
+                    <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -162,11 +162,11 @@
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
-                    <property id="dddabc29-92b5-4068-91cf-5884988319cc" name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" isActive="true" />
-                    <property id="248bb35b-f390-4824-a189-1972cb43e3ee" name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
-                    <property id="e12d30c4-efe9-4828-b592-319ad4040ae7" name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
-                    <property id="9dde38cf-8655-4f92-ad82-45b8350837bf" name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
-                    <property id="93015458-ebc8-4e57-a3d3-9cbdaf237a5e" name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" isActive="true" />
+                    <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" isActive="true" />
+                    <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
+                    <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
+                    <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
+                    <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>

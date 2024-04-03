@@ -26,11 +26,11 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property id="e4c4aa4c-dfaa-4160-9293-1465530a6ab6" name="3ff8fe05-f379-4b5e-a965-cc6f6cab4c21" display="Line Type" value="Elbow Connector" isActive="true" />
-        <property id="17006a06-c17a-4ccf-a466-ad49d8dc78c3" name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" value="#ade8f4" isActive="true" />
-        <property id="1563c215-048f-4401-a502-f3d4f6edc45d" name="f248a382-66c9-4107-aa92-5ee83dd3d08c" display="Line Width" isActive="true" />
-        <property id="b64af213-b93f-4e6d-b110-1070100639c0" name="93499f0b-8590-42ea-bdbf-e943597e8e1e" display="Line Dash Array" isActive="true" />
-        <property id="977c8cc2-db43-4933-bcc4-61936186f59e" name="85aa1be2-62f1-45d1-84d0-acb5bb5d1752" display="Reverse Flow Direction" value="false" isActive="true" />
+        <property name="3ff8fe05-f379-4b5e-a965-cc6f6cab4c21" display="Line Type" value="Elbow Connector" isActive="true" />
+        <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" value="#ade8f4" isActive="true" />
+        <property name="f248a382-66c9-4107-aa92-5ee83dd3d08c" display="Line Width" isActive="true" />
+        <property name="93499f0b-8590-42ea-bdbf-e943597e8e1e" display="Line Dash Array" isActive="true" />
+        <property name="85aa1be2-62f1-45d1-84d0-acb5bb5d1752" display="Reverse Flow Direction" value="false" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
@@ -51,11 +51,11 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property id="499ad248-c341-4432-b7cc-a957fa023ae4" name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" isActive="true" />
-            <property id="bf20b7cc-af36-4a44-b1cf-c792a9feb3fb" name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" isActive="true" />
-            <property id="2127e58a-64d0-4c7f-afa1-1202f4afc96a" name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" isActive="true" />
-            <property id="0aa99bbe-a00c-44c6-8d25-a71e8ba68043" name="33bc633b-e627-49df-b105-398e32e080ee" display="Line Dash Array" isActive="true" />
-            <property id="37ee060c-a944-465c-89a4-6ffacae7b824" name="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f" display="Fill Color" isActive="true" />
+            <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" isActive="true" />
+            <property name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" isActive="true" />
+            <property name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" isActive="true" />
+            <property name="33bc633b-e627-49df-b105-398e32e080ee" display="Line Dash Array" isActive="true" />
+            <property name="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f" display="Fill Color" isActive="true" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="6b16c65c-f348-40b1-96b0-6423917b9356" name="Label Settings">
@@ -63,8 +63,8 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property id="d7a66446-0b21-43bb-836b-84e7c07c039f" name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" value="function getInputs() {&#xD;&#xA;    try {&#xD;&#xA;        return typeReference.getType().children(&quot;Component Input&quot;).map(x =&gt; x.name + &quot;: &quot; + x.typeReference.display).join(&quot;, &quot;)&#xD;&#xA;    } catch (e) {&#xD;&#xA;        return &quot;&quot;;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;return `${name &amp;&amp; typeReference.isNavigable ? name + &quot;(&quot; + getInputs() + &quot;)&quot; : &quot;&quot;}`" isActive="true" />
-            <property id="12508772-65fd-441b-a041-a20eb40a76bf" name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" isActive="true" />
+            <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" value="function getInputs() {&#xD;&#xA;    try {&#xD;&#xA;        return typeReference.getType().children(&quot;Component Input&quot;).map(x =&gt; x.name + &quot;: &quot; + x.typeReference.display).join(&quot;, &quot;)&#xD;&#xA;    } catch (e) {&#xD;&#xA;        return &quot;&quot;;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;return `${name &amp;&amp; typeReference.isNavigable ? name + &quot;(&quot; + getInputs() + &quot;)&quot; : &quot;&quot;}`" isActive="true" />
+            <property name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" isActive="true" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="dc5496ee-e524-41ef-8b17-0125a25d0349" name="Navigable Indicator Settings">
@@ -72,11 +72,11 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property id="1770cec8-1590-4958-ace2-aa838c467212" name="18b35949-3dda-46d2-8296-490214e3b687" display="Path" value="`l 5 10 l -5 -2.5 l -5 2.5 Z`" isActive="true" />
-            <property id="389b50ff-49a0-4a72-aa96-1ec5ecd4acbb" name="369ff6b9-dc1c-4291-9c63-d50735315c42" display="Line Color" value="#ade8f4" isActive="true" />
-            <property id="e2f707d2-07d1-4e48-830e-8859eea3f7f3" name="8a72a4c5-b4e8-4eb0-9db2-59dff1e9fb51" display="Line Width" isActive="true" />
-            <property id="b27cf1e0-f490-42ce-a797-347b1156c504" name="fa857edd-c8ac-4044-8cf6-c8ee9de1ec29" display="Line Dash Array" isActive="true" />
-            <property id="3c2c83c3-c524-43dc-9014-13a086d7410c" name="f72d804d-a243-4df6-a718-fb9d3327bd7a" display="Fill Color" isActive="true" />
+            <property name="18b35949-3dda-46d2-8296-490214e3b687" display="Path" value="`l 5 10 l -5 -2.5 l -5 2.5 Z`" isActive="true" />
+            <property name="369ff6b9-dc1c-4291-9c63-d50735315c42" display="Line Color" value="#ade8f4" isActive="true" />
+            <property name="8a72a4c5-b4e8-4eb0-9db2-59dff1e9fb51" display="Line Width" isActive="true" />
+            <property name="fa857edd-c8ac-4044-8cf6-c8ee9de1ec29" display="Line Dash Array" isActive="true" />
+            <property name="f72d804d-a243-4df6-a718-fb9d3327bd7a" display="Fill Color" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -98,11 +98,11 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property id="461660ac-e401-4220-9517-a21f5f501a97" name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="" isActive="true" />
-            <property id="29a52a6b-a09a-4d3b-99c3-b0b7426a71a3" name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" value="" isActive="true" />
-            <property id="7cefc2e6-a4b4-4acf-838f-1290ddfb0dfd" name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" isActive="true" />
-            <property id="d4089edf-9e93-4292-9479-0b01d47b2550" name="33bc633b-e627-49df-b105-398e32e080ee" display="Line Dash Array" isActive="true" />
-            <property id="b6fedc67-89be-40f7-a38c-7548b7631a8a" name="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f" display="Fill Color" value="#ade8f4" isActive="true" />
+            <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="" isActive="true" />
+            <property name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" value="" isActive="true" />
+            <property name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" isActive="true" />
+            <property name="33bc633b-e627-49df-b105-398e32e080ee" display="Line Dash Array" isActive="true" />
+            <property name="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f" display="Fill Color" value="#ade8f4" isActive="true" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="6b16c65c-f348-40b1-96b0-6423917b9356" name="Label Settings">
@@ -110,8 +110,8 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property id="04760dde-e003-496b-9ab3-7de84d795aa3" name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" value="function getInputs() {&#xD;&#xA;    try {&#xD;&#xA;        return typeReference.getType().children(&quot;Component Input&quot;).map(x =&gt; x.name + &quot;: &quot; + x.typeReference.display).join(&quot;, &quot;)&#xD;&#xA;    } catch (e) {&#xD;&#xA;        return &quot;&quot;;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;return `${name &amp;&amp; typeReference.isNavigable ? name + &quot;(&quot; + getInputs() + &quot;)&quot; : &quot;&quot;}`" isActive="true" />
-            <property id="4a76086f-98e9-42e7-9a85-dcb1f359079a" name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" isActive="true" />
+            <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" value="function getInputs() {&#xD;&#xA;    try {&#xD;&#xA;        return typeReference.getType().children(&quot;Component Input&quot;).map(x =&gt; x.name + &quot;: &quot; + x.typeReference.display).join(&quot;, &quot;)&#xD;&#xA;    } catch (e) {&#xD;&#xA;        return &quot;&quot;;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;return `${name &amp;&amp; typeReference.isNavigable ? name + &quot;(&quot; + getInputs() + &quot;)&quot; : &quot;&quot;}`" isActive="true" />
+            <property name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" isActive="true" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="dc5496ee-e524-41ef-8b17-0125a25d0349" name="Navigable Indicator Settings">
@@ -119,11 +119,11 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property id="6d580b71-37d5-4082-9f89-48270e6a62ad" name="18b35949-3dda-46d2-8296-490214e3b687" display="Path" value="`l 5 10 l -5 -2.5 l -5 2.5 Z`" isActive="true" />
-            <property id="5c338683-08dd-4470-b000-0fbb74989abf" name="369ff6b9-dc1c-4291-9c63-d50735315c42" display="Line Color" value="#ade8f4" isActive="true" />
-            <property id="3f408195-47ad-4334-a84d-9ca66009c0fb" name="8a72a4c5-b4e8-4eb0-9db2-59dff1e9fb51" display="Line Width" isActive="true" />
-            <property id="6dc26932-645c-46a0-87c3-36d062b4b935" name="fa857edd-c8ac-4044-8cf6-c8ee9de1ec29" display="Line Dash Array" isActive="true" />
-            <property id="7be8d4f6-3a2b-468a-b5a3-f70d26a140c6" name="f72d804d-a243-4df6-a718-fb9d3327bd7a" display="Fill Color" isActive="true" />
+            <property name="18b35949-3dda-46d2-8296-490214e3b687" display="Path" value="`l 5 10 l -5 -2.5 l -5 2.5 Z`" isActive="true" />
+            <property name="369ff6b9-dc1c-4291-9c63-d50735315c42" display="Line Color" value="#ade8f4" isActive="true" />
+            <property name="8a72a4c5-b4e8-4eb0-9db2-59dff1e9fb51" display="Line Width" isActive="true" />
+            <property name="fa857edd-c8ac-4044-8cf6-c8ee9de1ec29" display="Line Dash Array" isActive="true" />
+            <property name="f72d804d-a243-4df6-a718-fb9d3327bd7a" display="Fill Color" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
