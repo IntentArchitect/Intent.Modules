@@ -6,7 +6,7 @@ using System.Text;
 namespace Intent.Modules.Common.CSharp.VisualStudio
 {
 	/// <summary>
-	/// Adds a CSProject Property if it is not already there
+	/// Adds a CSProject Property, if it is not already present
 	/// </summary>
 	public class AddProjectPropertyEvent
 	{
