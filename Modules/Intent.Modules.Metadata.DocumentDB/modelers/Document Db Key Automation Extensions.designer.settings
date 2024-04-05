@@ -1556,7 +1556,6 @@ execute();
         </typeReferenceExtension>
       </sourceEndExtension>
       <targetEndExtension>
-        <typeOrder />
         <typeReferenceExtension>
           <isRequired>true</isRequired>
           <targetTypes />

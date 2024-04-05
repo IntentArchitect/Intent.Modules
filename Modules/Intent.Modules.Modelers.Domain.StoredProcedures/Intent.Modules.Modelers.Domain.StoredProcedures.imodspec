@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modules.Modelers.Domain.StoredProcedures</id>
-  <version>1.0.0</version>
+  <version>1.1.0-pre.0</version>
   <supportedClientVersions>[4.1.0-beta.21,5.0.0)</supportedClientVersions>
   <summary>Modeler capability for working with Stored Procedures.</summary>
   <description>Modeler capability for working with Stored Procedures.</description>
@@ -12,9 +12,9 @@
   <factoryExtensions></factoryExtensions>
   <moduleSettings></moduleSettings>
   <dependencies>
-    <dependency id="Intent.Common" version="3.5.0" />
-    <dependency id="Intent.Common.Types" version="3.3.9" />
-    <dependency id="Intent.Modelers.Domain" version="3.5.1" />
+    <dependency id="Intent.Common" version="3.6.0-pre.0" />
+    <dependency id="Intent.Common.Types" version="3.4.0-pre.0" />
+    <dependency id="Intent.Modelers.Domain" version="3.9.0-pre.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

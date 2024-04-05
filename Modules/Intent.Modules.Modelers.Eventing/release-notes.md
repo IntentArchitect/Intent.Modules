@@ -1,3 +1,7 @@
+### Version 5.1.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
 ### Version 5.0.3
 
 - Improvement: `${application.name}.Eventing.Messages` package will now be created in the Services designer.

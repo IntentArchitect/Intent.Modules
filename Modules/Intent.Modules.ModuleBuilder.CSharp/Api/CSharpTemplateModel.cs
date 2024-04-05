@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.CSharp.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class CSharpTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class CSharpTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
     {
         public new const string SpecializationType = "C# Template";
 

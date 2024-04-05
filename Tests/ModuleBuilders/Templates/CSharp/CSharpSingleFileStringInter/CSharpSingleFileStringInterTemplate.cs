@@ -25,7 +25,7 @@ namespace {Namespace}
 }}";
         }
 
-        private IEnumerable<string> GetMembers()
+        [IntentManaged(Mode.Ignore)]private IEnumerable<string> GetMembers()
         {
             var members = new List<string>();
 

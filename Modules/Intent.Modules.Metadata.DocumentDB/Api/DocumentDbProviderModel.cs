@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Metadata.DocumentDB.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DocumentDbProviderModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class DocumentDbProviderModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
     {
         public const string SpecializationType = "Document Db Provider";
         public const string SpecializationTypeId = "fcfbd83f-a3eb-4eff-b341-5a812b016d31";

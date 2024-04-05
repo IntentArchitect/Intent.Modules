@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Repositories.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class RepositoryModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder
+    public class RepositoryModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference, IHasFolder
     {
         public const string SpecializationType = "Repository";
         public const string SpecializationTypeId = "96ffceb2-a70a-4b69-869b-0df436c470c3";

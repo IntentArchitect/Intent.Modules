@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.CSharp</id>
   <version>3.6.0-pre.0</version>
@@ -13,8 +13,8 @@
     <factoryExtension id="Intent.Common.CSharp.CSharpFileBuilderFactoryExtension" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.5.0" />
-    <dependency id="Intent.Common.Types" version="3.3.9" />
+    <dependency id="Intent.Common" version="3.6.0-pre.0" />
+    <dependency id="Intent.Common.Types" version="3.4.0-pre.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -25,4 +25,5 @@
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />
+  <tags />
 </package>

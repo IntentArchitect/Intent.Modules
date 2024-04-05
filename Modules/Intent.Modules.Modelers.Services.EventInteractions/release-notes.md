@@ -1,3 +1,7 @@
+### Version 1.1.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
 ### Version 1.0.4
 
 - Fixed: The `GetExplicitlyPublishedMessageModels` and `GetExplicitlySubscribedToMessageModels` extension methods had their implementations swapped between each other.

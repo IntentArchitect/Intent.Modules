@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.GraphQL.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class GraphQLSubscriptionTypeModel : IMetadataModel, IHasStereotypes, IHasName
+    public class GraphQLSubscriptionTypeModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "GraphQL Subscription Type";
         public const string SpecializationTypeId = "b09d3b7f-63ad-4518-9a6a-5c7401c57c1b";

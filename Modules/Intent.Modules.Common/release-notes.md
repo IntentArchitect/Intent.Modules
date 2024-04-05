@@ -1,3 +1,7 @@
+### Version 3.6.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
 ### Version 3.5.3
 
 - Improvement: Added a `strict` option to `ToCamelCase`, when true the algorithm is in-line with `System.Text.Json` camel case algorithm.

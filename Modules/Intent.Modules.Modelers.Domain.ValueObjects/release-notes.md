@@ -1,3 +1,7 @@
+### Version 3.5.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
 ### Version 3.4.1
 
 - Fixed: Operation return types can also now be Value Objects.

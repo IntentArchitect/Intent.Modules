@@ -1,4 +1,8 @@
-﻿### Version 5.2.3
+﻿### Version 5.3.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
+### Version 5.2.3
 
 - Improvement: Enabled support for an additional endpoint type: `Message Triggered`.
 

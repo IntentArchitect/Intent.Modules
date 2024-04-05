@@ -19,6 +19,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptCustomStringInter
 ";
         }
 
+        [IntentManaged(Mode.Ignore)]
         private IEnumerable<string> GetMembers()
         {
             var members = new List<string>();

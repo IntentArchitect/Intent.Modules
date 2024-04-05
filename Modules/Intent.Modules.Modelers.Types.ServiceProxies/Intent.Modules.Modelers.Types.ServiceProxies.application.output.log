@@ -3,7 +3,7 @@
   <ApplicationId>13414c87-2aee-4d87-b8cb-2da2cd9625d9</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#9ca553c9-ed4f-4340-907e-c4aedaa98f85</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#9ca553c9-ed4f-4340-907e-c4aedaa98f85</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>

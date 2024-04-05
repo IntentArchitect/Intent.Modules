@@ -1,3 +1,7 @@
+### Version 4.5.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
 ### Version 4.4.4
 
 - Improvement: Add support for exposing HTTP endpoints for Commands / Queries mapping to elements that are not Classes (limited currently to Repositories).

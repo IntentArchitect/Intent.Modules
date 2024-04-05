@@ -721,6 +721,7 @@ if (namingConvention == "pascal-case") {
             <target id="d5d596fb-1deb-4254-b9ea-7e15ca690729" name="Constructor Parameter" />
             <target id="84e1b554-e4fe-4eae-8743-3e82e511de7c" name="Constructor Parameter" />
           </targets>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
         <mappingType type="Invocation Mapping" typeId="af7d44b5-c56f-49be-abfd-97b2ec1c2273">
@@ -732,6 +733,7 @@ if (namingConvention == "pascal-case") {
             <target id="abc9b77a-1d7c-4839-9ff4-f3f946f82547" name="Constructor" />
             <target id="f5cf331e-3e2a-42a1-942a-7dc4c198d4f9" name="Invoke Operation" />
           </targets>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
       </mappingTypes>
@@ -879,6 +881,7 @@ if (namingConvention == "pascal-case") {
           <targets>
             <target id="6cd32dd1-da53-4fb0-8a71-1d7d2b2b6cb5" name="Set Property" />
           </targets>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
       </mappingTypes>

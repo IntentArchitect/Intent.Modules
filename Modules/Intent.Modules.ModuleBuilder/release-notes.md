@@ -1,3 +1,7 @@
+### Version 3.10.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
 ### Version 3.9.0
 
 - Improvement: Supports additional options for the Advanced Mapping settings.

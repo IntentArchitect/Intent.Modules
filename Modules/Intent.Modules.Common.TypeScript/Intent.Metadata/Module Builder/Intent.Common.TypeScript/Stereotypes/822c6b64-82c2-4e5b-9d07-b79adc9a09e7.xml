@@ -3,8 +3,8 @@
   <name>TypeScript</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">Type-Definition</type>
-    <type id="85fba0e9-9161-4c85-a603-a229ef312beb">Enum</type>
+    <type id="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</type>
+    <type id="85fba0e9-9161-4c85-a603-a229ef312beb">85fba0e9-9161-4c85-a603-a229ef312beb</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>

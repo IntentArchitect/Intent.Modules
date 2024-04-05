@@ -1,3 +1,7 @@
+### Version 3.4.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
 ### Version 3.3.3
 
 - It is no longer mandatory to select an Entity Type for a repository.

@@ -15,13 +15,13 @@ namespace Intent.Metadata.WebApi.Api
     {
         public static ParameterSettings GetParameterSettings(this ParameterModel model)
         {
-            var stereotype = model.GetStereotype("Parameter Settings");
+            var stereotype = model.GetStereotype("d01df110-1208-4af8-a913-92a49d219552");
             return stereotype != null ? new ParameterSettings(stereotype) : null;
         }
 
         public static bool HasParameterSettings(this ParameterModel model)
         {
-            return model.HasStereotype("Parameter Settings");
+            return model.HasStereotype("d01df110-1208-4af8-a913-92a49d219552");
         }
 
         public static bool TryGetParameterSettings(this ParameterModel model, out ParameterSettings stereotype)
@@ -32,7 +32,7 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new ParameterSettings(model.GetStereotype("Parameter Settings"));
+            stereotype = new ParameterSettings(model.GetStereotype("d01df110-1208-4af8-a913-92a49d219552"));
             return true;
         }
 

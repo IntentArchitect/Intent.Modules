@@ -56,7 +56,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: IntentModule.IntentCodeWeavingTypeScript.Name,
                 moduleVersion: IntentModule.IntentCodeWeavingTypeScript.Version));
-            
+
             if (Model.GetModelType() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(

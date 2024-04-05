@@ -27,9 +27,10 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
         public override string TemplateId => CSharpTemplatePartialTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project, CSharpTemplateModel model)
+        [IntentManaged(Mode.Fully)]
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, CSharpTemplateModel model)
         {
-            return new CSharpTemplatePartialTemplate(project, model);
+            return new CSharpTemplatePartialTemplate(outputTarget, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

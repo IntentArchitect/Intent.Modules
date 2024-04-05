@@ -1,4 +1,9 @@
-﻿### Version 3.5.6
+﻿### Version 3.6.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+- Improvement: Added Events for requesting Adding Properties to CSProj files and secrets to UserSecrets.
+
+### Version 3.5.6
 
 - Fixed: Advanced mappings not generating compiling in certain scenarios.
 

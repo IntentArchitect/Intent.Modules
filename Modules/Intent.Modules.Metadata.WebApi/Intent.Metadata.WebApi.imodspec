@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.WebApi</id>
-  <version>4.4.4</version>
+  <version>4.5.0-pre.0</version>
   <supportedClientVersions>[4.1.0, 5.0.0-a)</supportedClientVersions>
   <summary>Support for describing Services in HTTP Web API terms.</summary>
   <description>Support for describing Services in HTTP Web API terms.</description>
@@ -13,9 +13,9 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.4.1" />
-    <dependency id="Intent.Common.Types" version="3.3.9" />
-    <dependency id="Intent.Modelers.Services" version="3.5.0" />
+    <dependency id="Intent.Common" version="3.6.0-pre.0" />
+    <dependency id="Intent.Common.Types" version="3.4.0-pre.0" />
+    <dependency id="Intent.Modelers.Services" version="3.7.0-pre.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

@@ -15,13 +15,13 @@ namespace Intent.Modules.Common.CSharp.Api
     {
         public static FolderOptions GetFolderOptions(this FolderModel model)
         {
-            var stereotype = model.GetStereotype("Folder Options");
+            var stereotype = model.GetStereotype("66fd9e66-42c7-4ef9-a778-b68e009272b9");
             return stereotype != null ? new FolderOptions(stereotype) : null;
         }
 
         public static bool HasFolderOptions(this FolderModel model)
         {
-            return model.HasStereotype("Folder Options");
+            return model.HasStereotype("66fd9e66-42c7-4ef9-a778-b68e009272b9");
         }
 
         public static bool TryGetFolderOptions(this FolderModel model, out FolderOptions stereotype)
@@ -32,7 +32,7 @@ namespace Intent.Modules.Common.CSharp.Api
                 return false;
             }
 
-            stereotype = new FolderOptions(model.GetStereotype("Folder Options"));
+            stereotype = new FolderOptions(model.GetStereotype("66fd9e66-42c7-4ef9-a778-b68e009272b9"));
             return true;
         }
 

@@ -1,3 +1,11 @@
+### Version 1.1.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
+### Version 1.0.5
+
+- Improvement: CRUD scripts improved filtering on which Entities can be generated i.e. filter out abstract classes and compositional inheritance.
+
 ### Version 1.0.4
 
 - Improvement: Added support for Service Operations to also work against Stored Procedures.

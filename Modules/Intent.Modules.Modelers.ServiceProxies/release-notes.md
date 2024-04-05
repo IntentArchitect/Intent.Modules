@@ -1,4 +1,8 @@
-﻿### Version 5.0.4
+﻿### Version 5.1.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
+### Version 5.0.4
 
 - Improvement: A package is now created by default for the Service Proxies designer.
 

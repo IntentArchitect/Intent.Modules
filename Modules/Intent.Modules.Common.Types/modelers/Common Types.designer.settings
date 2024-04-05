@@ -11,6 +11,7 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
@@ -24,18 +25,19 @@
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Enum-Literal</specializationType>
-          <specializationTypeId>4215f417-25d2-4509-9309-5076a1452eaa</specializationTypeId>
           <text>Add Literal</text>
           <shortcut>ctrl + shift + a</shortcut>
-          <defaultName>NewEnumLiteral</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
+          <specializationType>Enum-Literal</specializationType>
+          <specializationTypeId>4215f417-25d2-4509-9309-5076a1452eaa</specializationTypeId>
+          <defaultName>NewEnumLiteral</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
-      <visualSettings type="Enum">
+      <visualSettings type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb">
         <size width="${w}" height="${h}" />
         <position x="${x}" y="${y}" />
         <display>
@@ -58,8 +60,9 @@ white-space: inherit;`</style>
           <position x="${x}" y="${y}" />
         </stereotypesVisualSettings>
         <defaultSize width="${x}" height="${y}" />
+        <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
         <childElementVisualSettings>
-          <childElementVisualSetting type="Enum-Literal">
+          <childElementVisualSetting type="Enum-Literal" typeId="4215f417-25d2-4509-9309-5076a1452eaa">
             <size width="`${parent.w}`" height="18" />
             <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 36}`" />
             <display>
@@ -78,6 +81,7 @@ white-space: inherit;`</style>
               <position x="${x}" y="${y}" />
             </stereotypesVisualSettings>
             <defaultSize width="`${parent.w}`" height="18" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings />
           </childElementVisualSetting>
         </childElementVisualSettings>
@@ -89,6 +93,7 @@ white-space: inherit;`</style>
           <displayFunction>`${name}${value !== null &amp;&amp; value != "" ? " = " + value : ""}`</displayFunction>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
@@ -108,6 +113,7 @@ white-space: inherit;`</style>
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -121,16 +127,17 @@ white-space: inherit;`</style>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Folder</specializationType>
-          <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
           <text>New Folder</text>
           <shortcut>ctrl + shift + f</shortcut>
-          <defaultName>NewFolder</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
+          <specializationType>Folder</specializationType>
+          <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
+          <defaultName>NewFolder</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -139,6 +146,7 @@ white-space: inherit;`</style>
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
       <allowGenericTypes>true</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
@@ -154,4 +162,7 @@ white-space: inherit;`</style>
   <elementExtensions />
   <associationSettings />
   <associationExtensions />
+  <mappingSettings />
+  <mappableElementPackages />
+  <mappableElementPackageExtensions />
 </settings>

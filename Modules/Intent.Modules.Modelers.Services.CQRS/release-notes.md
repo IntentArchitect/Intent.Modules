@@ -1,3 +1,7 @@
+### Version 4.2.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
 ### Version 4.1.2
 
 - Improvement: Commands and Queries now show their return type in the diagrams.

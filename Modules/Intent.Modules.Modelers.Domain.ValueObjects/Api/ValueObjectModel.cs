@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.ValueObjects.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ValueObjectModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class ValueObjectModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
     {
         public const string SpecializationType = "Value Object";
         public const string SpecializationTypeId = "5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5";

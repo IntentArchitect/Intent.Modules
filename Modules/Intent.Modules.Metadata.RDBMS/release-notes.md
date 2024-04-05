@@ -1,3 +1,7 @@
+### Version 3.6.0
+
+- Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+
 ### Version 3.5.12
 
 - Improvement: "Auto Manage Keys" is now only available on Relational DB Domain Models.

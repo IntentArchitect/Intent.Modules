@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.GraphQL.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class GraphQLEventMessageModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class GraphQLEventMessageModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "GraphQL Event Message";
         public const string SpecializationTypeId = "e68932de-3dcf-4b2f-8796-59ff28a81efa";

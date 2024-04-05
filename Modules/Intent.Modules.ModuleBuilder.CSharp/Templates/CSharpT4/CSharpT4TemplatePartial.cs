@@ -21,7 +21,7 @@ using CodeGenType = Intent.Modules.Common.CodeGenType;
 namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpT4
 {
     [IntentManaged(Mode.Merge)]
-    public partial class CSharpT4Template : IntentFileTemplateBase<CSharpTemplateModel>
+    partial class CSharpT4Template : IntentFileTemplateBase<CSharpTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template";
@@ -44,6 +44,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpT4
                 fileExtension: "tt");
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             if (TryGetExistingFileContent(out var content))
