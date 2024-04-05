@@ -222,7 +222,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
     {
         if (previousMappingPath == null) return false;
         return !((IElement)previousMappingPath?.Element).ChildElements.Contains((IElement)mappingPathTarget?.Element);
-	}
+    }
 
     protected string GetTargetPathText()
     {
@@ -309,7 +309,8 @@ public abstract class CSharpMappingBase : ICSharpMapping
                     }
                 }
 
-                csharpElement = null;       break;
+                csharpElement = null;
+                break;
             }
 
             if (csharpElement is IHasCSharpName hasName)
