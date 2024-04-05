@@ -258,11 +258,6 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 }
 
                 result = result != null ? new CSharpAccessMemberStatement(result, member) : member;
-                //var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
-                //if (previousMappingPath?.Element.TypeReference?.IsNullable == true && result is CSharpAccessMemberStatement accessMember)
-                //{
-                //    accessMember.IsConditional();
-                //}
             }
         }
 
@@ -291,10 +286,6 @@ public abstract class CSharpMappingBase : ICSharpMapping
         {
             csharpElement = reference as CSharpMetadataBase;
         }
-        //else if (TryFindTemplateForMappingElement((IElement)mappingElement.ParentElement?.TypeReference?.Element, mappingElement, out reference))
-        //{
-        //    csharpElement = reference as CSharpMetadataBase;
-        //}
 
         if (csharpElement != null)
         {
@@ -318,8 +309,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
                     }
                 }
 
-                csharpElement = null;
-                break;
+                csharpElement = null;       break;
             }
 
             if (csharpElement is IHasCSharpName hasName)
@@ -332,40 +322,6 @@ public abstract class CSharpMappingBase : ICSharpMapping
         // try this template:
         return Template.CSharpFile.TryGetReferenceForModel(mappingPathTarget.Id, out reference);
     }
-
-    //private bool TryFindTemplateForMappingElement(IElement mappedBaseElement, IElement mappedMemberElement, out IHasCSharpName reference)
-    //{
-    //    if (mappedBaseElement is null || mappedMemberElement is null)
-    //    {
-    //        reference = null;
-    //        return false;
-    //    }
-
-    //    var templateInstances = Template.ExecutionContext.OutputTargets
-    //        .SelectMany(s => s.TemplateInstances)
-    //        .Where(ti => ti.TryGetModel<IMetadataModel>(out var curModel) && curModel.Id == mappedBaseElement.Id && ti is ICSharpFileBuilderTemplate)
-    //        .Cast<ICSharpFileBuilderTemplate>();
-
-    //    foreach (var templateInstance in templateInstances)
-    //    {
-    //        if (HasFoundMappingElement(mappedBaseElement, out reference, templateInstance) && HasMember(templateInstance, mappedMemberElement))
-    //        {
-    //            return true;
-    //        }
-    //    }
-        
-    //    reference = null;
-    //    return false;
-    //}
-
-    //private bool HasMember(ICSharpFileBuilderTemplate templateInstance, IElement memberElement)
-    //{
-    //    return templateInstance.CSharpFile.TypeDeclarations.SelectMany(s => s.Methods).Cast<ICSharpCodeContext>()
-    //        .Concat(templateInstance.CSharpFile.TypeDeclarations.SelectMany(s => s.Properties))
-    //        .Concat(templateInstance.CSharpFile.Interfaces.SelectMany(s => s.Methods))
-    //        .Concat(templateInstance.CSharpFile.Interfaces.SelectMany(s => s.Properties))
-    //        .Any(x => x.TryGetReferenceForModel(memberElement, out _));
-    //}
 
     private static bool TryGetReferenceForModelInCSharpFile(CSharpFile csharpFile, IElement mappedElement, out IHasCSharpName reference)
     {
