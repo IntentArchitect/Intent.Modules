@@ -10,6 +10,13 @@ public interface ICSharpReferenceable : IHasCSharpName, ICSharpCodeContext
 {
 }
 
+public interface IBuildsCSharpMembers
+{
+    IBuildsCSharpMembers AddField(string type, string name, Action<CSharpField> configure = null);
+    IBuildsCSharpMembers AddProperty(string type, string name, Action<CSharpProperty> configure = null);
+    IBuildsCSharpMembers AddMethod(string returnType, string name, Action<CSharpClassMethod> configure = null);
+}
+
 public interface IHasCSharpName
 {
     string Name { get; }

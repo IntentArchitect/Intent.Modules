@@ -7,7 +7,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpReferenceable
+public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers, ICodeBlock, ICSharpReferenceable
 {
     private readonly Type _type;
     private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.NewLine;
@@ -125,6 +125,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<CSharpField> configure = null) => AddField(type, name, configure);
     public CSharpClass AddField(string type, string name, Action<CSharpField> configure = null)
     {
         var field = new CSharpField(type, name)
@@ -137,6 +138,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<CSharpProperty> configure = null) => AddProperty(type, name, configure);
     public CSharpClass AddProperty(string type, string name, Action<CSharpProperty> configure = null)
     {
         var property = new CSharpProperty(type, name, this)
@@ -204,6 +206,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<CSharpClassMethod> configure = null) => AddMethod(returnType, name, configure);
     public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod> configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
