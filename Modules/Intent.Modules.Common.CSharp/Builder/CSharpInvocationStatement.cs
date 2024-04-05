@@ -43,7 +43,7 @@ public class CSharpAccessMemberStatement : CSharpStatement
 
     public override string GetText(string indentation)
     {
-        return $"{Reference.GetText(indentation).TrimEnd()}{(_isConditional ? "?." : ".")}{Member.GetText(indentation).TrimStart()}{(_withSemicolon ? ";" : string.Empty)}";
+        return $"{Reference.GetText(indentation).TrimEnd()}{(_isConditional ? "?." : ".")}{Member.GetText(indentation).Trim()}{(_withSemicolon ? ";" : string.Empty)}";
     }
 }
 
