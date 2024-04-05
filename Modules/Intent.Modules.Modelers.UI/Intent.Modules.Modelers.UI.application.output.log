@@ -146,14 +146,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#81ed7e35-9554-42a0-8c70-258e6ff6e8c3</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/UIElementSettingsExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>UIElementSettingsExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#911c35b4-4ba3-404c-a0c6-e5258e53333a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/UserInterfacePackageModel.cs</ApplicationRelativeFilePath>
@@ -198,14 +190,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.UI.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.UI.csproj</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1cf7c6ee-1399-4f11-b00f-719c44882e8c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#6fda2aba-eeb7-484b-83bb-271273455e20</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/UI Component Module Builder Extension.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>UI Component Module Builder Extension.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

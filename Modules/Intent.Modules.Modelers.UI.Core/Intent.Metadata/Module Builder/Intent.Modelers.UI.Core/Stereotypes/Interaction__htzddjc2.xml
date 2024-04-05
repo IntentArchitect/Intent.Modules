@@ -20,6 +20,20 @@
   <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
   <packageName>Intent.Modelers.UI.Core</packageName>
   <properties>
+    <property id="4571d564-3a7a-4199-8e50-7055dd36a205">
+      <name>Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Default</defaultValue>
+      <valueOptions>
+        <option>Default</option>
+        <option>Submit</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
     <property id="d05f7b5b-fe45-4cbb-b938-380a4b68c0df">
       <name>On Click</name>
       <type>string</type>

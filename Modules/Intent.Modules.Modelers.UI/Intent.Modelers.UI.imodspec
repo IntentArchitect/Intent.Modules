@@ -31,7 +31,6 @@
   <metadata>
     <install src="modelers/User Interface Core Types.designer.settings" externalReference="444f582b-b875-4c72-9671-697b47fa367c" target="Module Builder" />
     <install target="Module Builder;User Interface" src="Intent.Metadata/Module Builder/Intent.Modelers.UI/Intent.Modelers.UI.pkg.config" externalReference="5c4628ec-679e-4f3d-afda-137c978deae0" />
-    <install target="Module Builder" src="modelers/UI Component Module Builder Extension.designer.settings" externalReference="6fda2aba-eeb7-484b-83bb-271273455e20" />
     <install src="modelers/User Interface.designer.config" externalReference="f492faed-0665-4513-9853-5a230721786f" />
     <install src="modelers/User Interface Packages.designer.settings" externalReference="93058b8a-4d1d-4f88-ac14-332c87666418" target="User Interface" />
   </metadata>
