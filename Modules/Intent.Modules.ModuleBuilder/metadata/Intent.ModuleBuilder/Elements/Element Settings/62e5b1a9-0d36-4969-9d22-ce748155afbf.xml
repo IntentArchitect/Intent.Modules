@@ -63,13 +63,13 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="805f9bfd-a6f2-472c-800e-621134e555c1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Element Mapping</name>
-          <display>Add Element Mapping: Mappable Element Settings</display>
+        <childElement id="1ad4cd5f-18f6-43fd-acc9-ef27c32bb41a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Static Mapping</name>
+          <display>Add Static Mapping: Static Mappable Settings</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="42e922c7-e085-46f3-b8ec-e4261a2cd8b4">
-            <typeId>62e5b1a9-0d36-4969-9d22-ce748155afbf</typeId>
+          <typeReference id="a72e385d-23cd-4d08-b7f8-42c36820657a">
+            <typeId>c776bc38-c0e8-4535-87dd-79cfd33be2ad</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -103,13 +103,13 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="1ad4cd5f-18f6-43fd-acc9-ef27c32bb41a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Static Mapping</name>
-          <display>Add Static Mapping: Static Mappable Settings</display>
+        <childElement id="805f9bfd-a6f2-472c-800e-621134e555c1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Element Mapping</name>
+          <display>Add Element Mapping: Mappable Element Settings</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="a72e385d-23cd-4d08-b7f8-42c36820657a">
-            <typeId>c776bc38-c0e8-4535-87dd-79cfd33be2ad</typeId>
+          <typeReference id="42e922c7-e085-46f3-b8ec-e4261a2cd8b4">
+            <typeId>62e5b1a9-0d36-4969-9d22-ce748155afbf</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
