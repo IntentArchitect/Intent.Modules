@@ -291,7 +291,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         {
             csharpElement = reference as CSharpMetadataBase;
         }
-        else if (TryFindTemplateForMappingElement((IElement)mappingElement.ParentElement?.TypeReference.Element, mappingElement, out reference))
+        else if (TryFindTemplateForMappingElement((IElement)mappingElement.ParentElement?.TypeReference?.Element, mappingElement, out reference))
         {
             csharpElement = reference as CSharpMetadataBase;
         }
