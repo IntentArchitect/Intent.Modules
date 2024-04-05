@@ -11,6 +11,6 @@ public class CSharpAwaitExpression : CSharpStatement
 
     public override string GetText(string indentation)
     {
-        return $"{indentation}{RelativeIndentation}{indentation}await {Expression.GetText(indentation).TrimStart()}";
+        return $"{RelativeIndentation}{indentation}await {Expression.GetText(indentation).TrimStart()}";
     }
 }
