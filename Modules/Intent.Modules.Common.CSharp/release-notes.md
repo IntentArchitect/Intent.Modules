@@ -2,6 +2,7 @@
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
 - Improvement: Added Events for requesting Adding Properties to CSProj files and secrets to UserSecrets.
+- Improvement: `date` types will now translate into `System.DateOnly` .NET types and no longer to `System.DateTime`.
 
 ### Version 3.5.6
 

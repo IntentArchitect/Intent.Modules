@@ -193,6 +193,14 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                             typeReference: typeReference,
                             nullableFormatter: nullableFormatter);
                     case "date":
+                        return CSharpResolvedTypeInfo.Create(
+                            name: "DateOnly",
+                            @namespace: "System",
+                            isPrimitive: true,
+                            isNullable: typeReference.IsNullable,
+                            isCollection: false,
+                            typeReference: typeReference,
+                            nullableFormatter: nullableFormatter);
                     case "datetime":
                         return CSharpResolvedTypeInfo.Create(
                             name: "DateTime",
