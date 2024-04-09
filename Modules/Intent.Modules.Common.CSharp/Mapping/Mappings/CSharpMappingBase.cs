@@ -302,7 +302,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
                     var foundSubTypeTemplate =
                         Template.GetTypeInfo(mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.TypeReference.Element.AsTypeReference())?.Template as
                             ICSharpFileBuilderTemplate;
-                    if (foundSubTypeTemplate?.CSharpFile.Classes.First().TryGetReferenceForModel(pathTarget.Id, out reference) == true)
+                    if (foundSubTypeTemplate?.CSharpFile.TypeDeclarations.First().TryGetReferenceForModel(pathTarget.Id, out reference) == true)
                     {
                         csharpElement = reference as CSharpMetadataBase;
                         continue;
