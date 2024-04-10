@@ -26,6 +26,13 @@ namespace Intent.Modelers.UI.Api
                 .ToList();
         }
 
+        public static IList<LayoutModel> GetLayoutModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(LayoutModel.SpecializationTypeId)
+                .Select(x => new LayoutModel(x))
+                .ToList();
+        }
+
         public static IList<ModelDefinitionModel> GetModelDefinitionModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(ModelDefinitionModel.SpecializationTypeId)

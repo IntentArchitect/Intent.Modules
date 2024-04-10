@@ -194,7 +194,6 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd</parentFolderId>
@@ -202,74 +201,7 @@
       <packageName>Intent.Modelers.UI.Core</packageName>
       <stereotypes />
       <metadata />
-      <childElements>
-        <childElement id="e95e7ffd-c773-4023-a112-09e8fd5fcd83" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Changed</name>
-          <display>On Changed: Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="6d42f862-6c73-48ad-8219-3c47bf32ee6d">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>4e6f6345-97db-40e3-b6ad-e0f7158b1042</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const containerId = &quot;b97ea181-2462-431f-8f62-f90f79509b9e&quot;;&#xD;&#xA;const contentId = &quot;7f7bc148-138f-4b61-8fa1-a8d725dbed52&quot;;&#xD;&#xA;&#xD;&#xA;let existingHeader = element.getChildren(containerId).filter(x =&gt; x.getName() == &quot;Header&quot;)[0];&#xD;&#xA;if (element.getStereotype(contentId).getProperty(&quot;Header&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    existingHeader = existingHeader ?? createElement(containerId, &quot;Header&quot;, element.id);&#xD;&#xA;    existingHeader.setOrder(0);&#xD;&#xA;} else {&#xD;&#xA;    existingHeader?.delete();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let existingBody = element.getChildren(containerId).filter(x =&gt; x.getName() == &quot;Body&quot;)[0];&#xD;&#xA;if (element.getStereotype(contentId).getProperty(&quot;Body&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    existingBody = existingBody ?? createElement(containerId, &quot;Body&quot;, element.id);&#xD;&#xA;    console.warn(&quot;body: &quot; + Math.min(1, element.getChildren(containerId).length - 1))&#xD;&#xA;    existingBody.setOrder(Math.min(1, element.getChildren(containerId).length - 1));&#xD;&#xA;} else {&#xD;&#xA;    existingBody?.delete();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let existingFooter = element.getChildren(containerId).filter(x =&gt; x.getName() == &quot;Footer&quot;)[0];&#xD;&#xA;if (element.getStereotype(contentId).getProperty(&quot;Footer&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    existingFooter = existingFooter ?? createElement(containerId, &quot;Footer&quot;, element.id);&#xD;&#xA;    console.warn(&quot;footer: &quot; + Math.min(2, element.getChildren(containerId).length - 1))&#xD;&#xA;    existingFooter.setOrder(Math.min(2, element.getChildren(containerId).length - 1));&#xD;&#xA;} else {&#xD;&#xA;    existingFooter?.delete();&#xD;&#xA;}&#xD;&#xA;console.log('done')&#xD;&#xA;&#xD;&#xA;" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="4a9e6f1e-cd87-42e3-94df-7b51e30cd201" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Created</name>
-          <display>On Created: Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="c8cf6f05-5039-49ea-a50c-3cf3a6e4ff91">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>4e6f6345-97db-40e3-b6ad-e0f7158b1042</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const contentId = &quot;7f7bc148-138f-4b61-8fa1-a8d725dbed52&quot;;&#xD;&#xA;&#xD;&#xA;if (element.getStereotype(contentId).getProperty(&quot;Header&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    createElement(&quot;Section&quot;, &quot;Header&quot;, element.id);&#xD;&#xA;}&#xD;&#xA;if (element.getStereotype(contentId).getProperty(&quot;Body&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    createElement(&quot;Section&quot;, &quot;Body&quot;, element.id);&#xD;&#xA;}&#xD;&#xA;if (element.getStereotype(contentId).getProperty(&quot;Footer&quot;).getValue())&#xD;&#xA;{&#xD;&#xA;    createElement(&quot;Section&quot;, &quot;Footer&quot;, element.id);&#xD;&#xA;}" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
+      <childElements />
     </childElement>
   </childElements>
 </class>

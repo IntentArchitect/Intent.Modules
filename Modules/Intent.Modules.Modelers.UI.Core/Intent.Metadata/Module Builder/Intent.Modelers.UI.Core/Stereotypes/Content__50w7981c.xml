@@ -4,6 +4,7 @@
   <targetMode>of-type</targetMode>
   <targetTypes>
     <type id="1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd">Form</type>
+    <type id="c505f35f-7148-46a3-a812-d9f53a174490">Layout Sider</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>
@@ -19,6 +20,49 @@
   <order>0</order>
   <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
   <packageName>Intent.Modelers.UI.Core</packageName>
+  <onAppliedScript>const containerId = "b97ea181-2462-431f-8f62-f90f79509b9e";
+if (stereotype.getProperty("Header").getValue())
+{
+    createElement(containerId, "Header", element.id);
+}
+if (stereotype.getProperty("Body").getValue())
+{
+    createElement(containerId, "Body", element.id);
+}
+if (stereotype.getProperty("Footer").getValue())
+{
+    createElement(containerId, "Footer", element.id);
+}</onAppliedScript>
+  <onChangedScript>const containerId = "b97ea181-2462-431f-8f62-f90f79509b9e";
+
+let existingHeader = element.getChildren(containerId).filter(x =&gt; x.getName() == "Header")[0];
+if (stereotype.getProperty("Header").getValue())
+{
+    existingHeader = existingHeader ?? createElement(containerId, "Header", element.id);
+    existingHeader.setOrder(0);
+} else {
+    existingHeader?.delete();
+}
+
+let existingBody = element.getChildren(containerId).filter(x =&gt; x.getName() == "Body")[0];
+if (stereotype.getProperty("Body").getValue())
+{
+    existingBody = existingBody ?? createElement(containerId, "Body", element.id);
+    console.warn("body: " + Math.min(1, element.getChildren(containerId).length - 1))
+    existingBody.setOrder(Math.min(1, element.getChildren(containerId).length - 1));
+} else {
+    existingBody?.delete();
+}
+
+let existingFooter = element.getChildren(containerId).filter(x =&gt; x.getName() == "Footer")[0];
+if (stereotype.getProperty("Footer").getValue())
+{
+    existingFooter = existingFooter ?? createElement(containerId, "Footer", element.id);
+    console.warn("footer: " + Math.min(2, element.getChildren(containerId).length - 1))
+    existingFooter.setOrder(Math.min(2, element.getChildren(containerId).length - 1));
+} else {
+    existingFooter?.delete();
+}</onChangedScript>
   <properties>
     <property id="f980aa79-3b16-4f43-acd3-3c0e34032183">
       <name>Model</name>

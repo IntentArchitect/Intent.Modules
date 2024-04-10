@@ -24,6 +24,11 @@ namespace Intent.Modelers.UI.Api
             .Select(x => new ComponentModel(x))
             .ToList();
 
+        public IList<LayoutModel> Layouts => _element.ChildElements
+            .GetElementsOfType(LayoutModel.SpecializationTypeId)
+            .Select(x => new LayoutModel(x))
+            .ToList();
+
         public IList<ModelDefinitionModel> ModelDefinitions => _element.ChildElements
             .GetElementsOfType(ModelDefinitionModel.SpecializationTypeId)
             .Select(x => new ModelDefinitionModel(x))
