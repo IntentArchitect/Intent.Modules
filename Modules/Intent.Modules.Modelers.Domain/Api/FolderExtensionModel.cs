@@ -44,6 +44,11 @@ namespace Intent.Modelers.Domain.Api
             .Select(x => new DiagramModel(x))
             .ToList();
 
+        public IList<DataContractModel> DomainContracts => _element.ChildElements
+            .GetElementsOfType(DataContractModel.SpecializationTypeId)
+            .Select(x => new DataContractModel(x))
+            .ToList();
+
         public IList<DataContractModel> DomainObjects => _element.ChildElements
             .GetElementsOfType(DataContractModel.SpecializationTypeId)
             .Select(x => new DataContractModel(x))

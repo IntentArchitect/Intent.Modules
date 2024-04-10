@@ -1,6 +1,7 @@
 ﻿### Version 3.9.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
+- Fixed: Renamed `New Domain Object` to `New Domain Contract`.
 
 ### Version 3.8.0
 

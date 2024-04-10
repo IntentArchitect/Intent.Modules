@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Eventing.Api;
 using Intent.Modelers.Services.Api;
-using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
 
 namespace Intent.Modelers.Services.EventInteractions;
 
+/// <summary>
+/// Extension methods of event interactions in the services designer.
+/// </summary>
 public static class ApiMetadataManagerCustomExtensions
 {
     public static IList<EventingDTOModel> GetExplicitlyPublishedDtoModels(this IMetadataManager metadataManager, IApplication application)
@@ -96,6 +99,62 @@ public static class ApiMetadataManagerCustomExtensions
     {
         return metadataManager.Services(application).GetAssociationsOfType(SendIntegrationCommandModel.SpecializationTypeId)
             .Select(x => x.TargetEnd.TypeReference.Element.AsIntegrationCommandModel())
+            .Distinct()
+            .ToArray();
+    }
+
+    /// <summary>
+    /// Returns all messages referenced by an association in the services designer.
+    /// </summary>
+    public static IReadOnlyCollection<MessageModel> GetAssociatedMessageModels(this IMetadataManager metadataManager, IApplication application)
+    {
+        return metadataManager.Services(application).Associations
+            .SelectMany(x => new[] { x.TargetEnd?.TypeReference?.Element, x.SourceEnd?.TypeReference?.Element })
+            .Where(x => x.IsMessageModel())
+            .Select(x => x.AsMessageModel())
+            .Distinct()
+            .ToArray();
+    }
+
+    /// <summary>
+    /// Returns all messages referenced by an association in the services designer.
+    /// </summary>
+    public static IReadOnlyCollection<IntegrationCommandModel> GetAssociatedIntegrationCommandModels(this IMetadataManager metadataManager, IApplication application)
+    {
+        return metadataManager.Services(application).Associations
+            .SelectMany(x => new[] { x.TargetEnd?.TypeReference?.Element, x.SourceEnd?.TypeReference?.Element })
+            .Where(x => x.IsIntegrationCommandModel())
+            .Select(x => x.AsIntegrationCommandModel())
+            .Distinct()
+            .ToArray();
+    }
+
+    /// <summary>
+    /// Returns all enums used by messages referenced by an association in the services designer.
+    /// </summary>
+    public static IReadOnlyCollection<EnumModel> GetAssociatedMessageEnumModels(this IMetadataManager metadataManager, IApplication application)
+    {
+        return metadataManager.GetAssociatedMessageModels(application)
+            .SelectMany(x => x.Properties)
+            .SelectMany(x => GetReferencedEnumModels(x.TypeReference))
+            .Concat(metadataManager.GetExplicitlySentIntegrationCommandModels(application)
+                .SelectMany(x => x.Properties)
+                .SelectMany(x => GetReferencedEnumModels(x.TypeReference)))
+            .Distinct()
+            .ToArray();
+    }
+
+    /// <summary>
+    /// Returns all DTOs used by messages referenced by an association in the services designer.
+    /// </summary>
+    public static IReadOnlyCollection<EventingDTOModel> GetAssociatedMessageDtoModels(this IMetadataManager metadataManager, IApplication application)
+    {
+        return metadataManager.GetAssociatedMessageModels(application)
+            .SelectMany(x => x.Properties)
+            .SelectMany(x => GetReferencedDtoModels(x.TypeReference))
+            .Concat(metadataManager.GetExplicitlySentIntegrationCommandModels(application)
+                .SelectMany(x => x.Properties)
+                .SelectMany(x => GetReferencedDtoModels(x.TypeReference)))
             .Distinct()
             .ToArray();
     }

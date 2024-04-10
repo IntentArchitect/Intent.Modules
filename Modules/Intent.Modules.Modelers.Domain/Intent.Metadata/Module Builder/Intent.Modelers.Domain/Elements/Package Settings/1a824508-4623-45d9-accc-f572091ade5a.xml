@@ -277,8 +277,8 @@
           <childElements />
         </childElement>
         <childElement id="27b0bdcc-4196-4cbe-8561-817603f22c3a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Domain Object</name>
-          <display>New Domain Object: Data Contract</display>
+          <name>New Domain Contract</name>
+          <display>New Domain Contract: Data Contract</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="0afd14b7-7eec-4548-a3cc-5777351d46d3">
