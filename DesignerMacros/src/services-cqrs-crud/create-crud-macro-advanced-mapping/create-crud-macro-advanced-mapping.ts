@@ -1,8 +1,9 @@
 /// <reference path="../create-crud-macro/create-crud-macro.ts"/>
 /// <reference path="../_common/convertToAdvancedMapping.ts"/>
 
-async function execute(element: IElementApi) {
-    let entity = await DomainHelper.openSelectEntityDialog();
+async function execute(element: IElementApi, domainClass?: IElementApi) {
+
+    let entity = !domainClass ? await DomainHelper.openSelectEntityDialog() : domainClass;
     if (entity == null) {
         return;
     }
@@ -43,7 +44,6 @@ async function execute(element: IElementApi) {
     const diagram = getCurrentDiagram();
     diagram.layoutVisuals(folder, null, true);
 }
-
 
 /**
  * Used by Intent.Modelers.Services.DomainInteractions

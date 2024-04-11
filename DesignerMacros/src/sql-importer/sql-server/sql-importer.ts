@@ -1,5 +1,4 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
-/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
 type IDynamicFormFieldConfig = MacroApi.Context.IDynamicFormFieldConfig;
 interface ISqlImporterSettings {
