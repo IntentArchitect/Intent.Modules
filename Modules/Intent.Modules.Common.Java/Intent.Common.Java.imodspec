@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Java</id>
-  <version>4.1.0-pre.0</version>
+  <version>4.1.0</version>
   <supportedClientVersions>[4.1.0-pre.0, 5.0.0-a)</supportedClientVersions>
   <summary>Common library support in order to help generate code for the Java language.</summary>
   <description>Common library support in order to help generate code for the Java language.</description>
@@ -10,8 +10,8 @@
   <releaseNotes>release-notes.md</releaseNotes>
   <templates></templates>
   <dependencies>
-    <dependency id="Intent.Common" version="3.6.0-pre.0" />
-    <dependency id="Intent.Common.Types" version="3.4.0-pre.0" />
+    <dependency id="Intent.Common" version="3.6.0" />
+    <dependency id="Intent.Common.Types" version="3.4.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

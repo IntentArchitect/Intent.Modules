@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Types.ServiceProxies</id>
-  <version>5.3.0-pre.0</version>
+  <version>5.3.0</version>
   <supportedClientVersions>[4.1.0, 5.0.0-a)</supportedClientVersions>
   <summary>Additional support for describing proxies in the Proxies designer.</summary>
   <description>Additional support for describing proxies in the Proxies designer.</description>
@@ -12,9 +12,9 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.6.0-pre.0" />
-    <dependency id="Intent.Common.Types" version="3.4.0-pre.0" />
-    <dependency id="Intent.Modelers.Services" version="3.7.0-pre.0" />
+    <dependency id="Intent.Common" version="3.6.0" />
+    <dependency id="Intent.Common.Types" version="3.4.0" />
+    <dependency id="Intent.Modelers.Services" version="3.7.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
