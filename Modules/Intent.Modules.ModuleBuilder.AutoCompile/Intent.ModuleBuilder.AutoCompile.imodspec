@@ -2,7 +2,7 @@
 <package>
   <id>Intent.ModuleBuilder.AutoCompile</id>
   <version>3.4.0-pre.0</version>
-  <supportedClientVersions>[4.1.0-pre.0, 5.0.0-a)</supportedClientVersions>
+  <supportedClientVersions>[4.2.4, 5.0.0-a)</supportedClientVersions>
   <releaseNotes>release-notes.md</releaseNotes>
   <summary>Auto-compiles modules with each run of the software factory execution.</summary>
   <description>Auto-compiles modules with each run of the software factory execution.</description>
