@@ -1,5 +1,16 @@
 ﻿### Version 3.6.0
 
+> ⚠️ NOTE
+> 
+> Prior to this version of the module, any data in Intent Architect designers referencing the date 
+> type would generate `System.DateTime` in C# code, but going forward they will instead generate 
+> `System.DateOnly`. To avoid causing code compilation issues and possible bugs, on upgrading 
+> this module it will change all designer references using `date` to instead use `datetime`. 
+> Should you wish to maintain date uses in your designers, you can simply roll-back the changes that 
+> get made to the `.xml` files in your source code management software (e.g. Git). Please don't 
+> hesitate to reach out to our [Support](https://github.com/IntentArchitect/Support) should you 
+> have any comments or questions.
+
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
 - Improvement: Added Events for requesting Adding Properties to CSProj files and secrets to UserSecrets.
 - Improvement: `date` types will now translate into `System.DateOnly` .NET types and no longer to `System.DateTime`.
