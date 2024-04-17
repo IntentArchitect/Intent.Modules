@@ -56,7 +56,7 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new ElementEventHandlerModel(x))
             .ToList();
 
-        public List<ElementMacroPersistable> ToPersistable()
+        public List<MacroPersistable> ToPersistable()
         {
             // TODO: The OnCreatedEvents & OnLoadedEvents returns all ElementMacroModels. Need solution
             return OnCreatedEvents.Select(x => x.ToPersistable()).ToList();

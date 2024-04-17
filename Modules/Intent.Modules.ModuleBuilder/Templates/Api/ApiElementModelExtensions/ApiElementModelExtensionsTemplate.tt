@@ -24,7 +24,7 @@ namespace <#= Namespace #>
 <#  foreach(var stereotypeDefinition in Model.StereotypeDefinitions) { #>
         public static <#= stereotypeDefinition.Name.ToCSharpIdentifier() #> Get<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelClassName #> model)
         {
-            var stereotype = model.GetStereotype("<#= stereotypeDefinition.Id #>");
+            var stereotype = model.GetStereotype(<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>.DefinitionId);
             return stereotype != null ? new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(stereotype) : null;
         }
 <#      if (stereotypeDefinition.AllowMultipleApplies) { #>
@@ -32,7 +32,7 @@ namespace <#= Namespace #>
         public static IReadOnlyCollection<<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>> Get<#= ForcePluralize(stereotypeDefinition.Name.ToCSharpIdentifier()) #>(this <#= ModelClassName #> model)
         {
             var stereotypes = model
-                .GetStereotypes("<#= stereotypeDefinition.Id #>")
+                .GetStereotypes(<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>.DefinitionId)
                 .Select(stereotype => new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(stereotype))
                 .ToArray();
 
@@ -42,7 +42,7 @@ namespace <#= Namespace #>
 
         public static bool Has<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelClassName #> model)
         {
-            return model.HasStereotype("<#= stereotypeDefinition.Id #>");
+            return model.HasStereotype(<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>.DefinitionId);
         }
 
         public static bool TryGet<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelClassName #> model, out <#= stereotypeDefinition.Name.ToCSharpIdentifier() #> stereotype)
@@ -53,7 +53,7 @@ namespace <#= Namespace #>
                 return false;
             }
 
-            stereotype = new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(model.GetStereotype("<#= stereotypeDefinition.Id #>"));
+            stereotype = new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(model.GetStereotype(<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>.DefinitionId));
             return true;
         }
 
@@ -62,6 +62,7 @@ namespace <#= Namespace #>
         public class <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "<#= stereotypeDefinition.Id #>";
 
             public <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(IStereotype stereotype)
             {
@@ -97,6 +98,7 @@ namespace <#= Namespace #>
 <#              switch (property.OptionsSource) {
                     case StereotypePropertyOptionsSource.LookupElement:
                     case StereotypePropertyOptionsSource.LookupChildren:
+                    case StereotypePropertyOptionsSource.LookupStereotype:
                     case StereotypePropertyOptionsSource.NestedLookup:#>
             public IElement <#= property.Name.ToCSharpIdentifier() #>() {
 <#                      if (property.LookupTypes.Count == 1 && false) { /* TODO */ #>
@@ -121,6 +123,7 @@ namespace <#= Namespace #>
 <#              switch (property.OptionsSource) {
                     case StereotypePropertyOptionsSource.LookupElement:
                     case StereotypePropertyOptionsSource.LookupChildren:
+                    case StereotypePropertyOptionsSource.LookupStereotype:
                     case StereotypePropertyOptionsSource.NestedLookup:#>
             public IElement[] <#= property.Name.ToCSharpIdentifier() #>() {
                 return _stereotype.GetProperty<IElement[]>("<#= property.Name #>") ?? new IElement[0];

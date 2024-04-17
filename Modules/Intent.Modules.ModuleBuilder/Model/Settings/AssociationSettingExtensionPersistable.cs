@@ -22,7 +22,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("macros")]
         [XmlArrayItem("macro")]
-        public List<ElementMacroPersistable> Macros { get; set; } = new List<ElementMacroPersistable>();
+        public List<MacroPersistable> Macros { get; set; } = new List<MacroPersistable>();
 
         // TODO: GCB - Visual Extensions
         //[XmlElement("visualSettingExtension")]

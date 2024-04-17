@@ -73,7 +73,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("macros")]
         [XmlArrayItem("macro")]
-        public List<ElementMacroPersistable> Macros { get; set; }
+        public List<MacroPersistable> Macros { get; set; }
 
         public void AddType(TypeOrderPersistable typeOrder)
         {

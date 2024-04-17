@@ -56,6 +56,11 @@ namespace Intent.ModuleBuilder.Api
             {
                 SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
+                Implements = this.Stereotypes
+                    .Where(x => x.DefinitionId != ElementSettingsModelStereotypeExtensions.Settings.DefinitionId &&
+                                x.DefinitionId != ElementSettingsModelStereotypeExtensions.TypeReferenceSettings.DefinitionId)
+                    .Select(x => new ImplementedStereotypePersistable() { DefinitionId = x.DefinitionId, Name = x.Name})
+                    .ToList(),
                 SaveAsOwnFile = MustSaveInOwnFile(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
                 ValidateFunction = this.GetSettings().ValidateFunction(),
@@ -89,6 +94,7 @@ namespace Intent.ModuleBuilder.Api
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = this.MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
+                AcceptedChildren = this.AcceptedChildTypes?.ToPersistable(),
                 VisualSettings = this.VisualSettings?.ToPersistable(),
                 Macros = EventSettings?.ToPersistable(),
             };
@@ -188,6 +194,11 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        public AcceptedChildTypesModel AcceptedChildTypes => _element.ChildElements
+            .GetElementsOfType(AcceptedChildTypesModel.SpecializationTypeId)
+            .Select(x => new AcceptedChildTypesModel(x))
+            .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
         public ElementVisualSettingsModel VisualSettings => _element.ChildElements

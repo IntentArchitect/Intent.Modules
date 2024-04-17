@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="c8e14e3f-f5ee-4992-b6cb-761ea48a11cd" version="3.1.0">
+  <name>Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">Accepted Function</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>86ed4b79-2a1d-4717-b925-4a12291606a9</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="75834c40-408b-4fcb-a50b-b96c2f81ffc0">
+      <name>Types with Stereotype</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-stereotype</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static Settings GetSettings(this ElementSettingsModel model)
         {
-            var stereotype = model.GetStereotype("f406222b-31a8-435e-80f6-6a08f9108649");
+            var stereotype = model.GetStereotype(Settings.DefinitionId);
             return stereotype != null ? new Settings(stereotype) : null;
         }
 
         public static bool HasSettings(this ElementSettingsModel model)
         {
-            return model.HasStereotype("f406222b-31a8-435e-80f6-6a08f9108649");
+            return model.HasStereotype(Settings.DefinitionId);
         }
 
         public static bool TryGetSettings(this ElementSettingsModel model, out Settings stereotype)
@@ -31,19 +31,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new Settings(model.GetStereotype("f406222b-31a8-435e-80f6-6a08f9108649"));
+            stereotype = new Settings(model.GetStereotype(Settings.DefinitionId));
             return true;
         }
 
         public static TypeReferenceSettings GetTypeReferenceSettings(this ElementSettingsModel model)
         {
-            var stereotype = model.GetStereotype("d8f6f331-d4f0-4c75-aa91-f2e715cd9591");
+            var stereotype = model.GetStereotype(TypeReferenceSettings.DefinitionId);
             return stereotype != null ? new TypeReferenceSettings(stereotype) : null;
         }
 
         public static bool HasTypeReferenceSettings(this ElementSettingsModel model)
         {
-            return model.HasStereotype("d8f6f331-d4f0-4c75-aa91-f2e715cd9591");
+            return model.HasStereotype(TypeReferenceSettings.DefinitionId);
         }
 
         public static bool TryGetTypeReferenceSettings(this ElementSettingsModel model, out TypeReferenceSettings stereotype)
@@ -54,7 +54,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new TypeReferenceSettings(model.GetStereotype("d8f6f331-d4f0-4c75-aa91-f2e715cd9591"));
+            stereotype = new TypeReferenceSettings(model.GetStereotype(TypeReferenceSettings.DefinitionId));
             return true;
         }
 
@@ -62,6 +62,7 @@ namespace Intent.ModuleBuilder.Api
         public class Settings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "f406222b-31a8-435e-80f6-6a08f9108649";
 
             public Settings(IStereotype stereotype)
             {
@@ -240,6 +241,7 @@ namespace Intent.ModuleBuilder.Api
         public class TypeReferenceSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "d8f6f331-d4f0-4c75-aa91-f2e715cd9591";
 
             public TypeReferenceSettings(IStereotype stereotype)
             {

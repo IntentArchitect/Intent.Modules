@@ -20,6 +20,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlAttribute("typeId")]
         public string SpecializationTypeId { get; set; }
 
+        [XmlArray("implements")]
+        [XmlArrayItem("stereotype", typeof(ImplementedStereotypePersistable))]
+        public List<ImplementedStereotypePersistable> Implements { get; set; }
+        public bool ShouldSerializeImplements() => Implements?.Any() == true;
+
         [XmlElement("icon")]
         public IconModelPersistable Icon { get; set; }
 
@@ -119,6 +124,12 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
             }
         }
 
+        [XmlArray("acceptedChildren")]
+        [XmlArrayItem("accepts", typeof(AcceptedChildSettingPersistable))]
+        public List<AcceptedChildSettingPersistable> AcceptedChildren { get; set; }
+        public bool ShouldSerializeAcceptedChildren() => AcceptedChildren != null;
+
+
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
         public List<ElementCreationOption> CreationOptions { get; set; } = new();
@@ -143,7 +154,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("macros")]
         [XmlArrayItem("macro")]
-        public List<ElementMacroPersistable> Macros { get; set; } = new List<ElementMacroPersistable>();
+        public List<MacroPersistable> Macros { get; set; } = new List<MacroPersistable>();
 
         [XmlArray("childElementSettings")]
         [XmlArrayItem("childElementSetting")]
@@ -170,8 +181,16 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         }
     }
 
-    // TODO: GCB - Rename to MacroPersistable (since used by associations too), but is breaking change with Module Builder module.
-    public class ElementMacroPersistable
+    public class ImplementedStereotypePersistable
+    {
+        [XmlAttribute("definitionId")]
+        public string DefinitionId { get; set; }
+
+        [XmlAttribute("name")]
+        public string Name { get; set; }
+    }
+
+    public class MacroPersistable
     {
         [XmlAttribute("trigger")]
         public string Trigger { get; set; }
@@ -181,5 +200,34 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlIgnore]
         public string Source { get; set; }
+    }
+
+    public class AcceptedChildSettingPersistable
+    {
+        [XmlAttribute("order")]
+        public int Order { get; set; }
+
+        [XmlAttribute("acceptBy")]
+        public AcceptsChildBy AcceptBy { get; set; }
+
+        [XmlAttribute("specializationType")]
+        public string SpecializationType { get; set; }
+        public bool ShouldSerializeSpecializationType() => AcceptBy == AcceptsChildBy.Type;
+
+        [XmlAttribute("specializationTypeId")]
+        public string SpecializationTypeId { get; set; }
+        public bool ShouldSerializeSpecializationTypeId() => AcceptBy == AcceptsChildBy.Type;
+
+        [XmlElement("function")]
+        public string AcceptsFunction { get; set; }
+        public bool ShouldSerializeAcceptsFunction() => AcceptBy == AcceptsChildBy.Function;
+    }
+
+    public enum AcceptsChildBy
+    {
+        [XmlEnum("type")]
+        Type,
+        [XmlEnum("function")]
+        Function
     }
 }
