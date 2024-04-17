@@ -59,7 +59,7 @@ namespace Intent.ModuleBuilder.Api
                 Implements = this.Stereotypes
                     .Where(x => x.DefinitionId != ElementSettingsModelStereotypeExtensions.Settings.DefinitionId &&
                                 x.DefinitionId != ElementSettingsModelStereotypeExtensions.TypeReferenceSettings.DefinitionId)
-                    .Select(x => new ImplementedStereotypePersistable() { DefinitionId = x.DefinitionId, Name = x.Name})
+                    .Select(x => new ImplementedStereotypePersistable() { DefinitionId = x.DefinitionId, Name = x.Name })
                     .ToList(),
                 SaveAsOwnFile = MustSaveInOwnFile(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
@@ -93,7 +93,7 @@ namespace Intent.ModuleBuilder.Api
                 CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
-                TypeOrder = this.MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
+                TypeOrder = this.MenuOptions?.TypeOrder.Select((x) => x.ToPersistable()).ToList(),
                 AcceptedChildren = this.AcceptedChildTypes?.ToPersistable(),
                 VisualSettings = this.VisualSettings?.ToPersistable(),
                 Macros = EventSettings?.ToPersistable(),

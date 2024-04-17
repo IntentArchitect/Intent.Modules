@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Api
     {
         public static PositionSettings GetPositionSettings(this SVGResourceDrawSettingsModel model)
         {
-            var stereotype = model.GetStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea");
+            var stereotype = model.GetStereotype(PositionSettings.DefinitionId);
             return stereotype != null ? new PositionSettings(stereotype) : null;
         }
 
 
         public static bool HasPositionSettings(this SVGResourceDrawSettingsModel model)
         {
-            return model.HasStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea");
+            return model.HasStereotype(PositionSettings.DefinitionId);
         }
 
         public static bool TryGetPositionSettings(this SVGResourceDrawSettingsModel model, out PositionSettings stereotype)
@@ -32,20 +32,20 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new PositionSettings(model.GetStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea"));
+            stereotype = new PositionSettings(model.GetStereotype(PositionSettings.DefinitionId));
             return true;
         }
 
         public static SVGResourceSettings GetSVGResourceSettings(this SVGResourceDrawSettingsModel model)
         {
-            var stereotype = model.GetStereotype("5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082");
+            var stereotype = model.GetStereotype(SVGResourceSettings.DefinitionId);
             return stereotype != null ? new SVGResourceSettings(stereotype) : null;
         }
 
 
         public static bool HasSVGResourceSettings(this SVGResourceDrawSettingsModel model)
         {
-            return model.HasStereotype("5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082");
+            return model.HasStereotype(SVGResourceSettings.DefinitionId);
         }
 
         public static bool TryGetSVGResourceSettings(this SVGResourceDrawSettingsModel model, out SVGResourceSettings stereotype)
@@ -56,13 +56,14 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new SVGResourceSettings(model.GetStereotype("5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082"));
+            stereotype = new SVGResourceSettings(model.GetStereotype(SVGResourceSettings.DefinitionId));
             return true;
         }
 
         public class PositionSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "fc50924a-9e51-40b9-88b6-c7556febdaea";
 
             public PositionSettings(IStereotype stereotype)
             {
@@ -96,6 +97,7 @@ namespace Intent.ModuleBuilder.Api
         public class SVGResourceSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082";
 
             public SVGResourceSettings(IStereotype stereotype)
             {

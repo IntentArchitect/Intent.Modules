@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Api
     {
         public static ScriptSettings GetScriptSettings(this AssociationEventHandlerModel model)
         {
-            var stereotype = model.GetStereotype("1f88f1ac-b96a-4ae7-9047-883c2fa3b3df");
+            var stereotype = model.GetStereotype(ScriptSettings.DefinitionId);
             return stereotype != null ? new ScriptSettings(stereotype) : null;
         }
 
 
         public static bool HasScriptSettings(this AssociationEventHandlerModel model)
         {
-            return model.HasStereotype("1f88f1ac-b96a-4ae7-9047-883c2fa3b3df");
+            return model.HasStereotype(ScriptSettings.DefinitionId);
         }
 
         public static bool TryGetScriptSettings(this AssociationEventHandlerModel model, out ScriptSettings stereotype)
@@ -32,7 +32,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new ScriptSettings(model.GetStereotype("1f88f1ac-b96a-4ae7-9047-883c2fa3b3df"));
+            stereotype = new ScriptSettings(model.GetStereotype(ScriptSettings.DefinitionId));
             return true;
         }
 
@@ -40,6 +40,7 @@ namespace Intent.ModuleBuilder.Api
         public class ScriptSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "1f88f1ac-b96a-4ae7-9047-883c2fa3b3df";
 
             public ScriptSettings(IStereotype stereotype)
             {

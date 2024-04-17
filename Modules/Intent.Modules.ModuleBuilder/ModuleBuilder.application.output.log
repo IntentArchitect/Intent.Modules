@@ -20,8 +20,8 @@
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#59b63cd3-4af8-4f3c-aa94-61407ac3a3bd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AcceptedFunctionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AcceptedFunctionModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/AcceptedStereotypesModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AcceptedStereotypesModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -244,8 +244,8 @@
       <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#59b63cd3-4af8-4f3c-aa94-61407ac3a3bd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/Extensions/AcceptedFunctionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AcceptedFunctionModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/Extensions/AcceptedStereotypesModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AcceptedStereotypesModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

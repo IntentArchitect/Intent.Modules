@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static LabelSettings GetLabelSettings(this AssociationSourceEndVisualSettingsModel model)
         {
-            var stereotype = model.GetStereotype("6b16c65c-f348-40b1-96b0-6423917b9356");
+            var stereotype = model.GetStereotype(LabelSettings.DefinitionId);
             return stereotype != null ? new LabelSettings(stereotype) : null;
         }
 
         public static bool HasLabelSettings(this AssociationSourceEndVisualSettingsModel model)
         {
-            return model.HasStereotype("6b16c65c-f348-40b1-96b0-6423917b9356");
+            return model.HasStereotype(LabelSettings.DefinitionId);
         }
 
         public static bool TryGetLabelSettings(this AssociationSourceEndVisualSettingsModel model, out LabelSettings stereotype)
@@ -31,19 +31,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new LabelSettings(model.GetStereotype("6b16c65c-f348-40b1-96b0-6423917b9356"));
+            stereotype = new LabelSettings(model.GetStereotype(LabelSettings.DefinitionId));
             return true;
         }
 
         public static NavigableIndicatorSettings GetNavigableIndicatorSettings(this AssociationSourceEndVisualSettingsModel model)
         {
-            var stereotype = model.GetStereotype("dc5496ee-e524-41ef-8b17-0125a25d0349");
+            var stereotype = model.GetStereotype(NavigableIndicatorSettings.DefinitionId);
             return stereotype != null ? new NavigableIndicatorSettings(stereotype) : null;
         }
 
         public static bool HasNavigableIndicatorSettings(this AssociationSourceEndVisualSettingsModel model)
         {
-            return model.HasStereotype("dc5496ee-e524-41ef-8b17-0125a25d0349");
+            return model.HasStereotype(NavigableIndicatorSettings.DefinitionId);
         }
 
         public static bool TryGetNavigableIndicatorSettings(this AssociationSourceEndVisualSettingsModel model, out NavigableIndicatorSettings stereotype)
@@ -54,19 +54,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new NavigableIndicatorSettings(model.GetStereotype("dc5496ee-e524-41ef-8b17-0125a25d0349"));
+            stereotype = new NavigableIndicatorSettings(model.GetStereotype(NavigableIndicatorSettings.DefinitionId));
             return true;
         }
 
         public static PointSettings GetPointSettings(this AssociationSourceEndVisualSettingsModel model)
         {
-            var stereotype = model.GetStereotype("1434703f-9e9e-4321-af00-1e857a2e6b80");
+            var stereotype = model.GetStereotype(PointSettings.DefinitionId);
             return stereotype != null ? new PointSettings(stereotype) : null;
         }
 
         public static bool HasPointSettings(this AssociationSourceEndVisualSettingsModel model)
         {
-            return model.HasStereotype("1434703f-9e9e-4321-af00-1e857a2e6b80");
+            return model.HasStereotype(PointSettings.DefinitionId);
         }
 
         public static bool TryGetPointSettings(this AssociationSourceEndVisualSettingsModel model, out PointSettings stereotype)
@@ -77,7 +77,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new PointSettings(model.GetStereotype("1434703f-9e9e-4321-af00-1e857a2e6b80"));
+            stereotype = new PointSettings(model.GetStereotype(PointSettings.DefinitionId));
             return true;
         }
 
@@ -85,6 +85,7 @@ namespace Intent.ModuleBuilder.Api
         public class LabelSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "6b16c65c-f348-40b1-96b0-6423917b9356";
 
             public LabelSettings(IStereotype stereotype)
             {
@@ -108,6 +109,7 @@ namespace Intent.ModuleBuilder.Api
         public class NavigableIndicatorSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "dc5496ee-e524-41ef-8b17-0125a25d0349";
 
             public NavigableIndicatorSettings(IStereotype stereotype)
             {
@@ -146,6 +148,7 @@ namespace Intent.ModuleBuilder.Api
         public class PointSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "1434703f-9e9e-4321-af00-1e857a2e6b80";
 
             public PointSettings(IStereotype stereotype)
             {

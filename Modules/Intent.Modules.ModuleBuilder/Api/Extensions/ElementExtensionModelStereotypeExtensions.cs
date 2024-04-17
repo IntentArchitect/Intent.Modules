@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Api
     {
         public static ExtensionSettings GetExtensionSettings(this ElementExtensionModel model)
         {
-            var stereotype = model.GetStereotype("312eab00-f6db-492e-bbb4-e41383c8d3d8");
+            var stereotype = model.GetStereotype(ExtensionSettings.DefinitionId);
             return stereotype != null ? new ExtensionSettings(stereotype) : null;
         }
 
 
         public static bool HasExtensionSettings(this ElementExtensionModel model)
         {
-            return model.HasStereotype("312eab00-f6db-492e-bbb4-e41383c8d3d8");
+            return model.HasStereotype(ExtensionSettings.DefinitionId);
         }
 
         public static bool TryGetExtensionSettings(this ElementExtensionModel model, out ExtensionSettings stereotype)
@@ -32,18 +32,18 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new ExtensionSettings(model.GetStereotype("312eab00-f6db-492e-bbb4-e41383c8d3d8"));
+            stereotype = new ExtensionSettings(model.GetStereotype(ExtensionSettings.DefinitionId));
             return true;
         }
         public static TypeReferenceExtensionSettings GetTypeReferenceExtensionSettings(this ElementExtensionModel model)
         {
-            var stereotype = model.GetStereotype("159cbc8e-a910-40f7-8e45-3edadbb863c2");
+            var stereotype = model.GetStereotype(TypeReferenceExtensionSettings.DefinitionId);
             return stereotype != null ? new TypeReferenceExtensionSettings(stereotype) : null;
         }
 
         public static bool HasTypeReferenceExtensionSettings(this ElementExtensionModel model)
         {
-            return model.HasStereotype("159cbc8e-a910-40f7-8e45-3edadbb863c2");
+            return model.HasStereotype(TypeReferenceExtensionSettings.DefinitionId);
         }
 
         public static bool TryGetTypeReferenceExtensionSettings(this ElementExtensionModel model, out TypeReferenceExtensionSettings stereotype)
@@ -54,7 +54,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new TypeReferenceExtensionSettings(model.GetStereotype("159cbc8e-a910-40f7-8e45-3edadbb863c2"));
+            stereotype = new TypeReferenceExtensionSettings(model.GetStereotype(TypeReferenceExtensionSettings.DefinitionId));
             return true;
         }
 
@@ -62,6 +62,7 @@ namespace Intent.ModuleBuilder.Api
         public class ExtensionSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "312eab00-f6db-492e-bbb4-e41383c8d3d8";
 
             public ExtensionSettings(IStereotype stereotype)
             {
@@ -86,6 +87,7 @@ namespace Intent.ModuleBuilder.Api
         public class TypeReferenceExtensionSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "159cbc8e-a910-40f7-8e45-3edadbb863c2";
 
             public TypeReferenceExtensionSettings(IStereotype stereotype)
             {

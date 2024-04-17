@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Api
     {
         public static AssociationEndExtensionSettings GetAssociationEndExtensionSettings(this AssociationTargetEndExtensionModel model)
         {
-            var stereotype = model.GetStereotype("1cd7ee9e-614e-4770-a831-d6cdaa56027c");
+            var stereotype = model.GetStereotype(AssociationEndExtensionSettings.DefinitionId);
             return stereotype != null ? new AssociationEndExtensionSettings(stereotype) : null;
         }
 
 
         public static bool HasAssociationEndExtensionSettings(this AssociationTargetEndExtensionModel model)
         {
-            return model.HasStereotype("1cd7ee9e-614e-4770-a831-d6cdaa56027c");
+            return model.HasStereotype(AssociationEndExtensionSettings.DefinitionId);
         }
 
         public static bool TryGetAssociationEndExtensionSettings(this AssociationTargetEndExtensionModel model, out AssociationEndExtensionSettings stereotype)
@@ -32,7 +32,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new AssociationEndExtensionSettings(model.GetStereotype("1cd7ee9e-614e-4770-a831-d6cdaa56027c"));
+            stereotype = new AssociationEndExtensionSettings(model.GetStereotype(AssociationEndExtensionSettings.DefinitionId));
             return true;
         }
 
@@ -40,6 +40,7 @@ namespace Intent.ModuleBuilder.Api
         public class AssociationEndExtensionSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "1cd7ee9e-614e-4770-a831-d6cdaa56027c";
 
             public AssociationEndExtensionSettings(IStereotype stereotype)
             {

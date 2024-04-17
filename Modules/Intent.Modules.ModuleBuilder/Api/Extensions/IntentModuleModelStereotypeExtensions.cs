@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static ModuleSettings GetModuleSettings(this IntentModuleModel model)
         {
-            var stereotype = model.GetStereotype("76256322-88f1-4efb-8bd6-7cc4a6c54cb9");
+            var stereotype = model.GetStereotype(ModuleSettings.DefinitionId);
             return stereotype != null ? new ModuleSettings(stereotype) : null;
         }
 
         public static bool HasModuleSettings(this IntentModuleModel model)
         {
-            return model.HasStereotype("76256322-88f1-4efb-8bd6-7cc4a6c54cb9");
+            return model.HasStereotype(ModuleSettings.DefinitionId);
         }
 
         public static bool TryGetModuleSettings(this IntentModuleModel model, out ModuleSettings stereotype)
@@ -31,7 +31,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new ModuleSettings(model.GetStereotype("76256322-88f1-4efb-8bd6-7cc4a6c54cb9"));
+            stereotype = new ModuleSettings(model.GetStereotype(ModuleSettings.DefinitionId));
             return true;
         }
 
@@ -39,6 +39,7 @@ namespace Intent.ModuleBuilder.Api
         public class ModuleSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "76256322-88f1-4efb-8bd6-7cc4a6c54cb9";
 
             public ModuleSettings(IStereotype stereotype)
             {

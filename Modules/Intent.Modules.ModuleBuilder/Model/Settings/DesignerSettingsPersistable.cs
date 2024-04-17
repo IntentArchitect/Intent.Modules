@@ -186,21 +186,27 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class TypeOrderPersistable : IEquatable<TypeOrderPersistable>
     {
-        private string _order;
-
-        [XmlText]
+        [XmlAttribute("type")]
         public string Type { get; set; }
 
+        [XmlAttribute("typeId")]
+        public string TypeId { get; set; }
+
         [XmlAttribute("order")]
-        public string Order
+        public string OrderSerialized
         {
-            get => _order;
-            set => _order = int.TryParse(value, out var o) ? o.ToString() : null;
+            get => Order?.ToString();
+            set => Order = int.TryParse(value, out var order) ? order : null;
         }
+        public bool ShouldSerializeOrderSerialized() => Order.HasValue;
+
+        [XmlIgnore]
+        public int? Order { get; set; }
 
         public override string ToString()
         {
             return $"{nameof(Type)} = '{Type}', " +
+                   $"{nameof(TypeId)} = '{TypeId}', " +
                    $"{nameof(Order)} = '{Order}'";
         }
 
@@ -208,7 +214,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Type == other.Type;
+            return TypeId == other.TypeId;
         }
 
         public override bool Equals(object obj)
@@ -221,7 +227,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         public override int GetHashCode()
         {
-            return (Type != null ? Type.GetHashCode() : 0);
+            return (TypeId != null ? TypeId.GetHashCode() : 0);
         }
     }
 

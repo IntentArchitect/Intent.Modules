@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static PositionSettings GetPositionSettings(this TextDrawSettingsModel model)
         {
-            var stereotype = model.GetStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea");
+            var stereotype = model.GetStereotype(PositionSettings.DefinitionId);
             return stereotype != null ? new PositionSettings(stereotype) : null;
         }
 
         public static bool HasPositionSettings(this TextDrawSettingsModel model)
         {
-            return model.HasStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea");
+            return model.HasStereotype(PositionSettings.DefinitionId);
         }
 
         public static bool TryGetPositionSettings(this TextDrawSettingsModel model, out PositionSettings stereotype)
@@ -31,19 +31,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new PositionSettings(model.GetStereotype("fc50924a-9e51-40b9-88b6-c7556febdaea"));
+            stereotype = new PositionSettings(model.GetStereotype(PositionSettings.DefinitionId));
             return true;
         }
 
         public static TextSettings GetTextSettings(this TextDrawSettingsModel model)
         {
-            var stereotype = model.GetStereotype("1cb12b3c-f000-4331-b3fc-4250a5ced3fa");
+            var stereotype = model.GetStereotype(TextSettings.DefinitionId);
             return stereotype != null ? new TextSettings(stereotype) : null;
         }
 
         public static bool HasTextSettings(this TextDrawSettingsModel model)
         {
-            return model.HasStereotype("1cb12b3c-f000-4331-b3fc-4250a5ced3fa");
+            return model.HasStereotype(TextSettings.DefinitionId);
         }
 
         public static bool TryGetTextSettings(this TextDrawSettingsModel model, out TextSettings stereotype)
@@ -54,7 +54,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new TextSettings(model.GetStereotype("1cb12b3c-f000-4331-b3fc-4250a5ced3fa"));
+            stereotype = new TextSettings(model.GetStereotype(TextSettings.DefinitionId));
             return true;
         }
 
@@ -62,6 +62,7 @@ namespace Intent.ModuleBuilder.Api
         public class PositionSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "fc50924a-9e51-40b9-88b6-c7556febdaea";
 
             public PositionSettings(IStereotype stereotype)
             {
@@ -95,6 +96,7 @@ namespace Intent.ModuleBuilder.Api
         public class TextSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "1cb12b3c-f000-4331-b3fc-4250a5ced3fa";
 
             public TextSettings(IStereotype stereotype)
             {

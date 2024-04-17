@@ -186,28 +186,32 @@ namespace Intent.ModuleBuilder.Api
         {
             Order = element.GetOptionSettings().TypeOrder();
             Type = element.TypeReference.Element.Name;
+            TypeId = element.TypeReference.Element.Id;
         }
 
         public TypeOrder(StereotypeDefinitionCreationOptionModel element)
         {
             Order = element.GetOptionSettings().TypeOrder();
             Type = element.TypeReference.Element.Name;
+            TypeId = element.TypeReference.Element.Id;
         }
 
         public TypeOrder(AssociationCreationOptionModel element)
         {
             Order = element.GetOptionSettings().TypeOrder();
             Type = element.TypeReference.Element.IsAssociationSettingsModel() ? element.TypeReference.Element.AsAssociationSettingsModel().TargetEnd.Name : element.TypeReference.Element.Name;
+            Type = element.TypeReference.Element.IsAssociationSettingsModel() ? element.TypeReference.Element.AsAssociationSettingsModel().TargetEnd.Id : element.TypeReference.Element.Id;
         }
 
         public int? Order { get; set; }
         public string Type { get; set; }
+        public string TypeId { get; set; }
 
         public bool Equals(TypeOrder other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(Type, other.Type);
+            return string.Equals(TypeId, other.TypeId);
         }
 
         public override bool Equals(object obj)
@@ -220,12 +224,12 @@ namespace Intent.ModuleBuilder.Api
 
         public override int GetHashCode()
         {
-            return (Type != null ? Type.GetHashCode() : 0);
+            return (TypeId != null ? TypeId.GetHashCode() : 0);
         }
 
         public TypeOrderPersistable ToPersistable()
         {
-            return new TypeOrderPersistable { Type = Type, Order = Order?.ToString() };
+            return new TypeOrderPersistable { Type = Type, TypeId = TypeId, Order = Order };
         }
     }
 

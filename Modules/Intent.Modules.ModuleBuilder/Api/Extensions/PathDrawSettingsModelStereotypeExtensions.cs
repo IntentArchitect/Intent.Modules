@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static PathSettings GetPathSettings(this PathDrawSettingsModel model)
         {
-            var stereotype = model.GetStereotype("a82e406f-efc6-4d9c-86ea-6c28d9509da4");
+            var stereotype = model.GetStereotype(PathSettings.DefinitionId);
             return stereotype != null ? new PathSettings(stereotype) : null;
         }
 
         public static bool HasPathSettings(this PathDrawSettingsModel model)
         {
-            return model.HasStereotype("a82e406f-efc6-4d9c-86ea-6c28d9509da4");
+            return model.HasStereotype(PathSettings.DefinitionId);
         }
 
         public static bool TryGetPathSettings(this PathDrawSettingsModel model, out PathSettings stereotype)
@@ -31,7 +31,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new PathSettings(model.GetStereotype("a82e406f-efc6-4d9c-86ea-6c28d9509da4"));
+            stereotype = new PathSettings(model.GetStereotype(PathSettings.DefinitionId));
             return true;
         }
 
@@ -39,6 +39,7 @@ namespace Intent.ModuleBuilder.Api
         public class PathSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "a82e406f-efc6-4d9c-86ea-6c28d9509da4";
 
             public PathSettings(IStereotype stereotype)
             {

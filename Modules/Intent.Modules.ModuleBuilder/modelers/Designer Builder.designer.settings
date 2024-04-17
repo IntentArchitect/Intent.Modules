@@ -1584,7 +1584,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           <allowSetValue>false</allowSetValue>
           <typeOrder>
             <type order="0">Accepted Type</type>
-            <type order="1">Accepted Function</type>
+            <type order="1">Accepted Stereotypes</type>
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -1598,9 +1598,9 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             <option type="element">
               <text>Add Accepted Function</text>
               <icon type="FontAwesome" source="file-o" />
-              <specializationType>Accepted Function</specializationType>
+              <specializationType>Accepted Stereotypes</specializationType>
               <specializationTypeId>59b63cd3-4af8-4f3c-aa94-61407ac3a3bd</specializationTypeId>
-              <defaultName>NewAcceptedFunction</defaultName>
+              <defaultName>NewAcceptedStereotypes</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
@@ -1640,7 +1640,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
-            <childElementSetting type="Accepted Function" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
+            <childElementSetting type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
               <icon type="FontAwesome" source="file-o" />
               <saveAsOwnFile>false</saveAsOwnFile>
               <allowRename>true</allowRename>

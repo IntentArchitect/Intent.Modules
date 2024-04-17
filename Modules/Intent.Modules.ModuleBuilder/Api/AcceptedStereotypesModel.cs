@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class AcceptedFunctionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class AcceptedStereotypesModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Accepted Function";
+        public const string SpecializationType = "Accepted Stereotypes";
         public const string SpecializationTypeId = "59b63cd3-4af8-4f3c-aa94-61407ac3a3bd";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public AcceptedFunctionModel(IElement element, string requiredType = SpecializationType)
+        public AcceptedStereotypesModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -42,7 +42,7 @@ namespace Intent.ModuleBuilder.Api
             return _element.ToString();
         }
 
-        public bool Equals(AcceptedFunctionModel other)
+        public bool Equals(AcceptedStereotypesModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -52,7 +52,7 @@ namespace Intent.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((AcceptedFunctionModel)obj);
+            return Equals((AcceptedStereotypesModel)obj);
         }
 
         public override int GetHashCode()
@@ -62,17 +62,17 @@ namespace Intent.ModuleBuilder.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class AcceptedFunctionModelExtensions
+    public static class AcceptedStereotypesModelExtensions
     {
 
-        public static bool IsAcceptedFunctionModel(this ICanBeReferencedType type)
+        public static bool IsAcceptedStereotypesModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == AcceptedFunctionModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == AcceptedStereotypesModel.SpecializationTypeId;
         }
 
-        public static AcceptedFunctionModel AsAcceptedFunctionModel(this ICanBeReferencedType type)
+        public static AcceptedStereotypesModel AsAcceptedStereotypesModel(this ICanBeReferencedType type)
         {
-            return type.IsAcceptedFunctionModel() ? new AcceptedFunctionModel((IElement)type) : null;
+            return type.IsAcceptedStereotypesModel() ? new AcceptedStereotypesModel((IElement)type) : null;
         }
     }
 }

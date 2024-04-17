@@ -107,10 +107,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
                 }
 
                 _typeOrder = value;
-                foreach (var typeOrder in value.ToList().Where(x => !string.IsNullOrWhiteSpace(x.Order)))
+                foreach (var typeOrder in value.ToList().Where(x => x.Order.HasValue))
                 {
                     _typeOrder.Remove(typeOrder);
-                    _typeOrder.Insert(Math.Max(Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count), 0), typeOrder);
+                    _typeOrder.Insert(Math.Max(Math.Min(typeOrder.Order.Value, _typeOrder.Count), 0), typeOrder);
                 }
                 UpdateTypesOrdering();
             }
@@ -187,11 +187,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         private void UpdateTypesOrdering()
         {
-            _typeOrder = _typeOrder.Select((x, index) => new TypeOrderPersistable()
+            _typeOrder = _typeOrder.Select((x, index) =>
             {
-                Type = x.Type,
-                Order = !string.IsNullOrWhiteSpace(x.Order) ? x.Order : index.ToString()
-            }).OrderBy(x => int.Parse(x.Order)).ThenBy(x => x.Type).ToList();
+                x.Order ??= index;
+                return x;
+            }).OrderBy(x => x.Order).ThenBy(x => x.Type).ToList();
         }
 
         public override string ToString()

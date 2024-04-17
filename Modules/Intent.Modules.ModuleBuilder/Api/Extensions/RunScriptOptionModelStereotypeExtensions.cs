@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static OptionSettings GetOptionSettings(this RunScriptOptionModel model)
         {
-            var stereotype = model.GetStereotype("cbe77364-d1d0-400b-a8c4-646a4c869612");
+            var stereotype = model.GetStereotype(OptionSettings.DefinitionId);
             return stereotype != null ? new OptionSettings(stereotype) : null;
         }
 
         public static bool HasOptionSettings(this RunScriptOptionModel model)
         {
-            return model.HasStereotype("cbe77364-d1d0-400b-a8c4-646a4c869612");
+            return model.HasStereotype(OptionSettings.DefinitionId);
         }
 
         public static bool TryGetOptionSettings(this RunScriptOptionModel model, out OptionSettings stereotype)
@@ -31,19 +31,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new OptionSettings(model.GetStereotype("cbe77364-d1d0-400b-a8c4-646a4c869612"));
+            stereotype = new OptionSettings(model.GetStereotype(OptionSettings.DefinitionId));
             return true;
         }
 
         public static ScriptSettings GetScriptSettings(this RunScriptOptionModel model)
         {
-            var stereotype = model.GetStereotype("56bc0465-c1fe-4bca-9493-2a3ce88a4047");
+            var stereotype = model.GetStereotype(ScriptSettings.DefinitionId);
             return stereotype != null ? new ScriptSettings(stereotype) : null;
         }
 
         public static bool HasScriptSettings(this RunScriptOptionModel model)
         {
-            return model.HasStereotype("56bc0465-c1fe-4bca-9493-2a3ce88a4047");
+            return model.HasStereotype(ScriptSettings.DefinitionId);
         }
 
         public static bool TryGetScriptSettings(this RunScriptOptionModel model, out ScriptSettings stereotype)
@@ -54,7 +54,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new ScriptSettings(model.GetStereotype("56bc0465-c1fe-4bca-9493-2a3ce88a4047"));
+            stereotype = new ScriptSettings(model.GetStereotype(ScriptSettings.DefinitionId));
             return true;
         }
 
@@ -62,6 +62,7 @@ namespace Intent.ModuleBuilder.Api
         public class OptionSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "cbe77364-d1d0-400b-a8c4-646a4c869612";
 
             public OptionSettings(IStereotype stereotype)
             {
@@ -100,6 +101,7 @@ namespace Intent.ModuleBuilder.Api
         public class ScriptSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "56bc0465-c1fe-4bca-9493-2a3ce88a4047";
 
             public ScriptSettings(IStereotype stereotype)
             {

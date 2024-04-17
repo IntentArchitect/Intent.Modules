@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static MappingSettings GetMappingSettings(this MappingProjectionSettingsModel model)
         {
-            var stereotype = model.GetStereotype("c7683de8-a27a-45ac-b81f-8ac2966a29d9");
+            var stereotype = model.GetStereotype(MappingSettings.DefinitionId);
             return stereotype != null ? new MappingSettings(stereotype) : null;
         }
 
         public static bool HasMappingSettings(this MappingProjectionSettingsModel model)
         {
-            return model.HasStereotype("c7683de8-a27a-45ac-b81f-8ac2966a29d9");
+            return model.HasStereotype(MappingSettings.DefinitionId);
         }
 
         public static bool TryGetMappingSettings(this MappingProjectionSettingsModel model, out MappingSettings stereotype)
@@ -31,7 +31,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new MappingSettings(model.GetStereotype("c7683de8-a27a-45ac-b81f-8ac2966a29d9"));
+            stereotype = new MappingSettings(model.GetStereotype(MappingSettings.DefinitionId));
             return true;
         }
 
@@ -39,6 +39,7 @@ namespace Intent.ModuleBuilder.Api
         public class MappingSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "c7683de8-a27a-45ac-b81f-8ac2966a29d9";
 
             public MappingSettings(IStereotype stereotype)
             {

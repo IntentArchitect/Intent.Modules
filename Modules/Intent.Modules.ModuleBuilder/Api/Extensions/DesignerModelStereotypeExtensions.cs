@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static DesignerConfig GetDesignerConfig(this DesignerModel model)
         {
-            var stereotype = model.GetStereotype("6761be76-7c09-4ad4-8a65-82c6d17992db");
+            var stereotype = model.GetStereotype(DesignerConfig.DefinitionId);
             return stereotype != null ? new DesignerConfig(stereotype) : null;
         }
 
         public static bool HasDesignerConfig(this DesignerModel model)
         {
-            return model.HasStereotype("6761be76-7c09-4ad4-8a65-82c6d17992db");
+            return model.HasStereotype(DesignerConfig.DefinitionId);
         }
 
         public static bool TryGetDesignerConfig(this DesignerModel model, out DesignerConfig stereotype)
@@ -31,19 +31,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new DesignerConfig(model.GetStereotype("6761be76-7c09-4ad4-8a65-82c6d17992db"));
+            stereotype = new DesignerConfig(model.GetStereotype(DesignerConfig.DefinitionId));
             return true;
         }
 
         public static OutputConfiguration GetOutputConfiguration(this DesignerModel model)
         {
-            var stereotype = model.GetStereotype("82a8b98c-0306-4309-b564-146668de0e74");
+            var stereotype = model.GetStereotype(OutputConfiguration.DefinitionId);
             return stereotype != null ? new OutputConfiguration(stereotype) : null;
         }
 
         public static bool HasOutputConfiguration(this DesignerModel model)
         {
-            return model.HasStereotype("82a8b98c-0306-4309-b564-146668de0e74");
+            return model.HasStereotype(OutputConfiguration.DefinitionId);
         }
 
         public static bool TryGetOutputConfiguration(this DesignerModel model, out OutputConfiguration stereotype)
@@ -54,7 +54,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new OutputConfiguration(model.GetStereotype("82a8b98c-0306-4309-b564-146668de0e74"));
+            stereotype = new OutputConfiguration(model.GetStereotype(OutputConfiguration.DefinitionId));
             return true;
         }
 
@@ -62,6 +62,7 @@ namespace Intent.ModuleBuilder.Api
         public class DesignerConfig
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "6761be76-7c09-4ad4-8a65-82c6d17992db";
 
             public DesignerConfig(IStereotype stereotype)
             {
@@ -85,6 +86,7 @@ namespace Intent.ModuleBuilder.Api
         public class OutputConfiguration
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "82a8b98c-0306-4309-b564-146668de0e74";
 
             public OutputConfiguration(IStereotype stereotype)
             {

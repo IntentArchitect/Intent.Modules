@@ -10,6 +10,7 @@ namespace Intent.ModuleBuilder.Api
 {
     public static class ApiMetadataDesignerExtensions
     {
+        public const string ModuleBuilderDesignerId = "a1c3dd87-352e-4353-853b-c79853debecb";
         public static IDesigner ModuleBuilder(this IMetadataManager metadataManager, IApplication application)
         {
             return metadataManager.ModuleBuilder(application.Id);
@@ -17,7 +18,7 @@ namespace Intent.ModuleBuilder.Api
 
         public static IDesigner ModuleBuilder(this IMetadataManager metadataManager, string applicationId)
         {
-            return metadataManager.GetDesigner(applicationId, "Module Builder");
+            return metadataManager.GetDesigner(applicationId, ModuleBuilderDesignerId);
         }
 
     }

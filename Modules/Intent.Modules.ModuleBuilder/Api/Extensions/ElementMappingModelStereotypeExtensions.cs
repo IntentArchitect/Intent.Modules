@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.Api
     {
         public static BehaviourSettings GetBehaviourSettings(this ElementMappingModel model)
         {
-            var stereotype = model.GetStereotype("47ec6487-1f69-4691-9c8c-031e2da08c07");
+            var stereotype = model.GetStereotype(BehaviourSettings.DefinitionId);
             return stereotype != null ? new BehaviourSettings(stereotype) : null;
         }
 
         public static bool HasBehaviourSettings(this ElementMappingModel model)
         {
-            return model.HasStereotype("47ec6487-1f69-4691-9c8c-031e2da08c07");
+            return model.HasStereotype(BehaviourSettings.DefinitionId);
         }
 
         public static bool TryGetBehaviourSettings(this ElementMappingModel model, out BehaviourSettings stereotype)
@@ -31,19 +31,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new BehaviourSettings(model.GetStereotype("47ec6487-1f69-4691-9c8c-031e2da08c07"));
+            stereotype = new BehaviourSettings(model.GetStereotype(BehaviourSettings.DefinitionId));
             return true;
         }
 
         public static CriteriaSettings GetCriteriaSettings(this ElementMappingModel model)
         {
-            var stereotype = model.GetStereotype("c677f491-8290-47ee-9e98-4c26bc76b592");
+            var stereotype = model.GetStereotype(CriteriaSettings.DefinitionId);
             return stereotype != null ? new CriteriaSettings(stereotype) : null;
         }
 
         public static bool HasCriteriaSettings(this ElementMappingModel model)
         {
-            return model.HasStereotype("c677f491-8290-47ee-9e98-4c26bc76b592");
+            return model.HasStereotype(CriteriaSettings.DefinitionId);
         }
 
         public static bool TryGetCriteriaSettings(this ElementMappingModel model, out CriteriaSettings stereotype)
@@ -54,19 +54,19 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new CriteriaSettings(model.GetStereotype("c677f491-8290-47ee-9e98-4c26bc76b592"));
+            stereotype = new CriteriaSettings(model.GetStereotype(CriteriaSettings.DefinitionId));
             return true;
         }
 
         public static OutputSettings GetOutputSettings(this ElementMappingModel model)
         {
-            var stereotype = model.GetStereotype("740ed66f-c70d-45b0-80d5-6f663da53ed5");
+            var stereotype = model.GetStereotype(OutputSettings.DefinitionId);
             return stereotype != null ? new OutputSettings(stereotype) : null;
         }
 
         public static bool HasOutputSettings(this ElementMappingModel model)
         {
-            return model.HasStereotype("740ed66f-c70d-45b0-80d5-6f663da53ed5");
+            return model.HasStereotype(OutputSettings.DefinitionId);
         }
 
         public static bool TryGetOutputSettings(this ElementMappingModel model, out OutputSettings stereotype)
@@ -77,7 +77,7 @@ namespace Intent.ModuleBuilder.Api
                 return false;
             }
 
-            stereotype = new OutputSettings(model.GetStereotype("740ed66f-c70d-45b0-80d5-6f663da53ed5"));
+            stereotype = new OutputSettings(model.GetStereotype(OutputSettings.DefinitionId));
             return true;
         }
 
@@ -85,6 +85,7 @@ namespace Intent.ModuleBuilder.Api
         public class BehaviourSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "47ec6487-1f69-4691-9c8c-031e2da08c07";
 
             public BehaviourSettings(IStereotype stereotype)
             {
@@ -147,6 +148,7 @@ namespace Intent.ModuleBuilder.Api
         public class CriteriaSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "c677f491-8290-47ee-9e98-4c26bc76b592";
 
             public CriteriaSettings(IStereotype stereotype)
             {
@@ -317,6 +319,7 @@ namespace Intent.ModuleBuilder.Api
         public class OutputSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "740ed66f-c70d-45b0-80d5-6f663da53ed5";
 
             public OutputSettings(IStereotype stereotype)
             {

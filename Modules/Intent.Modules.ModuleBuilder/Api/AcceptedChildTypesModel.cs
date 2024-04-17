@@ -43,9 +43,9 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new AcceptedTypeModel(x))
             .ToList();
 
-        public IList<AcceptedFunctionModel> AcceptedFunctions => _element.ChildElements
-            .GetElementsOfType(AcceptedFunctionModel.SpecializationTypeId)
-            .Select(x => new AcceptedFunctionModel(x))
+        public IList<AcceptedStereotypesModel> AcceptedFunctions => _element.ChildElements
+            .GetElementsOfType(AcceptedStereotypesModel.SpecializationTypeId)
+            .Select(x => new AcceptedStereotypesModel(x))
             .ToList();
 
         public override string ToString()
@@ -82,10 +82,10 @@ namespace Intent.ModuleBuilder.Api
                     var model = childElement.AsAcceptedTypeModel();
                     result.Add(new AcceptedChildSettingPersistable() { Order = order, AcceptBy = AcceptsChildBy.Type, SpecializationType = model.TypeReference.Element.Name, SpecializationTypeId = model.TypeReference.Element.Id });
                 }
-                if (childElement.IsAcceptedFunctionModel())
+                if (childElement.IsAcceptedStereotypesModel())
                 {
-                    var model = childElement.AsAcceptedFunctionModel();
-                    result.Add(new AcceptedChildSettingPersistable() { Order = order, AcceptBy = AcceptsChildBy.Function, AcceptsFunction = model.GetSettings().AcceptsFunction() });
+                    var model = childElement.AsAcceptedStereotypesModel();
+                    result.Add(new AcceptedChildSettingPersistable() { Order = order, AcceptBy = AcceptsChildBy.Type, SpecializationType = model.GetSettings().TypesWithStereotype().Name, SpecializationTypeId = model.GetSettings().TypesWithStereotype().Id });
                 }
                 order++;
             }

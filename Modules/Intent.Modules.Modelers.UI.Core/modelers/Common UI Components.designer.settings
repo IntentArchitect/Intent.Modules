@@ -61,7 +61,9 @@
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder />
-      <acceptedChildren />
+      <acceptedChildren>
+        <accepts order="0" acceptBy="type" specializationType="[Component]" specializationTypeId="b407aace-ad14-484e-ac93-4762a3d182d8" />
+      </acceptedChildren>
       <creationOptions />
       <scriptOptions>
         <option>
@@ -128,9 +130,9 @@ let component = createElement(componentType.id, componentType.getName(), element
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Container</type>
-        <type order="1">Property</type>
-        <type order="2">Event Emitter</type>
+        <type type="Container" typeId="b97ea181-2462-431f-8f62-f90f79509b9e" order="0" />
+        <type type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" order="1" />
+        <type type="Event Emitter" typeId="d6739ffc-30e6-4170-a105-bf28e69aa578" order="2" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -205,7 +207,7 @@ let component = createElement(componentType.id, componentType.getName(), element
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Navigation Item</type>
+        <type type="Navigation Item" typeId="adbf2fa8-6833-4c24-960a-31d8a41fd1ed" order="0" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -258,7 +260,7 @@ let component = createElement(componentType.id, componentType.getName(), element
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>true</allowSetValue>
           <typeOrder>
-            <type order="0">Navigation Item</type>
+            <type type="Navigation Item" typeId="adbf2fa8-6833-4c24-960a-31d8a41fd1ed" order="0" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -330,7 +332,7 @@ let component = createElement(componentType.id, componentType.getName(), element
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type order="0">Column</type>
+        <type type="Column" typeId="d372c640-e649-4e67-84a8-4446f45288db" order="0" />
       </typeOrder>
       <creationOptions>
         <option type="element">
