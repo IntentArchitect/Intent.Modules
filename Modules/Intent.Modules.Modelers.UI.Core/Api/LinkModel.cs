@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Core.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class MenuItemModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class LinkModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Menu Item";
-        public const string SpecializationTypeId = "adbf2fa8-6833-4c24-960a-31d8a41fd1ed";
+        public const string SpecializationType = "Link";
+        public const string SpecializationTypeId = "a274918b-72d1-4913-95de-0a801ac90ce4";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public MenuItemModel(IElement element, string requiredType = SpecializationType)
+        public LinkModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -44,7 +44,7 @@ namespace Intent.Modelers.UI.Core.Api
             return _element.ToString();
         }
 
-        public bool Equals(MenuItemModel other)
+        public bool Equals(LinkModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -54,7 +54,7 @@ namespace Intent.Modelers.UI.Core.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((MenuItemModel)obj);
+            return Equals((LinkModel)obj);
         }
 
         public override int GetHashCode()
@@ -64,17 +64,17 @@ namespace Intent.Modelers.UI.Core.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class MenuItemModelExtensions
+    public static class LinkModelExtensions
     {
 
-        public static bool IsMenuItemModel(this ICanBeReferencedType type)
+        public static bool IsLinkModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == MenuItemModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == LinkModel.SpecializationTypeId;
         }
 
-        public static MenuItemModel AsMenuItemModel(this ICanBeReferencedType type)
+        public static LinkModel AsLinkModel(this ICanBeReferencedType type)
         {
-            return type.IsMenuItemModel() ? new MenuItemModel((IElement)type) : null;
+            return type.IsLinkModel() ? new LinkModel((IElement)type) : null;
         }
     }
 }

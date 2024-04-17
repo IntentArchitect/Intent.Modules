@@ -15,14 +15,14 @@ namespace Intent.Modelers.UI.Core.Api
     {
         public static Content GetContent(this LayoutSiderModel model)
         {
-            var stereotype = model.GetStereotype("7f7bc148-138f-4b61-8fa1-a8d725dbed52");
+            var stereotype = model.GetStereotype(Content.DefinitionId);
             return stereotype != null ? new Content(stereotype) : null;
         }
 
 
         public static bool HasContent(this LayoutSiderModel model)
         {
-            return model.HasStereotype("7f7bc148-138f-4b61-8fa1-a8d725dbed52");
+            return model.HasStereotype(Content.DefinitionId);
         }
 
         public static bool TryGetContent(this LayoutSiderModel model, out Content stereotype)
@@ -33,13 +33,14 @@ namespace Intent.Modelers.UI.Core.Api
                 return false;
             }
 
-            stereotype = new Content(model.GetStereotype("7f7bc148-138f-4b61-8fa1-a8d725dbed52"));
+            stereotype = new Content(model.GetStereotype(Content.DefinitionId));
             return true;
         }
 
         public class Content
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "7f7bc148-138f-4b61-8fa1-a8d725dbed52";
 
             public Content(IStereotype stereotype)
             {

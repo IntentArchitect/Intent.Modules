@@ -3,7 +3,8 @@
   <name>Navigation Link</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="adbf2fa8-6833-4c24-960a-31d8a41fd1ed">Menu Item</type>
+    <type id="adbf2fa8-6833-4c24-960a-31d8a41fd1ed">Navigation Item</type>
+    <type id="a274918b-72d1-4913-95de-0a801ac90ce4">Link</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>

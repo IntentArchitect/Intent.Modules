@@ -750,7 +750,46 @@ if (selected.type == "core") {
           <allowSetValue>false</allowSetValue>
           <typeOrder />
           <creationOptions />
-          <scriptOptions />
+          <scriptOptions>
+            <option>
+              <text>Add Component</text>
+              <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGx1cyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfUGx1c194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NpcmNsZV94M0VfXzAwMDAwMTYxNjEyMDcyMDczMjQ2MjA5NTEwMDAwMDA4NjY5NjY2NzcxODg1MzA5ODc5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzQ5MyIgeDI9IjI1LjIiIHkyPSIyLjUxMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV94M0VfIiBmaWxsPSJ1cmwoI194M0NfQ2lyY2xlX3gzRV9fMDAwMDAxNjE2MTIwNzIwNzMyNDYyMDk1MTAwMDAwMDg2Njk2NjY3NzE4ODUzMDk4NzlfKSIgZD0iTTI1LjIsMi4zDQoJCWMtMTIuNCwwLTIyLjUsMTAtMjIuNSwyMi41YzAsMTIuNCwxMC4xLDIyLjUsMjIuNSwyMi41czIyLjUtMTAuMSwyMi41LTIyLjVDNDcuNywxMi4zLDM3LjYsMi4zLDI1LjIsMi4zeiBNMjUuMiw0My44DQoJCWMtMTAuNSwwLTE5LTguNS0xOS0xOXM4LjUtMTksMTktMTlzMTksOC41LDE5LDE5QzQ0LjIsMzUuMiwzNS43LDQzLjgsMjUuMiw0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzIxMSIgeDI9IjI1LjIiIHkyPSIyLjQ4MDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19QbHVzX3gzRV9fMDAwMDAwODE2MzE4NjY4NDEyOTcxNDM5MDAwMDAwMDczMTUyNDQ3Mzk2MDkwODMyNjlfIiBmaWxsPSJ1cmwoI194M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXykiIGQ9Ig0KCQlNMzAuNCwxMi42SDIwdjYuOWgtNi45djEwLjRIMjB2Ni45aDEwLjR2LTYuOWg2LjlWMTkuNmgtNi45VjEyLjZ6IE0zMy44LDIzdjMuNWgtNi45djYuOWgtMy41di02LjloLTYuOVYyM2g2Ljl2LTYuOWgzLjVWMjNIMzMuOHoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
+              <script>const componentStereotypeId = "b407aace-ad14-484e-ac93-4762a3d182d8";
+const displayComponentTypeId = "866a90f7-4044-43b9-bb05-7270c7889796";
+
+let options = lookupTypesOf("Element Settings")
+            .filter(x =&gt; x.hasStereotype(componentStereotypeId))
+            .map(x =&gt; ( {id: x.id, description: x.getDisplay(), type: "core" }))
+            .concat(lookupTypesOf("Component")
+                .filter(x =&gt; x.id != element.getParent().id)
+                .map(x =&gt; ( {id: x.id, description: x.getDisplay(), type: "custom" })))
+            .sort((x, y) =&gt; x.description.localeCompare(y.description))
+
+let result = await dialogService.openForm({
+    title: "Add Component",
+    fields: [{
+        id: "component-type",
+        fieldType: "select",
+        label: "Component Type",
+        selectOptions: options,
+        placeholder: "Search components"
+    }]
+})
+
+let selected = options.filter(x =&gt; x.id == result["component-type"])[0];
+if (!selected) {
+    console.warn("Option not selected");
+}
+if (selected.type == "core") {
+    let componentType = lookup(selected.id);
+    let component = createElement(componentType.id, componentType.getName(), element.id);
+} else if (selected.type == "custom") {
+    let component = createElement(displayComponentTypeId, selected.description, element.id);
+    component.typeReference.setType(selected.id);
+}
+</script>
+            </option>
+          </scriptOptions>
           <mappingOptions />
           <mappingSettings />
           <childElementSettings />
@@ -1236,9 +1275,60 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
       <title>Layout Binding</title>
       <sourceMappings>
         <importSettings id="2d30eb9d-daa0-45d7-a596-32c57d61c6bd" name="Component Code Mappables" />
+        <mapping id="5d1180f5-7f5b-4d90-aa56-14616f56a32e" name="Layout" type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <staticMappableSettings />
+          <childSettings />
+        </mapping>
       </sourceMappings>
       <targetMappings>
         <importSettings id="ddf81941-f0b0-4ab0-a8d6-42ddc9e5da99" name="Bindable Components" />
+        <mapping id="00879a06-d797-4b82-83aa-b78fb4f77624" name="Layout" type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <staticMappableSettings />
+          <childSettings>
+            <childSetting id="bfc2fdb2-0b31-4b56-9f61-424b5f9a24a5" name="Layout Sider" type="Layout Sider" typeId="c505f35f-7148-46a3-a812-d9f53a174490" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <staticMappableSettings />
+              <childSettings />
+            </childSetting>
+            <childSetting id="121df094-7cbe-4f27-ad88-933234604d62" name="Layout Body" type="Layout Body" typeId="11636699-8bad-4693-8c15-8141bd66d04f" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <staticMappableSettings />
+              <childSettings />
+            </childSetting>
+            <childSetting id="7942c418-e228-4509-b7e5-c30b3985113a" name="Layout Footer" type="Layout Footer" typeId="5d4fe8e9-2ccf-42ea-af60-04c6970c9ecb" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <staticMappableSettings />
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
       </targetMappings>
       <mappingTypes />
     </mappingSetting>

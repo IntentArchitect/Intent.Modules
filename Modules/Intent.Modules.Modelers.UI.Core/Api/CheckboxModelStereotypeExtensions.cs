@@ -14,14 +14,14 @@ namespace Intent.Modelers.UI.Core.Api
     {
         public static Interaction GetInteraction(this CheckboxModel model)
         {
-            var stereotype = model.GetStereotype("6e04ff81-f043-4ac6-8632-798aedbaaf20");
+            var stereotype = model.GetStereotype(Interaction.DefinitionId);
             return stereotype != null ? new Interaction(stereotype) : null;
         }
 
 
         public static bool HasInteraction(this CheckboxModel model)
         {
-            return model.HasStereotype("6e04ff81-f043-4ac6-8632-798aedbaaf20");
+            return model.HasStereotype(Interaction.DefinitionId);
         }
 
         public static bool TryGetInteraction(this CheckboxModel model, out Interaction stereotype)
@@ -32,13 +32,14 @@ namespace Intent.Modelers.UI.Core.Api
                 return false;
             }
 
-            stereotype = new Interaction(model.GetStereotype("6e04ff81-f043-4ac6-8632-798aedbaaf20"));
+            stereotype = new Interaction(model.GetStereotype(Interaction.DefinitionId));
             return true;
         }
 
         public class Interaction
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "6e04ff81-f043-4ac6-8632-798aedbaaf20";
 
             public Interaction(IStereotype stereotype)
             {

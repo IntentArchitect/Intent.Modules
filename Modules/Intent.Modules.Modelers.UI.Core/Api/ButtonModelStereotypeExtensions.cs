@@ -14,14 +14,14 @@ namespace Intent.Modelers.UI.Core.Api
     {
         public static Interaction GetInteraction(this ButtonModel model)
         {
-            var stereotype = model.GetStereotype("a7de29e5-4bee-4e5d-93f0-740569ac6130");
+            var stereotype = model.GetStereotype(Interaction.DefinitionId);
             return stereotype != null ? new Interaction(stereotype) : null;
         }
 
 
         public static bool HasInteraction(this ButtonModel model)
         {
-            return model.HasStereotype("a7de29e5-4bee-4e5d-93f0-740569ac6130");
+            return model.HasStereotype(Interaction.DefinitionId);
         }
 
         public static bool TryGetInteraction(this ButtonModel model, out Interaction stereotype)
@@ -32,13 +32,14 @@ namespace Intent.Modelers.UI.Core.Api
                 return false;
             }
 
-            stereotype = new Interaction(model.GetStereotype("a7de29e5-4bee-4e5d-93f0-740569ac6130"));
+            stereotype = new Interaction(model.GetStereotype(Interaction.DefinitionId));
             return true;
         }
 
         public class Interaction
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "a7de29e5-4bee-4e5d-93f0-740569ac6130";
 
             public Interaction(IStereotype stereotype)
             {

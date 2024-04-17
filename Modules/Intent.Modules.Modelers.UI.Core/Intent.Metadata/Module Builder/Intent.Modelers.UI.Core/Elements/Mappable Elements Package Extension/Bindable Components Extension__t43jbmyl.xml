@@ -323,6 +323,140 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="4a7f0013-96c4-4384-8dbd-7d1327c38d8b" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+      <name>Navigation Bar</name>
+      <display>Navigation Bar: Navigation Bar</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <typeReference id="c8cba42c-35c6-4a7c-99ed-1584767eebf1">
+        <typeId>d7282bf2-1626-4b8b-9446-1d530527db06</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+        <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>d808bb0b-ffc9-4b95-887b-ee3869ba4db8</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+            <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" isActive="true" />
+            <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+            <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+            <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+            <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+            <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+            <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="false" />
+            <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+            <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
+            <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
+            <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
+            <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
+            <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="3ea6d69d-96db-465a-b1eb-b381f52aefc0" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+          <name>Navigation Item</name>
+          <display>Navigation Item: Navigation Item</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-manually</sort-children>
+          <genericTypes />
+          <typeReference id="f66918a1-732a-4291-be5b-e9738543ce62">
+            <typeId>adbf2fa8-6833-4c24-960a-31d8a41fd1ed</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>4a7f0013-96c4-4384-8dbd-7d1327c38d8b</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+                <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" isActive="true" />
+                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+                <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
+                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
+                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
+                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
+                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
+                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements>
+            <childElement id="a4073b81-6ddd-44cb-909f-f2c97d965112" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
+              <name>Link To</name>
+              <display>Link To</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>3ea6d69d-96db-465a-b1eb-b381f52aefc0</parentFolderId>
+              <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+              <packageName>Intent.Modelers.UI.Core</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Invokable" isActive="true" />
+                    <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
+                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+                    <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="false" />
+                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+                    <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
+                    <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
+                    <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
+                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
+                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
+    </childElement>
     <childElement id="450fb4eb-22fd-4f56-9207-a2bd21e33dcb" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
       <name>Table</name>
       <display>Table: Table</display>
@@ -370,6 +504,42 @@
       </stereotypes>
       <metadata />
       <childElements>
+        <childElement id="89eeee6b-2d7f-4fa7-9adb-e16d0db75e1e" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
+          <name>On Row Click</name>
+          <display>On Row Click</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>450fb4eb-22fd-4f56-9207-a2bd21e33dcb</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Invokable" isActive="true" />
+                <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjguNTIiIHkxPSI0Ny45NjMiIHgyPSIyOC41MiIgeTI9IjIuNjE0OSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQkIwNDEiLz4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0ZDQjY0NSIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojRjU3RjIwIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZD0iTTMyLjMsMTYuOEwzMi4zLDE2LjhsNy4zLTE0LjZIMjFMOC41LDI3aDE0LjhMMTMsNDcuM2gzLjVsMzItMzAuNUgzMi4zeiBNMjguOSwyMy42SDE0LjFsOS0xNy45SDM0DQoJCWwtNy4zLDE0LjVoMTMuMmwtMTgsMTcuMUwyOC45LDIzLjZ6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwMzgzNzUxNzE2NTE0NzY2NDY1OTAwMDAwMTc5NDgxMjkxMzg1NzM2NzI4NjZfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjM5LjY1NzYiIHkxPSI0Ni42NzE2IiB4Mj0iMzkuNjU3NiIgeTI9IjIuMjQ0Ij4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRjU3RjIwIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQkIwNDEiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwMzgzNzUxNzE2NTE0NzY2NDY1OTAwMDAwMTc5NDgxMjkxMzg1NzM2NzI4NjZfKSIgZD0iTTMyLjEsMzUuMXYxMS41aDE1LjJWMzUuMUgzMi4xeiBNNDMuNSw0My44aC03LjYNCgkJVjM4aDcuNlY0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMDc3MzA5NDE0Nzg3MTUwODIyMzAwMDAwMDE1OTQxMzM2NjU0NTc1NDQyMDc3XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSI4LjUxNSIgeTE9IjQ3LjQyMzYiIHgyPSI4LjUxNSIgeTI9IjEuOTU2OCI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQkIwNDEiLz4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojRkJCMDQxIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMDc3MzA5NDE0Nzg3MTUwODIyMzAwMDAwMDE1OTQxMzM2NjU0NTc1NDQyMDc3XykiIGQ9Ik0yLjQsMi4ydjkuM2gxMi4zVjIuMkgyLjR6IE0xMS42LDkuMkg1LjRWNC41DQoJCWg2LjJWOS4yeiIvPg0KPC9nPg0KPC9zdmc+DQo=&quot;}" isActive="true" />
+                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
+                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+                <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
+                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
+                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="74533b82-2078-44e1-84bb-4cd34d00ef16" isActive="true" />
+                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="fbb0d0b4-effb-4ab1-8ee2-df0d28b21163" isActive="true" />
+                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
+                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
+                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="3bab648d-87f9-4b3d-a931-63ee8c75d535" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Column</name>
           <display>Column: Column</display>
@@ -408,42 +578,6 @@
                 <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Element Value" isActive="true" />
                 <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
                 <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
-                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="89eeee6b-2d7f-4fa7-9adb-e16d0db75e1e" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
-          <name>On Row Click</name>
-          <display>On Row Click</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>450fb4eb-22fd-4f56-9207-a2bd21e33dcb</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Invokable" isActive="true" />
-                <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjguNTIiIHkxPSI0Ny45NjMiIHgyPSIyOC41MiIgeTI9IjIuNjE0OSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQkIwNDEiLz4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0ZDQjY0NSIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojRjU3RjIwIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZD0iTTMyLjMsMTYuOEwzMi4zLDE2LjhsNy4zLTE0LjZIMjFMOC41LDI3aDE0LjhMMTMsNDcuM2gzLjVsMzItMzAuNUgzMi4zeiBNMjguOSwyMy42SDE0LjFsOS0xNy45SDM0DQoJCWwtNy4zLDE0LjVoMTMuMmwtMTgsMTcuMUwyOC45LDIzLjZ6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwMzgzNzUxNzE2NTE0NzY2NDY1OTAwMDAwMTc5NDgxMjkxMzg1NzM2NzI4NjZfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjM5LjY1NzYiIHkxPSI0Ni42NzE2IiB4Mj0iMzkuNjU3NiIgeTI9IjIuMjQ0Ij4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRjU3RjIwIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQkIwNDEiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwMzgzNzUxNzE2NTE0NzY2NDY1OTAwMDAwMTc5NDgxMjkxMzg1NzM2NzI4NjZfKSIgZD0iTTMyLjEsMzUuMXYxMS41aDE1LjJWMzUuMUgzMi4xeiBNNDMuNSw0My44aC03LjYNCgkJVjM4aDcuNlY0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMDc3MzA5NDE0Nzg3MTUwODIyMzAwMDAwMDE1OTQxMzM2NjU0NTc1NDQyMDc3XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSI4LjUxNSIgeTE9IjQ3LjQyMzYiIHgyPSI4LjUxNSIgeTI9IjEuOTU2OCI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQkIwNDEiLz4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojRkJCMDQxIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMDc3MzA5NDE0Nzg3MTUwODIyMzAwMDAwMDE1OTQxMzM2NjU0NTc1NDQyMDc3XykiIGQ9Ik0yLjQsMi4ydjkuM2gxMi4zVjIuMkgyLjR6IE0xMS42LDkuMkg1LjRWNC41DQoJCWg2LjJWOS4yeiIvPg0KPC9nPg0KPC9zdmc+DQo=&quot;}" isActive="true" />
-                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
-                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
-                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
-                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="74533b82-2078-44e1-84bb-4cd34d00ef16" isActive="true" />
-                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="fbb0d0b4-effb-4ab1-8ee2-df0d28b21163" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                 <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />

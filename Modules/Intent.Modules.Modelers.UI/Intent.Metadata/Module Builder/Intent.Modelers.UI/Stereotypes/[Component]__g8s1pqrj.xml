@@ -4,7 +4,6 @@
   <targetMode>of-type</targetMode>
   <targetTypes>
     <type id="727577aa-3e07-4b41-be7d-7359bb1e48c8">Element Settings</type>
-    <type id="b1c481e1-e91e-4c29-9817-00ab9cad4b6b">Component</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>

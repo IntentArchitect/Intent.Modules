@@ -10,21 +10,21 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.UI.Core.Api
 {
-    public static class MenuItemModelStereotypeExtensions
+    public static class LinkModelStereotypeExtensions
     {
-        public static NavigationLink GetNavigationLink(this MenuItemModel model)
+        public static NavigationLink GetNavigationLink(this LinkModel model)
         {
-            var stereotype = model.GetStereotype("cec9d1b0-7803-4b8b-881d-6ed312fa4d3d");
+            var stereotype = model.GetStereotype(NavigationLink.DefinitionId);
             return stereotype != null ? new NavigationLink(stereotype) : null;
         }
 
 
-        public static bool HasNavigationLink(this MenuItemModel model)
+        public static bool HasNavigationLink(this LinkModel model)
         {
-            return model.HasStereotype("cec9d1b0-7803-4b8b-881d-6ed312fa4d3d");
+            return model.HasStereotype(NavigationLink.DefinitionId);
         }
 
-        public static bool TryGetNavigationLink(this MenuItemModel model, out NavigationLink stereotype)
+        public static bool TryGetNavigationLink(this LinkModel model, out NavigationLink stereotype)
         {
             if (!HasNavigationLink(model))
             {
@@ -32,13 +32,14 @@ namespace Intent.Modelers.UI.Core.Api
                 return false;
             }
 
-            stereotype = new NavigationLink(model.GetStereotype("cec9d1b0-7803-4b8b-881d-6ed312fa4d3d"));
+            stereotype = new NavigationLink(model.GetStereotype(NavigationLink.DefinitionId));
             return true;
         }
 
         public class NavigationLink
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "cec9d1b0-7803-4b8b-881d-6ed312fa4d3d";
 
             public NavigationLink(IStereotype stereotype)
             {

@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Core.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class NavigationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class NavigationBarModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Navigation";
+        public const string SpecializationType = "Navigation Bar";
         public const string SpecializationTypeId = "d7282bf2-1626-4b8b-9446-1d530527db06";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public NavigationModel(IElement element, string requiredType = SpecializationType)
+        public NavigationBarModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -37,9 +37,9 @@ namespace Intent.Modelers.UI.Core.Api
 
         public IElement InternalElement => _element;
 
-        public IList<MenuItemModel> MenuItems => _element.ChildElements
-            .GetElementsOfType(MenuItemModel.SpecializationTypeId)
-            .Select(x => new MenuItemModel(x))
+        public IList<NavigationItemModel> NavigationItems => _element.ChildElements
+            .GetElementsOfType(NavigationItemModel.SpecializationTypeId)
+            .Select(x => new NavigationItemModel(x))
             .ToList();
 
         public override string ToString()
@@ -47,7 +47,7 @@ namespace Intent.Modelers.UI.Core.Api
             return _element.ToString();
         }
 
-        public bool Equals(NavigationModel other)
+        public bool Equals(NavigationBarModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -57,7 +57,7 @@ namespace Intent.Modelers.UI.Core.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((NavigationModel)obj);
+            return Equals((NavigationBarModel)obj);
         }
 
         public override int GetHashCode()
@@ -67,17 +67,17 @@ namespace Intent.Modelers.UI.Core.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class NavigationModelExtensions
+    public static class NavigationBarModelExtensions
     {
 
-        public static bool IsNavigationModel(this ICanBeReferencedType type)
+        public static bool IsNavigationBarModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == NavigationModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == NavigationBarModel.SpecializationTypeId;
         }
 
-        public static NavigationModel AsNavigationModel(this ICanBeReferencedType type)
+        public static NavigationBarModel AsNavigationBarModel(this ICanBeReferencedType type)
         {
-            return type.IsNavigationModel() ? new NavigationModel((IElement)type) : null;
+            return type.IsNavigationBarModel() ? new NavigationBarModel((IElement)type) : null;
         }
     }
 }

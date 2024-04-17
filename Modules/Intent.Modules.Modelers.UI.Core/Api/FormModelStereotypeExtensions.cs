@@ -14,14 +14,14 @@ namespace Intent.Modelers.UI.Core.Api
     {
         public static Content GetContent(this FormModel model)
         {
-            var stereotype = model.GetStereotype("7f7bc148-138f-4b61-8fa1-a8d725dbed52");
+            var stereotype = model.GetStereotype(Content.DefinitionId);
             return stereotype != null ? new Content(stereotype) : null;
         }
 
 
         public static bool HasContent(this FormModel model)
         {
-            return model.HasStereotype("7f7bc148-138f-4b61-8fa1-a8d725dbed52");
+            return model.HasStereotype(Content.DefinitionId);
         }
 
         public static bool TryGetContent(this FormModel model, out Content stereotype)
@@ -32,20 +32,20 @@ namespace Intent.Modelers.UI.Core.Api
                 return false;
             }
 
-            stereotype = new Content(model.GetStereotype("7f7bc148-138f-4b61-8fa1-a8d725dbed52"));
+            stereotype = new Content(model.GetStereotype(Content.DefinitionId));
             return true;
         }
 
         public static Interaction GetInteraction(this FormModel model)
         {
-            var stereotype = model.GetStereotype("e242cccf-5826-478f-9e7a-c1fd9df4e5c8");
+            var stereotype = model.GetStereotype(Interaction.DefinitionId);
             return stereotype != null ? new Interaction(stereotype) : null;
         }
 
 
         public static bool HasInteraction(this FormModel model)
         {
-            return model.HasStereotype("e242cccf-5826-478f-9e7a-c1fd9df4e5c8");
+            return model.HasStereotype(Interaction.DefinitionId);
         }
 
         public static bool TryGetInteraction(this FormModel model, out Interaction stereotype)
@@ -56,13 +56,14 @@ namespace Intent.Modelers.UI.Core.Api
                 return false;
             }
 
-            stereotype = new Interaction(model.GetStereotype("e242cccf-5826-478f-9e7a-c1fd9df4e5c8"));
+            stereotype = new Interaction(model.GetStereotype(Interaction.DefinitionId));
             return true;
         }
 
         public class Content
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "7f7bc148-138f-4b61-8fa1-a8d725dbed52";
 
             public Content(IStereotype stereotype)
             {
@@ -96,6 +97,7 @@ namespace Intent.Modelers.UI.Core.Api
         public class Interaction
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "e242cccf-5826-478f-9e7a-c1fd9df4e5c8";
 
             public Interaction(IStereotype stereotype)
             {
