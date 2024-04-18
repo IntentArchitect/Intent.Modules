@@ -147,7 +147,7 @@ public static class HttpEndpointModelFactory
             return null;
         }
 
-        if (childElement.TypeReference.Element.IsTypeDefinitionModel() &&
+        if ((childElement.TypeReference.Element.IsTypeDefinitionModel() || childElement.TypeReference.Element.IsEnumModel()) &&
                 httpSettings!.Route?.ToLower().Contains($"{{{childElement.Name.ToLower()}}}") == true)
         {
             return HttpInputSource.FromRoute;
@@ -159,7 +159,7 @@ public static class HttpEndpointModelFactory
         }
 
         if (httpSettings.Verb is HttpVerb.Post or HttpVerb.Put &&
-            !childElement.TypeReference.Element.IsTypeDefinitionModel())
+            !(childElement.TypeReference.Element.IsTypeDefinitionModel() || childElement.TypeReference.Element.IsEnumModel()))
         {
             return HttpInputSource.FromBody;
         }
