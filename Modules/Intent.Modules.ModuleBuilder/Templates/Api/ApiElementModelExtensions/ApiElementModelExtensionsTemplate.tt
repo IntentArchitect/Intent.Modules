@@ -98,13 +98,22 @@ namespace <#= Namespace #>
 <#              switch (property.OptionsSource) {
                     case StereotypePropertyOptionsSource.LookupElement:
                     case StereotypePropertyOptionsSource.LookupChildren:
-                    case StereotypePropertyOptionsSource.LookupStereotype:
                     case StereotypePropertyOptionsSource.NestedLookup:#>
             public IElement <#= property.Name.ToCSharpIdentifier() #>() {
 <#                      if (property.LookupTypes.Count == 1 && false) { /* TODO */ #>
                 return new <#= property.LookupTypes.Single().ToCSharpIdentifier() #>(_stereotype.GetProperty<IElement>("<#= property.Name #>"));
 <#                      } else { #>
                 return _stereotype.GetProperty<IElement>("<#= property.Name #>");
+<#                      } #>
+            }
+
+<#                      break;
+                    case StereotypePropertyOptionsSource.LookupStereotype:#>
+            public IStereotypeDefinition <#= property.Name.ToCSharpIdentifier() #>() {
+<#                      if (property.LookupTypes.Count == 1 && false) { /* TODO */ #>
+                return new <#= property.LookupTypes.Single().ToCSharpIdentifier() #>(_stereotype.GetProperty<IStereotypeDefinition>("<#= property.Name #>"));
+<#                      } else { #>
+                return _stereotype.GetProperty<IStereotypeDefinition>("<#= property.Name #>");
 <#                      } #>
             }
 
@@ -123,12 +132,20 @@ namespace <#= Namespace #>
 <#              switch (property.OptionsSource) {
                     case StereotypePropertyOptionsSource.LookupElement:
                     case StereotypePropertyOptionsSource.LookupChildren:
-                    case StereotypePropertyOptionsSource.LookupStereotype:
                     case StereotypePropertyOptionsSource.NestedLookup:#>
             public IElement[] <#= property.Name.ToCSharpIdentifier() #>() {
                 return _stereotype.GetProperty<IElement[]>("<#= property.Name #>") ?? new IElement[0];
             }
 
+<#                      break;
+                    case StereotypePropertyOptionsSource.LookupStereotype:#>
+            public IStereotypeDefinition[] <#= property.Name.ToCSharpIdentifier() #>() {
+<#                      if (property.LookupTypes.Count == 1 && false) { /* TODO */ #>
+                return new <#= property.LookupTypes.Single().ToCSharpIdentifier() #>(_stereotype.GetProperty<IStereotypeDefinition[]>("<#= property.Name #>"));
+<#                      } else { #>
+                return _stereotype.GetProperty<IStereotypeDefinition[]>("<#= property.Name #>");
+<#                      } #>
+            }
 <#                      break;
                 case StereotypePropertyOptionsSource.Options:#>
             public <#= property.Name.ToCSharpIdentifier() #>Options[] <#= property.Name.ToCSharpIdentifier() #>() {

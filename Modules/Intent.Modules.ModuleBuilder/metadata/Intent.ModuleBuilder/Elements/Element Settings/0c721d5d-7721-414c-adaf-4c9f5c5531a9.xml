@@ -40,6 +40,7 @@
         <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="true" />
         <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="true" />
         <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;dc79fd61-7e57-44c8-ad40-14a7643b89c8&quot;]" isActive="true" />
+        <property name="52f3c2e8-6438-494a-b0a7-7a9e61c8aae8" display="Target Traits" isActive="true" />
         <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="true" />
         <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" value="54eff27b-2dfc-4853-8498-1a2c4700e385" isActive="true" />
         <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="false" isActive="true" />

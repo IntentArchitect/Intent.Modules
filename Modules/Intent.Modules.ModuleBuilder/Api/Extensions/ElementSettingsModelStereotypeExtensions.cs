@@ -270,6 +270,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<IElement[]>("Target Types") ?? new IElement[0];
             }
 
+            public IStereotypeDefinition[] TargetTraits()
+            {
+                return _stereotype.GetProperty<IStereotypeDefinition[]>("Target Traits");
+            }
+
             public RepresentsOptions Represents()
             {
                 return new RepresentsOptions(_stereotype.GetProperty<string>("Represents"));

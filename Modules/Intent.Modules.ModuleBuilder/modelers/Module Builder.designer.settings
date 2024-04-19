@@ -102,16 +102,16 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type order="-12">Module Settings Configuration</type>
-        <type order="-11">Module Settings Extension</type>
-        <type order="0">Folder</type>
-        <type order="3">File Template</type>
-        <type order="4">Static Content Template</type>
-        <type order="5">Template Decorator</type>
-        <type order="6">Template Registration</type>
-        <type order="7">Type-Definition</type>
-        <type order="8">Factory Extension</type>
-        <type order="9">Stereotype-Definition</type>
+        <type order="-12" type="Module Settings Configuration" typeId="37e678f8-370a-4b05-ae44-69bb3d2b39b6" />
+        <type order="-11" type="Module Settings Extension" typeId="72044cdf-1f96-4ad2-86be-8d5468725e67" />
+        <type order="0" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f" />
+        <type order="3" type="File Template" typeId="43eae4bd-4613-4d15-88ac-52b7e743b7b2" />
+        <type order="4" type="Static Content Template" typeId="b795a763-296d-476f-ab0a-1a52710444db" />
+        <type order="5" type="Template Decorator" typeId="f0f46278-29ea-42bd-9206-0e7034f623bc" />
+        <type order="6" type="Template Registration" typeId="502551f7-c2d7-4d65-ad9f-13bd1e9e96d5" />
+        <type order="7" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+        <type order="8" type="Factory Extension" typeId="7d008e84-bb28-4b10-ba28-7439202fca76" />
+        <type order="9" type="Stereotype-Definition" typeId="54eff27b-2dfc-4853-8498-1a2c4700e385" />
       </typeOrder>
       <macros />
     </packageSetting>
@@ -162,7 +162,7 @@
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type order="0">Template Decorator Contract</type>
+        <type order="0" type="Template Decorator Contract" typeId="ac1da322-377e-45cf-a2d9-d147a4d91457" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -194,7 +194,7 @@
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Module Settings Field Configuration</type>
+        <type order="0" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -226,7 +226,7 @@
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Module Settings Field Option</type>
+            <type order="0" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -256,7 +256,6 @@
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>true</allowSetValue>
-              <typeOrder />
               <creationOptions />
               <scriptOptions />
               <mappingOptions />
@@ -294,7 +293,7 @@
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type order="0">Module Settings Field Configuration</type>
+        <type order="0" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -326,7 +325,6 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <typeOrder />
       <creationOptions />
       <scriptOptions />
       <mappingOptions />
@@ -467,13 +465,13 @@
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type>File Template</type>
-        <type>Static Content Template</type>
-        <type>Template Decorator</type>
-        <type>Template Registration</type>
-        <type>Type-Definition</type>
-        <type>Factory Extension</type>
-        <type>Stereotype-Definition</type>
+        <type type="File Template" typeId="43eae4bd-4613-4d15-88ac-52b7e743b7b2" />
+        <type type="Static Content Template" typeId="b795a763-296d-476f-ab0a-1a52710444db" />
+        <type type="Template Decorator" typeId="f0f46278-29ea-42bd-9206-0e7034f623bc" />
+        <type type="Template Registration" typeId="502551f7-c2d7-4d65-ad9f-13bd1e9e96d5" />
+        <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+        <type type="Factory Extension" typeId="7d008e84-bb28-4b10-ba28-7439202fca76" />
+        <type type="Stereotype-Definition" typeId="54eff27b-2dfc-4853-8498-1a2c4700e385" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>

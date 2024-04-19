@@ -19,7 +19,7 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type order="-1">Designers Folder</type>
+        <type order="-1" type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99" />
       </typeOrder>
     </packageExtension>
   </packageExtensions>
@@ -51,9 +51,9 @@
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type order="0">Association Source End Extension</type>
-        <type order="1">Association Target End Extension</type>
-        <type order="2">Association Event Settings</type>
+        <type order="0" type="Association Source End Extension" typeId="66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3" />
+        <type order="1" type="Association Target End Extension" typeId="1cc6c731-af5f-41a0-9e82-44486f45b903" />
+        <type order="2" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -108,7 +108,7 @@ createElement("Association Event Settings", "[events]", element.id);</script>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Context Menu</type>
+            <type order="0" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -142,7 +142,7 @@ createElement("Association Event Settings", "[events]", element.id);</script>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Context Menu</type>
+            <type order="0" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -177,10 +177,10 @@ createElement("Association Event Settings", "[events]", element.id);</script>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Association Source End Settings</type>
-        <type order="1">Association Destination End Settings</type>
-        <type order="2">Association Visual Settings</type>
-        <type order="3">Association Event Settings</type>
+        <type order="0" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37" />
+        <type order="1" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302" />
+        <type order="2" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad" />
+        <type order="3" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -269,8 +269,8 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <typeOrder>
-            <type order="0">Association Source End Visual Settings</type>
-            <type order="1">Association Destination End Visual Settings</type>
+            <type order="0" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105" />
+            <type order="1" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -347,7 +347,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Context Menu</type>
+            <type order="0" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -380,7 +380,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Context Menu</type>
+            <type order="0" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -414,7 +414,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Association Event Handler</type>
+            <type order="0" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -520,11 +520,11 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Element Creation Option</type>
-        <type order="1">Association Creation Option</type>
-        <type order="2">Stereotype-Definition Creation Option</type>
-        <type order="3">Run Script Option</type>
-        <type order="4">Mapping Option</type>
+        <type order="0" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19" />
+        <type order="1" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76" />
+        <type order="2" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9" />
+        <type order="3" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af" />
+        <type order="4" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -697,7 +697,6 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
-          <typeOrder />
           <creationOptions />
           <scriptOptions />
           <mappingOptions />
@@ -767,7 +766,7 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Designer Reference</type>
+        <type order="0" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -809,7 +808,6 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
-          <typeOrder />
           <creationOptions />
           <scriptOptions />
           <mappingOptions />
@@ -833,18 +831,18 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Designer Reference</type>
-        <type order="1">Element Settings</type>
-        <type order="2">Element Extension</type>
-        <type order="3">Association Settings</type>
-        <type order="4">Association Extension</type>
-        <type order="5">Package Settings</type>
-        <type order="6">Package Extension</type>
-        <type order="7">Mapping Settings</type>
-        <type order="8">Mappable Elements Package</type>
-        <type order="9">Mappable Elements Package Extension</type>
-        <type order="10">Core Type</type>
-        <type order="11">Script</type>
+        <type order="0" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f" />
+        <type order="1" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8" />
+        <type order="2" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20" />
+        <type order="3" type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272" />
+        <type order="4" type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb" />
+        <type order="5" type="Package Settings" typeId="89333f72-3960-4159-bf61-9c40d4b65088" />
+        <type order="6" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204" />
+        <type order="7" type="Mapping Settings" typeId="a901c634-6482-4993-ae3c-bd1b637f78d4" />
+        <type order="8" type="Mappable Elements Package" typeId="aa2eab42-5ffc-4028-b4b6-95ff719705d4" />
+        <type order="9" type="Mappable Elements Package Extension" typeId="bddb69f0-e2c8-4373-b5cb-d701f311f935" />
+        <type order="10" type="Core Type" typeId="dc79fd61-7e57-44c8-ad40-14a7643b89c8" />
+        <type order="11" type="Script" typeId="101fd5b6-3159-4810-9490-a103ef323e9c" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -969,8 +967,8 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Designer</type>
-        <type order="1">Designer Settings</type>
+        <type order="0" type="Designer" typeId="7f5fcc9f-c721-4a31-bfe2-7909f4289420" />
+        <type order="1" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -1022,10 +1020,10 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type order="0">Context Menu</type>
-        <type order="1">Diagram Settings</type>
-        <type order="2">Mapping Projection Settings</type>
-        <type order="3">Element Event Settings</type>
+        <type order="0" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21" />
+        <type order="1" type="Diagram Settings" typeId="67d711dd-3918-4b28-b2a0-4d845884e17a" />
+        <type order="2" type="Mapping Projection Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc" />
+        <type order="3" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -1092,13 +1090,13 @@ return null;</iconFunction>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Accepted Child Types</type>
-        <type order="1">Context Menu</type>
-        <type order="2">Element Settings</type>
-        <type order="3">Mapping Projection Settings</type>
-        <type order="4">Diagram Settings</type>
-        <type order="5">Element Visual Settings</type>
-        <type order="6">Element Event Settings</type>
+        <type order="0" type="Accepted Child Types" typeId="7c0e37ab-2f84-46df-ac29-1e5aaa67bf75" />
+        <type order="1" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21" />
+        <type order="2" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8" />
+        <type order="3" type="Mapping Projection Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc" />
+        <type order="4" type="Diagram Settings" typeId="67d711dd-3918-4b28-b2a0-4d845884e17a" />
+        <type order="5" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d" />
+        <type order="6" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -1185,7 +1183,7 @@ return null;</iconFunction>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Element Mapping</type>
+            <type order="0" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -1225,7 +1223,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <typeOrder>
-                <type order="0">Element Mapping</type>
+                <type order="0" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c" />
               </typeOrder>
               <creationOptions>
                 <option type="element">
@@ -1261,7 +1259,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Element Event Handler</type>
+            <type order="0" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -1390,11 +1388,11 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <typeOrder>
-            <type order="0">Path Draw Settings</type>
-            <type order="1">Text Draw Settings</type>
-            <type order="2">SVG Resource Draw Settings</type>
-            <type order="3">Stereotypes Visual Settings</type>
-            <type order="4">Element Visual Settings</type>
+            <type order="0" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99" />
+            <type order="1" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c" />
+            <type order="2" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0" />
+            <type order="3" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526" />
+            <type order="4" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -1532,9 +1530,9 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Context Menu</type>
-            <type order="1">Element Visual Settings</type>
-            <type order="2">Association Visual Settings</type>
+            <type order="0" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21" />
+            <type order="1" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d" />
+            <type order="2" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -1583,8 +1581,8 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Accepted Type</type>
-            <type order="1">Accepted Stereotypes</type>
+            <type order="0" type="Accepted Type" typeId="71c8431f-9f39-45fd-b61d-f75f7ba3eea6" />
+            <type order="1" type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -1676,8 +1674,8 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Mappable Elements Package Import</type>
-        <type order="1">Mappable Element Settings</type>
+        <type order="0" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05" />
+        <type order="1" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -1730,8 +1728,8 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type order="0">Mappable Elements Package Import</type>
-        <type order="1">Mappable Element Settings</type>
+        <type order="0" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05" />
+        <type order="1" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -1771,9 +1769,9 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Source Mappable Elements</type>
-        <type order="1">Target Mappable Elements</type>
-        <type order="2">Mapping Type Settings</type>
+        <type order="0" type="Source Mappable Elements" typeId="1536425c-35f4-48e1-abe4-1f8f56533545" />
+        <type order="1" type="Target Mappable Elements" typeId="a812bff7-017a-4692-8ec7-1caad0a1dd88" />
+        <type order="2" type="Mapping Type Settings" typeId="dd8e8a63-140c-41c8-b812-0dc923012fac" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -1828,8 +1826,8 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Mappable Element Settings</type>
-            <type order="1">Mappable Elements Package Import</type>
+            <type order="0" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf" />
+            <type order="1" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -1869,8 +1867,8 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Mappable Element Settings</type>
-            <type order="1">Mappable Elements Package Import</type>
+            <type order="0" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf" />
+            <type order="1" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -1925,8 +1923,8 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <typeOrder>
-            <type order="0">Static Mappable Settings</type>
-            <type order="1">Mappable Element Settings</type>
+            <type order="0" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad" />
+            <type order="1" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -1979,7 +1977,6 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
-          <typeOrder />
           <creationOptions />
           <scriptOptions />
           <mappingOptions />
@@ -2000,7 +1997,6 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
-          <typeOrder />
           <creationOptions />
           <scriptOptions />
           <mappingOptions />
@@ -2021,7 +2017,6 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
-          <typeOrder />
           <creationOptions />
           <scriptOptions />
           <mappingOptions />
@@ -2057,8 +2052,8 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type order="0">Context Menu</type>
-        <type order="1">Package Event Settings</type>
+        <type order="0" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21" />
+        <type order="1" type="Package Event Settings" typeId="48bcdd5f-690c-425b-8f5e-99097a7188dc" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -2104,8 +2099,8 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Context Menu</type>
-        <type order="1">Package Event Settings</type>
+        <type order="0" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21" />
+        <type order="1" type="Package Event Settings" typeId="48bcdd5f-690c-425b-8f5e-99097a7188dc" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -2151,7 +2146,7 @@ createElement("a812bff7-017a-4692-8ec7-1caad0a1dd88", "Target", element.id);</sc
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Element Event Handler</type>
+            <type order="0" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6" />
           </typeOrder>
           <creationOptions>
             <option type="element">

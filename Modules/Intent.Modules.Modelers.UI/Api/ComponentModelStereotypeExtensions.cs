@@ -12,39 +12,16 @@ namespace Intent.Modelers.UI.Api
 {
     public static class ComponentModelStereotypeExtensions
     {
-        public static Component GetComponent(this ComponentModel model)
-        {
-            var stereotype = model.GetStereotype("b407aace-ad14-484e-ac93-4762a3d182d8");
-            return stereotype != null ? new Component(stereotype) : null;
-        }
-
-
-        public static bool HasComponent(this ComponentModel model)
-        {
-            return model.HasStereotype("b407aace-ad14-484e-ac93-4762a3d182d8");
-        }
-
-        public static bool TryGetComponent(this ComponentModel model, out Component stereotype)
-        {
-            if (!HasComponent(model))
-            {
-                stereotype = null;
-                return false;
-            }
-
-            stereotype = new Component(model.GetStereotype("b407aace-ad14-484e-ac93-4762a3d182d8"));
-            return true;
-        }
         public static ComponentSettings GetComponentSettings(this ComponentModel model)
         {
-            var stereotype = model.GetStereotype("93f869a6-f3e1-498e-bf40-6cfe99f012c5");
+            var stereotype = model.GetStereotype(ComponentSettings.DefinitionId);
             return stereotype != null ? new ComponentSettings(stereotype) : null;
         }
 
 
         public static bool HasComponentSettings(this ComponentModel model)
         {
-            return model.HasStereotype("93f869a6-f3e1-498e-bf40-6cfe99f012c5");
+            return model.HasStereotype(ComponentSettings.DefinitionId);
         }
 
         public static bool TryGetComponentSettings(this ComponentModel model, out ComponentSettings stereotype)
@@ -55,20 +32,20 @@ namespace Intent.Modelers.UI.Api
                 return false;
             }
 
-            stereotype = new ComponentSettings(model.GetStereotype("93f869a6-f3e1-498e-bf40-6cfe99f012c5"));
+            stereotype = new ComponentSettings(model.GetStereotype(ComponentSettings.DefinitionId));
             return true;
         }
 
         public static Page GetPage(this ComponentModel model)
         {
-            var stereotype = model.GetStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c");
+            var stereotype = model.GetStereotype(Page.DefinitionId);
             return stereotype != null ? new Page(stereotype) : null;
         }
 
 
         public static bool HasPage(this ComponentModel model)
         {
-            return model.HasStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c");
+            return model.HasStereotype(Page.DefinitionId);
         }
 
         public static bool TryGetPage(this ComponentModel model, out Page stereotype)
@@ -79,19 +56,19 @@ namespace Intent.Modelers.UI.Api
                 return false;
             }
 
-            stereotype = new Page(model.GetStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c"));
+            stereotype = new Page(model.GetStereotype(Page.DefinitionId));
             return true;
         }
         public static SupportForChildren GetSupportForChildren(this ComponentModel model)
         {
-            var stereotype = model.GetStereotype("a41c8945-0ca4-4597-b760-66473153b6ab");
+            var stereotype = model.GetStereotype(SupportForChildren.DefinitionId);
             return stereotype != null ? new SupportForChildren(stereotype) : null;
         }
 
 
         public static bool HasSupportForChildren(this ComponentModel model)
         {
-            return model.HasStereotype("a41c8945-0ca4-4597-b760-66473153b6ab");
+            return model.HasStereotype(SupportForChildren.DefinitionId);
         }
 
         public static bool TryGetSupportForChildren(this ComponentModel model, out SupportForChildren stereotype)
@@ -102,26 +79,14 @@ namespace Intent.Modelers.UI.Api
                 return false;
             }
 
-            stereotype = new SupportForChildren(model.GetStereotype("a41c8945-0ca4-4597-b760-66473153b6ab"));
+            stereotype = new SupportForChildren(model.GetStereotype(SupportForChildren.DefinitionId));
             return true;
-        }
-
-        public class Component
-        {
-            private IStereotype _stereotype;
-
-            public Component(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public string Name => _stereotype.Name;
-
         }
 
         public class ComponentSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "93f869a6-f3e1-498e-bf40-6cfe99f012c5";
 
             public ComponentSettings(IStereotype stereotype)
             {
@@ -140,6 +105,7 @@ namespace Intent.Modelers.UI.Api
         public class Page
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "ea4adc09-8978-4ede-ba5f-265debb2b60c";
 
             public Page(IStereotype stereotype)
             {
@@ -158,6 +124,7 @@ namespace Intent.Modelers.UI.Api
         public class SupportForChildren
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "a41c8945-0ca4-4597-b760-66473153b6ab";
 
             public SupportForChildren(IStereotype stereotype)
             {

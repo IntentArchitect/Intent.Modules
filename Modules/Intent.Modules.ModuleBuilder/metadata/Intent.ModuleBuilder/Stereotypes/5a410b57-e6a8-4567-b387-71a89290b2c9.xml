@@ -45,6 +45,15 @@
       </lookupTypes>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
+    <property id="fde5c705-2274-4536-9d47-62029793629d">
+      <name>Target Traits</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-stereotype</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="65b99db7-ec8e-408d-a0fd-a98245d1fbcc">
       <name>Display Text Function</name>
       <type>string</type>

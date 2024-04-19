@@ -70,6 +70,15 @@
       <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
       <isRequiredFunction />
     </property>
+    <property id="08ec0581-c90a-489b-858f-ee265327c948">
+      <name>Target Traits</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-stereotype</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e">
       <name>Default Type Id</name>
       <type>string</type>

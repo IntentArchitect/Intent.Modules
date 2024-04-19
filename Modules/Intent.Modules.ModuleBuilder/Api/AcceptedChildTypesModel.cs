@@ -71,21 +71,21 @@ namespace Intent.ModuleBuilder.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
-        public List<AcceptedChildSettingPersistable> ToPersistable()
+        public List<TypeOrderPersistable> ToPersistable()
         {
             var order = 0;
-            var result = new List<AcceptedChildSettingPersistable>();
+            var result = new List<TypeOrderPersistable>();
             foreach (var childElement in InternalElement.ChildElements)
             {
                 if (childElement.IsAcceptedTypeModel())
                 {
                     var model = childElement.AsAcceptedTypeModel();
-                    result.Add(new AcceptedChildSettingPersistable() { Order = order, AcceptBy = AcceptsChildBy.Type, SpecializationType = model.TypeReference.Element.Name, SpecializationTypeId = model.TypeReference.Element.Id });
+                    result.Add(new TypeOrderPersistable() { Order = order, Type = model.TypeReference.Element.Name, TypeId = model.TypeReference.Element.Id });
                 }
                 if (childElement.IsAcceptedStereotypesModel())
                 {
                     var model = childElement.AsAcceptedStereotypesModel();
-                    result.Add(new AcceptedChildSettingPersistable() { Order = order, AcceptBy = AcceptsChildBy.Type, SpecializationType = model.GetSettings().TypesWithStereotype().Name, SpecializationTypeId = model.GetSettings().TypesWithStereotype().Id });
+                    result.Add(new TypeOrderPersistable() { Order = order, Type = model.GetSettings().TypesWithStereotype().Name, TypeId = model.GetSettings().TypesWithStereotype().Id });
                 }
                 order++;
             }

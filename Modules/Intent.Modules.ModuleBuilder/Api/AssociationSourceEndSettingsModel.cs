@@ -64,7 +64,9 @@ namespace Intent.ModuleBuilder.Api
                 Icon = this.GetSettings().Icon().ToPersistable(),
                 TypeReferenceSetting = new TypeReferenceSettingPersistable()
                 {
-                    TargetTypes = this.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
+                    TargetTypes = (this.GetSettings().TargetTypes()?.Select(x => new TargetTypePersistable() { Type = x.Name, TypeId = x.Id }) ?? new List<TargetTypePersistable>())
+                        .Concat(this.GetSettings().TargetTraits()?.Select(x => new TargetTypePersistable() { Type = x.Name, TypeId = x.Id }) ?? new List<TargetTypePersistable>())
+                        .ToArray(),
                     IsCollectionDefault = this.GetSettings().IsCollectionDefault(),
                     AllowIsCollection = this.GetSettings().IsCollectionEnabled(),
                     IsNavigableDefault = this.GetSettings().IsNavigableDefault(),

@@ -56,6 +56,15 @@
       <isActiveFunction />
       <isRequiredFunction />
     </property>
+    <property id="57c5e973-3a0a-42d7-912f-3e7ff3af2c0b">
+      <name>Target Traits</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-stereotype</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="ced53770-7796-42de-850e-5cd523e368f9">
       <name>Default Type Id</name>
       <type>string</type>

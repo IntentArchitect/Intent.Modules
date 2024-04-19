@@ -7,6 +7,9 @@
   <packageExtensions />
   <elementSettings>
     <elementSetting type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b">
+      <implements>
+        <trait id="b407aace-ad14-484e-ac93-4762a3d182d8" name="[Component]" />
+      </implements>
       <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ29ncyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfQ29nc194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NvZ19CX3gzRV9fMDAwMDAwNTU2NzEzNjMzMzg4OTgzMTI4NjAwMDAwMTcyNjYwNTg3MjkxMjEzMDMyMDNfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjM1LjYiIHkxPSIyLjEzMDMiIHgyPSIzNS42IiB5Mj0iNDcuMjEwNyI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQ0I2NDUiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBhdGggaWQ9Il94M0NfQ29nX0JfeDNFXyIgZmlsbD0idXJsKCNfeDNDX0NvZ19CX3gzRV9fMDAwMDAwNTU2NzEzNjMzMzg4OTgzMTI4NjAwMDAwMTcyNjYwNTg3MjkxMjEzMDMyMDNfKSIgZD0iTTQ1LjEsMzZsMi42LTAuNw0KCQlsLTIuMy04LjRsLTIuNiwwLjdjLTAuMi0wLjMtMC40LTAuNS0wLjctMC44Yy0wLjItMC4yLTAuNS0wLjUtMC44LTAuN2wwLjctMi42TDQwLjIsMjNsLTEuNSw1LjRjMC4zLDAuMiwwLjYsMC41LDAuOSwwLjgNCgkJYzAuNCwwLjQsMC43LDAuOCwxLDEuMmwwLjcsMS4xbDEuNy0wLjRsMC41LDEuOGwtMS43LDAuNGwtMC4xLDEuMmMwLDEuMS0wLjMsMi4xLTAuOCwzbC0wLjYsMS4xbDEuMiwxLjJsLTEuMywxLjNMMzkuMSw0MEwzOCw0MC42DQoJCWMtMC45LDAuNS0xLjksMC44LTMsMC44bC0xLjIsMC4xbC0wLjQsMS43bC0xLjgtMC41TDMyLDQxbC0xLjEtMC43Yy0wLjQtMC4zLTAuOS0wLjYtMS4yLTFjLTAuMy0wLjMtMC41LTAuNi0wLjgtMC45bC01LjQsMS41DQoJCWwwLjUsMS44bDIuNi0wLjdjMC4yLDAuMywwLjQsMC41LDAuNywwLjhjMC4yLDAuMiwwLjUsMC41LDAuOCwwLjdMMjcuMyw0NWw4LjQsMi4ybDAuNy0yLjZjMC43LTAuMSwxLjMtMC4zLDItMC41bDEuOSwxLjlsNi4xLTYuMQ0KCQlMNDQuNiwzOEM0NC44LDM3LjMsNDUsMzYuNyw0NS4xLDM2eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfQ29nX0FfeDNFX18wMDAwMDEyMzQxODMzNjc2MjQwMTc1NjIxMDAwMDAxMzA2Nzg5MTExNTE5NzUxMDU2N18iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjAuMjUiIHkxPSIyLjEzMDIiIHgyPSIyMC4yNSIgeTI9IjQ3LjIxMjIiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRkJCMDQxIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQ0I2NDUiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBhdGggaWQ9Il94M0NfQ29nX0FfeDNFXyIgZmlsbD0idXJsKCNfeDNDX0NvZ19BX3gzRV9fMDAwMDAxMjM0MTgzMzY3NjI0MDE3NTYyMTAwMDAwMTMwNjc4OTExMTUxOTc1MTA1NjdfKSIgZD0iTTI4LjksMzEuMQ0KCQljMS0wLjgsMS45LTEuNiwyLjYtMi42bDMuNSwwLjlsMi44LTEwLjZMMzQuNCwxOGMtMC4yLTEuMi0wLjUtMi40LTEtMy42bDIuNS0yLjVsLTcuNy03LjdsLTIuNSwyLjVjLTAuNi0wLjItMS4yLTAuNC0xLjgtMC42DQoJCWMtMC42LTAuMi0xLjItMC4zLTEuOC0wLjRsLTAuOS0zLjVMMTAuNiw1LjFsMC45LDMuNWMtMSwwLjgtMS45LDEuNi0yLjYsMi42bC0zLjUtMC45TDIuNywyMC44bDMuNSwwLjljMC4yLDEuMiwwLjUsMi40LDEsMy42DQoJCWwtMi41LDIuNWw3LjcsNy43bDIuNS0yLjVjMC42LDAuMiwxLjIsMC40LDEuNywwLjZjMC42LDAuMiwxLjIsMC4zLDEuOCwwLjRsMC45LDMuNWwxMC42LTIuOEwyOC45LDMxLjF6IE0yNi4xLDI5TDI1LDI5LjdsMC43LDIuNQ0KCQlsLTQsMS4xTDIxLDMwLjdsLTEuMi0wLjFjLTAuOCwwLTEuNi0wLjItMi4zLTAuNGMtMC43LTAuMi0xLjUtMC41LTIuMi0wLjlsLTEuMS0wLjZsLTEuOSwxLjlsLTIuOS0yLjlsMS45LTEuOWwtMC42LTEuMQ0KCQljLTAuNy0xLjQtMS4yLTMtMS4yLTQuNkw5LjQsMTlsLTIuNS0wLjdsMS4xLTRsMi41LDAuN2wwLjctMS4xYzAuOC0xLjMsMi0yLjUsMy4zLTMuM2wxLjEtMC43bC0wLjctMi41bDQtMS4xbDAuNywyLjVMMjAuNyw5DQoJCWMwLjgsMCwxLjYsMC4yLDIuMywwLjRjMC44LDAuMiwxLjUsMC41LDIuMiwwLjlsMS4xLDAuNkwyOC4yLDlsMi45LDIuOWwtMS45LDEuOWwwLjYsMS4xYzAuNywxLjQsMS4yLDMsMS4yLDQuNWwwLjEsMS4ybDIuNSwwLjcNCgkJbC0xLjEsNEwzMCwyNC42bC0wLjcsMS4xQzI4LjYsMjcsMjcuNCwyOC4xLDI2LjEsMjl6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iX3gzQ19DaXJjbGVfQl94M0VfXzAwMDAwMDk2MDMxOTI2NzEyNDAxNTc0MTIwMDAwMDEzOTAwNDM1MzQwMTgwNDIzODY1XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyMC4zMDAyIiB5MT0iMi4xMzAxIiB4Mj0iMjAuMzAwMiIgeTI9IjQ3LjIxMDgiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRkNCNjQ1Ii8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGNTdGMjAiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV9CX3gzRV8iIGZpbGw9InVybCgjX3gzQ19DaXJjbGVfQl94M0VfXzAwMDAwMDk2MDMxOTI2NzEyNDAxNTc0MTIwMDAwMDEzOTAwNDM1MzQwMTgwNDIzODY1XykiIGQ9Ik0yMi4zLDEyLjMNCgkJYy0wLjctMC4yLTEuMy0wLjMtMi0wLjNjLTMuNSwwLTYuNiwyLjQtNy41LDUuOGMtMC41LDItMC4zLDQuMSwwLjgsNS45YzEsMS44LDIuNywzLjEsNC43LDMuNmMwLjcsMC4yLDEuMywwLjMsMiwwLjMNCgkJYzMuNSwwLDYuNi0yLjQsNy41LTUuOEMyOC45LDE3LjcsMjYuNCwxMy40LDIyLjMsMTIuM3ogTTI0LjUsMjFjLTAuNSwxLjktMi4zLDMuMy00LjMsMy4zYy0wLjQsMC0wLjgtMC4xLTEuMS0wLjINCgkJYy0xLjEtMC4zLTIuMS0xLTIuNy0yLjFjLTAuNi0xLTAuNy0yLjItMC40LTMuM2MwLjUtMS45LDIuMy0zLjMsNC4yLTMuM2MwLjQsMCwwLjgsMC4xLDEuMSwwLjJDMjMuNywxNi4yLDI1LjEsMTguNiwyNC41LDIxeiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfQ2lyY2xlX0FfeDNFX18wMDAwMDAxODkzODAzNzMyMjk2NDgyOTQzMDAwMDAwOTkwOTE5MTEyOTI0MzY3NTA2MF8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzQuNyIgeTE9IjIuMTI1IiB4Mj0iMzQuNyIgeTI9IjQ3LjIxNDYiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRkNCNjQ1Ii8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGNTdGMjAiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV9BX3gzRV8iIGZpbGw9InVybCgjX3gzQ19DaXJjbGVfQV94M0VfXzAwMDAwMDE4OTM4MDM3MzIyOTY0ODI5NDMwMDAwMDA5OTA5MTkxMTI5MjQzNjc1MDYwXykiIGQ9Ik0zMi41LDMyLjENCgkJYy0xLjIsMS4yLTEuMiwzLjIsMCw0LjRzMy4yLDEuMiw0LjQsMHMxLjItMy4yLDAtNC40QzM1LjcsMzAuOSwzMy43LDMwLjksMzIuNSwzMi4xeiIvPg0KPC9nPg0KPC9zdmc+DQo=" />
       <iconFunction>return getStereotype("93f869a6-f3e1-498e-bf40-6cfe99f012c5")?.getProperty("134e78a7-5b4c-4430-b8df-7c8b7d1cd29d")?.getValue();</iconFunction>
       <saveAsOwnFile>true</saveAsOwnFile>
@@ -22,12 +25,12 @@
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Property</type>
-        <type order="1">Event Emitter</type>
-        <type order="2">Component Operation</type>
-        <type order="3">Component View</type>
-        <type order="4">Model Definition</type>
-        <type order="5">Navigation Target End</type>
+        <type order="0" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" />
+        <type order="1" type="Event Emitter" typeId="d6739ffc-30e6-4170-a105-bf28e69aa578" />
+        <type order="2" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+        <type order="3" type="Component View" typeId="624513a6-cba8-4dde-8ebe-6b19f00f0364" />
+        <type order="4" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
+        <type order="5" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -163,19 +166,9 @@ return hasStereotype(pageStereotypeId)</isOptionVisibleFunction>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Display Component</type>
+            <type order="0" type="[Component]" typeId="b407aace-ad14-484e-ac93-4762a3d182d8" />
           </typeOrder>
-          <creationOptions>
-            <option type="element">
-              <text>Add Custom Component</text>
-              <icon type="UrlImagePath" source="data:image/png;base64,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" />
-              <isOptionVisibleFunction>return false</isOptionVisibleFunction>
-              <specializationType>Display Component</specializationType>
-              <specializationTypeId>866a90f7-4044-43b9-bb05-7270c7889796</specializationTypeId>
-              <defaultName>return "[display]";</defaultName>
-              <allowMultiple>true</allowMultiple>
-            </option>
-          </creationOptions>
+          <creationOptions />
           <scriptOptions>
             <option>
               <text>Add Component</text>
@@ -243,7 +236,7 @@ if (selected.type == "core") {
               <typeReferenceSetting>
                 <isRequired>true</isRequired>
                 <targetTypes>
-                  <type>Component</type>
+                  <type type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" />
                 </targetTypes>
                 <allowIsNavigable>true</allowIsNavigable>
                 <allowIsNullable>false</allowIsNullable>
@@ -252,7 +245,6 @@ if (selected.type == "core") {
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
-              <typeOrder />
               <creationOptions />
               <scriptOptions />
               <mappingOptions />
@@ -292,10 +284,10 @@ return result;</displayFunction>
           <typeReferenceSetting>
             <isRequired>false</isRequired>
             <targetTypes>
-              <type>Model Definition</type>
-              <type>DTO</type>
-              <type>Type-Definition</type>
-              <type>Enum</type>
+              <type type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
+              <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
+              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+              <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
@@ -305,8 +297,8 @@ return result;</displayFunction>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <typeOrder>
-            <type order="0">Parameter</type>
-            <type order="1">Call Service Operation Action Target End</type>
+            <type order="0" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" />
+            <type order="1" type="Call Service Operation Action Target End" typeId="475f0810-2b4a-40da-8eb8-697cb62f7dbe" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -411,10 +403,10 @@ return validateOperation(lookup(id));
             <displayName>Return Type</displayName>
             <isRequired>false</isRequired>
             <targetTypes>
-              <type>DTO</type>
-              <type>Type-Definition</type>
-              <type>Enum</type>
-              <type>Model Definition</type>
+              <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
+              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+              <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+              <type type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
@@ -424,9 +416,9 @@ return validateOperation(lookup(id));
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <typeOrder>
-            <type order="0">Parameter</type>
-            <type order="1">Call Service Operation Action Target End</type>
-            <type order="2">Navigation Target End</type>
+            <type order="0" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" />
+            <type order="1" type="Call Service Operation Action Target End" typeId="475f0810-2b4a-40da-8eb8-697cb62f7dbe" />
+            <type order="2" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -532,10 +524,10 @@ return validateOperationParameter(lookup(id));
               <typeReferenceSetting>
                 <isRequired>true</isRequired>
                 <targetTypes>
-                  <type>DTO</type>
-                  <type>Type-Definition</type>
-                  <type>Enum</type>
-                  <type>Model Definition</type>
+                  <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
+                  <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+                  <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+                  <type type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
                 </targetTypes>
                 <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
                 <allowIsNavigable>true</allowIsNavigable>
@@ -567,10 +559,10 @@ return validateOperationParameter(lookup(id));
           <typeReferenceSetting>
             <isRequired>true</isRequired>
             <targetTypes>
-              <type>DTO</type>
-              <type>Model Definition</type>
-              <type>Type-Definition</type>
-              <type>Enum</type>
+              <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
+              <type type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
+              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+              <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
@@ -600,13 +592,13 @@ return validateOperationParameter(lookup(id));
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Layout Header</type>
-        <type order="1">Layout Sider</type>
-        <type order="2">Layout Body</type>
-        <type order="3">Layout Footer</type>
-        <type order="4">Property</type>
-        <type order="5">Component Operation</type>
-        <type order="6">Navigation Target End</type>
+        <type order="0" type="Layout Header" typeId="a6c3a89e-5932-4ab6-a406-75444f05beee" />
+        <type order="1" type="Layout Sider" typeId="c505f35f-7148-46a3-a812-d9f53a174490" />
+        <type order="2" type="Layout Body" typeId="11636699-8bad-4693-8c15-8141bd66d04f" />
+        <type order="3" type="Layout Footer" typeId="5d4fe8e9-2ccf-42ea-af60-04c6970c9ecb" />
+        <type order="4" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" />
+        <type order="5" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+        <type order="6" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -688,7 +680,9 @@ return validateOperationParameter(lookup(id));
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
-          <typeOrder />
+          <typeOrder>
+            <type order="0" type="[Component]" typeId="b407aace-ad14-484e-ac93-4762a3d182d8" />
+          </typeOrder>
           <creationOptions />
           <scriptOptions>
             <option>
@@ -748,7 +742,9 @@ if (selected.type == "core") {
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
-          <typeOrder />
+          <typeOrder>
+            <type order="0" type="[Component]" typeId="b407aace-ad14-484e-ac93-4762a3d182d8" />
+          </typeOrder>
           <creationOptions />
           <scriptOptions>
             <option>
@@ -808,7 +804,9 @@ if (selected.type == "core") {
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
-          <typeOrder />
+          <typeOrder>
+            <type order="0" type="[Component]" typeId="b407aace-ad14-484e-ac93-4762a3d182d8" />
+          </typeOrder>
           <creationOptions />
           <scriptOptions>
             <option>
@@ -868,7 +866,9 @@ if (selected.type == "core") {
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
-          <typeOrder />
+          <typeOrder>
+            <type order="0" type="[Component]" typeId="b407aace-ad14-484e-ac93-4762a3d182d8" />
+          </typeOrder>
           <creationOptions />
           <scriptOptions>
             <option>
@@ -931,7 +931,7 @@ if (selected.type == "core") {
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Property</type>
+        <type order="0" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -1014,9 +1014,9 @@ if (selected.type == "core") {
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type>Component</type>
-        <type>Layout</type>
-        <type>Model Definition</type>
+        <type type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" />
+        <type type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef" />
+        <type type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -1030,7 +1030,7 @@ if (selected.type == "core") {
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Component Operation</type>
+            <type type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -1084,9 +1084,9 @@ return display;
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Component</type>
-            <type>Component Operation</type>
-            <type>Layout</type>
+            <type type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" />
+            <type type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+            <type type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef" />
           </targetTypes>
           <allowIsNavigable>true</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -1105,7 +1105,7 @@ return display;
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Component</type>
+            <type type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -1115,7 +1115,7 @@ return display;
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
         <typeOrder>
-          <type order="0">Parameter</type>
+          <type order="0" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" />
         </typeOrder>
         <creationOptions>
           <option type="element">

@@ -200,7 +200,7 @@ namespace Intent.ModuleBuilder.Api
         {
             Order = element.GetOptionSettings().TypeOrder();
             Type = element.TypeReference.Element.IsAssociationSettingsModel() ? element.TypeReference.Element.AsAssociationSettingsModel().TargetEnd.Name : element.TypeReference.Element.Name;
-            Type = element.TypeReference.Element.IsAssociationSettingsModel() ? element.TypeReference.Element.AsAssociationSettingsModel().TargetEnd.Id : element.TypeReference.Element.Id;
+            TypeId = element.TypeReference.Element.IsAssociationSettingsModel() ? element.TypeReference.Element.AsAssociationSettingsModel().TargetEnd.Id : element.TypeReference.Element.Id;
         }
 
         public int? Order { get; set; }

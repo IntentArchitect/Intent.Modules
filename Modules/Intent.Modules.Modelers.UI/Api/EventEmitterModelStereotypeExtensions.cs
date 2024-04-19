@@ -14,14 +14,14 @@ namespace Intent.Modelers.UI.Api
     {
         public static Bindable GetBindable(this EventEmitterModel model)
         {
-            var stereotype = model.GetStereotype("12ba7bea-ceb9-44d4-8819-835fe36af7b3");
+            var stereotype = model.GetStereotype(Bindable.DefinitionId);
             return stereotype != null ? new Bindable(stereotype) : null;
         }
 
 
         public static bool HasBindable(this EventEmitterModel model)
         {
-            return model.HasStereotype("12ba7bea-ceb9-44d4-8819-835fe36af7b3");
+            return model.HasStereotype(Bindable.DefinitionId);
         }
 
         public static bool TryGetBindable(this EventEmitterModel model, out Bindable stereotype)
@@ -32,13 +32,14 @@ namespace Intent.Modelers.UI.Api
                 return false;
             }
 
-            stereotype = new Bindable(model.GetStereotype("12ba7bea-ceb9-44d4-8819-835fe36af7b3"));
+            stereotype = new Bindable(model.GetStereotype(Bindable.DefinitionId));
             return true;
         }
 
         public class Bindable
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "12ba7bea-ceb9-44d4-8819-835fe36af7b3";
 
             public Bindable(IStereotype stereotype)
             {

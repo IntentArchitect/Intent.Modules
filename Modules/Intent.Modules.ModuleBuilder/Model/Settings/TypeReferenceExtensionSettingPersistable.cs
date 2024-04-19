@@ -15,7 +15,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("targetTypes")]
         [XmlArrayItem("type")]
-        public string[] TargetTypes { get; set; }
+        public TargetTypePersistable[] TargetTypes { get; set; }
 
         [XmlElement("defaultTypeId")]
         public string DefaultTypeId { get; set; }

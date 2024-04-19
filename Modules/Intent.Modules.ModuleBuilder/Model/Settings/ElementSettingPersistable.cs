@@ -21,8 +21,8 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public string SpecializationTypeId { get; set; }
 
         [XmlArray("implements")]
-        [XmlArrayItem("stereotype", typeof(ImplementedStereotypePersistable))]
-        public List<ImplementedStereotypePersistable> Implements { get; set; }
+        [XmlArrayItem("trait", typeof(ImplementedTraitPersistable))]
+        public List<ImplementedTraitPersistable> Implements { get; set; }
         public bool ShouldSerializeImplements() => Implements?.Any() == true;
 
         [XmlElement("icon")]
@@ -124,10 +124,12 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
             }
         }
 
-        [XmlArray("acceptedChildren")]
-        [XmlArrayItem("accepts", typeof(AcceptedChildSettingPersistable))]
-        public List<AcceptedChildSettingPersistable> AcceptedChildren { get; set; }
-        public bool ShouldSerializeAcceptedChildren() => AcceptedChildren != null;
+        public bool ShouldSerializeTypeOrder() => TypeOrder.Count > 0;
+
+        //[XmlArray("acceptedChildren")]
+        //[XmlArrayItem("accepts", typeof(AcceptedChildSettingPersistable))]
+        //public List<AcceptedChildSettingPersistable> AcceptedChildren { get; set; }
+        //public bool ShouldSerializeAcceptedChildren() => AcceptedChildren != null;
 
 
         [XmlArray("creationOptions")]
@@ -181,10 +183,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         }
     }
 
-    public class ImplementedStereotypePersistable
+    public class ImplementedTraitPersistable
     {
-        [XmlAttribute("definitionId")]
-        public string DefinitionId { get; set; }
+        [XmlAttribute("id")]
+        public string Id { get; set; }
 
         [XmlAttribute("name")]
         public string Name { get; set; }
@@ -202,26 +204,26 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public string Source { get; set; }
     }
 
-    public class AcceptedChildSettingPersistable
-    {
-        [XmlAttribute("order")]
-        public int Order { get; set; }
+    //public class AcceptedChildSettingPersistable
+    //{
+    //    [XmlAttribute("order")]
+    //    public int Order { get; set; }
 
-        [XmlAttribute("acceptBy")]
-        public AcceptsChildBy AcceptBy { get; set; }
+    //    [XmlAttribute("acceptBy")]
+    //    public AcceptsChildBy AcceptBy { get; set; }
 
-        [XmlAttribute("specializationType")]
-        public string SpecializationType { get; set; }
-        public bool ShouldSerializeSpecializationType() => AcceptBy == AcceptsChildBy.Type;
+    //    [XmlAttribute("specializationType")]
+    //    public string SpecializationType { get; set; }
+    //    public bool ShouldSerializeSpecializationType() => AcceptBy == AcceptsChildBy.Type;
 
-        [XmlAttribute("specializationTypeId")]
-        public string SpecializationTypeId { get; set; }
-        public bool ShouldSerializeSpecializationTypeId() => AcceptBy == AcceptsChildBy.Type;
+    //    [XmlAttribute("specializationTypeId")]
+    //    public string SpecializationTypeId { get; set; }
+    //    public bool ShouldSerializeSpecializationTypeId() => AcceptBy == AcceptsChildBy.Type;
 
-        [XmlElement("function")]
-        public string AcceptsFunction { get; set; }
-        public bool ShouldSerializeAcceptsFunction() => AcceptBy == AcceptsChildBy.Function;
-    }
+    //    [XmlElement("function")]
+    //    public string AcceptsFunction { get; set; }
+    //    public bool ShouldSerializeAcceptsFunction() => AcceptBy == AcceptsChildBy.Function;
+    //}
 
     public enum AcceptsChildBy
     {

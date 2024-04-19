@@ -3,7 +3,7 @@
   <name>Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">Accepted Function</type>
+    <type id="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">Accepted Stereotypes</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>

@@ -71,13 +71,22 @@
       <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
+    <property id="52f3c2e8-6438-494a-b0a7-7a9e61c8aae8">
+      <name>Target Traits</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-stereotype</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8">
       <name>Represents</name>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <placeholder>(required)</placeholder>
-      <defaultValue>Reference</defaultValue>
+      <defaultValue>[]</defaultValue>
       <valueOptions>
         <option>Reference</option>
         <option>Inheritance</option>

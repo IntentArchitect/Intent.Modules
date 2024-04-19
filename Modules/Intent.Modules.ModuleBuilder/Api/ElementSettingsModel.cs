@@ -59,7 +59,7 @@ namespace Intent.ModuleBuilder.Api
                 Implements = this.Stereotypes
                     .Where(x => x.DefinitionId != ElementSettingsModelStereotypeExtensions.Settings.DefinitionId &&
                                 x.DefinitionId != ElementSettingsModelStereotypeExtensions.TypeReferenceSettings.DefinitionId)
-                    .Select(x => new ImplementedStereotypePersistable() { DefinitionId = x.DefinitionId, Name = x.Name })
+                    .Select(x => new ImplementedTraitPersistable() { Id = x.DefinitionId, Name = x.Name })
                     .ToList(),
                 SaveAsOwnFile = MustSaveInOwnFile(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
@@ -80,7 +80,9 @@ namespace Intent.ModuleBuilder.Api
                 TypeReferenceSetting = !this.GetTypeReferenceSettings().Mode().IsDisabled() ? new TypeReferenceSettingPersistable()
                 {
                     IsRequired = this.GetTypeReferenceSettings().Mode().IsRequired(),
-                    TargetTypes = this.GetTypeReferenceSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
+                    TargetTypes = (this.GetTypeReferenceSettings().TargetTypes()?.Select(x => new TargetTypePersistable() { Type = x.Name, TypeId = x.Id }) ?? new List<TargetTypePersistable>())
+                        .Concat(this.GetTypeReferenceSettings().TargetTraits()?.Select(x => new TargetTypePersistable() { Type = x.Name, TypeId = x.Id }) ?? new List<TargetTypePersistable>())
+                        .ToArray(),
                     AllowIsNullable = this.GetTypeReferenceSettings().AllowNullable(),
                     AllowIsCollection = this.GetTypeReferenceSettings().AllowCollection(),
                     DefaultTypeId = this.GetTypeReferenceSettings().DefaultTypeId(),
@@ -93,11 +95,21 @@ namespace Intent.ModuleBuilder.Api
                 CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
-                TypeOrder = this.MenuOptions?.TypeOrder.Select((x) => x.ToPersistable()).ToList(),
-                AcceptedChildren = this.AcceptedChildTypes?.ToPersistable(),
+                TypeOrder = GetTypeOrder(),
                 VisualSettings = this.VisualSettings?.ToPersistable(),
                 Macros = EventSettings?.ToPersistable(),
             };
+        }
+
+        private List<TypeOrderPersistable> GetTypeOrder()
+        {
+            var result = AcceptedChildTypes?.ToPersistable() ?? new List<TypeOrderPersistable>();
+            result = result
+                .Concat(MenuOptions?.TypeOrder
+                    .Select((x) => x.ToPersistable())
+                    .Where(x => !result.Contains(x)) ?? new List<TypeOrderPersistable>())
+                .ToList();
+            return result;
         }
 
         private IconModelPersistable GetIcon(IIconModel icon)

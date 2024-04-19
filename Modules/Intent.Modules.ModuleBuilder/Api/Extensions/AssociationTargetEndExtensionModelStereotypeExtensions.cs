@@ -64,6 +64,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<IElement[]>("Target Types") ?? new IElement[0];
             }
 
+            public IStereotypeDefinition[] TargetTraits()
+            {
+                return _stereotype.GetProperty<IStereotypeDefinition[]>("Target Traits");
+            }
+
             public string DefaultTypeId()
             {
                 return _stereotype.GetProperty<string>("Default Type Id");

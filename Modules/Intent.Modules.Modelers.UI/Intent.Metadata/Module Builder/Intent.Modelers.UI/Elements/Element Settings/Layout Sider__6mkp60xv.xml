@@ -50,6 +50,43 @@
   </stereotypes>
   <metadata />
   <childElements>
+    <childElement id="311cc0b2-fa3c-499d-a8d1-9fb66e1afc13" type="Accepted Child Types" typeId="7c0e37ab-2f84-46df-ac29-1e5aaa67bf75">
+      <name>[children]</name>
+      <display>[children]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>c505f35f-7148-46a3-a812-d9f53a174490</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="c28c36ac-8512-400e-b273-dc4d589ede30" type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
+          <name>NewAcceptedStereotypes</name>
+          <display>NewAcceptedStereotypes</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>311cc0b2-fa3c-499d-a8d1-9fb66e1afc13</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="c8e14e3f-f5ee-4992-b6cb-761ea48a11cd" name="Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="75834c40-408b-4fcb-a50b-b96c2f81ffc0" display="Types with Stereotype" value="b407aace-ad14-484e-ac93-4762a3d182d8" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
     <childElement id="5c07b85b-7530-4f75-a95e-917c64d795a8" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>

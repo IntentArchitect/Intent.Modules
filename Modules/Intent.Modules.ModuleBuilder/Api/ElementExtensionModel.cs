@@ -82,7 +82,9 @@ namespace Intent.ModuleBuilder.Api
                     new TypeReferenceExtensionSettingPersistable()
                     {
                         IsRequired = this.GetTypeReferenceExtensionSettings().Mode().IsRequired(),
-                        TargetTypes = this.GetTypeReferenceExtensionSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
+                        TargetTypes = (this.GetTypeReferenceExtensionSettings().TargetTypes()?.Select(x => new TargetTypePersistable() { Type = x.Name, TypeId = x.Id }) ?? new List<TargetTypePersistable>())
+                            .Concat(this.GetTypeReferenceExtensionSettings().TargetTraits()?.Select(x => new TargetTypePersistable() { Type = x.Name, TypeId = x.Id }) ?? new List<TargetTypePersistable>())
+                            .ToArray(),
                         DefaultTypeId = string.IsNullOrWhiteSpace(this.GetTypeReferenceExtensionSettings().DefaultTypeId()) ? this.GetTypeReferenceExtensionSettings().DefaultTypeId() : null,
                         AllowIsNullable = Enum.TryParse<BooleanExtensionOptions>(this.GetTypeReferenceExtensionSettings().AllowNullable().Value, out var allowIsNullable) ? allowIsNullable : BooleanExtensionOptions.Inherit,
                         AllowIsCollection = Enum.TryParse<BooleanExtensionOptions>(this.GetTypeReferenceExtensionSettings().AllowCollection().Value, out var allowIsCollection) ? allowIsCollection : BooleanExtensionOptions.Inherit,
