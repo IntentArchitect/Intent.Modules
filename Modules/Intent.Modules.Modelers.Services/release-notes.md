@@ -1,5 +1,9 @@
 ### Version 3.7.0
 
+- Improvement: Updated Dto mapping script to not add implicit primary keys.
+
+### Version 3.7.0
+
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
 
 ### Version 3.6.1

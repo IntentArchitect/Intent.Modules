@@ -571,17 +571,6 @@ function isOwnerForeignKey(attributeName, domainElement) {
 }
 function addPrimaryKeys(dto, entity, map) {
     const primaryKeys = getPrimaryKeysWithMapPath(entity);
-    if (primaryKeys.length == 0) {
-        // Implicit key:
-        primaryKeys.push({
-            id: null,
-            name: "Id",
-            typeId: getSurrogateKeyType(),
-            mapPath: null,
-            isNullable: false,
-            isCollection: false
-        });
-    }
     for (const primaryKey of primaryKeys) {
         const name = getDomainAttributeNameFormat(primaryKey.name);
         if (dto.getChildren("DTO-Field").some(x =&gt; x.getName().toLowerCase() == name.toLowerCase())) {
