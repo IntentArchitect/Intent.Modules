@@ -33,7 +33,7 @@
             <property name="ad6b372c-58e6-4fe0-b6fe-aa7d70f95ebc" display="Control Type" value="Select" isActive="true" />
             <property name="f0689c97-cb23-4ae1-8bb1-8b6af69b1504" display="Is Required" value="true" isActive="true" />
             <property name="95738255-b024-4b7f-b789-26eb8c30665f" display="Hint" isActive="true" />
-            <property name="980bae71-ac8a-4a52-9888-9bac41f126ba" display="Default Value" value="16d99e3e-7b91-42f8-ae3b-2686edde94b7" isActive="true" />
+            <property name="980bae71-ac8a-4a52-9888-9bac41f126ba" display="Default Value" value="f8b1618d-1e64-4c2c-9787-e0725c3633a1" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

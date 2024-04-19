@@ -1,5 +1,6 @@
 ### Version 3.4.8
 
+- Improvement: The AutoCompile factory extension has been removed from this module and the more robust `Intent.ModuleBuilder.AutoCompile` module should be installed and used instead.
 - Improvement: It is now possible to specify minimum versions of module dependencies.
 
 ### Version 3.4.7

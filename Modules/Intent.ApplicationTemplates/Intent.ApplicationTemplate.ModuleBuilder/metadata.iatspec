@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <applicationTemplate>
   <id>Intent.ApplicationTemplate.ModuleBuilder</id>
-  <version>3.3.61</version>
+  <version>3.3.62-pre.0</version>
   <supportedClientVersions>[4.2.4, 5.0.0-a)</supportedClientVersions>
   <displayName>Intent Module Builder</displayName>
   <shortDescription>Create an Intent Module to automate patterns &amp; code-structures specific to your project and technologies.</shortDescription>
@@ -184,7 +184,7 @@
     <group id="ef08465f-71d9-4f4a-810a-94d37d51b41d" title="Basic Settings">
       <settings>
         <setting id="target-framework" title="Target Framework" type="select">
-          <defaultValue>16d99e3e-7b91-42f8-ae3b-2686edde94b7</defaultValue>
+          <defaultValue>f8b1618d-1e64-4c2c-9787-e0725c3633a1</defaultValue>
           <isRequired>true</isRequired>
           <options>
             <option value="f8b1618d-1e64-4c2c-9787-e0725c3633a1" description=".NET 8.0" />

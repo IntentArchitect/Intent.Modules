@@ -1,3 +1,7 @@
+### Version 3.4.1
+
+- Improvement: Removed dependency on the `Intent.ModuleBuilder` module.
+
 ### Version 3.4.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
