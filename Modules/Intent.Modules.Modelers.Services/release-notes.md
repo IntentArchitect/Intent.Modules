@@ -1,4 +1,4 @@
-### Version 3.7.0
+### Version 3.7.1
 
 - Improvement: Updated Crud scripts to not add implicit primary keys.
 
