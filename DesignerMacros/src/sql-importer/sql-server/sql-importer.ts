@@ -1,5 +1,4 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
-/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
 type IDynamicFormFieldConfig = MacroApi.Context.IDynamicFormFieldConfig;
 interface ISqlImporterSettings {
@@ -12,6 +11,7 @@ interface ISqlImporterSettings {
     includeStoredProcedures: string;
     includeIndexes: string;
     settingPersistence: string;
+    tableViewFilterFilePath: string;
 }
 
 interface IImportConfig {
@@ -24,126 +24,137 @@ interface IImportConfig {
     schemaFilter: string[];
     typesToExport: string[];
     settingPersistence: string;
+    tableViewFilterFilePath: string;
 }
 
-async function  importSqlDatabase(element: MacroApi.Context.IElementApi): Promise<void>{   
+async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise<void> {
 
     var defaults = getDialogDefaults(element);
 
     let connectionString: IDynamicFormFieldConfig = {
-        id: "connectionString", 
-            fieldType: "text", 
-            label: "Connection String",
-            placeholder: null,
-            hint: null,
-            isRequired: true,
-            value: defaults.connectionString 
+        id: "connectionString",
+        fieldType: "text",
+        label: "Connection String",
+        placeholder: null,
+        hint: null,
+        isRequired: true,
+        value: defaults.connectionString
     };
-        
+
     let tableStereotypes: IDynamicFormFieldConfig = {
-        id: "tableStereotypes", 
-            fieldType: "select", 
-            label: "Apply Table Stereotypes",
-            placeholder: "",
-            hint: "When to apply Table stereotypes to your domain entities",
-            value: defaults.tableStereotypes,
-            selectOptions: [{id:"WhenDifferent", description:"If They Differ"}, {id:"Always", description:"Always"}]
+        id: "tableStereotypes",
+        fieldType: "select",
+        label: "Apply Table Stereotypes",
+        placeholder: "",
+        hint: "When to apply Table stereotypes to your domain entities",
+        value: defaults.tableStereotypes,
+        selectOptions: [{ id: "WhenDifferent", description: "If They Differ" }, { id: "Always", description: "Always" }]
     };
-    
+
     let entityNameConvention: IDynamicFormFieldConfig = {
-        id: "entityNameConvention", 
-            fieldType: "select", 
-            label: "Entity name convention",
-            placeholder: "",
-            hint: "",
-            value: defaults.entityNameConvention,
-            selectOptions: [{id:"SingularEntity", description:"Singularized table name"}, {id:"MatchTable", description:"Table name, as is"}]
+        id: "entityNameConvention",
+        fieldType: "select",
+        label: "Entity name convention",
+        placeholder: "",
+        hint: "",
+        value: defaults.entityNameConvention,
+        selectOptions: [{ id: "SingularEntity", description: "Singularized table name" }, { id: "MatchTable", description: "Table name, as is" }]
     };
-    
+
     let schemaFilter: IDynamicFormFieldConfig = {
-        id: "schemaFilter", 
-            fieldType: "text", 
-            label: "Schema Filter",
-            placeholder: "all",
-            hint: "Specify which SQL schemas to export. (default is all) e.g dbo;accounts;security",
-            value: defaults.schemaFilter 
+        id: "schemaFilter",
+        fieldType: "text",
+        label: "Schema Filter",
+        placeholder: "all",
+        hint: "Specify which SQL schemas to export. (default is all) e.g dbo;accounts;security",
+        value: defaults.schemaFilter
     };
-    
+
     let includeTables: IDynamicFormFieldConfig = {
-        id: "includeTables", 
-            fieldType: "checkbox", 
-            label: "Include Tables",
-            hint: "Export SQL tables",
-            value: defaults.includeTables 
+        id: "includeTables",
+        fieldType: "checkbox",
+        label: "Include Tables",
+        hint: "Export SQL tables",
+        value: defaults.includeTables
     };
-    
+
     let includeViews: IDynamicFormFieldConfig = {
-        id: "includeViews", 
-            fieldType: "checkbox", 
-            label: "Include Views",
-            hint: "Export SQL views",
-            value: defaults.includeViews 
+        id: "includeViews",
+        fieldType: "checkbox",
+        label: "Include Views",
+        hint: "Export SQL views",
+        value: defaults.includeViews
     };
-    
+
     let includeStoredProcedures: IDynamicFormFieldConfig = {
-        id: "includeStoredProcedures", 
-            fieldType: "checkbox", 
-            label: "Include Stored Procedures",
-            hint: "Export SQL stored procedures",
-            value: defaults.includeStoredProcedures 
+        id: "includeStoredProcedures",
+        fieldType: "checkbox",
+        label: "Include Stored Procedures",
+        hint: "Export SQL stored procedures",
+        value: defaults.includeStoredProcedures
     };
 
     let includeIndexes: IDynamicFormFieldConfig = {
-        id: "includeIndexes", 
-            fieldType: "checkbox", 
-            label: "Include Indexes",
-            hint: "Export SQL indexes",
-            value: defaults.includeIndexes 
+        id: "includeIndexes",
+        fieldType: "checkbox",
+        label: "Include Indexes",
+        hint: "Export SQL indexes",
+        value: defaults.includeIndexes
     };
 
     let settingPersistence: IDynamicFormFieldConfig = {
-        id: "settingPersistence", 
-            fieldType: "select", 
-            label: "Persist Settings",
-            hint: "Remember these settings for next time you run the import",
-            value: defaults.settingPersistence,
-            selectOptions: [{id:"None", description:"(None)"}, {id:"All", description:"All Settings"}, {id:"AllSanitisedConnectionString", description:"All (with Sanitized connection string, no password))"}, {id:"AllWithoutConnectionString", description:"All (without connection string))"}]
-    };    
-    
+        id: "settingPersistence",
+        fieldType: "select",
+        label: "Persist Settings",
+        hint: "Remember these settings for next time you run the import",
+        value: defaults.settingPersistence,
+        selectOptions: [{ id: "None", description: "(None)" }, { id: "All", description: "All Settings" }, { id: "AllSanitisedConnectionString", description: "All (with Sanitized connection string, no password))" }, { id: "AllWithoutConnectionString", description: "All (without connection string))" }]
+    };
+
+    let tableViewFilterFilePath: IDynamicFormFieldConfig = {
+        id: "tableViewFilterFilePath",
+        fieldType: "text",
+        label: "Table / View Filter",
+        hint: "Path to text file featuring names of Tables and Views to import only",
+        placeholder: "(optional)",
+        value: defaults.tableViewFilterFilePath
+    };
+
     let formConfig: MacroApi.Context.IDynamicFormConfig = {
-        title: "Sql Server Import", 
-            fields: [
-                connectionString, 
-                entityNameConvention, 
-                tableStereotypes, 
-                schemaFilter, 
-                includeTables, 
-                includeViews, 
-                includeStoredProcedures,
-                includeIndexes, 
-                settingPersistence,
-            ]
+        title: "Sql Server Import",
+        fields: [
+            connectionString,
+            entityNameConvention,
+            tableStereotypes,
+            schemaFilter,
+            includeTables,
+            includeViews,
+            includeStoredProcedures,
+            includeIndexes,
+            tableViewFilterFilePath,
+            settingPersistence
+        ]
     }
-            
-    let inputs = await dialogService.openForm(formConfig);    
+
+    let inputs = await dialogService.openForm(formConfig);
 
     const typesToExport: string[] = [];
-    if (inputs.includeTables == "true"){
+    if (inputs.includeTables == "true") {
         typesToExport.push("Table");
     }
-    if (inputs.includeViews == "true"){
+    if (inputs.includeViews == "true") {
         typesToExport.push("View");
     }
-    if (inputs.includeStoredProcedures == "true"){
+    if (inputs.includeStoredProcedures == "true") {
         typesToExport.push("StoredProcedure");
     }
-    if (inputs.includeIndexes == "true"){
+    if (inputs.includeIndexes == "true") {
         typesToExport.push("Index");
     }
 
     const domainDesignerId: string = "6ab29b31-27af-4f56-a67c-986d82097d63";
 
-    let importConfig : IImportConfig = {
+    let importConfig: IImportConfig = {
         applicationId: application.id,
         designerId: domainDesignerId,
         packageId: element.getPackage().id,
@@ -152,37 +163,37 @@ async function  importSqlDatabase(element: MacroApi.Context.IElementApi): Promis
         entityNameConvention: inputs.entityNameConvention,
         schemaFilter: inputs.schemaFilter ? inputs.schemaFilter.split(";") : [],
         typesToExport: typesToExport,
-        settingPersistence: inputs.settingPersistence,        
+        settingPersistence: inputs.settingPersistence,
+        tableViewFilterFilePath: inputs.tableViewFilterFilePath
     };
     let jsonResponse = await executeModuleTask("Intent.Modules.SqlServerImporter.Tasks.DatabaseImport", JSON.stringify(importConfig));
     let result = JSON.parse(jsonResponse);
-    if (result?.errorMessage){
+    if (result?.errorMessage) {
         await dialogService.error(result?.errorMessage);
     } else {
-        if (result?.warnings){
+        if (result?.warnings) {
             await dialogService.warn("Import complete.\r\n\r\n" + result?.warnings);
-        }else{
+        } else {
             await dialogService.info("Import complete.");
         }
     }
 
 }
 
-function getDialogDefaults(element: MacroApi.Context.IElementApi) : ISqlImporterSettings{
-    
+function getDialogDefaults(element: MacroApi.Context.IElementApi): ISqlImporterSettings {
+
     let package = element.getPackage();
     let persistedValue = getSettingValue(package, "sql-import:typesToExport", "");
     let includeTables = "true";
     let includeViews = "true";
     let includeStoredProcedures = "true";
     let includeIndexes = "true";
-    if (persistedValue)
-    {
+    if (persistedValue) {
         includeTables = "false";
         includeViews = "false";
         includeStoredProcedures = "false";
         includeIndexes = "false";
-        persistedValue.split(";").forEach(i =>{
+        persistedValue.split(";").forEach(i => {
             switch (i.toLocaleLowerCase()) {
                 case 'table':
                     includeTables = "true";
@@ -198,9 +209,9 @@ function getDialogDefaults(element: MacroApi.Context.IElementApi) : ISqlImporter
                     break;
                 default:
                     break;
-            }        
+            }
         });
-    }        
+    }
     let result: ISqlImporterSettings = {
         connectionString: getSettingValue(package, "sql-import:connectionString", null),
         tableStereotypes: getSettingValue(package, "sql-import:tableStereotypes", "WhenDifferent"),
@@ -211,11 +222,12 @@ function getDialogDefaults(element: MacroApi.Context.IElementApi) : ISqlImporter
         includeStoredProcedures: includeStoredProcedures,
         includeIndexes: includeIndexes,
         settingPersistence: getSettingValue(package, "sql-import:settingPersistence", "None"),
-        };
+        tableViewFilterFilePath: getSettingValue(package, "sql-import:tableViewFilterFilePath", null)
+    };
     return result;
 }
 
-function getSettingValue(package: MacroApi.Context.IPackageApi, key: string, defaultValue : string) : string{
+function getSettingValue(package: MacroApi.Context.IPackageApi, key: string, defaultValue: string): string {
     let persistedValue = package.getMetadata(key);
     return persistedValue ? persistedValue : defaultValue;
 }

@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Types</id>
-  <version>3.4.0-pre.0</version>
+  <version>3.4.0</version>
   <supportedClientVersions>[4.1.0-pre.0, 5.0.0-a)</supportedClientVersions>
   <summary>Provides common types supported by the majority of programming languages.</summary>
   <description>Provides common types supported by the majority of programming languages.</description>
@@ -11,7 +11,7 @@
   <tags>Common Types</tags>
   <releaseNotes>release-notes.md</releaseNotes>
   <dependencies>
-    <dependency id="Intent.Common" version="3.6.0-pre.0" />
+    <dependency id="Intent.Common" version="3.6.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

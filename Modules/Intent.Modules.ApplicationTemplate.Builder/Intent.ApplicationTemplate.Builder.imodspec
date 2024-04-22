@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ApplicationTemplate.Builder</id>
-  <version>3.4.8-pre.0</version>
-  <supportedClientVersions>[4.2.4-beta.5, 5.0.0-a)</supportedClientVersions>
+  <version>3.4.8-pre.1</version>
+  <supportedClientVersions>[4.2.4, 5.0.0-a)</supportedClientVersions>
   <summary>For the creation of Application Templates used to create new Applications in Intent Architect.</summary>
   <description>For the creation of Application Templates used to create new Applications in Intent Architect.</description>
   <authors>Intent Architect</authors>
@@ -31,9 +31,7 @@
     <install target="App Templates" src="Intent.Metadata/Module Builder/Intent.ApplicationTemplate.Builder/Intent.ApplicationTemplate.Builder.pkg.config" externalReference="002e9a7f-e5b7-4392-a60f-b60ae4e86262" />
     <install src="modelers/App Templates.designer.config" externalReference="22091d1e-a855-41af-ba7f-3f0b033c0fc3" />
   </metadata>
-  <factoryExtensions>
-    <factoryExtension id="Intent.ApplicationTemplate.Builder.AutoBuild" externalReference="9fe606d5-0e61-4c7d-b849-cf0d7a9e17ae" />
-  </factoryExtensions>
+  <factoryExtensions />
   <moduleSettings />
   <moduleSettingsExtensions />
   <tags />

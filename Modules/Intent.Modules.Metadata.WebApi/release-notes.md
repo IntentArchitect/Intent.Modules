@@ -1,3 +1,7 @@
+### Version 4.5.1
+
+- Fixed: Enums weren't accepted as values that can be passed in via route paths.
+
 ### Version 4.5.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

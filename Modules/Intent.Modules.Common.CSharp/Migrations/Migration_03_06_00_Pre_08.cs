@@ -42,12 +42,13 @@ public class Migration_03_06_00_Pre_08 : IModuleMigration
             {
                 element.TypeReference.TypeId = DateTimeTypeId;
                 element.AddMetadata(MetadataKey, "true");
+                AppendComment(element);
             }
 
             package.Save(true);
         }
     }
-    
+
     public void Down()
     {
         var app = ApplicationPersistable.Load(_configurationProvider.GetApplicationConfig().FilePath);
@@ -67,9 +68,37 @@ public class Migration_03_06_00_Pre_08 : IModuleMigration
             {
                 element.TypeReference.TypeId = DateTypeId;
                 element.Metadata.Remove(element.Metadata.Single(p => p.Key == MetadataKey));
+                RemoveComment(element);
             }
 
             package.Save(true);
+        }
+    }
+
+    private const string CommentMessage = "Migration Note: Altered 'date' to 'datetime' to preserve generated C# type.";
+    
+    private static void AppendComment(ElementPersistable element)
+    {
+        if (string.IsNullOrWhiteSpace(element.Comment))
+        {
+            element.Comment = CommentMessage;
+            return;
+        }
+
+        element.Comment += Environment.NewLine + CommentMessage;
+    }
+    
+    private static void RemoveComment(ElementPersistable element)
+    {
+        if (string.IsNullOrWhiteSpace(element.Comment))
+        {
+            return;
+        }
+
+        element.Comment = element.Comment.Replace(CommentMessage, string.Empty);
+        if (string.IsNullOrWhiteSpace(element.Comment))
+        {
+            element.Comment = null;
         }
     }
     

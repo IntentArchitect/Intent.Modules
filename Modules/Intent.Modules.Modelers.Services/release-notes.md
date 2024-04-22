@@ -1,3 +1,11 @@
+### Version 3.7.1
+
+- Improvement: Updated Crud scripts to not add implicit primary keys.
+
+### Version 3.7.0
+
+- Improvement: Updated Dto mapping script to not add implicit primary keys.
+
 ### Version 3.7.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

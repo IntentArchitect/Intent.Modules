@@ -8,7 +8,6 @@ using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
-using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Plugins.FactoryExtensions;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Utils;
@@ -142,7 +141,10 @@ Auto-compiling of module failed. If the problem persists, consider disabling thi
 
         private static string GetRootExecutionLocation(IApplication application)
         {
-            return application.OutputTargets.FirstOrDefault(x => x.HasTemplateInstances(IModSpecTemplate.TemplateId) || x.IsVSProject())?.Location;
+            return application.OutputTargets.FirstOrDefault(x =>
+                x.HasTemplateInstances("Intent.ModuleBuilder.IModSpecFile") ||
+                x.HasTemplateInstances("Intent.ApplicationTemplate.Builder.Templates.IatSpecFile") ||
+                x.IsVSProject())?.Location;
         }
     }
 }

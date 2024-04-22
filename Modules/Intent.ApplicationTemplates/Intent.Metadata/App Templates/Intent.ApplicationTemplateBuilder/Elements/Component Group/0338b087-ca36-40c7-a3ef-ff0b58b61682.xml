@@ -4,7 +4,7 @@
   <display>Core</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>2</order>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>e9bf7bb9-ca0d-46bc-9472-73da043995bd</parentFolderId>
@@ -48,7 +48,7 @@
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="72a3ea91-aef3-4c98-abd4-2d164890b3fe" type="Module" typeId="ef75f8f0-520c-4ab8-814f-5e75f4877dd7">
+        <childElement id="72a3ea91-aef3-4c98-abd4-2d164890b3fe" type="Component Module" typeId="ef75f8f0-520c-4ab8-814f-5e75f4877dd7">
           <name>Intent.ApplicationTemplate.Builder</name>
           <display>Intent.ApplicationTemplate.Builder</display>
           <isAbstract>false</isAbstract>

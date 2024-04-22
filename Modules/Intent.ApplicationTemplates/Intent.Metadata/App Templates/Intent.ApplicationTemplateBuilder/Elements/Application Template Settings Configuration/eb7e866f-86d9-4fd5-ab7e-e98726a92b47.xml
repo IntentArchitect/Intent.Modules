@@ -4,7 +4,7 @@
   <display>Basic Settings</display>
   <isAbstract>false</isAbstract>
   <sort-children>manually</sort-children>
-  <order>1</order>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>e9bf7bb9-ca0d-46bc-9472-73da043995bd</parentFolderId>
@@ -18,6 +18,7 @@
       <display>Target Framework</display>
       <isAbstract>false</isAbstract>
       <value>target-framework</value>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>eb7e866f-86d9-4fd5-ab7e-e98726a92b47</parentFolderId>
@@ -32,12 +33,41 @@
             <property name="ad6b372c-58e6-4fe0-b6fe-aa7d70f95ebc" display="Control Type" value="Hidden" isActive="true" />
             <property name="f0689c97-cb23-4ae1-8bb1-8b6af69b1504" display="Is Required" value="true" isActive="true" />
             <property name="95738255-b024-4b7f-b789-26eb8c30665f" display="Hint" isActive="true" />
-            <property name="980bae71-ac8a-4a52-9888-9bac41f126ba" display="Default Value" value="16d99e3e-7b91-42f8-ae3b-2686edde94b7" isActive="true" />
+            <property name="980bae71-ac8a-4a52-9888-9bac41f126ba" display="Default Value" value="f8b1618d-1e64-4c2c-9787-e0725c3633a1" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="3d3b8b7e-7f1a-4d26-bddf-ac435568211c" type="Application Template Settings Field Option" typeId="7194651e-45da-4a0c-b1ab-0351a5c08fc8">
+          <name>.NET 8.0</name>
+          <display>.NET 8.0</display>
+          <isAbstract>false</isAbstract>
+          <value>f8b1618d-1e64-4c2c-9787-e0725c3633a1</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>370fa405-7877-4ed7-a507-b0f6d4509ad0</parentFolderId>
+          <packageId>e9bf7bb9-ca0d-46bc-9472-73da043995bd</packageId>
+          <packageName>Intent.ApplicationTemplateBuilder</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="9a0f485a-2aec-4616-b1f8-1723539e2277" type="Application Template Settings Field Option" typeId="7194651e-45da-4a0c-b1ab-0351a5c08fc8">
+          <name>.NET 6.0</name>
+          <display>.NET 6.0</display>
+          <isAbstract>false</isAbstract>
+          <value>16d99e3e-7b91-42f8-ae3b-2686edde94b7</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>370fa405-7877-4ed7-a507-b0f6d4509ad0</parentFolderId>
+          <packageId>e9bf7bb9-ca0d-46bc-9472-73da043995bd</packageId>
+          <packageName>Intent.ApplicationTemplateBuilder</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
     </childElement>
   </childElements>
 </class>

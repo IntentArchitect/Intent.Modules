@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="cf346fcc-6b20-4ce3-9a1b-58a24830d1a9" type="C# Project (.NET)" typeId="8e9e6693-2888-4f48-a0d6-0f163baab740">
-  <name>${solution.name}</name>
-  <display>${solution.name}</display>
+  <name>${application.name}</name>
+  <display>${application.name}</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3666c377-1a2e-4537-89f4-66b470d05250</parentFolderId>
   <packageId>3666c377-1a2e-4537-89f4-66b470d05250</packageId>
-  <packageName>Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config</packageName>
+  <packageName>${solution.name}</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="a490a23f-5397-40a1-a3cb-6da7e0b467c0" name=".NET Settings">
       <addedByDefault>true</addedByDefault>
@@ -57,7 +57,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>cf346fcc-6b20-4ce3-9a1b-58a24830d1a9</parentFolderId>
       <packageId>3666c377-1a2e-4537-89f4-66b470d05250</packageId>
-      <packageName>Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config</packageName>
+      <packageName>${solution.name}</packageName>
       <stereotypes />
       <metadata />
       <childElements />
@@ -70,7 +70,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>cf346fcc-6b20-4ce3-9a1b-58a24830d1a9</parentFolderId>
       <packageId>3666c377-1a2e-4537-89f4-66b470d05250</packageId>
-      <packageName>Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config</packageName>
+      <packageName>${solution.name}</packageName>
       <stereotypes />
       <metadata />
       <childElements />

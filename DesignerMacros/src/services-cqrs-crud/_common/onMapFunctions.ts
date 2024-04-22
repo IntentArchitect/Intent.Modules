@@ -77,18 +77,6 @@ function isOwnerForeignKey(attributeName: string, domainElement: MacroApi.Contex
 function addPrimaryKeys(dto: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi, map: boolean): void {
     const primaryKeys = getPrimaryKeysWithMapPath(entity);
 
-    if (primaryKeys.length == 0) {
-        // Implicit key:
-        primaryKeys.push({
-            id: null,
-            name: "Id",
-            typeId: getSurrogateKeyType(),
-            mapPath: null,
-            isNullable: false,
-            isCollection: false
-        });
-    }
-
     for (const primaryKey of primaryKeys) {
         const name = getDomainAttributeNameFormat(primaryKey.name);
         if (dto.getChildren("DTO-Field").some(x => x.getName().toLowerCase() == name.toLowerCase())) {

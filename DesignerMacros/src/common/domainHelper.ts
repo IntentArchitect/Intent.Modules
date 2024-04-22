@@ -32,7 +32,7 @@ class DomainHelper {
         return foundEntity;
     }
 
-    private static filterClassSelection(element: MacroApi.Context.IElementApi, options?: IISelectEntityDialogOptions, allowAbstract: boolean = false) : boolean{
+    public static filterClassSelection(element: MacroApi.Context.IElementApi, options?: IISelectEntityDialogOptions, allowAbstract: boolean = false) : boolean{
         if (!allowAbstract && element.getIsAbstract()){
             return false;
         }
