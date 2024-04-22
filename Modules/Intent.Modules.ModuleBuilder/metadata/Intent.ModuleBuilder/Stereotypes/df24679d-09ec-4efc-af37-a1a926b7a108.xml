@@ -194,8 +194,8 @@ return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() != "Not Tr
     <property id="73a079b1-5720-4b70-ada3-7af8a98b7510">
       <name>Sync Stereotype</name>
       <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>lookup-children</optionsSource>
+      <controlType>select</controlType>
+      <optionsSource>lookup-stereotype</optionsSource>
       <placeholder>(Stereotype Id)</placeholder>
       <valueOptions />
       <lookupTypes />

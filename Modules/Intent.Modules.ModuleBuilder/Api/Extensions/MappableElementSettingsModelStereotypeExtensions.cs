@@ -108,9 +108,9 @@ namespace Intent.ModuleBuilder.Api
                 return new SyncMappingToOptions(_stereotype.GetProperty<string>("Sync Mapping To"));
             }
 
-            public string SyncStereotype()
+            public IStereotypeDefinition SyncStereotype()
             {
-                return _stereotype.GetProperty<string>("Sync Stereotype");
+                return _stereotype.GetProperty<IStereotypeDefinition>("Sync Stereotype");
             }
 
             public string SyncStereotypeProperty()

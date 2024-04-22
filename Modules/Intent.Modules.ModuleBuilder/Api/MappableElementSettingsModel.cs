@@ -101,7 +101,7 @@ namespace Intent.ModuleBuilder.Api
                 SyncWith = this.GetMappableSettings().SyncMappingTo().IsElementValue() ? MappableElementSettingPersistable.SyncWithValue
                     : this.GetMappableSettings().SyncMappingTo().IsStereotypePropertyValue() ? MappableElementSettingPersistable.SyncWithStereotypeProperty
                     : null,
-                SyncStereotypeId = this.GetMappableSettings().SyncStereotype(),
+                SyncStereotypeId = this.GetMappableSettings().SyncStereotype()?.Id,
                 SyncStereotypePropertyId = this.GetMappableSettings().SyncStereotypeProperty(),
                 StaticMappableSettings = StaticMappings.Select(x => x.ToPersistable()).ToList(),
             };
