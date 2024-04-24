@@ -115,7 +115,7 @@ $code = @"
     }
 "@
 Add-Type -TypeDefinition $code -Language CSharp
-Invoke-Expression "`$projects = [Intent$id.Program]::Main(`"$workingDirectory`")"
+Invoke-Expression "`$projects = [Intent$id.Program]::Main(`"$(Join-Path $workingDirectory "Modules")`")"
 
 if ($isOnBuildAgent) {
     Write-Host "Detected that script is running in build task"
