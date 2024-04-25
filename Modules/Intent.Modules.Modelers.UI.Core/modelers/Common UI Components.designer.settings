@@ -200,7 +200,7 @@ let component = createElement(componentType.id, componentType.getName(), element
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
-      <sortChildren>by-type-then-by-name</sortChildren>
+      <sortChildren>manually</sortChildren>
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />

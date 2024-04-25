@@ -119,6 +119,11 @@ namespace Intent.Modelers.UI.Api
                 return _stereotype.GetProperty<string>("Route");
             }
 
+            public string Title()
+            {
+                return _stereotype.GetProperty<string>("Title");
+            }
+
         }
 
         public class SupportForChildren

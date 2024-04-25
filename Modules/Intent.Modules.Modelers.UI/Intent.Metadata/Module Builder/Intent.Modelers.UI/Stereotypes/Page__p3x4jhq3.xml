@@ -29,5 +29,14 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="0a8627ba-ec45-4023-9c36-b0999f43e982">
+      <name>Title</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(None)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

@@ -10,6 +10,11 @@ using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.Plugins
 {
+    /// <summary>
+    /// Every time an OnBuild or AfterBuild configuration is called on a CSharpFile class,
+    /// that method could add additional OnBuild and/or AfterBuild configurations which also need to
+    /// be ordered. This system below ensures that this is happening predictably.
+    /// </summary>
     [Description("Intent.Common.TemplateLifeCycleHooks")]
     public class CSharpFileBuilderFactoryExtension : FactoryExtensionBase
     {

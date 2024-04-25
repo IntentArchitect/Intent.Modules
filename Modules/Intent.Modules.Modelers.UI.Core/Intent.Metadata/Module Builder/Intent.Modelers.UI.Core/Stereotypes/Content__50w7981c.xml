@@ -70,7 +70,6 @@ if (stereotype.getProperty("Footer").getValue())
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <isMappable>True</isMappable>
       <represents>data</represents>
       <valueOptions />
       <lookupTypes />

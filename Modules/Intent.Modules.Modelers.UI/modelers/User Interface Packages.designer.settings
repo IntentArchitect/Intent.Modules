@@ -19,10 +19,19 @@
           <defaultName>NewFolder</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
+        <option type="element">
+          <text>New Diagram</text>
+          <icon type="FontAwesome" source="file-o" />
+          <specializationType>Diagram</specializationType>
+          <specializationTypeId>4912c89a-77eb-497e-a3f4-7408b6a20886</specializationTypeId>
+          <defaultName>NewDiagram</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
       </creationOptions>
       <scriptOptions />
       <typeOrder>
         <type order="0" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f" />
+        <type order="1" type="Diagram" typeId="4912c89a-77eb-497e-a3f4-7408b6a20886" />
       </typeOrder>
     </packageSetting>
   </packageSettings>

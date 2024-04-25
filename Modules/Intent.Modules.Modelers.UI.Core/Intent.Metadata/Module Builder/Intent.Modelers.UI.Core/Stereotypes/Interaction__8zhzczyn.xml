@@ -27,7 +27,6 @@
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <isMappable>True</isMappable>
       <represents>data</represents>
       <defaultValue>false</defaultValue>
       <valueOptions />
@@ -39,7 +38,6 @@
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <isMappable>True</isMappable>
       <represents>data</represents>
       <defaultValue>true</defaultValue>
       <valueOptions />
