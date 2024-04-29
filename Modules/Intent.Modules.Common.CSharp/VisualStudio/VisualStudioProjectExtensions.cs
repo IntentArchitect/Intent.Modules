@@ -147,5 +147,22 @@ namespace Intent.Modules.Common.VisualStudio
         {
             return CSharpProject.GetMaxNetAppVersion(outputTarget.GetProject().GetSupportedFrameworks().ToArray());
         }
+
+        /// <summary>
+        /// Adds the specified property to the csproj file's first PropertyGroup tag.
+        /// </summary>
+        /// <param name="project"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="propertyValue"></param>
+        public static void AddProperty(this ICSharpProject project, string propertyName, string propertyValue)
+        {
+            project.ExecutionContext.EventDispatcher.Publish(new AddProjectPropertyEvent(project, propertyName, propertyValue));
+        }
+
+        public static void AddUserSecret(this ICSharpProject project, Dictionary<string, string> secretsToAdd)
+        {
+
+            project.ExecutionContext.EventDispatcher.Publish(new AddUserSecretsEvent(project, secretsToAdd));
+        }
     }
 }
