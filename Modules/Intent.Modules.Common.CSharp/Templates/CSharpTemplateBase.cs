@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.Exceptions;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.FactoryExtensions;
 using Intent.Modules.Common.CSharp.TypeResolvers;
@@ -378,9 +379,9 @@ namespace Intent.Modules.Common.CSharp.Templates
             // always need to qualify the type.
             if (namespaceTypeConflictAtPartNumber.HasValue)
             {
-                // Skip over common parts after the conflict, but make sure the first part of our
-                // remaining type part doesn't appear later in the namespace parts.
-                var skipCount = 0;
+				// Skip over common parts after the conflict, but make sure the first part of our
+				// remaining type part doesn't appear later in the namespace parts.
+				var skipCount = 0;
                 for (; skipCount < typeParts.Length && skipCount < namespaceParts.Length; skipCount++)
                 {
                     if (skipCount <= namespaceTypeConflictAtPartNumber.Value &&
@@ -393,7 +394,14 @@ namespace Intent.Modules.Common.CSharp.Templates
                     break;
                 }
 
-                return string.Join('.', typeParts.Skip(skipCount));
+				// In this case the Class name is actually conflicting with a namespace. e.g. X.[Class] and X.Class.[SomeOtherType]
+				// This won't actually compile in C#, nothing we can do to resolve this.
+				if (skipCount == typeParts.Length)
+				{
+					return string.Join('.', typeParts);
+				}
+
+				return string.Join('.', typeParts.Skip(skipCount));
             }
 
             // Only one using exists with the type on it
