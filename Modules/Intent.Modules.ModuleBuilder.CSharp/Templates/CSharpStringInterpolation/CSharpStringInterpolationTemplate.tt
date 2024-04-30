@@ -7,9 +7,6 @@
 <#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
-using System.Collections.Generic;
-using System.Linq;
-
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
@@ -20,30 +17,18 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
-            return $@"
-[assembly: DefaultIntentManaged(Mode.Fully)]
+            return $$"""
+                     using System;
 
-namespace {Namespace}
-{{
-    public <#= IsForInterface() ? "interface" : "class" #> {ClassName}
-    {{{string.Join(@"
-", GetMembers())}
-    }}
-}}";
-        }
+                     [assembly: DefaultIntentManaged(Mode.Fully)]
 
-        [IntentInitialGen] private IEnumerable<string> GetMembers()
-        {
-            var members = new List<string>();
-<#  if (!IsForInterface()) { #>
-
-            // example: adding a constructor
-            members.Add($@"
-        public {ClassName}()
-        {{
-        }}");
-<#  }#>
-            return members;
+                     namespace {{Namespace}}
+                     {
+                         public <#= IsForInterface() ? "interface" : "class" #> {{ClassName}}
+                         {
+                         }
+                     }
+                     """;
         }
     }
 }

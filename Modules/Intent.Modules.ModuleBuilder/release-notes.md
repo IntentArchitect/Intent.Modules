@@ -1,3 +1,7 @@
+### Version 3.10.1
+
+- Improvement: Removed "Icon" from "Module Settings" stereotype as the icon can be controlled by the default Application "Settings" screen for the particular Module Builder application.
+
 ### Version 3.10.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
