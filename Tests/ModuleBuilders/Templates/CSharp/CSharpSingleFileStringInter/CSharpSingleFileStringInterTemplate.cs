@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -13,28 +11,18 @@ namespace ModuleBuilders.Templates.CSharp.CSharpSingleFileStringInter
         [IntentManaged(Mode.Fully, Body = Mode.Fully)]
         public override string TransformText()
         {
-            return $@"
-[assembly: DefaultIntentManaged(Mode.Fully)]
+            return $$"""
+                     using System;
 
-namespace {Namespace}
-{{
-    public class {ClassName}
-    {{{string.Join(@"
-", GetMembers())}
-    }}
-}}";
-        }
+                     [assembly: DefaultIntentManaged(Mode.Fully)]
 
-        [IntentManaged(Mode.Ignore)]private IEnumerable<string> GetMembers()
-        {
-            var members = new List<string>();
-
-            // example: adding a constructor
-            members.Add($@"
-        public {ClassName}()
-        {{
-        }}");
-            return members;
+                     namespace {{Namespace}}
+                     {
+                         public class {{ClassName}}
+                         {
+                         }
+                     }
+                     """;
         }
     }
 }
