@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.UI.ServiceProxies.Api
+namespace Intent.Modelers.UI.ServiceProxies.Api
 {
     [IntentManaged(Mode.Merge)]
     public class UserInterfacePackageExtensionModel : UserInterfacePackageModel

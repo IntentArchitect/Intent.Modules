@@ -26,18 +26,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>0e97075b-8792-4b08-9023-3892d9f092a4</ProjectId>
-      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#0e97075b-8792-4b08-9023-3892d9f092a4</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies.csproj</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies.csproj</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Intent.Modelers.UI.ServiceProxies.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modelers.UI.ServiceProxies.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>0e97075b-8792-4b08-9023-3892d9f092a4</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#0e97075b-8792-4b08-9023-3892d9f092a4</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies.imodspec</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies.imodspec</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

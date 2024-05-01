@@ -1363,7 +1363,27 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
           </childSettings>
         </mapping>
       </targetMappings>
-      <mappingTypes />
+      <mappingTypes>
+        <mappingType type="Data Mapping" typeId="79cf555c-61a9-4588-ba95-3c09e799cd53">
+          <represents>data</represents>
+          <sources />
+          <sourceFilterFunction>return element.represents == 'data'</sourceFilterFunction>
+          <sourceArrowFunction>return null</sourceArrowFunction>
+          <targets />
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+        <mappingType type="Invokable Mapping" typeId="313a3da8-fd70-4129-8456-0b8f6160ec06">
+          <represents>invokable</represents>
+          <sources />
+          <sourceFilterFunction>return element.represents == 'invokable'</sourceFilterFunction>
+          <sourceArrowFunction>return `M ${x} ${y} l 10 5 l 0 -10 z`</sourceArrowFunction>
+          <targets />
+          <targetFilterFunction>return element.represents == 'invokable'</targetFilterFunction>
+          <targetArrowFunction>return null</targetArrowFunction>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+      </mappingTypes>
     </mappingSetting>
     <mappingSetting type="Service Call Response Mapping" typeId="6f998e3e-6e1f-483f-b8fd-59c6632add77">
       <title>Service Call Response Mapping</title>
@@ -1488,6 +1508,7 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
       <targetMappings>
         <importSettings id="ddf81941-f0b0-4ab0-a8d6-42ddc9e5da99" name="Bindable Components" />
         <mapping id="7df7efbd-a074-4f54-8b05-95e2e6b3f27d" name="View" type="Component View" typeId="624513a6-cba8-4dde-8ebe-6b19f00f0364" version="2.0.0">
+          <filterFunction>return mappingContext.targetElementId == element.id;</filterFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>

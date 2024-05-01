@@ -8,7 +8,7 @@
   <isMapped>false</isMapped>
   <parentFolderId>81e2ef41-3cd5-482c-8833-dfba6b29431b</parentFolderId>
   <packageId>81e2ef41-3cd5-482c-8833-dfba6b29431b</packageId>
-  <packageName>Intent.Modules.Modelers.UI.ServiceProxies</packageName>
+  <packageName>Intent.Modelers.UI.ServiceProxies</packageName>
   <stereotypes />
   <metadata />
   <childElements />

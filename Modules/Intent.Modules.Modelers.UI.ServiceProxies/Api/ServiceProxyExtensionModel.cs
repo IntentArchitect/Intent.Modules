@@ -9,7 +9,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.UI.ServiceProxies.Api
+namespace Intent.Modelers.UI.ServiceProxies.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class ServiceProxyExtensionModel : ServiceProxyModel
