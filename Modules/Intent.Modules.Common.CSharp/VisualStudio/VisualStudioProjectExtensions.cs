@@ -150,6 +150,7 @@ namespace Intent.Modules.Common.VisualStudio
 
         /// <summary>
         /// Adds the specified property to the csproj file's first PropertyGroup tag.
+        /// This method should be called after the template registration, but before template execution phases of the software factory.
         /// </summary>
         /// <param name="project"></param>
         /// <param name="propertyName"></param>
@@ -159,9 +160,9 @@ namespace Intent.Modules.Common.VisualStudio
             project.ExecutionContext.EventDispatcher.Publish(new AddProjectPropertyEvent(project, propertyName, propertyValue));
         }
 
+        /// <inheritdoc cref="AddUserSecretsEvent"/>
         public static void AddUserSecret(this ICSharpProject project, Dictionary<string, string> secretsToAdd)
         {
-
             project.ExecutionContext.EventDispatcher.Publish(new AddUserSecretsEvent(project, secretsToAdd));
         }
     }

@@ -23,6 +23,8 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     protected readonly ICSharpTemplate Template;
 
+    protected bool ApplyNullConditionalOperators = true;
+
     [Obsolete("Use constructor which accepts ICSharpTemplate instead of ICSharpFileBuilderTemplate. This will be removed in later version.")]
     protected CSharpMappingBase(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : this(model, mapping, children, (ICSharpTemplate)template)
     {
@@ -78,6 +80,14 @@ public abstract class CSharpMappingBase : ICSharpMapping
     public virtual CSharpStatement GetTargetStatement()
     {
         return GetTargetPathText();
+    }
+
+    public virtual IDictionary<string, CSharpStatement> GetExpressionMap()
+    {
+        var text = Mapping?.MappingExpression ??
+                   throw new Exception(
+                       $"Could not resolve source path. Mapping expected on '{Model.DisplayText ?? Model.Name}' [{Model.SpecializationType}]. Check that you have a MappingTypeResolver that addresses this scenario.");
+        return GetParsedExpressionMap(text, path => GetSourcePathText(Mapping.GetSource(path).Path)).ToDictionary(x => x.Key, x => new CSharpStatement(x.Value));
     }
 
     protected IList<IElementMappingPathTarget> GetSourcePath()
@@ -157,17 +167,17 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     protected string GetSourcePathText()
     {
-        var text = Mapping?.MappingExpression ??
-                   throw new Exception(
-                       $"Could not resolve source path. Mapping expected on '{Model.DisplayText ?? Model.Name}' [{Model.SpecializationType}]. Check that you have a MappingTypeResolver that addresses this scenario.");
-        text = ParseAndReplaceExpression(text, path => GetSourcePathText(Mapping.GetSource(path).Path));
-
-        return text;
+        var result = Mapping?.MappingExpression ?? throw new Exception($"Could not resolve source path. Mapping expected on '{Model.DisplayText ?? Model.Name}' [{Model.SpecializationType}]. Check that you have a MappingTypeResolver that addresses this scenario.");
+        foreach (var map in GetParsedExpressionMap(Mapping?.MappingExpression, path => GetSourcePathText(Mapping.GetSource(path).Path)))
+        {
+            result = result.Replace(map.Key, map.Value);
+        }
+        return result;
     }
 
-    private string ParseAndReplaceExpression(string str, Func<string, string> replacePathFunc)
+    protected IDictionary<string, string> GetParsedExpressionMap(string str, Func<string, string> replacePathFunc)
     {
-        var result = str;
+        var result = new Dictionary<string, string>();
         while (str.IndexOf("{", StringComparison.Ordinal) != -1 && str.IndexOf("}", StringComparison.Ordinal) != -1)
         {
             var fromPos = str.IndexOf("{", StringComparison.Ordinal) + 1;
@@ -177,6 +187,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
             var resultExpression = expression;
             foreach (var part in Regex.Split(expression, @"[\(\)?:!=]").Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x.Trim()))
             {
+                // if is literal:
                 if (part == "true" ||
                     part == "false" ||
                     part == "null" ||
@@ -189,7 +200,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 resultExpression = resultExpression.Remove(expressionFromPos, part.Length).Insert(expressionFromPos, replacePathFunc(part));
             }
 
-            result = result.Replace($"{{{expression}}}", resultExpression);
+            result.TryAdd($"{{{expression}}}", resultExpression);
             str = str[(str.IndexOf("}", StringComparison.Ordinal) + 1)..];
         }
         return result;
@@ -200,7 +211,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         return GetSourcePathExpression(mappingPaths).ToString();
     }
 
-    protected ICSharpExpression GetSourcePathExpression(IList<IElementMappingPathTarget> mappingPaths)
+    protected virtual ICSharpExpression GetSourcePathExpression(IList<IElementMappingPathTarget> mappingPaths)
     {
         CSharpStatement result = default;
         foreach (var mappingPathTarget in mappingPaths)
@@ -231,7 +242,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
                 if (IsTransitional(previousMappingPath, mappingPathTarget))
                 {
-                    if (previousMappingPath?.Element.TypeReference?.IsNullable == true && result is CSharpAccessMemberStatement accessMember)
+                    if (ApplyNullConditionalOperators && previousMappingPath?.Element.TypeReference?.IsNullable == true && result is CSharpAccessMemberStatement accessMember)
                     {
                         accessMember.IsConditional();
                     }
@@ -324,9 +335,8 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
                 if (mappingPath.IndexOf(pathTarget) > 0)
                 {
-                    var foundSubTypeTemplate =
-                        Template.GetTypeInfo(mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.TypeReference.Element.AsTypeReference())?.Template as
-                            ICSharpFileBuilderTemplate;
+                    var foundSubTypeTemplate =  Template.GetTypeInfo(mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.TypeReference.Element.AsTypeReference())
+                        ?.Template as ICSharpFileBuilderTemplate;
                     if (foundSubTypeTemplate?.CSharpFile.TypeDeclarations.First().TryGetReferenceForModel(pathTarget.Id, out reference) == true)
                     {
                         csharpElement = reference as CSharpMetadataBase;

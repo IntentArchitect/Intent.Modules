@@ -16,6 +16,8 @@ public interface ICSharpMapping
     CSharpStatement GetSourceStatement();
     CSharpStatement GetTargetStatement();
 
+    IDictionary<string, CSharpStatement> GetExpressionMap();
+
     bool TryGetSourceReplacement(IMetadataModel type, out string replacement);
     bool TryGetTargetReplacement(IMetadataModel type, out string replacement);
 
