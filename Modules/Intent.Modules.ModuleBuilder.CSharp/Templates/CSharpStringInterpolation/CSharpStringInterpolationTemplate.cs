@@ -22,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpStringInterpolatio
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt"
+    #line 1 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
     public partial class CSharpStringInterpolationTemplate : CSharpTemplateBase<Intent.ModuleBuilder.CSharp.Api.CSharpTemplateModel>
     {
@@ -32,10 +32,9 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpStringInterpolatio
         /// </summary>
         public override string TransformText()
         {
-            this.Write("using System.Collections.Generic;\r\nusing System.Linq;\r\n\r\n[assembly: DefaultIntent" +
-                    "Managed(Mode.Fully)]\r\n\r\nnamespace ");
+            this.Write("[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt"
+            #line 12 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -43,38 +42,32 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpStringInterpolatio
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Fully, Body = Mode.Merge)]\r\n    public partial class" +
                     " ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt"
+            #line 15 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]\r\n        public " +
-                    "override string TransformText()\r\n        {\r\n            return $@\"\r\n[assembly: D" +
-                    "efaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace {Namespace}\r\n{{\r\n    public ");
+            this.Write(@"
+    {
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override string TransformText()
+        {
+            return $$""""""
+                     using System;
+
+                     [assembly: DefaultIntentManaged(Mode.Fully)]
+
+                     namespace {{Namespace}}
+                     {
+                         public ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt"
+            #line 27 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(IsForInterface() ? "interface" : "class"));
             
             #line default
             #line hidden
-            this.Write(" {ClassName}\r\n    {{{string.Join(@\"\r\n\", GetMembers())}\r\n    }}\r\n}}\";\r\n        }\r\n" +
-                    "\r\n        [IntentInitialGen] private IEnumerable<string> GetMembers()\r\n        {" +
-                    "\r\n            var members = new List<string>();\r\n");
-            
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt"
-  if (!IsForInterface()) { 
-            
-            #line default
-            #line hidden
-            this.Write("\r\n            // example: adding a constructor\r\n            members.Add($@\"\r\n    " +
-                    "    public {ClassName}()\r\n        {{\r\n        }}\");\r\n");
-            
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt"
-  }
-            
-            #line default
-            #line hidden
-            this.Write("            return members;\r\n        }\r\n    }\r\n}");
+            this.Write(" {{ClassName}}\r\n                         {\r\n                         }\r\n         " +
+                    "            }\r\n                     \"\"\";\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

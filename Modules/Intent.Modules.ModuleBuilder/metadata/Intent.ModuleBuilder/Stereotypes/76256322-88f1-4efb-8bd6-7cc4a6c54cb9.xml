@@ -31,16 +31,6 @@
       <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
-    <property id="a1a18442-64fd-49da-a2e3-8ef857affd31">
-      <name>Icon</name>
-      <type>string</type>
-      <controlType>icon</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
-    </property>
     <property id="177a2415-e749-46e7-8257-440e19ecfb5e">
       <name>API Namespace</name>
       <type>string</type>

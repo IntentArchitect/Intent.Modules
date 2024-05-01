@@ -143,14 +143,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 doc.Element("package").Add(icon);
             }
 
-            if (!string.IsNullOrWhiteSpace(ModuleModel.GetModuleSettings().Icon()?.Source))
-            {
-                icon.SetValue(ModuleModel.GetModuleSettings().Icon()?.Source ?? "");
-            }
-            else
-            {
-                icon.SetValue(OutputTarget.Application.Icon.Source);
-            }
+            icon.SetValue(OutputTarget.Application.Icon.Source);
 
             /*--------------------------------- DESIGN ELEMENTS ---------------------------------*/
 

@@ -1,4 +1,8 @@
-﻿### Version 3.6.0
+﻿### Version 3.6.1
+
+- Improvement: Under certain scenarios, the software factory would crash with certain model names, a set of these has been addressed. 
+
+### Version 3.6.0
 
 > ⚠️ NOTE
 > 
