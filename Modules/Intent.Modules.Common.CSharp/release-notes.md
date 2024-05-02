@@ -1,4 +1,9 @@
-﻿### Version 3.6.3
+﻿### Version 3.7.0
+
+- Improvement: Added support for Razor file code management.
+
+
+### Version 3.6.3
 
 - New Feature: Classes and Records can now define `Primary Constructors`.
 - Fixed: CRUD Mapping issue around constructors with ValueObjects as parameters.

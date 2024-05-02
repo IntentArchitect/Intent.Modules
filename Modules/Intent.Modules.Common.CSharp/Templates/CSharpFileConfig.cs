@@ -4,106 +4,127 @@ using Intent.Modules.Common.Templates;
 using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 
-namespace Intent.Modules.Common.CSharp.Templates
+namespace Intent.Modules.Common.CSharp.Templates;
+
+/// <summary>
+/// Specialization of <see cref="TemplateFileConfig"/> for setting
+/// metadata specific to C# templates.
+/// </summary>
+public class CSharpFileConfig : TemplateFileConfig
 {
     /// <summary>
-    /// Specialization of <see cref="TemplateFileConfig"/> for setting
-    /// metadata specific to C# templates.
+    /// Sets the C# file configuration.
     /// </summary>
-    public class CSharpFileConfig : TemplateFileConfig
+    public CSharpFileConfig(
+        string className,
+        string @namespace,
+        string relativeLocation = "",
+        OverwriteBehaviour overwriteBehaviour = OverwriteBehaviour.Always,
+        string fileName = null,
+        string fileExtension = "cs",
+        string dependsUpon = null)
+        : base(fileName ?? className, fileExtension, relativeLocation, overwriteBehaviour, "RoslynWeave")
     {
-        /// <summary>
-        /// Sets the C# file configuration.
-        /// </summary>
-        public CSharpFileConfig(
-            string className,
-            string @namespace,
-            string relativeLocation = "",
-            OverwriteBehaviour overwriteBehaviour = OverwriteBehaviour.Always,
-            string fileName = null,
-            string fileExtension = "cs",
-            string dependsUpon = null)
-            : base(fileName ?? className, fileExtension, relativeLocation, overwriteBehaviour, "RoslynWeave")
+        RoslynWeaverConfiguration = new RoslynWeaverConfiguration(this);
+
+        CustomMetadata["ClassName"] = className ?? throw new ArgumentNullException(nameof(className));
+
+        if (!string.IsNullOrWhiteSpace(@namespace))
         {
-            CustomMetadata["ClassName"] = className ?? throw new ArgumentNullException(nameof(className));
-
-            if (!string.IsNullOrWhiteSpace(@namespace))
-            {
-                CustomMetadata["Namespace"] = @namespace;
-            }
-
-            if (!string.IsNullOrWhiteSpace(dependsUpon))
-            {
-                CustomMetadata["Depends On"] = dependsUpon;
-            }
-
-            AutoFormat = true;
-            ApplyNamespaceFormatting = true;
-
-            this.WithItemType("Compile");
+            CustomMetadata["Namespace"] = @namespace;
         }
 
-        /// <summary>
-        /// Whether or not to automatically apply formatting to C# files.
-        /// </summary>
-        public bool AutoFormat
+        if (!string.IsNullOrWhiteSpace(dependsUpon))
         {
-            get => bool.TryParse(CustomMetadata[nameof(AutoFormat)], out var parsed) && parsed;
-            set => CustomMetadata[nameof(AutoFormat)] = value.ToString();
+            CustomMetadata["Depends On"] = dependsUpon;
         }
 
-        /// <summary>
-        /// Disables the automatic formatting of this C# by the Roslyn Weaving system.
-        /// </summary>
-        /// <returns></returns>
-        public CSharpFileConfig DisableAutoFormat()
-        {
-            AutoFormat = false;
-            return this;
-        }
+        AutoFormat = true;
+        ApplyNamespaceFormatting = true;
 
-        /// <summary>
-        /// The primary class name of this file.
-        /// </summary>
-        public string ClassName
-        {
-            get => CustomMetadata["ClassName"];
-            set => CustomMetadata["ClassName"] = value;
-        }
+        this.WithItemType("Compile");
+    }
 
-        /// <inheritdoc />
-        public string Namespace
-        {
-            get => CustomMetadata["Namespace"];
-            set => CustomMetadata["Namespace"] = value;
-        }
+    /// <summary>
+    /// Whether to automatically apply formatting to C# files.
+    /// </summary>
+    public bool AutoFormat
+    {
+        get => bool.TryParse(CustomMetadata[nameof(AutoFormat)], out var parsed) && parsed;
+        set => CustomMetadata[nameof(AutoFormat)] = value.ToString();
+    }
 
-        /// <summary>
-        /// Whether or not to apply formatting (such as PascalCasing) to namespaces. 
-        /// </summary>
-        [FixFor_Version4] // See if we can get rid of this, not sure what it's even being used for.
-        public bool ApplyNamespaceFormatting
-        {
-            get => bool.TryParse(CustomMetadata[nameof(ApplyNamespaceFormatting)], out var parsed) && parsed;
-            set => CustomMetadata[nameof(ApplyNamespaceFormatting)] = value.ToString();
-        }
+    /// <summary>
+    /// Disables the automatic formatting of this C# by the Roslyn Weaving system.
+    /// </summary>
+    /// <returns></returns>
+    public CSharpFileConfig DisableAutoFormat()
+    {
+        AutoFormat = false;
+        return this;
+    }
 
-        /// <summary>
-        /// Sets the default Roslyn Weaver Tag Mode for the template to be <c>Explicit</c>.
-        /// </summary>
-        public CSharpFileConfig IntentTagModeExplicit()
-        {
-            CustomMetadata["RoslynWeaverTagMode"] = "Explicit";
-            return this;
-        }
+    /// <summary>
+    /// The primary class name of this file.
+    /// </summary>
+    public string ClassName
+    {
+        get => CustomMetadata["ClassName"];
+        set => CustomMetadata["ClassName"] = value;
+    }
 
-        /// <summary>
-        /// Sets the default Roslyn Weaver Tag Mode for the template to be <c>Implicit</c>.
-        /// </summary>
-        public CSharpFileConfig IntentTagModeImplicit()
-        {
-            CustomMetadata["RoslynWeaverTagMode"] = "Implicit";
-            return this;
-        }
+    /// <summary>
+    /// The primary namespace for this file.
+    /// </summary>
+    public string Namespace
+    {
+        get => CustomMetadata["Namespace"];
+        set => CustomMetadata["Namespace"] = value;
+    }
+
+    /// <summary>
+    /// Whether to apply formatting (such as PascalCasing) to namespaces. 
+    /// </summary>
+    [FixFor_Version4] // See if we can get rid of this, not sure what it's even being used for.
+    public bool ApplyNamespaceFormatting
+    {
+        get => bool.TryParse(CustomMetadata[nameof(ApplyNamespaceFormatting)], out var parsed) && parsed;
+        set => CustomMetadata[nameof(ApplyNamespaceFormatting)] = value.ToString();
+    }
+
+    /// <summary>
+    /// Use <see cref="RoslynWeaverConfiguration.WithTagMode"/> instead.
+    /// </summary>
+    [Obsolete]
+    public CSharpFileConfig IntentTagModeExplicit()
+    {
+        CustomMetadata["RoslynWeaverTagMode"] = "Explicit";
+        return this;
+    }
+
+    /// <summary>
+    /// Use <see cref="RoslynWeaverConfiguration.WithTagMode"/> instead.
+    /// </summary>
+    [Obsolete]
+    public CSharpFileConfig IntentTagModeImplicit()
+    {
+        CustomMetadata["RoslynWeaverTagMode"] = "Implicit";
+        return this;
+    }
+
+    /// <summary>
+    /// Provides an instance <see cref="RoslynWeaverConfiguration"/> which is wrapping this instance.
+    /// </summary>
+    public RoslynWeaverConfiguration RoslynWeaverConfiguration { get; }
+
+    /// <summary>
+    /// Allows configuring Roslyn Weaver settings in a "fluent manner".
+    /// </summary>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public CSharpFileConfig ConfigureRoslynWeaver(Action<RoslynWeaverConfiguration> configure)
+    {
+        configure(RoslynWeaverConfiguration);
+        return this;
     }
 }

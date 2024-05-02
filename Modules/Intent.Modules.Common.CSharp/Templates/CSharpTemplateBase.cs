@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
-using Intent.Exceptions;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.FactoryExtensions;
@@ -72,7 +71,7 @@ namespace Intent.Modules.Common.CSharp.Templates
     /// this article</seealso>.
     /// </para>
     /// </summary>
-    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, ICSharpTemplate, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge, IDeclareUsings, IHasFrameworkDependencies
+    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, ICSharpTemplate, IRoslynMerge, IDeclareUsings
     {
         private readonly ICollection<IAssemblyReference> _assemblyDependencies = new List<IAssemblyReference>();
         private readonly HashSet<string> _additionalUsingNamespaces = new();
@@ -382,9 +381,9 @@ namespace Intent.Modules.Common.CSharp.Templates
             // always need to qualify the type.
             if (namespaceTypeConflictAtPartNumber.HasValue)
             {
-				// Skip over common parts after the conflict, but make sure the first part of our
-				// remaining type part doesn't appear later in the namespace parts.
-				var skipCount = 0;
+                // Skip over common parts after the conflict, but make sure the first part of our
+                // remaining type part doesn't appear later in the namespace parts.
+                var skipCount = 0;
                 for (; skipCount < typeParts.Length && skipCount < namespaceParts.Length; skipCount++)
                 {
                     if (skipCount <= namespaceTypeConflictAtPartNumber.Value &&
@@ -397,14 +396,14 @@ namespace Intent.Modules.Common.CSharp.Templates
                     break;
                 }
 
-				// In this case the Class name is actually conflicting with a namespace. e.g. X.[Class] and X.Class.[SomeOtherType]
-				// This won't actually compile in C#, nothing we can do to resolve this.
-				if (skipCount == typeParts.Length)
-				{
-					return string.Join('.', typeParts);
-				}
+                // In this case the Class name is actually conflicting with a namespace. e.g. X.[Class] and X.Class.[SomeOtherType]
+                // This won't actually compile in C#, nothing we can do to resolve this.
+                if (skipCount == typeParts.Length)
+                {
+                    return string.Join('.', typeParts);
+                }
 
-				return string.Join('.', typeParts.Skip(skipCount));
+                return string.Join('.', typeParts.Skip(skipCount));
             }
 
             // Only one using exists with the type on it
@@ -433,11 +432,14 @@ namespace Intent.Modules.Common.CSharp.Templates
             }
         }
 
-        private static IEnumerable<string> GetUsingsFromContent(string existingContent)
+        /// <summary>
+        /// Determines usings which are present in provided content.
+        /// </summary>
+        protected virtual IEnumerable<string> GetUsingsFromContent(string existingContent)
         {
             if (string.IsNullOrWhiteSpace(existingContent))
             {
-                return Enumerable.Empty<string>();
+                return [];
             }
 
             var lines = existingContent
@@ -455,8 +457,10 @@ namespace Intent.Modules.Common.CSharp.Templates
                         .Trim());
                 }
 
-                // GCB - using clauses can exist after the namespace is declared. Rather check until class is declared.
-                if (line.Contains("class "))
+                if (line.Contains("class ") ||
+                    line.Contains("interface ") ||
+                    line.Contains("record ") ||
+                    line.Contains("struct "))
                 {
                     break;
                 }
