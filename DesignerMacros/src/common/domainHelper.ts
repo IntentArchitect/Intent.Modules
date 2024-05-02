@@ -275,6 +275,42 @@ class DomainHelper {
         }
     }
 
+    static getMandatoryAssociationsWithMapPath(entity: MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
+        return traverseInheritanceHierarchy(entity, [], []);
+
+        function traverseInheritanceHierarchy(
+            entity: MacroApi.Context.IElementApi,
+            results: IAttributeWithMapPath[],
+            generalizationStack: string[]
+        ): IAttributeWithMapPath[] {
+            entity
+                .getAssociations("Association")
+                .filter(x => !x.typeReference.isCollection && !x.typeReference.isNullable && x.typeReference.isNavigable &&
+                    !x.getOtherEnd().typeReference.isCollection && !x.getOtherEnd().typeReference.isNullable)
+                .forEach(association => {
+                    return results.push({
+                        id: association.id,
+                        name: association.getName(),
+                        typeId: null,
+                        mapPath: generalizationStack.concat([association.id]),
+                        isNullable: false,
+                        isCollection: false
+                    });
+                });
+
+
+            let generalizations = entity.getAssociations("Generalization").filter(x => x.isTargetEnd());
+            if (generalizations.length == 0) {
+                return results;
+            }
+
+            let generalization = generalizations[0];
+            generalizationStack.push(generalization.id);
+
+            return traverseInheritanceHierarchy(generalization.typeReference.getType(), results, generalizationStack);
+        }
+    }
+
     static getAttributeNameFormat(str: string): string {
         let convention = DomainHelper.getDomainAttributeNamingConvention();
         switch (convention) {

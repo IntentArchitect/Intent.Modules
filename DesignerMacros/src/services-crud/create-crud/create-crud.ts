@@ -1,6 +1,7 @@
 // services-crud script (see ~/DesignerMacros/src/services-crud folder in Intent.Modules)
 /// <reference path="../../common/domainHelper.ts" />
 /// <reference path="../../common/servicesHelper.ts" />
+/// <reference path="../../services-cqrs-crud/_common/onMapDto.ts" />
 namespace servicesCrud {
     export async function execute() {
         const package = element.getPackage();
@@ -93,6 +94,7 @@ namespace servicesCrud {
         }
 
         dtoManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity))
+        dtoManager.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity))
 
         operationManager.addChild("dto", dtoManager.id);
 
@@ -101,6 +103,7 @@ namespace servicesCrud {
             operationManager.setReturnType(primaryKeys[0].typeId);
         }
 
+        onMapDto(dtoManager.getElement(), false, `${baseName}Create`);
         dtoManager.collapse();
         operationManager.collapse();
     }
@@ -185,9 +188,12 @@ namespace servicesCrud {
 
         dtoManager.addChildrenFrom(primaryKeys);
         dtoManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity))
+        dtoManager.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity))
 
         operationManager.addChildrenFrom(primaryKeys);
         operationManager.addChild("dto", dtoManager.id);
+
+        onMapDto(dtoManager.getElement(), false, `${baseName}Update`);
 
         dtoManager.collapse();
         operationManager.collapse();

@@ -7,7 +7,7 @@
 function onMapCommand(
     element: MacroApi.Context.IElementApi,
     isForCrudScript: boolean,
-    isForCreate: boolean = false
+    excludePrimaryKeys: boolean = false
 ): void {
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
     const mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
@@ -23,7 +23,7 @@ function onMapCommand(
     ) {
         let order = 0;
         let keyFields = mappingDetails.ownerKeyFields;
-        if (!isForCreate) {
+        if (!excludePrimaryKeys) {
             keyFields = keyFields.concat(mappingDetails.entityKeyFields);
         }
 
@@ -46,7 +46,7 @@ function onMapCommand(
         .filter(x => x.typeReference.getType()?.specialization != "DTO" && x.isMapped() && x.getMapping()?.getElement().specialization.startsWith("Association"));
 
     fields.forEach(field => {
-        getOrCreateCommandCrudDto(element, field, true, projectMappingSettingId);
+        getOrCreateCommandCrudDto(element, field, !excludePrimaryKeys, projectMappingSettingId);
     });
 
     const complexFields = element.getChildren("DTO-Field")
