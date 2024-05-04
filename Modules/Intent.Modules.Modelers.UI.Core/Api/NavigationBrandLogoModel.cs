@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Core.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class NavigationBarModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class NavigationBrandLogoModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Navigation Bar";
-        public const string SpecializationTypeId = "d7282bf2-1626-4b8b-9446-1d530527db06";
+        public const string SpecializationType = "Navigation Brand Logo";
+        public const string SpecializationTypeId = "11785c84-a457-497c-9c7a-79c43772aa70";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public NavigationBarModel(IElement element, string requiredType = SpecializationType)
+        public NavigationBrandLogoModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -35,24 +35,16 @@ namespace Intent.Modelers.UI.Core.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public string Value => _element.Value;
+
         public IElement InternalElement => _element;
-
-        public NavigationBrandLogoModel BrandLogo => _element.ChildElements
-            .GetElementsOfType(NavigationBrandLogoModel.SpecializationTypeId)
-            .Select(x => new NavigationBrandLogoModel(x))
-            .SingleOrDefault();
-
-        public IList<NavigationItemModel> NavigationItems => _element.ChildElements
-            .GetElementsOfType(NavigationItemModel.SpecializationTypeId)
-            .Select(x => new NavigationItemModel(x))
-            .ToList();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(NavigationBarModel other)
+        public bool Equals(NavigationBrandLogoModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -62,7 +54,7 @@ namespace Intent.Modelers.UI.Core.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((NavigationBarModel)obj);
+            return Equals((NavigationBrandLogoModel)obj);
         }
 
         public override int GetHashCode()
@@ -72,17 +64,17 @@ namespace Intent.Modelers.UI.Core.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class NavigationBarModelExtensions
+    public static class NavigationBrandLogoModelExtensions
     {
 
-        public static bool IsNavigationBarModel(this ICanBeReferencedType type)
+        public static bool IsNavigationBrandLogoModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == NavigationBarModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == NavigationBrandLogoModel.SpecializationTypeId;
         }
 
-        public static NavigationBarModel AsNavigationBarModel(this ICanBeReferencedType type)
+        public static NavigationBrandLogoModel AsNavigationBrandLogoModel(this ICanBeReferencedType type)
         {
-            return type.IsNavigationBarModel() ? new NavigationBarModel((IElement)type) : null;
+            return type.IsNavigationBrandLogoModel() ? new NavigationBrandLogoModel((IElement)type) : null;
         }
     }
 }

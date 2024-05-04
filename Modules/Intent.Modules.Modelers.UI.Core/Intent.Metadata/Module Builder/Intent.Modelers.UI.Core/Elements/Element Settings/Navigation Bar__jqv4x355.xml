@@ -43,7 +43,7 @@
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
-        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="Manually" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="By type then manually" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
@@ -69,6 +69,46 @@
       <stereotypes />
       <metadata />
       <childElements>
+        <childElement id="eb21fa09-9807-492d-ab31-732832e6af7e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Brand Logo</name>
+          <display>Add Brand Logo: Navigation Brand Logo</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e9c3d3fb-8804-4013-9d05-1eb547b1928f">
+            <typeId>11785c84-a457-497c-9c7a-79c43772aa70</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>8ad84db9-5ea6-410b-97df-a39b6c73f293</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Brand" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="5ceb77e2-960a-463b-94aa-799dcc6ef64d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Navigation Item</name>
           <display>Add Navigation Item: Navigation Item</display>
@@ -103,52 +143,6 @@
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
                 <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="c01d64be-f535-49ad-a651-bce451c5e828" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
-          <name>Add Component</name>
-          <display>Add Component: Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="3c86d1c0-b47f-4046-99b4-0c15e3028aef">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>8ad84db9-5ea6-410b-97df-a39b6c73f293</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const componentId = &quot;b407aace-ad14-484e-ac93-4762a3d182d8&quot;;&#xD;&#xA;let result = await dialogService.openForm({&#xD;&#xA;    title: &quot;Add Component&quot;,&#xD;&#xA;    fields: [{&#xD;&#xA;        id: &quot;component-type&quot;,&#xD;&#xA;        fieldType: &quot;select&quot;,&#xD;&#xA;        label: &quot;Component Type&quot;,&#xD;&#xA;        selectOptions: lookupTypesOf(&quot;Element Settings&quot;)&#xD;&#xA;            .filter(x =&gt; x.hasStereotype(componentId))&#xD;&#xA;            .map(x =&gt; ( {id: x.id, description: x.getDisplay() })),&#xD;&#xA;        placeholder: &quot;Search components&quot;&#xD;&#xA;    }]&#xD;&#xA;})&#xD;&#xA;&#xD;&#xA;console.warn(result);&#xD;&#xA;let componentType = lookup(result[&quot;component-type&quot;]);&#xD;&#xA;let component = createElement(componentType.id, componentType.getName(), element.id);" isActive="true" />
-              </properties>
-            </stereotype>
-            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGx1cyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfUGx1c194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NpcmNsZV94M0VfXzAwMDAwMTYxNjEyMDcyMDczMjQ2MjA5NTEwMDAwMDA4NjY5NjY2NzcxODg1MzA5ODc5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzQ5MyIgeDI9IjI1LjIiIHkyPSIyLjUxMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV94M0VfIiBmaWxsPSJ1cmwoI194M0NfQ2lyY2xlX3gzRV9fMDAwMDAxNjE2MTIwNzIwNzMyNDYyMDk1MTAwMDAwMDg2Njk2NjY3NzE4ODUzMDk4NzlfKSIgZD0iTTI1LjIsMi4zDQoJCWMtMTIuNCwwLTIyLjUsMTAtMjIuNSwyMi41YzAsMTIuNCwxMC4xLDIyLjUsMjIuNSwyMi41czIyLjUtMTAuMSwyMi41LTIyLjVDNDcuNywxMi4zLDM3LjYsMi4zLDI1LjIsMi4zeiBNMjUuMiw0My44DQoJCWMtMTAuNSwwLTE5LTguNS0xOS0xOXM4LjUtMTksMTktMTlzMTksOC41LDE5LDE5QzQ0LjIsMzUuMiwzNS43LDQzLjgsMjUuMiw0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzIxMSIgeDI9IjI1LjIiIHkyPSIyLjQ4MDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19QbHVzX3gzRV9fMDAwMDAwODE2MzE4NjY4NDEyOTcxNDM5MDAwMDAwMDczMTUyNDQ3Mzk2MDkwODMyNjlfIiBmaWxsPSJ1cmwoI194M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXykiIGQ9Ig0KCQlNMzAuNCwxMi42SDIwdjYuOWgtNi45djEwLjRIMjB2Ni45aDEwLjR2LTYuOWg2LjlWMTkuNmgtNi45VjEyLjZ6IE0zMy44LDIzdjMuNWgtNi45djYuOWgtMy41di02LjloLTYuOVYyM2g2Ljl2LTYuOWgzLjVWMjNIMzMuOHoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
-                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
-                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
-                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
-                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

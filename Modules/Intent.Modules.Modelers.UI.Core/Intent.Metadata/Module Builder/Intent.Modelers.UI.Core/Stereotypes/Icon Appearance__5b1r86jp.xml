@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="b71f0a4d-82b4-4685-b58f-a31ea77c45dd" version="3.1.0">
+  <name>Icon Appearance</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="3c5f8ea8-061a-4e71-826f-59f9281abe71">Icon</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>a2a95421-3e55-43c7-96ad-355610b43c4d</parentFolderId>
+  <order>0</order>
+  <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+  <packageName>Intent.Modelers.UI.Core</packageName>
+  <properties>
+    <property id="07f92b63-f47b-4245-9078-ed32749dc82c">
+      <name>Name</name>
+      <type>string</type>
+      <controlType>icon</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

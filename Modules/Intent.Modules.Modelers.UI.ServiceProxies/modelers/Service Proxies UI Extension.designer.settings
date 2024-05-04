@@ -206,6 +206,7 @@ else {
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
+          <overrideTypeReferenceFunction>return null;</overrideTypeReferenceFunction>
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
           <staticMappableSettings />

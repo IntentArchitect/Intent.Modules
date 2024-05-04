@@ -4,7 +4,6 @@
   <targetMode>of-type</targetMode>
   <targetTypes>
     <type id="1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd">Form</type>
-    <type id="c505f35f-7148-46a3-a812-d9f53a174490">Layout Sider</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>
@@ -73,6 +72,7 @@ if (stereotype.getProperty("Footer").getValue())
       <represents>data</represents>
       <valueOptions />
       <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="229e8f01-3a9b-40d1-9de8-87ecbc2bc744">
       <name>Header</name>

@@ -261,6 +261,11 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     protected string GetTargetPathText()
     {
+        var targetPathExpression = GetTargetPathExpression();
+        if (targetPathExpression == null)
+        {
+            throw new Exception($"The target path text returned null for mapping {GetType().Name}. Check that you are resolving the appropriate mapping type for this model: {Model}");
+        }
         return GetTargetPathExpression().ToString();
     }
 

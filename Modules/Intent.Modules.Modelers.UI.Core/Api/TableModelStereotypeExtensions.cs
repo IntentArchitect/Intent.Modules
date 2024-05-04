@@ -36,6 +36,30 @@ namespace Intent.Modelers.UI.Core.Api
             return true;
         }
 
+        public static Pagination GetPagination(this TableModel model)
+        {
+            var stereotype = model.GetStereotype(Pagination.DefinitionId);
+            return stereotype != null ? new Pagination(stereotype) : null;
+        }
+
+
+        public static bool HasPagination(this TableModel model)
+        {
+            return model.HasStereotype(Pagination.DefinitionId);
+        }
+
+        public static bool TryGetPagination(this TableModel model, out Pagination stereotype)
+        {
+            if (!HasPagination(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Pagination(model.GetStereotype(Pagination.DefinitionId));
+            return true;
+        }
+
         public class Interaction
         {
             private IStereotype _stereotype;
@@ -51,6 +75,35 @@ namespace Intent.Modelers.UI.Core.Api
             public string OnRowClick()
             {
                 return _stereotype.GetProperty<string>("On Row Click");
+            }
+
+        }
+
+        public class Pagination
+        {
+            private IStereotype _stereotype;
+            public const string DefinitionId = "f0663cd4-da7c-43cc-9cda-bbc7923d5431";
+
+            public Pagination(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string Page()
+            {
+                return _stereotype.GetProperty<string>("Page");
+            }
+
+            public string CollectionSize()
+            {
+                return _stereotype.GetProperty<string>("Collection Size");
+            }
+
+            public string PageSize()
+            {
+                return _stereotype.GetProperty<string>("Page Size");
             }
 
         }

@@ -82,10 +82,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>30a4e6bb-5d5d-4fb2-bbbd-aa628b661ea2</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#c505f35f-7148-46a3-a812-d9f53a174490</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#3c5f8ea8-061a-4e71-826f-59f9281abe71</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/LayoutSiderModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>LayoutSiderModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/IconModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IconModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>30a4e6bb-5d5d-4fb2-bbbd-aa628b661ea2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#3c5f8ea8-061a-4e71-826f-59f9281abe71</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/IconModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IconModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -110,6 +118,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/NavigationBarModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>NavigationBarModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>30a4e6bb-5d5d-4fb2-bbbd-aa628b661ea2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#11785c84-a457-497c-9c7a-79c43772aa70</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/NavigationBrandLogoModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>NavigationBrandLogoModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

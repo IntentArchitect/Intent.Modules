@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Core.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class TableModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    public class TableModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Table";
         public const string SpecializationTypeId = "eee93c29-3d58-4e42-aea9-c00451d17469";
@@ -35,7 +35,7 @@ namespace Intent.Modelers.UI.Core.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public ITypeReference TypeReference => _element.TypeReference;
+        public string Value => _element.Value;
 
 
         public IElement InternalElement => _element;

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="f0663cd4-da7c-43cc-9cda-bbc7923d5431" version="3.1.0">
+  <name>Pagination</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="eee93c29-3d58-4e42-aea9-c00451d17469">Table</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="data:image/png;base64,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" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>a2a95421-3e55-43c7-96ad-355610b43c4d</parentFolderId>
+  <order>0</order>
+  <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+  <packageName>Intent.Modelers.UI.Core</packageName>
+  <properties>
+    <property id="ffae3a34-773c-46b0-8bbf-fa2947c8e916">
+      <name>Page</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="4bc0cb96-4708-4ea0-82b2-7672b4c339da">
+      <name>Collection Size</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="26a9615e-ee5e-4c6e-874c-934949dcebb8">
+      <name>Page Size</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

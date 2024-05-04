@@ -69,7 +69,7 @@
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;b1c481e1-e91e-4c29-9817-00ab9cad4b6b&quot;]" isActive="true" />
             <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="" isActive="true" />
-            <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Optional" isActive="true" />
+            <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Required" isActive="true" />
             <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="return `NavigateTo${association.typeReference.getType()?.getName() ?? &quot;&quot;}`" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="NavigateToComponents" isActive="true" />
             <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
