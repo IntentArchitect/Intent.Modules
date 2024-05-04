@@ -26,6 +26,9 @@ public class MappableElementSettingPersistable
     [XmlAttribute("version")]
     public string Version { get; set; } = "1.0.0";
 
+    [XmlElement("displayFunction")]
+    public string DisplayFunction { get; set; }
+
     [XmlElement("filterFunction")]
     public string FilterFunction { get; set; }
 
@@ -55,6 +58,10 @@ public class MappableElementSettingPersistable
     [XmlArray("traversableTypes")]
     [XmlArrayItem("mappingId")]
     public List<string> TraversableTypes { get; set; } = new();
+
+    [XmlElement("overrideTypeReferenceFunction")]
+    public string OverrideTypeReferenceFunction { get; set; }
+    public bool ShouldSerializeOverrideTypeReferenceFunction() => !string.IsNullOrWhiteSpace(OverrideTypeReferenceFunction);
 
     [XmlElement("canBeModified")]
     public bool CanBeModified { get; set; }

@@ -58,6 +58,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<IIconModel>("Icon Override");
             }
 
+            public string DisplayFunction()
+            {
+                return _stereotype.GetProperty<string>("Display Function");
+            }
+
             public bool CanBeModified()
             {
                 return _stereotype.GetProperty<bool>("Can Be Modified");
@@ -96,6 +101,11 @@ namespace Intent.ModuleBuilder.Api
             public IElement[] TraversableTypes()
             {
                 return _stereotype.GetProperty<IElement[]>("Traversable Types") ?? new IElement[0];
+            }
+
+            public string OverrideTypeReferenceFunction()
+            {
+                return _stereotype.GetProperty<string>("Override Type Reference Function");
             }
 
             public string GetTraversableTypeFunction()

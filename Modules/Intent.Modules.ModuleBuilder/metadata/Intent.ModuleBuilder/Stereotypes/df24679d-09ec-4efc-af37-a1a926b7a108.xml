@@ -57,6 +57,16 @@
       <isActiveFunction />
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
+    <property id="e2bbf8a7-e342-4221-a628-f3ef35dcc251">
+      <name>Display Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(Default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+    </property>
     <property id="9b689fcf-4060-4bff-b23e-6f150ecadd65">
       <name>Is Required Function</name>
       <type>string</type>
@@ -163,6 +173,17 @@ return getAllPackageIds(mappablePackage);</lookupInternalTargetPropertyId>
 return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traverse Specific Types";</isActiveFunction>
       <isRequiredFunction>// Traversal Mode == Traverse Specific Types
 return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traverse Specific Types";</isRequiredFunction>
+    </property>
+    <property id="208475f3-1bb6-40c4-87e1-20f048e5caa8">
+      <hint>Uses the element's type reference by default.</hint>
+      <name>Override Type Reference Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(Default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
     </property>
     <property id="a6ec44d7-f928-4221-bed6-8589176a94c7">
       <name>Get Traversable Type Function</name>
