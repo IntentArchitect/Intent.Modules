@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="fc939cf2-3ba0-4072-972b-d251f553828e" type="Minimum Dependency Versions" typeId="63605213-ab56-4042-b801-907bb5a79c08">
+  <name>Minimum Dependency Versions</name>
+  <display>Minimum Dependency Versions</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <order>1</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>e9bf7bb9-ca0d-46bc-9472-73da043995bd</parentFolderId>
+  <packageId>e9bf7bb9-ca0d-46bc-9472-73da043995bd</packageId>
+  <packageName>Intent.ApplicationTemplateBuilder</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="77f68af6-c825-4157-9d58-c23754546807" type="Module" typeId="6a811790-b322-4340-8b68-84dae5ffafa8">
+      <name>Intent.Common.CSharp</name>
+      <display>Intent.Common.CSharp 3.6.1</display>
+      <isAbstract>false</isAbstract>
+      <value>3.6.1</value>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>fc939cf2-3ba0-4072-972b-d251f553828e</parentFolderId>
+      <packageId>e9bf7bb9-ca0d-46bc-9472-73da043995bd</packageId>
+      <packageName>Intent.ApplicationTemplateBuilder</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="3e0264d0-c69e-41e3-ae32-2a530dc9e169" type="Module" typeId="6a811790-b322-4340-8b68-84dae5ffafa8">
+      <name>Intent.OutputManager.RoslynWeaver</name>
+      <display>Intent.OutputManager.RoslynWeaver 4.7.3</display>
+      <isAbstract>false</isAbstract>
+      <value>4.7.3</value>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>fc939cf2-3ba0-4072-972b-d251f553828e</parentFolderId>
+      <packageId>e9bf7bb9-ca0d-46bc-9472-73da043995bd</packageId>
+      <packageName>Intent.ApplicationTemplateBuilder</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>
