@@ -100,10 +100,7 @@ namespace convertToAdvancedMapping {
 
 
     function mapContract(mappingType: string, dto: MacroApi.Context.IElementApi, sourcePath: string[], targetPathIds: string[], mapping: MacroApi.Context.IElementToElementMappingApi, isCommand: boolean = false): void {
-        console.log("mapContract: " + dto.getName())
-        dto.getChildren("DTO-Field").forEach(f => console.log(f.getName() + "|" + f.isMapped()));
         dto.getChildren("DTO-Field").filter(x => x.isMapped() && !fieldsToSkip(isCommand, dto, x) ).forEach(field => {
-            console.log("field: " + field.getName())
             if (field.typeReference.getType()?.specialization != "DTO" || field.typeReference.getIsCollection()) {
                 mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)))
             }

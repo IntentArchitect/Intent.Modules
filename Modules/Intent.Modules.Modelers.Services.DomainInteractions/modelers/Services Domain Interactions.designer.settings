@@ -1374,11 +1374,8 @@ var convertToAdvancedMapping;
         }
     }
     function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping, isCommand = false) {
-        console.log("mapContract: " + dto.getName());
-        dto.getChildren("DTO-Field").forEach(f =&gt; console.log(f.getName() + "|" + f.isMapped()));
         dto.getChildren("DTO-Field").filter(x =&gt; x.isMapped() &amp;&amp; !fieldsToSkip(isCommand, dto, x)).forEach(field =&gt; {
             var _a, _b;
-            console.log("field: " + field.getName());
             if (((_a = field.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" || field.typeReference.getIsCollection()) {
                 mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));
             }
@@ -2376,6 +2373,7 @@ class ServicesConstants {
 }
 ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
 ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+ServicesConstants.dtoToDomainOperation = "8d1f6a8a-77c8-43a2-8e60-421559725419";
 class ServicesHelper {
     static addDtoFieldsFromDomain(dto, attributes) {
         var _a;
@@ -3625,6 +3623,7 @@ class ServicesConstants {
 }
 ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
 ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+ServicesConstants.dtoToDomainOperation = "8d1f6a8a-77c8-43a2-8e60-421559725419";
 class ServicesHelper {
     static addDtoFieldsFromDomain(dto, attributes) {
         var _a;
@@ -6717,11 +6716,8 @@ var convertToAdvancedMapping;
         }
     }
     function mapContract(mappingType, dto, sourcePath, targetPathIds, mapping, isCommand = false) {
-        console.log("mapContract: " + dto.getName());
-        dto.getChildren("DTO-Field").forEach(f =&gt; console.log(f.getName() + "|" + f.isMapped()));
         dto.getChildren("DTO-Field").filter(x =&gt; x.isMapped() &amp;&amp; !fieldsToSkip(isCommand, dto, x)).forEach(field =&gt; {
             var _a, _b;
-            console.log("field: " + field.getName());
             if (((_a = field.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" || field.typeReference.getIsCollection()) {
                 mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));
             }
@@ -7377,8 +7373,7 @@ async function execute(element) {
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-crud/create-crud-advanced-mapping/create-crud-advanced-mapping.ts
  */
-await execute(element);
-</script>
+await execute(element);</script>
         </option>
         <option>
           <text>Create CRUD CQRS Operations</text>
@@ -7719,6 +7714,7 @@ class ServicesConstants {
 }
 ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
 ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+ServicesConstants.dtoToDomainOperation = "8d1f6a8a-77c8-43a2-8e60-421559725419";
 class ServicesHelper {
     static addDtoFieldsFromDomain(dto, attributes) {
         var _a;
@@ -8968,6 +8964,7 @@ class ServicesConstants {
 }
 ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
 ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+ServicesConstants.dtoToDomainOperation = "8d1f6a8a-77c8-43a2-8e60-421559725419";
 class ServicesHelper {
     static addDtoFieldsFromDomain(dto, attributes) {
         var _a;
