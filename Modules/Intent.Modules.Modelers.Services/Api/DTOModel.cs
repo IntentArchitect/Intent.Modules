@@ -118,5 +118,15 @@ To fix this, open and re-save your Services designer. If this warning persists t
         {
             return type.HasProjectToDomainMapping() ? type.Mapping : null;
         }
+
+        public static bool HasMapToDomainOperationMapping(this DTOModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "8d1f6a8a-77c8-43a2-8e60-421559725419";
+        }
+
+        public static IElementMapping GetMapToDomainOperationMapping(this DTOModel type)
+        {
+            return type.HasMapToDomainOperationMapping() ? type.Mapping : null;
+        }
     }
 }

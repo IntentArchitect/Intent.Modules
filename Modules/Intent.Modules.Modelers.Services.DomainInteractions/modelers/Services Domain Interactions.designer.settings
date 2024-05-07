@@ -90,6 +90,12 @@ class DomainHelper {
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
         return result;
     }
+    static getCommandOperations(entity) {
+        const queryOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"];
+        const operations = entity.getChildren("Operation").filter(operation =&gt; operation.typeReference.getType() == null ||
+            !queryOperationNames.some(allowedOperationName =&gt; operation.getName().startsWith(allowedOperationName)));
+        return operations;
+    }
     static getOwningAggregate(entity) {
         var _a;
         if (!entity || entity.specialization != "Class") {
@@ -336,6 +342,7 @@ class ServicesConstants {
 }
 ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
 ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+ServicesConstants.dtoToDomainOperation = "8d1f6a8a-77c8-43a2-8e60-421559725419";
 class ServicesHelper {
     static addDtoFieldsFromDomain(dto, attributes) {
         var _a;
@@ -673,6 +680,8 @@ function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey, dtoPrefix =
 /// &lt;reference path="../../common/domainHelper.ts" /&gt;
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
 /// &lt;reference path="../../services-cqrs-crud/_common/onMapDto.ts" /&gt;
+var _a, _b;
+const privateSettersOnly = ((_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")) === null || _b === void 0 ? void 0 : _b.value) == "true";
 var servicesCrud;
 (function (servicesCrud) {
     async function execute() {
@@ -699,6 +708,10 @@ var servicesCrud;
         if (primaryKeys.length &gt; 0) {
             createStandardUpdateOperation(service, entity, folder);
             createStandardDeleteOperation(service, entity);
+            const operations = DomainHelper.getCommandOperations(entity);
+            for (const operation of operations) {
+                createCallOperationCommand(service, operation, entity, folder);
+            }
         }
     }
     servicesCrud.execute = execute;
@@ -743,19 +756,45 @@ var servicesCrud;
             childSpecialization: "Parameter",
             childType: "parameter"
         });
-        dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
+        const entityCtor = entity
+            .getChildren("Class Constructor")
+            .sort((a, b) =&gt; {
+            // In descending order:
+            return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
+        })[0];
+        if (entityCtor != null) {
+            dtoManager.mapToElement(entityCtor, ServicesConstants.dtoToDomainOperation);
+            dtoManager.getElement().setMapping([entity.id, entityCtor.id], ServicesConstants.dtoToDomainOperation);
+        }
+        else if (!privateSettersOnly) {
+            dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
+        }
+        else {
+            console.warn(`Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order for 'Create${entity.getName()}' to map to that entity, either disable private setters or model a constructor element and try again.`);
+        }
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        const surrogateKey = primaryKeys.length === 1;
+        if (primaryKeys.length == 1) {
+            operationManager.setReturnType(primaryKeys[0].typeId);
+        }
+        if (entityCtor) {
+            dtoManager.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter")
+                .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
+        }
+        else {
+            if (!surrogateKey) {
+                const toAdd = primaryKeys.filter(x =&gt; DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+                ServicesHelper.addDtoFieldsFromDomain(dtoManager.getElement(), toAdd);
+            }
+            dtoManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+            dtoManager.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity));
+        }
         if (owningAggregate) {
             let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
             dtoManager.addChildrenFrom(foreignKeys);
             operationManager.addChildrenFrom(foreignKeys);
         }
-        dtoManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
-        dtoManager.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity));
         operationManager.addChild("dto", dtoManager.id);
-        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
-        if (primaryKeys.length == 1) {
-            operationManager.setReturnType(primaryKeys[0].typeId);
-        }
         onMapDto(dtoManager.getElement(), false, `${baseName}Create`);
         dtoManager.collapse();
         operationManager.collapse();
@@ -851,6 +890,40 @@ var servicesCrud;
         operationManager.collapse();
     }
     servicesCrud.createStandardDeleteOperation = createStandardDeleteOperation;
+    function createCallOperationCommand(service, operation, entity, folder) {
+        let owningAggregate = DomainHelper.getOwningAggregate(entity);
+        let baseName = getBaseNameForElement(owningAggregate, entity, false);
+        let dtoName = `${operation.getName()}Dto`;
+        if (service.getChildren().some(x =&gt; x.getName() == `${operation.getName()}`)) {
+            return;
+        }
+        let dtoManager = new ElementManager(createElement("DTO", dtoName, folder.id), {
+            childSpecialization: "DTO-Field",
+            childType: "property"
+        });
+        let operationManager = new ElementManager(createElement("Operation", `${operation.getName()}`, service.id), {
+            childSpecialization: "Parameter",
+            childType: "parameter"
+        });
+        dtoManager.mapToElement(operation, ServicesConstants.dtoToDomainOperation);
+        dtoManager.getElement().setMapping([entity.id, operation.id], ServicesConstants.dtoToDomainOperation);
+        if (owningAggregate) {
+            let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
+            dtoManager.addChildrenFrom(foreignKeys);
+            operationManager.addChildrenFrom(foreignKeys);
+        }
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        for (const key of primaryKeys) {
+            dtoManager.addChild(key.name, lookup(key.id).typeReference);
+        }
+        dtoManager.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter").filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
+        operationManager.addChildrenFrom(primaryKeys);
+        operationManager.addChild("dto", dtoManager.id);
+        onMapDto(dtoManager.getElement(), false, `${operation.getName()}`);
+        dtoManager.collapse();
+        operationManager.collapse();
+    }
+    servicesCrud.createCallOperationCommand = createCallOperationCommand;
     function getBaseNameForElement(owningAggregate, entity, entityIsMany) {
         let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
         return owningAggregate ? `${toPascalCase(owningAggregate.getName())}${entityName}` : entityName;
@@ -945,6 +1018,12 @@ class DomainHelper {
         let result = !element.getAssociations("Association")
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
         return result;
+    }
+    static getCommandOperations(entity) {
+        const queryOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"];
+        const operations = entity.getChildren("Operation").filter(operation =&gt; operation.typeReference.getType() == null ||
+            !queryOperationNames.some(allowedOperationName =&gt; operation.getName().startsWith(allowedOperationName)));
+        return operations;
     }
     static getOwningAggregate(entity) {
         var _a;
@@ -1217,14 +1296,15 @@ var convertToAdvancedMapping;
     }
     convertToAdvancedMapping.execute = execute;
     function convertOperation(operation, entity) {
-        var _a, _b;
-        let target = entity;
+        var _a, _b, _c, _d;
         let dtoParam = operation.getChildren("Parameter").find(x =&gt; x.typeReference.getType().specialization == "DTO");
         let dto = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType();
+        let target = (_b = (_a = dto === null || dto === void 0 ? void 0 : dto.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) !== null &amp;&amp; _b !== void 0 ? _b : entity;
+        let targetEntity = (_c = target.getParent("Class")) !== null &amp;&amp; _c !== void 0 ? _c : target;
         // CREATE OPERATION:
-        if (operation.getName().startsWith("Create") &amp;&amp; ((_a = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _a === void 0 ? void 0 : _a.getElement().id) == entity.id) {
+        if (operation.getName().startsWith("Create") /*&amp;&amp; dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
             let action = createAssociation("Create Entity Action", operation.id, target.id);
-            let mapping = action.createMapping(operation.id, entity.id);
+            let mapping = action.createMapping(operation.id, targetEntity.id);
             mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
             mapContract("Data Mapping", dto, [operation.id, dtoParam.id], [target.id], mapping, true);
             // DELETE OPERATION:
@@ -1235,7 +1315,7 @@ var convertToAdvancedMapping;
             addFilterMapping(mapping, operation, entity);
             // UPDATE OPERATION:
         }
-        else if (operation.getName().startsWith("Update") &amp;&amp; ((_b = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _b === void 0 ? void 0 : _b.getElement().id) == entity.id) {
+        else if (operation.getName().startsWith("Update") &amp;&amp; ((_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _d === void 0 ? void 0 : _d.getElement().id) == entity.id) {
             let action = createAssociation("Update Entity Action", operation.id, target.id);
             // Query Entity Mapping
             let queryMapping = action.createMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
@@ -1256,6 +1336,17 @@ var convertToAdvancedMapping;
             action.typeReference.setIsCollection(true);
             let queryMapping = action.createMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
             addFilterMapping(queryMapping, operation, entity);
+            //Operations (Command)
+        }
+        else if (dto.isMapped()) {
+            let action = createAssociation("Update Entity Action", operation.id, target.id);
+            // Query Entity Mapping
+            let queryMapping = action.createMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, operation, entity);
+            // Update Entity Mapping
+            let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
+            updateMapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
+            mapContract("Data Mapping", dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
         }
         else {
             console.warn(`Could not convert operation: ${operation.getName()} (For entity ${entity.getName()}. Has parameters: (${operation.getChildren("Parameter").map(x =&gt; x.getName())}))`);
@@ -1308,6 +1399,7 @@ class ServicesConstants {
 }
 ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
 ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+ServicesConstants.dtoToDomainOperation = "8d1f6a8a-77c8-43a2-8e60-421559725419";
 class ServicesHelper {
     static addDtoFieldsFromDomain(dto, attributes) {
         var _a;
@@ -1645,6 +1737,8 @@ function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey, dtoPrefix =
 /// &lt;reference path="../../common/domainHelper.ts" /&gt;
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
 /// &lt;reference path="../../services-cqrs-crud/_common/onMapDto.ts" /&gt;
+var _a, _b;
+const privateSettersOnly = ((_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")) === null || _b === void 0 ? void 0 : _b.value) == "true";
 var servicesCrud;
 (function (servicesCrud) {
     async function execute() {
@@ -1671,6 +1765,10 @@ var servicesCrud;
         if (primaryKeys.length &gt; 0) {
             createStandardUpdateOperation(service, entity, folder);
             createStandardDeleteOperation(service, entity);
+            const operations = DomainHelper.getCommandOperations(entity);
+            for (const operation of operations) {
+                createCallOperationCommand(service, operation, entity, folder);
+            }
         }
     }
     servicesCrud.execute = execute;
@@ -1715,19 +1813,45 @@ var servicesCrud;
             childSpecialization: "Parameter",
             childType: "parameter"
         });
-        dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
+        const entityCtor = entity
+            .getChildren("Class Constructor")
+            .sort((a, b) =&gt; {
+            // In descending order:
+            return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
+        })[0];
+        if (entityCtor != null) {
+            dtoManager.mapToElement(entityCtor, ServicesConstants.dtoToDomainOperation);
+            dtoManager.getElement().setMapping([entity.id, entityCtor.id], ServicesConstants.dtoToDomainOperation);
+        }
+        else if (!privateSettersOnly) {
+            dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
+        }
+        else {
+            console.warn(`Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order for 'Create${entity.getName()}' to map to that entity, either disable private setters or model a constructor element and try again.`);
+        }
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        const surrogateKey = primaryKeys.length === 1;
+        if (primaryKeys.length == 1) {
+            operationManager.setReturnType(primaryKeys[0].typeId);
+        }
+        if (entityCtor) {
+            dtoManager.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter")
+                .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
+        }
+        else {
+            if (!surrogateKey) {
+                const toAdd = primaryKeys.filter(x =&gt; DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+                ServicesHelper.addDtoFieldsFromDomain(dtoManager.getElement(), toAdd);
+            }
+            dtoManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+            dtoManager.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity));
+        }
         if (owningAggregate) {
             let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
             dtoManager.addChildrenFrom(foreignKeys);
             operationManager.addChildrenFrom(foreignKeys);
         }
-        dtoManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
-        dtoManager.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity));
         operationManager.addChild("dto", dtoManager.id);
-        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
-        if (primaryKeys.length == 1) {
-            operationManager.setReturnType(primaryKeys[0].typeId);
-        }
         onMapDto(dtoManager.getElement(), false, `${baseName}Create`);
         dtoManager.collapse();
         operationManager.collapse();
@@ -1823,6 +1947,40 @@ var servicesCrud;
         operationManager.collapse();
     }
     servicesCrud.createStandardDeleteOperation = createStandardDeleteOperation;
+    function createCallOperationCommand(service, operation, entity, folder) {
+        let owningAggregate = DomainHelper.getOwningAggregate(entity);
+        let baseName = getBaseNameForElement(owningAggregate, entity, false);
+        let dtoName = `${operation.getName()}Dto`;
+        if (service.getChildren().some(x =&gt; x.getName() == `${operation.getName()}`)) {
+            return;
+        }
+        let dtoManager = new ElementManager(createElement("DTO", dtoName, folder.id), {
+            childSpecialization: "DTO-Field",
+            childType: "property"
+        });
+        let operationManager = new ElementManager(createElement("Operation", `${operation.getName()}`, service.id), {
+            childSpecialization: "Parameter",
+            childType: "parameter"
+        });
+        dtoManager.mapToElement(operation, ServicesConstants.dtoToDomainOperation);
+        dtoManager.getElement().setMapping([entity.id, operation.id], ServicesConstants.dtoToDomainOperation);
+        if (owningAggregate) {
+            let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
+            dtoManager.addChildrenFrom(foreignKeys);
+            operationManager.addChildrenFrom(foreignKeys);
+        }
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        for (const key of primaryKeys) {
+            dtoManager.addChild(key.name, lookup(key.id).typeReference);
+        }
+        dtoManager.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter").filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
+        operationManager.addChildrenFrom(primaryKeys);
+        operationManager.addChild("dto", dtoManager.id);
+        onMapDto(dtoManager.getElement(), false, `${operation.getName()}`);
+        dtoManager.collapse();
+        operationManager.collapse();
+    }
+    servicesCrud.createCallOperationCommand = createCallOperationCommand;
     function getBaseNameForElement(owningAggregate, entity, entityIsMany) {
         let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
         return owningAggregate ? `${toPascalCase(owningAggregate.getName())}${entityName}` : entityName;
@@ -1861,6 +2019,10 @@ async function execute(element) {
     if (primaryKeys.length &gt; 0) {
         servicesCrud.createStandardUpdateOperation(service, entity, folder);
         servicesCrud.createStandardDeleteOperation(service, entity);
+        const operations = DomainHelper.getCommandOperations(entity);
+        for (const operation of operations) {
+            servicesCrud.createCallOperationCommand(service, operation, entity, folder);
+        }
     }
     service.getChildren("Operation").forEach(operation =&gt; {
         convertToAdvancedMapping.convertOperation(operation, entity);
@@ -1961,6 +2123,12 @@ class DomainHelper {
         let result = !element.getAssociations("Association")
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
         return result;
+    }
+    static getCommandOperations(entity) {
+        const queryOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"];
+        const operations = entity.getChildren("Operation").filter(operation =&gt; operation.typeReference.getType() == null ||
+            !queryOperationNames.some(allowedOperationName =&gt; operation.getName().startsWith(allowedOperationName)));
+        return operations;
     }
     static getOwningAggregate(entity) {
         var _a;
@@ -2707,12 +2875,12 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
 }
 /// &lt;reference path="./onMapFunctions.ts" /&gt;
 const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
-function onMapDto(element) {
+function onMapDto(element, autoAddPrimaryKey = true, dtoPrefix = null) {
     var complexTypes = ["Data Contract", "Value Object"];
     let fields = element.getChildren("DTO-Field")
         .filter(x =&gt; { var _a, _b, _c; return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" &amp;&amp; ((_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.specialization.startsWith("Association")); });
     fields.forEach(f =&gt; {
-        getOrCreateDtoCrudDto(element, f, true);
+        getOrCreateDtoCrudDto(element, f, autoAddPrimaryKey, dtoPrefix);
     });
     let complexAttributes = element.getChildren("DTO-Field")
         .filter(x =&gt; {
@@ -2721,10 +2889,10 @@ function onMapDto(element) {
             &amp;&amp; (complexTypes.includes((_e = (_d = (_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.typeReference) === null || _d === void 0 ? void 0 : _d.getType()) === null || _e === void 0 ? void 0 : _e.specialization));
     });
     complexAttributes.forEach(f =&gt; {
-        getOrCreateDtoCrudDto(element, f, false);
+        getOrCreateDtoCrudDto(element, f, false, dtoPrefix);
     });
 }
-function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey) {
+function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey, dtoPrefix = null) {
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
     const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
     let mappedElement = dtoField.getMapping().getElement();
@@ -2744,6 +2912,8 @@ function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey) {
         ? `${element.getMetadata("baseName")}${domainName}`
         : domainName;
     let dtoName = `${originalVerb}${baseName}`;
+    if (dtoPrefix)
+        dtoName = `${dtoPrefix}${dtoName}`;
     let dto = getOrCreateDto(dtoName, element.getParent());
     dto.setMapping(mappedElement.typeReference.getTypeId(), targetMappingSettingId);
     if (originalVerb !== "") {
@@ -2839,9 +3009,7 @@ var cqrsCrud;
         if (hasPrimaryKey &amp;&amp; !privateSettersOnly) {
             createCqrsUpdateCommand(entity, folder);
         }
-        const allowedOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"];
-        const operations = entity.getChildren("Operation").filter(operation =&gt; operation.typeReference.getType() == null ||
-            !allowedOperationNames.some(allowedOperationName =&gt; operation.getName().startsWith(allowedOperationName)));
+        const operations = DomainHelper.getCommandOperations(entity);
         for (const operation of operations) {
             createCqrsCallOperationCommand(entity, operation, folder);
         }
@@ -3205,6 +3373,12 @@ class DomainHelper {
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
         return result;
     }
+    static getCommandOperations(entity) {
+        const queryOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"];
+        const operations = entity.getChildren("Operation").filter(operation =&gt; operation.typeReference.getType() == null ||
+            !queryOperationNames.some(allowedOperationName =&gt; operation.getName().startsWith(allowedOperationName)));
+        return operations;
+    }
     static getOwningAggregate(entity) {
         var _a;
         if (!entity || entity.specialization != "Class") {
@@ -3950,12 +4124,12 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
 }
 /// &lt;reference path="./onMapFunctions.ts" /&gt;
 const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
-function onMapDto(element) {
+function onMapDto(element, autoAddPrimaryKey = true, dtoPrefix = null) {
     var complexTypes = ["Data Contract", "Value Object"];
     let fields = element.getChildren("DTO-Field")
         .filter(x =&gt; { var _a, _b, _c; return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" &amp;&amp; ((_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.specialization.startsWith("Association")); });
     fields.forEach(f =&gt; {
-        getOrCreateDtoCrudDto(element, f, true);
+        getOrCreateDtoCrudDto(element, f, autoAddPrimaryKey, dtoPrefix);
     });
     let complexAttributes = element.getChildren("DTO-Field")
         .filter(x =&gt; {
@@ -3964,10 +4138,10 @@ function onMapDto(element) {
             &amp;&amp; (complexTypes.includes((_e = (_d = (_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.typeReference) === null || _d === void 0 ? void 0 : _d.getType()) === null || _e === void 0 ? void 0 : _e.specialization));
     });
     complexAttributes.forEach(f =&gt; {
-        getOrCreateDtoCrudDto(element, f, false);
+        getOrCreateDtoCrudDto(element, f, false, dtoPrefix);
     });
 }
-function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey) {
+function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey, dtoPrefix = null) {
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
     const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
     let mappedElement = dtoField.getMapping().getElement();
@@ -3987,6 +4161,8 @@ function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey) {
         ? `${element.getMetadata("baseName")}${domainName}`
         : domainName;
     let dtoName = `${originalVerb}${baseName}`;
+    if (dtoPrefix)
+        dtoName = `${dtoPrefix}${dtoName}`;
     let dto = getOrCreateDto(dtoName, element.getParent());
     dto.setMapping(mappedElement.typeReference.getTypeId(), targetMappingSettingId);
     if (originalVerb !== "") {
@@ -4082,9 +4258,7 @@ var cqrsCrud;
         if (hasPrimaryKey &amp;&amp; !privateSettersOnly) {
             createCqrsUpdateCommand(entity, folder);
         }
-        const allowedOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"];
-        const operations = entity.getChildren("Operation").filter(operation =&gt; operation.typeReference.getType() == null ||
-            !allowedOperationNames.some(allowedOperationName =&gt; operation.getName().startsWith(allowedOperationName)));
+        const operations = DomainHelper.getCommandOperations(entity);
         for (const operation of operations) {
             createCqrsCallOperationCommand(entity, operation, folder);
         }
@@ -4494,7 +4668,7 @@ async function execute(element, domainClass) {
     if (hasPrimaryKey &amp;&amp; !privateSettersOnly) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, folder));
     }
-    const operations = entity.getChildren("Operation").filter(x =&gt; x.typeReference.getType() == null);
+    const operations = DomainHelper.getCommandOperations(entity);
     for (const operation of operations) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, folder));
     }
@@ -5259,6 +5433,12 @@ class DomainHelper {
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
         return result;
     }
+    static getCommandOperations(entity) {
+        const queryOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"];
+        const operations = entity.getChildren("Operation").filter(operation =&gt; operation.typeReference.getType() == null ||
+            !queryOperationNames.some(allowedOperationName =&gt; operation.getName().startsWith(allowedOperationName)));
+        return operations;
+    }
     static getOwningAggregate(entity) {
         var _a;
         if (!entity || entity.specialization != "Class") {
@@ -5505,6 +5685,7 @@ class ServicesConstants {
 }
 ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
 ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+ServicesConstants.dtoToDomainOperation = "8d1f6a8a-77c8-43a2-8e60-421559725419";
 class ServicesHelper {
     static addDtoFieldsFromDomain(dto, attributes) {
         var _a;
@@ -5842,6 +6023,8 @@ function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey, dtoPrefix =
 /// &lt;reference path="../../common/domainHelper.ts" /&gt;
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
 /// &lt;reference path="../../services-cqrs-crud/_common/onMapDto.ts" /&gt;
+var _a, _b;
+const privateSettersOnly = ((_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")) === null || _b === void 0 ? void 0 : _b.value) == "true";
 var servicesCrud;
 (function (servicesCrud) {
     async function execute() {
@@ -5868,6 +6051,10 @@ var servicesCrud;
         if (primaryKeys.length &gt; 0) {
             createStandardUpdateOperation(service, entity, folder);
             createStandardDeleteOperation(service, entity);
+            const operations = DomainHelper.getCommandOperations(entity);
+            for (const operation of operations) {
+                createCallOperationCommand(service, operation, entity, folder);
+            }
         }
     }
     servicesCrud.execute = execute;
@@ -5912,19 +6099,45 @@ var servicesCrud;
             childSpecialization: "Parameter",
             childType: "parameter"
         });
-        dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
+        const entityCtor = entity
+            .getChildren("Class Constructor")
+            .sort((a, b) =&gt; {
+            // In descending order:
+            return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
+        })[0];
+        if (entityCtor != null) {
+            dtoManager.mapToElement(entityCtor, ServicesConstants.dtoToDomainOperation);
+            dtoManager.getElement().setMapping([entity.id, entityCtor.id], ServicesConstants.dtoToDomainOperation);
+        }
+        else if (!privateSettersOnly) {
+            dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
+        }
+        else {
+            console.warn(`Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order for 'Create${entity.getName()}' to map to that entity, either disable private setters or model a constructor element and try again.`);
+        }
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        const surrogateKey = primaryKeys.length === 1;
+        if (primaryKeys.length == 1) {
+            operationManager.setReturnType(primaryKeys[0].typeId);
+        }
+        if (entityCtor) {
+            dtoManager.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter")
+                .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
+        }
+        else {
+            if (!surrogateKey) {
+                const toAdd = primaryKeys.filter(x =&gt; DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+                ServicesHelper.addDtoFieldsFromDomain(dtoManager.getElement(), toAdd);
+            }
+            dtoManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+            dtoManager.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity));
+        }
         if (owningAggregate) {
             let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
             dtoManager.addChildrenFrom(foreignKeys);
             operationManager.addChildrenFrom(foreignKeys);
         }
-        dtoManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
-        dtoManager.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity));
         operationManager.addChild("dto", dtoManager.id);
-        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
-        if (primaryKeys.length == 1) {
-            operationManager.setReturnType(primaryKeys[0].typeId);
-        }
         onMapDto(dtoManager.getElement(), false, `${baseName}Create`);
         dtoManager.collapse();
         operationManager.collapse();
@@ -6020,6 +6233,40 @@ var servicesCrud;
         operationManager.collapse();
     }
     servicesCrud.createStandardDeleteOperation = createStandardDeleteOperation;
+    function createCallOperationCommand(service, operation, entity, folder) {
+        let owningAggregate = DomainHelper.getOwningAggregate(entity);
+        let baseName = getBaseNameForElement(owningAggregate, entity, false);
+        let dtoName = `${operation.getName()}Dto`;
+        if (service.getChildren().some(x =&gt; x.getName() == `${operation.getName()}`)) {
+            return;
+        }
+        let dtoManager = new ElementManager(createElement("DTO", dtoName, folder.id), {
+            childSpecialization: "DTO-Field",
+            childType: "property"
+        });
+        let operationManager = new ElementManager(createElement("Operation", `${operation.getName()}`, service.id), {
+            childSpecialization: "Parameter",
+            childType: "parameter"
+        });
+        dtoManager.mapToElement(operation, ServicesConstants.dtoToDomainOperation);
+        dtoManager.getElement().setMapping([entity.id, operation.id], ServicesConstants.dtoToDomainOperation);
+        if (owningAggregate) {
+            let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
+            dtoManager.addChildrenFrom(foreignKeys);
+            operationManager.addChildrenFrom(foreignKeys);
+        }
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        for (const key of primaryKeys) {
+            dtoManager.addChild(key.name, lookup(key.id).typeReference);
+        }
+        dtoManager.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter").filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
+        operationManager.addChildrenFrom(primaryKeys);
+        operationManager.addChild("dto", dtoManager.id);
+        onMapDto(dtoManager.getElement(), false, `${operation.getName()}`);
+        dtoManager.collapse();
+        operationManager.collapse();
+    }
+    servicesCrud.createCallOperationCommand = createCallOperationCommand;
     function getBaseNameForElement(owningAggregate, entity, entityIsMany) {
         let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
         return owningAggregate ? `${toPascalCase(owningAggregate.getName())}${entityName}` : entityName;
@@ -6114,6 +6361,12 @@ class DomainHelper {
         let result = !element.getAssociations("Association")
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
         return result;
+    }
+    static getCommandOperations(entity) {
+        const queryOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"];
+        const operations = entity.getChildren("Operation").filter(operation =&gt; operation.typeReference.getType() == null ||
+            !queryOperationNames.some(allowedOperationName =&gt; operation.getName().startsWith(allowedOperationName)));
+        return operations;
     }
     static getOwningAggregate(entity) {
         var _a;
@@ -6386,14 +6639,15 @@ var convertToAdvancedMapping;
     }
     convertToAdvancedMapping.execute = execute;
     function convertOperation(operation, entity) {
-        var _a, _b;
-        let target = entity;
+        var _a, _b, _c, _d;
         let dtoParam = operation.getChildren("Parameter").find(x =&gt; x.typeReference.getType().specialization == "DTO");
         let dto = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType();
+        let target = (_b = (_a = dto === null || dto === void 0 ? void 0 : dto.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) !== null &amp;&amp; _b !== void 0 ? _b : entity;
+        let targetEntity = (_c = target.getParent("Class")) !== null &amp;&amp; _c !== void 0 ? _c : target;
         // CREATE OPERATION:
-        if (operation.getName().startsWith("Create") &amp;&amp; ((_a = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _a === void 0 ? void 0 : _a.getElement().id) == entity.id) {
+        if (operation.getName().startsWith("Create") /*&amp;&amp; dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
             let action = createAssociation("Create Entity Action", operation.id, target.id);
-            let mapping = action.createMapping(operation.id, entity.id);
+            let mapping = action.createMapping(operation.id, targetEntity.id);
             mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
             mapContract("Data Mapping", dto, [operation.id, dtoParam.id], [target.id], mapping, true);
             // DELETE OPERATION:
@@ -6404,7 +6658,7 @@ var convertToAdvancedMapping;
             addFilterMapping(mapping, operation, entity);
             // UPDATE OPERATION:
         }
-        else if (operation.getName().startsWith("Update") &amp;&amp; ((_b = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _b === void 0 ? void 0 : _b.getElement().id) == entity.id) {
+        else if (operation.getName().startsWith("Update") &amp;&amp; ((_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _d === void 0 ? void 0 : _d.getElement().id) == entity.id) {
             let action = createAssociation("Update Entity Action", operation.id, target.id);
             // Query Entity Mapping
             let queryMapping = action.createMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
@@ -6425,6 +6679,17 @@ var convertToAdvancedMapping;
             action.typeReference.setIsCollection(true);
             let queryMapping = action.createMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
             addFilterMapping(queryMapping, operation, entity);
+            //Operations (Command)
+        }
+        else if (dto.isMapped()) {
+            let action = createAssociation("Update Entity Action", operation.id, target.id);
+            // Query Entity Mapping
+            let queryMapping = action.createMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, operation, entity);
+            // Update Entity Mapping
+            let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
+            updateMapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
+            mapContract("Data Mapping", dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
         }
         else {
             console.warn(`Could not convert operation: ${operation.getName()} (For entity ${entity.getName()}. Has parameters: (${operation.getChildren("Parameter").map(x =&gt; x.getName())}))`);
@@ -6477,6 +6742,7 @@ class ServicesConstants {
 }
 ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
 ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+ServicesConstants.dtoToDomainOperation = "8d1f6a8a-77c8-43a2-8e60-421559725419";
 class ServicesHelper {
     static addDtoFieldsFromDomain(dto, attributes) {
         var _a;
@@ -6814,6 +7080,8 @@ function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey, dtoPrefix =
 /// &lt;reference path="../../common/domainHelper.ts" /&gt;
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
 /// &lt;reference path="../../services-cqrs-crud/_common/onMapDto.ts" /&gt;
+var _a, _b;
+const privateSettersOnly = ((_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")) === null || _b === void 0 ? void 0 : _b.value) == "true";
 var servicesCrud;
 (function (servicesCrud) {
     async function execute() {
@@ -6840,6 +7108,10 @@ var servicesCrud;
         if (primaryKeys.length &gt; 0) {
             createStandardUpdateOperation(service, entity, folder);
             createStandardDeleteOperation(service, entity);
+            const operations = DomainHelper.getCommandOperations(entity);
+            for (const operation of operations) {
+                createCallOperationCommand(service, operation, entity, folder);
+            }
         }
     }
     servicesCrud.execute = execute;
@@ -6884,19 +7156,45 @@ var servicesCrud;
             childSpecialization: "Parameter",
             childType: "parameter"
         });
-        dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
+        const entityCtor = entity
+            .getChildren("Class Constructor")
+            .sort((a, b) =&gt; {
+            // In descending order:
+            return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
+        })[0];
+        if (entityCtor != null) {
+            dtoManager.mapToElement(entityCtor, ServicesConstants.dtoToDomainOperation);
+            dtoManager.getElement().setMapping([entity.id, entityCtor.id], ServicesConstants.dtoToDomainOperation);
+        }
+        else if (!privateSettersOnly) {
+            dtoManager.mapToElement(entity, ServicesConstants.dtoToEntityMappingId);
+        }
+        else {
+            console.warn(`Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order for 'Create${entity.getName()}' to map to that entity, either disable private setters or model a constructor element and try again.`);
+        }
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        const surrogateKey = primaryKeys.length === 1;
+        if (primaryKeys.length == 1) {
+            operationManager.setReturnType(primaryKeys[0].typeId);
+        }
+        if (entityCtor) {
+            dtoManager.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter")
+                .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
+        }
+        else {
+            if (!surrogateKey) {
+                const toAdd = primaryKeys.filter(x =&gt; DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+                ServicesHelper.addDtoFieldsFromDomain(dtoManager.getElement(), toAdd);
+            }
+            dtoManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+            dtoManager.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity));
+        }
         if (owningAggregate) {
             let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
             dtoManager.addChildrenFrom(foreignKeys);
             operationManager.addChildrenFrom(foreignKeys);
         }
-        dtoManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
-        dtoManager.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity));
         operationManager.addChild("dto", dtoManager.id);
-        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
-        if (primaryKeys.length == 1) {
-            operationManager.setReturnType(primaryKeys[0].typeId);
-        }
         onMapDto(dtoManager.getElement(), false, `${baseName}Create`);
         dtoManager.collapse();
         operationManager.collapse();
@@ -6992,6 +7290,40 @@ var servicesCrud;
         operationManager.collapse();
     }
     servicesCrud.createStandardDeleteOperation = createStandardDeleteOperation;
+    function createCallOperationCommand(service, operation, entity, folder) {
+        let owningAggregate = DomainHelper.getOwningAggregate(entity);
+        let baseName = getBaseNameForElement(owningAggregate, entity, false);
+        let dtoName = `${operation.getName()}Dto`;
+        if (service.getChildren().some(x =&gt; x.getName() == `${operation.getName()}`)) {
+            return;
+        }
+        let dtoManager = new ElementManager(createElement("DTO", dtoName, folder.id), {
+            childSpecialization: "DTO-Field",
+            childType: "property"
+        });
+        let operationManager = new ElementManager(createElement("Operation", `${operation.getName()}`, service.id), {
+            childSpecialization: "Parameter",
+            childType: "parameter"
+        });
+        dtoManager.mapToElement(operation, ServicesConstants.dtoToDomainOperation);
+        dtoManager.getElement().setMapping([entity.id, operation.id], ServicesConstants.dtoToDomainOperation);
+        if (owningAggregate) {
+            let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
+            dtoManager.addChildrenFrom(foreignKeys);
+            operationManager.addChildrenFrom(foreignKeys);
+        }
+        let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        for (const key of primaryKeys) {
+            dtoManager.addChild(key.name, lookup(key.id).typeReference);
+        }
+        dtoManager.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter").filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
+        operationManager.addChildrenFrom(primaryKeys);
+        operationManager.addChild("dto", dtoManager.id);
+        onMapDto(dtoManager.getElement(), false, `${operation.getName()}`);
+        dtoManager.collapse();
+        operationManager.collapse();
+    }
+    servicesCrud.createCallOperationCommand = createCallOperationCommand;
     function getBaseNameForElement(owningAggregate, entity, entityIsMany) {
         let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
         return owningAggregate ? `${toPascalCase(owningAggregate.getName())}${entityName}` : entityName;
@@ -7030,6 +7362,10 @@ async function execute(element) {
     if (primaryKeys.length &gt; 0) {
         servicesCrud.createStandardUpdateOperation(service, entity, folder);
         servicesCrud.createStandardDeleteOperation(service, entity);
+        const operations = DomainHelper.getCommandOperations(entity);
+        for (const operation of operations) {
+            servicesCrud.createCallOperationCommand(service, operation, entity, folder);
+        }
     }
     service.getChildren("Operation").forEach(operation =&gt; {
         convertToAdvancedMapping.convertOperation(operation, entity);
@@ -7130,6 +7466,12 @@ class DomainHelper {
         let result = !element.getAssociations("Association")
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
         return result;
+    }
+    static getCommandOperations(entity) {
+        const queryOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"];
+        const operations = entity.getChildren("Operation").filter(operation =&gt; operation.typeReference.getType() == null ||
+            !queryOperationNames.some(allowedOperationName =&gt; operation.getName().startsWith(allowedOperationName)));
+        return operations;
     }
     static getOwningAggregate(entity) {
         var _a;
@@ -7876,12 +8218,12 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
 }
 /// &lt;reference path="./onMapFunctions.ts" /&gt;
 const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
-function onMapDto(element) {
+function onMapDto(element, autoAddPrimaryKey = true, dtoPrefix = null) {
     var complexTypes = ["Data Contract", "Value Object"];
     let fields = element.getChildren("DTO-Field")
         .filter(x =&gt; { var _a, _b, _c; return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" &amp;&amp; ((_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.specialization.startsWith("Association")); });
     fields.forEach(f =&gt; {
-        getOrCreateDtoCrudDto(element, f, true);
+        getOrCreateDtoCrudDto(element, f, autoAddPrimaryKey, dtoPrefix);
     });
     let complexAttributes = element.getChildren("DTO-Field")
         .filter(x =&gt; {
@@ -7890,10 +8232,10 @@ function onMapDto(element) {
             &amp;&amp; (complexTypes.includes((_e = (_d = (_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.typeReference) === null || _d === void 0 ? void 0 : _d.getType()) === null || _e === void 0 ? void 0 : _e.specialization));
     });
     complexAttributes.forEach(f =&gt; {
-        getOrCreateDtoCrudDto(element, f, false);
+        getOrCreateDtoCrudDto(element, f, false, dtoPrefix);
     });
 }
-function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey) {
+function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey, dtoPrefix = null) {
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
     const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
     let mappedElement = dtoField.getMapping().getElement();
@@ -7913,6 +8255,8 @@ function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey) {
         ? `${element.getMetadata("baseName")}${domainName}`
         : domainName;
     let dtoName = `${originalVerb}${baseName}`;
+    if (dtoPrefix)
+        dtoName = `${dtoPrefix}${dtoName}`;
     let dto = getOrCreateDto(dtoName, element.getParent());
     dto.setMapping(mappedElement.typeReference.getTypeId(), targetMappingSettingId);
     if (originalVerb !== "") {
@@ -8008,9 +8352,7 @@ var cqrsCrud;
         if (hasPrimaryKey &amp;&amp; !privateSettersOnly) {
             createCqrsUpdateCommand(entity, folder);
         }
-        const allowedOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"];
-        const operations = entity.getChildren("Operation").filter(operation =&gt; operation.typeReference.getType() == null ||
-            !allowedOperationNames.some(allowedOperationName =&gt; operation.getName().startsWith(allowedOperationName)));
+        const operations = DomainHelper.getCommandOperations(entity);
         for (const operation of operations) {
             createCqrsCallOperationCommand(entity, operation, folder);
         }
@@ -8374,6 +8716,12 @@ class DomainHelper {
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
         return result;
     }
+    static getCommandOperations(entity) {
+        const queryOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"];
+        const operations = entity.getChildren("Operation").filter(operation =&gt; operation.typeReference.getType() == null ||
+            !queryOperationNames.some(allowedOperationName =&gt; operation.getName().startsWith(allowedOperationName)));
+        return operations;
+    }
     static getOwningAggregate(entity) {
         var _a;
         if (!entity || entity.specialization != "Class") {
@@ -9119,12 +9467,12 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
 }
 /// &lt;reference path="./onMapFunctions.ts" /&gt;
 const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
-function onMapDto(element) {
+function onMapDto(element, autoAddPrimaryKey = true, dtoPrefix = null) {
     var complexTypes = ["Data Contract", "Value Object"];
     let fields = element.getChildren("DTO-Field")
         .filter(x =&gt; { var _a, _b, _c; return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" &amp;&amp; ((_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.specialization.startsWith("Association")); });
     fields.forEach(f =&gt; {
-        getOrCreateDtoCrudDto(element, f, true);
+        getOrCreateDtoCrudDto(element, f, autoAddPrimaryKey, dtoPrefix);
     });
     let complexAttributes = element.getChildren("DTO-Field")
         .filter(x =&gt; {
@@ -9133,10 +9481,10 @@ function onMapDto(element) {
             &amp;&amp; (complexTypes.includes((_e = (_d = (_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.typeReference) === null || _d === void 0 ? void 0 : _d.getType()) === null || _e === void 0 ? void 0 : _e.specialization));
     });
     complexAttributes.forEach(f =&gt; {
-        getOrCreateDtoCrudDto(element, f, false);
+        getOrCreateDtoCrudDto(element, f, false, dtoPrefix);
     });
 }
-function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey) {
+function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey, dtoPrefix = null) {
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
     const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
     let mappedElement = dtoField.getMapping().getElement();
@@ -9156,6 +9504,8 @@ function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey) {
         ? `${element.getMetadata("baseName")}${domainName}`
         : domainName;
     let dtoName = `${originalVerb}${baseName}`;
+    if (dtoPrefix)
+        dtoName = `${dtoPrefix}${dtoName}`;
     let dto = getOrCreateDto(dtoName, element.getParent());
     dto.setMapping(mappedElement.typeReference.getTypeId(), targetMappingSettingId);
     if (originalVerb !== "") {
@@ -9251,9 +9601,7 @@ var cqrsCrud;
         if (hasPrimaryKey &amp;&amp; !privateSettersOnly) {
             createCqrsUpdateCommand(entity, folder);
         }
-        const allowedOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"];
-        const operations = entity.getChildren("Operation").filter(operation =&gt; operation.typeReference.getType() == null ||
-            !allowedOperationNames.some(allowedOperationName =&gt; operation.getName().startsWith(allowedOperationName)));
+        const operations = DomainHelper.getCommandOperations(entity);
         for (const operation of operations) {
             createCqrsCallOperationCommand(entity, operation, folder);
         }
@@ -9663,7 +10011,7 @@ async function execute(element, domainClass) {
     if (hasPrimaryKey &amp;&amp; !privateSettersOnly) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, folder));
     }
-    const operations = entity.getChildren("Operation").filter(x =&gt; x.typeReference.getType() == null);
+    const operations = DomainHelper.getCommandOperations(entity);
     for (const operation of operations) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, folder));
     }

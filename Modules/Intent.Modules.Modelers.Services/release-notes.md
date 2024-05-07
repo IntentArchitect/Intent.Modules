@@ -1,3 +1,7 @@
+### Version 3.7.2
+
+- Improvement: Bringing Traditional `ServiceModel`s to have better feature parity with the CQRS paradigm.
+- 
 ### Version 3.7.1
 
 - Improvement: Updated Crud scripts to not add implicit primary keys.

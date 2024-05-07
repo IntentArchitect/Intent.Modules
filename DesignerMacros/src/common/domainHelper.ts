@@ -69,6 +69,14 @@ class DomainHelper {
         return result;
     }
 
+    static getCommandOperations(entity: MacroApi.Context.IElementApi) : MacroApi.Context.IElementApi[] {
+        const queryOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"]
+        const operations = entity.getChildren("Operation").filter(
+            operation => operation.typeReference.getType() == null || 
+            !queryOperationNames.some(allowedOperationName => operation.getName().startsWith(allowedOperationName)));
+        return operations;
+    }
+
     static getOwningAggregate(entity: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
         if (!entity || entity.specialization != "Class") {
             return null;
