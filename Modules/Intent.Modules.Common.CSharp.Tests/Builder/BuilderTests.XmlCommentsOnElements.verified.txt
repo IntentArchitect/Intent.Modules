@@ -1,0 +1,14 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    /// Test Class
+    public class Class
+    {
+        /// Test Method
+        /// <param name="param">Test Parameter</param>
+        public void TestMethod(string param)
+        {
+        }
+    }
+}

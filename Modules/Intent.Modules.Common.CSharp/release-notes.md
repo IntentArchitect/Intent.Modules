@@ -1,4 +1,8 @@
-﻿### Version 3.6.1
+﻿### Version 3.6.2
+
+- Fixed: XML Comment on parameter had too many `>` characters, i.e. `// <param name="param">>Test Parameter</param>` 
+
+### Version 3.6.1
 
 - Improvement: Under certain scenarios, the software factory would crash with certain model names, a set of these has been addressed. 
 
