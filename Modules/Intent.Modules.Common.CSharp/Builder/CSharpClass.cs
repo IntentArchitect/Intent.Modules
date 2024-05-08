@@ -5,6 +5,8 @@ using System.Text;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 
+#nullable enable
+
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpReferenceable
@@ -65,6 +67,20 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     public IList<CSharpInterface> NestedInterfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
     public IList<CSharpCodeBlock> CodeBlocks { get; } = new List<CSharpCodeBlock>();
+
+    private CSharpPrimaryConstructor? _primaryConstructor;
+    public CSharpPrimaryConstructor? PrimaryConstructor {
+        get => _primaryConstructor;
+        private set
+        {
+            if (_primaryConstructor is not null && value is not null)
+            {
+                throw new InvalidOperationException($"Primary Constructor is already set for {Name}");
+            }
+
+            _primaryConstructor = value;
+        }
+    }
     public CSharpClass WithBaseType(string type)
     {
         return ExtendsClass(type, Enumerable.Empty<string>());
@@ -125,7 +141,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
-    public CSharpClass AddField(string type, string name, Action<CSharpField> configure = null)
+    public CSharpClass AddField(string type, string name, Action<CSharpField>? configure = null)
     {
         var field = new CSharpField(type, name)
         {
@@ -137,7 +153,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
-    public CSharpClass AddProperty(string type, string name, Action<CSharpProperty> configure = null)
+    public CSharpClass AddProperty(string type, string name, Action<CSharpProperty>? configure = null)
     {
         var property = new CSharpProperty(type, name, this)
         {
@@ -156,7 +172,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    public CSharpClass AddProperty<TModel>(string type, TModel model, Action<CSharpProperty> configure = null)
+    public CSharpClass AddProperty<TModel>(string type, TModel model, Action<CSharpProperty>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
         return AddProperty(type, model.Name.ToPropertyName(), prop =>
@@ -174,7 +190,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    public CSharpClass AddProperty<TModel>(TModel model, Action<CSharpProperty> configure = null)
+    public CSharpClass AddProperty<TModel>(TModel model, Action<CSharpProperty>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
         return AddProperty(File.GetModelType(model), model.Name.ToPropertyName(), prop =>
@@ -184,7 +200,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         });
     }
 
-    public CSharpClass InsertProperty(int index, string type, string name, Action<CSharpProperty> configure = null)
+    public CSharpClass InsertProperty(int index, string type, string name, Action<CSharpProperty>? configure = null)
     {
         var property = new CSharpProperty(type, name, this)
         {
@@ -196,7 +212,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
-    public CSharpClass AddConstructor(Action<CSharpConstructor> configure = null)
+    public CSharpClass AddConstructor(Action<CSharpConstructor>? configure = null)
     {
         var ctor = new CSharpConstructor(this);
         Constructors.Add(ctor);
@@ -204,7 +220,15 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
-    public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod> configure = null)
+    public CSharpClass SetPrimaryConstructor(Action<CSharpPrimaryConstructor>? configure = null)
+    {
+        var ctor = new CSharpPrimaryConstructor(this);
+        configure?.Invoke(ctor);
+        PrimaryConstructor = ctor;
+        return this;
+    }
+
+    public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
     }
@@ -216,7 +240,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    public CSharpClass AddMethod<TModel>(string returnType, TModel model, Action<CSharpClassMethod> configure = null)
+    public CSharpClass AddMethod<TModel>(string returnType, TModel model, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
         return AddMethod(returnType, model.Name.ToPropertyName(), prop =>
@@ -234,7 +258,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    public CSharpClass AddMethod<TModel>(TModel model, Action<CSharpClassMethod> configure = null)
+    public CSharpClass AddMethod<TModel>(TModel model, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
         return AddMethod(File.GetModelType(model), model.Name.ToPropertyName(), method =>
@@ -272,7 +296,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
-    public CSharpClass AddNestedClass(string name, Action<CSharpClass> configure = null)
+    public CSharpClass AddNestedClass(string name, Action<CSharpClass>? configure = null)
     {
         var @class = new CSharpClass(
             name: name,
@@ -285,7 +309,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
-    public CSharpClass AddNestedInterface(string name, Action<CSharpInterface> configure = null)
+    public CSharpClass AddNestedInterface(string name, Action<CSharpInterface>? configure = null)
     {
         var @interface = new CSharpInterface(
             name: name,
@@ -297,7 +321,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
-    public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod> configure = null)
+    public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         var method = new CSharpClassMethod(returnType, name, this);
         Methods.Insert(index, method);
@@ -453,15 +477,29 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         sb.Append(' ');
         sb.Append(Name);
         sb.Append(GetGenericParameters());
+        if (PrimaryConstructor is not null)
+        {
+            sb.Append(PrimaryConstructor.GetText(indentation));
+        }
         sb.Append(GetBaseTypes());
         sb.Append(GetGenericTypeConstraints(indentation));
-        sb.AppendLine();
-        sb.Append(indentation);
-        sb.Append("{");
-        sb.Append(GetMembers($"{indentation}    "));
-        sb.AppendLine();
-        sb.Append(indentation);
-        sb.Append("}");
+        
+        var members = GetMembers($"{indentation}    ");
+        if (PrimaryConstructor is not null && string.IsNullOrEmpty(members))
+        {
+            sb.Append(';');
+            sb.AppendLine();
+        }
+        else
+        {
+            sb.AppendLine();
+            sb.Append(indentation);
+            sb.Append('{');
+            sb.Append(members);
+            sb.AppendLine();
+            sb.Append(indentation);
+            sb.Append('}');
+        }
 
         return sb.ToString();
     }
@@ -513,9 +551,9 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     private string GetMembers(string indentation)
     {
         var codeBlocks = new List<ICodeBlock>();
-        codeBlocks.AddRange(Fields);
+        codeBlocks.AddRange(Fields.Where(p => !p.IsOmittedFromRender));
         codeBlocks.AddRange(Constructors);
-        codeBlocks.AddRange(Properties);
+        codeBlocks.AddRange(Properties.Where(p => !p.IsOmittedFromRender));
         codeBlocks.AddRange(Methods);
         codeBlocks.AddRange(NestedClasses);
         codeBlocks.AddRange(NestedInterfaces);

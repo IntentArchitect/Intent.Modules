@@ -4,7 +4,8 @@
 
 ### Version 3.6.2
 
-- Fixed: XML Comment on parameter had too many `>` characters, i.e. `// <param name="param">>Test Parameter</param>` 
+- Fixed: XML Comment on parameter had too many `>` characters, i.e. `// <param name="param">>Test Parameter</param>`
+- New Feature: Classes and Records can now define `Primary Constructors`.
 
 ### Version 3.6.1
 

@@ -1,5 +1,7 @@
 using System;
 
+#nullable enable
+
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpField : CSharpMember<CSharpField>
@@ -11,12 +13,13 @@ public class CSharpField : CSharpMember<CSharpField>
     public CSharpStatement Assignment { get; private set; }
     public bool IsStatic { get; private set; }
     public bool IsRequired { get; private set; }
+    public bool IsOmittedFromRender { get; private set; } 
 
     public CSharpField(string type, string name) : this (type, name, null)
     {
     }
 
-    public CSharpField(string type, string name, string value)
+    public CSharpField(string type, string name, string? value)
     {
         if (string.IsNullOrWhiteSpace(type))
         {
@@ -32,6 +35,13 @@ public class CSharpField : CSharpMember<CSharpField>
         AccessModifier = "private ";
         Type = type;
         Name = name;
+    }
+
+    internal static CSharpField CreateFieldOmittedFromRender(string type, string name, string? value)
+    {
+        var field = new CSharpField(type, name, value);
+        field.IsOmittedFromRender = true;
+        return field;
     }
 
     public CSharpField ProtectedReadOnly()
