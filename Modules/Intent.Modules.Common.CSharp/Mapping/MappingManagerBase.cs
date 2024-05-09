@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection.Emit;
 using Intent.Exceptions;
@@ -7,6 +8,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Intent.Modules.Common.CSharp.Mapping;
 
@@ -66,9 +68,25 @@ public class MappingModel
         }
     }
 
-    public string MappingType { get; }
+	private MappingModel(
+		MappingModel collection,
+		ICanBeReferencedType itemModel
+		)
+	{
+		MappingType = collection.MappingType;
+		MappingTypeId = collection.MappingTypeId;
+		_manager = collection._manager;
+		Model = itemModel;
+		Mapping = collection.Mapping;
+		CodeContext = collection.CodeContext;
+        Children = collection.Children;
+#warning children may need new versions 
+    }
+
+
+	public string MappingType { get; }
     public string MappingTypeId { get; }
-    public ICanBeReferencedType Model { get; }
+    public virtual ICanBeReferencedType Model { get; }
     public IElementToElementMappedEnd Mapping { get; }
     public IList<MappingModel> Children { get; set; }
     public MappingModel Parent { get; private set; }
@@ -79,21 +97,30 @@ public class MappingModel
         return _manager.ResolveMappings(this);
     }
 
-    //public IEnumerable<MappingModel> GetAllChildren(Func<MappingModel, bool> predicate = null)
-    //{
-    //    var result = new List<MappingModel>();
-    //    foreach (var mappingModel in Children)
-    //    {
-    //        if (predicate == null || predicate(mappingModel))
-    //        {
-    //            result.Add(mappingModel);
-    //            result.AddRange(mappingModel.GetAllChildren(predicate));
-    //        }
-    //    }
-    //    return result;
-    //}
+    public ICSharpMapping GetItemMapping()
+	{
+        if (!this.Model.TypeReference.IsCollection)
+        {
+            throw new Exception("This method is intended to for resolving Collection Item mappings as opposed to the Collection itself");
+        }
+		return _manager.ResolveMappings(new CollectionItemDecorator(this));
+	}
 
-    public MappingModel GetParent(Func<MappingModel, bool> predicate = null)
+	//public IEnumerable<MappingModel> GetAllChildren(Func<MappingModel, bool> predicate = null)
+	//{
+	//    var result = new List<MappingModel>();
+	//    foreach (var mappingModel in Children)
+	//    {
+	//        if (predicate == null || predicate(mappingModel))
+	//        {
+	//            result.Add(mappingModel);
+	//            result.AddRange(mappingModel.GetAllChildren(predicate));
+	//        }
+	//    }
+	//    return result;
+	//}
+
+	public MappingModel GetParent(Func<MappingModel, bool> predicate = null)
     {
         if (predicate == null)
         {
@@ -107,6 +134,94 @@ public class MappingModel
         }
         return parent;
     }
+
+    private class CollectionItemDecorator : MappingModel
+	{
+        public CollectionItemDecorator(MappingModel collectionMapping) : base(collectionMapping, new ItemElementWrapper(collectionMapping.Model))
+        {
+		}
+
+		private class ItemElementWrapper : ICanBeReferencedType, IElement
+		{
+            private ICanBeReferencedType _collectionModel;
+			private IElement _collectionElement;
+			private ITypeReference _collectionItemType;
+
+			public ItemElementWrapper(ICanBeReferencedType collectionModel)
+            {
+                _collectionModel = collectionModel;
+                _collectionElement = collectionModel as IElement;
+				_collectionItemType = new ItemElementTypeWrapper(collectionModel.TypeReference);
+			}
+
+            public string SpecializationType => _collectionModel.SpecializationType;
+
+			public string SpecializationTypeId => _collectionModel.SpecializationTypeId;
+
+			public string Name => _collectionModel.Name;
+
+			public string Comment => _collectionModel.Comment;
+
+			public ITypeReference TypeReference => _collectionItemType;
+
+			public IPackage Package => _collectionModel.Package;
+
+			public string Id => _collectionModel.Id;
+
+			public IEnumerable<IStereotype> Stereotypes => _collectionModel.Stereotypes;
+
+			public bool IsChild => _collectionElement.IsChild;
+
+			public int Order => _collectionElement.Order;
+
+			public string ExternalReference => _collectionElement.ExternalReference;
+
+			public string Value => _collectionElement.Value;
+
+			public bool IsAbstract => _collectionElement.IsAbstract;
+
+			public IEnumerable<IGenericType> GenericTypes => _collectionElement.GenericTypes;
+
+			public string ParentId => _collectionElement.ParentId;
+
+			public IElement ParentElement => _collectionElement.ParentElement;
+
+			public IEnumerable<IElement> ChildElements => _collectionElement.ChildElements;
+
+			public bool IsMapped => _collectionElement.IsMapped;
+
+			public IElementMapping MappedElement => _collectionElement.MappedElement;
+
+			public IElementApplication Application => _collectionElement.Application;
+
+			public IEnumerable<IAssociationEnd> AssociatedElements => _collectionElement.AssociatedElements;
+
+			public IEnumerable<IAssociation> OwnedAssociations => _collectionElement.OwnedAssociations;
+
+			public IDiagram Diagram => _collectionElement.Diagram;
+
+			public IDictionary<string, string> Metadata => _collectionElement.Metadata;
+		}
+
+		private class ItemElementTypeWrapper : ITypeReference
+        {
+			private ITypeReference _collectionType;
+			public ItemElementTypeWrapper(ITypeReference collectionType)
+			{
+				_collectionType = collectionType;
+			}
+
+			public bool IsNullable => false;
+
+			public bool IsCollection => false;
+
+			public ICanBeReferencedType Element => _collectionType.Element;
+
+			public IEnumerable<ITypeReference> GenericTypeParameters => _collectionType.GenericTypeParameters;
+
+			public IEnumerable<IStereotype> Stereotypes => _collectionType.Stereotypes;
+		}
+	}
 }
 
 public abstract class MappingManagerBase

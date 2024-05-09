@@ -47,8 +47,8 @@ public class ConstructorMapping : CSharpMappingBase
             foreach (var parameter in ctor.Parameters)
             {
                 bool optional = parameter.DefaultValue != null;
-                var child = Children.FirstOrDefault(c => string.Compare(c.Mapping.TargetElement.Name, parameter.Name, true) == 0);
-                if ( child != null)
+				var child = Children.FirstOrDefault(c => c.Model.Name.Equals(parameter.Name, StringComparison.InvariantCultureIgnoreCase));
+				if ( child != null)
                 {
 					i.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
 					{
