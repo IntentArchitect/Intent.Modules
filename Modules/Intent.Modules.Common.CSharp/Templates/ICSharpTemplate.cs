@@ -7,7 +7,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.CSharp.Templates;
 
-public interface ICSharpTemplate : IIntentTemplate, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IHasFrameworkDependencies
+public interface ICSharpTemplate : IIntentTemplate, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IHasFrameworkDependencies, ISupportsMigrations
 {
     /// <summary>
     /// Used by the advanced mapping system to resolve references from models.

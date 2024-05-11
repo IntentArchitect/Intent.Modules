@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
 using Intent.SdkEvolutionHelpers;
@@ -23,15 +24,37 @@ public class CSharpFileConfig : TemplateFileConfig
         string fileName = null,
         string fileExtension = "cs",
         string dependsUpon = null)
-        : base(fileName ?? className, fileExtension, relativeLocation, overwriteBehaviour, "RoslynWeave")
+        : this(
+            codeGenType: Templates.CodeGenType.RoslynWeaver,
+            className: className,
+            @namespace: @namespace,
+            relativeLocation: relativeLocation,
+            overwriteBehaviour: overwriteBehaviour,
+            fileName: fileName,
+            fileExtension: fileExtension,
+            dependsUpon: dependsUpon) { }
+
+    /// <summary>
+    /// Sets the C# file configuration.
+    /// </summary>
+    protected internal CSharpFileConfig(
+        string codeGenType,
+        string className,
+        string @namespace,
+        string relativeLocation,
+        OverwriteBehaviour overwriteBehaviour,
+        string fileName,
+        string fileExtension,
+        string dependsUpon)
+        : base(fileName ?? className, fileExtension, relativeLocation, overwriteBehaviour, codeGenType)
     {
         RoslynWeaverConfiguration = new RoslynWeaverConfiguration(this);
 
-        CustomMetadata["ClassName"] = className ?? throw new ArgumentNullException(nameof(className));
+        ClassName = className ?? throw new ArgumentNullException(nameof(className));
 
         if (!string.IsNullOrWhiteSpace(@namespace))
         {
-            CustomMetadata["Namespace"] = @namespace;
+            Namespace = @namespace;
         }
 
         if (!string.IsNullOrWhiteSpace(dependsUpon))
@@ -44,6 +67,9 @@ public class CSharpFileConfig : TemplateFileConfig
 
         this.WithItemType("Compile");
     }
+
+    /// <inheritdoc />
+    public sealed override Dictionary<string, string> CustomMetadata => base.CustomMetadata;
 
     /// <summary>
     /// Whether to automatically apply formatting to C# files.
@@ -113,15 +139,15 @@ public class CSharpFileConfig : TemplateFileConfig
     }
 
     /// <summary>
-    /// Provides an instance <see cref="RoslynWeaverConfiguration"/> which is wrapping this instance.
+    /// Provides an instance <see cref="Templates.RoslynWeaverConfiguration"/> which is wrapping this instance.
     /// </summary>
     public RoslynWeaverConfiguration RoslynWeaverConfiguration { get; }
 
     /// <summary>
     /// Allows configuring Roslyn Weaver settings in a "fluent manner".
     /// </summary>
-    /// <param name="configure"></param>
-    /// <returns></returns>
+    /// <param name="configure">A delegate for configuring the <see cref="Templates.RoslynWeaverConfiguration"/>.</param>
+    /// <returns>This same instance of <see cref="CSharpFileConfig"/>.</returns>
     public CSharpFileConfig ConfigureRoslynWeaver(Action<RoslynWeaverConfiguration> configure)
     {
         configure(RoslynWeaverConfiguration);

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Intent.Engine;
-using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.CSharp.Templates
 {
@@ -16,7 +15,7 @@ namespace Intent.Modules.Common.CSharp.Templates
     }
 
     /// <inheritdoc cref="CSharpTemplateBase{TModel}"/>
-    public abstract class RazorTemplateBase<TModel> : CSharpTemplateBase<TModel>, IRazorMerge
+    public abstract class RazorTemplateBase<TModel> : CSharpTemplateBase<TModel>
     {
         /// <summary>
         /// Creates a new instance of <see cref="RazorTemplateBase{TModel}"/>.

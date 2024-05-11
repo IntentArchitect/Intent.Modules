@@ -87,6 +87,8 @@ namespace Intent.Modules.Common.CSharp.Templates
             Types = new CSharpTypeResolver(
                 defaultCollectionFormatter: CSharpCollectionFormatter.Create("System.Collections.Generic.IEnumerable<{0}>"),
                 defaultNullableFormatter: CSharpNullableFormatter.Create(OutputTarget.GetProject()));
+
+            TemplateMetadata = new TemplateMetadata(templateId, "1.0");
         }
 
         /// <inheritdoc cref="IntentTemplateBase.GetTypeInfo(IClassProvider)"/>
@@ -239,15 +241,15 @@ namespace Intent.Modules.Common.CSharp.Templates
 
             // Handle Generics recursively:
             string normalizedGenericTypes = null;
-            if (foreignType.Contains("<") && foreignType.Contains(">"))
+            if (foreignType.Contains('<') && foreignType.Contains('>'))
             {
-                var genericTypes = foreignType.Substring(foreignType.IndexOf("<", StringComparison.Ordinal) + 1, foreignType.Length - foreignType.IndexOf("<", StringComparison.Ordinal) - 2);
+                var genericTypes = foreignType.Substring(foreignType.IndexOf('<', StringComparison.Ordinal) + 1, foreignType.Length - foreignType.IndexOf('<', StringComparison.Ordinal) - 2);
 
                 normalizedGenericTypes = genericTypes
                     .Split(',')
                     .Select(NormalizeNamespace)
                     .Aggregate((x, y) => x + ", " + y);
-                foreignType = $"{foreignType[..foreignType.IndexOf("<", StringComparison.Ordinal)]}";
+                foreignType = $"{foreignType[..foreignType.IndexOf('<', StringComparison.Ordinal)]}";
             }
 
             var usingPaths = DependencyUsings
@@ -256,6 +258,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Concat(_templateUsings ??= GetUsingsFromContent(GenerationEnvironment?.ToString() ?? string.Empty))
                 .Concat(_existingContentUsings ??= GetUsingsFromContent(TryGetExistingFileContent(out var existingContent) ? existingContent : string.Empty))
+                // ReSharper disable once SuspiciousTypeConversion.Global
                 .Concat((this as ICSharpFileBuilderTemplate)?.CSharpFile.Usings.Select(u => u.Namespace) ?? Enumerable.Empty<string>())
                 .Distinct()
                 .ToArray();
@@ -469,11 +472,11 @@ namespace Intent.Modules.Common.CSharp.Templates
             return relevantContent;
         }
 
-        /// <inheritdoc />
-        public virtual RoslynMergeConfig ConfigureRoslynMerger()
-        {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1, 0)));
-        }
+        /// <summary>
+        /// Use the implementation of <see cref="ISupportsMigrations"/> instead.
+        /// </summary>
+        [Obsolete("See XML doc comments")]
+        public virtual RoslynMergeConfig ConfigureRoslynMerger() => null;
 
         /// <inheritdoc />
         public override ITemplateFileConfig GetTemplateFileConfig()
@@ -597,6 +600,16 @@ namespace Intent.Modules.Common.CSharp.Templates
         {
             return _additionalUsingNamespaces;
         }
+
+        #region ISupportsMigrations
+
+        /// <inheritdoc />
+        public TemplateMetadata TemplateMetadata { get; private set; }
+
+        /// <inheritdoc />
+        public ITemplateMigration[] Migrations { get; private set; } = [];
+
+        #endregion
 
         #region GetFullyQualifiedTypeName
 

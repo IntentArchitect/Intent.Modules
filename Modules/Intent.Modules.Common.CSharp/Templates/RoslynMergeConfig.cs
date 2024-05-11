@@ -1,9 +1,12 @@
-﻿// ReSharper disable once CheckNamespace
+﻿using System;
+
+// ReSharper disable once CheckNamespace
 namespace Intent.Modules.Common.Templates;
 
 /// <summary>
-/// Defines configuration for templates supporting Roslyn Merging.
+/// Use <see cref="ISupportsMigrations"/> instead.
 /// </summary>
+[Obsolete("See XML doc comments")]
 public class RoslynMergeConfig
 {
     /// <summary>

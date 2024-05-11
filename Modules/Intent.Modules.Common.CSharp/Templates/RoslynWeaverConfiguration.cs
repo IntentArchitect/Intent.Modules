@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -7,8 +8,26 @@ namespace Intent.Modules.Common.CSharp.Templates;
 /// <summary>
 /// A wrapper for <see cref="ITemplateFileConfig"/> for reading and setting Roslyn Weaver related configuration.
 /// </summary>
-public class RoslynWeaverConfiguration(ITemplateFileConfig config)
+public class RoslynWeaverConfiguration
 {
+    private readonly IDictionary<string, string> _fileCustomMetadata;
+
+    /// <summary>
+    /// Creates a new instance of <see cref="RoslynWeaverConfiguration"/>.
+    /// </summary>
+    public RoslynWeaverConfiguration(ITemplateFileConfig config)
+    {
+        _fileCustomMetadata = config.CustomMetadata;
+    }
+
+    /// <summary>
+    /// Creates a new instance of <see cref="RoslynWeaverConfiguration"/>.
+    /// </summary>
+    public RoslynWeaverConfiguration(IFileMetadata fileMetadata)
+    {
+        _fileCustomMetadata = fileMetadata.CustomMetadata;
+    }
+
     /// <summary>
     /// The default <see cref="Mode"/> for the file.
     /// Equivalent to having <c>[assembly: DefaultIntentManaged(Mode.<see cref="DefaultMode">&lt;DefaultMode&gt;</see>)]</c> at the top of the file.
@@ -23,7 +42,8 @@ public class RoslynWeaverConfiguration(ITemplateFileConfig config)
     /// The default <see cref="Mode"/> attributes for the file.
     /// Equivalent to having <c>[assembly: DefaultIntentManaged(Mode.&lt;<see cref="DefaultMode">DefaultMode</see>&gt;, Attributes = Mode.&lt;<see cref="DefaultAttributesMode">DefaultAttributesMode</see>&gt;)]</c> at the top of the file.
     /// </summary>
-    public Mode? DefaultAttributesMode {
+    public Mode? DefaultAttributesMode
+    {
         get => GetMode("RoslynWeaverDefaultAttributesMode");
         set => SetMode("RoslynWeaverDefaultAttributesMode", value);
     }
@@ -57,7 +77,6 @@ public class RoslynWeaverConfiguration(ITemplateFileConfig config)
         get => GetMode("RoslynWeaverDefaultSignatureMode");
         set => SetMode("RoslynWeaverDefaultSignatureMode", value);
     }
-
 
     /// <summary>
     /// The default <see cref="TagMode"/> for the file.
@@ -125,7 +144,7 @@ public class RoslynWeaverConfiguration(ITemplateFileConfig config)
 
     private TagMode? GetTagMode(string key)
     {
-        if (!config.CustomMetadata.TryGetValue(key, out var value) || string.IsNullOrWhiteSpace(value))
+        if (!_fileCustomMetadata.TryGetValue(key, out var value) || string.IsNullOrWhiteSpace(value))
         {
             return null;
         }
@@ -135,12 +154,12 @@ public class RoslynWeaverConfiguration(ITemplateFileConfig config)
 
     private void SetTagMode(string key, TagMode? mode)
     {
-        config.CustomMetadata[key] = mode?.ToString();
+        _fileCustomMetadata[key] = mode?.ToString();
     }
 
     private Mode? GetMode(string key)
     {
-        if (!config.CustomMetadata.TryGetValue(key, out var value) || string.IsNullOrWhiteSpace(value))
+        if (!_fileCustomMetadata.TryGetValue(key, out var value) || string.IsNullOrWhiteSpace(value))
         {
             return null;
         }
@@ -150,6 +169,21 @@ public class RoslynWeaverConfiguration(ITemplateFileConfig config)
 
     private void SetMode(string key, Mode? mode)
     {
-        config.CustomMetadata[key] = mode?.ToString();
+        _fileCustomMetadata[key] = mode?.ToString();
     }
+
+    //private bool GetBool(string key)
+    //{
+    //    if (!_fileCustomMetadata.TryGetValue(key, out var value) || string.IsNullOrWhiteSpace(value))
+    //    {
+    //        return false;
+    //    }
+
+    //    return bool.TryParse(value, out var parsedValue) && parsedValue;
+    //}
+
+    //private void SetBool(string key, bool value)
+    //{
+    //    _fileCustomMetadata[key] = value.ToString();
+    //}
 }

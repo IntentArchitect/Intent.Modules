@@ -1,5 +1,4 @@
-﻿using Intent.IArchitect.Agent.Persistence;
-using System;
+﻿using System;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -31,37 +30,39 @@ public class RazorFileConfig : CSharpFileConfig
         string fileExtension = "razor",
         string dependsUpon = null)
         : base(
-            className,
-            @namespace,
-            relativeLocation,
-            overwriteBehaviour,
-            fileName,
-            fileExtension,
-            dependsUpon)
+            codeGenType: Templates.CodeGenType.RazorMerger,
+            className: className,
+            @namespace: @namespace,
+            relativeLocation: relativeLocation,
+            overwriteBehaviour: overwriteBehaviour,
+            fileName: fileName,
+            fileExtension: fileExtension,
+            dependsUpon: dependsUpon)
     {
+        RazorMergerConfiguration = new RazorMergerConfiguration(this);
     }
 
     /// <summary>
-    /// Provides an instance <see cref="RazorMergerConfiguration"/> which is wrapping this instance.
+    /// Provides an instance <see cref="Templates.RazorMergerConfiguration"/> which is wrapping this instance.
     /// </summary>
     public RazorMergerConfiguration RazorMergerConfiguration { get; }
 
     /// <summary>
-    /// Allows configuring Roslyn Weaver settings in a "fluent manner".
+    /// Allows configuring Razor Merger settings in a "fluent manner".
     /// </summary>
-    /// <param name="configure"></param>
-    /// <returns></returns>
-    public new RazorFileConfig ConfigureRazorMerger(Action<RoslynWeaverConfiguration> configure)
+    /// <param name="configure">A delegate for configuring the <see cref="Templates.RazorMergerConfiguration"/>.</param>
+    /// <returns>This same instance of <see cref="RazorFileConfig"/>.</returns>
+    public RazorFileConfig ConfigureRazorMerger(Action<RazorMergerConfiguration> configure)
     {
-        configure(RoslynWeaverConfiguration);
+        configure(RazorMergerConfiguration);
         return this;
     }
 
     /// <summary>
     /// Allows configuring Roslyn Weaver settings in a "fluent manner".
     /// </summary>
-    /// <param name="configure"></param>
-    /// <returns></returns>
+    /// <param name="configure">A delegate for configuring the <see cref="RoslynWeaverConfiguration"/>.</param>
+    /// <returns>This same instance of <see cref="RazorFileConfig"/>.</returns>
     public new RazorFileConfig ConfigureRoslynWeaver(Action<RoslynWeaverConfiguration> configure)
     {
         configure(RoslynWeaverConfiguration);
