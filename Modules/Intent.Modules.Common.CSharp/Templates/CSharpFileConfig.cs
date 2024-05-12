@@ -62,7 +62,6 @@ public class CSharpFileConfig : TemplateFileConfig
             CustomMetadata["Depends On"] = dependsUpon;
         }
 
-        AutoFormat = true;
         ApplyNamespaceFormatting = true;
 
         this.WithItemType("Compile");
@@ -74,9 +73,9 @@ public class CSharpFileConfig : TemplateFileConfig
     /// <summary>
     /// Whether to automatically apply formatting to C# files.
     /// </summary>
-    public bool AutoFormat
+    public bool? AutoFormat
     {
-        get => bool.TryParse(CustomMetadata[nameof(AutoFormat)], out var parsed) && parsed;
+        get => CustomMetadata.TryGetValue(nameof(AutoFormat), out var value) && bool.TryParse(value, out var parsed) ? parsed : null;
         set => CustomMetadata[nameof(AutoFormat)] = value.ToString();
     }
 
