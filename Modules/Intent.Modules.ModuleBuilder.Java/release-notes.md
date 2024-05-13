@@ -1,3 +1,7 @@
+### Version 3.6.1
+
+- Fixed: Module and nuget package installation will target stable version.
+
 ### Version 3.6.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

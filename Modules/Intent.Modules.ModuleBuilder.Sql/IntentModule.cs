@@ -2,7 +2,7 @@
 
 public class IntentModule
 {
-    public static readonly IntentModule IntentCommonSql = new("Intent.Common.Sql", "3.4.0-pre.0");
+    public static readonly IntentModule IntentCommonSql = new("Intent.Common.Sql", "3.4.0");
 
     public IntentModule(string name, string version)
     {
