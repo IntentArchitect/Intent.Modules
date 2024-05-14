@@ -130,5 +130,41 @@ namespace Intent.Modules.Metadata.RDBMS.Settings
         }
 
         public string DecimalPrecisionAndScale() => _groupSettings.GetSetting("684582e0-125a-4ddd-a950-714e2af41f15")?.Value;
+
+        [IntentManaged(Mode.Ignore)]
+        public bool TryGetDecimalPrecisionAndScale(out DecimalConstraints decimalConstraints) =>
+            DecimalConstraints.TryParse(DecimalPrecisionAndScale(), out decimalConstraints);
+    }
+
+    [IntentManaged(Mode.Ignore)]
+    public class DecimalConstraints
+    {
+        public DecimalConstraints(int precision, int scale)
+        {
+            Precision = precision;
+            Scale = scale;
+        }
+
+        public static bool TryParse(string format, out DecimalConstraints constraints)
+        {
+            if (string.IsNullOrWhiteSpace(format))
+            {
+                constraints = null;
+                return false;
+            }
+
+            var parts = format.Trim().Replace("(", "").Replace(")", "").Split(',', StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length != 2 || !int.TryParse(parts[0], out var precision) || !int.TryParse(parts[1], out var scale))
+            {
+                constraints = null;
+                return false;
+            }
+
+            constraints = new DecimalConstraints(precision, scale);
+            return true;
+        }
+
+        public int Precision { get; }
+        public int Scale { get; }
     }
 }
