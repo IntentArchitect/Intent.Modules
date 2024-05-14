@@ -2510,7 +2510,7 @@ function getOrCreateDto(elementName, parentElement) {
     return dto;
 }
 function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
-    var _a, _b, _c;
+    var _a, _b;
     let dtoUpdated = false;
     let domainElement = mappedElement
         .typeReference
@@ -2519,9 +2519,6 @@ function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
     let isCreateMode = ((_b = (_a = dto.getMetadata("originalVerb")) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === null || _b === void 0 ? void 0 : _b.startsWith("create")) == true;
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
-        if (isCreateMode &amp;&amp; ((_c = entry.name) === null || _c === void 0 ? void 0 : _c.toLowerCase()) === "id") {
-            continue;
-        }
         if (isCreateMode &amp;&amp; isOwnerForeignKey(entry.name, domainElement)) {
             continue;
         }
@@ -2847,11 +2844,9 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
         getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId);
     });
     function isComplexType(element) {
-        if (element == null) {
-            console.warn("isComplexType element parameter received null");
-        }
         return (element === null || element === void 0 ? void 0 : element.specialization) === "Data Contract" ||
-            (element === null || element === void 0 ? void 0 : element.specialization) === "Value Object";
+            (element === null || element === void 0 ? void 0 : element.specialization) === "Value Object" ||
+            (element === null || element === void 0 ? void 0 : element.specialization) === "Class";
     }
     function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId) {
         let mappedElement = dtoField.getMapping().getElement();
@@ -3760,7 +3755,7 @@ function getOrCreateDto(elementName, parentElement) {
     return dto;
 }
 function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
-    var _a, _b, _c;
+    var _a, _b;
     let dtoUpdated = false;
     let domainElement = mappedElement
         .typeReference
@@ -3769,9 +3764,6 @@ function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
     let isCreateMode = ((_b = (_a = dto.getMetadata("originalVerb")) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === null || _b === void 0 ? void 0 : _b.startsWith("create")) == true;
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
-        if (isCreateMode &amp;&amp; ((_c = entry.name) === null || _c === void 0 ? void 0 : _c.toLowerCase()) === "id") {
-            continue;
-        }
         if (isCreateMode &amp;&amp; isOwnerForeignKey(entry.name, domainElement)) {
             continue;
         }
@@ -4097,11 +4089,9 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
         getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId);
     });
     function isComplexType(element) {
-        if (element == null) {
-            console.warn("isComplexType element parameter received null");
-        }
         return (element === null || element === void 0 ? void 0 : element.specialization) === "Data Contract" ||
-            (element === null || element === void 0 ? void 0 : element.specialization) === "Value Object";
+            (element === null || element === void 0 ? void 0 : element.specialization) === "Value Object" ||
+            (element === null || element === void 0 ? void 0 : element.specialization) === "Class";
     }
     function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId) {
         let mappedElement = dtoField.getMapping().getElement();
@@ -7851,7 +7841,7 @@ function getOrCreateDto(elementName, parentElement) {
     return dto;
 }
 function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
-    var _a, _b, _c;
+    var _a, _b;
     let dtoUpdated = false;
     let domainElement = mappedElement
         .typeReference
@@ -7860,9 +7850,6 @@ function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
     let isCreateMode = ((_b = (_a = dto.getMetadata("originalVerb")) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === null || _b === void 0 ? void 0 : _b.startsWith("create")) == true;
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
-        if (isCreateMode &amp;&amp; ((_c = entry.name) === null || _c === void 0 ? void 0 : _c.toLowerCase()) === "id") {
-            continue;
-        }
         if (isCreateMode &amp;&amp; isOwnerForeignKey(entry.name, domainElement)) {
             continue;
         }
@@ -8188,11 +8175,9 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
         getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId);
     });
     function isComplexType(element) {
-        if (element == null) {
-            console.warn("isComplexType element parameter received null");
-        }
         return (element === null || element === void 0 ? void 0 : element.specialization) === "Data Contract" ||
-            (element === null || element === void 0 ? void 0 : element.specialization) === "Value Object";
+            (element === null || element === void 0 ? void 0 : element.specialization) === "Value Object" ||
+            (element === null || element === void 0 ? void 0 : element.specialization) === "Class";
     }
     function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId) {
         let mappedElement = dtoField.getMapping().getElement();
@@ -9101,7 +9086,7 @@ function getOrCreateDto(elementName, parentElement) {
     return dto;
 }
 function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
-    var _a, _b, _c;
+    var _a, _b;
     let dtoUpdated = false;
     let domainElement = mappedElement
         .typeReference
@@ -9110,9 +9095,6 @@ function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {
     let isCreateMode = ((_b = (_a = dto.getMetadata("originalVerb")) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === null || _b === void 0 ? void 0 : _b.startsWith("create")) == true;
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
-        if (isCreateMode &amp;&amp; ((_c = entry.name) === null || _c === void 0 ? void 0 : _c.toLowerCase()) === "id") {
-            continue;
-        }
         if (isCreateMode &amp;&amp; isOwnerForeignKey(entry.name, domainElement)) {
             continue;
         }
@@ -9438,11 +9420,9 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
         getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId);
     });
     function isComplexType(element) {
-        if (element == null) {
-            console.warn("isComplexType element parameter received null");
-        }
         return (element === null || element === void 0 ? void 0 : element.specialization) === "Data Contract" ||
-            (element === null || element === void 0 ? void 0 : element.specialization) === "Value Object";
+            (element === null || element === void 0 ? void 0 : element.specialization) === "Value Object" ||
+            (element === null || element === void 0 ? void 0 : element.specialization) === "Class";
     }
     function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId) {
         let mappedElement = dtoField.getMapping().getElement();

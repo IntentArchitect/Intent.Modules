@@ -39,9 +39,6 @@ function ensureDtoFields(autoAddPrimaryKey: boolean, mappedElement: MacroApi.Con
     let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true;
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
-        if (isCreateMode && entry.name?.toLowerCase() === "id") {
-            continue;
-        }
         if (isCreateMode && isOwnerForeignKey(entry.name, domainElement)) {
             continue;
         }

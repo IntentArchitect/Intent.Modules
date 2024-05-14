@@ -98,7 +98,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         }
 
         var mapping = GetAllChildren().First(x => x.Mapping != null).Mapping;
-        var targetPath = mapping.TargetPath.Take(mapping.TargetPath.IndexOf(mapping.TargetPath.Single(x => x.Element == Model)) + 1).ToList();
+        var targetPath = mapping.TargetPath.Take(mapping.TargetPath.IndexOf(mapping.TargetPath.Single(x => x.Element.Id == Model.Id)) + 1).ToList();
         return targetPath;
     }
 

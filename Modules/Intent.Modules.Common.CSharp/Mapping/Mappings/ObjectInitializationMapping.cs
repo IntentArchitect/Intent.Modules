@@ -38,25 +38,9 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
                 if (Model.TypeReference.IsCollection)
                 {
-                    Template.CSharpFile.AddUsing("System.Linq");
-                    var chain = new CSharpMethodChainStatement($"{GetSourcePathText()}{(Mapping.SourceElement.TypeReference.IsNullable ? "?" : "")}").WithoutSemicolon();
-                    var select = new CSharpInvocationStatement($"Select").WithoutSemicolon();
-
-                    var variableName = GetVariableNameForSelect();
-                    SetSourceReplacement(GetSourcePath().Last().Element, variableName);
-                    var lastTargetPathElement = GetTargetPath().Last().Element;
-                    SetTargetReplacement(lastTargetPathElement, null); // Needed for inheritance mappings - path element to be removed from invocation path
-                    if (lastTargetPathElement.TypeReference.Element is not null)
-                    {
-                        SetTargetReplacement(lastTargetPathElement.TypeReference.Element, null); // Same as above but for parameter types
-                    }
-
-                    select.AddArgument(new CSharpLambdaBlock(variableName).WithExpressionBody(GetConstructorStatement()));
-
-                    var init = chain
-                        .AddChainStatement(select)
-                        .AddChainStatement("ToList()");
-                    return init;
+                    var m = new SelectToListMapping(_mappingModel, _template);
+                    m.Parent = this.Parent;
+					return m.GetSourceStatement();
                 }
                 else
                 {

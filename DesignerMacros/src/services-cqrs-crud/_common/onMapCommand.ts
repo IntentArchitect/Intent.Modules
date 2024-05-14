@@ -59,11 +59,9 @@ function onMapCommand(
     });
 
     function isComplexType(element: MacroApi.Context.IElementApi): boolean {
-        if (element == null) {
-            console.warn("isComplexType element parameter received null")
-        }
         return element?.specialization === "Data Contract" ||
-            element?.specialization === "Value Object";
+            element?.specialization === "Value Object" ||
+            element?.specialization === "Class";
     }
 
     function getOrCreateCommandCrudDto(

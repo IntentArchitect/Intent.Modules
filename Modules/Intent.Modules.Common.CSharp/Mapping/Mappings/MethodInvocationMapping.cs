@@ -5,6 +5,7 @@ using System.Reflection.Metadata;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.CSharp.Mapping;
@@ -25,7 +26,7 @@ public class MethodInvocationMapping : CSharpMappingBase
 
     public override CSharpStatement GetSourceStatement()
     {
-        var invocation = new CSharpInvocationStatement(GetTargetPathExpression());
+		var invocation = new CSharpInvocationStatement(GetTargetPathExpression());
 
 		var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
 		// Determine if this model is a method on the class:

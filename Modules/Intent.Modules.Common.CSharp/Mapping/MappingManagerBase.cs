@@ -68,19 +68,25 @@ public class MappingModel
         }
     }
 
+    //This constructor is used for creating artifical mappings for collection items
 	private MappingModel(
 		MappingModel collection,
-		ICanBeReferencedType itemModel
+		ICanBeReferencedType itemModel,
+        Action<MappingModel> configure = null
 		)
 	{
 		MappingType = collection.MappingType;
 		MappingTypeId = collection.MappingTypeId;
 		_manager = collection._manager;
 		Model = itemModel;
-		Mapping = collection.Mapping;
+		Mapping = null;
 		CodeContext = collection.CodeContext;
         Children = collection.Children;
-#warning children may need new versions 
+        if (configure != null) 
+        {
+            configure(this);
+
+		}
     }
 
 
@@ -97,13 +103,17 @@ public class MappingModel
         return _manager.ResolveMappings(this);
     }
 
-    public ICSharpMapping GetItemMapping()
+    /// <summary>
+    /// When you map collections sometimes we want to understand how to map the items in the collection e.g. IList<TItem> vs TItem
+    /// This methods creates a mapping based on a collection item mapping adapter which represent the collection Item.
+    /// </summary>
+    public ICSharpMapping GetCollectionItemMapping()
 	{
         if (!this.Model.TypeReference.IsCollection)
         {
             throw new Exception("This method is intended to for resolving Collection Item mappings as opposed to the Collection itself");
         }
-		return _manager.ResolveMappings(new CollectionItemDecorator(this));
+		return _manager.ResolveMappings(new CollectionItemMappingAdapter(this));
 	}
 
 	//public IEnumerable<MappingModel> GetAllChildren(Func<MappingModel, bool> predicate = null)
@@ -135,9 +145,13 @@ public class MappingModel
         return parent;
     }
 
-    private class CollectionItemDecorator : MappingModel
+    /// <summary>
+    /// This class creates Mapping model which represents the Items in the collection
+    /// It assumes all the characteristics of the collection mapping except it changes the TypeReference to not be a collection
+    /// </summary>
+    private class CollectionItemMappingAdapter : MappingModel
 	{
-        public CollectionItemDecorator(MappingModel collectionMapping) : base(collectionMapping, new ItemElementWrapper(collectionMapping.Model))
+        public CollectionItemMappingAdapter(MappingModel collectionMapping) : base(collectionMapping, new ItemElementWrapper(collectionMapping.Model))
         {
 		}
 
