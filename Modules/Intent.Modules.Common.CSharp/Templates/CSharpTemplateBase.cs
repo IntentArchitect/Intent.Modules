@@ -87,8 +87,6 @@ namespace Intent.Modules.Common.CSharp.Templates
             Types = new CSharpTypeResolver(
                 defaultCollectionFormatter: CSharpCollectionFormatter.Create("System.Collections.Generic.IEnumerable<{0}>"),
                 defaultNullableFormatter: CSharpNullableFormatter.Create(OutputTarget.GetProject()));
-
-            TemplateMetadata = new TemplateMetadata(templateId, "1.0");
         }
 
         /// <inheritdoc cref="IntentTemplateBase.GetTypeInfo(IClassProvider)"/>
@@ -476,7 +474,10 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// Use the implementation of <see cref="ISupportsMigrations"/> instead.
         /// </summary>
         [Obsolete("See XML doc comments")]
-        public virtual RoslynMergeConfig ConfigureRoslynMerger() => new RoslynMergeConfig(TemplateMetadata, Migrations);
+        public virtual RoslynMergeConfig ConfigureRoslynMerger() => _roslynMergeConfig ??= new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"), []);
+#pragma warning disable CS0618 // Type or member is obsolete - Required for backwards compatibility of above line
+        private RoslynMergeConfig _roslynMergeConfig;
+#pragma warning restore CS0618 // Type or member is obsolete
 
         /// <inheritdoc />
         public override ITemplateFileConfig GetTemplateFileConfig()
@@ -604,10 +605,12 @@ namespace Intent.Modules.Common.CSharp.Templates
         #region ISupportsMigrations
 
         /// <inheritdoc />
-        public virtual TemplateMetadata TemplateMetadata { get; }
+#pragma warning disable CS0618 // Type or member is obsolete
+        public virtual TemplateMetadata TemplateMetadata => ConfigureRoslynMerger().TemplateMetadata;
 
         /// <inheritdoc />
-        public virtual ITemplateMigration[] Migrations { get; } = [];
+        public virtual ITemplateMigration[] Migrations => ConfigureRoslynMerger().Migrations;
+#pragma warning restore CS0618 // Type or member is obsolete
 
         #endregion
 
