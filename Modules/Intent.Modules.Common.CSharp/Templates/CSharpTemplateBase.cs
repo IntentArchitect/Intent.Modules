@@ -259,7 +259,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 .Concat(_templateUsings ??= GetUsingsFromContent(GenerationEnvironment?.ToString() ?? string.Empty))
                 .Concat(_existingContentUsings ??= GetUsingsFromContent(TryGetExistingFileContent(out var existingContent) ? existingContent : string.Empty))
                 // ReSharper disable once SuspiciousTypeConversion.Global
-                .Concat((this as ICSharpFileBuilderTemplate)?.CSharpFile.Usings.Select(u => u.Namespace) ?? Enumerable.Empty<string>())
+                .Concat((this as ICSharpFileBuilderTemplate)?.CSharpFile.Usings.Select(u => u.Namespace) ?? [])
                 .Distinct()
                 .ToArray();
             var localNamespace = Namespace;
@@ -476,7 +476,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// Use the implementation of <see cref="ISupportsMigrations"/> instead.
         /// </summary>
         [Obsolete("See XML doc comments")]
-        public virtual RoslynMergeConfig ConfigureRoslynMerger() => null;
+        public virtual RoslynMergeConfig ConfigureRoslynMerger() => new RoslynMergeConfig(TemplateMetadata, Migrations);
 
         /// <inheritdoc />
         public override ITemplateFileConfig GetTemplateFileConfig()
@@ -604,10 +604,10 @@ namespace Intent.Modules.Common.CSharp.Templates
         #region ISupportsMigrations
 
         /// <inheritdoc />
-        public TemplateMetadata TemplateMetadata { get; private set; }
+        public virtual TemplateMetadata TemplateMetadata { get; }
 
         /// <inheritdoc />
-        public ITemplateMigration[] Migrations { get; private set; } = [];
+        public virtual ITemplateMigration[] Migrations { get; } = [];
 
         #endregion
 

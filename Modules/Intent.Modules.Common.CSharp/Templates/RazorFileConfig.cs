@@ -1,6 +1,5 @@
 ﻿using System;
 using Intent.Modules.Common.Templates;
-using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.CSharp.Templates;
@@ -67,45 +66,5 @@ public class RazorFileConfig : CSharpFileConfig
     {
         configure(RoslynWeaverConfiguration);
         return this;
-    }
-}
-
-/// <summary>
-/// A wrapper for <see cref="ITemplateFileConfig"/> for reading and setting Razor Merging related configuration.
-/// </summary>
-public class RazorMergerConfiguration(ITemplateFileConfig config)
-{
-    /// <summary>
-    /// The default <see cref="Mode"/> for the file.
-    /// Equivalent to having <c>[assembly: DefaultIntentManaged(Mode.<see cref="DefaultMode">&lt;DefaultMode&gt;</see>)]</c> at the top of the file.
-    /// </summary>
-    public Mode? DefaultMode
-    {
-        get => GetMode("RazorMergerDefaultMode");
-        set => SetMode("RazorMergerDefaultMode", value);
-    }
-
-    /// <summary>
-    /// Convenience "fluent style" method for setting <see cref="DefaultMode"/>.
-    /// </summary>
-    public RazorMergerConfiguration WithDefaultMode(Mode mode)
-    {
-        DefaultMode = mode;
-        return this;
-    }
-
-    private Mode? GetMode(string key)
-    {
-        if (!config.CustomMetadata.TryGetValue(key, out var value) || string.IsNullOrWhiteSpace(value))
-        {
-            return null;
-        }
-
-        return Enum.Parse<Mode>(value);
-    }
-
-    private void SetMode(string key, Mode? mode)
-    {
-        config.CustomMetadata[key] = mode?.ToString();
     }
 }

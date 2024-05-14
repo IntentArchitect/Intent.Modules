@@ -6,7 +6,7 @@ using Intent.Templates;
 namespace Intent.Modules.Common.CSharp.Templates;
 
 /// <summary>
-/// A wrapper for <see cref="ITemplateFileConfig"/> for reading and setting Roslyn Weaver related configuration.
+/// A wrapper for file custom metadata for reading and setting Roslyn Weaver related configuration.
 /// </summary>
 public class RoslynWeaverConfiguration
 {
