@@ -1,11 +1,10 @@
-﻿using Intent.Modules.Common.Java.Builder;
+﻿using Xunit;
+using VerifyXunit;
+using System.Threading.Tasks;
+using Intent.Modules.Common.Java.Builder;
 
 namespace Intent.Modules.Common.Java.Tests.Builder;
 
-using Xunit;
-using VerifyXunit;
-
-[UsesVerify]
 public class BuilderTests
 {
     [Fact]

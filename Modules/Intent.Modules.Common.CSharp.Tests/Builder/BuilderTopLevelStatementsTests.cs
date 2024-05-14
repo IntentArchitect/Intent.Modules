@@ -5,7 +5,6 @@ using Xunit;
 
 namespace Intent.Modules.Common.CSharp.Tests.Builder;
 
-[UsesVerify]
 public class BuilderTopLevelStatementsTests
 {
     [Fact]

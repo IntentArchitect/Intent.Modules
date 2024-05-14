@@ -1,7 +1,9 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using Intent.IArchitect.Agent.Persistence.Model;
 using Intent.Metadata.Models;
-using Intent.Modules.Common.Java;
 using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.Java.Tests;
@@ -13,7 +15,7 @@ public class JavaTypeCheckExtensionTests
 
     static JavaTypeCheckExtensionTests()
     {
-        var location = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+        var location = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!,
             "../../../..", "Intent.Modules.Common.Java", "Intent.Metadata", "Module Builder", "Intent.Common.Java", "Elements", "Type-Definition");
         var commonTypeElements = ElementPersistable.LoadFromDirectory(location, "*.xml");
 

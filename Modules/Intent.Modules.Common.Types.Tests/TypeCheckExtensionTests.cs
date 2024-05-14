@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Intent.IArchitect.Agent.Persistence.Model;
@@ -8,7 +7,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Xunit;
 
-namespace Intent.Modules.Common.Tests;
+namespace Intent.Modules.Common.Types.Tests;
 
 public class TypeCheckExtensionTests
 {
