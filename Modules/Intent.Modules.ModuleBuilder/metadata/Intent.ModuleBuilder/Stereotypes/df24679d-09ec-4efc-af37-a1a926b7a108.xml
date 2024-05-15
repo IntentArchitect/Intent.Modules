@@ -125,7 +125,7 @@
       <name>Traversable Types</name>
       <type>string</type>
       <controlType>multi-select</controlType>
-      <optionsSource>lookup-children</optionsSource>
+      <optionsSource>lookup-element</optionsSource>
       <placeholder />
       <valueOptions />
       <lookupTypes>

@@ -52,6 +52,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new MappableElementSettingsModel(x))
             .ToList();
 
+        public IList<MappableElementExtensionModel> MappableElementExtensions => _element.ChildElements
+            .GetElementsOfType(MappableElementExtensionModel.SpecializationTypeId)
+            .Select(x => new MappableElementExtensionModel(x))
+            .ToList();
+
         public override string ToString()
         {
             return _element.ToString();
@@ -85,6 +90,7 @@ namespace Intent.ModuleBuilder.Api
                 ExtendPackageId = TypeReference.Element.Id,
                 ExtendPackage = TypeReference.Element.Name,
                 MappableElements = MappableElements.Select(x => x.ToPersistable()).ToList(),
+                MappableElementExtensions = MappableElementExtensions.Select(x => x.ToPersistable()).ToList(),
                 PackageImports = ImportMappableElementsPackages.Select(x => x.ToPersistable()).ToList(),
             };
         }

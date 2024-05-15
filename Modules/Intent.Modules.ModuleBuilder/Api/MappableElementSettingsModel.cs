@@ -42,6 +42,11 @@ namespace Intent.ModuleBuilder.Api
 
         public IElement InternalElement => _element;
 
+        public IList<RunScriptOptionModel> ScriptOptions => _element.ChildElements
+            .GetElementsOfType(RunScriptOptionModel.SpecializationTypeId)
+            .Select(x => new RunScriptOptionModel(x))
+            .ToList();
+
         public IList<MappableElementSettingsModel> ElementMappings => _element.ChildElements
             .GetElementsOfType(MappableElementSettingsModel.SpecializationTypeId)
             .Select(x => new MappableElementSettingsModel(x))
@@ -105,6 +110,7 @@ namespace Intent.ModuleBuilder.Api
                     : null,
                 SyncStereotypeId = this.GetMappableSettings().SyncStereotype()?.Id,
                 SyncStereotypePropertyId = this.GetMappableSettings().SyncStereotypeProperty(),
+                ScriptOptions = ScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 StaticMappableSettings = StaticMappings.Select(x => x.ToPersistable()).ToList(),
             };
         }

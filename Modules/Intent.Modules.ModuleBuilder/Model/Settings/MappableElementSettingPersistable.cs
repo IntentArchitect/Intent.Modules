@@ -89,11 +89,38 @@ public class MappableElementSettingPersistable
     public string SyncStereotypePropertyId { get; set; }
     public bool ShouldSerializeSyncStereotypePropertyId() => SyncWith == SyncWithStereotypeProperty;
 
+    [XmlArray("scriptOptions")]
+    [XmlArrayItem("option")]
+    public List<RunScriptOption> ScriptOptions { get; set; }
+    public bool ShouldSerializeScriptOptions() => ScriptOptions.Count != 0;
+
     [XmlArray("staticMappableSettings")]
     [XmlArrayItem("staticMappableSetting")]
     public List<MappableElementSettingPersistable> StaticMappableSettings { get; set; }
+    public bool ShouldSerializeStaticMappableSettings() => StaticMappableSettings.Count != 0;
 
     [XmlArray("childSettings")]
     [XmlArrayItem("childSetting")]
     public List<MappableElementSettingPersistable> ChildSettings { get; set; }
+    public bool ShouldSerializeChildSettings() => ChildSettings.Count != 0;
+}
+
+
+public class MappableElementExtensionSettingsPersistable
+{
+    [XmlArray("targetSettings")]
+    [XmlArrayItem("type")]
+    public List<TargetTypePersistable> TargetSettings { get; set; } = [];
+
+    [XmlArray("scriptOptions")]
+    [XmlArrayItem("option")]
+    public List<RunScriptOption> ScriptOptions { get; set; } = [];
+
+    [XmlArray("staticMappableSettings")]
+    [XmlArrayItem("staticMappableSetting")]
+    public List<MappableElementSettingPersistable> StaticMappableSettings { get; set; } = [];
+
+    [XmlArray("childSettings")]
+    [XmlArrayItem("childSetting")]
+    public List<MappableElementSettingPersistable> ChildSettings { get; set; } = [];
 }

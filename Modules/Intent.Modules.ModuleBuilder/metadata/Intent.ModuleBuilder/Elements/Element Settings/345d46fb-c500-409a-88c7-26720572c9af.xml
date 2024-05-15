@@ -3,7 +3,6 @@
   <name>Run Script Option</name>
   <display>Run Script Option</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
   <order>4</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -50,19 +49,5 @@
     </stereotype>
   </stereotypes>
   <metadata />
-  <childElements>
-    <childElement id="5896be2d-54c1-4306-bc09-1a8ecc093157" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
-      <name>[context menu]</name>
-      <display>[context menu]</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>345d46fb-c500-409a-88c7-26720572c9af</parentFolderId>
-      <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
-      <packageName>Intent.ModuleBuilder</packageName>
-      <stereotypes />
-      <metadata />
-      <childElements />
-    </childElement>
-  </childElements>
+  <childElements />
 </class>

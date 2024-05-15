@@ -38,6 +38,16 @@ namespace Intent.ModuleBuilder.Api
 
         public IElement InternalElement => _element;
 
+        public IList<RunScriptOptionModel> ScriptOptions => _element.ChildElements
+            .GetElementsOfType(RunScriptOptionModel.SpecializationTypeId)
+            .Select(x => new RunScriptOptionModel(x))
+            .ToList();
+
+        public IList<StaticMappableSettingsModel> StaticMappings => _element.ChildElements
+            .GetElementsOfType(StaticMappableSettingsModel.SpecializationTypeId)
+            .Select(x => new StaticMappableSettingsModel(x))
+            .ToList();
+
         public override string ToString()
         {
             return _element.ToString();
@@ -91,7 +101,8 @@ namespace Intent.ModuleBuilder.Api
                     : null,
                 SyncStereotypeId = this.GetMappableSettings().SyncStereotype()?.Id,
                 SyncStereotypePropertyId = this.GetMappableSettings().SyncStereotypeProperty(),
-                StaticMappableSettings = new List<MappableElementSettingPersistable>(),
+                ScriptOptions = ScriptOptions.Select(x => x.ToPersistable()).ToList(),
+                StaticMappableSettings = StaticMappings.Select(x => x.ToPersistable()).ToList(),
             };
         }
     }

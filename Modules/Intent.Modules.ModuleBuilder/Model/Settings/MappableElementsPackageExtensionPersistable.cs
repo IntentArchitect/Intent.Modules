@@ -22,26 +22,15 @@ public class MappableElementsPackageExtensionPersistable
     [XmlArray("imports")]
     [XmlArrayItem("import")]
     public List<MappableElementsPackageImportPersistable> PackageImports { get; set; } = new List<MappableElementsPackageImportPersistable>();
+    public bool ShouldSerializePackageImports() => PackageImports.Count != 0;
 
     [XmlArray("mappableElementSettings")]
     [XmlArrayItem("mappableElement")]
     public List<MappableElementSettingPersistable> MappableElements { get; set; } = new List<MappableElementSettingPersistable>();
+    public bool ShouldSerializeMappableElements() => MappableElements.Count != 0;
 
-    public List<MappableElementSettingPersistable> ResolveMappableElements(Dictionary<string, MappableElementsPackagePersistable> packagesRegistry)
-    {
-        var result = MappableElements.ToList();
-        foreach (var import in PackageImports)
-        {
-            if (packagesRegistry.TryGetValue(import.Id, out var resolved))
-            {
-                result.AddRange(resolved.ResolveMappableElements(packagesRegistry));
-            }
-            else
-            {
-                throw new Exception($"Could not resolve import: {import.Name} [{import.Id}] for Mappable Element Package [{Name}]");
-            }
-        }
-
-        return result;
-    }
+    [XmlArray("mappableElementExtensions")]
+    [XmlArrayItem("mappableElementExtension")]
+    public List<MappableElementExtensionSettingsPersistable> MappableElementExtensions { get; set; } = [];
+    public bool ShouldSerializeMappableElementExtensions() => MappableElementExtensions.Count != 0;
 }

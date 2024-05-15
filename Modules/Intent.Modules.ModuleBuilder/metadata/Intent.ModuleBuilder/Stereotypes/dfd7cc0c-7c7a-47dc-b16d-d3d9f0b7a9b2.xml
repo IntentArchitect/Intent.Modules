@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="dfd7cc0c-7c7a-47dc-b16d-d3d9f0b7a9b2" version="3.1.0">
+  <name>Mappable Extension Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="f9449923-9173-4347-a3a2-38d1eb66f6b5">Mappable Element Extension</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>1a876b1f-5811-45e9-9568-b0f8c6c938d6</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="bd502960-a08e-4138-b3e0-d3dad4439410">
+      <name>Extend Target Settings</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-children</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
+      </lookupTypes>
+      <lookupInternalTargetPropertyId>const mappablePackageExtensionId = "bddb69f0-e2c8-4373-b5cb-d701f311f935";
+return element.getParent(mappablePackageExtensionId).typeReference.getTypeId();</lookupInternalTargetPropertyId>
+    </property>
+  </properties>
+</stereotypeDefinition>
