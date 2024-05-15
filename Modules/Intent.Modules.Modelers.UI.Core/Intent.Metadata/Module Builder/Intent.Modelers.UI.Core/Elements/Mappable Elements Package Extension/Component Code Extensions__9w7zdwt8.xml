@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="41d3f18e-45d9-43d1-8c90-26ca8f5fa6ad" type="Mappable Elements Package Extension" typeId="bddb69f0-e2c8-4373-b5cb-d701f311f935">
+  <name>Component Code Extensions</name>
+  <display>Component Code Extensions: Component Code Mappables</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <typeReference id="6be68898-e792-4877-a626-d7a7212ce4e7">
+    <typeId>2d30eb9d-daa0-45d7-a596-32c57d61c6bd</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.UI</typePackageName>
+    <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>3cd798f0-8cdf-42a4-b733-469632a86f27</parentFolderId>
+  <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+  <packageName>Intent.Modelers.UI.Core</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="53180c17-f10a-490c-971b-29ab5c44fc44" type="Mappable Element Extension" typeId="f9449923-9173-4347-a3a2-38d1eb66f6b5">
+      <name>Operation Extension</name>
+      <display>Operation Extension extends Operation</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>41d3f18e-45d9-43d1-8c90-26ca8f5fa6ad</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="dfd7cc0c-7c7a-47dc-b16d-d3d9f0b7a9b2" name="Mappable Extension Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd502960-a08e-4138-b3e0-d3dad4439410" display="Extend Target Settings" value="[&quot;a7d178d8-0e93-4784-a5c7-24d05df7875f&quot;]" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="c7d8bf07-ab14-44c3-ae49-175ca11b8f2e" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Auto-map to Button</name>
+          <display>Auto-map to Button: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e29f1b7c-0c15-4b15-a571-15c66353ac28">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>53180c17-f10a-490c-971b-29ab5c44fc44</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const dataBindingMappingTypeId = &quot;ee19a932-0cea-4b90-bd3c-857d7942d390&quot;;&#xD;&#xA;const parentElement = element.getParent(x =&gt; x.getIsMapped())?.getMappedToElements()[0] ?? mapping.getTargetElement();&#xD;&#xA;const newElement = createElement(&quot;Button&quot;, element.getName(), parentElement.id);&#xD;&#xA;mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), newElement.getMappingPath().concat([&quot;b80f61a7-3b9e-4b75-806f-71d4f8b9900a&quot;]));" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="space" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="75b3041c-20ba-4e3b-96f8-c0e5fdd7efa0" type="Mappable Element Extension" typeId="f9449923-9173-4347-a3a2-38d1eb66f6b5">
+      <name>Property Extension</name>
+      <display>Property Extension extends Property, DTO-Field</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>41d3f18e-45d9-43d1-8c90-26ca8f5fa6ad</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="dfd7cc0c-7c7a-47dc-b16d-d3d9f0b7a9b2" name="Mappable Extension Settings">
+          <addedByDefault>false</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd502960-a08e-4138-b3e0-d3dad4439410" display="Extend Target Settings" value="[&quot;dd00e457-f34b-47ea-bca6-138a3f52c385&quot;,&quot;5dacc38f-5bdd-43f5-8d2f-5ad3f12071ee&quot;]" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="9c76d0fa-973b-493f-becd-8665aee31fdd" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Auto-map to Form</name>
+          <display>Auto-map to Form: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="fdad8137-bb0b-4fa5-bfd0-28b129585d61">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>75b3041c-20ba-4e3b-96f8-c0e5fdd7efa0</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const model = element;&#xD;&#xA;const triggerElement = element;&#xD;&#xA;const parentElement = element.getParent(x =&gt; x.getIsMapped())?.getMappedToElements()[0] ?? mapping.getTargetElement();&#xD;&#xA;const binding = mapping;&#xD;&#xA;const dataBindingMappingTypeId = &quot;ee19a932-0cea-4b90-bd3c-857d7942d390&quot;;&#xD;&#xA;const newElement = createElement(&quot;Form&quot;, &quot;Form&quot;, parentElement.id);&#xD;&#xA;const sourceMappingPath = triggerElement.getMappingPath((e) =&gt; e.specialization == &quot;Component&quot;);&#xD;&#xA;mapping.addMappedEnd(dataBindingMappingTypeId, sourceMappingPath, [parentElement.id, newElement.id, &quot;9d16e967-a2ab-45b4-ba69-b286daf4488c&quot;]);&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;const body = newElement.getChildren(&quot;Container&quot;).find(x =&gt; x.getName() == &quot;Body&quot;)&#xD;&#xA;    ?? createElement(&quot;Container&quot;, &quot;Body&quot;, newElement.id);&#xD;&#xA;model.getChildren().filter(x =&gt; x.specialization == &quot;Property&quot; || x.specialization == &quot;DTO-Field&quot;).forEach(p =&gt; {&#xD;&#xA;    if (p.typeReference.getTypeId() == &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot;) { // string&#xD;&#xA;        const newInput = createElement(&quot;Text Input&quot;, p.getName(), body.id);&#xD;&#xA;        binding?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath((e) =&gt; e.specialization == &quot;Component&quot;), newInput.getMappingPath((e) =&gt; e.specialization == &quot;Component View&quot;))&#xD;&#xA;        newInput.getStereotype(&quot;Label Addon&quot;)?.getProperty(&quot;Label&quot;).setValue(p.getName())&#xD;&#xA;    }&#xD;&#xA;    else if (p.typeReference.getTypeId() == &quot;e6f92b09-b2c5-4536-8270-a4d9e5bbd930&quot;){ // bool&#xD;&#xA;        const newInput = createElement(&quot;Checkbox&quot;, p.getName(), body.id);&#xD;&#xA;        binding?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath((e) =&gt; e.specialization == &quot;Component&quot;), newInput.getMappingPath((e) =&gt; e.specialization == &quot;Component View&quot;))&#xD;&#xA;        newInput.getStereotype(&quot;Label Addon&quot;)?.getProperty(&quot;Label&quot;).setValue(p.getName())&#xD;&#xA;    }&#xD;&#xA;    else if (p.typeReference.getTypeId() == &quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;){ // guid (This isn't a good enough check - need to traverse to domain)&#xD;&#xA;        const newInput = createElement(&quot;Select&quot;, p.getName(), body.id);&#xD;&#xA;        binding?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath((e) =&gt; e.specialization == &quot;Component&quot;), newInput.getMappingPath((e) =&gt; e.specialization == &quot;Component View&quot;))&#xD;&#xA;        newInput.getStereotype(&quot;Label Addon&quot;)?.getProperty(&quot;Label&quot;).setValue(p.getName())&#xD;&#xA;    }&#xD;&#xA;});" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="space" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return element.typeReference.getType().specialization == &quot;Command&quot;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="b3d152e3-92f0-4051-a332-ed35a8ace9ed" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Auto-map to Input</name>
+          <display>Auto-map to Input: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="30c7751c-e21c-4e71-a44b-c7386d5e9c4e">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>75b3041c-20ba-4e3b-96f8-c0e5fdd7efa0</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const dataBindingMappingTypeId = &quot;ee19a932-0cea-4b90-bd3c-857d7942d390&quot;;&#xD;&#xA;const parent = mapping.getTargetElement();&#xD;&#xA;const newElement = createElement(&quot;Text Input&quot;, element.getName(), parent.id);&#xD;&#xA;mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), newElement.getMappingPath());" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="space" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return element.typeReference.getType().getName() == &quot;string&quot;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

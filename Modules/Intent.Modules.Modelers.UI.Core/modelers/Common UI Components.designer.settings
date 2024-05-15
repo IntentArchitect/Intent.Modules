@@ -182,7 +182,63 @@ if (selected.type == "core") {
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
-      <scriptOptions />
+      <scriptOptions>
+        <option>
+          <text>Create Form from Model</text>
+          <icon type="FontAwesome" source="code" />
+          <script>const componentStereotypeId = "b407aace-ad14-484e-ac93-4762a3d182d8";
+const displayComponentTypeId = "866a90f7-4044-43b9-bb05-7270c7889796";
+
+const component = element.getParent("Component");
+let options = component
+            .getChildren("Property")
+            .filter(x =&gt; x.typeReference?.getType()?.specialization != "Type-Definition")
+            .map(x =&gt; ( {id: x.id, description: x.getDisplay(), type: "core" }))
+            .sort((x, y) =&gt; x.description.localeCompare(y.description))
+
+let result = await dialogService.openForm({
+    title: "Select Model",
+    fields: [{
+        id: "model",
+        fieldType: "select",
+        label: "Model",
+        selectOptions: options,
+        isRequired: true,
+        placeholder: "Select Model"
+    }]
+})
+
+let selected = options.filter(x =&gt; x.id == result["model"])[0];
+if (!selected) {
+    console.warn("Option not selected");
+}
+
+const model = lookup(selected.id);
+const view = element.getParent("Component").getChildren("Component View")[0];
+const binding = view?.getAdvancedMapping();
+const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390"
+binding?.addMappedEnd(dataBindingMappingTypeId, [component.id, model.id], [view.id, element.id, "9d16e967-a2ab-45b4-ba69-b286daf4488c"]) // Model
+
+const body = element.getChildren("Container").find(x =&gt; x.getName() == "Body");
+model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == "Property" || x.specialization == "DTO-Field").forEach(p =&gt; {
+    if (p.typeReference.getTypeId() == "d384db9c-a279-45e1-801e-e4e8099625f2") { // string
+        const newInput = createElement("Text Input", p.getName(), body.id);
+        binding?.addMappedEnd(dataBindingMappingTypeId, [component.id, model.id, p.id], [view.id, element.id, body.id, newInput.id])
+        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(p.getName())
+    }
+    else if (p.typeReference.getTypeId() == "e6f92b09-b2c5-4536-8270-a4d9e5bbd930"){ // bool
+        const newInput = createElement("Checkbox", p.getName(), body.id);
+        binding?.addMappedEnd(dataBindingMappingTypeId, [component.id, model.id, p.id], [view.id, element.id, body.id, newInput.id])
+        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(p.getName())
+    }
+    else if (p.typeReference.getTypeId() == "6b649125-18ea-48fd-a6ba-0bfff0d8f488"){ // guid (This isn't a good enough check - need to traverse to domain)
+        const newInput = createElement("Select", p.getName(), body.id);
+        binding?.addMappedEnd(dataBindingMappingTypeId, [component.id, model.id, p.id], [view.id, element.id, body.id, newInput.id])
+        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(p.getName())
+    }
+});</script>
+        </option>
+      </scriptOptions>
       <mappingOptions />
       <mappingSettings />
       <macros />
@@ -419,6 +475,26 @@ if (selected.type == "core") {
         </childElementSetting>
       </childElementSettings>
     </elementSetting>
+    <elementSetting type="Select" typeId="78e0bdf7-424f-4820-95d5-b756b0ebc87a">
+      <implements>
+        <trait id="b407aace-ad14-484e-ac93-4762a3d182d8" name="[Component]" />
+      </implements>
+      <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAABOxJREFUeF7tm09oXEUcx7/z3kt2N0GNJHWTje0hiH8oaPFWvImHFsSDBUXEoqikVK3gQQSL2UILevFQEBFFiZGSFIzgRcFCL1LwGA/2ouCfpJvdpkmatmbfvvfmJ7ObmE1O/c3PbN6LM+ffd36/+cz3vdmdeaPgmoiAEqmdGA6g0AQOoAMoJCCUOwc6gEICQrlzoAMoJCCUOwc6gEICQrlzoAMoJCCUOwc6gEICQrnYgXQePoLhPnSRuC/hWHjySBHiuWX1DBKecHO0aNA0WfoRHkZA6JYUsYPaRmOZlnKjlf22NVgBpHOlAQTqJ3TTCAoKCEw3ZFtD53QawOLmOhvLBN3AH7o7Otg7ulDhFsMGSGV4eHAoglIe9vktbiFlgh9iApbaABLQWCLoqIUtP1gJuI80H+BU6QkAPzQzdgFYS86duTTEkwbChY3JJx9Hel6rTHNqswE4Bg9llDxg1jwT2WwGnnEfxRv1a6JTvW/Olzkj4gOcLB2HwkfwAdn6xSnzv481zqMt6y956p2e1698wMnGB/jFnsFGGFSUx0mTnlgdY5Pr2ivTuajEXUjYAE3C8OOh53WEcaDpw93QEi/Ai7njla+4g7ECSJ+gq94oHQXRZ9yEqYz31Mv5risTapS/JFoBXIdAZ+/L1XHzWRWog6DMHZESES7lde95deLX0HZiRQBtk+4mnQMonE0H0AEUEhDKnQMdQCEBodw50AEUEhDKnQN3CmBzY/WB4cPw9QGQeggqY/9ECKSJLkdLeiZXrX6vymjb2Lp9qlYONH/hULw1DajDQMbAbWFjtvSpgQtXI/+pvW/Nrt4+ulakHcCp0qcAXuEmS2N8c0u/AXjARO5E5Si3RjZA+ro4gtj/jZsojfFbt/T9bu9A97G5GU6tfIBTpbcBsHZtOQV1MjZaJiTt+zAKJwtvVM5wavjfAoxuEJK/t6DqBMBw/J6HVejPqIAzT+mJNe87c5BkHt+tzSskj+Rerf3MqZbtQNP56tmhLwG8wEmUgdiJQicWEQPirw/vLezpSr4lgjkjzn5TuLDQyZ8xhhiVEYQDxUNQ3uOkUcwiRaUwD3gXcwtznf0hnUVY21Wz1Ttwu4rJYr8OoHDWHEAHUEhAKHcOdACFBIRy50AHUEhAKBc5kC4iQG3waShvP4iy9cWgUhpJ8gtWqtM2X2Wtc7cC2AQ3XzoCD5PCCdxxudmRjm8kx3rurH1uA9IO4GTxSSj/GwAZ3dTamDdzJhJdJx2v0rG+sao5qmA1NkAaH+5HnhZYWVIaTOaawzVCcovQWNTI5eO9PeXFWU65fIDrH5lzsqQ01nwvbQDqegugCtTJvtPVbd/SHwPAugqQRn46BMzja1p8kxCvaGjgVP/7NdbY2A6Mzg0d8hL1nd2BaApQakAnZuFo1UIRIbza2t8PetRzd7xXZS2MbIDmdmZ9fijOLMD2m14JENaSf6+p9T1a2/6rXs1ZO90/vJIEl7wA+1LgKasSdNg6UF9rf+p8/Fg/cwExWrYD26u9/m7xMiV0NynkpX1ZURCIFGC+0q97PlbuOlO737YrEUCT1BwwDSTRoMrYQ00BKD9QqKiXfq/bwhM7UJJ4t2jFDtwtIGzH4QDaklvTOYAOoJCAUO4c6AAKCQjlzoEOoJCAUO4c6AAKCQjlzoEOoJCAUO4c6AAKCQjl/wBWY6Jgxjd/HAAAAABJRU5ErkJggg==" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren>by-type-then-by-name</sortChildren>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>true</allowSetValue>
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
     <elementSetting type="Table" typeId="eee93c29-3d58-4e42-aea9-c00451d17469">
       <implements>
         <trait id="b407aace-ad14-484e-ac93-4762a3d182d8" name="[Component]" />
@@ -449,7 +525,47 @@ if (selected.type == "core") {
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
-      <scriptOptions />
+      <scriptOptions>
+        <option>
+          <text>Create Columns from Model</text>
+          <icon type="FontAwesome" source="code" />
+          <script>const componentStereotypeId = "b407aace-ad14-484e-ac93-4762a3d182d8";
+const displayComponentTypeId = "866a90f7-4044-43b9-bb05-7270c7889796";
+
+const component = element.getParent("Component");
+let options = component
+            .getChildren("Property")
+            .filter(x =&gt; x.typeReference?.getType()?.specialization != "Type-Definition")
+            .map(x =&gt; ( {id: x.id, description: x.getDisplay(), type: "core" }))
+            .sort((x, y) =&gt; x.description.localeCompare(y.description))
+
+let result = await dialogService.openForm({
+    title: "Select Model",
+    fields: [{
+        id: "model",
+        fieldType: "select",
+        label: "Model",
+        selectOptions: options,
+        isRequired: true,
+        placeholder: "Select Model"
+    }]
+})
+
+let selected = options.filter(x =&gt; x.id == result["model"])[0];
+if (!selected) {
+    console.warn("Option not selected");
+}
+
+const model = lookup(selected.id);
+const view = element.getParent("Component").getChildren("Component View")[0];
+const binding = view?.getAdvancedMapping();
+binding?.addMappedEnd("ee19a932-0cea-4b90-bd3c-857d7942d390", [component.id, model.id], [view.id, element.id])
+model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == "Property" || x.specialization == "DTO-Field").forEach(x =&gt; {
+    const newColum = createElement("Column", x.getName(), element.id);
+    binding?.addMappedEnd("ee19a932-0cea-4b90-bd3c-857d7942d390", [component.id, model.id, x.id], [view.id, element.id, newColum.id])
+});</script>
+        </option>
+      </scriptOptions>
       <mappingOptions />
       <mappingSettings />
       <childElementSettings>
@@ -568,7 +684,6 @@ if (selected.type == "core") {
   <mappableElementPackages />
   <mappableElementPackageExtensions>
     <mappableElementPackageExtension id="d808bb0b-ffc9-4b95-887b-ee3869ba4db8" name="Bindable Components Extension" extendPackageId="ddf81941-f0b0-4ab0-a8d6-42ddc9e5da99" extendPackage="Bindable Components">
-      <imports />
       <mappableElementSettings>
         <mappableElement id="4beb5cac-39dc-48db-854a-f1fd99b39fe0" name="Button" type="Button" typeId="4474d808-f6fd-405f-a9c7-6998cd000ede" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -590,11 +705,8 @@ if (selected.type == "core") {
               <syncWith>stereotype-property</syncWith>
               <syncStereotypeId>a7de29e5-4bee-4e5d-93f0-740569ac6130</syncStereotypeId>
               <syncStereotypePropertyId>d05f7b5b-fe45-4cbb-b938-380a4b68c0df</syncStereotypePropertyId>
-              <staticMappableSettings />
-              <childSettings />
             </staticMappableSetting>
           </staticMappableSettings>
-          <childSettings />
         </mappableElement>
         <mappableElement id="f85e03d5-cc0d-4034-a119-f0b878fab433" name="Checkbox" type="Checkbox" typeId="be9ecdbd-6ded-4057-af76-1b09f3a6cea3" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -604,18 +716,14 @@ if (selected.type == "core") {
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <syncWith>value</syncWith>
-          <staticMappableSettings />
-          <childSettings />
         </mappableElement>
         <mappableElement id="eaf31170-0775-4dbf-a9a5-aa8fb7ecf7df" name="Container" type="Container" typeId="b97ea181-2462-431f-8f62-f90f79509b9e" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
-          <canBeModified>false</canBeModified>
+          <canBeModified>true</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mappableElement>
         <mappableElement id="bb88b7d5-e1c8-43aa-ae4d-0601f8a6a745" name="Form" type="Form" typeId="1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -636,8 +744,6 @@ if (selected.type == "core") {
               <syncWith>stereotype-property</syncWith>
               <syncStereotypeId>7f7bc148-138f-4b61-8fa1-a8d725dbed52</syncStereotypeId>
               <syncStereotypePropertyId>f980aa79-3b16-4f43-acd3-3c0e34032183</syncStereotypePropertyId>
-              <staticMappableSettings />
-              <childSettings />
             </staticMappableSetting>
             <staticMappableSetting id="82cf639a-6005-4bb8-8f38-06becffad225" name="On Valid Submit" type="On Valid Submit" typeId="82cf639a-6005-4bb8-8f38-06becffad225" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -650,11 +756,8 @@ if (selected.type == "core") {
               <syncWith>stereotype-property</syncWith>
               <syncStereotypeId>e242cccf-5826-478f-9e7a-c1fd9df4e5c8</syncStereotypeId>
               <syncStereotypePropertyId>be7dd551-1c92-4f03-91e7-f4495f97e504</syncStereotypePropertyId>
-              <staticMappableSettings />
-              <childSettings />
             </staticMappableSetting>
           </staticMappableSettings>
-          <childSettings />
         </mappableElement>
         <mappableElement id="4a7f0013-96c4-4384-8dbd-7d1327c38d8b" name="Navigation Bar" type="Navigation Bar" typeId="d7282bf2-1626-4b8b-9446-1d530527db06" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -663,7 +766,6 @@ if (selected.type == "core") {
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
           <childSettings>
             <childSetting id="3ea6d69d-96db-465a-b1eb-b381f52aefc0" name="Navigation Item" type="Navigation Item" typeId="adbf2fa8-6833-4c24-960a-31d8a41fd1ed" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -681,13 +783,69 @@ if (selected.type == "core") {
                   <canBeModified>false</canBeModified>
                   <represents>invokable</represents>
                   <iconOverride type="UrlImagePath" source="data:image/png;base64,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" />
-                  <staticMappableSettings />
-                  <childSettings />
                 </staticMappableSetting>
               </staticMappableSettings>
-              <childSettings />
             </childSetting>
           </childSettings>
+        </mappableElement>
+        <mappableElement id="0a432a51-27c6-48e7-992b-61ebd8d33a5c" name="Select" type="Select" typeId="78e0bdf7-424f-4820-95d5-b756b0ebc87a" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <syncWith>value</syncWith>
+          <staticMappableSettings>
+            <staticMappableSetting id="a8b732b9-c130-4644-8451-0b86ea3f1838" name="Options" type="Options" typeId="a8b732b9-c130-4644-8451-0b86ea3f1838" version="2.0.0">
+              <isRequiredFunction>return true;</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <syncWith>stereotype-property</syncWith>
+              <syncStereotypeId>6a75e4ef-66bd-45b3-b74a-2d75b384c8cd</syncStereotypeId>
+              <syncStereotypePropertyId>83c7d771-b51b-4ca8-9451-10d154c99b05</syncStereotypePropertyId>
+              <scriptOptions>
+                <option>
+                  <text>Auto-map to Property</text>
+                  <shortcut>space</shortcut>
+                  <icon type="FontAwesome" source="code" />
+                  <script>const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
+const parentElement = mapping.getSourceElement();
+const newElement = createElement("Property", `${element.getParent().getName()}Options`, parentElement.id);
+newElement.typeReference.setIsCollection(true);
+mapping.addMappedEnd(dataBindingMappingTypeId, newElement.getMappingPath(), element.getMappingPath());</script>
+                </option>
+              </scriptOptions>
+              <staticMappableSettings>
+                <staticMappableSetting id="d4276bd9-c19c-4669-b927-f03ddba06db1" name="Key" type="Key" typeId="d4276bd9-c19c-4669-b927-f03ddba06db1" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                  <syncWith>stereotype-property</syncWith>
+                  <syncStereotypeId>6a75e4ef-66bd-45b3-b74a-2d75b384c8cd</syncStereotypeId>
+                  <syncStereotypePropertyId>cdbb3669-f3b5-4d56-a274-4a1f92d4a451</syncStereotypePropertyId>
+                </staticMappableSetting>
+                <staticMappableSetting id="c2b8c690-ab61-4f08-9431-ca4ce313a48c" name="Value" type="Value" typeId="c2b8c690-ab61-4f08-9431-ca4ce313a48c" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                  <syncWith>stereotype-property</syncWith>
+                  <syncStereotypeId>6a75e4ef-66bd-45b3-b74a-2d75b384c8cd</syncStereotypeId>
+                  <syncStereotypePropertyId>4d698735-be31-4e69-9fa0-27ddd077b465</syncStereotypePropertyId>
+                </staticMappableSetting>
+              </staticMappableSettings>
+            </staticMappableSetting>
+          </staticMappableSettings>
         </mappableElement>
         <mappableElement id="450fb4eb-22fd-4f56-9207-a2bd21e33dcb" name="Table" type="Table" typeId="eee93c29-3d58-4e42-aea9-c00451d17469" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -709,8 +867,6 @@ if (selected.type == "core") {
               <syncWith>stereotype-property</syncWith>
               <syncStereotypeId>74533b82-2078-44e1-84bb-4cd34d00ef16</syncStereotypeId>
               <syncStereotypePropertyId>fbb0d0b4-effb-4ab1-8ee2-df0d28b21163</syncStereotypePropertyId>
-              <staticMappableSettings />
-              <childSettings />
             </staticMappableSetting>
             <staticMappableSetting id="7afd35a5-77a3-424e-9a49-34da98fbd822" name="Page" type="Page" typeId="7afd35a5-77a3-424e-9a49-34da98fbd822" version="2.0.0">
               <filterFunction>return element.hasStereotype("Pagination")</filterFunction>
@@ -724,8 +880,6 @@ if (selected.type == "core") {
               <syncWith>stereotype-property</syncWith>
               <syncStereotypeId>74533b82-2078-44e1-84bb-4cd34d00ef16</syncStereotypeId>
               <syncStereotypePropertyId>fbb0d0b4-effb-4ab1-8ee2-df0d28b21163</syncStereotypePropertyId>
-              <staticMappableSettings />
-              <childSettings />
             </staticMappableSetting>
           </staticMappableSettings>
           <childSettings>
@@ -737,8 +891,6 @@ if (selected.type == "core") {
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <syncWith>value</syncWith>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mappableElement>
@@ -750,21 +902,97 @@ if (selected.type == "core") {
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <syncWith>value</syncWith>
-          <staticMappableSettings />
-          <childSettings />
         </mappableElement>
         <mappableElement id="e07a856e-0e3d-404a-928f-e7055f50ac32" name="Text Input" type="Text Input" typeId="4803bf60-c626-4cbe-94ed-0f1eafff9fe3" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
+          <overrideTypeReferenceFunction>return {
+    typeId: "d384db9c-a279-45e1-801e-e4e8099625f2" // string
+}</overrideTypeReferenceFunction>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <syncWith>value</syncWith>
-          <staticMappableSettings />
-          <childSettings />
         </mappableElement>
       </mappableElementSettings>
+    </mappableElementPackageExtension>
+    <mappableElementPackageExtension id="41d3f18e-45d9-43d1-8c90-26ca8f5fa6ad" name="Component Code Extensions" extendPackageId="2d30eb9d-daa0-45d7-a596-32c57d61c6bd" extendPackage="Component Code Mappables">
+      <mappableElementExtensions>
+        <mappableElementExtension>
+          <targetSettings>
+            <type type="Operation: Component Operation" typeId="a7d178d8-0e93-4784-a5c7-24d05df7875f" />
+          </targetSettings>
+          <scriptOptions>
+            <option>
+              <text>Auto-map to Button</text>
+              <shortcut>space</shortcut>
+              <icon type="FontAwesome" source="code" />
+              <script>const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
+const parentElement = element.getParent(x =&gt; x.getIsMapped())?.getMappedToElements()[0] ?? mapping.getTargetElement();
+const newElement = createElement("Button", element.getName(), parentElement.id);
+mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), newElement.getMappingPath().concat(["b80f61a7-3b9e-4b75-806f-71d4f8b9900a"]));</script>
+            </option>
+          </scriptOptions>
+          <staticMappableSettings />
+          <childSettings />
+        </mappableElementExtension>
+        <mappableElementExtension>
+          <targetSettings>
+            <type type="Property: Property" typeId="dd00e457-f34b-47ea-bca6-138a3f52c385" />
+            <type type="DTO-Field: DTO-Field" typeId="5dacc38f-5bdd-43f5-8d2f-5ad3f12071ee" />
+          </targetSettings>
+          <scriptOptions>
+            <option>
+              <text>Auto-map to Form</text>
+              <shortcut>space</shortcut>
+              <icon type="FontAwesome" source="code" />
+              <isOptionVisibleFunction>return element.typeReference.getType().specialization == "Command"</isOptionVisibleFunction>
+              <script>const model = element;
+const triggerElement = element;
+const parentElement = element.getParent(x =&gt; x.getIsMapped())?.getMappedToElements()[0] ?? mapping.getTargetElement();
+const binding = mapping;
+const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
+const newElement = createElement("Form", "Form", parentElement.id);
+const sourceMappingPath = triggerElement.getMappingPath((e) =&gt; e.specialization == "Component");
+mapping.addMappedEnd(dataBindingMappingTypeId, sourceMappingPath, [parentElement.id, newElement.id, "9d16e967-a2ab-45b4-ba69-b286daf4488c"]);
+
+
+const body = newElement.getChildren("Container").find(x =&gt; x.getName() == "Body")
+    ?? createElement("Container", "Body", newElement.id);
+model.getChildren().filter(x =&gt; x.specialization == "Property" || x.specialization == "DTO-Field").forEach(p =&gt; {
+    if (p.typeReference.getTypeId() == "d384db9c-a279-45e1-801e-e4e8099625f2") { // string
+        const newInput = createElement("Text Input", p.getName(), body.id);
+        binding?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath((e) =&gt; e.specialization == "Component"), newInput.getMappingPath((e) =&gt; e.specialization == "Component View"))
+        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(p.getName())
+    }
+    else if (p.typeReference.getTypeId() == "e6f92b09-b2c5-4536-8270-a4d9e5bbd930"){ // bool
+        const newInput = createElement("Checkbox", p.getName(), body.id);
+        binding?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath((e) =&gt; e.specialization == "Component"), newInput.getMappingPath((e) =&gt; e.specialization == "Component View"))
+        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(p.getName())
+    }
+    else if (p.typeReference.getTypeId() == "6b649125-18ea-48fd-a6ba-0bfff0d8f488"){ // guid (This isn't a good enough check - need to traverse to domain)
+        const newInput = createElement("Select", p.getName(), body.id);
+        binding?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath((e) =&gt; e.specialization == "Component"), newInput.getMappingPath((e) =&gt; e.specialization == "Component View"))
+        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(p.getName())
+    }
+});</script>
+            </option>
+            <option>
+              <text>Auto-map to Input</text>
+              <shortcut>space</shortcut>
+              <icon type="FontAwesome" source="code" />
+              <isOptionVisibleFunction>return element.typeReference.getType().getName() == "string"</isOptionVisibleFunction>
+              <script>const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
+const parent = mapping.getTargetElement();
+const newElement = createElement("Text Input", element.getName(), parent.id);
+mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), newElement.getMappingPath());</script>
+            </option>
+          </scriptOptions>
+          <staticMappableSettings />
+          <childSettings />
+        </mappableElementExtension>
+      </mappableElementExtensions>
     </mappableElementPackageExtension>
   </mappableElementPackageExtensions>
 </settings>

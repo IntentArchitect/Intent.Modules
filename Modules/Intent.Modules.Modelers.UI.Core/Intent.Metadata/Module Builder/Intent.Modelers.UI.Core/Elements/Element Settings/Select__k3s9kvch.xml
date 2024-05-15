@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="78e0bdf7-424f-4820-95d5-b756b0ebc87a" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Select</name>
+  <display>Select</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>3cd798f0-8cdf-42a4-b733-469632a86f27</parentFolderId>
+  <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+  <packageName>Intent.Modelers.UI.Core</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="52f3c2e8-6438-494a-b0a7-7a9e61c8aae8" display="Target Traits" isActive="true" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="[]" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAABOxJREFUeF7tm09oXEUcx7/z3kt2N0GNJHWTje0hiH8oaPFWvImHFsSDBUXEoqikVK3gQQSL2UILevFQEBFFiZGSFIzgRcFCL1LwGA/2ouCfpJvdpkmatmbfvvfmJ7ObmE1O/c3PbN6LM+ffd36/+cz3vdmdeaPgmoiAEqmdGA6g0AQOoAMoJCCUOwc6gEICQrlzoAMoJCCUOwc6gEICQrlzoAMoJCCUOwc6gEICQrnYgXQePoLhPnSRuC/hWHjySBHiuWX1DBKecHO0aNA0WfoRHkZA6JYUsYPaRmOZlnKjlf22NVgBpHOlAQTqJ3TTCAoKCEw3ZFtD53QawOLmOhvLBN3AH7o7Otg7ulDhFsMGSGV4eHAoglIe9vktbiFlgh9iApbaABLQWCLoqIUtP1gJuI80H+BU6QkAPzQzdgFYS86duTTEkwbChY3JJx9Hel6rTHNqswE4Bg9llDxg1jwT2WwGnnEfxRv1a6JTvW/Olzkj4gOcLB2HwkfwAdn6xSnzv481zqMt6y956p2e1698wMnGB/jFnsFGGFSUx0mTnlgdY5Pr2ivTuajEXUjYAE3C8OOh53WEcaDpw93QEi/Ai7njla+4g7ECSJ+gq94oHQXRZ9yEqYz31Mv5risTapS/JFoBXIdAZ+/L1XHzWRWog6DMHZESES7lde95deLX0HZiRQBtk+4mnQMonE0H0AEUEhDKnQMdQCEBodw50AEUEhDKnQN3CmBzY/WB4cPw9QGQeggqY/9ECKSJLkdLeiZXrX6vymjb2Lp9qlYONH/hULw1DajDQMbAbWFjtvSpgQtXI/+pvW/Nrt4+ulakHcCp0qcAXuEmS2N8c0u/AXjARO5E5Si3RjZA+ro4gtj/jZsojfFbt/T9bu9A97G5GU6tfIBTpbcBsHZtOQV1MjZaJiTt+zAKJwtvVM5wavjfAoxuEJK/t6DqBMBw/J6HVejPqIAzT+mJNe87c5BkHt+tzSskj+Rerf3MqZbtQNP56tmhLwG8wEmUgdiJQicWEQPirw/vLezpSr4lgjkjzn5TuLDQyZ8xhhiVEYQDxUNQ3uOkUcwiRaUwD3gXcwtznf0hnUVY21Wz1Ttwu4rJYr8OoHDWHEAHUEhAKHcOdACFBIRy50AHUEhAKBc5kC4iQG3waShvP4iy9cWgUhpJ8gtWqtM2X2Wtc7cC2AQ3XzoCD5PCCdxxudmRjm8kx3rurH1uA9IO4GTxSSj/GwAZ3dTamDdzJhJdJx2v0rG+sao5qmA1NkAaH+5HnhZYWVIaTOaawzVCcovQWNTI5eO9PeXFWU65fIDrH5lzsqQ01nwvbQDqegugCtTJvtPVbd/SHwPAugqQRn46BMzja1p8kxCvaGjgVP/7NdbY2A6Mzg0d8hL1nd2BaApQakAnZuFo1UIRIbza2t8PetRzd7xXZS2MbIDmdmZ9fijOLMD2m14JENaSf6+p9T1a2/6rXs1ZO90/vJIEl7wA+1LgKasSdNg6UF9rf+p8/Fg/cwExWrYD26u9/m7xMiV0NynkpX1ZURCIFGC+0q97PlbuOlO737YrEUCT1BwwDSTRoMrYQ00BKD9QqKiXfq/bwhM7UJJ4t2jFDtwtIGzH4QDaklvTOYAOoJCAUO4c6AAKCQjlzoEOoJCAUO4c6AAKCQjlzoEOoJCAUO4c6AAKCQjl/wBWY6Jgxjd/HAAAAABJRU5ErkJggg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="true" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="By type then name" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="b407aace-ad14-484e-ac93-4762a3d182d8" name="[Component]">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Modelers.UI</definitionPackageName>
+      <definitionPackageId>5c4628ec-679e-4f3d-afda-137c978deae0</definitionPackageId>
+      <properties />
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

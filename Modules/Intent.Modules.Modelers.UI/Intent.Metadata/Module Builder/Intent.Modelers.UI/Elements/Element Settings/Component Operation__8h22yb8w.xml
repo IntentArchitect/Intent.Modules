@@ -48,6 +48,12 @@
         <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="12bec4f8-487a-40f8-a6d2-c519d995eb38" name="[Invokable Operation]">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Modelers.UI</definitionPackageName>
+      <definitionPackageId>5c4628ec-679e-4f3d-afda-137c978deae0</definitionPackageId>
+      <properties />
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements>

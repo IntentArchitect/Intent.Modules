@@ -57,7 +57,7 @@
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjguNTIiIHkxPSI0Ny45NjMiIHgyPSIyOC41MiIgeTI9IjIuNjE0OSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQkIwNDEiLz4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0ZDQjY0NSIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojRjU3RjIwIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZD0iTTMyLjMsMTYuOEwzMi4zLDE2LjhsNy4zLTE0LjZIMjFMOC41LDI3aDE0LjhMMTMsNDcuM2gzLjVsMzItMzAuNUgzMi4zeiBNMjguOSwyMy42SDE0LjFsOS0xNy45SDM0DQoJCWwtNy4zLDE0LjVoMTMuMmwtMTgsMTcuMUwyOC45LDIzLjZ6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwMzgzNzUxNzE2NTE0NzY2NDY1OTAwMDAwMTc5NDgxMjkxMzg1NzM2NzI4NjZfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjM5LjY1NzYiIHkxPSI0Ni42NzE2IiB4Mj0iMzkuNjU3NiIgeTI9IjIuMjQ0Ij4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRjU3RjIwIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQkIwNDEiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwMzgzNzUxNzE2NTE0NzY2NDY1OTAwMDAwMTc5NDgxMjkxMzg1NzM2NzI4NjZfKSIgZD0iTTMyLjEsMzUuMXYxMS41aDE1LjJWMzUuMUgzMi4xeiBNNDMuNSw0My44aC03LjYNCgkJVjM4aDcuNlY0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMDc3MzA5NDE0Nzg3MTUwODIyMzAwMDAwMDE1OTQxMzM2NjU0NTc1NDQyMDc3XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSI4LjUxNSIgeTE9IjQ3LjQyMzYiIHgyPSI4LjUxNSIgeTI9IjEuOTU2OCI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQkIwNDEiLz4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojRkJCMDQxIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMDc3MzA5NDE0Nzg3MTUwODIyMzAwMDAwMDE1OTQxMzM2NjU0NTc1NDQyMDc3XykiIGQ9Ik0yLjQsMi4ydjkuM2gxMi4zVjIuMkgyLjR6IE0xMS42LDkuMkg1LjRWNC41DQoJCWg2LjJWOS4yeiIvPg0KPC9nPg0KPC9zdmc+DQo=" />
           <specializationType>Event Emitter</specializationType>
           <specializationTypeId>d6739ffc-30e6-4170-a105-bf28e69aa578</specializationTypeId>
-          <defaultName>newCommand</defaultName>
+          <defaultName>EventEmitter</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
@@ -66,15 +66,16 @@
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My43MDc2IiB4Mj0iMjUiIHkyPSI0LjMwNzYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00NC4xLDExLjlMMjUuNSwyLjhjLTAuMy0wLjEtMC42LTAuMS0wLjksMEw1LjksMTEuOQ0KCWMtMC40LDAuMi0wLjYsMC41LTAuNiwwLjl2MjQuM2MwLDAuNCwwLjIsMC43LDAuNiwwLjlsMTguNiw5LjJjMC4xLDAuMSwwLjMsMC4xLDAuNSwwLjFzMC4zLDAsMC41LTAuMUw0NC4xLDM4DQoJYzAuNC0wLjIsMC42LTAuNSwwLjYtMC45VjEyLjlDNDQuNywxMi41LDQ0LjUsMTIuMSw0NC4xLDExLjl6IE0yNSw1LjlsMTQsNi45bC0xNCw2LjlsLTE0LTYuOUwyNSw1Ljl6IE04LjQsMzUuOVYxNWwxNS4xLDcuNHYyMC45DQoJTDExLDM3LjFMOC40LDM1Ljl6IE0yNi41LDQzLjNWMjIuNEw0MS42LDE1djIwLjlMMzksMzcuMUwyNi41LDQzLjN6Ii8+DQo8L3N2Zz4NCg==" />
           <specializationType>Component Operation</specializationType>
           <specializationTypeId>e030c97a-e066-40a7-8188-808c275df3cb</specializationTypeId>
-          <defaultName>NewComponentOperation</defaultName>
+          <defaultName>Operation</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
           <text>Add Model Definition</text>
+          <shortcut>ctrl + shift + m</shortcut>
           <icon type="UrlImagePath" source="./img/icons/uml/Class_256x.png" />
           <specializationType>Model Definition</specializationType>
           <specializationTypeId>bd3941b5-e3b3-4a40-96e6-b9c87cea0101</specializationTypeId>
-          <defaultName>NewModel</defaultName>
+          <defaultName>ModelType</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="association">
@@ -90,14 +91,19 @@ return hasStereotype(pageStereotypeId)</isOptionVisibleFunction>
         </option>
       </creationOptions>
       <scriptOptions />
-      <mappingOptions />
+      <mappingOptions>
+        <option mappingType="View Binding" mappingTypeId="c33f86ad-423a-4a6f-a80c-a3206eafe5cd">
+          <text>Manage View Bindings</text>
+          <shortcut>ctrl + shift + b</shortcut>
+        </option>
+      </mappingOptions>
       <mappingSettings />
       <visualSettings type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b">
         <size width="${w}" height="${h}" />
         <position x="${x}" y="${y}" />
         <display>
           <drawPath>
-            <path>`M${x + 20},${y} h${w - 40} a20,20 0 0 1 20,20 v${h - 40} a20,20 0 0 1 -20,20 h-${w - 40} a20,20 0 0 1 -20,-20 v-${h - 40} a20,20 0 0 1 20,-20 z`</path>
+            <path>`M${x + 15},${y} h${w - 30} a15,15 0 0 1 15,15 v${h - 30} a15,15 0 0 1 -15,15 h-${w - 30} a15,15 0 0 1 -15,-15 v-${h - 30} a15,15 0 0 1 15,-15 z`</path>
             <lineColor>#0077b6</lineColor>
           </drawPath>
           <drawText>
@@ -143,6 +149,29 @@ return hasStereotype(pageStereotypeId)</isOptionVisibleFunction>
                 <position x="${x}" y="${y}" />
               </drawText>
             </display>
+            <defaultSize width="`${parent.w}`" height="18" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings />
+          </childElementVisualSetting>
+          <childElementVisualSetting type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+            <size width="`${parent.w}`" height="18" />
+            <position x="`${parent.x}`" y="${parent.y + (parent.elements['Property'].any() ? 12 : 0) + (parent.elements['Property'].size.height) + ($index * 18) + 36}" />
+            <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
+            <display>
+              <drawPath>
+                <condition>return $firstOfType;</condition>
+                <path>`M${x},${y - 6} h${w}`</path>
+              </drawPath>
+              <drawText>
+                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
+                <size width="${w}" height="${h}" />
+                <position x="${x}" y="${y}" />
+              </drawText>
+            </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
             <defaultSize width="`${parent.w}`" height="18" />
             <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings />
@@ -216,12 +245,7 @@ if (selected.type == "core") {
 </script>
             </option>
           </scriptOptions>
-          <mappingOptions>
-            <option mappingType="View Binding" mappingTypeId="c33f86ad-423a-4a6f-a80c-a3206eafe5cd">
-              <text>Bind To Component</text>
-              <shortcut>ctrl + shift + b</shortcut>
-            </option>
-          </mappingOptions>
+          <mappingOptions />
           <mappingSettings />
           <macros>
             <macro trigger="on-created">
@@ -336,6 +360,9 @@ return result;</displayFunction>
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+          <implements>
+            <trait id="12bec4f8-487a-40f8-a6d2-c519d995eb38" name="[Invokable Operation]" />
+          </implements>
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My43MDc2IiB4Mj0iMjUiIHkyPSI0LjMwNzYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00NC4xLDExLjlMMjUuNSwyLjhjLTAuMy0wLjEtMC42LTAuMS0wLjksMEw1LjksMTEuOQ0KCWMtMC40LDAuMi0wLjYsMC41LTAuNiwwLjl2MjQuM2MwLDAuNCwwLjIsMC43LDAuNiwwLjlsMTguNiw5LjJjMC4xLDAuMSwwLjMsMC4xLDAuNSwwLjFzMC4zLDAsMC41LTAuMUw0NC4xLDM4DQoJYzAuNC0wLjIsMC42LTAuNSwwLjYtMC45VjEyLjlDNDQuNywxMi41LDQ0LjUsMTIuMSw0NC4xLDExLjl6IE0yNSw1LjlsMTQsNi45bC0xNCw2LjlsLTE0LTYuOUwyNSw1Ljl6IE04LjQsMzUuOVYxNWwxNS4xLDcuNHYyMC45DQoJTDExLDM3LjFMOC40LDM1Ljl6IE0yNi41LDQzLjNWMjIuNEw0MS42LDE1djIwLjlMMzksMzcuMUwyNi41LDQzLjN6Ii8+DQo8L3N2Zz4NCg==" />
           <saveAsOwnFile>false</saveAsOwnFile>
           <displayFunction>const getTypeReferenceCssClass = (typeReference) =&gt; {
@@ -575,6 +602,8 @@ return validateOperationParameter(lookup(id));
               <type type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
               <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
               <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+              <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+              <type type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" />
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
@@ -1102,7 +1131,9 @@ return display;
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
-          <targetTypes />
+          <targetTypes>
+            <type type="[Invokable Operation]" typeId="12bec4f8-487a-40f8-a6d2-c519d995eb38" />
+          </targetTypes>
           <allowIsNavigable>true</allowIsNavigable>
           <allowIsNullable>true</allowIsNullable>
           <allowIsCollection>true</allowIsCollection>
@@ -1180,7 +1211,7 @@ return display;
         <mappingOptions />
       </targetEnd>
       <visualSettings type="Navigation" typeId="6d2b2070-c1cb-4cd2-88b4-4e5f8414bd9e">
-        <lineType>Elbow-Connector</lineType>
+        <lineType>Curved</lineType>
         <lineColor>#ade8f4</lineColor>
         <sourceEnd>
           <primaryLabel>function getInputs() {
@@ -1246,7 +1277,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
           <childSettings>
             <childSetting id="3b678f2f-e3ae-4ba7-ac4b-542f4d3a7f5a" name="Operation" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -1255,7 +1285,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
               <childSettings>
                 <childSetting id="db5b4461-17f3-4f50-af26-980b01311bb3" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
                   <allowMultipleMappings>true</allowMultipleMappings>
@@ -1264,8 +1293,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
                   <traversableTypes />
                   <canBeModified>false</canBeModified>
                   <represents>data</represents>
-                  <staticMappableSettings />
-                  <childSettings />
                 </childSetting>
               </childSettings>
             </childSetting>
@@ -1278,8 +1305,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mapping>
         <mapping id="9cdca127-3a66-4ed0-9241-73512d63f326" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -1288,7 +1313,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
           <childSettings>
             <childSetting id="0f9dc6cd-d0c6-42d2-bb7b-63cc99d8ef8c" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -1299,8 +1323,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
@@ -1311,8 +1333,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mapping>
       </sourceMappings>
       <targetMappings>
@@ -1354,8 +1374,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mapping>
       </sourceMappings>
       <targetMappings>
@@ -1367,8 +1385,15 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
           <childSettings>
+            <childSetting id="5ebb5c51-f6ee-4fce-ba44-54e5d8ca70c0" name="Layout Header" type="Layout Header" typeId="a6c3a89e-5932-4ab6-a406-75444f05beee" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
             <childSetting id="bfc2fdb2-0b31-4b56-9f61-424b5f9a24a5" name="Layout Sider" type="Layout Sider" typeId="c505f35f-7148-46a3-a812-d9f53a174490" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
@@ -1376,8 +1401,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
             <childSetting id="121df094-7cbe-4f27-ad88-933234604d62" name="Layout Body" type="Layout Body" typeId="11636699-8bad-4693-8c15-8141bd66d04f" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -1386,8 +1409,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
             <childSetting id="7942c418-e228-4509-b7e5-c30b3985113a" name="Layout Footer" type="Layout Footer" typeId="5d4fe8e9-2ccf-42ea-af60-04c6970c9ecb" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -1396,8 +1417,6 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
@@ -1457,11 +1476,8 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iRW52ZWxvcGUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI1LjAwNSIgeTE9IjQ0LjA2MiIgeDI9IjI0Ljk5NTIiIHkyPSI4Ljc4OTciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0xKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzYyQzZFQiIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBvbHlnb24gZmlsbD0idXJsKCNTVkdJRF8xXykiIHBvaW50cz0iMzQuMSwzNC4xIDMxLjksMzIgMzEuOSwyNi42IDE1LDI2LjYgMTUsMjEuMyA2LjIsMzAgMTUsMzguOCAxNSwzMy43IDI1LDMzLjcgMjUsMzYuOCANCgkJMTguMiwzNi44IDE4LjIsNDIgMTUuOSw0NC4yIDE1LDQzLjMgNCwzMi4zIDEuOCwzMCA0LDI3LjggMTUuOSwxNS45IDE4LjIsMTguMSAxOC4yLDIzLjUgMzUuMSwyMy41IDM1LjEsMjguNyA0My44LDIwIDM1LjEsMTEuMyANCgkJMzUuMSwxNi40IDI1LDE2LjQgMjUsMTMuMyAzMS45LDEzLjMgMzEuOSw4IDM0LjEsNS44IDM1LjEsNi44IDQ2LDE3LjcgNDguMiwyMCAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
-              <staticMappableSettings />
-              <childSettings />
             </staticMappableSetting>
           </staticMappableSettings>
-          <childSettings />
         </mapping>
         <mapping id="1dbd5867-c6a4-403e-bc5d-e404cd31c52e" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -1470,7 +1486,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
           <childSettings>
             <childSetting id="bb35b2cf-81e2-45cd-aadf-58453da35223" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -1481,8 +1496,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
@@ -1495,8 +1508,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mapping>
         <mapping id="dd876d42-e151-4c51-b3e9-a0231ba36b32" name="Model Definition" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -1505,7 +1516,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
           <childSettings>
             <childSetting id="fa5c8efc-e4fd-4a77-90c9-2fabb070086d" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -1514,8 +1524,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
@@ -1526,8 +1534,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mapping>
         <mapping id="eabaa397-4b78-4da3-83ec-7bba98b7849f" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -1536,7 +1542,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
           <childSettings>
             <childSetting id="a6fe94be-9907-4fc6-991c-e068bcd7bbc5" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -1547,8 +1552,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
@@ -1569,7 +1572,7 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
     <mappingSetting type="View Binding" typeId="c33f86ad-423a-4a6f-a80c-a3206eafe5cd">
       <title>View Binding</title>
       <isRequiredFunction>return true;</isRequiredFunction>
-      <sourceRootElementFunction>return element.getParent("Component")?.id ?? element.id;</sourceRootElementFunction>
+      <targetRootElementFunction>return element.getChildren("Component View")[0].id;</targetRootElementFunction>
       <sourceMappings>
         <importSettings id="2d30eb9d-daa0-45d7-a596-32c57d61c6bd" name="Component Code Mappables" />
         <mapping id="623961a3-9b82-411e-b1e5-28c14a495d65" name="Component" type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" version="2.0.0">
@@ -1577,10 +1580,8 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
-          <canBeModified>false</canBeModified>
+          <canBeModified>true</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mapping>
         <mapping id="854ba3a2-cc26-44a1-9e83-01f1b55b0508" name="Model Definition" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -1589,21 +1590,18 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mapping>
       </sourceMappings>
       <targetMappings>
         <importSettings id="ddf81941-f0b0-4ab0-a8d6-42ddc9e5da99" name="Bindable Components" />
         <mapping id="7df7efbd-a074-4f54-8b05-95e2e6b3f27d" name="View" type="Component View" typeId="624513a6-cba8-4dde-8ebe-6b19f00f0364" version="2.0.0">
-          <filterFunction>return mappingContext.targetElementId == element.id;</filterFunction>
+          <filterFunction>return mappingContext.targetElementId == element.getParent().id;</filterFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
-          <canBeModified>false</canBeModified>
+          <canBeModified>true</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
           <childSettings>
             <childSetting id="9590c94b-71dd-4d0d-86b1-298d0b09b2c6" name="Display Component" type="Display Component" typeId="866a90f7-4044-43b9-bb05-7270c7889796" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -1614,8 +1612,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
@@ -1636,7 +1632,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <sourceFilterFunction>return element.represents == 'invokable'</sourceFilterFunction>
           <sourceArrowFunction>return `M ${x} ${y} l 10 5 l 0 -10 z`</sourceArrowFunction>
           <targets />
-          <targetFilterFunction>return element.represents == 'invokable'</targetFilterFunction>
           <targetArrowFunction>return null</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
@@ -1654,8 +1649,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mappableElement>
         <mappableElement id="b5dac39d-db1d-40ff-8763-3a9fd5612af7" name="Event Emitter" type="Event Emitter" typeId="d6739ffc-30e6-4170-a105-bf28e69aa578" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -1664,8 +1657,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mappableElement>
         <mappableElement id="8e7e9ba1-c3f9-494a-ae5d-6628774c01a1" name="Model Definition" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" version="2.0.0">
           <filterFunction>return false;</filterFunction>
@@ -1675,8 +1666,15 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
+        </mappableElement>
+        <mappableElement id="45b3448c-3c5c-4c38-b02f-36d5a20069ce" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
+          <isRequiredFunction>return true;</isRequiredFunction>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>true</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
         </mappableElement>
         <mappableElement id="797ad7f2-390b-49f2-ab16-d3ce01e51fc0" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -1687,8 +1685,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           </traversableTypes>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mappableElement>
       </mappableElementSettings>
     </mappableElementPackage>
@@ -1699,6 +1695,15 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
     <mappableElementPackage id="2d30eb9d-daa0-45d7-a596-32c57d61c6bd" name="Component Code Mappables">
       <imports />
       <mappableElementSettings>
+        <mappableElement id="e33a8ee6-bf15-417d-ae84-fe650e83d8c1" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <useChildSettingsFrom>44c0579d-d730-4c8c-ad04-eb14599ce56c</useChildSettingsFrom>
+          <represents>data</represents>
+        </mappableElement>
         <mappableElement id="44c0579d-d730-4c8c-ad04-eb14599ce56c" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
@@ -1706,7 +1711,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
           <childSettings>
             <childSetting id="5dacc38f-5bdd-43f5-8d2f-5ad3f12071ee" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -1717,8 +1721,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mappableElement>
@@ -1729,8 +1731,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mappableElement>
         <mappableElement id="3e0d7b15-8756-4692-9dcf-6c072bc91ad2" name="Navigation Target End" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -1739,7 +1739,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
-          <staticMappableSettings />
           <childSettings>
             <childSetting id="9239fc31-6df8-4cf9-b0c4-09f58b75d54b" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -1748,8 +1747,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mappableElement>
@@ -1760,8 +1757,6 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mappableElement>
         <mappableElement id="dd00e457-f34b-47ea-bca6-138a3f52c385" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -1770,8 +1765,15 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
+        </mappableElement>
+        <mappableElement id="e24726f8-89cd-4588-9c23-356b9a9f8c95" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <useChildSettingsFrom>44c0579d-d730-4c8c-ad04-eb14599ce56c</useChildSettingsFrom>
+          <represents>data</represents>
         </mappableElement>
       </mappableElementSettings>
     </mappableElementPackage>

@@ -10,21 +10,21 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.UI.Core.Api
 {
-    public static class CheckboxModelStereotypeExtensions
+    public static class SelectModelStereotypeExtensions
     {
-        public static Interaction GetInteraction(this CheckboxModel model)
+        public static Interaction GetInteraction(this SelectModel model)
         {
             var stereotype = model.GetStereotype(Interaction.DefinitionId);
             return stereotype != null ? new Interaction(stereotype) : null;
         }
 
 
-        public static bool HasInteraction(this CheckboxModel model)
+        public static bool HasInteraction(this SelectModel model)
         {
             return model.HasStereotype(Interaction.DefinitionId);
         }
 
-        public static bool TryGetInteraction(this CheckboxModel model, out Interaction stereotype)
+        public static bool TryGetInteraction(this SelectModel model, out Interaction stereotype)
         {
             if (!HasInteraction(model))
             {
@@ -36,19 +36,19 @@ namespace Intent.Modelers.UI.Core.Api
             return true;
         }
 
-        public static LabelAddon GetLabelAddon(this CheckboxModel model)
+        public static LabelAddon GetLabelAddon(this SelectModel model)
         {
             var stereotype = model.GetStereotype(LabelAddon.DefinitionId);
             return stereotype != null ? new LabelAddon(stereotype) : null;
         }
 
 
-        public static bool HasLabelAddon(this CheckboxModel model)
+        public static bool HasLabelAddon(this SelectModel model)
         {
             return model.HasStereotype(LabelAddon.DefinitionId);
         }
 
-        public static bool TryGetLabelAddon(this CheckboxModel model, out LabelAddon stereotype)
+        public static bool TryGetLabelAddon(this SelectModel model, out LabelAddon stereotype)
         {
             if (!HasLabelAddon(model))
             {
@@ -63,7 +63,7 @@ namespace Intent.Modelers.UI.Core.Api
         public class Interaction
         {
             private IStereotype _stereotype;
-            public const string DefinitionId = "6e04ff81-f043-4ac6-8632-798aedbaaf20";
+            public const string DefinitionId = "6a75e4ef-66bd-45b3-b74a-2d75b384c8cd";
 
             public Interaction(IStereotype stereotype)
             {
@@ -72,14 +72,19 @@ namespace Intent.Modelers.UI.Core.Api
 
             public string Name => _stereotype.Name;
 
-            public bool IsRequired()
+            public string Options()
             {
-                return _stereotype.GetProperty<bool>("Is Required");
+                return _stereotype.GetProperty<string>("Options");
             }
 
-            public bool IsEnabled()
+            public string Key()
             {
-                return _stereotype.GetProperty<bool>("Is Enabled");
+                return _stereotype.GetProperty<string>("Key");
+            }
+
+            public string Value()
+            {
+                return _stereotype.GetProperty<string>("Value");
             }
 
         }

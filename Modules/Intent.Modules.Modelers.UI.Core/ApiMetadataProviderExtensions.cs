@@ -24,5 +24,12 @@ namespace Intent.Modelers.UI.Core.Api
                 .ToList();
         }
 
+        public static IList<SelectModel> GetSelectModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(SelectModel.SpecializationTypeId)
+                .Select(x => new SelectModel(x))
+                .ToList();
+        }
+
     }
 }

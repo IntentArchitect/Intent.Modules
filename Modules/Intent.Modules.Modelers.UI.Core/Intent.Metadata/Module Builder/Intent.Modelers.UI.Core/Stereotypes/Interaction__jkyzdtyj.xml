@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="2c099977-e5ca-4a80-ba70-6f2edc593681" version="3.1.0">
-  <name>Label Addon</name>
+<stereotypeDefinition id="6a75e4ef-66bd-45b3-b74a-2d75b384c8cd" version="3.1.0">
+  <name>Interaction</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="4803bf60-c626-4cbe-94ed-0f1eafff9fe3">Text Input</type>
-    <type id="be9ecdbd-6ded-4057-af76-1b09f3a6cea3">Checkbox</type>
     <type id="78e0bdf7-424f-4820-95d5-b756b0ebc87a">Select</type>
   </targetTypes>
   <targetReferenceTypes />
-  <applyMode>on-create</applyMode>
+  <applyMode>always</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
-  <displayFunction>return getProperty("66fc3478-6e87-4226-97a9-d9bd72d2fbaf").getValue();</displayFunction>
-  <displayAsAnnotation>true</displayAsAnnotation>
-  <displayAsText>false</displayAsText>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>a2a95421-3e55-43c7-96ad-355610b43c4d</parentFolderId>
@@ -22,14 +20,30 @@
   <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
   <packageName>Intent.Modelers.UI.Core</packageName>
   <properties>
-    <property id="66fc3478-6e87-4226-97a9-d9bd72d2fbaf">
-      <name>Label</name>
+    <property id="83c7d771-b51b-4ca8-9451-10d154c99b05">
+      <name>Options</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <represents>data</represents>
-      <defaultValue>Label</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="cdbb3669-f3b5-4d56-a274-4a1f92d4a451">
+      <name>Key</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="4d698735-be31-4e69-9fa0-27ddd077b465">
+      <name>Value</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
       <valueOptions />
       <lookupTypes />
     </property>
