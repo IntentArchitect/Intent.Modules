@@ -15,6 +15,7 @@ public interface IBuildsCSharpMembers
     IBuildsCSharpMembers AddField(string type, string name, Action<CSharpField> configure = null);
     IBuildsCSharpMembers AddProperty(string type, string name, Action<CSharpProperty> configure = null);
     IBuildsCSharpMembers AddMethod(string returnType, string name, Action<CSharpClassMethod> configure = null);
+    IBuildsCSharpMembers AddClass(string name, Action<CSharpClass> configure = null);
 }
 
 public interface IHasCSharpName

@@ -48,6 +48,10 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
     {
     }
 
+    public CSharpClass(string name, ICSharpFile file) : this(name, Type.Class, file)
+    {
+    }
+
     public CSharpCodeSeparatorType BeforeSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
     public CSharpCodeSeparatorType AfterSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
 
@@ -273,6 +277,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
         configure(param);
         GenericTypeConstraints.Add(param);
         return this;
+    }
+
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<CSharpClass> configure = null)
+    {
+        return AddNestedClass(name, configure);
     }
 
     public CSharpClass AddNestedClass(string name, Action<CSharpClass> configure = null)

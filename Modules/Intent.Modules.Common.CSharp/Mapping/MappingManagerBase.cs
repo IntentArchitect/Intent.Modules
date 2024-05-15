@@ -32,6 +32,19 @@ public class MappingModel
     {
     }
 
+    public MappingModel(string mappingType,
+        string mappingTypeId,
+        IList<IElementToElementMappedEnd> mappings,
+        MappingManagerBase manager) : this(
+        mappingType: mappingType,
+        mappingTypeId: mappingTypeId,
+        model: mappings.First().TargetElement,
+        mappings: mappings,
+        manager: manager,
+        level: mappings.First().TargetPath.Count)
+    {
+    }
+
     private MappingModel(
         string mappingType,
         string mappingTypeId,
@@ -160,8 +173,11 @@ public abstract class MappingManagerBase
     {
         //var mapping = CreateMapping(new MappingModel(model, this), GetUpdateMappingType);
         //ApplyReplacements(mapping);
-
-        var mappingModel = new MappingModel(model.Type, model.TypeId, mappingEnd, this);
+        // Get provided mapping and it's children:
+        var mappings = model.MappedEnds.Where(m => mappingEnd.TargetPath.All(t => m.TargetPath.Any(x => x.Id == t.Id)))
+            .OrderBy(x => x.TargetPath.Count)
+            .ToList();
+        var mappingModel = new MappingModel(model.Type, model.TypeId, mappings, this);
         var mapping = ResolveMappings(mappingModel);//, new ObjectUpdateMapping(mappingModel, _template));
         ApplyReplacements(mapping);
 
