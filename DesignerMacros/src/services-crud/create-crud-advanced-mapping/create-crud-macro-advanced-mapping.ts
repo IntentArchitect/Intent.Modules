@@ -29,6 +29,12 @@ async function execute(element: IElementApi) {
     if (primaryKeys.length > 0) {
         servicesCrud.createStandardUpdateOperation(service, entity, folder);
         servicesCrud.createStandardDeleteOperation(service, entity);
+
+        const operations = DomainHelper.getCommandOperations(entity);     
+        for (const operation of operations) {
+            servicesCrud.createCallOperationCommand(service, operation, entity, folder);
+        }
+
     }
 
     service.getChildren("Operation").forEach(operation => {

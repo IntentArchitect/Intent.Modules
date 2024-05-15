@@ -2,7 +2,7 @@
 
 public class IntentModule
 {
-    public static readonly IntentModule IntentCommonDart = new("Intent.Common.Dart", "1.1.0-pre.0");
+    public static readonly IntentModule IntentCommonDart = new("Intent.Common.Dart", "1.1.0");
 
     public IntentModule(string name, string version)
     {

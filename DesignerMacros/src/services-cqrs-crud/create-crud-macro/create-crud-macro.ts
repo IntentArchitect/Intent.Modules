@@ -36,10 +36,7 @@ namespace cqrsCrud {
             createCqrsUpdateCommand(entity, folder);
         }
 
-        const allowedOperationNames = ["Get", "Find", "Filter", "Query", "Is", "Must", "Can"]
-        const operations = entity.getChildren("Operation").filter(
-            operation => operation.typeReference.getType() == null || 
-            !allowedOperationNames.some(allowedOperationName => operation.getName().startsWith(allowedOperationName)));
+        const operations = DomainHelper.getCommandOperations(entity);     
         for (const operation of operations) {
             createCqrsCallOperationCommand(entity, operation, folder);
         }
@@ -102,7 +99,7 @@ namespace cqrsCrud {
                 ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), toAdd);
             }
             commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
-            commandManager.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
+            commandManager.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity));
         }
 
         if (owningAggregate != null) {
@@ -198,7 +195,7 @@ namespace cqrsCrud {
         command.getElement().setMetadata("baseName", baseName);
 
         command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
-        command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
+        command.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity));
 
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(command.getElement(), primaryKeys);
@@ -207,7 +204,7 @@ namespace cqrsCrud {
             addAggregatePkToCommandOrQuery(owningAggregate, command.getElement());
         }
 
-        onMapCommand(command.getElement(), true);
+        onMapCommand(command.getElement(), true, true);
         command.collapse();
         return command.getElement();
     }
@@ -343,42 +340,6 @@ namespace cqrsCrud {
                 x.isNullable = false;
             });
             ServicesHelper.addDtoFieldsFromDomain(commandOrQuery, aggPks);
-        }
-    }
-
-    function getMandatoryAssociationsWithMapPath(entity: MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
-        return traverseInheritanceHierarchy(entity, [], []);
-
-        function traverseInheritanceHierarchy(
-            entity: MacroApi.Context.IElementApi,
-            results: IAttributeWithMapPath[],
-            generalizationStack: string[]
-        ): IAttributeWithMapPath[] {
-            entity
-                .getAssociations("Association")
-                .filter(x => !x.typeReference.isCollection && !x.typeReference.isNullable && x.typeReference.isNavigable &&
-                    !x.getOtherEnd().typeReference.isCollection && !x.getOtherEnd().typeReference.isNullable)
-                .forEach(association => {
-                    return results.push({
-                        id: association.id,
-                        name: association.getName(),
-                        typeId: null,
-                        mapPath: generalizationStack.concat([association.id]),
-                        isNullable: false,
-                        isCollection: false
-                    });
-                });
-
-
-            let generalizations = entity.getAssociations("Generalization").filter(x => x.isTargetEnd());
-            if (generalizations.length == 0) {
-                return results;
-            }
-
-            let generalization = generalizations[0];
-            generalizationStack.push(generalization.id);
-
-            return traverseInheritanceHierarchy(generalization.typeReference.getType(), results, generalizationStack);
         }
     }
 

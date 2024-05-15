@@ -4,5 +4,5 @@ namespace Intent.Modules.ModuleBuilder.Sql;
 
 public static class IntentNugetPackages
 {
-    public static readonly NugetPackageInfo IntentModulesCommonSql = new("Intent.Modules.Common.Sql", "3.4.0-pre.0");
+    public static readonly NugetPackageInfo IntentModulesCommonSql = new("Intent.Modules.Common.Sql", "3.4.0");
 }

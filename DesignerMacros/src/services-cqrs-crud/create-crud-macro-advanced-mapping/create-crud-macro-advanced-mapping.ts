@@ -30,7 +30,7 @@ async function execute(element: IElementApi, domainClass?: IElementApi) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, folder));
     }
 
-    const operations = entity.getChildren("Operation").filter(x => x.typeReference.getType() == null);
+    const operations = DomainHelper.getCommandOperations(entity);     
     for (const operation of operations) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, folder));
     }

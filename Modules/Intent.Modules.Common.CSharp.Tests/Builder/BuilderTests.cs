@@ -782,4 +782,25 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task XmlCommentsOnElements()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddClass("Class", @class =>
+            {
+                @class.XmlComments.AddStatements("/// Test Class");
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.XmlComments.AddStatements("/// Test Method");
+                    method.AddParameter("string", "param", param =>
+                    {
+                        param.WithXmlDocComment("Test Parameter");
+                    });
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

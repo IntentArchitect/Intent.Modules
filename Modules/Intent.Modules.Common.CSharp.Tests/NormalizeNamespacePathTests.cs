@@ -425,5 +425,20 @@ namespace Intent.Modules.Common.CSharp.Tests
 
             result.ShouldBe("Application.Customers.GetPagedWithParameters.Something.GetPagedWithParameters");
         }
-    }
+
+		[Fact]
+		public void Scenario19()
+		{
+			var result = CSharpTemplateBase.NormalizeNamespace(
+				localNamespace: "MyProject.Entities",
+				fullyQualifiedType: "MyProject.Entities",
+				knownOtherNamespaceNames: Array.Empty<string>(),
+				usingPaths: Array.Empty<string>(),
+				outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+				knownTypes: new TypeRegistry(Enumerable.Empty<string>()));
+
+			result.ShouldBe("MyProject.Entities");
+		}
+
+	}
 }

@@ -479,6 +479,73 @@ return result;
             </mapping>
           </mappings>
         </mappingSetting>
+        <mappingSetting id="8d1f6a8a-77c8-43a2-8e60-421559725419">
+          <name>Map To Domain Operation</name>
+          <isOptionVisibleFunction>// hide if not mapped and advanced mapping mode selected in Domain Interaction Settings: return isMapped() ||     // Domain Interaction Settings -&gt; Mapping Mode     application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad")?.getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa")?.value !== "advanced";</isOptionVisibleFunction>
+          <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
+          <optionsSource>elements-of-type</optionsSource>
+          <autoSyncTypeReferences>true</autoSyncTypeReferences>
+          <symbol>fa-long-arrow-right</symbol>
+          <targetTypeOptions>
+            <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Class" />
+          </targetTypeOptions>
+          <mapFrom>root</mapFrom>
+          <mappings>
+            <mapping id="877738e8-1c2a-4ab7-87fa-36f9a3820939">
+              <criteria specializationType="Class">
+                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+              </criteria>
+              <mapTo specializationType="DTO" childMappingMode="traverse" />
+              <behaviour autoSelectChildren="true" />
+              <childMappings>
+                <mapping id="c7f9d202-acda-478d-b908-382c5f36fb6c">
+                  <criteria specializationType="Operation">
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
+                  <childMappings>
+                    <mapping id="9d202961-0cde-423f-b3bf-b53534c52fd8">
+                      <criteria specializationType="Parameter">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren>false</hasChildren>
+                      </criteria>
+                      <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
+                <mapping id="c18ea020-36b1-40a6-b30d-ff74a848e8e5">
+                  <criteria specializationType="Class Constructor">
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
+                  <childMappings>
+                    <mapping id="14567bae-932a-49f7-8dcb-8f79212fca34">
+                      <criteria specializationType="Parameter">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren>false</hasChildren>
+                      </criteria>
+                      <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
+              </childMappings>
+            </mapping>
+          </mappings>
+        </mappingSetting>
       </mappingSettings>
       <macros>
         <macro trigger="on-mapped">

@@ -58,7 +58,7 @@ public abstract class CSharpDeclaration<TImpl> : CSharpMetadataBase<TImpl>
                 {
                     continue;
                 }
-                result.AppendLine($"{indentation}/// <param name=\"{parameter.Name}\">>{parameter.XmlDocComment}</param>");
+                result.AppendLine($"{indentation}/// <param name=\"{parameter.Name}\">{parameter.XmlDocComment}</param>");
             }
         }
         return result.ToString();

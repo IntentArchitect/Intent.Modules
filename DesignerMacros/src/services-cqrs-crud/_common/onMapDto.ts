@@ -1,14 +1,14 @@
 /// <reference path="./onMapFunctions.ts" />
 const stringTypeId: string = "d384db9c-a279-45e1-801e-e4e8099625f2";
 
-function onMapDto(element: MacroApi.Context.IElementApi): void {
+function onMapDto(element: MacroApi.Context.IElementApi, autoAddPrimaryKey: boolean = true, dtoPrefix: string = null ): void {
     var complexTypes: Array<string> = ["Data Contract", "Value Object"];
 
     let fields = element.getChildren("DTO-Field")
         .filter(x => x.typeReference.getType()?.specialization != "DTO" && x.getMapping()?.getElement()?.specialization.startsWith("Association"));
 
     fields.forEach(f => {
-        getOrCreateDtoCrudDto(element, f, true);
+        getOrCreateDtoCrudDto(element, f, autoAddPrimaryKey, dtoPrefix);
     });
 
     let complexAttributes = element.getChildren("DTO-Field")
@@ -17,11 +17,11 @@ function onMapDto(element: MacroApi.Context.IElementApi): void {
             ));
 
     complexAttributes.forEach(f => {
-        getOrCreateDtoCrudDto(element, f, false);
+        getOrCreateDtoCrudDto(element, f, false, dtoPrefix);
     });
 }
 
-function getOrCreateDtoCrudDto(element: MacroApi.Context.IElementApi, dtoField: MacroApi.Context.IElementApi, autoAddPrimaryKey: boolean) {
+function getOrCreateDtoCrudDto(element: MacroApi.Context.IElementApi, dtoField: MacroApi.Context.IElementApi, autoAddPrimaryKey: boolean, dtoPrefix: string = null) {
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
     const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
 
@@ -45,6 +45,8 @@ function getOrCreateDtoCrudDto(element: MacroApi.Context.IElementApi, dtoField: 
         ? `${element.getMetadata("baseName")}${domainName}`
         : domainName;
     let dtoName = `${originalVerb}${baseName}`;
+    if (dtoPrefix)
+        dtoName = `${dtoPrefix}${dtoName}`;
     let dto = getOrCreateDto(dtoName, element.getParent());
     dto.setMapping(mappedElement.typeReference.getTypeId(), targetMappingSettingId);
     if (originalVerb !== "") {

@@ -1,3 +1,7 @@
+### Version 1.1.2
+
+- Improvement: Aligned some of the CRUD Generation functionality, to make traditional service modeling has the same features as the CQRS paradigm .
+
 ### Version 1.1.1
 
 - Improvement: Updated Crud scripts to not add implicit primary keys.
