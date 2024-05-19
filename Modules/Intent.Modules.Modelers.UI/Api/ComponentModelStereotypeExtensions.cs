@@ -59,29 +59,6 @@ namespace Intent.Modelers.UI.Api
             stereotype = new Page(model.GetStereotype(Page.DefinitionId));
             return true;
         }
-        public static SupportForChildren GetSupportForChildren(this ComponentModel model)
-        {
-            var stereotype = model.GetStereotype(SupportForChildren.DefinitionId);
-            return stereotype != null ? new SupportForChildren(stereotype) : null;
-        }
-
-
-        public static bool HasSupportForChildren(this ComponentModel model)
-        {
-            return model.HasStereotype(SupportForChildren.DefinitionId);
-        }
-
-        public static bool TryGetSupportForChildren(this ComponentModel model, out SupportForChildren stereotype)
-        {
-            if (!HasSupportForChildren(model))
-            {
-                stereotype = null;
-                return false;
-            }
-
-            stereotype = new SupportForChildren(model.GetStereotype(SupportForChildren.DefinitionId));
-            return true;
-        }
 
         public class ComponentSettings
         {
@@ -123,20 +100,6 @@ namespace Intent.Modelers.UI.Api
             {
                 return _stereotype.GetProperty<string>("Title");
             }
-
-        }
-
-        public class SupportForChildren
-        {
-            private IStereotype _stereotype;
-            public const string DefinitionId = "a41c8945-0ca4-4597-b760-66473153b6ab";
-
-            public SupportForChildren(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public string Name => _stereotype.Name;
 
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace Intent.IArchitect.Agent.Persistence.Model.Common
@@ -10,6 +11,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlAttribute("typeId")]
         public string SpecializationTypeId { get; set; }
+
+        [XmlArray("implements")]
+        [XmlArrayItem("trait", typeof(ImplementedTraitPersistable))]
+        public List<ImplementedTraitPersistable> Implements { get; set; } = [];
+        public bool ShouldSerializeImplements() => Implements.Count != 0;
 
         [XmlElement("displayFunctionOverride")]
         public string DisplayFunctionOverride { get; set; }

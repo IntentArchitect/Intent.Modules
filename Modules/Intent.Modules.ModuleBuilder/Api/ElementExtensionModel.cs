@@ -70,6 +70,11 @@ namespace Intent.ModuleBuilder.Api
             {
                 SpecializationType = TypeReference.Element.Name,
                 SpecializationTypeId = TypeReference.Element.Id,
+                Implements = this.Stereotypes
+                    .Where(x => x.DefinitionId != ElementExtensionModelStereotypeExtensions.ExtensionSettings.DefinitionId &&
+                                x.DefinitionId != ElementExtensionModelStereotypeExtensions.TypeReferenceExtensionSettings.DefinitionId)
+                    .Select(x => new ImplementedTraitPersistable() { Id = x.DefinitionId, Name = x.Name })
+                    .ToList(),
                 DisplayFunctionOverride = this.GetExtensionSettings()?.DisplayTextFunction(),
                 ValidateFunctionOverride = this.GetExtensionSettings()?.ValidateFunction(),
                 CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),

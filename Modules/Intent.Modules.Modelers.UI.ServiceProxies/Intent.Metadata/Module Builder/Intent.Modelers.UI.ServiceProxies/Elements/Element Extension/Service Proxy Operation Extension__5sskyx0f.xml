@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="d8c03213-e0ab-412e-b235-cc647ca51cff" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
-  <name>Diagram Extension</name>
-  <display>Diagram Extension: Diagram</display>
+<class id="bdefea53-581b-4ba5-89dd-0eb0f130609d" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>Service Proxy Operation Extension</name>
+  <display>Service Proxy Operation Extension: Operation</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="3aa391db-3460-4e30-8df0-9fd5899ec125">
-    <typeId>8c90aca5-86f4-47f1-bd58-116fe79f5c55</typeId>
+  <typeReference id="7d552c62-ad69-471e-99d0-d1a8d83b3355">
+    <typeId>aee6811e-b2f6-4562-a8eb-502029f63bc8</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
-    <typePackageName>Intent.Modelers.Services</typePackageName>
-    <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+    <typePackageName>Intent.Modelers.Types.ServiceProxies</typePackageName>
+    <typePackageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>fe730073-37a4-4662-91cd-1630f544f522</parentFolderId>
-  <packageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</packageId>
-  <packageName>Intent.Modelers.Types.ServiceProxies</packageName>
+  <parentFolderId>10144809-6397-4c64-bc01-b83b3d270ebe</parentFolderId>
+  <packageId>81e2ef41-3cd5-482c-8833-dfba6b29431b</packageId>
+  <packageName>Intent.Modelers.UI.ServiceProxies</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
       <addedByDefault>true</addedByDefault>
@@ -30,6 +29,7 @@
         <property name="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0" display="Display Name" isActive="false" />
         <property name="17223dbd-8df0-4700-8b81-02274ca3ed7f" display="Hint" isActive="false" />
         <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" isActive="false" />
+        <property name="08ec0581-c90a-489b-858f-ee265327c948" display="Target Traits" isActive="true" />
         <property name="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e" display="Default Type Id" isActive="false" />
         <property name="7a0c4185-1c08-4d3e-9185-14683d7a3bd0" display="Allow Collection" value="Inherit" isActive="false" />
         <property name="e3dc90ec-4f5f-4f20-b271-e28a5094dc91" display="Allow Nullable" value="Inherit" isActive="false" />
@@ -43,6 +43,12 @@
         <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" value="" isActive="true" />
         <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="" isActive="true" />
       </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="12bec4f8-487a-40f8-a6d2-c519d995eb38" name="[Invokable Service Operation]">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Modelers.UI</definitionPackageName>
+      <definitionPackageId>5c4628ec-679e-4f3d-afda-137c978deae0</definitionPackageId>
+      <properties />
     </stereotype>
   </stereotypes>
   <metadata />

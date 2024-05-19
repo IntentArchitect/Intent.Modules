@@ -53,7 +53,7 @@ return `Multiple endpoint types detected, a Service Proxy may only target one ty
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Operation</type>
+        <type order="0" type="Operation" typeId="aee6811e-b2f6-4562-a8eb-502029f63bc8" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -168,6 +168,52 @@ return element.hasStereotype(httpSettingsId) || element.hasStereotype(messageTri
           </mappings>
         </mappingSetting>
       </mappingSettings>
+      <visualSettings type="Service Proxy" typeId="07d8d1a9-6b9f-4676-b7d3-8db06299e35c">
+        <size width="${w}" height="70" />
+        <position x="${x}" y="${y}" />
+        <display>
+          <drawText>
+            <text>return getName();</text>
+            <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + 48}" />
+          </drawText>
+          <drawSvgResource>
+            <path>service-proxy.svg</path>
+            <size width="${w}" height="40" />
+            <position x="${x}" y="${y + 6}" />
+          </drawSvgResource>
+        </display>
+        <defaultSize width="${x}" height="70" />
+        <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+        <childElementVisualSettings>
+          <childElementVisualSetting type="Operation" typeId="aee6811e-b2f6-4562-a8eb-502029f63bc8">
+            <size width="`${parent.w}`" height="18" />
+            <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 66}`" />
+            <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
+            <display>
+              <drawText>
+                <text>return label;</text>
+                <size width="${w - 26}" height="${h}" />
+                <position x="${x + 24}" y="${y}" />
+              </drawText>
+              <drawSvgResource>
+                <path>method.svg</path>
+                <size width="20" height="20" />
+                <position x="${x}" y="${y}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="`${parent.w}`" height="18" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings />
+          </childElementVisualSetting>
+        </childElementVisualSettings>
+      </visualSettings>
       <macros>
         <macro trigger="on-created">
           <script>element.launchMappingDialog("df491bea-8a85-4bc9-a93d-41b7abb80ffb");
@@ -229,9 +275,9 @@ return result;</displayFunction>
           <typeReferenceSetting>
             <isRequired>false</isRequired>
             <targetTypes>
-              <type>DTO</type>
-              <type>Type-Definition</type>
-              <type>Enum</type>
+              <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
+              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+              <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
@@ -241,7 +287,7 @@ return result;</displayFunction>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <typeOrder>
-            <type order="0">Parameter</type>
+            <type order="0" type="Parameter" typeId="f11273c1-217f-4f42-b690-3d8b488f95a8" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -275,11 +321,11 @@ return result;</displayFunction>
               <typeReferenceSetting>
                 <isRequired>true</isRequired>
                 <targetTypes>
-                  <type>DTO</type>
-                  <type>Type-Definition</type>
-                  <type>Enum</type>
-                  <type>Command</type>
-                  <type>Query</type>
+                  <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
+                  <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+                  <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+                  <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+                  <type type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" />
                 </targetTypes>
                 <allowIsNavigable>true</allowIsNavigable>
                 <allowIsNullable>true</allowIsNullable>
@@ -312,7 +358,7 @@ return result;</displayFunction>
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type>Service Proxy</type>
+        <type type="Service Proxy" typeId="07d8d1a9-6b9f-4676-b7d3-8db06299e35c" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>

@@ -36,27 +36,27 @@ namespace Intent.Modelers.UI.Api
             return true;
         }
 
-        public static TwoWayBindable GetTwoWayBindable(this PropertyModel model)
+        public static RouteParameter GetRouteParameter(this PropertyModel model)
         {
-            var stereotype = model.GetStereotype(TwoWayBindable.DefinitionId);
-            return stereotype != null ? new TwoWayBindable(stereotype) : null;
+            var stereotype = model.GetStereotype(RouteParameter.DefinitionId);
+            return stereotype != null ? new RouteParameter(stereotype) : null;
         }
 
 
-        public static bool HasTwoWayBindable(this PropertyModel model)
+        public static bool HasRouteParameter(this PropertyModel model)
         {
-            return model.HasStereotype(TwoWayBindable.DefinitionId);
+            return model.HasStereotype(RouteParameter.DefinitionId);
         }
 
-        public static bool TryGetTwoWayBindable(this PropertyModel model, out TwoWayBindable stereotype)
+        public static bool TryGetRouteParameter(this PropertyModel model, out RouteParameter stereotype)
         {
-            if (!HasTwoWayBindable(model))
+            if (!HasRouteParameter(model))
             {
                 stereotype = null;
                 return false;
             }
 
-            stereotype = new TwoWayBindable(model.GetStereotype(TwoWayBindable.DefinitionId));
+            stereotype = new RouteParameter(model.GetStereotype(RouteParameter.DefinitionId));
             return true;
         }
 
@@ -74,12 +74,12 @@ namespace Intent.Modelers.UI.Api
 
         }
 
-        public class TwoWayBindable
+        public class RouteParameter
         {
             private IStereotype _stereotype;
-            public const string DefinitionId = "146856d2-c3c0-4ecb-9149-1685ac8e407c";
+            public const string DefinitionId = "f324c4ea-bac2-450d-b1b1-cc7f09ca3472";
 
-            public TwoWayBindable(IStereotype stereotype)
+            public RouteParameter(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }

@@ -821,7 +821,7 @@ mapping.addMappedEnd(dataBindingMappingTypeId, newElement.getMappingPath(), elem
                 </option>
               </scriptOptions>
               <staticMappableSettings>
-                <staticMappableSetting id="d4276bd9-c19c-4669-b927-f03ddba06db1" name="Key" type="Key" typeId="d4276bd9-c19c-4669-b927-f03ddba06db1" version="2.0.0">
+                <staticMappableSetting id="d4276bd9-c19c-4669-b927-f03ddba06db1" name="Value" type="Value" typeId="d4276bd9-c19c-4669-b927-f03ddba06db1" version="2.0.0">
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>false</isTraversable>
@@ -832,7 +832,7 @@ mapping.addMappedEnd(dataBindingMappingTypeId, newElement.getMappingPath(), elem
                   <syncStereotypeId>6a75e4ef-66bd-45b3-b74a-2d75b384c8cd</syncStereotypeId>
                   <syncStereotypePropertyId>cdbb3669-f3b5-4d56-a274-4a1f92d4a451</syncStereotypePropertyId>
                 </staticMappableSetting>
-                <staticMappableSetting id="c2b8c690-ab61-4f08-9431-ca4ce313a48c" name="Value" type="Value" typeId="c2b8c690-ab61-4f08-9431-ca4ce313a48c" version="2.0.0">
+                <staticMappableSetting id="c2b8c690-ab61-4f08-9431-ca4ce313a48c" name="Text" type="Text" typeId="c2b8c690-ab61-4f08-9431-ca4ce313a48c" version="2.0.0">
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>false</isTraversable>
@@ -947,7 +947,9 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), newElem
               <text>Auto-map to Form</text>
               <shortcut>space</shortcut>
               <icon type="FontAwesome" source="code" />
-              <isOptionVisibleFunction>return element.typeReference.getType().specialization == "Command"</isOptionVisibleFunction>
+              <isOptionVisibleFunction>return element.typeReference.getType().specialization == "DTO"
+    || element.typeReference.getType().specialization == "Command"
+    || element.typeReference.getType().specialization == "Query";</isOptionVisibleFunction>
               <script>const model = element;
 const triggerElement = element;
 const parentElement = element.getParent(x =&gt; x.getIsMapped())?.getMappedToElements()[0] ?? mapping.getTargetElement();
@@ -987,6 +989,29 @@ model.getChildren().filter(x =&gt; x.specialization == "Property" || x.specializ
 const parent = mapping.getTargetElement();
 const newElement = createElement("Text Input", element.getName(), parent.id);
 mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), newElement.getMappingPath());</script>
+            </option>
+            <option>
+              <text>Auto-map to Table</text>
+              <shortcut>space</shortcut>
+              <icon type="FontAwesome" source="code" />
+              <isOptionVisibleFunction>return element.typeReference.getIsCollection()</isOptionVisibleFunction>
+              <script>const model = element;
+const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
+const table = createElement("Table", element.getName() + "Table", mapping.getTargetElement().id);
+mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), table.getMappingPath());
+
+model.getChildren().filter(x =&gt; x.specialization == "Property" || x.specialization == "DTO-Field").forEach(p =&gt; {
+    if (p.typeReference.getTypeId() == "d384db9c-a279-45e1-801e-e4e8099625f2") { // string
+        const newColumn = createElement("Column", p.getName(), table.id);
+        mapping.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath(), newColumn.getMappingPath())
+    }
+    else if (p.typeReference.getTypeId() == "e6f92b09-b2c5-4536-8270-a4d9e5bbd930"){ // bool
+        const newColumn = createElement("Column", p.getName(), table.id);
+        const newInput = createElement("Checkbox", p.getName(), newColumn.id);
+        newInput.removeStereotype("Label Addon");
+        mapping.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath(), newInput.getMappingPath());
+    }
+});</script>
             </option>
           </scriptOptions>
           <staticMappableSettings />

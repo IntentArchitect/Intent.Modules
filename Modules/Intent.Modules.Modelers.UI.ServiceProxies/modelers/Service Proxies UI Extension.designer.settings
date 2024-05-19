@@ -107,39 +107,19 @@ else {
         </macro>
       </macros>
     </elementExtension>
+    <elementExtension type="Operation" typeId="aee6811e-b2f6-4562-a8eb-502029f63bc8">
+      <implements>
+        <trait id="12bec4f8-487a-40f8-a6d2-c519d995eb38" name="[Invokable Service Operation]" />
+      </implements>
+      <mappingSettings />
+    </elementExtension>
   </elementExtensions>
   <associationSettings />
-  <associationExtensions>
-    <associationExtension type="Call Service Operation Action" typeId="fe5a5cd8-aabd-472f-8d42-f5c233e658dc">
-      <sourceEndExtension>
-        <typeOrder />
-        <typeReferenceExtension>
-          <isRequired>true</isRequired>
-          <targetTypes />
-          <allowIsNavigable>inherit</allowIsNavigable>
-          <allowIsNullable>inherit</allowIsNullable>
-          <allowIsCollection>inherit</allowIsCollection>
-        </typeReferenceExtension>
-      </sourceEndExtension>
-      <targetEndExtension>
-        <typeReferenceExtension>
-          <isRequired>true</isRequired>
-          <targetTypes>
-            <type type="Operation" typeId="aee6811e-b2f6-4562-a8eb-502029f63bc8" />
-          </targetTypes>
-          <allowIsNavigable>inherit</allowIsNavigable>
-          <allowIsNullable>inherit</allowIsNullable>
-          <allowIsCollection>inherit</allowIsCollection>
-        </typeReferenceExtension>
-      </targetEndExtension>
-      <macros />
-    </associationExtension>
-  </associationExtensions>
+  <associationExtensions />
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions>
     <mappableElementPackageExtension id="cd5df4be-78ba-4262-a5d2-1ca5d53f6f9c" name="Call Service Targets - Proxies" extendPackageId="80e250fa-91d8-4bb9-95b8-e9b355bf6720" extendPackage="Call Service Targets">
-      <imports />
       <mappableElementSettings>
         <mappableElement id="761bbe63-9722-422e-8ac8-3750ee664ff8" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -149,8 +129,6 @@ else {
           <canBeModified>false</canBeModified>
           <useChildSettingsFrom>f18ae1b5-eeda-48ae-83b0-64b12fd331a2</useChildSettingsFrom>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mappableElement>
         <mappableElement id="f18ae1b5-eeda-48ae-83b0-64b12fd331a2" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -160,7 +138,6 @@ else {
           <canBeModified>true</canBeModified>
           <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
           <represents>data</represents>
-          <staticMappableSettings />
           <childSettings>
             <childSetting id="bebd723b-8592-4540-9edd-fa54e1be4d78" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
@@ -172,8 +149,6 @@ else {
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
             <childSetting id="36c63ac0-fd8a-485e-9798-bbf3a4551060" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
@@ -185,8 +160,6 @@ else {
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mappableElement>
@@ -198,8 +171,6 @@ else {
           <canBeModified>false</canBeModified>
           <useChildSettingsFrom>f18ae1b5-eeda-48ae-83b0-64b12fd331a2</useChildSettingsFrom>
           <represents>data</represents>
-          <staticMappableSettings />
-          <childSettings />
         </mappableElement>
         <mappableElement id="f0078741-2b1a-4103-bbc7-2737aa05b0cc" name="Service Proxy Operation" type="Operation" typeId="aee6811e-b2f6-4562-a8eb-502029f63bc8" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -209,7 +180,6 @@ else {
           <overrideTypeReferenceFunction>return null;</overrideTypeReferenceFunction>
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
-          <staticMappableSettings />
           <childSettings>
             <childSetting id="3fc9e92a-7af5-4d45-9cb6-581a406476b4" name="Parameter" type="Parameter" typeId="f11273c1-217f-4f42-b690-3d8b488f95a8" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -218,8 +188,6 @@ else {
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mappableElement>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="f324c4ea-bac2-450d-b1b1-cc7f09ca3472" version="3.1.0">
+  <name>[Route Parameter]</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="356fbe17-bc63-4e16-b915-feefbc063cbe">Property</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction>[Route Parameter]</displayFunction>
+  <displayAsAnnotation>true</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>5c4628ec-679e-4f3d-afda-137c978deae0</parentFolderId>
+  <order>0</order>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <onAppliedScript>const routeProperty = element.getParent("Component").getStereotype("Page")?.getProperty("Route");
+const type = element.typeReference.getType().getName() == "int" || element.typeReference.getType().getName() == "guid" || element.typeReference.getType().getName() == "long" ?
+    ":" + element.typeReference.getType().getName() : "";
+if (routeProperty != null) {
+    let routeComponents = routeProperty.getValue().toString().split("/");
+    const matchedIndex = routeComponents.findIndex(x =&gt; x.toLowerCase() == `{${element.getName().toLowerCase()}}` || x.toLowerCase().startsWith(`{${element.getName().toLowerCase()}:`));
+    if (matchedIndex != -1) {
+        routeComponents.splice(matchedIndex, 1, `{${element.getName()}${type}}`);
+    } else {
+        routeComponents.push(`{${element.getName()}${type}}`);
+    }
+    routeProperty.setValue(routeComponents.join("/"));
+}</onAppliedScript>
+  <properties />
+</stereotypeDefinition>

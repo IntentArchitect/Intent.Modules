@@ -90,6 +90,9 @@ namespace Intent.Modelers.UI.Api
             .GetElementsOfType(ParameterModel.SpecializationTypeId)
             .Select(x => new ParameterModel(x))
             .ToList();
+
+
+        public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
     }
 
     [IntentManaged(Mode.Fully)]

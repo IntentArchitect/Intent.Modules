@@ -18,6 +18,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>995bbb4e-12c8-409c-88be-5e01173bea92</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#bdefea53-581b-4ba5-89dd-0eb0f130609d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ServiceProxyOperationExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServiceProxyOperationExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>995bbb4e-12c8-409c-88be-5e01173bea92</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#0400549c-8abc-4687-998f-e24bcbf31d3b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/UserInterfacePackageExtensionModel.cs</ApplicationRelativeFilePath>
