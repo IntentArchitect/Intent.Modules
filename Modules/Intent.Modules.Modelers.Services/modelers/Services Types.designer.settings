@@ -480,7 +480,10 @@ return result;
         </mappingSetting>
         <mappingSetting id="8d1f6a8a-77c8-43a2-8e60-421559725419">
           <name>Map To Domain Operation</name>
-          <isOptionVisibleFunction>// hide if not mapped and advanced mapping mode selected in Domain Interaction Settings: return isMapped() ||     // Domain Interaction Settings -&gt; Mapping Mode     application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad")?.getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa")?.value !== "advanced";</isOptionVisibleFunction>
+          <isOptionVisibleFunction>// hide if not mapped and advanced mapping mode selected in Domain Interaction Settings:
+return isMapped() ||
+    // Domain Interaction Settings -&gt; Mapping Mode
+    application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad")?.getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa")?.value !== "advanced";</isOptionVisibleFunction>
           <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
           <optionsSource>elements-of-type</optionsSource>
           <autoSyncTypeReferences>true</autoSyncTypeReferences>

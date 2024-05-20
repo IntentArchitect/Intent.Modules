@@ -35,7 +35,7 @@ public class MethodInvocationMapping : CSharpMappingBase
 			foreach (var parameter in method.Parameters)
 			{
 				bool optional = parameter.DefaultValue != null;
-				var mappedChild = Children.FirstOrDefault(c => string.Compare(c.Mapping.TargetElement.Name, parameter.Name, true) == 0);
+				var mappedChild = Children.FirstOrDefault(c => c.Model.Name.Equals(parameter.Name, StringComparison.InvariantCultureIgnoreCase));
 				if (mappedChild != null)
 				{
 					invocation.AddArgument(mappedChild.GetSourceStatement());
