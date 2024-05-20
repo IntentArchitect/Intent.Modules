@@ -160,8 +160,7 @@ function onMapCommand(
                 return;
             }
     
-            console.warn("Path" + e.mapPath);
-            let field = createElement("DTO-Field", e.name, dto.id);
+            let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (isComplexTypeById(e.typeId)){
                 let newDto = getOrCreateCommandCrudDto(dto, field, autoAddPrimaryKey, mapFromDomainMappingSettingId );
@@ -206,6 +205,5 @@ function onMapCommand(
         if (dtoUpdated) {
             dto.collapse();
         }
-    }
-    
+    }  
 }

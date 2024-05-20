@@ -24,7 +24,7 @@ namespace convertToAdvancedMapping {
             let action = createAssociation("Create Entity Action", command.id, target.id);
             let mapping = action.createMapping(command.id, entity.id);
             mapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
-            mapContract("Data Mapping", command, [command.id], [target.id], mapping);
+            mapContract("Data Mapping", command, command, [command.id], [target.id], mapping);
         } else if (command.getName().startsWith("Delete")) {
             let action = createAssociation("Delete Entity Action", command.id, entity.id);
             let mapping = action.createMapping(command.id, entity.id);
@@ -43,7 +43,7 @@ namespace convertToAdvancedMapping {
             if (target.id != entity.id) {
                 updateMapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
             }
-            mapContract("Data Mapping", command, [command.id], [target.id], updateMapping);
+            mapContract("Data Mapping", command, command, [command.id], [target.id], updateMapping);
         }
     }
 
@@ -82,21 +82,28 @@ namespace convertToAdvancedMapping {
             action.typeReference.setIsCollection(true);
         }
         let mapping = action.createMapping(query.id, entity.id);
-        mapContract("Filter Mapping", query, [query.id], [entity.id], mapping);
+        mapContract("Filter Mapping", query, query, [query.id], [entity.id], mapping);
     }
 
-    function mapContract(mappingType: string, dto: MacroApi.Context.IElementApi, sourcePath: string[], targetPathIds: string[], mapping: MacroApi.Context.IElementToElementMappingApi): void {
+    function mapContract(mappingType: string, root: MacroApi.Context.IElementApi, dto: MacroApi.Context.IElementApi, sourcePath: string[], targetPathIds: string[], mapping: MacroApi.Context.IElementToElementMappingApi): void {
 
+        if (dto.isMapped() && dto.getMapping().getElement().specialization == "Class Constructor"){
+            if (targetPathIds[targetPathIds.length - 1] != dto.getMapping().getElement().id ){
+                targetPathIds.push(dto.getMapping().getElement().id);
+                console.warn("Invocation Mapping : " + root.id + "->" + dto.getMapping().getElement().id);
+                mapping.addMappedEnd("Invocation Mapping", [root.id], targetPathIds);
+            }
+        }
         dto.getChildren("DTO-Field").filter(x => x.isMapped() && !fieldsToSkip(dto, x)).forEach(field => {
             if (field.typeReference.getType()?.specialization != "DTO" || field.typeReference.getIsCollection()) {
-                console.warn("addMappedEnd");
-                console.warn(sourcePath);
-                console.warn(field.id);
-                console.warn(targetPathIds);
+                console.warn("sourcePath : " + sourcePath);
+                console.warn("targetPathIds : " + targetPathIds);    
+                console.warn("sourceAdd : " + field.id);
+                console.warn("targetAdd : " + field.getMapping().getPath().map(x => x.id));    
                 mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)))
             }
             if (field.typeReference.getType()?.specialization == "DTO") {
-                mapContract(mappingType, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)), mapping);
+                mapContract(mappingType, root, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)), mapping);
             }
             field.clearMapping();
         })
