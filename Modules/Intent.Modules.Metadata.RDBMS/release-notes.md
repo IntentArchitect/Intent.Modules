@@ -1,3 +1,7 @@
+### Version 3.6.1
+
+- Improvement: Added `TryGetDecimalPrecisionAndScale()` module setting method to parse the precision and scale from `Decimal Precision And Scale` setting.
+
 ### Version 3.6.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

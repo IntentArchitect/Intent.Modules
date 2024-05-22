@@ -1,4 +1,5 @@
 using Intent.Modules.Common.TypeScript.Builder;
+using Xunit;
 
 namespace Intent.Modules.Common.TypeScript.Tests.Builder
 {

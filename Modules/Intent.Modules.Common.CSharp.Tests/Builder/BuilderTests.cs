@@ -5,7 +5,6 @@ using VerifyXunit;
 
 namespace Intent.Modules.Common.CSharp.Tests.Builder;
 
-[UsesVerify]
 public class BuilderTests
 {
     [Fact]

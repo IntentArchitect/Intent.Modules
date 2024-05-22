@@ -190,7 +190,7 @@ $validationRules = @{
             return "Could not locate release notes file: $($releaseNoteFile)"
         }
         [string]$releaseNotesContent = Get-Content $releaseNoteFile
-        $targetVersion = "$($info.Version.Major).$($info.Version.Minor).$($info.Version.Build)"
+		$targetVersion = "### Version $($info.Version.Major).$($info.Version.Minor).$($info.Version.Build)"
         if (-not $releaseNotesContent.Contains($targetVersion)) {
             return "Could not locate version number $($targetVersion) in release notes"
         }
