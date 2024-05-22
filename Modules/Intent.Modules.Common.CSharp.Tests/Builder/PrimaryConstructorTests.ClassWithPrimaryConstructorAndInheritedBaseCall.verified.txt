@@ -1,0 +1,10 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class SomeBaseClass(string someValue);
+
+
+    public class Class(string name, string surname, string email, bool isActive) : SomeBaseClass("some value here");
+
+}

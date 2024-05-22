@@ -8,6 +8,8 @@ namespace Intent.Modules.Common.CSharp.Tests.Builder;
 
 public class PrimaryConstructorTests
 {
+    // ====== Classes ======
+    
     [Fact]
     public async Task ClassWithoutAnySignatureOrMember()
     {
@@ -109,7 +111,33 @@ public class PrimaryConstructorTests
         Assert.Single(fileBuilder.Classes.First().Properties);
     }
     
-    // =========================
+    [Fact]
+    public async Task ClassWithPrimaryConstructorAndInheritedBaseCall()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "File")
+            .AddClass("SomeBaseClass", c =>
+            {
+                c.AddPrimaryConstructor(ctor => ctor.AddParameter("string", "someValue"));
+            })
+            .AddClass("Class", c =>
+            {
+                c.WithBaseType("SomeBaseClass");
+                c.AddPrimaryConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                    .AddParameter("string", "surname")
+                    .AddParameter("string", "email")
+                    .AddParameter("bool", "isActive")
+                    .CallsBase(b => b.AddArgument(@"""some value here"""))
+                );
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Equal(4, fileBuilder.Classes.Last().Fields.Count);
+        Assert.Empty(fileBuilder.Classes.Last().Properties);
+    }
+    
+    // ====== Records ======
 
     [Fact]
     public async Task RecordWithoutAnySignatureOrMember()
@@ -210,5 +238,31 @@ public class PrimaryConstructorTests
 
         Assert.Empty(fileBuilder.Records.First().Fields);
         Assert.Equal(5, fileBuilder.Records.First().Properties.Count);
+    }
+    
+    [Fact]
+    public async Task RecordWithPrimaryConstructorAndInheritedBaseCall()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "File")
+            .AddRecord("SomeBaseRecord", c =>
+            {
+                c.AddPrimaryConstructor(ctor => ctor.AddParameter("string", "SomeValue"));
+            })
+            .AddRecord("Record", c =>
+            {
+                c.WithBaseType("SomeBaseRecord");
+                c.AddPrimaryConstructor(ctor => ctor
+                    .AddParameter("string", "Name")
+                    .AddParameter("string", "Surname")
+                    .AddParameter("string", "Email")
+                    .AddParameter("bool", "IsActive")
+                    .CallsBase(b => b.AddArgument(@"""some value here"""))
+                );
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Records.Last().Fields);
+        Assert.Equal(4, fileBuilder.Records.Last().Properties.Count);
     }
 }

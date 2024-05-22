@@ -170,7 +170,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
         configure?.Invoke(ConstructorCall);
         return this;
     }
-
+    
     public override string GetText(string indentation)
     {
         if (IsPrimaryConstructor)

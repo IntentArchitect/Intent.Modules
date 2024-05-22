@@ -55,7 +55,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
 
     public string Name { get; }
     protected string AccessModifier { get; private set; } = "public ";
-    public CSharpClass BaseType { get; set; }
+    public CSharpClass? BaseType { get; set; }
     public IList<string> BaseTypeTypeParameters { get; } = new List<string>();
     public IList<string> Interfaces { get; } = new List<string>();
     public IList<CSharpField> Fields { get; } = new List<CSharpField>();
@@ -534,11 +534,21 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     private string GetBaseTypes()
     {
         var types = new List<string>();
-        if (BaseType != null)
+        if (BaseType is not null)
         {
-            var baseType = BaseTypeTypeParameters.Any()
-                ? $"{BaseType.Name}<{string.Join(", ", BaseTypeTypeParameters)}>"
-                : BaseType.Name;
+            var baseType = BaseType.Name;
+            
+            var primaryCtor = GetPrimaryConstructor();
+            var baseCallParams = primaryCtor?.ConstructorCall.Arguments;
+            if (baseCallParams?.Count > 0)
+            {
+                baseType += $"({string.Join(", ", baseCallParams)})";
+            }
+
+            if (BaseTypeTypeParameters.Any())
+            {
+                baseType += $"<{string.Join(", ", BaseTypeTypeParameters)}>";
+            }
 
             types.Add(baseType);
         }
