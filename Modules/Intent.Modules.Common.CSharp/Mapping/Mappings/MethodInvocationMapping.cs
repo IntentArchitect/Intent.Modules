@@ -32,6 +32,8 @@ public class MethodInvocationMapping : CSharpMappingBase
 		// Determine if this model is a method on the class:
 		if (typeTemplate?.CSharpFile.Classes.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpClassMethod method)
         {
+			//Link the method call so the builder can work out the Async invocation syntax
+			invocation.Invokes(method);
 			foreach (var parameter in method.Parameters)
 			{
 				bool optional = parameter.DefaultValue != null;

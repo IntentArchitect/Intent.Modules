@@ -166,17 +166,6 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 .ToList();
         }
 
-        private string GetVariableNameForSelect()
-        {
-            var variableName = string.Join("", Model.Name.Where(char.IsUpper).Select(char.ToLower));
-            if (string.IsNullOrEmpty(variableName))
-            {
-                variableName = Char.ToLower(Model.Name[0]).ToString();
-            }
-
-            return variableName;
-        }
-
         public override CSharpStatement GetTargetStatement()
         {
             // TODO: Please revisit, this only writing out the property name and doesn't allow for accessor variables
