@@ -1,11 +1,11 @@
 ﻿### Version 3.6.3
 
-- Fixed: CRUD Mapping issue around constructors with ValueObjects as parameters. 
+- Fixed: CRUD Mapping issue around constructors with ValueObjects as parameters.
+- New Feature: Classes and Records can now define `Primary Constructors`.
 
 ### Version 3.6.2
 
-- Fixed: XML Comment on parameter had too many `>` characters, i.e. `// <param name="param">>Test Parameter</param>`
-- New Feature: Classes and Records can now define `Primary Constructors`.
+- Fixed: XML Comment on parameter had too many `>` characters, i.e. `// <param name="param">>Test Parameter</param>`.
 
 ### Version 3.6.1
 

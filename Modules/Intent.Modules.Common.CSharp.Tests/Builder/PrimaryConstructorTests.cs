@@ -6,7 +6,6 @@ using Xunit;
 
 namespace Intent.Modules.Common.CSharp.Tests.Builder;
 
-[UsesVerify]
 public class PrimaryConstructorTests
 {
     [Fact]
@@ -25,13 +24,10 @@ public class PrimaryConstructorTests
     public async Task ClassWithEmptyPrimaryConstructor()
     {
         var fileBuilder = new CSharpFile("Namespace", "File")
-            .AddClass("Class", c =>
-            {
-                c.SetPrimaryConstructor();
-            })
+            .AddClass("Class", c => { c.AddPrimaryConstructor(); })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
-        
+
         Assert.Empty(fileBuilder.Classes.First().Fields);
         Assert.Empty(fileBuilder.Classes.First().Properties);
     }
@@ -40,61 +36,81 @@ public class PrimaryConstructorTests
     public async Task ClassWithSingleParamPrimaryConstructor()
     {
         var fileBuilder = new CSharpFile("Namespace", "File")
-            .AddClass("Class", c =>
-            {
-                c.SetPrimaryConstructor(ctor => ctor.AddClassParameter("string", "name"));
-            })
+            .AddClass("Class", c => { c.AddPrimaryConstructor(ctor => ctor.AddParameter("string", "name")); })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
-        
-        Assert.Equal(1, fileBuilder.Classes.First().Fields.Count);
+
+        Assert.Single(fileBuilder.Classes.First().Fields);
         Assert.Empty(fileBuilder.Classes.First().Properties);
     }
-    
+
     [Fact]
     public async Task ClassWithFewParamsPrimaryConstructor()
     {
         var fileBuilder = new CSharpFile("Namespace", "File")
             .AddClass("Class", c =>
             {
-                c.SetPrimaryConstructor(ctor => ctor
-                    .AddClassParameter("string", "name")
-                    .AddClassParameter("string", "surname")
-                    .AddClassParameter("string", "email")
-                    .AddClassParameter("bool", "isActive"));
+                c.AddPrimaryConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                    .AddParameter("string", "surname")
+                    .AddParameter("string", "email")
+                    .AddParameter("bool", "isActive")
+                );
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
-        
+
         Assert.Equal(4, fileBuilder.Classes.First().Fields.Count);
         Assert.Empty(fileBuilder.Classes.First().Properties);
     }
-    
+
     [Fact]
     public async Task ClassWithLotsParamsPrimaryConstructor_SpansLines()
     {
         var fileBuilder = new CSharpFile("Namespace", "File")
             .AddClass("Class", c =>
             {
-                c.SetPrimaryConstructor(ctor => ctor
-                    .AddClassParameter("string", "name")
-                    .AddClassParameter("string", "surname")
-                    .AddClassParameter("string", "email")
-                    .AddClassParameter("bool", "isActive")
-                    .AddClassParameter("string", "mobileNumber")
-                    .AddClassParameter("string", "homeNumber")
-                    .AddClassParameter("string", "officeNumber")
-                    .AddClassParameter("Gender", "gender", "Gender.Male"));
+                c.AddPrimaryConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                    .AddParameter("string", "surname")
+                    .AddParameter("string", "email")
+                    .AddParameter("bool", "isActive")
+                    .AddParameter("string", "mobileNumber")
+                    .AddParameter("string", "homeNumber")
+                    .AddParameter("string", "officeNumber")
+                    .AddParameter("Gender", "gender", param => param.WithDefaultValue("Gender.Male"))
+                );
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
-        
+
         Assert.Equal(8, fileBuilder.Classes.First().Fields.Count);
         Assert.Empty(fileBuilder.Classes.First().Properties);
     }
+
+    [Fact]
+    public async Task ClassWithPrimaryConstructorAndMembers()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "File")
+            .AddClass("Class", c =>
+            {
+                c.AddPrimaryConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                    .AddParameter("string", "surname")
+                    .AddParameter("string", "email")
+                    .AddParameter("bool", "isActive")
+                );
+                c.AddConstructor(ctor => ctor.AddParameter("string", "anotherName", param => param.IntroduceProperty()).CallsThis());
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Equal(4, fileBuilder.Classes.First().Fields.Count);
+        Assert.Single(fileBuilder.Classes.First().Properties);
+    }
     
-    // ======
-    
+    // =========================
+
     [Fact]
     public async Task RecordWithoutAnySignatureOrMember()
     {
@@ -111,13 +127,10 @@ public class PrimaryConstructorTests
     public async Task RecordWithEmptyPrimaryConstructor()
     {
         var fileBuilder = new CSharpFile("Namespace", "File")
-            .AddRecord("Record", c =>
-            {
-                c.SetPrimaryConstructor();
-            })
+            .AddRecord("Record", c => { c.AddPrimaryConstructor(); })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
-        
+
         Assert.Empty(fileBuilder.Records.First().Properties);
         Assert.Empty(fileBuilder.Records.First().Fields);
     }
@@ -126,56 +139,76 @@ public class PrimaryConstructorTests
     public async Task RecordWithSingleParamPrimaryConstructor()
     {
         var fileBuilder = new CSharpFile("Namespace", "File")
-            .AddRecord("Record", c =>
-            {
-                c.SetPrimaryConstructor(ctor => ctor.AddRecordParameter("string", "Name"));
-            })
+            .AddRecord("Record", c => { c.AddPrimaryConstructor(ctor => ctor.AddParameter("string", "Name")); })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
-        
-        Assert.Equal(1, fileBuilder.Records.First().Properties.Count);
+
+        Assert.Single(fileBuilder.Records.First().Properties);
         Assert.Empty(fileBuilder.Records.First().Fields);
     }
-    
+
     [Fact]
     public async Task RecordWithFewParamsPrimaryConstructor()
     {
         var fileBuilder = new CSharpFile("Namespace", "File")
             .AddRecord("Record", c =>
             {
-                c.SetPrimaryConstructor(ctor => ctor
-                    .AddRecordParameter("string", "Name")
-                    .AddRecordParameter("string", "Surname")
-                    .AddRecordParameter("string", "Email")
-                    .AddRecordParameter("bool", "IsActive"));
+                c.AddPrimaryConstructor(ctor => ctor
+                    .AddParameter("string", "Name")
+                    .AddParameter("string", "Surname")
+                    .AddParameter("string", "Email")
+                    .AddParameter("bool", "IsActive")
+                );
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
-        
+
         Assert.Equal(4, fileBuilder.Records.First().Properties.Count);
         Assert.Empty(fileBuilder.Records.First().Fields);
     }
-    
+
     [Fact]
     public async Task RecordWithLotsParamsPrimaryConstructor_SpansLines()
     {
         var fileBuilder = new CSharpFile("Namespace", "File")
             .AddRecord("Record", c =>
             {
-                c.SetPrimaryConstructor(ctor => ctor
-                    .AddRecordParameter("string", "Name")
-                    .AddRecordParameter("string", "Surname")
-                    .AddRecordParameter("string", "Email")
-                    .AddRecordParameter("bool", "IsActive")
-                    .AddRecordParameter("string", "MobileNumber")
-                    .AddRecordParameter("string", "HomeNumber")
-                    .AddRecordParameter("string", "OfficeNumber")
-                    .AddRecordParameter("Gender", "Gender", "Gender.Male"));
+                c.AddPrimaryConstructor(ctor => ctor
+                    .AddParameter("string", "Name")
+                    .AddParameter("string", "Surname")
+                    .AddParameter("string", "Email")
+                    .AddParameter("bool", "IsActive")
+                    .AddParameter("string", "MobileNumber")
+                    .AddParameter("string", "HomeNumber")
+                    .AddParameter("string", "OfficeNumber")
+                    .AddParameter("Gender", "Gender", param => param.WithDefaultValue("Gender.Male"))
+                );
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
-        
+
         Assert.Equal(8, fileBuilder.Records.First().Properties.Count);
         Assert.Empty(fileBuilder.Records.First().Fields);
+    }
+    
+    [Fact]
+    public async Task RecordWithPrimaryConstructorAndMembers()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "File")
+            .AddRecord("Record", c =>
+            {
+                c.AddPrimaryConstructor(ctor => ctor
+                    .AddParameter("string", "Name")
+                    .AddParameter("string", "Surname")
+                    .AddParameter("string", "Email")
+                    .AddParameter("bool", "IsActive")
+                );
+                c.AddConstructor(ctor => ctor.AddParameter("string", "anotherName", param => param.IntroduceProperty()).CallsThis());
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Records.First().Fields);
+        Assert.Equal(5, fileBuilder.Records.First().Properties.Count);
     }
 }

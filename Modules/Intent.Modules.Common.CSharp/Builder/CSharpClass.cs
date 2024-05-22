@@ -68,19 +68,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
     public IList<CSharpCodeBlock> CodeBlocks { get; } = new List<CSharpCodeBlock>();
 
-    private CSharpPrimaryConstructor? _primaryConstructor;
-    public CSharpPrimaryConstructor? PrimaryConstructor {
-        get => _primaryConstructor;
-        private set
-        {
-            if (_primaryConstructor is not null && value is not null)
-            {
-                throw new InvalidOperationException($"Primary Constructor is already set for {Name}");
-            }
 
-            _primaryConstructor = value;
-        }
-    }
     public CSharpClass WithBaseType(string type)
     {
         return ExtendsClass(type, Enumerable.Empty<string>());
@@ -219,12 +207,12 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         configure?.Invoke(ctor);
         return this;
     }
-
-    public CSharpClass SetPrimaryConstructor(Action<CSharpPrimaryConstructor>? configure = null)
+    
+    public CSharpClass AddPrimaryConstructor(Action<CSharpConstructor>? configure = null)
     {
-        var ctor = new CSharpPrimaryConstructor(this);
+        var ctor = new CSharpConstructor(this, true);
+        Constructors.Add(ctor);
         configure?.Invoke(ctor);
-        PrimaryConstructor = ctor;
         return this;
     }
 
@@ -472,20 +460,21 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
             sb.Append("partial ");
         }
 
+        var primaryConstructor = GetPrimaryConstructor();
 
         sb.Append(_type.ToString().ToLowerInvariant());
         sb.Append(' ');
         sb.Append(Name);
         sb.Append(GetGenericParameters());
-        if (PrimaryConstructor is not null)
+        if (primaryConstructor is not null)
         {
-            sb.Append(PrimaryConstructor.GetText(indentation));
+            sb.Append(primaryConstructor.GetText(indentation));
         }
         sb.Append(GetBaseTypes());
         sb.Append(GetGenericTypeConstraints(indentation));
         
         var members = GetMembers($"{indentation}    ");
-        if (PrimaryConstructor is not null && string.IsNullOrEmpty(members))
+        if (primaryConstructor is not null && string.IsNullOrEmpty(members))
         {
             sb.Append(';');
             sb.AppendLine();
@@ -509,6 +498,17 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return ToString(indentation);
     }
 
+    private CSharpConstructor? GetPrimaryConstructor()
+    {
+        var primaryConstructors = Constructors.Where(p => p.IsPrimaryConstructor).ToArray();
+        return primaryConstructors.Length switch
+        {
+            0 => null,
+            1 => primaryConstructors.First(),
+            _ => throw new InvalidOperationException($"Cannot have more than one primary constructor for {_type} {Name}")
+        };
+    }
+    
     private string GetGenericTypeConstraints(string indentation)
     {
         if (!GenericTypeConstraints.Any())
@@ -552,7 +552,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     {
         var codeBlocks = new List<ICodeBlock>();
         codeBlocks.AddRange(Fields.Where(p => !p.IsOmittedFromRender));
-        codeBlocks.AddRange(Constructors);
+        codeBlocks.AddRange(Constructors.Where(p => !p.IsPrimaryConstructor));
         codeBlocks.AddRange(Properties.Where(p => !p.IsOmittedFromRender));
         codeBlocks.AddRange(Methods);
         codeBlocks.AddRange(NestedClasses);

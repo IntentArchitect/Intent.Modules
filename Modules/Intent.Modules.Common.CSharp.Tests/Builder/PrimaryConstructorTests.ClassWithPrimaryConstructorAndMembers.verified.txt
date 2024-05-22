@@ -1,0 +1,14 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class(string name, string surname, string email, bool isActive)
+    {
+        public Class(string anotherName) : this()
+        {
+            AnotherName = anotherName;
+        }
+
+        public string AnotherName { get; set; }
+    }
+}
