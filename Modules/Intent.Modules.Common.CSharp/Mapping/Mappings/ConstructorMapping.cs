@@ -116,7 +116,7 @@ public class ConstructorMapping : CSharpMappingBase
 
 		}
 
-		//This is for implicit constructors.. use the model to fins the template and find it's public constructor with the most arguments 
+		//This is for implicit constructors.. use the model to find the template and find it's public constructor with the most arguments 
 		if (!((IElement)Model).ChildElements.Any() && Model.TypeReference != null)
 		{
 			var modelTemplate = _template.GetTypeInfo(((IElement)Model).TypeReference.Element?.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;

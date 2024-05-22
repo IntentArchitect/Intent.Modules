@@ -329,12 +329,12 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
-    public CSharpClassMethod FindMethod(string name)
+    public CSharpClassMethod? FindMethod(string name)
     {
         return Methods.FirstOrDefault(x => x.Name == name);
     }
 
-    public CSharpClassMethod FindMethod(Func<CSharpClassMethod, bool> matchFunc)
+    public CSharpClassMethod? FindMethod(Func<CSharpClassMethod, bool> matchFunc)
     {
         return Methods.FirstOrDefault(matchFunc);
     }
