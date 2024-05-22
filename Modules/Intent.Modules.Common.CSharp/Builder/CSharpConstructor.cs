@@ -166,6 +166,10 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
 
     public CSharpConstructor CallsThis(Action<CSharpConstructorCall> configure = null)
     {
+        if (IsPrimaryConstructor)
+        {
+            throw new InvalidOperationException($"Cannot supply 'this' constructor call to a primary constructor: {Class.TypeDefinitionType} {Class.Name}.");
+        }
         ConstructorCall = CSharpConstructorCall.This();
         configure?.Invoke(ConstructorCall);
         return this;
