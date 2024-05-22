@@ -2860,7 +2860,7 @@ function ensureHasField(options) {
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
 /// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
 /// &lt;reference path="ensureHasField.ts" /&gt;
-function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
+function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false, mapConstructors = false) {
     var _a, _b, _c;
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
     const mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
@@ -2887,12 +2887,12 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
     }
     if (mappingDetails.mappingTargetType === "Operation" &amp;&amp;
         isComplexType((_c = (_b = (_a = element.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.typeReference) === null || _c === void 0 ? void 0 : _c.getType())) {
-        getOrCreateCommandCrudDto(element, element, false, mapFromDomainMappingSettingId);
+        getOrCreateCommandCrudDto(element, element, false, mapFromDomainMappingSettingId, false);
     }
     const fields = element.getChildren("DTO-Field")
         .filter(x =&gt; { var _a, _b; return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" &amp;&amp; x.isMapped() &amp;&amp; ((_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement().specialization.startsWith("Association")); });
     fields.forEach(field =&gt; {
-        getOrCreateCommandCrudDto(element, field, !excludePrimaryKeys, projectMappingSettingId);
+        getOrCreateCommandCrudDto(element, field, !excludePrimaryKeys, projectMappingSettingId, mapConstructors);
     });
     const complexFields = element.getChildren("DTO-Field")
         .filter(x =&gt; {
@@ -2901,7 +2901,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
             isComplexType((_d = (_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.typeReference) === null || _d === void 0 ? void 0 : _d.getType());
     });
     complexFields.forEach(cf =&gt; {
-        getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId);
+        getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId, mapConstructors);
     });
     function isComplexType(element) {
         return (element === null || element === void 0 ? void 0 : element.specialization) === "Data Contract" ||
@@ -2948,7 +2948,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
 
         dtoField.typeReference.setType(dto.id);
     }*/
-    function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId) {
+    function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId, mapConstructors = false) {
         let mappedElement = dtoField.getMapping().getElement();
         if (mappedElement.typeReference == null)
             throw new Error("TypeReference is undefined");
@@ -2968,7 +2968,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
             // In descending order:
             return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
         })[0];
-        if (entityCtor != null) {
+        if (mapConstructors &amp;&amp; entityCtor != null) {
             dto.setMapping([mappedElement.typeReference.getTypeId(), entityCtor.id], mapToDomainConstructorForDtosSettingId);
             addDtoFieldsForCtor(autoAddPrimaryKey, entityCtor, dto);
         }
@@ -2992,7 +2992,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (isComplexTypeById(e.typeId)) {
-                let newDto = getOrCreateCommandCrudDto(dto, field, autoAddPrimaryKey, mapFromDomainMappingSettingId);
+                let newDto = getOrCreateCommandCrudDto(dto, field, autoAddPrimaryKey, mapFromDomainMappingSettingId, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -3230,7 +3230,7 @@ var cqrsCrud;
         if (owningAggregate != null) {
             addAggregatePkToCommandOrQuery(owningAggregate, commandManager.getElement());
         }
-        onMapCommand(commandManager.getElement(), true, true);
+        onMapCommand(commandManager.getElement(), true, true, true);
         commandManager.collapse();
         return commandManager.getElement();
     }
@@ -4237,7 +4237,7 @@ function ensureHasField(options) {
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
 /// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
 /// &lt;reference path="ensureHasField.ts" /&gt;
-function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
+function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false, mapConstructors = false) {
     var _a, _b, _c;
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
     const mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
@@ -4264,12 +4264,12 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
     }
     if (mappingDetails.mappingTargetType === "Operation" &amp;&amp;
         isComplexType((_c = (_b = (_a = element.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.typeReference) === null || _c === void 0 ? void 0 : _c.getType())) {
-        getOrCreateCommandCrudDto(element, element, false, mapFromDomainMappingSettingId);
+        getOrCreateCommandCrudDto(element, element, false, mapFromDomainMappingSettingId, false);
     }
     const fields = element.getChildren("DTO-Field")
         .filter(x =&gt; { var _a, _b; return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" &amp;&amp; x.isMapped() &amp;&amp; ((_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement().specialization.startsWith("Association")); });
     fields.forEach(field =&gt; {
-        getOrCreateCommandCrudDto(element, field, !excludePrimaryKeys, projectMappingSettingId);
+        getOrCreateCommandCrudDto(element, field, !excludePrimaryKeys, projectMappingSettingId, mapConstructors);
     });
     const complexFields = element.getChildren("DTO-Field")
         .filter(x =&gt; {
@@ -4278,7 +4278,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
             isComplexType((_d = (_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.typeReference) === null || _d === void 0 ? void 0 : _d.getType());
     });
     complexFields.forEach(cf =&gt; {
-        getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId);
+        getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId, mapConstructors);
     });
     function isComplexType(element) {
         return (element === null || element === void 0 ? void 0 : element.specialization) === "Data Contract" ||
@@ -4325,7 +4325,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
 
         dtoField.typeReference.setType(dto.id);
     }*/
-    function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId) {
+    function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId, mapConstructors = false) {
         let mappedElement = dtoField.getMapping().getElement();
         if (mappedElement.typeReference == null)
             throw new Error("TypeReference is undefined");
@@ -4345,7 +4345,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
             // In descending order:
             return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
         })[0];
-        if (entityCtor != null) {
+        if (mapConstructors &amp;&amp; entityCtor != null) {
             dto.setMapping([mappedElement.typeReference.getTypeId(), entityCtor.id], mapToDomainConstructorForDtosSettingId);
             addDtoFieldsForCtor(autoAddPrimaryKey, entityCtor, dto);
         }
@@ -4369,7 +4369,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (isComplexTypeById(e.typeId)) {
-                let newDto = getOrCreateCommandCrudDto(dto, field, autoAddPrimaryKey, mapFromDomainMappingSettingId);
+                let newDto = getOrCreateCommandCrudDto(dto, field, autoAddPrimaryKey, mapFromDomainMappingSettingId, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -4607,7 +4607,7 @@ var cqrsCrud;
         if (owningAggregate != null) {
             addAggregatePkToCommandOrQuery(owningAggregate, commandManager.getElement());
         }
-        onMapCommand(commandManager.getElement(), true, true);
+        onMapCommand(commandManager.getElement(), true, true, true);
         commandManager.collapse();
         return commandManager.getElement();
     }
@@ -8575,7 +8575,7 @@ function ensureHasField(options) {
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
 /// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
 /// &lt;reference path="ensureHasField.ts" /&gt;
-function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
+function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false, mapConstructors = false) {
     var _a, _b, _c;
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
     const mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
@@ -8602,12 +8602,12 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
     }
     if (mappingDetails.mappingTargetType === "Operation" &amp;&amp;
         isComplexType((_c = (_b = (_a = element.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.typeReference) === null || _c === void 0 ? void 0 : _c.getType())) {
-        getOrCreateCommandCrudDto(element, element, false, mapFromDomainMappingSettingId);
+        getOrCreateCommandCrudDto(element, element, false, mapFromDomainMappingSettingId, false);
     }
     const fields = element.getChildren("DTO-Field")
         .filter(x =&gt; { var _a, _b; return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" &amp;&amp; x.isMapped() &amp;&amp; ((_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement().specialization.startsWith("Association")); });
     fields.forEach(field =&gt; {
-        getOrCreateCommandCrudDto(element, field, !excludePrimaryKeys, projectMappingSettingId);
+        getOrCreateCommandCrudDto(element, field, !excludePrimaryKeys, projectMappingSettingId, mapConstructors);
     });
     const complexFields = element.getChildren("DTO-Field")
         .filter(x =&gt; {
@@ -8616,7 +8616,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
             isComplexType((_d = (_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.typeReference) === null || _d === void 0 ? void 0 : _d.getType());
     });
     complexFields.forEach(cf =&gt; {
-        getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId);
+        getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId, mapConstructors);
     });
     function isComplexType(element) {
         return (element === null || element === void 0 ? void 0 : element.specialization) === "Data Contract" ||
@@ -8663,7 +8663,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
 
         dtoField.typeReference.setType(dto.id);
     }*/
-    function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId) {
+    function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId, mapConstructors = false) {
         let mappedElement = dtoField.getMapping().getElement();
         if (mappedElement.typeReference == null)
             throw new Error("TypeReference is undefined");
@@ -8683,7 +8683,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
             // In descending order:
             return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
         })[0];
-        if (entityCtor != null) {
+        if (mapConstructors &amp;&amp; entityCtor != null) {
             dto.setMapping([mappedElement.typeReference.getTypeId(), entityCtor.id], mapToDomainConstructorForDtosSettingId);
             addDtoFieldsForCtor(autoAddPrimaryKey, entityCtor, dto);
         }
@@ -8707,7 +8707,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (isComplexTypeById(e.typeId)) {
-                let newDto = getOrCreateCommandCrudDto(dto, field, autoAddPrimaryKey, mapFromDomainMappingSettingId);
+                let newDto = getOrCreateCommandCrudDto(dto, field, autoAddPrimaryKey, mapFromDomainMappingSettingId, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -8945,7 +8945,7 @@ var cqrsCrud;
         if (owningAggregate != null) {
             addAggregatePkToCommandOrQuery(owningAggregate, commandManager.getElement());
         }
-        onMapCommand(commandManager.getElement(), true, true);
+        onMapCommand(commandManager.getElement(), true, true, true);
         commandManager.collapse();
         return commandManager.getElement();
     }
@@ -9952,7 +9952,7 @@ function ensureHasField(options) {
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
 /// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
 /// &lt;reference path="ensureHasField.ts" /&gt;
-function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
+function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false, mapConstructors = false) {
     var _a, _b, _c;
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
     const mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
@@ -9979,12 +9979,12 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
     }
     if (mappingDetails.mappingTargetType === "Operation" &amp;&amp;
         isComplexType((_c = (_b = (_a = element.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.typeReference) === null || _c === void 0 ? void 0 : _c.getType())) {
-        getOrCreateCommandCrudDto(element, element, false, mapFromDomainMappingSettingId);
+        getOrCreateCommandCrudDto(element, element, false, mapFromDomainMappingSettingId, false);
     }
     const fields = element.getChildren("DTO-Field")
         .filter(x =&gt; { var _a, _b; return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" &amp;&amp; x.isMapped() &amp;&amp; ((_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement().specialization.startsWith("Association")); });
     fields.forEach(field =&gt; {
-        getOrCreateCommandCrudDto(element, field, !excludePrimaryKeys, projectMappingSettingId);
+        getOrCreateCommandCrudDto(element, field, !excludePrimaryKeys, projectMappingSettingId, mapConstructors);
     });
     const complexFields = element.getChildren("DTO-Field")
         .filter(x =&gt; {
@@ -9993,7 +9993,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
             isComplexType((_d = (_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.typeReference) === null || _d === void 0 ? void 0 : _d.getType());
     });
     complexFields.forEach(cf =&gt; {
-        getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId);
+        getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId, mapConstructors);
     });
     function isComplexType(element) {
         return (element === null || element === void 0 ? void 0 : element.specialization) === "Data Contract" ||
@@ -10040,7 +10040,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
 
         dtoField.typeReference.setType(dto.id);
     }*/
-    function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId) {
+    function getOrCreateCommandCrudDto(command, dtoField, autoAddPrimaryKey, mappingTypeSettingId, mapConstructors = false) {
         let mappedElement = dtoField.getMapping().getElement();
         if (mappedElement.typeReference == null)
             throw new Error("TypeReference is undefined");
@@ -10060,7 +10060,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
             // In descending order:
             return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
         })[0];
-        if (entityCtor != null) {
+        if (mapConstructors &amp;&amp; entityCtor != null) {
             dto.setMapping([mappedElement.typeReference.getTypeId(), entityCtor.id], mapToDomainConstructorForDtosSettingId);
             addDtoFieldsForCtor(autoAddPrimaryKey, entityCtor, dto);
         }
@@ -10084,7 +10084,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false) {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (isComplexTypeById(e.typeId)) {
-                let newDto = getOrCreateCommandCrudDto(dto, field, autoAddPrimaryKey, mapFromDomainMappingSettingId);
+                let newDto = getOrCreateCommandCrudDto(dto, field, autoAddPrimaryKey, mapFromDomainMappingSettingId, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -10322,7 +10322,7 @@ var cqrsCrud;
         if (owningAggregate != null) {
             addAggregatePkToCommandOrQuery(owningAggregate, commandManager.getElement());
         }
-        onMapCommand(commandManager.getElement(), true, true);
+        onMapCommand(commandManager.getElement(), true, true, true);
         commandManager.collapse();
         return commandManager.getElement();
     }

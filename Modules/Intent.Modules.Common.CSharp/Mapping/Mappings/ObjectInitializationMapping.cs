@@ -8,6 +8,7 @@ using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
+using System.Net.Http.Headers;
 
 namespace Intent.Modules.Common.CSharp.Mapping
 {
@@ -50,8 +51,9 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     }
                     else
                     {
-                        // TODO: add ternary check to mappings for when the source path could be nullable.
-                        var lastTargetPathElement = GetTargetPath().Last().Element;
+
+						// TODO: add ternary check to mappings for when the source path could be nullable.
+						var lastTargetPathElement = GetTargetPath().Last().Element;
                         SetTargetReplacement(lastTargetPathElement, null); // Needed for inheritance mappings - path element to be removed from invocation path
                         if (lastTargetPathElement.TypeReference.Element is not null)
                         {
@@ -155,7 +157,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             }
 
             var constructors = template.CSharpFile.TypeDeclarations.SelectMany(s => s.Constructors).ToArray();
-            var mapTargetElements = FindPropertyMappingsInHierarchy(Children).Select(s => s.Mapping.TargetElement).ToList();
+            var mapTargetElements = FindPropertyMappingsInHierarchy(Children).Where(s => s.Mapping != null).Select(s => s.Mapping.TargetElement).ToList();
 
             return constructors
                 .Where(ctor => mapTargetElements

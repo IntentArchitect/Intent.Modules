@@ -1,6 +1,10 @@
+### Version 1.1.3
+
+- Improvement: Improved mapping support around `Data Contracts` and `Value Objects`.
+
 ### Version 1.1.2
 
-- Improvement: Aligned some of the CRUD Generation functionality, to make traditional service modeling has the same features as the CQRS paradigm .
+- Improvement: Aligned some of the CRUD Generation functionality, to make traditional service modeling has the same features as the CQRS paradigm.
 
 ### Version 1.1.1
 

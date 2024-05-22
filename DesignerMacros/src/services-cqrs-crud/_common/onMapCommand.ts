@@ -8,7 +8,8 @@
 function onMapCommand(
     element: MacroApi.Context.IElementApi,
     isForCrudScript: boolean,
-    excludePrimaryKeys: boolean = false
+    excludePrimaryKeys: boolean = false,
+    mapConstructors: boolean = false
 ): void {
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
     const mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
@@ -42,14 +43,14 @@ function onMapCommand(
     if (mappingDetails.mappingTargetType === "Operation" &&
         isComplexType(element.getMapping()?.getElement()?.typeReference?.getType())
     ) {
-        getOrCreateCommandCrudDto(element, element, false, mapFromDomainMappingSettingId);
+        getOrCreateCommandCrudDto(element, element, false, mapFromDomainMappingSettingId, false);
     }
 
     const fields = element.getChildren("DTO-Field")
         .filter(x => x.typeReference.getType()?.specialization != "DTO" && x.isMapped() && x.getMapping()?.getElement().specialization.startsWith("Association"));
 
     fields.forEach(field => {
-        getOrCreateCommandCrudDto(element, field, !excludePrimaryKeys, projectMappingSettingId);
+        getOrCreateCommandCrudDto(element, field, !excludePrimaryKeys, projectMappingSettingId, mapConstructors);
     });
 
     const complexFields = element.getChildren("DTO-Field")
@@ -58,7 +59,7 @@ function onMapCommand(
             isComplexType(x.getMapping()?.getElement()?.typeReference?.getType()));
 
     complexFields.forEach(cf => {
-        getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId);
+        getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId, mapConstructors);
     });
 
     function isComplexType(element: MacroApi.Context.IElementApi): boolean {
@@ -113,7 +114,8 @@ function onMapCommand(
         command: MacroApi.Context.IElementApi,
         dtoField: MacroApi.Context.IElementApi,
         autoAddPrimaryKey: boolean,
-        mappingTypeSettingId: string
+        mappingTypeSettingId: string,
+        mapConstructors: boolean = false
     ): MacroApi.Context.IElementApi {
         let mappedElement = dtoField.getMapping().getElement();
         if (mappedElement.typeReference == null) throw new Error("TypeReference is undefined");
@@ -135,7 +137,7 @@ function onMapCommand(
             // In descending order:
             return b.getChildren("Parameter").length - a.getChildren("Parameter").length;
         })[0];
-        if (entityCtor != null) {
+        if (mapConstructors && entityCtor != null) {
             dto.setMapping([mappedElement.typeReference.getTypeId(), entityCtor.id], mapToDomainConstructorForDtosSettingId);
             addDtoFieldsForCtor(autoAddPrimaryKey, entityCtor, dto);
         } else {
@@ -163,7 +165,7 @@ function onMapCommand(
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (isComplexTypeById(e.typeId)){
-                let newDto = getOrCreateCommandCrudDto(dto, field, autoAddPrimaryKey, mapFromDomainMappingSettingId );
+                let newDto = getOrCreateCommandCrudDto(dto, field, autoAddPrimaryKey, mapFromDomainMappingSettingId, true );
                 field.typeReference.setType(newDto.id);
             }else{
                 field.typeReference.setType(e.typeId);

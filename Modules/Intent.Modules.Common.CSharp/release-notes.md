@@ -1,7 +1,10 @@
-﻿### Version 3.6.2
+﻿### Version 3.6.3
+
+- Fixed: CRUD Mapping issue around constructors with ValueObjects as parameters. 
+
+### Version 3.6.2
 
 - Fixed: XML Comment on parameter had too many `>` characters, i.e. `// <param name="param">>Test Parameter</param>` 
-- Fixed: CRUD Mapping issue around constructors with ValueObjects as parameters. 
 
 ### Version 3.6.1
 

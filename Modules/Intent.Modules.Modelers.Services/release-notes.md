@@ -1,3 +1,7 @@
+### Version 3.7.3
+
+- Improvement: Better Rich Domain Support around `Value Object`s and `Data Contract`s.
+
 ### Version 3.7.2
 
 - Improvement: Bringing Traditional `ServiceModel`s to have better feature parity with the CQRS paradigm.

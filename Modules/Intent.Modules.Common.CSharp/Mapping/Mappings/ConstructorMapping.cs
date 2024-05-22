@@ -30,24 +30,17 @@ public class ConstructorMapping : CSharpMappingBase
         _options = options ?? new ConstructorMappingOptions();
     }
 
-    public override CSharpStatement GetSourceStatement()
+	public override CSharpStatement GetSourceStatement()
     {
-        // Model assumes to be the Constructor element and it needs to access the owner of this Constructor to fetch the Template
-        var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
-        // Determine if this model is a constructor on the class:
-        if (typeTemplate?.CSharpFile.Classes.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpConstructor ctor) 
+        //Try find the CSharp constructor so we know what parameters are expected and in what order
+        if (TryFindModelConstructor(out var ctor)) 
         {
-            //var concreteClassModel = (IElement)_mappingMappingModel.GetParent(x => x.Parent == null || x.Mapping != null)?.Model 
-            //                         ?? ((IElement)Model).ParentElement;
+			var i = new CSharpInvocationStatement($"new { ctor.Name }").WithoutSemicolon();
 
-            //var i = new CSharpInvocationStatement($"new {reference.Name}").WithoutSemicolon(); (replaced by below)
-            //This is to ensure that full typename resolution is taken. Consider exposing the full type via the IHasCSharpName interface.
-            var i = new CSharpInvocationStatement($"new {_template.GetTypeName(((IElement)Model).ParentElement)}").WithoutSemicolon();
-
-            foreach (var parameter in ctor.Parameters)
+			foreach (var parameter in ctor.Parameters)
             {
                 bool optional = parameter.DefaultValue != null;
-				var child = Children.FirstOrDefault(c => c.Model.Name.Equals(parameter.Name, StringComparison.InvariantCultureIgnoreCase));
+				var child = GetAllChildren().FirstOrDefault(c => c.Model.Name.Equals(parameter.Name, StringComparison.InvariantCultureIgnoreCase));
 				if ( child != null)
                 {
 					i.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
@@ -75,12 +68,16 @@ public class ConstructorMapping : CSharpMappingBase
 
             return i;
         }
-        // Implicit constructor (this assumes a 1->1 mapping in the exact order):
-        var init = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
+
+        //This is not ideal and a best effort to realize your mapping
+
+		// Implicit constructor (this assumes a 1->1 mapping in the exact order):
+		var init = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
             ? new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}").WithoutSemicolon()
             : new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model)}").WithoutSemicolon();
 
-        foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
+		//foreach (var child in GetAllChildren().Where(c => c is not MapChildrenMapping))
+		foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
         {
             init.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
             {
@@ -103,6 +100,44 @@ public class ConstructorMapping : CSharpMappingBase
     {
         yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
     }
+
+	private bool TryFindModelConstructor(out CSharpConstructor constructor)
+	{
+		//for Elements mapped to a metadata constructor, use the constructors meta data class to find its template and get the CSharp constructor
+		constructor = null;
+		// Model assumes to be the Constructor element and it needs to access the owner of this Constructor to fetch the Template
+		var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
+		// Determine if this model is a constructor on the class:
+		if (typeTemplate?.CSharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpConstructor ctor)
+		{
+			_template.AddUsing(typeTemplate.Namespace);
+			constructor = ctor;
+			return true;
+
+		}
+
+		//This is for implicit constructors.. use the model to fins the template and find it's public constructor with the most arguments 
+		if (!((IElement)Model).ChildElements.Any() && Model.TypeReference != null)
+		{
+			var modelTemplate = _template.GetTypeInfo(((IElement)Model).TypeReference.Element?.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
+			var mainType = modelTemplate?.CSharpFile.TypeDeclarations.FirstOrDefault(t => t.Constructors.Count > 0);
+			if (mainType == null) 
+				return false;
+			constructor = mainType.Constructors
+					.Where(c => c.AccessModifier == "public ")
+					.OrderByDescending(c => c.Parameters.Count)
+					.FirstOrDefault();
+			if (constructor != null)
+			{
+				_template.AddUsing(modelTemplate.Namespace);
+			}
+			return constructor != null;
+		}
+
+		return false;
+	}
+
+
 }
 
 public class ConstructorMappingOptions

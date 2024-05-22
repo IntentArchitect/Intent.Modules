@@ -20,4 +20,5 @@ public class MapChildrenMapping : CSharpMappingBase
     {
         return Children.SelectMany(x => x.GetMappingStatements()).ToList();
     }
+
 }
