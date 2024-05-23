@@ -798,6 +798,12 @@ public class BuilderTests
                     });
                 });
             })
+            .AddClass("CommentedClass", @class =>
+            {
+                @class.InheritsXmlDocComments();
+                @class.AddMethod("void", "Test", m => m.InheritsXmlDocComments(referenceType: "SomeOtherType"));
+                @class.AddProperty("string", "Name", p => p.InheritsXmlDocComments());
+            })
             .CompleteBuild();
 
         await Verifier.Verify(fileBuilder.ToString());

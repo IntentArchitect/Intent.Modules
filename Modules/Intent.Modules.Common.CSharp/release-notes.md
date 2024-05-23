@@ -1,7 +1,8 @@
 ﻿### Version 3.6.3
 
-- Fixed: CRUD Mapping issue around constructors with ValueObjects as parameters.
 - New Feature: Classes and Records can now define `Primary Constructors`.
+- Fixed: CRUD Mapping issue around constructors with ValueObjects as parameters.
+- Improvement: Convenient `IncludesXmlDocComments` method to insert `/// <inheritdoc cref="" />` comments. 
 
 ### Version 3.6.2
 
