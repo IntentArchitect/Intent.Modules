@@ -13608,7 +13608,32 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
         </mappableElement>
       </mappableElementSettings>
     </mappableElementPackageExtension>
-    <mappableElementPackageExtension id="07fcf100-ebed-44ee-8eb2-e65f418ae042" name="CQRS Application Mappables Extension" extendPackageId="93c752a0-161d-4ef5-9c88-09995f59c263" extendPackage="Application Target Mappables">
+    <mappableElementPackageExtension id="83c1219b-a5da-45f2-9338-6e46c00db8f9" name="CQRS Application Source Mappables Extension" extendPackageId="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" extendPackage="Application Source Mappables">
+      <imports />
+      <mappableElementSettings>
+        <mappableElement id="05d2103b-407d-4de4-aacc-56bad7471e1c" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <useChildSettingsFrom>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</useChildSettingsFrom>
+          <represents>data</represents>
+          <childSettings />
+        </mappableElement>
+        <mappableElement id="fc30d3da-a441-498b-a2a8-9e8ae3a1c605" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <useChildSettingsFrom>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</useChildSettingsFrom>
+          <represents>data</represents>
+          <childSettings />
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackageExtension>
+    <mappableElementPackageExtension id="07fcf100-ebed-44ee-8eb2-e65f418ae042" name="CQRS Application Target Mappables Extension" extendPackageId="93c752a0-161d-4ef5-9c88-09995f59c263" extendPackage="Application Target Mappables">
       <imports />
       <mappableElementSettings>
         <mappableElement id="e7d79c6a-1df9-4a1b-92f6-f198080165aa" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
