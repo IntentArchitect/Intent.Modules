@@ -18,7 +18,7 @@ public class CSharpAccessMemberStatement : CSharpStatement
     }
 
     private CSharpStatement Reference { get; }
-    private CSharpStatement Member { get; }
+    public CSharpStatement Member { get; }
 
     public CSharpAccessMemberStatement WithSemicolon()
     {
