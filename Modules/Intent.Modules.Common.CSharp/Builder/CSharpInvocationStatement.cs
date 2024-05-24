@@ -57,7 +57,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 {
     private bool _withSemicolon = true;
     private CSharpCodeSeparatorType _defaultArgumentSeparator = CSharpCodeSeparatorType.None;
-    private CSharpClassMethod? _invokedMethod;
+    private ICSharpMethodDeclaration? _invokedMethod;
 
 
 	public CSharpInvocationStatement(string invokable) : base(invokable)
@@ -65,7 +65,13 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
         Expression = new CSharpStatement(invokable);
     }
 
-    public CSharpInvocationStatement(CSharpStatement expression, string member) : base($"{expression.ToString().TrimEnd()}.{member}")
+	public CSharpInvocationStatement(CSharpStatement expression, ICSharpMethodDeclaration method) : base($"{expression.ToString().TrimEnd()}.{method.Name}")
+	{
+        _invokedMethod = method;
+		Expression = new CSharpAccessMemberStatement(expression, method.Name);
+	}
+
+	public CSharpInvocationStatement(CSharpStatement expression, string member) : base($"{expression.ToString().TrimEnd()}.{member}")
     {
         Expression = new CSharpAccessMemberStatement(expression, member);
     }
@@ -110,7 +116,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
         _withSemicolon = false;
         return this;
     }
-	internal CSharpInvocationStatement Invokes(CSharpClassMethod method)
+	internal CSharpInvocationStatement Invokes(ICSharpMethodDeclaration method)
 	{
         _invokedMethod = method;
         return this;
@@ -127,18 +133,18 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 
     private string AsyncAwareInvocationText(string indentation)
     {
-        bool parentIsAsync = true;
-        var parent = GetParentMethodorConstructor();
+        bool contextIsAsync = true;
+        var context = GetInvocationContext();
         string parentCancellationTokenName = null;
-        if (parent != null)
+        if (context != null)
         {
-            switch (parent)
+            switch (context)
             {
                 case CSharpConstructor ctor:
-                    parentIsAsync = false;
+                    contextIsAsync = false;
                     break;
                 case CSharpClassMethod method:
-                    parentIsAsync = method.IsAsync;
+                    contextIsAsync = method.IsAsync;
                     var parameter = method.Parameters.FirstOrDefault(p => p.Type is "CancellationToken" or "CancellationToken?");
 					if (parameter != null)
                     {
@@ -147,7 +153,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
                     break;
 			}
 		}
-        if (parentIsAsync)
+        if (contextIsAsync)
         {
             var argumentCancellationToken = (CSharpStatement)parentCancellationTokenName;
 			argumentCancellationToken.BeforeSeparator = _defaultArgumentSeparator;
@@ -161,7 +167,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 		}
 	}
 
-    private IHasCSharpStatements? GetParentMethodorConstructor()
+    private IHasCSharpStatements? GetInvocationContext()
     {
         var current = Parent;
         while (current != null && current is not CSharpClassMethod or CSharpConstructor)

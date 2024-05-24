@@ -322,7 +322,7 @@ namespace cqrsCrud {
             field.setMapping(attr.mapPath);
         }
 
-        onMapDto(dto);
+        onMapDto(dto, folder);
         dto.collapse();
         return dto;
     }

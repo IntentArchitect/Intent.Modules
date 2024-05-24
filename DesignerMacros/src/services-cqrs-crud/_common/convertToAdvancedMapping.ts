@@ -90,16 +90,16 @@ namespace convertToAdvancedMapping {
         if (dto.isMapped() && dto.getMapping().getElement().specialization == "Class Constructor"){
             if (targetPathIds[targetPathIds.length - 1] != dto.getMapping().getElement().id ){
                 targetPathIds.push(dto.getMapping().getElement().id);
-                console.warn("Invocation Mapping : " + root.id + "->" + dto.getMapping().getElement().id);
+                //console.warn("Invocation Mapping : " + root.id + "->" + dto.getMapping().getElement().id);
                 mapping.addMappedEnd("Invocation Mapping", [root.id], targetPathIds);
             }
         }
         dto.getChildren("DTO-Field").filter(x => x.isMapped() && !fieldsToSkip(dto, x)).forEach(field => {
             if (field.typeReference.getType()?.specialization != "DTO" || field.typeReference.getIsCollection()) {
-                console.warn("sourcePath : " + sourcePath);
-                console.warn("targetPathIds : " + targetPathIds);    
-                console.warn("sourceAdd : " + field.id);
-                console.warn("targetAdd : " + field.getMapping().getPath().map(x => x.id));    
+                //console.warn("sourcePath : " + sourcePath);
+                //console.warn("targetPathIds : " + targetPathIds);    
+                //console.warn("sourceAdd : " + field.id);
+                //console.warn("targetAdd : " + field.getMapping().getPath().map(x => x.id));    
                 mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)))
             }
             if (field.typeReference.getType()?.specialization == "DTO") {

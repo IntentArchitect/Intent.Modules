@@ -77,6 +77,18 @@ class DomainHelper {
         return operations;
     }
 
+    static isComplexType(element: MacroApi.Context.IElementApi): boolean {
+        return element?.specialization === "Data Contract" ||
+            element?.specialization === "Value Object" ||
+            element?.specialization === "Class";
+    }
+
+    static isComplexTypeById(typeId: string): boolean {
+        let element = lookup(typeId);
+        return DomainHelper.isComplexType(element);
+    }
+
+
     static getOwningAggregate(entity: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
         if (!entity || entity.specialization != "Class") {
             return null;

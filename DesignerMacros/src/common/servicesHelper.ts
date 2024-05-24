@@ -57,10 +57,13 @@ class ElementManager {
 
     get id(): string { return this.command.id; };
 
-    setReturnType(typeId: string, isCollection?: boolean): ElementManager {
+    setReturnType(typeId: string, isCollection?: boolean, isNullable?: boolean): ElementManager {
         this.command.typeReference.setType(typeId);
         if (isCollection != null) {
             this.command.typeReference.setIsCollection(isCollection);
+        }
+        if (isNullable != null) {
+            this.command.typeReference.setIsNullable(isNullable);
         }
         return this;
     }

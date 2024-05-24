@@ -34,7 +34,7 @@ namespace convertToAdvancedMapping {
             let action = createAssociation("Create Entity Action", operation.id, target.id);
             let mapping = action.createMapping(operation.id, targetEntity.id);
             mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
-            mapContract("Data Mapping", dto, [operation.id, dtoParam.id], [target.id], mapping, true);
+            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
             // DELETE OPERATION:
         } else if (operation.getName().startsWith("Delete") && operation.getChildren("Parameter").find(x => x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Delete Entity Action", operation.id, entity.id);
@@ -50,7 +50,7 @@ namespace convertToAdvancedMapping {
             addFilterMapping(queryMapping, operation, entity);
             // Update Entity Mapping
             let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
-            mapContract("Data Mapping", dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
             // FIND BY ID OPERATION:
         } else if (operation.getName().startsWith("Find" + entity.getName()) && operation.getChildren("Parameter").some(x => x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
@@ -72,7 +72,7 @@ namespace convertToAdvancedMapping {
             // Update Entity Mapping
             let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
             updateMapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
-            mapContract("Data Mapping", dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+            mapContract("Data Mapping",dto, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
 
         } else {
             console.warn(`Could not convert operation: ${operation.getName()} (For entity ${entity.getName()}. Has parameters: (${operation.getChildren("Parameter").map(x => x.getName())}))`);
@@ -98,14 +98,20 @@ namespace convertToAdvancedMapping {
         }
     }
 
-
-    function mapContract(mappingType: string, dto: MacroApi.Context.IElementApi, sourcePath: string[], targetPathIds: string[], mapping: MacroApi.Context.IElementToElementMappingApi, isCommand: boolean = false): void {
+    function mapContract(mappingType: string, root: MacroApi.Context.IElementApi, dto: MacroApi.Context.IElementApi, sourcePath: string[], targetPathIds: string[], mapping: MacroApi.Context.IElementToElementMappingApi, isCommand: boolean = false): void {
+        if (dto.isMapped() && dto.getMapping().getElement().specialization == "Class Constructor"){
+            if (targetPathIds[targetPathIds.length - 1] != dto.getMapping().getElement().id ){
+                targetPathIds.push(dto.getMapping().getElement().id);
+                console.warn("Invocation Mapping : " + root.id + "->" + dto.getMapping().getElement().id);
+                mapping.addMappedEnd("Invocation Mapping", [root.id], targetPathIds);
+            }
+        }
         dto.getChildren("DTO-Field").filter(x => x.isMapped() && !fieldsToSkip(isCommand, dto, x) ).forEach(field => {
             if (field.typeReference.getType()?.specialization != "DTO" || field.typeReference.getIsCollection()) {
                 mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)))
             }
             if (field.typeReference.getType()?.specialization == "DTO") {
-                mapContract(mappingType, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)), mapping, isCommand);
+                mapContract(mappingType, root, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)), mapping, isCommand);
             }
             field.clearMapping();
         })
