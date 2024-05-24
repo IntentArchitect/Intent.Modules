@@ -1,0 +1,14 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public record Record(string Name,
+        string Surname,
+        string Email,
+        bool IsActive,
+        string MobileNumber,
+        string HomeNumber,
+        string OfficeNumber,
+        Gender Gender = Gender.Male);
+
+}

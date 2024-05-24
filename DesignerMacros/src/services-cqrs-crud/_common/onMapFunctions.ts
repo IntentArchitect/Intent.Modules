@@ -30,6 +30,33 @@ function getOrCreateDto(elementName: string, parentElement: MacroApi.Context.IEl
     return dto;
 }
 
+function ensureDtoFieldsForCtor(autoAddPrimaryKey: boolean, ctor: MacroApi.Context.IElementApi, dto: MacroApi.Context.IElementApi) {
+    
+    let childrenToAdd = DomainHelper.getChildrenOfType(ctor, "Parameter").filter(x => x.typeId != null && lookup(x.typeId).specialization !== "Domain Service");
+
+    childrenToAdd.forEach(e => {
+        if (e.mapPath != null) {
+            if (dto.getChildren("Parameter").some(x => x.getMapping()?.getElement()?.id == e.id)) {
+                return;
+            }
+        }
+        else if (ctor.getChildren("Parameter").some(x => x.getName().toLowerCase() === e.name.toLowerCase())) {
+            return;
+        }
+
+        let field = createElement("DTO-Field", e.name, dto.id);
+        field.typeReference.setType(e.typeId);
+        field.typeReference.setIsCollection(e.isCollection);
+        field.typeReference.setIsNullable(e.isNullable);
+
+        if (this.mappedElement != null && e.mapPath) {
+            field.setMapping(e.mapPath);
+        }
+    });
+
+    dto.collapse();
+}
+
 function ensureDtoFields(autoAddPrimaryKey: boolean, mappedElement: MacroApi.Context.IElementApi, dto: MacroApi.Context.IElementApi) {
     let dtoUpdated = false;
     let domainElement = mappedElement
@@ -39,16 +66,13 @@ function ensureDtoFields(autoAddPrimaryKey: boolean, mappedElement: MacroApi.Con
     let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true;
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
-        if (isCreateMode && entry.name?.toLowerCase() === "id") {
-            continue;
-        }
         if (isCreateMode && isOwnerForeignKey(entry.name, domainElement)) {
             continue;
         }
         if (dto.getChildren("DTO-Field").some(x => x.getName() == entry.name)) {
             continue;
         }
-        let field = createElement("DTO-Field", entry.name, dto.id);
+        let field = createElement("DTO-Field", toPascalCase( entry.name), dto.id);
         field.typeReference.setType(entry.typeId);
         field.typeReference.setIsNullable(entry.isNullable);
         field.typeReference.setIsCollection(entry.isCollection);
@@ -58,7 +82,7 @@ function ensureDtoFields(autoAddPrimaryKey: boolean, mappedElement: MacroApi.Con
 
     if (autoAddPrimaryKey && !isCreateMode) {
         addPrimaryKeys(dto, domainElement, true);
-    }
+    }    
 
     if (dtoUpdated) {
         dto.collapse();

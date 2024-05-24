@@ -90,7 +90,22 @@ public static class CSharpDeclarationExtensions
         }
         item.WithComments(formattedComment);
         return true;
-
     }
+
+    /// <summary>
+    /// Inserts a "/// <inheritdoc />" comment to a given C# declaration element.
+    /// </summary>
+    /// <param name="referenceType">Specify a type for the "cref" attribute.</param>
+    public static void InheritsXmlDocComments<TImpl>(this CSharpDeclaration<TImpl> item, string referenceType = null) where TImpl : CSharpDeclaration<TImpl>
+    {
+        if (referenceType is null)
+        {
+            item.WithComments("/// <inheritdoc />");
+            return;
+        }
+
+        item.WithComments($@"/// <inheritdoc cref=""{referenceType}"" />");
+    }
+    
 }
     

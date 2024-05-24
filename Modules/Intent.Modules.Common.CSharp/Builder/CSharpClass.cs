@@ -5,6 +5,8 @@ using System.Text;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 
+#nullable enable
+
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers, ICodeBlock, ICSharpReferenceable
@@ -57,7 +59,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
 
     public string Name { get; }
     protected string AccessModifier { get; private set; } = "public ";
-    public CSharpClass BaseType { get; set; }
+    public CSharpClass? BaseType { get; set; }
     public IList<string> BaseTypeTypeParameters { get; } = new List<string>();
     public IList<string> Interfaces { get; } = new List<string>();
     public IList<CSharpField> Fields { get; } = new List<CSharpField>();
@@ -69,6 +71,8 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
     public IList<CSharpInterface> NestedInterfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
     public IList<CSharpCodeBlock> CodeBlocks { get; } = new List<CSharpCodeBlock>();
+
+
     public CSharpClass WithBaseType(string type)
     {
         return ExtendsClass(type, Enumerable.Empty<string>());
@@ -129,8 +133,8 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<CSharpField> configure = null) => AddField(type, name, configure);
-    public CSharpClass AddField(string type, string name, Action<CSharpField> configure = null)
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<CSharpField>? configure = null) => AddField(type, name, configure);
+    public CSharpClass AddField(string type, string name, Action<CSharpField>? configure = null)
     {
         var field = new CSharpField(type, name)
         {
@@ -142,8 +146,8 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<CSharpProperty> configure = null) => AddProperty(type, name, configure);
-    public CSharpClass AddProperty(string type, string name, Action<CSharpProperty> configure = null)
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<CSharpProperty>? configure = null) => AddProperty(type, name, configure);
+    public CSharpClass AddProperty(string type, string name, Action<CSharpProperty>? configure = null)
     {
         var property = new CSharpProperty(type, name, this)
         {
@@ -162,7 +166,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    public CSharpClass AddProperty<TModel>(string type, TModel model, Action<CSharpProperty> configure = null)
+    public CSharpClass AddProperty<TModel>(string type, TModel model, Action<CSharpProperty>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
         return AddProperty(type, model.Name.ToPropertyName(), prop =>
@@ -180,7 +184,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    public CSharpClass AddProperty<TModel>(TModel model, Action<CSharpProperty> configure = null)
+    public CSharpClass AddProperty<TModel>(TModel model, Action<CSharpProperty>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
         return AddProperty(File.GetModelType(model), model.Name.ToPropertyName(), prop =>
@@ -190,7 +194,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
         });
     }
 
-    public CSharpClass InsertProperty(int index, string type, string name, Action<CSharpProperty> configure = null)
+    public CSharpClass InsertProperty(int index, string type, string name, Action<CSharpProperty>? configure = null)
     {
         var property = new CSharpProperty(type, name, this)
         {
@@ -202,16 +206,24 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
         return this;
     }
 
-    public CSharpClass AddConstructor(Action<CSharpConstructor> configure = null)
+    public CSharpClass AddConstructor(Action<CSharpConstructor>? configure = null)
     {
         var ctor = new CSharpConstructor(this);
         Constructors.Add(ctor);
         configure?.Invoke(ctor);
         return this;
     }
+    
+    public CSharpClass AddPrimaryConstructor(Action<CSharpConstructor>? configure = null)
+    {
+        var ctor = new CSharpConstructor(this, true);
+        Constructors.Add(ctor);
+        configure?.Invoke(ctor);
+        return this;
+    }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<CSharpClassMethod> configure = null) => AddMethod(returnType, name, configure);
-    public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod> configure = null)
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<CSharpClassMethod>? configure = null) => AddMethod(returnType, name, configure);
+    public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
     }
@@ -223,7 +235,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    public CSharpClass AddMethod<TModel>(string returnType, TModel model, Action<CSharpClassMethod> configure = null)
+    public CSharpClass AddMethod<TModel>(string returnType, TModel model, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
         return AddMethod(returnType, model.Name.ToPropertyName(), prop =>
@@ -241,7 +253,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    public CSharpClass AddMethod<TModel>(TModel model, Action<CSharpClassMethod> configure = null)
+    public CSharpClass AddMethod<TModel>(TModel model, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
         return AddMethod(File.GetModelType(model), model.Name.ToPropertyName(), method =>
@@ -279,12 +291,12 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<CSharpClass> configure = null)
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<CSharpClass>? configure = null)
     {
         return AddNestedClass(name, configure);
     }
 
-    public CSharpClass AddNestedClass(string name, Action<CSharpClass> configure = null)
+    public CSharpClass AddNestedClass(string name, Action<CSharpClass>? configure = null)
     {
         var @class = new CSharpClass(
             name: name,
@@ -297,7 +309,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
         return this;
     }
 
-    public CSharpClass AddNestedInterface(string name, Action<CSharpInterface> configure = null)
+    public CSharpClass AddNestedInterface(string name, Action<CSharpInterface>? configure = null)
     {
         var @interface = new CSharpInterface(
             name: name,
@@ -309,7 +321,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
         return this;
     }
 
-    public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod> configure = null)
+    public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         var method = new CSharpClassMethod(returnType, name, this);
         Methods.Insert(index, method);
@@ -329,12 +341,12 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
         return this;
     }
 
-    public CSharpClassMethod FindMethod(string name)
+    public CSharpClassMethod? FindMethod(string name)
     {
         return Methods.FirstOrDefault(x => x.Name == name);
     }
 
-    public CSharpClassMethod FindMethod(Func<CSharpClassMethod, bool> matchFunc)
+    public CSharpClassMethod? FindMethod(Func<CSharpClassMethod, bool> matchFunc)
     {
         return Methods.FirstOrDefault(matchFunc);
     }
@@ -460,20 +472,35 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
             sb.Append("partial ");
         }
 
+        var primaryConstructor = GetPrimaryConstructor();
 
         sb.Append(_type.ToString().ToLowerInvariant());
         sb.Append(' ');
         sb.Append(Name);
         sb.Append(GetGenericParameters());
+        if (primaryConstructor is not null)
+        {
+            sb.Append(primaryConstructor.GetText(indentation));
+        }
         sb.Append(GetBaseTypes());
         sb.Append(GetGenericTypeConstraints(indentation));
-        sb.AppendLine();
-        sb.Append(indentation);
-        sb.Append("{");
-        sb.Append(GetMembers($"{indentation}    "));
-        sb.AppendLine();
-        sb.Append(indentation);
-        sb.Append("}");
+        
+        var members = GetMembers($"{indentation}    ");
+        if (primaryConstructor is not null && string.IsNullOrEmpty(members))
+        {
+            sb.Append(';');
+            sb.AppendLine();
+        }
+        else
+        {
+            sb.AppendLine();
+            sb.Append(indentation);
+            sb.Append('{');
+            sb.Append(members);
+            sb.AppendLine();
+            sb.Append(indentation);
+            sb.Append('}');
+        }
 
         return sb.ToString();
     }
@@ -483,6 +510,17 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
         return ToString(indentation);
     }
 
+    private CSharpConstructor? GetPrimaryConstructor()
+    {
+        var primaryConstructors = Constructors.Where(p => p.IsPrimaryConstructor).ToArray();
+        return primaryConstructors.Length switch
+        {
+            0 => null,
+            1 => primaryConstructors.First(),
+            _ => throw new InvalidOperationException($"Cannot have more than one primary constructor for {_type} {Name}")
+        };
+    }
+    
     private string GetGenericTypeConstraints(string indentation)
     {
         if (!GenericTypeConstraints.Any())
@@ -508,11 +546,21 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
     private string GetBaseTypes()
     {
         var types = new List<string>();
-        if (BaseType != null)
+        if (BaseType is not null)
         {
-            var baseType = BaseTypeTypeParameters.Any()
-                ? $"{BaseType.Name}<{string.Join(", ", BaseTypeTypeParameters)}>"
-                : BaseType.Name;
+            var baseType = BaseType.Name;
+            
+            var primaryCtor = GetPrimaryConstructor();
+            var baseCallParams = primaryCtor?.ConstructorCall.Arguments;
+            if (baseCallParams?.Count > 0)
+            {
+                baseType += $"({string.Join(", ", baseCallParams)})";
+            }
+
+            if (BaseTypeTypeParameters.Any())
+            {
+                baseType += $"<{string.Join(", ", BaseTypeTypeParameters)}>";
+            }
 
             types.Add(baseType);
         }
@@ -525,9 +573,9 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
     private string GetMembers(string indentation)
     {
         var codeBlocks = new List<ICodeBlock>();
-        codeBlocks.AddRange(Fields);
-        codeBlocks.AddRange(Constructors);
-        codeBlocks.AddRange(Properties);
+        codeBlocks.AddRange(Fields.Where(p => !p.IsOmittedFromRender));
+        codeBlocks.AddRange(Constructors.Where(p => !p.IsPrimaryConstructor));
+        codeBlocks.AddRange(Properties.Where(p => !p.IsOmittedFromRender));
         codeBlocks.AddRange(Methods);
         codeBlocks.AddRange(NestedClasses);
         codeBlocks.AddRange(NestedInterfaces);

@@ -50,6 +50,11 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
 
     public CSharpConstructorParameter IntroduceField(Action<CSharpField, CSharpFieldAssignmentStatement> configure)
     {
+        if (_constructor.IsPrimaryConstructor)
+        {
+            throw new InvalidOperationException($"Introducing a backing field for a primary constructor parameter is not allowed. {_constructor.Class.TypeDefinitionType}: {_constructor.Class.Name}.");
+        }
+        
         _constructor.Class.AddField(Type, Name.ToPrivateMemberName(), field =>
         {
             foreach (var kvp in Metadata)
@@ -70,6 +75,11 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
 
     public CSharpConstructorParameter IntroduceReadonlyField(Action<CSharpField, CSharpFieldAssignmentStatement> configure)
     {
+        if (_constructor.IsPrimaryConstructor)
+        {
+            throw new InvalidOperationException($"Introducing a backing field for a primary constructor parameter is not allowed. {_constructor.Class.TypeDefinitionType}: {_constructor.Class.Name}.");
+        }
+        
         return IntroduceField((field, statement) =>
         {
             field.PrivateReadOnly();
@@ -84,6 +94,11 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
 
     public CSharpConstructorParameter IntroduceProperty(Action<CSharpProperty, CSharpFieldAssignmentStatement> configure)
     {
+        if (_constructor.IsPrimaryConstructor)
+        {
+            throw new InvalidOperationException($"Introducing a property for a primary constructor parameter is not allowed. {_constructor.Class.TypeDefinitionType}: {_constructor.Class.Name}.");
+        }
+        
         _constructor.Class.AddProperty(Type, Name.ToPropertyName(), property =>
         {
             foreach (var kvp in Metadata)

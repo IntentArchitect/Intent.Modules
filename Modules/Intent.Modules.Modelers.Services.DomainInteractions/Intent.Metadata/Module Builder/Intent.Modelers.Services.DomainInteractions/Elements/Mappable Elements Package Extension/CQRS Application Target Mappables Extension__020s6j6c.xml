@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="07fcf100-ebed-44ee-8eb2-e65f418ae042" type="Mappable Elements Package Extension" typeId="bddb69f0-e2c8-4373-b5cb-d701f311f935">
-  <name>CQRS Application Mappables Extension</name>
-  <display>CQRS Application Mappables Extension: Application Target Mappables</display>
+  <name>CQRS Application Target Mappables Extension</name>
+  <display>CQRS Application Target Mappables Extension: Application Target Mappables</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />

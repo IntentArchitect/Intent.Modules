@@ -1,0 +1,14 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class(string name,
+        string surname,
+        string email,
+        bool isActive,
+        string mobileNumber,
+        string homeNumber,
+        string officeNumber,
+        Gender gender = Gender.Male);
+
+}

@@ -1,0 +1,10 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public record SomeBaseRecord(string SomeValue);
+
+
+    public record Record(string Name, string Surname, string Email, bool IsActive) : SomeBaseRecord("some value here");
+
+}

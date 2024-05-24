@@ -11,4 +11,16 @@ namespace Namespace
         {
         }
     }
+
+    /// <inheritdoc />
+    public class CommentedClass
+    {
+        /// <inheritdoc />
+        public string Name { get; set; }
+
+        /// <inheritdoc cref="SomeOtherType" />
+        public void Test()
+        {
+        }
+    }
 }

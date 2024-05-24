@@ -1,0 +1,7 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public record Record(string Name);
+
+}

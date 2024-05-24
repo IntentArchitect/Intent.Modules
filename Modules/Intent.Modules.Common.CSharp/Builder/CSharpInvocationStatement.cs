@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using Intent.Modules.Common.CSharp.AppStartup;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -56,8 +57,10 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 {
     private bool _withSemicolon = true;
     private CSharpCodeSeparatorType _defaultArgumentSeparator = CSharpCodeSeparatorType.None;
+    private CSharpClassMethod? _invokedMethod;
 
-    public CSharpInvocationStatement(string invokable) : base(invokable)
+
+	public CSharpInvocationStatement(string invokable) : base(invokable)
     {
         Expression = new CSharpStatement(invokable);
     }
@@ -75,7 +78,8 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
     public ICSharpExpression Expression { get; } 
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
-    public CSharpInvocationStatement AddArgument(CSharpStatement argument, Action<CSharpStatement> configure = null)
+
+	public CSharpInvocationStatement AddArgument(CSharpStatement argument, Action<CSharpStatement> configure = null)
     {
         argument.Parent = this;
         Statements.Add(argument);
@@ -106,21 +110,76 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
         _withSemicolon = false;
         return this;
     }
+	internal CSharpInvocationStatement Invokes(CSharpClassMethod method)
+	{
+        _invokedMethod = method;
+        return this;
+	}
 
-    public override string GetText(string indentation)
+	public override string GetText(string indentation)
     {
+        if (_invokedMethod?.IsAsync == true)
+        {
+            return AsyncAwareInvocationText(indentation);
+        }
         return $"{RelativeIndentation}{Expression.GetText(indentation)}({GetArgumentsText(indentation)}){(_withSemicolon ? ";" : string.Empty)}";
     }
 
-    private string GetArgumentsText(string indentation)
+    private string AsyncAwareInvocationText(string indentation)
+    {
+        bool parentIsAsync = true;
+        var parent = GetParentMethodorConstructor();
+        string parentCancellationTokenName = null;
+        if (parent != null)
+        {
+            switch (parent)
+            {
+                case CSharpConstructor ctor:
+                    parentIsAsync = false;
+                    break;
+                case CSharpClassMethod method:
+                    parentIsAsync = method.IsAsync;
+                    var parameter = method.Parameters.FirstOrDefault(p => p.Type is "CancellationToken" or "CancellationToken?");
+					if (parameter != null)
+                    {
+                        parentCancellationTokenName = parameter.Name;
+					}
+                    break;
+			}
+		}
+        if (parentIsAsync)
+        {
+            var argumentCancellationToken = (CSharpStatement)parentCancellationTokenName;
+			argumentCancellationToken.BeforeSeparator = _defaultArgumentSeparator;
+			argumentCancellationToken.AfterSeparator = CSharpCodeSeparatorType.None;
+
+			return $"{RelativeIndentation}await {Expression.GetText(indentation)}({GetArgumentsText(indentation, argumentCancellationToken)}){(_withSemicolon ? ";" : string.Empty)}";
+		}
+		else
+        {
+			return $"{RelativeIndentation}{Expression.GetText(indentation)}({GetArgumentsText(indentation)}).GetAwaiter().GetResult(){(_withSemicolon ? ";" : string.Empty)}";
+		}
+	}
+
+    private IHasCSharpStatements? GetParentMethodorConstructor()
+    {
+        var current = Parent;
+        while (current != null && current is not CSharpClassMethod or CSharpConstructor)
+        {
+            current = (current as CSharpStatement)?.Parent;
+        }
+        return current;
+	}
+
+	private string GetArgumentsText(string indentation, params CSharpStatement[] additionalArguments)
     {
         var additionalIndentation = GetAdditionalIndentationIfArgsOnNewLines();
-        return Statements.JoinCode(",", $"{indentation}{additionalIndentation}");
+		return Statements.Concat(additionalArguments ?? Enumerable.Empty<CSharpStatement>()).JoinCode(",", $"{indentation}{additionalIndentation}");
     }
 
     private string GetAdditionalIndentationIfArgsOnNewLines()
     {
-        return Statements.All(x => x.BeforeSeparator == CSharpCodeSeparatorType.None)
+		return Statements.All(x => x.BeforeSeparator == CSharpCodeSeparatorType.None)
             ? string.Empty
             : "    ";
     }

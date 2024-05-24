@@ -1,6 +1,11 @@
+### Version 1.1.3
+
+- Improvement: Improved mapping support around `Data Contracts` and `Value Objects`.
+- Improvement: Double-clicking on fields on the right hand side will add properties on Commands and Queries on the left hand side inside the Advanced Mapping Screen for Service Operation Mappings.
+
 ### Version 1.1.2
 
-- Improvement: Aligned some of the CRUD Generation functionality, to make traditional service modeling has the same features as the CQRS paradigm .
+- Improvement: Aligned some of the CRUD Generation functionality, to make traditional service modeling has the same features as the CQRS paradigm.
 
 ### Version 1.1.1
 

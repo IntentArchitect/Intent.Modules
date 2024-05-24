@@ -1080,7 +1080,7 @@
             <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="true" isActive="true" />
             <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-right" isActive="true" />
             <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" isActive="true" />
-            <property name="227be852-5202-4bc7-a8ce-db0ed31b2e14" display="Is Option Visible Function" value="// hide if not mapped and advanced mapping mode selected in Domain Interaction Settings: return isMapped() ||     // Domain Interaction Settings -&gt; Mapping Mode     application.getSettings(&quot;0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad&quot;)?.getField(&quot;14bc1e98-930b-494c-97a9-5da4e1f3a5fa&quot;)?.value !== &quot;advanced&quot;;" isActive="true" />
+            <property name="227be852-5202-4bc7-a8ce-db0ed31b2e14" display="Is Option Visible Function" value="// hide if not mapped and advanced mapping mode selected in Domain Interaction Settings:&#xD;&#xA;/*&#xD;&#xA;return isMapped() ||&#xD;&#xA;    // Domain Interaction Settings -&gt; Mapping Mode&#xD;&#xA;    application.getSettings(&quot;0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad&quot;)?.getField(&quot;14bc1e98-930b-494c-97a9-5da4e1f3a5fa&quot;)?.value !== &quot;advanced&quot;;&#xD;&#xA;*/&#xD;&#xA;return false;" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

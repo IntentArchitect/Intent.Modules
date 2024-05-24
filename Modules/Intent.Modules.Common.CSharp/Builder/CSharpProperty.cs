@@ -1,6 +1,8 @@
 using System;
 using Intent.Modules.Common.CSharp.Templates;
 
+#nullable enable
+
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpReferenceable
@@ -15,6 +17,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpReferenceable
     public bool IsRequired { get; private set; }
     public string InitialValue { get; private set; }
     public string ExplicitlyImplementing { get; private set; }
+    public bool IsOmittedFromRender { get; private set; } 
     public CSharpPropertyAccessor Getter { get; } = CSharpPropertyAccessor.Getter();
     public CSharpPropertyAccessor Setter { get; } = CSharpPropertyAccessor.Setter();
 
@@ -37,6 +40,17 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpReferenceable
         _class = @class as CSharpClass;
         Parent = @class;
         File = @class?.File; // can be null because of CSharpInterfaceProperty :(
+    }
+
+    internal static CSharpProperty CreatePropertyOmittedFromRender(string type, string name, CSharpClass @class, bool hasInitSetter = true)
+    {
+        var property = new CSharpProperty(type,name,@class);
+        property.IsOmittedFromRender = true;
+        if (hasInitSetter)
+        {
+            property.Init();
+        }
+        return property;
     }
 
     public string GetReferenceName()

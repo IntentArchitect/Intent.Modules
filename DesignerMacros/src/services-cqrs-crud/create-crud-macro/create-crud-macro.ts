@@ -105,7 +105,7 @@ namespace cqrsCrud {
         if (owningAggregate != null) {
             addAggregatePkToCommandOrQuery(owningAggregate, commandManager.getElement());
         }
-        onMapCommand(commandManager.getElement(), true, true);
+        onMapCommand(commandManager.getElement(), true, true, true);
 
         commandManager.collapse();
         return commandManager.getElement();

@@ -1,6 +1,12 @@
-﻿### Version 3.6.2
+﻿### Version 3.6.3
 
-- Fixed: XML Comment on parameter had too many `>` characters, i.e. `// <param name="param">>Test Parameter</param>` 
+- New Feature: Classes and Records can now define `Primary Constructors`.
+- Fixed: CRUD Mapping issue around constructors with ValueObjects as parameters.
+- Improvement: Convenient `IncludesXmlDocComments` method to insert `/// <inheritdoc cref="" />` comments. 
+
+### Version 3.6.2
+
+- Fixed: XML Comment on parameter had too many `>` characters, i.e. `// <param name="param">>Test Parameter</param>`.
 
 ### Version 3.6.1
 
