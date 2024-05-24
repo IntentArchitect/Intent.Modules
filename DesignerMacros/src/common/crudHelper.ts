@@ -51,7 +51,7 @@ class CrudHelper {
     }
 
     static getOrCreateDto(elementName: string, parentElement: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
-        const expectedDtoName = `${elementName}Dto`;
+        const expectedDtoName = elementName.replace(/Dto$/, "") + "Dto";
         let existingDto = parentElement.getChildren("DTO").filter(x => x.getName() === expectedDtoName)[0];
         if (existingDto) {
             return existingDto;
@@ -79,7 +79,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (DomainHelper.isComplexTypeById(e.typeId)){
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true );
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true );
                 field.typeReference.setType(newDto.id);
             }else{
                 field.typeReference.setType(e.typeId);
@@ -107,7 +108,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", entry.name, dto.id);
             field.setMapping(entry.mapPath);
             if (DomainHelper.isComplexTypeById(entry.typeId)){
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true );
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true );
                 field.typeReference.setType(newDto.id);
             }else{
                 field.typeReference.setType(entry.typeId);

@@ -145,7 +145,7 @@ namespace servicesCrud {
         operationManager.addChild("dto", dtoManager.id);
 
 
-        onMapDto(dtoManager.getElement(), folder, false, `${baseName}Create`);
+        onMapDto(dtoManager.getElement(), folder, false, `${baseName}Create`, true);
         dtoManager.collapse();
         operationManager.collapse();
     }

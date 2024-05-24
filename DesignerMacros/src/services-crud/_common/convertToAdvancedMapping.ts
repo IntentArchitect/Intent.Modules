@@ -34,7 +34,7 @@ namespace convertToAdvancedMapping {
             let action = createAssociation("Create Entity Action", operation.id, target.id);
             let mapping = action.createMapping(operation.id, targetEntity.id);
             mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
-            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
             // DELETE OPERATION:
         } else if (operation.getName().startsWith("Delete") && operation.getChildren("Parameter").find(x => x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Delete Entity Action", operation.id, entity.id);
@@ -50,7 +50,7 @@ namespace convertToAdvancedMapping {
             addFilterMapping(queryMapping, operation, entity);
             // Update Entity Mapping
             let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
-            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
             // FIND BY ID OPERATION:
         } else if (operation.getName().startsWith("Find" + entity.getName()) && operation.getChildren("Parameter").some(x => x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
@@ -72,7 +72,7 @@ namespace convertToAdvancedMapping {
             // Update Entity Mapping
             let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
             updateMapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
-            mapContract("Data Mapping",dto, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+            mapContract("Data Mapping",operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
 
         } else {
             console.warn(`Could not convert operation: ${operation.getName()} (For entity ${entity.getName()}. Has parameters: (${operation.getChildren("Parameter").map(x => x.getName())}))`);

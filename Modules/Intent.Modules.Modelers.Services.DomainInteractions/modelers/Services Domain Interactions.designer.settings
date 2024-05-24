@@ -386,7 +386,7 @@ class CrudHelper {
         return dto;
     }
     static getOrCreateDto(elementName, parentElement) {
-        const expectedDtoName = `${elementName}Dto`;
+        const expectedDtoName = elementName.replace(/Dto$/, "") + "Dto";
         let existingDto = parentElement.getChildren("DTO").filter(x =&gt; x.getName() === expectedDtoName)[0];
         if (existingDto) {
             return existingDto;
@@ -408,7 +408,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (DomainHelper.isComplexTypeById(e.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -436,7 +437,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", entry.name, dto.id);
             field.setMapping(entry.mapPath);
             if (DomainHelper.isComplexTypeById(entry.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -1085,7 +1087,7 @@ var servicesCrud;
             operationManager.addChildrenFrom(foreignKeys);
         }
         operationManager.addChild("dto", dtoManager.id);
-        onMapDto(dtoManager.getElement(), folder, false, `${baseName}Create`);
+        onMapDto(dtoManager.getElement(), folder, false, `${baseName}Create`, true);
         dtoManager.collapse();
         operationManager.collapse();
     }
@@ -1708,7 +1710,7 @@ var convertToAdvancedMapping;
             let action = createAssociation("Create Entity Action", operation.id, target.id);
             let mapping = action.createMapping(operation.id, targetEntity.id);
             mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
-            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
             // DELETE OPERATION:
         }
         else if (operation.getName().startsWith("Delete") &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
@@ -1724,7 +1726,7 @@ var convertToAdvancedMapping;
             addFilterMapping(queryMapping, operation, entity);
             // Update Entity Mapping
             let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
-            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
             // FIND BY ID OPERATION:
         }
         else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
@@ -1748,7 +1750,7 @@ var convertToAdvancedMapping;
             // Update Entity Mapping
             let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
             updateMapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
-            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
         }
         else {
             console.warn(`Could not convert operation: ${operation.getName()} (For entity ${entity.getName()}. Has parameters: (${operation.getChildren("Parameter").map(x =&gt; x.getName())}))`);
@@ -1840,7 +1842,7 @@ class CrudHelper {
         return dto;
     }
     static getOrCreateDto(elementName, parentElement) {
-        const expectedDtoName = `${elementName}Dto`;
+        const expectedDtoName = elementName.replace(/Dto$/, "") + "Dto";
         let existingDto = parentElement.getChildren("DTO").filter(x =&gt; x.getName() === expectedDtoName)[0];
         if (existingDto) {
             return existingDto;
@@ -1862,7 +1864,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (DomainHelper.isComplexTypeById(e.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -1890,7 +1893,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", entry.name, dto.id);
             field.setMapping(entry.mapPath);
             if (DomainHelper.isComplexTypeById(entry.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -2539,7 +2543,7 @@ var servicesCrud;
             operationManager.addChildrenFrom(foreignKeys);
         }
         operationManager.addChild("dto", dtoManager.id);
-        onMapDto(dtoManager.getElement(), folder, false, `${baseName}Create`);
+        onMapDto(dtoManager.getElement(), folder, false, `${baseName}Create`, true);
         dtoManager.collapse();
         operationManager.collapse();
     }
@@ -3521,7 +3525,7 @@ class CrudHelper {
         return dto;
     }
     static getOrCreateDto(elementName, parentElement) {
-        const expectedDtoName = `${elementName}Dto`;
+        const expectedDtoName = elementName.replace(/Dto$/, "") + "Dto";
         let existingDto = parentElement.getChildren("DTO").filter(x =&gt; x.getName() === expectedDtoName)[0];
         if (existingDto) {
             return existingDto;
@@ -3543,7 +3547,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (DomainHelper.isComplexTypeById(e.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -3571,7 +3576,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", entry.name, dto.id);
             field.setMapping(entry.mapPath);
             if (DomainHelper.isComplexTypeById(entry.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -5173,7 +5179,7 @@ class CrudHelper {
         return dto;
     }
     static getOrCreateDto(elementName, parentElement) {
-        const expectedDtoName = `${elementName}Dto`;
+        const expectedDtoName = elementName.replace(/Dto$/, "") + "Dto";
         let existingDto = parentElement.getChildren("DTO").filter(x =&gt; x.getName() === expectedDtoName)[0];
         if (existingDto) {
             return existingDto;
@@ -5195,7 +5201,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (DomainHelper.isComplexTypeById(e.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -5223,7 +5230,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", entry.name, dto.id);
             field.setMapping(entry.mapPath);
             if (DomainHelper.isComplexTypeById(entry.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -7410,7 +7418,7 @@ class CrudHelper {
         return dto;
     }
     static getOrCreateDto(elementName, parentElement) {
-        const expectedDtoName = `${elementName}Dto`;
+        const expectedDtoName = elementName.replace(/Dto$/, "") + "Dto";
         let existingDto = parentElement.getChildren("DTO").filter(x =&gt; x.getName() === expectedDtoName)[0];
         if (existingDto) {
             return existingDto;
@@ -7432,7 +7440,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (DomainHelper.isComplexTypeById(e.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -7460,7 +7469,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", entry.name, dto.id);
             field.setMapping(entry.mapPath);
             if (DomainHelper.isComplexTypeById(entry.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -8109,7 +8119,7 @@ var servicesCrud;
             operationManager.addChildrenFrom(foreignKeys);
         }
         operationManager.addChild("dto", dtoManager.id);
-        onMapDto(dtoManager.getElement(), folder, false, `${baseName}Create`);
+        onMapDto(dtoManager.getElement(), folder, false, `${baseName}Create`, true);
         dtoManager.collapse();
         operationManager.collapse();
     }
@@ -8732,7 +8742,7 @@ var convertToAdvancedMapping;
             let action = createAssociation("Create Entity Action", operation.id, target.id);
             let mapping = action.createMapping(operation.id, targetEntity.id);
             mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
-            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
             // DELETE OPERATION:
         }
         else if (operation.getName().startsWith("Delete") &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
@@ -8748,7 +8758,7 @@ var convertToAdvancedMapping;
             addFilterMapping(queryMapping, operation, entity);
             // Update Entity Mapping
             let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
-            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
             // FIND BY ID OPERATION:
         }
         else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
@@ -8772,7 +8782,7 @@ var convertToAdvancedMapping;
             // Update Entity Mapping
             let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
             updateMapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
-            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
         }
         else {
             console.warn(`Could not convert operation: ${operation.getName()} (For entity ${entity.getName()}. Has parameters: (${operation.getChildren("Parameter").map(x =&gt; x.getName())}))`);
@@ -8864,7 +8874,7 @@ class CrudHelper {
         return dto;
     }
     static getOrCreateDto(elementName, parentElement) {
-        const expectedDtoName = `${elementName}Dto`;
+        const expectedDtoName = elementName.replace(/Dto$/, "") + "Dto";
         let existingDto = parentElement.getChildren("DTO").filter(x =&gt; x.getName() === expectedDtoName)[0];
         if (existingDto) {
             return existingDto;
@@ -8886,7 +8896,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (DomainHelper.isComplexTypeById(e.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -8914,7 +8925,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", entry.name, dto.id);
             field.setMapping(entry.mapPath);
             if (DomainHelper.isComplexTypeById(entry.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -9563,7 +9575,7 @@ var servicesCrud;
             operationManager.addChildrenFrom(foreignKeys);
         }
         operationManager.addChild("dto", dtoManager.id);
-        onMapDto(dtoManager.getElement(), folder, false, `${baseName}Create`);
+        onMapDto(dtoManager.getElement(), folder, false, `${baseName}Create`, true);
         dtoManager.collapse();
         operationManager.collapse();
     }
@@ -10545,7 +10557,7 @@ class CrudHelper {
         return dto;
     }
     static getOrCreateDto(elementName, parentElement) {
-        const expectedDtoName = `${elementName}Dto`;
+        const expectedDtoName = elementName.replace(/Dto$/, "") + "Dto";
         let existingDto = parentElement.getChildren("DTO").filter(x =&gt; x.getName() === expectedDtoName)[0];
         if (existingDto) {
             return existingDto;
@@ -10567,7 +10579,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (DomainHelper.isComplexTypeById(e.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -10595,7 +10608,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", entry.name, dto.id);
             field.setMapping(entry.mapPath);
             if (DomainHelper.isComplexTypeById(entry.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -12197,7 +12211,7 @@ class CrudHelper {
         return dto;
     }
     static getOrCreateDto(elementName, parentElement) {
-        const expectedDtoName = `${elementName}Dto`;
+        const expectedDtoName = elementName.replace(/Dto$/, "") + "Dto";
         let existingDto = parentElement.getChildren("DTO").filter(x =&gt; x.getName() === expectedDtoName)[0];
         if (existingDto) {
             return existingDto;
@@ -12219,7 +12233,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
             if (DomainHelper.isComplexTypeById(e.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -12247,7 +12262,8 @@ class CrudHelper {
             let field = createElement("DTO-Field", entry.name, dto.id);
             field.setMapping(entry.mapPath);
             if (DomainHelper.isComplexTypeById(entry.typeId)) {
-                let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(dto, field.getMapping().getElement()), field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
+                let dtoName = dto.getName().replace(/Dto$/, "") + field.getName() + "Dto";
+                let newDto = CrudHelper.getOrCreateCrudDto(dtoName, field.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, CrudConstants.mapFromDomainMappingSettingId, folder, true);
                 field.typeReference.setType(newDto.id);
             }
             else {
@@ -13763,7 +13779,7 @@ var convertToAdvancedMapping;
             let action = createAssociation("Create Entity Action", operation.id, target.id);
             let mapping = action.createMapping(operation.id, targetEntity.id);
             mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
-            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
             // DELETE OPERATION:
         }
         else if (operation.getName().startsWith("Delete") &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
@@ -13779,7 +13795,7 @@ var convertToAdvancedMapping;
             addFilterMapping(queryMapping, operation, entity);
             // Update Entity Mapping
             let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
-            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
             // FIND BY ID OPERATION:
         }
         else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
@@ -13803,7 +13819,7 @@ var convertToAdvancedMapping;
             // Update Entity Mapping
             let updateMapping = action.createMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
             updateMapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
-            mapContract("Data Mapping", dto, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
         }
         else {
             console.warn(`Could not convert operation: ${operation.getName()} (For entity ${entity.getName()}. Has parameters: (${operation.getChildren("Parameter").map(x =&gt; x.getName())}))`);
