@@ -9,9 +9,9 @@ namespace Intent.Modules.Common.CSharp.Mapping
 	public class SelectToListMapping : CSharpMappingBase
 	{
 		private readonly MappingModel _mappingModel;
-		private readonly ICSharpFileBuilderTemplate _template;
+		private readonly ICSharpTemplate _template;
 
-		public SelectToListMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
+		public SelectToListMapping(MappingModel model, ICSharpTemplate template) : base(model, template)
 		{
 			_mappingModel = model;
 			_template = template;
@@ -23,7 +23,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
 				return $"{GetSourcePathText()}";
 			}
 
-			Template.CSharpFile.AddUsing("System.Linq");
+			Template.AddUsing("System.Linq");
 			var chain = new CSharpMethodChainStatement($"{GetSourcePathText()}{(Mapping.SourceElement.TypeReference.IsNullable ? "?" : "")}").WithoutSemicolon();
 			var select = new CSharpInvocationStatement($"Select").WithoutSemicolon();
 

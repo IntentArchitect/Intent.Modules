@@ -47,7 +47,9 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     var m = new SelectToListMapping(_mappingModel, _template);
                     m.Parent = this.Parent;
 					return m.GetSourceStatement();
-                    /*Template.AddUsing("System.Linq");
+                    /*
+                    ANYONE, YOU CAN DELETE WHEN YOU SEE THIS:
+                    Template.AddUsing("System.Linq");
                     var chain = new CSharpMethodChainStatement($"{GetSourcePathText()}{(Mapping.SourceElement.TypeReference.IsNullable ? "?" : "")}").WithoutSemicolon();
                     var select = new CSharpInvocationStatement($"Select").WithoutSemicolon();
 
