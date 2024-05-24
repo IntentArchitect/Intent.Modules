@@ -29,9 +29,10 @@
       <valueOptions />
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
+        <type>c776bc38-c0e8-4535-87dd-79cfd33be2ad</type>
       </lookupTypes>
       <lookupInternalTargetPropertyId>const mappablePackageExtensionId = "bddb69f0-e2c8-4373-b5cb-d701f311f935";
-return element.getParent(mappablePackageExtensionId).typeReference.getTypeId();</lookupInternalTargetPropertyId>
+return [element.getParent(mappablePackageExtensionId).id, element.getParent(mappablePackageExtensionId).typeReference.getTypeId()];</lookupInternalTargetPropertyId>
     </property>
   </properties>
 </stereotypeDefinition>

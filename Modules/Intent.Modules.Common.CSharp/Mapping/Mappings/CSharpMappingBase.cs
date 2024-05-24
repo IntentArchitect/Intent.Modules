@@ -185,7 +185,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
             var expression = str[fromPos..toPos];
             var expressionFromPos = 0;
             var resultExpression = expression;
-            foreach (var part in Regex.Split(expression, @"[\(\)?:!=]").Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x.Trim()))
+            foreach (var part in Regex.Split(expression, @"[\(\)?:!=+|&]").Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x.Trim()))
             {
                 // if is literal:
                 if (part == "true" ||
@@ -196,7 +196,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
                     continue;
                 }
 
-                expressionFromPos = expression.IndexOf(part, expressionFromPos, StringComparison.Ordinal);
+                expressionFromPos = resultExpression.IndexOf(part, expressionFromPos, StringComparison.Ordinal);
                 resultExpression = resultExpression.Remove(expressionFromPos, part.Length).Insert(expressionFromPos, replacePathFunc(part));
             }
 

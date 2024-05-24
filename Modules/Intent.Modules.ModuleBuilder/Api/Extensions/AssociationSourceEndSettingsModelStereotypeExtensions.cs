@@ -73,6 +73,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Default Name Function");
             }
 
+            public bool NameMustBeUnique()
+            {
+                return _stereotype.GetProperty<bool>("Name Must Be Unique");
+            }
+
             public NameAccessibilityOptions NameAccessibility()
             {
                 return new NameAccessibilityOptions(_stereotype.GetProperty<string>("Name Accessibility"));

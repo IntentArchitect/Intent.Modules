@@ -59,6 +59,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("defaultNameFunction")]
         public string DefaultNameFunction { get; set; }
 
+        [XmlElement("nameMustBeUnique")]
+        public bool? NameMustBeUnique { get; set; }
+        public bool ShouldSerializeNameMustBeUnique() => NameMustBeUnique.HasValue;
+
         private string _validateFunction;
         [XmlElement("validateFunction")]
         public string ValidateFunction

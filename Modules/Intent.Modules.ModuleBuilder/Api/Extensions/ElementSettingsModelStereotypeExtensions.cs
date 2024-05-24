@@ -96,6 +96,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Display Text Function");
             }
 
+            public bool NameMustBeUnique()
+            {
+                return _stereotype.GetProperty<bool>("Name Must Be Unique");
+            }
+
             public string ValidateFunction()
             {
                 return _stereotype.GetProperty<string>("Validate Function");

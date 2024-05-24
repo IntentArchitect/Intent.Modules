@@ -98,6 +98,18 @@
       <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />
+      <isActiveFunction />
+    </property>
+    <property id="581e77d6-4587-4041-86f6-880bd57d5848">
+      <name>Name Must Be Unique</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return getProperty("c48d9593-c1f4-4610-9cb3-54de9c2f0c06").getValue() == true</isActiveFunction>
     </property>
     <property id="4b17e907-bd58-4f70-b376-383c6046ad8a">
       <name>Allow Abstract</name>

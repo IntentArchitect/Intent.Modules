@@ -63,6 +63,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public bool? AllowRename { get; set; } = true;
         public bool ShouldSerializeAllowRename() => AllowRename.HasValue;
 
+        [XmlElement("nameMustBeUnique")]
+        public bool? NameMustBeUnique { get; set; }
+        public bool ShouldSerializeNameMustBeUnique() => NameMustBeUnique.HasValue;
+
         [XmlElement("allowAbstract")]
         public bool? AllowAbstract { get; set; }
         public bool ShouldSerializeAllowAbstract() => AllowAbstract.HasValue;

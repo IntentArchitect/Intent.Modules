@@ -68,6 +68,7 @@ namespace Intent.ModuleBuilder.Api
                 ExpandedIcon = GetIcon(this.GetSettings().ExpandedIcon()),
                 IconFunction = this.GetSettings().IconFunction(),
                 AllowRename = this.GetSettings().AllowRename(),
+                NameMustBeUnique = this.GetSettings().NameMustBeUnique(),
                 AllowAbstract = this.GetSettings().AllowAbstract(),
                 AllowStatic = this.GetSettings().AllowStatic(),
                 AllowSetValue = this.GetSettings().AllowSetValue(),

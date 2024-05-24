@@ -61,6 +61,7 @@ namespace Intent.ModuleBuilder.Api
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
                 NameAccessibilityMode = Enum.Parse<FieldAccessibilityMode>(this.GetSettings().NameAccessibility().Value),
                 DefaultNameFunction = this.GetSettings().DefaultNameFunction(),
+                NameMustBeUnique = this.GetSettings().NameMustBeUnique(),
                 Icon = this.GetSettings().Icon().ToPersistable(),
                 TypeReferenceSetting = new TypeReferenceSettingPersistable()
                 {

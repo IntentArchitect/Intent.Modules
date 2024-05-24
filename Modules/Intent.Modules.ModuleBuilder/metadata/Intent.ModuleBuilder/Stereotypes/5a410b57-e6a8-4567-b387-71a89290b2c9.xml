@@ -94,6 +94,17 @@
       <apiTypeDefinition>association-api</apiTypeDefinition>
       <isActiveFunction />
     </property>
+    <property id="2d07ed88-82bf-4d30-9280-1488f0f927e0">
+      <name>Name Must Be Unique</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return getProperty("6bf94b78-382a-4002-ac88-a569b59e16e6").getValue() == "Optional" || getProperty("6bf94b78-382a-4002-ac88-a569b59e16e6").getValue() == "Required"</isActiveFunction>
+    </property>
     <property id="b534060a-c8a3-4631-b4a9-db0baeecd1b3">
       <name>Api Property Name</name>
       <type>string</type>
