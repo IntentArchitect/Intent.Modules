@@ -154,7 +154,7 @@
                 <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="space" isActive="true" />
                 <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                 <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
-                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return element.typeReference.getType().specialization == &quot;DTO&quot;&#xD;&#xA;    || element.typeReference.getType().specialization == &quot;Command&quot;&#xD;&#xA;    || element.typeReference.getType().specialization == &quot;Query&quot;;" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return  !element.typeReference.getIsCollection() &#xD;&#xA;    &amp;&amp; (element.typeReference.getType().specialization == &quot;DTO&quot;&#xD;&#xA;    || element.typeReference.getType().specialization == &quot;Command&quot;&#xD;&#xA;    || element.typeReference.getType().specialization == &quot;Query&quot;);" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

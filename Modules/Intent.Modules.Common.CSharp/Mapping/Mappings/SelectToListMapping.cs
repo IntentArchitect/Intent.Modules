@@ -11,6 +11,8 @@ namespace Intent.Modules.Common.CSharp.Mapping
 		private readonly MappingModel _mappingModel;
 		private readonly ICSharpTemplate _template;
 
+		[Obsolete("Use overload with ICSharpTemplate template")]
+        public SelectToListMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, (ICSharpTemplate)template) { }
 		public SelectToListMapping(MappingModel model, ICSharpTemplate template) : base(model, template)
 		{
 			_mappingModel = model;

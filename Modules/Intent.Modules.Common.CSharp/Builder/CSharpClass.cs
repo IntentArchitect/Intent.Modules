@@ -72,6 +72,21 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
     public IList<CSharpCodeBlock> CodeBlocks { get; } = new List<CSharpCodeBlock>();
 
+    public IList<ICodeBlock> Declarations
+    {
+        get
+        {
+            var codeBlocks = new List<ICodeBlock>();
+            codeBlocks.AddRange(Fields.Where(p => !p.IsOmittedFromRender));
+            codeBlocks.AddRange(Constructors.Where(p => !p.IsPrimaryConstructor));
+            codeBlocks.AddRange(Properties.Where(p => !p.IsOmittedFromRender));
+            codeBlocks.AddRange(Methods);
+            codeBlocks.AddRange(NestedClasses);
+            codeBlocks.AddRange(NestedInterfaces);
+            codeBlocks.AddRange(CodeBlocks);
+            return codeBlocks;
+        }
+    }
 
     public CSharpClass WithBaseType(string type)
     {
@@ -572,14 +587,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
 
     private string GetMembers(string indentation)
     {
-        var codeBlocks = new List<ICodeBlock>();
-        codeBlocks.AddRange(Fields.Where(p => !p.IsOmittedFromRender));
-        codeBlocks.AddRange(Constructors.Where(p => !p.IsPrimaryConstructor));
-        codeBlocks.AddRange(Properties.Where(p => !p.IsOmittedFromRender));
-        codeBlocks.AddRange(Methods);
-        codeBlocks.AddRange(NestedClasses);
-        codeBlocks.AddRange(NestedInterfaces);
-        codeBlocks.AddRange(CodeBlocks);
+        var codeBlocks = Declarations;
 
         return $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";

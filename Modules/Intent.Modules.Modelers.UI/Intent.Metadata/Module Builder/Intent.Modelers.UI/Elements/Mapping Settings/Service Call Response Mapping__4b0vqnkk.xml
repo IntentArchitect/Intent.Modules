@@ -96,6 +96,7 @@
               <name>response</name>
               <display>response</display>
               <isAbstract>false</isAbstract>
+              <sort-children>manually</sort-children>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>216e13ce-0c29-461d-889c-30f1058fe0cd</parentFolderId>
@@ -128,7 +129,54 @@
                 </stereotype>
               </stereotypes>
               <metadata />
-              <childElements />
+              <childElements>
+                <childElement id="43b57b1e-d4ea-4a7e-ae13-e51c9844b30f" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                  <name>Auto-map to new Property</name>
+                  <display>Auto-map to new Property: Script</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <typeReference id="65ca2c8a-5317-4c8c-859e-a1fe8a4f52f5">
+                    <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                    <isNavigable>true</isNavigable>
+                    <isNullable>false</isNullable>
+                    <isCollection>false</isCollection>
+                    <isRequired>true</isRequired>
+                    <typePackageName>Intent.ModuleBuilder</typePackageName>
+                    <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                    <stereotypes />
+                    <genericTypeParameters />
+                  </typeReference>
+                  <isMapped>false</isMapped>
+                  <parentFolderId>28165dfb-a6a6-4c2b-9d64-421f1da81bc9</parentFolderId>
+                  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+                  <packageName>Intent.Modelers.UI</packageName>
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const propertName = element.typeReference.getIsCollection() &#xD;&#xA;    ? pluralize(element.typeReference.getType().getName().replace(&quot;Dto&quot;, &quot;&quot;)) &#xD;&#xA;    : element.typeReference.getType().getName().replace(&quot;Dto&quot;, &quot;&quot;)&#xD;&#xA;const property = createElement(&quot;Property&quot;, propertName, mapping.getTargetElement().id)&#xD;&#xA;property.typeReference.setType(element.typeReference.getTypeId());&#xD;&#xA;property.typeReference.setIsNullable(element.typeReference.getIsNullable());&#xD;&#xA;property.typeReference.setIsCollection(element.typeReference.getIsCollection());&#xD;&#xA;&#xD;&#xA;const dataBindingMappingTypeId = &quot;bbac21bb-9fdf-489e-8473-84be9cacc64d&quot;;&#xD;&#xA;mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), property.getMappingPath());&#xD;&#xA;" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                      <comment />
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" isActive="true" />
+                        <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                        <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                        <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+                        <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                      </properties>
+                    </stereotype>
+                  </stereotypes>
+                  <metadata />
+                  <childElements />
+                </childElement>
+              </childElements>
             </childElement>
           </childElements>
         </childElement>

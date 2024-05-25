@@ -985,9 +985,10 @@ mapping.addMappedEnd(invocationMappingTypeId, element.getMappingPath(), newEleme
               <text>Auto-map to Form</text>
               <shortcut>space</shortcut>
               <icon type="FontAwesome" source="code" />
-              <isOptionVisibleFunction>return element.typeReference.getType().specialization == "DTO"
+              <isOptionVisibleFunction>return  !element.typeReference.getIsCollection() 
+    &amp;&amp; (element.typeReference.getType().specialization == "DTO"
     || element.typeReference.getType().specialization == "Command"
-    || element.typeReference.getType().specialization == "Query";</isOptionVisibleFunction>
+    || element.typeReference.getType().specialization == "Query");</isOptionVisibleFunction>
               <script>const parentElement = element.getParent(x =&gt; x.getIsMapped())?.getMappedToElements()[0] ?? mapping.getTargetElement();
 const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
 const form = createElement("Form", "Form", parentElement.id);
