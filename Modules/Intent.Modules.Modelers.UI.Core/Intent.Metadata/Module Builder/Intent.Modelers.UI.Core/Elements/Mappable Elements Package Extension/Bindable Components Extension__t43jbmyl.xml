@@ -339,7 +339,7 @@
     </childElement>
     <childElement id="4a7f0013-96c4-4384-8dbd-7d1327c38d8b" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
       <name>Navigation Bar</name>
-      <display>Navigation Bar: Navigation Bar</display>
+      <display>Navigation Bar: Navigation Menu</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />

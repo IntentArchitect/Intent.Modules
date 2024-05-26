@@ -1490,6 +1490,7 @@ return `${name &amp;&amp; typeReference.isNavigable ? name + "(" + getInputs() +
     </mappingSetting>
     <mappingSetting type="Navigation Mapping" typeId="b4777251-a390-48f0-877a-102069e88a22">
       <title>Navigation Mapping</title>
+      <isRequiredFunction>return association.typeReference.getType()?.getChildren("Property").some(x =&gt; x.hasStereotype("[Route Parameter]"));</isRequiredFunction>
       <sourceMappings>
         <mapping id="22c57339-ff17-4956-a051-233690eab130" name="Operation" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>

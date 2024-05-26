@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="d7282bf2-1626-4b8b-9446-1d530527db06" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Navigation Bar</name>
-  <display>Navigation Bar</display>
+  <name>Navigation Menu</name>
+  <display>Navigation Menu</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />

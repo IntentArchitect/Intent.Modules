@@ -11,12 +11,6 @@ namespace Intent.Modelers.UI.Core.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<IconModel> GetIconModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(IconModel.SpecializationTypeId)
-                .Select(x => new IconModel(x))
-                .ToList();
-        }
         public static IList<LinkModel> GetLinkModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(LinkModel.SpecializationTypeId)

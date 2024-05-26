@@ -242,7 +242,10 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
                 if (IsTransitional(previousMappingPath, mappingPathTarget))
                 {
-                    if (ApplyNullConditionalOperators && previousMappingPath?.Element.TypeReference?.IsNullable == true && result is CSharpAccessMemberStatement accessMember)
+                    if (ApplyNullConditionalOperators 
+                        && previousMappingPath?.Element.TypeReference?.IsNullable == true 
+                        && mappingPathTarget?.Element.TypeReference?.IsNullable == true
+                        && result is CSharpAccessMemberStatement accessMember)
                     {
                         accessMember.IsConditional();
                     }
