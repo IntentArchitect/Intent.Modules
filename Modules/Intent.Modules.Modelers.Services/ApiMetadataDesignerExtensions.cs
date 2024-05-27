@@ -9,6 +9,7 @@ namespace Intent.Modelers.Services.Api
 {
     public static class ApiMetadataDesignerExtensions
     {
+        public const string ServicesDesignerId = "81104ae6-2bc5-4bae-b05a-f987b0372d81";
         public static IDesigner Services(this IMetadataManager metadataManager, IApplication application)
         {
             return metadataManager.Services(application.Id);
@@ -16,7 +17,7 @@ namespace Intent.Modelers.Services.Api
 
         public static IDesigner Services(this IMetadataManager metadataManager, string applicationId)
         {
-            return metadataManager.GetDesigner(applicationId, "Services");
+            return metadataManager.GetDesigner(applicationId, ServicesDesignerId);
         }
 
     }

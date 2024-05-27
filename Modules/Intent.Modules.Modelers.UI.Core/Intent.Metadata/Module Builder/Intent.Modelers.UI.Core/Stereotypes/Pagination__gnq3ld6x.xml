@@ -21,16 +21,7 @@
   <packageName>Intent.Modelers.UI.Core</packageName>
   <properties>
     <property id="ffae3a34-773c-46b0-8bbf-fa2947c8e916">
-      <name>Page</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
-    </property>
-    <property id="4bc0cb96-4708-4ea0-82b2-7672b4c339da">
-      <name>Collection Size</name>
+      <name>Current Page</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
@@ -39,7 +30,16 @@
       <lookupTypes />
     </property>
     <property id="26a9615e-ee5e-4c6e-874c-934949dcebb8">
-      <name>Page Size</name>
+      <name>Pages Count</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="4bc0cb96-4708-4ea0-82b2-7672b4c339da">
+      <name>On Page Changed</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9204e067-bdc8-45e7-8970-8a833fdc5253" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+  <name>PagedResult</name>
+  <display>PagedResult&lt;TData&gt;</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes>
+    <genericType id="b2e9202d-2fb1-426b-91a9-02b6a3a294bd">
+      <name>TData</name>
+    </genericType>
+  </genericTypes>
+  <isMapped>false</isMapped>
+  <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
+  <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+  <packageName>Intent.Modelers.Services.Pagination</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="30c5995e-17ab-4cc7-8881-3e9561ab06fe" name="C#">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Common.CSharp</definitionPackageName>
+      <definitionPackageId>730e1275-0c32-44f7-991a-9619d07ca68d</definitionPackageId>
+      <properties>
+        <property name="67913852-1e61-4d9d-997e-cdfb7d9196fb" display="Type" isActive="true" />
+        <property name="8CCCD630-6AF9-41FA-8E5F-414860AD89BB" display="Namespace" isActive="true" />
+        <property name="76668E7B-8FC2-4C14-B6AA-E36854E5E499" display="Is Primitive" value="false" isActive="true" />
+        <property name="0a577584-e2d4-4e5a-8649-296036a91575" display="Is Collection" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="5f15d378-c3eb-4b52-affd-0bf2c6c6fd81" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+      <name>PageNo</name>
+      <display>PageNo: int</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="16f02b8c-f45f-4b13-9e32-b1f4acd30b24">
+        <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9204e067-bdc8-45e7-8970-8a833fdc5253</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Intent.Modelers.Services.Pagination</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="b4b32f59-d137-4cfc-8f32-b5497068b36e" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+      <name>PageCount</name>
+      <display>PageCount: int</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="3a6b52be-92c0-45d6-af26-eb7fbe708c0f">
+        <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9204e067-bdc8-45e7-8970-8a833fdc5253</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Intent.Modelers.Services.Pagination</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="a98da735-b791-444a-b621-6c6bc9ce7b7d" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+      <name>TotalCount</name>
+      <display>TotalCount: string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="2c49c833-fcb1-4579-b098-1a55f5548073">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9204e067-bdc8-45e7-8970-8a833fdc5253</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Intent.Modelers.Services.Pagination</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="e24bddc3-fd49-49d6-aa86-7374cd7e5097" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+      <name>PageSize</name>
+      <display>PageSize: string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="155727ac-ca3e-4b71-aa27-d93cc80184f7">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9204e067-bdc8-45e7-8970-8a833fdc5253</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Intent.Modelers.Services.Pagination</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="85da666a-2f42-4c36-8189-62fb1ac27209" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+      <name>Data</name>
+      <display>Data: TData[*]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="0a6ed30f-1a29-4d35-a2ad-ccc5e31b0287">
+        <typeId>b2e9202d-2fb1-426b-91a9-02b6a3a294bd</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>true</isCollection>
+        <isRequired>true</isRequired>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9204e067-bdc8-45e7-8970-8a833fdc5253</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Intent.Modelers.Services.Pagination</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

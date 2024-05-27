@@ -63,7 +63,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" value="function getInputs() {&#xD;&#xA;    try {&#xD;&#xA;        return typeReference.getType().children(&quot;Component Input&quot;).map(x =&gt; x.name + &quot;: &quot; + x.typeReference.display).join(&quot;, &quot;)&#xD;&#xA;    } catch (e) {&#xD;&#xA;        return &quot;&quot;;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;return `${name &amp;&amp; typeReference.isNavigable ? name + &quot;(&quot; + getInputs() + &quot;)&quot; : &quot;&quot;}`" isActive="true" />
+            <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" value="" isActive="true" />
             <property name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" isActive="true" />
           </properties>
         </stereotype>
@@ -110,7 +110,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" value="function getInputs() {&#xD;&#xA;    try {&#xD;&#xA;        return typeReference.getType().children(&quot;Component Input&quot;).map(x =&gt; x.name + &quot;: &quot; + x.typeReference.display).join(&quot;, &quot;)&#xD;&#xA;    } catch (e) {&#xD;&#xA;        return &quot;&quot;;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;return `${name &amp;&amp; typeReference.isNavigable ? name + &quot;(&quot; + getInputs() + &quot;)&quot; : &quot;&quot;}`" isActive="true" />
+            <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" value="" isActive="true" />
             <property name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" isActive="true" />
           </properties>
         </stereotype>

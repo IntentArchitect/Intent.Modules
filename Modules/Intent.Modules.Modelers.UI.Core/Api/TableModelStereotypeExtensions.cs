@@ -91,19 +91,19 @@ namespace Intent.Modelers.UI.Core.Api
 
             public string Name => _stereotype.Name;
 
-            public string Page()
+            public string CurrentPage()
             {
-                return _stereotype.GetProperty<string>("Page");
+                return _stereotype.GetProperty<string>("Current Page");
             }
 
-            public string CollectionSize()
+            public string PagesCount()
             {
-                return _stereotype.GetProperty<string>("Collection Size");
+                return _stereotype.GetProperty<string>("Pages Count");
             }
 
-            public string PageSize()
+            public string OnPageChanged()
             {
-                return _stereotype.GetProperty<string>("Page Size");
+                return _stereotype.GetProperty<string>("On Page Changed");
             }
 
         }
