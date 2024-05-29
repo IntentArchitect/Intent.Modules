@@ -154,7 +154,7 @@
                 <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="space" isActive="true" />
                 <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                 <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
-                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return  !element.typeReference.getIsCollection() &#xD;&#xA;    &amp;&amp; (element.typeReference.getType().specialization == &quot;DTO&quot;&#xD;&#xA;    || element.typeReference.getType().specialization == &quot;Command&quot;&#xD;&#xA;    || element.typeReference.getType().specialization == &quot;Query&quot;);" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return  !element.typeReference.getIsCollection() &#xD;&#xA;    &amp;&amp; element.typeReference.getType().id !== &quot;9204e067-bdc8-45e7-8970-8a833fdc5253&quot;&#xD;&#xA;    &amp;&amp; (element.typeReference.getType().specialization == &quot;DTO&quot;&#xD;&#xA;    || element.typeReference.getType().specialization == &quot;Command&quot;&#xD;&#xA;    || element.typeReference.getType().specialization == &quot;Query&quot;);" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -201,6 +201,52 @@
                 <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                 <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
                 <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return element.typeReference.getType().getName() == &quot;string&quot;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="264cad07-01a9-41ce-9d77-ca903dee33ee" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Auto-map to Paginated Table</name>
+          <display>Auto-map to Paginated Table: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="1b1178d5-213f-44d6-90eb-85115a079b44">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>75b3041c-20ba-4e3b-96f8-c0e5fdd7efa0</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const dataBindingMappingTypeId = &quot;ee19a932-0cea-4b90-bd3c-857d7942d390&quot;;&#xD;&#xA;const paginationStereotypeId = &quot;f0663cd4-da7c-43cc-9cda-bbc7923d5431&quot;;&#xD;&#xA;&#xD;&#xA;const dataCollection = element.getChildren().filter(x =&gt; x.getName() == &quot;Data&quot;)[0];&#xD;&#xA;const table = createElement(&quot;Table&quot;, &quot;PaginatedTable&quot;, mapping.getTargetElement().id);&#xD;&#xA;table.addStereotype(paginationStereotypeId);&#xD;&#xA;mapping.addMappedEnd(dataBindingMappingTypeId, dataCollection.getMappingPath(), table.getMappingPath());&#xD;&#xA;&#xD;&#xA;dataCollection.getChildren().filter(x =&gt; x.specialization == &quot;Property&quot; || x.specialization == &quot;DTO-Field&quot;).forEach(p =&gt; {&#xD;&#xA;    if (p.typeReference.getTypeId() == &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot;) { // string&#xD;&#xA;        const newColumn = createElement(&quot;Column&quot;, p.getName(), table.id);&#xD;&#xA;        mapping.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath(), newColumn.getMappingPath())&#xD;&#xA;    }&#xD;&#xA;    else if (p.typeReference.getTypeId() == &quot;e6f92b09-b2c5-4536-8270-a4d9e5bbd930&quot;){ // bool&#xD;&#xA;        const newColumn = createElement(&quot;Column&quot;, p.getName(), table.id);&#xD;&#xA;        const newInput = createElement(&quot;Checkbox&quot;, p.getName(), newColumn.id);&#xD;&#xA;        newInput.removeStereotype(&quot;Label Addon&quot;);&#xD;&#xA;        mapping.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath(), newInput.getMappingPath());&#xD;&#xA;    }&#xD;&#xA;});" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="space" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return  !element.typeReference.getIsCollection() &amp;&amp; element.typeReference.getType().id == &quot;9204e067-bdc8-45e7-8970-8a833fdc5253&quot;; // PagedResult" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

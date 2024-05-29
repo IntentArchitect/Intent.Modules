@@ -29,8 +29,8 @@
   <metadata />
   <childElements>
     <childElement id="5f15d378-c3eb-4b52-affd-0bf2c6c6fd81" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
-      <name>PageNo</name>
-      <display>PageNo: int</display>
+      <name>PageNumber</name>
+      <display>PageNumber: int</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="16f02b8c-f45f-4b13-9e32-b1f4acd30b24">

@@ -1462,11 +1462,7 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
               <traversableTypes />
-              <overrideTypeReferenceFunction>return {
-    typeId: element.typeReference.getType().typeReference.getTypeId(),
-    isCollection: element.typeReference.getType().typeReference.getIsCollection(),
-    isNullable: element.typeReference.getType().typeReference.getIsNullable(),
-}</overrideTypeReferenceFunction>
+              <overrideTypeReferenceFunction>return element.typeReference.getType().typeReference.toModel();</overrideTypeReferenceFunction>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iRW52ZWxvcGUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI1LjAwNSIgeTE9IjQ0LjA2MiIgeDI9IjI0Ljk5NTIiIHkyPSI4Ljc4OTciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0xKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzYyQzZFQiIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBvbHlnb24gZmlsbD0idXJsKCNTVkdJRF8xXykiIHBvaW50cz0iMzQuMSwzNC4xIDMxLjksMzIgMzEuOSwyNi42IDE1LDI2LjYgMTUsMjEuMyA2LjIsMzAgMTUsMzguOCAxNSwzMy43IDI1LDMzLjcgMjUsMzYuOCANCgkJMTguMiwzNi44IDE4LjIsNDIgMTUuOSw0NC4yIDE1LDQzLjMgNCwzMi4zIDEuOCwzMCA0LDI3LjggMTUuOSwxNS45IDE4LjIsMTguMSAxOC4yLDIzLjUgMzUuMSwyMy41IDM1LjEsMjguNyA0My44LDIwIDM1LjEsMTEuMyANCgkJMzUuMSwxNi40IDI1LDE2LjQgMjUsMTMuMyAzMS45LDEzLjMgMzEuOSw4IDM0LjEsNS44IDM1LjEsNi44IDQ2LDE3LjcgNDguMiwyMCAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
@@ -1502,9 +1498,7 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>1dbd5867-c6a4-403e-bc5d-e404cd31c52e</mappingId>
-              </traversableTypes>
+              <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
             </childSetting>
@@ -1531,7 +1525,7 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
             <childSetting id="fa5c8efc-e4fd-4a77-90c9-2fabb070086d" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>false</isTraversable>
+              <isTraversable>true</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
@@ -1558,9 +1552,7 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>eabaa397-4b78-4da3-83ec-7bba98b7849f</mappingId>
-              </traversableTypes>
+              <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
             </childSetting>
@@ -1744,9 +1736,7 @@ return element.hasStereotype(bindableId);</isMappableFunction>
 const routeParameterId = "f324c4ea-bac2-450d-b1b1-cc7f09ca3472";
 return element.hasStereotype(bindableId) || element.hasStereotype(routeParameterId);</isMappableFunction>
           <isTraversable>true</isTraversable>
-          <traversableTypes>
-            <mappingId>8e7e9ba1-c3f9-494a-ae5d-6628774c01a1</mappingId>
-          </traversableTypes>
+          <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
         </mappableElement>
