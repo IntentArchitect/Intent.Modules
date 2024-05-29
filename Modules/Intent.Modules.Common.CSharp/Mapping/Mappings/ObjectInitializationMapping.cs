@@ -28,7 +28,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
         {
         }
 
-        public override CSharpStatement GetSourceStatement()
+        public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
         {
             if (Model.TypeReference == null)
             {
@@ -159,7 +159,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             }
 
             var propInit = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
-                ? new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}")
+                ? new CSharpObjectInitializerBlock($"new {_template.GetTypeName(Model.TypeReference.AsContructableType())}")
                 : new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model)}");
             foreach (var child in Children)
             {

@@ -29,7 +29,7 @@ public class MethodInvocationMapping : CSharpMappingBase
     {
     }
 
-    public override CSharpStatement GetSourceStatement()
+    public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
     {
 		var invocation = new CSharpInvocationStatement(GetTargetPathExpression());
 
@@ -79,6 +79,6 @@ public class MethodInvocationMapping : CSharpMappingBase
 
     public override IEnumerable<CSharpStatement> GetMappingStatements()
     {
-        yield return GetSourceStatement();
+        yield return GetSourceStatement(false);
     }
 }

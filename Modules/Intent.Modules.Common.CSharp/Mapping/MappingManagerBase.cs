@@ -293,12 +293,8 @@ public abstract class MappingManagerBase
         return mapping.GetMappingStatements().ToList();
     }
 
-    public CSharpStatement GenerateSourceStatementForMapping(IElementToElementMapping model, IElementToElementMappedEnd mappingEnd)
-    {
-        return GenerateSourceStatementForMapping(model, mappingEnd, _template.RootCodeContext);
-    }
-
-    public CSharpStatement GenerateSourceStatementForMapping(IElementToElementMapping model, IElementToElementMappedEnd mappingEnd, ICSharpCodeContext context)
+    public CSharpStatement GenerateSourceStatementForMapping(IElementToElementMapping model, IElementToElementMappedEnd mappingEnd) => GenerateSourceStatementForMapping(model, mappingEnd, default);
+    public CSharpStatement GenerateSourceStatementForMapping(IElementToElementMapping model, IElementToElementMappedEnd mappingEnd, bool? targetIsNullable)
     {
         //var mapping = CreateMapping(new MappingModel(model, this), GetUpdateMappingType);
         //ApplyReplacements(mapping);
@@ -310,7 +306,7 @@ public abstract class MappingManagerBase
         var mapping = ResolveMappings(mappingModel);//, new ObjectUpdateMapping(mappingModel, _template));
         ApplyReplacements(mapping);
 
-        return mapping.GetSourceStatement();
+        return mapping.GetSourceStatement(targetIsNullable);
     }
 
     public CSharpStatement GenerateTargetStatementForMapping(IElementToElementMapping model, IElementToElementMappedEnd mappingEnd)

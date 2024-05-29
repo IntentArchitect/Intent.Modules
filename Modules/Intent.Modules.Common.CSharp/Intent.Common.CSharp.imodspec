@@ -13,7 +13,7 @@
     <factoryExtension id="Intent.Common.CSharp.CSharpFileBuilderFactoryExtension" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.6.0" />
+    <dependency id="Intent.Common" version="3.7.0-pre.0" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
   </dependencies>
   <files>

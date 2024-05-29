@@ -150,19 +150,28 @@ namespace Intent.Modules.Common.TypeResolution
             return new ElementTypeReference(type, isNullable, isCollection);
         }
 
+        /// <summary>
+        /// Converts <see cref="ICanBeReferencedType"/> to type of <see cref="ITypeReference"/>
+        /// </summary>
+        public static ITypeReference AsContructableType(this ITypeReference type)
+        {
+            return new ElementTypeReference(type.Element, false, false, type.GenericTypeParameters);
+        }
+
         private class ElementTypeReference : ITypeReference, IHasStereotypes
         {
-            public ElementTypeReference(ICanBeReferencedType element, bool isNullable = false, bool isCollection = false)
+            public ElementTypeReference(ICanBeReferencedType element, bool isNullable = false, bool isCollection = false, IEnumerable<ITypeReference> genericTypeParameters = default)
             {
                 Element = element;
                 IsNullable = isNullable;
                 IsCollection = isCollection;
+                GenericTypeParameters = genericTypeParameters ?? [];
             }
 
             public bool IsNullable { get; }
             public bool IsCollection { get; }
             public ICanBeReferencedType Element { get; }
-            public IEnumerable<ITypeReference> GenericTypeParameters { get; } = Array.Empty<ITypeReference>();
+            public IEnumerable<ITypeReference> GenericTypeParameters { get; }
             public string Comment { get; } = null;
             public IEnumerable<IStereotype> Stereotypes { get; } = new List<IStereotype>();
         }

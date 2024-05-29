@@ -18,7 +18,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
 			_mappingModel = model;
 			_template = template;
 		}
-		public override CSharpStatement GetSourceStatement()
+		public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
 		{
 			if (Children.Count == 0)
 			{

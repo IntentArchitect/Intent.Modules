@@ -11,11 +11,11 @@ public class TypeConvertingCSharpMapping : CSharpMappingBase
     {
     }
 
-    public override CSharpStatement GetSourceStatement()
+    public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
     {
         if (!Mapping.IsOneToOne() || Mapping.TargetElement.TypeReference == null || Mapping.SourceElement.TypeReference == null)
         {
-            return base.GetSourceStatement();
+            return base.GetSourceStatement(targetIsNullable);
         }
 
         if (Mapping.IsOneToOne() &&

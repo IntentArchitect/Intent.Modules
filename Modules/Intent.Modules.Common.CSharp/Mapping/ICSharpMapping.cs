@@ -13,7 +13,7 @@ public interface ICSharpMapping
     public IElementToElementMappedEnd Mapping { get; set; }
     IEnumerable<CSharpStatement> GetMappingStatements();
 
-    CSharpStatement GetSourceStatement();
+    CSharpStatement GetSourceStatement(bool? targetIsNullable = default);
     CSharpStatement GetTargetStatement();
 
     IDictionary<string, CSharpStatement> GetExpressionMap();
