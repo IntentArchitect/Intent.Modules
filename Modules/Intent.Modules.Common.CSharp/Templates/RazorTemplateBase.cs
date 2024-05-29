@@ -34,5 +34,8 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         /// <inheritdoc />
         protected override IEnumerable<string> GetUsingsFromContent(string existingContent) => [];
+
+        /// <inheritdoc />
+        public override string RunTemplate() => TransformText();
     }
 }

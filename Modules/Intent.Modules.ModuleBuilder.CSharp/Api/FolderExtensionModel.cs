@@ -24,5 +24,10 @@ namespace Intent.ModuleBuilder.CSharp.Api
             .Select(x => new CSharpTemplateModel(x))
             .ToList();
 
+        public IList<RazorTemplateModel> RazorTemplates => _element.ChildElements
+            .GetElementsOfType(RazorTemplateModel.SpecializationTypeId)
+            .Select(x => new RazorTemplateModel(x))
+            .ToList();
+
     }
 }

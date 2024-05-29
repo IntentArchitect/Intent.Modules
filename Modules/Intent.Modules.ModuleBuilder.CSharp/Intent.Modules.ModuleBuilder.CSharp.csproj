@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -34,6 +34,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CSharpStringInterpolationTemplate.cs</LastGenOutput>
     </None>
+    <None Update="Templates\RazorTemplatePartial\RazorTemplatePartialTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RazorTemplatePartialTemplate.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +60,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>CSharpTemplatePartialTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\RazorTemplatePartial\RazorTemplatePartialTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RazorTemplatePartialTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

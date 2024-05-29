@@ -17,10 +17,20 @@
           <defaultName>NewCSharpTemplate</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
+        <option order="2" type="element">
+          <text>New Razor Template</text>
+          <shortcut>ctrl + shift + r</shortcut>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+DQogIDxkZWZzPg0KICAgIDxzdHlsZT4NCiAgICAgIC5jcy1yYXpvci1maWxlLWNhbnZhcyB7DQogICAgICAgIGZpbGw6IG5vbmU7DQogICAgICAgIG9wYWNpdHk6IDA7DQogICAgICB9DQoNCiAgICAgIC5jcy1yYXpvci1maWxlLWxpZ2h0LWRlZmF1bHRncmV5LTEwIHsNCiAgICAgICAgZmlsbDogIzIxMjEyMTsNCiAgICAgICAgb3BhY2l0eTogMC4xOw0KICAgICAgfQ0KDQogICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5jcy1yYXpvci1maWxlLWxpZ2h0LWRlZmF1bHRncmV5LTEwIHsNCiAgICAgICAgZmlsbDogI2RlZGVkZTsNCiAgICAgICAgb3BhY2l0eTogMC4xOw0KICAgICAgfQ0KDQogICAgICAuY3MtcmF6b3ItZmlsZS1saWdodC1kZWZhdWx0Z3JleSB7DQogICAgICAgIGZpbGw6ICMyMTIxMjE7DQogICAgICAgIG9wYWNpdHk6IDE7DQogICAgICB9DQoNCiAgICAgIFtkYXRhLXRoZW1lPSJkYXJrIl0gLmNzLXJhem9yLWZpbGUtbGlnaHQtZGVmYXVsdGdyZXkgew0KICAgICAgICBmaWxsOiAjZGVkZWRlOw0KICAgICAgICBvcGFjaXR5OiAxOw0KICAgICAgfQ0KDQogICAgICAuY3MtcmF6b3ItZmlsZS1saWdodC1ncmVlbiB7DQogICAgICAgIGZpbGw6ICMxZjgwMWY7DQogICAgICAgIG9wYWNpdHk6IDE7DQogICAgICB9DQogICAgPC9zdHlsZT4NCiAgPC9kZWZzPg0KICA8dGl0bGU+SWNvbkxpZ2h0Q1NSYXpvckZpbGU8L3RpdGxlPg0KICA8ZyBpZD0iY2FudmFzIiBjbGFzcz0iY3MtcmF6b3ItZmlsZS1jYW52YXMiPg0KICAgIDxwYXRoIGNsYXNzPSJjcy1yYXpvci1maWxlLWNhbnZhcyIgZD0iTTE2LDBWMTZIMFYwWiIgLz4NCiAgPC9nPg0KICA8ZyBpZD0ibGV2ZWwtMSI+DQogICAgPHBhdGggY2xhc3M9ImNzLXJhem9yLWZpbGUtbGlnaHQtZGVmYXVsdGdyZXktMTAiIGQ9Ik0xMy41LDQuNXYxMEgyLjVWMS41aDhaIiAvPg0KICAgIDxwYXRoIGNsYXNzPSJjcy1yYXpvci1maWxlLWxpZ2h0LWRlZmF1bHRncmV5IiBkPSJNMTMuODU0LDQuMTQ2bC0zLTNMMTAuNSwxaC04TDIsMS41djEzbC41LjVoMTFsLjUtLjVWNC41Wk0zLDE0VjJoN1Y1aDN2OVoiIC8+DQogICAgPHBhdGggY2xhc3M9ImNzLXJhem9yLWZpbGUtbGlnaHQtZ3JlZW4iDQogICAgICBkPSJNOC44NDQsMTAuMTYxSDguODE5YTEuMzYsMS4zNiwwLDAsMS0xLjM3NywxLjA1LDEuMjk0LDEuMjk0LDAsMCwxLTEuMDU0LS40OTEsMi4wMjYsMi4wMjYsMCwwLDEtLjQtMS4zMjEsMi45NCwyLjk0LDAsMCwxLC41NS0xLjgyNiwxLjcyNiwxLjcyNiwwLDAsMSwxLjQ0Ny0uNzI3LDEuMDM1LDEuMDM1LDAsMCwxLC42MTEuMTg4Ljg0NC44NDQsMCwwLDEsLjM0Ni40NTFoLjAxNXEuMDE1LS4xMzcuMDczLS41NjFIOS44NFE5LjYxLDkuNSw5LjYxLDkuNTUxcTAsLjk2Ni41Ljk2N2EuODgxLjg4MSwwLDAsMCwuNzYyLS41NCwyLjg0MSwyLjg0MSwwLDAsMCwuMy0xLjQsMi43ODEsMi43ODEsMCwwLDAtLjgxOC0yLjA3MywzLjEsMy4xLDAsMCwwLTIuMjY4LS44LDMuMDI4LDMuMDI4LDAsMCwwLTIuMzA1Ljk3MiwzLjQxMSwzLjQxMSwwLDAsMC0uOTEzLDIuNDMxLDMuMTU0LDMuMTU0LDAsMCwwLC44NzksMi4zMjUsMy4xOSwzLjE5LDAsMCwwLDIuMzY4Ljg4Myw0LjYwOCw0LjYwOCwwLDAsMCwyLjAwNy0uNHYuNzUyYTUuNSw1LjUsMCwwLDEtMi4xMzQuMzYxQTMuOTYzLDMuOTYzLDAsMCwxLDUuMSwxMS45NTMsMy43NTYsMy43NTYsMCwwLDEsNCw5LjE0MSw0LjA0Myw0LjA0MywwLDAsMSw1LjE2Miw2LjE3NywzLjk5MiwzLjk5MiwwLDAsMSw4LjEzMSw1YTQuMDcyLDQuMDcyLDAsMCwxLDIuODA1Ljk4NkEzLjI3OCwzLjI3OCwwLDAsMSwxMi4wNDcsOC41NmEyLjkzMiwyLjkzMiwwLDAsMS0uNiwxLjkwNiwxLjgzLDEuODMsMCwwLDEtMS40NzIuNzQ1UTguODQ5LDExLjIxMSw4Ljg0NCwxMC4xNjFaTTguMDY3LDcuNTM5YS45ODkuOTg5LDAsMCwwLS44NjYuNTI3LDIuNDM2LDIuNDM2LDAsMCwwLS4zMywxLjMxNCwxLjM4OCwxLjM4OCwwLDAsMCwuMjIyLjgzMi43LjcsMCwwLDAsLjU5NC4zMDYuOTQ3Ljk0NywwLDAsMCwuODQ5LS41NTVBMi45NjksMi45NjksMCwwLDAsOC44NDksOC41UTguODQ5LDcuNTM5LDguMDY3LDcuNTM5WiIgLz4NCiAgPC9nPg0KPC9zdmc+" />
+          <specializationType>Razor Template</specializationType>
+          <specializationTypeId>05162e94-598b-416c-9779-d42b0b5262a1</specializationTypeId>
+          <defaultName>NewRazorTemplate</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
       </creationOptions>
       <scriptOptions />
       <typeOrder>
         <type order="2">C# Template</type>
+        <type order="2">Razor Template</type>
       </typeOrder>
     </packageExtension>
   </packageExtensions>
@@ -69,6 +79,35 @@
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
+    <elementSetting type="Razor Template" typeId="05162e94-598b-416c-9779-d42b0b5262a1">
+      <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+DQogIDxkZWZzPg0KICAgIDxzdHlsZT4NCiAgICAgIC5jcy1yYXpvci1maWxlLWNhbnZhcyB7DQogICAgICAgIGZpbGw6IG5vbmU7DQogICAgICAgIG9wYWNpdHk6IDA7DQogICAgICB9DQoNCiAgICAgIC5jcy1yYXpvci1maWxlLWxpZ2h0LWRlZmF1bHRncmV5LTEwIHsNCiAgICAgICAgZmlsbDogIzIxMjEyMTsNCiAgICAgICAgb3BhY2l0eTogMC4xOw0KICAgICAgfQ0KDQogICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5jcy1yYXpvci1maWxlLWxpZ2h0LWRlZmF1bHRncmV5LTEwIHsNCiAgICAgICAgZmlsbDogI2RlZGVkZTsNCiAgICAgICAgb3BhY2l0eTogMC4xOw0KICAgICAgfQ0KDQogICAgICAuY3MtcmF6b3ItZmlsZS1saWdodC1kZWZhdWx0Z3JleSB7DQogICAgICAgIGZpbGw6ICMyMTIxMjE7DQogICAgICAgIG9wYWNpdHk6IDE7DQogICAgICB9DQoNCiAgICAgIFtkYXRhLXRoZW1lPSJkYXJrIl0gLmNzLXJhem9yLWZpbGUtbGlnaHQtZGVmYXVsdGdyZXkgew0KICAgICAgICBmaWxsOiAjZGVkZWRlOw0KICAgICAgICBvcGFjaXR5OiAxOw0KICAgICAgfQ0KDQogICAgICAuY3MtcmF6b3ItZmlsZS1saWdodC1ncmVlbiB7DQogICAgICAgIGZpbGw6ICMxZjgwMWY7DQogICAgICAgIG9wYWNpdHk6IDE7DQogICAgICB9DQogICAgPC9zdHlsZT4NCiAgPC9kZWZzPg0KICA8dGl0bGU+SWNvbkxpZ2h0Q1NSYXpvckZpbGU8L3RpdGxlPg0KICA8ZyBpZD0iY2FudmFzIiBjbGFzcz0iY3MtcmF6b3ItZmlsZS1jYW52YXMiPg0KICAgIDxwYXRoIGNsYXNzPSJjcy1yYXpvci1maWxlLWNhbnZhcyIgZD0iTTE2LDBWMTZIMFYwWiIgLz4NCiAgPC9nPg0KICA8ZyBpZD0ibGV2ZWwtMSI+DQogICAgPHBhdGggY2xhc3M9ImNzLXJhem9yLWZpbGUtbGlnaHQtZGVmYXVsdGdyZXktMTAiIGQ9Ik0xMy41LDQuNXYxMEgyLjVWMS41aDhaIiAvPg0KICAgIDxwYXRoIGNsYXNzPSJjcy1yYXpvci1maWxlLWxpZ2h0LWRlZmF1bHRncmV5IiBkPSJNMTMuODU0LDQuMTQ2bC0zLTNMMTAuNSwxaC04TDIsMS41djEzbC41LjVoMTFsLjUtLjVWNC41Wk0zLDE0VjJoN1Y1aDN2OVoiIC8+DQogICAgPHBhdGggY2xhc3M9ImNzLXJhem9yLWZpbGUtbGlnaHQtZ3JlZW4iDQogICAgICBkPSJNOC44NDQsMTAuMTYxSDguODE5YTEuMzYsMS4zNiwwLDAsMS0xLjM3NywxLjA1LDEuMjk0LDEuMjk0LDAsMCwxLTEuMDU0LS40OTEsMi4wMjYsMi4wMjYsMCwwLDEtLjQtMS4zMjEsMi45NCwyLjk0LDAsMCwxLC41NS0xLjgyNiwxLjcyNiwxLjcyNiwwLDAsMSwxLjQ0Ny0uNzI3LDEuMDM1LDEuMDM1LDAsMCwxLC42MTEuMTg4Ljg0NC44NDQsMCwwLDEsLjM0Ni40NTFoLjAxNXEuMDE1LS4xMzcuMDczLS41NjFIOS44NFE5LjYxLDkuNSw5LjYxLDkuNTUxcTAsLjk2Ni41Ljk2N2EuODgxLjg4MSwwLDAsMCwuNzYyLS41NCwyLjg0MSwyLjg0MSwwLDAsMCwuMy0xLjQsMi43ODEsMi43ODEsMCwwLDAtLjgxOC0yLjA3MywzLjEsMy4xLDAsMCwwLTIuMjY4LS44LDMuMDI4LDMuMDI4LDAsMCwwLTIuMzA1Ljk3MiwzLjQxMSwzLjQxMSwwLDAsMC0uOTEzLDIuNDMxLDMuMTU0LDMuMTU0LDAsMCwwLC44NzksMi4zMjUsMy4xOSwzLjE5LDAsMCwwLDIuMzY4Ljg4Myw0LjYwOCw0LjYwOCwwLDAsMCwyLjAwNy0uNHYuNzUyYTUuNSw1LjUsMCwwLDEtMi4xMzQuMzYxQTMuOTYzLDMuOTYzLDAsMCwxLDUuMSwxMS45NTMsMy43NTYsMy43NTYsMCwwLDEsNCw5LjE0MSw0LjA0Myw0LjA0MywwLDAsMSw1LjE2Miw2LjE3NywzLjk5MiwzLjk5MiwwLDAsMSw4LjEzMSw1YTQuMDcyLDQuMDcyLDAsMCwxLDIuODA1Ljk4NkEzLjI3OCwzLjI3OCwwLDAsMSwxMi4wNDcsOC41NmEyLjkzMiwyLjkzMiwwLDAsMS0uNiwxLjkwNiwxLjgzLDEuODMsMCwwLDEtMS40NzIuNzQ1UTguODQ5LDExLjIxMSw4Ljg0NCwxMC4xNjFaTTguMDY3LDcuNTM5YS45ODkuOTg5LDAsMCwwLS44NjYuNTI3LDIuNDM2LDIuNDM2LDAsMCwwLS4zMywxLjMxNCwxLjM4OCwxLjM4OCwwLDAsMCwuMjIyLjgzMi43LjcsMCwwLDAsLjU5NC4zMDYuOTQ3Ljk0NywwLDAsMCwuODQ5LS41NTVBMi45NjksMi45NjksMCwwLDAsOC44NDksOC41UTguODQ5LDcuNTM5LDguMDY3LDcuNTM5WiIgLz4NCiAgPC9nPg0KPC9zdmc+" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>true</allowFindInView>
+      <allowTypeReference>true</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeReferenceSetting>
+        <isRequired>true</isRequired>
+        <targetTypes>
+          <type>Template Registration</type>
+        </targetTypes>
+        <allowIsNavigable>true</allowIsNavigable>
+        <allowIsNullable>false</allowIsNullable>
+        <allowIsCollection>false</allowIsCollection>
+        <isNavigableDefault>true</isNavigableDefault>
+        <isNullableDefault>false</isNullableDefault>
+        <isCollectionDefault>false</isCollectionDefault>
+      </typeReferenceSetting>
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
   </elementSettings>
   <elementExtensions>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
@@ -82,11 +121,21 @@
           <defaultName>NewCSharpTemplate</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
+        <option order="2" type="element">
+          <text>New Razor Template</text>
+          <shortcut>ctrl + shift + r</shortcut>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+DQogIDxkZWZzPg0KICAgIDxzdHlsZT4NCiAgICAgIC5jcy1yYXpvci1maWxlLWNhbnZhcyB7DQogICAgICAgIGZpbGw6IG5vbmU7DQogICAgICAgIG9wYWNpdHk6IDA7DQogICAgICB9DQoNCiAgICAgIC5jcy1yYXpvci1maWxlLWxpZ2h0LWRlZmF1bHRncmV5LTEwIHsNCiAgICAgICAgZmlsbDogIzIxMjEyMTsNCiAgICAgICAgb3BhY2l0eTogMC4xOw0KICAgICAgfQ0KDQogICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5jcy1yYXpvci1maWxlLWxpZ2h0LWRlZmF1bHRncmV5LTEwIHsNCiAgICAgICAgZmlsbDogI2RlZGVkZTsNCiAgICAgICAgb3BhY2l0eTogMC4xOw0KICAgICAgfQ0KDQogICAgICAuY3MtcmF6b3ItZmlsZS1saWdodC1kZWZhdWx0Z3JleSB7DQogICAgICAgIGZpbGw6ICMyMTIxMjE7DQogICAgICAgIG9wYWNpdHk6IDE7DQogICAgICB9DQoNCiAgICAgIFtkYXRhLXRoZW1lPSJkYXJrIl0gLmNzLXJhem9yLWZpbGUtbGlnaHQtZGVmYXVsdGdyZXkgew0KICAgICAgICBmaWxsOiAjZGVkZWRlOw0KICAgICAgICBvcGFjaXR5OiAxOw0KICAgICAgfQ0KDQogICAgICAuY3MtcmF6b3ItZmlsZS1saWdodC1ncmVlbiB7DQogICAgICAgIGZpbGw6ICMxZjgwMWY7DQogICAgICAgIG9wYWNpdHk6IDE7DQogICAgICB9DQogICAgPC9zdHlsZT4NCiAgPC9kZWZzPg0KICA8dGl0bGU+SWNvbkxpZ2h0Q1NSYXpvckZpbGU8L3RpdGxlPg0KICA8ZyBpZD0iY2FudmFzIiBjbGFzcz0iY3MtcmF6b3ItZmlsZS1jYW52YXMiPg0KICAgIDxwYXRoIGNsYXNzPSJjcy1yYXpvci1maWxlLWNhbnZhcyIgZD0iTTE2LDBWMTZIMFYwWiIgLz4NCiAgPC9nPg0KICA8ZyBpZD0ibGV2ZWwtMSI+DQogICAgPHBhdGggY2xhc3M9ImNzLXJhem9yLWZpbGUtbGlnaHQtZGVmYXVsdGdyZXktMTAiIGQ9Ik0xMy41LDQuNXYxMEgyLjVWMS41aDhaIiAvPg0KICAgIDxwYXRoIGNsYXNzPSJjcy1yYXpvci1maWxlLWxpZ2h0LWRlZmF1bHRncmV5IiBkPSJNMTMuODU0LDQuMTQ2bC0zLTNMMTAuNSwxaC04TDIsMS41djEzbC41LjVoMTFsLjUtLjVWNC41Wk0zLDE0VjJoN1Y1aDN2OVoiIC8+DQogICAgPHBhdGggY2xhc3M9ImNzLXJhem9yLWZpbGUtbGlnaHQtZ3JlZW4iDQogICAgICBkPSJNOC44NDQsMTAuMTYxSDguODE5YTEuMzYsMS4zNiwwLDAsMS0xLjM3NywxLjA1LDEuMjk0LDEuMjk0LDAsMCwxLTEuMDU0LS40OTEsMi4wMjYsMi4wMjYsMCwwLDEtLjQtMS4zMjEsMi45NCwyLjk0LDAsMCwxLC41NS0xLjgyNiwxLjcyNiwxLjcyNiwwLDAsMSwxLjQ0Ny0uNzI3LDEuMDM1LDEuMDM1LDAsMCwxLC42MTEuMTg4Ljg0NC44NDQsMCwwLDEsLjM0Ni40NTFoLjAxNXEuMDE1LS4xMzcuMDczLS41NjFIOS44NFE5LjYxLDkuNSw5LjYxLDkuNTUxcTAsLjk2Ni41Ljk2N2EuODgxLjg4MSwwLDAsMCwuNzYyLS41NCwyLjg0MSwyLjg0MSwwLDAsMCwuMy0xLjQsMi43ODEsMi43ODEsMCwwLDAtLjgxOC0yLjA3MywzLjEsMy4xLDAsMCwwLTIuMjY4LS44LDMuMDI4LDMuMDI4LDAsMCwwLTIuMzA1Ljk3MiwzLjQxMSwzLjQxMSwwLDAsMC0uOTEzLDIuNDMxLDMuMTU0LDMuMTU0LDAsMCwwLC44NzksMi4zMjUsMy4xOSwzLjE5LDAsMCwwLDIuMzY4Ljg4Myw0LjYwOCw0LjYwOCwwLDAsMCwyLjAwNy0uNHYuNzUyYTUuNSw1LjUsMCwwLDEtMi4xMzQuMzYxQTMuOTYzLDMuOTYzLDAsMCwxLDUuMSwxMS45NTMsMy43NTYsMy43NTYsMCwwLDEsNCw5LjE0MSw0LjA0Myw0LjA0MywwLDAsMSw1LjE2Miw2LjE3NywzLjk5MiwzLjk5MiwwLDAsMSw4LjEzMSw1YTQuMDcyLDQuMDcyLDAsMCwxLDIuODA1Ljk4NkEzLjI3OCwzLjI3OCwwLDAsMSwxMi4wNDcsOC41NmEyLjkzMiwyLjkzMiwwLDAsMS0uNiwxLjkwNiwxLjgzLDEuODMsMCwwLDEtMS40NzIuNzQ1UTguODQ5LDExLjIxMSw4Ljg0NCwxMC4xNjFaTTguMDY3LDcuNTM5YS45ODkuOTg5LDAsMCwwLS44NjYuNTI3LDIuNDM2LDIuNDM2LDAsMCwwLS4zMywxLjMxNCwxLjM4OCwxLjM4OCwwLDAsMCwuMjIyLjgzMi43LjcsMCwwLDAsLjU5NC4zMDYuOTQ3Ljk0NywwLDAsMCwuODQ5LS41NTVBMi45NjksMi45NjksMCwwLDAsOC44NDksOC41UTguODQ5LDcuNTM5LDguMDY3LDcuNTM5WiIgLz4NCiAgPC9nPg0KPC9zdmc+" />
+          <specializationType>Razor Template</specializationType>
+          <specializationTypeId>05162e94-598b-416c-9779-d42b0b5262a1</specializationTypeId>
+          <defaultName>NewRazorTemplate</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
       </creationOptions>
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
         <type order="1">C# Template</type>
+        <type order="2">Razor Template</type>
       </typeOrder>
       <mappingSettings />
     </elementExtension>

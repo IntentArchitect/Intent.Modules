@@ -1,0 +1,66 @@
+<#@ template language="C#" inherits="CSharpTemplateBase<Intent.ModuleBuilder.CSharp.Api.RazorTemplateModel>" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
+<#@ import namespace="Intent.ModuleBuilder.CSharp.Api" #>
+using System;
+using Intent.Engine;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.CSharp.Templates;
+<#= Model.GetModelType() != null ? $"using {Model.GetModelType().Namespace};" : "" #>
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    [IntentManaged(Mode.Fully, Body = Mode.Merge)]
+    <#= GetAccessModifier() #>class <#= ClassName #> : <#= string.Join(", ", GetBaseTypes()) #>
+    {
+        public const string TemplateId = "<#= GetTemplateId() #>";
+
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : "" #>) : base(TemplateId, outputTarget, model)
+        {
+<#  if (Model.GetRazorTemplateSettings()?.TemplatingMethod().IsRazorFileBuilder() == true) { #>
+            RazorFile = new RazorFile(this)
+                .Configure(file =>
+                {
+                    file.AddPageDirective($"<#= this.GetPageDirectiveText() #>");
+
+                    file.AddHtmlElement("PageTitle", element => element.WithText($"<#= this.GetPageTitleText() #>"));
+                });
+<#  } #>
+        }
+<#  if (Model.GetRazorTemplateSettings()?.TemplatingMethod().IsRazorFileBuilder() == true) { #>
+
+        [IntentManaged(Mode.Fully)]
+        public <#= UseType("Intent.Modules.Blazor.Api.RazorFile") #> RazorFile { get; }
+<#  } #>
+
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        protected override RazorFileConfig DefineRazorConfig()
+        {
+            return new RazorFileConfig(
+                className: $"<#= GetClassName() #>",
+                @namespace: this.GetNamespace(),
+                relativeLocation: this.GetFolderPath());
+        }
+<#  if (Model.GetRazorTemplateSettings()?.TemplatingMethod().IsRazorFileBuilder() == true) { #>
+
+        [IntentManaged(Mode.Fully)]
+        public override string TransformText()
+        {
+            var razorFile = RazorFile.Build();
+            foreach (var @using in this.ResolveAllUsings(
+                         "System",
+                         "System.Collections.Generic"
+                     ).Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+            {
+                razorFile.AddUsing(@using);
+            }
+
+            return razorFile.ToString();
+        }
+<#  } #>
+    }
+}

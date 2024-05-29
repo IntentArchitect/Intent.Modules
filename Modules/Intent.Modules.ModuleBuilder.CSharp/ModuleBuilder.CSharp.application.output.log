@@ -25,6 +25,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>953b3214-e957-425d-8c51-65af9f7d0877</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#05162e94-598b-416c-9779-d42b0b5262a1</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/RazorTemplateModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>RazorTemplateModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>6994427e-45de-4d7d-b0f6-73454dfa9229</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#862b559d-2e44-424d-b102-26ac394c5d77</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -38,6 +46,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/PackageSettingsModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>PackageSettingsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>6994427e-45de-4d7d-b0f6-73454dfa9229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#05162e94-598b-416c-9779-d42b0b5262a1</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/RazorTemplateModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>RazorTemplateModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -150,6 +166,62 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpStringInterpolationTemplate#486b285a-ac44-40bb-96d0-821aed78c47f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/RazorStringInterpolation/RazorStringInterpolationTemplate.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/RazorStringInterpolation/RazorStringInterpolationTemplate.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#486b285a-ac44-40bb-96d0-821aed78c47f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/RazorStringInterpolation/RazorStringInterpolationTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/RazorStringInterpolation/RazorStringInterpolationTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#486b285a-ac44-40bb-96d0-821aed78c47f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/RazorStringInterpolation/RazorStringInterpolationTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/RazorStringInterpolation/RazorStringInterpolationTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#5c00ad31-0eef-4539-a3e4-fa339cae2b10</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/RazorTemplatePartial/RazorTemplatePartialTemplate.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/RazorTemplatePartial/RazorTemplatePartialTemplate.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#5c00ad31-0eef-4539-a3e4-fa339cae2b10</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/RazorTemplatePartial/RazorTemplatePartialTemplate.tt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/RazorTemplatePartial/RazorTemplatePartialTemplate.tt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#5c00ad31-0eef-4539-a3e4-fa339cae2b10</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/RazorTemplatePartial/RazorTemplatePartialTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/RazorTemplatePartial/RazorTemplatePartialTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#5c00ad31-0eef-4539-a3e4-fa339cae2b10</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/RazorTemplatePartial/RazorTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/RazorTemplatePartial/RazorTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

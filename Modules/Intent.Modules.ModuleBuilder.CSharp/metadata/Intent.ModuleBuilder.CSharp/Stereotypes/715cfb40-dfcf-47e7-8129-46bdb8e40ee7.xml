@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="715cfb40-dfcf-47e7-8129-46bdb8e40ee7" version="3.1.0">
+  <name>Razor Template Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="05162e94-598b-416c-9779-d42b0b5262a1">Razor Template</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="file" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>f2bfb0f7-d304-466f-b923-021d4016b48d</parentFolderId>
+  <order>0</order>
+  <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
+  <packageName>Intent.ModuleBuilder.CSharp</packageName>
+  <properties>
+    <property id="e079357a-58a6-46f1-8d2e-153c9a3ceb4f">
+      <name>Templating Method</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Razor File Builder</defaultValue>
+      <valueOptions>
+        <option>String Interpolation</option>
+        <option>Razor File Builder</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>
