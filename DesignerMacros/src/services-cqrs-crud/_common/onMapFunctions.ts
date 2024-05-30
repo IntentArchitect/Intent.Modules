@@ -1,6 +1,7 @@
 
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../common/getSurrogateKeyType.ts" />
+/// <reference path="../../common/attributeWithMapPath.ts" />
 
 function getFieldFormat(str: string): string {
     return toPascalCase(str);
@@ -115,15 +116,6 @@ function addPrimaryKeys(dto: MacroApi.Context.IElementApi, entity: MacroApi.Cont
             dtoField.setMapping(primaryKey.mapPath);
         }
     }
-}
-
-interface IAttributeWithMapPath {
-    id: string,
-    name: string,
-    typeId: string,
-    mapPath: string[],
-    isNullable: boolean,
-    isCollection: boolean,
 }
 
 function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
