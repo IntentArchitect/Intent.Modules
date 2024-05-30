@@ -1,4 +1,4 @@
-$files = Get-ChildItem **/tsconfig.json -Recurse -Depth 2
+$files = Get-ChildItem **/tsconfig.json -Recurse -Depth 3
 $count = 0
 
 foreach ($file in $files) {

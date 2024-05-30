@@ -7,4 +7,4 @@
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/dto-on-map/dto-on-map.ts
  */
 
-onMapDto(element);
+onMapDto(element, element.getParent("Folder"));

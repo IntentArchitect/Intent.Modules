@@ -1,7 +1,7 @@
-
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../common/getSurrogateKeyType.ts" />
 /// <reference path="../../common/attributeWithMapPath.ts" />
+/// <reference path="../../common/domainHelper.ts" />
 
 function getFieldFormat(str: string): string {
     return toPascalCase(str);

@@ -1,4 +1,5 @@
 /// <reference path="getSurrogateKeyType.ts"/>
+/// <reference path="attributeWithMapPath.ts"/>
 
 interface IISelectEntityDialogOptions {
     includeOwnedRelationships: boolean;

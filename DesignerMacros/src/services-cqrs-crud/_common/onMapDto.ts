@@ -1,5 +1,6 @@
 /// <reference path="./onMapFunctions.ts" />
 /// <reference path="../../common/crudHelper.ts" />
+/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
 const stringTypeId: string = "d384db9c-a279-45e1-801e-e4e8099625f2";
 
