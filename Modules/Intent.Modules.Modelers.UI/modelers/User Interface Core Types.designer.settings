@@ -106,6 +106,7 @@ return hasStereotype(pageStereotypeId)</isOptionVisibleFunction>
           <drawPath>
             <path>`M${x + 15},${y} h${w - 30} a15,15 0 0 1 15,15 v${h - 30} a15,15 0 0 1 -15,15 h-${w - 30} a15,15 0 0 1 -15,-15 v-${h - 30} a15,15 0 0 1 15,-15 z`</path>
             <lineColor>#0077b6</lineColor>
+            <fillColor>black</fillColor>
           </drawPath>
           <drawText>
             <style>return `font-size: 12px; font-family: Helvetica; font-weight: bold; text-align: center; white-space: inherit;`</style>
@@ -127,9 +128,14 @@ return hasStereotype(pageStereotypeId)</isOptionVisibleFunction>
               </drawPath>
               <drawText>
                 <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
-                <size width="${w}" height="${h}" />
-                <position x="${x}" y="${y}" />
+                <size width="${w - 26}" height="${h}" />
+                <position x="${x + 24}" y="${y}" />
               </drawText>
+              <drawSvgResource>
+                <path>property.svg</path>
+                <size width="20" height="20" />
+                <position x="${x+6}" y="${y}" />
+              </drawSvgResource>
             </display>
             <defaultSize width="`${parent.w}`" height="18" />
             <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
@@ -162,12 +168,18 @@ return hasStereotype(pageStereotypeId)</isOptionVisibleFunction>
               <drawPath>
                 <condition>return $firstOfType;</condition>
                 <path>`M${x},${y - 6} h${w}`</path>
+                <lineColor>#0077b6</lineColor>
               </drawPath>
               <drawText>
                 <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
-                <size width="${w}" height="${h}" />
-                <position x="${x}" y="${y}" />
+                <size width="${w - 26}" height="${h}" />
+                <position x="${x + 24}" y="${y}" />
               </drawText>
+              <drawSvgResource>
+                <path>method.svg</path>
+                <size width="20" height="20" />
+                <position x="${x+6}" y="${y}" />
+              </drawSvgResource>
             </display>
             <stereotypesVisualSettings>
               <size width="${w}" height="18" />
