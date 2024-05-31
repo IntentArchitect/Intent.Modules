@@ -239,6 +239,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 else
                 {
                     // fall back on using the element's name from the metadata:
+                    //If this is not expected, you have not set up a `Represents` inside of you template, note you will need to do this for each part of the mapping path
                     member = new CSharpStatement(mappingPathTarget.Element.Name);
                 }
 
@@ -299,11 +300,12 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 }
                 else
                 {
-                    // fall back on using the element's name from the metadata:
-                    member = new CSharpStatement(mappingPathTarget.Element.Name);
+					// fall back on using the element's name from the metadata:
+					//If this is not expected, you have not set up a `Represents` inside of you template, note you will need to do this for each part of the mapping path
+					member = new CSharpStatement(mappingPathTarget.Element.Name);
                 }
 
-                result = result != null ? new CSharpAccessMemberStatement(result, member) : member;
+                result = result != null ? new CSharpAccessMemberStatement(result, member, member.Reference) : member;
             }
         }
 
@@ -338,7 +340,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         {
             foreach (var pathTarget in mappingPath)
             {
-                if (csharpElement?.TryGetReferenceForModel(pathTarget.Id, out reference) == true)
+                if (csharpElement.TryGetReferenceForModel(pathTarget.Id, out reference) == true)
                 {
                     csharpElement = reference as CSharpMetadataBase;
                     continue;
@@ -346,8 +348,18 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
                 if (mappingPath.IndexOf(pathTarget) > 0)
                 {
-                    var foundSubTypeTemplate =  Template.GetTypeInfo(mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.TypeReference.Element.AsTypeReference())
-                        ?.Template as ICSharpFileBuilderTemplate;
+                    ITypeReference typeReference = null;
+                    if (mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.TypeReference != null)
+                    {
+                        typeReference = mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.TypeReference.Element.AsTypeReference();
+					}
+                    else
+                    {
+                        continue;
+                        //typeReference = mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.AsTypeReference();
+					}
+
+                    var foundSubTypeTemplate = Template.GetTypeInfo(typeReference)?.Template as ICSharpFileBuilderTemplate;
                     if (foundSubTypeTemplate?.CSharpFile.TypeDeclarations.First().TryGetReferenceForModel(pathTarget.Id, out reference) == true)
                     {
                         csharpElement = reference as CSharpMetadataBase;

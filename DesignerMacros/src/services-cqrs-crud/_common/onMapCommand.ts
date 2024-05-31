@@ -1,5 +1,6 @@
 /// <reference path="./onMapFunctions.ts" />
 /// <reference path="../../common/domainHelper.ts" />
+/// <reference path="../../common/crudHelper.ts" />
 /// <reference path="../../common/servicesHelper.ts" />
 /// <reference path="../../common/getMappedRequestDetails.ts" />
 /// <reference path="ensureHasField.ts" />
@@ -9,22 +10,14 @@ function onMapCommand(
     element: MacroApi.Context.IElementApi,
     isForCrudScript: boolean,
     excludePrimaryKeys: boolean = false,
-    mapConstructors: boolean = false
+    inbound: boolean = false
 ): void {
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
-    const mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
-    const mapToDomainOperationSettingId = "7c31c459-6229-4f10-bf13-507348cd8828";
-    const mapToDomainConstructorForDtosSettingId = "8d1f6a8a-77c8-43a2-8e60-421559725419";
-    
+    const mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";    
 
     const mappingDetails = getMappedRequestDetails(element);
-    if (mappingDetails == null) {
-        return;
-    }
 
-    if (isForCrudScript ||
-        mappingDetails.mappingTargetType !== "Class"
-    ) {
+    if (isForCrudScript || (mappingDetails != null && mappingDetails.mappingTargetType !== "Class" )) {
         let order = 0;
         let keyFields = mappingDetails.ownerKeyFields;
         if (!excludePrimaryKeys) {
@@ -41,36 +34,57 @@ function onMapCommand(
     }
 
     if (mappingDetails.mappingTargetType === "Operation" &&
-        isComplexType(element.getMapping()?.getElement()?.typeReference?.getType())
-    ) {
-        getOrCreateCommandCrudDto(element, element, false, mapFromDomainMappingSettingId, false);
+        DomainHelper.isComplexType(element.getMapping()?.getElement()?.typeReference?.getType())) {
+        let mappedElement = element.getMapping().getElement();
+        let newDto = CrudHelper.getOrCreateCrudDto( CrudHelper.getName(element, mappedElement)
+            , mappedElement.typeReference.getType()
+            , false
+            , mapFromDomainMappingSettingId
+            , element.getParent()
+            , false);
+        setTypeRef(element, newDto, mappedElement);
     }
 
     const fields = element.getChildren("DTO-Field")
         .filter(x => x.typeReference.getType()?.specialization != "DTO" && x.isMapped() && x.getMapping()?.getElement().specialization.startsWith("Association"));
 
     fields.forEach(field => {
-        getOrCreateCommandCrudDto(element, field, !excludePrimaryKeys, projectMappingSettingId, mapConstructors);
+        let mappedElement = field.getMapping().getElement();
+        let newDto = CrudHelper.getOrCreateCrudDto( CrudHelper.getName(element, mappedElement)
+            , mappedElement.typeReference.getType()
+            , !excludePrimaryKeys
+            , projectMappingSettingId
+            , element.getParent()
+            , inbound);
+
+        setTypeRef(field, newDto, mappedElement);
     });
 
     const complexFields = element.getChildren("DTO-Field")
         .filter(x =>
             x.typeReference.getType()?.specialization != "DTO" &&
-            isComplexType(x.getMapping()?.getElement()?.typeReference?.getType()));
+            DomainHelper.isComplexType(x.getMapping()?.getElement()?.typeReference?.getType()));
 
     complexFields.forEach(cf => {
-        getOrCreateCommandCrudDto(element, cf, false, projectMappingSettingId, mapConstructors);
+        let mappedElement = cf.getMapping().getElement();
+        let newDto = CrudHelper.getOrCreateCrudDto( CrudHelper.getName(element, mappedElement)
+            , mappedElement.typeReference.getType()
+            , false
+            , projectMappingSettingId
+            , element.getParent()
+            , inbound);
+
+        setTypeRef(cf, newDto, mappedElement);
     });
 
-    function isComplexType(element: MacroApi.Context.IElementApi): boolean {
-        return element?.specialization === "Data Contract" ||
-            element?.specialization === "Value Object" ||
-            element?.specialization === "Class";
-    }
-
-    function isComplexTypeById(typeId: string): boolean {
-        let element = lookup(typeId);
-        return isComplexType(element);
+    function setTypeRef(element: MacroApi.Context.IElementApi, newDto: MacroApi.Context.IElementApi , mappedElement: MacroApi.Context.IElementApi){
+        element.typeReference.setType(newDto.id);
+        if (mappedElement?.typeReference?.isCollection != null) {
+            element.typeReference.setIsCollection(mappedElement.typeReference.isCollection);
+        }
+        if (mappedElement?.typeReference?.isNullable) {
+            element.typeReference.setIsNullable(mappedElement.typeReference.isNullable);
+        }
     }
 
     /*
@@ -109,7 +123,7 @@ function onMapCommand(
 
         dtoField.typeReference.setType(dto.id);
     }*/
-
+/*
     function getOrCreateCommandCrudDto(
         command: MacroApi.Context.IElementApi,
         dtoField: MacroApi.Context.IElementApi,
@@ -164,7 +178,7 @@ function onMapCommand(
     
             let field = createElement("DTO-Field", toPascalCase(e.name), dto.id);
             field.setMapping(e.mapPath);
-            if (isComplexTypeById(e.typeId)){
+            if (DomainHelper.isComplexTypeById(e.typeId)){
                 let newDto = getOrCreateCommandCrudDto(dto, field, autoAddPrimaryKey, mapFromDomainMappingSettingId, true );
                 field.typeReference.setType(newDto.id);
             }else{
@@ -207,5 +221,5 @@ function onMapCommand(
         if (dtoUpdated) {
             dto.collapse();
         }
-    }  
+    }  */
 }

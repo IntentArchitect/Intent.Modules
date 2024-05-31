@@ -27,7 +27,9 @@ async function execute(element: IElementApi) {
     servicesCrud.createStandardFindAllOperation(service, entity, resultDto);
 
     if (primaryKeys.length > 0) {
-        servicesCrud.createStandardUpdateOperation(service, entity, folder);
+        if (!privateSettersOnly){
+            servicesCrud.createStandardUpdateOperation(service, entity, folder);
+        }
         servicesCrud.createStandardDeleteOperation(service, entity);
 
         const operations = DomainHelper.getCommandOperations(entity);     

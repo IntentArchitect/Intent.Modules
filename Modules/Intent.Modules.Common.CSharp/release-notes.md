@@ -6,8 +6,9 @@
 ### Version 3.6.3
 
 - New Feature: Classes and Records can now define `Primary Constructors`.
+- Improvement: Convenient `IncludesXmlDocComments` method to insert `/// <inheritdoc cref="" />` comments.
+- Improvement: Exposed `Member` as public in `CSharpAccessMemberStatement` class.
 - Fixed: CRUD Mapping issue around constructors with ValueObjects as parameters.
-- Improvement: Convenient `IncludesXmlDocComments` method to insert `/// <inheritdoc cref="" />` comments. 
 
 ### Version 3.6.2
 

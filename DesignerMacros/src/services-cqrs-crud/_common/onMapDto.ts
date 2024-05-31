@@ -1,26 +1,30 @@
 /// <reference path="./onMapFunctions.ts" />
+/// <reference path="../../common/crudHelper.ts" />
+
 const stringTypeId: string = "d384db9c-a279-45e1-801e-e4e8099625f2";
 
-function onMapDto(element: MacroApi.Context.IElementApi, autoAddPrimaryKey: boolean = true, dtoPrefix: string = null ): void {
-    var complexTypes: Array<string> = ["Data Contract", "Value Object"];
+function onMapDto(element: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi, autoAddPrimaryKey: boolean = true, dtoPrefix: string = null, inbound: boolean = false ): void {
 
     let fields = element.getChildren("DTO-Field")
         .filter(x => x.typeReference.getType()?.specialization != "DTO" && x.getMapping()?.getElement()?.specialization.startsWith("Association"));
 
     fields.forEach(f => {
-        getOrCreateDtoCrudDto(element, f, autoAddPrimaryKey, dtoPrefix);
-    });
+        let targetMappingSettingId = f.getParent().getMapping().mappingSettingsId;
+        let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(element, f.getMapping().getElement().typeReference.getType(), dtoPrefix), f.getMapping().getElement(), autoAddPrimaryKey, targetMappingSettingId, folder, inbound);
+        f.typeReference.setType(newDto.id);
+    });        
 
     let complexAttributes = element.getChildren("DTO-Field")
         .filter(x => x.typeReference.getType()?.specialization != "DTO"
-            && (complexTypes.includes(x.getMapping()?.getElement()?.typeReference?.getType()?.specialization)
-            ));
+            && (DomainHelper.isComplexType(x.getMapping()?.getElement()?.typeReference?.getType())));
 
     complexAttributes.forEach(f => {
-        getOrCreateDtoCrudDto(element, f, false, dtoPrefix);
+        let targetMappingSettingId = f.getParent().getMapping().mappingSettingsId;
+        let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(element, f.getMapping().getElement(), dtoPrefix), f.getMapping().getElement().typeReference.getType(), false, targetMappingSettingId, folder, inbound);
+        f.typeReference.setType(newDto.id);
     });
 }
-
+/*
 function getOrCreateDtoCrudDto(element: MacroApi.Context.IElementApi, dtoField: MacroApi.Context.IElementApi, autoAddPrimaryKey: boolean, dtoPrefix: string = null) {
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
     const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
@@ -57,6 +61,6 @@ function getOrCreateDtoCrudDto(element: MacroApi.Context.IElementApi, dtoField: 
 
     dtoField.typeReference.setType(dto.id);
 }
-
+*/
 
 

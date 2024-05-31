@@ -105,7 +105,7 @@ namespace cqrsCrud {
         if (owningAggregate != null) {
             addAggregatePkToCommandOrQuery(owningAggregate, commandManager.getElement());
         }
-        onMapCommand(commandManager.getElement(), true, true, true);
+        onMapCommand(commandManager.getElement(), true, true, true );
 
         commandManager.collapse();
         return commandManager.getElement();
@@ -322,7 +322,7 @@ namespace cqrsCrud {
             field.setMapping(attr.mapPath);
         }
 
-        onMapDto(dto);
+        onMapDto(dto, folder);
         dto.collapse();
         return dto;
     }

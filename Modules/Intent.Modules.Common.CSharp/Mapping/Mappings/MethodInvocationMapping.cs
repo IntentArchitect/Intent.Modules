@@ -35,10 +35,8 @@ public class MethodInvocationMapping : CSharpMappingBase
 
 		var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
 		// Determine if this model is a method on the class:
-		if (typeTemplate?.CSharpFile.Classes.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpClassMethod method)
+		if (TryGetMethodDeclaration( typeTemplate, out var method))
         {
-			//Link the method call so the builder can work out the Async invocation syntax
-			invocation.Invokes(method);
 			foreach (var parameter in method.Parameters)
 			{
 				bool optional = parameter.DefaultValue != null;
@@ -81,4 +79,21 @@ public class MethodInvocationMapping : CSharpMappingBase
     {
         yield return GetSourceStatement(false);
     }
+
+	private bool TryGetMethodDeclaration(ICSharpFileBuilderTemplate typeTemplate, out ICSharpMethodDeclaration method)
+	{
+		if (typeTemplate?.CSharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is ICSharpMethodDeclaration classMethod)
+		{
+			method = classMethod;
+			return true;
+		}
+		if (typeTemplate?.CSharpFile.Interfaces.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var ireference) == true && ireference is ICSharpMethodDeclaration interfaceMethod)
+		{
+			method = interfaceMethod;
+			return true;
+		}
+		method = null;
+		return false;
+	}
+
 }
