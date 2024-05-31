@@ -125,10 +125,10 @@ function matchParameters(element, routeToCheck) {
         return null; // Return no message if element type is unrecognized
     }
     // Normalize route parameters by trimming braces and converting to lower case for case-insensitive comparison
-    let normalizedRouteParameters = routeParameters.map(param =&gt; param.replace(/[{}]/g, "").toLowerCase());
+    let normalizedRouteParameters = routeParameters.map(param =&gt; param.replace(/[{}\*]/g, "").toLowerCase());
     console.log(`Normalized route parameters found: ${normalizedRouteParameters.join(", ")}`);
     // Collect all names of properties/parameters for the element and convert them to lower case
-    let elementNames = elementChildren.map(child =&gt; child.getName().toLowerCase());
+    let elementNames = elementChildren.map(child =&gt; child.getName().replace(/[\*]/g, "").toLowerCase());
     console.log(`Element properties/parameters names found: ${elementNames.join(", ")}`);
     // Ensure the comparison against element names is case-insensitive
     let unmatchedParameters = normalizedRouteParameters.filter(param =&gt; !elementNames.includes(param.toLowerCase()));
@@ -193,7 +193,6 @@ function validateRestRoutesOperation(element) {
     return validateRestRoutes(element);
 }
 //Comment / UnComment below when you publish
-//validateRestRoutesOperation(element);
 return validateRestRoutesOperation(lookup(id));
 </validateFunctionOverride>
       <creationOptions />
