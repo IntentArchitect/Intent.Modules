@@ -10,21 +10,21 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.UI.Core.Api
 {
-    public static class NavigationItemModelStereotypeExtensions
+    public static class MenuItemModelStereotypeExtensions
     {
-        public static NavigationLink GetNavigationLink(this NavigationItemModel model)
+        public static NavigationLink GetNavigationLink(this MenuItemModel model)
         {
             var stereotype = model.GetStereotype(NavigationLink.DefinitionId);
             return stereotype != null ? new NavigationLink(stereotype) : null;
         }
 
 
-        public static bool HasNavigationLink(this NavigationItemModel model)
+        public static bool HasNavigationLink(this MenuItemModel model)
         {
             return model.HasStereotype(NavigationLink.DefinitionId);
         }
 
-        public static bool TryGetNavigationLink(this NavigationItemModel model, out NavigationLink stereotype)
+        public static bool TryGetNavigationLink(this MenuItemModel model, out NavigationLink stereotype)
         {
             if (!HasNavigationLink(model))
             {

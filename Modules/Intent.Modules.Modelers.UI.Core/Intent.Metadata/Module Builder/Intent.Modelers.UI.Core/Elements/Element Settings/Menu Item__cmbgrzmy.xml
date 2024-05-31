@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="adbf2fa8-6833-4c24-960a-31d8a41fd1ed" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Navigation Item</name>
-  <display>Navigation Item</display>
+  <name>Menu Item</name>
+  <display>Menu Item</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>2</order>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>d7282bf2-1626-4b8b-9446-1d530527db06</parentFolderId>
@@ -104,7 +104,7 @@
       <childElements>
         <childElement id="5861f788-ee0c-4e20-9f35-7f84033e7163" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Navigation Item</name>
-          <display>Add Navigation Item: Navigation Item</display>
+          <display>Add Navigation Item: Menu Item</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="7d031a29-fb3b-46e2-a1ab-d650653457f8">

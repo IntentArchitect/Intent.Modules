@@ -310,24 +310,15 @@ model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == "
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0" type="Navigation Brand Logo" typeId="11785c84-a457-497c-9c7a-79c43772aa70" />
-        <type order="1" type="Navigation Item" typeId="adbf2fa8-6833-4c24-960a-31d8a41fd1ed" />
+        <type order="0" type="Menu Item" typeId="adbf2fa8-6833-4c24-960a-31d8a41fd1ed" />
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <text>Add Brand Logo</text>
-          <icon type="UrlImagePath" source="data:image/png;base64,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" />
-          <specializationType>Navigation Brand Logo</specializationType>
-          <specializationTypeId>11785c84-a457-497c-9c7a-79c43772aa70</specializationTypeId>
-          <defaultName>Brand</defaultName>
-          <allowMultiple>false</allowMultiple>
-        </option>
-        <option type="element">
-          <text>Add Navigation Item</text>
+          <text>Add Menu Item</text>
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8yNWRjZDhmNi1lYWQ1LTQ2NzQtODgwZC1lNjVjNTM1MjM1YWIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSIzNy41NSIgeDI9IjI1IiB5Mj0iMTQuNDUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM3Nzk3QzkiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMjY2NkM5Ii8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXzI1ZGNkOGY2LWVhZDUtNDY3NC04ODBkLWU2NWM1MzUyMzVhYikiIGQ9Ik00Ni42LDE3djYuNmgtMy40di01LjJjMC0wLjktMC43LTEuNi0xLjYtMS42aC0zM2MtMC45LDAtMS43LDAuOC0xLjcsMS43djEzLjINCgljMCwwLjgsMC43LDEuNSwxLjUsMS41aDE3LjV2My4zaC0xOWMtMS45LDAtMy41LTEuNi0zLjUtMy41VjE3YzAtMS45LDEuNi0zLjUsMy41LTMuNWgzNi4yQzQ1LDEzLjUsNDYuNiwxNS4xLDQ2LjYsMTd6Ii8+DQo8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMTU5NDQ2NTA3MzA1NTIwOTExNjUwMDAwMDE2MzAzNDQ4MDIyNzg5ODQ2NDUxXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIzNy4xIiB5MT0iMjguMDA3NyIgeDI9IjM3LjEiIHkyPSI0Ljk5OTIiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM3Nzk3QzkiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMjY2NkM5Ii8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBvbHlnb24gZmlsbD0idXJsKCNTVkdJRF8wMDAwMDE1OTQ0NjUwNzMwNTUyMDkxMTY1MDAwMDAxNjMwMzQ0ODAyMjc4OTg0NjQ1MV8pIiBwb2ludHM9IjQ2LjEsMzkuMyA0MS45LDQzLjUgMzQuMSwzNS43IDI4LjEsNDEuNiANCgkyOC4xLDI1LjYgNDQuMiwyNS42IDM4LjIsMzEuNyAiLz4NCjwvc3ZnPg0K" />
-          <specializationType>Navigation Item</specializationType>
+          <specializationType>Menu Item</specializationType>
           <specializationTypeId>adbf2fa8-6833-4c24-960a-31d8a41fd1ed</specializationTypeId>
-          <defaultName>NewNavigationItem</defaultName>
+          <defaultName>NewMenuItem</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -335,79 +326,7 @@ model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == "
       <mappingOptions />
       <mappingSettings />
       <childElementSettings>
-        <childElementSetting type="Navigation Brand Logo" typeId="11785c84-a457-497c-9c7a-79c43772aa70">
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAACedJREFUeF7VnFtsHFcZx78zF896be/GcexEdhxycdwQERURVImHRPCAGgkEpSpChabctwhLNBCFBmInm9pJTAEVN5EptmK1IBRxiYgIIkh9aPPQN4drC2R9SxzHji07Xsf2Xrwz50Nn9uLZ9ezu7OzM7DAvlpKdmTM//7/z+87ZXRNw6xFEoY2jXRzhaLMC594JEtmNQyVuHBQb09Zjc+f9WxpPpMbXHeokL7txrK4EuPXYXI9/S+OpLGAIwVAXOes2iO4CGESh7t54T43P/5KvoUGP1ZlmGc67qZxdBdD75dvnOZ4/0bx7j5AnaTIg9Lgpie4AGEShevy/3fFI9OSuDx0AXsjHL4UVIegWsbgCYM1XR3+8uhT+bo3Pz7e0tRmZ5piRXSGWigOs+uK/e9dikZcYtW07d4Jvs+7cpw/VBWKpHMDAsFgd970SXX50LE2n/SMHjaQv9zUVFUvFAIpfev8niWiUweMZEa/PB9vb9poBWFGxOA8wMCyKK57eRCz2PS2t5l27oba+3gzA5DkVEovjAKWj/7kUX139Vjp5aWIte9qgxu83DxCgImJxFKD47Hs/TcSzk2chwEwSnewTnQEYGBY9Md/FRHT1BUopIGJ20ghR5z9vXV05CdSe65hYHAHo/UrotUQ8/m1KKQ+UQi5EQgi0WAvQMbHYCzAwLNbKm1+V12IdaWjspx5E1kDX+MqaAzem1wGx2ArQH7gzlFhLPA+U8pQqmeTpQbRAInrlb7tYbAO46YXJS4osdyAmSxYoQiGINgG0XSzWAwyg2CDNXaaJ+FEGjipMGsUhbmpshMbtrVZJxLGtMMsBNr04O6DI9GuUKjykwBmByJ54z+MfthOgLWKxDODBAIrTtfM/VxT6dVUYqZIFZKVrLIk79n0QREmyE6LlKxbLALZ8P/wbRVaeAUQuM9eVCLGmzqfuyNh8WCoWSwDu+MHygKLQb2Kqx0umLmVdFSIFI+XM8wJs37sXOF7dX7D3sGgrrCyA+4NYFZGjV5Di02qZqquMZLluhKik/q1wOTe1tlrfD+b/VZS9YikL4J6g/Cal8nNIKZec84pBNJZEtiqpsnsuTEItWyymAB78BYrLc/Qypai2Kix1qLYrGoh5y7l4EtneYJO9LU12JstYsZgC2N6NQSDQlRTG+toWFSUbYhnlXLe5ARq2bbN3Hly/ummxlAyw/RyeYZuXmXtrU8eSmGlhUmBNioXt17AUVtfWOgVRbXFK3QozDPDjQRSmRTiVBS/9aFkQEaxKIiL+o3Xf/gmOwGcBwPBYyyReklgMDyqVvE4A0H/TNhciVVLNtEmxIN7ikT7ZuH+fzCXgDY7AU2WCMXp6SWIpCrBg8nKHlFPO6+1MsXLOEQvQd1Yut31Ce/n2HvwtAHzeKIWyX2dQLEUBFk1eQYgIVNHAMdAnIsA/vVT42PRAc0R76Z1B9Ig8/I4Q+HTZcIxdwJBYCgLcIAxjN15vmNPAMttZhZOIgG95EuSpXHjp2zKIVQL80ukkFhKLLsCSyjYf1Jw5sXASKZPuu3N9TYeM/I7auvEPbhGLLsCSy9YoRKqkNlazxUKA3BSruM9N9m5aNAJwdy/63SKWLICWJK9EsQDAn++/4v+UEXC5r3GDWLIAWpY8g2JBhHdpzPvJqVdJ1AxAN4glA7C9B08DgH0foc1pcQDhemJF+oJZeJUUCyFw+vYp0s3GoALcdwF3UgUmzKSgpHMYRKRIKb41HhSfLOncIi9u78FrAPAZp1YssgAfGD9JJlWAj/VgCAFMfTSqVAgU8S+yQp69EyThUs8t9HomFkGGNwHUZZ8TRyjUSR5zHCAi/FER4fnxk2TJyqfccQHrJRmvEUIOW3ndAtfSAOzGXUhg3KEbs23D6yNdxNKk7A4mbnIcOUQIR9hHRew+skqY3cz0qsPkSJHA7xMJOHonSGImL6Ge1hyc9lbJm68SAkcIxwHHccB+2goR4Wyoi6hbetltTA8yC/8w745LOU+qf+6NNRmeNguxOTDt5Rt8bxMCTxCyDs9GiDIC9I50kq704+g10p2AcMZ6VvpXRICrI53kGTP3az4RvkEAjnB8OnX2QkSE7hYFXtZ+0SffUi4ICOyrVkW+sGHmsTeegwDXFQGOGhXLjpPh+rU1hbUth9W0EQI2Q5QR4cJIF2G9ctaRfzNBABbTDSdYg2zDKJhY/jTSSVgfV/RofHHuJkE8RDiOOQM4jrcVIgL0tMhwVu8rZoW3s5JvHjlazgkZnss3J7I5LybCVQJ4RDvnZeRhQxJZ2eolT3cO1PvVt7tELM2BYW+E2/o2ID6RTB0rXY11rU/iBmHo8SnaMKV2aCoulrpvTNwApKlWhQe7IeoJwxTA9Ent57AiYlm4O8kp0bVrFPGwKgpC1D5Pnfd0k5hKpflyziuMsgCqSayAWKZCIT+lyiGOCYOVrCGI5sVSSBhlAcwk0WGxrIQXYWFmBoAlKmvesz6JxYRhCUB2EafFMjs5CdGV5VTppuRhYRKBEAUALmhXGEV7qdQLikpE70KVEMvcvUmILOdAVNe9xZJooJx5/rUWGY6b+VMCpgBWQiyxSARmxseSGwXpTQPDc6K+WAjhFF4U+sfOCN8xmjhDKxGjF3NaLEvz8/DwwYxJiDpJ5ITBLXNSx60BkjD6zJYCdFos7L3le6Hb6qcdNiTRUDmvJ5Hnhb7J3trMl70rCtBJsczcmYDIo0fr+36ll7MiiOLQ1I98AbPQtOeVNQdqL+SUWOLRqJpCdQcmvXmqhVgkiZwoXmxZrj9eTtnaAtBJsYz8/W/JFUk+iPotjiKIUv/sz7aYFoZlfWCh6DshltnJu7C0sJBqrPMkMQei4JEG56NNHVCGMBwB6IRYVpbCMD02plmdFC5nXqzqC7/eWrYwHAVop1hWl5bg/tho8nkySzw9iLwiVXuGFl9vtUQYjgO0SyxZAAtAFD2eiyvcw+Mw8FHTfV4xU1tm4UI3snorjC3ppkZH1A9yZo7sJCqix9sfeaPNUmE4nsD0Da0Wiy5ATRKrqr2DMc9yh53JSz+bIwm0WiwbSlgTDUGS+uQrB2wRRsUSqL2xFVtheQAqUo13KP6r/bYJwxUArRDLSjgM0+NjWc8jStLFRF3cVmG4AqAVKxbWwrAUpg5FlKT+xJUDtgvDVQDLEUvor7cyzyJVewfjNRFHhOEqgGbFoi1fQRL75CuPOyYMVwIsdcVyf3QUVh8tKVK1dyj+a2eF4VqARsWiyDJMvP8e+yO1FRGGawEaFcvs3btKZGW5YsJwPcBCYlleXISHcw8G49WVE4brARYSy8KDmb6FS80VFcb/DUCtWBCAzE9PDS3227clVWzHpdD/O7oWLmWgabHIiTVpfPpfp53YGChlfOnX/g+VBrC66z3ikwAAAABJRU5ErkJggg==" />
-          <saveAsOwnFile>false</saveAsOwnFile>
-          <allowRename>true</allowRename>
-          <nameMustBeUnique>true</nameMustBeUnique>
-          <allowAbstract>false</allowAbstract>
-          <allowStatic>false</allowStatic>
-          <allowGenericTypes>false</allowGenericTypes>
-          <allowMapping>false</allowMapping>
-          <allowSorting>true</allowSorting>
-          <sortChildren>manually</sortChildren>
-          <allowFindInView>false</allowFindInView>
-          <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>true</allowSetValue>
-          <typeOrder>
-            <type order="0" type="[Component]" typeId="b407aace-ad14-484e-ac93-4762a3d182d8" />
-          </typeOrder>
-          <creationOptions />
-          <scriptOptions>
-            <option>
-              <text>Add Component</text>
-              <shortcut>ctrl + shift + a</shortcut>
-              <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGx1cyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfUGx1c194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NpcmNsZV94M0VfXzAwMDAwMTYxNjEyMDcyMDczMjQ2MjA5NTEwMDAwMDA4NjY5NjY2NzcxODg1MzA5ODc5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzQ5MyIgeDI9IjI1LjIiIHkyPSIyLjUxMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV94M0VfIiBmaWxsPSJ1cmwoI194M0NfQ2lyY2xlX3gzRV9fMDAwMDAxNjE2MTIwNzIwNzMyNDYyMDk1MTAwMDAwMDg2Njk2NjY3NzE4ODUzMDk4NzlfKSIgZD0iTTI1LjIsMi4zDQoJCWMtMTIuNCwwLTIyLjUsMTAtMjIuNSwyMi41YzAsMTIuNCwxMC4xLDIyLjUsMjIuNSwyMi41czIyLjUtMTAuMSwyMi41LTIyLjVDNDcuNywxMi4zLDM3LjYsMi4zLDI1LjIsMi4zeiBNMjUuMiw0My44DQoJCWMtMTAuNSwwLTE5LTguNS0xOS0xOXM4LjUtMTksMTktMTlzMTksOC41LDE5LDE5QzQ0LjIsMzUuMiwzNS43LDQzLjgsMjUuMiw0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzIxMSIgeDI9IjI1LjIiIHkyPSIyLjQ4MDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19QbHVzX3gzRV9fMDAwMDAwODE2MzE4NjY4NDEyOTcxNDM5MDAwMDAwMDczMTUyNDQ3Mzk2MDkwODMyNjlfIiBmaWxsPSJ1cmwoI194M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXykiIGQ9Ig0KCQlNMzAuNCwxMi42SDIwdjYuOWgtNi45djEwLjRIMjB2Ni45aDEwLjR2LTYuOWg2LjlWMTkuNmgtNi45VjEyLjZ6IE0zMy44LDIzdjMuNWgtNi45djYuOWgtMy41di02LjloLTYuOVYyM2g2Ljl2LTYuOWgzLjVWMjNIMzMuOHoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
-              <script>const componentStereotypeId = "b407aace-ad14-484e-ac93-4762a3d182d8";
-const displayComponentTypeId = "866a90f7-4044-43b9-bb05-7270c7889796";
-
-let options = lookupTypesOf("Element Settings")
-            .filter(x =&gt; x.hasStereotype(componentStereotypeId))
-            .map(x =&gt; ( {id: x.id, description: x.getDisplay(), type: "core" }))
-            .concat(lookupTypesOf("Component")
-                .filter(x =&gt; x.id != element.getParent().id)
-                .map(x =&gt; ( {id: x.id, description: x.getDisplay(), type: "custom" })))
-            .sort((x, y) =&gt; x.description.localeCompare(y.description))
-
-let result = await dialogService.openForm({
-    title: "Add Component",
-    fields: [{
-        id: "component-type",
-        fieldType: "select",
-        label: "Component Type",
-        selectOptions: options,
-        placeholder: "Search components"
-    }]
-})
-
-let selected = options.filter(x =&gt; x.id == result["component-type"])[0];
-if (!selected) {
-    console.warn("Option not selected");
-}
-if (selected.type == "core") {
-    let componentType = lookup(selected.id);
-    let component = createElement(componentType.id, componentType.getName(), element.id);
-    component.enableEditing();
-} else if (selected.type == "custom") {
-    let component = createElement(displayComponentTypeId, selected.description, element.id);
-    component.typeReference.setType(selected.id);
-    component.enableEditing();
-}
-</script>
-            </option>
-          </scriptOptions>
-          <mappingOptions />
-          <mappingSettings />
-          <macros>
-            <macro trigger="on-created">
-              <script>const iconId = "3c5f8ea8-061a-4e71-826f-59f9281abe71";
-createElement(iconId, "Logo", element.id)</script>
-            </macro>
-          </macros>
-          <childElementSettings />
-        </childElementSetting>
-        <childElementSetting type="Navigation Item" typeId="adbf2fa8-6833-4c24-960a-31d8a41fd1ed">
+        <childElementSetting type="Menu Item" typeId="adbf2fa8-6833-4c24-960a-31d8a41fd1ed">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8yNWRjZDhmNi1lYWQ1LTQ2NzQtODgwZC1lNjVjNTM1MjM1YWIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSIzNy41NSIgeDI9IjI1IiB5Mj0iMTQuNDUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM3Nzk3QzkiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMjY2NkM5Ii8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXzI1ZGNkOGY2LWVhZDUtNDY3NC04ODBkLWU2NWM1MzUyMzVhYikiIGQ9Ik00Ni42LDE3djYuNmgtMy40di01LjJjMC0wLjktMC43LTEuNi0xLjYtMS42aC0zM2MtMC45LDAtMS43LDAuOC0xLjcsMS43djEzLjINCgljMCwwLjgsMC43LDEuNSwxLjUsMS41aDE3LjV2My4zaC0xOWMtMS45LDAtMy41LTEuNi0zLjUtMy41VjE3YzAtMS45LDEuNi0zLjUsMy41LTMuNWgzNi4yQzQ1LDEzLjUsNDYuNiwxNS4xLDQ2LjYsMTd6Ii8+DQo8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMTU5NDQ2NTA3MzA1NTIwOTExNjUwMDAwMDE2MzAzNDQ4MDIyNzg5ODQ2NDUxXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIzNy4xIiB5MT0iMjguMDA3NyIgeDI9IjM3LjEiIHkyPSI0Ljk5OTIiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM3Nzk3QzkiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMjY2NkM5Ii8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBvbHlnb24gZmlsbD0idXJsKCNTVkdJRF8wMDAwMDE1OTQ0NjUwNzMwNTUyMDkxMTY1MDAwMDAxNjMwMzQ0ODAyMjc4OTg0NjQ1MV8pIiBwb2ludHM9IjQ2LjEsMzkuMyA0MS45LDQzLjUgMzQuMSwzNS43IDI4LjEsNDEuNiANCgkyOC4xLDI1LjYgNDQuMiwyNS42IDM4LjIsMzEuNyAiLz4NCjwvc3ZnPg0K" />
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
@@ -424,15 +343,15 @@ createElement(iconId, "Logo", element.id)</script>
           <allowSetValue>true</allowSetValue>
           <typeOrder>
             <type order="0" type="[Component]" typeId="b407aace-ad14-484e-ac93-4762a3d182d8" />
-            <type order="1" type="Navigation Item" typeId="adbf2fa8-6833-4c24-960a-31d8a41fd1ed" />
+            <type order="1" type="Menu Item" typeId="adbf2fa8-6833-4c24-960a-31d8a41fd1ed" />
           </typeOrder>
           <creationOptions>
             <option type="element">
               <text>Add Navigation Item</text>
               <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8yNWRjZDhmNi1lYWQ1LTQ2NzQtODgwZC1lNjVjNTM1MjM1YWIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSIzNy41NSIgeDI9IjI1IiB5Mj0iMTQuNDUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM3Nzk3QzkiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMjY2NkM5Ii8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXzI1ZGNkOGY2LWVhZDUtNDY3NC04ODBkLWU2NWM1MzUyMzVhYikiIGQ9Ik00Ni42LDE3djYuNmgtMy40di01LjJjMC0wLjktMC43LTEuNi0xLjYtMS42aC0zM2MtMC45LDAtMS43LDAuOC0xLjcsMS43djEzLjINCgljMCwwLjgsMC43LDEuNSwxLjUsMS41aDE3LjV2My4zaC0xOWMtMS45LDAtMy41LTEuNi0zLjUtMy41VjE3YzAtMS45LDEuNi0zLjUsMy41LTMuNWgzNi4yQzQ1LDEzLjUsNDYuNiwxNS4xLDQ2LjYsMTd6Ii8+DQo8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMTU5NDQ2NTA3MzA1NTIwOTExNjUwMDAwMDE2MzAzNDQ4MDIyNzg5ODQ2NDUxXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIzNy4xIiB5MT0iMjguMDA3NyIgeDI9IjM3LjEiIHkyPSI0Ljk5OTIiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM3Nzk3QzkiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMjY2NkM5Ii8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBvbHlnb24gZmlsbD0idXJsKCNTVkdJRF8wMDAwMDE1OTQ0NjUwNzMwNTUyMDkxMTY1MDAwMDAxNjMwMzQ0ODAyMjc4OTg0NjQ1MV8pIiBwb2ludHM9IjQ2LjEsMzkuMyA0MS45LDQzLjUgMzQuMSwzNS43IDI4LjEsNDEuNiANCgkyOC4xLDI1LjYgNDQuMiwyNS42IDM4LjIsMzEuNyAiLz4NCjwvc3ZnPg0K" />
-              <specializationType>Navigation Item</specializationType>
+              <specializationType>Menu Item</specializationType>
               <specializationTypeId>adbf2fa8-6833-4c24-960a-31d8a41fd1ed</specializationTypeId>
-              <defaultName>NewNavigationItem</defaultName>
+              <defaultName>NewMenuItem</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
@@ -791,7 +710,7 @@ if (selected.type == "core") {
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="3ea6d69d-96db-465a-b1eb-b381f52aefc0" name="Navigation Item" type="Navigation Item" typeId="adbf2fa8-6833-4c24-960a-31d8a41fd1ed" version="2.0.0">
+            <childSetting id="3ea6d69d-96db-465a-b1eb-b381f52aefc0" name="Navigation Item" type="Menu Item" typeId="adbf2fa8-6833-4c24-960a-31d8a41fd1ed" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>

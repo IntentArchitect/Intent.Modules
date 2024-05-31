@@ -37,14 +37,9 @@ namespace Intent.Modelers.UI.Core.Api
 
         public IElement InternalElement => _element;
 
-        public NavigationBrandLogoModel BrandLogo => _element.ChildElements
-            .GetElementsOfType(NavigationBrandLogoModel.SpecializationTypeId)
-            .Select(x => new NavigationBrandLogoModel(x))
-            .SingleOrDefault();
-
-        public IList<NavigationItemModel> NavigationItems => _element.ChildElements
-            .GetElementsOfType(NavigationItemModel.SpecializationTypeId)
-            .Select(x => new NavigationItemModel(x))
+        public IList<MenuItemModel> MenuItems => _element.ChildElements
+            .GetElementsOfType(MenuItemModel.SpecializationTypeId)
+            .Select(x => new MenuItemModel(x))
             .ToList();
 
         public override string ToString()

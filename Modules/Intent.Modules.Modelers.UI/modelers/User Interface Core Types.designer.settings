@@ -103,29 +103,34 @@ return hasStereotype(pageStereotypeId)</isOptionVisibleFunction>
         <size width="${w}" height="${h}" />
         <position x="${x}" y="${y}" />
         <display>
-          <drawPath>
-            <path>`M${x + 15},${y} h${w - 30} a15,15 0 0 1 15,15 v${h - 30} a15,15 0 0 1 -15,15 h-${w - 30} a15,15 0 0 1 -15,-15 v-${h - 30} a15,15 0 0 1 15,-15 z`</path>
-            <lineColor>#0077b6</lineColor>
-            <fillColor>black</fillColor>
-          </drawPath>
           <drawText>
-            <style>return `font-size: 12px; font-family: Helvetica; font-weight: bold; text-align: center; white-space: inherit;`</style>
+            <text>return getName();</text>
+            <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
             <size width="${w}" height="18" />
-            <position x="${x}" y="${y + 8}" />
+            <position x="${x}" y="${y + 48}" />
           </drawText>
+          <drawSvgResource>
+            <path>component.svg</path>
+            <size width="${w}" height="40" />
+            <position x="${x}" y="${y + 6}" />
+          </drawSvgResource>
         </display>
+        <stereotypesVisualSettings>
+          <size width="${w}" height="18" />
+          <position x="${x}" y="${y}" />
+        </stereotypesVisualSettings>
         <defaultSize width="${x}" height="${y}" />
         <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
         <childElementVisualSettings>
           <childElementVisualSetting type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe">
             <size width="`${parent.w}`" height="18" />
-            <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 36}`" />
+            <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 66}`" />
             <display>
-              <drawPath>
-                <condition>return $firstOfType;</condition>
-                <path>`M${x},${y - 6} h${w}`</path>
-                <lineColor>#0077b6</lineColor>
-              </drawPath>
               <drawText>
                 <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
                 <size width="${w - 26}" height="${h}" />
@@ -141,35 +146,11 @@ return hasStereotype(pageStereotypeId)</isOptionVisibleFunction>
             <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings />
           </childElementVisualSetting>
-          <childElementVisualSetting type="Event Emitter" typeId="d6739ffc-30e6-4170-a105-bf28e69aa578">
-            <size width="`${parent.w}`" height="18" />
-            <position x="`${parent.x}`" y="return `${parent.y + (parent.elements['Component Model'].any() ? 12 : 0) + (parent.elements['Component Model'].size.height) + ($index * 18) + 36}`" />
-            <display>
-              <drawPath>
-                <condition>return $firstOfType;</condition>
-                <path>`M${x},${y - 6} h${w}`</path>
-                <lineColor>#0077b6</lineColor>
-              </drawPath>
-              <drawText>
-                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
-                <size width="${w}" height="${h}" />
-                <position x="${x}" y="${y}" />
-              </drawText>
-            </display>
-            <defaultSize width="`${parent.w}`" height="18" />
-            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
-            <childElementVisualSettings />
-          </childElementVisualSetting>
           <childElementVisualSetting type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
             <size width="`${parent.w}`" height="18" />
-            <position x="`${parent.x}`" y="${parent.y + (parent.elements['Property'].any() ? 12 : 0) + (parent.elements['Property'].size.height) + ($index * 18) + 36}" />
+            <position x="`${parent.x}`" y="`${parent.y + (parent.elements['Property'].size.height) + ($index * 20) + 66}`" />
             <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
             <display>
-              <drawPath>
-                <condition>return $firstOfType;</condition>
-                <path>`M${x},${y - 6} h${w}`</path>
-                <lineColor>#0077b6</lineColor>
-              </drawPath>
               <drawText>
                 <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
                 <size width="${w - 26}" height="${h}" />
@@ -769,7 +750,7 @@ return validateOperationParameter(lookup(id));
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
-          <sortChildren>by-type-then-by-name</sortChildren>
+          <sortChildren>manually</sortChildren>
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
@@ -834,7 +815,7 @@ if (selected.type == "core") {
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
-          <sortChildren>by-type-then-by-name</sortChildren>
+          <sortChildren>manually</sortChildren>
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
@@ -897,7 +878,7 @@ if (selected.type == "core") {
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
-          <sortChildren>by-type-then-by-name</sortChildren>
+          <sortChildren>manually</sortChildren>
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
@@ -960,7 +941,7 @@ if (selected.type == "core") {
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
-          <sortChildren>by-type-then-by-name</sortChildren>
+          <sortChildren>manually</sortChildren>
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
@@ -1278,6 +1259,9 @@ return display;
         <lineType>Curved</lineType>
         <lineColor>#ade8f4</lineColor>
         <sourceEnd>
+          <pointIndicator>
+            <path>return `a 4,4 0 1,0 4,4         a 4,4 0 1,0 -4,4`;</path>
+          </pointIndicator>
           <navigableIndicator>
             <lineColor>#ade8f4</lineColor>
             <path>`l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
@@ -1586,7 +1570,6 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
     </mappingSetting>
     <mappingSetting type="View Binding" typeId="c33f86ad-423a-4a6f-a80c-a3206eafe5cd">
       <title>View Binding</title>
-      <isRequiredFunction>return true;</isRequiredFunction>
       <targetRootElementFunction>return element.getChildren("Component View")[0]?.id ?? element.id;</targetRootElementFunction>
       <sourceMappings>
         <importSettings id="2d30eb9d-daa0-45d7-a596-32c57d61c6bd" name="Component Code Mappables" />

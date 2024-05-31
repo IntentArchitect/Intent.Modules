@@ -70,49 +70,9 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="eb21fa09-9807-492d-ab31-732832e6af7e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Brand Logo</name>
-          <display>Add Brand Logo: Navigation Brand Logo</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="e9c3d3fb-8804-4013-9d05-1eb547b1928f">
-            <typeId>11785c84-a457-497c-9c7a-79c43772aa70</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
-            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>8ad84db9-5ea6-410b-97df-a39b6c73f293</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Brand" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
         <childElement id="5ceb77e2-960a-463b-94aa-799dcc6ef64d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Navigation Item</name>
-          <display>Add Navigation Item: Navigation Item</display>
+          <name>Add Menu Item</name>
+          <display>Add Menu Item: Menu Item</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="eb6fea5b-52eb-45b3-9f06-3cb7f692d531">

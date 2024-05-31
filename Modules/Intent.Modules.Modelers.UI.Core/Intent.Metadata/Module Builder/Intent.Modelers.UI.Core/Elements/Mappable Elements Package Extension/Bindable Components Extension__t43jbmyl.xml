@@ -437,7 +437,7 @@
       <childElements>
         <childElement id="3ea6d69d-96db-465a-b1eb-b381f52aefc0" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Navigation Item</name>
-          <display>Navigation Item: Navigation Item</display>
+          <display>Navigation Item: Menu Item</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-manually</sort-children>
           <genericTypes />

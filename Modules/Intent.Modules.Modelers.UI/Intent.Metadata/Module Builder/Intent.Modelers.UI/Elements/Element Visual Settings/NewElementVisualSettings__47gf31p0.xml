@@ -4,7 +4,7 @@
   <display>[visual]: Property</display>
   <isAbstract>false</isAbstract>
   <sort-children>manually</sort-children>
-  <order>2</order>
+  <order>3</order>
   <genericTypes />
   <typeReference id="248241da-3120-4342-aefa-085b9d36e13e">
     <typeId>356fbe17-bc63-4e16-b915-feefbc063cbe</typeId>
@@ -28,7 +28,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="`${parent.x}`" isActive="true" />
-        <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="`${parent.y + ($index * 18) + 36}`" isActive="true" />
+        <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="`${parent.y + ($index * 20) + 66}`" isActive="true" />
         <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="`${parent.w}`" isActive="true" />
         <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
       </properties>
@@ -45,33 +45,6 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="2af7cc8e-4d25-4985-991a-3abe107b245f" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
-      <name>Separator</name>
-      <display>[draw path]: Separator</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>a5675c3d-2a38-4c09-9e8c-c03ffbca4882</parentFolderId>
-      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-      <packageName>Intent.Modelers.UI</packageName>
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="a82e406f-efc6-4d9c-86ea-6c28d9509da4" name="Path Settings">
-          <addedByDefault>true</addedByDefault>
-          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-          <properties>
-            <property name="27138300-900e-4a82-ad06-8abcedf0864a" display="Path" value="`M${x},${y - 6} h${w}`" isActive="true" />
-            <property name="8996260d-790c-4e7b-8607-65fa2dd4ac24" display="Condition" value="return $firstOfType;" isActive="true" />
-            <property name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" value="#0077b6" isActive="true" />
-            <property name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" isActive="true" />
-            <property name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" isActive="true" />
-            <property name="4fb316a4-ebee-45c1-96e0-636698f52976" display="Fill Color" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <metadata />
-      <childElements />
-    </childElement>
     <childElement id="2a20201a-ad9b-4592-a646-3c2eeed101f7" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
       <name>Text</name>
       <display>[draw text]: Text</display>
