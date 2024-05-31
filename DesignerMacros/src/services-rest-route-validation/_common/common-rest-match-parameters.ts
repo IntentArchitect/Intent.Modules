@@ -27,12 +27,12 @@ function matchParameters(element: MacroApi.Context.IElementApi, routeToCheck: st
     }
 
     // Normalize route parameters by trimming braces and converting to lower case for case-insensitive comparison
-    let normalizedRouteParameters = routeParameters.map(param => param.replace(/[{}]/g, "").toLowerCase());
+    let normalizedRouteParameters = routeParameters.map(param => param.replace(/[{}\*]/g, "").toLowerCase());
 
     console.log(`Normalized route parameters found: ${normalizedRouteParameters.join(", ")}`);
 
     // Collect all names of properties/parameters for the element and convert them to lower case
-    let elementNames = elementChildren.map(child => child.getName().toLowerCase());
+    let elementNames = elementChildren.map(child => child.getName().replace(/[\*]/g, "").toLowerCase());
 
     console.log(`Element properties/parameters names found: ${elementNames.join(", ")}`);
 
