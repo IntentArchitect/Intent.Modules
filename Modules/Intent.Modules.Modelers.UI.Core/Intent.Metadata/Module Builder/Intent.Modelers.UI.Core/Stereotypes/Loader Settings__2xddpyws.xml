@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="d3ac312a-62f0-4150-8e0d-e38dfc411997" version="3.1.0">
+  <name>Loader Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="624513a6-cba8-4dde-8ebe-6b19f00f0364">Component View</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="data:image/png;base64,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" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction>[Loader Indicator]</displayFunction>
+  <displayAsAnnotation>true</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>a2a95421-3e55-43c7-96ad-355610b43c4d</parentFolderId>
+  <order>0</order>
+  <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+  <packageName>Intent.Modelers.UI.Core</packageName>
+  <onAppliedScript>const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
+
+const component = element.getParent();
+if (component.getChildren().every(x =&gt; x.getName() != "IsLoading")) {
+    const isLoadingProperty = createElement("Property", "IsLoading", component.id);
+    isLoadingProperty.typeReference.setType("e6f92b09-b2c5-4536-8270-a4d9e5bbd930"); // bool
+    component.getAdvancedMapping().addMappedEnd(dataBindingMappingTypeId, [component.id, isLoadingProperty.id], [element.id, "2cfd43b2-2a18-4ac0-8cf3-d1aec9d7e699"]);
+}
+
+if (component.getChildren().every(x =&gt; x.getName() != "ErrorMessage")) {
+    const errorMessageProperty = createElement("Property", "ErrorMessage", component.id);
+    errorMessageProperty.typeReference.setIsNullable(true);
+    component.getAdvancedMapping().addMappedEnd(dataBindingMappingTypeId, [component.id, errorMessageProperty.id], [element.id, "2e482e27-b176-43cf-b80a-33123036142a"]);
+}
+</onAppliedScript>
+  <properties>
+    <property id="6b92bbac-143b-4faa-96bd-ab668bbbb920">
+      <name>Loading Indicator</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="3bd43210-4f4d-4da5-9327-c8c08fa21965">
+      <name>Error Message</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

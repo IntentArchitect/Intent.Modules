@@ -1470,9 +1470,8 @@ return hostElement.typeReference.getType()?.typeReference.getType()?.id;</source
     ? pluralize(element.typeReference.getType().getName().replace("Dto", "")) 
     : element.typeReference.getType().getName().replace("Dto", "")
 const property = createElement("Property", propertName, mapping.getTargetElement().id)
-property.typeReference.setType(element.typeReference.getTypeId());
-property.typeReference.setIsNullable(element.typeReference.getIsNullable());
-property.typeReference.setIsCollection(element.typeReference.getIsCollection());
+property.typeReference.setType(element.typeReference.toModel());
+property.typeReference.setIsNullable(true);
 
 const dataBindingMappingTypeId = "bbac21bb-9fdf-489e-8473-84be9cacc64d";
 mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), property.getMappingPath());
@@ -1600,69 +1599,6 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
       </sourceMappings>
       <targetMappings>
         <importSettings id="ddf81941-f0b0-4ab0-a8d6-42ddc9e5da99" name="Bindable Components" />
-        <mapping id="7df7efbd-a074-4f54-8b05-95e2e6b3f27d" name="View" type="Component View" typeId="624513a6-cba8-4dde-8ebe-6b19f00f0364" version="2.0.0">
-          <filterFunction>return mappingContext.targetElementId == element.getParent().id;</filterFunction>
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>true</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="9590c94b-71dd-4d0d-86b1-298d0b09b2c6" name="Display Component" type="Display Component" typeId="866a90f7-4044-43b9-bb05-7270c7889796" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>5f53a678-36da-46f0-9680-8fb295da6ddb</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="00879a06-d797-4b82-83aa-b78fb4f77624" name="Layout" type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="5ebb5c51-f6ee-4fce-ba44-54e5d8ca70c0" name="Layout Header" type="Layout Header" typeId="a6c3a89e-5932-4ab6-a406-75444f05beee" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-            <childSetting id="bfc2fdb2-0b31-4b56-9f61-424b5f9a24a5" name="Layout Sider" type="Layout Sider" typeId="c505f35f-7148-46a3-a812-d9f53a174490" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-            <childSetting id="121df094-7cbe-4f27-ad88-933234604d62" name="Layout Body" type="Layout Body" typeId="11636699-8bad-4693-8c15-8141bd66d04f" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-            <childSetting id="7942c418-e228-4509-b7e5-c30b3985113a" name="Layout Footer" type="Layout Footer" typeId="5d4fe8e9-2ccf-42ea-af60-04c6970c9ecb" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-          </childSettings>
-        </mapping>
       </targetMappings>
       <mappingTypes>
         <mappingType type="Data Mapping" typeId="ee19a932-0cea-4b90-bd3c-857d7942d390">
@@ -1707,6 +1643,48 @@ return element.hasStereotype(bindableId);</isMappableFunction>
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
         </mappableElement>
+        <mappableElement id="00879a06-d797-4b82-83aa-b78fb4f77624" name="Layout" type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="5ebb5c51-f6ee-4fce-ba44-54e5d8ca70c0" name="Layout Header" type="Layout Header" typeId="a6c3a89e-5932-4ab6-a406-75444f05beee" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="bfc2fdb2-0b31-4b56-9f61-424b5f9a24a5" name="Layout Sider" type="Layout Sider" typeId="c505f35f-7148-46a3-a812-d9f53a174490" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="121df094-7cbe-4f27-ad88-933234604d62" name="Layout Body" type="Layout Body" typeId="11636699-8bad-4693-8c15-8141bd66d04f" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="7942c418-e228-4509-b7e5-c30b3985113a" name="Layout Footer" type="Layout Footer" typeId="5d4fe8e9-2ccf-42ea-af60-04c6970c9ecb" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
         <mappableElement id="8e7e9ba1-c3f9-494a-ae5d-6628774c01a1" name="Model Definition" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" version="2.0.0">
           <filterFunction>return false;</filterFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -1734,6 +1712,27 @@ return element.hasStereotype(bindableId) || element.hasStereotype(routeParameter
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
+        </mappableElement>
+        <mappableElement id="7df7efbd-a074-4f54-8b05-95e2e6b3f27d" name="View" type="Component View" typeId="624513a6-cba8-4dde-8ebe-6b19f00f0364" version="2.0.0">
+          <filterFunction>return mappingContext.targetElementId == element.getParent().id;</filterFunction>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="9590c94b-71dd-4d0d-86b1-298d0b09b2c6" name="Display Component" type="Display Component" typeId="866a90f7-4044-43b9-bb05-7270c7889796" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>5f53a678-36da-46f0-9680-8fb295da6ddb</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
         </mappableElement>
       </mappableElementSettings>
     </mappableElementPackage>
