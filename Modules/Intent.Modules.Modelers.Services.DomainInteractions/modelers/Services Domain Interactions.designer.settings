@@ -14788,7 +14788,7 @@ convertToAdvancedMapping.execute();
       <creationOptions />
       <scriptOptions>
         <option>
-          <text>Create Proxy CQRS Operations</text>
+          <text>Create CQRS Operations</text>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAABkFJREFUeF7tm2tsFFUUx8+Z2S2F7bYpIo9WI4rbBYQGaKW8BAkQCH18I1CrkmhCQgyYaOIj8QMPHx8wURM1+klJjN2SGCnpEwrF8BDogiGm0C0SIfFRoxEpLXRp515zWzeU9U53uudud9A7H7v3f/acX//3njMzWQSb65XGos/Hm2c3232u6u/9LP/q2+t+nq4q3ljHQQ2QhlwDpPEDDVADJBIgyrUDNUAiAaJcO1ADJBIgyrUDNUAiAaJcO1ADJBIgyrUDNUAiAaJcO1ADJBIgyrUDNUAiAaJcO1ADJBIgyrUDNUAiAaJcO1ADJBIgyrUDUwVwa+OzheMMNjdRfMsyzR6o2Bu/bpxx4a1MjFxMpOeG948P1nzWnGidWz+3daDThJ9sbfVM683rj1/POVsZKp911Gmce3WdBkj8z2mAGiCRAFGuHagBEgkQ5dqBGiCRAFGuHagBEgkQ5dqBGiCRAFGuHagBEgkQ5dqBGiCRAFFOdmBVw6XZjLH2f+eB26tLAx8CIifm6Go5CeDTtR1By8TvAGC8pErOEV4OlQbfczUBYnJJA6zaf3Eu85jfAPBc2xw4MAB4o7o8+A4xT9fKkwIo4FkePIqAEx1UZnHOd4TKZ77pYO09t2TUACtrOwrBxGMAkD2Kai1gsKu6IrhrFJqkl25ren6hH5u+SjrAKISjAijgcQPaEDFD9h1df/bDlFwvoCyq2M4Gvla9PvBuqhvL9iObV+UO7G0ZBYeklzoG+FR95zzG+TkE+S88f/o9Cse+74FH8zKhKOgDQx6ZIze3F5TN+HgHojgfU3K5DuDGpksLcICFE8GL0QjkZ8KCwAQwbCgCgxeC5QWfpAqiqwA6dV68lR6emgEls/zy7QwAyM1tX5bN+CgV29k1ADceiDyOCMcRQXrm/fhrFE539AC3GZUfmpIBSx7z221TDoivVpcW7FG9j10BsKrhwiLOzIMcQErg8i99EO7sBZbgJBsRIgfGEXeEygp2q4SYdoACHmNmEwDkyAoT8M523gSLObtLG9mJaHHE3aHSwE5VENMKsKrh0iJmsUOAkCUrSGzbM5GehM6L1yaECLBTlRPTBnDT/vYS9HjEkOyVwbv6WxS+vWB/5iVykIC4eLZNYxm87eOvV5cF91AbS1oAVh6ILAMDBDzpdaVrCB71euB+0ViywJSPOByAvwQMw5TvycpoKsozXnyfEsOpdnDcrWroWMoYHk81vFj8BycLJ9pCdJq77boMvALTvWvJcZwEwE11PyxBsE7YLRZn3qmLdOfFxxdOXDbHfk50krzdmjEFWFkXaQSAdbJkGOPQeOY6dN+0KPXYatcU58CkbI/y2GMK8Jnm8z6rP7OWA6ySVRLtZ9Bytls5xFXzs2FyrrRXkYGOKUCR7XO1Hf4+E7+2g9h3m8Hhc+ogrpyXDVMnpgaeqGfMAYovFU4cuD2uHhBX2Dmxue069PYl/xBFPOZaUZgN0+6Tw+MAUc6hpKY8eJ5iw7SMMSLhLZ+GvTfy/EcAYZmsgP4BcSb+lRREMbYsnZMF+ZOkt9UAHLoZeJfXlD9CgifyThvAGLTKuojoyktkEC1rqLHcuOW8sXhMHBxbROeVX/waY+bqmorAOYrzYtq0AxSJqIIonCcGZ1t4wnncWKkKnisceMeJnScB+GI7J9afHnk7izPvibl+2207dOZ5S1Rs2+E5usKBg2diOOzt7vK3IsDSZM7E5YUjwuOcw3xqw5Dl5RqAIrkN+9qzPD5vHXAu7c5ixGlquw63ond350TwwDCKQusD4qW88stVAIcghnNMn78eudyJN6MMDobvQEwnPFedgcOtsaG1Pcvs9bQgQInMMsKBAmJxgQ/ybbqtqjkvkWVd58BYwuJMvNHlF09tFkobC+N2j6mUznn3LMBY4pvqIqfsnCgvDq8xxtfWVATbEhWv4vNth7fM8A2cVPaKYKScHL9Yjw9SWRc5befEu9amYM5TAVlVjKQB/jNsiyfHRSMkE2UpmPNUFa8iDgnghn3tGR6f5wRwKI5PRjyb9zCj+AtFt2cqik1FDBJAkVBFbYd/gomHhp+JAh4gXxgqnUl6t5GKglXHJAMcnBMPXc4xowPNAuL/CZ6oXQnAmBN9JraYzNj6X9+2w138N01uwigUVY8oAAAAAElFTkSuQmCC" />
           <isOptionVisibleFunction>return application.isModuleInstalled("Intent.Modelers.Services.CQRS");</isOptionVisibleFunction>
           <script>/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
@@ -14891,83 +14891,6 @@ class ServicesHelper {
         }
     }
 }
-class ElementManager {
-    constructor(command, settings) {
-        this.command = command;
-        this.settings = settings;
-        this.mappedElement = command.getMapping()?.getElement();
-    }
-    get id() { return this.command.id; }
-    ;
-    setReturnType(typeId, isCollection, isNullable) {
-        this.command.typeReference.setType(typeId);
-        if (isCollection != null) {
-            this.command.typeReference.setIsCollection(isCollection);
-        }
-        if (isNullable != null) {
-            this.command.typeReference.setIsNullable(isNullable);
-        }
-        return this;
-    }
-    addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.command.id);
-        const typeReferenceDetails = type == null
-            ? null
-            : typeof (type) === "string"
-                ? { id: type, isNullable: false, isCollection: false }
-                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
-        if (typeReferenceDetails != null) {
-            field.typeReference.setType(typeReferenceDetails.id);
-            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
-            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
-        }
-        return field;
-    }
-    addChildrenFrom(elements, options) {
-        let order = 0;
-        elements.forEach(e =&gt; {
-            if (e.mapPath != null) {
-                if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getMapping()?.getElement()?.id == e.id)) {
-                    return;
-                }
-            }
-            else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
-                return;
-            }
-            let field = this.addChild(e.name, e.typeId);
-            field.typeReference.setIsCollection(e.isCollection);
-            field.typeReference.setIsNullable(e.isNullable);
-            if (options?.addToTop) {
-                field.setOrder(order++);
-            }
-            if (this.mappedElement != null &amp;&amp; e.mapPath) {
-                field.setMapping(e.mapPath);
-            }
-        });
-        return this;
-    }
-    mapToElement(param1, mappingSettingsId) {
-        let elementIds;
-        let element;
-        if (Array.isArray(param1)) {
-            elementIds = param1;
-            element = lookup(elementIds[elementIds.length - 1]);
-        }
-        else {
-            elementIds = [param1.id];
-            element = param1;
-        }
-        this.mappedElement = element;
-        this.command.setMapping(elementIds, mappingSettingsId);
-        return this;
-    }
-    getElement() {
-        return this.command;
-    }
-    collapse() {
-        this.command.collapse();
-    }
-}
 /**
  * Helper class to build up source and target mapping paths for
  * advanced mapping scenarios.
@@ -15056,47 +14979,86 @@ class MappingStore {
         });
     }
 }
-/// &lt;reference path="../../common/servicesHelper.ts" /&gt;
-/// &lt;reference path="../../common/mappingStore.ts" /&gt;
-function createCqrsCallOperationAction(operation, folder) {
-    let operationName = operation.getName();
-    operationName = removeSuffix(removeSuffix(removeSuffix(operationName, "Async"), "Command"), "Query");
-    operationName = toPascalCase(operationName);
-    let metadata = getProxyOperationMetadata(operation);
-    let actionTypeName;
-    switch (metadata.crudType) {
-        default:
-            actionTypeName = "Command";
-            break;
-        case CrudType.Read:
-            actionTypeName = "Query";
-            break;
+class ElementManager {
+    constructor(innerElement, settings) {
+        this.innerElement = innerElement;
+        this.settings = settings;
+        this.mappedElement = innerElement.getMapping()?.getElement();
     }
-    const actionName = `${operationName}${actionTypeName}`;
-    const existing = folder.getChildren().find(x =&gt; x.getName() == actionName || x.getMapping()?.getElement()?.id === operation.id);
-    if (existing) {
-        return existing;
+    get id() { return this.innerElement.id; }
+    ;
+    setReturnType(typeId, isCollection, isNullable) {
+        this.innerElement.typeReference.setType(typeId);
+        if (isCollection != null) {
+            this.innerElement.typeReference.setIsCollection(isCollection);
+        }
+        if (isNullable != null) {
+            this.innerElement.typeReference.setIsNullable(isNullable);
+        }
+        return this;
     }
-    const actionElement = createElement(actionTypeName, actionName, folder.id);
-    let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
-    let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
-    const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
-    httpSettings.getProperty("Verb").setValue(verb);
-    httpSettings.getProperty("Route").setValue(route);
-    const actionElementManager = new ElementManager(actionElement, { childSpecialization: "DTO-Field" });
-    const flattenTopLevelComplexType = true;
-    let mappingStore = new MappingStore();
-    recreateAction(operation.getChildren("Parameter"), flattenTopLevelComplexType, actionElementManager, folder, mappingStore);
-    let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
-    let mapping = callOp.createMapping(actionElement.id, operation.id);
-    mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
-    for (let entry of mappingStore.getMappings()) {
-        mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+    addChild(name, type) {
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+        const typeReferenceDetails = type == null
+            ? null
+            : typeof (type) === "string"
+                ? { id: type, isNullable: false, isCollection: false }
+                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
+        if (typeReferenceDetails != null) {
+            field.typeReference.setType(typeReferenceDetails.id);
+            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
+            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
+        }
+        return field;
     }
-    actionElementManager.collapse();
-    return actionElementManager.getElement();
+    addChildrenFrom(elements, options) {
+        let order = 0;
+        elements.forEach(e =&gt; {
+            if (e.mapPath != null) {
+                if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; x.getMapping()?.getElement()?.id == e.id)) {
+                    return;
+                }
+            }
+            else if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
+                return;
+            }
+            let field = this.addChild(e.name, e.typeId);
+            field.typeReference.setIsCollection(e.isCollection);
+            field.typeReference.setIsNullable(e.isNullable);
+            if (options?.addToTop) {
+                field.setOrder(order++);
+            }
+            if (this.mappedElement != null &amp;&amp; e.mapPath) {
+                field.setMapping(e.mapPath);
+            }
+        });
+        return this;
+    }
+    mapToElement(param1, mappingSettingsId) {
+        let elementIds;
+        let element;
+        if (Array.isArray(param1)) {
+            elementIds = param1;
+            element = lookup(elementIds[elementIds.length - 1]);
+        }
+        else {
+            elementIds = [param1.id];
+            element = param1;
+        }
+        this.mappedElement = element;
+        this.innerElement.setMapping(elementIds, mappingSettingsId);
+        return this;
+    }
+    getElement() {
+        return this.innerElement;
+    }
+    collapse() {
+        this.innerElement.collapse();
+    }
 }
+/// &lt;reference path="servicesHelper.ts" /&gt;
+/// &lt;reference path="mappingStore.ts" /&gt;
+/// &lt;reference path="elementManager.ts" /&gt;
 var CrudType;
 (function (CrudType) {
     CrudType[CrudType["Create"] = 0] = "Create";
@@ -15104,123 +15066,219 @@ var CrudType;
     CrudType[CrudType["Update"] = 2] = "Update";
     CrudType[CrudType["Delete"] = 3] = "Delete";
 })(CrudType || (CrudType = {}));
-function getProxyOperationMetadata(operation) {
-    let mappedElement = operation.getMapping()?.getElement();
-    let crudType;
-    if (mappedElement &amp;&amp; (mappedElement.specialization === "Command" ||
-        mappedElement.specialization === "Query" ||
-        mappedElement.specialization === "Operation")) {
-        for (let association of mappedElement.getAssociations()) {
-            switch (association.specialization) {
-                case "Create Entity Action":
-                    crudType = CrudType.Create;
+class ProxyServiceHelper {
+    static createAppServices(proxy, folder) {
+        let serviceName = proxy.getName();
+        serviceName = removeSuffix(serviceName, "Proxy", "Client", "Service");
+        serviceName += "Service";
+        serviceName = toPascalCase(serviceName);
+        const existing = folder.getChildren().find(x =&gt; x.getName() == serviceName);
+        if (existing) {
+            return existing;
+        }
+        let serviceElement = createElement("Service", serviceName, folder.id);
+        const httpServiceSettingsStereotypeId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
+        let httpServiceSettings = serviceElement.getStereotype(httpServiceSettingsStereotypeId) ?? serviceElement.addStereotype(httpServiceSettingsStereotypeId);
+        httpServiceSettings.getProperty("Route").setValue(`api/${toKebabCase(serviceName)}`);
+        for (let operation of proxy.getChildren("Operation")) {
+            ProxyServiceHelper.createAppServiceOperationAction(operation, folder, serviceElement);
+        }
+        return serviceElement;
+    }
+    static createAppServiceOperationAction(operation, folder, service) {
+        let operationName = operation.getName();
+        operationName = removeSuffix(operationName, "Async");
+        operationName = toPascalCase(operationName);
+        let metadata = ProxyServiceHelper.getProxyOperationMetadata(operation);
+        if (!service) {
+            service = ProxyServiceHelper.createAppServices(operation.getParent(), folder);
+        }
+        let operationElement = createElement("Operation", operationName, service.id);
+        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
+        const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+        let httpSettings = operationElement.getStereotype(httpSettingsStereotypeId) ?? operationElement.addStereotype(httpSettingsStereotypeId);
+        httpSettings.getProperty("Verb").setValue(verb);
+        httpSettings.getProperty("Route").setValue(route);
+        let mappingStore = new MappingStore();
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
+        let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+        let mapping = callOp.createMapping(operationElement.id, operation.id);
+        mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
+        for (let entry of mappingStore.getMappings()) {
+            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        }
+        if (operation.typeReference?.getTypeId()) {
+            operationElement.typeReference.setType(operation.typeReference.getTypeId());
+        }
+        return operationElement;
+    }
+    static createCqrsAction(operation, folder) {
+        let operationName = operation.getName();
+        operationName = removeSuffix(operationName, "Async", "Command", "Query");
+        operationName = toPascalCase(operationName);
+        let metadata = ProxyServiceHelper.getProxyOperationMetadata(operation);
+        let actionTypeName;
+        switch (metadata.crudType) {
+            default:
+                actionTypeName = "Command";
+                break;
+            case CrudType.Read:
+                actionTypeName = "Query";
+                break;
+        }
+        const actionName = `${operationName}${actionTypeName}`;
+        const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
+        if (existing) {
+            return existing;
+        }
+        const actionElement = createElement(actionTypeName, actionName, folder.id);
+        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
+        const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+        let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
+        httpSettings.getProperty("Verb").setValue(verb);
+        httpSettings.getProperty("Route").setValue(route);
+        let mappingStore = new MappingStore();
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
+        let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+        let mapping = callOp.createMapping(actionElement.id, operation.id);
+        mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
+        for (let entry of mappingStore.getMappings()) {
+            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        }
+        if (operation.typeReference?.getTypeId()) {
+            actionElement.typeReference.setType(operation.typeReference.getTypeId());
+        }
+        return actionElement;
+    }
+    static getProxyOperationMetadata(operation) {
+        let mappedElement = operation.getMapping()?.getElement();
+        let crudType;
+        if (mappedElement &amp;&amp; (mappedElement.specialization === "Command" ||
+            mappedElement.specialization === "Query" ||
+            mappedElement.specialization === "Operation")) {
+            for (let association of mappedElement.getAssociations()) {
+                switch (association.specialization) {
+                    case "Create Entity Action":
+                        crudType = CrudType.Create;
+                        break;
+                    case "Update Entity Action":
+                        crudType = CrudType.Update;
+                        break;
+                    case "Delete Entity Action":
+                        crudType = CrudType.Delete;
+                        break;
+                    case "Query Entity Action":
+                        crudType = CrudType.Read;
+                        break;
+                }
+            }
+        }
+        if (!crudType) {
+            let mappedElementNameLower = (mappedElement ? mappedElement.getName() : operation.getName()).toLocaleLowerCase();
+            if (mappedElementNameLower.indexOf("create") &gt; -1) {
+                crudType = CrudType.Create;
+            }
+            else if (mappedElementNameLower.indexOf("update") &gt; -1) {
+                crudType = CrudType.Update;
+            }
+            else if (mappedElementNameLower.indexOf("delete") &gt; -1) {
+                crudType = CrudType.Delete;
+            }
+            else if (mappedElementNameLower.indexOf("get") &gt; -1) {
+                crudType = CrudType.Read;
+            }
+        }
+        let httpSettings = mappedElement?.getStereotype("Http Settings");
+        let httpVerb = httpSettings?.getProperty("Verb")?.getValue();
+        let httpRoute = httpSettings?.getProperty("Route")?.getValue();
+        const routeParamRegex = /\{([a-zA-Z0-9_\-]+)\}/g;
+        let httpRouteParams = httpRoute ? [...httpRoute.matchAll(routeParamRegex)].map(match =&gt; match[1]) : [];
+        return {
+            crudType: crudType,
+            httpVerb: httpVerb,
+            httpRoute: httpRoute,
+            httpRouteParams: httpRouteParams
+        };
+    }
+    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore) {
+        const childSpecialization = flattenFieldsFromComplexTypes
+            ? "DTO-Field"
+            : proxyFields.length &gt; 0
+                ? proxyFields[0].specialization
+                : "DTO-Field";
+        let elementManager = new ElementManager(actionElement, { childSpecialization: childSpecialization });
+        for (let proxyField of proxyFields) {
+            let paramRefType = proxyField.typeReference?.getType()?.specialization;
+            switch (paramRefType) {
+                case "Command":
+                case "Query":
+                case "DTO":
+                    // Complex type
+                    let proxyRefType = proxyField.typeReference.getType();
+                    if (flattenFieldsFromComplexTypes) {
+                        mappingStore.pushTargetPath(proxyField.id);
+                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore);
+                        mappingStore.popTargetPath();
+                    }
+                    else {
+                        let actionField = elementManager.addChild(proxyField.getName(), null);
+                        mappingStore.pushSourcePath(actionField.id);
+                        mappingStore.pushTargetPath(proxyField.id);
+                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore);
+                        mappingStore.popSourcePath();
+                        mappingStore.popTargetPath();
+                        actionField.typeReference.setType(actionDto.id);
+                        actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
+                        actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
+                    }
                     break;
-                case "Update Entity Action":
-                    crudType = CrudType.Update;
-                    break;
-                case "Delete Entity Action":
-                    crudType = CrudType.Delete;
-                    break;
-                case "Query Entity Action":
-                    crudType = CrudType.Read;
+                default:
+                    // Non-Complex type
+                    let fieldName = proxyField.getName();
+                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
+                        let parentName = proxyField.getParent().getName();
+                        fieldName = parentName + fieldName;
+                    }
+                    let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
+                    mappingStore.addMapping(actionField.id, proxyField.id);
                     break;
             }
         }
+        elementManager.collapse();
     }
-    if (!crudType) {
-        let mappedElementNameLower = (mappedElement ? mappedElement.getName() : operation.getName()).toLocaleLowerCase();
-        if (mappedElementNameLower.indexOf("create") &gt; -1) {
-            crudType = CrudType.Create;
-        }
-        else if (mappedElementNameLower.indexOf("update") &gt; -1) {
-            crudType = CrudType.Update;
-        }
-        else if (mappedElementNameLower.indexOf("delete") &gt; -1) {
-            crudType = CrudType.Delete;
-        }
-        else if (mappedElementNameLower.indexOf("get") &gt; -1) {
-            crudType = CrudType.Read;
-        }
-    }
-    let httpSettings = mappedElement?.getStereotype("Http Settings");
-    let httpVerb = httpSettings?.getProperty("Verb")?.getValue();
-    let httpRoute = httpSettings?.getProperty("Route")?.getValue();
-    const routeParamRegex = /\{([a-zA-Z0-9_\-]+)\}/g;
-    let httpRouteParams = httpRoute ? [...httpRoute.matchAll(routeParamRegex)].map(match =&gt; match[1]) : [];
-    return {
-        crudType: crudType,
-        httpVerb: httpVerb,
-        httpRoute: httpRoute,
-        httpRouteParams: httpRouteParams
-    };
-}
-function recreateAction(proxyFields, flattenFieldsFromComplexTypes, commandManager, folder, mappingStore) {
-    for (let proxyField of proxyFields) {
-        let paramRefType = proxyField.typeReference?.getType()?.specialization;
-        switch (paramRefType) {
-            case "Command":
-            case "Query":
-            case "DTO":
-                // Complex type
-                let proxyRefType = proxyField.typeReference.getType();
-                if (flattenFieldsFromComplexTypes) {
-                    mappingStore.pushTargetPath(proxyField.id);
-                    recreateAction(proxyRefType.getChildren("DTO-Field"), false, commandManager, folder, mappingStore);
-                    mappingStore.popTargetPath();
-                }
-                else {
-                    let actionField = commandManager.addChild(proxyField.getName(), null);
+    static replicateDto(proxyDto, folder, mappingStore) {
+        let newDto = createElement("DTO", proxyDto.getName(), folder.id);
+        proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
+            let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
+            let fieldRefType = proxyField.typeReference?.getType()?.specialization;
+            switch (fieldRefType) {
+                case "Command":
+                case "Query":
+                case "DTO":
+                    // Complex type
                     mappingStore.pushSourcePath(actionField.id);
                     mappingStore.pushTargetPath(proxyField.id);
-                    let actionDto = replicateDto(proxyRefType, folder, mappingStore);
+                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
                     mappingStore.popSourcePath();
                     mappingStore.popTargetPath();
-                    actionField.typeReference.setType(actionDto.id);
-                    actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
-                    actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
-                }
-                break;
-            default:
-                // Non-Complex type
-                let fieldName = proxyField.getName();
-                if (commandManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
-                    let parentName = proxyField.getParent().getName();
-                    fieldName = parentName + fieldName;
-                }
-                let actionField = commandManager.addChild(fieldName, proxyField.typeReference);
-                mappingStore.addMapping(actionField.id, proxyField.id);
-                break;
-        }
+                    actionField.typeReference.setType(nestedDto.id);
+                    break;
+                default:
+                    // Non-Complex type
+                    actionField.typeReference.setType(proxyField.typeReference.getTypeId());
+                    mappingStore.addMapping(actionField.id, proxyField.id);
+                    break;
+            }
+            actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
+            actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
+        });
+        return newDto;
     }
 }
-function replicateDto(proxyDto, folder, mappingStore) {
-    let newDto = createElement("DTO", proxyDto.getName(), folder.id);
-    proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
-        let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
-        let fieldRefType = proxyField.typeReference?.getType()?.specialization;
-        switch (fieldRefType) {
-            case "Command":
-            case "Query":
-            case "DTO":
-                // Complex type
-                mappingStore.pushSourcePath(actionField.id);
-                mappingStore.pushTargetPath(proxyField.id);
-                let nestedDto = replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
-                mappingStore.popSourcePath();
-                mappingStore.popTargetPath();
-                actionField.typeReference.setType(nestedDto.id);
-                break;
-            default:
-                // Non-Complex type
-                actionField.typeReference.setType(proxyField.typeReference.getTypeId());
-                mappingStore.addMapping(actionField.id, proxyField.id);
-                break;
-        }
-    });
-    return newDto;
-}
 /// &lt;reference path="../../common/openSelectItemDialog.ts" /&gt;
-/// &lt;reference path="../_common/createCqrsCallOperationAction.ts" /&gt;
+/// &lt;reference path="../../common/proxyServiceHelper.ts" /&gt;
 async function execute(proxy) {
     let servicePackages = getPackages().filter(pkg =&gt; pkg.specialization === "Services Package");
     let selectedPackage;
@@ -15233,7 +15291,7 @@ async function execute(proxy) {
     const folderName = pluralize(proxy.getName());
     const folder = selectedPackage.getChildren("Folder").find(x =&gt; x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
     for (let operation of proxy.getChildren("Operation")) {
-        createCqrsCallOperationAction(operation, folder);
+        ProxyServiceHelper.createCqrsAction(operation, folder);
     }
     const diagramElement = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id);
     diagramElement.loadDiagram();
@@ -15249,16 +15307,8 @@ async function execute(proxy) {
 await execute(element);
 </script>
         </option>
-      </scriptOptions>
-      <mappingOptions />
-      <typeOrder />
-      <mappingSettings />
-    </elementExtension>
-    <elementExtension type="Operation" typeId="aee6811e-b2f6-4562-a8eb-502029f63bc8">
-      <creationOptions />
-      <scriptOptions>
         <option>
-          <text>Create Proxy CQRS Operation</text>
+          <text>Create Service</text>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <script>/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
 function getPackageSelectItemOptions(packages, packageTypeName) {
@@ -15360,26 +15410,114 @@ class ServicesHelper {
         }
     }
 }
-class ElementManager {
-    constructor(command, settings) {
-        this.command = command;
-        this.settings = settings;
-        this.mappedElement = command.getMapping()?.getElement();
+/**
+ * Helper class to build up source and target mapping paths for
+ * advanced mapping scenarios.
+ *
+ * @remarks
+ *
+ * Source Path and Target Path is maintained separately since not all mapping scenarios are
+ * straightforward.
+ *
+ * @example
+ *
+ * When to Push/Pop the Paths
+ *
+    let leftField = createField(...);
+
+    mappingStore.pushSourcePath(leftField.id);
+    mappingStore.pushTargetPath(rightField.id);
+
+    let leftFieldDto = replicateDto(rightField.typeReference.getType(), folder, mappingStore);
+
+    mappingStore.popSourcePath();
+    mappingStore.popTargetPath();
+
+    leftField.typeReference.setType(leftFieldDto.id);
+ *
+ * Adding mappings
+ *
+    function replicateDto(existingDto: MacroApi.Context.IElementApi, ...) {
+        let newDto = createElement("DTO", existingDto.getName(), folder.id);
+        existingDto.getChildren("DTO-Field").forEach(existingField =&gt; {
+            let newField = createElement("DTO-Field", existingField.getName(), newDto.id);
+            // ...
+            mappingStore.addMapping(newField.id, existingField.id);
+            // ...
+        }
     }
-    get id() { return this.command.id; }
+ */
+class MappingStore {
+    constructor() {
+        this.mappings = [];
+        this.sourcePath = [];
+        this.targetPath = [];
+    }
+    /**
+     * Get all the recorded mapping entries
+     */
+    getMappings() {
+        return this.mappings;
+    }
+    /**
+     * Keep track of this element id on the source end
+     * when navigating inside it's type hierarchy.
+     */
+    pushSourcePath(id) {
+        this.sourcePath.push(id);
+    }
+    /**
+     * Remove the last tracked element on the source path stack
+     * when done navigating down its type hierarchy.
+     */
+    popSourcePath() {
+        this.sourcePath.pop();
+    }
+    /**
+     * Keep track of this element id on the target end
+     * when navigating inside it's type hierarchy.
+     */
+    pushTargetPath(id) {
+        this.targetPath.push(id);
+    }
+    /**
+     * Remove the last tracked element on the target path stack
+     * when done navigating down its type hierarchy.
+     */
+    popTargetPath() {
+        this.targetPath.pop();
+    }
+    /**
+     * Record a mapping between a source element id and target element id.
+     * Target and Source path stack will be used to build up the whole path.
+     */
+    addMapping(sourceId, targetId) {
+        this.mappings.push({
+            sourcePath: this.sourcePath.concat([sourceId]),
+            targetPath: this.targetPath.concat([targetId])
+        });
+    }
+}
+class ElementManager {
+    constructor(innerElement, settings) {
+        this.innerElement = innerElement;
+        this.settings = settings;
+        this.mappedElement = innerElement.getMapping()?.getElement();
+    }
+    get id() { return this.innerElement.id; }
     ;
     setReturnType(typeId, isCollection, isNullable) {
-        this.command.typeReference.setType(typeId);
+        this.innerElement.typeReference.setType(typeId);
         if (isCollection != null) {
-            this.command.typeReference.setIsCollection(isCollection);
+            this.innerElement.typeReference.setIsCollection(isCollection);
         }
         if (isNullable != null) {
-            this.command.typeReference.setIsNullable(isNullable);
+            this.innerElement.typeReference.setIsNullable(isNullable);
         }
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.command.id);
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -15396,11 +15534,11 @@ class ElementManager {
         let order = 0;
         elements.forEach(e =&gt; {
             if (e.mapPath != null) {
-                if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getMapping()?.getElement()?.id == e.id)) {
+                if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; x.getMapping()?.getElement()?.id == e.id)) {
                     return;
                 }
             }
-            else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
+            else if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
                 return;
             }
             let field = this.addChild(e.name, e.typeId);
@@ -15427,14 +15565,383 @@ class ElementManager {
             element = param1;
         }
         this.mappedElement = element;
-        this.command.setMapping(elementIds, mappingSettingsId);
+        this.innerElement.setMapping(elementIds, mappingSettingsId);
         return this;
     }
     getElement() {
-        return this.command;
+        return this.innerElement;
     }
     collapse() {
-        this.command.collapse();
+        this.innerElement.collapse();
+    }
+}
+/// &lt;reference path="servicesHelper.ts" /&gt;
+/// &lt;reference path="mappingStore.ts" /&gt;
+/// &lt;reference path="elementManager.ts" /&gt;
+var CrudType;
+(function (CrudType) {
+    CrudType[CrudType["Create"] = 0] = "Create";
+    CrudType[CrudType["Read"] = 1] = "Read";
+    CrudType[CrudType["Update"] = 2] = "Update";
+    CrudType[CrudType["Delete"] = 3] = "Delete";
+})(CrudType || (CrudType = {}));
+class ProxyServiceHelper {
+    static _createService(proxy, folder) {
+        let serviceName = proxy.getName();
+        serviceName = ProxyServiceHelper.sanitizeServiceName(serviceName);
+        const existing = folder.getPackage().getChildren("Service").find(x =&gt; x.getName() == serviceName);
+        if (existing) {
+            return existing;
+        }
+        let serviceElement = createElement("Service", serviceName, folder.getPackage().id);
+        const httpServiceSettingsStereotypeId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
+        let httpServiceSettings = serviceElement.getStereotype(httpServiceSettingsStereotypeId) ?? serviceElement.addStereotype(httpServiceSettingsStereotypeId);
+        httpServiceSettings.getProperty("Route").setValue(`api/${toKebabCase(serviceName)}`);
+        return serviceElement;
+    }
+    static sanitizeServiceName(name) {
+        name = removeSuffix(name, "Proxy", "Client", "Service");
+        name = removeSuffix(name, "Proxy", "Client", "Service");
+        name += "Service";
+        name = toPascalCase(name);
+        return name;
+    }
+    static createAppServices(proxy, folder) {
+        let serviceElement = ProxyServiceHelper._createService(proxy, folder);
+        for (let operation of proxy.getChildren("Operation")) {
+            ProxyServiceHelper.createAppServiceOperationAction(operation, folder, serviceElement);
+        }
+        return serviceElement;
+    }
+    static createAppServiceOperationAction(operation, folder, service) {
+        let operationName = operation.getName();
+        operationName = removeSuffix(operationName, "Async");
+        operationName = toPascalCase(operationName);
+        let metadata = ProxyServiceHelper.getProxyOperationMetadata(operation);
+        if (!service) {
+            service = ProxyServiceHelper._createService(operation.getParent(), folder);
+        }
+        let operationElement = createElement("Operation", operationName, service.id);
+        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
+        const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+        let httpSettings = operationElement.getStereotype(httpSettingsStereotypeId) ?? operationElement.addStereotype(httpSettingsStereotypeId);
+        httpSettings.getProperty("Verb").setValue(verb);
+        httpSettings.getProperty("Route").setValue(route);
+        let mappingStore = new MappingStore();
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
+        let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+        let mapping = callOp.createMapping(operationElement.id, operation.id);
+        mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
+        for (let entry of mappingStore.getMappings()) {
+            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        }
+        if (operation.typeReference?.getTypeId()) {
+            operationElement.typeReference.setType(operation.typeReference.getTypeId());
+        }
+        return operationElement;
+    }
+    static createCqrsAction(operation, folder) {
+        let operationName = operation.getName();
+        operationName = removeSuffix(operationName, "Async", "Command", "Query");
+        operationName = toPascalCase(operationName);
+        let metadata = ProxyServiceHelper.getProxyOperationMetadata(operation);
+        let actionTypeName;
+        switch (metadata.crudType) {
+            default:
+                actionTypeName = "Command";
+                break;
+            case CrudType.Read:
+                actionTypeName = "Query";
+                break;
+        }
+        const actionName = `${operationName}${actionTypeName}`;
+        const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
+        if (existing) {
+            return existing;
+        }
+        const actionElement = createElement(actionTypeName, actionName, folder.id);
+        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
+        const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+        let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
+        httpSettings.getProperty("Verb").setValue(verb);
+        httpSettings.getProperty("Route").setValue(route);
+        let mappingStore = new MappingStore();
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
+        let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+        let mapping = callOp.createMapping(actionElement.id, operation.id);
+        mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
+        for (let entry of mappingStore.getMappings()) {
+            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        }
+        if (operation.typeReference?.getTypeId()) {
+            actionElement.typeReference.setType(operation.typeReference.getTypeId());
+        }
+        return actionElement;
+    }
+    static getProxyOperationMetadata(operation) {
+        let mappedElement = operation.getMapping()?.getElement();
+        let crudType;
+        if (mappedElement &amp;&amp; (mappedElement.specialization === "Command" ||
+            mappedElement.specialization === "Query" ||
+            mappedElement.specialization === "Operation")) {
+            for (let association of mappedElement.getAssociations()) {
+                switch (association.specialization) {
+                    case "Create Entity Action":
+                        crudType = CrudType.Create;
+                        break;
+                    case "Update Entity Action":
+                        crudType = CrudType.Update;
+                        break;
+                    case "Delete Entity Action":
+                        crudType = CrudType.Delete;
+                        break;
+                    case "Query Entity Action":
+                        crudType = CrudType.Read;
+                        break;
+                }
+            }
+        }
+        if (!crudType) {
+            let mappedElementNameLower = (mappedElement ? mappedElement.getName() : operation.getName()).toLocaleLowerCase();
+            if (mappedElementNameLower.indexOf("create") &gt; -1) {
+                crudType = CrudType.Create;
+            }
+            else if (mappedElementNameLower.indexOf("update") &gt; -1) {
+                crudType = CrudType.Update;
+            }
+            else if (mappedElementNameLower.indexOf("delete") &gt; -1) {
+                crudType = CrudType.Delete;
+            }
+            else if (mappedElementNameLower.indexOf("get") &gt; -1) {
+                crudType = CrudType.Read;
+            }
+        }
+        let httpSettings = mappedElement?.getStereotype("Http Settings");
+        let httpVerb = httpSettings?.getProperty("Verb")?.getValue();
+        let httpRoute = httpSettings?.getProperty("Route")?.getValue();
+        const routeParamRegex = /\{([a-zA-Z0-9_\-]+)\}/g;
+        let httpRouteParams = httpRoute ? [...httpRoute.matchAll(routeParamRegex)].map(match =&gt; match[1]) : [];
+        return {
+            crudType: crudType,
+            httpVerb: httpVerb,
+            httpRoute: httpRoute,
+            httpRouteParams: httpRouteParams
+        };
+    }
+    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore) {
+        const childSpecialization = flattenFieldsFromComplexTypes
+            ? "DTO-Field"
+            : proxyFields.length &gt; 0
+                ? proxyFields[0].specialization
+                : "DTO-Field";
+        let elementManager = new ElementManager(actionElement, { childSpecialization: childSpecialization });
+        for (let proxyField of proxyFields) {
+            let paramRefType = proxyField.typeReference?.getType()?.specialization;
+            switch (paramRefType) {
+                case "Command":
+                case "Query":
+                case "DTO":
+                    // Complex type
+                    let proxyRefType = proxyField.typeReference.getType();
+                    if (flattenFieldsFromComplexTypes) {
+                        mappingStore.pushTargetPath(proxyField.id);
+                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore);
+                        mappingStore.popTargetPath();
+                    }
+                    else {
+                        let actionField = elementManager.addChild(proxyField.getName(), null);
+                        mappingStore.pushSourcePath(actionField.id);
+                        mappingStore.pushTargetPath(proxyField.id);
+                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore);
+                        mappingStore.popSourcePath();
+                        mappingStore.popTargetPath();
+                        actionField.typeReference.setType(actionDto.id);
+                        actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
+                        actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
+                    }
+                    break;
+                default:
+                    // Non-Complex type
+                    let fieldName = proxyField.getName();
+                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
+                        let parentName = proxyField.getParent().getName();
+                        fieldName = parentName + fieldName;
+                    }
+                    let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
+                    mappingStore.addMapping(actionField.id, proxyField.id);
+                    break;
+            }
+        }
+        elementManager.collapse();
+    }
+    static replicateDto(proxyDto, folder, mappingStore) {
+        let newDto = createElement("DTO", proxyDto.getName(), folder.id);
+        proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
+            let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
+            let fieldRefType = proxyField.typeReference?.getType()?.specialization;
+            switch (fieldRefType) {
+                case "Command":
+                case "Query":
+                case "DTO":
+                    // Complex type
+                    mappingStore.pushSourcePath(actionField.id);
+                    mappingStore.pushTargetPath(proxyField.id);
+                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
+                    mappingStore.popSourcePath();
+                    mappingStore.popTargetPath();
+                    actionField.typeReference.setType(nestedDto.id);
+                    break;
+                default:
+                    // Non-Complex type
+                    actionField.typeReference.setType(proxyField.typeReference.getTypeId());
+                    mappingStore.addMapping(actionField.id, proxyField.id);
+                    break;
+            }
+            actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
+            actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
+        });
+        return newDto;
+    }
+}
+/// &lt;reference path="../../common/openSelectItemDialog.ts" /&gt;
+/// &lt;reference path="../../common/proxyServiceHelper.ts" /&gt;
+async function execute(proxy) {
+    let servicePackages = getPackages().filter(pkg =&gt; pkg.specialization === "Services Package");
+    let selectedPackage;
+    if (servicePackages.length == 1) {
+        selectedPackage = servicePackages[0];
+    }
+    else {
+        selectedPackage = await openSelectItemDialog(getPackageSelectItemOptions(servicePackages, "Service Package"));
+    }
+    const folderName = pluralize(ProxyServiceHelper.sanitizeServiceName(proxy.getName()));
+    const folder = selectedPackage.getChildren("Folder").find(x =&gt; x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
+    let service = ProxyServiceHelper.createAppServices(proxy, folder);
+    const diagramElement = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id);
+    diagramElement.loadDiagram();
+    const diagram = getCurrentDiagram();
+    diagram.layoutVisuals([folder, service], null, true);
+}
+/**
+ * Used by Intent.Modelers.Services.DomainInteractions
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-appservice-proxy-macro-advanced-mapping/create-appservice-proxy-macro-advanced-mapping.ts
+ */
+await execute(element);
+</script>
+        </option>
+      </scriptOptions>
+      <mappingOptions />
+      <typeOrder />
+      <mappingSettings />
+    </elementExtension>
+    <elementExtension type="Operation" typeId="aee6811e-b2f6-4562-a8eb-502029f63bc8">
+      <creationOptions />
+      <scriptOptions>
+        <option>
+          <text>Create CQRS Operation</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <script>/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
+function getPackageSelectItemOptions(packages, packageTypeName) {
+    return {
+        items: packages,
+        getId(item) {
+            return item.id;
+        },
+        getDisplayName(item) {
+            return item.getName();
+        },
+        getItemNotFoundMessage(itemId) {
+            return `No ${packageTypeName} found with id "${itemId}".`;
+        },
+        getNoItemsFoundMessage() {
+            return `No packages of type ${packageTypeName} could be found.`;
+        },
+    };
+}
+function getElementSelectItemOptions(elements, elementTypeName, relevantPackageTypeName) {
+    return {
+        items: elements,
+        getId(item) {
+            return item.id;
+        },
+        getDisplayName(item) {
+            return item.getName();
+        },
+        getItemNotFoundMessage(itemId) {
+            return `No "${elementTypeName}" found with id "${itemId}".`;
+        },
+        getNoItemsFoundMessage() {
+            return `No Elements of type "${elementTypeName}" could be found. Please ensure that you have a reference to the ${relevantPackageTypeName} package and that at least one ${elementTypeName} exists in it.`;
+        },
+    };
+}
+/**
+ * Dialog selection.
+ * @param options For simplicity, use getPackageSelectItemOptions() or getElementSelectItemOptions()
+ * @returns Selected item.
+ */
+async function openSelectItemDialog(options) {
+    if (!options) {
+        throw new Error("Options are required for 'openSelectItemDialog'.");
+    }
+    let items = options.items;
+    if (items.length == 0) {
+        await dialogService.info(options.getNoItemsFoundMessage());
+        return null;
+    }
+    let itemId = await dialogService.lookupFromOptions(items.map(item =&gt; ({
+        id: options.getId(item),
+        name: options.getDisplayName(item)
+    })));
+    if (itemId == null) {
+        await dialogService.error(options.getItemNotFoundMessage(itemId));
+        return null;
+    }
+    let foundItem = items.filter(item =&gt; options.getId(item) === itemId)[0];
+    return foundItem;
+}
+;
+/// &lt;reference path="attributeWithMapPath.ts" /&gt;
+class ServicesConstants {
+}
+ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
+ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+ServicesConstants.dtoToDomainOperation = "8d1f6a8a-77c8-43a2-8e60-421559725419";
+class ServicesHelper {
+    static addDtoFieldsFromDomain(dto, attributes) {
+        for (let key of attributes) {
+            if (dto &amp;&amp; !dto.getChildren("DTO-Field").some(x =&gt; x.getName() == ServicesHelper.getFieldFormat(key.name))) {
+                let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(key.name), dto.id);
+                field.typeReference.setType(key.typeId);
+                if ((key.mapPath ?? []).length &gt; 0) {
+                    field.setMapping(key.mapPath);
+                }
+            }
+        }
+    }
+    static getParameterFormat(str) {
+        return toCamelCase(str);
+    }
+    static getRoutingFormat(str) {
+        return pluralize(str);
+    }
+    static getFieldFormat(str) {
+        return toPascalCase(str);
+    }
+    static formatName(str, type) {
+        switch (type) {
+            case "property":
+            case "class":
+                return toPascalCase(str);
+            case "parameter":
+                return toCamelCase(str);
+            default:
+                return str;
+        }
     }
 }
 /**
@@ -15525,47 +16032,86 @@ class MappingStore {
         });
     }
 }
-/// &lt;reference path="../../common/servicesHelper.ts" /&gt;
-/// &lt;reference path="../../common/mappingStore.ts" /&gt;
-function createCqrsCallOperationAction(operation, folder) {
-    let operationName = operation.getName();
-    operationName = removeSuffix(removeSuffix(removeSuffix(operationName, "Async"), "Command"), "Query");
-    operationName = toPascalCase(operationName);
-    let metadata = getProxyOperationMetadata(operation);
-    let actionTypeName;
-    switch (metadata.crudType) {
-        default:
-            actionTypeName = "Command";
-            break;
-        case CrudType.Read:
-            actionTypeName = "Query";
-            break;
+class ElementManager {
+    constructor(innerElement, settings) {
+        this.innerElement = innerElement;
+        this.settings = settings;
+        this.mappedElement = innerElement.getMapping()?.getElement();
     }
-    const actionName = `${operationName}${actionTypeName}`;
-    const existing = folder.getChildren().find(x =&gt; x.getName() == actionName || x.getMapping()?.getElement()?.id === operation.id);
-    if (existing) {
-        return existing;
+    get id() { return this.innerElement.id; }
+    ;
+    setReturnType(typeId, isCollection, isNullable) {
+        this.innerElement.typeReference.setType(typeId);
+        if (isCollection != null) {
+            this.innerElement.typeReference.setIsCollection(isCollection);
+        }
+        if (isNullable != null) {
+            this.innerElement.typeReference.setIsNullable(isNullable);
+        }
+        return this;
     }
-    const actionElement = createElement(actionTypeName, actionName, folder.id);
-    let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
-    let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
-    const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
-    httpSettings.getProperty("Verb").setValue(verb);
-    httpSettings.getProperty("Route").setValue(route);
-    const actionElementManager = new ElementManager(actionElement, { childSpecialization: "DTO-Field" });
-    const flattenTopLevelComplexType = true;
-    let mappingStore = new MappingStore();
-    recreateAction(operation.getChildren("Parameter"), flattenTopLevelComplexType, actionElementManager, folder, mappingStore);
-    let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
-    let mapping = callOp.createMapping(actionElement.id, operation.id);
-    mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
-    for (let entry of mappingStore.getMappings()) {
-        mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+    addChild(name, type) {
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+        const typeReferenceDetails = type == null
+            ? null
+            : typeof (type) === "string"
+                ? { id: type, isNullable: false, isCollection: false }
+                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
+        if (typeReferenceDetails != null) {
+            field.typeReference.setType(typeReferenceDetails.id);
+            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
+            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
+        }
+        return field;
     }
-    actionElementManager.collapse();
-    return actionElementManager.getElement();
+    addChildrenFrom(elements, options) {
+        let order = 0;
+        elements.forEach(e =&gt; {
+            if (e.mapPath != null) {
+                if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; x.getMapping()?.getElement()?.id == e.id)) {
+                    return;
+                }
+            }
+            else if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
+                return;
+            }
+            let field = this.addChild(e.name, e.typeId);
+            field.typeReference.setIsCollection(e.isCollection);
+            field.typeReference.setIsNullable(e.isNullable);
+            if (options?.addToTop) {
+                field.setOrder(order++);
+            }
+            if (this.mappedElement != null &amp;&amp; e.mapPath) {
+                field.setMapping(e.mapPath);
+            }
+        });
+        return this;
+    }
+    mapToElement(param1, mappingSettingsId) {
+        let elementIds;
+        let element;
+        if (Array.isArray(param1)) {
+            elementIds = param1;
+            element = lookup(elementIds[elementIds.length - 1]);
+        }
+        else {
+            elementIds = [param1.id];
+            element = param1;
+        }
+        this.mappedElement = element;
+        this.innerElement.setMapping(elementIds, mappingSettingsId);
+        return this;
+    }
+    getElement() {
+        return this.innerElement;
+    }
+    collapse() {
+        this.innerElement.collapse();
+    }
 }
+/// &lt;reference path="servicesHelper.ts" /&gt;
+/// &lt;reference path="mappingStore.ts" /&gt;
+/// &lt;reference path="elementManager.ts" /&gt;
 var CrudType;
 (function (CrudType) {
     CrudType[CrudType["Create"] = 0] = "Create";
@@ -15573,123 +16119,219 @@ var CrudType;
     CrudType[CrudType["Update"] = 2] = "Update";
     CrudType[CrudType["Delete"] = 3] = "Delete";
 })(CrudType || (CrudType = {}));
-function getProxyOperationMetadata(operation) {
-    let mappedElement = operation.getMapping()?.getElement();
-    let crudType;
-    if (mappedElement &amp;&amp; (mappedElement.specialization === "Command" ||
-        mappedElement.specialization === "Query" ||
-        mappedElement.specialization === "Operation")) {
-        for (let association of mappedElement.getAssociations()) {
-            switch (association.specialization) {
-                case "Create Entity Action":
-                    crudType = CrudType.Create;
+class ProxyServiceHelper {
+    static createAppServices(proxy, folder) {
+        let serviceName = proxy.getName();
+        serviceName = removeSuffix(serviceName, "Proxy", "Client", "Service");
+        serviceName += "Service";
+        serviceName = toPascalCase(serviceName);
+        const existing = folder.getChildren().find(x =&gt; x.getName() == serviceName);
+        if (existing) {
+            return existing;
+        }
+        let serviceElement = createElement("Service", serviceName, folder.id);
+        const httpServiceSettingsStereotypeId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
+        let httpServiceSettings = serviceElement.getStereotype(httpServiceSettingsStereotypeId) ?? serviceElement.addStereotype(httpServiceSettingsStereotypeId);
+        httpServiceSettings.getProperty("Route").setValue(`api/${toKebabCase(serviceName)}`);
+        for (let operation of proxy.getChildren("Operation")) {
+            ProxyServiceHelper.createAppServiceOperationAction(operation, folder, serviceElement);
+        }
+        return serviceElement;
+    }
+    static createAppServiceOperationAction(operation, folder, service) {
+        let operationName = operation.getName();
+        operationName = removeSuffix(operationName, "Async");
+        operationName = toPascalCase(operationName);
+        let metadata = ProxyServiceHelper.getProxyOperationMetadata(operation);
+        if (!service) {
+            service = ProxyServiceHelper.createAppServices(operation.getParent(), folder);
+        }
+        let operationElement = createElement("Operation", operationName, service.id);
+        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
+        const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+        let httpSettings = operationElement.getStereotype(httpSettingsStereotypeId) ?? operationElement.addStereotype(httpSettingsStereotypeId);
+        httpSettings.getProperty("Verb").setValue(verb);
+        httpSettings.getProperty("Route").setValue(route);
+        let mappingStore = new MappingStore();
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
+        let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+        let mapping = callOp.createMapping(operationElement.id, operation.id);
+        mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
+        for (let entry of mappingStore.getMappings()) {
+            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        }
+        if (operation.typeReference?.getTypeId()) {
+            operationElement.typeReference.setType(operation.typeReference.getTypeId());
+        }
+        return operationElement;
+    }
+    static createCqrsAction(operation, folder) {
+        let operationName = operation.getName();
+        operationName = removeSuffix(operationName, "Async", "Command", "Query");
+        operationName = toPascalCase(operationName);
+        let metadata = ProxyServiceHelper.getProxyOperationMetadata(operation);
+        let actionTypeName;
+        switch (metadata.crudType) {
+            default:
+                actionTypeName = "Command";
+                break;
+            case CrudType.Read:
+                actionTypeName = "Query";
+                break;
+        }
+        const actionName = `${operationName}${actionTypeName}`;
+        const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
+        if (existing) {
+            return existing;
+        }
+        const actionElement = createElement(actionTypeName, actionName, folder.id);
+        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
+        const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+        let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
+        httpSettings.getProperty("Verb").setValue(verb);
+        httpSettings.getProperty("Route").setValue(route);
+        let mappingStore = new MappingStore();
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
+        let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+        let mapping = callOp.createMapping(actionElement.id, operation.id);
+        mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
+        for (let entry of mappingStore.getMappings()) {
+            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        }
+        if (operation.typeReference?.getTypeId()) {
+            actionElement.typeReference.setType(operation.typeReference.getTypeId());
+        }
+        return actionElement;
+    }
+    static getProxyOperationMetadata(operation) {
+        let mappedElement = operation.getMapping()?.getElement();
+        let crudType;
+        if (mappedElement &amp;&amp; (mappedElement.specialization === "Command" ||
+            mappedElement.specialization === "Query" ||
+            mappedElement.specialization === "Operation")) {
+            for (let association of mappedElement.getAssociations()) {
+                switch (association.specialization) {
+                    case "Create Entity Action":
+                        crudType = CrudType.Create;
+                        break;
+                    case "Update Entity Action":
+                        crudType = CrudType.Update;
+                        break;
+                    case "Delete Entity Action":
+                        crudType = CrudType.Delete;
+                        break;
+                    case "Query Entity Action":
+                        crudType = CrudType.Read;
+                        break;
+                }
+            }
+        }
+        if (!crudType) {
+            let mappedElementNameLower = (mappedElement ? mappedElement.getName() : operation.getName()).toLocaleLowerCase();
+            if (mappedElementNameLower.indexOf("create") &gt; -1) {
+                crudType = CrudType.Create;
+            }
+            else if (mappedElementNameLower.indexOf("update") &gt; -1) {
+                crudType = CrudType.Update;
+            }
+            else if (mappedElementNameLower.indexOf("delete") &gt; -1) {
+                crudType = CrudType.Delete;
+            }
+            else if (mappedElementNameLower.indexOf("get") &gt; -1) {
+                crudType = CrudType.Read;
+            }
+        }
+        let httpSettings = mappedElement?.getStereotype("Http Settings");
+        let httpVerb = httpSettings?.getProperty("Verb")?.getValue();
+        let httpRoute = httpSettings?.getProperty("Route")?.getValue();
+        const routeParamRegex = /\{([a-zA-Z0-9_\-]+)\}/g;
+        let httpRouteParams = httpRoute ? [...httpRoute.matchAll(routeParamRegex)].map(match =&gt; match[1]) : [];
+        return {
+            crudType: crudType,
+            httpVerb: httpVerb,
+            httpRoute: httpRoute,
+            httpRouteParams: httpRouteParams
+        };
+    }
+    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore) {
+        const childSpecialization = flattenFieldsFromComplexTypes
+            ? "DTO-Field"
+            : proxyFields.length &gt; 0
+                ? proxyFields[0].specialization
+                : "DTO-Field";
+        let elementManager = new ElementManager(actionElement, { childSpecialization: childSpecialization });
+        for (let proxyField of proxyFields) {
+            let paramRefType = proxyField.typeReference?.getType()?.specialization;
+            switch (paramRefType) {
+                case "Command":
+                case "Query":
+                case "DTO":
+                    // Complex type
+                    let proxyRefType = proxyField.typeReference.getType();
+                    if (flattenFieldsFromComplexTypes) {
+                        mappingStore.pushTargetPath(proxyField.id);
+                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore);
+                        mappingStore.popTargetPath();
+                    }
+                    else {
+                        let actionField = elementManager.addChild(proxyField.getName(), null);
+                        mappingStore.pushSourcePath(actionField.id);
+                        mappingStore.pushTargetPath(proxyField.id);
+                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore);
+                        mappingStore.popSourcePath();
+                        mappingStore.popTargetPath();
+                        actionField.typeReference.setType(actionDto.id);
+                        actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
+                        actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
+                    }
                     break;
-                case "Update Entity Action":
-                    crudType = CrudType.Update;
-                    break;
-                case "Delete Entity Action":
-                    crudType = CrudType.Delete;
-                    break;
-                case "Query Entity Action":
-                    crudType = CrudType.Read;
+                default:
+                    // Non-Complex type
+                    let fieldName = proxyField.getName();
+                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
+                        let parentName = proxyField.getParent().getName();
+                        fieldName = parentName + fieldName;
+                    }
+                    let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
+                    mappingStore.addMapping(actionField.id, proxyField.id);
                     break;
             }
         }
+        elementManager.collapse();
     }
-    if (!crudType) {
-        let mappedElementNameLower = (mappedElement ? mappedElement.getName() : operation.getName()).toLocaleLowerCase();
-        if (mappedElementNameLower.indexOf("create") &gt; -1) {
-            crudType = CrudType.Create;
-        }
-        else if (mappedElementNameLower.indexOf("update") &gt; -1) {
-            crudType = CrudType.Update;
-        }
-        else if (mappedElementNameLower.indexOf("delete") &gt; -1) {
-            crudType = CrudType.Delete;
-        }
-        else if (mappedElementNameLower.indexOf("get") &gt; -1) {
-            crudType = CrudType.Read;
-        }
-    }
-    let httpSettings = mappedElement?.getStereotype("Http Settings");
-    let httpVerb = httpSettings?.getProperty("Verb")?.getValue();
-    let httpRoute = httpSettings?.getProperty("Route")?.getValue();
-    const routeParamRegex = /\{([a-zA-Z0-9_\-]+)\}/g;
-    let httpRouteParams = httpRoute ? [...httpRoute.matchAll(routeParamRegex)].map(match =&gt; match[1]) : [];
-    return {
-        crudType: crudType,
-        httpVerb: httpVerb,
-        httpRoute: httpRoute,
-        httpRouteParams: httpRouteParams
-    };
-}
-function recreateAction(proxyFields, flattenFieldsFromComplexTypes, commandManager, folder, mappingStore) {
-    for (let proxyField of proxyFields) {
-        let paramRefType = proxyField.typeReference?.getType()?.specialization;
-        switch (paramRefType) {
-            case "Command":
-            case "Query":
-            case "DTO":
-                // Complex type
-                let proxyRefType = proxyField.typeReference.getType();
-                if (flattenFieldsFromComplexTypes) {
-                    mappingStore.pushTargetPath(proxyField.id);
-                    recreateAction(proxyRefType.getChildren("DTO-Field"), false, commandManager, folder, mappingStore);
-                    mappingStore.popTargetPath();
-                }
-                else {
-                    let actionField = commandManager.addChild(proxyField.getName(), null);
+    static replicateDto(proxyDto, folder, mappingStore) {
+        let newDto = createElement("DTO", proxyDto.getName(), folder.id);
+        proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
+            let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
+            let fieldRefType = proxyField.typeReference?.getType()?.specialization;
+            switch (fieldRefType) {
+                case "Command":
+                case "Query":
+                case "DTO":
+                    // Complex type
                     mappingStore.pushSourcePath(actionField.id);
                     mappingStore.pushTargetPath(proxyField.id);
-                    let actionDto = replicateDto(proxyRefType, folder, mappingStore);
+                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
                     mappingStore.popSourcePath();
                     mappingStore.popTargetPath();
-                    actionField.typeReference.setType(actionDto.id);
-                    actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
-                    actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
-                }
-                break;
-            default:
-                // Non-Complex type
-                let fieldName = proxyField.getName();
-                if (commandManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
-                    let parentName = proxyField.getParent().getName();
-                    fieldName = parentName + fieldName;
-                }
-                let actionField = commandManager.addChild(fieldName, proxyField.typeReference);
-                mappingStore.addMapping(actionField.id, proxyField.id);
-                break;
-        }
+                    actionField.typeReference.setType(nestedDto.id);
+                    break;
+                default:
+                    // Non-Complex type
+                    actionField.typeReference.setType(proxyField.typeReference.getTypeId());
+                    mappingStore.addMapping(actionField.id, proxyField.id);
+                    break;
+            }
+            actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
+            actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
+        });
+        return newDto;
     }
 }
-function replicateDto(proxyDto, folder, mappingStore) {
-    let newDto = createElement("DTO", proxyDto.getName(), folder.id);
-    proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
-        let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
-        let fieldRefType = proxyField.typeReference?.getType()?.specialization;
-        switch (fieldRefType) {
-            case "Command":
-            case "Query":
-            case "DTO":
-                // Complex type
-                mappingStore.pushSourcePath(actionField.id);
-                mappingStore.pushTargetPath(proxyField.id);
-                let nestedDto = replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
-                mappingStore.popSourcePath();
-                mappingStore.popTargetPath();
-                actionField.typeReference.setType(nestedDto.id);
-                break;
-            default:
-                // Non-Complex type
-                actionField.typeReference.setType(proxyField.typeReference.getTypeId());
-                mappingStore.addMapping(actionField.id, proxyField.id);
-                break;
-        }
-    });
-    return newDto;
-}
 /// &lt;reference path="../../common/openSelectItemDialog.ts" /&gt;
-/// &lt;reference path="../_common/createCqrsCallOperationAction.ts" /&gt;
+/// &lt;reference path="../../common/proxyServiceHelper.ts" /&gt;
 async function execute(proxyOperation) {
     let servicePackages = getPackages().filter(pkg =&gt; pkg.specialization === "Services Package");
     let selectedPackage;
@@ -15702,7 +16344,7 @@ async function execute(proxyOperation) {
     const proxy = proxyOperation.getParent();
     const folderName = pluralize(proxy.getName());
     const folder = selectedPackage.getChildren("Folder").find(x =&gt; x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
-    createCqrsCallOperationAction(proxyOperation, folder);
+    ProxyServiceHelper.createCqrsAction(proxyOperation, folder);
     const diagramElement = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id);
     diagramElement.loadDiagram();
     const diagram = getCurrentDiagram();
@@ -15714,6 +16356,8 @@ async function execute(proxyOperation) {
         }
     }
     let newPosition = null;
+    // This is an attempt to reposition the newly created elements due to the lack of
+    // directly manipulating the visuals on the diagram but it ends up skewing diagonally.
     if (lastActionVisual) {
         newPosition = {
             x: lastActionVisual.getPosition().x,
@@ -15727,6 +16371,533 @@ async function execute(proxyOperation) {
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-proxy-operation-cqrs-macro-advanced-mapping/create-proxy-operation-cqrs-macro-advanced-mapping.ts
+ */
+await execute(element);
+</script>
+        </option>
+        <option>
+          <text>Create Service Operation</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <script>/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
+function getPackageSelectItemOptions(packages, packageTypeName) {
+    return {
+        items: packages,
+        getId(item) {
+            return item.id;
+        },
+        getDisplayName(item) {
+            return item.getName();
+        },
+        getItemNotFoundMessage(itemId) {
+            return `No ${packageTypeName} found with id "${itemId}".`;
+        },
+        getNoItemsFoundMessage() {
+            return `No packages of type ${packageTypeName} could be found.`;
+        },
+    };
+}
+function getElementSelectItemOptions(elements, elementTypeName, relevantPackageTypeName) {
+    return {
+        items: elements,
+        getId(item) {
+            return item.id;
+        },
+        getDisplayName(item) {
+            return item.getName();
+        },
+        getItemNotFoundMessage(itemId) {
+            return `No "${elementTypeName}" found with id "${itemId}".`;
+        },
+        getNoItemsFoundMessage() {
+            return `No Elements of type "${elementTypeName}" could be found. Please ensure that you have a reference to the ${relevantPackageTypeName} package and that at least one ${elementTypeName} exists in it.`;
+        },
+    };
+}
+/**
+ * Dialog selection.
+ * @param options For simplicity, use getPackageSelectItemOptions() or getElementSelectItemOptions()
+ * @returns Selected item.
+ */
+async function openSelectItemDialog(options) {
+    if (!options) {
+        throw new Error("Options are required for 'openSelectItemDialog'.");
+    }
+    let items = options.items;
+    if (items.length == 0) {
+        await dialogService.info(options.getNoItemsFoundMessage());
+        return null;
+    }
+    let itemId = await dialogService.lookupFromOptions(items.map(item =&gt; ({
+        id: options.getId(item),
+        name: options.getDisplayName(item)
+    })));
+    if (itemId == null) {
+        await dialogService.error(options.getItemNotFoundMessage(itemId));
+        return null;
+    }
+    let foundItem = items.filter(item =&gt; options.getId(item) === itemId)[0];
+    return foundItem;
+}
+;
+/// &lt;reference path="attributeWithMapPath.ts" /&gt;
+class ServicesConstants {
+}
+ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
+ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+ServicesConstants.dtoToDomainOperation = "8d1f6a8a-77c8-43a2-8e60-421559725419";
+class ServicesHelper {
+    static addDtoFieldsFromDomain(dto, attributes) {
+        for (let key of attributes) {
+            if (dto &amp;&amp; !dto.getChildren("DTO-Field").some(x =&gt; x.getName() == ServicesHelper.getFieldFormat(key.name))) {
+                let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(key.name), dto.id);
+                field.typeReference.setType(key.typeId);
+                if ((key.mapPath ?? []).length &gt; 0) {
+                    field.setMapping(key.mapPath);
+                }
+            }
+        }
+    }
+    static getParameterFormat(str) {
+        return toCamelCase(str);
+    }
+    static getRoutingFormat(str) {
+        return pluralize(str);
+    }
+    static getFieldFormat(str) {
+        return toPascalCase(str);
+    }
+    static formatName(str, type) {
+        switch (type) {
+            case "property":
+            case "class":
+                return toPascalCase(str);
+            case "parameter":
+                return toCamelCase(str);
+            default:
+                return str;
+        }
+    }
+}
+/**
+ * Helper class to build up source and target mapping paths for
+ * advanced mapping scenarios.
+ *
+ * @remarks
+ *
+ * Source Path and Target Path is maintained separately since not all mapping scenarios are
+ * straightforward.
+ *
+ * @example
+ *
+ * When to Push/Pop the Paths
+ *
+    let leftField = createField(...);
+
+    mappingStore.pushSourcePath(leftField.id);
+    mappingStore.pushTargetPath(rightField.id);
+
+    let leftFieldDto = replicateDto(rightField.typeReference.getType(), folder, mappingStore);
+
+    mappingStore.popSourcePath();
+    mappingStore.popTargetPath();
+
+    leftField.typeReference.setType(leftFieldDto.id);
+ *
+ * Adding mappings
+ *
+    function replicateDto(existingDto: MacroApi.Context.IElementApi, ...) {
+        let newDto = createElement("DTO", existingDto.getName(), folder.id);
+        existingDto.getChildren("DTO-Field").forEach(existingField =&gt; {
+            let newField = createElement("DTO-Field", existingField.getName(), newDto.id);
+            // ...
+            mappingStore.addMapping(newField.id, existingField.id);
+            // ...
+        }
+    }
+ */
+class MappingStore {
+    constructor() {
+        this.mappings = [];
+        this.sourcePath = [];
+        this.targetPath = [];
+    }
+    /**
+     * Get all the recorded mapping entries
+     */
+    getMappings() {
+        return this.mappings;
+    }
+    /**
+     * Keep track of this element id on the source end
+     * when navigating inside it's type hierarchy.
+     */
+    pushSourcePath(id) {
+        this.sourcePath.push(id);
+    }
+    /**
+     * Remove the last tracked element on the source path stack
+     * when done navigating down its type hierarchy.
+     */
+    popSourcePath() {
+        this.sourcePath.pop();
+    }
+    /**
+     * Keep track of this element id on the target end
+     * when navigating inside it's type hierarchy.
+     */
+    pushTargetPath(id) {
+        this.targetPath.push(id);
+    }
+    /**
+     * Remove the last tracked element on the target path stack
+     * when done navigating down its type hierarchy.
+     */
+    popTargetPath() {
+        this.targetPath.pop();
+    }
+    /**
+     * Record a mapping between a source element id and target element id.
+     * Target and Source path stack will be used to build up the whole path.
+     */
+    addMapping(sourceId, targetId) {
+        this.mappings.push({
+            sourcePath: this.sourcePath.concat([sourceId]),
+            targetPath: this.targetPath.concat([targetId])
+        });
+    }
+}
+class ElementManager {
+    constructor(innerElement, settings) {
+        this.innerElement = innerElement;
+        this.settings = settings;
+        this.mappedElement = innerElement.getMapping()?.getElement();
+    }
+    get id() { return this.innerElement.id; }
+    ;
+    setReturnType(typeId, isCollection, isNullable) {
+        this.innerElement.typeReference.setType(typeId);
+        if (isCollection != null) {
+            this.innerElement.typeReference.setIsCollection(isCollection);
+        }
+        if (isNullable != null) {
+            this.innerElement.typeReference.setIsNullable(isNullable);
+        }
+        return this;
+    }
+    addChild(name, type) {
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+        const typeReferenceDetails = type == null
+            ? null
+            : typeof (type) === "string"
+                ? { id: type, isNullable: false, isCollection: false }
+                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
+        if (typeReferenceDetails != null) {
+            field.typeReference.setType(typeReferenceDetails.id);
+            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
+            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
+        }
+        return field;
+    }
+    addChildrenFrom(elements, options) {
+        let order = 0;
+        elements.forEach(e =&gt; {
+            if (e.mapPath != null) {
+                if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; x.getMapping()?.getElement()?.id == e.id)) {
+                    return;
+                }
+            }
+            else if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
+                return;
+            }
+            let field = this.addChild(e.name, e.typeId);
+            field.typeReference.setIsCollection(e.isCollection);
+            field.typeReference.setIsNullable(e.isNullable);
+            if (options?.addToTop) {
+                field.setOrder(order++);
+            }
+            if (this.mappedElement != null &amp;&amp; e.mapPath) {
+                field.setMapping(e.mapPath);
+            }
+        });
+        return this;
+    }
+    mapToElement(param1, mappingSettingsId) {
+        let elementIds;
+        let element;
+        if (Array.isArray(param1)) {
+            elementIds = param1;
+            element = lookup(elementIds[elementIds.length - 1]);
+        }
+        else {
+            elementIds = [param1.id];
+            element = param1;
+        }
+        this.mappedElement = element;
+        this.innerElement.setMapping(elementIds, mappingSettingsId);
+        return this;
+    }
+    getElement() {
+        return this.innerElement;
+    }
+    collapse() {
+        this.innerElement.collapse();
+    }
+}
+/// &lt;reference path="servicesHelper.ts" /&gt;
+/// &lt;reference path="mappingStore.ts" /&gt;
+/// &lt;reference path="elementManager.ts" /&gt;
+var CrudType;
+(function (CrudType) {
+    CrudType[CrudType["Create"] = 0] = "Create";
+    CrudType[CrudType["Read"] = 1] = "Read";
+    CrudType[CrudType["Update"] = 2] = "Update";
+    CrudType[CrudType["Delete"] = 3] = "Delete";
+})(CrudType || (CrudType = {}));
+class ProxyServiceHelper {
+    static _createService(proxy, folder) {
+        let serviceName = proxy.getName();
+        serviceName = ProxyServiceHelper.sanitizeServiceName(serviceName);
+        const existing = folder.getPackage().getChildren("Service").find(x =&gt; x.getName() == serviceName);
+        if (existing) {
+            return existing;
+        }
+        let serviceElement = createElement("Service", serviceName, folder.getPackage().id);
+        const httpServiceSettingsStereotypeId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
+        let httpServiceSettings = serviceElement.getStereotype(httpServiceSettingsStereotypeId) ?? serviceElement.addStereotype(httpServiceSettingsStereotypeId);
+        httpServiceSettings.getProperty("Route").setValue(`api/${toKebabCase(serviceName)}`);
+        return serviceElement;
+    }
+    static sanitizeServiceName(name) {
+        name = removeSuffix(name, "Proxy", "Client", "Service");
+        name = removeSuffix(name, "Proxy", "Client", "Service");
+        name += "Service";
+        name = toPascalCase(name);
+        return name;
+    }
+    static createAppServices(proxy, folder) {
+        let serviceElement = ProxyServiceHelper._createService(proxy, folder);
+        for (let operation of proxy.getChildren("Operation")) {
+            ProxyServiceHelper.createAppServiceOperationAction(operation, folder, serviceElement);
+        }
+        return serviceElement;
+    }
+    static createAppServiceOperationAction(operation, folder, service) {
+        let operationName = operation.getName();
+        operationName = removeSuffix(operationName, "Async");
+        operationName = toPascalCase(operationName);
+        let metadata = ProxyServiceHelper.getProxyOperationMetadata(operation);
+        if (!service) {
+            service = ProxyServiceHelper._createService(operation.getParent(), folder);
+        }
+        let operationElement = createElement("Operation", operationName, service.id);
+        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
+        const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+        let httpSettings = operationElement.getStereotype(httpSettingsStereotypeId) ?? operationElement.addStereotype(httpSettingsStereotypeId);
+        httpSettings.getProperty("Verb").setValue(verb);
+        httpSettings.getProperty("Route").setValue(route);
+        let mappingStore = new MappingStore();
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
+        let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+        let mapping = callOp.createMapping(operationElement.id, operation.id);
+        mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
+        for (let entry of mappingStore.getMappings()) {
+            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        }
+        if (operation.typeReference?.getTypeId()) {
+            operationElement.typeReference.setType(operation.typeReference.getTypeId());
+        }
+        return operationElement;
+    }
+    static createCqrsAction(operation, folder) {
+        let operationName = operation.getName();
+        operationName = removeSuffix(operationName, "Async", "Command", "Query");
+        operationName = toPascalCase(operationName);
+        let metadata = ProxyServiceHelper.getProxyOperationMetadata(operation);
+        let actionTypeName;
+        switch (metadata.crudType) {
+            default:
+                actionTypeName = "Command";
+                break;
+            case CrudType.Read:
+                actionTypeName = "Query";
+                break;
+        }
+        const actionName = `${operationName}${actionTypeName}`;
+        const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
+        if (existing) {
+            return existing;
+        }
+        const actionElement = createElement(actionTypeName, actionName, folder.id);
+        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
+        const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+        let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
+        httpSettings.getProperty("Verb").setValue(verb);
+        httpSettings.getProperty("Route").setValue(route);
+        let mappingStore = new MappingStore();
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
+        let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+        let mapping = callOp.createMapping(actionElement.id, operation.id);
+        mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
+        for (let entry of mappingStore.getMappings()) {
+            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        }
+        if (operation.typeReference?.getTypeId()) {
+            actionElement.typeReference.setType(operation.typeReference.getTypeId());
+        }
+        return actionElement;
+    }
+    static getProxyOperationMetadata(operation) {
+        let mappedElement = operation.getMapping()?.getElement();
+        let crudType;
+        if (mappedElement &amp;&amp; (mappedElement.specialization === "Command" ||
+            mappedElement.specialization === "Query" ||
+            mappedElement.specialization === "Operation")) {
+            for (let association of mappedElement.getAssociations()) {
+                switch (association.specialization) {
+                    case "Create Entity Action":
+                        crudType = CrudType.Create;
+                        break;
+                    case "Update Entity Action":
+                        crudType = CrudType.Update;
+                        break;
+                    case "Delete Entity Action":
+                        crudType = CrudType.Delete;
+                        break;
+                    case "Query Entity Action":
+                        crudType = CrudType.Read;
+                        break;
+                }
+            }
+        }
+        if (!crudType) {
+            let mappedElementNameLower = (mappedElement ? mappedElement.getName() : operation.getName()).toLocaleLowerCase();
+            if (mappedElementNameLower.indexOf("create") &gt; -1) {
+                crudType = CrudType.Create;
+            }
+            else if (mappedElementNameLower.indexOf("update") &gt; -1) {
+                crudType = CrudType.Update;
+            }
+            else if (mappedElementNameLower.indexOf("delete") &gt; -1) {
+                crudType = CrudType.Delete;
+            }
+            else if (mappedElementNameLower.indexOf("get") &gt; -1) {
+                crudType = CrudType.Read;
+            }
+        }
+        let httpSettings = mappedElement?.getStereotype("Http Settings");
+        let httpVerb = httpSettings?.getProperty("Verb")?.getValue();
+        let httpRoute = httpSettings?.getProperty("Route")?.getValue();
+        const routeParamRegex = /\{([a-zA-Z0-9_\-]+)\}/g;
+        let httpRouteParams = httpRoute ? [...httpRoute.matchAll(routeParamRegex)].map(match =&gt; match[1]) : [];
+        return {
+            crudType: crudType,
+            httpVerb: httpVerb,
+            httpRoute: httpRoute,
+            httpRouteParams: httpRouteParams
+        };
+    }
+    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore) {
+        const childSpecialization = flattenFieldsFromComplexTypes
+            ? "DTO-Field"
+            : proxyFields.length &gt; 0
+                ? proxyFields[0].specialization
+                : "DTO-Field";
+        let elementManager = new ElementManager(actionElement, { childSpecialization: childSpecialization });
+        for (let proxyField of proxyFields) {
+            let paramRefType = proxyField.typeReference?.getType()?.specialization;
+            switch (paramRefType) {
+                case "Command":
+                case "Query":
+                case "DTO":
+                    // Complex type
+                    let proxyRefType = proxyField.typeReference.getType();
+                    if (flattenFieldsFromComplexTypes) {
+                        mappingStore.pushTargetPath(proxyField.id);
+                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore);
+                        mappingStore.popTargetPath();
+                    }
+                    else {
+                        let actionField = elementManager.addChild(proxyField.getName(), null);
+                        mappingStore.pushSourcePath(actionField.id);
+                        mappingStore.pushTargetPath(proxyField.id);
+                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore);
+                        mappingStore.popSourcePath();
+                        mappingStore.popTargetPath();
+                        actionField.typeReference.setType(actionDto.id);
+                        actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
+                        actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
+                    }
+                    break;
+                default:
+                    // Non-Complex type
+                    let fieldName = proxyField.getName();
+                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
+                        let parentName = proxyField.getParent().getName();
+                        fieldName = parentName + fieldName;
+                    }
+                    let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
+                    mappingStore.addMapping(actionField.id, proxyField.id);
+                    break;
+            }
+        }
+        elementManager.collapse();
+    }
+    static replicateDto(proxyDto, folder, mappingStore) {
+        let newDto = createElement("DTO", proxyDto.getName(), folder.id);
+        proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
+            let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
+            let fieldRefType = proxyField.typeReference?.getType()?.specialization;
+            switch (fieldRefType) {
+                case "Command":
+                case "Query":
+                case "DTO":
+                    // Complex type
+                    mappingStore.pushSourcePath(actionField.id);
+                    mappingStore.pushTargetPath(proxyField.id);
+                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
+                    mappingStore.popSourcePath();
+                    mappingStore.popTargetPath();
+                    actionField.typeReference.setType(nestedDto.id);
+                    break;
+                default:
+                    // Non-Complex type
+                    actionField.typeReference.setType(proxyField.typeReference.getTypeId());
+                    mappingStore.addMapping(actionField.id, proxyField.id);
+                    break;
+            }
+            actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
+            actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
+        });
+        return newDto;
+    }
+}
+/// &lt;reference path="../../common/openSelectItemDialog.ts" /&gt;
+/// &lt;reference path="../../common/proxyServiceHelper.ts" /&gt;
+async function execute(operation) {
+    let servicePackages = getPackages().filter(pkg =&gt; pkg.specialization === "Services Package");
+    let selectedPackage;
+    if (servicePackages.length == 1) {
+        selectedPackage = servicePackages[0];
+    }
+    else {
+        selectedPackage = await openSelectItemDialog(getPackageSelectItemOptions(servicePackages, "Service Package"));
+    }
+    const proxy = operation.getParent();
+    const folderName = pluralize(ProxyServiceHelper.sanitizeServiceName(proxy.getName()));
+    const folder = selectedPackage.getChildren("Folder").find(x =&gt; x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
+    let newOperation = ProxyServiceHelper.createAppServiceOperationAction(operation, folder);
+    const diagramElement = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id);
+    diagramElement.loadDiagram();
+    const diagram = getCurrentDiagram();
+    diagram.layoutVisuals([folder, newOperation.getParent()], null, true);
+}
+/**
+ * Used by Intent.Modelers.Services.DomainInteractions
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-appservice-proxy-operation-macro-advanced-mapping/create-appservice-proxy-operation-macro-advanced-mapping.ts
  */
 await execute(element);
 </script>

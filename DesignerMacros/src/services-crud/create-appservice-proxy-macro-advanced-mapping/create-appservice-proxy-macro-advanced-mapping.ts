@@ -10,23 +10,21 @@ async function execute(proxy: MacroApi.Context.IElementApi) {
         selectedPackage = await openSelectItemDialog(getPackageSelectItemOptions(servicePackages, "Service Package"));
     }
 
-    const folderName = pluralize(proxy.getName());
+    const folderName = pluralize(ProxyServiceHelper.sanitizeServiceName(proxy.getName()));
     const folder = selectedPackage.getChildren("Folder").find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
 
-    for (let operation of proxy.getChildren("Operation")) {
-        ProxyServiceHelper.createCqrsAction(operation, folder);
-    }
+    let service = ProxyServiceHelper.createAppServices(proxy, folder);
 
     const diagramElement = folder.getChildren("Diagram").find(x => x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id)
     diagramElement.loadDiagram();
     const diagram = getCurrentDiagram();
-    diagram.layoutVisuals(folder, null, true);
+    diagram.layoutVisuals([folder, service], null, true);
 }
 
 /**
  * Used by Intent.Modelers.Services.DomainInteractions
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-proxy-cqrs-macro-advanced-mapping/create-proxy-cqrs-macro-advanced-mapping.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-appservice-proxy-macro-advanced-mapping/create-appservice-proxy-macro-advanced-mapping.ts
  */
 //await execute(element);
