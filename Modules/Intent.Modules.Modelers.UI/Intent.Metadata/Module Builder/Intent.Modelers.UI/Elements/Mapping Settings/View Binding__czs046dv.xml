@@ -283,7 +283,7 @@
             <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Source Types" value="[&quot;c648af56-8a41-40e2-a996-d0e025462b30&quot;,&quot;dd00e457-f34b-47ea-bca6-138a3f52c385&quot;,&quot;165adfac-8ab7-42d1-829e-e699651eaa3d&quot;,&quot;5dacc38f-5bdd-43f5-8d2f-5ad3f12071ee&quot;]" isActive="false" />
             <property name="7149c438-f5de-432e-8cd7-356d691aee9e" display="Source Types Filter" isActive="false" />
             <property name="8c6140d1-311a-4233-b4c9-6ee41f15a606" display="Source Arrow Type" value="None" isActive="true" />
-            <property name="68504875-ebf6-47d6-ac36-c506431cf57c" display="Targets" value="All Types" isActive="true" />
+            <property name="68504875-ebf6-47d6-ac36-c506431cf57c" display="Targets" value="Data Types" isActive="true" />
             <property name="8050a21c-c6ff-46fd-8677-eeda40f10719" display="Target Types" value="[&quot;6fd90a34-c61f-4425-8039-348ad40372fe&quot;,&quot;797ad7f2-390b-49f2-ab16-d3ce01e51fc0&quot;,&quot;23274fdf-3186-4ba3-89cb-2feda16f4524&quot;,&quot;715a5637-9cfe-4036-a86f-6b410346e7ac&quot;]" isActive="false" />
             <property name="ff744541-57a1-4975-a312-b47035a158a3" display="Target Types Filter" isActive="false" />
             <property name="ba0f1099-248b-4bf1-ac12-adb78d44ff03" display="Target Arrow Type" value="Solid Arrow" isActive="true" />

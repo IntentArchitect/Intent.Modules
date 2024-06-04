@@ -1,4 +1,5 @@
-﻿using Intent.Metadata.Models;
+﻿using System;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Types.Api;
@@ -7,6 +8,11 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public class TypeConvertingCSharpMapping : CSharpMappingBase
 {
+    [Obsolete]
+    public TypeConvertingCSharpMapping(MappingModel model, ICSharpFileBuilderTemplate template) : this(model, (ICSharpTemplate)template)
+    {
+    }
+
     public TypeConvertingCSharpMapping(MappingModel model, ICSharpTemplate template) : base(model, template)
     {
     }

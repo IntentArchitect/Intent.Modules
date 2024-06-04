@@ -1607,6 +1607,7 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
           <sourceFilterFunction>return element.represents == 'data'</sourceFilterFunction>
           <sourceArrowFunction>return null</sourceArrowFunction>
           <targets />
+          <targetFilterFunction>return element.represents == 'data'</targetFilterFunction>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
