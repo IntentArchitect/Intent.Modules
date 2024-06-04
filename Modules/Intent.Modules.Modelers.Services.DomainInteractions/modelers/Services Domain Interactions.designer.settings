@@ -15067,19 +15067,28 @@ var CrudType;
     CrudType[CrudType["Delete"] = 3] = "Delete";
 })(CrudType || (CrudType = {}));
 class ProxyServiceHelper {
-    static createAppServices(proxy, folder) {
+    static _createService(proxy, folder) {
         let serviceName = proxy.getName();
-        serviceName = removeSuffix(serviceName, "Proxy", "Client", "Service");
-        serviceName += "Service";
-        serviceName = toPascalCase(serviceName);
-        const existing = folder.getChildren().find(x =&gt; x.getName() == serviceName);
+        serviceName = ProxyServiceHelper.sanitizeServiceName(serviceName);
+        const existing = folder.getPackage().getChildren("Service").find(x =&gt; x.getName() == serviceName);
         if (existing) {
             return existing;
         }
-        let serviceElement = createElement("Service", serviceName, folder.id);
+        let serviceElement = createElement("Service", serviceName, folder.getPackage().id);
         const httpServiceSettingsStereotypeId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
         let httpServiceSettings = serviceElement.getStereotype(httpServiceSettingsStereotypeId) ?? serviceElement.addStereotype(httpServiceSettingsStereotypeId);
         httpServiceSettings.getProperty("Route").setValue(`api/${toKebabCase(serviceName)}`);
+        return serviceElement;
+    }
+    static sanitizeServiceName(name) {
+        name = removeSuffix(name, "Proxy", "Client", "Service");
+        name = removeSuffix(name, "Proxy", "Client", "Service");
+        name += "Service";
+        name = toPascalCase(name);
+        return name;
+    }
+    static createAppServices(proxy, folder) {
+        let serviceElement = ProxyServiceHelper._createService(proxy, folder);
         for (let operation of proxy.getChildren("Operation")) {
             ProxyServiceHelper.createAppServiceOperationAction(operation, folder, serviceElement);
         }
@@ -15091,7 +15100,7 @@ class ProxyServiceHelper {
         operationName = toPascalCase(operationName);
         let metadata = ProxyServiceHelper.getProxyOperationMetadata(operation);
         if (!service) {
-            service = ProxyServiceHelper.createAppServices(operation.getParent(), folder);
+            service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
         let operationElement = createElement("Operation", operationName, service.id);
         let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
@@ -15110,6 +15119,8 @@ class ProxyServiceHelper {
         }
         if (operation.typeReference?.getTypeId()) {
             operationElement.typeReference.setType(operation.typeReference.getTypeId());
+            operationElement.typeReference.setIsCollection(operation.typeReference.getIsCollection());
+            operationElement.typeReference.setIsNullable(operation.typeReference.getIsNullable());
         }
         return operationElement;
     }
@@ -15149,6 +15160,8 @@ class ProxyServiceHelper {
         }
         if (operation.typeReference?.getTypeId()) {
             actionElement.typeReference.setType(operation.typeReference.getTypeId());
+            actionElement.typeReference.setIsCollection(operation.typeReference.getIsCollection());
+            actionElement.typeReference.setIsNullable(operation.typeReference.getIsNullable());
         }
         return actionElement;
     }
@@ -15638,6 +15651,8 @@ class ProxyServiceHelper {
         }
         if (operation.typeReference?.getTypeId()) {
             operationElement.typeReference.setType(operation.typeReference.getTypeId());
+            operationElement.typeReference.setIsCollection(operation.typeReference.getIsCollection());
+            operationElement.typeReference.setIsNullable(operation.typeReference.getIsNullable());
         }
         return operationElement;
     }
@@ -15677,6 +15692,8 @@ class ProxyServiceHelper {
         }
         if (operation.typeReference?.getTypeId()) {
             actionElement.typeReference.setType(operation.typeReference.getTypeId());
+            actionElement.typeReference.setIsCollection(operation.typeReference.getIsCollection());
+            actionElement.typeReference.setIsNullable(operation.typeReference.getIsNullable());
         }
         return actionElement;
     }
@@ -16120,19 +16137,28 @@ var CrudType;
     CrudType[CrudType["Delete"] = 3] = "Delete";
 })(CrudType || (CrudType = {}));
 class ProxyServiceHelper {
-    static createAppServices(proxy, folder) {
+    static _createService(proxy, folder) {
         let serviceName = proxy.getName();
-        serviceName = removeSuffix(serviceName, "Proxy", "Client", "Service");
-        serviceName += "Service";
-        serviceName = toPascalCase(serviceName);
-        const existing = folder.getChildren().find(x =&gt; x.getName() == serviceName);
+        serviceName = ProxyServiceHelper.sanitizeServiceName(serviceName);
+        const existing = folder.getPackage().getChildren("Service").find(x =&gt; x.getName() == serviceName);
         if (existing) {
             return existing;
         }
-        let serviceElement = createElement("Service", serviceName, folder.id);
+        let serviceElement = createElement("Service", serviceName, folder.getPackage().id);
         const httpServiceSettingsStereotypeId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
         let httpServiceSettings = serviceElement.getStereotype(httpServiceSettingsStereotypeId) ?? serviceElement.addStereotype(httpServiceSettingsStereotypeId);
         httpServiceSettings.getProperty("Route").setValue(`api/${toKebabCase(serviceName)}`);
+        return serviceElement;
+    }
+    static sanitizeServiceName(name) {
+        name = removeSuffix(name, "Proxy", "Client", "Service");
+        name = removeSuffix(name, "Proxy", "Client", "Service");
+        name += "Service";
+        name = toPascalCase(name);
+        return name;
+    }
+    static createAppServices(proxy, folder) {
+        let serviceElement = ProxyServiceHelper._createService(proxy, folder);
         for (let operation of proxy.getChildren("Operation")) {
             ProxyServiceHelper.createAppServiceOperationAction(operation, folder, serviceElement);
         }
@@ -16144,7 +16170,7 @@ class ProxyServiceHelper {
         operationName = toPascalCase(operationName);
         let metadata = ProxyServiceHelper.getProxyOperationMetadata(operation);
         if (!service) {
-            service = ProxyServiceHelper.createAppServices(operation.getParent(), folder);
+            service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
         let operationElement = createElement("Operation", operationName, service.id);
         let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
@@ -16163,6 +16189,8 @@ class ProxyServiceHelper {
         }
         if (operation.typeReference?.getTypeId()) {
             operationElement.typeReference.setType(operation.typeReference.getTypeId());
+            operationElement.typeReference.setIsCollection(operation.typeReference.getIsCollection());
+            operationElement.typeReference.setIsNullable(operation.typeReference.getIsNullable());
         }
         return operationElement;
     }
@@ -16202,6 +16230,8 @@ class ProxyServiceHelper {
         }
         if (operation.typeReference?.getTypeId()) {
             actionElement.typeReference.setType(operation.typeReference.getTypeId());
+            actionElement.typeReference.setIsCollection(operation.typeReference.getIsCollection());
+            actionElement.typeReference.setIsNullable(operation.typeReference.getIsNullable());
         }
         return actionElement;
     }
@@ -16706,6 +16736,8 @@ class ProxyServiceHelper {
         }
         if (operation.typeReference?.getTypeId()) {
             operationElement.typeReference.setType(operation.typeReference.getTypeId());
+            operationElement.typeReference.setIsCollection(operation.typeReference.getIsCollection());
+            operationElement.typeReference.setIsNullable(operation.typeReference.getIsNullable());
         }
         return operationElement;
     }
@@ -16745,6 +16777,8 @@ class ProxyServiceHelper {
         }
         if (operation.typeReference?.getTypeId()) {
             actionElement.typeReference.setType(operation.typeReference.getTypeId());
+            actionElement.typeReference.setIsCollection(operation.typeReference.getIsCollection());
+            actionElement.typeReference.setIsNullable(operation.typeReference.getIsNullable());
         }
         return actionElement;
     }
