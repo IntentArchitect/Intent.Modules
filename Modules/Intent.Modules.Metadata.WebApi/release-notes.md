@@ -1,3 +1,7 @@
+### Version 4.5.2
+
+- Fixed issue where route path validation breaks when tokens are complex
+
 ### Version 4.5.1
 
 - Fixed: Enums weren't accepted as values that can be passed in via route paths.

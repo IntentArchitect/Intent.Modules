@@ -36,7 +36,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             }
             else if (Model.TypeReference.IsCollection)
             {
-                var from = $"{_template.GetTypeName("Domain.Common.UpdateHelper")}.CreateOrUpdateCollection({GetTargetPathText()}, {GetSourcePathText()}, (e, d) => e.Equals({GetConstructorStatement("d")}), CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()})";
+                var from = $"{_template.GetTypeName("Domain.Common.UpdateHelper")}.CreateOrUpdateCollection({GetTargetPathText()}, {GetSourcePathText()}, (e, d) => e.Equals({GetConstructorStatement("d").GetText("            ")}), CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()})";
 
                 CreateUpdateMethod($"CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()}");
 
@@ -49,7 +49,8 @@ namespace Intent.Modules.Common.CSharp.Mapping
         {
             var ctor = new ConstructorMapping(_mappingModel, _template);
             ctor.SetSourceReplacement(GetSourcePath().Last().Element, variableName);
-            return ctor.GetSourceStatement();
+            var result = ctor.GetSourceStatement();
+            return result;
         }
 
         private void CreateUpdateMethod(string updateMethodName)
@@ -82,7 +83,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
                     method.AddIfStatement("valueObject is null", stmt => 
                     {
-                        stmt.AddStatement($"return {GetConstructorStatement("dto")};");
+                        stmt.AddStatement($"return {GetConstructorStatement("dto").GetText("                ")};");
                     });
                     method.AddStatement("return valueObject;");
                 });
