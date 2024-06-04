@@ -29,7 +29,6 @@
     <PackageReference Include="Intent.Modules.Modelers.Domain.StoredProcedures" Version="1.0.0" />
     <PackageReference Include="Intent.Modules.Modelers.Services" Version="3.7.0" />
     <PackageReference Include="Intent.Modules.Modelers.Services.CQRS" Version="4.2.0" />
-    <PackageReference Include="Intent.Modules.Modelers.Types.ServiceProxies" Version="5.3.0" />
     <PackageReference Include="Intent.Packager" Version="3.4.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

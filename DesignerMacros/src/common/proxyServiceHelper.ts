@@ -28,9 +28,9 @@ class ProxyServiceHelper {
         }
         
         let serviceElement = createElement("Service", serviceName, folder.getPackage().id);
-        const httpServiceSettingsStereotypeId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
-        let httpServiceSettings = serviceElement.getStereotype(httpServiceSettingsStereotypeId) ?? serviceElement.addStereotype(httpServiceSettingsStereotypeId);
-        httpServiceSettings.getProperty("Route").setValue(`api/${toKebabCase(serviceName)}`);
+        //const httpServiceSettingsStereotypeId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
+        // let httpServiceSettings = serviceElement.getStereotype(httpServiceSettingsStereotypeId) ?? serviceElement.addStereotype(httpServiceSettingsStereotypeId);
+        // httpServiceSettings.getProperty("Route").setValue(`api/${toKebabCase(serviceName)}`);
         return serviceElement;
     }
 
@@ -71,10 +71,10 @@ class ProxyServiceHelper {
             let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
             let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
             
-            const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-            let httpSettings = operationElement.getStereotype(httpSettingsStereotypeId) ?? operationElement.addStereotype(httpSettingsStereotypeId);
-            httpSettings.getProperty("Verb").setValue(verb);
-            httpSettings.getProperty("Route").setValue(route);
+            // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+            // let httpSettings = operationElement.getStereotype(httpSettingsStereotypeId) ?? operationElement.addStereotype(httpSettingsStereotypeId);
+            // httpSettings.getProperty("Verb").setValue(verb);
+            // httpSettings.getProperty("Route").setValue(route);
 
             let mappingStore: MappingStore = new MappingStore();
             ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
@@ -125,10 +125,10 @@ class ProxyServiceHelper {
         let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
         let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
         
-        const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-        let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
-        httpSettings.getProperty("Verb").setValue(verb);
-        httpSettings.getProperty("Route").setValue(route);
+        // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+        // let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
+        // httpSettings.getProperty("Verb").setValue(verb);
+        // httpSettings.getProperty("Route").setValue(route);
 
         let mappingStore: MappingStore = new MappingStore();
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
@@ -154,7 +154,28 @@ class ProxyServiceHelper {
         let mappedElement = operation.getMapping()?.getElement();
         let crudType: CrudType;
 
-        if (mappedElement && (mappedElement.specialization === "Command" || 
+        let httpSettings = mappedElement?.getStereotype("Http Settings");
+        let httpVerb: string = httpSettings?.getProperty("Verb")?.getValue() as string;           
+        let httpRoute: string = httpSettings?.getProperty("Route")?.getValue() as string;
+        const routeParamRegex = /\{([a-zA-Z0-9_\-]+)\}/g;
+        let httpRouteParams = httpRoute ? [...httpRoute.matchAll(routeParamRegex)].map(match => match[1]) : [];
+
+        if (httpVerb) {
+            switch (httpVerb.toUpperCase()) {
+                case "POST":
+                    crudType = CrudType.Create;
+                    break;
+                case "PUT":
+                    crudType = CrudType.Update;
+                    break;
+                case "DELETE":
+                    crudType = CrudType.Delete;
+                    break;
+                case "GET":
+                    crudType = CrudType.Read;
+                    break;
+            }
+        } else if (mappedElement && (mappedElement.specialization === "Command" || 
             mappedElement.specialization === "Query" || 
             mappedElement.specialization === "Operation")) {
                 for (let association of mappedElement.getAssociations()) {
@@ -173,9 +194,7 @@ class ProxyServiceHelper {
                             break;
                     }
                 }
-        }
-
-        if (!crudType) {
+        } else if (!crudType) {
             let mappedElementNameLower = (mappedElement ? mappedElement.getName() : operation.getName()).toLocaleLowerCase();
             if (mappedElementNameLower.indexOf("create") > -1) {
                 crudType = CrudType.Create;
@@ -183,16 +202,10 @@ class ProxyServiceHelper {
                 crudType = CrudType.Update;
             } else if (mappedElementNameLower.indexOf("delete") > -1) {
                 crudType = CrudType.Delete;
-            } else if (mappedElementNameLower.indexOf("get") > -1) {
+            } else if (mappedElementNameLower.indexOf("get") > -1 || mappedElementNameLower.indexOf("find") > -1) {
                 crudType = CrudType.Read;
             }
         }
-
-        let httpSettings = mappedElement?.getStereotype("Http Settings");
-        let httpVerb: string = httpSettings?.getProperty("Verb")?.getValue() as string;           
-        let httpRoute: string = httpSettings?.getProperty("Route")?.getValue() as string;
-        const routeParamRegex = /\{([a-zA-Z0-9_\-]+)\}/g;
-        let httpRouteParams = httpRoute ? [...httpRoute.matchAll(routeParamRegex)].map(match => match[1]) : [];
 
         return {
             crudType: crudType,
