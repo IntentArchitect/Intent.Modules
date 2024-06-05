@@ -1,3 +1,7 @@
+### Version 1.1.4
+
+- New Feature: Added scripts for Service Proxies to create App Services/CQRS Services from.
+
 ### Version 1.1.3
 
 - Improvement: Improved mapping support around `Data Contracts` and `Value Objects`.

@@ -254,6 +254,9 @@ class ProxyServiceHelper {
                             actionField.typeReference.setType(actionDto.id);
                             actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
                             actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
+                            if (proxyField.hasMetadata("endpoint-input-id")) {
+                                actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
+                            }
                         }
                         break;
                     default:
@@ -265,6 +268,9 @@ class ProxyServiceHelper {
                         }
                         let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
                         mappingStore.addMapping(actionField.id, proxyField.id);
+                        if (proxyField.hasMetadata("endpoint-input-id")) {
+                            actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
+                        }
                         break;
                 }
             }
