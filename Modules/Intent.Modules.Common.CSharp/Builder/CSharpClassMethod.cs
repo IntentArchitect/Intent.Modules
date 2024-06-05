@@ -9,7 +9,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public interface ICSharpMethodDeclaration : IHasICSharpParameters, ICSharpReferenceable, IHasCSharpStatements
 {
-    bool IsAsync { get; } 
+    bool IsAsync { get; }
     public ICSharpExpression ReturnType { get; }
 }
 
@@ -31,6 +31,11 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
     public CSharpClass Class { get; }
 
+    /// <summary>
+    /// Use <see cref="CSharpClassMethod(string,string,ICSharpCodeContext)"/> instead.
+    /// </summary>
+    [Obsolete]
+    public CSharpClassMethod(string returnType, string name, CSharpClass @class) : this(returnType, name, (ICSharpCodeContext)@class) { }
 
     public CSharpClassMethod(string returnType, string name, ICSharpCodeContext @class)
     {
@@ -85,7 +90,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    public CSharpClassMethod AddParameter<TModel>(TModel model, Action<CSharpParameter> configure = null) where TModel 
+    public CSharpClassMethod AddParameter<TModel>(TModel model, Action<CSharpParameter> configure = null) where TModel
         : IMetadataModel, IHasName, IHasTypeReference
     {
         return AddParameter(File.GetModelType(model), model.Name.ToParameterName(), param =>
@@ -156,14 +161,14 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         GenericParameters.Add(param);
         return this;
     }
-    
+
     public CSharpClassMethod AddGenericParameter(string typeName, out CSharpGenericParameter param)
     {
         param = new CSharpGenericParameter(typeName);
         GenericParameters.Add(param);
         return this;
     }
-    
+
     public CSharpClassMethod AddGenericTypeConstraint(string genericParameterName, Action<CSharpGenericTypeConstraint> configure)
     {
         var param = new CSharpGenericTypeConstraint(genericParameterName);
@@ -303,7 +308,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     }
 
     private string StripTask()
-    {   
+    {
         //Task<X> => X
         return ReturnType.Substring(5, ReturnType.Length - 6);
     }
@@ -312,12 +317,12 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     {
         IsAsync = true;
         var taskType = File.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
-        if (!ReturnType.StartsWith(taskType) )
+        if (!ReturnType.StartsWith(taskType))
         {
             if (taskType == "System.Threading.Tasks.Task" && ReturnType.StartsWith("Task<"))
             {
-				ReturnType = "System.Threading.Tasks." + ReturnType;
-			}
+                ReturnType = "System.Threading.Tasks." + ReturnType;
+            }
             else
             {
                 ReturnType = ReturnType == "void" ? taskType : $"{taskType}<{ReturnType}>";
@@ -420,7 +425,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
 {indentation}    ";
         return newLine + string.Join(newLine, GenericTypeConstraints);
     }
-    
+
     private string GetGenericParameters()
     {
         if (!GenericParameters.Any())
