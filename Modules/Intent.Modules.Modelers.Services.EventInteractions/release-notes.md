@@ -1,5 +1,9 @@
 ### Version 1.1.0
 
+- Improvement: Added Stereotype visuals for `Mesasge` and `IntegrationCommand`.
+
+### Version 1.1.0
+
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
 - Improvement: Added extension methods for getting messages, message DTOs and message Enums based on being used in an association of any type the services designer.
 
