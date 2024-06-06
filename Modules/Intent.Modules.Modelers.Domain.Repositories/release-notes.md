@@ -1,3 +1,7 @@
+### Version 3.5.0
+
+- New Feature: Repositories can now have their own Operations modeled for both Bespoke and Entity-based Repositories.
+
 ### Version 3.4.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

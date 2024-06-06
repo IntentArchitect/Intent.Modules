@@ -1,6 +1,7 @@
 ### Version 1.1.4
 
 - New Feature: Added scripts for Service Proxies to create App Services/CQRS Services from.
+- Improvement: Added ability to drag Repositories onto the application service designer you can perform Call Operations on them.
 
 ### Version 1.1.3
 
