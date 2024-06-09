@@ -7034,7 +7034,7 @@ vertical-align: center`</style>
                 <position x="${x}" y="${y + 48}" />
               </drawText>
               <drawSvgResource>
-                <path>domain-service.svg</path>
+                <path>respository.svg</path>
                 <size width="${w}" height="40" />
                 <position x="${x}" y="${y + 6}" />
               </drawSvgResource>
