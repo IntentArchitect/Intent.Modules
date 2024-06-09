@@ -19,6 +19,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.RazorStringInterpolation
                      [IntentManaged(Mode.Fully, Body = Mode.Merge)]
                      public partial class {{ClassName}}
                      {
+                         /// <inheritdoc />
                          [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
                          public override string TransformText()
                          {

@@ -13,11 +13,19 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace <#= Namespace #>
 {
+    /// <summary>
+    /// A Razor template.
+    /// </summary>
     [IntentManaged(Mode.Fully, Body = Mode.Merge)]
     <#= GetAccessModifier() #>class <#= ClassName #> : <#= string.Join(", ", GetBaseTypes()) #>
     {
+        /// <inheritdoc cref="IntentTemplateBase.Id"/>
+        [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";
 
+        /// <summary>
+        /// Creates a new instance of <see cref="<#= ClassName #>"/>.
+        /// </summary>
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : "" #>) : base(TemplateId, outputTarget, model)
         {
@@ -33,10 +41,12 @@ namespace <#= Namespace #>
         }
 <#  if (Model.GetRazorTemplateSettings()?.TemplatingMethod().IsRazorFileBuilder() == true) { #>
 
+        /// <inheritdoc />
         [IntentManaged(Mode.Fully)]
         public <#= UseType("Intent.Modules.Blazor.Api.RazorFile") #> RazorFile { get; }
 <#  } #>
 
+        /// <inheritdoc />
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override RazorFileConfig DefineRazorConfig()
         {
@@ -47,20 +57,9 @@ namespace <#= Namespace #>
         }
 <#  if (Model.GetRazorTemplateSettings()?.TemplatingMethod().IsRazorFileBuilder() == true) { #>
 
+        /// <inheritdoc />
         [IntentManaged(Mode.Fully)]
-        public override string TransformText()
-        {
-            var razorFile = RazorFile.Build();
-            foreach (var @using in this.ResolveAllUsings(
-                         "System",
-                         "System.Collections.Generic"
-                     ).Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
-            {
-                razorFile.AddUsing(@using);
-            }
-
-            return razorFile.ToString();
-        }
+        public override string TransformText() => RazorFile.ToString();
 <#  } #>
     }
 }

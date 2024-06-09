@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Intent.Modules.Common.CSharp.Builder;
 
-namespace Intent.Modules.Common.CSharp.Razor;
+namespace Intent.Modules.Common.CSharp.RazorBuilder;
 
 public static class BlazorFileExtensions
 {

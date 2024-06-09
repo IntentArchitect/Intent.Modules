@@ -25,7 +25,6 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.RazorTemplatePartial
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public RazorTemplatePartialTemplate(IOutputTarget outputTarget, RazorTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency(IntentNugetPackages.IntentModulesBlazor);
             AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
             AddNugetDependency(IntentNugetPackages.IntentModulesCommonCSharp);
             AddNugetDependency(IntentNugetPackages.IntentSoftwareFactorySdk);
@@ -54,10 +53,6 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.RazorTemplatePartial
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: IntentModule.IntentCommonCSharp.Name,
                 moduleVersion: IntentModule.IntentCommonCSharp.Version));
-
-            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
-                moduleId: IntentModule.IntentBlazor.Name,
-                moduleVersion: IntentModule.IntentBlazor.Version));
 
             if (Model.GetDesigner() != null)
             {

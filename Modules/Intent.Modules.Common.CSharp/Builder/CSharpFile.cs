@@ -260,7 +260,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
     {
         if (_configurations.Count == 0)
         {
-            return Array.Empty<(Action Invoke, int Order)>();
+            return [];
         }
 
         var toReturn = _configurations.ToArray();

@@ -5,6 +5,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.FactoryExtensions;
+using Intent.Modules.Common.CSharp.RazorBuilder;
 using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
@@ -250,12 +251,10 @@ namespace Intent.Modules.Common.CSharp.Templates
                 foreignType = $"{foreignType[..foreignType.IndexOf('<', StringComparison.Ordinal)]}";
             }
 
-            var usingPaths = DependencyUsings
-                .Split(';')
-                .Select(x => x.Trim().Replace("using ", ""))
-                .Where(x => !string.IsNullOrWhiteSpace(x))
+            var usingPaths = ResolveAllUsings()
                 .Concat(_templateUsings ??= GetUsingsFromContent(GenerationEnvironment?.ToString() ?? string.Empty))
                 .Concat(_existingContentUsings ??= GetUsingsFromContent(TryGetExistingFileContent(out var existingContent) ? existingContent : string.Empty))
+                .Concat(_additionalUsingNamespaces)
                 // ReSharper disable once SuspiciousTypeConversion.Global
                 .Concat((this as ICSharpFileBuilderTemplate)?.CSharpFile.Usings.Select(u => u.Namespace) ?? [])
                 .Distinct()
@@ -522,7 +521,23 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <summary>
         /// Returns all using statements that are introduced through dependencies.
         /// </summary>
-        public virtual string DependencyUsings => this.ResolveAllUsings(namespacesToIgnore: Namespace);
+        public virtual string DependencyUsings =>
+            string.Join(Environment.NewLine, ResolveAllUsings().Select(@using => $"using {@using};"));
+
+        /// <summary>
+        /// Resolves all dependency usings for this template.
+        /// </summary>
+        protected IEnumerable<string> ResolveAllUsings()
+        {
+            var usingDirectives = this.GetAll<IDeclareUsings, string>(item => item.DeclareUsings())
+                .Where(@namespace => 
+                    !string.IsNullOrWhiteSpace(@namespace) && 
+                    @namespace != Namespace &&
+                    !Namespace.StartsWith($"{@namespace}."))
+                .Distinct();
+
+            return usingDirectives;
+        }
 
         private readonly ICollection<INugetPackageInfo> _nugetDependencies = new List<INugetPackageInfo>();
 

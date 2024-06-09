@@ -21,7 +21,7 @@ namespace Intent.Modules.Common.Templates
         /// Obsolete. Use <see cref="ResolveAllUsings(ITemplate,string[])"/> instead.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
-        public static string ResolveAllUsings(this ITemplate template, ISoftwareFactoryExecutionContext context, params string[] namespacesToIgnore)
+        public static string ResolveAllUsings(ITemplate template, ISoftwareFactoryExecutionContext context, params string[] namespacesToIgnore)
         {
             return ResolveAllUsings(template, namespacesToIgnore);
         }
@@ -29,8 +29,18 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Resolves all usings for the provided <paramref name="template"/>.
         /// </summary>
-        public static string ResolveAllUsings(this ITemplate template, params string[] namespacesToIgnore)
+        public static string ResolveAllUsings(ITemplate template, params string[] namespacesToIgnore)
         {
+            var templateNamespace = GetNamespace(template) ?? string.Empty;
+
+            var usingDirectives = template.GetAll<IDeclareUsings, string>(item => item.DeclareUsings())
+                .Where(@namespace => !string.IsNullOrWhiteSpace(@namespace) && !IsRedundant(@namespace, templateNamespace))
+                .Except(namespacesToIgnore)
+                .Select(@namespace => $"using {@namespace};")
+                .Distinct();
+
+            return string.Join(Environment.NewLine, usingDirectives);
+
             static string GetNamespace(ITemplate templateInstance)
             {
                 return templateInstance?.GetMetadata().CustomMetadata.TryGetValue("Namespace", out var @namespace) == true
@@ -43,16 +53,6 @@ namespace Intent.Modules.Common.Templates
                 return templateNamespace == otherNamespace ||
                        templateNamespace.StartsWith($"{otherNamespace}.");
             }
-
-            var templateNamespace = GetNamespace(template) ?? string.Empty;
-
-            var usingDirectives = template.GetAll<IDeclareUsings, string>(item => item.DeclareUsings())
-                .Where(@namespace => !string.IsNullOrWhiteSpace(@namespace) && !IsRedundant(@namespace, templateNamespace))
-                .Except(namespacesToIgnore)
-                .Select(@namespace => $"using {@namespace};")
-                .Distinct();
-
-            return string.Join(Environment.NewLine, usingDirectives);
         }
 
         /// <summary>
