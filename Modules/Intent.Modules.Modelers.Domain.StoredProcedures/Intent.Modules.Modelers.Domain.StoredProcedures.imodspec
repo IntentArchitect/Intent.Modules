@@ -20,7 +20,7 @@
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
   </files>
-  <tags>stored procedure</tags>
+  <tags>domain modeler designer stored procedure</tags>
   <moduleSettingsExtensions />
   <metadata>
     <install src="modelers/Domain Stored Procedure.designer.settings" externalReference="276019e5-fc1a-401e-9450-ef8468606781" target="Domain" />

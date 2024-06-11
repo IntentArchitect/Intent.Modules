@@ -26,5 +26,5 @@
     <install src="modelers/Domain Value Objects.designer.settings" externalReference="da1d4420-70d8-408b-b8d3-f1def412d14c" target="Domain" />
     <install target="Domain;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Domain.ValueObjects/Intent.Modelers.Domain.ValueObjects.pkg.config" externalReference="94454582-ba60-4ab4-ae61-6f53b914b76d" />
   </metadata>
-  <tags />
+  <tags>domain designer uml modeler value object vo ddd</tags>
 </package>

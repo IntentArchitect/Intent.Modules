@@ -28,5 +28,5 @@
     <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Services.GraphQL/Intent.Modelers.Services.GraphQL.pkg.config" externalReference="4da68eac-087e-4669-9f37-b6d869e98eda" />
     <install src="modelers/GraphQL DTO Extensions.designer.settings" externalReference="e8920bed-bd85-4fde-bbb9-fb142fb77364" target="Services" />
   </metadata>
-  <tags />
+  <tags>graphql services query</tags>
 </package>
