@@ -56,6 +56,24 @@ steps:
     filePath: 'PipelineScripts/pre-build-validation.ps1'
     arguments: 'true'
 
+- task: PowerShell@2
+  displayName: 'Check TypeScript version'
+  inputs:
+    targetType: inline
+    script: |
+      Write-Host "Install TypeScript:"
+      npm install -g typescript
+      Write-Host "Check TypeScript version:"
+      tsc --version
+
+- task: PowerShell@2
+  displayName: 'Compile Designer Macro type script files'
+  inputs:
+    targetType: inline
+    script: |
+      cd DesignerMacros/src
+      ./compile-all.ps1
+
 # Required for entry in NuGet.Config that is generated as part of 'dotnet pack'.
 - task: NuGetAuthenticate@1
 
