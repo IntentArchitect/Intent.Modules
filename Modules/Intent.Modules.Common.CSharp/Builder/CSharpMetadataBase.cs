@@ -10,7 +10,7 @@ public interface ICSharpReferenceable : IHasCSharpName, ICSharpCodeContext
 {
 }
 
-public interface IBuildsCSharpMembers
+public interface IBuildsCSharpMembers : ICSharpCodeContext
 {
     IList<ICodeBlock> Declarations { get; }
     IBuildsCSharpMembers AddField(string type, string name, Action<CSharpField> configure = null);

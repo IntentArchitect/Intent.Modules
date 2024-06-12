@@ -30,15 +30,5 @@
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="e307ef52-161b-4375-a4d1-f070b6b3430a">
-      <name>On Invalid Submit</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <represents>invokable</represents>
-      <valueOptions />
-      <lookupTypes />
-    </property>
   </properties>
 </stereotypeDefinition>

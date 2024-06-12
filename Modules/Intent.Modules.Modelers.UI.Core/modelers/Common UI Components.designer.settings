@@ -1019,6 +1019,8 @@ element.getChildren().filter(x =&gt; x.specialization == "Property" || x.special
 const invocationMappingTypeId = "e4f0c63b-0f00-42bd-a703-00adf44f3364";
 const footer = form.getChildren("Container").find(x =&gt; x.getName() == "Footer");
 const saveButton = createElement("Button", "Save", footer.id);
+// Interactions -&gt; Type = Submit:
+saveButton.getStereotype("a7de29e5-4bee-4e5d-93f0-740569ac6130").getProperty("7cee794d-e1a7-4590-b65a-6e56914a2a97").setValue("Submit")
 const saveOperation = createElement("Component Operation", "OnSaveClicked", mapping.getSourceElement().id);
 mapping.addMappedEnd(invocationMappingTypeId, saveOperation.getMappingPath(), saveButton.getMappingPath().concat(["b80f61a7-3b9e-4b75-806f-71d4f8b9900a"]));
 
