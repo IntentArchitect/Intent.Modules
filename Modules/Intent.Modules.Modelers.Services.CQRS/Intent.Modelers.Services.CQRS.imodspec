@@ -26,5 +26,5 @@
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />
-  <tags />
+  <tags>modelers designer cqrs services command query</tags>
 </package>

@@ -19,6 +19,11 @@ function exposeAsHttpEndPoint(request: MacroApi.Context.IElementApi): void {
     else if (!["Get", "Find", "Lookup"].some(x => request.getName().startsWith(x))) {
         routeParts.push(toKebabCase(removeSuffix(request.getName(), "Request", "Query")));
     }
+    
+    let endpointInputIdElement = request.getChildren().filter(x => x.hasMetadata("endpoint-input-id"))[0];
+    if (endpointInputIdElement) {
+        routeParts.push(`{${toCamelCase(endpointInputIdElement.getName())}}`);
+    }
 
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
     const httpSettings = request.getStereotype(httpSettingsId) ?? request.addStereotype(httpSettingsId);

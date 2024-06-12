@@ -24,5 +24,5 @@
   <metadata>
     <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Common.Dart/Intent.Common.Dart.pkg.config" externalReference="bafb942a-20da-45b1-a9c8-b6ec25188e30" />
   </metadata>
-  <tags />
+  <tags>common dart</tags>
 </package>

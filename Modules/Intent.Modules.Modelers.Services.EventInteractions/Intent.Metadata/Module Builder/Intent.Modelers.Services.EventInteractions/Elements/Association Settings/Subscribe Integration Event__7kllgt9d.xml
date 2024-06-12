@@ -296,7 +296,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="if (!association.isTargetEnd) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;const handler = association.getOtherEnd().typeReference.getType();&#xD;&#xA;// hasn't been added YET (NOTE this could be buggy later if we )&#xD;&#xA;if (handler.getAssociations(&quot;Subscribe Integration Event&quot;).length == 0) {&#xD;&#xA;    handler.setName(association.typeReference.getType().getName() + &quot;Handler&quot;)&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="if (!association.isTargetEnd) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;const handler = association.getOtherEnd().typeReference.getType();&#xD;&#xA;// hasn't been added YET (NOTE this could be buggy later if we )&#xD;&#xA;if (handler.getAssociations(&quot;Subscribe Integration Event&quot;).length == 0 &amp;&amp; handler.getAssociations(&quot;Subscribe Integration Command&quot;).length == 0) {&#xD;&#xA;    handler.setName(association.typeReference.getType().getName() + &quot;Handler&quot;)&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

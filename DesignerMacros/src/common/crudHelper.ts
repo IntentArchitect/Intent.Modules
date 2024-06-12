@@ -1,3 +1,5 @@
+/// <reference path="../common/domainHelper.ts" />
+
 class CrudConstants {
     static mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
     static mapToDomainConstructorForDtosSettingId = "8d1f6a8a-77c8-43a2-8e60-421559725419";

@@ -8,6 +8,7 @@
   <description>For the creation of TypeScript Templates in the Intent Module Builder</description>
   <authors>Intent Architect</authors>
   <releaseNotes>release-notes.md</releaseNotes>
+  <tags>Intent Module Builder TypeScript ts</tags>
   <templates>
     <template id="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial" externalReference="f3b2cfd1-4214-4dd0-bec6-71cb2f47318c">
       <config>

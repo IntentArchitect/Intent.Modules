@@ -1,4 +1,8 @@
-﻿### Version 5.1.0
+﻿### Version 5.2.0
+
+- Improvement: Extend Service Proxy metadata to also be compatible within a Service designer.
+
+### Version 5.1.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
 

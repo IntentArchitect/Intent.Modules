@@ -19,6 +19,11 @@ function exposeAsHttpEndPoint(command: MacroApi.Context.IElementApi): void {
         routeParts.push(toKebabCase(removeSuffix(command.getName(), "Request", "Command")));
     }
 
+    let endpointInputIdElement = command.getChildren().filter(x => x.hasMetadata("endpoint-input-id"))[0];
+    if (endpointInputIdElement) {
+        routeParts.push(`{${toCamelCase(endpointInputIdElement.getName())}}`);
+    }
+
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
     const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
     const httpSettings = command.getStereotype(httpSettingsId) ?? command.addStereotype(httpSettingsId);

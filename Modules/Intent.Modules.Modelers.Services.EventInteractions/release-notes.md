@@ -1,3 +1,8 @@
+### Version 1.1.1
+
+- Improvement: Added Stereotype visuals for `Mesasge` and `IntegrationCommand`.
+- Fixed: Scripting issue which would under certain circumstances rename Integration Handlers.
+
 ### Version 1.1.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

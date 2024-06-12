@@ -1,4 +1,5 @@
 /// <reference path="getSurrogateKeyType.ts"/>
+/// <reference path="attributeWithMapPath.ts"/>
 
 interface IISelectEntityDialogOptions {
     includeOwnedRelationships: boolean;
@@ -7,11 +8,6 @@ interface IISelectEntityDialogOptions {
 class DomainHelper {
 
     static async openSelectEntityDialog(options?: IISelectEntityDialogOptions): Promise<MacroApi.Context.IElementApi> {
-        /*let classes = lookupTypesOf("Class").filter(x => 
-            DomainHelper.isAggregateRoot(x) || 
-            (options?.includeOwnedRelationships != false && DomainHelper.ownerIsAggregateRoot(x) && DomainHelper.hasPrimaryKey(x)) || 
-            x.hasStereotype("Repository"));*/
-
         let classes = lookupTypesOf("Class").filter(x => DomainHelper.filterClassSelection(x, options));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
@@ -371,12 +367,3 @@ class DomainHelper {
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
     }
 }
-
-interface IAttributeWithMapPath {
-    id: string,
-    name: string,
-    typeId: string,
-    mapPath: string[],
-    isNullable: boolean,
-    isCollection: boolean
-};

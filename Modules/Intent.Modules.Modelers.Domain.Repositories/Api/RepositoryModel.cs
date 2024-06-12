@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
@@ -44,6 +45,11 @@ namespace Intent.Modelers.Domain.Repositories.Api
         public ITypeReference EntityType => TypeReference?.Element != null ? TypeReference : null;
 
         public IElement InternalElement => _element;
+
+        public IList<OperationModel> Operations => _element.ChildElements
+            .GetElementsOfType(OperationModel.SpecializationTypeId)
+            .Select(x => new OperationModel(x))
+            .ToList();
 
         public override string ToString()
         {

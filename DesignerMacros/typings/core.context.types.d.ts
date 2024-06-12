@@ -600,6 +600,8 @@ declare namespace MacroApi.Context {
          * Returns the stereotype that matches the specified name or definition identifier
          */
         getStereotype(nameOrDefinitionId: string): IStereotypeApi;
+
+        getAssociations(type?: string): IAssociationApi[];
     }
 
     interface IBackwardCompatibleIAssociationReadOnlyApi extends IAssociationReadOnlyApi {

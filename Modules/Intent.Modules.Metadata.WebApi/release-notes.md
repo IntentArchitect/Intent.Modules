@@ -1,6 +1,10 @@
+### Version 4.5.3
+
+- Fixed: Route parameter generation for CQRS Services fixed that are generated from Service Proxies.
+
 ### Version 4.5.2
 
-- Fixed issue where route path validation breaks when tokens are complex
+- Fixed: Issue where route path validation breaks when tokens are complex.
 
 ### Version 4.5.1
 

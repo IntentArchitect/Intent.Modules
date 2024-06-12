@@ -21,4 +21,5 @@
     <file src="$outDir$/$id$.pdb" />
   </files>
   <metadata />
+  <tags>common html</tags>
 </package>

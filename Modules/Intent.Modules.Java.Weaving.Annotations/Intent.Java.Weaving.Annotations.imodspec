@@ -61,5 +61,5 @@
   <metadata />
   <moduleSettings />
   <moduleSettingsExtensions />
-  <tags />
+  <tags>java weaving annotations</tags>
 </package>
