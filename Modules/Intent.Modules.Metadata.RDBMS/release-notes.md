@@ -1,3 +1,7 @@
+### Version 3.6.2
+
+- Improvement: Added `Order` to the `Column` stereotype.
+
 ### Version 3.6.1
 
 - Improvement: Added `TryGetDecimalPrecisionAndScale()` module setting method to parse the precision and scale from `Decimal Precision And Scale` setting.

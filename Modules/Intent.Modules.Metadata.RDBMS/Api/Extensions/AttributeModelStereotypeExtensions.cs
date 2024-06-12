@@ -319,6 +319,11 @@ namespace Intent.Metadata.RDBMS.Api
                 return _stereotype.GetProperty<string>("Type");
             }
 
+            public int? Order()
+            {
+                return _stereotype.GetProperty<int?>("Order");
+            }
+
         }
 
         public class ComputedValue

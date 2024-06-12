@@ -46,5 +46,14 @@ return `${name}${type}`;</displayFunction>
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="94f5a58f-b340-4a8b-b5dd-b618ecd7fc95">
+      <name>Order</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>
