@@ -9,7 +9,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public interface ICSharpMethodDeclaration : IHasICSharpParameters, ICSharpReferenceable, IHasCSharpStatements
 {
-    bool IsAsync { get; } 
+    bool IsAsync { get; }
     public ICSharpExpression ReturnType { get; }
 }
 
@@ -85,7 +85,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    public CSharpClassMethod AddParameter<TModel>(TModel model, Action<CSharpParameter> configure = null) where TModel 
+    public CSharpClassMethod AddParameter<TModel>(TModel model, Action<CSharpParameter> configure = null) where TModel
         : IMetadataModel, IHasName, IHasTypeReference
     {
         return AddParameter(File.GetModelType(model), model.Name.ToParameterName(), param =>
@@ -109,6 +109,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         {
             AddParameter(model, configure);
         }
+
         return this;
     }
 
@@ -156,14 +157,14 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         GenericParameters.Add(param);
         return this;
     }
-    
+
     public CSharpClassMethod AddGenericParameter(string typeName, out CSharpGenericParameter param)
     {
         param = new CSharpGenericParameter(typeName);
         GenericParameters.Add(param);
         return this;
     }
-    
+
     public CSharpClassMethod AddGenericTypeConstraint(string genericParameterName, Action<CSharpGenericTypeConstraint> configure)
     {
         var param = new CSharpGenericTypeConstraint(genericParameterName);
@@ -200,6 +201,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
             Statements.Insert(index, s);
             s.Parent = this;
         }
+
         configure?.Invoke(statements);
         return this;
     }
@@ -222,6 +224,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
             Statements.Add(statement);
             statement.Parent = this;
         }
+
         configure?.Invoke(arrayed);
 
         return this;
@@ -238,6 +241,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         AccessModifier = "protected ";
         return this;
     }
+
     public CSharpClassMethod Private()
     {
         AccessModifier = "private ";
@@ -299,11 +303,12 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         {
             ReturnType = ReturnType == "Task" ? "void" : StripTask();
         }
+
         return this;
     }
 
     private string StripTask()
-    {   
+    {
         //Task<X> => X
         return ReturnType.Substring(5, ReturnType.Length - 6);
     }
@@ -312,17 +317,18 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     {
         IsAsync = true;
         var taskType = File.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
-        if (!ReturnType.StartsWith(taskType) )
+        if (!ReturnType.StartsWith(taskType))
         {
             if (taskType == "System.Threading.Tasks.Task" && ReturnType.StartsWith("Task<"))
             {
-				ReturnType = "System.Threading.Tasks." + ReturnType;
-			}
+                ReturnType = "System.Threading.Tasks." + ReturnType;
+            }
             else
             {
                 ReturnType = ReturnType == "void" ? taskType : $"{taskType}<{ReturnType}>";
             }
         }
+
         return this;
     }
 
@@ -339,6 +345,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         {
             stmt.WithoutSemicolon();
         }
+
         Statements.Add(statement);
         return this;
     }
@@ -386,6 +393,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
                 return $@"{declaration} => 
 {indentation}    {expressionBody};";
             }
+
             return $@"{declaration} => {expressionBody};";
         }
 
@@ -397,7 +405,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     private string GetParameters(string indentation)
     {
         // GCB - WTF: why rewrite out whole statement
-        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{OverrideModifier}{(IsAsync ? "async " : "")}{ReturnType} {Name}{GetGenericParameters()}(".Length + Parameters.Sum(x => x.ToString().Length) > 120)
+        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{OverrideModifier}{(IsAsync ? "async " : "")}{ReturnType} {Name}{GetGenericParameters()}(".Length +
+            Parameters.Sum(x => x.ToString().Length) > 120)
         {
             return $@"
 {indentation}    {string.Join($@",
@@ -420,7 +429,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
 {indentation}    ";
         return newLine + string.Join(newLine, GenericTypeConstraints);
     }
-    
+
     private string GetGenericParameters()
     {
         if (!GenericParameters.Any())
