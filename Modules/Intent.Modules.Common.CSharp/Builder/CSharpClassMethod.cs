@@ -11,6 +11,7 @@ public interface ICSharpMethodDeclaration : IHasICSharpParameters, ICSharpRefere
 {
     bool IsAsync { get; }
     public ICSharpExpression ReturnType { get; }
+    public IReadOnlyList<string> DeconstructedReturnTypeMembers { get; }
 }
 
 public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodDeclaration
@@ -30,6 +31,10 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     public string ExplicitImplementationFor { get; private set; }
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
     public CSharpClass Class { get; }
+
+    private List<string> _deconstructedReturnTypeMembers = new();
+
+    public IReadOnlyList<string> DeconstructedReturnTypeMembers => _deconstructedReturnTypeMembers;
 
 
     public CSharpClassMethod(string returnType, string name, CSharpClass @class)
@@ -356,6 +361,12 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         }
 
         Statements.Add(statement);
+        return this;
+    }
+
+    public CSharpClassMethod AddDeconstructedReturnMembers(IReadOnlyList<string> members)
+    {
+        _deconstructedReturnTypeMembers.AddRange(members);
         return this;
     }
 

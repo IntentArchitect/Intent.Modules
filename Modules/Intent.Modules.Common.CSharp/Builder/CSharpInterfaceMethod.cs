@@ -21,6 +21,9 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
 
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
+    private List<string> _deconstructedReturnTypeMembers = new();
+
+    public IReadOnlyList<string> DeconstructedReturnTypeMembers => _deconstructedReturnTypeMembers;
 
     public CSharpInterfaceMethod(string returnType, string name, CSharpInterface parent)
     {
@@ -144,6 +147,12 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         }
 
         ReturnType = returnType;
+        return this;
+    }
+    
+    public CSharpInterfaceMethod AddDeconstructedReturnMembers(IReadOnlyList<string> members)
+    {
+        _deconstructedReturnTypeMembers.AddRange(members);
         return this;
     }
 
