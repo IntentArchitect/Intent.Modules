@@ -12,11 +12,12 @@ public class RazorCodeBlock : RazorFileNodeBase<RazorCodeBlock>, IRazorFileNode,
 
     public RazorCodeBlock(RazorFile file) : base(file)
     {
+        Parent = file;
     }
 
     public IBuildsCSharpMembers AddField(string type, string name, Action<CSharpField> configure = null)
     {
-        var field = new CSharpField(type, name)
+        var field = new CSharpField(type, name, this)
         {
             BeforeSeparator = CSharpCodeSeparatorType.NewLine,
             AfterSeparator = CSharpCodeSeparatorType.NewLine
@@ -28,7 +29,7 @@ public class RazorCodeBlock : RazorFileNodeBase<RazorCodeBlock>, IRazorFileNode,
 
     public IBuildsCSharpMembers AddProperty(string type, string name, Action<CSharpProperty> configure = null)
     {
-        var property = new CSharpProperty(type, name, RazorFile)
+        var property = new CSharpProperty(type, name, this)
         {
             BeforeSeparator = CSharpCodeSeparatorType.EmptyLines,
             AfterSeparator = CSharpCodeSeparatorType.EmptyLines
@@ -40,7 +41,7 @@ public class RazorCodeBlock : RazorFileNodeBase<RazorCodeBlock>, IRazorFileNode,
 
     public IBuildsCSharpMembers AddMethod(string type, string name, Action<CSharpClassMethod> configure = null)
     {
-        var method = new CSharpClassMethod(type, name, RazorFile)
+        var method = new CSharpClassMethod(type, name, this)
         {
             BeforeSeparator = CSharpCodeSeparatorType.EmptyLines,
             AfterSeparator = CSharpCodeSeparatorType.EmptyLines

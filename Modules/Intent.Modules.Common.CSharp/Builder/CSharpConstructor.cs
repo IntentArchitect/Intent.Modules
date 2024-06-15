@@ -197,7 +197,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
         switch (Class.TypeDefinitionType)
         {
             case CSharpClass.Type.Class:
-                var field = CSharpField.CreateFieldOmittedFromRender(param.Type, param.Name, null);
+                var field = CSharpField.CreateFieldOmittedFromRender(param.Type, param.Name, Class, null);
                 Class.Fields.Add(field);
                 break;
             case CSharpClass.Type.Record:

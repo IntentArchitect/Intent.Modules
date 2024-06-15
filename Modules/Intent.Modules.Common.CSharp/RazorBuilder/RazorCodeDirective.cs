@@ -14,8 +14,13 @@ public class RazorCodeDirective : RazorFileNodeBase<RazorCodeDirective>, IRazorF
 
     public override string GetText(string indentation)
     {
-        return $@"{indentation}@{Expression.GetText(indentation)?.TrimStart()} {{
-{string.Join("", ChildNodes.Select(x => x.GetText($"{indentation}    ")))}
+        if (ChildNodes.Count == 0)
+        {
+            return $"{indentation}{Expression.GetText(indentation)?.TrimStart()}";
+        }
+        return $@"{indentation}{Expression.GetText(indentation)?.TrimStart()} 
+{indentation}{{
+{string.Join("", ChildNodes.Select(x => x.GetText($"{indentation}    "))).TrimEnd()}
 {indentation}}}
 ";
     }

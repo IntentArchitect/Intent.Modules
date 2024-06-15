@@ -151,7 +151,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, IBuildsCSharpMembers,
     IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<CSharpField>? configure = null) => AddField(type, name, configure);
     public CSharpClass AddField(string type, string name, Action<CSharpField>? configure = null)
     {
-        var field = new CSharpField(type, name)
+        var field = new CSharpField(type, name, this)
         {
             BeforeSeparator = _fieldsSeparator,
             AfterSeparator = _fieldsSeparator

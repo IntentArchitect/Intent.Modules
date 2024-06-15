@@ -1419,7 +1419,23 @@ return display;
         </mapping>
       </sourceMappings>
       <targetMappings>
-        <importSettings id="ddf81941-f0b0-4ab0-a8d6-42ddc9e5da99" name="Bindable Components" />
+        <mapping id="bfb74950-2371-4380-9fd8-97c6acb31b33" name="Component" type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+        </mapping>
+        <mapping id="32aa9cd3-8f35-4587-b97c-cf0ca60e4e9e" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="2.0.0">
+          <isRequiredFunction>return true;</isRequiredFunction>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return element.getStereotype("f324c4ea-bac2-450d-b1b1-cc7f09ca3472"); // [Route Parameter]</isMappableFunction>
+          <isTraversable>true</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+        </mapping>
       </targetMappings>
       <mappingTypes>
         <mappingType type="Data Mapping" typeId="8363dcb6-416c-4478-a7f4-b7aabad1ec23">
@@ -1751,6 +1767,14 @@ return element.hasStereotype(bindableId) || element.hasStereotype(routeParameter
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <useChildSettingsFrom>44c0579d-d730-4c8c-ad04-eb14599ce56c</useChildSettingsFrom>
+          <represents>data</represents>
+        </mappableElement>
+        <mappableElement id="42c1ffc2-6a80-48a7-878c-d21144f71b41" name="Component" type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
           <represents>data</represents>
         </mappableElement>
         <mappableElement id="44c0579d-d730-4c8c-ad04-eb14599ce56c" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">

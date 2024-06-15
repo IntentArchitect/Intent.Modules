@@ -15,11 +15,11 @@ public class CSharpField : CSharpMember<CSharpField>
     public bool IsRequired { get; private set; }
     public bool IsOmittedFromRender { get; private set; } 
 
-    public CSharpField(string type, string name) : this (type, name, null)
+    public CSharpField(string type, string name, ICSharpCodeContext @class) : this (type, name, @class, null)
     {
     }
 
-    public CSharpField(string type, string name, string? value)
+    public CSharpField(string type, string name, ICSharpCodeContext @class, string? value)
     {
         if (string.IsNullOrWhiteSpace(type))
         {
@@ -35,11 +35,12 @@ public class CSharpField : CSharpMember<CSharpField>
         AccessModifier = "private ";
         Type = type;
         Name = name;
+        Parent = @class;    
     }
 
-    internal static CSharpField CreateFieldOmittedFromRender(string type, string name, string? value)
+    internal static CSharpField CreateFieldOmittedFromRender(string type, string name, ICSharpCodeContext @class, string? value)
     {
-        var field = new CSharpField(type, name, value);
+        var field = new CSharpField(type, name, @class, value);
         field.IsOmittedFromRender = true;
         return field;
     }

@@ -80,7 +80,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
 
     public CSharpInterface AddField(string type, string name, Action<CSharpInterfaceField> configure = null)
     {
-        var field = new CSharpInterfaceField(type, name)
+        var field = new CSharpInterfaceField(type, name, this)
         {
             BeforeSeparator = _fieldsSeparator,
             AfterSeparator = _fieldsSeparator
