@@ -131,7 +131,7 @@ function matchParameters(element, routeToCheck) {
     let elementNames = elementChildren.map(child =&gt; child.getName().replace(/[\*]/g, "").toLowerCase());
     console.log(`Element properties/parameters names found: ${elementNames.join(", ")}`);
     // Ensure the comparison against element names is case-insensitive
-    let unmatchedParameters = normalizedRouteParameters.filter(param =&gt; !elementNames.includes(param.toLowerCase()));
+    let unmatchedParameters = normalizedRouteParameters.filter(param =&gt; !elementNames.includes(param.toLowerCase()) &amp;&amp; param.toLowerCase() !== "version");
     if (unmatchedParameters.length &gt; 0) {
         console.log(`Unmatched parameters found: ${unmatchedParameters.join(", ")}`);
         // Concatenate the unmatched parameters to the error message

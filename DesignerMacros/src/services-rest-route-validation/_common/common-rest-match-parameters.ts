@@ -37,7 +37,7 @@ function matchParameters(element: MacroApi.Context.IElementApi, routeToCheck: st
     console.log(`Element properties/parameters names found: ${elementNames.join(", ")}`);
 
     // Ensure the comparison against element names is case-insensitive
-    let unmatchedParameters = normalizedRouteParameters.filter(param => !elementNames.includes(param.toLowerCase()));
+    let unmatchedParameters = normalizedRouteParameters.filter(param => !elementNames.includes(param.toLowerCase()) && param.toLowerCase() !== "version");
 
     if (unmatchedParameters.length > 0) {
         console.log(`Unmatched parameters found: ${unmatchedParameters.join(", ")}`);

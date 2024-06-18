@@ -1,6 +1,7 @@
 ### Version 4.5.3
 
 - Fixed: Route parameter generation for CQRS Services fixed that are generated from Service Proxies.
+- Fixed: Wrongfully validated `Route mismatch: some route parameters do not match element's properties/parameters. Unmatched parameters: {version}` as an error.
 
 ### Version 4.5.2
 
