@@ -7,7 +7,7 @@
 
 function validateRestRoutes(element: MacroApi.Context.IElementApi): String {
 
-    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
     let httpSettings = element.getStereotype(httpSettingsId);
     if (httpSettings == null) {
@@ -16,7 +16,7 @@ function validateRestRoutes(element: MacroApi.Context.IElementApi): String {
 
     let absoluteRouteToCheck = httpSettings.getProperty("Route").value;
     if (element.specialization == "Operation") {
-        absoluteRouteToCheck = getOperationPath(element);
+        absoluteRouteToCheck = getOperationPath(element, false);
     }
 
     //again need to resolve paths for this to work

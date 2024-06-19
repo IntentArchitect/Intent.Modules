@@ -1,8 +1,7 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
 function matchParameters(element: MacroApi.Context.IElementApi, routeToCheck: string): string | null {
-    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; // Api Version Setting
+    const apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; // Api Version Setting
 
     let elementHasApiVersion = element.getStereotype(apiVersionSettingId) !== null;
 
@@ -32,12 +31,12 @@ function matchParameters(element: MacroApi.Context.IElementApi, routeToCheck: st
     console.log(`Normalized route parameters found: ${normalizedRouteParameters.join(", ")}`);
 
     // Collect all names of properties/parameters for the element and convert them to lower case
-    let elementNames = elementChildren.map(child => child.getName().replace(/[\*]/g, "").toLowerCase());
+    let elementNames = elementChildren.map(child => child.getName().replace(/[\*]/g, "").replace(/{version}/g, '').toLowerCase());
 
     console.log(`Element properties/parameters names found: ${elementNames.join(", ")}`);
 
     // Ensure the comparison against element names is case-insensitive
-    let unmatchedParameters = normalizedRouteParameters.filter(param => !elementNames.includes(param.toLowerCase()) && param.toLowerCase() !== "version");
+    let unmatchedParameters = normalizedRouteParameters.filter(param => !elementNames.includes(param.toLowerCase()));
 
     if (unmatchedParameters.length > 0) {
         console.log(`Unmatched parameters found: ${unmatchedParameters.join(", ")}`);

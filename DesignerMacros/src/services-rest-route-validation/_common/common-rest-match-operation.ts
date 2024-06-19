@@ -9,7 +9,7 @@ function matchOperation(possibleDuplicate: MacroApi.Context.IElementApi, changin
         return false;
     }
 
-    let result = routeToCheck == getOperationPath(possibleDuplicate) && verbToCheck == currentHttpSettings.getProperty("Verb").value;
+    let result = routeToCheck == getOperationPath(possibleDuplicate, true) && verbToCheck == currentHttpSettings.getProperty("Verb").value;
 
     if (result && (changingElement.getStereotype(apiVersionSettingId) || changingElement.getParent().getStereotype(apiVersionSettingId))) {
         let changingVersions: string[];
