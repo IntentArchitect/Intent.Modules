@@ -8,19 +8,3 @@ public class CSharpIfStatement : CSharpStatementBlock
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
     }
 }
-
-public class CSharpElseIfStatement : CSharpStatementBlock
-{
-    public CSharpElseIfStatement(string expression) : base(string.Empty)
-    {
-        Text = $"else if ({expression?.TrimStart()})";
-    }
-}
-
-public class CSharpElseStatement : CSharpStatementBlock
-{
-    public CSharpElseStatement() : base(string.Empty)
-    {
-        Text = $"else";
-    }
-}

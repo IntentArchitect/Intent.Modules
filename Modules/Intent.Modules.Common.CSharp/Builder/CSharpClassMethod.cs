@@ -7,12 +7,6 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public interface ICSharpMethodDeclaration : IHasICSharpParameters, ICSharpReferenceable, IHasCSharpStatements
-{
-    bool IsAsync { get; }
-    public ICSharpExpression ReturnType { get; }
-}
-
 public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodDeclaration
 {
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();

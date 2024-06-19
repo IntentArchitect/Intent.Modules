@@ -3,13 +3,6 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public interface ICSharpExpression
-{
-    ICSharpReferenceable Reference { get; }
-    string GetText(string indentation);
-    string ToString();
-}
-
 public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock, ICSharpExpression
 {
     public CSharpStatement()

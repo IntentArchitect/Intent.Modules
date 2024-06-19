@@ -1,12 +1,5 @@
 ﻿namespace Intent.Modules.Common.CSharp.Builder;
 
-public enum GenericInterfaceType
-{
-    Default = 0,
-    Covariant = 1,
-    Contravariant = 2
-}
-
 public class CSharpInterfaceGenericParameter : CSharpGenericParameter
 {
     public CSharpInterfaceGenericParameter(string typeName) 
