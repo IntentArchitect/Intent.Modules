@@ -9,181 +9,154 @@
   <elementExtensions>
     <elementExtension type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
       <validateFunctionOverride>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function checkForDuplicates(elements, element, routeToCheck, verbToCheck, match) {
-    let duplicate;
-    elements.forEach(e =&gt; {
-        if (duplicate != null)
-            return;
-        if (e.id == element.id)
-            return;
-        if (match(e, element, routeToCheck, verbToCheck)) {
-            duplicate = e;
-        }
-    });
-    if (duplicate) {
-        return `Duplicate rest route ${element.getName()}(${element.specialization}) with ${duplicate.getName()}(${duplicate.specialization}) - ${routeToCheck}`;
-    }
-    return null;
-}
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function getOperationPath(operation, shouldReplaceRouteParams) {
-    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    const serviceHttpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
-    let httpSettings = operation.getStereotype(httpSettingsId);
-    if (httpSettings == null) {
+function validateRestRoutes(element) {
+    let routeToValidate = RestRoute.create(element);
+    if (!routeToValidate) {
         return "";
     }
-    let counter = 0;
-    let operationPath = replaceRouteParameters(httpSettings.getProperty("Route").value, shouldReplaceRouteParams);
-    if (operation.getParent().getStereotype(serviceHttpServiceSettingsId) &amp;&amp; operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value != "") {
-        let servicePath = operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value;
-        servicePath = replaceRouteParameters(servicePath, shouldReplaceRouteParams);
-        if (servicePath.toLocaleLowerCase().includes('[controller]')) {
-            servicePath = servicePath.replace(/\[controller\]/gi, `[${operation.getParent().getName()}]`);
-        }
-        return `${servicePath}/${operationPath}`;
+    let routesToCompareAgainst = lookupTypesOf("Command")
+        .concat(lookupTypesOf("Query"))
+        .concat(lookupTypesOf("Operation"))
+        .map(x =&gt; RestRoute.create(x))
+        .filter(x =&gt; x != null);
+    let message = __findOneDuplicate(routeToValidate, routesToCompareAgainst);
+    if (message &amp;&amp; message != "") {
+        return message;
     }
-    //We don't know how the service name will be transformed so we add [{ServiceName}] to represent the transform
-    return `[${operation.getParent().getName()}]/${operationPath}`;
-    function replaceRouteParameters(route, enabled) {
-        if (!enabled) {
-            return route;
-        }
-        return route.replace(/\{([^}]+)\}/g, function (match, g1) { return "" + (counter++); });
+    message = __findMissingParameters(routeToValidate);
+    if (message &amp;&amp; message != "") {
+        return message;
     }
+    return "";
 }
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function matchCommandOrQuery(possibleDuplicate, changingElement, routeToCheck, verbToCheck) {
-    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; //Api Version Setting
-    let currentHttpSettings = possibleDuplicate.getStereotype(httpSettingsId);
-    if (currentHttpSettings == null) {
-        return false;
+function __findOneDuplicate(routeToValidate, routesToCompareAgainst) {
+    for (let possibleDuplicate of routesToCompareAgainst) {
+        // Make sure we're not checking the same route with itself.
+        if (routeToValidate.underlyingElement.id == possibleDuplicate.underlyingElement.id) {
+            continue;
+        }
+        if (possibleDuplicate.isDuplicate(routeToValidate)) {
+            return `Duplicate rest route ${routeToValidate.underlyingElement.getName()}(${routeToValidate.underlyingElement.specialization}) with ${possibleDuplicate.underlyingElement.getName()}(${possibleDuplicate.underlyingElement.specialization}) - ${possibleDuplicate.originalRoute}`;
+        }
     }
-    let result = routeToCheck == currentHttpSettings.getProperty("Route").value &amp;&amp; verbToCheck == currentHttpSettings.getProperty("Verb").value;
-    if (result &amp;&amp; changingElement.getStereotype(apiVersionSettingId)) {
-        let changingVersions = JSON.parse(changingElement.getStereotype(apiVersionSettingId).getProperty("Applicable Versions").value);
-        let duplicateVersions = JSON.parse(possibleDuplicate.getStereotype(apiVersionSettingId).getProperty("Applicable Versions").value);
-        let intersection = changingVersions.filter((value) =&gt; duplicateVersions.includes(value));
-        return intersection.length &gt; 0;
-    }
-    return result;
+    return "";
 }
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function matchOperation(possibleDuplicate, changingElement, routeToCheck, verbToCheck) {
-    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; //Api Version Setting
-    let currentHttpSettings = possibleDuplicate.getStereotype(httpSettingsId);
-    if (currentHttpSettings == null) {
-        return false;
-    }
-    let result = routeToCheck == getOperationPath(possibleDuplicate, true) &amp;&amp; verbToCheck == currentHttpSettings.getProperty("Verb").value;
-    if (result &amp;&amp; (changingElement.getStereotype(apiVersionSettingId) || changingElement.getParent().getStereotype(apiVersionSettingId))) {
-        let changingVersions;
-        let duplicateVersions;
-        let changeStereoType;
-        let possibleDuplicateStereoType;
-        if (changingElement.getStereotype(apiVersionSettingId)) {
-            changeStereoType = changingElement.getStereotype(apiVersionSettingId);
-        }
-        else if (changingElement.getParent().getStereotype(apiVersionSettingId)) {
-            changeStereoType = changingElement.getParent().getStereotype(apiVersionSettingId);
-        }
-        else {
-            return result;
-        }
-        if (possibleDuplicate.getStereotype(apiVersionSettingId)) {
-            possibleDuplicateStereoType = possibleDuplicate.getStereotype(apiVersionSettingId);
-        }
-        else if (possibleDuplicate.getParent().getStereotype(apiVersionSettingId)) {
-            possibleDuplicateStereoType = possibleDuplicate.getParent().getStereotype(apiVersionSettingId);
-        }
-        else {
-            return result;
-        }
-        changingVersions = JSON.parse(changeStereoType.getProperty("Applicable Versions").value);
-        duplicateVersions = JSON.parse(possibleDuplicateStereoType.getProperty("Applicable Versions").value);
-        let intersection = changingVersions.filter(value =&gt; duplicateVersions.includes(value));
-        return intersection.length &gt; 0;
-    }
-    return result;
-}
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function matchParameters(element, routeToCheck) {
-    const apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; // Api Version Setting
-    let elementHasApiVersion = element.getStereotype(apiVersionSettingId) !== null;
-    if (elementHasApiVersion) {
-        // Assuming routeToCheck is a string representing your route
-        routeToCheck = routeToCheck.replace(/{version}/g, '');
-    }
-    // Extract all parameters from the route
-    let routeParameters = routeToCheck.match(/{([^}]*)}/g) || [];
-    let elementType = element.specialization; // Assuming this is how you identify the element type
+function __findMissingParameters(routeToValidate) {
+    let element = routeToValidate.underlyingElement;
+    let elementType = element.specialization;
     let elementChildren;
     if (elementType === "Command" || elementType === "Query") {
-        // For Commands and Queries, consider children that are properties
         elementChildren = element.getChildren("DTO-Field");
     }
     else if (elementType === "Operation") {
-        // For Operations, consider children that are parameters
         elementChildren = element.getChildren("Parameter");
     }
     else {
-        return null; // Return no message if element type is unrecognized
+        return "";
     }
-    // Normalize route parameters by trimming braces and converting to lower case for case-insensitive comparison
-    let normalizedRouteParameters = routeParameters.map(param =&gt; param.replace(/[{}\*]/g, "").toLowerCase());
-    console.log(`Normalized route parameters found: ${normalizedRouteParameters.join(", ")}`);
-    // Collect all names of properties/parameters for the element and convert them to lower case
-    let elementNames = elementChildren.map(child =&gt; child.getName().replace(/[\*]/g, "").toLowerCase());
-    console.log(`Element properties/parameters names found: ${elementNames.join(", ")}`);
-    // Ensure the comparison against element names is case-insensitive
-    let unmatchedParameters = normalizedRouteParameters.filter(param =&gt; !elementNames.includes(param.toLowerCase()) &amp;&amp; param.toLowerCase() !== "version");
-    if (unmatchedParameters.length &gt; 0) {
-        console.log(`Unmatched parameters found: ${unmatchedParameters.join(", ")}`);
-        // Concatenate the unmatched parameters to the error message
-        return `Route mismatch: some route parameters do not match element's properties/parameters. Unmatched parameters: ${unmatchedParameters.join(", ")}`;
+    let missingParameters = [];
+    for (let routeParam of routeToValidate.routeParams) {
+        let routeParamName = routeParam.toLowerCase();
+        if (!elementChildren.some(e =&gt; e.getName().toLowerCase() === routeParamName)) {
+            missingParameters.push(routeParam);
+        }
     }
-    console.log("No unmatched parameters found. Validation passed.");
-    return null; // Return no message if all validations pass
+    if (missingParameters.length === 0) {
+        return "";
+    }
+    return `Route mismatch: some route parameters do not match element's properties/parameters. Unmatched parameters: ${missingParameters.join(", ")}`;
 }
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-/// &lt;reference path="./common-rest-check-for-duplicates.ts" /&gt;
-/// &lt;reference path="./common-rest-get-operation-path.ts" /&gt;
-/// &lt;reference path="./common-rest-match-command-or-query.ts" /&gt;
-/// &lt;reference path="./common-rest-match-operation.ts" /&gt;
-/// &lt;reference path="./common-rest-match-parameters.ts" /&gt;
-function validateRestRoutes(element) {
-    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    let httpSettings = element.getStereotype(httpSettingsId);
-    if (httpSettings == null) {
-        return "";
+class RestVersionSet {
+    constructor(isVersioned, versionIds) {
+        this.isVersioned = isVersioned;
+        this.versionHashTable = {};
+        for (let v of versionIds) {
+            this.versionHashTable[v] = v;
+        }
     }
-    let absoluteRouteToCheck = httpSettings.getProperty("Route").value;
-    if (element.specialization == "Operation") {
-        absoluteRouteToCheck = getOperationPath(element, false);
+    matches(versionSet) {
+        // Only engage with versioning checks if both REST routes are versioned
+        return !this.isVersioned || !versionSet.isVersioned || this.intersects(versionSet);
     }
-    //again need to resolve paths for this to work
-    if (absoluteRouteToCheck.toLocaleLowerCase().includes("[action]")) {
-        return "";
+    intersects(versionSet) {
+        for (let v in this.versionHashTable) {
+            if (versionSet.versionHashTable[v]) {
+                return true;
+            }
+        }
+        return false;
     }
-    let verbToCheck = httpSettings.getProperty("Verb").value;
-    let commands = lookupTypesOf("Command");
-    let message = checkForDuplicates(commands, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
-    if (message != null)
-        return message;
-    let queries = lookupTypesOf("Query");
-    message = checkForDuplicates(queries, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
-    if (message != null)
-        return message;
-    let operations = lookupTypesOf("Operation");
-    message = checkForDuplicates(operations, element, absoluteRouteToCheck, verbToCheck, matchOperation);
-    if (message != null)
-        return message;
-    message = matchParameters(element, absoluteRouteToCheck);
-    if (message != null)
-        return message;
-    return "";
+    static create(element) {
+        const apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe";
+        let versionSetting = element.getStereotype(apiVersionSettingId);
+        if (!versionSetting) {
+            return new RestVersionSet(false, []);
+        }
+        let versionIds = JSON.parse(versionSetting.getProperty("Applicable Versions").value);
+        return new RestVersionSet(true, versionIds !== null &amp;&amp; versionIds !== void 0 ? versionIds : []);
+    }
+}
+class RestRoute {
+    constructor(verb, originalRoute, underlyingElement) {
+        this.verb = verb;
+        this.originalRoute = originalRoute;
+        this.underlyingElement = underlyingElement;
+        this.routeParams = [];
+        this.versionSet = RestVersionSet.create(underlyingElement);
+        let counter = 0;
+        let localRouteParams = this.routeParams;
+        let actionName = underlyingElement.getName();
+        this.hashedRoute = originalRoute
+            .replace(/\{([^}]*)\}/g, function (match, g1) {
+            if (g1 !== "version") {
+                localRouteParams.push(g1);
+            }
+            return (counter++).toString();
+        })
+            .replace(/(\[action\])/g, actionName);
+    }
+    isDuplicate(possibleDuplicateRoute) {
+        return this.hashedRoute === possibleDuplicateRoute.hashedRoute &amp;&amp;
+            this.verb === possibleDuplicateRoute.verb &amp;&amp;
+            this.versionSet.matches(possibleDuplicateRoute.versionSet);
+    }
+    static create(element) {
+        if (!element) {
+            return null;
+        }
+        const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+        let httpSettings = element.getStereotype(httpSettingsId);
+        if (!httpSettings) {
+            return null;
+        }
+        let absoluteRouteToCheck = getAbsoluteRoute(element, httpSettings);
+        if (!absoluteRouteToCheck) {
+            return null;
+        }
+        let verbToCheck = httpSettings.getProperty("Verb").value;
+        return new RestRoute(verbToCheck, absoluteRouteToCheck, element);
+        function getAbsoluteRoute(element, httpSettings) {
+            var _a;
+            if (element.specialization == "Operation") {
+                const serviceHttpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
+                let serviceElement = element.getParent();
+                if (!serviceElement) {
+                    return null;
+                }
+                let operationPath = httpSettings.getProperty("Route").value;
+                let servicePath = (_a = serviceElement.getStereotype(serviceHttpServiceSettingsId)) === null || _a === void 0 ? void 0 : _a.getProperty("Route").value;
+                if (servicePath &amp;&amp; servicePath != "") {
+                    if (servicePath.toLocaleLowerCase().includes('[controller]')) {
+                        servicePath = servicePath.replace(/\[controller\]/gi, `[${serviceElement.getName()}]`);
+                    }
+                    return `${servicePath}/${operationPath}`;
+                }
+                //We don't know how the service name will be transformed so we add [{ServiceName}] to represent the transform
+                return `[${serviceElement.getName()}]/${operationPath}`;
+            }
+            return httpSettings.getProperty("Route").value;
+        }
+    }
 }
 /// &lt;reference path="../_common/common-rest-route-validation.ts" /&gt;
 /**
@@ -2775,181 +2748,154 @@ execute();</script>
     </elementExtension>
     <elementExtension type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
       <validateFunctionOverride>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function checkForDuplicates(elements, element, routeToCheck, verbToCheck, match) {
-    let duplicate;
-    elements.forEach(e =&gt; {
-        if (duplicate != null)
-            return;
-        if (e.id == element.id)
-            return;
-        if (match(e, element, routeToCheck, verbToCheck)) {
-            duplicate = e;
-        }
-    });
-    if (duplicate) {
-        return `Duplicate rest route ${element.getName()}(${element.specialization}) with ${duplicate.getName()}(${duplicate.specialization}) - ${routeToCheck}`;
-    }
-    return null;
-}
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function getOperationPath(operation, shouldReplaceRouteParams) {
-    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    const serviceHttpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
-    let httpSettings = operation.getStereotype(httpSettingsId);
-    if (httpSettings == null) {
+function validateRestRoutes(element) {
+    let routeToValidate = RestRoute.create(element);
+    if (!routeToValidate) {
         return "";
     }
-    let counter = 0;
-    let operationPath = replaceRouteParameters(httpSettings.getProperty("Route").value, shouldReplaceRouteParams);
-    if (operation.getParent().getStereotype(serviceHttpServiceSettingsId) &amp;&amp; operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value != "") {
-        let servicePath = operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value;
-        servicePath = replaceRouteParameters(servicePath, shouldReplaceRouteParams);
-        if (servicePath.toLocaleLowerCase().includes('[controller]')) {
-            servicePath = servicePath.replace(/\[controller\]/gi, `[${operation.getParent().getName()}]`);
-        }
-        return `${servicePath}/${operationPath}`;
+    let routesToCompareAgainst = lookupTypesOf("Command")
+        .concat(lookupTypesOf("Query"))
+        .concat(lookupTypesOf("Operation"))
+        .map(x =&gt; RestRoute.create(x))
+        .filter(x =&gt; x != null);
+    let message = __findOneDuplicate(routeToValidate, routesToCompareAgainst);
+    if (message &amp;&amp; message != "") {
+        return message;
     }
-    //We don't know how the service name will be transformed so we add [{ServiceName}] to represent the transform
-    return `[${operation.getParent().getName()}]/${operationPath}`;
-    function replaceRouteParameters(route, enabled) {
-        if (!enabled) {
-            return route;
-        }
-        return route.replace(/\{([^}]+)\}/g, function (match, g1) { return "" + (counter++); });
+    message = __findMissingParameters(routeToValidate);
+    if (message &amp;&amp; message != "") {
+        return message;
     }
+    return "";
 }
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function matchCommandOrQuery(possibleDuplicate, changingElement, routeToCheck, verbToCheck) {
-    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; //Api Version Setting
-    let currentHttpSettings = possibleDuplicate.getStereotype(httpSettingsId);
-    if (currentHttpSettings == null) {
-        return false;
+function __findOneDuplicate(routeToValidate, routesToCompareAgainst) {
+    for (let possibleDuplicate of routesToCompareAgainst) {
+        // Make sure we're not checking the same route with itself.
+        if (routeToValidate.underlyingElement.id == possibleDuplicate.underlyingElement.id) {
+            continue;
+        }
+        if (possibleDuplicate.isDuplicate(routeToValidate)) {
+            return `Duplicate rest route ${routeToValidate.underlyingElement.getName()}(${routeToValidate.underlyingElement.specialization}) with ${possibleDuplicate.underlyingElement.getName()}(${possibleDuplicate.underlyingElement.specialization}) - ${possibleDuplicate.originalRoute}`;
+        }
     }
-    let result = routeToCheck == currentHttpSettings.getProperty("Route").value &amp;&amp; verbToCheck == currentHttpSettings.getProperty("Verb").value;
-    if (result &amp;&amp; changingElement.getStereotype(apiVersionSettingId)) {
-        let changingVersions = JSON.parse(changingElement.getStereotype(apiVersionSettingId).getProperty("Applicable Versions").value);
-        let duplicateVersions = JSON.parse(possibleDuplicate.getStereotype(apiVersionSettingId).getProperty("Applicable Versions").value);
-        let intersection = changingVersions.filter((value) =&gt; duplicateVersions.includes(value));
-        return intersection.length &gt; 0;
-    }
-    return result;
+    return "";
 }
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function matchOperation(possibleDuplicate, changingElement, routeToCheck, verbToCheck) {
-    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; //Api Version Setting
-    let currentHttpSettings = possibleDuplicate.getStereotype(httpSettingsId);
-    if (currentHttpSettings == null) {
-        return false;
-    }
-    let result = routeToCheck == getOperationPath(possibleDuplicate, true) &amp;&amp; verbToCheck == currentHttpSettings.getProperty("Verb").value;
-    if (result &amp;&amp; (changingElement.getStereotype(apiVersionSettingId) || changingElement.getParent().getStereotype(apiVersionSettingId))) {
-        let changingVersions;
-        let duplicateVersions;
-        let changeStereoType;
-        let possibleDuplicateStereoType;
-        if (changingElement.getStereotype(apiVersionSettingId)) {
-            changeStereoType = changingElement.getStereotype(apiVersionSettingId);
-        }
-        else if (changingElement.getParent().getStereotype(apiVersionSettingId)) {
-            changeStereoType = changingElement.getParent().getStereotype(apiVersionSettingId);
-        }
-        else {
-            return result;
-        }
-        if (possibleDuplicate.getStereotype(apiVersionSettingId)) {
-            possibleDuplicateStereoType = possibleDuplicate.getStereotype(apiVersionSettingId);
-        }
-        else if (possibleDuplicate.getParent().getStereotype(apiVersionSettingId)) {
-            possibleDuplicateStereoType = possibleDuplicate.getParent().getStereotype(apiVersionSettingId);
-        }
-        else {
-            return result;
-        }
-        changingVersions = JSON.parse(changeStereoType.getProperty("Applicable Versions").value);
-        duplicateVersions = JSON.parse(possibleDuplicateStereoType.getProperty("Applicable Versions").value);
-        let intersection = changingVersions.filter(value =&gt; duplicateVersions.includes(value));
-        return intersection.length &gt; 0;
-    }
-    return result;
-}
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function matchParameters(element, routeToCheck) {
-    const apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; // Api Version Setting
-    let elementHasApiVersion = element.getStereotype(apiVersionSettingId) !== null;
-    if (elementHasApiVersion) {
-        // Assuming routeToCheck is a string representing your route
-        routeToCheck = routeToCheck.replace(/{version}/g, '');
-    }
-    // Extract all parameters from the route
-    let routeParameters = routeToCheck.match(/{([^}]*)}/g) || [];
-    let elementType = element.specialization; // Assuming this is how you identify the element type
+function __findMissingParameters(routeToValidate) {
+    let element = routeToValidate.underlyingElement;
+    let elementType = element.specialization;
     let elementChildren;
     if (elementType === "Command" || elementType === "Query") {
-        // For Commands and Queries, consider children that are properties
         elementChildren = element.getChildren("DTO-Field");
     }
     else if (elementType === "Operation") {
-        // For Operations, consider children that are parameters
         elementChildren = element.getChildren("Parameter");
     }
     else {
-        return null; // Return no message if element type is unrecognized
+        return "";
     }
-    // Normalize route parameters by trimming braces and converting to lower case for case-insensitive comparison
-    let normalizedRouteParameters = routeParameters.map(param =&gt; param.replace(/[{}\*]/g, "").toLowerCase());
-    console.log(`Normalized route parameters found: ${normalizedRouteParameters.join(", ")}`);
-    // Collect all names of properties/parameters for the element and convert them to lower case
-    let elementNames = elementChildren.map(child =&gt; child.getName().replace(/[\*]/g, "").toLowerCase());
-    console.log(`Element properties/parameters names found: ${elementNames.join(", ")}`);
-    // Ensure the comparison against element names is case-insensitive
-    let unmatchedParameters = normalizedRouteParameters.filter(param =&gt; !elementNames.includes(param.toLowerCase()) &amp;&amp; param.toLowerCase() !== "version");
-    if (unmatchedParameters.length &gt; 0) {
-        console.log(`Unmatched parameters found: ${unmatchedParameters.join(", ")}`);
-        // Concatenate the unmatched parameters to the error message
-        return `Route mismatch: some route parameters do not match element's properties/parameters. Unmatched parameters: ${unmatchedParameters.join(", ")}`;
+    let missingParameters = [];
+    for (let routeParam of routeToValidate.routeParams) {
+        let routeParamName = routeParam.toLowerCase();
+        if (!elementChildren.some(e =&gt; e.getName().toLowerCase() === routeParamName)) {
+            missingParameters.push(routeParam);
+        }
     }
-    console.log("No unmatched parameters found. Validation passed.");
-    return null; // Return no message if all validations pass
+    if (missingParameters.length === 0) {
+        return "";
+    }
+    return `Route mismatch: some route parameters do not match element's properties/parameters. Unmatched parameters: ${missingParameters.join(", ")}`;
 }
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-/// &lt;reference path="./common-rest-check-for-duplicates.ts" /&gt;
-/// &lt;reference path="./common-rest-get-operation-path.ts" /&gt;
-/// &lt;reference path="./common-rest-match-command-or-query.ts" /&gt;
-/// &lt;reference path="./common-rest-match-operation.ts" /&gt;
-/// &lt;reference path="./common-rest-match-parameters.ts" /&gt;
-function validateRestRoutes(element) {
-    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    let httpSettings = element.getStereotype(httpSettingsId);
-    if (httpSettings == null) {
-        return "";
+class RestVersionSet {
+    constructor(isVersioned, versionIds) {
+        this.isVersioned = isVersioned;
+        this.versionHashTable = {};
+        for (let v of versionIds) {
+            this.versionHashTable[v] = v;
+        }
     }
-    let absoluteRouteToCheck = httpSettings.getProperty("Route").value;
-    if (element.specialization == "Operation") {
-        absoluteRouteToCheck = getOperationPath(element, false);
+    matches(versionSet) {
+        // Only engage with versioning checks if both REST routes are versioned
+        return !this.isVersioned || !versionSet.isVersioned || this.intersects(versionSet);
     }
-    //again need to resolve paths for this to work
-    if (absoluteRouteToCheck.toLocaleLowerCase().includes("[action]")) {
-        return "";
+    intersects(versionSet) {
+        for (let v in this.versionHashTable) {
+            if (versionSet.versionHashTable[v]) {
+                return true;
+            }
+        }
+        return false;
     }
-    let verbToCheck = httpSettings.getProperty("Verb").value;
-    let commands = lookupTypesOf("Command");
-    let message = checkForDuplicates(commands, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
-    if (message != null)
-        return message;
-    let queries = lookupTypesOf("Query");
-    message = checkForDuplicates(queries, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
-    if (message != null)
-        return message;
-    let operations = lookupTypesOf("Operation");
-    message = checkForDuplicates(operations, element, absoluteRouteToCheck, verbToCheck, matchOperation);
-    if (message != null)
-        return message;
-    message = matchParameters(element, absoluteRouteToCheck);
-    if (message != null)
-        return message;
-    return "";
+    static create(element) {
+        const apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe";
+        let versionSetting = element.getStereotype(apiVersionSettingId);
+        if (!versionSetting) {
+            return new RestVersionSet(false, []);
+        }
+        let versionIds = JSON.parse(versionSetting.getProperty("Applicable Versions").value);
+        return new RestVersionSet(true, versionIds !== null &amp;&amp; versionIds !== void 0 ? versionIds : []);
+    }
+}
+class RestRoute {
+    constructor(verb, originalRoute, underlyingElement) {
+        this.verb = verb;
+        this.originalRoute = originalRoute;
+        this.underlyingElement = underlyingElement;
+        this.routeParams = [];
+        this.versionSet = RestVersionSet.create(underlyingElement);
+        let counter = 0;
+        let localRouteParams = this.routeParams;
+        let actionName = underlyingElement.getName();
+        this.hashedRoute = originalRoute
+            .replace(/\{([^}]*)\}/g, function (match, g1) {
+            if (g1 !== "version") {
+                localRouteParams.push(g1);
+            }
+            return (counter++).toString();
+        })
+            .replace(/(\[action\])/g, actionName);
+    }
+    isDuplicate(possibleDuplicateRoute) {
+        return this.hashedRoute === possibleDuplicateRoute.hashedRoute &amp;&amp;
+            this.verb === possibleDuplicateRoute.verb &amp;&amp;
+            this.versionSet.matches(possibleDuplicateRoute.versionSet);
+    }
+    static create(element) {
+        if (!element) {
+            return null;
+        }
+        const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+        let httpSettings = element.getStereotype(httpSettingsId);
+        if (!httpSettings) {
+            return null;
+        }
+        let absoluteRouteToCheck = getAbsoluteRoute(element, httpSettings);
+        if (!absoluteRouteToCheck) {
+            return null;
+        }
+        let verbToCheck = httpSettings.getProperty("Verb").value;
+        return new RestRoute(verbToCheck, absoluteRouteToCheck, element);
+        function getAbsoluteRoute(element, httpSettings) {
+            var _a;
+            if (element.specialization == "Operation") {
+                const serviceHttpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
+                let serviceElement = element.getParent();
+                if (!serviceElement) {
+                    return null;
+                }
+                let operationPath = httpSettings.getProperty("Route").value;
+                let servicePath = (_a = serviceElement.getStereotype(serviceHttpServiceSettingsId)) === null || _a === void 0 ? void 0 : _a.getProperty("Route").value;
+                if (servicePath &amp;&amp; servicePath != "") {
+                    if (servicePath.toLocaleLowerCase().includes('[controller]')) {
+                        servicePath = servicePath.replace(/\[controller\]/gi, `[${serviceElement.getName()}]`);
+                    }
+                    return `${servicePath}/${operationPath}`;
+                }
+                //We don't know how the service name will be transformed so we add [{ServiceName}] to represent the transform
+                return `[${serviceElement.getName()}]/${operationPath}`;
+            }
+            return httpSettings.getProperty("Route").value;
+        }
+    }
 }
 /// &lt;reference path="../_common/common-rest-route-validation.ts" /&gt;
 /**
