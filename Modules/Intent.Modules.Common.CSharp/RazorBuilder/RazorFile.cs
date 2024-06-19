@@ -8,6 +8,7 @@ using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.FileBuilders;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -37,6 +38,11 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder
             File = this;
             RazorFile = this;
             _className = className;
+
+            if (template.Model is IHasFolder)
+            {
+
+            }
             _namespace = template.GetNamespace();
             _relativeLocation = template.GetFolderPath();
         }
@@ -84,8 +90,8 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder
                     $"Could not automatically determine relative location for file, either ensure the template extends " +
                     $"{nameof(IntentTemplateBase<TTemplateModel>)} or manually call the {nameof(WithRelativeLocation)} method."),
                 overwriteBehaviour: _overwriteBehaviour,
-                fileName: _fileName,
-                fileExtension: _fileExtension,
+                fileName: _fileName ?? _className,
+                fileExtension: _fileExtension ?? "razor",
                 dependsUpon: default);
         }
 

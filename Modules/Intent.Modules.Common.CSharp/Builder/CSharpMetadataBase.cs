@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -94,12 +95,8 @@ public abstract class CSharpMetadataBase : ICSharpMetadataBase
     {
         return TryGetReferenceForModel(model.Id, out reference);
     }
-}
 
-public abstract class CSharpMetadataBase<TCSharp> : CSharpMetadataBase
-    where TCSharp : CSharpMetadataBase<TCSharp>
-{
-    public TCSharp RepresentsModel(IMetadataModel model)
+    public void RepresentsModel(IMetadataModel model)
     {
         if (this is not IHasCSharpName)
         {
@@ -112,6 +109,15 @@ public abstract class CSharpMetadataBase<TCSharp> : CSharpMetadataBase
         }
 
         Parent.RegisterReferenceable(model.Id, (ICSharpReferenceable)this);
+    }
+}
+
+public abstract class CSharpMetadataBase<TCSharp> : CSharpMetadataBase
+    where TCSharp : CSharpMetadataBase<TCSharp>
+{
+    public new TCSharp RepresentsModel(IMetadataModel model)
+    {
+        base.RepresentsModel(model);
         return (TCSharp)this;
     }
 

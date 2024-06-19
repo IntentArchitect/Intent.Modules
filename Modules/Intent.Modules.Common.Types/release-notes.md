@@ -1,3 +1,7 @@
+### Version 3.4.1
+
+- Improvement: `GetFolderPath` no longer has a generic parameter type constraint on `IHasFolder` and will internally check to see if the model can be cast.
+
 ### Version 3.4.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
