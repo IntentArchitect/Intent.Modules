@@ -114,6 +114,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         {
             AddParameter(model, configure);
         }
+
         return this;
     }
 
@@ -205,6 +206,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
             Statements.Insert(index, s);
             s.Parent = this;
         }
+
         configure?.Invoke(statements);
         return this;
     }
@@ -227,6 +229,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
             Statements.Add(statement);
             statement.Parent = this;
         }
+
         configure?.Invoke(arrayed);
 
         return this;
@@ -243,6 +246,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         AccessModifier = "protected ";
         return this;
     }
+
     public CSharpClassMethod Private()
     {
         AccessModifier = "private ";
@@ -304,6 +308,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         {
             ReturnType = ReturnType == "Task" ? "void" : StripTask();
         }
+
         return this;
     }
 
@@ -328,6 +333,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
                 ReturnType = ReturnType == "void" ? taskType : $"{taskType}<{ReturnType}>";
             }
         }
+
         return this;
     }
 
@@ -344,6 +350,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         {
             stmt.WithoutSemicolon();
         }
+
         Statements.Add(statement);
         return this;
     }
@@ -391,6 +398,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
                 return $@"{declaration} => 
 {indentation}    {expressionBody};";
             }
+
             return $@"{declaration} => {expressionBody};";
         }
 
@@ -402,7 +410,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     private string GetParameters(string indentation)
     {
         // GCB - WTF: why rewrite out whole statement
-        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{OverrideModifier}{(IsAsync ? "async " : "")}{ReturnType} {Name}{GetGenericParameters()}(".Length + Parameters.Sum(x => x.ToString().Length) > 120)
+        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{OverrideModifier}{(IsAsync ? "async " : "")}{ReturnType} {Name}{GetGenericParameters()}(".Length +
+            Parameters.Sum(x => x.ToString().Length) > 120)
         {
             return $@"
 {indentation}    {string.Join($@",

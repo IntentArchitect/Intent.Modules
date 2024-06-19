@@ -7,7 +7,7 @@
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.Metadata</metadataRelativePath>
   <modulesCacheRelativePath>.intent/modules</modulesCacheRelativePath>
-  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.EmptyVisualStudioSolution" version="3.3.43" />
+  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="3.3.66" />
   <applications>
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp\ModuleBuilder.CSharp.application.config" />
@@ -52,6 +52,7 @@
     <application id="34ab81e4-7133-42aa-a9ac-72dc515be606" name="Intent.Modules.Java.Weaving.Annotations" relativePath="Intent.Modules.Java.Weaving.Annotations/Intent.Modules.Java.Weaving.Annotations.application.config" />
     <application id="0961b73a-4137-44db-98a8-530e1dbe2528" name="Intent.Modules.Modelers.Domain.StoredProcedures" relativePath="Intent.Modules.Modelers.Domain.StoredProcedures/Intent.Modules.Modelers.Domain.StoredProcedures.application.config" />
     <application id="8bbfc5a8-8482-42f0-a76a-54378d457ab1" name="Intent.Modules.Modelers.ServiceProxies.Metadata" relativePath="Intent.Modules.Modelers.ServiceProxies.Metadata/Intent.Modules.Modelers.ServiceProxies.Metadata.application.config" />
+    <application id="48dd85b4-9727-4987-a7a3-1659d35fb5fe" name="Intent.Modules.Modelers.Services.ProxyInteractions" relativePath="Intent.Modules.Modelers.Services.ProxyInteractions/Intent.Modules.Modelers.Services.ProxyInteractions.application.config" />
     <application id="62e3977a-20a5-4637-b195-5dd11b6939bb" name="Intent.Modules.Modelers.UI.ServiceProxies" relativePath="Intent.Modules.Modelers.UI.ServiceProxies/Intent.Modules.Modelers.UI.ServiceProxies.application.config" />
     <application id="854cb9ab-83bb-4cfa-8468-e72690f40c6b" name="Intent.Modules.Modelers.UI.Core" relativePath="Intent.Modules.Modelers.UI.Core/Intent.Modules.Modelers.UI.Core.application.config" />
   </applications>
