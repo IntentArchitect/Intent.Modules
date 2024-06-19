@@ -1,12 +1,15 @@
 using System;
+using System.Collections.Generic;
+using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 
 #nullable enable
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpField : CSharpMember<CSharpField>
+public class CSharpField : CSharpMember<CSharpField>, ICSharpField
 {
     private bool _canBeNull;
+    private readonly ICSharpField _wrapping;
     public string Type { get; }
     public string Name { get; }
     public string AccessModifier { get; private set; }
@@ -31,6 +34,7 @@ public class CSharpField : CSharpMember<CSharpField>
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
+        _wrapping = new CSharpFieldWrapper(this);
         Assignment = value;
         AccessModifier = "private ";
         Type = type;
@@ -154,4 +158,88 @@ public class CSharpField : CSharpMember<CSharpField>
 
         return $"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{accessModifier}{(IsRequired ? "required " : "")}{Type}{(_canBeNull ? "?" : "")} {Name}{assignment};";
     }
+
+    #region ICSharpField implementation
+
+    ICSharpField ICSharpDeclaration<ICSharpField>.AddAttribute(string name, Action<ICSharpAttribute> configure = null)
+    {
+        return _wrapping.AddAttribute(name, configure);
+    }
+
+    ICSharpField ICSharpDeclaration<ICSharpField>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure = null)
+    {
+        return _wrapping.AddAttribute(attribute, configure);
+    }
+
+    ICSharpField ICSharpDeclaration<ICSharpField>.WithComments(string xmlComments)
+    {
+        return _wrapping.WithComments(xmlComments);
+    }
+
+    ICSharpField ICSharpDeclaration<ICSharpField>.WithComments(IEnumerable<string> xmlComments)
+    {
+        return _wrapping.WithComments(xmlComments);
+    }
+
+    ICSharpField ICSharpField.Protected()
+    {
+        return _wrapping.Protected();
+    }
+
+    ICSharpField ICSharpField.Protected(string value)
+    {
+        return _wrapping.Protected(value);
+    }
+
+    ICSharpField ICSharpField.PrivateReadOnly()
+    {
+        return _wrapping.PrivateReadOnly();
+    }
+
+    ICSharpField ICSharpField.Private()
+    {
+        return _wrapping.Private();
+    }
+
+    ICSharpField ICSharpField.Private(string value)
+    {
+        return _wrapping.Private(value);
+    }
+
+    ICSharpField ICSharpField.Constant(string value)
+    {
+        return _wrapping.Constant(value);
+    }
+
+    ICSharpField ICSharpField.PrivateConstant(string value)
+    {
+        return _wrapping.PrivateConstant(value);
+    }
+
+    ICSharpField ICSharpField.Static()
+    {
+        return _wrapping.Static();
+    }
+
+    ICSharpField ICSharpField.Required()
+    {
+        return _wrapping.Required();
+    }
+
+    ICSharpField ICSharpField.CanBeNull()
+    {
+        return _wrapping.CanBeNull();
+    }
+
+    ICSharpField ICSharpField.WithAssignment(ICSharpStatement value)
+    {
+        return _wrapping.WithAssignment(value);
+    }
+
+    ICSharpField ICSharpField.ProtectedReadOnly()
+    {
+        return _wrapping.ProtectedReadOnly();
+    }
+
+    #endregion
 }

@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 /// <summary>
 /// Similar to <see cref="CSharpStatement"/> but meant to be used for custom freetext content.
 /// </summary>
-public class CSharpCodeBlock : ICodeBlock
+public class CSharpCodeBlock : ICSharpCodeBlock
 {
     public CSharpCodeBlock(string codeLine)
     {

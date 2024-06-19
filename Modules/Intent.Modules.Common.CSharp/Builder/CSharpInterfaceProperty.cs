@@ -2,7 +2,7 @@ using System;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpInterfaceProperty : CSharpProperty
+public class CSharpInterfaceProperty : CSharpProperty, ICSharpInterfaceProperty
 {
     public CSharpInterfaceProperty(string type, string name) : this(type, name, null)
     {
@@ -25,6 +25,7 @@ public class CSharpInterfaceProperty : CSharpProperty
         AccessModifier = string.Empty;
     }
 
+    ICSharpInterfaceProperty ICSharpInterfaceProperty.Public() => Public();
     public CSharpInterfaceProperty Public()
     {
         AccessModifier = "public ";

@@ -1,6 +1,6 @@
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public abstract class CSharpMember<TImpl> : CSharpDeclaration<TImpl>, ICodeBlock
+public abstract class CSharpMember<TImpl> : CSharpDeclaration<TImpl>
     where TImpl : CSharpDeclaration<TImpl>
 {
     public CSharpCodeSeparatorType BeforeSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;

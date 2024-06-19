@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpGenericTypeConstraint
+public class CSharpGenericTypeConstraint : ICSharpGenericTypeConstraint
 {
     public CSharpGenericTypeConstraint(string genericTypeParameter, params string[] types)
     {
@@ -17,6 +17,7 @@ public class CSharpGenericTypeConstraint
     public string GenericTypeParameter { get; }
     public IList<string> Types { get; } = new List<string>();
 
+    ICSharpGenericTypeConstraint ICSharpGenericTypeConstraint.AddType(string typeName) => AddType(typeName);
     public CSharpGenericTypeConstraint AddType(string typeName)
     {
         Types.Add(typeName);

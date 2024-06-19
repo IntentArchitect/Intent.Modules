@@ -2,15 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParameter, ICSharpReferenceable
+public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpMethodParameter
 {
     public string Type { get; }
     public string Name { get; }
     public string DefaultValue { get; private set; }
     public IList<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
+
     public bool HasThisModifier { get; private set; }
     public string XmlDocComment { get; private set; }
     public string ParameterModifier { get; private set; } = "";
@@ -129,4 +131,28 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParam
     {
         return $@"{(Attributes.Any() ? $@"{string.Join(@" ", Attributes)} " : string.Empty)}";
     }
+
+    #region ICSharpParameter implementation
+
+    IList<ICSharpAttribute> ICSharpMethodParameter.Attributes => new WrappedList<CSharpAttribute,ICSharpAttribute>(Attributes);
+
+    ICSharpMethodParameter ICSharpMethodParameter.AddAttribute(string name, Action<ICSharpAttribute> configure) => AddAttribute(name, configure);
+
+    ICSharpMethodParameter ICSharpMethodParameter.WithXmlDocComment(IElement parameter) => WithXmlDocComment(parameter);
+
+    ICSharpMethodParameter ICSharpMethodParameter.WithXmlDocComment(string comment) => WithXmlDocComment(comment);
+
+    ICSharpMethodParameter ICSharpMethodParameter.WithDefaultValue(string defaultValue) => WithDefaultValue(defaultValue);
+
+    ICSharpMethodParameter ICSharpMethodParameter.WithThisModifier() => WithThisModifier();
+
+    ICSharpMethodParameter ICSharpMethodParameter.WithOutParameterModifier() => WithOutParameterModifier();
+
+    ICSharpMethodParameter ICSharpMethodParameter.WithInParameterModifier() => WithInParameterModifier();
+
+    ICSharpMethodParameter ICSharpMethodParameter.WithRefParameterModifier() => WithRefParameterModifier();
+
+    ICSharpMethodParameter ICSharpMethodParameter.WithParamsParameterModifier() => WithParamsParameterModifier();
+
+    #endregion
 }

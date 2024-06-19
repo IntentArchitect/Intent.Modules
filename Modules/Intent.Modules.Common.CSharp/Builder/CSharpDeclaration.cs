@@ -1,8 +1,8 @@
-using Intent.Metadata.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Intent.Metadata.Models;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -66,11 +66,10 @@ public abstract class CSharpDeclaration<TImpl> : CSharpMetadataBase<TImpl>
 }
 
 public static class CSharpDeclarationExtensions
-{ 
-
-    public static bool TryAddXmlDocComments<TImpl>( this CSharpDeclaration<TImpl> item, IElement element) where TImpl : CSharpDeclaration<TImpl>
+{
+    public static bool TryAddXmlDocComments<TImpl>(this CSharpDeclaration<TImpl> item, IElement element) where TImpl : CSharpDeclaration<TImpl>
     {
-        if (element == null || string.IsNullOrWhiteSpace( element.Comment))
+        if (element == null || string.IsNullOrWhiteSpace(element.Comment))
             return false;
 
         string comment = element.Comment;
@@ -106,6 +105,5 @@ public static class CSharpDeclarationExtensions
 
         item.WithComments($@"/// <inheritdoc cref=""{referenceType}"" />");
     }
-    
+
 }
-    

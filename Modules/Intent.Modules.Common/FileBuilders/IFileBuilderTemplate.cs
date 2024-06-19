@@ -1,6 +1,8 @@
-﻿namespace Intent.Modules.Common.FileBuilders;
+﻿using Intent.Templates;
 
-public interface IFileBuilderTemplate
+namespace Intent.Modules.Common.FileBuilders;
+
+public interface IFileBuilderTemplate : ITemplate
 {
     IFileBuilderBase File { get; }
 }

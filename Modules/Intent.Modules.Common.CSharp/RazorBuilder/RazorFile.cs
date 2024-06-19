@@ -1,37 +1,100 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.FileBuilders;
+using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.FileTemplateStringInterpolation", Version = "1.0")]
 
 namespace Intent.Modules.Common.CSharp.RazorBuilder
 {
-    public class RazorFile : RazorFileNodeBase<RazorFile>, ICSharpFile
+    internal class RazorFile<TTemplateModel> : RazorFileNodeBase<RazorFile<TTemplateModel>, IRazorFile>, IRazorFile
     {
-        protected bool _isBuilt;
+        protected bool IsBuilt;
         private bool _afterBuildRun;
+        private string? _fileExtension;
+        private string? _relativeLocation;
+        private string? _namespace;
+        private string? _fileName;
+        private OverwriteBehaviour _overwriteBehaviour = OverwriteBehaviour.Always;
 
+        private readonly string _className;
         private readonly HashSet<string> _knownUsings = new();
         private readonly List<(Action Invoke, int Order)> _configurations = new();
         private readonly List<(Action Invoke, int Order)> _configurationsAfter = new();
-        public RazorFile(ICSharpTemplate template) : base(null)
+
+        public RazorFile(RazorTemplateBase<TTemplateModel> template, string className) : base(null!)
         {
-            Template = template;
+            Template = template as IRazorFileTemplate ?? throw new InvalidOperationException($"{nameof(template)} must implement {nameof(IRazorFileTemplate)}");
             File = this;
             RazorFile = this;
+            _className = className;
+            _namespace = template.GetNamespace();
+            _relativeLocation = template.GetFolderPath();
         }
 
-        public ICSharpTemplate Template { get; protected set; }
-        public IList<RazorDirective> Directives { get; } = new List<RazorDirective>();
+        public IRazorFile WithFileExtension(string fileExtension)
+        {
+            _fileExtension = fileExtension;
+            return this;
+        }
 
-        public RazorFile AddUsing(string @namespace)
+        public IRazorFile WithFileName(string fileName)
+        {
+            _fileName = fileName;
+            return this;
+        }
+
+        public IRazorFile WithRelativeLocation(string relativeLocation)
+        {
+            _relativeLocation = relativeLocation;
+            return this;
+        }
+
+        public IRazorFile WithNamespace(string @namespace)
+        {
+            _namespace = @namespace;
+            return this;
+        }
+
+        public IRazorFile WithOverwriteBehaviour(OverwriteBehaviour overwriteBehaviour)
+        {
+            _overwriteBehaviour = overwriteBehaviour;
+            return this;
+        }
+
+        ITemplateFileConfig IFileBuilderBase<IRazorFile>.GetConfig() => GetConfig();
+
+        public RazorFileConfig GetConfig()
+        {
+            return new RazorFileConfig(
+                className: _className,
+                @namespace: _namespace ?? throw new InvalidOperationException(
+                    $"Could not automatically determine namespace for file, either ensure the template extends " +
+                    $"{nameof(CSharpTemplateBase<TTemplateModel>)} or manually call the {nameof(WithNamespace)} method."),
+                relativeLocation: _relativeLocation ?? throw new InvalidOperationException(
+                    $"Could not automatically determine relative location for file, either ensure the template extends " +
+                    $"{nameof(IntentTemplateBase<TTemplateModel>)} or manually call the {nameof(WithRelativeLocation)} method."),
+                overwriteBehaviour: _overwriteBehaviour,
+                fileName: _fileName,
+                fileExtension: _fileExtension,
+                dependsUpon: default);
+        }
+
+        ICSharpTemplate ICSharpFile.Template => Template;
+        public IRazorFileTemplate Template { get; }
+
+        public IList<IRazorDirective> Directives { get; } = new List<IRazorDirective>();
+
+        public IRazorFile AddUsing(string @namespace)
         {
             if (!_knownUsings.Add(@namespace))
             {
@@ -59,7 +122,7 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder
             return type;
         }
 
-        public RazorFile Configure(Action<RazorFile> configure)
+        public IRazorFile Configure(Action<IRazorFile> configure)
         {
             _configurations.Add((() => configure(this), int.MinValue));
             return this;
@@ -72,7 +135,7 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder
 
         public override string GetText(string indentation)
         {
-            if (!_isBuilt)
+            if (!IsBuilt)
             {
                 throw new Exception("RazorFile has not been built. Call .Build() before this invocation.");
             }
@@ -98,9 +161,9 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder
             return sb.ToString();
         }
 
-        public RazorFile OnBuild(Action<RazorFile> configure, int order = 0)
+        public IRazorFile OnBuild(Action<IRazorFile> configure, int order = 0)
         {
-            if (_isBuilt)
+            if (IsBuilt)
             {
                 throw new Exception("This file has already been built. " +
                                     "Consider registering your configuration in the AfterBuild(...) method.");
@@ -110,7 +173,7 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder
             return this;
         }
 
-        public RazorFile AfterBuild(Action<RazorFile> configure, int order = 0)
+        public IRazorFile AfterBuild(Action<IRazorFile> configure, int order = 0)
         {
             if (_afterBuildRun)
             {
@@ -121,7 +184,9 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder
             return this;
         }
 
-        internal IReadOnlyCollection<(Action Invoke, int Order)> GetConfigurationDelegates()
+        #region IFileBuilderBase implementation
+
+        IReadOnlyCollection<(Action Invoke, int Order)> IFileBuilderBase.GetConfigurationDelegates()
         {
             if (_configurations.Count == 0)
             {
@@ -133,17 +198,16 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder
             return toReturn;
         }
 
-        internal RazorFile MarkCompleteBuildAsDone()
+        void IFileBuilderBase.MarkCompleteBuildAsDone()
         {
-            _isBuilt = true;
-            return this;
+            IsBuilt = true;
         }
 
-        internal IReadOnlyCollection<(Action Invoke, int Order)> GetConfigurationAfterDelegates()
+        IReadOnlyCollection<(Action Invoke, int Order)> IFileBuilderBase.GetConfigurationAfterDelegates()
         {
             if (_configurationsAfter.Count == 0)
             {
-                return Array.Empty<(Action Invoke, int Order)>();
+                return [];
             }
 
             var toReturn = _configurationsAfter.ToList();
@@ -151,7 +215,7 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder
             return toReturn;
         }
 
-        internal RazorFile MarkAfterBuildAsDone()
+        void IFileBuilderBase.MarkAfterBuildAsDone()
         {
             if (_configurations.Any())
             {
@@ -159,7 +223,8 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder
             }
 
             _afterBuildRun = true;
-            return this;
         }
+
+        #endregion
     }
 }

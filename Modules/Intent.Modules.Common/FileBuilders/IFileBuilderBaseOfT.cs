@@ -9,6 +9,7 @@ public interface IFileBuilderBase<out T> : IFileBuilderBase
     T OnBuild(Action<T> configure, int order = 0);
     T AfterBuild(Action<T> configure, int order = 0);
     T WithFileExtension(string fileExtension);
+    T WithFileName(string fileName);
     T WithRelativeLocation(string relativeLocation);
     ITemplateFileConfig GetConfig();
 }

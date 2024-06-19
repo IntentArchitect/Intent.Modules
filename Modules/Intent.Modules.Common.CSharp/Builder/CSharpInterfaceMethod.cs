@@ -1,15 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
+using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICSharpMethodDeclaration
+public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICSharpInterfaceMethod, ICSharpMethodDeclaration
 {
+    private readonly ICSharpInterfaceMethod _wrapper;
     public string ReturnType { get; private set; }
     ICSharpExpression ICSharpMethodDeclaration.ReturnType => new CSharpStatement(ReturnType);
+    ICSharpExpression ICSharpMethodDeclarationActual.ReturnType => new CSharpStatement(ReturnType);
     public string Name { get; }
     public bool IsAsync { get; private set; } = false;
     public bool IsAbstract { get; set; } = true;
@@ -34,6 +36,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
+        _wrapper = new CSharpInterfaceMethodWrapper(this);
         ReturnType = returnType;
         Name = name;
         Parent = parent;
@@ -221,4 +224,48 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
 
         return $"<{string.Join(", ", GenericParameters)}>";
     }
+
+    #region ICSharpInterfaceMethod implementation
+
+    IList<ICSharpGenericParameter> ICSharpInterfaceMethod.GenericParameters => _wrapper.GenericParameters;
+
+    IList<ICSharpGenericTypeConstraint> ICSharpInterfaceMethod.GenericTypeConstraints => _wrapper.GenericTypeConstraints;
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.Async() => _wrapper.Async();
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.Static() => _wrapper.Static();
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.AddParameter(string type, string name, Action<ICSharpParameter> configure) => _wrapper.AddParameter(type, name, configure);
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.InsertParameter(int index, string type, string name, Action<ICSharpParameter> configure) => _wrapper.InsertParameter(index, type, name, configure);
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.AddGenericParameter(string typeName) => _wrapper.AddGenericParameter(typeName);
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.AddGenericParameter(string typeName, out ICSharpGenericParameter param) => _wrapper.AddGenericParameter(typeName, out param);
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.AddGenericTypeConstraint(string genericParameterName, Action<ICSharpGenericTypeConstraint> configure) => _wrapper.AddGenericTypeConstraint(genericParameterName, configure);
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.AddStatement(string statement, Action<ICSharpStatement> configure) => _wrapper.AddStatement(statement, configure);
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.AddStatement<TStatement>(TStatement statement, Action<TStatement> configure) => _wrapper.AddStatement(statement, configure);
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.WithExpressionBody(string statement, Action<ICSharpStatement> configure) => _wrapper.WithExpressionBody(statement, configure);
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.WithExpressionBody<TStatement>(TStatement statement, Action<TStatement> configure) => _wrapper.WithExpressionBody(statement, configure);
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.WithReturnType(string returnType) => _wrapper.WithReturnType(returnType);
+
+    ICSharpInterfaceMethod ICSharpInterfaceMethod.WithDefaultImplementation() => _wrapper.WithDefaultImplementation();
+
+    ICSharpInterfaceMethod ICSharpDeclaration<ICSharpInterfaceMethod>.AddAttribute(string name, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(name, configure);
+
+    ICSharpInterfaceMethod ICSharpDeclaration<ICSharpInterfaceMethod>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(attribute, configure);
+
+    ICSharpInterfaceMethod ICSharpDeclaration<ICSharpInterfaceMethod>.WithComments(string xmlComments) => _wrapper.WithComments(xmlComments);
+
+    ICSharpInterfaceMethod ICSharpDeclaration<ICSharpInterfaceMethod>.WithComments(IEnumerable<string> xmlComments) => _wrapper.WithComments(xmlComments);
+
+    IList<ICSharpStatement> IHasCSharpStatementsActual.Statements => _wrapper.Statements;
+
+    #endregion
 }

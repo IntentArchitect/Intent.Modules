@@ -4,7 +4,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public abstract class CSharpMetadataBase : ICSharpCodeContext
+public abstract class CSharpMetadataBase : ICSharpMetadataBase
 {
     private readonly Dictionary<string, ICSharpReferenceable> _modelReferenceRegistry = new();
 

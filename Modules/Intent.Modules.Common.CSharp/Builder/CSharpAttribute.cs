@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpAttribute : CSharpMetadataBase<CSharpAttribute>, IHasCSharpStatements
+public class CSharpAttribute : CSharpMetadataBase<CSharpAttribute>, ICSharpAttribute, IHasCSharpStatements
 {
     public string Name { get; set; }
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
@@ -19,6 +19,7 @@ public class CSharpAttribute : CSharpMetadataBase<CSharpAttribute>, IHasCSharpSt
             ? name[1..^1]
             : name;
     }
+
 
     public CSharpAttribute AddArgument(string name)
     {
@@ -51,4 +52,14 @@ public class CSharpAttribute : CSharpMetadataBase<CSharpAttribute>, IHasCSharpSt
     {
         return GetText(string.Empty);
     }
+
+    #region ICSharpAttribute
+
+    ICSharpAttribute ICSharpAttribute.FindAndReplace(string find, string replaceWith) =>
+        FindAndReplace(find, replaceWith);
+
+    ICSharpAttribute ICSharpAttribute.AddArgument(string name) =>
+        AddArgument(name);
+
+    #endregion
 }

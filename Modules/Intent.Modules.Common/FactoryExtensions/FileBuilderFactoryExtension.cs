@@ -1,4 +1,3 @@
-using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.FileBuilders;
 using Intent.Modules.Common.Plugins;
@@ -11,35 +10,16 @@ namespace Intent.Modules.Common.FactoryExtensions
 
         public override int Order => int.MaxValue; // always execute last
 
+        /// <inheritdoc />
         protected override void OnAfterTemplateRegistrations(IApplication application)
         {
-            var templates = application.OutputTargets.SelectMany(x => x.TemplateInstances)
-                .Where(x => x.CanRunTemplate())
-                .OfType<IFileBuilderTemplate>()
-                .ToList();
-
-            templates.ForEach(x =>
-            {
-                x.File.StartBuild();
-            });
-
-            templates.ForEach(x =>
-            {
-                x.File.CompleteBuild();
-            });
+            FileBuilderHelper.PerformConfiguration(application, isForAfterBuild: false);
         }
 
+        /// <inheritdoc />
         protected override void OnBeforeTemplateExecution(IApplication application)
         {
-            var templates = application.OutputTargets.SelectMany(x => x.TemplateInstances)
-                .Where(x => x.CanRunTemplate())
-                .OfType<IFileBuilderTemplate>()
-                .ToList();
-
-            templates.ForEach(x =>
-            {
-                x.File.AfterBuild();
-            });
+            FileBuilderHelper.PerformConfiguration(application, isForAfterBuild: true);
         }
     }
 }

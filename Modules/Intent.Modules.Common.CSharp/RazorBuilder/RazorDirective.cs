@@ -1,16 +1,17 @@
+#nullable enable
 using System;
 using Intent.Modules.Common.CSharp.Builder;
 
 namespace Intent.Modules.Common.CSharp.RazorBuilder;
 
-public class RazorDirective
+internal class RazorDirective : IRazorDirective
 {
     public string Keyword { get; }
-    public ICSharpExpression Expression { get; }
+    public ICSharpExpression? Expression { get; }
 
     public int Order { get; set; }
 
-    public RazorDirective(string keyword, ICSharpExpression expression = null)
+    public RazorDirective(string keyword, ICSharpExpression? expression = null)
     {
         if (string.IsNullOrWhiteSpace(keyword))
         {
@@ -19,21 +20,13 @@ public class RazorDirective
 
         Keyword = keyword;
         Expression = expression;
-        switch (keyword)
+        Order = keyword switch
         {
-            case "page":
-                Order = 0;
-                break;
-            case "using":
-                Order = 1;
-                break;
-            case "inject":
-                Order = 2;
-                break;
-            default:
-                Order = 0;
-                break;
-        }
+            "page" => 0,
+            "using" => 1,
+            "inject" => 2,
+            _ => 0
+        };
     }
 
     public override string ToString()

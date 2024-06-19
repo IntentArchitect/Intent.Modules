@@ -8,8 +8,8 @@ namespace Intent.Modules.Common.FileBuilders;
 
 public abstract class FileBuilderBase : IFileBuilderBase
 {
-    private readonly string _fileName;
     private readonly OverwriteBehaviour _overwriteBehaviour;
+    protected string _fileName;
     protected string _relativeLocation;
     protected string _extension;
     protected readonly IList<(Action Action, int Order)> Configurations = new List<(Action Action, int Order)>();
@@ -29,45 +29,6 @@ public abstract class FileBuilderBase : IFileBuilderBase
         _overwriteBehaviour = overwriteBehaviour;
     }
 
-    public void StartBuild()
-    {
-        while (Configurations.Count > 0)
-        {
-            var toExecute = Configurations.OrderBy(x => x.Order).First();
-            toExecute.Action.Invoke();
-            Configurations.Remove(toExecute);
-        }
-    }
-
-    public void CompleteBuild()
-    {
-        while (Configurations.Count > 0)
-        {
-            var toExecute = Configurations.OrderBy(x => x.Order).First();
-            toExecute.Action.Invoke();
-            Configurations.Remove(toExecute);
-        }
-
-        IsBuilt = true;
-    }
-
-    public void AfterBuild()
-    {
-        while (ConfigurationsAfter.Count > 0)
-        {
-            var toExecute = ConfigurationsAfter.OrderBy(x => x.Order).First();
-            toExecute.Action.Invoke();
-            ConfigurationsAfter.Remove(toExecute);
-        }
-
-        if (Configurations.Any())
-        {
-            throw new Exception("Pending configurations have not been executed. Please contact support@intentarchitect.com for assistance.");
-        }
-
-        AfterBuildRun = true;
-    }
-
     public ITemplateFileConfig GetConfig()
     {
         return new TemplateFileConfig(
@@ -75,5 +36,44 @@ public abstract class FileBuilderBase : IFileBuilderBase
             fileExtension: _extension,
             relativeLocation: _relativeLocation,
             overwriteBehaviour: _overwriteBehaviour);
+    }
+
+    IReadOnlyCollection<(Action Invoke, int Order)> IFileBuilderBase.GetConfigurationDelegates()
+    {
+        if (Configurations.Count == 0)
+        {
+            return [];
+        }
+
+        var toReturn = Configurations.ToArray();
+        Configurations.Clear();
+        return toReturn;
+    }
+
+    void IFileBuilderBase.MarkCompleteBuildAsDone()
+    {
+        IsBuilt = true;
+    }
+
+    IReadOnlyCollection<(Action Invoke, int Order)> IFileBuilderBase.GetConfigurationAfterDelegates()
+    {
+        if (ConfigurationsAfter.Count == 0)
+        {
+            return [];
+        }
+
+        var toReturn = ConfigurationsAfter.ToList();
+        ConfigurationsAfter.Clear();
+        return toReturn;
+    }
+
+    void IFileBuilderBase.MarkAfterBuildAsDone()
+    {
+        if (Configurations.Count != 0)
+        {
+            throw new Exception("Pending configurations have not been executed. Please contact support@intentarchitect.com for assistance.");
+        }
+
+        AfterBuildRun = true;
     }
 }

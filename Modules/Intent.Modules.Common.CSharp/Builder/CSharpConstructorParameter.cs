@@ -1,10 +1,13 @@
 using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorParameter>, ICSharpParameter, ICSharpReferenceable
+public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorParameter>, ICSharpConstructorParameter
 {
     private readonly CSharpConstructor _constructor;
     public string Type { get; }
@@ -111,7 +114,7 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
         });
         return this;
     }
-    
+
     public CSharpConstructorParameter WithDefaultValue(string defaultValue)
     {
         DefaultValue = defaultValue;
@@ -127,4 +130,20 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
 
         return $@"{Type} {name}{defaultValue}";
     }
+
+    #region ICSharpConstructorParameter implementation
+
+    ICSharpConstructorParameter ICSharpConstructorParameter.IntroduceField(Action<ICSharpField> configure) => IntroduceField(configure);
+
+    ICSharpConstructorParameter ICSharpConstructorParameter.IntroduceField(Action<ICSharpField, ICSharpFieldAssignmentStatement> configure) => IntroduceField(configure);
+
+    ICSharpConstructorParameter ICSharpConstructorParameter.IntroduceReadonlyField(Action<ICSharpField> configure) => IntroduceReadonlyField(configure);
+
+    ICSharpConstructorParameter ICSharpConstructorParameter.IntroduceReadonlyField(Action<ICSharpField, ICSharpFieldAssignmentStatement> configure) => IntroduceReadonlyField(configure);
+
+    ICSharpConstructorParameter ICSharpConstructorParameter.IntroduceProperty(Action<ICSharpProperty> configure) => IntroduceProperty(configure);
+
+    ICSharpConstructorParameter ICSharpConstructorParameter.IntroduceProperty(Action<ICSharpProperty, ICSharpFieldAssignmentStatement> configure) => IntroduceProperty(configure);
+
+    #endregion
 }

@@ -140,7 +140,7 @@ public class CSharpDefaultIntentManagedAttribute : CSharpAssemblyAttribute
     {
         var existing = this.FindStatement(x => x.GetText(string.Empty).StartsWith($"{property} = "));
         if (existing != null)
-            existing.Replace($"{property} = {mode}");
+            existing.Replace(new CSharpStatement($"{property} = {mode}"));
         else
         {
             AddArgument($"{property} = {mode}");

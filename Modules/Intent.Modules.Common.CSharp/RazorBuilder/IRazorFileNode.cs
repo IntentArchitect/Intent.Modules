@@ -1,3 +1,4 @@
+#nullable enable
 using System.Collections.Generic;
 using Intent.Modules.Common.CSharp.Builder;
 
@@ -9,5 +10,5 @@ public interface IRazorFileNode : ICSharpCodeContext
     void AddChildNode(IRazorFileNode node);
     void InsertChildNode(int index, IRazorFileNode node);
     IList<IRazorFileNode> ChildNodes { get; }
-    IRazorFileNode Parent { get; internal set; }
+    IRazorFileNode? Parent { get; internal set; }
 }

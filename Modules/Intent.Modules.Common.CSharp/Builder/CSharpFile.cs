@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.FileBuilders;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -256,6 +257,10 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
         return this;
     }
 
+    IReadOnlyCollection<(Action Invoke, int Order)> IFileBuilderBase.GetConfigurationDelegates() => GetConfigurationDelegates();
+    /// <summary>
+    /// Internal for unit testing reasons.
+    /// </summary>
     internal IReadOnlyCollection<(Action Invoke, int Order)> GetConfigurationDelegates()
     {
         if (_configurations.Count == 0)
@@ -268,13 +273,16 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
         return toReturn;
     }
 
-    internal CSharpFile MarkCompleteBuildAsDone()
+    void IFileBuilderBase.MarkCompleteBuildAsDone() => MarkCompleteBuildAsDone();
+    /// <summary>
+    /// Internal for unit testing reasons.
+    /// </summary>
+    internal void MarkCompleteBuildAsDone()
     {
         _isBuilt = true;
-        return this;
     }
 
-    internal IReadOnlyCollection<(Action Invoke, int Order)> GetConfigurationAfterDelegates()
+    IReadOnlyCollection<(Action Invoke, int Order)> IFileBuilderBase.GetConfigurationAfterDelegates()
     {
         if (_configurationsAfter.Count == 0)
         {
@@ -286,7 +294,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
         return toReturn;
     }
 
-    internal CSharpFile MarkAfterBuildAsDone()
+    void IFileBuilderBase.MarkAfterBuildAsDone()
     {
         if (_configurations.Any())
         {
@@ -294,7 +302,6 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
         }
 
         _afterBuildRun = true;
-        return this;
     }
 
     public override string ToString()

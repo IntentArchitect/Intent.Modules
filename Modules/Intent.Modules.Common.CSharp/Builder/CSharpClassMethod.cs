@@ -1,14 +1,17 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodDeclaration
+public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMethod, ICSharpMethodDeclaration
 {
+    private readonly ICSharpClassMethod _wrapper;
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     public bool IsAsync { get; private set; } = false;
     protected string AccessModifier { get; private set; } = "public ";
@@ -17,6 +20,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     public bool HasExpressionBody { get; private set; }
     public string ReturnType { get; private set; }
     ICSharpExpression ICSharpMethodDeclaration.ReturnType => new CSharpStatement(ReturnType);
+    ICSharpExpression ICSharpMethodDeclarationActual.ReturnType => new CSharpStatement(ReturnType);
     public string Name { get; }
     public List<CSharpParameter> Parameters { get; } = new();
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
@@ -43,6 +47,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
+        _wrapper = new CSharpClassMethodWrapper(this);
         Parent = @class;
         Class = @class as CSharpClass;
         File = @class?.File;
@@ -112,7 +117,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         return this;
     }
 
-    public CSharpClassMethod AddParameter(string type, string name, Action<CSharpParameter> configure = null)
+    public CSharpClassMethod AddParameter(string type, string name, Action<CSharpParameter>? configure = null)
     {
         var param = new CSharpParameter(type, name, this);
         Parameters.Add(param);
@@ -438,4 +443,100 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
 
         return $"<{string.Join(", ", GenericParameters)}>";
     }
+
+    #region ICSharpClassMethod implementation
+
+    ICSharpClassMethod ICSharpClassMethod.IsExplicitImplementationFor(string @interface) => _wrapper.IsExplicitImplementationFor(@interface);
+
+    ICSharpClassMethod ICSharpClassMethod.AddParameter(string type, string name, Action<ICSharpMethodParameter>? configure) => AddParameter(type, name, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.AddParameter<TModel>(string type, TModel model, Action<ICSharpMethodParameter>? configure) => _wrapper.AddParameter(type, model, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.AddParameter<TModel>(TModel model, Action<ICSharpMethodParameter>? configure) => _wrapper.AddParameter(model, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.AddParameters<TModel>(IEnumerable<TModel> models, Action<ICSharpMethodParameter>? configure) => _wrapper.AddParameters(models, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.InsertParameter(int index, string type, string name, Action<ICSharpMethodParameter>? configure) => _wrapper.InsertParameter(index, type, name, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.AddOptionalCancellationTokenParameter() => _wrapper.AddOptionalCancellationTokenParameter();
+
+    ICSharpClassMethod ICSharpClassMethod.AddOptionalCancellationTokenParameter(string parameterName) => _wrapper.AddOptionalCancellationTokenParameter(parameterName);
+
+    ICSharpClassMethod ICSharpClassMethod.AddGenericParameter(string typeName) => _wrapper.AddGenericParameter(typeName);
+
+    ICSharpClassMethod ICSharpClassMethod.AddGenericParameter(string typeName, out ICSharpGenericParameter param) => _wrapper.AddGenericParameter(typeName, out param);
+
+    ICSharpClassMethod ICSharpClassMethod.AddGenericTypeConstraint(string genericParameterName, Action<ICSharpGenericTypeConstraint> configure) => _wrapper.AddGenericTypeConstraint(genericParameterName, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.AddStatement(string statement, Action<ICSharpStatement>? configure) => _wrapper.AddStatement(statement, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.AddStatement(ICSharpStatement statement, Action<ICSharpStatement>? configure) => _wrapper.AddStatement(statement, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.InsertStatement(int index, ICSharpStatement statement, Action<ICSharpStatement>? configure) => _wrapper.InsertStatement(index, statement, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.InsertStatements(int index, IReadOnlyCollection<ICSharpStatement> statements, Action<IEnumerable<ICSharpStatement>>? configure) => _wrapper.InsertStatements(index, statements, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.AddStatements(string statements, Action<IEnumerable<ICSharpStatement>>? configure) => _wrapper.AddStatements(statements, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.AddStatements(IEnumerable<string> statements, Action<IEnumerable<ICSharpStatement>>? configure) => _wrapper.AddStatements(statements, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.AddStatements(IEnumerable<ICSharpStatement> statements, Action<IEnumerable<ICSharpStatement>>? configure) => _wrapper.AddStatements(statements, configure);
+
+    ICSharpClassMethod ICSharpClassMethod.FindAndReplaceStatement(Func<ICSharpStatement, bool> matchFunc, ICSharpStatement replaceWith) => _wrapper.FindAndReplaceStatement(matchFunc, replaceWith);
+
+    ICSharpClassMethod ICSharpClassMethod.Protected() => _wrapper.Protected();
+
+    ICSharpClassMethod ICSharpClassMethod.Private() => _wrapper.Private();
+
+    ICSharpClassMethod ICSharpClassMethod.WithReturnType(string returnType) => _wrapper.WithReturnType(returnType);
+
+    ICSharpClassMethod ICSharpClassMethod.WithoutAccessModifier() => _wrapper.WithoutAccessModifier();
+
+    ICSharpClassMethod ICSharpClassMethod.Override() => _wrapper.Override();
+
+    ICSharpClassMethod ICSharpClassMethod.New() => _wrapper.New();
+
+    ICSharpClassMethod ICSharpClassMethod.Virtual() => _wrapper.Virtual();
+
+    ICSharpClassMethod ICSharpClassMethod.Abstract() => _wrapper.Abstract();
+
+    ICSharpClassMethod ICSharpClassMethod.Static() => _wrapper.Static();
+
+    ICSharpClassMethod ICSharpClassMethod.Sync() => _wrapper.Sync();
+
+    ICSharpClassMethod ICSharpClassMethod.Async() => _wrapper.Async();
+
+    ICSharpClassMethod ICSharpClassMethod.WithExpressionBody(ICSharpStatement statement) => _wrapper.WithExpressionBody(statement);
+
+    void ICSharpClassMethod.RemoveStatement(ICSharpStatement statement) => _wrapper.RemoveStatement(statement);
+
+    IList<ICSharpGenericParameter> ICSharpClassMethod.GenericParameters => _wrapper.GenericParameters;
+
+    IList<ICSharpGenericTypeConstraint> ICSharpClassMethod.GenericTypeConstraints => _wrapper.GenericTypeConstraints;
+
+    ICSharpClass ICSharpClassMethod.Class => _wrapper.Class;
+
+    ICSharpClassMethod ICSharpDeclaration<ICSharpClassMethod>.AddAttribute(string name, Action<ICSharpAttribute> configure)
+    {
+        return _wrapper.AddAttribute(name, configure);
+    }
+
+    ICSharpClassMethod ICSharpDeclaration<ICSharpClassMethod>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure)
+    {
+        return _wrapper.AddAttribute(attribute, configure);
+    }
+
+    ICSharpClassMethod ICSharpDeclaration<ICSharpClassMethod>.WithComments(string xmlComments)
+    {
+        return _wrapper.WithComments(xmlComments);
+    }
+
+    ICSharpClassMethod ICSharpDeclaration<ICSharpClassMethod>.WithComments(IEnumerable<string> xmlComments)
+    {
+        return _wrapper.WithComments(xmlComments);
+    }
+
+    IList<ICSharpStatement> IHasCSharpStatementsActual.Statements => _wrapper.Statements;
+
+    #endregion
 }

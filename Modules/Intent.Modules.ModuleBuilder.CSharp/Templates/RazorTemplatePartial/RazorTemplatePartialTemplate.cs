@@ -109,8 +109,15 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.RazorTemplatePartial
             
             #line default
             #line hidden
-            this.Write("            RazorFile = new RazorFile(this)\r\n                .Configure(file =>\r\n" +
-                    "                {\r\n                    file.AddPageDirective($\"");
+            this.Write("            RazorFile = IRazorFile.Create.(this, $\"");
+            
+            #line 33 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\RazorTemplatePartial\RazorTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName()));
+            
+            #line default
+            #line hidden
+            this.Write("\")\r\n                .Configure(file =>\r\n                {\r\n                    fi" +
+                    "le.AddPageDirective($\"");
             
             #line 36 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\RazorTemplatePartial\RazorTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.GetPageDirectiveText()));
@@ -143,7 +150,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.RazorTemplatePartial
                     " ");
             
             #line 46 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\RazorTemplatePartial\RazorTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(UseType("Intent.Modules.Blazor.Api.RazorFile")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(UseType("Intent.Modules.Blazor.Api.IRazorFile")));
             
             #line default
             #line hidden
@@ -154,19 +161,11 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.RazorTemplatePartial
             
             #line default
             #line hidden
-            this.Write("\r\n        /// <inheritdoc />\r\n        [IntentManaged(Mode.Fully, Body = Mode.Igno" +
-                    "re)]\r\n        protected override RazorFileConfig DefineRazorConfig()\r\n        {\r" +
-                    "\n            return new RazorFileConfig(\r\n                className: $\"");
+            this.Write("\r\n        /// <inheritdoc />\r\n        [IntentManaged(Mode.Fully)]\r\n        protec" +
+                    "ted override RazorFileConfig DefineRazorConfig()\r\n        {\r\n            return " +
+                    "RazorFile.GetConfig();\r\n        }\r\n");
             
-            #line 54 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\RazorTemplatePartial\RazorTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName()));
-            
-            #line default
-            #line hidden
-            this.Write("\",\r\n                @namespace: this.GetNamespace(),\r\n                relativeLoc" +
-                    "ation: this.GetFolderPath());\r\n        }\r\n");
-            
-            #line 58 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\RazorTemplatePartial\RazorTemplatePartialTemplate.tt"
+            #line 55 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\RazorTemplatePartial\RazorTemplatePartialTemplate.tt"
   if (Model.GetRazorTemplateSettings()?.TemplatingMethod().IsRazorFileBuilder() == true) { 
             
             #line default
@@ -174,7 +173,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.RazorTemplatePartial
             this.Write("\r\n        /// <inheritdoc />\r\n        [IntentManaged(Mode.Fully)]\r\n        public" +
                     " override string TransformText() => RazorFile.ToString();\r\n");
             
-            #line 63 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\RazorTemplatePartial\RazorTemplatePartialTemplate.tt"
+            #line 60 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\RazorTemplatePartial\RazorTemplatePartialTemplate.tt"
   } 
             
             #line default

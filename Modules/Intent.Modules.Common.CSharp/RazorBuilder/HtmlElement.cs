@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,24 +6,24 @@ using System.Text;
 
 namespace Intent.Modules.Common.CSharp.RazorBuilder;
 
-public class HtmlElement : RazorFileNodeBase<HtmlElement>, IRazorFileNode
+public class HtmlElement : RazorFileNodeBase<HtmlElement, IHtmlElement>, IHtmlElement
 {
     public string Name { get; set; }
-    public string Text { get; set; }
-    public Dictionary<string, HtmlAttribute> Attributes { get; set; } = new Dictionary<string, HtmlAttribute>();
+    public string? Text { get; set; }
+    public Dictionary<string, IHtmlAttribute> Attributes { get; set; } = new();
 
-    public HtmlElement(string name, RazorFile file) : base(file)
+    public HtmlElement(string name, IRazorFile file) : base(file)
     {
         Name = name;
     }
 
-    public HtmlElement AddAttribute(string name, string value = null)
+    public IHtmlElement AddAttribute(string name, string? value = null)
     {
         Attributes.Add(name, new HtmlAttribute(name, value));
         return this;
     }
 
-    public HtmlElement AddClass(string className)
+    public IHtmlElement AddClass(string className)
     {
         if (!Attributes.TryGetValue("class", out var classAttr))
         {
@@ -38,7 +39,7 @@ public class HtmlElement : RazorFileNodeBase<HtmlElement>, IRazorFileNode
         return this;
     }
 
-    public HtmlElement AddAttributeIfNotEmpty(string name, string value)
+    public IHtmlElement AddAttributeIfNotEmpty(string name, string value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {
@@ -47,36 +48,36 @@ public class HtmlElement : RazorFileNodeBase<HtmlElement>, IRazorFileNode
         return AddAttribute(name, value);
     }
 
-    public HtmlElement SetAttribute(string name, string value = null)
+    public IHtmlElement SetAttribute(string name, string? value = null)
     {
         Attributes[name] = new HtmlAttribute(name, value);
         return this;
     }
 
-    public HtmlAttribute GetAttribute(string name)
+    public IHtmlAttribute? GetAttribute(string name)
     {
-        return Attributes.TryGetValue(name, out var attribute) ? attribute : null;
+        return Attributes.GetValueOrDefault(name);
     }
 
-    public bool HasAttribute(string name, string value = null)
+    public bool HasAttribute(string name, string? value = null)
     {
         return Attributes.TryGetValue(name, out var attribute) && (value == null || attribute.Value == value);
     }
 
-    public HtmlElement WithText(string text)
+    public IHtmlElement WithText(string text)
     {
         Text = text;
         return this;
     }
 
 
-    public HtmlElement AddAbove(IRazorFileNode node)
+    public IHtmlElement AddAbove(IRazorFileNode node)
     {
         Parent.InsertChildNode(Parent.ChildNodes.IndexOf(this), node);
         return this;
     }
 
-    public HtmlElement AddAbove(params IRazorFileNode[] nodes)
+    public IHtmlElement AddAbove(params IRazorFileNode[] nodes)
     {
         foreach (var node in nodes)
         {
@@ -85,13 +86,13 @@ public class HtmlElement : RazorFileNodeBase<HtmlElement>, IRazorFileNode
         return this;
     }
 
-    public HtmlElement AddBelow(IRazorFileNode node)
+    public IHtmlElement AddBelow(IRazorFileNode node)
     {
         Parent.InsertChildNode(Parent.ChildNodes.IndexOf(this) + 1, node);
         return this;
     }
 
-    public HtmlElement AddBelow(params IRazorFileNode[] nodes)
+    public IHtmlElement AddBelow(params IRazorFileNode[] nodes)
     {
         foreach (var node in nodes.Reverse())
         {
@@ -148,9 +149,9 @@ public class HtmlElement : RazorFileNodeBase<HtmlElement>, IRazorFileNode
     private string FormatAttributes(string indentation)
     {
         var separateLines = Name is not "link" and not "meta";
-        return string.Join(separateLines 
-                ? $"{Environment.NewLine}{indentation}{new string(' ', Name.Length + 1)}" 
-                : "", 
+        return string.Join(separateLines
+                ? $"{Environment.NewLine}{indentation}{new string(' ', Name.Length + 1)}"
+                : "",
             Attributes.Values.Select(attribute => $" {attribute.Name}{(attribute.Value != null ? $"=\"{attribute.Value}\"" : "")}"));
     }
 

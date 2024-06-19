@@ -1,13 +1,15 @@
-using System;
-using Intent.Modules.Common.CSharp.Templates;
-
 #nullable enable
+using System;
+using System.Collections.Generic;
+using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpReferenceable
+public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
 {
     private readonly CSharpClass _class;
+    private readonly ICSharpProperty _wrapper;
     public string AccessModifier { get; protected set; } = "public ";
     public string OverrideModifier { get; private set; } = "";
     public string Type { get; }
@@ -17,7 +19,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpReferenceable
     public bool IsRequired { get; private set; }
     public string InitialValue { get; private set; }
     public string ExplicitlyImplementing { get; private set; }
-    public bool IsOmittedFromRender { get; private set; } 
+    public bool IsOmittedFromRender { get; private set; }
     public CSharpPropertyAccessor Getter { get; } = CSharpPropertyAccessor.Getter();
     public CSharpPropertyAccessor Setter { get; } = CSharpPropertyAccessor.Setter();
 
@@ -33,6 +35,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpReferenceable
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
+        _wrapper = new CSharpPropertyWrapper(this);
         Type = type;
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;
@@ -201,4 +204,58 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpReferenceable
         }
         return $@"{declaration} {{ {Getter}{(!IsReadOnly ? $" {Setter}" : string.Empty)} }}{(InitialValue != null ? $" = {InitialValue};" : string.Empty)}";
     }
+
+    #region ICSharpProperty implementation
+
+    ICSharpPropertyAccessor ICSharpProperty.Getter => _wrapper.Getter;
+
+    ICSharpPropertyAccessor ICSharpProperty.Setter => _wrapper.Setter;
+
+    ICSharpProperty ICSharpDeclaration<ICSharpProperty>.AddAttribute(string name, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(name, configure);
+
+    ICSharpProperty ICSharpDeclaration<ICSharpProperty>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(attribute, configure);
+
+    ICSharpProperty ICSharpDeclaration<ICSharpProperty>.WithComments(string xmlComments) => _wrapper.WithComments(xmlComments);
+
+    ICSharpProperty ICSharpDeclaration<ICSharpProperty>.WithComments(IEnumerable<string> xmlComments) => _wrapper.WithComments(xmlComments);
+
+    ICSharpProperty ICSharpProperty.Protected() => _wrapper.Protected();
+
+    ICSharpProperty ICSharpProperty.Private() => _wrapper.Private();
+
+    ICSharpProperty ICSharpProperty.WithoutAccessModifier() => _wrapper.WithoutAccessModifier();
+
+    ICSharpProperty ICSharpProperty.Override() => _wrapper.Override();
+
+    ICSharpProperty ICSharpProperty.New() => _wrapper.New();
+
+    ICSharpProperty ICSharpProperty.Virtual() => _wrapper.Virtual();
+
+    ICSharpProperty ICSharpProperty.Static() => _wrapper.Static();
+
+    ICSharpProperty ICSharpProperty.Required() => _wrapper.Required();
+
+    ICSharpProperty ICSharpProperty.PrivateSetter() => _wrapper.PrivateSetter();
+
+    ICSharpProperty ICSharpProperty.ProtectedSetter() => _wrapper.ProtectedSetter();
+
+    ICSharpProperty ICSharpProperty.Init() => _wrapper.Init();
+
+    ICSharpProperty ICSharpProperty.ReadOnly() => _wrapper.ReadOnly();
+
+    ICSharpProperty ICSharpProperty.WithoutSetter() => _wrapper.WithoutSetter();
+
+    ICSharpProperty ICSharpProperty.WithInitialValue(string initialValue) => _wrapper.WithInitialValue(initialValue);
+
+    ICSharpProperty ICSharpProperty.ExplicitlyImplements(string @interface) => _wrapper.ExplicitlyImplements(@interface);
+
+    ICSharpProperty ICSharpProperty.WithBackingField(Action<ICSharpField>? configure) => _wrapper.WithBackingField(configure);
+
+    ICSharpProperty ICSharpProperty.MoveTo(int propertyIndex) => _wrapper.MoveTo(propertyIndex);
+
+    ICSharpProperty ICSharpProperty.MoveToFirst() => _wrapper.MoveToFirst();
+
+    ICSharpProperty ICSharpProperty.MoveToLast() => _wrapper.MoveToLast();
+
+    #endregion
 }

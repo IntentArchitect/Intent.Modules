@@ -2,7 +2,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public interface ICodeBlock
 {
-    CSharpCodeSeparatorType BeforeSeparator { get; set; }
-    CSharpCodeSeparatorType AfterSeparator { get; set; }
-    string GetText(string indentation);
+    public CSharpCodeSeparatorType BeforeSeparator { get; set; }
+    public CSharpCodeSeparatorType AfterSeparator { get; set; }
+    public string GetText(string indentation);
 }

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock, ICSharpExpression
+public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICSharpStatement
 {
     public CSharpStatement()
     {
@@ -20,7 +20,18 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock, 
         Text = statement?.Trim();
     }
 
-    public new IHasCSharpStatements Parent { get; set; }
+    public new IHasCSharpStatements Parent
+    {
+        get => (IHasCSharpStatements)base.Parent;
+        set => base.Parent = (ICSharpCodeContext)value;
+    }
+
+    IHasCSharpStatementsActual ICSharpStatement.Parent
+    {
+        get => (IHasCSharpStatements)base.Parent;
+        set => base.Parent = (ICSharpCodeContext)value;
+    }
+
     public ICSharpReferenceable Reference { get; }
     public CSharpCodeSeparatorType BeforeSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
     public CSharpCodeSeparatorType AfterSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
@@ -147,4 +158,44 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock, 
     {
         return input != null ? new CSharpStatement(input) : null;
     }
+
+    #region ICSharpStatement
+
+    ICSharpStatement ICSharpStatement.SeparatedFromNext() =>
+        SeparatedFromNext();
+
+    ICSharpStatement ICSharpStatement.Indent() =>
+        Indent();
+
+    ICSharpStatement ICSharpStatement.Outdent() =>
+        Outdent();
+
+    ICSharpStatement ICSharpStatement.SetIndent(string relativeIndentation) =>
+        SetIndent(relativeIndentation);
+
+    ICSharpStatement ICSharpStatement.WithSemicolon() =>
+        WithSemicolon();
+
+    ICSharpStatement ICSharpStatement.InsertAbove(ICSharpStatement statement, Action<ICSharpStatement> configure) =>
+        InsertAbove((CSharpStatement)statement, configure);
+
+    ICSharpStatement ICSharpStatement.InsertAbove(params ICSharpStatement[] statements) =>
+        InsertAbove(statements.Cast<CSharpStatement>().ToArray());
+
+    ICSharpStatement ICSharpStatement.InsertBelow(ICSharpStatement statement, Action<ICSharpStatement> configure) =>
+        InsertBelow((CSharpStatement)statement, configure);
+
+    ICSharpStatement ICSharpStatement.InsertBelow(params ICSharpStatement[] statements) =>
+        InsertBelow(statements.Cast<CSharpStatement>().ToArray());
+
+    ICSharpStatement ICSharpStatement.FindAndReplace(string find, string replaceWith) =>
+        FindAndReplace(find, replaceWith);
+
+    void ICSharpStatement.Replace(ICSharpStatement replaceWith) =>
+        Replace((CSharpStatement)replaceWith);
+
+    ICSharpStatement ICSharpStatement.SeparatedFromPrevious() =>
+        SeparatedFromPrevious();
+
+    #endregion
 }

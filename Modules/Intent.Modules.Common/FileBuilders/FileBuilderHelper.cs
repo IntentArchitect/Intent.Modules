@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using Intent.Engine;
 using Intent.Exceptions;
-using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 
-namespace Intent.Modules.Common.CSharp.FactoryExtensions;
+namespace Intent.Modules.Common.FileBuilders;
 
-internal class FileBuilderHelper
+/// <summary>
+/// Helpers for <see cref="IFileBuilderTemplate"/>s.
+/// </summary>
+public class FileBuilderHelper
 {
     /// <summary>
     /// Every time an OnBuild or AfterBuild configuration is called on a file builder class, that
@@ -17,22 +20,20 @@ internal class FileBuilderHelper
     /// ordered across all template instances. This system below ensures that this is happening
     /// predictably.
     /// </summary>
-    public static void PerformConfiguration<TFileBuilderTemplate>(
-        ISoftwareFactoryExecutionContext context,
-        Func<TFileBuilderTemplate, IReadOnlyCollection<(Action Invoke, int Order)>> getActions,
-        Action<TFileBuilderTemplate> afterAllComplete) 
-        where TFileBuilderTemplate : ICSharpTemplate
+    public static void PerformConfiguration(ISoftwareFactoryExecutionContext context, bool isForAfterBuild)
     {
         var templates = context.OutputTargets
             .SelectMany(x => x.TemplateInstances)
             .Where(x => x.CanRunTemplate())
-            .OfType<TFileBuilderTemplate>()
+            .OfType<IFileBuilderTemplate>()
             .ToArray();
 
         var sortedSet = new SortedSet<Comparable>();
         var initial = templates
             .SelectMany(
-                collectionSelector: getActions,
+                collectionSelector: template => !isForAfterBuild
+                    ? template.File.GetConfigurationDelegates()
+                    : template.File.GetConfigurationAfterDelegates(),
                 resultSelector: (template, configuration) => new Comparable(template, configuration))
             .ToArray();
 
@@ -54,17 +55,21 @@ internal class FileBuilderHelper
             catch (Exception e)
             {
                 var template = action.Template;
+                var path = template.GetMetadata().GetRelativeFilePath();
+                if (Path.DirectorySeparatorChar is '\\')
+                {
+                    path = path.Replace('/', '\\');
+                }
+
+                var message = $"An unexpected error occurred while building [{path}] file from template [{template.Id}]. See inner exception for more details:";
 
                 if (template.TryGetModel<IElementWrapper>(out var model))
                 {
-                    throw new ElementException(model.InternalElement,
-                        $"An unexpected error occurred while building [{typeof(TFileBuilderTemplate)}] file [{template.Namespace}.{template.ClassName}] from template [{template.Id}]. See inner exception for more details:",
-                        e);
+
+                    throw new ElementException(model.InternalElement, message, e);
                 }
 
-                throw new Exception(
-                    $"An unexpected error occurred while building [{typeof(TFileBuilderTemplate)}] file [{template.Namespace}.{template.ClassName}] from template [{template.Id}]. See inner exception for more details:",
-                    e);
+                throw new Exception(message, e);
             }
             finally
             {
@@ -73,7 +78,9 @@ internal class FileBuilderHelper
 
             var toAdd = templates
                 .SelectMany(
-                    collectionSelector: getActions,
+                    collectionSelector: template => !isForAfterBuild
+                        ? template.File.GetConfigurationDelegates()
+                        : template.File.GetConfigurationAfterDelegates(),
                     resultSelector: (template, configuration) => new Comparable(template, configuration))
                 .ToArray();
 
@@ -84,7 +91,14 @@ internal class FileBuilderHelper
 
         foreach (var template in templates)
         {
-            afterAllComplete(template);
+            if (!isForAfterBuild)
+            {
+                template.File.MarkCompleteBuildAsDone();
+            }
+            else
+            {
+                template.File.MarkAfterBuildAsDone();
+            }
         }
     }
 
@@ -96,7 +110,7 @@ internal class FileBuilderHelper
         private readonly ulong _insertionOrder;
         private readonly string _templateType;
 
-        public Comparable(ICSharpTemplate template, (Action Invoke, int Order) configuration)
+        public Comparable(IFileBuilderTemplate template, (Action Invoke, int Order) configuration)
         {
             _order = configuration.Order;
             _insertionOrder = _counter++;
@@ -105,7 +119,7 @@ internal class FileBuilderHelper
             Invoke = configuration.Invoke;
         }
 
-        public ICSharpTemplate Template { get; }
+        public IFileBuilderTemplate Template { get; }
         public Action Invoke { get; }
 
         public int CompareTo(Comparable other)

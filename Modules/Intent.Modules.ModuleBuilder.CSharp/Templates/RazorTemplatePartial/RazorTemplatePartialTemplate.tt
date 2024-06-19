@@ -30,7 +30,7 @@ namespace <#= Namespace #>
         public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : "" #>) : base(TemplateId, outputTarget, model)
         {
 <#  if (Model.GetRazorTemplateSettings()?.TemplatingMethod().IsRazorFileBuilder() == true) { #>
-            RazorFile = new RazorFile(this)
+            RazorFile = IRazorFile.Create.(this, $"<#= GetClassName() #>")
                 .Configure(file =>
                 {
                     file.AddPageDirective($"<#= this.GetPageDirectiveText() #>");
@@ -43,17 +43,14 @@ namespace <#= Namespace #>
 
         /// <inheritdoc />
         [IntentManaged(Mode.Fully)]
-        public <#= UseType("Intent.Modules.Blazor.Api.RazorFile") #> RazorFile { get; }
+        public <#= UseType("Intent.Modules.Blazor.Api.IRazorFile") #> RazorFile { get; }
 <#  } #>
 
         /// <inheritdoc />
-        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        [IntentManaged(Mode.Fully)]
         protected override RazorFileConfig DefineRazorConfig()
         {
-            return new RazorFileConfig(
-                className: $"<#= GetClassName() #>",
-                @namespace: this.GetNamespace(),
-                relativeLocation: this.GetFolderPath());
+            return RazorFile.GetConfig();
         }
 <#  if (Model.GetRazorTemplateSettings()?.TemplatingMethod().IsRazorFileBuilder() == true) { #>
 

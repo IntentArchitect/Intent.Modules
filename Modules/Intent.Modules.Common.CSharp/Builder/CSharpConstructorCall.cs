@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpConstructorCall
+public class CSharpConstructorCall : ICSharpConstructorCall
 {
     private readonly string _type;
     public IList<string> Arguments { get; } = new List<string>();
@@ -23,6 +23,7 @@ public class CSharpConstructorCall
         return new CSharpConstructorCall("this");
     }
 
+    ICSharpConstructorCall ICSharpConstructorCall.AddArgument(string name) => AddArgument(name);
     public CSharpConstructorCall AddArgument(string name)
     {
         Arguments.Add(name);

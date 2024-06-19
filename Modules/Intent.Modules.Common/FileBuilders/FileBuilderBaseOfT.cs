@@ -44,6 +44,12 @@ public abstract class FileBuilderBase<T> : FileBuilderBase, IFileBuilderBase<T>
         return (T)this;
     }
 
+    public T WithFileName(string fileName)
+    {
+        _fileName = fileName;
+        return (T)this;
+    }
+
     public T WithRelativeLocation(string relativeLocation)
     {
         _relativeLocation = relativeLocation;

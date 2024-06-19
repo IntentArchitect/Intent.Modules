@@ -2,7 +2,7 @@ using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpFieldAssignmentStatement : CSharpStatement
+public class CSharpFieldAssignmentStatement : CSharpStatement, ICSharpFieldAssignmentStatement
 {
     private readonly string _lhs;
     private readonly string _rhs;
@@ -13,6 +13,7 @@ public class CSharpFieldAssignmentStatement : CSharpStatement
         _rhs = rhs;
     }
 
+    ICSharpFieldAssignmentStatement ICSharpFieldAssignmentStatement.ThrowArgumentNullException() => ThrowArgumentNullException();
     public CSharpFieldAssignmentStatement ThrowArgumentNullException()
     {
         AfterAssignment = $" ?? throw new ArgumentNullException(nameof({_rhs}))";

@@ -1,9 +1,12 @@
-﻿using Intent.Modules.Common.CSharp.Templates;
+﻿#nullable enable
+using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.FileBuilders;
 
 namespace Intent.Modules.Common.CSharp.RazorBuilder
 {
-    public interface IRazorFileTemplate : ICSharpTemplate
+    public interface IRazorFileTemplate : IFileBuilderTemplate, ICSharpTemplate
     {
-        RazorFile RazorFile { get; }
+        IRazorFile RazorFile { get; }
+        IFileBuilderBase IFileBuilderTemplate.File => RazorFile;
     }
 }

@@ -1,6 +1,6 @@
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpPropertyAccessor
+public class CSharpPropertyAccessor : ICSharpPropertyAccessor
 {
     public string Accessor { get; }
     public string AccessModifier { get; private set; } = "";
@@ -23,36 +23,42 @@ public class CSharpPropertyAccessor
         return new CSharpPropertyAccessor("set");
     }
 
+    ICSharpPropertyAccessor ICSharpPropertyAccessor.Public() => Public();
     public CSharpPropertyAccessor Public()
     {
         AccessModifier = "public ";
         return this;
     }
 
+    ICSharpPropertyAccessor ICSharpPropertyAccessor.Protected() => Protected();
     public CSharpPropertyAccessor Protected()
     {
         AccessModifier = "protected ";
         return this;
     }
 
+    ICSharpPropertyAccessor ICSharpPropertyAccessor.Internal() => Internal();
     public CSharpPropertyAccessor Internal()
     {
         AccessModifier = "internal ";
         return this;
     }
 
+    ICSharpPropertyAccessor ICSharpPropertyAccessor.Private() => Private();
     public CSharpPropertyAccessor Private()
     {
         AccessModifier = "private ";
         return this;
     }
 
+    ICSharpPropertyAccessor ICSharpPropertyAccessor.Init() => Init();
     public CSharpPropertyAccessor Init()
     {
         AccessModifier = "init";
         return this;
     }
 
+    ICSharpPropertyAccessor ICSharpPropertyAccessor.WithImplementation(params string[] statements) => WithImplementation(statements);
     public CSharpPropertyAccessor WithImplementation(params string[] statements)
     {
         Implementation = new CSharpXmlComments(statements);
@@ -60,6 +66,7 @@ public class CSharpPropertyAccessor
         return this;
     }
 
+    ICSharpPropertyAccessor ICSharpPropertyAccessor.WithBodyImplementation(params string[] statements) => WithBodyImplementation(statements);
     public CSharpPropertyAccessor WithBodyImplementation(params string[] statements)
     {
         Implementation = new CSharpXmlComments(statements);
@@ -67,6 +74,7 @@ public class CSharpPropertyAccessor
         return this;
     }
 
+    ICSharpPropertyAccessor ICSharpPropertyAccessor.WithExpressionImplementation(string implementation) => WithExpressionImplementation(implementation);
     public CSharpPropertyAccessor WithExpressionImplementation(string implementation)
     {
         Implementation = new CSharpXmlComments(implementation);

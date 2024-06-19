@@ -1,13 +1,14 @@
+#nullable enable
 using System;
 using System.Linq;
 using Intent.Modules.Common.CSharp.Builder;
 
 namespace Intent.Modules.Common.CSharp.RazorBuilder;
 
-public class RazorCodeDirective : RazorFileNodeBase<RazorCodeDirective>, IRazorFileNode
+internal class RazorCodeDirective : RazorFileNodeBase<RazorCodeDirective, IRazorCodeDirective>, IRazorCodeDirective
 {
     public ICSharpExpression Expression { get; set; }
-    public RazorCodeDirective(ICSharpExpression expression, RazorFile file) : base(file)
+    public RazorCodeDirective(ICSharpExpression expression, IRazorFile file) : base(file)
     {
         Expression = expression ?? throw new ArgumentNullException(nameof(expression));
     }

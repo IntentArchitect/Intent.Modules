@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.CSharp.Templates;
 /// Specialization of <see cref="TemplateFileConfig"/> for setting
 /// metadata specific to C# templates.
 /// </summary>
-public class RazorFileConfig : CSharpFileConfig
+public class RazorFileConfig : CSharpFileConfig, IRazorFileConfig
 {
     /// <summary>
     /// Creates a new instance of <see cref="RazorFileConfig"/>

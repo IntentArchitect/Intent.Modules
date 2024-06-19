@@ -1,48 +1,51 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using Intent.Modules.Common.CSharp.Builder;
 
 namespace Intent.Modules.Common.CSharp.RazorBuilder;
 
-public abstract class RazorFileNodeBase<T> : CSharpMetadataBase<T>, IRazorFileNode 
-    where T : RazorFileNodeBase<T>
+public abstract class RazorFileNodeBase<TConcrete, TInterface> : CSharpMetadataBase<TConcrete>, IRazorFileNodeBase<TInterface>
+    where TConcrete : RazorFileNodeBase<TConcrete, TInterface>, TInterface
+    where TInterface : class, IRazorFileNodeBase<TInterface>
 {
-    protected RazorFileNodeBase(RazorFile file)
+    protected RazorFileNodeBase(IRazorFile file)
     {
         File = file;
         RazorFile = file;
     }
 
-    public RazorFile RazorFile { get; protected set; }
+    public IRazorFile RazorFile { get; protected set; }
 
     public IList<IRazorFileNode> ChildNodes { get; } = new List<IRazorFileNode>();
 
-    public T AddHtmlElement(string name, Action<HtmlElement> configure = null)
+    public TInterface AddHtmlElement(string name, Action<IHtmlElement>? configure = null)
     {
         var htmlElement = new HtmlElement(name, RazorFile);
         AddChildNode(htmlElement);
         configure?.Invoke(htmlElement);
-        return (T)this;
+        return this as TInterface ?? throw new InvalidOperationException();
     }
 
-    public T AddHtmlElement(HtmlElement htmlElement)
+    public TInterface AddHtmlElement(IHtmlElement htmlElement)
     {
         AddChildNode(htmlElement);
-        return (T)this;
+        return (TConcrete)this;
     }
 
-    public T AddEmptyLine()
+    public TInterface AddEmptyLine()
     {
         AddChildNode(new EmptyLine(RazorFile));
-        return (T)this;
+        return (TConcrete)this;
     }
 
-    public T AddCodeBlock(CSharpStatement expression, Action<RazorCodeDirective> configure = null)
+    public TInterface AddCodeBlock(string expression, Action<IRazorCodeDirective>? configure = null) => AddCodeBlock(new CSharpStatement(expression), configure);
+    public TInterface AddCodeBlock(ICSharpStatement expression, Action<IRazorCodeDirective>? configure = null)
     {
         var razorCodeBlock = new RazorCodeDirective(expression, RazorFile);
         AddChildNode(razorCodeBlock);
         configure?.Invoke(razorCodeBlock);
-        return (T)this;
+        return (TConcrete)this;
     }
 
     public abstract string GetText(string indentation);
@@ -59,5 +62,5 @@ public abstract class RazorFileNodeBase<T> : CSharpMetadataBase<T>, IRazorFileNo
         ChildNodes.Insert(index, node);
     }
 
-    public new IRazorFileNode Parent { get; set; }
+    public new IRazorFileNode? Parent { get; set; }
 }

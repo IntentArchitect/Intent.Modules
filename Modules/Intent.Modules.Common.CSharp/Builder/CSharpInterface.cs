@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpReferenceable, ICodeBlock
+public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterface
 {
+    private readonly ICSharpInterface _wrapper;
     private CSharpCodeSeparatorType _fieldsSeparator = CSharpCodeSeparatorType.NewLine;
     private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.NewLine;
     private CSharpCodeSeparatorType _methodsSeparator = CSharpCodeSeparatorType.NewLine;
@@ -33,6 +35,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
+        _wrapper = new CSharpInterfaceWrapper(this);
         Name = name.ToCSharpIdentifier();
         File = file;
         Parent = parent;
@@ -294,4 +297,151 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
     {
         return ToString(indentation);
     }
+
+    #region ICSharpInterface implementation
+
+    IList<ICSharpInterfaceProperty> ICSharpInterface.Properties => _wrapper.Properties;
+
+    IList<ICSharpInterfaceMethod> ICSharpInterface.Methods => _wrapper.Methods;
+
+    IList<ICSharpInterfaceGenericParameter> ICSharpInterface.GenericParameters => _wrapper.GenericParameters;
+
+    IList<ICSharpGenericTypeConstraint> ICSharpInterface.GenericTypeConstraints => _wrapper.GenericTypeConstraints;
+
+    IList<ICSharpCodeBlock> ICSharpInterface.CodeBlocks => _wrapper.CodeBlocks;
+
+    IList<ICSharpInterfaceField> ICSharpInterface.Fields => _wrapper.Fields;
+
+    ICSharpInterface ICSharpInterface.ImplementsInterfaces(IEnumerable<string> types)
+    {
+        return _wrapper.ImplementsInterfaces(types);
+    }
+
+    ICSharpInterface ICSharpInterface.ImplementsInterfaces(params string[] types)
+    {
+        return _wrapper.ImplementsInterfaces(types);
+    }
+
+    ICSharpInterface ICSharpInterface.AddField(string type, string name, Action<ICSharpInterfaceField> configure)
+    {
+        return _wrapper.AddField(type, name, configure);
+    }
+
+    ICSharpInterface ICSharpInterface.AddProperty(string type, string name, Action<ICSharpInterfaceProperty> configure)
+    {
+        return _wrapper.AddProperty(type, name, configure);
+    }
+
+    ICSharpInterface ICSharpInterface.InsertProperty(int index, string type, string name, Action<ICSharpInterfaceProperty> configure)
+    {
+        return _wrapper.InsertProperty(index, type, name, configure);
+    }
+
+    ICSharpInterface ICSharpInterface.AddMethod<TModel>(TModel model, Action<ICSharpInterfaceMethod> configure)
+    {
+        return _wrapper.AddMethod(model, configure);
+    }
+
+    ICSharpInterface ICSharpInterface.AddMethod(string returnType, string name, Action<ICSharpInterfaceMethod> configure)
+    {
+        return _wrapper.AddMethod(returnType, name, configure);
+    }
+
+    ICSharpInterface ICSharpInterface.AddCodeBlock(string codeLine)
+    {
+        return _wrapper.AddCodeBlock(codeLine);
+    }
+
+    ICSharpInterface ICSharpInterface.AddGenericParameter(string typeName, Action<ICSharpInterfaceGenericParameter> configure)
+    {
+        return _wrapper.AddGenericParameter(typeName, configure);
+    }
+
+    ICSharpInterface ICSharpInterface.AddGenericParameter(string typeName, out ICSharpInterfaceGenericParameter param,
+        Action<ICSharpInterfaceGenericParameter> configure)
+    {
+        return _wrapper.AddGenericParameter(typeName, out param, configure);
+    }
+
+    ICSharpInterface ICSharpInterface.AddGenericTypeConstraint(string genericParameterName, Action<ICSharpGenericTypeConstraint> configure)
+    {
+        return _wrapper.AddGenericTypeConstraint(genericParameterName, configure);
+    }
+
+    ICSharpInterface ICSharpInterface.InsertMethod(int index, string returnType, string name, Action<ICSharpInterfaceMethod> configure)
+    {
+        return _wrapper.InsertMethod(index, returnType, name, configure);
+    }
+
+    ICSharpInterface ICSharpInterface.WithFieldsSeparated(CSharpCodeSeparatorType separator)
+    {
+        return _wrapper.WithFieldsSeparated(separator);
+    }
+
+    ICSharpInterface ICSharpInterface.WithPropertiesSeparated(CSharpCodeSeparatorType separator)
+    {
+        return _wrapper.WithPropertiesSeparated(separator);
+    }
+
+    ICSharpInterface ICSharpInterface.WithMethodsSeparated(CSharpCodeSeparatorType separator)
+    {
+        return _wrapper.WithMethodsSeparated(separator);
+    }
+
+    ICSharpInterface ICSharpInterface.WithMembersSeparated(CSharpCodeSeparatorType separator)
+    {
+        return _wrapper.WithMembersSeparated(separator);
+    }
+
+    ICSharpInterface ICSharpInterface.Internal()
+    {
+        return _wrapper.Internal();
+    }
+
+    ICSharpInterface ICSharpInterface.InternalProtected()
+    {
+        return _wrapper.InternalProtected();
+    }
+
+    ICSharpInterface ICSharpInterface.Protected()
+    {
+        return _wrapper.Protected();
+    }
+
+    ICSharpInterface ICSharpInterface.Private()
+    {
+        return _wrapper.Private();
+    }
+
+    ICSharpInterface ICSharpInterface.Partial()
+    {
+        return _wrapper.Partial();
+    }
+
+    ICSharpInterface ICSharpInterface.ExtendsInterface(string type)
+    {
+        return _wrapper.ExtendsInterface(type);
+    }
+
+    ICSharpInterface ICSharpDeclaration<ICSharpInterface>.AddAttribute(string name, Action<ICSharpAttribute> configure)
+    {
+        return _wrapper.AddAttribute(name, configure);
+    }
+
+    ICSharpInterface ICSharpDeclaration<ICSharpInterface>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure)
+    {
+        return _wrapper.AddAttribute(attribute, configure);
+    }
+
+    ICSharpInterface ICSharpDeclaration<ICSharpInterface>.WithComments(string xmlComments)
+    {
+        return _wrapper.WithComments(xmlComments);
+    }
+
+    ICSharpInterface ICSharpDeclaration<ICSharpInterface>.WithComments(IEnumerable<string> xmlComments)
+    {
+        return _wrapper.WithComments(xmlComments);
+    }
+
+    #endregion
 }

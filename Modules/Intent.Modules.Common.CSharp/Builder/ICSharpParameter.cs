@@ -1,9 +1,10 @@
-﻿namespace Intent.Modules.Common.CSharp.Builder
+﻿#nullable enable
+namespace Intent.Modules.Common.CSharp.Builder;
+
+public interface ICSharpParameter : ICSharpReferenceable, ICSharpMetadataBase
 {
-    public interface ICSharpParameter
-    {
-        string Type { get; }
-        string Name { get; }
-        string DefaultValue { get; }
-        string XmlDocComment { get; }    }
+    string Type { get; }
+    string Name { get; }
+    string DefaultValue { get; }
+    string XmlDocComment { get; }
 }

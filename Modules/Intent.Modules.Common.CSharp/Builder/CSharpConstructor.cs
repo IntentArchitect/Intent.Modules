@@ -2,12 +2,14 @@ using Intent.Metadata.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStatements, IHasICSharpParameters, ICSharpReferenceable
+public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstructor, IHasCSharpStatements
 {
+    private readonly ICSharpConstructor _wrapper;
     // This class will be used for "static", "instance" and "primary" constructors.
     //https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/instance-constructors
     
@@ -18,7 +20,6 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
     public List<CSharpStatement> Statements { get; } = new();
     public string Name => Class.Name;
     public bool IsPrimaryConstructor { get; private set; }
-
     IList<CSharpStatement> IHasCSharpStatements.Statements => this.Statements;
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
 
@@ -28,6 +29,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
 
     public CSharpConstructor(CSharpClass @class, bool isPrimaryConstructor)
     {
+        _wrapper = new CSharpConstructorWrapper(this);
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
         Parent = @class;
@@ -224,4 +226,52 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
             return string.Join(", ", Parameters.Select(x => x.ToString()));
         }
     }
+
+    #region ICSharpConstructor implementation
+
+    ICSharpClass ICSharpConstructor.Class => _wrapper.Class;
+
+    ICSharpConstructorCall ICSharpConstructor.ConstructorCall => _wrapper.ConstructorCall;
+
+    ICSharpConstructor ICSharpConstructor.AddParameter<TModel>(string type, TModel model, Action<ICSharpConstructorParameter> configure) => _wrapper.AddParameter(type, model, configure);
+
+    ICSharpConstructor ICSharpConstructor.AddParameter<TModel>(TModel model, Action<ICSharpConstructorParameter> configure) => _wrapper.AddParameter(model, configure);
+
+    ICSharpConstructor ICSharpConstructor.AddParameters<TModel>(IEnumerable<TModel> models, Action<ICSharpConstructorParameter> configure) => _wrapper.AddParameters(models, configure);
+
+    ICSharpConstructor ICSharpConstructor.AddParameter(string type, string name, Action<ICSharpConstructorParameter> configure) => _wrapper.AddParameter(type, name, configure);
+
+    ICSharpConstructor ICSharpConstructor.InsertParameter(int index, string type, string name, Action<ICSharpConstructorParameter> configure) => _wrapper.InsertParameter(index, type, name, configure);
+
+    ICSharpConstructor ICSharpConstructor.AddStatement(ICSharpStatement statement, Action<ICSharpStatement> configure) => _wrapper.AddStatement(statement, configure);
+
+    ICSharpConstructor ICSharpConstructor.InsertStatement(int index, string statement, Action<ICSharpStatement> configure) => _wrapper.InsertStatement(index, statement, configure);
+
+    ICSharpConstructor ICSharpConstructor.AddStatements(string statements, Action<IEnumerable<ICSharpStatement>> configure) => _wrapper.AddStatements(statements, configure);
+
+    ICSharpConstructor ICSharpConstructor.AddStatements(IEnumerable<string> statements, Action<IEnumerable<ICSharpStatement>> configure) => _wrapper.AddStatements(statements, configure);
+
+    ICSharpConstructor ICSharpConstructor.AddStatements(IEnumerable<ICSharpStatement> statements, Action<IEnumerable<ICSharpStatement>> configure) => _wrapper.AddStatements(statements, configure);
+
+    ICSharpConstructor ICSharpConstructor.Protected() => _wrapper.Protected();
+
+    ICSharpConstructor ICSharpConstructor.Private() => _wrapper.Private();
+
+    ICSharpConstructor ICSharpConstructor.Static() => _wrapper.Static();
+
+    ICSharpConstructor ICSharpConstructor.CallsBase(Action<ICSharpConstructorCall> configure) => _wrapper.CallsBase(configure);
+
+    ICSharpConstructor ICSharpConstructor.CallsThis(Action<ICSharpConstructorCall> configure) => _wrapper.CallsThis(configure);
+
+    ICSharpConstructor ICSharpDeclaration<ICSharpConstructor>.AddAttribute(string name, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(name, configure);
+
+    ICSharpConstructor ICSharpDeclaration<ICSharpConstructor>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(attribute, configure);
+
+    ICSharpConstructor ICSharpDeclaration<ICSharpConstructor>.WithComments(string xmlComments) => _wrapper.WithComments(xmlComments);
+
+    ICSharpConstructor ICSharpDeclaration<ICSharpConstructor>.WithComments(IEnumerable<string> xmlComments) => _wrapper.WithComments(xmlComments);
+
+    IList<ICSharpStatement> IHasCSharpStatementsActual.Statements => ((IHasCSharpStatementsActual)_wrapper).Statements;
+
+    #endregion
 }

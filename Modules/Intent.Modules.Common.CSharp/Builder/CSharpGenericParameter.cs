@@ -1,6 +1,6 @@
 ﻿namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpGenericParameter
+public class CSharpGenericParameter : ICSharpGenericParameter
 {
     public CSharpGenericParameter(string typeName)
     {
