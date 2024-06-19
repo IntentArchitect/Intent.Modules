@@ -1186,7 +1186,19 @@ return display;
           </pointIndicator>
         </targetEnd>
       </visualSettings>
-      <macros />
+      <macros>
+        <macro trigger="on-created">
+          <script>const mapping = association.createMapping(association.getOtherEnd().typeReference.getType().getParent().id, null, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad"); // Service Call Invocation;
+
+mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", 
+    [association.getOtherEnd().typeReference.getType().getParent().id, association.getOtherEnd().typeReference.getType().id], 
+    [association.typeReference.getType().id]);
+
+if (association.typeReference.getType().getChildren().length &gt; 0) {
+    await mapping.launchDialog();
+}</script>
+        </macro>
+      </macros>
     </associationSetting>
     <associationSetting type="Navigation" typeId="6d2b2070-c1cb-4cd2-88b4-4e5f8414bd9e">
       <sourceEnd type="Navigation Source End" typeId="97a3de8a-c9bf-4cf2-bc0a-b8692b02211b">

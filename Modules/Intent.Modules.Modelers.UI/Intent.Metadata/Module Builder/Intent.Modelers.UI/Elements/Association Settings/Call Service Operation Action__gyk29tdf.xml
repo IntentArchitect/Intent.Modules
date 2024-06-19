@@ -185,6 +185,7 @@
       <name>[events]</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>fe5a5cd8-aabd-472f-8d42-f5c233e658dc</parentFolderId>
@@ -192,7 +193,41 @@
       <packageName>Intent.Modelers.UI</packageName>
       <stereotypes />
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="67c3136a-8b9e-44fe-8e84-84babaf47be4" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="d2a776a5-3663-46e6-a05a-fbb9c693f749">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>9a1847c6-7539-48bf-9c5d-baba9d82ce21</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1f88f1ac-b96a-4ae7-9047-883c2fa3b3df" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="const mapping = association.createMapping(association.getOtherEnd().typeReference.getType().getParent().id, null, &quot;e4a4111b-cf13-4efe-8a5d-fea9457ac8ad&quot;); // Service Call Invocation;&#xD;&#xA;&#xD;&#xA;mapping.addMappedEnd(&quot;ab447316-1252-49bc-a695-f34cb00a3cdc&quot;, &#xD;&#xA;    [association.getOtherEnd().typeReference.getType().getParent().id, association.getOtherEnd().typeReference.getType().id], &#xD;&#xA;    [association.typeReference.getType().id]);&#xD;&#xA;&#xD;&#xA;if (association.typeReference.getType().getChildren().length &gt; 0) {&#xD;&#xA;    await mapping.launchDialog();&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
     </childElement>
   </childElements>
 </class>
