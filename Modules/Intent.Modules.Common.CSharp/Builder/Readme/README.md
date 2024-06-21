@@ -4,6 +4,8 @@ Try follow Roslyn terminology for concepts, an easy way to see what terminology 
 
 ![The Syntax Visualizer window](images/01-the-syntax-visualizer-window.png)
 
+More details: <https://learn.microsoft.com/dotnet/csharp/roslyn-sdk/syntax-visualizer?tabs=csharp>
+
 ## Installing Syntax Analyzer for Visual Studio
 
 Open _Visual Studio Installer_ from your Start Menu.
