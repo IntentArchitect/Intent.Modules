@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.ProxyInteractions</id>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <supportedClientVersions>[4.1.0-beta.21,5.0.0)</supportedClientVersions>
   <summary>Services modeler extensions for describing interactions between an application's services and service proxies.</summary>
   <description>Services modeler extensions for describing interactions between an application's services and service proxies.</description>
@@ -27,7 +27,7 @@
   <tags />
   <moduleSettingsExtensions />
   <metadata>
-    <install src="modelers/Services Proxy Interactions.designer.settings" externalReference="c42185b8-f247-42a6-9006-a968ffcf0c12" />
+    <install src="modelers/Services Proxy Interactions.designer.settings" externalReference="c42185b8-f247-42a6-9006-a968ffcf0c12" target="Services" />
     <install target="Services;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Services.ProxyInteractions/Intent.Modelers.Services.ProxyInteractions.pkg.config" externalReference="53353621-7752-4a01-90f3-cd2e83ec19a4" />
   </metadata>
 </package>
