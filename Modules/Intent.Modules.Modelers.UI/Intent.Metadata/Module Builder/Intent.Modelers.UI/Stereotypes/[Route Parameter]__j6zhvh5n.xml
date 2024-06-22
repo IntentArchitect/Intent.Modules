@@ -19,18 +19,6 @@
   <order>0</order>
   <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
   <packageName>Intent.Modelers.UI</packageName>
-  <onAppliedScript>const routeProperty = element.getParent("Component").getStereotype("Page")?.getProperty("Route");
-const type = element.typeReference.getType().getName() == "int" || element.typeReference.getType().getName() == "guid" || element.typeReference.getType().getName() == "long" ?
-    ":" + element.typeReference.getType().getName() : "";
-if (routeProperty != null) {
-    let routeComponents = routeProperty.getValue().toString().split("/");
-    const matchedIndex = routeComponents.findIndex(x =&gt; x.toLowerCase() == `{${element.getName().toLowerCase()}}` || x.toLowerCase().startsWith(`{${element.getName().toLowerCase()}:`));
-    if (matchedIndex != -1) {
-        routeComponents.splice(matchedIndex, 1, `{${element.getName()}${type}}`);
-    } else {
-        routeComponents.push(`{${element.getName()}${type}}`);
-    }
-    routeProperty.setValue(routeComponents.join("/"));
-}</onAppliedScript>
+  <onAppliedScript />
   <properties />
 </stereotypeDefinition>

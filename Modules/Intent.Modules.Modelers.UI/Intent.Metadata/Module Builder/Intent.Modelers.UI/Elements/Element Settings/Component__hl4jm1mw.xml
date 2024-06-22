@@ -362,6 +362,39 @@
       <stereotypes />
       <metadata />
       <childElements>
+        <childElement id="c7418cc4-ddb8-422e-a714-b40e09cc894d" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Changed</name>
+          <display>On Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="d5f113e8-bc59-4292-9d07-d192425fc27f">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>7b2fb63b-e0e2-44b2-bbfd-7be492589cc9</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const pageRoute = element.getStereotype(&quot;Page&quot;)?.getProperty(&quot;Route&quot;);&#xD;&#xA;&#xD;&#xA;let routeProperties = element.getChildren(&quot;Property&quot;).filter(x =&gt; x.hasStereotype(&quot;[Route Parameter]&quot;));&#xD;&#xA;function getPropertyRoute(propertyIndex) {&#xD;&#xA;    if (propertyIndex &gt;= routeProperties.length) {&#xD;&#xA;        return null;&#xD;&#xA;    }&#xD;&#xA;    let property = routeProperties[propertyIndex];&#xD;&#xA;    const type = property.typeReference.getType().getName() == &quot;int&quot; || property.typeReference.getType().getName() == &quot;guid&quot; || property.typeReference.getType().getName() == &quot;long&quot; ?&#xD;&#xA;        &quot;:&quot; + property.typeReference.getType().getName() : &quot;&quot;;&#xD;&#xA;    return `{${property.getName()}${type}}`&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (pageRoute != null) {&#xD;&#xA;    let routeParts = pageRoute.getValue().toString().split(&quot;/&quot;);&#xD;&#xA;&#xD;&#xA;    let propertyIndex = 0;&#xD;&#xA;    let i = 0;&#xD;&#xA;    &#xD;&#xA;    while (i &lt; routeParts.length) {&#xD;&#xA;        let part = routeParts[i];&#xD;&#xA;        let propertyRoute = getPropertyRoute(propertyIndex);&#xD;&#xA;&#xD;&#xA;        if (part.startsWith(&quot;{&quot;)) {&#xD;&#xA;            if (propertyRoute) {&#xD;&#xA;                routeParts.splice(i, 1, propertyRoute);&#xD;&#xA;            } else {&#xD;&#xA;                routeParts.splice(i, 1);&#xD;&#xA;            }&#xD;&#xA;            propertyIndex++;&#xD;&#xA;        }&#xD;&#xA;        i++;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    while (propertyIndex &lt; routeProperties.length) {&#xD;&#xA;        routeParts.push(getPropertyRoute(propertyIndex));&#xD;&#xA;        propertyIndex++;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    pageRoute.setValue(routeParts.join(&quot;/&quot;));&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="496d9a0f-c9fd-4518-aa9a-384937dc3ecd" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
           <display>On Created: Script</display>

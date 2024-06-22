@@ -736,7 +736,8 @@ if (selected.type == "core") {
                       <script>const invocationMappingTYpeId = "e4f0c63b-0f00-42bd-a703-00adf44f3364";
 const parentElement = mapping.getSourceElement();
 const association = createAssociation("Navigation", parentElement.id, null);
-//mapping.addMappedEnd(invocationMappingTYpeId, newElement.getMappingPath(), element.getMappingPath());</script>
+association.enableEditing();
+mapping.addMappedEnd(invocationMappingTYpeId, association.getMappingPath(), element.getMappingPath());</script>
                     </option>
                   </scriptOptions>
                 </staticMappableSetting>
@@ -999,7 +1000,7 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), [parent
 const body = form.getChildren("Container").find(x =&gt; x.getName() == "Body")
     ?? createElement("Container", "Body", form.id);
 element.getChildren().filter(x =&gt; x.specialization == "Property" || x.specialization == "DTO-Field").forEach(p =&gt; {
-    if (p.typeReference.getTypeId() == "d384db9c-a279-45e1-801e-e4e8099625f2") { // string
+    if (p.typeReference.getTypeId() == "d384db9c-a279-45e1-801e-e4e8099625f2" || p.typeReference.getTypeId() == "675c7b84-997a-44e0-82b9-cd724c07c9e6") { // string || decimal
         const newInput = createElement("Text Input", p.getName(), body.id);
         mapping?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath((e) =&gt; e.specialization == "Component"), newInput.getMappingPath((e) =&gt; e.specialization == "Component View"))
         newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(p.getName())
