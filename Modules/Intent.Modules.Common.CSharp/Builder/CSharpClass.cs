@@ -150,7 +150,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         return this;
     }
 
-    public IBuildsCSharpMembers InsertField(int index, string type, string name, Action<CSharpField> configure = null)
+    public IBuildsCSharpMembers InsertField(int index, string type, string name, Action<ICSharpField> configure = null)
     {
         var field = new CSharpField(type, name, this)
         {
@@ -162,8 +162,8 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<CSharpField>? configure = null) => AddField(type, name, configure);
-    IBuildsCSharpMembers IBuildsCSharpMembers.InsertProperty(int index, string type, string name, Action<CSharpProperty> configure)
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<ICSharpField>? configure = null) => AddField(type, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.InsertProperty(int index, string type, string name, Action<ICSharpProperty> configure)
     {
         return InsertProperty(index, type, name, configure);
     }
@@ -180,11 +180,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<CSharpProperty>? configure = null) => AddProperty(type, name, configure);
-    IBuildsCSharpMembers IBuildsCSharpMembers.InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod> configure)
-    {
-        return InsertMethod(index, returnType, name, configure);
-    }
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<ICSharpProperty>? configure = null) => AddProperty(type, name, configure);
 
     public CSharpClass AddProperty(string type, string name, Action<CSharpProperty>? configure = null)
     {
@@ -261,11 +257,24 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<CSharpClassMethod>? configure = null) => AddMethod(returnType, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethod> configure)
+    {
+        return InsertMethod(index, returnType, name, configure);
+    }
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<ICSharpClassMethod>? configure = null) => AddMethod(returnType, name, configure);
     public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
     }
+
+    public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod>? configure = null)
+    {
+        var method = new CSharpClassMethod(returnType, name, this);
+        Methods.Insert(index, method);
+        configure?.Invoke(method);
+        return this;
+    }
+
 
     /// <summary>
     /// Resolves the method name from the <paramref name="model"/>. Registers this method as representative of the <paramref name="model"/>.
@@ -330,7 +339,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<CSharpClass>? configure = null)
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<ICSharpClass>? configure = null)
     {
         return AddNestedClass(name, configure);
     }
@@ -362,14 +371,6 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
 
         configure?.Invoke(@interface);
         NestedInterfaces.Add(@interface);
-        return this;
-    }
-
-    public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod>? configure = null)
-    {
-        var method = new CSharpClassMethod(returnType, name, this);
-        Methods.Insert(index, method);
-        configure?.Invoke(method);
         return this;
     }
 
@@ -653,26 +654,6 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
     IList<ICSharpGenericTypeConstraint> ICSharpClass.GenericTypeConstraints => _wrapper.GenericTypeConstraints;
 
     IList<ICSharpCodeBlock> ICSharpClass.CodeBlocks => _wrapper.CodeBlocks;
-
-    IBuildsCSharpMembersActual IBuildsCSharpMembersActual.AddField(string type, string name, Action<ICSharpField> configure)
-    {
-        return _wrapper.AddField(type, name, configure);
-    }
-
-    IBuildsCSharpMembersActual IBuildsCSharpMembersActual.AddProperty(string type, string name, Action<ICSharpProperty> configure)
-    {
-        return ((IBuildsCSharpMembersActual)_wrapper).AddProperty(type, name, configure);
-    }
-
-    IBuildsCSharpMembersActual IBuildsCSharpMembersActual.AddMethod(string returnType, string name, Action<ICSharpClassMethod> configure)
-    {
-        return ((IBuildsCSharpMembersActual)_wrapper).AddMethod(returnType, name, configure);
-    }
-
-    IBuildsCSharpMembersActual IBuildsCSharpMembersActual.AddClass(string name, Action<ICSharpClass> configure)
-    {
-        return _wrapper.AddClass(name, configure);
-    }
 
     IList<ICSharpAttribute> ICSharpClass.Attributes => _wrapper.Attributes;
 

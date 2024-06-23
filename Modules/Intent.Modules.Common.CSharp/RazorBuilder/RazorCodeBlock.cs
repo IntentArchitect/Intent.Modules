@@ -16,7 +16,7 @@ internal class RazorCodeBlock : RazorFileNodeBase<RazorCodeBlock, IRazorCodeBloc
         Parent = file;
     }
 
-    public IBuildsCSharpMembers InsertField(int index, string type, string name, Action<CSharpField> configure = null)
+    public IBuildsCSharpMembers InsertField(int index, string type, string name, Action<ICSharpField> configure = null)
     {
         var field = new CSharpField(type, name, this)
         {
@@ -28,12 +28,12 @@ internal class RazorCodeBlock : RazorFileNodeBase<RazorCodeBlock, IRazorCodeBloc
         return this;
     }
 
-    public IBuildsCSharpMembers AddField(string type, string name, Action<CSharpField> configure = null)
+    public IBuildsCSharpMembers AddField(string type, string name, Action<ICSharpField> configure = null)
     {
         return InsertField(Declarations.Count, type, name, configure);
     }
 
-    public IBuildsCSharpMembers InsertProperty(int index, string type, string name, Action<CSharpProperty> configure = null)
+    public IBuildsCSharpMembers InsertProperty(int index, string type, string name, Action<ICSharpProperty> configure = null)
     {
         var property = new CSharpProperty(type, name, this)
         {
@@ -45,12 +45,12 @@ internal class RazorCodeBlock : RazorFileNodeBase<RazorCodeBlock, IRazorCodeBloc
         return this;
     }
 
-    public IBuildsCSharpMembers AddProperty(string type, string name, Action<CSharpProperty> configure = null)
+    public IBuildsCSharpMembers AddProperty(string type, string name, Action<ICSharpProperty> configure = null)
     {
         return InsertProperty(Declarations.Count, type, name, configure);
     }
 
-    public IBuildsCSharpMembers InsertMethod(int index, string type, string name, Action<CSharpClassMethod> configure = null)
+    public IBuildsCSharpMembers InsertMethod(int index, string type, string name, Action<ICSharpClassMethod> configure = null)
     {
         var method = new CSharpClassMethod(type, name, this)
         {
@@ -62,12 +62,12 @@ internal class RazorCodeBlock : RazorFileNodeBase<RazorCodeBlock, IRazorCodeBloc
         return this;
     }
 
-    public IBuildsCSharpMembers AddMethod(string type, string name, Action<CSharpClassMethod> configure = null)
+    public IBuildsCSharpMembers AddMethod(string type, string name, Action<ICSharpClassMethod> configure = null)
     {
         return InsertMethod(Declarations.Count, type, name, configure);
     }
 
-    public IBuildsCSharpMembers AddClass(string name, Action<CSharpClass> configure = null)
+    public IBuildsCSharpMembers AddClass(string name, Action<ICSharpClass> configure = null)
     {
         var @class = new CSharpClass(name, RazorFile)
         {

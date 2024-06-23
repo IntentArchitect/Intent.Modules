@@ -15,4 +15,8 @@ public interface IRazorFileNodeBase<out TInterface> : IRazorFileNode
     public TInterface AddEmptyLine();
     public TInterface AddCodeBlock(ICSharpStatement expression, Action<IRazorCodeDirective>? configure = null);
     public TInterface AddCodeBlock(string expression, Action<IRazorCodeDirective>? configure = null) => AddCodeBlock(new CSharpStatement(expression), configure);
+    TInterface AddAbove(IRazorFileNode node);
+    TInterface AddAbove(params IRazorFileNode[] nodes);
+    TInterface AddBelow(IRazorFileNode node);
+    TInterface AddBelow(params IRazorFileNode[] nodes);
 }

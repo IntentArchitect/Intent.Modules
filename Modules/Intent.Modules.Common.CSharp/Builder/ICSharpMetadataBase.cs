@@ -22,4 +22,5 @@ public interface ICSharpCodeContext
     bool TryGetReferenceForModel(IMetadataModel model, out IHasCSharpName reference);
     void RegisterReferenceable(string modelId, ICSharpReferenceable cSharpReferenceable);
     ICSharpFile File { get; }
+    ICSharpCodeContext Parent { get; }
 }

@@ -6,7 +6,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpMembersActual, ICSharpReferenceable, ICodeBlock
+public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpMembers, ICSharpReferenceable, ICodeBlock
 {
     ICSharpClass? BaseType { get; set; }
     IList<string> BaseTypeTypeParameters { get; }

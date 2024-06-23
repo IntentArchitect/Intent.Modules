@@ -63,34 +63,34 @@ public abstract class RazorFileNodeBase<TConcrete, TInterface> : CSharpMetadataB
         ChildNodes.Insert(index, node);
     }
 
-    public T AddAbove(IRazorFileNode node)
+    public TInterface AddAbove(IRazorFileNode node)
     {
         Parent.InsertChildNode(Parent.ChildNodes.IndexOf(this), node);
-        return (T)this;
+        return (TConcrete)this;
     }
 
-    public T AddAbove(params IRazorFileNode[] nodes)
+    public TInterface AddAbove(params IRazorFileNode[] nodes)
     {
         foreach (var node in nodes)
         {
             AddAbove(node);
         }
-        return (T)this;
+        return (TConcrete)this;
     }
 
-    public T AddBelow(IRazorFileNode node)
+    public TInterface AddBelow(IRazorFileNode node)
     {
         Parent.InsertChildNode(Parent.ChildNodes.IndexOf(this) + 1, node);
-        return (T)this;
+        return (TConcrete)this;
     }
 
-    public T AddBelow(params IRazorFileNode[] nodes)
+    public TInterface AddBelow(params IRazorFileNode[] nodes)
     {
         foreach (var node in nodes.Reverse())
         {
             AddBelow(node);
         }
-        return (T)this;
+        return (TConcrete)this;
     }
 
     public new IRazorFileNode? Parent { get; set; }

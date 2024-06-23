@@ -27,6 +27,7 @@ internal abstract class CSharpMetadataBaseWrapper(ICSharpMetadataBase wrapped) :
     void ICSharpCodeContext.RegisterReferenceable(string modelId, ICSharpReferenceable cSharpReferenceable) => wrapped.RegisterReferenceable(modelId, cSharpReferenceable);
 
     ICSharpFile ICSharpCodeContext.File => wrapped.File;
+    public ICSharpCodeContext Parent => wrapped.Parent;
 
     void ICSharpCodeContext.RepresentsModel(IMetadataModel model) => wrapped.RepresentsModel(model);
 }

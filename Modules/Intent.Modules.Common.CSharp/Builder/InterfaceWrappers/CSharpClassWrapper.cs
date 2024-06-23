@@ -172,15 +172,20 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
 
     ICSharpClass ICSharpClass.AddPrimaryConstructor(Action<ICSharpConstructor>? configure) => wrapped.AddPrimaryConstructor(configure);
 
-    IList<ICodeBlock> IBuildsCSharpMembersActual.Declarations => ((IBuildsCSharpMembersActual)wrapped).Declarations;
+    IList<ICodeBlock> IBuildsCSharpMembers.Declarations => ((IBuildsCSharpMembers)wrapped).Declarations;
 
-    IBuildsCSharpMembersActual IBuildsCSharpMembersActual.AddField(string type, string name, Action<ICSharpField> configure) => ((IBuildsCSharpMembersActual)wrapped).AddField(type, name, configure);
+    public IBuildsCSharpMembers InsertField(int index, string type, string name, Action<ICSharpField> configure = null) => ((IBuildsCSharpMembers)wrapped).InsertField(index, type, name, configure);
 
-    IBuildsCSharpMembersActual IBuildsCSharpMembersActual.AddProperty(string type, string name, Action<ICSharpProperty> configure) => ((IBuildsCSharpMembersActual)wrapped).AddProperty(type, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<ICSharpField> configure) => ((IBuildsCSharpMembers)wrapped).AddField(type, name, configure);
+    public IBuildsCSharpMembers InsertProperty(int index, string type, string name, Action<ICSharpProperty> configure = null) => ((IBuildsCSharpMembers)wrapped).InsertProperty(index, type, name, configure);
 
-    IBuildsCSharpMembersActual IBuildsCSharpMembersActual.AddMethod(string returnType, string name, Action<ICSharpClassMethod> configure) => ((IBuildsCSharpMembersActual)wrapped).AddMethod(returnType, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<ICSharpProperty> configure) => ((IBuildsCSharpMembers)wrapped).AddProperty(type, name, configure);
+    public IBuildsCSharpMembers InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethod> configure = null) => ((IBuildsCSharpMembers)wrapped).InsertMethod(index, returnType, name, configure);
 
-    IBuildsCSharpMembersActual IBuildsCSharpMembersActual.AddClass(string name, Action<ICSharpClass> configure) => ((IBuildsCSharpMembers)wrapped).AddClass(name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<ICSharpClassMethod> configure) => ((IBuildsCSharpMembers)wrapped).AddMethod(returnType, name, configure);
+
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<ICSharpClass> configure) => ((IBuildsCSharpMembers)wrapped).AddClass(name, configure);
+    public int IndexOf(ICodeBlock codeBlock) => ((IBuildsCSharpMembers)wrapped).IndexOf(codeBlock);
 
     string IHasCSharpName.Name => ((IHasCSharpName)wrapped).Name;
 }
