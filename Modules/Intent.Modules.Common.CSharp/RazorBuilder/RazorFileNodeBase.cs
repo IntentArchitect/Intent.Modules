@@ -1,6 +1,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Modules.Common.CSharp.Builder;
 
 namespace Intent.Modules.Common.CSharp.RazorBuilder;
@@ -60,6 +61,36 @@ public abstract class RazorFileNodeBase<TConcrete, TInterface> : CSharpMetadataB
     {
         node.Parent = this;
         ChildNodes.Insert(index, node);
+    }
+
+    public T AddAbove(IRazorFileNode node)
+    {
+        Parent.InsertChildNode(Parent.ChildNodes.IndexOf(this), node);
+        return (T)this;
+    }
+
+    public T AddAbove(params IRazorFileNode[] nodes)
+    {
+        foreach (var node in nodes)
+        {
+            AddAbove(node);
+        }
+        return (T)this;
+    }
+
+    public T AddBelow(IRazorFileNode node)
+    {
+        Parent.InsertChildNode(Parent.ChildNodes.IndexOf(this) + 1, node);
+        return (T)this;
+    }
+
+    public T AddBelow(params IRazorFileNode[] nodes)
+    {
+        foreach (var node in nodes.Reverse())
+        {
+            AddBelow(node);
+        }
+        return (T)this;
     }
 
     public new IRazorFileNode? Parent { get; set; }

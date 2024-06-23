@@ -150,7 +150,24 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         return this;
     }
 
+    public IBuildsCSharpMembers InsertField(int index, string type, string name, Action<CSharpField> configure = null)
+    {
+        var field = new CSharpField(type, name, this)
+        {
+            BeforeSeparator = _propertiesSeparator,
+            AfterSeparator = _propertiesSeparator
+        };
+        Fields.Insert(index, field);
+        configure?.Invoke(field);
+        return this;
+    }
+
     IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<CSharpField>? configure = null) => AddField(type, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.InsertProperty(int index, string type, string name, Action<CSharpProperty> configure)
+    {
+        return InsertProperty(index, type, name, configure);
+    }
+
     public CSharpClass AddField(string type, string name, Action<CSharpField>? configure = null)
     {
         var field = new CSharpField(type, name, this)
@@ -164,6 +181,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
     }
 
     IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<CSharpProperty>? configure = null) => AddProperty(type, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod> configure)
+    {
+        return InsertMethod(index, returnType, name, configure);
+    }
+
     public CSharpClass AddProperty(string type, string name, Action<CSharpProperty>? configure = null)
     {
         var property = new CSharpProperty(type, name, this)
@@ -311,6 +333,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
     IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<CSharpClass>? configure = null)
     {
         return AddNestedClass(name, configure);
+    }
+
+    public int IndexOf(ICodeBlock codeBlock)
+    {
+        return Declarations.IndexOf(codeBlock);
     }
 
     public CSharpClass AddNestedClass(string name, Action<CSharpClass>? configure = null)

@@ -7,9 +7,47 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public abstract class CSharpMetadataBase : ICSharpMetadataBase
 {
+}
+
+public interface IBuildsCSharpMembers : ICSharpCodeContext
+{
+    IList<ICodeBlock> Declarations { get; }
+    IBuildsCSharpMembers InsertField(int index, string type, string name, Action<CSharpField> configure = null);
+    IBuildsCSharpMembers AddField(string type, string name, Action<CSharpField> configure = null);
+    IBuildsCSharpMembers InsertProperty(int index, string type, string name, Action<CSharpProperty> configure = null);
+    IBuildsCSharpMembers AddProperty(string type, string name, Action<CSharpProperty> configure = null);
+    IBuildsCSharpMembers InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod> configure = null);
+    IBuildsCSharpMembers AddMethod(string returnType, string name, Action<CSharpClassMethod> configure = null);
+    IBuildsCSharpMembers AddClass(string name, Action<CSharpClass> configure = null);
+    int IndexOf(ICodeBlock codeBlock);
+}
+
+public interface IHasCSharpName
+{
+    string Name { get; }
+}
+
+public interface ICSharpCodeContext
+{
+    ICSharpCodeContext AddMetadata(string key, object value);
+    public bool HasMetadata(string key);
+    public T GetMetadata<T>(string key) where T : class;
+    public object GetMetadata(string key);
+    public bool TryGetMetadata<T>(string key, out T value);
+    public bool TryGetMetadata(string key, out object value);
+    IHasCSharpName GetReferenceForModel(string modelId);
+    IHasCSharpName GetReferenceForModel(IMetadataModel model);
+    bool TryGetReferenceForModel(string modelId, out IHasCSharpName reference);
+    bool TryGetReferenceForModel(IMetadataModel model, out IHasCSharpName reference);
+    void RegisterReferenceable(string modelId, ICSharpReferenceable cSharpReferenceable);
+    ICSharpFile File { get; }
+}
+
+public abstract class CSharpMetadataBase : ICSharpMetadataBase
+{
     private readonly Dictionary<string, ICSharpReferenceable> _modelReferenceRegistry = new();
 
-    protected internal ICSharpCodeContext Parent { get; set; }
+    public ICSharpCodeContext Parent { get; set; }
     public ICSharpFile File { get; protected set; }
     public IDictionary<string, object> Metadata { get; } = new Dictionary<string, object>();
 
