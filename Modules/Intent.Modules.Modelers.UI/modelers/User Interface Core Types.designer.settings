@@ -1767,7 +1767,7 @@ return element.hasStereotype(bindableId);</isMappableFunction>
           <represents>data</represents>
         </mappableElement>
         <mappableElement id="45b3448c-3c5c-4c38-b02f-36d5a20069ce" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
-          <isRequiredFunction>return true;</isRequiredFunction>
+          <isRequiredFunction>return element.getValue() == null;</isRequiredFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -1861,6 +1861,7 @@ return element.hasStereotype(bindableId) || element.hasStereotype(routeParameter
           <represents>invokable</represents>
         </mappableElement>
         <mappableElement id="3e0d7b15-8756-4692-9dcf-6c072bc91ad2" name="Navigation Target End" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" version="2.0.0">
+          <filterFunction>return association.getParent().specialization == "Layout";</filterFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>

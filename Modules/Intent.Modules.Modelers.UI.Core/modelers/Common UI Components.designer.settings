@@ -736,6 +736,7 @@ if (selected.type == "core") {
                       <script>const invocationMappingTYpeId = "e4f0c63b-0f00-42bd-a703-00adf44f3364";
 const parentElement = mapping.getSourceElement();
 const association = createAssociation("Navigation", parentElement.id, null);
+focusSource();
 association.enableEditing();
 mapping.addMappedEnd(invocationMappingTYpeId, association.getMappingPath(), element.getMappingPath());</script>
                     </option>
