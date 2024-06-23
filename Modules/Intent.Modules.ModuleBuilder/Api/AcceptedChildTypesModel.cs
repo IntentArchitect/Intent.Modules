@@ -43,7 +43,7 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new AcceptedTypeModel(x))
             .ToList();
 
-        public IList<AcceptedStereotypesModel> AcceptedFunctions => _element.ChildElements
+        public IList<AcceptedStereotypesModel> AcceptedStereotypes => _element.ChildElements
             .GetElementsOfType(AcceptedStereotypesModel.SpecializationTypeId)
             .Select(x => new AcceptedStereotypesModel(x))
             .ToList();
