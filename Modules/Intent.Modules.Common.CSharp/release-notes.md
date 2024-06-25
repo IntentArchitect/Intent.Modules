@@ -1,4 +1,8 @@
-﻿### Version 3.6.3
+﻿### Version 3.6.4
+
+- Fixed: `CSharpMethod` and `CSharpInterfaceMethod`  return types starting with the letters `Task` generated incorrect code under certain circumstances.
+
+### Version 3.6.3
 
 - New Feature: Classes and Records can now define `Primary Constructors`.
 - Improvement: Convenient `IncludesXmlDocComments` method to insert `/// <inheritdoc cref="" />` comments.

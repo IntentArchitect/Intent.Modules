@@ -52,11 +52,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     public CSharpInterfaceMethod Async()
     {
         IsAsync = true;
-        var taskType = File.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
-        if (!ReturnType.StartsWith(taskType))
-        {
-            ReturnType = ReturnType == "void" ? taskType : $"{taskType}<{ReturnType}>";
-        }
+        ReturnType = CSharpClassMethod.GetAsyncReturnType(File, ReturnType);
         return this;
     }
 
