@@ -1,11 +1,11 @@
-# Intent.Modelers.Services.DomainInteractions
+# Intent.Modelers.Services.ProxyInteractions
 
 Services modeler extensions for describing interactions between an application's services and its domain.
 
 ## Mapping from CQRS Operations and Services to Service Proxies
 
 > [!NOTE]
-> You will also need version `5.2.0-pre.0` or higher of the `Intent.Modelers.ServiceProxies` module installed or you may encounter errors when trying the below.
+> You will also need version `5.2.0` or higher of the `Intent.Modelers.ServiceProxies` module installed or you may encounter errors when trying the below.
 
 As usual for _Service Proxies_, you will need to have a reference from the Service Proxies package to the Services package to which you want service proxies created:
 

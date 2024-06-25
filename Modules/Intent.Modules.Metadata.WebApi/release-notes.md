@@ -1,3 +1,11 @@
+### Version 4.5.4
+
+- Fixed: Wrongfully validated `Route mismatch: some route parameters do not match element's properties/parameters. Unmatched parameters: {version}` as an error.
+- Fixed: Incorrectly didn't identify conflicting route paths that only were distinct on route parameter name.
+    - For example the following should be conflicting route paths:
+        - root/sub/{param1}
+        - root/sub/{param2}
+
 ### Version 4.5.3
 
 - Fixed: Route parameter generation for CQRS Services fixed that are generated from Service Proxies.
