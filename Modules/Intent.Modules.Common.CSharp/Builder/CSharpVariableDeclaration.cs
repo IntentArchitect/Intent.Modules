@@ -27,11 +27,11 @@ public class CSharpVariableDeclaration : CSharpStatement
 
 public class CSharpDeclarationExpression : CSharpStatement
 {
-    public CSharpDeclarationExpression(IReadOnlyCollection<string> designatedVariables)
-        : base($"({string.Join(", ", designatedVariables)})")
+    public CSharpDeclarationExpression(IReadOnlyList<string> designatedVariables)
+        : base($"var ({string.Join(", ", designatedVariables)})")
     {
         DesignatedVariables = designatedVariables;
     }
 
-    public IReadOnlyCollection<string> DesignatedVariables { get; }
+    public IReadOnlyList<string> DesignatedVariables { get; }
 }

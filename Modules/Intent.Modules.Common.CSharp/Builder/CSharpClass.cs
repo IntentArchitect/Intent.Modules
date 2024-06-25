@@ -275,7 +275,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     public CSharpClass AddMethod<TModel>(TModel model, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddMethod(File.GetModelType(model), model.Name.ToPropertyName(), method =>
+        return AddMethod(new CSharpReturnTypeName(File.GetModelType(model)), model.Name.ToPropertyName(), method =>
         {
             method.RepresentsModel(model);
             configure?.Invoke(method);

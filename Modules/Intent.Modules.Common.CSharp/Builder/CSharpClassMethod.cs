@@ -35,7 +35,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     public CSharpClass Class { get; }
 
 
-    [Obsolete("Use the constructor with CSharpReturnType instead.")]
+    [Obsolete("Use the constructor with CSharpReturnType parameter instead.")]
     public CSharpClassMethod(string returnType, string name, CSharpClass @class)
     {
         if (string.IsNullOrWhiteSpace(returnType))

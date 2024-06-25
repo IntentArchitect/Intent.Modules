@@ -24,6 +24,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
 
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
 
+    [Obsolete("Use the constructor with CSharpReturnType parameter instead.")]
     public CSharpInterfaceMethod(string returnType, string name, CSharpInterface parent)
     {
         if (string.IsNullOrWhiteSpace(returnType))
@@ -75,7 +76,15 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     public CSharpInterfaceMethod Async()
     {
         IsAsync = true;
-        ReturnType = CSharpClassMethod.GetAsyncReturnType(File, ReturnType);
+        if (ReturnTypeData is null)
+        {
+            ReturnType = CSharpClassMethod.GetAsyncReturnType(File, ReturnType);
+        }
+        else if (ReturnTypeData is CSharpReturnTypeGeneric generic && generic.IsTask())
+        {
+            ReturnTypeData = generic.TypeArgumentList.Single();
+            ReturnType = ReturnTypeData.GetText(string.Empty);
+        }
         return this;
     }
 

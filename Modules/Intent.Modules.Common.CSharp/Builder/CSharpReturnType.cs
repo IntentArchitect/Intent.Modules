@@ -7,6 +7,31 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public abstract class CSharpReturnType : CSharpStatement
 {
+    internal const string TaskShortTypeName = "Task";
+    internal const string TaskFullTypeName = "System.Threading.Task";
+    
+    internal const string ListShortTypeName = "List";
+    internal const string ListFullTypeName = "System.Collections.Generic.List";
+
+    public static CSharpReturnTypeGeneric CreateList(CSharpReturnType genericParamType)
+    {
+        return new CSharpReturnTypeGeneric(ListFullTypeName, [genericParamType]);
+    }
+
+    public static CSharpReturnTypeName CreateTask()
+    {
+        return new CSharpReturnTypeName(TaskFullTypeName);
+    }
+    
+    public static CSharpReturnTypeGeneric CreateTask(CSharpReturnType genericParamType)
+    {
+        return new CSharpReturnTypeGeneric(TaskFullTypeName, [genericParamType]);
+    }
+
+    public static CSharpReturnTypeVoid CreateVoid()
+    {
+        return new CSharpReturnTypeVoid();
+    }
 }
 
 public class CSharpReturnTypeVoid : CSharpReturnType
@@ -79,12 +104,6 @@ public class CSharpReturnTypeTuple : CSharpReturnType
 
 public static class CSharpReturnTypeExtensions
 {
-    private const string TaskShortTypeName = "Task";
-    private const string TaskFullTypeName = "System.Threading.Task";
-    
-    private const string ListShortTypeName = "List";
-    private const string ListFullTypeName = "System.Collections.Generic.List";
-
     public static bool IsTask(this CSharpReturnType returnType)
     {
         return (returnType is CSharpReturnTypeName name && name.IsTask()) || (returnType is CSharpReturnTypeGeneric generic && generic.IsTask());
@@ -92,31 +111,31 @@ public static class CSharpReturnTypeExtensions
     
     public static bool IsTask(this CSharpReturnTypeName name)
     {
-        return name.TypeName is TaskFullTypeName or TaskShortTypeName;
+        return name.TypeName is CSharpReturnType.TaskFullTypeName or CSharpReturnType.TaskShortTypeName;
     }
     
     public static bool IsTask(this CSharpReturnTypeGeneric generic)
     {
-        return generic.TypeName is TaskFullTypeName or TaskShortTypeName;
+        return generic.TypeName is CSharpReturnType.TaskFullTypeName or CSharpReturnType.TaskShortTypeName;
     }
 
     public static bool IsList(this CSharpReturnTypeGeneric generic)
     {
-        return generic.TypeName is ListFullTypeName or ListShortTypeName;
+        return generic.TypeName is CSharpReturnType.ListFullTypeName or CSharpReturnType.ListShortTypeName;
     }
     
     public static CSharpReturnType WrapInTask(this CSharpReturnType returnType)
     {
         if (returnType is CSharpReturnTypeVoid)
         {
-            return new CSharpReturnTypeName(TaskFullTypeName);
+            return CSharpReturnType.CreateTask();
         }
-        
-        return new CSharpReturnTypeGeneric(TaskFullTypeName, [returnType]);
+
+        return CSharpReturnType.CreateTask(returnType);
     }
 
     public static CSharpReturnType WrapInList(this CSharpReturnType returnType)
     {
-        return new CSharpReturnTypeGeneric(ListFullTypeName, [returnType]);
+        return CSharpReturnType.CreateList(returnType);
     }
 }
