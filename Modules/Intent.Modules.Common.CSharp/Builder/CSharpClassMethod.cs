@@ -11,7 +11,6 @@ public interface ICSharpMethodDeclaration : IHasICSharpParameters, ICSharpRefere
 {
     bool IsAsync { get; }
     public ICSharpExpression ReturnType { get; }
-    public IReadOnlyList<string> DeconstructedReturnTypeMembers { get; }
 }
 
 public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodDeclaration
