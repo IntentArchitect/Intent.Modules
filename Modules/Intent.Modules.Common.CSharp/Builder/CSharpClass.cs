@@ -216,10 +216,18 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
+    [Obsolete("Use AddMethod with CSharpReturnType parameter instead.")]
     public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
     }
+    
+    public CSharpClass AddMethod(CSharpReturnType returnType, string name, Action<CSharpClassMethod>? configure = null)
+    {
+        return InsertMethod(Methods.Count, returnType, name, configure);
+    }
+    
+    
 
     /// <summary>
     /// Resolves the method name from the <paramref name="model"/>. Registers this method as representative of the <paramref name="model"/>.
@@ -228,7 +236,25 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
+    [Obsolete("Use AddMethod with CSharpReturnType parameter instead.")]
     public CSharpClass AddMethod<TModel>(string returnType, TModel model, Action<CSharpClassMethod>? configure = null)
+        where TModel : IMetadataModel, IHasName
+    {
+        return AddMethod(returnType, model.Name.ToPropertyName(), prop =>
+        {
+            prop.RepresentsModel(model);
+            configure?.Invoke(prop);
+        });
+    }
+    
+    /// <summary>
+    /// Resolves the method name from the <paramref name="model"/>. Registers this method as representative of the <paramref name="model"/>.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="model"></param>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public CSharpClass AddMethod<TModel>(CSharpReturnType returnType, TModel model, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
         return AddMethod(returnType, model.Name.ToPropertyName(), prop =>
@@ -309,7 +335,16 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
+    [Obsolete("Use InsertMethod with CSharpReturnType parameter instead.")]
     public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod>? configure = null)
+    {
+        var method = new CSharpClassMethod(returnType, name, this);
+        Methods.Insert(index, method);
+        configure?.Invoke(method);
+        return this;
+    }
+    
+    public CSharpClass InsertMethod(int index, CSharpReturnType returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         var method = new CSharpClassMethod(returnType, name, this);
         Methods.Insert(index, method);

@@ -8,6 +8,8 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICSharpMethodDeclaration
 {
+    public CSharpReturnType ReturnTypeData { get; private set; }
+    [Obsolete("Rather make use of ReturnTypeData.")]
     public string ReturnType { get; private set; }
     ICSharpExpression ICSharpMethodDeclaration.ReturnType => new CSharpStatement(ReturnType);
     public string Name { get; }
@@ -21,9 +23,6 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
 
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
-    private List<string> _deconstructedReturnTypeMembers = new();
-
-    public IReadOnlyList<string> DeconstructedReturnTypeMembers => _deconstructedReturnTypeMembers;
 
     public CSharpInterfaceMethod(string returnType, string name, CSharpInterface parent)
     {
@@ -38,6 +37,27 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         }
 
         ReturnType = returnType;
+        Name = name;
+        Parent = parent;
+        File = parent.File;
+        BeforeSeparator = CSharpCodeSeparatorType.NewLine;
+        AfterSeparator = CSharpCodeSeparatorType.NewLine;
+    }
+    
+    public CSharpInterfaceMethod(CSharpReturnType returnType, string name, CSharpInterface parent)
+    {
+        if (returnType is null)
+        {
+            throw new ArgumentException("Cannot be null", nameof(returnType));
+        }
+
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+
+        ReturnType = returnType.GetText(string.Empty);
+        ReturnTypeData = returnType;
         Name = name;
         Parent = parent;
         File = parent.File;
@@ -147,12 +167,6 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         }
 
         ReturnType = returnType;
-        return this;
-    }
-    
-    public CSharpInterfaceMethod AddDeconstructedReturnMembers(IReadOnlyList<string> members)
-    {
-        _deconstructedReturnTypeMembers.AddRange(members);
         return this;
     }
 
