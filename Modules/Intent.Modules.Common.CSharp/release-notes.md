@@ -1,5 +1,6 @@
 ﻿### Version 3.6.4
 
+- Fixed: Generated namespaces would `Pascal Case` application names, it now uses the casing as is.
 - Fixed: `CSharpMethod` and `CSharpInterfaceMethod`  return types starting with the letters `Task` generated incorrect code under certain circumstances.
 
 ### Version 3.6.3

@@ -137,7 +137,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         public static string ToCSharpNamespace(this string @string)
         {
-            return string.Join('.', @string.Split('.').Select(ToCSharpIdentifier));
+            return string.Join('.', @string.Split('.').Select(s => s.ToCSharpIdentifier(CapitalizationBehaviour.AsIs)));
         }
 
         /// <summary>
