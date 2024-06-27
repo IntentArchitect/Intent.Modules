@@ -125,7 +125,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
     public CSharpInterface AddMethod<TModel>(TModel model, Action<CSharpInterfaceMethod> configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddMethod(new CSharpReturnTypeName(File.GetModelType(model)), model.Name.ToPropertyName(), method =>
+        return AddMethod(new CSharpTypeName(File.GetModelType(model)), model.Name.ToPropertyName(), method =>
         {
             method.RepresentsModel(model);
             configure?.Invoke(method);
@@ -138,9 +138,9 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
         return InsertMethod(Methods.Count, returnType, name, configure);
     }
     
-    public CSharpInterface AddMethod(CSharpReturnType returnType, string name, Action<CSharpInterfaceMethod> configure = null)
+    public CSharpInterface AddMethod(CSharpType type, string name, Action<CSharpInterfaceMethod> configure = null)
     {
-        return InsertMethod(Methods.Count, returnType, name, configure);
+        return InsertMethod(Methods.Count, type, name, configure);
     }
 
     public CSharpInterface AddCodeBlock(string codeLine)
@@ -186,9 +186,9 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
         return this;
     }
     
-    public CSharpInterface InsertMethod(int index, CSharpReturnType returnType, string name, Action<CSharpInterfaceMethod> configure = null)
+    public CSharpInterface InsertMethod(int index, CSharpType type, string name, Action<CSharpInterfaceMethod> configure = null)
     {
-        var method = new CSharpInterfaceMethod(returnType, name, this)
+        var method = new CSharpInterfaceMethod(type, name, this)
         {
             BeforeSeparator = _methodsSeparator,
             AfterSeparator = _methodsSeparator

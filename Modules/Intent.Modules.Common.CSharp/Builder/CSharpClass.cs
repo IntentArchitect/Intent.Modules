@@ -222,9 +222,9 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return InsertMethod(Methods.Count, returnType, name, configure);
     }
     
-    public CSharpClass AddMethod(CSharpReturnType returnType, string name, Action<CSharpClassMethod>? configure = null)
+    public CSharpClass AddMethod(CSharpType type, string name, Action<CSharpClassMethod>? configure = null)
     {
-        return InsertMethod(Methods.Count, returnType, name, configure);
+        return InsertMethod(Methods.Count, type, name, configure);
     }
     
     
@@ -254,10 +254,10 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    public CSharpClass AddMethod<TModel>(CSharpReturnType returnType, TModel model, Action<CSharpClassMethod>? configure = null)
+    public CSharpClass AddMethod<TModel>(CSharpType type, TModel model, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddMethod(returnType, model.Name.ToPropertyName(), prop =>
+        return AddMethod(type, model.Name.ToPropertyName(), prop =>
         {
             prop.RepresentsModel(model);
             configure?.Invoke(prop);
@@ -275,7 +275,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     public CSharpClass AddMethod<TModel>(TModel model, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddMethod(new CSharpReturnTypeName(File.GetModelType(model)), model.Name.ToPropertyName(), method =>
+        return AddMethod(new CSharpTypeName(File.GetModelType(model)), model.Name.ToPropertyName(), method =>
         {
             method.RepresentsModel(model);
             configure?.Invoke(method);
@@ -344,9 +344,9 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
     
-    public CSharpClass InsertMethod(int index, CSharpReturnType returnType, string name, Action<CSharpClassMethod>? configure = null)
+    public CSharpClass InsertMethod(int index, CSharpType type, string name, Action<CSharpClassMethod>? configure = null)
     {
-        var method = new CSharpClassMethod(returnType, name, this);
+        var method = new CSharpClassMethod(type, name, this);
         Methods.Insert(index, method);
         configure?.Invoke(method);
         return this;

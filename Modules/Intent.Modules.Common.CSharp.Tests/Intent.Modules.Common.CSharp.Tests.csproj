@@ -29,5 +29,11 @@
     <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Builder\ReturnTypeTests.VariousReturnTypeMethods.verified.txt">
+      <DependentUpon>CSharpTypeTests.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+
 
 </Project>

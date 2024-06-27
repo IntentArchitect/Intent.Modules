@@ -10,18 +10,20 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpVariableDeclaration : CSharpStatement
 {
-    public CSharpVariableDeclaration(string variableDeclaration) : this(null, variableDeclaration)
+    public CSharpVariableDeclaration(string variableDeclaration)
     {
+        VariableDeclaration = variableDeclaration;
+        Text = $"var {variableDeclaration}";
     }
 
-    public CSharpVariableDeclaration(string? type, string variableDeclaration)
+    public CSharpVariableDeclaration(CSharpType type, string variableDeclaration)
     {
-        Type = string.IsNullOrWhiteSpace(type) ? "var" : type;
+        Type = type;
         VariableDeclaration = variableDeclaration;
         Text = $"{Type} {variableDeclaration}";
     }
 
-    public string Type { get; }
+    public CSharpType? Type { get; }
     public string VariableDeclaration { get; }
 }
 

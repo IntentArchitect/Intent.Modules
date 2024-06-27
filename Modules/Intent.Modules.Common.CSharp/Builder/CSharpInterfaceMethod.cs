@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICSharpMethodDeclaration
 {
-    public CSharpReturnType ReturnTypeData { get; private set; }
+    public CSharpType ReturnTypeInfo { get; private set; }
     [Obsolete("Rather make use of ReturnTypeData.")]
     public string ReturnType { get; private set; }
     ICSharpExpression ICSharpMethodDeclaration.ReturnType => new CSharpStatement(ReturnType);
@@ -45,7 +45,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         AfterSeparator = CSharpCodeSeparatorType.NewLine;
     }
     
-    public CSharpInterfaceMethod(CSharpReturnType returnType, string name, CSharpInterface parent)
+    public CSharpInterfaceMethod(CSharpType returnType, string name, CSharpInterface parent)
     {
         if (returnType is null)
         {
@@ -57,8 +57,8 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
-        ReturnType = returnType.GetText(string.Empty);
-        ReturnTypeData = returnType;
+        ReturnType = returnType.ToString();
+        ReturnTypeInfo = returnType;
         Name = name;
         Parent = parent;
         File = parent.File;
@@ -76,14 +76,14 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     public CSharpInterfaceMethod Async()
     {
         IsAsync = true;
-        if (ReturnTypeData is null)
+        if (ReturnTypeInfo is null)
         {
             ReturnType = CSharpClassMethod.GetAsyncReturnType(File, ReturnType);
         }
-        else if (ReturnTypeData is CSharpReturnTypeGeneric generic && generic.IsTask())
+        else if (ReturnTypeInfo is CSharpTypeGeneric generic && generic.IsTask())
         {
-            ReturnTypeData = generic.TypeArgumentList.Single();
-            ReturnType = ReturnTypeData.GetText(string.Empty);
+            ReturnTypeInfo = generic.TypeArgumentList.Single();
+            ReturnType = ReturnTypeInfo.ToString();
         }
         return this;
     }

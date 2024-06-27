@@ -11,7 +11,7 @@ public interface ICSharpMethodDeclaration : IHasICSharpParameters, ICSharpRefere
 {
     bool IsAsync { get; }
     public ICSharpExpression ReturnType { get; }
-    public CSharpReturnType ReturnTypeData { get; }
+    public CSharpType ReturnTypeInfo { get; }
 }
 
 public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodDeclaration
@@ -24,7 +24,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     public bool HasExpressionBody { get; private set; }
     [Obsolete("Rather make use of ReturnTypeData.")]
     public string ReturnType { get; private set; }
-    public CSharpReturnType ReturnTypeData { get; private set; }
+    public CSharpType ReturnTypeInfo { get; private set; }
     ICSharpExpression ICSharpMethodDeclaration.ReturnType => new CSharpStatement(ReturnType);
     public string Name { get; }
     public List<CSharpParameter> Parameters { get; } = new();
@@ -57,7 +57,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
     }
 
-    public CSharpClassMethod(CSharpReturnType returnType, string name, CSharpClass @class)
+    public CSharpClassMethod(CSharpType returnType, string name, CSharpClass @class)
     {
         if (returnType is null)
         {
@@ -72,8 +72,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         Parent = @class;
         Class = @class;
         File = @class.File;
-        ReturnType = returnType.GetText(string.Empty);
-        ReturnTypeData = returnType;
+        ReturnType = returnType.ToString();
+        ReturnTypeInfo = returnType;
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
@@ -325,14 +325,14 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     public CSharpClassMethod Sync()
     {
         IsAsync = false;
-        if (ReturnTypeData is null)
+        if (ReturnTypeInfo is null)
         {
             HandleLegacyReturnTypeScenario();
         }
-        else if (ReturnTypeData is CSharpReturnTypeGeneric generic && generic.IsTask())
+        else if (ReturnTypeInfo is CSharpTypeGeneric generic && generic.IsTask())
         {
-            ReturnTypeData = generic.TypeArgumentList.Single();
-            ReturnType = ReturnTypeData.GetText(string.Empty);
+            ReturnTypeInfo = generic.TypeArgumentList.Single();
+            ReturnType = ReturnTypeInfo.ToString();
         }
         return this;
 
@@ -359,14 +359,14 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     public CSharpClassMethod Async()
     {
         IsAsync = true;
-        if (ReturnTypeData is null)
+        if (ReturnTypeInfo is null)
         {
             ReturnType = GetLegacyAsyncReturnType(File, ReturnType);
         }
-        else if (!ReturnTypeData.IsTask())
+        else if (!ReturnTypeInfo.IsTask())
         {
-            ReturnTypeData = ReturnTypeData.WrapInTask();
-            ReturnType = ReturnTypeData.GetText(string.Empty);
+            ReturnTypeInfo = ReturnTypeInfo.WrapInTask();
+            ReturnType = ReturnTypeInfo.ToString();
         }
         return this;
     }
