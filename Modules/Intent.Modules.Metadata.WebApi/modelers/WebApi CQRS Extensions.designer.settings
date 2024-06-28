@@ -546,7 +546,7 @@ function getFolderParts(request, domainElement) {
             const singularizedFolderName = singularize(folderName);
             const singularizedAggregateRootName = singularize((_a = domainElement.entityDomainElementDetails) === null || _a === void 0 ? void 0 : _a.getOwningOrTargetEntityName());
             if (singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
-                folderName = singularizedFolderName;
+                folderName = pluralize(singularizedFolderName);
             }
         }
         folderParts.unshift(toKebabCase(folderName));
@@ -3285,7 +3285,7 @@ function getFolderParts(request, domainElement) {
             const singularizedFolderName = singularize(folderName);
             const singularizedAggregateRootName = singularize((_a = domainElement.entityDomainElementDetails) === null || _a === void 0 ? void 0 : _a.getOwningOrTargetEntityName());
             if (singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
-                folderName = singularizedFolderName;
+                folderName = pluralize(singularizedFolderName);
             }
         }
         folderParts.unshift(toKebabCase(folderName));

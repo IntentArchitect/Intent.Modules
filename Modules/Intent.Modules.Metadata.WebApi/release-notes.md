@@ -1,5 +1,6 @@
 ### Version 4.5.4
 
+- Improvement: `Exposing as HTTP Endpoint` now pluralizes the entity e.g. `api/customers` was previously `api/customer`.
 - Fixed: Wrongfully validated `Route mismatch: some route parameters do not match element's properties/parameters. Unmatched parameters: {version}` as an error.
 - Fixed: Incorrectly didn't identify conflicting route paths that only were distinct on route parameter name.
     - For example the following should be conflicting route paths:
