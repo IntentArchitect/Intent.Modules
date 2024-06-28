@@ -7,93 +7,124 @@ using System.Text;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public static class CSharpTypeParser
+public class CSharpTypeParsingException : Exception
+{
+    public CSharpTypeParsingException(string message) : base(message)
+    {
+    }
+}
+
+public class CSharpTypeParser
 {
     public static bool TryParse(string typeName, out CSharpType? type)
     {
+        try
+        {
+            type = Parse(typeName);
+            return true;
+        }
+        catch (Exception exception)
+        {
+            type = null;
+            return false;
+        }
+    }
+
+    public static CSharpType Parse(string typeName)
+    {
         ArgumentException.ThrowIfNullOrWhiteSpace(typeName);
 
-        var scopeStack = new Stack<ScopeTracker>();
-        var currentScope = new ScopeTracker();
-
-        for (var index = 0; index < typeName.Length; index++)
+        var parser = new CSharpTypeParser();
+        for (parser.PositionIndex = 0; parser.PositionIndex < typeName.Length; parser.PositionIndex++)
         {
-            var currentChar = typeName[index];
-            if (!ProcessCharacter(currentChar, ref currentScope, scopeStack))
-            {
-                type = null;
-                return false;
-            }
+            parser.CurrentChar = typeName[parser.PositionIndex];
+            parser.ProcessCharacter();
         }
 
-        return FinalizeScope(currentScope, out type);
+        return parser.FinalizeScope();
     }
 
-    private static bool ProcessCharacter(char currentChar, ref ScopeTracker currentScope, Stack<ScopeTracker> scopeStack)
+    private CSharpTypeParser()
     {
-        switch (currentChar)
+        ScopeStack = new();
+        CurrentScope = new ScopeTracker();
+    }
+
+    private readonly Stack<ScopeTracker> ScopeStack;
+    private ScopeTracker CurrentScope;
+    private char CurrentChar;
+    private int PositionIndex;
+    
+    
+    private void ProcessCharacter()
+    {
+        switch (CurrentChar)
         {
             case '(':
-                return StartNewScope(ref currentScope, scopeStack, DetectedType.Unknown, DetectedType.Tuple, ')');
+                StartNewScope(DetectedType.Unknown, DetectedType.Tuple, ')');
+                break;
             case '<':
-                return StartNewScope(ref currentScope, scopeStack, DetectedType.Name, DetectedType.Generic, '>');
+                StartNewScope(DetectedType.Name, DetectedType.Generic, '>');
+                break;
             case ',':
-                return HandleComma(ref currentScope, scopeStack);
-            case var _ when currentScope.EndingChar == currentChar:
-                return HandleScopeEnd(ref currentScope, scopeStack);
+                HandleComma();
+                break;
+            case var _ when CurrentScope.EndingChar == CurrentChar:
+                HandleScopeEnd();
+                break;
             default:
-                AppendCharToScope(ref currentScope, currentChar);
-                return true;
+                AppendCharToScope();
+                break;
         }
     }
 
-    private static bool StartNewScope(ref ScopeTracker currentScope, Stack<ScopeTracker> scopeStack, DetectedType expectedType, DetectedType newType, char endingChar)
+    private void StartNewScope(DetectedType? expectedType, DetectedType newType, char endingChar)
     {
-        if (currentScope.DetectedType != expectedType)
+        if (expectedType is not null && CurrentScope.DetectedType != expectedType)
         {
-            return false;
+            throw new CSharpTypeParsingException($"Invalid character '{CurrentChar}' found at position {PositionIndex}.");
         }
 
-        currentScope.DetectedType = newType;
-        scopeStack.Push(currentScope);
-        
-        currentScope = new ScopeTracker { EndingChar = endingChar };
-        return true;
+        CurrentScope.DetectedType = newType;
+        ScopeStack.Push(CurrentScope);
+
+        CurrentScope = new ScopeTracker { EndingChar = endingChar };
     }
 
-    private static bool HandleComma(ref ScopeTracker currentScope, Stack<ScopeTracker> scopeStack)
+    private void HandleComma()
     {
-        var prevScope = scopeStack.Peek();
-        if (!FinalizeSubScope(currentScope, prevScope))
-        {
-            return false;
-        }
-
-        currentScope.Reset();
-        return true;
+        FinalizeSubScope(CurrentScope, ScopeStack.Peek());
+        CurrentScope.Reset();
     }
 
-    private static bool HandleScopeEnd(ref ScopeTracker currentScope, Stack<ScopeTracker> scopeStack)
+    private void HandleScopeEnd()
     {
-        var prevScope = scopeStack.Pop();
-        switch (currentScope.EndingChar)
+        var prevScope = ScopeStack.Pop();
+        switch (CurrentScope.EndingChar)
         {
-            case '>' when currentScope.DetectedType == DetectedType.Unknown || prevScope.DetectedType != DetectedType.Generic:
-                return false;
-            case ')' when currentScope.DetectedType == DetectedType.Unknown || prevScope.DetectedType != DetectedType.Tuple:
-                return false;
-        }
-        
-        if (!FinalizeSubScope(currentScope, prevScope))
-        {
-            return false;
+            case '>' when CurrentScope.DetectedType == DetectedType.Unknown || prevScope.DetectedType != DetectedType.Generic:
+                throw new CSharpTypeParsingException($"Invalid character '{CurrentChar}' found at position {PositionIndex}.");
+            case ')' when CurrentScope.DetectedType == DetectedType.Unknown || prevScope.DetectedType != DetectedType.Tuple:
+                throw new CSharpTypeParsingException($"Invalid character '{CurrentChar}' found at position {PositionIndex}.");
         }
 
-        currentScope = prevScope;
-        return true;
+        FinalizeSubScope(CurrentScope, prevScope);
+
+        CurrentScope = prevScope;
     }
-    
-    private static bool FinalizeSubScope(ScopeTracker currentScope, ScopeTracker prevScope)
+
+    private void AppendCharToScope()
+    {
+        // Whitespace should not count as an identifier
+        if (CurrentScope.DetectedType == DetectedType.Unknown && !char.IsWhiteSpace(CurrentChar))
+        {
+            CurrentScope.DetectedType = DetectedType.Name;
+        }
+
+        CurrentScope.Buffer.Append(CurrentChar);
+    }
+
+    private void FinalizeSubScope(ScopeTracker currentScope, ScopeTracker prevScope)
     {
         switch (currentScope.DetectedType)
         {
@@ -103,7 +134,7 @@ public static class CSharpTypeParser
                 var parts = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 if (prevScope.DetectedType != DetectedType.Tuple && parts.Length > 1)
                 {
-                    return false;
+                    throw new CSharpTypeParsingException($"Invalid character '{CurrentChar}' found at position {PositionIndex}.");
                 }
 
                 var scopeType = new CSharpTypeName(parts[0]);
@@ -116,46 +147,29 @@ public static class CSharpTypeParser
                 break;
             case DetectedType.Tuple:
                 prevScope.Entries.Add(new TypeEntry(
-                    new CSharpTypeTuple(currentScope.Entries.Select(s => new CSharpTupleElement(s.Type, s.Name)).ToList())));
+                    new CSharpTypeTuple(currentScope.Entries.Select(s => new CSharpTupleElement(s.Type, s.ElementName)).ToList())));
                 break;
             default:
-                return false;
+                throw new CSharpTypeParsingException($"Could not infer type at position {PositionIndex}.");
         }
-
-        return true;
     }
 
-    private static void AppendCharToScope(ref ScopeTracker currentScope, char currentChar)
+    private CSharpType FinalizeScope()
     {
-        // Whitespace should not count as an identifier
-        if (currentScope.DetectedType == DetectedType.Unknown && !char.IsWhiteSpace(currentChar))
-        {
-            currentScope.DetectedType = DetectedType.Name;
-        }
-
-        currentScope.Buffer.Append(currentChar);
-    }
-
-    private static bool FinalizeScope(ScopeTracker currentScope, out CSharpType? type)
-    {
-        switch (currentScope.DetectedType)
+        switch (CurrentScope.DetectedType)
         {
             case DetectedType.Name:
-                type = new CSharpTypeName(currentScope.Buffer.ToString().Trim());
-                return true;
+                return new CSharpTypeName(CurrentScope.Buffer.ToString().Trim());
             case DetectedType.Generic:
-                type = new CSharpTypeGeneric(currentScope.Buffer.ToString().Trim(), currentScope.Entries.Select(e => e.Type).ToList());
-                return true;
+                return new CSharpTypeGeneric(CurrentScope.Buffer.ToString().Trim(), CurrentScope.Entries.Select(e => e.Type).ToList());
             case DetectedType.Tuple:
-                type = new CSharpTypeTuple(currentScope.Entries.Select(e => new CSharpTupleElement(e.Type, e.Name)).ToList());
-                return true;
+                return new CSharpTypeTuple(CurrentScope.Entries.Select(e => new CSharpTupleElement(e.Type, e.ElementName)).ToList());
             default:
-                type = null;
-                return false;
+                throw new CSharpTypeParsingException($"Could not infer type at position {PositionIndex}.");
         }
     }
-
-    private record TypeEntry(CSharpType Type, string? Name = null);
+    
+    private record TypeEntry(CSharpType Type, string? ElementName = null);
 
     private class ScopeTracker
     {

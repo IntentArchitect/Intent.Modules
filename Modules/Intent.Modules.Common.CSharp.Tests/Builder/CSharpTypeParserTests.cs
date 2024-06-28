@@ -6,49 +6,63 @@ namespace Intent.Modules.Common.CSharp.Tests.Builder;
 public class CSharpTypeParserTests
 {
     [Fact]
-    public void StringToType_PredefinedType()
+    public void TryParseStringForType_PredefinedType()
     {
-        Assert.True(CSharpTypeParser.TryParse("string", out var type));
+        var type = CSharpTypeParser.Parse("string");
         Assert.Equal(new CSharpTypeName("string"), type);
     }
     
     [Theory]
     [InlineData("System.Uri")]
     [InlineData("MyNamespace.MyClass")]
-    public void StringToType_NamedType(string testTypeName)
+    public void TryParseStringForType_NamedType(string testTypeName)
     {
-        Assert.True(CSharpTypeParser.TryParse(testTypeName, out var type));
+        var type = CSharpTypeParser.Parse(testTypeName);
         Assert.Equal(new CSharpTypeName(testTypeName), type);
     }
+
+    // [Fact]
+    // public void TryParseStringForType_TypeAsArray()
+    // {
+    //     var type = CSharpTypeParser.Parse("int[]");
+    //     Assert.Equal(new CSharpTypeArray(new CSharpTypeName("int")), type);
+    // }
+    //
+    // [Fact]
+    // public void TryParseStringForType_NullableType()
+    // {
+    //     var type = CSharpTypeParser.Parse("int?");
+    //     Assert.Equal(new CSharpTypeNullable(new CSharpTypeName("int")), type);
+    // }
     
     [Theory]
     [InlineData("List<string>", "List", "string")]
     [InlineData("System.Collections.Generic.List<System.Uri>", "System.Collections.Generic.List", "System.Uri")]
     [InlineData("System.Collections.Generic.List<MyNamespace.MyClass>", "System.Collections.Generic.List", "MyNamespace.MyClass")]
-    public void StringToType_GenericList_PredefinedType(string testTypeName, string genericName, string elementName)
+    public void TryParseStringForType_GenericList_PredefinedType(string testTypeName, string genericName, string elementName)
     {
-        Assert.True(CSharpTypeParser.TryParse(testTypeName, out var type));
+        var type = CSharpTypeParser.Parse(testTypeName);
         Assert.Equal(new CSharpTypeGeneric(genericName, [new CSharpTypeName(elementName)]), type);
     }
     
     [Fact]
-    public void StringToType_Tuple_PredefinedTypes()
+    public void TryParseStringForType_Tuple_PredefinedTypes()
     {
-        Assert.True(CSharpTypeParser.TryParse("(string, int)", out var type));
+        var type = CSharpTypeParser.Parse("(string, int)");
         Assert.Equal(new CSharpTypeTuple([new CSharpTupleElement(new CSharpTypeName("string")), new CSharpTupleElement(new CSharpTypeName("int"))]), type);
     }
     
     [Fact]
-    public void StringToType_Tuple_PredefinedTypesWithNames()
+    public void TryParseStringForType_Tuple_PredefinedTypesWithNames()
     {
-        Assert.True(CSharpTypeParser.TryParse("(string Name, int Age)", out var type));
+        var type = CSharpTypeParser.Parse("(string Name, int Age)");
         Assert.Equal(new CSharpTypeTuple([new CSharpTupleElement(new CSharpTypeName("string"), "Name"), new CSharpTupleElement(new CSharpTypeName("int"), "Age")]), type);
     }
     
     [Fact]
-    public void StringToType_GenericList_Tuple_PredefinedTypes()
+    public void TryParseStringForType_GenericList_Tuple_PredefinedTypes()
     {
-        Assert.True(CSharpTypeParser.TryParse("List<(string, int, bool)>", out var type));
+        var type = CSharpTypeParser.Parse("List<(string, int, bool)>");
         Assert.Equal(new CSharpTypeGeneric("List", [
             new CSharpTypeTuple([
                 new CSharpTupleElement(new CSharpTypeName("string")), 
@@ -59,9 +73,9 @@ public class CSharpTypeParserTests
     }
     
     [Fact]
-    public void StringToType_TupleWithStartingGeneric()
+    public void TryParseStringForType_TupleWithStartingGeneric()
     {
-        Assert.True(CSharpTypeParser.TryParse("(List<DateTime>, int)", out var type));
+        var type = CSharpTypeParser.Parse("(List<DateTime>, int)");
         Assert.Equal(new CSharpTypeTuple([
             new CSharpTupleElement(new CSharpTypeGeneric("List", [new CSharpTypeName("DateTime")])),
             new CSharpTupleElement(new CSharpTypeName("int"))
@@ -69,9 +83,9 @@ public class CSharpTypeParserTests
     }
     
     [Fact]
-    public void StringToType_ComplexStructure()
+    public void TryParseStringForType_ComplexStructure()
     {
-        Assert.True(CSharpTypeParser.TryParse("(decimal, Dictionary<string, (bool, List<DateTime>, int)>)", out var type));
+        var type = CSharpTypeParser.Parse("(decimal, Dictionary<string, (bool, List<DateTime>, int)>)");
         Assert.Equal(new CSharpTypeTuple([
                 new CSharpTupleElement(new CSharpTypeName("decimal")),
                 new CSharpTupleElement(new CSharpTypeGeneric("Dictionary", [
