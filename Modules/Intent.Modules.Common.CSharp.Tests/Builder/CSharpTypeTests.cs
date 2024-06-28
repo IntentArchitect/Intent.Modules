@@ -122,6 +122,13 @@ public class CSharpTypeTests
     }
     
     [Fact]
+    public void StringToType_Tuple_PredefinedTypesWithNames()
+    {
+        Assert.True(CSharpType.TryParse("(string Name, int Age)", out var type));
+        Assert.Equal(new CSharpTypeTuple([new CSharpTupleElement(new CSharpTypeName("string"), "Name"), new CSharpTupleElement(new CSharpTypeName("int"), "Age")]), type);
+    }
+    
+    [Fact]
     public void StringToType_GenericList_Tuple_PredefinedTypes()
     {
         Assert.True(CSharpType.TryParse("List<(string, int)>", out var type));
