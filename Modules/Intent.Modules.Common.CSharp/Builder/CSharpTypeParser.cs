@@ -71,13 +71,19 @@ public class CSharpTypeParser
         switch (CurrentChar)
         {
             case '(':
-                StartNewScope(DetectedType.Unknown, DetectedType.Tuple, ')');
+                StartNewScope(expectedType: DetectedType.Unknown, newType: DetectedType.Tuple, endingChar: ')');
                 break;
             case '<':
-                StartNewScope(DetectedType.Name, DetectedType.Generic, '>');
+                StartNewScope(expectedType: DetectedType.Name, newType: DetectedType.Generic, endingChar: '>');
+                break;
+            case '[':
+                StartNewScope(expectedType: null, newType: CurrentScope.DetectedType, endingChar: ']');
                 break;
             case ',':
                 HandleComma();
+                break;
+            case '?':
+                HandleNullSymbol();
                 break;
             case var _ when CurrentScope.EndingChar == CurrentChar:
                 HandleScopeEnd();
@@ -103,8 +109,18 @@ public class CSharpTypeParser
 
     private void HandleComma()
     {
-        FinalizeSubScope(CurrentScope, ScopeStack.Peek());
+        FinalizeSubScope(ScopeStack.Peek());
         CurrentScope.Reset();
+    }
+    
+    private void HandleNullSymbol()
+    {
+        if (CurrentScope.DetectedType is DetectedType.Unknown)
+        {
+            throw CSharpTypeParsingException.UnknownType(PositionIndex);
+        }
+
+        CurrentScope.Modifiers.Add(Modifier.Nullable);
     }
 
     private void HandleScopeEnd()
@@ -116,11 +132,15 @@ public class CSharpTypeParser
                 throw CSharpTypeParsingException.InvalidCharacter(CurrentChar, PositionIndex);
             case ')' when CurrentScope.DetectedType == DetectedType.Unknown || prevScope.DetectedType != DetectedType.Tuple:
                 throw CSharpTypeParsingException.InvalidCharacter(CurrentChar, PositionIndex);
+            case ']':
+                prevScope.Modifiers.Add(Modifier.Array);
+                CurrentScope = prevScope;
+                return;
+            default:
+                FinalizeSubScope(prevScope);
+                CurrentScope = prevScope;
+                return;
         }
-
-        FinalizeSubScope(CurrentScope, prevScope);
-
-        CurrentScope = prevScope;
     }
 
     private void AppendCharToScope()
@@ -134,49 +154,89 @@ public class CSharpTypeParser
         CurrentScope.Buffer.Append(CurrentChar);
     }
 
-    private void FinalizeSubScope(ScopeTracker currentScope, ScopeTracker prevScope)
+    private void FinalizeSubScope(ScopeTracker targetScope)
     {
-        switch (currentScope.DetectedType)
+        TypeEntry typeEntry;
+        switch (CurrentScope.DetectedType)
         {
             case DetectedType.Name:
             {
-                var text = currentScope.Buffer.ToString().Trim();
+                var text = CurrentScope.Buffer.ToString().Trim();
                 var parts = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                if (prevScope.DetectedType != DetectedType.Tuple && parts.Length > 1)
+                if (targetScope.DetectedType != DetectedType.Tuple && parts.Length > 1)
                 {
                     throw CSharpTypeParsingException.InvalidCharacter(CurrentChar, PositionIndex);
                 }
 
-                var scopeType = new CSharpTypeName(parts[0]);
-                prevScope.Entries.Add(new TypeEntry(scopeType, parts.Skip(1).LastOrDefault()));
+                CSharpType scopeType = new CSharpTypeName(parts[0]);
+                scopeType = ApplyModifiers(scopeType);
+                typeEntry = new TypeEntry(Type: scopeType, ElementName: parts.Skip(1).LastOrDefault());
             }
                 break;
             case DetectedType.Generic:
-                prevScope.Entries.Add(new TypeEntry(
-                    new CSharpTypeGeneric(currentScope.Buffer.ToString().Trim(), currentScope.Entries.Select(s => s.Type).ToList())));
+            {
+                CSharpType scopeType = new CSharpTypeGeneric(CurrentScope.Buffer.ToString().Trim(), CurrentScope.Entries.Select(s => s.Type).ToList());
+                scopeType = ApplyModifiers(scopeType);
+                typeEntry = new TypeEntry(scopeType);
+            }
                 break;
             case DetectedType.Tuple:
-                prevScope.Entries.Add(new TypeEntry(
-                    new CSharpTypeTuple(currentScope.Entries.Select(s => new CSharpTupleElement(s.Type, s.ElementName)).ToList())));
+            {
+                CSharpType scopeType = new CSharpTypeTuple(CurrentScope.Entries.Select(s => new CSharpTupleElement(s.Type, s.ElementName)).ToList());
+                scopeType = ApplyModifiers(scopeType);
+                typeEntry = new TypeEntry(scopeType);
+            }
                 break;
             default:
                 throw CSharpTypeParsingException.UnknownType(PositionIndex);
         }
+
+        targetScope.Entries.Add(typeEntry);
     }
 
     private CSharpType FinalizeScope()
     {
+        CSharpType type;
         switch (CurrentScope.DetectedType)
         {
             case DetectedType.Name:
-                return new CSharpTypeName(CurrentScope.Buffer.ToString().Trim());
+                type = new CSharpTypeName(CurrentScope.Buffer.ToString().Trim());
+                break;
             case DetectedType.Generic:
-                return new CSharpTypeGeneric(CurrentScope.Buffer.ToString().Trim(), CurrentScope.Entries.Select(e => e.Type).ToList());
+                type =  new CSharpTypeGeneric(CurrentScope.Buffer.ToString().Trim(), CurrentScope.Entries.Select(e => e.Type).ToList());
+                break;
             case DetectedType.Tuple:
-                return new CSharpTypeTuple(CurrentScope.Entries.Select(e => new CSharpTupleElement(e.Type, e.ElementName)).ToList());
+                type =  new CSharpTypeTuple(CurrentScope.Entries.Select(e => new CSharpTupleElement(e.Type, e.ElementName)).ToList());
+                break;
             default:
                 throw CSharpTypeParsingException.UnknownType(PositionIndex);
         }
+
+        type = ApplyModifiers(type);
+
+        return type;
+    }
+
+    private CSharpType ApplyModifiers(CSharpType type)
+    {
+        CSharpType modified = type;
+        
+        foreach (var modifier in CurrentScope.Modifiers)
+        {
+            switch (modifier)
+            {
+                case Modifier.Nullable:
+                    modified = new CSharpTypeNullable(modified);
+                    break;
+                case Modifier.Array:
+                    modified = new CSharpTypeArray(modified);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        return modified;
     }
     
     private record TypeEntry(CSharpType Type, string? ElementName = null);
@@ -186,12 +246,14 @@ public class CSharpTypeParser
         public DetectedType DetectedType { get; set; } = DetectedType.Unknown;
         public StringBuilder Buffer { get; } = new();
         public List<TypeEntry> Entries { get; } = new();
+        public List<Modifier> Modifiers { get; } = new();
         public char? EndingChar { get; set; }
 
         public void Reset()
         {
             Buffer.Clear();
             Entries.Clear();
+            Modifiers.Clear();
             DetectedType = DetectedType.Unknown;
         }
     }
@@ -202,5 +264,11 @@ public class CSharpTypeParser
         Name,
         Generic,
         Tuple
+    }
+
+    private enum Modifier
+    {
+        Nullable,
+        Array
     }
 }

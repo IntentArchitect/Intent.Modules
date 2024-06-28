@@ -21,19 +21,19 @@ public class CSharpTypeParserTests
         Assert.Equal(new CSharpTypeName(testTypeName), type);
     }
 
-    // [Fact]
-    // public void TryParseStringForType_TypeAsArray()
-    // {
-    //     var type = CSharpTypeParser.Parse("int[]");
-    //     Assert.Equal(new CSharpTypeArray(new CSharpTypeName("int")), type);
-    // }
-    //
-    // [Fact]
-    // public void TryParseStringForType_NullableType()
-    // {
-    //     var type = CSharpTypeParser.Parse("int?");
-    //     Assert.Equal(new CSharpTypeNullable(new CSharpTypeName("int")), type);
-    // }
+    [Fact]
+    public void TryParseStringForType_TypeAsArray()
+    {
+        var type = CSharpTypeParser.Parse("int[]");
+        Assert.Equal(new CSharpTypeArray(new CSharpTypeName("int")), type);
+    }
+    
+    [Fact]
+    public void TryParseStringForType_NullableType()
+    {
+        var type = CSharpTypeParser.Parse("int?");
+        Assert.Equal(new CSharpTypeNullable(new CSharpTypeName("int")), type);
+    }
     
     [Theory]
     [InlineData("List<string>", "List", "string")]
@@ -80,6 +80,26 @@ public class CSharpTypeParserTests
             new CSharpTupleElement(new CSharpTypeGeneric("List", [new CSharpTypeName("DateTime")])),
             new CSharpTupleElement(new CSharpTypeName("int"))
         ]), type);
+    }
+    
+    [Fact]
+    public void TryParseStringForType_TupleWithStartingGenericAsNullables()
+    {
+        var type = CSharpTypeParser.Parse("(List<DateTime?>?, int?)?");
+        Assert.Equal(new CSharpTypeNullable(new CSharpTypeTuple([
+            new CSharpTupleElement(new CSharpTypeNullable(new CSharpTypeGeneric("List", [new CSharpTypeNullable(new CSharpTypeName("DateTime"))]))),
+            new CSharpTupleElement(new CSharpTypeNullable(new CSharpTypeName("int")))
+        ])), type);
+    }
+    
+    [Fact]
+    public void TryParseStringForType_TupleWithStartingGenericAsArrays()
+    {
+        var type = CSharpTypeParser.Parse("(List<DateTime[]>[], int[])[]");
+        Assert.Equal(new CSharpTypeArray(new CSharpTypeTuple([
+            new CSharpTupleElement(new CSharpTypeArray(new CSharpTypeGeneric("List", [new CSharpTypeArray(new CSharpTypeName("DateTime"))]))),
+            new CSharpTupleElement(new CSharpTypeArray(new CSharpTypeName("int")))
+        ])), type);
     }
     
     [Fact]
