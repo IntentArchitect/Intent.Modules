@@ -12,6 +12,16 @@ public class CSharpTypeParsingException : Exception
     public CSharpTypeParsingException(string message) : base(message)
     {
     }
+
+    public static CSharpTypeParsingException InvalidCharacter(char character, int position)
+    {
+        return new CSharpTypeParsingException($"Invalid character '{character}' found at position {position}.");
+    }
+
+    public static CSharpTypeParsingException UnknownType(int postition)
+    {
+        return new CSharpTypeParsingException($"Could not determine type at position {postition}.");
+    }
 }
 
 public class CSharpTypeParser
@@ -82,7 +92,7 @@ public class CSharpTypeParser
     {
         if (expectedType is not null && CurrentScope.DetectedType != expectedType)
         {
-            throw new CSharpTypeParsingException($"Invalid character '{CurrentChar}' found at position {PositionIndex}.");
+            throw CSharpTypeParsingException.InvalidCharacter(CurrentChar, PositionIndex);
         }
 
         CurrentScope.DetectedType = newType;
@@ -103,9 +113,9 @@ public class CSharpTypeParser
         switch (CurrentScope.EndingChar)
         {
             case '>' when CurrentScope.DetectedType == DetectedType.Unknown || prevScope.DetectedType != DetectedType.Generic:
-                throw new CSharpTypeParsingException($"Invalid character '{CurrentChar}' found at position {PositionIndex}.");
+                throw CSharpTypeParsingException.InvalidCharacter(CurrentChar, PositionIndex);
             case ')' when CurrentScope.DetectedType == DetectedType.Unknown || prevScope.DetectedType != DetectedType.Tuple:
-                throw new CSharpTypeParsingException($"Invalid character '{CurrentChar}' found at position {PositionIndex}.");
+                throw CSharpTypeParsingException.InvalidCharacter(CurrentChar, PositionIndex);
         }
 
         FinalizeSubScope(CurrentScope, prevScope);
@@ -134,7 +144,7 @@ public class CSharpTypeParser
                 var parts = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 if (prevScope.DetectedType != DetectedType.Tuple && parts.Length > 1)
                 {
-                    throw new CSharpTypeParsingException($"Invalid character '{CurrentChar}' found at position {PositionIndex}.");
+                    throw CSharpTypeParsingException.InvalidCharacter(CurrentChar, PositionIndex);
                 }
 
                 var scopeType = new CSharpTypeName(parts[0]);
@@ -150,7 +160,7 @@ public class CSharpTypeParser
                     new CSharpTypeTuple(currentScope.Entries.Select(s => new CSharpTupleElement(s.Type, s.ElementName)).ToList())));
                 break;
             default:
-                throw new CSharpTypeParsingException($"Could not infer type at position {PositionIndex}.");
+                throw CSharpTypeParsingException.UnknownType(PositionIndex);
         }
     }
 
@@ -165,7 +175,7 @@ public class CSharpTypeParser
             case DetectedType.Tuple:
                 return new CSharpTypeTuple(CurrentScope.Entries.Select(e => new CSharpTupleElement(e.Type, e.ElementName)).ToList());
             default:
-                throw new CSharpTypeParsingException($"Could not infer type at position {PositionIndex}.");
+                throw CSharpTypeParsingException.UnknownType(PositionIndex);
         }
     }
     
