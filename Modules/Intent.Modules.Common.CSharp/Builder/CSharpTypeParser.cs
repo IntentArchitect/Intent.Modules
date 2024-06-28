@@ -16,9 +16,9 @@ public static class CSharpTypeParser
         var scopeStack = new Stack<ScopeTracker>();
         var currentScope = new ScopeTracker();
 
-        for (var typeIndex = 0; typeIndex < typeName.Length; typeIndex++)
+        for (var index = 0; index < typeName.Length; index++)
         {
-            var currentChar = typeName[typeIndex];
+            var currentChar = typeName[index];
             if (!ProcessCharacter(currentChar, ref currentScope, scopeStack))
             {
                 type = null;
@@ -41,11 +41,10 @@ public static class CSharpTypeParser
                 return HandleComma(ref currentScope, scopeStack);
             case var _ when currentScope.EndingChar == currentChar:
                 return HandleScopeEnd(ref currentScope, scopeStack);
+            default:
+                AppendCharToScope(ref currentScope, currentChar);
+                return true;
         }
-        
-        AppendCharToScope(ref currentScope, currentChar);
-
-        return true;
     }
 
     private static bool StartNewScope(ref ScopeTracker currentScope, Stack<ScopeTracker> scopeStack, DetectedType expectedType, DetectedType newType, char endingChar)
@@ -64,32 +63,13 @@ public static class CSharpTypeParser
 
     private static bool HandleComma(ref ScopeTracker currentScope, Stack<ScopeTracker> scopeStack)
     {
-        if (currentScope.DetectedType != DetectedType.Name)
-        {
-            return true;
-        }
-
         var prevScope = scopeStack.Peek();
-        if (!TryAddEntryToScope(currentScope, prevScope))
+        if (!FinalizeSubScope(currentScope, prevScope))
         {
             return false;
         }
 
         currentScope.Reset();
-        return true;
-    }
-
-    private static bool TryAddEntryToScope(ScopeTracker currentScope, ScopeTracker prevScope)
-    {
-        var text = currentScope.Buffer.ToString().Trim();
-        var parts = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        if (prevScope.DetectedType != DetectedType.Tuple && parts.Length > 1)
-        {
-            return false;
-        }
-
-        var scopeType = new CSharpTypeName(parts[0]);
-        prevScope.Entries.Add(new TypeEntry(scopeType, parts.Skip(1).LastOrDefault()));
         return true;
     }
 
@@ -112,16 +92,23 @@ public static class CSharpTypeParser
         currentScope = prevScope;
         return true;
     }
-
+    
     private static bool FinalizeSubScope(ScopeTracker currentScope, ScopeTracker prevScope)
     {
         switch (currentScope.DetectedType)
         {
             case DetectedType.Name:
-                if (!TryAddEntryToScope(currentScope, prevScope))
+            {
+                var text = currentScope.Buffer.ToString().Trim();
+                var parts = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (prevScope.DetectedType != DetectedType.Tuple && parts.Length > 1)
                 {
                     return false;
                 }
+
+                var scopeType = new CSharpTypeName(parts[0]);
+                prevScope.Entries.Add(new TypeEntry(scopeType, parts.Skip(1).LastOrDefault()));
+            }
                 break;
             case DetectedType.Generic:
                 prevScope.Entries.Add(new TypeEntry(
