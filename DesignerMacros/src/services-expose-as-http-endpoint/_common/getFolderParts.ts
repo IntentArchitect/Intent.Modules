@@ -14,7 +14,7 @@ function getFolderParts(request: IElementApi, domainElement?: MappedDomainElemen
             const singularizedAggregateRootName = singularize(domainElement.entityDomainElementDetails?.getOwningOrTargetEntityName());
 
             if (singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
-                folderName = singularizedFolderName;
+                folderName = pluralize(singularizedFolderName);
             }
         }
 

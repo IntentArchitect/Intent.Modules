@@ -303,37 +303,46 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     public CSharpClassMethod Sync()
     {
         IsAsync = false;
-        if (ReturnType.StartsWith("Task"))
+        var taskType = File.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
+        if (ReturnType == taskType)
         {
-            ReturnType = ReturnType == "Task" ? "void" : StripTask();
+            ReturnType = "void";
         }
-
+        else if (ReturnType.StartsWith(taskType + "<"))
+        {
+            ReturnType = StripTask(taskType);
+        }
         return this;
     }
 
-    private string StripTask()
+    private string StripTask(string taskType)
     {
         //Task<X> => X
-        return ReturnType.Substring(5, ReturnType.Length - 6);
+        return ReturnType.Substring(taskType.Length + 1, ReturnType.Length - 6);
     }
 
     public CSharpClassMethod Async()
     {
         IsAsync = true;
-        var taskType = File.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
-        if (!ReturnType.StartsWith(taskType))
+        ReturnType = GetAsyncReturnType(File, ReturnType);
+        return this;
+    }
+
+    internal static string GetAsyncReturnType(CSharpFile file, string returnType)
+    {
+        var taskType = file.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
+        if (!(returnType == taskType || returnType.StartsWith(taskType + "<")))
         {
-            if (taskType == "System.Threading.Tasks.Task" && ReturnType.StartsWith("Task<"))
+            if (taskType == "System.Threading.Tasks.Task" && returnType.StartsWith("Task<"))
             {
-                ReturnType = "System.Threading.Tasks." + ReturnType;
+                return "System.Threading.Tasks." + returnType;
             }
             else
             {
-                ReturnType = ReturnType == "void" ? taskType : $"{taskType}<{ReturnType}>";
+                return returnType == "void" ? taskType : $"{taskType}<{returnType}>";
             }
         }
-
-        return this;
+        return returnType;
     }
 
     public void RemoveStatement(CSharpStatement statement)
