@@ -3,7 +3,7 @@
   <name>NewElementVisualSettings</name>
   <display>[visual]: Domain Event Handler Association Target End</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <order>2</order>
   <genericTypes />
   <typeReference id="f64ff858-8f8a-4044-a3b3-30a1b2c13e43">

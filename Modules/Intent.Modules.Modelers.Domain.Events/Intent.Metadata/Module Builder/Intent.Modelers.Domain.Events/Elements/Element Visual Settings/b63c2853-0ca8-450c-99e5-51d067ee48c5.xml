@@ -3,7 +3,7 @@
   <name>[element visual]</name>
   <display>[visual]: Domain Event Handler</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <genericTypes />
   <typeReference id="afab9d63-0521-470b-b98e-105ca3d6ed2e">
     <typeId>d80e61c5-7e4c-4175-9df1-0413f664824c</typeId>

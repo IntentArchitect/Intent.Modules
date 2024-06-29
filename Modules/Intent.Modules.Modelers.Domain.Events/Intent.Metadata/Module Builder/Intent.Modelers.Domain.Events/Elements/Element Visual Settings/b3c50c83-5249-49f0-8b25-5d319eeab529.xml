@@ -3,7 +3,7 @@
   <name>NewElementVisualSettings</name>
   <display>[visual]: Property</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <order>5</order>
   <genericTypes />
   <typeReference id="88e585dc-7f38-40a8-8d04-ee737f797cc1">
