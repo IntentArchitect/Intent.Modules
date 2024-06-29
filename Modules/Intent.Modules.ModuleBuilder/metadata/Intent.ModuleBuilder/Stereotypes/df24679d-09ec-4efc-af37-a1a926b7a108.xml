@@ -31,6 +31,7 @@
       <valueOptions>
         <option>Data</option>
         <option>Invokable</option>
+        <option>Class</option>
       </valueOptions>
       <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>

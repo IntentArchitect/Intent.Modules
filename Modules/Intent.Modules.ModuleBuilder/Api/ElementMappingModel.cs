@@ -48,6 +48,7 @@ namespace Intent.ModuleBuilder.Api
                 Id = Id,
                 Criteria = new ElementMappingCriteriaSettingPersistable()
                 {
+                    SpecializationTypeId = this.GetCriteriaSettings().FromType().Id,
                     SpecializationType = this.GetCriteriaSettings().FromType().Name,
                     HasTypeReference = this.GetCriteriaSettings().HasTypeReference().IsYes() ? true :
                         this.GetCriteriaSettings().HasTypeReference().IsNo() ? false : (bool?)null,
@@ -59,6 +60,7 @@ namespace Intent.ModuleBuilder.Api
                 },
                 MapTo = new ElementMappingMapToSettingPersistable()
                 {
+                    SpecializationTypeId = this.GetOutputSettings().ToType()?.Id,
                     SpecializationType = this.GetOutputSettings().ToType()?.Name,
                     ChildMappingMode = this.GetOutputSettings().ChildMappingMode().IsTraverse() ? ChildMappingMode.Traverse : ChildMappingMode.MapToChild,
                     UseMappingSettings = this.GetOutputSettings().UseMappingSettings()?.Id

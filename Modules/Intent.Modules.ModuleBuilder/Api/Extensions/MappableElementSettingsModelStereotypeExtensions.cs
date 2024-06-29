@@ -150,6 +150,8 @@ namespace Intent.ModuleBuilder.Api
                             return RepresentsOptionsEnum.Data;
                         case "Invokable":
                             return RepresentsOptionsEnum.Invokable;
+                        case "Class":
+                            return RepresentsOptionsEnum.Class;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
@@ -163,12 +165,17 @@ namespace Intent.ModuleBuilder.Api
                 {
                     return Value == "Invokable";
                 }
+                public bool IsClass()
+                {
+                    return Value == "Class";
+                }
             }
 
             public enum RepresentsOptionsEnum
             {
                 Data,
-                Invokable
+                Invokable,
+                Class
             }
 
             public class TraversableModeOptions

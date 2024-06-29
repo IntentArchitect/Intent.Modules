@@ -72,6 +72,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlAttribute("specializationType")]
         public string SpecializationType { get; set; }
 
+        [XmlAttribute("specializationTypeId")]
+        public string SpecializationTypeId { get; set; }
+
         [XmlElement("hasTypeReference")]
         public bool? HasTypeReference { get; set; }
 
@@ -116,9 +119,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class ElementMappingMapToSettingPersistable
     {
-        // TODO: GCB - Add SpecializationTypeId
         [XmlAttribute("specializationType")]
         public string SpecializationType { get; set; }
+
+        [XmlAttribute("specializationTypeId")]
+        public string SpecializationTypeId { get; set; }
 
         [XmlAttribute("childMappingMode")]
         public ChildMappingMode ChildMappingMode { get; set; }
