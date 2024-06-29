@@ -42,6 +42,7 @@ if (distinctDetectedEndpointTypes.length &lt; 2) {
 
 return `Multiple endpoint types detected, a Service Proxy may only target one type of endpoint. Endpoint types found: [${distinctDetectedEndpointTypes.join(", ")}]`;</validateFunction>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -81,30 +82,30 @@ return `Multiple endpoint types detected, a Service Proxy may only target one ty
           <mapFrom>root</mapFrom>
           <mappings>
             <mapping id="ae3e8569-4f13-41f5-b15f-1c9144b9d482">
-              <criteria specializationType="Service">
+              <criteria specializationType="Service" specializationTypeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
                 <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
                 <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
                 <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
               </criteria>
-              <mapTo specializationType="Service Proxy" childMappingMode="map-to-child" />
+              <mapTo specializationType="Service Proxy" specializationTypeId="07d8d1a9-6b9f-4676-b7d3-8db06299e35c" childMappingMode="map-to-child" />
               <behaviour autoSelectChildren="true" />
               <childMappings>
                 <mapping id="b0b8c2c6-b3b2-4580-9a44-b3cf72f027bd">
-                  <criteria specializationType="Operation">
+                  <criteria specializationType="Operation" specializationTypeId="e030c97a-e066-40a7-8188-808c275df3cb">
                     <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <filterFunction>const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 return element.hasStereotype(httpSettingsId);</filterFunction>
                   </criteria>
-                  <mapTo specializationType="Operation" childMappingMode="map-to-child" />
+                  <mapTo specializationType="Operation" specializationTypeId="aee6811e-b2f6-4562-a8eb-502029f63bc8" childMappingMode="map-to-child" />
                   <behaviour autoSelectChildren="false" />
                   <childMappings />
                 </mapping>
               </childMappings>
             </mapping>
             <mapping id="be57ff66-f953-48da-8e7f-6cb9a7b33332">
-              <criteria specializationType="Services Package">
+              <criteria specializationType="Services Package" specializationTypeId="df45eaf6-9202-4c25-8dd5-677e9ba1e906">
                 <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
                 <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
                 <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
@@ -113,17 +114,17 @@ return element.hasStereotype(httpSettingsId);</filterFunction>
               <behaviour autoSelectChildren="false" />
               <childMappings>
                 <mapping id="cc28eb62-9cd7-45f3-ac20-343fdcb67ee7">
-                  <criteria specializationType="Folder">
+                  <criteria specializationType="Folder" specializationTypeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
                     <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <filterFunction>return element.getChildren("Command").length &gt; 0 || element.getChildren("Query").length &gt; 0</filterFunction>
                   </criteria>
-                  <mapTo specializationType="Service Proxy" childMappingMode="map-to-child" />
+                  <mapTo specializationType="Service Proxy" specializationTypeId="07d8d1a9-6b9f-4676-b7d3-8db06299e35c" childMappingMode="map-to-child" />
                   <behaviour autoSelectChildren="true" />
                   <childMappings>
                     <mapping id="545184fb-bcc6-4b21-9997-516cec1d6802">
-                      <criteria specializationType="Command">
+                      <criteria specializationType="Command" specializationTypeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
                         <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
@@ -132,12 +133,12 @@ const messageTriggered = "5150384d-18a3-4c7e-a716-599e6658abde";
 
 return element.hasStereotype(httpSettingsId) || element.hasStereotype(messageTriggered);</filterFunction>
                       </criteria>
-                      <mapTo specializationType="Operation" childMappingMode="map-to-child" />
+                      <mapTo specializationType="Operation" specializationTypeId="aee6811e-b2f6-4562-a8eb-502029f63bc8" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
                       <childMappings />
                     </mapping>
                     <mapping id="7da67a2a-ec31-4942-95eb-7d362e989ed1">
-                      <criteria specializationType="Query">
+                      <criteria specializationType="Query" specializationTypeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
                         <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
@@ -146,14 +147,14 @@ const messageTriggered = "5150384d-18a3-4c7e-a716-599e6658abde";
 
 return element.hasStereotype(httpSettingsId) || element.hasStereotype(messageTriggered);</filterFunction>
                       </criteria>
-                      <mapTo specializationType="Operation" childMappingMode="map-to-child" />
+                      <mapTo specializationType="Operation" specializationTypeId="aee6811e-b2f6-4562-a8eb-502029f63bc8" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
                       <childMappings />
                     </mapping>
                   </childMappings>
                 </mapping>
                 <mapping id="7746e02b-1804-4aaf-a74b-fd572381bfbf">
-                  <criteria specializationType="Folder">
+                  <criteria specializationType="Folder" specializationTypeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
                     <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
@@ -262,6 +263,7 @@ if (typeReference) {
 }
 return result;</displayFunction>
           <allowRename>true</allowRename>
+          <nameMustBeUnique>false</nameMustBeUnique>
           <allowAbstract>false</allowAbstract>
           <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
@@ -308,6 +310,7 @@ return result;</displayFunction>
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
               <saveAsOwnFile>false</saveAsOwnFile>
               <allowRename>true</allowRename>
+              <nameMustBeUnique>false</nameMustBeUnique>
               <allowAbstract>false</allowAbstract>
               <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
