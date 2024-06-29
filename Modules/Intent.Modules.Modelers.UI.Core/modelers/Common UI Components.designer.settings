@@ -1039,6 +1039,7 @@ mapping.addMappedEnd(invocationMappingTypeId, cancelOperation.getMappingPath(), 
               <script>const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
 const parent = mapping.getTargetElement();
 const newElement = createElement("Text Input", element.getName(), parent.id);
+newElement.getStereotype("2c099977-e5ca-4a80-ba70-6f2edc593681").getProperty("66fc3478-6e87-4226-97a9-d9bd72d2fbaf").setValue(element.getName()); // Label Addon -&gt; Label
 mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), newElement.getMappingPath());</script>
             </option>
             <option>

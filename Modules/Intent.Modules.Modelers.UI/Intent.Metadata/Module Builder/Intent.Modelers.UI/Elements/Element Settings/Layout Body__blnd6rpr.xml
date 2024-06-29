@@ -54,7 +54,7 @@
   <childElements>
     <childElement id="16e9c686-d4f6-4dd3-8882-e5db9a28769e" type="Accepted Child Types" typeId="7c0e37ab-2f84-46df-ac29-1e5aaa67bf75">
       <name>[children]</name>
-      <display>[children]</display>
+      <display>[accepted types]</display>
       <isAbstract>false</isAbstract>
       <sort-children>manually</sort-children>
       <genericTypes />
@@ -67,7 +67,7 @@
       <childElements>
         <childElement id="8e24a992-7736-43af-9950-87f1cc3b6d7e" type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
           <name>NewAcceptedStereotypes</name>
-          <display>NewAcceptedStereotypes</display>
+          <display>[type with stereotype]: &lt;not set&gt;</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>

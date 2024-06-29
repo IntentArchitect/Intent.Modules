@@ -1657,7 +1657,7 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
-          <represents>data</represents>
+          <represents>class</represents>
         </mapping>
         <mapping id="5d1180f5-7f5b-4d90-aa56-14616f56a32e" name="Layout" type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>

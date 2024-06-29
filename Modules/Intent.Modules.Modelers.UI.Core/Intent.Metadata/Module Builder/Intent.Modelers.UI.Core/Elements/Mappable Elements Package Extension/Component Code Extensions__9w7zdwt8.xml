@@ -187,7 +187,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const dataBindingMappingTypeId = &quot;ee19a932-0cea-4b90-bd3c-857d7942d390&quot;;&#xD;&#xA;const parent = mapping.getTargetElement();&#xD;&#xA;const newElement = createElement(&quot;Text Input&quot;, element.getName(), parent.id);&#xD;&#xA;mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), newElement.getMappingPath());" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const dataBindingMappingTypeId = &quot;ee19a932-0cea-4b90-bd3c-857d7942d390&quot;;&#xD;&#xA;const parent = mapping.getTargetElement();&#xD;&#xA;const newElement = createElement(&quot;Text Input&quot;, element.getName(), parent.id);&#xD;&#xA;newElement.getStereotype(&quot;2c099977-e5ca-4a80-ba70-6f2edc593681&quot;).getProperty(&quot;66fc3478-6e87-4226-97a9-d9bd72d2fbaf&quot;).setValue(element.getName()); // Label Addon -&gt; Label&#xD;&#xA;mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), newElement.getMappingPath());" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
