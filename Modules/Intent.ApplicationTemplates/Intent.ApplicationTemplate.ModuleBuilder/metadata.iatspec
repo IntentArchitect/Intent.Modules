@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <applicationTemplate>
   <id>Intent.ApplicationTemplate.ModuleBuilder</id>
-  <version>3.3.67</version>
+  <version>3.3.68</version>
   <supportedClientVersions>[4.2.4, 5.0.0-a)</supportedClientVersions>
   <displayName>Intent Module Builder</displayName>
   <shortDescription>Create an Intent Module to automate patterns &amp; code-structures specific to your project and technologies.</shortDescription>
@@ -195,9 +195,9 @@
     </group>
   </additionalSettings>
   <minimumDependencyVersions>
-    <module id="Intent.Common.CSharp" version="3.6.3" />
+    <module id="Intent.Common.CSharp" version="3.6.4" />
     <module id="Intent.Common.Java" version="4.1.0" />
     <module id="Intent.Common.TypeScript" version="4.1.0" />
-    <module id="Intent.OutputManager.RoslynWeaver" version="4.7.4" />
+    <module id="Intent.OutputManager.RoslynWeaver" version="4.7.6" />
   </minimumDependencyVersions>
 </applicationTemplate>
