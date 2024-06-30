@@ -328,7 +328,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
         return this;
     }
 
-    internal static string GetAsyncReturnType(CSharpFile file, string returnType)
+    internal static string GetAsyncReturnType(ICSharpFile file, string returnType)
     {
         var taskType = file.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
         if (!(returnType == taskType || returnType.StartsWith(taskType + "<")))
