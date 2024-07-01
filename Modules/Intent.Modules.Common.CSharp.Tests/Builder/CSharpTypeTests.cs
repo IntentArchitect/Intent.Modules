@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using Intent.Modules.Common.CSharp.Builder;
+using VerifyXunit;
 using Xunit;
 
 namespace Intent.Modules.Common.CSharp.Tests.Builder;
@@ -84,28 +86,4 @@ public class CSharpTypeTests
             ])
         ]).ToString());
     }
-
-    // [Fact]
-    // public async Task VariousReturnTypeMethods()
-    // {
-    //     var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
-    //         .AddUsing("System")
-    //         .AddClass("TestClass", @class =>
-    //         {
-    //             @class.AddMethod(new CSharpTypeVoid(), "MethodType_Void");
-    //             @class.AddMethod(new CSharpTypeVoid().WrapInTask(), "MethodType_Task", method => method.Async());
-    //             @class.AddMethod(new CSharpTypeName("string"), "MethodType_String", method => method
-    //                 .AddStatement(@"return """";"));
-    //             @class.AddMethod(new CSharpTypeName("string").WrapInList(), "MethodType_List_String", method => method
-    //                 .AddStatement(@"return new List<string>();"));
-    //             @class.AddMethod(new CSharpTypeName("string").WrapInList().WrapInTask(), "MethodType_Task_List_String", method => method
-    //                 .Async()
-    //                 .AddStatement(@"return new List<string>();"));
-    //             @class.AddMethod(new CSharpTypeName("string").WrapInList().WrapInTask(), "MethodType_StrippedTask_List_String", method => method
-    //                 .Sync()
-    //                 .AddStatement(@"return new List<string>();"));
-    //         })
-    //         .CompleteBuild();
-    //     await Verifier.Verify(fileBuilder.ToString());
-    // }
 }

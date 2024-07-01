@@ -125,7 +125,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
     public CSharpInterface AddMethod<TModel>(TModel model, Action<CSharpInterfaceMethod> configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddMethod(new CSharpTypeName(File.GetModelType(model)), model.Name.ToPropertyName(), method =>
+        return AddMethod(CSharpTypeParser.Parse(File.GetModelType(model)), model.Name.ToPropertyName(), method =>
         {
             method.RepresentsModel(model);
             configure?.Invoke(method);

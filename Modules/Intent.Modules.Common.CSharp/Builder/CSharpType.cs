@@ -29,11 +29,6 @@ public abstract class CSharpType
     {
         return new CSharpTypeVoid();
     }
-
-    public static bool TryParse(string typeName, out CSharpType? type)
-    {
-        return CSharpTypeParser.TryParse(typeName, out type);
-    }
 }
 
 public class CSharpTypeVoid : CSharpType

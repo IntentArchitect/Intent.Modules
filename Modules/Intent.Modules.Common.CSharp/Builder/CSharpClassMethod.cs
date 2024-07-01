@@ -52,6 +52,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         Class = @class;
         File = @class.File;
         ReturnType = returnType;
+        ReturnTypeInfo = CSharpTypeParser.Parse(returnType);
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;

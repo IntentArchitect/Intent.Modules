@@ -6,6 +6,13 @@ namespace Intent.Modules.Common.CSharp.Tests.Builder;
 public class CSharpTypeParserTests
 {
     [Fact]
+    public void TryParseStringForType_Void()
+    {
+        var type = CSharpTypeParser.Parse("void");
+        Assert.Equal(new CSharpTypeVoid(), type);
+    }
+    
+    [Fact]
     public void TryParseStringForType_PredefinedType()
     {
         var type = CSharpTypeParser.Parse("string");

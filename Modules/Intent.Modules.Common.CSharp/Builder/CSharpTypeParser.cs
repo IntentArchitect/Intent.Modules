@@ -168,7 +168,7 @@ public class CSharpTypeParser
                     throw CSharpTypeParsingException.InvalidCharacter(CurrentChar, PositionIndex);
                 }
 
-                CSharpType scopeType = new CSharpTypeName(parts[0]);
+                CSharpType scopeType = parts[0] == "void" ? new CSharpTypeVoid() : new CSharpTypeName(parts[0]);
                 scopeType = ApplyModifiers(scopeType);
                 typeEntry = new TypeEntry(Type: scopeType, ElementName: parts.Skip(1).LastOrDefault());
             }
@@ -196,14 +196,20 @@ public class CSharpTypeParser
 
     private CSharpType FinalizeScope()
     {
+        var text = CurrentScope.Buffer.ToString().Trim();
+        if (text == "void")
+        {
+            return new CSharpTypeVoid();
+        }
+
         CSharpType type;
         switch (CurrentScope.DetectedType)
         {
             case DetectedType.Name:
-                type = new CSharpTypeName(CurrentScope.Buffer.ToString().Trim());
+                type = new CSharpTypeName(text);
                 break;
             case DetectedType.Generic:
-                type =  new CSharpTypeGeneric(CurrentScope.Buffer.ToString().Trim(), CurrentScope.Entries.Select(e => e.Type).ToList());
+                type =  new CSharpTypeGeneric(text, CurrentScope.Entries.Select(e => e.Type).ToList());
                 break;
             case DetectedType.Tuple:
                 type =  new CSharpTypeTuple(CurrentScope.Entries.Select(e => new CSharpTupleElement(e.Type, e.ElementName)).ToList());

@@ -38,6 +38,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         }
 
         ReturnType = returnType;
+        ReturnTypeInfo = CSharpTypeParser.Parse(returnType);
         Name = name;
         Parent = parent;
         File = parent.File;
@@ -80,11 +81,12 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         {
             ReturnType = CSharpClassMethod.GetLegacyAsyncReturnType(File, ReturnType);
         }
-        else if (ReturnTypeInfo is CSharpTypeGeneric generic && generic.IsTask())
+        else if (!ReturnTypeInfo.IsTask())
         {
-            ReturnTypeInfo = generic.TypeArgumentList.Single();
+            ReturnTypeInfo = ReturnTypeInfo.WrapInTask();
             ReturnType = ReturnTypeInfo.ToString();
         }
+
         return this;
     }
 
