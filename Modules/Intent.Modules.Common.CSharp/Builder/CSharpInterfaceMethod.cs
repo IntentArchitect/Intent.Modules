@@ -78,7 +78,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         IsAsync = true;
         if (ReturnTypeInfo is null)
         {
-            ReturnType = CSharpClassMethod.GetAsyncReturnType(File, ReturnType);
+            ReturnType = CSharpClassMethod.GetLegacyAsyncReturnType(File, ReturnType);
         }
         else if (ReturnTypeInfo is CSharpTypeGeneric generic && generic.IsTask())
         {
