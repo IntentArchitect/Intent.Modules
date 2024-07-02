@@ -125,22 +125,21 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
     public CSharpInterface AddMethod<TModel>(TModel model, Action<CSharpInterfaceMethod> configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddMethod(CSharpTypeParser.Parse(File.GetModelType(model)), model.Name.ToPropertyName(), method =>
+        return AddMethod(File.GetModelType(model), model.Name.ToPropertyName(), method =>
         {
             method.RepresentsModel(model);
             configure?.Invoke(method);
         });
     }
-
-    [Obsolete("Use AddMethod with CSharpReturnType parameter instead.")]
-    public CSharpInterface AddMethod(string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
-    {
-        return InsertMethod(Methods.Count, returnType, name, configure);
-    }
     
     public CSharpInterface AddMethod(CSharpType type, string name, Action<CSharpInterfaceMethod> configure = null)
     {
         return InsertMethod(Methods.Count, type, name, configure);
+    }
+
+    public CSharpInterface AddMethod(string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
+    {
+        return InsertMethod(Methods.Count, returnType, name, configure);
     }
 
     public CSharpInterface AddCodeBlock(string codeLine)
@@ -173,7 +172,6 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpRefere
         return this;
     }
 
-    [Obsolete("Use InsertMethod with CSharpReturnType parameter instead.")]
     public CSharpInterface InsertMethod(int index, string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
     {
         var method = new CSharpInterfaceMethod(returnType, name, this)

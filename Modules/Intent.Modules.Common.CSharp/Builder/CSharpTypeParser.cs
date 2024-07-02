@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 #nullable enable
+
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -33,7 +35,7 @@ public class CSharpTypeParser
             type = Parse(typeName);
             return true;
         }
-        catch (Exception exception)
+        catch (Exception)
         {
             type = null;
             return false;
@@ -45,9 +47,9 @@ public class CSharpTypeParser
         ArgumentException.ThrowIfNullOrWhiteSpace(typeName);
 
         var parser = new CSharpTypeParser();
-        for (parser.PositionIndex = 0; parser.PositionIndex < typeName.Length; parser.PositionIndex++)
+        for (parser._positionIndex = 0; parser._positionIndex < typeName.Length; parser._positionIndex++)
         {
-            parser.CurrentChar = typeName[parser.PositionIndex];
+            parser._currentChar = typeName[parser._positionIndex];
             parser.ProcessCharacter();
         }
 
@@ -56,19 +58,19 @@ public class CSharpTypeParser
 
     private CSharpTypeParser()
     {
-        ScopeStack = new();
-        CurrentScope = new ScopeTracker();
+        _scopeStack = new();
+        _currentScope = new ScopeTracker();
     }
 
-    private readonly Stack<ScopeTracker> ScopeStack;
-    private ScopeTracker CurrentScope;
-    private char CurrentChar;
-    private int PositionIndex;
+    private readonly Stack<ScopeTracker> _scopeStack;
+    private ScopeTracker _currentScope;
+    private char _currentChar;
+    private int _positionIndex;
     
     
     private void ProcessCharacter()
     {
-        switch (CurrentChar)
+        switch (_currentChar)
         {
             case '(':
                 StartNewScope(expectedType: DetectedType.Unknown, newType: DetectedType.Tuple, endingChar: ')');
@@ -77,7 +79,7 @@ public class CSharpTypeParser
                 StartNewScope(expectedType: DetectedType.Name, newType: DetectedType.Generic, endingChar: '>');
                 break;
             case '[':
-                StartNewScope(expectedType: null, newType: CurrentScope.DetectedType, endingChar: ']');
+                StartNewScope(expectedType: null, newType: _currentScope.DetectedType, endingChar: ']');
                 break;
             case ',':
                 HandleComma();
@@ -85,7 +87,7 @@ public class CSharpTypeParser
             case '?':
                 HandleNullSymbol();
                 break;
-            case var _ when CurrentScope.EndingChar == CurrentChar:
+            case var _ when _currentScope.EndingChar == _currentChar:
                 HandleScopeEnd();
                 break;
             default:
@@ -94,51 +96,52 @@ public class CSharpTypeParser
         }
     }
 
+    // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
     private void StartNewScope(DetectedType? expectedType, DetectedType newType, char endingChar)
     {
-        if (expectedType is not null && CurrentScope.DetectedType != expectedType)
+        if (expectedType is not null && _currentScope.DetectedType != expectedType)
         {
-            throw CSharpTypeParsingException.InvalidCharacter(CurrentChar, PositionIndex);
+            throw CSharpTypeParsingException.InvalidCharacter(_currentChar, _positionIndex);
         }
 
-        CurrentScope.DetectedType = newType;
-        ScopeStack.Push(CurrentScope);
+        _currentScope.DetectedType = newType;
+        _scopeStack.Push(_currentScope);
 
-        CurrentScope = new ScopeTracker { EndingChar = endingChar };
+        _currentScope = new ScopeTracker { EndingChar = endingChar };
     }
 
     private void HandleComma()
     {
-        FinalizeSubScope(ScopeStack.Peek());
-        CurrentScope.Reset();
+        FinalizeSubScope(_scopeStack.Peek());
+        _currentScope.Reset();
     }
     
     private void HandleNullSymbol()
     {
-        if (CurrentScope.DetectedType is DetectedType.Unknown)
+        if (_currentScope.DetectedType is DetectedType.Unknown)
         {
-            throw CSharpTypeParsingException.UnknownType(PositionIndex);
+            throw CSharpTypeParsingException.UnknownType(_positionIndex);
         }
 
-        CurrentScope.Modifiers.Add(Modifier.Nullable);
+        _currentScope.Modifiers.Add(Modifier.Nullable);
     }
 
     private void HandleScopeEnd()
     {
-        var prevScope = ScopeStack.Pop();
-        switch (CurrentScope.EndingChar)
+        var prevScope = _scopeStack.Pop();
+        switch (_currentScope.EndingChar)
         {
-            case '>' when CurrentScope.DetectedType == DetectedType.Unknown || prevScope.DetectedType != DetectedType.Generic:
-                throw CSharpTypeParsingException.InvalidCharacter(CurrentChar, PositionIndex);
-            case ')' when CurrentScope.DetectedType == DetectedType.Unknown || prevScope.DetectedType != DetectedType.Tuple:
-                throw CSharpTypeParsingException.InvalidCharacter(CurrentChar, PositionIndex);
+            case '>' when _currentScope.DetectedType == DetectedType.Unknown || prevScope.DetectedType != DetectedType.Generic:
+                throw CSharpTypeParsingException.InvalidCharacter(_currentChar, _positionIndex);
+            case ')' when _currentScope.DetectedType == DetectedType.Unknown || prevScope.DetectedType != DetectedType.Tuple:
+                throw CSharpTypeParsingException.InvalidCharacter(_currentChar, _positionIndex);
             case ']':
                 prevScope.Modifiers.Add(Modifier.Array);
-                CurrentScope = prevScope;
+                _currentScope = prevScope;
                 return;
             default:
                 FinalizeSubScope(prevScope);
-                CurrentScope = prevScope;
+                _currentScope = prevScope;
                 return;
         }
     }
@@ -146,26 +149,26 @@ public class CSharpTypeParser
     private void AppendCharToScope()
     {
         // Whitespace should not count as an identifier
-        if (CurrentScope.DetectedType == DetectedType.Unknown && !char.IsWhiteSpace(CurrentChar))
+        if (_currentScope.DetectedType == DetectedType.Unknown && !char.IsWhiteSpace(_currentChar))
         {
-            CurrentScope.DetectedType = DetectedType.Name;
+            _currentScope.DetectedType = DetectedType.Name;
         }
 
-        CurrentScope.Buffer.Append(CurrentChar);
+        _currentScope.Buffer.Append(_currentChar);
     }
 
     private void FinalizeSubScope(ScopeTracker targetScope)
     {
         TypeEntry typeEntry;
-        switch (CurrentScope.DetectedType)
+        switch (_currentScope.DetectedType)
         {
             case DetectedType.Name:
             {
-                var text = CurrentScope.Buffer.ToString().Trim();
+                var text = _currentScope.Buffer.ToString().Trim();
                 var parts = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 if (targetScope.DetectedType != DetectedType.Tuple && parts.Length > 1)
                 {
-                    throw CSharpTypeParsingException.InvalidCharacter(CurrentChar, PositionIndex);
+                    throw CSharpTypeParsingException.InvalidCharacter(_currentChar, _positionIndex);
                 }
 
                 CSharpType scopeType = parts[0] == "void" ? new CSharpTypeVoid() : new CSharpTypeName(parts[0]);
@@ -175,20 +178,20 @@ public class CSharpTypeParser
                 break;
             case DetectedType.Generic:
             {
-                CSharpType scopeType = new CSharpTypeGeneric(CurrentScope.Buffer.ToString().Trim(), CurrentScope.Entries.Select(s => s.Type).ToList());
+                CSharpType scopeType = new CSharpTypeGeneric(_currentScope.Buffer.ToString().Trim(), _currentScope.Entries.Select(s => s.Type).ToList());
                 scopeType = ApplyModifiers(scopeType);
                 typeEntry = new TypeEntry(scopeType);
             }
                 break;
             case DetectedType.Tuple:
             {
-                CSharpType scopeType = new CSharpTypeTuple(CurrentScope.Entries.Select(s => new CSharpTupleElement(s.Type, s.ElementName)).ToList());
+                CSharpType scopeType = new CSharpTypeTuple(_currentScope.Entries.Select(s => new CSharpTupleElement(s.Type, s.ElementName)).ToList());
                 scopeType = ApplyModifiers(scopeType);
                 typeEntry = new TypeEntry(scopeType);
             }
                 break;
             default:
-                throw CSharpTypeParsingException.UnknownType(PositionIndex);
+                throw CSharpTypeParsingException.UnknownType(_positionIndex);
         }
 
         targetScope.Entries.Add(typeEntry);
@@ -196,26 +199,26 @@ public class CSharpTypeParser
 
     private CSharpType FinalizeScope()
     {
-        var text = CurrentScope.Buffer.ToString().Trim();
+        var text = _currentScope.Buffer.ToString().Trim();
         if (text == "void")
         {
             return new CSharpTypeVoid();
         }
 
         CSharpType type;
-        switch (CurrentScope.DetectedType)
+        switch (_currentScope.DetectedType)
         {
             case DetectedType.Name:
                 type = new CSharpTypeName(text);
                 break;
             case DetectedType.Generic:
-                type =  new CSharpTypeGeneric(text, CurrentScope.Entries.Select(e => e.Type).ToList());
+                type =  new CSharpTypeGeneric(text, _currentScope.Entries.Select(e => e.Type).ToList());
                 break;
             case DetectedType.Tuple:
-                type =  new CSharpTypeTuple(CurrentScope.Entries.Select(e => new CSharpTupleElement(e.Type, e.ElementName)).ToList());
+                type =  new CSharpTypeTuple(_currentScope.Entries.Select(e => new CSharpTupleElement(e.Type, e.ElementName)).ToList());
                 break;
             default:
-                throw CSharpTypeParsingException.UnknownType(PositionIndex);
+                throw CSharpTypeParsingException.UnknownType(_positionIndex);
         }
 
         type = ApplyModifiers(type);
@@ -227,7 +230,7 @@ public class CSharpTypeParser
     {
         CSharpType modified = type;
         
-        foreach (var modifier in CurrentScope.Modifiers)
+        foreach (var modifier in _currentScope.Modifiers)
         {
             switch (modifier)
             {

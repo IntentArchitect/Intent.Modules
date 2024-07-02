@@ -216,15 +216,9 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
-    [Obsolete("Use AddMethod with CSharpReturnType parameter instead.")]
     public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
-    }
-    
-    public CSharpClass AddMethod(CSharpType type, string name, Action<CSharpClassMethod>? configure = null)
-    {
-        return InsertMethod(Methods.Count, type, name, configure);
     }
     
     
@@ -236,7 +230,6 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    [Obsolete("Use AddMethod with CSharpReturnType parameter instead.")]
     public CSharpClass AddMethod<TModel>(string returnType, TModel model, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
@@ -247,39 +240,19 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         });
     }
     
-    /// <summary>
-    /// Resolves the method name from the <paramref name="model"/>. Registers this method as representative of the <paramref name="model"/>.
-    /// </summary>
-    /// <typeparam name="TModel"></typeparam>
-    /// <param name="model"></param>
-    /// <param name="configure"></param>
-    /// <returns></returns>
-    public CSharpClass AddMethod<TModel>(CSharpType type, TModel model, Action<CSharpClassMethod>? configure = null)
+    public CSharpClass AddMethod<TModel>(TModel model, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddMethod(type, model.Name.ToPropertyName(), prop =>
+        return AddMethod(File.GetModelType(model), model.Name.ToPropertyName(), prop =>
         {
             prop.RepresentsModel(model);
             configure?.Invoke(prop);
         });
     }
-
-    /// <summary>
-    /// Resolves the type name and method name from the <paramref name="model"/> using the <see cref="ICSharpFileBuilderTemplate"/>
-    /// template that was passed into the <see cref="CSharpFile"/>. Registers this method as representative of the <paramref name="model"/>.
-    /// </summary>
-    /// <typeparam name="TModel"></typeparam>
-    /// <param name="model"></param>
-    /// <param name="configure"></param>
-    /// <returns></returns>
-    public CSharpClass AddMethod<TModel>(TModel model, Action<CSharpClassMethod>? configure = null)
-        where TModel : IMetadataModel, IHasName
+    
+    public CSharpClass AddMethod(CSharpType type, string name, Action<CSharpClassMethod>? configure = null)
     {
-        return AddMethod(new CSharpTypeName(File.GetModelType(model)), model.Name.ToPropertyName(), method =>
-        {
-            method.RepresentsModel(model);
-            configure?.Invoke(method);
-        });
+        return InsertMethod(Methods.Count, type, name, configure);
     }
 
     public CSharpClass AddCodeBlock(string codeLine)
@@ -335,7 +308,6 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
 
-    [Obsolete("Use InsertMethod with CSharpReturnType parameter instead.")]
     public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         var method = new CSharpClassMethod(returnType, name, this);

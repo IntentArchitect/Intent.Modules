@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
 #nullable enable
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -32,8 +34,29 @@ public class CSharpDeclarationExpression : CSharpStatement
     public CSharpDeclarationExpression(IReadOnlyList<string> designatedVariables)
         : base($"var ({string.Join(", ", designatedVariables)})")
     {
-        DesignatedVariables = designatedVariables;
+        DesignatedVariables = designatedVariables.Select(s => new DesignatedVariable(s)).ToList();
     }
 
-    public IReadOnlyList<string> DesignatedVariables { get; }
+    public IReadOnlyList<DesignatedVariable> DesignatedVariables { get; }
+}
+
+// In preparation for future expansion where ReferenceTypes may be included
+public class DesignatedVariable
+{
+    public DesignatedVariable(string name)
+    {
+        Name = name;
+    }
+    
+    public string Name { get; }
+
+    public override string ToString()
+    {
+        return Name;
+    }
+    
+    public static implicit operator string(DesignatedVariable var)
+    {
+        return var.ToString();
+    }
 }

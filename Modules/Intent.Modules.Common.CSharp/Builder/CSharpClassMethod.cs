@@ -22,7 +22,6 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     protected string OverrideModifier { get; private set; } = string.Empty;
     public bool IsAbstract { get; private set; }
     public bool HasExpressionBody { get; private set; }
-    [Obsolete("Rather make use of ReturnTypeData.")]
     public string ReturnType { get; private set; }
     public CSharpType ReturnTypeInfo { get; private set; }
     ICSharpExpression ICSharpMethodDeclaration.ReturnType => new CSharpStatement(ReturnType);
@@ -35,7 +34,6 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     public CSharpClass Class { get; }
 
 
-    [Obsolete("Use the constructor with CSharpReturnType parameter instead.")]
     public CSharpClassMethod(string returnType, string name, CSharpClass @class)
     {
         if (string.IsNullOrWhiteSpace(returnType))
@@ -327,67 +325,23 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     public CSharpClassMethod Sync()
     {
         IsAsync = false;
-        if (ReturnTypeInfo is null)
-        {
-            HandleLegacyReturnTypeScenario();
-        }
-        else if (ReturnTypeInfo is CSharpTypeGeneric generic && generic.IsTask())
+        if (ReturnTypeInfo is CSharpTypeGeneric generic && generic.IsTask())
         {
             ReturnTypeInfo = generic.TypeArgumentList.Single();
             ReturnType = ReturnTypeInfo.ToString();
         }
         return this;
-
-        void HandleLegacyReturnTypeScenario()
-        {
-            var taskType = File.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
-            if (ReturnType == taskType)
-            {
-                ReturnType = "void";
-            }
-            else if (ReturnType.StartsWith(taskType + "<"))
-            {
-                ReturnType = StripTask(taskType);
-            }
-        }
-    }
-
-    private string StripTask(string taskType)
-    {
-        //Task<X> => X
-        return ReturnType.Substring(taskType.Length + 1, ReturnType.Length - 6);
     }
 
     public CSharpClassMethod Async()
     {
         IsAsync = true;
-        if (ReturnTypeInfo is null)
-        {
-            ReturnType = GetLegacyAsyncReturnType(File, ReturnType);
-        }
-        else if (!ReturnTypeInfo.IsTask())
+        if (!ReturnTypeInfo.IsTask())
         {
             ReturnTypeInfo = ReturnTypeInfo.WrapInTask(File.Template);
             ReturnType = ReturnTypeInfo.ToString();
         }
         return this;
-    }
-
-    internal static string GetLegacyAsyncReturnType(CSharpFile file, string returnType)
-    {
-        var taskType = file.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
-        if (!(returnType == taskType || returnType.StartsWith(taskType + "<")))
-        {
-            if (taskType == "System.Threading.Tasks.Task" && returnType.StartsWith("Task<"))
-            {
-                return "System.Threading.Tasks." + returnType;
-            }
-            else
-            {
-                return returnType == "void" ? taskType : $"{taskType}<{returnType}>";
-            }
-        }
-        return returnType;
     }
 
     public void RemoveStatement(CSharpStatement statement)

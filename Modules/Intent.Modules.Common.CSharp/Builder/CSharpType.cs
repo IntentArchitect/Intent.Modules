@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
-using Intent.Templates;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 #nullable enable
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -15,28 +13,26 @@ public abstract class CSharpType
     internal const string TaskShortTypeName = "Task";
     internal const string TaskFullTypeName = "System.Threading.Tasks.Task";
 
-    public static CSharpTypeName CreateTask(ICSharpTemplate? template = null)
+    public static CSharpTypeName CreateTask(ICSharpTemplate? template)
     {
         return new CSharpTypeName(template?.UseType(TaskFullTypeName) ?? TaskFullTypeName);
     }
 
-    public static CSharpTypeGeneric CreateTask(CSharpType genericParamType, ICSharpTemplate? template = null)
+    public static CSharpTypeGeneric CreateTask(CSharpType genericParamType, ICSharpTemplate? template)
     {
         return new CSharpTypeGeneric(template?.UseType(TaskFullTypeName) ?? TaskFullTypeName, [genericParamType]);
     }
 
     public static CSharpTypeVoid CreateVoid()
     {
-        return new CSharpTypeVoid();
+        return CSharpTypeVoid.DefaultInstance;
     }
 }
 
 public class CSharpTypeVoid : CSharpType
 {
-    public CSharpTypeVoid()
-    {
-    }
-
+    public static readonly CSharpTypeVoid DefaultInstance = new();
+    
     public override string ToString()
     {
         return "void";
@@ -45,6 +41,11 @@ public class CSharpTypeVoid : CSharpType
     public override bool Equals(object? obj)
     {
         return obj is CSharpTypeVoid;
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }
 
@@ -270,7 +271,7 @@ public static class CSharpTypeExtensions
         return generic.TypeName is CSharpType.TaskFullTypeName or CSharpType.TaskShortTypeName;
     }
     
-    public static CSharpType WrapInTask(this CSharpType type, ICSharpTemplate? template = null)
+    public static CSharpType WrapInTask(this CSharpType type, ICSharpTemplate template)
     {
         if (type is CSharpTypeVoid)
         {
@@ -280,7 +281,7 @@ public static class CSharpTypeExtensions
         return CSharpType.CreateTask(type, template);
     }
 
-    public static CSharpType? GetTaskGenericType(this CSharpType type)
+    public static CSharpType? GetGenericTaskType(this CSharpType type)
     {
         if (!type.IsTask())
         {
