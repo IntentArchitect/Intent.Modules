@@ -282,6 +282,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
             throw new ArgumentException("Cannot be null or empty", nameof(returnType));
         }
 
+        ReturnTypeInfo = CSharpTypeParser.Parse(returnType);
         ReturnType = returnType;
         return this;
     }
@@ -366,7 +367,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         }
         else if (!ReturnTypeInfo.IsTask())
         {
-            ReturnTypeInfo = ReturnTypeInfo.WrapInTask();
+            ReturnTypeInfo = ReturnTypeInfo.WrapInTask(File.Template);
             ReturnType = ReturnTypeInfo.ToString();
         }
         return this;
@@ -462,7 +463,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     private string GetParameters(string indentation)
     {
         // GCB - WTF: why rewrite out whole statement
-        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{OverrideModifier}{(IsAsync ? "async " : "")}{ReturnType} {Name}{GetGenericParameters()}(".Length +
+        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{OverrideModifier}{(IsAsync ? "async " : "")}{ReturnTypeInfo} {Name}{GetGenericParameters()}(".Length +
             Parameters.Sum(x => x.ToString().Length) > 120)
         {
             return $@"

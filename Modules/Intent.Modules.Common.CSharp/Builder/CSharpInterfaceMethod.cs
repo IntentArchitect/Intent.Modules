@@ -83,7 +83,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         }
         else if (!ReturnTypeInfo.IsTask())
         {
-            ReturnTypeInfo = ReturnTypeInfo.WrapInTask();
+            ReturnTypeInfo = ReturnTypeInfo.WrapInTask(File.Template);
             ReturnType = ReturnTypeInfo.ToString();
         }
 
@@ -177,7 +177,8 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
             throw new ArgumentException("Cannot be null or empty", nameof(returnType));
         }
 
-        ReturnType = returnType;
+        ReturnTypeInfo = CSharpTypeParser.Parse(returnType);
+        ReturnType = returnType; 
         return this;
     }
 
@@ -208,7 +209,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
             ? $"static {(IsAbstract ? "abstract " : string.Empty)}"
             : string.Empty;
 
-        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{@static}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetGenericTypeConstraints(indentation)}";
+        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{@static}{ReturnTypeInfo} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetGenericTypeConstraints(indentation)}";
         if (IsAbstract && Statements.Count == 0)
         {
             return $@"{declaration};";

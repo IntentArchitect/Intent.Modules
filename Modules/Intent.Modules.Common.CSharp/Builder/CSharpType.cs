@@ -13,16 +13,16 @@ namespace Intent.Modules.Common.CSharp.Builder;
 public abstract class CSharpType
 {
     internal const string TaskShortTypeName = "Task";
-    internal const string TaskFullTypeName = "System.Threading.Task";
+    internal const string TaskFullTypeName = "System.Threading.Tasks.Task";
 
-    public static CSharpTypeName CreateTask()
+    public static CSharpTypeName CreateTask(ICSharpTemplate? template = null)
     {
-        return new CSharpTypeName(TaskFullTypeName);
+        return new CSharpTypeName(template?.UseType(TaskFullTypeName) ?? TaskFullTypeName);
     }
 
-    public static CSharpTypeGeneric CreateTask(CSharpType genericParamType)
+    public static CSharpTypeGeneric CreateTask(CSharpType genericParamType, ICSharpTemplate? template = null)
     {
-        return new CSharpTypeGeneric(TaskFullTypeName, [genericParamType]);
+        return new CSharpTypeGeneric(template?.UseType(TaskFullTypeName) ?? TaskFullTypeName, [genericParamType]);
     }
 
     public static CSharpTypeVoid CreateVoid()
@@ -270,13 +270,23 @@ public static class CSharpTypeExtensions
         return generic.TypeName is CSharpType.TaskFullTypeName or CSharpType.TaskShortTypeName;
     }
     
-    public static CSharpType WrapInTask(this CSharpType type)
+    public static CSharpType WrapInTask(this CSharpType type, ICSharpTemplate? template = null)
     {
         if (type is CSharpTypeVoid)
         {
-            return CSharpType.CreateTask();
+            return CSharpType.CreateTask(template);
         }
 
-        return CSharpType.CreateTask(type);
+        return CSharpType.CreateTask(type, template);
+    }
+
+    public static CSharpType? GetTaskGenericType(this CSharpType type)
+    {
+        if (!type.IsTask())
+        {
+            return null;
+        }
+
+        return (type as CSharpTypeGeneric)?.TypeArgumentList.FirstOrDefault();
     }
 }
