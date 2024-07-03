@@ -1,0 +1,9 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public T IIf<T>(bool condition, T whenTrue, T whenFalse) => condition ? whenTrue : whenFalse;
+    }
+}

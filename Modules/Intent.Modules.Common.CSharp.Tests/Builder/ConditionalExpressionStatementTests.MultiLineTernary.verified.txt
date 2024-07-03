@@ -1,0 +1,17 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public string GetContent(IServiceProvider provider, string key)
+        {
+            var contentService = provider.GetService<IContentService>();
+            return contentService is not null
+                ? contentService.GetSpecificContent(key) is not null
+                    ? contentService.GetSpecificContent(key).GetValue()
+                    : contentService.GetDefaultContent()
+                : contentService.GetDefaultContent();
+        }
+    }
+}
