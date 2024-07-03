@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.CSharp.Templates;
@@ -27,267 +26,29 @@ public abstract class CSharpType
     {
         return CSharpTypeVoid.DefaultInstance;
     }
-}
-
-public class CSharpTypeVoid : CSharpType
-{
-    public static readonly CSharpTypeVoid DefaultInstance = new();
     
-    public override string ToString()
+    public bool IsTask()
     {
-        return "void";
-    }
-
-    public override bool Equals(object? obj)
-    {
-        return obj is CSharpTypeVoid;
-    }
-
-    public override int GetHashCode()
-    {
-        return 0;
-    }
-}
-
-public class CSharpTypeName : CSharpType
-{
-    public CSharpTypeName(string typeName)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(typeName);
-        TypeName = typeName;
-    }
-
-    public string TypeName { get; }
-
-    public override string ToString()
-    {
-        return TypeName;
-    }
-
-    protected bool Equals(CSharpTypeName other)
-    {
-        return TypeName == other.TypeName;
-    }
-
-    public override bool Equals(object? obj)
-    {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((CSharpTypeName)obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return TypeName.GetHashCode();
-    }
-}
-
-public class CSharpTypeGeneric : CSharpType
-{
-    public CSharpTypeGeneric(string typeName, IReadOnlyList<CSharpType> typeArgumentList)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(typeName);
-        ArgumentNullException.ThrowIfNull(typeArgumentList);
-
-        TypeName = typeName;
-        TypeArgumentList = typeArgumentList;
-    }
-
-    public string TypeName { get; }
-    public IReadOnlyList<CSharpType> TypeArgumentList { get; }
-
-    public override string ToString()
-    {
-        return $"{TypeName}<{string.Join(", ", TypeArgumentList.Select(s => s.ToString()))}>";
-    }
-
-    protected bool Equals(CSharpTypeGeneric other)
-    {
-        return TypeName == other.TypeName && TypeArgumentList.SequenceEqual(other.TypeArgumentList);
-    }
-
-    public override bool Equals(object? obj)
-    {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((CSharpTypeGeneric)obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(TypeName, TypeArgumentList);
-    }
-}
-
-public class CSharpTupleElement
-{
-    public CSharpTupleElement(CSharpType type, string? name = null)
-    {
-        ArgumentNullException.ThrowIfNull(type);
-        Type = type;
-        Name = name;
+        return (this is CSharpTypeName name && name.IsTask()) || (this is CSharpTypeGeneric generic && generic.IsTask());
     }
     
-    public CSharpType Type { get; }
-    public string? Name { get; }
-
-    protected bool Equals(CSharpTupleElement other)
+    public CSharpType WrapInTask(ICSharpTemplate template)
     {
-        return Type.Equals(other.Type) && Name == other.Name;
-    }
-
-    public override bool Equals(object? obj)
-    {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((CSharpTupleElement)obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(Type, Name);
-    }
-}
-
-public class CSharpTypeTuple : CSharpType
-{
-    public CSharpTypeTuple(IReadOnlyList<CSharpTupleElement> elements)
-    {
-        ArgumentNullException.ThrowIfNull(elements);
-        Elements = elements;
-    }
-
-    public IReadOnlyList<CSharpTupleElement> Elements { get; }
-
-    public override string ToString()
-    {
-        return $"({string.Join(", ", Elements.Select(s => !string.IsNullOrWhiteSpace(s.Name) ? $"{s.Type} {s.Name}" : s.Type.ToString()))})";
-    }
-
-    protected bool Equals(CSharpTypeTuple other)
-    {
-        return Elements.SequenceEqual(other.Elements);
-    }
-
-    public override bool Equals(object? obj)
-    {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((CSharpTypeTuple)obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return Elements.GetHashCode();
-    }
-}
-
-public class CSharpTypeArray : CSharpType
-{
-    public CSharpTypeArray(CSharpType elementType)
-    {
-        ArgumentNullException.ThrowIfNull(elementType);
-        ElementType = elementType;
-    }
-    
-    public CSharpType ElementType { get; }
-
-    public override string ToString()
-    {
-        return $"{ElementType}[]";
-    }
-
-    protected bool Equals(CSharpTypeArray other)
-    {
-        return ElementType.Equals(other.ElementType);
-    }
-
-    public override bool Equals(object? obj)
-    {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((CSharpTypeArray)obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return ElementType.GetHashCode();
-    }
-}
-
-public class CSharpTypeNullable : CSharpType
-{
-    public CSharpTypeNullable(CSharpType elementType)
-    {
-        ArgumentNullException.ThrowIfNull(elementType);
-        ElementType = elementType;
-    }
-    
-    public CSharpType ElementType { get; }
-
-    public override string ToString()
-    {
-        return $"{ElementType}?";
-    }
-
-    protected bool Equals(CSharpTypeNullable other)
-    {
-        return ElementType.Equals(other.ElementType);
-    }
-
-    public override bool Equals(object? obj)
-    {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((CSharpTypeNullable)obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return ElementType.GetHashCode();
-    }
-}
-
-public static class CSharpTypeExtensions
-{
-    public static bool IsTask(this CSharpType type)
-    {
-        return (type is CSharpTypeName name && name.IsTask()) || (type is CSharpTypeGeneric generic && generic.IsTask());
-    }
-    
-    public static bool IsTask(this CSharpTypeName name)
-    {
-        return name.TypeName is CSharpType.TaskFullTypeName or CSharpType.TaskShortTypeName;
-    }
-    
-    public static bool IsTask(this CSharpTypeGeneric generic)
-    {
-        return generic.TypeName is CSharpType.TaskFullTypeName or CSharpType.TaskShortTypeName;
-    }
-    
-    public static CSharpType WrapInTask(this CSharpType type, ICSharpTemplate template)
-    {
-        if (type is CSharpTypeVoid)
+        if (this is CSharpTypeVoid)
         {
             return CSharpType.CreateTask(template);
         }
 
-        return CSharpType.CreateTask(type, template);
+        return CSharpType.CreateTask(this, template);
     }
 
-    public static CSharpType? GetGenericTaskType(this CSharpType type)
+    public CSharpType? GetTaskType()
     {
-        if (!type.IsTask())
+        if (!this.IsTask())
         {
             return null;
         }
 
-        return (type as CSharpTypeGeneric)?.TypeArgumentList.FirstOrDefault();
+        return (this as CSharpTypeGeneric)?.TypeArgumentList.FirstOrDefault();
     }
 }

@@ -240,19 +240,19 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         });
     }
     
-    public CSharpClass AddMethod<TModel>(TModel model, Action<CSharpClassMethod>? configure = null)
+    public CSharpClass AddMethod<TModel>(TModel returnType, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddMethod(File.GetModelType(model), model.Name.ToPropertyName(), prop =>
+        return AddMethod(File.GetModelType(returnType), returnType.Name.ToPropertyName(), prop =>
         {
-            prop.RepresentsModel(model);
+            prop.RepresentsModel(returnType);
             configure?.Invoke(prop);
         });
     }
     
-    public CSharpClass AddMethod(CSharpType type, string name, Action<CSharpClassMethod>? configure = null)
+    public CSharpClass AddMethod(CSharpType returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
-        return InsertMethod(Methods.Count, type, name, configure);
+        return InsertMethod(Methods.Count, returnType, name, configure);
     }
 
     public CSharpClass AddCodeBlock(string codeLine)
@@ -316,9 +316,9 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
         return this;
     }
     
-    public CSharpClass InsertMethod(int index, CSharpType type, string name, Action<CSharpClassMethod>? configure = null)
+    public CSharpClass InsertMethod(int index, CSharpType returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
-        var method = new CSharpClassMethod(type, name, this);
+        var method = new CSharpClassMethod(returnType, name, this);
         Methods.Insert(index, method);
         configure?.Invoke(method);
         return this;
