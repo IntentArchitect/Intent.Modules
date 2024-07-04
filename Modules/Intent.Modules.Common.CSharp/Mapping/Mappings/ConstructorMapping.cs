@@ -35,15 +35,15 @@ public class ConstructorMapping : CSharpMappingBase
         //Try find the CSharp constructor so we know what parameters are expected and in what order
         if (TryFindModelConstructor(out var ctor)) 
         {
-			var i = new CSharpInvocationStatement($"new { ctor.Name }").WithoutSemicolon();
+			var inv = new CSharpInvocationStatement($"new { ctor.Name }").WithoutSemicolon();
 
 			foreach (var parameter in ctor.Parameters)
             {
-                bool optional = parameter.DefaultValue != null;
+                var optional = parameter.DefaultValue != null;
 				var child = GetAllChildren().FirstOrDefault(c => c.Model.Name.Equals(parameter.Name, StringComparison.InvariantCultureIgnoreCase));
-				if ( child != null)
-                {
-					i.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
+				if (child != null)
+				{
+					inv.AddArgument(new CSharpArgument(GetNullableAwareInstantiation(child.Model, "Parameter", child.Children, child.GetSourceStatement())), arg =>
 					{
 						if (_options.AddArgumentNames)
 						{
@@ -53,20 +53,19 @@ public class ConstructorMapping : CSharpMappingBase
 				}
 				else if (!optional)
                 {
-                    i.AddArgument(new CSharpArgument("default"), arg => 
+                    inv.AddArgument(new CSharpArgument("default"), arg => 
                     {
 						if (_options.AddArgumentNames)
                         {
 							arg.WithName(parameter.Name);
 						}
-
 					});
     			}
 			}
 
-            i.WithArgumentsOnNewLines();
+            inv.WithArgumentsOnNewLines();
 
-            return i;
+            return inv;
         }
 
         //This is not ideal and a best effort to realize your mapping
@@ -93,8 +92,20 @@ public class ConstructorMapping : CSharpMappingBase
             init.WithArgumentsOnNewLines();
         }
 
-        return init;
+        return GetNullableAwareInstantiation(Model, "Association Target End", Children, init);
     }
+	
+	private CSharpStatement GetNullableAwareInstantiation(ICanBeReferencedType model, string specializationType, IList<ICSharpMapping> children, CSharpStatement instantiationStatement)
+	{
+		if (model is IElement end && end.SpecializationType == specializationType && end.TypeReference is {IsNullable:true, IsCollection:false} && children.Count > 0)
+		{
+			var child = children.First();
+			var accessPath = child.Mapping.SourcePath.SkipLast(1).Select(s => child.TryGetSourceReplacement(s.Element, out var a) ? a : s.Name).ToArray();
+			return new CSharpConditionalExpressionStatement($"{string.Join(".", accessPath)} is not null", instantiationStatement, "null");
+		}
+
+		return instantiationStatement;
+	}
 
     public override IEnumerable<CSharpStatement> GetMappingStatements()
     {

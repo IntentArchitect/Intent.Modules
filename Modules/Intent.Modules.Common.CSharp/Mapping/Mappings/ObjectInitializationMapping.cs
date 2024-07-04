@@ -140,7 +140,19 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 propInit.AddStatements(child.GetMappingStatements());
             }
 
-            return propInit;
+            return GetNullableAwareInstantiation(Model, "Association Target End", Children, propInit);
+        }
+        
+        private CSharpStatement GetNullableAwareInstantiation(ICanBeReferencedType model, string specializationType, IList<ICSharpMapping> children, CSharpStatement instantiationStatement)
+        {
+            if (model is IElement end && end.SpecializationType == specializationType && end.TypeReference is {IsNullable:true, IsCollection:false} && children.Count > 0)
+            {
+                var child = children.First();
+                var accessPath = child.Mapping.SourcePath.SkipLast(1).Select(s => child.TryGetSourceReplacement(s.Element, out var a) ? a : s.Name).ToArray();
+                return new CSharpConditionalExpressionStatement($"{string.Join(".", accessPath)} is not null", instantiationStatement, "null");
+            }
+
+            return instantiationStatement;
         }
 
         private IReadOnlyList<(CSharpConstructor Ctor, IElement Element)> GetFileBuilderConstructors()
