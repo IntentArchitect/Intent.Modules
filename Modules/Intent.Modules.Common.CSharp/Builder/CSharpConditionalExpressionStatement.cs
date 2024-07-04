@@ -29,16 +29,10 @@ public class CSharpConditionalExpressionStatement : CSharpStatement
             return text;
         }
         
-        return $"{indentation}{RelativeIndentation}{new[] { Condition, WhenTrue, WhenFalse }.ConcatCode($"{indentation}", LineTransformer)}";
-        
-        string LineTransformer(int codeIndex, ICodeBlock code, string indentation)
-        {
-            return codeIndex switch
-            {
-                0 => $"{indentation}{code.GetText(indentation).TrimStart()}",
-                1 => $"{indentation}    ? {code.GetText($"{indentation}    ").TrimStart()}",
-                2 => $"{indentation}    : {code.GetText($"{indentation}    ").TrimStart()}"
-            };
-        }
+        return $"""
+                {indentation}{RelativeIndentation}{Condition.GetText(indentation).TrimStart()}
+                {indentation}{RelativeIndentation}    ? {WhenTrue.GetText($"{indentation}    ").TrimStart()}
+                {indentation}{RelativeIndentation}    : {WhenFalse.GetText($"{indentation}    ").TrimStart()}
+                """;
     }
 }
