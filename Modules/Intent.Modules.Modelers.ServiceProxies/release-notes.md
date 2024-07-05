@@ -1,4 +1,8 @@
-﻿### Version 5.2.0
+﻿### Version 5.2.1
+
+- Fixed: Until the Intent Architect client is fixed for this scenario, the Service Proxies package will not be installed in the Services designer.
+
+### Version 5.2.0
 
 - Improvement: Extend Service Proxy metadata to also be compatible within a Service designer.
 
