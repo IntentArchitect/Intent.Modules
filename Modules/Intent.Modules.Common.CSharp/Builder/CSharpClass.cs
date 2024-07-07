@@ -1,3 +1,5 @@
+#nullable enable
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +8,9 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
 
-#nullable enable
-
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuildsCSharpMembers
+public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
 {
     private readonly ICSharpClass _wrapper;
     private readonly Type _type;
@@ -35,7 +35,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
     {
     }
 
-    protected internal CSharpClass(string name, Type type, ICSharpFile file, ICSharpCodeContext parent)
+    protected internal CSharpClass(string name, Type type, ICSharpFile? file, ICSharpCodeContext? parent)
     {
         if (string.IsNullOrWhiteSpace(name))
         {
@@ -92,7 +92,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
 
     public CSharpClass WithBaseType(string type)
     {
-        return ExtendsClass(type, Enumerable.Empty<string>());
+        return ExtendsClass(type, []);
     }
 
     public CSharpClass WithBaseType(string type, IEnumerable<string> genericTypeParameters)
@@ -102,7 +102,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
 
     public CSharpClass WithBaseType(CSharpClass type)
     {
-        return ExtendsClass(type, Enumerable.Empty<string>());
+        return ExtendsClass(type, []);
     }
 
     public CSharpClass WithBaseType(CSharpClass type, IEnumerable<string> genericTypeParameters)
@@ -112,7 +112,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
 
     public CSharpClass ExtendsClass(string type)
     {
-        return ExtendsClass(new CSharpClass(type), Enumerable.Empty<string>());
+        return ExtendsClass(new CSharpClass(type), []);
     }
 
     public CSharpClass ExtendsClass(string type, IEnumerable<string> genericTypeParameters)
@@ -122,7 +122,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
 
     public CSharpClass ExtendsClass(CSharpClass @class)
     {
-        return ExtendsClass(@class, Enumerable.Empty<string>());
+        return ExtendsClass(@class, []);
     }
 
     public CSharpClass ExtendsClass(CSharpClass @class, IEnumerable<string> genericTypeParameters)
@@ -150,7 +150,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         return this;
     }
 
-    public IBuildsCSharpMembers InsertField(int index, string type, string name, Action<ICSharpField> configure = null)
+    public IBuildsCSharpMembers InsertField(int index, string type, string name, Action<ICSharpField>? configure = null)
     {
         var field = new CSharpField(type, name, this)
         {
@@ -162,7 +162,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<ICSharpField>? configure = null) => AddField(type, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<ICSharpField>? configure) => AddField(type, name, configure);
     IBuildsCSharpMembers IBuildsCSharpMembers.InsertProperty(int index, string type, string name, Action<ICSharpProperty> configure)
     {
         return InsertProperty(index, type, name, configure);
@@ -180,8 +180,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<ICSharpProperty>? configure = null) => AddProperty(type, name, configure);
-
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<ICSharpProperty>? configure) => AddProperty(type, name, configure);
     public CSharpClass AddProperty(string type, string name, Action<CSharpProperty>? configure = null)
     {
         var property = new CSharpProperty(type, name, this)
@@ -197,10 +196,6 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
     /// <summary>
     /// Resolves the property name from the <paramref name="model"/>. Registers this property as representative of the <paramref name="model"/>.
     /// </summary>
-    /// <typeparam name="TModel"></typeparam>
-    /// <param name="model"></param>
-    /// <param name="configure"></param>
-    /// <returns></returns>
     public CSharpClass AddProperty<TModel>(string type, TModel model, Action<CSharpProperty>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
@@ -248,7 +243,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         configure?.Invoke(ctor);
         return this;
     }
-    
+
     public CSharpClass AddPrimaryConstructor(Action<CSharpConstructor>? configure = null)
     {
         var ctor = new CSharpConstructor(this, true);
@@ -257,16 +252,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethod> configure)
-    {
-        return InsertMethod(index, returnType, name, configure);
-    }
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<ICSharpClassMethod>? configure = null) => AddMethod(returnType, name, configure);
-    public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod>? configure = null)
-    {
-        return InsertMethod(Methods.Count, returnType, name, configure);
-    }
-
+    IBuildsCSharpMembers IBuildsCSharpMembers.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethod> configure) => InsertMethod(index, returnType, name, configure);
     public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         var method = new CSharpClassMethod(returnType, name, this);
@@ -275,14 +261,15 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         return this;
     }
 
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<ICSharpClassMethod>? configure) => AddMethod(returnType, name, configure);
+    public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod>? configure = null)
+    {
+        return InsertMethod(Methods.Count, returnType, name, configure);
+    }
 
     /// <summary>
     /// Resolves the method name from the <paramref name="model"/>. Registers this method as representative of the <paramref name="model"/>.
     /// </summary>
-    /// <typeparam name="TModel"></typeparam>
-    /// <param name="model"></param>
-    /// <param name="configure"></param>
-    /// <returns></returns>
     public CSharpClass AddMethod<TModel>(string returnType, TModel model, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
@@ -339,10 +326,8 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<ICSharpClass>? configure = null)
-    {
-        return AddNestedClass(name, configure);
-    }
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<ICSharpClass>? configure) => AddNestedClass(name, configure);
+    ICSharpTemplate IBuildsCSharpMembers.Template => File.Template;
 
     public int IndexOf(ICodeBlock codeBlock)
     {
@@ -529,7 +514,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         }
         sb.Append(GetBaseTypes());
         sb.Append(GetGenericTypeConstraints(indentation));
-        
+
         var members = GetMembers($"{indentation}    ");
         if (primaryConstructor is not null && string.IsNullOrEmpty(members))
         {
@@ -565,7 +550,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
             _ => throw new InvalidOperationException($"Cannot have more than one primary constructor for {_type} {Name}")
         };
     }
-    
+
     private string GetGenericTypeConstraints(string indentation)
     {
         if (!GenericTypeConstraints.Any())
@@ -594,7 +579,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
         if (BaseType is not null)
         {
             var baseType = BaseType.Name;
-            
+
             var primaryCtor = GetPrimaryConstructor();
             var baseCallParams = primaryCtor?.ConstructorCall.Arguments;
             if (baseCallParams?.Count > 0)
@@ -619,8 +604,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass, IBuilds
     {
         var codeBlocks = Declarations;
 
-        return $@"{string.Join(@"
-", codeBlocks.ConcatCode(indentation))}";
+        return $"{string.Join(Environment.NewLine, codeBlocks.ConcatCode(indentation))}";
     }
 
     protected internal enum Type

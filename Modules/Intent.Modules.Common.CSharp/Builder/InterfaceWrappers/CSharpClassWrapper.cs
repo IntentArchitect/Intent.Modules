@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 
@@ -172,20 +173,25 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
 
     ICSharpClass ICSharpClass.AddPrimaryConstructor(Action<ICSharpConstructor>? configure) => wrapped.AddPrimaryConstructor(configure);
 
-    IList<ICodeBlock> IBuildsCSharpMembers.Declarations => ((IBuildsCSharpMembers)wrapped).Declarations;
-
-    public IBuildsCSharpMembers InsertField(int index, string type, string name, Action<ICSharpField> configure = null) => ((IBuildsCSharpMembers)wrapped).InsertField(index, type, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<ICSharpClass> configure) => ((IBuildsCSharpMembers)wrapped).AddClass(name, configure);
 
     IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<ICSharpField> configure) => ((IBuildsCSharpMembers)wrapped).AddField(type, name, configure);
-    public IBuildsCSharpMembers InsertProperty(int index, string type, string name, Action<ICSharpProperty> configure = null) => ((IBuildsCSharpMembers)wrapped).InsertProperty(index, type, name, configure);
-
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<ICSharpProperty> configure) => ((IBuildsCSharpMembers)wrapped).AddProperty(type, name, configure);
-    public IBuildsCSharpMembers InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethod> configure = null) => ((IBuildsCSharpMembers)wrapped).InsertMethod(index, returnType, name, configure);
 
     IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<ICSharpClassMethod> configure) => ((IBuildsCSharpMembers)wrapped).AddMethod(returnType, name, configure);
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<ICSharpClass> configure) => ((IBuildsCSharpMembers)wrapped).AddClass(name, configure);
-    public int IndexOf(ICodeBlock codeBlock) => ((IBuildsCSharpMembers)wrapped).IndexOf(codeBlock);
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<ICSharpProperty> configure) => ((IBuildsCSharpMembers)wrapped).AddProperty(type, name, configure);
+
+    IBuildsCSharpMembers IBuildsCSharpMembers.InsertField(int index, string type, string name, Action<ICSharpField> configure) => ((IBuildsCSharpMembers)wrapped).InsertField(index, type, name, configure);
+
+    IBuildsCSharpMembers IBuildsCSharpMembers.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethod> configure) => ((IBuildsCSharpMembers)wrapped).InsertMethod(index, returnType, name, configure);
+
+    IBuildsCSharpMembers IBuildsCSharpMembers.InsertProperty(int index, string type, string name, Action<ICSharpProperty> configure) => ((IBuildsCSharpMembers)wrapped).InsertProperty(index, type, name, configure);
+
+    ICSharpTemplate IBuildsCSharpMembers.Template => wrapped.File.Template;
+
+    IList<ICodeBlock> IBuildsCSharpMembers.Declarations => ((IBuildsCSharpMembers)wrapped).Declarations;
+
+    int IBuildsCSharpMembers.IndexOf(ICodeBlock codeBlock) => ((IBuildsCSharpMembers)wrapped).IndexOf(codeBlock);
 
     string IHasCSharpName.Name => ((IHasCSharpName)wrapped).Name;
 }

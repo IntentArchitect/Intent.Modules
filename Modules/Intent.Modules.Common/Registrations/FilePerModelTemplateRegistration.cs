@@ -26,6 +26,7 @@ namespace Intent.Modules.Common.Registrations
         /// </summary>
         public abstract IEnumerable<TModel> GetModels(IApplication application);
 
+        /// <inheritdoc />
         protected override void Register(ITemplateInstanceRegistry registry, IApplication application)
         {
             foreach (var model in GetModels(application))

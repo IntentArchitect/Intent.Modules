@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -10,7 +11,7 @@ namespace Intent.Modules.Common.CSharp.Templates;
 /// </summary>
 public class RazorMergerConfiguration
 {
-    private readonly IDictionary<string, string> _fileCustomMetadata;
+    private readonly IDictionary<string, string?> _fileCustomMetadata;
 
     /// <summary>
     /// Creates a new instance of <see cref="RazorMergerConfiguration"/>.

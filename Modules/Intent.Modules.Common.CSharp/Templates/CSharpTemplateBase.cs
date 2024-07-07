@@ -1,11 +1,11 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.FactoryExtensions;
-using Intent.Modules.Common.CSharp.RazorBuilder;
 using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
@@ -36,7 +36,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <summary>
         /// Creates a new instance of <see cref="CSharpTemplateBase{TModel,TDecorator}"/>.
         /// </summary>
-        protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
+        protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget, TModel? model) : base(templateId, outputTarget, model)
         {
         }
 
@@ -82,7 +82,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <summary>
         /// Creates a new instance of <see cref="CSharpTemplateBase{TModel}"/>.
         /// </summary>
-        protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget, TModel model)
+        protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget, TModel? model)
             : base(templateId, outputTarget, model)
         {
             Types = new CSharpTypeResolver(
@@ -197,7 +197,7 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         /// <inheritdoc cref="IntentTemplateBase.AddTypeSource(string)"/>
         [FixFor_Version4("Remove this method and let the override below do the necessary work")]
-        public new ClassTypeSource AddTypeSource(string templateId)
+        public new virtual ClassTypeSource AddTypeSource(string templateId)
         {
             return base.AddTypeSource(templateId);
         }
@@ -206,7 +206,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         [FixFor_Version4(
             "Change this to an override which returns ClassTypeSource and make collectionFormat " +
             "have a default value of null")]
-        public new void AddTypeSource(string templateId, string collectionFormat)
+        public new virtual void AddTypeSource(string templateId, string collectionFormat)
         {
             base.AddTypeSource(templateId, collectionFormat);
         }

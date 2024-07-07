@@ -201,7 +201,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>b5b10d02-7a7d-4080-89bf-605237c5942e</ProjectId>
+      <ProjectId>40a4c944-a48a-4924-acce-8bc1b215a614</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
@@ -209,7 +209,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>b5b10d02-7a7d-4080-89bf-605237c5942e</ProjectId>
+      <ProjectId>40a4c944-a48a-4924-acce-8bc1b215a614</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modelers.UI.Core.imodspec</ApplicationRelativeFilePath>
@@ -217,8 +217,8 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>b5b10d02-7a7d-4080-89bf-605237c5942e</ProjectId>
-      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#b5b10d02-7a7d-4080-89bf-605237c5942e</CorrelationId>
+      <ProjectId>40a4c944-a48a-4924-acce-8bc1b215a614</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#40a4c944-a48a-4924-acce-8bc1b215a614</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.UI.Core.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.UI.Core.csproj</ProjectRelativeFilePath>

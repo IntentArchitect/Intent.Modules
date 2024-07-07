@@ -57,7 +57,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
@@ -65,7 +65,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.ModuleBuilder.CSharp.imodspec</ApplicationRelativeFilePath>
@@ -73,8 +73,8 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
-      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#823b06dd-dc3f-47f4-9e85-81da6304659c</CorrelationId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#9fa3fed6-cd87-42d8-9782-44b56e67db15</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.ModuleBuilder.CSharp.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.CSharp.csproj</ProjectRelativeFilePath>
@@ -89,7 +89,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#d0cde3bb-8cb8-42dd-9a8b-0659825f33ce</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpStringInterpolation/CSharpStringInterpolationTemplate.cs</ApplicationRelativeFilePath>
@@ -97,7 +97,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#d0cde3bb-8cb8-42dd-9a8b-0659825f33ce</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpStringInterpolation/CSharpStringInterpolationTemplate.tt</ApplicationRelativeFilePath>
@@ -105,7 +105,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#d0cde3bb-8cb8-42dd-9a8b-0659825f33ce</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpStringInterpolation/CSharpStringInterpolationTemplatePartial.cs</ApplicationRelativeFilePath>
@@ -113,7 +113,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#d0cde3bb-8cb8-42dd-9a8b-0659825f33ce</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpStringInterpolation/CSharpStringInterpolationTemplateRegistration.cs</ApplicationRelativeFilePath>
@@ -121,7 +121,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#f82844d8-1693-45b4-ba36-e1fb512b42e1</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpT4/CSharpT4TemplatePartial.cs</ApplicationRelativeFilePath>
@@ -129,7 +129,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#f82844d8-1693-45b4-ba36-e1fb512b42e1</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpT4/CSharpT4TemplateRegistration.cs</ApplicationRelativeFilePath>
@@ -137,7 +137,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#9aec9ff4-b28f-4865-87aa-5d6e31d91afd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialTemplate.cs</ApplicationRelativeFilePath>
@@ -145,7 +145,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#9aec9ff4-b28f-4865-87aa-5d6e31d91afd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialTemplate.tt</ApplicationRelativeFilePath>
@@ -153,7 +153,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#9aec9ff4-b28f-4865-87aa-5d6e31d91afd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialTemplatePartial.cs</ApplicationRelativeFilePath>
@@ -161,7 +161,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#9aec9ff4-b28f-4865-87aa-5d6e31d91afd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>
@@ -169,7 +169,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpStringInterpolationTemplate#486b285a-ac44-40bb-96d0-821aed78c47f</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/RazorStringInterpolation/RazorStringInterpolationTemplate.cs</ApplicationRelativeFilePath>
@@ -177,7 +177,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#486b285a-ac44-40bb-96d0-821aed78c47f</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/RazorStringInterpolation/RazorStringInterpolationTemplatePartial.cs</ApplicationRelativeFilePath>
@@ -185,7 +185,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#486b285a-ac44-40bb-96d0-821aed78c47f</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/RazorStringInterpolation/RazorStringInterpolationTemplateRegistration.cs</ApplicationRelativeFilePath>
@@ -193,7 +193,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#5c00ad31-0eef-4539-a3e4-fa339cae2b10</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/RazorTemplatePartial/RazorTemplatePartialTemplate.cs</ApplicationRelativeFilePath>
@@ -201,7 +201,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#5c00ad31-0eef-4539-a3e4-fa339cae2b10</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/RazorTemplatePartial/RazorTemplatePartialTemplate.tt</ApplicationRelativeFilePath>
@@ -209,7 +209,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#5c00ad31-0eef-4539-a3e4-fa339cae2b10</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/RazorTemplatePartial/RazorTemplatePartialTemplatePartial.cs</ApplicationRelativeFilePath>
@@ -217,7 +217,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#5c00ad31-0eef-4539-a3e4-fa339cae2b10</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/RazorTemplatePartial/RazorTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>

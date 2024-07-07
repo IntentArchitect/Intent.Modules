@@ -1,5 +1,7 @@
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 using System;
 using System.Collections.Generic;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -14,4 +16,5 @@ public interface IBuildsCSharpMembers : ICSharpCodeContext
     IBuildsCSharpMembers AddMethod(string returnType, string name, Action<ICSharpClassMethod> configure = null);
     IBuildsCSharpMembers AddClass(string name, Action<ICSharpClass> configure = null);
     int IndexOf(ICodeBlock codeBlock);
+    ICSharpTemplate Template { get; }
 }

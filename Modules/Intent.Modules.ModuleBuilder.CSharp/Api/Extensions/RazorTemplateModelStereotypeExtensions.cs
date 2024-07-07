@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.CSharp.Api
     {
         public static RazorTemplateSettings GetRazorTemplateSettings(this RazorTemplateModel model)
         {
-            var stereotype = model.GetStereotype("715cfb40-dfcf-47e7-8129-46bdb8e40ee7");
+            var stereotype = model.GetStereotype(RazorTemplateSettings.DefinitionId);
             return stereotype != null ? new RazorTemplateSettings(stereotype) : null;
         }
 
 
         public static bool HasRazorTemplateSettings(this RazorTemplateModel model)
         {
-            return model.HasStereotype("715cfb40-dfcf-47e7-8129-46bdb8e40ee7");
+            return model.HasStereotype(RazorTemplateSettings.DefinitionId);
         }
 
         public static bool TryGetRazorTemplateSettings(this RazorTemplateModel model, out RazorTemplateSettings stereotype)
@@ -32,13 +32,14 @@ namespace Intent.ModuleBuilder.CSharp.Api
                 return false;
             }
 
-            stereotype = new RazorTemplateSettings(model.GetStereotype("715cfb40-dfcf-47e7-8129-46bdb8e40ee7"));
+            stereotype = new RazorTemplateSettings(model.GetStereotype(RazorTemplateSettings.DefinitionId));
             return true;
         }
 
         public class RazorTemplateSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "715cfb40-dfcf-47e7-8129-46bdb8e40ee7";
 
             public RazorTemplateSettings(IStereotype stereotype)
             {

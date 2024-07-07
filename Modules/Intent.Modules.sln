@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common", "In
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{41EB094E-7906-4D47-85B8-42FAC60C5178}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.CSharp", "Intent.Modules.ModuleBuilder.CSharp\Intent.Modules.ModuleBuilder.CSharp.csproj", "{FC0DF4DD-975B-40A0-8534-871752B685B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.CSharp", "Intent.Modules.ModuleBuilder.CSharp\Intent.Modules.ModuleBuilder.CSharp.csproj", "{FC0DF4DD-975B-40A0-8534-871752B685B5}"
 EndProject
 Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.TypeScript", "Intent.Modules.ModuleBuilder.TypeScript\Intent.Modules.ModuleBuilder.TypeScript.csproj", "{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B}"
 EndProject
@@ -54,7 +54,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application Templates", "Ap
 EndProject
 Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services.CQRS", "Intent.Modules.Modelers.Services.CQRS\Intent.Modules.Modelers.Services.CQRS.csproj", "{FFBF27C5-A296-4DBC-9AF5-ACF0BFF187A2}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.CSharp", "Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj", "{58588E96-AF3B-4B66-AD5F-CDB9FAABA109}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.CSharp", "Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj", "{58588E96-AF3B-4B66-AD5F-CDB9FAABA109}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.CSharp.Tests", "Intent.Modules.Common.CSharp.Tests\Intent.Modules.Common.CSharp.Tests.csproj", "{A895DE2E-64EF-4750-A485-748ED052EFD3}"
 EndProject
@@ -104,9 +104,9 @@ Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Ser
 EndProject
 Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services.EventInteractions", "Intent.Modules.Modelers.Services.EventInteractions\Intent.Modules.Modelers.Services.EventInteractions.csproj", "{9BCD766F-1590-471F-AE5C-9F958ACA7130}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.UI", "Intent.Modules.Modelers.UI\Intent.Modules.Modelers.UI.csproj", "{DA913B66-E595-4227-BD2B-4CB5E537785E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.UI", "Intent.Modules.Modelers.UI\Intent.Modules.Modelers.UI.csproj", "{DA913B66-E595-4227-BD2B-4CB5E537785E}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.UI.ServiceProxies", "Intent.Modules.Modelers.UI.ServiceProxies\Intent.Modules.Modelers.UI.ServiceProxies.csproj", "{0E97075B-8792-4B08-9023-3892D9F092A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.UI.ServiceProxies", "Intent.Modules.Modelers.UI.ServiceProxies\Intent.Modules.Modelers.UI.ServiceProxies.csproj", "{0E97075B-8792-4B08-9023-3892D9F092A4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - Solution Items", "{17583A28-5C7E-4A7E-B842-0A8E250C85AF}"
 	ProjectSection(SolutionItems) = preProject
@@ -122,7 +122,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Metadata.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services.ProxyInteractions", "Intent.Modules.Modelers.Services.ProxyInteractions\Intent.Modules.Modelers.Services.ProxyInteractions.csproj", "{D6BBCA39-00E9-49F0-95A5-9F1BCE9F15B9}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.UI.Core", "Intent.Modules.Modelers.UI.Core\Intent.Modules.Modelers.UI.Core.csproj", "{B5B10D02-7A7D-4080-89BF-605237C5942E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.UI.Core", "Intent.Modules.Modelers.UI.Core\Intent.Modules.Modelers.UI.Core.csproj", "{B5B10D02-7A7D-4080-89BF-605237C5942E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

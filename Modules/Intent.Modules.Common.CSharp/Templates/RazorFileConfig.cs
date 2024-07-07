@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
 
@@ -25,9 +26,9 @@ public class RazorFileConfig : CSharpFileConfig, IRazorFileConfig
         string @namespace,
         string relativeLocation = "",
         OverwriteBehaviour overwriteBehaviour = OverwriteBehaviour.Always,
-        string fileName = null,
+        string? fileName = null,
         string fileExtension = "razor",
-        string dependsUpon = null)
+        string? dependsUpon = null)
         : base(
             codeGenType: Templates.CodeGenType.RazorMerger,
             className: className,

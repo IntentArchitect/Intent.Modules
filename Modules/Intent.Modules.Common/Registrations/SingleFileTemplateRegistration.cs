@@ -14,8 +14,12 @@ namespace Intent.Modules.Common.Registrations
     /// </summary>
     public abstract class SingleFileTemplateRegistration : TemplateRegistrationBase
     {
+        /// <summary>
+        /// Returns the template instance.
+        /// </summary>
         public abstract ITemplate CreateTemplateInstance(IOutputTarget project);
 
+        /// <inheritdoc />
         protected override void Register(ITemplateInstanceRegistry registry, IApplication application)
         {
             registry.RegisterTemplate(TemplateId, CreateTemplateInstance);

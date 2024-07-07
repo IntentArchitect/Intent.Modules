@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#fe5a5cd8-aabd-472f-8d42-f5c233e658dc</correlationId>
+      <path>Intent.Modules.Modelers.UI/Api/CallServiceOperationActionModelAssociationExtensions.cs</path>
+      <count>4</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2024-07-04T09:54:16.7252989Z</updatedAt>
+      <deviationsHash>088AF758EAC4AC0E345C9C58A58749159884302B3CFA2A38AAE0E027F676D225</deviationsHash>
+      <fileHash>1EA7E550BB62BC5D740BC09C73DEF0653C9D52EB346C89906AAACB5E602545BF</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e030c97a-e066-40a7-8188-808c275df3cb</correlationId>
+      <path>Intent.Modules.Modelers.UI/Api/ComponentOperationModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2024-07-04T09:54:16.7253297Z</updatedAt>
+      <deviationsHash>30CFD6A2739F858119A98BF4221E36E4CDB6A745ACAE895B61802C6DEB981231</deviationsHash>
+      <fileHash>6AA6900B1F19DD35EBC2E870C2FC37FAC8C90A33F14D415D42B5F5610CE19C7E</fileHash>
+    </file>
+  </files>
 </deviationsLog>

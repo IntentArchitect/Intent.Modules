@@ -3,7 +3,7 @@
   <ApplicationId>62e3977a-20a5-4637-b195-5dd11b6939bb</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#1e0631db-65af-4d43-aac8-6905976318c5</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#1e0631db-65af-4d43-aac8-6905976318c5</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -33,7 +33,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>0e97075b-8792-4b08-9023-3892d9f092a4</ProjectId>
+      <ProjectId>19588b7b-15cd-40ed-b952-9387d93eb7ab</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modelers.UI.ServiceProxies.imodspec</ApplicationRelativeFilePath>
@@ -41,8 +41,8 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>0e97075b-8792-4b08-9023-3892d9f092a4</ProjectId>
-      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#0e97075b-8792-4b08-9023-3892d9f092a4</CorrelationId>
+      <ProjectId>19588b7b-15cd-40ed-b952-9387d93eb7ab</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#19588b7b-15cd-40ed-b952-9387d93eb7ab</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies.csproj</ProjectRelativeFilePath>
@@ -57,7 +57,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>0e97075b-8792-4b08-9023-3892d9f092a4</ProjectId>
+      <ProjectId>19588b7b-15cd-40ed-b952-9387d93eb7ab</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes</CorrelationId>
       <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>

@@ -295,7 +295,7 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Sets the default collection format to be applied to types that are resolved using the <see cref="GetTypeName(ITypeReference)"/> method.
         /// </summary>
-        public void SetDefaultTypeCollectionFormat(string collectionFormat)
+        public virtual void SetDefaultTypeCollectionFormat(string collectionFormat)
         {
             if (!HasTypeResolver())
             {
@@ -309,7 +309,7 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Sets the default collection formatter to be applied to types that are resolved using the <see cref="GetTypeName(ITypeReference)"/> method.
         /// </summary>
-        public void SetDefaultCollectionFormatter(ICollectionFormatter collectionFormatter)
+        public virtual void SetDefaultCollectionFormatter(ICollectionFormatter collectionFormatter)
         {
             if (!HasTypeResolver())
             {
@@ -338,7 +338,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="templateId">The identifier of the template instances to be searched when calling <see cref="GetTypeName(ITypeReference)"/>.</param>
         /// <returns>Returns the <see cref="ClassTypeSource"/> for use as a fluent api.</returns>
-        public ClassTypeSource AddTypeSource(string templateId)
+        public virtual ClassTypeSource AddTypeSource(string templateId)
         {
             return AddTypeSource(templateId, null);
         }
@@ -355,7 +355,7 @@ namespace Intent.Modules.Common.Templates
         public virtual ClassTypeSource AddTypeSource(string templateId, string collectionFormat)
         {
             var typeSource = ClassTypeSource.Create(ExecutionContext, templateId, CreateCollectionFormatter)
-                .WithNullFormatter(Types.DefaultNullableFormatter);
+                .WithNullableFormatter(Types.DefaultNullableFormatter);
 
             if (!string.IsNullOrWhiteSpace(collectionFormat))
             {
@@ -1222,7 +1222,7 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Retrieve an instance of an <see cref="ITemplate"/>. By default an exception will be thrown if the template is not found.
+        /// Retrieve an instance of an <see cref="ITemplate"/>. By default, an exception will be thrown if the template is not found.
         /// This can be changed in the <see cref="TemplateDiscoveryOptions"/>.
         /// </summary>
         public TTemplate GetTemplate<TTemplate>(string templateId, TemplateDiscoveryOptions options = null)

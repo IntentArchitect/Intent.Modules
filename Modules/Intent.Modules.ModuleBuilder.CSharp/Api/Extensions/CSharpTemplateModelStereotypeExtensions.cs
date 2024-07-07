@@ -14,13 +14,13 @@ namespace Intent.ModuleBuilder.CSharp.Api
     {
         public static CSharpTemplateSettings GetCSharpTemplateSettings(this CSharpTemplateModel model)
         {
-            var stereotype = model.GetStereotype("78be0482-1cd7-4b9f-b457-5ebe1536786e");
+            var stereotype = model.GetStereotype(CSharpTemplateSettings.DefinitionId);
             return stereotype != null ? new CSharpTemplateSettings(stereotype) : null;
         }
 
         public static bool HasCSharpTemplateSettings(this CSharpTemplateModel model)
         {
-            return model.HasStereotype("78be0482-1cd7-4b9f-b457-5ebe1536786e");
+            return model.HasStereotype(CSharpTemplateSettings.DefinitionId);
         }
 
         public static bool TryGetCSharpTemplateSettings(this CSharpTemplateModel model, out CSharpTemplateSettings stereotype)
@@ -31,7 +31,7 @@ namespace Intent.ModuleBuilder.CSharp.Api
                 return false;
             }
 
-            stereotype = new CSharpTemplateSettings(model.GetStereotype("78be0482-1cd7-4b9f-b457-5ebe1536786e"));
+            stereotype = new CSharpTemplateSettings(model.GetStereotype(CSharpTemplateSettings.DefinitionId));
             return true;
         }
 
@@ -39,6 +39,7 @@ namespace Intent.ModuleBuilder.CSharp.Api
         public class CSharpTemplateSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "78be0482-1cd7-4b9f-b457-5ebe1536786e";
 
             public CSharpTemplateSettings(IStereotype stereotype)
             {

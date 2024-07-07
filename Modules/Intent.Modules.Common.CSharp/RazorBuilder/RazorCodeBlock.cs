@@ -1,8 +1,10 @@
 #nullable enable
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.CSharp.Builder;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.RazorBuilder;
 
@@ -78,6 +80,8 @@ internal class RazorCodeBlock : RazorFileNodeBase<RazorCodeBlock, IRazorCodeBloc
         configure?.Invoke(@class);
         return this;
     }
+
+    ICSharpTemplate IBuildsCSharpMembers.Template => File.Template;
 
     public int IndexOf(ICodeBlock codeBlock)
     {

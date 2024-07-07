@@ -1,3 +1,5 @@
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,6 +7,7 @@ using System.Text;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.FileBuilders;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -13,6 +16,9 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
     private readonly IList<(Action Invoke, int Order)> _configurations = new List<(Action Invoke, int Order)>();
     private readonly IList<(Action Invoke, int Order)> _configurationsAfter = new List<(Action Invoke, int Order)>();
     private readonly List<Action<CSharpFileConfig>> _cSharpFileConfigActions = new();
+    private OverwriteBehaviour _overwriteBehaviour = OverwriteBehaviour.Always;
+    private string? _fileName;
+    private string? _fileExtension;
 
     public IList<CSharpUsing> Usings { get; } = new List<CSharpUsing>();
     public string Namespace { get; }
@@ -160,6 +166,24 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
         return this;
     }
 
+    public CSharpFile WithOverwriteBehaviour(OverwriteBehaviour overwriteBehaviour)
+    {
+        _overwriteBehaviour = overwriteBehaviour;
+        return this;
+    }
+
+    public CSharpFile WithFileName(string fileName)
+    {
+        _fileName = fileName;
+        return this;
+    }
+
+    public CSharpFile WithFileExtension(string fileExtension)
+    {
+        _fileExtension = fileExtension;
+        return this;
+    }
+
     public CSharpFileConfig GetConfig()
     {
         var className = TopLevelStatements != null
@@ -179,7 +203,11 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
         var configuration = new CSharpFileConfig(
             className: className,
             @namespace: Namespace,
-            relativeLocation: RelativeLocation);
+            relativeLocation: RelativeLocation,
+            overwriteBehaviour: _overwriteBehaviour,
+            fileName: _fileName ?? className,
+            fileExtension: _fileExtension ?? "cs",
+            dependsUpon: default);
 
         foreach (var action in _cSharpFileConfigActions)
         {
