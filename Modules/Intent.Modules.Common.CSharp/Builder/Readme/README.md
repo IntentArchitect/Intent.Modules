@@ -32,3 +32,7 @@ The window can be opened by clicking _View_, _Other Windows_, _Syntax Visualizer
 Or alternatively using `Ctrl+Q` shortcut in Visual Studio to open the _Feature Search_ window and filtering for it:
 
 ![Finding Syntax Visualizer using Feature Search](images/05-finding-syntax-visualizer-using-feature-search.png)
+
+## Alternative Syntax Visualizers
+
+- [Sharplab.io](https://sharplab.io/) (web-based)

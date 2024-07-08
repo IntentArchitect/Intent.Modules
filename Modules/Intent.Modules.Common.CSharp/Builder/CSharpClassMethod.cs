@@ -11,6 +11,7 @@ public interface ICSharpMethodDeclaration : IHasICSharpParameters, ICSharpRefere
 {
     bool IsAsync { get; }
     public ICSharpExpression ReturnType { get; }
+    public CSharpType ReturnTypeInfo { get; }
 }
 
 public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodDeclaration
@@ -22,6 +23,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     public bool IsAbstract { get; private set; }
     public bool HasExpressionBody { get; private set; }
     public string ReturnType { get; private set; }
+    public CSharpType ReturnTypeInfo { get; private set; }
     ICSharpExpression ICSharpMethodDeclaration.ReturnType => new CSharpStatement(ReturnType);
     public string Name { get; }
     public List<CSharpParameter> Parameters { get; } = new();
@@ -48,6 +50,29 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
         Class = @class;
         File = @class.File;
         ReturnType = returnType;
+        ReturnTypeInfo = CSharpTypeParser.Parse(returnType);
+        Name = name;
+        BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
+        AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
+    }
+
+    public CSharpClassMethod(CSharpType returnType, string name, CSharpClass @class)
+    {
+        if (returnType is null)
+        {
+            throw new ArgumentException("Cannot be null", nameof(returnType));
+        }
+
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+        
+        Parent = @class;
+        Class = @class;
+        File = @class.File;
+        ReturnType = returnType.ToString();
+        ReturnTypeInfo = returnType;
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
@@ -255,6 +280,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
             throw new ArgumentException("Cannot be null or empty", nameof(returnType));
         }
 
+        ReturnTypeInfo = CSharpTypeParser.Parse(returnType);
         ReturnType = returnType;
         return this;
     }
@@ -299,46 +325,23 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     public CSharpClassMethod Sync()
     {
         IsAsync = false;
-        var taskType = File.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
-        if (ReturnType == taskType)
+        if (ReturnTypeInfo is CSharpTypeGeneric generic && generic.IsTask())
         {
-            ReturnType = "void";
-        }
-        else if (ReturnType.StartsWith(taskType + "<"))
-        {
-            ReturnType = StripTask(taskType);
+            ReturnTypeInfo = generic.TypeArgumentList.Single();
+            ReturnType = ReturnTypeInfo.ToString();
         }
         return this;
-    }
-
-    private string StripTask(string taskType)
-    {
-        //Task<X> => X
-        return ReturnType.Substring(taskType.Length + 1, ReturnType.Length - 6);
     }
 
     public CSharpClassMethod Async()
     {
         IsAsync = true;
-        ReturnType = GetAsyncReturnType(File, ReturnType);
-        return this;
-    }
-
-    internal static string GetAsyncReturnType(CSharpFile file, string returnType)
-    {
-        var taskType = file.Template?.UseType("System.Threading.Tasks.Task") ?? "Task";
-        if (!(returnType == taskType || returnType.StartsWith(taskType + "<")))
+        if (!ReturnTypeInfo.IsTask())
         {
-            if (taskType == "System.Threading.Tasks.Task" && returnType.StartsWith("Task<"))
-            {
-                return "System.Threading.Tasks." + returnType;
-            }
-            else
-            {
-                return returnType == "void" ? taskType : $"{taskType}<{returnType}>";
-            }
+            ReturnTypeInfo = ReturnTypeInfo.WrapInTask(File.Template);
+            ReturnType = ReturnTypeInfo.ToString();
         }
-        return returnType;
+        return this;
     }
 
     public void RemoveStatement(CSharpStatement statement)
@@ -414,7 +417,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpMethodD
     private string GetParameters(string indentation)
     {
         // GCB - WTF: why rewrite out whole statement
-        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{OverrideModifier}{(IsAsync ? "async " : "")}{ReturnType} {Name}{GetGenericParameters()}(".Length +
+        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{OverrideModifier}{(IsAsync ? "async " : "")}{ReturnTypeInfo} {Name}{GetGenericParameters()}(".Length +
             Parameters.Sum(x => x.ToString().Length) > 120)
         {
             return $@"

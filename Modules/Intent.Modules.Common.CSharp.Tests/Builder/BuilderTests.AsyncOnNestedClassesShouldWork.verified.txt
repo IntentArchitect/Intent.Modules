@@ -6,7 +6,7 @@ namespace Namespace
     {
         public class NestedClass
         {
-            public async Task Method()
+            public async System.Threading.Tasks.Task Method()
             {
             }
         }
