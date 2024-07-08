@@ -1,4 +1,10 @@
-﻿### Version 3.6.4
+﻿### Version 3.7.0
+
+- New Feature: `CSharpType` to represent a C# Type that can be more easily mutated and reliably inspected for the type it is. It has a parser to convert `string` into a `CSharpType`.
+- New Feature: `CSharpVariableDeclaration` and `CSharpDeclarationExpression` to represent variable declarations in C# like `var myVar` and `var (prop1, prop2, prop3)`.
+- Improvement: `CSharpClass`, `CSharpClassMethod`, `CSharpInterface` and `CSharpInterfaceMethod` are able to accomodate return types in the form of `CSharpType`.
+
+### Version 3.6.4
 
 - Fixed: Generated namespaces would `Pascal Case` application names, it now uses the casing as is.
 - Fixed: `CSharpMethod` and `CSharpInterfaceMethod`  return types starting with the letters `Task` generated incorrect code under certain circumstances.

@@ -26,6 +26,9 @@ public class CSharpTypeParsingException : Exception
     }
 }
 
+/// <summary>
+/// Use this class to parse a string and convert it into an appropriate <see cref="CSharpType"/>.
+/// </summary>
 public class CSharpTypeParser
 {
     public static bool TryParse(string typeName, out CSharpType? type)

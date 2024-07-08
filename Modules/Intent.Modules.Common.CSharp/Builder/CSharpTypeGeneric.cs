@@ -25,6 +25,9 @@ public class CSharpTypeGeneric : CSharpType
         return $"{TypeName}<{string.Join(", ", TypeArgumentList.Select(s => s.ToString()))}>";
     }
     
+    /// <summary>
+    /// Is the current type representing a <see cref="System.Threading.Tasks.Task&lt;T&gt;"/>?
+    /// </summary>
     public bool IsTask()
     {
         return TypeName is CSharpType.TaskFullTypeName or CSharpType.TaskShortTypeName;

@@ -19,6 +19,9 @@ public class CSharpTypeName : CSharpType
         return TypeName;
     }
     
+    /// <summary>
+    /// Is the current type representing a <see cref="System.Threading.Tasks.Task"/>?
+    /// </summary>
     public bool IsTask()
     {
         return TypeName is CSharpType.TaskFullTypeName or CSharpType.TaskShortTypeName;
