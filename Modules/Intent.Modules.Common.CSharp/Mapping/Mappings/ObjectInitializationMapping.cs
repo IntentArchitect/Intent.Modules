@@ -140,12 +140,16 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 propInit.AddStatements(child.GetMappingStatements());
             }
 
-            return GetNullableAwareInstantiation(Model, "Association Target End", Children, propInit);
+            return GetNullableAwareInstantiation(Model, Children, propInit);
         }
         
-        private CSharpStatement GetNullableAwareInstantiation(ICanBeReferencedType model, string specializationType, IList<ICSharpMapping> children, CSharpStatement instantiationStatement)
+        private CSharpStatement GetNullableAwareInstantiation(ICanBeReferencedType model, IList<ICSharpMapping> children, CSharpStatement instantiationStatement)
         {
-            if (model is IElement end && end.SpecializationType == specializationType && end.TypeReference is {IsNullable:true, IsCollection:false} && children.Count > 0)
+            // Only go for Target Elements that are Nullable and that have children who's Source mappings have a Map path length that is beyond the root Element.
+            // e.g. We won't target "request.FieldName" (flat mappings pose problems) but rather "request.NavProp.FieldName" for source elements.
+            if (model is IElement end && 
+		        end.TypeReference is {IsNullable:true, IsCollection:false} && 
+		        children.All(c => c.Mapping.SourcePath.SkipLast(1).Count() > 1))
             {
                 var child = children.First();
                 var accessPath = child.Mapping.SourcePath.SkipLast(1).Select(s => child.TryGetSourceReplacement(s.Element, out var a) ? a : s.Name).ToArray();

@@ -43,7 +43,7 @@ public class ConstructorMapping : CSharpMappingBase
 				var child = GetAllChildren().FirstOrDefault(c => c.Model.Name.Equals(parameter.Name, StringComparison.InvariantCultureIgnoreCase));
 				if (child != null)
 				{
-					inv.AddArgument(new CSharpArgument(GetNullableAwareInstantiation(child.Model, "Parameter", child.Children, child.GetSourceStatement())), arg =>
+					inv.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
 					{
 						if (_options.AddArgumentNames)
 						{
@@ -92,20 +92,8 @@ public class ConstructorMapping : CSharpMappingBase
             init.WithArgumentsOnNewLines();
         }
 
-        return GetNullableAwareInstantiation(Model, "Association Target End", Children, init);
+        return init;
     }
-	
-	private CSharpStatement GetNullableAwareInstantiation(ICanBeReferencedType model, string specializationType, IList<ICSharpMapping> children, CSharpStatement instantiationStatement)
-	{
-		if (model is IElement end && end.SpecializationType == specializationType && end.TypeReference is {IsNullable:true, IsCollection:false} && children.Count > 0)
-		{
-			var child = children.First();
-			var accessPath = child.Mapping.SourcePath.SkipLast(1).Select(s => child.TryGetSourceReplacement(s.Element, out var a) ? a : s.Name).ToArray();
-			return new CSharpConditionalExpressionStatement($"{string.Join(".", accessPath)} is not null", instantiationStatement, "null");
-		}
-
-		return instantiationStatement;
-	}
 
     public override IEnumerable<CSharpStatement> GetMappingStatements()
     {
