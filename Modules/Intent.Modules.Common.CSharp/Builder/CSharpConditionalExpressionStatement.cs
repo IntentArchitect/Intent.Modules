@@ -17,9 +17,9 @@ public class CSharpConditionalExpressionStatement : CSharpStatement
         WhenFalse = whenFalse;
     }
     
-    public CSharpStatement Condition { get; }
-    public CSharpStatement WhenTrue { get; }
-    public CSharpStatement WhenFalse { get; }
+    public ICSharpExpression Condition { get; }
+    public ICSharpExpression WhenTrue { get; }
+    public ICSharpExpression WhenFalse { get; }
 
     public override string GetText(string indentation)
     {
