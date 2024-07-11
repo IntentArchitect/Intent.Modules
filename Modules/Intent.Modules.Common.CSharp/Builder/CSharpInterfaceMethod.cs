@@ -71,51 +71,65 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
 
         return this;
     }
-
+    
+    /// <summary>
+    /// Indicates that this method is async and sets the return type to a <see cref="System.Threading.Tasks.Task"/> or <see cref="System.Threading.Tasks.Task&lt;T&gt;"/>.
+    /// </summary>
     public CSharpInterfaceMethod Async()
     {
-        IsAsync = true;
-        if (ReturnTypeInfo.IsValueTask())
-        {
-            var genericType = ReturnTypeInfo.GetValueTaskGenericType();
-            if (genericType is null)
-            {
-                ReturnTypeInfo = CSharpType.CreateTask(File.Template);
-            }
-            else
-            {
-                ReturnTypeInfo = CSharpType.CreateTask(genericType, File.Template);
-            }
-            ReturnType = ReturnTypeInfo.ToString();
-        }
-        else if (!ReturnTypeInfo.IsTask())
-        {
-            ReturnTypeInfo = ReturnTypeInfo.WrapInTask(File.Template);
-            ReturnType = ReturnTypeInfo.ToString();
-        }
-        return this;
+        return Async(false);
     }
-    
-    public CSharpInterfaceMethod AsyncValueTask()
+
+    /// <summary>
+    /// Indicates that this method is async and sets the return type to a
+    /// <see cref="System.Threading.Tasks.Task"/> / <see cref="System.Threading.Tasks.ValueTask"/> or
+    /// <see cref="System.Threading.Tasks.Task&lt;T&gt;"/> / <see cref="System.Threading.Tasks.ValueTask&lt;T&gt;"/>.
+    /// </summary>
+    /// <param name="asValueTask">If true it will use <see cref="System.Threading.Tasks.ValueTask"/> instead of <see cref="System.Threading.Tasks.Task"/>.</param>
+    public CSharpInterfaceMethod Async(bool asValueTask)
     {
         IsAsync = true;
-        if (ReturnTypeInfo.IsTask())
+        if (asValueTask)
         {
-            var genericType = ReturnTypeInfo.GetTaskGenericType();
-            if (genericType is null)
+            if (ReturnTypeInfo.IsTask())
             {
-                ReturnTypeInfo = CSharpType.CreateValueTask(File.Template);
+                var genericType = ReturnTypeInfo.GetTaskGenericType();
+                if (genericType is null)
+                {
+                    ReturnTypeInfo = CSharpType.CreateValueTask(File.Template);
+                }
+                else
+                {
+                    ReturnTypeInfo = CSharpType.CreateValueTask(genericType, File.Template);
+                }
+                ReturnType = ReturnTypeInfo.ToString();
             }
-            else
+            else if (!ReturnTypeInfo.IsValueTask())
             {
-                ReturnTypeInfo = CSharpType.CreateValueTask(genericType, File.Template);
+                ReturnTypeInfo = ReturnTypeInfo.WrapInValueTask(File.Template);
+                ReturnType = ReturnTypeInfo.ToString();
             }
-            ReturnType = ReturnTypeInfo.ToString();
         }
-        else if (!ReturnTypeInfo.IsValueTask())
+        else
         {
-            ReturnTypeInfo = ReturnTypeInfo.WrapInValueTask(File.Template);
-            ReturnType = ReturnTypeInfo.ToString();
+            if (ReturnTypeInfo.IsValueTask())
+            {
+                var genericType = ReturnTypeInfo.GetValueTaskGenericType();
+                if (genericType is null)
+                {
+                    ReturnTypeInfo = CSharpType.CreateTask(File.Template);
+                }
+                else
+                {
+                    ReturnTypeInfo = CSharpType.CreateTask(genericType, File.Template);
+                }
+                ReturnType = ReturnTypeInfo.ToString();
+            }
+            else if (!ReturnTypeInfo.IsTask())
+            {
+                ReturnTypeInfo = ReturnTypeInfo.WrapInTask(File.Template);
+                ReturnType = ReturnTypeInfo.ToString();
+            }
         }
         return this;
     }

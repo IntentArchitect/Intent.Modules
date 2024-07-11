@@ -46,7 +46,7 @@ public class AsyncMethods
             {
                 c.AddMethod("string", "GetNameAsync", m =>
                 {
-                    m.AsyncValueTask();
+                    m.Async(true);
                     m.AddNotImplementedException();
                 });
             })
@@ -62,7 +62,7 @@ public class AsyncMethods
             {
                 c.AddMethod("string", "GetNameAsync", m =>
                 {
-                    m.AsyncValueTask();
+                    m.Async(true);
                 });
             })
             .CompleteBuild();
@@ -78,7 +78,7 @@ public class AsyncMethods
                 c.AddMethod("string", "GetNameAsync", m =>
                 {
                     m.Async(); // Keep this for testing later conversion.
-                    m.AsyncValueTask();
+                    m.Async(true);
                     m.AddNotImplementedException();
                 });
             })
@@ -94,7 +94,7 @@ public class AsyncMethods
             {
                 c.AddMethod("string", "GetNameAsync", m =>
                 {
-                    m.AsyncValueTask(); // Keep this for testing later conversion.
+                    m.Async(true); // Keep this for testing later conversion.
                     m.Async();
                     m.AddNotImplementedException();
                 });
@@ -112,7 +112,7 @@ public class AsyncMethods
                 c.AddMethod("string", "GetNameAsync", m =>
                 {
                     m.Async(); // Keep this for testing later conversion.
-                    m.AsyncValueTask();
+                    m.Async(true);
                 });
             })
             .CompleteBuild();
@@ -127,7 +127,7 @@ public class AsyncMethods
             {
                 c.AddMethod("string", "GetNameAsync", m =>
                 {
-                    m.AsyncValueTask(); // Keep this for testing later conversion.
+                    m.Async(true); // Keep this for testing later conversion.
                     m.Async();
                 });
             })
