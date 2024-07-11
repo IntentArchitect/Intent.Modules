@@ -347,10 +347,9 @@ public static class HasCSharpStatementsExtensions
     }
     
     public static TParent AddNotImplementedException<TParent>(this TParent parent, Action<CSharpStatement> configure = null)
-        where TParent : CSharpMetadataBase, IHasCSharpStatements
+        where TParent : IHasCSharpStatements
     {
-        parent.File.AddUsing("System");
-        var exceptionStatement = new CSharpStatement("throw new NotImplementedException();").AddMetadata("exception", "NotImplementedException");
+        var exceptionStatement = new CSharpStatement("throw new System.NotImplementedException();").AddMetadata("exception", "NotImplementedException");
         parent.AddStatement(exceptionStatement);
         configure?.Invoke(exceptionStatement);
 

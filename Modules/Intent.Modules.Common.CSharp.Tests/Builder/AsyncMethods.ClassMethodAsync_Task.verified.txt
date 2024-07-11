@@ -1,6 +1,4 @@
-﻿using System;
-
-[assembly: DefaultIntentManaged(Mode.Fully)]
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace Namespace
 {
@@ -8,7 +6,7 @@ namespace Namespace
     {
         public async System.Threading.Tasks.Task<string> GetNameAsync()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
     }
 }
