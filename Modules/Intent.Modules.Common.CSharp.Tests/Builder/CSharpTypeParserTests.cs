@@ -13,6 +13,13 @@ public class CSharpTypeParserTests
     }
     
     [Fact]
+    public void TryParseStringForType_Null_Void()
+    {
+        var type = CSharpTypeParser.Parse(null);
+        Assert.Equal(new CSharpTypeVoid(), type);
+    }
+    
+    [Fact]
     public void TryParseStringForType_PredefinedType()
     {
         var type = CSharpTypeParser.Parse("string");

@@ -31,7 +31,13 @@ public class CSharpTypeParsingException : Exception
 /// </summary>
 public class CSharpTypeParser
 {
-    public static bool TryParse(string typeName, out CSharpType? type)
+    /// <summary>
+    /// Parses a string that represents a C# type and attempts to produce a <see cref="CSharpType"/> tree type. 
+    /// </summary>
+    /// <param name="typeName">The C# type in string form. If null is supplied, it will return with <see cref="CSharpTypeVoid" />.</param>
+    /// <param name="type">Provides the type instance if the parsing was done successful.</param>
+    /// <returns>True if the parsing was successful otherwise false.</returns>
+    public static bool TryParse(string? typeName, out CSharpType? type)
     {
         try
         {
@@ -45,9 +51,16 @@ public class CSharpTypeParser
         }
     }
 
-    public static CSharpType Parse(string typeName)
+    /// <summary>
+    /// Parses a string that represents a C# type and attempts to produce a <see cref="CSharpType"/> tree type. 
+    /// </summary>
+    /// <param name="typeName">The C# type in string form. If null is supplied, it will return with <see cref="CSharpTypeVoid" />.</param>
+    public static CSharpType Parse(string? typeName)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(typeName);
+        if (typeName is null)
+        {
+            return CSharpType.CreateVoid();
+        }
 
         var parser = new CSharpTypeParser();
         for (parser._positionIndex = 0; parser._positionIndex < typeName.Length; parser._positionIndex++)
