@@ -75,12 +75,48 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     public CSharpInterfaceMethod Async()
     {
         IsAsync = true;
-        if (!ReturnTypeInfo.IsTask())
+        if (ReturnTypeInfo.IsValueTask())
+        {
+            var genericType = ReturnTypeInfo.GetValueTaskGenericType();
+            if (genericType is null)
+            {
+                ReturnTypeInfo = CSharpType.CreateTask(File.Template);
+            }
+            else
+            {
+                ReturnTypeInfo = CSharpType.CreateTask(genericType, File.Template);
+            }
+            ReturnType = ReturnTypeInfo.ToString();
+        }
+        else if (!ReturnTypeInfo.IsTask())
         {
             ReturnTypeInfo = ReturnTypeInfo.WrapInTask(File.Template);
             ReturnType = ReturnTypeInfo.ToString();
         }
-
+        return this;
+    }
+    
+    public CSharpInterfaceMethod AsyncValueTask()
+    {
+        IsAsync = true;
+        if (ReturnTypeInfo.IsTask())
+        {
+            var genericType = ReturnTypeInfo.GetTaskGenericType();
+            if (genericType is null)
+            {
+                ReturnTypeInfo = CSharpType.CreateValueTask(File.Template);
+            }
+            else
+            {
+                ReturnTypeInfo = CSharpType.CreateValueTask(genericType, File.Template);
+            }
+            ReturnType = ReturnTypeInfo.ToString();
+        }
+        else if (!ReturnTypeInfo.IsValueTask())
+        {
+            ReturnTypeInfo = ReturnTypeInfo.WrapInValueTask(File.Template);
+            ReturnType = ReturnTypeInfo.ToString();
+        }
         return this;
     }
 

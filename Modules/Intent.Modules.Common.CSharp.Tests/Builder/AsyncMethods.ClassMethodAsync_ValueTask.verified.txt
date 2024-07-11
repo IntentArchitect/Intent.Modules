@@ -1,0 +1,14 @@
+﻿using System;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public async System.Threading.Tasks.ValueTask<string> GetNameAsync()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
