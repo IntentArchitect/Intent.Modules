@@ -32,7 +32,7 @@ public abstract class CSharpType
     }
 
     /// <summary>
-    /// Creates a type-safe type that represents <see cref="void"/>.
+    /// Creates a type-safe type that represents void.
     /// </summary>
     public static CSharpTypeVoid CreateVoid()
     {
@@ -63,13 +63,12 @@ public abstract class CSharpType
     /// <summary>
     /// If the current type is a <see cref="System.Threading.Tasks.Task&lt;T&gt;"/>, it will extract the generic parameter type.
     /// </summary>
-    public CSharpType? GetTaskType()
+    public CSharpType? GetTaskGenericType()
     {
-        if (!this.IsTask())
+        if (this.IsTask() && this is CSharpTypeGeneric generic)
         {
-            return null;
+            return generic.TypeArgumentList.FirstOrDefault();
         }
-
-        return (this as CSharpTypeGeneric)?.TypeArgumentList.FirstOrDefault();
+        return null;
     }
 }
