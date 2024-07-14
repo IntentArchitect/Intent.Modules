@@ -9,6 +9,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICSharpInterfaceMethod, ICSharpMethodDeclaration
 {
     private readonly ICSharpInterfaceMethod _wrapper;
+    public CSharpType ReturnTypeInfo { get; private set; }
     public string ReturnType { get; private set; }
     ICSharpExpression ICSharpMethodDeclaration.ReturnType => new CSharpStatement(ReturnType);
     ICSharpExpression ICSharpMethodDeclarationActual.ReturnType => new CSharpStatement(ReturnType);
@@ -38,6 +39,28 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
 
         _wrapper = new CSharpInterfaceMethodWrapper(this);
         ReturnType = returnType;
+        ReturnTypeInfo = CSharpTypeParser.Parse(returnType);
+        Name = name;
+        Parent = parent;
+        File = parent.File;
+        BeforeSeparator = CSharpCodeSeparatorType.NewLine;
+        AfterSeparator = CSharpCodeSeparatorType.NewLine;
+    }
+    
+    public CSharpInterfaceMethod(CSharpType returnType, string name, CSharpInterface parent)
+    {
+        if (returnType is null)
+        {
+            throw new ArgumentException("Cannot be null", nameof(returnType));
+        }
+
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+
+        ReturnType = returnType.ToString();
+        ReturnTypeInfo = returnType;
         Name = name;
         Parent = parent;
         File = parent.File;
@@ -55,7 +78,12 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     public CSharpInterfaceMethod Async()
     {
         IsAsync = true;
-        ReturnType = CSharpClassMethod.GetAsyncReturnType(File, ReturnType);
+        if (!ReturnTypeInfo.IsTask())
+        {
+            ReturnTypeInfo = ReturnTypeInfo.WrapInTask(File.Template);
+            ReturnType = ReturnTypeInfo.ToString();
+        }
+
         return this;
     }
 
@@ -146,7 +174,8 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
             throw new ArgumentException("Cannot be null or empty", nameof(returnType));
         }
 
-        ReturnType = returnType;
+        ReturnTypeInfo = CSharpTypeParser.Parse(returnType);
+        ReturnType = returnType; 
         return this;
     }
 
@@ -177,7 +206,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
             ? $"static {(IsAbstract ? "abstract " : string.Empty)}"
             : string.Empty;
 
-        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{@static}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetGenericTypeConstraints(indentation)}";
+        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{@static}{ReturnTypeInfo} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetGenericTypeConstraints(indentation)}";
         if (IsAbstract && Statements.Count == 0)
         {
             return $@"{declaration};";

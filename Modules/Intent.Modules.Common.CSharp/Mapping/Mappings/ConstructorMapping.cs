@@ -38,15 +38,15 @@ public class ConstructorMapping : CSharpMappingBase
         //Try find the CSharp constructor so we know what parameters are expected and in what order
         if (TryFindModelConstructor(out var ctor)) 
         {
-			var i = new CSharpInvocationStatement($"new { ctor.Name }").WithoutSemicolon();
+			var inv = new CSharpInvocationStatement($"new { ctor.Name }").WithoutSemicolon();
 
 			foreach (var parameter in ctor.Parameters)
             {
-                bool optional = parameter.DefaultValue != null;
+                var optional = parameter.DefaultValue != null;
 				var child = GetAllChildren().FirstOrDefault(c => c.Model.Name.Equals(parameter.Name, StringComparison.InvariantCultureIgnoreCase));
-				if ( child != null)
-                {
-					i.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
+				if (child != null)
+				{
+					inv.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
 					{
 						if (_options.AddArgumentNames)
 						{
@@ -56,20 +56,19 @@ public class ConstructorMapping : CSharpMappingBase
 				}
 				else if (!optional)
                 {
-                    i.AddArgument(new CSharpArgument("default"), arg => 
+                    inv.AddArgument(new CSharpArgument("default"), arg => 
                     {
 						if (_options.AddArgumentNames)
                         {
 							arg.WithName(parameter.Name);
 						}
-
 					});
     			}
 			}
 
-            i.WithArgumentsOnNewLines();
+            inv.WithArgumentsOnNewLines();
 
-            return i;
+            return inv;
         }
 
         //This is not ideal and a best effort to realize your mapping

@@ -1,0 +1,37 @@
+﻿using System;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class TestClass
+    {
+        public void MethodReturnType_Void()
+        {
+        }
+
+        public async System.Threading.Task MethodReturnType_Task()
+        {
+        }
+
+        public string MethodReturnType_String()
+        {
+            return "";
+        }
+
+        public System.Collections.Generic.List<string> MethodReturnType_List_String()
+        {
+            return new List<string>();
+        }
+
+        public async System.Threading.Task<System.Collections.Generic.List<string>> MethodReturnType_Task_List_String()
+        {
+            return new List<string>();
+        }
+
+        public System.Collections.Generic.List<string> MethodReturnType_StrippedTask_List_String()
+        {
+            return new List<string>();
+        }
+    }
+}

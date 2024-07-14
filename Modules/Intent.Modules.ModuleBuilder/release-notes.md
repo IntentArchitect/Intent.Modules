@@ -1,3 +1,7 @@
+### Version 3.10.2
+
+- Fixed: Bumped core nuget and module versions to fix compilation errors.
+
 ### Version 3.10.1
 
 - Improvement: Removed "Icon" from "Module Settings" stereotype as the icon can be controlled by the default Application "Settings" screen for the particular Module Builder application.

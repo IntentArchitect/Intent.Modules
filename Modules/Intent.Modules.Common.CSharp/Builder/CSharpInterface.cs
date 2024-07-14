@@ -134,6 +134,11 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
             configure?.Invoke(method);
         });
     }
+    
+    public CSharpInterface AddMethod(CSharpType returnType, string name, Action<CSharpInterfaceMethod> configure = null)
+    {
+        return InsertMethod(Methods.Count, returnType, name, configure);
+    }
 
     public CSharpInterface AddMethod(string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
     {
@@ -171,6 +176,18 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
     }
 
     public CSharpInterface InsertMethod(int index, string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
+    {
+        var method = new CSharpInterfaceMethod(returnType, name, this)
+        {
+            BeforeSeparator = _methodsSeparator,
+            AfterSeparator = _methodsSeparator
+        };
+        Methods.Insert(index, method);
+        configure?.Invoke(method);
+        return this;
+    }
+    
+    public CSharpInterface InsertMethod(int index, CSharpType returnType, string name, Action<CSharpInterfaceMethod> configure = null)
     {
         var method = new CSharpInterfaceMethod(returnType, name, this)
         {

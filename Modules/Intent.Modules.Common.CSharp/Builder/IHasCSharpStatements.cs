@@ -27,7 +27,7 @@ public static class HasCSharpStatementsExtensions
 
     public static T FindStatement<T>(IHasCSharpStatements parent, Func<T, bool> matchFunc)
     {
-        return parent.Statements.OfType<IHasCSharpStatements>().SelectMany(x => x.FindStatements(matchFunc)) 
+        return parent.Statements.OfType<IHasCSharpStatements>().SelectMany(x => x.FindStatements(matchFunc))
             .Concat(parent.Statements.OfType<T>().Where(matchFunc))
             .FirstOrDefault();
     }
@@ -45,8 +45,9 @@ public static class HasCSharpStatementsExtensions
     }
 
     [Obsolete("Use TParent AddStatement<TParent, TStatement> method")]
-    [FixFor_Version4("Remove overload as 'public static TParent AddStatement<TParent, TStatement>(TParent parent, TStatement statement, Action<TStatement> configure = null)' can be used instead")]
-    public static TParent AddStatement<TParent>(TParent parent, CSharpStatement statement, Action<CSharpStatement> configure = null)
+    [FixFor_Version4(
+        "Remove this overload as 'public static TParent AddStatement<TParent, TStatement>(this TParent parent, TStatement statement, Action<TStatement> configure = null)' can be used instead")]
+    public static TParent AddStatement<TParent>(this TParent parent, CSharpStatement statement, Action<CSharpStatement> configure = null)
         where TParent : IHasCSharpStatements
     {
         parent.Statements.Add(statement);
@@ -121,7 +122,7 @@ public static class HasCSharpStatementsExtensions
     {
         return parent.AddStatement(new CSharpIfStatement(expression), x => configure?.Invoke(x));
     }
-    
+
     /// <summary>
     /// Adds an else if block to the <paramref name="parent"/>.
     /// <code>
@@ -136,7 +137,7 @@ public static class HasCSharpStatementsExtensions
     {
         return parent.AddStatement(new CSharpElseIfStatement(expression), x => configure?.Invoke(x));
     }
-    
+
     /// <summary>
     /// Adds an else block to the <paramref name="parent"/>.
     /// <code>
@@ -168,7 +169,7 @@ public static class HasCSharpStatementsExtensions
     {
         return parent.AddStatement(new CSharpForEachStatement(iterationVariable, sourceCollection), x => configure?.Invoke(x));
     }
-    
+
     /// <summary>
     /// Adds a while block to the <paramref name="parent"/>.
     /// <code>
@@ -271,7 +272,8 @@ public static class HasCSharpStatementsExtensions
         return parent;
     }
 
-    public static TParent InsertStatements<TParent>(TParent parent, int index, IReadOnlyCollection<CSharpStatement> statements, Action<IEnumerable<CSharpStatement>> configure = null)
+    public static TParent InsertStatements<TParent>(this TParent parent, int index, IReadOnlyCollection<CSharpStatement> statements,
+        Action<IEnumerable<CSharpStatement>> configure = null)
         where TParent : IHasCSharpStatements
     {
         foreach (var s in statements.Reverse())
@@ -279,6 +281,7 @@ public static class HasCSharpStatementsExtensions
             parent.Statements.Insert(index, s);
             s.Parent = parent;
         }
+
         configure?.Invoke(statements);
         return parent;
     }
@@ -304,6 +307,7 @@ public static class HasCSharpStatementsExtensions
             parent.Statements.Add(statement);
             statement.Parent = parent;
         }
+
         configure?.Invoke(arrayed);
 
         return parent;
@@ -321,6 +325,24 @@ public static class HasCSharpStatementsExtensions
         parent.AddStatement((CSharpStatement)localMethodStatement);
         configure?.Invoke(localMethodStatement);
 
+        return parent;
+    }
+
+    public static TParent AddConditionalExpression<TParent>(this TParent parent, CSharpStatement condition, CSharpStatement whenTrue, CSharpStatement whenFalse, Action<CSharpConditionalExpressionStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        var statement = new CSharpConditionalExpressionStatement(condition, whenTrue, whenFalse);
+        parent.AddStatement(statement);
+        configure?.Invoke(statement);
+        return parent;
+    }
+    
+    public static TParent AddReturn<TParent>(this TParent parent, CSharpStatement returnStatement, Action<CSharpReturnStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        var statement = new CSharpReturnStatement(returnStatement);
+        parent.AddStatement(statement);
+        configure?.Invoke(statement);
         return parent;
     }
 }

@@ -50,14 +50,15 @@ public static class CSharpBuilderExtensions
         }
     }
 
-    public static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation, Func<string, string> codeTextTransformer = null)
+    internal delegate string CodeTextTransformer(int codeBlockIndex, ICodeBlock codeBlock, string indentation);
+    internal static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation, CodeTextTransformer codeTextTransformer = null)
     {
         // It's conventional to always have local methods at the bottom of a code block
         var orderedCodeBlocks = codeBlocks
             //.OrderBy(x => x is CSharpLocalMethod) // we should not prescribe this, and it is hidden from the user and likely to lead to confusion
             .ToArray();
 
-        return string.Concat(orderedCodeBlocks.Select(s => $"{orderedCodeBlocks.DetermineSeparator(s, indentation, string.Empty, codeTextTransformer)}"));
+        return string.Concat(orderedCodeBlocks.Select((s, i) => $"{orderedCodeBlocks.DetermineSeparator(i, s, indentation, string.Empty, codeTextTransformer)}"));
     }
 
     public static string JoinCode(this IEnumerable<ICodeBlock> codeBlocks, string separator, string indentation)
@@ -67,10 +68,10 @@ public static class CSharpBuilderExtensions
             //.OrderBy(x => x is CSharpLocalMethod) // we should not prescribe this, and it is hidden from the user and likely to lead to confusion
             .ToArray();
 
-        return string.Concat(orderedCodeBlocks.Select(s => $"{orderedCodeBlocks.DetermineSeparator(s, indentation, separator)}"));
+        return string.Concat(orderedCodeBlocks.Select((s, i) => $"{orderedCodeBlocks.DetermineSeparator(i, s, indentation, separator)}"));
     }
 
-    private static string DetermineSeparator(this IEnumerable<ICodeBlock> codeBlocks, ICodeBlock currentCodeBlock, string indentation, string separator = "", Func<string, string> codeTextTransformer = null)
+    private static string DetermineSeparator(this IEnumerable<ICodeBlock> codeBlocks, int codeBlockIndex, ICodeBlock currentCodeBlock, string indentation, string separator = "", CodeTextTransformer codeTextTransformer = null)
     {
         var codeBlocksList = codeBlocks.ToList();
         var currentBlockIndex = codeBlocksList.IndexOf(currentCodeBlock);
@@ -78,33 +79,33 @@ public static class CSharpBuilderExtensions
 
         if (prevCodeBlock is null && currentCodeBlock.BeforeSeparator is CSharpCodeSeparatorType.None)
         {
-            return $"{GetCodeText(currentCodeBlock, indentation, codeTextTransformer).TrimStart()}{(currentBlockIndex < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
+            return $"{GetCodeText(codeBlockIndex, currentCodeBlock, indentation, codeTextTransformer).TrimStart()}{(currentBlockIndex < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
         }
 
         if (prevCodeBlock is null)
         {
-            return $"{Environment.NewLine}{GetCodeText(currentCodeBlock, indentation, codeTextTransformer)}{(currentBlockIndex < codeBlocksList.Count - 1 ? separator : string.Empty)}";
+            return $"{Environment.NewLine}{GetCodeText(codeBlockIndex, currentCodeBlock, indentation, codeTextTransformer)}{(currentBlockIndex < codeBlocksList.Count - 1 ? separator : string.Empty)}";
         }
 
         if (prevCodeBlock.AfterSeparator is CSharpCodeSeparatorType.EmptyLines ||
             currentCodeBlock.BeforeSeparator is CSharpCodeSeparatorType.EmptyLines)
         {
-            return $"{Environment.NewLine}{Environment.NewLine}{GetCodeText(currentCodeBlock, indentation, codeTextTransformer)}{(currentBlockIndex < codeBlocksList.Count - 1 ? separator : string.Empty)}";
+            return $"{Environment.NewLine}{Environment.NewLine}{GetCodeText(codeBlockIndex, currentCodeBlock, indentation, codeTextTransformer)}{(currentBlockIndex < codeBlocksList.Count - 1 ? separator : string.Empty)}";
         }
 
         if (prevCodeBlock.AfterSeparator is CSharpCodeSeparatorType.NewLine ||
             currentCodeBlock.BeforeSeparator is CSharpCodeSeparatorType.NewLine)
         {
-            return $"{Environment.NewLine}{GetCodeText(currentCodeBlock, indentation, codeTextTransformer)}{(currentBlockIndex < codeBlocksList.Count - 1 ? separator : string.Empty)}";
+            return $"{Environment.NewLine}{GetCodeText(codeBlockIndex, currentCodeBlock, indentation, codeTextTransformer)}{(currentBlockIndex < codeBlocksList.Count - 1 ? separator : string.Empty)}";
         }
 
-        return $"{GetCodeText(currentCodeBlock, indentation, codeTextTransformer).TrimStart()}{(currentBlockIndex < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
+        return $"{GetCodeText(codeBlockIndex, currentCodeBlock, indentation, codeTextTransformer).TrimStart()}{(currentBlockIndex < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
     }
 
-    private static string GetCodeText(ICodeBlock codeBlock, string indentation, Func<string, string> codeTextTransformer)
+    private static string GetCodeText(int codeBlockIndex, ICodeBlock codeBlock, string indentation, CodeTextTransformer codeTextTransformer)
     {
         return codeTextTransformer == null
             ? codeBlock.GetText(indentation)
-            : indentation + codeTextTransformer(codeBlock.GetText(indentation).TrimStart());
+            : codeTextTransformer(codeBlockIndex, codeBlock, indentation);
     }
 }
