@@ -1120,6 +1120,9 @@ dataCollection.getChildren().filter(x =&gt; x.specialization == "Property" || x.
               <script>const model = element;
 const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
 const table = createElement("Table", element.getName() + "Table", mapping.getTargetElement().id);
+
+element.typeReference.setIsNullable(true); // table models will almost always be nullable.
+
 mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), table.getMappingPath());
 
 model.getChildren().filter(x =&gt; x.specialization == "Property" || x.specialization == "DTO-Field").forEach(p =&gt; {

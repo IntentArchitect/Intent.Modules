@@ -141,6 +141,7 @@ else {
           <childSettings>
             <childSetting id="bebd723b-8592-4540-9edd-fa54e1be4d78" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
+              <isRequiredFunction>return !element.typeReference.getIsNullable();</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -182,6 +183,7 @@ else {
           <represents>invokable</represents>
           <childSettings>
             <childSetting id="3fc9e92a-7af5-4d45-9cb6-581a406476b4" name="Parameter" type="Parameter" typeId="f11273c1-217f-4f42-b690-3d8b488f95a8" version="2.0.0">
+              <isRequiredFunction>return !element.typeReference.getIsNullable();</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
