@@ -14,7 +14,11 @@
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
     const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
 
-    if (element.getStereotype(azureFunctionId)?.getProperty(azureFunctionTriggerId).getValue() !== "Http Trigger") {
+    if (!element.hasStereotype(azureFunctionId)) {
+        return;
+    }
+
+    if (element.getStereotype(azureFunctionId).getProperty(azureFunctionTriggerId).getValue() !== "Http Trigger") {
         element.removeStereotype(httpSettingsId);
         element.getChildren().forEach(x => x.removeStereotype(parameterSettingsId));
         return;
