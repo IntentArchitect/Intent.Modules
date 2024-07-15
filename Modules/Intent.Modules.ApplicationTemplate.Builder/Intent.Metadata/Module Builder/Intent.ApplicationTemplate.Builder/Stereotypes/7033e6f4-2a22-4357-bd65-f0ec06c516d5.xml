@@ -10,7 +10,25 @@
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
-  <displayFunction>return properties["Version"].value</displayFunction>
+  <displayFunction>let result = properties["Version"].value;
+
+let options = [];
+
+if (properties["Is Required"].value) {
+    options.push("required");
+}
+else if (properties["Include By Default"].value) {
+    options.push("include by default");
+}
+
+if (properties["Install Metadata Only"].value) {
+    options.push("metadata only");
+}
+
+return options.length == 0
+    ? properties["Version"].value
+    : `${properties["Version"].value} [${options.join(", ")}]`
+</displayFunction>
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>

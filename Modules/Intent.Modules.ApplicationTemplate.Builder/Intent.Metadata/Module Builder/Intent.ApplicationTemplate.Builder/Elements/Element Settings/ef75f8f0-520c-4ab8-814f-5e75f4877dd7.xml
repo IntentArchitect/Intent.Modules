@@ -3,6 +3,7 @@
   <name>Component Module</name>
   <display>Component Module</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -41,12 +42,74 @@
         <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
-        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
-        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="By name" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
   <metadata />
-  <childElements />
+  <childElements>
+    <childElement id="37ff0695-e6d1-43b2-a471-7ad641050e94" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>ef75f8f0-520c-4ab8-814f-5e75f4877dd7</parentFolderId>
+      <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+      <packageName>Intent.ApplicationTemplate.Builder</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="f3471837-c90b-4fdd-adc5-b2a42f4523ea" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Convert to Minimum Dependency Version</name>
+          <display>Convert to Minimum Dependency Version: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="661ce7a6-5073-4ff0-af8d-776d822b7533">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>37ff0695-e6d1-43b2-a471-7ad641050e94</parentFolderId>
+          <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+          <packageName>Intent.ApplicationTemplate.Builder</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const package = element.getPackage();&#xD;&#xA;&#xD;&#xA;let mimimumVersionsElement = package.getChildren(&quot;Minimum Dependency Versions&quot;)[0];&#xD;&#xA;if (!mimimumVersionsElement) {&#xD;&#xA;    mimimumVersionsElement = createElement(&quot;Minimum Dependency Versions&quot;, &quot;Minimum Dependency Versions&quot;, package.id);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let minVersionElement = mimimumVersionsElement.getChildren().filter(x =&gt; x.getName() === element.getName())[0];&#xD;&#xA;if (!minVersionElement) {&#xD;&#xA;    minVersionElement = createElement(&quot;Module&quot;, element.getName(), mimimumVersionsElement.id);&#xD;&#xA;    mimimumVersionsElement.collapse();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let version = element.getStereotype(&quot;Module Settings&quot;).getProperty(&quot;Version&quot;).getValue();&#xD;&#xA;if (minVersionElement.getValue() &amp;&amp; version &amp;&amp; minVersionElement.getValue() !== version) {&#xD;&#xA;    const options = [&#xD;&#xA;        {&#xD;&#xA;            id: minVersionElement.getValue(),&#xD;&#xA;            name: `Minimum version: ${minVersionElement.getValue()}`&#xD;&#xA;        },&#xD;&#xA;        {&#xD;&#xA;            id: version,&#xD;&#xA;            name: `Module version: ${version}`&#xD;&#xA;        }&#xD;&#xA;    ];&#xD;&#xA;&#xD;&#xA;    version = await dialogService.lookupFromOptions(options);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;minVersionElement.setValue(version);&#xD;&#xA;&#xD;&#xA;element.delete();&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
 </class>
