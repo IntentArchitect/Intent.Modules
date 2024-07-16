@@ -158,6 +158,21 @@ namespace Intent.Metadata.WebApi.Api
                 return _stereotype.GetProperty<string>("Roles");
             }
 
+            public string Policy()
+            {
+                return _stereotype.GetProperty<string>("Policy");
+            }
+
+            public IElement[] SecurityRoles()
+            {
+                return _stereotype.GetProperty<IElement[]>("Security Roles") ?? new IElement[0];
+            }
+
+            public IElement[] SecurityPolicies()
+            {
+                return _stereotype.GetProperty<IElement[]>("Security Policies") ?? new IElement[0];
+            }
+
         }
 
         public class Unsecured
