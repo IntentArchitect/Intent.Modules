@@ -9,7 +9,6 @@ public interface IRazorFileNodeBase<out TInterface> : IRazorFileNode
     where TInterface : IRazorFileNodeBase<TInterface>
 {
     public IRazorFile RazorFile { get; }
-    public IList<IRazorFileNode> ChildNodes { get; }
     public TInterface AddHtmlElement(string name, Action<IHtmlElement>? configure = null);
     public TInterface AddHtmlElement(IHtmlElement htmlElement);
     public TInterface AddEmptyLine();

@@ -4,7 +4,7 @@ using Intent.Modules.Common.CSharp.Builder;
 
 namespace Intent.Modules.Common.CSharp.RazorBuilder;
 
-public interface IRazorCodeBlock : IRazorFileNodeBase<IRazorCodeBlock>, IBuildsCSharpMembers
+public interface IRazorCodeBlock : IBuildsCSharpMembers, IRazorFileNode
 {
-    ICSharpExpression? Expression { get; set; }
+    IRazorFile RazorFile { get; }
 }

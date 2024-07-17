@@ -7,6 +7,7 @@ using System.Text;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
+using static Intent.Modules.Common.CSharp.Builder.CSharpClass;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -61,17 +62,18 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     public CSharpCodeSeparatorType AfterSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
     public string Name { get; }
     protected string AccessModifier { get; private set; } = "public ";
+    public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
     public CSharpClass? BaseType { get; set; }
     public IList<string> BaseTypeTypeParameters { get; } = new List<string>();
     public IList<string> Interfaces { get; } = new List<string>();
+    public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
+
     public IList<CSharpField> Fields { get; } = new List<CSharpField>();
     public IList<CSharpConstructor> Constructors { get; } = new List<CSharpConstructor>();
     public IList<CSharpProperty> Properties { get; } = new List<CSharpProperty>();
     public IList<CSharpClassMethod> Methods { get; } = new List<CSharpClassMethod>();
-    public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
     public IList<CSharpClass> NestedClasses { get; } = new List<CSharpClass>();
     public IList<CSharpInterface> NestedInterfaces { get; } = new List<CSharpInterface>();
-    public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
     public IList<CSharpCodeBlock> CodeBlocks { get; } = new List<CSharpCodeBlock>();
 
     public IList<ICodeBlock> Declarations
@@ -338,7 +340,23 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
 
     public int IndexOf(ICodeBlock codeBlock)
     {
-        return Declarations.IndexOf(codeBlock);
+        switch (codeBlock)
+        {
+            case CSharpField field:
+                return Fields.IndexOf(field);
+            case CSharpConstructor ctor:
+                return Constructors.IndexOf(ctor);
+            case CSharpProperty property:
+                return Properties.IndexOf(property);
+            case CSharpClassMethod method:
+                return Methods.IndexOf(method);
+            case CSharpClass @class:
+                return NestedClasses.IndexOf(@class);
+            case CSharpInterface @interface:
+                return NestedInterfaces.IndexOf(@interface);
+            default:
+                throw new ArgumentOutOfRangeException(nameof(codeBlock));
+        }
     }
 
     public CSharpClass AddNestedClass(string name, Action<CSharpClass>? configure = null)
@@ -542,7 +560,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return sb.ToString();
     }
 
-    public string GetText(string indentation)
+    public virtual string GetText(string indentation)
     {
         return ToString(indentation);
     }

@@ -75,7 +75,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             {
                 // TODO: These "Except(...)" items probably originated due to what was in global usings
                 // We should be able to use the same system as we're using in the RoslynWeaver
-                foreach (var @using in ResolveAllUsings().Except(["System", "System.Collections.Generic"]))
+                foreach (var @using in ResolveAllUsings().Except(["System", "System.Collections.Generic", "Microsoft.AspNetCore.Components"]))
                 {
                     razorFileTemplate.RazorFile.AddUsing(@using);
                 }
