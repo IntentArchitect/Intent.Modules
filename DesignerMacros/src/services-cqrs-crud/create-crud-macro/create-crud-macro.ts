@@ -97,9 +97,9 @@ namespace cqrsCrud {
             commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter")
                 .filter(x => x.typeId != null && lookup(x.typeId).specialization !== "Domain Service"));
         } else {
-            if (!surrogateKey) {
-                const toAdd = primaryKeys.filter(x => DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
-                ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), toAdd);
+            const toAdd = primaryKeys.filter(x => DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+            if (toAdd.length > 0){
+                ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), toAdd);            
             }
             commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
             commandManager.addChildrenFrom(DomainHelper.getMandatoryAssociationsWithMapPath(entity));
