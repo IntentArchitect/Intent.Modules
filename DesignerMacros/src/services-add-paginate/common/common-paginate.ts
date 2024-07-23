@@ -15,7 +15,8 @@ function addPagingParameters(element: MacroApi.Context.IElementApi, childElement
     const commonTypes = {
         guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
         long: "33013006-E404-48C2-AC46-24EF5A5774FD",
-        int: "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"
+        int: "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74",
+        string: "d384db9c-a279-45e1-801e-e4e8099625f2"
     };
 
     var pageOffsetAttributes: Array<string> = ["pageno", "pageindex"];
@@ -28,5 +29,17 @@ function addPagingParameters(element: MacroApi.Context.IElementApi, childElement
     if (!element.getChildren(childElementType).find(x => x.getName().toLowerCase() == "pagesize")){
         let pageSize = createElement(childElementType, "PageSize", element.id);
         pageSize.typeReference.setType(commonTypes.int)    
+    }
+
+    // Dynamic OrderBy doesn't work for Mongo have logged a ticket 
+    //https://github.com/TurnerSoftware/MongoFramework/issues/383
+    if (application.installedModules.find(m => m.id == "Intent.MongoDb"))
+    {
+        return;
+    }
+
+    if (!element.getChildren(childElementType).find(x => x.getName().toLowerCase() == "orderby")){
+        let pageSize = createElement(childElementType, "OrderBy", element.id);
+        pageSize.typeReference.setType(commonTypes.string)    
     }
 }

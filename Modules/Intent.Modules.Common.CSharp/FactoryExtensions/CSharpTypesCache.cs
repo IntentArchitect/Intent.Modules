@@ -21,7 +21,7 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
         private static TypeRegistry _knownTypes;
         private static TypeRegistry _outputTargetNames;
         private static readonly TypeRegistry Empty = new([]);
-        private static readonly List<string> ManuallyAddedKnownTypes = new();
+        private static readonly HashSet<string> ManuallyAddedKnownTypes = new();
 
         /// <inheritdoc />
         public override int Order { get; set; } = int.MinValue;
