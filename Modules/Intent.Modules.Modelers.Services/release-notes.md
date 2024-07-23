@@ -1,3 +1,7 @@
+### Version 3.7.4
+
+- Fixed: Ensure that when the `Web Client` module is installed that it will install the Service designer package reference.
+
 ### Version 3.7.3
 
 - Improvement: Better Rich Domain Support around `Value Object`s and `Data Contract`s.
