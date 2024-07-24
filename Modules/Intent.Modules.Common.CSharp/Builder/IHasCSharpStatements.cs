@@ -343,6 +343,16 @@ public static class HasCSharpStatementsExtensions
         var statement = new CSharpReturnStatement(returnStatement);
         parent.AddStatement(statement);
         configure?.Invoke(statement);
+            return parent;
+    }
+    
+    public static TParent AddNotImplementedException<TParent>(this TParent parent, Action<CSharpStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        var exceptionStatement = new CSharpStatement("throw new System.NotImplementedException();").AddMetadata("exception", "NotImplementedException");
+        parent.AddStatement(exceptionStatement);
+        configure?.Invoke(exceptionStatement);
+
         return parent;
     }
 }

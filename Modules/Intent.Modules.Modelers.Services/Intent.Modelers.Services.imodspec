@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services</id>
-  <version>3.8.0-pre.0</version>
+  <version>3.8.0-pre.1</version>
   <supportedClientVersions>[4.2.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Services modeler for describing an application's web services.</summary>
   <description>Services modeler for describing an application's web services.</description>
@@ -32,7 +32,7 @@
     <install src="modelers/Services Types.designer.settings" externalReference="55e213e3-1e43-4bb5-abe6-6ff77af23f39" />
     <install src="modelers/Services.designer.config" externalReference="81104ae6-2bc5-4bae-b05a-f987b0372d81" />
     <install src="Intent.Modelers.Services/Intent.Modelers.Services.pkg.config" externalReference="4ba53041-59f9-4446-a207-6da4fbdf86fe" target="Module Builder" />
-    <install src="Intent.Metadata/Services/Intent.Modelers.Services.Pagination/Intent.Modelers.Services.Pagination.pkg.config" externalReference="4ba53041-59f9-4446-a207-6da4fbdf86fe" target="Services;Service Proxies;User Interface" />
+    <install src="Intent.Metadata/Services/Intent.Modelers.Services.Pagination/Intent.Modelers.Services.Pagination.pkg.config" externalReference="4ba53041-59f9-4446-a207-6da4fbdf86fe" target="Services;Service Proxies;User Interface;Web Client" />
   </metadata>
   <files></files>
   <factoryExtensions />

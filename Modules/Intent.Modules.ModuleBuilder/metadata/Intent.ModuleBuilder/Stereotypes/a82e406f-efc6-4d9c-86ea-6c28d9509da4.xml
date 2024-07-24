@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="a82e406f-efc6-4d9c-86ea-6c28d9509da4" version="3.1.0">
+  <hint>Returned value used for the [SVG path definition](https://developer.mozilla.org/docs/Web/SVG/Tutorial/Paths).</hint>
   <name>Path Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>

@@ -1,3 +1,7 @@
+### Version 4.5.5
+
+- Improvement: Improved service security modeling experience.
+
 ### Version 4.5.4
 
 - Improvement: `Exposing as HTTP Endpoint` now pluralizes the entity e.g. `api/customers` was previously `api/customer`.

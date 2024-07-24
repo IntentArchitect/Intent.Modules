@@ -26,6 +26,14 @@ public class CSharpTypeName : CSharpType
     {
         return TypeName is CSharpType.TaskFullTypeName or CSharpType.TaskShortTypeName;
     }
+    
+    /// <summary>
+    /// Is the current type representing a <see cref="System.Threading.Tasks.ValueTask"/>?
+    /// </summary>
+    public bool IsValueTask()
+    {
+        return TypeName is CSharpType.ValueTaskFullTypeName or CSharpType.ValueTaskShortTypeName;
+    }
 
     protected bool Equals(CSharpTypeName other)
     {

@@ -22,6 +22,7 @@
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
     <property id="18b35949-3dda-46d2-8296-490214e3b687">
+      <hint>Returned value used for the [SVG path definition](https://developer.mozilla.org/docs/Web/SVG/Tutorial/Paths).</hint>
       <name>Path</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -53,6 +54,7 @@
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="fa857edd-c8ac-4044-8cf6-c8ee9de1ec29">
+      <hint>Returned value used for the [stroke-dasharray](https://developer.mozilla.org/docs/Web/SVG/Attribute/stroke-dasharray) attribute .</hint>
       <name>Line Dash Array</name>
       <type>string</type>
       <controlType>function</controlType>

@@ -2,6 +2,10 @@
 
 - Improvement: Added support for Razor file code management.
 
+### Version 3.7.1
+
+- Improvement: Support for `ValueTask` as a `CSharpType` on Methods.
+
 ### Version 3.7.0
 
 - New Feature: `CSharpType` to represent a C# Type that can be more easily mutated and reliably inspected for the type it is. It has a parser to convert `string` into a `CSharpType`.

@@ -1,3 +1,7 @@
+### Version 1.1.5
+
+- Improvement: CQRS CRUD script now supports surrogate Primary keys marked as `User supplied`.
+
 ### Version 1.1.4
 
 - Improvement: Added ability to drag Repositories onto the application service designer you can perform Call Operations on them.

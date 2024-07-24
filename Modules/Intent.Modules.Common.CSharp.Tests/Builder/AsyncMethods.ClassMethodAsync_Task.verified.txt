@@ -1,0 +1,12 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public async System.Threading.Tasks.Task<string> GetNameAsync()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+}

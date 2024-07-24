@@ -15,9 +15,9 @@
   <childElements>
     <childElement id="77f68af6-c825-4157-9d58-c23754546807" type="Module" typeId="6a811790-b322-4340-8b68-84dae5ffafa8">
       <name>Intent.Common.CSharp</name>
-      <display>Intent.Common.CSharp 3.6.4</display>
+      <display>Intent.Common.CSharp 3.7.0</display>
       <isAbstract>false</isAbstract>
-      <value>3.6.4</value>
+      <value>3.7.0</value>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>fc939cf2-3ba0-4072-972b-d251f553828e</parentFolderId>

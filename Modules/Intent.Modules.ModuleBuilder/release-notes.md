@@ -1,3 +1,7 @@
+### Version 3.10.3
+
+- Improvement: Added/updated hints on some stereotype properties to better document their purpose and/or effect.
+
 ### Version 3.10.2
 
 - Fixed: Bumped core nuget and module versions to fix compilation errors.

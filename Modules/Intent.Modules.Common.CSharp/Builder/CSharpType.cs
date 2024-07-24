@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Intent.Modules.Common.CSharp.Templates;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
@@ -14,7 +15,9 @@ public abstract class CSharpType
 {
     internal const string TaskShortTypeName = "Task";
     internal const string TaskFullTypeName = "System.Threading.Tasks.Task";
-
+    internal const string ValueTaskShortTypeName = "ValueTask";
+    internal const string ValueTaskFullTypeName = "System.Threading.Tasks.ValueTask";
+    
     /// <summary>
     /// Creates a type-safe type that represents <see cref="System.Threading.Tasks.Task"/>.
     /// </summary>
@@ -29,6 +32,22 @@ public abstract class CSharpType
     public static CSharpTypeGeneric CreateTask(CSharpType genericParamType, ICSharpTemplate? template)
     {
         return new CSharpTypeGeneric(template?.UseType(TaskFullTypeName) ?? TaskFullTypeName, [genericParamType]);
+    }
+    
+    /// <summary>
+    /// Creates a type-safe type that represents <see cref="System.Threading.Tasks.ValueTask"/>.
+    /// </summary>
+    public static CSharpTypeName CreateValueTask(ICSharpTemplate? template)
+    {
+        return new CSharpTypeName(template?.UseType(ValueTaskFullTypeName) ?? ValueTaskFullTypeName);
+    }
+
+    /// <summary>
+    /// Creates a type-safe type that represents <see cref="System.Threading.Tasks.ValueTask&lt;T&gt;"/>.
+    /// </summary>
+    public static CSharpTypeGeneric CreateValueTask(CSharpType genericParamType, ICSharpTemplate? template)
+    {
+        return new CSharpTypeGeneric(template?.UseType(ValueTaskFullTypeName) ?? ValueTaskFullTypeName, [genericParamType]);
     }
 
     /// <summary>
@@ -48,6 +67,14 @@ public abstract class CSharpType
     }
     
     /// <summary>
+    /// Is the current type representing a <see cref="System.Threading.Tasks.ValueTask"/> or a <see cref="System.Threading.Tasks.ValueTask&lt;T&gt;"/>?
+    /// </summary>
+    public bool IsValueTask()
+    {
+        return (this is CSharpTypeName name && name.IsValueTask()) || (this is CSharpTypeGeneric generic && generic.IsValueTask());
+    }
+    
+    /// <summary>
     /// Takes the current type and wraps it inside the generic type <see cref="System.Threading.Tasks.Task&lt;T&gt;"/>.
     /// </summary>
     public CSharpType WrapInTask(ICSharpTemplate template)
@@ -59,6 +86,19 @@ public abstract class CSharpType
 
         return CSharpType.CreateTask(this, template);
     }
+    
+    /// <summary>
+    /// Takes the current type and wraps it inside the generic type <see cref="System.Threading.Tasks.ValueTask&lt;T&gt;"/>.
+    /// </summary>
+    public CSharpType WrapInValueTask(ICSharpTemplate template)
+    {
+        if (this is CSharpTypeVoid)
+        {
+            return CSharpType.CreateValueTask(template);
+        }
+
+        return CSharpType.CreateValueTask(this, template);
+    }
 
     /// <summary>
     /// If the current type is a <see cref="System.Threading.Tasks.Task&lt;T&gt;"/>, it will extract the generic parameter type.
@@ -66,6 +106,18 @@ public abstract class CSharpType
     public CSharpType? GetTaskGenericType()
     {
         if (this.IsTask() && this is CSharpTypeGeneric generic)
+        {
+            return generic.TypeArgumentList.FirstOrDefault();
+        }
+        return null;
+    }
+    
+    /// <summary>
+    /// If the current type is a <see cref="System.Threading.Tasks.Task&lt;T&gt;"/>, it will extract the generic parameter type.
+    /// </summary>
+    public CSharpType? GetValueTaskGenericType()
+    {
+        if (this.IsValueTask() && this is CSharpTypeGeneric generic)
         {
             return generic.TypeArgumentList.FirstOrDefault();
         }

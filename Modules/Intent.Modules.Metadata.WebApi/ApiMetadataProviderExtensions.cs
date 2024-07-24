@@ -18,5 +18,26 @@ namespace Intent.Metadata.WebApi.Api
                 .ToList();
         }
 
+        public static IList<PolicyModel> GetPolicyModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(PolicyModel.SpecializationTypeId)
+                .Select(x => new PolicyModel(x))
+                .ToList();
+        }
+
+        public static IList<RoleModel> GetRoleModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(RoleModel.SpecializationTypeId)
+                .Select(x => new RoleModel(x))
+                .ToList();
+        }
+
+        public static IList<SecurityConfigurationModel> GetSecurityConfigurationModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(SecurityConfigurationModel.SpecializationTypeId)
+                .Select(x => new SecurityConfigurationModel(x))
+                .ToList();
+        }
+
     }
 }

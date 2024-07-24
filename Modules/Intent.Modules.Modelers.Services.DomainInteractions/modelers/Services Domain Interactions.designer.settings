@@ -2866,13 +2866,11 @@ function getSurrogateKeyType() {
     }
     return typeNameToIdMap.get("guid");
 }
+;
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
+/// &lt;reference path="attributeWithMapPath.ts"/&gt;
 class DomainHelper {
     static async openSelectEntityDialog(options) {
-        /*let classes = lookupTypesOf("Class").filter(x =&gt;
-            DomainHelper.isAggregateRoot(x) ||
-            (options?.includeOwnedRelationships != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x) &amp;&amp; DomainHelper.hasPrimaryKey(x)) ||
-            x.hasStereotype("Repository"));*/
         let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.filterClassSelection(x, options));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
@@ -3176,7 +3174,7 @@ class DomainHelper {
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
     }
 }
-;
+/// &lt;reference path="attributeWithMapPath.ts" /&gt;
 class ServicesConstants {
 }
 ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
@@ -3216,87 +3214,10 @@ class ServicesHelper {
         }
     }
 }
-class ElementManager {
-    constructor(command, settings) {
-        var _a;
-        this.command = command;
-        this.settings = settings;
-        this.mappedElement = (_a = command.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
-    }
-    get id() { return this.command.id; }
-    ;
-    setReturnType(typeId, isCollection, isNullable) {
-        this.command.typeReference.setType(typeId);
-        if (isCollection != null) {
-            this.command.typeReference.setIsCollection(isCollection);
-        }
-        if (isNullable != null) {
-            this.command.typeReference.setIsNullable(isNullable);
-        }
-        return this;
-    }
-    addChild(name, type) {
-        var _a;
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.command.id);
-        const typeReferenceDetails = type == null
-            ? null
-            : typeof (type) === "string"
-                ? { id: type, isNullable: false, isCollection: false }
-                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
-        if (typeReferenceDetails != null) {
-            field.typeReference.setType(typeReferenceDetails.id);
-            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
-            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
-        }
-        return field;
-    }
-    addChildrenFrom(elements, options) {
-        let order = 0;
-        elements.forEach(e =&gt; {
-            if (e.mapPath != null) {
-                if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; { var _a, _b; return ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) == e.id; })) {
-                    return;
-                }
-            }
-            else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
-                return;
-            }
-            let field = this.addChild(e.name, e.typeId);
-            field.typeReference.setIsCollection(e.isCollection);
-            field.typeReference.setIsNullable(e.isNullable);
-            if (options === null || options === void 0 ? void 0 : options.addToTop) {
-                field.setOrder(order++);
-            }
-            if (this.mappedElement != null &amp;&amp; e.mapPath) {
-                field.setMapping(e.mapPath);
-            }
-        });
-        return this;
-    }
-    mapToElement(param1, mappingSettingsId) {
-        let elementIds;
-        let element;
-        if (Array.isArray(param1)) {
-            elementIds = param1;
-            element = lookup(elementIds[elementIds.length - 1]);
-        }
-        else {
-            elementIds = [param1.id];
-            element = param1;
-        }
-        this.mappedElement = element;
-        this.command.setMapping(elementIds, mappingSettingsId);
-        return this;
-    }
-    getElement() {
-        return this.command;
-    }
-    collapse() {
-        this.command.collapse();
-    }
-}
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../common/getSurrogateKeyType.ts" /&gt;
+/// &lt;reference path="../../common/attributeWithMapPath.ts" /&gt;
+/// &lt;reference path="../../common/domainHelper.ts" /&gt;
 function getFieldFormat(str) {
     return toPascalCase(str);
 }
@@ -3486,6 +3407,7 @@ function getDomainAttributeNamingConvention() {
 function legacyPartitionKey(attribute) {
     return attribute.hasStereotype("Partition Key") &amp;&amp; attribute.getName() === "PartitionKey";
 }
+/// &lt;reference path="../common/domainHelper.ts" /&gt;
 class CrudConstants {
 }
 CrudConstants.mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
@@ -4065,6 +3987,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false, inbo
 }
 /// &lt;reference path="./onMapFunctions.ts" /&gt;
 /// &lt;reference path="../../common/crudHelper.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
 function onMapDto(element, folder, autoAddPrimaryKey = true, dtoPrefix = null, inbound = false) {
     let fields = element.getChildren("DTO-Field")
@@ -4178,12 +4101,93 @@ function ensureDtoFieldsQuery(mappedElement, dto) {
         dto.collapse();
     }
 }
-var _a, _b;
+class ElementManager {
+    constructor(innerElement, settings) {
+        var _a;
+        this.innerElement = innerElement;
+        this.settings = settings;
+        this.mappedElement = (_a = innerElement.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    }
+    get id() { return this.innerElement.id; }
+    ;
+    setReturnType(typeId, isCollection, isNullable) {
+        this.innerElement.typeReference.setType(typeId);
+        if (isCollection != null) {
+            this.innerElement.typeReference.setIsCollection(isCollection);
+        }
+        if (isNullable != null) {
+            this.innerElement.typeReference.setIsNullable(isNullable);
+        }
+        return this;
+    }
+    addChild(name, type) {
+        var _a;
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.innerElement.id);
+        const typeReferenceDetails = type == null
+            ? null
+            : typeof (type) === "string"
+                ? { id: type, isNullable: false, isCollection: false }
+                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
+        if (typeReferenceDetails != null) {
+            field.typeReference.setType(typeReferenceDetails.id);
+            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
+            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
+        }
+        return field;
+    }
+    addChildrenFrom(elements, options) {
+        let order = 0;
+        elements.forEach(e =&gt; {
+            if (e.mapPath != null) {
+                if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; { var _a, _b; return ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) == e.id; })) {
+                    return;
+                }
+            }
+            else if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
+                return;
+            }
+            let field = this.addChild(e.name, e.typeId);
+            field.typeReference.setIsCollection(e.isCollection);
+            field.typeReference.setIsNullable(e.isNullable);
+            if (options === null || options === void 0 ? void 0 : options.addToTop) {
+                field.setOrder(order++);
+            }
+            if (this.mappedElement != null &amp;&amp; e.mapPath) {
+                field.setMapping(e.mapPath);
+            }
+        });
+        return this;
+    }
+    mapToElement(param1, mappingSettingsId) {
+        let elementIds;
+        let element;
+        if (Array.isArray(param1)) {
+            elementIds = param1;
+            element = lookup(elementIds[elementIds.length - 1]);
+        }
+        else {
+            elementIds = [param1.id];
+            element = param1;
+        }
+        this.mappedElement = element;
+        this.innerElement.setMapping(elementIds, mappingSettingsId);
+        return this;
+    }
+    getElement() {
+        return this.innerElement;
+    }
+    collapse() {
+        this.innerElement.collapse();
+    }
+}
 /// &lt;reference path="../../common/domainHelper.ts" /&gt;
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
 /// &lt;reference path="../_common/onMapCommand.ts" /&gt;
 /// &lt;reference path="../_common/onMapDto.ts" /&gt;
 /// &lt;reference path="../_common/onMapQuery.ts" /&gt;
+/// &lt;reference path="../../common/attributeWithMapPath.ts" /&gt;
+/// &lt;reference path="../../common/elementManager.ts" /&gt;
+var _a, _b;
 const privateSettersOnly = ((_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")) === null || _b === void 0 ? void 0 : _b.value) == "true";
 const mapToDomainOperationSettingId = "7c31c459-6229-4f10-bf13-507348cd8828";
 var cqrsCrud;
@@ -4260,8 +4264,8 @@ var cqrsCrud;
                 .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
         }
         else {
-            if (!surrogateKey) {
-                const toAdd = primaryKeys.filter(x =&gt; DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+            const toAdd = primaryKeys.filter(x =&gt; DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+            if (toAdd.length &gt; 0) {
                 ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), toAdd);
             }
             commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
@@ -4520,13 +4524,11 @@ function getSurrogateKeyType() {
     }
     return typeNameToIdMap.get("guid");
 }
+;
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
+/// &lt;reference path="attributeWithMapPath.ts"/&gt;
 class DomainHelper {
     static async openSelectEntityDialog(options) {
-        /*let classes = lookupTypesOf("Class").filter(x =&gt;
-            DomainHelper.isAggregateRoot(x) ||
-            (options?.includeOwnedRelationships != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x) &amp;&amp; DomainHelper.hasPrimaryKey(x)) ||
-            x.hasStereotype("Repository"));*/
         let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.filterClassSelection(x, options));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
@@ -4830,7 +4832,7 @@ class DomainHelper {
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
     }
 }
-;
+/// &lt;reference path="attributeWithMapPath.ts" /&gt;
 class ServicesConstants {
 }
 ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
@@ -4870,87 +4872,10 @@ class ServicesHelper {
         }
     }
 }
-class ElementManager {
-    constructor(command, settings) {
-        var _a;
-        this.command = command;
-        this.settings = settings;
-        this.mappedElement = (_a = command.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
-    }
-    get id() { return this.command.id; }
-    ;
-    setReturnType(typeId, isCollection, isNullable) {
-        this.command.typeReference.setType(typeId);
-        if (isCollection != null) {
-            this.command.typeReference.setIsCollection(isCollection);
-        }
-        if (isNullable != null) {
-            this.command.typeReference.setIsNullable(isNullable);
-        }
-        return this;
-    }
-    addChild(name, type) {
-        var _a;
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.command.id);
-        const typeReferenceDetails = type == null
-            ? null
-            : typeof (type) === "string"
-                ? { id: type, isNullable: false, isCollection: false }
-                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
-        if (typeReferenceDetails != null) {
-            field.typeReference.setType(typeReferenceDetails.id);
-            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
-            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
-        }
-        return field;
-    }
-    addChildrenFrom(elements, options) {
-        let order = 0;
-        elements.forEach(e =&gt; {
-            if (e.mapPath != null) {
-                if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; { var _a, _b; return ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) == e.id; })) {
-                    return;
-                }
-            }
-            else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
-                return;
-            }
-            let field = this.addChild(e.name, e.typeId);
-            field.typeReference.setIsCollection(e.isCollection);
-            field.typeReference.setIsNullable(e.isNullable);
-            if (options === null || options === void 0 ? void 0 : options.addToTop) {
-                field.setOrder(order++);
-            }
-            if (this.mappedElement != null &amp;&amp; e.mapPath) {
-                field.setMapping(e.mapPath);
-            }
-        });
-        return this;
-    }
-    mapToElement(param1, mappingSettingsId) {
-        let elementIds;
-        let element;
-        if (Array.isArray(param1)) {
-            elementIds = param1;
-            element = lookup(elementIds[elementIds.length - 1]);
-        }
-        else {
-            elementIds = [param1.id];
-            element = param1;
-        }
-        this.mappedElement = element;
-        this.command.setMapping(elementIds, mappingSettingsId);
-        return this;
-    }
-    getElement() {
-        return this.command;
-    }
-    collapse() {
-        this.command.collapse();
-    }
-}
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../common/getSurrogateKeyType.ts" /&gt;
+/// &lt;reference path="../../common/attributeWithMapPath.ts" /&gt;
+/// &lt;reference path="../../common/domainHelper.ts" /&gt;
 function getFieldFormat(str) {
     return toPascalCase(str);
 }
@@ -5140,6 +5065,7 @@ function getDomainAttributeNamingConvention() {
 function legacyPartitionKey(attribute) {
     return attribute.hasStereotype("Partition Key") &amp;&amp; attribute.getName() === "PartitionKey";
 }
+/// &lt;reference path="../common/domainHelper.ts" /&gt;
 class CrudConstants {
 }
 CrudConstants.mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
@@ -5719,6 +5645,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false, inbo
 }
 /// &lt;reference path="./onMapFunctions.ts" /&gt;
 /// &lt;reference path="../../common/crudHelper.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
 function onMapDto(element, folder, autoAddPrimaryKey = true, dtoPrefix = null, inbound = false) {
     let fields = element.getChildren("DTO-Field")
@@ -5832,12 +5759,93 @@ function ensureDtoFieldsQuery(mappedElement, dto) {
         dto.collapse();
     }
 }
-var _a, _b;
+class ElementManager {
+    constructor(innerElement, settings) {
+        var _a;
+        this.innerElement = innerElement;
+        this.settings = settings;
+        this.mappedElement = (_a = innerElement.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    }
+    get id() { return this.innerElement.id; }
+    ;
+    setReturnType(typeId, isCollection, isNullable) {
+        this.innerElement.typeReference.setType(typeId);
+        if (isCollection != null) {
+            this.innerElement.typeReference.setIsCollection(isCollection);
+        }
+        if (isNullable != null) {
+            this.innerElement.typeReference.setIsNullable(isNullable);
+        }
+        return this;
+    }
+    addChild(name, type) {
+        var _a;
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.innerElement.id);
+        const typeReferenceDetails = type == null
+            ? null
+            : typeof (type) === "string"
+                ? { id: type, isNullable: false, isCollection: false }
+                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
+        if (typeReferenceDetails != null) {
+            field.typeReference.setType(typeReferenceDetails.id);
+            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
+            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
+        }
+        return field;
+    }
+    addChildrenFrom(elements, options) {
+        let order = 0;
+        elements.forEach(e =&gt; {
+            if (e.mapPath != null) {
+                if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; { var _a, _b; return ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) == e.id; })) {
+                    return;
+                }
+            }
+            else if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
+                return;
+            }
+            let field = this.addChild(e.name, e.typeId);
+            field.typeReference.setIsCollection(e.isCollection);
+            field.typeReference.setIsNullable(e.isNullable);
+            if (options === null || options === void 0 ? void 0 : options.addToTop) {
+                field.setOrder(order++);
+            }
+            if (this.mappedElement != null &amp;&amp; e.mapPath) {
+                field.setMapping(e.mapPath);
+            }
+        });
+        return this;
+    }
+    mapToElement(param1, mappingSettingsId) {
+        let elementIds;
+        let element;
+        if (Array.isArray(param1)) {
+            elementIds = param1;
+            element = lookup(elementIds[elementIds.length - 1]);
+        }
+        else {
+            elementIds = [param1.id];
+            element = param1;
+        }
+        this.mappedElement = element;
+        this.innerElement.setMapping(elementIds, mappingSettingsId);
+        return this;
+    }
+    getElement() {
+        return this.innerElement;
+    }
+    collapse() {
+        this.innerElement.collapse();
+    }
+}
 /// &lt;reference path="../../common/domainHelper.ts" /&gt;
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
 /// &lt;reference path="../_common/onMapCommand.ts" /&gt;
 /// &lt;reference path="../_common/onMapDto.ts" /&gt;
 /// &lt;reference path="../_common/onMapQuery.ts" /&gt;
+/// &lt;reference path="../../common/attributeWithMapPath.ts" /&gt;
+/// &lt;reference path="../../common/elementManager.ts" /&gt;
+var _a, _b;
 const privateSettersOnly = ((_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")) === null || _b === void 0 ? void 0 : _b.value) == "true";
 const mapToDomainOperationSettingId = "7c31c459-6229-4f10-bf13-507348cd8828";
 var cqrsCrud;
@@ -5914,8 +5922,8 @@ var cqrsCrud;
                 .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
         }
         else {
-            if (!surrogateKey) {
-                const toAdd = primaryKeys.filter(x =&gt; DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+            const toAdd = primaryKeys.filter(x =&gt; DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+            if (toAdd.length &gt; 0) {
                 ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), toAdd);
             }
             commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
@@ -9944,13 +9952,11 @@ function getSurrogateKeyType() {
     }
     return typeNameToIdMap.get("guid");
 }
+;
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
+/// &lt;reference path="attributeWithMapPath.ts"/&gt;
 class DomainHelper {
     static async openSelectEntityDialog(options) {
-        /*let classes = lookupTypesOf("Class").filter(x =&gt;
-            DomainHelper.isAggregateRoot(x) ||
-            (options?.includeOwnedRelationships != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x) &amp;&amp; DomainHelper.hasPrimaryKey(x)) ||
-            x.hasStereotype("Repository"));*/
         let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.filterClassSelection(x, options));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
@@ -10254,7 +10260,7 @@ class DomainHelper {
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
     }
 }
-;
+/// &lt;reference path="attributeWithMapPath.ts" /&gt;
 class ServicesConstants {
 }
 ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
@@ -10294,87 +10300,10 @@ class ServicesHelper {
         }
     }
 }
-class ElementManager {
-    constructor(command, settings) {
-        var _a;
-        this.command = command;
-        this.settings = settings;
-        this.mappedElement = (_a = command.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
-    }
-    get id() { return this.command.id; }
-    ;
-    setReturnType(typeId, isCollection, isNullable) {
-        this.command.typeReference.setType(typeId);
-        if (isCollection != null) {
-            this.command.typeReference.setIsCollection(isCollection);
-        }
-        if (isNullable != null) {
-            this.command.typeReference.setIsNullable(isNullable);
-        }
-        return this;
-    }
-    addChild(name, type) {
-        var _a;
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.command.id);
-        const typeReferenceDetails = type == null
-            ? null
-            : typeof (type) === "string"
-                ? { id: type, isNullable: false, isCollection: false }
-                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
-        if (typeReferenceDetails != null) {
-            field.typeReference.setType(typeReferenceDetails.id);
-            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
-            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
-        }
-        return field;
-    }
-    addChildrenFrom(elements, options) {
-        let order = 0;
-        elements.forEach(e =&gt; {
-            if (e.mapPath != null) {
-                if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; { var _a, _b; return ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) == e.id; })) {
-                    return;
-                }
-            }
-            else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
-                return;
-            }
-            let field = this.addChild(e.name, e.typeId);
-            field.typeReference.setIsCollection(e.isCollection);
-            field.typeReference.setIsNullable(e.isNullable);
-            if (options === null || options === void 0 ? void 0 : options.addToTop) {
-                field.setOrder(order++);
-            }
-            if (this.mappedElement != null &amp;&amp; e.mapPath) {
-                field.setMapping(e.mapPath);
-            }
-        });
-        return this;
-    }
-    mapToElement(param1, mappingSettingsId) {
-        let elementIds;
-        let element;
-        if (Array.isArray(param1)) {
-            elementIds = param1;
-            element = lookup(elementIds[elementIds.length - 1]);
-        }
-        else {
-            elementIds = [param1.id];
-            element = param1;
-        }
-        this.mappedElement = element;
-        this.command.setMapping(elementIds, mappingSettingsId);
-        return this;
-    }
-    getElement() {
-        return this.command;
-    }
-    collapse() {
-        this.command.collapse();
-    }
-}
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../common/getSurrogateKeyType.ts" /&gt;
+/// &lt;reference path="../../common/attributeWithMapPath.ts" /&gt;
+/// &lt;reference path="../../common/domainHelper.ts" /&gt;
 function getFieldFormat(str) {
     return toPascalCase(str);
 }
@@ -10564,6 +10493,7 @@ function getDomainAttributeNamingConvention() {
 function legacyPartitionKey(attribute) {
     return attribute.hasStereotype("Partition Key") &amp;&amp; attribute.getName() === "PartitionKey";
 }
+/// &lt;reference path="../common/domainHelper.ts" /&gt;
 class CrudConstants {
 }
 CrudConstants.mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
@@ -11143,6 +11073,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false, inbo
 }
 /// &lt;reference path="./onMapFunctions.ts" /&gt;
 /// &lt;reference path="../../common/crudHelper.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
 function onMapDto(element, folder, autoAddPrimaryKey = true, dtoPrefix = null, inbound = false) {
     let fields = element.getChildren("DTO-Field")
@@ -11256,12 +11187,93 @@ function ensureDtoFieldsQuery(mappedElement, dto) {
         dto.collapse();
     }
 }
-var _a, _b;
+class ElementManager {
+    constructor(innerElement, settings) {
+        var _a;
+        this.innerElement = innerElement;
+        this.settings = settings;
+        this.mappedElement = (_a = innerElement.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    }
+    get id() { return this.innerElement.id; }
+    ;
+    setReturnType(typeId, isCollection, isNullable) {
+        this.innerElement.typeReference.setType(typeId);
+        if (isCollection != null) {
+            this.innerElement.typeReference.setIsCollection(isCollection);
+        }
+        if (isNullable != null) {
+            this.innerElement.typeReference.setIsNullable(isNullable);
+        }
+        return this;
+    }
+    addChild(name, type) {
+        var _a;
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.innerElement.id);
+        const typeReferenceDetails = type == null
+            ? null
+            : typeof (type) === "string"
+                ? { id: type, isNullable: false, isCollection: false }
+                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
+        if (typeReferenceDetails != null) {
+            field.typeReference.setType(typeReferenceDetails.id);
+            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
+            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
+        }
+        return field;
+    }
+    addChildrenFrom(elements, options) {
+        let order = 0;
+        elements.forEach(e =&gt; {
+            if (e.mapPath != null) {
+                if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; { var _a, _b; return ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) == e.id; })) {
+                    return;
+                }
+            }
+            else if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
+                return;
+            }
+            let field = this.addChild(e.name, e.typeId);
+            field.typeReference.setIsCollection(e.isCollection);
+            field.typeReference.setIsNullable(e.isNullable);
+            if (options === null || options === void 0 ? void 0 : options.addToTop) {
+                field.setOrder(order++);
+            }
+            if (this.mappedElement != null &amp;&amp; e.mapPath) {
+                field.setMapping(e.mapPath);
+            }
+        });
+        return this;
+    }
+    mapToElement(param1, mappingSettingsId) {
+        let elementIds;
+        let element;
+        if (Array.isArray(param1)) {
+            elementIds = param1;
+            element = lookup(elementIds[elementIds.length - 1]);
+        }
+        else {
+            elementIds = [param1.id];
+            element = param1;
+        }
+        this.mappedElement = element;
+        this.innerElement.setMapping(elementIds, mappingSettingsId);
+        return this;
+    }
+    getElement() {
+        return this.innerElement;
+    }
+    collapse() {
+        this.innerElement.collapse();
+    }
+}
 /// &lt;reference path="../../common/domainHelper.ts" /&gt;
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
 /// &lt;reference path="../_common/onMapCommand.ts" /&gt;
 /// &lt;reference path="../_common/onMapDto.ts" /&gt;
 /// &lt;reference path="../_common/onMapQuery.ts" /&gt;
+/// &lt;reference path="../../common/attributeWithMapPath.ts" /&gt;
+/// &lt;reference path="../../common/elementManager.ts" /&gt;
+var _a, _b;
 const privateSettersOnly = ((_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")) === null || _b === void 0 ? void 0 : _b.value) == "true";
 const mapToDomainOperationSettingId = "7c31c459-6229-4f10-bf13-507348cd8828";
 var cqrsCrud;
@@ -11338,8 +11350,8 @@ var cqrsCrud;
                 .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
         }
         else {
-            if (!surrogateKey) {
-                const toAdd = primaryKeys.filter(x =&gt; DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+            const toAdd = primaryKeys.filter(x =&gt; DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+            if (toAdd.length &gt; 0) {
                 ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), toAdd);
             }
             commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
@@ -11598,13 +11610,11 @@ function getSurrogateKeyType() {
     }
     return typeNameToIdMap.get("guid");
 }
+;
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
+/// &lt;reference path="attributeWithMapPath.ts"/&gt;
 class DomainHelper {
     static async openSelectEntityDialog(options) {
-        /*let classes = lookupTypesOf("Class").filter(x =&gt;
-            DomainHelper.isAggregateRoot(x) ||
-            (options?.includeOwnedRelationships != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x) &amp;&amp; DomainHelper.hasPrimaryKey(x)) ||
-            x.hasStereotype("Repository"));*/
         let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.filterClassSelection(x, options));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
@@ -11908,7 +11918,7 @@ class DomainHelper {
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
     }
 }
-;
+/// &lt;reference path="attributeWithMapPath.ts" /&gt;
 class ServicesConstants {
 }
 ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
@@ -11948,87 +11958,10 @@ class ServicesHelper {
         }
     }
 }
-class ElementManager {
-    constructor(command, settings) {
-        var _a;
-        this.command = command;
-        this.settings = settings;
-        this.mappedElement = (_a = command.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
-    }
-    get id() { return this.command.id; }
-    ;
-    setReturnType(typeId, isCollection, isNullable) {
-        this.command.typeReference.setType(typeId);
-        if (isCollection != null) {
-            this.command.typeReference.setIsCollection(isCollection);
-        }
-        if (isNullable != null) {
-            this.command.typeReference.setIsNullable(isNullable);
-        }
-        return this;
-    }
-    addChild(name, type) {
-        var _a;
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.command.id);
-        const typeReferenceDetails = type == null
-            ? null
-            : typeof (type) === "string"
-                ? { id: type, isNullable: false, isCollection: false }
-                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
-        if (typeReferenceDetails != null) {
-            field.typeReference.setType(typeReferenceDetails.id);
-            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
-            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
-        }
-        return field;
-    }
-    addChildrenFrom(elements, options) {
-        let order = 0;
-        elements.forEach(e =&gt; {
-            if (e.mapPath != null) {
-                if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; { var _a, _b; return ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) == e.id; })) {
-                    return;
-                }
-            }
-            else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
-                return;
-            }
-            let field = this.addChild(e.name, e.typeId);
-            field.typeReference.setIsCollection(e.isCollection);
-            field.typeReference.setIsNullable(e.isNullable);
-            if (options === null || options === void 0 ? void 0 : options.addToTop) {
-                field.setOrder(order++);
-            }
-            if (this.mappedElement != null &amp;&amp; e.mapPath) {
-                field.setMapping(e.mapPath);
-            }
-        });
-        return this;
-    }
-    mapToElement(param1, mappingSettingsId) {
-        let elementIds;
-        let element;
-        if (Array.isArray(param1)) {
-            elementIds = param1;
-            element = lookup(elementIds[elementIds.length - 1]);
-        }
-        else {
-            elementIds = [param1.id];
-            element = param1;
-        }
-        this.mappedElement = element;
-        this.command.setMapping(elementIds, mappingSettingsId);
-        return this;
-    }
-    getElement() {
-        return this.command;
-    }
-    collapse() {
-        this.command.collapse();
-    }
-}
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../common/getSurrogateKeyType.ts" /&gt;
+/// &lt;reference path="../../common/attributeWithMapPath.ts" /&gt;
+/// &lt;reference path="../../common/domainHelper.ts" /&gt;
 function getFieldFormat(str) {
     return toPascalCase(str);
 }
@@ -12218,6 +12151,7 @@ function getDomainAttributeNamingConvention() {
 function legacyPartitionKey(attribute) {
     return attribute.hasStereotype("Partition Key") &amp;&amp; attribute.getName() === "PartitionKey";
 }
+/// &lt;reference path="../common/domainHelper.ts" /&gt;
 class CrudConstants {
 }
 CrudConstants.mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
@@ -12797,6 +12731,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false, inbo
 }
 /// &lt;reference path="./onMapFunctions.ts" /&gt;
 /// &lt;reference path="../../common/crudHelper.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
 function onMapDto(element, folder, autoAddPrimaryKey = true, dtoPrefix = null, inbound = false) {
     let fields = element.getChildren("DTO-Field")
@@ -12910,12 +12845,93 @@ function ensureDtoFieldsQuery(mappedElement, dto) {
         dto.collapse();
     }
 }
-var _a, _b;
+class ElementManager {
+    constructor(innerElement, settings) {
+        var _a;
+        this.innerElement = innerElement;
+        this.settings = settings;
+        this.mappedElement = (_a = innerElement.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    }
+    get id() { return this.innerElement.id; }
+    ;
+    setReturnType(typeId, isCollection, isNullable) {
+        this.innerElement.typeReference.setType(typeId);
+        if (isCollection != null) {
+            this.innerElement.typeReference.setIsCollection(isCollection);
+        }
+        if (isNullable != null) {
+            this.innerElement.typeReference.setIsNullable(isNullable);
+        }
+        return this;
+    }
+    addChild(name, type) {
+        var _a;
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null &amp;&amp; _a !== void 0 ? _a : "property"), this.innerElement.id);
+        const typeReferenceDetails = type == null
+            ? null
+            : typeof (type) === "string"
+                ? { id: type, isNullable: false, isCollection: false }
+                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
+        if (typeReferenceDetails != null) {
+            field.typeReference.setType(typeReferenceDetails.id);
+            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
+            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
+        }
+        return field;
+    }
+    addChildrenFrom(elements, options) {
+        let order = 0;
+        elements.forEach(e =&gt; {
+            if (e.mapPath != null) {
+                if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; { var _a, _b; return ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) == e.id; })) {
+                    return;
+                }
+            }
+            else if (this.innerElement.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
+                return;
+            }
+            let field = this.addChild(e.name, e.typeId);
+            field.typeReference.setIsCollection(e.isCollection);
+            field.typeReference.setIsNullable(e.isNullable);
+            if (options === null || options === void 0 ? void 0 : options.addToTop) {
+                field.setOrder(order++);
+            }
+            if (this.mappedElement != null &amp;&amp; e.mapPath) {
+                field.setMapping(e.mapPath);
+            }
+        });
+        return this;
+    }
+    mapToElement(param1, mappingSettingsId) {
+        let elementIds;
+        let element;
+        if (Array.isArray(param1)) {
+            elementIds = param1;
+            element = lookup(elementIds[elementIds.length - 1]);
+        }
+        else {
+            elementIds = [param1.id];
+            element = param1;
+        }
+        this.mappedElement = element;
+        this.innerElement.setMapping(elementIds, mappingSettingsId);
+        return this;
+    }
+    getElement() {
+        return this.innerElement;
+    }
+    collapse() {
+        this.innerElement.collapse();
+    }
+}
 /// &lt;reference path="../../common/domainHelper.ts" /&gt;
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
 /// &lt;reference path="../_common/onMapCommand.ts" /&gt;
 /// &lt;reference path="../_common/onMapDto.ts" /&gt;
 /// &lt;reference path="../_common/onMapQuery.ts" /&gt;
+/// &lt;reference path="../../common/attributeWithMapPath.ts" /&gt;
+/// &lt;reference path="../../common/elementManager.ts" /&gt;
+var _a, _b;
 const privateSettersOnly = ((_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")) === null || _b === void 0 ? void 0 : _b.value) == "true";
 const mapToDomainOperationSettingId = "7c31c459-6229-4f10-bf13-507348cd8828";
 var cqrsCrud;
@@ -12992,8 +13008,8 @@ var cqrsCrud;
                 .filter(x =&gt; x.typeId != null &amp;&amp; lookup(x.typeId).specialization !== "Domain Service"));
         }
         else {
-            if (!surrogateKey) {
-                const toAdd = primaryKeys.filter(x =&gt; DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+            const toAdd = primaryKeys.filter(x =&gt; DomainHelper.isUserSuppliedPrimaryKey(lookup(x.id)));
+            if (toAdd.length &gt; 0) {
                 ServicesHelper.addDtoFieldsFromDomain(commandManager.getElement(), toAdd);
             }
             commandManager.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));

@@ -1,0 +1,9 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public interface Interface
+    {
+        System.Threading.Tasks.ValueTask<string> GetNameAsync();
+    }
+}

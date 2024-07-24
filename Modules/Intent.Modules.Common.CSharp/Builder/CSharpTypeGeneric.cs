@@ -32,6 +32,14 @@ public class CSharpTypeGeneric : CSharpType
     {
         return TypeName is CSharpType.TaskFullTypeName or CSharpType.TaskShortTypeName;
     }
+    
+    /// <summary>
+    /// Is the current type representing a <see cref="System.Threading.Tasks.ValueTask&lt;T&gt;"/>?
+    /// </summary>
+    public bool IsValueTask()
+    {
+        return TypeName is CSharpType.ValueTaskFullTypeName or CSharpType.ValueTaskShortTypeName;
+    }
 
     protected bool Equals(CSharpTypeGeneric other)
     {

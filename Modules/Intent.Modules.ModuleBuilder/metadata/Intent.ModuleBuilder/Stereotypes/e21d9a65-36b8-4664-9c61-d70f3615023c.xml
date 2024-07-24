@@ -55,6 +55,7 @@
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="93499f0b-8590-42ea-bdbf-e943597e8e1e">
+      <hint>Returned value used for the [stroke-dasharray](https://developer.mozilla.org/docs/Web/SVG/Attribute/stroke-dasharray) attribute .</hint>
       <name>Line Dash Array</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -65,7 +66,7 @@
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="85aa1be2-62f1-45d1-84d0-acb5bb5d1752">
-      <hint>Affects whether this association is treated from left-to-right (false) or right-to-left (true) when added to a diagram</hint>
+      <hint>Affects whether this association is treated from source-to-target (`false`) or target-to-source (`true`) when added to a diagram.</hint>
       <name>Reverse Flow Direction</name>
       <type>string</type>
       <controlType>checkbox</controlType>
