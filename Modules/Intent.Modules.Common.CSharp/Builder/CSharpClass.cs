@@ -546,7 +546,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock, ICSharpRe
             var baseType = BaseType.Name;
             
             var primaryCtor = GetPrimaryConstructor();
-            var baseCallParams = primaryCtor?.ConstructorCall.Arguments;
+            var baseCallParams = primaryCtor?.ConstructorCall?.Arguments;
             if (baseCallParams?.Count > 0)
             {
                 baseType += $"({string.Join(", ", baseCallParams)})";
