@@ -65,7 +65,6 @@ namespace Intent.Modules.Common.TypeScript.TypeResolvers
                         case "datetime":
                             name = "Date";
                             break;
-                        case "char":
                         case "byte":
                         case "decimal":
                         case "double":
@@ -80,6 +79,7 @@ namespace Intent.Modules.Common.TypeScript.TypeResolvers
                         case "object":
                             name = "any";
                             break;
+                        case "char":
                         case "guid":
                         case "string":
                             name = "string";

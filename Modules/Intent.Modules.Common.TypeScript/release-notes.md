@@ -1,3 +1,7 @@
+### Version 4.1.1
+
+- Fixed: Designer elements using `char` type will now translate into `string` in TypeScript instead of `number`.
+
 ### Version 4.1.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
