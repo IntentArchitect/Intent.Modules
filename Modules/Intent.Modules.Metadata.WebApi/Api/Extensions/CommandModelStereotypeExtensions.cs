@@ -331,6 +331,11 @@ namespace Intent.Metadata.WebApi.Api
 
             public string Name => _stereotype.Name;
 
+            public bool Ignore()
+            {
+                return _stereotype.GetProperty<bool>("Ignore");
+            }
+
             public string OperationId()
             {
                 return _stereotype.GetProperty<string>("OperationId");

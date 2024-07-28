@@ -7,6 +7,7 @@
     <type id="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">Command</type>
     <type id="e71b0662-e29d-4db2-868b-8a12464b25d0">Query</type>
     <type id="702f57ca-3b5a-413b-a084-9f2d154154e7">Azure Function</type>
+    <type id="b16578a5-27b1-4047-a8df-f0b783d706bd">Service</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>
@@ -23,8 +24,19 @@
   <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
   <packageName>Intent.Metadata.WebApi</packageName>
   <properties>
+    <property id="670baa81-b5c9-4272-a2e0-db1d167dcda4">
+      <hint>Whether to hide the endpoint from the OpenAPI spec.</hint>
+      <name>Ignore</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="c6b0e60f-000b-4afb-a226-e3622119e996">
-      <hint>Customize the [operationId](https://swagger.io/docs/specification/paths-and-operations/) of the operation. Uses the method name when blank.</hint>
+      <hint>Customize the [operationId](https://swagger.io/docs/specification/paths-and-operations/) of the operation. Supports substitution of `{MethodName}` and `{ServiceName}`.</hint>
       <name>OperationId</name>
       <type>string</type>
       <controlType>text</controlType>
@@ -32,6 +44,7 @@
       <placeholder />
       <valueOptions />
       <lookupTypes />
+      <isActiveFunction>return Ignore != "true" &amp;&amp; element.specialization != "Service";</isActiveFunction>
     </property>
   </properties>
 </stereotypeDefinition>

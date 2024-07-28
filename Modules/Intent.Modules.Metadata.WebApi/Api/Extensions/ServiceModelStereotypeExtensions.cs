@@ -59,6 +59,30 @@ namespace Intent.Metadata.WebApi.Api
             return true;
         }
 
+        public static OpenAPISettings GetOpenAPISettings(this ServiceModel model)
+        {
+            var stereotype = model.GetStereotype("b6197544-7e0e-4900-a6e2-9747fb7e4ac4");
+            return stereotype != null ? new OpenAPISettings(stereotype) : null;
+        }
+
+
+        public static bool HasOpenAPISettings(this ServiceModel model)
+        {
+            return model.HasStereotype("b6197544-7e0e-4900-a6e2-9747fb7e4ac4");
+        }
+
+        public static bool TryGetOpenAPISettings(this ServiceModel model, out OpenAPISettings stereotype)
+        {
+            if (!HasOpenAPISettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new OpenAPISettings(model.GetStereotype("b6197544-7e0e-4900-a6e2-9747fb7e4ac4"));
+            return true;
+        }
+
         public static Secured GetSecured(this ServiceModel model)
         {
             var stereotype = model.GetStereotype("a9eade71-1d56-4be7-a80c-81046c0c978b");
@@ -138,6 +162,29 @@ namespace Intent.Metadata.WebApi.Api
             public string Route()
             {
                 return _stereotype.GetProperty<string>("Route");
+            }
+
+        }
+
+        public class OpenAPISettings
+        {
+            private IStereotype _stereotype;
+
+            public OpenAPISettings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public bool Ignore()
+            {
+                return _stereotype.GetProperty<bool>("Ignore");
+            }
+
+            public string OperationId()
+            {
+                return _stereotype.GetProperty<string>("OperationId");
             }
 
         }
