@@ -41,7 +41,7 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
+      <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
       <isActiveFunction>return Ignore != "true" &amp;&amp; element.specialization != "Service";</isActiveFunction>
