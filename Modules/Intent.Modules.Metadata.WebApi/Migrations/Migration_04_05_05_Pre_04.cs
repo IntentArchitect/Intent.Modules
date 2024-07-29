@@ -7,19 +7,19 @@ using Intent.Plugins;
 
 namespace Intent.Modules.Metadata.WebApi.Builder.Migrations
 {
-    public class Migration_04_05_05_Pre_01 : IModuleMigration
+    public class Migration_04_05_05_Pre_04 : IModuleMigration
     {
         private readonly IApplicationConfigurationProvider _configurationProvider;
         private const string ServicesDesignerId = "81104ae6-2bc5-4bae-b05a-f987b0372d81";
         private const string OpenApiStereotypeId = "b6197544-7e0e-4900-a6e2-9747fb7e4ac4";
 
-        public Migration_04_05_05_Pre_01(IApplicationConfigurationProvider configurationProvider)
+        public Migration_04_05_05_Pre_04(IApplicationConfigurationProvider configurationProvider)
         {
             _configurationProvider = configurationProvider;
         }
 
         public string ModuleId => "Intent.Metadata.WebApi";
-        public string ModuleVersion => "4.5.5-pre.3";
+        public string ModuleVersion => "4.5.5-pre.4";
 
         public void Up()
         {
@@ -40,6 +40,11 @@ namespace Intent.Modules.Metadata.WebApi.Builder.Migrations
                     }
 
                     var property = openApiStereotype.Properties.Single(x => x.Name == "OperationId");
+                    if (!string.IsNullOrWhiteSpace(property.Value))
+                    {
+                        continue;
+                    }
+
                     property.Value = "{MethodName}";
                     needsSave = true;
                 }
