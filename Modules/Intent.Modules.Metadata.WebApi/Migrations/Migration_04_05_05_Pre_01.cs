@@ -18,8 +18,8 @@ namespace Intent.Modules.Metadata.WebApi.Builder.Migrations
             _configurationProvider = configurationProvider;
         }
 
-        public string ModuleId => "Intent.ApplicationTemplate.Builder";
-        public string ModuleVersion => "4.5.5-pre.1";
+        public string ModuleId => "Intent.Metadata.WebApi";
+        public string ModuleVersion => "4.5.5-pre.3";
 
         public void Up()
         {
