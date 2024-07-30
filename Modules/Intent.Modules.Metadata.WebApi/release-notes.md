@@ -1,6 +1,16 @@
-### Version 4.5.5
+﻿### Version 4.5.5
+
 
 - Improvement: Improved service security modeling experience.
+- Improvement: Added an _Ignore_ option to the _OpenAPI Settings_ stereotype. Modules (e.g. _Intent.AspNetCore.Controllers_) can use this property to know to apply the relevant annotations to prevent API endpoints from being generated in OpenAPI specifications.
+
+  > ⚠️ NOTE
+  >
+  > The behaviour of the _OperationId_ property has now changed.
+  > 
+  > In prior versions of this module, a blank value would be equivalent to having specified the method name of the endpoint it was applied to. From this version onwards it will no longer have any effect without a value specified.
+  >
+  > To avoid disruptions by this change, a once off automatic migration is run during the upgrade of this module which will automatically change all values of this property to `{MethodName}` which will result in the equivalent generated code as before.
 
 ### Version 4.5.4
 

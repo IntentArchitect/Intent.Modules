@@ -1,14 +1,17 @@
-$modulesFolderPath = "Intent.Modules"
-$pathToModules = "Modules"
-$solutionFile = "Tests/Intent.Modules.Tests.isln"
+#!/usr/bin/env pwsh
+
+param(
+    [string]$buildArtifactStagingDirectory,
+    [string]$testsIntentSolutionRelativePath
+)
 
 $repoConfigContent = 
 "<?xml version=""1.0"" encoding=""utf-8""?>
 <assetRepositories>
   <entries>
     <entry>
-      <name>CI Compiled Modules</name>
-      <address>../$($pathToModules)/$($modulesFolderPath)</address>
+      <name>Pipeline build artifact staging directory</name>
+      <address>$buildArtifactStagingDirectory</address>
       <isBuiltIn>false</isBuiltIn>
       <order>3</order>
     </entry>
@@ -16,7 +19,7 @@ $repoConfigContent =
 </assetRepositories>"
 
 $moduleLookup = @{}
-$moduleFileNames = Get-ChildItem "./$($pathToModules)/$($modulesFolderPath)/*.imod" | % {
+$moduleFileNames = Get-ChildItem "$buildArtifactStagingDirectory/*.imod" | % {
     $file = [System.IO.Path]::GetFileNameWithoutExtension($_.Name)
     $dotNumber = 0
     $dotIndex = -1
@@ -48,8 +51,8 @@ $moduleFileNames = Get-ChildItem "./$($pathToModules)/$($modulesFolderPath)/*.im
 $curLocation = Get-Location;
 Write-Host "`$curLocation = $curLocation"
 
-$testSln = [xml] (Get-Content ./$solutionFile -Encoding UTF8)
-$testSlnDir = [System.IO.Path]::GetDirectoryName($solutionFile)
+$testSln = [xml] (Get-Content "./$testsIntentSolutionRelativePath" -Encoding UTF8)
+$testSlnDir = [System.IO.Path]::GetDirectoryName($testsIntentSolutionRelativePath)
 Write-Host "`$testSlnDir = $testSlnDir"
 
 $repoPath = [System.IO.Path]::Combine($curLocation, $testSlnDir, "intent.repositories.config")

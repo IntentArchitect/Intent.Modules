@@ -190,12 +190,12 @@ $validationRules = @{
             return "Could not locate release notes file: $($releaseNoteFile)"
         }
         [string]$releaseNotesContent = Get-Content $releaseNoteFile
-		$targetVersion = "### Version $($info.Version.Major).$($info.Version.Minor).$($info.Version.Build)"
+        $targetVersion = "### Version $($info.Version.Major).$($info.Version.Minor).$($info.Version.Build)"
         if (-not $releaseNotesContent.Contains($targetVersion)) {
             return "Could not locate version number $($targetVersion) in release notes"
         }
     }
-    Tags = {
+	Tags = {
         param([ImodSpecInfo]$info)
         if ([System.String]::IsNullOrWhiteSpace($info.Tags)) {
             return "No tags specified"
@@ -204,7 +204,6 @@ $validationRules = @{
 }
 
 $validationWarnings = @{
-    
 }
 
 foreach ($info in $imodSpecInfos.Values) {
