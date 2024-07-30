@@ -3,7 +3,7 @@
   <name>[element visual]</name>
   <display>[visual]: Domain Service</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <genericTypes />
   <typeReference id="df13bf27-2011-4115-81c5-a9ae6a0260fb">
     <typeId>07f936ea-3756-48c8-babd-24ac7271daac</typeId>

@@ -3,7 +3,7 @@
   <name>[element visual]</name>
   <display>[visual]: Repository</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <genericTypes />
   <typeReference id="59d50ab7-63a3-4f0f-94ed-928a48f1e4ae">
     <typeId>96ffceb2-a70a-4b69-869b-0df436c470c3</typeId>

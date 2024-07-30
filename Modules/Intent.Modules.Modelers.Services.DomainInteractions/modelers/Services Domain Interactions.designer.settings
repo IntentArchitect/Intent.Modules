@@ -6323,6 +6323,7 @@ await execute(element);
       <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAehJREFUeF7t3L1NA0EQhuE55DrYJijAEiVQAh0QEVl3XRGQQwWk/qGQRYewRGCB5G93dr6ZcT723nOv5GS0k+QHEpig6RyWBAQjSMAEBAXA8WYFll15lI18HHfHN/BMVOMwYFnKg1R5FpG79cknmZbDfJipFIDDXg24nbebvexfROT+wu+/y408RajxasAVrcyl/vXyItTYFfAH13WNGoDfjl5rVAP0WqM2oLsahwB6qnEkoIsahwOy12gFkLZGU4CMNVoEpKrRLCBLjdYBzddIAWi5RiZAkzXSAVqrkRXQTI3UgBZq9AA4tEY3gKNq9AaoXqNLQM0aPQOq1OgesHeNUQC71RgKsEeNEQGb1hgWcFWstX6eltMtsFuEbaj+txuDHExjNgFB5QRMQFAAHM8CAcBW22IR/4Wb7iuGAmxV3e/wowA2rS4UYI/qogB2q849YO/qPAOqVOcSULM6b4Dq1bkBHFWdB8Ch1VEDWqiOFdBMdXSA1qpjAjRZHQWg5eqsA5qvziwgS3UWAamqMwXIWJ0VQNrqhgOyVzcS0EV1QwA9VacN6K46NUCv1bUEfM27s4D9knU0b28DAc/jeX9gI8hoXwPtxkTDuvS8CQhWkIAJCAqA41lgAoIC4HgWmICgADieBYKAX0uidGAd9hNhAAAAAElFTkSuQmCC" />
       <saveAsOwnFile>false</saveAsOwnFile>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -6333,7 +6334,6 @@ await execute(element);
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <typeOrder />
       <creationOptions />
       <scriptOptions />
       <mappingOptions>
@@ -6875,12 +6875,12 @@ convertToAdvancedMapping.execute();
         </option>
       </mappingOptions>
       <typeOrder>
-        <type>Query Entity Action Target End</type>
-        <type>Call Service Operation Target End</type>
-        <type>Create Entity Action Target End</type>
-        <type>Update Entity Action Target End</type>
-        <type>Delete Entity Action Target End</type>
-        <type>Processing Action</type>
+        <type type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4" />
+        <type type="Call Service Operation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" />
+        <type type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016" />
+        <type type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452" />
+        <type type="Delete Entity Action Target End" typeId="4a04cfc2-5841-438c-9c16-fb58b784b365" />
+        <type type="Processing Action" typeId="405a2857-b911-431f-8142-719a0e9f15f3" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -13947,12 +13947,12 @@ convertToAdvancedMapping.execute();
       </scriptOptions>
       <mappingOptions />
       <typeOrder>
-        <type order="0">Query Entity Action Target End</type>
-        <type order="1">Call Service Operation Target End</type>
-        <type>Create Entity Action Target End</type>
-        <type>Update Entity Action Target End</type>
-        <type>Delete Entity Action Target End</type>
-        <type>Processing Action</type>
+        <type order="0" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4" />
+        <type order="1" type="Call Service Operation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" />
+        <type type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016" />
+        <type type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452" />
+        <type type="Delete Entity Action Target End" typeId="4a04cfc2-5841-438c-9c16-fb58b784b365" />
+        <type type="Processing Action" typeId="405a2857-b911-431f-8142-719a0e9f15f3" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -14447,8 +14447,8 @@ convertToAdvancedMapping.execute();
         </option>
       </mappingOptions>
       <typeOrder>
-        <type>Query Entity Action Target End</type>
-        <type>Call Service Operation Target End</type>
+        <type type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4" />
+        <type type="Call Service Operation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -14858,10 +14858,10 @@ convertToAdvancedMapping.execute();
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Operation</type>
-            <type>Command</type>
-            <type>Query</type>
-            <type>Domain Event Handler Association Target End</type>
+            <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+            <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+            <type type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" />
+            <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -14876,17 +14876,18 @@ convertToAdvancedMapping.execute();
 return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${returnType}` ?? "&lt;not set&gt;"}`</displayFunction>
         <nameAccessibilityMode>optional</nameAccessibilityMode>
         <defaultNameFunction>return typeReference.getType()?.typeReference.getTypeId() != null ? "result" : null;</defaultNameFunction>
+        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,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" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Operation</type>
-            <type>Operation</type>
-            <type>Stored Procedure</type>
-            <type>Class</type>
-            <type>Class Constructor</type>
+            <type type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" />
+            <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+            <type type="Stored Procedure" typeId="575edd35-9438-406d-b0a7-b99d6f29b560" />
+            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+            <type type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" />
           </targetTypes>
           <allowIsNavigable>true</allowIsNavigable>
           <allowIsNullable>true</allowIsNullable>
@@ -14939,9 +14940,9 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Command</type>
-            <type>Operation</type>
-            <type>Domain Event Handler Association Target End</type>
+            <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+            <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+            <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -14958,14 +14959,15 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
 return typeReference.getIsCollection() 
     ? pluralize(toCamelCase(name))
     : toCamelCase(name);</defaultNameFunction>
+        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,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" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Class</type>
-            <type>Class Constructor</type>
+            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+            <type type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -14975,7 +14977,7 @@ return typeReference.getIsCollection()
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
         <typeOrder>
-          <type order="0">Processing Action</type>
+          <type order="0" type="Processing Action" typeId="405a2857-b911-431f-8142-719a0e9f15f3" />
         </typeOrder>
         <creationOptions>
           <option type="element">
@@ -15023,9 +15025,9 @@ return typeReference.getIsCollection()
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Command</type>
-            <type>Operation</type>
-            <type>Domain Event Handler Association Target End</type>
+            <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+            <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+            <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -15042,13 +15044,14 @@ return typeReference.getIsCollection()
 return typeReference.getIsCollection() 
     ? pluralize(toCamelCase(name))
     : toCamelCase(name);</defaultNameFunction>
+        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,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" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Class</type>
+            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -15119,10 +15122,10 @@ association.typeReference.getType().getChildren("Attribute")
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Query</type>
-            <type>Operation</type>
-            <type>Command</type>
-            <type>Domain Event Handler Association Target End</type>
+            <type type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" />
+            <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+            <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+            <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -15139,13 +15142,14 @@ association.typeReference.getType().getChildren("Attribute")
 return typeReference.getIsCollection() 
     ? pluralize(toCamelCase(name))
     : toCamelCase(name);</defaultNameFunction>
+        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,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" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Class</type>
+            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>true</allowIsNullable>
@@ -15192,9 +15196,9 @@ return typeReference.getIsCollection()
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Command</type>
-            <type>Operation</type>
-            <type>Domain Event Handler Association Target End</type>
+            <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+            <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+            <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -15211,14 +15215,15 @@ return typeReference.getIsCollection()
 return typeReference.getIsCollection() 
     ? pluralize(toCamelCase(name))
     : toCamelCase(name);</defaultNameFunction>
+        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,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" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Class</type>
-            <type>Operation</type>
+            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+            <type type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -15304,12 +15309,12 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
       </sourceEndExtension>
       <targetEndExtension>
         <typeOrder>
-          <type>Query Entity Action Target End</type>
-          <type>Call Service Operation Target End</type>
-          <type>Create Entity Action Target End</type>
-          <type>Update Entity Action Target End</type>
-          <type>Delete Entity Action Target End</type>
-          <type>Processing Action</type>
+          <type type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4" />
+          <type type="Call Service Operation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" />
+          <type type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016" />
+          <type type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452" />
+          <type type="Delete Entity Action Target End" typeId="4a04cfc2-5841-438c-9c16-fb58b784b365" />
+          <type type="Processing Action" typeId="405a2857-b911-431f-8142-719a0e9f15f3" />
         </typeOrder>
         <creationOptions>
           <option type="association">
@@ -15390,7 +15395,7 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
       </sourceMappings>
       <targetMappings>
         <importSettings id="d7aea784-eb96-472e-919d-a0e71315a0ed" name="Common Domain Mappables" />
-        <mapping id="e04ab087-8c1a-42b9-aac7-d76ed674e319" name="Create Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+        <mapping id="e04ab087-8c1a-42b9-aac7-d76ed674e319" name="Create Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" version="2.0.0">
           <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>function getAllChildrenInHierarchy(element, type) {
@@ -15405,7 +15410,7 @@ return element.id == mappingContext.targetElementId &amp;&amp; getAllChildrenInH
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
           <childSettings>
-            <childSetting id="53e8bc33-5930-4364-9526-7f8f181b14a1" name="Set Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+            <childSetting id="53e8bc33-5930-4364-9526-7f8f181b14a1" name="Set Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" version="2.0.0">
               <isRequiredFunction>let isPartOfAssociation = (element.getParent().specialization == "Association Target End" || element.getParent().specialization == "Association Source End");
 let isPartOfAggregationSubEntity = (isPartOfAssociation 
     &amp;&amp; element.getParent().getOtherEnd().typeReference.getIsCollection() == false 
@@ -15434,9 +15439,8 @@ return isChildOfTargetClassOrCtor
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="a4a2572b-57d1-4782-8ace-dd22540211dc" name="Set Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+            <childSetting id="a4a2572b-57d1-4782-8ace-dd22540211dc" name="Set Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd" version="2.0.0">
               <filterFunction>return element.typeReference.isNavigable 
     &amp;&amp; ((element.getOtherEnd().typeReference.getIsCollection() == false &amp;&amp; element.getOtherEnd().typeReference.getIsNullable() == false)
         || application.isModuleInstalled("Intent.EntityFrameworkCore"))</filterFunction>
@@ -15458,9 +15462,8 @@ return underClassOrCtor
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>e04ab087-8c1a-42b9-aac7-d76ed674e319</useChildSettingsFrom>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="adb76398-4759-40ce-9b58-f98c1358f8e9" name="Set Association Source End" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
+            <childSetting id="adb76398-4759-40ce-9b58-f98c1358f8e9" name="Set Association Source End" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58" version="2.0.0">
               <filterFunction>return element.typeReference.isNavigable &amp;&amp; application.isModuleInstalled("Intent.EntityFrameworkCore")</filterFunction>
               <isRequiredFunction>return false;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -15474,9 +15477,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>e04ab087-8c1a-42b9-aac7-d76ed674e319</useChildSettingsFrom>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="1fba46e9-3cf7-4154-ad38-451c9696c413" name="Invoke Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
+            <childSetting id="1fba46e9-3cf7-4154-ad38-451c9696c413" name="Invoke Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" version="2.0.0">
               <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
               <allowMultipleMappings>false</allowMultipleMappings>
               <isMappableFunction>return element.id == mappingContext.targetElementId 
@@ -15487,8 +15489,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <childSettings>
-                <childSetting id="8ec45776-c6cc-4174-84f8-efb5d4308ed4" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
-                  <isRequiredFunction>return true;</isRequiredFunction>
+                <childSetting id="8ec45776-c6cc-4174-84f8-efb5d4308ed4" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" version="2.0.0">
+                  <isRequiredFunction>return (element.getValue() ?? "") == "";</isRequiredFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return element.getParent()?.getIsMapped();</isMappableFunction>
                   <isTraversable>true</isTraversable>
@@ -15499,11 +15501,10 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
                   <represents>data</represents>
-                  <childSettings />
                 </childSetting>
               </childSettings>
             </childSetting>
-            <childSetting id="22a4b2cf-3791-42c3-846c-8ea4fd917289" name="Inheritance" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
+            <childSetting id="22a4b2cf-3791-42c3-846c-8ea4fd917289" name="Inheritance" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -15512,7 +15513,6 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
@@ -15525,6 +15525,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <source id="8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7" name="Service Operation" />
             <source id="5b5676ef-333f-4f52-859d-925ee8c43578" name="Domain Event Handler Association" />
           </sources>
+          <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
             <target id="e04ab087-8c1a-42b9-aac7-d76ed674e319" name="Create Class" />
             <target id="1fba46e9-3cf7-4154-ad38-451c9696c413" name="Invoke Constructor" />
@@ -15544,6 +15545,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <source id="eb1478af-4b69-4d33-826f-3f195ebbed79" name="Collection Field" />
             <source id="ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8" name="Collection Parameter" />
           </sources>
+          <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
             <target id="53e8bc33-5930-4364-9526-7f8f181b14a1" name="Set Attribute" />
             <target id="a4a2572b-57d1-4782-8ace-dd22540211dc" name="Set Association Target End" />
@@ -15563,7 +15565,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
       </sourceMappings>
       <targetMappings>
-        <mapping id="7e501670-11af-47fa-bf05-b0da94c85225" name="Return DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+        <mapping id="7e501670-11af-47fa-bf05-b0da94c85225" name="Return DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -15572,7 +15574,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <createNameFunction>return element.getParent('DTO').getName() + element.getName() + 'Dto'</createNameFunction>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="ee4038a2-7109-4ae2-b667-983ef574070b" name="Return DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+            <childSetting id="ee4038a2-7109-4ae2-b667-983ef574070b" name="Return DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -15581,18 +15583,16 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
-        <mapping id="e2e407d6-4f3e-41bb-8ec2-12f110b620a5" name="Type-Defintion" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">
+        <mapping id="e2e407d6-4f3e-41bb-8ec2-12f110b620a5" name="Type-Defintion" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <childSettings />
         </mapping>
       </targetMappings>
       <mappingTypes />
@@ -15618,6 +15618,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <source id="eb1478af-4b69-4d33-826f-3f195ebbed79" name="Collection Field" />
             <source id="ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8" name="Collection Parameter" />
           </sources>
+          <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
             <target id="091c6b4d-5cf7-4561-9d4c-b025905152e3" name="Invoke Class Operation" />
           </targets>
@@ -15634,6 +15635,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <source id="daf3a2fa-0b35-4549-8b65-26b3a74dc7e0" name="Attribute" />
             <source id="cfe9c4d4-9c26-4f11-a585-f1e3863fb658" name="Invoke Domain Operation" />
           </sources>
+          <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
             <target id="84e9dcc5-8765-48ef-b2a6-39744498a4af" name="Set Attribute" />
             <target id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" />
@@ -15655,7 +15657,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
       </sourceMappings>
       <targetMappings>
-        <mapping id="0cd3919e-8d19-4b35-8c2b-dc8037efc3d5" name="Create Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+        <mapping id="0cd3919e-8d19-4b35-8c2b-dc8037efc3d5" name="Create Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -15663,7 +15665,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="a861cc4a-9aed-41f5-ad5d-fdc651497de4" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+            <childSetting id="a861cc4a-9aed-41f5-ad5d-fdc651497de4" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -15672,9 +15674,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="4e6c69aa-dfdb-4f34-b9dd-80ad18cfe855" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+            <childSetting id="4e6c69aa-dfdb-4f34-b9dd-80ad18cfe855" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd" version="2.0.0">
               <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
@@ -15686,9 +15687,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>0cd3919e-8d19-4b35-8c2b-dc8037efc3d5</useChildSettingsFrom>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="c15d409c-2707-419e-bb07-0c0df98b2aea" name="Inheritance" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
+            <childSetting id="c15d409c-2707-419e-bb07-0c0df98b2aea" name="Inheritance" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -15697,11 +15697,10 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
-        <mapping id="c5a629db-c717-400b-9204-7cdb6acfa13e" name="Create Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
+        <mapping id="c5a629db-c717-400b-9204-7cdb6acfa13e" name="Create Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -15709,7 +15708,6 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>false</canBeModified>
           <useChildSettingsFrom>0cd3919e-8d19-4b35-8c2b-dc8037efc3d5</useChildSettingsFrom>
           <represents>data</represents>
-          <childSettings />
         </mapping>
       </targetMappings>
       <mappingTypes>
@@ -15725,6 +15723,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <source id="792374ff-6b97-45df-96de-01acd2488cc0" name="Property" />
             <source id="eb1478af-4b69-4d33-826f-3f195ebbed79" name="Collection Field" />
           </sources>
+          <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
             <target id="a861cc4a-9aed-41f5-ad5d-fdc651497de4" name="Attribute" />
             <target id="4e6c69aa-dfdb-4f34-b9dd-80ad18cfe855" name="Association Target End" />
@@ -15743,7 +15742,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
       </sourceMappings>
       <targetMappings>
         <importSettings id="d7aea784-eb96-472e-919d-a0e71315a0ed" name="Common Domain Mappables" />
-        <mapping id="120f60ff-f242-4f5c-ac03-14f0ecaafdcf" name="Call Application Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+        <mapping id="120f60ff-f242-4f5c-ac03-14f0ecaafdcf" name="Call Application Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -15751,18 +15750,17 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="ca7d6d11-0e19-4326-b95b-6451c9ca4d9d" name="Application Service Operation Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+            <childSetting id="ca7d6d11-0e19-4326-b95b-6451c9ca4d9d" name="Application Service Operation Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
-        <mapping id="842b0753-adfc-4215-a772-65f4a033aedd" name="Call Domain Service Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+        <mapping id="842b0753-adfc-4215-a772-65f4a033aedd" name="Call Domain Service Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -15770,7 +15768,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="bd766e67-6d4a-44d9-aadc-feef8882840f" name="Domain Service Operation Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+            <childSetting id="bd766e67-6d4a-44d9-aadc-feef8882840f" name="Domain Service Operation Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -15781,11 +15779,10 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
-        <mapping id="2e036907-5caf-4598-bd61-33d079871677" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+        <mapping id="2e036907-5caf-4598-bd61-33d079871677" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -15794,7 +15791,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="fa557ba7-7faa-4ce3-bd23-32e821f71f84" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+            <childSetting id="fa557ba7-7faa-4ce3-bd23-32e821f71f84" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -15804,9 +15801,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="24c8c608-ce45-4d64-a8b1-bbbd2486b186" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+            <childSetting id="24c8c608-ce45-4d64-a8b1-bbbd2486b186" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -15816,11 +15812,10 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
-        <mapping id="8d23de60-8871-4365-ab36-2a2b4b5fa31d" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
+        <mapping id="8d23de60-8871-4365-ab36-2a2b4b5fa31d" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -15828,9 +15823,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>true</canBeModified>
           <useChildSettingsFrom>2e036907-5caf-4598-bd61-33d079871677</useChildSettingsFrom>
           <represents>data</represents>
-          <childSettings />
         </mapping>
-        <mapping id="10596d74-4283-4bfc-a6b5-043e5b9b1939" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
+        <mapping id="10596d74-4283-4bfc-a6b5-043e5b9b1939" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -15838,9 +15832,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>true</canBeModified>
           <useChildSettingsFrom>2e036907-5caf-4598-bd61-33d079871677</useChildSettingsFrom>
           <represents>data</represents>
-          <childSettings />
         </mapping>
-        <mapping id="809a0d2b-fbb6-4f09-9302-5d13a19d1607" name="Stored Procedure" type="Stored Procedure" typeId="575edd35-9438-406d-b0a7-b99d6f29b560">
+        <mapping id="809a0d2b-fbb6-4f09-9302-5d13a19d1607" name="Stored Procedure" type="Stored Procedure" typeId="575edd35-9438-406d-b0a7-b99d6f29b560" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -15848,7 +15841,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="dba64983-a232-4042-89f6-fe70e966fa32" name="Stored Procedure Parameter" type="Stored Procedure Parameter" typeId="5823b192-eb03-47c8-90d8-5501c922e9a5">
+            <childSetting id="dba64983-a232-4042-89f6-fe70e966fa32" name="Stored Procedure Parameter" type="Stored Procedure Parameter" typeId="5823b192-eb03-47c8-90d8-5501c922e9a5" version="2.0.0">
               <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -15856,9 +15849,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="5cf85beb-5228-4f1a-969c-bc72b0c14a0c" name="Collection Stored Procedure Parameter" type="Stored Procedure Parameter" typeId="5823b192-eb03-47c8-90d8-5501c922e9a5">
+            <childSetting id="5cf85beb-5228-4f1a-969c-bc72b0c14a0c" name="Collection Stored Procedure Parameter" type="Stored Procedure Parameter" typeId="5823b192-eb03-47c8-90d8-5501c922e9a5" version="2.0.0">
               <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -15868,11 +15860,10 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
-        <mapping id="182b8204-5ba9-4bc8-b109-65545989e757" name="Create Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+        <mapping id="182b8204-5ba9-4bc8-b109-65545989e757" name="Create Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" version="2.0.0">
           <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>function getAllChildrenInHierarchy(element, type) {
@@ -15891,7 +15882,7 @@ return element.id == mappingContext.targetElementId &amp;&amp;
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
           <childSettings>
-            <childSetting id="0f3c0d59-6a6c-4d60-bef4-08afa9525acf" name="Set Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+            <childSetting id="0f3c0d59-6a6c-4d60-bef4-08afa9525acf" name="Set Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" version="2.0.0">
               <isRequiredFunction>let isPartOfAssociation = (element.getParent().specialization == "Association Target End" || element.getParent().specialization == "Association Source End");
 let isPartOfAggregationSubEntity = (isPartOfAssociation 
     &amp;&amp; element.getParent().getOtherEnd().typeReference.getIsCollection() == false 
@@ -15920,9 +15911,8 @@ return isChildOfTargetClassOrCtor
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="c509a64d-6271-492a-94d6-b318307f0cf4" name="Set Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+            <childSetting id="c509a64d-6271-492a-94d6-b318307f0cf4" name="Set Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd" version="2.0.0">
               <filterFunction>return element.typeReference.isNavigable 
     &amp;&amp; ((element.getOtherEnd().typeReference.getIsCollection() == false &amp;&amp; element.getOtherEnd().typeReference.getIsNullable() == false)
         || application.isModuleInstalled("Intent.EntityFrameworkCore"))</filterFunction>
@@ -15944,9 +15934,8 @@ return underClassOrCtor
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>182b8204-5ba9-4bc8-b109-65545989e757</useChildSettingsFrom>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="1f0bc2d1-41e4-4738-9de8-d499bba3bb9a" name="Set Association Source End" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
+            <childSetting id="1f0bc2d1-41e4-4738-9de8-d499bba3bb9a" name="Set Association Source End" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58" version="2.0.0">
               <filterFunction>return element.typeReference.isNavigable &amp;&amp; application.isModuleInstalled("Intent.EntityFrameworkCore")</filterFunction>
               <isRequiredFunction>return false;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -15960,9 +15949,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>182b8204-5ba9-4bc8-b109-65545989e757</useChildSettingsFrom>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="00294673-7016-42a2-a9d9-b41d0e6271eb" name="Invoke Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
+            <childSetting id="00294673-7016-42a2-a9d9-b41d0e6271eb" name="Invoke Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" version="2.0.0">
               <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
               <allowMultipleMappings>false</allowMultipleMappings>
               <isMappableFunction>return element.id == mappingContext.targetElementId || lookup(mappingContext.targetElementId).specialization != "Class Constructor"</isMappableFunction>
@@ -15971,7 +15959,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <childSettings>
-                <childSetting id="1971bf3d-ced6-4587-8db4-1c7f2eeca169" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+                <childSetting id="1971bf3d-ced6-4587-8db4-1c7f2eeca169" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" version="2.0.0">
                   <isRequiredFunction>return true;</isRequiredFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return element.getParent()?.getIsMapped();</isMappableFunction>
@@ -15983,11 +15971,10 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
                   <represents>data</represents>
-                  <childSettings />
                 </childSetting>
               </childSettings>
             </childSetting>
-            <childSetting id="f0a076a1-1b31-430f-ab7b-ae3e6f467f6d" name="Inheritance" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
+            <childSetting id="f0a076a1-1b31-430f-ab7b-ae3e6f467f6d" name="Inheritance" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -15996,7 +15983,6 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
@@ -16012,6 +15998,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <source id="5b5676ef-333f-4f52-859d-925ee8c43578" name="Domain Event Handler Association" />
             <source id="0556825b-177b-4093-b13a-5dfabb13c9b6" name="Query" />
           </sources>
+          <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
             <target id="120f60ff-f242-4f5c-ac03-14f0ecaafdcf" name="Call Application Service Operation" />
             <target id="842b0753-adfc-4215-a772-65f4a033aedd" name="Call Domain Service Operation" />
@@ -16034,6 +16021,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <source id="c0682bc4-2b6a-4638-a35e-39188d253694" name="Association Target End" />
             <source id="cfe9c4d4-9c26-4f11-a585-f1e3863fb658" name="Invoke Domain Operation" />
           </sources>
+          <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
             <target id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" />
             <target id="ca7d6d11-0e19-4326-b95b-6451c9ca4d9d" name="Application Service Operation Parameter" />
@@ -16070,6 +16058,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <source id="ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8" name="Collection Parameter" />
             <source id="5b5676ef-333f-4f52-859d-925ee8c43578" name="Domain Event Handler Association" />
           </sources>
+          <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
             <target id="091c6b4d-5cf7-4561-9d4c-b025905152e3" name="Invoke Class Operation" />
           </targets>
@@ -16088,6 +16077,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <source id="c0682bc4-2b6a-4638-a35e-39188d253694" name="Association Target End" />
             <source id="cfe9c4d4-9c26-4f11-a585-f1e3863fb658" name="Invoke Domain Operation" />
           </sources>
+          <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
             <target id="84e9dcc5-8765-48ef-b2a6-39744498a4af" name="Set Attribute" />
             <target id="8acf7530-30fd-49fc-b082-75e0060c249e" name="Set Association Target End" />
@@ -16108,7 +16098,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
         <import id="128a6e65-c165-400a-800d-71c7e67e7b01" name="Update Entity Mappables" />
       </imports>
       <mappableElementSettings>
-        <mappableElement id="05cdd272-2140-4e9a-90ab-2395bfe28be0" name="Call Operation Action" type="Call Service Operation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c">
+        <mappableElement id="05cdd272-2140-4e9a-90ab-2395bfe28be0" name="Call Operation Action" type="Call Service Operation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16116,9 +16106,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
-          <childSettings />
         </mappableElement>
-        <mappableElement id="6dad8aff-d0f4-4630-9ca3-ae36943ef302" name="Create Entity Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016">
+        <mappableElement id="6dad8aff-d0f4-4630-9ca3-ae36943ef302" name="Create Entity Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16128,9 +16117,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           </traversableTypes>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
-        <mappableElement id="459be12d-ded5-40cb-9b5d-a57d2683375d" name="Delete Entity Action" type="Delete Entity Action Target End" typeId="4a04cfc2-5841-438c-9c16-fb58b784b365">
+        <mappableElement id="459be12d-ded5-40cb-9b5d-a57d2683375d" name="Delete Entity Action" type="Delete Entity Action Target End" typeId="4a04cfc2-5841-438c-9c16-fb58b784b365" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16139,9 +16127,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           </traversableTypes>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
-        <mappableElement id="13b6c853-ef60-4dc9-8c6b-a0fe24fc80b8" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+        <mappableElement id="13b6c853-ef60-4dc9-8c6b-a0fe24fc80b8" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -16150,7 +16137,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="643689ae-7903-447e-8ed3-1d492427b5ba" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+            <childSetting id="643689ae-7903-447e-8ed3-1d492427b5ba" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -16160,9 +16147,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="9af8578c-b2fe-4f65-8014-6acfc258e6d5" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+            <childSetting id="9af8578c-b2fe-4f65-8014-6acfc258e6d5" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -16172,11 +16158,10 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mappableElement>
-        <mappableElement id="85f8d87f-3d9f-49a2-a882-eefae06a5e9a" name="Query Entity Action" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4">
+        <mappableElement id="85f8d87f-3d9f-49a2-a882-eefae06a5e9a" name="Query Entity Action" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16185,9 +16170,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           </traversableTypes>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
-        <mappableElement id="e65cd91b-d605-4341-9fdf-470a54c06d47" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+        <mappableElement id="e65cd91b-d605-4341-9fdf-470a54c06d47" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -16195,7 +16179,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>true</canBeModified>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="fffe6f4e-bcf6-4c7a-887e-6aca52d66806" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+            <childSetting id="fffe6f4e-bcf6-4c7a-887e-6aca52d66806" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
               <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -16205,9 +16189,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="57def1e1-4cbe-497a-8f9c-c01f8bd14b7b" name="Collection Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+            <childSetting id="57def1e1-4cbe-497a-8f9c-c01f8bd14b7b" name="Collection Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
               <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -16217,11 +16200,10 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mappableElement>
-        <mappableElement id="95e12352-27ab-4d94-96a1-4d2cb0fb06be" name="Update Entity Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452">
+        <mappableElement id="95e12352-27ab-4d94-96a1-4d2cb0fb06be" name="Update Entity Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16231,14 +16213,13 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           </traversableTypes>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
       </mappableElementSettings>
     </mappableElementPackage>
     <mappableElementPackage id="d7aea784-eb96-472e-919d-a0e71315a0ed" name="Common Domain Mappables">
       <imports />
       <mappableElementSettings>
-        <mappableElement id="15b84be5-c79b-41bf-881c-447fe70f5f5b" name="Create Data Contract" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
+        <mappableElement id="15b84be5-c79b-41bf-881c-447fe70f5f5b" name="Create Data Contract" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -16246,7 +16227,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+            <childSetting id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" version="2.0.0">
               <isRequiredFunction>return true;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -16256,9 +16237,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="153c412a-5f90-48b1-9059-6ea19b76d70e" name="Inheritance" type="Data Contract Generalization Target End" typeId="4ea029c6-e963-46c7-8d2f-e4ea73e05a07">
+            <childSetting id="153c412a-5f90-48b1-9059-6ea19b76d70e" name="Inheritance" type="Data Contract Generalization Target End" typeId="4ea029c6-e963-46c7-8d2f-e4ea73e05a07" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -16267,11 +16247,10 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mappableElement>
-        <mappableElement id="32b2649c-7d86-42ba-807f-d9449ed15980" name="Create Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
+        <mappableElement id="32b2649c-7d86-42ba-807f-d9449ed15980" name="Create Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -16279,7 +16258,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+            <childSetting id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" version="2.0.0">
               <isRequiredFunction>return true;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -16289,7 +16268,6 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mappableElement>
@@ -16300,7 +16278,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
         <import id="d7aea784-eb96-472e-919d-a0e71315a0ed" name="Common Domain Mappables" />
       </imports>
       <mappableElementSettings>
-        <mappableElement id="72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8" name="Update Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+        <mappableElement id="72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8" name="Update Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -16308,7 +16286,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="84e9dcc5-8765-48ef-b2a6-39744498a4af" name="Set Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+            <childSetting id="84e9dcc5-8765-48ef-b2a6-39744498a4af" name="Set Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>
 let fkAssociation = element.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected();
@@ -16331,9 +16309,8 @@ return (!isAutoGeneratedPk || isPartOfAssociation)
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="8acf7530-30fd-49fc-b082-75e0060c249e" name="Set Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+            <childSetting id="8acf7530-30fd-49fc-b082-75e0060c249e" name="Set Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd" version="2.0.0">
               <filterFunction>return element.typeReference.isNavigable 
     &amp;&amp; ((element.getOtherEnd().typeReference.getIsCollection() == false &amp;&amp; element.getOtherEnd().typeReference.getIsNullable() == false)
         || application.isModuleInstalled("Intent.EntityFrameworkCore"))</filterFunction>
@@ -16349,9 +16326,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</useChildSettingsFrom>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="49bfbdb3-9697-4d84-9194-df60ee7dfd9a" name="Set Association Source End" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
+            <childSetting id="49bfbdb3-9697-4d84-9194-df60ee7dfd9a" name="Set Association Source End" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58" version="2.0.0">
               <filterFunction>return element.typeReference.isNavigable &amp;&amp; application.isModuleInstalled("Intent.EntityFrameworkCore")</filterFunction>
               <isRequiredFunction>return false;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -16365,9 +16341,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</useChildSettingsFrom>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
-            <childSetting id="091c6b4d-5cf7-4561-9d4c-b025905152e3" name="Invoke Class Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+            <childSetting id="091c6b4d-5cf7-4561-9d4c-b025905152e3" name="Invoke Class Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" version="2.0.0">
               <filterFunction>return !element.getIsStatic()</filterFunction>
               <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -16377,7 +16352,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <childSettings>
-                <childSetting id="95db9e8b-5db5-4a46-815c-53948a16fe7c" name="Set Operation Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+                <childSetting id="95db9e8b-5db5-4a46-815c-53948a16fe7c" name="Set Operation Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" version="2.0.0">
                   <isRequiredFunction>return true;</isRequiredFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return element.getParent().getIsMapped();</isMappableFunction>
@@ -16388,11 +16363,10 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
                   </traversableTypes>
                   <canBeModified>false</canBeModified>
                   <represents>data</represents>
-                  <childSettings />
                 </childSetting>
               </childSettings>
             </childSetting>
-            <childSetting id="b705b26f-b317-4278-9458-0d2442d46182" name="Inheritance" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
+            <childSetting id="b705b26f-b317-4278-9458-0d2442d46182" name="Inheritance" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -16401,7 +16375,6 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <childSettings />
             </childSetting>
           </childSettings>
         </mappableElement>
@@ -16410,9 +16383,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
   </mappableElementPackages>
   <mappableElementPackageExtensions>
     <mappableElementPackageExtension id="f7772228-e409-4998-92b7-d0ab6b7b338a" name="Application Source Action Extensions" extendPackageId="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" extendPackage="Application Source Mappables">
-      <imports />
       <mappableElementSettings>
-        <mappableElement id="df404369-916e-4385-a29b-cbf86aa99846" name="Call Operation Action" type="Call Service Operation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c">
+        <mappableElement id="df404369-916e-4385-a29b-cbf86aa99846" name="Call Operation Action" type="Call Service Operation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16420,9 +16392,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
-          <childSettings />
         </mappableElement>
-        <mappableElement id="f11b799f-24a9-4a8c-ae3b-576c8571c771" name="Create Entity Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016">
+        <mappableElement id="f11b799f-24a9-4a8c-ae3b-576c8571c771" name="Create Entity Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16432,9 +16403,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           </traversableTypes>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
-        <mappableElement id="a9b0bd2b-9b5a-45d5-992b-48430fc7579d" name="Delete Entity Action" type="Delete Entity Action Target End" typeId="4a04cfc2-5841-438c-9c16-fb58b784b365">
+        <mappableElement id="a9b0bd2b-9b5a-45d5-992b-48430fc7579d" name="Delete Entity Action" type="Delete Entity Action Target End" typeId="4a04cfc2-5841-438c-9c16-fb58b784b365" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16443,9 +16413,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           </traversableTypes>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
-        <mappableElement id="049127ae-ee8f-40d0-bed8-a3c9a559d7e5" name="Query Entity Action" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4">
+        <mappableElement id="049127ae-ee8f-40d0-bed8-a3c9a559d7e5" name="Query Entity Action" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16454,9 +16423,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           </traversableTypes>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
-        <mappableElement id="f1c2f529-7818-4f89-a9b6-1b327e100470" name="Update Entity Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452">
+        <mappableElement id="f1c2f529-7818-4f89-a9b6-1b327e100470" name="Update Entity Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16465,14 +16433,12 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           </traversableTypes>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
       </mappableElementSettings>
     </mappableElementPackageExtension>
     <mappableElementPackageExtension id="83c1219b-a5da-45f2-9338-6e46c00db8f9" name="CQRS Application Source Mappables Extension" extendPackageId="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" extendPackage="Application Source Mappables">
-      <imports />
       <mappableElementSettings>
-        <mappableElement id="05d2103b-407d-4de4-aacc-56bad7471e1c" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
+        <mappableElement id="05d2103b-407d-4de4-aacc-56bad7471e1c" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -16480,9 +16446,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>true</canBeModified>
           <useChildSettingsFrom>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</useChildSettingsFrom>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
-        <mappableElement id="fc30d3da-a441-498b-a2a8-9e8ae3a1c605" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
+        <mappableElement id="fc30d3da-a441-498b-a2a8-9e8ae3a1c605" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -16490,14 +16455,12 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>true</canBeModified>
           <useChildSettingsFrom>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</useChildSettingsFrom>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
       </mappableElementSettings>
     </mappableElementPackageExtension>
     <mappableElementPackageExtension id="07fcf100-ebed-44ee-8eb2-e65f418ae042" name="CQRS Application Target Mappables Extension" extendPackageId="93c752a0-161d-4ef5-9c88-09995f59c263" extendPackage="Application Target Mappables">
-      <imports />
       <mappableElementSettings>
-        <mappableElement id="e7d79c6a-1df9-4a1b-92f6-f198080165aa" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
+        <mappableElement id="e7d79c6a-1df9-4a1b-92f6-f198080165aa" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -16505,9 +16468,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>true</canBeModified>
           <useChildSettingsFrom>13b6c853-ef60-4dc9-8c6b-a0fe24fc80b8</useChildSettingsFrom>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
-        <mappableElement id="9deeb131-a9cd-41cd-bc20-1bd5989f7bde" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
+        <mappableElement id="9deeb131-a9cd-41cd-bc20-1bd5989f7bde" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -16515,21 +16477,18 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <canBeModified>true</canBeModified>
           <useChildSettingsFrom>13b6c853-ef60-4dc9-8c6b-a0fe24fc80b8</useChildSettingsFrom>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
       </mappableElementSettings>
     </mappableElementPackageExtension>
     <mappableElementPackageExtension id="b6d97897-19a6-475b-bd06-f51dd1a11bc6" name="Domain Event Mappable Extension" extendPackageId="93c752a0-161d-4ef5-9c88-09995f59c263" extendPackage="Application Target Mappables">
-      <imports />
       <mappableElementSettings>
-        <mappableElement id="0d7e67b8-f056-443d-906d-665c0da26895" name="Domain Event Handler Target" type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f">
+        <mappableElement id="0d7e67b8-f056-443d-906d-665c0da26895" name="Domain Event Handler Target" type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>true</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <childSettings />
         </mappableElement>
       </mappableElementSettings>
     </mappableElementPackageExtension>

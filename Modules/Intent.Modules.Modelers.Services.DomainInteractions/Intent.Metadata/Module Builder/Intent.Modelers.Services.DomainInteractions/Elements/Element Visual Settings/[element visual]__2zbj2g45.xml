@@ -3,7 +3,7 @@
   <name>[element visual]</name>
   <display>[visual]: Class</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <genericTypes />
   <typeReference id="1ec65d5d-1746-4543-b894-e0a89d25a302">
     <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
