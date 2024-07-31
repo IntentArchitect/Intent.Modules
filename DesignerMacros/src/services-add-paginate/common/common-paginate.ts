@@ -41,5 +41,6 @@ function addPagingParameters(element: MacroApi.Context.IElementApi, childElement
     if (!element.getChildren(childElementType).find(x => x.getName().toLowerCase() == "orderby")){
         let pageSize = createElement(childElementType, "OrderBy", element.id);
         pageSize.typeReference.setType(commonTypes.string)    
+        pageSize.typeReference?.setIsNullable(true);
     }
 }
