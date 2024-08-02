@@ -967,6 +967,7 @@ mapping.addMappedEnd(dataBindingMappingTypeId, newElement.getMappingPath(), elem
             <type type="On Click" typeId="b80f61a7-3b9e-4b75-806f-71d4f8b9900a" />
             <type type="On Valid Submit" typeId="82cf639a-6005-4bb8-8f38-06becffad225" />
             <type type="On Row Click" typeId="89eeee6b-2d7f-4fa7-9adb-e16d0db75e1e" />
+            <type type="Event Emitter: Event Emitter" typeId="b5dac39d-db1d-40ff-8763-3a9fd5612af7" />
           </targetSettings>
           <scriptOptions>
             <option>
@@ -1032,19 +1033,19 @@ const body = form.getChildren("Container").find(x =&gt; x.getName() == "Body")
     ?? createElement("Container", "Body", form.id);
 element.getChildren().filter(x =&gt; x.specialization == "Property" || x.specialization == "DTO-Field").forEach(p =&gt; {
     if (p.typeReference.getTypeId() == "d384db9c-a279-45e1-801e-e4e8099625f2" || p.typeReference.getTypeId() == "675c7b84-997a-44e0-82b9-cd724c07c9e6") { // string || decimal
-        const newInput = createElement("Text Input", p.getName(), body.id);
+        const newInput = createElement("Text Input", toTitleCase(p.getName()), body.id);
         mapping?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath((e) =&gt; e.specialization == "Component"), newInput.getMappingPath((e) =&gt; e.specialization == "Component View"))
-        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(p.getName())
+        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(newInput.getName())
     }
     else if (p.typeReference.getTypeId() == "e6f92b09-b2c5-4536-8270-a4d9e5bbd930"){ // bool
-        const newInput = createElement("Checkbox", p.getName(), body.id);
+        const newInput = createElement("Checkbox", toTitleCase(p.getName()), body.id);
         mapping?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath((e) =&gt; e.specialization == "Component"), newInput.getMappingPath((e) =&gt; e.specialization == "Component View"))
-        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(p.getName())
+        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(newInput.getName())
     }
     else if (p.getName().toLowerCase() != "id" &amp;&amp; p.typeReference.getTypeId() == "6b649125-18ea-48fd-a6ba-0bfff0d8f488"){ // guid (This isn't a good enough check - need to traverse to domain)
-        const newInput = createElement("Select", p.getName(), body.id);
+        const newInput = createElement("Select", toTitleCase(p.getName()), body.id);
         mapping?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath((e) =&gt; e.specialization == "Component"), newInput.getMappingPath((e) =&gt; e.specialization == "Component View"))
-        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(p.getName())
+        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(newInput.getName())
     }
 });
 
@@ -1068,7 +1069,7 @@ mapping.addMappedEnd(invocationMappingTypeId, cancelOperation.getMappingPath(), 
               <isOptionVisibleFunction>return element.typeReference.getType().getName() == "string"</isOptionVisibleFunction>
               <script>const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
 const parent = mapping.getTargetElement();
-const newElement = createElement("Text Input", element.getName(), parent.id);
+const newElement = createElement("Text Input", toTitleCase(element.getName()), parent.id);
 newElement.getStereotype("2c099977-e5ca-4a80-ba70-6f2edc593681").getProperty("66fc3478-6e87-4226-97a9-d9bd72d2fbaf").setValue(element.getName()); // Label Addon -&gt; Label
 mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), newElement.getMappingPath());</script>
             </option>
@@ -1101,11 +1102,11 @@ dataCollection.getChildren().filter(x =&gt; x.specialization == "Property" || x.
     if (p.typeReference.getTypeId() == "d384db9c-a279-45e1-801e-e4e8099625f2" || // string
         p.typeReference.getTypeId() == "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74" || // int
         p.typeReference.getTypeId() == "675c7b84-997a-44e0-82b9-cd724c07c9e6") { // decimal
-        const newColumn = createElement("Column", p.getName(), table.id);
+        const newColumn = createElement("Column", toTitleCase(p.getName()), table.id);
         mapping.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath(), newColumn.getMappingPath())
     }
     else if (p.typeReference.getTypeId() == "e6f92b09-b2c5-4536-8270-a4d9e5bbd930"){ // bool
-        const newColumn = createElement("Column", p.getName(), table.id);
+        const newColumn = createElement("Column", toTitleCase(p.getName()), table.id);
         const newInput = createElement("Checkbox", p.getName(), newColumn.id);
         newInput.removeStereotype("Label Addon");
         mapping.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath(), newInput.getMappingPath());
@@ -1127,13 +1128,12 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), table.g
 
 model.getChildren().filter(x =&gt; x.specialization == "Property" || x.specialization == "DTO-Field").forEach(p =&gt; {
     if (p.typeReference.getTypeId() == "d384db9c-a279-45e1-801e-e4e8099625f2") { // string
-        const newColumn = createElement("Column", p.getName(), table.id);
+        const newColumn = createElement("Column", toTitleCase(p.getName()), table.id);
         mapping.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath(), newColumn.getMappingPath())
     }
     else if (p.typeReference.getTypeId() == "e6f92b09-b2c5-4536-8270-a4d9e5bbd930"){ // bool
-        const newColumn = createElement("Column", p.getName(), table.id);
+        const newColumn = createElement("Column", toTitleCase(p.getName()), table.id);
         const newInput = createElement("Checkbox", p.getName(), newColumn.id);
-        newInput.removeStereotype("Label Addon");
         mapping.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath(), newInput.getMappingPath());
     }
 });</script>

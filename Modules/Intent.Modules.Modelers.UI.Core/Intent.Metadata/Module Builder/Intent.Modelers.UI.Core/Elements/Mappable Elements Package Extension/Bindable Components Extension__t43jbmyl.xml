@@ -1201,7 +1201,7 @@
     </childElement>
     <childElement id="a91de0b7-70f4-4034-9e3b-a4564d8aedb5" type="Mappable Element Extension" typeId="f9449923-9173-4347-a3a2-38d1eb66f6b5">
       <name>On Click Extensions</name>
-      <display>On Click Extensions extends On Click, On Valid Submit, On Row Click</display>
+      <display>On Click Extensions extends On Click, On Valid Submit, On Row Click, Event Emitter</display>
       <isAbstract>false</isAbstract>
       <sort-children>manually</sort-children>
       <genericTypes />
@@ -1215,7 +1215,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="bd502960-a08e-4138-b3e0-d3dad4439410" display="Extend Target Settings" value="[&quot;b80f61a7-3b9e-4b75-806f-71d4f8b9900a&quot;,&quot;82cf639a-6005-4bb8-8f38-06becffad225&quot;,&quot;89eeee6b-2d7f-4fa7-9adb-e16d0db75e1e&quot;]" isActive="true" />
+            <property name="bd502960-a08e-4138-b3e0-d3dad4439410" display="Extend Target Settings" value="[&quot;b80f61a7-3b9e-4b75-806f-71d4f8b9900a&quot;,&quot;82cf639a-6005-4bb8-8f38-06becffad225&quot;,&quot;89eeee6b-2d7f-4fa7-9adb-e16d0db75e1e&quot;,&quot;b5dac39d-db1d-40ff-8763-3a9fd5612af7&quot;]" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
