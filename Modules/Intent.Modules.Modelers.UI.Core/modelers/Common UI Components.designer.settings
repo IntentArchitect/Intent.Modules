@@ -103,7 +103,10 @@ let result = await dialogService.openForm({
         label: "Component Type",
         selectOptions: options,
         placeholder: "Search components"
-    }]
+    }],
+    minWidth: "586px",
+    maxWidth: "586px",
+    height: "60%"
 })
 
 let selected = options.filter(x =&gt; x.id == result["component-type"])[0];
@@ -401,7 +404,10 @@ let result = await dialogService.openForm({
         label: "Component Type",
         selectOptions: options,
         placeholder: "Search components"
-    }]
+    }],
+    minWidth: "586px",
+    maxWidth: "586px",
+    height: "60%"
 })
 
 let selected = options.filter(x =&gt; x.id == result["component-type"])[0];
@@ -575,7 +581,10 @@ let result = await dialogService.openForm({
         label: "Component Type",
         selectOptions: options,
         placeholder: "Search components"
-    }]
+    }],
+    minWidth: "586px",
+    maxWidth: "586px",
+    height: "60%"
 })
 
 let selected = options.filter(x =&gt; x.id == result["component-type"])[0];
