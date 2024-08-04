@@ -221,15 +221,14 @@ steps:
       intent-package-management BulkUploadModules -directory "$directory" -address "$address" -username "$username" -password "$password"
       intent-package-management BulkUploadApplicationTemplates -directory "$directory" -address "$address" -username "$username" -password "$password"
 
-# Commented out until we move ownership of all NuGet packages
-# - task: DotNetCoreCLI@2
-#   displayName: 'Push *.nupkg to nuget.org'
-#   condition: and(succeeded(), in('True', variables.isMaster))
-#   inputs:
-#     command: 'custom'
-#     custom: 'nuget'
-#     arguments: >
-#       push $(Build.ArtifactStagingDirectory)/*.nupkg
-#       -s https://api.nuget.org/v3/index.json
-#       -k $(nuget-api-key-intentarchitect)
-#       --skip-duplicate
+- task: DotNetCoreCLI@2
+  displayName: 'Push *.nupkg to nuget.org'
+  condition: and(succeeded(), in('True', variables.isMaster))
+  inputs:
+    command: 'custom'
+    custom: 'nuget'
+    arguments: >
+      push $(Build.ArtifactStagingDirectory)/*.nupkg
+      -s https://api.nuget.org/v3/index.json
+      -k $(nuget-api-key-intentarchitect)
+      --skip-duplicate
