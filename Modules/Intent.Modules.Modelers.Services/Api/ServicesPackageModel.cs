@@ -40,6 +40,11 @@ namespace Intent.Modelers.Services.Api
             .Select(x => new DTOModel(x))
             .ToList();
 
+        public IList<CommentModel> Comments => UnderlyingPackage.ChildElements
+            .GetElementsOfType(CommentModel.SpecializationTypeId)
+            .Select(x => new CommentModel(x))
+            .ToList();
+
         public IList<EnumModel> Enums => UnderlyingPackage.ChildElements
             .GetElementsOfType(EnumModel.SpecializationTypeId)
             .Select(x => new EnumModel(x))

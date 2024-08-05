@@ -29,6 +29,11 @@ namespace Intent.Modelers.Services.Api
             .Select(x => new DTOModel(x))
             .ToList();
 
+        public IList<CommentModel> Comments => _element.ChildElements
+            .GetElementsOfType(CommentModel.SpecializationTypeId)
+            .Select(x => new CommentModel(x))
+            .ToList();
+
         public IList<TypeDefinitionModel> Types => _element.ChildElements
             .GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
             .Select(x => new TypeDefinitionModel(x))

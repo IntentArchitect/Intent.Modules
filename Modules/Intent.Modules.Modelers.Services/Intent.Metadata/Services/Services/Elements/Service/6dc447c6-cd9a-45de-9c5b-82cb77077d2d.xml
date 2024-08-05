@@ -13,12 +13,13 @@
   <metadata />
   <childElements>
     <childElement id="3dd4d1e7-a64f-4433-b4bc-6694224f7ce6" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+      <comment>Migration Note: Altered 'date' to 'datetime' to preserve generated C# type.</comment>
       <name>GetSomeShit</name>
       <display>GetSomeShit(): date</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="540fcd32-1b83-4283-b0ed-159827c7c427">
-        <typeId>1fbaa056-b666-4f25-b8fd-76fe3165acc8</typeId>
+        <typeId>a4107c29-7851-4121-9416-cf1236908f1e</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -33,7 +34,9 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
-      <metadata />
+      <metadata>
+        <entry key="common-charp-migration-date-to-datetime" value="true" />
+      </metadata>
       <childElements />
     </childElement>
     <childElement id="3ae4da8b-f27c-4fc8-ab25-6c43f1856695" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
