@@ -1,4 +1,8 @@
-﻿### Version 3.7.1
+﻿### Version 3.7.2
+
+- Improvement: Added Attribute support for Class Constructor parameters.
+
+### Version 3.7.1
 
 - Improvement: Support for `ValueTask` as a `CSharpType` on Methods.
 
