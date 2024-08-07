@@ -13,6 +13,12 @@ namespace Intent.Modelers.Services.Api
 {
     public static class ApiMetadataProviderExtensions
     {
+        public static IList<CommentModel> GetCommentModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(CommentModel.SpecializationTypeId)
+                .Select(x => new CommentModel(x))
+                .ToList();
+        }
         public static IList<DiagramModel> GetDiagramModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(DiagramModel.SpecializationTypeId)

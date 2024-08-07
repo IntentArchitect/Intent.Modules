@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Xml.Linq;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
@@ -14,6 +14,7 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
     public string Name { get; }
     public string DefaultValue { get; private set; }
     public string XmlDocComment { get; private set; }
+    public IList<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
 
     public CSharpConstructorParameter(string type, string name, CSharpConstructor constructor)
     {
@@ -121,6 +122,14 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
         return this;
     }
 
+    public CSharpConstructorParameter AddAttribute(string name, Action<CSharpAttribute> configure = null)
+    {
+        var param = new CSharpAttribute(name);
+        Attributes.Add(param);
+        configure?.Invoke(param);
+        return this;
+    }
+
     public override string ToString()
     {
         var name = Name.EnsureNotKeyword();
@@ -128,7 +137,12 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
             ? $" = {DefaultValue}"
             : string.Empty;
 
-        return $@"{Type} {name}{defaultValue}";
+        return $@"{GetAttributes()}{Type} {name}{defaultValue}";
+    }
+    
+    protected string GetAttributes()
+    {
+        return $@"{(Attributes.Any() ? $@"{string.Join(@" ", Attributes)} " : string.Empty)}";
     }
 
     #region ICSharpConstructorParameter implementation

@@ -46,6 +46,12 @@
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="9e587d4d-f317-4ab8-9bbb-9394234d2a88" name="Allow Comment">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Modelers.Services</definitionPackageName>
+      <definitionPackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</definitionPackageId>
+      <properties />
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements>
