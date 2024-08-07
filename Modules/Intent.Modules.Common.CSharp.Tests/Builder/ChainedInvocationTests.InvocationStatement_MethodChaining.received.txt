@@ -11,12 +11,12 @@ namespace Namespace
             service.MethodOne()
                 .MethodTwo().MethodThree()
                 .MethodFour();
-
             new Service
             {
                 State = service
                     .GetState();
-            }
+            }.RegisterService();
+            Main();
         }
     }
 }

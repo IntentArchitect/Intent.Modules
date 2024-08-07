@@ -11,7 +11,7 @@ public class CSharpAccessMemberStatement : CSharpStatement
 {
     private bool _withSemicolon;
     private bool _isConditional;
-    private bool _memberChain;
+    private bool _onNewLine;
 
     public CSharpAccessMemberStatement(CSharpStatement expression, CSharpStatement memberName) : base($"{expression.ToString().TrimEnd()}.{memberName}")
     {
@@ -50,16 +50,16 @@ public class CSharpAccessMemberStatement : CSharpStatement
         return this;
     }
 
-    public CSharpAccessMemberStatement WithMemberChain()
+    public CSharpAccessMemberStatement SeparateOnNewLine()
     {
-        _memberChain = true;
+        _onNewLine = true;
         return this;
     }
 
     public override string GetText(string indentation)
     {
         var newLineTxt = String.Empty;
-        if (_memberChain)
+        if (_onNewLine)
         {
             newLineTxt = Environment.NewLine + indentation + "    ";
         }
@@ -117,9 +117,26 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
         return this;
     }
 
-    public CSharpInvocationStatement WithMemberChain()
+    /// <summary>
+    /// If this invocation statement is part of an invocation chain, calling this method
+    /// will place the current invocation on a new line otherwise it remains on the current line.
+    /// <br />
+    /// Example:
+    /// <code>
+    /// new CSharpStatement("service")
+    ///   .AddInvocation("MethodOne")
+    ///   .AddInvocation("MethodTwo", s => s.SeparateOnNewLine());
+    /// </code>
+    ///
+    /// Will produce:
+    /// <code>
+    /// service.MethodOne()
+    ///     .MethodTwo();
+    /// </code>
+    /// </summary>
+    public CSharpInvocationStatement SeparateOnNewLine()
     {
-        (Expression as CSharpAccessMemberStatement)?.WithMemberChain();
+        (Expression as CSharpAccessMemberStatement)?.SeparateOnNewLine();
         return this;
     }
 
