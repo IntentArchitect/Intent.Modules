@@ -93,8 +93,6 @@ let options = lookupTypesOf("Element Settings")
                 })))
             .sort((x, y) =&gt; x.description.localeCompare(y.description))
 
-console.warn(options);
-
 let result = await dialogService.openForm({
     title: "Add Component",
     fields: [{
@@ -116,6 +114,7 @@ if (!selected) {
 if (selected.type == "core") {
     let componentType = lookup(selected.id);
     let component = createElement(componentType.id, componentType.getName(), element.id);
+    component.enableEditing();
 } else if (selected.type == "custom") {
     let component = createElement(displayComponentTypeId, selected.description, element.id);
     component.typeReference.setType(selected.id);
@@ -288,7 +287,7 @@ model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == "
         <trait id="b407aace-ad14-484e-ac93-4762a3d182d8" name="[Component]" />
       </implements>
       <icon type="UrlImagePath" source="data:image/png;base64,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" />
-      <saveAsOwnFile>true</saveAsOwnFile>
+      <saveAsOwnFile>false</saveAsOwnFile>
       <allowRename>true</allowRename>
       <nameMustBeUnique>true</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
@@ -394,8 +393,6 @@ let options = lookupTypesOf("Element Settings")
                 })))
             .sort((x, y) =&gt; x.description.localeCompare(y.description))
 
-console.warn(options);
-
 let result = await dialogService.openForm({
     title: "Add Component",
     fields: [{
@@ -417,6 +414,7 @@ if (!selected) {
 if (selected.type == "core") {
     let componentType = lookup(selected.id);
     let component = createElement(componentType.id, componentType.getName(), element.id);
+    component.enableEditing();
 } else if (selected.type == "custom") {
     let component = createElement(displayComponentTypeId, selected.description, element.id);
     component.typeReference.setType(selected.id);
@@ -435,7 +433,7 @@ if (selected.type == "core") {
         <trait id="b407aace-ad14-484e-ac93-4762a3d182d8" name="[Component]" />
       </implements>
       <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAABOxJREFUeF7tm09oXEUcx7/z3kt2N0GNJHWTje0hiH8oaPFWvImHFsSDBUXEoqikVK3gQQSL2UILevFQEBFFiZGSFIzgRcFCL1LwGA/2ouCfpJvdpkmatmbfvvfmJ7ObmE1O/c3PbN6LM+ffd36/+cz3vdmdeaPgmoiAEqmdGA6g0AQOoAMoJCCUOwc6gEICQrlzoAMoJCCUOwc6gEICQrlzoAMoJCCUOwc6gEICQrnYgXQePoLhPnSRuC/hWHjySBHiuWX1DBKecHO0aNA0WfoRHkZA6JYUsYPaRmOZlnKjlf22NVgBpHOlAQTqJ3TTCAoKCEw3ZFtD53QawOLmOhvLBN3AH7o7Otg7ulDhFsMGSGV4eHAoglIe9vktbiFlgh9iApbaABLQWCLoqIUtP1gJuI80H+BU6QkAPzQzdgFYS86duTTEkwbChY3JJx9Hel6rTHNqswE4Bg9llDxg1jwT2WwGnnEfxRv1a6JTvW/Olzkj4gOcLB2HwkfwAdn6xSnzv481zqMt6y956p2e1698wMnGB/jFnsFGGFSUx0mTnlgdY5Pr2ivTuajEXUjYAE3C8OOh53WEcaDpw93QEi/Ai7njla+4g7ECSJ+gq94oHQXRZ9yEqYz31Mv5risTapS/JFoBXIdAZ+/L1XHzWRWog6DMHZESES7lde95deLX0HZiRQBtk+4mnQMonE0H0AEUEhDKnQMdQCEBodw50AEUEhDKnQN3CmBzY/WB4cPw9QGQeggqY/9ECKSJLkdLeiZXrX6vymjb2Lp9qlYONH/hULw1DajDQMbAbWFjtvSpgQtXI/+pvW/Nrt4+ulakHcCp0qcAXuEmS2N8c0u/AXjARO5E5Si3RjZA+ro4gtj/jZsojfFbt/T9bu9A97G5GU6tfIBTpbcBsHZtOQV1MjZaJiTt+zAKJwtvVM5wavjfAoxuEJK/t6DqBMBw/J6HVejPqIAzT+mJNe87c5BkHt+tzSskj+Rerf3MqZbtQNP56tmhLwG8wEmUgdiJQicWEQPirw/vLezpSr4lgjkjzn5TuLDQyZ8xhhiVEYQDxUNQ3uOkUcwiRaUwD3gXcwtznf0hnUVY21Wz1Ttwu4rJYr8OoHDWHEAHUEhAKHcOdACFBIRy50AHUEhAKBc5kC4iQG3waShvP4iy9cWgUhpJ8gtWqtM2X2Wtc7cC2AQ3XzoCD5PCCdxxudmRjm8kx3rurH1uA9IO4GTxSSj/GwAZ3dTamDdzJhJdJx2v0rG+sao5qmA1NkAaH+5HnhZYWVIaTOaawzVCcovQWNTI5eO9PeXFWU65fIDrH5lzsqQ01nwvbQDqegugCtTJvtPVbd/SHwPAugqQRn46BMzja1p8kxCvaGjgVP/7NdbY2A6Mzg0d8hL1nd2BaApQakAnZuFo1UIRIbza2t8PetRzd7xXZS2MbIDmdmZ9fijOLMD2m14JENaSf6+p9T1a2/6rXs1ZO90/vJIEl7wA+1LgKasSdNg6UF9rf+p8/Fg/cwExWrYD26u9/m7xMiV0NynkpX1ZURCIFGC+0q97PlbuOlO737YrEUCT1BwwDSTRoMrYQ00BKD9QqKiXfq/bwhM7UJJ4t2jFDtwtIGzH4QDaklvTOYAOoJCAUO4c6AAKCQjlzoEOoJCAUO4c6AAKCQjlzoEOoJCAUO4c6AAKCQjl/wBWY6Jgxjd/HAAAAABJRU5ErkJggg==" />
-      <saveAsOwnFile>true</saveAsOwnFile>
+      <saveAsOwnFile>false</saveAsOwnFile>
       <allowRename>true</allowRename>
       <nameMustBeUnique>true</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
@@ -571,8 +569,6 @@ let options = lookupTypesOf("Element Settings")
                 })))
             .sort((x, y) =&gt; x.description.localeCompare(y.description))
 
-console.warn(options);
-
 let result = await dialogService.openForm({
     title: "Add Component",
     fields: [{
@@ -594,6 +590,7 @@ if (!selected) {
 if (selected.type == "core") {
     let componentType = lookup(selected.id);
     let component = createElement(componentType.id, componentType.getName(), element.id);
+    component.enableEditing();
 } else if (selected.type == "custom") {
     let component = createElement(displayComponentTypeId, selected.description, element.id);
     component.typeReference.setType(selected.id);
@@ -812,7 +809,7 @@ mapping.addMappedEnd(invocationMappingTYpeId, association.getMappingPath(), elem
                   <icon type="FontAwesome" source="code" />
                   <script>const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
 const parentElement = mapping.getSourceElement();
-const newElement = createElement("Property", `${element.getParent().getName()}Options`, parentElement.id);
+const newElement = createElement("Property", `${toPascalCase(element.getParent().getName())}Options`, parentElement.id);
 newElement.typeReference.setIsCollection(true);
 mapping.addMappedEnd(dataBindingMappingTypeId, newElement.getMappingPath(), element.getMappingPath());</script>
                 </option>
@@ -975,7 +972,6 @@ mapping.addMappedEnd(dataBindingMappingTypeId, newElement.getMappingPath(), elem
           <targetSettings>
             <type type="On Click" typeId="b80f61a7-3b9e-4b75-806f-71d4f8b9900a" />
             <type type="On Valid Submit" typeId="82cf639a-6005-4bb8-8f38-06becffad225" />
-            <type type="On Row Click" typeId="89eeee6b-2d7f-4fa7-9adb-e16d0db75e1e" />
             <type type="Event Emitter: Event Emitter" typeId="b5dac39d-db1d-40ff-8763-3a9fd5612af7" />
           </targetSettings>
           <scriptOptions>
@@ -987,6 +983,25 @@ mapping.addMappedEnd(dataBindingMappingTypeId, newElement.getMappingPath(), elem
 const parentElement = mapping.getSourceElement();
 const newElement = createElement("Component Operation", (element.getParent().getName() + element.getName().replace("On ", "")).replace(" ", ""), parentElement.id);
 mapping.addMappedEnd(invocationMappingTYpeId, newElement.getMappingPath(), element.getMappingPath());</script>
+            </option>
+          </scriptOptions>
+          <staticMappableSettings />
+          <childSettings />
+        </mappableElementExtension>
+        <mappableElementExtension>
+          <targetSettings>
+            <type type="On Row Click" typeId="89eeee6b-2d7f-4fa7-9adb-e16d0db75e1e" />
+          </targetSettings>
+          <scriptOptions>
+            <option>
+              <text>Auto-map to Operation</text>
+              <shortcut>space</shortcut>
+              <icon type="FontAwesome" source="code" />
+              <script>const invocationMappingTYpeId = "e4f0c63b-0f00-42bd-a703-00adf44f3364";
+const parentElement = mapping.getSourceElement();
+const newOperation = createElement("Component Operation", (element.getParent().getName() + element.getName().replace("On ", "")).replace(" ", ""), parentElement.id);
+const param = createElement("Parameter", "rowId", newOperation.id);
+mapping.addMappedEnd(invocationMappingTYpeId, newOperation.getMappingPath(), element.getMappingPath());</script>
             </option>
           </scriptOptions>
           <staticMappableSettings />

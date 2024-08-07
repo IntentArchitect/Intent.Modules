@@ -687,7 +687,7 @@
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
-                    <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const dataBindingMappingTypeId = &quot;ee19a932-0cea-4b90-bd3c-857d7942d390&quot;;&#xD;&#xA;const parentElement = mapping.getSourceElement();&#xD;&#xA;const newElement = createElement(&quot;Property&quot;, `${element.getParent().getName()}Options`, parentElement.id);&#xD;&#xA;newElement.typeReference.setIsCollection(true);&#xD;&#xA;mapping.addMappedEnd(dataBindingMappingTypeId, newElement.getMappingPath(), element.getMappingPath());" isActive="true" />
+                    <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const dataBindingMappingTypeId = &quot;ee19a932-0cea-4b90-bd3c-857d7942d390&quot;;&#xD;&#xA;const parentElement = mapping.getSourceElement();&#xD;&#xA;const newElement = createElement(&quot;Property&quot;, `${toPascalCase(element.getParent().getName())}Options`, parentElement.id);&#xD;&#xA;newElement.typeReference.setIsCollection(true);&#xD;&#xA;mapping.addMappedEnd(dataBindingMappingTypeId, newElement.getMappingPath(), element.getMappingPath());" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
