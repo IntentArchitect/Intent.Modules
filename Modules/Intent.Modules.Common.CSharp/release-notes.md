@@ -1,6 +1,11 @@
 ﻿### Version 3.7.2
 
 - Improvement: Added Attribute support for Class Constructor parameters.
+- Improvement: `CSharpInvocationStatement` can now be used to chain method calls similarly to what `CSharpMethodChainStatement` did.
+
+> ⚠️ NOTE
+> 
+> `CSharpMethodChainStatement` and `AddMethodChainStatement()` is made obsolete. We encourage you make use of `CSharpInvocationStatement` and `AddInvocation()` instead. 
 
 ### Version 3.7.1
 
