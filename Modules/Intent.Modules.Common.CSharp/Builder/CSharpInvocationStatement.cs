@@ -9,8 +9,10 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpAccessMemberStatement : CSharpStatement
 {
-    private bool _withSemicolon = false;
-    private bool _isConditional = false;
+    private bool _withSemicolon;
+    private bool _isConditional;
+    private bool _memberChain;
+
     public CSharpAccessMemberStatement(CSharpStatement expression, CSharpStatement memberName) : base($"{expression.ToString().TrimEnd()}.{memberName}")
     {
         Reference = expression;
@@ -48,15 +50,21 @@ public class CSharpAccessMemberStatement : CSharpStatement
         return this;
     }
 
+    public CSharpAccessMemberStatement WithMemberChain()
+    {
+        _memberChain = true;
+        return this;
+    }
+
     public override string GetText(string indentation)
     {
-        return $"{Reference.GetText(indentation).TrimEnd()}{(_isConditional ? "?." : ".")}{Member.GetText(indentation).Trim()}{(_withSemicolon ? ";" : string.Empty)}";
+        var newLineTxt = String.Empty;
+        if (_memberChain)
+        {
+            newLineTxt = Environment.NewLine + indentation + "    ";
+        }
+        return $"{Reference.GetText(indentation).TrimEnd()}{newLineTxt}{(_isConditional ? "?." : ".")}{Member.GetText(indentation).Trim()}{(_withSemicolon ? ";" : string.Empty)}";
     }
-}
-
-public static class CSharpStatementBuilder
-{
-
 }
 
 public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
@@ -106,6 +114,12 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
         }
 
         _defaultArgumentSeparator = CSharpCodeSeparatorType.NewLine;
+        return this;
+    }
+
+    public CSharpInvocationStatement WithMemberChain()
+    {
+        (Expression as CSharpAccessMemberStatement)?.WithMemberChain();
         return this;
     }
 

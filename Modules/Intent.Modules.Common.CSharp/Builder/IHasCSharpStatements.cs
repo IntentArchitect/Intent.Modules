@@ -355,4 +355,12 @@ public static class HasCSharpStatementsExtensions
 
         return parent;
     }
+
+    public static CSharpInvocationStatement AddChainedInvocation(this CSharpStatement parent, string invocation, Action<CSharpInvocationStatement> configure = null)
+    {
+        (parent as CSharpInvocationStatement)?.WithoutSemicolon();
+        var statement = new CSharpInvocationStatement(parent, invocation);
+        configure?.Invoke(statement);
+        return statement;
+    }
 }
