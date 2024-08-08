@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
+/// <summary>
+/// See <see cref="CSharpInvocationStatement" /> instead.
+/// </summary>
+[Obsolete]
 public class CSharpMethodChainStatement : CSharpStatement, IHasCSharpStatements
 {
     private bool _withSemicolon = true;

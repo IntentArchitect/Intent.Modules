@@ -54,6 +54,29 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
         return this;
     }
 
+    /// <summary>
+    /// If this invocation statement is part of an invocation chain, calling this method
+    /// will place the current invocation on a new line otherwise it remains on the current line.
+    /// <br />
+    /// Example:
+    /// <code>
+    /// new CSharpStatement("service")
+    ///   .AddInvocation("MethodOne")
+    ///   .AddInvocation("MethodTwo", s => s.OnNewLine());
+    /// </code>
+    ///
+    /// Will produce:
+    /// <code>
+    /// service.MethodOne()
+    ///     .MethodTwo();
+    /// </code>
+    /// </summary>
+    public CSharpInvocationStatement OnNewLine()
+    {
+        (Expression as CSharpAccessMemberStatement)?.OnNewLine();
+        return this;
+    }
+
     public CSharpInvocationStatement WithoutSemicolon()
     {
         _withSemicolon = false;

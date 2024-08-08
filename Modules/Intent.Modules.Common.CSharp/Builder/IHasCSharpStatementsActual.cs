@@ -88,6 +88,10 @@ public static class HasCSharpStatementsActualExtensions
         return parent.AddStatement(new(invocation), configure);
     }
 
+    /// <summary>
+    /// Use <see cref="HasCSharpStatementsExtensions.AddInvocation"/> instead.
+    /// </summary>
+    [Obsolete]
     public static TParent AddMethodChainStatement<TParent>(this TParent parent, string initialInvocation, Action<CSharpMethodChainStatement> configure = null)
         where TParent : IHasCSharpStatementsActual
     {

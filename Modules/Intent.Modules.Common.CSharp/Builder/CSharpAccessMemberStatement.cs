@@ -1,9 +1,13 @@
+using System;
+
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpAccessMemberStatement : CSharpStatement
 {
-    private bool _withSemicolon = false;
-    private bool _isConditional = false;
+    private bool _withSemicolon;
+    private bool _isConditional;
+    private bool _onNewLine;
+    
     public CSharpAccessMemberStatement(CSharpStatement expression, CSharpStatement memberName) : base($"{expression.ToString().TrimEnd()}.{memberName}")
     {
         Reference = expression;
@@ -40,9 +44,20 @@ public class CSharpAccessMemberStatement : CSharpStatement
         _isConditional = true;
         return this;
     }
+    
+    public CSharpAccessMemberStatement OnNewLine()
+    {
+        _onNewLine = true;
+        return this;
+    }
 
     public override string GetText(string indentation)
     {
-        return $"{Reference.GetText(indentation).TrimEnd()}{(_isConditional ? "?." : ".")}{Member.GetText(indentation).Trim()}{(_withSemicolon ? ";" : string.Empty)}";
+        var newLineTxt = String.Empty;
+        if (_onNewLine)
+        {
+            newLineTxt = Environment.NewLine + indentation + "    ";
+        }
+        return $"{Reference.GetText(indentation).TrimEnd()}{newLineTxt}{(_isConditional ? "?." : ".")}{Member.GetText(indentation).Trim()}{(_withSemicolon ? ";" : string.Empty)}";
     }
 }

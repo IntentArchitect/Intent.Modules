@@ -72,6 +72,10 @@ public static class HasCSharpStatementsExtensions
         return parent.AddStatement(new CSharpFieldAssignmentStatement(lhs, rhs), x => configure?.Invoke(x));
     }
 
+    /// <summary>
+    /// Create <see cref="CSharpInvocationStatement"/> within <see cref="parent"/>'s Statements.
+    /// Not to be confused with <see cref="HasCSharpStatementsExtensions.AddInvocation"/>.
+    /// </summary>
     public static TParent AddInvocationStatement<TParent>(TParent parent, string invocation, Action<CSharpInvocationStatement> configure = null)
         where TParent : IHasCSharpStatements
     {
@@ -84,6 +88,10 @@ public static class HasCSharpStatementsExtensions
         return parent.AddStatement(new CSharpLambdaBlock(invocation), x => configure?.Invoke(x));
     }
 
+    /// <summary>
+    /// Use <see cref="HasCSharpStatementsExtensions.AddInvocation"/> instead.
+    /// </summary>
+    [Obsolete]
     public static TParent AddMethodChainStatement<TParent>(TParent parent, string initialInvocation, Action<CSharpMethodChainStatement> configure = null)
         where TParent : IHasCSharpStatements
     {
@@ -354,5 +362,36 @@ public static class HasCSharpStatementsExtensions
         configure?.Invoke(exceptionStatement);
 
         return parent;
+    }
+
+    /// <summary>
+    /// Create a new <see cref="CSharpInvocationStatement"/> that performs an invocation on <c>parent</c>
+    /// as part of a chain. You can control the appearance of this chain by configuring the <see cref="CSharpInvocationStatement"/>
+    /// statement while using <see cref="CSharpInvocationStatement.OnNewLine"/>.
+    /// <br />
+    /// Example:
+    /// <code>
+    /// new CSharpStatement("service")
+    ///   .AddInvocation("MethodOne")
+    ///   .AddInvocation("MethodTwo", s => s.OnNewLine());
+    /// </code>
+    ///
+    /// Will produce:
+    /// <code>
+    /// service.MethodOne()
+    ///     .MethodTwo();
+    /// </code>
+    /// </summary>
+    public static CSharpInvocationStatement AddInvocation(this CSharpStatement expression, string invocation, Action<CSharpInvocationStatement> configure = null)
+    {
+        (expression as CSharpInvocationStatement)?.WithoutSemicolon();
+        var statement = new CSharpInvocationStatement(expression, invocation);
+        configure?.Invoke(statement);
+        if (expression.Parent is not null)
+        {
+            expression.Replace(statement);
+        }
+
+        return statement;
     }
 }
