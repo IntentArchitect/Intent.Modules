@@ -16,6 +16,10 @@ namespace Namespace
                 State = service
                     .GetState();
             }.RegisterService();
+
+            new Service
+            {
+            }.DoSomething(a);
         }
     }
 }

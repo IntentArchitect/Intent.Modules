@@ -20,14 +20,16 @@ public class ChainedInvocationTests
                     m.AddParameter("Service", "service");
                     m.AddStatement(new CSharpStatement("service")
                         .AddInvocation("MethodOne")
-                        .AddInvocation("MethodTwo", s => s.SeparateOnNewLine())
+                        .AddInvocation("MethodTwo", s => s.OnNewLine())
                         .AddInvocation("MethodThree")
-                        .AddInvocation("MethodFour", s => s.SeparateOnNewLine())
+                        .AddInvocation("MethodFour", s => s.OnNewLine())
                     );
                     
                     m.AddStatement(new CSharpObjectInitializerBlock("new Service")
-                        .AddInitStatement("State", new CSharpStatement("service").AddInvocation("GetState", c => c.SeparateOnNewLine()))
+                        .AddInitStatement("State", new CSharpStatement("service").AddInvocation("GetState", c => c.OnNewLine()))
                         .AddInvocation("RegisterService"));
+
+                    m.AddObjectInitializerBlock("new Service", s => s.AddInvocation("DoSomething", x => x.AddArgument("a")));
                 });
             })
             .CompleteBuild();

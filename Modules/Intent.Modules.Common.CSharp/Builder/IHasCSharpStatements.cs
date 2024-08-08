@@ -86,7 +86,7 @@ public static class HasCSharpStatementsExtensions
     }
 
     /// <summary>
-    /// See <see cref="HasCSharpStatementsExtensions.AddInvocation"/> instead.
+    /// Use <see cref="HasCSharpStatementsExtensions.AddInvocation"/> instead.
     /// </summary>
     [Obsolete]
     public static TParent AddMethodChainStatement<TParent>(this TParent parent, string initialInvocation, Action<CSharpMethodChainStatement> configure = null)
@@ -367,13 +367,13 @@ public static class HasCSharpStatementsExtensions
     /// <summary>
     /// Create a new <see cref="CSharpInvocationStatement"/> that performs an invocation on <c>parent</c>
     /// as part of a chain. You can control the appearance of this chain by configuring the <see cref="CSharpInvocationStatement"/>
-    /// statement while using <see cref="CSharpInvocationStatement.SeparateOnNewLine"/>.
+    /// statement while using <see cref="CSharpInvocationStatement.OnNewLine"/>.
     /// <br />
     /// Example:
     /// <code>
     /// new CSharpStatement("service")
     ///   .AddInvocation("MethodOne")
-    ///   .AddInvocation("MethodTwo", s => s.SeparateOnNewLine());
+    ///   .AddInvocation("MethodTwo", s => s.OnNewLine());
     /// </code>
     ///
     /// Will produce:
@@ -382,11 +382,16 @@ public static class HasCSharpStatementsExtensions
     ///     .MethodTwo();
     /// </code>
     /// </summary>
-    public static CSharpInvocationStatement AddInvocation(this CSharpStatement parent, string invocation, Action<CSharpInvocationStatement> configure = null)
+    public static CSharpInvocationStatement AddInvocation(this CSharpStatement expression, string invocation, Action<CSharpInvocationStatement> configure = null)
     {
-        (parent as CSharpInvocationStatement)?.WithoutSemicolon();
-        var statement = new CSharpInvocationStatement(parent, invocation);
+        (expression as CSharpInvocationStatement)?.WithoutSemicolon();
+        var statement = new CSharpInvocationStatement(expression, invocation);
         configure?.Invoke(statement);
+        if (expression.Parent is not null)
+        {
+            expression.Replace(statement);
+        }
+
         return statement;
     }
 }

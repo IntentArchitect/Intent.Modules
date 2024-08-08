@@ -50,7 +50,7 @@ public class CSharpAccessMemberStatement : CSharpStatement
         return this;
     }
 
-    public CSharpAccessMemberStatement SeparateOnNewLine()
+    public CSharpAccessMemberStatement OnNewLine()
     {
         _onNewLine = true;
         return this;
@@ -125,7 +125,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
     /// <code>
     /// new CSharpStatement("service")
     ///   .AddInvocation("MethodOne")
-    ///   .AddInvocation("MethodTwo", s => s.SeparateOnNewLine());
+    ///   .AddInvocation("MethodTwo", s => s.OnNewLine());
     /// </code>
     ///
     /// Will produce:
@@ -134,9 +134,9 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
     ///     .MethodTwo();
     /// </code>
     /// </summary>
-    public CSharpInvocationStatement SeparateOnNewLine()
+    public CSharpInvocationStatement OnNewLine()
     {
-        (Expression as CSharpAccessMemberStatement)?.SeparateOnNewLine();
+        (Expression as CSharpAccessMemberStatement)?.OnNewLine();
         return this;
     }
 
