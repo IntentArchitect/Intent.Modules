@@ -5,7 +5,7 @@
 
 > ⚠️ NOTE
 > 
-> `CSharpMethodChainStatement` and `AddMethodChainStatement()` is made obsolete. We encourage you make use of `CSharpInvocationStatement` and `AddInvocation()` instead. 
+> `CSharpMethodChainStatement` and `AddMethodChainStatement()` is made obsolete. Please make use of `CSharpInvocationStatement` and `AddInvocation()` instead. 
 
 ### Version 3.7.1
 
