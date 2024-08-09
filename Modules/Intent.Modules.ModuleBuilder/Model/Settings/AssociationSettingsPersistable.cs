@@ -50,6 +50,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlAttribute("typeId")]
         public string SpecializationTypeId { get; set; }
 
+        [XmlArray("implements")]
+        [XmlArrayItem("trait", typeof(ImplementedTraitPersistable))]
+        public List<ImplementedTraitPersistable> Implements { get; set; }
+        public bool ShouldSerializeImplements() => Implements?.Any() == true;
+
         [XmlElement("displayFunction")]
         public string DisplayFunction { get; set; }
 

@@ -104,13 +104,13 @@ namespace Intent.ModuleBuilder.Api
 
         private List<TypeOrderPersistable> GetTypeOrder()
         {
-            var result = AcceptedChildTypes?.ToPersistable() ?? new List<TypeOrderPersistable>();
-            result = result
-                .Concat(MenuOptions?.TypeOrder
-                    .Select((x) => x.ToPersistable())
-                    .Where(x => !result.Contains(x)) ?? new List<TypeOrderPersistable>())
+            if (AcceptedChildTypes?.ToPersistable().Count > 0)
+            {
+                return AcceptedChildTypes.ToPersistable();
+            }
+            return (MenuOptions?.TypeOrder
+                    .Select((x) => x.ToPersistable()) ?? new List<TypeOrderPersistable>())
                 .ToList();
-            return result;
         }
 
         private IconModelPersistable GetIcon(IIconModel icon)

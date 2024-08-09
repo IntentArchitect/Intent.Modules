@@ -58,6 +58,10 @@ namespace Intent.ModuleBuilder.Api
             {
                 SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
+                Implements = this.Stereotypes
+                    .Where(x => x.DefinitionId != AssociationDestinationEndSettingsModelStereotypeExtensions.Settings.DefinitionId)
+                    .Select(x => new ImplementedTraitPersistable() { Id = x.DefinitionId, Name = x.Name })
+                    .ToList(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
                 NameAccessibilityMode = Enum.Parse<FieldAccessibilityMode>(this.GetSettings().NameAccessibility().Value),
                 DefaultNameFunction = this.GetSettings().DefaultNameFunction(),
