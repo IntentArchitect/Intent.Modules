@@ -68,8 +68,16 @@
       <ProjectId>30a4e6bb-5d5d-4fb2-bbbd-aa628b661ea2</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#9451fcdc-9406-4323-b354-2eaaabbf9ac5</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DateTimeSelectorModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DateTimeSelectorModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/DatePickerModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DatePickerModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>30a4e6bb-5d5d-4fb2-bbbd-aa628b661ea2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#9451fcdc-9406-4323-b354-2eaaabbf9ac5</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DatePickerModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DatePickerModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

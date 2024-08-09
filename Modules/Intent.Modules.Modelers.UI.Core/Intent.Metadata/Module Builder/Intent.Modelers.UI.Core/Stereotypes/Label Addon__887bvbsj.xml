@@ -6,6 +6,7 @@
     <type id="4803bf60-c626-4cbe-94ed-0f1eafff9fe3">Text Input</type>
     <type id="be9ecdbd-6ded-4057-af76-1b09f3a6cea3">Checkbox</type>
     <type id="78e0bdf7-424f-4820-95d5-b756b0ebc87a">Select</type>
+    <type id="9451fcdc-9406-4323-b354-2eaaabbf9ac5">Date Picker</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>

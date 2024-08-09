@@ -39,7 +39,7 @@ public class HtmlElement : RazorFileNodeBase<HtmlElement, IHtmlElement>, IHtmlEl
         return this;
     }
 
-    public IHtmlElement AddAttributeIfNotEmpty(string name, string value)
+    public IHtmlElement AddAttributeIfNotEmpty(string name, string? value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {
