@@ -43,7 +43,7 @@
         <type>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</type>
         <type>c4c61fdc-464d-41d2-8e0e-5a734d588302</type>
       </lookupTypes>
-      <isRequiredFunction>return true;</isRequiredFunction>
+      <isRequiredFunction>return getProperty("fde5c705-2274-4536-9d47-62029793629d").value == "[]";</isRequiredFunction>
     </property>
     <property id="fde5c705-2274-4536-9d47-62029793629d">
       <name>Target Traits</name>
