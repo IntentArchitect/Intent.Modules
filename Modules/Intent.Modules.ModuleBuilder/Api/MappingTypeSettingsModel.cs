@@ -71,15 +71,18 @@ namespace Intent.ModuleBuilder.Api
                 SourceTypes = this.GetMappingTypeSettings().SourceTypes()?.Select(x => new MappableElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
                 SourceFilterFunction = this.GetMappingTypeSettings().Sources().IsDataTypes() ? "return element.represents == 'data'"
                     : this.GetMappingTypeSettings().Sources().IsInvokableTypes() ? "return element.represents == 'invokable'"
+                    : this.GetMappingTypeSettings().Sources().IsEventTypes() ? "return element.represents == 'event'"
                     : this.GetMappingTypeSettings().SourceTypesFilter(),
                 SourceArrowFunction = this.GetMappingTypeSettings().SourceArrowType().IsSolidArrow()
                     ? "return `M ${x} ${y} l 10 5 l 0 -10 z`" : "return null",
                 TargetTypes = this.GetMappingTypeSettings().TargetTypes()?.Select(x => new MappableElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
                 TargetFilterFunction = this.GetMappingTypeSettings().Targets().IsDataTypes() ? "return element.represents == 'data'"
                     : this.GetMappingTypeSettings().Targets().IsInvokableTypes() ? "return element.represents == 'invokable'"
+                    : this.GetMappingTypeSettings().Targets().IsEventTypes() ? "return element.represents == 'event'"
                     : this.GetMappingTypeSettings().SourceTypesFilter(),
                 TargetArrowFunction = this.GetMappingTypeSettings().TargetArrowType().IsSolidArrow()
                     ? "return `M ${x} ${y} l -10 5 l 0 -10 z`" : "return null",
+                SyncSourceChildTypes = this.GetMappingTypeSettings().SyncSourceChildTypes()?.Select(x => new MappableElementSettingIdentifierPersistable() { Id = x.Id, Name = x.Name }).ToList(),
                 Represents = Enum.TryParse<ElementMappingRepresentation>(this.GetMappingTypeSettings().Represents().Value, out var represents) ? represents : ElementMappingRepresentation.Unknown,
                 LineColor = this.GetMappingTypeSettings().LineColor(),
                 LineDashArray = this.GetMappingTypeSettings().LineDashArray(),

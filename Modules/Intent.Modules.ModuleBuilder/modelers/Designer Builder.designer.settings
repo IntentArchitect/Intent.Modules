@@ -689,7 +689,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
 return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFunction>
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
-          <nameMustBeUnique>true</nameMustBeUnique>
+          <nameMustBeUnique>false</nameMustBeUnique>
           <allowAbstract>false</allowAbstract>
           <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>

@@ -93,6 +93,11 @@ namespace Intent.ModuleBuilder.Api
                 return new RepresentsOptions(_stereotype.GetProperty<string>("Represents"));
             }
 
+            public IElement[] SyncSourceChildTypes()
+            {
+                return _stereotype.GetProperty<IElement[]>("Sync Source Child Types") ?? new IElement[0];
+            }
+
             public string LineColor()
             {
                 return _stereotype.GetProperty<string>("Line Color");
@@ -125,6 +130,8 @@ namespace Intent.ModuleBuilder.Api
                             return SourcesOptionsEnum.DataTypes;
                         case "Invokable Types":
                             return SourcesOptionsEnum.InvokableTypes;
+                        case "Event Types":
+                            return SourcesOptionsEnum.EventTypes;
                         case "Specific Types":
                             return SourcesOptionsEnum.SpecificTypes;
                         case "All Types":
@@ -142,6 +149,10 @@ namespace Intent.ModuleBuilder.Api
                 {
                     return Value == "Invokable Types";
                 }
+                public bool IsEventTypes()
+                {
+                    return Value == "Event Types";
+                }
                 public bool IsSpecificTypes()
                 {
                     return Value == "Specific Types";
@@ -156,6 +167,7 @@ namespace Intent.ModuleBuilder.Api
             {
                 DataTypes,
                 InvokableTypes,
+                EventTypes,
                 SpecificTypes,
                 AllTypes
             }
@@ -213,6 +225,8 @@ namespace Intent.ModuleBuilder.Api
                             return TargetsOptionsEnum.DataTypes;
                         case "Invokable Types":
                             return TargetsOptionsEnum.InvokableTypes;
+                        case "Event Types":
+                            return TargetsOptionsEnum.EventTypes;
                         case "Specific Types":
                             return TargetsOptionsEnum.SpecificTypes;
                         case "All Types":
@@ -230,6 +244,10 @@ namespace Intent.ModuleBuilder.Api
                 {
                     return Value == "Invokable Types";
                 }
+                public bool IsEventTypes()
+                {
+                    return Value == "Event Types";
+                }
                 public bool IsSpecificTypes()
                 {
                     return Value == "Specific Types";
@@ -244,6 +262,7 @@ namespace Intent.ModuleBuilder.Api
             {
                 DataTypes,
                 InvokableTypes,
+                EventTypes,
                 SpecificTypes,
                 AllTypes
             }

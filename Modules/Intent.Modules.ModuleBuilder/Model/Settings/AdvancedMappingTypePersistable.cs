@@ -35,6 +35,11 @@ public class AdvancedMappingTypePersistable
     [XmlElement("targetArrowFunction")]
     public string TargetArrowFunction { get; set; }
 
+    [XmlArray("syncSourceChildTypes")]
+    [XmlArrayItem("type")]
+    public List<MappableElementSettingIdentifierPersistable> SyncSourceChildTypes { get; set; } = [];
+    public bool ShouldSerializeSyncSourceChildTypes() => SyncSourceChildTypes.Count > 0;
+
     [XmlElement("lineColor")]
     public string LineColor { get; set; }
 

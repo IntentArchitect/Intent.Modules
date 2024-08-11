@@ -32,6 +32,7 @@
         <option>Data</option>
         <option>Invokable</option>
         <option>Class</option>
+        <option>Event</option>
       </valueOptions>
       <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>

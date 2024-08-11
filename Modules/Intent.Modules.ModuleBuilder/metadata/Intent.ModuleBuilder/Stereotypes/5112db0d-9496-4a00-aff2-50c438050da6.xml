@@ -26,10 +26,11 @@
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <placeholder />
-      <defaultValue>Specific Types</defaultValue>
+      <defaultValue>[]</defaultValue>
       <valueOptions>
         <option>Data Types</option>
         <option>Invokable Types</option>
+        <option>Event Types</option>
         <option>Specific Types</option>
         <option>All Types</option>
       </valueOptions>
@@ -107,10 +108,11 @@ return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <placeholder />
-      <defaultValue>Specific Types</defaultValue>
+      <defaultValue>[]</defaultValue>
       <valueOptions>
         <option>Data Types</option>
         <option>Invokable Types</option>
+        <option>Event Types</option>
         <option>Specific Types</option>
         <option>All Types</option>
       </valueOptions>
@@ -195,6 +197,46 @@ return getAllPackageIds(targetMappables);</lookupInternalTargetPropertyId>
       </valueOptions>
       <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="ba7b9885-1d77-4dc2-ba45-16fd368076b6">
+      <name>Sync Source Child Types</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder>(Sync Disabled)</placeholder>
+      <valueOptions />
+      <lookupTypes>
+        <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
+      </lookupTypes>
+      <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
+let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
+let sourceMappables = element.getParent(mappingTypeSettingsId).getChildren(sourceMappingSettingsId)[0];
+
+const getAllPackageIds = (mappablePackage) =&gt; {
+    let result = [mappablePackage.id];
+    let mappablePackageImportId = "90892fa1-b0b9-4af9-9f3b-4fdf37db9b05";
+
+    // Add imported packages:
+    mappablePackage.getChildren(mappablePackageImportId)
+        .filter(x =&gt; x.typeReference.getType() != null)
+        .map(x =&gt; {
+            let packageIds = getAllPackageIds(x.typeReference.getType())
+            return packageIds;
+        })
+        .forEach(x =&gt; result.push(...x));
+
+    // Add package extensions:
+    let mappablePackageExtensionId = "bddb69f0-e2c8-4373-b5cb-d701f311f935";
+    lookupTypesOf(mappablePackageExtensionId)
+        .filter(x =&gt; x.typeReference.getTypeId() == mappablePackage.id)
+        .forEach(x =&gt; result.push(x.id));
+
+    return result;
+}
+
+return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
+      <isActiveFunction />
+      <isRequiredFunction />
     </property>
     <property id="ace10cc2-ece7-458a-bafb-2fc185f99335">
       <name>Line Color</name>
