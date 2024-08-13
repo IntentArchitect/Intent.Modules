@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="533ccca2-474b-4bcc-ba76-35295cadeb84" type="Solution Folder" typeId="0dc2b846-c968-49eb-99b7-8776919313a8">
+  <name>Common</name>
+  <display>Common</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>cea994de-971e-4ca4-8704-508e1549e082</parentFolderId>
+  <packageId>9902cd5d-c634-47d6-a48c-de10732bf817</packageId>
+  <packageName>Intent.Modules</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
