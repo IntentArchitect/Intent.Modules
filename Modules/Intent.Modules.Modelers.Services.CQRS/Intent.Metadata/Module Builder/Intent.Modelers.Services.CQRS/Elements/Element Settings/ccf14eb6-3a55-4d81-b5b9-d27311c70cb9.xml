@@ -19,6 +19,7 @@
         <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="true" />
         <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="true" />
         <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;d4e577cd-ad05-4180-9a2e-fff4ddea0e1e&quot;,&quot;85fba0e9-9161-4c85-a603-a229ef312beb&quot;,&quot;fee0edca-4aa0-4f77-a524-6bbd84e78734&quot;]" isActive="true" />
+        <property name="52f3c2e8-6438-494a-b0a7-7a9e61c8aae8" display="Target Traits" isActive="true" />
         <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="true" />
         <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="true" />
         <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="true" />
@@ -37,6 +38,7 @@
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="581e77d6-4587-4041-86f6-880bd57d5848" display="Name Must Be Unique" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
@@ -52,9 +54,76 @@
       <definitionPackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</definitionPackageId>
       <properties />
     </stereotype>
+    <stereotype stereotypeDefinitionId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Common</definitionPackageName>
+      <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
+      <properties />
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements>
+    <childElement id="d7df59f8-4397-447c-9678-36250fcf19ff" type="Accepted Child Types" typeId="7c0e37ab-2f84-46df-ac29-1e5aaa67bf75">
+      <name>[accepted types]</name>
+      <display>[accepted types]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</parentFolderId>
+      <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+      <packageName>Intent.Modelers.Services.CQRS</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="1e3753b4-7779-453c-be23-2e4bbf1e76b3" type="Accepted Type" typeId="71c8431f-9f39-45fd-b61d-f75f7ba3eea6">
+          <name>[type]</name>
+          <display>[type]: DTO-Field</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="f48a652a-235d-4250-8720-a4183b12e964">
+            <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services</typePackageName>
+            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>d7df59f8-4397-447c-9678-36250fcf19ff</parentFolderId>
+          <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+          <packageName>Intent.Modelers.Services.CQRS</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="128c9730-5284-4e0a-b45b-c0d704f8bbbf" type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
+          <name>[type with stereotype]</name>
+          <display>[type with stereotype]: [Processing Action]</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>d7df59f8-4397-447c-9678-36250fcf19ff</parentFolderId>
+          <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+          <packageName>Intent.Modelers.Services.CQRS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="c8e14e3f-f5ee-4992-b6cb-761ea48a11cd" name="Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="75834c40-408b-4fcb-a50b-b96c2f81ffc0" display="Types with Stereotype" value="d00a2ab0-9a23-4192-b8bb-166798fc7dba" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
     <childElement id="97bb497f-b10e-4718-9876-8b4b808dcfa8" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>

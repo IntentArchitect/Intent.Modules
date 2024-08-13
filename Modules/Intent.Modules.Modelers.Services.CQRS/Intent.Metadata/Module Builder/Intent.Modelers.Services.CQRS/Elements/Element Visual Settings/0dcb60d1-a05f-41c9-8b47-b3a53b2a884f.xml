@@ -3,7 +3,7 @@
   <name>[element visual]</name>
   <display>[visual]: Command</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <genericTypes />
   <typeReference id="129829e7-9d7d-4fac-8828-d18100f78ae3">
     <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
