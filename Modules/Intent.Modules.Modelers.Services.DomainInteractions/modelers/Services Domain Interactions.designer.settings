@@ -6320,6 +6320,9 @@ await execute(element);
   </packageExtensions>
   <elementSettings>
     <elementSetting type="Processing Action" typeId="405a2857-b911-431f-8142-719a0e9f15f3">
+      <implements>
+        <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+      </implements>
       <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAehJREFUeF7t3L1NA0EQhuE55DrYJijAEiVQAh0QEVl3XRGQQwWk/qGQRYewRGCB5G93dr6ZcT723nOv5GS0k+QHEpig6RyWBAQjSMAEBAXA8WYFll15lI18HHfHN/BMVOMwYFnKg1R5FpG79cknmZbDfJipFIDDXg24nbebvexfROT+wu+/y408RajxasAVrcyl/vXyItTYFfAH13WNGoDfjl5rVAP0WqM2oLsahwB6qnEkoIsahwOy12gFkLZGU4CMNVoEpKrRLCBLjdYBzddIAWi5RiZAkzXSAVqrkRXQTI3UgBZq9AA4tEY3gKNq9AaoXqNLQM0aPQOq1OgesHeNUQC71RgKsEeNEQGb1hgWcFWstX6eltMtsFuEbaj+txuDHExjNgFB5QRMQFAAHM8CAcBW22IR/4Wb7iuGAmxV3e/wowA2rS4UYI/qogB2q849YO/qPAOqVOcSULM6b4Dq1bkBHFWdB8Ch1VEDWqiOFdBMdXSA1qpjAjRZHQWg5eqsA5qvziwgS3UWAamqMwXIWJ0VQNrqhgOyVzcS0EV1QwA9VacN6K46NUCv1bUEfM27s4D9knU0b28DAc/jeX9gI8hoXwPtxkTDuvS8CQhWkIAJCAqA41lgAoIC4HgWmICgADieBYKAX0uidGAd9hNhAAAAAElFTkSuQmCC" />
       <saveAsOwnFile>false</saveAsOwnFile>
       <allowRename>true</allowRename>
@@ -6339,7 +6342,7 @@ await execute(element);
       <mappingOptions>
         <option mappingType="Process Action Mapping" mappingTypeId="01bc7593-a6a2-45aa-8497-b4b6a269ab68">
           <text>Map Action</text>
-          <shortcut>ctrl + shift + m</shortcut>
+          <shortcut>ctrl + space</shortcut>
         </option>
       </mappingOptions>
       <mappingSettings />
@@ -14862,6 +14865,7 @@ convertToAdvancedMapping.execute();
             <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
             <type type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" />
             <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
+            <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -14872,6 +14876,9 @@ convertToAdvancedMapping.execute();
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Call Service Operation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c">
+        <implements>
+          <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+        </implements>
         <displayFunction>const returnType = typeReference.getType()?.typeReference?.display ?? "void";
 return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${returnType}` ?? "&lt;not set&gt;"}`</displayFunction>
         <nameAccessibilityMode>optional</nameAccessibilityMode>
@@ -14888,6 +14895,7 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
             <type type="Stored Procedure" typeId="575edd35-9438-406d-b0a7-b99d6f29b560" />
             <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
             <type type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" />
+            <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
           </targetTypes>
           <allowIsNavigable>true</allowIsNavigable>
           <allowIsNullable>true</allowIsNullable>
@@ -14943,6 +14951,7 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
             <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
             <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
             <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
+            <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -14953,6 +14962,9 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016">
+        <implements>
+          <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+        </implements>
         <displayFunction>return `[create] ${getName()}: ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
         <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName() ?? "entity"
@@ -14976,20 +14988,8 @@ return typeReference.getIsCollection()
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
-        <typeOrder>
-          <type order="0" type="Processing Action" typeId="405a2857-b911-431f-8142-719a0e9f15f3" />
-        </typeOrder>
-        <creationOptions>
-          <option type="element">
-            <text>Add Processing Action</text>
-            <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAehJREFUeF7t3L1NA0EQhuE55DrYJijAEiVQAh0QEVl3XRGQQwWk/qGQRYewRGCB5G93dr6ZcT723nOv5GS0k+QHEpig6RyWBAQjSMAEBAXA8WYFll15lI18HHfHN/BMVOMwYFnKg1R5FpG79cknmZbDfJipFIDDXg24nbebvexfROT+wu+/y408RajxasAVrcyl/vXyItTYFfAH13WNGoDfjl5rVAP0WqM2oLsahwB6qnEkoIsahwOy12gFkLZGU4CMNVoEpKrRLCBLjdYBzddIAWi5RiZAkzXSAVqrkRXQTI3UgBZq9AA4tEY3gKNq9AaoXqNLQM0aPQOq1OgesHeNUQC71RgKsEeNEQGb1hgWcFWstX6eltMtsFuEbaj+txuDHExjNgFB5QRMQFAAHM8CAcBW22IR/4Wb7iuGAmxV3e/wowA2rS4UYI/qogB2q849YO/qPAOqVOcSULM6b4Dq1bkBHFWdB8Ch1VEDWqiOFdBMdXSA1qpjAjRZHQWg5eqsA5qvziwgS3UWAamqMwXIWJ0VQNrqhgOyVzcS0EV1QwA9VacN6K46NUCv1bUEfM27s4D9knU0b28DAc/jeX9gI8hoXwPtxkTDuvS8CQhWkIAJCAqA41lgAoIC4HgWmICgADieBYKAX0uidGAd9hNhAAAAAElFTkSuQmCC" />
-            <isOptionVisibleFunction>return false;</isOptionVisibleFunction>
-            <specializationType>Processing Action</specializationType>
-            <specializationTypeId>405a2857-b911-431f-8142-719a0e9f15f3</specializationTypeId>
-            <defaultName>Action</defaultName>
-            <allowMultiple>true</allowMultiple>
-          </option>
-        </creationOptions>
+        <typeOrder />
+        <creationOptions />
         <scriptOptions />
         <mappingOptions>
           <option mappingType="Create Entity Mapping" mappingTypeId="5f172141-fdba-426b-980e-163e782ff53e">
@@ -15028,6 +15028,7 @@ return typeReference.getIsCollection()
             <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
             <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
             <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
+            <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -15038,6 +15039,9 @@ return typeReference.getIsCollection()
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Delete Entity Action Target End" typeId="4a04cfc2-5841-438c-9c16-fb58b784b365">
+        <implements>
+          <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+        </implements>
         <displayFunction>return `[delete] ${getName()}: ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
         <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName() ?? "entity"
@@ -15126,6 +15130,7 @@ association.typeReference.getType().getChildren("Attribute")
             <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
             <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
             <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
+            <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -15136,6 +15141,9 @@ association.typeReference.getType().getChildren("Attribute")
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4">
+        <implements>
+          <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+        </implements>
         <displayFunction>return `[query] ${getName()}: ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
         <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName() ?? "entity"
@@ -15199,6 +15207,7 @@ return typeReference.getIsCollection()
             <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
             <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
             <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
+            <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -15209,6 +15218,9 @@ return typeReference.getIsCollection()
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452">
+        <implements>
+          <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+        </implements>
         <displayFunction>return `[update] ${getName()}: ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
         <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName() ?? "entity"

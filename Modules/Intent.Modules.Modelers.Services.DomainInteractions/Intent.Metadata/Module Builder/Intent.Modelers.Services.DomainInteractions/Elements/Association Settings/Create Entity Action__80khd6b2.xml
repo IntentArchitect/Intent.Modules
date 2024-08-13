@@ -29,7 +29,7 @@
           <properties>
             <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" value="null" isActive="true" />
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;ccf14eb6-3a55-4d81-b5b9-d27311c70cb9&quot;,&quot;e030c97a-e066-40a7-8188-808c275df3cb&quot;,&quot;f45dfee9-f62b-45ac-bfce-a3878e04b73f&quot;]" isActive="true" />
-            <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" isActive="true" />
+            <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" value="[&quot;2b6729eb-e2ae-4b5f-86fe-4f611d1f912e&quot;]" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="CreateEntityCommands" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return `created by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Optional" isActive="true" />
@@ -85,6 +85,12 @@
             <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
           </properties>
         </stereotype>
+        <stereotype stereotypeDefinitionId="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]">
+          <addedByDefault>false</addedByDefault>
+          <definitionPackageName>Intent.Common</definitionPackageName>
+          <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
+          <properties />
+        </stereotype>
       </stereotypes>
       <metadata />
       <childElements>
@@ -101,47 +107,6 @@
           <stereotypes />
           <metadata />
           <childElements>
-            <childElement id="49a49386-7aee-451e-a3fe-888b31a1765a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-              <comment>Should not be used like this.</comment>
-              <name>Add Processing Action</name>
-              <display>Add Processing Action: Processing Action</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="e13417c3-c83b-42ad-a790-d302474ef76b">
-                <typeId>405a2857-b911-431f-8142-719a0e9f15f3</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>59e93c00-f338-4e52-9505-e912e029c1dc</parentFolderId>
-              <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
-              <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-                  <comment />
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                    <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Action" isActive="true" />
-                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-                    <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" value="return false;" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
             <childElement id="6a0360e7-ce52-4b00-899b-51e5aebb6fc9" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
               <name>Map Entity Creation</name>
               <display>Map Entity Creation: Create Entity Mapping</display>
