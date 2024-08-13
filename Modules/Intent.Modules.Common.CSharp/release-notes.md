@@ -1,4 +1,8 @@
-﻿### Version 3.7.2
+﻿### Version 3.7.3
+
+- Improvement: Upgrades NuGet package systems including modeling.
+
+### Version 3.7.2
 
 - Improvement: Added Attribute support for Class Constructor parameters.
 - Improvement: `CSharpInvocationStatement` can now be used to chain method calls similarly to what `CSharpMethodChainStatement` did.

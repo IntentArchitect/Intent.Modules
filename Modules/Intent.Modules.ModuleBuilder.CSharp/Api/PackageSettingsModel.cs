@@ -25,5 +25,11 @@ namespace Intent.ModuleBuilder.CSharp.Api
             .Select(x => new CSharpTemplateModel(x))
             .ToList();
 
+        [IntentManaged(Mode.Fully)]
+        public IList<NuGetPackagesModel> NuGetPackages => UnderlyingPackage.ChildElements
+            .GetElementsOfType(NuGetPackagesModel.SpecializationTypeId)
+            .Select(x => new NuGetPackagesModel(x))
+            .ToList();
+
     }
 }

@@ -3,6 +3,7 @@ using Intent.ModuleBuilder.CSharp.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpStringInterpolation;
 using Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial;
+using Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -30,6 +31,11 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates
         public static string GetCSharpTemplatePartialName(this IIntentTemplate template, CSharpTemplateModel model)
         {
             return template.GetTypeName(CSharpTemplatePartialTemplate.TemplateId, model);
+        }
+
+        public static string GetNugetPackagesName(this IIntentTemplate template)
+        {
+            return template.GetTypeName(NugetPackagesTemplate.TemplateId);
         }
 
     }

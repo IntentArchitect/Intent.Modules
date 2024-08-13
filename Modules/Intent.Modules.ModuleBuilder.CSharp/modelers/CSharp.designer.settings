@@ -17,10 +17,19 @@
           <defaultName>NewCSharpTemplate</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
+        <option order="0" type="element">
+          <text>Add NuGet Packages</text>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" />
+          <specializationType>NuGet Packages</specializationType>
+          <specializationTypeId>4c75c84d-c745-4f0f-b1f4-82eeca01dfc7</specializationTypeId>
+          <defaultName>NuGet Packages</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
       </creationOptions>
       <scriptOptions />
       <typeOrder>
         <type order="2">C# Template</type>
+        <type order="0">NuGet Packages</type>
       </typeOrder>
     </packageExtension>
   </packageExtensions>
@@ -64,6 +73,135 @@
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
+    <elementSetting type="NuGet Package" typeId="f747cc37-29ee-488a-8dbe-755e856a842d">
+      <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <displayFunction>let packageSettingsStereoTypeId = "265221a5-779c-46c9-a367-8b07b435803b";
+let settings = element.getStereotype(packageSettingsStereoTypeId);
+
+const result = [{ text: `${getName()}` }];
+
+if (settings.getProperty("Name")?.value != element.getName()){
+    result.push({ text: ` ( ${settings.getProperty("Name")?.value} )`, cssClass: "muted" })
+}
+
+return result; </displayFunction>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren>by-type-then-by-name</sortChildren>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Package Version</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <text>New Package Version</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAr1JREFUaEPtmbFPE2EYxp/3O4omDUp0BBcDpNoIEqMsLIqpzkZqwNlE5B+AuDvCgKEDq7GkFN0cKMSNyUQKJmhK4qAOLsYaCdj27jXX6gBec+93XLk23m1N3u/7nt/73F3fJ0do8YtaXD9CgKAdlDuw8KwbFWMWzLdqoikHZU3h4f1CkBAyAFt8WeVBdOaAWOZvoLZ+TCS/BAUhA0illwDcdRRpIYPJsXvNDTD//AeIOhxFMhfxaLyzuQFS6SKAU60LMJ9eBuFOnS5nMTE22twOPF3sg8HrAM7+8xBz2xAmkzvNDWCrS2W6YJkz0XYjaf/crZhZWMZ0kOKrL3Pdzr19v8P2msFYj/Za3bMk9doiQgBJWzVqQgc0mtWQ0tCBhrRVY9P/14F281dHPB7/qdGshpR6dsCCGrgSO7/ZEFUam3oGAPPjwQu9TzTOakipZwAm/nqiUuoJ+jbyDFAdpNhaHIj1jhNRdT7ydL3Od6NMsyCqZW1FOZhqComLoqztGYDB3wnUaUNErPIDT07Y4k2VBw5lbdhZ2+zHyGXXrO0ZgIAbzPwSRKft24mY5sjgV5FSqSCGWdlcglLOWZs4g5FLrlnbM4A9Tr/58DFmmOUFKDXs5fa5+mlvv0J00nktFXEz7pq1jwTw9+CN7UKCiUaJedgidY7AUQnQtc97+2U0AYBErGPN2rtlcJ2sbVlZJPpds7YvDngGWN3uAyrrAB3M2vZDbKghXI+7Zu1gAWzytY0uwJgB43a1ERavIGJMS8RXX+W63QsjpW7HXOpDB3xuqPZ2cgf+zCxRo/bPuQu80JlZtJUJF8gAfJhZhHq0y2QAPsws2sqEC2QAua363wcgm1mEerTLZACrW0WAnL8PtASADzOLdmuFC4QOHH1mEerRLpMB+DCzaCsTLpADCDc87rIQ4Lg7fvi8lnfgN7MeOUDfkvXlAAAAAElFTkSuQmCC" />
+          <specializationType>Package Version</specializationType>
+          <specializationTypeId>231f8cf8-517b-4801-9682-991d22f4e662</specializationTypeId>
+          <defaultName>1.0.0</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <mappingSettings />
+      <macros>
+        <macro trigger="on-name-changed">
+          <script>let packageSettingId = "265221a5-779c-46c9-a367-8b07b435803b";
+let stereoType = element.getStereotype(packageSettingId);
+if (!stereoType.getProperty("Name")?.value){
+    stereoType.getProperty("Name").setValue(element.getName());
+}
+</script>
+        </macro>
+      </macros>
+      <childElementSettings />
+    </elementSetting>
+    <elementSetting type="NuGet Packages" typeId="4c75c84d-c745-4f0f-b1f4-82eeca01dfc7">
+      <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>false</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren>by-type-then-by-name</sortChildren>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">NuGet Package</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <text>New NuGet Package</text>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" />
+          <specializationType>NuGet Package</specializationType>
+          <specializationTypeId>f747cc37-29ee-488a-8dbe-755e856a842d</specializationTypeId>
+          <defaultName>(Package Name)</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
+    <elementSetting type="Package Version" typeId="231f8cf8-517b-4801-9682-991d22f4e662">
+      <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAr1JREFUaEPtmbFPE2EYxp/3O4omDUp0BBcDpNoIEqMsLIqpzkZqwNlE5B+AuDvCgKEDq7GkFN0cKMSNyUQKJmhK4qAOLsYaCdj27jXX6gBec+93XLk23m1N3u/7nt/73F3fJ0do8YtaXD9CgKAdlDuw8KwbFWMWzLdqoikHZU3h4f1CkBAyAFt8WeVBdOaAWOZvoLZ+TCS/BAUhA0illwDcdRRpIYPJsXvNDTD//AeIOhxFMhfxaLyzuQFS6SKAU60LMJ9eBuFOnS5nMTE22twOPF3sg8HrAM7+8xBz2xAmkzvNDWCrS2W6YJkz0XYjaf/crZhZWMZ0kOKrL3Pdzr19v8P2msFYj/Za3bMk9doiQgBJWzVqQgc0mtWQ0tCBhrRVY9P/14F281dHPB7/qdGshpR6dsCCGrgSO7/ZEFUam3oGAPPjwQu9TzTOakipZwAm/nqiUuoJ+jbyDFAdpNhaHIj1jhNRdT7ydL3Od6NMsyCqZW1FOZhqComLoqztGYDB3wnUaUNErPIDT07Y4k2VBw5lbdhZ2+zHyGXXrO0ZgIAbzPwSRKft24mY5sjgV5FSqSCGWdlcglLOWZs4g5FLrlnbM4A9Tr/58DFmmOUFKDXs5fa5+mlvv0J00nktFXEz7pq1jwTw9+CN7UKCiUaJedgidY7AUQnQtc97+2U0AYBErGPN2rtlcJ2sbVlZJPpds7YvDngGWN3uAyrrAB3M2vZDbKghXI+7Zu1gAWzytY0uwJgB43a1ERavIGJMS8RXX+W63QsjpW7HXOpDB3xuqPZ2cgf+zCxRo/bPuQu80JlZtJUJF8gAfJhZhHq0y2QAPsws2sqEC2QAua363wcgm1mEerTLZACrW0WAnL8PtASADzOLdmuFC4QOHH1mEerRLpMB+DCzaCsTLpADCDc87rIQ4Lg7fvi8lnfgN7MeOUDfkvXlAAAAAElFTkSuQmCC" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <displayFunction>let packageVersionStereoTypeId = "7af88c37-ce54-49fc-b577-bde869c23462";
+let settings = element.getStereotype(packageVersionStereoTypeId);
+
+let locked = null;
+let framework = 'Any,Version=v0.0';
+if (settings){
+    if (settings.getProperty("Locked")?.value == true){
+        locked = "locked";
+    }
+    if (settings.getProperty("Minimum Target Framework")?.value){
+        framework = settings.getProperty("Minimum Target Framework")?.value;
+    }    
+}
+
+const result = [{ text: `${getName()}` }];
+
+if (framework != null) {
+    result.push({ text: ` ( &gt;= ${framework} )`, cssClass: "muted" })
+}
+if (locked) {
+    result.push({ text: ` ${locked}`, cssClass: "keyword" })
+}
+
+return result; </displayFunction>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren>by-type-then-by-name</sortChildren>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder />
+      <creationOptions />
       <scriptOptions />
       <mappingOptions />
       <mappingSettings />

@@ -1,3 +1,7 @@
+### Version 3.5.2
+
+- Improvement: NuGet modeling support.
+
 ### Version 3.5.1
 
 - Improvement: Updated interpolated C# templates to be simpler and use raw string literals.
