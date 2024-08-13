@@ -40,7 +40,8 @@ public class TypeConvertingCSharpMapping : CSharpMappingBase
         if (Mapping.IsOneToOne() &&
             Mapping.SourceElement.TypeReference.IsNullable &&
             !Mapping.TargetElement.TypeReference.IsNullable &&
-            Mapping.TargetElement.TypeReference.Element.IsTypeDefinitionModel())
+            Mapping.TargetElement.TypeReference.Element.IsTypeDefinitionModel() &&
+            !Mapping.TargetElement.TypeReference.Element.IsStringType())
         {
             return new CSharpAccessMemberStatement(base.GetSourceStatement(), "Value");
         }
