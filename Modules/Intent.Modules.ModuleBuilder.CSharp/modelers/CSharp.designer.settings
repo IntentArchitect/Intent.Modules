@@ -83,13 +83,29 @@
       <saveAsOwnFile>true</saveAsOwnFile>
       <displayFunction>let packageSettingsStereoTypeId = "265221a5-779c-46c9-a367-8b07b435803b";
 let settings = element.getStereotype(packageSettingsStereoTypeId);
+let locked = null;
 
-const result = [{ text: `${getName()}` }];
-
-if (settings.getProperty("Name")?.value != element.getName()){
-    result.push({ text: ` ( ${settings.getProperty("Name")?.value} )`, cssClass: "muted" })
+if (settings){
+    if (settings.getProperty("Locked")?.value == true){
+        locked = "[locked]";
+    }
 }
 
+let displayName = element.getName();
+let additionalName = null;
+
+if (settings.getProperty("Friendly Name")?.value){
+    displayName = settings.getProperty("Friendly Name")?.value;
+    additionalName = getName();
+}
+
+const result = [{ text: `${displayName}` }];
+if (additionalName){
+    result.push({ text: ` (${additionalName})`, cssClass: "muted" })
+}
+if (locked) {
+    result.push({ text: ` ${locked}`, cssClass: "keyword" })
+}
 return result; </displayFunction>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
@@ -115,19 +131,109 @@ return result; </displayFunction>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
-      <scriptOptions />
+      <scriptOptions>
+        <option>
+          <text>Get latest from NuGet.org</text>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" />
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+async function getLatestNugetPackages(nugetPackageIds) {
+    let taskConfig = {
+        nugetPackageIds: nugetPackageIds,
+    };
+    let jsonResponse = await executeModuleTask("Intent.ModuleBuilder.CSharp.Tasks.NugetUpdater", JSON.stringify(taskConfig));
+    let result = JSON.parse(jsonResponse);
+    if (result === null || result === void 0 ? void 0 : result.errorMessage) {
+        await dialogService.error(result === null || result === void 0 ? void 0 : result.errorMessage);
+        return null; // Exit if there's an error
+    }
+    // Assuming the response matches the ITaskResponse structure
+    let taskResponse = {
+        nugetPackages: result.nugetPackages.map((pkg) =&gt; ({
+            name: pkg.name,
+            versions: pkg.versions.map((ver) =&gt; ({
+                version: ver.version,
+                targetFramework: ver.targetFramework
+            }))
+        }))
+    };
+    return taskResponse; // Return the parsed ITaskResponse
+}
+function updateNugetPackageElements(elements, latestVersions) {
+    elements.filter(x =&gt; !isPackageLocked(x)).forEach(e =&gt; {
+        let packageName = e.getName();
+        let nugetPackage = latestVersions.nugetPackages.find(pkg =&gt; pkg.name === packageName);
+        console.log("synchronizing:" + packageName);
+        synchronizeModel(e, nugetPackage);
+    });
+}
+function synchronizeModel(packageElement, nugetPackage) {
+    const packageVersionSettings = "7af88c37-ce54-49fc-b577-bde869c23462";
+    const dict = new Map();
+    let toRemove = [];
+    nugetPackage.versions.forEach(v =&gt; {
+        dict.set(v.targetFramework, v.version);
+    });
+    dict.forEach((value, key) =&gt; {
+        console.log(`NuGet:${value}(${key})`);
+    });
+    packageElement.getChildren().forEach(e =&gt; {
+        let versionSettings = e.getStereotype(packageVersionSettings);
+        let targetFramework = versionSettings.getProperty("Minimum Target Framework").value;
+        if (versionSettings.getProperty("Locked").getValue() == true) {
+            if (dict.has(targetFramework)) {
+                dict.delete(targetFramework);
+            }
+        }
+        else {
+            if (dict.has(targetFramework)) {
+                if (dict.get(targetFramework) == e.getName()) {
+                    dict.delete(targetFramework);
+                }
+            }
+            else {
+                toRemove.push(e);
+            }
+        }
+    });
+    dict.forEach((value, key) =&gt; {
+        let existingElement = packageElement.getChildren().find(c =&gt; c.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value == key);
+        if (existingElement) {
+            existingElement.setName(value);
+        }
+        else {
+            let element = createElement("Package Version", value, packageElement.id);
+            let versionSettings = element.getStereotype(packageVersionSettings);
+            versionSettings.getProperty("Minimum Target Framework").setValue(key);
+        }
+    });
+    toRemove.forEach(e =&gt; e.delete());
+}
+function isPackageLocked(element) {
+    var _a;
+    let packageSettings = "265221a5-779c-46c9-a367-8b07b435803b";
+    return ((_a = element.getStereotype(packageSettings).getProperty("Locked")) === null || _a === void 0 ? void 0 : _a.getValue()) == true;
+}
+/// &lt;reference path="../common/nuget-package-updater.ts" /&gt;
+async function updateNuGetPackage(element) {
+    if (isPackageLocked(element))
+        return;
+    let result = await getLatestNugetPackages([element.getName()]);
+    updateNugetPackageElements([element], result);
+    await dialogService.info("Update complete.");
+}
+/**
+ * Used by Intent.Modules\Modules\Intent.ModuleBuilder.CSharp
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/nuget-package-updater/update-package/update-package.ts
+ */
+//Uncomment below
+await updateNuGetPackage(element);
+</script>
+        </option>
+      </scriptOptions>
       <mappingOptions />
       <mappingSettings />
-      <macros>
-        <macro trigger="on-name-changed">
-          <script>let packageSettingId = "265221a5-779c-46c9-a367-8b07b435803b";
-let stereoType = element.getStereotype(packageSettingId);
-if (!stereoType.getProperty("Name")?.value){
-    stereoType.getProperty("Name").setValue(element.getName());
-}
-</script>
-        </macro>
-      </macros>
       <childElementSettings />
     </elementSetting>
     <elementSetting type="NuGet Packages" typeId="4c75c84d-c745-4f0f-b1f4-82eeca01dfc7">
@@ -157,14 +263,113 @@ if (!stereoType.getProperty("Name")?.value){
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
-      <scriptOptions />
+      <scriptOptions>
+        <option>
+          <text>Get latest from NuGet.org</text>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" />
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+async function getLatestNugetPackages(nugetPackageIds) {
+    let taskConfig = {
+        nugetPackageIds: nugetPackageIds,
+    };
+    let jsonResponse = await executeModuleTask("Intent.ModuleBuilder.CSharp.Tasks.NugetUpdater", JSON.stringify(taskConfig));
+    let result = JSON.parse(jsonResponse);
+    if (result === null || result === void 0 ? void 0 : result.errorMessage) {
+        await dialogService.error(result === null || result === void 0 ? void 0 : result.errorMessage);
+        return null; // Exit if there's an error
+    }
+    // Assuming the response matches the ITaskResponse structure
+    let taskResponse = {
+        nugetPackages: result.nugetPackages.map((pkg) =&gt; ({
+            name: pkg.name,
+            versions: pkg.versions.map((ver) =&gt; ({
+                version: ver.version,
+                targetFramework: ver.targetFramework
+            }))
+        }))
+    };
+    return taskResponse; // Return the parsed ITaskResponse
+}
+function updateNugetPackageElements(elements, latestVersions) {
+    elements.filter(x =&gt; !isPackageLocked(x)).forEach(e =&gt; {
+        let packageName = e.getName();
+        let nugetPackage = latestVersions.nugetPackages.find(pkg =&gt; pkg.name === packageName);
+        console.log("synchronizing:" + packageName);
+        synchronizeModel(e, nugetPackage);
+    });
+}
+function synchronizeModel(packageElement, nugetPackage) {
+    const packageVersionSettings = "7af88c37-ce54-49fc-b577-bde869c23462";
+    const dict = new Map();
+    let toRemove = [];
+    nugetPackage.versions.forEach(v =&gt; {
+        dict.set(v.targetFramework, v.version);
+    });
+    dict.forEach((value, key) =&gt; {
+        console.log(`NuGet:${value}(${key})`);
+    });
+    packageElement.getChildren().forEach(e =&gt; {
+        let versionSettings = e.getStereotype(packageVersionSettings);
+        let targetFramework = versionSettings.getProperty("Minimum Target Framework").value;
+        if (versionSettings.getProperty("Locked").getValue() == true) {
+            if (dict.has(targetFramework)) {
+                dict.delete(targetFramework);
+            }
+        }
+        else {
+            if (dict.has(targetFramework)) {
+                if (dict.get(targetFramework) == e.getName()) {
+                    dict.delete(targetFramework);
+                }
+            }
+            else {
+                toRemove.push(e);
+            }
+        }
+    });
+    dict.forEach((value, key) =&gt; {
+        let existingElement = packageElement.getChildren().find(c =&gt; c.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value == key);
+        if (existingElement) {
+            existingElement.setName(value);
+        }
+        else {
+            let element = createElement("Package Version", value, packageElement.id);
+            let versionSettings = element.getStereotype(packageVersionSettings);
+            versionSettings.getProperty("Minimum Target Framework").setValue(key);
+        }
+    });
+    toRemove.forEach(e =&gt; e.delete());
+}
+function isPackageLocked(element) {
+    var _a;
+    let packageSettings = "265221a5-779c-46c9-a367-8b07b435803b";
+    return ((_a = element.getStereotype(packageSettings).getProperty("Locked")) === null || _a === void 0 ? void 0 : _a.getValue()) == true;
+}
+/// &lt;reference path="../common/nuget-package-updater.ts" /&gt;
+async function updateAllNuGetPackages(element) {
+    let packages = element.getChildren();
+    let result = await getLatestNugetPackages(packages.filter(x =&gt; !isPackageLocked(x)).map(x =&gt; x.getName()));
+    updateNugetPackageElements(packages, result);
+    await dialogService.info("Update complete.");
+}
+/**
+ * Used by Intent.Modules\Modules\Intent.ModuleBuilder.CSharp
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/nuget-package-updater/update-all-package/update-all-package.ts
+ */
+//Uncomment below
+await updateAllNuGetPackages(element);
+</script>
+        </option>
+      </scriptOptions>
       <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Package Version" typeId="231f8cf8-517b-4801-9682-991d22f4e662">
       <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAr1JREFUaEPtmbFPE2EYxp/3O4omDUp0BBcDpNoIEqMsLIqpzkZqwNlE5B+AuDvCgKEDq7GkFN0cKMSNyUQKJmhK4qAOLsYaCdj27jXX6gBec+93XLk23m1N3u/7nt/73F3fJ0do8YtaXD9CgKAdlDuw8KwbFWMWzLdqoikHZU3h4f1CkBAyAFt8WeVBdOaAWOZvoLZ+TCS/BAUhA0illwDcdRRpIYPJsXvNDTD//AeIOhxFMhfxaLyzuQFS6SKAU60LMJ9eBuFOnS5nMTE22twOPF3sg8HrAM7+8xBz2xAmkzvNDWCrS2W6YJkz0XYjaf/crZhZWMZ0kOKrL3Pdzr19v8P2msFYj/Za3bMk9doiQgBJWzVqQgc0mtWQ0tCBhrRVY9P/14F281dHPB7/qdGshpR6dsCCGrgSO7/ZEFUam3oGAPPjwQu9TzTOakipZwAm/nqiUuoJ+jbyDFAdpNhaHIj1jhNRdT7ydL3Od6NMsyCqZW1FOZhqComLoqztGYDB3wnUaUNErPIDT07Y4k2VBw5lbdhZ2+zHyGXXrO0ZgIAbzPwSRKft24mY5sjgV5FSqSCGWdlcglLOWZs4g5FLrlnbM4A9Tr/58DFmmOUFKDXs5fa5+mlvv0J00nktFXEz7pq1jwTw9+CN7UKCiUaJedgidY7AUQnQtc97+2U0AYBErGPN2rtlcJ2sbVlZJPpds7YvDngGWN3uAyrrAB3M2vZDbKghXI+7Zu1gAWzytY0uwJgB43a1ERavIGJMS8RXX+W63QsjpW7HXOpDB3xuqPZ2cgf+zCxRo/bPuQu80JlZtJUJF8gAfJhZhHq0y2QAPsws2sqEC2QAua363wcgm1mEerTLZACrW0WAnL8PtASADzOLdmuFC4QOHH1mEerRLpMB+DCzaCsTLpADCDc87rIQ4Lg7fvi8lnfgN7MeOUDfkvXlAAAAAElFTkSuQmCC" />
-      <saveAsOwnFile>true</saveAsOwnFile>
+      <saveAsOwnFile>false</saveAsOwnFile>
       <displayFunction>let packageVersionStereoTypeId = "7af88c37-ce54-49fc-b577-bde869c23462";
 let settings = element.getStereotype(packageVersionStereoTypeId);
 
@@ -172,7 +377,7 @@ let locked = null;
 let framework = 'Any,Version=v0.0';
 if (settings){
     if (settings.getProperty("Locked")?.value == true){
-        locked = "locked";
+        locked = "[locked]";
     }
     if (settings.getProperty("Minimum Target Framework")?.value){
         framework = settings.getProperty("Minimum Target Framework")?.value;
@@ -189,6 +394,26 @@ if (locked) {
 }
 
 return result; </displayFunction>
+      <validateFunction>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+
+const packageVersionSettings = "7af88c37-ce54-49fc-b577-bde869c23462";
+let element = lookup(id); 
+let parent = element.getParent();
+let result = "";
+let myTargetFramework = element.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value;
+
+parent.getChildren().forEach(child =&gt;{
+    if (child.id == id) return;
+
+    let targetFramework = child.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value;
+    
+    if (targetFramework == myTargetFramework) {
+        result = `Duplicate "Minimum Target Framework" : ${targetFramework}`; // Duplicate name found
+    }
+});
+
+return result;
+</validateFunction>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>

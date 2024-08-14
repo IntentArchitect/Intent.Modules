@@ -21,15 +21,25 @@
   <packageName>Intent.ModuleBuilder.CSharp</packageName>
   <properties>
     <property id="4de9cc21-d4fb-4d52-8dfd-2eb6cf267a9a">
-      <hint>NuGet package name (Identifier)</hint>
-      <name>Name</name>
+      <hint />
+      <name>Friendly Name</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
       <valueOptions />
       <lookupTypes />
-      <isRequiredFunction>return true;</isRequiredFunction>
+      <isRequiredFunction />
+    </property>
+    <property id="67c7c4d8-40ed-48f9-a83c-985eedb32141">
+      <name>Locked</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

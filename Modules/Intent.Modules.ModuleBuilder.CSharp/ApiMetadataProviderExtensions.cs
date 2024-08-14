@@ -32,12 +32,5 @@ namespace Intent.ModuleBuilder.CSharp.Api
                 .ToList();
         }
 
-        public static IList<PackageVersionModel> GetPackageVersionModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(PackageVersionModel.SpecializationTypeId)
-                .Select(x => new PackageVersionModel(x))
-                .ToList();
-        }
-
     }
 }

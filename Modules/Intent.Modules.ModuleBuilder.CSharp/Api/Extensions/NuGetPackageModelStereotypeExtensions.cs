@@ -45,11 +45,16 @@ namespace Intent.ModuleBuilder.CSharp.Api
                 _stereotype = stereotype;
             }
 
-            public string StereotypeName => _stereotype.Name;
+            public string Name => _stereotype.Name;
 
-            public string Name()
+            public string FriendlyName()
             {
-                return _stereotype.GetProperty<string>("Name");
+                return _stereotype.GetProperty<string>("Friendly Name");
+            }
+
+            public bool Locked()
+            {
+                return _stereotype.GetProperty<bool>("Locked");
             }
 
         }

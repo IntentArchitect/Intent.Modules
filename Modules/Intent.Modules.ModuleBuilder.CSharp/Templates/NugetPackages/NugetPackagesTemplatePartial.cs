@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                 {
                     foreach (var package in model)
                     {
-                        @class.AddField("string", $"{GetPackageConstant(package)}", f => f.Private().Constant($"\"{GetPackageName( package)}\""));
+                        @class.AddField("string", $"{GetPackageConstant(package)}", f => f.Private().Constant($"\"{GetPackageName(package)}\""));
                     }
 
                     @class.AddConstructor(ctor =>
@@ -89,7 +89,12 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
 
         private string GetPackageName(NuGetPackageModel package)
         {
-            return package.GetPackageSettings().Name();
+            if (!string.IsNullOrEmpty(package.GetPackageSettings().FriendlyName()))
+            {
+                return package.GetPackageSettings().FriendlyName();
+            }
+
+            return package.Name;
         }
 
         [IntentManaged(Mode.Fully)]
