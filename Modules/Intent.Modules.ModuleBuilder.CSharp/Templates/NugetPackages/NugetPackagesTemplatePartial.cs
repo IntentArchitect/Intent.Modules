@@ -9,6 +9,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using NuGet.Frameworks;
@@ -27,6 +28,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public NugetPackagesTemplate(IOutputTarget outputTarget, IList<NuGetPackageModel> model) : base(TemplateId, outputTarget, model)
         {
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommonCSharp);
+
             CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
                 .AddUsing("Intent.Engine")
                 .AddUsing("Intent.Modules.Common.CSharp.VisualStudio")
@@ -104,6 +107,15 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
 
             return package.Name;
         }
+
+        public override void BeforeTemplateExecution()
+        {
+
+            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                moduleId: IntentModule.IntentCommonCSharp.Name,
+                moduleVersion: IntentModule.IntentCommonCSharp.Version));
+        }
+
 
         [IntentManaged(Mode.Fully)]
         public CSharpFile CSharpFile { get; }
