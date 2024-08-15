@@ -1,6 +1,7 @@
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Intent.Engine;
 using Intent.ModuleBuilder.CSharp.Api;
@@ -32,9 +33,10 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                 .AddUsing("Intent.Modules.Common.CSharp.Nuget")
                 .AddClass($"NugetPackages", @class =>
                 {
+
                     foreach (var package in model)
                     {
-                        @class.AddField("string", $"{GetPackageConstant(package)}", f => f.Private().Constant($"\"{GetPackageName(package)}\""));
+                        @class.AddField("string", $"{GetPackageConstant(package)}", f => f.Private().Constant($"\"{package.Name}\""));
                     }
 
                     @class.AddConstructor(ctor =>
@@ -43,14 +45,9 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                         foreach (var package in model)
                         {
                             StringBuilder versionInfo = new StringBuilder();
-                            foreach (var version in package.PackageVersions)
+                            foreach (var version in package.PackageVersions.OrderByDescending(v => GetFrameworkMajorVerion(v)))
                             {
-                                var majorFrameworkVersion = 0;
-                                if (!string.IsNullOrEmpty(version.GetPackageVersionSettings()?.MinimumTargetFramework()?.Value))
-                                {
-                                    var frameworkVersion = NuGetFramework.Parse(version.GetPackageVersionSettings()?.MinimumTargetFramework().Value);
-                                    majorFrameworkVersion = frameworkVersion.Version.Major;
-                                }
+                                var majorFrameworkVersion = GetFrameworkMajorVerion(version);
                                 versionInfo.AppendLine();
                                 versionInfo.Append($"                        ( >= {majorFrameworkVersion}, 0) => new PackageVersion(\"{version.Name}\"");
                                 if (version.GetPackageVersionSettings()?.Locked() == true)
@@ -70,7 +67,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
 
                     foreach (var package in model)
                     {
-                        @class.AddMethod("NugetPackageInfo", package.Name.ToCSharpIdentifier(), method =>
+                        @class.AddMethod("NugetPackageInfo", GetPackageFriendlyName(package).ToCSharpIdentifier(), method =>
                         {
                             method
                                 .Static()
@@ -82,12 +79,23 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                 });
         }
 
-        private string GetPackageConstant(NuGetPackageModel package)
+        private int GetFrameworkMajorVerion(PackageVersionModel model)
         {
-            return $"{package.Name.ToCSharpIdentifier()}PackageName";
+            var result = 0;
+            if (!string.IsNullOrEmpty(model.GetPackageVersionSettings()?.MinimumTargetFramework()?.Value))
+            {
+                var frameworkVersion = NuGetFramework.Parse(model.GetPackageVersionSettings()?.MinimumTargetFramework().Value);
+                result = frameworkVersion.Version.Major;
+            }
+            return result;
         }
 
-        private string GetPackageName(NuGetPackageModel package)
+        private string GetPackageConstant(NuGetPackageModel package)
+        {
+            return $"{GetPackageFriendlyName(package).ToCSharpIdentifier()}PackageName";
+        }
+
+        private string GetPackageFriendlyName(NuGetPackageModel package)
         {
             if (!string.IsNullOrEmpty(package.GetPackageSettings().FriendlyName()))
             {

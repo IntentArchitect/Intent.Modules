@@ -58,12 +58,12 @@
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
-    <file src="$outDir$/NuGet.Frameworks.dll" />
-    <file src="$outDir$/NuGet.Configuration.dll" />
-    <file src="$outDir$/NuGet.Protocol.dll" />
-    <file src="$outDir$/NuGet.Common.dll" />
-    <file src="$outDir$/NuGet.Versioning.dll" />
-    <file src="$outDir$/NuGet.Packaging.dll" />
+    <file src="$outDir$/NuGet.Frameworks.dll" inspect="false" />
+    <file src="$outDir$/NuGet.Configuration.dll" inspect="false" />
+    <file src="$outDir$/NuGet.Protocol.dll" inspect="false" />
+    <file src="$outDir$/NuGet.Common.dll" inspect="false" />
+    <file src="$outDir$/NuGet.Versioning.dll" inspect="false" />
+    <file src="$outDir$/NuGet.Packaging.dll" inspect="false" />
   </files>
   <factoryExtensions />
   <moduleSettings />

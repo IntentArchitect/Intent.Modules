@@ -16,8 +16,9 @@
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.4" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.6.0" />
-    <PackageReference Include="NuGet.Configuration" Version="6.10.1" />
-    <PackageReference Include="NuGet.Protocol" Version="6.10.1" />
+    <PackageReference Include="NuGet.Configuration" Version="6.1.0" />
+    <PackageReference Include="NuGet.Protocol" Version="6.1.0" />
+    <PackageReference Include="NuGet.Versioning" Version="6.1.0" />    
   </ItemGroup>
 
   <ItemGroup>

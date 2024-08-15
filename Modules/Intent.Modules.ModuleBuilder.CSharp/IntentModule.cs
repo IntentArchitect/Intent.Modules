@@ -2,7 +2,7 @@
 
 public class IntentModule
 {
-    public static readonly IntentModule IntentCommonCSharp = new("Intent.Common.CSharp", "3.5.2");
+    public static readonly IntentModule IntentCommonCSharp = new("Intent.Common.CSharp", "3.7.3-pre.0");
 
     public IntentModule(string name, string version)
     {

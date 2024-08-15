@@ -70,6 +70,8 @@ namespace Intent.ModuleBuilder.CSharp.Api
                 {
                     switch (Value)
                     {
+                        case ".NETCoreApp,Version=v9.0":
+                            return MinimumTargetFrameworkOptionsEnum.NETCoreAppVersionV90;
                         case ".NETCoreApp,Version=v8.0":
                             return MinimumTargetFrameworkOptionsEnum.NETCoreAppVersionV80;
                         case ".NETCoreApp,Version=v7.0":
@@ -83,6 +85,11 @@ namespace Intent.ModuleBuilder.CSharp.Api
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
+                }
+
+                public bool IsNETCoreAppVersionV90()
+                {
+                    return Value == ".NETCoreApp,Version=v9.0";
                 }
 
                 public bool IsNETCoreAppVersionV80()
@@ -109,6 +116,7 @@ namespace Intent.ModuleBuilder.CSharp.Api
 
             public enum MinimumTargetFrameworkOptionsEnum
             {
+                NETCoreAppVersionV90,
                 NETCoreAppVersionV80,
                 NETCoreAppVersionV70,
                 NETCoreAppVersionV60,
