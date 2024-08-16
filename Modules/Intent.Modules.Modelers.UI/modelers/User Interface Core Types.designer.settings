@@ -485,7 +485,7 @@ return validateOperation(lookup(id));
           <allowGenericTypes>true</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
-          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <sortChildren>by-type-then-manually</sortChildren>
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
@@ -508,8 +508,7 @@ return validateOperation(lookup(id));
           </typeReferenceSetting>
           <typeOrder>
             <type order="0" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" />
-            <type order="1" type="Call Service Operation Action Target End" typeId="475f0810-2b4a-40da-8eb8-697cb62f7dbe" />
-            <type order="2" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" />
+            <type order="1" type="[Invokable]" typeId="dc813928-0ce1-4f66-ae31-b5e5d506b4a3" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -519,6 +518,14 @@ return validateOperation(lookup(id));
               <specializationType>Parameter</specializationType>
               <specializationTypeId>00208d20-469d-41cb-8501-768fd5eb796b</specializationTypeId>
               <defaultName>param</defaultName>
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <text>Add Invocation</text>
+              <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGlnaHRuaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDUwIDUwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MCA1MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfTGlnaHRuaW5nX3gzRV9fMDAwMDAwODQ1MjI1NTg5MjgwNzY1MzU4NjAwMDAwMDgzODEzODUyMTY3NjM5MzEyNzNfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI1LjIiIHkxPSI0Ny45NjMiIHgyPSIyNS4yIiB5Mj0iMi42MTQ5IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTApIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRjRFMDI0Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6I0Y1QUQyNCIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIGlkPSJfeDNDX0xpZ2h0bmluZ194M0VfIiBmaWxsPSJ1cmwoI194M0NfTGlnaHRuaW5nX3gzRV9fMDAwMDAwODQ1MjI1NTg5MjgwNzY1MzU4NjAwMDAwMDgzODEzODUyMTY3NjM5MzEyNzNfKSIgZD0iTTI5LDE2LjcNCglsNy4zLTE0LjVIMTcuN0w1LjIsMjdIMjBMOS43LDQ3LjNoMy41bDMyLTMwLjVMMjksMTYuN0wyOSwxNi43eiBNMjUuNiwyMy42SDEwLjhsOS0xNy45aDEwLjlsLTcuMywxNC41aDEzLjJsLTE4LDE3LjFMMjUuNiwyMy42eiINCgkvPg0KPC9zdmc+DQo=" />
+              <specializationType>Invocation</specializationType>
+              <specializationTypeId>18f87cd6-d8d8-4518-8931-58653d537467</specializationTypeId>
+              <defaultName>Invocation</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="association">
@@ -631,6 +638,35 @@ return validateOperationParameter(lookup(id));
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
+              <mappingSettings />
+              <childElementSettings />
+            </childElementSetting>
+            <childElementSetting type="Invocation" typeId="18f87cd6-d8d8-4518-8931-58653d537467">
+              <implements>
+                <trait id="dc813928-0ce1-4f66-ae31-b5e5d506b4a3" name="[Invokable]" />
+              </implements>
+              <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGlnaHRuaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDUwIDUwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MCA1MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfTGlnaHRuaW5nX3gzRV9fMDAwMDAwODQ1MjI1NTg5MjgwNzY1MzU4NjAwMDAwMDgzODEzODUyMTY3NjM5MzEyNzNfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI1LjIiIHkxPSI0Ny45NjMiIHgyPSIyNS4yIiB5Mj0iMi42MTQ5IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTApIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRjRFMDI0Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6I0Y1QUQyNCIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIGlkPSJfeDNDX0xpZ2h0bmluZ194M0VfIiBmaWxsPSJ1cmwoI194M0NfTGlnaHRuaW5nX3gzRV9fMDAwMDAwODQ1MjI1NTg5MjgwNzY1MzU4NjAwMDAwMDgzODEzODUyMTY3NjM5MzEyNzNfKSIgZD0iTTI5LDE2LjcNCglsNy4zLTE0LjVIMTcuN0w1LjIsMjdIMjBMOS43LDQ3LjNoMy41bDMyLTMwLjVMMjksMTYuN0wyOSwxNi43eiBNMjUuNiwyMy42SDEwLjhsOS0xNy45aDEwLjlsLTcuMywxNC41aDEzLjJsLTE4LDE3LjFMMjUuNiwyMy42eiINCgkvPg0KPC9zdmc+DQo=" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <allowRename>true</allowRename>
+              <nameMustBeUnique>true</nameMustBeUnique>
+              <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>true</allowSorting>
+              <sortChildren>by-type-then-by-name</sortChildren>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>false</allowTypeReference>
+              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <creationOptions />
+              <scriptOptions />
+              <mappingOptions>
+                <option mappingType="Operation Execution Mapping" mappingTypeId="d5d1dd6a-15f4-4332-b531-3b74e1d97fab">
+                  <text>Map Execution</text>
+                  <shortcut>ctrl + space</shortcut>
+                </option>
+              </mappingOptions>
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1249,6 +1285,9 @@ if (selected.type == "core") {
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Call Service Operation Action Target End" typeId="475f0810-2b4a-40da-8eb8-697cb62f7dbe">
+        <implements>
+          <trait id="dc813928-0ce1-4f66-ae31-b5e5d506b4a3" name="[Invokable]" />
+        </implements>
         <displayFunction>const display = [
     { text: "[call] ", cssClass: "keyword" },
     { text: `${typeReference.getType()?.getParent().getName() ?? ""}`, cssClass: "typeref", targetId: typeReference.getType()?.getParent().id },
@@ -1341,6 +1380,9 @@ if (association.typeReference.getType().getChildren().length &gt; 0) {
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349">
+        <implements>
+          <trait id="dc813928-0ce1-4f66-ae31-b5e5d506b4a3" name="[Invokable]" />
+        </implements>
         <displayFunction>const display = [
     { text: "navigate: ", cssClass: "keyword" },
     { text: `${typeReference.getType()?.getDisplay() ?? "&lt;not-set&gt;"}`, cssClass: "typeref", targetId: typeReference.typeId },
@@ -1580,6 +1622,235 @@ return display;
         </mappingType>
       </mappingTypes>
     </mappingSetting>
+    <mappingSetting type="Operation Execution Mapping" typeId="d5d1dd6a-15f4-4332-b531-3b74e1d97fab">
+      <title>Operation Execution Mapping</title>
+      <sourceRootElementFunction>return element.getParent("Component").id;</sourceRootElementFunction>
+      <targetRootElementFunction>return element.getParent("Component").id;</targetRootElementFunction>
+      <sourceMappings>
+        <mapping id="f0315878-efad-46de-bff6-4a7393e672ca" name="Component" type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="6fe84b17-c1d1-40da-aa5f-d13129491dc4" name="Operation" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return element.isHostSource();</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>invokable</represents>
+              <childSettings>
+                <childSetting id="b78d23af-9706-40e7-801a-7feee3070a18" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return element.getParent().isHostSource();</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+                <childSetting id="4b4d2e82-9a84-4229-8a82-323fc44b3094" name="Invocation" type="Invocation" typeId="18f87cd6-d8d8-4518-8931-58653d537467" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return element.isHostSource();</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>invokable</represents>
+                </childSetting>
+              </childSettings>
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="0eda209a-bfef-41ec-81de-bf5e70c4dad2" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="4f699517-7976-446c-9ca1-317e623ef45b" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>0eda209a-bfef-41ec-81de-bf5e70c4dad2</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="4b15dfc1-c1d2-44f6-8496-9e30ab7304db" name="Model Definition" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+        </mapping>
+        <mapping id="563c2786-fbdf-44bf-9597-16a46d6d93fd" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>true</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+        </mapping>
+      </sourceMappings>
+      <targetMappings>
+        <mapping id="2fba603d-ce1f-4a03-bb2e-527741d94acd" name="Component" type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="9f5bfd67-f458-4018-9863-ea1a0df6d9d8" name="Operation" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>invokable</represents>
+              <childSettings>
+                <childSetting id="90357a73-2f2c-4998-9e14-d72be64b7df5" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return element.getParent().isHostSource();</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+              </childSettings>
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="e2d5077d-59cd-4e13-b710-f6f0eecb8e50" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>true</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+        </mapping>
+        <mapping id="4d44410a-3f80-44c7-8902-78067a770c85" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="b6ea4ca1-15bc-408c-819e-74cbe78f30ab" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <filterFunction>return !element.typeReference.getIsCollection();</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>4d44410a-3f80-44c7-8902-78067a770c85</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="a226070c-8e75-4e7e-83a2-10c92bcadda8" name="DTO-Field Collection" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <filterFunction>return element.typeReference.getIsCollection();</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <staticMappableSettings>
+                <staticMappableSetting id="36d22f9e-3984-477b-af04-b33b94401f72" name="Add()" type="Add()" typeId="36d22f9e-3984-477b-af04-b33b94401f72" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>invokable</represents>
+                  <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWV0aG9kIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiDQoJIHk9IjBweCIgdmlld0JveD0iMCAwIDUwIDUwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MCA1MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8ZyBpZD0ibGV2ZWwtMSIgZGlzcGxheT0ibm9uZSI+DQoJPGcgZGlzcGxheT0iaW5saW5lIiBvcGFjaXR5PSIwLjc1Ij4NCgkJPHBhdGggb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOHYyNEwyNSw0Ni40TDYuMSwzNy44di0yNEwyNSwzLjVMNDMuOSwxMy44eiIvPg0KCQk8cGF0aCBmaWxsPSIjNjkzNkFBIiBkPSJNNDUuNiwxMy44djI0bC0xLDEuNkwyNS43LDQ4aC0xLjRMNS40LDM5LjRsLTEtMS42di0yNGwwLjktMS41bDAuMSwzLjFsMi40LDEuMXYyMC4zbDE1LjUsN1YyMy41bDEsMC41DQoJCQloMS40bDEtMC40djIwLjNsMTUuNC03VjE2LjVsMi40LTEuMWwwLjEtMy4xTDQ1LjYsMTMuOHoiLz4NCgk8L2c+DQoJPHBhdGggZGlzcGxheT0iaW5saW5lIiBvcGFjaXR5PSIwLjEiIGZpbGw9IiM2OTM2QUEiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgICAgIiBkPSJNNDMuOSwxMy44TDI1LDIyLjRMNi4xLDEzLjhMMjUsMy41TDQzLjksMTMuOA0KCQl6Ii8+DQoJPHBhdGggZGlzcGxheT0iaW5saW5lIiBmaWxsPSIjNjkzNkFBIiBkPSJNMjUuOCwyaC0xLjZMNS4zLDEyLjNsMC4xLDMuMUwyNC4zLDI0aDEuNGwxOC45LTguNmwwLjEtMy4xTDI1LjgsMnogTTI1LDIwLjVsLTE1LTYuOQ0KCQlsMTUtOC4ybDE1LDguMkwyNSwyMC41eiIvPg0KPC9nPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8xXzg5NTYyM2prNDUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My43MDc2IiB4Mj0iMjUiIHkyPSI0LjMwNzYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzFfODk1NjIzams0NSkiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgICAgIiBkPSJNNDQuMSwxMS45TDI1LjUsMi44Yy0wLjMtMC4xLTAuNi0wLjEtMC45LDBMNS45LDExLjkNCgljLTAuNCwwLjItMC42LDAuNS0wLjYsMC45djI0LjNjMCwwLjQsMC4yLDAuNywwLjYsMC45bDE4LjYsOS4yYzAuMSwwLjEsMC4zLDAuMSwwLjUsMC4xczAuMywwLDAuNS0wLjFMNDQuMSwzOA0KCWMwLjQtMC4yLDAuNi0wLjUsMC42LTAuOVYxMi45QzQ0LjcsMTIuNSw0NC41LDEyLjEsNDQuMSwxMS45eiBNMjUsNS45bDE0LDYuOWwtMTQsNi45bC0xNC02LjlMMjUsNS45eiBNOC40LDM1LjlWMTVsMTUuMSw3LjR2MjAuOQ0KCUwxMSwzNy4xTDguNCwzNS45eiBNMjYuNSw0My4zVjIyLjRMNDEuNiwxNXYyMC45TDM5LDM3LjFMMjYuNSw0My4zeiIvPg0KPC9zdmc+DQo=" />
+                  <staticMappableSettings>
+                    <staticMappableSetting id="0c83ed35-7e3d-457a-9d17-83ae69aba702" name="item" type="item" typeId="0c83ed35-7e3d-457a-9d17-83ae69aba702" version="2.0.0">
+                      <displayFunction>return `item: ${element.typeReference.getType()?.getDisplay() ?? "&lt;not set&gt;"}`</displayFunction>
+                      <isRequiredFunction>return true;</isRequiredFunction>
+                      <allowMultipleMappings>true</allowMultipleMappings>
+                      <isMappableFunction>return element.getParent().getIsMapped();</isMappableFunction>
+                      <isTraversable>false</isTraversable>
+                      <traversableTypes />
+                      <overrideTypeReferenceFunction>let model = element.typeReference.toModel();
+model.isCollection = false;
+return model;</overrideTypeReferenceFunction>
+                      <canBeModified>false</canBeModified>
+                      <represents>data</represents>
+                      <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjQ1IiB5MT0iMzIwLjQiIHgyPSI0NSIgeTI9IjMzMC4zIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTI4NykiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA3MGMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA5YzRmZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIiIHgxPSIzNS43IiB5MT0iMzI0LjYiIHgyPSI0NC4zIiB5Mj0iMzMzLjIiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjg3KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxMDJiNTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTYzYjc0Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMyIgeDE9IjQxLjkiIHkxPSIyOTUuMyIgeDI9IjQxLjkiIHkyPSIzMDUuMiIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0yODcpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwNzBjMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC00IiB4MT0iMzIuNSIgeTE9IjI5OS41IiB4Mj0iNDEuMSIgeTI9IjMwOC4xIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTI4NykiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMTAyYjUxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE2M2I3NCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTUiIHgxPSI0Mi43IiB5MT0iMjk2LjQiIHgyPSI0Mi43IiB5Mj0iMzA2LjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjg3KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwMDcwYzAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDljNGZmIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNiIgeDE9IjMzLjQiIHkxPSIzMDAuNiIgeDI9IjQyIiB5Mj0iMzA5LjIiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjg3KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxMDJiNTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTYzYjc0Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNyIgeDE9IjIuNSIgeTE9IjMwOS4xIiB4Mj0iNDcuNiIgeTI9IjMwOS4xIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTI4NykiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA1OTljIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwYzBmMiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTgiIHgxPSIzLjYiIHkxPSIzMDUuMyIgeDI9IjQ4LjciIHkyPSIzMDUuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0yODcpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwNTk5YyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMGMwZjIiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC05IiB4MT0iMjUiIHkxPSIzMDIuOSIgeDI9IjI1IiB5Mj0iMjczLjIiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjYzKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM3ODU0YTMiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYTk4OGJmIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTAiIHgxPSI3LjMiIHkxPSI0OSIgeDI9IjcuMyIgeTI9IjUuMiIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDUyKSBzY2FsZSgxIC0xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNzg1NGEzIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTEiIHgxPSI0Mi43IiB5MT0iNDkiIHgyPSI0Mi43IiB5Mj0iNS4yIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgNTIpIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2E5ODhiZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3ODU0YTMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnIGRpc3BsYXk9Im5vbmUiPgogICAgPHBvbHlnb24gcG9pbnRzPSI1MCA0MC40IDQ3LjEgNDMuMyA0NC43IDQwLjkgNDQuMyA0MC40IDQyLjIgMzguNCA0Mi4yIDM4LjQgNDAgMzYuMiA0Mi45IDMzLjQgNTAgNDAuNCIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQpIiBzdHJva2Utd2lkdGg9IjAiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iNDcuMSA0My4zIDQyLjkgNDcuNSA0Mi43IDQ3LjMgNDAuNSA0NS4xIDQwLjEgNDQuNiA0Mi4yIDQyLjUgMzQuOCA0Mi41IDM0LjggMzguNCA0Mi4yIDM4LjQgNDQuMyA0MC40IDQ0LjcgNDAuOSA0Ny4xIDQzLjMiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTIpIiBzdHJva2Utd2lkdGg9IjAiLz4KICA8L2c+CiAgPGcgZGlzcGxheT0ibm9uZSI+CiAgICA8cG9seWdvbiBwb2ludHM9IjQ2LjggMTUuNCA0NCAxOC4zIDQxLjUgMTUuOCA0MS4xIDE1LjQgMzkgMTMuMyAzOS4xIDEzLjMgMzYuOSAxMS4yIDM5LjggOC4zIDQ2LjggMTUuNCIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtMykiIHN0cm9rZS13aWR0aD0iMCIvPgogICAgPHBvbHlnb24gcG9pbnRzPSI0NCAxOC4zIDM5LjggMjIuNSAzOS42IDIyLjIgMzcuMyAyMCAzNi45IDE5LjYgMzkuMSAxNy40IDMxLjcgMTcuNCAzMS43IDEzLjMgMzkgMTMuMyA0MS4xIDE1LjQgNDEuNSAxNS44IDQ0IDE4LjMiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTQpIiBzdHJva2Utd2lkdGg9IjAiLz4KICA8L2c+CiAgPGcgZGlzcGxheT0ibm9uZSI+CiAgICA8cG9seWdvbiBwb2ludHM9IjQ3LjcgMTYuNSA0NC44IDE5LjQgNDIuNCAxNi45IDQxLjkgMTYuNSAzOS45IDE0LjUgMzkuOSAxNC41IDM3LjcgMTIuMyA0MC42IDkuNCA0Ny43IDE2LjUiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTUpIiBzdHJva2Utd2lkdGg9IjAiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iNDQuOCAxOS40IDQwLjYgMjMuNiA0MC40IDIzLjQgMzguMiAyMS4xIDM3LjcgMjAuNyAzOS45IDE4LjUgMzIuNSAxOC41IDMyLjUgMTQuNSAzOS45IDE0LjUgNDEuOSAxNi41IDQyLjQgMTYuOSA0NC44IDE5LjQiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTYpIiBzdHJva2Utd2lkdGg9IjAiLz4KICA8L2c+CiAgPGc+CiAgICA8cGF0aCBkPSJNMzguMywxOS45Yy0uMywwLS41LS4zLS40LS41LDAtLjQsMC0uOCwwLTEuMiwwLTUuOC00LjctMTAuNi0xMC42LTEwLjZzLTgsMi42LTkuNyw2LjNjLS4xLjMtLjQuNC0uNy4zLTEuMy0uNi0yLjktLjctNC42LS4xLTIuNC44LTMuOSwzLjEtMy44LDUuNnYuNWMwLC4yLS4xLjQtLjMuNS0zLjQsMS4zLTUuOCw0LjItNS44LDcuNnM0LjUsOC40LDEwLjEsOC40aDI0LjRjNS44LDAsMTAuNi0zLjgsMTAuNi04LjQsMC00LjMtNC4xLTcuOS05LjMtOC40Wk0zOC4xLDM0LjhIMTEuM2MtMi40LDAtNC41LTEuMi01LjYtMi45aDBjLS44LTEtMS4yLTIuMi0xLjItMy42LDAtMi44LDEuOS01LjEsNC41LTUuOS41LS4xLDEuMS0uMiwxLjctLjJoLjRjLS41LS42LS44LTEuNC0uOC0yLjJ2LS4yYzAtMi4zLDItNC4yLDQuNC00LjJzMS41LjIsMi4xLjVjLjguNCwxLjQsMSwxLjgsMS43LDAtLjcuMS0xLjUuNC0yLjEsMS4xLTMuNiw0LjMtNi4yLDguMy02LjJzOC42LDMuOSw4LjYsOC42LDAsMS4xLS4yLDEuN2MtLjIuOS0uNSwxLjgtMSwyLjYuNy0uMywxLjUtLjUsMi40LS42aC45YzQuMiwwLDcuNiwyLjksNy42LDYuNSwwLDMuNi0zLjMsNi41LTcuNSw2LjVaIiBkaXNwbGF5PSJub25lIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC03KSIgc3Ryb2tlLXdpZHRoPSIwIi8+CiAgICA8cGF0aCBkPSJNNDguNywyNC41YzAsMy42LTIuOSw2LjctNi45LDcuOS0uOS4yLTEuOC0uNC0xLjgtMS40di0uMmMwLS42LjQtMSwuOS0xLjIsMi42LS44LDQuNC0yLjcsNC40LTQuOXMtMy4yLTUuMy03LjItNS4zLS44LDAtMS4yLjFoLS4zYy0uOSwwLTEuNy0uNy0xLjctMS43czAtLjQsMC0uNWgwYy4zLS45LjQtMS43LjQtMi41LDAtNC0zLjItNy4yLTcuMi03LjJzLTYuMiwyLjQtNyw1LjVoMGMtLjIuOC0uOCwxLjMtMS42LDEuM3MtLjktLjItMS4yLS41aDBjLS42LS42LTEuNS0xLTIuNS0xLTEuOSwwLTMuNSwxLjUtMy41LDMuNXMwLC42LjEuOWMuMS4yLjIuNi4yLjkuMS44LS42LDEuNS0xLjMsMS42aDBjLTIuNy40LTQuNSwyLjctNC41LDQuOXMyLjMsNC42LDUuNSw1LjJjLjcuMSwxLjEuNywxLjEsMS4zaDBjMCwxLS43LDEuNy0xLjYsMS41LTQuOC0uNi04LjUtNC4xLTguNS04LjNzMi4yLTYsNS41LTcuNGMuMSwwLC4zLS4xLjQtLjIsMC0uMS4xLS4xLjEtLjN2LS41Yy0uMi0yLjcsMS43LTUuMiw0LjQtNS45LDEuNS0uMywyLjgtLjIsNCwuMy4zLjEuNSwwLC43LS4zLDEuOS00LjMsNi42LTcuMSwxMS44LTYuMSw1LjEsMSw4LjcsNS43LDguNSwxMC44LDAsLjIsMCwuNSwwLC43LDAsLjMuMi41LjQuNSw1LjUuNyw5LjYsNC4yLDkuNiw4LjVaIiBkaXNwbGF5PSJub25lIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC04KSIgc3Ryb2tlLXdpZHRoPSIwIi8+CiAgPC9nPgogIDxwYXRoIGQ9Ik0xMC4yLDI2LjZjMC0yLjYuNC00LjksMS4zLTcsLjktMi4xLDIuMS0zLjksMy42LTUuNHMzLjMtMi43LDUuMy0zLjUsNC4yLTEuMiw2LjQtMS4yLDMuOC4zLDUuNCwxYzEuNi42LDMsMS41LDQuMSwyLjdzMiwyLjYsMi42LDQuMi45LDMuNC45LDUuMy0uMywzLjItLjgsNC40Yy0uNSwxLjMtMS4yLDIuMy0yLDMuMi0uOC44LTEuNywxLjUtMi43LDEuOS0xLC40LTIsLjYtMi45LjZzLTItLjItMi44LS43LTEuMy0xLjItMS41LTIuMWgtLjFjLS41LjctMS4yLDEuMy0yLDEuOC0uOC41LTEuNi43LTIuNC43LTEuNSwwLTIuNy0uNS0zLjUtMS41LS45LTEtMS4zLTIuMy0xLjMtNHMuMi0yLjIuNi0zLjNjLjQtMS4xLjktMiwxLjYtMi45LjctLjgsMS41LTEuNSwyLjQtMnMxLjktLjgsMy0uOCwxLjIuMSwxLjYuNGMuNS4zLjkuOCwxLjIsMS40aC4xbC41LTEuNWgzLjJsLTEuNyw4LjFjLS41LDIuMSwwLDMuMiwxLjcsMy4yczEuMS0uMiwxLjYtLjUsMS0uOCwxLjQtMS4zYy40LS42LjctMS4zLDEtMi4xLjItLjguNC0xLjcuNC0yLjdzLS4yLTIuNi0uNi0zLjhjLS40LTEuMi0xLTIuMy0xLjgtMy4yLS44LS45LTEuOS0xLjctMy4xLTIuMi0xLjMtLjUtMi44LS44LTQuNi0uOHMtMy4xLjMtNC42LDEtMi44LDEuNi00LDIuOGMtMS4yLDEuMi0yLjEsMi42LTIuOCw0LjMtLjcsMS43LTEuMSwzLjYtMS4xLDUuNnMuMywzLjQuOSw0LjhjLjYsMS40LDEuNCwyLjUsMi40LDMuNHMyLjEsMS41LDMuNCwyYzEuMy40LDIuNy43LDQuMS43czEuOSwwLDIuOS0uNGMxLS4zLDEuOS0uNiwyLjctMWwxLjIsM2MtMS4xLjYtMi4zLDEuMS0zLjUsMS4zLTEuMi4zLTIuNC40LTMuOC40cy0zLjYtLjMtNS4zLS44Yy0xLjctLjYtMy4yLTEuNC00LjUtMi42LTEuMy0xLjItMi4zLTIuNi0zLjEtNC4zLS43LTIuMi0xLTQuMi0xLTYuNlpNMjEuOSwyNi41YzAsMS42LjYsMi41LDEuOSwyLjVzLjgtLjEsMS4yLS40Yy40LS4yLjgtLjcsMS4zLTEuM2wuOS01Yy0uNC0uNy0uOS0xLjEtMS43LTEuMXMtMS4xLjItMS41LjUtLjguOC0xLjEsMS4zYy0uMy41LS41LDEuMS0uNywxLjctLjIuNy0uMywxLjMtLjMsMS44WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtOSkiIHN0cm9rZS13aWR0aD0iMCIvPgogIDxnPgogICAgPHBhdGggZD0iTTksMi41aDMuMnYyLjVoLTEuOGMtMi42LDAtNC42LDItNC42LDQuNXYzMWMwLDIuNSwyLjEsNC41LDQuNiw0LjVoMS44djIuNWgtMy4yYy0zLjcsMC02LjYtMi45LTYuNi02LjVWOWMtLjEtMy42LDIuOS02LjUsNi42LTYuNVoiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTEwKSIgc3Ryb2tlLXdpZHRoPSIwIi8+CiAgICA8cGF0aCBkPSJNNDQuMiw0MC41VjkuNWMwLTIuNS0yLTQuNS00LjYtNC41aC0xLjh2LTIuNWgzLjJjMy43LDAsNi42LDIuOSw2LjYsNi41djMyLjFjMCwzLjYtMyw2LjUtNi42LDYuNWgtMy4ydi0yLjVoMS44YzIuNiwwLDQuNi0yLjEsNC42LTQuNloiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTExKSIgc3Ryb2tlLXdpZHRoPSIwIi8+CiAgPC9nPgo8L3N2Zz4=" />
+                    </staticMappableSetting>
+                  </staticMappableSettings>
+                </staticMappableSetting>
+                <staticMappableSetting id="ff4ca36e-bb24-4f42-afac-c676d586c812" name="Remove()" type="Remove()" typeId="ff4ca36e-bb24-4f42-afac-c676d586c812" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>invokable</represents>
+                  <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWV0aG9kIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiDQoJIHk9IjBweCIgdmlld0JveD0iMCAwIDUwIDUwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MCA1MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8ZyBpZD0ibGV2ZWwtMSIgZGlzcGxheT0ibm9uZSI+DQoJPGcgZGlzcGxheT0iaW5saW5lIiBvcGFjaXR5PSIwLjc1Ij4NCgkJPHBhdGggb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOHYyNEwyNSw0Ni40TDYuMSwzNy44di0yNEwyNSwzLjVMNDMuOSwxMy44eiIvPg0KCQk8cGF0aCBmaWxsPSIjNjkzNkFBIiBkPSJNNDUuNiwxMy44djI0bC0xLDEuNkwyNS43LDQ4aC0xLjRMNS40LDM5LjRsLTEtMS42di0yNGwwLjktMS41bDAuMSwzLjFsMi40LDEuMXYyMC4zbDE1LjUsN1YyMy41bDEsMC41DQoJCQloMS40bDEtMC40djIwLjNsMTUuNC03VjE2LjVsMi40LTEuMWwwLjEtMy4xTDQ1LjYsMTMuOHoiLz4NCgk8L2c+DQoJPHBhdGggZGlzcGxheT0iaW5saW5lIiBvcGFjaXR5PSIwLjEiIGZpbGw9IiM2OTM2QUEiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgICAgIiBkPSJNNDMuOSwxMy44TDI1LDIyLjRMNi4xLDEzLjhMMjUsMy41TDQzLjksMTMuOA0KCQl6Ii8+DQoJPHBhdGggZGlzcGxheT0iaW5saW5lIiBmaWxsPSIjNjkzNkFBIiBkPSJNMjUuOCwyaC0xLjZMNS4zLDEyLjNsMC4xLDMuMUwyNC4zLDI0aDEuNGwxOC45LTguNmwwLjEtMy4xTDI1LjgsMnogTTI1LDIwLjVsLTE1LTYuOQ0KCQlsMTUtOC4ybDE1LDguMkwyNSwyMC41eiIvPg0KPC9nPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8xXzg5NTYyM2prNDUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My43MDc2IiB4Mj0iMjUiIHkyPSI0LjMwNzYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzFfODk1NjIzams0NSkiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgICAgIiBkPSJNNDQuMSwxMS45TDI1LjUsMi44Yy0wLjMtMC4xLTAuNi0wLjEtMC45LDBMNS45LDExLjkNCgljLTAuNCwwLjItMC42LDAuNS0wLjYsMC45djI0LjNjMCwwLjQsMC4yLDAuNywwLjYsMC45bDE4LjYsOS4yYzAuMSwwLjEsMC4zLDAuMSwwLjUsMC4xczAuMywwLDAuNS0wLjFMNDQuMSwzOA0KCWMwLjQtMC4yLDAuNi0wLjUsMC42LTAuOVYxMi45QzQ0LjcsMTIuNSw0NC41LDEyLjEsNDQuMSwxMS45eiBNMjUsNS45bDE0LDYuOWwtMTQsNi45bC0xNC02LjlMMjUsNS45eiBNOC40LDM1LjlWMTVsMTUuMSw3LjR2MjAuOQ0KCUwxMSwzNy4xTDguNCwzNS45eiBNMjYuNSw0My4zVjIyLjRMNDEuNiwxNXYyMC45TDM5LDM3LjFMMjYuNSw0My4zeiIvPg0KPC9zdmc+DQo=" />
+                  <staticMappableSettings>
+                    <staticMappableSetting id="a8d41024-e64b-4887-9d62-fb6315c10273" name="item" type="item" typeId="a8d41024-e64b-4887-9d62-fb6315c10273" version="2.0.0">
+                      <displayFunction>return `item: ${element.typeReference.getType()?.getDisplay() ?? "&lt;not set&gt;"}`</displayFunction>
+                      <isRequiredFunction>return true;</isRequiredFunction>
+                      <allowMultipleMappings>true</allowMultipleMappings>
+                      <isMappableFunction>return element.getParent().getIsMapped();</isMappableFunction>
+                      <isTraversable>false</isTraversable>
+                      <traversableTypes />
+                      <overrideTypeReferenceFunction>let model = element.typeReference.toModel();
+model.isCollection = false;
+return model;</overrideTypeReferenceFunction>
+                      <canBeModified>false</canBeModified>
+                      <represents>data</represents>
+                      <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjQ1IiB5MT0iMzIwLjQiIHgyPSI0NSIgeTI9IjMzMC4zIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTI4NykiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA3MGMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA5YzRmZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIiIHgxPSIzNS43IiB5MT0iMzI0LjYiIHgyPSI0NC4zIiB5Mj0iMzMzLjIiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjg3KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxMDJiNTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTYzYjc0Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMyIgeDE9IjQxLjkiIHkxPSIyOTUuMyIgeDI9IjQxLjkiIHkyPSIzMDUuMiIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0yODcpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwNzBjMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC00IiB4MT0iMzIuNSIgeTE9IjI5OS41IiB4Mj0iNDEuMSIgeTI9IjMwOC4xIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTI4NykiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMTAyYjUxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE2M2I3NCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTUiIHgxPSI0Mi43IiB5MT0iMjk2LjQiIHgyPSI0Mi43IiB5Mj0iMzA2LjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjg3KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwMDcwYzAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDljNGZmIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNiIgeDE9IjMzLjQiIHkxPSIzMDAuNiIgeDI9IjQyIiB5Mj0iMzA5LjIiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjg3KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxMDJiNTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTYzYjc0Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNyIgeDE9IjIuNSIgeTE9IjMwOS4xIiB4Mj0iNDcuNiIgeTI9IjMwOS4xIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTI4NykiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA1OTljIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwYzBmMiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTgiIHgxPSIzLjYiIHkxPSIzMDUuMyIgeDI9IjQ4LjciIHkyPSIzMDUuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0yODcpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwNTk5YyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMGMwZjIiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC05IiB4MT0iMjUiIHkxPSIzMDIuOSIgeDI9IjI1IiB5Mj0iMjczLjIiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjYzKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM3ODU0YTMiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYTk4OGJmIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTAiIHgxPSI3LjMiIHkxPSI0OSIgeDI9IjcuMyIgeTI9IjUuMiIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDUyKSBzY2FsZSgxIC0xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNzg1NGEzIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTEiIHgxPSI0Mi43IiB5MT0iNDkiIHgyPSI0Mi43IiB5Mj0iNS4yIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgNTIpIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2E5ODhiZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3ODU0YTMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnIGRpc3BsYXk9Im5vbmUiPgogICAgPHBvbHlnb24gcG9pbnRzPSI1MCA0MC40IDQ3LjEgNDMuMyA0NC43IDQwLjkgNDQuMyA0MC40IDQyLjIgMzguNCA0Mi4yIDM4LjQgNDAgMzYuMiA0Mi45IDMzLjQgNTAgNDAuNCIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQpIiBzdHJva2Utd2lkdGg9IjAiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iNDcuMSA0My4zIDQyLjkgNDcuNSA0Mi43IDQ3LjMgNDAuNSA0NS4xIDQwLjEgNDQuNiA0Mi4yIDQyLjUgMzQuOCA0Mi41IDM0LjggMzguNCA0Mi4yIDM4LjQgNDQuMyA0MC40IDQ0LjcgNDAuOSA0Ny4xIDQzLjMiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTIpIiBzdHJva2Utd2lkdGg9IjAiLz4KICA8L2c+CiAgPGcgZGlzcGxheT0ibm9uZSI+CiAgICA8cG9seWdvbiBwb2ludHM9IjQ2LjggMTUuNCA0NCAxOC4zIDQxLjUgMTUuOCA0MS4xIDE1LjQgMzkgMTMuMyAzOS4xIDEzLjMgMzYuOSAxMS4yIDM5LjggOC4zIDQ2LjggMTUuNCIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtMykiIHN0cm9rZS13aWR0aD0iMCIvPgogICAgPHBvbHlnb24gcG9pbnRzPSI0NCAxOC4zIDM5LjggMjIuNSAzOS42IDIyLjIgMzcuMyAyMCAzNi45IDE5LjYgMzkuMSAxNy40IDMxLjcgMTcuNCAzMS43IDEzLjMgMzkgMTMuMyA0MS4xIDE1LjQgNDEuNSAxNS44IDQ0IDE4LjMiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTQpIiBzdHJva2Utd2lkdGg9IjAiLz4KICA8L2c+CiAgPGcgZGlzcGxheT0ibm9uZSI+CiAgICA8cG9seWdvbiBwb2ludHM9IjQ3LjcgMTYuNSA0NC44IDE5LjQgNDIuNCAxNi45IDQxLjkgMTYuNSAzOS45IDE0LjUgMzkuOSAxNC41IDM3LjcgMTIuMyA0MC42IDkuNCA0Ny43IDE2LjUiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTUpIiBzdHJva2Utd2lkdGg9IjAiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iNDQuOCAxOS40IDQwLjYgMjMuNiA0MC40IDIzLjQgMzguMiAyMS4xIDM3LjcgMjAuNyAzOS45IDE4LjUgMzIuNSAxOC41IDMyLjUgMTQuNSAzOS45IDE0LjUgNDEuOSAxNi41IDQyLjQgMTYuOSA0NC44IDE5LjQiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTYpIiBzdHJva2Utd2lkdGg9IjAiLz4KICA8L2c+CiAgPGc+CiAgICA8cGF0aCBkPSJNMzguMywxOS45Yy0uMywwLS41LS4zLS40LS41LDAtLjQsMC0uOCwwLTEuMiwwLTUuOC00LjctMTAuNi0xMC42LTEwLjZzLTgsMi42LTkuNyw2LjNjLS4xLjMtLjQuNC0uNy4zLTEuMy0uNi0yLjktLjctNC42LS4xLTIuNC44LTMuOSwzLjEtMy44LDUuNnYuNWMwLC4yLS4xLjQtLjMuNS0zLjQsMS4zLTUuOCw0LjItNS44LDcuNnM0LjUsOC40LDEwLjEsOC40aDI0LjRjNS44LDAsMTAuNi0zLjgsMTAuNi04LjQsMC00LjMtNC4xLTcuOS05LjMtOC40Wk0zOC4xLDM0LjhIMTEuM2MtMi40LDAtNC41LTEuMi01LjYtMi45aDBjLS44LTEtMS4yLTIuMi0xLjItMy42LDAtMi44LDEuOS01LjEsNC41LTUuOS41LS4xLDEuMS0uMiwxLjctLjJoLjRjLS41LS42LS44LTEuNC0uOC0yLjJ2LS4yYzAtMi4zLDItNC4yLDQuNC00LjJzMS41LjIsMi4xLjVjLjguNCwxLjQsMSwxLjgsMS43LDAtLjcuMS0xLjUuNC0yLjEsMS4xLTMuNiw0LjMtNi4yLDguMy02LjJzOC42LDMuOSw4LjYsOC42LDAsMS4xLS4yLDEuN2MtLjIuOS0uNSwxLjgtMSwyLjYuNy0uMywxLjUtLjUsMi40LS42aC45YzQuMiwwLDcuNiwyLjksNy42LDYuNSwwLDMuNi0zLjMsNi41LTcuNSw2LjVaIiBkaXNwbGF5PSJub25lIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC03KSIgc3Ryb2tlLXdpZHRoPSIwIi8+CiAgICA8cGF0aCBkPSJNNDguNywyNC41YzAsMy42LTIuOSw2LjctNi45LDcuOS0uOS4yLTEuOC0uNC0xLjgtMS40di0uMmMwLS42LjQtMSwuOS0xLjIsMi42LS44LDQuNC0yLjcsNC40LTQuOXMtMy4yLTUuMy03LjItNS4zLS44LDAtMS4yLjFoLS4zYy0uOSwwLTEuNy0uNy0xLjctMS43czAtLjQsMC0uNWgwYy4zLS45LjQtMS43LjQtMi41LDAtNC0zLjItNy4yLTcuMi03LjJzLTYuMiwyLjQtNyw1LjVoMGMtLjIuOC0uOCwxLjMtMS42LDEuM3MtLjktLjItMS4yLS41aDBjLS42LS42LTEuNS0xLTIuNS0xLTEuOSwwLTMuNSwxLjUtMy41LDMuNXMwLC42LjEuOWMuMS4yLjIuNi4yLjkuMS44LS42LDEuNS0xLjMsMS42aDBjLTIuNy40LTQuNSwyLjctNC41LDQuOXMyLjMsNC42LDUuNSw1LjJjLjcuMSwxLjEuNywxLjEsMS4zaDBjMCwxLS43LDEuNy0xLjYsMS41LTQuOC0uNi04LjUtNC4xLTguNS04LjNzMi4yLTYsNS41LTcuNGMuMSwwLC4zLS4xLjQtLjIsMC0uMS4xLS4xLjEtLjN2LS41Yy0uMi0yLjcsMS43LTUuMiw0LjQtNS45LDEuNS0uMywyLjgtLjIsNCwuMy4zLjEuNSwwLC43LS4zLDEuOS00LjMsNi42LTcuMSwxMS44LTYuMSw1LjEsMSw4LjcsNS43LDguNSwxMC44LDAsLjIsMCwuNSwwLC43LDAsLjMuMi41LjQuNSw1LjUuNyw5LjYsNC4yLDkuNiw4LjVaIiBkaXNwbGF5PSJub25lIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC04KSIgc3Ryb2tlLXdpZHRoPSIwIi8+CiAgPC9nPgogIDxwYXRoIGQ9Ik0xMC4yLDI2LjZjMC0yLjYuNC00LjksMS4zLTcsLjktMi4xLDIuMS0zLjksMy42LTUuNHMzLjMtMi43LDUuMy0zLjUsNC4yLTEuMiw2LjQtMS4yLDMuOC4zLDUuNCwxYzEuNi42LDMsMS41LDQuMSwyLjdzMiwyLjYsMi42LDQuMi45LDMuNC45LDUuMy0uMywzLjItLjgsNC40Yy0uNSwxLjMtMS4yLDIuMy0yLDMuMi0uOC44LTEuNywxLjUtMi43LDEuOS0xLC40LTIsLjYtMi45LjZzLTItLjItMi44LS43LTEuMy0xLjItMS41LTIuMWgtLjFjLS41LjctMS4yLDEuMy0yLDEuOC0uOC41LTEuNi43LTIuNC43LTEuNSwwLTIuNy0uNS0zLjUtMS41LS45LTEtMS4zLTIuMy0xLjMtNHMuMi0yLjIuNi0zLjNjLjQtMS4xLjktMiwxLjYtMi45LjctLjgsMS41LTEuNSwyLjQtMnMxLjktLjgsMy0uOCwxLjIuMSwxLjYuNGMuNS4zLjkuOCwxLjIsMS40aC4xbC41LTEuNWgzLjJsLTEuNyw4LjFjLS41LDIuMSwwLDMuMiwxLjcsMy4yczEuMS0uMiwxLjYtLjUsMS0uOCwxLjQtMS4zYy40LS42LjctMS4zLDEtMi4xLjItLjguNC0xLjcuNC0yLjdzLS4yLTIuNi0uNi0zLjhjLS40LTEuMi0xLTIuMy0xLjgtMy4yLS44LS45LTEuOS0xLjctMy4xLTIuMi0xLjMtLjUtMi44LS44LTQuNi0uOHMtMy4xLjMtNC42LDEtMi44LDEuNi00LDIuOGMtMS4yLDEuMi0yLjEsMi42LTIuOCw0LjMtLjcsMS43LTEuMSwzLjYtMS4xLDUuNnMuMywzLjQuOSw0LjhjLjYsMS40LDEuNCwyLjUsMi40LDMuNHMyLjEsMS41LDMuNCwyYzEuMy40LDIuNy43LDQuMS43czEuOSwwLDIuOS0uNGMxLS4zLDEuOS0uNiwyLjctMWwxLjIsM2MtMS4xLjYtMi4zLDEuMS0zLjUsMS4zLTEuMi4zLTIuNC40LTMuOC40cy0zLjYtLjMtNS4zLS44Yy0xLjctLjYtMy4yLTEuNC00LjUtMi42LTEuMy0xLjItMi4zLTIuNi0zLjEtNC4zLS43LTIuMi0xLTQuMi0xLTYuNlpNMjEuOSwyNi41YzAsMS42LjYsMi41LDEuOSwyLjVzLjgtLjEsMS4yLS40Yy40LS4yLjgtLjcsMS4zLTEuM2wuOS01Yy0uNC0uNy0uOS0xLjEtMS43LTEuMXMtMS4xLjItMS41LjUtLjguOC0xLjEsMS4zYy0uMy41LS41LDEuMS0uNywxLjctLjIuNy0uMywxLjMtLjMsMS44WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtOSkiIHN0cm9rZS13aWR0aD0iMCIvPgogIDxnPgogICAgPHBhdGggZD0iTTksMi41aDMuMnYyLjVoLTEuOGMtMi42LDAtNC42LDItNC42LDQuNXYzMWMwLDIuNSwyLjEsNC41LDQuNiw0LjVoMS44djIuNWgtMy4yYy0zLjcsMC02LjYtMi45LTYuNi02LjVWOWMtLjEtMy42LDIuOS02LjUsNi42LTYuNVoiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTEwKSIgc3Ryb2tlLXdpZHRoPSIwIi8+CiAgICA8cGF0aCBkPSJNNDQuMiw0MC41VjkuNWMwLTIuNS0yLTQuNS00LjYtNC41aC0xLjh2LTIuNWgzLjJjMy43LDAsNi42LDIuOSw2LjYsNi41djMyLjFjMCwzLjYtMyw2LjUtNi42LDYuNWgtMy4ydi0yLjVoMS44YzIuNiwwLDQuNi0yLjEsNC42LTQuNloiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTExKSIgc3Ryb2tlLXdpZHRoPSIwIi8+CiAgPC9nPgo8L3N2Zz4=" />
+                    </staticMappableSetting>
+                  </staticMappableSettings>
+                </staticMappableSetting>
+              </staticMappableSettings>
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="7b6bc621-4988-4705-91f1-d9ebfbbdda3c" name="Model Definition" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+        </mapping>
+      </targetMappings>
+      <mappingTypes>
+        <mappingType type="Data Mapping" typeId="7ef3f515-1714-4ba4-8a33-084532aeb4dd">
+          <represents>data</represents>
+          <sources />
+          <sourceFilterFunction>return element.represents == 'data'</sourceFilterFunction>
+          <sourceArrowFunction>return null</sourceArrowFunction>
+          <targets />
+          <targetFilterFunction>return element.represents == 'data'</targetFilterFunction>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+        <mappingType type="Invokable Mapping" typeId="720f119b-39b3-4f11-8d96-27fa82d1f4e2">
+          <represents>invokable</represents>
+          <sources />
+          <sourceFilterFunction>return element.represents == 'invokable'</sourceFilterFunction>
+          <sourceArrowFunction>return null</sourceArrowFunction>
+          <targets />
+          <targetFilterFunction>return element.represents == 'invokable'</targetFilterFunction>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+      </mappingTypes>
+    </mappingSetting>
     <mappingSetting type="Service Call Response Mapping" typeId="6f998e3e-6e1f-483f-b8fd-59c6632add77">
       <title>Service Call Response Mapping</title>
       <sourceRootElementFunction>return hostElement.id;
@@ -1762,9 +2033,23 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
           <represents>invokable</represents>
           <sources />
           <sourceFilterFunction>return element.represents == 'invokable'</sourceFilterFunction>
+          <sourceArrowFunction>return null</sourceArrowFunction>
+          <targets />
+          <targetFilterFunction>return element.represents == 'data'</targetFilterFunction>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+        <mappingType type="Event Mapping" typeId="95ce3c3e-ddf4-440b-a9b2-6b152a5fc1b8">
+          <represents>invokable</represents>
+          <sources />
+          <sourceFilterFunction>return element.represents == 'invokable'</sourceFilterFunction>
           <sourceArrowFunction>return `M ${x} ${y} l 10 5 l 0 -10 z`</sourceArrowFunction>
           <targets />
+          <targetFilterFunction>return element.represents == 'event'</targetFilterFunction>
           <targetArrowFunction>return null</targetArrowFunction>
+          <syncSourceChildTypes>
+            <type id="00208d20-469d-41cb-8501-768fd5eb796b" name="Parameter" />
+          </syncSourceChildTypes>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
       </mappingTypes>
@@ -1789,7 +2074,7 @@ return element.hasStereotype(bindableId);</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
-          <represents>invokable</represents>
+          <represents>event</represents>
         </mappableElement>
         <mappableElement id="00879a06-d797-4b82-83aa-b78fb4f77624" name="Layout" type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>

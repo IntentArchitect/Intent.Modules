@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="dc813928-0ce1-4f66-ae31-b5e5d506b4a3" version="3.1.0">
+  <name>[Invokable]</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="727577aa-3e07-4b41-be7d-7359bb1e48c8">Element Settings</type>
+    <type id="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">Element Extension</type>
+    <type id="c4c61fdc-464d-41d2-8e0e-5a734d588302">Association Destination End Settings</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction>[Invokable]</displayFunction>
+  <displayAsAnnotation>true</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>5c4628ec-679e-4f3d-afda-137c978deae0</parentFolderId>
+  <order>0</order>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <properties />
+</stereotypeDefinition>

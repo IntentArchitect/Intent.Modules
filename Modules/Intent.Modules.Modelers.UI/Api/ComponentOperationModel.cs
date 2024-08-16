@@ -48,6 +48,11 @@ namespace Intent.Modelers.UI.Api
             .Select(x => new ParameterModel(x))
             .ToList();
 
+        public IList<InvocationModel> Invocations => _element.ChildElements
+            .GetElementsOfType(InvocationModel.SpecializationTypeId)
+            .Select(x => new InvocationModel(x))
+            .ToList();
+
         public override string ToString()
         {
             return _element.ToString();

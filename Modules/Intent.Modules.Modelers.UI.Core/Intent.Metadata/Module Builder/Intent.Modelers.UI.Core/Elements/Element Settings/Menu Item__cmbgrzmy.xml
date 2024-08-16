@@ -65,6 +65,30 @@
       <stereotypes />
       <metadata />
       <childElements>
+        <childElement id="189579e9-692d-434d-8de6-078215feadbd" type="Accepted Type" typeId="71c8431f-9f39-45fd-b61d-f75f7ba3eea6">
+          <name>[type]</name>
+          <display>[type]: Menu Item</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="d1e71e37-81d2-4b5e-803e-298a64779ebb">
+            <typeId>adbf2fa8-6833-4c24-960a-31d8a41fd1ed</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>33b0b104-644c-4242-9bb6-b269326000ee</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="2cb9ce2b-eb56-4502-af73-cda0359df5fd" type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
           <name>NewAcceptedStereotypes</name>
           <display>[type with stereotype]: [Component]</display>
