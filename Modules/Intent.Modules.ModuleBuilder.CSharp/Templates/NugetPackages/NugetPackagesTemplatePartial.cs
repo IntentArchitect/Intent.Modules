@@ -115,6 +115,10 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                 moduleVersion: IntentModule.IntentCommonCSharp.Version));
         }
 
+        public override bool CanRunTemplate()
+        {
+            return base.CanRunTemplate() && Model.Any();
+        }
 
         [IntentManaged(Mode.Fully)]
         public CSharpFile CSharpFile { get; }
