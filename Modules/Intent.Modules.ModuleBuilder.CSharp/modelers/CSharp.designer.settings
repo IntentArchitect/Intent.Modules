@@ -169,7 +169,6 @@ function updateNugetPackageElements(elements, latestVersions) {
 function synchronizeModel(packageElement, nugetPackage) {
     const packageVersionSettings = "7af88c37-ce54-49fc-b577-bde869c23462";
     const dict = new Map();
-    let toRemove = [];
     nugetPackage.versions.forEach(v =&gt; {
         dict.set(v.targetFramework, v.version);
     });
@@ -186,27 +185,26 @@ function synchronizeModel(packageElement, nugetPackage) {
         }
         else {
             if (dict.has(targetFramework)) {
+                //The version no is the same, no work to do
                 if (dict.get(targetFramework) == e.getName()) {
                     dict.delete(targetFramework);
                 }
-            }
-            else {
-                toRemove.push(e);
             }
         }
     });
     dict.forEach((value, key) =&gt; {
         let existingElement = packageElement.getChildren().find(c =&gt; c.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value == key);
         if (existingElement) {
+            //Update Version No
             existingElement.setName(value);
         }
         else {
+            //Create new frmework element
             let element = createElement("Package Version", value, packageElement.id);
             let versionSettings = element.getStereotype(packageVersionSettings);
             versionSettings.getProperty("Minimum Target Framework").setValue(key);
         }
     });
-    toRemove.forEach(e =&gt; e.delete());
 }
 function isPackageLocked(element) {
     var _a;
@@ -301,7 +299,6 @@ function updateNugetPackageElements(elements, latestVersions) {
 function synchronizeModel(packageElement, nugetPackage) {
     const packageVersionSettings = "7af88c37-ce54-49fc-b577-bde869c23462";
     const dict = new Map();
-    let toRemove = [];
     nugetPackage.versions.forEach(v =&gt; {
         dict.set(v.targetFramework, v.version);
     });
@@ -318,27 +315,26 @@ function synchronizeModel(packageElement, nugetPackage) {
         }
         else {
             if (dict.has(targetFramework)) {
+                //The version no is the same, no work to do
                 if (dict.get(targetFramework) == e.getName()) {
                     dict.delete(targetFramework);
                 }
-            }
-            else {
-                toRemove.push(e);
             }
         }
     });
     dict.forEach((value, key) =&gt; {
         let existingElement = packageElement.getChildren().find(c =&gt; c.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value == key);
         if (existingElement) {
+            //Update Version No
             existingElement.setName(value);
         }
         else {
+            //Create new frmework element
             let element = createElement("Package Version", value, packageElement.id);
             let versionSettings = element.getStereotype(packageVersionSettings);
             versionSettings.getProperty("Minimum Target Framework").setValue(key);
         }
     });
-    toRemove.forEach(e =&gt; e.delete());
 }
 function isPackageLocked(element) {
     var _a;

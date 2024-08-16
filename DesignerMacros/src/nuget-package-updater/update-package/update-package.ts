@@ -1,7 +1,6 @@
 /// <reference path="../common/nuget-package-updater.ts" />
 
 async function updateNuGetPackage(element: MacroApi.Context.IElementApi): Promise<void> {
-
     if (isPackageLocked(element)) return;
     let result = await getLatestNugetPackages([element.getName()]);
     updateNugetPackageElements([element], result);

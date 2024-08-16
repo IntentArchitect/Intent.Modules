@@ -41,7 +41,6 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                     {
                         @class.AddField("string", $"{GetPackageConstant(package)}", f => f.Private().Constant($"\"{package.Name}\""));
                     }
-
                     @class.AddConstructor(ctor =>
                     {
                         ctor.Static();
@@ -53,7 +52,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                                 var majorFrameworkVersion = GetFrameworkMajorVerion(version);
                                 versionInfo.AppendLine();
                                 versionInfo.Append($"                        ( >= {majorFrameworkVersion}, 0) => new PackageVersion(\"{version.Name}\"");
-                                if (version.GetPackageVersionSettings()?.Locked() == true)
+                                if (version.GetPackageVersionSettings()?.Locked() == true || package.GetPackageSettings()?.Locked() == true)
                                 {
                                     versionInfo.Append(", locked: true");
                                 }

@@ -60,7 +60,6 @@ function synchronizeModel(packageElement : MacroApi.Context.IElementApi, nugetPa
     const packageVersionSettings = "7af88c37-ce54-49fc-b577-bde869c23462";
 
     const dict = new Map<string, string>();
-    let toRemove:MacroApi.Context.IElementApi[] = [];
     nugetPackage.versions.forEach(v => {
         dict.set(v.targetFramework, v.version);
     });
@@ -79,30 +78,29 @@ function synchronizeModel(packageElement : MacroApi.Context.IElementApi, nugetPa
             }
         } else {
             if (dict.has(targetFramework) ){
+                //The version no is the same, no work to do
                 if (dict.get(targetFramework) == e.getName()){
                     dict.delete(targetFramework);
                 }
-            } else {
-                toRemove.push(e);
-            }
+            } 
         }
     });
 
     dict.forEach((value, key) => {
         let existingElement = packageElement.getChildren().find(c => c.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value == key);
         if (existingElement){
+            //Update Version No
             existingElement.setName(value);
         }else{
+            //Create new frmework element
             let element = createElement("Package Version", value, packageElement.id);
             let versionSettings = element.getStereotype(packageVersionSettings);
             versionSettings.getProperty("Minimum Target Framework").setValue(key);
         }
     });
-
-    toRemove.forEach(e => e.delete());
 }
 
-function isPackageLocked(element: MacroApi.Context.IElementApi) : boolean{
+function isPackageLocked(element: MacroApi.Context.IElementApi) : boolean {
     let packageSettings = "265221a5-779c-46c9-a367-8b07b435803b";
     return  element.getStereotype(packageSettings).getProperty("Locked")?.getValue() == true;
 }
