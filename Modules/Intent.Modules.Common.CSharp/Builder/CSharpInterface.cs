@@ -319,7 +319,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
 
     IList<ICSharpInterfaceProperty> ICSharpInterface.Properties => _wrapper.Properties;
 
-    IList<ICSharpInterfaceMethod> ICSharpInterface.Methods => _wrapper.Methods;
+    IList<ICSharpInterfaceMethodDeclaration> ICSharpInterface.Methods => _wrapper.Methods;
 
     IList<ICSharpInterfaceGenericParameter> ICSharpInterface.GenericParameters => _wrapper.GenericParameters;
 
@@ -354,12 +354,12 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
         return _wrapper.InsertProperty(index, type, name, configure);
     }
 
-    ICSharpInterface ICSharpInterface.AddMethod<TModel>(TModel model, Action<ICSharpInterfaceMethod> configure)
+    ICSharpInterface ICSharpInterface.AddMethod<TModel>(TModel model, Action<ICSharpInterfaceMethodDeclaration> configure)
     {
         return _wrapper.AddMethod(model, configure);
     }
 
-    ICSharpInterface ICSharpInterface.AddMethod(string returnType, string name, Action<ICSharpInterfaceMethod> configure)
+    ICSharpInterface ICSharpInterface.AddMethod(string returnType, string name, Action<ICSharpInterfaceMethodDeclaration> configure)
     {
         return _wrapper.AddMethod(returnType, name, configure);
     }
@@ -385,7 +385,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
         return _wrapper.AddGenericTypeConstraint(genericParameterName, configure);
     }
 
-    ICSharpInterface ICSharpInterface.InsertMethod(int index, string returnType, string name, Action<ICSharpInterfaceMethod> configure)
+    ICSharpInterface ICSharpInterface.InsertMethod(int index, string returnType, string name, Action<ICSharpInterfaceMethodDeclaration> configure)
     {
         return _wrapper.InsertMethod(index, returnType, name, configure);
     }

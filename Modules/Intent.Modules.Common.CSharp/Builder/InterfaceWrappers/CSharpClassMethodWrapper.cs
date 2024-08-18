@@ -1,100 +1,91 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 
 internal class CSharpClassMethodWrapper(CSharpClassMethod wrapped) :
-    CSharpMemberWrapper<CSharpClassMethod, ICSharpClassMethod>(wrapped), ICSharpClassMethod
+    CSharpMemberWrapper<CSharpClassMethod, ICSharpClassMethodDeclaration>(wrapped), ICSharpClassMethodDeclaration
 {
-    IList<ICSharpGenericParameter> ICSharpClassMethod.GenericParameters => new WrappedList<CSharpGenericParameter, ICSharpGenericParameter>(wrapped.GenericParameters);
-
-    IList<ICSharpGenericTypeConstraint> ICSharpClassMethod.GenericTypeConstraints => new WrappedList<CSharpGenericTypeConstraint, ICSharpGenericTypeConstraint>(wrapped.GenericTypeConstraints);
-
-    string ICSharpClassMethod.ExplicitImplementationFor => wrapped.ExplicitImplementationFor;
-
-    ICSharpClass ICSharpClassMethod.Class => wrapped.Class;
-
-    ICSharpClassMethod ICSharpClassMethod.IsExplicitImplementationFor(string @interface) => wrapped.IsExplicitImplementationFor(@interface);
-
-    ICSharpClassMethod ICSharpClassMethod.AddParameter(string type, string name, Action<ICSharpMethodParameter> configure) => wrapped.AddParameter(type, name, configure);
-
-    ICSharpClassMethod ICSharpClassMethod.AddParameter<TModel>(string type, TModel model, Action<ICSharpMethodParameter> configure) => wrapped.AddParameter(type, model, configure);
-
-    ICSharpClassMethod ICSharpClassMethod.AddParameter<TModel>(TModel model, Action<ICSharpMethodParameter> configure) => wrapped.AddParameter(model, configure);
-
-    ICSharpClassMethod ICSharpClassMethod.AddParameters<TModel>(IEnumerable<TModel> models, Action<ICSharpMethodParameter> configure) => wrapped.AddParameters(models, configure);
-
-    ICSharpClassMethod ICSharpClassMethod.InsertParameter(int index, string type, string name, Action<ICSharpMethodParameter> configure) => wrapped.InsertParameter(index, type, name, configure);
-
-    ICSharpClassMethod ICSharpClassMethod.AddOptionalCancellationTokenParameter() => wrapped.AddOptionalCancellationTokenParameter();
-
-    ICSharpClassMethod ICSharpClassMethod.AddOptionalCancellationTokenParameter(string parameterName) => wrapped.AddOptionalCancellationTokenParameter(parameterName);
-
-    ICSharpClassMethod ICSharpClassMethod.AddGenericParameter(string typeName) => wrapped.AddGenericParameter(typeName);
-
-    ICSharpClassMethod ICSharpClassMethod.AddGenericParameter(string typeName, out ICSharpGenericParameter param)
+    ICSharpClass ICSharpClassMethodDeclaration.Class => wrapped.Class;
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddGenericParameter(string typeName, out ICSharpGenericParameter param)
     {
         var result = wrapped.AddGenericParameter(typeName, out var concrete);
         param = concrete;
         return result;
     }
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddGenericParameter(string typeName) => wrapped.AddGenericParameter(typeName);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddGenericTypeConstraint(string genericParameterName, Action<ICSharpGenericTypeConstraint>? configure) => wrapped.AddGenericTypeConstraint(genericParameterName, configure);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddOptionalCancellationTokenParameter(string? parameterName) => wrapped.AddOptionalCancellationTokenParameter(parameterName);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddParameter(string type, string name, Action<ICSharpMethodParameter>? configure) => wrapped.AddParameter(type, name, configure);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddParameter<TModel>(string type, TModel model, Action<ICSharpMethodParameter>? configure) => wrapped.AddParameter(type, model, configure);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddParameter<TModel>(TModel model, Action<ICSharpMethodParameter>? configure) => wrapped.AddParameter(model, configure);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddParameters<TModel>(IEnumerable<TModel> models, Action<ICSharpMethodParameter>? configure) => wrapped.AddParameters(models, configure);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddStatement(string statement, Action<ICSharpStatement>? configure) => wrapped.AddStatement(statement, configure);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddStatement<TCSharpStatement>(TCSharpStatement statement, Action<TCSharpStatement>? configure) => wrapped.AddStatement(statement, configure);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddStatements(IEnumerable<string> statements, Action<IEnumerable<ICSharpStatement>>? configure) => wrapped.AddStatements(statements, configure);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddStatements(string statements, Action<IEnumerable<ICSharpStatement>>? configure) => wrapped.AddStatements(statements, configure);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.AddStatements<TCSharpStatement>(IEnumerable<TCSharpStatement> statements, Action<IEnumerable<TCSharpStatement>>? configure)
+    {
+        return wrapped.AddStatements(statements.Cast<CSharpStatement>(), items => configure?.Invoke(items.Cast<TCSharpStatement>()));
+    }
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.Async(bool asValueTask) => wrapped.Async(asValueTask);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.FindAndReplaceStatement(Func<ICSharpStatement, bool> matchFunc, ICSharpStatement replaceWith) => wrapped.FindAndReplaceStatement(matchFunc, (CSharpStatement)replaceWith);
+    IList<ICSharpGenericParameter> ICSharpMethod<ICSharpClassMethodDeclaration>.GenericParameters => new WrappedList<CSharpGenericParameter, ICSharpGenericParameter>(wrapped.GenericParameters);
+    IList<ICSharpGenericTypeConstraint> ICSharpMethod<ICSharpClassMethodDeclaration>.GenericTypeConstraints => new WrappedList<CSharpGenericTypeConstraint, ICSharpGenericTypeConstraint>(wrapped.GenericTypeConstraints);
+    bool ICSharpMethod<ICSharpClassMethodDeclaration>.HasExpressionBody => wrapped.HasExpressionBody;
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.InsertParameter(int index, string type, string name, Action<ICSharpMethodParameter>? configure) => wrapped.InsertParameter(index, type, name, configure);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.InsertStatement(int index, ICSharpStatement statement, Action<ICSharpStatement>? configure) => wrapped.InsertStatement(index, (CSharpStatement)statement, configure);
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.InsertStatements(int index, IReadOnlyCollection<ICSharpStatement> statements, Action<IEnumerable<ICSharpStatement>>? configure) => wrapped.InsertStatements(index, statements.Cast<CSharpStatement>().ToArray(), configure);
+    bool ICSharpMethod<ICSharpClassMethodDeclaration>.IsAsync => ((ICSharpMethodDeclaration)wrapped).IsAsync;
+    bool ICSharpMethod<ICSharpClassMethodDeclaration>.IsStatic => wrapped.IsStatic;
+    void ICSharpMethod<ICSharpClassMethodDeclaration>.RemoveStatement(ICSharpStatement statement) => wrapped.RemoveStatement((CSharpStatement)statement);
+    ICSharpExpression ICSharpMethod<ICSharpClassMethodDeclaration>.ReturnType => ((ICSharpMethodDeclaration)wrapped).ReturnType;
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.Static() => wrapped.Static();
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.Sync() => wrapped.Sync();
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.WithExpressionBody(string statement, Action<ICSharpStatement>? configure)
+    {
+        return wrapped.WithExpressionBody<CSharpStatement>(new CSharpStatement(statement), configure);
+    }
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.WithExpressionBody<TCSharpStatement>(TCSharpStatement statement, Action<TCSharpStatement>? configure)
+    {
+        if (statement is not CSharpStatement concreteStatement)
+        {
+            throw new Exception($"{nameof(statement)} is not {nameof(CSharpStatement)}");
+        }
 
-    ICSharpClassMethod ICSharpClassMethod.AddGenericTypeConstraint(string genericParameterName, Action<ICSharpGenericTypeConstraint> configure) => wrapped.AddGenericTypeConstraint(genericParameterName, configure);
+        return wrapped.WithExpressionBody(concreteStatement, tCSharpStatement =>
+        {
+            if (tCSharpStatement is not TCSharpStatement concreteCSharpStatement)
+            {
+                throw new Exception($"{nameof(tCSharpStatement)} is not {nameof(CSharpStatement)}");
+            }
 
-    ICSharpClassMethod ICSharpClassMethod.AddStatement(string statement, Action<ICSharpStatement> configure) => wrapped.AddStatement(statement, configure);
+            configure?.Invoke(concreteCSharpStatement);
+        });
+    }
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.WithReturnType(ICSharpType returnType)
+    {
+        if (returnType is not CSharpType cSharpType)
+        {
+            throw new Exception($"{nameof(returnType)} is not {nameof(CSharpType)}");
+        }
 
-    ICSharpClassMethod ICSharpClassMethod.AddStatement(ICSharpStatement statement, Action<ICSharpStatement> configure) => wrapped.AddStatement((CSharpStatement)statement, configure);
-
-    ICSharpClassMethod ICSharpClassMethod.InsertStatement(int index, ICSharpStatement statement, Action<ICSharpStatement> configure) => wrapped.InsertStatement(index, (CSharpStatement)statement, configure);
-
-    ICSharpClassMethod ICSharpClassMethod.InsertStatements(int index, IReadOnlyCollection<ICSharpStatement> statements, Action<IEnumerable<ICSharpStatement>> configure) => wrapped.InsertStatements(index, statements.Cast<CSharpStatement>().ToArray(), configure);
-
-    ICSharpClassMethod ICSharpClassMethod.AddStatements(string statements, Action<IEnumerable<ICSharpStatement>> configure) => wrapped.AddStatements(statements, configure);
-
-    ICSharpClassMethod ICSharpClassMethod.AddStatements(IEnumerable<string> statements, Action<IEnumerable<ICSharpStatement>> configure) => wrapped.AddStatements(statements, configure);
-
-    ICSharpClassMethod ICSharpClassMethod.AddStatements(IEnumerable<ICSharpStatement> statements, Action<IEnumerable<ICSharpStatement>> configure) => wrapped.AddStatements(statements.Cast<CSharpStatement>(), configure);
-
-    ICSharpClassMethod ICSharpClassMethod.FindAndReplaceStatement(Func<ICSharpStatement, bool> matchFunc, ICSharpStatement replaceWith) => wrapped.FindAndReplaceStatement(matchFunc, (CSharpStatement)replaceWith);
-
-    ICSharpClassMethod ICSharpClassMethod.Protected() => wrapped.Protected();
-
-    ICSharpClassMethod ICSharpClassMethod.Private() => wrapped.Private();
-
-    ICSharpClassMethod ICSharpClassMethod.WithReturnType(string returnType) => wrapped.WithReturnType(returnType);
-
-    ICSharpClassMethod ICSharpClassMethod.WithoutAccessModifier() => wrapped.WithoutAccessModifier();
-
-    ICSharpClassMethod ICSharpClassMethod.Override() => wrapped.Override();
-
-    ICSharpClassMethod ICSharpClassMethod.New() => wrapped.New();
-
-    ICSharpClassMethod ICSharpClassMethod.Virtual() => wrapped.Virtual();
-
-    ICSharpClassMethod ICSharpClassMethod.Abstract() => wrapped.Abstract();
-
-    ICSharpClassMethod ICSharpClassMethod.Static() => wrapped.Static();
-
-    ICSharpClassMethod ICSharpClassMethod.Sync() => wrapped.Sync();
-
-    ICSharpClassMethod ICSharpClassMethod.Async() => wrapped.Async();
-
-    ICSharpClassMethod ICSharpClassMethod.WithExpressionBody(ICSharpStatement statement) => wrapped.WithExpressionBody((CSharpStatement)statement);
-
-    void ICSharpClassMethod.RemoveStatement(ICSharpStatement statement) => wrapped.RemoveStatement((CSharpStatement)statement);
-
-    IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => ((IHasICSharpParameters)wrapped).Parameters;
-
-    string IHasCSharpName.Name => ((IHasCSharpName)wrapped).Name;
-
+        return wrapped.WithReturnType(cSharpType);
+    }
+    ICSharpClassMethodDeclaration ICSharpMethod<ICSharpClassMethodDeclaration>.WithReturnType(string returnType) => wrapped.WithReturnType(returnType);
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Abstract() => wrapped.Abstract();
+    string ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.ExplicitImplementationFor => wrapped.ExplicitImplementationFor;
+    bool ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.IsAbstract => wrapped.IsAbstract;
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.IsExplicitImplementationFor(string @interface) => wrapped.IsExplicitImplementationFor(@interface);
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.New() => wrapped.New();
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Override() => wrapped.Override();
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Private() => wrapped.Private();
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Protected() => wrapped.Protected();
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Virtual() => wrapped.Virtual();
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.WithoutAccessModifier() => wrapped.WithoutAccessModifier();
+    string IHasCSharpName.Name => wrapped.Name;
     IList<ICSharpStatement> IHasCSharpStatementsActual.Statements => new WrappedList<CSharpStatement, ICSharpStatement>(wrapped.Statements);
-
-    bool ICSharpClassMethod.IsAbstract => wrapped.IsAbstract;
-
-    bool ICSharpClassMethod.HasExpressionBody => wrapped.HasExpressionBody;
-
-    bool ICSharpMethodDeclarationActual.IsAsync => ((ICSharpMethodDeclaration)wrapped).IsAsync;
-
-    ICSharpExpression ICSharpMethodDeclarationActual.ReturnType => ((ICSharpMethodDeclaration)wrapped).ReturnType;
+    IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => wrapped.Parameters;
 }

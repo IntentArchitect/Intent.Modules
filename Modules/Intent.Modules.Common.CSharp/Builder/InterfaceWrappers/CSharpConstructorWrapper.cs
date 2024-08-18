@@ -15,9 +15,9 @@ internal class CSharpConstructorWrapper(CSharpConstructor wrapped) :
 
     ICSharpConstructorCall ICSharpConstructor.ConstructorCall => wrapped.ConstructorCall;
 
-    IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => ((IHasICSharpParameters)wrapped).Parameters;
+    IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => wrapped.Parameters;
 
-    string IHasCSharpName.Name => ((IHasCSharpName)wrapped).Name;
+    string IHasCSharpName.Name => wrapped.Name;
 
     bool ICSharpConstructor.IsPrimaryConstructor => wrapped.IsPrimaryConstructor;
 

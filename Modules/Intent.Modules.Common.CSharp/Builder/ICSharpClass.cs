@@ -1,4 +1,5 @@
 #nullable enable
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
@@ -14,7 +15,7 @@ public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpM
     IList<ICSharpField> Fields { get; }
     IList<ICSharpConstructor> Constructors { get; }
     IList<ICSharpProperty> Properties { get; }
-    IList<ICSharpClassMethod> Methods { get; }
+    IList<ICSharpClassMethodDeclaration> Methods { get; }
     IList<ICSharpGenericParameter> GenericParameters { get; }
     IList<ICSharpClass> NestedClasses { get; }
     IList<ICSharpInterface> NestedInterfaces { get; }
@@ -58,11 +59,7 @@ public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpM
     /// <summary>
     /// Resolves the method name from the <paramref name="model"/>. Registers this method as representative of the <paramref name="model"/>.
     /// </summary>
-    /// <typeparam name="TModel"></typeparam>
-    /// <param name="model"></param>
-    /// <param name="configure"></param>
-    /// <returns></returns>
-    ICSharpClass AddMethod<TModel>(string returnType, TModel model, Action<ICSharpClassMethod>? configure = null)
+    ICSharpClass AddMethod<TModel>(string returnType, TModel model, Action<ICSharpClassMethodDeclaration>? configure = null)
         where TModel : IMetadataModel, IHasName;
 
     /// <summary>
@@ -73,7 +70,7 @@ public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpM
     /// <param name="model"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    ICSharpClass AddMethod<TModel>(TModel model, Action<ICSharpClassMethod>? configure = null)
+    ICSharpClass AddMethod<TModel>(TModel model, Action<ICSharpClassMethodDeclaration>? configure = null)
         where TModel : IMetadataModel, IHasName;
 
     ICSharpClass AddCodeBlock(string codeLine);
@@ -82,11 +79,11 @@ public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpM
     ICSharpClass AddGenericTypeConstraint(string genericParameterName, Action<ICSharpGenericTypeConstraint> configure);
     ICSharpClass AddNestedClass(string name, Action<ICSharpClass>? configure = null);
     ICSharpClass AddNestedInterface(string name, Action<ICSharpInterface>? configure = null);
-    ICSharpClass InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethod>? configure = null);
+    new ICSharpClass InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethodDeclaration>? configure = null);
     ICSharpClass WithFieldsSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines);
     ICSharpClass WithPropertiesSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines);
-    ICSharpClassMethod? FindMethod(string name);
-    ICSharpClassMethod? FindMethod(Func<ICSharpClassMethod, bool> matchFunc);
+    ICSharpClassMethodDeclaration? FindMethod(string name);
+    ICSharpClassMethodDeclaration? FindMethod(Func<ICSharpClassMethodDeclaration, bool> matchFunc);
     ICSharpClass Internal();
     ICSharpClass InternalProtected();
     ICSharpClass Protected();
@@ -100,5 +97,5 @@ public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpM
     IEnumerable<ICSharpProperty> GetAllProperties();
     string ToString(string indentation);
     ICSharpClass AddMetadata<T>(string key, T value);
-    ICSharpClass RepresentsModel(IMetadataModel model);
+    new ICSharpClass RepresentsModel(IMetadataModel model);
 }

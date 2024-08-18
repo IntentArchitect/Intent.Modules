@@ -254,7 +254,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethod> configure) => InsertMethod(index, returnType, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethodDeclaration> configure) => InsertMethod(index, returnType, name, configure);
     public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         var method = new CSharpClassMethod(returnType, name, this);
@@ -271,7 +271,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return this;
     }
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<ICSharpClassMethod>? configure) => AddMethod(returnType, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<ICSharpClassMethodDeclaration>? configure) => AddMethod(returnType, name, configure);
     public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
@@ -652,7 +652,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
 
     IList<ICSharpProperty> ICSharpClass.Properties => _wrapper.Properties;
 
-    IList<ICSharpClassMethod> ICSharpClass.Methods => _wrapper.Methods;
+    IList<ICSharpClassMethodDeclaration> ICSharpClass.Methods => _wrapper.Methods;
 
     IList<ICSharpGenericParameter> ICSharpClass.GenericParameters => _wrapper.GenericParameters;
 
@@ -738,12 +738,12 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return _wrapper.AddPrimaryConstructor(configure);
     }
 
-    ICSharpClass ICSharpClass.AddMethod<TModel>(string returnType, TModel model, Action<ICSharpClassMethod>? configure)
+    ICSharpClass ICSharpClass.AddMethod<TModel>(string returnType, TModel model, Action<ICSharpClassMethodDeclaration>? configure)
     {
         return _wrapper.AddMethod(returnType, model, configure);
     }
 
-    ICSharpClass ICSharpClass.AddMethod<TModel>(TModel model, Action<ICSharpClassMethod>? configure)
+    ICSharpClass ICSharpClass.AddMethod<TModel>(TModel model, Action<ICSharpClassMethodDeclaration>? configure)
     {
         return _wrapper.AddMethod(model, configure);
     }
@@ -778,7 +778,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return _wrapper.AddNestedInterface(name, configure);
     }
 
-    ICSharpClass ICSharpClass.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethod>? configure)
+    ICSharpClass ICSharpClass.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethodDeclaration>? configure)
     {
         return _wrapper.InsertMethod(index, returnType, name, configure);
     }
@@ -793,12 +793,12 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return _wrapper.WithPropertiesSeparated(separator);
     }
 
-    ICSharpClassMethod? ICSharpClass.FindMethod(string name)
+    ICSharpClassMethodDeclaration? ICSharpClass.FindMethod(string name)
     {
         return _wrapper.FindMethod(name);
     }
 
-    ICSharpClassMethod? ICSharpClass.FindMethod(Func<ICSharpClassMethod, bool> matchFunc)
+    ICSharpClassMethodDeclaration? ICSharpClass.FindMethod(Func<ICSharpClassMethodDeclaration, bool> matchFunc)
     {
         return _wrapper.FindMethod(matchFunc);
     }

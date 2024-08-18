@@ -11,7 +11,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 /// <summary>
 /// Abstract representation of various C# Types like Arrays, Generics, Tuple, Named Identifiers, etc.
 /// </summary>
-public abstract class CSharpType
+public abstract class CSharpType : ICSharpType
 {
     internal const string TaskShortTypeName = "Task";
     internal const string TaskFullTypeName = "System.Threading.Tasks.Task";
@@ -111,7 +111,7 @@ public abstract class CSharpType
         }
         return null;
     }
-    
+
     /// <summary>
     /// If the current type is a <see cref="System.Threading.Tasks.Task&lt;T&gt;"/>, it will extract the generic parameter type.
     /// </summary>
@@ -123,4 +123,13 @@ public abstract class CSharpType
         }
         return null;
     }
+
+    #region ICSharpType implementation
+
+    ICSharpType ICSharpType.WrapInTask(ICSharpTemplate template) => WrapInTask(template);
+    ICSharpType ICSharpType.WrapInValueTask(ICSharpTemplate template) => WrapInValueTask(template);
+    ICSharpType? ICSharpType.GetTaskGenericType() => GetTaskGenericType();
+    ICSharpType? ICSharpType.GetValueTaskGenericType() => GetValueTaskGenericType();
+
+    #endregion
 }

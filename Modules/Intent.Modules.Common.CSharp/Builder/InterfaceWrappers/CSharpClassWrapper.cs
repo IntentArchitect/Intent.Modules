@@ -42,7 +42,7 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
 
     IList<ICSharpProperty> ICSharpClass.Properties => new WrappedList<CSharpProperty, ICSharpProperty>(wrapped.Properties);
 
-    IList<ICSharpClassMethod> ICSharpClass.Methods => new WrappedList<CSharpClassMethod, ICSharpClassMethod>(wrapped.Methods);
+    IList<ICSharpClassMethodDeclaration> ICSharpClass.Methods => new WrappedList<CSharpClassMethod, ICSharpClassMethodDeclaration>(wrapped.Methods);
 
     IList<ICSharpGenericParameter> ICSharpClass.GenericParameters => new WrappedList<CSharpGenericParameter, ICSharpGenericParameter>(wrapped.GenericParameters);
 
@@ -104,9 +104,9 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
 
     ICSharpClass ICSharpClass.ImplementsInterfaces(IEnumerable<string> types) => wrapped.ImplementsInterfaces(types);
 
-    ICSharpClass ICSharpClass.AddMethod<TModel>(string returnType, TModel model, Action<ICSharpClassMethod>? configure) => wrapped.AddMethod(returnType, model, configure);
+    ICSharpClass ICSharpClass.AddMethod<TModel>(string returnType, TModel model, Action<ICSharpClassMethodDeclaration>? configure) => wrapped.AddMethod(returnType, model, configure);
 
-    ICSharpClass ICSharpClass.AddMethod<TModel>(TModel model, Action<ICSharpClassMethod>? configure) => wrapped.AddMethod(model, configure);
+    ICSharpClass ICSharpClass.AddMethod<TModel>(TModel model, Action<ICSharpClassMethodDeclaration>? configure) => wrapped.AddMethod(model, configure);
 
     ICSharpClass ICSharpClass.AddCodeBlock(string codeLine) => wrapped.AddCodeBlock(codeLine);
 
@@ -125,15 +125,15 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
 
     ICSharpClass ICSharpClass.AddNestedInterface(string name, Action<ICSharpInterface>? configure) => wrapped.AddNestedInterface(name, configure);
 
-    ICSharpClass ICSharpClass.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethod>? configure) => wrapped.InsertMethod(index, returnType, name, configure);
+    ICSharpClass ICSharpClass.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethodDeclaration>? configure) => wrapped.InsertMethod(index, returnType, name, configure);
 
     ICSharpClass ICSharpClass.WithFieldsSeparated(CSharpCodeSeparatorType separator) => wrapped.WithFieldsSeparated(separator);
 
     ICSharpClass ICSharpClass.WithPropertiesSeparated(CSharpCodeSeparatorType separator) => wrapped.WithPropertiesSeparated(separator);
 
-    ICSharpClassMethod? ICSharpClass.FindMethod(string name) => wrapped.FindMethod(name);
+    ICSharpClassMethodDeclaration? ICSharpClass.FindMethod(string name) => wrapped.FindMethod(name);
 
-    ICSharpClassMethod? ICSharpClass.FindMethod(Func<ICSharpClassMethod, bool> matchFunc) => wrapped.FindMethod(matchFunc);
+    ICSharpClassMethodDeclaration? ICSharpClass.FindMethod(Func<ICSharpClassMethodDeclaration, bool> matchFunc) => wrapped.FindMethod(matchFunc);
 
     ICSharpClass ICSharpClass.Internal() => wrapped.Internal();
 
@@ -173,19 +173,19 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
 
     ICSharpClass ICSharpClass.AddPrimaryConstructor(Action<ICSharpConstructor>? configure) => wrapped.AddPrimaryConstructor(configure);
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<ICSharpClass> configure) => ((IBuildsCSharpMembers)wrapped).AddClass(name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<ICSharpClass>? configure) => ((IBuildsCSharpMembers)wrapped).AddClass(name, configure);
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<ICSharpField> configure) => ((IBuildsCSharpMembers)wrapped).AddField(type, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<ICSharpField>? configure) => ((IBuildsCSharpMembers)wrapped).AddField(type, name, configure);
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<ICSharpClassMethod> configure) => ((IBuildsCSharpMembers)wrapped).AddMethod(returnType, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<ICSharpClassMethodDeclaration>? configure) => ((IBuildsCSharpMembers)wrapped).AddMethod(returnType, name, configure);
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<ICSharpProperty> configure) => ((IBuildsCSharpMembers)wrapped).AddProperty(type, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<ICSharpProperty>? configure) => ((IBuildsCSharpMembers)wrapped).AddProperty(type, name, configure);
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.InsertField(int index, string type, string name, Action<ICSharpField> configure) => ((IBuildsCSharpMembers)wrapped).InsertField(index, type, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.InsertField(int index, string type, string name, Action<ICSharpField>? configure) => ((IBuildsCSharpMembers)wrapped).InsertField(index, type, name, configure);
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethod> configure) => ((IBuildsCSharpMembers)wrapped).InsertMethod(index, returnType, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethodDeclaration>? configure) => ((IBuildsCSharpMembers)wrapped).InsertMethod(index, returnType, name, configure);
 
-    IBuildsCSharpMembers IBuildsCSharpMembers.InsertProperty(int index, string type, string name, Action<ICSharpProperty> configure) => ((IBuildsCSharpMembers)wrapped).InsertProperty(index, type, name, configure);
+    IBuildsCSharpMembers IBuildsCSharpMembers.InsertProperty(int index, string type, string name, Action<ICSharpProperty>? configure) => ((IBuildsCSharpMembers)wrapped).InsertProperty(index, type, name, configure);
 
     ICSharpTemplate IBuildsCSharpMembers.Template => wrapped.File.Template;
 
@@ -193,5 +193,5 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
 
     int IBuildsCSharpMembers.IndexOf(ICodeBlock codeBlock) => ((IBuildsCSharpMembers)wrapped).IndexOf(codeBlock);
 
-    string IHasCSharpName.Name => ((IHasCSharpName)wrapped).Name;
+    string IHasCSharpName.Name => wrapped.Name;
 }

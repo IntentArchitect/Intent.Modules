@@ -35,7 +35,7 @@ internal class CSharpInterfaceWrapper(CSharpInterface wrapped) :
 
     IList<ICSharpInterfaceProperty> ICSharpInterface.Properties => new WrappedList<CSharpInterfaceProperty, ICSharpInterfaceProperty>(wrapped.Properties);
 
-    IList<ICSharpInterfaceMethod> ICSharpInterface.Methods => new WrappedList<CSharpInterfaceMethod, ICSharpInterfaceMethod>(wrapped.Methods);
+    IList<ICSharpInterfaceMethodDeclaration> ICSharpInterface.Methods => new WrappedList<CSharpInterfaceMethod, ICSharpInterfaceMethodDeclaration>(wrapped.Methods);
 
     IList<ICSharpInterfaceGenericParameter> ICSharpInterface.GenericParameters => new WrappedList<CSharpInterfaceGenericParameter, ICSharpInterfaceGenericParameter>(wrapped.GenericParameters);
 
@@ -55,9 +55,9 @@ internal class CSharpInterfaceWrapper(CSharpInterface wrapped) :
 
     ICSharpInterface ICSharpInterface.InsertProperty(int index, string type, string name, Action<ICSharpInterfaceProperty> configure) => wrapped.InsertProperty(index, type, name, configure);
 
-    ICSharpInterface ICSharpInterface.AddMethod<TModel>(TModel model, Action<ICSharpInterfaceMethod> configure) => wrapped.AddMethod(model, configure);
+    ICSharpInterface ICSharpInterface.AddMethod<TModel>(TModel model, Action<ICSharpInterfaceMethodDeclaration> configure) => wrapped.AddMethod(model, configure);
 
-    ICSharpInterface ICSharpInterface.AddMethod(string returnType, string name, Action<ICSharpInterfaceMethod> configure) => wrapped.AddMethod(returnType, name, configure);
+    ICSharpInterface ICSharpInterface.AddMethod(string returnType, string name, Action<ICSharpInterfaceMethodDeclaration> configure) => wrapped.AddMethod(returnType, name, configure);
 
     ICSharpInterface ICSharpInterface.AddCodeBlock(string codeLine) => wrapped.AddCodeBlock(codeLine);
 
@@ -72,7 +72,7 @@ internal class CSharpInterfaceWrapper(CSharpInterface wrapped) :
 
     ICSharpInterface ICSharpInterface.AddGenericTypeConstraint(string genericParameterName, Action<ICSharpGenericTypeConstraint> configure) => wrapped.AddGenericTypeConstraint(genericParameterName, configure);
 
-    ICSharpInterface ICSharpInterface.InsertMethod(int index, string returnType, string name, Action<ICSharpInterfaceMethod> configure) => wrapped.InsertMethod(index, returnType, name, configure);
+    ICSharpInterface ICSharpInterface.InsertMethod(int index, string returnType, string name, Action<ICSharpInterfaceMethodDeclaration> configure) => wrapped.InsertMethod(index, returnType, name, configure);
 
     ICSharpInterface ICSharpInterface.WithFieldsSeparated(CSharpCodeSeparatorType separator) => wrapped.WithFieldsSeparated(separator);
 

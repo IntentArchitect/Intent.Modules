@@ -2,6 +2,7 @@
   "solution": {
     "path": "Intent.Modules.sln",
     "projects": [
+      "Intent.Modules.Common.CSharp.Tests\\Intent.Modules.Common.CSharp.Tests.csproj",
       "Intent.Modules.Common.CSharp\\Intent.Modules.Common.CSharp.csproj",
       "Intent.Modules.Common.Types\\Intent.Modules.Common.Types.csproj",
       "Intent.Modules.Common\\Intent.Modules.Common.csproj",

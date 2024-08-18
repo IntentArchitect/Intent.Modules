@@ -20,8 +20,8 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
     public List<CSharpStatement> Statements { get; } = new();
     public string Name => Class.Name;
     public bool IsPrimaryConstructor { get; private set; }
-    IList<CSharpStatement> IHasCSharpStatements.Statements => this.Statements;
-    IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
+    IList<CSharpStatement> IHasCSharpStatements.Statements => Statements;
+    IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => Parameters;
 
     public CSharpConstructor(CSharpClass @class) : this(@class, false)
     {
