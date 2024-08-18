@@ -71,12 +71,12 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="b805b297-16d6-4f4f-afcd-b9bda57df477" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
+        <childElement id="b431fd6f-4079-455b-80db-250fae30bd23" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
           <name>Map Execution</name>
           <display>Map Execution: Operation Execution Mapping</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="c902d3a1-e771-4dcb-9aa9-9ced592ec9d6">
+          <typeReference id="0ffd7b4a-1e7d-4268-b836-6eaa46d997ad">
             <typeId>d5d1dd6a-15f4-4332-b531-3b74e1d97fab</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
