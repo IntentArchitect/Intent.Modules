@@ -3,7 +3,7 @@
   <name>[visual]</name>
   <display>[visual]: Enum</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <order>2</order>
   <genericTypes />
   <typeReference id="47b4ac03-6176-4b2d-86fa-317b60251cd5">

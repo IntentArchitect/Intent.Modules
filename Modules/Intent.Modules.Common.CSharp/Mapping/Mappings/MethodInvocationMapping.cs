@@ -33,9 +33,9 @@ public class MethodInvocationMapping : CSharpMappingBase
     {
 		var invocation = new CSharpInvocationStatement(GetTargetPathExpression());
 
-		var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
+		var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpTemplate;
 		// Determine if this model is a method on the class:
-		if (TryGetMethodDeclaration( typeTemplate, out var method))
+		if (TryGetMethodDeclaration(typeTemplate, out var method))
         {
 			foreach (var parameter in method.Parameters)
 			{
@@ -80,19 +80,31 @@ public class MethodInvocationMapping : CSharpMappingBase
         yield return GetSourceStatement(false);
     }
 
-	private bool TryGetMethodDeclaration(ICSharpFileBuilderTemplate typeTemplate, out ICSharpMethodDeclaration method)
+	private bool TryGetMethodDeclaration(ICSharpTemplate typeTemplate, out ICSharpMethodDeclaration method)
 	{
-		if (typeTemplate?.CSharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is ICSharpMethodDeclaration classMethod)
+		if (typeTemplate?.RootCodeContext?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is ICSharpMethodDeclaration member)
 		{
-			method = classMethod;
+			method = member;
 			return true;
 		}
-		if (typeTemplate?.CSharpFile.Interfaces.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var ireference) == true && ireference is ICSharpMethodDeclaration interfaceMethod)
-		{
-			method = interfaceMethod;
-			return true;
-		}
-		method = null;
+
+		// For backward compatibility and safety reasons (otherwise the above should be sufficient)
+		// TODO: Test taking this and running it against all the tests:
+        if (typeTemplate is ICSharpFileBuilderTemplate fileBuilderTemplate)
+        {
+            if (fileBuilderTemplate?.CSharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out reference) == true && reference is ICSharpMethodDeclaration classMethod)
+            {
+                method = classMethod;
+                return true;
+            }
+            if (fileBuilderTemplate?.CSharpFile.Interfaces.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out reference) == true && reference is ICSharpMethodDeclaration interfaceMethod)
+            {
+                method = interfaceMethod;
+                return true;
+            }
+        }
+
+        method = null;
 		return false;
 	}
 

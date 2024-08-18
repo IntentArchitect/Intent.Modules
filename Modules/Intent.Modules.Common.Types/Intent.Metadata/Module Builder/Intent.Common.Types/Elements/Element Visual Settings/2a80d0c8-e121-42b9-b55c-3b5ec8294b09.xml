@@ -3,7 +3,7 @@
   <name>NewElementVisualSettings</name>
   <display>[visual]: Enum-Literal</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <order>3</order>
   <genericTypes />
   <typeReference id="9e8e399c-248b-442c-a400-c2535dfe87f1">

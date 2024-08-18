@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class InvocationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    public class ReturnModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Invocation";
-        public const string SpecializationTypeId = "18f87cd6-d8d8-4518-8931-58653d537467";
+        public const string SpecializationType = "Return";
+        public const string SpecializationTypeId = "415ffab7-9865-4200-89a0-b592d24919dd";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public InvocationModel(IElement element, string requiredType = SpecializationType)
+        public ReturnModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -35,8 +35,6 @@ namespace Intent.Modelers.UI.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public ITypeReference TypeReference => _element.TypeReference;
-
         public IElement InternalElement => _element;
 
         public override string ToString()
@@ -44,7 +42,7 @@ namespace Intent.Modelers.UI.Api
             return _element.ToString();
         }
 
-        public bool Equals(InvocationModel other)
+        public bool Equals(ReturnModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -54,7 +52,7 @@ namespace Intent.Modelers.UI.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((InvocationModel)obj);
+            return Equals((ReturnModel)obj);
         }
 
         public override int GetHashCode()
@@ -64,17 +62,17 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class InvocationModelExtensions
+    public static class ReturnModelExtensions
     {
 
-        public static bool IsInvocationModel(this ICanBeReferencedType type)
+        public static bool IsReturnModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == InvocationModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == ReturnModel.SpecializationTypeId;
         }
 
-        public static InvocationModel AsInvocationModel(this ICanBeReferencedType type)
+        public static ReturnModel AsReturnModel(this ICanBeReferencedType type)
         {
-            return type.IsInvocationModel() ? new InvocationModel((IElement)type) : null;
+            return type.IsReturnModel() ? new ReturnModel((IElement)type) : null;
         }
     }
 }

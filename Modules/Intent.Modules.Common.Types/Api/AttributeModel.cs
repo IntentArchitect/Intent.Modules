@@ -8,17 +8,17 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modelers.UI.Api
+namespace Intent.Modules.Common.Types.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class InvocationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    public class AttributeModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
-        public const string SpecializationType = "Invocation";
-        public const string SpecializationTypeId = "18f87cd6-d8d8-4518-8931-58653d537467";
+        public const string SpecializationType = "Attribute";
+        public const string SpecializationTypeId = "0090fb93-483e-41af-a11d-5ad2dc796adf";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public InvocationModel(IElement element, string requiredType = SpecializationType)
+        public AttributeModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -35,7 +35,10 @@ namespace Intent.Modelers.UI.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public string Value => _element.Value;
+
         public ITypeReference TypeReference => _element.TypeReference;
+
 
         public IElement InternalElement => _element;
 
@@ -44,7 +47,7 @@ namespace Intent.Modelers.UI.Api
             return _element.ToString();
         }
 
-        public bool Equals(InvocationModel other)
+        public bool Equals(AttributeModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -54,7 +57,7 @@ namespace Intent.Modelers.UI.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((InvocationModel)obj);
+            return Equals((AttributeModel)obj);
         }
 
         public override int GetHashCode()
@@ -64,17 +67,17 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class InvocationModelExtensions
+    public static class AttributeModelExtensions
     {
 
-        public static bool IsInvocationModel(this ICanBeReferencedType type)
+        public static bool IsAttributeModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == InvocationModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == AttributeModel.SpecializationTypeId;
         }
 
-        public static InvocationModel AsInvocationModel(this ICanBeReferencedType type)
+        public static AttributeModel AsAttributeModel(this ICanBeReferencedType type)
         {
-            return type.IsInvocationModel() ? new InvocationModel((IElement)type) : null;
+            return type.IsAttributeModel() ? new AttributeModel((IElement)type) : null;
         }
     }
 }

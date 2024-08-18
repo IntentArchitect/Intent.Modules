@@ -509,6 +509,7 @@ return validateOperation(lookup(id));
           <typeOrder>
             <type order="0" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" />
             <type order="1" type="[Invokable]" typeId="dc813928-0ce1-4f66-ae31-b5e5d506b4a3" />
+            <type order="2" type="Return" typeId="415ffab7-9865-4200-89a0-b592d24919dd" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -527,6 +528,22 @@ return validateOperation(lookup(id));
               <specializationTypeId>18f87cd6-d8d8-4518-8931-58653d537467</specializationTypeId>
               <defaultName>Invocation</defaultName>
               <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <text>Add Variable</text>
+              <icon type="UrlImagePath" source="data:image/png;base64,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" />
+              <specializationType>Variable Declaration</specializationType>
+              <specializationTypeId>7df54881-7542-4e8e-b9bc-b0019fcc4982</specializationTypeId>
+              <defaultName>NewVariableDeclaration</defaultName>
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <text>Add Return</text>
+              <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA+BJREFUeF7t219IU1EcB/DvuXdOIxe1AqGi6M8WCEl410QK2YtP+RYzhKDQuUEkQRJBpIn03kNPkx4KIULyuYcehJCwdpdGYA9FvYTUqz7ocvPUnXd0k233bj9nW/vtded77jkff/fPzrkK8IckIEhpDoMBiUXAgAxIFCDGuQIZkChAjHMFMiBRgBjnCmRAogAxzhXIgEQBYpwrkAGJAsQ4V6AVUEoRvP7Wu77a0JjP1a00ZN48Ov3D+h0DWjRO9c96mtWmaQh0FyjMpeRE4BADFtBhQOL1jAEZkChAjHMFMiBRgBjnCvzfAQPRZCwjxMf5ePsr4lwrEq/aCtSi+hFI3IRAvxDyoh4/+7IiAsROqxIwEEt0SymeAjgAYIUBS/grB2KJPilFHIDHjDGgUz8T7wGAFkuGAe0ATw59atybWr4hIe9aKi8XY8BigB2RDy1pJfUOwMEC7RiwEGBgIBGUqngBwFsEmQHz4QQiiZBUEAeE3+YUZ0ArUGt4yr3be6J3Q26MOMAzogxoBdQGdV0I+OWfxxS7ewwDGkKdA6+9P9WGRUBYH1Hs8LgCDYHg4II/o6QnIRF0IralTf1WYGhsxrX8bU+XEHIEAqEy8Oq7ArXBxBMI0QnAVyZe/QJqUd14OG4DoBLw6g/wXP+sZ634PinRs+biDveFx6SiLSX9kBiFQF/NTbNyA3YGGIgmbwHokZBdlRtLTfZsD6hF9ccAegHsqskpVnbQ9oDtkbk2objeV3YcNdu7PaAxNXNZatFmZaVmFQgDdwZoHGBzeQqTDhcJCGOqqahzwCyisUylihFIGDcT1zZMVQJYA5Dehr7+RRffkxOBv5bsbN8PPBOb9zVgvWNDKpPbMOJVAONCyOQ29LXjXWSgprbuadsCGqMMh6fUr/uPtckNYfwioXyqejGhnIk5Asx1bO7xTufZLHJ67PoGzF4XN/d6RwXgk6X/NmZAA1GLLpyHTPdA4LbT0jPbMWAOLHR1pmnF7bkEwPjl4vTDgFYp4+byZd/xyyUgMmC+UtOi+jAERiGz78AUuzExYKFzVYvqYQBXAFwocj4zYLGLXXYB1tV07/f+73CBdgxod7cwby53AIzkacuAdoDG9ybi/TyVyIBOAHNttJg+BJk9nY/yc2Apcpa22bcYFPcz8x/4uALLcTR39+IQ6Knmd6TLmVtJiwnlHCCX6YjMtWQUdRwCz6v1Lf1y5rdjgMbgWq/NNP9UD69/fuhLlTPYaszsKGA1AlDHxIBEQQZkQKIAMc4VyIBEAWKcK5ABiQLEOFcgAxIFiHGuQAYkChDjXIEMSBQgxrkCiYC/AHdfzGBdrgn/AAAAAElFTkSuQmCC" />
+              <specializationType>Return</specializationType>
+              <specializationTypeId>415ffab7-9865-4200-89a0-b592d24919dd</specializationTypeId>
+              <defaultName>return</defaultName>
+              <allowMultiple>false</allowMultiple>
             </option>
             <option type="association">
               <text>Call Operation Action</text>
@@ -647,8 +664,94 @@ return validateOperationParameter(lookup(id));
               </implements>
               <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGlnaHRuaW5nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDUwIDUwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MCA1MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfTGlnaHRuaW5nX3gzRV9fMDAwMDAwODQ1MjI1NTg5MjgwNzY1MzU4NjAwMDAwMDgzODEzODUyMTY3NjM5MzEyNzNfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI1LjIiIHkxPSI0Ny45NjMiIHgyPSIyNS4yIiB5Mj0iMi42MTQ5IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTApIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRjRFMDI0Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6I0Y1QUQyNCIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIGlkPSJfeDNDX0xpZ2h0bmluZ194M0VfIiBmaWxsPSJ1cmwoI194M0NfTGlnaHRuaW5nX3gzRV9fMDAwMDAwODQ1MjI1NTg5MjgwNzY1MzU4NjAwMDAwMDgzODEzODUyMTY3NjM5MzEyNzNfKSIgZD0iTTI5LDE2LjcNCglsNy4zLTE0LjVIMTcuN0w1LjIsMjdIMjBMOS43LDQ3LjNoMy41bDMyLTMwLjVMMjksMTYuN0wyOSwxNi43eiBNMjUuNiwyMy42SDEwLjhsOS0xNy45aDEwLjlsLTcuMywxNC41aDEzLjJsLTE4LDE3LjFMMjUuNiwyMy42eiINCgkvPg0KPC9zdmc+DQo=" />
               <saveAsOwnFile>false</saveAsOwnFile>
+              <displayFunction>if (this.getAdvancedMapping() &amp;&amp; this.getAdvancedMapping().getMappedEnds().length &gt; 0) {
+    let target = this.getAdvancedMapping().getMappedEnds()[0]?.getTargetElement();
+
+    return [
+        { text: "[call] ", cssClass: "keyword" },
+        { text: target.getPath(e =&gt; e.specialization == "Component").slice(1).map(x =&gt; x.getName()).join(".") ?? this.getAdvancedMapping().getMappedEnds().length }
+    ];
+}
+return this.getName();</displayFunction>
               <allowRename>true</allowRename>
               <nameMustBeUnique>true</nameMustBeUnique>
+              <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>true</allowSorting>
+              <sortChildren>by-type-then-by-name</sortChildren>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>true</allowTypeReference>
+              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <typeReferenceSetting>
+                <isRequired>false</isRequired>
+                <targetTypes>
+                  <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
+                  <type type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
+                  <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+                  <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+                </targetTypes>
+                <allowIsNavigable>true</allowIsNavigable>
+                <allowIsNullable>true</allowIsNullable>
+                <allowIsCollection>true</allowIsCollection>
+                <isNavigableDefault>true</isNavigableDefault>
+                <isNullableDefault>false</isNullableDefault>
+                <isCollectionDefault>false</isCollectionDefault>
+              </typeReferenceSetting>
+              <creationOptions />
+              <scriptOptions />
+              <mappingOptions>
+                <option mappingType="Operation Execution Mapping" mappingTypeId="d5d1dd6a-15f4-4332-b531-3b74e1d97fab">
+                  <text>Map Execution</text>
+                  <shortcut>ctrl + space</shortcut>
+                </option>
+              </mappingOptions>
+              <mappingSettings />
+              <childElementSettings />
+            </childElementSetting>
+            <childElementSetting type="Variable Declaration" typeId="7df54881-7542-4e8e-b9bc-b0019fcc4982">
+              <implements>
+                <trait id="dc813928-0ce1-4f66-ae31-b5e5d506b4a3" name="[Invokable]" />
+              </implements>
+              <icon type="UrlImagePath" source="data:image/png;base64,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" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <allowRename>true</allowRename>
+              <nameMustBeUnique>true</nameMustBeUnique>
+              <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>true</allowSorting>
+              <sortChildren>by-type-then-by-name</sortChildren>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>true</allowTypeReference>
+              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <typeReferenceSetting>
+                <isRequired>true</isRequired>
+                <targetTypes>
+                  <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+                  <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
+                  <type type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
+                  <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+                </targetTypes>
+                <allowIsNavigable>true</allowIsNavigable>
+                <allowIsNullable>true</allowIsNullable>
+                <allowIsCollection>true</allowIsCollection>
+                <isNavigableDefault>true</isNavigableDefault>
+                <isNullableDefault>false</isNullableDefault>
+                <isCollectionDefault>false</isCollectionDefault>
+              </typeReferenceSetting>
+              <mappingSettings />
+              <childElementSettings />
+            </childElementSetting>
+            <childElementSetting type="Return" typeId="415ffab7-9865-4200-89a0-b592d24919dd">
+              <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA+BJREFUeF7t219IU1EcB/DvuXdOIxe1AqGi6M8WCEl410QK2YtP+RYzhKDQuUEkQRJBpIn03kNPkx4KIULyuYcehJCwdpdGYA9FvYTUqz7ocvPUnXd0k233bj9nW/vtded77jkff/fPzrkK8IckIEhpDoMBiUXAgAxIFCDGuQIZkChAjHMFMiBRgBjnCmRAogAxzhXIgEQBYpwrkAGJAsQ4V6AVUEoRvP7Wu77a0JjP1a00ZN48Ov3D+h0DWjRO9c96mtWmaQh0FyjMpeRE4BADFtBhQOL1jAEZkChAjHMFMiBRgBjnCvzfAQPRZCwjxMf5ePsr4lwrEq/aCtSi+hFI3IRAvxDyoh4/+7IiAsROqxIwEEt0SymeAjgAYIUBS/grB2KJPilFHIDHjDGgUz8T7wGAFkuGAe0ATw59atybWr4hIe9aKi8XY8BigB2RDy1pJfUOwMEC7RiwEGBgIBGUqngBwFsEmQHz4QQiiZBUEAeE3+YUZ0ArUGt4yr3be6J3Q26MOMAzogxoBdQGdV0I+OWfxxS7ewwDGkKdA6+9P9WGRUBYH1Hs8LgCDYHg4II/o6QnIRF0IralTf1WYGhsxrX8bU+XEHIEAqEy8Oq7ArXBxBMI0QnAVyZe/QJqUd14OG4DoBLw6g/wXP+sZ634PinRs+biDveFx6SiLSX9kBiFQF/NTbNyA3YGGIgmbwHokZBdlRtLTfZsD6hF9ccAegHsqskpVnbQ9oDtkbk2objeV3YcNdu7PaAxNXNZatFmZaVmFQgDdwZoHGBzeQqTDhcJCGOqqahzwCyisUylihFIGDcT1zZMVQJYA5Dehr7+RRffkxOBv5bsbN8PPBOb9zVgvWNDKpPbMOJVAONCyOQ29LXjXWSgprbuadsCGqMMh6fUr/uPtckNYfwioXyqejGhnIk5Asx1bO7xTufZLHJ67PoGzF4XN/d6RwXgk6X/NmZAA1GLLpyHTPdA4LbT0jPbMWAOLHR1pmnF7bkEwPjl4vTDgFYp4+byZd/xyyUgMmC+UtOi+jAERiGz78AUuzExYKFzVYvqYQBXAFwocj4zYLGLXXYB1tV07/f+73CBdgxod7cwby53AIzkacuAdoDG9ybi/TyVyIBOAHNttJg+BJk9nY/yc2Apcpa22bcYFPcz8x/4uALLcTR39+IQ6Knmd6TLmVtJiwnlHCCX6YjMtWQUdRwCz6v1Lf1y5rdjgMbgWq/NNP9UD69/fuhLlTPYaszsKGA1AlDHxIBEQQZkQKIAMc4VyIBEAWKcK5ABiQLEOFcgAxIFiHGuQAYkChDjXIEMSBQgxrkCiYC/AHdfzGBdrgn/AAAAAElFTkSuQmCC" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <allowRename>false</allowRename>
+              <nameMustBeUnique>false</nameMustBeUnique>
               <allowAbstract>false</allowAbstract>
               <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
@@ -659,14 +762,6 @@ return validateOperationParameter(lookup(id));
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
-              <creationOptions />
-              <scriptOptions />
-              <mappingOptions>
-                <option mappingType="Operation Execution Mapping" mappingTypeId="d5d1dd6a-15f4-4332-b531-3b74e1d97fab">
-                  <text>Map Execution</text>
-                  <shortcut>ctrl + space</shortcut>
-                </option>
-              </mappingOptions>
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1252,6 +1347,14 @@ if (selected.type == "core") {
           <defaultName>NewDiagram</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
+        <option type="element">
+          <text>New Type-Definition</text>
+          <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />
+          <specializationType>Type-Definition</specializationType>
+          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
+          <defaultName>NewTypeDefinition</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
       </creationOptions>
       <scriptOptions />
       <mappingOptions />
@@ -1260,6 +1363,7 @@ if (selected.type == "core") {
         <type type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef" />
         <type type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
         <type type="Diagram" typeId="4912c89a-77eb-497e-a3f4-7408b6a20886" />
+        <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -1566,6 +1670,17 @@ return display;
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
+        <mappingType type="Response Mapping" typeId="685b8c31-4345-43c8-848e-0b98f39e86b4">
+          <represents>invokable</represents>
+          <sources />
+          <sourceFilterFunction>return element.represents == 'data'</sourceFilterFunction>
+          <sourceArrowFunction>return `M ${x} ${y} l 10 5 l 0 -10 z`</sourceArrowFunction>
+          <targets />
+          <targetFilterFunction>return element.represents == 'event'</targetFilterFunction>
+          <targetArrowFunction>return null</targetArrowFunction>
+          <lineColor>orange</lineColor>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
       </mappingTypes>
     </mappingSetting>
     <mappingSetting type="Navigation Mapping" typeId="b4777251-a390-48f0-877a-102069e88a22">
@@ -1603,7 +1718,8 @@ return display;
         <mapping id="32aa9cd3-8f35-4587-b97c-cf0ca60e4e9e" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="2.0.0">
           <isRequiredFunction>return true;</isRequiredFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return element.getStereotype("f324c4ea-bac2-450d-b1b1-cc7f09ca3472"); // [Route Parameter]</isMappableFunction>
+          <isMappableFunction>return element.getStereotype("f324c4ea-bac2-450d-b1b1-cc7f09ca3472") // [Route Parameter]
+|| element.getStereotype("12ba7bea-ceb9-44d4-8819-835fe36af7b3"); // [Bindable]</isMappableFunction>
           <isTraversable>true</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
@@ -1652,12 +1768,63 @@ return display;
                   <represents>data</represents>
                 </childSetting>
                 <childSetting id="4b4d2e82-9a84-4229-8a82-323fc44b3094" name="Invocation" type="Invocation" typeId="18f87cd6-d8d8-4518-8931-58653d537467" version="2.0.0">
-                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <allowMultipleMappings>false</allowMultipleMappings>
                   <isMappableFunction>return element.isHostSource();</isMappableFunction>
                   <isTraversable>false</isTraversable>
                   <traversableTypes />
                   <canBeModified>false</canBeModified>
                   <represents>invokable</represents>
+                  <staticMappableSettings>
+                    <staticMappableSetting id="d7d8824d-63ae-4f95-9923-21bad3583749" name="response" type="response" typeId="d7d8824d-63ae-4f95-9923-21bad3583749" version="2.0.0">
+                      <displayFunction>return [
+    { text: `response`, cssClass: "function" },
+    { text: ": " },
+    { text: `${element.typeReference?.display}`, cssClass: "typeref", targetId: element.typeReference?.typeId }
+];</displayFunction>
+                      <allowMultipleMappings>true</allowMultipleMappings>
+                      <isMappableFunction>return element.getParent().getIsMapped();</isMappableFunction>
+                      <isTraversable>false</isTraversable>
+                      <traversableTypes />
+                      <overrideTypeReferenceFunction>return element.typeReference?.toModel();</overrideTypeReferenceFunction>
+                      <canBeModified>false</canBeModified>
+                      <represents>data</represents>
+                      <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iRW52ZWxvcGUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI1LjAwNSIgeTE9IjQ0LjA2MiIgeDI9IjI0Ljk5NTIiIHkyPSI4Ljc4OTciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0xKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzYyQzZFQiIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBvbHlnb24gZmlsbD0idXJsKCNTVkdJRF8xXykiIHBvaW50cz0iMzQuMSwzNC4xIDMxLjksMzIgMzEuOSwyNi42IDE1LDI2LjYgMTUsMjEuMyA2LjIsMzAgMTUsMzguOCAxNSwzMy43IDI1LDMzLjcgMjUsMzYuOCANCgkJMTguMiwzNi44IDE4LjIsNDIgMTUuOSw0NC4yIDE1LDQzLjMgNCwzMi4zIDEuOCwzMCA0LDI3LjggMTUuOSwxNS45IDE4LjIsMTguMSAxOC4yLDIzLjUgMzUuMSwyMy41IDM1LjEsMjguNyA0My44LDIwIDM1LjEsMTEuMyANCgkJMzUuMSwxNi40IDI1LDE2LjQgMjUsMTMuMyAzMS45LDEzLjMgMzEuOSw4IDM0LjEsNS44IDM1LjEsNi44IDQ2LDE3LjcgNDguMiwyMCAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
+                    </staticMappableSetting>
+                  </staticMappableSettings>
+                </childSetting>
+                <childSetting id="9223eaeb-83f3-41ea-9167-0ea91300603a" name="Variable Declaration" type="Variable Declaration" typeId="7df54881-7542-4e8e-b9bc-b0019fcc4982" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+                <childSetting id="b7a4314d-44af-4fd3-a28e-18d6cdb00b9f" name="Call Service Action" type="Call Service Operation Action Target End" typeId="475f0810-2b4a-40da-8eb8-697cb62f7dbe" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                  <staticMappableSettings>
+                    <staticMappableSetting id="ca9a49fb-c10d-4798-94c1-ad5987139935" name="response" type="response" typeId="ca9a49fb-c10d-4798-94c1-ad5987139935" version="2.0.0">
+                      <displayFunction>return [
+    { text: `response`, targetId: element.id },
+    { text: ": " },
+    { text: `${element.typeReference.display}`, cssClass: "typeref", targetId: element.typeReference.typeId }
+];</displayFunction>
+                      <filterFunction>return element.typeReference.getTypeId() != null</filterFunction>
+                      <allowMultipleMappings>true</allowMultipleMappings>
+                      <isMappableFunction>return true;</isMappableFunction>
+                      <isTraversable>true</isTraversable>
+                      <traversableTypes />
+                      <overrideTypeReferenceFunction>return element.typeReference.getType().typeReference.toModel();</overrideTypeReferenceFunction>
+                      <canBeModified>false</canBeModified>
+                      <represents>data</represents>
+                      <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iRW52ZWxvcGUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI1LjAwNSIgeTE9IjQ0LjA2MiIgeDI9IjI0Ljk5NTIiIHkyPSI4Ljc4OTciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0xKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzYyQzZFQiIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBvbHlnb24gZmlsbD0idXJsKCNTVkdJRF8xXykiIHBvaW50cz0iMzQuMSwzNC4xIDMxLjksMzIgMzEuOSwyNi42IDE1LDI2LjYgMTUsMjEuMyA2LjIsMzAgMTUsMzguOCAxNSwzMy43IDI1LDMzLjcgMjUsMzYuOCANCgkJMTguMiwzNi44IDE4LjIsNDIgMTUuOSw0NC4yIDE1LDQzLjMgNCwzMi4zIDEuOCwzMCA0LDI3LjggMTUuOSwxNS45IDE4LjIsMTguMSAxOC4yLDIzLjUgMzUuMSwyMy41IDM1LjEsMjguNyA0My44LDIwIDM1LjEsMTEuMyANCgkJMzUuMSwxNi40IDI1LDE2LjQgMjUsMTMuMyAzMS45LDEzLjMgMzEuOSw4IDM0LjEsNS44IDM1LjEsNi44IDQ2LDE3LjcgNDguMiwyMCAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
+                    </staticMappableSetting>
+                  </staticMappableSettings>
                 </childSetting>
               </childSettings>
             </childSetting>
@@ -1720,6 +1887,24 @@ return display;
                 <childSetting id="90357a73-2f2c-4998-9e14-d72be64b7df5" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return element.getParent().isHostSource();</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+                <childSetting id="a695fbb3-d0d7-4f55-a2a4-56ba7585af87" name="Variable Declaration" type="Variable Declaration" typeId="7df54881-7542-4e8e-b9bc-b0019fcc4982" version="2.0.0">
+                  <filterFunction>return element.getParent().getChildren().some(x =&gt; isHostSource(x));</filterFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+                <childSetting id="38576357-b3b7-4b58-8713-19c50e1a3e38" name="Return" type="Return" typeId="415ffab7-9865-4200-89a0-b592d24919dd" version="2.0.0">
+                  <filterFunction>return element.getParent().getChildren().some(x =&gt; isHostSource(x));</filterFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>false</isTraversable>
                   <traversableTypes />
                   <canBeModified>false</canBeModified>
@@ -1827,6 +2012,7 @@ return model;</overrideTypeReferenceFunction>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
         </mapping>
+        <importSettings id="ef6f5656-30e2-46cb-932d-530e3e0ac54a" name="Common Types Target Mappables" />
       </targetMappings>
       <mappingTypes>
         <mappingType type="Data Mapping" typeId="7ef3f515-1714-4ba4-8a33-084532aeb4dd">
@@ -1847,6 +2033,17 @@ return model;</overrideTypeReferenceFunction>
           <targets />
           <targetFilterFunction>return element.represents == 'invokable'</targetFilterFunction>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+        <mappingType type="Response Mapping" typeId="3de2d99d-e169-49df-966a-3b6ef7066429">
+          <represents>invokable</represents>
+          <sources />
+          <sourceFilterFunction>return element.represents == 'data'</sourceFilterFunction>
+          <sourceArrowFunction>return `M ${x} ${y} l 10 5 l 0 -10 z`</sourceArrowFunction>
+          <targets />
+          <targetFilterFunction>return element.represents == 'event'</targetFilterFunction>
+          <targetArrowFunction>return null</targetArrowFunction>
+          <lineColor>orange</lineColor>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
       </mappingTypes>

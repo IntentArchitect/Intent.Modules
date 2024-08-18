@@ -218,10 +218,26 @@
     </FileLog>
     <FileLog>
       <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#415ffab7-9865-4200-89a0-b592d24919dd</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ReturnModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ReturnModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#911c35b4-4ba3-404c-a0c6-e5258e53333a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/UserInterfacePackageModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>UserInterfacePackageModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7df54881-7542-4e8e-b9bc-b0019fcc4982</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/VariableDeclarationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>VariableDeclarationModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
