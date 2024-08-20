@@ -372,7 +372,7 @@
 
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.6.0" />
-    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.6.0-pre.0" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.7.3-pre.0" />
     <PackageReference Include="Intent.Modules.Common.Dart" Version="1.1.0" />
     <PackageReference Include="Intent.Modules.Common.Html" Version="4.0.0" />
     <PackageReference Include="Intent.Modules.Common.Java" Version="4.0.0" />

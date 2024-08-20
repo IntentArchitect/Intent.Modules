@@ -18,6 +18,20 @@ namespace Intent.ModuleBuilder.CSharp.Api
                 .ToList();
         }
 
+        public static IList<NuGetPackageModel> GetNuGetPackageModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(NuGetPackageModel.SpecializationTypeId)
+                .Select(x => new NuGetPackageModel(x))
+                .ToList();
+        }
+
+        public static IList<NuGetPackagesModel> GetNuGetPackagesModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(NuGetPackagesModel.SpecializationTypeId)
+                .Select(x => new NuGetPackagesModel(x))
+                .ToList();
+        }
+
         public static IList<RazorTemplateModel> GetRazorTemplateModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(RazorTemplateModel.SpecializationTypeId)

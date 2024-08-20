@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="265221a5-779c-46c9-a367-8b07b435803b" version="3.1.0">
+  <name>Package Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="f747cc37-29ee-488a-8dbe-755e856a842d">NuGet Package</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>fc2cc76e-92cc-4fc5-8a06-e0571a499eff</parentFolderId>
+  <order>0</order>
+  <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
+  <packageName>Intent.ModuleBuilder.CSharp</packageName>
+  <properties>
+    <property id="4de9cc21-d4fb-4d52-8dfd-2eb6cf267a9a">
+      <hint />
+      <name>Friendly Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="67c7c4d8-40ed-48f9-a83c-985eedb32141">
+      <name>Locked</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

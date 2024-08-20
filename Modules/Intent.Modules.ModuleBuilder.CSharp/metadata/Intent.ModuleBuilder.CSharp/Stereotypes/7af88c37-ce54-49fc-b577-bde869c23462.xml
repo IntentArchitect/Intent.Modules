@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="7af88c37-ce54-49fc-b577-bde869c23462" version="3.1.0">
+  <name>Package Version Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="231f8cf8-517b-4801-9682-991d22f4e662">Package Version</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>fc2cc76e-92cc-4fc5-8a06-e0571a499eff</parentFolderId>
+  <order>0</order>
+  <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
+  <packageName>Intent.ModuleBuilder.CSharp</packageName>
+  <properties>
+    <property id="b01cea92-0ca1-4dbe-acab-d0f52b39e003">
+      <name>Minimum Target Framework</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>.NETCoreApp,Version=v8.0</defaultValue>
+      <valueOptions>
+        <option>.NETCoreApp,Version=v9.0</option>
+        <option>.NETCoreApp,Version=v8.0</option>
+        <option>.NETCoreApp,Version=v7.0</option>
+        <option>.NETCoreApp,Version=v6.0</option>
+        <option>.NETStandard,Version=v2.0</option>
+        <option>Any,Version=v0.0</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
+    <property id="d00692b1-6d17-4f1e-9386-a1d0d3ab7b57">
+      <hint />
+      <name>Locked</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

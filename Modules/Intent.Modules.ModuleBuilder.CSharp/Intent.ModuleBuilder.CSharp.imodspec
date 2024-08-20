@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.CSharp</id>
-  <version>3.6.0-alpha.0</version>
+  <version>3.6.0-alpha.1</version>
   <supportedClientVersions>[4.2.4, 5.0.0-a)</supportedClientVersions>
   <summary>Module Builder support for C# files that use Roslyn for intelligent code generation</summary>
   <description>Module Builder support for C# files that use Roslyn for intelligent code generation</description>
@@ -35,6 +35,14 @@
       <role>Templates</role>
       <location>Templates</location>
     </template>
+    <template id="Intent.ModuleBuilder.CSharp.Templates.NugetPackages" externalReference="c02d2dd6-683f-4daf-a8e2-fd5f50349c2d">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Templates</role>
+      <location></location>
+    </template>
     <template id="Intent.ModuleBuilder.CSharp.Templates.RazorStringInterpolationTemplate" externalReference="486b285a-ac44-40bb-96d0-821aed78c47f">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
@@ -66,6 +74,12 @@
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
+    <file src="$outDir$/NuGet.Frameworks.dll" inspect="false" />
+    <file src="$outDir$/NuGet.Configuration.dll" inspect="false" />
+    <file src="$outDir$/NuGet.Protocol.dll" inspect="false" />
+    <file src="$outDir$/NuGet.Common.dll" inspect="false" />
+    <file src="$outDir$/NuGet.Versioning.dll" inspect="false" />
+    <file src="$outDir$/NuGet.Packaging.dll" inspect="false" />
   </files>
   <factoryExtensions />
   <moduleSettings />

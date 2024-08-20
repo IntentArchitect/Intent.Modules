@@ -3,6 +3,7 @@ using Intent.ModuleBuilder.CSharp.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpStringInterpolation;
 using Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial;
+using Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages;
 using Intent.Modules.ModuleBuilder.CSharp.Templates.RazorStringInterpolation;
 using Intent.Modules.ModuleBuilder.CSharp.Templates.RazorTemplatePartial;
 using Intent.RoslynWeaver.Attributes;
@@ -32,6 +33,11 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates
         public static string GetCSharpTemplatePartialName(this IIntentTemplate template, CSharpTemplateModel model)
         {
             return template.GetTypeName(CSharpTemplatePartialTemplate.TemplateId, model);
+        }
+
+        public static string GetNugetPackagesName(this IIntentTemplate template)
+        {
+            return template.GetTypeName(NugetPackagesTemplate.TemplateId);
         }
 
         public static string GetRazorStringInterpolationTemplateName<T>(this IIntentTemplate<T> template) where T : RazorTemplateModel

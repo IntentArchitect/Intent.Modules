@@ -2,6 +2,10 @@
 
 - Improvement: Added support for Razor file code management.
 
+### Version 3.7.3
+
+- Improvement: Upgrades NuGet package systems including modeling.
+
 ### Version 3.7.2
 
 - Improvement: Added Attribute support for Class Constructor parameters.
