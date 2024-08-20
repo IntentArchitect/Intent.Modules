@@ -25,6 +25,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>499bd241-9cb1-40b7-90c8-7e94329db973</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.FactoryExtension#a05a730c-90e8-4e1d-bb81-0c9bae1748ae</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>FactoryExtensions/NugetRegistryLoaderExtension.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>NugetRegistryLoaderExtension.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>dbe0fab1-2720-40f2-9f2c-76719e833d59</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

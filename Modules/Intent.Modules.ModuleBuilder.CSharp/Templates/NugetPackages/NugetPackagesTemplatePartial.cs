@@ -36,14 +36,15 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                 .AddUsing("Intent.Modules.Common.CSharp.Nuget")
                 .AddClass($"NugetPackages", @class =>
                 {
-
+                    @class.ImplementsInterface("INugetPackages");
                     foreach (var package in model)
                     {
                         @class.AddField("string", $"{GetPackageConstant(package)}", f => f.Private().Constant($"\"{package.Name}\""));
                     }
-                    @class.AddConstructor(ctor =>
+
+
+                    @class.AddMethod("void", "RegisterPackages", method =>
                     {
-                        ctor.Static();
                         foreach (var package in model)
                         {
                             StringBuilder versionInfo = new StringBuilder();
@@ -58,7 +59,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                                 }
                                 versionInfo.Append("),");
                             }
-                            ctor.AddStatement($@"NugetRegistry.Register({GetPackageConstant(package)},
+                            method.AddStatement($@"NugetRegistry.Register({GetPackageConstant(package)},
                 (framework) => framework switch
                     {{{versionInfo}
                         _ => throw new Exception($""Unsupported Framework `{{framework.Major}}` for NuGet package '{{{GetPackageConstant(package)}}}'""),

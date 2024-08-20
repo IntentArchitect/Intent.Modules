@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="a05a730c-90e8-4e1d-bb81-0c9bae1748ae" type="Factory Extension" typeId="7d008e84-bb28-4b10-ba28-7439202fca76">
+  <name>NugetRegistryLoaderExtension</name>
+  <display>NugetRegistryLoaderExtension</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>730e1275-0c32-44f7-991a-9619d07ca68d</parentFolderId>
+  <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
+  <packageName>Intent.Common.CSharp</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

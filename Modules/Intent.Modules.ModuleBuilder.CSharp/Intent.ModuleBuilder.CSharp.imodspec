@@ -46,7 +46,7 @@
   </templates>
   <dependencies>
     <dependency id="Intent.Common" version="3.6.0" />
-    <dependency id="Intent.Common.CSharp" version="3.7.3-pre.0" />
+    <dependency id="Intent.Common.CSharp" version="3.6.0" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
     <dependency id="Intent.ModuleBuilder" version="3.8.0" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="4.5.1" />
