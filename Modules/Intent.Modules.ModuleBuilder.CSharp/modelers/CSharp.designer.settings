@@ -23,7 +23,7 @@
           <specializationType>NuGet Packages</specializationType>
           <specializationTypeId>4c75c84d-c745-4f0f-b1f4-82eeca01dfc7</specializationTypeId>
           <defaultName>NuGet Packages</defaultName>
-          <allowMultiple>true</allowMultiple>
+          <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />

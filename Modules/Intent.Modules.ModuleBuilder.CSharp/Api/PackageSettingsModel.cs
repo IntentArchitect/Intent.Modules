@@ -26,10 +26,10 @@ namespace Intent.ModuleBuilder.CSharp.Api
             .ToList();
 
         [IntentManaged(Mode.Fully)]
-        public IList<NuGetPackagesModel> NuGetPackages => UnderlyingPackage.ChildElements
+        public NuGetPackagesModel NuGetPackages => UnderlyingPackage.ChildElements
             .GetElementsOfType(NuGetPackagesModel.SpecializationTypeId)
             .Select(x => new NuGetPackagesModel(x))
-            .ToList();
+            .SingleOrDefault();
 
     }
 }
