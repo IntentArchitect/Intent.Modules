@@ -2118,14 +2118,6 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
           <canBeModified>false</canBeModified>
           <represents>data</represents>
         </mapping>
-        <mapping id="5314570b-2529-42b6-9583-e925d116cf4e" name="Bindable Operation" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <represents>invokable</represents>
-        </mapping>
         <mapping id="814c0b5d-c7a6-44ec-8534-4bd909c7265d" name="Bindable Navigation" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
@@ -2310,6 +2302,14 @@ return element.hasStereotype(bindableId) || element.hasStereotype(routeParameter
     <mappableElementPackage id="2d30eb9d-daa0-45d7-a596-32c57d61c6bd" name="Component Code Source Mappables">
       <imports />
       <mappableElementSettings>
+        <mappableElement id="5314570b-2529-42b6-9583-e925d116cf4e" name="Bindable Operation" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>invokable</represents>
+        </mappableElement>
         <mappableElement id="e33a8ee6-bf15-417d-ae84-fe650e83d8c1" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>

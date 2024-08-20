@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="41d3f18e-45d9-43d1-8c90-26ca8f5fa6ad" type="Mappable Elements Package Extension" typeId="bddb69f0-e2c8-4373-b5cb-d701f311f935">
   <name>Component Code Extensions</name>
-  <display>Component Code Extensions: Component Code Mappables</display>
+  <display>Component Code Extensions: Component Code Source Mappables</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
@@ -25,7 +25,7 @@
   <childElements>
     <childElement id="53180c17-f10a-490c-971b-29ab5c44fc44" type="Mappable Element Extension" typeId="f9449923-9173-4347-a3a2-38d1eb66f6b5">
       <name>Operation Extension</name>
-      <display>Operation Extension extends Operation</display>
+      <display>Operation Extension extends Bindable Operation</display>
       <isAbstract>false</isAbstract>
       <sort-children>manually</sort-children>
       <genericTypes />
@@ -39,7 +39,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="bd502960-a08e-4138-b3e0-d3dad4439410" display="Extend Target Settings" value="[&quot;a7d178d8-0e93-4784-a5c7-24d05df7875f&quot;]" isActive="true" />
+            <property name="bd502960-a08e-4138-b3e0-d3dad4439410" display="Extend Target Settings" value="[&quot;5314570b-2529-42b6-9583-e925d116cf4e&quot;]" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
