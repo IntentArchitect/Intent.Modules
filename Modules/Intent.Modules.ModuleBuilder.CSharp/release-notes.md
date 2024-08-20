@@ -1,3 +1,8 @@
+### Version 3.6.0
+
+- Improvement: Added implementations for NuGet modelling
+
+
 ### Version 3.5.2
 
 - Improvement: NuGet modeling support.
