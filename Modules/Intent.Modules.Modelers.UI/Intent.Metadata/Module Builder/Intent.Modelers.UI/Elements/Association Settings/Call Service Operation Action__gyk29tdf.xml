@@ -147,11 +147,11 @@
             </childElement>
             <childElement id="91de3206-1a44-435c-94fa-31e6608ba4bb" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
               <name>Map Response</name>
-              <display>Map Response: Service Call Response Mapping</display>
+              <display>Map Response: Operation Execution Mapping</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="52f8a9d2-e24e-4a1e-82e9-04f5dfefe212">
-                <typeId>6f998e3e-6e1f-483f-b8fd-59c6632add77</typeId>
+                <typeId>d5d1dd6a-15f4-4332-b531-3b74e1d97fab</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
