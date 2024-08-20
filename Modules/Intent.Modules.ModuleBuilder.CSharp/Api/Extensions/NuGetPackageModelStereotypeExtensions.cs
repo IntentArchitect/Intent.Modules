@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.CSharp.Api
     {
         public static PackageSettings GetPackageSettings(this NuGetPackageModel model)
         {
-            var stereotype = model.GetStereotype("265221a5-779c-46c9-a367-8b07b435803b");
+            var stereotype = model.GetStereotype(PackageSettings.DefinitionId);
             return stereotype != null ? new PackageSettings(stereotype) : null;
         }
 
 
         public static bool HasPackageSettings(this NuGetPackageModel model)
         {
-            return model.HasStereotype("265221a5-779c-46c9-a367-8b07b435803b");
+            return model.HasStereotype(PackageSettings.DefinitionId);
         }
 
         public static bool TryGetPackageSettings(this NuGetPackageModel model, out PackageSettings stereotype)
@@ -32,13 +32,14 @@ namespace Intent.ModuleBuilder.CSharp.Api
                 return false;
             }
 
-            stereotype = new PackageSettings(model.GetStereotype("265221a5-779c-46c9-a367-8b07b435803b"));
+            stereotype = new PackageSettings(model.GetStereotype(PackageSettings.DefinitionId));
             return true;
         }
 
         public class PackageSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "265221a5-779c-46c9-a367-8b07b435803b";
 
             public PackageSettings(IStereotype stereotype)
             {

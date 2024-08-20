@@ -1,7 +1,7 @@
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpStringInterpolationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpStringInterpolationTemplate", Version= "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.CSharp.Templates.RazorStringInterpolation
 {

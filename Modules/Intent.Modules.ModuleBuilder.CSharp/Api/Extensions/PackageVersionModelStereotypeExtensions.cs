@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.CSharp.Api
     {
         public static PackageVersionSettings GetPackageVersionSettings(this PackageVersionModel model)
         {
-            var stereotype = model.GetStereotype("7af88c37-ce54-49fc-b577-bde869c23462");
+            var stereotype = model.GetStereotype(PackageVersionSettings.DefinitionId);
             return stereotype != null ? new PackageVersionSettings(stereotype) : null;
         }
 
 
         public static bool HasPackageVersionSettings(this PackageVersionModel model)
         {
-            return model.HasStereotype("7af88c37-ce54-49fc-b577-bde869c23462");
+            return model.HasStereotype(PackageVersionSettings.DefinitionId);
         }
 
         public static bool TryGetPackageVersionSettings(this PackageVersionModel model, out PackageVersionSettings stereotype)
@@ -32,13 +32,14 @@ namespace Intent.ModuleBuilder.CSharp.Api
                 return false;
             }
 
-            stereotype = new PackageVersionSettings(model.GetStereotype("7af88c37-ce54-49fc-b577-bde869c23462"));
+            stereotype = new PackageVersionSettings(model.GetStereotype(PackageVersionSettings.DefinitionId));
             return true;
         }
 
         public class PackageVersionSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "7af88c37-ce54-49fc-b577-bde869c23462";
 
             public PackageVersionSettings(IStereotype stereotype)
             {

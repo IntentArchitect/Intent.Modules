@@ -26,6 +26,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>953b3214-e957-425d-8c51-65af9f7d0877</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#f747cc37-29ee-488a-8dbe-755e856a842d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/NuGetPackageModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>NuGetPackageModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>953b3214-e957-425d-8c51-65af9f7d0877</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#231f8cf8-517b-4801-9682-991d22f4e662</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/PackageVersionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>PackageVersionModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>953b3214-e957-425d-8c51-65af9f7d0877</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#05162e94-598b-416c-9779-d42b0b5262a1</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/RazorTemplateModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
@@ -42,10 +58,34 @@
     </FileLog>
     <FileLog>
       <ProjectId>6994427e-45de-4d7d-b0f6-73454dfa9229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f747cc37-29ee-488a-8dbe-755e856a842d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/NuGetPackageModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>NuGetPackageModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>6994427e-45de-4d7d-b0f6-73454dfa9229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4c75c84d-c745-4f0f-b1f4-82eeca01dfc7</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/NuGetPackagesModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>NuGetPackagesModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>6994427e-45de-4d7d-b0f6-73454dfa9229</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#7fac2a1d-f7e0-4295-8d68-0aa3b5f000e4</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/PackageSettingsModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>PackageSettingsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>6994427e-45de-4d7d-b0f6-73454dfa9229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#231f8cf8-517b-4801-9682-991d22f4e662</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/PackageVersionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>PackageVersionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -166,6 +206,22 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#c02d2dd6-683f-4daf-a8e2-fd5f50349c2d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/NugetPackages/NugetPackagesTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/NugetPackages/NugetPackagesTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9fa3fed6-cd87-42d8-9782-44b56e67db15</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel#c02d2dd6-683f-4daf-a8e2-fd5f50349c2d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/NugetPackages/NugetPackagesTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/NugetPackages/NugetPackagesTemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

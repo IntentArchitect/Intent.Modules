@@ -1,11 +1,11 @@
+using System;
+using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Nuget;
 using Intent.Modules.Common.Plugins;
 using Intent.Plugins.FactoryExtensions;
 using Intent.RoslynWeaver.Attributes;
-using System;
-using System.Linq;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.FactoryExtension", Version = "1.0")]
@@ -23,7 +23,7 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
         protected override void OnBeforeTemplateRegistrations(IApplication application)
         {
 
-            var nugetRegistrations =  AppDomain.CurrentDomain.GetAssemblies()
+            var nugetRegistrations = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(c => c.GetExportedTypes())
                 .Where(t => typeof(INugetPackages).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract)
                 .ToArray();
