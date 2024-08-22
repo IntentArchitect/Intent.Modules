@@ -20,44 +20,62 @@ public static class JavaBuilderExtensions
         }
     }
 
-    internal static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation)
+    internal delegate string CodeTextTransformer(int codeBlockIndex, ICodeBlock codeBlock, string indentation);
+    internal static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation, CodeTextTransformer codeTextTransformer = null)
     {
-        return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, string.Empty)}"));
+        // It's conventional to always have local methods at the bottom of a code block
+        var orderedCodeBlocks = codeBlocks
+            //.OrderBy(x => x is CSharpLocalMethod) // we should not prescribe this, and it is hidden from the user and likely to lead to confusion
+            .ToArray();
+
+        return string.Concat(orderedCodeBlocks.Select((s, i) => $"{orderedCodeBlocks.DetermineSeparator(i, s, indentation, string.Empty, codeTextTransformer)}"));
     }
 
     internal static string JoinCode(this IEnumerable<ICodeBlock> codeBlocks, string separator, string indentation)
     {
-        return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, separator)}"));
+        // It's conventional to always have local methods at the bottom of a code block
+        var orderedCodeBlocks = codeBlocks
+            //.OrderBy(x => x is CSharpLocalMethod) // we should not prescribe this, and it is hidden from the user and likely to lead to confusion
+            .ToArray();
+
+        return string.Concat(orderedCodeBlocks.Select((s, i) => $"{orderedCodeBlocks.DetermineSeparator(i, s, indentation, separator)}"));
     }
 
-    private static string DetermineSeparator(this IEnumerable<ICodeBlock> codeBlocks, ICodeBlock s1, string indentation, string separator = "")
+    private static string DetermineSeparator(this IEnumerable<ICodeBlock> codeBlocks, int codeBlockIndex, ICodeBlock currentCodeBlock, string indentation, string separator = "", CodeTextTransformer codeTextTransformer = null)
     {
         var codeBlocksList = codeBlocks.ToList();
-        var index = codeBlocksList.IndexOf(s1);
-        var s0 = index > 0 ? codeBlocksList[index - 1] : null;
+        var currentBlockIndex = codeBlocksList.IndexOf(currentCodeBlock);
+        var prevCodeBlock = currentBlockIndex > 0 ? codeBlocksList[currentBlockIndex - 1] : null;
 
-        if (s0 == null && s1.BeforeSeparator is JavaCodeSeparatorType.None)
+        if (prevCodeBlock is null && currentCodeBlock.BeforeSeparator is JavaCodeSeparatorType.None)
         {
-            return $"{s1.GetText(string.Empty)}{(index < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
+            return $"{GetCodeText(codeBlockIndex, currentCodeBlock, indentation, codeTextTransformer).TrimStart()}{(currentBlockIndex < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
         }
 
-        if (s0 == null)
+        if (prevCodeBlock is null)
         {
-            return $"{Environment.NewLine}{s1.GetText(indentation)}{(index < codeBlocksList.Count - 1 ? separator : string.Empty)}";
+            return $"{Environment.NewLine}{GetCodeText(codeBlockIndex, currentCodeBlock, indentation, codeTextTransformer)}{(currentBlockIndex < codeBlocksList.Count - 1 ? separator : string.Empty)}";
         }
 
-        if (s0.AfterSeparator is JavaCodeSeparatorType.EmptyLines ||
-            s1.BeforeSeparator is JavaCodeSeparatorType.EmptyLines)
+        if (prevCodeBlock.AfterSeparator is JavaCodeSeparatorType.EmptyLines ||
+            currentCodeBlock.BeforeSeparator is JavaCodeSeparatorType.EmptyLines)
         {
-            return $"{Environment.NewLine}{Environment.NewLine}{s1.GetText(indentation)}{(index < codeBlocksList.Count - 1 ? separator : string.Empty)}";
+            return $"{Environment.NewLine}{Environment.NewLine}{GetCodeText(codeBlockIndex, currentCodeBlock, indentation, codeTextTransformer)}{(currentBlockIndex < codeBlocksList.Count - 1 ? separator : string.Empty)}";
         }
 
-        if (s0.AfterSeparator is JavaCodeSeparatorType.NewLine ||
-            s1.BeforeSeparator is JavaCodeSeparatorType.NewLine)
+        if (prevCodeBlock.AfterSeparator is JavaCodeSeparatorType.NewLine ||
+            currentCodeBlock.BeforeSeparator is JavaCodeSeparatorType.NewLine)
         {
-            return $"{Environment.NewLine}{s1.GetText(indentation)}{(index < codeBlocksList.Count - 1 ? separator : string.Empty)}";
+            return $"{Environment.NewLine}{GetCodeText(codeBlockIndex, currentCodeBlock, indentation, codeTextTransformer)}{(currentBlockIndex < codeBlocksList.Count - 1 ? separator : string.Empty)}";
         }
 
-        return $"{s1.GetText(string.Empty)}{(index < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
+        return $"{GetCodeText(codeBlockIndex, currentCodeBlock, indentation, codeTextTransformer).TrimStart()}{(currentBlockIndex < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
+    }
+
+    private static string GetCodeText(int codeBlockIndex, ICodeBlock codeBlock, string indentation, CodeTextTransformer codeTextTransformer)
+    {
+        return codeTextTransformer == null
+            ? codeBlock.GetText(indentation)
+            : codeTextTransformer(codeBlockIndex, codeBlock, indentation);
     }
 }

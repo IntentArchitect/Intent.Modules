@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Intent.Modules.Common.Java.Builder;
 
-public class JavaStatement : JavaMetadataBase<JavaStatement>, ICodeBlock
+public class JavaStatement : JavaMetadataBase<JavaStatement>, ICodeBlock, IJavaExpression
 {
     public JavaStatement(string invocation)
     {
@@ -119,9 +119,9 @@ public class JavaStatement : JavaMetadataBase<JavaStatement>, ICodeBlock
     {
         return GetText(string.Empty);
     }
-
+    
     public static implicit operator JavaStatement(string input)
     {
-        return new JavaStatement(input);
+        return input != null ? new JavaStatement(input) : null;
     }
 }

@@ -1,0 +1,11 @@
+﻿package test.namespace;
+
+
+
+public class Class {
+    public static void configure(Service service) {
+        service.methodOne()
+            .methodTwo().methodThree()
+            .methodFour();
+    }
+}

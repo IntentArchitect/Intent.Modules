@@ -30,4 +30,11 @@
     <ProjectReference Include="..\Intent.Modules.Common.Java\Intent.Modules.Common.Java.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Builder\ChainedInvocationTests.InvocationStatement_MethodChaining.verified.txt">
+      <ParentFile>ChainedInvocationTests</ParentFile>
+      <DependentUpon>ChainedInvocationTests.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+
 </Project>
