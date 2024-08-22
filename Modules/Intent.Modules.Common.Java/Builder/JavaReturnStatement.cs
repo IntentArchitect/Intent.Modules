@@ -8,12 +8,19 @@ public class JavaReturnStatement : JavaStatement
     {
         ArgumentNullException.ThrowIfNull(returnStatement);
         ReturnStatement = returnStatement;
+        TrailingCharacter = ';';
     }
     
     public JavaStatement ReturnStatement { get; }
 
+    public JavaReturnStatement WithoutSemicolon()
+    {
+        TrailingCharacter = null;
+        return this;
+    }
+
     public override string GetText(string indentation)
     {
-        return $"{indentation}{RelativeIndentation}return {ReturnStatement.GetText(indentation).TrimStart()};";
+        return $"{indentation}{RelativeIndentation}return {ReturnStatement.GetText(indentation).TrimStart()}{(TrailingCharacter != null ? TrailingCharacter : "")}";
     }
 }

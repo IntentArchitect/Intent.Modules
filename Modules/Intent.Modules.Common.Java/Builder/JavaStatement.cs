@@ -17,6 +17,8 @@ public class JavaStatement : JavaMetadataBase<JavaStatement>, ICodeBlock, IJavaE
 
     protected string Text { get; set; }
     protected string RelativeIndentation { get; private set; } = "";
+    protected char? TrailingCharacter = null;
+    
     public JavaStatement SeparatedFromPrevious()
     {
         BeforeSeparator = JavaCodeSeparatorType.EmptyLines;
@@ -38,6 +40,12 @@ public class JavaStatement : JavaMetadataBase<JavaStatement>, ICodeBlock, IJavaE
     public JavaStatement SetIndent(string relativeIndentation)
     {
         RelativeIndentation = relativeIndentation;
+        return this;
+    }
+    
+    public virtual JavaStatement WithSemicolon()
+    {
+        TrailingCharacter = ';';
         return this;
     }
 
@@ -112,7 +120,7 @@ public class JavaStatement : JavaMetadataBase<JavaStatement>, ICodeBlock, IJavaE
 
     public virtual string GetText(string indentation)
     {
-        return $"{indentation}{RelativeIndentation}{Text}";
+        return $"{indentation}{RelativeIndentation}{Text}{(TrailingCharacter != null && !Text.EndsWith(TrailingCharacter.Value) ? TrailingCharacter.Value : "")}";
     }
 
     public override string ToString()

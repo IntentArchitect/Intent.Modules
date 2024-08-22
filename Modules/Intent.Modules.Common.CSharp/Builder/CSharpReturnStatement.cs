@@ -8,12 +8,19 @@ public class CSharpReturnStatement : CSharpStatement
     {
         ArgumentNullException.ThrowIfNull(returnStatement);
         ReturnStatement = returnStatement;
+        TrailingCharacter = ';';
     }
     
     public CSharpStatement ReturnStatement { get; }
 
+    public CSharpReturnStatement WithoutSemicolon()
+    {
+        TrailingCharacter = null;
+        return this;
+    }
+
     public override string GetText(string indentation)
     {
-        return $"{indentation}{RelativeIndentation}return {ReturnStatement.GetText(indentation).TrimStart()};";
+        return $"{indentation}{RelativeIndentation}return {ReturnStatement.GetText(indentation).TrimStart()}{(TrailingCharacter != null ? TrailingCharacter : "")}";
     }
 }
