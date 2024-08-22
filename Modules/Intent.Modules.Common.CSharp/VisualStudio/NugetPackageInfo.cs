@@ -103,7 +103,7 @@ namespace Intent.Modules.Common.VisualStudio
             All = 0,
             None = 1,
             AllExcept = 2,
-            Only = 3,
+            Only = 3
         }
 
         /// <inheritdoc />
@@ -111,7 +111,7 @@ namespace Intent.Modules.Common.VisualStudio
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(Name, other.Name);
+            return string.Equals(Name, other.Name) && string.Equals(Version, other.Version);
         }
 
         /// <inheritdoc />
@@ -126,7 +126,7 @@ namespace Intent.Modules.Common.VisualStudio
         /// <inheritdoc />
         public override int GetHashCode()
         {
-            return (Name != null ? Name.GetHashCode() : 0);
+            return HashCode.Combine(Name, Version);
         }
     }
 }
