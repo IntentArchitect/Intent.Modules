@@ -6,23 +6,22 @@ namespace Intent.Modules.Common.Templates
     public class TemplateFileConfig : ITemplateFileConfig
     {
         /// <summary>
-        /// Template output configuration.
+        /// Default template configuration.
         /// </summary>
         /// <param name="fileName">
-        /// The name of the file to be generated.
-        /// This can also be used to define "dotfiles" such as ".dockerignore".
+        /// Populates <see cref="FileName"/>.
         /// </param>
         /// <param name="fileExtension">
-        /// The extension of the file, such as ".cs" or ".json". If you want to define a "dotfile" (like ".dockerignore") you will need to define it in <see cref="fileName"/>.
+        /// Populates <see cref="FileExtension"/>.
         /// </param>
         /// <param name="relativeLocation">
-        /// The relative location to where the template is installed where the output should be generated. Defaults to an empty string.
+        /// Populates <see cref="LocationInProject"/>.
         /// </param>
         /// <param name="overwriteBehaviour">
-        /// Indicates the behaviour for overwriting an existing file. The default is <see cref="OverwriteBehaviour.Always"/>.
+        /// Populates <see cref="OverwriteBehaviour"/>.
         /// </param>
         /// <param name="codeGenType">
-        /// Specifies the type of code generation. The default is <see cref="Common.CodeGenType.Basic"/>.
+        /// Populates <see cref="CodeGenType"/>.
         /// </param>
         public TemplateFileConfig(
             string fileName,
@@ -40,13 +39,21 @@ namespace Intent.Modules.Common.Templates
             LocationInProject = relativeLocation;
         }
 
+        /// <inheritdoc />
         public virtual string CodeGenType { get; }
+        /// <inheritdoc />
         public virtual string FileExtension { get; }
+        /// <inheritdoc />
         public virtual OverwriteBehaviour OverwriteBehaviour { get; }
+        /// <inheritdoc />
         public virtual string FileName { get; set; }
+        /// <inheritdoc />
         public string LocationInProject { get; set; }
+        
+        /// <inheritdoc />
         IDictionary<string, string> ITemplateFileConfig.CustomMetadata => CustomMetadata;
 
+        /// <inheritdoc />
         public virtual Dictionary<string, string> CustomMetadata { get; }
 
     }
