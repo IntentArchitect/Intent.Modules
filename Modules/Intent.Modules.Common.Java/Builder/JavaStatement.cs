@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Intent.Modules.Common.Java.Builder;
 
-public class JavaStatement : JavaMetadataBase<JavaStatement>, ICodeBlock
+public class JavaStatement : JavaMetadataBase<JavaStatement>, ICodeBlock, IJavaExpression
 {
     public JavaStatement(string invocation)
     {
@@ -17,6 +17,8 @@ public class JavaStatement : JavaMetadataBase<JavaStatement>, ICodeBlock
 
     protected string Text { get; set; }
     protected string RelativeIndentation { get; private set; } = "";
+    protected char? TrailingCharacter = null;
+    
     public JavaStatement SeparatedFromPrevious()
     {
         BeforeSeparator = JavaCodeSeparatorType.EmptyLines;
@@ -38,6 +40,12 @@ public class JavaStatement : JavaMetadataBase<JavaStatement>, ICodeBlock
     public JavaStatement SetIndent(string relativeIndentation)
     {
         RelativeIndentation = relativeIndentation;
+        return this;
+    }
+    
+    public virtual JavaStatement WithSemicolon()
+    {
+        TrailingCharacter = ';';
         return this;
     }
 
@@ -112,16 +120,16 @@ public class JavaStatement : JavaMetadataBase<JavaStatement>, ICodeBlock
 
     public virtual string GetText(string indentation)
     {
-        return $"{indentation}{RelativeIndentation}{Text}";
+        return $"{indentation}{RelativeIndentation}{Text}{(TrailingCharacter != null && !Text.EndsWith(TrailingCharacter.Value) ? TrailingCharacter.Value : "")}";
     }
 
     public override string ToString()
     {
         return GetText(string.Empty);
     }
-
+    
     public static implicit operator JavaStatement(string input)
     {
-        return new JavaStatement(input);
+        return input != null ? new JavaStatement(input) : null;
     }
 }

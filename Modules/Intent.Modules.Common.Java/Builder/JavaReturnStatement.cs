@@ -1,19 +1,19 @@
 using System;
 
-namespace Intent.Modules.Common.CSharp.Builder;
+namespace Intent.Modules.Common.Java.Builder;
 
-public class CSharpReturnStatement : CSharpStatement
+public class JavaReturnStatement : JavaStatement
 {
-    public CSharpReturnStatement(CSharpStatement returnStatement)
+    public JavaReturnStatement(JavaStatement returnStatement) : base("")
     {
         ArgumentNullException.ThrowIfNull(returnStatement);
         ReturnStatement = returnStatement;
         TrailingCharacter = ';';
     }
     
-    public CSharpStatement ReturnStatement { get; }
+    public JavaStatement ReturnStatement { get; }
 
-    public CSharpReturnStatement WithoutSemicolon()
+    public JavaReturnStatement WithoutSemicolon()
     {
         TrailingCharacter = null;
         return this;

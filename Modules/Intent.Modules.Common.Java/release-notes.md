@@ -1,3 +1,7 @@
+### Version 4.1.1
+
+- Improvement: Special invocation method introduced for Java File Builder.
+
 ### Version 4.1.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

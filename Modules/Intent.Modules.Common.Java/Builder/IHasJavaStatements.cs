@@ -95,4 +95,44 @@ public static class HasJavaStatementsExtensions
 
         return parent;
     }
+    
+    public static TParent AddReturn<TParent>(this TParent parent, JavaStatement returnStatement, Action<JavaReturnStatement> configure = null)
+        where TParent : IHasJavaStatements
+    {
+        var statement = new JavaReturnStatement(returnStatement);
+        parent.AddStatement(statement);
+        configure?.Invoke(statement);
+        return parent;
+    }
+
+    /// <summary>
+    /// Create a new <see cref="JavaInvocationStatement"/> that performs an invocation on <c>parent</c>
+    /// as part of a chain. You can control the appearance of this chain by configuring the <see cref="JavaInvocationStatement"/>
+    /// statement while using <see cref="JavaInvocationStatement.OnNewLine"/>.
+    /// <br />
+    /// Example:
+    /// <code>
+    /// new JavaStatement("service")
+    ///   .AddInvocation("methodOne")
+    ///   .AddInvocation("methodTwo", s => s.OnNewLine());
+    /// </code>
+    ///
+    /// Will produce:
+    /// <code>
+    /// service.methodOne()
+    ///     .methodTwo();
+    /// </code>
+    /// </summary>
+    public static JavaInvocationStatement AddInvocation(this JavaStatement expression, string invocation, Action<JavaInvocationStatement> configure = null)
+    {
+        (expression as JavaInvocationStatement)?.WithoutSemicolon();
+        var statement = new JavaInvocationStatement(expression, invocation);
+        configure?.Invoke(statement);
+        if (expression.Parent is not null)
+        {
+            expression.Replace(statement);
+        }
+
+        return statement;
+    }
 }
