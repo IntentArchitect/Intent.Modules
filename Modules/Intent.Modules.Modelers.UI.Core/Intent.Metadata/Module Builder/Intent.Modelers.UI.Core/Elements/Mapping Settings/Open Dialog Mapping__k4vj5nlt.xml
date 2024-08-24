@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="b4777251-a390-48f0-877a-102069e88a22" type="Mapping Settings" typeId="a901c634-6482-4993-ae3c-bd1b637f78d4">
-  <name>Navigation Mapping</name>
-  <display>Navigation Mapping</display>
+<class id="f0e43df8-a662-46ec-a766-e67de9ddc0d0" type="Mapping Settings" typeId="a901c634-6482-4993-ae3c-bd1b637f78d4">
+  <name>Open Dialog Mapping</name>
+  <display>Open Dialog Mapping</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>444f582b-b875-4c72-9671-697b47fa367c</parentFolderId>
-  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-  <packageName>Intent.Modelers.UI</packageName>
+  <parentFolderId>3cd798f0-8cdf-42a4-b733-469632a86f27</parentFolderId>
+  <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+  <packageName>Intent.Modelers.UI.Core</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="cb5032a1-f531-40ee-8fe5-824ed8b89946" name="Mapping Settings">
       <addedByDefault>true</addedByDefault>
@@ -21,16 +21,16 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="7864a845-ff2b-4e45-ba71-f1747ef7a2a4" type="Source Mappable Elements" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
+    <childElement id="30559d55-a869-4977-84b8-6d9982abc4bd" type="Source Mappable Elements" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
       <name>Source</name>
       <display>Source</display>
       <isAbstract>false</isAbstract>
       <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>b4777251-a390-48f0-877a-102069e88a22</parentFolderId>
-      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-      <packageName>Intent.Modelers.UI</packageName>
+      <parentFolderId>f0e43df8-a662-46ec-a766-e67de9ddc0d0</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="c5fe657f-bf6f-4027-8bec-67290cc6dde2" name="Mapping End Settings">
           <addedByDefault>true</addedByDefault>
@@ -43,12 +43,12 @@
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="e9cfae20-9abb-4275-ae71-7a6dcb157af0" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05">
+        <childElement id="86b79bce-0efa-46ff-b1b9-a0a8c8d92169" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05">
           <name>Import</name>
           <display>[import] Component Code Source Mappables</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="68aa9afe-a184-447e-9548-d6c55e78ca16">
+          <typeReference id="275b0e9d-9083-4ef7-a5a6-811d8f3a8cff">
             <typeId>2d30eb9d-daa0-45d7-a596-32c57d61c6bd</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -60,34 +60,34 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>7864a845-ff2b-4e45-ba71-f1747ef7a2a4</parentFolderId>
-          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-          <packageName>Intent.Modelers.UI</packageName>
+          <parentFolderId>30559d55-a869-4977-84b8-6d9982abc4bd</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
           <stereotypes />
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="a7d178d8-0e93-4784-a5c7-24d05df7875f" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="86c39237-21a1-4085-ac1a-856e7f92a6e9" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Calling Operation</name>
-          <display>Calling Operation: Component Operation</display>
+          <display>Calling Operation: Operation</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-manually</sort-children>
           <genericTypes />
-          <typeReference id="3be31377-f5b3-4635-95f4-50c3d942cdf3">
+          <typeReference id="1c7968bd-0f7f-407c-8c3f-944df615adad">
             <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.UI</typePackageName>
-            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+            <typePackageName>Intent.Modelers.Services</typePackageName>
+            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>7864a845-ff2b-4e45-ba71-f1747ef7a2a4</parentFolderId>
-          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-          <packageName>Intent.Modelers.UI</packageName>
+          <parentFolderId>30559d55-a869-4977-84b8-6d9982abc4bd</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
@@ -117,26 +117,26 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="2b32cd67-405a-4cab-b74e-d8b4695f4076" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="fb92d27c-877e-4c9d-8f76-210a90d37028" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Parameter</name>
               <display>Parameter: Parameter</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="bdc7855d-1d45-4698-9ff5-5d4fe14ca130">
+              <typeReference id="ee2fca72-cfaa-4253-a2c6-950cc5041fa0">
                 <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.UI</typePackageName>
-                <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+                <typePackageName>Intent.Modelers.Services</typePackageName>
+                <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>a7d178d8-0e93-4784-a5c7-24d05df7875f</parentFolderId>
-              <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-              <packageName>Intent.Modelers.UI</packageName>
+              <parentFolderId>86c39237-21a1-4085-ac1a-856e7f92a6e9</parentFolderId>
+              <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+              <packageName>Intent.Modelers.UI.Core</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
                   <addedByDefault>true</addedByDefault>
@@ -169,26 +169,26 @@
             </childElement>
           </childElements>
         </childElement>
-        <childElement id="51d3ad67-98b1-4d04-9a37-4711e6ac45b6" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="e609bf66-1e00-497d-a34c-c455565912e5" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Callable Operation</name>
-          <display>Callable Operation: Component Operation</display>
+          <display>Callable Operation: Operation</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="c0926534-d8a8-4bdc-9a53-66f838a2ef1a">
+          <typeReference id="62198103-9f82-4c2e-82b9-8dbc9da73bbb">
             <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.UI</typePackageName>
-            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+            <typePackageName>Intent.Modelers.Services</typePackageName>
+            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>7864a845-ff2b-4e45-ba71-f1747ef7a2a4</parentFolderId>
-          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-          <packageName>Intent.Modelers.UI</packageName>
+          <parentFolderId>30559d55-a869-4977-84b8-6d9982abc4bd</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
@@ -221,16 +221,16 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="ac5832cf-3bf9-4d07-87c2-146e67a4c9b1" type="Target Mappable Elements" typeId="a812bff7-017a-4692-8ec7-1caad0a1dd88">
+    <childElement id="2c0e9156-13fd-49eb-8e74-94c9b2edba2f" type="Target Mappable Elements" typeId="a812bff7-017a-4692-8ec7-1caad0a1dd88">
       <name>Target</name>
       <display>Target</display>
       <isAbstract>false</isAbstract>
       <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>b4777251-a390-48f0-877a-102069e88a22</parentFolderId>
-      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-      <packageName>Intent.Modelers.UI</packageName>
+      <parentFolderId>f0e43df8-a662-46ec-a766-e67de9ddc0d0</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="c5fe657f-bf6f-4027-8bec-67290cc6dde2" name="Mapping End Settings">
           <addedByDefault>true</addedByDefault>
@@ -243,12 +243,12 @@
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="bfb74950-2371-4380-9fd8-97c6acb31b33" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="89ebeb19-5549-4171-becc-2fe0e58379d6" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Component</name>
           <display>Component: Component</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="5e9b8c33-0ab5-4e03-9c32-2c19c0d71f0f">
+          <typeReference id="08d0176e-0af5-4a23-a23a-c0e5f79eb496">
             <typeId>b1c481e1-e91e-4c29-9817-00ab9cad4b6b</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -260,9 +260,9 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>ac5832cf-3bf9-4d07-87c2-146e67a4c9b1</parentFolderId>
-          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-          <packageName>Intent.Modelers.UI</packageName>
+          <parentFolderId>2c0e9156-13fd-49eb-8e74-94c9b2edba2f</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
@@ -293,12 +293,12 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="32aa9cd3-8f35-4587-b97c-cf0ca60e4e9e" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="07c028eb-eaf4-442c-a47b-b6737ad3f396" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Property</name>
           <display>Property: Property</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="2d031e87-7bc7-4be8-8f44-418e0cb7e8af">
+          <typeReference id="dbef4423-aa41-4f69-87f2-7326bf105b60">
             <typeId>356fbe17-bc63-4e16-b915-feefbc063cbe</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -310,9 +310,9 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>ac5832cf-3bf9-4d07-87c2-146e67a4c9b1</parentFolderId>
-          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-          <packageName>Intent.Modelers.UI</packageName>
+          <parentFolderId>2c0e9156-13fd-49eb-8e74-94c9b2edba2f</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
               <addedByDefault>true</addedByDefault>
@@ -324,7 +324,7 @@
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return true;" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return element.getStereotype(&quot;f324c4ea-bac2-450d-b1b1-cc7f09ca3472&quot;) // [Route Parameter]&#xD;&#xA;//|| element.getStereotype(&quot;12ba7bea-ceb9-44d4-8819-835fe36af7b3&quot;); // [Bindable]" isActive="true" />
+                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return element.getStereotype(&quot;f324c4ea-bac2-450d-b1b1-cc7f09ca3472&quot;) // [Route Parameter]&#xD;&#xA;|| element.getStereotype(&quot;12ba7bea-ceb9-44d4-8819-835fe36af7b3&quot;); // [Bindable]" isActive="true" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Traverse All Types" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
@@ -345,15 +345,15 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="8363dcb6-416c-4478-a7f4-b7aabad1ec23" type="Mapping Type Settings" typeId="dd8e8a63-140c-41c8-b812-0dc923012fac">
+    <childElement id="c85fabc0-963d-470c-a57e-c1b4c64d59b5" type="Mapping Type Settings" typeId="dd8e8a63-140c-41c8-b812-0dc923012fac">
       <name>Data Mapping</name>
       <display>Data Mapping</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>b4777251-a390-48f0-877a-102069e88a22</parentFolderId>
-      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
-      <packageName>Intent.Modelers.UI</packageName>
+      <parentFolderId>f0e43df8-a662-46ec-a766-e67de9ddc0d0</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="5112db0d-9496-4a00-aff2-50c438050da6" name="Mapping Type Settings">
           <addedByDefault>true</addedByDefault>

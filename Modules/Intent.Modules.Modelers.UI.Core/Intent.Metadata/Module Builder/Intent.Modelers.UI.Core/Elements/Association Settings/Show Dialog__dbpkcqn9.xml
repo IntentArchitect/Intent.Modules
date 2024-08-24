@@ -66,7 +66,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
+            <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfNDM4YjFkMzAtYmVjNS00YTk4LTlkY2EtMTNhNDIxODhmODI2IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI0LjMiIHkxPSI3NSIgeDI9IjI0LjMiIHkyPSIzMy41IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIDEgMCAtMzApIj4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzRBOTkyNCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfNDM4YjFkMzAtYmVjNS00YTk4LTlkY2EtMTNhNDIxODhmODI2KSIgZD0iTTQ1LjksNi4xdjI2LjRoLTMuNFY4YzAtMC42LTAuNS0xLjEtMS4xLTEuMUg3LjJDNi42LDYuOSw2LjEsNy40LDYuMSw4djMyLjRjMCwwLjYsMC41LDEuMSwxLjEsMS4xDQoJCWgyNi4yVjQ1SDUuM2MtMS40LDAtMi42LTEuMi0yLjYtMi42VjYuMWMwLTEuNCwxLjItMi42LDIuNi0yLjZoMzhDNDQuNywzLjUsNDUuOSw0LjcsNDUuOSw2LjF6Ii8+DQoJPGc+DQoJCQ0KCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDAyNjg4MDgzNDg5MDUxMjAzODA0MDAwMDAwMzM5OTI2MDA1NTQyOTE3MTYzNV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzcuMiIgeTE9Ijc2LjgwMzkiIHgyPSIzNy4yIiB5Mj0iNTYuMzY5MiIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAxIDAgLTMwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNEE5OTI0Ii8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwMjY4ODA4MzQ4OTA1MTIwMzgwNDAwMDAwMDMzOTkyNjAwNTU0MjkxNzE2MzVfKSIgZD0iTTM5LjEsMzQuNHYtOC4yaC0zLjl2OC4ySDI3djMuOWg4LjJ2OC4yaDMuOQ0KCQkJdi04LjJoOC4zdi0zLjlIMzkuMXoiLz4NCgk8L2c+DQo8L2c+DQo8L3N2Zz4NCg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;b1c481e1-e91e-4c29-9817-00ab9cad4b6b&quot;]" isActive="true" />
             <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" value="[]" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" isActive="true" />
@@ -108,18 +108,18 @@
           <metadata />
           <childElements>
             <childElement id="3bf7c240-1c2c-4900-8718-0e5ccb4ead4d" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
-              <name>Manage Mapping</name>
-              <display>Manage Mapping: Navigation Mapping</display>
+              <name>Map Dialog</name>
+              <display>Map Dialog: Open Dialog Mapping</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="75b1f442-4a89-49c3-b533-523d0b6f5442">
-                <typeId>b4777251-a390-48f0-877a-102069e88a22</typeId>
+                <typeId>f0e43df8-a662-46ec-a766-e67de9ddc0d0</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.UI</typePackageName>
-                <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+                <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+                <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>

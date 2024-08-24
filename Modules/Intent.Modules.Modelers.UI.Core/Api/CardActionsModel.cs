@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modelers.UI.Api;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
@@ -12,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Core.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class FormModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class CardActionsModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Form";
-        public const string SpecializationTypeId = "1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd";
+        public const string SpecializationType = "Card Actions";
+        public const string SpecializationTypeId = "8dd9e894-be78-41ec-89f2-d2bd2d26d8d6";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public FormModel(IElement element, string requiredType = SpecializationType)
+        public CardActionsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -36,8 +35,6 @@ namespace Intent.Modelers.UI.Core.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public string Value => _element.Value;
-
         public IElement InternalElement => _element;
 
         public override string ToString()
@@ -45,7 +42,7 @@ namespace Intent.Modelers.UI.Core.Api
             return _element.ToString();
         }
 
-        public bool Equals(FormModel other)
+        public bool Equals(CardActionsModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -55,7 +52,7 @@ namespace Intent.Modelers.UI.Core.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((FormModel)obj);
+            return Equals((CardActionsModel)obj);
         }
 
         public override int GetHashCode()
@@ -65,17 +62,17 @@ namespace Intent.Modelers.UI.Core.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class FormModelExtensions
+    public static class CardActionsModelExtensions
     {
 
-        public static bool IsFormModel(this ICanBeReferencedType type)
+        public static bool IsCardActionsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == FormModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == CardActionsModel.SpecializationTypeId;
         }
 
-        public static FormModel AsFormModel(this ICanBeReferencedType type)
+        public static CardActionsModel AsCardActionsModel(this ICanBeReferencedType type)
         {
-            return type.IsFormModel() ? new FormModel((IElement)type) : null;
+            return type.IsCardActionsModel() ? new CardActionsModel((IElement)type) : null;
         }
     }
 }

@@ -1796,6 +1796,11 @@ return display;
                   <traversableTypes />
                   <canBeModified>false</canBeModified>
                   <represents>invokable</represents>
+                  <onMappingsChangedScript>let type = element.getMappedToElements()[0]?.typeReference;
+if (type) {
+    console.log('here xxx');
+    element.getChildren()[0].setType(type.toModel());
+}</onMappingsChangedScript>
                   <staticMappableSettings>
                     <staticMappableSetting id="d7d8824d-63ae-4f95-9923-21bad3583749" name="response" type="response" typeId="d7d8824d-63ae-4f95-9923-21bad3583749" version="2.0.0">
                       <displayFunction>return [

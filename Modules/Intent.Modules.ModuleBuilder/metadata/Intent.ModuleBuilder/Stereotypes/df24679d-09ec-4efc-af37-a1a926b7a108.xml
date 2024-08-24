@@ -186,6 +186,7 @@ return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traver
       <valueOptions />
       <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <isRequiredFunction>return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7")?.value?.length &gt; 0 // indicate that there is old scripts that need to be converted.</isRequiredFunction>
     </property>
     <property id="a6ec44d7-f928-4221-bed6-8589176a94c7">
       <name>Get Traversable Type Function</name>
@@ -197,7 +198,8 @@ return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traver
       <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
       <isActiveFunction>// Traversal Mode == Traverse Specific Types
-return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() != "Not Traversable";</isActiveFunction>
+return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 // this field is deprecated. remove if no value
+    &amp;&amp; getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() != "Not Traversable";</isActiveFunction>
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="69bfe770-9fcd-40dc-8505-2de5a699887e">
@@ -235,6 +237,16 @@ return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() != "Not Tr
       <lookupTypes />
       <isActiveFunction>return getProperty("69bfe770-9fcd-40dc-8505-2de5a699887e").getValue() == "Stereotype Property Value"</isActiveFunction>
       <isRequiredFunction>return getProperty("69bfe770-9fcd-40dc-8505-2de5a699887e").getValue() == "Stereotype Property Value"</isRequiredFunction>
+    </property>
+    <property id="5bd73806-e43e-402e-a8ab-ed63cbc1ef98">
+      <name>On Mapping Changed Script</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>advanced-mapping-macro-api</apiTypeDefinition>
     </property>
     <property id="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3">
       <name>Can Be Modified</name>

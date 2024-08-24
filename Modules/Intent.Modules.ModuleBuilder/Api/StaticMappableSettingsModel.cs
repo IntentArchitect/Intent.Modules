@@ -101,6 +101,7 @@ namespace Intent.ModuleBuilder.Api
                     : null,
                 SyncStereotypeId = this.GetMappableSettings().SyncStereotype()?.Id,
                 SyncStereotypePropertyId = this.GetMappableSettings().SyncStereotypeProperty(),
+                OnMappingsChangedScript = this.GetMappableSettings().OnMappingChangedScript(),
                 ScriptOptions = ScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 StaticMappableSettings = StaticMappings.Select(x => x.ToPersistable()).ToList(),
             };

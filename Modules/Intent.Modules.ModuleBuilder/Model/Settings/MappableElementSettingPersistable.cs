@@ -89,6 +89,10 @@ public class MappableElementSettingPersistable
     public string SyncStereotypePropertyId { get; set; }
     public bool ShouldSerializeSyncStereotypePropertyId() => SyncWith == SyncWithStereotypeProperty;
 
+    [XmlElement("onMappingsChangedScript")]
+    public string OnMappingsChangedScript { get; set; }
+    public bool ShouldSerializeOnMappingsChangedScript() => OnMappingsChangedScript != null;
+
     [XmlArray("scriptOptions")]
     [XmlArrayItem("option")]
     public List<RunScriptOption> ScriptOptions { get; set; }
