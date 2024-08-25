@@ -9,6 +9,8 @@ public interface IRazorFileNode : ICSharpCodeContext
     string GetText(string indentation);
     void AddChildNode(IRazorFileNode node);
     void InsertChildNode(int index, IRazorFileNode node);
+    void Remove();
+    void Replace(IRazorFileNode node);
     IList<IRazorFileNode> ChildNodes { get; }
     IRazorFileNode? Parent { get; internal set; }
 }

@@ -63,6 +63,19 @@ public abstract class RazorFileNodeBase<TConcrete, TInterface> : CSharpMetadataB
         ChildNodes.Insert(index, node);
     }
 
+    public void Remove()
+    {
+        Parent!.ChildNodes.Remove(this);
+        Parent = null;
+    }
+
+    public void Replace(IRazorFileNode node)
+    {
+        var index = Parent!.ChildNodes.IndexOf(this);
+        Parent!.ChildNodes.Remove(this);
+        Parent!.InsertChildNode(index, node);
+    }
+
     public TInterface AddAbove(IRazorFileNode node)
     {
         Parent.InsertChildNode(Parent.ChildNodes.IndexOf(this), node);

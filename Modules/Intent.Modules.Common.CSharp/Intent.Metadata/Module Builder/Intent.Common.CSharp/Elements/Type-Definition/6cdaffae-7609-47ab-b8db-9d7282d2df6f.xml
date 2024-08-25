@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="ac2b65c3-6a8f-454a-b520-b583350c43ef" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">
-  <name>Dictionary</name>
-  <display>Dictionary&lt;TKey, TValue&gt;</display>
+<class id="6cdaffae-7609-47ab-b8db-9d7282d2df6f" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">
+  <name>Task</name>
+  <display>Task</display>
   <isAbstract>false</isAbstract>
-  <genericTypes>
-    <genericType id="c1f297bc-68a6-4bd4-8c1b-ffbcb576aa1a">
-      <name>TKey</name>
-    </genericType>
-    <genericType id="b1b9176a-c13c-4475-b4bf-fcc01703eaf2">
-      <name>TValue</name>
-    </genericType>
-  </genericTypes>
+  <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>ac767a4d-2ca5-445d-9e86-ee8a3c5d0b83</parentFolderId>
   <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
@@ -22,9 +15,9 @@
       <definitionPackageId>730e1275-0c32-44f7-991a-9619d07ca68d</definitionPackageId>
       <properties>
         <property name="67913852-1e61-4d9d-997e-cdfb7d9196fb" display="Type" isActive="true" />
-        <property name="8CCCD630-6AF9-41FA-8E5F-414860AD89BB" display="Namespace" value="System.Collections.Generic" isActive="true" />
+        <property name="8CCCD630-6AF9-41FA-8E5F-414860AD89BB" display="Namespace" value="System.Threading.Tasks" isActive="true" />
         <property name="76668E7B-8FC2-4C14-B6AA-E36854E5E499" display="Is Primitive" value="false" isActive="true" />
-        <property name="0a577584-e2d4-4e5a-8649-296036a91575" display="Is Collection" value="true" isActive="true" />
+        <property name="0a577584-e2d4-4e5a-8649-296036a91575" display="Is Collection" value="false" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
