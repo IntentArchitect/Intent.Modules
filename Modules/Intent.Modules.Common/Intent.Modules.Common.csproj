@@ -18,6 +18,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="Intent.Modules.Common.Tests"></InternalsVisibleTo>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Templates\Typescript\**" />
     <EmbeddedResource Remove="Templates\Typescript\**" />
     <None Remove="Templates\Typescript\**" />

@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Intent.Modules.Common.FileBuilders.DataFileBuilder;
+using Intent.Templates;
 using VerifyXunit;
 using Xunit;
 
@@ -41,7 +42,7 @@ public class DataFileBuilderTests
                     ;
             });
 
-        template.DataFile.StartBuild();
+        template.DataFile.Build();
 
         await Verifier.Verify(template.DataFile.ToString());
     }
@@ -79,7 +80,7 @@ public class DataFileBuilderTests
                     ;
             });
 
-        template.DataFile.StartBuild();
+        template.DataFile.Build();
 
         await Verifier.Verify(template.DataFile.ToString());
     }
@@ -117,7 +118,7 @@ public class DataFileBuilderTests
                     ;
             });
 
-        template.DataFile.StartBuild();
+        template.DataFile.Build();
 
         await Verifier.Verify(template.DataFile.ToString());
     }
@@ -236,7 +237,7 @@ public class DataFileBuilderTests
                     });
                 });
             });
-        template.DataFile.StartBuild();
+        template.DataFile.Build();
 
         await Verifier.Verify(template.DataFile.ToString());
     }
@@ -244,5 +245,9 @@ public class DataFileBuilderTests
     private class TemplateMock : IDataFileBuilderTemplate
     {
         public IDataFile DataFile { get; set; }
+        public IFileMetadata GetMetadata() => throw new System.NotImplementedException();
+        public bool CanRunTemplate() => throw new System.NotImplementedException();
+        public string RunTemplate() => throw new System.NotImplementedException();
+        public string Id { get; }
     }
 }

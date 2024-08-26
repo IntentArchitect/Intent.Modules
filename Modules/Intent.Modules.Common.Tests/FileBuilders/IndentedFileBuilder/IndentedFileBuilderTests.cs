@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Intent.Modules.Common.FileBuilders.IndentedFileBuilder;
+using Intent.Modules.Common.Tests.FileBuilders.DataFileBuilder;
 using VerifyXunit;
 using Xunit;
 
@@ -27,7 +28,7 @@ public class IndentedFileBuilderTests
                 });
                 items.WithContent("}");
             });
-        file.StartBuild();
+        file.Build();
 
         await Verifier.Verify(file.ToString());
     }
