@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.UI.Core</id>
-  <version>1.0.0-alpha.3</version>
+  <version>1.0.0-alpha.5</version>
   <supportedClientVersions>[4.3.0-a,5.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -14,7 +14,7 @@
   <dependencies>
     <dependency id="Intent.Common" version="3.6.0" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
-    <dependency id="Intent.Modelers.UI" version="1.0.0-alpha.0" />
+    <dependency id="Intent.Modelers.UI" version="1.0.0-alpha.5" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -24,6 +24,6 @@
   <moduleSettingsExtensions />
   <metadata>
     <install target="User Interface" src="modelers/Common UI Components.designer.settings" externalReference="3cd798f0-8cdf-42a4-b733-469632a86f27" />
-    <install target="User Interface" src="Intent.Metadata/Module Builder/Intent.Modelers.UI.Core/Intent.Modelers.UI.Core.pkg.config" externalReference="a2a95421-3e55-43c7-96ad-355610b43c4d" />
+    <install target="User Interface;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.UI.Core/Intent.Modelers.UI.Core.pkg.config" externalReference="a2a95421-3e55-43c7-96ad-355610b43c4d" />
   </metadata>
 </package>

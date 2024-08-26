@@ -27,11 +27,20 @@
           <defaultName>NewDiagram</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
+        <option type="element">
+          <text>New Type-Definition</text>
+          <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />
+          <specializationType>Type-Definition</specializationType>
+          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
+          <defaultName>NewTypeDefinition</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
       </creationOptions>
       <scriptOptions />
       <typeOrder>
         <type order="0" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f" />
         <type order="1" type="Diagram" typeId="4912c89a-77eb-497e-a3f4-7408b6a20886" />
+        <type order="2" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
       </typeOrder>
     </packageSetting>
   </packageSettings>

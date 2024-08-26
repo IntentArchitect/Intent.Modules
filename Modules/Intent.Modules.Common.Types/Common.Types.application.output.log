@@ -10,6 +10,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0090fb93-483e-41af-a11d-5ad2dc796adf</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AttributeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AttributeModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4215f417-25d2-4509-9309-5076a1452eaa</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/EnumLiteralModel.cs</ApplicationRelativeFilePath>
@@ -30,6 +38,22 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FolderModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>FolderModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e042bb67-a1df-480c-9935-b26210f78591</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/OperationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>OperationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ParameterModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ParameterModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

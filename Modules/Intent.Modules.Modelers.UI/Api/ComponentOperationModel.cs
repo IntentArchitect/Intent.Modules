@@ -53,6 +53,11 @@ namespace Intent.Modelers.UI.Api
             .Select(x => new InvocationModel(x))
             .ToList();
 
+        public ReturnModel Return => _element.ChildElements
+            .GetElementsOfType(ReturnModel.SpecializationTypeId)
+            .Select(x => new ReturnModel(x))
+            .SingleOrDefault();
+
         public override string ToString()
         {
             return _element.ToString();

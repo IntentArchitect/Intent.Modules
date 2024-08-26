@@ -41,6 +41,16 @@ namespace Intent.Modules.Common.Types.Api
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
 
+        public IList<AttributeModel> Attributes => _element.ChildElements
+            .GetElementsOfType(AttributeModel.SpecializationTypeId)
+            .Select(x => new AttributeModel(x))
+            .ToList();
+
+        public IList<OperationModel> Operations => _element.ChildElements
+            .GetElementsOfType(OperationModel.SpecializationTypeId)
+            .Select(x => new OperationModel(x))
+            .ToList();
+
         [IntentManaged(Mode.Fully)]
         public override string ToString()
         {

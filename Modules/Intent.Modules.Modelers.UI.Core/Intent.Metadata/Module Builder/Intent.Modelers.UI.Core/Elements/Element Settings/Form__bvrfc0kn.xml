@@ -38,10 +38,10 @@
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
-        <property name="581e77d6-4587-4041-86f6-880bd57d5848" display="Name Must Be Unique" value="true" isActive="true" />
+        <property name="581e77d6-4587-4041-86f6-880bd57d5848" display="Name Must Be Unique" value="false" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
-        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="true" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
         <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="By type then manually" isActive="true" />
@@ -57,6 +57,43 @@
   </stereotypes>
   <metadata />
   <childElements>
+    <childElement id="63325694-c390-48c5-ae1b-1f9bc7c088a0" type="Accepted Child Types" typeId="7c0e37ab-2f84-46df-ac29-1e5aaa67bf75">
+      <name>[children]</name>
+      <display>[accepted types]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="d53ad4a8-7b7d-42dd-aed3-cdf1a1c889b7" type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
+          <name>NewAcceptedStereotypes</name>
+          <display>[type with stereotype]: [Component]</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>63325694-c390-48c5-ae1b-1f9bc7c088a0</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="c8e14e3f-f5ee-4992-b6cb-761ea48a11cd" name="Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="75834c40-408b-4fcb-a50b-b96c2f81ffc0" display="Types with Stereotype" value="b407aace-ad14-484e-ac93-4762a3d182d8" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
     <childElement id="3d73144b-24e2-4b8c-8763-1a2e1d68322c" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
@@ -70,132 +107,12 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="85f2e2a9-53da-42f8-867a-c46ae989f9d3" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Container</name>
-          <display>Add Container: Container</display>
+        <childElement id="c0dfcd18-b53a-4bba-892d-4c87cc0a75b4" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Add Component</name>
+          <display>Add Component: Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="82373aa4-9380-4b0b-9464-274d38756129">
-            <typeId>b97ea181-2462-431f-8f62-f90f79509b9e</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
-            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>3d73144b-24e2-4b8c-8763-1a2e1d68322c</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" value="return false;" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="bb26ed5b-e855-42bc-8c6d-bf3338e68bae" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Property</name>
-          <display>Property: Property</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="826b54ba-1a79-44bb-8db1-de69216e8c61">
-            <typeId>356fbe17-bc63-4e16-b915-feefbc063cbe</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.UI</typePackageName>
-            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>3d73144b-24e2-4b8c-8763-1a2e1d68322c</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" value="return false" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="6d3e5791-1452-4b00-ae5c-11a94d8bc8d9" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Event Emitter</name>
-          <display>Event Emitter: Event Emitter</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="2e47ac24-9be8-485b-a9ce-b5bcc3007f1e">
-            <typeId>d6739ffc-30e6-4170-a105-bf28e69aa578</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.UI</typePackageName>
-            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>3d73144b-24e2-4b8c-8763-1a2e1d68322c</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" value="return false" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="5a1a6873-7d06-4ffc-962c-9cc3f7c0bf70" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
-          <name>Create Form from Model</name>
-          <display>Create Form from Model: Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="0290649f-b470-4e0a-a20b-944c9b600467">
+          <typeReference id="f6907d73-4265-4572-88ad-02ed44d66f00">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -216,7 +133,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const componentStereotypeId = &quot;b407aace-ad14-484e-ac93-4762a3d182d8&quot;;&#xD;&#xA;const displayComponentTypeId = &quot;866a90f7-4044-43b9-bb05-7270c7889796&quot;;&#xD;&#xA;&#xD;&#xA;const component = element.getParent(&quot;Component&quot;);&#xD;&#xA;let options = component&#xD;&#xA;            .getChildren(&quot;Property&quot;)&#xD;&#xA;            .filter(x =&gt; x.typeReference?.getType()?.specialization != &quot;Type-Definition&quot;)&#xD;&#xA;            .map(x =&gt; ( {id: x.id, description: x.getDisplay(), type: &quot;core&quot; }))&#xD;&#xA;            .sort((x, y) =&gt; x.description.localeCompare(y.description))&#xD;&#xA;&#xD;&#xA;let result = await dialogService.openForm({&#xD;&#xA;    title: &quot;Select Model&quot;,&#xD;&#xA;    fields: [{&#xD;&#xA;        id: &quot;model&quot;,&#xD;&#xA;        fieldType: &quot;select&quot;,&#xD;&#xA;        label: &quot;Model&quot;,&#xD;&#xA;        selectOptions: options,&#xD;&#xA;        isRequired: true,&#xD;&#xA;        placeholder: &quot;Select Model&quot;&#xD;&#xA;    }]&#xD;&#xA;})&#xD;&#xA;&#xD;&#xA;let selected = options.filter(x =&gt; x.id == result[&quot;model&quot;])[0];&#xD;&#xA;if (!selected) {&#xD;&#xA;    console.warn(&quot;Option not selected&quot;);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const model = lookup(selected.id);&#xD;&#xA;const view = element.getParent(&quot;Component&quot;).getChildren(&quot;Component View&quot;)[0];&#xD;&#xA;const binding = view?.getAdvancedMapping();&#xD;&#xA;const dataBindingMappingTypeId = &quot;ee19a932-0cea-4b90-bd3c-857d7942d390&quot;&#xD;&#xA;binding?.addMappedEnd(dataBindingMappingTypeId, [component.id, model.id], [view.id, element.id, &quot;9d16e967-a2ab-45b4-ba69-b286daf4488c&quot;]) // Model&#xD;&#xA;&#xD;&#xA;const body = element.getChildren(&quot;Container&quot;).find(x =&gt; x.getName() == &quot;Body&quot;);&#xD;&#xA;model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == &quot;Property&quot; || x.specialization == &quot;DTO-Field&quot;).forEach(p =&gt; {&#xD;&#xA;    if (p.typeReference.getTypeId() == &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot;) { // string&#xD;&#xA;        const newInput = createElement(&quot;Text Input&quot;, p.getName(), body.id);&#xD;&#xA;        binding?.addMappedEnd(dataBindingMappingTypeId, [component.id, model.id, p.id], [view.id, element.id, body.id, newInput.id])&#xD;&#xA;        newInput.getStereotype(&quot;Label Addon&quot;)?.getProperty(&quot;Label&quot;).setValue(p.getName())&#xD;&#xA;    }&#xD;&#xA;    else if (p.typeReference.getTypeId() == &quot;e6f92b09-b2c5-4536-8270-a4d9e5bbd930&quot;){ // bool&#xD;&#xA;        const newInput = createElement(&quot;Checkbox&quot;, p.getName(), body.id);&#xD;&#xA;        binding?.addMappedEnd(dataBindingMappingTypeId, [component.id, model.id, p.id], [view.id, element.id, body.id, newInput.id])&#xD;&#xA;        newInput.getStereotype(&quot;Label Addon&quot;)?.getProperty(&quot;Label&quot;).setValue(p.getName())&#xD;&#xA;    }&#xD;&#xA;    else if (p.typeReference.getTypeId() == &quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;){ // guid (This isn't a good enough check - need to traverse to domain)&#xD;&#xA;        const newInput = createElement(&quot;Select&quot;, p.getName(), body.id);&#xD;&#xA;        binding?.addMappedEnd(dataBindingMappingTypeId, [component.id, model.id, p.id], [view.id, element.id, body.id, newInput.id])&#xD;&#xA;        newInput.getStereotype(&quot;Label Addon&quot;)?.getProperty(&quot;Label&quot;).setValue(p.getName())&#xD;&#xA;    }&#xD;&#xA;});" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const componentStereotypeId = &quot;b407aace-ad14-484e-ac93-4762a3d182d8&quot;;&#xD;&#xA;const displayComponentTypeId = &quot;866a90f7-4044-43b9-bb05-7270c7889796&quot;;&#xD;&#xA;&#xD;&#xA;let options = lookupTypesOf(&quot;Element Settings&quot;)&#xD;&#xA;            .filter(x =&gt; x.hasStereotype(componentStereotypeId))&#xD;&#xA;            .map(x =&gt; ({&#xD;&#xA;                    id: x.id, &#xD;&#xA;                    description: x.getDisplay(), &#xD;&#xA;                    type: &quot;core&quot;,&#xD;&#xA;                    icon: JSON.parse(x.getStereotype(&quot;Settings&quot;).getProperty(&quot;Icon&quot;).getValue())&#xD;&#xA;                }))&#xD;&#xA;            .concat(lookupTypesOf(&quot;Component&quot;)&#xD;&#xA;                .filter(x =&gt; x.id != element.getParent().id &amp;&amp; !x.hasStereotype(&quot;Page&quot;))&#xD;&#xA;                .map(x =&gt; ({&#xD;&#xA;                    id: x.id, &#xD;&#xA;                    description: x.getDisplay(), &#xD;&#xA;                    type: &quot;custom&quot;,&#xD;&#xA;                    icon: x.getIcon()&#xD;&#xA;                })))&#xD;&#xA;            .sort((x, y) =&gt; x.description.localeCompare(y.description))&#xD;&#xA;&#xD;&#xA;let result = await dialogService.openForm({&#xD;&#xA;    title: &quot;Add Component&quot;,&#xD;&#xA;    fields: [{&#xD;&#xA;        id: &quot;component-type&quot;,&#xD;&#xA;        fieldType: &quot;tiles&quot;,&#xD;&#xA;        label: &quot;Component Type&quot;,&#xD;&#xA;        selectOptions: options,&#xD;&#xA;        placeholder: &quot;Search components&quot;&#xD;&#xA;    }],&#xD;&#xA;    minWidth: &quot;586px&quot;,&#xD;&#xA;    maxWidth: &quot;586px&quot;,&#xD;&#xA;    height: &quot;60%&quot;&#xD;&#xA;})&#xD;&#xA;&#xD;&#xA;let selected = options.filter(x =&gt; x.id == result[&quot;component-type&quot;])[0];&#xD;&#xA;if (!selected) {&#xD;&#xA;    console.warn(&quot;Option not selected&quot;);&#xD;&#xA;}&#xD;&#xA;if (selected.type == &quot;core&quot;) {&#xD;&#xA;    let componentType = lookup(selected.id);&#xD;&#xA;    let component = createElement(componentType.id, componentType.getName(), element.id);&#xD;&#xA;    component.enableEditing();&#xD;&#xA;} else if (selected.type == &quot;custom&quot;) {&#xD;&#xA;    let component = createElement(displayComponentTypeId, selected.description, element.id);&#xD;&#xA;    component.typeReference.setType(selected.id);&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
@@ -225,8 +142,8 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" isActive="true" />
-                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGx1cyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfUGx1c194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NpcmNsZV94M0VfXzAwMDAwMTYxNjEyMDcyMDczMjQ2MjA5NTEwMDAwMDA4NjY5NjY2NzcxODg1MzA5ODc5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzQ5MyIgeDI9IjI1LjIiIHkyPSIyLjUxMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV94M0VfIiBmaWxsPSJ1cmwoI194M0NfQ2lyY2xlX3gzRV9fMDAwMDAxNjE2MTIwNzIwNzMyNDYyMDk1MTAwMDAwMDg2Njk2NjY3NzE4ODUzMDk4NzlfKSIgZD0iTTI1LjIsMi4zDQoJCWMtMTIuNCwwLTIyLjUsMTAtMjIuNSwyMi41YzAsMTIuNCwxMC4xLDIyLjUsMjIuNSwyMi41czIyLjUtMTAuMSwyMi41LTIyLjVDNDcuNywxMi4zLDM3LjYsMi4zLDI1LjIsMi4zeiBNMjUuMiw0My44DQoJCWMtMTAuNSwwLTE5LTguNS0xOS0xOXM4LjUtMTksMTktMTlzMTksOC41LDE5LDE5QzQ0LjIsMzUuMiwzNS43LDQzLjgsMjUuMiw0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzIxMSIgeDI9IjI1LjIiIHkyPSIyLjQ4MDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19QbHVzX3gzRV9fMDAwMDAwODE2MzE4NjY4NDEyOTcxNDM5MDAwMDAwMDczMTUyNDQ3Mzk2MDkwODMyNjlfIiBmaWxsPSJ1cmwoI194M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXykiIGQ9Ig0KCQlNMzAuNCwxMi42SDIwdjYuOWgtNi45djEwLjRIMjB2Ni45aDEwLjR2LTYuOWg2LjlWMTkuNmgtNi45VjEyLjZ6IE0zMy44LDIzdjMuNWgtNi45djYuOWgtMy41di02LjloLTYuOVYyM2g2Ljl2LTYuOWgzLjVWMjNIMzMuOHoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="ctrl + shift + a" isActive="true" />
                 <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                 <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
                 <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
@@ -242,6 +159,7 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd</parentFolderId>
@@ -249,7 +167,41 @@
       <packageName>Intent.Modelers.UI.Core</packageName>
       <stereotypes />
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="898ebce6-7184-415f-8a6f-bfb9ba90224b" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="932e185b-d9a3-455f-bb8d-dc53951e5010">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>4e6f6345-97db-40e3-b6ad-e0f7158b1042</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="// if (element.getParent(&quot;Dialog&quot;) == null) {&#xD;&#xA;//     createElement(&quot;dfe420aa-426a-4517-bcd1-83cf5ec074fe&quot;, &quot;Card&quot;, element.id); // Card&#xD;&#xA;// }&#xD;&#xA;    createElement(&quot;dfe420aa-426a-4517-bcd1-83cf5ec074fe&quot;, &quot;Card&quot;, element.id); // Card&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
     </childElement>
   </childElements>
 </class>

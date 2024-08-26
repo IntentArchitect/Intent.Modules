@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.UI</id>
-  <version>1.0.0-alpha.3</version>
+  <version>1.0.0-alpha.5</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -13,7 +13,7 @@
   <moduleSettings></moduleSettings>
   <dependencies>
     <dependency id="Intent.Common" version="3.6.0" />
-    <dependency id="Intent.Common.Types" version="3.4.0" />
+    <dependency id="Intent.Common.Types" version="4.0.0-alpha.0" />
   </dependencies>
   <interoperability>
     <detect id="Intent.Modelers.WebClient">
@@ -29,7 +29,7 @@
   <tags />
   <moduleSettingsExtensions />
   <metadata>
-    <install src="modelers/User Interface Core Types.designer.settings" externalReference="444f582b-b875-4c72-9671-697b47fa367c" target="Module Builder" />
+    <install src="modelers/User Interface Core Types.designer.settings" externalReference="444f582b-b875-4c72-9671-697b47fa367c" />
     <install target="Module Builder;User Interface" src="Intent.Metadata/Module Builder/Intent.Modelers.UI/Intent.Modelers.UI.pkg.config" externalReference="5c4628ec-679e-4f3d-afda-137c978deae0" />
     <install src="modelers/User Interface.designer.config" externalReference="f492faed-0665-4513-9853-5a230721786f" />
     <install src="modelers/User Interface Packages.designer.settings" externalReference="93058b8a-4d1d-4f88-ac14-332c87666418" target="User Interface" />

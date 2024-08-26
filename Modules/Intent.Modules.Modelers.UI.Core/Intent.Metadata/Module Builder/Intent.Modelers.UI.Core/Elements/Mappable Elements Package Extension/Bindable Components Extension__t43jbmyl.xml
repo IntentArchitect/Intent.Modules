@@ -64,6 +64,7 @@
             <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Element Value" isActive="true" />
             <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
             <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -101,6 +102,209 @@
                 <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
                 <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="a7de29e5-4bee-4e5d-93f0-740569ac6130" isActive="true" />
                 <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="d05f7b5b-fe45-4cbb-b938-380a4b68c0df" isActive="true" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
+                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
+                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
+                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="fd067c45-3113-432b-bf2b-5e657d1ec097" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+      <name>Card</name>
+      <display>Card: Card</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <typeReference id="ae5d141d-83aa-42e6-bc35-239e242aa62c">
+        <typeId>dfe420aa-426a-4517-bcd1-83cf5ec074fe</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+        <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>d808bb0b-ffc9-4b95-887b-ee3869ba4db8</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+            <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" isActive="true" />
+            <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+            <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
+            <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+            <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+            <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+            <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+            <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="false" />
+            <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
+            <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+            <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
+            <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
+            <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
+            <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
+            <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
+            <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="88fd4b42-29d8-4b8f-b739-433560414176" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+          <name>Card Header</name>
+          <display>Card Header: Card Header</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="caabe45f-0c43-41f2-8f58-332646d6a296">
+            <typeId>61bd2c09-fb56-4f0a-9d45-7a04c649a965</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>fd067c45-3113-432b-bf2b-5e657d1ec097</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+                <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" isActive="true" />
+                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
+                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+                <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="false" />
+                <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
+                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
+                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
+                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
+                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
+                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
+                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="5365790e-e0a1-4e30-869a-fa724a7a0f5d" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+          <name>Card Content</name>
+          <display>Card Content: Card Content</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="5e3405e7-0623-44b1-aecb-cbffbcb5c728">
+            <typeId>57319385-c7e0-43eb-a2d8-b7cb1ddce2e2</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>fd067c45-3113-432b-bf2b-5e657d1ec097</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+                <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" isActive="true" />
+                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
+                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+                <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="false" />
+                <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
+                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
+                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
+                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
+                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
+                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
+                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="18ea5a71-7eae-43da-a516-2b8dac2a3b22" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+          <name>Card Actiosn</name>
+          <display>Card Actiosn: Card Actions</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="9f48bd91-a8e6-4827-812c-0c38ff69c56a">
+            <typeId>8dd9e894-be78-41ec-89f2-d2bd2d26d8d6</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>fd067c45-3113-432b-bf2b-5e657d1ec097</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+                <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" isActive="true" />
+                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
+                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+                <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="false" />
+                <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
+                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
+                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
+                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                 <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -152,6 +356,7 @@
             <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Element Value" isActive="true" />
             <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
             <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -201,6 +406,7 @@
             <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
             <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
             <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="true" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="true" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -250,6 +456,7 @@
             <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Element Value" isActive="true" />
             <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
             <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -258,6 +465,208 @@
       </stereotypes>
       <metadata />
       <childElements />
+    </childElement>
+    <childElement id="2bf131b3-1d4f-4c69-ade9-d379b29afb97" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+      <name>Dialog</name>
+      <display>Dialog: Dialog</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <typeReference id="1261aa1f-3774-4fc1-b96a-56d2cf2961f8">
+        <typeId>1260ae89-b0cc-4ae0-b21c-7e26d45f16a5</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+        <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>d808bb0b-ffc9-4b95-887b-ee3869ba4db8</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+            <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" isActive="true" />
+            <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+            <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
+            <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+            <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+            <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+            <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+            <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
+            <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
+            <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+            <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
+            <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
+            <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
+            <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="true" isActive="true" />
+            <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="true" />
+            <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="211e961e-7dfc-4fe0-b81e-0b80917c881e" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+          <name>Dialog Title</name>
+          <display>Dialog Title: Dialog Title</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="f736ebd6-1338-4323-8b47-110cfe7321da">
+            <typeId>c3a01bf4-20a8-4761-b62b-527d3005baff</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2bf131b3-1d4f-4c69-ade9-d379b29afb97</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+                <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" isActive="true" />
+                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
+                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+                <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
+                <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
+                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
+                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
+                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
+                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
+                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
+                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="6085ee41-d77b-4c37-9381-81834776f473" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+          <name>Dialog Content</name>
+          <display>Dialog Content: Dialog Content</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="11acade7-507f-454d-8a75-04d7c4a149cb">
+            <typeId>69495016-6e72-4c18-bae5-2391e45cd234</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2bf131b3-1d4f-4c69-ade9-d379b29afb97</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+                <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" isActive="true" />
+                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
+                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+                <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
+                <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
+                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
+                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
+                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
+                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
+                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
+                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="18522990-565f-41ae-a707-0a16c361b4a9" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+          <name>Dialog Actions</name>
+          <display>Dialog Actions: Dialog Actions</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="f6ce2f9e-5f1a-467a-9e96-495662c01074">
+            <typeId>247a4768-7c46-472c-b5ea-565b37194956</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2bf131b3-1d4f-4c69-ade9-d379b29afb97</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+                <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" isActive="true" />
+                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
+                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+                <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
+                <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
+                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
+                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
+                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
+                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
+                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
+                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
     </childElement>
     <childElement id="bb88b7d5-e1c8-43aa-ae4d-0601f8a6a745" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
       <name>Form</name>
@@ -300,6 +709,7 @@
             <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
             <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
             <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -327,54 +737,17 @@
                 <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGcgZGlzcGxheT0ibm9uZSI+DQoJCTxnIGRpc3BsYXk9ImlubGluZSI+DQoJCQkNCgkJCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjQ1IiB5MT0iMTYuNjM5MSIgeDI9IjQ1IiB5Mj0iNi43MDgxIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTApIj4NCgkJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMDA3MEMwIi8+DQoJCQkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzA5QzRGRiIvPg0KCQkJPC9saW5lYXJHcmFkaWVudD4NCgkJCTxwb2x5Z29uIGZpbGw9InVybCgjU1ZHSURfMV8pIiBwb2ludHM9IjUwLDQwLjQgNDcuMSw0My4zIDQ0LjcsNDAuOSA0NC4zLDQwLjQgNDIuMiwzOC40IDQyLjIsMzguNCA0MCwzNi4yIDQyLjksMzMuNCAJCQkiLz4NCgkJPC9nPg0KCQkNCgkJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAxNTcyNzM1NjE2MTMxNzM5MDg0MDAwMDAwMTEyNjczODM2MDY1OTUxMTg5ODBfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjM1LjY2MDQiIHkxPSIxMi40Mzk1IiB4Mj0iNDQuMjcwNSIgeTI9IjMuODI5NiIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMTAyQjUxIi8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMTYzQjc0Ii8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwb2x5Z29uIGRpc3BsYXk9ImlubGluZSIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDE1NzI3MzU2MTYxMzE3MzkwODQwMDAwMDAxMTI2NzM4MzYwNjU5NTExODk4MF8pIiBwb2ludHM9IjQ3LjEsNDMuMyA0Mi45LDQ3LjUgDQoJCQk0Mi43LDQ3LjMgNDAuNSw0NS4xIDQwLjEsNDQuNiA0Mi4yLDQyLjUgMzQuOCw0Mi41IDM0LjgsMzguNCA0Mi4yLDM4LjQgNDQuMyw0MC40IDQ0LjcsNDAuOSAJCSIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KCTxnIGRpc3BsYXk9Im5vbmUiPg0KCQk8ZyBkaXNwbGF5PSJpbmxpbmUiPg0KCQkJDQoJCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDA1NDIyNTYyMjA5Nzc4MjQ5NzAyMDAwMDAxMDgzMTU5NzU5MjI2ODcwOTI1M18iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iNDEuODUiIHkxPSI0MS43IiB4Mj0iNDEuODUiIHkyPSIzMS43NjkxIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTApIj4NCgkJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMDA3MEMwIi8+DQoJCQkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzA5QzRGRiIvPg0KCQkJPC9saW5lYXJHcmFkaWVudD4NCgkJCTxwb2x5Z29uIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwNTQyMjU2MjIwOTc3ODI0OTcwMjAwMDAwMTA4MzE1OTc1OTIyNjg3MDkyNTNfKSIgcG9pbnRzPSI0Ni44LDE1LjQgNDQsMTguMyA0MS41LDE1LjggDQoJCQkJNDEuMSwxNS40IDM5LDEzLjMgMzkuMSwxMy4zIDM2LjksMTEuMiAzOS44LDguMyAJCQkiLz4NCgkJPC9nPg0KCQkNCgkJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwOTg5MTQyOTUwNjU0NzExNzY4NDAwMDAwMDI1ODM4MDI5NzkzNTQwNTM1NTdfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjMyLjUiIHkxPSIzNy41IiB4Mj0iNDEuMTEiIHkyPSIyOC44OSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMTAyQjUxIi8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMTYzQjc0Ii8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwb2x5Z29uIGRpc3BsYXk9ImlubGluZSIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDA5ODkxNDI5NTA2NTQ3MTE3Njg0MDAwMDAwMjU4MzgwMjk3OTM1NDA1MzU1N18pIiBwb2ludHM9IjQ0LDE4LjMgMzkuOCwyMi41IA0KCQkJMzkuNiwyMi4yIDM3LjMsMjAgMzYuOSwxOS42IDM5LjEsMTcuNCAzMS43LDE3LjQgMzEuNywxMy4zIDM5LDEzLjMgNDEuMSwxNS40IDQxLjUsMTUuOCAJCSIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KCTxnIGRpc3BsYXk9Im5vbmUiPg0KCQk8ZyBkaXNwbGF5PSJpbmxpbmUiPg0KCQkJDQoJCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDEwMDM4MDI3MTM5MTExNjU2NTQ4MDAwMDAxMzEzOTMzOTAwMTgwMDM1Mzk3OF8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iNDIuNyIgeTE9IjQwLjU2MzUiIHgyPSI0Mi43IiB5Mj0iMzAuNjMyNSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCQkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzAwNzBDMCIvPg0KCQkJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMwOUM0RkYiLz4NCgkJCTwvbGluZWFyR3JhZGllbnQ+DQoJCQk8cG9seWdvbiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTAwMzgwMjcxMzkxMTE2NTY1NDgwMDAwMDEzMTM5MzM5MDAxODAwMzUzOTc4XykiIHBvaW50cz0iNDcuNywxNi41IDQ0LjgsMTkuNCA0Mi40LDE2LjkgDQoJCQkJNDEuOSwxNi41IDM5LjksMTQuNSAzOS45LDE0LjUgMzcuNywxMi4zIDQwLjYsOS40IAkJCSIvPg0KCQk8L2c+DQoJCQ0KCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDEwMzIyMzMzNjI5MTQwODUyNzQyMDAwMDAwNTM4NTk4OTQ4OTEyMzQzNDExN18iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzMuMzc1IiB5MT0iMzYuMzc1IiB4Mj0iNDEuOTg1IiB5Mj0iMjcuNzY0OSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMTAyQjUxIi8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMTYzQjc0Ii8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwb2x5Z29uIGRpc3BsYXk9ImlubGluZSIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDEwMzIyMzMzNjI5MTQwODUyNzQyMDAwMDAwNTM4NTk4OTQ4OTEyMzQzNDExN18pIiBwb2ludHM9IjQ0LjgsMTkuNCA0MC42LDIzLjYgDQoJCQk0MC40LDIzLjQgMzguMiwyMS4xIDM3LjcsMjAuNyAzOS45LDE4LjUgMzIuNSwxOC41IDMyLjUsMTQuNSAzOS45LDE0LjUgNDEuOSwxNi41IDQyLjQsMTYuOSAJCSIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMDQ4NDg1ODEzMDc1MDcwNTM0NzYwMDAwMDEwOTA0NDg0ODk1MDk2OTgyNDU0XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyLjUiIHkxPSIyNy44NSIgeDI9IjQ3LjYiIHkyPSIyNy44NSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMDU5OUMiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzAwQzBGMiIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBhdGggZGlzcGxheT0ibm9uZSIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDA0ODQ4NTgxMzA3NTA3MDUzNDc2MDAwMDAxMDkwNDQ4NDg5NTA5Njk4MjQ1NF8pIiBkPSJNMzguMywxOS45DQoJCWMtMC4zLDAtMC41LTAuMy0wLjQtMC41YzAtMC40LDAuMS0wLjgsMC4xLTEuMmMwLTUuOC00LjctMTAuNi0xMC42LTEwLjZjLTQuMywwLTgsMi42LTkuNyw2LjNjLTAuMSwwLjMtMC40LDAuNC0wLjcsMC4zDQoJCWMtMS4zLTAuNi0yLjktMC43LTQuNi0wLjFjLTIuNCwwLjgtMy45LDMuMS0zLjgsNS42YzAsMC4yLDAsMC4zLDAsMC41cy0wLjEsMC40LTAuMywwLjVjLTMuNCwxLjMtNS44LDQuMi01LjgsNy42DQoJCWMwLDQuNiw0LjUsOC40LDEwLjEsOC40SDM3YzUuOCwwLDEwLjYtMy44LDEwLjYtOC40QzQ3LjUsMjQsNDMuNSwyMC40LDM4LjMsMTkuOXogTTM4LjEsMzQuOEgxMS4zbDAsMGMtMi40LDAtNC41LTEuMi01LjYtMi45bDAsMA0KCQljLTAuOC0xLTEuMi0yLjItMS4yLTMuNmMwLTIuOCwxLjktNS4xLDQuNS01LjljMC41LTAuMSwxLjEtMC4yLDEuNy0wLjJjMC4xLDAsMC4zLDAsMC40LDBjLTAuNS0wLjYtMC44LTEuNC0wLjgtMi4yDQoJCWMwLTAuMSwwLTAuMSwwLTAuMmMwLTIuMywyLTQuMiw0LjQtNC4yYzAuOCwwLDEuNSwwLjIsMi4xLDAuNWMwLjgsMC40LDEuNCwxLDEuOCwxLjdjMC0wLjcsMC4xLTEuNSwwLjQtMi4xDQoJCWMxLjEtMy42LDQuMy02LjIsOC4zLTYuMmM0LjgsMCw4LjYsMy45LDguNiw4LjZjMCwwLjYtMC4xLDEuMS0wLjIsMS43Yy0wLjIsMC45LTAuNSwxLjgtMSwyLjZjMC43LTAuMywxLjUtMC41LDIuNC0wLjZsMCwwDQoJCWMwLjMsMCwwLjYsMCwwLjksMGM0LjIsMCw3LjYsMi45LDcuNiw2LjVDNDUuNywzMS45LDQyLjMsMzQuOCwzOC4xLDM0Ljh6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwNzY1NjYxNzc4MDkxNjEwNjQyMDAwMDAwMTU0OTU5MTUzNDA1NDQ1MjgwMzhfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjMuNjEiIHkxPSIzMS43MzQzIiB4Mj0iNDguNjkiIHkyPSIzMS43MzQzIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTApIj4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzAwNTk5QyIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMDBDMEYyIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBkaXNwbGF5PSJub25lIiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMDc2NTY2MTc3ODA5MTYxMDY0MjAwMDAwMDE1NDk1OTE1MzQwNTQ0NTI4MDM4XykiIGQ9Ik00OC43LDI0LjVjMCwzLjYtMi45LDYuNy02LjksNy45DQoJCUM0MC45LDMyLjYsNDAsMzIsNDAsMzF2LTAuMmMwLTAuNiwwLjQtMSwwLjktMS4yYzIuNi0wLjgsNC40LTIuNyw0LjQtNC45YzAtMi45LTMuMi01LjMtNy4yLTUuM2MtMC40LDAtMC44LDAtMS4yLDAuMWwwLDANCgkJYy0wLjEsMC0wLjIsMC0wLjMsMGMtMC45LDAtMS43LTAuNy0xLjctMS43YzAtMC4yLDAtMC40LDAuMS0wLjV2LTAuMWMwLjMtMC44LDAuNC0xLjYsMC40LTIuNGMwLTQtMy4yLTcuMi03LjItNy4yDQoJCWMtMy40LDAtNi4yLDIuNC03LDUuNWwwLDBjLTAuMiwwLjgtMC44LDEuMy0xLjYsMS4zYy0wLjUsMC0wLjktMC4yLTEuMi0wLjVsMCwwYy0wLjYtMC42LTEuNS0xLTIuNS0xYy0xLjksMC0zLjUsMS41LTMuNSwzLjUNCgkJYzAsMC40LDAsMC42LDAuMSwwLjljMC4xLDAuMiwwLjIsMC42LDAuMiwwLjljMC4xLDAuOC0wLjYsMS41LTEuMywxLjZsMCwwYy0yLjcsMC40LTQuNSwyLjctNC41LDQuOWMwLDIuNSwyLjMsNC42LDUuNSw1LjINCgkJYzAuNywwLjEsMS4xLDAuNywxLjEsMS4zdjAuMWMwLDAuOS0wLjcsMS42LTEuNiwxLjRjLTQuOC0wLjYtOC41LTQuMS04LjUtOC4zYzAtMy4zLDIuMi02LDUuNS03LjRjMC4xLDAsMC4zLTAuMSwwLjQtMC4yDQoJCWMwLTAuMSwwLjEtMC4xLDAuMS0wLjNjMC0wLjEsMC0wLjQsMC0wLjVjLTAuMi0yLjcsMS43LTUuMiw0LjQtNS45YzEuNS0wLjMsMi44LTAuMiw0LDAuM2MwLjMsMC4xLDAuNSwwLDAuNy0wLjMNCgkJQzIwLjQsNS44LDI1LjEsMywzMC4zLDRjNS4xLDEsOC43LDUuNyw4LjUsMTAuOGMwLDAuMiwwLDAuNS0wLjEsMC43YzAsMC4zLDAuMiwwLjUsMC40LDAuNUM0NC42LDE2LjcsNDguNywyMC4yLDQ4LjcsMjQuNXoiLz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMDk1MzM4OTI5MjA0OTc3NDYwNzMwMDAwMDE0NTUyNDQ1NzU1OTYzMjcyMDgwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4wMDY1IiB5MT0iMy4xODIzIiB4Mj0iMjUuMjk5OSIgeTI9IjQ4LjIzMDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMjY2NkM5Ii8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM3Nzk3QzkiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwOTUzMzg5MjkyMDQ5Nzc0NjA3MzAwMDAwMTQ1NTI0NDU3NTU5NjMyNzIwODBfKSIgZD0iTTQ3LjcsMTQuOWMwLDctNS43LDEyLjctMTIuNywxMi43DQoJCWMtMS42LDAtMy0wLjMtNC40LTAuOEwyNS4zLDMyTDExLjYsNDUuOGwwLDBDMTAuMSw0Ny4zLDcuOSw0Ny43LDYsNDdjLTAuNy0wLjItMS4zLTAuNy0xLjktMS4yYy0xLjctMS43LTItNC4zLTAuOS02LjNsMCwwbDAsMA0KCQljMC4xLTAuMSwwLjEtMC4yLDAuMi0wLjNjMC4xLTAuMSwwLjItMC4zLDAuMy0wLjRsMCwwYzAtMC4xLDAuMS0wLjEsMC4xLTAuMmwwLDBDNCwzOC41LDQsMzguNCw0LDM4LjRsMC4xLTAuMWwwLDBMNSwzNy40bDAuMS0wLjENCgkJTDIzLDE5LjRjLTAuNS0xLjQtMC44LTIuOS0wLjgtNC41YzAtNyw1LjctMTIuNywxMi43LTEyLjdjMC4yLDAsMC41LDAsMC44LDBjMS43LDAuMSwzLjMsMC41LDQuOCwxLjJsLTYuNyw2LjdsMC43LDIuNmwwLjUsMg0KCQlsMiwwLjZsMi43LDAuN2w2LjctNi43YzAuNywxLjUsMS4yLDMuMSwxLjIsNC44QzQ3LjYsMTQuNCw0Ny43LDE0LjcsNDcuNywxNC45eiIvPg0KPC9nPg0KPC9zdmc+DQo=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
-                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return true;" isActive="true" />
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
                 <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" value="return {&#xD;&#xA;    isCollection: false&#xD;&#xA;}" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
-                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
-                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="7f7bc148-138f-4b61-8fa1-a8d725dbed52" isActive="true" />
-                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="f980aa79-3b16-4f43-acd3-3c0e34032183" isActive="true" />
-                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="82cf639a-6005-4bb8-8f38-06becffad225" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
-          <name>On Valid Submit</name>
-          <display>On Valid Submit</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>bb88b7d5-e1c8-43aa-ae4d-0601f8a6a745</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Event" isActive="true" />
-                <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjguNTIiIHkxPSI0Ny45NjMiIHgyPSIyOC41MiIgeTI9IjIuNjE0OSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQkIwNDEiLz4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0ZDQjY0NSIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojRjU3RjIwIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZD0iTTMyLjMsMTYuOEwzMi4zLDE2LjhsNy4zLTE0LjZIMjFMOC41LDI3aDE0LjhMMTMsNDcuM2gzLjVsMzItMzAuNUgzMi4zeiBNMjguOSwyMy42SDE0LjFsOS0xNy45SDM0DQoJCWwtNy4zLDE0LjVoMTMuMmwtMTgsMTcuMUwyOC45LDIzLjZ6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwMzgzNzUxNzE2NTE0NzY2NDY1OTAwMDAwMTc5NDgxMjkxMzg1NzM2NzI4NjZfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjM5LjY1NzYiIHkxPSI0Ni42NzE2IiB4Mj0iMzkuNjU3NiIgeTI9IjIuMjQ0Ij4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRjU3RjIwIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQkIwNDEiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwMzgzNzUxNzE2NTE0NzY2NDY1OTAwMDAwMTc5NDgxMjkxMzg1NzM2NzI4NjZfKSIgZD0iTTMyLjEsMzUuMXYxMS41aDE1LjJWMzUuMUgzMi4xeiBNNDMuNSw0My44aC03LjYNCgkJVjM4aDcuNlY0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMDc3MzA5NDE0Nzg3MTUwODIyMzAwMDAwMDE1OTQxMzM2NjU0NTc1NDQyMDc3XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSI4LjUxNSIgeTE9IjQ3LjQyMzYiIHgyPSI4LjUxNSIgeTI9IjEuOTU2OCI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQkIwNDEiLz4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojRkJCMDQxIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMDc3MzA5NDE0Nzg3MTUwODIyMzAwMDAwMDE1OTQxMzM2NjU0NTc1NDQyMDc3XykiIGQ9Ik0yLjQsMi4ydjkuM2gxMi4zVjIuMkgyLjR6IE0xMS42LDkuMkg1LjRWNC41DQoJCWg2LjJWOS4yeiIvPg0KPC9nPg0KPC9zdmc+DQo=&quot;}" isActive="true" />
-                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
-                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="false" />
-                <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
-                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
-                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
-                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="e242cccf-5826-478f-9e7a-c1fd9df4e5c8" isActive="true" />
-                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="be7dd551-1c92-4f03-91e7-f4495f97e504" isActive="true" />
+                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Element Value" isActive="true" />
+                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="7f7bc148-138f-4b61-8fa1-a8d725dbed52" isActive="false" />
+                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="f980aa79-3b16-4f43-acd3-3c0e34032183" isActive="false" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                 <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -426,6 +799,7 @@
             <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Element Value" isActive="true" />
             <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
             <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -476,6 +850,7 @@
             <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
             <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
             <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -525,6 +900,7 @@
                 <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
                 <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
                 <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                 <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -563,6 +939,7 @@
                     <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
                     <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
                     <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+                    <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
                     <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                     <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                     <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -664,6 +1041,7 @@
             <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Element Value" isActive="true" />
             <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
             <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -702,6 +1080,7 @@
                 <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
                 <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="6a75e4ef-66bd-45b3-b74a-2d75b384c8cd" isActive="true" />
                 <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="83c7d771-b51b-4ca8-9451-10d154c99b05" isActive="true" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                 <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -785,6 +1164,7 @@
                     <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
                     <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="6a75e4ef-66bd-45b3-b74a-2d75b384c8cd" isActive="true" />
                     <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="cdbb3669-f3b5-4d56-a274-4a1f92d4a451" isActive="true" />
+                    <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
                     <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                     <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                     <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -823,6 +1203,7 @@
                     <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
                     <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="6a75e4ef-66bd-45b3-b74a-2d75b384c8cd" isActive="true" />
                     <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="4d698735-be31-4e69-9fa0-27ddd077b465" isActive="true" />
+                    <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
                     <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                     <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                     <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -877,6 +1258,7 @@
             <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Element Value" isActive="true" />
             <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
             <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -914,6 +1296,7 @@
                 <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
                 <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="74533b82-2078-44e1-84bb-4cd34d00ef16" isActive="true" />
                 <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="fbb0d0b4-effb-4ab1-8ee2-df0d28b21163" isActive="true" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                 <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -952,6 +1335,7 @@
                 <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
                 <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="f0663cd4-da7c-43cc-9cda-bbc7923d5431" isActive="true" />
                 <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="4bc0cb96-4708-4ea0-82b2-7672b4c339da" isActive="true" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                 <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -990,6 +1374,7 @@
                 <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
                 <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="f0663cd4-da7c-43cc-9cda-bbc7923d5431" isActive="true" />
                 <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="26a9615e-ee5e-4c6e-874c-934949dcebb8" isActive="true" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                 <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -1039,6 +1424,7 @@
                 <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Element Value" isActive="true" />
                 <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
                 <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+                <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                 <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -1090,6 +1476,7 @@
             <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Element Value" isActive="true" />
             <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
             <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -1139,6 +1526,7 @@
             <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Element Value" isActive="true" />
             <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
             <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+            <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -1148,109 +1536,9 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="1e61fa7d-4ec9-4611-9bea-5c672d5d06ec" type="Mappable Element Extension" typeId="f9449923-9173-4347-a3a2-38d1eb66f6b5">
-      <name>Component View Extension</name>
-      <display>Component View Extension extends View</display>
-      <isAbstract>false</isAbstract>
-      <sort-children>manually</sort-children>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>d808bb0b-ffc9-4b95-887b-ee3869ba4db8</parentFolderId>
-      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-      <packageName>Intent.Modelers.UI.Core</packageName>
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="dfd7cc0c-7c7a-47dc-b16d-d3d9f0b7a9b2" name="Mappable Extension Settings">
-          <addedByDefault>true</addedByDefault>
-          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-          <properties>
-            <property name="bd502960-a08e-4138-b3e0-d3dad4439410" display="Extend Target Settings" value="[&quot;7df7efbd-a074-4f54-8b05-95e2e6b3f27d&quot;]" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <metadata />
-      <childElements>
-        <childElement id="2cfd43b2-2a18-4ac0-8cf3-d1aec9d7e699" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
-          <name>Loading Indicator</name>
-          <display>Loading Indicator</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>1e61fa7d-4ec9-4611-9bea-5c672d5d06ec</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
-                <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGcgZGlzcGxheT0ibm9uZSI+DQoJCTxnIGRpc3BsYXk9ImlubGluZSI+DQoJCQkNCgkJCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjQ1IiB5MT0iMTYuNjM5MSIgeDI9IjQ1IiB5Mj0iNi43MDgxIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTApIj4NCgkJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMDA3MEMwIi8+DQoJCQkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzA5QzRGRiIvPg0KCQkJPC9saW5lYXJHcmFkaWVudD4NCgkJCTxwb2x5Z29uIGZpbGw9InVybCgjU1ZHSURfMV8pIiBwb2ludHM9IjUwLDQwLjQgNDcuMSw0My4zIDQ0LjcsNDAuOSA0NC4zLDQwLjQgNDIuMiwzOC40IDQyLjIsMzguNCA0MCwzNi4yIDQyLjksMzMuNCAJCQkiLz4NCgkJPC9nPg0KCQkNCgkJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAxNTcyNzM1NjE2MTMxNzM5MDg0MDAwMDAwMTEyNjczODM2MDY1OTUxMTg5ODBfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjM1LjY2MDQiIHkxPSIxMi40Mzk1IiB4Mj0iNDQuMjcwNSIgeTI9IjMuODI5NiIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMTAyQjUxIi8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMTYzQjc0Ii8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwb2x5Z29uIGRpc3BsYXk9ImlubGluZSIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDE1NzI3MzU2MTYxMzE3MzkwODQwMDAwMDAxMTI2NzM4MzYwNjU5NTExODk4MF8pIiBwb2ludHM9IjQ3LjEsNDMuMyA0Mi45LDQ3LjUgDQoJCQk0Mi43LDQ3LjMgNDAuNSw0NS4xIDQwLjEsNDQuNiA0Mi4yLDQyLjUgMzQuOCw0Mi41IDM0LjgsMzguNCA0Mi4yLDM4LjQgNDQuMyw0MC40IDQ0LjcsNDAuOSAJCSIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KCTxnIGRpc3BsYXk9Im5vbmUiPg0KCQk8ZyBkaXNwbGF5PSJpbmxpbmUiPg0KCQkJDQoJCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDA1NDIyNTYyMjA5Nzc4MjQ5NzAyMDAwMDAxMDgzMTU5NzU5MjI2ODcwOTI1M18iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iNDEuODUiIHkxPSI0MS43IiB4Mj0iNDEuODUiIHkyPSIzMS43NjkxIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTApIj4NCgkJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMDA3MEMwIi8+DQoJCQkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzA5QzRGRiIvPg0KCQkJPC9saW5lYXJHcmFkaWVudD4NCgkJCTxwb2x5Z29uIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwNTQyMjU2MjIwOTc3ODI0OTcwMjAwMDAwMTA4MzE1OTc1OTIyNjg3MDkyNTNfKSIgcG9pbnRzPSI0Ni44LDE1LjQgNDQsMTguMyA0MS41LDE1LjggDQoJCQkJNDEuMSwxNS40IDM5LDEzLjMgMzkuMSwxMy4zIDM2LjksMTEuMiAzOS44LDguMyAJCQkiLz4NCgkJPC9nPg0KCQkNCgkJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwOTg5MTQyOTUwNjU0NzExNzY4NDAwMDAwMDI1ODM4MDI5NzkzNTQwNTM1NTdfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjMyLjUiIHkxPSIzNy41IiB4Mj0iNDEuMTEiIHkyPSIyOC44OSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMTAyQjUxIi8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMTYzQjc0Ii8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwb2x5Z29uIGRpc3BsYXk9ImlubGluZSIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDA5ODkxNDI5NTA2NTQ3MTE3Njg0MDAwMDAwMjU4MzgwMjk3OTM1NDA1MzU1N18pIiBwb2ludHM9IjQ0LDE4LjMgMzkuOCwyMi41IA0KCQkJMzkuNiwyMi4yIDM3LjMsMjAgMzYuOSwxOS42IDM5LjEsMTcuNCAzMS43LDE3LjQgMzEuNywxMy4zIDM5LDEzLjMgNDEuMSwxNS40IDQxLjUsMTUuOCAJCSIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KCTxnIGRpc3BsYXk9Im5vbmUiPg0KCQk8ZyBkaXNwbGF5PSJpbmxpbmUiPg0KCQkJDQoJCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDEwMDM4MDI3MTM5MTExNjU2NTQ4MDAwMDAxMzEzOTMzOTAwMTgwMDM1Mzk3OF8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iNDIuNyIgeTE9IjQwLjU2MzUiIHgyPSI0Mi43IiB5Mj0iMzAuNjMyNSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCQkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzAwNzBDMCIvPg0KCQkJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMwOUM0RkYiLz4NCgkJCTwvbGluZWFyR3JhZGllbnQ+DQoJCQk8cG9seWdvbiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTAwMzgwMjcxMzkxMTE2NTY1NDgwMDAwMDEzMTM5MzM5MDAxODAwMzUzOTc4XykiIHBvaW50cz0iNDcuNywxNi41IDQ0LjgsMTkuNCA0Mi40LDE2LjkgDQoJCQkJNDEuOSwxNi41IDM5LjksMTQuNSAzOS45LDE0LjUgMzcuNywxMi4zIDQwLjYsOS40IAkJCSIvPg0KCQk8L2c+DQoJCQ0KCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDEwMzIyMzMzNjI5MTQwODUyNzQyMDAwMDAwNTM4NTk4OTQ4OTEyMzQzNDExN18iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzMuMzc1IiB5MT0iMzYuMzc1IiB4Mj0iNDEuOTg1IiB5Mj0iMjcuNzY0OSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMTAyQjUxIi8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMTYzQjc0Ii8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwb2x5Z29uIGRpc3BsYXk9ImlubGluZSIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDEwMzIyMzMzNjI5MTQwODUyNzQyMDAwMDAwNTM4NTk4OTQ4OTEyMzQzNDExN18pIiBwb2ludHM9IjQ0LjgsMTkuNCA0MC42LDIzLjYgDQoJCQk0MC40LDIzLjQgMzguMiwyMS4xIDM3LjcsMjAuNyAzOS45LDE4LjUgMzIuNSwxOC41IDMyLjUsMTQuNSAzOS45LDE0LjUgNDEuOSwxNi41IDQyLjQsMTYuOSAJCSIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMDQ4NDg1ODEzMDc1MDcwNTM0NzYwMDAwMDEwOTA0NDg0ODk1MDk2OTgyNDU0XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyLjUiIHkxPSIyNy44NSIgeDI9IjQ3LjYiIHkyPSIyNy44NSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMDU5OUMiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzAwQzBGMiIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBhdGggZGlzcGxheT0ibm9uZSIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDA0ODQ4NTgxMzA3NTA3MDUzNDc2MDAwMDAxMDkwNDQ4NDg5NTA5Njk4MjQ1NF8pIiBkPSJNMzguMywxOS45DQoJCWMtMC4zLDAtMC41LTAuMy0wLjQtMC41YzAtMC40LDAuMS0wLjgsMC4xLTEuMmMwLTUuOC00LjctMTAuNi0xMC42LTEwLjZjLTQuMywwLTgsMi42LTkuNyw2LjNjLTAuMSwwLjMtMC40LDAuNC0wLjcsMC4zDQoJCWMtMS4zLTAuNi0yLjktMC43LTQuNi0wLjFjLTIuNCwwLjgtMy45LDMuMS0zLjgsNS42YzAsMC4yLDAsMC4zLDAsMC41cy0wLjEsMC40LTAuMywwLjVjLTMuNCwxLjMtNS44LDQuMi01LjgsNy42DQoJCWMwLDQuNiw0LjUsOC40LDEwLjEsOC40SDM3YzUuOCwwLDEwLjYtMy44LDEwLjYtOC40QzQ3LjUsMjQsNDMuNSwyMC40LDM4LjMsMTkuOXogTTM4LjEsMzQuOEgxMS4zbDAsMGMtMi40LDAtNC41LTEuMi01LjYtMi45bDAsMA0KCQljLTAuOC0xLTEuMi0yLjItMS4yLTMuNmMwLTIuOCwxLjktNS4xLDQuNS01LjljMC41LTAuMSwxLjEtMC4yLDEuNy0wLjJjMC4xLDAsMC4zLDAsMC40LDBjLTAuNS0wLjYtMC44LTEuNC0wLjgtMi4yDQoJCWMwLTAuMSwwLTAuMSwwLTAuMmMwLTIuMywyLTQuMiw0LjQtNC4yYzAuOCwwLDEuNSwwLjIsMi4xLDAuNWMwLjgsMC40LDEuNCwxLDEuOCwxLjdjMC0wLjcsMC4xLTEuNSwwLjQtMi4xDQoJCWMxLjEtMy42LDQuMy02LjIsOC4zLTYuMmM0LjgsMCw4LjYsMy45LDguNiw4LjZjMCwwLjYtMC4xLDEuMS0wLjIsMS43Yy0wLjIsMC45LTAuNSwxLjgtMSwyLjZjMC43LTAuMywxLjUtMC41LDIuNC0wLjZsMCwwDQoJCWMwLjMsMCwwLjYsMCwwLjksMGM0LjIsMCw3LjYsMi45LDcuNiw2LjVDNDUuNywzMS45LDQyLjMsMzQuOCwzOC4xLDM0Ljh6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwNzY1NjYxNzc4MDkxNjEwNjQyMDAwMDAwMTU0OTU5MTUzNDA1NDQ1MjgwMzhfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjMuNjEiIHkxPSIzMS43MzQzIiB4Mj0iNDguNjkiIHkyPSIzMS43MzQzIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTApIj4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzAwNTk5QyIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMDBDMEYyIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBkaXNwbGF5PSJub25lIiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMDc2NTY2MTc3ODA5MTYxMDY0MjAwMDAwMDE1NDk1OTE1MzQwNTQ0NTI4MDM4XykiIGQ9Ik00OC43LDI0LjVjMCwzLjYtMi45LDYuNy02LjksNy45DQoJCUM0MC45LDMyLjYsNDAsMzIsNDAsMzF2LTAuMmMwLTAuNiwwLjQtMSwwLjktMS4yYzIuNi0wLjgsNC40LTIuNyw0LjQtNC45YzAtMi45LTMuMi01LjMtNy4yLTUuM2MtMC40LDAtMC44LDAtMS4yLDAuMWwwLDANCgkJYy0wLjEsMC0wLjIsMC0wLjMsMGMtMC45LDAtMS43LTAuNy0xLjctMS43YzAtMC4yLDAtMC40LDAuMS0wLjV2LTAuMWMwLjMtMC44LDAuNC0xLjYsMC40LTIuNGMwLTQtMy4yLTcuMi03LjItNy4yDQoJCWMtMy40LDAtNi4yLDIuNC03LDUuNWwwLDBjLTAuMiwwLjgtMC44LDEuMy0xLjYsMS4zYy0wLjUsMC0wLjktMC4yLTEuMi0wLjVsMCwwYy0wLjYtMC42LTEuNS0xLTIuNS0xYy0xLjksMC0zLjUsMS41LTMuNSwzLjUNCgkJYzAsMC40LDAsMC42LDAuMSwwLjljMC4xLDAuMiwwLjIsMC42LDAuMiwwLjljMC4xLDAuOC0wLjYsMS41LTEuMywxLjZsMCwwYy0yLjcsMC40LTQuNSwyLjctNC41LDQuOWMwLDIuNSwyLjMsNC42LDUuNSw1LjINCgkJYzAuNywwLjEsMS4xLDAuNywxLjEsMS4zdjAuMWMwLDAuOS0wLjcsMS42LTEuNiwxLjRjLTQuOC0wLjYtOC41LTQuMS04LjUtOC4zYzAtMy4zLDIuMi02LDUuNS03LjRjMC4xLDAsMC4zLTAuMSwwLjQtMC4yDQoJCWMwLTAuMSwwLjEtMC4xLDAuMS0wLjNjMC0wLjEsMC0wLjQsMC0wLjVjLTAuMi0yLjcsMS43LTUuMiw0LjQtNS45YzEuNS0wLjMsMi44LTAuMiw0LDAuM2MwLjMsMC4xLDAuNSwwLDAuNy0wLjMNCgkJQzIwLjQsNS44LDI1LjEsMywzMC4zLDRjNS4xLDEsOC43LDUuNyw4LjUsMTAuOGMwLDAuMiwwLDAuNS0wLjEsMC43YzAsMC4zLDAuMiwwLjUsMC40LDAuNUM0NC42LDE2LjcsNDguNywyMC4yLDQ4LjcsMjQuNXoiLz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMDk1MzM4OTI5MjA0OTc3NDYwNzMwMDAwMDE0NTUyNDQ1NzU1OTYzMjcyMDgwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4wMDY1IiB5MT0iMy4xODIzIiB4Mj0iMjUuMjk5OSIgeTI9IjQ4LjIzMDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMjY2NkM5Ii8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM3Nzk3QzkiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwOTUzMzg5MjkyMDQ5Nzc0NjA3MzAwMDAwMTQ1NTI0NDU3NTU5NjMyNzIwODBfKSIgZD0iTTQ3LjcsMTQuOWMwLDctNS43LDEyLjctMTIuNywxMi43DQoJCWMtMS42LDAtMy0wLjMtNC40LTAuOEwyNS4zLDMyTDExLjYsNDUuOGwwLDBDMTAuMSw0Ny4zLDcuOSw0Ny43LDYsNDdjLTAuNy0wLjItMS4zLTAuNy0xLjktMS4yYy0xLjctMS43LTItNC4zLTAuOS02LjNsMCwwbDAsMA0KCQljMC4xLTAuMSwwLjEtMC4yLDAuMi0wLjNjMC4xLTAuMSwwLjItMC4zLDAuMy0wLjRsMCwwYzAtMC4xLDAuMS0wLjEsMC4xLTAuMmwwLDBDNCwzOC41LDQsMzguNCw0LDM4LjRsMC4xLTAuMWwwLDBMNSwzNy40bDAuMS0wLjENCgkJTDIzLDE5LjRjLTAuNS0xLjQtMC44LTIuOS0wLjgtNC41YzAtNyw1LjctMTIuNywxMi43LTEyLjdjMC4yLDAsMC41LDAsMC44LDBjMS43LDAuMSwzLjMsMC41LDQuOCwxLjJsLTYuNyw2LjdsMC43LDIuNmwwLjUsMg0KCQlsMiwwLjZsMi43LDAuN2w2LjctNi43YzAuNywxLjUsMS4yLDMuMSwxLjIsNC44QzQ3LjYsMTQuNCw0Ny43LDE0LjcsNDcuNywxNC45eiIvPg0KPC9nPg0KPC9zdmc+DQo=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
-                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="return element.hasStereotype(&quot;d3ac312a-62f0-4150-8e0d-e38dfc411997&quot;)" isActive="true" />
-                <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
-                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
-                <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
-                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
-                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
-                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="d3ac312a-62f0-4150-8e0d-e38dfc411997" isActive="true" />
-                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="6b92bbac-143b-4faa-96bd-ab668bbbb920" isActive="true" />
-                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="2e482e27-b176-43cf-b80a-33123036142a" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
-          <name>Error Message</name>
-          <display>Error Message</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>1e61fa7d-4ec9-4611-9bea-5c672d5d06ec</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
-                <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGcgZGlzcGxheT0ibm9uZSI+DQoJCTxnIGRpc3BsYXk9ImlubGluZSI+DQoJCQkNCgkJCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjQ1IiB5MT0iMTYuNjM5MSIgeDI9IjQ1IiB5Mj0iNi43MDgxIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTApIj4NCgkJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMDA3MEMwIi8+DQoJCQkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzA5QzRGRiIvPg0KCQkJPC9saW5lYXJHcmFkaWVudD4NCgkJCTxwb2x5Z29uIGZpbGw9InVybCgjU1ZHSURfMV8pIiBwb2ludHM9IjUwLDQwLjQgNDcuMSw0My4zIDQ0LjcsNDAuOSA0NC4zLDQwLjQgNDIuMiwzOC40IDQyLjIsMzguNCA0MCwzNi4yIDQyLjksMzMuNCAJCQkiLz4NCgkJPC9nPg0KCQkNCgkJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAxNTcyNzM1NjE2MTMxNzM5MDg0MDAwMDAwMTEyNjczODM2MDY1OTUxMTg5ODBfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjM1LjY2MDQiIHkxPSIxMi40Mzk1IiB4Mj0iNDQuMjcwNSIgeTI9IjMuODI5NiIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMTAyQjUxIi8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMTYzQjc0Ii8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwb2x5Z29uIGRpc3BsYXk9ImlubGluZSIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDE1NzI3MzU2MTYxMzE3MzkwODQwMDAwMDAxMTI2NzM4MzYwNjU5NTExODk4MF8pIiBwb2ludHM9IjQ3LjEsNDMuMyA0Mi45LDQ3LjUgDQoJCQk0Mi43LDQ3LjMgNDAuNSw0NS4xIDQwLjEsNDQuNiA0Mi4yLDQyLjUgMzQuOCw0Mi41IDM0LjgsMzguNCA0Mi4yLDM4LjQgNDQuMyw0MC40IDQ0LjcsNDAuOSAJCSIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KCTxnIGRpc3BsYXk9Im5vbmUiPg0KCQk8ZyBkaXNwbGF5PSJpbmxpbmUiPg0KCQkJDQoJCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDA1NDIyNTYyMjA5Nzc4MjQ5NzAyMDAwMDAxMDgzMTU5NzU5MjI2ODcwOTI1M18iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iNDEuODUiIHkxPSI0MS43IiB4Mj0iNDEuODUiIHkyPSIzMS43NjkxIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTApIj4NCgkJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMDA3MEMwIi8+DQoJCQkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzA5QzRGRiIvPg0KCQkJPC9saW5lYXJHcmFkaWVudD4NCgkJCTxwb2x5Z29uIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwNTQyMjU2MjIwOTc3ODI0OTcwMjAwMDAwMTA4MzE1OTc1OTIyNjg3MDkyNTNfKSIgcG9pbnRzPSI0Ni44LDE1LjQgNDQsMTguMyA0MS41LDE1LjggDQoJCQkJNDEuMSwxNS40IDM5LDEzLjMgMzkuMSwxMy4zIDM2LjksMTEuMiAzOS44LDguMyAJCQkiLz4NCgkJPC9nPg0KCQkNCgkJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwOTg5MTQyOTUwNjU0NzExNzY4NDAwMDAwMDI1ODM4MDI5NzkzNTQwNTM1NTdfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjMyLjUiIHkxPSIzNy41IiB4Mj0iNDEuMTEiIHkyPSIyOC44OSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMTAyQjUxIi8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMTYzQjc0Ii8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwb2x5Z29uIGRpc3BsYXk9ImlubGluZSIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDA5ODkxNDI5NTA2NTQ3MTE3Njg0MDAwMDAwMjU4MzgwMjk3OTM1NDA1MzU1N18pIiBwb2ludHM9IjQ0LDE4LjMgMzkuOCwyMi41IA0KCQkJMzkuNiwyMi4yIDM3LjMsMjAgMzYuOSwxOS42IDM5LjEsMTcuNCAzMS43LDE3LjQgMzEuNywxMy4zIDM5LDEzLjMgNDEuMSwxNS40IDQxLjUsMTUuOCAJCSIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KCTxnIGRpc3BsYXk9Im5vbmUiPg0KCQk8ZyBkaXNwbGF5PSJpbmxpbmUiPg0KCQkJDQoJCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDEwMDM4MDI3MTM5MTExNjU2NTQ4MDAwMDAxMzEzOTMzOTAwMTgwMDM1Mzk3OF8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iNDIuNyIgeTE9IjQwLjU2MzUiIHgyPSI0Mi43IiB5Mj0iMzAuNjMyNSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCQkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzAwNzBDMCIvPg0KCQkJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMwOUM0RkYiLz4NCgkJCTwvbGluZWFyR3JhZGllbnQ+DQoJCQk8cG9seWdvbiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTAwMzgwMjcxMzkxMTE2NTY1NDgwMDAwMDEzMTM5MzM5MDAxODAwMzUzOTc4XykiIHBvaW50cz0iNDcuNywxNi41IDQ0LjgsMTkuNCA0Mi40LDE2LjkgDQoJCQkJNDEuOSwxNi41IDM5LjksMTQuNSAzOS45LDE0LjUgMzcuNywxMi4zIDQwLjYsOS40IAkJCSIvPg0KCQk8L2c+DQoJCQ0KCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDEwMzIyMzMzNjI5MTQwODUyNzQyMDAwMDAwNTM4NTk4OTQ4OTEyMzQzNDExN18iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzMuMzc1IiB5MT0iMzYuMzc1IiB4Mj0iNDEuOTg1IiB5Mj0iMjcuNzY0OSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMTAyQjUxIi8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMTYzQjc0Ii8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwb2x5Z29uIGRpc3BsYXk9ImlubGluZSIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDEwMzIyMzMzNjI5MTQwODUyNzQyMDAwMDAwNTM4NTk4OTQ4OTEyMzQzNDExN18pIiBwb2ludHM9IjQ0LjgsMTkuNCA0MC42LDIzLjYgDQoJCQk0MC40LDIzLjQgMzguMiwyMS4xIDM3LjcsMjAuNyAzOS45LDE4LjUgMzIuNSwxOC41IDMyLjUsMTQuNSAzOS45LDE0LjUgNDEuOSwxNi41IDQyLjQsMTYuOSAJCSIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMDQ4NDg1ODEzMDc1MDcwNTM0NzYwMDAwMDEwOTA0NDg0ODk1MDk2OTgyNDU0XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyLjUiIHkxPSIyNy44NSIgeDI9IjQ3LjYiIHkyPSIyNy44NSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUwKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMDU5OUMiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzAwQzBGMiIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBhdGggZGlzcGxheT0ibm9uZSIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDA0ODQ4NTgxMzA3NTA3MDUzNDc2MDAwMDAxMDkwNDQ4NDg5NTA5Njk4MjQ1NF8pIiBkPSJNMzguMywxOS45DQoJCWMtMC4zLDAtMC41LTAuMy0wLjQtMC41YzAtMC40LDAuMS0wLjgsMC4xLTEuMmMwLTUuOC00LjctMTAuNi0xMC42LTEwLjZjLTQuMywwLTgsMi42LTkuNyw2LjNjLTAuMSwwLjMtMC40LDAuNC0wLjcsMC4zDQoJCWMtMS4zLTAuNi0yLjktMC43LTQuNi0wLjFjLTIuNCwwLjgtMy45LDMuMS0zLjgsNS42YzAsMC4yLDAsMC4zLDAsMC41cy0wLjEsMC40LTAuMywwLjVjLTMuNCwxLjMtNS44LDQuMi01LjgsNy42DQoJCWMwLDQuNiw0LjUsOC40LDEwLjEsOC40SDM3YzUuOCwwLDEwLjYtMy44LDEwLjYtOC40QzQ3LjUsMjQsNDMuNSwyMC40LDM4LjMsMTkuOXogTTM4LjEsMzQuOEgxMS4zbDAsMGMtMi40LDAtNC41LTEuMi01LjYtMi45bDAsMA0KCQljLTAuOC0xLTEuMi0yLjItMS4yLTMuNmMwLTIuOCwxLjktNS4xLDQuNS01LjljMC41LTAuMSwxLjEtMC4yLDEuNy0wLjJjMC4xLDAsMC4zLDAsMC40LDBjLTAuNS0wLjYtMC44LTEuNC0wLjgtMi4yDQoJCWMwLTAuMSwwLTAuMSwwLTAuMmMwLTIuMywyLTQuMiw0LjQtNC4yYzAuOCwwLDEuNSwwLjIsMi4xLDAuNWMwLjgsMC40LDEuNCwxLDEuOCwxLjdjMC0wLjcsMC4xLTEuNSwwLjQtMi4xDQoJCWMxLjEtMy42LDQuMy02LjIsOC4zLTYuMmM0LjgsMCw4LjYsMy45LDguNiw4LjZjMCwwLjYtMC4xLDEuMS0wLjIsMS43Yy0wLjIsMC45LTAuNSwxLjgtMSwyLjZjMC43LTAuMywxLjUtMC41LDIuNC0wLjZsMCwwDQoJCWMwLjMsMCwwLjYsMCwwLjksMGM0LjIsMCw3LjYsMi45LDcuNiw2LjVDNDUuNywzMS45LDQyLjMsMzQuOCwzOC4xLDM0Ljh6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwNzY1NjYxNzc4MDkxNjEwNjQyMDAwMDAwMTU0OTU5MTUzNDA1NDQ1MjgwMzhfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjMuNjEiIHkxPSIzMS43MzQzIiB4Mj0iNDguNjkiIHkyPSIzMS43MzQzIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTApIj4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzAwNTk5QyIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMDBDMEYyIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBkaXNwbGF5PSJub25lIiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMDc2NTY2MTc3ODA5MTYxMDY0MjAwMDAwMDE1NDk1OTE1MzQwNTQ0NTI4MDM4XykiIGQ9Ik00OC43LDI0LjVjMCwzLjYtMi45LDYuNy02LjksNy45DQoJCUM0MC45LDMyLjYsNDAsMzIsNDAsMzF2LTAuMmMwLTAuNiwwLjQtMSwwLjktMS4yYzIuNi0wLjgsNC40LTIuNyw0LjQtNC45YzAtMi45LTMuMi01LjMtNy4yLTUuM2MtMC40LDAtMC44LDAtMS4yLDAuMWwwLDANCgkJYy0wLjEsMC0wLjIsMC0wLjMsMGMtMC45LDAtMS43LTAuNy0xLjctMS43YzAtMC4yLDAtMC40LDAuMS0wLjV2LTAuMWMwLjMtMC44LDAuNC0xLjYsMC40LTIuNGMwLTQtMy4yLTcuMi03LjItNy4yDQoJCWMtMy40LDAtNi4yLDIuNC03LDUuNWwwLDBjLTAuMiwwLjgtMC44LDEuMy0xLjYsMS4zYy0wLjUsMC0wLjktMC4yLTEuMi0wLjVsMCwwYy0wLjYtMC42LTEuNS0xLTIuNS0xYy0xLjksMC0zLjUsMS41LTMuNSwzLjUNCgkJYzAsMC40LDAsMC42LDAuMSwwLjljMC4xLDAuMiwwLjIsMC42LDAuMiwwLjljMC4xLDAuOC0wLjYsMS41LTEuMywxLjZsMCwwYy0yLjcsMC40LTQuNSwyLjctNC41LDQuOWMwLDIuNSwyLjMsNC42LDUuNSw1LjINCgkJYzAuNywwLjEsMS4xLDAuNywxLjEsMS4zdjAuMWMwLDAuOS0wLjcsMS42LTEuNiwxLjRjLTQuOC0wLjYtOC41LTQuMS04LjUtOC4zYzAtMy4zLDIuMi02LDUuNS03LjRjMC4xLDAsMC4zLTAuMSwwLjQtMC4yDQoJCWMwLTAuMSwwLjEtMC4xLDAuMS0wLjNjMC0wLjEsMC0wLjQsMC0wLjVjLTAuMi0yLjcsMS43LTUuMiw0LjQtNS45YzEuNS0wLjMsMi44LTAuMiw0LDAuM2MwLjMsMC4xLDAuNSwwLDAuNy0wLjMNCgkJQzIwLjQsNS44LDI1LjEsMywzMC4zLDRjNS4xLDEsOC43LDUuNyw4LjUsMTAuOGMwLDAuMiwwLDAuNS0wLjEsMC43YzAsMC4zLDAuMiwwLjUsMC40LDAuNUM0NC42LDE2LjcsNDguNywyMC4yLDQ4LjcsMjQuNXoiLz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMDk1MzM4OTI5MjA0OTc3NDYwNzMwMDAwMDE0NTUyNDQ1NzU1OTYzMjcyMDgwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4wMDY1IiB5MT0iMy4xODIzIiB4Mj0iMjUuMjk5OSIgeTI9IjQ4LjIzMDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMjY2NkM5Ii8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM3Nzk3QzkiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwOTUzMzg5MjkyMDQ5Nzc0NjA3MzAwMDAwMTQ1NTI0NDU3NTU5NjMyNzIwODBfKSIgZD0iTTQ3LjcsMTQuOWMwLDctNS43LDEyLjctMTIuNywxMi43DQoJCWMtMS42LDAtMy0wLjMtNC40LTAuOEwyNS4zLDMyTDExLjYsNDUuOGwwLDBDMTAuMSw0Ny4zLDcuOSw0Ny43LDYsNDdjLTAuNy0wLjItMS4zLTAuNy0xLjktMS4yYy0xLjctMS43LTItNC4zLTAuOS02LjNsMCwwbDAsMA0KCQljMC4xLTAuMSwwLjEtMC4yLDAuMi0wLjNjMC4xLTAuMSwwLjItMC4zLDAuMy0wLjRsMCwwYzAtMC4xLDAuMS0wLjEsMC4xLTAuMmwwLDBDNCwzOC41LDQsMzguNCw0LDM4LjRsMC4xLTAuMWwwLDBMNSwzNy40bDAuMS0wLjENCgkJTDIzLDE5LjRjLTAuNS0xLjQtMC44LTIuOS0wLjgtNC41YzAtNyw1LjctMTIuNywxMi43LTEyLjdjMC4yLDAsMC41LDAsMC44LDBjMS43LDAuMSwzLjMsMC41LDQuOCwxLjJsLTYuNyw2LjdsMC43LDIuNmwwLjUsMg0KCQlsMiwwLjZsMi43LDAuN2w2LjctNi43YzAuNywxLjUsMS4yLDMuMSwxLjIsNC44QzQ3LjYsMTQuNCw0Ny43LDE0LjcsNDcuNywxNC45eiIvPg0KPC9nPg0KPC9zdmc+DQo=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
-                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="return element.hasStereotype(&quot;d3ac312a-62f0-4150-8e0d-e38dfc411997&quot;)" isActive="true" />
-                <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
-                <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
-                <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
-                <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
-                <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
-                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
-                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="d3ac312a-62f0-4150-8e0d-e38dfc411997" isActive="true" />
-                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="3bd43210-4f4d-4da5-9327-c8c08fa21965" isActive="true" />
-                <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
-                <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
-    </childElement>
     <childElement id="a91de0b7-70f4-4034-9e3b-a4564d8aedb5" type="Mappable Element Extension" typeId="f9449923-9173-4347-a3a2-38d1eb66f6b5">
       <name>On Click Extensions</name>
-      <display>On Click Extensions extends On Click, On Valid Submit, Event Emitter</display>
+      <display>On Click Extensions extends On Click, Event Emitter</display>
       <isAbstract>false</isAbstract>
       <sort-children>manually</sort-children>
       <genericTypes />
@@ -1264,7 +1552,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="bd502960-a08e-4138-b3e0-d3dad4439410" display="Extend Target Settings" value="[&quot;b80f61a7-3b9e-4b75-806f-71d4f8b9900a&quot;,&quot;82cf639a-6005-4bb8-8f38-06becffad225&quot;,&quot;b5dac39d-db1d-40ff-8763-3a9fd5612af7&quot;]" isActive="true" />
+            <property name="bd502960-a08e-4138-b3e0-d3dad4439410" display="Extend Target Settings" value="[&quot;b80f61a7-3b9e-4b75-806f-71d4f8b9900a&quot;,&quot;b5dac39d-db1d-40ff-8763-3a9fd5612af7&quot;]" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

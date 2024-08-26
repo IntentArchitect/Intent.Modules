@@ -6,6 +6,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.FactoryExtensions;
+using Intent.Modules.Common.CSharp.RazorBuilder;
 using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
@@ -154,7 +155,10 @@ namespace Intent.Modules.Common.CSharp.Templates
             CSharpTypesCache.AddKnownType(fullyQualifiedTypeName);
         }
 
-        public virtual ICSharpCodeContext RootCodeContext => this is ICSharpFileBuilderTemplate builder ? builder.CSharpFile : null;
+        //public virtual ICSharpCodeContext RootCodeContext => this is ICSharpFileBuilderTemplate builder ? builder.CSharpFile : null;
+        public virtual ICSharpCodeContext? RootCodeContext => this is ICSharpFileBuilderTemplate builder
+            ? builder.CSharpFile.TypeDeclarations.FirstOrDefault() ?? builder.CSharpFile.Interfaces.FirstOrDefault() ?? (ICSharpCodeContext)builder.CSharpFile
+            : null;
 
         /// <summary>
         /// Add the using clause with the specified <paramref name="namespace"/> to this template's file.

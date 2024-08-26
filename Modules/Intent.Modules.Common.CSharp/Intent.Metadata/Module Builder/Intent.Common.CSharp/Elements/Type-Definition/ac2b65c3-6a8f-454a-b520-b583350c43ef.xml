@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="ac2b65c3-6a8f-454a-b520-b583350c43ef" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">
   <name>Dictionary</name>
-  <display>Dictionary</display>
+  <display>Dictionary&lt;TKey, TValue&gt;</display>
   <isAbstract>false</isAbstract>
   <genericTypes>
     <genericType id="c1f297bc-68a6-4bd4-8c1b-ffbcb576aa1a">

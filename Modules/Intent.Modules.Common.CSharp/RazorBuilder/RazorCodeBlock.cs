@@ -17,6 +17,19 @@ internal class RazorCodeBlock : CSharpClass, IRazorCodeBlock
     }
 
     public IRazorFile RazorFile { get; }
+    public void Remove()
+    {
+        Parent!.ChildNodes.Remove(this);
+        Parent = null;
+    }
+
+    public void Replace(IRazorFileNode node)
+    {
+        var index = Parent!.ChildNodes.IndexOf(this);
+        Parent!.ChildNodes.Remove(this);
+        Parent!.InsertChildNode(index, node);
+    }
+
     public IList<IRazorFileNode> ChildNodes { get; } = new List<IRazorFileNode>();
     public IRazorFileNode? Parent { get; set; }
     ICSharpTemplate IBuildsCSharpMembers.Template => File.Template;

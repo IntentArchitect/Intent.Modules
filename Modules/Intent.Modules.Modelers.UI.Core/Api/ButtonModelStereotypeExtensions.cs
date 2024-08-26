@@ -53,6 +53,11 @@ namespace Intent.Modelers.UI.Core.Api
                 return new TypeOptions(_stereotype.GetProperty<string>("Type"));
             }
 
+            public IElement Form()
+            {
+                return _stereotype.GetProperty<IElement>("Form");
+            }
+
             public string OnClick()
             {
                 return _stereotype.GetProperty<string>("On Click");

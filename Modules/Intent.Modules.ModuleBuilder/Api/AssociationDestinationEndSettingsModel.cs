@@ -63,6 +63,7 @@ namespace Intent.ModuleBuilder.Api
                     .Select(x => new ImplementedTraitPersistable() { Id = x.DefinitionId, Name = x.Name })
                     .ToList(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
+                ValidateFunction = this.GetSettings().ValidateFunction(),
                 NameAccessibilityMode = Enum.Parse<FieldAccessibilityMode>(this.GetSettings().NameAccessibility().Value),
                 DefaultNameFunction = this.GetSettings().DefaultNameFunction(),
                 NameMustBeUnique = this.GetSettings().NameMustBeUnique(),
