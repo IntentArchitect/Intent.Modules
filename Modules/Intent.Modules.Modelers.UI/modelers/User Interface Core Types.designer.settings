@@ -1737,8 +1737,9 @@ return display;
               <represents>invokable</represents>
               <childSettings>
                 <childSetting id="b78d23af-9706-40e7-801a-7feee3070a18" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
+                  <filterFunction>return element.getParent().getChildren().some(x =&gt; isHost(x));</filterFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
-                  <isMappableFunction>return element.getParent().isHostSource();</isMappableFunction>
+                  <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>false</isTraversable>
                   <traversableTypes />
                   <canBeModified>false</canBeModified>
@@ -1746,16 +1747,17 @@ return display;
                 </childSetting>
                 <childSetting id="4b4d2e82-9a84-4229-8a82-323fc44b3094" name="Invocation" type="Invocation" typeId="18f87cd6-d8d8-4518-8931-58653d537467" version="2.0.0">
                   <allowMultipleMappings>false</allowMultipleMappings>
-                  <isMappableFunction>return element.isHostSource() || element.getParent().isHostSource();</isMappableFunction>
+                  <isMappableFunction>return element.isHost();</isMappableFunction>
                   <isTraversable>false</isTraversable>
                   <traversableTypes />
                   <canBeModified>false</canBeModified>
                   <represents>invokable</represents>
                   <onMappingsChangedScript>let type = element.getMappedToElements()[0]?.typeReference;
 if (type) {
-    element.setName(element.getMappedToElements()[0].getPath().slice(1).map(x =&gt; x.getName()).join("."));
     element.getChildren()[0].setType(type.toModel());
-}</onMappingsChangedScript>
+}
+element.setName(element.getMappedToElements()[0].getPath().slice(1).map(x =&gt; x.getName()).join("."));
+</onMappingsChangedScript>
                   <staticMappableSettings>
                     <staticMappableSetting id="d7d8824d-63ae-4f95-9923-21bad3583749" name="response" type="response" typeId="d7d8824d-63ae-4f95-9923-21bad3583749" version="2.0.0">
                       <displayFunction>return [
@@ -1764,7 +1766,7 @@ if (type) {
     { text: `${element.typeReference?.display || "void"}`, cssClass: "typeref", targetId: element.typeReference?.typeId }
 ];</displayFunction>
                       <allowMultipleMappings>true</allowMultipleMappings>
-                      <isMappableFunction>return element.getParent().getIsMapped() &amp;&amp; element.getParent().getMappedToElements()[0].typeReference.getType() != null;</isMappableFunction>
+                      <isMappableFunction>return element.getParent().getIsMapped() &amp;&amp; element.getParent().getMappedToElements()[0]?.typeReference?.getType() != null;</isMappableFunction>
                       <isTraversable>true</isTraversable>
                       <traversableTypes />
                       <canBeModified>false</canBeModified>
@@ -1774,6 +1776,7 @@ if (type) {
                   </staticMappableSettings>
                 </childSetting>
                 <childSetting id="7e020d98-73ab-4ec2-bc99-009bc81065f1" name="Call Service Operation Action Target End" type="Call Service Operation Action Target End" typeId="475f0810-2b4a-40da-8eb8-697cb62f7dbe" version="2.0.0">
+                  <filterFunction>return isHost(association) || association.getParent().getChildren().some(x =&gt; isHost(x));</filterFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return false;</isMappableFunction>
                   <isTraversable>false</isTraversable>
