@@ -30,6 +30,18 @@ public class TypeConvertingCSharpMapping : CSharpMappingBase
         {
             return new CSharpAccessMemberStatement(base.GetSourceStatement(), new CSharpInvocationStatement("ToString").WithoutSemicolon());
         }
+
+        if (Mapping.SourceElement.Name == "rowId")
+        {
+
+        }
+        if (Mapping.IsOneToOne() &&
+            Mapping.TargetElement.TypeReference.HasGuidType() == true &&
+            Mapping.SourceElement.TypeReference.IsNullable == false &&
+            Mapping.SourceElement.TypeReference.HasStringType() == true)
+        {
+            return new CSharpAccessMemberStatement("Guid", new CSharpInvocationStatement("Parse").AddArgument(base.GetSourceStatement()).WithoutSemicolon());
+        }
         if (Mapping.IsOneToOne() &&
             Mapping.TargetElement.TypeReference.Element?.SpecializationType == "Enum" &&
             Mapping.SourceElement.TypeReference.HasIntType())

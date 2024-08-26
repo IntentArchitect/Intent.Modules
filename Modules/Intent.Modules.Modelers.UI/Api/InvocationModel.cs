@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class InvocationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    public class InvocationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Invocation";
         public const string SpecializationTypeId = "18f87cd6-d8d8-4518-8931-58653d537467";
@@ -34,8 +34,6 @@ namespace Intent.Modelers.UI.Api
         public string Comment => _element.Comment;
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-
-        public ITypeReference TypeReference => _element.TypeReference;
 
         public IElement InternalElement => _element;
 

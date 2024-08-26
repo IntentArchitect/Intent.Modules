@@ -75,6 +75,17 @@
       <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
+    <property id="f2b3038c-188e-4777-833b-15969e3923d7">
+      <name>Validate Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(disabled)</placeholder>
+      <defaultValue />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-api</apiTypeDefinition>
+    </property>
     <property id="6bf94b78-382a-4002-ac88-a569b59e16e6">
       <name>Name Accessibility</name>
       <type>string</type>

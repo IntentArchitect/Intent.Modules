@@ -53,11 +53,6 @@ namespace Intent.Modelers.UI.Api
             .Select(x => new InvocationModel(x))
             .ToList();
 
-        public IList<VariableDeclarationModel> Variables => _element.ChildElements
-            .GetElementsOfType(VariableDeclarationModel.SpecializationTypeId)
-            .Select(x => new VariableDeclarationModel(x))
-            .ToList();
-
         public ReturnModel Return => _element.ChildElements
             .GetElementsOfType(ReturnModel.SpecializationTypeId)
             .Select(x => new ReturnModel(x))

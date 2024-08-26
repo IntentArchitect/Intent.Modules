@@ -35,6 +35,20 @@
       </valueOptions>
       <lookupTypes />
     </property>
+    <property id="2265736b-4381-42dc-9dbf-b757188837bc">
+      <name>Form</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-children</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes>
+        <type>1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd</type>
+      </lookupTypes>
+      <lookupInternalTargetPropertyId>return element.getParent("624513a6-cba8-4dde-8ebe-6b19f00f0364").id // Component View</lookupInternalTargetPropertyId>
+      <isActiveFunction>return getProperty("7cee794d-e1a7-4590-b65a-6e56914a2a97").getValue() == "Submit" // Type</isActiveFunction>
+      <isRequiredFunction>return element.getParent("1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd") == null // Form</isRequiredFunction>
+    </property>
     <property id="d05f7b5b-fe45-4cbb-b938-380a4b68c0df">
       <name>On Click</name>
       <type>string</type>
