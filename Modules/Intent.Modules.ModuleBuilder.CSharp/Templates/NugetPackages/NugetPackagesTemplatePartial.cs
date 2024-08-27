@@ -33,7 +33,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
             CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
                 .AddUsing("System")
                 .AddUsing("Intent.Engine")
-                .AddUsing("using Intent.Modules.Common.VisualStudio")
+                .AddUsing("Intent.Modules.Common.VisualStudio")
                 .AddUsing("Intent.Modules.Common.CSharp.Nuget")
                 .AddClass($"NugetPackages", @class =>
                 {
