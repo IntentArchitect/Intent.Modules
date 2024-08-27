@@ -78,162 +78,6 @@
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
-    <elementSetting type="NuGet Package" typeId="f747cc37-29ee-488a-8dbe-755e856a842d">
-      <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" />
-      <saveAsOwnFile>true</saveAsOwnFile>
-      <displayFunction>let packageSettingsStereoTypeId = "265221a5-779c-46c9-a367-8b07b435803b";
-let settings = element.getStereotype(packageSettingsStereoTypeId);
-let locked = null;
-
-if (settings){
-    if (settings.getProperty("Locked")?.value == true){
-        locked = "[locked]";
-    }
-}
-
-let displayName = element.getName();
-let additionalName = null;
-
-if (settings.getProperty("Friendly Name")?.value){
-    displayName = settings.getProperty("Friendly Name")?.value;
-    additionalName = getName();
-}
-
-const result = [{ text: `${displayName}` }];
-if (additionalName){
-    result.push({ text: ` (${additionalName})`, cssClass: "muted" })
-}
-if (locked) {
-    result.push({ text: ` ${locked}`, cssClass: "keyword" })
-}
-return result; </displayFunction>
-      <allowRename>true</allowRename>
-      <allowAbstract>false</allowAbstract>
-      <allowStatic>false</allowStatic>
-      <allowGenericTypes>false</allowGenericTypes>
-      <allowMapping>false</allowMapping>
-      <allowSorting>true</allowSorting>
-      <sortChildren>by-type-then-by-name</sortChildren>
-      <allowFindInView>false</allowFindInView>
-      <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
-      <allowSetValue>false</allowSetValue>
-      <typeOrder>
-        <type order="0">Package Version</type>
-      </typeOrder>
-      <creationOptions>
-        <option type="element">
-          <text>New Package Version</text>
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAv1JREFUaEPtmN1LFFEYxp/3pFikWTazhqtQEHRRt0UgYlF36YX0H3QXRc4YQmXdhBkh7K7Rff9CmXURZFF31n1QEMHOQO5Elhol6bwxblthOmc+zjqj7Vwt7Pl4fvOcw/POS9gkD20SDvx/IG05p1cIHgDocNlFnmJQzjb0iTS4GsiRjrHSCDNdXk0wE92w+7WrScNIQcpOYNxPKAO9STsjBWkvlJ4CdMz/jbuTltF6IklX5CB5Zw6ERn+RPGcZmR3pBik48wC2+4pkzFum3pRykNIkQMd9Rbp4Yg3oJ1MN0paf7hSgFyBa8xgSuLtoZJ6nGsQTly2UrhBj+B8YZmaIIdvUbiYJ4e0tvewVgdm8cwrAIBG6fwXiMxBGrf7Mo6QhQoFUxLYXHPZ+W4Ye+CWsB2hoMTWQKttSc6R2R6p0xGpHa6Gem5xzGa8OS8UT2RFewgH7ov4mFRRhkn1lIBJTX9HU7m14EAbdtQ3tzMYHYZ5pWKjb9+5Sy5c0wES+I+VCjUaKhja0sUG8Ep5oQbjoKg7or5KGie6Iy3cg6DyDbYgtR+0Lu604MHH7ZpFB6prnty3ONj4Go8uDERB9RUN7GQVGRd8sMohXa+3Nz+xcosUJBjoZ+E7gQh3X33pv7vocFEhV3ywWiCd2/+23Dd/c5hwxznqfwsw8AxL3iTDuCrz+IVzLrwJQ1TeLDVJ58x25UhcLXJc388ozKiVOu6K+mTKQ30Bjnw4xlk6zy50ADoKohYCtK49a6kGC3o0/JU+AvhnkLVnljoQFyRacHgIe+M1jRo9t6g/9xoQGaR39sNw+nR7c8zWs6LXGZ8c+DhPzqhUCg4ZtQ7sm2ys0iGzBqP+XnXFNsDiyvAa5U8wiJ3Oisl9gkLjJGxUw6LxAICqSN6igqOOkIKqSN6rAoPOkIKqSN6igqOPkIIqSN6rAoPPUgDDPWmamOeim1RgnBymoSd5qiP97TSmIquRNHMQToCJ5UwGyDBMzeVMDUm0hcdeX3pG4G6zX/E0D8hMlA5BCY4hHMQAAAABJRU5ErkJggg==" />
-          <specializationType>Package Version</specializationType>
-          <specializationTypeId>231f8cf8-517b-4801-9682-991d22f4e662</specializationTypeId>
-          <defaultName>1.0.0</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <scriptOptions>
-        <option>
-          <text>Get latest from NuGet.org</text>
-          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" />
-          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-async function getLatestNugetPackages(nugetPackageIds) {
-    let taskConfig = {
-        nugetPackageIds: nugetPackageIds,
-    };
-    let jsonResponse = await executeModuleTask("Intent.ModuleBuilder.CSharp.Tasks.NugetUpdater", JSON.stringify(taskConfig));
-    let result = JSON.parse(jsonResponse);
-    if (result === null || result === void 0 ? void 0 : result.errorMessage) {
-        await dialogService.error(result === null || result === void 0 ? void 0 : result.errorMessage);
-        return null; // Exit if there's an error
-    }
-    // Assuming the response matches the ITaskResponse structure
-    let taskResponse = {
-        nugetPackages: result.nugetPackages.map((pkg) =&gt; ({
-            name: pkg.name,
-            versions: pkg.versions.map((ver) =&gt; ({
-                version: ver.version,
-                targetFramework: ver.targetFramework
-            }))
-        }))
-    };
-    return taskResponse; // Return the parsed ITaskResponse
-}
-function updateNugetPackageElements(elements, latestVersions) {
-    elements.filter(x =&gt; !isPackageLocked(x)).forEach(e =&gt; {
-        let packageName = e.getName();
-        let nugetPackage = latestVersions.nugetPackages.find(pkg =&gt; pkg.name === packageName);
-        console.log("synchronizing:" + packageName);
-        synchronizeModel(e, nugetPackage);
-    });
-}
-function synchronizeModel(packageElement, nugetPackage) {
-    const packageVersionSettings = "7af88c37-ce54-49fc-b577-bde869c23462";
-    const dict = new Map();
-    nugetPackage.versions.forEach(v =&gt; {
-        dict.set(v.targetFramework, v.version);
-    });
-    dict.forEach((value, key) =&gt; {
-        console.log(`NuGet:${value}(${key})`);
-    });
-    packageElement.getChildren().forEach(e =&gt; {
-        let versionSettings = e.getStereotype(packageVersionSettings);
-        let targetFramework = versionSettings.getProperty("Minimum Target Framework").value;
-        if (versionSettings.getProperty("Locked").getValue() == true) {
-            if (dict.has(targetFramework)) {
-                dict.delete(targetFramework);
-            }
-        }
-        else {
-            if (dict.has(targetFramework)) {
-                //The version no is the same, no work to do
-                if (dict.get(targetFramework) == e.getName()) {
-                    dict.delete(targetFramework);
-                }
-            }
-        }
-    });
-    dict.forEach((value, key) =&gt; {
-        let existingElement = packageElement.getChildren().find(c =&gt; c.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value == key);
-        if (existingElement) {
-            //Update Version No
-            existingElement.setName(value);
-        }
-        else {
-            //Create new frmework element
-            let element = createElement("Package Version", value, packageElement.id);
-            let versionSettings = element.getStereotype(packageVersionSettings);
-            versionSettings.getProperty("Minimum Target Framework").setValue(key);
-        }
-    });
-}
-function isPackageLocked(element) {
-    var _a;
-    let packageSettings = "265221a5-779c-46c9-a367-8b07b435803b";
-    return ((_a = element.getStereotype(packageSettings).getProperty("Locked")) === null || _a === void 0 ? void 0 : _a.getValue()) == true;
-}
-/// &lt;reference path="../common/nuget-package-updater.ts" /&gt;
-async function updateNuGetPackage(element) {
-    if (isPackageLocked(element))
-        return;
-    let result = await getLatestNugetPackages([element.getName()]);
-    updateNugetPackageElements([element], result);
-    await dialogService.info("Update complete.");
-}
-/**
- * Used by Intent.Modules\Modules\Intent.ModuleBuilder.CSharp
- *
- * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/nuget-package-updater/update-package/update-package.ts
- */
-//Uncomment below
-await updateNuGetPackage(element);
-</script>
-        </option>
-      </scriptOptions>
-      <mappingOptions />
-      <mappingSettings />
-      <childElementSettings />
-    </elementSetting>
     <elementSetting type="NuGet Packages" typeId="4c75c84d-c745-4f0f-b1f4-82eeca01dfc7">
       <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" />
       <saveAsOwnFile>true</saveAsOwnFile>
@@ -361,12 +205,166 @@ await updateAllNuGetPackages(element);
       </scriptOptions>
       <mappingOptions />
       <mappingSettings />
-      <childElementSettings />
-    </elementSetting>
-    <elementSetting type="Package Version" typeId="231f8cf8-517b-4801-9682-991d22f4e662">
-      <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAv1JREFUaEPtmN1LFFEYxp/3pFikWTazhqtQEHRRt0UgYlF36YX0H3QXRc4YQmXdhBkh7K7Rff9CmXURZFF31n1QEMHOQO5Elhol6bwxblthOmc+zjqj7Vwt7Pl4fvOcw/POS9gkD20SDvx/IG05p1cIHgDocNlFnmJQzjb0iTS4GsiRjrHSCDNdXk0wE92w+7WrScNIQcpOYNxPKAO9STsjBWkvlJ4CdMz/jbuTltF6IklX5CB5Zw6ERn+RPGcZmR3pBik48wC2+4pkzFum3pRykNIkQMd9Rbp4Yg3oJ1MN0paf7hSgFyBa8xgSuLtoZJ6nGsQTly2UrhBj+B8YZmaIIdvUbiYJ4e0tvewVgdm8cwrAIBG6fwXiMxBGrf7Mo6QhQoFUxLYXHPZ+W4Ye+CWsB2hoMTWQKttSc6R2R6p0xGpHa6Gem5xzGa8OS8UT2RFewgH7ov4mFRRhkn1lIBJTX9HU7m14EAbdtQ3tzMYHYZ5pWKjb9+5Sy5c0wES+I+VCjUaKhja0sUG8Ep5oQbjoKg7or5KGie6Iy3cg6DyDbYgtR+0Lu604MHH7ZpFB6prnty3ONj4Go8uDERB9RUN7GQVGRd8sMohXa+3Nz+xcosUJBjoZ+E7gQh3X33pv7vocFEhV3ywWiCd2/+23Dd/c5hwxznqfwsw8AxL3iTDuCrz+IVzLrwJQ1TeLDVJ58x25UhcLXJc388ozKiVOu6K+mTKQ30Bjnw4xlk6zy50ADoKohYCtK49a6kGC3o0/JU+AvhnkLVnljoQFyRacHgIe+M1jRo9t6g/9xoQGaR39sNw+nR7c8zWs6LXGZ8c+DhPzqhUCg4ZtQ7sm2ys0iGzBqP+XnXFNsDiyvAa5U8wiJ3Oisl9gkLjJGxUw6LxAICqSN6igqOOkIKqSN6rAoPOkIKqSN6igqOPkIIqSN6rAoPPUgDDPWmamOeim1RgnBymoSd5qiP97TSmIquRNHMQToCJ5UwGyDBMzeVMDUm0hcdeX3pG4G6zX/E0D8hMlA5BCY4hHMQAAAABJRU5ErkJggg==" />
-      <saveAsOwnFile>false</saveAsOwnFile>
-      <displayFunction>let packageVersionStereoTypeId = "7af88c37-ce54-49fc-b577-bde869c23462";
+      <childElementSettings>
+        <childElementSetting type="NuGet Package" typeId="f747cc37-29ee-488a-8dbe-755e856a842d">
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" />
+          <saveAsOwnFile>true</saveAsOwnFile>
+          <displayFunction>let packageSettingsStereoTypeId = "265221a5-779c-46c9-a367-8b07b435803b";
+let settings = element.getStereotype(packageSettingsStereoTypeId);
+let locked = null;
+
+if (settings){
+    if (settings.getProperty("Locked")?.value == true){
+        locked = "[locked]";
+    }
+}
+
+let displayName = element.getName();
+let additionalName = null;
+
+if (settings.getProperty("Friendly Name")?.value){
+    displayName = settings.getProperty("Friendly Name")?.value;
+    additionalName = getName();
+}
+
+const result = [{ text: `${displayName}` }];
+if (additionalName){
+    result.push({ text: ` (${additionalName})`, cssClass: "muted" })
+}
+if (locked) {
+    result.push({ text: ` ${locked}`, cssClass: "keyword" })
+}
+return result; </displayFunction>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren>by-type-then-by-name</sortChildren>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Package Version</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <text>New Package Version</text>
+              <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAv1JREFUaEPtmN1LFFEYxp/3pFikWTazhqtQEHRRt0UgYlF36YX0H3QXRc4YQmXdhBkh7K7Rff9CmXURZFF31n1QEMHOQO5Elhol6bwxblthOmc+zjqj7Vwt7Pl4fvOcw/POS9gkD20SDvx/IG05p1cIHgDocNlFnmJQzjb0iTS4GsiRjrHSCDNdXk0wE92w+7WrScNIQcpOYNxPKAO9STsjBWkvlJ4CdMz/jbuTltF6IklX5CB5Zw6ERn+RPGcZmR3pBik48wC2+4pkzFum3pRykNIkQMd9Rbp4Yg3oJ1MN0paf7hSgFyBa8xgSuLtoZJ6nGsQTly2UrhBj+B8YZmaIIdvUbiYJ4e0tvewVgdm8cwrAIBG6fwXiMxBGrf7Mo6QhQoFUxLYXHPZ+W4Ye+CWsB2hoMTWQKttSc6R2R6p0xGpHa6Gem5xzGa8OS8UT2RFewgH7ov4mFRRhkn1lIBJTX9HU7m14EAbdtQ3tzMYHYZ5pWKjb9+5Sy5c0wES+I+VCjUaKhja0sUG8Ep5oQbjoKg7or5KGie6Iy3cg6DyDbYgtR+0Lu604MHH7ZpFB6prnty3ONj4Go8uDERB9RUN7GQVGRd8sMohXa+3Nz+xcosUJBjoZ+E7gQh3X33pv7vocFEhV3ywWiCd2/+23Dd/c5hwxznqfwsw8AxL3iTDuCrz+IVzLrwJQ1TeLDVJ58x25UhcLXJc388ozKiVOu6K+mTKQ30Bjnw4xlk6zy50ADoKohYCtK49a6kGC3o0/JU+AvhnkLVnljoQFyRacHgIe+M1jRo9t6g/9xoQGaR39sNw+nR7c8zWs6LXGZ8c+DhPzqhUCg4ZtQ7sm2ys0iGzBqP+XnXFNsDiyvAa5U8wiJ3Oisl9gkLjJGxUw6LxAICqSN6igqOOkIKqSN6rAoPOkIKqSN6igqOPkIIqSN6rAoPPUgDDPWmamOeim1RgnBymoSd5qiP97TSmIquRNHMQToCJ5UwGyDBMzeVMDUm0hcdeX3pG4G6zX/E0D8hMlA5BCY4hHMQAAAABJRU5ErkJggg==" />
+              <specializationType>Package Version</specializationType>
+              <specializationTypeId>231f8cf8-517b-4801-9682-991d22f4e662</specializationTypeId>
+              <defaultName>1.0.0</defaultName>
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions>
+            <option>
+              <text>Get latest from NuGet.org</text>
+              <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" />
+              <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+async function getLatestNugetPackages(nugetPackageIds) {
+    let taskConfig = {
+        nugetPackageIds: nugetPackageIds,
+    };
+    let jsonResponse = await executeModuleTask("Intent.ModuleBuilder.CSharp.Tasks.NugetUpdater", JSON.stringify(taskConfig));
+    let result = JSON.parse(jsonResponse);
+    if (result === null || result === void 0 ? void 0 : result.errorMessage) {
+        await dialogService.error(result === null || result === void 0 ? void 0 : result.errorMessage);
+        return null; // Exit if there's an error
+    }
+    // Assuming the response matches the ITaskResponse structure
+    let taskResponse = {
+        nugetPackages: result.nugetPackages.map((pkg) =&gt; ({
+            name: pkg.name,
+            versions: pkg.versions.map((ver) =&gt; ({
+                version: ver.version,
+                targetFramework: ver.targetFramework
+            }))
+        }))
+    };
+    return taskResponse; // Return the parsed ITaskResponse
+}
+function updateNugetPackageElements(elements, latestVersions) {
+    elements.filter(x =&gt; !isPackageLocked(x)).forEach(e =&gt; {
+        let packageName = e.getName();
+        let nugetPackage = latestVersions.nugetPackages.find(pkg =&gt; pkg.name === packageName);
+        console.log("synchronizing:" + packageName);
+        synchronizeModel(e, nugetPackage);
+    });
+}
+function synchronizeModel(packageElement, nugetPackage) {
+    const packageVersionSettings = "7af88c37-ce54-49fc-b577-bde869c23462";
+    const dict = new Map();
+    nugetPackage.versions.forEach(v =&gt; {
+        dict.set(v.targetFramework, v.version);
+    });
+    dict.forEach((value, key) =&gt; {
+        console.log(`NuGet:${value}(${key})`);
+    });
+    packageElement.getChildren().forEach(e =&gt; {
+        let versionSettings = e.getStereotype(packageVersionSettings);
+        let targetFramework = versionSettings.getProperty("Minimum Target Framework").value;
+        if (versionSettings.getProperty("Locked").getValue() == true) {
+            if (dict.has(targetFramework)) {
+                dict.delete(targetFramework);
+            }
+        }
+        else {
+            if (dict.has(targetFramework)) {
+                //The version no is the same, no work to do
+                if (dict.get(targetFramework) == e.getName()) {
+                    dict.delete(targetFramework);
+                }
+            }
+        }
+    });
+    dict.forEach((value, key) =&gt; {
+        let existingElement = packageElement.getChildren().find(c =&gt; c.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value == key);
+        if (existingElement) {
+            //Update Version No
+            existingElement.setName(value);
+        }
+        else {
+            //Create new frmework element
+            let element = createElement("Package Version", value, packageElement.id);
+            let versionSettings = element.getStereotype(packageVersionSettings);
+            versionSettings.getProperty("Minimum Target Framework").setValue(key);
+        }
+    });
+}
+function isPackageLocked(element) {
+    var _a;
+    let packageSettings = "265221a5-779c-46c9-a367-8b07b435803b";
+    return ((_a = element.getStereotype(packageSettings).getProperty("Locked")) === null || _a === void 0 ? void 0 : _a.getValue()) == true;
+}
+/// &lt;reference path="../common/nuget-package-updater.ts" /&gt;
+async function updateNuGetPackage(element) {
+    if (isPackageLocked(element))
+        return;
+    let result = await getLatestNugetPackages([element.getName()]);
+    updateNugetPackageElements([element], result);
+    await dialogService.info("Update complete.");
+}
+/**
+ * Used by Intent.Modules\Modules\Intent.ModuleBuilder.CSharp
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/nuget-package-updater/update-package/update-package.ts
+ */
+//Uncomment below
+await updateNuGetPackage(element);
+</script>
+            </option>
+          </scriptOptions>
+          <mappingOptions />
+          <mappingSettings />
+          <childElementSettings>
+            <childElementSetting type="Package Version" typeId="231f8cf8-517b-4801-9682-991d22f4e662">
+              <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAv1JREFUaEPtmN1LFFEYxp/3pFikWTazhqtQEHRRt0UgYlF36YX0H3QXRc4YQmXdhBkh7K7Rff9CmXURZFF31n1QEMHOQO5Elhol6bwxblthOmc+zjqj7Vwt7Pl4fvOcw/POS9gkD20SDvx/IG05p1cIHgDocNlFnmJQzjb0iTS4GsiRjrHSCDNdXk0wE92w+7WrScNIQcpOYNxPKAO9STsjBWkvlJ4CdMz/jbuTltF6IklX5CB5Zw6ERn+RPGcZmR3pBik48wC2+4pkzFum3pRykNIkQMd9Rbp4Yg3oJ1MN0paf7hSgFyBa8xgSuLtoZJ6nGsQTly2UrhBj+B8YZmaIIdvUbiYJ4e0tvewVgdm8cwrAIBG6fwXiMxBGrf7Mo6QhQoFUxLYXHPZ+W4Ye+CWsB2hoMTWQKttSc6R2R6p0xGpHa6Gem5xzGa8OS8UT2RFewgH7ov4mFRRhkn1lIBJTX9HU7m14EAbdtQ3tzMYHYZ5pWKjb9+5Sy5c0wES+I+VCjUaKhja0sUG8Ep5oQbjoKg7or5KGie6Iy3cg6DyDbYgtR+0Lu604MHH7ZpFB6prnty3ONj4Go8uDERB9RUN7GQVGRd8sMohXa+3Nz+xcosUJBjoZ+E7gQh3X33pv7vocFEhV3ywWiCd2/+23Dd/c5hwxznqfwsw8AxL3iTDuCrz+IVzLrwJQ1TeLDVJ58x25UhcLXJc388ozKiVOu6K+mTKQ30Bjnw4xlk6zy50ADoKohYCtK49a6kGC3o0/JU+AvhnkLVnljoQFyRacHgIe+M1jRo9t6g/9xoQGaR39sNw+nR7c8zWs6LXGZ8c+DhPzqhUCg4ZtQ7sm2ys0iGzBqP+XnXFNsDiyvAa5U8wiJ3Oisl9gkLjJGxUw6LxAICqSN6igqOOkIKqSN6rAoPOkIKqSN6igqOPkIIqSN6rAoPPUgDDPWmamOeim1RgnBymoSd5qiP97TSmIquRNHMQToCJ5UwGyDBMzeVMDUm0hcdeX3pG4G6zX/E0D8hMlA5BCY4hHMQAAAABJRU5ErkJggg==" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <displayFunction>let packageVersionStereoTypeId = "7af88c37-ce54-49fc-b577-bde869c23462";
 let settings = element.getStereotype(packageVersionStereoTypeId);
 
 let locked = null;
@@ -390,7 +388,7 @@ if (locked) {
 }
 
 return result; </displayFunction>
-      <validateFunction>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+              <validateFunction>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 
 const packageVersionSettings = "7af88c37-ce54-49fc-b577-bde869c23462";
 let element = lookup(id); 
@@ -410,23 +408,27 @@ parent.getChildren().forEach(child =&gt;{
 
 return result;
 </validateFunction>
-      <allowRename>true</allowRename>
-      <allowAbstract>false</allowAbstract>
-      <allowStatic>false</allowStatic>
-      <allowGenericTypes>false</allowGenericTypes>
-      <allowMapping>false</allowMapping>
-      <allowSorting>true</allowSorting>
-      <sortChildren>by-type-then-by-name</sortChildren>
-      <allowFindInView>false</allowFindInView>
-      <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
-      <allowSetValue>false</allowSetValue>
-      <typeOrder />
-      <creationOptions />
-      <scriptOptions />
-      <mappingOptions />
-      <mappingSettings />
-      <childElementSettings />
+              <allowRename>true</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowStatic>false</allowStatic>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>true</allowSorting>
+              <sortChildren>by-type-then-by-name</sortChildren>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>false</allowTypeReference>
+              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <typeOrder />
+              <creationOptions />
+              <scriptOptions />
+              <mappingOptions />
+              <mappingSettings />
+              <childElementSettings />
+            </childElementSetting>
+          </childElementSettings>
+        </childElementSetting>
+      </childElementSettings>
     </elementSetting>
   </elementSettings>
   <elementExtensions>

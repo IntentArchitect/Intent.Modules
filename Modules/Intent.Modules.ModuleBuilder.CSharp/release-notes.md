@@ -39,7 +39,7 @@
 - Improvement: Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
 
 ### Version 3.4.3
-- Fix: Custom Templates not compiling out the box, added missing `using Systerm` clause. 
+- Fix: Custom Templates not compiling out the box, added missing `using System` clause. 
 
 ### Version 3.4.1
 
