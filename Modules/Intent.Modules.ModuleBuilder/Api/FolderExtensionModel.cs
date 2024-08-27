@@ -39,6 +39,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new TypeDefinitionModel(x))
             .ToList();
 
+        public IList<EnumModel> Enums => _element.ChildElements
+            .GetElementsOfType(EnumModel.SpecializationTypeId)
+            .Select(x => new EnumModel(x))
+            .ToList();
+
         public IList<FactoryExtensionModel> FactoryExtensions => _element.ChildElements
             .GetElementsOfType(FactoryExtensionModel.SpecializationTypeId)
             .Select(x => new FactoryExtensionModel(x))
