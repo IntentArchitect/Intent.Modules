@@ -1,4 +1,8 @@
-﻿### Version 3.7.3
+﻿### Version 3.7.4
+
+- Fixed: Indentation issue with `CSharpInvocationStatements` through its arguments when attempting to chain them together.  
+
+### Version 3.7.3
 
 - Improvement: Upgrades NuGet package systems including modeling.
 - Fixed: Invoking `AddNugetDependency()` so that there are nuget packages with the same name but different versions will no longer get filtered so that the VS Module can use that to determine which one has the highest version number when installing Package References.

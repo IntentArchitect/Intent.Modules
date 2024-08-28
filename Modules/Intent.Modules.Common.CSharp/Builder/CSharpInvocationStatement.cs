@@ -61,7 +61,7 @@ public class CSharpAccessMemberStatement : CSharpStatement
         var newLineTxt = String.Empty;
         if (_onNewLine)
         {
-            newLineTxt = Environment.NewLine + indentation + "    ";
+            newLineTxt = Environment.NewLine + RelativeIndentation + indentation + "    ";
         }
         return $"{Reference.GetText(indentation).TrimEnd()}{newLineTxt}{(_isConditional ? "?." : ".")}{Member.GetText(indentation).Trim()}{(_withSemicolon ? ";" : string.Empty)}";
     }
@@ -137,9 +137,11 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
     public CSharpInvocationStatement OnNewLine()
     {
         (Expression as CSharpAccessMemberStatement)?.OnNewLine();
+        _newline = true;
         return this;
     }
 
+    private bool _newline;
     public CSharpInvocationStatement WithoutSemicolon()
     {
         _withSemicolon = false;
@@ -153,7 +155,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 
 	public override string GetText(string indentation)
     {
-        return $"{RelativeIndentation}{Expression.GetText(indentation)}({GetArgumentsText(indentation)}){(_withSemicolon ? ";" : string.Empty)}";
+        return $"{Expression.GetText(indentation)}({GetArgumentsText(indentation)}){(_withSemicolon ? ";" : string.Empty)}";
     }
 
 	private string GetArgumentsText(string indentation)
@@ -164,6 +166,10 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 
     private string GetAdditionalIndentationIfArgsOnNewLines()
     {
+        if (_newline)
+        {
+            return "    ";
+        }
 		return Statements.All(x => x.BeforeSeparator == CSharpCodeSeparatorType.None)
             ? string.Empty
             : "    ";

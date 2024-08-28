@@ -36,4 +36,32 @@ public class ChainedInvocationTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
+    
+    [Fact]
+    public async Task InvocationStatement_MethodChaining_DeeperNesting()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "Configure", m =>
+                {
+                    m.Static();
+                    m.AddParameter("Service", "service");
+
+                    m.AddInvocationStatement("services.AddOpenTelemetry", main => main
+                        .AddInvocation("ConfigureResource", inv => inv
+                            .AddArgument(new CSharpLambdaBlock("res")
+                                .WithExpressionBody(new CSharpStatement("res")
+                                    .AddInvocation("AddService", inv => inv.AddArgument(@"configuration[""OpenTelemetry:ServiceName""]!").OnNewLine())
+                                    .AddInvocation("AddTelemetrySdk", inv => inv.OnNewLine())
+                                    .AddInvocation("AddEnvironmentVariableDetector", inv => inv.OnNewLine()).WithoutSemicolon()
+                                ))
+                            .OnNewLine()));
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }
