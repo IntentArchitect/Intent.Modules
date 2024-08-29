@@ -46,12 +46,36 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="8ca8ab75-e186-43de-be8b-4ea25b96b448" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+    <childElement id="bf8d7f93-086c-4d5a-8c7f-1f02884b52e0" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: User Interface Core Types</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="e7c1be16-78fe-4b28-a760-f746dded6b7a">
+        <typeId>444f582b-b875-4c72-9671-697b47fa367c</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.UI</typePackageName>
+        <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>f492faed-0665-4513-9853-5a230721786f</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="c53f2306-6208-49c1-a067-8ecec631d6d6" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
       <name>reference</name>
       <display>reference: Common Types</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
-      <typeReference id="329e6592-974b-451e-a7db-391fca251d2d">
+      <typeReference id="11a4ba2a-3e41-4e39-b947-a8e4eb3a1440">
         <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
@@ -70,19 +94,19 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="bf8d7f93-086c-4d5a-8c7f-1f02884b52e0" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+    <childElement id="741b47a4-d8a2-42c6-a720-3371f5721de3" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
       <name>reference</name>
-      <display>reference: User Interface Core Types</display>
+      <display>reference: Common Types Extensions</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
-      <typeReference id="e7c1be16-78fe-4b28-a760-f746dded6b7a">
-        <typeId>444f582b-b875-4c72-9671-697b47fa367c</typeId>
+      <typeReference id="f6d62b4e-1c84-4932-a605-a58835d95948">
+        <typeId>314abc42-5b9a-42b3-8d6a-deb2eb7a5a7a</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
-        <typePackageName>Intent.Modelers.UI</typePackageName>
-        <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>

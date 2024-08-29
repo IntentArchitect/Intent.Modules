@@ -146,7 +146,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="element.getChildren().forEach(x =&gt; {&#xD;&#xA;    x.setName(toCamelCase(x.getName()));&#xD;&#xA;});" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="element.getChildren(&quot;00208d20-469d-41cb-8501-768fd5eb796b&quot;).forEach(x =&gt; {&#xD;&#xA;    x.setName(toCamelCase(x.getName()));&#xD;&#xA;});" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

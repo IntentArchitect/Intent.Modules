@@ -20,6 +20,7 @@
   <metadata>
     <install target="*" src="Intent.Metadata/Module Builder/Intent.Common.Types/Intent.Common.Types.pkg.config" externalReference="870ad967-cbd4-4ea9-b86d-9c3a5d55ea67" />
     <install target="Module Builder" src="modelers/Common Types.designer.settings" externalReference="55d06096-83fe-4acf-86ef-586d254e5170" />
+    <install src="modelers/Common Types Extensions.designer.settings" externalReference="314abc42-5b9a-42b3-8d6a-deb2eb7a5a7a" />
   </metadata>
   <templates />
   <moduleSettings />

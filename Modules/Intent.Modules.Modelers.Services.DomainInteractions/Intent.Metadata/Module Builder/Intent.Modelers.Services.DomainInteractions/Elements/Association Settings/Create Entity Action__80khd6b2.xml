@@ -32,6 +32,7 @@
             <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" value="[&quot;2b6729eb-e2ae-4b5f-86fe-4f611d1f912e&quot;]" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="CreateEntityCommands" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return `created by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`" isActive="true" />
+            <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" value="" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Optional" isActive="true" />
             <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
             <property name="2d07ed88-82bf-4d30-9280-1488f0f927e0" display="Name Must Be Unique" value="true" isActive="true" />
@@ -71,6 +72,7 @@
             <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="CreateEntityActions" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return `[create] ${getName()}: ${typeReference.display}`" isActive="true" />
+            <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" value="" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Required" isActive="true" />
             <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="let name = (typeReference.getType()?.getParent(&quot;Class&quot;) ?? typeReference.getType())?.getName() ?? &quot;entity&quot;&#xD;&#xA;return typeReference.getIsCollection() &#xD;&#xA;    ? pluralize(toCamelCase(name))&#xD;&#xA;    : toCamelCase(name);" isActive="true" />
             <property name="2d07ed88-82bf-4d30-9280-1488f0f927e0" display="Name Must Be Unique" value="true" isActive="true" />

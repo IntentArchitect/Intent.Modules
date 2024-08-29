@@ -1080,7 +1080,7 @@ return validateOperation(lookup(id));
           <mappingSettings />
           <macros>
             <macro trigger="on-changed">
-              <script>element.getChildren().forEach(x =&gt; {
+              <script>element.getChildren("00208d20-469d-41cb-8501-768fd5eb796b").forEach(x =&gt; {
     x.setName(toCamelCase(x.getName()));
 });</script>
             </macro>

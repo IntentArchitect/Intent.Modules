@@ -154,8 +154,8 @@
                     <isNullable>false</isNullable>
                     <isCollection>false</isCollection>
                     <isRequired>true</isRequired>
-                    <typePackageName>Intent.Modelers.UI</typePackageName>
-                    <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+                    <typePackageName>Intent.Modelers.Services</typePackageName>
+                    <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
                     <stereotypes />
                     <genericTypeParameters />
                   </typeReference>
@@ -355,7 +355,7 @@
                             <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="return element.typeReference.getTypeId() != null &amp;&amp; element.getOrder() &lt;= hostElement.getOrder();" isActive="true" />
                             <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" value="return [&#xD;&#xA;    { text: `response`, targetId: element.id },&#xD;&#xA;    { text: &quot;: &quot; },&#xD;&#xA;    { text: `${element.typeReference.display}`, cssClass: &quot;typeref&quot;, targetId: element.typeReference.typeId }&#xD;&#xA;];" isActive="true" />
                             <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                            <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
+                            <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return hostElement.specialization != &quot;Invocation&quot; // because used by Map Response on Call Service Operations&#xD;&#xA;    || element.getParent(&quot;Component&quot;).getChild(x =&gt; isHost(x), true)?.getIsMapped();" isActive="true" />
                             <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                             <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Traverse All Types" isActive="true" />
                             <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
@@ -508,7 +508,7 @@
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                     <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
+                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return element.getParent(&quot;Component&quot;).getChild(x =&gt; isHost(x), true)?.getIsMapped();" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Traverse Specific Types" isActive="true" />
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;0eda209a-bfef-41ec-81de-bf5e70c4dad2&quot;]" isActive="true" />
@@ -610,7 +610,7 @@
                 <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                 <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
-                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
+                <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return element.getParent(&quot;Component&quot;).getChild(x =&gt; isHost(x), true)?.getIsMapped();" isActive="true" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Traverse All Types" isActive="true" />
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />

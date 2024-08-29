@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Modelers.UI</id>
   <version>1.0.0-alpha.5</version>
-  <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
+  <supportedClientVersions>[4.3.0-beta.4, 5.0.0-a)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
   <authors>Intent.Modules</authors>
@@ -10,7 +10,7 @@
   <templates></templates>
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
-  <moduleSettings></moduleSettings>
+  <moduleSettings />
   <dependencies>
     <dependency id="Intent.Common" version="3.6.0" />
     <dependency id="Intent.Common.Types" version="4.0.0-alpha.0" />

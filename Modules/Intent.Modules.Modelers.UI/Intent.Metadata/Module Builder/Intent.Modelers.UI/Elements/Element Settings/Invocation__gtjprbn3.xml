@@ -4,7 +4,7 @@
   <display>Invocation</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>3</order>
+  <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>e030c97a-e066-40a7-8188-808c275df3cb</parentFolderId>
@@ -37,7 +37,7 @@
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="// if (this.getAdvancedMapping() &amp;&amp; this.getAdvancedMapping().getMappedEnds().length &gt; 0) {&#xD;&#xA;//     let target = this.getAdvancedMapping().getMappedEnds()[0]?.getTargetElement();&#xD;&#xA;&#xD;&#xA;//     return [&#xD;&#xA;//         { text: &quot;[call] &quot;, cssClass: &quot;keyword&quot; },&#xD;&#xA;//         { text: target.getPath(e =&gt; e.specialization == &quot;Component&quot;).slice(1).map(x =&gt; x.getName()).join(&quot;.&quot;) ?? this.getAdvancedMapping().getMappedEnds().length }&#xD;&#xA;//     ];&#xD;&#xA;// }&#xD;&#xA;&#xD;&#xA;return [&#xD;&#xA;    { text: &quot;[call] &quot;, cssClass: &quot;keyword&quot; },&#xD;&#xA;    { text: this.getName(), cssClass: &quot;function&quot; }&#xD;&#xA;];" isActive="true" />
-        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="if (element.getAdvancedMapping() == null || element.getAdvancedMapping().getMappedEnds().length == 0) {&#xD;&#xA;    return {&#xD;&#xA;        text: &quot;Invocation mapping is required.&quot;,&#xD;&#xA;        resolveWith: element.getAdvancedMapping() != null ? &quot;advanced-mapping&quot; : null,&#xD;&#xA;        resolveFor: element.getAdvancedMapping()?.mappingTypeId&#xD;&#xA;    };&#xD;&#xA;}" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="false" isActive="true" />
         <property name="581e77d6-4587-4041-86f6-880bd57d5848" display="Name Must Be Unique" value="true" isActive="false" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
@@ -103,6 +103,54 @@
                 <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
                 <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
                 <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="0c0ca13d-fac4-4cc1-b820-bff155d258ef" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>18f87cd6-d8d8-4518-8931-58653d537467</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="97af0f1a-e4e8-40fc-8125-fb31aaa84531" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="3e10d87b-3ec5-4447-9ee7-2deae075036c">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>0c0ca13d-fac4-4cc1-b820-bff155d258ef</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="element.createAdvancedMapping();&#xD;&#xA;//element.launchAdvancedMappingDialog(); // currently is auto-launched because of the validation" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

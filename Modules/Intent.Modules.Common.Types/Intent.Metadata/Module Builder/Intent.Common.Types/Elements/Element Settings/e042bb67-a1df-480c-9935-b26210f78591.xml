@@ -6,7 +6,7 @@
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>55d06096-83fe-4acf-86ef-586d254e5170</parentFolderId>
+  <parentFolderId>314abc42-5b9a-42b3-8d6a-deb2eb7a5a7a</parentFolderId>
   <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
   <packageName>Intent.Common.Types</packageName>
   <stereotypes>
@@ -41,7 +41,7 @@
         <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" value="Return Type" isActive="true" />
         <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="true" />
         <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;85fba0e9-9161-4c85-a603-a229ef312beb&quot;,&quot;d4e577cd-ad05-4180-9a2e-fff4ddea0e1e&quot;]" isActive="true" />
-        <property name="52f3c2e8-6438-494a-b0a7-7a9e61c8aae8" display="Target Traits" isActive="true" />
+        <property name="52f3c2e8-6438-494a-b0a7-7a9e61c8aae8" display="Target Traits" value="[]" isActive="true" />
         <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="true" />
         <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="true" />
         <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="true" />
@@ -91,7 +91,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + p" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + a" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="param" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
