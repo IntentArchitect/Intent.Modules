@@ -71,6 +71,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 {
     private bool _withSemicolon = true;
     private CSharpCodeSeparatorType _defaultArgumentSeparator = CSharpCodeSeparatorType.None;
+    private bool _onNewLine;
 
 	public CSharpInvocationStatement(string invokable) : base(invokable)
     {
@@ -137,11 +138,10 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
     public CSharpInvocationStatement OnNewLine()
     {
         (Expression as CSharpAccessMemberStatement)?.OnNewLine();
-        _newline = true;
+        _onNewLine = true;
         return this;
     }
-
-    private bool _newline;
+    
     public CSharpInvocationStatement WithoutSemicolon()
     {
         _withSemicolon = false;
@@ -166,7 +166,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 
     private string GetAdditionalIndentationIfArgsOnNewLines()
     {
-        if (_newline)
+        if (_onNewLine)
         {
             return "    ";
         }
