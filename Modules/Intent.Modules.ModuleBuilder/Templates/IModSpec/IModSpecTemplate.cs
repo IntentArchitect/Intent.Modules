@@ -330,7 +330,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                         new XAttribute("id", settingsField.Id),
                         new XAttribute("title", settingsField.Name),
                         new XAttribute("type", GetControlType(settingsField)));
-                    fieldXml.Add(new XElement("isRequired", new XText(settingsField.GetFieldConfiguration().IsRequired().ToString().ToLower())));
+                    if (settingsField.GetFieldConfiguration().IsRequired())
+                    {
+                        fieldXml.Add(new XElement("isRequired", new XText(settingsField.GetFieldConfiguration().IsRequired().ToString().ToLower())));
+                    }
+
                     if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().Hint()))
                     {
                         fieldXml.Add(new XElement("hint", new XText(settingsField.GetFieldConfiguration().Hint())));
@@ -339,6 +343,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().DefaultValue()))
                     {
                         fieldXml.Add(new XElement("defaultValue", new XText(settingsField.GetFieldConfiguration().DefaultValue())));
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().IsActiveFunction()))
+                    {
+                        fieldXml.Add(new XElement("isActiveFunction", new XText(settingsField.GetFieldConfiguration().IsActiveFunction())));
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().IsRequiredFunction()))
+                    {
+                        fieldXml.Add(new XElement("isRequiredFunction", new XText(settingsField.GetFieldConfiguration().IsRequiredFunction())));
                     }
 
                     if (settingsField.GetFieldConfiguration().ControlType().IsSelect() ||
@@ -412,6 +426,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().DefaultValue()))
                     {
                         fieldXml.Add(new XElement("defaultValue", new XText(settingsField.GetFieldConfiguration().DefaultValue())));
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().IsActiveFunction()))
+                    {
+                        fieldXml.Add(new XElement("isActiveFunction", new XText(settingsField.GetFieldConfiguration().IsActiveFunction())));
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().IsRequiredFunction()))
+                    {
+                        fieldXml.Add(new XElement("isRequiredFunction", new XText(settingsField.GetFieldConfiguration().IsRequiredFunction())));
                     }
 
                     if (settingsField.GetFieldConfiguration().ControlType().IsSelect() ||

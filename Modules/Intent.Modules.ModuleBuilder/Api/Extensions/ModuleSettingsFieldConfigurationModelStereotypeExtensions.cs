@@ -68,6 +68,16 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Default Value");
             }
 
+            public string IsActiveFunction()
+            {
+                return _stereotype.GetProperty<string>("Is Active Function");
+            }
+
+            public string IsRequiredFunction()
+            {
+                return _stereotype.GetProperty<string>("Is Required Function");
+            }
+
             public class ControlTypeOptions
             {
                 public readonly string Value;
