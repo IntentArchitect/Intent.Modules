@@ -6,6 +6,7 @@ using Intent.Plugins.FactoryExtensions;
 using Intent.RoslynWeaver.Attributes;
 using System;
 using System.Linq;
+using System.Reflection;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.FactoryExtension", Version = "1.0")]
@@ -24,7 +25,31 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
         {
 
             var nugetRegistrations =  AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(c => c.GetExportedTypes())
+                .Where(assembly =>
+                {
+                    try
+                    {
+                        // Attempt to access the exported types.
+                        var types = assembly.GetExportedTypes();
+                        return types != null; // Only include assemblies that successfully return types.
+                    }
+                    catch (ReflectionTypeLoadException)
+                    {
+                        // Assembly could not load all types.
+                        return false;
+                    }
+                    catch (NotSupportedException)
+                    {
+                        // Assembly does not support getting exported types.
+                        return false;
+                    }
+                    catch (Exception)
+                    {
+                        // Catch other exceptions just in case.
+                        return false;
+                    }
+                })
+                .SelectMany(assembly => assembly.GetExportedTypes())
                 .Where(t => typeof(INugetPackages).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract)
                 .ToArray();
 
