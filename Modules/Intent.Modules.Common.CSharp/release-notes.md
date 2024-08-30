@@ -1,11 +1,14 @@
-### Version 3.8.0
+﻿### Version 3.8.0
 
 - Improvement: Added support for Razor file code management.
 
+### Version 3.7.5
+
+- Fixed: Indentation issue with `CSharpInvocationStatements` through its arguments when attempting to chain them together.  
+
 ### Version 3.7.4
 
-- Fixed: NuGet packages registration assembly scan caused SF crashes on some machines.  
-- Fixed: Indentation issue with `CSharpInvocationStatements` through its arguments when attempting to chain them together.  
+- Fixed: NuGet packages registration assembly scan caused SF crashes on some machines. 
 
 ### Version 3.7.3
 
