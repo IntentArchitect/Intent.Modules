@@ -8,6 +8,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 {
     private bool _withSemicolon = true;
     private CSharpCodeSeparatorType _defaultArgumentSeparator = CSharpCodeSeparatorType.None;
+    private bool _onNewLine;
 
     public CSharpInvocationStatement(string invokable) : base(invokable)
     {
@@ -74,9 +75,10 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
     public CSharpInvocationStatement OnNewLine()
     {
         (Expression as CSharpAccessMemberStatement)?.OnNewLine();
+        _onNewLine = true;
         return this;
     }
-
+    
     public CSharpInvocationStatement WithoutSemicolon()
     {
         _withSemicolon = false;
@@ -90,7 +92,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 
     public override string GetText(string indentation)
     {
-        return $"{RelativeIndentation}{Expression.GetText(indentation)}({GetArgumentsText(indentation)}){(_withSemicolon ? ";" : string.Empty)}";
+        return $"{Expression.GetText(indentation)}({GetArgumentsText(indentation)}){(_withSemicolon ? ";" : string.Empty)}";
     }
 
     private string GetArgumentsText(string indentation)
@@ -101,7 +103,11 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 
     private string GetAdditionalIndentationIfArgsOnNewLines()
     {
-        return Statements.All(x => x.BeforeSeparator == CSharpCodeSeparatorType.None)
+        if (_onNewLine)
+        {
+            return "    ";
+        }
+		return Statements.All(x => x.BeforeSeparator == CSharpCodeSeparatorType.None)
             ? string.Empty
             : "    ";
     }

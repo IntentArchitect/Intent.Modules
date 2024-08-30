@@ -1,3 +1,7 @@
+### Version 4.1.2
+
+- Fixed: Indentation issue with `JavaInvocationStatements` through its arguments when attempting to chain them together.
+
 ### Version 4.1.1
 
 - Improvement: Special invocation method introduced for Java File Builder.

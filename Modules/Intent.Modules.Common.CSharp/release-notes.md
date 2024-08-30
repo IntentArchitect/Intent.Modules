@@ -1,6 +1,10 @@
-﻿### Version 3.8.0
+### Version 3.8.0
 
 - Improvement: Added support for Razor file code management.
+
+### Version 3.7.4
+
+- Fixed: Indentation issue with `CSharpInvocationStatements` through its arguments when attempting to chain them together.  
 
 ### Version 3.7.3
 

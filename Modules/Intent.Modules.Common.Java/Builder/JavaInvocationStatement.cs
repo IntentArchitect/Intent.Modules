@@ -7,6 +7,7 @@ namespace Intent.Modules.Common.Java.Builder;
 public class JavaInvocationStatement : JavaStatement, IHasJavaStatements
 {
     private bool _withSemicolon = true;
+    private bool _onNewLine;
     private JavaCodeSeparatorType _defaultArgumentSeparator = JavaCodeSeparatorType.None;
 
 	public JavaInvocationStatement(string invokable) : base(invokable)
@@ -74,6 +75,7 @@ public class JavaInvocationStatement : JavaStatement, IHasJavaStatements
     public JavaInvocationStatement OnNewLine()
     {
         (Expression as JavaAccessMemberStatement)?.OnNewLine();
+        _onNewLine = true;
         return this;
     }
 
@@ -96,6 +98,11 @@ public class JavaInvocationStatement : JavaStatement, IHasJavaStatements
 
     private string GetAdditionalIndentationIfArgsOnNewLines()
     {
+        if (_onNewLine)
+        {
+            return "    ";
+        }
+        
 		return Statements.All(x => x.BeforeSeparator == JavaCodeSeparatorType.None)
             ? string.Empty
             : "    ";

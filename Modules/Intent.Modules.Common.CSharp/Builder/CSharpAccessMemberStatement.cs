@@ -56,7 +56,7 @@ public class CSharpAccessMemberStatement : CSharpStatement
         var newLineTxt = String.Empty;
         if (_onNewLine)
         {
-            newLineTxt = Environment.NewLine + indentation + "    ";
+            newLineTxt = Environment.NewLine + RelativeIndentation + indentation + "    ";
         }
         return $"{Reference.GetText(indentation).TrimEnd()}{newLineTxt}{(_isConditional ? "?." : ".")}{Member.GetText(indentation).Trim()}{(_withSemicolon ? ";" : string.Empty)}";
     }
