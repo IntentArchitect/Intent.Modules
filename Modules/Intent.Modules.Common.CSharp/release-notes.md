@@ -1,8 +1,10 @@
-﻿### Version 3.7.4
+﻿### Version 3.7.5
 
-- Fixed: NuGet packages registration assembly scan caused SF crashes on some machines.  
 - Fixed: Indentation issue with `CSharpInvocationStatements` through its arguments when attempting to chain them together.  
 
+### Version 3.7.4
+
+- Fixed: NuGet packages registration assembly scan caused SF crashes on some machines. 
 ### Version 3.7.3
 
 - Improvement: Upgrades NuGet package systems including modeling.

@@ -7,6 +7,7 @@ using Intent.Modules.Common.CSharp.Nuget;
 using Intent.Modules.Common.Plugins;
 using Intent.Plugins.FactoryExtensions;
 using Intent.RoslynWeaver.Attributes;
+using System.Reflection;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.FactoryExtension", Version = "1.0")]
@@ -23,7 +24,8 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
 
         protected override void OnBeforeTemplateRegistrations(IApplication application)
         {
-            var nugetRegistrations = AppDomain.CurrentDomain.GetAssemblies()
+
+            var nugetRegistrations =  AppDomain.CurrentDomain.GetAssemblies()
                 .Where(assembly =>
                 {
                     try
