@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Reflection;
 using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Nuget;
@@ -22,9 +23,32 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
 
         protected override void OnBeforeTemplateRegistrations(IApplication application)
         {
-
             var nugetRegistrations = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(c => c.GetExportedTypes())
+                .Where(assembly =>
+                {
+                    try
+                    {
+                        // Attempt to access the exported types.
+                        var types = assembly.GetExportedTypes();
+                        return types != null; // Only include assemblies that successfully return types.
+                    }
+                    catch (ReflectionTypeLoadException)
+                    {
+                        // Assembly could not load all types.
+                        return false;
+                    }
+                    catch (NotSupportedException)
+                    {
+                        // Assembly does not support getting exported types.
+                        return false;
+                    }
+                    catch (Exception)
+                    {
+                        // Catch other exceptions just in case.
+                        return false;
+                    }
+                })
+                .SelectMany(assembly => assembly.GetExportedTypes())
                 .Where(t => typeof(INugetPackages).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract)
                 .ToArray();
 
