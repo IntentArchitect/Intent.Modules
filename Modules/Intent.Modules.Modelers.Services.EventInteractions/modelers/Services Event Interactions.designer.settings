@@ -1162,6 +1162,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
           <represents>data</represents>
           <childSettings>
             <childSetting id="a7d2076d-4c3a-45bd-9d55-165fb4572557" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc">
+              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1214,7 +1215,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
-          <createNameFunction>return element.getParent('Message').getName() + element.getName() + 'Dto'</createNameFunction>
+          <createNameFunction>return (element.getParent('Message') ?? element.getParent('Integration Command')).getName() + element.getName() + 'Dto'</createNameFunction>
           <represents>data</represents>
           <childSettings>
             <childSetting id="972c5a10-0416-4760-9f84-de002d4ef2a7" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7">
