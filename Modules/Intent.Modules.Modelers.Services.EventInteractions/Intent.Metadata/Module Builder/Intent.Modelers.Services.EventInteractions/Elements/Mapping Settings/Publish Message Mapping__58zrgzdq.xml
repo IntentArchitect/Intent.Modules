@@ -730,7 +730,7 @@
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
                     <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
@@ -1116,7 +1116,7 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="ce2db9f3-0c9d-4f01-832f-6f7f3801834c" display="Sources" value="Specific Types" isActive="true" />
-            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Source Types" value="[&quot;678ea51f-f715-4219-82bf-1b42c8e3caad&quot;,&quot;3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1&quot;,&quot;98041049-0f91-4c21-99dc-50cd18fd1dae&quot;,&quot;daf3a2fa-0b35-4549-8b65-26b3a74dc7e0&quot;,&quot;792374ff-6b97-45df-96de-01acd2488cc0&quot;,&quot;c0682bc4-2b6a-4638-a35e-39188d253694&quot;,&quot;5a3018a8-38bc-450f-bf82-631e2d9475b3&quot;,&quot;df404369-916e-4385-a29b-cbf86aa99846&quot;]" isActive="true" />
+            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Source Types" value="[&quot;678ea51f-f715-4219-82bf-1b42c8e3caad&quot;,&quot;3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1&quot;,&quot;98041049-0f91-4c21-99dc-50cd18fd1dae&quot;,&quot;daf3a2fa-0b35-4549-8b65-26b3a74dc7e0&quot;,&quot;792374ff-6b97-45df-96de-01acd2488cc0&quot;,&quot;c0682bc4-2b6a-4638-a35e-39188d253694&quot;,&quot;5a3018a8-38bc-450f-bf82-631e2d9475b3&quot;,&quot;df404369-916e-4385-a29b-cbf86aa99846&quot;,&quot;eb1478af-4b69-4d33-826f-3f195ebbed79&quot;]" isActive="true" />
             <property name="7149c438-f5de-432e-8cd7-356d691aee9e" display="Source Types Filter" isActive="true" />
             <property name="8c6140d1-311a-4233-b4c9-6ee41f15a606" display="Source Arrow Type" value="None" isActive="true" />
             <property name="68504875-ebf6-47d6-ac36-c506431cf57c" display="Targets" value="Specific Types" isActive="true" />
