@@ -1303,7 +1303,30 @@ return display;
           </option>
         </mappingOptions>
       </targetEnd>
-      <macros />
+      <visualSettings type="Show Dialog" typeId="2a309fb2-c487-4c00-9462-16dac9824731">
+        <lineType>Curved</lineType>
+        <lineColor>#7cd97c</lineColor>
+        <sourceEnd>
+          <pointIndicator>
+            <path>return `a 4,4 0 1,0 4,4         a 4,4 0 1,0 -4,4`;</path>
+          </pointIndicator>
+          <navigableIndicator>
+            <lineColor>#7cd97c</lineColor>
+            <path>`l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
+          </navigableIndicator>
+        </sourceEnd>
+        <targetEnd>
+          <navigableIndicator>
+            <lineColor>#7cd97c</lineColor>
+            <path>`l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
+          </navigableIndicator>
+        </targetEnd>
+      </visualSettings>
+      <macros>
+        <macro trigger="on-created">
+          <script>association.createAdvancedMapping();</script>
+        </macro>
+      </macros>
     </associationSetting>
   </associationSettings>
   <associationExtensions />

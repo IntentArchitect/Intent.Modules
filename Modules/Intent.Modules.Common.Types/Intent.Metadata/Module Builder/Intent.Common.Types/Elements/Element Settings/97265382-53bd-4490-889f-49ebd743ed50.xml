@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="97265382-53bd-4490-889f-49ebd743ed50" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Constructor</name>
+  <display>Constructor</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>314abc42-5b9a-42b3-8d6a-deb2eb7a5a7a</parentFolderId>
+  <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
+  <packageName>Intent.Common.Types</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="null" isActive="false" />
+        <property name="52f3c2e8-6438-494a-b0a7-7a9e61c8aae8" display="Target Traits" value="[]" isActive="true" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="As Child" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzguNjk3NiIgeTE9IjE3LjQxNCIgeDI9IjM4LjYxMzYiIHkyPSIzMi40NzM4IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNjMpIj4NCgk8c3RvcCAgb2Zmc2V0PSI1LjY5NTE5M2UtMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjRDQ0VGIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXykiIGQ9Ik00Ni4yLDM2LjV2MS4xYzAsMC41LTAuNCwxLTEsMWgtNXY0LjdjMCwwLjUtMC40LDEtMSwxaC0xLjFjLTAuNSwwLTEtMC41LTEtMXYtNC43aC01DQoJYy0wLjUsMC0xLTAuNS0xLTF2LTEuMWMwLTAuNSwwLjUtMSwxLTFoNXYtNS4zYzAtMC42LDAuNS0xLDEtMWgxLjFjMC42LDAsMSwwLjQsMSwxdjUuM2g1QzQ1LjgsMzUuNSw0Ni4yLDM1LjksNDYuMiwzNi41eiIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDE2NzM4NzMzMTY0NjU3Njg3NTA0MDAwMDAwMTIyNTM0NDQ4NzA0MDA3NTQ0OV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My40NDM3IiB4Mj0iMjUiIHkyPSI0LjA0MzciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTY3Mzg3MzMxNjQ2NTc2ODc1MDQwMDAwMDAxMjI1MzQ0NDg3MDQwMDc1NDQ5XykiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgICAgIiBkPSINCglNNDQuMSwxMS45TDI1LjUsMi44Yy0wLjMtMC4xLTAuNi0wLjEtMC45LDBMNS45LDExLjljLTAuNCwwLjItMC42LDAuNS0wLjYsMC45djI0LjNjMCwwLjQsMC4yLDAuNywwLjYsMC45bDE4LjYsOS4yDQoJYzAuMSwwLjEsMC4zLDAuMSwwLjUsMC4xczAuMywwLDAuNS0wLjFsMTAuMS01VjQwaC0yLjRsLTYuNywzLjNWMjIuNEw0MS42LDE1djE4LjloMy4xdi0yMUM0NC43LDEyLjUsNDQuNSwxMi4xLDQ0LjEsMTEuOXoNCgkgTTIzLjUsNDMuM0wxMSwzNy4xbC0yLjYtMS4yVjE1bDE1LjEsNy40VjQzLjN6IE0zOC45LDEyLjhMMjUsMTkuN2wtMTMuOS02LjlIMTFsMTQtNi45TDM4LjksMTIuOEwzOC45LDEyLjh6Ii8+DQo8L3N2Zz4NCg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="const getTypeReferenceCssClass = (typeReference) =&gt; {&#xD;&#xA;    if (typeReference.typeId == null || typeReference.getType()?.specialization == &quot;Type-Definition&quot;) {&#xD;&#xA;        return &quot;keyword&quot;;&#xD;&#xA;    } else {&#xD;&#xA;        return &quot;typeref&quot;;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;const result = [{ text: `${ getParent().getName() }${ genericTypes }(` }];&#xD;&#xA;result.push(...children(&quot;Parameter&quot;)&#xD;&#xA;    .map(x =&gt; [&#xD;&#xA;        { text: `${ x.name }`, cssClass: &quot;muted&quot;, targetId: x.id },&#xD;&#xA;        { text: ': ' },&#xD;&#xA;        { text: x.typeReference.display, cssClass: getTypeReferenceCssClass(x.typeReference), targetId: x.typeReference.typeId }&#xD;&#xA;    ])&#xD;&#xA;    .reduce((x, y) =&gt; x.concat(x.length &gt; 0 ? [{ text: ', ' }] : []).concat(y), []));&#xD;&#xA;    result.push({ text: ')' });&#xD;&#xA;if (typeReference) {&#xD;&#xA;    result.push({ text: ': ' });&#xD;&#xA;    if (typeReference.typeId == null || typeReference.getType()?.specialization == &quot;Type-Definition&quot;) {&#xD;&#xA;        result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference) });&#xD;&#xA;    } else {&#xD;&#xA;        result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId });&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;return result;" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="false" isActive="true" />
+        <property name="581e77d6-4587-4041-86f6-880bd57d5848" display="Name Must Be Unique" value="true" isActive="false" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="dc25cab2-59a6-4505-bfeb-d0bf1a0000de" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>97265382-53bd-4490-889f-49ebd743ed50</parentFolderId>
+      <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
+      <packageName>Intent.Common.Types</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="2c40eb61-67df-4ecc-9c99-42b3b2f6dec8" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Parameter</name>
+          <display>Add Parameter: Parameter</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="4aeff3d6-ef5d-4677-b923-7b2a83ca2bd8">
+            <typeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>dc25cab2-59a6-4505-bfeb-d0bf1a0000de</parentFolderId>
+          <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
+          <packageName>Intent.Common.Types</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment>Overrides the default creation option settings.</comment>
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + a" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="param" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

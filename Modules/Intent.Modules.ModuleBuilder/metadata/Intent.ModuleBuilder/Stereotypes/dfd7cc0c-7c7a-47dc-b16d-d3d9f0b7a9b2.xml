@@ -32,7 +32,8 @@
         <type>c776bc38-c0e8-4535-87dd-79cfd33be2ad</type>
       </lookupTypes>
       <lookupInternalTargetPropertyId>const mappablePackageExtensionId = "bddb69f0-e2c8-4373-b5cb-d701f311f935";
-return [element.getParent(mappablePackageExtensionId).id, element.getParent(mappablePackageExtensionId).typeReference.getTypeId()];</lookupInternalTargetPropertyId>
+const packageId = element.getParent(mappablePackageExtensionId).typeReference.getTypeId();
+return [packageId].concat(lookupTypesOf(mappablePackageExtensionId).filter(x =&gt; x.typeReference.getTypeId() == packageId).map(x =&gt; x.id));</lookupInternalTargetPropertyId>
     </property>
   </properties>
 </stereotypeDefinition>

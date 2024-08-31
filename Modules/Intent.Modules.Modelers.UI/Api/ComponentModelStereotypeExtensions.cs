@@ -12,29 +12,6 @@ namespace Intent.Modelers.UI.Api
 {
     public static class ComponentModelStereotypeExtensions
     {
-        public static ComponentSettings GetComponentSettings(this ComponentModel model)
-        {
-            var stereotype = model.GetStereotype(ComponentSettings.DefinitionId);
-            return stereotype != null ? new ComponentSettings(stereotype) : null;
-        }
-
-
-        public static bool HasComponentSettings(this ComponentModel model)
-        {
-            return model.HasStereotype(ComponentSettings.DefinitionId);
-        }
-
-        public static bool TryGetComponentSettings(this ComponentModel model, out ComponentSettings stereotype)
-        {
-            if (!HasComponentSettings(model))
-            {
-                stereotype = null;
-                return false;
-            }
-
-            stereotype = new ComponentSettings(model.GetStereotype(ComponentSettings.DefinitionId));
-            return true;
-        }
 
         public static Page GetPage(this ComponentModel model)
         {
@@ -58,25 +35,6 @@ namespace Intent.Modelers.UI.Api
 
             stereotype = new Page(model.GetStereotype(Page.DefinitionId));
             return true;
-        }
-
-        public class ComponentSettings
-        {
-            private IStereotype _stereotype;
-            public const string DefinitionId = "93f869a6-f3e1-498e-bf40-6cfe99f012c5";
-
-            public ComponentSettings(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public string Name => _stereotype.Name;
-
-            public IIconModel Icon()
-            {
-                return _stereotype.GetProperty<IIconModel>("Icon");
-            }
-
         }
 
         public class Page

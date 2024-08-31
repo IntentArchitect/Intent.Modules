@@ -75,6 +75,65 @@ if (namingConvention == "pascal-case") {
       </macros>
       <childElementSettings />
     </elementSetting>
+    <elementSetting type="Constructor" typeId="97265382-53bd-4490-889f-49ebd743ed50">
+      <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzguNjk3NiIgeTE9IjE3LjQxNCIgeDI9IjM4LjYxMzYiIHkyPSIzMi40NzM4IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNjMpIj4NCgk8c3RvcCAgb2Zmc2V0PSI1LjY5NTE5M2UtMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjRDQ0VGIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXykiIGQ9Ik00Ni4yLDM2LjV2MS4xYzAsMC41LTAuNCwxLTEsMWgtNXY0LjdjMCwwLjUtMC40LDEtMSwxaC0xLjFjLTAuNSwwLTEtMC41LTEtMXYtNC43aC01DQoJYy0wLjUsMC0xLTAuNS0xLTF2LTEuMWMwLTAuNSwwLjUtMSwxLTFoNXYtNS4zYzAtMC42LDAuNS0xLDEtMWgxLjFjMC42LDAsMSwwLjQsMSwxdjUuM2g1QzQ1LjgsMzUuNSw0Ni4yLDM1LjksNDYuMiwzNi41eiIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDE2NzM4NzMzMTY0NjU3Njg3NTA0MDAwMDAwMTIyNTM0NDQ4NzA0MDA3NTQ0OV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My40NDM3IiB4Mj0iMjUiIHkyPSI0LjA0MzciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTY3Mzg3MzMxNjQ2NTc2ODc1MDQwMDAwMDAxMjI1MzQ0NDg3MDQwMDc1NDQ5XykiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgICAgIiBkPSINCglNNDQuMSwxMS45TDI1LjUsMi44Yy0wLjMtMC4xLTAuNi0wLjEtMC45LDBMNS45LDExLjljLTAuNCwwLjItMC42LDAuNS0wLjYsMC45djI0LjNjMCwwLjQsMC4yLDAuNywwLjYsMC45bDE4LjYsOS4yDQoJYzAuMSwwLjEsMC4zLDAuMSwwLjUsMC4xczAuMywwLDAuNS0wLjFsMTAuMS01VjQwaC0yLjRsLTYuNywzLjNWMjIuNEw0MS42LDE1djE4LjloMy4xdi0yMUM0NC43LDEyLjUsNDQuNSwxMi4xLDQ0LjEsMTEuOXoNCgkgTTIzLjUsNDMuM0wxMSwzNy4xbC0yLjYtMS4yVjE1bDE1LjEsNy40VjQzLjN6IE0zOC45LDEyLjhMMjUsMTkuN2wtMTMuOS02LjlIMTFsMTQtNi45TDM4LjksMTIuOEwzOC45LDEyLjh6Ii8+DQo8L3N2Zz4NCg==" />
+      <saveAsOwnFile>false</saveAsOwnFile>
+      <displayFunction>const getTypeReferenceCssClass = (typeReference) =&gt; {
+    if (typeReference.typeId == null || typeReference.getType()?.specialization == "Type-Definition") {
+        return "keyword";
+    } else {
+        return "typeref";
+    }
+}
+const result = [{ text: `${ getParent().getName() }${ genericTypes }(` }];
+result.push(...children("Parameter")
+    .map(x =&gt; [
+        { text: `${ x.name }`, cssClass: "muted", targetId: x.id },
+        { text: ': ' },
+        { text: x.typeReference.display, cssClass: getTypeReferenceCssClass(x.typeReference), targetId: x.typeReference.typeId }
+    ])
+    .reduce((x, y) =&gt; x.concat(x.length &gt; 0 ? [{ text: ', ' }] : []).concat(y), []));
+    result.push({ text: ')' });
+if (typeReference) {
+    result.push({ text: ': ' });
+    if (typeReference.typeId == null || typeReference.getType()?.specialization == "Type-Definition") {
+        result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference) });
+    } else {
+        result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId });
+    }
+}
+return result;</displayFunction>
+      <allowRename>false</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
+      <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" />
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <text>Add Parameter</text>
+          <shortcut>ctrl + shift + a</shortcut>
+          <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
+          <specializationType>Parameter</specializationType>
+          <specializationTypeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</specializationTypeId>
+          <defaultName>param</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
     <elementSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
       <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My43MDc2IiB4Mj0iMjUiIHkyPSI0LjMwNzYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00NC4xLDExLjlMMjUuNSwyLjhjLTAuMy0wLjEtMC42LTAuMS0wLjksMEw1LjksMTEuOQ0KCWMtMC40LDAuMi0wLjYsMC41LTAuNiwwLjl2MjQuM2MwLDAuNCwwLjIsMC43LDAuNiwwLjlsMTguNiw5LjJjMC4xLDAuMSwwLjMsMC4xLDAuNSwwLjFzMC4zLDAsMC41LTAuMUw0NC4xLDM4DQoJYzAuNC0wLjIsMC42LTAuNSwwLjYtMC45VjEyLjlDNDQuNywxMi41LDQ0LjUsMTIuMSw0NC4xLDExLjl6IE0yNSw1LjlsMTQsNi45bC0xNCw2LjlsLTE0LTYuOUwyNSw1Ljl6IE04LjQsMzUuOVYxNWwxNS4xLDcuNHYyMC45DQoJTDExLDM3LjFMOC40LDM1Ljl6IE0yNi41LDQzLjNWMjIuNEw0MS42LDE1djIwLjlMMzksMzcuMUwyNi41LDQzLjN6Ii8+DQo8L3N2Zz4NCg==" />
       <iconFunction>if (getIsStatic()) {
@@ -148,7 +207,7 @@ function validateOperation(element) {
 return validateOperation(lookup(id));
 </validateFunction>
       <allowRename>true</allowRename>
-      <nameMustBeUnique>true</nameMustBeUnique>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowAbstract>true</allowAbstract>
       <allowStatic>true</allowStatic>
       <allowGenericTypes>true</allowGenericTypes>
@@ -300,12 +359,31 @@ return result;</displayFunction>
             <childSetting id="95804383-4722-4916-aa59-ea7d037d13b9" name="Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>true</isTraversable>
+              <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>invokable</represents>
               <childSettings>
                 <childSetting id="433c5695-2860-4182-a5a8-83bbdf793601" name="Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+              </childSettings>
+            </childSetting>
+            <childSetting id="9ce2c747-85c9-467c-893c-24b32351c540" name="Constructor" type="Constructor" typeId="97265382-53bd-4490-889f-49ebd743ed50" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <overrideTypeReferenceFunction>return element.getParent().typeReference.toModel();</overrideTypeReferenceFunction>
+              <canBeModified>false</canBeModified>
+              <represents>invokable</represents>
+              <childSettings>
+                <childSetting id="61247eee-ccc9-4a2c-948a-a73adbd6c24b" name="Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" version="2.0.0">
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>true</isTraversable>

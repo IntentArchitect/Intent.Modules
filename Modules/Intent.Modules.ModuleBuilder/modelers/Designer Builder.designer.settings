@@ -341,6 +341,15 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
         </childElementSetting>
         <childElementSetting type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV9kODUzMDVkZC1hZmZlLTRhNzAtYjIwZS00NmYzYWQzY2ViZTYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iLTExOSIgeTE9IjcxLjUiIHgyPSItMTE5IiB5Mj0iMjguNSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgtMSAwIDAgMSAtOTQgLTI1KSI+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6Izc3OTdDOSIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMyNjY2QzkiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cG9seWdvbiBmaWxsPSJ1cmwoI1NWR0lEXzFfZDg1MzA1ZGQtYWZmZS00YTcwLWIyMGUtNDZmM2FkM2NlYmU2KSIgcG9pbnRzPSIzLjYsNDYuNSAzLjYsMjcuMiA4LjYsMjcuMiA4LjYsMzcuOCAyOS42LDE2LjggNDIuOSwzLjUgNDYuNCw3IDMzLjEsMjAuMyAzMy4xLDIwLjMgDQoJMzEuNCwyMiAyNy45LDI1LjYgMTEuOCw0MS40IDIyLjgsNDEuNCAyMi44LDQ2LjUgIi8+DQo8L3N2Zz4NCg==" />
+          <iconFunction>if (!getStereotype("Settings").getProperty("Icon").getValue()) {
+    return null;
+}
+return getStereotype("Settings").getProperty("Icon").getValue();
+let icon = JSON.parse(getStereotype("Settings").getProperty("Icon").getValue());
+if (icon.source.startsWith("data:image")) {
+    return icon.source;
+}
+return null;</iconFunction>
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <nameMustBeUnique>true</nameMustBeUnique>
@@ -375,6 +384,15 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
         </childElementSetting>
         <childElementSetting type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV84MWQ0MTdiYi1lNGM1LTQwMjctYjc0OS03NGNhOTViYjNhOTYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjQuMSIgeTE9IjQ2LjYiIHgyPSIyNC4xIiB5Mj0iMy42IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTEpIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzc5N0M5Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzI2NjZDOSIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwb2x5Z29uIGZpbGw9InVybCgjU1ZHSURfMV84MWQ0MTdiYi1lNGM1LTQwMjctYjc0OS03NGNhOTViYjNhOTYpIiBwb2ludHM9IjQ1LjUsNC40IDQ1LjUsMjMuNyA0MC41LDIzLjcgNDAuNSwxMy4xIDE5LjUsMzQuMSA2LjIsNDcuNCAyLjcsNDMuOSAxNiwzMC42IDE2LDMwLjYgDQoJMTcuNywyOC45IDIxLjIsMjUuMyAzNy4zLDkuNSAyNi4zLDkuNSAyNi4zLDQuNCAiLz4NCjwvc3ZnPg0K" />
+          <iconFunction>if (!getStereotype("Settings").getProperty("Icon").getValue()) {
+    return null;
+}
+return getStereotype("Settings").getProperty("Icon").getValue();
+let icon = JSON.parse(getStereotype("Settings").getProperty("Icon").getValue());
+if (icon.source.startsWith("data:image")) {
+    return icon.source;
+}
+return null;</iconFunction>
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <nameMustBeUnique>true</nameMustBeUnique>
@@ -1471,7 +1489,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <saveAsOwnFile>false</saveAsOwnFile>
               <displayFunction>return `[draw text]: ${name}`;</displayFunction>
               <allowRename>true</allowRename>
-              <nameMustBeUnique>true</nameMustBeUnique>
+              <nameMustBeUnique>false</nameMustBeUnique>
               <allowAbstract>false</allowAbstract>
               <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
@@ -1490,7 +1508,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <saveAsOwnFile>false</saveAsOwnFile>
               <displayFunction>return `[stereotypes]: ${name}`;</displayFunction>
               <allowRename>true</allowRename>
-              <nameMustBeUnique>true</nameMustBeUnique>
+              <nameMustBeUnique>false</nameMustBeUnique>
               <allowAbstract>false</allowAbstract>
               <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
@@ -1509,7 +1527,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <saveAsOwnFile>false</saveAsOwnFile>
               <displayFunction>return `[draw path]: ${name}`;</displayFunction>
               <allowRename>true</allowRename>
-              <nameMustBeUnique>true</nameMustBeUnique>
+              <nameMustBeUnique>false</nameMustBeUnique>
               <allowAbstract>false</allowAbstract>
               <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
@@ -1528,7 +1546,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <saveAsOwnFile>false</saveAsOwnFile>
               <displayFunction>return `[draw svg]: ${name}`;</displayFunction>
               <allowRename>true</allowRename>
-              <nameMustBeUnique>true</nameMustBeUnique>
+              <nameMustBeUnique>false</nameMustBeUnique>
               <allowAbstract>false</allowAbstract>
               <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>

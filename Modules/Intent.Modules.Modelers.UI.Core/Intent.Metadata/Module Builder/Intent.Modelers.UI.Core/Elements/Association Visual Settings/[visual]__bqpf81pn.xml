@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="c751489b-f297-42a6-97ff-ed317c32546c" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
+  <name>[visual]</name>
+  <display>[visual]: Show Dialog</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <typeReference id="fbcb0bb1-7144-4a65-af33-b5b0ee1cccb8">
+    <typeId>2a309fb2-c487-4c00-9462-16dac9824731</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+    <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>2a309fb2-c487-4c00-9462-16dac9824731</parentFolderId>
+  <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+  <packageName>Intent.Modelers.UI.Core</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="e21d9a65-36b8-4664-9c61-d70f3615023c" name="Setting">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="3ff8fe05-f379-4b5e-a965-cc6f6cab4c21" display="Line Type" value="Curved" isActive="true" />
+        <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" value="#7cd97c" isActive="true" />
+        <property name="f248a382-66c9-4107-aa92-5ee83dd3d08c" display="Line Width" isActive="true" />
+        <property name="93499f0b-8590-42ea-bdbf-e943597e8e1e" display="Line Dash Array" isActive="true" />
+        <property name="85aa1be2-62f1-45d1-84d0-acb5bb5d1752" display="Reverse Flow Direction" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="0a142d6b-e0b8-487c-9ab2-953e6af62472" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
+      <name>[source]</name>
+      <display>[source]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>c751489b-f297-42a6-97ff-ed317c32546c</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1434703f-9e9e-4321-af00-1e857a2e6b80" name="Point Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="return `a 4,4 0 1,0 4,4         a 4,4 0 1,0 -4,4`;" isActive="true" />
+            <property name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" isActive="true" />
+            <property name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" isActive="true" />
+            <property name="33bc633b-e627-49df-b105-398e32e080ee" display="Line Dash Array" isActive="true" />
+            <property name="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f" display="Fill Color" isActive="true" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="6b16c65c-f348-40b1-96b0-6423917b9356" name="Label Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" isActive="true" />
+            <property name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" isActive="true" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="dc5496ee-e524-41ef-8b17-0125a25d0349" name="Navigable Indicator Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="18b35949-3dda-46d2-8296-490214e3b687" display="Path" value="`l 5 10 l -5 -2.5 l -5 2.5 Z`" isActive="true" />
+            <property name="369ff6b9-dc1c-4291-9c63-d50735315c42" display="Line Color" value="#7cd97c" isActive="true" />
+            <property name="8a72a4c5-b4e8-4eb0-9db2-59dff1e9fb51" display="Line Width" isActive="true" />
+            <property name="fa857edd-c8ac-4044-8cf6-c8ee9de1ec29" display="Line Dash Array" isActive="true" />
+            <property name="f72d804d-a243-4df6-a718-fb9d3327bd7a" display="Fill Color" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="415eeabc-f0fe-4b69-8e40-45ccf34a9a73" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
+      <name>[desintation]</name>
+      <display>[destination]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>c751489b-f297-42a6-97ff-ed317c32546c</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1434703f-9e9e-4321-af00-1e857a2e6b80" name="Point Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" isActive="true" />
+            <property name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" isActive="true" />
+            <property name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" isActive="true" />
+            <property name="33bc633b-e627-49df-b105-398e32e080ee" display="Line Dash Array" isActive="true" />
+            <property name="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f" display="Fill Color" value="#ade8f4" isActive="true" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="6b16c65c-f348-40b1-96b0-6423917b9356" name="Label Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" isActive="true" />
+            <property name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" isActive="true" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="dc5496ee-e524-41ef-8b17-0125a25d0349" name="Navigable Indicator Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="18b35949-3dda-46d2-8296-490214e3b687" display="Path" value="`l 5 10 l -5 -2.5 l -5 2.5 Z`" isActive="true" />
+            <property name="369ff6b9-dc1c-4291-9c63-d50735315c42" display="Line Color" value="#7cd97c" isActive="true" />
+            <property name="8a72a4c5-b4e8-4eb0-9db2-59dff1e9fb51" display="Line Width" isActive="true" />
+            <property name="fa857edd-c8ac-4044-8cf6-c8ee9de1ec29" display="Line Dash Array" isActive="true" />
+            <property name="f72d804d-a243-4df6-a718-fb9d3327bd7a" display="Fill Color" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

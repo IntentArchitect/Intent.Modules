@@ -18,6 +18,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#97265382-53bd-4490-889f-49ebd743ed50</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ConstructorModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ConstructorModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4215f417-25d2-4509-9309-5076a1452eaa</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/EnumLiteralModel.cs</ApplicationRelativeFilePath>

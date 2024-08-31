@@ -40,8 +40,8 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" value="" isActive="true" />
-        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="" isActive="true" />
+        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" isActive="true" />
+        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="12bec4f8-487a-40f8-a6d2-c519d995eb38" name="[Invokable Service Operation]">

@@ -83,14 +83,14 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type order="0">Folder</type>
-        <type order="1">Class</type>
-        <type order="2">Data Contract</type>
-        <type order="3">Type-Definition</type>
-        <type order="4">Enum</type>
-        <type order="5">Comment</type>
-        <type order="6">Diagram</type>
-        <type order="7">Stereotype-Definition</type>
+        <type order="0" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f" />
+        <type order="1" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+        <type order="2" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
+        <type order="3" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+        <type order="4" type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+        <type order="5" type="Comment" typeId="c4c0c77f-720b-4e91-9c48-b58d2164d30a" />
+        <type order="6" type="Diagram" typeId="4d66fecd-e9b8-436f-aa50-c59040ad0879" />
+        <type order="7" type="Stereotype-Definition" typeId="54eff27b-2dfc-4853-8498-1a2c4700e385" />
       </typeOrder>
       <macros>
         <macro trigger="on-created">
@@ -146,6 +146,7 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
     return "Please ensure class names are unique in this location."
 }</validateFunction>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>true</nameMustBeUnique>
       <allowAbstract>true</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>true</allowGenericTypes>
@@ -157,11 +158,11 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Generalization Target End</type>
-        <type order="1">Attribute</type>
-        <type order="2">Class Constructor</type>
-        <type order="3">Operation</type>
-        <type order="4">Association Target End</type>
+        <type order="0" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946" />
+        <type order="1" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
+        <type order="2" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" />
+        <type order="3" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" />
+        <type order="4" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -203,7 +204,7 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
         <option order="0" type="association">
           <text>New Inheritance</text>
           <shortcut>ctrl + shift + i</shortcut>
-          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfYjgwZGQwZDUtMzZlNi00NDUxLThjMmItMGQ3ZjYyMjQ3ODdiIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjQwLjU1IiB5MT0iMTMuNDUiIHgyPSIxMi45NSIgeTI9IjQxLjA1IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTEpIj4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6Izc3OTdDOSIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMjY2NkM5Ii8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cG9seWdvbiBmaWxsPSJ1cmwoI1NWR0lEXzFfYjgwZGQwZDUtMzZlNi00NDUxLThjMmItMGQ3ZjYyMjQ3ODdiKSIgcG9pbnRzPSI0NC44LDUuNiA0NC44LDMzLjMgMzcuOCwyNi4yIDMzLjYsMjIgMTEuMiw0NC40IDYuMiwzOS40IDEwLjgsMzQuOSAyOC43LDE3LjEgMTcuMiw1LjcgDQoJCTIxLjgsNS42IAkiLz4NCjwvZz4NCjwvc3ZnPg0K" />
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <specializationType>Generalization Target End</specializationType>
           <specializationTypeId>4686cc1d-b4d8-4b99-b45b-f77bd5496946</specializationTypeId>
           <defaultName>NewGeneralization</defaultName>
@@ -334,6 +335,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
     return "Please ensure all attribute names are unique."
 }</validateFunction>
           <allowRename>true</allowRename>
+          <nameMustBeUnique>true</nameMustBeUnique>
           <allowAbstract>false</allowAbstract>
           <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
@@ -347,8 +349,8 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
           <typeReferenceSetting>
             <isRequired>true</isRequired>
             <targetTypes>
-              <type>Enum</type>
-              <type>Type-Definition</type>
+              <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
@@ -413,6 +415,7 @@ if (typeReference) {
 }
 return result;</displayFunction>
           <allowRename>true</allowRename>
+          <nameMustBeUnique>true</nameMustBeUnique>
           <allowAbstract>true</allowAbstract>
           <allowStatic>true</allowStatic>
           <allowGenericTypes>true</allowGenericTypes>
@@ -427,10 +430,10 @@ return result;</displayFunction>
             <displayName>Return Type</displayName>
             <isRequired>false</isRequired>
             <targetTypes>
-              <type>Enum</type>
-              <type>Class</type>
-              <type>Type-Definition</type>
-              <type>Data Contract</type>
+              <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+              <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+              <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
@@ -440,7 +443,7 @@ return result;</displayFunction>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <typeOrder>
-            <type order="0">Parameter</type>
+            <type order="0" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -466,46 +469,46 @@ return result;</displayFunction>
               <mapFrom>root</mapFrom>
               <mappings>
                 <mapping id="f8730104-973b-46a2-b03d-050983a8808c">
-                  <criteria specializationType="Class">
+                  <criteria specializationType="Class" specializationTypeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
                     <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
-                  <mapTo specializationType="Operation" childMappingMode="map-to-child" />
+                  <mapTo specializationType="Operation" specializationTypeId="e042bb67-a1df-480c-9935-b26210f78591" childMappingMode="map-to-child" />
                   <behaviour autoSelectChildren="true" />
                   <childMappings>
                     <mapping id="4c5e6154-3d01-47fd-b36b-fb94078a1301">
-                      <criteria specializationType="Attribute">
+                      <criteria specializationType="Attribute" specializationTypeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
                         <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                       </criteria>
-                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                      <mapTo specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
                       <childMappings />
                     </mapping>
                     <mapping id="aaffaada-2f0a-4c86-bd2f-5636e16ed656">
-                      <criteria specializationType="Association Target End">
+                      <criteria specializationType="Association Target End" specializationTypeId="0a66489f-30aa-417b-a75d-b945863366fd">
                         <hasTypeReference>true</hasTypeReference>
                         <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                       </criteria>
-                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                      <mapTo specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
                       <childMappings />
                     </mapping>
                     <mapping id="beb27aec-ae0a-4738-b01b-64f4689dbba9">
-                      <criteria specializationType="Association Source End">
+                      <criteria specializationType="Association Source End" specializationTypeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
                         <hasTypeReference>true</hasTypeReference>
                         <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                       </criteria>
-                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                      <mapTo specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
                       <childMappings />
                     </mapping>
                     <mapping id="0148afc9-d327-4b53-8985-695d6689276e">
-                      <criteria specializationType="Generalization Target End">
+                      <criteria specializationType="Generalization Target End" specializationTypeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
                         <hasTypeReference>true</hasTypeReference>
                         <isCollection>false</isCollection>
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
@@ -538,6 +541,7 @@ const result = [
 ];
 return result;</displayFunction>
               <allowRename>true</allowRename>
+              <nameMustBeUnique>true</nameMustBeUnique>
               <allowAbstract>true</allowAbstract>
               <allowStatic>false</allowStatic>
               <allowGenericTypes>true</allowGenericTypes>
@@ -551,10 +555,10 @@ return result;</displayFunction>
               <typeReferenceSetting>
                 <isRequired>true</isRequired>
                 <targetTypes>
-                  <type>Enum</type>
-                  <type>Class</type>
-                  <type>Type-Definition</type>
-                  <type>Data Contract</type>
+                  <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+                  <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+                  <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+                  <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
                 </targetTypes>
                 <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
                 <allowIsNavigable>true</allowIsNavigable>
@@ -603,6 +607,7 @@ if (typeReference) {
 }
 return result;</displayFunction>
           <allowRename>false</allowRename>
+          <nameMustBeUnique>false</nameMustBeUnique>
           <allowAbstract>false</allowAbstract>
           <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
@@ -614,7 +619,7 @@ return result;</displayFunction>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Parameter</type>
+            <type order="0" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" />
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -640,46 +645,46 @@ return result;</displayFunction>
               <mapFrom>root</mapFrom>
               <mappings>
                 <mapping id="54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a">
-                  <criteria specializationType="Class">
+                  <criteria specializationType="Class" specializationTypeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
                     <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
-                  <mapTo specializationType="Class Constructor" childMappingMode="map-to-child" />
+                  <mapTo specializationType="Class Constructor" specializationTypeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" childMappingMode="map-to-child" />
                   <behaviour autoSelectChildren="true" />
                   <childMappings>
                     <mapping id="5601382d-8b87-465f-bc8c-d41fcc28185d">
-                      <criteria specializationType="Attribute">
+                      <criteria specializationType="Attribute" specializationTypeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
                         <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                       </criteria>
-                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                      <mapTo specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
                       <childMappings />
                     </mapping>
                     <mapping id="6a1129e9-e2a3-4df5-9678-98bc9d839836">
-                      <criteria specializationType="Association Target End">
+                      <criteria specializationType="Association Target End" specializationTypeId="0a66489f-30aa-417b-a75d-b945863366fd">
                         <hasTypeReference>true</hasTypeReference>
                         <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                       </criteria>
-                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                      <mapTo specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
                       <childMappings />
                     </mapping>
                     <mapping id="9a78cee5-5497-4457-8e75-2d044b557618">
-                      <criteria specializationType="Association Source End">
+                      <criteria specializationType="Association Source End" specializationTypeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
                         <hasTypeReference>true</hasTypeReference>
                         <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                       </criteria>
-                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                      <mapTo specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
                       <childMappings />
                     </mapping>
                     <mapping id="d9dfe7c1-266d-451e-be30-236f1d6c0283">
-                      <criteria specializationType="Generalization Target End">
+                      <criteria specializationType="Generalization Target End" specializationTypeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
                         <hasTypeReference>true</hasTypeReference>
                         <isCollection>false</isCollection>
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
@@ -701,6 +706,7 @@ return result;</displayFunction>
       <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAA6CAMAAADWZboaAAABSlBMVEUAAAD//wD/gAD/mTP/zAD/gCv/qivmsxr/gDPmvxr/gDPnthj/hjHpvBb/iTHtthL/iS7quBX/hyvquhX/gzDrvBTuuRf6iCvquhX6hTDtuxfquBX7hi7quRXruRf8hi7suxf8hC38hC3suxbruhb9hi/9hi3suhX9hS3quxfruRbruhb7hC3quhf7hS/ruhb7hi3ruRXsuhf8hS/ruhb8hS38hC7quRb4lyT8hC7suhb3mCf2mST0nSTquRb8hS76iivruhf9hS7ruhbruxb7hS77hS77hi7ruhb8hS/ruhbusBr8hS78hS7ruhb8hS7ruhbruhbtsxn8hC77hS3ruhb8hS7ruhb8hS7tthjruhfruhb8hS7ruhbruhb8hS7ruhb8hS7ruhb8hS7ruhbwy1Dx0GDx0GHz1nP346L8hS7++/D++/H///+gFZfLAAAAZHRSTlMAAQIFBQYGCgoUFBUVFxocHCQkJSUmLC8wMDg9PT5NTk9PW15nZ3Z3d3uAgYGIiI2Nj5GUl5igoba3uL/AwcbGyczMztjY2dnb297f4eLj4+Tl5+fo6err6+zu9fn7/Pz9/f7+TQPISAAAAAFiS0dEbbsGAK0AAAFSSURBVEjH5ddHU8JQFIbhDxR7771ih4i9i72LvRdQgiXq/9+6IIHkEGbOPeMiM75LJs+Cb5F7A3iiQG9Iow3TBjr8ubJ132C1UUdlza3B7KSC0BmDXYTQCz49IjTJp3FCDYX+GfV3Boes5s2WaUtrj7m0cVNndbhLaeWZzuzuktBJnd0KoTE+PSc0wacJQnWFPEXfP+29qdDvH3tfKjT1YS/l/Zn+bGH3uR3yJc/C7nM76HGehd3ndtAp8X+9rpLSnWZIqKaFugOAZGHr9SlYmFLOwnF3yqkvKaYYdFCF19ozELHTUz49AHyzNjrNp+MAChaytPqGK2PlAFASzZ6OLXs8uV6bfr5sO3umFvWMhdNlHrsyfwiPWqdnsD1zP2twu+RZ8r5J+X5oyoc2COlTF4T0tR9SOgIpnYCUzvmkdLFQeHnXV4ul9/6tUvEnQz283y9zvWoo9YIzZQAAAABJRU5ErkJggg==" />
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>true</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -712,7 +718,7 @@ return result;</displayFunction>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Comment Target End</type>
+        <type order="0" type="Comment Target End" typeId="b7edce45-ccf0-47ed-b79f-86d5145c9f62" />
       </typeOrder>
       <creationOptions>
         <option type="association">
@@ -776,6 +782,7 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
     return "Please ensure Data Contract names are unique in this location."
 }</validateFunction>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>true</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>true</allowGenericTypes>
@@ -787,8 +794,8 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Data Contract Generalization Target End</type>
-        <type order="1">Attribute</type>
+        <type order="0" type="Data Contract Generalization Target End" typeId="4ea029c6-e963-46c7-8d2f-e4ea73e05a07" />
+        <type order="1" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -819,6 +826,7 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
       <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>true</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -942,13 +950,13 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type order="2">Class</type>
-        <type order="3">Type-Definition</type>
-        <type>Enum</type>
-        <type order="5">Comment</type>
-        <type>Diagram</type>
-        <type order="2">Data Contract</type>
-        <type>Stereotype-Definition</type>
+        <type order="2" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+        <type order="3" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+        <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+        <type order="5" type="Comment" typeId="c4c0c77f-720b-4e91-9c48-b58d2164d30a" />
+        <type type="Diagram" typeId="4d66fecd-e9b8-436f-aa50-c59040ad0879" />
+        <type order="2" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
+        <type type="Stereotype-Definition" typeId="54eff27b-2dfc-4853-8498-1a2c4700e385" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -971,7 +979,7 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Class</type>
+            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
           </targetTypes>
           <allowIsNavigable>true</allowIsNavigable>
           <allowIsNullable>true</allowIsNullable>
@@ -994,12 +1002,13 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
       }
   }
   return null;</defaultNameFunction>
+        <nameMustBeUnique>true</nameMustBeUnique>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Class</type>
+            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>true</allowIsNullable>
@@ -1051,7 +1060,7 @@ return null;</lineDashArray>
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Comment</type>
+            <type type="Comment" typeId="c4c0c77f-720b-4e91-9c48-b58d2164d30a" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -1063,13 +1072,14 @@ return null;</lineDashArray>
       </sourceEnd>
       <targetEnd type="Comment Target End" typeId="b7edce45-ccf0-47ed-b79f-86d5145c9f62">
         <nameAccessibilityMode>optional</nameAccessibilityMode>
+        <nameMustBeUnique>true</nameMustBeUnique>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Class</type>
-            <type>Comment</type>
+            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+            <type type="Comment" typeId="c4c0c77f-720b-4e91-9c48-b58d2164d30a" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -1099,7 +1109,7 @@ return null;</lineDashArray>
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Data Contract</type>
+            <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -1119,13 +1129,14 @@ return result;
 </displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <defaultNameFunction>return `base`;</defaultNameFunction>
+        <nameMustBeUnique>true</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,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" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Data Contract</type>
+            <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -1149,13 +1160,13 @@ return result;
     <associationSetting type="Generalization" typeId="5de35973-3ac7-4e65-b48c-385605aec561">
       <sourceEnd type="Generalization Source End" typeId="8190bf43-222c-4b53-8a44-14626efe3574">
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
-        <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfYjgwZGQwZDUtMzZlNi00NDUxLThjMmItMGQ3ZjYyMjQ3ODdiIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjQwLjU1IiB5MT0iMTMuNDUiIHgyPSIxMi45NSIgeTI9IjQxLjA1IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTEpIj4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6Izc3OTdDOSIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMjY2NkM5Ii8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cG9seWdvbiBmaWxsPSJ1cmwoI1NWR0lEXzFfYjgwZGQwZDUtMzZlNi00NDUxLThjMmItMGQ3ZjYyMjQ3ODdiKSIgcG9pbnRzPSI0NC44LDUuNiA0NC44LDMzLjMgMzcuOCwyNi4yIDMzLjYsMjIgMTEuMiw0NC40IDYuMiwzOS40IDEwLjgsMzQuOSAyOC43LDE3LjEgMTcuMiw1LjcgDQoJCTIxLjgsNS42IAkiLz4NCjwvZz4NCjwvc3ZnPg0K" />
+        <icon type="UrlImagePath" source="data:image/png;base64,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" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Class</type>
+            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -1175,13 +1186,14 @@ return result;
 </displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <defaultNameFunction>return `base`;</defaultNameFunction>
-        <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfYjgwZGQwZDUtMzZlNi00NDUxLThjMmItMGQ3ZjYyMjQ3ODdiIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjQwLjU1IiB5MT0iMTMuNDUiIHgyPSIxMi45NSIgeTI9IjQxLjA1IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTEpIj4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6Izc3OTdDOSIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMjY2NkM5Ii8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cG9seWdvbiBmaWxsPSJ1cmwoI1NWR0lEXzFfYjgwZGQwZDUtMzZlNi00NDUxLThjMmItMGQ3ZjYyMjQ3ODdiKSIgcG9pbnRzPSI0NC44LDUuNiA0NC44LDMzLjMgMzcuOCwyNi4yIDMzLjYsMjIgMTEuMiw0NC40IDYuMiwzOS40IDEwLjgsMzQuOSAyOC43LDE3LjEgMTcuMiw1LjcgDQoJCTIxLjgsNS42IAkiLz4NCjwvZz4NCjwvc3ZnPg0K" />
+        <nameMustBeUnique>true</nameMustBeUnique>
+        <icon type="UrlImagePath" source="data:image/png;base64,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" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Class</type>
+            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>

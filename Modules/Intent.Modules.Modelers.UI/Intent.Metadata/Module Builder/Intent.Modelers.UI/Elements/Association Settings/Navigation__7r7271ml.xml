@@ -31,10 +31,10 @@
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;b1c481e1-e91e-4c29-9817-00ab9cad4b6b&quot;,&quot;e030c97a-e066-40a7-8188-808c275df3cb&quot;,&quot;776a9393-6b23-4a8c-8937-fd7e833fa0ef&quot;]" isActive="true" />
             <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="NavigateBackComponents" isActive="true" />
-            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="" isActive="true" />
-            <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" value="" isActive="true" />
+            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" isActive="true" />
+            <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
-            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" isActive="true" />
             <property name="2d07ed88-82bf-4d30-9280-1488f0f927e0" display="Name Must Be Unique" value="true" isActive="true" />
             <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="true" isActive="true" />
             <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
@@ -138,7 +138,7 @@
                   <properties>
                     <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                     <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                     <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                     <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                     <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />

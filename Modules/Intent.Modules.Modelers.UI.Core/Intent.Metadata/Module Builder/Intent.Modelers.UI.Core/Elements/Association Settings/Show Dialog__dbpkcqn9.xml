@@ -31,9 +31,9 @@
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;e030c97a-e066-40a7-8188-808c275df3cb&quot;]" isActive="true" />
             <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" value="[]" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" isActive="true" />
-            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="" isActive="true" />
+            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
-            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" isActive="true" />
             <property name="2d07ed88-82bf-4d30-9280-1488f0f927e0" display="Name Must Be Unique" value="true" isActive="true" />
             <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
             <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
@@ -72,7 +72,7 @@
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="const display = [&#xD;&#xA;    { text: &quot;[show] &quot;, cssClass: &quot;keyword&quot; },&#xD;&#xA;    { text: `${typeReference.getType()?.getDisplay() ?? &quot;&lt;not-set&gt;&quot;}`, cssClass: &quot;function&quot;, targetId: typeReference.typeId },&#xD;&#xA;    { text: `(&quot;`, cssClass: &quot;muted&quot; },&#xD;&#xA;    { text: `${association.getName()}`, cssClass: &quot;&quot; },&#xD;&#xA;    { text: `&quot;)`, cssClass: &quot;muted&quot; },&#xD;&#xA;];&#xD;&#xA;return display;&#xD;&#xA;" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Optional" isActive="true" />
-            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" isActive="true" />
             <property name="2d07ed88-82bf-4d30-9280-1488f0f927e0" display="Name Must Be Unique" value="true" isActive="true" />
             <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
             <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
@@ -153,6 +153,7 @@
       <name>[events]</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>2a309fb2-c487-4c00-9462-16dac9824731</parentFolderId>
@@ -160,7 +161,41 @@
       <packageName>Intent.Modelers.UI.Core</packageName>
       <stereotypes />
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="30f9a597-92ef-4c59-8fdf-447523b314e4" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="47c98532-49b7-4e0e-8ac1-92bc3ecfde5b">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>9f2503b2-db3c-4ce5-abc7-eeed9629e465</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1f88f1ac-b96a-4ae7-9047-883c2fa3b3df" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="association.createAdvancedMapping();" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
     </childElement>
   </childElements>
 </class>
