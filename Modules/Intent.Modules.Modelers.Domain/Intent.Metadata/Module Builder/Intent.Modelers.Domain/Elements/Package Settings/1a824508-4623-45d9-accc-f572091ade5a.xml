@@ -373,7 +373,7 @@
       <childElements>
         <childElement id="b9ab2732-4060-4cab-b951-be712f200d1a" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
-          <display>On Created: Script</display>
+          <display>On Created: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="978d4e82-a2b2-4328-a509-dc09d72fa772">
@@ -398,6 +398,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="var diagram = createElement(&quot;Diagram&quot;, &quot;Default Diagram&quot;, context.id);&#xD;&#xA;diagram.loadDiagram();&#xD;&#xA;" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -406,7 +407,7 @@
         </childElement>
         <childElement id="35428800-ca35-448b-830a-610cbf3b7ac5" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Loaded</name>
-          <display>On Loaded: Script</display>
+          <display>On Loaded: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="18325c4a-0aa1-47f1-a539-5ea57cc46aef">
@@ -431,6 +432,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/**&#xD;&#xA; * Used by:&#xD;&#xA; * Intent.Modules\Modules\Modelers.Domain by the &quot;On Loaded&quot; event for Packages.&#xD;&#xA; *&#xD;&#xA; * Source code here:&#xD;&#xA; * https://github.com/IntentSoftware/Intent.Modules/blob/master/DesignerMacros/src/domain-designer-on-load/domain-designer-on-load.ts&#xD;&#xA; */&#xD;&#xA;const metadataKeyName = &quot;initialized&quot;;&#xD;&#xA;const diagramElementType = &quot;Diagram&quot;;&#xD;&#xA;(function () {&#xD;&#xA;    if (getPackages().some(x =&gt; x.hasMetadata(metadataKeyName))) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    const diagram = lookupTypesOf(diagramElementType)[0];&#xD;&#xA;    if (diagram != null) {&#xD;&#xA;        diagram.loadDiagram();&#xD;&#xA;    }&#xD;&#xA;    for (const package of getPackages()) {&#xD;&#xA;        package.expand();&#xD;&#xA;        package.setMetadata(metadataKeyName, String(true));&#xD;&#xA;    }&#xD;&#xA;})();&#xD;&#xA;" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

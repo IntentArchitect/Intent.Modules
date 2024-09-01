@@ -122,7 +122,7 @@
       <childElements>
         <childElement id="217b7c1a-f4f1-4040-b275-66ad9d7dc1e4" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Changed</name>
-          <display>On Changed: Script</display>
+          <display>On Changed: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="758dfb3a-647c-44c8-8d95-dd8b8452d684">
@@ -147,6 +147,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="element.getChildren(&quot;00208d20-469d-41cb-8501-768fd5eb796b&quot;).forEach(x =&gt; {&#xD;&#xA;    x.setName(toCamelCase(x.getName()));&#xD;&#xA;});" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

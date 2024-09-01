@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Intent.ModuleBuilder.Api;
+using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace Intent.IArchitect.Agent.Persistence.Model.Common
@@ -59,7 +61,43 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArray("mappableElementPackageExtensions")]
         [XmlArrayItem("mappableElementPackageExtension")]
         public List<MappableElementsPackageExtensionPersistable> MappableElementPackageExtensions { get; set; } = new List<MappableElementsPackageExtensionPersistable>();
+
+        [XmlArray("scripts")]
+        [XmlArrayItem("script")]
+        public List<DesignerScriptPersistable> Scripts { get; set; } = new List<DesignerScriptPersistable>();
     }
+
+    public class DesignerScriptPersistable
+    {
+        [XmlAttribute("name")]
+        public string Name { get; set; }
+
+        [XmlAttribute("id")]
+        public string Id { get; set; }
+
+        [XmlArray("dependencies")]
+        [XmlArrayItem("dependency")]
+        public List<TargetReferencePersistable> Dependencies { get; set; }
+        public bool ShouldSerializeDependencies() => Dependencies.Any();
+
+        [XmlElement("script")]
+        public string Script { get; set; }
+        public bool ShouldSerializeScript() => !string.IsNullOrWhiteSpace(Script);
+
+        [XmlElement("filePath")]
+        public string FilePath { get; set; }
+        public bool ShouldSerializeFilePath() => !string.IsNullOrWhiteSpace(FilePath);
+    }
+
+    public class TargetReferencePersistable
+    {
+        [XmlAttribute("name")]
+        public string Name { get; set; }
+
+        [XmlAttribute("id")]
+        public string Id { get; set; }
+    }
+
 
     public class StereotypeSettingsPersistable
     {
@@ -193,8 +231,18 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class RunScriptOption : ContextMenuOption
     {
+        [XmlElement("scriptReference")]
+        public TargetReferencePersistable ScriptReference { get; set; }
+        public bool ShouldSerializeScriptReference() => ScriptReference != null;
+
+        [XmlArray("dependencies")]
+        [XmlArrayItem("dependency")]
+        public List<TargetReferencePersistable> Dependencies { get; set; }
+        public bool ShouldSerializeDependencies() => Dependencies?.Any() == true;
+
         [XmlElement("script")]
         public string Script { get; set; }
+        public bool ShouldSerializeScript() => !string.IsNullOrWhiteSpace(Script);
 
         public override string ToString()
         {

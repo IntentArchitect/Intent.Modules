@@ -174,7 +174,8 @@ namespace Intent.ModuleBuilder.Api
                 AssociationExtensions = AssociationExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 MappingSettings = MappingSettings.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 MappableElementPackages = MappableElementsPackages.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                MappableElementPackageExtensions = MappableElementsPackageExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
+                MappableElementPackageExtensions = MappableElementsPackageExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                Scripts = ScriptTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
             };
             return modelerSettings;
         }

@@ -375,7 +375,7 @@
                       <childElements>
                         <childElement id="62eea843-df2a-4286-a9c3-a71b80d3ec03" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
                           <name>Auto-map to new Property</name>
-                          <display>Auto-map to new Property: Script</display>
+                          <display>Auto-map to new Property: Inline Script</display>
                           <isAbstract>false</isAbstract>
                           <genericTypes />
                           <typeReference id="87ea8206-b780-4932-b61a-07fbcc9000af">
@@ -400,6 +400,7 @@
                               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                               <properties>
                                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const propertName = element.typeReference.getIsCollection() &#xD;&#xA;    ? toPascalCase(pluralize(element.typeReference.getType().getName().replace(&quot;Dto&quot;, &quot;&quot;))) &#xD;&#xA;    : toPascalCase(element.typeReference.getType().getName().replace(&quot;Dto&quot;, &quot;&quot;))&#xD;&#xA;const property = createElement(&quot;Property&quot;, propertName, mapping.getTargetElement().id)&#xD;&#xA;property.typeReference.setType(element.typeReference.toModel());&#xD;&#xA;property.typeReference.setIsNullable(true);&#xD;&#xA;&#xD;&#xA;const dataBindingMappingTypeId = &quot;bbac21bb-9fdf-489e-8473-84be9cacc64d&quot;;&#xD;&#xA;mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), property.getMappingPath());&#xD;&#xA;" isActive="true" />
+                                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
                               </properties>
                             </stereotype>
                             <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">

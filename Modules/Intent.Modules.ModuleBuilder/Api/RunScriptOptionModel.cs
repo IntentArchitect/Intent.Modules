@@ -48,16 +48,33 @@ namespace Intent.ModuleBuilder.Api
         [IntentManaged(Mode.Ignore)]
         public RunScriptOption ToPersistable()
         {
-            return new RunScriptOption
+            if (HasScriptSettings())
             {
-                Order = this.GetOptionSettings().TypeOrder()?.ToString(),
-                Text = this.Name,
-                Shortcut = this.GetOptionSettings().Shortcut(),
-                MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
-                Icon = this.GetOptionSettings().Icon()?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "code" },
-                Script = this.Script,
-                IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction()
-            };
+                return new RunScriptOption
+                {
+                    Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                    Text = this.Name,
+                    Shortcut = this.GetOptionSettings().Shortcut(),
+                    MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
+                    Icon = this.GetOptionSettings().Icon()?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "code" },
+                    Script = this.Script,
+                    Dependencies = this.Dependencies,
+                    IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction()
+                };
+            }
+            else
+            {
+                return new RunScriptOption
+                {
+                    Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                    Text = this.Name,
+                    Shortcut = this.GetOptionSettings().Shortcut(),
+                    MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
+                    Icon = this.GetOptionSettings().Icon()?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "code" },
+                    ScriptReference = new TargetReferencePersistable() { Id = InternalElement.TypeReference.ElementId, Name = InternalElement.TypeReference.Element.Name },
+                    IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction()
+                };
+            }
         }
     }
 

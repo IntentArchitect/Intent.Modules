@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -26,7 +27,10 @@ namespace Intent.ModuleBuilder.Api
             _element = element;
         }
 
+        public bool HasScriptSettings() => this.HasStereotype("Script Settings");
+        public List<TargetReferencePersistable> Dependencies => this.GetStereotypeProperty<IElement[]>("Script Settings", "Dependencies")?.Select(x => new TargetReferencePersistable() { Id = x.Id, Name = x.Name }).ToList() ?? [];
         public string Script => this.GetStereotypeProperty<string>("Script Settings", "Script");
+        public string FilePath => this.GetStereotypeProperty<string>("Script Settings", "File Path");
 
         [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
@@ -69,6 +73,18 @@ namespace Intent.ModuleBuilder.Api
         public const string SpecializationTypeId = "101fd5b6-3159-4810-9490-a103ef323e9c";
 
         public string Comment => _element.Comment;
+
+        public DesignerScriptPersistable ToPersistable()
+        {
+            return new DesignerScriptPersistable()
+            {
+                Id = Id,
+                Name = Name,
+                Dependencies = Dependencies,
+                Script = Script,
+                FilePath = FilePath,
+            };
+        }
     }
 
     [IntentManaged(Mode.Fully)]

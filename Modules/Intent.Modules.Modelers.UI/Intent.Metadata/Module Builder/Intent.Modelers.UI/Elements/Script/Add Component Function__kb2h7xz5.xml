@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="1832aefa-e28b-4e8f-b65d-8555a1e3b31e" type="Script" typeId="101fd5b6-3159-4810-9490-a103ef323e9c">
+  <name>Add Component Function</name>
+  <display>Add Component Function</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>444f582b-b875-4c72-9671-697b47fa367c</parentFolderId>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="da7d632f-b07f-4c83-ab01-bc6175006aa5" name="Script Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="4708b6ef-0671-4ea1-a920-ccec2c9eb3ea" display="Type" value="Inline Script" isActive="true" />
+        <property name="3256efdd-5d71-46f3-bd51-ef08a8d95526" display="Script" value="async function addComponent(elementId) {&#xD;&#xA;    const componentStereotypeId = &quot;b407aace-ad14-484e-ac93-4762a3d182d8&quot;;&#xD;&#xA;    const displayComponentTypeId = &quot;866a90f7-4044-43b9-bb05-7270c7889796&quot;;&#xD;&#xA;    const element = lookup(elementId);&#xD;&#xA;    let options = lookupTypesOf(&quot;Element Settings&quot;)&#xD;&#xA;                .filter(x =&gt; x.hasStereotype(componentStereotypeId))&#xD;&#xA;                .map(x =&gt; ({&#xD;&#xA;                        id: x.id, &#xD;&#xA;                        description: x.getDisplay(), &#xD;&#xA;                        type: &quot;core&quot;,&#xD;&#xA;                        icon: JSON.parse(x.getStereotype(&quot;Settings&quot;).getProperty(&quot;Icon&quot;).getValue())&#xD;&#xA;                    }))&#xD;&#xA;                .concat(lookupTypesOf(&quot;Component&quot;)&#xD;&#xA;                    .filter(x =&gt; x.id != element.getParent().id &amp;&amp; !x.hasStereotype(&quot;Page&quot;))&#xD;&#xA;                    .map(x =&gt; ({&#xD;&#xA;                        id: x.id, &#xD;&#xA;                        description: x.getDisplay(), &#xD;&#xA;                        type: &quot;custom&quot;,&#xD;&#xA;                        icon: x.getIcon()&#xD;&#xA;                    })))&#xD;&#xA;                .sort((x, y) =&gt; x.description.localeCompare(y.description))&#xD;&#xA;&#xD;&#xA;    let result = await dialogService.openForm({&#xD;&#xA;        title: &quot;Add Component&quot;,&#xD;&#xA;        fields: [{&#xD;&#xA;            id: &quot;component-type&quot;,&#xD;&#xA;            fieldType: &quot;tiles&quot;,&#xD;&#xA;            label: &quot;Component Type&quot;,&#xD;&#xA;            selectOptions: options,&#xD;&#xA;            placeholder: &quot;Search components&quot;&#xD;&#xA;        }],&#xD;&#xA;        minWidth: &quot;586px&quot;,&#xD;&#xA;        maxWidth: &quot;586px&quot;,&#xD;&#xA;        height: &quot;60%&quot;&#xD;&#xA;    })&#xD;&#xA;&#xD;&#xA;    let selected = options.filter(x =&gt; x.id == result[&quot;component-type&quot;])[0];&#xD;&#xA;    if (!selected) {&#xD;&#xA;        console.warn(&quot;Option not selected&quot;);&#xD;&#xA;    }&#xD;&#xA;    if (selected.type == &quot;core&quot;) {&#xD;&#xA;        let componentType = lookup(selected.id);&#xD;&#xA;        let component = createElement(componentType.id, componentType.getName(), element.id);&#xD;&#xA;        component.enableEditing();&#xD;&#xA;    } else if (selected.type == &quot;custom&quot;) {&#xD;&#xA;        let component = createElement(displayComponentTypeId, selected.description, element.id);&#xD;&#xA;        component.typeReference.setType(selected.id);&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
+        <property name="41cc0d56-3141-40fe-ae97-c024866d441e" display="File Path" isActive="false" />
+        <property name="540780ad-f54e-4bd5-95f3-20a58fd59105" display="Dependencies" value="[]" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

@@ -241,7 +241,7 @@
       <childElements>
         <childElement id="67bfec02-170e-40e2-87b8-62bbc59305b4" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
-          <display>On Created: Script</display>
+          <display>On Created: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="0ec3bf0b-6233-4897-93e0-756f9882ab7d">
@@ -266,6 +266,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="createElement(&quot;Association Source End Settings&quot;, `${element.getName()} Source End`, element.id);&#xD;&#xA;createElement(&quot;Association Destination End Settings&quot;, `${element.getName()} Target End`, element.id);&#xD;&#xA;createElement(&quot;Association Event Settings&quot;, &quot;[events]&quot;, element.id);" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -274,7 +275,7 @@
         </childElement>
         <childElement id="c734d111-2b32-4725-9cf1-4bb1f5a30ab9" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Name Changed</name>
-          <display>On Name Changed: Script</display>
+          <display>On Name Changed: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="bb5c30fe-4751-4582-87ba-6b9e5e807390">
@@ -299,6 +300,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="var sourceEnd = element.getChildren(&quot;Association Source End Settings&quot;)[0];&#xD;&#xA;sourceEnd.setName(`${element.getName()} Source End`);&#xD;&#xA;&#xD;&#xA;var sourceEnd = element.getChildren(&quot;Association Destination End Settings&quot;)[0];&#xD;&#xA;sourceEnd.setName(`${element.getName()} Target End`);" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

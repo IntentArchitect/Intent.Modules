@@ -609,4 +609,5 @@ function setIfEmpty(stereotype, propertyName, defaultValue) {
       </mappableElementSettings>
     </mappableElementPackageExtension>
   </mappableElementPackageExtensions>
+  <scripts />
 </settings>

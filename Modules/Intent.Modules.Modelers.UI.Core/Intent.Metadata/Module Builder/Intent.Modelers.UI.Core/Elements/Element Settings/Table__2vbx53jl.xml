@@ -112,7 +112,7 @@
         </childElement>
         <childElement id="6969cc37-6648-47d0-ab48-c78bf72fa7d1" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
           <name>Create Columns from Model</name>
-          <display>Create Columns from Model: Script</display>
+          <display>Create Columns from Model: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="45663ea3-55c6-4266-9fd2-b5e47dcd4f32">
@@ -136,7 +136,10 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
+                <property name="bbb5c684-e1a5-42e3-b253-f9d16c4d7eb7" display="Type" value="Inline Script" isActive="true" />
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const componentStereotypeId = &quot;b407aace-ad14-484e-ac93-4762a3d182d8&quot;;&#xD;&#xA;const displayComponentTypeId = &quot;866a90f7-4044-43b9-bb05-7270c7889796&quot;;&#xD;&#xA;&#xD;&#xA;const component = element.getParent(&quot;Component&quot;);&#xD;&#xA;let options = component&#xD;&#xA;            .getChildren(&quot;Property&quot;)&#xD;&#xA;            .filter(x =&gt; x.typeReference?.getType()?.specialization != &quot;Type-Definition&quot;)&#xD;&#xA;            .map(x =&gt; ( {id: x.id, description: x.getDisplay(), type: &quot;core&quot; }))&#xD;&#xA;            .sort((x, y) =&gt; x.description.localeCompare(y.description))&#xD;&#xA;&#xD;&#xA;let result = await dialogService.openForm({&#xD;&#xA;    title: &quot;Select Model&quot;,&#xD;&#xA;    fields: [{&#xD;&#xA;        id: &quot;model&quot;,&#xD;&#xA;        fieldType: &quot;select&quot;,&#xD;&#xA;        label: &quot;Model&quot;,&#xD;&#xA;        selectOptions: options,&#xD;&#xA;        isRequired: true,&#xD;&#xA;        placeholder: &quot;Select Model&quot;&#xD;&#xA;    }]&#xD;&#xA;})&#xD;&#xA;&#xD;&#xA;let selected = options.filter(x =&gt; x.id == result[&quot;model&quot;])[0];&#xD;&#xA;if (!selected) {&#xD;&#xA;    console.warn(&quot;Option not selected&quot;);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const model = lookup(selected.id);&#xD;&#xA;const view = element.getParent(&quot;Component&quot;).getChildren(&quot;Component View&quot;)[0];&#xD;&#xA;const binding = view?.getAdvancedMapping();&#xD;&#xA;binding?.addMappedEnd(&quot;ee19a932-0cea-4b90-bd3c-857d7942d390&quot;, [component.id, model.id], [view.id, element.id])&#xD;&#xA;model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == &quot;Property&quot; || x.specialization == &quot;DTO-Field&quot;).forEach(x =&gt; {&#xD;&#xA;    const newColum = createElement(&quot;Column&quot;, x.getName(), element.id);&#xD;&#xA;    binding?.addMappedEnd(&quot;ee19a932-0cea-4b90-bd3c-857d7942d390&quot;, [component.id, model.id, x.id], [view.id, element.id, newColum.id])&#xD;&#xA;});" isActive="true" />
+                <property name="29e4580d-7b8c-41a1-b1d0-2e8153ecfb5f" display="File Path" isActive="false" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">

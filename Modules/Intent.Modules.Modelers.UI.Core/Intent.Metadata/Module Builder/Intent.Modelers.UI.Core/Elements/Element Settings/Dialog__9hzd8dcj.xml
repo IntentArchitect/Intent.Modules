@@ -207,7 +207,7 @@
       <childElements>
         <childElement id="0994dcaf-53f9-4c86-a0ed-b4824b4c3d6d" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
-          <display>On Created: Script</display>
+          <display>On Created: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="303577c7-b8b0-4c91-9d95-dc20e67117a8">
@@ -231,7 +231,10 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
+                <property name="bbb5c684-e1a5-42e3-b253-f9d16c4d7eb7" display="Type" value="Inline Script" isActive="true" />
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="createElement(&quot;69495016-6e72-4c18-bae5-2391e45cd234&quot;, &quot;Content&quot;, element.id);&#xD;&#xA;createElement(&quot;247a4768-7c46-472c-b5ea-565b37194956&quot;, &quot;Actions&quot;, element.id);" isActive="true" />
+                <property name="29e4580d-7b8c-41a1-b1d0-2e8153ecfb5f" display="File Path" isActive="false" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

@@ -279,7 +279,7 @@
       <childElements>
         <childElement id="bf9bea94-0cc4-458c-a3d9-7d033bedc08e" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Name Changed</name>
-          <display>On Name Changed: Script</display>
+          <display>On Name Changed: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="155d0c0d-73e7-4c90-9bde-cdd13def1a88">
@@ -304,6 +304,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="element.getChildren(&quot;Class Constructor&quot;).forEach(x =&gt; x.refresh ? x.refresh() : null)" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

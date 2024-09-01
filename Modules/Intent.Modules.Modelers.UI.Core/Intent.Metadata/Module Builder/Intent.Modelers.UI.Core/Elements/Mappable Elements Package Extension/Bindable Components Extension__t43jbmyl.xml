@@ -950,7 +950,7 @@
               <childElements>
                 <childElement id="3dc90fb1-b4c8-44d3-bb3b-2347d99910ba" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
                   <name>Auto-map to Navigation</name>
-                  <display>Auto-map to Navigation: Script</display>
+                  <display>Auto-map to Navigation: Inline Script</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
                   <typeReference id="29c9cf8c-312b-42c1-92a5-6561c60255d7">
@@ -974,7 +974,10 @@
                       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                       <properties>
+                        <property name="bbb5c684-e1a5-42e3-b253-f9d16c4d7eb7" display="Type" value="Inline Script" isActive="true" />
                         <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const invocationMappingTYpeId = &quot;e4f0c63b-0f00-42bd-a703-00adf44f3364&quot;;&#xD;&#xA;const parentElement = mapping.getSourceElement();&#xD;&#xA;const association = createAssociation(&quot;Navigation&quot;, parentElement.id, null);&#xD;&#xA;focusSource();&#xD;&#xA;association.enableEditing();&#xD;&#xA;mapping.addMappedEnd(invocationMappingTYpeId, association.getMappingPath(), element.getMappingPath());" isActive="true" />
+                        <property name="29e4580d-7b8c-41a1-b1d0-2e8153ecfb5f" display="File Path" isActive="false" />
+                        <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
                       </properties>
                     </stereotype>
                     <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
@@ -1091,7 +1094,7 @@
           <childElements>
             <childElement id="044bce2c-8f9c-4e24-b817-8bd8867fadfc" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
               <name>Auto-map to Property</name>
-              <display>Auto-map to Property: Script</display>
+              <display>Auto-map to Property: Inline Script</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="7625aaa0-aef2-49a2-b97b-baae299a4938">
@@ -1115,7 +1118,10 @@
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
+                    <property name="bbb5c684-e1a5-42e3-b253-f9d16c4d7eb7" display="Type" value="Inline Script" isActive="true" />
                     <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const dataBindingMappingTypeId = &quot;ee19a932-0cea-4b90-bd3c-857d7942d390&quot;;&#xD;&#xA;const parentElement = mapping.getSourceElement();&#xD;&#xA;const newElement = createElement(&quot;Property&quot;, `${toPascalCase(element.getParent().getName())}Options`, parentElement.id);&#xD;&#xA;newElement.typeReference.setIsCollection(true);&#xD;&#xA;mapping.addMappedEnd(dataBindingMappingTypeId, newElement.getMappingPath(), element.getMappingPath());" isActive="true" />
+                    <property name="29e4580d-7b8c-41a1-b1d0-2e8153ecfb5f" display="File Path" isActive="false" />
+                    <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
@@ -1560,7 +1566,7 @@
       <childElements>
         <childElement id="6abe4699-505c-4da8-94c2-934c1093ac4e" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
           <name>Auto-map to Operation</name>
-          <display>Auto-map to Operation: Script</display>
+          <display>Auto-map to Operation: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="67bb754b-ef9f-43ea-a9bf-1f0650347300">
@@ -1584,7 +1590,10 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
+                <property name="bbb5c684-e1a5-42e3-b253-f9d16c4d7eb7" display="Type" value="Inline Script" isActive="true" />
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const invocationMappingTYpeId = &quot;e4f0c63b-0f00-42bd-a703-00adf44f3364&quot;;&#xD;&#xA;const parentElement = mapping.getSourceElement();&#xD;&#xA;const newElement = createElement(&quot;Component Operation&quot;, (element.getParent().getName() + element.getName().replace(&quot;On &quot;, &quot;&quot;)).replace(&quot; &quot;, &quot;&quot;), parentElement.id);&#xD;&#xA;mapping.addMappedEnd(invocationMappingTYpeId, newElement.getMappingPath(), element.getMappingPath());" isActive="true" />
+                <property name="29e4580d-7b8c-41a1-b1d0-2e8153ecfb5f" display="File Path" isActive="false" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
@@ -1630,7 +1639,7 @@
       <childElements>
         <childElement id="32ed3b7b-8e0b-4025-8a40-97c6e2721e81" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
           <name>Auto-map to Operation</name>
-          <display>Auto-map to Operation: Script</display>
+          <display>Auto-map to Operation: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="14e4922d-8195-4974-8e24-d572a65c13d1">
@@ -1654,7 +1663,10 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
+                <property name="bbb5c684-e1a5-42e3-b253-f9d16c4d7eb7" display="Type" value="Inline Script" isActive="true" />
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const invocationMappingTYpeId = &quot;e4f0c63b-0f00-42bd-a703-00adf44f3364&quot;;&#xD;&#xA;const parentElement = mapping.getSourceElement();&#xD;&#xA;const newOperation = createElement(&quot;Component Operation&quot;, (element.getParent().getName() + element.getName().replace(&quot;On &quot;, &quot;&quot;)).replace(&quot; &quot;, &quot;&quot;), parentElement.id);&#xD;&#xA;const param = createElement(&quot;Parameter&quot;, &quot;rowId&quot;, newOperation.id);&#xD;&#xA;mapping.addMappedEnd(invocationMappingTYpeId, newOperation.getMappingPath(), element.getMappingPath());" isActive="true" />
+                <property name="29e4580d-7b8c-41a1-b1d0-2e8153ecfb5f" display="File Path" isActive="false" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">

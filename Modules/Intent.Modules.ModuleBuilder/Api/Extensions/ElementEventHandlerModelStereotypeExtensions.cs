@@ -53,6 +53,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Script");
             }
 
+            public IElement[] Dependencies()
+            {
+                return _stereotype.GetProperty<IElement[]>("Dependencies") ?? new IElement[0];
+            }
+
         }
 
     }

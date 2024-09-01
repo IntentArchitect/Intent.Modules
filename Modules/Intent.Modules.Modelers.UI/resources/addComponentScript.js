@@ -1,0 +1,1 @@
+await addComponent(element.id);

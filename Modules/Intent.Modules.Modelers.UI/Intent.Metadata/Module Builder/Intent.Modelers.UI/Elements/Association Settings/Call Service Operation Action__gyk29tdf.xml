@@ -204,7 +204,7 @@
       <childElements>
         <childElement id="67c3136a-8b9e-44fe-8e84-84babaf47be4" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
           <name>On Created</name>
-          <display>On Created: Script</display>
+          <display>On Created: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="d2a776a5-3663-46e6-a05a-fbb9c693f749">
@@ -229,6 +229,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="const mapping = association.createMapping(association.getOtherEnd().typeReference.getType().getParent().id, null, &quot;e4a4111b-cf13-4efe-8a5d-fea9457ac8ad&quot;); // Service Call Invocation;&#xD;&#xA;&#xD;&#xA;mapping.addMappedEnd(&quot;ab447316-1252-49bc-a695-f34cb00a3cdc&quot;, &#xD;&#xA;    [association.getOtherEnd().typeReference.getType().getParent().id, association.getOtherEnd().typeReference.getType().id, association.id], &#xD;&#xA;    [association.typeReference.getType().id]);&#xD;&#xA;&#xD;&#xA;if (association.typeReference.getType().getChildren().length &gt; 0) {&#xD;&#xA;    await mapping.launchDialog();&#xD;&#xA;}" isActive="true" />
+                <property name="7d1114d8-e27d-4cb8-b5d5-3fd75bf7dea1" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

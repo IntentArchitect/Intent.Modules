@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="56bc0465-c1fe-4bca-9493-2a3ce88a4047" version="3.1.0">
+<stereotypeDefinition id="da7d632f-b07f-4c83-ab01-bc6175006aa5" version="3.1.0">
   <name>Script Settings</name>
-  <targetMode>that-reference</targetMode>
+  <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">Element Event Handler</type>
-    <type id="345d46fb-c500-409a-88c7-26720572c9af">Run Script Option</type>
+    <type id="101fd5b6-3159-4810-9490-a103ef323e9c">Script</type>
   </targetTypes>
   <targetReferenceTypes>
     <type id="043eee26-1591-42ac-9f2c-fc911b070eb1">Inline Script</type>
@@ -23,7 +22,21 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
-    <property id="73a4088f-626e-4d31-b0b2-113167f015b2">
+    <property id="4708b6ef-0671-4ea1-a920-ccec2c9eb3ea">
+      <name>Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Inline Script</defaultValue>
+      <valueOptions>
+        <option>Inline Script</option>
+        <option>File Resource</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="3256efdd-5d71-46f3-bd51-ef08a8d95526">
       <name>Script</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -32,10 +45,21 @@
       <valueOptions />
       <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
-      <isActiveFunction />
-      <isRequiredFunction>true</isRequiredFunction>
+      <isActiveFunction>return getProperty("Type").getValue() == "Inline Script"</isActiveFunction>
+      <isRequiredFunction />
     </property>
-    <property id="7df9c3b9-91a0-4cb7-bc3a-15d72f160054">
+    <property id="41cc0d56-3141-40fe-ae97-c024866d441e">
+      <hint>File location relative to the _resources_ folder in this module.</hint>
+      <name>File Path</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return getProperty("Type").getValue() == "File Resource"</isActiveFunction>
+    </property>
+    <property id="540780ad-f54e-4bd5-95f3-20a58fd59105">
       <name>Dependencies</name>
       <type>string</type>
       <controlType>multi-select</controlType>
