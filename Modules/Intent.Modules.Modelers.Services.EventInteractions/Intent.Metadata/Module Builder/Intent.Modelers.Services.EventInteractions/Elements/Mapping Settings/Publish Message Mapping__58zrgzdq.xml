@@ -382,7 +382,7 @@
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="false" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
                     <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="true" isActive="true" />
-                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="return element.getParent('Message').getName() + element.getName() + 'Dto'" isActive="true" />
+                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="return (element.getParent('Message') ?? element.getParent('Integration Command')).getName() + element.getName() + 'Dto'" isActive="true" />
                     <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
                   </properties>
                 </stereotype>
@@ -634,6 +634,94 @@
                 </childElement>
               </childElements>
             </childElement>
+            <childElement id="06b6db13-0e42-47e5-acf1-5262e7a54767" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+              <name>Eventing DTO</name>
+              <display>Eventing DTO: Eventing DTO</display>
+              <isAbstract>false</isAbstract>
+              <sort-children>by-type-then-manually</sort-children>
+              <genericTypes />
+              <typeReference id="686c0d7d-b917-410d-8280-08fa5e3df5f0">
+                <typeId>544f1d57-27ce-4985-a4ec-cc01568d72b0</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <isRequired>true</isRequired>
+                <typePackageName>Intent.Modelers.Eventing</typePackageName>
+                <typePackageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</typePackageId>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>f5afadc5-6bab-4385-8cb5-9aff339433c8</parentFolderId>
+              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
+              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
+                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+                    <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
+                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
+                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
+                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="true" isActive="true" />
+                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="return (element.getParent('Message') ?? element.getParent('Integration Command')).getName() + element.getName() + 'Dto'" isActive="true" />
+                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements>
+                <childElement id="d622e90a-b247-4960-8e86-c4594521938f" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+                  <name>Eventing DTO Field</name>
+                  <display>Eventing DTO Field: Eventing DTO-Field</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <typeReference id="eb054803-6f5b-4beb-9a83-a94a4001f5c8">
+                    <typeId>93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7</typeId>
+                    <isNavigable>true</isNavigable>
+                    <isNullable>false</isNullable>
+                    <isCollection>false</isCollection>
+                    <isRequired>true</isRequired>
+                    <typePackageName>Intent.Modelers.Eventing</typePackageName>
+                    <typePackageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</typePackageId>
+                    <stereotypes />
+                    <genericTypeParameters />
+                  </typeReference>
+                  <isMapped>false</isMapped>
+                  <parentFolderId>06b6db13-0e42-47e5-acf1-5262e7a54767</parentFolderId>
+                  <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
+                  <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mappable Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
+                        <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                        <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
+                        <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
+                        <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+                        <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Traverse Specific Types" isActive="true" />
+                        <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;06b6db13-0e42-47e5-acf1-5262e7a54767&quot;]" isActive="true" />
+                        <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="true" />
+                        <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="true" isActive="true" />
+                        <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="true" />
+                        <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+                      </properties>
+                    </stereotype>
+                  </stereotypes>
+                  <metadata />
+                  <childElements />
+                </childElement>
+              </childElements>
+            </childElement>
           </childElements>
         </childElement>
       </childElements>
@@ -730,7 +818,7 @@
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
                     <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Data" isActive="true" />
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="return !element.typeReference.getIsCollection()" isActive="true" />
+                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="" isActive="true" />
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
@@ -1116,7 +1204,7 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="ce2db9f3-0c9d-4f01-832f-6f7f3801834c" display="Sources" value="Specific Types" isActive="true" />
-            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Source Types" value="[&quot;678ea51f-f715-4219-82bf-1b42c8e3caad&quot;,&quot;3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1&quot;,&quot;98041049-0f91-4c21-99dc-50cd18fd1dae&quot;,&quot;daf3a2fa-0b35-4549-8b65-26b3a74dc7e0&quot;,&quot;792374ff-6b97-45df-96de-01acd2488cc0&quot;,&quot;c0682bc4-2b6a-4638-a35e-39188d253694&quot;,&quot;5a3018a8-38bc-450f-bf82-631e2d9475b3&quot;,&quot;df404369-916e-4385-a29b-cbf86aa99846&quot;,&quot;eb1478af-4b69-4d33-826f-3f195ebbed79&quot;]" isActive="true" />
+            <property name="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf" display="Source Types" value="[&quot;678ea51f-f715-4219-82bf-1b42c8e3caad&quot;,&quot;3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1&quot;,&quot;98041049-0f91-4c21-99dc-50cd18fd1dae&quot;,&quot;daf3a2fa-0b35-4549-8b65-26b3a74dc7e0&quot;,&quot;792374ff-6b97-45df-96de-01acd2488cc0&quot;,&quot;c0682bc4-2b6a-4638-a35e-39188d253694&quot;,&quot;5a3018a8-38bc-450f-bf82-631e2d9475b3&quot;,&quot;df404369-916e-4385-a29b-cbf86aa99846&quot;,&quot;eb1478af-4b69-4d33-826f-3f195ebbed79&quot;,&quot;4a6afd7d-ae76-4831-9010-39f18999a595&quot;,&quot;843b3195-7bfb-40a3-aea2-cbcef9a6a68a&quot;,&quot;f79156cb-9ac7-4224-becc-138355a3767b&quot;]" isActive="true" />
             <property name="7149c438-f5de-432e-8cd7-356d691aee9e" display="Source Types Filter" isActive="true" />
             <property name="8c6140d1-311a-4233-b4c9-6ee41f15a606" display="Source Arrow Type" value="None" isActive="true" />
             <property name="68504875-ebf6-47d6-ac36-c506431cf57c" display="Targets" value="Specific Types" isActive="true" />
