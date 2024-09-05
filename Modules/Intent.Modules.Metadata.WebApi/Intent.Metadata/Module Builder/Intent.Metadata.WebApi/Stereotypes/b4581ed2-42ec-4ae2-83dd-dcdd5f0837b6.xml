@@ -65,5 +65,25 @@
       </valueOptions>
       <lookupTypes />
     </property>
+    <property id="e3870725-34b3-4684-85f2-ec4a667207fb">
+      <name>Success Response Code</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions>
+        <option>200 (Ok)</option>
+        <option>201 (Created)</option>
+        <option>202 (Accepted)</option>
+        <option>203 (Non-Authoritative Information)</option>
+        <option>204 (No Content)</option>
+        <option>205 (Reset Content)</option>
+        <option>206 (Partial Content)</option>
+        <option>207 (Multi-Status)</option>
+        <option>208 (Already Reported)</option>
+        <option>226 (IM Used)</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

@@ -222,6 +222,11 @@ namespace Intent.Metadata.WebApi.Api
                 return new ReturnTypeMediatypeOptions(_stereotype.GetProperty<string>("Return Type Mediatype"));
             }
 
+            public SuccessResponseCodeOptions SuccessResponseCode()
+            {
+                return new SuccessResponseCodeOptions(_stereotype.GetProperty<string>("Success Response Code"));
+            }
+
             public class VerbOptions
             {
                 public readonly string Value;
@@ -316,6 +321,99 @@ namespace Intent.Metadata.WebApi.Api
             {
                 Default,
                 ApplicationJson
+            }
+            public class SuccessResponseCodeOptions
+            {
+                public readonly string Value;
+
+                public SuccessResponseCodeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public SuccessResponseCodeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "200 (Ok)":
+                            return SuccessResponseCodeOptionsEnum._200Ok;
+                        case "201 (Created)":
+                            return SuccessResponseCodeOptionsEnum._201Created;
+                        case "202 (Accepted)":
+                            return SuccessResponseCodeOptionsEnum._202Accepted;
+                        case "203 (Non-Authoritative Information)":
+                            return SuccessResponseCodeOptionsEnum._203NonAuthoritativeInformation;
+                        case "204 (No Content)":
+                            return SuccessResponseCodeOptionsEnum._204NoContent;
+                        case "205 (Reset Content)":
+                            return SuccessResponseCodeOptionsEnum._205ResetContent;
+                        case "206 (Partial Content)":
+                            return SuccessResponseCodeOptionsEnum._206PartialContent;
+                        case "207 (Multi-Status)":
+                            return SuccessResponseCodeOptionsEnum._207MultiStatus;
+                        case "208 (Already Reported)":
+                            return SuccessResponseCodeOptionsEnum._208AlreadyReported;
+                        case "226 (IM Used)":
+                            return SuccessResponseCodeOptionsEnum._226IMUsed;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool Is200Ok()
+                {
+                    return Value == "200 (Ok)";
+                }
+                public bool Is201Created()
+                {
+                    return Value == "201 (Created)";
+                }
+                public bool Is202Accepted()
+                {
+                    return Value == "202 (Accepted)";
+                }
+                public bool Is203NonAuthoritativeInformation()
+                {
+                    return Value == "203 (Non-Authoritative Information)";
+                }
+                public bool Is204NoContent()
+                {
+                    return Value == "204 (No Content)";
+                }
+                public bool Is205ResetContent()
+                {
+                    return Value == "205 (Reset Content)";
+                }
+                public bool Is206PartialContent()
+                {
+                    return Value == "206 (Partial Content)";
+                }
+                public bool Is207MultiStatus()
+                {
+                    return Value == "207 (Multi-Status)";
+                }
+                public bool Is208AlreadyReported()
+                {
+                    return Value == "208 (Already Reported)";
+                }
+                public bool Is226IMUsed()
+                {
+                    return Value == "226 (IM Used)";
+                }
+            }
+
+            public enum SuccessResponseCodeOptionsEnum
+            {
+                _200Ok,
+                _201Created,
+                _202Accepted,
+                _203NonAuthoritativeInformation,
+                _204NoContent,
+                _205ResetContent,
+                _206PartialContent,
+                _207MultiStatus,
+                _208AlreadyReported,
+                _226IMUsed
             }
         }
 
