@@ -450,15 +450,7 @@ createElement("247a4768-7c46-472c-b5ea-565b37194956", "Actions", element.id);</s
       </scriptOptions>
       <mappingOptions />
       <mappingSettings />
-      <macros>
-        <macro trigger="on-created">
-          <script>// if (element.getParent("Dialog") == null) {
-//     createElement("dfe420aa-426a-4517-bcd1-83cf5ec074fe", "Card", element.id); // Card
-// }
-    createElement("dfe420aa-426a-4517-bcd1-83cf5ec074fe", "Card", element.id); // Card
-</script>
-        </macro>
-      </macros>
+      <macros />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Icon" typeId="3c5f8ea8-061a-4e71-826f-59f9281abe71">
@@ -754,6 +746,32 @@ model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == "
     </elementSetting>
   </elementSettings>
   <elementExtensions>
+    <elementExtension type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b">
+      <mappingSettings />
+      <macros>
+        <macro trigger="on-created">
+          <script>if (element.getName().endsWith("Dialog")) {
+    const view = element.getChild(x =&gt; x.specializationId == "624513a6-cba8-4dde-8ebe-6b19f00f0364"); // View
+    createElement("1260ae89-b0cc-4ae0-b21c-7e26d45f16a5", "Dialog", view.id); // Dialog
+    if (element.hasStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c")){ // [Page]
+        element.removeStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c"); // [Page]
+    }
+}</script>
+        </macro>
+        <macro trigger="on-name-changed">
+          <script>if (element.getName().endsWith("Dialog")) {
+    const view = element.getChild(x =&gt; x.specializationId == "624513a6-cba8-4dde-8ebe-6b19f00f0364"); // View
+    if (view.getChildren("1260ae89-b0cc-4ae0-b21c-7e26d45f16a5").length &gt; 0) { // Dialog
+        return;
+    }
+    createElement("1260ae89-b0cc-4ae0-b21c-7e26d45f16a5", "Dialog", view.id); // Dialog
+    if (element.hasStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c")){ // [Page]
+        element.removeStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c"); // [Page]
+    }
+}</script>
+        </macro>
+      </macros>
+    </elementExtension>
     <elementExtension type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
       <creationOptions>
         <option type="association">
@@ -1140,7 +1158,9 @@ return display;
                   <scriptOptions>
                     <option>
                       <text>Auto-map to Navigation</text>
+                      <shortcut>space</shortcut>
                       <icon type="FontAwesome" source="code" />
+                      <isOptionVisibleFunction>return !element.getIsMapped();</isOptionVisibleFunction>
                       <script>const invocationMappingTYpeId = "e4f0c63b-0f00-42bd-a703-00adf44f3364";
 const parentElement = mapping.getSourceElement();
 const association = createAssociation("Navigation", parentElement.id, null);
@@ -1308,17 +1328,17 @@ mapping.addMappedEnd(dataBindingMappingTypeId, newElement.getMappingPath(), elem
         <mappableElementExtension>
           <targetSettings>
             <type type="On Click" typeId="b80f61a7-3b9e-4b75-806f-71d4f8b9900a" />
-            <type type="Event Emitter: Event Emitter" typeId="b5dac39d-db1d-40ff-8763-3a9fd5612af7" />
           </targetSettings>
           <scriptOptions>
             <option>
               <text>Auto-map to Operation</text>
               <shortcut>space</shortcut>
               <icon type="FontAwesome" source="code" />
-              <script>const invocationMappingTYpeId = "e4f0c63b-0f00-42bd-a703-00adf44f3364";
-const parentElement = mapping.getSourceElement();
-const newElement = createElement("Component Operation", (element.getParent().getName() + element.getName().replace("On ", "")).replace(" ", ""), parentElement.id);
-mapping.addMappedEnd(invocationMappingTYpeId, newElement.getMappingPath(), element.getMappingPath());</script>
+              <isOptionVisibleFunction>return !element.getIsMapped()</isOptionVisibleFunction>
+              <dependencies>
+                <dependency name="Add Operation Function" id="0396d15f-fe9f-4710-ab9c-78eda14ad15a" />
+              </dependencies>
+              <script>addOperation(`On${element.getParent().getName().replace(" ", "")}Clicked`);</script>
             </option>
           </scriptOptions>
           <staticMappableSettings />
@@ -1379,6 +1399,7 @@ mapping.addMappedEnd(invocationMappingTypeId, element.getMappingPath(), newEleme
               <isOptionVisibleFunction>return  !element.typeReference.getIsCollection() 
     &amp;&amp; element.typeReference.getType().id !== "9204e067-bdc8-45e7-8970-8a833fdc5253"
     &amp;&amp; (element.typeReference.getType().specialization == "DTO"
+    || element.typeReference.getType().specialization == "Model Definition"
     || element.typeReference.getType().specialization == "Command"
     || element.typeReference.getType().specialization == "Query");</isOptionVisibleFunction>
               <script>const targetRootElement = element.getParent(x =&gt; x.getIsMapped())?.getMappedToElements()[0] 
@@ -1387,8 +1408,19 @@ if (!element.typeReference.getIsNullable() &amp;&amp; (element.getValue() ?? "")
     element.setValue("new()");
 }
 const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
-const form = createElement("Form", "Form", targetRootElement.id);
-mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), [targetRootElement.id, form.id, "9d16e967-a2ab-45b4-ba69-b286daf4488c"]);
+
+var formParent = targetRootElement.getChild(x =&gt; x.specializationId == "69495016-6e72-4c18-bae5-2391e45cd234", true)  // Dialog Content (if exists)
+?? targetRootElement;
+const isInDialog = formParent.specializationId == "69495016-6e72-4c18-bae5-2391e45cd234"; // Dialog Content
+console.warn(formParent.getName());
+
+const form = createElement("Form", "Form", formParent.id);
+mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), form.getMappingPath().concat(["9d16e967-a2ab-45b4-ba69-b286daf4488c"]));
+
+if (!isInDialog)
+{
+    createElement("Card", "Card", form.id);
+}
 
 const content = form.getChild(x =&gt; x.specializationId == "57319385-c7e0-43eb-a2d8-b7cb1ddce2e2", true) // Card Content
     ?? form;
@@ -1405,6 +1437,11 @@ element.getChildren().filter(x =&gt; x.specialization == "Property" || x.special
         mapping?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath((e) =&gt; e.specialization == "Component"), newInput.getMappingPath((e) =&gt; e.specialization == "Component View"))
         newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(newInput.getName())
     }
+    else if (p.typeReference.getTypeId() == "1fbaa056-b666-4f25-b8fd-76fe3165acc8" || p.typeReference.getTypeId() == "a4107c29-7851-4121-9416-cf1236908f1e"){ // date || datetime
+        const newInput = createElement("Date Picker", toTitleCase(p.getName()), content.id);
+        mapping?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath(), newInput.getMappingPath())
+        newInput.getStereotype("Label Addon")?.getProperty("Label").setValue(newInput.getName())
+    }
     else if (p.getName().toLowerCase() != "id" &amp;&amp; p.typeReference.getTypeId() == "6b649125-18ea-48fd-a6ba-0bfff0d8f488"){ // guid (This isn't a good enough check - need to traverse to domain)
         const newInput = createElement("Select", toTitleCase(p.getName()), content.id);
         mapping?.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath((e) =&gt; e.specialization == "Component"), newInput.getMappingPath((e) =&gt; e.specialization == "Component View"))
@@ -1413,7 +1450,7 @@ element.getChildren().filter(x =&gt; x.specialization == "Property" || x.special
 });
 
 const invocationMappingTypeId = "e4f0c63b-0f00-42bd-a703-00adf44f3364";
-const actions = form.getChild(x =&gt; x.getName() == "Actions", true) ?? form;
+const actions = targetRootElement.getChild(x =&gt; x.getName() == "Actions", true) ?? form;
 const saveButton = createElement("Button", "Save", actions.id);
 // Interactions -&gt; Type = Submit:
 saveButton.getStereotype("a7de29e5-4bee-4e5d-93f0-740569ac6130").getProperty("7cee794d-e1a7-4590-b65a-6e56914a2a97").setValue("Submit")
@@ -1433,7 +1470,7 @@ mapping.addMappedEnd(invocationMappingTypeId, cancelOperation.getMappingPath(), 
               <script>const dataBindingMappingTypeId = "ee19a932-0cea-4b90-bd3c-857d7942d390";
 const parent = mapping.getTargetElement();
 const newElement = createElement("Text Input", toTitleCase(element.getName()), parent.id);
-newElement.getStereotype("2c099977-e5ca-4a80-ba70-6f2edc593681").getProperty("66fc3478-6e87-4226-97a9-d9bd72d2fbaf").setValue(element.getName()); // Label Addon -&gt; Label
+newElement.getStereotype("2c099977-e5ca-4a80-ba70-6f2edc593681")?.getProperty("66fc3478-6e87-4226-97a9-d9bd72d2fbaf").setValue(element.getName()); // Label Addon -&gt; Label
 mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), newElement.getMappingPath());</script>
             </option>
             <option>
@@ -1464,6 +1501,8 @@ mapping.addMappingExpression(table.getMappingPath().concat(["913e0abf-0bec-43ea-
 dataCollection.getChildren().filter(x =&gt; x.specialization == "Property" || x.specialization == "DTO-Field").forEach(p =&gt; {
     if (p.typeReference.getTypeId() == "d384db9c-a279-45e1-801e-e4e8099625f2" || // string
         p.typeReference.getTypeId() == "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74" || // int
+        p.typeReference.getTypeId() == "1fbaa056-b666-4f25-b8fd-76fe3165acc8" || // date
+        p.typeReference.getTypeId() == "a4107c29-7851-4121-9416-cf1236908f1e" || // datetime
         p.typeReference.getTypeId() == "675c7b84-997a-44e0-82b9-cd724c07c9e6") { // decimal
         const newColumn = createElement("Column", toTitleCase(p.getName()), table.id);
         mapping.addMappedEnd(dataBindingMappingTypeId, p.getMappingPath(), newColumn.getMappingPath())
@@ -1507,7 +1546,7 @@ model.getChildren().filter(x =&gt; x.specialization == "Property" || x.specializ
         </mappableElementExtension>
       </mappableElementExtensions>
     </mappableElementPackageExtension>
-    <mappableElementPackageExtension id="204fdfeb-bbbe-436e-8e94-bde07663e6c8" name="Component Code Target Mappables Extensions" extendPackageId="bdbc1fad-26e5-4325-9dc4-bb29cf4eb88c" extendPackage="Component Code Target Mappables">
+    <mappableElementPackageExtension id="204fdfeb-bbbe-436e-8e94-bde07663e6c8" name="Component Code Target Mappables Extensions" extendPackageId="bdbc1fad-26e5-4325-9dc4-bb29cf4eb88c" extendPackage="Component Executable Target Mappables">
       <mappableElementExtensions>
         <mappableElementExtension>
           <targetSettings>
@@ -1541,6 +1580,69 @@ return element.getChildren(componentViewTypeId)[0]?.getChildren("Dialog").length
         </mappableElementExtension>
       </mappableElementExtensions>
     </mappableElementPackageExtension>
+    <mappableElementPackageExtension id="f248f74b-de4d-474e-b891-1279c21c7cfd" name="Mappable Elements Package Extension" extendPackageId="76ac4339-6a0f-47ba-82d1-4ce8c2431e7a" extendPackage="Operation Execution Source Mappables">
+      <mappableElementSettings>
+        <mappableElement id="95e3ba53-b068-4aa7-a2e7-7e8729056b27" name="Show Dialog Target End" type="Show Dialog Target End" typeId="c44a7969-abfa-4073-ab2c-d2d0f1f6bd2f" version="2.0.0">
+          <filterFunction>return element.getParent().getChildren().some(x =&gt; isHost(x));</filterFunction>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>invokable</represents>
+          <staticMappableSettings>
+            <staticMappableSetting id="f815a2ce-59e4-4e53-bea1-dd4ba46a8b7a" name="response" type="response" typeId="f815a2ce-59e4-4e53-bea1-dd4ba46a8b7a" version="2.0.0">
+              <displayFunction>return [
+    { text: `response`, targetId: element.id },
+    { text: ": " },
+    { text: `${element.typeReference.display}`, cssClass: "typeref", targetId: element.typeReference.typeId }
+];</displayFunction>
+              <filterFunction>return element.typeReference.getTypeId() != null &amp;&amp; element.getOrder() &lt;= hostElement.getOrder();</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;
+return hostElement.specialization != "Invocation" // because used by Map Response on Call Service Operations
+    || element.getParent("Component").getChild(x =&gt; isHost(x), true)?.getIsMapped();</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes />
+              <overrideTypeReferenceFunction>return {
+    typeId: "341DD965-D06C-4A40-9437-9516ADA77FF5", // object;
+    isNullable: true
+}</overrideTypeReferenceFunction>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iRW52ZWxvcGUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI1LjAwNSIgeTE9IjQ0LjA2MiIgeDI9IjI0Ljk5NTIiIHkyPSI4Ljc4OTciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0xKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzYyQzZFQiIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBvbHlnb24gZmlsbD0idXJsKCNTVkdJRF8xXykiIHBvaW50cz0iMzQuMSwzNC4xIDMxLjksMzIgMzEuOSwyNi42IDE1LDI2LjYgMTUsMjEuMyA2LjIsMzAgMTUsMzguOCAxNSwzMy43IDI1LDMzLjcgMjUsMzYuOCANCgkJMTguMiwzNi44IDE4LjIsNDIgMTUuOSw0NC4yIDE1LDQzLjMgNCwzMi4zIDEuOCwzMCA0LDI3LjggMTUuOSwxNS45IDE4LjIsMTguMSAxOC4yLDIzLjUgMzUuMSwyMy41IDM1LjEsMjguNyA0My44LDIwIDM1LjEsMTEuMyANCgkJMzUuMSwxNi40IDI1LDE2LjQgMjUsMTMuMyAzMS45LDEzLjMgMzEuOSw4IDM0LjEsNS44IDM1LjEsNi44IDQ2LDE3LjcgNDguMiwyMCAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
+              <scriptOptions>
+                <option>
+                  <text>Auto-map to new Property</text>
+                  <icon type="FontAwesome" source="code" />
+                  <script>const propertName = element.typeReference.getIsCollection() 
+    ? toPascalCase(pluralize(element.typeReference.getType().getName().replace("Dto", ""))) 
+    : toPascalCase(element.typeReference.getType().getName().replace("Dto", ""))
+const property = createElement("Property", propertName, mapping.getTargetElement().id)
+property.typeReference.setType(element.typeReference.toModel());
+property.typeReference.setIsNullable(true);
+
+const dataBindingMappingTypeId = "bbac21bb-9fdf-489e-8473-84be9cacc64d";
+mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), property.getMappingPath());
+</script>
+                </option>
+              </scriptOptions>
+            </staticMappableSetting>
+          </staticMappableSettings>
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackageExtension>
   </mappableElementPackageExtensions>
-  <scripts />
+  <scripts>
+    <script name="Add Operation Function" id="0396d15f-fe9f-4710-ab9c-78eda14ad15a">
+      <script>function addOperation(operationName) {
+    const invocationMappingTYpeId = "e4f0c63b-0f00-42bd-a703-00adf44f3364";
+    const parentElement = mapping.getSourceElement();
+    const newElement = createElement("Component Operation", operationName, parentElement.id);
+    mapping.addMappedEnd(invocationMappingTYpeId, newElement.getMappingPath(), element.getMappingPath());
+
+    return newElement;
+}</script>
+    </script>
+  </scripts>
 </settings>

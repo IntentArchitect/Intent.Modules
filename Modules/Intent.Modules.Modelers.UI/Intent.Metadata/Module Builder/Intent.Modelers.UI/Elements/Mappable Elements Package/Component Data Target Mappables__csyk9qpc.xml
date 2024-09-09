@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="bdbc1fad-26e5-4325-9dc4-bb29cf4eb88c" type="Mappable Elements Package" typeId="aa2eab42-5ffc-4028-b4b6-95ff719705d4">
-  <name>Component Code Target Mappables</name>
-  <display>Component Code Target Mappables</display>
+<class id="f9bbceaa-635f-4769-a203-025d936ea695" type="Mappable Elements Package" typeId="aa2eab42-5ffc-4028-b4b6-95ff719705d4">
+  <name>Component Data Target Mappables</name>
+  <display>Component Data Target Mappables</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
@@ -12,13 +12,13 @@
   <stereotypes />
   <metadata />
   <childElements>
-    <childElement id="2fba603d-ce1f-4a03-bb2e-527741d94acd" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+    <childElement id="cdaf4c38-a002-4527-99a5-af857cab83fc" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
       <name>Component</name>
       <display>Component: Component</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
-      <typeReference id="b21debd5-b758-42b6-b97a-4ec5bf4531e0">
+      <typeReference id="f61e24fc-f3dd-477f-8b63-108b68d8dcc5">
         <typeId>b1c481e1-e91e-4c29-9817-00ab9cad4b6b</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
@@ -30,7 +30,7 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <parentFolderId>bdbc1fad-26e5-4325-9dc4-bb29cf4eb88c</parentFolderId>
+      <parentFolderId>f9bbceaa-635f-4769-a203-025d936ea695</parentFolderId>
       <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
       <packageName>Intent.Modelers.UI</packageName>
       <stereotypes>
@@ -62,13 +62,13 @@
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="9f5bfd67-f458-4018-9863-ea1a0df6d9d8" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="ade1b649-cd47-4a97-a9f8-a9f5e6048f60" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Operation</name>
           <display>Operation: Component Operation</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-manually</sort-children>
           <genericTypes />
-          <typeReference id="d29dc0a5-b350-4b3c-9de9-8e0c727dea1d">
+          <typeReference id="a46204af-13fd-406e-8405-39e6ba5e97d2">
             <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -80,7 +80,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>2fba603d-ce1f-4a03-bb2e-527741d94acd</parentFolderId>
+          <parentFolderId>cdaf4c38-a002-4527-99a5-af857cab83fc</parentFolderId>
           <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
           <packageName>Intent.Modelers.UI</packageName>
           <stereotypes>
@@ -91,7 +91,7 @@
               <properties>
                 <property name="91a221f2-eb37-40cf-8cbf-9648853c3686" display="Represents" value="Invokable" isActive="true" />
                 <property name="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb" display="Icon Override" isActive="true" />
-                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
+                <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="return false; // disable for not" isActive="true" />
                 <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
                 <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
@@ -112,12 +112,12 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="90357a73-2f2c-4998-9e14-d72be64b7df5" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="31441460-1d72-4786-ba5f-947a2412475a" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Parameter</name>
               <display>Parameter: Parameter</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="aa39c652-53b6-4ab0-bd24-3952965d8dc6">
+              <typeReference id="7e722d81-29a7-474f-86ab-168101742768">
                 <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -129,7 +129,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>9f5bfd67-f458-4018-9863-ea1a0df6d9d8</parentFolderId>
+              <parentFolderId>ade1b649-cd47-4a97-a9f8-a9f5e6048f60</parentFolderId>
               <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
               <packageName>Intent.Modelers.UI</packageName>
               <stereotypes>
@@ -162,12 +162,12 @@
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="38576357-b3b7-4b58-8713-19c50e1a3e38" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+            <childElement id="32fd7bc1-8455-43ef-9ad4-c141e143d9f0" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
               <name>Return</name>
               <display>Return: Return</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="eab6c0f8-25bf-4809-92f4-8c563dd6c360">
+              <typeReference id="7639f9a4-234d-4c3c-8d9f-948f97db48f5">
                 <typeId>415ffab7-9865-4200-89a0-b592d24919dd</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -179,7 +179,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>9f5bfd67-f458-4018-9863-ea1a0df6d9d8</parentFolderId>
+              <parentFolderId>ade1b649-cd47-4a97-a9f8-a9f5e6048f60</parentFolderId>
               <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
               <packageName>Intent.Modelers.UI</packageName>
               <stereotypes>
@@ -216,13 +216,13 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="4d44410a-3f80-44c7-8902-78067a770c85" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+    <childElement id="2d76a5f5-e98f-4f36-af9d-f48d13c9c070" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
       <name>DTO</name>
       <display>DTO: DTO</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
-      <typeReference id="d1a2c2ea-fe83-4160-98d9-42542d004a42">
+      <typeReference id="0b63d33d-4321-4ec5-886e-60d5a8ce6e54">
         <typeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
@@ -234,7 +234,7 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <parentFolderId>bdbc1fad-26e5-4325-9dc4-bb29cf4eb88c</parentFolderId>
+      <parentFolderId>f9bbceaa-635f-4769-a203-025d936ea695</parentFolderId>
       <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
       <packageName>Intent.Modelers.UI</packageName>
       <stereotypes>
@@ -266,12 +266,12 @@
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="b6ea4ca1-15bc-408c-819e-74cbe78f30ab" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="96d258f8-c9b0-4700-b019-ee71a1adab09" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>DTO-Field</name>
           <display>DTO-Field: DTO-Field</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="90d1ce56-d274-4204-aef0-76d39fb95acd">
+          <typeReference id="dc189f80-771e-4ea7-8cf6-83abd0c2dbca">
             <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -283,7 +283,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>4d44410a-3f80-44c7-8902-78067a770c85</parentFolderId>
+          <parentFolderId>2d76a5f5-e98f-4f36-af9d-f48d13c9c070</parentFolderId>
           <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
           <packageName>Intent.Modelers.UI</packageName>
           <stereotypes>
@@ -300,7 +300,7 @@
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Traverse Specific Types" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;4d44410a-3f80-44c7-8902-78067a770c85&quot;]" isActive="true" />
+                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;2d76a5f5-e98f-4f36-af9d-f48d13c9c070&quot;]" isActive="true" />
                 <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
                 <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
@@ -316,13 +316,13 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="a226070c-8e75-4e7e-83a2-10c92bcadda8" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+        <childElement id="589add3d-f316-4d8b-95e9-3fd28c75ae28" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>DTO-Field Collection</name>
           <display>DTO-Field Collection: DTO-Field</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-manually</sort-children>
           <genericTypes />
-          <typeReference id="18351ebf-8a77-4b45-90c3-c6f37a1e485a">
+          <typeReference id="fa43a39e-5789-4fb1-9500-bee306aa8569">
             <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -334,7 +334,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>4d44410a-3f80-44c7-8902-78067a770c85</parentFolderId>
+          <parentFolderId>2d76a5f5-e98f-4f36-af9d-f48d13c9c070</parentFolderId>
           <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
           <packageName>Intent.Modelers.UI</packageName>
           <stereotypes>
@@ -351,7 +351,7 @@
                 <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
                 <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                 <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
-                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[]" isActive="false" />
+                <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
                 <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
                 <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
@@ -366,14 +366,14 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="36d22f9e-3984-477b-af04-b33b94401f72" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
+            <childElement id="05571ca1-d326-4595-9f67-75ac17d242f0" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
               <name>Add()</name>
               <display>Add()</display>
               <isAbstract>false</isAbstract>
               <sort-children>manually</sort-children>
               <genericTypes />
               <isMapped>false</isMapped>
-              <parentFolderId>a226070c-8e75-4e7e-83a2-10c92bcadda8</parentFolderId>
+              <parentFolderId>589add3d-f316-4d8b-95e9-3fd28c75ae28</parentFolderId>
               <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
               <packageName>Intent.Modelers.UI</packageName>
               <stereotypes>
@@ -390,7 +390,7 @@
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="false" />
+                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
                     <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
                     <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
@@ -405,13 +405,13 @@
               </stereotypes>
               <metadata />
               <childElements>
-                <childElement id="0c83ed35-7e3d-457a-9d17-83ae69aba702" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
+                <childElement id="01d59643-90dd-4b94-945c-e188ad848b74" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
                   <name>item</name>
                   <display>item</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
                   <isMapped>false</isMapped>
-                  <parentFolderId>36d22f9e-3984-477b-af04-b33b94401f72</parentFolderId>
+                  <parentFolderId>05571ca1-d326-4595-9f67-75ac17d242f0</parentFolderId>
                   <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
                   <packageName>Intent.Modelers.UI</packageName>
                   <stereotypes>
@@ -428,7 +428,7 @@
                         <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return element.getParent().getIsMapped();" isActive="true" />
                         <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                         <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
-                        <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="false" />
+                        <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
                         <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" value="let model = element.typeReference.toModel();&#xD;&#xA;model.isCollection = false;&#xD;&#xA;return model;" isActive="true" />
                         <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
                         <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
@@ -446,14 +446,14 @@
                 </childElement>
               </childElements>
             </childElement>
-            <childElement id="ff4ca36e-bb24-4f42-afac-c676d586c812" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
+            <childElement id="d0f4d1b0-4fbf-404a-a19f-e4e5c4bed373" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
               <name>Remove()</name>
               <display>Remove()</display>
               <isAbstract>false</isAbstract>
               <sort-children>manually</sort-children>
               <genericTypes />
               <isMapped>false</isMapped>
-              <parentFolderId>a226070c-8e75-4e7e-83a2-10c92bcadda8</parentFolderId>
+              <parentFolderId>589add3d-f316-4d8b-95e9-3fd28c75ae28</parentFolderId>
               <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
               <packageName>Intent.Modelers.UI</packageName>
               <stereotypes>
@@ -470,7 +470,7 @@
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Not Traversable" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="false" />
+                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
                     <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
                     <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
@@ -485,13 +485,13 @@
               </stereotypes>
               <metadata />
               <childElements>
-                <childElement id="a8d41024-e64b-4887-9d62-fb6315c10273" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
+                <childElement id="edbb4c4d-e5b2-4316-b96f-9ce7dcbff8ef" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
                   <name>item</name>
                   <display>item</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
                   <isMapped>false</isMapped>
-                  <parentFolderId>ff4ca36e-bb24-4f42-afac-c676d586c812</parentFolderId>
+                  <parentFolderId>d0f4d1b0-4fbf-404a-a19f-e4e5c4bed373</parentFolderId>
                   <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
                   <packageName>Intent.Modelers.UI</packageName>
                   <stereotypes>
@@ -530,12 +530,12 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="7b6bc621-4988-4705-91f1-d9ebfbbdda3c" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+    <childElement id="48f19d36-97fd-49f2-a23b-d346624ce108" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
       <name>Model Definition</name>
       <display>Model Definition: Model Definition</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
-      <typeReference id="8c7b3af3-d680-4f7f-b990-adb3fec5d2c5">
+      <typeReference id="3133a9ec-ed2b-4ca7-90e8-2fa8eb9b55ef">
         <typeId>bd3941b5-e3b3-4a40-96e6-b9c87cea0101</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
@@ -547,7 +547,7 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <parentFolderId>bdbc1fad-26e5-4325-9dc4-bb29cf4eb88c</parentFolderId>
+      <parentFolderId>f9bbceaa-635f-4769-a203-025d936ea695</parentFolderId>
       <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
       <packageName>Intent.Modelers.UI</packageName>
       <stereotypes>
@@ -580,12 +580,12 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="e2d5077d-59cd-4e13-b710-f6f0eecb8e50" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+    <childElement id="b30f0c81-863d-4203-878d-089cb391dc55" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
       <name>Property</name>
       <display>Property: Property</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
-      <typeReference id="f57ef8c5-0b83-443d-aa93-f20929672d4b">
+      <typeReference id="588453ec-e01e-4ef5-9bfc-9b27a597252e">
         <typeId>356fbe17-bc63-4e16-b915-feefbc063cbe</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
@@ -597,7 +597,7 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <parentFolderId>bdbc1fad-26e5-4325-9dc4-bb29cf4eb88c</parentFolderId>
+      <parentFolderId>f9bbceaa-635f-4769-a203-025d936ea695</parentFolderId>
       <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
       <packageName>Intent.Modelers.UI</packageName>
       <stereotypes>
@@ -630,13 +630,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="935053ca-e653-4bdc-8219-984a7d7245ba" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+    <childElement id="42bb27d7-6d92-4abe-a068-907836eb6f00" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
       <name>Property Collection</name>
       <display>Property Collection: Property</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
-      <typeReference id="815577a5-8423-46a0-8907-39865d78a8fb">
+      <typeReference id="db206d93-41c1-4760-ae26-eb2f5a6a968b">
         <typeId>356fbe17-bc63-4e16-b915-feefbc063cbe</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
@@ -648,7 +648,7 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <parentFolderId>bdbc1fad-26e5-4325-9dc4-bb29cf4eb88c</parentFolderId>
+      <parentFolderId>f9bbceaa-635f-4769-a203-025d936ea695</parentFolderId>
       <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
       <packageName>Intent.Modelers.UI</packageName>
       <stereotypes>
@@ -680,14 +680,14 @@
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="86e6936b-ac25-4467-9210-07942b5cc8fe" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
+        <childElement id="fbac8a19-a29c-4587-b3cd-16f4ce95ef2f" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
           <name>Add()</name>
           <display>Add()</display>
           <isAbstract>false</isAbstract>
           <sort-children>manually</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
-          <parentFolderId>935053ca-e653-4bdc-8219-984a7d7245ba</parentFolderId>
+          <parentFolderId>42bb27d7-6d92-4abe-a068-907836eb6f00</parentFolderId>
           <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
           <packageName>Intent.Modelers.UI</packageName>
           <stereotypes>
@@ -719,13 +719,13 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="112342fa-3b48-4fca-bc91-d548b18adff8" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
+            <childElement id="cff1c5e1-80d0-4f2c-b6db-2fac500a655b" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
               <name>item</name>
               <display>item</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
-              <parentFolderId>86e6936b-ac25-4467-9210-07942b5cc8fe</parentFolderId>
+              <parentFolderId>fbac8a19-a29c-4587-b3cd-16f4ce95ef2f</parentFolderId>
               <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
               <packageName>Intent.Modelers.UI</packageName>
               <stereotypes>
@@ -760,14 +760,14 @@
             </childElement>
           </childElements>
         </childElement>
-        <childElement id="a44d21a4-2a3e-4486-95a9-f9938329eed6" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
+        <childElement id="1d79129a-c53a-47d6-a9ad-e160627dc650" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
           <name>Remove()</name>
           <display>Remove()</display>
           <isAbstract>false</isAbstract>
           <sort-children>manually</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
-          <parentFolderId>935053ca-e653-4bdc-8219-984a7d7245ba</parentFolderId>
+          <parentFolderId>42bb27d7-6d92-4abe-a068-907836eb6f00</parentFolderId>
           <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
           <packageName>Intent.Modelers.UI</packageName>
           <stereotypes>
@@ -799,13 +799,13 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="6b6745ff-3caf-4ccf-8329-31b380eee926" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
+            <childElement id="a60fc2d4-42ab-40f8-af7e-eef14f5c5590" type="Static Mappable Settings" typeId="c776bc38-c0e8-4535-87dd-79cfd33be2ad">
               <name>item</name>
               <display>item</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
-              <parentFolderId>a44d21a4-2a3e-4486-95a9-f9938329eed6</parentFolderId>
+              <parentFolderId>1d79129a-c53a-47d6-a9ad-e160627dc650</parentFolderId>
               <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
               <packageName>Intent.Modelers.UI</packageName>
               <stereotypes>

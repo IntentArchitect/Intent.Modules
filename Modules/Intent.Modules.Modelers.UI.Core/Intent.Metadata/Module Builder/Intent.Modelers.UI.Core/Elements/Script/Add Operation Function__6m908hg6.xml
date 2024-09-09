@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0396d15f-fe9f-4710-ab9c-78eda14ad15a" type="Script" typeId="101fd5b6-3159-4810-9490-a103ef323e9c">
+  <name>Add Operation Function</name>
+  <display>Add Operation Function</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>3cd798f0-8cdf-42a4-b733-469632a86f27</parentFolderId>
+  <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+  <packageName>Intent.Modelers.UI.Core</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="da7d632f-b07f-4c83-ab01-bc6175006aa5" name="Script Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="4708b6ef-0671-4ea1-a920-ccec2c9eb3ea" display="Type" value="Inline Script" isActive="true" />
+        <property name="3256efdd-5d71-46f3-bd51-ef08a8d95526" display="Script" value="function addOperation(operationName) {&#xD;&#xA;    const invocationMappingTYpeId = &quot;e4f0c63b-0f00-42bd-a703-00adf44f3364&quot;;&#xD;&#xA;    const parentElement = mapping.getSourceElement();&#xD;&#xA;    const newElement = createElement(&quot;Component Operation&quot;, operationName, parentElement.id);&#xD;&#xA;    mapping.addMappedEnd(invocationMappingTYpeId, newElement.getMappingPath(), element.getMappingPath());&#xD;&#xA;&#xD;&#xA;    return newElement;&#xD;&#xA;}" isActive="true" />
+        <property name="41cc0d56-3141-40fe-ae97-c024866d441e" display="File Path" isActive="false" />
+        <property name="540780ad-f54e-4bd5-95f3-20a58fd59105" display="Dependencies" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

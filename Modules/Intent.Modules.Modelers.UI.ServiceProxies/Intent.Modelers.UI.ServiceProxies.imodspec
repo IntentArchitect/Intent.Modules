@@ -14,7 +14,7 @@
   <dependencies>
     <dependency id="Intent.Common" version="3.6.0" />
     <dependency id="Intent.Common.Types" version="4.0.0-alpha.0" />
-    <dependency id="Intent.Modelers.Services" version="3.8.0-pre.0" />
+    <dependency id="Intent.Modelers.Services" version="3.8.0-pre.3" />
     <dependency id="Intent.Modelers.Services.CQRS" version="4.2.0" />
     <dependency id="Intent.Modelers.Types.ServiceProxies" version="5.3.1-pre.0" />
   </dependencies>

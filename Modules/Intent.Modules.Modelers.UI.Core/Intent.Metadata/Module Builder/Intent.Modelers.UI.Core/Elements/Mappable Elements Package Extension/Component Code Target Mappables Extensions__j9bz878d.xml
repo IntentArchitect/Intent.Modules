@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="204fdfeb-bbbe-436e-8e94-bde07663e6c8" type="Mappable Elements Package Extension" typeId="bddb69f0-e2c8-4373-b5cb-d701f311f935">
   <name>Component Code Target Mappables Extensions</name>
-  <display>Component Code Target Mappables Extensions: Component Code Target Mappables</display>
+  <display>Component Code Target Mappables Extensions: Component Executable Target Mappables</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
@@ -40,6 +40,7 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="bd502960-a08e-4138-b3e0-d3dad4439410" display="Extend Target Settings" value="[&quot;2fba603d-ce1f-4a03-bb2e-527741d94acd&quot;]" isActive="true" />
+            <property name="92b5cff8-04da-47e2-bd8a-7f639e7f8716" display="Validate Function" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -75,6 +76,7 @@
                 <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
                 <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
                 <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
+                <property name="55e6149c-91a6-4381-b324-7eab4395fa59" display="Validate Function" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" isActive="false" />
                 <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />

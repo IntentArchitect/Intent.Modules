@@ -151,7 +151,6 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd</parentFolderId>
@@ -159,44 +158,7 @@
       <packageName>Intent.Modelers.UI.Core</packageName>
       <stereotypes />
       <metadata />
-      <childElements>
-        <childElement id="898ebce6-7184-415f-8a6f-bfb9ba90224b" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Created</name>
-          <display>On Created: Inline Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="932e185b-d9a3-455f-bb8d-dc53951e5010">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>4e6f6345-97db-40e3-b6ad-e0f7158b1042</parentFolderId>
-          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
-          <packageName>Intent.Modelers.UI.Core</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="bbb5c684-e1a5-42e3-b253-f9d16c4d7eb7" display="Type" value="Inline Script" isActive="true" />
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="// if (element.getParent(&quot;Dialog&quot;) == null) {&#xD;&#xA;//     createElement(&quot;dfe420aa-426a-4517-bcd1-83cf5ec074fe&quot;, &quot;Card&quot;, element.id); // Card&#xD;&#xA;// }&#xD;&#xA;    createElement(&quot;dfe420aa-426a-4517-bcd1-83cf5ec074fe&quot;, &quot;Card&quot;, element.id); // Card&#xD;&#xA;" isActive="true" />
-                <property name="29e4580d-7b8c-41a1-b1d0-2e8153ecfb5f" display="File Path" isActive="false" />
-                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
+      <childElements />
     </childElement>
   </childElements>
 </class>

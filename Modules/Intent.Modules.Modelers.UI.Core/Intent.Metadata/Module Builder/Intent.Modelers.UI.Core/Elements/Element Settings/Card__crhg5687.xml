@@ -231,9 +231,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="bbb5c684-e1a5-42e3-b253-f9d16c4d7eb7" display="Type" value="Inline Script" isActive="true" />
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="createElement(&quot;61bd2c09-fb56-4f0a-9d45-7a04c649a965&quot;, &quot;Header&quot;, element.id);&#xD;&#xA;createElement(&quot;57319385-c7e0-43eb-a2d8-b7cb1ddce2e2&quot;, &quot;Content&quot;, element.id);&#xD;&#xA;createElement(&quot;8dd9e894-be78-41ec-89f2-d2bd2d26d8d6&quot;, &quot;Actions&quot;, element.id);" isActive="true" />
-                <property name="29e4580d-7b8c-41a1-b1d0-2e8153ecfb5f" display="File Path" isActive="false" />
                 <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>

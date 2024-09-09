@@ -26,7 +26,7 @@ namespace Intent.Modelers.UI.Api
 
         public static IElementToElementMapping GetMapResponseMapping(this CallServiceOperationActionTargetEndModel model)
         {
-            return model.Mappings.SingleOrDefault(x => x.TypeId == "d5d1dd6a-15f4-4332-b531-3b74e1d97fab");
+            return model.Mappings.SingleOrDefault(x => x.TypeId == "e60890c6-7ce7-47be-a0da-dff82b8adc02");
         }
     }
 }
