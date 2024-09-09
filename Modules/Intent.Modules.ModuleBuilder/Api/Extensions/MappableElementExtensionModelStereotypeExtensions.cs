@@ -48,6 +48,11 @@ namespace Intent.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
+            public string ValidateFunction()
+            {
+                return _stereotype.GetProperty<string>("Validate Function");
+            }
+
             public IElement[] ExtendTargetSettings()
             {
                 return _stereotype.GetProperty<IElement[]>("Extend Target Settings") ?? new IElement[0];

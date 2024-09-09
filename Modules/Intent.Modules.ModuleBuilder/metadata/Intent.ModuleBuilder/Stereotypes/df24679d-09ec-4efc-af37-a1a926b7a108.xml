@@ -248,6 +248,16 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <lookupTypes />
       <apiTypeDefinition>advanced-mapping-macro-api</apiTypeDefinition>
     </property>
+    <property id="55e6149c-91a6-4381-b324-7eab4395fa59">
+      <name>Validate Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>advanced-mapping-macro-api</apiTypeDefinition>
+    </property>
     <property id="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3">
       <name>Can Be Modified</name>
       <type>string</type>

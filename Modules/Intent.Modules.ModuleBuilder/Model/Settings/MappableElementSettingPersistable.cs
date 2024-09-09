@@ -91,7 +91,11 @@ public class MappableElementSettingPersistable
 
     [XmlElement("onMappingsChangedScript")]
     public string OnMappingsChangedScript { get; set; }
-    public bool ShouldSerializeOnMappingsChangedScript() => OnMappingsChangedScript != null;
+    public bool ShouldSerializeOnMappingsChangedScript() => !string.IsNullOrWhiteSpace(OnMappingsChangedScript);
+
+    [XmlElement("validateFunction")]
+    public string ValidateFunction { get; set; }
+    public bool ShouldSerializeValidateFunction() => !string.IsNullOrWhiteSpace(ValidateFunction);
 
     [XmlArray("scriptOptions")]
     [XmlArrayItem("option")]
@@ -112,6 +116,11 @@ public class MappableElementSettingPersistable
 
 public class MappableElementExtensionSettingsPersistable
 {
+
+    [XmlElement("validateFunction")]
+    public string ValidateFunction { get; set; }
+    public bool ShouldSerializeValidateFunction() => !string.IsNullOrWhiteSpace(ValidateFunction);
+
     [XmlArray("targetSettings")]
     [XmlArrayItem("type")]
     public List<TargetTypePersistable> TargetSettings { get; set; } = [];

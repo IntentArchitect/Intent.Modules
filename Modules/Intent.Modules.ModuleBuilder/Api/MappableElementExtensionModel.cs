@@ -81,6 +81,7 @@ namespace Intent.ModuleBuilder.Api
         {
             return new MappableElementExtensionSettingsPersistable()
             {
+                ValidateFunction = this.GetMappableExtensionSettings().ValidateFunction(),
                 TargetSettings = this.GetMappableExtensionSettings().ExtendTargetSettings()
                     .Select(x => new TargetTypePersistable() { Type = x.DisplayText, TypeId = x.Id })
                     .ToList(),

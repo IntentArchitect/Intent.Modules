@@ -138,6 +138,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("On Mapping Changed Script");
             }
 
+            public string ValidateFunction()
+            {
+                return _stereotype.GetProperty<string>("Validate Function");
+            }
+
             public class RepresentsOptions
             {
                 public readonly string Value;

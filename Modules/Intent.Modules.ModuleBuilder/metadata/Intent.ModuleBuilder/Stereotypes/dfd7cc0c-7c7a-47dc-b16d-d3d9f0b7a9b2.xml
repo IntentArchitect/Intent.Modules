@@ -35,5 +35,15 @@
 const packageId = element.getParent(mappablePackageExtensionId).typeReference.getTypeId();
 return [packageId].concat(lookupTypesOf(mappablePackageExtensionId).filter(x =&gt; x.typeReference.getTypeId() == packageId).map(x =&gt; x.id));</lookupInternalTargetPropertyId>
     </property>
+    <property id="92b5cff8-04da-47e2-bd8a-7f639e7f8716">
+      <name>Validate Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>advanced-mapping-macro-api</apiTypeDefinition>
+    </property>
   </properties>
 </stereotypeDefinition>
