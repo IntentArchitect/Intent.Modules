@@ -15,14 +15,14 @@ namespace Intent.Metadata.WebApi.Api
     {
         public static SerializationSettings GetSerializationSettings(this DTOModel model)
         {
-            var stereotype = model.GetStereotype("e3b79cb0-b063-4aaa-8fda-3893fb6e44c4");
+            var stereotype = model.GetStereotype(SerializationSettings.DefinitionId);
             return stereotype != null ? new SerializationSettings(stereotype) : null;
         }
 
 
         public static bool HasSerializationSettings(this DTOModel model)
         {
-            return model.HasStereotype("e3b79cb0-b063-4aaa-8fda-3893fb6e44c4");
+            return model.HasStereotype(SerializationSettings.DefinitionId);
         }
 
         public static bool TryGetSerializationSettings(this DTOModel model, out SerializationSettings stereotype)
@@ -33,13 +33,14 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new SerializationSettings(model.GetStereotype("e3b79cb0-b063-4aaa-8fda-3893fb6e44c4"));
+            stereotype = new SerializationSettings(model.GetStereotype(SerializationSettings.DefinitionId));
             return true;
         }
 
         public class SerializationSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "e3b79cb0-b063-4aaa-8fda-3893fb6e44c4";
 
             public SerializationSettings(IStereotype stereotype)
             {

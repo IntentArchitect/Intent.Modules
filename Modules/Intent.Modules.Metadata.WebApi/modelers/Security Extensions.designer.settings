@@ -10,6 +10,7 @@
       <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAABIJJREFUaEPt2F9MW1UcB/Dv77a9vS0tLQM2DI4QkBHcdGayRR9Q49wcysAZx6ZuMTExe5m4B81I5kyjcYw3I2YqamLkhQ0esJsDwhxZJpFMSNRoyBiby2C6KUgZtL1tufeYe7vChUIX/pRbDH1r77k9v8/5nXPP71zCMv/QMo8f/3/AR5cCLC5ZIlQf2myuXOh/3zMD8QBYeYIvyIBFQOgC2LHOiIvXJXgXAaELYNd6E/whtigI3QDK3F8MhK6AxUDoDlgoIiEAC0EkDGC+iIQCzAeRcIDpiENbzDFj1AUwl/JhBRCPWmglA5oRWFkDc5kO82m7sojjvYhtJsJqK4E3AoFxYNDPMKqcE+5+EjoDyWbCWnv0MrzlZRjyhxEJDchN4SAYgGst3+BGhxuZm7cjb+cbABEiiIQGPJjGqa9FLhwthxT0qyN+X+EzKHipYgKx/yE+AUsJAtKF8NxXBJebPsPNH7+bmPdaxLYcU4IBCLjfRnBoarSfm77CjfMnYbOYoxDbchMpA5rgKeSF+YdKyKIH9WcHMOYNwWmzRiH+9Y8ZXC6XPNsesnQ78bTghQsV4AZ/U+PyeAnfdhnhCxBS7BYkCZOZAKGm6lRLhb6AGMFHApsdwUarGlqTdQWkWwirkwjKtNGO/PSgFMSZX6zI2boPFoRwq/t7SAHfh8caWt9dcoCDJ6RZCWYjQMqeRIDQ/iYMty/FLIlCjnUIFtdNtNHlKWTnCVnJ0cuLP7sfpju9MQFSxhaIT9XoC8h1chCMwNWWOgx0uJFRuBUiePS11eH5jX6k2md+4e3xmeB55CjSNz2rL6AgjQOn7rC7IQVFNRivGMDwqB8CL6P0USkK4fEZ0dnnBOPteMJVry8gkoFe9+cY6DgzEcxsCGXkO/scCEkc8go3Iav0LTDzKvU+fdcAY+hp/Bh/dZ2LQthtJuwpzgRncaI/uQw97i+RvT4fBVILZGceRopqwCel6ANQok0VCBk2AmMMvU2f4mZn8xRE1tN7sbHs9SkLmgLDENor8IdnFa5eG8HDr72HF4vy9auFUi2EjCQCZshE5uMlyH/hAMAAvwS1rCYCgt5hdNW8DXH4bxjNFkii+NyxxuZJ/bRnWNxLidkQBrMVT75/EjIDeoZktazOchCUE5r3dj+6T7yDcdELgEmMuCPHTzVXz/T8jTtAnU6aTFw5/QX+/KkNa4vKkLN9n3qM7POEazUDATlODrwBGLrcjV+//gBMltRrBNQOpvxzsLa2O6SFLAlgCmLaMA7cYRjRnIF5LowwcEB/x2lccddq7qA2GaHd1Q3nRiI/LhlA6VDZodOV8sIAiBIw6Jt6gI8EZTUB2Y7wae384dJPAHZQo/idGVByvL7l+t3MxNzZEe+3ErP17hQImTZC7eFXjA9grAlgJZq2Q2BsV1Vj68UlzUDsoYq+usZKeHkDT65Xi5PFIDoIbEOkFWMQDRyV3xMw107j1b5y745sjFMnEVsz2QcbWDYAJegje4ofkyTWTgRB+c5k9C8rgIooL94pM/kEk4lxRAf+A4n0dgPfGmhtAAAAAElFTkSuQmCC" />
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>true</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -20,7 +21,6 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <typeOrder />
       <creationOptions />
       <scriptOptions />
       <mappingOptions />
@@ -31,6 +31,7 @@
       <icon type="UrlImagePath" source="data:image/png;base64,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" />
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>true</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -41,7 +42,6 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <typeOrder />
       <creationOptions />
       <scriptOptions />
       <mappingOptions />
@@ -52,6 +52,7 @@
       <icon type="UrlImagePath" source="data:image/png;base64,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" />
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>false</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -63,8 +64,8 @@
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Role</type>
-        <type order="1">Policy</type>
+        <type order="0" type="Role" typeId="d6ce4e4c-fdd1-4fa1-82d8-f3405e114ec5" />
+        <type order="1" type="Policy" typeId="9f37c60e-ad88-4484-98ca-6c9aa7ca3134" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -207,4 +208,5 @@ function getOrCreateSecurityChildElement(securityElement, elementName, elementTy
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <scripts />
 </settings>

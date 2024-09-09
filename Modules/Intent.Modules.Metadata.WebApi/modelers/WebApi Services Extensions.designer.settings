@@ -14,9 +14,9 @@ function validateRestRoutes(element) {
     if (!routeToValidate) {
         return "";
     }
-    let routesToCompareAgainst = lookupTypesOf("Command")
-        .concat(lookupTypesOf("Query"))
-        .concat(lookupTypesOf("Operation"))
+    let routesToCompareAgainst = lookupTypesOf("Command", false)
+        .concat(lookupTypesOf("Query", false))
+        .concat(lookupTypesOf("Operation", false))
         .map(x =&gt; RestRoute.create(x))
         .filter(x =&gt; x != null);
     let message = __findOneDuplicate(routeToValidate, routesToCompareAgainst);
@@ -772,4 +772,5 @@ execute();</script>
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <scripts />
 </settings>

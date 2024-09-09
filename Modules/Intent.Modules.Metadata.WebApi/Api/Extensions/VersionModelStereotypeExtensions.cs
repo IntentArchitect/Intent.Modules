@@ -14,14 +14,14 @@ namespace Intent.Metadata.WebApi.Api
     {
         public static VersionSettings GetVersionSettings(this VersionModel model)
         {
-            var stereotype = model.GetStereotype("1cefa0f4-0fce-4a35-9f8d-389ecfd66b56");
+            var stereotype = model.GetStereotype(VersionSettings.DefinitionId);
             return stereotype != null ? new VersionSettings(stereotype) : null;
         }
 
 
         public static bool HasVersionSettings(this VersionModel model)
         {
-            return model.HasStereotype("1cefa0f4-0fce-4a35-9f8d-389ecfd66b56");
+            return model.HasStereotype(VersionSettings.DefinitionId);
         }
 
         public static bool TryGetVersionSettings(this VersionModel model, out VersionSettings stereotype)
@@ -32,13 +32,14 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new VersionSettings(model.GetStereotype("1cefa0f4-0fce-4a35-9f8d-389ecfd66b56"));
+            stereotype = new VersionSettings(model.GetStereotype(VersionSettings.DefinitionId));
             return true;
         }
 
         public class VersionSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "1cefa0f4-0fce-4a35-9f8d-389ecfd66b56";
 
             public VersionSettings(IStereotype stereotype)
             {

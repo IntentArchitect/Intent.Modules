@@ -7,9 +7,9 @@ function validateRestRoutes(element: MacroApi.Context.IElementApi): String {
         return "";
     }
 
-    let routesToCompareAgainst = lookupTypesOf("Command")
-        .concat(lookupTypesOf("Query"))
-        .concat(lookupTypesOf("Operation"))
+    let routesToCompareAgainst = lookupTypesOf("Command", false)
+        .concat(lookupTypesOf("Query", false))
+        .concat(lookupTypesOf("Operation", false))
         .map(x => RestRoute.create(x))
         .filter(x => x != null) as RestRoute[];
 

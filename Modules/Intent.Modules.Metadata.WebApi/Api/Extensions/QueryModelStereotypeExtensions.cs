@@ -15,14 +15,14 @@ namespace Intent.Metadata.WebApi.Api
     {
         public static ApiVersionSettings GetApiVersionSettings(this QueryModel model)
         {
-            var stereotype = model.GetStereotype("20855f03-c663-4ec6-b106-de06be98f1fe");
+            var stereotype = model.GetStereotype(ApiVersionSettings.DefinitionId);
             return stereotype != null ? new ApiVersionSettings(stereotype) : null;
         }
 
 
         public static bool HasApiVersionSettings(this QueryModel model)
         {
-            return model.HasStereotype("20855f03-c663-4ec6-b106-de06be98f1fe");
+            return model.HasStereotype(ApiVersionSettings.DefinitionId);
         }
 
         public static bool TryGetApiVersionSettings(this QueryModel model, out ApiVersionSettings stereotype)
@@ -33,20 +33,20 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new ApiVersionSettings(model.GetStereotype("20855f03-c663-4ec6-b106-de06be98f1fe"));
+            stereotype = new ApiVersionSettings(model.GetStereotype(ApiVersionSettings.DefinitionId));
             return true;
         }
 
         public static FileTransfer GetFileTransfer(this QueryModel model)
         {
-            var stereotype = model.GetStereotype("d30e48e8-389e-4b70-84fd-e3bac44cfe19");
+            var stereotype = model.GetStereotype(FileTransfer.DefinitionId);
             return stereotype != null ? new FileTransfer(stereotype) : null;
         }
 
 
         public static bool HasFileTransfer(this QueryModel model)
         {
-            return model.HasStereotype("d30e48e8-389e-4b70-84fd-e3bac44cfe19");
+            return model.HasStereotype(FileTransfer.DefinitionId);
         }
 
         public static bool TryGetFileTransfer(this QueryModel model, out FileTransfer stereotype)
@@ -57,19 +57,19 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new FileTransfer(model.GetStereotype("d30e48e8-389e-4b70-84fd-e3bac44cfe19"));
+            stereotype = new FileTransfer(model.GetStereotype(FileTransfer.DefinitionId));
             return true;
         }
         public static HttpSettings GetHttpSettings(this QueryModel model)
         {
-            var stereotype = model.GetStereotype("b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6");
+            var stereotype = model.GetStereotype(HttpSettings.DefinitionId);
             return stereotype != null ? new HttpSettings(stereotype) : null;
         }
 
 
         public static bool HasHttpSettings(this QueryModel model)
         {
-            return model.HasStereotype("b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6");
+            return model.HasStereotype(HttpSettings.DefinitionId);
         }
 
         public static bool TryGetHttpSettings(this QueryModel model, out HttpSettings stereotype)
@@ -80,20 +80,20 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new HttpSettings(model.GetStereotype("b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"));
+            stereotype = new HttpSettings(model.GetStereotype(HttpSettings.DefinitionId));
             return true;
         }
 
         public static OpenAPISettings GetOpenAPISettings(this QueryModel model)
         {
-            var stereotype = model.GetStereotype("b6197544-7e0e-4900-a6e2-9747fb7e4ac4");
+            var stereotype = model.GetStereotype(OpenAPISettings.DefinitionId);
             return stereotype != null ? new OpenAPISettings(stereotype) : null;
         }
 
 
         public static bool HasOpenAPISettings(this QueryModel model)
         {
-            return model.HasStereotype("b6197544-7e0e-4900-a6e2-9747fb7e4ac4");
+            return model.HasStereotype(OpenAPISettings.DefinitionId);
         }
 
         public static bool TryGetOpenAPISettings(this QueryModel model, out OpenAPISettings stereotype)
@@ -104,19 +104,19 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new OpenAPISettings(model.GetStereotype("b6197544-7e0e-4900-a6e2-9747fb7e4ac4"));
+            stereotype = new OpenAPISettings(model.GetStereotype(OpenAPISettings.DefinitionId));
             return true;
         }
 
         public static Secured GetSecured(this QueryModel model)
         {
-            var stereotype = model.GetStereotype("a9eade71-1d56-4be7-a80c-81046c0c978b");
+            var stereotype = model.GetStereotype(Secured.DefinitionId);
             return stereotype != null ? new Secured(stereotype) : null;
         }
 
         public static bool HasSecured(this QueryModel model)
         {
-            return model.HasStereotype("a9eade71-1d56-4be7-a80c-81046c0c978b");
+            return model.HasStereotype(Secured.DefinitionId);
         }
 
         public static bool TryGetSecured(this QueryModel model, out Secured stereotype)
@@ -127,20 +127,20 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new Secured(model.GetStereotype("a9eade71-1d56-4be7-a80c-81046c0c978b"));
+            stereotype = new Secured(model.GetStereotype(Secured.DefinitionId));
             return true;
         }
 
         public static Unsecured GetUnsecured(this QueryModel model)
         {
-            var stereotype = model.GetStereotype("8b65c29e-1448-43ac-a92a-0e0f86efd6c6");
+            var stereotype = model.GetStereotype(Unsecured.DefinitionId);
             return stereotype != null ? new Unsecured(stereotype) : null;
         }
 
 
         public static bool HasUnsecured(this QueryModel model)
         {
-            return model.HasStereotype("8b65c29e-1448-43ac-a92a-0e0f86efd6c6");
+            return model.HasStereotype(Unsecured.DefinitionId);
         }
 
         public static bool TryGetUnsecured(this QueryModel model, out Unsecured stereotype)
@@ -151,13 +151,14 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new Unsecured(model.GetStereotype("8b65c29e-1448-43ac-a92a-0e0f86efd6c6"));
+            stereotype = new Unsecured(model.GetStereotype(Unsecured.DefinitionId));
             return true;
         }
 
         public class ApiVersionSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "20855f03-c663-4ec6-b106-de06be98f1fe";
 
             public ApiVersionSettings(IStereotype stereotype)
             {
@@ -176,6 +177,7 @@ namespace Intent.Metadata.WebApi.Api
         public class FileTransfer
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "d30e48e8-389e-4b70-84fd-e3bac44cfe19";
 
             public FileTransfer(IStereotype stereotype)
             {
@@ -199,6 +201,7 @@ namespace Intent.Metadata.WebApi.Api
         public class HttpSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
             public HttpSettings(IStereotype stereotype)
             {
@@ -322,6 +325,7 @@ namespace Intent.Metadata.WebApi.Api
         public class OpenAPISettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "b6197544-7e0e-4900-a6e2-9747fb7e4ac4";
 
             public OpenAPISettings(IStereotype stereotype)
             {
@@ -346,6 +350,7 @@ namespace Intent.Metadata.WebApi.Api
         public class Secured
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "a9eade71-1d56-4be7-a80c-81046c0c978b";
 
             public Secured(IStereotype stereotype)
             {
@@ -379,6 +384,7 @@ namespace Intent.Metadata.WebApi.Api
         public class Unsecured
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "8b65c29e-1448-43ac-a92a-0e0f86efd6c6";
 
             public Unsecured(IStereotype stereotype)
             {

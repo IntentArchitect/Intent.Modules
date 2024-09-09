@@ -15,14 +15,14 @@ namespace Intent.Metadata.WebApi.Api
     {
         public static ParameterSettings GetParameterSettings(this DTOFieldModel model)
         {
-            var stereotype = model.GetStereotype("d01df110-1208-4af8-a913-92a49d219552");
+            var stereotype = model.GetStereotype(ParameterSettings.DefinitionId);
             return stereotype != null ? new ParameterSettings(stereotype) : null;
         }
 
 
         public static bool HasParameterSettings(this DTOFieldModel model)
         {
-            return model.HasStereotype("d01df110-1208-4af8-a913-92a49d219552");
+            return model.HasStereotype(ParameterSettings.DefinitionId);
         }
 
         public static bool TryGetParameterSettings(this DTOFieldModel model, out ParameterSettings stereotype)
@@ -33,19 +33,19 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new ParameterSettings(model.GetStereotype("d01df110-1208-4af8-a913-92a49d219552"));
+            stereotype = new ParameterSettings(model.GetStereotype(ParameterSettings.DefinitionId));
             return true;
         }
         public static SerializationSettings GetSerializationSettings(this DTOFieldModel model)
         {
-            var stereotype = model.GetStereotype("e3b79cb0-b063-4aaa-8fda-3893fb6e44c4");
+            var stereotype = model.GetStereotype(SerializationSettings.DefinitionId);
             return stereotype != null ? new SerializationSettings(stereotype) : null;
         }
 
 
         public static bool HasSerializationSettings(this DTOFieldModel model)
         {
-            return model.HasStereotype("e3b79cb0-b063-4aaa-8fda-3893fb6e44c4");
+            return model.HasStereotype(SerializationSettings.DefinitionId);
         }
 
         public static bool TryGetSerializationSettings(this DTOFieldModel model, out SerializationSettings stereotype)
@@ -56,13 +56,14 @@ namespace Intent.Metadata.WebApi.Api
                 return false;
             }
 
-            stereotype = new SerializationSettings(model.GetStereotype("e3b79cb0-b063-4aaa-8fda-3893fb6e44c4"));
+            stereotype = new SerializationSettings(model.GetStereotype(SerializationSettings.DefinitionId));
             return true;
         }
 
         public class ParameterSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "d01df110-1208-4af8-a913-92a49d219552";
 
             public ParameterSettings(IStereotype stereotype)
             {
@@ -156,6 +157,7 @@ namespace Intent.Metadata.WebApi.Api
         public class SerializationSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "e3b79cb0-b063-4aaa-8fda-3893fb6e44c4";
 
             public SerializationSettings(IStereotype stereotype)
             {
