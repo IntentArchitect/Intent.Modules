@@ -1,4 +1,8 @@
-﻿### Version 4.5.5
+﻿### Version 4.5.6
+
+- Improvement: Added support for customizing Success Response Code.
+
+### Version 4.5.5
 
 
 - Improvement: Improved service security modeling experience.

@@ -1,3 +1,7 @@
+### Version 1.1.2
+
+- Improvement: Improved Event and Integration Command mappings for supporting Collections.
+ 
 ### Version 1.1.1
 
 - Improvement: Added Stereotype visuals for `Mesasge` and `IntegrationCommand`.
