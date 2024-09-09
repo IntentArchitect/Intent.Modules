@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.EventInteractions</id>
-  <version>1.1.2-pre.1</version>
+  <version>1.1.2</version>
   <supportedClientVersions>[4.1.0,5.0.0-a)</supportedClientVersions>
   <summary>Services modeler extensions for describing interactions between an application's  services and integration events.</summary>
   <description>Services modeler extensions for describing interactions between an application's  services and integration events.</description>
