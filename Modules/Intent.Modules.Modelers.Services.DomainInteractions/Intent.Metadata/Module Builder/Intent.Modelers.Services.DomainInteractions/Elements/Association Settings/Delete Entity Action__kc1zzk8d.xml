@@ -136,7 +136,7 @@
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
-                    <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" value="ctrl + shift + m" isActive="true" />
+                    <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" value="ctrl + space" isActive="true" />
                     <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
                     <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
                     <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
@@ -166,7 +166,7 @@
       <childElements>
         <childElement id="94238258-0c3c-4261-8b20-dd5d2234167e" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
           <name>On Created</name>
-          <display>On Created: Script</display>
+          <display>On Created: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="082284a0-9ccf-423d-9b8c-258c5155f547">
@@ -191,6 +191,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="let mapping = association.createMapping(association.getOtherEnd().typeReference.getTypeId(), association.typeReference.getTypeId(), &quot;25f25af9-c38b-4053-9474-b0fabe9d7ea7&quot;) // Query Entity Mapping&#xD;&#xA;association.typeReference.getType().getChildren(&quot;Attribute&quot;)&#xD;&#xA;    .filter(x =&gt; x.hasStereotype(&quot;Primary Key&quot;))&#xD;&#xA;    .forEach(attr =&gt; {&#xD;&#xA;        let handler = association.getOtherEnd().typeReference.getType();&#xD;&#xA;        let childSpecialization = handler.specialization == &quot;Command&quot; ? &quot;DTO-Field&quot;&#xD;&#xA;            : handler.specialization == &quot;Operation&quot; ? &quot;Parameter&quot;&#xD;&#xA;            : null&#xD;&#xA;        if (childSpecialization == null) {&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        let pkField = handler.getChildren(childSpecialization).find(x =&gt; x.getName().toLowerCase() == attr.getName().toLowerCase()&#xD;&#xA;            &amp;&amp; x.typeReference.getTypeId() == attr.typeReference.getTypeId())&#xD;&#xA;        if (!pkField) {&#xD;&#xA;            let newField = createElement(childSpecialization, attr.getName(), handler.id);&#xD;&#xA;            newField.typeReference.setType(attr.typeReference.getTypeId());&#xD;&#xA;            newField.typeReference.setIsNullable(attr.typeReference.getIsNullable())&#xD;&#xA;            newField.typeReference.setIsCollection(attr.typeReference.getIsCollection())&#xD;&#xA;            pkField = newField;&#xD;&#xA;        }&#xD;&#xA;        mapping.addMappedEnd(&quot;Filter Mapping&quot;, [pkField.id], [attr.id]);&#xD;&#xA;    })" isActive="true" />
+                <property name="7d1114d8-e27d-4cb8-b5d5-3fd75bf7dea1" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

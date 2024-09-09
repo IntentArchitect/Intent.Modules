@@ -14910,7 +14910,7 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
         <mappingOptions>
           <option mappingType="Service Operation Mapping" mappingTypeId="df692ffe-5d0c-40ee-9362-a483d929a8ec">
             <text>Map Call Operation</text>
-            <shortcut>ctrl + shift + m</shortcut>
+            <shortcut>ctrl + space</shortcut>
           </option>
         </mappingOptions>
       </targetEnd>
@@ -14994,7 +14994,7 @@ return typeReference.getIsCollection()
         <mappingOptions>
           <option mappingType="Create Entity Mapping" mappingTypeId="5f172141-fdba-426b-980e-163e782ff53e">
             <text>Map Entity Creation</text>
-            <shortcut>ctrl + shift + m</shortcut>
+            <shortcut>ctrl + space</shortcut>
           </option>
         </mappingOptions>
       </targetEnd>
@@ -15070,7 +15070,7 @@ return typeReference.getIsCollection()
         <mappingOptions>
           <option mappingType="Query Entity Mapping" mappingTypeId="25f25af9-c38b-4053-9474-b0fabe9d7ea7">
             <text>Map Entity Filter</text>
-            <shortcut>ctrl + shift + m</shortcut>
+            <shortcut>ctrl + space</shortcut>
           </option>
         </mappingOptions>
       </targetEnd>
@@ -15177,7 +15177,7 @@ return typeReference.getIsCollection()
         <mappingOptions>
           <option mappingType="Query Entity Mapping" mappingTypeId="25f25af9-c38b-4053-9474-b0fabe9d7ea7">
             <text>Map Entity Query</text>
-            <shortcut>ctrl + shift + m</shortcut>
+            <shortcut>ctrl + space</shortcut>
           </option>
         </mappingOptions>
       </targetEnd>
@@ -15259,7 +15259,7 @@ return typeReference.getIsCollection()
           </option>
           <option mappingType="Update Entity Mapping" mappingTypeId="01721b1a-a85d-4320-a5cd-8bd39247196a">
             <text>Map Entity Update</text>
-            <shortcut>ctrl + shift + m</shortcut>
+            <shortcut>ctrl + space</shortcut>
           </option>
         </mappingOptions>
       </targetEnd>
@@ -15509,7 +15509,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
                 <childSetting id="8ec45776-c6cc-4174-84f8-efb5d4308ed4" name="Constructor Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" version="2.0.0">
                   <isRequiredFunction>return (element.getValue() ?? "") == "";</isRequiredFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
-                  <isMappableFunction>return element.getParent()?.getIsMapped();</isMappableFunction>
+                  <isMappableFunction>return element.getParent()?.getIsMapped() &amp;&amp; !element.typeReference.getType()?.hasTrait("20ce5b45-803a-4e2d-9f62-53b90f856529"); // [Injectable Service] trait</isMappableFunction>
                   <isTraversable>true</isTraversable>
                   <traversableTypes>
                     <mappingId>e04ab087-8c1a-42b9-aac7-d76ed674e319</mappingId>
@@ -16119,8 +16119,10 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
-          <getTraversableTypeFunction>return element.typeReference.getType().typeReference.getTypeId()</getTraversableTypeFunction>
           <traversableTypes />
+          <overrideTypeReferenceFunction>return {
+    typeId: element.typeReference.getType().typeReference.getTypeId()
+}</overrideTypeReferenceFunction>
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
         </mappableElement>
@@ -16229,10 +16231,12 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
-          <getTraversableTypeFunction>return element.typeReference.getType().getParent("Class")?.id ?? element.typeReference.getType().id;</getTraversableTypeFunction>
           <traversableTypes>
             <mappingId>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</mappingId>
           </traversableTypes>
+          <overrideTypeReferenceFunction>return {
+    typeId: element.typeReference.getType().getParent("Class")?.id ?? element.typeReference.getType().id
+}</overrideTypeReferenceFunction>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
         </mappableElement>
@@ -16377,7 +16381,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
                 <childSetting id="95db9e8b-5db5-4a46-815c-53948a16fe7c" name="Set Operation Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" version="2.0.0">
                   <isRequiredFunction>return true;</isRequiredFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
-                  <isMappableFunction>return element.getParent().getIsMapped();</isMappableFunction>
+                  <isMappableFunction>return element.getParent()?.getIsMapped() &amp;&amp; !element.typeReference.getType()?.hasTrait("20ce5b45-803a-4e2d-9f62-53b90f856529"); // [Injectable Service] trait</isMappableFunction>
                   <isTraversable>true</isTraversable>
                   <traversableTypes>
                     <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
@@ -16412,10 +16416,14 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <isTraversable>true</isTraversable>
           <getTraversableTypeFunction>return element.typeReference.getType().typeReference.getTypeId()</getTraversableTypeFunction>
           <traversableTypes />
+          <overrideTypeReferenceFunction>return {
+    typeId: element.typeReference.getType().typeReference.getTypeId()
+}</overrideTypeReferenceFunction>
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
         </mappableElement>
         <mappableElement id="f11b799f-24a9-4a8c-ae3b-576c8571c771" name="Create Entity Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016" version="2.0.0">
+          <filterFunction>return !isHost(element)</filterFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16423,6 +16431,9 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <traversableTypes>
             <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
           </traversableTypes>
+          <overrideTypeReferenceFunction>return {
+    typeId: element.typeReference.getType().getParent("Class")?.id ?? element.typeReference.getType().id
+}</overrideTypeReferenceFunction>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
         </mappableElement>
@@ -16515,4 +16526,5 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
       </mappableElementSettings>
     </mappableElementPackageExtension>
   </mappableElementPackageExtensions>
+  <scripts />
 </settings>

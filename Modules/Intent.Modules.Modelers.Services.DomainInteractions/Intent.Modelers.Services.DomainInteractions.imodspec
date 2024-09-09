@@ -17,7 +17,6 @@
     <group id="0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad" title="Domain Interaction Settings" externalReference="0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad">
       <settings>
         <setting id="14bc1e98-930b-494c-97a9-5da4e1f3a5fa" title="Default Mapping Mode" type="select">
-          <isRequired>true</isRequired>
           <hint>Determines which mapping Services designer CRUD scripts will execute</hint>
           <defaultValue>basic</defaultValue>
           <options>

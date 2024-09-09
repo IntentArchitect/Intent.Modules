@@ -136,7 +136,7 @@
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
-                    <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" value="ctrl + shift + m" isActive="true" />
+                    <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" value="ctrl + space" isActive="true" />
                     <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
                     <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
                     <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
@@ -166,7 +166,7 @@
       <childElements>
         <childElement id="e9de8491-b197-4761-8d4d-c06f6eb1a859" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
           <name>On Type Changed</name>
-          <display>On Type Changed: Script</display>
+          <display>On Type Changed: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="ea753d77-3141-4afa-b3c4-7cfef1019ef5">
@@ -191,6 +191,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="if (association.isTargetEnd() &amp;&amp; association.typeReference.getType()?.typeReference != null) {&#xD;&#xA;    association.typeReference.setIsCollection(association.typeReference.getType().typeReference.getIsCollection());&#xD;&#xA;    association.typeReference.setIsNullable(association.typeReference.getType().typeReference.getIsNullable());&#xD;&#xA;}" isActive="true" />
+                <property name="7d1114d8-e27d-4cb8-b5d5-3fd75bf7dea1" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
