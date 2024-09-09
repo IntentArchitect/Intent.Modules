@@ -3,7 +3,7 @@
   <name>[element visual]</name>
   <display>[visual]: Service Proxy</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <order>3</order>
   <genericTypes />
   <typeReference id="3aa4573a-3bd2-4dba-86dd-f0c556e36aea">

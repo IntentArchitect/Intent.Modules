@@ -19,6 +19,7 @@
         <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
         <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
         <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="52f3c2e8-6438-494a-b0a7-7a9e61c8aae8" display="Target Traits" isActive="true" />
         <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
         <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
         <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
@@ -37,6 +38,7 @@
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="let mappedService = getMapping()?.getElement();&#xD;&#xA;&#xD;&#xA;if (!mappedService) {&#xD;&#xA;    return &quot;&quot;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;const messageTriggered = &quot;5150384d-18a3-4c7e-a716-599e6658abde&quot;;&#xD;&#xA;&#xD;&#xA;let detectedEndpointTypes = getChildren(&quot;Operation&quot;)&#xD;&#xA;    .map(op =&gt; {&#xD;&#xA;        let mappedOp = op.getMapping()?.getElement();&#xD;&#xA;        if (!mappedOp) {&#xD;&#xA;            return null;&#xD;&#xA;        }&#xD;&#xA;        if (mappedOp.getStereotype(httpSettingsId)) {&#xD;&#xA;            return mappedOp.getStereotype(httpSettingsId).name;&#xD;&#xA;        }&#xD;&#xA;        if (mappedOp.getStereotype(messageTriggered)) {&#xD;&#xA;            return mappedOp.getStereotype(messageTriggered).name;&#xD;&#xA;        }&#xD;&#xA;        return null;&#xD;&#xA;    })&#xD;&#xA;    .filter(op =&gt; op != null);&#xD;&#xA;&#xD;&#xA;let distinctDetectedEndpointTypes = [...new Set(detectedEndpointTypes)];&#xD;&#xA;&#xD;&#xA;if (distinctDetectedEndpointTypes.length &lt; 2) {&#xD;&#xA;    return &quot;&quot;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return `Multiple endpoint types detected, a Service Proxy may only target one type of endpoint. Endpoint types found: [${distinctDetectedEndpointTypes.join(&quot;, &quot;)}]`;" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="581e77d6-4587-4041-86f6-880bd57d5848" display="Name Must Be Unique" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
@@ -45,6 +47,12 @@
         <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="20ce5b45-803a-4e2d-9f62-53b90f856529" name="[Injectable Service]">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Common</definitionPackageName>
+      <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
+      <properties />
     </stereotype>
   </stereotypes>
   <metadata />
