@@ -4,8 +4,10 @@
 
 async function updateAllNuGetPackages(element: MacroApi.Context.IElementApi): Promise<void> {
     let packages = element.getChildren();
+
     let result = await getLatestNugetPackages(packages.filter(x => !isPackageLocked(x)).map(x => x.getName()));
     updateNugetPackageElements(packages, result);
+    
     await dialogService.info("Update complete.");
 }
 

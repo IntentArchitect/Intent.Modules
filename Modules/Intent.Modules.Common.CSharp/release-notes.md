@@ -1,6 +1,7 @@
 ﻿### Version 3.7.6
 
 - Improvement: `TryGetMaxNetAppVersion` and `GetMaxNetAppVersion` support `.NetStandard2.*` versions.
+- Improvement: Added support for NuGet package dependency modeling.
 
 ### Version 3.7.5
 

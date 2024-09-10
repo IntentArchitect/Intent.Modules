@@ -17,6 +17,12 @@ interface INugetPackage {
 interface INugetVersion {
     version: string;
     targetFramework: string;
+    dependencies: INugetDependency[];
+}
+
+interface INugetDependency {
+    packageName: string;
+    version: string;
 }
 
 async function getLatestNugetPackages(nugetPackageIds: string[]): Promise<ITaskResponse > {
@@ -38,7 +44,11 @@ async function getLatestNugetPackages(nugetPackageIds: string[]): Promise<ITaskR
             name: pkg.name,
             versions: pkg.versions.map((ver: any) => ({
                 version: ver.version,
-                targetFramework: ver.targetFramework
+                targetFramework: ver.targetFramework,
+                dependencies: ver.dependencies.map((dep: any) => ({
+                    packageName: dep.packageName,
+                    version: dep.version,    
+                }))
             }))
         }))
     };
@@ -59,13 +69,13 @@ function updateNugetPackageElements(elements: MacroApi.Context.IElementApi[], la
 function synchronizeModel(packageElement : MacroApi.Context.IElementApi, nugetPackage : INugetPackage) : void{
     const packageVersionSettings = "7af88c37-ce54-49fc-b577-bde869c23462";
 
-    const dict = new Map<string, string>();
+    const dict = new Map<string, INugetVersion>();
     nugetPackage.versions.forEach(v => {
-        dict.set(v.targetFramework, v.version);
+        dict.set(v.targetFramework, v);
     });
 
     dict.forEach((value, key) => {
-        console.log(`NuGet:${value}(${key})`);
+        console.log(`NuGet:${value.version}(${key})`);
     });
 
     packageElement.getChildren().forEach(e => {
@@ -77,10 +87,14 @@ function synchronizeModel(packageElement : MacroApi.Context.IElementApi, nugetPa
                 dict.delete(targetFramework);
             }
         } else {
-            if (dict.has(targetFramework) ){
+            if (dict.has(targetFramework) ){                
                 //The version no is the same, no work to do
-                if (dict.get(targetFramework) == e.getName()){
-                    dict.delete(targetFramework);
+                let packageInfo = dict.get(targetFramework);
+                if (packageInfo.version == e.getName()){
+                    //If the dependencies are out of sync, this fixes legacy setups and is Ok for normal ones
+                    if (packageInfo.dependencies.length == e.getChildren().length){
+                        dict.delete(targetFramework);
+                    }
                 }
             } 
         }
@@ -90,13 +104,23 @@ function synchronizeModel(packageElement : MacroApi.Context.IElementApi, nugetPa
         let existingElement = packageElement.getChildren().find(c => c.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value == key);
         if (existingElement){
             //Update Version No
-            existingElement.setName(value);
+            existingElement.setName(value.version);
+            updateNugetDependencies(existingElement, value.dependencies);
         }else{
-            //Create new frmework element
-            let element = createElement("Package Version", value, packageElement.id);
+            //Create new framework element
+            let element = createElement("Package Version", value.version, packageElement.id);
             let versionSettings = element.getStereotype(packageVersionSettings);
             versionSettings.getProperty("Minimum Target Framework").setValue(key);
+            updateNugetDependencies(element, value.dependencies);
         }
+    });
+}
+
+function updateNugetDependencies(element: MacroApi.Context.IElementApi, dependencies: INugetDependency[]) : void {
+    element.getChildren().forEach(child => child.delete());
+    dependencies.forEach(dep =>{
+        let child = createElement("NuGet Dependency", dep.packageName, element.id);
+        child.setValue(dep.version);
     });
 }
 

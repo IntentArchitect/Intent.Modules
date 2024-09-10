@@ -2,8 +2,10 @@
 
 async function updateNuGetPackage(element: MacroApi.Context.IElementApi): Promise<void> {
     if (isPackageLocked(element)) return;
+
     let result = await getLatestNugetPackages([element.getName()]);
     updateNugetPackageElements([element], result);
+    
     await dialogService.info("Update complete.");
 }
 

@@ -1,6 +1,9 @@
-### Version 3.6.1
+### Version 3.6.2
 
 - Improvement: Added support for NuGet Package dependencies.
+
+### Version 3.6.1
+
 - Improvement: Fixed bug around using generation of NugetPackages template.
 
 ### Version 3.6.0
