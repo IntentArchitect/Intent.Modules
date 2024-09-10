@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
   <version>3.10.3</version>
@@ -260,8 +260,8 @@
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
-    <file src="$outDir$/Mono.TextTemplating.dll" inspect="false"/>
-    <file src="$outDir$/System.CodeDom.dll" inspect="false"/>
+    <file src="$outDir$/Mono.TextTemplating.dll" inspect="false" />
+    <file src="$outDir$/System.CodeDom.dll" inspect="false" />
   </files>
   <moduleSettings>
     <group id="b2c4252b-cfae-43c5-9682-803aa0b84c87" title="Module Builder Settings" externalReference="b2c4252b-cfae-43c5-9682-803aa0b84c87">
