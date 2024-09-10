@@ -1,6 +1,7 @@
 ﻿### Version 3.8.0
 
 - Improvement: Added support for Razor file code management.
+- Fixed: Nullable aware assignments of instantiated objects via mapping systems not resolving replacements correctly, leading to uncompilable code.
 
 ### Version 3.7.5
 

@@ -91,6 +91,11 @@ public abstract class CSharpMappingBase : ICSharpMapping
         return GetParsedExpressionMap(text, path => GetSourcePathText(Mapping.GetSource(path).Path, false)).ToDictionary(x => x.Key, x => new CSharpStatement(x.Value));
     }
 
+    /// <summary>
+    /// This method will return the source path to this node, even if it isn't itself mapped.
+    /// In the case where it isn't mapped, it will work out it's mapping based on child mappings.
+    /// </summary>
+    /// <returns></returns>
     protected IList<IElementMappingPathTarget> GetSourcePath()
     {
         if (Mapping != null)

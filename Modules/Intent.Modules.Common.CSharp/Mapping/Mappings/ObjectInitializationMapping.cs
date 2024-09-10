@@ -46,7 +46,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 {
                     var m = new SelectToListMapping(_mappingModel, _template);
                     m.Parent = this.Parent;
-					return m.GetSourceStatement();
+                    return m.GetSourceStatement();
                     /*
                     ANYONE, YOU CAN DELETE WHEN YOU SEE THIS:
                     Template.AddUsing("System.Linq");
@@ -78,8 +78,8 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     else
                     {
 
-						// TODO: add ternary check to mappings for when the source path could be nullable.
-						var lastTargetPathElement = GetTargetPath().Last().Element;
+                        // TODO: add ternary check to mappings for when the source path could be nullable.
+                        var lastTargetPathElement = GetTargetPath().Last().Element;
                         SetTargetReplacement(lastTargetPathElement, null); // Needed for inheritance mappings - path element to be removed from invocation path
                         if (lastTargetPathElement.TypeReference.Element is not null)
                         {
@@ -168,18 +168,20 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
             return GetNullableAwareInstantiation(Model, Children, propInit);
         }
-        
+
         private CSharpStatement GetNullableAwareInstantiation(ICanBeReferencedType model, IList<ICSharpMapping> children, CSharpStatement instantiationStatement)
         {
             // Only go for Target Elements that are Nullable and that have children who's Source mappings have a Map path length that is beyond the root Element.
             // e.g. We won't target "request.FieldName" (flat mappings pose problems) but rather "request.NavProp.FieldName" for source elements.
-            if (model is IElement end && 
-		        end.TypeReference is {IsNullable:true, IsCollection:false} && 
-		        children.All(c => c.Mapping.SourcePath.SkipLast(1).Count() > 1))
+            if (model is IElement end &&
+                end.TypeReference is { IsNullable: true, IsCollection: false } &&
+                children.All(c => c.Mapping.SourcePath.SkipLast(1).Count() > 1) &&
+                GetSourcePath().Last().Element.TypeReference.IsNullable)
             {
-                var child = children.First();
-                var accessPath = child.Mapping.SourcePath.SkipLast(1).Select(s => child.TryGetSourceReplacement(s.Element, out var a) ? a : s.Name).ToArray();
-                return new CSharpConditionalExpressionStatement($"{string.Join(".", accessPath)} is not null", instantiationStatement, "null");
+                // GCB - this code (now commented out) was seriously hacky and broke in a simple use case of assigning a DTO to a Model (UI)
+                //var child = children.First();
+                //var accessPath = child.Mapping.SourcePath.SkipLast(1).Select(s => child.TryGetSourceReplacement(s.Element, out var a) ? a : s.Name).ToArray();
+                return new CSharpConditionalExpressionStatement($"{GetSourcePathText(GetSourcePath())} is not null", instantiationStatement, "null");
             }
 
             return instantiationStatement;
