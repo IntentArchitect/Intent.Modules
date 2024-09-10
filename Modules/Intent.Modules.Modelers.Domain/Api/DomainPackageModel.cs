@@ -60,6 +60,11 @@ namespace Intent.Modelers.Domain.Api
             .Select(x => new FolderModel(x))
             .ToList();
 
+        public IList<DataContractModel> DomainContracts => UnderlyingPackage.ChildElements
+            .GetElementsOfType(DataContractModel.SpecializationTypeId)
+            .Select(x => new DataContractModel(x))
+            .ToList();
+
         public IList<DataContractModel> DomainObjects => UnderlyingPackage.ChildElements
             .GetElementsOfType(DataContractModel.SpecializationTypeId)
             .Select(x => new DataContractModel(x))
