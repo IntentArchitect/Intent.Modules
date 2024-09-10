@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,15 +11,14 @@ using Intent.IArchitect.Agent.Persistence.Model;
 using Intent.IArchitect.Agent.Persistence.Model.ApplicationTemplate;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.IArchitect.Agent.Persistence.Model.Module;
+using Intent.IArchitect.Common.NuGet.Versioning;
 using Intent.Metadata.Models;
 using Intent.Modules.ApplicationTemplate.Builder.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-using NuGet.Versioning;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -74,7 +72,8 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
                     RelativeOutputLocation = Model.Defaults.RelativeOutputLocation,
                     PlaceInSameDirectory = Model.Defaults.PlaceSolutionAndApplicationInTheSameDirectory,
                     SeparateIntentFiles = Model.Defaults.StoreIntentArchitectFilesSeparateToCodebase,
-                    SetGitIgnoreEntries = Model.Defaults.SetGitIgnoreEntries
+                    SetGitIgnoreEntries = Model.Defaults.SetGitIgnoreEntries,
+                    CreateFolderForSolution = Model.Defaults.CreateFolderForSolution,
                 },
                 ComponentGroups = Model.Groups.Select(g => new ApplicationTemplate_ComponentGroup
                 {

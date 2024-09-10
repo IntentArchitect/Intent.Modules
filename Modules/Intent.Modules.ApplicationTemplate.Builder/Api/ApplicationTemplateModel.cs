@@ -94,6 +94,8 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             public bool StoreIntentArchitectFilesSeparateToCodebase => _model.GetApplicationTemplateDefaults()?.StoreIntentArchitectFilesSeparateToCodebase() ?? true;
 
             public bool SetGitIgnoreEntries => _model.GetApplicationTemplateDefaults()?.SetGitignoreEntries() ?? true;
+
+            public bool CreateFolderForSolution => _model.GetApplicationTemplateDefaults()?.CreateFolderForSolution() ?? true;
         }
     }
 }

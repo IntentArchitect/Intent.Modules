@@ -1,3 +1,7 @@
+### Version 3.4.9
+
+- Improvement: Added ability to specify default `Create folder for solution` value.
+
 ### Version 3.4.8
 
 - Improvement: The AutoCompile factory extension has been removed from this module and the more robust `Intent.ModuleBuilder.AutoCompile` module should be installed and used instead.

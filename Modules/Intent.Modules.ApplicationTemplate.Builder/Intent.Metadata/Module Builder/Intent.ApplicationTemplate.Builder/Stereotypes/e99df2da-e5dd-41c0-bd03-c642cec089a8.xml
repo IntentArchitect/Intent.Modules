@@ -52,6 +52,16 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="5c7741b1-0d43-4c93-a254-45252a87fa70">
+      <name>Create folder for solution</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="54abe4ba-f663-4f73-8072-5c2da7ebbcd7">
       <name>Store Intent Architect files separate to codebase</name>
       <type>string</type>
