@@ -13,5 +13,10 @@ namespace Intent.Modules.Common.VisualStudio
         IList<AssemblyRedirectInfo> AssemblyRedirects { get; }
         string[] PrivateAssets { get; }
         string[] IncludeAssets { get; }
+
+        /// <summary>
+        /// List of NuGetpackages this package installs / is dependent on
+        /// </summary>
+        IList<INugetPackageDependency>  Dependencies { get; }
     }
 }

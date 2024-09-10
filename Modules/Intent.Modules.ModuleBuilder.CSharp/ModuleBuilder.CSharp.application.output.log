@@ -50,6 +50,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>6994427e-45de-4d7d-b0f6-73454dfa9229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#3097322a-a058-4058-beed-4fcd6272f61d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/NuGetDependencyModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>NuGetDependencyModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>6994427e-45de-4d7d-b0f6-73454dfa9229</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f747cc37-29ee-488a-8dbe-755e856a842d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/NuGetPackageModel.cs</ApplicationRelativeFilePath>

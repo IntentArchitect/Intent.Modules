@@ -419,12 +419,50 @@ return result;
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
-              <typeOrder />
-              <creationOptions />
+              <typeOrder>
+                <type order="0">NuGet Dependency</type>
+              </typeOrder>
+              <creationOptions>
+                <option type="element">
+                  <text>New NuGet dependency</text>
+                  <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAWpJREFUaEPtmL1uwjAUhW0k6BQpsDLxIH2XzlnaDV6BCWVBMHXt1KyZmNhoVYmJjUeoVBiQGYwiSBul+fGN7Ni3vZlt+Xw55/rncob848j1MwKw7SA58G8dGM0PEgK/D7zCtFiLEAHc7CMHIDnOjqUI2YzQdC29xfb4BXHPiV1o9iF9JsQTZ/IxfD/7aACSP37XFYHsyDGXvJ8ID98ERD+z4kCR8FS10wBVwp0GUBHOmDwwzufhRowhGQJHaDd8AN1V4tflJJvx3+Kuwnun3jS4558Q8VVjS09iMEC0LFnHjPB0MYMAZoUbBGhHuAGAhZGM19WKtgitXp4HOouzTrh2B9ADxBHyCMXf2yjaIs6fA+2AaCviHwfy5WcWRB+Aa1cJ1W0sO86py1wTgHSOCojT7wEVEBQAVSCoAFIQtI/6fD2hbatQZ65ga6TmbtPzgpq7Npu7ydroHWgavfw8a0VMALZrgBz4Kw5cAH2DJkBxJqkjAAAAAElFTkSuQmCC" />
+                  <specializationType>NuGet Dependency</specializationType>
+                  <specializationTypeId>3097322a-a058-4058-beed-4fcd6272f61d</specializationTypeId>
+                  <defaultName>NewNuGetDependency</defaultName>
+                  <allowMultiple>true</allowMultiple>
+                </option>
+              </creationOptions>
               <scriptOptions />
               <mappingOptions />
               <mappingSettings />
-              <childElementSettings />
+              <childElementSettings>
+                <childElementSetting type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
+                  <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAWpJREFUaEPtmL1uwjAUhW0k6BQpsDLxIH2XzlnaDV6BCWVBMHXt1KyZmNhoVYmJjUeoVBiQGYwiSBul+fGN7Ni3vZlt+Xw55/rncob848j1MwKw7SA58G8dGM0PEgK/D7zCtFiLEAHc7CMHIDnOjqUI2YzQdC29xfb4BXHPiV1o9iF9JsQTZ/IxfD/7aACSP37XFYHsyDGXvJ8ID98ERD+z4kCR8FS10wBVwp0GUBHOmDwwzufhRowhGQJHaDd8AN1V4tflJJvx3+Kuwnun3jS4558Q8VVjS09iMEC0LFnHjPB0MYMAZoUbBGhHuAGAhZGM19WKtgitXp4HOouzTrh2B9ADxBHyCMXf2yjaIs6fA+2AaCviHwfy5WcWRB+Aa1cJ1W0sO86py1wTgHSOCojT7wEVEBQAVSCoAFIQtI/6fD2hbatQZ65ga6TmbtPzgpq7Npu7ydroHWgavfw8a0VMALZrgBz4Kw5cAH2DJkBxJqkjAAAAAElFTkSuQmCC" />
+                  <saveAsOwnFile>false</saveAsOwnFile>
+                  <displayFunction>let displayName = element.getName();
+
+const result = [{ text: `${displayName}` }];
+result.push({ text: ` (${element.getValue()})`, cssClass: "muted" })
+return result; </displayFunction>
+                  <allowRename>true</allowRename>
+                  <allowAbstract>false</allowAbstract>
+                  <allowStatic>false</allowStatic>
+                  <allowGenericTypes>false</allowGenericTypes>
+                  <allowMapping>false</allowMapping>
+                  <allowSorting>true</allowSorting>
+                  <sortChildren>by-type-then-by-name</sortChildren>
+                  <allowFindInView>false</allowFindInView>
+                  <allowTypeReference>false</allowTypeReference>
+                  <allowConvertToType p10:nil="true" xmlns:p10="http://www.w3.org/2001/XMLSchema-instance" />
+                  <allowSetValue>true</allowSetValue>
+                  <typeOrder />
+                  <creationOptions />
+                  <scriptOptions />
+                  <mappingOptions />
+                  <mappingSettings />
+                  <childElementSettings />
+                </childElementSetting>
+              </childElementSettings>
             </childElementSetting>
           </childElementSettings>
         </childElementSetting>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Intent.Modules.Common.CSharp.VisualStudio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,6 +12,7 @@ namespace Intent.Modules.Common.VisualStudio
             Name = name;
             Version = version;
             AssemblyRedirects = new List<AssemblyRedirectInfo>();
+            Dependencies = new List<INugetPackageDependency>();
         }
 
         public override string ToString()
@@ -21,6 +23,9 @@ namespace Intent.Modules.Common.VisualStudio
         public string Name { get; }
         public string Version { get; }
         public IList<AssemblyRedirectInfo> AssemblyRedirects { get; }
+
+        public IList<INugetPackageDependency> Dependencies { get; }
+
         public bool CanAddFile(string file)
         {
             switch (_addFileBlacklistBehaviour)
@@ -43,6 +48,12 @@ namespace Intent.Modules.Common.VisualStudio
         public NugetPackageInfo WithAssemblyRedirect(AssemblyRedirectInfo assemblyRedirect)
         {
             AssemblyRedirects.Add(assemblyRedirect);
+            return this;
+        }
+
+        public NugetPackageInfo WithNugetDependency(string packageName, string version)
+        {
+            Dependencies.Add(new NugetPackageDependency(packageName, version));
             return this;
         }
 
