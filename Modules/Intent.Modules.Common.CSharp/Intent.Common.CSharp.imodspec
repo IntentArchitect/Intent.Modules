@@ -14,8 +14,8 @@
     <factoryExtension id="Intent.Common.CSharp.NugetRegistryLoaderExtension" externalReference="a05a730c-90e8-4e1d-bb81-0c9bae1748ae" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.7.0-pre.2" />
-    <dependency id="Intent.Common.Types" version="3.4.1-pre.0" />
+    <dependency id="Intent.Common" version="3.7.0-pre.3" />
+    <dependency id="Intent.Common.Types" version="4.0.0-alpha.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
