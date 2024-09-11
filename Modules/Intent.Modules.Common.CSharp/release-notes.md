@@ -1,4 +1,8 @@
-﻿### Version 3.7.5
+﻿### Version 3.7.6
+
+- Improvement: `TryGetMaxNetAppVersion` and `GetMaxNetAppVersion` support `.NetStandard2.*` versions.
+
+### Version 3.7.5
 
 - Fixed: Indentation issue with `CSharpInvocationStatements` through its arguments when attempting to chain them together.  
 
