@@ -1,7 +1,8 @@
-/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
+/// <reference path="../../../../typings/elementmacro.context.api.d.ts" />
 
 type IDynamicFormFieldConfig = MacroApi.Context.IDynamicFormFieldConfig;
-interface ISqlImporterSettings {
+
+interface ISqlImportPackageSettings {
     connectionString: string;
     tableStereotypes: string;
     entityNameConvention: string;
@@ -14,17 +15,18 @@ interface ISqlImporterSettings {
     tableViewFilterFilePath: string;
 }
 
-interface IImportConfig {
+interface IDatabaseImportModel {
     applicationId: string;
     designerId: string;
     packageId: string;
-    connectionString: string;
-    tableStereotypes: string;
     entityNameConvention: string;
-    schemaFilter: string[];
+    tableStereotypes: string;
     typesToExport: string[];
-    settingPersistence: string;
+    schemaFilter: string[];
     tableViewFilterFilePath: string;
+    connectionString: string;
+    // Ignoring PackageFileName
+    settingPersistence: string;
 }
 
 async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise<void> {
@@ -154,17 +156,17 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
 
     const domainDesignerId: string = "6ab29b31-27af-4f56-a67c-986d82097d63";
 
-    let importConfig: IImportConfig = {
+    let importConfig: IDatabaseImportModel = {
         applicationId: application.id,
         designerId: domainDesignerId,
         packageId: element.getPackage().id,
-        connectionString: inputs.connectionString,
-        tableStereotypes: inputs.tableStereotypes,
         entityNameConvention: inputs.entityNameConvention,
-        schemaFilter: inputs.schemaFilter ? inputs.schemaFilter.split(";") : [],
+        tableStereotypes: inputs.tableStereotypes,
         typesToExport: typesToExport,
-        settingPersistence: inputs.settingPersistence,
-        tableViewFilterFilePath: inputs.tableViewFilterFilePath
+        schemaFilter: inputs.schemaFilter ? inputs.schemaFilter.split(";") : [],
+        tableViewFilterFilePath: inputs.tableViewFilterFilePath,
+        connectionString: inputs.connectionString,
+        settingPersistence: inputs.settingPersistence
     };
     let jsonResponse = await executeModuleTask("Intent.Modules.SqlServerImporter.Tasks.DatabaseImport", JSON.stringify(importConfig));
     let result = JSON.parse(jsonResponse);
@@ -180,7 +182,7 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
 
 }
 
-function getDialogDefaults(element: MacroApi.Context.IElementApi): ISqlImporterSettings {
+function getDialogDefaults(element: MacroApi.Context.IElementApi): ISqlImportPackageSettings {
 
     let package = element.getPackage();
     let persistedValue = getSettingValue(package, "sql-import:typesToExport", "");
@@ -212,7 +214,7 @@ function getDialogDefaults(element: MacroApi.Context.IElementApi): ISqlImporterS
             }
         });
     }
-    let result: ISqlImporterSettings = {
+    let result: ISqlImportPackageSettings = {
         connectionString: getSettingValue(package, "sql-import:connectionString", null),
         tableStereotypes: getSettingValue(package, "sql-import:tableStereotypes", "WhenDifferent"),
         entityNameConvention: getSettingValue(package, "sql-import:entityNameConvention", "SingularEntity"),
@@ -237,7 +239,7 @@ function getSettingValue(package: MacroApi.Context.IPackageApi, key: string, def
  * Used by Intent.Modules.NET\Modules\Intent.Modules.SqlServerImporter
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/sql-importer/sql-server/sql-importer.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/sql-importer/sql-server/domain/sql-importer-domain.ts
  */
 
 //Uncomment below
