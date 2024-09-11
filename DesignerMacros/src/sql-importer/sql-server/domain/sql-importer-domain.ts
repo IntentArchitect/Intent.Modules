@@ -13,6 +13,7 @@ interface ISqlImportPackageSettings {
     includeIndexes: string;
     settingPersistence: string;
     tableViewFilterFilePath: string;
+    storedProcedureType: string;
 }
 
 interface IDatabaseImportModel {
@@ -24,6 +25,7 @@ interface IDatabaseImportModel {
     typesToExport: string[];
     schemaFilter: string[];
     tableViewFilterFilePath: string;
+    storedProcedureType: string;
     connectionString: string;
     // Ignoring PackageFileName
     settingPersistence: string;
@@ -117,9 +119,17 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
         id: "tableViewFilterFilePath",
         fieldType: "text",
         label: "Table / View Filter",
-        hint: "Path to text file featuring names of Tables and Views to import only",
+        hint: "Import selection file path (Tables/Views, one per line)",
         placeholder: "(optional)",
         value: defaults.tableViewFilterFilePath
+    };
+
+    let storedProcedureType: IDynamicFormFieldConfig = {
+        id: "storedProcedureType",
+        fieldType: "select",
+        label: "Stored Procedure Representation",
+        value: defaults.storedProcedureType,
+        selectOptions: [{id: "", description: "(Default)"}, {id: "StoredProcedureElement", description: "Stored Procedure Element"}, {id: "RepositoryOperation", description: "Stored Procedure Operation"}]
     };
 
     let formConfig: MacroApi.Context.IDynamicFormConfig = {
@@ -134,6 +144,7 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
             includeStoredProcedures,
             includeIndexes,
             tableViewFilterFilePath,
+            storedProcedureType,
             settingPersistence
         ]
     }
@@ -165,6 +176,7 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
         typesToExport: typesToExport,
         schemaFilter: inputs.schemaFilter ? inputs.schemaFilter.split(";") : [],
         tableViewFilterFilePath: inputs.tableViewFilterFilePath,
+        storedProcedureType: inputs.storedProcedureType,
         connectionString: inputs.connectionString,
         settingPersistence: inputs.settingPersistence
     };
@@ -224,7 +236,8 @@ function getDialogDefaults(element: MacroApi.Context.IElementApi): ISqlImportPac
         includeStoredProcedures: includeStoredProcedures,
         includeIndexes: includeIndexes,
         settingPersistence: getSettingValue(package, "sql-import:settingPersistence", "None"),
-        tableViewFilterFilePath: getSettingValue(package, "sql-import:tableViewFilterFilePath", null)
+        tableViewFilterFilePath: getSettingValue(package, "sql-import:tableViewFilterFilePath", null),
+        storedProcedureType: getSettingValue(package, "sql-import:storedProcedureType", "")
     };
     return result;
 }
