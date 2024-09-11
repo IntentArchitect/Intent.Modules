@@ -1,3 +1,7 @@
+### Version 1.2.0
+
+- Domain Service elements now have the "Injectable Service" trait, allowing them to be used as targets on particular advanced mapping dialogues.
+
 ### Version 1.1.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

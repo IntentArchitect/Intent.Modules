@@ -1,3 +1,7 @@
+### Version 2.0.0
+
+- Improvement: Advanced mapping configurations updated to use new trait system introduced in Intent Architect 4.3 to allowing for support of additional mapping scenarios.
+
 ### Version 1.1.5
 
 - Improvement: CQRS CRUD script now supports surrogate Primary keys marked as `User supplied`.

@@ -1,3 +1,8 @@
+### Version 3.11.0
+
+- Improvement: Certain element types will now show validation errors if their name is not unique.
+- Improvement: Updated the Module Builder to expose new designer configuration capabilities made available in Intent Architect 4.3.
+
 ### Version 3.10.3
 
 - Improvement: Added/updated hints on some stereotype properties to better document their purpose and/or effect.

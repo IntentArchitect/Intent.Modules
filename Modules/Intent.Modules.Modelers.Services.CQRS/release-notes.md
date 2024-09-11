@@ -1,3 +1,8 @@
+### Version 5.0.0
+
+- Improvement: Certain element types will now show validation errors if their name is not unique.
+- The Command and Query elements now have the "Processing Handler" and "Comment" traits, allowing them to be used as targets on particular advanced mapping dialogues and as the target of designer comments.
+
 ### Version 4.2.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

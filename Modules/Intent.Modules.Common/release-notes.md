@@ -1,3 +1,7 @@
+### Version 3.7.0
+
+- Improvement: Update file builders used by template authors to be more consistent with other file builders and ensure that execution order is deterministic.
+
 ### Version 3.6.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

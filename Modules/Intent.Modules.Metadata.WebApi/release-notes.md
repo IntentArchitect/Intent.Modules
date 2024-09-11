@@ -1,4 +1,8 @@
-﻿### Version 4.5.6
+﻿### Version 4.6.0
+
+- Improvement: Certain element types will now show validation errors if their name is not unique.
+
+### Version 4.5.6
 
 - Improvement: Added support for customizing Success Response Code.
 

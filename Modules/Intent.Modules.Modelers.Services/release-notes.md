@@ -1,3 +1,7 @@
+### Version 3.8.0
+
+- Improvement: Certain element types will now show validation errors if their name is not unique.
+
 ### Version 3.7.5
 
 - Improvement: It is now possible to create a _Comment_ element type in the _Services_ designer. Inline with comments which already existed in the _Domain_ designer, these comments can be placed on a diagram and associated with other elements.

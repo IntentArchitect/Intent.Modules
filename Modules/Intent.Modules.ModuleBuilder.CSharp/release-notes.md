@@ -1,3 +1,7 @@
+### Version 3.7.0
+
+- Improvement: Added support for generating Razor templates.
+
 ### Version 3.6.1
 
 - Improvement: Fixed bug around using generation of NugetPackages template.

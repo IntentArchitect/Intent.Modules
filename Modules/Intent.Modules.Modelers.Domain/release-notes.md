@@ -1,4 +1,8 @@
-﻿### Version 3.9.1
+﻿### Version 3.10.0
+
+- Improvement: Certain element types will now show validation errors if their name is not unique.
+
+### Version 3.9.1
 
 - Improvement: It is now possible to use Data Contracts as Attribute types.
 - Fixed: Data Contracts with generalizations would show as `TypeName` as opposed to `TypeName : DerivedType`.

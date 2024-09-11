@@ -1,4 +1,10 @@
-﻿### Version 5.3.0
+﻿### Version 5.4.0
+
+- Service Proxy elements now have the "Injectable Service" trait, allowing them to be used as targets on particular advanced mapping dialogues.
+- Operation elements now have the "Processing Handler" trait, allowing them to be used as targets on particular advanced mapping dialogues.
+- Improvement: Certain element types will now show validation errors if their name is not unique.
+
+### Version 5.3.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
 

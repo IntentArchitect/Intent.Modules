@@ -1,3 +1,7 @@
+### Version 4.0.0
+
+- Improvement: Now contains general element types such as Attribute, Constructor, Operation and Parameter.
+
 ### Version 3.4.1
 
 - Improvement: `GetFolderPath` no longer has a generic parameter type constraint on `IHasFolder` and will internally check to see if the model can be cast.
