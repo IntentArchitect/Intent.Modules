@@ -4,5 +4,5 @@ namespace Intent.Modules.ModuleBuilder.CSharp;
 
 public static class IntentNugetPackages
 {
-    public static readonly NugetPackageInfo IntentModulesCommonCSharp = new("Intent.Modules.Common.CSharp", "3.7.6-pre.0");
+    public static readonly NugetPackageInfo IntentModulesCommonCSharp = new("Intent.Modules.Common.CSharp", "3.7.6-pre.1");
 }

@@ -18,6 +18,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
 
         private static List<NuGetFramework> _frameworks = new List<NuGetFramework>
             {
+                NuGetFramework.Parse(".NETStandard,Version=v2.0"),
+                NuGetFramework.Parse(".NETStandard,Version=v2.1"),
                 NuGetFramework.Parse(".NETCoreApp,Version=v6.0"),
                 NuGetFramework.Parse(".NETCoreApp,Version=v7.0"),
                 NuGetFramework.Parse(".NETCoreApp,Version=v8.0"),
@@ -27,7 +29,6 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
         private static List<NuGetFramework> _fallBackFrameworks = new List<NuGetFramework>
             {
                 NuGetFramework.Parse("Any,Version=v0.0"),
-                NuGetFramework.Parse(".NETStandard,Version=v2.0")
             };
 
 
