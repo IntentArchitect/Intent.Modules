@@ -1,4 +1,9 @@
-﻿### Version 3.9.0
+﻿### Version 3.9.1
+
+- Improvement: It is now possible to use Data Contracts as Attribute types.
+- Fixed: Data Contracts with generalizations would show as `TypeName` as opposed to `TypeName : DerivedType`.
+
+### Version 3.9.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
 - Fixed: Renamed `New Domain Object` to `New Domain Contract`.
