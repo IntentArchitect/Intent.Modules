@@ -231,6 +231,10 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
             throw new Exception($"Could not determine default language version for framework moniker \"{frameworkMoniker}\"");
         }
 
+        /// <summary>
+        /// Return .Net Framework version
+        /// e.g. For .Net8 this would be (8,0), for netstandard2.1 would be (2,1)
+        /// </summary>
         internal static MajorMinorVersion GetMaxNetAppVersion(string[] supportedFrameworks)
         {
             if (TryGetMaxNetAppVersion(supportedFrameworks, out var majorMinorVersion))
@@ -241,11 +245,19 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
             throw new InvalidOperationException($"Project's frameworks ({string.Join('.', supportedFrameworks)}) do not target .NET 5 or greater.");
         }
 
+        /// <summary>
+        /// Return .Net Framework version
+        /// e.g. For .Net8 this would be (8,0), for netstandard2.1 would be (2,1)
+        /// </summary>
         internal static bool TryGetMaxNetAppVersion(string[] supportedFrameworks, out MajorMinorVersion majorMinorVersion)
         {
             majorMinorVersion = supportedFrameworks
                 .Select(frameworkMoniker =>
                 {
+                    if (frameworkMoniker.StartsWith("netstandard"))
+                    {
+                        return GetVersion(frameworkMoniker["netstandard".Length..]);
+                    }
                     // Match for strings like net5.0, net6.0, etc.
                     if (!frameworkMoniker.StartsWith("net") ||
                         !frameworkMoniker.Contains(".") ||
@@ -255,21 +267,26 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
                         return default;
                     }
 
-                    var parts = frameworkMoniker[3..].Split('.');
-                    if (parts.Length != 2 ||
-                        !int.TryParse(parts[0], out var major) ||
-                        !int.TryParse(parts[1], out var minor))
-                    {
-                        return default;
-                    }
-
-                    return MajorMinorVersion.Create(major, minor);
+                    return GetVersion(frameworkMoniker[3..]);
                 })
                 .Where(x => x != default)
                 .DefaultIfEmpty()
                 .Max();
 
             return majorMinorVersion != default;
+        }
+
+        private static MajorMinorVersion GetVersion(string version)
+        {
+            var parts = version.Split('.');
+            if (parts.Length != 2 ||
+                !int.TryParse(parts[0], out var major) ||
+                !int.TryParse(parts[1], out var minor))
+            {
+                return default;
+            }
+
+            return MajorMinorVersion.Create(major, minor);
         }
     }
 }

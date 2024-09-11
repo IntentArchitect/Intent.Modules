@@ -17,7 +17,7 @@
           <defaultName>NewCSharpTemplate</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
-        <option order="0" type="element">
+        <option order="-100" type="element">
           <text>Add NuGet Packages</text>
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" />
           <specializationType>NuGet Packages</specializationType>
@@ -38,8 +38,8 @@
       <scriptOptions />
       <typeOrder>
         <type order="2" type="C# Template" typeId="f6456232-0f1b-4235-b5f8-b4cce548ca59" />
-        <type order="0" type="NuGet Packages" typeId="4c75c84d-c745-4f0f-b1f4-82eeca01dfc7" />
-        <type order="2" type="Razor Template" typeId="05162e94-598b-416c-9779-d42b0b5262a1" />
+        <type order="-100" type="NuGet Packages" typeId="4c75c84d-c745-4f0f-b1f4-82eeca01dfc7" />
+        <type order="3" type="Razor Template" typeId="05162e94-598b-416c-9779-d42b0b5262a1" />
       </typeOrder>
     </packageExtension>
   </packageExtensions>
@@ -138,7 +138,10 @@ async function getLatestNugetPackages(nugetPackageIds) {
             name: pkg.name,
             versions: pkg.versions.map((ver) =&gt; ({
                 version: ver.version,
-                targetFramework: ver.targetFramework
+                targetFramework: ver.targetFramework,
+                dependencies: ver.dependencies.map((dep) =&gt; ({
+                    packageName: dep.packageName,
+                    version: dep.version,
             }))
         }))
     };
@@ -156,10 +159,10 @@ function synchronizeModel(packageElement, nugetPackage) {
     const packageVersionSettings = "7af88c37-ce54-49fc-b577-bde869c23462";
     const dict = new Map();
     nugetPackage.versions.forEach(v =&gt; {
-        dict.set(v.targetFramework, v.version);
+        dict.set(v.targetFramework, v);
     });
     dict.forEach((value, key) =&gt; {
-        console.log(`NuGet:${value}(${key})`);
+        console.log(`NuGet:${value.version}(${key})`);
     });
     packageElement.getChildren().forEach(e =&gt; {
         let versionSettings = e.getStereotype(packageVersionSettings);
@@ -172,7 +175,10 @@ function synchronizeModel(packageElement, nugetPackage) {
         else {
             if (dict.has(targetFramework)) {
                 //The version no is the same, no work to do
-                if (dict.get(targetFramework) == e.getName()) {
+                let packageInfo = dict.get(targetFramework);
+                if (packageInfo.version == e.getName()) {
+                    //If the dependencies are out of sync, this fixes legacy setups and is Ok for normal ones
+                    if (packageInfo.dependencies.length == e.getChildren().length) {
                     dict.delete(targetFramework);
                 }
             }
@@ -182,14 +188,23 @@ function synchronizeModel(packageElement, nugetPackage) {
         let existingElement = packageElement.getChildren().find(c =&gt; c.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value == key);
         if (existingElement) {
             //Update Version No
-            existingElement.setName(value);
+            existingElement.setName(value.version);
+            updateNugetDependencies(existingElement, value.dependencies);
         }
         else {
-            //Create new frmework element
-            let element = createElement("Package Version", value, packageElement.id);
+            //Create new framework element
+            let element = createElement("Package Version", value.version, packageElement.id);
             let versionSettings = element.getStereotype(packageVersionSettings);
             versionSettings.getProperty("Minimum Target Framework").setValue(key);
+            updateNugetDependencies(element, value.dependencies);
         }
+    });
+}
+function updateNugetDependencies(element, dependencies) {
+    element.getChildren().forEach(child =&gt; child.delete());
+    dependencies.forEach(dep =&gt; {
+        let child = createElement("NuGet Dependency", dep.packageName, element.id);
+        child.setValue(dep.version);
     });
 }
 function isPackageLocked(element) {
@@ -293,7 +308,10 @@ async function getLatestNugetPackages(nugetPackageIds) {
             name: pkg.name,
             versions: pkg.versions.map((ver) =&gt; ({
                 version: ver.version,
-                targetFramework: ver.targetFramework
+                targetFramework: ver.targetFramework,
+                dependencies: ver.dependencies.map((dep) =&gt; ({
+                    packageName: dep.packageName,
+                    version: dep.version,
             }))
         }))
     };
@@ -311,10 +329,10 @@ function synchronizeModel(packageElement, nugetPackage) {
     const packageVersionSettings = "7af88c37-ce54-49fc-b577-bde869c23462";
     const dict = new Map();
     nugetPackage.versions.forEach(v =&gt; {
-        dict.set(v.targetFramework, v.version);
+        dict.set(v.targetFramework, v);
     });
     dict.forEach((value, key) =&gt; {
-        console.log(`NuGet:${value}(${key})`);
+        console.log(`NuGet:${value.version}(${key})`);
     });
     packageElement.getChildren().forEach(e =&gt; {
         let versionSettings = e.getStereotype(packageVersionSettings);
@@ -327,7 +345,10 @@ function synchronizeModel(packageElement, nugetPackage) {
         else {
             if (dict.has(targetFramework)) {
                 //The version no is the same, no work to do
-                if (dict.get(targetFramework) == e.getName()) {
+                let packageInfo = dict.get(targetFramework);
+                if (packageInfo.version == e.getName()) {
+                    //If the dependencies are out of sync, this fixes legacy setups and is Ok for normal ones
+                    if (packageInfo.dependencies.length == e.getChildren().length) {
                     dict.delete(targetFramework);
                 }
             }
@@ -337,14 +358,23 @@ function synchronizeModel(packageElement, nugetPackage) {
         let existingElement = packageElement.getChildren().find(c =&gt; c.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value == key);
         if (existingElement) {
             //Update Version No
-            existingElement.setName(value);
+            existingElement.setName(value.version);
+            updateNugetDependencies(existingElement, value.dependencies);
         }
         else {
-            //Create new frmework element
-            let element = createElement("Package Version", value, packageElement.id);
+            //Create new framework element
+            let element = createElement("Package Version", value.version, packageElement.id);
             let versionSettings = element.getStereotype(packageVersionSettings);
             versionSettings.getProperty("Minimum Target Framework").setValue(key);
+            updateNugetDependencies(element, value.dependencies);
         }
+    });
+}
+function updateNugetDependencies(element, dependencies) {
+    element.getChildren().forEach(child =&gt; child.delete());
+    dependencies.forEach(dep =&gt; {
+        let child = createElement("NuGet Dependency", dep.packageName, element.id);
+        child.setValue(dep.version);
     });
 }
 function isPackageLocked(element) {
@@ -433,11 +463,45 @@ return result;
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
-              <creationOptions />
+              <typeOrder>
+                <type order="0">NuGet Dependency</type>
+              </typeOrder>
+              <creationOptions>
+                <option type="element">
+                  <text>New NuGet dependency</text>
+                  <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAWpJREFUaEPtmL1uwjAUhW0k6BQpsDLxIH2XzlnaDV6BCWVBMHXt1KyZmNhoVYmJjUeoVBiQGYwiSBul+fGN7Ni3vZlt+Xw55/rncob848j1MwKw7SA58G8dGM0PEgK/D7zCtFiLEAHc7CMHIDnOjqUI2YzQdC29xfb4BXHPiV1o9iF9JsQTZ/IxfD/7aACSP37XFYHsyDGXvJ8ID98ERD+z4kCR8FS10wBVwp0GUBHOmDwwzufhRowhGQJHaDd8AN1V4tflJJvx3+Kuwnun3jS4558Q8VVjS09iMEC0LFnHjPB0MYMAZoUbBGhHuAGAhZGM19WKtgitXp4HOouzTrh2B9ADxBHyCMXf2yjaIs6fA+2AaCviHwfy5WcWRB+Aa1cJ1W0sO86py1wTgHSOCojT7wEVEBQAVSCoAFIQtI/6fD2hbatQZ65ga6TmbtPzgpq7Npu7ydroHWgavfw8a0VMALZrgBz4Kw5cAH2DJkBxJqkjAAAAAElFTkSuQmCC" />
+                  <specializationType>NuGet Dependency</specializationType>
+                  <specializationTypeId>3097322a-a058-4058-beed-4fcd6272f61d</specializationTypeId>
+                  <defaultName>NewNuGetDependency</defaultName>
+                  <allowMultiple>true</allowMultiple>
+                </option>
+              </creationOptions>
               <scriptOptions />
               <mappingOptions />
               <mappingSettings />
-              <childElementSettings />
+              <childElementSettings>
+                <childElementSetting type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
+                  <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAWpJREFUaEPtmL1uwjAUhW0k6BQpsDLxIH2XzlnaDV6BCWVBMHXt1KyZmNhoVYmJjUeoVBiQGYwiSBul+fGN7Ni3vZlt+Xw55/rncob848j1MwKw7SA58G8dGM0PEgK/D7zCtFiLEAHc7CMHIDnOjqUI2YzQdC29xfb4BXHPiV1o9iF9JsQTZ/IxfD/7aACSP37XFYHsyDGXvJ8ID98ERD+z4kCR8FS10wBVwp0GUBHOmDwwzufhRowhGQJHaDd8AN1V4tflJJvx3+Kuwnun3jS4558Q8VVjS09iMEC0LFnHjPB0MYMAZoUbBGhHuAGAhZGM19WKtgitXp4HOouzTrh2B9ADxBHyCMXf2yjaIs6fA+2AaCviHwfy5WcWRB+Aa1cJ1W0sO86py1wTgHSOCojT7wEVEBQAVSCoAFIQtI/6fD2hbatQZ65ga6TmbtPzgpq7Npu7ydroHWgavfw8a0VMALZrgBz4Kw5cAH2DJkBxJqkjAAAAAElFTkSuQmCC" />
+                  <saveAsOwnFile>false</saveAsOwnFile>
+                  <displayFunction>let displayName = element.getName();
+
+const result = [{ text: `${displayName}` }];
+result.push({ text: ` (${element.getValue()})`, cssClass: "muted" })
+return result; </displayFunction>
+                  <allowRename>true</allowRename>
+                  <allowAbstract>false</allowAbstract>
+                  <allowStatic>false</allowStatic>
+                  <allowGenericTypes>false</allowGenericTypes>
+                  <allowMapping>false</allowMapping>
+                  <allowSorting>true</allowSorting>
+                  <sortChildren>by-type-then-by-name</sortChildren>
+                  <allowFindInView>false</allowFindInView>
+                  <allowTypeReference>false</allowTypeReference>
+                  <allowConvertToType p10:nil="true" xmlns:p10="http://www.w3.org/2001/XMLSchema-instance" />
+                  <allowSetValue>true</allowSetValue>
+                  <typeOrder />
+                </childElementSetting>
+              </childElementSettings>
             </childElementSetting>
           </childElementSettings>
         </childElementSetting>

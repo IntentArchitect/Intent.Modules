@@ -18,6 +18,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
 
         private static List<NuGetFramework> _frameworks = new List<NuGetFramework>
             {
+                NuGetFramework.Parse(".NETStandard,Version=v2.0"),
+                NuGetFramework.Parse(".NETStandard,Version=v2.1"),
                 NuGetFramework.Parse(".NETCoreApp,Version=v6.0"),
                 NuGetFramework.Parse(".NETCoreApp,Version=v7.0"),
                 NuGetFramework.Parse(".NETCoreApp,Version=v8.0"),
@@ -27,7 +29,6 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
         private static List<NuGetFramework> _fallBackFrameworks = new List<NuGetFramework>
             {
                 NuGetFramework.Parse("Any,Version=v0.0"),
-                NuGetFramework.Parse(".NETStandard,Version=v2.0")
             };
 
 
@@ -68,7 +69,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
 
                 if (latestPackage != null)
                 {
-                    result.Add(new NugetVersionInfo(framework, latestPackage.Identity.Version));
+                    var dependencies = latestPackage.DependencySets.FirstOrDefault(d => d.TargetFramework == framework);
+                    result.Add(new NugetVersionInfo(framework, latestPackage.Identity.Version, dependencies.Packages.Select(p => new NugetDependencyInfo(p.Id, p.VersionRange)).ToList()));
                 }
             }
             return result;
@@ -76,14 +78,30 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
 
         internal class NugetVersionInfo
         {
-            public NugetVersionInfo(NuGetFramework frameworkVersion, NuGetVersion packageVersion)
+            public NugetVersionInfo(NuGetFramework frameworkVersion, NuGetVersion packageVersion, List<NugetDependencyInfo> dependencies)
             {
                 FrameworkVersion = frameworkVersion;
                 PackageVersion = packageVersion;
+                Dependencies = dependencies;
             }
 
             public NuGetFramework FrameworkVersion { get; }
             public NuGetVersion PackageVersion { get; }
+
+            public List<NugetDependencyInfo> Dependencies { get; }
+
+        }
+
+        internal class NugetDependencyInfo
+        {
+            public NugetDependencyInfo(string packageName, VersionRange version)
+            {
+                PackageName = packageName;
+                Version = version;
+            }
+
+            public string PackageName { get; }
+            public VersionRange Version { get; } 
 
         }
     }

@@ -41,5 +41,41 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="c166c7cf-45e3-484b-9ec5-f7300951f897">
+      <name>Private Assets</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <valueOptions>
+        <option>all</option>
+        <option>analyzers</option>
+        <option>build</option>
+        <option>buildTransitive</option>
+        <option>compile</option>
+        <option>contentFiles</option>
+        <option>native</option>
+        <option>runtime</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
+    <property id="6bd6430c-8011-435e-bb73-6013477a875d">
+      <name>Include Assets</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <valueOptions>
+        <option>all</option>
+        <option>analyzers</option>
+        <option>build</option>
+        <option>buildTransitive</option>
+        <option>compile</option>
+        <option>contentFiles</option>
+        <option>native</option>
+        <option>runtime</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

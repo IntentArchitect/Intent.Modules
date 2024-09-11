@@ -58,6 +58,175 @@ namespace Intent.ModuleBuilder.CSharp.Api
                 return _stereotype.GetProperty<bool>("Locked");
             }
 
+            public PrivateAssetsOptions[] PrivateAssets()
+            {
+                return _stereotype.GetProperty<string[]>("Private Assets")?.Select(x => new PrivateAssetsOptions(x)).ToArray() ?? new PrivateAssetsOptions[0];
+            }
+
+            public IncludeAssetsOptions[] IncludeAssets()
+            {
+                return _stereotype.GetProperty<string[]>("Include Assets")?.Select(x => new IncludeAssetsOptions(x)).ToArray() ?? new IncludeAssetsOptions[0];
+            }
+
+            public class PrivateAssetsOptions
+            {
+                public readonly string Value;
+
+                public PrivateAssetsOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public PrivateAssetsOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "all":
+                            return PrivateAssetsOptionsEnum.All;
+                        case "analyzers":
+                            return PrivateAssetsOptionsEnum.Analyzers;
+                        case "build":
+                            return PrivateAssetsOptionsEnum.Build;
+                        case "buildTransitive":
+                            return PrivateAssetsOptionsEnum.BuildTransitive;
+                        case "compile":
+                            return PrivateAssetsOptionsEnum.Compile;
+                        case "contentFiles":
+                            return PrivateAssetsOptionsEnum.ContentFiles;
+                        case "native":
+                            return PrivateAssetsOptionsEnum.Native;
+                        case "runtime":
+                            return PrivateAssetsOptionsEnum.Runtime;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsAll()
+                {
+                    return Value == "all";
+                }
+                public bool IsAnalyzers()
+                {
+                    return Value == "analyzers";
+                }
+                public bool IsBuild()
+                {
+                    return Value == "build";
+                }
+                public bool IsBuildTransitive()
+                {
+                    return Value == "buildTransitive";
+                }
+                public bool IsCompile()
+                {
+                    return Value == "compile";
+                }
+                public bool IsContentFiles()
+                {
+                    return Value == "contentFiles";
+                }
+                public bool IsNative()
+                {
+                    return Value == "native";
+                }
+                public bool IsRuntime()
+                {
+                    return Value == "runtime";
+                }
+            }
+
+            public enum PrivateAssetsOptionsEnum
+            {
+                All,
+                Analyzers,
+                Build,
+                BuildTransitive,
+                Compile,
+                ContentFiles,
+                Native,
+                Runtime
+            }
+            public class IncludeAssetsOptions
+            {
+                public readonly string Value;
+
+                public IncludeAssetsOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public IncludeAssetsOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "all":
+                            return IncludeAssetsOptionsEnum.All;
+                        case "analyzers":
+                            return IncludeAssetsOptionsEnum.Analyzers;
+                        case "build":
+                            return IncludeAssetsOptionsEnum.Build;
+                        case "buildTransitive":
+                            return IncludeAssetsOptionsEnum.BuildTransitive;
+                        case "compile":
+                            return IncludeAssetsOptionsEnum.Compile;
+                        case "contentFiles":
+                            return IncludeAssetsOptionsEnum.ContentFiles;
+                        case "native":
+                            return IncludeAssetsOptionsEnum.Native;
+                        case "runtime":
+                            return IncludeAssetsOptionsEnum.Runtime;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsAll()
+                {
+                    return Value == "all";
+                }
+                public bool IsAnalyzers()
+                {
+                    return Value == "analyzers";
+                }
+                public bool IsBuild()
+                {
+                    return Value == "build";
+                }
+                public bool IsBuildTransitive()
+                {
+                    return Value == "buildTransitive";
+                }
+                public bool IsCompile()
+                {
+                    return Value == "compile";
+                }
+                public bool IsContentFiles()
+                {
+                    return Value == "contentFiles";
+                }
+                public bool IsNative()
+                {
+                    return Value == "native";
+                }
+                public bool IsRuntime()
+                {
+                    return Value == "runtime";
+                }
+            }
+
+            public enum IncludeAssetsOptionsEnum
+            {
+                All,
+                Analyzers,
+                Build,
+                BuildTransitive,
+                Compile,
+                ContentFiles,
+                Native,
+                Runtime
+            }
+
         }
 
     }

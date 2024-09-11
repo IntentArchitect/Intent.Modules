@@ -30,7 +30,12 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
             Versions = new List<NugutPackageVersionInfo>();
             foreach (var version in versions)
             {
-                Versions.Add(new NugutPackageVersionInfo() { Version = version.PackageVersion.ToString(), TargetFramework = version.FrameworkVersion.DotNetFrameworkName  });
+                Versions.Add(new NugutPackageVersionInfo() 
+                { 
+                    Version = version.PackageVersion.ToString(), 
+                    TargetFramework = version.FrameworkVersion.DotNetFrameworkName, 
+                    Dependencies = version.Dependencies.Select(d => new NugutPackageDependendcyInfo() { PackageName = d.PackageName, Version = d.Version.MinVersion.ToString() }).ToList()
+                });
             }
         }
 
@@ -41,8 +46,22 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
 
     public class NugutPackageVersionInfo
     {
+        public NugutPackageVersionInfo()
+        {
+            Dependencies = new List<NugutPackageDependendcyInfo>();
+        }
+
         public string Version { get; set; }
         public string TargetFramework { get; set; }
+
+        public List<NugutPackageDependendcyInfo> Dependencies { get; set; }
     }
+
+    public class NugutPackageDependendcyInfo
+    {
+        public string PackageName { get; set; }
+        public string Version { get; set; }
+    }
+
 
 }

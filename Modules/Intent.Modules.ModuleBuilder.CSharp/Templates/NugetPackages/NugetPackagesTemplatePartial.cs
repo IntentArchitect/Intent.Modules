@@ -51,14 +51,38 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                             StringBuilder versionInfo = new StringBuilder();
                             foreach (var version in package.PackageVersions.OrderByDescending(v => GetFrameworkMajorVerion(v)))
                             {
+                                var packageSettings = package.GetPackageSettings();
                                 var majorFrameworkVersion = GetFrameworkMajorVerion(version);
                                 versionInfo.AppendLine();
                                 versionInfo.Append($"                        ( >= {majorFrameworkVersion}, 0) => new PackageVersion(\"{version.Name}\"");
-                                if (version.GetPackageVersionSettings()?.Locked() == true || package.GetPackageSettings()?.Locked() == true)
+                                if (version.GetPackageVersionSettings()?.Locked() == true || packageSettings.Locked() == true)
                                 {
                                     versionInfo.Append(", locked: true");
                                 }
-                                versionInfo.Append("),");
+                                versionInfo.Append(")");
+                                if (packageSettings.PrivateAssets().Any() || packageSettings.IncludeAssets().Any())
+                                {
+                                    var parameters = new List<string>();
+                                    if (packageSettings.PrivateAssets().Any())
+                                    {
+                                        parameters.Add($"privateAssets: new []{{{string.Join(", ", packageSettings.PrivateAssets().Select(a => $"\"{a.Value}\""))}}}");
+                                    }
+                                    if (packageSettings.IncludeAssets().Any())
+                                    {
+                                        parameters.Add($"includeAssets: new []{{{string.Join(", ", packageSettings.IncludeAssets().Select(a => $"\"{a.Value}\""))}}}");
+                                    }
+                                    versionInfo.AppendLine();
+                                    versionInfo.Append($"                            .SpecifyAssetsBehaviour({string.Join(",", parameters)})");
+                                }
+                                if (version.InternalElement.ChildElements.Any())
+                                {
+                                    foreach (var nugetDependencyModel in version.InternalElement.ChildElements.Where(c => c.AsNuGetDependencyModel() is not null).Select(x => x.AsNuGetDependencyModel()))
+                                    {
+                                        versionInfo.AppendLine();
+                                        versionInfo.Append($"                            .WithNugetDependency(\"{nugetDependencyModel.Name}\", \"{nugetDependencyModel.Value}\")");
+                                    }
+                                }
+                                versionInfo.Append(",");
                             }
                             method.AddStatement($@"NugetRegistry.Register({GetPackageConstant(package)},
                 (framework) => framework switch
