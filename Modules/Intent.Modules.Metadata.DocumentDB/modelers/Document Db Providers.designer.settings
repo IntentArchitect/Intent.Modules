@@ -19,7 +19,7 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type>Document Db Provider</type>
+        <type type="Document Db Provider" />
       </typeOrder>
     </packageExtension>
   </packageExtensions>
@@ -27,6 +27,7 @@
     <elementSetting type="Document Db Provider" typeId="fcfbd83f-a3eb-4eff-b341-5a812b016d31">
       <icon type="FontAwesome" source="database" />
       <saveAsOwnFile>true</saveAsOwnFile>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
@@ -48,6 +49,7 @@
   </elementSettings>
   <elementExtensions>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <implements />
       <creationOptions>
         <option type="element">
           <text>New Document Db Provider</text>
@@ -61,7 +63,7 @@
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type>Document Db Provider</type>
+        <type type="Document Db Provider" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -71,4 +73,5 @@
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <scripts />
 </settings>

@@ -281,4 +281,5 @@ if (handler.getAssociations("Domain Event Handler Association").length == 0) {
       </mappableElementSettings>
     </mappableElementPackageExtension>
   </mappableElementPackageExtensions>
+  <scripts />
 </settings>

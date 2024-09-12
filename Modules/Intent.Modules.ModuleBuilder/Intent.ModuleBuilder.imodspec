@@ -267,7 +267,6 @@
     <group id="b2c4252b-cfae-43c5-9682-803aa0b84c87" title="Module Builder Settings" externalReference="b2c4252b-cfae-43c5-9682-803aa0b84c87">
       <settings>
         <setting id="b06c3926-23e5-49dd-a59d-93ef16b9777e" title="Create partial API models" type="switch">
-          <isRequired>false</isRequired>
           <hint>Creates an ignored partial class for each API model which can be used for custom logic.</hint>
         </setting>
         <setting id="9c8e6982-e036-4d35-bab1-9bb02382d7c3" title="Dependency version overwrite behavior" type="select">

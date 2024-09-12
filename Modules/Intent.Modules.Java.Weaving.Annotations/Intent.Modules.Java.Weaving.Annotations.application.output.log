@@ -9,7 +9,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>9ba4083b-ca3e-4813-8a51-ace7e6b40366</ProjectId>
+      <ProjectId>58a6acef-493b-4102-9fbf-8cf9f0bd13ef</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Java.Weaving.Annotations.imodspec</ApplicationRelativeFilePath>
@@ -17,8 +17,8 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>9ba4083b-ca3e-4813-8a51-ace7e6b40366</ProjectId>
-      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#9ba4083b-ca3e-4813-8a51-ace7e6b40366</CorrelationId>
+      <ProjectId>58a6acef-493b-4102-9fbf-8cf9f0bd13ef</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#58a6acef-493b-4102-9fbf-8cf9f0bd13ef</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Java.Weaving.Annotations.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Java.Weaving.Annotations.csproj</ProjectRelativeFilePath>

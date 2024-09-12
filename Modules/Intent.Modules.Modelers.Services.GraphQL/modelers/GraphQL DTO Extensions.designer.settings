@@ -8,6 +8,7 @@
   <elementSettings />
   <elementExtensions>
     <elementExtension type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+      <implements />
       <creationOptions>
         <option type="element">
           <text>Add Resolver</text>
@@ -22,7 +23,7 @@
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type>GraphQL Schema Field</type>
+        <type type="GraphQL Schema Field" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -32,4 +33,5 @@
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <scripts />
 </settings>

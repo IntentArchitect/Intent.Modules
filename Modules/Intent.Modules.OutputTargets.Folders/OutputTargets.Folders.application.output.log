@@ -3,7 +3,7 @@
   <ApplicationId>6c53239e-354a-4005-baa3-1fabf4a5dc11</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#b1d9a270-6cce-4636-9826-ad375771dc1e</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#b1d9a270-6cce-4636-9826-ad375771dc1e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -41,7 +41,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
+      <ProjectId>d76d8b1d-852f-4ab5-8780-7136ca53dd1b</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataDesignerExtensions.cs</ApplicationRelativeFilePath>
@@ -49,7 +49,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
+      <ProjectId>d76d8b1d-852f-4ab5-8780-7136ca53dd1b</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
@@ -57,15 +57,15 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
-      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#576b0748-e723-411b-a944-7cfedbeb9498</CorrelationId>
+      <ProjectId>d76d8b1d-852f-4ab5-8780-7136ca53dd1b</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#d76d8b1d-852f-4ab5-8780-7136ca53dd1b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.OutputTargets.Folders.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.OutputTargets.Folders.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
+      <ProjectId>d76d8b1d-852f-4ab5-8780-7136ca53dd1b</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.OutputTargets.Folders.imodspec</ApplicationRelativeFilePath>
@@ -89,7 +89,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
+      <ProjectId>d76d8b1d-852f-4ab5-8780-7136ca53dd1b</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>

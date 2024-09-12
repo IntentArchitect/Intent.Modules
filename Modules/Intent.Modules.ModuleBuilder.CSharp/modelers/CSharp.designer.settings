@@ -39,7 +39,7 @@
       <typeOrder>
         <type order="2" type="C# Template" typeId="f6456232-0f1b-4235-b5f8-b4cce548ca59" />
         <type order="-100" type="NuGet Packages" typeId="4c75c84d-c745-4f0f-b1f4-82eeca01dfc7" />
-        <type order="3" type="Razor Template" typeId="05162e94-598b-416c-9779-d42b0b5262a1" />
+        <type order="2" type="Razor Template" typeId="05162e94-598b-416c-9779-d42b0b5262a1" />
       </typeOrder>
     </packageExtension>
   </packageExtensions>
@@ -142,6 +142,7 @@ async function getLatestNugetPackages(nugetPackageIds) {
                 dependencies: ver.dependencies.map((dep) =&gt; ({
                     packageName: dep.packageName,
                     version: dep.version,
+                }))
             }))
         }))
     };
@@ -179,7 +180,8 @@ function synchronizeModel(packageElement, nugetPackage) {
                 if (packageInfo.version == e.getName()) {
                     //If the dependencies are out of sync, this fixes legacy setups and is Ok for normal ones
                     if (packageInfo.dependencies.length == e.getChildren().length) {
-                    dict.delete(targetFramework);
+                        dict.delete(targetFramework);
+                    }
                 }
             }
         }
@@ -312,6 +314,7 @@ async function getLatestNugetPackages(nugetPackageIds) {
                 dependencies: ver.dependencies.map((dep) =&gt; ({
                     packageName: dep.packageName,
                     version: dep.version,
+                }))
             }))
         }))
     };
@@ -349,7 +352,8 @@ function synchronizeModel(packageElement, nugetPackage) {
                 if (packageInfo.version == e.getName()) {
                     //If the dependencies are out of sync, this fixes legacy setups and is Ok for normal ones
                     if (packageInfo.dependencies.length == e.getChildren().length) {
-                    dict.delete(targetFramework);
+                        dict.delete(targetFramework);
+                    }
                 }
             }
         }
@@ -464,7 +468,7 @@ return result;
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <typeOrder>
-                <type order="0">NuGet Dependency</type>
+                <type order="0" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d" />
               </typeOrder>
               <creationOptions>
                 <option type="element">
@@ -489,6 +493,7 @@ const result = [{ text: `${displayName}` }];
 result.push({ text: ` (${element.getValue()})`, cssClass: "muted" })
 return result; </displayFunction>
                   <allowRename>true</allowRename>
+                  <nameMustBeUnique>false</nameMustBeUnique>
                   <allowAbstract>false</allowAbstract>
                   <allowStatic>false</allowStatic>
                   <allowGenericTypes>false</allowGenericTypes>
@@ -499,7 +504,11 @@ return result; </displayFunction>
                   <allowTypeReference>false</allowTypeReference>
                   <allowConvertToType p10:nil="true" xmlns:p10="http://www.w3.org/2001/XMLSchema-instance" />
                   <allowSetValue>true</allowSetValue>
-                  <typeOrder />
+                  <creationOptions />
+                  <scriptOptions />
+                  <mappingOptions />
+                  <mappingSettings />
+                  <childElementSettings />
                 </childElementSetting>
               </childElementSettings>
             </childElementSetting>
@@ -574,4 +583,5 @@ return result; </displayFunction>
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <scripts />
 </settings>

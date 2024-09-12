@@ -8,6 +8,7 @@
   <elementSettings />
   <elementExtensions>
     <elementExtension type="Service Proxy" typeId="07d8d1a9-6b9f-4676-b7d3-8db06299e35c">
+      <implements />
       <creationOptions />
       <scriptOptions>
         <option>
@@ -1124,6 +1125,7 @@ await execute(element);
       <mappingSettings />
     </elementExtension>
     <elementExtension type="Operation" typeId="aee6811e-b2f6-4562-a8eb-502029f63bc8">
+      <implements />
       <creationOptions />
       <scriptOptions>
         <option>
@@ -2261,4 +2263,5 @@ await execute(element);
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <scripts />
 </settings>

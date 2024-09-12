@@ -168,4 +168,5 @@ white-space: inherit;`</style>
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <scripts />
 </settings>

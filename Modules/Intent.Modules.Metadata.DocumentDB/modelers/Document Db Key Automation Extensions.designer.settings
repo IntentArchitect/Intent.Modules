@@ -641,6 +641,7 @@ execute();
   <elementSettings />
   <elementExtensions>
     <elementExtension type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+      <implements />
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
@@ -1374,6 +1375,7 @@ execute();
       </macros>
     </elementExtension>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <implements />
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
@@ -1894,4 +1896,5 @@ execute();
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <scripts />
 </settings>

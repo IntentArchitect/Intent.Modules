@@ -377,4 +377,5 @@ return result;</displayFunction>
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <scripts />
 </settings>

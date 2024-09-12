@@ -17,6 +17,11 @@ namespace Intent.Modules.OutputTargets.Folders.Api
                 .ToList();
         }
 
+        public static bool IsRootLocationPackageModel(this IPackage package)
+        {
+            return package?.SpecializationTypeId == RootLocationPackageModel.SpecializationTypeId;
+        }
+
 
     }
 }

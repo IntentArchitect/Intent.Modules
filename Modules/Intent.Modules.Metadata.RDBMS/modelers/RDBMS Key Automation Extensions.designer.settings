@@ -73,6 +73,7 @@ execute();
   <elementSettings />
   <elementExtensions>
     <elementExtension type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <implements />
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
@@ -317,6 +318,7 @@ execute();
       </macros>
     </elementExtension>
     <elementExtension type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+      <implements />
       <creationOptions />
       <scriptOptions>
         <option>
@@ -924,4 +926,5 @@ execute();
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <scripts />
 </settings>

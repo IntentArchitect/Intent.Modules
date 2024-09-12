@@ -28,7 +28,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilde
 EndProject
 Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.TypeScript", "Intent.Modules.ModuleBuilder.TypeScript\Intent.Modules.ModuleBuilder.TypeScript.csproj", "{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.Types", "Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj", "{ED404A63-FC25-4C42-AB4C-619815D8A6EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Types", "Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj", "{ED404A63-FC25-4C42-AB4C-619815D8A6EB}"
 EndProject
 Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.Sql", "Intent.Modules.Common.Sql\Intent.Modules.Common.Sql.csproj", "{A412121D-D444-44CC-9974-A603F2372BDC}"
 EndProject
@@ -114,7 +114,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - S
 		..\Directory.Build.props = ..\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Java.Weaving.Annotations", "Intent.Modules.Java.Weaving.Annotations\Intent.Modules.Java.Weaving.Annotations.csproj", "{AB7B334C-A6CF-4138-92DD-5F89BAF9505B}"
+Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Java.Weaving.Annotations", "Intent.Modules.Java.Weaving.Annotations\Intent.Modules.Java.Weaving.Annotations.csproj", "{AB7B334C-A6CF-4138-92DD-5F89BAF9505B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Domain.StoredProcedures", "Intent.Modules.Modelers.Domain.StoredProcedures\Intent.Modules.Modelers.Domain.StoredProcedures.csproj", "{9DB519CC-52B4-4875-9A8F-1AAEA9AD450B}"
 EndProject

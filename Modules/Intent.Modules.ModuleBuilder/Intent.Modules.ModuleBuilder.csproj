@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -12,7 +12,7 @@
     <PackageReference Include="Intent.Modules.Common" Version="3.6.0" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.6.0" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.4.0" />
-    <PackageReference Include="Intent.Packager" Version="3.4.2">
+    <PackageReference Include="Intent.Packager" Version="3.4.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -26,21 +26,12 @@
     <Compile Remove="Api\Modeler\**" />
     <Compile Remove="External\Settings\**" />
     <Compile Remove="Intent.Metadata\**" />
-    <Compile Remove="Templates\RoslynProjectItemTemplatePartial\**" />
-    <Compile Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />
-    <Compile Remove="Templates\RoslynProjectItemTemplate\**" />
     <EmbeddedResource Remove="Api\Modeler\**" />
     <EmbeddedResource Remove="External\Settings\**" />
     <EmbeddedResource Remove="Intent.Metadata\**" />
-    <EmbeddedResource Remove="Templates\RoslynProjectItemTemplatePartial\**" />
-    <EmbeddedResource Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />
-    <EmbeddedResource Remove="Templates\RoslynProjectItemTemplate\**" />
     <None Remove="Api\Modeler\**" />
     <None Remove="External\Settings\**" />
     <None Remove="Intent.Metadata\**" />
-    <None Remove="Templates\RoslynProjectItemTemplatePartial\**" />
-    <None Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />
-    <None Remove="Templates\RoslynProjectItemTemplate\**" />
 
     <None Update="Templates\Api\ApiElementModelPartial\ApiElementModelPartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -249,24 +240,30 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>FileTemplateStringInterpolationTemplate.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="modeler\ModuleBuilder.modeler.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="modeler\ModelerBuilder.modeler.extension.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="modeler\Modeler Builder.modeler.extension.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="modeler\Module Builder.modeler.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="modelers\Intent.modeler.extension.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Update="Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FileTemplatePartialTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CustomTemplateRegistrationTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FilePerModelTemplateRegistrationTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SingleFileListModelTemplateRegistrationTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SingleFileNoModelTemplateRegistrationTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\TemplateExtensions\TemplateExtensionsTemplate.tt">
+      <LastGenOutput>TemplateExtensionsTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -298,34 +295,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+    <Content Update="modeler\ModuleBuilder.modeler.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="modeler\ModelerBuilder.modeler.extension.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="modeler\Modeler Builder.modeler.extension.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="modeler\Module Builder.modeler.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="modelers\Intent.modeler.extension.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>FileTemplatePartialTemplate.cs</LastGenOutput>
-    </None>
-    <None Update="Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>CustomTemplateRegistrationTemplate.cs</LastGenOutput>
-    </None>
-    <None Update="Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>FilePerModelTemplateRegistrationTemplate.cs</LastGenOutput>
-    </None>
-    <None Update="Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>SingleFileListModelTemplateRegistrationTemplate.cs</LastGenOutput>
-    </None>
-    <None Update="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>SingleFileNoModelTemplateRegistrationTemplate.cs</LastGenOutput>
-    </None>
-    <None Update="Templates\TemplateExtensions\TemplateExtensionsTemplate.tt">
-      <LastGenOutput>TemplateExtensionsTemplate.cs</LastGenOutput>
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-    </None>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
 </Project>

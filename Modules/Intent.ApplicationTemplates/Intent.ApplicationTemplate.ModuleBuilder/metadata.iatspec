@@ -14,6 +14,7 @@
     <placeInSameDirectory>false</placeInSameDirectory>
     <separateIntentFiles>true</separateIntentFiles>
     <setGitIgnoreEntries>true</setGitIgnoreEntries>
+    <createFolderForSolution>false</createFolderForSolution>
   </defaults>
   <componentGroups>
     <group name="Core">

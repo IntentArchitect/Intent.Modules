@@ -85,7 +85,7 @@ namespace Intent.Modules.OutputTargets.Folders.Api
         {
             return type.IsTemplateOutputModel() ? new TemplateOutputModel((IElement)type) : null;
         }
-        
+
         [IntentManaged(Mode.Ignore)]
         internal static IEnumerable<TemplateOutputModel> DetectDuplicates(this IEnumerable<TemplateOutputModel> sequence)
         {

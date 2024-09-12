@@ -20,7 +20,7 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type>Repository</type>
+        <type type="Repository" />
       </typeOrder>
     </packageExtension>
   </packageExtensions>
@@ -32,6 +32,7 @@
     ? `${getName()}&lt;${typeReference.display}&gt;`
     : getName();
 </displayFunction>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
@@ -47,7 +48,7 @@
         <displayName>Entity Type</displayName>
         <isRequired>false</isRequired>
         <targetTypes>
-          <type>Class</type>
+          <type type="Class" />
         </targetTypes>
         <allowIsNavigable>true</allowIsNavigable>
         <allowIsNullable>false</allowIsNullable>
@@ -57,7 +58,7 @@
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type order="0">Operation</type>
+        <type type="Operation" order="0" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -84,6 +85,7 @@
   </elementSettings>
   <elementExtensions>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <implements />
       <creationOptions>
         <option type="element">
           <text>New Repository</text>
@@ -98,7 +100,7 @@
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type>Repository</type>
+        <type type="Repository" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -108,4 +110,5 @@
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <scripts />
 </settings>

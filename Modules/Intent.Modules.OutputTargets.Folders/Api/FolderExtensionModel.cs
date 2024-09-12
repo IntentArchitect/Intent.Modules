@@ -35,7 +35,6 @@ namespace Intent.Modules.OutputTargets.Folders.Api
         public IList<TemplateOutputModel> TemplateOutputs => _element.ChildElements
             .GetElementsOfType(TemplateOutputModel.SpecializationTypeId)
             .Select(x => new TemplateOutputModel(x))
-            .DetectDuplicates()
             .ToList();
     }
 }

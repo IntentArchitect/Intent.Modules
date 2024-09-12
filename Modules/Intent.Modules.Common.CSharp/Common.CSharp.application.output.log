@@ -11,7 +11,6 @@
     <FileLog>
       <ProjectId>4802c3fe-db17-4969-86e0-e8ae6b73a83c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4215f417-25d2-4509-9309-5076a1452eaa</CorrelationId>
-      <ModelId>4215f417-25d2-4509-9309-5076a1452eaa</ModelId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/EnumLiteralModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>EnumLiteralModelStereotypeExtensions.cs</ProjectRelativeFilePath>
@@ -20,7 +19,6 @@
     <FileLog>
       <ProjectId>4802c3fe-db17-4969-86e0-e8ae6b73a83c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4d95d53a-8855-4f35-aa82-e312643f5c5f</CorrelationId>
-      <ModelId>4d95d53a-8855-4f35-aa82-e312643f5c5f</ModelId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FolderModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>FolderModelStereotypeExtensions.cs</ProjectRelativeFilePath>
@@ -45,7 +43,6 @@
     <FileLog>
       <ProjectId>fcaa6461-060c-4402-851d-38f9b926a74b</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#fcaa6461-060c-4402-851d-38f9b926a74b</CorrelationId>
-      <ModelId>fcaa6461-060c-4402-851d-38f9b926a74b</ModelId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Common.CSharp.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.CSharp.csproj</ProjectRelativeFilePath>

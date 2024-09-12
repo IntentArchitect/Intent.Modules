@@ -351,7 +351,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
             <targetTypes>
               <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
               <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
-              <type>Data Contract</type>
+              <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>

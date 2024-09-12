@@ -31,8 +31,8 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type order="0">Folder</type>
-        <type order="1">Service Proxy</type>
+        <type type="Folder" order="0" />
+        <type type="Service Proxy" order="1" />
       </typeOrder>
     </packageSetting>
   </packageSettings>
@@ -123,6 +123,7 @@ else {
   <elementSettings />
   <elementExtensions>
     <elementExtension type="Service Proxy" typeId="07d8d1a9-6b9f-4676-b7d3-8db06299e35c">
+      <implements />
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
@@ -207,4 +208,5 @@ else {
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <scripts />
 </settings>
