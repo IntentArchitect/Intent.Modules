@@ -3,17 +3,17 @@
 type IDynamicFormFieldConfig = MacroApi.Context.IDynamicFormFieldConfig;
 
 interface ISqlImportPackageSettings {
-    connectionString: string;
-    tableStereotypes: string;
     entityNameConvention: string;
+    tableStereotypes: string;
     schemaFilter: string;
     includeTables: string;
     includeViews: string;
     includeStoredProcedures: string;
     includeIndexes: string;
-    settingPersistence: string;
     tableViewFilterFilePath: string;
     storedProcedureType: string;
+    connectionString: string;
+    settingPersistence: string;
 }
 
 interface IDatabaseImportModel {
@@ -21,7 +21,7 @@ interface IDatabaseImportModel {
     designerId: string;
     packageId: string;
     entityNameConvention: string;
-    tableStereotypes: string;
+    tableStereotype: string;
     typesToExport: string[];
     schemaFilter: string[];
     tableViewFilterFilePath: string;
@@ -129,7 +129,7 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
         fieldType: "select",
         label: "Stored Procedure Representation",
         value: defaults.storedProcedureType,
-        selectOptions: [{id: "", description: "(Default)"}, {id: "StoredProcedureElement", description: "Stored Procedure Element"}, {id: "RepositoryOperation", description: "Stored Procedure Operation"}]
+        selectOptions: [{id: "Default", description: "(Default)"}, {id: "StoredProcedureElement", description: "Stored Procedure Element"}, {id: "RepositoryOperation", description: "Stored Procedure Operation"}]
     };
 
     let formConfig: MacroApi.Context.IDynamicFormConfig = {
@@ -172,7 +172,7 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
         designerId: domainDesignerId,
         packageId: element.getPackage().id,
         entityNameConvention: inputs.entityNameConvention,
-        tableStereotypes: inputs.tableStereotypes,
+        tableStereotype: inputs.tableStereotypes,
         typesToExport: typesToExport,
         schemaFilter: inputs.schemaFilter ? inputs.schemaFilter.split(";") : [],
         tableViewFilterFilePath: inputs.tableViewFilterFilePath,
@@ -227,17 +227,18 @@ function getDialogDefaults(element: MacroApi.Context.IElementApi): ISqlImportPac
         });
     }
     let result: ISqlImportPackageSettings = {
-        connectionString: getSettingValue(package, "sql-import:connectionString", null),
-        tableStereotypes: getSettingValue(package, "sql-import:tableStereotypes", "WhenDifferent"),
+        
         entityNameConvention: getSettingValue(package, "sql-import:entityNameConvention", "SingularEntity"),
+        tableStereotypes: getSettingValue(package, "sql-import:tableStereotypes", "WhenDifferent"),
         schemaFilter: getSettingValue(package, "sql-import:schemaFilter", ""),
         includeTables: includeTables,
         includeViews: includeViews,
         includeStoredProcedures: includeStoredProcedures,
         includeIndexes: includeIndexes,
-        settingPersistence: getSettingValue(package, "sql-import:settingPersistence", "None"),
         tableViewFilterFilePath: getSettingValue(package, "sql-import:tableViewFilterFilePath", null),
-        storedProcedureType: getSettingValue(package, "sql-import:storedProcedureType", "")
+        connectionString: getSettingValue(package, "sql-import:connectionString", null),
+        storedProcedureType: getSettingValue(package, "sql-import:storedProcedureType", ""),
+        settingPersistence: getSettingValue(package, "sql-import:settingPersistence", "None")
     };
     return result;
 }
