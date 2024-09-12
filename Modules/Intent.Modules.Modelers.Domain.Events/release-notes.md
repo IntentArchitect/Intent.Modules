@@ -1,4 +1,4 @@
-### Version 4.1.0
+### Version 4.1.1
 
 - Fixed: Made a change to Entity -> Domain Event mapping config to be forward compatible with 4.3.
 
