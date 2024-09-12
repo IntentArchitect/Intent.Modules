@@ -3,6 +3,10 @@
 - Improvement: Advanced mapping configurations updated to use new capabilities made available in Intent Architect 4.3 for a better experience.
 - Improvement: Certain element types will now show validation errors if their name is not unique.
 
+### Version 4.1.1
+
+- Fixed: Made a change to Entity -> Domain Event mapping config to be forward compatible with 4.3.
+
 ### Version 4.1.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

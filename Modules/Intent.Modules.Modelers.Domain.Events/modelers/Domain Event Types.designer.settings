@@ -738,8 +738,11 @@ if (namingConvention == "pascal-case") {
         <mapping id="fb2aeb24-f5ce-44c3-abd4-976bb1d504a6" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
+          <isTraversable>true</isTraversable>
+          <getTraversableTypeFunction>return element.id;</getTraversableTypeFunction>
+          <traversableTypes>
+            <mappingId>f8cd5cd4-6003-4405-8edb-1f7356542719</mappingId>
+          </traversableTypes>
           <overrideTypeReferenceFunction>return {
     typeId: element.id,
     isCollection: false,
