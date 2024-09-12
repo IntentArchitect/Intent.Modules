@@ -372,19 +372,19 @@
 
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.6.0" />
-    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.7.6-pre.1" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.8.0-pre.7" />
     <PackageReference Include="Intent.Modules.Common.Dart" Version="1.1.0" />
     <PackageReference Include="Intent.Modules.Common.Html" Version="4.0.0" />
     <PackageReference Include="Intent.Modules.Common.Java" Version="4.0.0" />
     <PackageReference Include="Intent.Modules.Common.Kotlin" Version="4.0.0" />
     <PackageReference Include="Intent.Modules.Common.Sql" Version="3.4.0" />
     <PackageReference Include="Intent.Modules.Common.TypeScript" Version="4.0.0" />
-    <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.9.1-pre.0" />
-    <PackageReference Include="Intent.Packager" Version="3.4.2">
+    <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.10.0-pre.1" />
+    <PackageReference Include="Intent.Packager" Version="3.4.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.4" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.5-alpha.0" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.6.0" />
   </ItemGroup>
 

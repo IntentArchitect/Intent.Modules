@@ -73,9 +73,9 @@ public class CSharpFileConfig : TemplateFileConfig
     /// <summary>
     /// Whether to automatically apply formatting to C# files.
     /// </summary>
-    public bool? AutoFormat
+    public bool AutoFormat
     {
-        get => CustomMetadata.TryGetValue(nameof(AutoFormat), out var value) && bool.TryParse(value, out var parsed) ? parsed : null;
+        get => CustomMetadata.TryGetValue(nameof(AutoFormat), out var value) && bool.TryParse(value, out var parsed) && parsed;
         set => CustomMetadata[nameof(AutoFormat)] = value.ToString();
     }
 
