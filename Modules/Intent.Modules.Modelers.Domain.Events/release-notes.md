@@ -1,5 +1,9 @@
 ### Version 4.1.0
 
+- Fixed: Made a change to Entity -> Domain Event mapping config to be forward compatible with 4.3.
+
+### Version 4.1.0
+
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
 
 ### Version 4.0.1
