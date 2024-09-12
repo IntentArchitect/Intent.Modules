@@ -54,7 +54,7 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
                 // variable is to prevents issue where process seems to never end.
                 // See https://github.com/dotnet/sdk/issues/9487#issuecomment-1499126020
                 var arguments = "build -p:UseSharedCompilation=false -p:UseRazorBuildServer=false";
-                if (GetDotnetVersion().Major >= 7)
+                if (GetDotnetMajorVersion() >= 7)
                 {
                     arguments += " --disable-build-servers";
                 }
@@ -115,7 +115,7 @@ Auto-compiling of module failed. If the problem persists, consider disabling thi
             }
         }
 
-        private static NuGetVersion GetDotnetVersion()
+        private static int GetDotnetMajorVersion()
         {
             var processStartInfo = new ProcessStartInfo
             {
@@ -136,7 +136,7 @@ Auto-compiling of module failed. If the problem persists, consider disabling thi
 
             var output = cmd.StandardOutput.ReadToEnd();
 
-            return NuGetVersion.Parse(output.Trim());
+            return int.Parse(output.Trim().Split(".")[0]);
         }
 
         private static string GetRootExecutionLocation(IApplication application)
