@@ -112,7 +112,12 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
         label: "Persist Settings",
         hint: "Remember these settings for next time you run the import",
         value: defaults.settingPersistence,
-        selectOptions: [{ id: "None", description: "(None)" }, { id: "All", description: "All Settings" }, { id: "AllSanitisedConnectionString", description: "All (with Sanitized connection string, no password))" }, { id: "AllWithoutConnectionString", description: "All (without connection string))" }]
+        selectOptions: [
+            { id: "None", description: "(None)" }, 
+            { id: "All", description: "All Settings" },
+            { id: "AllSanitisedConnectionString", description: "All (with Sanitized connection string, no password))" }, 
+            { id: "AllWithoutConnectionString", description: "All (without connection string))" }
+        ]
     };
 
     let tableViewFilterFilePath: IDynamicFormFieldConfig = {
@@ -253,7 +258,7 @@ function getSettingValue(package: MacroApi.Context.IPackageApi, key: string, def
  * Used by Intent.Modules.NET\Modules\Intent.Modules.SqlServerImporter
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/sql-importer/sql-server/domain/sql-importer-domain.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/sql-importer/sql-server/database/sql-importer-database.ts
  */
 
 //Uncomment below
