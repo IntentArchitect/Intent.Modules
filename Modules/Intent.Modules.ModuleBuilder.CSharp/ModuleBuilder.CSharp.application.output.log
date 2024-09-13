@@ -122,6 +122,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.NugetPackages</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>NugetPackages.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>NugetPackages.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#d0cde3bb-8cb8-42dd-9a8b-0659825f33ce</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/CSharpStringInterpolation/CSharpStringInterpolationTemplate.cs</ApplicationRelativeFilePath>
