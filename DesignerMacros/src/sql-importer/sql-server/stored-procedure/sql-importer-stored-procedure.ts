@@ -20,7 +20,7 @@ interface IDatabaseImportModel {
     settingPersistence: string;
 }
 
-async function importSqlRepository(element: MacroApi.Context.IElementApi): Promise<void> {
+async function importSqlStoredProcedure(element: MacroApi.Context.IElementApi): Promise<void> {
 
     var defaults = getDialogDefaults(element);
 
@@ -28,7 +28,7 @@ async function importSqlRepository(element: MacroApi.Context.IElementApi): Promi
         id: "connectionString",
         fieldType: "text",
         label: "Connection String",
-        placeholder: "(inherit if applicable)",
+        placeholder: "(optional if inherited)",
         hint: null,
         value: defaults.connectionString
     };
@@ -39,7 +39,7 @@ async function importSqlRepository(element: MacroApi.Context.IElementApi): Promi
         label: "Stored Procedure Representation",
         value: defaults.storedProcedureType,
         selectOptions: [
-            {id: "", description: "(inherit if applicable)"},
+            {id: "", description: "(default)"},
             {id: "StoredProcedureElement", description: "Stored Procedure Element"},
             {id: "RepositoryOperation", description: "Stored Procedure Operation"}
         ]
@@ -81,7 +81,7 @@ async function importSqlRepository(element: MacroApi.Context.IElementApi): Promi
 
     let inputs = await dialogService.openForm(formConfig);
 
-    if (inputs.settingPersistence != "InheritDb" && (!inputs.connectionString || inputs.connectionString.trim() === "")) {
+    if (inputs.settingPersistence != "InheritDb" && (!inputs.connectionString || inputs.connectionString?.trim() === "")) {
         await dialogService.error("Connection String was not set.");
     }
 
@@ -100,7 +100,7 @@ async function importSqlRepository(element: MacroApi.Context.IElementApi): Promi
         settingPersistence: inputs.settingPersistence
     };
     
-    let jsonResponse = await executeModuleTask("Intent.Modules.SqlServerImporter.Tasks.RepositoryImport", JSON.stringify(importConfig));
+    let jsonResponse = await executeModuleTask("Intent.Modules.SqlServerImporter.Tasks.StoredProcedureImport", JSON.stringify(importConfig));
     let result = JSON.parse(jsonResponse);
     if (result?.errorMessage) {
         await dialogService.error(result?.errorMessage);
@@ -137,8 +137,8 @@ function getSettingValue(package: MacroApi.Context.IPackageApi, key: string, def
  * Used by Intent.Modules.NET\Modules\Intent.Modules.SqlServerImporter
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/sql-importer/sql-server/repository/sql-importer-repository.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/sql-importer/sql-server/stored-procedure/sql-importer-stored-procedure.ts
  */
 
 //Uncomment below
-//await importSqlRepository(element);
+//await importSqlStoredProcedure(element);
