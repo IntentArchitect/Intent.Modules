@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Modelers.Services.Api;
 using Intent.Modelers.UI.Api;
 using Intent.RoslynWeaver.Attributes;
 
@@ -12,7 +11,7 @@ namespace Intent.Modelers.UI.Core.Api
     public static class ShowDialogModelAssociationExtensions
     {
         [IntentManaged(Mode.Fully)]
-        public static IList<ShowDialogTargetEndModel> ShowDialogTargets(this OperationModel model)
+        public static IList<ShowDialogTargetEndModel> ShowDialogTargets(this ComponentOperationModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == ShowDialogModel.SpecializationType && x.IsTargetEnd())

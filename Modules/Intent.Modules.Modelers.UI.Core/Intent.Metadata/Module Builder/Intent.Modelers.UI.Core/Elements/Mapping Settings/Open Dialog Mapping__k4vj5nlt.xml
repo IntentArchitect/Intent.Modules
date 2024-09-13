@@ -69,7 +69,7 @@
         </childElement>
         <childElement id="86c39237-21a1-4085-ac1a-856e7f92a6e9" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Calling Operation</name>
-          <display>Calling Operation: Operation</display>
+          <display>Calling Operation: Component Operation</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-manually</sort-children>
           <genericTypes />
@@ -79,8 +79,8 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services</typePackageName>
-            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+            <typePackageName>Intent.Modelers.UI</typePackageName>
+            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -124,13 +124,13 @@
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="ee2fca72-cfaa-4253-a2c6-950cc5041fa0">
-                <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
+                <typeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services</typePackageName>
-                <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+                <typePackageName>Intent.Common.Types</typePackageName>
+                <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
@@ -224,7 +224,7 @@
         </childElement>
         <childElement id="e609bf66-1e00-497d-a34c-c455565912e5" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
           <name>Callable Operation</name>
-          <display>Callable Operation: Operation</display>
+          <display>Callable Operation: Component Operation</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="62198103-9f82-4c2e-82b9-8dbc9da73bbb">
@@ -233,8 +233,8 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services</typePackageName>
-            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+            <typePackageName>Intent.Modelers.UI</typePackageName>
+            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>

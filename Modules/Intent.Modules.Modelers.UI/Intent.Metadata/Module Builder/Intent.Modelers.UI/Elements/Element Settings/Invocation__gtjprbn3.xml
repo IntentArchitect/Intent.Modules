@@ -73,7 +73,7 @@
       <childElements>
         <childElement id="b431fd6f-4079-455b-80db-250fae30bd23" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
           <name>Map Execution</name>
-          <display>Map Execution: Operation Execution Mapping</display>
+          <display>Map Execution: Invocation Mapping</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="0ffd7b4a-1e7d-4268-b836-6eaa46d997ad">

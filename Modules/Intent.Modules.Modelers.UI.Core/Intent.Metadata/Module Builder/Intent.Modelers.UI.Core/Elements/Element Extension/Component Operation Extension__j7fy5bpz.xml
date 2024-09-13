@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="1dc3fbea-c3f7-47ee-842e-80cf45ae2714" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
   <name>Component Operation Extension</name>
-  <display>Component Operation Extension: Operation</display>
+  <display>Component Operation Extension: Component Operation</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
@@ -11,8 +11,8 @@
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
-    <typePackageName>Intent.Modelers.Services</typePackageName>
-    <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+    <typePackageName>Intent.Modelers.UI</typePackageName>
+    <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
