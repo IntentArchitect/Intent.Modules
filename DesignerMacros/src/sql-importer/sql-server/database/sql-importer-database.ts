@@ -1,30 +1,34 @@
-/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
+/// <reference path="../../../../typings/elementmacro.context.api.d.ts" />
 
 type IDynamicFormFieldConfig = MacroApi.Context.IDynamicFormFieldConfig;
-interface ISqlImporterSettings {
-    connectionString: string;
-    tableStereotypes: string;
+
+interface ISqlImportPackageSettings {
     entityNameConvention: string;
+    tableStereotypes: string;
     schemaFilter: string;
     includeTables: string;
     includeViews: string;
     includeStoredProcedures: string;
     includeIndexes: string;
-    settingPersistence: string;
     tableViewFilterFilePath: string;
+    storedProcedureType: string;
+    connectionString: string;
+    settingPersistence: string;
 }
 
-interface IImportConfig {
+interface IDatabaseImportModel {
     applicationId: string;
     designerId: string;
     packageId: string;
-    connectionString: string;
-    tableStereotypes: string;
     entityNameConvention: string;
-    schemaFilter: string[];
+    tableStereotype: string;
     typesToExport: string[];
-    settingPersistence: string;
+    schemaFilter: string[];
     tableViewFilterFilePath: string;
+    storedProcedureType: string;
+    connectionString: string;
+    // Ignoring PackageFileName
+    settingPersistence: string;
 }
 
 async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise<void> {
@@ -108,16 +112,29 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
         label: "Persist Settings",
         hint: "Remember these settings for next time you run the import",
         value: defaults.settingPersistence,
-        selectOptions: [{ id: "None", description: "(None)" }, { id: "All", description: "All Settings" }, { id: "AllSanitisedConnectionString", description: "All (with Sanitized connection string, no password))" }, { id: "AllWithoutConnectionString", description: "All (without connection string))" }]
+        selectOptions: [
+            { id: "None", description: "(None)" }, 
+            { id: "All", description: "All Settings" },
+            { id: "AllSanitisedConnectionString", description: "All (with Sanitized connection string, no password))" }, 
+            { id: "AllWithoutConnectionString", description: "All (without connection string))" }
+        ]
     };
 
     let tableViewFilterFilePath: IDynamicFormFieldConfig = {
         id: "tableViewFilterFilePath",
         fieldType: "text",
         label: "Table / View Filter",
-        hint: "Path to text file featuring names of Tables and Views to import only",
+        hint: "Import selection file path (Tables/Views, one per line)",
         placeholder: "(optional)",
         value: defaults.tableViewFilterFilePath
+    };
+
+    let storedProcedureType: IDynamicFormFieldConfig = {
+        id: "storedProcedureType",
+        fieldType: "select",
+        label: "Stored Procedure Representation",
+        value: defaults.storedProcedureType,
+        selectOptions: [{id: "Default", description: "(Default)"}, {id: "StoredProcedureElement", description: "Stored Procedure Element"}, {id: "RepositoryOperation", description: "Stored Procedure Operation"}]
     };
 
     let formConfig: MacroApi.Context.IDynamicFormConfig = {
@@ -132,6 +149,7 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
             includeStoredProcedures,
             includeIndexes,
             tableViewFilterFilePath,
+            storedProcedureType,
             settingPersistence
         ]
     }
@@ -154,17 +172,18 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
 
     const domainDesignerId: string = "6ab29b31-27af-4f56-a67c-986d82097d63";
 
-    let importConfig: IImportConfig = {
+    let importConfig: IDatabaseImportModel = {
         applicationId: application.id,
         designerId: domainDesignerId,
         packageId: element.getPackage().id,
-        connectionString: inputs.connectionString,
-        tableStereotypes: inputs.tableStereotypes,
         entityNameConvention: inputs.entityNameConvention,
-        schemaFilter: inputs.schemaFilter ? inputs.schemaFilter.split(";") : [],
+        tableStereotype: inputs.tableStereotypes,
         typesToExport: typesToExport,
-        settingPersistence: inputs.settingPersistence,
-        tableViewFilterFilePath: inputs.tableViewFilterFilePath
+        schemaFilter: inputs.schemaFilter ? inputs.schemaFilter.split(";") : [],
+        tableViewFilterFilePath: inputs.tableViewFilterFilePath,
+        storedProcedureType: inputs.storedProcedureType,
+        connectionString: inputs.connectionString,
+        settingPersistence: inputs.settingPersistence
     };
     let jsonResponse = await executeModuleTask("Intent.Modules.SqlServerImporter.Tasks.DatabaseImport", JSON.stringify(importConfig));
     let result = JSON.parse(jsonResponse);
@@ -180,7 +199,7 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
 
 }
 
-function getDialogDefaults(element: MacroApi.Context.IElementApi): ISqlImporterSettings {
+function getDialogDefaults(element: MacroApi.Context.IElementApi): ISqlImportPackageSettings {
 
     let package = element.getPackage();
     let persistedValue = getSettingValue(package, "sql-import:typesToExport", "");
@@ -212,17 +231,19 @@ function getDialogDefaults(element: MacroApi.Context.IElementApi): ISqlImporterS
             }
         });
     }
-    let result: ISqlImporterSettings = {
-        connectionString: getSettingValue(package, "sql-import:connectionString", null),
-        tableStereotypes: getSettingValue(package, "sql-import:tableStereotypes", "WhenDifferent"),
+    let result: ISqlImportPackageSettings = {
+        
         entityNameConvention: getSettingValue(package, "sql-import:entityNameConvention", "SingularEntity"),
+        tableStereotypes: getSettingValue(package, "sql-import:tableStereotypes", "WhenDifferent"),
         schemaFilter: getSettingValue(package, "sql-import:schemaFilter", ""),
         includeTables: includeTables,
         includeViews: includeViews,
         includeStoredProcedures: includeStoredProcedures,
         includeIndexes: includeIndexes,
-        settingPersistence: getSettingValue(package, "sql-import:settingPersistence", "None"),
-        tableViewFilterFilePath: getSettingValue(package, "sql-import:tableViewFilterFilePath", null)
+        tableViewFilterFilePath: getSettingValue(package, "sql-import:tableViewFilterFilePath", null),
+        connectionString: getSettingValue(package, "sql-import:connectionString", null),
+        storedProcedureType: getSettingValue(package, "sql-import:storedProcedureType", ""),
+        settingPersistence: getSettingValue(package, "sql-import:settingPersistence", "None")
     };
     return result;
 }
@@ -237,7 +258,7 @@ function getSettingValue(package: MacroApi.Context.IPackageApi, key: string, def
  * Used by Intent.Modules.NET\Modules\Intent.Modules.SqlServerImporter
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/sql-importer/sql-server/sql-importer.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/sql-importer/sql-server/database/sql-importer-database.ts
  */
 
 //Uncomment below

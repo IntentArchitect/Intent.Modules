@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d639125b-21e7-4b80-9ef3-89ea470ab7a3" type="NuGet Package" typeId="f747cc37-29ee-488a-8dbe-755e856a842d">
+  <name>Intent.Modules.Common.CSharp</name>
+  <display>Intent.Modules.Common.CSharp</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>5e7a0304-6dc3-4a03-88d1-8695d6727754</parentFolderId>
+  <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
+  <packageName>Intent.ModuleBuilder.CSharp</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="265221a5-779c-46c9-a367-8b07b435803b" name="Package Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder.CSharp</definitionPackageName>
+      <definitionPackageId>f2bfb0f7-d304-466f-b923-021d4016b48d</definitionPackageId>
+      <properties>
+        <property name="4de9cc21-d4fb-4d52-8dfd-2eb6cf267a9a" display="Friendly Name" isActive="true" />
+        <property name="67c7c4d8-40ed-48f9-a83c-985eedb32141" display="Locked" value="false" isActive="true" />
+        <property name="c166c7cf-45e3-484b-9ec5-f7300951f897" display="Private Assets" isActive="true" />
+        <property name="6bd6430c-8011-435e-bb73-6013477a875d" display="Include Assets" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="08bbc292-e66a-4537-9806-64f443818ed6" type="Package Version" typeId="231f8cf8-517b-4801-9682-991d22f4e662">
+      <name>3.8.0-pre.7</name>
+      <display>3.8.0-pre.7 ( &gt;= .NETCoreApp,Version=v8.0 )</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d639125b-21e7-4b80-9ef3-89ea470ab7a3</parentFolderId>
+      <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
+      <packageName>Intent.ModuleBuilder.CSharp</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="7af88c37-ce54-49fc-b577-bde869c23462" name="Package Version Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder.CSharp</definitionPackageName>
+          <definitionPackageId>f2bfb0f7-d304-466f-b923-021d4016b48d</definitionPackageId>
+          <properties>
+            <property name="b01cea92-0ca1-4dbe-acab-d0f52b39e003" display="Minimum Target Framework" value=".NETCoreApp,Version=v8.0" isActive="true" />
+            <property name="d00692b1-6d17-4f1e-9386-a1d0d3ab7b57" display="Locked" value="false" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="e4367732-b172-4cd2-a050-ccd4ce0f5c06" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
+          <name>Intent.Architect.Persistence</name>
+          <display>Intent.Architect.Persistence (3.6.0)</display>
+          <isAbstract>false</isAbstract>
+          <value>3.6.0</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>08bbc292-e66a-4537-9806-64f443818ed6</parentFolderId>
+          <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
+          <packageName>Intent.ModuleBuilder.CSharp</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="cb4d5d8b-9906-459e-a5c9-da655df7e236" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
+          <name>Intent.Modules.Common</name>
+          <display>Intent.Modules.Common (3.7.0-pre.3)</display>
+          <isAbstract>false</isAbstract>
+          <value>3.7.0-pre.3</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>08bbc292-e66a-4537-9806-64f443818ed6</parentFolderId>
+          <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
+          <packageName>Intent.ModuleBuilder.CSharp</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="3d4700e0-63a8-463a-91f1-f5c78e4c8c6f" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
+          <name>Intent.Modules.Common.Types</name>
+          <display>Intent.Modules.Common.Types (4.0.0-alpha.0)</display>
+          <isAbstract>false</isAbstract>
+          <value>4.0.0-alpha.0</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>08bbc292-e66a-4537-9806-64f443818ed6</parentFolderId>
+          <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
+          <packageName>Intent.ModuleBuilder.CSharp</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="3edfa896-cb3c-4f97-9d7a-7fc05cb9b6ee" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
+          <name>Intent.RoslynWeaver.Attributes</name>
+          <display>Intent.RoslynWeaver.Attributes (2.1.4)</display>
+          <isAbstract>false</isAbstract>
+          <value>2.1.4</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>08bbc292-e66a-4537-9806-64f443818ed6</parentFolderId>
+          <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
+          <packageName>Intent.ModuleBuilder.CSharp</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="930f1ef2-b967-4a85-9b94-fa259ddcf1e1" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
+          <name>Intent.SoftwareFactory.SDK</name>
+          <display>Intent.SoftwareFactory.SDK (3.6.0)</display>
+          <isAbstract>false</isAbstract>
+          <value>3.6.0</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>08bbc292-e66a-4537-9806-64f443818ed6</parentFolderId>
+          <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
+          <packageName>Intent.ModuleBuilder.CSharp</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

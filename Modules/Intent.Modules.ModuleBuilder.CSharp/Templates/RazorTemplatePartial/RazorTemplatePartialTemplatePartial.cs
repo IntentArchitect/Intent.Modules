@@ -25,9 +25,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.RazorTemplatePartial
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public RazorTemplatePartialTemplate(IOutputTarget outputTarget, RazorTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
-            AddNugetDependency(IntentNugetPackages.IntentModulesCommonCSharp);
-            AddNugetDependency(IntentNugetPackages.IntentSoftwareFactorySdk);
+            AddNugetDependency(CSharp.NugetPackages.IntentModulesCommonCSharp(outputTarget));
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";

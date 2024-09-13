@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public NugetPackagesTemplate(IOutputTarget outputTarget, IList<NuGetPackageModel> model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency(IntentNugetPackages.IntentModulesCommonCSharp);
+            AddNugetDependency(CSharp.NugetPackages.IntentModulesCommonCSharp(outputTarget));
 
             CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
                 .AddUsing("System")

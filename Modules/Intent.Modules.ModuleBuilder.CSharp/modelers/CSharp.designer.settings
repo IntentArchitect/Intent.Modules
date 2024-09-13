@@ -265,7 +265,7 @@ if (locked) {
 }
 return result; </displayFunction>
           <allowRename>true</allowRename>
-          <nameMustBeUnique>false</nameMustBeUnique>
+          <nameMustBeUnique>true</nameMustBeUnique>
           <allowAbstract>false</allowAbstract>
           <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
@@ -456,7 +456,7 @@ parent.getChildren().forEach(child =&gt;{
 return result;
 </validateFunction>
               <allowRename>true</allowRename>
-              <nameMustBeUnique>false</nameMustBeUnique>
+              <nameMustBeUnique>true</nameMustBeUnique>
               <allowAbstract>false</allowAbstract>
               <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>
@@ -493,7 +493,7 @@ const result = [{ text: `${displayName}` }];
 result.push({ text: ` (${element.getValue()})`, cssClass: "muted" })
 return result; </displayFunction>
                   <allowRename>true</allowRename>
-                  <nameMustBeUnique>false</nameMustBeUnique>
+                  <nameMustBeUnique>true</nameMustBeUnique>
                   <allowAbstract>false</allowAbstract>
                   <allowStatic>false</allowStatic>
                   <allowGenericTypes>false</allowGenericTypes>
