@@ -15,7 +15,7 @@
   </factoryExtensions>
   <dependencies>
     <dependency id="Intent.Common" version="3.7.0-pre.3" />
-    <dependency id="Intent.Common.Types" version="4.0.0-alpha.0" />
+    <dependency id="Intent.Common.Types" version="4.0.0-pre.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
