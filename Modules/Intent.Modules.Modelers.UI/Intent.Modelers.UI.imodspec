@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.UI</id>
-  <version>1.0.0-pre.0</version>
+  <version>1.0.0-pre.1</version>
   <supportedClientVersions>[4.3.0-beta.4, 5.0.0-a)</supportedClientVersions>
   <summary>A designer for describing user interfaces.</summary>
   <description>A designer for describing user interfaces.</description>
@@ -17,13 +17,13 @@
     <dependency id="Intent.Common" version="3.6.0" />
     <dependency id="Intent.Common.Types" version="4.0.0-pre.0" />
   </dependencies>
-  <interoperability>
+  <!--<interoperability>
     <detect id="Intent.Modelers.WebClient">
       <install>
         <package id="Intent.Modelers.WebClient" version="5.0.0-pre.0" />
       </install>
     </detect>
-  </interoperability>
+  </interoperability>-->
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
