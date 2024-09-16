@@ -92,6 +92,7 @@ namespace Intent.ModuleBuilder.Api
                 } : null,
                 DiagramSettings = DiagramSettings?.ToPersistable(),
                 ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToArray(),
+                ChildElementExtensions = this.ElementExtensions.Select(x => x.ToPersistable()).ToArray(),
                 MappingSettings = this.MappingSettings.Select(x => x.ToPersistable()).ToList(),
                 CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
@@ -164,6 +165,11 @@ namespace Intent.ModuleBuilder.Api
         public IList<ElementSettingsModel> ElementSettings => _element.ChildElements
             .GetElementsOfType(ElementSettingsModel.SpecializationTypeId)
             .Select(x => new ElementSettingsModel(x))
+            .ToList();
+
+        public IList<ElementExtensionModel> ElementExtensions => _element.ChildElements
+            .GetElementsOfType(ElementExtensionModel.SpecializationTypeId)
+            .Select(x => new ElementExtensionModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]

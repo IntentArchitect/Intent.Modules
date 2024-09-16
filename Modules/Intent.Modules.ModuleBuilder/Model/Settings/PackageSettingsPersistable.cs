@@ -75,6 +75,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("macro")]
         public List<MacroPersistable> Macros { get; set; }
 
+        [XmlArray("childElementExtensions")]
+        [XmlArrayItem("childElementExtension")]
+        public ElementSettingExtensionPersistable[] ChildElementExtensions { get; set; } = [];
+        public bool ShouldSerializeChildElementExtensions() => ChildElementExtensions.Any();
+
         public void AddType(TypeOrderPersistable typeOrder)
         {
             // NOTE: there is a check before this is called - need to consolidate

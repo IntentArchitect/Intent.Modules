@@ -152,6 +152,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("macro")]
         public List<MacroPersistable> Macros { get; set; } = new List<MacroPersistable>();
 
+        [XmlArray("childElementExtensions")]
+        [XmlArrayItem("childElementExtension")]
+        public ElementSettingExtensionPersistable[] ChildElementExtensions { get; set; } = [];
+        public bool ShouldSerializeChildElementExtensions() => ChildElementExtensions.Any();
+
         public void OnLoad(DesignerSettingsPersistable designerSettings)
         {
             foreach (var macro in Macros)

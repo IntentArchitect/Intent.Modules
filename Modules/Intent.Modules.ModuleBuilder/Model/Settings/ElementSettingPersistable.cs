@@ -164,7 +164,13 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("childElementSettings")]
         [XmlArrayItem("childElementSetting")]
-        public ElementSettingPersistable[] ChildElementSettings { get; set; } = Array.Empty<ElementSettingPersistable>();
+        public ElementSettingPersistable[] ChildElementSettings { get; set; } = [];
+        public bool ShouldSerializeChildElementSettings() => ChildElementSettings.Any();
+
+        [XmlArray("childElementExtensions")]
+        [XmlArrayItem("childElementExtension")]
+        public ElementSettingExtensionPersistable[] ChildElementExtensions { get; set; } = [];
+        public bool ShouldSerializeChildElementExtensions() => ChildElementExtensions.Any();
 
         public override string ToString()
         {

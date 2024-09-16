@@ -55,6 +55,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new ContextMenuModel(x))
             .SingleOrDefault();
 
+        public IList<ElementExtensionModel> ElementExtensions => _element.ChildElements
+            .GetElementsOfType(ElementExtensionModel.SpecializationTypeId)
+            .Select(x => new ElementExtensionModel(x))
+            .ToList();
+
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 

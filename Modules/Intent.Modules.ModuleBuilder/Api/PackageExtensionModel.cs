@@ -55,6 +55,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new ContextMenuModel(x))
             .SingleOrDefault();
 
+        public IList<ElementExtensionModel> ElementExtensions => _element.ChildElements
+            .GetElementsOfType(ElementExtensionModel.SpecializationTypeId)
+            .Select(x => new ElementExtensionModel(x))
+            .ToList();
+
         public PackageSettingsExtensionPersistable ToPersistable()
         {
             return new PackageSettingsExtensionPersistable
@@ -68,7 +73,8 @@ namespace Intent.ModuleBuilder.Api
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = MenuOptions?.TypeOrder.Select(x => x.ToPersistable()).ToList(),
                 RequiredPackages = new string[0],
-                Macros = this.EventSettings?.ToPersistable()
+                Macros = this.EventSettings?.ToPersistable(),
+                ChildElementExtensions = this.ElementExtensions.Select(x => x.ToPersistable()).ToArray(),
             };
         }
 
