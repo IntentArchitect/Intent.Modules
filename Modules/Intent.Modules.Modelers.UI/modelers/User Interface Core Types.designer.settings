@@ -1810,10 +1810,8 @@ return element.getParent("Component").getChild(x =&gt; isHost(x), true)?.getIsMa
         <mapping id="814c0b5d-c7a6-44ec-8534-4bd909c7265d" name="Bindable Navigation" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
-          <isTraversable>true</isTraversable>
-          <traversableTypes>
-            <mappingId>24d752e8-dcb8-4408-b1a6-a89a6d0eb159</mappingId>
-          </traversableTypes>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
           <childSettings>
@@ -2039,9 +2037,7 @@ return element.hasStereotype(bindableId) || element.hasStereotype(routeParameter
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>44c0579d-d730-4c8c-ad04-eb14599ce56c</mappingId>
-              </traversableTypes>
+              <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>
             </childSetting>
