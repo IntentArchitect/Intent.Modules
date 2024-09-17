@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.SdkEvolutionHelpers;
@@ -71,6 +72,28 @@ namespace Intent.Modules.Common.TypeResolution
         }
 
         /// <inheritdoc />
+        public IList<IResolvedTypeInfo> GetAll(ITypeReference typeReference)
+        {
+            List<IResolvedTypeInfo> resolvedTypeInfo = [];
+            foreach (var classLookup in TypeSources)
+            {
+                var foundClass = classLookup.GetType(typeReference);
+
+                var collectionFormatter = classLookup.CollectionFormatter ?? DefaultCollectionFormatter;
+                resolvedTypeInfo.Add(Get(foundClass, Get(typeReference.GenericTypeParameters, collectionFormatter)));
+            }
+
+            if (resolvedTypeInfo.Count == 0)
+            {
+                resolvedTypeInfo.Add(ResolveType(
+                    typeReference: typeReference,
+                    nullableFormatter: DefaultNullableFormatter));
+            }
+
+            return resolvedTypeInfo;
+        }
+
+        /// <inheritdoc />
         public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
         {
             var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
@@ -117,6 +140,7 @@ namespace Intent.Modules.Common.TypeResolution
         }
 
         /// <inheritdoc />
+        [Obsolete(WillBeRemovedIn.Version4)]
         public virtual IResolvedTypeInfo Get(ITypeReference typeReference, ITypeSource typeSource)
         {
             if (typeReference == null)
@@ -153,6 +177,32 @@ namespace Intent.Modules.Common.TypeResolution
             resolvedTypeInfo ??= ResolveType(
                 typeReference: typeReference,
                 nullableFormatter: DefaultNullableFormatter);
+
+            if (typeReference.IsCollection)
+            {
+                resolvedTypeInfo = collectionFormatter.ApplyTo(resolvedTypeInfo);
+            }
+
+            return resolvedTypeInfo;
+        }
+
+        private IResolvedTypeInfo GetInternal(ITypeReference typeReference, ITypeSource typeSource)
+        {
+            if (typeReference == null)
+            {
+                return null;
+            }
+
+            ICollectionFormatter collectionFormatter = null;
+            IResolvedTypeInfo resolvedTypeInfo = null;
+            var foundClass = typeSource.GetType(typeReference);
+            if (foundClass != null)
+            {
+                collectionFormatter = typeSource.CollectionFormatter;
+                resolvedTypeInfo = Get(foundClass, Get(typeReference.GenericTypeParameters, collectionFormatter));
+            }
+
+            collectionFormatter ??= DefaultCollectionFormatter;
 
             if (typeReference.IsCollection)
             {

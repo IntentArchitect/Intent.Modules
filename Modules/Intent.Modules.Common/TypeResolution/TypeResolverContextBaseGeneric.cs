@@ -150,6 +150,33 @@ namespace Intent.Modules.Common.TypeResolution
             return resolvedTypeInfo;
         }
 
+        /// <inheritdoc />
+        public IList<IResolvedTypeInfo> GetAll(ITypeReference typeReference)
+        {
+            List<IResolvedTypeInfo> resolvedTypeInfo = [];
+            foreach (var classLookup in TypeSources)
+            {
+                var foundClass = classLookup.GetType(typeReference);
+                if (foundClass == null)
+                {
+                    continue;
+                }
+
+                var collectionFormatter = classLookup.CollectionFormatter ?? DefaultCollectionFormatter;
+                resolvedTypeInfo.Add(Get(foundClass, typeReference.GenericTypeParameters, null));
+            }
+
+            if (resolvedTypeInfo.Count == 0)
+            {
+                resolvedTypeInfo.Add(ResolveType(
+                    typeReference: typeReference,
+                    nullableFormatter: DefaultNullableFormatter,
+                    null));
+            }
+
+            return resolvedTypeInfo;
+        }
+
         /// <summary>
         /// Resolve a <typeparamref name="TResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
         /// </summary>

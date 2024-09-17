@@ -78,6 +78,13 @@ namespace Intent.Modules.Common.TypeResolution
             AddTypeSource(typeSource, contextName);
         }
 
+        public IList<IResolvedTypeInfo> GetAll(ITypeReference typeInfo)
+        {
+            var context = InContext(DEFAULT_CONTEXT);
+
+            return context.GetAll(typeInfo);
+        }
+
         public ITypeResolverContext InContext(string contextName)
         {
             if (!_contexts.ContainsKey(contextName))

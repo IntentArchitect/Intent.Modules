@@ -18,9 +18,9 @@ namespace Intent.Modules.Common.TypeResolution
 
         /// <summary>
         /// Returns a new <see cref="IResolvedTypeInfo"/> with the original
-        /// <paramref name="typeInfo"/> embedded within it.
+        /// <paramref name="typeReference"/> embedded within it.
         /// </summary>
-        IResolvedTypeInfo ApplyTo(IResolvedTypeInfo typeInfo);
+        IResolvedTypeInfo ApplyTo(IResolvedTypeInfo typeReference);
     }
 
     /// <summary>
@@ -30,9 +30,9 @@ namespace Intent.Modules.Common.TypeResolution
     {
         /// <summary>
         /// Return the provided <paramref name="type"/> formatted as a nullable type while taking
-        /// into account information in the provided <paramref name="typeInfo"/>.
+        /// into account information in the provided <paramref name="typeReference"/>.
         /// </summary>
-        string AsNullable(IResolvedTypeInfo typeInfo, string type);
+        string AsNullable(IResolvedTypeInfo typeReference, string type);
     }
 
     /// <summary>
@@ -90,16 +90,16 @@ namespace Intent.Modules.Common.TypeResolution
         IResolvedTypeInfo Get(IClassProvider classProvider);
 
         /// <summary>
-        /// Resolves the type information for the specified <paramref name="typeInfo"/>
+        /// Resolves the type information for the specified <paramref name="typeReference"/>
         /// </summary>
-        IResolvedTypeInfo Get(ITypeReference typeInfo);
+        IResolvedTypeInfo Get(ITypeReference typeReference);
 
         /// <summary>
-        /// Resolves the type information for the specified <paramref name="typeInfo"/>
+        /// Resolves the type information for the specified <paramref name="typeReference"/>
         /// </summary>
-        /// <param name="typeInfo">The type for which to resolve.</param>
-        /// <param name="collectionFormat">The collection format provided if the typeInfo.IsCollection is true</param>
-        IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat);
+        /// <param name="typeReference">The type for which to resolve.</param>
+        /// <param name="collectionFormat">The collection format provided if the typeReference.IsCollection is true</param>
+        IResolvedTypeInfo Get(ITypeReference typeReference, string collectionFormat);
 
         /// <summary>
         /// Resolves the type information for the specified <paramref name="element"/>
@@ -110,8 +110,13 @@ namespace Intent.Modules.Common.TypeResolution
         /// Resolves the type information for the specified <paramref name="element"/>
         /// </summary>
         /// <param name="element">The type for which to resolve.</param>
-        /// <param name="collectionFormat">The collection format provided if the typeInfo.IsCollection is true</param>
+        /// <param name="collectionFormat">The collection format provided if the typeReference.IsCollection is true</param>
         IResolvedTypeInfo Get(ICanBeReferencedType element, string collectionFormat);
+
+        /// <summary>
+        /// Resolves all types info in the order of the supplied <see cref="ITypeSource"/>(s) for the specified <paramref name="typeReference"/>
+        /// </summary>
+        IList<IResolvedTypeInfo> GetAll(ITypeReference typeReference);
 
         /// <summary>
         /// Returns a <see cref="ITypeResolverContext"/> that resolves the type using the

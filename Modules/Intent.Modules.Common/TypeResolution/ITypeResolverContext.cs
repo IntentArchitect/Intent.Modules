@@ -14,21 +14,26 @@ namespace Intent.Modules.Common.TypeResolution
         IResolvedTypeInfo Get(IClassProvider classProvider);
 
         /// <summary>
-        /// Resolves the type name for the specified <paramref name="typeInfo"/>
+        /// Resolves the type name for the specified <paramref name="typeReference"/>
         /// </summary>
-        IResolvedTypeInfo Get(ITypeReference typeInfo);
+        IResolvedTypeInfo Get(ITypeReference typeReference);
 
         /// <summary>
-        /// Resolves the type name for the specified <paramref name="typeInfo"/>
+        /// Resolves all types info in the order of the supplied <see cref="ITypeSource"/>(s) for the specified <paramref name="typeReference"/>
+        /// </summary>
+        IList<IResolvedTypeInfo> GetAll(ITypeReference typeReference);
+
+        /// <summary>
+        /// Resolves the type name for the specified <paramref name="typeReference"/>
         /// </summary>
         /// <param name="collectionFormat">The collection format to be applied if the typeInfo.IsCollection is true</param>
-        IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat);
+        IResolvedTypeInfo Get(ITypeReference typeReference, string collectionFormat);
 
         /// <summary>
-        /// Resolves the type name for the specified <paramref name="typeInfo"/>
+        /// Resolves the type name for the specified <paramref name="typeReference"/>
         /// </summary>
         /// <param name="collectionFormatter">The collection formatter to be applied if the typeInfo.IsCollection is true</param>
-        IResolvedTypeInfo Get(ITypeReference typeInfo, ICollectionFormatter collectionFormatter);
+        IResolvedTypeInfo Get(ITypeReference typeReference, ICollectionFormatter collectionFormatter);
 
         /// <summary>
         /// Obsolete. This method will be removed, please notify Intent Architect should have a need for this.

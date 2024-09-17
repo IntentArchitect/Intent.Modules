@@ -108,15 +108,20 @@ public class ConstructorMapping : CSharpMappingBase
 		//for Elements mapped to a metadata constructor, use the constructors meta data class to find its template and get the CSharp constructor
 		constructor = null;
 		// Model assumes to be the Constructor element and it needs to access the owner of this Constructor to fetch the Template
-		var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
-		// Determine if this model is a constructor on the class:
-		if (typeTemplate?.CSharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpConstructor ctor)
-		{
-			_template.AddUsing(typeTemplate.Namespace);
-			constructor = ctor;
-			return true;
+		var foundTemplates = _template.GetAllTypeInfo(((IElement)Model).ParentElement.AsTypeReference())
+            .Select(x => x.Template).OfType<ICSharpFileBuilderTemplate>().ToList();
+        foreach (var foundTemplate in foundTemplates)
+        {
+            // Determine if this model is a constructor on the class:
+            if (foundTemplate?.CSharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is CSharpConstructor ctor)
+            {
+                _template.AddUsing(foundTemplate.Namespace);
+                constructor = ctor;
+                return true;
 
-		}
+            }
+        }
+
 
 		//This is for implicit constructors.. use the model to find the template and find it's public constructor with the most arguments 
 		if (!((IElement)Model).ChildElements.Any() && Model.TypeReference != null)

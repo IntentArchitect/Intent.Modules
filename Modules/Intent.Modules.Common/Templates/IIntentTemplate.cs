@@ -1,5 +1,6 @@
 ﻿#nullable enable
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
@@ -45,4 +46,11 @@ public interface IIntentTemplate : ITemplate
     bool TryGetTemplate<TTemplate>(string templateId, IMetadataModel model, out TTemplate template)
         where TTemplate : class;
     IResolvedTypeInfo GetTypeInfo(ITypeReference typeReference, string? collectionFormat = null);
+
+    /// <summary>
+    /// Resolves all found <see cref="IResolvedTypeInfo"/> objects in the order of the supplied <see cref="ITypeSource"/>(s) for the specified <paramref name="typeReference"/>
+    /// <see cref="ITypeSource"/>(s) are added to this template with the <see cref="AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> method.
+    /// The order in which they are added will determine the order in which this result list is ordered, if those <see cref="ITypeSource"/>(s) resolve a type.
+    /// </summary>
+    IList<IResolvedTypeInfo> GetAllTypeInfo(ITypeReference typeReference);
 }

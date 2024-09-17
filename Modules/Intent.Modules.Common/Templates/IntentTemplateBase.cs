@@ -570,6 +570,11 @@ namespace Intent.Modules.Common.Templates
             return Types.Get(typeReference, collectionFormat);
         }
 
+        public IList<IResolvedTypeInfo> GetAllTypeInfo(ITypeReference typeReference)
+        {
+            return Types.GetAll(typeReference);
+        }
+
         /// <summary>
         /// Resolves an <see cref="IResolvedTypeInfo"/> for the provided <paramref name="templateId"/>
         /// and <paramref name="model"/> parameters.
