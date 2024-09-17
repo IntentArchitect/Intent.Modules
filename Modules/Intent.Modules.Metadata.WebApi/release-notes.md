@@ -1,9 +1,12 @@
-﻿### Version 4.5.6
+﻿### Version 4.5.7
+
+- Fixed: Queries and Service Operations exposed as HTTP endpoints will now set `Return Type Mediatype` to `application/json` for primitive return types.
+
+### Version 4.5.6
 
 - Improvement: Added support for customizing Success Response Code.
 
 ### Version 4.5.5
-
 
 - Improvement: Improved service security modeling experience.
 - Improvement: Added an _Ignore_ option to the _OpenAPI Settings_ stereotype. Modules (e.g. _Intent.AspNetCore.Controllers_) can use this property to know to apply the relevant annotations to prevent API endpoints from being generated in OpenAPI specifications.

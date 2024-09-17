@@ -217,8 +217,10 @@ function getRoute(serviceBaseName) {
     return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
 }
 function applyHttpSettingsToOperations(operation) {
+    var _a;
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
     const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
     if (!operation.hasStereotype(httpSettingsId)) {
         operation.addStereotype(httpSettingsId);
     }
@@ -252,7 +254,11 @@ function applyHttpSettingsToOperations(operation) {
             parameter.addStereotype(parameterSettingsId);
         }
     });
+    if (((_a = operation.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
 }
+/// &lt;reference path="shared.ts" /&gt;
 /**
  * Used by Intent.Modules\Modules\Intent.Metadata.WebApi
  *
@@ -664,8 +670,10 @@ function getRoute(serviceBaseName) {
     return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
 }
 function applyHttpSettingsToOperations(operation) {
+    var _a;
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
     const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
     if (!operation.hasStereotype(httpSettingsId)) {
         operation.addStereotype(httpSettingsId);
     }
@@ -699,6 +707,9 @@ function applyHttpSettingsToOperations(operation) {
             parameter.addStereotype(parameterSettingsId);
         }
     });
+    if (((_a = operation.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
 }
 /**
  * Used by Intent.Modules\Modules\Intent.Metadata.WebApi
