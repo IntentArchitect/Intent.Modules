@@ -3666,7 +3666,7 @@ function getMappedDomainElement(request) {
 /// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
 /// &lt;reference path="../../common/getMappedDomainElement.ts" /&gt;
 function exposeAsHttpEndPoint(request) {
-    var _a;
+    var _a, _b;
     const domainElement = getMappedDomainElement(request);
     // Add the folder parts
     const routeParts = [];
@@ -3687,6 +3687,10 @@ function exposeAsHttpEndPoint(request) {
     const httpSettings = (_a = request.getStereotype(httpSettingsId)) !== null &amp;&amp; _a !== void 0 ? _a : request.addStereotype(httpSettingsId);
     httpSettings.getProperty("Verb").setValue("GET");
     httpSettings.getProperty("Route").setValue(routeParts.join("/"));
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
+    if (((_b = request.typeReference.getType()) === null || _b === void 0 ? void 0 : _b.specialization) == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
 }
 /// &lt;reference path="shared.ts" /&gt;
 /**

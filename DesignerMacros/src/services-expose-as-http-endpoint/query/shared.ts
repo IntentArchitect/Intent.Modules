@@ -30,5 +30,11 @@ function exposeAsHttpEndPoint(request: MacroApi.Context.IElementApi): void {
 
     httpSettings.getProperty("Verb").setValue("GET");
     httpSettings.getProperty("Route").setValue(routeParts.join("/"))
+
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
+
+    if (request.typeReference.getType()?.specialization == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
 }
 

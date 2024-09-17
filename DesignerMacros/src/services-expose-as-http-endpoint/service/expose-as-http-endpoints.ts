@@ -23,6 +23,7 @@ function getRoute(serviceBaseName: string): string {
 function applyHttpSettingsToOperations(operation: MacroApi.Context.IElementApi): void {
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
     const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
 
     if (!operation.hasStereotype(httpSettingsId)) {
         operation.addStereotype(httpSettingsId);
@@ -53,6 +54,10 @@ function applyHttpSettingsToOperations(operation: MacroApi.Context.IElementApi):
             parameter.addStereotype(parameterSettingsId);
         }
     });
+
+    if (operation.typeReference.getType()?.specialization == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
 }
 
 
