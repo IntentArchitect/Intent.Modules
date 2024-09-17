@@ -32,10 +32,8 @@ public class MethodInvocationMapping : CSharpMappingBase
     public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
     {
 		var invocation = new CSharpInvocationStatement(GetTargetPathExpression());
-
-		var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpTemplate;
 		// Determine if this model is a method on the class:
-		if (TryGetMethodDeclaration(typeTemplate, out var method))
+		if (TryGetMethodDeclaration(_template, out var method))
         {
 			foreach (var parameter in method.Parameters)
 			{
@@ -82,17 +80,22 @@ public class MethodInvocationMapping : CSharpMappingBase
 
 	private bool TryGetMethodDeclaration(ICSharpTemplate typeTemplate, out ICSharpMethodDeclaration method)
 	{
-		if (typeTemplate?.RootCodeContext?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is ICSharpMethodDeclaration member)
-		{
-			method = member;
-			return true;
-		}
+        var foundTemplates = _template.GetAllTypeInfo(((IElement)Model).ParentElement.AsTypeReference())
+            .Select(x => x.Template).OfType<ICSharpTemplate>().ToList();
+        foreach (var foundTemplate in foundTemplates)
+        {
+            if (foundTemplate?.RootCodeContext?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is ICSharpMethodDeclaration member)
+            {
+                method = member;
+                return true;
+            }
+        }
 
-		// For backward compatibility and safety reasons (otherwise the above should be sufficient)
+        // For backward compatibility and safety reasons (otherwise the above should be sufficient)
 		// TODO: Test taking this and running it against all the tests:
         if (typeTemplate is ICSharpFileBuilderTemplate fileBuilderTemplate)
         {
-            if (fileBuilderTemplate?.CSharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out reference) == true && reference is ICSharpMethodDeclaration classMethod)
+            if (fileBuilderTemplate?.CSharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is ICSharpMethodDeclaration classMethod)
             {
                 method = classMethod;
                 return true;
