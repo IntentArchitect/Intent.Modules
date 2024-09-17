@@ -100,7 +100,8 @@ namespace convertToAdvancedMapping {
                 //console.warn("targetPathIds : " + targetPathIds);    
                 //console.warn("sourceAdd : " + field.id);
                 //console.warn("targetAdd : " + field.getMapping().getPath().map(x => x.id));    
-                mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)))
+                mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)));
+                updateElementWithMappedElement(field);
             }
             if (field.typeReference.getType()?.specialization == "DTO") {
                 mapContract(mappingType, root, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x => x.id)), mapping);
@@ -114,5 +115,17 @@ namespace convertToAdvancedMapping {
         return dto.specialization == "Command" &&
             field.getMapping().getElement().hasStereotype("Primary Key") &&
             (!field.getMapping().getElement().getStereotype("Primary Key").hasProperty("Data source") || field.getMapping().getElement().getStereotype("Primary Key").getProperty("Data source").value != "User supplied");
+    }
+
+    function updateElementWithMappedElement(field: MacroApi.Context.IElementApi) {
+        let lastMappedPathElement = field.getMapping().getPath().slice(-1)[0];
+        if (!lastMappedPathElement) {
+            return;
+        }
+        let mappedElement = lastMappedPathElement.getElement();
+        if (!mappedElement) {
+            return;
+        }
+        field.typeReference.setIsNullable(mappedElement.typeReference.isNullable);
     }
 }
