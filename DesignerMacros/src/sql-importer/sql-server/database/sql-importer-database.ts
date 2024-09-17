@@ -134,7 +134,11 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
         fieldType: "select",
         label: "Stored Procedure Representation",
         value: defaults.storedProcedureType,
-        selectOptions: [{id: "Default", description: "(Default)"}, {id: "StoredProcedureElement", description: "Stored Procedure Element"}, {id: "RepositoryOperation", description: "Stored Procedure Operation"}]
+        selectOptions: [
+            {id: "Default", description: "(Default)"}, 
+            {id: "StoredProcedureElement", description: "Stored Procedure Element"}, 
+            {id: "RepositoryOperation", description: "Stored Procedure Operation"}
+        ]
     };
 
     let formConfig: MacroApi.Context.IDynamicFormConfig = {
