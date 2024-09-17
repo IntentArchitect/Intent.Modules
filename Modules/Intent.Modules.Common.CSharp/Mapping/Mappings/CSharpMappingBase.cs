@@ -381,16 +381,19 @@ public abstract class CSharpMappingBase : ICSharpMapping
                     //typeReference = mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.AsTypeReference();
                 }
 
+                var found = false;
                 var foundSubTypeTemplates = Template.GetAllTypeInfo(typeReference).Select(x => x.Template).OfType<ICSharpFileBuilderTemplate>();
                 foreach (var foundSubTypeTemplate in foundSubTypeTemplates)
                 {
-                    if (foundSubTypeTemplate?.CSharpFile.TypeDeclarations.First().TryGetReferenceForModel(pathTarget.Id, out reference) == true)
+                    if (foundSubTypeTemplate.CSharpFile.TypeDeclarations.First().TryGetReferenceForModel(pathTarget.Id, out reference) == true)
                     {
                         csharpElement = (ICSharpCodeContext)reference;
+                        found = true;
+                        break;
                     }
                 }
 
-                if (csharpElement is not null)
+                if (found)
                 {
                     continue;
                 }
