@@ -1,3 +1,9 @@
+### Version 1.1.6
+
+- Fixed: Advanced mapping created on Commands/Queries' Fields to Class Attributes that are nullable.
+- Fixed: Advanced mapping created on Standard Services DTO Fields to Class Attributes that are nullable.
+- Fixed: Standard Service DTO mapping on Domain Associations that are Value Objects.
+
 ### Version 1.1.5
 
 - Improvement: CQRS CRUD script now supports surrogate Primary keys marked as `User supplied`.
