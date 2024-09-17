@@ -11,7 +11,13 @@ function onMapDto(element: MacroApi.Context.IElementApi, folder: MacroApi.Contex
 
     fields.forEach(f => {
         let targetMappingSettingId = f.getParent().getMapping().mappingSettingsId;
-        let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(element, f.getMapping().getElement().typeReference.getType(), dtoPrefix), f.getMapping().getElement(), autoAddPrimaryKey, targetMappingSettingId, folder, inbound);
+        let newDto = CrudHelper.getOrCreateCrudDto(
+            CrudHelper.getName(element, f.getMapping().getElement().typeReference.getType(), dtoPrefix), 
+            f.getMapping().getElement().typeReference.getType(), 
+            autoAddPrimaryKey, 
+            targetMappingSettingId, 
+            folder, 
+            inbound);
         f.typeReference.setType(newDto.id);
     });        
 
@@ -21,7 +27,13 @@ function onMapDto(element: MacroApi.Context.IElementApi, folder: MacroApi.Contex
 
     complexAttributes.forEach(f => {
         let targetMappingSettingId = f.getParent().getMapping().mappingSettingsId;
-        let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(element, f.getMapping().getElement(), dtoPrefix), f.getMapping().getElement().typeReference.getType(), false, targetMappingSettingId, folder, inbound);
+        let newDto = CrudHelper.getOrCreateCrudDto(
+            CrudHelper.getName(element, f.getMapping().getElement(), dtoPrefix), 
+            f.getMapping().getElement().typeReference.getType(), 
+            false, 
+            targetMappingSettingId, 
+            folder, 
+            inbound);
         f.typeReference.setType(newDto.id);
     });
 }
