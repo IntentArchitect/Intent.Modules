@@ -28,7 +28,7 @@ async function importSqlStoredProcedure(element: MacroApi.Context.IElementApi): 
         id: "connectionString",
         fieldType: "text",
         label: "Connection String",
-        placeholder: "(optional if inherited)",
+        placeholder: "(optional if inherited setting)",
         hint: null,
         value: defaults.connectionString
     };
@@ -39,7 +39,7 @@ async function importSqlStoredProcedure(element: MacroApi.Context.IElementApi): 
         label: "Stored Procedure Representation",
         value: defaults.storedProcedureType,
         selectOptions: [
-            {id: "", description: "(default)"},
+            {id: "", description: "(default or inherited setting)"},
             {id: "StoredProcedureElement", description: "Stored Procedure Element"},
             {id: "RepositoryOperation", description: "Stored Procedure Operation"}
         ]
