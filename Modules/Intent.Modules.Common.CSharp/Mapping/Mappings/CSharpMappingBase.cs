@@ -385,7 +385,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 var foundSubTypeTemplates = Template.GetAllTypeInfo(typeReference).Select(x => x.Template).OfType<ICSharpFileBuilderTemplate>();
                 foreach (var foundSubTypeTemplate in foundSubTypeTemplates)
                 {
-                    if (foundSubTypeTemplate.CSharpFile.TypeDeclarations.First().TryGetReferenceForModel(pathTarget.Id, out reference) == true)
+                    if (foundSubTypeTemplate.RootCodeContext.TryGetReferenceForModel(pathTarget.Id, out reference) == true)
                     {
                         csharpElement = (ICSharpCodeContext)reference;
                         found = true;
