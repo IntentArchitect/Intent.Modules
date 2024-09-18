@@ -317,6 +317,24 @@ public abstract class CSharpMappingBase : ICSharpMapping
         return result;
     }
 
+    protected CSharpStatement GetNullableAwareInstantiation(ICanBeReferencedType model, IList<ICSharpMapping> children, CSharpStatement instantiationStatement)
+    {
+        // Only go for Target Elements that are Nullable and that have children who's Source mappings have a Map path length that is beyond the root Element.
+        // e.g. We won't target "request.FieldName" (flat mappings pose problems) but rather "request.NavProp.FieldName" for source elements.
+        if (model is IElement end &&
+            end.TypeReference is { IsNullable: true, IsCollection: false } &&
+            children.All(c => c.Mapping.SourcePath.SkipLast(1).Count() > 1) &&
+            GetSourcePath().Last().Element.TypeReference.IsNullable)
+        {
+            // GCB - this code (now commented out) was seriously hacky and broke in a simple use case of assigning a DTO to a Model (UI)
+            //var child = children.First();
+            //var accessPath = child.Mapping.SourcePath.SkipLast(1).Select(s => child.TryGetSourceReplacement(s.Element, out var a) ? a : s.Name).ToArray();
+            return new CSharpConditionalExpressionStatement($"{GetSourcePathText(GetSourcePath())} is not null", instantiationStatement, "null");
+        }
+
+        return instantiationStatement;
+    }
+
     private bool TryGetReference(IList<IElementMappingPathTarget> mappingPath, out IHasCSharpName reference)
     {
         reference = null;

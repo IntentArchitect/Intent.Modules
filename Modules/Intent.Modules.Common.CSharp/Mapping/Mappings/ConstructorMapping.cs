@@ -73,8 +73,8 @@ public class ConstructorMapping : CSharpMappingBase
 
         //This is not ideal and a best effort to realize your mapping
 
-		// Implicit constructor (this assumes a 1->1 mapping in the exact order):
-		var init = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
+        // Implicit constructor (this assumes a 1->1 mapping in the exact order):
+        var init = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
             ? new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}").WithoutSemicolon()
             : new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model)}").WithoutSemicolon();
 
@@ -100,7 +100,7 @@ public class ConstructorMapping : CSharpMappingBase
 
     public override IEnumerable<CSharpStatement> GetMappingStatements()
     {
-        yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
+        yield return new CSharpAssignmentStatement(GetTargetStatement(), GetNullableAwareInstantiation(Model, Children, GetSourceStatement()));
     }
 
 	private bool TryFindModelConstructor(out CSharpConstructor constructor)
