@@ -46,4 +46,6 @@ public class CSharpStatementBlock : CSharpStatement, IHasCSharpStatements
         var reformatted = string.Join("\n", lines);
         return reformatted;
     }
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => true;
 }

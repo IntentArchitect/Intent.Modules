@@ -4,11 +4,11 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpAssignmentStatement : CSharpStatement, IHasCSharpStatements
 {
-
     public CSharpAssignmentStatement(CSharpStatement lhs, CSharpStatement rhs) : base(null)
     {
         Lhs = lhs;
         Rhs = rhs;
+        Rhs.Parent = this;
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;
     }
 
@@ -21,4 +21,6 @@ public class CSharpAssignmentStatement : CSharpStatement, IHasCSharpStatements
     {
         return $@"{RelativeIndentation}{Lhs.GetText(indentation).TrimEnd()} = {Rhs.GetText(indentation).TrimStart()}{TrailingCharacter?.ToString() ?? ""}";
     }
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => Parent?.IsCodeBlock ?? false;
 }

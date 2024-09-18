@@ -39,4 +39,6 @@ public class CSharpMethodChainStatement : CSharpStatement, IHasCSharpStatements
     {
         return @$"{indentation}{RelativeIndentation}{Text}{Statements.ConcatCode($"{indentation}{RelativeIndentation}    ", (index, code, ind) => $"{ind}.{code.GetText(ind).TrimStart()}")}{(_withSemicolon ? ";" : "")}";
     }
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => false;
 }

@@ -72,6 +72,16 @@ public static class HasCSharpStatementsExtensions
         return parent.AddStatement(new CSharpFieldAssignmentStatement(lhs, rhs), x => configure?.Invoke(x));
     }
 
+    public static TParent AddAssignmentStatement<TParent, TStatement>(this TParent parent, string lhs, TStatement rhs, Action<TStatement> configure = null)
+        where TParent : IHasCSharpStatementsActual
+        where TStatement : CSharpStatement
+    {
+        parent.AddStatement(new CSharpAssignmentStatement(lhs, rhs));
+        configure?.Invoke(rhs);
+
+        return parent;
+    }
+
     /// <summary>
     /// Create <see cref="CSharpInvocationStatement"/> within <see cref="parent"/>'s Statements.
     /// Not to be confused with <see cref="HasCSharpStatementsExtensions.AddInvocation"/>.

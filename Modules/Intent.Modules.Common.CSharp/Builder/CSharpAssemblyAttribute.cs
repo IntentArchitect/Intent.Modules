@@ -61,4 +61,6 @@ public class CSharpAssemblyAttribute : CSharpMetadataBase<CSharpAssemblyAttribut
     {
         return GetText(string.Empty);
     }
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => false;
 }

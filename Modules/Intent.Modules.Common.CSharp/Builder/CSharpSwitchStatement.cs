@@ -39,4 +39,6 @@ public class CSharpSwitchStatement : CSharpStatement, IHasCSharpStatements
         sb.Append($"{indentation}{RelativeIndentation}}}");
         return sb.ToString();
     }
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => false;
 }

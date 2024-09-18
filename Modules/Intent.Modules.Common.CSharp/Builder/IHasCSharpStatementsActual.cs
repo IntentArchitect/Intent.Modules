@@ -12,6 +12,10 @@ namespace Intent.Modules.Common.CSharp.Builder;
 /// </summary>
 public interface IHasCSharpStatementsActual
 {
+    /// <summary>
+    /// Can be used by statement specializations to know whether they should automatically add a semicolon at their end.
+    /// </summary>
+    bool IsCodeBlock => false;
     IList<ICSharpStatement> Statements { get; }
 }
 

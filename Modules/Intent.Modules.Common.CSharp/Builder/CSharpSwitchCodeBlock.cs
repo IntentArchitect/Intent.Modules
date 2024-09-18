@@ -80,4 +80,6 @@ public class CSharpSwitchCodeBlock : CSharpStatement, IHasCSharpStatements
         }
         return sb.ToString();
     }
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => false;
 }

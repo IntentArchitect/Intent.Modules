@@ -394,6 +394,8 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         return $"<{string.Join(", ", GenericParameters)}>";
     }
 
+    bool IHasCSharpStatementsActual.IsCodeBlock => true;
+
     #region ICSharpInterfaceMethod implementation
 
     ICSharpInterfaceMethodDeclaration ICSharpDeclaration<ICSharpInterfaceMethodDeclaration>.AddAttribute(string name, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(name, configure);

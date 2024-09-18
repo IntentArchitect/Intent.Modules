@@ -485,6 +485,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
         return $"<{string.Join(", ", GenericParameters)}>";
     }
 
+    bool IHasCSharpStatementsActual.IsCodeBlock => true;
+
     #region ICSharpMethodDeclarationActual implementation
 
     ICSharpClassMethodDeclaration ICSharpDeclaration<ICSharpClassMethodDeclaration>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(attribute, configure);

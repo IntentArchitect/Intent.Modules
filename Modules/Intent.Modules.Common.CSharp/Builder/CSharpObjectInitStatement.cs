@@ -20,4 +20,6 @@ public class CSharpObjectInitStatement : CSharpStatement, IHasCSharpStatements
     {
         return $@"{indentation}{RelativeIndentation}{_lhs} = {_rhs.GetText(indentation).TrimStart()}";
     }
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => false;
 }

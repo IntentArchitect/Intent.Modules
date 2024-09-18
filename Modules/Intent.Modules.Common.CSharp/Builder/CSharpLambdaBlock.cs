@@ -45,4 +45,6 @@ public class CSharpLambdaBlock : CSharpStatement, IHasCSharpStatements
 {indentation}{RelativeIndentation}{{{Statements.ConcatCode($"{indentation}{RelativeIndentation}    ")}
 {indentation}{RelativeIndentation}}}{(_withSemicolon ? ";" : string.Empty)}";
     }
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => true;
 }

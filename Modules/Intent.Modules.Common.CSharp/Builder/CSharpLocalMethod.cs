@@ -394,6 +394,8 @@ public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, ICSharpL
         return GetText(indentation: string.Empty);
     }
 
+    bool IHasCSharpStatementsActual.IsCodeBlock => false;
+
     #region ICSharpLocalFunction implementation
 
     ICSharpLocalFunction ICSharpMethod<ICSharpLocalFunction>.AddGenericParameter(string typeName, out ICSharpGenericParameter param) => _wrapper.AddGenericParameter(typeName, out param);

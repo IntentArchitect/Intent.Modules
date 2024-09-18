@@ -53,6 +53,8 @@ public class CSharpAttribute : CSharpMetadataBase<CSharpAttribute>, ICSharpAttri
         return GetText(string.Empty);
     }
 
+    bool IHasCSharpStatementsActual.IsCodeBlock => false;
+
     #region ICSharpAttribute
 
     ICSharpAttribute ICSharpAttribute.FindAndReplace(string find, string replaceWith) =>

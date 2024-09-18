@@ -7,6 +7,7 @@ namespace Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 internal class CSharpConstructorWrapper(CSharpConstructor wrapped) :
     CSharpMemberWrapper<CSharpConstructor, ICSharpConstructor>(wrapped), ICSharpConstructor
 {
+    bool IHasCSharpStatementsActual.IsCodeBlock => ((IHasCSharpStatementsActual)wrapped).IsCodeBlock;
     IList<ICSharpStatement> IHasCSharpStatementsActual.Statements => new WrappedList<CSharpStatement, ICSharpStatement>(wrapped.Statements);
 
     ICSharpClass ICSharpConstructor.Class => wrapped.Class;

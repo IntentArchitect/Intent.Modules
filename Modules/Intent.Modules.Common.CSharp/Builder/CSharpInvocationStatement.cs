@@ -44,6 +44,36 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
         return AddArgument((CSharpStatement)argument, configure != null ? x => configure((CSharpArgument)x) : null);
     }
 
+    public CSharpInvocationStatement AddArgument<T>(T argument, Action<T> configure = null) where T : CSharpStatement
+    {
+        argument.Parent = this;
+        Statements.Add(argument);
+        argument.BeforeSeparator = _defaultArgumentSeparator;
+        argument.AfterSeparator = CSharpCodeSeparatorType.None;
+        configure?.Invoke(argument);
+        return this;
+    }
+
+    public CSharpInvocationStatement AddArgument<T>(string name, T statement, Action<T> configure = null) where T : CSharpStatement
+    {
+        var argument = new CSharpArgument(statement);
+        AddArgument(argument);
+        argument.WithName(name);
+        configure?.Invoke(statement);
+
+        return this;
+    }
+
+    public CSharpInvocationStatement AddArgument(string name, string statement, Action<CSharpStatement> configure = null)
+    {
+        var argument = new CSharpArgument(statement);
+        AddArgument(argument);
+        argument.WithName(name);
+        configure?.Invoke(statement);
+
+        return this;
+    }
+
     public CSharpInvocationStatement WithArgumentsOnNewLines()
     {
         foreach (var argument in Statements)
@@ -111,4 +141,6 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
             ? string.Empty
             : "    ";
     }
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => false;
 }

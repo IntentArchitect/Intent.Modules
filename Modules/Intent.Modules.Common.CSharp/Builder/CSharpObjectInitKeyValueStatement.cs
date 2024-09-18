@@ -19,4 +19,6 @@ public class CSharpObjectInitKeyValueStatement : CSharpStatement, IHasCSharpStat
     {
         return $@"{indentation}{{ {_key.GetText("")}, {_value.GetText("")} }}";
     }
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => false;
 }

@@ -227,6 +227,8 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
         }
     }
 
+    bool IHasCSharpStatementsActual.IsCodeBlock => true;
+
     #region ICSharpConstructor implementation
 
     ICSharpClass ICSharpConstructor.Class => _wrapper.Class;

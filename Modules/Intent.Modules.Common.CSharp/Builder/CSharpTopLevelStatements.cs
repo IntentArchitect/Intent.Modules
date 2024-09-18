@@ -93,4 +93,6 @@ public class CSharpTopLevelStatements : CSharpMetadataBase<CSharpTopLevelStateme
     {
         return Statements.ConcatCode(string.Empty).TrimStart();
     }
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => true;
 }

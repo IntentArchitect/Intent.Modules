@@ -86,4 +86,6 @@ public class CSharpLocalMethodWrapper(CSharpLocalMethod wrapped) : ICSharpLocalF
     string IHasCSharpName.Name => wrapped.Name;
     IList<ICSharpStatement> IHasCSharpStatementsActual.Statements => new WrappedList<CSharpStatement, ICSharpStatement>(wrapped.Statements);
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => wrapped.Parameters;
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => false;
 }

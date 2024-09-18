@@ -86,6 +86,7 @@ internal class CSharpClassMethodWrapper(CSharpClassMethod wrapped) :
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Virtual() => wrapped.Virtual();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.WithoutAccessModifier() => wrapped.WithoutAccessModifier();
     string IHasCSharpName.Name => wrapped.Name;
+    bool IHasCSharpStatementsActual.IsCodeBlock => ((IHasCSharpStatementsActual)wrapped).IsCodeBlock;
     IList<ICSharpStatement> IHasCSharpStatementsActual.Statements => new WrappedList<CSharpStatement, ICSharpStatement>(wrapped.Statements);
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => wrapped.Parameters;
 }

@@ -808,4 +808,72 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task CollectionExpressionStatementSingleLine()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddAssignmentStatement("var items", new CSharpCollectionExpression("List<(string, string)>"), collection =>
+                    {
+                        collection.AddItem("(1, 2)");
+                        collection.AddItem("(3, 4)");
+                    });
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task CollectionExpressionArgumentSingleLine()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddStatement(new CSharpInvocationStatement("SomeMethod"), invocation =>
+                    {
+                        invocation.AddArgument(new CSharpCollectionExpression(), collection =>
+                        {
+                            collection.AddItem("(1, 2)");
+                            collection.AddItem("(3, 4)");
+                        });
+                    });
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task CollectionExpressionArgumentMultipleLines()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddStatement(new CSharpInvocationStatement("SomeMethod"), invocation =>
+                    {
+                        invocation.AddArgument(new CSharpCollectionExpression(), collection =>
+                        {
+                            for (var i = 0; i < 10; i++)
+                            {
+                                collection.AddItem($"new SomePrettyLongNamedType({i})");
+                            }
+                        });
+                    });
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

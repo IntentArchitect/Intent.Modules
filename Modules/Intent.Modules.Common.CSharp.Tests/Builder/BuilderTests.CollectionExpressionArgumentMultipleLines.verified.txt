@@ -1,0 +1,23 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public void TestMethod()
+        {
+            SomeMethod([
+                new SomePrettyLongNamedType(0),
+                new SomePrettyLongNamedType(1),
+                new SomePrettyLongNamedType(2),
+                new SomePrettyLongNamedType(3),
+                new SomePrettyLongNamedType(4),
+                new SomePrettyLongNamedType(5),
+                new SomePrettyLongNamedType(6),
+                new SomePrettyLongNamedType(7),
+                new SomePrettyLongNamedType(8),
+                new SomePrettyLongNamedType(9)
+            ]);
+        }
+    }
+}

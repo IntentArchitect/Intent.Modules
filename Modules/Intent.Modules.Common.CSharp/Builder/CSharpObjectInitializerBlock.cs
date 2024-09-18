@@ -49,4 +49,6 @@ public class CSharpObjectInitializerBlock : CSharpStatement, IHasCSharpStatement
         return @$"{initialization + Environment.NewLine}{indentation}{RelativeIndentation}{{{Statements.JoinCode(",", $"{indentation}{RelativeIndentation}    ")}
 {indentation}{RelativeIndentation}}}{(_withSemicolon ? ";" : "")}";
     }
+
+    bool IHasCSharpStatementsActual.IsCodeBlock => false;
 }
