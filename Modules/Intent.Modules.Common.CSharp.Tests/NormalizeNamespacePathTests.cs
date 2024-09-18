@@ -440,5 +440,50 @@ namespace Intent.Modules.Common.CSharp.Tests
 			result.ShouldBe("MyProject.Entities");
 		}
 
-	}
+        [Fact]
+        public void Scenario20NestedClass()
+        {
+            var knownTypes = new TypeRegistry(Enumerable.Empty<string>());
+            knownTypes.Add("Namespace0.Sub", "Class1");
+            knownTypes.Add("Namespace0.Sub", "Class1.ChildClass");
+            var result = CSharpTemplateBase.NormalizeNamespace(
+                localNamespace: "Namespace0.Hello",
+                fullyQualifiedType: "Namespace0.Sub.Class1.ChildClass",
+                knownOtherNamespaceNames: new[]
+                {
+                    "Namespace1.TypeName",
+                },
+                usingPaths: new[]
+                {
+                    "Namespace1",
+                },
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: knownTypes);
+
+            Assert.Equal("Sub.Class1.ChildClass", result);
+        }
+        [Fact]
+        public void Scenario21NestedClass()
+        {
+            var knownTypes = new TypeRegistry(Enumerable.Empty<string>());
+            knownTypes.Add("Namespace0.Sub", "Class1");
+            knownTypes.Add("Namespace0.Sub", "Class1.ChildClass");
+            var result = CSharpTemplateBase.NormalizeNamespace(
+                localNamespace: "Namespace0.Sub",
+                fullyQualifiedType: "Namespace0.Sub.Class1.ChildClass",
+                knownOtherNamespaceNames: new[]
+                {
+                    "Namespace1.TypeName",
+                },
+                usingPaths: new[]
+                {
+                    "Namespace1",
+                },
+                outputTargetNames: new TypeRegistry(Enumerable.Empty<string>()),
+                knownTypes: knownTypes);
+
+            Assert.Equal("Class1.ChildClass", result);
+        }
+
+    }
 }
