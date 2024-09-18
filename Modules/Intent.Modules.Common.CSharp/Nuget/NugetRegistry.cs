@@ -25,10 +25,6 @@ namespace Intent.Modules.Common.CSharp.Nuget
 
         public static NugetPackageInfo GetVersion(string packageName, MajorMinorVersion framework)
         {
-            if (packageName == "MediatR")
-            {
-
-            }
             if (!_registrations.TryGetValue(packageName, out var registration))
             {
                 throw new Exception($"NuGet package not registered : `{packageName}`");

@@ -324,7 +324,14 @@ namespace Intent.Modules.Common.CSharp.Templates
             }
 
             var typeNamespace = string.Join('.', typeParts.Take(typeParts.Length - 1));
-            var typeUnqualified = typeParts.Last();
+            var typeUnqualified = string.Join('.', typeParts.Skip(typeParts.Length - 1));
+
+            //Nested Class
+            if (knownTypes.ContainsType(typeNamespace))
+            {
+                typeNamespace = string.Join('.', typeParts.Take(typeParts.Length - 2));
+                typeUnqualified = string.Join('.', typeParts.Skip(Math.Max(0, typeParts.Length - 2)));
+            }
 
             var otherPaths = Enumerable.Empty<string>()
                 .Append(localNamespace)

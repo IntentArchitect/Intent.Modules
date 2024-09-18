@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
@@ -594,13 +595,7 @@ namespace Intent.Modules.Common.Templates
         protected virtual IResolvedTypeInfo GetTypeInfo(string templateId, IMetadataModel model,
             TemplateDiscoveryOptions options = null)
         {
-            var classProvider = GetTemplate<IClassProvider>(templateId, model, options);
-            if (classProvider == null)
-            {
-                return null;
-            }
-
-            return GetTypeInfo(classProvider);
+            return GetTypeInfo(templateId, model.Id, options);
         }
 
         /// <summary>
@@ -622,6 +617,12 @@ namespace Intent.Modules.Common.Templates
         protected virtual IResolvedTypeInfo GetTypeInfo(string templateId, string modelId,
             TemplateDiscoveryOptions options = null)
         {
+            var registryInstance = TemplateInstanceRegistry.GetTypeInfo(templateId, modelId, this, options?.TrackDependency != false);
+            if (registryInstance != null)
+            {
+                return registryInstance;
+            }
+
             var classProvider = GetTemplate<IClassProvider>(templateId, modelId, options);
             if (classProvider == null)
             {
@@ -648,6 +649,12 @@ namespace Intent.Modules.Common.Templates
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
         protected virtual IResolvedTypeInfo GetTypeInfo(string templateId, TemplateDiscoveryOptions options = null)
         {
+            var registryInstance = TemplateInstanceRegistry.GetTypeInfo(templateId, null, this, options?.TrackDependency != false);
+            if (registryInstance != null)
+            {
+                return registryInstance;
+            }
+
             var classProvider = GetTemplate<IClassProvider>(templateId, options);
             if (classProvider == null)
             {

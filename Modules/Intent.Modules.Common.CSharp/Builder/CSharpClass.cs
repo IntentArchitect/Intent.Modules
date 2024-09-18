@@ -8,6 +8,9 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
 using static Intent.Modules.Common.CSharp.Builder.CSharpClass;
+using Intent.Modules.Common.TypeResolution;
+using Intent.Modules.Common.CSharp.TypeResolvers;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -357,6 +360,21 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
             default:
                 throw new ArgumentOutOfRangeException(nameof(codeBlock));
         }
+    }
+
+    public CSharpClass AddNestedClass<TModel>(TModel model, Action<CSharpClass>? configure = null)
+         where TModel
+        : IMetadataModel, IHasName
+    {
+        return AddNestedClass(model, model.Name.ToPascalCase(), configure);
+    }
+
+    public CSharpClass AddNestedClass<TModel>(TModel model, string name, Action<CSharpClass>? configure = null)
+         where TModel
+        : IMetadataModel, IHasName
+    {
+        TemplateInstanceRegistry.Register(new NestedClassTypeInfoResolver(this.File.Template, model, name));
+        return AddNestedClass(name, configure);
     }
 
     public CSharpClass AddNestedClass(string name, Action<CSharpClass>? configure = null)

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeResolution;
 using Intent.Utils;
 
 namespace Intent.Modules.Common.CSharp.FactoryExtensions
@@ -41,6 +43,13 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
             var outputTargetNames = application.OutputTargets.Select(x => x.Name).ToArray();
 
             _knownTypes = new TypeRegistry(knownTypes);
+
+            var instanceRegistryKnownTypes = TemplateInstanceRegistry.GetRegisteredTypes().OfType<CSharpResolvedTypeInfo>();
+            foreach (var otherInstance in instanceRegistryKnownTypes )
+            {
+                _knownTypes.Add(otherInstance.Namespace, otherInstance.Name);
+            }
+
             _outputTargetNames = new TypeRegistry(outputTargetNames);
         }
 

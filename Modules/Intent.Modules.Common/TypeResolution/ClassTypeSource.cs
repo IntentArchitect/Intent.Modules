@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
@@ -137,6 +138,17 @@ namespace Intent.Modules.Common.TypeResolution
 
         private IResolvedTypeInfo TryGetType(ITypeReference typeReference)
         {
+            if (typeReference.Element == null)
+            {
+                return null;
+            }
+
+            var registryInstance = TemplateInstanceRegistry.GetTypeInfo(TemplateId, typeReference.Element.Id, null, false);
+            if (registryInstance != null)
+            {
+                return registryInstance;
+            }
+
             var templateInstance = TryGetTemplateInstance(typeReference);
             if (templateInstance == null)
             {

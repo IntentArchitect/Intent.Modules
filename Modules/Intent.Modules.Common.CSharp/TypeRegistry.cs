@@ -14,18 +14,38 @@ internal class TypeRegistry
             var current = _members;
 
             var split = path.Split('.');
-            foreach (var item in split)
+            for (int i  = 0; i < split.Length; i++)
             {
+                var item = split[i];
                 if (current.ContainsKey(item))
                 {
                     current = current[item];
                 }
                 else
                 {
-                    current[item] = current = new Member();
+                    current[item] = current = new Member( i == split.Length - 1);
                 }
             }
         }
+    }
+
+    public void Add(string @namespace, string typeName)
+    {
+        var current = _members;
+
+        var split = @namespace.Split('.');
+        foreach (var item in split)
+        {
+            if (current.ContainsKey(item))
+            {
+                current = current[item];
+            }
+            else
+            {
+                current[item] = current = new Member(false);
+            }
+        }
+        current[typeName] = new Member(true);
     }
 
     public bool Contains(string @namespace)
@@ -44,6 +64,23 @@ internal class TypeRegistry
         return true;
     }
 
+    public bool ContainsType(string typeName)
+    {
+        var current = _members;
+
+        var split = typeName.Split('.');
+        foreach (var item in split)
+        {
+            if (!current.TryGetValue(item, out current))
+            {
+                return false;
+            }
+        }
+
+        return current.IsType;
+    }
+
+
     public bool Contains(string @namespace, string typeUnqualified)
     {
         var current = _members;
@@ -60,5 +97,12 @@ internal class TypeRegistry
         return current.Count == 0;
     }
 
-    private class Member : Dictionary<string, Member> { }
+    private class Member : Dictionary<string, Member> 
+    {
+        public bool IsType { get; }
+        public Member(bool isType = false)
+        {                
+            IsType = isType;
+        }
+    }
 }

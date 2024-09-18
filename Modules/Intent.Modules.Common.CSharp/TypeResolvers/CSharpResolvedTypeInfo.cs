@@ -47,9 +47,11 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
             IResolvedTypeInfo resolvedTypeInfo,
             IReadOnlyList<CSharpResolvedTypeInfo> genericTypeParameters)
         {
-            var (name, @namespace) = resolvedTypeInfo.Template is IClassProvider classProvider
-                ? (classProvider.ClassName, classProvider.Namespace)
-                : (resolvedTypeInfo.Name, string.Empty);
+            var (name, @namespace) = resolvedTypeInfo is CSharpResolvedTypeInfo x 
+                ? (x.Name, x.Namespace) 
+                : resolvedTypeInfo.Template is IClassProvider classProvider
+                    ? (classProvider.ClassName, classProvider.Namespace)
+                    : (resolvedTypeInfo.Name, string.Empty);
 
             return new CSharpResolvedTypeInfo(
                 name: name,
