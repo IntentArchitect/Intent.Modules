@@ -2,6 +2,11 @@
 
 - Improvement: Certain element types will now show validation errors if their name is not unique.
 - Fixed: Header Names are required fields which will be enforced when Header binding is selected.
+- Fixed: Removed Legacy behaviour where `Services` without `Http Service Settings` stereotypes would result in interpreting the Operations with `Http Settings` to have a base route of `api/[controller]`.
+
+  > ⚠️ NOTE
+  >
+  > If you are using ASP.NET Core Controllers (using the `Intent.AspNetCore.Controllers` module) and you don't want the `[Route("api/[controller]")]` attribute presented on some of your Controllers, ensure you update it to the latest version.  
 
 ### Version 4.5.7
 

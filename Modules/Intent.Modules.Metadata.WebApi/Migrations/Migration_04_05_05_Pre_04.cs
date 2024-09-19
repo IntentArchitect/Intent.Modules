@@ -21,6 +21,9 @@ namespace Intent.Modules.Metadata.WebApi.Builder.Migrations
         public string ModuleId => "Intent.Metadata.WebApi";
         public string ModuleVersion => "4.5.5-pre.4";
 
+        // On Elements that have the Open API stereotype, ensure that the OperationId field
+        // is populated with the "{MethodName}" tag
+        
         public void Up()
         {
             var app = ApplicationPersistable.Load(_configurationProvider.GetApplicationConfig().FilePath);

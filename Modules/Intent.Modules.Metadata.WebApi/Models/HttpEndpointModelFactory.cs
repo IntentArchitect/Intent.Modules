@@ -174,15 +174,9 @@ public static class HttpEndpointModelFactory
             ? serviceSettings.Route
             : defaultBasePath;
 
-        // At present this is hardcoded to accommodate the default for C# and wouldn't work for
-        // other techs like Java which has a fallback convention of kebab-casing the element
-        // name. The ideal fix is to change the Services designer to auto apply a default of
-        // $"api/{service.Name}" to the stereotype's Route property. This improvement to the
-        // designer is being deferred until we start making proxies for other languages.
-        if (baseRoute == null &&
-            element.ParentElement?.SpecializationTypeId == Constants.ElementTypeIds.Service)
+        if (baseRoute == null)
         {
-            baseRoute = "api/[controller]";
+            baseRoute = string.Empty;
         }
 
         return baseRoute;
