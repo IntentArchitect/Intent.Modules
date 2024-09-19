@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="6ac91fd5-206c-49da-b4a2-b6ea2cad11f7" version="3.1.0">
+  <name>Stored Procedure Parameter Settings</name>
+  <targetMode>filter-function</targetMode>
+  <targetTypes />
+  <targetReferenceTypes />
+  <targetFilterFunction>const storedProcedureStereotypeId = "f40ff84c-68ad-405f-bda0-1237dd15fc92";
+
+return element.getParent().hasStereotype(storedProcedureStereotypeId);</targetFilterFunction>
+  <applyMode>manually</applyMode>
+  <icon type="FontAwesome" source="at" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return true;</displayIconFunction>
+  <displayFunction>const words = [];
+
+switch (properties["Direction"].value) {
+    case "In":
+        words.push("in");
+        break;
+    case "Out":
+        words.push("out");
+        break;
+    case "Both":
+        words.push("in/out");
+        break;
+}
+
+if (properties["Name"].value) {
+    words.push(properties["Name"].value);
+}
+
+if (words.length == 0) {
+    return;
+}
+
+return `[${words.join(" ")}]`;
+</displayFunction>
+  <displayAsAnnotation>true</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>8d43d91b-6113-4ee2-bbb5-d6d99b006eaf</parentFolderId>
+  <order>0</order>
+  <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
+  <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+  <properties>
+    <property id="714a95a6-c3ef-4117-a66c-24876c675cd5">
+      <name>Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="39491728-8327-4b94-b9a2-9851dd4b4a01">
+      <name>Direction</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>In</defaultValue>
+      <valueOptions>
+        <option>In</option>
+        <option>Out</option>
+        <option>Both</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="8ba486d3-853c-42b8-acfb-bafb1e2cdb6e">
+      <name>SQL String Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>VarChar</defaultValue>
+      <valueOptions>
+        <option>VarChar</option>
+        <option>NVarChar</option>
+        <option>Char</option>
+        <option>NChar</option>
+        <option>Text</option>
+        <option>NText</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction>const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+return properties["Direction"].value != "In" &amp;&amp; element.typeReference?.getTypeId() == stringTypeId;</isActiveFunction>
+    </property>
+    <property id="a2df34af-2fb9-49e3-ab6e-caff7a27bf99">
+      <name>Size</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+return properties["Direction"].value != "In" &amp;&amp; element.typeReference?.getTypeId() == stringTypeId;</isActiveFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="ed35ae5c-a708-457d-a22a-145b3b2f1148">
+      <name>Precision</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>const decimalTypeId = "675c7b84-997a-44e0-82b9-cd724c07c9e6";
+return properties["Direction"].value != "In" &amp;&amp; element.typeReference?.getTypeId() == decimalTypeId;
+</isActiveFunction>
+    </property>
+    <property id="38d3c607-ac3b-41ea-86b2-b43fa81e101c">
+      <name>Scale</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>const decimalTypeId = "675c7b84-997a-44e0-82b9-cd724c07c9e6";
+return properties["Direction"].value != "In" &amp;&amp; element.typeReference?.getTypeId() == decimalTypeId;
+</isActiveFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

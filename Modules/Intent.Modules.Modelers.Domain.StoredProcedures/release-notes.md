@@ -1,3 +1,7 @@
+### Version 1.1.1
+
+- Improvement: It is now possible to use stereotypes on a repository Operation to make it call a stored procedure. A future release of this module will automatically migrate existing `Stored Procedure` elements into the stereotype paradigm and remove the `Store Procedure` element type.
+
 ### Version 1.1.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
