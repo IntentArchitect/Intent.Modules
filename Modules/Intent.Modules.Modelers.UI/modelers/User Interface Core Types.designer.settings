@@ -959,7 +959,8 @@ element.launchAdvancedMappingDialog(); // currently is auto-launched because of 
       <mappingOptions />
       <mappingSettings>
         <mappingSetting id="31b3d3a7-bf3c-4bb4-8b1d-9e18b6a8bcdd">
-          <name>NewMappingSettings</name>
+          <name>Map from DTO</name>
+          <shortcut>ctrl + space</shortcut>
           <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
           <optionsSource>elements-of-type</optionsSource>
           <autoSyncTypeReferences>true</autoSyncTypeReferences>

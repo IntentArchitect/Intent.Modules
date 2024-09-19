@@ -100,14 +100,14 @@ namespace Intent.Modelers.UI.Api
             return type.IsModelDefinitionModel() ? new ModelDefinitionModel((IElement)type) : null;
         }
 
-        public static bool HasNewMappingSettingsMapping(this ModelDefinitionModel type)
+        public static bool HasMapFromDTOMapping(this ModelDefinitionModel type)
         {
             return type.Mapping?.MappingSettingsId == "31b3d3a7-bf3c-4bb4-8b1d-9e18b6a8bcdd";
         }
 
-        public static IElementMapping GetNewMappingSettingsMapping(this ModelDefinitionModel type)
+        public static IElementMapping GetMapFromDTOMapping(this ModelDefinitionModel type)
         {
-            return type.HasNewMappingSettingsMapping() ? type.Mapping : null;
+            return type.HasMapFromDTOMapping() ? type.Mapping : null;
         }
     }
 }
