@@ -78,10 +78,11 @@ return `[${properties["Source"].value}]`;
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
+      <placeholder>(required)</placeholder>
       <valueOptions />
       <lookupTypes />
       <isActiveFunction>return properties["Source"].value === "From Header";</isActiveFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="c8caa58e-972a-42f2-983e-652ceee762b2">
       <name>Query String Name</name>

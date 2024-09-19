@@ -1,6 +1,7 @@
 ### Version 4.6.0
 
 - Improvement: Certain element types will now show validation errors if their name is not unique.
+- Fixed: Header Names are required fields which will be enforced when Header binding is selected.
 
 ### Version 4.5.7
 
