@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="CSharpTemplateBase<Intent.ModuleBuilder.Api.ElementSettingsModel>" #>
+<#@ template language="C#" inherits="CSharpTemplateBase<ElementSettingsModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
