@@ -40,6 +40,14 @@ pool:
 
 steps:
 
+# try workaround https://github.com/NuGet/Home/issues/13729#issuecomment-2325776104 / https://github.com/NuGet/Home/issues/13729#issuecomment-2356240163
+- task: UseDotNet@2
+  displayName: 'Install specific .NET 8 SDK'
+  inputs:
+    includePreviewVersions: true
+    version: '8.0.304'
+    performMultiLevelLookup: true
+
 - task: CmdLine@2
   inputs:
     script: |
