@@ -72,6 +72,11 @@ namespace Intent.Modelers.UI.Core.Api
 
             public string Name => _stereotype.Name;
 
+            public string OnValueChanged()
+            {
+                return _stereotype.GetProperty<string>("On Value Changed");
+            }
+
             public bool IsRequired()
             {
                 return _stereotype.GetProperty<bool>("Is Required");

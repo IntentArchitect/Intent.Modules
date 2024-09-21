@@ -48,7 +48,7 @@
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
-    <stereotype stereotypeDefinitionId="9e587d4d-f317-4ab8-9bbb-9394234d2a88" name="Allow Comment">
+    <stereotype stereotypeDefinitionId="9e587d4d-f317-4ab8-9bbb-9394234d2a88" name="[Allow Comment]">
       <addedByDefault>false</addedByDefault>
       <definitionPackageName>Intent.Modelers.Services</definitionPackageName>
       <definitionPackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</definitionPackageId>
@@ -449,7 +449,7 @@
       <childElements>
         <childElement id="572de75a-fc90-4246-a459-f85451fbef11" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Mapped</name>
-          <display>On Mapped: Script</display>
+          <display>On Mapped: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="52826197-ac61-4b9a-b0d9-d5b21b700171">
@@ -474,6 +474,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="var namingConvention = application.getSettings(&quot;c4d1e35c-7c0d-4926-afe0-18f17563ce17&quot;)?.getField(&quot;c3789138-6649-47e4-901b-5f6469583cb7&quot;)?.value;&#xD;&#xA;&#xD;&#xA;element.getChildren(&quot;DTO-Field&quot;).forEach(x =&gt; {&#xD;&#xA;    if (namingConvention == &quot;pascal-case&quot;) {&#xD;&#xA;        x.setName(toPascalCase(x.getName()))&#xD;&#xA;    } else if (namingConvention == &quot;camel-case&quot;) {&#xD;&#xA;        x.setName(toCamelCase(x.getName()))&#xD;&#xA;    }&#xD;&#xA;})" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

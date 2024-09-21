@@ -1280,7 +1280,7 @@ return validateOperationParameter(lookup(id));
             <type type="Diagram" typeId="8c90aca5-86f4-47f1-bd58-116fe79f5c55" />
             <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
             <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
-            <type type="Allow Comment" typeId="9e587d4d-f317-4ab8-9bbb-9394234d2a88" />
+            <type type="[Allow Comment]" typeId="9e587d4d-f317-4ab8-9bbb-9394234d2a88" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>

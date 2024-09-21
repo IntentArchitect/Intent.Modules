@@ -17,10 +17,19 @@
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>a2a95421-3e55-43c7-96ad-355610b43c4d</parentFolderId>
-  <order>10</order>
+  <order>0</order>
   <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
   <packageName>Intent.Modelers.UI.Core</packageName>
   <properties>
+    <property id="f70d6e1d-7f8b-4845-be93-0a565c88ba59">
+      <name>On Value Changed</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="a230fb6d-62fc-47c6-b09a-ff1b98359967">
       <name>Is Required</name>
       <type>string</type>

@@ -35,6 +35,8 @@ namespace Intent.Modelers.UI.Core.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public string Value => _element.Value;
+
         public IElement InternalElement => _element;
 
         public override string ToString()

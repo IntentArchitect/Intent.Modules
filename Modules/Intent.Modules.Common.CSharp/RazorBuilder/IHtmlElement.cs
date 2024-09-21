@@ -9,7 +9,7 @@ public interface IHtmlElement : IRazorFileNodeBase<IHtmlElement>
     string? Text { get; set; }
     IHtmlElement AddAttribute(string name, string? value = null);
     IHtmlElement AddClass(string className);
-    IHtmlElement AddAttributeIfNotEmpty(string name, string value);
+    IHtmlElement AddAttributeIfNotEmpty(string name, string? value);
     IHtmlElement SetAttribute(string name, string? value = null);
     IHtmlAttribute? GetAttribute(string name);
     bool HasAttribute(string name, string? value = null);

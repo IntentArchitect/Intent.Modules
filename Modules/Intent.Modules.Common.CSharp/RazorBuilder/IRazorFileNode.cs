@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder;
 public interface IRazorFileNode : ICSharpCodeContext
 {
     string GetText(string indentation);
-    void AddChildNode(IRazorFileNode node);
+    void AddChildNode(IRazorFileNode node) => InsertChildNode(ChildNodes.Count, node);
     void InsertChildNode(int index, IRazorFileNode node);
     void Remove();
     void Replace(IRazorFileNode node);

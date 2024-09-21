@@ -20,10 +20,10 @@ public abstract class RazorFileNodeBase<TConcrete, TInterface> : CSharpMetadataB
 
     public IList<IRazorFileNode> ChildNodes { get; } = new List<IRazorFileNode>();
 
-    public TInterface AddHtmlElement(string name, Action<IHtmlElement>? configure = null)
+    public TInterface InsertHtmlElement(int index, string name, Action<IHtmlElement>? configure = null)
     {
         var htmlElement = new HtmlElement(name, RazorFile);
-        AddChildNode(htmlElement);
+        InsertChildNode(index, htmlElement);
         configure?.Invoke(htmlElement);
         return this as TInterface ?? throw new InvalidOperationException();
     }
@@ -41,10 +41,11 @@ public abstract class RazorFileNodeBase<TConcrete, TInterface> : CSharpMetadataB
     }
 
     public TInterface AddCodeBlock(string expression, Action<IRazorCodeDirective>? configure = null) => AddCodeBlock(new CSharpStatement(expression), configure);
-    public TInterface AddCodeBlock(ICSharpStatement expression, Action<IRazorCodeDirective>? configure = null)
+    public TInterface AddCodeBlock(ICSharpStatement expression, Action<IRazorCodeDirective>? configure = null) => InsertCodeBlock(ChildNodes.Count, expression, configure);
+    public TInterface InsertCodeBlock(int index, ICSharpStatement expression, Action<IRazorCodeDirective>? configure = null)
     {
         var razorCodeBlock = new RazorCodeDirective(expression, RazorFile);
-        AddChildNode(razorCodeBlock);
+        InsertChildNode(index, razorCodeBlock);
         configure?.Invoke(razorCodeBlock);
         return (TConcrete)this;
     }
