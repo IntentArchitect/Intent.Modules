@@ -6004,22 +6004,22 @@ var convertToAdvancedMapping;
     }
     convertToAdvancedMapping.convertCommand = convertCommand;
     function addFilterMapping(mapping, command, entity) {
-        var _a, _b;
+        var _a, _b, _c;
         let pkFields = DomainHelper.getPrimaryKeys(entity);
         if (pkFields.length == 1) {
             let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
-            let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
+            let entityPk = pkFields[0];
             if (idField &amp;&amp; (idField.isMapped() || entityPk)) {
-                mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [entityPk.id]);
+                mapping.addMappedEnd("Filter Mapping", [idField.id], (_c = (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : entityPk.mapPath) !== null &amp;&amp; _c !== void 0 ? _c : [entityPk.id]);
                 idField.clearMapping();
             }
         }
         else {
             pkFields.forEach(pk =&gt; {
-                var _a, _b;
+                var _a, _b, _c;
                 let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key") &amp;&amp; x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
                 if (idField) {
-                    mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [pk.id]);
+                    mapping.addMappedEnd("Filter Mapping", [idField.id], (_c = (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : pk.mapPath) !== null &amp;&amp; _c !== void 0 ? _c : [pk.id]);
                     idField.clearMapping();
                 }
             });
@@ -12909,22 +12909,22 @@ var convertToAdvancedMapping;
     }
     convertToAdvancedMapping.convertCommand = convertCommand;
     function addFilterMapping(mapping, command, entity) {
-        var _a, _b;
+        var _a, _b, _c;
         let pkFields = DomainHelper.getPrimaryKeys(entity);
         if (pkFields.length == 1) {
             let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
-            let entityPk = entity.getChildren("Attribute").find(x =&gt; x.hasStereotype("Primary Key"));
+            let entityPk = pkFields[0];
             if (idField &amp;&amp; (idField.isMapped() || entityPk)) {
-                mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [entityPk.id]);
+                mapping.addMappedEnd("Filter Mapping", [idField.id], (_c = (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : entityPk.mapPath) !== null &amp;&amp; _c !== void 0 ? _c : [entityPk.id]);
                 idField.clearMapping();
             }
         }
         else {
             pkFields.forEach(pk =&gt; {
-                var _a, _b;
+                var _a, _b, _c;
                 let idField = command.getChildren("DTO-Field").find(x =&gt; (x.isMapped() &amp;&amp; x.getMapping().getElement().hasStereotype("Primary Key") &amp;&amp; x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
                 if (idField) {
-                    mapping.addMappedEnd("Filter Mapping", [idField.id], (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : [pk.id]);
+                    mapping.addMappedEnd("Filter Mapping", [idField.id], (_c = (_b = (_a = idField.getMapping()) === null || _a === void 0 ? void 0 : _a.getPath().map(x =&gt; x.id)) !== null &amp;&amp; _b !== void 0 ? _b : pk.mapPath) !== null &amp;&amp; _c !== void 0 ? _c : [pk.id]);
                     idField.clearMapping();
                 }
             });

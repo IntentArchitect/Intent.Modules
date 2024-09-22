@@ -51,16 +51,16 @@ namespace convertToAdvancedMapping {
         let pkFields = DomainHelper.getPrimaryKeys(entity);
         if (pkFields.length == 1) {
             let idField = command.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("Primary Key")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
-            let entityPk = entity.getChildren("Attribute").find(x => x.hasStereotype("Primary Key"));
+            let entityPk = pkFields[0];
             if (idField && (idField.isMapped() || entityPk)) {
-                mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? [entityPk.id]);
+                mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? entityPk.mapPath ?? [entityPk.id]);
                 idField.clearMapping();
             }
         } else {
             pkFields.forEach(pk => {
                 let idField = command.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("Primary Key") && x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
                 if (idField) {
-                    mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? [pk.id]);
+                    mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? pk.mapPath ?? [pk.id]);
                     idField.clearMapping();
                 }
             });
