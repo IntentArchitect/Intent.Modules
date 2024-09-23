@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9204e067-bdc8-45e7-8970-8a833fdc5253" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">
+  <name>PagedResult</name>
+  <display>PagedResult&lt;TData&gt;</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes>
+    <genericType id="b2e9202d-2fb1-426b-91a9-02b6a3a294bd">
+      <name>TData</name>
+    </genericType>
+  </genericTypes>
+  <isMapped>false</isMapped>
+  <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
+  <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+  <packageName>Intent.Modelers.Services.Pagination</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="30c5995e-17ab-4cc7-8881-3e9561ab06fe" name="C#">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Common.CSharp</definitionPackageName>
+      <definitionPackageId>730e1275-0c32-44f7-991a-9619d07ca68d</definitionPackageId>
+      <properties>
+        <property name="67913852-1e61-4d9d-997e-cdfb7d9196fb" display="Type" isActive="true" />
+        <property name="8CCCD630-6AF9-41FA-8E5F-414860AD89BB" display="Namespace" isActive="true" />
+        <property name="76668E7B-8FC2-4C14-B6AA-E36854E5E499" display="Is Primitive" value="false" isActive="true" />
+        <property name="0a577584-e2d4-4e5a-8649-296036a91575" display="Is Collection" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>
