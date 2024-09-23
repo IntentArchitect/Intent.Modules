@@ -337,7 +337,7 @@ return result;
       <mappingSettings>
         <mappingSetting id="1f747d14-681c-4a20-8c68-34223f41b825">
           <name>Map from Domain</name>
-          <shortcut>ctrl + shift + m</shortcut>
+          <shortcut>ctrl + space</shortcut>
           <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
           <optionsSource>elements-of-type</optionsSource>
           <autoSyncTypeReferences>true</autoSyncTypeReferences>
