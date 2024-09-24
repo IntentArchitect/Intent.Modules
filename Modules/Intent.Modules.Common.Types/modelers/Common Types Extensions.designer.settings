@@ -337,7 +337,30 @@ return result;</displayFunction>
   <associationExtensions />
   <mappingSettings />
   <mappableElementPackages>
-    <mappableElementPackage id="ef6f5656-30e2-46cb-932d-530e3e0ac54a" name="Common Types Target Mappables">
+    <mappableElementPackage id="558d76a3-b5e6-4f9f-a7ef-01e4c98b2a37" name="Common Types Data Mappables">
+      <imports />
+      <mappableElementSettings>
+        <mappableElement id="fe20377c-d3b2-4c2c-9e42-a6eed934a3a0" name="Type-Definition" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>class</represents>
+          <childSettings>
+            <childSetting id="732efc07-87fd-4d18-b86b-8282c23e676a" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackage>
+    <mappableElementPackage id="ef6f5656-30e2-46cb-932d-530e3e0ac54a" name="Common Types Target Invokable Mappables">
       <imports />
       <mappableElementSettings>
         <mappableElement id="05269024-bb5c-4664-a87e-6ab5c1bc0d5a" name="Type-Definition" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" version="2.0.0">
@@ -348,14 +371,6 @@ return result;</displayFunction>
           <canBeModified>false</canBeModified>
           <represents>class</represents>
           <childSettings>
-            <childSetting id="7553702f-07aa-4fa1-850b-fc0334b8fef5" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
             <childSetting id="95804383-4722-4916-aa59-ea7d037d13b9" name="Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>

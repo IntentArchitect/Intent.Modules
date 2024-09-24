@@ -66,7 +66,7 @@
       <childElements>
         <childElement id="f78008d7-f798-46d9-8ecf-d8911abb7ab4" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
-          <display>On Created: Script</display>
+          <display>On Created: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="dab6c402-309d-46b4-8d9b-dd24b9bd146b">
@@ -91,6 +91,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="var namingConvention = application.getSettings(&quot;c4d1e35c-7c0d-4926-afe0-18f17563ce17&quot;)?.getField(&quot;c3789138-6649-47e4-901b-5f6469583cb7&quot;)?.value;&#xD;&#xA;&#xD;&#xA;if (namingConvention == &quot;pascal-case&quot;) {&#xD;&#xA;    element.setName(toPascalCase(element.getName()))&#xD;&#xA;} else if (namingConvention == &quot;camel-case&quot;) {&#xD;&#xA;    element.setName(toCamelCase(element.getName()))&#xD;&#xA;}" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -99,7 +100,7 @@
         </childElement>
         <childElement id="22b3cc5f-e98a-49a2-9593-908dc2bfd015" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Name Changed</name>
-          <display>On Name Changed: Script</display>
+          <display>On Name Changed: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="a3477cbb-c18f-41d7-8450-fee5ae119bc4">
@@ -124,6 +125,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="var namingConvention = application.getSettings(&quot;c4d1e35c-7c0d-4926-afe0-18f17563ce17&quot;)?.getField(&quot;c3789138-6649-47e4-901b-5f6469583cb7&quot;)?.value;&#xD;&#xA;&#xD;&#xA;if (namingConvention == &quot;pascal-case&quot;) {&#xD;&#xA;    element.setName(toPascalCase(element.getName()))&#xD;&#xA;} else if (namingConvention == &quot;camel-case&quot;) {&#xD;&#xA;    element.setName(toCamelCase(element.getName()))&#xD;&#xA;}" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
