@@ -307,7 +307,6 @@ return typeReference.getType().getIcon();</iconFunction>
               <scriptOptions />
               <mappingOptions />
               <mappingSettings />
-              <childElementSettings />
             </childElementSetting>
           </childElementSettings>
         </childElementSetting>
@@ -381,7 +380,6 @@ return result;</displayFunction>
           <scriptOptions />
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My43MDc2IiB4Mj0iMjUiIHkyPSI0LjMwNzYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00NC4xLDExLjlMMjUuNSwyLjhjLTAuMy0wLjEtMC42LTAuMS0wLjksMEw1LjksMTEuOQ0KCWMtMC40LDAuMi0wLjYsMC41LTAuNiwwLjl2MjQuM2MwLDAuNCwwLjIsMC43LDAuNiwwLjlsMTguNiw5LjJjMC4xLDAuMSwwLjMsMC4xLDAuNSwwLjFzMC4zLDAsMC41LTAuMUw0NC4xLDM4DQoJYzAuNC0wLjIsMC42LTAuNSwwLjYtMC45VjEyLjlDNDQuNywxMi41LDQ0LjUsMTIuMSw0NC4xLDExLjl6IE0yNSw1LjlsMTQsNi45bC0xNCw2LjlsLTE0LTYuOUwyNSw1Ljl6IE04LjQsMzUuOVYxNWwxNS4xLDcuNHYyMC45DQoJTDExLDM3LjFMOC40LDM1Ljl6IE0yNi41LDQzLjNWMjIuNEw0MS42LDE1djIwLjlMMzksMzcuMUwyNi41LDQzLjN6Ii8+DQo8L3N2Zz4NCg==" />
@@ -595,7 +593,6 @@ return [
 element.launchAdvancedMappingDialog(); // currently is auto-launched because of the validation</script>
                 </macro>
               </macros>
-              <childElementSettings />
             </childElementSetting>
             <childElementSetting type="Return" typeId="415ffab7-9865-4200-89a0-b592d24919dd">
               <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA+BJREFUeF7t219IU1EcB/DvuXdOIxe1AqGi6M8WCEl410QK2YtP+RYzhKDQuUEkQRJBpIn03kNPkx4KIULyuYcehJCwdpdGYA9FvYTUqz7ocvPUnXd0k233bj9nW/vtded77jkff/fPzrkK8IckIEhpDoMBiUXAgAxIFCDGuQIZkChAjHMFMiBRgBjnCmRAogAxzhXIgEQBYpwrkAGJAsQ4V6AVUEoRvP7Wu77a0JjP1a00ZN48Ov3D+h0DWjRO9c96mtWmaQh0FyjMpeRE4BADFtBhQOL1jAEZkChAjHMFMiBRgBjnCvzfAQPRZCwjxMf5ePsr4lwrEq/aCtSi+hFI3IRAvxDyoh4/+7IiAsROqxIwEEt0SymeAjgAYIUBS/grB2KJPilFHIDHjDGgUz8T7wGAFkuGAe0ATw59atybWr4hIe9aKi8XY8BigB2RDy1pJfUOwMEC7RiwEGBgIBGUqngBwFsEmQHz4QQiiZBUEAeE3+YUZ0ArUGt4yr3be6J3Q26MOMAzogxoBdQGdV0I+OWfxxS7ewwDGkKdA6+9P9WGRUBYH1Hs8LgCDYHg4II/o6QnIRF0IralTf1WYGhsxrX8bU+XEHIEAqEy8Oq7ArXBxBMI0QnAVyZe/QJqUd14OG4DoBLw6g/wXP+sZ634PinRs+biDveFx6SiLSX9kBiFQF/NTbNyA3YGGIgmbwHokZBdlRtLTfZsD6hF9ccAegHsqskpVnbQ9oDtkbk2objeV3YcNdu7PaAxNXNZatFmZaVmFQgDdwZoHGBzeQqTDhcJCGOqqahzwCyisUylihFIGDcT1zZMVQJYA5Dehr7+RRffkxOBv5bsbN8PPBOb9zVgvWNDKpPbMOJVAONCyOQ29LXjXWSgprbuadsCGqMMh6fUr/uPtckNYfwioXyqejGhnIk5Asx1bO7xTufZLHJ67PoGzF4XN/d6RwXgk6X/NmZAA1GLLpyHTPdA4LbT0jPbMWAOLHR1pmnF7bkEwPjl4vTDgFYp4+byZd/xyyUgMmC+UtOi+jAERiGz78AUuzExYKFzVYvqYQBXAFwocj4zYLGLXXYB1tV07/f+73CBdgxod7cwby53AIzkacuAdoDG9ybi/TyVyIBOAHNttJg+BJk9nY/yc2Apcpa22bcYFPcz8x/4uALLcTR39+IQ6Knmd6TLmVtJiwnlHCCX6YjMtWQUdRwCz6v1Lf1y5rdjgMbgWq/NNP9UD69/fuhLlTPYaszsKGA1AlDHxIBEQQZkQKIAMc4VyIBEAWKcK5ABiQLEOFcgAxIFiHGuQAYkChDjXIEMSBQgxrkCiYC/AHdfzGBdrgn/AAAAAElFTkSuQmCC" />
@@ -613,7 +610,6 @@ element.launchAdvancedMappingDialog(); // currently is auto-launched because of 
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <mappingSettings />
-              <childElementSettings />
             </childElementSetting>
           </childElementSettings>
         </childElementSetting>
@@ -651,7 +647,6 @@ element.launchAdvancedMappingDialog(); // currently is auto-launched because of 
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
       </childElementSettings>
     </elementSetting>
@@ -687,7 +682,6 @@ element.launchAdvancedMappingDialog(); // currently is auto-launched because of 
         <elementVisualSettings />
         <associationVisualSettings />
       </diagramSettings>
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef">
       <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUXVlcnkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0Ni4zMyIgeDI9IjI1IiB5Mj0iMy42NyI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0QTk5MjQiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6Izg2REUzMyIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXykiIGQ9Ik00Ny4xLDZjLTAuMy0xLjMtMS41LTIuNC0yLjktMi40SDUuOEM0LjMsMy43LDMsNC45LDIuOCw2LjNjMCwwLjEsMCwwLjIsMCwwLjN2MzYuOA0KCQljMCwxLjYsMS40LDIuOSwyLjksMi45aDM4LjVjMS42LDAsMi45LTEuNCwyLjktMi45VjYuNkM0Ny4yLDYuNCw0Ny4yLDYuMiw0Ny4xLDZ6IE00My43LDM2LjJ2NS4yYzAsMC4xLDAsMC4xLDAsMC4xDQoJCWMtMC4xLDAuNy0wLjcsMS4yLTEuNCwxLjJINy42Yy0wLjcsMC0xLjItMC42LTEuMi0xLjJWMTAuMmgzNy41TDQzLjcsMzYuMnoiLz4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDA1ODU2MDI3MDgwNTg1MTg1MDQwMDAwMDAwNTU0MzAzNjk4NTI1OTAwNDYwNV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMTQuNDcyOCIgeTE9IjM5Ljc1IiB4Mj0iMTQuNDcyOCIgeTI9IjEyLjc1Ij4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzRBOTkyNCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cmVjdCB4PSI5LjMiIHk9IjEyLjgiIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwNTg1NjAyNzA4MDU4NTE4NTA0MDAwMDAwMDU1NDMwMzY5ODUyNTkwMDQ2MDVfKSIgd2lkdGg9IjEwLjIiIGhlaWdodD0iMjciLz4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDEyOTg5MDA1NjM2MTk3Mjg3NDg5MDAwMDAwODUyOTk4NjE2NTU4NTA3OTcxNV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzEuOTgzNyIgeTE9IjI0LjQ4OTEiIHgyPSIzMS45ODM3IiB5Mj0iMTIuNzUiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNEE5OTI0Ii8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM4NkRFMzMiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxyZWN0IHg9IjIyLjgiIHk9IjEyLjgiIGZpbGw9InVybCgjU1ZHSURfMDAwMDAxMjk4OTAwNTYzNjE5NzI4NzQ4OTAwMDAwMDg1Mjk5ODYxNjU1ODUwNzk3MTVfKSIgd2lkdGg9IjE4LjUiIGhlaWdodD0iMTEuNyIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMTAzOTg3NTYxMDAwMDE4MDYzODYwMDAwMDA4NTMzNzM0MTk5MjQ5MTc3OTg3XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIzMS45ODM3IiB5MT0iMzkuNzUiIHgyPSIzMS45ODM3IiB5Mj0iMjguMjA2NSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0QTk5MjQiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6Izg2REUzMyIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHJlY3QgeD0iMjIuOCIgeT0iMjguMiIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDEwMzk4NzU2MTAwMDAxODA2Mzg2MDAwMDAwODUzMzczNDE5OTI0OTE3Nzk4N18pIiB3aWR0aD0iMTguNSIgaGVpZ2h0PSIxMS41Ii8+DQo8L2c+DQo8L3N2Zz4NCg==" />
@@ -809,7 +803,6 @@ element.launchAdvancedMappingDialog(); // currently is auto-launched because of 
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Layout Sider" typeId="c505f35f-7148-46a3-a812-d9f53a174490">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8yY2JmMzQ3Yy1lMDhlLTQ5M2QtYWFmYS0xZmYxZDU2Y2ViYmUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI2OS43NSIgeDI9IjI1IiB5Mj0iMjguMjUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0yNCkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0QTk5MjQiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXzJjYmYzNDdjLWUwOGUtNDkzZC1hYWZhLTFmZjFkNTZjZWJiZSkiIGQ9Ik00NS44LDExVjcuNmgtMy40VjQuMkgzOXYzLjRIMTFWNC4ySDcuNnYzLjRINC4yVjExaDMuNHYyNy44SDQuMnYzLjRoMy40djMuNUgxMXYtMy41aDI4djMuNWgzLjQNCgl2LTMuNWgzLjR2LTMuNGgtMy40VjExSDQ1Ljh6IE0xMSwzOC44VjExaDI4djI3LjhIMTF6Ii8+DQo8L3N2Zz4NCg==" />
@@ -840,7 +833,6 @@ element.launchAdvancedMappingDialog(); // currently is auto-launched because of 
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Layout Body" typeId="11636699-8bad-4693-8c15-8141bd66d04f">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8yY2JmMzQ3Yy1lMDhlLTQ5M2QtYWFmYS0xZmYxZDU2Y2ViYmUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI2OS43NSIgeDI9IjI1IiB5Mj0iMjguMjUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0yNCkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0QTk5MjQiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXzJjYmYzNDdjLWUwOGUtNDkzZC1hYWZhLTFmZjFkNTZjZWJiZSkiIGQ9Ik00NS44LDExVjcuNmgtMy40VjQuMkgzOXYzLjRIMTFWNC4ySDcuNnYzLjRINC4yVjExaDMuNHYyNy44SDQuMnYzLjRoMy40djMuNUgxMXYtMy41aDI4djMuNWgzLjQNCgl2LTMuNWgzLjR2LTMuNGgtMy40VjExSDQ1Ljh6IE0xMSwzOC44VjExaDI4djI3LjhIMTF6Ii8+DQo8L3N2Zz4NCg==" />
@@ -871,7 +863,6 @@ element.launchAdvancedMappingDialog(); // currently is auto-launched because of 
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Layout Footer" typeId="5d4fe8e9-2ccf-42ea-af60-04c6970c9ecb">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8yY2JmMzQ3Yy1lMDhlLTQ5M2QtYWFmYS0xZmYxZDU2Y2ViYmUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI2OS43NSIgeDI9IjI1IiB5Mj0iMjguMjUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0yNCkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0QTk5MjQiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXzJjYmYzNDdjLWUwOGUtNDkzZC1hYWZhLTFmZjFkNTZjZWJiZSkiIGQ9Ik00NS44LDExVjcuNmgtMy40VjQuMkgzOXYzLjRIMTFWNC4ySDcuNnYzLjRINC4yVjExaDMuNHYyNy44SDQuMnYzLjRoMy40djMuNUgxMXYtMy41aDI4djMuNWgzLjQNCgl2LTMuNWgzLjR2LTMuNGgtMy40VjExSDQ1Ljh6IE0xMSwzOC44VjExaDI4djI3LjhIMTF6Ii8+DQo8L3N2Zz4NCg==" />
@@ -902,7 +893,6 @@ element.launchAdvancedMappingDialog(); // currently is auto-launched because of 
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
       </childElementSettings>
     </elementSetting>
@@ -993,7 +983,6 @@ element.launchAdvancedMappingDialog(); // currently is auto-launched because of 
           </mappings>
         </mappingSetting>
       </mappingSettings>
-      <childElementSettings />
     </elementSetting>
   </elementSettings>
   <elementExtensions>
@@ -1229,7 +1218,7 @@ return display;
             <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
             <specializationType>Parameter</specializationType>
             <specializationTypeId>00208d20-469d-41cb-8501-768fd5eb796b</specializationTypeId>
-            <defaultName>NewParameter</defaultName>
+            <defaultName>param</defaultName>
             <allowMultiple>true</allowMultiple>
           </option>
         </creationOptions>
@@ -1718,7 +1707,7 @@ return element.getParent("Component").getChild(x =&gt; isHost(x), true)?.getIsMa
     <mappingSetting type="Navigation Mapping" typeId="b4777251-a390-48f0-877a-102069e88a22">
       <title>Navigation Mapping</title>
       <isRequiredFunction>return association.typeReference.getType()?.getChildren("Property").some(x =&gt; x.hasStereotype("[Route Parameter]"));</isRequiredFunction>
-      <sourceRootElementFunction>return element.getParent("Component").id;</sourceRootElementFunction>
+      <sourceRootElementFunction>return element.specialization == "Component" || element.specialization == "Layout" ? element.id : element.getParent("Component")?.id ?? element.getParent("Layout")?.id;</sourceRootElementFunction>
       <sourceMappings>
         <importSettings id="2d30eb9d-daa0-45d7-a596-32c57d61c6bd" name="Component Code Source Mappables" />
         <mapping id="a7d178d8-0e93-4784-a5c7-24d05df7875f" name="Calling Operation" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
@@ -1816,13 +1805,34 @@ return element.getParent("Component").getChild(x =&gt; isHost(x), true)?.getIsMa
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
           <childSettings>
-            <childSetting id="24d752e8-dcb8-4408-b1a6-a89a6d0eb159" name="Traversable Component" type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" version="2.0.0">
+            <childSetting id="24d752e8-dcb8-4408-b1a6-a89a6d0eb159" name="Traversable Component Scoped" type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>class</represents>
+              <childSettings>
+                <childSetting id="df02a010-a9c4-43a9-a08b-25cbaf3c0f08" name="Property" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" version="2.0.0">
+                  <filterFunction>return element.getStereotype("f324c4ea-bac2-450d-b1b1-cc7f09ca3472") // [Route Parameter]</filterFunction>
+                  <isRequiredFunction>return true;</isRequiredFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return element.getStereotype("f324c4ea-bac2-450d-b1b1-cc7f09ca3472") // [Route Parameter]
+|| element.getStereotype("12ba7bea-ceb9-44d4-8819-835fe36af7b3"); // [Bindable]</isMappableFunction>
+                  <isTraversable>true</isTraversable>
+                  <traversableTypes />
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+              </childSettings>
+            </childSetting>
+            <childSetting id="f4eb6f9f-939e-430f-8749-f0f326bd3155" name="Navigation Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
             </childSetting>
           </childSettings>
         </mapping>
@@ -2044,8 +2054,16 @@ return element.hasStereotype(bindableId) || element.hasStereotype(routeParameter
             </childSetting>
           </childSettings>
         </mappableElement>
+        <mappableElement id="43399ae4-eb45-487c-a70b-62f42818d019" name="Layout" type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+        </mappableElement>
         <mappableElement id="3e0d7b15-8756-4692-9dcf-6c072bc91ad2" name="Navigation Target End" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" version="2.0.0">
-          <filterFunction>return association.getParent().specialization == "Layout";</filterFunction>
+          <filterFunction>return isHost(association);</filterFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -2053,7 +2071,7 @@ return element.hasStereotype(bindableId) || element.hasStereotype(routeParameter
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
           <childSettings>
-            <childSetting id="9239fc31-6df8-4cf9-b0c4-09f58b75d54b" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
+            <childSetting id="7431a297-90b1-46b0-aea4-9fce20693bbb" name="Navigation Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>false</isTraversable>

@@ -37,7 +37,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="return element.getParent(&quot;Component&quot;).id;" isActive="true" />
+            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="return element.specialization == &quot;Component&quot; || element.specialization == &quot;Layout&quot; ? element.id : element.getParent(&quot;Component&quot;)?.id ?? element.getParent(&quot;Layout&quot;)?.id;" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
