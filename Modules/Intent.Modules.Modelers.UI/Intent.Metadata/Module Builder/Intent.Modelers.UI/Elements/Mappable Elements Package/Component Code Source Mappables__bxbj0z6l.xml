@@ -12,6 +12,30 @@
   <stereotypes />
   <metadata />
   <childElements>
+    <childElement id="de0dcdfd-46c5-473e-bd4f-289c3ed70b3f" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05">
+      <name>Import</name>
+      <display>[import] Common Types Data Mappables</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="3012709c-e68e-4508-b534-a33e41b62706">
+        <typeId>558d76a3-b5e6-4f9f-a7ef-01e4c98b2a37</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>2d30eb9d-daa0-45d7-a596-32c57d61c6bd</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
     <childElement id="5314570b-2529-42b6-9583-e925d116cf4e" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
       <name>Bindable Operation</name>
       <display>Bindable Operation: Component Operation</display>

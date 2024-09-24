@@ -186,6 +186,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>30a4e6bb-5d5d-4fb2-bbbd-aa628b661ea2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#329f635b-a55c-465f-b966-fe8411a5f57c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ImageModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ImageModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>30a4e6bb-5d5d-4fb2-bbbd-aa628b661ea2</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#a274918b-72d1-4913-95de-0a801ac90ce4</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/LinkModel.cs</ApplicationRelativeFilePath>

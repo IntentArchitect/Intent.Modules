@@ -12,6 +12,30 @@
   <stereotypes />
   <metadata />
   <childElements>
+    <childElement id="890f30b8-b303-4a70-be39-76e9e7eacccb" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05">
+      <name>Import</name>
+      <display>[import] Common Types Data Mappables</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="08ec907f-8221-40e4-9759-2819675b53af">
+        <typeId>558d76a3-b5e6-4f9f-a7ef-01e4c98b2a37</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>f9bbceaa-635f-4769-a203-025d936ea695</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
     <childElement id="cdaf4c38-a002-4527-99a5-af857cab83fc" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
       <name>Component</name>
       <display>Component: Component</display>

@@ -63,6 +63,11 @@ namespace Intent.Modelers.UI.Core.Api
                 return _stereotype.GetProperty<string>("On Click");
             }
 
+            public string LinkTo()
+            {
+                return _stereotype.GetProperty<string>("Link To");
+            }
+
             public class TypeOptions
             {
                 public readonly string Value;

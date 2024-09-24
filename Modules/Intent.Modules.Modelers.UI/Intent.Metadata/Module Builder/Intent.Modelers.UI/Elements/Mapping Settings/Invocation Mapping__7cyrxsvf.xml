@@ -507,7 +507,7 @@
       <childElements>
         <childElement id="e10cfe0b-3cc4-4a23-82d2-d78228d8b93d" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05">
           <name>Import</name>
-          <display>[import] Common Types Target Mappables</display>
+          <display>[import] Common Types Target Invokable Mappables</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="df2f100b-fa5f-4904-afb0-5fce76aff030">

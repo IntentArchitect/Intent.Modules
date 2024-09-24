@@ -141,9 +141,9 @@
                 <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="null" isActive="false" />
                 <property name="208475f3-1bb6-40c4-87e1-20f048e5caa8" display="Override Type Reference Function" isActive="true" />
                 <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Get Traversable Type Function" isActive="false" />
-                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Disabled" isActive="true" />
-                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" isActive="false" />
-                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" isActive="false" />
+                <property name="69bfe770-9fcd-40dc-8505-2de5a699887e" display="Sync Mapping To" value="Stereotype Property Value" isActive="true" />
+                <property name="73a079b1-5720-4b70-ada3-7af8a98b7510" display="Sync Stereotype" value="a7de29e5-4bee-4e5d-93f0-740569ac6130" isActive="true" />
+                <property name="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f" display="Sync Stereotype Property" value="86aeb4ba-54e8-4327-bcb0-166fb9b9968c" isActive="true" />
                 <property name="5bd73806-e43e-402e-a8ab-ed63cbc1ef98" display="On Mapping Changed Script" isActive="true" />
                 <property name="55e6149c-91a6-4381-b324-7eab4395fa59" display="Validate Function" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />

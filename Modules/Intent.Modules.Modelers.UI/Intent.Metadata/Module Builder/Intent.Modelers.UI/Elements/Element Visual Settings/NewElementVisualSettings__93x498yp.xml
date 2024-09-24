@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="69d40b84-fc5f-4152-8d00-8b822b12212c" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
+  <name>NewElementVisualSettings</name>
+  <display>[visual]: Property</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>manually</sort-children>
+  <order>3</order>
+  <genericTypes />
+  <typeReference id="dd26ac20-ca7e-4e64-adfe-950995e50019">
+    <typeId>356fbe17-bc63-4e16-b915-feefbc063cbe</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.UI</typePackageName>
+    <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>3f99d8e4-a8f4-422f-bca8-532a69015c64</parentFolderId>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="`${parent.x}`" isActive="true" />
+        <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="`${parent.y + ($index * 20) + 66}`" isActive="true" />
+        <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="`${parent.w}`" isActive="true" />
+        <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="96a4fa17-6283-4626-835e-a8f013d98b19" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="838dcc53-b73e-4381-a3d2-db0afaf230b2" display="Anchor Points" isActive="true" />
+        <property name="43c4e468-1139-42b3-a064-fb49f679b72b" display="Auto-Resize Default" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="033824ab-456a-419c-8cee-8debdc6a957a" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+      <name>Text</name>
+      <display>[draw text]: Text</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>69d40b84-fc5f-4152-8d00-8b822b12212c</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" isActive="true" />
+            <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
+            <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`" isActive="true" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x + 24}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
+            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w - 26}" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="${h}" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="1fe722ce-82b7-4bf9-a728-03c834fcfe62" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
+      <name>Method Symbol</name>
+      <display>[draw svg]: Method Symbol</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>69d40b84-fc5f-4152-8d00-8b822b12212c</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082" name="SVG Resource Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="property.svg" isActive="true" />
+            <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" isActive="true" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x+6}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
+            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="20" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="20" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

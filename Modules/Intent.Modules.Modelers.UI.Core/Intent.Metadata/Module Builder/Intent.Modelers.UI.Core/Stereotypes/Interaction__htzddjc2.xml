@@ -59,5 +59,14 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="86aeb4ba-54e8-4327-bcb0-166fb9b9968c">
+      <name>Link To</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>
