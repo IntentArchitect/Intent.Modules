@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="9204e067-bdc8-45e7-8970-8a833fdc5253" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+<class id="9204e067-bdc8-45e7-8970-8a833fdc5253" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">
   <name>PagedResult</name>
   <display>PagedResult&lt;TData&gt;</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes>
     <genericType id="b2e9202d-2fb1-426b-91a9-02b6a3a294bd">
       <name>TData</name>
@@ -28,7 +28,7 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="5f15d378-c3eb-4b52-affd-0bf2c6c6fd81" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+    <childElement id="5f15d378-c3eb-4b52-affd-0bf2c6c6fd81" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>PageNumber</name>
       <display>PageNumber: int</display>
       <isAbstract>false</isAbstract>
@@ -52,7 +52,7 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="b4b32f59-d137-4cfc-8f32-b5497068b36e" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+    <childElement id="b4b32f59-d137-4cfc-8f32-b5497068b36e" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>PageCount</name>
       <display>PageCount: int</display>
       <isAbstract>false</isAbstract>
@@ -76,7 +76,7 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="a98da735-b791-444a-b621-6c6bc9ce7b7d" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+    <childElement id="a98da735-b791-444a-b621-6c6bc9ce7b7d" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>TotalCount</name>
       <display>TotalCount: string</display>
       <isAbstract>false</isAbstract>
@@ -100,7 +100,7 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="e24bddc3-fd49-49d6-aa86-7374cd7e5097" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+    <childElement id="e24bddc3-fd49-49d6-aa86-7374cd7e5097" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>PageSize</name>
       <display>PageSize: string</display>
       <isAbstract>false</isAbstract>
@@ -124,7 +124,7 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="85da666a-2f42-4c36-8189-62fb1ac27209" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+    <childElement id="85da666a-2f42-4c36-8189-62fb1ac27209" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>Data</name>
       <display>Data: TData[*]</display>
       <isAbstract>false</isAbstract>

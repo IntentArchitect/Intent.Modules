@@ -1,6 +1,7 @@
 ### Version 3.8.0
 
 - Improvement: Certain element types will now show validation errors if their name is not unique.
+- Improvement: `PagedResult` type altered so that it no longer gets picked up by DTO generation templates by accident.
 
 ### Version 3.7.5
 
