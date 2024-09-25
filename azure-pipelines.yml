@@ -50,6 +50,15 @@ steps:
   fetchDepth: '1'
   submodules: 'recursive'
 
+# Try use newer version until Microsoft managed pipeline agents are updated:
+# https://github.com/NuGet/Home/issues/13729#issuecomment-2372495471
+- task: UseDotNet@2
+  displayName: 'Install latest .NET 8 SDK'
+  inputs:
+    includePreviewVersions: true
+    version: '8.x'
+    performMultiLevelLookup: true
+
 - task: PowerShell@2
   displayName: 'Imodspec validation'
   inputs:
@@ -209,6 +218,9 @@ steps:
   condition: and(succeeded(), in('True', variables.isMaster, variables.isDevelopment))
   env:
     DOTNET_NOLOGO: '1'
+    # Avoid issues when attempting to run on environment without older .NET runtime version available:
+    # https://learn.microsoft.com/en-us/dotnet/core/versions/selection#control-roll-forward-behavior
+    DOTNET_ROLL_FORWARD: 'LatestMajor'
   inputs:
     targetType: inline
     pwsh: true
