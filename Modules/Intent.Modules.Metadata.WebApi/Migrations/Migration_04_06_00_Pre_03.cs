@@ -16,6 +16,7 @@ public class Migration_04_06_00_Pre_03 : IModuleMigration
     private const string HttpServiceSettingsStereotypeId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
     private const string ServiceModelSpecializationTypeId = "b16578a5-27b1-4047-a8df-f0b783d706bd";
     private const string WebApiDefinitionPackageId = "0011387a-b122-45d7-9cdb-8e21b315ab9f";
+    private const string RoutePropertyDefinitionId = "1e223bd0-7a72-435a-8741-a612d88e4a12";
 
     public Migration_04_06_00_Pre_03(IApplicationConfigurationProvider configurationProvider)
     {
@@ -62,7 +63,7 @@ public class Migration_04_06_00_Pre_03 : IModuleMigration
                         [
                             new StereotypePropertyPersistable
                             {
-                                DefinitionId = "1e223bd0-7a72-435a-8741-a612d88e4a12",
+                                DefinitionId = RoutePropertyDefinitionId,
                                 Name = "Route",
                                 Value = "api/[controller]",
                                 IsActive = true
@@ -72,6 +73,28 @@ public class Migration_04_06_00_Pre_03 : IModuleMigration
                     
                     element.Stereotypes.Add(httpServiceSettings);
                     needsSave = true;
+                }
+
+                if (httpServiceSettings is not null)
+                {
+                    var routeProp = httpServiceSettings.Properties.FirstOrDefault(p => p.DefinitionId == RoutePropertyDefinitionId);
+                    if (routeProp is null)
+                    {
+                        routeProp = new StereotypePropertyPersistable
+                        {
+                            DefinitionId = RoutePropertyDefinitionId,
+                            Name = "Route",
+                            Value = "api/[controller]",
+                            IsActive = true
+                        };
+                        httpServiceSettings.Properties.Add(routeProp);
+                        needsSave = true;
+                    }
+                    else if (string.IsNullOrWhiteSpace(routeProp.Value))
+                    {
+                        routeProp.Value = "api/[controller]";
+                        needsSave = true;
+                    }
                 }
             }
             
@@ -103,7 +126,7 @@ public class Migration_04_06_00_Pre_03 : IModuleMigration
                 var httpServiceSettings = element.Stereotypes.FirstOrDefault(p => p.DefinitionId == HttpServiceSettingsStereotypeId);
                 if (httpServiceSettings != null)
                 {
-                    var routeProperty = httpServiceSettings.Properties.FirstOrDefault(p => p.DefinitionId == "1e223bd0-7a72-435a-8741-a612d88e4a12");
+                    var routeProperty = httpServiceSettings.Properties.FirstOrDefault(p => p.DefinitionId == RoutePropertyDefinitionId);
                     if (routeProperty != null && routeProperty.Value == "api/[controller]")
                     {
                         element.Stereotypes.Remove(httpServiceSettings);
