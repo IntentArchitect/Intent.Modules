@@ -148,6 +148,9 @@ steps:
   displayName: 'dotnet test'
   env:
     DOTNET_NOLOGO: 1
+    # Avoid issues when attempting to run on environment without older .NET runtime version available:
+    # https://learn.microsoft.com/en-us/dotnet/core/versions/selection#control-roll-forward-behavior
+    DOTNET_ROLL_FORWARD: 'LatestMajor'
   inputs:
     command: 'test'
     projects: $(targetsToBuild)

@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services</id>
-  <version>3.8.0-pre.5</version>
+  <version>3.8.0</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Services modeler for describing an application's web services.</summary>
   <description>Services modeler for describing an application's web services.</description>
@@ -15,7 +15,7 @@
   <interoperability>
     <detect id="Intent.Application.Dtos.Pagination">
       <install>
-        <package id="Intent.Application.Dtos.Pagination" version="4.0.7-pre.0" metadataOnly="true" />
+        <package id="Intent.Application.Dtos.Pagination" version="4.0.13" metadataOnly="true" />
       </install>
     </detect>
   </interoperability>

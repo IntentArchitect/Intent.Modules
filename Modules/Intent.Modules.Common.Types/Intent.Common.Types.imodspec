@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Types</id>
-  <version>4.0.0-pre.1</version>
+  <version>4.0.0</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Provides common types supported by the majority of programming languages.</summary>
   <description>Provides common types supported by the majority of programming languages.</description>

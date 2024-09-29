@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>4.6.0-pre.4</Version>
+    <Version>4.6.0</Version>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Authors>Intent Architect</Authors>
     <Description>Extension methods for accessing the WebApi stereotypes.</Description>
@@ -17,8 +17,8 @@
     <PackageReference Include="Intent.Architect.Persistence" Version="3.7.0" />
     <PackageReference Include="Intent.Modules.Common" Version="3.6.0" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.4.0" />
-    <PackageReference Include="Intent.Modules.Modelers.Services" Version="3.8.0-pre.3" />
-    <PackageReference Include="Intent.Modules.Modelers.Services.CQRS" Version="5.0.0-pre.0" />
+    <PackageReference Include="Intent.Modules.Modelers.Services" Version="3.8.0" />
+    <PackageReference Include="Intent.Modules.Modelers.Services.CQRS" Version="5.0.0" />
     <PackageReference Include="Intent.Packager" Version="3.4.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
