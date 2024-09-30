@@ -1,3 +1,7 @@
+### Version 3.11.1
+
+- Fixed: Intent Application name/descriptions containing characters that are invalid for XML will now be encoded correctly in the imodspec file.
+
 ### Version 3.11.0
 
 - Improvement: Certain element types will now show validation errors if their name is not unique.

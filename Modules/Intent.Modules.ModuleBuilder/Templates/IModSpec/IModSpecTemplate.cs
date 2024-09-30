@@ -582,12 +582,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         {
             return $@"<?xml version=""1.0"" encoding=""utf-8"" ?>
 <package>
-  <id>{ModuleModel.Name}</id>
-  <version>{ModuleModel.GetModuleSettings().Version()}</version>
+  {new XElement("id") { Value = ModuleModel.Name }}
+  {new XElement("version") { Value = ModuleModel.GetModuleSettings().Version() }}
   <supportedClientVersions>[4.1.0-beta.21,5.0.0)</supportedClientVersions>
-  <summary>{ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}"}.</summary>
-  <description>{ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}"}.</description>
-  <authors>{OutputTarget.Application.SolutionName}</authors>
+  {new XElement("summary") { Value = ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}" }}
+  {new XElement("description") { Value = ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}" }}
+  {new XElement("authors") { Value = OutputTarget.Application.SolutionName }}
   <iconUrl></iconUrl>
   <templates></templates>
   <decorators></decorators>
