@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <applicationTemplate>
   <id>Intent.ApplicationTemplateBuilder</id>
-  <version>4.0.0-pre.1</version>
+  <version>4.0.0</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <displayName>Intent Application Template Builder</displayName>
   <shortDescription>Build application templates for your tech stack.</shortDescription>
