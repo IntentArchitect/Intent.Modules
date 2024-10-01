@@ -6,7 +6,6 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.FactoryExtensions;
-using Intent.Modules.Common.CSharp.RazorBuilder;
 using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
@@ -73,7 +72,13 @@ namespace Intent.Modules.Common.CSharp.Templates
     /// this article</seealso>.
     /// </para>
     /// </summary>
-    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, ICSharpTemplate, IRoslynMerge, IDeclareUsings
+    public abstract class CSharpTemplateBase<TModel> :
+        IntentTemplateBase<TModel>,
+        ICSharpTemplate,
+        IDeclareUsings,
+#pragma warning disable CS0618 // Type or member is obsolete
+        IRoslynMerge
+#pragma warning restore CS0618 // Type or member is obsolete
     {
         private readonly ICollection<IAssemblyReference> _assemblyDependencies = new List<IAssemblyReference>();
         private readonly HashSet<string> _additionalUsingNamespaces = new();
@@ -155,7 +160,6 @@ namespace Intent.Modules.Common.CSharp.Templates
             CSharpTypesCache.AddKnownType(fullyQualifiedTypeName);
         }
 
-        //public virtual ICSharpCodeContext RootCodeContext => this is ICSharpFileBuilderTemplate builder ? builder.CSharpFile : null;
         public virtual ICSharpCodeContext? RootCodeContext => this is ICSharpFileBuilderTemplate builder
             ? builder.CSharpFile.TypeDeclarations.FirstOrDefault() ?? builder.CSharpFile.Interfaces.FirstOrDefault() ?? (ICSharpCodeContext)builder.CSharpFile
             : null;
@@ -243,7 +247,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             }
 
             // Handle Generics recursively:
-            string normalizedGenericTypes = null;
+            var normalizedGenericTypes = default(string);
             if (foreignType.Contains('<') && foreignType.Contains('>'))
             {
                 var genericTypes = foreignType.Substring(foreignType.IndexOf('<', StringComparison.Ordinal) + 1, foreignType.Length - foreignType.IndexOf('<', StringComparison.Ordinal) - 2);
@@ -344,11 +348,10 @@ namespace Intent.Modules.Common.CSharp.Templates
             var typeRegistry = new CompositeRegistry(
                 fullyQualifiedTypeToExclude: fullyQualifiedType,
                 otherPaths,
-                new[]
-                {
+                [
                     outputTargetNames,
                     knownTypes
-                });
+                ]);
 
             // C# always tries to resolve first from the namespace (or gives precedence to using
             // directives inside the namespace, but Intent at this time isn't aware of them), so we
@@ -484,8 +487,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// Use the implementation of <see cref="ISupportsMigrations"/> instead.
         /// </summary>
         [Obsolete("See XML doc comments")]
-        public virtual RoslynMergeConfig ConfigureRoslynMerger() => _roslynMergeConfig ??= new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"), []);
-#pragma warning disable CS0618 // Type or member is obsolete - Required for backwards compatibility of above line
+#pragma warning disable CS0618 // Type or member is obsolete
+        public virtual RoslynMergeConfig ConfigureRoslynMerger() => _roslynMergeConfig ??= new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         private RoslynMergeConfig _roslynMergeConfig;
 #pragma warning restore CS0618 // Type or member is obsolete
 
@@ -497,7 +500,7 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         /// <summary>
         /// Returns a string representation of the provided <paramref name="resolvedTypeInfo"/>,
-        /// adds any required usings, applicable template dependencies and makes a best effort to
+        /// adds any required usings, applicable template dependencies and makes the best effort to
         /// avoid conflicts between the type name and known other types and namespaces.
         /// </summary>
         public override string UseType(IResolvedTypeInfo resolvedTypeInfo)
@@ -507,7 +510,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 return base.UseType(resolvedTypeInfo);
             }
 
-            // Adds template usings etc, but we ignore the returned string since we will do different logic
+            // Adds template usings etc. but we ignore the returned string since we will do different logic
             base.UseType(resolvedTypeInfo);
 
             foreach (var @namespace in cSharpResolvedTypeInfo.GetNamespaces())
@@ -595,7 +598,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         private readonly ICollection<string> _frameworkDependency = new HashSet<string>();
 
         /// <summary>
-        /// Registers that the specified <FrameworkReference/> element should be add in the .csproj file where this file resides.
+        /// Registers that the specified <FrameworkReference/> element should be added to the .csproj file under which this file resides.
         /// </summary>
         public void AddFrameworkDependency(string id)
         {
@@ -689,7 +692,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </remarks>
         [Obsolete(WillBeRemovedIn.Version4)]
         // ReSharper disable once MethodOverloadWithOptionalParameter
-        public string GetFullyQualifiedTypeName(IElement element, string collectionFormat = null)
+        public string GetFullyQualifiedTypeName(IElement element, string? collectionFormat = null)
         {
             return GetFullyQualifiedTypeName(element);
         }
@@ -712,7 +715,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the type name.</param>
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true.</param>
-        public string GetFullyQualifiedTypeName(IHasTypeReference hasTypeReference, string collectionFormat = null)
+        public string GetFullyQualifiedTypeName(IHasTypeReference hasTypeReference, string? collectionFormat = null)
         {
             var resolvedTypeInfo = GetTypeInfo(hasTypeReference.TypeReference, collectionFormat);
 
@@ -725,7 +728,7 @@ namespace Intent.Modules.Common.CSharp.Templates
 
             return resolvedTypeInfo is CSharpResolvedTypeInfo cSharpResolvedTypeInfo
                 ? cSharpResolvedTypeInfo.GetFullyQualifiedTypeName()
-                : resolvedTypeInfo.ToString();
+                : resolvedTypeInfo.ToString()!;
         }
 
         /// <summary>
@@ -740,7 +743,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         /// <param name="template">The <see cref="ITemplate"/> for which to get the type name.</param>
         /// <param name="options"><see cref="TemplateDiscoveryOptions"/> to use.</param>
-        public string GetFullyQualifiedTypeName(ITemplate template, TemplateDiscoveryOptions options = null)
+        public string GetFullyQualifiedTypeName(ITemplate template, TemplateDiscoveryOptions? options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(template, options);
 
@@ -759,7 +762,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         /// <param name="templateDependency">The <see cref="ITemplateDependency"/> for which to get the type name.</param>
         /// <param name="options"><see cref="TemplateDiscoveryOptions"/> to use.</param>
-        public string GetFullyQualifiedTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
+        public string GetFullyQualifiedTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions? options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateDependency, options);
 
@@ -779,7 +782,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
-        public string GetFullyQualifiedTypeName(ITypeReference typeReference, string collectionFormat = null)
+        public string GetFullyQualifiedTypeName(ITypeReference typeReference, string? collectionFormat = null)
         {
             var resolvedTypeInfo = GetTypeInfo(typeReference, collectionFormat);
 
@@ -802,7 +805,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="model">The model instance that the Template must be bound to.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        public string GetFullyQualifiedTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
+        public string GetFullyQualifiedTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions? options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateId, model, options);
 
@@ -825,7 +828,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        public string GetFullyQualifiedTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
+        public string GetFullyQualifiedTypeName(string templateId, string modelId, TemplateDiscoveryOptions? options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateId, modelId, options);
 
@@ -847,7 +850,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        public string GetFullyQualifiedTypeName(string templateId, TemplateDiscoveryOptions options = null)
+        public string GetFullyQualifiedTypeName(string templateId, TemplateDiscoveryOptions? options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateId, options);
 
@@ -873,7 +876,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// The <see cref="ITypeReference"/> to check.
         /// </param>
         /// <param name="forceNullableEnabled">
-        /// Force C# nullable reference type checking to be regarded as enabled regardless of whether or not this template's
+        /// Force C# nullable reference type checking to be regarded as enabled regardless of whether this template's
         /// <i>Template Output</i> is in a project with <i>Nullable</i> enabled.
         /// </param>
         // ReSharper disable once UnusedMember.Global
@@ -897,7 +900,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// The <see cref="ITypeReference"/> to check.
         /// </param>
         /// <param name="forceNullableEnabled">
-        /// Force C# nullable reference type checking to be regarded as enabled regardless of whether or not this template's
+        /// Force C# nullable reference type checking to be regarded as enabled regardless of whether this template's
         /// <i>Template Output</i> is in a project with <i>Nullable</i> enabled.
         /// </param>
         public bool IsNullableReferenceType(
@@ -923,7 +926,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// The nullability value to test against.
         /// </param>
         /// <param name="forceNullableEnabled">
-        /// Force C# nullable reference type checking to be regarded as enabled regardless of whether or not this template's
+        /// Force C# nullable reference type checking to be regarded as enabled regardless of whether this template's
         /// <i>Template Output</i> is in a project with <i>Nullable</i> enabled.
         /// </param>
         public bool IsReferenceTypeWithNullability(
