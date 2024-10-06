@@ -123,6 +123,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Is Collection Default");
             }
 
+            public bool AllowSetValue()
+            {
+                return _stereotype.GetProperty<bool>("Allow Set Value");
+            }
+
             public bool AllowMultiple()
             {
                 return _stereotype.GetProperty<bool>("Allow Multiple");

@@ -186,6 +186,16 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="c8c2530e-8048-40aa-838c-7c5d870d492b">
+      <name>Allow Set Value</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="77a800bb-e76a-4b1d-bbc1-32cf7baed608">
       <name>Allow Multiple</name>
       <type>string</type>

@@ -45,9 +45,9 @@ namespace <#= Namespace #>
 
         public string Id => _association.Id;
         
-        public <#=AssociationSourceEndClassName #> SourceEnd => _sourceEnd ?? (_sourceEnd = new <#=AssociationSourceEndClassName #>(_association.SourceEnd, this));
+        public <#=AssociationSourceEndClassName #> SourceEnd => _sourceEnd ??= new <#=AssociationSourceEndClassName #>(_association.SourceEnd, this));
 
-        public <#=AssociationTargetEndClassName #> TargetEnd => _targetEnd ?? (_targetEnd = new <#=AssociationTargetEndClassName #>(_association.TargetEnd, this));
+        public <#=AssociationTargetEndClassName #> TargetEnd => _targetEnd ??= new <#=AssociationTargetEndClassName #>(_association.TargetEnd, this));
 
         public IAssociation InternalAssociation => _association;
         
@@ -101,6 +101,10 @@ namespace <#= Namespace #>
 
 <#      } #>
 <#  } #>
+<#  if (Model.SourceEnd.GetSettings().AllowSetValue() && !Model.TargetEnd.GetSettings().AllowSetValue()) { #>
+        public string Value => _associationEnd.Value;
+
+<#  } #>
     }
 
     [IntentManaged(Mode.Fully)]
@@ -125,10 +129,14 @@ namespace <#= Namespace #>
 
 <#      } #>
 <#  } #>
-<# if (Model.TargetEnd.MenuOptions?.MappingOptions.Any() == true && Model.SourceEnd.MenuOptions?.MappingOptions.Any() != true) { #>
+<#  if (Model.TargetEnd.GetSettings().AllowSetValue() && !Model.SourceEnd.GetSettings().AllowSetValue()) { #>
+        public string Value => _associationEnd.Value;
+
+<#  } #>
+<#  if (Model.TargetEnd.MenuOptions?.MappingOptions.Any() == true && Model.SourceEnd.MenuOptions?.MappingOptions.Any() != true) { #>
         
         public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
-<# } #>
+<#  } #>
     }
 
     [IntentManaged(Mode.Fully)]
@@ -153,6 +161,9 @@ namespace <#= Namespace #>
         public string SpecializationType => _associationEnd.SpecializationType;
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
+<#  if (Model.TargetEnd.GetSettings().AllowSetValue() && Model.SourceEnd.GetSettings().AllowSetValue()) { #>
+        public string Value => _associationEnd.Value;
+<#  } #>
         public <#= ClassName #> Association => _association;
         public IElement InternalElement => _associationEnd;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;

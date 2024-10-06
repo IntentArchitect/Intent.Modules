@@ -80,6 +80,7 @@ namespace Intent.ModuleBuilder.Api
                     IsNullableDefault = this.GetSettings().IsNullableDefault(),
                     AllowIsNullable = this.GetSettings().IsNullableEnabled()
                 },
+                AllowSetValue = this.GetSettings().AllowSetValue(),
                 AllowSorting = this.GetSettings().AllowSorting(),
                 SortChildren = ToSortChildrenOptions(this.GetSettings().SortChildren()),
                 TypeOrder = this.MenuOptions?.TypeOrder.Select(x => x.ToPersistable()).ToList(),

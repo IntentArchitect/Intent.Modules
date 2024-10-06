@@ -93,6 +93,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("iconFunction")]
         public string IconFunction { get; set; }
 
+        [XmlElement("allowSetValue")]
+        public bool? AllowSetValue { get; set; }
+        public bool ShouldSerializeAllowSetValue() => AllowSetValue.HasValue;
+
         [XmlElement("allowSorting")]
         public bool? AllowSorting { get; set; }
 
