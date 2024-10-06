@@ -6,7 +6,9 @@ public class CSharpUsing
 {
     public string Namespace { get; }
 
-    public CSharpUsing(string @namespace)
+    public bool IsGlobal { get; }
+
+    public CSharpUsing(string @namespace, bool isGlobal)
     {
         if (string.IsNullOrWhiteSpace(@namespace))
         {
@@ -16,8 +18,12 @@ public class CSharpUsing
         Namespace = @namespace;
     }
 
+    public CSharpUsing(string @namespace) : this(@namespace, isGlobal: false)
+    {
+    }
+
     public override string ToString()
     {
-        return $"using {Namespace};";
+        return $"{(IsGlobal ? "global " : string.Empty)}using {Namespace};";
     }
 }

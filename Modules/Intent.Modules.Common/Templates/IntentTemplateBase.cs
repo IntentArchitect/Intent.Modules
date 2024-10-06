@@ -942,15 +942,7 @@ namespace Intent.Modules.Common.Templates
 
         #endregion
 
-        /// <summary>
-        /// Tries to get existing file content of this template's output.
-        /// </summary>
-        /// <remarks>
-        /// This method takes into account that the output path may have changed since the previous
-        /// Software Factory execution.
-        /// </remarks>
-        /// <param name="content">The contents of the file if it exists.</param>
-        /// <returns>whether there was an existing file for this template's output.</returns>
+        /// <inheritdoc />
         public bool TryGetExistingFileContent(out string content)
         {
             (var result, content) = _tryGetExistingFileContentCache.Value;
@@ -1007,23 +999,8 @@ namespace Intent.Modules.Common.Templates
             return (false, default);
         }
 
-        /// <summary>
-        /// If an existing file exists, returns <see langword="true"/> and populates the
-        /// <paramref name="path"/> with the existing file's path.
-        /// </summary>
-        /// <remarks>
-        /// At the end of a software factory execution a template's output path is recorded in a
-        /// log and this method reads the log to determine what the previous output path was.
-        /// <para>
-        /// Regardless of whether the current output path is different compared to the
-        /// previous software factory execution, if a file exists at the current output path, then
-        /// the current output path is populated into the <paramref name="path"/> parameter.
-        /// </para>
-        /// <para>
-        /// If no file exists at the current output path, then the previous output path is checked
-        /// to see if it exists.
-        /// </para>
-        /// </remarks>
+        
+        /// <inheritdoc />
         public bool TryGetExistingFilePath(out string path)
         {
             (var result, path) = _tryGetExistingFilePathCache.Value;

@@ -14,7 +14,7 @@ internal class TypeRegistry
             var current = _members;
 
             var split = path.Split('.');
-            for (var i  = 0; i < split.Length; i++)
+            for (var i = 0; i < split.Length; i++)
             {
                 var item = split[i];
                 if (current.ContainsKey(item))
@@ -23,11 +23,18 @@ internal class TypeRegistry
                 }
                 else
                 {
-                    current = new Member(i == split.Length - 1);
-                    current[item] = current;
+                    var member = new Member(i == split.Length - 1);
+                    current[item] = member;
+                    current = member;
                 }
             }
         }
+    }
+
+    public void Add(string fullyQualifiedTypeName)
+    {
+        var lastIndexOf = fullyQualifiedTypeName.LastIndexOf('.');
+        Add(fullyQualifiedTypeName[..lastIndexOf], fullyQualifiedTypeName[(lastIndexOf + 1)..]);
     }
 
     public void Add(string @namespace, string typeName)
@@ -53,7 +60,7 @@ internal class TypeRegistry
     public bool Contains(string @namespace)
     {
         var current = _members;
-        
+
         var split = @namespace.Split('.');
         return split.All(item => current.TryGetValue(item, out current));
     }

@@ -263,6 +263,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 .Concat(_templateUsings ??= GetUsingsFromContent(GenerationEnvironment?.ToString() ?? string.Empty))
                 .Concat(_existingContentUsings ??= GetUsingsFromContent(TryGetExistingFileContent(out var existingContent) ? existingContent : string.Empty))
                 .Concat(_additionalUsingNamespaces)
+                .Concat(CSharpTypesCache.GetGlobalUsings(this))
                 // ReSharper disable once SuspiciousTypeConversion.Global
                 .Concat((this as ICSharpFileBuilderTemplate)?.CSharpFile.Usings.Select(u => u.Namespace) ?? [])
                 .Distinct()

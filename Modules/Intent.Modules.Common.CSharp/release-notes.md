@@ -1,4 +1,8 @@
-﻿### Version 3.8.0
+﻿### Version 3.8.1
+
+- Fixed: Global usings were not properly considered when considering required type disambiguations.
+
+### Version 3.8.0
 
 - Improvement: Added support for Razor file code management.
 - Improvement: Added `CSharpCollectionExpression` to the C# File Builder which can be used to generate C# [collection expressions](https://learn.microsoft.com/dotnet/csharp/language-reference/operators/collection-expressions).

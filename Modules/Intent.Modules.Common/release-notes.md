@@ -1,3 +1,7 @@
+### Version 3.7.1
+
+- Improvement: Made `TryGetExistingFileContent` and `TryGetExistingFilePath` available on `IIntentTemplateBase`.
+
 ### Version 3.7.0
 
 - Improvement: Update file builders used by template authors to be more consistent with other file builders and ensure that execution order is deterministic.

@@ -59,6 +59,12 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
         return this;
     }
 
+    public CSharpFile AddGlobalUsing(string @namespace)
+    {
+        Usings.Add(new CSharpUsing(@namespace, isGlobal: true));
+        return this;
+    }
+
     public CSharpFile AddClass(string name, Action<CSharpClass> configure = null)
     {
         return AddClass(name, configure, 0);
@@ -342,12 +348,13 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
 
         var sb = new StringBuilder();
 
-        for (var index = 0; index < Usings.Count; index++)
+        var usings = Usings.OrderBy(x => x.IsGlobal ? 0 : 1).ToArray();
+        for (var index = 0; index < usings.Length; index++)
         {
-            var @using = Usings[index];
+            var @using = usings[index];
             sb.AppendLine(@using.ToString());
 
-            if (index == Usings.Count - 1)
+            if (index == usings.Length - 1)
             {
                 sb.AppendLine();
             }
@@ -390,7 +397,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
                 sb.AppendLine(typeDeclaration);
             }
 
-            sb.Append("}");
+            sb.Append('}');
         }
 
         return sb.ToString();

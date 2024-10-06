@@ -1,13 +1,16 @@
-﻿using Intent.Metadata.Models;
+﻿using System.Collections.Generic;
+using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.FileBuilders;
 using Intent.Modules.Common.CSharp.FactoryExtensions;
+using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.Common.CSharp.Templates;
 
-public interface ICSharpTemplate : IIntentTemplate, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IHasFrameworkDependencies, ISupportsMigrations
+public interface ICSharpTemplate : IIntentTemplate, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IHasFrameworkDependencies, ISupportsMigrations, ICanContainGlobalUsings
 {
     /// <summary>
     /// Used by the advanced mapping system to resolve references from models.
@@ -25,6 +28,8 @@ public interface ICSharpTemplate : IIntentTemplate, IHasNugetDependencies, IHasA
     {
         CSharpTypesCache.AddKnownType(fullyQualifiedTypeName);
     }
+
+    IOutputTarget Project { get; }
 }
 
 public interface ICSharpFileBuilderTemplate : IFileBuilderTemplate, ICSharpTemplate

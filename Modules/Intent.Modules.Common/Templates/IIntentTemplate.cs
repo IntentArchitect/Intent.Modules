@@ -5,6 +5,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Templates;
+using Intent.Utils;
 
 namespace Intent.Modules.Common.Templates;
 
@@ -24,12 +25,54 @@ public interface IIntentTemplate : ITemplate
     ClassTypeSource AddTypeSource(string templateId, string collectionFormat);
     void SetDefaultTypeCollectionFormat(string collectionFormat);
     void SetDefaultCollectionFormatter(ICollectionFormatter collectionFormatter);
+
     string GetTypeName(IElement typeReference);
     string GetTypeName(ITemplate template, TemplateDiscoveryOptions? options = null);
     string GetTypeName(ITypeReference typeReference, string? collectionFormat = null);
     string GetTypeName(string templateIdOrRole, TemplateDiscoveryOptions? options = null);
     string GetTypeName(string templateIdOrRole, string modelId, TemplateDiscoveryOptions? options = null);
     string GetTypeName(string templateIdOrRole, IMetadataModel model, TemplateDiscoveryOptions? options = null);
+
+    /// <summary>
+    /// Tries to get existing file content of this template's output.
+    /// </summary>
+    /// <remarks>
+    /// This method takes into account that the output path may have changed since the previous
+    /// Software Factory execution.
+    /// </remarks>
+    /// <param name="content">The contents of the file if it exists.</param>
+    /// <returns>whether there was an existing file for this template's output.</returns>
+    bool TryGetExistingFileContent(out string content)
+    {
+        Logging.Log.Warning($"{GetType()} does not have an implementation for TryGetExistingFileContent(string)");
+        content = default!;
+        return false;
+    }
+
+    /// <summary>
+    /// If an existing file exists, returns <see langword="true"/> and populates the
+    /// <paramref name="path"/> with the existing file's path.
+    /// </summary>
+    /// <remarks>
+    /// At the end of a software factory execution a template's output path is recorded in a
+    /// log and this method reads the log to determine what the previous output path was.
+    /// <para>
+    /// Regardless of whether the current output path is different compared to the
+    /// previous software factory execution, if a file exists at the current output path, then
+    /// the current output path is populated into the <paramref name="path"/> parameter.
+    /// </para>
+    /// <para>
+    /// If no file exists at the current output path, then the previous output path is checked
+    /// to see if it exists.
+    /// </para>
+    /// </remarks>
+    bool TryGetExistingFilePath(out string path)
+    {
+        Logging.Log.Warning($"{GetType()} does not have an implementation for TryGetExistingFilePath(string)");
+        path = default!;
+        return false;
+    }
+
     bool TryGetTypeName(string templateId, out string typeName);
     bool TryGetTypeName(string templateId, string modelId, out string typeName);
     bool TryGetTypeName(string templateId, IMetadataModel model, out string typeName);
