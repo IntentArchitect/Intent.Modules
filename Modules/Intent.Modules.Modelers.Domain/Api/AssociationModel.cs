@@ -88,6 +88,7 @@ namespace Intent.Modelers.Domain.Api
         public string SpecializationType => _associationEnd.SpecializationType;
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
+        public string Value => _associationEnd.Value;
         public AssociationModel Association => _association;
         public IElement InternalElement => _associationEnd;
         public bool IsNavigable => _associationEnd.IsNavigable;
