@@ -1,3 +1,7 @@
+### Version 4.6.1
+
+- Fixed: Default API route path when API Settings are not present.
+
 ### Version 4.6.0
 
 - Improvement: Certain element types will now show validation errors if their name is not unique.
