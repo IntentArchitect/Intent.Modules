@@ -10,7 +10,7 @@ using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.Common.CSharp.Templates;
 
-public interface ICSharpTemplate : IIntentTemplate, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IHasFrameworkDependencies, ISupportsMigrations, ICanContainGlobalUsings
+public interface ICSharpTemplate : IIntentTemplate, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IHasFrameworkDependencies, ISupportsMigrations, IHasGlobalUsings
 {
     /// <summary>
     /// Used by the advanced mapping system to resolve references from models.

@@ -93,7 +93,7 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
                         csProjFolder = Path.GetDirectoryName(path);
                     }
 
-                    if (template is not ICanContainGlobalUsings canContainGlobalUsings)
+                    if (template is not IHasGlobalUsings canContainGlobalUsings)
                     {
                         continue;
                     }
