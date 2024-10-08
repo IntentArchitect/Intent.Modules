@@ -3,6 +3,7 @@
 - Improvement: Added icons to the `Attributes`, `Operations` and `Constructors` on domain entities in the diagrams.
 - Improvement: Changed colour of `Operations` in syntax highlighting to help with cognitive load.
 - Improvement: Changed default colour of entities in diagrams to make text more readable with syntax highlighting now available in 4.3.2 of Intent Architect.
+- Fixed: `Operations` uniqueness validation not taking parameters into account.
 
 ### Version 3.10.0
 

@@ -436,8 +436,48 @@ if (typeReference) {
     // }
 }
 return result;</displayFunction>
+          <validateFunction>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function validateDuplicateOperation(operation) {
+    var possibleDuplicates = findPeerOperations(operation);
+    let operationSignature = calculateSignature(operation);
+    let duplicate;
+    possibleDuplicates.forEach(possibleDuplicate =&gt; {
+        if (duplicate != null)
+            return;
+        if (operationSignature == calculateSignature(possibleDuplicate)) {
+            duplicate = possibleDuplicate;
+        }
+    });
+    if (duplicate) {
+        return `Duplicate operation ${operation.getName()} - ${operationSignature}`;
+    }
+    return "";
+}
+function calculateSignature(operation) {
+    let result = `${operation.getName()}(`;
+    let params = operation.getChildren("Parameter");
+    result += params.map((p) =&gt; p.typeReference.getType().getName()).join(', ');
+    result += ")";
+    return result;
+}
+function findPeerOperations(operation) {
+    return operation.getParent().getChildren("Operation").filter(x =&gt; x.id != operation.id);
+}
+/// &lt;reference path="../common/operation-validation.ts" /&gt;
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Modelers.Services
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-operation-validation/operation/operation-validation.ts
+ */
+function validateOperation(element) {
+    return validateDuplicateOperation(element);
+}
+//Comment / UnComment below when you publish
+validateOperation(element);
+</validateFunction>
           <allowRename>true</allowRename>
-          <nameMustBeUnique>true</nameMustBeUnique>
+          <nameMustBeUnique>false</nameMustBeUnique>
           <allowAbstract>true</allowAbstract>
           <allowStatic>true</allowStatic>
           <allowGenericTypes>true</allowGenericTypes>
