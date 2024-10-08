@@ -220,6 +220,11 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
         <display>
           <drawPath>
             <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+            <fillColor>return theme.isDark 
+    ? '#363d4d' // a slightly bluer gray than the default.
+//? '#181d27' // very dark
+//? '#1e232b' // a bit lighter
+    : null;</fillColor>
           </drawPath>
           <drawText>
             <style>`font-size: 12px; 
@@ -249,10 +254,15 @@ padding: 0px 8px;`</style>
                 <path>`M${x},${y - 6} h${w}`</path>
               </drawPath>
               <drawText>
-                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
-                <size width="${w}" height="${h}" />
-                <position x="${x}" y="${y}" />
+                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px 2px 0px;`</style>
+                <size width="${w - 20}" height="${h}" />
+                <position x="${x + 20}" y="${y}" />
               </drawText>
+              <drawSvgResource>
+                <path>attribute.svg</path>
+                <size width="14" height="14" />
+                <position x="${x+3}" y="${y+3}" />
+              </drawSvgResource>
             </display>
             <stereotypesVisualSettings>
               <size width="${w}" height="18" />
@@ -272,10 +282,15 @@ padding: 0px 8px;`</style>
                 <path>`M${x},${y - 6} h${w}`</path>
               </drawPath>
               <drawText>
-                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
-                <size width="${w}" height="${h}" />
-                <position x="${x}" y="${y}" />
+                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px 2px 0px;`</style>
+                <size width="${w - 20}" height="${h}" />
+                <position x="${x + 20}" y="${y}" />
               </drawText>
+              <drawSvgResource>
+                <path>constructor.svg</path>
+                <size width="14" height="14" />
+                <position x="${x+3}" y="${y+3}" />
+              </drawSvgResource>
             </display>
             <stereotypesVisualSettings>
               <size width="${w}" height="18" />
@@ -295,10 +310,15 @@ padding: 0px 8px;`</style>
                 <path>`M${x},${y - 6} h${w}`</path>
               </drawPath>
               <drawText>
-                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
-                <size width="${w}" height="${h}" />
-                <position x="${x}" y="${y}" />
+                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px 2px 0px;`</style>
+                <size width="${w - 20}" height="${h}" />
+                <position x="${x + 20}" y="${y}" />
               </drawText>
+              <drawSvgResource>
+                <path>operation.svg</path>
+                <size width="14" height="14" />
+                <position x="${x+3}" y="${y+3}" />
+              </drawSvgResource>
             </display>
             <stereotypesVisualSettings>
               <size width="${w}" height="18" />
@@ -396,22 +416,24 @@ if (namingConvention == "pascal-case") {
         return "typeref";
     }
 }
-const result = [{ text: `${ getName() }${ genericTypes }(` }];
+const result = [{ text: `${ getName() }${ genericTypes }`, cssClass: 'function' }];
+result.push({ text: '(' });
 result.push(...children("Parameter")
     .map(x =&gt; [
         { text: `${ x.name }`, cssClass: "muted", targetId: x.id },
         { text: ': ' },
-        { text: x.typeReference.display, cssClass: getTypeReferenceCssClass(x.typeReference), targetId: x.typeReference.typeId }
-    ])
+        //{ text: x.typeReference.display, cssClass: getTypeReferenceCssClass(x.typeReference), targetId: x.typeReference.typeId }
+    ].concat(x.typeReference.getDisplayTextComponents()))
     .reduce((x, y) =&gt; x.concat(x.length &gt; 0 ? [{ text: ', ' }] : []).concat(y), []));
     result.push({ text: ')' });
 if (typeReference) {
     result.push({ text: ': ' });
-    if (typeReference.typeId == null || typeReference.getType()?.specialization == "Type-Definition") {
-        result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference) });
-    } else {
-        result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId });
-    }
+    result.push(...typeReference.getDisplayTextComponents());
+    // if (typeReference.typeId == null || typeReference.getType()?.specialization == "Type-Definition") {
+    //     result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference) });
+    // } else {
+    //     result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId });
+    // }
 }
 return result;</displayFunction>
           <allowRename>true</allowRename>
