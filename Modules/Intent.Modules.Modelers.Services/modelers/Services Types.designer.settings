@@ -1035,7 +1035,7 @@ function validateOperation(element) {
 return validateOperation(lookup(id));
 </validateFunction>
           <allowRename>true</allowRename>
-          <nameMustBeUnique>true</nameMustBeUnique>
+          <nameMustBeUnique>false</nameMustBeUnique>
           <allowAbstract>true</allowAbstract>
           <allowStatic>false</allowStatic>
           <allowGenericTypes>true</allowGenericTypes>

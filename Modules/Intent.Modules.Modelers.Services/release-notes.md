@@ -1,3 +1,7 @@
+### Version 3.8.1
+
+- Fixed: Operation uniqueness validation using name without consideration for parameters.
+
 ### Version 3.8.0
 
 - Improvement: Certain element types will now show validation errors if their name is not unique.
