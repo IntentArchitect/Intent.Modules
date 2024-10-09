@@ -9,6 +9,30 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>ea6d5f42-86d2-43f6-a964-d7b6538b14fc</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#6ba7c27e-608b-4e97-8b85-e108719e2a88</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/NewAssociationTypeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>NewAssociationTypeModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ea6d5f42-86d2-43f6-a964-d7b6538b14fc</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#6ba7c27e-608b-4e97-8b85-e108719e2a88</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/NewAssociationTypeModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>NewAssociationTypeModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>00f673eb-be20-40ea-8d2c-555d72b8743a</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#e175460e-eed0-4df6-8bef-bdb3c602bc5a</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Domain Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Domain Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>22c603f3-c552-4349-8bf2-3727d258da8d</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#22c603f3-c552-4349-8bf2-3727d258da8d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

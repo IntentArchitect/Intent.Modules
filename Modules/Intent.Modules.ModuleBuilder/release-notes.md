@@ -1,3 +1,7 @@
+### Version 3.11.2
+
+- Fixed: Templates for generation of association APIs would output uncompilable code.
+
 ### Version 3.11.1
 
 - Fixed: Intent Application name/descriptions containing characters that are invalid for XML will now be encoded correctly in the imodspec file.

@@ -45,9 +45,9 @@ namespace <#= Namespace #>
 
         public string Id => _association.Id;
         
-        public <#=AssociationSourceEndClassName #> SourceEnd => _sourceEnd ??= new <#=AssociationSourceEndClassName #>(_association.SourceEnd, this));
+        public <#=AssociationSourceEndClassName #> SourceEnd => _sourceEnd ??= new <#=AssociationSourceEndClassName #>(_association.SourceEnd, this);
 
-        public <#=AssociationTargetEndClassName #> TargetEnd => _targetEnd ??= new <#=AssociationTargetEndClassName #>(_association.TargetEnd, this));
+        public <#=AssociationTargetEndClassName #> TargetEnd => _targetEnd ??= new <#=AssociationTargetEndClassName #>(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
         

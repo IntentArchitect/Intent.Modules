@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>e175460e-eed0-4df6-8bef-bdb3c602bc5a</id>
+  <name>Domain Extensions</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions />
+  <elementSettings />
+  <elementExtensions />
+  <associationSettings>
+    <associationSetting type="NewAssociationType" typeId="6ba7c27e-608b-4e97-8b85-e108719e2a88">
+      <sourceEnd type="NewAssociationType Source End" typeId="65ec2a3f-c95d-4e7a-8a38-a657a5bc16d5">
+        <nameAccessibilityMode>required</nameAccessibilityMode>
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+          </targetTypes>
+          <allowIsNavigable>true</allowIsNavigable>
+          <allowIsNullable>true</allowIsNullable>
+          <allowIsCollection>true</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </sourceEnd>
+      <targetEnd type="NewAssociationType Target End" typeId="43fb6968-f23c-436b-8ced-e340d76f2586">
+        <nameAccessibilityMode>required</nameAccessibilityMode>
+        <nameMustBeUnique>true</nameMustBeUnique>
+        <allowSetValue>false</allowSetValue>
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+          </targetTypes>
+          <allowIsNavigable>true</allowIsNavigable>
+          <allowIsNullable>true</allowIsNullable>
+          <allowIsCollection>true</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </targetEnd>
+      <macros />
+    </associationSetting>
+  </associationSettings>
+  <associationExtensions />
+  <mappingSettings />
+  <mappableElementPackages />
+  <mappableElementPackageExtensions />
+  <scripts />
+</settings>

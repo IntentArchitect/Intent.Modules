@@ -367,5 +367,7 @@
   </files>
   <tags />
   <moduleSettingsExtensions />
-  <metadata />
+  <metadata>
+    <install target="Domain" src="modelers/Domain Extensions.designer.settings" externalReference="e175460e-eed0-4df6-8bef-bdb3c602bc5a" />
+  </metadata>
 </package>
