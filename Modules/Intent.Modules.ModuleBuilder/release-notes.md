@@ -1,6 +1,10 @@
-### Version 3.11.2
+### Version 3.11.3
 
 - Fixed: `Intent.Common` update to fix "DefaultOverrideBehaviour" lacking `IOutputTarget` context.
+
+### Version 3.11.2
+
+- Fixed: Templates for generation of association APIs would output uncompilable code.
 
 ### Version 3.11.1
 
