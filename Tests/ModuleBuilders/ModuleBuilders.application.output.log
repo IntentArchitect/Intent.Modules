@@ -10,6 +10,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>22c603f3-c552-4349-8bf2-3727d258da8d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.StaticContentOutputReadme#f0cb4747-033a-4862-8600-128e3243ee5f</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>content/readme.txt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>content/readme.txt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>22c603f3-c552-4349-8bf2-3727d258da8d</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#22c603f3-c552-4349-8bf2-3727d258da8d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ModuleBuilders.csproj</ApplicationRelativeFilePath>
@@ -1398,6 +1406,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Sql/SqlSingleFile/SqlSingleFileTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Sql/SqlSingleFile/SqlSingleFileTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5f5557da-da72-435f-af00-04f1eb2a2e34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.StaticContentTemplateRegistration#f0cb4747-033a-4862-8600-128e3243ee5f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/StaticContent/StaticContentTemplateRegistrations/StaticContentTextStaticContentTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>StaticContent/StaticContentTemplateRegistrations/StaticContentTextStaticContentTemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

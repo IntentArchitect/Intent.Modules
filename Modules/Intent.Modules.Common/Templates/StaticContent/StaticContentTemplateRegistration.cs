@@ -7,6 +7,7 @@ using Intent.Modules.Common.Registrations;
 using Intent.Registrations;
 using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
+using JetBrains.Annotations;
 using Microsoft.Extensions.FileSystemGlobbing;
 using SearchOption = System.IO.SearchOption;
 
@@ -85,12 +86,12 @@ namespace Intent.Modules.Common.Templates.StaticContent
 
             foreach (var file in textFiles)
             {
-                registry.RegisterTemplate(TemplateId, outputTarget => CreateTemplate(outputTarget, file.FullPath, file.RelativePath, DefaultOverrideBehaviour));
+                registry.RegisterTemplate(TemplateId, outputTarget => CreateTemplate(outputTarget, file.FullPath, file.RelativePath, GetDefaultOverrideBehaviour(outputTarget)));
             }
 
             foreach (var file in binaryFiles)
             {
-                registry.RegisterTemplate(TemplateId, outputTarget => CreateBinaryTemplate(outputTarget, file.FullPath, file.RelativePath, DefaultOverrideBehaviour));
+                registry.RegisterTemplate(TemplateId, outputTarget => CreateBinaryTemplate(outputTarget, file.FullPath, file.RelativePath, GetDefaultOverrideBehaviour(outputTarget)));
             }
         }
 
@@ -165,8 +166,14 @@ namespace Intent.Modules.Common.Templates.StaticContent
         }
 
         /// <summary>
+        /// Use <see cref="GetDefaultOverrideBehaviour"/> instead.
+        /// </summary>
+        [Obsolete("Use 'GetDefaultOverrideBehaviour' instead")]
+        protected virtual OverwriteBehaviour DefaultOverrideBehaviour => OverwriteBehaviour.Always;
+        
+        /// <summary>
         /// Change this value to change the default <see cref="OverwriteBehaviour"/> of templates.
         /// </summary>
-        protected virtual OverwriteBehaviour DefaultOverrideBehaviour => OverwriteBehaviour.Always;
+        protected virtual OverwriteBehaviour GetDefaultOverrideBehaviour(IOutputTarget outputTarget) => DefaultOverrideBehaviour;
     }
 }

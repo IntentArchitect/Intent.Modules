@@ -1471,6 +1471,19 @@
       <fileHash>FCE97903A636FF9B2A61A6538A8F0B73EEF67303A2B881965E3EC32DC8F1497D</fileHash>
     </file>
     <file>
+      <correlationId>Intent.ModuleBuilder.Templates.StaticContentTemplateRegistration#f0cb4747-033a-4862-8600-128e3243ee5f</correlationId>
+      <path>ModuleBuilders/Templates/StaticContent/StaticContentTemplateRegistrations/StaticContentTextStaticContentTemplateRegistration.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2024-10-09T10:12:44.0916884Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2024-10-09T10:39:54.2277325Z</approvedAt>
+      <deviationsHash>81953916D7FDDE68CED905D2E00D757350BE6B78CA61599A3F41FE4711855359</deviationsHash>
+      <fileHash>BE012D4701EC128CD881772F1BB00D9E54CC8A2B9D716BB4DD53ED2559E61E1E</fileHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial#ecb24388-f24e-407d-8f41-f69cdf859578</correlationId>
       <path>ModuleBuilders/Templates/TypeScript/TypeScriptCustomBuilder/TypeScriptCustomBuilderTemplatePartial.cs</path>
       <count>2</count>

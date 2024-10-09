@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="f0cb4747-033a-4862-8600-128e3243ee5f" type="Static Content Template" typeId="b795a763-296d-476f-ab0a-1a52710444db">
+  <name>StaticContentTextTemplate</name>
+  <display>StaticContentTextTemplate</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d788f797-8de0-450d-9ee7-5b7d888c6e6f</parentFolderId>
+  <packageId>bcabc001-5d8a-4759-81ad-3b1316fe73f2</packageId>
+  <packageName>ModuleBuilders</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="1fd8fd68-ff20-437c-8c00-ac77920d7ff0" name="Template Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="a9b100cb-f133-4061-a7be-63fec8159369" display="Content Subfolder" isActive="true" />
+        <property name="52e01775-62a6-4b04-86ee-9d36efe20f70" display="Binary File Globbing Patterns" value="" isActive="true" />
+        <property name="db0f79b6-2905-4771-9400-ed2bc024d1e1" display="Role" value="Default" isActive="true" />
+        <property name="1b9fff50-1498-482a-a64d-11c5b92d0856" display="Default Location" value="textContent" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>
