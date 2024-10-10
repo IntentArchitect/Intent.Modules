@@ -17,7 +17,9 @@ public abstract class CSharpType : ICSharpType
     internal const string TaskFullTypeName = "System.Threading.Tasks.Task";
     internal const string ValueTaskShortTypeName = "ValueTask";
     internal const string ValueTaskFullTypeName = "System.Threading.Tasks.ValueTask";
-    
+    internal const string IAsyncEnumerableFullTypeName = "System.Collections.Generic.IAsyncEnumerable";
+    internal const string IAsyncEnumerableShortTypeName = "IAsyncEnumerable";
+
     /// <summary>
     /// Creates a type-safe type that represents <see cref="System.Threading.Tasks.Task"/>.
     /// </summary>
@@ -57,13 +59,13 @@ public abstract class CSharpType : ICSharpType
     {
         return CSharpTypeVoid.DefaultInstance;
     }
-    
+
     /// <summary>
-    /// Is the current type representing a <see cref="System.Threading.Tasks.Task"/> or a <see cref="System.Threading.Tasks.Task&lt;T&gt;"/>?
+    /// Is the current type representing a <see cref="Task"/>, a <see cref="Task{T}"/> or <see cref="IAsyncEnumerable{T}"/>?
     /// </summary>
     public bool IsTask()
     {
-        return (this is CSharpTypeName name && name.IsTask()) || (this is CSharpTypeGeneric generic && generic.IsTask());
+        return (this is CSharpTypeName name && name.IsTask()) || (this is CSharpTypeGeneric generic && (generic.IsTask() || generic.TypeName is IAsyncEnumerableFullTypeName or IAsyncEnumerableShortTypeName));
     }
     
     /// <summary>

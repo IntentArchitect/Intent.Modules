@@ -1,4 +1,8 @@
-﻿### Version 3.8.1
+﻿### Version 3.8.2
+
+- Fixed: Return types of IAsyncEnumerable are now not automatically wrapped in Task/ValueTask when method is marked as async
+
+### Version 3.8.1
 
 - Fixed: Global usings were not properly considered when considering required type disambiguations.
 
