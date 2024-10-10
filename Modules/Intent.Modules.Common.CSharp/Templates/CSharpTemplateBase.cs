@@ -293,24 +293,37 @@ namespace Intent.Modules.Common.CSharp.Templates
 
             public CompositeRegistry(
                 string fullyQualifiedTypeToExclude,
-                IEnumerable<string> paths,
+                IEnumerable<string> namespaces,
                 IEnumerable<TypeRegistry> registries)
             {
                 _fullyQualifiedTypeToExclude = fullyQualifiedTypeToExclude;
-                var pathsRegistry = new TypeRegistry(paths);
+                var pathsRegistry = new TypeRegistry().WithNamespaces(namespaces);
                 _registries = registries.Append(pathsRegistry).ToArray();
             }
 
-            public bool ContainsEntry(string @namespace)
+            public bool ContainsEntry(string fullyQualifiedTypeName, out ConflictType conflictType)
             {
-                if (@namespace == _fullyQualifiedTypeToExclude)
+                if (fullyQualifiedTypeName == _fullyQualifiedTypeToExclude)
                 {
+                    conflictType = default;
                     return false;
                 }
 
-                return _registries.Any(x => x.Contains(@namespace));
+                foreach (var registry in _registries)
+                {
+                    if (registry.Contains(fullyQualifiedTypeName, out var isType))
+                    {
+                        conflictType = isType ? ConflictType.TypeName : ConflictType.NamespacePart;
+                        return true;
+                    }
+                }
+
+                conflictType = default;
+                return false;
             }
         }
+
+        private enum ConflictType { TypeName, NamespacePart }
 
         internal static string NormalizeNamespace(
             string localNamespace,
@@ -331,100 +344,109 @@ namespace Intent.Modules.Common.CSharp.Templates
             var typeNamespace = string.Join('.', typeParts.Take(typeParts.Length - 1));
             var typeUnqualified = string.Join('.', typeParts.Skip(typeParts.Length - 1));
 
-            //Nested Class
-            if (knownTypes.ContainsType(typeNamespace))
-            {
-                typeNamespace = string.Join('.', typeParts.Take(typeParts.Length - 2));
-                typeUnqualified = string.Join('.', typeParts.Skip(Math.Max(0, typeParts.Length - 2)));
-            }
-
             var otherPaths = Enumerable.Empty<string>()
                 .Append(localNamespace)
                 .Append(typeNamespace)
                 .Concat(knownOtherNamespaceNames)
                 .Concat(usingPaths)
                 .Where(x => x != fullyQualifiedType)
-                .Distinct();
+                .Distinct()
+                .ToArray();
 
             var typeRegistry = new CompositeRegistry(
                 fullyQualifiedTypeToExclude: fullyQualifiedType,
-                otherPaths,
+                namespaces: otherPaths,
+                registries:
                 [
                     outputTargetNames,
                     knownTypes
                 ]);
 
-            // C# always tries to resolve first from the namespace (or gives precedence to using
-            // directives inside the namespace, but Intent at this time isn't aware of them), so we
-            // don't even have to consider usings initially.
+            // C# always tries to resolve first from the namespace parts, moving from the most to
+            // the least specific part(or gives precedence to using directives inside the
+            // namespace, but Intent at this time isn't aware of them, so at this time we don't
+            // consider usings at all).
             var namespaceParts = localNamespace.Split('.');
-            var namespaceTypeConflictAtPartNumber = (int?)null;
+            var namespaceConflict = default((int AtIndex, ConflictType Type)?);
 
-            for (var number = namespaceParts.Length; number > 0; number--)
+            for (var partIndex = namespaceParts.Length - 1; partIndex >= 0; partIndex--)
             {
-                var typeWithinCurrentNamespace = string.Join('.', namespaceParts.Take(number).Append(typeUnqualified));
+                var possibleTypeWithinCurrentNamespace = string.Join('.', namespaceParts.Take(partIndex + 1).Append(typeUnqualified));
 
-                if (!namespaceTypeConflictAtPartNumber.HasValue &&
-                    typeWithinCurrentNamespace == fullyQualifiedType)
+                if (!namespaceConflict.HasValue &&
+                    possibleTypeWithinCurrentNamespace == fullyQualifiedType)
                 {
                     return typeUnqualified;
                 }
 
-                var currentPart = namespaceParts[number - 1];
-                var previousPart = number < namespaceParts.Length
-                    ? namespaceParts[number]
+                var currentPart = namespaceParts[partIndex];
+                var previousPart = partIndex + 1 < namespaceParts.Length
+                    ? namespaceParts[partIndex + 1]
                     : null;
 
-                // Is the current part of the namespace that same as the type name
+                // Is the current part of the namespace the same as the type name?
                 if (currentPart == typeUnqualified)
                 {
-                    namespaceTypeConflictAtPartNumber = number;
+                    // We continue looping because we need to find the most general conflict
+                    namespaceConflict = (partIndex, ConflictType.NamespacePart);
                     continue;
                 }
 
                 // Is there some other known "type" somewhere (but only if we didn't match
-                // on the type name part above in the previous loop).
+                // on the type name part above in the previous iteration of the loop).
                 if (previousPart != typeUnqualified &&
-                    typeRegistry.ContainsEntry(typeWithinCurrentNamespace))
+                    typeRegistry.ContainsEntry(possibleTypeWithinCurrentNamespace, out var conflictType))
                 {
-                    // We still continue looping because we need to find the most generalized conflict
-                    namespaceTypeConflictAtPartNumber = number;
+                    // We continue looping because we need to find the most general conflict
+                    namespaceConflict = (partIndex, conflictType);
                 }
             }
 
             // If there is a namespace conflict then regardless of the usings situation we will
-            // always need to qualify the type.
-            if (namespaceTypeConflictAtPartNumber.HasValue)
+            // need to qualify the type.
+            if (namespaceConflict.HasValue)
             {
-                // Skip over common parts after the conflict, but make sure the first part of our
-                // remaining type part doesn't appear later in the namespace parts.
-                var skipCount = 0;
-                for (; skipCount < typeParts.Length && skipCount < namespaceParts.Length; skipCount++)
+                // Find common part count:
+                var commonPartsCount = 0;
+                while (commonPartsCount < typeParts.Length - 1 && commonPartsCount < namespaceParts.Length)
                 {
-                    if (skipCount <= namespaceTypeConflictAtPartNumber.Value &&
-                        namespaceParts[skipCount] == typeParts[skipCount] &&
-                        namespaceParts.Skip(skipCount + 2).All(x => x != typeParts[skipCount + 1]))
+                    if (commonPartsCount <= namespaceConflict.Value.AtIndex &&
+                        namespaceParts[commonPartsCount] == typeParts[commonPartsCount])
                     {
+                        commonPartsCount++;
                         continue;
                     }
 
                     break;
                 }
 
-                // In this case the Class name is actually conflicting with a namespace. e.g. X.[Class] and X.Class.[SomeOtherType]
-                // This won't actually compile in C#, nothing we can do to resolve this.
-                if (skipCount == typeParts.Length)
+                // The first part of a type qualifier will always try match against a current namespace part,
+                // so we need to ensure none of remaining namespace parts will match the first part of the type
+                // qualifier.
+                var remainingNamespaceParts = namespaceParts[commonPartsCount..];
+                while (commonPartsCount >= 0)
                 {
-                    return string.Join('.', typeParts);
+                    if (remainingNamespaceParts.Any(x => x == typeParts[commonPartsCount]))
+                    {
+                        commonPartsCount--;
+                        continue;
+                    }
+
+                    break;
                 }
+
+                // This covers the edge case where the namespace and conflicting type's namespace is the same
+                // as the current namespace, without this check we don't land up disambiguating the type at
+                // all.
+                var skipCount = Math.Min(typeParts.Length - 2, commonPartsCount);
 
                 return string.Join('.', typeParts.Skip(skipCount));
             }
 
-            // Only one using exists with the type on it
-            var hasSingleUsingWithType = usingPaths
-                .Count(@using => @using == typeNamespace || knownTypes.Contains(@using, typeUnqualified)) == 1;
-            if (hasSingleUsingWithType)
+            var countOfUsingsWithType = usingPaths
+                .Count(@using => @using == typeNamespace ||
+                                 (knownTypes.Contains(@using, typeUnqualified, out var isType) && isType));
+            if (countOfUsingsWithType == 1)
             {
                 return typeUnqualified;
             }
@@ -545,8 +567,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         protected IEnumerable<string> ResolveAllUsings()
         {
             var usingDirectives = this.GetAll<IDeclareUsings, string>(item => item.DeclareUsings())
-                .Where(@namespace => 
-                    !string.IsNullOrWhiteSpace(@namespace) && 
+                .Where(@namespace =>
+                    !string.IsNullOrWhiteSpace(@namespace) &&
                     @namespace != Namespace &&
                     !Namespace.StartsWith($"{@namespace}."))
                 .Distinct();

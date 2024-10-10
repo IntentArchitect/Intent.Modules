@@ -26,7 +26,7 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
 
         private static TypeRegistry? _knownTypes;
         private static TypeRegistry? _outputTargetNames;
-        private static readonly TypeRegistry Empty = new([]);
+        private static readonly TypeRegistry Empty = new();
         private static readonly HashSet<string> ManuallyAddedKnownTypes = [];
         private static readonly Dictionary<string, HashSet<string>> GlobalUsingsByProjectId = [];
 
@@ -46,7 +46,7 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
                 .Union(ManuallyAddedKnownTypes)
                 .ToArray();
 
-            _knownTypes = new TypeRegistry(knownTypes);
+            _knownTypes = new TypeRegistry().WithTypes(knownTypes);
 
             var instanceRegistryKnownTypes = TemplateInstanceRegistry.GetRegisteredTypes().OfType<CSharpResolvedTypeInfo>();
             foreach (var otherInstance in instanceRegistryKnownTypes)
@@ -55,7 +55,7 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
             }
 
             var outputTargetNames = application.OutputTargets.Select(x => x.Name).ToArray();
-            _outputTargetNames = new TypeRegistry(outputTargetNames);
+            _outputTargetNames = new TypeRegistry().WithNamespaces(outputTargetNames);
 
             PopulateGlobalUsings(application);
         }
