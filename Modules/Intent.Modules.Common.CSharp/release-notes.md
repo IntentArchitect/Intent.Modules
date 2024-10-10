@@ -1,4 +1,8 @@
-﻿### Version 3.8.1
+﻿### Version 3.8.2
+
+- Fixed: Required type disambiguation would not occur when the conflicting type was in the current full namespace.
+
+### Version 3.8.1
 
 - Fixed: Global usings were not properly considered when considering required type disambiguations.
 

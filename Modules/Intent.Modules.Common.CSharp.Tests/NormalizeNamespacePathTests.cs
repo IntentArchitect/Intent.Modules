@@ -38,8 +38,8 @@ public class NormalizeNamespacePathTests
                 "System.Runtime.Serialization",
                 "Intent.RoslynWeaver.Attributes"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([]));
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry());
 
         Assert.Equal("Common.Types.Country", result);
     }
@@ -59,8 +59,8 @@ public class NormalizeNamespacePathTests
                 "Solution.Common.Types",
                 "Intent.RoslynWeaver.Attributes"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([]));
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry());
 
         Assert.Equal("Country", result);
     }
@@ -78,8 +78,8 @@ public class NormalizeNamespacePathTests
                 "AutoMapper",
                 "Intent.RoslynWeaver.Attributes"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([]));
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry());
 
         Assert.Equal("Contracts.Internal.CompanyDetailsManagement.StatutoryInfoDTO", result);
     }
@@ -92,8 +92,8 @@ public class NormalizeNamespacePathTests
             fullyQualifiedType: "Solution.Application.Common.Enums.CompanyDetails.SocialMediaType",
             knownOtherNamespaceNames: ProjectNames,
             usingPaths: [],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([]));
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry());
 
         Assert.Equal("Common.Enums.CompanyDetails.SocialMediaType", result);
     }
@@ -118,8 +118,8 @@ public class NormalizeNamespacePathTests
                 "MyCompany.Movies.Application.ServiceCallHandlers.Movies",
                 "MyCompany.Movies.Domain"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([]));
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry());
 
         Assert.Equal("Application.Movies", result);
     }
@@ -150,8 +150,8 @@ public class NormalizeNamespacePathTests
                 "Intent.RoslynWeaver.Attributes",
                 "Intent.Templates"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([]));
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry());
 
         Assert.Equal("Modelers.Services.CQRS.Api.QueryModel", result);
     }
@@ -184,8 +184,8 @@ public class NormalizeNamespacePathTests
                 "Intent.RoslynWeaver.Attributes",
                 "Intent.Templates"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([]));
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry());
 
         Assert.Equal("DependencyInjectionDecorator", result);
     }
@@ -218,8 +218,8 @@ public class NormalizeNamespacePathTests
                 "Intent.RoslynWeaver.Attributes",
                 "Intent.Templates"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([]));
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry());
 
         Assert.Equal("MyModel.MyModel", result);
     }
@@ -240,8 +240,8 @@ public class NormalizeNamespacePathTests
                 "Root.Sub1",
                 "Root.Sub2"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry().WithTypes([
                 "Root.Sub1.TypeName",
                 "Root.Sub2.TypeName"
             ]));
@@ -263,8 +263,8 @@ public class NormalizeNamespacePathTests
             [
                 "Namespace1"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([]));
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry());
 
         Assert.Equal("TypeName", result);
     }
@@ -281,8 +281,8 @@ public class NormalizeNamespacePathTests
                 "System",
                 "NewApplication32.Domain.Entities.Sec"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry().WithTypes([
                 "System.Action"
             ]));
 
@@ -300,8 +300,8 @@ public class NormalizeNamespacePathTests
             [
                 "Customer1.Domain.Entities.Mas"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry().WithTypes([
                 "Customer1.Domain.Repositories.Log.ILogRepository"
             ]));
 
@@ -320,8 +320,8 @@ public class NormalizeNamespacePathTests
                 "System",
                 "Customer1.Domain"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry().WithTypes([
                 "Customer1.Api.Conflict"
             ]));
 
@@ -339,8 +339,8 @@ public class NormalizeNamespacePathTests
             [
                 "ApplicationName.Domain.Entities"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry().WithTypes([
                 "ApplicationName.Application.Invoices.Invoice"
             ]));
 
@@ -355,8 +355,8 @@ public class NormalizeNamespacePathTests
             fullyQualifiedType: "ApplicationName.Application.Invoices.Invoice",
             knownOtherNamespaceNames: [],
             usingPaths: [],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry().WithTypes([
                 "ApplicationName.Application.Invoices.Invoice"
             ]));
 
@@ -374,8 +374,8 @@ public class NormalizeNamespacePathTests
             [
                 "ApplicationName.Domain.Entities"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry().WithTypes([
                 "ApplicationName.Application.Invoices.TypeName"
             ]));
 
@@ -394,8 +394,8 @@ public class NormalizeNamespacePathTests
                 "Solution.Application.Orders",
                 "Solution.Application.Orders.OrderConfirmed"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([]));
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry());
 
         Assert.Equal("OrderConfirmed", result);
     }
@@ -411,8 +411,8 @@ public class NormalizeNamespacePathTests
             [
                 "Solution.Application.Customers.GetPagedWithParameters.Something"
             ],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([]));
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry());
 
         result.ShouldBe("Application.Customers.GetPagedWithParameters.Something.GetPagedWithParameters");
     }
@@ -425,8 +425,8 @@ public class NormalizeNamespacePathTests
             fullyQualifiedType: "MyProject.Entities",
             knownOtherNamespaceNames: [],
             usingPaths: [],
-            outputTargetNames: new TypeRegistry([]),
-            knownTypes: new TypeRegistry([]));
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry());
 
         result.ShouldBe("MyProject.Entities");
     }
@@ -434,7 +434,7 @@ public class NormalizeNamespacePathTests
     [Fact]
     public void Scenario20NestedClass()
     {
-        var knownTypes = new TypeRegistry([]);
+        var knownTypes = new TypeRegistry();
         knownTypes.Add("Namespace0.Sub", "Class1");
         knownTypes.Add("Namespace0.Sub", "Class1.ChildClass");
         var result = CSharpTemplateBase.NormalizeNamespace(
@@ -448,7 +448,7 @@ public class NormalizeNamespacePathTests
             [
                 "Namespace1"
             ],
-            outputTargetNames: new TypeRegistry([]),
+            outputTargetNames: new TypeRegistry(),
             knownTypes: knownTypes);
 
         Assert.Equal("Sub.Class1.ChildClass", result);
@@ -456,7 +456,7 @@ public class NormalizeNamespacePathTests
     [Fact]
     public void Scenario21NestedClass()
     {
-        var knownTypes = new TypeRegistry([]);
+        var knownTypes = new TypeRegistry();
         knownTypes.Add("Namespace0.Sub", "Class1");
         knownTypes.Add("Namespace0.Sub", "Class1.ChildClass");
         var result = CSharpTemplateBase.NormalizeNamespace(
@@ -470,10 +470,47 @@ public class NormalizeNamespacePathTests
             [
                 "Namespace1"
             ],
-            outputTargetNames: new TypeRegistry([]),
+            outputTargetNames: new TypeRegistry(),
             knownTypes: knownTypes);
 
         Assert.Equal("Class1.ChildClass", result);
     }
 
+    [Fact]
+    public void Scenario22()
+    {
+        var result = CSharpTemplateBase.NormalizeNamespace(
+            localNamespace: "App.Domain.Entities",
+            fullyQualifiedType: "App.Domain.Address",
+            knownOtherNamespaceNames: [
+                "App.Domain",
+                "App.Domain.Entities"
+            ],
+            usingPaths: [],
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry().WithTypes([
+                "App.Domain.Entities.Address"
+            ]));
+
+        Assert.Equal("Domain.Address", result);
+    }
+
+    [Fact]
+    public void Scenario23()
+    {
+        var result = CSharpTemplateBase.NormalizeNamespace(
+            localNamespace: string.Empty,
+            fullyQualifiedType: "Namespace.TypeName.TypeName",
+            knownOtherNamespaceNames: [],
+            usingPaths: [
+                "Namespace",
+                "Namespace.TypeName"
+            ],
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry().WithTypes([
+                "Namespace.TypeName.TypeName"
+            ]));
+
+        Assert.Equal("TypeName", result);
+    }
 }
