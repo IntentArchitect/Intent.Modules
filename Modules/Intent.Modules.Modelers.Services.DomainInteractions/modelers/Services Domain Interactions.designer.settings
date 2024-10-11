@@ -4691,6 +4691,16 @@ class DomainHelper {
             element: x
         }));
     }
+    /**
+     * Returns true if the attribute is a foreign key on a compositional one-to-many relationship (i.e. is managed by the DB and should not be set).
+     * @param attribute
+     * @returns
+     */
+    static isManagedForeignKey(attribute) {
+        var _a, _b;
+        let fkAssociation = (_b = (_a = attribute.getStereotype("Foreign Key")) === null || _a === void 0 ? void 0 : _a.getProperty("Association")) === null || _b === void 0 ? void 0 : _b.getSelected();
+        return fkAssociation != null &amp;&amp; !fkAssociation.getOtherEnd().typeReference.getIsCollection() &amp;&amp; !fkAssociation.getOtherEnd().typeReference.getIsNullable();
+    }
     static getChildrenOfType(entity, type) {
         let attrDict = Object.create(null);
         let attributes = entity.getChildren(type);
@@ -5218,6 +5228,7 @@ class CrudHelper {
             .filter(x =&gt; {
             var _a;
             return !x.hasStereotype("Primary Key") &amp;&amp;
+                !DomainHelper.isManagedForeignKey(x) &amp;&amp; // essentially also an attribute set by infrastructure
                 !CrudHelper.legacyPartitionKey(x) &amp;&amp;
                 (x["hasMetadata"] &amp;&amp; (!x.hasMetadata("set-by-infrastructure") || ((_a = x.getMetadata("set-by-infrastructure")) === null || _a === void 0 ? void 0 : _a.toLocaleLowerCase()) != "true"));
         });
@@ -15886,7 +15897,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <represents>data</represents>
           <childSettings>
             <childSetting id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" version="2.0.0">
-              <isRequiredFunction>return true;</isRequiredFunction>
+              <isRequiredFunction>return !element.typeReference.isNullable;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>

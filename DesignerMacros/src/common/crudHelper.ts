@@ -208,6 +208,7 @@ class CrudHelper {
         let attrDict: { [index: string]: IAttributeWithMapPath } = Object.create(null);
         let attributes = entity.getChildren("Attribute")
             .filter(x => !x.hasStereotype("Primary Key") &&
+                !DomainHelper.isManagedForeignKey(x) && // essentially also an attribute set by infrastructure
                 !CrudHelper.legacyPartitionKey(x) &&
                 (x["hasMetadata"] && (!x.hasMetadata("set-by-infrastructure") || x.getMetadata("set-by-infrastructure")?.toLocaleLowerCase() != "true")));
         attributes.forEach(attr => attrDict[attr.id] = {

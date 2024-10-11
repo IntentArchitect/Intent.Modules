@@ -1,3 +1,8 @@
+### Version 2.0.1
+
+- Fixed: `Data Contracts` showing all `Attributes` as required on mapping.
+- Fixed: CQRS CRUD script incorrectly mapping managed Foreign Key `Attributes` (i.e. where `Attribute` is part of compositional one-to-many relationship).
+
 ### Version 2.0.0
 
 - Improvement: Advanced mapping configurations updated to use new trait system introduced in Intent Architect 4.3 to allowing for support of additional mapping scenarios.

@@ -225,6 +225,16 @@ class DomainHelper {
         }));
     }
 
+    /**
+     * Returns true if the attribute is a foreign key on a compositional one-to-many relationship (i.e. is managed by the DB and should not be set).
+     * @param attribute 
+     * @returns 
+     */
+    static isManagedForeignKey(attribute: IElementApi): boolean {
+        let fkAssociation = attribute.getStereotype("Foreign Key")?.getProperty("Association")?.getSelected() as any as IAssociationApi;
+        return fkAssociation != null && !fkAssociation.getOtherEnd().typeReference.getIsCollection() && !fkAssociation.getOtherEnd().typeReference.getIsNullable()
+    }
+
     static getChildrenOfType(entity: MacroApi.Context.IElementApi, type: string): IAttributeWithMapPath[] {
         let attrDict: { [characterName: string]: IAttributeWithMapPath } = Object.create(null);
         let attributes = entity.getChildren(type)
