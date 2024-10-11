@@ -18,6 +18,7 @@ resources:
 variables:
 - group: 'Intent Architect Credentials'
 - group: 'NuGet.org API Keys'
+- group: 'Pipeline Agent Pool Names'
 - name: 'isDevelopment'
   value: $[or(startsWith(variables['Build.SourceBranch'], 'refs/heads/development-'), in(variables['Build.SourceBranch'], 'refs/heads/development'))]
 - name: 'isMaster'
@@ -36,7 +37,9 @@ variables:
   value: '##vso[task.logissue type=error;]{@m} {@x}\n'
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: $(BuildPool.Linux.General)
+  demands:
+  - 'ImageOverride -equals ubuntu-latest'
 
 steps:
 
