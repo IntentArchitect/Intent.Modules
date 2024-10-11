@@ -41,7 +41,7 @@
         <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Required" isActive="true" />
         <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="true" />
         <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="true" />
-        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;85fba0e9-9161-4c85-a603-a229ef312beb&quot;,&quot;d4e577cd-ad05-4180-9a2e-fff4ddea0e1e&quot;,&quot;4464fabe-c59e-4d90-81fc-c9245bdd1afd&quot;]" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;85fba0e9-9161-4c85-a603-a229ef312beb&quot;,&quot;d4e577cd-ad05-4180-9a2e-fff4ddea0e1e&quot;]" isActive="true" />
         <property name="52f3c2e8-6438-494a-b0a7-7a9e61c8aae8" display="Target Traits" isActive="true" />
         <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="true" />
         <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" value="d384db9c-a279-45e1-801e-e4e8099625f2" isActive="true" />

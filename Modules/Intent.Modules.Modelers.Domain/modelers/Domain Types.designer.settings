@@ -371,7 +371,6 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
             <targetTypes>
               <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
               <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
-              <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
@@ -879,6 +878,20 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
       <scriptOptions />
       <mappingOptions />
       <mappingSettings />
+      <childElementExtensions>
+        <childElementExtension type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+          <mappingSettings />
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
+            </targetTypes>
+            <allowIsNavigable>inherit</allowIsNavigable>
+            <allowIsNullable>inherit</allowIsNullable>
+            <allowIsCollection>inherit</allowIsCollection>
+          </typeReferenceSetting>
+        </childElementExtension>
+      </childElementExtensions>
     </elementSetting>
     <elementSetting type="Diagram" typeId="4d66fecd-e9b8-436f-aa50-c59040ad0879">
       <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
