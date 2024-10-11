@@ -1,3 +1,7 @@
+### Version 5.0.1
+
+- Improvement: Commands and Queries supporting syntax highlighting in the diagrams.
+
 ### Version 5.0.0
 
 - Improvement: Certain element types will now show validation errors if their name is not unique.

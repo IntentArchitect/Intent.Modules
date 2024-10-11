@@ -412,7 +412,6 @@ element.getChildren("DTO-Field").forEach(x =&gt; {
             <position x="${x}" y="${y}" />
             <display>
               <drawText>
-                <text>return `${getName()}: ${typeReference.display}`;</text>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
@@ -441,7 +440,6 @@ vertical-align: center`</style>
             <position x="${x}" y="${y}" />
             <display>
               <drawText>
-                <text>return `${getName()}: ${typeReference.display}`;</text>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
