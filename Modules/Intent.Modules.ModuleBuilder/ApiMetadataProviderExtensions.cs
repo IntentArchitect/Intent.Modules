@@ -122,6 +122,13 @@ namespace Intent.ModuleBuilder.Api
                 .ToList();
         }
 
+        public static IList<ModuleDocumentationModel> GetModuleDocumentationModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(ModuleDocumentationModel.SpecializationTypeId)
+                .Select(x => new ModuleDocumentationModel(x))
+                .ToList();
+        }
+
         public static IList<ModuleSettingsConfigurationModel> GetModuleSettingsConfigurationModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(ModuleSettingsConfigurationModel.SpecializationTypeId)

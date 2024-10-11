@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="83dfd8ae-5086-4e41-94c2-7110d5a49b4c" version="3.1.0">
+  <name>Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="5cc56ebc-6b61-41a6-a452-8efd9382da6f">Documentation Topic</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>24f2b144-e77e-4154-aa79-1cb5cbd19a17</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="2792ad9a-2afd-4350-bac6-bdcf4b701ff1">
+      <name>Description</name>
+      <type>string</type>
+      <controlType>textarea</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="4fa553d3-1b96-4f63-bdb9-3237eca31f6b">
+      <name>Icon</name>
+      <type>string</type>
+      <controlType>icon</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="207e8583-2ba5-4ea3-84aa-2f65cd5915ca">
+      <name>Href</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="21d13790-2910-475c-b58f-9d350f2e13c6">
+      <name>Designers</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder>(default global)</placeholder>
+      <valueOptions />
+      <lookupTypes>
+        <type>7f5fcc9f-c721-4a31-bfe2-7909f4289420</type>
+      </lookupTypes>
+    </property>
+    <property id="8642b1d1-93f9-4f5f-b5ae-ad5fc20d7a46">
+      <name>Elements</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <defaultValue>(Not applicable to any particular element)</defaultValue>
+      <valueOptions />
+      <lookupTypes>
+        <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
+        <type>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</type>
+        <type>c4c61fdc-464d-41d2-8e0e-5a734d588302</type>
+        <type>89333f72-3960-4159-bf61-9c40d4b65088</type>
+      </lookupTypes>
+    </property>
+    <property id="f55a1f0c-40dd-48b4-b985-8360933e6a47">
+      <hint>Separate tags with spaces.</hint>
+      <name>Tags</name>
+      <type>string</type>
+      <controlType>textarea</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

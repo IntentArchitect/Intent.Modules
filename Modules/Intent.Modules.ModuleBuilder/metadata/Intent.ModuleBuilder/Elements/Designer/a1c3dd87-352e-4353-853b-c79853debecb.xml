@@ -94,5 +94,29 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="429da8ac-be46-46d9-bd62-88bbd6f419ee" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: Documentation Extension</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="1f8a0d27-6d09-484b-ae3e-9975b6cce7e2">
+        <typeId>bee1e111-6e89-404c-ac40-44a60406e6cf</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.ModuleBuilder</typePackageName>
+        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>a1c3dd87-352e-4353-853b-c79853debecb</parentFolderId>
+      <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+      <packageName>Intent.ModuleBuilder</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
   </childElements>
 </class>

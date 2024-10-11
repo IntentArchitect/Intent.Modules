@@ -1,3 +1,7 @@
+### Version 3.12.0
+
+- Feature: Support for adding documentation to the module which will generate a `documentation.json` file. This file can be consumed by the new Documentation Dialog feature in Intent Architect.
+
 ### Version 3.11.3
 
 - Fixed: `Intent.Common` update to fix "DefaultOverrideBehaviour" lacking `IOutputTarget` context.

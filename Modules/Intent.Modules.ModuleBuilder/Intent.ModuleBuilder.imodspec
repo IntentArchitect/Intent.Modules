@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
-  <version>3.11.3-pre.0</version>
+  <version>3.12.0-pre.0</version>
   <supportedClientVersions>[4.3.0-beta.4, 5.0.0-a)</supportedClientVersions>
   <summary>For the creation of Intent Architect Modules</summary>
   <description>For the creation of Intent Architect Modules</description>
@@ -145,6 +145,10 @@
       <role>Api</role>
       <location>Api</location>
     </template>
+    <template id="Intent.ModuleBuilder.Templates.DocumentationTemplate" externalReference="6b503a80-ab3f-4514-8626-9c8c42279728">
+      <role>Templates</role>
+      <location>resources</location>
+    </template>
     <template id="Intent.ModuleBuilder.Templates.FactoryExtension" externalReference="8d856f7d-a6e8-45dd-9cba-843d984cb41a">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
@@ -256,6 +260,7 @@
     <install src="modelers/Module Builder.designer.settings" externalReference="e4c0d250-d82d-47b1-9f5b-20f1403fb81e" />
     <install src="modelers/Designer Builder.designer.settings" externalReference="3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b" />
     <install target="Module Builder" src="metadata/Intent.ModuleBuilder/Intent.ModuleBuilder.pkg.config" externalReference="9972b2a9-b749-4bba-b5c8-824bf694c6ef" />
+    <install src="modelers/Documentation Extension.designer.settings" externalReference="bee1e111-6e89-404c-ac40-44a60406e6cf" />
   </metadata>
   <files>
     <file src="$outDir$/$id$.dll" />
