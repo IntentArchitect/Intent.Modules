@@ -47,7 +47,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
         private CSharpStatement GetConstructorStatement(string variableName)
         {
-            var ctor = new ConstructorMapping(_mappingModel, _template);
+            var ctor = new ConstructorMapping(_mappingModel.GetCollectionItemModel(), _template);
             ctor.SetSourceReplacement(GetSourcePath().Last().Element, variableName);
             var result = ctor.GetSourceStatement();
             return result;

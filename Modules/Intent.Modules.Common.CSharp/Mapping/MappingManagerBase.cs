@@ -122,24 +122,26 @@ public class MappingModel
         {
             throw new Exception("This method is intended to for resolving Collection Item mappings as opposed to the Collection itself");
         }
-		return _manager.ResolveMappings(new CollectionItemMappingAdapter(this));
+		return _manager.ResolveMappings(GetCollectionItemModel());
 	}
 
-	//public IEnumerable<MappingModel> GetAllChildren(Func<MappingModel, bool> predicate = null)
-	//{
-	//    var result = new List<MappingModel>();
-	//    foreach (var mappingModel in Children)
-	//    {
-	//        if (predicate == null || predicate(mappingModel))
-	//        {
-	//            result.Add(mappingModel);
-	//            result.AddRange(mappingModel.GetAllChildren(predicate));
-	//        }
-	//    }
-	//    return result;
-	//}
+    public MappingModel GetCollectionItemModel() => new CollectionItemMappingAdapter(this);
 
-	public MappingModel GetParent(Func<MappingModel, bool> predicate = null)
+    //public IEnumerable<MappingModel> GetAllChildren(Func<MappingModel, bool> predicate = null)
+    //{
+    //    var result = new List<MappingModel>();
+    //    foreach (var mappingModel in Children)
+    //    {
+    //        if (predicate == null || predicate(mappingModel))
+    //        {
+    //            result.Add(mappingModel);
+    //            result.AddRange(mappingModel.GetAllChildren(predicate));
+    //        }
+    //    }
+    //    return result;
+    //}
+
+    public MappingModel GetParent(Func<MappingModel, bool> predicate = null)
     {
         if (predicate == null)
         {

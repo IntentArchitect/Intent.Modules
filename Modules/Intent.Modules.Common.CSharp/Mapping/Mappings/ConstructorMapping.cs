@@ -35,6 +35,13 @@ public class ConstructorMapping : CSharpMappingBase
 
     public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
     {
+        if (Model.TypeReference?.IsCollection == true)
+        {
+            var m = new SelectToListMapping(_mappingMappingModel, _template);
+            m.Parent = this.Parent;
+            return m.GetSourceStatement();
+        }
+
         //Try find the CSharp constructor so we know what parameters are expected and in what order
         if (TryFindModelConstructor(out var ctor)) 
         {

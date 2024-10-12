@@ -25,19 +25,19 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>00f673eb-be20-40ea-8d2c-555d72b8743a</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#e175460e-eed0-4df6-8bef-bdb3c602bc5a</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/Domain Extensions.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Domain Extensions.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <ProjectId>22c603f3-c552-4349-8bf2-3727d258da8d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.StaticContentOutputReadme#f0cb4747-033a-4862-8600-128e3243ee5f</CorrelationId>
       <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>content/readme.txt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>content/readme.txt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>00f673eb-be20-40ea-8d2c-555d72b8743a</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#e175460e-eed0-4df6-8bef-bdb3c602bc5a</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Domain Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Domain Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
