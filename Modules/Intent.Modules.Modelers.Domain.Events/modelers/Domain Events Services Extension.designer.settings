@@ -230,8 +230,9 @@ vertical-align: center`</style>
     return;
 }
 const handler = association.getOtherEnd().typeReference.getType();
-// hasn't been added YET (NOTE this could be buggy later if we )
-if (handler.getAssociations("Domain Event Handler Association").length == 0) {
+
+if ((!handler.getName() || handler.getName() == "NewDomainEventHandler") &amp;&amp; 
+        handler.getAssociations("Domain Event Handler Association").length == 0) {
     handler.setName(association.typeReference.getType().getName() + "Handler")
 }
 </script>

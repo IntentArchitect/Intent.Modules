@@ -32,6 +32,7 @@
             <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="DomainEventHandlers" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="" isActive="true" />
+            <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" value="" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
             <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
             <property name="2d07ed88-82bf-4d30-9280-1488f0f927e0" display="Name Must Be Unique" value="true" isActive="true" />
@@ -70,6 +71,7 @@
             <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="HandledDomainEvents" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return `handles : ${typeReference.display}`" isActive="true" />
+            <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" value="" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
             <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="return `handler`;" isActive="true" />
             <property name="2d07ed88-82bf-4d30-9280-1488f0f927e0" display="Name Must Be Unique" value="true" isActive="true" />
@@ -103,7 +105,7 @@
       <childElements>
         <childElement id="ee9ed477-23c8-44d3-8c20-6d8dceb0a951" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
           <name>On Created</name>
-          <display>On Created: Script</display>
+          <display>On Created: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="226b820e-f91c-4ed5-aace-4a8435570e38">
@@ -127,7 +129,8 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="if (!association.isTargetEnd) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;const handler = association.getOtherEnd().typeReference.getType();&#xD;&#xA;// hasn't been added YET (NOTE this could be buggy later if we )&#xD;&#xA;if (handler.getAssociations(&quot;Domain Event Handler Association&quot;).length == 0) {&#xD;&#xA;    handler.setName(association.typeReference.getType().getName() + &quot;Handler&quot;)&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="if (!association.isTargetEnd) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;const handler = association.getOtherEnd().typeReference.getType();&#xD;&#xA;&#xD;&#xA;if ((!handler.getName() || handler.getName() == &quot;NewDomainEventHandler&quot;) &amp;&amp; &#xD;&#xA;        handler.getAssociations(&quot;Domain Event Handler Association&quot;).length == 0) {&#xD;&#xA;    handler.setName(association.typeReference.getType().getName() + &quot;Handler&quot;)&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+                <property name="7d1114d8-e27d-4cb8-b5d5-3fd75bf7dea1" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
