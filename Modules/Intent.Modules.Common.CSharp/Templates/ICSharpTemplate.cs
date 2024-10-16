@@ -17,8 +17,10 @@ public interface ICSharpTemplate : IIntentTemplate, IHasNugetDependencies, IHasA
     /// </summary>
     ICSharpCodeContext RootCodeContext { get; }
     void AddUsing(string @namespace);
+    void RemoveUsing(string @namespace);
     string UseType(string fullName);
     void AddNugetDependency(INugetPackageInfo nugetPackageInfo);
+    void RemoveNugetDependency(string packageName);
     string GetFullyQualifiedTypeName(ITypeReference typeReference, string collectionFormat = null);
     string GetFullyQualifiedTypeName(string templateId, TemplateDiscoveryOptions options = null);
     string GetFullyQualifiedTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null);

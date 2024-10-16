@@ -51,8 +51,8 @@ public class IndentedFileItems : IndentedFileItem<IIndentedFileItems>, IIndented
                         break;
                     case IIndentedFileContent content:
                         var lines = content.Content
-                            .ReplaceLineEndings()
-                            .Split(Environment.NewLine);
+                            .ReplaceLineEndings("\n")
+                            .Split('\n');
 
                         foreach (var line in lines)
                         {

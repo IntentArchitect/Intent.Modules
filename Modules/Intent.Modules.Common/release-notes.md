@@ -1,6 +1,7 @@
 ### Version 3.7.2
 
 - Fixed: `DefaultOverrideBehaviour` lacked `IOutputTarget` context which provides access to application settings that can help better resolve what the override behaviour should be.
+- Fixed: The YAML file builder would not correctly indent multiline string literal values when compiled on an operating system using `\n` for line endings, such as Linux.
 
 ### Version 3.7.1
 

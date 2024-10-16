@@ -173,6 +173,15 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
+        /// Remove the using clause with the specified <paramref name="namespace"/> to this template's file.
+        /// </summary>
+        public void RemoveUsing(string @namespace)
+        {
+            _additionalUsingNamespaces.Remove(@namespace);
+        }
+
+
+        /// <summary>
         /// Adds the <paramref name="namespace"/> as a dependent using clause and returns the <paramref name="name"/>.
         /// </summary>
         public string UseType(string name, string @namespace)
@@ -601,6 +610,19 @@ namespace Intent.Modules.Common.CSharp.Templates
         {
             _nugetDependencies.Add(nugetPackageInfo);
         }
+
+        /// <summary>
+        /// Removes a NuGet dependency the specified NuGet package should.
+        /// </summary>
+        public void RemoveNugetDependency(string packageName)
+        {
+            var toRemoves = _nugetDependencies.Where(n => n.Name == packageName).ToList();
+            foreach (var toRemove in toRemoves)
+            {
+                _nugetDependencies.Remove(toRemove);
+            }
+        }
+
 
         /// <summary>
         /// Registers that a <c>.csproj</c> containing a Role named <paramref name="roleName"/>

@@ -137,11 +137,11 @@ public class DataFileYamlWriter : DataFileWriter
 
         var isStringValue = scalar.Value is string;
         var stringValue = isStringValue ? (string)scalar.Value : null;
-        if (isStringValue && stringValue.ReplaceLineEndings().Contains(Environment.NewLine))
+        if (isStringValue && stringValue.ReplaceLineEndings("\n").Contains('\n'))
         {
             StringBuilder.AppendLine("|");
             PushIndentation();
-            foreach (var line in stringValue.Split(Environment.NewLine))
+            foreach (var line in stringValue.Split('\n'))
             {
                 if (!string.IsNullOrWhiteSpace(line))
                 {

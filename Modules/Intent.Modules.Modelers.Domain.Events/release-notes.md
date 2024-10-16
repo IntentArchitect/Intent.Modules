@@ -1,3 +1,7 @@
+### Version 4.2.1
+
+- Fixed: Subscribing to `DomainEvent`s was renaming Domain Event Handler if it had been given a name, it now only "Names" it if it is the default name.
+
 ### Version 4.2.0
 
 - Improvement: Advanced mapping configurations updated to use new capabilities made available in Intent Architect 4.3 for a better experience.
