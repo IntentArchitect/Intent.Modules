@@ -220,8 +220,12 @@ public abstract class CSharpMappingBase : ICSharpMapping
         return result;
     }
 
-    protected virtual ICSharpExpression GetSourcePathExpression(IList<IElementMappingPathTarget> mappingPaths, bool targetIsNullable)
+    protected ICSharpExpression GetSourcePathExpression(IList<IElementMappingPathTarget> mappingPaths, bool targetIsNullable)
     {
+        // TODO: GCB - The check for inheritance like this is a hack.
+        // Consider making associations indicating inheritance a first-class citizen via the settings.
+        // Alternatively, consider using the metadata to indicate this.
+        mappingPaths = mappingPaths.Where(x => x.Element.SpecializationType != "Generalization Target End").ToList();
         CSharpStatement result = default;
         foreach (var mappingPathTarget in mappingPaths)
         {
