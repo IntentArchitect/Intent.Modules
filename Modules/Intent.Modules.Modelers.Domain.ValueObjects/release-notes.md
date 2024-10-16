@@ -1,3 +1,8 @@
+### Version 3.6.0
+
+- Improvement: Upgraded module to use Intent Architect 4.3 metadata improvements.
+- Improvement: Updated Value Object icon.
+
 ### Version 3.5.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

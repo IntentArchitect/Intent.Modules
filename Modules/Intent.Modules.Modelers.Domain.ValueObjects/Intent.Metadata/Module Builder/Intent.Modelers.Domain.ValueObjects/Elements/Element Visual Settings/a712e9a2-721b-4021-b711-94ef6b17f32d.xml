@@ -3,7 +3,7 @@
   <name>[visual]</name>
   <display>[visual]: Value Object</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <order>1</order>
   <genericTypes />
   <typeReference id="45b93b70-da20-4161-9d0b-98006b53dc72">

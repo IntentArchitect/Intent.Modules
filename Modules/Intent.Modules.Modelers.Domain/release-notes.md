@@ -1,6 +1,7 @@
 ﻿### Version 3.11.1
 
 - Fixed: `Attributes` under `Classes` able to reference `DataContracts`. This shouldn't be allowed since `DataContracts` should not be related to what actually is persisted.
+- Improvement: Updated icons
 
 ### Version 3.11.0
 

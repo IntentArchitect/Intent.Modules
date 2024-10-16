@@ -1,3 +1,7 @@
+### Version 4.1.0
+
+- Improvement: Updated icons.
+
 ### Version 4.0.0
 
 - Improvement: Now contains general element types such as Attribute, Constructor, Operation and Parameter.

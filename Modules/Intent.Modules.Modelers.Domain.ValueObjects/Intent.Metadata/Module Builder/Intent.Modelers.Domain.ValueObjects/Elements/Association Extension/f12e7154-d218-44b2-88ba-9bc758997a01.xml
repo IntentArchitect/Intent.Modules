@@ -41,6 +41,7 @@
             <property name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
             <property name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
             <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" value="[&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;,&quot;5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5&quot;]" isActive="true" />
+            <property name="57c5e973-3a0a-42d7-912f-3e7ff3af2c0b" display="Target Traits" isActive="true" />
             <property name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" value="" isActive="true" />
             <property name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
             <property name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />
@@ -69,6 +70,7 @@
             <property name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
             <property name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
             <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" value="[&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;,&quot;5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5&quot;]" isActive="true" />
+            <property name="57c5e973-3a0a-42d7-912f-3e7ff3af2c0b" display="Target Traits" isActive="true" />
             <property name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" isActive="true" />
             <property name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
             <property name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />
@@ -94,7 +96,7 @@
       <childElements>
         <childElement id="acf70dea-81e7-4da9-af4d-60b473b7957c" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
           <name>On Changed</name>
-          <display>On Changed: Script</display>
+          <display>On Changed: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="82f1add2-925f-49b0-b098-b58cde467d83">
@@ -119,6 +121,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="let targetEnd = association.isTargetEnd() ? association : association.getOtherEnd();&#xD;&#xA;if (targetEnd.typeReference.getType()?.specialization == &quot;Value Object&quot;) {&#xD;&#xA;    let sourceEnd = targetEnd.getOtherEnd();&#xD;&#xA;    sourceEnd.typeReference.setIsCollection(false);&#xD;&#xA;    sourceEnd.typeReference.setIsNullable(false);&#xD;&#xA;}" isActive="true" />
+                <property name="7d1114d8-e27d-4cb8-b5d5-3fd75bf7dea1" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

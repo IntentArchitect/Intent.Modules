@@ -1,3 +1,7 @@
+### Version 3.8.2
+
+- Improvment: Updated icons.
+
 ### Version 3.8.1
 
 - Fixed: Operation uniqueness validation using name without consideration for parameters.

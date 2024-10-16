@@ -36,9 +36,9 @@ namespace Intent.Modelers.Domain.Api
 
         public string Id => _association.Id;
 
-        public DataContractGeneralizationSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new DataContractGeneralizationSourceEndModel(_association.SourceEnd, this));
+        public DataContractGeneralizationSourceEndModel SourceEnd => _sourceEnd ??= new DataContractGeneralizationSourceEndModel(_association.SourceEnd, this);
 
-        public DataContractGeneralizationTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new DataContractGeneralizationTargetEndModel(_association.TargetEnd, this));
+        public DataContractGeneralizationTargetEndModel TargetEnd => _targetEnd ??= new DataContractGeneralizationTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 

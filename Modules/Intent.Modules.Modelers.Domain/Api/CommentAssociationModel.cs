@@ -35,9 +35,9 @@ namespace Intent.Modelers.Domain.Api
 
         public string Id => _association.Id;
 
-        public CommentSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new CommentSourceEndModel(_association.SourceEnd, this));
+        public CommentSourceEndModel SourceEnd => _sourceEnd ??= new CommentSourceEndModel(_association.SourceEnd, this);
 
-        public CommentTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new CommentTargetEndModel(_association.TargetEnd, this));
+        public CommentTargetEndModel TargetEnd => _targetEnd ??= new CommentTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 
