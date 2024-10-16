@@ -1,6 +1,7 @@
 ### Version 5.0.1
 
 - Improvement: Commands and Queries supporting syntax highlighting in the diagrams.
+- Improvement: Commands will now warn if default values have been set on properties which are proceeded by properties without default values
 
 ### Version 5.0.0
 
