@@ -1,3 +1,8 @@
+### Version 3.7.1
+
+- Improvement: Updated Version elements to not have unique names.
+- Improvement: Bumped versions to officials from pre-releases.
+
 ### Version 3.7.0
 
 - Improvement: Added support for generating Razor templates.

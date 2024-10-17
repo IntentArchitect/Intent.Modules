@@ -456,7 +456,7 @@ parent.getChildren().forEach(child =&gt;{
 return result;
 </validateFunction>
               <allowRename>true</allowRename>
-              <nameMustBeUnique>true</nameMustBeUnique>
+              <nameMustBeUnique>false</nameMustBeUnique>
               <allowAbstract>false</allowAbstract>
               <allowStatic>false</allowStatic>
               <allowGenericTypes>false</allowGenericTypes>

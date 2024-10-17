@@ -33,8 +33,6 @@
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
-        <typePackageName>Intent.Modelers.Types.ServiceProxies</typePackageName>
-        <typePackageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>

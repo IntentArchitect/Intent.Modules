@@ -474,7 +474,7 @@
       <childElements>
         <childElement id="99d85c52-5c96-44f2-bc23-d29af15e04ba" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
-          <display>On Created: Script</display>
+          <display>On Created: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="acd96291-0cc3-41b6-8f61-2f611aa3cd6e">
@@ -499,6 +499,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="element.launchMappingDialog(&quot;df491bea-8a85-4bc9-a93d-41b7abb80ffb&quot;);&#xD;&#xA;" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -507,7 +508,7 @@
         </childElement>
         <childElement id="7407d479-9959-490a-8d2e-9c61919e0233" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Mapped</name>
-          <display>On Mapped: Script</display>
+          <display>On Mapped: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="6e502da8-12c6-4845-a1e5-0be39ebf18d7">
@@ -532,6 +533,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getName() === &quot;Service&quot; || element.getName() === &quot;NewServiceProxy&quot;) {&#xD;&#xA;    const elementName = removeSuffix(element.getMapping().getElement().getName(), &quot;Service&quot;, &quot;Proxy&quot;);&#xD;&#xA;    element.setName(`${elementName}Service`);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;element.getChildren(&quot;Service Proxy Operation&quot;).forEach(operation =&gt; {&#xD;&#xA;    operation.setName(removeSuffix(operation.getName(), &quot;Command&quot;, &quot;Query&quot;));&#xD;&#xA;});&#xD;&#xA;" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
