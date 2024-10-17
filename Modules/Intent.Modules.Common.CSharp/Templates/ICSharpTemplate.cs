@@ -7,6 +7,7 @@ using Intent.Modules.Common.CSharp.FactoryExtensions;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
+using System;
 
 namespace Intent.Modules.Common.CSharp.Templates;
 
@@ -17,10 +18,10 @@ public interface ICSharpTemplate : IIntentTemplate, IHasNugetDependencies, IHasA
     /// </summary>
     ICSharpCodeContext RootCodeContext { get; }
     void AddUsing(string @namespace);
-    void RemoveUsing(string @namespace);
+    void RemoveUsing(string @namespace) => throw new NotSupportedException();
     string UseType(string fullName);
     void AddNugetDependency(INugetPackageInfo nugetPackageInfo);
-    void RemoveNugetDependency(string packageName);
+    void RemoveNugetDependency(string packageName) => throw new NotSupportedException();
     string GetFullyQualifiedTypeName(ITypeReference typeReference, string collectionFormat = null);
     string GetFullyQualifiedTypeName(string templateId, TemplateDiscoveryOptions options = null);
     string GetFullyQualifiedTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null);
