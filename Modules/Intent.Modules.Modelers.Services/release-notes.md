@@ -1,6 +1,7 @@
 ### Version 3.8.2
 
 - Improvment: Updated icons.
+- Improvement: Inherited DTO fields are now displayed on the mapping screen
 
 ### Version 3.8.1
 

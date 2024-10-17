@@ -1432,6 +1432,14 @@ return result;
               <canBeModified>true</canBeModified>
               <represents>data</represents>
             </childSetting>
+            <childSetting id="1a7abde9-a764-47fb-ab55-6dd9a0e5ec24" name="Inheritence" type="Generalization Target End" typeId="e1b3d4e4-0ad0-4aec-97fb-780ab9e476db" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
           </childSettings>
         </mappableElement>
         <mappableElement id="8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
