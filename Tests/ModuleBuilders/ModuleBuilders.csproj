@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.7.2-pre.0" />
-    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.8.0-pre.7" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.8.1" />
     <PackageReference Include="Intent.Modules.Common.Dart" Version="1.1.0" />
     <PackageReference Include="Intent.Modules.Common.Html" Version="4.0.0" />
     <PackageReference Include="Intent.Modules.Common.Java" Version="4.0.0" />
