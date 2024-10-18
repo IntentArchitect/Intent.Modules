@@ -1,3 +1,8 @@
+### Version 3.7.1
+
+- Improvement: Updated NuGet Version element to support duplicate names.
+- Improvement: Updated Modules / NuGets to official versions.
+
 ### Version 3.7.0
 
 - Improvement: Added support for generating Razor templates.

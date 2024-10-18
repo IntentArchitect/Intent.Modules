@@ -18,11 +18,11 @@ namespace Intent.Modules.ModuleBuilder.CSharp
             NugetRegistry.Register(IntentModulesCommonCSharpPackageName,
                 (framework) => framework switch
                     {
-                        ( >= 8, 0) => new PackageVersion("3.8.0-pre.7")
+                        ( >= 8, 0) => new PackageVersion("3.8.1")
                             .WithNugetDependency("Intent.Architect.Persistence", "3.6.0")
-                            .WithNugetDependency("Intent.Modules.Common", "3.7.0-pre.3")
-                            .WithNugetDependency("Intent.Modules.Common.Types", "4.0.0-alpha.0")
-                            .WithNugetDependency("Intent.RoslynWeaver.Attributes", "2.1.4")
+                            .WithNugetDependency("Intent.Modules.Common", "3.7.1")
+                            .WithNugetDependency("Intent.Modules.Common.Types", "4.0.0")
+                            .WithNugetDependency("Intent.RoslynWeaver.Attributes", "2.1.5")
                             .WithNugetDependency("Intent.SoftwareFactory.SDK", "3.6.0"),
                         _ => throw new Exception($"Unsupported Framework `{framework.Major}` for NuGet package '{IntentModulesCommonCSharpPackageName}'"),
                     }

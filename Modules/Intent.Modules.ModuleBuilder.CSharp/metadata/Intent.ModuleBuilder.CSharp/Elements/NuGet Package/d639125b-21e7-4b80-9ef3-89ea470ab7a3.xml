@@ -25,8 +25,8 @@
   <metadata />
   <childElements>
     <childElement id="08bbc292-e66a-4537-9806-64f443818ed6" type="Package Version" typeId="231f8cf8-517b-4801-9682-991d22f4e662">
-      <name>3.8.0-pre.7</name>
-      <display>3.8.0-pre.7 ( &gt;= .NETCoreApp,Version=v8.0 )</display>
+      <name>3.8.1</name>
+      <display>3.8.1 ( &gt;= .NETCoreApp,Version=v8.0 )</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
@@ -47,7 +47,7 @@
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="e4367732-b172-4cd2-a050-ccd4ce0f5c06" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
+        <childElement id="80855bd2-c23c-4fa4-a2a6-0c20c62f0ca6" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
           <name>Intent.Architect.Persistence</name>
           <display>Intent.Architect.Persistence (3.6.0)</display>
           <isAbstract>false</isAbstract>
@@ -61,11 +61,11 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="cb4d5d8b-9906-459e-a5c9-da655df7e236" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
+        <childElement id="7cb37878-01c7-4934-98e5-84e9fe9dd420" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
           <name>Intent.Modules.Common</name>
-          <display>Intent.Modules.Common (3.7.0-pre.3)</display>
+          <display>Intent.Modules.Common (3.7.1)</display>
           <isAbstract>false</isAbstract>
-          <value>3.7.0-pre.3</value>
+          <value>3.7.1</value>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>08bbc292-e66a-4537-9806-64f443818ed6</parentFolderId>
@@ -75,11 +75,11 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="3d4700e0-63a8-463a-91f1-f5c78e4c8c6f" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
+        <childElement id="3fb169ba-21ad-4380-a9fe-ae230393decb" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
           <name>Intent.Modules.Common.Types</name>
-          <display>Intent.Modules.Common.Types (4.0.0-alpha.0)</display>
+          <display>Intent.Modules.Common.Types (4.0.0)</display>
           <isAbstract>false</isAbstract>
-          <value>4.0.0-alpha.0</value>
+          <value>4.0.0</value>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>08bbc292-e66a-4537-9806-64f443818ed6</parentFolderId>
@@ -89,11 +89,11 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="3edfa896-cb3c-4f97-9d7a-7fc05cb9b6ee" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
+        <childElement id="0925a366-4772-46f0-ac5f-35ed7aa8e8c4" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
           <name>Intent.RoslynWeaver.Attributes</name>
-          <display>Intent.RoslynWeaver.Attributes (2.1.4)</display>
+          <display>Intent.RoslynWeaver.Attributes (2.1.5)</display>
           <isAbstract>false</isAbstract>
-          <value>2.1.4</value>
+          <value>2.1.5</value>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>08bbc292-e66a-4537-9806-64f443818ed6</parentFolderId>
@@ -103,7 +103,7 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="930f1ef2-b967-4a85-9b94-fa259ddcf1e1" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
+        <childElement id="f56b73a4-14c6-43b1-a62b-88f5693178f6" type="NuGet Dependency" typeId="3097322a-a058-4058-beed-4fcd6272f61d">
           <name>Intent.SoftwareFactory.SDK</name>
           <display>Intent.SoftwareFactory.SDK (3.6.0)</display>
           <isAbstract>false</isAbstract>
