@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Intent.Modules.Common.CSharp.Templates;
@@ -13,12 +14,43 @@ namespace Intent.Modules.Common.CSharp.Builder;
 /// </summary>
 public abstract class CSharpType : ICSharpType
 {
+    // Task related
     internal const string TaskShortTypeName = "Task";
     internal const string TaskFullTypeName = "System.Threading.Tasks.Task";
     internal const string ValueTaskShortTypeName = "ValueTask";
     internal const string ValueTaskFullTypeName = "System.Threading.Tasks.ValueTask";
     internal const string IAsyncEnumerableFullTypeName = "System.Collections.Generic.IAsyncEnumerable";
     internal const string IAsyncEnumerableShortTypeName = "IAsyncEnumerable";
+
+    // ICollection/IList related
+    internal const string ICollectionShortTypeName = "ICollection";
+    internal const string ICollectionFullTypeName = "System.Collections.Generic.ICollection";
+    internal const string ArrayListShortTypeName = "ArrayList";
+    internal const string ArrayListFullTypeName = "System.Collections.ArrayList";
+    internal const string ListShortTypeName = "List";
+    internal const string ListFullTypeName = "System.Collections.Generic.List";
+    internal const string QueueShortTypeName = "Queue";
+    internal const string QueueFullTypeName = "System.Collections.Queue";
+    internal const string ConcurrentQueueShortTypeName = "ConcurrentQueue";
+    internal const string ConcurrentQueueFullTypeName = "System.Collections.Concurrent.ConcurrentQueue";
+    internal const string StackShortTypeName = "Stack";
+    internal const string StackFullTypeName = "System.Collections.NonGeneric.Stack";
+    internal const string ConcurrentStackShortTypeName = "ConcurrentStack";
+    internal const string ConcurrentStackFullTypeName = "System.Collections.Concurrent.ConcurrentStack";
+    internal const string LinkedListShortTypeName = "LinkedList";
+    internal const string LinkedListFullTypeName = "System.Collections.Generic.LinkedList";
+
+    // IDictionary related
+    internal const string HashtableShortTypeName = "Hashtable";
+    internal const string HashtableFullTypeName = "System.Collections.Hashtable";
+    internal const string SortedListShortTypeName = "SortedList";
+    internal const string SortedListFullTypeName = "System.Collections.SortedList";
+    internal const string GenericSortedListShortTypeName = "SortedList";
+    internal const string GenericSortedListFullTypeName = "System.Collections.Generic.SortedList";
+    internal const string DictionaryShortTypeName = "Dictionary";
+    internal const string DictionaryFullTypeName = "System.Collections.Generic.Dictionary";
+    internal const string ConcurrentDictionaryShortTypeName = "ConcurrentDictionary";
+    internal const string ConcurrentDictionaryFullTypeName = "System.Collections.Concurrent.ConcurrentDictionary";
 
     /// <summary>
     /// Creates a type-safe type that represents <see cref="System.Threading.Tasks.Task"/>.
@@ -35,7 +67,7 @@ public abstract class CSharpType : ICSharpType
     {
         return new CSharpTypeGeneric(template?.UseType(TaskFullTypeName) ?? TaskFullTypeName, [genericParamType]);
     }
-    
+
     /// <summary>
     /// Creates a type-safe type that represents <see cref="System.Threading.Tasks.ValueTask"/>.
     /// </summary>
@@ -67,7 +99,7 @@ public abstract class CSharpType : ICSharpType
     {
         return (this is CSharpTypeName name && name.IsTask()) || (this is CSharpTypeGeneric generic && (generic.IsTask() || generic.TypeName is IAsyncEnumerableFullTypeName or IAsyncEnumerableShortTypeName));
     }
-    
+
     /// <summary>
     /// Is the current type representing a <see cref="System.Threading.Tasks.ValueTask"/> or a <see cref="System.Threading.Tasks.ValueTask&lt;T&gt;"/>?
     /// </summary>
@@ -75,7 +107,7 @@ public abstract class CSharpType : ICSharpType
     {
         return (this is CSharpTypeName name && name.IsValueTask()) || (this is CSharpTypeGeneric generic && generic.IsValueTask());
     }
-    
+
     /// <summary>
     /// Takes the current type and wraps it inside the generic type <see cref="System.Threading.Tasks.Task&lt;T&gt;"/>.
     /// </summary>
@@ -88,7 +120,7 @@ public abstract class CSharpType : ICSharpType
 
         return CSharpType.CreateTask(this, template);
     }
-    
+
     /// <summary>
     /// Takes the current type and wraps it inside the generic type <see cref="System.Threading.Tasks.ValueTask&lt;T&gt;"/>.
     /// </summary>
@@ -125,6 +157,49 @@ public abstract class CSharpType : ICSharpType
         }
         return null;
     }
+
+    public CSharpTypeName GetCollectionImplementationType()
+    {
+        var originalType = string.Empty;
+
+        if (this is CSharpTypeNullable nullableType)
+        {
+            if (nullableType.ElementType is CSharpTypeGeneric nullableGeneric)
+            {
+                originalType = nullableGeneric.TypeName;
+            }
+        }
+
+        if (this is CSharpTypeGeneric genericType)
+        {
+            originalType = genericType.TypeName;
+        }
+
+        if (this is CSharpTypeName nameType)
+        {
+            originalType = nameType.TypeName;
+        }
+
+        return new CSharpTypeName(MapCollectionToImplementationType(originalType));
+    }
+
+    private static string MapCollectionToImplementationType(string typeName) => typeName switch
+    {
+        ICollectionShortTypeName or ICollectionFullTypeName => ListShortTypeName,
+        ArrayListShortTypeName or ArrayListFullTypeName => ArrayListFullTypeName,
+        ListShortTypeName or ListFullTypeName => ListFullTypeName,
+        QueueShortTypeName or QueueFullTypeName => QueueFullTypeName,
+        ConcurrentQueueShortTypeName or ConcurrentQueueFullTypeName => ConcurrentQueueFullTypeName,
+        StackShortTypeName or StackFullTypeName => StackFullTypeName,
+        ConcurrentStackShortTypeName or ConcurrentStackFullTypeName => ConcurrentStackFullTypeName,
+        LinkedListShortTypeName or LinkedListFullTypeName => LinkedListFullTypeName,
+        HashtableShortTypeName or HashtableFullTypeName => HashtableFullTypeName,
+        SortedListShortTypeName or SortedListFullTypeName => SortedListFullTypeName,
+        GenericSortedListFullTypeName => GenericSortedListFullTypeName,
+        DictionaryShortTypeName or DictionaryFullTypeName => DictionaryFullTypeName,
+        ConcurrentDictionaryShortTypeName or ConcurrentDictionaryFullTypeName => ConcurrentDictionaryFullTypeName,
+        _ => "default"
+    };
 
     #region ICSharpType implementation
 

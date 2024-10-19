@@ -43,5 +43,7 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
 
         Version[] TargetDotNetFrameworks { get; }
         bool IsNullableAwareContext();
+
+        MajorMinorVersion GetLanguageVersion();
     }
 }

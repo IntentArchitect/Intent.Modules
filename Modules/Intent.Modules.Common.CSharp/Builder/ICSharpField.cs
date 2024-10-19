@@ -1,4 +1,6 @@
 #nullable enable
+using Intent.Metadata.Models;
+
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public interface ICSharpField : ICSharpMember<ICSharpField>
@@ -16,4 +18,5 @@ public interface ICSharpField : ICSharpMember<ICSharpField>
     ICSharpField CanBeNull();
     ICSharpField WithAssignment(ICSharpStatement value);
     ICSharpField WithAssignment(string value) => WithAssignment(new CSharpStatement(value));
+    ICSharpField WithInstantiation(ITypeReference model);
 }

@@ -1,4 +1,6 @@
-﻿namespace Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
+﻿using Intent.Metadata.Models;
+
+namespace Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 
 internal class CSharpFieldWrapper(CSharpField wrapped) :
     CSharpMemberWrapper<CSharpField, ICSharpField>(wrapped), ICSharpField
@@ -26,4 +28,6 @@ internal class CSharpFieldWrapper(CSharpField wrapped) :
     ICSharpField ICSharpField.CanBeNull() => wrapped.CanBeNull();
 
     ICSharpField ICSharpField.WithAssignment(ICSharpStatement value) => wrapped.WithAssignment((CSharpStatement)value);
+
+    ICSharpField ICSharpField.WithInstantiation(ITypeReference model) => wrapped.WithInstantiation(model);
 }

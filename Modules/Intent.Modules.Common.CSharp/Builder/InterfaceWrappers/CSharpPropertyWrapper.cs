@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Intent.Metadata.Models;
+using System;
 
 namespace Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 
@@ -66,6 +67,8 @@ internal class CSharpPropertyWrapper(CSharpProperty wrapped) :
     ICSharpProperty ICSharpProperty.MoveToFirst() => wrapped.MoveToFirst();
 
     ICSharpProperty ICSharpProperty.MoveToLast() => wrapped.MoveToLast();
+
+    ICSharpProperty ICSharpProperty.WithInstantiation(ITypeReference model) => wrapped.WithInstantiation(model);
 
     string IHasCSharpName.Name => wrapped.Name;
 }

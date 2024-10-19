@@ -13,8 +13,8 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
 {
     internal class CSharpProject : ICSharpProject, IHasStereotypes
 	{
-        private static readonly MajorMinorVersion LatestLanguageVersion = MajorMinorVersion.Create(11, 0);
-        private static readonly MajorMinorVersion PreviewLanguageVersion = MajorMinorVersion.Create(11, 0);
+        private static readonly MajorMinorVersion LatestLanguageVersion = MajorMinorVersion.Create(12, 0);
+        private static readonly MajorMinorVersion PreviewLanguageVersion = MajorMinorVersion.Create(13, 0);
         private readonly Lazy<bool> _isNullableAwareContext;
         private readonly IOutputTarget _outputTarget;
 

@@ -1,8 +1,12 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.CSharp.VisualStudio;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -161,6 +165,28 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
         return this;
     }
 
+    public CSharpProperty WithInstantiation(ITypeReference model)
+    {
+        if (File?.Template.OutputTarget.GetProject().GetLanguageVersion().Major >= 12 && model is not null && model.IsCollection)
+        {
+            InitialValue = "[]";
+            return this;
+        }
+
+        if (File?.Template.OutputTarget.GetProject().GetLanguageVersion().Major < 12 && model is not null && model.IsCollection)
+        {
+            var propertyType = CSharpTypeParser.Parse(Type);
+            var concreteImplementation = propertyType.GetCollectionImplementationType();
+
+            InitialValue = propertyType is CSharpTypeGeneric ? $"new {File.Template.GetTypeName(model, File.Template.UseType($"{concreteImplementation}<{{0}}>")).Replace("?", "")}()" :
+                $"new {File.Template.GetTypeName(model, File.Template.UseType($"{concreteImplementation}")).Replace("?", "")}()";
+
+            return this;
+        }
+
+        return this;
+    }
+
     public CSharpProperty MoveTo(int propertyIndex)
     {
         _class.Properties.Remove(this);
@@ -256,6 +282,8 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
     ICSharpProperty ICSharpProperty.MoveToFirst() => _wrapper.MoveToFirst();
 
     ICSharpProperty ICSharpProperty.MoveToLast() => _wrapper.MoveToLast();
+
+    ICSharpProperty ICSharpProperty.WithInstantiation(ITypeReference model) => _wrapper.WithInstantiation(model);
 
     #endregion
 }
