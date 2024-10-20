@@ -115,6 +115,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         {
             get
             {
+
                 if (!FileMetadata.CustomMetadata.TryGetValue("Namespace", out var @namespace))
                 {
                     @namespace = OutputTarget.Name;

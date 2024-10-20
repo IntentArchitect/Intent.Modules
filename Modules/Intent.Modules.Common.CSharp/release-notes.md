@@ -1,10 +1,14 @@
-﻿### Version 3.8.2
+﻿### Version 3.8.3
 
+- Improvement: Disabling Templates via the Enabled property during Software Factory Execution.
+
+### Version 3.8.2
+
+- Improvement: Added support for mapping of inherited DTO fields
 - Improvement: Added `RemoveUsing` and `RemoveNugetDependency` for Extensions to make these kind of changes
 - Fixed: Required type disambiguation would not occur when the conflicting type was in the current full namespace.
 - Fixed: Return types of IAsyncEnumerable are now not automatically wrapped in Task/ValueTask when method is marked as async
 - Fixed: Constructor Mappings not using `Select(...).ToList()` pattern for collections.
-- Improvement: Added support for mapping of inherited DTO fields
 
 ### Version 3.8.1
 

@@ -102,12 +102,14 @@ namespace Intent.Modules.Common.Templates
     /// Base class for templates.
     /// </summary>
     public abstract class IntentTemplateBase : T4TemplateBase, IIntentTemplate, ITemplate, IConfigurableTemplate,
-        IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook, 
+        IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook,
         IAfterTemplateRegistrationExecutionHook,
         ITemplateBeforeExecutionHook
     {
         private readonly Lazy<(bool Result, string Path)> _tryGetExistingFilePathCache;
         private readonly Lazy<(bool Result, string Content)> _tryGetExistingFileContentCache;
+        private bool _canRun = true;
+        private bool _isDiscoverable = true;
 
         /// <summary>
         /// Returns the known template dependencies added for this template.
@@ -132,6 +134,26 @@ namespace Intent.Modules.Common.Templates
         /// Unique identifier for this template. Must be unique in the application in which this template is installed.
         /// </summary>
         public string Id { get; }
+
+        /// <summary>
+        /// Indicated whether or not a template should Generate Output
+        /// This is the default behaviour for the CanRunTemplate method which ultimately determines this state
+        /// </summary>
+        public bool CanRun
+        {
+            get { return _canRun; }
+            set { _canRun = value; }
+        }
+
+        /// <summary>
+        /// Indicated whether or not a template can be "Discovered" by other templates
+        /// This is the default behaviour for the CanDiscoverTemplate method which ultimately determines this state
+        /// </summary>
+        public bool IsDiscoverable
+        {
+            get { return _canRun; }
+            set { _canRun = value; }
+        }
 
         /// <summary>
         /// Software Factory Execution context. Gives access to application-wide services.
@@ -180,8 +202,17 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public virtual bool CanRunTemplate()
         {
-            return true;
+            return CanRun;
         }
+
+        /// <summary>
+        /// Override this method to control whether the template can be discovered by other templates.
+        /// </summary>
+        public virtual bool CanDiscoverTemplate()
+        {
+            return IsDiscoverable;
+        }
+
 
         /// <inheritdoc />
         public virtual string RunTemplate()
@@ -628,7 +659,7 @@ namespace Intent.Modules.Common.Templates
             {
                 return null;
             }
-            
+
             return GetTypeInfo(classProvider);
         }
 
@@ -660,7 +691,7 @@ namespace Intent.Modules.Common.Templates
             {
                 return null;
             }
-            
+
             return GetTypeInfo(classProvider);
         }
 
@@ -787,7 +818,7 @@ namespace Intent.Modules.Common.Templates
             {
                 return null;
             }
-            
+
             return UseType(resolvedTypeInfo);
         }
 
@@ -811,7 +842,7 @@ namespace Intent.Modules.Common.Templates
             {
                 return null;
             }
-            
+
             return UseType(resolvedTypeInfo);
         }
 
@@ -883,7 +914,7 @@ namespace Intent.Modules.Common.Templates
             {
                 return null;
             }
-            
+
             return UseType(resolvedTypeInfo);
         }
 
@@ -910,7 +941,7 @@ namespace Intent.Modules.Common.Templates
             {
                 return null;
             }
-            
+
             return UseType(resolvedTypeInfo);
         }
 
@@ -936,7 +967,7 @@ namespace Intent.Modules.Common.Templates
             {
                 return null;
             }
-            
+
             return UseType(resolvedTypeInfo);
         }
 
@@ -999,7 +1030,7 @@ namespace Intent.Modules.Common.Templates
             return (false, default);
         }
 
-        
+
         /// <inheritdoc />
         public bool TryGetExistingFilePath(out string path)
         {
@@ -1124,6 +1155,81 @@ namespace Intent.Modules.Common.Templates
             typeName = GetTypeName(classProvider);
             return true;
         }
+
+
+        /// <summary>
+        /// Resolves and applies <see cref="UseType"/> to the type name for the provided
+        /// <paramref name="templateId"/> parameter.
+        /// This overload assumes that the Template can have many instances and identifies the target instance
+        /// based on which has the <paramref name="modelId"/>.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// Resolving type names</seealso> article for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="templateIds">The list of unique Template identifiers to try.</param>
+        /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
+        /// <param name="typeName">The resolved type name.</param>
+        /// <returns><see langword="true"/> if the type name could be resolved.</returns>
+        public bool TryGetTypeName(IEnumerable<string> templateIds, string modelId, out string typeName)
+        {
+            if (templateIds == null || !templateIds.Any()) throw new ArgumentNullException(nameof(templateIds));
+
+            IClassProvider classProvider = null;
+            foreach (var templateId in templateIds)
+            {
+                classProvider = GetTemplate<IClassProvider>(templateId, modelId, TemplateDiscoveryOptions.DoNotThrow);
+                if (classProvider != null)
+                    break;
+            }
+
+            if (classProvider == null)
+            {
+                typeName = null;
+                return false;
+            }
+
+            typeName = GetTypeName(classProvider);
+            return true;
+        }
+
+        /// <summary>
+        /// Resolves and applies <see cref="UseType"/> to the type name for the first template found from the provided
+        /// <paramref name="templateIds"/> parameter.
+        /// This overload assumes that the Templates can have many instances and identifies the target instance
+        /// based on which has the <paramref name="model"/>.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// Resolving type names</seealso> article for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="templateIds">The list of unique Template identifiers to try.</param>
+        /// <param name="model">The model instance that the Template must be bound to.</param>
+        /// <param name="typeName">The resolved type name.</param>
+        /// <returns><see langword="true"/> if the type name could be resolved.</returns>
+        public bool TryGetTypeName(IEnumerable<string> templateIds, IMetadataModel model, out string typeName)
+        {
+            if (templateIds == null || !templateIds.Any()) throw new ArgumentNullException(nameof(templateIds));
+            if (model == null) throw new ArgumentNullException(nameof(model));
+
+            IClassProvider classProvider = null;
+            foreach (var templateId in templateIds)
+            {
+                classProvider = GetTemplate<IClassProvider>(templateId, model, TemplateDiscoveryOptions.DoNotThrow);
+                if (classProvider != null)
+                    break;
+            }
+            if (classProvider == null)
+            {
+                typeName = null;
+                return false;
+            }
+            typeName = GetTypeName(classProvider);
+            return true;
+        }
+
 
         #endregion
 
@@ -1250,6 +1356,41 @@ namespace Intent.Modules.Common.Templates
                 options: TemplateDiscoveryOptions.DoNotThrow);
             return template != null;
         }
+
+        /// <inheritdoc cref="TryGetTemplate{TTemplate}(string, out TTemplate)"/>
+        public bool TryGetTemplate<TTemplate>(IEnumerable<string> templateIds, string modelId, out TTemplate template)
+             where TTemplate : class
+        {
+            if (templateIds == null || !templateIds.Any()) throw new ArgumentNullException(nameof(templateIds));
+
+            foreach (var templateId in templateIds)
+            {
+                template = GetTemplate<TTemplate>(templateId: templateId, modelId: modelId,
+                    options: TemplateDiscoveryOptions.DoNotThrow);
+                if (template != null)
+                    return true; 
+            }
+            template = null;
+            return false;
+        }
+
+        /// <inheritdoc cref="TryGetTemplate{TTemplate}(string, out TTemplate)"/>
+        public bool TryGetTemplate<TTemplate>(IEnumerable<string> templateIds, IMetadataModel model, out TTemplate template)
+            where TTemplate : class
+        {
+            if (templateIds == null || !templateIds.Any()) throw new ArgumentNullException(nameof(templateIds));
+
+            foreach (var templateId in templateIds)
+            {
+                template = GetTemplate<TTemplate>(templateId: templateId, model: model,
+                    options: TemplateDiscoveryOptions.DoNotThrow);
+                if (template != null)
+                    return true; 
+            }
+            template = null;
+            return false;
+        }
+
 
         #endregion
 

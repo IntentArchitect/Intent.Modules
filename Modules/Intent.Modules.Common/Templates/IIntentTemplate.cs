@@ -16,6 +16,8 @@ public interface IIntentTemplate<out T> : IIntentTemplate
 
 public interface IIntentTemplate : ITemplate
 {
+    bool CanRun { get => true; set { } }
+    bool IsDiscoverable { get => true; set { } }
     ISoftwareFactoryExecutionContext ExecutionContext { get; }
     IOutputTarget OutputTarget { get; }
     IFileMetadata FileMetadata { get; }
@@ -76,6 +78,8 @@ public interface IIntentTemplate : ITemplate
     bool TryGetTypeName(string templateId, out string typeName);
     bool TryGetTypeName(string templateId, string modelId, out string typeName);
     bool TryGetTypeName(string templateId, IMetadataModel model, out string typeName);
+    bool TryGetTypeName(IEnumerable<string> templateIds, string modelId, out string typeName);
+    bool TryGetTypeName(IEnumerable<string> templateIds, IMetadataModel model, out string typeName);
     TTemplate GetTemplate<TTemplate>(string templateId, TemplateDiscoveryOptions? options = null)
         where TTemplate : class;
     TTemplate GetTemplate<TTemplate>(string templateId, string modelId, TemplateDiscoveryOptions? options = null)
@@ -87,6 +91,10 @@ public interface IIntentTemplate : ITemplate
     bool TryGetTemplate<TTemplate>(string templateId, string modelId, out TTemplate template)
         where TTemplate : class;
     bool TryGetTemplate<TTemplate>(string templateId, IMetadataModel model, out TTemplate template)
+        where TTemplate : class;
+    bool TryGetTemplate<TTemplate>(IEnumerable<string> templateIds, string modelId, out TTemplate template)
+        where TTemplate : class;
+    bool TryGetTemplate<TTemplate>(IEnumerable<string> templateIds, IMetadataModel model, out TTemplate template)
         where TTemplate : class;
     IResolvedTypeInfo GetTypeInfo(ITypeReference typeReference, string? collectionFormat = null);
 

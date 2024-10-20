@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpMethodParameter
 {
-    public string Type { get; }
+    public string Type { get; private set; }
     public string Name { get; }
     public string DefaultValue { get; private set; }
     public IList<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
@@ -111,6 +111,12 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpMetho
     public CSharpParameter WithParamsParameterModifier()
     {
         ParameterModifier = "params ";
+        return this;
+    }
+
+    public CSharpParameter WithType(string type)
+    {
+        Type = type;
         return this;
     }
 
