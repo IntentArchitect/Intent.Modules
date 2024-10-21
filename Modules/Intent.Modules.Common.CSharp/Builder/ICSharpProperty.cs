@@ -34,7 +34,7 @@ public interface ICSharpProperty : ICSharpMember<ICSharpProperty>, ICSharpRefere
     ICSharpProperty WithInitialValue(string initialValue);
     ICSharpProperty ExplicitlyImplements(string @interface);
     ICSharpProperty WithBackingField(Action<ICSharpField>? configure = null);
-    ICSharpProperty WithInstantiation(ITypeReference model);
+    ICSharpProperty WithInstantiation();
     ICSharpProperty MoveTo(int propertyIndex);
     ICSharpProperty MoveToFirst();
     ICSharpProperty MoveToLast();

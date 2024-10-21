@@ -18,5 +18,5 @@ public interface ICSharpField : ICSharpMember<ICSharpField>
     ICSharpField CanBeNull();
     ICSharpField WithAssignment(ICSharpStatement value);
     ICSharpField WithAssignment(string value) => WithAssignment(new CSharpStatement(value));
-    ICSharpField WithInstantiation(ITypeReference model);
+    ICSharpField WithInstantiation();
 }

@@ -29,5 +29,5 @@ internal class CSharpFieldWrapper(CSharpField wrapped) :
 
     ICSharpField ICSharpField.WithAssignment(ICSharpStatement value) => wrapped.WithAssignment((CSharpStatement)value);
 
-    ICSharpField ICSharpField.WithInstantiation(ITypeReference model) => wrapped.WithInstantiation(model);
+    ICSharpField ICSharpField.WithInstantiation() => wrapped.WithInstantiation();
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Intent.Modules.Common.CSharp.Templates;
@@ -22,35 +23,36 @@ public abstract class CSharpType : ICSharpType
     internal const string IAsyncEnumerableFullTypeName = "System.Collections.Generic.IAsyncEnumerable";
     internal const string IAsyncEnumerableShortTypeName = "IAsyncEnumerable";
 
-    // ICollection/IList related
-    internal const string ICollectionShortTypeName = "ICollection";
-    internal const string ICollectionFullTypeName = "System.Collections.Generic.ICollection";
-    internal const string ArrayListShortTypeName = "ArrayList";
-    internal const string ArrayListFullTypeName = "System.Collections.ArrayList";
-    internal const string ListShortTypeName = "List";
-    internal const string ListFullTypeName = "System.Collections.Generic.List";
-    internal const string QueueShortTypeName = "Queue";
-    internal const string QueueFullTypeName = "System.Collections.Queue";
-    internal const string ConcurrentQueueShortTypeName = "ConcurrentQueue";
-    internal const string ConcurrentQueueFullTypeName = "System.Collections.Concurrent.ConcurrentQueue";
-    internal const string StackShortTypeName = "Stack";
-    internal const string StackFullTypeName = "System.Collections.NonGeneric.Stack";
-    internal const string ConcurrentStackShortTypeName = "ConcurrentStack";
-    internal const string ConcurrentStackFullTypeName = "System.Collections.Concurrent.ConcurrentStack";
-    internal const string LinkedListShortTypeName = "LinkedList";
-    internal const string LinkedListFullTypeName = "System.Collections.Generic.LinkedList";
-
-    // IDictionary related
-    internal const string HashtableShortTypeName = "Hashtable";
-    internal const string HashtableFullTypeName = "System.Collections.Hashtable";
-    internal const string SortedListShortTypeName = "SortedList";
-    internal const string SortedListFullTypeName = "System.Collections.SortedList";
-    internal const string GenericSortedListShortTypeName = "SortedList";
-    internal const string GenericSortedListFullTypeName = "System.Collections.Generic.SortedList";
-    internal const string DictionaryShortTypeName = "Dictionary";
-    internal const string DictionaryFullTypeName = "System.Collections.Generic.Dictionary";
-    internal const string ConcurrentDictionaryShortTypeName = "ConcurrentDictionary";
-    internal const string ConcurrentDictionaryFullTypeName = "System.Collections.Concurrent.ConcurrentDictionary";
+    internal static Dictionary<string, string> CollectionMap = new()
+    {
+        { "ICollection", "System.Collections.Generic.List" },
+        { "System.Collections.Generic.ICollection", "System.Collections.Generic.List" },
+        { "ArrayList", "System.Collections.ArrayList" },
+        { "System.Collections.ArrayList", "System.Collections.ArrayList" },
+        { "List", "System.Collections.Generic.List" },
+        { "System.Collections.Generic.List", "System.Collections.Generic.List" },
+        { "Queue", "System.Collections.Queue" },
+        { "System.Collections.Queue", "System.Collections.Queue" },
+        { "ConcurrentQueue", "System.Collections.Concurrent.ConcurrentQueue" },
+        { "System.Collections.Concurrent.ConcurrentQueue", "System.Collections.Concurrent.ConcurrentQueue" },
+        { "Stack", "System.Collections.NonGeneric.Stack" },
+        { "System.Collections.NonGeneric.Stack", "System.Collections.NonGeneric.Stack" },
+        { "ConcurrentStack", "System.Collections.Concurrent.ConcurrentStack" },
+        { "System.Collections.Concurrent.ConcurrentStack", "System.Collections.Concurrent.ConcurrentStack" },
+        { "LinkedList", "System.Collections.Generic.LinkedList" },
+        { "System.Collections.Generic.LinkedList", "System.Collections.Generic.LinkedList" },
+        { "Hashtable", "System.Collections.Hashtable" },
+        { "System.Collections.Hashtable", "System.Collections.Hashtable" },
+        { "SortedList", "System.Collections.SortedList" },
+        { "System.Collections.SortedList", "System.Collections.SortedList" },
+        { "System.Collections.Generic.SortedList", "System.Collections.Generic.SortedList" },
+        { "Dictionary", "System.Collections.Generic.Dictionary" },
+        { "System.Collections.Generic.Dictionary", "System.Collections.Generic.Dictionary" },
+        { "ConcurrentDictionary", "System.Collections.Concurrent.ConcurrentDictionary" },
+        { "System.Collections.Concurrent.ConcurrentDictionary", "System.Collections.Concurrent.ConcurrentDictionary" },
+        { "IEnumerable", "System.Collections.Generic.List" },
+        { "System.Collections.Generic.IEnumerable", "System.Collections.Generic.List" }
+    };
 
     /// <summary>
     /// Creates a type-safe type that represents <see cref="System.Threading.Tasks.Task"/>.
@@ -158,7 +160,30 @@ public abstract class CSharpType : ICSharpType
         return null;
     }
 
-    public CSharpTypeName GetCollectionImplementationType()
+    /// <summary>
+    /// Does the current type representing a collection type (a collection type based on IList, ICollection or IDictionary)?
+    /// </summary>
+    public bool IsCollectionType()
+    {
+        return CollectionMap.ContainsKey(GetTypeName());
+    }
+
+    /// <summary>
+    /// If the current type is a collection type, it will return the valid implementation type, otherwise will return "default"
+    /// </summary>
+    public ICSharpType GetCollectionImplementationType() => new CSharpTypeName(MapCollectionToImplementationType(GetTypeName()));
+
+    private static string MapCollectionToImplementationType(string typeName) 
+    {
+        if(CollectionMap.TryGetValue(typeName, out var map))
+        {
+            return map;
+        }
+
+        return "default";
+    }
+
+    private string GetTypeName()
     {
         var originalType = string.Empty;
 
@@ -180,26 +205,8 @@ public abstract class CSharpType : ICSharpType
             originalType = nameType.TypeName;
         }
 
-        return new CSharpTypeName(MapCollectionToImplementationType(originalType));
+        return originalType;
     }
-
-    private static string MapCollectionToImplementationType(string typeName) => typeName switch
-    {
-        ICollectionShortTypeName or ICollectionFullTypeName => ListShortTypeName,
-        ArrayListShortTypeName or ArrayListFullTypeName => ArrayListFullTypeName,
-        ListShortTypeName or ListFullTypeName => ListFullTypeName,
-        QueueShortTypeName or QueueFullTypeName => QueueFullTypeName,
-        ConcurrentQueueShortTypeName or ConcurrentQueueFullTypeName => ConcurrentQueueFullTypeName,
-        StackShortTypeName or StackFullTypeName => StackFullTypeName,
-        ConcurrentStackShortTypeName or ConcurrentStackFullTypeName => ConcurrentStackFullTypeName,
-        LinkedListShortTypeName or LinkedListFullTypeName => LinkedListFullTypeName,
-        HashtableShortTypeName or HashtableFullTypeName => HashtableFullTypeName,
-        SortedListShortTypeName or SortedListFullTypeName => SortedListFullTypeName,
-        GenericSortedListFullTypeName => GenericSortedListFullTypeName,
-        DictionaryShortTypeName or DictionaryFullTypeName => DictionaryFullTypeName,
-        ConcurrentDictionaryShortTypeName or ConcurrentDictionaryFullTypeName => ConcurrentDictionaryFullTypeName,
-        _ => "default"
-    };
 
     #region ICSharpType implementation
 
@@ -207,6 +214,8 @@ public abstract class CSharpType : ICSharpType
     ICSharpType ICSharpType.WrapInValueTask(ICSharpTemplate template) => WrapInValueTask(template);
     ICSharpType? ICSharpType.GetTaskGenericType() => GetTaskGenericType();
     ICSharpType? ICSharpType.GetValueTaskGenericType() => GetValueTaskGenericType();
+
+   
 
     #endregion
 }

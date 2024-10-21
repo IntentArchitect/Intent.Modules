@@ -165,26 +165,36 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
         return this;
     }
 
-    public CSharpProperty WithInstantiation(ITypeReference model)
+    public CSharpProperty WithInstantiation()
     {
-        if (File?.Template.OutputTarget.GetProject().GetLanguageVersion().Major >= 12 && model is not null && model.IsCollection)
+        var propertyType = CSharpTypeParser.Parse(Type);
+
+        if (File?.Template.OutputTarget.GetProject().GetLanguageVersion().Major >= 12 && propertyType is not null && propertyType.IsCollectionType())
         {
             InitialValue = "[]";
             return this;
         }
 
-        if (File?.Template.OutputTarget.GetProject().GetLanguageVersion().Major < 12 && model is not null && model.IsCollection)
+        if (File?.Template.OutputTarget.GetProject().GetLanguageVersion().Major < 12 && propertyType is not null && propertyType.IsCollectionType())
         {
-            var propertyType = CSharpTypeParser.Parse(Type);
             var concreteImplementation = propertyType.GetCollectionImplementationType();
-
-            InitialValue = propertyType is CSharpTypeGeneric ? $"new {File.Template.GetTypeName(model, File.Template.UseType($"{concreteImplementation}<{{0}}>")).Replace("?", "")}()" :
-                $"new {File.Template.GetTypeName(model, File.Template.UseType($"{concreteImplementation}")).Replace("?", "")}()";
+            InitialValue = GetInstantiationValue(propertyType, concreteImplementation);
 
             return this;
         }
 
         return this;
+    }
+
+    private string GetInstantiationValue(CSharpType? propertyType, ICSharpType concreteImplementation)
+    {
+        if(propertyType is CSharpTypeGeneric generic)
+        {
+            var argTypes = string.Join(", ", generic.TypeArgumentList.Select(s => File.Template.UseType(s.ToString())));
+            return $"new {File.Template.UseType($"{concreteImplementation}<{argTypes}>").Replace("?", "")}()";
+        }
+        
+        return $"new {File.Template.UseType($"{concreteImplementation}").Replace("?", "")}()";
     }
 
     public CSharpProperty MoveTo(int propertyIndex)
@@ -283,7 +293,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
 
     ICSharpProperty ICSharpProperty.MoveToLast() => _wrapper.MoveToLast();
 
-    ICSharpProperty ICSharpProperty.WithInstantiation(ITypeReference model) => _wrapper.WithInstantiation(model);
+    ICSharpProperty ICSharpProperty.WithInstantiation() => _wrapper.WithInstantiation();
 
     #endregion
 }

@@ -68,7 +68,7 @@ internal class CSharpPropertyWrapper(CSharpProperty wrapped) :
 
     ICSharpProperty ICSharpProperty.MoveToLast() => wrapped.MoveToLast();
 
-    ICSharpProperty ICSharpProperty.WithInstantiation(ITypeReference model) => wrapped.WithInstantiation(model);
+    ICSharpProperty ICSharpProperty.WithInstantiation() => wrapped.WithInstantiation();
 
     string IHasCSharpName.Name => wrapped.Name;
 }
