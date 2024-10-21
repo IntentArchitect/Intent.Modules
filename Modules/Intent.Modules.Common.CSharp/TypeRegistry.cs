@@ -1,4 +1,5 @@
 ﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -75,15 +76,15 @@ internal class TypeRegistry
 
     public bool Contains(string path, out bool isType)
     {
-        return Contains(path.Split('.'), out isType);
+        return Contains(path.Split('.'), null, out isType, out _);
     }
 
     public bool Contains(string @namespace, string typeName, out bool isType)
     {
-        return Contains(@namespace.Split('.').Append(typeName), out isType);
+        return Contains(@namespace.Split('.'), typeName, out isType, out _);
     }
 
-    private bool Contains(IEnumerable<string> typeParts, out bool isType)
+    public bool Contains(Span<string> typeParts, string? typeName, out bool isType, out bool isNested)
     {
         var current = _globalNamespace;
 
@@ -92,21 +93,37 @@ internal class TypeRegistry
             if (!current.TryGetValue(part, out current))
             {
                 isType = default;
+                isNested = default;
                 return false;
             }
         }
 
+        if (typeName != null && !current.TryGetValue(typeName, out current))
+        {
+            isType = default;
+            isNested = default;
+            return false;
+        }
+
         isType = current.IsType;
+        isNested = current.IsNested;
         return true;
+    }
+
+    public bool IsNestedType(Span<string> typeParts, string? typeName)
+    {
+        return Contains(typeParts, typeName, out _, out var isNested) && isNested;
     }
 
     private class TypePathPart(bool isType, TypePathPart? parent) : Dictionary<string, TypePathPart>
     {
         private bool _isType = isType;
 
+        public bool IsNested => parent?.IsType == true;
+
         public bool IsType
         {
-            get => _isType || parent?.IsType == true;
+            get => _isType || IsNested;
             set => _isType = value;
         }
     }

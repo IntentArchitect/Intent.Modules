@@ -297,42 +297,75 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         private class CompositeRegistry
         {
-            private readonly string _fullyQualifiedTypeToExclude;
             private readonly TypeRegistry[] _registries;
+            private readonly string[] _fullyQualifiedTypeParts;
 
             public CompositeRegistry(
-                string fullyQualifiedTypeToExclude,
+                string[] fullyQualifiedTypeParts,
                 IEnumerable<string> namespaces,
                 IEnumerable<TypeRegistry> registries)
             {
-                _fullyQualifiedTypeToExclude = fullyQualifiedTypeToExclude;
                 var pathsRegistry = new TypeRegistry().WithNamespaces(namespaces);
                 _registries = registries.Append(pathsRegistry).ToArray();
+
+                // This is the type that we're going to be normalizing so
+                // needs to be excluded as a match always.
+                _fullyQualifiedTypeParts = fullyQualifiedTypeParts;
             }
 
-            public bool ContainsEntry(string fullyQualifiedTypeName, out ConflictType conflictType)
+            public bool ContainsAny(Span<string> namespaceParts, string? typeName)
             {
-                if (fullyQualifiedTypeName == _fullyQualifiedTypeToExclude)
+                return Contains(namespaceParts, typeName, out _);
+            }
+
+            public bool ContainsType(Span<string> namespaceParts, string? typeName)
+            {
+                return Contains(namespaceParts, typeName, out var isType) && isType;
+            }
+
+            private bool Contains(Span<string> namespaceParts, string? typeName, out bool isType)
+            {
+                // Check that the type we're comparing against isn't the type we're excluding
+                if (typeName == null)
                 {
-                    conflictType = default;
-                    return false;
+                    var partsToCheck = namespaceParts.Length < _fullyQualifiedTypeParts.Length
+                        ? _fullyQualifiedTypeParts.AsSpan(0, namespaceParts.Length)
+                        : _fullyQualifiedTypeParts.AsSpan();
+
+                    if (namespaceParts.SequenceEqual(partsToCheck))
+                    {
+                        isType = default;
+                        return false;
+                    }
+                }
+                else
+                {
+                    var partsToCheck = namespaceParts.Length + 1 < _fullyQualifiedTypeParts.Length
+                        ? _fullyQualifiedTypeParts.AsSpan(0, namespaceParts.Length)
+                        : _fullyQualifiedTypeParts.AsSpan(0, _fullyQualifiedTypeParts.Length - 1);
+
+                    
+                    if (_fullyQualifiedTypeParts.Length > namespaceParts.Length &&
+                        typeName == _fullyQualifiedTypeParts[namespaceParts.Length] &&
+                        namespaceParts.SequenceEqual(partsToCheck))
+                    {
+                        isType = default;
+                        return false;
+                    }
                 }
 
                 foreach (var registry in _registries)
                 {
-                    if (registry.Contains(fullyQualifiedTypeName, out var isType))
+                    if (registry.Contains(namespaceParts, typeName, out isType, out _))
                     {
-                        conflictType = isType ? ConflictType.TypeName : ConflictType.NamespacePart;
                         return true;
                     }
                 }
 
-                conflictType = default;
+                isType = default;
                 return false;
             }
         }
-
-        private enum ConflictType { TypeName, NamespacePart }
 
         internal static string NormalizeNamespace(
             string localNamespace,
@@ -344,18 +377,31 @@ namespace Intent.Modules.Common.CSharp.Templates
         {
             // NB: If changing this method, please run the unit tests against it
 
-            var typeParts = fullyQualifiedType.Split('.').ToArray();
-            if (typeParts.Length == 1)
+            var fullyQualifiedTypeParts = fullyQualifiedType.Split('.');
+            if (fullyQualifiedTypeParts.Length == 1)
             {
                 return fullyQualifiedType;
             }
 
-            var typeNamespace = string.Join('.', typeParts.Take(typeParts.Length - 1));
-            var typeUnqualified = string.Join('.', typeParts.Skip(typeParts.Length - 1));
+            var typeNamespaceSpan = fullyQualifiedTypeParts.AsSpan(0, fullyQualifiedTypeParts.Length - 1);
+            var typePartsToReturn = fullyQualifiedTypeParts.AsSpan(typeNamespaceSpan.Length, 1);
+
+            // Qualify nested types:
+            // (This is presently unaware of not needing to qualify
+            // nested types from within the same type.)
+            while (typeNamespaceSpan.Length > 0 &&
+                   knownTypes.IsNestedType(typePartsToReturn, typePartsToReturn[0]))
+            {
+                typeNamespaceSpan = fullyQualifiedTypeParts.AsSpan(0, typeNamespaceSpan.Length - 1);
+                typePartsToReturn = fullyQualifiedTypeParts.AsSpan(typeNamespaceSpan.Length, 1);
+            }
+
+            var originalTypeNamespaceParts = typeNamespaceSpan.ToArray();
+            var originalTypeParts = typePartsToReturn.ToArray();
 
             var otherPaths = Enumerable.Empty<string>()
                 .Append(localNamespace)
-                .Append(typeNamespace)
+                .Append(string.Join('.', originalTypeNamespaceParts))
                 .Concat(knownOtherNamespaceNames)
                 .Concat(usingPaths)
                 .Where(x => x != fullyQualifiedType)
@@ -363,7 +409,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 .ToArray();
 
             var typeRegistry = new CompositeRegistry(
-                fullyQualifiedTypeToExclude: fullyQualifiedType,
+                fullyQualifiedTypeParts: fullyQualifiedTypeParts,
                 namespaces: otherPaths,
                 registries:
                 [
@@ -371,102 +417,116 @@ namespace Intent.Modules.Common.CSharp.Templates
                     knownTypes
                 ]);
 
+
+            var localNamespaceParts = !string.IsNullOrWhiteSpace(localNamespace)
+                ? localNamespace.Split('.')
+                : [];
+
+            var commonNamespacePartsCount = originalTypeNamespaceParts
+                .Zip(localNamespaceParts)
+                .TakeWhile(x => x.First == x.Second)
+                .Count();
+
             // C# always tries to resolve first from the namespace parts, moving from the most to
-            // the least specific part(or gives precedence to using directives inside the
-            // namespace, but Intent at this time isn't aware of them, so at this time we don't
-            // consider usings at all).
-            var namespaceParts = localNamespace.Split('.');
-            var namespaceConflict = default((int AtIndex, ConflictType Type)?);
-
-            for (var partIndex = namespaceParts.Length - 1; partIndex >= 0; partIndex--)
+            // the least specific part (or gives precedence to using directives inside the
+            // namespace, but Intent at this time isn't aware of them).
+            var hasConflict = false;
+            var typePartsToSkip = typeNamespaceSpan.Length;
+            for (var partIndex = localNamespaceParts.Length - 1; partIndex >= 0; partIndex--)
             {
-                var possibleTypeWithinCurrentNamespace = string.Join('.', namespaceParts.Take(partIndex + 1).Append(typeUnqualified));
-
-                if (!namespaceConflict.HasValue &&
-                    possibleTypeWithinCurrentNamespace == fullyQualifiedType)
+                // If no conflict and the type we're looking for is within the current part of the
+                // namespace then we're golden:
+                if (!hasConflict &&
+                    localNamespaceParts.AsSpan(0, partIndex + 1).SequenceEqual(originalTypeNamespaceParts))
                 {
-                    return typeUnqualified;
+                    return string.Join('.', typePartsToReturn.ToArray());
                 }
 
-                var currentPart = namespaceParts[partIndex];
-                var previousPart = partIndex + 1 < namespaceParts.Length
-                    ? namespaceParts[partIndex + 1]
-                    : null;
-
-                // Is the current part of the namespace the same as the type name?
-                if (currentPart == typeUnqualified)
+                // We need to also check on each namespace part from most to least significant
+                // that it doesn't contain the first part of our typeParts to return. We don't
+                // check when we're in common namespace count region as that will always have
+                // itself as a conflict
+                for (var innerIndex = localNamespaceParts.Length - 1;
+                     innerIndex >= 0;
+                     innerIndex--)
                 {
-                    // We continue looping because we need to find the most general conflict
-                    namespaceConflict = (partIndex, ConflictType.NamespacePart);
-                    continue;
-                }
 
-                // Is there some other known "type" somewhere (but only if we didn't match
-                // on the type name part above in the previous iteration of the loop).
-                if (previousPart != typeUnqualified &&
-                    typeRegistry.ContainsEntry(possibleTypeWithinCurrentNamespace, out var conflictType))
-                {
-                    // We continue looping because we need to find the most general conflict
-                    namespaceConflict = (partIndex, conflictType);
+                    var hasNewConflict = false;
+
+                    var checkTypePart = innerIndex >= commonNamespacePartsCount ||
+                                        innerIndex != typePartsToSkip;
+                    var checkTypeRegistry = innerIndex >= commonNamespacePartsCount ||
+                                            innerIndex != typePartsToSkip - 1;
+                    
+                    if (checkTypePart &&
+                        localNamespaceParts[innerIndex] == typePartsToReturn[0])
+                    {
+                        hasNewConflict = true;
+                    }
+                    else if (checkTypeRegistry && typeRegistry.ContainsAny(
+                                 localNamespaceParts.AsSpan(0, innerIndex + 1),
+                                 typePartsToReturn[0]))
+                    {
+                        hasNewConflict = true;
+
+                    }
+
+                    if (hasNewConflict)
+                    {
+                        // If we've found a conflict, we always need to try from the common point
+                        typePartsToSkip = new[]
+                        {
+                            innerIndex < commonNamespacePartsCount ? innerIndex + 1: int.MaxValue,
+                            commonNamespacePartsCount,
+                            typePartsToSkip - 1
+                        }.Min();
+
+                        partIndex = innerIndex - 1;
+                        typePartsToReturn = fullyQualifiedTypeParts.AsSpan(typePartsToSkip);
+                        hasConflict = true;
+                        break; // And by implication continue the outer loop
+                    }
                 }
             }
 
             // If there is a namespace conflict then regardless of the usings situation we will
             // need to qualify the type.
-            if (namespaceConflict.HasValue)
+            if (hasConflict)
             {
-                // Find common part count:
-                var commonPartsCount = 0;
-                while (commonPartsCount < typeParts.Length - 1 && commonPartsCount < namespaceParts.Length)
-                {
-                    if (commonPartsCount <= namespaceConflict.Value.AtIndex &&
-                        namespaceParts[commonPartsCount] == typeParts[commonPartsCount])
-                    {
-                        commonPartsCount++;
-                        continue;
-                    }
-
-                    break;
-                }
-
-                // The first part of a type qualifier will always try match against a current namespace part,
-                // so we need to ensure none of remaining namespace parts will match the first part of the type
-                // qualifier.
-                var remainingNamespaceParts = namespaceParts[commonPartsCount..];
-                while (commonPartsCount >= 0)
-                {
-                    if (remainingNamespaceParts.Any(x => x == typeParts[commonPartsCount]))
-                    {
-                        commonPartsCount--;
-                        continue;
-                    }
-
-                    break;
-                }
-
-                // This covers the edge case where the namespace and conflicting type's namespace is the same
-                // as the current namespace, without this check we don't land up disambiguating the type at
-                // all.
-                var skipCount = Math.Min(typeParts.Length - 2, commonPartsCount);
-
-                return string.Join('.', typeParts.Skip(skipCount));
+                return string.Join(".", typePartsToReturn.ToArray());
             }
 
-            var countOfUsingsWithType = usingPaths
-                .Count(@using => @using == typeNamespace ||
-                                 (knownTypes.Contains(@using, typeUnqualified, out var isType) && isType));
-            if (countOfUsingsWithType == 1)
+            // Check if we have a using containing the type:
+            var count = 0;
+            var typeNamespace = string.Join('.', originalTypeNamespaceParts);
+            foreach (var usingPath in usingPaths)
             {
-                return typeUnqualified;
+                if (usingPath != typeNamespace &&
+                    !typeRegistry.ContainsType(usingPath.Split('.'), typePartsToReturn[0]))
+                {
+                    continue;
+                }
+
+                if (++count <= 1)
+                {
+                    continue;
+                }
+
+                break;
+            }
+
+            if (count == 1)
+            {
+                return string.Join('.', originalTypeParts);
             }
 
             // Either multiple or no usings with the type, meaning we can't use the usings to help
             // at all, so we work out the shortest required qualifier when considering our namespace
             {
                 var skipCount = 0;
-                for (; skipCount < typeParts.Length && skipCount < namespaceParts.Length; skipCount++)
+                for (; skipCount < fullyQualifiedTypeParts.Length && skipCount < localNamespaceParts.Length; skipCount++)
                 {
-                    if (namespaceParts[skipCount] == typeParts[skipCount])
+                    if (localNamespaceParts[skipCount] == fullyQualifiedTypeParts[skipCount])
                     {
                         continue;
                     }
@@ -474,7 +534,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                     break;
                 }
 
-                return string.Join('.', typeParts.Skip(skipCount));
+                return string.Join('.', fullyQualifiedTypeParts.Skip(skipCount));
             }
         }
 

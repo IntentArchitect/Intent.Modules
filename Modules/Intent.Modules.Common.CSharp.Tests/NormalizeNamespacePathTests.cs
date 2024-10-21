@@ -1,4 +1,5 @@
-﻿using Intent.Modules.Common.CSharp.Templates;
+﻿using System;
+using Intent.Modules.Common.CSharp.Templates;
 using Shouldly;
 using Xunit;
 
@@ -512,5 +513,26 @@ public class NormalizeNamespacePathTests
             ]));
 
         Assert.Equal("TypeName", result);
+    }
+
+    [Fact]
+    public void Scenario24()
+    {
+        var result = CSharpTemplateBase.NormalizeNamespace(
+            localNamespace: "Vobill.Application.ContactPerson",
+            fullyQualifiedType: "Vobill.Common.ContactPerson",
+            knownOtherNamespaceNames: [
+                "Vobill.Common",
+                "Vobill.Application.Common"
+            ],
+            usingPaths: [
+                "Vobill.Common"
+            ],
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry().WithTypes([
+                "Vobill.Application.Common.TypeName"
+            ]));
+
+        Assert.Equal("Vobill.Common.ContactPerson", result);
     }
 }
