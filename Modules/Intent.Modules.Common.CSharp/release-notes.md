@@ -3,6 +3,7 @@
 - Improvement: Disabling Templates via the CanRun property during Software Factory Execution.
 - Improvement: Added C# style settings allowing for the configuration of the style of generated code
 - Improvement: Added WithInstantiation method to CSharpProperty and CSharpField, with LangVersion aware collection support
+- Improvement: Ability for template extenders to unregister `using`s and NuGet package requests.
 
 ### Version 3.8.2
 

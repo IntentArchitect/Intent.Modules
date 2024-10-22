@@ -1,3 +1,7 @@
+### Version 3.7.3
+
+- Improvement: Disabling Templates via the CanRun property during Software Factory Execution.
+
 ### Version 3.7.2
 
 - Fixed: `DefaultOverrideBehaviour` lacked `IOutputTarget` context which provides access to application settings that can help better resolve what the override behaviour should be.
