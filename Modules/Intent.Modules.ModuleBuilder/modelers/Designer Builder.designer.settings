@@ -877,8 +877,9 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
         <type order="7" type="Mapping Settings" typeId="a901c634-6482-4993-ae3c-bd1b637f78d4" />
         <type order="8" type="Mappable Elements Package" typeId="aa2eab42-5ffc-4028-b4b6-95ff719705d4" />
         <type order="9" type="Mappable Elements Package Extension" typeId="bddb69f0-e2c8-4373-b5cb-d701f311f935" />
-        <type order="10" type="Core Type" typeId="dc79fd61-7e57-44c8-ad40-14a7643b89c8" />
-        <type order="11" type="Script" typeId="101fd5b6-3159-4810-9490-a103ef323e9c" />
+        <type order="10" type="Suggestions Settings" typeId="f68b5446-19f2-402d-a940-f62b3a592906" />
+        <type order="11" type="Core Type" typeId="dc79fd61-7e57-44c8-ad40-14a7643b89c8" />
+        <type order="12" type="Script" typeId="101fd5b6-3159-4810-9490-a103ef323e9c" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -964,6 +965,14 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
           <specializationTypeId>bddb69f0-e2c8-4373-b5cb-d701f311f935</specializationTypeId>
           <defaultName>Mappable Elements Package Extension</defaultName>
           <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <text>New Suggestions</text>
+          <icon type="FontAwesome" source="lightbulb|orange" />
+          <specializationType>Suggestions Settings</specializationType>
+          <specializationTypeId>f68b5446-19f2-402d-a940-f62b3a592906</specializationTypeId>
+          <defaultName>Suggestions</defaultName>
+          <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
           <text>New Core Type</text>
@@ -2450,6 +2459,71 @@ return result;</displayFunction>
       <allowSetValue>false</allowSetValue>
       <mappingSettings />
       <childElementSettings />
+    </elementSetting>
+    <elementSetting type="Suggestions Settings" typeId="f68b5446-19f2-402d-a940-f62b3a592906">
+      <icon type="FontAwesome" source="lightbulb|orange" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>false</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
+      <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren>by-type-then-by-name</sortChildren>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a" />
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <text>Add Suggestion</text>
+          <shortcut>ctrl + shift + a</shortcut>
+          <icon type="FontAwesome" source="lightbulb|yellow" />
+          <specializationType>Suggestion</specializationType>
+          <specializationTypeId>0c21ab10-e87b-4e88-ab44-38ea7adf514a</specializationTypeId>
+          <defaultName>Suggestion</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <mappingSettings />
+      <childElementSettings>
+        <childElementSetting type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+          <icon type="FontAwesome" source="lightbulb|yellow" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>true</allowRename>
+          <nameMustBeUnique>true</nameMustBeUnique>
+          <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren>by-type-then-by-name</sortChildren>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8" />
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <mappingSettings />
+          <childElementSettings />
+        </childElementSetting>
+      </childElementSettings>
     </elementSetting>
   </elementSettings>
   <elementExtensions />

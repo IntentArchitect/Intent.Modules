@@ -12,14 +12,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class MappingOptionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    public class SuggestionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
-        public const string SpecializationType = "Mapping Option";
-        public const string SpecializationTypeId = "00a1eb98-1fc4-4421-9d1c-8733f6bc2111";
+        public const string SpecializationType = "Suggestion";
+        public const string SpecializationTypeId = "0c21ab10-e87b-4e88-ab44-38ea7adf514a";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public MappingOptionModel(IElement element, string requiredType = SpecializationType)
+        public SuggestionModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -46,7 +46,7 @@ namespace Intent.ModuleBuilder.Api
             return _element.ToString();
         }
 
-        public bool Equals(MappingOptionModel other)
+        public bool Equals(SuggestionModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -56,7 +56,7 @@ namespace Intent.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((MappingOptionModel)obj);
+            return Equals((SuggestionModel)obj);
         }
 
         public override int GetHashCode()
@@ -64,36 +64,35 @@ namespace Intent.ModuleBuilder.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
-        [IntentManaged(Mode.Ignore)]
-        public MappingOption ToPersistable()
+        [IntentIgnore]
+        public SuggestionSettingPersistable ToPersistable()
         {
-            return new MappingOption()
+            return new SuggestionSettingPersistable()
             {
-                Order = this.GetOptionSettings().TypeOrder()?.ToString(),
-                MappingTypeId = _element.TypeReference.Element.Id,
-                MappingType = _element.TypeReference.Element.Name,
-                Text = this.Name,
-                Shortcut = this.GetOptionSettings().Shortcut(),
-                MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
-                TriggerOnDoubleClick = this.GetOptionSettings().TriggerOnDoubleClick(),
-                Icon = this.GetOptionSettings().Icon()?.ToPersistable(),
-                IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
+                Name = Name,
+                SpecializationType = TypeReference.Element.Name,
+                SpecializationTypeId = TypeReference.Element.Id,
+                DisplayFunction = this.GetSettings().DisplayFunction(),
+                FilterFunction = this.GetSettings().FilterFunction(),
+                Locations = string.Join(", ", this.GetSettings().Locations().Select(x => x.Value.ToLower())),
+                Dependencies = this.GetSettings().Dependencies()?.Select(x => new TargetReferencePersistable() { Id = x.Id, Name = x.Name }).ToList() ?? [],
+                Script = this.GetSettings().Script()
             };
         }
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class MappingOptionModelExtensions
+    public static class SuggestionModelExtensions
     {
 
-        public static bool IsMappingOptionModel(this ICanBeReferencedType type)
+        public static bool IsSuggestionModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == MappingOptionModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == SuggestionModel.SpecializationTypeId;
         }
 
-        public static MappingOptionModel AsMappingOptionModel(this ICanBeReferencedType type)
+        public static SuggestionModel AsSuggestionModel(this ICanBeReferencedType type)
         {
-            return type.IsMappingOptionModel() ? new MappingOptionModel((IElement)type) : null;
+            return type.IsSuggestionModel() ? new SuggestionModel((IElement)type) : null;
         }
     }
 }

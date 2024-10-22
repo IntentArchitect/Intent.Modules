@@ -101,6 +101,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("allowSetValue")]
         public bool? AllowSetValue { get; set; }
+        //public bool ShouldSerializeAllowSetValue() => AllowSetValue.HasValue && AllowSetValue.Value;
 
         [XmlElement("typeReferenceSetting")]
         public TypeReferenceSettingPersistable TypeReferenceSetting { get; set; }

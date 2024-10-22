@@ -86,6 +86,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Shortcut (macOS)");
             }
 
+            public bool TriggerOnDoubleClick()
+            {
+                return _stereotype.GetProperty<bool>("Trigger On Double-Click");
+            }
+
             public int? TypeOrder()
             {
                 return _stereotype.GetProperty<int?>("Type Order");

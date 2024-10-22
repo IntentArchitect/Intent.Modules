@@ -171,6 +171,13 @@ namespace Intent.ModuleBuilder.Api
                 .ToList();
         }
 
+        public static IList<SuggestionsSettingsModel> GetSuggestionsSettingsModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(SuggestionsSettingsModel.SpecializationTypeId)
+                .Select(x => new SuggestionsSettingsModel(x))
+                .ToList();
+        }
+
         public static IList<TemplateDecoratorModel> GetTemplateDecoratorModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(TemplateDecoratorModel.SpecializationTypeId)

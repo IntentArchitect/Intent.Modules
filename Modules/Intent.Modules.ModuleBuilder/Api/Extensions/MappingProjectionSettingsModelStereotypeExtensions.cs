@@ -53,6 +53,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Shortcut");
             }
 
+            public bool OpenOnDoubleClick()
+            {
+                return _stereotype.GetProperty<bool>("Open On Double-Click");
+            }
+
             public IElement DefaultDesigner()
             {
                 return _stereotype.GetProperty<IElement>("Default Designer");

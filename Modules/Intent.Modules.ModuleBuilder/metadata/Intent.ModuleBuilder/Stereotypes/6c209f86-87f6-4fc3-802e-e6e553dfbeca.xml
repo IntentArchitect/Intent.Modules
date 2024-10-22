@@ -53,6 +53,16 @@ return `[${shortcut}]`;</displayFunction>
       <lookupTypes />
       <isRequiredFunction />
     </property>
+    <property id="e92b2832-9ed6-4ccb-bf58-8b34975c16dc">
+      <name>Trigger On Double-Click</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="08fac0bc-4cf9-45ec-8362-e452a185efee">
       <comment>Sets the order of the type against the other types</comment>
       <name>Type Order</name>

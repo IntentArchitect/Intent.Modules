@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="e5490d86-5379-4e9f-8946-13b5d457c86e" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-  <name>Basic Mapping</name>
-  <display>Basic Mapping</display>
+<class id="4c199976-c096-4c32-952e-67a55ac46755" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Suggestions</name>
+  <display>Suggestions</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

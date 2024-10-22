@@ -15,6 +15,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("shortcut")]
         public string Shortcut { get; set; }
 
+        [XmlElement("openOnDoubleClick")]
+        public bool? OpenOnDoubleClick { get; set; }
+        public bool ShouldSerializeOpenOnDoubleClick() => OpenOnDoubleClick.HasValue && OpenOnDoubleClick.Value;
+
         [XmlElement("isOptionVisibleFunction")]
         public string IsOptionVisibleFunction { get; set; }
 

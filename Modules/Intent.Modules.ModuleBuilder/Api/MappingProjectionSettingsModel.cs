@@ -70,6 +70,7 @@ namespace Intent.ModuleBuilder.Api
                 Id = Id,
                 Name = Name,
                 Shortcut = this.GetMappingSettings().Shortcut(),
+                OpenOnDoubleClick = this.GetMappingSettings().OpenOnDoubleClick(),
                 DefaultModeler = this.GetMappingSettings().DefaultDesigner().Id,
                 OptionsSource = GetOptionsSourceEnumValue(),
                 LookupElementFunction = this.GetMappingSettings().OptionSource().IsLookupElement()

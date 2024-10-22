@@ -24,47 +24,52 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("designerReferences")]
         [XmlArrayItem("designerReference")]
-        public List<DesignerSettingsReference> DesignerReferences { get; set; } = new List<DesignerSettingsReference>();
+        public List<DesignerSettingsReference> DesignerReferences { get; set; } = [];
 
         [XmlArray("packageSettings")]
         [XmlArrayItem("packageSetting")]
-        public List<PackageSettingsPersistable> PackageSettings { get; set; } = new List<PackageSettingsPersistable>();
+        public List<PackageSettingsPersistable> PackageSettings { get; set; } = [];
 
         [XmlArray("packageExtensions")]
         [XmlArrayItem("packageExtension")]
-        public List<PackageSettingsExtensionPersistable> PackageExtensions { get; set; } = new List<PackageSettingsExtensionPersistable>();
+        public List<PackageSettingsExtensionPersistable> PackageExtensions { get; set; } = [];
 
         [XmlArray("elementSettings")]
         [XmlArrayItem("elementSetting")]
-        public List<ElementSettingPersistable> ElementSettings { get; set; } = new List<ElementSettingPersistable>();
+        public List<ElementSettingPersistable> ElementSettings { get; set; } = [];
 
         [XmlArray("elementExtensions")]
         [XmlArrayItem("elementExtension")]
-        public List<ElementSettingExtensionPersistable> ElementExtensions { get; set; } = new List<ElementSettingExtensionPersistable>();
+        public List<ElementSettingExtensionPersistable> ElementExtensions { get; set; } = [];
 
         [XmlArray("associationSettings")]
         [XmlArrayItem("associationSetting")]
-        public List<AssociationSettingsPersistable> AssociationSettings { get; set; } = new List<AssociationSettingsPersistable>();
+        public List<AssociationSettingsPersistable> AssociationSettings { get; set; } = [];
 
         [XmlArray("associationExtensions")]
         [XmlArrayItem("associationExtension")]
-        public List<AssociationSettingExtensionPersistable> AssociationExtensions { get; set; } = new List<AssociationSettingExtensionPersistable>();
+        public List<AssociationSettingExtensionPersistable> AssociationExtensions { get; set; } = [];
 
         [XmlArray("mappingSettings")]
         [XmlArrayItem("mappingSetting")]
-        public List<AdvancedMappingSettingsPersistable> MappingSettings { get; set; } = new List<AdvancedMappingSettingsPersistable>();
+        public List<AdvancedMappingSettingsPersistable> MappingSettings { get; set; } = [];
 
         [XmlArray("mappableElementPackages")]
         [XmlArrayItem("mappableElementPackage")]
-        public List<MappableElementsPackagePersistable> MappableElementPackages { get; set; } = new List<MappableElementsPackagePersistable>();
+        public List<MappableElementsPackagePersistable> MappableElementPackages { get; set; } = [];
 
         [XmlArray("mappableElementPackageExtensions")]
         [XmlArrayItem("mappableElementPackageExtension")]
-        public List<MappableElementsPackageExtensionPersistable> MappableElementPackageExtensions { get; set; } = new List<MappableElementsPackageExtensionPersistable>();
+        public List<MappableElementsPackageExtensionPersistable> MappableElementPackageExtensions { get; set; } = [];
+
+        [XmlArray("suggestionSettings")]
+        [XmlArrayItem("suggestionSetting")]
+        public List<SuggestionSettingPersistable> SuggestionSettings { get; set; } = [];
+        public bool ShouldSerializeSuggestionSettings() => SuggestionSettings.Any();
 
         [XmlArray("scripts")]
         [XmlArrayItem("script")]
-        public List<DesignerScriptPersistable> Scripts { get; set; } = new List<DesignerScriptPersistable>();
+        public List<DesignerScriptPersistable> Scripts { get; set; } = [];
     }
 
     public class DesignerScriptPersistable
@@ -217,6 +222,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("macShortcut")]
         public string MacShortcut { get; set; }
+        public bool ShouldSerializeMacShortcut() => !string.IsNullOrWhiteSpace(MacShortcut);
+
+        [XmlElement("triggerOnDoubleClick")]
+        public bool? TriggerOnDoubleClick { get; set; }
+        public bool ShouldSerializeTriggerOnDoubleClick() => TriggerOnDoubleClick.HasValue && TriggerOnDoubleClick.Value;
 
         [XmlElement("icon")]
         public IconModelPersistable Icon { get; set; }

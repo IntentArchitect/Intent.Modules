@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" version="3.1.0">
+  <name>Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="0c21ab10-e87b-4e88-ab44-38ea7adf514a">Suggestion</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>4c199976-c096-4c32-952e-67a55ac46755</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="bd242929-b399-4d13-88c0-d046b7161d41">
+      <name>Locations</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>[]</defaultValue>
+      <valueOptions>
+        <option>Diagram</option>
+        <option>Model</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="8d51eb08-f4a9-4703-ba70-de87c9417d46">
+      <name>Filter Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default is true)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+    </property>
+    <property id="ecb7abbb-0297-486e-bd99-cded3226d2a4">
+      <name>Display Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default's to name)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+    </property>
+    <property id="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c">
+      <name>Script</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <isActiveFunction />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="1d9dd994-46c3-4fdc-a24b-c69f689ca283">
+      <name>Dependencies</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder>(none)</placeholder>
+      <valueOptions />
+      <lookupTypes>
+        <type>101fd5b6-3159-4810-9490-a103ef323e9c</type>
+      </lookupTypes>
+    </property>
+  </properties>
+</stereotypeDefinition>

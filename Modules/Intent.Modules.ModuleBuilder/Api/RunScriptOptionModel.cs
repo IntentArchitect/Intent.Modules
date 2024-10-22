@@ -56,6 +56,7 @@ namespace Intent.ModuleBuilder.Api
                     Text = this.Name,
                     Shortcut = this.GetOptionSettings().Shortcut(),
                     MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
+                    TriggerOnDoubleClick = this.GetOptionSettings().TriggerOnDoubleClick(),
                     Icon = this.GetOptionSettings().Icon()?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "code" },
                     Script = this.Script,
                     Dependencies = this.Dependencies,
@@ -70,6 +71,7 @@ namespace Intent.ModuleBuilder.Api
                     Text = this.Name,
                     Shortcut = this.GetOptionSettings().Shortcut(),
                     MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
+                    TriggerOnDoubleClick = this.GetOptionSettings().TriggerOnDoubleClick(),
                     Icon = this.GetOptionSettings().Icon()?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "code" },
                     ScriptReference = new TargetReferencePersistable() { Id = InternalElement.TypeReference.ElementId, Name = InternalElement.TypeReference.Element.Name },
                     IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction()

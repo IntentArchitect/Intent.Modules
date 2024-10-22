@@ -144,6 +144,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new MappableElementsPackageExtensionModel(x))
             .ToList();
 
+        public SuggestionsSettingsModel Suggestions => _element.ChildElements
+            .GetElementsOfType(SuggestionsSettingsModel.SpecializationTypeId)
+            .Select(x => new SuggestionsSettingsModel(x))
+            .SingleOrDefault();
+
         [IntentManaged(Mode.Fully)]
         public IList<PackageSettingsModel> PackageTypes => _element.ChildElements
             .GetElementsOfType(PackageSettingsModel.SpecializationTypeId)
@@ -175,6 +180,7 @@ namespace Intent.ModuleBuilder.Api
                 MappingSettings = MappingSettings.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 MappableElementPackages = MappableElementsPackages.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 MappableElementPackageExtensions = MappableElementsPackageExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                SuggestionSettings = Suggestions?.Suggestions.OrderBy(x => x.TypeReference.Element.Name).ThenBy(x => x.Name).Select(x => x.ToPersistable()).ToList() ?? [],
                 Scripts = ScriptTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
             };
             return modelerSettings;
