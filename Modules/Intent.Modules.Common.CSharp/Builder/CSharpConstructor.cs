@@ -194,12 +194,12 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
 
     private string GetConstructorInitializerModifier(string baseConstructor, string constructorCall, string indentation)
     {
-        if(File.StyleSettings.ConstructorInitializerBehavior.IsNewLine() && !string.IsNullOrEmpty(constructorCall))
+        if(File.StyleSettings?.ConstructorInitializerBehavior.IsNewLine() ?? false && !string.IsNullOrEmpty(constructorCall))
         {
             return $"{Environment.NewLine}{indentation}    ";
         }
 
-        if(File.StyleSettings.ConstructorInitializerBehavior.IsMixed() && $"{baseConstructor}{constructorCall}".Length > 110)
+        if(File.StyleSettings?.ConstructorInitializerBehavior.IsMixed() ?? false && $"{baseConstructor}{constructorCall}".Length > 110)
         {
             return $"{Environment.NewLine}{indentation}    ";
         }
