@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="81ccc407-7892-4735-a29e-b2bdbcd03757" type="Diagram Settings" typeId="67d711dd-3918-4b28-b2a0-4d845884e17a">
-  <name>[diagram]</name>
+<class id="40088b52-2555-4b48-b24b-ca9cb3cad22c" type="Diagram Settings" typeId="67d711dd-3918-4b28-b2a0-4d845884e17a">
+  <name>NewDiagramSettings</name>
   <display>[diagram]</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
-  <order>1</order>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>f40a4942-5d2d-4174-8ec1-af66cbd464db</parentFolderId>
+  <parentFolderId>857e6d3d-76a1-47ca-b65c-a265d2fe6e58</parentFolderId>
   <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
   <packageName>Intent.Modelers.Eventing</packageName>
   <stereotypes />
   <metadata />
   <childElements>
-    <childElement id="6108b32c-090e-4fe7-8a9b-fae420f7b6c2" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="d362c494-24b1-4ee8-b3e2-7fcee598a4ff" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>81ccc407-7892-4735-a29e-b2bdbcd03757</parentFolderId>
+      <parentFolderId>40088b52-2555-4b48-b24b-ca9cb3cad22c</parentFolderId>
       <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
       <packageName>Intent.Modelers.Eventing</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="3be2825f-22d6-44f8-9974-a89527468261" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+        <childElement id="573d1de5-3b75-4013-9ab2-3dd1dadf7e05" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Message</name>
           <display>New Message: Message</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="d206b3ad-d590-4239-b893-9f3d0baf6fb6">
+          <typeReference id="369068b0-c9ff-4b1a-b51c-15c3d9de6eca">
             <typeId>cbe970af-5bad-4d92-a3ed-a24b9fdaa23e</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -43,7 +43,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>6108b32c-090e-4fe7-8a9b-fae420f7b6c2</parentFolderId>
+          <parentFolderId>d362c494-24b1-4ee8-b3e2-7fcee598a4ff</parentFolderId>
           <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
           <packageName>Intent.Modelers.Eventing</packageName>
           <stereotypes>
@@ -66,12 +66,12 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="3f6e03da-39a6-4688-9f40-fb20db4e00ee" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+        <childElement id="4701074b-6d69-4a97-9ad3-f2d6dedf6f94" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Integration Command</name>
           <display>New Integration Command: Integration Command</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="e3334836-73ea-4371-9bca-6edf94e408c5">
+          <typeReference id="fb7de9d9-51a3-4540-8d8d-9fe7c51ba23c">
             <typeId>7f01ca8e-0e3c-4735-ae23-a45169f71625</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -83,7 +83,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>6108b32c-090e-4fe7-8a9b-fae420f7b6c2</parentFolderId>
+          <parentFolderId>d362c494-24b1-4ee8-b3e2-7fcee598a4ff</parentFolderId>
           <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
           <packageName>Intent.Modelers.Eventing</packageName>
           <stereotypes>
@@ -93,7 +93,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + c" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />

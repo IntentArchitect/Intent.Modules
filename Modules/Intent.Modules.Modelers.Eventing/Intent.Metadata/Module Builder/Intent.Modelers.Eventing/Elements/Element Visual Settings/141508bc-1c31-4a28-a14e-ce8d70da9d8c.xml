@@ -3,7 +3,7 @@
   <name>[visual]</name>
   <display>[visual]: Integration Command</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <order>1</order>
   <genericTypes />
   <typeReference id="a7171e99-c357-4f8e-91a4-7daa08ea8b3e">

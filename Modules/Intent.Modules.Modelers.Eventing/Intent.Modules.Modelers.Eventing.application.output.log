@@ -10,22 +10,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f40a4942-5d2d-4174-8ec1-af66cbd464db</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ApplicationModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ApplicationModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#abb9b6ac-69d2-41a7-a30d-fb08621e08d9</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/BasicFolderExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>BasicFolderExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/EventingDTOFieldModel.cs</ApplicationRelativeFilePath>
@@ -38,14 +22,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/EventingDTOModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>EventingDTOModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#15236514-ffdb-4a43-a114-c462734a866e</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/EventingPackageExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>EventingPackageExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -98,38 +74,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#022d4c90-e1b6-4747-a15f-640c19503a8f</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/MessagePublishAssocationModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>MessagePublishAssocationModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#022d4c90-e1b6-4747-a15f-640c19503a8f</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/MessagePublishAssocationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>MessagePublishAssocationModelAssociationExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#50e0bed1-1387-4d67-8f66-1194763296b1</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/MessageSubscribeAssocationModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>MessageSubscribeAssocationModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#50e0bed1-1387-4d67-8f66-1194763296b1</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/MessageSubscribeAssocationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>MessageSubscribeAssocationModelAssociationExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#bde29850-5fb9-4f47-9941-b9e182fd9bdc</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/PropertyModel.cs</ApplicationRelativeFilePath>
@@ -137,11 +81,11 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>556e7bcc-4e9b-45ee-8a05-6022c1084a2c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</CorrelationId>
+      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#857e6d3d-76a1-47ca-b65c-a265d2fe6e58</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>ApiMetadataDesignerExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/ServicesDiagramExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServicesDiagramExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -158,7 +102,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>556e7bcc-4e9b-45ee-8a05-6022c1084a2c</ProjectId>
@@ -182,22 +126,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Core Eventing Types.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Core Eventing Types.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>fda0a824-c6ee-41d3-b86b-b477bbc9537c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#103ef2ed-815f-4a0c-acf9-1a29c9470897</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/Eventing Designer Types.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Eventing Designer Types.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>fda0a824-c6ee-41d3-b86b-b477bbc9537c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.DesignerConfig#822e4254-9ced-4dd1-ad56-500b861f7e4d</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/Eventing.designer.config</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Eventing.designer.config</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>
