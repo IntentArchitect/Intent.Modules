@@ -55,7 +55,6 @@
       <scriptOptions />
       <mappingOptions />
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
   </elementSettings>
   <elementExtensions>
@@ -282,5 +281,18 @@ if ((!handler.getName() || handler.getName() == "NewDomainEventHandler") &amp;&a
       </mappableElementSettings>
     </mappableElementPackageExtension>
   </mappableElementPackageExtensions>
+  <suggestionSettings>
+    <suggestionSetting type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a" locations="diagram, model">
+      <name>Create handler for this Domain Event</name>
+      <filterFunction>return lookupTypesOf("Domain Event Handler Association Target End").every(x =&gt; x.typeReference.getTypeId() != element.id)</filterFunction>
+      <dependencies />
+      <script>const handler = createElement("Domain Event Handler", toPascalCase(element.getName()) + "Handler", getPackages()[0].id);
+const association = createAssociation("Domain Event Handler Association", handler.id, element.id)
+const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getCenterRight();
+if (position) {
+    getCurrentDiagram().layoutVisuals([handler.id], { x: position.x + 200, y: position.y }, true)
+}</script>
+    </suggestionSetting>
+  </suggestionSettings>
   <scripts />
 </settings>

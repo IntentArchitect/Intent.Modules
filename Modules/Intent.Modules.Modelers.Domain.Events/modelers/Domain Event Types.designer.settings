@@ -292,7 +292,6 @@ if (namingConvention == "pascal-case") {
 }</script>
             </macro>
           </macros>
-          <childElementSettings />
         </childElementSetting>
       </childElementSettings>
     </elementSetting>

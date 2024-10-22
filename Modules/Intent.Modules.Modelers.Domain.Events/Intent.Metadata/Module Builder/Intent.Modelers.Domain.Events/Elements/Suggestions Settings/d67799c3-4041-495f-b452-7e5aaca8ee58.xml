@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d67799c3-4041-495f-b452-7e5aaca8ee58" type="Suggestions Settings" typeId="f68b5446-19f2-402d-a940-f62b3a592906">
+  <name>Suggestions</name>
+  <display>Suggestions</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>68643ac1-c91e-44e3-ab19-9c5c5ed6ef76</parentFolderId>
+  <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+  <packageName>Intent.Modelers.Domain.Events</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="f0a5b97b-e42d-4600-bc88-4fcb7be31056" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Create handler for this Domain Event</name>
+      <display>Create handler for this Domain Event: Domain Event</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="7893d3ba-2d2a-401d-8631-97aa63e09119">
+        <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Domain.Events</typePackageName>
+        <typePackageId>31710880-215c-4fed-9c79-a129a4b9cdb1</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>d67799c3-4041-495f-b452-7e5aaca8ee58</parentFolderId>
+      <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+      <packageName>Intent.Modelers.Domain.Events</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return lookupTypesOf(&quot;Domain Event Handler Association Target End&quot;).every(x =&gt; x.typeReference.getTypeId() != element.id)" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const handler = createElement(&quot;Domain Event Handler&quot;, toPascalCase(element.getName()) + &quot;Handler&quot;, getPackages()[0].id);&#xD;&#xA;const association = createAssociation(&quot;Domain Event Handler Association&quot;, handler.id, element.id)&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getCenterRight();&#xD;&#xA;if (position) {&#xD;&#xA;    getCurrentDiagram().layoutVisuals([handler.id], { x: position.x + 200, y: position.y }, true)&#xD;&#xA;}" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

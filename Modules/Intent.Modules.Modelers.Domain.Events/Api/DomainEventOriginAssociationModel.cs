@@ -36,9 +36,9 @@ namespace Intent.Modelers.Domain.Events.Api
 
         public string Id => _association.Id;
 
-        public DomainEventOriginAssociationSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new DomainEventOriginAssociationSourceEndModel(_association.SourceEnd, this));
+        public DomainEventOriginAssociationSourceEndModel SourceEnd => _sourceEnd ??= new DomainEventOriginAssociationSourceEndModel(_association.SourceEnd, this);
 
-        public DomainEventOriginAssociationTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new DomainEventOriginAssociationTargetEndModel(_association.TargetEnd, this));
+        public DomainEventOriginAssociationTargetEndModel TargetEnd => _targetEnd ??= new DomainEventOriginAssociationTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 
