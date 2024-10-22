@@ -1,6 +1,7 @@
 ﻿### Version 3.8.3
 
 - Improvement: Disabling Templates via the CanRun property during Software Factory Execution.
+- Improvement: Ability for template extenders to unregister `using`s and NuGet package requests.
 
 ### Version 3.8.2
 
