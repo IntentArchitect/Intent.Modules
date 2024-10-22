@@ -9,4 +9,5 @@ public interface ICSharpFile : ICSharpCodeContext, IFileBuilderBase
 {
     ICSharpTemplate Template { get; }
     string GetModelType<TModel>(TModel model) where TModel : IMetadataModel, IHasName;
+    ICSharpStyleSettings StyleSettings { get; }
 }

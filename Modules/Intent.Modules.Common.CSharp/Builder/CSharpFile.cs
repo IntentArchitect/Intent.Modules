@@ -28,6 +28,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
     public IList<CSharpInterface> Interfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpClass> TypeDeclarations { get; } = new List<CSharpClass>();
     public CSharpTopLevelStatements TopLevelStatements { get; private set; }
+    public ICSharpStyleSettings StyleSettings { get; }
 
     public IList<CSharpClass> Classes => TypeDeclarations
         .Where(td => td.TypeDefinitionType == CSharpClass.Type.Class)
@@ -45,6 +46,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
     {
         Namespace = @namespace.ToCSharpNamespace();
         RelativeLocation = relativeLocation;
+        StyleSettings = CSharpStyleSettings.Settings;
     }
 
     public CSharpFile(string @namespace, string relativeLocation, ICSharpFileBuilderTemplate template) : this(

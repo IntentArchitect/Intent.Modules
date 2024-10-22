@@ -1,4 +1,8 @@
-﻿### Version 3.8.2
+﻿### Version 3.8.3
+- Improvement: Added C# style settings allowing for the configuration of the style of generated code
+
+
+### Version 3.8.2
 
 - Improvement: Added `RemoveUsing` and `RemoveNugetDependency` for Extensions to make these kind of changes
 - Fixed: Required type disambiguation would not occur when the conflicting type was in the current full namespace.
