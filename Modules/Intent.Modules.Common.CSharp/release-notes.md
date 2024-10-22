@@ -1,6 +1,6 @@
 ﻿### Version 3.8.3
 
-- Improvement: Disabling Templates via the Enabled property during Software Factory Execution.
+- Improvement: Disabling Templates via the CanRun property during Software Factory Execution.
 
 ### Version 3.8.2
 
