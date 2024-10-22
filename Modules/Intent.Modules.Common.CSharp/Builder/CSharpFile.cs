@@ -21,7 +21,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
     private string? _fileExtension;
 
     public IList<CSharpUsing> Usings { get; } = new List<CSharpUsing>();
-    public string Namespace { get; }
+    public string Namespace { get; private set; }
     public string RelativeLocation { get; }
     public ICSharpTemplate Template { get; internal set; }
     public string DefaultIntentManaged { get; private set; } = "Mode.Fully";
@@ -189,6 +189,12 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
     public CSharpFile WithFileExtension(string fileExtension)
     {
         _fileExtension = fileExtension;
+        return this;
+    }
+
+    public CSharpFile WithNamespace(string @namespace)
+    {
+        Namespace = @namespace.ToCSharpNamespace();
         return this;
     }
 
