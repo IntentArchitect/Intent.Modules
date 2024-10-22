@@ -1,3 +1,7 @@
+### Version 2.0.2
+
+- Improvement: Changed `Default Mapping Mode` to be `Advanced` by default.
+
 ### Version 2.0.1
 
 - Fixed: `Data Contracts` showing all `Attributes` as required on mapping.
