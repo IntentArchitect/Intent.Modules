@@ -300,7 +300,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
 
     private string GetMembers(string indentation)
     {
-        var elementOrder = File.StyleSettings.ElementOrder.ToArray();
+        var elementOrder = File.StyleSettings?.ElementOrder.ToArray() ?? [];
 
         var codeBlocks = new List<ICodeBlock>();
         codeBlocks.AddRange(Fields.OrderBy(f => Array.IndexOf(elementOrder, f.AccessModifier.Trim())));

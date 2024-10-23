@@ -381,7 +381,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
             sb.AppendLine(TopLevelStatements.ToString());
         }
 
-        var elementOrder = StyleSettings.ElementOrder.ToArray();
+        var elementOrder = StyleSettings?.ElementOrder.ToArray() ?? [];
 
         var typeDeclarations = Enumerable.Empty<string>()
             .Concat(Interfaces.OrderBy(i => Array.IndexOf(elementOrder, i.AccessModifier.Trim())).GroupBy(i => i.Name).SelectMany(g => g).Select(x => x.ToString("    ")))

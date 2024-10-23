@@ -83,7 +83,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     {
         get
         {
-            var elementOrder = File.StyleSettings.ElementOrder.ToArray();
+            var elementOrder = File.StyleSettings?.ElementOrder.ToArray() ?? [];
 
             var codeBlocks = new List<ICodeBlock>();
             codeBlocks.AddRange(Fields.Where(p => !p.IsOmittedFromRender).OrderBy(f => Array.IndexOf(elementOrder, f.AccessModifier.Trim())));
