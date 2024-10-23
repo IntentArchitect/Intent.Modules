@@ -18,7 +18,7 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
         [IntentManaged(Mode.Ignore)]
         public override int Order => -100;
 
-        protected override void OnAfterTemplateRegistrations(IApplication application)
+        protected override void OnBeforeTemplateRegistrations(IApplication application)
         {
             CSharpStyleSettings.RegisterSettings(application);
         }
