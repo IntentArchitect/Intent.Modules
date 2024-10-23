@@ -29,4 +29,6 @@ internal class CSharpStyleSettings : ICSharpStyleSettings
     /// Related to <see href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1128.md">StyleCop rule SA1128</see>
     /// </summary>
     public ConstructorInitializerOptions ConstructorInitializerBehavior { get; init ; }
+
+    public IEnumerable<string> ElementOrder { get; } = ["public", "internal", "protected readonly", "protected internal", "protected", "", "private readonly", "private protected", "private"];
 }

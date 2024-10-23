@@ -17,7 +17,7 @@ public class CSharpEnum : CSharpDeclaration<CSharpEnum>, ICodeBlock
     }
 
     public string Name { get; }
-    protected string AccessModifier { get; private set; } = "public ";
+    internal string AccessModifier { get; private set; } = "public ";
     protected List<CSharpEnumLiteral> Literals { get; private set; } = new List<CSharpEnumLiteral>();
     public CSharpCodeSeparatorType BeforeSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
     public CSharpCodeSeparatorType AfterSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;

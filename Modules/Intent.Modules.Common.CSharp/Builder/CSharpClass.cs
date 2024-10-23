@@ -64,7 +64,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     public CSharpCodeSeparatorType BeforeSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
     public CSharpCodeSeparatorType AfterSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
     public string Name { get; }
-    protected string AccessModifier { get; private set; } = "public ";
+    internal string AccessModifier { get; private set; } = "public ";
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
     public CSharpClass? BaseType { get; set; }
     public IList<string> BaseTypeTypeParameters { get; } = new List<string>();
@@ -83,12 +83,14 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     {
         get
         {
+            var elementOrder = File.StyleSettings.ElementOrder.ToArray();
+
             var codeBlocks = new List<ICodeBlock>();
-            codeBlocks.AddRange(Fields.Where(p => !p.IsOmittedFromRender));
-            codeBlocks.AddRange(Constructors.Where(p => !p.IsPrimaryConstructor));
-            codeBlocks.AddRange(Properties.Where(p => !p.IsOmittedFromRender));
-            codeBlocks.AddRange(Methods);
-            codeBlocks.AddRange(NestedClasses);
+            codeBlocks.AddRange(Fields.Where(p => !p.IsOmittedFromRender).OrderBy(f => Array.IndexOf(elementOrder, f.AccessModifier.Trim())));
+            codeBlocks.AddRange(Constructors.Where(p => !p.IsPrimaryConstructor).OrderBy(c => Array.IndexOf(elementOrder, c.AccessModifier.Trim())));
+            codeBlocks.AddRange(Properties.Where(p => !p.IsOmittedFromRender).OrderBy(c => Array.IndexOf(elementOrder, c.AccessModifier.Trim())));
+            codeBlocks.AddRange(Methods.OrderBy(m => Array.IndexOf(elementOrder, m.AccessModifier.Trim())).GroupBy(m => m.Name).SelectMany(g => g));
+            codeBlocks.AddRange(NestedClasses.OrderBy(c => Array.IndexOf(elementOrder, c.AccessModifier.Trim())).GroupBy(m => m.Name).SelectMany(g => g));
             codeBlocks.AddRange(NestedInterfaces);
             codeBlocks.AddRange(CodeBlocks);
             return codeBlocks;

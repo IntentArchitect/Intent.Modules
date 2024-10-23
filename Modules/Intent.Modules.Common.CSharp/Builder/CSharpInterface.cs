@@ -45,7 +45,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
     public CSharpCodeSeparatorType AfterSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
 
     public string Name { get; }
-    protected string AccessModifier { get; private set; } = "public ";
+    internal string AccessModifier { get; private set; } = "public ";
     public IList<string> Interfaces { get; set; } = new List<string>();
     public IList<CSharpInterfaceField> Fields { get; } = new List<CSharpInterfaceField>();
     public IList<CSharpInterfaceProperty> Properties { get; } = new List<CSharpInterfaceProperty>();
@@ -300,10 +300,12 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
 
     private string GetMembers(string indentation)
     {
+        var elementOrder = File.StyleSettings.ElementOrder.ToArray();
+
         var codeBlocks = new List<ICodeBlock>();
-        codeBlocks.AddRange(Fields);
-        codeBlocks.AddRange(Properties);
-        codeBlocks.AddRange(Methods);
+        codeBlocks.AddRange(Fields.OrderBy(f => Array.IndexOf(elementOrder, f.AccessModifier.Trim())));
+        codeBlocks.AddRange(Properties.OrderBy(c => Array.IndexOf(elementOrder, c.AccessModifier.Trim())));
+        codeBlocks.AddRange(Methods.OrderBy(m => Array.IndexOf(elementOrder, m.AccessModifier.Trim())).GroupBy(m => m.Name).SelectMany(g => g));
         codeBlocks.AddRange(CodeBlocks);
 
         return !codeBlocks.Any() ? "" : $@"{string.Join(@"

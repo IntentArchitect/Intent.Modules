@@ -9,4 +9,6 @@ namespace Intent.Modules.Common.CSharp.Templates;
 public interface ICSharpStyleSettings
 {
     ConstructorInitializerOptions ConstructorInitializerBehavior { get; init; }
+
+    IEnumerable<string> ElementOrder { get; }
 }

@@ -16,7 +16,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     public CSharpType ReturnTypeInfo { get; private set; }
     public string? ReturnType => ReturnTypeInfo.ToString();
     protected string OverrideModifier { get; private set; } = string.Empty;
-    protected string AccessModifier { get; private set; } = string.Empty;
+    internal string AccessModifier { get; private set; } = string.Empty;
     ICSharpExpression ICSharpMethodDeclaration.ReturnType => new CSharpStatement(ReturnType);
     public string Name { get; }
     public bool IsAsync { get; private set; }

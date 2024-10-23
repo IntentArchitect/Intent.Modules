@@ -15,7 +15,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     private readonly ICSharpClassMethodDeclaration _wrapper;
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     public bool IsAsync { get; private set; }
-    protected string AccessModifier { get; private set; } = "public ";
+    internal string AccessModifier { get; private set; } = "public ";
     protected string OverrideModifier { get; private set; } = string.Empty;
     public bool IsAbstract { get; private set; }
     public bool IsStatic => OverrideModifier.Contains("static");
