@@ -1,3 +1,7 @@
+### Version 4.6.2
+
+- Fixed: An incorrect route would be applied elements to when applying the `Api Version Settings` stereotype and the `Intent.AspNetCore.Controllers` module was not installed.
+
 ### Version 4.6.1
 
 - Fixed: Default API route path when API Settings are not present.

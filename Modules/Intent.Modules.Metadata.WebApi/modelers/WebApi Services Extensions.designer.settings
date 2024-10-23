@@ -743,16 +743,14 @@ exposeAsHttpEndPoint(element);
 }
 
 function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
 
-    let settingsGroup = application.getSettings(apiSettingsId);
-    if (!settingsGroup) { return defaultApiRoutePrefix; }
-    
-    let field = settingsGroup.getField("Default API Route Prefix");
-    if (!field) { return defaultApiRoutePrefix; }
-    
-    let route = field.value ?? "";
+    let route = "api/";
+
+    let defaultApiRouteField = application.getSettings(apiSettingsId)?.getField("Default API Route Prefix");
+    if (defaultApiRouteField) {
+        route = defaultApiRouteField.value ?? "";
+    }
 
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
