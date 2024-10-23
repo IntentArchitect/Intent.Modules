@@ -16,10 +16,9 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
         public override string Id => "Intent.Common.CSharp.CSharpStyleSettingsLoaderExtension";
 
         [IntentManaged(Mode.Ignore)]
-        public override int Order => 0;
+        public override int Order => -100;
 
-
-        protected override void OnBeforeTemplateRegistrations(IApplication application)
+        protected override void OnAfterTemplateRegistrations(IApplication application)
         {
             CSharpStyleSettings.RegisterSettings(application);
         }
