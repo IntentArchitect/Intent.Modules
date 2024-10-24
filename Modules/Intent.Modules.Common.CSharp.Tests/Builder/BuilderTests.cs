@@ -2,6 +2,7 @@
 using Intent.Modules.Common.CSharp.Builder;
 using Xunit;
 using VerifyXunit;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Tests.Builder;
 
@@ -10,6 +11,9 @@ public class BuilderTests
     [Fact]
     public async Task ClassConstructorTest()
     {
+        // setup the style settings
+        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "SameLine"));
+
         var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
             .AddUsing("System")
             .AddClass("TestClass", @class =>
@@ -35,6 +39,8 @@ public class BuilderTests
     [Fact]
     public async Task ConstructorCalls()
     {
+        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "SameLine"));
+
         var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
             .AddUsing("System")
             .AddClass("ConcreteClass", @class =>
