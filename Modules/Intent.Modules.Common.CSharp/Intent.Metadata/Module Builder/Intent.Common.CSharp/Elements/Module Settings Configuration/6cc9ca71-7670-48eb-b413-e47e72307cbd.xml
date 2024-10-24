@@ -67,13 +67,82 @@
           <childElements />
         </childElement>
         <childElement id="68b2e492-affe-4c4f-b28d-9fce4b79c174" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Mixed</name>
-          <display>Mixed = Mixed</display>
+          <name>Depends on length</name>
+          <display>Depends on length = DependsOnLength</display>
           <isAbstract>false</isAbstract>
-          <value>Mixed</value>
+          <value>DependsOnLength</value>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>0c43b221-fec0-4df7-96d2-e7281ddf9207</parentFolderId>
+          <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
+          <packageName>Intent.Common.CSharp</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="6483b559-92bb-43d7-a0b4-af20ded10a1b" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Parameter Placement</name>
+      <display>Parameter Placement</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>6cc9ca71-7670-48eb-b413-e47e72307cbd</parentFolderId>
+      <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
+      <packageName>Intent.Common.CSharp</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Parameter placement. More information can be found in the [readme](https://github.com/IntentArchitect/Intent.Modules/blob/development/Modules/Intent.Modules.Common.CSharp/README.md). Relates to [StyleCop rule SA1116](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1116.md)" isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="DependsOnLength" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="8c861a33-3c73-42c5-973a-88f557493049" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Same Line</name>
+          <display>Same Line = SameLine</display>
+          <isAbstract>false</isAbstract>
+          <value>SameLine</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>6483b559-92bb-43d7-a0b4-af20ded10a1b</parentFolderId>
+          <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
+          <packageName>Intent.Common.CSharp</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="75a10b01-ffc6-480a-bce0-e651dfa290db" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>New line</name>
+          <display>New line = NewLine</display>
+          <isAbstract>false</isAbstract>
+          <value>NewLine</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>6483b559-92bb-43d7-a0b4-af20ded10a1b</parentFolderId>
+          <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
+          <packageName>Intent.Common.CSharp</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="e1e21d93-93a8-4374-8f9a-5d70663e54f6" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Depends on length</name>
+          <display>Depends on length = DependsOnLength</display>
+          <isAbstract>false</isAbstract>
+          <value>DependsOnLength</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>6483b559-92bb-43d7-a0b4-af20ded10a1b</parentFolderId>
           <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
           <packageName>Intent.Common.CSharp</packageName>
           <stereotypes />

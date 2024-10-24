@@ -1,0 +1,11 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public Class(string name, string name2)
+        {
+        }
+    }
+}

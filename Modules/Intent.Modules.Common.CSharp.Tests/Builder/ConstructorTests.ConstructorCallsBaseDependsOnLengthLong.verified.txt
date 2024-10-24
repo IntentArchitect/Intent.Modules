@@ -1,0 +1,12 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class : BaseClass
+    {
+        public Class(string name, string name2, string name3, string name4, string name5)
+             : base(name, name2, name3, name4, name5)
+        {
+        }
+    }
+}

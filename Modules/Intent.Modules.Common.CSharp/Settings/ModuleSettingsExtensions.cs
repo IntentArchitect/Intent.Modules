@@ -55,7 +55,7 @@ namespace Intent.Modules.Common.CSharp.Settings
                 {
                     "SameLine" => ConstructorInitializerOptionsEnum.SameLine,
                     "NewLine" => ConstructorInitializerOptionsEnum.NewLine,
-                    "Mixed" => ConstructorInitializerOptionsEnum.Mixed,
+                    "DependsOnLength" => ConstructorInitializerOptionsEnum.DependsOnLength,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
@@ -70,16 +70,60 @@ namespace Intent.Modules.Common.CSharp.Settings
                 return Value == "NewLine";
             }
 
-            public bool IsMixed()
+            public bool IsDependsOnLength()
             {
-                return Value == "Mixed";
+                return Value == "DependsOnLength";
             }
         }
         public enum ConstructorInitializerOptionsEnum
         {
             SameLine,
             NewLine,
-            Mixed,
+            DependsOnLength,
+        }
+        public ParameterPlacementOptions ParameterPlacement() => new ParameterPlacementOptions(_groupSettings.GetSetting("6483b559-92bb-43d7-a0b4-af20ded10a1b")?.Value);
+
+        public class ParameterPlacementOptions
+        {
+            public readonly string Value;
+
+            public ParameterPlacementOptions(string value)
+            {
+                Value = value;
+            }
+
+            public ParameterPlacementOptionsEnum AsEnum()
+            {
+                return Value switch
+                {
+                    "SameLine" => ParameterPlacementOptionsEnum.SameLine,
+                    "NewLine" => ParameterPlacementOptionsEnum.NewLine,
+                    "DependsOnLength" => ParameterPlacementOptionsEnum.DependsOnLength,
+                    _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
+                };
+            }
+
+            public bool IsSameLine()
+            {
+                return Value == "SameLine";
+            }
+
+            public bool IsNewLine()
+            {
+                return Value == "NewLine";
+            }
+
+            public bool IsDependsOnLength()
+            {
+                return Value == "DependsOnLength";
+            }
+        }
+
+        public enum ParameterPlacementOptionsEnum
+        {
+            SameLine,
+            NewLine,
+            DependsOnLength,
         }
     }
 }
