@@ -9,7 +9,7 @@ namespace Intent.Modules.Common.CSharp.Tests.Builder;
 public class ConstructorTests
 {
     [Fact]
-    public async Task ConstructorSingleParameterWithDoNotModifySetting()
+    public async Task ConstructorSingleParameterWithSameLineSetting()
     {
         // setup the style settings
         var settings = new TestStyleSettings("SameLine", "SameLine");
@@ -29,7 +29,7 @@ public class ConstructorTests
     }
 
     [Fact]
-    public async Task ConstructorMultipleParameterWithDoNotModifySetting()
+    public async Task ConstructorMultipleParameterWithSameLine()
     {
         // setup the style settings
         var settings = new TestStyleSettings("SameLine", "SameLine");
@@ -77,7 +77,7 @@ public class ConstructorTests
     }
 
     [Fact]
-    public async Task ConstructorMutliShortParameterWithDependsOnLengthSetting()
+    public async Task ConstructorMultiShortParameterWithDependsOnLengthSetting()
     {
         // setup the style settings
         var settings = new TestStyleSettings("SameLine", "DependsOnLength");
@@ -98,7 +98,7 @@ public class ConstructorTests
     }
 
     [Fact]
-    public async Task ConstructorMutliNewLineParameterWithDependsOnLengthSetting()
+    public async Task ConstructorMutliSameLineParameterWithDependsOnLengthSetting()
     {
         // setup the style settings
         var settings = new TestStyleSettings("SameLine", "DependsOnLength");
@@ -126,7 +126,7 @@ public class ConstructorTests
     }
 
     [Fact]
-    public async Task ConstructorSingleParameterWithnewLineSetting()
+    public async Task ConstructorSingleParameterWithNewLineSetting()
     {
         // setup the style settings
         var settings = new TestStyleSettings("SameLine", "NewLine");
@@ -146,7 +146,7 @@ public class ConstructorTests
     }
 
     [Fact]
-    public async Task ConstructorTwoParameterWithnewLineSetting()
+    public async Task ConstructorTwoParameterWithNewLineSetting()
     {
         // setup the style settings
         var settings = new TestStyleSettings("SameLine", "NewLine");
