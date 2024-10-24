@@ -12,9 +12,9 @@ public class ConstructorTests
     public async Task ConstructorSingleParameterWithDoNotModifySetting()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "SameLine"));
+        var settings = new TestStyleSettings("SameLine", "SameLine");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor => ctor
@@ -32,9 +32,9 @@ public class ConstructorTests
     public async Task ConstructorMultipleParameterWithDoNotModifySetting()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "SameLine"));
+        var settings = new TestStyleSettings("SameLine", "SameLine");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor => ctor
@@ -60,9 +60,9 @@ public class ConstructorTests
     public async Task ConstructorSingleParameterWithDependsOnLengthSetting()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "DependsOnLength"));
+        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor => ctor
@@ -80,9 +80,9 @@ public class ConstructorTests
     public async Task ConstructorMutliShortParameterWithDependsOnLengthSetting()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "DependsOnLength"));
+        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor => ctor
@@ -101,9 +101,9 @@ public class ConstructorTests
     public async Task ConstructorMutliNewLineParameterWithDependsOnLengthSetting()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "DependsOnLength"));
+        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor => ctor
@@ -129,9 +129,9 @@ public class ConstructorTests
     public async Task ConstructorSingleParameterWithnewLineSetting()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "NewLine"));
+        var settings = new TestStyleSettings("SameLine", "NewLine");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor => ctor
@@ -149,9 +149,9 @@ public class ConstructorTests
     public async Task ConstructorTwoParameterWithnewLineSetting()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "NewLine"));
+        var settings = new TestStyleSettings("SameLine", "NewLine");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor => ctor
@@ -170,9 +170,9 @@ public class ConstructorTests
     public async Task ConstructorMutipleParameterWithNewLineSetting()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "NewLine"));
+        var settings = new TestStyleSettings("SameLine", "NewLine");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor => ctor
@@ -194,9 +194,9 @@ public class ConstructorTests
     public async Task ConstructorNoBaseSameLine()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "DependsOnLength"));
+        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor => ctor
@@ -214,9 +214,9 @@ public class ConstructorTests
     public async Task ConstructorCallsBaseSameLine()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "DependsOnLength"));
+        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor =>
@@ -238,9 +238,9 @@ public class ConstructorTests
     public async Task ConstructorCallsBaseNewLine()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("NewLine", "DependsOnLength"));
+        var settings = new TestStyleSettings("NewLine", "DependsOnLength");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor =>
@@ -262,9 +262,9 @@ public class ConstructorTests
     public async Task ConstructorCallsBaseDependsOnLengthShort()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("DependsOnLength", "DependsOnLength"));
+        var settings = new TestStyleSettings("DependsOnLength", "DependsOnLength");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor =>
@@ -286,9 +286,9 @@ public class ConstructorTests
     public async Task ConstructorCallsBaseDependsOnLengthLong()
     {
         // setup the style settings
-        _ = new CSharpStyleSettings(new TestStyleSettings("DependsOnLength", "DependsOnLength"));
+        var settings = new TestStyleSettings("DependsOnLength", "DependsOnLength");
 
-        var fileBuilder = new CSharpFile("Namespace", "File")
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
             {
                 c.AddConstructor(ctor =>

@@ -50,7 +50,7 @@ public class PrimaryConstructorTests
     [Fact]
     public async Task ClassWithFewParamsPrimaryConstructor()
     {
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "SameLine"));
+        //_ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "SameLine"));
 
         var fileBuilder = new CSharpFile("Namespace", "File")
             .AddClass("Class", c =>
@@ -72,7 +72,7 @@ public class PrimaryConstructorTests
     [Fact]
     public async Task ClassWithLotsParamsPrimaryConstructor_SpansLines()
     {
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "DependsOnLength"));
+       // _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "DependsOnLength"));
 
         var fileBuilder = new CSharpFile("Namespace", "File")
             .AddClass("Class", c =>
@@ -119,7 +119,7 @@ public class PrimaryConstructorTests
     [Fact]
     public async Task ClassWithPrimaryConstructorAndInheritedBaseCall()
     {
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "SameLine"));
+        //_ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "SameLine"));
 
         var fileBuilder = new CSharpFile("Namespace", "File")
             .AddClass("SomeBaseClass", c =>
@@ -205,7 +205,7 @@ public class PrimaryConstructorTests
     [Fact]
     public async Task RecordWithLotsParamsPrimaryConstructor_SpansLines()
     {
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "DependsOnLength"));
+        //_ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "DependsOnLength"));
 
         var fileBuilder = new CSharpFile("Namespace", "File")
             .AddRecord("Record", c =>
@@ -231,7 +231,7 @@ public class PrimaryConstructorTests
     [Fact]
     public async Task RecordWithPrimaryConstructorAndMembers()
     {
-        _ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "SameLine"));
+        //_ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "SameLine"));
 
         var fileBuilder = new CSharpFile("Namespace", "File")
             .AddRecord("Record", c =>
