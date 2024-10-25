@@ -101,7 +101,7 @@
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
             <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Parameter placement. More information can be found in the [readme](https://github.com/IntentArchitect/Intent.Modules/blob/development/Modules/Intent.Modules.Common.CSharp/README.md). Relates to [StyleCop rule SA1116](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1116.md)" isActive="true" />
-            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="DependsOnLength" isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="Default" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -122,10 +122,10 @@
           <childElements />
         </childElement>
         <childElement id="75a10b01-ffc6-480a-bce0-e651dfa290db" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>New line</name>
-          <display>New line = NewLine</display>
+          <name>Depends on length</name>
+          <display>Depends on length = DependsOnLength</display>
           <isAbstract>false</isAbstract>
-          <value>NewLine</value>
+          <value>DependsOnLength</value>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>6483b559-92bb-43d7-a0b4-af20ded10a1b</parentFolderId>
@@ -136,10 +136,10 @@
           <childElements />
         </childElement>
         <childElement id="e1e21d93-93a8-4374-8f9a-5d70663e54f6" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Depends on length</name>
-          <display>Depends on length = DependsOnLength</display>
+          <name>Default</name>
+          <display>Default = Default</display>
           <isAbstract>false</isAbstract>
-          <value>DependsOnLength</value>
+          <value>Default</value>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>6483b559-92bb-43d7-a0b4-af20ded10a1b</parentFolderId>

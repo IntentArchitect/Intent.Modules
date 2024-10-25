@@ -97,8 +97,8 @@ namespace Intent.Modules.Common.CSharp.Settings
                 return Value switch
                 {
                     "SameLine" => ParameterPlacementOptionsEnum.SameLine,
-                    "NewLine" => ParameterPlacementOptionsEnum.NewLine,
                     "DependsOnLength" => ParameterPlacementOptionsEnum.DependsOnLength,
+                    "Default" => ParameterPlacementOptionsEnum.Default,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
@@ -108,22 +108,22 @@ namespace Intent.Modules.Common.CSharp.Settings
                 return Value == "SameLine";
             }
 
-            public bool IsNewLine()
-            {
-                return Value == "NewLine";
-            }
-
             public bool IsDependsOnLength()
             {
                 return Value == "DependsOnLength";
+            }
+
+            public bool IsDefault()
+            {
+                return Value == "Default";
             }
         }
 
         public enum ParameterPlacementOptionsEnum
         {
             SameLine,
-            NewLine,
             DependsOnLength,
+            Default,
         }
     }
 }

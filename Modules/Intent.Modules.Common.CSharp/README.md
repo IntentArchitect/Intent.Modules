@@ -55,9 +55,9 @@ This setting relates to [Style Cop SA1116](https://github.com/DotNetAnalyzers/St
         }
     ```
 
-- **New line** :
+- **Default** :
 
-    If there are multiple parameters, they will always be generated to span multiple lines, with the first parameter on a new line:
+    If there are multiple parameters, if the line length exceeds a certain value, will each parameter be output on a new line, except for the first parameter:
 
     ``` csharp
  
@@ -69,8 +69,7 @@ This setting relates to [Style Cop SA1116](https://github.com/DotNetAnalyzers/St
         }
 
         // multi parameter output
-        public TypeName(
-            string name,
+        public TypeName(string name,
             string name2,
             string name3)
         {
@@ -79,7 +78,7 @@ This setting relates to [Style Cop SA1116](https://github.com/DotNetAnalyzers/St
     ```
 
 - **Depends on length** :
-    In this mode, only if the parameter list exceeds a certain length, will each parameter be output on a new line. The first parameter will not be output on its own line:
+    In this mode, only if the line length exceeds a certain value, will each parameter be output on a new line:
 
     ``` csharp
  
@@ -91,7 +90,8 @@ This setting relates to [Style Cop SA1116](https://github.com/DotNetAnalyzers/St
         }
 
         // long parameter length output
-        public TypeName(string name,
+        public TypeName(
+            string name,
             string name2,
             string name3,
             string name4,

@@ -236,7 +236,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
 
         const int maxLineLength = 120;
 
-        return CalculateParameterString(File.StyleSettings?.ParameterPlacement.AsEnum() ?? ParameterPlacementOptionsEnum.DependsOnLength, 
+        return CalculateParameterString(File.StyleSettings?.ParameterPlacement.AsEnum() ?? ParameterPlacementOptionsEnum.Default, 
             estimatedLength, maxLineLength, indentation);
     }
 
@@ -244,19 +244,21 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
         (option, estimatedLength > maxLineLength, Parameters.Count > 1) switch
         {
             // if mixed and under the length or there only one parameter
-            (ParameterPlacementOptionsEnum.DependsOnLength, false, false) or
+            (ParameterPlacementOptionsEnum.Default, false, false) or
+            (ParameterPlacementOptionsEnum.Default, false, true) or
+            (ParameterPlacementOptionsEnum.Default, true, false) or
+            (ParameterPlacementOptionsEnum.DependsOnLength, _, false) or
             (ParameterPlacementOptionsEnum.DependsOnLength, false, true) or
-            (ParameterPlacementOptionsEnum.DependsOnLength, true, false) or
-            (ParameterPlacementOptionsEnum.NewLine, _, false) or 
             // if do not modify, then return on one line
             (ParameterPlacementOptionsEnum.SameLine, _, _) => string.Join(", ", Parameters.Select(x => x.ToString())),
 
             // if mixed and over the length or more than one parameter
-            (ParameterPlacementOptionsEnum.DependsOnLength, true, true)  => string.Join($@",
+            (ParameterPlacementOptionsEnum.Default, true, true)  => string.Join($@",
 {indentation}    ", Parameters.Select(x => x.ToString())),
 
             // if always, then always do it
-            (ParameterPlacementOptionsEnum.NewLine, _, true) => string.Concat($"{Environment.NewLine}{indentation}    ", string.Join($@",
+            (ParameterPlacementOptionsEnum.DependsOnLength, true, true) or
+            (ParameterPlacementOptionsEnum.DependsOnLength, _, true) => string.Concat($"{Environment.NewLine}{indentation}    ", string.Join($@",
 {indentation}    ", Parameters.Select(x => x.ToString()))),
 
             // catch all, return on one line
