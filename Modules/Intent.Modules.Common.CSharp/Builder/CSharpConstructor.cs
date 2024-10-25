@@ -257,8 +257,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
 {indentation}    ", Parameters.Select(x => x.ToString())),
 
             // if always, then always do it
-            (ParameterPlacementOptionsEnum.DependsOnLength, true, true) or
-            (ParameterPlacementOptionsEnum.DependsOnLength, _, true) => string.Concat($"{Environment.NewLine}{indentation}    ", string.Join($@",
+            (ParameterPlacementOptionsEnum.DependsOnLength, true, true) => string.Concat($"{Environment.NewLine}{indentation}    ", string.Join($@",
 {indentation}    ", Parameters.Select(x => x.ToString()))),
 
             // catch all, return on one line

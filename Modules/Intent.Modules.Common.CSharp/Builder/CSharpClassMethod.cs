@@ -7,6 +7,7 @@ using System.Text;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
+using static Intent.Modules.Common.CSharp.Settings.CSharpStyleConfiguration;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -399,10 +400,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     {
         var declaration = new StringBuilder();
 
-        declaration.Append(GetComments(indentation));
-        declaration.Append(GetAttributes(indentation));
         declaration.Append(indentation);
-
         if (string.IsNullOrWhiteSpace(ExplicitImplementationFor))
         {
             declaration.Append(AccessModifier);
@@ -421,9 +419,18 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
 
         declaration.Append(Name);
         declaration.Append(GetGenericParameters());
-        declaration.Append($"({GetParameters(indentation)})");
-        declaration.Append(GetGenericTypeConstraints(indentation));
 
+        // calculate a rough estimate of the line length
+        // +1 at the end to cater for backward compatibility where the check used to include the open brace in the length calc
+        var estimatedLength = declaration.ToString().Length + Parameters.Sum(x => x.ToString().Length) + 1; 
+
+        // this only done after the estimate length is calculated to get a more accurate reading
+        declaration.Insert(0, GetAttributes(indentation));
+        declaration.Insert(0, GetComments(indentation));
+
+        declaration.Append($"({GetParameters(File.StyleSettings?.ParameterPlacement.AsEnum() ?? ParameterPlacementOptionsEnum.Default, 
+            estimatedLength, 120, indentation)})");
+        declaration.Append(GetGenericTypeConstraints(indentation));
 
         if (IsAbstract && Statements.Count == 0)
         {
@@ -447,22 +454,23 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
 {indentation}}}";
     }
 
-    private string GetParameters(string indentation)
-    {
-        // GCB - WTF: why rewrite out whole statement
-        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{OverrideModifier}{(IsAsync ? "async " : "")}{ReturnTypeInfo} {Name}{GetGenericParameters()}(".Length +
-            Parameters.Sum(x => x.ToString().Length) > 120)
+    private string GetParameters(ParameterPlacementOptionsEnum option, int estimatedLength, int maxLineLength, string indentation) =>
+        (option, estimatedLength > maxLineLength, Parameters.Count > 1) switch
         {
-            return $@"
+            // if there is only one parameter
+            (_, _, false) or
+            (ParameterPlacementOptionsEnum.Default, false, _) or
+            (ParameterPlacementOptionsEnum.DependsOnLength, false, true) or
+            // if do not modify, then return on one line
+            (ParameterPlacementOptionsEnum.SameLine, _, _) => string.Join(", ", Parameters.Select(x => x.ToString())),
+            (ParameterPlacementOptionsEnum.Default, true, true) or
+            (ParameterPlacementOptionsEnum.DependsOnLength, true, true) or
+            (_, _, _) => $@"
 {indentation}    {string.Join($@",
-{indentation}    ", Parameters.Select(x => x.ToString()))}";
-        }
-        else
-        {
-            return string.Join(", ", Parameters.Select(x => x.ToString()));
-        }
-    }
-
+{indentation}    ", Parameters.Select(x => x.ToString()))}",
+            
+        };
+    
     private string GetGenericTypeConstraints(string indentation)
     {
         if (!GenericTypeConstraints.Any())

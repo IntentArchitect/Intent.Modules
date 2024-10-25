@@ -126,6 +126,34 @@ public class ConstructorTests
     }
 
     [Fact]
+    public async Task ConstructorLongParameterWithDefaultSetting()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("NewLine", "Default");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                    .AddParameter("string", "name2")
+                    .AddParameter("string", "name3")
+                    .AddParameter("string", "name4")
+                    .AddParameter("string", "name5")
+                    .AddParameter("string", "name6")
+                    .AddParameter("string", "name7")
+                    .AddParameter("string", "name8")
+                    .AddParameter("string", "name9")
+                );
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
+    [Fact]
     public async Task ConstructorSingleParameterWithDependsOnLengthSetting()
     {
         // setup the style settings
