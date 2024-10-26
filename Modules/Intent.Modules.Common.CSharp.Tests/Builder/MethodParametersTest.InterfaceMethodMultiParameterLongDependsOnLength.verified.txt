@@ -1,0 +1,19 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public interface ITest
+    {
+        void MyMethod(
+            string lmparam1,
+            string lmparam2,
+            string lmparam3,
+            string lmparam4,
+            string lmparam5,
+            string lmparam6,
+            string lmparam7,
+            string lmparam8,
+            string lmparam9,
+            string lmparam10);
+    }
+}

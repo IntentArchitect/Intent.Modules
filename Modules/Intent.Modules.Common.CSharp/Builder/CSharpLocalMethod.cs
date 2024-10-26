@@ -389,6 +389,7 @@ public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, ICSharpL
             (_, _, false) or
             (ParameterPlacementOptionsEnum.Default, false, _) or
             (ParameterPlacementOptionsEnum.DependsOnLength, false, true) or
+            (ParameterPlacementOptionsEnum.DependsOnLength, true, false) or
             // if do not modify, then return on one line
             (ParameterPlacementOptionsEnum.SameLine, _, _) => string.Join(", ", Parameters.Select(x => x.ToString())),
             (ParameterPlacementOptionsEnum.Default, true, true) or

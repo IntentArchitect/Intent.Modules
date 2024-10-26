@@ -1,0 +1,9 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public interface ITest
+    {
+        void MyMethod(string lm1, string lm2);
+    }
+}
