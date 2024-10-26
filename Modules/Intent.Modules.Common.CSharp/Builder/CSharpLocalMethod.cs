@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
+using static Intent.Modules.Common.CSharp.Settings.CSharpStyleConfiguration;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -351,7 +353,10 @@ public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, ICSharpL
             sb.Append(">");
         }
 
-        sb.Append($"({GetParameters(indentation, currentLineLength: sb.Length)})");
+        var estimatedLength = sb.Length + Parameters.Sum(x => x.ToString()!.Length);
+        var parameterList = GetParameters(File?.StyleSettings?.ParameterPlacement.AsEnum() ?? ParameterPlacementOptionsEnum.Default, estimatedLength, 120, indentation);
+             
+        sb.Append($"({parameterList})");
 
         foreach (var genericTypeConstraint in GenericTypeConstraints)
         {
@@ -377,17 +382,34 @@ public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, ICSharpL
 {indentation}}}";
     }
 
-    private string GetParameters(string indentation, int currentLineLength)
-    {
-        if (Parameters.Count > 1 && currentLineLength + Parameters.Sum(x => x.ToString()!.Length) > 120)
+    private string GetParameters(ParameterPlacementOptionsEnum option, int estimatedLength, int maxLineLength, string indentation) =>
+        (option, estimatedLength > maxLineLength, Parameters.Count > 1) switch
         {
-            return $@"
+            // if there is only one parameter
+            (_, _, false) or
+            (ParameterPlacementOptionsEnum.Default, false, _) or
+            (ParameterPlacementOptionsEnum.DependsOnLength, false, true) or
+            // if do not modify, then return on one line
+            (ParameterPlacementOptionsEnum.SameLine, _, _) => string.Join(", ", Parameters.Select(x => x.ToString())),
+            (ParameterPlacementOptionsEnum.Default, true, true) or
+            (ParameterPlacementOptionsEnum.DependsOnLength, true, true) or
+            (_, _, _) => $@"
 {indentation}    {string.Join($@",
-{indentation}    ", Parameters.Select(x => x.ToString()))}";
-        }
+{indentation}    ", Parameters.Select(x => x.ToString()))}",
 
-        return string.Join(", ", Parameters.Select(x => x.ToString()));
-    }
+        };
+
+    //    private string GetParameters(string indentation, int currentLineLength)
+    //    {
+    //        if (Parameters.Count > 1 && currentLineLength + Parameters.Sum(x => x.ToString()!.Length) > 120)
+    //        {
+    //            return $@"
+    //{indentation}    {string.Join($@",
+    //{indentation}    ", Parameters.Select(x => x.ToString()))}";
+    //        }
+
+    //        return string.Join(", ", Parameters.Select(x => x.ToString()));
+    //    }
 
     public override string ToString()
     {

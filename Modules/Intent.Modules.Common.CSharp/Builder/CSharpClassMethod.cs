@@ -422,7 +422,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
 
         // calculate a rough estimate of the line length
         // +1 at the end to cater for backward compatibility where the check used to include the open brace in the length calc
-        var estimatedLength = declaration.ToString().Length + Parameters.Sum(x => x.ToString().Length) + 1; 
+        var estimatedLength = declaration.Length + Parameters.Sum(x => x.ToString().Length) + 1; 
 
         // this only done after the estimate length is calculated to get a more accurate reading
         declaration.Insert(0, GetAttributes(indentation));

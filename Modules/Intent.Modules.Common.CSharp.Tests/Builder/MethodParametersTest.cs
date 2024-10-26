@@ -249,4 +249,398 @@ public class MethodParametersTest
         Assert.Empty(fileBuilder.Classes.First().Fields);
         Assert.Empty(fileBuilder.Classes.First().Properties);
     }
+
+    [Fact]
+    public async Task LocalMethodOneParameterDefault()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("SameLine", "Default");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                );
+
+                c.AddMethod("void", "MyMethod", mth => mth
+                    .AddParameter("string", "mParam1")
+                    .AddLocalMethod("void", "LocalMethod", lm => lm
+                        .AddParameter("string", "lmParam1")
+                ));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
+    [Fact]
+    public async Task LocalMethodMultiParameterShortDefault()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("SameLine", "Default");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                );
+
+                c.AddMethod("void", "MyMethod", mth => mth
+                   .AddParameter("string", "mParam1")
+                   .AddLocalMethod("void", "LocalMethod", lm => lm
+                       .AddParameter("string", "lm1")
+                       .AddParameter("string", "lm2")
+               ));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
+    [Fact]
+    public async Task LocalMethodMultiParameterLongDefault()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("SameLine", "Default");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                );
+
+                c.AddMethod("void", "MyMethod", mth => mth
+                    .AddParameter("string", "mParam1")
+                    .AddLocalMethod("void", "LocalMethod", lm => lm
+                        .AddParameter("string", "lmparam1")
+                        .AddParameter("string", "lmparam2")
+                        .AddParameter("string", "lmparam3")
+                        .AddParameter("string", "lmparam4")
+                        .AddParameter("string", "lmparam5")
+                        .AddParameter("string", "lmparam6")
+                        .AddParameter("string", "lmparam7")
+                        .AddParameter("string", "lmparam8")
+                        .AddParameter("string", "lmparam9")
+                        .AddParameter("string", "lmparam10")
+                ));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
+    [Fact]
+    public async Task LocalMethodMultiParameterLongDefaultBoth()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("SameLine", "Default");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                );
+
+                c.AddMethod("void", "MyMethod", mth => mth
+                    .AddParameter("string", "mParam1")
+                    .AddParameter("string", "mParam2")
+                    .AddParameter("string", "mParam3")
+                    .AddParameter("string", "mParam4")
+                    .AddParameter("string", "mParam5")
+                    .AddParameter("string", "mParam6")
+                    .AddParameter("string", "mParam7")
+                    .AddParameter("string", "mParam8")
+                    .AddParameter("string", "mParam9")
+                    .AddLocalMethod("void", "LocalMethod", lm => lm
+                        .AddParameter("string", "lmparam1")
+                        .AddParameter("string", "lmparam2")
+                        .AddParameter("string", "lmparam3")
+                        .AddParameter("string", "lmparam4")
+                        .AddParameter("string", "lmparam5")
+                        .AddParameter("string", "lmparam6")
+                        .AddParameter("string", "lmparam7")
+                        .AddParameter("string", "lmparam8")
+                        .AddParameter("string", "lmparam9")
+                        .AddParameter("string", "lmparam10")
+                ));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
+    [Fact]
+    public async Task LocalMethodOneParameterSameLine()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("SameLine", "SameLine");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                );
+
+                c.AddMethod("void", "MyMethod", mth => mth
+                    .AddParameter("string", "mParam1")
+                    .AddLocalMethod("void", "LocalMethod", lm => lm
+                        .AddParameter("string", "lmParam1")
+                ));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
+    [Fact]
+    public async Task LocalMethodMultiParameterShortSameLine()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("SameLine", "SameLine");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                );
+
+                c.AddMethod("void", "MyMethod", mth => mth
+                   .AddParameter("string", "mParam1")
+                   .AddLocalMethod("void", "LocalMethod", lm => lm
+                       .AddParameter("string", "lm1")
+                       .AddParameter("string", "lm2")
+               ));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
+    [Fact]
+    public async Task LocalMethodMultiParameterLongSameLine()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("SameLine", "SameLine");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                );
+
+                c.AddMethod("void", "MyMethod", mth => mth
+                    .AddParameter("string", "mParam1")
+                    .AddLocalMethod("void", "LocalMethod", lm => lm
+                        .AddParameter("string", "lmparam1")
+                        .AddParameter("string", "lmparam2")
+                        .AddParameter("string", "lmparam3")
+                        .AddParameter("string", "lmparam4")
+                        .AddParameter("string", "lmparam5")
+                        .AddParameter("string", "lmparam6")
+                        .AddParameter("string", "lmparam7")
+                        .AddParameter("string", "lmparam8")
+                        .AddParameter("string", "lmparam9")
+                        .AddParameter("string", "lmparam10")
+                ));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
+    [Fact]
+    public async Task LocalMethodMultiParameterLongSameLineBoth()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("SameLine", "SameLine");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                );
+
+                c.AddMethod("void", "MyMethod", mth => mth
+                    .AddParameter("string", "mParam1")
+                    .AddParameter("string", "mParam2")
+                    .AddParameter("string", "mParam3")
+                    .AddParameter("string", "mParam4")
+                    .AddParameter("string", "mParam5")
+                    .AddParameter("string", "mParam6")
+                    .AddParameter("string", "mParam7")
+                    .AddParameter("string", "mParam8")
+                    .AddParameter("string", "mParam9")
+                    .AddLocalMethod("void", "LocalMethod", lm => lm
+                        .AddParameter("string", "lmparam1")
+                        .AddParameter("string", "lmparam2")
+                        .AddParameter("string", "lmparam3")
+                        .AddParameter("string", "lmparam4")
+                        .AddParameter("string", "lmparam5")
+                        .AddParameter("string", "lmparam6")
+                        .AddParameter("string", "lmparam7")
+                        .AddParameter("string", "lmparam8")
+                        .AddParameter("string", "lmparam9")
+                        .AddParameter("string", "lmparam10")
+                ));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
+    [Fact]
+    public async Task LocalMethodOneParameterDependsOnLength()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                );
+
+                c.AddMethod("void", "MyMethod", mth => mth
+                    .AddParameter("string", "mParam1")
+                    .AddLocalMethod("void", "LocalMethod", lm => lm
+                        .AddParameter("string", "lmParam1")
+                ));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
+    [Fact]
+    public async Task LocalMethodMultiParameterShortDependsOnLength()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                );
+
+                c.AddMethod("void", "MyMethod", mth => mth
+                   .AddParameter("string", "mParam1")
+                   .AddLocalMethod("void", "LocalMethod", lm => lm
+                       .AddParameter("string", "lm1")
+                       .AddParameter("string", "lm2")
+               ));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
+    [Fact]
+    public async Task LocalMethodMultiParameterLongDependsOnLength()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                );
+
+                c.AddMethod("void", "MyMethod", mth => mth
+                    .AddParameter("string", "mParam1")
+                    .AddLocalMethod("void", "LocalMethod", lm => lm
+                        .AddParameter("string", "lmparam1")
+                        .AddParameter("string", "lmparam2")
+                        .AddParameter("string", "lmparam3")
+                        .AddParameter("string", "lmparam4")
+                        .AddParameter("string", "lmparam5")
+                        .AddParameter("string", "lmparam6")
+                        .AddParameter("string", "lmparam7")
+                        .AddParameter("string", "lmparam8")
+                        .AddParameter("string", "lmparam9")
+                        .AddParameter("string", "lmparam10")
+                ));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
+    [Fact]
+    public async Task LocalMethodMultiParameterLongDependsOnLengthBoth()
+    {
+        // setup the style settings
+        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", settings)
+            .AddClass("Class", c =>
+            {
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "name")
+                );
+
+                c.AddMethod("void", "MyMethod", mth => mth
+                    .AddParameter("string", "mParam1")
+                    .AddParameter("string", "mParam2")
+                    .AddParameter("string", "mParam3")
+                    .AddParameter("string", "mParam4")
+                    .AddParameter("string", "mParam5")
+                    .AddParameter("string", "mParam6")
+                    .AddParameter("string", "mParam7")
+                    .AddParameter("string", "mParam8")
+                    .AddParameter("string", "mParam9")
+                    .AddLocalMethod("void", "LocalMethod", lm => lm
+                        .AddParameter("string", "lmparam1")
+                        .AddParameter("string", "lmparam2")
+                        .AddParameter("string", "lmparam3")
+                        .AddParameter("string", "lmparam4")
+                        .AddParameter("string", "lmparam5")
+                        .AddParameter("string", "lmparam6")
+                        .AddParameter("string", "lmparam7")
+                        .AddParameter("string", "lmparam8")
+                        .AddParameter("string", "lmparam9")
+                        .AddParameter("string", "lmparam10")
+                ));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+
+        Assert.Empty(fileBuilder.Classes.First().Fields);
+        Assert.Empty(fileBuilder.Classes.First().Properties);
+    }
+
 }
