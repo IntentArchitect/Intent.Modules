@@ -1,6 +1,7 @@
 ### Version 2.0.2
 
 - Improvement: Changed `Default Mapping Mode` to be `Advanced` by default.
+- Improvement: Added setting `Default Query Implementation`, allowing for configuration of how `Query Entity Actions` are implemented.
 
 ### Version 2.0.1
 
