@@ -32,6 +32,8 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder
         private readonly List<(Action Invoke, int Order)> _configurations = new();
         private readonly List<(Action Invoke, int Order)> _configurationsAfter = new();
 
+        public ICSharpStyleSettings StyleSettings { get; }
+
         public RazorFile(RazorTemplateBase<TTemplateModel> template, string className) : base(null!)
         {
             Template = template as IRazorFileTemplate ?? throw new InvalidOperationException($"{nameof(template)} must implement {nameof(IRazorFileTemplate)}");
@@ -45,6 +47,7 @@ namespace Intent.Modules.Common.CSharp.RazorBuilder
             }
             _namespace = template.GetNamespace();
             _relativeLocation = template.GetFolderPath();
+            StyleSettings = CSharpStyleSettings.Settings;
         }
 
         public IRazorFile WithFileExtension(string fileExtension)

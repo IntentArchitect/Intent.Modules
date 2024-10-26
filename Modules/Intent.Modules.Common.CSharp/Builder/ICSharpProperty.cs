@@ -1,4 +1,5 @@
 #nullable enable
+using Intent.Metadata.Models;
 using System;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -33,6 +34,7 @@ public interface ICSharpProperty : ICSharpMember<ICSharpProperty>, ICSharpRefere
     ICSharpProperty WithInitialValue(string initialValue);
     ICSharpProperty ExplicitlyImplements(string @interface);
     ICSharpProperty WithBackingField(Action<ICSharpField>? configure = null);
+    ICSharpProperty WithInstantiation();
     ICSharpProperty MoveTo(int propertyIndex);
     ICSharpProperty MoveToFirst();
     ICSharpProperty MoveToLast();

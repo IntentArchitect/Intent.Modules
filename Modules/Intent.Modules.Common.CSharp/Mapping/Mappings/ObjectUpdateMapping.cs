@@ -114,7 +114,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
         }
         _template.CSharpFile.AfterBuild(file =>
         {
-            var @class = file.Classes.Where(c => c.HasMetadata("handler")).First();
+            var @class = file.Classes.FirstOrDefault(c => c.HasMetadata("handler")) ?? file.Classes.First();
             @class.AddMethod($"{interfaceName}{fromFieldNullable}", updateMethodName, method =>
             {
                 method.AddAttribute(CSharpIntentManagedAttribute.Fully());

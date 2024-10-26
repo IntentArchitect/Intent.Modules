@@ -26,6 +26,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>499bd241-9cb1-40b7-90c8-7e94329db973</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.FactoryExtension#98dc02d8-76e0-4b0d-8664-a71e1534b68b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>FactoryExtensions/CSharpStyleSettingsLoaderExtension.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CSharpStyleSettingsLoaderExtension.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>499bd241-9cb1-40b7-90c8-7e94329db973</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.FactoryExtension#a05a730c-90e8-4e1d-bb81-0c9bae1748ae</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>FactoryExtensions/NugetRegistryLoaderExtension.cs</ApplicationRelativeFilePath>
@@ -46,6 +54,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Common.CSharp.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.CSharp.csproj</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>94e0c750-cc8b-4da1-83fe-c83627a437b2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions#730e1275-0c32-44f7-991a-9619d07ca68d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Settings/ModuleSettingsExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ModuleSettingsExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

@@ -1,8 +1,12 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.CSharp.VisualStudio;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -161,6 +165,38 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
         return this;
     }
 
+    public CSharpProperty WithInstantiation()
+    {
+        var propertyType = CSharpTypeParser.Parse(Type);
+
+        if (File?.Template.OutputTarget.GetProject().GetLanguageVersion().Major >= 12 && propertyType is not null && propertyType.IsCollectionType())
+        {
+            InitialValue = "[]";
+            return this;
+        }
+
+        if (File?.Template.OutputTarget.GetProject().GetLanguageVersion().Major < 12 && propertyType is not null && propertyType.IsCollectionType())
+        {
+            var concreteImplementation = propertyType.GetCollectionImplementationType();
+            InitialValue = GetInstantiationValue(propertyType, concreteImplementation);
+
+            return this;
+        }
+
+        return this;
+    }
+
+    private string GetInstantiationValue(CSharpType? propertyType, ICSharpType concreteImplementation)
+    {
+        if(propertyType is CSharpTypeGeneric generic)
+        {
+            var argTypes = string.Join(", ", generic.TypeArgumentList.Select(s => File.Template.UseType(s.ToString())));
+            return $"new {File.Template.UseType($"{concreteImplementation}<{argTypes}>").Replace("?", "")}()";
+        }
+        
+        return $"new {File.Template.UseType($"{concreteImplementation}").Replace("?", "")}()";
+    }
+
     public CSharpProperty MoveTo(int propertyIndex)
     {
         _class.Properties.Remove(this);
@@ -256,6 +292,8 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
     ICSharpProperty ICSharpProperty.MoveToFirst() => _wrapper.MoveToFirst();
 
     ICSharpProperty ICSharpProperty.MoveToLast() => _wrapper.MoveToLast();
+
+    ICSharpProperty ICSharpProperty.WithInstantiation() => _wrapper.WithInstantiation();
 
     #endregion
 }

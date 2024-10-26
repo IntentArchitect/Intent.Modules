@@ -28,6 +28,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
     public IList<CSharpInterface> Interfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpClass> TypeDeclarations { get; } = new List<CSharpClass>();
     public CSharpTopLevelStatements TopLevelStatements { get; private set; }
+    public ICSharpStyleSettings StyleSettings { get; }
 
     public IList<CSharpClass> Classes => TypeDeclarations
         .Where(td => td.TypeDefinitionType == CSharpClass.Type.Class)
@@ -45,6 +46,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
     {
         Namespace = @namespace.ToCSharpNamespace();
         RelativeLocation = relativeLocation;
+        StyleSettings = CSharpStyleSettings.Settings;
     }
 
     public CSharpFile(string @namespace, string relativeLocation, ICSharpFileBuilderTemplate template) : this(
@@ -379,11 +381,13 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
             sb.AppendLine(TopLevelStatements.ToString());
         }
 
+        var elementOrder = StyleSettings?.ElementOrder.ToArray() ?? [];
+
         var typeDeclarations = Enumerable.Empty<string>()
-            .Concat(Interfaces.Select(x => x.ToString("    ")))
-            .Concat(Classes.Select(x => x.ToString("    ")))
-            .Concat(Records.Select(x => x.ToString("    ")))
-            .Concat(Enums.Select(x => x.ToString("    ")))
+            .Concat(Interfaces.OrderBy(i => Array.IndexOf(elementOrder, i.AccessModifier.Trim())).GroupBy(i => i.Name).SelectMany(g => g).Select(x => x.ToString("    ")))
+            .Concat(Classes.OrderBy(c => Array.IndexOf(elementOrder, c.AccessModifier.Trim())).GroupBy(c => c.Name).SelectMany(g => g).Select(x => x.ToString("    ")))
+            .Concat(Records.OrderBy(r => Array.IndexOf(elementOrder, r.AccessModifier.Trim())).GroupBy(r => r.Name).SelectMany(g => g).Select(x => x.ToString("    ")))
+            .Concat(Enums.OrderBy(e => Array.IndexOf(elementOrder, e.AccessModifier.Trim())).Select(e => e.ToString("    ")))
             .ToArray();
 
         if (typeDeclarations.Length > 0)

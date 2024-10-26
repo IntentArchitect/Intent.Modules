@@ -1,6 +1,10 @@
 ﻿### Version 3.8.3
 
 - Improvement: Disabling Templates via the CanRun property during Software Factory Execution.
+- Improvement: Added C# style settings allowing for the configuration of the style of generated code
+- Improvement: Elements in a C# file (where applicable) will be ordered by access level according to best practices. 
+- Improvement: Certain in a C# file, with the same name (e.g. methods), will also be grouped together
+- Improvement: Added WithInstantiation method to CSharpProperty and CSharpField, with LangVersion aware collection support
 - Improvement: Ability for template extenders to unregister `using`s and NuGet package requests.
 
 ### Version 3.8.2

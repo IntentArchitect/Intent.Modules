@@ -183,10 +183,29 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
         {
             return Parameters.Count == 0 ? string.Empty : $"({ToStringParameters(indentation)})";
         }
-        
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{Class.Name}({ToStringParameters(indentation)}){ConstructorCall?.ToString() ?? string.Empty}
+
+        var baseConstructor = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{Class.Name}({ToStringParameters(indentation)})";
+        var constructorCall = ConstructorCall?.ToString() ?? string.Empty;
+
+        return $@"{baseConstructor}{GetConstructorInitializerModifier(baseConstructor, constructorCall, indentation)}{constructorCall}
 {indentation}{{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
+    }
+
+    private string GetConstructorInitializerModifier(string baseConstructor, string constructorCall, string indentation)
+    {
+        if(File.StyleSettings?.ConstructorInitializerBehavior.IsNewLine() ?? false && !string.IsNullOrEmpty(constructorCall))
+        {
+            return $"{Environment.NewLine}{indentation}    ";
+        }
+
+        if(File.StyleSettings?.ConstructorInitializerBehavior.IsMixed() ?? false && $"{baseConstructor}{constructorCall}".Length > 110)
+        {
+            return $"{Environment.NewLine}{indentation}    ";
+        }
+
+        return string.Empty;
+
     }
 
     private void IntroduceBackingMembersIfForPrimaryConstructor(CSharpConstructorParameter param)

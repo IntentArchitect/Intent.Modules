@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
+using Intent.Modules.Common.CSharp.VisualStudio;
 
 #nullable enable
 
@@ -39,7 +42,8 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
         AccessModifier = "private ";
         Type = type;
         Name = name;
-        Parent = @class;    
+        Parent = @class;
+        File = @class?.File; // can be null because of CSharpInterfaceProperty :(
     }
 
     internal static CSharpField CreateFieldOmittedFromRender(string type, string name, ICSharpCodeContext @class, string? value)
@@ -123,6 +127,27 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
         return this;
     }
 
+    public CSharpField WithInstantiation()
+    {
+        var propertyType = CSharpTypeParser.Parse(Type);
+
+        if (File?.Template.OutputTarget.GetProject().GetLanguageVersion().Major >= 12 && propertyType is not null && propertyType.IsCollectionType())
+        {
+            Assignment = "[]";
+            return this;
+        }
+
+        if (File?.Template.OutputTarget.GetProject().GetLanguageVersion().Major < 12 && propertyType is not null && propertyType.IsCollectionType())
+        {
+            var concreteImplementation = propertyType.GetCollectionImplementationType();
+            Assignment = GetInstantiationValue(propertyType, concreteImplementation);
+
+            return this;
+        }
+
+        return this;
+    }
+
     public override string GetText(string indentation)
     {
         var assignment = string.Empty;
@@ -157,6 +182,17 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
         }
 
         return $"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{accessModifier}{(IsRequired ? "required " : "")}{Type}{(_canBeNull ? "?" : "")} {Name}{assignment};";
+    }
+
+    private string GetInstantiationValue(CSharpType? propertyType, ICSharpType concreteImplementation)
+    {
+        if (propertyType is CSharpTypeGeneric generic)
+        {
+            var argTypes = string.Join(", ", generic.TypeArgumentList.Select(s => File.Template.UseType(s.ToString())));
+            return $"new {File.Template.UseType($"{concreteImplementation}<{argTypes}>").Replace("?", "")}()";
+        }
+
+        return $"new {File.Template.UseType($"{concreteImplementation}").Replace("?", "")}()";
     }
 
     #region ICSharpField implementation
@@ -240,6 +276,8 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
     {
         return _wrapping.ProtectedReadOnly();
     }
+
+    ICSharpField ICSharpField.WithInstantiation() => _wrapping.WithInstantiation();
 
     #endregion
 }

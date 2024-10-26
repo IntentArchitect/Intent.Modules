@@ -13,4 +13,6 @@ public interface ICSharpType
     bool IsValueTask();
     ICSharpType WrapInTask(ICSharpTemplate template);
     ICSharpType WrapInValueTask(ICSharpTemplate template);
+    bool IsCollectionType();
+    ICSharpType GetCollectionImplementationType();
 }
