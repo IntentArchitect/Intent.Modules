@@ -14,7 +14,7 @@ public class MethodParametersTest
     public async Task MethodOneParameterDefault()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "Default");
+        var settings = new TestStyleSettings("same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -39,7 +39,7 @@ public class MethodParametersTest
     public async Task MethodMultiParameterShortDefault()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "Default");
+        var settings = new TestStyleSettings("same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -64,7 +64,7 @@ public class MethodParametersTest
     public async Task MethodMultiParameterLongDefault()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "Default");
+        var settings = new TestStyleSettings("same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -95,7 +95,7 @@ public class MethodParametersTest
     public async Task MethodOneParameterSameLine()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "SameLine");
+        var settings = new TestStyleSettings("same-line", "same-line");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -119,7 +119,7 @@ public class MethodParametersTest
     public async Task MethodMultiParameterShortSameLine()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "SameLine");
+        var settings = new TestStyleSettings("same-line", "same-line");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -144,7 +144,7 @@ public class MethodParametersTest
     public async Task MethodMultiParameterLongSameLine()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "SameLine");
+        var settings = new TestStyleSettings("same-line", "same-line");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -175,7 +175,7 @@ public class MethodParametersTest
     public async Task MethodOneParameterDependsOnLength()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -199,7 +199,7 @@ public class MethodParametersTest
     public async Task MethodOneLongParameterDependsOnLength()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -223,7 +223,7 @@ public class MethodParametersTest
     public async Task MethodMultiParameterShortDependsOnLength()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -248,7 +248,7 @@ public class MethodParametersTest
     public async Task MethodMultiParameterLongDependsOnLength()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -279,7 +279,7 @@ public class MethodParametersTest
     public async Task LocalMethodOneParameterDefault()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "Default");
+        var settings = new TestStyleSettings("same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -305,7 +305,7 @@ public class MethodParametersTest
     public async Task LocalMethodMultiParameterShortDefault()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "Default");
+        var settings = new TestStyleSettings("same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -332,7 +332,7 @@ public class MethodParametersTest
     public async Task LocalMethodMultiParameterLongDefault()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "Default");
+        var settings = new TestStyleSettings("same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -367,7 +367,7 @@ public class MethodParametersTest
     public async Task LocalMethodMultiParameterLongDefaultBoth()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "Default");
+        var settings = new TestStyleSettings("same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -410,7 +410,7 @@ public class MethodParametersTest
     public async Task LocalMethodOneParameterSameLine()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "SameLine");
+        var settings = new TestStyleSettings("same-line", "same-line");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -436,7 +436,7 @@ public class MethodParametersTest
     public async Task LocalMethodMultiParameterShortSameLine()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "SameLine");
+        var settings = new TestStyleSettings("same-line", "same-line");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -463,7 +463,7 @@ public class MethodParametersTest
     public async Task LocalMethodMultiParameterLongSameLine()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "SameLine");
+        var settings = new TestStyleSettings("same-line", "same-line");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -498,7 +498,7 @@ public class MethodParametersTest
     public async Task LocalMethodMultiParameterLongSameLineBoth()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "SameLine");
+        var settings = new TestStyleSettings("same-line", "same-line");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -541,7 +541,7 @@ public class MethodParametersTest
     public async Task LocalMethodOneParameterDependsOnLength()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -567,7 +567,7 @@ public class MethodParametersTest
     public async Task LocalMethodOneLongParameterDependsOnLength()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -593,7 +593,7 @@ public class MethodParametersTest
     public async Task LocalMethodMultiParameterShortDependsOnLength()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -620,7 +620,7 @@ public class MethodParametersTest
     public async Task LocalMethodMultiParameterLongDependsOnLength()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -655,7 +655,7 @@ public class MethodParametersTest
     public async Task LocalMethodMultiParameterLongDependsOnLengthBoth()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -699,7 +699,7 @@ public class MethodParametersTest
     public async Task InterfaceMethodOneParameterDefault()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "Default");
+        var settings = new TestStyleSettings("same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddInterface("ITest", c =>
@@ -719,7 +719,7 @@ public class MethodParametersTest
     public async Task InterfaceMethodMultiParameterShortDefault()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "Default");
+        var settings = new TestStyleSettings("same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
              .AddInterface("ITest", c =>
@@ -741,7 +741,7 @@ public class MethodParametersTest
     public async Task InterfaceMethodMultiParameterLongDefault()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "Default");
+        var settings = new TestStyleSettings("same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
              .AddInterface("ITest", c =>
@@ -768,7 +768,7 @@ public class MethodParametersTest
     public async Task InterfaceMethodOneParameterSameLine()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "SameLine");
+        var settings = new TestStyleSettings("same-line", "same-line");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
              .AddInterface("ITest", c =>
@@ -788,7 +788,7 @@ public class MethodParametersTest
     public async Task InterfaceMethodMultiParameterShortSameLine()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "SameLine");
+        var settings = new TestStyleSettings("same-line", "same-line");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
              .AddInterface("ITest", c =>
@@ -809,7 +809,7 @@ public class MethodParametersTest
     public async Task InterfaceMethodMultiParameterLongSameLine()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "SameLine");
+        var settings = new TestStyleSettings("same-line", "same-line");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
              .AddInterface("ITest", c =>
@@ -838,7 +838,7 @@ public class MethodParametersTest
     public async Task InterfaceMethodOneParameterDependsOnLength()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddInterface("ITest", c =>
@@ -858,7 +858,7 @@ public class MethodParametersTest
     public async Task InterfaceMethodOneLongParameterDependsOnLength()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddInterface("ITest", c =>
@@ -878,7 +878,7 @@ public class MethodParametersTest
     public async Task InterfaceMethodMultiParameterShortDependsOnLength()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddInterface("ITest", c =>
@@ -899,7 +899,7 @@ public class MethodParametersTest
     public async Task InterfaceMethodMultiParameterLongDependsOnLength()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddInterface("ITest", c =>

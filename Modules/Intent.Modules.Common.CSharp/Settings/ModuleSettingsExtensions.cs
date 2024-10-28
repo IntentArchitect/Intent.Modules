@@ -53,26 +53,26 @@ namespace Intent.Modules.Common.CSharp.Settings
             {
                 return Value switch
                 {
-                    "SameLine" => ConstructorInitializerOptionsEnum.SameLine,
-                    "NewLine" => ConstructorInitializerOptionsEnum.NewLine,
-                    "DependsOnLength" => ConstructorInitializerOptionsEnum.DependsOnLength,
+                    "same-line" => ConstructorInitializerOptionsEnum.SameLine,
+                    "new-line" => ConstructorInitializerOptionsEnum.NewLine,
+                    "depends-on-length" => ConstructorInitializerOptionsEnum.DependsOnLength,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
 
             public bool IsSameLine()
             {
-                return Value == "SameLine";
+                return Value == "same-line";
             }
 
             public bool IsNewLine()
             {
-                return Value == "NewLine";
+                return Value == "new-line";
             }
 
             public bool IsDependsOnLength()
             {
-                return Value == "DependsOnLength";
+                return Value == "depends-on-length";
             }
         }
         public enum ConstructorInitializerOptionsEnum
@@ -96,26 +96,26 @@ namespace Intent.Modules.Common.CSharp.Settings
             {
                 return Value switch
                 {
-                    "SameLine" => ParameterPlacementOptionsEnum.SameLine,
-                    "DependsOnLength" => ParameterPlacementOptionsEnum.DependsOnLength,
-                    "Default" => ParameterPlacementOptionsEnum.Default,
+                    "same-line" => ParameterPlacementOptionsEnum.SameLine,
+                    "depends-on-length" => ParameterPlacementOptionsEnum.DependsOnLength,
+                    "default" => ParameterPlacementOptionsEnum.Default,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
 
             public bool IsSameLine()
             {
-                return Value == "SameLine";
+                return Value == "same-line";
             }
 
             public bool IsDependsOnLength()
             {
-                return Value == "DependsOnLength";
+                return Value == "depends-on-length";
             }
 
             public bool IsDefault()
             {
-                return Value == "Default";
+                return Value == "default";
             }
         }
 

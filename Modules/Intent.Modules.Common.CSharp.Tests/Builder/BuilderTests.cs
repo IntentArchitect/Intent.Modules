@@ -11,7 +11,7 @@ public class BuilderTests
     [Fact]
     public async Task ClassConstructorTest()
     {
-        var settings = new TestStyleSettings("SameLine", "Default");
+        var settings = new TestStyleSettings("same-line", "default");
 
         var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation", settings)
             .AddUsing("System")
@@ -79,7 +79,7 @@ public class BuilderTests
     [Fact]
     public async Task ConcreteClassTest()
     {
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
 
         var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation", settings)
             .AddUsing("System")
