@@ -185,7 +185,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
+      <ProjectId>f9128a89-538a-481b-8d69-afcc20f88aa4</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataDesignerExtensions.cs</ApplicationRelativeFilePath>
@@ -193,7 +193,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
+      <ProjectId>f9128a89-538a-481b-8d69-afcc20f88aa4</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
@@ -201,7 +201,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
+      <ProjectId>f9128a89-538a-481b-8d69-afcc20f88aa4</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
@@ -209,7 +209,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
+      <ProjectId>f9128a89-538a-481b-8d69-afcc20f88aa4</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modelers.Services.imodspec</ApplicationRelativeFilePath>
@@ -217,8 +217,8 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
-      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#d1f174a3-f159-4dc9-83c2-d6ef92e11c70</CorrelationId>
+      <ProjectId>f9128a89-538a-481b-8d69-afcc20f88aa4</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#f9128a89-538a-481b-8d69-afcc20f88aa4</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.csproj</ProjectRelativeFilePath>

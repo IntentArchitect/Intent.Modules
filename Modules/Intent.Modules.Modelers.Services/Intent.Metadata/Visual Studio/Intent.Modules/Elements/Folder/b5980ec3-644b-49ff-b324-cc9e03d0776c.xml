@@ -3,10 +3,10 @@
   <name>Decorators</name>
   <display>Decorators</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</parentFolderId>
+  <parentFolderId>f9128a89-538a-481b-8d69-afcc20f88aa4</parentFolderId>
   <packageId>6e118a7e-7636-4d2d-8cdd-0086bd0c6af2</packageId>
   <packageName>Intent.Modules</packageName>
   <stereotypes>
