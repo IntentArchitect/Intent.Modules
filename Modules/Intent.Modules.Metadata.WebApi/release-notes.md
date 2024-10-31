@@ -1,5 +1,6 @@
 ### Version 4.6.2
 
+- Improvement: Updated `Services Designer` validation for `routes` to cater for multitenancy route parameter
 - Fixed: An incorrect route would be applied elements to when applying the `Api Version Settings` stereotype and the `Intent.AspNetCore.Controllers` module was not installed.
 
 ### Version 4.6.1

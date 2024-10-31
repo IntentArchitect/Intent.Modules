@@ -68,6 +68,25 @@ function __findMissingParameters(routeToValidate: RestRoute): string {
     return `Route mismatch: some route parameters do not match element's properties/parameters. Unmatched parameters: ${missingParameters.join(", ")}`;
 }
 
+// this method is used to define any route parameters which should be excluded from the validation checks
+function __getRouteParameterExclusions() {
+    let routeExclusions = [];
+
+    // get the multi-tenancy route parameter configured
+    let multiTenancyRouteStrategy = application.getSettings("41ae5a02-3eb2-42a6-ade2-322b3c1f1115")?.getField("e15fe0fb-be28-4cc5-8b85-37a07b7ca160")?.value;
+    let multiTenancyRoute = application.getSettings("41ae5a02-3eb2-42a6-ade2-322b3c1f1115")?.getField("c8ff4af6-68b6-4e31-a291-43ada6a0008a")?.value;
+
+    if(multiTenancyRouteStrategy && multiTenancyRouteStrategy != "" && multiTenancyRouteStrategy === "route" 
+        && multiTenancyRoute && multiTenancyRoute != "") {
+        routeExclusions.push(multiTenancyRoute);
+    }
+
+    // version is always excluded
+    routeExclusions.push("version");
+
+    return routeExclusions;
+}
+
 class RestVersionSet {
     private versionHashTable: { [key: string]: string } = {};
 
@@ -113,9 +132,10 @@ class RestRoute {
         let counter = 0;
         let localRouteParams = this.routeParams;
         let actionName = underlyingElement.getName();
+        let routeParameterExclusions = __getRouteParameterExclusions();
         this.hashedRoute = originalRoute
             .replace(/\{([^}]*)\}/g, function (match, g1) { 
-                if (g1 !== "version") {
+                if (routeParameterExclusions.indexOf(g1) < 0) {
                     localRouteParams.push(g1);
                 }
                 return (counter++).toString(); 
