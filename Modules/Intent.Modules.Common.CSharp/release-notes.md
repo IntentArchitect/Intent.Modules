@@ -6,6 +6,8 @@
 - Improvement: Certain in a C# file, with the same name (e.g. methods), will also be grouped together
 - Improvement: Added WithInstantiation method to CSharpProperty and CSharpField, with LangVersion aware collection support
 - Improvement: Ability for template extenders to unregister `using`s and NuGet package requests.
+- Fixed: Advanced Mapping not correctly resolving source properties when dealing with child collections
+ 
 
 ### Version 3.8.2
 
