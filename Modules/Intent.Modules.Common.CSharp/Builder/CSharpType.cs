@@ -31,6 +31,8 @@ public abstract class CSharpType : ICSharpType
         { "System.Collections.ArrayList", "System.Collections.ArrayList" },
         { "List", "System.Collections.Generic.List" },
         { "System.Collections.Generic.List", "System.Collections.Generic.List" },
+        { "IList", "System.Collections.Generic.List" },
+        { "System.Collections.Generic.IList", "System.Collections.Generic.List" },
         { "Queue", "System.Collections.Queue" },
         { "System.Collections.Queue", "System.Collections.Queue" },
         { "ConcurrentQueue", "System.Collections.Concurrent.ConcurrentQueue" },
