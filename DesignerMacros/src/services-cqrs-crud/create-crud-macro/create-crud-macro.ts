@@ -17,6 +17,14 @@ namespace cqrsCrud {
             return;
         }
 
+        if (privateSettersOnly && !hasConstructor(entity)) {
+            await dialogService.error(
+`Unable to create CQRS Operations.
+
+Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create CQRS Operations for that entity, either disable private setters or model a constructor element and try again.`);
+            return;
+        }
+
         const owningEntity = DomainHelper.getOwningAggregate(entity);
         const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
         const folder = element.getChildren().find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), element.id);
@@ -25,7 +33,7 @@ namespace cqrsCrud {
 
         const resultDto = createCqrsResultTypeDto(entity, folder);
 
-        if (owningEntity == null || !privateSettersOnly) {
+        if (!privateSettersOnly) {
             createCqrsCreateCommand(entity, folder, primaryKeys);
         }
 
@@ -44,9 +52,13 @@ namespace cqrsCrud {
             createCqrsCallOperationCommand(entity, operation, folder);
         }
 
-        if (hasPrimaryKey && (owningEntity == null || !privateSettersOnly)) {
+        if (hasPrimaryKey) {
             createCqrsDeleteCommand(entity, folder);
         }
+    }
+
+    function hasConstructor(entity: MacroApi.Context.IElementApi): boolean {
+        return entity.getChildren("Class Constructor").length > 0;
     }
 
     export function createCqrsCreateCommand(

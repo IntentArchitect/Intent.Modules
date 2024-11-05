@@ -15,6 +15,14 @@ namespace servicesCrud {
         });
         if (!entity) { return; }
 
+        if (privateSettersOnly && !hasConstructor(entity)) {
+            await dialogService.error(
+`Unable to create Service Operations.
+
+Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create Service Operations for that entity, either disable private setters or model a constructor element and try again.`);
+            return;
+        }
+
         const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
         const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x => x.getName() == pluralize(serviceName));
         const service = existingService || createElement("Service", serviceName, package.id);
@@ -43,9 +51,12 @@ namespace servicesCrud {
             for (const operation of operations) {
                 createCallOperationCommand(service, operation, entity, folder);
             }
-    
         }
     };
+
+    function hasConstructor(entity: MacroApi.Context.IElementApi): boolean {
+        return entity.getChildren("Class Constructor").length > 0;
+    }
 
     export function createMappedResultDto(entity: IElementApi, folder: IElementApi): MacroApi.Context.IElementApi {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
