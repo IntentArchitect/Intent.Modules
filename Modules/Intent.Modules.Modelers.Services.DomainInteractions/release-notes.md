@@ -2,7 +2,7 @@
 
 - Improvement: Changed `Default Mapping Mode` to be `Advanced` by default.
 - Improvement: Added setting `Default Query Implementation`, allowing for configuration of how `Query Entity Actions` are implemented.
-- Improvement: Create CRUD Scripts will inform the user when the Create operation couldn't be created due to `Ensure Private Property Setters` being enabled and no Constructor being present on the Entity.
+- Improvement: Create CRUD Scripts will inform the user when it is hindered by the Private Setters setting and the absence of Entity constructors to produce all the needed service operations.
 - Fixed: Create CRUD Scripts were breaking on `Ensure Private Property Setters`.
 
 ### Version 2.0.1

@@ -16,11 +16,11 @@ namespace servicesCrud {
         if (!entity) { return; }
 
         if (privateSettersOnly && !hasConstructor(entity)) {
-            await dialogService.error(
-`Unable to create Service Operations.
+            await dialogService.warn(
+`Partial Service Operation Creation.
+Some service operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create Service Operations for that entity, either disable private setters or model a constructor element and try again.`);
-            return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
         }
 
         const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
@@ -33,7 +33,10 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
 
         const resultDto = createMappedResultDto(entity, folder);
-        createStandardCreateOperation(service, entity, folder);
+
+        if (!privateSettersOnly || hasConstructor(entity)) {
+            createStandardCreateOperation(service, entity, folder);
+        }
 
         if (primaryKeys.length > 0) {
             createStandardFindByIdOperation(service, entity, resultDto);

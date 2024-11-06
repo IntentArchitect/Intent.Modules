@@ -949,10 +949,10 @@ var servicesCrud;
             return;
         }
         if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
-            await dialogService.error(`Unable to create Service Operations.
+            await dialogService.warn(`Partial Service Operation Creation.
+Some service operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create Service Operations for that entity, either disable private setters or model a constructor element and try again.`);
-            return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
         }
         const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
         const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x =&gt; x.getName() == pluralize(serviceName));
@@ -962,7 +962,9 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
         const folder = existingFolder || createElement("Folder", pluralize(folderName), package.id);
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
         const resultDto = createMappedResultDto(entity, folder);
-        createStandardCreateOperation(service, entity, folder);
+        if (!privateSettersOnly || hasConstructor(entity)) {
+            createStandardCreateOperation(service, entity, folder);
+        }
         if (primaryKeys.length &gt; 0) {
             createStandardFindByIdOperation(service, entity, resultDto);
         }
@@ -2402,10 +2404,10 @@ var servicesCrud;
             return;
         }
         if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
-            await dialogService.error(`Unable to create Service Operations.
+            await dialogService.warn(`Partial Service Operation Creation.
+Some service operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create Service Operations for that entity, either disable private setters or model a constructor element and try again.`);
-            return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
         }
         const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
         const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x =&gt; x.getName() == pluralize(serviceName));
@@ -2415,7 +2417,9 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
         const folder = existingFolder || createElement("Folder", pluralize(folderName), package.id);
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
         const resultDto = createMappedResultDto(entity, folder);
-        createStandardCreateOperation(service, entity, folder);
+        if (!privateSettersOnly || hasConstructor(entity)) {
+            createStandardCreateOperation(service, entity, folder);
+        }
         if (primaryKeys.length &gt; 0) {
             createStandardFindByIdOperation(service, entity, resultDto);
         }
@@ -2780,10 +2784,10 @@ async function execute(element) {
         return;
     }
     if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
-        await dialogService.error(`Unable to create Service Operations.
+        await dialogService.warn(`Partial Service Operation Creation.
+Some service operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create Service Operations for that entity, either disable private setters or model a constructor element and try again.`);
-        return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
     }
     const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
     const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x =&gt; x.getName() == pluralize(serviceName));
@@ -2793,7 +2797,9 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
     const folder = existingFolder !== null &amp;&amp; existingFolder !== void 0 ? existingFolder : createElement("Folder", pluralize(folderName), package.id);
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
     const resultDto = servicesCrud.createMappedResultDto(entity, folder);
-    servicesCrud.createStandardCreateOperation(service, entity, folder);
+    if (!privateSettersOnly || hasConstructor(entity)) {
+        servicesCrud.createStandardCreateOperation(service, entity, folder);
+    }
     if (primaryKeys.length &gt; 0) {
         servicesCrud.createStandardFindByIdOperation(service, entity, resultDto);
     }
@@ -4028,10 +4034,10 @@ var cqrsCrud;
             return;
         }
         if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
-            await dialogService.error(`Unable to create CQRS Operations.
+            await dialogService.warn(`Partial CQRS Operation Creation.
+Some CQRS operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create CQRS Operations for that entity, either disable private setters or model a constructor element and try again.`);
-            return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
         }
         const owningEntity = DomainHelper.getOwningAggregate(entity);
         const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
@@ -4039,7 +4045,7 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
         const hasPrimaryKey = primaryKeys.length &gt; 0;
         const resultDto = createCqrsResultTypeDto(entity, folder);
-        if (!privateSettersOnly) {
+        if (!privateSettersOnly || hasConstructor(entity)) {
             createCqrsCreateCommand(entity, folder, primaryKeys);
         }
         if (hasPrimaryKey) {
@@ -5533,10 +5539,10 @@ var cqrsCrud;
             return;
         }
         if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
-            await dialogService.error(`Unable to create CQRS Operations.
+            await dialogService.error(`Partial CQRS Operation Creation.
+Some CQRS operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create CQRS Operations for that entity, either disable private setters or model a constructor element and try again.`);
-            return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
         }
         const owningEntity = DomainHelper.getOwningAggregate(entity);
         const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
@@ -5544,7 +5550,7 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
         const hasPrimaryKey = primaryKeys.length &gt; 0;
         const resultDto = createCqrsResultTypeDto(entity, folder);
-        if (!privateSettersOnly) {
+        if (!privateSettersOnly || hasConstructor(entity)) {
             createCqrsCreateCommand(entity, folder, primaryKeys);
         }
         if (hasPrimaryKey) {
@@ -5975,10 +5981,10 @@ async function execute(element, domainClass) {
         return;
     }
     if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
-        await dialogService.error(`Unable to create CQRS Operations.
+        await dialogService.warn(`Partial CQRS Operation Creation.
+Some CQRS operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create CQRS Operations for that entity, either disable private setters or model a constructor element and try again.`);
-        return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
     }
     const owningEntity = DomainHelper.getOwningAggregate(entity);
     const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
@@ -5986,7 +5992,9 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
     const hasPrimaryKey = primaryKeys.length &gt; 0;
     const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, folder);
-    convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, folder, primaryKeys));
+    if (!privateSettersOnly || hasConstructor(entity)) {
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, folder, primaryKeys));
+    }
     if (hasPrimaryKey) {
         convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, folder, resultDto));
     }
@@ -7742,10 +7750,10 @@ var servicesCrud;
             return;
         }
         if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
-            await dialogService.error(`Unable to create Service Operations.
+            await dialogService.warn(`Partial Service Operation Creation.
+Some service operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create Service Operations for that entity, either disable private setters or model a constructor element and try again.`);
-            return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
         }
         const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
         const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x =&gt; x.getName() == pluralize(serviceName));
@@ -7755,7 +7763,9 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
         const folder = existingFolder || createElement("Folder", pluralize(folderName), package.id);
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
         const resultDto = createMappedResultDto(entity, folder);
-        createStandardCreateOperation(service, entity, folder);
+        if (!privateSettersOnly || hasConstructor(entity)) {
+            createStandardCreateOperation(service, entity, folder);
+        }
         if (primaryKeys.length &gt; 0) {
             createStandardFindByIdOperation(service, entity, resultDto);
         }
@@ -9195,10 +9205,10 @@ var servicesCrud;
             return;
         }
         if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
-            await dialogService.error(`Unable to create Service Operations.
+            await dialogService.warn(`Partial Service Operation Creation.
+Some service operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create Service Operations for that entity, either disable private setters or model a constructor element and try again.`);
-            return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
         }
         const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
         const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x =&gt; x.getName() == pluralize(serviceName));
@@ -9208,7 +9218,9 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
         const folder = existingFolder || createElement("Folder", pluralize(folderName), package.id);
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
         const resultDto = createMappedResultDto(entity, folder);
-        createStandardCreateOperation(service, entity, folder);
+        if (!privateSettersOnly || hasConstructor(entity)) {
+            createStandardCreateOperation(service, entity, folder);
+        }
         if (primaryKeys.length &gt; 0) {
             createStandardFindByIdOperation(service, entity, resultDto);
         }
@@ -9573,10 +9585,10 @@ async function execute(element) {
         return;
     }
     if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
-        await dialogService.error(`Unable to create Service Operations.
+        await dialogService.warn(`Partial Service Operation Creation.
+Some service operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create Service Operations for that entity, either disable private setters or model a constructor element and try again.`);
-        return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
     }
     const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
     const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x =&gt; x.getName() == pluralize(serviceName));
@@ -9586,7 +9598,9 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
     const folder = existingFolder !== null &amp;&amp; existingFolder !== void 0 ? existingFolder : createElement("Folder", pluralize(folderName), package.id);
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
     const resultDto = servicesCrud.createMappedResultDto(entity, folder);
-    servicesCrud.createStandardCreateOperation(service, entity, folder);
+    if (!privateSettersOnly || hasConstructor(entity)) {
+        servicesCrud.createStandardCreateOperation(service, entity, folder);
+    }
     if (primaryKeys.length &gt; 0) {
         servicesCrud.createStandardFindByIdOperation(service, entity, resultDto);
     }
@@ -10821,10 +10835,10 @@ var cqrsCrud;
             return;
         }
         if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
-            await dialogService.error(`Unable to create CQRS Operations.
+            await dialogService.warn(`Partial CQRS Operation Creation.
+Some CQRS operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create CQRS Operations for that entity, either disable private setters or model a constructor element and try again.`);
-            return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
         }
         const owningEntity = DomainHelper.getOwningAggregate(entity);
         const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
@@ -10832,7 +10846,7 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
         const hasPrimaryKey = primaryKeys.length &gt; 0;
         const resultDto = createCqrsResultTypeDto(entity, folder);
-        if (!privateSettersOnly) {
+        if (!privateSettersOnly || hasConstructor(entity)) {
             createCqrsCreateCommand(entity, folder, primaryKeys);
         }
         if (hasPrimaryKey) {
@@ -12326,10 +12340,10 @@ var cqrsCrud;
             return;
         }
         if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
-            await dialogService.error(`Unable to create CQRS Operations.
+            await dialogService.error(`Partial CQRS Operation Creation.
+Some CQRS operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create CQRS Operations for that entity, either disable private setters or model a constructor element and try again.`);
-            return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
         }
         const owningEntity = DomainHelper.getOwningAggregate(entity);
         const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
@@ -12337,7 +12351,7 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
         const hasPrimaryKey = primaryKeys.length &gt; 0;
         const resultDto = createCqrsResultTypeDto(entity, folder);
-        if (!privateSettersOnly) {
+        if (!privateSettersOnly || hasConstructor(entity)) {
             createCqrsCreateCommand(entity, folder, primaryKeys);
         }
         if (hasPrimaryKey) {
@@ -12768,10 +12782,10 @@ async function execute(element, domainClass) {
         return;
     }
     if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
-        await dialogService.error(`Unable to create CQRS Operations.
+        await dialogService.warn(`Partial CQRS Operation Creation.
+Some CQRS operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create CQRS Operations for that entity, either disable private setters or model a constructor element and try again.`);
-        return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
     }
     const owningEntity = DomainHelper.getOwningAggregate(entity);
     const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
@@ -12779,7 +12793,9 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
     const hasPrimaryKey = primaryKeys.length &gt; 0;
     const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, folder);
-    convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, folder, primaryKeys));
+    if (!privateSettersOnly || hasConstructor(entity)) {
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, folder, primaryKeys));
+    }
     if (hasPrimaryKey) {
         convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, folder, resultDto));
     }

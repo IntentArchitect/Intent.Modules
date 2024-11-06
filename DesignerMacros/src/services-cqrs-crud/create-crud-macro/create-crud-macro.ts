@@ -18,11 +18,11 @@ namespace cqrsCrud {
         }
 
         if (privateSettersOnly && !hasConstructor(entity)) {
-            await dialogService.error(
-`Unable to create CQRS Operations.
+            await dialogService.warn(
+`Partial CQRS Operation Creation.
+Some CQRS operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
-Private Setters are enabled with no constructor present on entity '${entity.getName()}'. In order to create CQRS Operations for that entity, either disable private setters or model a constructor element and try again.`);
-            return;
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
         }
 
         const owningEntity = DomainHelper.getOwningAggregate(entity);
@@ -33,7 +33,7 @@ Private Setters are enabled with no constructor present on entity '${entity.getN
 
         const resultDto = createCqrsResultTypeDto(entity, folder);
 
-        if (!privateSettersOnly) {
+        if (!privateSettersOnly || hasConstructor(entity)) {
             createCqrsCreateCommand(entity, folder, primaryKeys);
         }
 
