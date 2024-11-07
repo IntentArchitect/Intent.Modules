@@ -15,14 +15,14 @@ namespace Intent.Metadata.DocumentDB.Api
     {
         public static ForeignKey GetForeignKey(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype("ced3e970-e900-4f99-bd04-b993228fe17d");
+            var stereotype = model.GetStereotype(ForeignKey.DefinitionId);
             return stereotype != null ? new ForeignKey(stereotype) : null;
         }
 
 
         public static bool HasForeignKey(this AttributeModel model)
         {
-            return model.HasStereotype("ced3e970-e900-4f99-bd04-b993228fe17d");
+            return model.HasStereotype(ForeignKey.DefinitionId);
         }
 
         public static bool TryGetForeignKey(this AttributeModel model, out ForeignKey stereotype)
@@ -33,20 +33,20 @@ namespace Intent.Metadata.DocumentDB.Api
                 return false;
             }
 
-            stereotype = new ForeignKey(model.GetStereotype("ced3e970-e900-4f99-bd04-b993228fe17d"));
+            stereotype = new ForeignKey(model.GetStereotype(ForeignKey.DefinitionId));
             return true;
         }
 
         public static PrimaryKey GetPrimaryKey(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype("64f6a994-4909-4a9d-a0a9-afc5adf2ef74");
+            var stereotype = model.GetStereotype(PrimaryKey.DefinitionId);
             return stereotype != null ? new PrimaryKey(stereotype) : null;
         }
 
 
         public static bool HasPrimaryKey(this AttributeModel model)
         {
-            return model.HasStereotype("64f6a994-4909-4a9d-a0a9-afc5adf2ef74");
+            return model.HasStereotype(PrimaryKey.DefinitionId);
         }
 
         public static bool TryGetPrimaryKey(this AttributeModel model, out PrimaryKey stereotype)
@@ -57,13 +57,14 @@ namespace Intent.Metadata.DocumentDB.Api
                 return false;
             }
 
-            stereotype = new PrimaryKey(model.GetStereotype("64f6a994-4909-4a9d-a0a9-afc5adf2ef74"));
+            stereotype = new PrimaryKey(model.GetStereotype(PrimaryKey.DefinitionId));
             return true;
         }
 
         public class ForeignKey
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "ced3e970-e900-4f99-bd04-b993228fe17d";
 
             public ForeignKey(IStereotype stereotype)
             {
@@ -82,6 +83,7 @@ namespace Intent.Metadata.DocumentDB.Api
         public class PrimaryKey
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
 
             public PrimaryKey(IStereotype stereotype)
             {

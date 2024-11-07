@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.DocumentDB</id>
-  <version>1.2.0</version>
+  <version>1.2.1-pre.0</version>
   <supportedClientVersions>[4.1.0, 5.0.0-a)</supportedClientVersions>
   <summary>Support for describing Entities in Document DB terms.</summary>
   <description>Support for describing Entities in Document DB terms.</description>
@@ -24,7 +24,6 @@
     <group id="d5581fe8-7385-4bb6-88dc-8940e20ec1d4" title="Document Database" externalReference="d5581fe8-7385-4bb6-88dc-8940e20ec1d4">
       <settings>
         <setting id="8bcf2b5c-cd35-47d6-8705-7e8e83494083" title="Id Type" type="select">
-          <isRequired>true</isRequired>
           <hint>The default ID type to apply to newly created classes.</hint>
           <defaultValue>object-id</defaultValue>
           <options>
@@ -33,7 +32,6 @@
           </options>
         </setting>
         <setting id="fbc6e85f-f59f-4968-85e6-ef71f88ab05b" title="Key Creation Mode" type="select">
-          <isRequired>false</isRequired>
           <hint>Configure how the designer manages keys.</hint>
           <defaultValue>all</defaultValue>
           <options>

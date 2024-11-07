@@ -641,7 +641,6 @@ execute();
   <elementSettings />
   <elementExtensions>
     <elementExtension type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
-      <implements />
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
@@ -788,6 +787,10 @@ function isAggregateRelationship(associationEnd) {
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../common/isAggregateRelationship.ts" /&gt;
 function requiresForeignKey(associationEnd) {
+    // Check if the association is a self-reference
+    if (associationEnd.typeReference.typeId === associationEnd.getOtherEnd().typeReference.typeId) {
+        return true;
+    }
     return associationEnd.typeReference.isNavigable &amp;&amp;
         isAggregateRelationship(associationEnd);
 }
@@ -1375,7 +1378,6 @@ execute();
       </macros>
     </elementExtension>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-      <implements />
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
@@ -1711,6 +1713,10 @@ function isAggregateRelationship(associationEnd) {
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../common/isAggregateRelationship.ts" /&gt;
 function requiresForeignKey(associationEnd) {
+    // Check if the association is a self-reference
+    if (associationEnd.typeReference.typeId === associationEnd.getOtherEnd().typeReference.typeId) {
+        return true;
+    }
     return associationEnd.typeReference.isNavigable &amp;&amp;
         isAggregateRelationship(associationEnd);
 }
@@ -1852,13 +1858,13 @@ function updateForeignKeysForAssociation(associationEnd) {
 /// &lt;reference path="../common/updatePrimaryKey.ts" /&gt;
 /// &lt;reference path="../common/updateForeignKeysForAssociation.ts" /&gt;
 function execute() {
-    //This happens while linking the association i.e. only 1 end attached.
+    // The user is busy connecting the association and hasn't attached it to an element yet.
     if (association.typeReference.getType() == null) {
         return;
     }
-    let sourceTarget = association.getOtherEnd().typeReference.getType();
+    let associationEnd = association.getOtherEnd().typeReference.getType();
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
-    if (!sourceTarget.getPackage().hasStereotype(documentStoreId)) {
+    if (!associationEnd.getPackage().hasStereotype(documentStoreId)) {
         return;
     }
     updatePrimaryKey(association.typeReference.getType());

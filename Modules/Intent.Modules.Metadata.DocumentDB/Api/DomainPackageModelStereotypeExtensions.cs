@@ -15,14 +15,14 @@ namespace Intent.Metadata.DocumentDB.Api
     {
         public static DocumentDatabase GetDocumentDatabase(this DomainPackageModel model)
         {
-            var stereotype = model.GetStereotype("8b68020c-6652-484b-85e8-6c33e1d8031f");
+            var stereotype = model.GetStereotype(DocumentDatabase.DefinitionId);
             return stereotype != null ? new DocumentDatabase(stereotype) : null;
         }
 
 
         public static bool HasDocumentDatabase(this DomainPackageModel model)
         {
-            return model.HasStereotype("8b68020c-6652-484b-85e8-6c33e1d8031f");
+            return model.HasStereotype(DocumentDatabase.DefinitionId);
         }
 
         public static bool TryGetDocumentDatabase(this DomainPackageModel model, out DocumentDatabase stereotype)
@@ -33,13 +33,14 @@ namespace Intent.Metadata.DocumentDB.Api
                 return false;
             }
 
-            stereotype = new DocumentDatabase(model.GetStereotype("8b68020c-6652-484b-85e8-6c33e1d8031f"));
+            stereotype = new DocumentDatabase(model.GetStereotype(DocumentDatabase.DefinitionId));
             return true;
         }
 
         public class DocumentDatabase
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
 
             public DocumentDatabase(IStereotype stereotype)
             {
