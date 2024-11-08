@@ -1214,6 +1214,7 @@ mapping.addMappedEnd(invocationMappingTYpeId, association.getMappingPath(), elem
               <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
+              <useChildSettingsFrom>4a7f0013-96c4-4384-8dbd-7d1327c38d8b</useChildSettingsFrom>
               <represents>data</represents>
               <staticMappableSettings>
                 <staticMappableSetting id="a4073b81-6ddd-44cb-909f-f2c97d965112" name="Link To" type="Link To" typeId="a4073b81-6ddd-44cb-909f-f2c97d965112" version="2.0.0">
