@@ -5,6 +5,19 @@ param(
     [string]$testsIntentSolutionRelativePath
 )
 
+$repoConfigContent = 
+"<?xml version=""1.0"" encoding=""utf-8""?>
+<assetRepositories>
+  <entries>
+    <entry>
+      <name>Pipeline build artifact staging directory</name>
+      <address>$buildArtifactStagingDirectory</address>
+      <isBuiltIn>false</isBuiltIn>
+      <order>3</order>
+    </entry>
+  </entries>
+</assetRepositories>"
+
 $moduleLookup = @{}
 $moduleFileNames = Get-ChildItem "$buildArtifactStagingDirectory/*.imod" | % {
     $file = [System.IO.Path]::GetFileNameWithoutExtension($_.Name)
@@ -41,6 +54,10 @@ Write-Host "`$curLocation = $curLocation"
 $testSln = [xml] (Get-Content "./$testsIntentSolutionRelativePath" -Encoding UTF8)
 $testSlnDir = [System.IO.Path]::GetDirectoryName($testsIntentSolutionRelativePath)
 Write-Host "`$testSlnDir = $testSlnDir"
+
+$repoPath = [System.IO.Path]::Combine($curLocation, $testSlnDir, "intent.repositories.config")
+Write-Host "`$repoPath = $repoPath"
+$repoConfigContent | Set-Content $repoPath -Encoding UTF8
 
 $discrepanciesFound = $false
 
