@@ -13,8 +13,8 @@
   <metadata />
   <childElements>
     <childElement id="f0a5b97b-e42d-4600-bc88-4fcb7be31056" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
-      <name>Create handler for this Domain Event</name>
-      <display>Create handler for this Domain Event: Domain Event</display>
+      <name>Create Domain Event Handler</name>
+      <display>Create Domain Event Handler: Domain Event</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="7893d3ba-2d2a-401d-8631-97aa63e09119">
@@ -39,9 +39,9 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
-            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return lookupTypesOf(&quot;Domain Event Handler Association Target End&quot;).every(x =&gt; x.typeReference.getTypeId() != element.id)" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const domainEventHandlerAssociationTargetTypeId = &quot;f45dfee9-f62b-45ac-bfce-a3878e04b73f&quot;;&#xD;&#xA;return lookupTypesOf(domainEventHandlerAssociationTargetTypeId).every(x =&gt; x.typeReference.getTypeId() != element.id)" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
-            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const handler = createElement(&quot;Domain Event Handler&quot;, toPascalCase(element.getName()) + &quot;Handler&quot;, getPackages()[0].id);&#xD;&#xA;const association = createAssociation(&quot;Domain Event Handler Association&quot;, handler.id, element.id)&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getCenterRight();&#xD;&#xA;if (position) {&#xD;&#xA;    getCurrentDiagram().layoutVisuals([handler.id], { x: position.x + 200, y: position.y }, true)&#xD;&#xA;}" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const domainEventHandlerId = &quot;d80e61c5-7e4c-4175-9df1-0413f664824c&quot;;&#xD;&#xA;const domainEventHandlerAssociationTargetTypeId = &quot;f45dfee9-f62b-45ac-bfce-a3878e04b73f&quot;;&#xD;&#xA;&#xD;&#xA;const handler = createElement(domainEventHandlerId, toPascalCase(element.getName()) + &quot;Handler&quot;, getPackages()[0].id);&#xD;&#xA;const association = createAssociation(domainEventHandlerAssociationTargetTypeId, handler.id, element.id)&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getCenterRight();&#xD;&#xA;if (position) {&#xD;&#xA;    getCurrentDiagram().layoutVisuals([handler.id], { x: position.x + 200, y: position.y }, true)&#xD;&#xA;}" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" isActive="true" />
           </properties>
         </stereotype>

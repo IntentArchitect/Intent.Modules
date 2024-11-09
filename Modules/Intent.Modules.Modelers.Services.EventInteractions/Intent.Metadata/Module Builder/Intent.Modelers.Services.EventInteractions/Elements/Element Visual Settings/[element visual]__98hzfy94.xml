@@ -3,7 +3,7 @@
   <name>[element visual]</name>
   <display>[visual]: Message</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <genericTypes />
   <typeReference id="688ce3f8-59ed-4ee2-8efa-6bd9e1d3d48c">
     <typeId>cbe970af-5bad-4d92-a3ed-a24b9fdaa23e</typeId>

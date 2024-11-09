@@ -4,6 +4,7 @@
   <display>Class Constructor Extension: Class Constructor</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
+  <order>1</order>
   <genericTypes />
   <typeReference id="d464ada8-dc38-4c73-8213-564209934550">
     <typeId>dec2bd12-4699-4f45-8ec9-3b62dc692d2b</typeId>
@@ -17,7 +18,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>79480502-761f-4883-a4f3-3b03654db367</parentFolderId>
+  <parentFolderId>19b0aa22-a459-421d-a74d-80be12efacce</parentFolderId>
   <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
   <packageName>Intent.Modelers.Domain.Events</packageName>
   <stereotypes>
@@ -29,8 +30,8 @@
         <property name="35226a83-3965-4224-8aef-20c68a0c5180" display="Mode" value="Inherit" isActive="true" />
         <property name="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0" display="Display Name" isActive="false" />
         <property name="17223dbd-8df0-4700-8b81-02274ca3ed7f" display="Hint" isActive="false" />
-        <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" isActive="false" />
-        <property name="08ec0581-c90a-489b-858f-ee265327c948" display="Target Traits" isActive="true" />
+        <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" value="null" isActive="false" />
+        <property name="08ec0581-c90a-489b-858f-ee265327c948" display="Target Traits" value="[]" isActive="true" />
         <property name="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e" display="Default Type Id" isActive="false" />
         <property name="7a0c4185-1c08-4d3e-9185-14683d7a3bd0" display="Allow Collection" value="Inherit" isActive="false" />
         <property name="e3dc90ec-4f5f-4f20-b271-e28a5094dc91" display="Allow Nullable" value="Inherit" isActive="false" />

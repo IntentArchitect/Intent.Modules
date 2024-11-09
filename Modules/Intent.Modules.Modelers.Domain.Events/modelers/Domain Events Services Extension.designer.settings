@@ -283,11 +283,15 @@ if ((!handler.getName() || handler.getName() == "NewDomainEventHandler") &amp;&a
   </mappableElementPackageExtensions>
   <suggestionSettings>
     <suggestionSetting type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a" locations="diagram, model">
-      <name>Create handler for this Domain Event</name>
-      <filterFunction>return lookupTypesOf("Domain Event Handler Association Target End").every(x =&gt; x.typeReference.getTypeId() != element.id)</filterFunction>
+      <name>Create Domain Event Handler</name>
+      <filterFunction>const domainEventHandlerAssociationTargetTypeId = "f45dfee9-f62b-45ac-bfce-a3878e04b73f";
+return lookupTypesOf(domainEventHandlerAssociationTargetTypeId).every(x =&gt; x.typeReference.getTypeId() != element.id)</filterFunction>
       <dependencies />
-      <script>const handler = createElement("Domain Event Handler", toPascalCase(element.getName()) + "Handler", getPackages()[0].id);
-const association = createAssociation("Domain Event Handler Association", handler.id, element.id)
+      <script>const domainEventHandlerId = "d80e61c5-7e4c-4175-9df1-0413f664824c";
+const domainEventHandlerAssociationTargetTypeId = "f45dfee9-f62b-45ac-bfce-a3878e04b73f";
+
+const handler = createElement(domainEventHandlerId, toPascalCase(element.getName()) + "Handler", getPackages()[0].id);
+const association = createAssociation(domainEventHandlerAssociationTargetTypeId, handler.id, element.id)
 const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getCenterRight();
 if (position) {
     getCurrentDiagram().layoutVisuals([handler.id], { x: position.x + 200, y: position.y }, true)

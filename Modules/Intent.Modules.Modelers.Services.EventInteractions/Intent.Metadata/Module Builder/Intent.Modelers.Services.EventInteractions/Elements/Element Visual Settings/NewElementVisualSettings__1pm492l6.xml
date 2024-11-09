@@ -3,7 +3,7 @@
   <name>NewElementVisualSettings</name>
   <display>[visual]: Subscribe Integration Event Target End</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <order>2</order>
   <genericTypes />
   <typeReference id="86ca27f6-ce89-4916-9971-b7a49b97f15e">

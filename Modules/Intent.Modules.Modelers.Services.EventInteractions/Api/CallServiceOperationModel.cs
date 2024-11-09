@@ -36,9 +36,9 @@ namespace Intent.Modelers.Services.EventInteractions
 
         public string Id => _association.Id;
 
-        public CallServiceOperationSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new CallServiceOperationSourceEndModel(_association.SourceEnd, this));
+        public CallServiceOperationSourceEndModel SourceEnd => _sourceEnd ??= new CallServiceOperationSourceEndModel(_association.SourceEnd, this);
 
-        public CallServiceOperationTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new CallServiceOperationTargetEndModel(_association.TargetEnd, this));
+        public CallServiceOperationTargetEndModel TargetEnd => _targetEnd ??= new CallServiceOperationTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 

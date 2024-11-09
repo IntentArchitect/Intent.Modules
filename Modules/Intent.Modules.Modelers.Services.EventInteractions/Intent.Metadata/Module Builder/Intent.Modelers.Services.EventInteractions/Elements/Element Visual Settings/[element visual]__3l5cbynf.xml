@@ -3,7 +3,7 @@
   <name>[element visual]</name>
   <display>[visual]: Integration Event Handler</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
+  <sort-children>manually</sort-children>
   <genericTypes />
   <typeReference id="48460f47-4483-4d66-a8c6-ccceef8b6268">
     <typeId>c0582230-22f5-4f74-8eb0-ec6fc9364900</typeId>

@@ -2497,7 +2497,7 @@ return result;</displayFunction>
           <icon type="FontAwesome" source="lightbulb|yellow" />
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
-          <nameMustBeUnique>true</nameMustBeUnique>
+          <nameMustBeUnique>false</nameMustBeUnique>
           <allowAbstract>false</allowAbstract>
           <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
