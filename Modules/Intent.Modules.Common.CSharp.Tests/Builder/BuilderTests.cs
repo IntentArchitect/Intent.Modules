@@ -2,6 +2,7 @@
 using Intent.Modules.Common.CSharp.Builder;
 using Xunit;
 using VerifyXunit;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Tests.Builder;
 
@@ -10,7 +11,9 @@ public class BuilderTests
     [Fact]
     public async Task ClassConstructorTest()
     {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+        var settings = new TestStyleSettings("same-line", "default");
+
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation", settings)
             .AddUsing("System")
             .AddClass("TestClass", @class =>
             {
@@ -35,6 +38,8 @@ public class BuilderTests
     [Fact]
     public async Task ConstructorCalls()
     {
+        //_ = new CSharpStyleSettings(new TestStyleSettings("SameLine", "SameLine"));
+
         var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
             .AddUsing("System")
             .AddClass("ConcreteClass", @class =>
@@ -74,7 +79,9 @@ public class BuilderTests
     [Fact]
     public async Task ConcreteClassTest()
     {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+        var settings = new TestStyleSettings("same-line", "depends-on-length");
+
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation", settings)
             .AddUsing("System")
             .AddClass("ConcreteClass", @class =>
             {
@@ -185,7 +192,9 @@ public class BuilderTests
     [Fact]
     public async Task EnumTest()
     {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation", settings)
             .AddUsing("System")
             .AddEnum("PrivateEnum", e =>
             {

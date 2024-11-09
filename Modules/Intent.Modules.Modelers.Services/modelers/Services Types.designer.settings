@@ -468,6 +468,16 @@ return result;
                   <behaviour autoSelectChildren="false" />
                   <childMappings />
                 </mapping>
+                <mapping id="da77b50f-e572-4451-81c9-369d84b2b58b">
+                  <criteria specializationType="Data Contract Generalization Target End" specializationTypeId="4ea029c6-e963-46c7-8d2f-e4ea73e05a07">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>false</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo childMappingMode="traverse" useMappingSettings="09e5c0b2-d4db-4eff-86b0-496d0ef90ec0" />
+                  <behaviour autoSelectChildren="true" />
+                  <childMappings />
+                </mapping>
               </childMappings>
             </mapping>
           </mappings>

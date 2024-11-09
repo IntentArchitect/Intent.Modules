@@ -26,7 +26,6 @@ function ensureHasField(options: {
         field.setOrder(order);
     }
 
-    console.warn(field.getName());
     if (mappingSettingsId != null) {
         field.setMapping(fieldDetail.mappingPath, mappingSettingsId);
         console.warn("mapping:" + fieldDetail.mappingPath);

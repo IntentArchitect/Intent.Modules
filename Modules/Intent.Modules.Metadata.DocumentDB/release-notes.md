@@ -1,3 +1,7 @@
+### Version 1.2.1
+
+- Fixed: Resolved an issue with self-reference associations in DocumentDB, ensuring proper foreign key creation.
+
 ### Version 1.2.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
@@ -33,6 +34,8 @@ namespace Intent.Modules.Common.CSharp.Mapping
             var variableName = GetVariableNameForSelect();
 
             var itemMapping = _mappingModel.GetCollectionItemMapping();
+            itemMapping.Parent = Parent;
+
             itemMapping.SetSourceReplacement(GetSourcePath().Last().Element, variableName);
             itemMapping.SetTargetReplacement(GetTargetPath().Last().Element, null);
             select.AddArgument(new CSharpLambdaBlock(variableName).WithExpressionBody(itemMapping.GetSourceStatement()));
@@ -52,7 +55,6 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
             return variableName;
         }
-
 
         public override CSharpStatement GetTargetStatement()
         {

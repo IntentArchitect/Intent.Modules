@@ -6,6 +6,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
+using static Intent.Modules.Common.CSharp.Settings.CSharpStyleConfiguration;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -350,7 +351,12 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
             ? $"static {(IsAbstract ? "abstract " : string.Empty)}"
             : string.Empty;
 
-        var declaration = $"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{@static}{ReturnTypeInfo} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetGenericTypeConstraints(indentation)}";
+        var initDeclaration = $"{indentation}{@static}{ReturnTypeInfo} {Name}{GetGenericParameters()}(";
+        var estimatedLenth = initDeclaration.Length + Parameters.Sum(x => x.ToString().Length);
+
+        var paramDeclaration = GetParameters(File.StyleSettings?.ParameterPlacement.AsEnum() ?? ParameterPlacementOptionsEnum.Default, estimatedLenth, 120, indentation);
+
+        var declaration = $"{GetComments(indentation)}{GetAttributes(indentation)}{initDeclaration}{paramDeclaration}){GetGenericTypeConstraints(indentation)}";
         if (IsAbstract && Statements.Count == 0)
         {
             return $@"{declaration};";
@@ -383,6 +389,15 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
 {indentation}    ";
         return newLine + string.Join(newLine, GenericTypeConstraints);
     }
+
+    private string GetParameters(ParameterPlacementOptionsEnum option, int estimatedLength, int maxLineLength, string indentation) =>
+        (option, estimatedLength > maxLineLength, Parameters.Count > 1) switch
+        {
+            (ParameterPlacementOptionsEnum.DependsOnLength, true, true) => $@"
+{indentation}    {string.Join($@",
+{indentation}    ", Parameters.Select(x => x.ToString()))}",
+            (_, _, _) => string.Join(", ", Parameters.Select(x => x.ToString()))
+        };
 
     private string GetGenericParameters()
     {

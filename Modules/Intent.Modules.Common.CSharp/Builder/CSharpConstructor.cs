@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
+using static Intent.Modules.Common.CSharp.Settings.CSharpStyleConfiguration;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -12,7 +13,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
     private readonly ICSharpConstructor _wrapper;
     // This class will be used for "static", "instance" and "primary" constructors.
     //https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/instance-constructors
-    
+
     public CSharpClass Class { get; }
     public string AccessModifier { get; private set; } = "public ";
     public CSharpConstructorCall ConstructorCall { get; private set; }
@@ -146,7 +147,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
         AccessModifier = "protected ";
         return this;
     }
-    
+
     public CSharpConstructor Private()
     {
         AccessModifier = "private ";
@@ -176,7 +177,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
         configure?.Invoke(ConstructorCall);
         return this;
     }
-    
+
     public override string GetText(string indentation)
     {
         if (IsPrimaryConstructor)
@@ -184,22 +185,22 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
             return Parameters.Count == 0 ? string.Empty : $"({ToStringParameters(indentation)})";
         }
 
-        var baseConstructor = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{Class.Name}({ToStringParameters(indentation)})";
-        var constructorCall = ConstructorCall?.ToString() ?? string.Empty;
+        var constructor = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{Class.Name}({ToStringParameters(indentation)})";
+        var baseConstructorCall = ConstructorCall?.ToString() ?? string.Empty;
 
-        return $@"{baseConstructor}{GetConstructorInitializerModifier(baseConstructor, constructorCall, indentation)}{constructorCall}
+        return $@"{constructor}{GetConstructorInitializerModifier(constructor, baseConstructorCall, indentation)}{baseConstructorCall}
 {indentation}{{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
 
     private string GetConstructorInitializerModifier(string baseConstructor, string constructorCall, string indentation)
     {
-        if(File.StyleSettings?.ConstructorInitializerBehavior.IsNewLine() ?? false && !string.IsNullOrEmpty(constructorCall))
+        if ((File.StyleSettings?.ConstructorInitializerBehavior.IsNewLine() ?? false) && !string.IsNullOrEmpty(constructorCall))
         {
             return $"{Environment.NewLine}{indentation}    ";
         }
 
-        if(File.StyleSettings?.ConstructorInitializerBehavior.IsMixed() ?? false && $"{baseConstructor}{constructorCall}".Length > 110)
+        if ((File.StyleSettings?.ConstructorInitializerBehavior.IsDependsOnLength() ?? false) && $"{baseConstructor}{constructorCall}".Length > 110)
         {
             return $"{Environment.NewLine}{indentation}    ";
         }
@@ -232,19 +233,36 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
     {
         // This length is more or less the same for an instance and primary ctor declaration on a single line
         var estimatedLength = $"{indentation}{AccessModifier}{Class.Name}(".Length + Parameters.Sum(x => x.ToString().Length);
-        
+
         const int maxLineLength = 120;
-        
-        if (Parameters.Count > 1 && estimatedLength > maxLineLength)
-        {
-            return string.Join($@",
-{indentation}    ", Parameters.Select(x => x.ToString()));
-        }
-        else
-        {
-            return string.Join(", ", Parameters.Select(x => x.ToString()));
-        }
+
+        return CalculateParameterString(File.StyleSettings?.ParameterPlacement.AsEnum() ?? ParameterPlacementOptionsEnum.Default, 
+            estimatedLength, maxLineLength, indentation);
     }
+
+    private string CalculateParameterString(ParameterPlacementOptionsEnum option, int estimatedLength, int maxLineLength, string indentation) =>
+        (option, estimatedLength > maxLineLength, Parameters.Count > 1) switch
+        {
+            // if mixed and under the length or there only one parameter
+            (ParameterPlacementOptionsEnum.Default, false, false) or
+            (ParameterPlacementOptionsEnum.Default, false, true) or
+            (ParameterPlacementOptionsEnum.Default, true, false) or
+            (ParameterPlacementOptionsEnum.DependsOnLength, _, false) or
+            (ParameterPlacementOptionsEnum.DependsOnLength, false, true) or
+            // if do not modify, then return on one line
+            (ParameterPlacementOptionsEnum.SameLine, _, _) => string.Join(", ", Parameters.Select(x => x.ToString())),
+
+            // if mixed and over the length or more than one parameter
+            (ParameterPlacementOptionsEnum.Default, true, true)  => string.Join($@",
+{indentation}    ", Parameters.Select(x => x.ToString())),
+
+            // if always, then always do it
+            (ParameterPlacementOptionsEnum.DependsOnLength, true, true) => string.Concat($"{Environment.NewLine}{indentation}    ", string.Join($@",
+{indentation}    ", Parameters.Select(x => x.ToString()))),
+
+            // catch all, return on one line
+            (_, _, _) => string.Join(", ", Parameters.Select(x => x.ToString())),
+        };
 
     bool IHasCSharpStatementsActual.IsCodeBlock => true;
 

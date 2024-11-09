@@ -29,9 +29,11 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
-            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="true" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="true" isActive="false" />
             <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="The default ID type to apply to newly created classes." isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="object-id" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -39,7 +41,7 @@
       <childElements>
         <childElement id="e83dbe2f-9d73-48d7-8a3e-47e995adf6db" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Object ID</name>
-          <display>Object ID</display>
+          <display>Object ID = object-id</display>
           <isAbstract>false</isAbstract>
           <value>object-id</value>
           <genericTypes />
@@ -53,7 +55,7 @@
         </childElement>
         <childElement id="85102d2a-039b-4c41-944a-97cfde7f332f" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>GUID</name>
-          <display>GUID</display>
+          <display>GUID = guid</display>
           <isAbstract>false</isAbstract>
           <value>guid</value>
           <genericTypes />
@@ -84,9 +86,11 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
-            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
             <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Configure how the designer manages keys." isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="all" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -94,7 +98,7 @@
       <childElements>
         <childElement id="75029071-205f-4105-b824-b178a07c2de3" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>All</name>
-          <display>All</display>
+          <display>All = all</display>
           <isAbstract>false</isAbstract>
           <value>all</value>
           <genericTypes />
@@ -108,7 +112,7 @@
         </childElement>
         <childElement id="711e88e6-da78-40e1-9727-2aff9cb329af" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Only on Documents</name>
-          <display>Only on Documents</display>
+          <display>Only on Documents = only-on-documents</display>
           <isAbstract>false</isAbstract>
           <value>only-on-documents</value>
           <genericTypes />

@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Designers", "Designers", "{
 EndProject
 Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Domain", "Intent.Modules.Modelers.Domain\Intent.Modules.Modelers.Domain.csproj", "{944F5519-873F-4C88-BACE-1A383E0C5F49}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services", "Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj", "{C5A5AE9C-9137-4309-AC4E-F9494694390E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services", "Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj", "{C5A5AE9C-9137-4309-AC4E-F9494694390E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metadata", "Metadata", "{E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}"
 EndProject

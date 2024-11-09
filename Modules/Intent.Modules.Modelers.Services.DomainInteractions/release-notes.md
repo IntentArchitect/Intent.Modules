@@ -1,6 +1,10 @@
 ### Version 2.0.2
 
 - Improvement: Changed `Default Mapping Mode` to be `Advanced` by default.
+- Improvement: Added setting `Default Query Implementation`, allowing for configuration of how `Query Entity Actions` are implemented.
+- Improvement: Create CRUD Scripts will inform the user when it is hindered by the Private Setters setting and the absence of Entity constructors to produce all the needed service operations.
+- Fixed: Create CRUD Scripts were breaking on `Ensure Private Property Setters`.
+- Fixed: On Create and Update Mappings the fields marked as `set-by-infrastructure` will not be mappable since they will be set by Infrastructure.
 
 ### Version 2.0.1
 

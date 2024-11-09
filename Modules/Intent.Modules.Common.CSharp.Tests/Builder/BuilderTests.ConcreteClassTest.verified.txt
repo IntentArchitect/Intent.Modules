@@ -6,9 +6,9 @@ namespace Testing.Namespace
 {
     public class ConcreteClass : BaseClass, ISomeService
     {
-        private string _test;
-        protected string _testProtected;
         protected readonly string _testProtectedReadOnly;
+        protected string _testProtected;
+        private string _test;
 
         void ISomeService.Method()
         {
@@ -23,11 +23,11 @@ namespace Testing.Namespace
         {
         }
 
-        private void PrivateMethod()
+        protected void ProtectedMethod()
         {
         }
 
-        protected void ProtectedMethod()
+        private void PrivateMethod()
         {
         }
     }

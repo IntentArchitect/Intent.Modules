@@ -53,33 +53,77 @@ namespace Intent.Modules.Common.CSharp.Settings
             {
                 return Value switch
                 {
-                    "SameLine" => ConstructorInitializerOptionsEnum.SameLine,
-                    "NewLine" => ConstructorInitializerOptionsEnum.NewLine,
-                    "Mixed" => ConstructorInitializerOptionsEnum.Mixed,
+                    "same-line" => ConstructorInitializerOptionsEnum.SameLine,
+                    "new-line" => ConstructorInitializerOptionsEnum.NewLine,
+                    "depends-on-length" => ConstructorInitializerOptionsEnum.DependsOnLength,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
 
             public bool IsSameLine()
             {
-                return Value == "SameLine";
+                return Value == "same-line";
             }
 
             public bool IsNewLine()
             {
-                return Value == "NewLine";
+                return Value == "new-line";
             }
 
-            public bool IsMixed()
+            public bool IsDependsOnLength()
             {
-                return Value == "Mixed";
+                return Value == "depends-on-length";
             }
         }
         public enum ConstructorInitializerOptionsEnum
         {
             SameLine,
             NewLine,
-            Mixed,
+            DependsOnLength,
+        }
+        public ParameterPlacementOptions ParameterPlacement() => new ParameterPlacementOptions(_groupSettings.GetSetting("6483b559-92bb-43d7-a0b4-af20ded10a1b")?.Value);
+
+        public class ParameterPlacementOptions
+        {
+            public readonly string Value;
+
+            public ParameterPlacementOptions(string value)
+            {
+                Value = value;
+            }
+
+            public ParameterPlacementOptionsEnum AsEnum()
+            {
+                return Value switch
+                {
+                    "same-line" => ParameterPlacementOptionsEnum.SameLine,
+                    "depends-on-length" => ParameterPlacementOptionsEnum.DependsOnLength,
+                    "default" => ParameterPlacementOptionsEnum.Default,
+                    _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
+                };
+            }
+
+            public bool IsSameLine()
+            {
+                return Value == "same-line";
+            }
+
+            public bool IsDependsOnLength()
+            {
+                return Value == "depends-on-length";
+            }
+
+            public bool IsDefault()
+            {
+                return Value == "default";
+            }
+        }
+
+        public enum ParameterPlacementOptionsEnum
+        {
+            SameLine,
+            DependsOnLength,
+            Default,
         }
     }
 }

@@ -59,22 +59,26 @@ $repoPath = [System.IO.Path]::Combine($curLocation, $testSlnDir, "intent.reposit
 Write-Host "`$repoPath = $repoPath"
 $repoConfigContent | Set-Content $repoPath -Encoding UTF8
 
+$discrepanciesFound = $false
+
 $testSln.solution.applications.application | % {
     $appRelPath = [System.IO.Path]::Combine($curLocation, $testSlnDir, $_.relativePath)
     $basePath = [System.IO.Path]::GetDirectoryName($appRelPath)
     $modulesConfig = [System.IO.Path]::Combine($basePath, "modules.config")
+    $name = $_.name
 
     $modulesConfigContent = [xml] (Get-Content $modulesConfig -Encoding UTF8)
-    $changed = $false
     $modulesConfigContent.modules.module | % { 
         $module = $_
         $moduleVersionFound = $moduleLookup[$module.moduleId]
-        if ($moduleVersionFound -ne $null) { 
-            $module.version = $moduleVersionFound
-            $changed = $true
+        if ($moduleVersionFound -ne $null -and $module.version -ne $moduleVersionFound) { 
+            Write-Error "##vso[task.logissue type=error;]$($name): Version discrepancy found for module '$($module.moduleId)': expected '$moduleVersionFound', found '$($module.version)'"
+            $discrepanciesFound = $true
         }
     }
-    if ($changed) {
-        $modulesConfigContent.Save($modulesConfig)
-    }
+}
+
+if ($discrepanciesFound) {
+    Write-Error "##vso[task.logissue type=error;]Review the $($testsIntentSolutionRelativePath) Intent Solution and make sure the module dependencies are installed to the appropriate versions needed for the test suite to execute successfully."
+    exit 1
 }

@@ -75,5 +75,43 @@ namespace Intent.Modules.Modelers.Services.DomainInteractions.Settings
             Basic,
             Advanced,
         }
+
+        public DefaultQueryImplementationOptions DefaultQueryImplementation() => new DefaultQueryImplementationOptions(_groupSettings.GetSetting("61ced3b4-e1d8-4274-b84d-d9b8e0c3143f")?.Value);
+
+        public class DefaultQueryImplementationOptions
+        {
+            public readonly string Value;
+
+            public DefaultQueryImplementationOptions(string value)
+            {
+                Value = value;
+            }
+
+            public DefaultQueryImplementationOptionsEnum AsEnum()
+            {
+                return Value switch
+                {
+                    "default" => DefaultQueryImplementationOptionsEnum.Default,
+                    "project-to" => DefaultQueryImplementationOptionsEnum.ProjectTo,
+                    _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
+                };
+            }
+
+            public bool IsDefault()
+            {
+                return Value == "default";
+            }
+
+            public bool IsProjectTo()
+            {
+                return Value == "project-to";
+            }
+        }
+
+        public enum DefaultQueryImplementationOptionsEnum
+        {
+            Default,
+            ProjectTo,
+        }
     }
 }

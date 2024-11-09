@@ -17,7 +17,7 @@ function onMapCommand(
 
     const mappingDetails = getMappedRequestDetails(element);
 
-    if (isForCrudScript || (mappingDetails != null && mappingDetails.mappingTargetType !== "Class" )) {
+    if (mappingDetails && (isForCrudScript || mappingDetails.mappingTargetType !== "Class" )) {
         let order = 0;
         let keyFields = mappingDetails.ownerKeyFields;
         if (!excludePrimaryKeys) {
@@ -33,8 +33,10 @@ function onMapCommand(
         }
     }
 
-    if (mappingDetails.mappingTargetType === "Operation" &&
+    if (mappingDetails && 
+        mappingDetails.mappingTargetType === "Operation" &&
         DomainHelper.isComplexType(element.getMapping()?.getElement()?.typeReference?.getType())) {
+            
         let mappedElement = element.getMapping().getElement();
         let newDto = CrudHelper.getOrCreateCrudDto( CrudHelper.getName(element, mappedElement)
             , mappedElement.typeReference.getType()

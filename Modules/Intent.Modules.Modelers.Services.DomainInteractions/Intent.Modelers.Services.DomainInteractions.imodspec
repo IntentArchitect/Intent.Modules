@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.DomainInteractions</id>
-  <version>2.0.2-pre.0</version>
+  <version>2.0.2</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Services modeler extensions for describing interactions between an application's services and its domain.</summary>
   <description>Services modeler extensions for describing interactions between an application's services and its domain.</description>
@@ -22,6 +22,13 @@
           <options>
             <option value="basic" description="Basic Mapping" />
             <option value="advanced" description="Advanced Mapping" />
+          </options>
+        </setting>
+        <setting id="61ced3b4-e1d8-4274-b84d-d9b8e0c3143f" title="Default Query Implementation" type="select">
+          <defaultValue>default</defaultValue>
+          <options>
+            <option value="default" description="Default" />
+            <option value="project-to" description="Project To" />
           </options>
         </setting>
       </settings>

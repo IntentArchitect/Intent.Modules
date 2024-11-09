@@ -1,0 +1,18 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public Class(string name)
+        {
+        }
+
+        public void MyMethod(string mParam1)
+        {
+            void LocalMethod(string lmParammmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm)
+            {
+            }
+        }
+    }
+}

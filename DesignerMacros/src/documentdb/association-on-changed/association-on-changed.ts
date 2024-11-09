@@ -9,15 +9,15 @@
 /// <reference path="../common/updateForeignKeysForAssociation.ts" />
 
 function execute() {
-    //This happens while linking the association i.e. only 1 end attached.
+    // The user is busy connecting the association and hasn't attached it to an element yet.
     if (association.typeReference.getType() == null) {
         return;
     }
 
-    let sourceTarget = association.getOtherEnd().typeReference.getType();
+    let associationEnd = association.getOtherEnd().typeReference.getType();
 
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
-    if (!sourceTarget.getPackage().hasStereotype(documentStoreId)) {
+    if (!associationEnd.getPackage().hasStereotype(documentStoreId)) {
         return;
     }
 

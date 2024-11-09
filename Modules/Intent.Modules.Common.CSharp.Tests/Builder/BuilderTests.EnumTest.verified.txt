@@ -4,21 +4,6 @@
 
 namespace Testing.Namespace
 {
-    private enum PrivateEnum
-    {
-        Literal1
-    }
-
-    protected enum ProtectedEnum
-    {
-        Literal1
-    }
-
-    internal enum InternalEnum
-    {
-        Literal1
-    }
-
     internal protected enum InternalProtectedEnum
     {
         Literal1
@@ -44,5 +29,20 @@ namespace Testing.Namespace
         Literal2 = 10,
 
         Literal3 = 5000
+    }
+
+    internal enum InternalEnum
+    {
+        Literal1
+    }
+
+    protected enum ProtectedEnum
+    {
+        Literal1
+    }
+
+    private enum PrivateEnum
+    {
+        Literal1
     }
 }

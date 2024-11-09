@@ -18,17 +18,30 @@ internal class CSharpStyleSettings : ICSharpStyleSettings
     internal CSharpStyleSettings(IApplication application)
     {
         ConstructorInitializerBehavior = application.Settings.GetCSharpStyleConfiguration()?.ConstructorInitializer();
-        
+        ParameterPlacement = application.Settings.GetCSharpStyleConfiguration()?.ParameterPlacement();
+
         Settings = this;
+    }
+
+    internal CSharpStyleSettings(ICSharpStyleSettings styleSettings)
+    {
+        Settings = styleSettings;
     }
 
     internal static ICSharpStyleSettings Settings { get; private set; }
 
     /// <summary>
-    /// Setting to deetermine the behavior of a constructor initializer (call to "this" or "base"). 
-    /// Related to <see href="https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1128.md">StyleCop rule SA1128</see>
+    /// <inheritdoc/>
     /// </summary>
     public ConstructorInitializerOptions ConstructorInitializerBehavior { get; init ; }
 
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
+    public ParameterPlacementOptions ParameterPlacement { get; init; }
+
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
     public IEnumerable<string> ElementOrder { get; } = ["public", "internal", "protected readonly", "protected internal", "protected", "", "private readonly", "private protected", "private"];
 }

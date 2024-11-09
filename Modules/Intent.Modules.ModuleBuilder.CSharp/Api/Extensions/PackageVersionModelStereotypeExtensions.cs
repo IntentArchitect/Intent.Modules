@@ -79,6 +79,8 @@ namespace Intent.ModuleBuilder.CSharp.Api
                             return MinimumTargetFrameworkOptionsEnum.NETCoreAppVersionV70;
                         case ".NETCoreApp,Version=v6.0":
                             return MinimumTargetFrameworkOptionsEnum.NETCoreAppVersionV60;
+                        case ".NETStandard,Version=v2.1":
+                            return MinimumTargetFrameworkOptionsEnum.NETStandardVersionV21;
                         case ".NETStandard,Version=v2.0":
                             return MinimumTargetFrameworkOptionsEnum.NETStandardVersionV20;
                         case "Any,Version=v0.0":
@@ -105,6 +107,10 @@ namespace Intent.ModuleBuilder.CSharp.Api
                 {
                     return Value == ".NETCoreApp,Version=v6.0";
                 }
+                public bool IsNETStandardVersionV21()
+                {
+                    return Value == ".NETStandard,Version=v2.1";
+                }
                 public bool IsNETStandardVersionV20()
                 {
                     return Value == ".NETStandard,Version=v2.0";
@@ -121,6 +127,7 @@ namespace Intent.ModuleBuilder.CSharp.Api
                 NETCoreAppVersionV80,
                 NETCoreAppVersionV70,
                 NETCoreAppVersionV60,
+                NETStandardVersionV21,
                 NETStandardVersionV20,
                 AnyVersionV00
             }

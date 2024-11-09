@@ -1,0 +1,15 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public Class(string name)
+        {
+        }
+
+        public void MyMethod(string thisisaveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryverylongname)
+        {
+        }
+    }
+}

@@ -55,6 +55,13 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
         Template = template;
     }
 
+    internal CSharpFile(string @namespace, string relativeLocation, ICSharpStyleSettings settings)
+    {
+        Namespace = @namespace.ToCSharpNamespace();
+        RelativeLocation = relativeLocation;
+        StyleSettings = settings;
+    }
+
     public CSharpFile AddUsing(string @namespace)
     {
         Usings.Add(new CSharpUsing(@namespace));

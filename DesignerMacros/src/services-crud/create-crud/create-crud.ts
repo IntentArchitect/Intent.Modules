@@ -15,6 +15,14 @@ namespace servicesCrud {
         });
         if (!entity) { return; }
 
+        if (privateSettersOnly && !hasConstructor(entity)) {
+            await dialogService.warn(
+`Partial Service Operation Creation.
+Some service operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
+
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
+        }
+
         const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
         const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x => x.getName() == pluralize(serviceName));
         const service = existingService || createElement("Service", serviceName, package.id);
@@ -25,7 +33,10 @@ namespace servicesCrud {
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
 
         const resultDto = createMappedResultDto(entity, folder);
-        createStandardCreateOperation(service, entity, folder);
+
+        if (!privateSettersOnly || hasConstructor(entity)) {
+            createStandardCreateOperation(service, entity, folder);
+        }
 
         if (primaryKeys.length > 0) {
             createStandardFindByIdOperation(service, entity, resultDto);
@@ -43,9 +54,12 @@ namespace servicesCrud {
             for (const operation of operations) {
                 createCallOperationCommand(service, operation, entity, folder);
             }
-    
         }
     };
+
+    function hasConstructor(entity: MacroApi.Context.IElementApi): boolean {
+        return entity.getChildren("Class Constructor").length > 0;
+    }
 
     export function createMappedResultDto(entity: IElementApi, folder: IElementApi): MacroApi.Context.IElementApi {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
