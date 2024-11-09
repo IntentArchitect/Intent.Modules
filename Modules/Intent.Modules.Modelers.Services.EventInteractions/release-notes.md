@@ -1,10 +1,14 @@
+### Version 1.2.0
+
+- Improvement: Added `Suggestion` (4.4.x feature) for `Message` and `Integration Command` to auto-create an `Integration Event Handler`.
+
 ### Version 1.1.2
 
 - Improvement: Improved Event and Integration Command mappings for supporting Collections.
  
 ### Version 1.1.1
 
-- Improvement: Added Stereotype visuals for `Mesasge` and `IntegrationCommand`.
+- Improvement: Added Stereotype visuals for `Mesasge` and `Integration Command`.
 - Fixed: Scripting issue which would under certain circumstances rename Integration Handlers.
 
 ### Version 1.1.0

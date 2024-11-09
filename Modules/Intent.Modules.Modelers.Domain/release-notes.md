@@ -1,4 +1,8 @@
-﻿### Version 3.11.1
+﻿### Version 3.12.0
+
+- Improvement: Added `ctrl + space` and `double-click` shortcuts to `Operation` and `Constructor` mappings.
+
+### Version 3.11.1
 
 - Fixed: `Attributes` under `Classes` able to reference `DataContracts`. This shouldn't be allowed since `DataContracts` should not be related to what actually is persisted.
 - Improvement: Updated icons

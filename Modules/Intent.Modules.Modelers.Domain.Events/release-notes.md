@@ -1,3 +1,7 @@
+### Version 4.2.2
+
+- Improvment: Added `Suggestion` (4.4.x feature) to auto-create a `Domain Event Handler` element from the `Domain Event`.
+
 ### Version 4.2.1
 
 - Fixed: Subscribing to `DomainEvent`s was renaming Domain Event Handler if it had been given a name, it now only "Names" it if it is the default name.

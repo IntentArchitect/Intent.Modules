@@ -1,3 +1,7 @@
+### Version 3.9.0
+
+- Improvement: Added `Add to Diagram` option to the `Services` diagrams.
+
 ### Version 3.8.3
 
 - Improvement: It is now possible to map fields on DTOs to attributes on generalized types of a _Domain Data Contract_.

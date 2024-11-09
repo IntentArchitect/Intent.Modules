@@ -1,3 +1,7 @@
+### Version 3.7.4
+
+- Improvement: Added `Element Extensions` to the targetable types for the core trait stereotypes.
+
 ### Version 3.7.3
 
 - Improvement: Disabling Templates via the CanRun property during Software Factory Execution.
