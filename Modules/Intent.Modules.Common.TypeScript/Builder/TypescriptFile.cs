@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Intent.Modules.Common.TypeScript.Templates;
 
 namespace Intent.Modules.Common.TypeScript.Builder;
@@ -199,6 +200,7 @@ public class TypescriptFile
         return this;
     }
 
+    /// <inheritdoc />
     public override string ToString()
     {
         if (!_isBuilt)
@@ -206,11 +208,25 @@ public class TypescriptFile
             throw new Exception($"Build() needs to be called before ToString(). Check that your template implements {nameof(ITypescriptFileBuilderTemplate)}, or ensure that Build() is called manually.");
         }
 
-        return $@"{string.Join(@"
-", ImportsBySource.Values)}
+        var sb = new StringBuilder();
 
-{string.Join(@"
+        foreach (var value in ImportsBySource.Values)
+        {
+            sb.AppendLine(value.ToString());
+        }
 
-", Interfaces.Select(x => x.ToString()).Concat(Classes.Select(x => x.ToString())))}";
+        foreach (var @interface in Interfaces)
+        {
+            sb.AppendLine();
+            sb.Append(@interface);
+        }
+
+        foreach (var @class in Classes)
+        {
+            sb.AppendLine();
+            sb.Append(@class);
+        }
+
+        return sb.ToString();
     }
 }

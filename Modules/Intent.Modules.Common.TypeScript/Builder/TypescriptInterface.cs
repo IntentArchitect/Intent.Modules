@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Intent.Modules.Common.TypeScript.Builder;
 
@@ -106,29 +107,47 @@ public class TypescriptInterface : TypescriptDeclaration<TypescriptInterface>
 
     public string GetText(string indentation)
     {
-        return $@"{indentation}{(IsExported ? "export " : string.Empty)}interface {Name}{GetBaseTypes()} {{{GetMembers($"{indentation}{File.Indentation}")}
-{indentation}}}";
-    }
+        var sb = new StringBuilder();
 
-    private string GetBaseTypes()
-    {
-        var types = new List<string>();
-        foreach (var @interface in Interfaces)
+        sb.Append(indentation);
+        if (IsExported)
         {
-            types.Add(@interface);
+            sb.Append("export ");
         }
 
-        return types.Any() ? $" implements {string.Join(", ", types)}" : "";
-    }
+        sb.Append("interface ");
+        sb.Append(Name);
+        sb.Append(' ');
 
-    private string GetMembers(string indentation)
-    {
-        var codeBlocks = new List<ICodeBlock>();
-        codeBlocks.AddRange(Fields);
-        codeBlocks.AddRange(Methods);
+        if (Interfaces.Count > 0)
+        {
+            sb.Append("implements ");
 
-        return !codeBlocks.Any() ? "" : $@"
-{string.Join(@"
-", codeBlocks.ConcatCode(indentation))}";
+            foreach (var @interface in Interfaces)
+            {
+                sb.Append(@interface);
+                sb.Append(", ");
+            }
+
+            // Remove trailing comma:
+            sb.Length -= ", ".Length;
+
+            sb.Append(' ');
+        }
+
+        sb.Append('{');
+
+        var concatenatedCodeBlocks = Enumerable.Empty<ICodeBlock>()
+            .Concat(Fields)
+            .Concat(Methods)
+            .ToArray()
+            .ConcatCode($"{indentation}{File.Indentation}");
+
+        sb.Append(concatenatedCodeBlocks);
+        sb.AppendLine();
+
+        sb.AppendLine("}");
+
+        return sb.ToString();
     }
 }

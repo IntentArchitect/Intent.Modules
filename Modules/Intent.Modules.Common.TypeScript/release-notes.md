@@ -1,3 +1,7 @@
+### Version 4.1.2
+
+- Fixed: TypeScript file builder was adding unnecessary additional line endings.
+
 ### Version 4.1.1
 
 - Fixed: Designer elements using `char` type will now translate into `string` in TypeScript instead of `number`.
