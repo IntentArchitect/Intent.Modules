@@ -1,4 +1,8 @@
-﻿### Version 3.8.3
+﻿### Version 3.8.4
+
+- Fixed: Mappings not discovering and resolving their C# references in certain circumstances.
+
+### Version 3.8.3
 
 - Improvement: Disabling Templates via the CanRun property during Software Factory Execution.
 - Improvement: Added C# style settings allowing for the configuration of the style of generated code
@@ -6,7 +10,7 @@
 - Improvement: Certain in a C# file, with the same name (e.g. methods), will also be grouped together
 - Improvement: Added WithInstantiation method to CSharpProperty and CSharpField, with LangVersion aware collection support
 - Improvement: Ability for template extenders to unregister `using`s and NuGet package requests.
-- Fixed: Advanced Mapping not correctly resolving source properties when dealing with child collections
+- Fixed: Advanced Mapping not correctly resolving source properties when dealing with child collections.
  
 
 ### Version 3.8.2
