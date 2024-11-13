@@ -15092,7 +15092,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
     </mappingSetting>
     <mappingSetting type="Query Entity Mapping" typeId="25f25af9-c38b-4053-9474-b0fabe9d7ea7">
       <title>Query Entity Mapping</title>
-      <isRequiredFunction>return true;</isRequiredFunction>
+      <isRequiredFunction>return false;</isRequiredFunction>
       <targetRootElementFunction>return element.getParent("Class")?.id ?? element.id;</targetRootElementFunction>
       <sourceMappings>
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
