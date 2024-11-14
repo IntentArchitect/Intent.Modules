@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="28ebb37a-174e-4faa-ba27-32844e503dbb" type="Factory Extension" typeId="7d008e84-bb28-4b10-ba28-7439202fca76">
+  <name>ServiceReferencesValidationExtension</name>
+  <display>ServiceReferencesValidationExtension</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>53353621-7752-4a01-90f3-cd2e83ec19a4</parentFolderId>
+  <packageId>53353621-7752-4a01-90f3-cd2e83ec19a4</packageId>
+  <packageName>Intent.Modelers.Services.ProxyInteractions</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
