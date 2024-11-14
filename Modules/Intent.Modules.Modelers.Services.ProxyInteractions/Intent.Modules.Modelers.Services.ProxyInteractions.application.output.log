@@ -25,6 +25,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>853f2ff6-0f28-40fc-a6d3-c0279327cbfe</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.FactoryExtension#28ebb37a-174e-4faa-ba27-32844e503dbb</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>FactoryExtensions/ServiceReferencesValidationExtension.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServiceReferencesValidationExtension.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>d6bbca39-00e9-49f0-95a5-9f1bce9f15b9</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
