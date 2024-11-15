@@ -57,23 +57,10 @@ public abstract class CSharpMappingBase : ICSharpMapping
         }
     }
 
-    //protected CSharpMappingBase(MappingModel mappingModel, ICSharpFileBuilderTemplate template)
-    //{
-    //    Template = template;
-    //    Model = mappingModel.Model;
-    //    Mapping = mappingModel.Mapping;
-    //    Children = mappingModel.GetChildMappings(template);
-    //}
-
     public virtual IEnumerable<CSharpStatement> GetMappingStatements()
     {
         yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
     }
-
-    //public CSharpStatement GetSourceStatement()
-    //{
-    //    return GetSourcePathText(true);
-    //}
 
     public virtual CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
     {
@@ -141,10 +128,6 @@ public abstract class CSharpMappingBase : ICSharpMapping
         }
 
         _sourceReplacements.Add(type.Id, replacement);
-        //foreach (var child in Children)
-        //{
-        //    child.SetSourceReplacement(type, replacement);
-        //}
     }
 
     public virtual bool TryGetSourceReplacement(IMetadataModel type, out string replacement)
@@ -160,10 +143,6 @@ public abstract class CSharpMappingBase : ICSharpMapping
         }
 
         _targetReplacements.Add(type.Id, replacement);
-        //foreach (var child in Children)
-        //{
-        //    child.SetTargetReplacement(type, replacement);
-        //}
     }
 
     public virtual bool TryGetTargetReplacement(IMetadataModel type, out string replacement)
@@ -380,115 +359,9 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 }
             }
         }
-        //foreach (var context in codeContexts)
-        //{
-        //    if (context.TryGetReferenceForModel(mappingPathTarget.Id, out reference) == true)
-        //    {
-        //        return true;
-        //    }
-        //}
-
-
-        //CSharpMetadataBase csharpElement = default;
-
-        //var mappingElement = (IElement)mappingPath.First().Element;
-
-        //if (codeContext != null && GetReference(mappingPath, codeContext, out reference))
-        //{
-        //    return true;
-        //}
-
-        //if (TryFindTemplates(Template, mappingElement, out var foundTypeTemplates))
-        //{
-        //    foreach (var foundTemplate in foundTypeTemplates)
-        //    {
-        //        if (GetReference(mappingPath, foundTemplate.RootCodeContext, out reference))
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //}
-        //if (TryFindTemplates(Template, mappingElement.ParentElement, out var foundParentTypeTemplate))
-        //{
-        //    foreach (var foundTemplate in foundParentTypeTemplate)
-        //    {
-        //        if (TryGetReferenceForModelInCSharpFile(foundTemplate.CSharpFile, mappingElement, out reference))
-        //        {
-        //            if (GetReference(mappingPath, reference as ICSharpCodeContext, out reference))
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //}
-
+        
         return false;
     }
-
-    //private bool GetReference(IList<IElementMappingPathTarget> mappingPath, ICSharpCodeContext csharpElement, out IHasCSharpName reference)
-    //{
-    //    foreach (var pathTarget in mappingPath)
-    //    {
-    //        if (csharpElement.TryGetReferenceForModel(pathTarget.Id, out reference) == true)
-    //        {
-    //            csharpElement = (ICSharpCodeContext)reference;
-    //            continue;
-    //        }
-
-    //        if (mappingPath.IndexOf(pathTarget) > 0)
-    //        {
-    //            ITypeReference typeReference = null;
-    //            if (mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.TypeReference != null)
-    //            {
-    //                typeReference = mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.TypeReference.Element.AsTypeReference();
-    //            }
-    //            else
-    //            {
-    //                continue;
-    //                //typeReference = mappingPath[mappingPath.IndexOf(pathTarget) - 1].Element.AsTypeReference();
-    //            }
-
-    //            var found = false;
-    //            var foundSubTypeTemplates = Template.GetAllTypeInfo(typeReference).Select(x => x.Template).OfType<ICSharpFileBuilderTemplate>();
-    //            foreach (var foundSubTypeTemplate in foundSubTypeTemplates)
-    //            {
-    //                if (foundSubTypeTemplate.RootCodeContext.TryGetReferenceForModel(pathTarget.Id, out reference) == true)
-    //                {
-    //                    csharpElement = (ICSharpCodeContext)reference;
-    //                    found = true;
-    //                    break;
-    //                }
-    //            }
-
-    //            if (found)
-    //            {
-    //                continue;
-    //            }
-    //        }
-
-    //        csharpElement = null;
-    //        break;
-    //    }
-
-    //    if (csharpElement is IHasCSharpName hasName)
-    //    {
-    //        reference = hasName;
-    //        return true;
-    //    }
-
-    //    reference = default;
-    //    return false;
-    //}
-
-    //private static bool TryGetReferenceForModelInCSharpFile(CSharpFile csharpFile, IElement mappedElement, out IHasCSharpName reference)
-    //{
-    //    reference = null;
-
-    //    var result = csharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(mappedElement, out reference) == true
-    //                 || csharpFile.Interfaces.FirstOrDefault()?.TryGetReferenceForModel(mappedElement, out reference) == true;
-
-    //    return result;
-    //}
 
     private static bool TryFindTemplates(ICSharpTemplate template, IElement elementToLookup, out IList<ICSharpFileBuilderTemplate> foundTemplates)
     {
