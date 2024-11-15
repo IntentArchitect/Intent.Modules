@@ -39,15 +39,5 @@ namespace Intent.Modelers.UI.Api
             .Select(x => new FolderModel(x))
             .ToList();
 
-        public IList<DiagramModel> Diagrams => UnderlyingPackage.ChildElements
-            .GetElementsOfType(DiagramModel.SpecializationTypeId)
-            .Select(x => new DiagramModel(x))
-            .ToList();
-
-        public IList<TypeDefinitionModel> TypeDefinitions => UnderlyingPackage.ChildElements
-            .GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
-            .Select(x => new TypeDefinitionModel(x))
-            .ToList();
-
     }
 }

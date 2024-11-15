@@ -2,7 +2,9 @@
 <settings version="3.1.1">
   <id>3cd798f0-8cdf-42a4-b733-469632a86f27</id>
   <name>Common UI Components</name>
-  <designerReferences />
+  <designerReferences>
+    <designerReference id="444f582b-b875-4c72-9671-697b47fa367c" name="User Interface Core Types" module="Intent.Modelers.UI" />
+  </designerReferences>
   <packageSettings />
   <packageExtensions />
   <elementSettings>
@@ -38,7 +40,6 @@
       </scriptOptions>
       <mappingOptions />
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Card" typeId="dfe420aa-426a-4517-bcd1-83cf5ec074fe">
       <implements>
@@ -132,7 +133,6 @@ createElement("8dd9e894-be78-41ec-89f2-d2bd2d26d8d6", "Actions", element.id);</s
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Card Content" typeId="57319385-c7e0-43eb-a2d8-b7cb1ddce2e2">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV9kNjkwOTkzOC1lZGFjLTRjMzItYTg4Yi0yOWFjMjE5NTFlZDYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0Ny43NCIgeDI9IjI1IiB5Mj0iNi4yNCIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAxIDAgLTIpIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNEE5OTI0Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6Izg2REUzMyIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIGZpbGw9InVybCgjU1ZHSURfMV9kNjkwOTkzOC1lZGFjLTRjMzItYTg4Yi0yOWFjMjE5NTFlZDYpIiBkPSJNNi44LDI5LjdIMy40djEzLjVjMCwxLjQsMS4yLDIuNiwyLjYsMi42aDE0LjF2LTMuNUg3LjhjLTAuNiwwLTEtMC41LTEtMVYyOS43eiBNMy40LDYuOXYxM2gzLjRWOC43DQoJYzAtMC42LDAuNS0xLDEtMWgxMi4zVjQuM0g2QzQuNiw0LjMsMy40LDUuNSwzLjQsNi45eiBNNDMuMiwyOS43djExLjZjMCwwLjYtMC41LDEtMSwxSDI5Ljl2My41SDQ0YzEuNCwwLDIuNi0xLjIsMi42LTIuNlYyOS43DQoJSDQzLjJ6IE0yOS45LDQuM3YzLjRoMTIuM2MwLjYsMCwxLDAuNSwxLDF2MTEuMmgzLjR2LTEzYzAtMS40LTEuMi0yLjYtMi42LTIuNkM0NCw0LjMsMjkuOSw0LjMsMjkuOSw0LjN6Ii8+DQo8L3N2Zz4NCg==" />
@@ -163,7 +163,6 @@ createElement("8dd9e894-be78-41ec-89f2-d2bd2d26d8d6", "Actions", element.id);</s
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Card Actions" typeId="8dd9e894-be78-41ec-89f2-d2bd2d26d8d6">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV9kNjkwOTkzOC1lZGFjLTRjMzItYTg4Yi0yOWFjMjE5NTFlZDYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0Ny43NCIgeDI9IjI1IiB5Mj0iNi4yNCIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAxIDAgLTIpIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNEE5OTI0Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6Izg2REUzMyIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIGZpbGw9InVybCgjU1ZHSURfMV9kNjkwOTkzOC1lZGFjLTRjMzItYTg4Yi0yOWFjMjE5NTFlZDYpIiBkPSJNNi44LDI5LjdIMy40djEzLjVjMCwxLjQsMS4yLDIuNiwyLjYsMi42aDE0LjF2LTMuNUg3LjhjLTAuNiwwLTEtMC41LTEtMVYyOS43eiBNMy40LDYuOXYxM2gzLjRWOC43DQoJYzAtMC42LDAuNS0xLDEtMWgxMi4zVjQuM0g2QzQuNiw0LjMsMy40LDUuNSwzLjQsNi45eiBNNDMuMiwyOS43djExLjZjMCwwLjYtMC41LDEtMSwxSDI5Ljl2My41SDQ0YzEuNCwwLDIuNi0xLjIsMi42LTIuNlYyOS43DQoJSDQzLjJ6IE0yOS45LDQuM3YzLjRoMTIuM2MwLjYsMCwxLDAuNSwxLDF2MTEuMmgzLjR2LTEzYzAtMS40LTEuMi0yLjYtMi42LTIuNkM0NCw0LjMsMjkuOSw0LjMsMjkuOSw0LjN6Ii8+DQo8L3N2Zz4NCg==" />
@@ -194,7 +193,6 @@ createElement("8dd9e894-be78-41ec-89f2-d2bd2d26d8d6", "Actions", element.id);</s
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
       </childElementSettings>
     </elementSetting>
@@ -217,7 +215,6 @@ createElement("8dd9e894-be78-41ec-89f2-d2bd2d26d8d6", "Actions", element.id);</s
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>true</allowSetValue>
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Container" typeId="b97ea181-2462-431f-8f62-f90f79509b9e">
       <implements>
@@ -251,7 +248,6 @@ createElement("8dd9e894-be78-41ec-89f2-d2bd2d26d8d6", "Actions", element.id);</s
       </scriptOptions>
       <mappingOptions />
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Date Picker" typeId="9451fcdc-9406-4323-b354-2eaaabbf9ac5">
       <implements>
@@ -272,7 +268,6 @@ createElement("8dd9e894-be78-41ec-89f2-d2bd2d26d8d6", "Actions", element.id);</s
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Dialog" typeId="1260ae89-b0cc-4ae0-b21c-7e26d45f16a5">
       <implements>
@@ -365,7 +360,6 @@ createElement("247a4768-7c46-472c-b5ea-565b37194956", "Actions", element.id);</s
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Dialog Content" typeId="69495016-6e72-4c18-bae5-2391e45cd234">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV9kNjkwOTkzOC1lZGFjLTRjMzItYTg4Yi0yOWFjMjE5NTFlZDYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0Ny43NCIgeDI9IjI1IiB5Mj0iNi4yNCIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAxIDAgLTIpIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNEE5OTI0Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6Izg2REUzMyIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIGZpbGw9InVybCgjU1ZHSURfMV9kNjkwOTkzOC1lZGFjLTRjMzItYTg4Yi0yOWFjMjE5NTFlZDYpIiBkPSJNNi44LDI5LjdIMy40djEzLjVjMCwxLjQsMS4yLDIuNiwyLjYsMi42aDE0LjF2LTMuNUg3LjhjLTAuNiwwLTEtMC41LTEtMVYyOS43eiBNMy40LDYuOXYxM2gzLjRWOC43DQoJYzAtMC42LDAuNS0xLDEtMWgxMi4zVjQuM0g2QzQuNiw0LjMsMy40LDUuNSwzLjQsNi45eiBNNDMuMiwyOS43djExLjZjMCwwLjYtMC41LDEtMSwxSDI5Ljl2My41SDQ0YzEuNCwwLDIuNi0xLjIsMi42LTIuNlYyOS43DQoJSDQzLjJ6IE0yOS45LDQuM3YzLjRoMTIuM2MwLjYsMCwxLDAuNSwxLDF2MTEuMmgzLjR2LTEzYzAtMS40LTEuMi0yLjYtMi42LTIuNkM0NCw0LjMsMjkuOSw0LjMsMjkuOSw0LjN6Ii8+DQo8L3N2Zz4NCg==" />
@@ -396,7 +390,6 @@ createElement("247a4768-7c46-472c-b5ea-565b37194956", "Actions", element.id);</s
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Dialog Actions" typeId="247a4768-7c46-472c-b5ea-565b37194956">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV9kNjkwOTkzOC1lZGFjLTRjMzItYTg4Yi0yOWFjMjE5NTFlZDYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0Ny43NCIgeDI9IjI1IiB5Mj0iNi4yNCIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAxIDAgLTIpIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNEE5OTI0Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6Izg2REUzMyIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIGZpbGw9InVybCgjU1ZHSURfMV9kNjkwOTkzOC1lZGFjLTRjMzItYTg4Yi0yOWFjMjE5NTFlZDYpIiBkPSJNNi44LDI5LjdIMy40djEzLjVjMCwxLjQsMS4yLDIuNiwyLjYsMi42aDE0LjF2LTMuNUg3LjhjLTAuNiwwLTEtMC41LTEtMVYyOS43eiBNMy40LDYuOXYxM2gzLjRWOC43DQoJYzAtMC42LDAuNS0xLDEtMWgxMi4zVjQuM0g2QzQuNiw0LjMsMy40LDUuNSwzLjQsNi45eiBNNDMuMiwyOS43djExLjZjMCwwLjYtMC41LDEtMSwxSDI5Ljl2My41SDQ0YzEuNCwwLDIuNi0xLjIsMi42LTIuNlYyOS43DQoJSDQzLjJ6IE0yOS45LDQuM3YzLjRoMTIuM2MwLjYsMCwxLDAuNSwxLDF2MTEuMmgzLjR2LTEzYzAtMS40LTEuMi0yLjYtMi42LTIuNkM0NCw0LjMsMjkuOSw0LjMsMjkuOSw0LjN6Ii8+DQo8L3N2Zz4NCg==" />
@@ -427,7 +420,6 @@ createElement("247a4768-7c46-472c-b5ea-565b37194956", "Actions", element.id);</s
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
       </childElementSettings>
     </elementSetting>
@@ -464,7 +456,6 @@ createElement("247a4768-7c46-472c-b5ea-565b37194956", "Actions", element.id);</s
       <mappingOptions />
       <mappingSettings />
       <macros />
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Icon" typeId="3c5f8ea8-061a-4e71-826f-59f9281abe71">
       <implements>
@@ -485,7 +476,6 @@ createElement("247a4768-7c46-472c-b5ea-565b37194956", "Actions", element.id);</s
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>true</allowSetValue>
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Image" typeId="329f635b-a55c-465f-b966-fe8411a5f57c">
       <implements>
@@ -506,7 +496,6 @@ createElement("247a4768-7c46-472c-b5ea-565b37194956", "Actions", element.id);</s
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>true</allowSetValue>
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Link" typeId="a274918b-72d1-4913-95de-0a801ac90ce4">
       <implements>
@@ -527,7 +516,6 @@ createElement("247a4768-7c46-472c-b5ea-565b37194956", "Actions", element.id);</s
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>true</allowSetValue>
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Navigation Menu" typeId="d7282bf2-1626-4b8b-9446-1d530527db06">
       <implements>
@@ -603,7 +591,6 @@ createElement("247a4768-7c46-472c-b5ea-565b37194956", "Actions", element.id);</s
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
       </childElementSettings>
     </elementSetting>
@@ -626,7 +613,6 @@ createElement("247a4768-7c46-472c-b5ea-565b37194956", "Actions", element.id);</s
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>true</allowSetValue>
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Table" typeId="eee93c29-3d58-4e42-aea9-c00451d17469">
       <implements>
@@ -732,7 +718,6 @@ model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == "
           </scriptOptions>
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
       </childElementSettings>
     </elementSetting>
@@ -755,7 +740,6 @@ model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == "
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>true</allowSetValue>
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Text Input" typeId="4803bf60-c626-4cbe-94ed-0f1eafff9fe3">
       <implements>
@@ -776,7 +760,6 @@ model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == "
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>true</allowSetValue>
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
   </elementSettings>
   <elementExtensions>
@@ -861,6 +844,7 @@ return display;
         <nameAccessibilityMode>optional</nameAccessibilityMode>
         <nameMustBeUnique>true</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfNDM4YjFkMzAtYmVjNS00YTk4LTlkY2EtMTNhNDIxODhmODI2IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI0LjMiIHkxPSI3NSIgeDI9IjI0LjMiIHkyPSIzMy41IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIDEgMCAtMzApIj4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzRBOTkyNCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfNDM4YjFkMzAtYmVjNS00YTk4LTlkY2EtMTNhNDIxODhmODI2KSIgZD0iTTQ1LjksNi4xdjI2LjRoLTMuNFY4YzAtMC42LTAuNS0xLjEtMS4xLTEuMUg3LjJDNi42LDYuOSw2LjEsNy40LDYuMSw4djMyLjRjMCwwLjYsMC41LDEuMSwxLjEsMS4xDQoJCWgyNi4yVjQ1SDUuM2MtMS40LDAtMi42LTEuMi0yLjYtMi42VjYuMWMwLTEuNCwxLjItMi42LDIuNi0yLjZoMzhDNDQuNywzLjUsNDUuOSw0LjcsNDUuOSw2LjF6Ii8+DQoJPGc+DQoJCQ0KCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDAyNjg4MDgzNDg5MDUxMjAzODA0MDAwMDAwMzM5OTI2MDA1NTQyOTE3MTYzNV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzcuMiIgeTE9Ijc2LjgwMzkiIHgyPSIzNy4yIiB5Mj0iNTYuMzY5MiIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAxIDAgLTMwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNEE5OTI0Ii8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwMjY4ODA4MzQ4OTA1MTIwMzgwNDAwMDAwMDMzOTkyNjAwNTU0MjkxNzE2MzVfKSIgZD0iTTM5LjEsMzQuNHYtOC4yaC0zLjl2OC4ySDI3djMuOWg4LjJ2OC4yaDMuOQ0KCQkJdi04LjJoOC4zdi0zLjlIMzkuMXoiLz4NCgk8L2c+DQo8L2c+DQo8L3N2Zz4NCg==" />
+        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
