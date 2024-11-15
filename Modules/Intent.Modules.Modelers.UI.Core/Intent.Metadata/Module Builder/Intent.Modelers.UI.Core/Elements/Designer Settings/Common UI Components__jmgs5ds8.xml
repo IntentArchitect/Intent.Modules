@@ -21,5 +21,30 @@
     </stereotype>
   </stereotypes>
   <metadata />
-  <childElements />
+  <childElements>
+    <childElement id="a1f59181-1dbb-46a8-89fd-bbbee350c061" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: User Interface Core Types</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="1a85e776-1889-4aec-89f8-c3c1fd7cb295">
+        <typeId>444f582b-b875-4c72-9671-697b47fa367c</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.UI</typePackageName>
+        <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>3cd798f0-8cdf-42a4-b733-469632a86f27</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

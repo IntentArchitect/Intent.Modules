@@ -36,9 +36,9 @@ namespace Intent.Modelers.UI.Core.Api
 
         public string Id => _association.Id;
 
-        public ShowDialogSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new ShowDialogSourceEndModel(_association.SourceEnd, this));
+        public ShowDialogSourceEndModel SourceEnd => _sourceEnd ??= new ShowDialogSourceEndModel(_association.SourceEnd, this);
 
-        public ShowDialogTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new ShowDialogTargetEndModel(_association.TargetEnd, this));
+        public ShowDialogTargetEndModel TargetEnd => _targetEnd ??= new ShowDialogTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 
