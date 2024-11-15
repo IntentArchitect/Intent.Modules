@@ -48,7 +48,7 @@ namespace Intent.Modules.Modelers.Services.ProxyInteractions.FactoryExtensions
                         var operation = proxyServiceCall.TargetEnd.TypeReference.Element.Name;
                         var targetPath = string.Join(".", mappedEnd.TargetPath.Select(s => s.Name));
                         var packageName = mapping.HostElement.Package.Name;
-                        var message = $"The proxy operation '{operation}' is bound to '{targetPath}', which seems to connect to an element from another package. Consider adding the required package reference to '{packageName}'.";
+                        var message = $"The proxy operation '{operation}' is bound to '{targetPath}', which seems to connect to an element from another package. Add the required package reference to '{packageName}'.";
                         throw new ElementException(proxyServiceCall.TargetEnd, message);
                     }
                 }
