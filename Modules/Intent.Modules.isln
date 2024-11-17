@@ -7,7 +7,7 @@
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.Metadata</metadataRelativePath>
   <modulesCacheRelativePath>.intent/modules</modulesCacheRelativePath>
-  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="3.3.70" />
+  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="4.0.2" />
   <applications>
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp\ModuleBuilder.CSharp.application.config" />
@@ -56,5 +56,6 @@
     <application id="62e3977a-20a5-4637-b195-5dd11b6939bb" name="Intent.Modules.Modelers.UI.ServiceProxies" relativePath="Intent.Modules.Modelers.UI.ServiceProxies/Intent.Modules.Modelers.UI.ServiceProxies.application.config" />
     <application id="854cb9ab-83bb-4cfa-8468-e72690f40c6b" name="Intent.Modules.Modelers.UI.Core" relativePath="Intent.Modules.Modelers.UI.Core/Intent.Modules.Modelers.UI.Core.application.config" />
     <application id="0211c9aa-70a9-49ee-94fb-1c537c72ed79" name="Intent.Modules.Common" relativePath="Intent.Modules.Common/Intent.Modules.Common.application.config" />
+    <application id="cadb9a6b-2e9a-487f-8711-e756d006b63c" name="Intent.Modules.Metadata.Security" relativePath="Intent.Modules.Metadata.Security/Intent.Modules.Metadata.Security.application.config" />
   </applications>
 </solution>

@@ -6,9 +6,9 @@
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>26f0d9a8-35f9-41e9-a2fe-a30bbb592357</parentFolderId>
-  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
-  <packageName>Intent.Metadata.WebApi</packageName>
+  <parentFolderId>eaf2e366-5868-4e3b-a80e-507433e38091</parentFolderId>
+  <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+  <packageName>Intent.Metadata.Security</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
       <addedByDefault>true</addedByDefault>

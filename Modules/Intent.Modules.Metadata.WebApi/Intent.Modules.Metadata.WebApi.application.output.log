@@ -98,6 +98,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>5fef08fe-d35e-4360-a7b1-942720f55bd4</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#df45eaf6-9202-4c25-8dd5-677e9ba1e906</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/ServicesPackageModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServicesPackageModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5fef08fe-d35e-4360-a7b1-942720f55bd4</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#95f4362b-8193-41cb-bd65-c17d6be3f96b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/VersionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>

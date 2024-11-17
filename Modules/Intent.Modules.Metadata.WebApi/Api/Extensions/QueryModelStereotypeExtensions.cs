@@ -114,6 +114,16 @@ namespace Intent.Metadata.WebApi.Api
             return stereotype != null ? new Secured(stereotype) : null;
         }
 
+        public static IReadOnlyCollection<Secured> GetSecureds(this QueryModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes(Secured.DefinitionId)
+                .Select(stereotype => new Secured(stereotype))
+                .ToArray();
+
+            return stereotypes;
+        }
+
         public static bool HasSecured(this QueryModel model)
         {
             return model.HasStereotype(Secured.DefinitionId);

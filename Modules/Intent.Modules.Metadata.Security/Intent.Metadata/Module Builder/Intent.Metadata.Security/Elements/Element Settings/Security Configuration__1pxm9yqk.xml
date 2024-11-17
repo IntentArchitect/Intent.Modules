@@ -7,8 +7,8 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>cd3ea7d2-e3c2-4ce3-98e1-39b4dfe87d10</parentFolderId>
-  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
-  <packageName>Intent.Metadata.WebApi</packageName>
+  <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+  <packageName>Intent.Metadata.Security</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
@@ -59,8 +59,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>35a8b318-fd7e-40ec-b3b7-dd79cf26524a</parentFolderId>
-      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
-      <packageName>Intent.Metadata.WebApi</packageName>
+      <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+      <packageName>Intent.Metadata.Security</packageName>
       <stereotypes />
       <metadata />
       <childElements>
@@ -75,15 +75,15 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Metadata.WebApi</typePackageName>
-            <typePackageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</typePackageId>
+            <typePackageName>Intent.Metadata.Security</typePackageName>
+            <typePackageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>5ffd802d-31d4-40b9-a0aa-979784d6216a</parentFolderId>
-          <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
-          <packageName>Intent.Metadata.WebApi</packageName>
+          <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+          <packageName>Intent.Metadata.Security</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -115,15 +115,15 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Metadata.WebApi</typePackageName>
-            <typePackageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</typePackageId>
+            <typePackageName>Intent.Metadata.Security</typePackageName>
+            <typePackageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>5ffd802d-31d4-40b9-a0aa-979784d6216a</parentFolderId>
-          <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
-          <packageName>Intent.Metadata.WebApi</packageName>
+          <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+          <packageName>Intent.Metadata.Security</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -162,8 +162,8 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>5ffd802d-31d4-40b9-a0aa-979784d6216a</parentFolderId>
-          <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
-          <packageName>Intent.Metadata.WebApi</packageName>
+          <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+          <packageName>Intent.Metadata.Security</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
               <addedByDefault>true</addedByDefault>

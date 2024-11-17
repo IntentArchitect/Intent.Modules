@@ -7,8 +7,8 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>cd3ea7d2-e3c2-4ce3-98e1-39b4dfe87d10</parentFolderId>
-  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
-  <packageName>Intent.Metadata.WebApi</packageName>
+  <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+  <packageName>Intent.Metadata.Security</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
@@ -58,8 +58,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9f37c60e-ad88-4484-98ca-6c9aa7ca3134</parentFolderId>
-      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
-      <packageName>Intent.Metadata.WebApi</packageName>
+      <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+      <packageName>Intent.Metadata.Security</packageName>
       <stereotypes />
       <metadata />
       <childElements />

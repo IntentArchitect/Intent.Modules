@@ -7,6 +7,7 @@
     <type id="e030c97a-e066-40a7-8188-808c275df3cb">Operation</type>
     <type id="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">Command</type>
     <type id="e71b0662-e29d-4db2-868b-8a12464b25d0">Query</type>
+    <type id="df45eaf6-9202-4c25-8dd5-677e9ba1e906">Services Package</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>
@@ -44,11 +45,11 @@ function getAsText(values){
   <displayAsAnnotation>true</displayAsAnnotation>
   <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
-  <allowMultipleApplies>false</allowMultipleApplies>
-  <parentFolderId>0011387a-b122-45d7-9cdb-8e21b315ab9f</parentFolderId>
+  <allowMultipleApplies>true</allowMultipleApplies>
+  <parentFolderId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</parentFolderId>
   <order>0</order>
-  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
-  <packageName>Intent.Metadata.WebApi</packageName>
+  <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+  <packageName>Intent.Metadata.Security</packageName>
   <properties>
     <property id="2b39acef-6079-48c9-b85e-2b0981f9de70">
       <comment>A comma delimited list of roles that are allowed to access the resource</comment>

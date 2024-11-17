@@ -1,3 +1,7 @@
+### Version 4.6.4
+
+- Improvement: The `Secured` Stereotype can now be applied multiple times to an element to represent an `AND` security requirement.
+
 ### Version 4.6.3
 
 - Improvement: Services designer will now show a validation error when an HTTP endpoint has more than one parameter's source is set to `From Body`.

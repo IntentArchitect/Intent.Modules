@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="bae6a89c-9e94-4d10-9cbb-35d64531e8b1" type="Solution Folder" typeId="0dc2b846-c968-49eb-99b7-8776919313a8">
+  <name>Metadata</name>
+  <display>Metadata</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>be8655ff-0cca-4516-820a-451f8cbf3641</parentFolderId>
+  <packageId>54faf6e8-7aa1-407d-8455-da539fc355fe</packageId>
+  <packageName>Intent.Modules</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

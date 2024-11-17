@@ -1,45 +1,217 @@
 ﻿#nullable enable
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Intent.Exceptions;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.Types.Api;
+using Intent.Modules.Metadata.Security.Models;
 using Intent.Modules.Metadata.WebApi.Stereotypes;
 
 namespace Intent.Modules.Metadata.WebApi.Models;
+
 public static class HttpEndpointModelFactory
 {
-    public static IHttpEndpointModel? GetEndpoint(IElement element)
+    public static bool TryGetCollection(
+        IElement element,
+        string? defaultBasePath,
+        bool securedByDefault,
+        [NotNullWhen(true)] out IHttpEndpointCollectionModel? httpEndpointCollectionModel)
     {
-        return GetEndpoint(element, null);
+        var derivedSecurityModels = SecurityModelHelpers.GetSecurityModels(element).ToList();
+
+        return TryGetCollection(
+            hasStereotypes: element,
+            defaultBasePath: defaultBasePath,
+            securedByDefault: securedByDefault,
+            derivedSecurityModels: derivedSecurityModels,
+            httpEndpointCollectionModel: out httpEndpointCollectionModel);
     }
 
+    public static bool TryGetCollection(
+        IPackage package,
+        string? defaultBasePath,
+        bool securedByDefault,
+        [NotNullWhen(true)] out IHttpEndpointCollectionModel? httpEndpointCollectionModel)
+    {
+        var derivedSecurityModels = SecurityModelHelpers.GetSecurityModels(package).ToList();
+
+        return TryGetCollection(
+            hasStereotypes: package,
+            defaultBasePath: defaultBasePath,
+            securedByDefault: securedByDefault,
+            derivedSecurityModels: derivedSecurityModels,
+            httpEndpointCollectionModel: out httpEndpointCollectionModel);
+    }
+
+    private static bool TryGetCollection(
+        IHasStereotypes hasStereotypes,
+        string? defaultBasePath,
+        bool securedByDefault,
+        List<ISecurityModel> derivedSecurityModels,
+        [NotNullWhen(true)] out IHttpEndpointCollectionModel? httpEndpointCollectionModel)
+    {
+        if (securedByDefault && derivedSecurityModels.Count == 0)
+        {
+            derivedSecurityModels.Add(ISecurityModel.Empty);
+        }
+
+        var childElements = hasStereotypes switch
+        {
+            IPackage hasChildElements => hasChildElements.ChildElements,
+            IElement hasChildElements => hasChildElements.ChildElements,
+            _ => throw new Exception($"Unsupported type: {hasStereotypes?.GetType()}")
+        };
+
+        var endpoints = childElements
+            .Select(childElement =>
+            {
+                var securityModels = SecurityModelHelpers.GetSecurityModels(childElement, checkParents: false).ToList();
+                if (securedByDefault)
+                {
+                    securityModels = securityModels.Where(x => !x.Equals(ISecurityModel.Empty)).ToList();
+                }
+
+                var success = TryGetEndpoint(
+                    element: childElement,
+                    defaultBasePath: defaultBasePath,
+                    securedByDefault: securedByDefault || derivedSecurityModels.Count > 0,
+                    securityModels: securityModels,
+                    httpEndpoint: out var httpEndpointModel);
+
+                return new
+                {
+                    Success = success,
+                    Endpoint = httpEndpointModel!,
+                    SecurityModels = securityModels
+                };
+            })
+            .Where(x => x.Success)
+            .ToArray();
+
+        if (hasStereotypes is IPackage or IElement { SpecializationTypeId: Constants.ElementTypeIds.Folder } &&
+            endpoints.Length == 0)
+        {
+            httpEndpointCollectionModel = null;
+            return false;
+        }
+
+        httpEndpointCollectionModel = new HttpEndpointCollectionModel(
+            securedByDefault: securedByDefault,
+            securityModels: derivedSecurityModels,
+            endpoints: endpoints
+                .Select(x => GetEndpoint(
+                    element: x.Endpoint.InternalElement,
+                    defaultBasePath: defaultBasePath,
+                    securedByDefault: securedByDefault || derivedSecurityModels.Count > 0,
+                    securityModels: x.SecurityModels))
+                .ToArray(),
+            allowAnonymous: hasStereotypes.HasStereotype(Constants.Stereotypes.Unsecured.Id));
+        return true;
+    }
+
+    /// <summary>
+    /// Obsolete. Use <see cref="TryGetEndpoint"/> instead.
+    /// </summary>
+    [Obsolete("See XML doc comment")]
+    public static IHttpEndpointModel? GetEndpoint(IElement element)
+    {
+        return TryGetEndpoint(
+            element: element,
+            defaultBasePath: null,
+            securedByDefault: false,
+            httpEndpointModel: out var httpEndpoint)
+                ? httpEndpoint
+                : null;
+    }
+
+    /// <summary>
+    /// Obsolete. Use <see cref="TryGetEndpoint"/> instead.
+    /// </summary>
+    [Obsolete("See XML doc comment")]
     public static IHttpEndpointModel? GetEndpoint(IElement element, string? defaultBasePath)
+    {
+        return TryGetEndpoint(element, defaultBasePath, false, out var httpEndpoint)
+            ? httpEndpoint
+            : null;
+    }
+
+    /// <summary>
+    /// Gets details of an endpoint where <see cref="IHttpEndpointModel.SecurityModels"/> contains
+    /// both directly and indirectly applied Security stereotypes (i.e. on parent elements
+    /// or the package).
+    /// </summary>
+    /// <param name="element">The element representing the endpoint, works with Operation, Command and Query element types.</param>
+    /// <param name="defaultBasePath">The default base API path, typically captured in the application settings.</param>
+    /// <param name="securedByDefault">Whether API endpoints should be secure by default, typically captured in the application settings.</param>
+    /// <param name="httpEndpointModel">The HTTP endpoint model.</param>
+    /// <returns>Whether the provided <paramref name="element"/> was found to represent an endpoint.</returns>
+    public static bool TryGetEndpoint(
+        IElement element,
+        string? defaultBasePath,
+        bool securedByDefault,
+        [NotNullWhen(true)] out IHttpEndpointModel? httpEndpointModel)
+    {
+        var securityModels = SecurityModelHelpers.GetSecurityModels(element).ToArray();
+
+        var result = TryGetEndpoint(
+            element: element,
+            defaultBasePath: defaultBasePath,
+            securedByDefault: securedByDefault,
+            securityModels: securityModels,
+            httpEndpoint: out var @out);
+
+        httpEndpointModel = @out;
+        return result;
+    }
+
+    private static HttpEndpointModel GetEndpoint(
+        IElement element,
+        string? defaultBasePath,
+        bool securedByDefault,
+        IReadOnlyCollection<ISecurityModel> securityModels)
+    {
+        if (!TryGetEndpoint(
+                element,
+                defaultBasePath: defaultBasePath,
+                securedByDefault: securedByDefault,
+                securityModels: securityModels,
+                httpEndpoint: out HttpEndpointModel? model))
+        {
+            throw new Exception("Element is not an endpoint");
+        }
+
+        return model;
+    }
+
+    private static bool TryGetEndpoint(
+        IElement element,
+        string? defaultBasePath,
+        bool securedByDefault,
+        IReadOnlyCollection<ISecurityModel> securityModels,
+        [NotNullWhen(true)] out HttpEndpointModel? httpEndpoint)
     {
         if (element.Stereotypes.Any(s => s.Name == "Http Settings (Obsolete)"))
         {
-            throw new Exception("A migration is outstanding on the services designer. Please open the services designer which will run the migration automatically and be sure to press save regardless afterwards.");
+            throw new ElementException(element, "A migration is outstanding on the services designer. Please open the services designer which will run the migration automatically and be sure to press save regardless afterwards.");
         }
 
         if (!element.TryGetHttpSettings(out var httpSettings))
         {
-            return null;
+            httpEndpoint = default;
+            return false;
         }
 
-        var hasSecured = element.TryGetSecured(out _);
         var hasUnsecured = element.TryGetUnsecured(out _);
-        var hasAuthorize = element.TryGetAuthorize(out _);
-        if ((hasSecured || hasAuthorize) && hasUnsecured)
-        {
-            throw new Exception($"{element.Name} [{element.Id}] cannot require authorization and allow-anonymous at the same time");
-        }
 
         var baseRoute = GetBaseRoute(element, defaultBasePath);
         var subRoute = httpSettings!.Route;
 
-        return new HttpEndpointModel(
+        httpEndpoint = new HttpEndpointModel(
             name: element.SpecializationTypeId switch
             {
                 // The `.RemoveSuffix("Request")`s below are not merged and in a specific order
@@ -63,10 +235,12 @@ public static class HttpEndpointModelFactory
             baseRoute: baseRoute,
             subRoute: subRoute,
             mediaType: httpSettings.ReturnTypeMediatype,
-            requiresAuthorization: hasSecured || hasAuthorize,
+            securityModels: securityModels,
+            securedByDefault: securedByDefault,
             allowAnonymous: hasUnsecured,
             internalElement: element,
             inputs: GetParameters(element, httpSettings).ToArray());
+        return true;
     }
 
     private static string GetRoute(IElement element, string? baseRoute, string? subRoute)
@@ -92,13 +266,13 @@ public static class HttpEndpointModelFactory
 
         if (element.TryGetApiVersion(out var apiVersion))
         {
-            var version = apiVersion!.ApplicableVersions.Max(x => x.Version);
+            var version = apiVersion.ApplicableVersions.Max(x => x.Version)!;
             version = FormatVersion(version);
             routeConstruction = routeConstruction.Replace("{version}", version);
         }
         else if (element.ParentElement?.TryGetApiVersion(out var parentApiVersion) == true)
         {
-            var version = parentApiVersion!.ApplicableVersions.Max(x => x.Version);
+            var version = parentApiVersion.ApplicableVersions.Max(x => x.Version)!;
             version = FormatVersion(version);
             routeConstruction = routeConstruction.Replace("{version}", version);
         }
@@ -167,19 +341,14 @@ public static class HttpEndpointModelFactory
         return null;
     }
 
-    private static string? GetBaseRoute(IElement element, string? defaultBasePath)
+    private static string GetBaseRoute(IElement element, string? defaultBasePath)
     {
         var baseRoute = element.ParentElement?.TryGetHttpServiceSettings(out var serviceSettings) == true &&
                         !string.IsNullOrWhiteSpace(serviceSettings!.Route)
             ? serviceSettings.Route
             : defaultBasePath;
 
-        if (baseRoute == null)
-        {
-            baseRoute = string.Empty;
-        }
-
-        return baseRoute;
+        return baseRoute ?? string.Empty;
     }
 
     private static IEnumerable<IHttpEndpointInputModel> GetParameters(
