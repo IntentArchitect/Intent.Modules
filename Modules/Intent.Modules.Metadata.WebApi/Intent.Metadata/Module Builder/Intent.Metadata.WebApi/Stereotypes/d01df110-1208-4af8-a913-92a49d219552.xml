@@ -54,6 +54,33 @@ return `[${properties["Source"].value}]`;
   <order>0</order>
   <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
   <packageName>Intent.Metadata.WebApi</packageName>
+  <validateFunction>const parameterSettingsStereotypeId = "d01df110-1208-4af8-a913-92a49d219552";
+const httpSettings = element.getParent().getStereotype("Http Settings");
+const verb = httpSettings?.getProperty("Verb").getValue()?.toString()
+
+function isFromBody(childElement) {
+    const parameterSettingsStereotype = childElement.getStereotype(parameterSettingsStereotypeId);
+    const source = parameterSettingsStereotype?.getProperty("Source").getValue();
+
+    if (source === "From Body") {
+        return true;
+    }
+
+    if (source === "Default") {
+        return ((verb == "POST" || verb == "PUT") &amp;&amp; childElement.typeReference.getType().specialization !== "Type-Definition");
+    }
+
+    return false;
+}
+
+if (!isFromBody(element)) {
+    return null;
+}
+
+const fromBodyParameterCount = element.getParent().getChildren().filter(isFromBody).length;
+return fromBodyParameterCount &gt; 1
+    ? "More than 1 paramer has its source set to \"From Body\""
+    : null;</validateFunction>
   <properties>
     <property id="d2630e0f-f930-404f-b453-1e8052a712f5">
       <name>Source</name>

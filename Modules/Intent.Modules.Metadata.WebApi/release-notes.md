@@ -1,3 +1,7 @@
+### Version 4.6.3
+
+- Improvement: Services designer will now show a validation error when an HTTP endpoint has more than one parameter's source is set to `From Body`.
+
 ### Version 4.6.2
 
 - Improvement: Updated `Services Designer` validation for `routes` to cater for multitenancy route parameter
