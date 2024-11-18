@@ -1,6 +1,7 @@
 ﻿### Version 3.8.4
 
 - Fixed: Mappings not discovering and resolving their C# references in certain circumstances.
+- Fixed: `PrivateConstant` method on a field now correctly adds the `const` as `private` instead of public.
 
 ### Version 3.8.3
 
