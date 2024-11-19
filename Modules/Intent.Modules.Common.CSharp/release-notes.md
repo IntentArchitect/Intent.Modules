@@ -1,4 +1,10 @@
-﻿### Version 3.8.4
+﻿### Version 3.8.5
+
+- Improvement: Added `AddNullForgivingConstructor` method to `CSharpClass`. This method will create a parameterless constructor, which sets all relevent qualifying properties on the class to `null!`
+- Improvement: Added ability to specify a `constructor` as `internal`
+- Fixed: `PrivateConstant` method on a field would add the const as public.
+
+### Version 3.8.4
 
 - Fixed: Mappings not discovering and resolving their C# references in certain circumstances.
 - Fixed: `PrivateConstant` method on a field now correctly adds the `const` as `private` instead of public.

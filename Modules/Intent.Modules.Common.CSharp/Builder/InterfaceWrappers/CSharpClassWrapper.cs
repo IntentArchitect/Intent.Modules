@@ -173,6 +173,8 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
 
     ICSharpClass ICSharpClass.AddPrimaryConstructor(Action<ICSharpConstructor>? configure) => wrapped.AddPrimaryConstructor(configure);
 
+    ICSharpClass ICSharpClass.AddNullForgivingConstructor(Action<CSharpConstructor>? configure) => wrapped.AddNullForgivingConstructor(configure);
+
     IBuildsCSharpMembers IBuildsCSharpMembers.AddClass(string name, Action<ICSharpClass>? configure) => ((IBuildsCSharpMembers)wrapped).AddClass(name, configure);
 
     IBuildsCSharpMembers IBuildsCSharpMembers.AddField(string type, string name, Action<ICSharpField>? configure) => ((IBuildsCSharpMembers)wrapped).AddField(type, name, configure);

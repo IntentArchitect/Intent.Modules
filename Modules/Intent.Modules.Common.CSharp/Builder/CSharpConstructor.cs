@@ -154,6 +154,12 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
         return this;
     }
 
+    public CSharpConstructor Internal()
+    {
+        AccessModifier = "internal ";
+        return this;
+    }
+
     public CSharpConstructor Static()
     {
         AccessModifier = "static ";
@@ -295,6 +301,8 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
     ICSharpConstructor ICSharpConstructor.Protected() => _wrapper.Protected();
 
     ICSharpConstructor ICSharpConstructor.Private() => _wrapper.Private();
+
+    ICSharpConstructor ICSharpConstructor.Internal() => _wrapper.Internal();
 
     ICSharpConstructor ICSharpConstructor.Static() => _wrapper.Static();
 

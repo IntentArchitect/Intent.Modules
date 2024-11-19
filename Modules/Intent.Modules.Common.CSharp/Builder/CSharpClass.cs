@@ -11,6 +11,14 @@ using static Intent.Modules.Common.CSharp.Builder.CSharpClass;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.Templates;
+using System.Xml;
+using System.Security.Claims;
+using System.Reflection.Metadata;
+using Intent.Modules.Common.Types.Api;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using Intent.Engine;
+using Intent.Modules.Common.CSharp.VisualStudio;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -259,6 +267,64 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return this;
     }
 
+    /// <summary>
+    /// Will add a null-forgiving constructor to the class. This will add a parameterless constructor, which sets all relevent and qualifying
+    /// properties on the class to null!. The constructor will only be added if there are qualifiying properties
+    /// </summary>
+    /// <returns>This class</returns>
+    public CSharpClass AddNullForgivingConstructor(Action<CSharpConstructor>? configure = null)
+    {
+        List<CSharpStatement> ctorStatements = [];
+        foreach (var property in Properties)
+        {
+            if (!string.IsNullOrWhiteSpace(property.InitialValue))
+            {
+                continue;
+            }
+
+            bool addStatement = false;
+
+            if (property.RepresentedModel is IHasTypeReference || property.RepresentedModel is ITypeReference)
+            {
+                var typeReference = (property.RepresentedModel as IHasTypeReference)?.TypeReference ?? property.RepresentedModel as ITypeReference;
+
+                // based on above checks, this should not be null
+                if (typeReference != null)
+                {
+                    var typeInfo = File.Template?.GetTypeInfo(typeReference);
+                    if (typeInfo != null)
+                    {
+                        addStatement = NeedsNullabilityAssignment(typeInfo);
+                    }
+                    else
+                    {
+                        addStatement = NeedsNullabilityAssignment(property.Type);
+                    }
+                }
+            }
+            else
+            {
+                addStatement = NeedsNullabilityAssignment(property.Type);
+            }
+
+            if (addStatement)
+            {
+                ctorStatements.Add(new CSharpStatement($"// IntentMerge"));
+                ctorStatements.Add(new CSharpStatement($"{property.Name.ToPascalCase()} = null!;"));
+            }
+        }
+
+        if (ctorStatements.Count > 0)
+        {
+            var ctor = new CSharpConstructor(this, false);
+            configure?.Invoke(ctor);
+            ctor.AddStatements(ctorStatements);
+            Constructors.Add(ctor);
+        }
+
+        return this;
+    }
+
     IBuildsCSharpMembers IBuildsCSharpMembers.InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethodDeclaration> configure) => InsertMethod(index, returnType, name, configure);
     public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
@@ -281,8 +347,8 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
     }
-    
-    
+
+
 
     /// <summary>
     /// Resolves the method name from the <paramref name="model"/>. Registers this method as representative of the <paramref name="model"/>.
@@ -296,7 +362,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
             configure?.Invoke(prop);
         });
     }
-    
+
     public CSharpClass AddMethod<TModel>(TModel returnType, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
@@ -306,7 +372,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
             configure?.Invoke(prop);
         });
     }
-    
+
     public CSharpClass AddMethod(CSharpType returnType, string name, Action<CSharpClassMethod>? configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
@@ -652,6 +718,31 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return $"{string.Join(Environment.NewLine, codeBlocks.ConcatCode(indentation))}";
     }
 
+    /// <summary>
+    /// Used to determine if a type can get the nullable assignment or not (null!)
+    /// </summary>
+    /// <param name="typeInfo">The resolved tyupe info</param>
+    /// <returns>Flag indicating if a nullability assignment is required</returns>
+    private static bool NeedsNullabilityAssignment(IResolvedTypeInfo typeInfo)
+    {
+        return !(typeInfo.IsPrimitive
+                 || typeInfo.IsNullable == true
+                 || (typeInfo.TypeReference != null && typeInfo.TypeReference.Element.IsEnumModel())
+                 || (typeInfo.TypeReference != null && typeInfo.TypeReference.Element.SpecializationType == "Generic Type"));
+    }
+
+    /// <summary>
+    /// This is a fallback way to determine nullability and is not 100% accurate
+    /// The NeedsNullabilityAssignment(IResolvedTypeInfo typeInfo) should ideally be used, which means when adding
+    /// a property to this class, the overload which takes in a "model" should be used
+    /// </summary>
+    /// <param name="type">The string representation of the type</param>
+    /// <returns>Flag indicating if a nullability assignment is required</returns>
+    private static bool NeedsNullabilityAssignment(string type)
+    {
+        return !(CSharpType.NonNullableValueTypes.Contains(type) || type.EndsWith('?') || CSharpType.CollectionMap.Keys.Any(k => type.StartsWith(k)));
+    }
+
     protected internal enum Type
     {
         Class,
@@ -911,6 +1002,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     ICSharpClass ICSharpDeclaration<ICSharpClass>.WithComments(IEnumerable<string> xmlComments)
     {
         return _wrapper.WithComments(xmlComments);
+    }
+
+    ICSharpClass ICSharpClass.AddNullForgivingConstructor(Action<CSharpConstructor>? configure)
+    {
+        return _wrapper.AddNullForgivingConstructor(configure);
     }
 
     #endregion
