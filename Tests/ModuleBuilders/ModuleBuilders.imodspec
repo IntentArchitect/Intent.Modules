@@ -347,7 +347,18 @@
   </templates>
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
-  <moduleSettings></moduleSettings>
+  <moduleSettings>
+    <group id="141601aa-92b2-4462-bf45-eda256a91148" title="New Module Settings Group" externalReference="141601aa-92b2-4462-bf45-eda256a91148">
+      <settings>
+        <setting id="a12ffcca-336e-4509-ac5c-f795c4a689b0" title="New Settings Field" type="multi-select">
+          <options>
+            <option value="Settings Option" description="Settings Option" />
+            <option value="Settings Option1" description="Settings Option1" />
+          </options>
+        </setting>
+      </settings>
+    </group>
+  </moduleSettings>
   <dependencies>
     <dependency id="Intent.Code.Weaving.Html" version="1.0.0" />
     <dependency id="Intent.Code.Weaving.Java" version="1.0.0" />

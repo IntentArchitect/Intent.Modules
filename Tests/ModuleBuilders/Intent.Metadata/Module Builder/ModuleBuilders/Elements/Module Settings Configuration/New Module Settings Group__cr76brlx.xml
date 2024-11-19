@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="141601aa-92b2-4462-bf45-eda256a91148" type="Module Settings Configuration" typeId="37e678f8-370a-4b05-ae44-69bb3d2b39b6">
+  <name>New Module Settings Group</name>
+  <display>New Module Settings Group</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>manually</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>bcabc001-5d8a-4759-81ad-3b1316fe73f2</parentFolderId>
+  <packageId>bcabc001-5d8a-4759-81ad-3b1316fe73f2</packageId>
+  <packageName>ModuleBuilders</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="a12ffcca-336e-4509-ac5c-f795c4a689b0" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>New Settings Field</name>
+      <display>New Settings Field</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>141601aa-92b2-4462-bf45-eda256a91148</parentFolderId>
+      <packageId>bcabc001-5d8a-4759-81ad-3b1316fe73f2</packageId>
+      <packageName>ModuleBuilders</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Multi-Select" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="e9ae7768-5d01-42e2-ad5e-accf9e650a46" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Settings Option</name>
+          <display>Settings Option</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>a12ffcca-336e-4509-ac5c-f795c4a689b0</parentFolderId>
+          <packageId>bcabc001-5d8a-4759-81ad-3b1316fe73f2</packageId>
+          <packageName>ModuleBuilders</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="68c5ee99-bf68-48ae-bcd7-be8a7bf5e1f6" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Settings Option1</name>
+          <display>Settings Option1</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>a12ffcca-336e-4509-ac5c-f795c4a689b0</parentFolderId>
+          <packageId>bcabc001-5d8a-4759-81ad-3b1316fe73f2</packageId>
+          <packageName>ModuleBuilders</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

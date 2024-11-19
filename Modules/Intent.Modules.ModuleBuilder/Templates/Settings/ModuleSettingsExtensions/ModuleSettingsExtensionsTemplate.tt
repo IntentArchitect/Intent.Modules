@@ -77,7 +77,11 @@ namespace <#= Namespace #>
 #>
 <#                  if (settingsField.GetFieldConfiguration().ControlType().IsSelect()) { #>
         public <#= optionsClassName #> <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>() => new <#= optionsClassName #>(_groupSettings.GetSetting("<#= settingsField.Id #>")?.Value);
-<#                  } else if (settingsField.GetFieldConfiguration().ControlType().IsMultiSelect()) { #>
+<#                  } else if (settingsField.GetFieldConfiguration().ControlType().IsMultiSelect())
+                    {
+                        AddUsing("System.Linq");
+                        AddUsing("System.Text.Json");
+#>
         public <#= optionsClassName #>[] <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>() => JsonSerializer.Deserialize<string[]>(_groupSettings.GetSetting("<#= settingsField.Id #>")?.Value ?? "[]")?.Select(x => new <#= optionsClassName #>(x)).ToArray();
 <#                  } #>
 
@@ -166,7 +170,11 @@ namespace <#= Namespace #>
 #>
 <#                  if (settingsField.GetFieldConfiguration().ControlType().IsSelect()) { #>
         public static <#= optionsClassName #> <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>(this <#= settingsExtension.TypeReference.Element.Name.ToCSharpIdentifier().ToPascalCase() #> groupSettings) => new <#= optionsClassName #>(groupSettings.GetSetting("<#= settingsField.Id #>")?.Value);
-<#                  } else if (settingsField.GetFieldConfiguration().ControlType().IsMultiSelect()) { #>
+<#                  } else if (settingsField.GetFieldConfiguration().ControlType().IsMultiSelect())
+                    {
+                        AddUsing("System.Linq");
+                        AddUsing("System.Text.Json");
+#>
         public static <#= optionsClassName #>[] <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>(this <#= settingsExtension.TypeReference.Element.Name.ToCSharpIdentifier().ToPascalCase() #> groupSettings) => JsonSerializer.Deserialize<string[]>(groupSettings.GetSetting("<#= settingsField.Id #>")?.Value ?? "[]")?.Select(x => new <#= optionsClassName #>(x)).ToArray();
 <#                  } #>
 

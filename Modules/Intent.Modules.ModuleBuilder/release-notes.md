@@ -1,3 +1,7 @@
+### Version 3.12.1
+
+- Fixed: When using a multi-select setting type using directives were missing for `System.Linq` and `System.Text.Json`.
+
 ### Version 3.12.0
 
 - Feature: Support for adding documentation to the module which will generate a `documentation.json` file. This file can be consumed by the new Documentation Dialog feature in Intent Architect.
