@@ -217,6 +217,8 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
                         return MajorMinorVersion.Create(11, 0);
                     case 8:
                         return MajorMinorVersion.Create(12, 0);
+                    case 9:
+                         return MajorMinorVersion.Create(13, 0);
                     default:
                         // See https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version#defaults
                         Logging.Log.Warning(
