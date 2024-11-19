@@ -58,7 +58,7 @@ This setting relates to [Style Cop SA1116](https://github.com/DotNetAnalyzers/St
 - **Default** :
 
     This will revert the styling back to the default template behavior.  
-    For constructors this means if there are multiple parameters, if the line length exceeds a certain value, will each parameter be output on a new line, except for the first parameter:
+    **For constructors**: this means if there are multiple parameters and if the line length exceeds a certain value, each parameter will be output on a new line, except for the first parameter:
 
     ``` csharp
  
@@ -77,8 +77,8 @@ This setting relates to [Style Cop SA1116](https://github.com/DotNetAnalyzers/St
         }
     }
     ```
-
-    For methods this means if there are multiple parameters, if the line length exceeds a certain value, will each parameter be output on a new line:
+  
+    **For methods**: this means if there are multiple parameters and if the line length exceeds a certain value, each parameter will be output on a new line:
 
     ``` csharp
     public class TypeName
@@ -98,7 +98,7 @@ This setting relates to [Style Cop SA1116](https://github.com/DotNetAnalyzers/St
     }
     ```
 
-    For interfaces, this means all parameters on a single line:
+    **For interfaces**:, this means all parameters on a single line:
 
     ``` csharp
     public interface IEFRepository<TDomain, TPersistence> : IRepository<TDomain>
