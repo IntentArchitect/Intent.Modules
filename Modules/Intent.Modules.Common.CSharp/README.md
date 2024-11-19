@@ -23,7 +23,7 @@ This setting relates to [Style Cop SA1128](https://github.com/DotNetAnalyzers/St
 
 - **New Line** :
 
-    The constructor initializer is declared on a seperate line as the constructor declaration:
+    The constructor initializer is declared on a separate line as the constructor declaration:
 
     ``` csharp
         public class TypeName
@@ -36,7 +36,7 @@ This setting relates to [Style Cop SA1128](https://github.com/DotNetAnalyzers/St
     ```
 
 - **Depends on length** :
-    The constructor initializer is declared on a seperate line as the constructor declaration, only if the lengeth of the _constructor declaration + constructor initializer_ is longer than a predefined length (currently set to 110 characters). If the lengeth is less than this, then the _constructor initializer_ is declared on the same line.
+    The constructor initializer is declared on a separate line as the constructor declaration, only if the length of the _constructor declaration + constructor initializer_ is longer than a predefined length (currently set to 110 characters). If the length is less than this, then the _constructor initializer_ is declared on the same line.
 
 ### Parameter Multi-line Spanning
 
@@ -57,7 +57,8 @@ This setting relates to [Style Cop SA1116](https://github.com/DotNetAnalyzers/St
 
 - **Default** :
 
-    If there are multiple parameters, if the line length exceeds a certain value, will each parameter be output on a new line, except for the first parameter:
+    This will revert the styling back to the default template behavior.  
+    For constructors this means if there are multiple parameters, if the line length exceeds a certain value, will each parameter be output on a new line, except for the first parameter:
 
     ``` csharp
  
@@ -74,6 +75,35 @@ This setting relates to [Style Cop SA1116](https://github.com/DotNetAnalyzers/St
             string name3)
         {
         }
+    }
+    ```
+
+    For methods this means if there are multiple parameters, if the line length exceeds a certain value, will each parameter be output on a new line:
+
+    ``` csharp
+    public class TypeName
+    {
+        // single parameter output
+        public SingleParamMethod(string name)
+        {
+        }
+
+        // multi parameter output
+        public MultiParamMethod(
+            string name,
+            string name2,
+            string name3)
+        {
+        }
+    }
+    ```
+
+    For interfaces, this means all parameters on a single line:
+
+    ``` csharp
+    public interface IEFRepository<TDomain, TPersistence> : IRepository<TDomain>
+    {
+        Task<TDomain?> FindAsync(Expression<Func<TPersistence, bool>> filterExpression, CancellationToken cancellationToken = default);
     }
     ```
 
