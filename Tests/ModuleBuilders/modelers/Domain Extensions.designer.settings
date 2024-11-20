@@ -29,7 +29,6 @@
       <targetEnd type="NewAssociationType Target End" typeId="43fb6968-f23c-436b-8ced-e340d76f2586">
         <nameAccessibilityMode>required</nameAccessibilityMode>
         <nameMustBeUnique>true</nameMustBeUnique>
-        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
