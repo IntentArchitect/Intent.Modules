@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Globalization;
 using System.Linq;
+using Intent.Modules.Common.CSharp.Nuget;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SdkEvolutionHelpers;
@@ -14,6 +16,22 @@ namespace Intent.Modules.Common.CSharp.Templates
     /// </summary>
     public static class TemplateExtensions
     {
+        public static IEnumerable<NuGetInstall> GetAllNuGetInstalls(this ITemplate template)
+        {
+            return template.GetAll<ICSharpTemplate, NuGetInstall>((instance) =>
+            {
+                if (instance is CSharpTemplateBase x)
+                {
+                    return x.NugetInstalls;
+                }
+                else if (instance is IHasNugetDependencies hasNuGetDependencies)
+                {
+                    return hasNuGetDependencies.GetNugetDependencies().Select(p => new NuGetInstall(p));
+                }
+                return [];
+            });
+        }
+
         /// <summary>
         /// Aggregates all results from <see cref="IHasNugetDependencies.GetNugetDependencies"/> for a template, including those specified on decorators.
         /// </summary>

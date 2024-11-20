@@ -6,6 +6,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.FactoryExtensions;
+using Intent.Modules.Common.CSharp.Nuget;
 using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
@@ -646,12 +647,12 @@ namespace Intent.Modules.Common.CSharp.Templates
             return usingDirectives;
         }
 
-        private readonly ICollection<INugetPackageInfo> _nugetDependencies = new List<INugetPackageInfo>();
+        internal ICollection<NuGetInstall> NugetInstalls { get; } = new List<NuGetInstall>();
 
         /// <inheritdoc />
         public virtual IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
-            return _nugetDependencies;
+            return NugetInstalls.Select(i => i.Package);
         }
 
         /// <summary>
@@ -660,7 +661,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         public NugetPackageInfo AddNugetDependency(string packageName, string packageVersion)
         {
             var package = new NugetPackageInfo(packageName, packageVersion);
-            _nugetDependencies.Add(package);
+            NugetInstalls.Add(new NuGetInstall(package));
             return package;
         }
 
@@ -669,7 +670,15 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         public void AddNugetDependency(INugetPackageInfo nugetPackageInfo)
         {
-            _nugetDependencies.Add(nugetPackageInfo);
+            NugetInstalls.Add(new NuGetInstall( nugetPackageInfo));
+        }
+
+        /// <summary>
+        /// Registers that the specified NuGet package should be installed in the .csproj file where this file resides.
+        /// </summary>
+        public void AddNugetDependency(INugetPackageInfo nugetPackageInfo, NuGetInstallOptions options)
+        {
+            NugetInstalls.Add(new NuGetInstall(nugetPackageInfo, options));
         }
 
         /// <summary>
@@ -677,10 +686,10 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         public void RemoveNugetDependency(string packageName)
         {
-            var toRemoves = _nugetDependencies.Where(n => n.Name == packageName).ToList();
+            var toRemoves = NugetInstalls.Where(n => n.Package.Name == packageName).ToList();
             foreach (var toRemove in toRemoves)
             {
-                _nugetDependencies.Remove(toRemove);
+                NugetInstalls.Remove(toRemove);
             }
         }
 

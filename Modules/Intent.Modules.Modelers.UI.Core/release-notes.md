@@ -1,5 +1,4 @@
 ### Version 1.0.0
 
 - Initial release.
-- Improvement : Support for sub menu items.
-- Improvement : Support for `Layout`s on containers.
+- Improvement : Support for mapping `Menu Item`s which are children of `Menu Item`s.

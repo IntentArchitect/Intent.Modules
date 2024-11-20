@@ -19,6 +19,16 @@
     <dependency id="Intent.Common" version="3.7.3" />
     <dependency id="Intent.Common.Types" version="4.0.0" />
   </dependencies>
+  <interoperability>
+    <!-- Minimum Compatible Versions -->
+    <detect id="Intent.VisualStudio.Projects">
+      <install>
+        <package id="Intent.VisualStudio.Projects" version="3.8.4-pre.3" />
+      </install>
+    </detect>
+    <!-- /Minimum Compatible Versions -->
+  </interoperability>
+
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />

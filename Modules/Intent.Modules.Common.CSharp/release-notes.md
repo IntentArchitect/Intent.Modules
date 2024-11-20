@@ -2,6 +2,7 @@
 
 - Improvement: Added `AddNullForgivingConstructor` method to `CSharpClass`. This method will create a parameterless constructor, which sets all relevent qualifying properties on the class to `null!`
 - Improvement: Added ability to specify a `constructor` as `internal`
+- Improvement: NuGet Package modeling `Get latesat from NuGet` better understand implied dependencies, fall back to pre-releases and Any .net Framework when not specified in the package.
 - Fixed: `PrivateConstant` method on a field would add the const as public.
 - Fixed: When a .NET project was set to use .NET 9 the software factory would show the following warning: `Assuming language version "13.0" for project "<Name>" targeting "net9.0"`. .NET 9 projects will now use language version `13.0`.
 

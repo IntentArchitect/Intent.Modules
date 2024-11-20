@@ -8,6 +8,7 @@ using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using System;
+using Intent.Modules.Common.CSharp.Nuget;
 
 namespace Intent.Modules.Common.CSharp.Templates;
 
@@ -21,6 +22,7 @@ public interface ICSharpTemplate : IIntentTemplate, IHasNugetDependencies, IHasA
     void RemoveUsing(string @namespace) => throw new NotSupportedException();
     string UseType(string fullName);
     void AddNugetDependency(INugetPackageInfo nugetPackageInfo);
+    void AddNugetDependency(INugetPackageInfo nugetPackageInfo, NuGetInstallOptions options);
     void RemoveNugetDependency(string packageName) => throw new NotSupportedException();
     string GetFullyQualifiedTypeName(ITypeReference typeReference, string collectionFormat = null);
     string GetFullyQualifiedTypeName(string templateId, TemplateDiscoveryOptions options = null);
