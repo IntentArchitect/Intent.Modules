@@ -23,9 +23,17 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("validateFunctionOverride")]
         public string ValidateFunctionOverride { get; set; } // TODO: Rename. It doesn't override, it adds an additional validation
 
+        [XmlArray("contextMenuOptions")]
+        [XmlArrayItem("createElement", typeof(ElementCreationOption))]
+        [XmlArrayItem("createAssociation", typeof(AssociationCreationOption))]
+        [XmlArrayItem("createStereotype", typeof(StereotypeCreationOption))]
+        [XmlArrayItem("runScript", typeof(RunScriptOption))]
+        [XmlArrayItem("defineMapping", typeof(MappingOption))]
+        public required List<ContextMenuOption> ContextMenuOptions { get; set; } = new();
+
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
-        public List<ElementCreationOption> CreationOptions { get; set; }
+        public List<ElementCreationOptionOld> CreationOptions { get; set; }
 
         [XmlArray("scriptOptions")]
         [XmlArrayItem("option")]

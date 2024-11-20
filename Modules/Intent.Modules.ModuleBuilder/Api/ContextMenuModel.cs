@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -50,19 +51,22 @@ namespace Intent.ModuleBuilder.Api
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        [IntentManaged(Mode.Fully)]
+        [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
+        [Obsolete("Replaced with ToPersistable() which returns List<ContextMenuOption>")]
         public IList<ElementCreationOptionModel> ElementCreations => _element.ChildElements
             .GetElementsOfType(ElementCreationOptionModel.SpecializationTypeId)
             .Select(x => new ElementCreationOptionModel(x))
             .ToList();
 
-        [IntentManaged(Mode.Fully)]
+        [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
+        [Obsolete("Replaced with ToPersistable() which returns List<ContextMenuOption>")]
         public IList<AssociationCreationOptionModel> AssociationCreations => _element.ChildElements
             .GetElementsOfType(AssociationCreationOptionModel.SpecializationTypeId)
             .Select(x => new AssociationCreationOptionModel(x))
             .ToList();
 
-        [IntentManaged(Mode.Fully)]
+        [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
+        [Obsolete("Replaced with ToPersistable() which returns List<ContextMenuOption>")]
         public StereotypeDefinitionCreationOptionModel StereotypeDefinitionCreation => _element.ChildElements
             .GetElementsOfType(StereotypeDefinitionCreationOptionModel.SpecializationTypeId)
             .Select(x => new StereotypeDefinitionCreationOptionModel(x))
@@ -70,13 +74,30 @@ namespace Intent.ModuleBuilder.Api
 
         public IList<TypeOrder> TypeOrder { get; }
 
-        public List<Intent.IArchitect.Agent.Persistence.Model.Common.ElementCreationOption> ToCreationOptionsPersistable()
+        [Obsolete("Replaced with ToPersistable() which returns List<ContextMenuOption>")]
+        public List<ElementCreationOptionOld> ToCreationOptionsPersistable()
+        {
+            return _element.ChildElements.Select(x =>
+                {
+                    if (x.IsElementCreationOptionModel()) return x.AsElementCreationOptionModel().ToPersistableOld();
+                    if (x.IsAssociationCreationOptionModel()) return x.AsAssociationCreationOptionModel().ToPersistableOld();
+                    if (x.IsStereotypeDefinitionCreationOptionModel()) return x.AsStereotypeDefinitionCreationOptionModel().ToPersistableOld();
+                    return null;
+                })
+                .Where(x => x != null)
+
+                .ToList();
+        }
+
+        public List<ContextMenuOption> ToPersistable()
         {
             return _element.ChildElements.Select(x =>
                 {
                     if (x.IsElementCreationOptionModel()) return x.AsElementCreationOptionModel().ToPersistable();
                     if (x.IsAssociationCreationOptionModel()) return x.AsAssociationCreationOptionModel().ToPersistable();
                     if (x.IsStereotypeDefinitionCreationOptionModel()) return x.AsStereotypeDefinitionCreationOptionModel().ToPersistable();
+                    if (x.IsRunScriptOptionModel()) return x.AsRunScriptOptionModel().ToPersistable();
+                    if (x.IsMappingOptionModel()) return x.AsMappingOptionModel().ToPersistable();
                     return null;
                 })
                 .Where(x => x != null)
@@ -116,11 +137,15 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
 
+        [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
+        [Obsolete("Replaced with ToPersistable() which returns List<ContextMenuOption>")]
         public IList<RunScriptOptionModel> RunScriptOptions => _element.ChildElements
             .GetElementsOfType(RunScriptOptionModel.SpecializationTypeId)
             .Select(x => new RunScriptOptionModel(x))
             .ToList();
 
+        [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
+        [Obsolete("Replaced with ToPersistable() which returns List<ContextMenuOption>")]
         public IList<MappingOptionModel> MappingOptions => _element.ChildElements
             .GetElementsOfType(MappingOptionModel.SpecializationTypeId)
             .Select(x => new MappingOptionModel(x))

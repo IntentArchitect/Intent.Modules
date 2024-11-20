@@ -93,5 +93,25 @@ return `[${shortcut}]`;</displayFunction>
       <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
+    <property id="d2572c08-f02e-40b2-8a06-4d5251bb3352">
+      <name>Bottom Divider</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="3e93529e-2110-414e-aec1-2656e1a99b22">
+      <name>Top Divider</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

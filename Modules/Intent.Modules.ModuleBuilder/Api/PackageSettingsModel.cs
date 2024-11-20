@@ -68,9 +68,10 @@ namespace Intent.ModuleBuilder.Api
                 DefaultName = this.GetPackageSettings().DefaultNameFunction(),
                 SortChildren = DetermineSortingOption(),
                 Icon = this.GetPackageSettings().Icon()?.ToPersistable(),
-                CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
-                    .Concat(MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
-                    .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
+                ContextMenuOptions = MenuOptions?.ToPersistable(),
+                CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistableOld())
+                    .Concat(MenuOptions.AssociationCreations.Select(x => x.ToPersistableOld()))
+                    .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistableOld() } : new ElementCreationOptionOld[0])
                     .ToList(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = MenuOptions?.TypeOrder.Select(x => x.ToPersistable()).ToList(),

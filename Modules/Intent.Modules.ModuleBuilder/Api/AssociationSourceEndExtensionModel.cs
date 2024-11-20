@@ -83,6 +83,7 @@ namespace Intent.ModuleBuilder.Api
                     DisplayName = this.GetAssociationEndExtensionSettings().DisplayName(),
                     Hint = this.GetAssociationEndExtensionSettings().Hint()
                 },
+                ContextMenuOptions = MenuOptions?.ToPersistable(),
                 CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList()

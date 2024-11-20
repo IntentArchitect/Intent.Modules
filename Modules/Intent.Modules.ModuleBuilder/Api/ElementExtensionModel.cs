@@ -82,6 +82,7 @@ namespace Intent.ModuleBuilder.Api
                     .ToList(),
                 DisplayFunctionOverride = this.GetExtensionSettings()?.DisplayTextFunction(),
                 ValidateFunctionOverride = this.GetExtensionSettings()?.ValidateFunction(),
+                ContextMenuOptions = MenuOptions?.ToPersistable(),
                 CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),

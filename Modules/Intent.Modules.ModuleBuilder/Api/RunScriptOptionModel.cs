@@ -52,6 +52,7 @@ namespace Intent.ModuleBuilder.Api
             {
                 return new RunScriptOption
                 {
+                    Type = ContextMenuOptionType.RunScript,
                     Order = this.GetOptionSettings().TypeOrder()?.ToString(),
                     Text = this.Name,
                     Shortcut = this.GetOptionSettings().Shortcut(),
@@ -60,13 +61,16 @@ namespace Intent.ModuleBuilder.Api
                     Icon = this.GetOptionSettings().Icon()?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "code" },
                     Script = this.Script,
                     Dependencies = this.Dependencies,
-                    IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction()
+                    IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
+                    HasTopDivider = this.GetOptionSettings().TopDivider(),
+                    HasBottomDivider = this.GetOptionSettings().BottomDivider(),
                 };
             }
             else
             {
                 return new RunScriptOption
                 {
+                    Type = ContextMenuOptionType.RunScript,
                     Order = this.GetOptionSettings().TypeOrder()?.ToString(),
                     Text = this.Name,
                     Shortcut = this.GetOptionSettings().Shortcut(),
@@ -74,7 +78,9 @@ namespace Intent.ModuleBuilder.Api
                     TriggerOnDoubleClick = this.GetOptionSettings().TriggerOnDoubleClick(),
                     Icon = this.GetOptionSettings().Icon()?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "code" },
                     ScriptReference = new TargetReferencePersistable() { Id = InternalElement.TypeReference.ElementId, Name = InternalElement.TypeReference.Element.Name },
-                    IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction()
+                    IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
+                    HasTopDivider = this.GetOptionSettings().TopDivider(),
+                    HasBottomDivider = this.GetOptionSettings().BottomDivider(),
                 };
             }
         }

@@ -69,6 +69,7 @@ namespace Intent.ModuleBuilder.Api
         {
             return new MappingOption()
             {
+                Type = ContextMenuOptionType.OpenAdvancedMapping,
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
                 MappingTypeId = _element.TypeReference.Element.Id,
                 MappingType = _element.TypeReference.Element.Name,
@@ -78,6 +79,8 @@ namespace Intent.ModuleBuilder.Api
                 TriggerOnDoubleClick = this.GetOptionSettings().TriggerOnDoubleClick(),
                 Icon = this.GetOptionSettings().Icon()?.ToPersistable(),
                 IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
+                HasTopDivider = this.GetOptionSettings().TopDivider(),
+                HasBottomDivider = this.GetOptionSettings().BottomDivider()
             };
         }
     }

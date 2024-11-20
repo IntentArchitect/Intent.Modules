@@ -101,6 +101,16 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Is Option Visible Function");
             }
 
+            public bool BottomDivider()
+            {
+                return _stereotype.GetProperty<bool>("Bottom Divider");
+            }
+
+            public bool TopDivider()
+            {
+                return _stereotype.GetProperty<bool>("Top Divider");
+            }
+
         }
 
         public class ScriptSettings

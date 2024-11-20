@@ -7,6 +7,6 @@ namespace Intent.ModuleBuilder.Api
     {
         IIconModel Icon { get; }
         bool AllowMultiple();
-        ElementCreationOption ToPersistable();
+        ContextMenuOption ToPersistable();
     }
 }

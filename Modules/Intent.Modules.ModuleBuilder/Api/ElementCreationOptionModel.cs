@@ -52,12 +52,13 @@ namespace Intent.ModuleBuilder.Api
             return this.GetOptionSettings().AllowMultiple();
         }
 
-        public ElementCreationOption ToPersistable()
+        [Obsolete]
+        public ElementCreationOptionOld ToPersistableOld()
         {
-            return new ElementCreationOption
+            return new ElementCreationOptionOld
             {
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
-                Type = ElementType.Element,
+                Type = ContextMenuOptionType.Element,
                 SpecializationTypeId = _element.TypeReference.Element.Id,
                 SpecializationType = _element.TypeReference.Element.Name,
                 Text = this.Name,
@@ -67,6 +68,28 @@ namespace Intent.ModuleBuilder.Api
                 Icon = Icon?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "file-o" },
                 AllowMultiple = this.GetOptionSettings().AllowMultiple(),
                 IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
+                HasTopDivider = this.GetOptionSettings().TopDivider(),
+                HasBottomDivider = this.GetOptionSettings().BottomDivider(),
+            };
+        }
+
+        public ContextMenuOption ToPersistable()
+        {
+            return new ElementCreationOption
+            {
+                Type = ContextMenuOptionType.Element,
+                Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                SpecializationTypeId = _element.TypeReference.Element.Id,
+                SpecializationType = _element.TypeReference.Element.Name,
+                Text = this.Name,
+                Shortcut = this.GetOptionSettings().Shortcut(),
+                MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
+                DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
+                Icon = Icon?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "file-o" },
+                AllowMultiple = this.GetOptionSettings().AllowMultiple(),
+                IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
+                HasTopDivider = this.GetOptionSettings().TopDivider(),
+                HasBottomDivider = this.GetOptionSettings().BottomDivider(),
             };
         }
 

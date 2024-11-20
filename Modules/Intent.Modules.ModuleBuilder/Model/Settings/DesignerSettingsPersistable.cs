@@ -141,9 +141,17 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("package")]
         public string[] RequiredPackages { get; set; } = new string[0];
 
+        [XmlArray("contextMenuOptions")]
+        [XmlArrayItem("createElement", typeof(ElementCreationOption))]
+        [XmlArrayItem("createAssociation", typeof(AssociationCreationOption))]
+        [XmlArrayItem("createStereotype", typeof(StereotypeCreationOption))]
+        [XmlArrayItem("runScript", typeof(RunScriptOption))]
+        [XmlArrayItem("defineMapping", typeof(MappingOption))]
+        public required List<ContextMenuOption> ContextMenuOptions { get; set; } = new();
+
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
-        public List<ElementCreationOption> CreationOptions { get; set; }
+        public List<ElementCreationOptionOld> CreationOptions { get; set; }
 
         [XmlArray("scriptOptions")]
         [XmlArrayItem("option")]
@@ -173,9 +181,6 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class ElementCreationOption : ContextMenuOption
     {
-        [XmlAttribute("type")]
-        public ElementType Type { get; set; }
-
         [XmlElement("specializationType")]
         public string SpecializationType { get; set; }
 
@@ -195,9 +200,30 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         }
     }
 
-    public enum ElementType
+    public class StereotypeCreationOption : ContextMenuOption
     {
-        [XmlEnum("n/a")]
+        [XmlElement("specializationType")]
+        public string SpecializationType { get; set; }
+
+        [XmlElement("specializationTypeId")]
+        public string SpecializationTypeId { get; set; }
+
+        [XmlElement("defaultName")]
+        public string DefaultName { get; set; }
+
+        [XmlElement("allowMultiple")]
+        public bool AllowMultiple { get; set; } = true;
+
+        public override string ToString()
+        {
+            return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
+                   $"{nameof(Text)} = '{Text}'";
+        }
+    }
+
+    public enum ContextMenuOptionType
+    {
+        [XmlEnum("n/a")] 
         NotApplicable = -1,
         [XmlEnum("element")]
         Element = 0,
@@ -205,23 +231,69 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         Association = 1,
         [XmlEnum("stereotype-definition")]
         StereotypeDefinition = 2,
-        [XmlEnum("stereotype-property")]
-        StereotypeProperty = 3
+        [XmlEnum("stereotype-property")] 
+        StereotypeProperty = 3,
+        [XmlEnum("run-script")] 
+        RunScript = 4,
+        [XmlEnum("open-advanced-mapping")] 
+        OpenAdvancedMapping = 5,
+    }
+
+    public class AssociationCreationOption : ContextMenuOption
+    {
+        [XmlElement("specializationType")]
+        public string SpecializationType { get; set; }
+
+        [XmlElement("specializationTypeId")]
+        public string SpecializationTypeId { get; set; }
+
+        [XmlElement("defaultName")]
+        public string DefaultName { get; set; }
+
+        [XmlElement("allowMultiple")]
+        public bool AllowMultiple { get; set; } = true;
+
+        [XmlElement("sourceEndDefault")]
+        public AssociationEndCreationDefaults SourceEndDefaults { get; set; }
+
+        [XmlElement("targetEndDefaults")]
+        public AssociationEndCreationDefaults TargetEndDefaults { get; set; }
+
+        public override string ToString()
+        {
+            return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
+                   $"{nameof(Text)} = '{Text}'";
+        }
+    }
+
+    public class AssociationEndCreationDefaults
+    {
+        [XmlAttribute("isNavigable")]
+        public bool IsNavigable { get; set; } = true;
+
+        [XmlAttribute("isNullable")]
+        public bool IsNullable { get; set; } = false;
+
+        [XmlAttribute("isCollection")]
+        public bool IsCollection { get; set; } = false;
     }
 
     public abstract class ContextMenuOption
     {
         [XmlAttribute("order")]
-        public string Order { get; set; }
+        public required string Order { get; set; }
+
+        [XmlAttribute("type")]
+        public required ContextMenuOptionType Type { get; set; }
 
         [XmlElement("text")]
-        public string Text { get; set; }
+        public required string Text { get; set; }
 
         [XmlElement("shortcut")]
-        public string Shortcut { get; set; }
+        public required string Shortcut { get; set; }
 
         [XmlElement("macShortcut")]
-        public string MacShortcut { get; set; }
+        public required string MacShortcut { get; set; }
         public bool ShouldSerializeMacShortcut() => !string.IsNullOrWhiteSpace(MacShortcut);
 
         [XmlElement("triggerOnDoubleClick")]
@@ -229,10 +301,18 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public bool ShouldSerializeTriggerOnDoubleClick() => TriggerOnDoubleClick.HasValue && TriggerOnDoubleClick.Value;
 
         [XmlElement("icon")]
-        public IconModelPersistable Icon { get; set; }
+        public required IconModelPersistable Icon { get; set; }
 
         [XmlElement("isOptionVisibleFunction")]
-        public string IsOptionVisibleFunction { get; set; }
+        public required string IsOptionVisibleFunction { get; set; }
+
+        [XmlElement("topDivider")]
+        public required bool HasTopDivider { get; set; }
+        public bool ShouldSerializeHasTopDivider() => HasTopDivider;
+
+        [XmlElement("bottomDivider")]
+        public required bool HasBottomDivider { get; set; }
+        public bool ShouldSerializeHasBottomDivider() => HasBottomDivider;
     }
 
     public class MappingOption : ContextMenuOption

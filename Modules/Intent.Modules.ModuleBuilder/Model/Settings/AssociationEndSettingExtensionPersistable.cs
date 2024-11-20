@@ -12,9 +12,17 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("type")]
         public List<TypeOrderPersistable> TypeOrder { get; set; } = new();
 
+        [XmlArray("contextMenuOptions")]
+        [XmlArrayItem("createElement", typeof(ElementCreationOption))]
+        [XmlArrayItem("createAssociation", typeof(AssociationCreationOption))]
+        [XmlArrayItem("createStereotype", typeof(StereotypeCreationOption))]
+        [XmlArrayItem("runScript", typeof(RunScriptOption))]
+        [XmlArrayItem("defineMapping", typeof(MappingOption))]
+        public required List<ContextMenuOption> ContextMenuOptions { get; set; } = new();
+
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
-        public List<ElementCreationOption> CreationOptions { get; set; }
+        public List<ElementCreationOptionOld> CreationOptions { get; set; }
 
         [XmlArray("scriptOptions")]
         [XmlArrayItem("option")]

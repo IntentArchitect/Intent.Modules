@@ -65,12 +65,12 @@ namespace Intent.ModuleBuilder.Api
             return this.GetOptionSettings().AllowMultiple();
         }
 
-        public ElementCreationOption ToPersistable()
+        public ContextMenuOption ToPersistable()
         {
-            return new ElementCreationOption
+            return new AssociationCreationOption()
             {
+                Type = ContextMenuOptionType.Association,
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
-                Type = ElementType.Association,
                 SpecializationTypeId = Type.IsAssociationSettingsModel() ? Type.AsAssociationSettingsModel().TargetEnd.Id : Type.Id,
                 SpecializationType = Type.IsAssociationSettingsModel() ? Type.AsAssociationSettingsModel().TargetEnd.Name : Type.Name,
                 Text = this.Name,
@@ -80,6 +80,40 @@ namespace Intent.ModuleBuilder.Api
                 Icon = Icon?.ToPersistable() ?? new IconModelPersistable() { Type = (IconType)Metadata.Models.IconType.UrlImagePath, Source = "./img/icons/uml/Association_256x.png" },
                 AllowMultiple = this.GetOptionSettings().AllowMultiple(),
                 IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
+                SourceEndDefaults = this.HasSourceEndDefaults() ? new AssociationEndCreationDefaults()
+                {
+                    IsNavigable = this.GetSourceEndDefaults().IsNavigable(),
+                    IsNullable = this.GetSourceEndDefaults().IsNullable(),
+                    IsCollection = this.GetSourceEndDefaults().IsCollection()
+                } : null,
+                TargetEndDefaults = this.HasTargetEndDefaults() ? new AssociationEndCreationDefaults()
+                {
+                    IsNavigable = this.GetTargetEndDefaults().IsNavigable(),
+                    IsNullable = this.GetTargetEndDefaults().IsNullable(),
+                    IsCollection = this.GetTargetEndDefaults().IsCollection()
+                } : null,
+                HasTopDivider = this.GetOptionSettings().TopDivider(),
+                HasBottomDivider = this.GetOptionSettings().BottomDivider(),
+            };
+        }
+        [Obsolete]
+        public ElementCreationOptionOld ToPersistableOld()
+        {
+            return new ElementCreationOptionOld
+            {
+                Type = ContextMenuOptionType.Association,
+                Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                SpecializationTypeId = Type.IsAssociationSettingsModel() ? Type.AsAssociationSettingsModel().TargetEnd.Id : Type.Id,
+                SpecializationType = Type.IsAssociationSettingsModel() ? Type.AsAssociationSettingsModel().TargetEnd.Name : Type.Name,
+                Text = this.Name,
+                Shortcut = this.GetOptionSettings().Shortcut(),
+                MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
+                DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
+                Icon = Icon?.ToPersistable() ?? new IconModelPersistable() { Type = (IconType)Metadata.Models.IconType.UrlImagePath, Source = "./img/icons/uml/Association_256x.png" },
+                AllowMultiple = this.GetOptionSettings().AllowMultiple(),
+                IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
+                HasTopDivider = this.GetOptionSettings().TopDivider(),
+                HasBottomDivider = this.GetOptionSettings().BottomDivider(),
             };
         }
 

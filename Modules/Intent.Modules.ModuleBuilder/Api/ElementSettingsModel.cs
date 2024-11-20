@@ -94,6 +94,7 @@ namespace Intent.ModuleBuilder.Api
                 ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToArray(),
                 ChildElementExtensions = this.ElementExtensions.Select(x => x.ToPersistable()).ToArray(),
                 MappingSettings = this.MappingSettings.Select(x => x.ToPersistable()).ToList(),
+                ContextMenuOptions = this.MenuOptions?.ToPersistable(),
                 CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),

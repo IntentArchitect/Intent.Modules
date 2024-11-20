@@ -46,12 +46,12 @@ namespace Intent.ModuleBuilder.Api
 
         public CoreTypeModel Type { get; }
 
-        public ElementCreationOption ToPersistable()
+        public ContextMenuOption ToPersistable()
         {
-            return new ElementCreationOption
+            return new StereotypeCreationOption
             {
+                Type = ContextMenuOptionType.StereotypeDefinition,
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
-                Type = ElementType.StereotypeDefinition,
                 SpecializationTypeId = this.Type.Name,
                 SpecializationType = this.Type.Name,
                 Text = this.Name,
@@ -61,6 +61,29 @@ namespace Intent.ModuleBuilder.Api
                 Icon = Icon?.ToPersistable(),
                 AllowMultiple = this.GetOptionSettings().AllowMultiple(),
                 IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
+                HasTopDivider = this.GetOptionSettings().TopDivider(),
+                HasBottomDivider = this.GetOptionSettings().BottomDivider(),
+            };
+        }
+
+        [Obsolete]
+        public ElementCreationOptionOld ToPersistableOld()
+        {
+            return new ElementCreationOptionOld
+            {
+                Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                Type = ContextMenuOptionType.StereotypeDefinition,
+                SpecializationTypeId = this.Type.Name,
+                SpecializationType = this.Type.Name,
+                Text = this.Name,
+                Shortcut = this.GetOptionSettings().Shortcut(),
+                MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
+                DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
+                Icon = Icon?.ToPersistable(),
+                AllowMultiple = this.GetOptionSettings().AllowMultiple(),
+                IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
+                HasTopDivider = this.GetOptionSettings().TopDivider(),
+                HasBottomDivider = this.GetOptionSettings().BottomDivider(),
             };
         }
 

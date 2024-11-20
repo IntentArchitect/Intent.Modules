@@ -129,9 +129,17 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
             }
         }
 
+        [XmlArray("contextMenuOptions")]
+        [XmlArrayItem("createElement", typeof(ElementCreationOption))]
+        [XmlArrayItem("createAssociation", typeof(AssociationCreationOption))]
+        [XmlArrayItem("createStereotype", typeof(StereotypeCreationOption))]
+        [XmlArrayItem("runScript", typeof(RunScriptOption))]
+        [XmlArrayItem("defineMapping", typeof(MappingOption))]
+        public required List<ContextMenuOption> ContextMenuOptions { get; set; } = new();
+
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
-        public List<ElementCreationOption> CreationOptions { get; set; } = new();
+        public List<ElementCreationOptionOld> CreationOptions { get; set; } = new();
 
         [XmlArray("scriptOptions")]
         [XmlArrayItem("option")]
