@@ -75,13 +75,13 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type type="Folder" order="0" />
-        <type type="Message" order="1" />
-        <type type="Integration Command" order="2" />
-        <type type="Eventing DTO" order="3" />
-        <type type="Type-Definition" order="4" />
-        <type type="Enum" order="5" />
-        <type type="Stereotype-Definition" order="6" />
+        <type order="0" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f" />
+        <type order="1" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" />
+        <type order="2" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" />
+        <type order="3" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" />
+        <type order="4" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+        <type order="5" type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+        <type order="6" type="Stereotype-Definition" typeId="54eff27b-2dfc-4853-8498-1a2c4700e385" />
       </typeOrder>
       <macros>
         <macro trigger="on-loaded">
@@ -135,8 +135,8 @@ const derivedFrom = association != null
     : "";
 
 return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
-      <nameMustBeUnique>false</nameMustBeUnique>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowAbstract>true</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>true</allowGenericTypes>
@@ -148,8 +148,8 @@ return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type type="Eventing DTO-Field" order="0" />
-        <type type="Generalization Target End" order="1" />
+        <type order="0" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" />
+        <type order="1" type="Generalization Target End" typeId="71b21217-2424-496d-be62-a147c8c3c1e7" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -178,12 +178,12 @@ return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
         <childElementSetting type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7">
           <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
           <saveAsOwnFile>false</saveAsOwnFile>
-          <nameMustBeUnique>false</nameMustBeUnique>
           <validateFunction>let otherAttributes = getParent().getChildren("DTO-Field").filter(x =&gt; x.id != id);
 if (otherAttributes.some(x =&gt; x.getName() == getName())) {
     return "Please ensure all field names are unique."
 }</validateFunction>
           <allowRename>true</allowRename>
+          <nameMustBeUnique>false</nameMustBeUnique>
           <allowAbstract>false</allowAbstract>
           <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
@@ -197,9 +197,9 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
           <typeReferenceSetting>
             <isRequired>true</isRequired>
             <targetTypes>
-              <type type="Eventing DTO" />
-              <type type="Type-Definition" />
-              <type type="Enum" />
+              <type type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" />
+              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+              <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
@@ -210,15 +210,14 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
       </childElementSettings>
     </elementSetting>
     <elementSetting type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625">
       <icon type="UrlImagePath" source="data:image/png;base64,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" />
       <saveAsOwnFile>true</saveAsOwnFile>
-      <nameMustBeUnique>false</nameMustBeUnique>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -230,7 +229,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type type="Property" order="0" />
+        <type order="0" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -295,13 +294,12 @@ white-space: inherit;`</style>
           </childElementVisualSetting>
         </childElementVisualSettings>
       </visualSettings>
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
       <icon type="UrlImagePath" source="data:image/png;base64,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" />
       <saveAsOwnFile>true</saveAsOwnFile>
-      <nameMustBeUnique>false</nameMustBeUnique>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -313,9 +311,9 @@ white-space: inherit;`</style>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type type="Property" order="0" />
-        <type type="Message Publish Assocation Source End" order="1" />
-        <type type="Message Subscribe Assocation Source End" order="2" />
+        <type order="0" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" />
+        <type order="1" type="Message Publish Assocation Source End" typeId="282eea12-2b98-4f0f-a28c-50c05b953c8e" />
+        <type order="2" type="Message Subscribe Assocation Source End" typeId="18780798-1ea8-462b-b4f9-b8605ad11636" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -402,8 +400,8 @@ white-space: inherit;`</style>
         <childElementSetting type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc">
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <saveAsOwnFile>false</saveAsOwnFile>
-          <nameMustBeUnique>false</nameMustBeUnique>
           <allowRename>true</allowRename>
+          <nameMustBeUnique>false</nameMustBeUnique>
           <allowAbstract>false</allowAbstract>
           <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
@@ -417,9 +415,9 @@ white-space: inherit;`</style>
           <typeReferenceSetting>
             <isRequired>true</isRequired>
             <targetTypes>
-              <type type="Type-Definition" />
-              <type type="Enum" />
-              <type type="Eventing DTO" />
+              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+              <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+              <type type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" />
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
@@ -430,14 +428,12 @@ white-space: inherit;`</style>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
       </childElementSettings>
     </elementSetting>
   </elementSettings>
   <elementExtensions>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-      <implements />
       <creationOptions>
         <option type="element">
           <text>New Message</text>
@@ -470,9 +466,9 @@ white-space: inherit;`</style>
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type type="Message" />
-        <type type="Integration Command" />
-        <type type="Eventing DTO" />
+        <type type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" />
+        <type type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" />
+        <type type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -481,13 +477,12 @@ white-space: inherit;`</style>
     <associationSetting type="Generalization" typeId="ccf59371-009d-44dd-9417-a907b463b223">
       <sourceEnd type="Generalization Source End" typeId="62984ee8-c933-4ad3-861f-51663756b44b">
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
-        <nameMustBeUnique>false</nameMustBeUnique>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Eventing DTO" />
+            <type type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -500,12 +495,13 @@ white-space: inherit;`</style>
       <targetEnd type="Generalization Target End" typeId="71b21217-2424-496d-be62-a147c8c3c1e7">
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>false</nameMustBeUnique>
+        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Eventing DTO" />
+            <type type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>

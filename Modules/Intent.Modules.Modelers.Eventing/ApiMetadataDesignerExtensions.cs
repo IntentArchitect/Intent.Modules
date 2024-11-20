@@ -9,6 +9,7 @@ namespace Intent.Modelers.Eventing.Api
 {
     public static class ApiMetadataDesignerExtensions
     {
+        public const string EventingDesignerId = "822e4254-9ced-4dd1-ad56-500b861f7e4d";
         public static IDesigner Eventing(this IMetadataManager metadataManager, IApplication application)
         {
             return metadataManager.Eventing(application.Id);
@@ -16,7 +17,7 @@ namespace Intent.Modelers.Eventing.Api
 
         public static IDesigner Eventing(this IMetadataManager metadataManager, string applicationId)
         {
-            return metadataManager.GetDesigner(applicationId, "Eventing");
+            return metadataManager.GetDesigner(applicationId, EventingDesignerId);
         }
 
     }

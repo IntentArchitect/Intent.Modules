@@ -36,9 +36,9 @@ namespace Intent.Modelers.Eventing.Api
 
         public string Id => _association.Id;
 
-        public GeneralizationSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new GeneralizationSourceEndModel(_association.SourceEnd, this));
+        public GeneralizationSourceEndModel SourceEnd => _sourceEnd ??= new GeneralizationSourceEndModel(_association.SourceEnd, this);
 
-        public GeneralizationTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new GeneralizationTargetEndModel(_association.TargetEnd, this));
+        public GeneralizationTargetEndModel TargetEnd => _targetEnd ??= new GeneralizationTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 

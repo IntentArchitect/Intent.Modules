@@ -19,7 +19,7 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type type="Application" />
+        <type type="Application" typeId="f40a4942-5d2d-4174-8ec1-af66cbd464db" />
       </typeOrder>
     </packageExtension>
   </packageExtensions>
@@ -27,8 +27,8 @@
     <elementSetting type="Application" typeId="f40a4942-5d2d-4174-8ec1-af66cbd464db">
       <icon type="UrlImagePath" source="data:image/png;base64,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" />
       <saveAsOwnFile>true</saveAsOwnFile>
-      <nameMustBeUnique>false</nameMustBeUnique>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -40,8 +40,8 @@
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type type="Message Publish Assocation Target End" order="0" />
-        <type type="Message Subscribe Assocation Target End" order="1" />
+        <type order="0" type="Message Publish Assocation Target End" typeId="6be8d569-70b9-4451-bd1b-7b654499503e" />
+        <type order="1" type="Message Subscribe Assocation Target End" typeId="21c3df1c-5140-4f65-9814-a68e1a577768" />
       </typeOrder>
       <creationOptions>
         <option type="association">
@@ -119,12 +119,10 @@ vertical-align: center`</style>
         <autoResizeEnabledByDefault>false</autoResizeEnabledByDefault>
         <childElementVisualSettings />
       </visualSettings>
-      <childElementSettings />
     </elementSetting>
   </elementSettings>
   <elementExtensions>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-      <implements />
       <creationOptions>
         <option type="element">
           <text>New Type</text>
@@ -156,9 +154,9 @@ vertical-align: center`</style>
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type type="Type-Definition" />
-        <type type="Enum" />
-        <type type="Stereotype-Definition" />
+        <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+        <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+        <type type="Stereotype-Definition" typeId="54eff27b-2dfc-4853-8498-1a2c4700e385" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -168,14 +166,13 @@ vertical-align: center`</style>
       <sourceEnd type="Message Publish Assocation Source End" typeId="282eea12-2b98-4f0f-a28c-50c05b953c8e">
         <displayFunction>return `publisher: ${typeReference.display}`;</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
-        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,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" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Application" />
+            <type type="Application" typeId="f40a4942-5d2d-4174-8ec1-af66cbd464db" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -190,12 +187,13 @@ vertical-align: center`</style>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,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" />
+        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Message" />
+            <type type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -221,14 +219,13 @@ vertical-align: center`</style>
       <sourceEnd type="Message Subscribe Assocation Source End" typeId="18780798-1ea8-462b-b4f9-b8605ad11636">
         <displayFunction>return `subscriber: ${typeReference.display}`;</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
-        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAABIdJREFUeF7t201oXFUUB/D/eW9mYhtDWlFSqkj9QGzBNnUhiiDuumlXUr9AMFRrO2nRftFUJ2MWUkERUVe6kKoob6agCHYhCHEhio0xpqadJIhtwVYMCNVFO01Ijtw0I8k4M+/dd+6b1PRkl7xz7j33N2feu7mZEJr8lS0w20z51ZhNNDCeJ7LLkEU3dTJTqgLKXjAFFPopoAIuFNB7oLAjFFABFwroNqaqI3QfWAWi+0DhPUMBFXCBgD6FhQ2hgAqo25iGPaDbGN3GCG8SCqiAjQT0KSzsDwVUQN3G6DbG5l2ghwk2WjViFVAB9TRG2AMKeFUCZgN+HoQ3ATjdW9oeJkTAKU/5WHP6JfojQmxoiLPF7n6bW6Y70A/ggdBZLQJcA2bS2DZyiN63KKFhqDNAM8v2dzmdascoCLe7KtAloO/hWClHm13VZsZxCmgG3FHgTR7wBYCUi0IdAk60zeC2wT666KKuyhjOAc3A3QEfYMJrLgp1AUhAub0V9x/fR8Muapo/RiKAZoKdAX9IhKekBbsABGH/eC+9Ia2lVn5igNuLfKvPOEPC24QUMJPC0bV34omjj9L0/wrQFPvMJ9yR8VECsDJu8RJAAn5b1oZ7ftpDF+LOH5aXWAdemZgpG+B1EPaFFVLvugSwJY07fj5Ev8adO0pewoBXStgZ8MdEeDJKQdUxsQAJnPGRG3mRDseZ0yanKYAvfMYrJicxAuBmm+JMbEzAE+O9tMF2rjjxTQE0hWWL3AnGIADPplBbQN/DLyuWY/13e+mSzTxxY5sGOPdW7iKC1a9RtoAp4LFTeSrGBbHNayrg1iL7NzKOEbApaqE2gMta8MjwQfo06tgu4poKOPdWvh7AABh3R1lAVECPMLDqFjz0dReVo4zrKqbpgKbwXZ/z6pkyzPaiJWwhEQH/Hs9Te9hYSVxfFMDZ+2GBuwl4J+xAIwyQCFPXpbFluIe+TAIobMxFA5x7qBSJsLVRkWGAnocjoznqCltoUtcXFdA8VG5iHAdwb70FNgL0PRRKOXo8KZwo49J0P6z+/bTuoITz/sP2G+UdBX7QA76JA9iaQedQj/0RFb+FcwBWRwEKi1l0QFPgcwFv8Ak/1DqErdOBk34Za0qH6fewBda6vuQA+/o5NTEBs3/bUr3gWoBpH0dOTmEb+mhGAecJZAP+EYSN81GqAQkYGMvTfXHgKjlLrgMrC8sGvBYevgejrfKzKsALrcvRObSfzipgHYFsgZ8F8F4twLSHp0/m6AMJnsldsh34bycW+GUAfeb7SgcS0DuWp1ekeNcE4Nz5oflTwCoD6HmYaE3hrsEe+ksBIwrsKfINlxmlWcBLWDf6Kv0ZMTU0bMm/hSsC3QFv/vYsVg4dpI9CVSwCrhlACxOrUAW04vpvsAIqoFBAmH51diAwDYKTDy3O9/GcfxxodvQOAL7wdZhNd3ca46KaGmN4JxIa2NGwCiiEVEAFFAoI07UDFVAoIEzXDlRAoYAwXTtQAYUCwnTtQAUUCgjTtQMVUCggTNcOVEChgDBdO1ABhQLC9H8Ayro33g801BsAAAAASUVORK5CYII=" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Application" />
+            <type type="Application" typeId="f40a4942-5d2d-4174-8ec1-af66cbd464db" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -243,12 +240,13 @@ vertical-align: center`</style>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAABIdJREFUeF7t201oXFUUB/D/eW9mYhtDWlFSqkj9QGzBNnUhiiDuumlXUr9AMFRrO2nRftFUJ2MWUkERUVe6kKoob6agCHYhCHEhio0xpqadJIhtwVYMCNVFO01Ijtw0I8k4M+/dd+6b1PRkl7xz7j33N2feu7mZEJr8lS0w20z51ZhNNDCeJ7LLkEU3dTJTqgLKXjAFFPopoAIuFNB7oLAjFFABFwroNqaqI3QfWAWi+0DhPUMBFXCBgD6FhQ2hgAqo25iGPaDbGN3GCG8SCqiAjQT0KSzsDwVUQN3G6DbG5l2ghwk2WjViFVAB9TRG2AMKeFUCZgN+HoQ3ATjdW9oeJkTAKU/5WHP6JfojQmxoiLPF7n6bW6Y70A/ggdBZLQJcA2bS2DZyiN63KKFhqDNAM8v2dzmdascoCLe7KtAloO/hWClHm13VZsZxCmgG3FHgTR7wBYCUi0IdAk60zeC2wT666KKuyhjOAc3A3QEfYMJrLgp1AUhAub0V9x/fR8Muapo/RiKAZoKdAX9IhKekBbsABGH/eC+9Ia2lVn5igNuLfKvPOEPC24QUMJPC0bV34omjj9L0/wrQFPvMJ9yR8VECsDJu8RJAAn5b1oZ7ftpDF+LOH5aXWAdemZgpG+B1EPaFFVLvugSwJY07fj5Ev8adO0pewoBXStgZ8MdEeDJKQdUxsQAJnPGRG3mRDseZ0yanKYAvfMYrJicxAuBmm+JMbEzAE+O9tMF2rjjxTQE0hWWL3AnGIADPplBbQN/DLyuWY/13e+mSzTxxY5sGOPdW7iKC1a9RtoAp4LFTeSrGBbHNayrg1iL7NzKOEbApaqE2gMta8MjwQfo06tgu4poKOPdWvh7AABh3R1lAVECPMLDqFjz0dReVo4zrKqbpgKbwXZ/z6pkyzPaiJWwhEQH/Hs9Te9hYSVxfFMDZ+2GBuwl4J+xAIwyQCFPXpbFluIe+TAIobMxFA5x7qBSJsLVRkWGAnocjoznqCltoUtcXFdA8VG5iHAdwb70FNgL0PRRKOXo8KZwo49J0P6z+/bTuoITz/sP2G+UdBX7QA76JA9iaQedQj/0RFb+FcwBWRwEKi1l0QFPgcwFv8Ak/1DqErdOBk34Za0qH6fewBda6vuQA+/o5NTEBs3/bUr3gWoBpH0dOTmEb+mhGAecJZAP+EYSN81GqAQkYGMvTfXHgKjlLrgMrC8sGvBYevgejrfKzKsALrcvRObSfzipgHYFsgZ8F8F4twLSHp0/m6AMJnsldsh34bycW+GUAfeb7SgcS0DuWp1ekeNcE4Nz5oflTwCoD6HmYaE3hrsEe+ksBIwrsKfINlxmlWcBLWDf6Kv0ZMTU0bMm/hSsC3QFv/vYsVg4dpI9CVSwCrhlACxOrUAW04vpvsAIqoFBAmH51diAwDYKTDy3O9/GcfxxodvQOAL7wdZhNd3ca46KaGmN4JxIa2NGwCiiEVEAFFAoI07UDFVAoIEzXDlRAoYAwXTtQAYUCwnTtQAUUCgjTtQMVUCggTNcOVEChgDBdO1ABhQLC9H8Ayro33g801BsAAAAASUVORK5CYII=" />
+        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Message" />
+            <type type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
