@@ -250,7 +250,6 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
           <text>Add Constructor</text>
           <shortcut>ctrl + shift + u</shortcut>
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzguNjk3NiIgeTE9IjE3LjQxNCIgeDI9IjM4LjYxMzYiIHkyPSIzMi40NzM4IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNjMpIj4NCgk8c3RvcCAgb2Zmc2V0PSI1LjY5NTE5M2UtMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjRDQ0VGIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXykiIGQ9Ik00Ni4yLDM2LjV2MS4xYzAsMC41LTAuNCwxLTEsMWgtNXY0LjdjMCwwLjUtMC40LDEtMSwxaC0xLjFjLTAuNSwwLTEtMC41LTEtMXYtNC43aC01DQoJYy0wLjUsMC0xLTAuNS0xLTF2LTEuMWMwLTAuNSwwLjUtMSwxLTFoNXYtNS4zYzAtMC42LDAuNS0xLDEtMWgxLjFjMC42LDAsMSwwLjQsMSwxdjUuM2g1QzQ1LjgsMzUuNSw0Ni4yLDM1LjksNDYuMiwzNi41eiIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDE2NzM4NzMzMTY0NjU3Njg3NTA0MDAwMDAwMTIyNTM0NDQ4NzA0MDA3NTQ0OV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My40NDM3IiB4Mj0iMjUiIHkyPSI0LjA0MzciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTY3Mzg3MzMxNjQ2NTc2ODc1MDQwMDAwMDAxMjI1MzQ0NDg3MDQwMDc1NDQ5XykiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgICAgIiBkPSINCglNNDQuMSwxMS45TDI1LjUsMi44Yy0wLjMtMC4xLTAuNi0wLjEtMC45LDBMNS45LDExLjljLTAuNCwwLjItMC42LDAuNS0wLjYsMC45djI0LjNjMCwwLjQsMC4yLDAuNywwLjYsMC45bDE4LjYsOS4yDQoJYzAuMSwwLjEsMC4zLDAuMSwwLjUsMC4xczAuMywwLDAuNS0wLjFsMTAuMS01VjQwaC0yLjRsLTYuNywzLjNWMjIuNEw0MS42LDE1djE4LjloMy4xdi0yMUM0NC43LDEyLjUsNDQuNSwxMi4xLDQ0LjEsMTEuOXoNCgkgTTIzLjUsNDMuM0wxMSwzNy4xbC0yLjYtMS4yVjE1bDE1LjEsNy40VjQzLjN6IE0zOC45LDEyLjhMMjUsMTkuN2wtMTMuOS02LjlIMTFsMTQtNi45TDM4LjksMTIuOEwzOC45LDEyLjh6Ii8+DQo8L3N2Zz4NCg==" />
-          <topDivider>true</topDivider>
           <specializationType>Class Constructor</specializationType>
           <specializationTypeId>dec2bd12-4699-4f45-8ec9-3b62dc692d2b</specializationTypeId>
           <defaultName>Constructor</defaultName>
@@ -269,17 +268,60 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
           <text>New Association</text>
           <shortcut>ctrl + shift + c</shortcut>
           <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+          <subMenuOptions>
+            <createAssociation type="association">
+              <text>One-to-One</text>
+              <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+              <specializationType>Association Target End</specializationType>
+              <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
+              <defaultName>NewAssociation</defaultName>
+              <allowMultiple>true</allowMultiple>
+              <sourceEndDefault isNavigable="false" isNullable="false" isCollection="false" />
+              <targetEndDefaults isNavigable="true" isNullable="false" isCollection="false" />
+            </createAssociation>
+            <createAssociation type="association">
+              <text>One-to-Many</text>
+              <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+              <specializationType>Association Target End</specializationType>
+              <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
+              <defaultName>NewAssociation</defaultName>
+              <allowMultiple>true</allowMultiple>
+              <sourceEndDefault isNavigable="false" isNullable="false" isCollection="false" />
+              <targetEndDefaults isNavigable="true" isNullable="false" isCollection="true" />
+            </createAssociation>
+            <createAssociation type="association">
+              <text>Many-to-One</text>
+              <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+              <specializationType>Association Target End</specializationType>
+              <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
+              <defaultName>NewAssociation</defaultName>
+              <allowMultiple>true</allowMultiple>
+              <sourceEndDefault isNavigable="false" isNullable="false" isCollection="true" />
+              <targetEndDefaults isNavigable="true" isNullable="false" isCollection="false" />
+            </createAssociation>
+            <createAssociation type="association">
+              <text>Many-to-Many</text>
+              <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+              <specializationType>Association Target End</specializationType>
+              <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
+              <defaultName>NewAssociation</defaultName>
+              <allowMultiple>true</allowMultiple>
+              <sourceEndDefault isNavigable="false" isNullable="false" isCollection="true" />
+              <targetEndDefaults isNavigable="true" isNullable="false" isCollection="true" />
+            </createAssociation>
+          </subMenuOptions>
           <specializationType>Association Target End</specializationType>
           <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
           <defaultName>NewAssociation</defaultName>
           <allowMultiple>true</allowMultiple>
-          <sourceEndDefault isNavigable="true" isNullable="true" isCollection="true" />
-          <targetEndDefaults isNavigable="true" isNullable="true" isCollection="true" />
+          <sourceEndDefault isNavigable="false" isNullable="false" isCollection="true" />
+          <targetEndDefaults isNavigable="true" isNullable="false" isCollection="false" />
         </createAssociation>
         <createAssociation order="0" type="association">
           <text>New Inheritance</text>
           <shortcut>ctrl + shift + i</shortcut>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <bottomDivider>true</bottomDivider>
           <specializationType>Generalization Target End</specializationType>
           <specializationTypeId>4686cc1d-b4d8-4b99-b45b-f77bd5496946</specializationTypeId>
           <defaultName>NewGeneralization</defaultName>
@@ -300,7 +342,6 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
           <text>Add Constructor</text>
           <shortcut>ctrl + shift + u</shortcut>
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzguNjk3NiIgeTE9IjE3LjQxNCIgeDI9IjM4LjYxMzYiIHkyPSIzMi40NzM4IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNjMpIj4NCgk8c3RvcCAgb2Zmc2V0PSI1LjY5NTE5M2UtMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjRDQ0VGIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXykiIGQ9Ik00Ni4yLDM2LjV2MS4xYzAsMC41LTAuNCwxLTEsMWgtNXY0LjdjMCwwLjUtMC40LDEtMSwxaC0xLjFjLTAuNSwwLTEtMC41LTEtMXYtNC43aC01DQoJYy0wLjUsMC0xLTAuNS0xLTF2LTEuMWMwLTAuNSwwLjUtMSwxLTFoNXYtNS4zYzAtMC42LDAuNS0xLDEtMWgxLjFjMC42LDAsMSwwLjQsMSwxdjUuM2g1QzQ1LjgsMzUuNSw0Ni4yLDM1LjksNDYuMiwzNi41eiIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDE2NzM4NzMzMTY0NjU3Njg3NTA0MDAwMDAwMTIyNTM0NDQ4NzA0MDA3NTQ0OV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My40NDM3IiB4Mj0iMjUiIHkyPSI0LjA0MzciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTY3Mzg3MzMxNjQ2NTc2ODc1MDQwMDAwMDAxMjI1MzQ0NDg3MDQwMDc1NDQ5XykiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgICAgIiBkPSINCglNNDQuMSwxMS45TDI1LjUsMi44Yy0wLjMtMC4xLTAuNi0wLjEtMC45LDBMNS45LDExLjljLTAuNCwwLjItMC42LDAuNS0wLjYsMC45djI0LjNjMCwwLjQsMC4yLDAuNywwLjYsMC45bDE4LjYsOS4yDQoJYzAuMSwwLjEsMC4zLDAuMSwwLjUsMC4xczAuMywwLDAuNS0wLjFsMTAuMS01VjQwaC0yLjRsLTYuNywzLjNWMjIuNEw0MS42LDE1djE4LjloMy4xdi0yMUM0NC43LDEyLjUsNDQuNSwxMi4xLDQ0LjEsMTEuOXoNCgkgTTIzLjUsNDMuM0wxMSwzNy4xbC0yLjYtMS4yVjE1bDE1LjEsNy40VjQzLjN6IE0zOC45LDEyLjhMMjUsMTkuN2wtMTMuOS02LjlIMTFsMTQtNi45TDM4LjksMTIuOEwzOC45LDEyLjh6Ii8+DQo8L3N2Zz4NCg==" />
-          <topDivider>true</topDivider>
           <specializationType>Class Constructor</specializationType>
           <specializationTypeId>dec2bd12-4699-4f45-8ec9-3b62dc692d2b</specializationTypeId>
           <defaultName>Constructor</defaultName>
@@ -328,6 +369,7 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
           <text>New Inheritance</text>
           <shortcut>ctrl + shift + i</shortcut>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <bottomDivider>true</bottomDivider>
           <specializationType>Generalization Target End</specializationType>
           <specializationTypeId>4686cc1d-b4d8-4b99-b45b-f77bd5496946</specializationTypeId>
           <defaultName>NewGeneralization</defaultName>
@@ -1092,6 +1134,38 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
       <diagramSettings>
         <addNewElementsTo>Package</addNewElementsTo>
         <contextMenuOptions>
+          <runScript order="0" type="run-script">
+            <text>Add to Diagram</text>
+            <shortcut>ctrl + shift + a</shortcut>
+            <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGx1cy12NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfUGx1c194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NpcmNsZV94M0VfXzAwMDAwMTYxNjEyMDcyMDczMjQ2MjA5NTEwMDAwMDA4NjY5NjY2NzcxODg1MzA5ODc5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzQ5MyIgeDI9IjI1LjIiIHkyPSIyLjUxMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV94M0VfIiBmaWxsPSJ1cmwoI194M0NfQ2lyY2xlX3gzRV9fMDAwMDAxNjE2MTIwNzIwNzMyNDYyMDk1MTAwMDAwMDg2Njk2NjY3NzE4ODUzMDk4NzlfKSIgZD0iTTI1LjIsMi4zDQoJCWMtMTIuNCwwLTIyLjUsMTAtMjIuNSwyMi41YzAsMTIuNCwxMC4xLDIyLjUsMjIuNSwyMi41czIyLjUtMTAuMSwyMi41LTIyLjVDNDcuNywxMi4zLDM3LjYsMi4zLDI1LjIsMi4zeiBNMjUuMiw0My44DQoJCWMtMTAuNSwwLTE5LTguNS0xOS0xOXM4LjUtMTksMTktMTlzMTksOC41LDE5LDE5QzQ0LjIsMzUuMiwzNS43LDQzLjgsMjUuMiw0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzIxMSIgeDI9IjI1LjIiIHkyPSIyLjQ4MDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19QbHVzX3gzRV9fMDAwMDAwODE2MzE4NjY4NDEyOTcxNDM5MDAwMDAwMDczMTUyNDQ3Mzk2MDkwODMyNjlfIiBmaWxsPSJ1cmwoI194M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXykiIGQ9Ig0KCQlNMzAuNCwxMi42SDIwdjYuOWgtNi45djEwLjRIMjB2Ni45aDEwLjR2LTYuOWg2LjlWMTkuNmgtNi45VjEyLjZ6IE0zMy44LDIzdjMuNWgtNi45djYuOWgtMy41di02LjloLTYuOVYyM2g2Ljl2LTYuOWgzLjVWMjNIMzMuOHoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
+            <bottomDivider>true</bottomDivider>
+            <script>const result = await dialogService.openForm({
+    title: "Add to Diagram",
+    fields: [
+        {
+            id: "elementIds",
+            label: "Select Elements",
+            fieldType: "tree-view",
+            treeViewOptions: { 
+                rootId: getPackages()[0].id,
+                isMultiSelect: true,
+                submitFormTriggers: ["double-click", "enter"],
+                hasFilter: true,
+                selectableTypes: [
+                    { specializationId: "Class", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Value Object", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Enum", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Domain Service", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Domain Event", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Repository", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                ],
+            }
+        }
+    ]
+})
+
+getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePosition, true)</script>
+          </runScript>
           <createElement type="element">
             <text>New Class</text>
             <shortcut>ctrl + shift + c</shortcut>
@@ -1149,7 +1223,40 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
             <allowMultiple>true</allowMultiple>
           </option>
         </creationOptions>
-        <scriptOptions />
+        <scriptOptions>
+          <option order="0" type="run-script">
+            <text>Add to Diagram</text>
+            <shortcut>ctrl + shift + a</shortcut>
+            <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGx1cy12NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfUGx1c194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NpcmNsZV94M0VfXzAwMDAwMTYxNjEyMDcyMDczMjQ2MjA5NTEwMDAwMDA4NjY5NjY2NzcxODg1MzA5ODc5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzQ5MyIgeDI9IjI1LjIiIHkyPSIyLjUxMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV94M0VfIiBmaWxsPSJ1cmwoI194M0NfQ2lyY2xlX3gzRV9fMDAwMDAxNjE2MTIwNzIwNzMyNDYyMDk1MTAwMDAwMDg2Njk2NjY3NzE4ODUzMDk4NzlfKSIgZD0iTTI1LjIsMi4zDQoJCWMtMTIuNCwwLTIyLjUsMTAtMjIuNSwyMi41YzAsMTIuNCwxMC4xLDIyLjUsMjIuNSwyMi41czIyLjUtMTAuMSwyMi41LTIyLjVDNDcuNywxMi4zLDM3LjYsMi4zLDI1LjIsMi4zeiBNMjUuMiw0My44DQoJCWMtMTAuNSwwLTE5LTguNS0xOS0xOXM4LjUtMTksMTktMTlzMTksOC41LDE5LDE5QzQ0LjIsMzUuMiwzNS43LDQzLjgsMjUuMiw0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzIxMSIgeDI9IjI1LjIiIHkyPSIyLjQ4MDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19QbHVzX3gzRV9fMDAwMDAwODE2MzE4NjY4NDEyOTcxNDM5MDAwMDAwMDczMTUyNDQ3Mzk2MDkwODMyNjlfIiBmaWxsPSJ1cmwoI194M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXykiIGQ9Ig0KCQlNMzAuNCwxMi42SDIwdjYuOWgtNi45djEwLjRIMjB2Ni45aDEwLjR2LTYuOWg2LjlWMTkuNmgtNi45VjEyLjZ6IE0zMy44LDIzdjMuNWgtNi45djYuOWgtMy41di02LjloLTYuOVYyM2g2Ljl2LTYuOWgzLjVWMjNIMzMuOHoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
+            <bottomDivider>true</bottomDivider>
+            <script>const result = await dialogService.openForm({
+    title: "Add to Diagram",
+    fields: [
+        {
+            id: "elementIds",
+            label: "Select Elements",
+            fieldType: "tree-view",
+            treeViewOptions: { 
+                rootId: getPackages()[0].id,
+                isMultiSelect: true,
+                submitFormTriggers: ["double-click", "enter"],
+                hasFilter: true,
+                selectableTypes: [
+                    { specializationId: "Class", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Value Object", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Enum", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Domain Service", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Domain Event", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Repository", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                ],
+            }
+        }
+    ]
+})
+
+getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePosition, true)</script>
+          </option>
+        </scriptOptions>
         <elementVisualSettings />
         <associationVisualSettings />
       </diagramSettings>

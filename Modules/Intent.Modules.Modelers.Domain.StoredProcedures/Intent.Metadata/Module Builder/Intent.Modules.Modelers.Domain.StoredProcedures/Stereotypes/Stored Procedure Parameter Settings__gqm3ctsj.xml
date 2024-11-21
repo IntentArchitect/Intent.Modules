@@ -6,7 +6,7 @@
   <targetReferenceTypes />
   <targetFilterFunction>const storedProcedureStereotypeId = "f40ff84c-68ad-405f-bda0-1237dd15fc92";
 
-return element.getParent().hasStereotype(storedProcedureStereotypeId);</targetFilterFunction>
+return element.getParent()?.hasStereotype(storedProcedureStereotypeId);</targetFilterFunction>
   <applyMode>manually</applyMode>
   <icon type="FontAwesome" source="at" />
   <displayIcon>false</displayIcon>

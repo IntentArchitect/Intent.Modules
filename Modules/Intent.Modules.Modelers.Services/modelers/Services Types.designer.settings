@@ -242,6 +242,9 @@ const metadataKeyName = "initialized";
                     { specializationId: "Message", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
                     { specializationId: "Integration Command", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
                     { specializationId: "Integration Event Handler", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Class", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Domain Service", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Repository", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
                 ],
             }
         }
