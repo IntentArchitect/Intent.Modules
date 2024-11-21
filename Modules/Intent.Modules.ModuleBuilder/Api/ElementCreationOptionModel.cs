@@ -90,6 +90,7 @@ namespace Intent.ModuleBuilder.Api
                 IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
                 HasTopDivider = this.GetOptionSettings().TopDivider(),
                 HasBottomDivider = this.GetOptionSettings().BottomDivider(),
+                SubMenuOptions = MenuOptions?.ToPersistable()
             };
         }
 
@@ -130,6 +131,16 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        public ContextMenuModel SubmenuMenu => _element.ChildElements
+            .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
+            .Select(x => new ContextMenuModel(x))
+            .SingleOrDefault();
+
+        public ContextMenuModel MenuOptions => _element.ChildElements
+            .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
+            .Select(x => new ContextMenuModel(x))
+            .SingleOrDefault();
         public const string SpecializationTypeId = "5fa12f89-da1e-49c5-b8e9-427b22407f19";
 
         public string Comment => _element.Comment;

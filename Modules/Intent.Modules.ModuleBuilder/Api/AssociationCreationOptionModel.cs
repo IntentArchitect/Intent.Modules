@@ -94,6 +94,7 @@ namespace Intent.ModuleBuilder.Api
                 } : null,
                 HasTopDivider = this.GetOptionSettings().TopDivider(),
                 HasBottomDivider = this.GetOptionSettings().BottomDivider(),
+                SubMenuOptions = MenuOptions?.ToPersistable()
             };
         }
         [Obsolete]
@@ -149,6 +150,16 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        public ContextMenuModel SubmenuMenu => _element.ChildElements
+            .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
+            .Select(x => new ContextMenuModel(x))
+            .SingleOrDefault();
+
+        public ContextMenuModel MenuOptions => _element.ChildElements
+            .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
+            .Select(x => new ContextMenuModel(x))
+            .SingleOrDefault();
         public const string SpecializationTypeId = "3dcfa78b-17ee-45b6-be03-8407d089ce76";
 
         public string Comment => _element.Comment;

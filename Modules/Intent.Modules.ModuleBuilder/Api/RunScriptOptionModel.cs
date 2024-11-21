@@ -22,6 +22,16 @@ namespace Intent.ModuleBuilder.Api
         {
         }
 
+        public ContextMenuModel SubmenuMenu => _element.ChildElements
+            .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
+            .Select(x => new ContextMenuModel(x))
+            .SingleOrDefault();
+
+        public ContextMenuModel MenuOptions => _element.ChildElements
+            .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
+            .Select(x => new ContextMenuModel(x))
+            .SingleOrDefault();
+
         public override string ToString()
         {
             return _element.ToString();
@@ -64,6 +74,7 @@ namespace Intent.ModuleBuilder.Api
                     IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
                     HasTopDivider = this.GetOptionSettings().TopDivider(),
                     HasBottomDivider = this.GetOptionSettings().BottomDivider(),
+                    SubMenuOptions = MenuOptions?.ToPersistable()
                 };
             }
             else
@@ -81,6 +92,7 @@ namespace Intent.ModuleBuilder.Api
                     IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
                     HasTopDivider = this.GetOptionSettings().TopDivider(),
                     HasBottomDivider = this.GetOptionSettings().BottomDivider(),
+                    SubMenuOptions = MenuOptions?.ToPersistable()
                 };
             }
         }

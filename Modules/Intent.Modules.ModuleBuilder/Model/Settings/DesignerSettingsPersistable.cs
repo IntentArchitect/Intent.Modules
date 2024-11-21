@@ -313,6 +313,15 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("bottomDivider")]
         public required bool HasBottomDivider { get; set; }
         public bool ShouldSerializeHasBottomDivider() => HasBottomDivider;
+
+        [XmlArray("subMenuOptions")]
+        [XmlArrayItem("createElement", typeof(ElementCreationOption))]
+        [XmlArrayItem("createAssociation", typeof(AssociationCreationOption))]
+        [XmlArrayItem("createStereotype", typeof(StereotypeCreationOption))]
+        [XmlArrayItem("runScript", typeof(RunScriptOption))]
+        [XmlArrayItem("defineMapping", typeof(MappingOption))]
+        public List<ContextMenuOption> SubMenuOptions { get; set; } = [];
+        public bool ShouldSerializeSubMenuOptions() => SubMenuOptions?.Any() == true;
     }
 
     public class MappingOption : ContextMenuOption

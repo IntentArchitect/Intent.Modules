@@ -666,6 +666,21 @@ return null;</iconFunction>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <typeOrder>
+            <type order="0" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21" />
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <text>Add Submenu Menu</text>
+              <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA9lJREFUeF7tm01PE2EQx/+zrUa8aCgNiZ6MHElQw8WDSqTGUNpyl4JE1DOCnwLfPoBEorxEuSi2hQRajOHkJ9CIcBAOJhVMTIQQ7DPGElAosLvMahYYzjPPy++Zsrvz2yXon4gAibI1GQpQWAQKUAEKCQjTt6zA80NcdnR54RJZfIoZbcRcA6IlABNE9JwZs9lk+TuAWDj/nk8vAVj3bKE6aJksgcIMtrbcIWGZmT/kkuEze56AcAMbAEb657sB7gBwyOG4nwmFW+PJyjGH8ethsRSftAJIsEGYGVsflNtB/0E8EYyxkF8JID12lWY3T7EOMNI3fw/Ed3ezhoLhujet4be2ucwUG0cVrWAUwGnbeJ8FMDBjgIaRKKZAq/++igAvD+bjlrFeAhzY3ZppJpsM2QKJZ/gOgIe7m8NXWZ2pRnpUBFjX++148HDhIxhhyRKZkMo1VyS2GyM2ws3E6JfM4adcJiTTURqgKwMLUWaTXqtGwSK/m5+FcxNtldObx0hkuNYAkwQcEYzvt9Qlw7hA9X3zPUTc7sXqjOHERGs4VQIwzV1MuO/FHH4ag4EuivR/9fBejtqzydCTzZuMp3kRhDI/bd6TtTAWPQbIj7PJ8O0SgBn28JA82bpngyhAIUpvATLdyLaEeg/MTxj4QfV9+R4i+qcXkViGOwl4IDxs36UXLyL/4zYmOsy1VnCf3sZEhhaOYcVMSW+kAbzOJiuatiuTeIavARjwXRntfkHNqUYaLD7K1T/NxyhgvdJHOcc0/zzKraVImgnM1sVcS/mk7fS/mwlpVFEAI2BU2cb7L2CaDRrSMXza0ExYW2d9f74boA5y0c5iLtzMtVSOu91rYphPFAJosrAH2llA3lhIjUZpbvM+t2iofqkOWkHbhipA77PNobNuwe23eNuWPgyug1BDwBJAOQO8IGBOW/qrpaBWTviTUIAKUEhAmK4VqACFBITptldhFes7E1ax7mUFqlgvpaliXVhhf6erWPcOpop1KUsV61KCgIp1KUMV63KCKtalDL31wtA3E2QHomJdxm+7t7NUrDvjuu37gSrWnQFUsa5i3VmlAFCx7hjVxkAV627BFdtZKtbdYnMeb9vSV7HusqXvnL1G6psJHtSAemEhRAWoAIUEhOm2V2EV6y6vwvrFuruS1C/WbXipWHdXUDtGq1j3DqaKdSlLFetSgirW5QRVrEsZ6hfrUoKAinUhQ28BqliXHYeKdRk/FesyfvrFun6x7ryCVKw7Z7UhUsW6W3Aq1t0Scxlv29JXse6ype/yAA58uGpNYQkoQAUoJCBM1woUAvwFIdJbDh+O9fMAAAAASUVORK5CYII=" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[submenu]</defaultName>
+              <allowMultiple>false</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -696,6 +711,21 @@ return null;</iconFunction>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <typeOrder>
+            <type order="0" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21" />
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <text>Add Submenu Menu</text>
+              <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA9lJREFUeF7tm01PE2EQx/+zrUa8aCgNiZ6MHElQw8WDSqTGUNpyl4JE1DOCnwLfPoBEorxEuSi2hQRajOHkJ9CIcBAOJhVMTIQQ7DPGElAosLvMahYYzjPPy++Zsrvz2yXon4gAibI1GQpQWAQKUAEKCQjTt6zA80NcdnR54RJZfIoZbcRcA6IlABNE9JwZs9lk+TuAWDj/nk8vAVj3bKE6aJksgcIMtrbcIWGZmT/kkuEze56AcAMbAEb657sB7gBwyOG4nwmFW+PJyjGH8ethsRSftAJIsEGYGVsflNtB/0E8EYyxkF8JID12lWY3T7EOMNI3fw/Ed3ezhoLhujet4be2ucwUG0cVrWAUwGnbeJ8FMDBjgIaRKKZAq/++igAvD+bjlrFeAhzY3ZppJpsM2QKJZ/gOgIe7m8NXWZ2pRnpUBFjX++148HDhIxhhyRKZkMo1VyS2GyM2ws3E6JfM4adcJiTTURqgKwMLUWaTXqtGwSK/m5+FcxNtldObx0hkuNYAkwQcEYzvt9Qlw7hA9X3zPUTc7sXqjOHERGs4VQIwzV1MuO/FHH4ag4EuivR/9fBejtqzydCTzZuMp3kRhDI/bd6TtTAWPQbIj7PJ8O0SgBn28JA82bpngyhAIUpvATLdyLaEeg/MTxj4QfV9+R4i+qcXkViGOwl4IDxs36UXLyL/4zYmOsy1VnCf3sZEhhaOYcVMSW+kAbzOJiuatiuTeIavARjwXRntfkHNqUYaLD7K1T/NxyhgvdJHOcc0/zzKraVImgnM1sVcS/mk7fS/mwlpVFEAI2BU2cb7L2CaDRrSMXza0ExYW2d9f74boA5y0c5iLtzMtVSOu91rYphPFAJosrAH2llA3lhIjUZpbvM+t2iofqkOWkHbhipA77PNobNuwe23eNuWPgyug1BDwBJAOQO8IGBOW/qrpaBWTviTUIAKUEhAmK4VqACFBITptldhFes7E1ax7mUFqlgvpaliXVhhf6erWPcOpop1KUsV61KCgIp1KUMV63KCKtalDL31wtA3E2QHomJdxm+7t7NUrDvjuu37gSrWnQFUsa5i3VmlAFCx7hjVxkAV627BFdtZKtbdYnMeb9vSV7HusqXvnL1G6psJHtSAemEhRAWoAIUEhOm2V2EV6y6vwvrFuruS1C/WbXipWHdXUDtGq1j3DqaKdSlLFetSgirW5QRVrEsZ6hfrUoKAinUhQ28BqliXHYeKdRk/FesyfvrFun6x7ryCVKw7Z7UhUsW6W3Aq1t0Scxlv29JXse6ype/yAA58uGpNYQkoQAUoJCBM1woUAvwFIdJbDh+O9fMAAAAASUVORK5CYII=" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[submenu]</defaultName>
+              <allowMultiple>false</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -731,6 +761,21 @@ return getStereotype("Option Settings").getProperty("Icon").getValue();</iconFun
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <typeOrder>
+            <type order="0" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21" />
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <text>Add Submenu Menu</text>
+              <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA9lJREFUeF7tm01PE2EQx/+zrUa8aCgNiZ6MHElQw8WDSqTGUNpyl4JE1DOCnwLfPoBEorxEuSi2hQRajOHkJ9CIcBAOJhVMTIQQ7DPGElAosLvMahYYzjPPy++Zsrvz2yXon4gAibI1GQpQWAQKUAEKCQjTt6zA80NcdnR54RJZfIoZbcRcA6IlABNE9JwZs9lk+TuAWDj/nk8vAVj3bKE6aJksgcIMtrbcIWGZmT/kkuEze56AcAMbAEb657sB7gBwyOG4nwmFW+PJyjGH8ethsRSftAJIsEGYGVsflNtB/0E8EYyxkF8JID12lWY3T7EOMNI3fw/Ed3ezhoLhujet4be2ucwUG0cVrWAUwGnbeJ8FMDBjgIaRKKZAq/++igAvD+bjlrFeAhzY3ZppJpsM2QKJZ/gOgIe7m8NXWZ2pRnpUBFjX++148HDhIxhhyRKZkMo1VyS2GyM2ws3E6JfM4adcJiTTURqgKwMLUWaTXqtGwSK/m5+FcxNtldObx0hkuNYAkwQcEYzvt9Qlw7hA9X3zPUTc7sXqjOHERGs4VQIwzV1MuO/FHH4ag4EuivR/9fBejtqzydCTzZuMp3kRhDI/bd6TtTAWPQbIj7PJ8O0SgBn28JA82bpngyhAIUpvATLdyLaEeg/MTxj4QfV9+R4i+qcXkViGOwl4IDxs36UXLyL/4zYmOsy1VnCf3sZEhhaOYcVMSW+kAbzOJiuatiuTeIavARjwXRntfkHNqUYaLD7K1T/NxyhgvdJHOcc0/zzKraVImgnM1sVcS/mk7fS/mwlpVFEAI2BU2cb7L2CaDRrSMXza0ExYW2d9f74boA5y0c5iLtzMtVSOu91rYphPFAJosrAH2llA3lhIjUZpbvM+t2iofqkOWkHbhipA77PNobNuwe23eNuWPgyug1BDwBJAOQO8IGBOW/qrpaBWTviTUIAKUEhAmK4VqACFBITptldhFes7E1ax7mUFqlgvpaliXVhhf6erWPcOpop1KUsV61KCgIp1KUMV63KCKtalDL31wtA3E2QHomJdxm+7t7NUrDvjuu37gSrWnQFUsa5i3VmlAFCx7hjVxkAV627BFdtZKtbdYnMeb9vSV7HusqXvnL1G6psJHtSAemEhRAWoAIUEhOm2V2EV6y6vwvrFuruS1C/WbXipWHdXUDtGq1j3DqaKdSlLFetSgirW5QRVrEsZ6hfrUoKAinUhQ28BqliXHYeKdRk/FesyfvrFun6x7ryCVKw7Z7UhUsW6W3Aq1t0Scxlv29JXse6ype/yAA58uGpNYQkoQAUoJCBM1woUAvwFIdJbDh+O9fMAAAAASUVORK5CYII=" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[submenu]</defaultName>
+              <allowMultiple>false</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
