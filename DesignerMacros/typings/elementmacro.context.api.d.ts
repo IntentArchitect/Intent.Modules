@@ -6,11 +6,6 @@
 declare const application: IApplication;
 
 /**
- * @deprecated Use {@link element} instead.
- */
-declare const context: IElementApi;
-
-/**
  * Returns the element that triggered this script's execution.
  */
 declare let element: IElementApi;
@@ -107,7 +102,14 @@ declare function toKebabCase(word: string): string;
  * Converts the provided {@link word} to {@link https://en.wikipedia.org/wiki/Letter_case#Snake_case snake_case}.
  */
 declare function toSnakeCase(word: string): string;
-
+/**
+ * Converts the provided {@link word} to {@link https://en.wikipedia.org/wiki/Letter_case#Sentence_case snake_case}.
+ */
+declare function toSentenceCase(word: string): string;
+/**
+ * Converts the provided {@link word} to {@link https://en.wikipedia.org/wiki/Letter_case#Title_case snake_case}.
+ */
+declare function toTitleCase(word: string): string;
 /**
  * Executes the Module Task with the provided {@link taskTypeId} with the supplied {@link args}.
  * Will asynchronously return a string.
@@ -121,6 +123,6 @@ declare const dialogService: IDialogService;
 
 /**
  * Logs messages to the log window.
+ * JPS & GB: Commented out as conflicts with console declared in lib.dom.d.ts
  */
-// Has to be commented out to prevent compilation issues.
 //declare const console: { debug(message: string): void, log(message: string): void, warn(message: string): void, error(message: string): void };
