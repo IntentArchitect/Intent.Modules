@@ -72,13 +72,13 @@ $testSln.solution.applications.application | % {
         $module = $_
         $moduleVersionFound = $moduleLookup[$module.moduleId]
         if ($moduleVersionFound -ne $null -and $module.version -ne $moduleVersionFound) { 
-            Write-Error "##vso[task.logissue type=error;]$($name): Version discrepancy found for module '$($module.moduleId)': expected '$moduleVersionFound', found '$($module.version)'"
+            Write-Host "##vso[task.logissue type=error;]$($name): Version discrepancy found for module '$($module.moduleId)': expected '$moduleVersionFound', found '$($module.version)'"
             $discrepanciesFound = $true
         }
     }
 }
 
 if ($discrepanciesFound) {
-    Write-Error "##vso[task.logissue type=error;]Review the $($testsIntentSolutionRelativePath) Intent Solution and make sure the module dependencies are installed to the appropriate versions needed for the test suite to execute successfully."
+    Write-Host "##vso[task.logissue type=error;]Review the $($testsIntentSolutionRelativePath) Intent Solution and make sure the module dependencies are installed to the appropriate versions needed for the test suite to execute successfully."
     exit 1
 }
