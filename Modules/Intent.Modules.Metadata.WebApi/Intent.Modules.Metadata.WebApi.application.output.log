@@ -98,14 +98,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>5fef08fe-d35e-4360-a7b1-942720f55bd4</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#df45eaf6-9202-4c25-8dd5-677e9ba1e906</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/Extensions/ServicesPackageModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ServicesPackageModelStereotypeExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>5fef08fe-d35e-4360-a7b1-942720f55bd4</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#95f4362b-8193-41cb-bd65-c17d6be3f96b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/VersionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
@@ -130,35 +122,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#9f37c60e-ad88-4484-98ca-6c9aa7ca3134</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/PolicyModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>PolicyModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#e90622ee-f43a-4039-82b5-043e6d6f95d0</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/QueryExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>QueryExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d6ce4e4c-fdd1-4fa1-82d8-f3405e114ec5</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/RoleModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>RoleModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#35a8b318-fd7e-40ec-b3b7-dd79cf26524a</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/SecurityConfigurationModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>SecurityConfigurationModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
@@ -198,14 +166,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>fbbe3c09-70f6-47d7-af27-c18d9712d6a7</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#cd3ea7d2-e3c2-4ce3-98e1-39b4dfe87d10</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/Security Extensions.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Security Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
