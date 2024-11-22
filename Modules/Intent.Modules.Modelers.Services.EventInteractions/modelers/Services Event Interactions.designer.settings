@@ -1312,11 +1312,11 @@ return lookupTypesOf(subscribeIntegrationCommandTargetEndId).every(x =&gt; x.typ
       <script>const integrationEventHandlerId = "c0582230-22f5-4f74-8eb0-ec6fc9364900";
 const subscribeIntegrationCommandTargetEndId = "efa73bdb-69b7-4f52-aa10-15c19874b394";
 
-const handler = createElement(integrationEventHandlerId, toPascalCase(element.getName()) + "Handler", getPackages()[0].id);
-const association = createAssociation(subscribeIntegrationCommandTargetEndId, handler.id, element.id)
-const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getCenterRight();
+const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
 if (position) {
-    getCurrentDiagram().layoutVisuals([handler.id], { x: position.x + 200, y: position.y }, true)
+    const handler = getCurrentDiagram().createElement(integrationEventHandlerId, toPascalCase(element.getName()) + "Handler", { x: position.x + 100, y: position.y - 5 });
+    const association = createAssociation(subscribeIntegrationCommandTargetEndId, handler.id, element.id)
+    getCurrentDiagram().layoutVisuals([association.id]);
 }</script>
     </suggestionSetting>
     <suggestionSetting type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" locations="diagram, model">
@@ -1327,11 +1327,11 @@ return lookupTypesOf(integrationEventHandlerAssociationId).every(x =&gt; x.typeR
       <script>const integrationEventHandlerId = "c0582230-22f5-4f74-8eb0-ec6fc9364900";
 const integrationEventHandlerAssociationId = "16fa2952-79e6-4150-b5ab-45aa4c106de4";
 
-const handler = createElement(integrationEventHandlerId, toPascalCase(element.getName()) + "Handler", getPackages()[0].id);
-const association = createAssociation(integrationEventHandlerAssociationId, handler.id, element.id)
-const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getCenterRight();
+const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
 if (position) {
-    getCurrentDiagram().layoutVisuals([handler.id], { x: position.x + 200, y: position.y }, true)
+    const handler = getCurrentDiagram().createElement(integrationEventHandlerId, toPascalCase(element.getName()) + "Handler", { x: position.x + 100, y: position.y - 5 });
+    const association = createAssociation(integrationEventHandlerAssociationId, handler.id, element.id)
+    getCurrentDiagram().layoutVisuals([association.id]);
 }</script>
     </suggestionSetting>
   </suggestionSettings>
