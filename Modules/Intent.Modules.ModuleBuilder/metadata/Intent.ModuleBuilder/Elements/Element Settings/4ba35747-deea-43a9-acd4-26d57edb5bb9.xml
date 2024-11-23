@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="4ba35747-deea-43a9-acd4-26d57edb5bb9" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>On-Install Migration</name>
+  <display>On-Install Migration</display>
+  <isAbstract>false</isAbstract>
+  <order>1</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>8cfd2eab-c1bf-46bc-a86f-3ed0263a380f</parentFolderId>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="null" isActive="false" />
+        <property name="52f3c2e8-6438-494a-b0a7-7a9e61c8aae8" display="Target Traits" value="[]" isActive="true" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="[]" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Own File" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" value="if (!getStereotype(&quot;Settings&quot;).getProperty(&quot;Icon&quot;).getValue()) {&#xD;&#xA;    return null;&#xD;&#xA;}&#xD;&#xA;return getStereotype(&quot;Settings&quot;).getProperty(&quot;Icon&quot;).getValue();&#xD;&#xA;let icon = JSON.parse(getStereotype(&quot;Settings&quot;).getProperty(&quot;Icon&quot;).getValue());&#xD;&#xA;if (icon.source.startsWith(&quot;data:image&quot;)) {&#xD;&#xA;    return icon.source;&#xD;&#xA;}&#xD;&#xA;return null;" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="false" isActive="true" />
+        <property name="581e77d6-4587-4041-86f6-880bd57d5848" display="Name Must Be Unique" value="true" isActive="false" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="By type then name" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

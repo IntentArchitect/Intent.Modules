@@ -555,6 +555,34 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
+            /*--------------------------------- MIGRATIONS ---------------------------------*/
+            var migrations = doc.XPathSelectElement("package/migrations");
+            migrations?.Remove();
+            migrations = new XElement("migrations");
+            doc.XPathSelectElement("package").Add(migrations);
+
+            var moduleMigrationsExtension = new IntentModuleMigrationsExtensionModel(ModuleModel.UnderlyingPackage);
+            if (moduleMigrationsExtension.Migrations != null)
+            {
+                if (moduleMigrationsExtension.Migrations.OnInstallMigration != null)
+                {
+                    migrations.SetAttributeValue("has-on-install-migration", "true");
+                }
+
+                if (moduleMigrationsExtension.Migrations.OnUninstallMigration != null)
+                {
+                    migrations.SetAttributeValue("has-on-uninstall-migration", "true");
+                }
+
+                foreach (var versionMigrationModel in moduleMigrationsExtension.Migrations.VersionMigrations)
+                {
+                    var migration = new XElement("migration");
+                    migrations.Add(migration);
+
+                    migration.SetAttributeValue("version", versionMigrationModel.Name);
+                }
+            }
+
             return doc.ToStringUTF8();
         }
 

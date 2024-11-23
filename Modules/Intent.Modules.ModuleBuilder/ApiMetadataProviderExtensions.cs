@@ -129,6 +129,13 @@ namespace Intent.ModuleBuilder.Api
                 .ToList();
         }
 
+        public static IList<ModuleMigrationsModel> GetModuleMigrationsModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(ModuleMigrationsModel.SpecializationTypeId)
+                .Select(x => new ModuleMigrationsModel(x))
+                .ToList();
+        }
+
         public static IList<ModuleSettingsConfigurationModel> GetModuleSettingsConfigurationModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(ModuleSettingsConfigurationModel.SpecializationTypeId)
@@ -140,6 +147,20 @@ namespace Intent.ModuleBuilder.Api
         {
             return designer.GetElementsOfType(ModuleSettingsExtensionModel.SpecializationTypeId)
                 .Select(x => new ModuleSettingsExtensionModel(x))
+                .ToList();
+        }
+
+        public static IList<OnInstallMigrationModel> GetOnInstallMigrationModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(OnInstallMigrationModel.SpecializationTypeId)
+                .Select(x => new OnInstallMigrationModel(x))
+                .ToList();
+        }
+
+        public static IList<OnUninstallMigrationModel> GetOnUninstallMigrationModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(OnUninstallMigrationModel.SpecializationTypeId)
+                .Select(x => new OnUninstallMigrationModel(x))
                 .ToList();
         }
 
@@ -196,6 +217,13 @@ namespace Intent.ModuleBuilder.Api
         {
             return designer.GetElementsOfType(TemplateRegistrationModel.SpecializationTypeId)
                 .Select(x => new TemplateRegistrationModel(x))
+                .ToList();
+        }
+
+        public static IList<VersionMigrationModel> GetVersionMigrationModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(VersionMigrationModel.SpecializationTypeId)
+                .Select(x => new VersionMigrationModel(x))
                 .ToList();
         }
 

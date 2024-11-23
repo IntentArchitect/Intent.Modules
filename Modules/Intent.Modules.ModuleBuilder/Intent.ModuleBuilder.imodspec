@@ -169,6 +169,30 @@
       <role>Templates</role>
       <location>Templates</location>
     </template>
+    <template id="Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration" externalReference="05e78c90-fff6-4675-98e2-00a0077a3a2b">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Templates</role>
+      <location>Migrations</location>
+    </template>
+    <template id="Intent.ModuleBuilder.Templates.Migrations.OnUninstallMigration" externalReference="c8b732cc-ec0c-4b9f-8fb6-e9f50ba9841f">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Templates</role>
+      <location>Migrations</location>
+    </template>
+    <template id="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" externalReference="a9782355-b744-4039-8f0f-d935019cf659">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Templates</role>
+      <location>Migrations</location>
+    </template>
     <template id="Intent.ModuleBuilder.Templates.ReleaseNotes" externalReference="b6551a9e-4c88-40d1-9b15-bcee1fc6ebb4">
       <role>IModSpec</role>
       <location></location>
@@ -261,6 +285,7 @@
     <install src="modelers/Designer Builder.designer.settings" externalReference="3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b" />
     <install target="Module Builder" src="metadata/Intent.ModuleBuilder/Intent.ModuleBuilder.pkg.config" externalReference="9972b2a9-b749-4bba-b5c8-824bf694c6ef" />
     <install src="modelers/Documentation Extension.designer.settings" externalReference="bee1e111-6e89-404c-ac40-44a60406e6cf" />
+    <install src="modelers/Module Migrations Extension.designer.settings" externalReference="1706d207-0764-42b2-b12c-1e61b92279fe" />
   </metadata>
   <files>
     <file src="$outDir$/$id$.dll" />

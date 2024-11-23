@@ -118,5 +118,29 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="07c8d6f2-8900-4222-91e8-1d26875f5bfd" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: Module Migrations Extension</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="8e331569-dc3e-4902-a302-1c61a05b3f04">
+        <typeId>1706d207-0764-42b2-b12c-1e61b92279fe</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.ModuleBuilder</typePackageName>
+        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>a1c3dd87-352e-4353-853b-c79853debecb</parentFolderId>
+      <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+      <packageName>Intent.ModuleBuilder</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
   </childElements>
 </class>

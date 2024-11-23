@@ -626,6 +626,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#b2cfad37-d508-4638-9d25-34f58feb3a09</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/IntentModuleMigrationsExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IntentModuleMigrationsExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#d2e543c7-174a-45b4-aebe-a13f9ee90214</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/IntentModuleModel.cs</ApplicationRelativeFilePath>
@@ -714,6 +722,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#8cfd2eab-c1bf-46bc-a86f-3ed0263a380f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ModuleMigrationsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ModuleMigrationsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#37e678f8-370a-4b05-ae44-69bb3d2b39b6</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ModuleSettingsConfigurationModel.cs</ApplicationRelativeFilePath>
@@ -742,6 +758,22 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ModuleSettingsFieldOptionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ModuleSettingsFieldOptionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4ba35747-deea-43a9-acd4-26d57edb5bb9</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/OnInstallMigrationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>OnInstallMigrationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d95b829a-fabc-4f12-b044-b3fa198885aa</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/OnUninstallMigrationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>OnUninstallMigrationModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -905,6 +937,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#03f24c57-66d8-4868-95a7-6daef900dc7f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/VersionMigrationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>VersionMigrationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -974,6 +1014,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Module Builder.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Module Builder.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2b827469-c59a-4981-b034-3591f1380859</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#1706d207-0764-42b2-b12c-1e61b92279fe</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Module Migrations Extension.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Module Migrations Extension.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -1422,6 +1470,54 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/FileTemplateT4/FileTemplateT4TemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/FileTemplateT4/FileTemplateT4TemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#05e78c90-fff6-4675-98e2-00a0077a3a2b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/Migrations/OnInstallMigration/OnInstallMigrationTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Migrations/OnInstallMigration/OnInstallMigrationTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#05e78c90-fff6-4675-98e2-00a0077a3a2b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/Migrations/OnInstallMigration/OnInstallMigrationTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Migrations/OnInstallMigration/OnInstallMigrationTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#c8b732cc-ec0c-4b9f-8fb6-e9f50ba9841f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/Migrations/OnUninstallMigration/OnUninstallMigrationTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Migrations/OnUninstallMigration/OnUninstallMigrationTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#c8b732cc-ec0c-4b9f-8fb6-e9f50ba9841f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/Migrations/OnUninstallMigration/OnUninstallMigrationTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Migrations/OnUninstallMigration/OnUninstallMigrationTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#a9782355-b744-4039-8f0f-d935019cf659</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/Migrations/OnVersionMigration/OnVersionMigrationTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Migrations/OnVersionMigration/OnVersionMigrationTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#a9782355-b744-4039-8f0f-d935019cf659</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/Migrations/OnVersionMigration/OnVersionMigrationTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Migrations/OnVersionMigration/OnVersionMigrationTemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
