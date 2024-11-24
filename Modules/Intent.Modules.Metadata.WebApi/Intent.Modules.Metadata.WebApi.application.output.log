@@ -158,7 +158,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Metadata.WebApi.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Metadata.WebApi.imodspec</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
