@@ -10,7 +10,6 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.Custom", Version = "1.0")]
 
 namespace ModuleBuilders.Templates.TypeScript.TypeScriptCustomBuilder
@@ -27,7 +26,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptCustomBuilder
 
         public string TemplateId => TypeScriptCustomBuilderTemplate.TemplateId;
 
-        [IntentManaged(Mode.Fully, Body = Mode.Fully)]
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication applicationManager)
         {
             registry.RegisterTemplate(TemplateId, project => new TypeScriptCustomBuilderTemplate(project, null));

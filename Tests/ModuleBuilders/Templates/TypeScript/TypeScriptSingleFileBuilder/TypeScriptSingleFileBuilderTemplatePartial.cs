@@ -9,7 +9,6 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileBuilder
@@ -20,7 +19,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileBuilder
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilders.TypeScript.TypeScriptSingleFileBuilder";
 
-        [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public TypeScriptSingleFileBuilderTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             TypescriptFile = new TypescriptFile(this.GetFolderPath())

@@ -9,7 +9,6 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelCustom
@@ -25,7 +24,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelCustom
         {
         }
 
-        [IntentManaged(Mode.Fully, Body = Mode.Fully)]
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new TypeScriptFileConfig(
@@ -34,7 +33,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelCustom
             );
         }
 
-        [IntentManaged(Mode.Fully, Body = Mode.Fully)]
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             throw new NotImplementedException("Implement custom template here");
