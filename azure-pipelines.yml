@@ -157,7 +157,7 @@ steps:
   inputs:
     targetType: 'inline'
     pwsh: true
-    script: ./PipelineScripts/pre-template-test-validation.ps1 "$(Build.ArtifactStagingDirectory)" "$(intent-solution)"
+    script: ./PipelineScripts/pre-template-test-validation.ps1 "$(Build.ArtifactStagingDirectory)" "$(intent-module-solution)" "$(intent-solution)"
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
