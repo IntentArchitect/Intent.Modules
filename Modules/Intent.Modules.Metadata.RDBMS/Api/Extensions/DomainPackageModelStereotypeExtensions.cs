@@ -15,7 +15,7 @@ namespace Intent.Metadata.RDBMS.Api
     {
         public static RelationalDatabase GetRelationalDatabase(this DomainPackageModel model)
         {
-            var stereotype = model.GetStereotype("51a7bcf5-0eb9-4c9a-855e-3ead1048729c");
+            var stereotype = model.GetStereotype(RelationalDatabase.DefinitionId);
             return stereotype != null ? new RelationalDatabase(stereotype) : null;
         }
 
@@ -35,20 +35,20 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new RelationalDatabase(model.GetStereotype("51a7bcf5-0eb9-4c9a-855e-3ead1048729c"));
+            stereotype = new RelationalDatabase(model.GetStereotype(RelationalDatabase.DefinitionId));
             return true;
         }
 
         public static Schema GetSchema(this DomainPackageModel model)
         {
-            var stereotype = model.GetStereotype("c0f17219-ada3-47ac-80c6-7a5750cbd322");
+            var stereotype = model.GetStereotype(Schema.DefinitionId);
             return stereotype != null ? new Schema(stereotype) : null;
         }
 
 
         public static bool HasSchema(this DomainPackageModel model)
         {
-            return model.HasStereotype("c0f17219-ada3-47ac-80c6-7a5750cbd322");
+            return model.HasStereotype(Schema.DefinitionId);
         }
 
         public static bool TryGetSchema(this DomainPackageModel model, out Schema stereotype)
@@ -59,13 +59,14 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new Schema(model.GetStereotype("c0f17219-ada3-47ac-80c6-7a5750cbd322"));
+            stereotype = new Schema(model.GetStereotype(Schema.DefinitionId));
             return true;
         }
 
         public class RelationalDatabase
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
 
             public RelationalDatabase(IStereotype stereotype)
             {
@@ -79,6 +80,7 @@ namespace Intent.Metadata.RDBMS.Api
         public class Schema
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "c0f17219-ada3-47ac-80c6-7a5750cbd322";
 
             public Schema(IStereotype stereotype)
             {

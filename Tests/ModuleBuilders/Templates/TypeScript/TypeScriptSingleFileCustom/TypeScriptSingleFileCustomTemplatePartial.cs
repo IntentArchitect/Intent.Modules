@@ -19,7 +19,8 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileCustom
         public const string TemplateId = "ModuleBuilders.TypeScript.TypeScriptSingleFileCustom";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TypeScriptSingleFileCustomTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
+        public TypeScriptSingleFileCustomTemplate(IOutputTarget outputTarget, object model = null)
+             : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -28,8 +29,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileCustom
         {
             return new TypeScriptFileConfig(
                 className: $"TypeScriptSingleFileCustom",
-                fileName: $"type-script-single-file-custom"
-            );
+                fileName: $"type-script-single-file-custom");
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]

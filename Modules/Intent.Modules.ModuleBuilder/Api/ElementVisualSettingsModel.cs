@@ -114,10 +114,11 @@ namespace Intent.ModuleBuilder.Api
                     Height = this.GetPositionSettings().Height() ?? "${y}"
                 },
                 DisplayElements = Paths.Select(x => x.ToPersistable()).Cast<object>()
-                    .Concat(Texts.Select(x => x.ToPersistable()))
-                    .Concat(SVGVisuals.Select(x => x.ToPersistable())).ToList(),
+                    .Concat(Texts.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()))
+                    .Concat(SVGVisuals.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()))
+                    .ToList(),
                 StereotypesVisualSettings = StereotypesVisual?.ToPersistable(),
-                ChildElementVisualSettings = ChildVisuals.Select(x => x.ToPersistable()).ToList()
+                ChildElementVisualSettings = ChildVisuals.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList()
             };
         }
 

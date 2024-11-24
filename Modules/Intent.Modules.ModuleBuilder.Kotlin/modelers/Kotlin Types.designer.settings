@@ -19,7 +19,7 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type type="Kotlin File Template" order="2" />
+        <type order="2" type="Kotlin File Template" typeId="fd5375d4-5380-4a04-b164-0617a8d64624" />
       </typeOrder>
     </packageExtension>
   </packageExtensions>
@@ -27,8 +27,8 @@
     <elementSetting type="Kotlin File Template" typeId="fd5375d4-5380-4a04-b164-0617a8d64624">
       <icon type="UrlImagePath" source="data:image/png;base64,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" />
       <saveAsOwnFile>true</saveAsOwnFile>
-      <nameMustBeUnique>false</nameMustBeUnique>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -42,7 +42,7 @@
       <typeReferenceSetting>
         <isRequired>true</isRequired>
         <targetTypes>
-          <type type="Template Registration" />
+          <type type="Template Registration" typeId="502551f7-c2d7-4d65-ad9f-13bd1e9e96d5" />
         </targetTypes>
         <allowIsNavigable>true</allowIsNavigable>
         <allowIsNullable>false</allowIsNullable>
@@ -52,7 +52,7 @@
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type type="Template Decorator Contract" order="0" />
+        <type order="0" type="Template Decorator Contract" typeId="ac1da322-377e-45cf-a2d9-d147a4d91457" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -67,12 +67,10 @@
       <scriptOptions />
       <mappingOptions />
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
   </elementSettings>
   <elementExtensions>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-      <implements />
       <creationOptions>
         <option order="2" type="element">
           <text>New Kotlin File</text>
@@ -86,7 +84,7 @@
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type type="Kotlin File Template" order="2" />
+        <type order="2" type="Kotlin File Template" typeId="fd5375d4-5380-4a04-b164-0617a8d64624" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>

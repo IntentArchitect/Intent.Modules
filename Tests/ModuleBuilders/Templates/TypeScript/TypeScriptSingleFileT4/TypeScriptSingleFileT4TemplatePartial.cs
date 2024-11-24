@@ -13,13 +13,14 @@ using Intent.Templates;
 namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileT4
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class TypeScriptSingleFileT4Template : TypeScriptTemplateBase<object>
+    public partial class TypeScriptSingleFileT4Template : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilders.TypeScript.TypeScriptSingleFileT4";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TypeScriptSingleFileT4Template(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
+        public TypeScriptSingleFileT4Template(IOutputTarget outputTarget, object model = null)
+             : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -28,8 +29,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileT4
         {
             return new TypeScriptFileConfig(
                 className: $"TypeScriptSingleFileT4",
-                fileName: $"type-script-single-file-t4"
-            );
+                fileName: $"type-script-single-file-t4");
         }
     }
 }

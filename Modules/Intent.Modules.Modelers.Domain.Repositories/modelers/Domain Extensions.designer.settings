@@ -20,7 +20,7 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type type="Repository" />
+        <type type="Repository" typeId="96ffceb2-a70a-4b69-869b-0df436c470c3" />
       </typeOrder>
     </packageExtension>
   </packageExtensions>
@@ -32,8 +32,8 @@
     ? `${getName()}&lt;${typeReference.display}&gt;`
     : getName();
 </displayFunction>
-      <nameMustBeUnique>false</nameMustBeUnique>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -48,7 +48,7 @@
         <displayName>Entity Type</displayName>
         <isRequired>false</isRequired>
         <targetTypes>
-          <type type="Class" />
+          <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
         </targetTypes>
         <allowIsNavigable>true</allowIsNavigable>
         <allowIsNullable>false</allowIsNullable>
@@ -58,12 +58,12 @@
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type type="Operation" order="0" />
+        <type order="0" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" />
       </typeOrder>
       <creationOptions>
         <option type="element">
           <text>Add Operation</text>
-          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+DQogIDxkZWZzPg0KICAgIDxzdHlsZT4uY2FudmFze2ZpbGw6IG5vbmU7IG9wYWNpdHk6IDA7fS5saWdodC1wdXJwbGUtMTB7ZmlsbDogIzY5MzZhYTsgb3BhY2l0eTogMC4xO30ubGlnaHQtcHVycGxle2ZpbGw6ICM2OTM2YWE7IG9wYWNpdHk6IDE7fS5jbHMtMXtvcGFjaXR5OjAuNzU7fTwvc3R5bGU+DQogIDwvZGVmcz4NCiAgPHRpdGxlPk1ldGhvZDwvdGl0bGU+DQogIDxnIGlkPSJjYW52YXMiPg0KICAgIDxwYXRoIGNsYXNzPSJjYW52YXMiIGQ9Ik0xNiwxNkgwVjBIMTZaIiAvPg0KICA8L2c+DQogIDxnIGlkPSJsZXZlbC0xIj4NCiAgICA8ZyBjbGFzcz0iY2xzLTEiPg0KICAgICAgPHBhdGggY2xhc3M9ImxpZ2h0LXB1cnBsZS0xMCIgZD0iTTEzLjUsNS4wNDV2N0w4LDE0LjU0NWwtNS41LTIuNXYtN2w1LjUtM1oiIC8+DQogICAgICA8cGF0aCBjbGFzcz0ibGlnaHQtcHVycGxlIiBkPSJNMTQsNS4wNDV2N2wtLjI5My40NTVMOC4yMDcsMTVINy43OTNsLTUuNS0yLjVMMiwxMi4wNDV2LTdsLjI2MS0uNDM5LjAzMi44OTRMMyw1LjgyMXY1LjlsNC41LDIuMDQ1LDAtNS45LjMuMTM1aC40MTRsLjI4OC0uMTMxLDAsNS45TDEzLDExLjcyM3YtNS45bC43MDctLjMyMS4wMzItLjg5NFoiIC8+DQogICAgPC9nPg0KICAgIDxwYXRoIGNsYXNzPSJsaWdodC1wdXJwbGUtMTAiIGQ9Ik0xMy41LDUuMDQ1LDgsNy41NDVsLTUuNS0yLjUsNS41LTNaIiAvPg0KICAgIDxwYXRoIGNsYXNzPSJsaWdodC1wdXJwbGUiIGQ9Ik04LjIzOSwxLjYwNkg3Ljc2MWwtNS41LDMsLjAzMi44OTRMNy43OTMsOGguNDE0bDUuNS0yLjUuMDMyLS44OTRaTTgsNywzLjYxOSw1LDgsMi42MTQsMTIuMzgxLDVaIiAvPg0KICA8L2c+DQo8L3N2Zz4NCg==" />
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My43MDc2IiB4Mj0iMjUiIHkyPSI0LjMwNzYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00NC4xLDExLjlMMjUuNSwyLjhjLTAuMy0wLjEtMC42LTAuMS0wLjksMEw1LjksMTEuOQ0KCWMtMC40LDAuMi0wLjYsMC41LTAuNiwwLjl2MjQuM2MwLDAuNCwwLjIsMC43LDAuNiwwLjlsMTguNiw5LjJjMC4xLDAuMSwwLjMsMC4xLDAuNSwwLjFzMC4zLDAsMC41LTAuMUw0NC4xLDM4DQoJYzAuNC0wLjIsMC42LTAuNSwwLjYtMC45VjEyLjlDNDQuNywxMi41LDQ0LjUsMTIuMSw0NC4xLDExLjl6IE0yNSw1LjlsMTQsNi45bC0xNCw2LjlsLTE0LTYuOUwyNSw1Ljl6IE04LjQsMzUuOVYxNWwxNS4xLDcuNHYyMC45DQoJTDExLDM3LjFMOC40LDM1Ljl6IE0yNi41LDQzLjNWMjIuNEw0MS42LDE1djIwLjlMMzksMzcuMUwyNi41LDQzLjN6Ii8+DQo8L3N2Zz4NCg==" />
           <specializationType>Operation</specializationType>
           <specializationTypeId>e042bb67-a1df-480c-9935-b26210f78591</specializationTypeId>
           <defaultName>NewOperation</defaultName>
@@ -80,12 +80,10 @@
 }</script>
         </macro>
       </macros>
-      <childElementSettings />
     </elementSetting>
   </elementSettings>
   <elementExtensions>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-      <implements />
       <creationOptions>
         <option type="element">
           <text>New Repository</text>
@@ -100,7 +98,7 @@
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type type="Repository" />
+        <type type="Repository" typeId="96ffceb2-a70a-4b69-869b-0df436c470c3" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>

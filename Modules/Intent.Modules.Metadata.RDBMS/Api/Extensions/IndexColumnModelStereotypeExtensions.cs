@@ -14,13 +14,13 @@ namespace Intent.Metadata.RDBMS.Api
     {
         public static Settings GetSettings(this IndexColumnModel model)
         {
-            var stereotype = model.GetStereotype("1c39a537-7016-4774-a874-23248040c07e");
+            var stereotype = model.GetStereotype(Settings.DefinitionId);
             return stereotype != null ? new Settings(stereotype) : null;
         }
 
         public static bool HasSettings(this IndexColumnModel model)
         {
-            return model.HasStereotype("1c39a537-7016-4774-a874-23248040c07e");
+            return model.HasStereotype(Settings.DefinitionId);
         }
 
         public static bool TryGetSettings(this IndexColumnModel model, out Settings stereotype)
@@ -31,7 +31,7 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new Settings(model.GetStereotype("1c39a537-7016-4774-a874-23248040c07e"));
+            stereotype = new Settings(model.GetStereotype(Settings.DefinitionId));
             return true;
         }
 
@@ -39,6 +39,7 @@ namespace Intent.Metadata.RDBMS.Api
         public class Settings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "1c39a537-7016-4774-a874-23248040c07e";
 
             public Settings(IStereotype stereotype)
             {

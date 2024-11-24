@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.CSharp</id>
   <version>3.8.5-pre.3</version>
@@ -27,7 +27,7 @@
       </install>
     </detect>
     <!-- /Minimum Compatible Versions -->
-  </interoperability>  
+  </interoperability>
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />

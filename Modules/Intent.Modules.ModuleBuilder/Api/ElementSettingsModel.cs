@@ -60,6 +60,8 @@ namespace Intent.ModuleBuilder.Api
                     .Where(x => x.DefinitionId != ElementSettingsModelStereotypeExtensions.Settings.DefinitionId &&
                                 x.DefinitionId != ElementSettingsModelStereotypeExtensions.TypeReferenceSettings.DefinitionId)
                     .Select(x => new ImplementedTraitPersistable() { Id = x.DefinitionId, Name = x.Name })
+                    .OrderBy(x => x.Name)
+                    .ThenBy(x => x.Id)
                     .ToList(),
                 SaveAsOwnFile = MustSaveInOwnFile(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
@@ -81,8 +83,8 @@ namespace Intent.ModuleBuilder.Api
                 TypeReferenceSetting = !this.GetTypeReferenceSettings().Mode().IsDisabled() ? new TypeReferenceSettingPersistable()
                 {
                     IsRequired = this.GetTypeReferenceSettings().Mode().IsRequired(),
-                    TargetTypes = (this.GetTypeReferenceSettings().TargetTypes()?.Select(x => new TargetTypePersistable() { Type = x.Name, TypeId = x.Id }) ?? new List<TargetTypePersistable>())
-                        .Concat(this.GetTypeReferenceSettings().TargetTraits()?.Select(x => new TargetTypePersistable() { Type = x.Name, TypeId = x.Id }) ?? new List<TargetTypePersistable>())
+                    TargetTypes = (this.GetTypeReferenceSettings().TargetTypes()?.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => new TargetTypePersistable() { Type = x.Name, TypeId = x.Id }) ?? new List<TargetTypePersistable>())
+                        .Concat(this.GetTypeReferenceSettings().TargetTraits()?.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => new TargetTypePersistable() { Type = x.Name, TypeId = x.Id }) ?? new List<TargetTypePersistable>())
                         .ToArray(),
                     AllowIsNullable = this.GetTypeReferenceSettings().AllowNullable(),
                     AllowIsCollection = this.GetTypeReferenceSettings().AllowCollection(),
@@ -91,12 +93,12 @@ namespace Intent.ModuleBuilder.Api
                     Hint = this.GetTypeReferenceSettings().Hint()
                 } : null,
                 DiagramSettings = DiagramSettings?.ToPersistable(),
-                ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToArray(),
-                ChildElementExtensions = this.ElementExtensions.Select(x => x.ToPersistable()).ToArray(),
-                MappingSettings = this.MappingSettings.Select(x => x.ToPersistable()).ToList(),
+                ChildElementSettings = this.ElementSettings.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToArray(),
+                ChildElementExtensions = this.ElementExtensions.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToArray(),
+                MappingSettings = this.MappingSettings.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
                 CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
-                ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
-                MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
+                ScriptOptions = MenuOptions?.RunScriptOptions.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                MappingOptions = MenuOptions?.MappingOptions.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = GetTypeOrder(),
                 VisualSettings = this.VisualSettings?.ToPersistable(),
                 Macros = EventSettings?.ToPersistable(),

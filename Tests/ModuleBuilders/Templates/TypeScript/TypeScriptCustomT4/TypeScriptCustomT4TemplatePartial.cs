@@ -13,13 +13,14 @@ using Intent.Templates;
 namespace ModuleBuilders.Templates.TypeScript.TypeScriptCustomT4
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class TypeScriptCustomT4Template : TypeScriptTemplateBase<object>
+    public partial class TypeScriptCustomT4Template : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilders.TypeScript.TypeScriptCustomT4";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TypeScriptCustomT4Template(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
+        public TypeScriptCustomT4Template(IOutputTarget outputTarget, object model = null)
+             : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -28,8 +29,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptCustomT4
         {
             return new TypeScriptFileConfig(
                 className: $"TypeScriptCustomT4",
-                fileName: $"type-script-custom-t4"
-            );
+                fileName: $"type-script-custom-t4");
         }
     }
 }

@@ -36,9 +36,9 @@ namespace Intent.Modelers.Services.EventInteractions
 
         public string Id => _association.Id;
 
-        public PublishIntegrationEventSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new PublishIntegrationEventSourceEndModel(_association.SourceEnd, this));
+        public PublishIntegrationEventSourceEndModel SourceEnd => _sourceEnd ??= new PublishIntegrationEventSourceEndModel(_association.SourceEnd, this);
 
-        public PublishIntegrationEventTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new PublishIntegrationEventTargetEndModel(_association.TargetEnd, this));
+        public PublishIntegrationEventTargetEndModel TargetEnd => _targetEnd ??= new PublishIntegrationEventTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 

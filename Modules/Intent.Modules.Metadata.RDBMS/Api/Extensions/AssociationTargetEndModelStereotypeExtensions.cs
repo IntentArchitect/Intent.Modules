@@ -16,7 +16,7 @@ namespace Intent.Metadata.RDBMS.Api
     {
         public static ForeignKey GetForeignKey(this AssociationTargetEndModel model)
         {
-            var stereotype = model.GetStereotype("dfe17723-99ee-4554-9be3-f4c90dd48078");
+            var stereotype = model.GetStereotype(ForeignKey.DefinitionId);
             return stereotype != null ? new ForeignKey(stereotype) : null;
         }
 
@@ -37,7 +37,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasForeignKey(this AssociationTargetEndModel model)
         {
-            return model.HasStereotype("dfe17723-99ee-4554-9be3-f4c90dd48078");
+            return model.HasStereotype(ForeignKey.DefinitionId);
         }
 
         public static bool TryGetForeignKey(this AssociationTargetEndModel model, out ForeignKey stereotype)
@@ -48,20 +48,20 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new ForeignKey(model.GetStereotype("dfe17723-99ee-4554-9be3-f4c90dd48078"));
+            stereotype = new ForeignKey(model.GetStereotype(ForeignKey.DefinitionId));
             return true;
         }
 
         public static Index GetIndex(this AssociationTargetEndModel model)
         {
-            var stereotype = model.GetStereotype("bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b");
+            var stereotype = model.GetStereotype(Index.DefinitionId);
             return stereotype != null ? new Index(stereotype) : null;
         }
 
         public static IReadOnlyCollection<Index> GetIndices(this AssociationTargetEndModel model)
         {
             var stereotypes = model
-                .GetStereotypes("bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b")
+                .GetStereotypes(Index.DefinitionId)
                 .Select(stereotype => new Index(stereotype))
                 .ToArray();
 
@@ -70,7 +70,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasIndex(this AssociationTargetEndModel model)
         {
-            return model.HasStereotype("bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b");
+            return model.HasStereotype(Index.DefinitionId);
         }
 
         public static bool TryGetIndex(this AssociationTargetEndModel model, out Index stereotype)
@@ -81,20 +81,20 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new Index(model.GetStereotype("bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b"));
+            stereotype = new Index(model.GetStereotype(Index.DefinitionId));
             return true;
         }
 
         public static JoinTable GetJoinTable(this AssociationTargetEndModel model)
         {
-            var stereotype = model.GetStereotype("5679fb86-e403-4dc0-bf25-8446ef2d1d03");
+            var stereotype = model.GetStereotype(JoinTable.DefinitionId);
             return stereotype != null ? new JoinTable(stereotype) : null;
         }
 
 
         public static bool HasJoinTable(this AssociationTargetEndModel model)
         {
-            return model.HasStereotype("5679fb86-e403-4dc0-bf25-8446ef2d1d03");
+            return model.HasStereotype(JoinTable.DefinitionId);
         }
 
         public static bool TryGetJoinTable(this AssociationTargetEndModel model, out JoinTable stereotype)
@@ -105,13 +105,14 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new JoinTable(model.GetStereotype("5679fb86-e403-4dc0-bf25-8446ef2d1d03"));
+            stereotype = new JoinTable(model.GetStereotype(JoinTable.DefinitionId));
             return true;
         }
 
         public class ForeignKey
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "dfe17723-99ee-4554-9be3-f4c90dd48078";
 
             public ForeignKey(IStereotype stereotype)
             {
@@ -130,6 +131,7 @@ namespace Intent.Metadata.RDBMS.Api
         public class Index
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b";
 
             public Index(IStereotype stereotype)
             {
@@ -201,6 +203,7 @@ namespace Intent.Metadata.RDBMS.Api
         public class JoinTable
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "5679fb86-e403-4dc0-bf25-8446ef2d1d03";
 
             public JoinTable(IStereotype stereotype)
             {

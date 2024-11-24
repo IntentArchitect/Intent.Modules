@@ -20,7 +20,8 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileBuilder
         public const string TemplateId = "ModuleBuilders.TypeScript.TypeScriptSingleFileBuilder";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TypeScriptSingleFileBuilderTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
+        public TypeScriptSingleFileBuilderTemplate(IOutputTarget outputTarget, object model = null)
+             : base(TemplateId, outputTarget, model)
         {
             TypescriptFile = new TypescriptFile(this.GetFolderPath())
                 .AddClass($"TypeScriptSingleFileBuilder", @class =>

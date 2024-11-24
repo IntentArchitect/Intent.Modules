@@ -20,7 +20,9 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelCustom
         public const string TemplateId = "ModuleBuilders.TypeScript.TypeScriptFilePerModelCustom";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TypeScriptFilePerModelCustomTemplate(IOutputTarget outputTarget, Intent.Modelers.Domain.Api.ClassModel model) : base(TemplateId, outputTarget, model)
+        public TypeScriptFilePerModelCustomTemplate(IOutputTarget outputTarget,
+            Intent.Modelers.Domain.Api.ClassModel model)
+             : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -29,8 +31,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelCustom
         {
             return new TypeScriptFileConfig(
                 className: $"{Model.Name}",
-                fileName: $"{Model.Name.ToKebabCase()}"
-            );
+                fileName: $"{Model.Name.ToKebabCase()}");
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]

@@ -26,6 +26,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelStringInter
             members.Add($@"
     constructor() {{
     }}");
+
             return members;
         }
     }

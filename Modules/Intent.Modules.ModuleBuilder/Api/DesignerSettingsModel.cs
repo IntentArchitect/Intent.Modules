@@ -165,17 +165,17 @@ namespace Intent.ModuleBuilder.Api
             {
                 Id = Id,
                 Name = Name,
-                DesignerReferences = DesignerReferences.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                PackageSettings = PackageTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                PackageExtensions = PackageExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                ElementSettings = ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                ElementExtensions = ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                AssociationSettings = AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                AssociationExtensions = AssociationExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                MappingSettings = MappingSettings.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                MappableElementPackages = MappableElementsPackages.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                MappableElementPackageExtensions = MappableElementsPackageExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
-                Scripts = ScriptTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
+                DesignerReferences = DesignerReferences.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                PackageSettings = PackageTypes.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                PackageExtensions = PackageExtensions.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                ElementSettings = ElementTypes.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                ElementExtensions = ElementExtensions.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                AssociationSettings = AssociationTypes.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                AssociationExtensions = AssociationExtensions.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                MappingSettings = MappingSettings.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                MappableElementPackages = MappableElementsPackages.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                MappableElementPackageExtensions = MappableElementsPackageExtensions.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                Scripts = ScriptTypes.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList()
             };
             return modelerSettings;
         }

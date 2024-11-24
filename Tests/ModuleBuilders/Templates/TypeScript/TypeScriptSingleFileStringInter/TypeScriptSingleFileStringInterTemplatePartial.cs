@@ -13,13 +13,14 @@ using Intent.Templates;
 namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileStringInter
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class TypeScriptSingleFileStringInterTemplate : TypeScriptTemplateBase<object>
+    public partial class TypeScriptSingleFileStringInterTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilders.TypeScript.TypeScriptSingleFileStringInter";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TypeScriptSingleFileStringInterTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
+        public TypeScriptSingleFileStringInterTemplate(IOutputTarget outputTarget, object model = null)
+             : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -28,8 +29,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileStringInter
         {
             return new TypeScriptFileConfig(
                 className: $"TypeScriptSingleFileStringInter",
-                fileName: $"type-script-single-file-string-inter"
-            );
+                fileName: $"type-script-single-file-string-inter");
         }
     }
 }

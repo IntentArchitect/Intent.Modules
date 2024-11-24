@@ -25,8 +25,8 @@ const returnType = typeReference.typeId
 
 return `${name}${genericTypes}(${parameters}): ${returnType}`;
 </displayFunction>
-      <nameMustBeUnique>false</nameMustBeUnique>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -41,9 +41,9 @@ return `${name}${genericTypes}(${parameters}): ${returnType}`;
         <displayName>Return Type</displayName>
         <isRequired>false</isRequired>
         <targetTypes>
-          <type type="Class" />
-          <type type="Data Contract" />
-          <type type="Type-Definition" />
+          <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+          <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
+          <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
         </targetTypes>
         <allowIsNavigable>true</allowIsNavigable>
         <allowIsNullable>true</allowIsNullable>
@@ -53,7 +53,7 @@ return `${name}${genericTypes}(${parameters}): ${returnType}`;
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type type="Stored Procedure Parameter" order="0" />
+        <type order="0" type="Stored Procedure Parameter" typeId="5823b192-eb03-47c8-90d8-5501c922e9a5" />
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -79,8 +79,8 @@ return `${name}${genericTypes}(${parameters}): ${returnType}`;
     
 return `${output}${getName()}: ${typeReference.display}`;
 </displayFunction>
-          <nameMustBeUnique>false</nameMustBeUnique>
           <allowRename>true</allowRename>
+          <nameMustBeUnique>false</nameMustBeUnique>
           <allowAbstract>false</allowAbstract>
           <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>
@@ -94,9 +94,9 @@ return `${output}${getName()}: ${typeReference.display}`;
           <typeReferenceSetting>
             <isRequired>true</isRequired>
             <targetTypes>
-              <type type="Type-Definition" />
-              <type type="Enum" />
-              <type type="Data Contract" />
+              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+              <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+              <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
@@ -105,12 +105,10 @@ return `${output}${getName()}: ${typeReference.display}`;
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
-          <typeOrder />
           <creationOptions />
           <scriptOptions />
           <mappingOptions />
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
       </childElementSettings>
     </elementSetting>

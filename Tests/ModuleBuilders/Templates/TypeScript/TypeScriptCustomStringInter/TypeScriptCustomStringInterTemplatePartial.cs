@@ -13,13 +13,14 @@ using Intent.Templates;
 namespace ModuleBuilders.Templates.TypeScript.TypeScriptCustomStringInter
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class TypeScriptCustomStringInterTemplate : TypeScriptTemplateBase<object>
+    public partial class TypeScriptCustomStringInterTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilders.TypeScript.TypeScriptCustomStringInter";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TypeScriptCustomStringInterTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
+        public TypeScriptCustomStringInterTemplate(IOutputTarget outputTarget, object model = null)
+             : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -28,8 +29,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptCustomStringInter
         {
             return new TypeScriptFileConfig(
                 className: $"TypeScriptCustomStringInter",
-                fileName: $"type-script-custom-string-inter"
-            );
+                fileName: $"type-script-custom-string-inter");
         }
     }
 }

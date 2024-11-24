@@ -20,7 +20,8 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptCustomBuilder
         public const string TemplateId = "ModuleBuilders.TypeScript.TypeScriptCustomBuilder";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TypeScriptCustomBuilderTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
+        public TypeScriptCustomBuilderTemplate(IOutputTarget outputTarget, object model = null)
+             : base(TemplateId, outputTarget, model)
         {
             TypescriptFile = new TypescriptFile(this.GetFolderPath())
                 .AddClass($"TypeScriptCustomBuilder", @class =>

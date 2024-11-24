@@ -17,7 +17,7 @@ namespace Intent.Metadata.RDBMS.Api
     {
         public static CheckConstraint GetCheckConstraint(this ClassModel model)
         {
-            var stereotype = model.GetStereotype("8565814D-EF70-40EE-A0D3-577AB7B1254C");
+            var stereotype = model.GetStereotype(CheckConstraint.DefinitionId);
             return stereotype != null ? new CheckConstraint(stereotype) : null;
         }
 
@@ -38,7 +38,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasCheckConstraint(this ClassModel model)
         {
-            return model.HasStereotype("8565814D-EF70-40EE-A0D3-577AB7B1254C");
+            return model.HasStereotype(CheckConstraint.DefinitionId);
         }
 
         public static bool TryGetCheckConstraint(this ClassModel model, out CheckConstraint stereotype)
@@ -49,20 +49,20 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new CheckConstraint(model.GetStereotype("8565814D-EF70-40EE-A0D3-577AB7B1254C"));
+            stereotype = new CheckConstraint(model.GetStereotype(CheckConstraint.DefinitionId));
             return true;
         }
 
         public static Schema GetSchema(this ClassModel model)
         {
-            var stereotype = model.GetStereotype("c0f17219-ada3-47ac-80c6-7a5750cbd322");
+            var stereotype = model.GetStereotype(Schema.DefinitionId);
             return stereotype != null ? new Schema(stereotype) : null;
         }
 
 
         public static bool HasSchema(this ClassModel model)
         {
-            return model.HasStereotype("c0f17219-ada3-47ac-80c6-7a5750cbd322");
+            return model.HasStereotype(Schema.DefinitionId);
         }
 
         public static bool TryGetSchema(this ClassModel model, out Schema stereotype)
@@ -73,12 +73,12 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new Schema(model.GetStereotype("c0f17219-ada3-47ac-80c6-7a5750cbd322"));
+            stereotype = new Schema(model.GetStereotype(Schema.DefinitionId));
             return true;
         }
         public static Table GetTable(this ClassModel model)
         {
-            var stereotype = model.GetStereotype("dd205b32-b48b-4c77-98f5-faefb2c047ce");
+            var stereotype = model.GetStereotype(Table.DefinitionId);
             return stereotype != null ? new Table(stereotype) : null;
         }
 
@@ -99,7 +99,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasTable(this ClassModel model)
         {
-            return model.HasStereotype("dd205b32-b48b-4c77-98f5-faefb2c047ce");
+            return model.HasStereotype(Table.DefinitionId);
         }
 
         public static bool TryGetTable(this ClassModel model, out Table stereotype)
@@ -110,20 +110,20 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new Table(model.GetStereotype("dd205b32-b48b-4c77-98f5-faefb2c047ce"));
+            stereotype = new Table(model.GetStereotype(Table.DefinitionId));
             return true;
         }
 
         public static View GetView(this ClassModel model)
         {
-            var stereotype = model.GetStereotype("6dfa2c79-4b9a-4741-9201-95a9d7631b4d");
+            var stereotype = model.GetStereotype(View.DefinitionId);
             return stereotype != null ? new View(stereotype) : null;
         }
 
 
         public static bool HasView(this ClassModel model)
         {
-            return model.HasStereotype("6dfa2c79-4b9a-4741-9201-95a9d7631b4d");
+            return model.HasStereotype(View.DefinitionId);
         }
 
         public static bool TryGetView(this ClassModel model, out View stereotype)
@@ -134,13 +134,14 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new View(model.GetStereotype("6dfa2c79-4b9a-4741-9201-95a9d7631b4d"));
+            stereotype = new View(model.GetStereotype(View.DefinitionId));
             return true;
         }
 
         public class CheckConstraint
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "8565814D-EF70-40EE-A0D3-577AB7B1254C";
 
             public CheckConstraint(IStereotype stereotype)
             {
@@ -164,6 +165,7 @@ namespace Intent.Metadata.RDBMS.Api
         public class Schema
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "c0f17219-ada3-47ac-80c6-7a5750cbd322";
 
             public Schema(IStereotype stereotype)
             {
@@ -183,6 +185,7 @@ namespace Intent.Metadata.RDBMS.Api
         public class Table
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "dd205b32-b48b-4c77-98f5-faefb2c047ce";
 
             public Table(IStereotype stereotype)
             {
@@ -206,6 +209,7 @@ namespace Intent.Metadata.RDBMS.Api
         public class View
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "6dfa2c79-4b9a-4741-9201-95a9d7631b4d";
 
             public View(IStereotype stereotype)
             {

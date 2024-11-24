@@ -36,9 +36,9 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
 
         public string Id => _association.Id;
 
-        public QueryEntityActionSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new QueryEntityActionSourceEndModel(_association.SourceEnd, this));
+        public QueryEntityActionSourceEndModel SourceEnd => _sourceEnd ??= new QueryEntityActionSourceEndModel(_association.SourceEnd, this);
 
-        public QueryEntityActionTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new QueryEntityActionTargetEndModel(_association.TargetEnd, this));
+        public QueryEntityActionTargetEndModel TargetEnd => _targetEnd ??= new QueryEntityActionTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 

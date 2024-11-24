@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Dart.Api
     {
         public static DartTemplateSettings GetDartTemplateSettings(this DartFileTemplateModel model)
         {
-            var stereotype = model.GetStereotype("c38634e8-d893-435b-9d19-9aec9a2812cd");
+            var stereotype = model.GetStereotype(DartTemplateSettings.DefinitionId);
             return stereotype != null ? new DartTemplateSettings(stereotype) : null;
         }
 
 
         public static bool HasDartTemplateSettings(this DartFileTemplateModel model)
         {
-            return model.HasStereotype("c38634e8-d893-435b-9d19-9aec9a2812cd");
+            return model.HasStereotype(DartTemplateSettings.DefinitionId);
         }
 
         public static bool TryGetDartTemplateSettings(this DartFileTemplateModel model, out DartTemplateSettings stereotype)
@@ -32,13 +32,14 @@ namespace Intent.ModuleBuilder.Dart.Api
                 return false;
             }
 
-            stereotype = new DartTemplateSettings(model.GetStereotype("c38634e8-d893-435b-9d19-9aec9a2812cd"));
+            stereotype = new DartTemplateSettings(model.GetStereotype(DartTemplateSettings.DefinitionId));
             return true;
         }
 
         public class DartTemplateSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "c38634e8-d893-435b-9d19-9aec9a2812cd";
 
             public DartTemplateSettings(IStereotype stereotype)
             {

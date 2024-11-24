@@ -20,7 +20,7 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type type="Integration Event Handler" />
+        <type type="Integration Event Handler" typeId="c0582230-22f5-4f74-8eb0-ec6fc9364900" />
       </typeOrder>
     </packageExtension>
   </packageExtensions>
@@ -28,8 +28,8 @@
     <elementSetting type="Integration Event Handler" typeId="c0582230-22f5-4f74-8eb0-ec6fc9364900">
       <icon type="UrlImagePath" source="data:image/png;base64,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" />
       <saveAsOwnFile>true</saveAsOwnFile>
-      <nameMustBeUnique>false</nameMustBeUnique>
       <allowRename>true</allowRename>
+      <nameMustBeUnique>false</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -41,8 +41,8 @@
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type type="Subscribe Integration Event Target End" order="0" />
-        <type type="Subscribe Integration Command Target End" order="1" />
+        <type order="0" type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" />
+        <type order="1" type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" />
       </typeOrder>
       <creationOptions>
         <option type="association">
@@ -66,12 +66,10 @@
       <scriptOptions />
       <mappingOptions />
       <mappingSettings />
-      <childElementSettings />
     </elementSetting>
   </elementSettings>
   <elementExtensions>
     <elementExtension type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
-      <implements />
       <creationOptions>
         <option type="association">
           <text>Publish Integration Event</text>
@@ -94,13 +92,12 @@
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type type="Publish Integration Event Target End" />
-        <type type="Send Integration Command Target End" />
+        <type type="Publish Integration Event Target End" typeId="6feb1511-849a-4aa3-85eb-d0c736ac1fec" />
+        <type type="Send Integration Command Target End" typeId="35a14f76-71e0-45f2-a17f-f8d1483510f7" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
     <elementExtension type="Diagram" typeId="8c90aca5-86f4-47f1-bd58-116fe79f5c55">
-      <implements />
       <mappingSettings />
       <diagramSettings>
         <addNewElementsTo>Package</addNewElementsTo>
@@ -116,72 +113,6 @@
         </creationOptions>
         <scriptOptions />
         <elementVisualSettings>
-          <visualSettings type="Integration Event Handler" typeId="c0582230-22f5-4f74-8eb0-ec6fc9364900">
-            <size width="${w}" height="70" />
-            <position x="${x}" y="${y}" />
-            <display>
-              <drawText>
-                <text>return getName();</text>
-                <style>`font-size: 12px; 
-font-family: Helvetica; 
-font-weight: bold; 
-text-align: center; 
-white-space: inherit;
-vertical-align: center`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 48}" />
-              </drawText>
-              <drawSvgResource>
-                <path>ingress.svg</path>
-                <size width="${w}" height="40" />
-                <position x="${x}" y="${y + 6}" />
-              </drawSvgResource>
-            </display>
-            <defaultSize width="${x}" height="70" />
-            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
-            <childElementVisualSettings>
-              <childElementVisualSetting type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4">
-                <size width="`${parent.w}`" height="18" />
-                <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 66}`" />
-                <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
-                <display>
-                  <drawText>
-                    <text>return `handles: ${typeReference.display}`</text>
-                    <size width="${w - 26}" height="${h}" />
-                    <position x="${x + 24}" y="${y}" />
-                  </drawText>
-                  <drawSvgResource>
-                    <path>method.svg</path>
-                    <size width="20" height="20" />
-                    <position x="${x}" y="${y}" />
-                  </drawSvgResource>
-                </display>
-                <defaultSize width="`${parent.w}`" height="18" />
-                <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
-                <childElementVisualSettings />
-              </childElementVisualSetting>
-              <childElementVisualSetting type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394">
-                <size width="`${parent.w}`" height="18" />
-                <position x="`${parent.x}`" y="${parent.y + (parent.elements['Subscribe Integration Event Target End'].size.height) + ($index * 18) + 66}" />
-                <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
-                <display>
-                  <drawText>
-                    <text>return `handles: ${typeReference.display}`</text>
-                    <size width="${w - 26}" height="${h}" />
-                    <position x="${x + 24}" y="${y}" />
-                  </drawText>
-                  <drawSvgResource>
-                    <path>method.svg</path>
-                    <size width="20" height="20" />
-                    <position x="${x}" y="${y}" />
-                  </drawSvgResource>
-                </display>
-                <defaultSize width="`${parent.w}`" height="18" />
-                <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
-                <childElementVisualSettings />
-              </childElementVisualSetting>
-            </childElementVisualSettings>
-          </visualSettings>
           <visualSettings type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625">
             <size width="${w}" height="70" />
             <position x="${x}" y="${y}" />
@@ -210,6 +141,72 @@ vertical-align: center`</style>
             <defaultSize width="${x}" height="70" />
             <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings />
+          </visualSettings>
+          <visualSettings type="Integration Event Handler" typeId="c0582230-22f5-4f74-8eb0-ec6fc9364900">
+            <size width="${w}" height="70" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawText>
+                <text>return getName();</text>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+                <size width="${w}" height="18" />
+                <position x="${x}" y="${y + 48}" />
+              </drawText>
+              <drawSvgResource>
+                <path>ingress.svg</path>
+                <size width="${w}" height="40" />
+                <position x="${x}" y="${y + 6}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="${x}" height="70" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings>
+              <childElementVisualSetting type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394">
+                <size width="`${parent.w}`" height="18" />
+                <position x="`${parent.x}`" y="${parent.y + (parent.elements['Subscribe Integration Event Target End'].size.height) + ($index * 18) + 66}" />
+                <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
+                <display>
+                  <drawText>
+                    <text>return `handles: ${typeReference.display}`</text>
+                    <size width="${w - 26}" height="${h}" />
+                    <position x="${x + 24}" y="${y}" />
+                  </drawText>
+                  <drawSvgResource>
+                    <path>method.svg</path>
+                    <size width="20" height="20" />
+                    <position x="${x}" y="${y}" />
+                  </drawSvgResource>
+                </display>
+                <defaultSize width="`${parent.w}`" height="18" />
+                <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+                <childElementVisualSettings />
+              </childElementVisualSetting>
+              <childElementVisualSetting type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4">
+                <size width="`${parent.w}`" height="18" />
+                <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 66}`" />
+                <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
+                <display>
+                  <drawText>
+                    <text>return `handles: ${typeReference.display}`</text>
+                    <size width="${w - 26}" height="${h}" />
+                    <position x="${x + 24}" y="${y}" />
+                  </drawText>
+                  <drawSvgResource>
+                    <path>method.svg</path>
+                    <size width="20" height="20" />
+                    <position x="${x}" y="${y}" />
+                  </drawSvgResource>
+                </display>
+                <defaultSize width="`${parent.w}`" height="18" />
+                <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+                <childElementVisualSettings />
+              </childElementVisualSetting>
+            </childElementVisualSettings>
           </visualSettings>
           <visualSettings type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
             <size width="${w}" height="70" />
@@ -245,7 +242,6 @@ vertical-align: center`</style>
       </diagramSettings>
     </elementExtension>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-      <implements />
       <creationOptions>
         <option type="element">
           <text>New Integration Event Handler</text>
@@ -260,12 +256,11 @@ vertical-align: center`</style>
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type type="Integration Event Handler" />
+        <type type="Integration Event Handler" typeId="c0582230-22f5-4f74-8eb0-ec6fc9364900" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
     <elementExtension type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
-      <implements />
       <creationOptions>
         <option type="association">
           <text>Add Event Handler</text>
@@ -287,13 +282,12 @@ vertical-align: center`</style>
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type type="Subscribe Integration Event Source End" />
-        <type type="Subscribe Integration Command Source End" />
+        <type type="Subscribe Integration Event Source End" typeId="5d8f5c33-f9c9-4629-b637-fad9b0096894" />
+        <type type="Subscribe Integration Command Source End" typeId="cdc0ae0a-1199-4450-8e21-2da80e03bc26" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
     <elementExtension type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
-      <implements />
       <creationOptions />
       <scriptOptions />
       <mappingOptions />
@@ -301,7 +295,6 @@ vertical-align: center`</style>
       <mappingSettings />
     </elementExtension>
     <elementExtension type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
-      <implements />
       <creationOptions>
         <option type="association">
           <text>Publish Integration Event</text>
@@ -326,8 +319,8 @@ vertical-align: center`</style>
       <scriptOptions />
       <mappingOptions />
       <typeOrder>
-        <type type="Publish Integration Event Target End" />
-        <type type="Send Integration Command Target End" />
+        <type type="Publish Integration Event Target End" typeId="6feb1511-849a-4aa3-85eb-d0c736ac1fec" />
+        <type type="Send Integration Command Target End" typeId="35a14f76-71e0-45f2-a17f-f8d1483510f7" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -337,15 +330,14 @@ vertical-align: center`</style>
       <sourceEnd type="Call Service Operation Source End" typeId="01693f59-b89f-4e03-934a-dfcb4cbd90df">
         <displayFunction>return `called by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
-        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABGpJREFUeF7tWk1vE1cUPfdlgUWFknGqLlD5WrZFrQpS6YqSik/ROKzYAO2qP6BItkNV6EQqNGNX/ACWwMorPOarJZBCNyAkkBCt1FWBrmu7qhSEBHOrCXZij+fjzcybwZJntnlz7rnnnXtz3xsTRvyhEc8fmQCZA0ZcgawERtwAWRPMSiArgRFXICuBETdA9l8gK4HYJVCrjU38tWYnCbEHzBs6eM+YeaH9/OFt6LoVK0atNjb+NPeZYOwBbHxiEP3NlnWjveXFHRw+/CoOfiwH5Ocv72NhnQXwvgeJ3wl0vFma/iUKyXylvp9BNv57Hu//QZY43pz94uco+PY7kQXQKvUSQD8CEAHBLTDNtsrT1TAkNcMsg3BGCh98olWaqYTB766NJEDeqOtM9H2ogASjVSzMyryTr5hzDJySWbuyJgR+L25oASIlvyp3oAhJ4ztFDSVALHISIiSN7+YoaQGUkOswIOa5ZnlG7yW0WV/M/bv2v18B7AhlfZfFbvhemFICqEzer2a1+do4RO46gE/jigDJnhAoQCLJ+zihI8ItANviiiDjBF8BkkzezwlvG/X1r4juA1gfV4QgJ3gKkEryPk4Yr5qfC8bN2ALYw45Lz/GdAzpDyLyK4PIYXHYOM5rRuAzig/IYfisH8V0nwc74eUViAlPDaxXFItCB3rF50mh8YhHfUxRoAH9QgFptTHuSe+Qz2yvi4gnzZ2tp3VboUy+7K7SK+QTAJkWBB/D7esCEUZ8iIrsDv7GHiabaxWl7Hlh+NKN+DkRfqyLkxO8TQKs2zoD5hKpgkXAYp1vlwnerAjSKII500HGN78DvF6BSvwjQkUjEVb1EuNAqFr5cEaBaPwqmC6rg4cB3CGDagY4qCxYJiM+3SjNfdV+dMMxjRDgfCcrdAn34TgFOA/hWXbDwSAT+oVmaOZlUCTjx+5tgtbGLmBfD01b3BgO72qXC7cSaoAO/fxLUdaGt3fYQwIfqUgqF9Li19OCjlXtEZtKq5jOA3g2F4r24H9/tSixfaexl8LU3MQgJsvb9Uzy00OU/Wb20w2JxV1HylhPfxnU9C3Tu+wxFgaVgCCg2S4WfehdrhnkVhANSAAGL3PA9BbD/kOZhiIn0dnF6rjeHyeql3RaLGyqSd8Pv4voeh9M4FLmR0+bNjSRwn4F34grgl7yvA7qBk3SCe/K1cVBuEYSPk05eSgB7URJO8Exe5OyPHLHvBYN2XqoEendApRPcyKm8FJVNXtoBq0PJ8teaWBclfuRUOC1M8qEFiFsOMuTiiCCD7+wrgbfCbo0oCskw5JLG780pkgCvnbB8TrfLIfDjKAFl55AT1OGTxg/dBN0Id8Zm+/P1Bx4JPRZkfdM73gYl3td4X4/lieFH6gEDCei6mHhr+06yeDcENi6DMj+1QAvtpQe/xf6BRML4kUsgzE4O89pMgGHenTS4ZQ5IQ+VhjpE5YJh3Jw1umQPSUHmYY2QOGObdSYNb5oA0VB7mGJkDhnl30uD2P6Sq8VCQLRDUAAAAAElFTkSuQmCC" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Subscribe Integration Event Target End" />
-            <type type="Subscribe Integration Command Target End" />
+            <type type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" />
+            <type type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -360,12 +352,13 @@ vertical-align: center`</style>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Operation" />
+            <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -404,18 +397,17 @@ vertical-align: center`</style>
       <sourceEnd type="Publish Integration Event Source End" typeId="eab91b3a-9903-40a2-90e8-ddb714883eab">
         <displayFunction>return `published by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
-        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABGpJREFUeF7tWk1vE1cUPfdlgUWFknGqLlD5WrZFrQpS6YqSik/ROKzYAO2qP6BItkNV6EQqNGNX/ACWwMorPOarJZBCNyAkkBCt1FWBrmu7qhSEBHOrCXZij+fjzcybwZJntnlz7rnnnXtz3xsTRvyhEc8fmQCZA0ZcgawERtwAWRPMSiArgRFXICuBETdA9l8gK4HYJVCrjU38tWYnCbEHzBs6eM+YeaH9/OFt6LoVK0atNjb+NPeZYOwBbHxiEP3NlnWjveXFHRw+/CoOfiwH5Ocv72NhnQXwvgeJ3wl0vFma/iUKyXylvp9BNv57Hu//QZY43pz94uco+PY7kQXQKvUSQD8CEAHBLTDNtsrT1TAkNcMsg3BGCh98olWaqYTB766NJEDeqOtM9H2ogASjVSzMyryTr5hzDJySWbuyJgR+L25oASIlvyp3oAhJ4ztFDSVALHISIiSN7+YoaQGUkOswIOa5ZnlG7yW0WV/M/bv2v18B7AhlfZfFbvhemFICqEzer2a1+do4RO46gE/jigDJnhAoQCLJ+zihI8ItANviiiDjBF8BkkzezwlvG/X1r4juA1gfV4QgJ3gKkEryPk4Yr5qfC8bN2ALYw45Lz/GdAzpDyLyK4PIYXHYOM5rRuAzig/IYfisH8V0nwc74eUViAlPDaxXFItCB3rF50mh8YhHfUxRoAH9QgFptTHuSe+Qz2yvi4gnzZ2tp3VboUy+7K7SK+QTAJkWBB/D7esCEUZ8iIrsDv7GHiabaxWl7Hlh+NKN+DkRfqyLkxO8TQKs2zoD5hKpgkXAYp1vlwnerAjSKII500HGN78DvF6BSvwjQkUjEVb1EuNAqFr5cEaBaPwqmC6rg4cB3CGDagY4qCxYJiM+3SjNfdV+dMMxjRDgfCcrdAn34TgFOA/hWXbDwSAT+oVmaOZlUCTjx+5tgtbGLmBfD01b3BgO72qXC7cSaoAO/fxLUdaGt3fYQwIfqUgqF9Li19OCjlXtEZtKq5jOA3g2F4r24H9/tSixfaexl8LU3MQgJsvb9Uzy00OU/Wb20w2JxV1HylhPfxnU9C3Tu+wxFgaVgCCg2S4WfehdrhnkVhANSAAGL3PA9BbD/kOZhiIn0dnF6rjeHyeql3RaLGyqSd8Pv4voeh9M4FLmR0+bNjSRwn4F34grgl7yvA7qBk3SCe/K1cVBuEYSPk05eSgB7URJO8Exe5OyPHLHvBYN2XqoEendApRPcyKm8FJVNXtoBq0PJ8teaWBclfuRUOC1M8qEFiFsOMuTiiCCD7+wrgbfCbo0oCskw5JLG780pkgCvnbB8TrfLIfDjKAFl55AT1OGTxg/dBN0Id8Zm+/P1Bx4JPRZkfdM73gYl3td4X4/lieFH6gEDCei6mHhr+06yeDcENi6DMj+1QAvtpQe/xf6BRML4kUsgzE4O89pMgGHenTS4ZQ5IQ+VhjpE5YJh3Jw1umQPSUHmYY2QOGObdSYNb5oA0VB7mGJkDhnl30uD2P6Sq8VCQLRDUAAAAAElFTkSuQmCC" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Command" />
-            <type type="Domain Event Handler Association Target End" />
-            <type type="Operation" />
-            <type type="Subscribe Integration Event Target End" />
-            <type type="Subscribe Integration Command Target End" />
+            <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+            <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
+            <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+            <type type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" />
+            <type type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -430,12 +422,13 @@ vertical-align: center`</style>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Message" />
+            <type type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -474,15 +467,14 @@ vertical-align: center`</style>
       <sourceEnd type="Send Command Source End" typeId="6b9e34dd-b50f-4998-a3cf-93dde7b2d51e">
         <displayFunction>return `published by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
-        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABGpJREFUeF7tWk1vE1cUPfdlgUWFknGqLlD5WrZFrQpS6YqSik/ROKzYAO2qP6BItkNV6EQqNGNX/ACWwMorPOarJZBCNyAkkBCt1FWBrmu7qhSEBHOrCXZij+fjzcybwZJntnlz7rnnnXtz3xsTRvyhEc8fmQCZA0ZcgawERtwAWRPMSiArgRFXICuBETdA9l8gK4HYJVCrjU38tWYnCbEHzBs6eM+YeaH9/OFt6LoVK0atNjb+NPeZYOwBbHxiEP3NlnWjveXFHRw+/CoOfiwH5Ocv72NhnQXwvgeJ3wl0vFma/iUKyXylvp9BNv57Hu//QZY43pz94uco+PY7kQXQKvUSQD8CEAHBLTDNtsrT1TAkNcMsg3BGCh98olWaqYTB766NJEDeqOtM9H2ogASjVSzMyryTr5hzDJySWbuyJgR+L25oASIlvyp3oAhJ4ztFDSVALHISIiSN7+YoaQGUkOswIOa5ZnlG7yW0WV/M/bv2v18B7AhlfZfFbvhemFICqEzer2a1+do4RO46gE/jigDJnhAoQCLJ+zihI8ItANviiiDjBF8BkkzezwlvG/X1r4juA1gfV4QgJ3gKkEryPk4Yr5qfC8bN2ALYw45Lz/GdAzpDyLyK4PIYXHYOM5rRuAzig/IYfisH8V0nwc74eUViAlPDaxXFItCB3rF50mh8YhHfUxRoAH9QgFptTHuSe+Qz2yvi4gnzZ2tp3VboUy+7K7SK+QTAJkWBB/D7esCEUZ8iIrsDv7GHiabaxWl7Hlh+NKN+DkRfqyLkxO8TQKs2zoD5hKpgkXAYp1vlwnerAjSKII500HGN78DvF6BSvwjQkUjEVb1EuNAqFr5cEaBaPwqmC6rg4cB3CGDagY4qCxYJiM+3SjNfdV+dMMxjRDgfCcrdAn34TgFOA/hWXbDwSAT+oVmaOZlUCTjx+5tgtbGLmBfD01b3BgO72qXC7cSaoAO/fxLUdaGt3fYQwIfqUgqF9Li19OCjlXtEZtKq5jOA3g2F4r24H9/tSixfaexl8LU3MQgJsvb9Uzy00OU/Wb20w2JxV1HylhPfxnU9C3Tu+wxFgaVgCCg2S4WfehdrhnkVhANSAAGL3PA9BbD/kOZhiIn0dnF6rjeHyeql3RaLGyqSd8Pv4voeh9M4FLmR0+bNjSRwn4F34grgl7yvA7qBk3SCe/K1cVBuEYSPk05eSgB7URJO8Exe5OyPHLHvBYN2XqoEendApRPcyKm8FJVNXtoBq0PJ8teaWBclfuRUOC1M8qEFiFsOMuTiiCCD7+wrgbfCbo0oCskw5JLG780pkgCvnbB8TrfLIfDjKAFl55AT1OGTxg/dBN0Id8Zm+/P1Bx4JPRZkfdM73gYl3td4X4/lieFH6gEDCei6mHhr+06yeDcENi6DMj+1QAvtpQe/xf6BRML4kUsgzE4O89pMgGHenTS4ZQ5IQ+VhjpE5YJh3Jw1umQPSUHmYY2QOGObdSYNb5oA0VB7mGJkDhnl30uD2P6Sq8VCQLRDUAAAAAElFTkSuQmCC" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Subscribe Integration Event Target End" />
-            <type type="Subscribe Integration Command Target End" />
+            <type type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" />
+            <type type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -497,12 +489,13 @@ vertical-align: center`</style>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Command" />
+            <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -541,18 +534,17 @@ vertical-align: center`</style>
       <sourceEnd type="Send Integration Command Source End" typeId="c5f4f98f-e464-48de-b202-c0724bacebb7">
         <displayFunction>return `sent by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
-        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABGpJREFUeF7tWk1vE1cUPfdlgUWFknGqLlD5WrZFrQpS6YqSik/ROKzYAO2qP6BItkNV6EQqNGNX/ACWwMorPOarJZBCNyAkkBCt1FWBrmu7qhSEBHOrCXZij+fjzcybwZJntnlz7rnnnXtz3xsTRvyhEc8fmQCZA0ZcgawERtwAWRPMSiArgRFXICuBETdA9l8gK4HYJVCrjU38tWYnCbEHzBs6eM+YeaH9/OFt6LoVK0atNjb+NPeZYOwBbHxiEP3NlnWjveXFHRw+/CoOfiwH5Ocv72NhnQXwvgeJ3wl0vFma/iUKyXylvp9BNv57Hu//QZY43pz94uco+PY7kQXQKvUSQD8CEAHBLTDNtsrT1TAkNcMsg3BGCh98olWaqYTB766NJEDeqOtM9H2ogASjVSzMyryTr5hzDJySWbuyJgR+L25oASIlvyp3oAhJ4ztFDSVALHISIiSN7+YoaQGUkOswIOa5ZnlG7yW0WV/M/bv2v18B7AhlfZfFbvhemFICqEzer2a1+do4RO46gE/jigDJnhAoQCLJ+zihI8ItANviiiDjBF8BkkzezwlvG/X1r4juA1gfV4QgJ3gKkEryPk4Yr5qfC8bN2ALYw45Lz/GdAzpDyLyK4PIYXHYOM5rRuAzig/IYfisH8V0nwc74eUViAlPDaxXFItCB3rF50mh8YhHfUxRoAH9QgFptTHuSe+Qz2yvi4gnzZ2tp3VboUy+7K7SK+QTAJkWBB/D7esCEUZ8iIrsDv7GHiabaxWl7Hlh+NKN+DkRfqyLkxO8TQKs2zoD5hKpgkXAYp1vlwnerAjSKII500HGN78DvF6BSvwjQkUjEVb1EuNAqFr5cEaBaPwqmC6rg4cB3CGDagY4qCxYJiM+3SjNfdV+dMMxjRDgfCcrdAn34TgFOA/hWXbDwSAT+oVmaOZlUCTjx+5tgtbGLmBfD01b3BgO72qXC7cSaoAO/fxLUdaGt3fYQwIfqUgqF9Li19OCjlXtEZtKq5jOA3g2F4r24H9/tSixfaexl8LU3MQgJsvb9Uzy00OU/Wb20w2JxV1HylhPfxnU9C3Tu+wxFgaVgCCg2S4WfehdrhnkVhANSAAGL3PA9BbD/kOZhiIn0dnF6rjeHyeql3RaLGyqSd8Pv4voeh9M4FLmR0+bNjSRwn4F34grgl7yvA7qBk3SCe/K1cVBuEYSPk05eSgB7URJO8Exe5OyPHLHvBYN2XqoEendApRPcyKm8FJVNXtoBq0PJ8teaWBclfuRUOC1M8qEFiFsOMuTiiCCD7+wrgbfCbo0oCskw5JLG780pkgCvnbB8TrfLIfDjKAFl55AT1OGTxg/dBN0Id8Zm+/P1Bx4JPRZkfdM73gYl3td4X4/lieFH6gEDCei6mHhr+06yeDcENi6DMj+1QAvtpQe/xf6BRML4kUsgzE4O89pMgGHenTS4ZQ5IQ+VhjpE5YJh3Jw1umQPSUHmYY2QOGObdSYNb5oA0VB7mGJkDhnl30uD2P6Sq8VCQLRDUAAAAAElFTkSuQmCC" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Command" />
-            <type type="Domain Event Handler Association Target End" />
-            <type type="Operation" />
-            <type type="Subscribe Integration Command Target End" />
-            <type type="Subscribe Integration Event Target End" />
+            <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+            <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
+            <type type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" />
+            <type type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" />
+            <type type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -567,12 +559,13 @@ vertical-align: center`</style>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Integration Command" />
+            <type type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -609,14 +602,13 @@ vertical-align: center`</style>
       <sourceEnd type="Subscribe Integration Command Source End" typeId="cdc0ae0a-1199-4450-8e21-2da80e03bc26">
         <displayFunction>return `handled by: ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
-        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABGpJREFUeF7tWk1vE1cUPfdlgUWFknGqLlD5WrZFrQpS6YqSik/ROKzYAO2qP6BItkNV6EQqNGNX/ACWwMorPOarJZBCNyAkkBCt1FWBrmu7qhSEBHOrCXZij+fjzcybwZJntnlz7rnnnXtz3xsTRvyhEc8fmQCZA0ZcgawERtwAWRPMSiArgRFXICuBETdA9l8gK4HYJVCrjU38tWYnCbEHzBs6eM+YeaH9/OFt6LoVK0atNjb+NPeZYOwBbHxiEP3NlnWjveXFHRw+/CoOfiwH5Ocv72NhnQXwvgeJ3wl0vFma/iUKyXylvp9BNv57Hu//QZY43pz94uco+PY7kQXQKvUSQD8CEAHBLTDNtsrT1TAkNcMsg3BGCh98olWaqYTB766NJEDeqOtM9H2ogASjVSzMyryTr5hzDJySWbuyJgR+L25oASIlvyp3oAhJ4ztFDSVALHISIiSN7+YoaQGUkOswIOa5ZnlG7yW0WV/M/bv2v18B7AhlfZfFbvhemFICqEzer2a1+do4RO46gE/jigDJnhAoQCLJ+zihI8ItANviiiDjBF8BkkzezwlvG/X1r4juA1gfV4QgJ3gKkEryPk4Yr5qfC8bN2ALYw45Lz/GdAzpDyLyK4PIYXHYOM5rRuAzig/IYfisH8V0nwc74eUViAlPDaxXFItCB3rF50mh8YhHfUxRoAH9QgFptTHuSe+Qz2yvi4gnzZ2tp3VboUy+7K7SK+QTAJkWBB/D7esCEUZ8iIrsDv7GHiabaxWl7Hlh+NKN+DkRfqyLkxO8TQKs2zoD5hKpgkXAYp1vlwnerAjSKII500HGN78DvF6BSvwjQkUjEVb1EuNAqFr5cEaBaPwqmC6rg4cB3CGDagY4qCxYJiM+3SjNfdV+dMMxjRDgfCcrdAn34TgFOA/hWXbDwSAT+oVmaOZlUCTjx+5tgtbGLmBfD01b3BgO72qXC7cSaoAO/fxLUdaGt3fYQwIfqUgqF9Li19OCjlXtEZtKq5jOA3g2F4r24H9/tSixfaexl8LU3MQgJsvb9Uzy00OU/Wb20w2JxV1HylhPfxnU9C3Tu+wxFgaVgCCg2S4WfehdrhnkVhANSAAGL3PA9BbD/kOZhiIn0dnF6rjeHyeql3RaLGyqSd8Pv4voeh9M4FLmR0+bNjSRwn4F34grgl7yvA7qBk3SCe/K1cVBuEYSPk05eSgB7URJO8Exe5OyPHLHvBYN2XqoEendApRPcyKm8FJVNXtoBq0PJ8teaWBclfuRUOC1M8qEFiFsOMuTiiCCD7+wrgbfCbo0oCskw5JLG780pkgCvnbB8TrfLIfDjKAFl55AT1OGTxg/dBN0Id8Zm+/P1Bx4JPRZkfdM73gYl3td4X4/lieFH6gEDCei6mHhr+06yeDcENi6DMj+1QAvtpQe/xf6BRML4kUsgzE4O89pMgGHenTS4ZQ5IQ+VhjpE5YJh3Jw1umQPSUHmYY2QOGObdSYNb5oA0VB7mGJkDhnl30uD2P6Sq8VCQLRDUAAAAAElFTkSuQmCC" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Integration Event Handler" />
+            <type type="Integration Event Handler" typeId="c0582230-22f5-4f74-8eb0-ec6fc9364900" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -631,12 +623,13 @@ vertical-align: center`</style>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAB/FJREFUeF7tnH2MXFUZxp/n3Du72936gVYkkUTwIxobEQlbNKIWP7BggwkuY4lQupXGdi0Ewx+oUdMQoiHRqFh2wVJaKoY6XTWYGtqqKRiMxCX4gSUaJWLApIhYUHb2Y+49j7m7TN0OO3PPmTszu2vv/W9n3/c97/vb95zn3HPvLJFfmQgwk3fujBxgxibIAeYAMxLI6J53YA4wI4GM7nkH/j8C3HLuvotE3Uzi7Ul9Eh6leMPIw5fdl7Helrsvqg4c6i+dLeKbAN5fp9IHKFw3PFb8bctJNBlwUQDc/K57zoANv0JoHZC6N5XAvTDRF2576PInmqy7ZW4LCnDL+d87BVPhl0EOAejyrGoa0jC6oxtHHvzkMU/flpkvCMANq3f19Iz3XUficwBekbGa5wF9daK3/K3d9w9OZozl7d5xgFvO2zco6UYCpzfMlvyzlW5ObAx5A6Q3N7IX8JQRvnTq2GN7tmGb9SbRpEPHANYqa4N8j1rylknb/WNjrBI7aw17zNQlRroWwGkNQXZYsdsO0EFZZ3mQ/4G0Yzwwdwc2nJoPUmyi7r7YXgFyE6SXpTRNRxS7bQA9lLUC8J4KzUiM4N8uMylA/PJQGiJsotqFBj5tV+yWA/RQVok8EEHfiNH1dxdwtTYBpl8Xgp+ltCZl+9M2xW4ZQD9l5W+sgpumjfljM+BqfQqyKwPEnwf0zpR4LVfszAC3YZt5+ryVVzkpq/B4DPP1igkfaAW42hhdtrLaANeDekOnFDsTQFdlJfCMZLZPhOGPaBG3A141pgyCnrhyKaGtAFa0W7GbAuisrELZkjunjdkNBR3d5AbQsgDxoLF2EERvuxTbC6CrsgqKSbMvjoJbK6H5Vzs7Li12IbKvMkF8DWA/TjBotWI7Axx6W2m5luMHAC5sfAeBn0UyX4sYPplWXCd/34XoDMpeT+ADDccVDnIcA8OPFV9wyc8Z4OZzS1tNoIskXlwn8BExvGkK5vcuAy+UTTfsWVT0RQAr6+RwUBb7b3u4uN0lR2eAW/pLh0kZge+rE/hPMYI7EfTcV7GVtgqFS2Hz2RRMIWBcvthAgwDeMm8c4f7k85Gx4gUu43gBhFEE8UMpgY8CvGuq0DWqSGWXJNptw5C9XZXpywitT7uXBnAIQlebAJpnIZsATD2CojQeM9gbiXusCf7ZbkjzxTc2XhFS6wPF60T2OeTwPMGfSlrRHoDJyQgxScpCPCv1SGo244qE/ZbBzgqDvzoUkdmkoPhMo/hTJNam3CtXx3pS1KMSjRF62jeFTyhNlAn2APYzFM5xqFoAfxGDuyoMxxzsvU0KtP2hjTYKeK/DowGIeAQwt9LG6wHOHJ1Vr7Z14NxBxhkOJD/3In43oK2c3eKkrqsC/iBgV2TDQzYwmQ4/TWxNaKILDbCxgbLOTVsCDlkE354EH0p+0adotPav1VGA1cGXwZ5paK+V9AmCqc84klNkC3NXxfCH3ncqjHsKVpca6CpCjU+3k0ej0DTJ71uZWyZgTlhKFg3AKshu4NUG0acNkGwXTnGYi88B3Bup8N3I4LlG9qHFK0NWrgR0uYuYATgm6s5Yhe9MAc/OF3vRAawm2RsUehBNXEnDzZBenwaS4pQl7rUMd1bAp+baF6DTqejqQLhEVHdaLBB/s9IIg967y3Gl4X34ogU4t8he2o9ByTqZemY34ybw5xbB7YAKBnYjoQ+mQkv8XhSGssy9LvaLag10STgRHELXAPiwi+C4xJx9+wOHAG4vI/iVo89xsyXRgbVF+QrOfFAaCYMPxCUJMIPgJK7HLLDLIry9njCcNACrhXZRy0IbX9FQcDyE4aQDWC04qESmu8AhEOsovfXFz4+ApjQ5bUfiQphp472ktjE+XXCCYisqEijO/UxAqcyw1GzMRn5Leg2cr7DeHGC2PskBZuOHHGAO8KUEkmcitZ9Wj7My8nqJe96BGYnmAHOA+RRekBPpjI133D2fwhlJ5gBzgPkamK+BHrMgP0zwgJUfZ2WElQPMAaYTOGm2MbE1WyYD80w6Ej+LTgLsie1rAmNHajPsiArPDqojFmFpgjzih6m+dScALpNWGkRFgPO+6tt6gKtKd0B4Y72yZfAEYu0vm8LMK7JZrnYC7LWV1SQuqAduJm/i8ZFfF692qSH1VbRqkKFzSm9SgB1pQUn+A8BPoMLhF2ibesW31QCXy/RaTa0yxhQlnZpaQ4xNw48U/5JmN8va4xrqL60RsRVC6uuyosoQ91trDvuuk60COAMO02tBraWY9mWbhMY4he3DY8UDrli8ACZBk++LoA/nC9gA4LVOAxkcjiNTcgWZFeCMMIS2CJtMVafraQK7MY4HXb8fUo3qDXBuOklHWoM1tHiHU5qOgtMswEQYyOijFFe55COD3xmLAz4dVxs3E8BqsE39pbMDYoDCexwTbyg4vgCdhGFOYiJ+GQujO1rw/2daAvC40PSXTrPABgIfcQFZT3BcAPoKQ5KPgIMG2D08Vjzqkp+LTUsBHgc5u04OiBhoRnAaAWxSGEYxjlHf9W3BANaA9BacGf9aATCYfazaAWFwAdcSEfEZyF9wfKL/z7YVwuAzclumcKMEfAXHtZhWCoPrmIldxwE2Kzj1imqHMCwJgM0Kzozf7B1D24RhSQH0FJym7xh8oPjYLtgUbpRkreB0WhiWPECfAhbadlF24EJD8Rk/B+hDax7bHGAOMCOBjO7/BQuo5Y2wTOY0AAAAAElFTkSuQmCC" />
+        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Integration Command" />
+            <type type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -646,10 +639,10 @@ vertical-align: center`</style>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
         <typeOrder>
-          <type type="Send Command Target End" order="0" />
-          <type type="Call Service Operation Target End" order="1" />
-          <type type="Publish Integration Event Target End" order="2" />
-          <type type="Send Integration Command Target End" order="3" />
+          <type order="0" type="Send Command Target End" typeId="d3096261-1268-440f-8db3-0a6b8b4786cc" />
+          <type order="1" type="Call Service Operation Target End" typeId="752c289a-5961-4172-9017-0eca6fa09fd9" />
+          <type order="2" type="Publish Integration Event Target End" typeId="6feb1511-849a-4aa3-85eb-d0c736ac1fec" />
+          <type order="3" type="Send Integration Command Target End" typeId="35a14f76-71e0-45f2-a17f-f8d1483510f7" />
         </typeOrder>
         <creationOptions>
           <option type="association">
@@ -722,14 +715,13 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
       <sourceEnd type="Subscribe Integration Event Source End" typeId="5d8f5c33-f9c9-4629-b637-fad9b0096894">
         <displayFunction>return `handled by: ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
-        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABGpJREFUeF7tWk1vE1cUPfdlgUWFknGqLlD5WrZFrQpS6YqSik/ROKzYAO2qP6BItkNV6EQqNGNX/ACWwMorPOarJZBCNyAkkBCt1FWBrmu7qhSEBHOrCXZij+fjzcybwZJntnlz7rnnnXtz3xsTRvyhEc8fmQCZA0ZcgawERtwAWRPMSiArgRFXICuBETdA9l8gK4HYJVCrjU38tWYnCbEHzBs6eM+YeaH9/OFt6LoVK0atNjb+NPeZYOwBbHxiEP3NlnWjveXFHRw+/CoOfiwH5Ocv72NhnQXwvgeJ3wl0vFma/iUKyXylvp9BNv57Hu//QZY43pz94uco+PY7kQXQKvUSQD8CEAHBLTDNtsrT1TAkNcMsg3BGCh98olWaqYTB766NJEDeqOtM9H2ogASjVSzMyryTr5hzDJySWbuyJgR+L25oASIlvyp3oAhJ4ztFDSVALHISIiSN7+YoaQGUkOswIOa5ZnlG7yW0WV/M/bv2v18B7AhlfZfFbvhemFICqEzer2a1+do4RO46gE/jigDJnhAoQCLJ+zihI8ItANviiiDjBF8BkkzezwlvG/X1r4juA1gfV4QgJ3gKkEryPk4Yr5qfC8bN2ALYw45Lz/GdAzpDyLyK4PIYXHYOM5rRuAzig/IYfisH8V0nwc74eUViAlPDaxXFItCB3rF50mh8YhHfUxRoAH9QgFptTHuSe+Qz2yvi4gnzZ2tp3VboUy+7K7SK+QTAJkWBB/D7esCEUZ8iIrsDv7GHiabaxWl7Hlh+NKN+DkRfqyLkxO8TQKs2zoD5hKpgkXAYp1vlwnerAjSKII500HGN78DvF6BSvwjQkUjEVb1EuNAqFr5cEaBaPwqmC6rg4cB3CGDagY4qCxYJiM+3SjNfdV+dMMxjRDgfCcrdAn34TgFOA/hWXbDwSAT+oVmaOZlUCTjx+5tgtbGLmBfD01b3BgO72qXC7cSaoAO/fxLUdaGt3fYQwIfqUgqF9Li19OCjlXtEZtKq5jOA3g2F4r24H9/tSixfaexl8LU3MQgJsvb9Uzy00OU/Wb20w2JxV1HylhPfxnU9C3Tu+wxFgaVgCCg2S4WfehdrhnkVhANSAAGL3PA9BbD/kOZhiIn0dnF6rjeHyeql3RaLGyqSd8Pv4voeh9M4FLmR0+bNjSRwn4F34grgl7yvA7qBk3SCe/K1cVBuEYSPk05eSgB7URJO8Exe5OyPHLHvBYN2XqoEendApRPcyKm8FJVNXtoBq0PJ8teaWBclfuRUOC1M8qEFiFsOMuTiiCCD7+wrgbfCbo0oCskw5JLG780pkgCvnbB8TrfLIfDjKAFl55AT1OGTxg/dBN0Id8Zm+/P1Bx4JPRZkfdM73gYl3td4X4/lieFH6gEDCei6mHhr+06yeDcENi6DMj+1QAvtpQe/xf6BRML4kUsgzE4O89pMgGHenTS4ZQ5IQ+VhjpE5YJh3Jw1umQPSUHmYY2QOGObdSYNb5oA0VB7mGJkDhnl30uD2P6Sq8VCQLRDUAAAAAElFTkSuQmCC" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Integration Event Handler" />
+            <type type="Integration Event Handler" typeId="c0582230-22f5-4f74-8eb0-ec6fc9364900" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -744,12 +736,13 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,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" />
+        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Message" />
+            <type type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -759,10 +752,10 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
         <typeOrder>
-          <type type="Send Command Target End" order="0" />
-          <type type="Call Service Operation Target End" order="1" />
-          <type type="Publish Integration Event Target End" order="2" />
-          <type type="Send Integration Command Target End" order="3" />
+          <type order="0" type="Send Command Target End" typeId="d3096261-1268-440f-8db3-0a6b8b4786cc" />
+          <type order="1" type="Call Service Operation Target End" typeId="752c289a-5961-4172-9017-0eca6fa09fd9" />
+          <type order="2" type="Publish Integration Event Target End" typeId="6feb1511-849a-4aa3-85eb-d0c736ac1fec" />
+          <type order="3" type="Send Integration Command Target End" typeId="35a14f76-71e0-45f2-a17f-f8d1483510f7" />
         </typeOrder>
         <creationOptions>
           <option type="association">
@@ -846,8 +839,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
       </sourceEndExtension>
       <targetEndExtension>
         <typeOrder>
-          <type type="Publish Integration Event Target End" />
-          <type type="Send Integration Command Target End" />
+          <type type="Publish Integration Event Target End" typeId="6feb1511-849a-4aa3-85eb-d0c736ac1fec" />
+          <type type="Send Integration Command Target End" typeId="35a14f76-71e0-45f2-a17f-f8d1483510f7" />
         </typeOrder>
         <creationOptions>
           <option type="association">
@@ -885,17 +878,15 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
       <title>Integration Event Handler Mapping</title>
       <sourceRootElementFunction>return element.typeReference.typeId</sourceRootElementFunction>
       <sourceMappings>
-        <mapping id="2893a19b-523a-49e9-b828-2961b0fba28f" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" version="1.0">
+        <mapping id="2893a19b-523a-49e9-b828-2961b0fba28f" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <represents>data</represents>
-          <scriptOptions />
-          <staticMappableSettings />
           <childSettings>
-            <childSetting id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="1.0">
+            <childSetting id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -904,13 +895,10 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
-        <mapping id="b5626f4a-fc65-4cdd-b921-e7d1b347c9f4" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="1.0">
+        <mapping id="b5626f4a-fc65-4cdd-b921-e7d1b347c9f4" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -918,10 +906,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
           <canBeModified>true</canBeModified>
           <createNameFunction>return element.getParent('Message').getName() + element.getName() + 'Dto'</createNameFunction>
           <represents>data</represents>
-          <scriptOptions />
-          <staticMappableSettings />
           <childSettings>
-            <childSetting id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="1.0">
+            <childSetting id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -930,23 +916,18 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
-        <mapping id="5b3901e5-0d98-4df2-bc64-57d0edce0a3a" name="Send Integration Command" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" version="1.0">
+        <mapping id="5b3901e5-0d98-4df2-bc64-57d0edce0a3a" name="Send Integration Command" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <scriptOptions />
-          <staticMappableSettings />
           <childSettings>
-            <childSetting id="432fd702-af2b-43c0-9d8c-e6f1fef9860d" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="1.0">
+            <childSetting id="432fd702-af2b-43c0-9d8c-e6f1fef9860d" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -955,25 +936,20 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
       </sourceMappings>
       <targetMappings>
-        <mapping id="7f5d49dd-fd48-4f29-8126-b1b0c881a99c" name="Send Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" version="1.0">
+        <mapping id="7f5d49dd-fd48-4f29-8126-b1b0c881a99c" name="Send Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <represents>data</represents>
-          <scriptOptions />
-          <staticMappableSettings />
           <childSettings>
-            <childSetting id="7829c6b8-a045-4a3e-b9c2-13795f128879" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="1.0">
+            <childSetting id="7829c6b8-a045-4a3e-b9c2-13795f128879" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; !element.typeReference.getIsCollection()</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
@@ -983,13 +959,10 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
-        <mapping id="8dd4a85c-056b-4d02-859c-e6d274b89580" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="1.0">
+        <mapping id="8dd4a85c-056b-4d02-859c-e6d274b89580" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -998,21 +971,16 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
           <createNameFunction>return element.getParent('Command').getName() + element.getName() + 'Dto'</createNameFunction>
           <useChildSettingsFrom>7f5d49dd-fd48-4f29-8126-b1b0c881a99c</useChildSettingsFrom>
           <represents>data</represents>
-          <scriptOptions />
-          <staticMappableSettings />
-          <childSettings />
         </mapping>
-        <mapping id="41f6e850-b45a-46b2-8909-0e562f8b5a7e" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="1.0">
+        <mapping id="41f6e850-b45a-46b2-8909-0e562f8b5a7e" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <represents>data</represents>
-          <scriptOptions />
-          <staticMappableSettings />
           <childSettings>
-            <childSetting id="e369f4ec-cd31-415c-b5f3-6a5247462615" name="Service Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="1.0">
+            <childSetting id="e369f4ec-cd31-415c-b5f3-6a5247462615" name="Service Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1021,9 +989,6 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
@@ -1036,12 +1001,12 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
             <source id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" />
             <source id="432fd702-af2b-43c0-9d8c-e6f1fef9860d" name="Property" />
           </sources>
+          <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
             <target id="7829c6b8-a045-4a3e-b9c2-13795f128879" name="Field" />
             <target id="e369f4ec-cd31-415c-b5f3-6a5247462615" name="Service Parameter" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
-          <syncSourceChildTypes />
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
       </mappingTypes>
@@ -1049,7 +1014,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
     <mappingSetting type="Publish Message Mapping" typeId="7ff48a4c-ee8b-4e66-9dbb-c014eb0542fb">
       <title>Publish Message Mapping</title>
       <sourceMappings>
-        <mapping id="265955ac-b061-484b-9cf8-76789b1f364a" name="Integration Event Handler" type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" version="1.0">
+        <mapping id="265955ac-b061-484b-9cf8-76789b1f364a" name="Integration Event Handler" type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -1058,10 +1023,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
           </traversableTypes>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <scriptOptions />
-          <staticMappableSettings />
           <childSettings>
-            <childSetting id="43641e69-b46d-4841-bc67-0b0f723f6f6d" name="Create Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016" version="1.0">
+            <childSetting id="43641e69-b46d-4841-bc67-0b0f723f6f6d" name="Create Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1070,11 +1033,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
-            <childSetting id="3decf5a5-f780-4db7-9071-f17da45182c6" name="Update Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452" version="1.0">
+            <childSetting id="3decf5a5-f780-4db7-9071-f17da45182c6" name="Update Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1083,11 +1043,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
-            <childSetting id="a30606c9-594e-4fff-8cab-225e0b3d1d68" name="Query Action" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4" version="1.0">
+            <childSetting id="a30606c9-594e-4fff-8cab-225e0b3d1d68" name="Query Action" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1096,21 +1053,16 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
-            <childSetting id="667fcad0-81e1-4a54-840c-d0c26ebc21b0" name="Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" version="1.0">
+            <childSetting id="667fcad0-81e1-4a54-840c-d0c26ebc21b0" name="Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
               <childSettings>
-                <childSetting id="678ea51f-f715-4219-82bf-1b42c8e3caad" name="Message Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="1.0">
+                <childSetting id="678ea51f-f715-4219-82bf-1b42c8e3caad" name="Message Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>true</isTraversable>
@@ -1119,11 +1071,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
                   </traversableTypes>
                   <canBeModified>true</canBeModified>
                   <represents>data</represents>
-                  <scriptOptions />
-                  <staticMappableSettings />
-                  <childSettings />
                 </childSetting>
-                <childSetting id="3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="1.0">
+                <childSetting id="3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>true</isTraversable>
@@ -1132,13 +1081,10 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
                   </traversableTypes>
                   <canBeModified>true</canBeModified>
                   <represents>data</represents>
-                  <scriptOptions />
-                  <staticMappableSettings />
-                  <childSettings />
                 </childSetting>
               </childSettings>
             </childSetting>
-            <childSetting id="3bfa697e-b0e8-4776-b4b4-b34f9101ea34" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="1.0">
+            <childSetting id="3bfa697e-b0e8-4776-b4b4-b34f9101ea34" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
@@ -1146,10 +1092,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               <canBeModified>true</canBeModified>
               <createNameFunction>return (element.getParent('Message') ?? element.getParent('Integration Command')).getName() + element.getName() + 'Dto'</createNameFunction>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
               <childSettings>
-                <childSetting id="4a6afd7d-ae76-4831-9010-39f18999a595" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="1.0">
+                <childSetting id="4a6afd7d-ae76-4831-9010-39f18999a595" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="2.0.0">
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>true</isTraversable>
@@ -1158,16 +1102,13 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
                   </traversableTypes>
                   <canBeModified>true</canBeModified>
                   <represents>data</represents>
-                  <scriptOptions />
-                  <staticMappableSettings />
-                  <childSettings />
                 </childSetting>
               </childSettings>
             </childSetting>
           </childSettings>
         </mapping>
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
-        <mapping id="f5afadc5-6bab-4385-8cb5-9aff339433c8" name="Integration Event Handler" type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" version="1.0">
+        <mapping id="f5afadc5-6bab-4385-8cb5-9aff339433c8" name="Integration Event Handler" type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -1176,20 +1117,16 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
           </traversableTypes>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
-          <scriptOptions />
-          <staticMappableSettings />
           <childSettings>
-            <childSetting id="b30396fa-5a24-498c-ad0c-53b09f80c9b3" name="Integration Command" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" version="1.0">
+            <childSetting id="b30396fa-5a24-498c-ad0c-53b09f80c9b3" name="Integration Command" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
               <childSettings>
-                <childSetting id="f79156cb-9ac7-4224-becc-138355a3767b" name="Message Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="1.0">
+                <childSetting id="f79156cb-9ac7-4224-becc-138355a3767b" name="Message Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>true</isTraversable>
@@ -1198,11 +1135,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
                   </traversableTypes>
                   <canBeModified>true</canBeModified>
                   <represents>data</represents>
-                  <scriptOptions />
-                  <staticMappableSettings />
-                  <childSettings />
                 </childSetting>
-                <childSetting id="843b3195-7bfb-40a3-aea2-cbcef9a6a68a" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="1.0">
+                <childSetting id="843b3195-7bfb-40a3-aea2-cbcef9a6a68a" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>true</isTraversable>
@@ -1211,13 +1145,10 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
                   </traversableTypes>
                   <canBeModified>true</canBeModified>
                   <represents>data</represents>
-                  <scriptOptions />
-                  <staticMappableSettings />
-                  <childSettings />
                 </childSetting>
               </childSettings>
             </childSetting>
-            <childSetting id="06b6db13-0e42-47e5-acf1-5262e7a54767" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="1.0">
+            <childSetting id="06b6db13-0e42-47e5-acf1-5262e7a54767" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
@@ -1225,10 +1156,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               <canBeModified>true</canBeModified>
               <createNameFunction>return (element.getParent('Message') ?? element.getParent('Integration Command')).getName() + element.getName() + 'Dto'</createNameFunction>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
               <childSettings>
-                <childSetting id="d622e90a-b247-4960-8e86-c4594521938f" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="1.0">
+                <childSetting id="d622e90a-b247-4960-8e86-c4594521938f" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="2.0.0">
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>true</isTraversable>
@@ -1237,9 +1166,6 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
                   </traversableTypes>
                   <canBeModified>true</canBeModified>
                   <represents>data</represents>
-                  <scriptOptions />
-                  <staticMappableSettings />
-                  <childSettings />
                 </childSetting>
               </childSettings>
             </childSetting>
@@ -1247,17 +1173,15 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
         </mapping>
       </sourceMappings>
       <targetMappings>
-        <mapping id="5522e13c-4b8a-464d-802a-83a6d1e5b211" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" version="1.0">
+        <mapping id="5522e13c-4b8a-464d-802a-83a6d1e5b211" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <represents>data</represents>
-          <scriptOptions />
-          <staticMappableSettings />
           <childSettings>
-            <childSetting id="a7d2076d-4c3a-45bd-9d55-165fb4572557" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="1.0">
+            <childSetting id="a7d2076d-4c3a-45bd-9d55-165fb4572557" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1267,11 +1191,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
-            <childSetting id="d10bbf9f-34ba-42dd-ad3a-ca51722aa2a2" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="1.0">
+            <childSetting id="d10bbf9f-34ba-42dd-ad3a-ca51722aa2a2" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1280,13 +1201,10 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
-        <mapping id="4bebd0c2-e53b-41a9-9d18-68f7fc4bec81" name="Publish DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="1.0">
+        <mapping id="4bebd0c2-e53b-41a9-9d18-68f7fc4bec81" name="Publish DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -1294,10 +1212,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
           <canBeModified>true</canBeModified>
           <createNameFunction>return element.getParent('Message').getName() + element.getName() + 'Dto'</createNameFunction>
           <represents>data</represents>
-          <scriptOptions />
-          <staticMappableSettings />
           <childSettings>
-            <childSetting id="ff7ac0b8-9196-42c9-8196-241846f0ef60" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="1.0">
+            <childSetting id="ff7ac0b8-9196-42c9-8196-241846f0ef60" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1306,13 +1222,10 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
-        <mapping id="4155744e-cc1e-495e-9a82-b3702548afe0" name="Publish Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="1.0">
+        <mapping id="4155744e-cc1e-495e-9a82-b3702548afe0" name="Publish Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -1320,10 +1233,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
           <canBeModified>true</canBeModified>
           <createNameFunction>return (element.getParent('Message') ?? element.getParent('Integration Command')).getName() + element.getName() + 'Dto'</createNameFunction>
           <represents>data</represents>
-          <scriptOptions />
-          <staticMappableSettings />
           <childSettings>
-            <childSetting id="972c5a10-0416-4760-9f84-de002d4ef2a7" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="1.0">
+            <childSetting id="972c5a10-0416-4760-9f84-de002d4ef2a7" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1332,23 +1243,18 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
-        <mapping id="d76faa2e-aca1-4d71-9458-333492828267" name="Send Command" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" version="1.0">
+        <mapping id="d76faa2e-aca1-4d71-9458-333492828267" name="Send Command" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <represents>data</represents>
-          <scriptOptions />
-          <staticMappableSettings />
           <childSettings>
-            <childSetting id="3c2d6e4f-8701-41be-bde4-c9f566c10708" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="1.0">
+            <childSetting id="3c2d6e4f-8701-41be-bde4-c9f566c10708" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1358,11 +1264,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
-            <childSetting id="b61a6e29-5e12-4945-a142-077f6887b424" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="1.0">
+            <childSetting id="b61a6e29-5e12-4945-a142-077f6887b424" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -1371,9 +1274,6 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <represents>data</represents>
-              <scriptOptions />
-              <staticMappableSettings />
-              <childSettings />
             </childSetting>
           </childSettings>
         </mapping>
@@ -1395,6 +1295,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
             <source id="843b3195-7bfb-40a3-aea2-cbcef9a6a68a" name="Message DTO-Field" />
             <source id="f79156cb-9ac7-4224-becc-138355a3767b" name="Message Property" />
           </sources>
+          <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
             <target id="ff7ac0b8-9196-42c9-8196-241846f0ef60" name="DTO-Field" />
             <target id="d10bbf9f-34ba-42dd-ad3a-ca51722aa2a2" name="Message DTO-Field" />
@@ -1404,7 +1305,6 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
             <target id="3c2d6e4f-8701-41be-bde4-c9f566c10708" name="Property" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
-          <syncSourceChildTypes />
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
       </mappingTypes>

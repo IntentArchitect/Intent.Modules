@@ -14,13 +14,14 @@ using Intent.Templates;
 namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelT4
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class TypeScriptFilePerModelT4Template : TypeScriptTemplateBase<Intent.Modelers.Domain.Api.ClassModel>
+    public partial class TypeScriptFilePerModelT4Template : TypeScriptTemplateBase<Intent.Modelers.Domain.Api.ClassModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilders.TypeScript.TypeScriptFilePerModelT4";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TypeScriptFilePerModelT4Template(IOutputTarget outputTarget, Intent.Modelers.Domain.Api.ClassModel model) : base(TemplateId, outputTarget, model)
+        public TypeScriptFilePerModelT4Template(IOutputTarget outputTarget, Intent.Modelers.Domain.Api.ClassModel model)
+             : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -29,8 +30,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelT4
         {
             return new TypeScriptFileConfig(
                 className: $"{Model.Name}",
-                fileName: $"{Model.Name.ToKebabCase()}"
-            );
+                fileName: $"{Model.Name.ToKebabCase()}");
         }
     }
 }

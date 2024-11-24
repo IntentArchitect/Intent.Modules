@@ -14,14 +14,14 @@ namespace Intent.ModuleBuilder.Java.Api
     {
         public static JavaTemplateSettings GetJavaTemplateSettings(this JavaFileTemplateModel model)
         {
-            var stereotype = model.GetStereotype("d9a52e8e-dfa4-4604-9c04-8e023f2f7418");
+            var stereotype = model.GetStereotype(JavaTemplateSettings.DefinitionId);
             return stereotype != null ? new JavaTemplateSettings(stereotype) : null;
         }
 
 
         public static bool HasJavaTemplateSettings(this JavaFileTemplateModel model)
         {
-            return model.HasStereotype("d9a52e8e-dfa4-4604-9c04-8e023f2f7418");
+            return model.HasStereotype(JavaTemplateSettings.DefinitionId);
         }
 
         public static bool TryGetJavaTemplateSettings(this JavaFileTemplateModel model, out JavaTemplateSettings stereotype)
@@ -32,7 +32,7 @@ namespace Intent.ModuleBuilder.Java.Api
                 return false;
             }
 
-            stereotype = new JavaTemplateSettings(model.GetStereotype("d9a52e8e-dfa4-4604-9c04-8e023f2f7418"));
+            stereotype = new JavaTemplateSettings(model.GetStereotype(JavaTemplateSettings.DefinitionId));
             return true;
         }
 
@@ -40,6 +40,7 @@ namespace Intent.ModuleBuilder.Java.Api
         public class JavaTemplateSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "d9a52e8e-dfa4-4604-9c04-8e023f2f7418";
 
             public JavaTemplateSettings(IStereotype stereotype)
             {

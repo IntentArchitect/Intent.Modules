@@ -9,26 +9,26 @@
   <modulesCacheRelativePath>.intent/modules</modulesCacheRelativePath>
   <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="4.0.2" />
   <applications>
-    <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
-    <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp\ModuleBuilder.CSharp.application.config" />
-    <application id="b980295a-75ce-48ac-9ef8-0368f8a1a174" relativePath="Intent.Modules.Modelers.Domain\Modelers.Domain.application.config" />
-    <application id="4e2487dd-3fec-4611-95fb-d49687929743" relativePath="Intent.Modules.ModuleBuilder.Typescript\ModuleBuilder.Typescript.application.config" />
-    <application id="a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb" relativePath="Intent.Modules.Modelers.Services\Modeler.Services.application.config" />
-    <application id="ff3070c6-4626-4a8b-85ab-7d56887a1445" relativePath="Intent.Modules.Common.Types\Common.Types.application.config" />
+    <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder/ModuleBuilder.application.config" />
+    <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp/ModuleBuilder.CSharp.application.config" />
+    <application id="b980295a-75ce-48ac-9ef8-0368f8a1a174" relativePath="Intent.Modules.Modelers.Domain/Modelers.Domain.application.config" />
+    <application id="4e2487dd-3fec-4611-95fb-d49687929743" relativePath="Intent.Modules.ModuleBuilder.TypeScript/ModuleBuilder.TypeScript.application.config" />
+    <application id="a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb" relativePath="Intent.Modules.Modelers.Services/Modeler.Services.application.config" />
+    <application id="ff3070c6-4626-4a8b-85ab-7d56887a1445" relativePath="Intent.Modules.Common.Types/Common.Types.application.config" />
     <application id="4c43397f-638c-4889-bb6b-fb7b064d5562" relativePath="Intent.Modules.Common.Sql/Common.Sql.application.config" />
     <application id="c5d9d6eb-8953-4b30-8e4d-a8d2890d31b4" relativePath="Intent.Modules.ModuleBuilder.Sql/ModuleBuilder.Sql.application.config" />
     <application id="fbb9e269-8250-4831-a2ec-f73b68658e77" relativePath="Intent.Modules.ModuleBuilder.Java/ModuleBuilder.Java.application.config" />
     <application id="275030c0-f660-4c46-8156-ce592d267b38" relativePath="Intent.Modules.ModuleBuilder.Html/ModuleBuilder.Html.application.config" />
-    <application id="6c53239e-354a-4005-baa3-1fabf4a5dc11" name="OutputTargets.Folders" relativePath="Intent.Modules.OutputTargets.Folders\OutputTargets.Folders.application.config" />
-    <application id="d80e91fc-ff6c-4960-b18c-7fb30c4e81e3" name="Intent.Modules.ApplicationTemplate.Builder" relativePath="Intent.Modules.ApplicationTemplate.Builder\Intent.Modules.ApplicationTemplate.Builder.application.config" />
-    <application id="13414c87-2aee-4d87-b8cb-2da2cd9625d9" name="Intent.Modules.Modelers.Types.ServiceProxies" relativePath="Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modules.Modelers.Types.ServiceProxies.application.config" />
-    <application id="9ca2cdd8-34c3-4fc7-96aa-a1a6815c2117" name="Intent.Modules.Modelers.ServiceProxies" relativePath="Intent.Modules.Modelers.ServiceProxies\Intent.Modules.Modelers.ServiceProxies.application.config" />
+    <application id="6c53239e-354a-4005-baa3-1fabf4a5dc11" name="OutputTargets.Folders" relativePath="Intent.Modules.OutputTargets.Folders/OutputTargets.Folders.application.config" />
+    <application id="d80e91fc-ff6c-4960-b18c-7fb30c4e81e3" name="Intent.Modules.ApplicationTemplate.Builder" relativePath="Intent.Modules.ApplicationTemplate.Builder/Intent.Modules.ApplicationTemplate.Builder.application.config" />
+    <application id="13414c87-2aee-4d87-b8cb-2da2cd9625d9" name="Intent.Modules.Modelers.Types.ServiceProxies" relativePath="Intent.Modules.Modelers.Types.ServiceProxies/Intent.Modules.Modelers.Types.ServiceProxies.application.config" />
+    <application id="9ca2cdd8-34c3-4fc7-96aa-a1a6815c2117" name="Intent.Modules.Modelers.ServiceProxies" relativePath="Intent.Modules.Modelers.ServiceProxies/Intent.Modules.Modelers.ServiceProxies.application.config" />
     <application id="0158d6dc-b471-421a-bb3e-57347f7c6275" name="Intent.ApplicationTemplates" relativePath="Intent.ApplicationTemplates/Intent.ApplicationTemplates.application.config" />
     <application id="b12d90e1-8c8f-4fd8-9c47-0e165ce28161" name="Intent.Modules.Modelers.Services.CQRS" relativePath="Intent.Modules.Modelers.Services.CQRS/Intent.Modules.Modelers.Services.CQRS.application.config" />
     <application id="765236f6-13a2-40be-90d3-38674e01f4a7" name="Intent.Modules.Metadata.RDBMS" relativePath="Intent.Modules.Metadata.RDBMS/Intent.Modules.Metadata.RDBMS.application.config" />
     <application id="be31373a-86a5-41f4-8bf4-468cc0c481d0" name="Intent.Modules.Modelers.Domain.Events" relativePath="Intent.Modules.Modelers.Domain.Events/Intent.Modules.Modelers.Domain.Events.application.config" />
     <application id="0f9ab3ec-dfce-4320-ac37-19c5b8d05528" name="Intent.Modules.Metadata.WebApi" relativePath="Intent.Modules.Metadata.WebApi/Intent.Modules.Metadata.WebApi.application.config" />
-    <application id="45b6cbb2-bbe2-4a28-a65b-1100ec6a550c" name="Common.Typescript" relativePath="Intent.Modules.Common.TypeScript/Common.Typescript.application.config" />
+    <application id="45b6cbb2-bbe2-4a28-a65b-1100ec6a550c" name="Common.TypeScript" relativePath="Intent.Modules.Common.TypeScript/Common.TypeScript.application.config" />
     <application id="7f521a90-df6d-409e-b3a4-ff4dc8ef9c45" name="Intent.Modules.ModuleBuilder.AutoCompile" relativePath="Intent.Modules.ModuleBuilder.AutoCompile/Intent.Modules.ModuleBuilder.AutoCompile.application.config" />
     <application id="f7f12dd9-7193-4407-be08-2f7b7d232af3" name="Intent.Modules.Modelers.Eventing" relativePath="Intent.Modules.Modelers.Eventing/Intent.Modules.Modelers.Eventing.application.config" />
     <application id="7cd27b49-d1d3-4c20-85b8-5090b0805098" name="Intent.Modules.TypeScript.Weaving.Decorators" relativePath="Intent.Modules.TypeScript.Weaving.Decorators/Intent.Modules.TypeScript.Weaving.Decorators.application.config" />
@@ -36,22 +36,18 @@
     <application id="a951e417-89e5-4185-a5aa-730640fcebef" name="Intent.ModuleBuilder.Kotlin" relativePath="Intent.ModuleBuilder.Kotlin/Intent.ModuleBuilder.Kotlin.application.config" />
     <application id="3517d53b-f6f7-4d96-8315-efcc6d5622ec" name="Common.CSharp" relativePath="Intent.Modules.Common.CSharp/Common.CSharp.application.config" />
     <application id="e52a0850-142f-406c-aa52-8c8bc5b261ed" name="Common.Java" relativePath="Intent.Modules.Common.Java/Common.Java.application.config" />
-    <application id="ac4c4f4d-6091-4b04-9201-07a98b58f3ff" name="Intent.ApplicationTemplates.Metadata.ModuleBuilder" relativePath="Intent.ApplicationTemplates.Metadata.ModuleBuilder/Intent.ApplicationTemplates.Metadata.ModuleBuilder.application.config" />
     <application id="0dd467e5-63fe-41f9-8a0a-f4454ff6cca9" name="Intent.Modules.Modelers.Domain.ValueObjects" relativePath="Intent.Modules.Modelers.Domain.ValueObjects/Intent.Modules.Modelers.Domain.ValueObjects.application.config" />
     <application id="15f6f6c5-bac3-414f-8dd2-f1474dbf94e2" name="Intent.Modules.Modelers.Domain.Repositories" relativePath="Intent.Modules.Modelers.Domain.Repositories/Intent.Modules.Modelers.Domain.Repositories.application.config" />
     <application id="1b952c0f-d987-4027-b6e9-767e3ad01e16" name="Intent.Modules.Common.Dart" relativePath="Intent.Modules.Common.Dart/Intent.Modules.Common.Dart.application.config" />
     <application id="9d8529f0-1571-4889-aeba-df2b4497716b" name="Intent.Modules.ModuleBuilder.Dart" relativePath="Intent.Modules.ModuleBuilder.Dart/Intent.Modules.ModuleBuilder.Dart.application.config" />
     <application id="8091eea0-0ab6-48c1-9aef-0ec7ae2b5b0c" name="Intent.Modules.Modelers.Domain.Services" relativePath="Intent.Modules.Modelers.Domain.Services/Intent.Modules.Modelers.Domain.Services.application.config" />
-    <application id="289ec9eb-4d87-43aa-97f1-e41fbe738ede" name="Intent.Modules.Modelers.Eventing.Metadata" relativePath="Intent.Modules.Modelers.Eventing.Metadata/Intent.Modules.Modelers.Eventing.Metadata.application.config" />
     <application id="f87115d4-a7b2-4b55-9e86-7a6e86548703" name="Intent.Modules.Metadata.DocumentDB" relativePath="Intent.Modules.Metadata.DocumentDB/Intent.Modules.Metadata.DocumentDB.application.config" />
     <application id="ff9288ff-0806-4d3d-9084-5c5ab8eebcaa" name="Intent.Modules.Modelers.Services.GraphQL" relativePath="Intent.Modules.Modelers.Services.GraphQL/Intent.Modules.Modelers.Services.GraphQL.application.config" />
     <application id="298790da-18e6-4f3a-9b63-1edaa8606bc8" name="Intent.Modules.Modelers.Services.DomainInteractions" relativePath="Intent.Modules.Modelers.Services.DomainInteractions/Intent.Modules.Modelers.Services.DomainInteractions.application.config" />
     <application id="ec72e814-e39a-47e3-9570-17eab35420ce" name="Intent.Modules.Modelers.Services.EventInteractions" relativePath="Intent.Modules.Modelers.Services.EventInteractions/Intent.Modules.Modelers.Services.EventInteractions.application.config" />
     <application id="ceb815c5-d710-40ef-b963-541979dc5597" name="Intent.Modules.Modelers.UI" relativePath="Intent.Modules.Modelers.UI/Intent.Modules.Modelers.UI.application.config" />
-    <application id="2f056b26-eec3-4f6b-8447-2b1382956315" name="Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config" relativePath="Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config/Intent.ApplicationTemplates.Metadata.AppTemplatBuilder.application.config.application.config" />
     <application id="34ab81e4-7133-42aa-a9ac-72dc515be606" name="Intent.Modules.Java.Weaving.Annotations" relativePath="Intent.Modules.Java.Weaving.Annotations/Intent.Modules.Java.Weaving.Annotations.application.config" />
     <application id="0961b73a-4137-44db-98a8-530e1dbe2528" name="Intent.Modules.Modelers.Domain.StoredProcedures" relativePath="Intent.Modules.Modelers.Domain.StoredProcedures/Intent.Modules.Modelers.Domain.StoredProcedures.application.config" />
-    <application id="8bbfc5a8-8482-42f0-a76a-54378d457ab1" name="Intent.Modules.Modelers.ServiceProxies.Metadata" relativePath="Intent.Modules.Modelers.ServiceProxies.Metadata/Intent.Modules.Modelers.ServiceProxies.Metadata.application.config" />
     <application id="48dd85b4-9727-4987-a7a3-1659d35fb5fe" name="Intent.Modules.Modelers.Services.ProxyInteractions" relativePath="Intent.Modules.Modelers.Services.ProxyInteractions/Intent.Modules.Modelers.Services.ProxyInteractions.application.config" />
     <application id="62e3977a-20a5-4637-b195-5dd11b6939bb" name="Intent.Modules.Modelers.UI.ServiceProxies" relativePath="Intent.Modules.Modelers.UI.ServiceProxies/Intent.Modules.Modelers.UI.ServiceProxies.application.config" />
     <application id="854cb9ab-83bb-4cfa-8468-e72690f40c6b" name="Intent.Modules.Modelers.UI.Core" relativePath="Intent.Modules.Modelers.UI.Core/Intent.Modules.Modelers.UI.Core.application.config" />
