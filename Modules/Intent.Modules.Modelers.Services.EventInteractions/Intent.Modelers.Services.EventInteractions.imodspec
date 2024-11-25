@@ -12,7 +12,7 @@
   <factoryExtensions></factoryExtensions>
   <moduleSettings></moduleSettings>
   <dependencies>
-    <dependency id="Intent.Common" version="3.7.2-pre.0" />
+    <dependency id="Intent.Common" version="3.7.2" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
     <dependency id="Intent.Modelers.Domain" version="3.11.1" />
     <dependency id="Intent.Modelers.Eventing" version="5.1.0" />
@@ -29,4 +29,5 @@
     <install target="Services" src="modelers/Services Event Interactions.designer.settings" externalReference="bcc2079b-d8d7-4d7a-a3b5-79ebd687a02e" />
     <install target="Services;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Services.EventInteractions/Intent.Modelers.Services.EventInteractions.pkg.config" externalReference="014c4929-4a23-47d6-89d1-8dd4cb3a879c" />
   </metadata>
+  <migrations />
 </package>

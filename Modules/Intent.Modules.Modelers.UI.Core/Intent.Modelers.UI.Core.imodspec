@@ -28,4 +28,5 @@
     <install target="User Interface" src="modelers/Common UI Components.designer.settings" externalReference="3cd798f0-8cdf-42a4-b733-469632a86f27" />
     <install target="User Interface;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.UI.Core/Intent.Modelers.UI.Core.pkg.config" externalReference="a2a95421-3e55-43c7-96ad-355610b43c4d" />
   </metadata>
+  <migrations />
 </package>

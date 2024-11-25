@@ -409,6 +409,34 @@ padding: 0px 8px;`</style>
         <defaultSize width="${x}" height="${y}" />
         <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
         <childElementVisualSettings>
+          <childElementVisualSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+            <size width="`${parent.w}`" height="18" />
+            <position x="`${parent.x}`" y="`${parent.y &#xD;&#xA;    + (parent.elements['Attribute'].any() ? 12 : 0) + (parent.elements['Attribute'].size.height) &#xD;&#xA;    + (parent.elements['Class Constructor'].any() ? 12 : 0) + (parent.elements['Class Constructor'].size.height) &#xD;&#xA;    + ($index * 18) + 36}`" />
+            <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
+            <display>
+              <drawPath>
+                <condition>return $firstOfType;</condition>
+                <path>`M${x},${y - 6} h${w}`</path>
+              </drawPath>
+              <drawText>
+                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px 2px 0px;`</style>
+                <size width="${w - 20}" height="${h}" />
+                <position x="${x + 20}" y="${y}" />
+              </drawText>
+              <drawSvgResource>
+                <path>operation.svg</path>
+                <size width="14" height="14" />
+                <position x="${x+3}" y="${y+3}" />
+              </drawSvgResource>
+            </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
+            <defaultSize width="`${parent.w}`" height="18" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings />
+          </childElementVisualSetting>
           <childElementVisualSetting type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
             <size width="`${parent.w}`" height="18" />
             <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 36}`" />
@@ -453,34 +481,6 @@ padding: 0px 8px;`</style>
               </drawText>
               <drawSvgResource>
                 <path>constructor.svg</path>
-                <size width="14" height="14" />
-                <position x="${x+3}" y="${y+3}" />
-              </drawSvgResource>
-            </display>
-            <stereotypesVisualSettings>
-              <size width="${w}" height="18" />
-              <position x="${x}" y="${y}" />
-            </stereotypesVisualSettings>
-            <defaultSize width="`${parent.w}`" height="18" />
-            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
-            <childElementVisualSettings />
-          </childElementVisualSetting>
-          <childElementVisualSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
-            <size width="`${parent.w}`" height="18" />
-            <position x="`${parent.x}`" y="`${parent.y &#xD;&#xA;    + (parent.elements['Attribute'].any() ? 12 : 0) + (parent.elements['Attribute'].size.height) &#xD;&#xA;    + (parent.elements['Class Constructor'].any() ? 12 : 0) + (parent.elements['Class Constructor'].size.height) &#xD;&#xA;    + ($index * 18) + 36}`" />
-            <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
-            <display>
-              <drawPath>
-                <condition>return $firstOfType;</condition>
-                <path>`M${x},${y - 6} h${w}`</path>
-              </drawPath>
-              <drawText>
-                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px 2px 0px;`</style>
-                <size width="${w - 20}" height="${h}" />
-                <position x="${x + 20}" y="${y}" />
-              </drawText>
-              <drawSvgResource>
-                <path>operation.svg</path>
                 <size width="14" height="14" />
                 <position x="${x+3}" y="${y+3}" />
               </drawSvgResource>
@@ -566,255 +566,6 @@ if (namingConvention == "pascal-case") {
 }</script>
             </macro>
           </macros>
-        </childElementSetting>
-        <childElementSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
-          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My43MDc2IiB4Mj0iMjUiIHkyPSI0LjMwNzYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00NC4xLDExLjlMMjUuNSwyLjhjLTAuMy0wLjEtMC42LTAuMS0wLjksMEw1LjksMTEuOQ0KCWMtMC40LDAuMi0wLjYsMC41LTAuNiwwLjl2MjQuM2MwLDAuNCwwLjIsMC43LDAuNiwwLjlsMTguNiw5LjJjMC4xLDAuMSwwLjMsMC4xLDAuNSwwLjFzMC4zLDAsMC41LTAuMUw0NC4xLDM4DQoJYzAuNC0wLjIsMC42LTAuNSwwLjYtMC45VjEyLjlDNDQuNywxMi41LDQ0LjUsMTIuMSw0NC4xLDExLjl6IE0yNSw1LjlsMTQsNi45bC0xNCw2LjlsLTE0LTYuOUwyNSw1Ljl6IE04LjQsMzUuOVYxNWwxNS4xLDcuNHYyMC45DQoJTDExLDM3LjFMOC40LDM1Ljl6IE0yNi41LDQzLjNWMjIuNEw0MS42LDE1djIwLjlMMzksMzcuMUwyNi41LDQzLjN6Ii8+DQo8L3N2Zz4NCg==" />
-          <iconFunction>if (getIsStatic()) {
-    return `data:image/svg+xml;baase64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzguNiIgeTE9IjMwLjgxNSIgeDI9IjM4LjYiIHkyPSIxNi45NDk0IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIDEgMCAxNCkiPg0KCTxzdG9wICBvZmZzZXQ9IjUuNjk1MTkzZS0wMiIgc3R5bGU9InN0b3AtY29sb3I6IzQwNkFCMyIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM2NENDRUYiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZD0iTTQ2LjIsMzYuNXYxLjFjMCwwLjUtMC40LDEtMSwxaC0zLjlsMS45LDMuNGMwLjIsMC40LDAuMSwxLjEtMC40LDEuNGwtMSwwLjYNCgljLTAuNCwwLjItMS4xLDAuMS0xLjQtMC40bC0xLjktMy40bC0xLjksMy40Yy0wLjIsMC40LTAuOSwwLjYtMS40LDAuNGwtMS0wLjZjLTAuMi0wLjMtMC40LTEtMC4yLTEuNGwxLjktMy40SDMyYy0wLjUsMC0xLTAuNS0xLTENCgl2LTEuMWMwLTAuNSwwLjUtMSwxLTFoNGwtMS45LTMuM2MtMC4zLTAuNS0wLjEtMS4xLDAuNC0xLjRsMS0wLjVjMC41LTAuMywxLjEtMC4xLDEuNCwwLjRsMS45LDMuM2wxLjYtMi44bDAuMy0wLjUNCgljMC4yLTAuMywwLjUtMC41LDAuOC0wLjVjMC4yLDAsMC4zLDAsMC41LDAuMWwxLDAuNWMwLjQsMC4yLDAuNywwLjksMC40LDEuNEw0MywzM2wtMS41LDIuNmgzLjlDNDUuOCwzNS41LDQ2LjIsMzUuOSw0Ni4yLDM2LjV6Ii8+DQo8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMTYyMzQ0OTA4ODA5MDg0MDg0NTIwMDAwMDE2NTk5NDc4MDE2MDE3Mzg0NTk5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNC45NzA3IiB5MT0iNDMuNjk1MSIgeDI9IjI0Ljk3MDciIHkyPSI0LjI5NTEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTYyMzQ0OTA4ODA5MDg0MDg0NTIwMDAwMDE2NTk5NDc4MDE2MDE3Mzg0NTk5XykiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgICAgIiBkPSINCglNNDQuNSwxMi4yTDQ0LjUsMTIuMmMtMC4xLTAuMS0wLjEtMC4xLTAuMi0wLjJjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4yTDMzLjUsNi43bC04LTMuOWMtMC4zLTAuMS0wLjYtMC4xLTAuOSwwTDUuOSwxMS45DQoJYy0wLjEsMC0wLjIsMC4xLTAuMywwLjJsLTAuMSwwLjFjLTAuMSwwLjEtMC4yLDAuMy0wLjIsMC41djAuMXYyNC4zYzAsMC40LDAuMiwwLjcsMC42LDAuOWwxOC42LDkuMmMwLjEsMC4xLDAuMywwLjEsMC41LDAuMQ0KCXMwLjMsMCwwLjUtMC4xbDYuMS0zYy0wLjEtMC4zLTAuMi0wLjYsMC0wLjhsMS45LTMuNGwtNywzLjR2LTIxTDQxLjYsMTV2MTMuMWMwLjMtMC4yLDAuNy0wLjMsMS4xLTAuMWMwLjEsMCwwLjIsMC4xLDAuMiwwLjENCglsMS4zLDAuN2wwLjEsMC4xYzAuMSwwLjEsMC4yLDAuMywwLjMsMC40VjEyLjlDNDQuNywxMi43LDQ0LjYsMTIuNCw0NC41LDEyLjJ6IE0yMy41LDQzLjNMMTEsMzcuMWwtMi42LTEuMlYxNWwxNS4xLDcuNFY0My4zeg0KCSBNMzguOSwxMi44TDI1LDE5LjdsLTEzLjktNi45SDExbDE0LTYuOUwzOC45LDEyLjhMMzguOSwxMi44eiIvPg0KPC9zdmc+DQo=`;
-}</iconFunction>
-          <saveAsOwnFile>false</saveAsOwnFile>
-          <displayFunction>const getTypeReferenceCssClass = (typeReference) =&gt; {
-    if (typeReference.typeId == null || typeReference.getType()?.specialization == "Type-Definition") {
-        return "keyword";
-    } else {
-        return "typeref";
-    }
-}
-const result = [{ text: `${ getName() }${ genericTypes }`, cssClass: 'function' }];
-result.push({ text: '(' });
-result.push(...children("Parameter")
-    .map(x =&gt; [
-        { text: `${ x.name }`, cssClass: "muted", targetId: x.id },
-        { text: ': ' },
-        //{ text: x.typeReference.display, cssClass: getTypeReferenceCssClass(x.typeReference), targetId: x.typeReference.typeId }
-    ].concat(x.typeReference.getDisplayTextComponents()))
-    .reduce((x, y) =&gt; x.concat(x.length &gt; 0 ? [{ text: ', ' }] : []).concat(y), []));
-    result.push({ text: ')' });
-if (typeReference) {
-    result.push({ text: ': ' });
-    result.push(...typeReference.getDisplayTextComponents());
-    // if (typeReference.typeId == null || typeReference.getType()?.specialization == "Type-Definition") {
-    //     result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference) });
-    // } else {
-    //     result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId });
-    // }
-}
-return result;</displayFunction>
-          <validateFunction>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function validateDuplicateOperation(operation) {
-    var possibleDuplicates = findPeerOperations(operation);
-    let operationSignature = calculateSignature(operation);
-    let duplicate;
-    possibleDuplicates.forEach(possibleDuplicate =&gt; {
-        if (duplicate != null)
-            return;
-        if (operationSignature == calculateSignature(possibleDuplicate)) {
-            duplicate = possibleDuplicate;
-        }
-    });
-    if (duplicate) {
-        return `Duplicate operation ${operation.getName()} - ${operationSignature}`;
-    }
-    return "";
-}
-function calculateSignature(operation) {
-    let result = `${operation.getName()}(`;
-    let params = operation.getChildren("Parameter");
-    result += params.map((p) =&gt; p.typeReference.getType().getName()).join(', ');
-    result += ")";
-    return result;
-}
-function findPeerOperations(operation) {
-    return operation.getParent().getChildren("Operation").filter(x =&gt; x.id != operation.id);
-}
-/// &lt;reference path="../common/operation-validation.ts" /&gt;
-/**
- * Used by Intent.Modules\Modules\Intent.Modules.Modelers.Services
- *
- * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-operation-validation/operation/operation-validation.ts
- */
-function validateOperation(element) {
-    return validateDuplicateOperation(element);
-}
-//Comment / UnComment below when you publish
-validateOperation(element);
-</validateFunction>
-          <allowRename>true</allowRename>
-          <nameMustBeUnique>false</nameMustBeUnique>
-          <allowAbstract>true</allowAbstract>
-          <allowStatic>true</allowStatic>
-          <allowGenericTypes>true</allowGenericTypes>
-          <allowMapping>true</allowMapping>
-          <allowSorting>true</allowSorting>
-          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowFindInView>true</allowFindInView>
-          <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>false</allowSetValue>
-          <typeReferenceSetting>
-            <displayName>Return Type</displayName>
-            <isRequired>false</isRequired>
-            <targetTypes>
-              <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
-              <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
-              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
-              <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
-            </targetTypes>
-            <allowIsNavigable>true</allowIsNavigable>
-            <allowIsNullable>true</allowIsNullable>
-            <allowIsCollection>true</allowIsCollection>
-            <isNavigableDefault>true</isNavigableDefault>
-            <isNullableDefault>false</isNullableDefault>
-            <isCollectionDefault>false</isCollectionDefault>
-          </typeReferenceSetting>
-          <typeOrder>
-            <type order="0" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" />
-          </typeOrder>
-          <contextMenuOptions>
-            <createElement type="element">
-              <text>Add Parameter</text>
-              <shortcut>ctrl + shift + p</shortcut>
-              <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
-              <specializationType>Parameter</specializationType>
-              <specializationTypeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</specializationTypeId>
-              <defaultName>param</defaultName>
-              <allowMultiple>true</allowMultiple>
-            </createElement>
-          </contextMenuOptions>
-          <creationOptions>
-            <option type="element">
-              <text>Add Parameter</text>
-              <shortcut>ctrl + shift + p</shortcut>
-              <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
-              <specializationType>Parameter</specializationType>
-              <specializationTypeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</specializationTypeId>
-              <defaultName>param</defaultName>
-              <allowMultiple>true</allowMultiple>
-            </option>
-          </creationOptions>
-          <scriptOptions />
-          <mappingOptions />
-          <mappingSettings>
-            <mappingSetting id="7590bd83-04bc-40fe-8b5c-118277c049d4">
-              <name>Map Operation</name>
-              <shortcut>ctrl + space</shortcut>
-              <openOnDoubleClick>true</openOnDoubleClick>
-              <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
-              <optionsSource>lookup-element</optionsSource>
-              <lookupElementFunction>return getParent().id</lookupElementFunction>
-              <autoSyncTypeReferences>true</autoSyncTypeReferences>
-              <symbol>fa-long-arrow-right</symbol>
-              <mapFrom>root</mapFrom>
-              <mappings>
-                <mapping id="f8730104-973b-46a2-b03d-050983a8808c">
-                  <criteria specializationType="Class" specializationTypeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
-                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                  </criteria>
-                  <mapTo specializationType="Operation" specializationTypeId="e042bb67-a1df-480c-9935-b26210f78591" childMappingMode="map-to-child" />
-                  <behaviour autoSelectChildren="true" />
-                  <childMappings>
-                    <mapping id="4c5e6154-3d01-47fd-b36b-fb94078a1301">
-                      <criteria specializationType="Attribute" specializationTypeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
-                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                      </criteria>
-                      <mapTo specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" childMappingMode="map-to-child" />
-                      <behaviour autoSelectChildren="false" />
-                      <childMappings />
-                    </mapping>
-                    <mapping id="aaffaada-2f0a-4c86-bd2f-5636e16ed656">
-                      <criteria specializationType="Association Target End" specializationTypeId="0a66489f-30aa-417b-a75d-b945863366fd">
-                        <hasTypeReference>true</hasTypeReference>
-                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                      </criteria>
-                      <mapTo specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" childMappingMode="map-to-child" />
-                      <behaviour autoSelectChildren="false" />
-                      <childMappings />
-                    </mapping>
-                    <mapping id="beb27aec-ae0a-4738-b01b-64f4689dbba9">
-                      <criteria specializationType="Association Source End" specializationTypeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
-                        <hasTypeReference>true</hasTypeReference>
-                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                      </criteria>
-                      <mapTo specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" childMappingMode="map-to-child" />
-                      <behaviour autoSelectChildren="false" />
-                      <childMappings />
-                    </mapping>
-                    <mapping id="0148afc9-d327-4b53-8985-695d6689276e">
-                      <criteria specializationType="Generalization Target End" specializationTypeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
-                        <hasTypeReference>true</hasTypeReference>
-                        <isCollection>false</isCollection>
-                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                      </criteria>
-                      <mapTo childMappingMode="traverse" useMappingSettings="f8730104-973b-46a2-b03d-050983a8808c" />
-                      <behaviour autoSelectChildren="true" />
-                      <childMappings />
-                    </mapping>
-                  </childMappings>
-                </mapping>
-              </mappings>
-            </mappingSetting>
-          </mappingSettings>
-          <childElementSettings>
-            <childElementSetting type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
-              <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
-              <saveAsOwnFile>false</saveAsOwnFile>
-              <displayFunction>const getTypeReferenceCssClass = (typeReference) =&gt; {
-    if (typeReference.typeId == null || typeReference.getType()?.specialization == "Type-Definition") {
-        return 'keyword';
-    } else {
-        return 'typeref';
-    }
-}
-const result = [
-    { text: 'in : ', cssClass: 'annotation' }, 
-    { text: `${ name }${ genericTypes }`, cssClass: 'muted' },
-    { text: ': ', cssClass: 'annotation' },
-    { text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId }
-];
-return result;</displayFunction>
-              <allowRename>true</allowRename>
-              <nameMustBeUnique>true</nameMustBeUnique>
-              <allowAbstract>true</allowAbstract>
-              <allowStatic>false</allowStatic>
-              <allowGenericTypes>true</allowGenericTypes>
-              <allowMapping>false</allowMapping>
-              <allowSorting>true</allowSorting>
-              <sortChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
-              <allowFindInView>false</allowFindInView>
-              <allowTypeReference>true</allowTypeReference>
-              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
-              <allowSetValue>true</allowSetValue>
-              <typeReferenceSetting>
-                <isRequired>true</isRequired>
-                <targetTypes>
-                  <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
-                  <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
-                  <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
-                  <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
-                </targetTypes>
-                <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
-                <allowIsNavigable>true</allowIsNavigable>
-                <allowIsNullable>true</allowIsNullable>
-                <allowIsCollection>true</allowIsCollection>
-                <isNavigableDefault>true</isNavigableDefault>
-                <isNullableDefault>false</isNullableDefault>
-                <isCollectionDefault>false</isCollectionDefault>
-              </typeReferenceSetting>
-              <mappingSettings />
-              <macros>
-                <macro trigger="on-created">
-                  <script>element.setName(toCamelCase(element.getName()));</script>
-                </macro>
-              </macros>
-            </childElementSetting>
-          </childElementSettings>
         </childElementSetting>
         <childElementSetting type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzguNjk3NiIgeTE9IjE3LjQxNCIgeDI9IjM4LjYxMzYiIHkyPSIzMi40NzM4IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNjMpIj4NCgk8c3RvcCAgb2Zmc2V0PSI1LjY5NTE5M2UtMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjRDQ0VGIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXykiIGQ9Ik00Ni4yLDM2LjV2MS4xYzAsMC41LTAuNCwxLTEsMWgtNXY0LjdjMCwwLjUtMC40LDEtMSwxaC0xLjFjLTAuNSwwLTEtMC41LTEtMXYtNC43aC01DQoJYy0wLjUsMC0xLTAuNS0xLTF2LTEuMWMwLTAuNSwwLjUtMSwxLTFoNXYtNS4zYzAtMC42LDAuNS0xLDEtMWgxLjFjMC42LDAsMSwwLjQsMSwxdjUuM2g1QzQ1LjgsMzUuNSw0Ni4yLDM1LjksNDYuMiwzNi41eiIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDE2NzM4NzMzMTY0NjU3Njg3NTA0MDAwMDAwMTIyNTM0NDQ4NzA0MDA3NTQ0OV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My40NDM3IiB4Mj0iMjUiIHkyPSI0LjA0MzciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTY3Mzg3MzMxNjQ2NTc2ODc1MDQwMDAwMDAxMjI1MzQ0NDg3MDQwMDc1NDQ5XykiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgICAgIiBkPSINCglNNDQuMSwxMS45TDI1LjUsMi44Yy0wLjMtMC4xLTAuNi0wLjEtMC45LDBMNS45LDExLjljLTAuNCwwLjItMC42LDAuNS0wLjYsMC45djI0LjNjMCwwLjQsMC4yLDAuNywwLjYsMC45bDE4LjYsOS4yDQoJYzAuMSwwLjEsMC4zLDAuMSwwLjUsMC4xczAuMywwLDAuNS0wLjFsMTAuMS01VjQwaC0yLjRsLTYuNywzLjNWMjIuNEw0MS42LDE1djE4LjloMy4xdi0yMUM0NC43LDEyLjUsNDQuNSwxMi4xLDQ0LjEsMTEuOXoNCgkgTTIzLjUsNDMuM0wxMSwzNy4xbC0yLjYtMS4yVjE1bDE1LjEsNy40VjQzLjN6IE0zOC45LDEyLjhMMjUsMTkuN2wtMTMuOS02LjlIMTFsMTQtNi45TDM4LjksMTIuOEwzOC45LDEyLjh6Ii8+DQo8L3N2Zz4NCg==" />
@@ -950,6 +701,255 @@ return result;</displayFunction>
             </mappingSetting>
           </mappingSettings>
         </childElementSetting>
+        <childElementSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My43MDc2IiB4Mj0iMjUiIHkyPSI0LjMwNzYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00NC4xLDExLjlMMjUuNSwyLjhjLTAuMy0wLjEtMC42LTAuMS0wLjksMEw1LjksMTEuOQ0KCWMtMC40LDAuMi0wLjYsMC41LTAuNiwwLjl2MjQuM2MwLDAuNCwwLjIsMC43LDAuNiwwLjlsMTguNiw5LjJjMC4xLDAuMSwwLjMsMC4xLDAuNSwwLjFzMC4zLDAsMC41LTAuMUw0NC4xLDM4DQoJYzAuNC0wLjIsMC42LTAuNSwwLjYtMC45VjEyLjlDNDQuNywxMi41LDQ0LjUsMTIuMSw0NC4xLDExLjl6IE0yNSw1LjlsMTQsNi45bC0xNCw2LjlsLTE0LTYuOUwyNSw1Ljl6IE04LjQsMzUuOVYxNWwxNS4xLDcuNHYyMC45DQoJTDExLDM3LjFMOC40LDM1Ljl6IE0yNi41LDQzLjNWMjIuNEw0MS42LDE1djIwLjlMMzksMzcuMUwyNi41LDQzLjN6Ii8+DQo8L3N2Zz4NCg==" />
+          <iconFunction>if (getIsStatic()) {
+    return `data:image/svg+xml;baase64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzguNiIgeTE9IjMwLjgxNSIgeDI9IjM4LjYiIHkyPSIxNi45NDk0IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIDEgMCAxNCkiPg0KCTxzdG9wICBvZmZzZXQ9IjUuNjk1MTkzZS0wMiIgc3R5bGU9InN0b3AtY29sb3I6IzQwNkFCMyIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM2NENDRUYiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZD0iTTQ2LjIsMzYuNXYxLjFjMCwwLjUtMC40LDEtMSwxaC0zLjlsMS45LDMuNGMwLjIsMC40LDAuMSwxLjEtMC40LDEuNGwtMSwwLjYNCgljLTAuNCwwLjItMS4xLDAuMS0xLjQtMC40bC0xLjktMy40bC0xLjksMy40Yy0wLjIsMC40LTAuOSwwLjYtMS40LDAuNGwtMS0wLjZjLTAuMi0wLjMtMC40LTEtMC4yLTEuNGwxLjktMy40SDMyYy0wLjUsMC0xLTAuNS0xLTENCgl2LTEuMWMwLTAuNSwwLjUtMSwxLTFoNGwtMS45LTMuM2MtMC4zLTAuNS0wLjEtMS4xLDAuNC0xLjRsMS0wLjVjMC41LTAuMywxLjEtMC4xLDEuNCwwLjRsMS45LDMuM2wxLjYtMi44bDAuMy0wLjUNCgljMC4yLTAuMywwLjUtMC41LDAuOC0wLjVjMC4yLDAsMC4zLDAsMC41LDAuMWwxLDAuNWMwLjQsMC4yLDAuNywwLjksMC40LDEuNEw0MywzM2wtMS41LDIuNmgzLjlDNDUuOCwzNS41LDQ2LjIsMzUuOSw0Ni4yLDM2LjV6Ii8+DQo8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzAwMDAwMTYyMzQ0OTA4ODA5MDg0MDg0NTIwMDAwMDE2NTk5NDc4MDE2MDE3Mzg0NTk5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNC45NzA3IiB5MT0iNDMuNjk1MSIgeDI9IjI0Ljk3MDciIHkyPSI0LjI5NTEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTYyMzQ0OTA4ODA5MDg0MDg0NTIwMDAwMDE2NTk5NDc4MDE2MDE3Mzg0NTk5XykiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgICAgIiBkPSINCglNNDQuNSwxMi4yTDQ0LjUsMTIuMmMtMC4xLTAuMS0wLjEtMC4xLTAuMi0wLjJjLTAuMS0wLjEtMC4xLTAuMS0wLjItMC4yTDMzLjUsNi43bC04LTMuOWMtMC4zLTAuMS0wLjYtMC4xLTAuOSwwTDUuOSwxMS45DQoJYy0wLjEsMC0wLjIsMC4xLTAuMywwLjJsLTAuMSwwLjFjLTAuMSwwLjEtMC4yLDAuMy0wLjIsMC41djAuMXYyNC4zYzAsMC40LDAuMiwwLjcsMC42LDAuOWwxOC42LDkuMmMwLjEsMC4xLDAuMywwLjEsMC41LDAuMQ0KCXMwLjMsMCwwLjUtMC4xbDYuMS0zYy0wLjEtMC4zLTAuMi0wLjYsMC0wLjhsMS45LTMuNGwtNywzLjR2LTIxTDQxLjYsMTV2MTMuMWMwLjMtMC4yLDAuNy0wLjMsMS4xLTAuMWMwLjEsMCwwLjIsMC4xLDAuMiwwLjENCglsMS4zLDAuN2wwLjEsMC4xYzAuMSwwLjEsMC4yLDAuMywwLjMsMC40VjEyLjlDNDQuNywxMi43LDQ0LjYsMTIuNCw0NC41LDEyLjJ6IE0yMy41LDQzLjNMMTEsMzcuMWwtMi42LTEuMlYxNWwxNS4xLDcuNFY0My4zeg0KCSBNMzguOSwxMi44TDI1LDE5LjdsLTEzLjktNi45SDExbDE0LTYuOUwzOC45LDEyLjhMMzguOSwxMi44eiIvPg0KPC9zdmc+DQo=`;
+}</iconFunction>
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>const getTypeReferenceCssClass = (typeReference) =&gt; {
+    if (typeReference.typeId == null || typeReference.getType()?.specialization == "Type-Definition") {
+        return "keyword";
+    } else {
+        return "typeref";
+    }
+}
+const result = [{ text: `${ getName() }${ genericTypes }`, cssClass: 'function' }];
+result.push({ text: '(' });
+result.push(...children("Parameter")
+    .map(x =&gt; [
+        { text: `${ x.name }`, cssClass: "muted", targetId: x.id },
+        { text: ': ' },
+        //{ text: x.typeReference.display, cssClass: getTypeReferenceCssClass(x.typeReference), targetId: x.typeReference.typeId }
+    ].concat(x.typeReference.getDisplayTextComponents()))
+    .reduce((x, y) =&gt; x.concat(x.length &gt; 0 ? [{ text: ', ' }] : []).concat(y), []));
+    result.push({ text: ')' });
+if (typeReference) {
+    result.push({ text: ': ' });
+    result.push(...typeReference.getDisplayTextComponents());
+    // if (typeReference.typeId == null || typeReference.getType()?.specialization == "Type-Definition") {
+    //     result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference) });
+    // } else {
+    //     result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId });
+    // }
+}
+return result;</displayFunction>
+          <validateFunction>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function validateDuplicateOperation(operation) {
+    var possibleDuplicates = findPeerOperations(operation);
+    let operationSignature = calculateSignature(operation);
+    let duplicate;
+    possibleDuplicates.forEach(possibleDuplicate =&gt; {
+        if (duplicate != null)
+            return;
+        if (operationSignature == calculateSignature(possibleDuplicate)) {
+            duplicate = possibleDuplicate;
+        }
+    });
+    if (duplicate) {
+        return `Duplicate operation ${operation.getName()} - ${operationSignature}`;
+    }
+    return "";
+}
+function calculateSignature(operation) {
+    let result = `${operation.getName()}(`;
+    let params = operation.getChildren("Parameter");
+    result += params.map((p) =&gt; p.typeReference.getType().getName()).join(', ');
+    result += ")";
+    return result;
+}
+function findPeerOperations(operation) {
+    return operation.getParent().getChildren("Operation").filter(x =&gt; x.id != operation.id);
+}
+/// &lt;reference path="../common/operation-validation.ts" /&gt;
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Modelers.Services
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-operation-validation/operation/operation-validation.ts
+ */
+function validateOperation(element) {
+    return validateDuplicateOperation(element);
+}
+//Comment / UnComment below when you publish
+validateOperation(element);
+</validateFunction>
+          <allowRename>true</allowRename>
+          <nameMustBeUnique>false</nameMustBeUnique>
+          <allowAbstract>true</allowAbstract>
+          <allowStatic>true</allowStatic>
+          <allowGenericTypes>true</allowGenericTypes>
+          <allowMapping>true</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>true</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <displayName>Return Type</displayName>
+            <isRequired>false</isRequired>
+            <targetTypes>
+              <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
+              <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>true</allowIsNullable>
+            <allowIsCollection>true</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <typeOrder>
+            <type order="0" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" />
+          </typeOrder>
+          <contextMenuOptions>
+            <createElement type="element">
+              <text>Add Parameter</text>
+              <shortcut>ctrl + shift + p</shortcut>
+              <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
+              <specializationType>Parameter</specializationType>
+              <specializationTypeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</specializationTypeId>
+              <defaultName>param</defaultName>
+              <allowMultiple>true</allowMultiple>
+            </createElement>
+          </contextMenuOptions>
+          <creationOptions>
+            <option type="element">
+              <text>Add Parameter</text>
+              <shortcut>ctrl + shift + p</shortcut>
+              <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
+              <specializationType>Parameter</specializationType>
+              <specializationTypeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</specializationTypeId>
+              <defaultName>param</defaultName>
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingOptions />
+          <mappingSettings>
+            <mappingSetting id="7590bd83-04bc-40fe-8b5c-118277c049d4">
+              <name>Map Operation</name>
+              <shortcut>ctrl + space</shortcut>
+              <openOnDoubleClick>true</openOnDoubleClick>
+              <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
+              <optionsSource>lookup-element</optionsSource>
+              <lookupElementFunction>return getParent().id</lookupElementFunction>
+              <autoSyncTypeReferences>true</autoSyncTypeReferences>
+              <symbol>fa-long-arrow-right</symbol>
+              <mapFrom>root</mapFrom>
+              <mappings>
+                <mapping id="f8730104-973b-46a2-b03d-050983a8808c">
+                  <criteria specializationType="Class" specializationTypeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="Operation" specializationTypeId="e042bb67-a1df-480c-9935-b26210f78591" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
+                  <childMappings>
+                    <mapping id="4c5e6154-3d01-47fd-b36b-fb94078a1301">
+                      <criteria specializationType="Attribute" specializationTypeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                    <mapping id="aaffaada-2f0a-4c86-bd2f-5636e16ed656">
+                      <criteria specializationType="Association Target End" specializationTypeId="0a66489f-30aa-417b-a75d-b945863366fd">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                    <mapping id="beb27aec-ae0a-4738-b01b-64f4689dbba9">
+                      <criteria specializationType="Association Source End" specializationTypeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                    <mapping id="0148afc9-d327-4b53-8985-695d6689276e">
+                      <criteria specializationType="Generalization Target End" specializationTypeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection>false</isCollection>
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo childMappingMode="traverse" useMappingSettings="f8730104-973b-46a2-b03d-050983a8808c" />
+                      <behaviour autoSelectChildren="true" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
+              </mappings>
+            </mappingSetting>
+          </mappingSettings>
+          <childElementSettings>
+            <childElementSetting type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+              <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <displayFunction>const getTypeReferenceCssClass = (typeReference) =&gt; {
+    if (typeReference.typeId == null || typeReference.getType()?.specialization == "Type-Definition") {
+        return 'keyword';
+    } else {
+        return 'typeref';
+    }
+}
+const result = [
+    { text: 'in : ', cssClass: 'annotation' }, 
+    { text: `${ name }${ genericTypes }`, cssClass: 'muted' },
+    { text: ': ', cssClass: 'annotation' },
+    { text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId }
+];
+return result;</displayFunction>
+              <allowRename>true</allowRename>
+              <nameMustBeUnique>true</nameMustBeUnique>
+              <allowAbstract>true</allowAbstract>
+              <allowStatic>false</allowStatic>
+              <allowGenericTypes>true</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>true</allowSorting>
+              <sortChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>true</allowTypeReference>
+              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>true</allowSetValue>
+              <typeReferenceSetting>
+                <isRequired>true</isRequired>
+                <targetTypes>
+                  <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+                  <type type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" />
+                  <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+                  <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+                </targetTypes>
+                <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
+                <allowIsNavigable>true</allowIsNavigable>
+                <allowIsNullable>true</allowIsNullable>
+                <allowIsCollection>true</allowIsCollection>
+                <isNavigableDefault>true</isNavigableDefault>
+                <isNullableDefault>false</isNullableDefault>
+                <isCollectionDefault>false</isCollectionDefault>
+              </typeReferenceSetting>
+              <mappingSettings />
+              <macros>
+                <macro trigger="on-created">
+                  <script>element.setName(toCamelCase(element.getName()));</script>
+                </macro>
+              </macros>
+            </childElementSetting>
+          </childElementSettings>
+        </childElementSetting>
       </childElementSettings>
     </elementSetting>
     <elementSetting type="Comment" typeId="c4c0c77f-720b-4e91-9c48-b58d2164d30a">
@@ -1004,15 +1004,15 @@ return result;</displayFunction>
             <fillColor>return theme.isDark ? '#30475E' : '#ffffdd';</fillColor>
           </drawPath>
           <drawText>
-            <style>`font-size: 12px; font-family: Helvetica; font-style: italics; font-weight: bold; text-align: center; white-space: normal;`</style>
-            <size width="${w - 20}" height="${h - 16}" />
-            <position x="${x + 10}" y="${y + 8}" />
-          </drawText>
-          <drawText>
             <text>return comment;</text>
             <style>`font-size: 12px; font-family: Helvetica; font-style: italics; text-align: center; white-space: pre-line;`</style>
             <size width="${w - 20}" height="${h - 40}" />
             <position x="${x + 10}" y="${y + 32}" />
+          </drawText>
+          <drawText>
+            <style>`font-size: 12px; font-family: Helvetica; font-style: italics; font-weight: bold; text-align: center; white-space: normal;`</style>
+            <size width="${w - 20}" height="${h - 16}" />
+            <position x="${x + 10}" y="${y + 8}" />
           </drawText>
         </display>
         <stereotypesVisualSettings>

@@ -26,7 +26,7 @@ const returnType = typeReference.typeId
 return `${name}${genericTypes}(${parameters}): ${returnType}`;
 </displayFunction>
       <allowRename>true</allowRename>
-      <nameMustBeUnique>false</nameMustBeUnique>
+      <nameMustBeUnique>true</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
       <allowStatic>false</allowStatic>
       <allowGenericTypes>false</allowGenericTypes>
@@ -80,7 +80,7 @@ return `${name}${genericTypes}(${parameters}): ${returnType}`;
 return `${output}${getName()}: ${typeReference.display}`;
 </displayFunction>
           <allowRename>true</allowRename>
-          <nameMustBeUnique>false</nameMustBeUnique>
+          <nameMustBeUnique>true</nameMustBeUnique>
           <allowAbstract>false</allowAbstract>
           <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>

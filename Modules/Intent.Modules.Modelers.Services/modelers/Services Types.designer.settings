@@ -244,15 +244,15 @@ const metadataKeyName = "initialized";
             <fillColor>return theme.isDark ? '#30475E' : '#ffffdd';</fillColor>
           </drawPath>
           <drawText>
-            <style>`font-size: 12px; font-family: Helvetica; font-style: italics; font-weight: bold; text-align: center; white-space: normal;`</style>
-            <size width="${w - 20}" height="${h - 16}" />
-            <position x="${x + 10}" y="${y + 8}" />
-          </drawText>
-          <drawText>
             <text>return comment;</text>
             <style>`font-size: 12px; font-family: Helvetica; font-style: italics; text-align: center; white-space: pre-line;`</style>
             <size width="${w - 20}" height="${h - 40}" />
             <position x="${x + 10}" y="${y + 32}" />
+          </drawText>
+          <drawText>
+            <style>`font-size: 12px; font-family: Helvetica; font-style: italics; font-weight: bold; text-align: center; white-space: normal;`</style>
+            <size width="${w - 20}" height="${h - 16}" />
+            <position x="${x + 10}" y="${y + 8}" />
           </drawText>
         </display>
         <stereotypesVisualSettings>
@@ -337,6 +337,14 @@ getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePo
           </createElement>
         </contextMenuOptions>
         <creationOptions>
+          <option order="1000" type="element">
+            <text>New Comment</text>
+            <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0ibmV3LWNvbW1lbnQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8xMDBmNmMyMC1kNGM0LTRlYmItODlhOS00MWRmMDEyNmFiZDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0NC43OCIgeDI9IjI1IiB5Mj0iNy4xNiI+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQ0I2NDUiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfMTAwZjZjMjAtZDRjNC00ZWJiLTg5YTktNDFkZjAxMjZhYmQwKSIgZD0iTTQ3LjEsOC41Yy0wLjUtMC44LTEuNC0xLjQtMi40LTEuNEg1LjRjLTAuMSwwLTAuMSwwLTAuMiwwQzMuNyw3LjIsMi41LDguNSwyLjUsMTB2MjIuOQ0KCWMwLDEuNiwxLjMsMi45LDIuOSwyLjloMS44YzAuMywwLDAuNSwwLjIsMC41LDAuNXY4LjVMMTkuMiwzNmMwLjItMC4yLDAuNS0wLjIsMC43LTAuMmgyNC43YzEuNiwwLDIuOS0xLjMsMi45LTIuOVYxMA0KCUM0Ny41LDkuNSw0Ny4zLDksNDcuMSw4LjV6IE00NC4zLDMxLjJjMCwwLjctMC42LDEuMi0xLjIsMS4ySDE5LjRjLTAuMywwLTAuNSwwLjEtMC43LDAuMmwtOC4zLDYuM3YtNS45YzAtMC40LTAuMy0wLjctMC43LTAuN0g3LjMNCgljLTAuNywwLTEuMi0wLjYtMS4yLTEuMlYxMS44YzAtMC43LDAuNi0xLjIsMS4yLTEuMmgzNS44YzAuNywwLDEuMiwwLjYsMS4yLDEuMlYzMS4yeiIvPg0KPGc+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwMTUzNDAwNjMyODU5NjU1ODcyMjAwMDAwMTEyNzY2ODk1MTgzMDM0NjA3OThfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjE3Ljg0NjQiIHkxPSIyNC4wMDEyIiB4Mj0iMTcuODQ2NCIgeTI9IjE5LjQ5MzkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRjU3RjIwIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQ0I2NDUiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwMTUzNDAwNjMyODU5NjU1ODcyMjAwMDAwMTEyNzY2ODk1MTgzMDM0NjA3OThfKSIgZD0iTTE1LjYsMjEuNWMwLTAuNywwLjItMS4yLDAuNi0xLjcNCgkJYzAuNC0wLjQsMS0wLjcsMS42LTAuN3MxLjIsMC4yLDEuNiwwLjdjMC40LDAuNCwwLjYsMSwwLjYsMS43YzAsMC43LTAuMiwxLjItMC42LDEuN2MtMC40LDAuNC0xLDAuNy0xLjYsMC43cy0xLjItMC4yLTEuNi0wLjcNCgkJUzE1LjYsMjIuMiwxNS42LDIxLjV6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwOTAyNTY3ODIwNjc2NTU3MzQ4OTAwMDAwMDcyMTUzMzIzNjU1NjAxNDE2OTZfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI1LjQ0MjkiIHkxPSIyMy44NzA4IiB4Mj0iMjUuNDQyOSIgeTI9IjE5LjM2MzkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRjU3RjIwIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQ0I2NDUiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwOTAyNTY3ODIwNjc2NTU3MzQ4OTAwMDAwMDcyMTUzMzIzNjU1NjAxNDE2OTZfKSIgZD0iTTIzLjIsMjEuNWMwLTAuNywwLjItMS4yLDAuNi0xLjcNCgkJYzAuNC0wLjQsMS0wLjcsMS42LTAuN2MwLjYsMCwxLjIsMC4yLDEuNiwwLjdjMC40LDAuNCwwLjYsMSwwLjYsMS43YzAsMC43LTAuMiwxLjItMC42LDEuN2MtMC40LDAuNC0xLDAuNy0xLjYsMC43DQoJCWMtMC42LDAtMS4yLTAuMi0xLjYtMC43UzIzLjIsMjIuMiwyMy4yLDIxLjV6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwOTAyNTk2NjA3MDgwOTgyMjAzMDAwMDAwMDA5MDg3NDE0NjEwNTU3NDA4NTVfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjMzLjA0IiB5MT0iMjQuMDY2NCIgeDI9IjMzLjA0IiB5Mj0iMTkuNTU4NiI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGNTdGMjAiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6I0ZDQjY0NSIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBhdGggZmlsbD0idXJsKCNTVkdJRF8wMDAwMDA5MDI1OTY2MDcwODA5ODIyMDMwMDAwMDAwMDkwODc0MTQ2MTA1NTc0MDg1NV8pIiBkPSJNMzAuOCwyMS41YzAtMC43LDAuMi0xLjIsMC42LTEuNw0KCQljMC40LTAuNCwxLTAuNywxLjYtMC43czEuMiwwLjIsMS42LDAuN2MwLjQsMC40LDAuNiwxLDAuNiwxLjdjMCwwLjctMC4yLDEuMi0wLjYsMS43Yy0wLjQsMC40LTEsMC43LTEuNiwwLjdzLTEuMi0wLjItMS42LTAuNw0KCQlTMzAuOCwyMi4yLDMwLjgsMjEuNXoiLz4NCjwvZz4NCjwvc3ZnPg0K" />
+            <specializationType>Comment</specializationType>
+            <specializationTypeId>32cb9020-2896-4dc0-9a6d-2aaae3cb431f</specializationTypeId>
+            <defaultName>NewComment</defaultName>
+            <allowMultiple>true</allowMultiple>
+          </option>
           <option type="element">
             <text>New Service</text>
             <shortcut>ctrl + shift + s</shortcut>
@@ -344,14 +352,6 @@ getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePo
             <specializationType>Service</specializationType>
             <specializationTypeId>b16578a5-27b1-4047-a8df-f0b783d706bd</specializationTypeId>
             <defaultName>NewService</defaultName>
-            <allowMultiple>true</allowMultiple>
-          </option>
-          <option order="1000" type="element">
-            <text>New Comment</text>
-            <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0ibmV3LWNvbW1lbnQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8xMDBmNmMyMC1kNGM0LTRlYmItODlhOS00MWRmMDEyNmFiZDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0NC43OCIgeDI9IjI1IiB5Mj0iNy4xNiI+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQ0I2NDUiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfMTAwZjZjMjAtZDRjNC00ZWJiLTg5YTktNDFkZjAxMjZhYmQwKSIgZD0iTTQ3LjEsOC41Yy0wLjUtMC44LTEuNC0xLjQtMi40LTEuNEg1LjRjLTAuMSwwLTAuMSwwLTAuMiwwQzMuNyw3LjIsMi41LDguNSwyLjUsMTB2MjIuOQ0KCWMwLDEuNiwxLjMsMi45LDIuOSwyLjloMS44YzAuMywwLDAuNSwwLjIsMC41LDAuNXY4LjVMMTkuMiwzNmMwLjItMC4yLDAuNS0wLjIsMC43LTAuMmgyNC43YzEuNiwwLDIuOS0xLjMsMi45LTIuOVYxMA0KCUM0Ny41LDkuNSw0Ny4zLDksNDcuMSw4LjV6IE00NC4zLDMxLjJjMCwwLjctMC42LDEuMi0xLjIsMS4ySDE5LjRjLTAuMywwLTAuNSwwLjEtMC43LDAuMmwtOC4zLDYuM3YtNS45YzAtMC40LTAuMy0wLjctMC43LTAuN0g3LjMNCgljLTAuNywwLTEuMi0wLjYtMS4yLTEuMlYxMS44YzAtMC43LDAuNi0xLjIsMS4yLTEuMmgzNS44YzAuNywwLDEuMiwwLjYsMS4yLDEuMlYzMS4yeiIvPg0KPGc+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwMTUzNDAwNjMyODU5NjU1ODcyMjAwMDAwMTEyNzY2ODk1MTgzMDM0NjA3OThfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjE3Ljg0NjQiIHkxPSIyNC4wMDEyIiB4Mj0iMTcuODQ2NCIgeTI9IjE5LjQ5MzkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRjU3RjIwIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQ0I2NDUiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwMTUzNDAwNjMyODU5NjU1ODcyMjAwMDAwMTEyNzY2ODk1MTgzMDM0NjA3OThfKSIgZD0iTTE1LjYsMjEuNWMwLTAuNywwLjItMS4yLDAuNi0xLjcNCgkJYzAuNC0wLjQsMS0wLjcsMS42LTAuN3MxLjIsMC4yLDEuNiwwLjdjMC40LDAuNCwwLjYsMSwwLjYsMS43YzAsMC43LTAuMiwxLjItMC42LDEuN2MtMC40LDAuNC0xLDAuNy0xLjYsMC43cy0xLjItMC4yLTEuNi0wLjcNCgkJUzE1LjYsMjIuMiwxNS42LDIxLjV6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwOTAyNTY3ODIwNjc2NTU3MzQ4OTAwMDAwMDcyMTUzMzIzNjU1NjAxNDE2OTZfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI1LjQ0MjkiIHkxPSIyMy44NzA4IiB4Mj0iMjUuNDQyOSIgeTI9IjE5LjM2MzkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRjU3RjIwIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQ0I2NDUiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwOTAyNTY3ODIwNjc2NTU3MzQ4OTAwMDAwMDcyMTUzMzIzNjU1NjAxNDE2OTZfKSIgZD0iTTIzLjIsMjEuNWMwLTAuNywwLjItMS4yLDAuNi0xLjcNCgkJYzAuNC0wLjQsMS0wLjcsMS42LTAuN2MwLjYsMCwxLjIsMC4yLDEuNiwwLjdjMC40LDAuNCwwLjYsMSwwLjYsMS43YzAsMC43LTAuMiwxLjItMC42LDEuN2MtMC40LDAuNC0xLDAuNy0xLjYsMC43DQoJCWMtMC42LDAtMS4yLTAuMi0xLjYtMC43UzIzLjIsMjIuMiwyMy4yLDIxLjV6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAwOTAyNTk2NjA3MDgwOTgyMjAzMDAwMDAwMDA5MDg3NDE0NjEwNTU3NDA4NTVfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjMzLjA0IiB5MT0iMjQuMDY2NCIgeDI9IjMzLjA0IiB5Mj0iMTkuNTU4NiI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGNTdGMjAiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6I0ZDQjY0NSIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBhdGggZmlsbD0idXJsKCNTVkdJRF8wMDAwMDA5MDI1OTY2MDcwODA5ODIyMDMwMDAwMDAwMDkwODc0MTQ2MTA1NTc0MDg1NV8pIiBkPSJNMzAuOCwyMS41YzAtMC43LDAuMi0xLjIsMC42LTEuNw0KCQljMC40LTAuNCwxLTAuNywxLjYtMC43czEuMiwwLjIsMS42LDAuN2MwLjQsMC40LDAuNiwxLDAuNiwxLjdjMCwwLjctMC4yLDEuMi0wLjYsMS43Yy0wLjQsMC40LTEsMC43LTEuNiwwLjdzLTEuMi0wLjItMS42LTAuNw0KCQlTMzAuOCwyMi4yLDMwLjgsMjEuNXoiLz4NCjwvZz4NCjwvc3ZnPg0K" />
-            <specializationType>Comment</specializationType>
-            <specializationTypeId>32cb9020-2896-4dc0-9a6d-2aaae3cb431f</specializationTypeId>
-            <defaultName>NewComment</defaultName>
             <allowMultiple>true</allowMultiple>
           </option>
         </creationOptions>
@@ -677,6 +677,79 @@ return result;
             </mapping>
           </mappings>
         </mappingSetting>
+        <mappingSetting id="8d1f6a8a-77c8-43a2-8e60-421559725419">
+          <name>Map To Domain Operation</name>
+          <isOptionVisibleFunction>// hide if not mapped and advanced mapping mode selected in Domain Interaction Settings:
+/*
+return isMapped() ||
+    // Domain Interaction Settings -&gt; Mapping Mode
+    application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad")?.getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa")?.value !== "advanced";
+*/
+return false;</isOptionVisibleFunction>
+          <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
+          <optionsSource>elements-of-type</optionsSource>
+          <autoSyncTypeReferences>true</autoSyncTypeReferences>
+          <symbol>fa-long-arrow-right</symbol>
+          <targetTypeOptions>
+            <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Class" />
+          </targetTypeOptions>
+          <mapFrom>root</mapFrom>
+          <mappings>
+            <mapping id="877738e8-1c2a-4ab7-87fa-36f9a3820939">
+              <criteria specializationType="Class" specializationTypeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+              </criteria>
+              <mapTo specializationType="DTO" specializationTypeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" childMappingMode="traverse" />
+              <behaviour autoSelectChildren="true" />
+              <childMappings>
+                <mapping id="c7f9d202-acda-478d-b908-382c5f36fb6c">
+                  <criteria specializationType="Operation" specializationTypeId="e030c97a-e066-40a7-8188-808c275df3cb">
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO" specializationTypeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
+                  <childMappings>
+                    <mapping id="9d202961-0cde-423f-b3bf-b53534c52fd8">
+                      <criteria specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren>false</hasChildren>
+                      </criteria>
+                      <mapTo specializationType="DTO-Field" specializationTypeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
+                <mapping id="c18ea020-36b1-40a6-b30d-ff74a848e8e5">
+                  <criteria specializationType="Class Constructor" specializationTypeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO" specializationTypeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
+                  <childMappings>
+                    <mapping id="14567bae-932a-49f7-8dcb-8f79212fca34">
+                      <criteria specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren>false</hasChildren>
+                      </criteria>
+                      <mapTo specializationType="DTO-Field" specializationTypeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
+              </childMappings>
+            </mapping>
+          </mappings>
+        </mappingSetting>
         <mappingSetting id="942eae46-49f1-450e-9274-a92d40ac35fa">
           <name>Project to Domain</name>
           <shortcut>ctrl + shift + p</shortcut>
@@ -760,79 +833,6 @@ return result;
                   <mapTo specializationType="DTO-Field" specializationTypeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" childMappingMode="map-to-child" />
                   <behaviour autoSelectChildren="false" />
                   <childMappings />
-                </mapping>
-              </childMappings>
-            </mapping>
-          </mappings>
-        </mappingSetting>
-        <mappingSetting id="8d1f6a8a-77c8-43a2-8e60-421559725419">
-          <name>Map To Domain Operation</name>
-          <isOptionVisibleFunction>// hide if not mapped and advanced mapping mode selected in Domain Interaction Settings:
-/*
-return isMapped() ||
-    // Domain Interaction Settings -&gt; Mapping Mode
-    application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad")?.getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa")?.value !== "advanced";
-*/
-return false;</isOptionVisibleFunction>
-          <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
-          <optionsSource>elements-of-type</optionsSource>
-          <autoSyncTypeReferences>true</autoSyncTypeReferences>
-          <symbol>fa-long-arrow-right</symbol>
-          <targetTypeOptions>
-            <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Class" />
-          </targetTypeOptions>
-          <mapFrom>root</mapFrom>
-          <mappings>
-            <mapping id="877738e8-1c2a-4ab7-87fa-36f9a3820939">
-              <criteria specializationType="Class" specializationTypeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
-                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
-                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
-                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
-              </criteria>
-              <mapTo specializationType="DTO" specializationTypeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" childMappingMode="traverse" />
-              <behaviour autoSelectChildren="true" />
-              <childMappings>
-                <mapping id="c7f9d202-acda-478d-b908-382c5f36fb6c">
-                  <criteria specializationType="Operation" specializationTypeId="e030c97a-e066-40a7-8188-808c275df3cb">
-                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                  </criteria>
-                  <mapTo specializationType="DTO" specializationTypeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" childMappingMode="map-to-child" />
-                  <behaviour autoSelectChildren="true" />
-                  <childMappings>
-                    <mapping id="9d202961-0cde-423f-b3bf-b53534c52fd8">
-                      <criteria specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
-                        <hasTypeReference>true</hasTypeReference>
-                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                        <hasChildren>false</hasChildren>
-                      </criteria>
-                      <mapTo specializationType="DTO-Field" specializationTypeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" childMappingMode="map-to-child" />
-                      <behaviour autoSelectChildren="false" />
-                      <childMappings />
-                    </mapping>
-                  </childMappings>
-                </mapping>
-                <mapping id="c18ea020-36b1-40a6-b30d-ff74a848e8e5">
-                  <criteria specializationType="Class Constructor" specializationTypeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
-                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                  </criteria>
-                  <mapTo specializationType="DTO" specializationTypeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" childMappingMode="map-to-child" />
-                  <behaviour autoSelectChildren="true" />
-                  <childMappings>
-                    <mapping id="14567bae-932a-49f7-8dcb-8f79212fca34">
-                      <criteria specializationType="Parameter" specializationTypeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
-                        <hasTypeReference>true</hasTypeReference>
-                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                        <hasChildren>false</hasChildren>
-                      </criteria>
-                      <mapTo specializationType="DTO-Field" specializationTypeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" childMappingMode="map-to-child" />
-                      <behaviour autoSelectChildren="false" />
-                      <childMappings />
-                    </mapping>
-                  </childMappings>
                 </mapping>
               </childMappings>
             </mapping>
@@ -1119,8 +1119,8 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
             <isRequired>true</isRequired>
             <targetTypes>
               <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
-              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
               <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
@@ -1264,8 +1264,8 @@ return validateOperation(lookup(id));
             <isRequired>false</isRequired>
             <targetTypes>
               <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
-              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
               <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+              <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
@@ -1372,8 +1372,8 @@ return validateOperationParameter(lookup(id));
                 <isRequired>true</isRequired>
                 <targetTypes>
                   <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
-                  <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
                   <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+                  <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
                 </targetTypes>
                 <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
                 <allowIsNavigable>true</allowIsNavigable>

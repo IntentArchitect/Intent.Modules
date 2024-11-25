@@ -35,7 +35,7 @@
     </group>
   </moduleSettings>
   <dependencies>
-    <dependency id="Intent.Common" version="3.7.2-pre.0" />
+    <dependency id="Intent.Common" version="3.7.2" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
     <dependency id="Intent.Modelers.Domain" version="3.9.0" />
     <dependency id="Intent.Modelers.Services" version="3.7.0" />
@@ -49,4 +49,5 @@
     <install target="Services" src="modelers/Services Domain Interactions.designer.settings" externalReference="f36cb21a-faf9-46ff-85e7-41f38345253d" />
     <install target="Services;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Services.DomainInteractions/Intent.Modelers.Services.DomainInteractions.pkg.config" externalReference="bff48d8d-9246-4ad7-9dda-9703b7139b86" />
   </metadata>
+  <migrations />
 </package>

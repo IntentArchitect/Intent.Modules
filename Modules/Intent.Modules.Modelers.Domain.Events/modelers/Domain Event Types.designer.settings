@@ -7,6 +7,17 @@
   <packageExtensions>
     <packageExtension type="Domain Package" typeId="1a824508-4623-45d9-accc-f572091ade5a">
       <requiredPackages />
+      <contextMenuOptions>
+        <createElement type="element">
+          <text>New Domain Event</text>
+          <shortcut>ctrl + shift + v</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <specializationType>Domain Event</specializationType>
+          <specializationTypeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</specializationTypeId>
+          <defaultName>NewDomainEvent</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </createElement>
+      </contextMenuOptions>
       <creationOptions>
         <option type="element">
           <text>New Domain Event</text>
@@ -44,6 +55,26 @@
         <type order="0" type="Property" typeId="b4d69073-5abb-4968-b41b-545b2f7408ed" />
         <type order="1" type="Domain Event Association Target End" typeId="fe0d0f78-fb7e-4685-ab2d-bae88054a78e" />
       </typeOrder>
+      <contextMenuOptions>
+        <createElement type="element">
+          <text>Add Property</text>
+          <shortcut>ctrl + shift + a</shortcut>
+          <icon type="UrlImagePath" source="./img/icons/uml/Attribute_256x.png" />
+          <specializationType>Property</specializationType>
+          <specializationTypeId>b4d69073-5abb-4968-b41b-545b2f7408ed</specializationTypeId>
+          <defaultName>NewProperty</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </createElement>
+        <createAssociation type="association">
+          <text>Add Handler</text>
+          <shortcut>ctrl + shift + c</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
+          <specializationType>Domain Event Association Target End</specializationType>
+          <specializationTypeId>fe0d0f78-fb7e-4685-ab2d-bae88054a78e</specializationTypeId>
+          <defaultName>NewDomainEventAssociation</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </createAssociation>
+      </contextMenuOptions>
       <creationOptions>
         <option type="element">
           <text>Add Property</text>
@@ -268,6 +299,7 @@ white-space: inherit;`</style>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <contextMenuOptions />
           <creationOptions />
           <scriptOptions />
           <mappingOptions />
@@ -297,29 +329,24 @@ if (namingConvention == "pascal-case") {
     </elementSetting>
   </elementSettings>
   <elementExtensions>
-    <elementExtension type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
-      <creationOptions>
-        <option order="100" type="association">
-          <text>Publish Domain Event</text>
-          <shortcut>ctrl + shift + c</shortcut>
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-          <specializationType>Domain Event Origin Association Target End</specializationType>
-          <specializationTypeId>17046427-14e2-4081-8463-ef16c0fda399</specializationTypeId>
-          <defaultName>NewDomainEventOriginAssociation</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <scriptOptions />
-      <mappingOptions />
-      <typeOrder>
-        <type order="100" type="Domain Event Origin Association Target End" typeId="17046427-14e2-4081-8463-ef16c0fda399" />
-      </typeOrder>
+    <elementExtension type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
       <mappingSettings />
     </elementExtension>
     <elementExtension type="Diagram" typeId="4d66fecd-e9b8-436f-aa50-c59040ad0879">
       <mappingSettings />
       <diagramSettings>
         <addNewElementsTo>Package</addNewElementsTo>
+        <contextMenuOptions>
+          <createElement type="element">
+            <text>New Domain Event</text>
+            <shortcut>ctrl + shift + v</shortcut>
+            <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAACvpJREFUeF7tXH1wFOUZ/z2bQ8ztHm11pjNWRsB7TxrLQMqHoQoTA8QIAoJFdLD6h+OM4ldtbce2Oh07Tu3ItGorSm07dlqLtYOOIEJQlIBBDRVMiZrRZE+odGzGGTtAdi+XcLdPZzfJ5XK39/nuXojD+89Nsvs87/P89rfP+/E87xLONCkESEr6jDDOAChJgooDaB6J3AqFz4MFQAEq8ksYUKfqD0ti5SpeUQCNI5FagNv9cCSfTiJsVKfqd/nRb0UBNI+Ircy4elTgYMDnvwdAiSnatKM94xpAh33M7RgGrFK/4N9pF0a/7wd4ts6KMdCMipcBrLBxG25EAKf9wzbG0+ugAVZO+ca+igFodEVqoVQ+9gH8W01E7/GLfRUD0OwW25mwPNMRBt0dEt1PyDgY7xbhBKFraEwfYTcQ56rENL9iX+otkjG+GFmHfeTGPu5RByZOoW91DhSjJ9c9Rrd4FsD3XK4/rkX0H8joLkbW9xhodEV2gHiZHdyGY579azHfHbooKs8+DLFvtP54MhGYPKnmoy+KAUHmHl8BdNhnj7xZjXvUhAfs6xJ/A+MGFwAe1abr98oAU6ysvwB+LJoBXJlpjAK+Kzg9urFYI93us2Nf0kIXD65nRsW+pFUZ9vk6iMS6InWWxW3Z5OMe1fKAfR+JzQDWZevHb7Qa/UcyD6cUWd8YaHwkdhHQlDlftpjvCtXIsy+RRBcBSob+eJIrxz7fGBj7MFJnEbc50/T0mTG4R2UP2NcZ/jtA12fpJ/q1VtP941IYJHuvLww0OsVrABqzVhbAnerF+pMyRve+H6lRAvwBM5R0/QTEk1RZ9vnCQId9cIl9NvvgAfs+DD8P0HUusXWDNiN6n8zDKUfWcwYaH0Z2E3hJZuwD4051hjz7SOHOYeal/caTSuXZ5zkDHfbZI2+Wh9yjkgfse1/8A8DabP14RJuh/6QcBsnKeMpA4wPxBhiLUvgN7bYQ4Q51hv6UjLFO7CPutHdv0vWDYfT3W5PPmfvJCRn95cp6BmDs8NDI67bqqJJnn9khtjCwxmXe9yttlv6zcgGQlfMMQKNDtBBweeYGMxi3q7P0TTKGOuxj7rR1jNZPRv9AcszY51kM7O0Q9cTYmw0S96gBD9h3WLzAwHcz9TPwcGiWfr/Mw5GV9YSB5mHRxoy69N0WJ1aRR+yzhmLfSEy1/Tb6T41d7BsGXhrA3nZxORFasnMd/F/t29FvyD7h3n+FXyTQNVn6gUe02rEZedN9kgbQbBf2hkHdsNJUjGJar87u/r0MgL2HIjXD874s/UP/8DOpx0StKlUvpVkdZi4/pAA03rtwMaC87hr7JnoQ+w6Jl5iwSuYhlC/LzWqIVlNE78+nQwpA81CkjYnrslcG8uwz2iO1xNxeqexnRj/bgicmr6GGvYlCD6BsAI33IkvAvNtlXnZMrT5LyOY6eg+KrUS4upADPlzfrM7WbyJyik4KtrIBNA8Ke8lWlx3c6TZ1TvfTBXvOc4PDviS3uyzZRiaC/lDzmeBs/Rai0Ztwnr/CxruRRoDtLavM9qk2T58iA54t29c+dWoiEZgqq2dkqkETCPwUAyK3Tt6gzSt9N6csBprvijYG3GLfbeo8OfZ5BVpq1O4WE83jtAPgxS67OIMvENHP1bndD5XTd8kAGgdEEwi7XDo7ph7Vp9FaJMsxxA8ZPjxTNeNmM4gW5tLPwO2hS8pfapYMoPlPYacpa1MGjUz8blUvif7BDyDK0flFm5h0NmEPgDk5qr8YhFvUefoz5egfCQ8lSJvvhJcy0c6UyMg7cUz99+nDvpMHvnmuwqf2gGim63BAsBi4PlSnbynBfddbS2Kg2SbeBTA3WxM9bTE/L2uMm3yVgv5gnf5OsbrNgzXncTLRQszT88isUufr24rV6ckobB6IXMUWv+JFp6XoIGCj+p3iqkv7Wi+8wAooexmY5tYHAX3M1grt0k/eKMUGbwB8W9jzspHY55UF+fUMVlhdUri6tO/A9GmWZe0HOMcGBplEvCQ4X89O9kv4UtQrbL4dWc7M28dgYvuYdqn+w0L+9baJiymJFhC+7loBCxwni5eoC6OHCukq9XpxAL6VMfKW2kt598eTgcDkSXX5K6zM1vAcVuh1Ar7q1g0Dn3MVGkLzdWdH2+tWEEBzv1jJgGvAzSo8yLBO6jrzBm1h/pVBbL+Yz8DrDKg5Yt5nSrJqQXX9x0e8Bm5YX0EAT+6fPp04eZ4fBijkLK3+6KI7lpwQuCAf+4w3L1pMimXXXQdz2BalJDcE66PH/LC9aAD97NxoFX8FcGNmH0x4OLQgd67D3B9eykz2WzEhh33drPCC0GXRz/2039ZdkIF+GRB/a7C+DwwlY3Ay+/ut889pdM/zxlrFtQx6DswB90GNOpIDVYsmLfG/OnVMATT2ic1EWDeUfHKOO9hJKTB+odbrD7o9OGOfuAGEZwmgTLmhhHtbfCKazp2vn/TrwWfqHRMG9u5zqgw+cNg3up0IxoPnU1N2DsJ8U6wH8CTsFaxLY1CrOqGviS79T1+lwBszBhp7h2pcMkdt4gfU+ugvMwEwWsQ9IDyWB5hmNYbVtCx//sIPYCvOQId9Q1UGjkNDuznMOKEOZLPPbAk/BKIHcjrP2BZEcfmLLwWA5p7wiyC6JrUjnzqeQPdpi7o3pDtp7hH2LvJ6l4T98CbLZnWffhM9WFz+YtwDaLQMZtpSjqRm2vRFkE5NpoajcYeUDIq1iD+BcPPow3OjSoY3BRv0O0rJX4x7AM03xDYGVqZPQp0SasK92iL9UQe8B6HEFornGbg2cyWT9vfj2mL/TyEVA3jFYqDDPsv1wGFPUElMs9nHB+dMiB0/sQV505n8gLo4e6Apxlk/7qkYgObu8Csgusrl2MPdocboE7xTTDQn0g5wnuSPXSrXWH7+YtwCaLwWqSX7wGF6WmzQm57g/86agq8EJphVfc0EXphRADg8SjMYt6iNcvmLcQygsLN4TW4lIPEEP3d2AHsYmJMj7ZhgYF3oCvn8xbgEMPZqpI7tQzfZ7ZjFPFeBshvEM3PP83iZ2hS1z9ydls33GGi8Gt5NoKxjDwz8FMDNACJuzAO4j4lXaFd4l7/w4wn4CmDstfBlzLQ/h+GfArjA7Rox9YKsK4NN0bf9cNpLnb4CaDQLu2663nUlkXEAO7W7Aj4Otuq1pUc6vHTUL12+Adi7K9ygMNmVAcU3wueWhYbQMn/yF8UbUvydvgFo7hws/S26BJfwmaJULahu8i9/UTwsxd/pC4DGjkgjkWv5m6tlRHSETiUvr175iR0Xx1XzBUBzR1r523CsG8ofjMS61JGtTg5wQ6jJ//yFH0/GcwDNneGlYNpZ3CeeqGNg4FT911YfPe6Hc5XQ6TmAxnbRTsPlb/kTw23xKjSdu6xy+Qs/APUUQPPlyHIQby9kKIFaq/v6mmhtZfMXhewq57q3AG4T7UyoTVeaXQvOzWqAxiR/UQ5AhWQ8A9DcHl4Fppdy7KY4dhBhS7U2eV0x5y8KGX66XPcMQGOr6CRCTa7Bgxmb1av1G8d6C95r4D0BMLZVrGHA3knO+ABgKuu2Kbhy7PMXXoPnvFVeKDVeEvaHIGpsXS4rj8e11adH/sILXzN1SAMY2xq+jpnc66MJ96ur/Pl6rh9glKNTCkAngzZT2B8/DGd0zrBwh7rm9MpflANQIRkpAGMvROqg8COZnVigv2jXdP+5UOdfhutSAH4ZAJD14QyAkgieAfAMgJIISIr/H3Vjw41eGhtaAAAAAElFTkSuQmCC" />
+            <specializationType>Domain Event</specializationType>
+            <specializationTypeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</specializationTypeId>
+            <defaultName>NewDomainEvent</defaultName>
+            <allowMultiple>true</allowMultiple>
+          </createElement>
+        </contextMenuOptions>
         <creationOptions>
           <option type="element">
             <text>New Domain Event</text>
@@ -337,6 +364,17 @@ if (namingConvention == "pascal-case") {
       </diagramSettings>
     </elementExtension>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <contextMenuOptions>
+        <createElement type="element">
+          <text>New Domain Event</text>
+          <shortcut>ctrl + shift + v</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAACvpJREFUeF7tXH1wFOUZ/z2bQ8ztHm11pjNWRsB7TxrLQMqHoQoTA8QIAoJFdLD6h+OM4ldtbce2Oh07Tu3ItGorSm07dlqLtYOOIEJQlIBBDRVMiZrRZE+odGzGGTtAdi+XcLdPZzfJ5XK39/nuXojD+89Nsvs87/P89rfP+/E87xLONCkESEr6jDDOAChJgooDaB6J3AqFz4MFQAEq8ksYUKfqD0ti5SpeUQCNI5FagNv9cCSfTiJsVKfqd/nRb0UBNI+Ircy4elTgYMDnvwdAiSnatKM94xpAh33M7RgGrFK/4N9pF0a/7wd4ts6KMdCMipcBrLBxG25EAKf9wzbG0+ugAVZO+ca+igFodEVqoVQ+9gH8W01E7/GLfRUD0OwW25mwPNMRBt0dEt1PyDgY7xbhBKFraEwfYTcQ56rENL9iX+otkjG+GFmHfeTGPu5RByZOoW91DhSjJ9c9Rrd4FsD3XK4/rkX0H8joLkbW9xhodEV2gHiZHdyGY579azHfHbooKs8+DLFvtP54MhGYPKnmoy+KAUHmHl8BdNhnj7xZjXvUhAfs6xJ/A+MGFwAe1abr98oAU6ysvwB+LJoBXJlpjAK+Kzg9urFYI93us2Nf0kIXD65nRsW+pFUZ9vk6iMS6InWWxW3Z5OMe1fKAfR+JzQDWZevHb7Qa/UcyD6cUWd8YaHwkdhHQlDlftpjvCtXIsy+RRBcBSob+eJIrxz7fGBj7MFJnEbc50/T0mTG4R2UP2NcZ/jtA12fpJ/q1VtP941IYJHuvLww0OsVrABqzVhbAnerF+pMyRve+H6lRAvwBM5R0/QTEk1RZ9vnCQId9cIl9NvvgAfs+DD8P0HUusXWDNiN6n8zDKUfWcwYaH0Z2E3hJZuwD4051hjz7SOHOYeal/caTSuXZ5zkDHfbZI2+Wh9yjkgfse1/8A8DabP14RJuh/6QcBsnKeMpA4wPxBhiLUvgN7bYQ4Q51hv6UjLFO7CPutHdv0vWDYfT3W5PPmfvJCRn95cp6BmDs8NDI67bqqJJnn9khtjCwxmXe9yttlv6zcgGQlfMMQKNDtBBweeYGMxi3q7P0TTKGOuxj7rR1jNZPRv9AcszY51kM7O0Q9cTYmw0S96gBD9h3WLzAwHcz9TPwcGiWfr/Mw5GV9YSB5mHRxoy69N0WJ1aRR+yzhmLfSEy1/Tb6T41d7BsGXhrA3nZxORFasnMd/F/t29FvyD7h3n+FXyTQNVn6gUe02rEZedN9kgbQbBf2hkHdsNJUjGJar87u/r0MgL2HIjXD874s/UP/8DOpx0StKlUvpVkdZi4/pAA03rtwMaC87hr7JnoQ+w6Jl5iwSuYhlC/LzWqIVlNE78+nQwpA81CkjYnrslcG8uwz2iO1xNxeqexnRj/bgicmr6GGvYlCD6BsAI33IkvAvNtlXnZMrT5LyOY6eg+KrUS4upADPlzfrM7WbyJyik4KtrIBNA8Ke8lWlx3c6TZ1TvfTBXvOc4PDviS3uyzZRiaC/lDzmeBs/Rai0Ztwnr/CxruRRoDtLavM9qk2T58iA54t29c+dWoiEZgqq2dkqkETCPwUAyK3Tt6gzSt9N6csBprvijYG3GLfbeo8OfZ5BVpq1O4WE83jtAPgxS67OIMvENHP1bndD5XTd8kAGgdEEwi7XDo7ph7Vp9FaJMsxxA8ZPjxTNeNmM4gW5tLPwO2hS8pfapYMoPlPYacpa1MGjUz8blUvif7BDyDK0flFm5h0NmEPgDk5qr8YhFvUefoz5egfCQ8lSJvvhJcy0c6UyMg7cUz99+nDvpMHvnmuwqf2gGim63BAsBi4PlSnbynBfddbS2Kg2SbeBTA3WxM9bTE/L2uMm3yVgv5gnf5OsbrNgzXncTLRQszT88isUufr24rV6ckobB6IXMUWv+JFp6XoIGCj+p3iqkv7Wi+8wAooexmY5tYHAX3M1grt0k/eKMUGbwB8W9jzspHY55UF+fUMVlhdUri6tO/A9GmWZe0HOMcGBplEvCQ4X89O9kv4UtQrbL4dWc7M28dgYvuYdqn+w0L+9baJiymJFhC+7loBCxwni5eoC6OHCukq9XpxAL6VMfKW2kt598eTgcDkSXX5K6zM1vAcVuh1Ar7q1g0Dn3MVGkLzdWdH2+tWEEBzv1jJgGvAzSo8yLBO6jrzBm1h/pVBbL+Yz8DrDKg5Yt5nSrJqQXX9x0e8Bm5YX0EAT+6fPp04eZ4fBijkLK3+6KI7lpwQuCAf+4w3L1pMimXXXQdz2BalJDcE66PH/LC9aAD97NxoFX8FcGNmH0x4OLQgd67D3B9eykz2WzEhh33drPCC0GXRz/2039ZdkIF+GRB/a7C+DwwlY3Ay+/ut889pdM/zxlrFtQx6DswB90GNOpIDVYsmLfG/OnVMATT2ic1EWDeUfHKOO9hJKTB+odbrD7o9OGOfuAGEZwmgTLmhhHtbfCKazp2vn/TrwWfqHRMG9u5zqgw+cNg3up0IxoPnU1N2DsJ8U6wH8CTsFaxLY1CrOqGviS79T1+lwBszBhp7h2pcMkdt4gfU+ugvMwEwWsQ9IDyWB5hmNYbVtCx//sIPYCvOQId9Q1UGjkNDuznMOKEOZLPPbAk/BKIHcjrP2BZEcfmLLwWA5p7wiyC6JrUjnzqeQPdpi7o3pDtp7hH2LvJ6l4T98CbLZnWffhM9WFz+YtwDaLQMZtpSjqRm2vRFkE5NpoajcYeUDIq1iD+BcPPow3OjSoY3BRv0O0rJX4x7AM03xDYGVqZPQp0SasK92iL9UQe8B6HEFornGbg2cyWT9vfj2mL/TyEVA3jFYqDDPsv1wGFPUElMs9nHB+dMiB0/sQV505n8gLo4e6Apxlk/7qkYgObu8Csgusrl2MPdocboE7xTTDQn0g5wnuSPXSrXWH7+YtwCaLwWqSX7wGF6WmzQm57g/86agq8EJphVfc0EXphRADg8SjMYt6iNcvmLcQygsLN4TW4lIPEEP3d2AHsYmJMj7ZhgYF3oCvn8xbgEMPZqpI7tQzfZ7ZjFPFeBshvEM3PP83iZ2hS1z9ydls33GGi8Gt5NoKxjDwz8FMDNACJuzAO4j4lXaFd4l7/w4wn4CmDstfBlzLQ/h+GfArjA7Rox9YKsK4NN0bf9cNpLnb4CaDQLu2663nUlkXEAO7W7Aj4Otuq1pUc6vHTUL12+Adi7K9ygMNmVAcU3wueWhYbQMn/yF8UbUvydvgFo7hws/S26BJfwmaJULahu8i9/UTwsxd/pC4DGjkgjkWv5m6tlRHSETiUvr175iR0Xx1XzBUBzR1r523CsG8ofjMS61JGtTg5wQ6jJ//yFH0/GcwDNneGlYNpZ3CeeqGNg4FT911YfPe6Hc5XQ6TmAxnbRTsPlb/kTw23xKjSdu6xy+Qs/APUUQPPlyHIQby9kKIFaq/v6mmhtZfMXhewq57q3AG4T7UyoTVeaXQvOzWqAxiR/UQ5AhWQ8A9DcHl4Fppdy7KY4dhBhS7U2eV0x5y8KGX66XPcMQGOr6CRCTa7Bgxmb1av1G8d6C95r4D0BMLZVrGHA3knO+ABgKuu2Kbhy7PMXXoPnvFVeKDVeEvaHIGpsXS4rj8e11adH/sILXzN1SAMY2xq+jpnc66MJ96ur/Pl6rh9glKNTCkAngzZT2B8/DGd0zrBwh7rm9MpflANQIRkpAGMvROqg8COZnVigv2jXdP+5UOdfhutSAH4ZAJD14QyAkgieAfAMgJIISIr/H3Vjw41eGhtaAAAAAElFTkSuQmCC" />
+          <specializationType>Domain Event</specializationType>
+          <specializationTypeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</specializationTypeId>
+          <defaultName>NewDomainEvent</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </createElement>
+      </contextMenuOptions>
       <creationOptions>
         <option type="element">
           <text>New Domain Event</text>
@@ -352,25 +390,6 @@ if (namingConvention == "pascal-case") {
       <mappingOptions />
       <typeOrder>
         <type type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a" />
-      </typeOrder>
-      <mappingSettings />
-    </elementExtension>
-    <elementExtension type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
-      <creationOptions>
-        <option order="100" type="association">
-          <text>Publish Domain Event</text>
-          <shortcut>ctrl + shift + c</shortcut>
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-          <specializationType>Domain Event Origin Association Target End</specializationType>
-          <specializationTypeId>17046427-14e2-4081-8463-ef16c0fda399</specializationTypeId>
-          <defaultName>NewDomainEventOriginAssociation</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <scriptOptions />
-      <mappingOptions />
-      <typeOrder>
-        <type order="100" type="Domain Event Origin Association Target End" typeId="17046427-14e2-4081-8463-ef16c0fda399" />
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -401,7 +420,6 @@ if (namingConvention == "pascal-case") {
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>true</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
@@ -417,10 +435,17 @@ if (namingConvention == "pascal-case") {
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
         <typeOrder />
+        <contextMenuOptions>
+          <defineMapping type="open-advanced-mapping" mappingType="Domain Event to Entity Mapping" mappingTypeId="6c77ca45-fb33-42d2-be23-ea2c2c90ea4e">
+            <text>Map to Entity</text>
+            <shortcut>ctrl + shift + m</shortcut>
+            <isOptionVisibleFunction>return false</isOptionVisibleFunction>
+          </defineMapping>
+        </contextMenuOptions>
         <creationOptions />
         <scriptOptions />
         <mappingOptions>
-          <option mappingType="Domain Event to Entity Mapping" mappingTypeId="6c77ca45-fb33-42d2-be23-ea2c2c90ea4e">
+          <option type="open-advanced-mapping" mappingType="Domain Event to Entity Mapping" mappingTypeId="6c77ca45-fb33-42d2-be23-ea2c2c90ea4e">
             <text>Map to Entity</text>
             <shortcut>ctrl + shift + m</shortcut>
             <isOptionVisibleFunction>return false</isOptionVisibleFunction>
@@ -468,7 +493,6 @@ if (namingConvention == "pascal-case") {
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>true</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-        <allowSetValue>false</allowSetValue>
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
@@ -484,10 +508,16 @@ if (namingConvention == "pascal-case") {
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
         <typeOrder />
+        <contextMenuOptions>
+          <defineMapping type="open-advanced-mapping" mappingType="Entity to Domain Event Mapping" mappingTypeId="86cb62b5-412d-493b-a901-d6e08cf88059">
+            <text>Map Domain Event</text>
+            <shortcut>ctrl + shift + m</shortcut>
+          </defineMapping>
+        </contextMenuOptions>
         <creationOptions />
         <scriptOptions />
         <mappingOptions>
-          <option mappingType="Entity to Domain Event Mapping" mappingTypeId="86cb62b5-412d-493b-a901-d6e08cf88059">
+          <option type="open-advanced-mapping" mappingType="Entity to Domain Event Mapping" mappingTypeId="86cb62b5-412d-493b-a901-d6e08cf88059">
             <text>Map Domain Event</text>
             <shortcut>ctrl + shift + m</shortcut>
           </option>

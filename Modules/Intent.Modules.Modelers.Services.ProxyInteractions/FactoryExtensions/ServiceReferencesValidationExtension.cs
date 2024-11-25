@@ -25,7 +25,7 @@ namespace Intent.Modules.Modelers.Services.ProxyInteractions.FactoryExtensions
 
         public const string CallServiceOperationSpecTypeId = "3e69085c-fa2f-44bd-93eb-41075fd472f8";
         public const string ServiceProxySpecTypeId = "07d8d1a9-6b9f-4676-b7d3-8db06299e35c";
-        
+
         protected override void OnAfterMetadataLoad(IApplication application)
         {
             var proxyServiceCalls = application.MetadataManager

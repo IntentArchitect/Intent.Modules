@@ -33,4 +33,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Modelers.Domain\Intent.Modules.Modelers.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

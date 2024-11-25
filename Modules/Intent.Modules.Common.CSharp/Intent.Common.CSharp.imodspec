@@ -34,7 +34,7 @@
   </files>
   <metadata>
     <install src="Intent.Metadata/Module Builder/Intent.Common.CSharp/Intent.Common.CSharp.pkg.config" externalReference="730e1275-0c32-44f7-991a-9619d07ca68d" target="*" />
-  </metadata> 
+  </metadata>
   <moduleSettings>
     <group id="6cc9ca71-7670-48eb-b413-e47e72307cbd" title="C# Style Configuration" externalReference="6cc9ca71-7670-48eb-b413-e47e72307cbd">
       <settings>
