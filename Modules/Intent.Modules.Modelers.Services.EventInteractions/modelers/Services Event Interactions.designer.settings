@@ -1524,6 +1524,32 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
   <mappableElementPackages />
   <mappableElementPackageExtensions />
   <suggestionSettings>
+    <suggestionSetting type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" locations="diagram, model">
+      <name>Publish Integration Command</name>
+      <dependencies />
+      <script>const integrationCommandId = "7f01ca8e-0e3c-4735-ae23-a45169f71625";
+const publishIntegrationCommandAssociationId = "35a14f76-71e0-45f2-a17f-f8d1483510f7";
+
+const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+if (position) {
+    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, "NewIntegrationCommand", { x: position.x + 100, y: position.y - 5 });
+    const association = createAssociation(publishIntegrationCommandAssociationId, element.id, integrationCommand.id)
+    getCurrentDiagram().layoutVisuals([association.id]);
+}</script>
+    </suggestionSetting>
+    <suggestionSetting type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" locations="diagram, model">
+      <name>Publish Integration Event</name>
+      <dependencies />
+      <script>const messageId = "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e";
+const publishIntegrationEventAssociationId = "6feb1511-849a-4aa3-85eb-d0c736ac1fec";
+
+const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+if (position) {
+    const message = getCurrentDiagram().createElement(messageId, "NewMessage", { x: position.x + 100, y: position.y - 5 });
+    const association = createAssociation(publishIntegrationEventAssociationId, element.id, message.id)
+    getCurrentDiagram().layoutVisuals([association.id]);
+}</script>
+    </suggestionSetting>
     <suggestionSetting type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" locations="diagram, model">
       <name>Create Integration Event Handler</name>
       <filterFunction>const subscribeIntegrationCommandTargetEndId = "efa73bdb-69b7-4f52-aa10-15c19874b394";
