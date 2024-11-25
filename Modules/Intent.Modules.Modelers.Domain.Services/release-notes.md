@@ -1,3 +1,7 @@
+### Version 1.2.1
+
+- Improvement: Updated module icon
+
 ### Version 1.2.0
 
 - Domain Service elements now have the "Injectable Service" trait, allowing them to be used as targets on particular advanced mapping dialogues.

@@ -16,7 +16,8 @@ class DomainHelper {
 
         let classId = await dialogService.lookupFromOptions(classes.map((x) => ({
             id: x.id,
-            name: this.getFriendlyDisplayNameForClassSelection(x)
+            name: this.getFriendlyDisplayNameForClassSelection(x),
+            additionalInfo: `(${x.getParents().map(item => item.getName()).join("/")})`
         })));
 
         if (classId == null) {

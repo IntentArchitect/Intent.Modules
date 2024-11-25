@@ -2,6 +2,10 @@
 
 - Improvement: Added `Suggestion` (4.4.x feature) for `Message` and `Integration Command` to auto-create an `Integration Event Handler`.
 
+### Version 1.1.3
+
+- Improvement: Updated references
+
 ### Version 1.1.2
 
 - Improvement: Improved Event and Integration Command mappings for supporting Collections.

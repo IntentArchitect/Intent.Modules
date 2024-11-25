@@ -10,7 +10,6 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
 namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelT4
@@ -33,7 +32,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelT4
             return new TypeScriptFilePerModelT4Template(outputTarget, model);
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<ClassModel> GetModels(IApplication application)
         {
             return _metadataManager.Domain(application).GetClassModels();

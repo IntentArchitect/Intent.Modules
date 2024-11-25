@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.RDBMS</id>
   <version>3.6.2</version>
@@ -13,9 +13,9 @@
   <templates></templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Common" version="3.6.0" />
+    <dependency id="Intent.Common" version="3.7.2-pre.0" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
-    <dependency id="Intent.Modelers.Domain" version="3.9.0" />
+    <dependency id="Intent.Modelers.Domain" version="3.11.1" />
   </dependencies>
   <files></files>
   <metadata>
@@ -27,7 +27,6 @@
     <group id="ac0a788e-d8b3-4eea-b56d-538608f1ded9" title="Database Settings" externalReference="ac0a788e-d8b3-4eea-b56d-538608f1ded9">
       <settings>
         <setting id="ef83f85d-bb8d-4b10-8842-9f35f9f54165" title="Key Type" type="select">
-          <isRequired>false</isRequired>
           <hint>Select the default data type to be used for all surrogate and foreign keys.</hint>
           <defaultValue>guid</defaultValue>
           <options>
@@ -37,7 +36,6 @@
           </options>
         </setting>
         <setting id="5aca6e0c-1b64-425b-9046-f0bc81c44311" title="Key Creation Mode" type="select">
-          <isRequired>false</isRequired>
           <hint>If and how the designer should create and manage the PKs and FKs</hint>
           <defaultValue>explicit</defaultValue>
           <options>
@@ -47,7 +45,6 @@
           </options>
         </setting>
         <setting id="684582e0-125a-4ddd-a950-714e2af41f15" title="Decimal precision and scale" type="text">
-          <isRequired>false</isRequired>
           <hint>Format : precision, scale e.g. 16,4</hint>
         </setting>
       </settings>

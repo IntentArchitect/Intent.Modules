@@ -42,6 +42,8 @@ internal class CSharpConstructorWrapper(CSharpConstructor wrapped) :
 
     ICSharpConstructor ICSharpConstructor.AddStatements(IEnumerable<ICSharpStatement> statements, Action<IEnumerable<ICSharpStatement>> configure) => wrapped.AddStatements(statements.Cast<CSharpStatement>(), configure);
 
+    ICSharpConstructor ICSharpConstructor.Internal() => wrapped.Internal();
+
     ICSharpConstructor ICSharpConstructor.Protected() => wrapped.Protected();
 
     ICSharpConstructor ICSharpConstructor.Private() => wrapped.Private();

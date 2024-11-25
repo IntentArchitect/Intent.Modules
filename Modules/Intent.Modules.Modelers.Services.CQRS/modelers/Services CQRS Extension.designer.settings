@@ -90,9 +90,9 @@ return {
       <typeReferenceSetting>
         <isRequired>false</isRequired>
         <targetTypes>
-          <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
-          <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
           <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
+          <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+          <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
         </targetTypes>
         <allowIsNavigable>true</allowIsNavigable>
         <allowIsNullable>true</allowIsNullable>
@@ -273,7 +273,6 @@ element.getChildren("DTO-Field").forEach(x =&gt; {
 })</script>
         </macro>
       </macros>
-      <childElementSettings />
     </elementSetting>
     <elementSetting type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
       <implements>
@@ -298,8 +297,8 @@ element.getChildren("DTO-Field").forEach(x =&gt; {
         <isRequired>true</isRequired>
         <targetTypes>
           <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
-          <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
           <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
+          <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
         </targetTypes>
         <defaultTypeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</defaultTypeId>
         <allowIsNavigable>true</allowIsNavigable>
@@ -410,7 +409,6 @@ element.getChildren("DTO-Field").forEach(x =&gt; {
 })</script>
         </macro>
       </macros>
-      <childElementSettings />
     </elementSetting>
   </elementSettings>
   <elementExtensions>

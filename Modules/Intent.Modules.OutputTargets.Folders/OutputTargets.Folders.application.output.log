@@ -88,13 +88,5 @@
       <ProjectRelativeFilePath>Output Folder Types.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
-    <FileLog>
-      <ProjectId>d76d8b1d-852f-4ab5-8780-7136ca53dd1b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
   </FileLogs>
 </outputLog>

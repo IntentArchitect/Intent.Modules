@@ -1,4 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#75de55cf-e031-4035-aae3-ef6f2627426e</correlationId>
+      <path>Intent.Modules.ModuleBuilder.Html/Api/FolderExtensionsModel.cs</path>
+      <count>2</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2024-11-22T13:23:32.8793959Z</updatedAt>
+      <deviationsHash>380B4E36D0E83BD566916BB1C8C3D8EDB9DBAA3B087820FBC8457B0E497AFB24</deviationsHash>
+      <fileHash>0A8420ABE7579F753B2AC818D33DB4224D0460043652BD04EA143A69FDBF9FE6</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#af3fe721-86c5-41e3-9daf-1e79209ed345</correlationId>
+      <path>Intent.Modules.ModuleBuilder.Html/Api/HtmlFileTemplateModel.cs</path>
+      <count>6</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2024-11-22T13:23:32.8794053Z</updatedAt>
+      <deviationsHash>D98B9FA6BE0CC3CC2E2F31C5610396E501065BFEE32D4C1204766EF451F036D3</deviationsHash>
+      <fileHash>3186D8F5A1F25734747A3A16D90C6649929E58CF5085D64E9F17DADF6ED67CCD</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#4d27f85a-03b0-4a9b-92e6-212e4d9272af</correlationId>
+      <path>Intent.Modules.ModuleBuilder.Html/Templates/HtmlFile/HtmlFileTemplatePartial.cs</path>
+      <count>2</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2024-11-22T13:23:32.8793579Z</updatedAt>
+      <deviationsHash>7D56A599D28317B2DA0501BFBDDE33B02A4830697A85162EA15F5C4BFB52EC63</deviationsHash>
+      <fileHash>A4F8D3BB0BB7EEF8ECAFCC4EEEB3FEBAB42EB0934CB4D480B2BF19A052187B5A</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#4d27f85a-03b0-4a9b-92e6-212e4d9272af</correlationId>
+      <path>Intent.Modules.ModuleBuilder.Html/Templates/HtmlFile/HtmlFileTemplateRegistration.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2024-11-22T13:23:32.879367Z</updatedAt>
+      <deviationsHash>95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B</deviationsHash>
+      <fileHash>0D3853DF9DE60B11BE611FD5809CEFB40A3BD3B349C555A5F666C105998E76C6</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#64dd72e2-7896-4275-8b89-93d09749224e</correlationId>
+      <path>Intent.Modules.ModuleBuilder.Html/Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplatePartial.cs</path>
+      <count>3</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2024-11-22T13:23:32.879247Z</updatedAt>
+      <deviationsHash>14F4D031635FBB469A9E04D66F476BA2C55247CF9AB3950D0FA61B6231D25445</deviationsHash>
+      <fileHash>0EB3CADD67C555F997B26E6ECB9E70568E32197E36DE51835604F59442CF8B65</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#64dd72e2-7896-4275-8b89-93d09749224e</correlationId>
+      <path>Intent.Modules.ModuleBuilder.Html/Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplateRegistration.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2024-11-22T13:23:32.8793763Z</updatedAt>
+      <deviationsHash>95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B</deviationsHash>
+      <fileHash>B269D12937970159E9067158005F3ABC22CAB5A7EA6FFE0A6241D7F66EE9C3CA</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.TemplateExtensions</correlationId>
+      <path>Intent.Modules.ModuleBuilder.Html/Templates/TemplateExtensions.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2024-11-22T13:23:32.8794307Z</updatedAt>
+      <deviationsHash>B7203BFB9686F060DB0ACAA7C53E52041597E3DB8BC78F5BAE12E1FBA6835020</deviationsHash>
+      <fileHash>E6BCE8B6C0E900207F8CE6CC8C2715F24007DB530B0C33ABB714DA5A536D1822</fileHash>
+    </file>
+  </files>
 </deviationsLog>

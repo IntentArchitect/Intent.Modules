@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.OutputTargets.Folders.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class RoleModel : IHasStereotypes, IMetadataModel, IOutputTargetRole, IHasName, IHasFolder
+    public class RoleModel : IHasStereotypes, IMetadataModel, IOutputTargetRole, IHasName, IElementWrapper, IHasFolder
     {
         public const string SpecializationType = "Role";
         public const string SpecializationTypeId = "8663c9f9-2852-45e7-aaa1-0883a2e6f1da";

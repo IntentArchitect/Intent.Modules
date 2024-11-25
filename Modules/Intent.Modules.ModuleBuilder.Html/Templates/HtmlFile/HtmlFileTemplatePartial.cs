@@ -13,6 +13,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using CodeGenType = Intent.Modules.Common.CodeGenType;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]

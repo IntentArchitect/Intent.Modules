@@ -15,14 +15,14 @@ namespace Intent.Metadata.RDBMS.Api
     {
         public static Schema GetSchema(this FolderModel model)
         {
-            var stereotype = model.GetStereotype("c0f17219-ada3-47ac-80c6-7a5750cbd322");
+            var stereotype = model.GetStereotype(Schema.DefinitionId);
             return stereotype != null ? new Schema(stereotype) : null;
         }
 
 
         public static bool HasSchema(this FolderModel model)
         {
-            return model.HasStereotype("c0f17219-ada3-47ac-80c6-7a5750cbd322");
+            return model.HasStereotype(Schema.DefinitionId);
         }
 
         public static bool TryGetSchema(this FolderModel model, out Schema stereotype)
@@ -33,13 +33,14 @@ namespace Intent.Metadata.RDBMS.Api
                 return false;
             }
 
-            stereotype = new Schema(model.GetStereotype("c0f17219-ada3-47ac-80c6-7a5750cbd322"));
+            stereotype = new Schema(model.GetStereotype(Schema.DefinitionId));
             return true;
         }
 
         public class Schema
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "c0f17219-ada3-47ac-80c6-7a5750cbd322";
 
             public Schema(IStereotype stereotype)
             {

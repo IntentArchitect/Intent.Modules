@@ -14,7 +14,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.OutputTargets.Folders.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class TemplateOutputModel : IHasStereotypes, IMetadataModel, IOutputTargetTemplate, IHasName, IHasFolder
+    public class TemplateOutputModel : IHasStereotypes, IMetadataModel, IOutputTargetTemplate, IHasName, IElementWrapper, IHasFolder
     {
         public const string SpecializationType = "Template Output";
         public const string SpecializationTypeId = "09de2192-2507-41a2-8044-286c7ecadec2";

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp.Nuget;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.SdkEvolutionHelpers;
@@ -13,12 +15,15 @@ namespace Intent.Modules.Common.VisualStudio
     {
         private const string DEPENDENCIES = "VS.Dependencies";
         private const string NUGET_PACKAGES = "VS.NugetPackages";
+        private const string NUGET_PACKAGE_INSTALLS = "VS.NugetPackageInstalls";
         private const string REFERENCES = "VS.References";
         private const string FRAMEWORK_DEPENDENCY = "VS.FrameworkReferences";
         
+
         public static void InitializeVSMetadata(this IOutputTarget outputTarget)
         {
             outputTarget.Metadata[NUGET_PACKAGES] = new List<INugetPackageInfo>();
+            outputTarget.Metadata[NUGET_PACKAGE_INSTALLS] = new List<NuGetInstall>();
             outputTarget.Metadata[DEPENDENCIES] = new List<IOutputTarget>();
             outputTarget.Metadata[REFERENCES] = new List<IAssemblyReference>();
             outputTarget.Metadata[FRAMEWORK_DEPENDENCY] = new HashSet<string>();
@@ -58,8 +63,8 @@ namespace Intent.Modules.Common.VisualStudio
         [Obsolete(WillBeRemovedIn.Version4)]
         public static void AddNugetPackages(this IOutputTarget outputTarget, IEnumerable<INugetPackageInfo> packages)
         {
-            var collection = outputTarget.NugetPackages();
-            collection.AddRange(packages);
+            var collection = outputTarget.NugetPackageInstalls();
+            collection.AddRange(packages.Select(p => new NuGetInstall(p)));
         }
 
         public static void AddReference(this IOutputTarget outputTarget, IAssemblyReference assemblyDependency)
@@ -86,15 +91,20 @@ namespace Intent.Modules.Common.VisualStudio
 			}.Contains(outputTarget.Type);
         }
 
-        public static List<INugetPackageInfo> NugetPackages(this IOutputTarget outputTarget)
+        public static List<NuGetInstall> NugetPackageInstalls(this IOutputTarget outputTarget)
         {
-            if (outputTarget.Metadata.TryGetValue(NUGET_PACKAGES, out var value) &&
-                value is List<INugetPackageInfo> nugetPackages)
+            if (outputTarget.Metadata.TryGetValue(NUGET_PACKAGE_INSTALLS, out var value) &&
+                value is List<NuGetInstall> nugetPackages)
             {
                 return nugetPackages;
             }
 
-            return new List<INugetPackageInfo>();
+            return new List<NuGetInstall>();
+        }
+
+        public static List<INugetPackageInfo> NugetPackages(this IOutputTarget outputTarget)
+        {
+            return outputTarget.NugetPackageInstalls().Select(ni => ni.Package).ToList();
         }
 
         public static IList<IAssemblyReference> References(this IOutputTarget outputTarget)

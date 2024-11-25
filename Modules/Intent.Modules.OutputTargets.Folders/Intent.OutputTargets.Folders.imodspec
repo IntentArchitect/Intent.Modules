@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.OutputTargets.Folders</id>
   <version>3.4.0</version>
-  <supportedClientVersions>[4.1.0, 5.0.0-a)</supportedClientVersions>
+  <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Generic Folder-based project layout designer</summary>
   <description>Generic Folder-based project layout designer</description>
   <authors>Intent Architect</authors>
@@ -11,8 +11,8 @@
   <tags>folders output generation placement structure</tags>
   <templates></templates>
   <dependencies>
-    <dependency id="Intent.Common" version="3.5.0" />
-    <dependency id="Intent.Common.Types" version="3.3.9" />
+    <dependency id="Intent.Common" version="3.7.2-pre.0" />
+    <dependency id="Intent.Common.Types" version="3.4.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

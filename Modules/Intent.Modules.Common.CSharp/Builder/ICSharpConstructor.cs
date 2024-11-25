@@ -21,6 +21,7 @@ public interface ICSharpConstructor : ICSharpMember<ICSharpConstructor>, IHasCSh
     ICSharpConstructor AddStatements(IEnumerable<ICSharpStatement> statements, Action<IEnumerable<ICSharpStatement>> configure = null);
     ICSharpConstructor Protected();
     ICSharpConstructor Private();
+    ICSharpConstructor Internal();
     ICSharpConstructor Static();
     ICSharpConstructor CallsBase(Action<ICSharpConstructorCall> configure = null);
     ICSharpConstructor CallsThis(Action<ICSharpConstructorCall> configure = null);

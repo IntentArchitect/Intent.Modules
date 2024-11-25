@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deviationsLog>
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</correlationId>
+      <path>Intent.Modules.Metadata.Security/Api/CommandModelStereotypeExtensions.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2024-11-17T14:24:07.2744963Z</updatedAt>
+      <deviationsHash>B67AF53269C35EB52FCD63F0EFD642928FDF4D4DB319098E440F68F2970E7347</deviationsHash>
+      <fileHash>29F480FDCF1E0CD1D8B7A4909065F56091CD5A9B93138AFF97EBD88FE8FE402B</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#e71b0662-e29d-4db2-868b-8a12464b25d0</correlationId>
+      <path>Intent.Modules.Metadata.Security/Api/QueryModelStereotypeExtensions.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2024-11-17T14:24:07.2745569Z</updatedAt>
+      <deviationsHash>B67AF53269C35EB52FCD63F0EFD642928FDF4D4DB319098E440F68F2970E7347</deviationsHash>
+      <fileHash>29F480FDCF1E0CD1D8B7A4909065F56091CD5A9B93138AFF97EBD88FE8FE402B</fileHash>
+    </file>
+  </files>
+</deviationsLog>

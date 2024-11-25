@@ -14,14 +14,14 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
     {
         public static ApplicationTemplateDefaults GetApplicationTemplateDefaults(this ApplicationTemplateModel model)
         {
-            var stereotype = model.GetStereotype("e99df2da-e5dd-41c0-bd03-c642cec089a8");
+            var stereotype = model.GetStereotype(ApplicationTemplateDefaults.DefinitionId);
             return stereotype != null ? new ApplicationTemplateDefaults(stereotype) : null;
         }
 
 
         public static bool HasApplicationTemplateDefaults(this ApplicationTemplateModel model)
         {
-            return model.HasStereotype("e99df2da-e5dd-41c0-bd03-c642cec089a8");
+            return model.HasStereotype(ApplicationTemplateDefaults.DefinitionId);
         }
 
         public static bool TryGetApplicationTemplateDefaults(this ApplicationTemplateModel model, out ApplicationTemplateDefaults stereotype)
@@ -32,18 +32,18 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return false;
             }
 
-            stereotype = new ApplicationTemplateDefaults(model.GetStereotype("e99df2da-e5dd-41c0-bd03-c642cec089a8"));
+            stereotype = new ApplicationTemplateDefaults(model.GetStereotype(ApplicationTemplateDefaults.DefinitionId));
             return true;
         }
         public static ApplicationTemplateSettings GetApplicationTemplateSettings(this ApplicationTemplateModel model)
         {
-            var stereotype = model.GetStereotype("6e2b0cb0-3abd-4fce-b72e-d81c325a2632");
+            var stereotype = model.GetStereotype(ApplicationTemplateSettings.DefinitionId);
             return stereotype != null ? new ApplicationTemplateSettings(stereotype) : null;
         }
 
         public static bool HasApplicationTemplateSettings(this ApplicationTemplateModel model)
         {
-            return model.HasStereotype("6e2b0cb0-3abd-4fce-b72e-d81c325a2632");
+            return model.HasStereotype(ApplicationTemplateSettings.DefinitionId);
         }
 
         public static bool TryGetApplicationTemplateSettings(this ApplicationTemplateModel model, out ApplicationTemplateSettings stereotype)
@@ -54,7 +54,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return false;
             }
 
-            stereotype = new ApplicationTemplateSettings(model.GetStereotype("6e2b0cb0-3abd-4fce-b72e-d81c325a2632"));
+            stereotype = new ApplicationTemplateSettings(model.GetStereotype(ApplicationTemplateSettings.DefinitionId));
             return true;
         }
 
@@ -62,6 +62,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         public class ApplicationTemplateDefaults
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "e99df2da-e5dd-41c0-bd03-c642cec089a8";
 
             public ApplicationTemplateDefaults(IStereotype stereotype)
             {
@@ -106,6 +107,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         public class ApplicationTemplateSettings
         {
             private IStereotype _stereotype;
+            public const string DefinitionId = "6e2b0cb0-3abd-4fce-b72e-d81c325a2632";
 
             public ApplicationTemplateSettings(IStereotype stereotype)
             {

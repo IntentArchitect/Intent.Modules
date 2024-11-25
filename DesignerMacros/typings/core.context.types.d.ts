@@ -1,7 +1,9 @@
-declare let debugConsole: Console;
+// By having these in a separate file, it can still be referred to manually by the .api.d.ts file
+// but also be available to rest of the TypeScript project so that we can ensure the types match.
 
 type IApplication = MacroApi.Context.IApplication;
 type IElementApi = MacroApi.Context.IElementApi;
+type IMappableElementApi = MacroApi.Context.IMappableElementApi;
 type IAssociationApi = MacroApi.Context.IAssociationApi;
 type IPackageApi = MacroApi.Context.IPackageApi;
 type IDialogService = MacroApi.Context.IDialogService;
@@ -34,6 +36,15 @@ declare namespace MacroApi.Context {
         error(message: string): Promise<void>;
 
         /**
+         * Shows a confirmation dialog which returns a promise. An error will be thrown if the user clicks cancel.
+         *
+         * Must be called with await.
+         * @param message The message to show.
+         * @param title The confirmation dialog's title (default is "Confirmation").
+         */
+        confirm(message: string, title?: string): Promise<void>;
+
+        /**
          * Shows a dialog which allows the user to select from the provided options.
          *
          * Must be called with await.
@@ -53,35 +64,64 @@ declare namespace MacroApi.Context {
 
     interface IDynamicFormConfig {
         title: string;
+        /**
+         * Sets the dialog's minimum width (e.g. "500px" or "60%"). If not set, the dialog's width will default to "500px".
+         **/
+        minWidth?: string;
+        /**
+         * Sets the dialog's maximum width (e.g. "500px" or "60%"). If not set, the dialog's width will default to "60%".
+         **/
+        maxWidth?: string;
+        /**
+         * Sets the dialog's height (e.g. "500px" or "60%"). If not set, the dialog will autosize to its content.
+         **/
+        height?: string;
         fields: IDynamicFormFieldConfig[];
     }
 
     interface IDynamicFormFieldConfig {
         id: string;
-        fieldType: "text" | "select" | "checkbox"| "textarea";
+        fieldType: "text" | "select" | "checkbox" | "textarea" | "tree-view" | "tiles"
         label: string;
-        placeholder?: string;
-        hint?: string;
-        value?: string;
         isRequired?: boolean;
-        selectOptions?: IDynamicFormFieldSelectOption[];
+        placeholder?: string,
+        hint?: string,
+        value?: string | string[];
+        selectOptions?: IDynamicFormFieldSelectOption[]
+        treeViewOptions?: ISelectableTreeViewOptions
     }
 
     interface IDynamicFormFieldSelectOption {
-        id: string,
-        description: string
-    }
-
-    interface IDynamicFormFieldModel {
         id: string;
-        value?: any;
+        description: string;
+        icon?: IIcon;
     }
 
-    interface IGenericTypeParameter {
+    interface ISelectableTreeViewOptions {
+        rootId: string;
+        height?: string;
+        width?: string;
+        /**
+         * Default is false.
+         **/
+        isMultiSelect?: boolean;
+        submitFormTriggers?: ("double-click" | "enter")[]
+        selectableTypes: ISelectableTypeCriteria[];
+        resultFilter?: ((element: MacroApi.Context.IElementReadOnlyApi) => boolean)
+    }
+    interface ISelectableTypeCriteria {
+        specializationId: string;
+        isSelectable?: boolean | ((element: MacroApi.Context.IElementReadOnlyApi) => boolean);
+        autoExpand?: boolean;
+        autoSelectChildren?: boolean;
+    }
+
+    interface ITypeReferenceData {
         typeId: string;
         isNullable: boolean;
         isCollection: boolean;
-        genericTypeParameters?: IGenericTypeParameter[]
+        genericTypeId?: string;
+        genericTypeParameters?: ITypeReferenceData[]
     }
 
     interface ITypeReferenceReadOnly {
@@ -91,15 +131,17 @@ declare namespace MacroApi.Context {
         getType(): IElementReadOnlyApi;
         getIsNullable(): boolean;
         getIsCollection(): boolean;
+        getDisplayTextComponents(): IDisplayTextComponent[]
         isNavigable: boolean;
         isNullable: boolean;
         isCollection: boolean;
         display: string;
+        toModel(): ITypeReferenceData;
     }
 
     interface ITypeReference extends ITypeReferenceReadOnly {
         getType(): IElementApi;
-        setType(typeId: string, genericTypeParameters?: IGenericTypeParameter[]): void;
+        setType(typeIdOrModel: string | ITypeReferenceData, genericTypeParameters?: ITypeReferenceData[]): void;
         setIsNullable(value: boolean): void;
         setIsCollection(value: boolean): void;
     }
@@ -109,8 +151,10 @@ declare namespace MacroApi.Context {
         mappingTypeId: string;
         getSourceElement(): IElementApi;
         getTargetElement(): IElementApi;
-        addMappedEnd(mappingTypeNameOrId: string, sourcePath: string[], targetPath: string[], mappingExpression?: string): void;
+        addMappedEnd(mappingTypeNameOrId: string, sourcePath: string[], targetPath: string[]): void;
+        addMappingExpression(targetPath: string[], mappingExpression: string): void;
         getMappedEnds(): IElementToElementMappedEndApi[];
+        launchDialog(): Promise<void>;
     }
 
     interface IElementToElementMappedEndApi {
@@ -229,12 +273,17 @@ declare namespace MacroApi.Context {
         getValue(): string | boolean | number | IElementApi | IAssociationApi;
         setValue(value: any): void;
         getSelected(): IElementApi;
+        focus(): void;
     }
 
     interface IPackageReadOnlyApi {
         id: string;
         specialization: string;
         name: string;
+        /**
+         * Returns true if the package implements a trait identified by the provided traitId
+         */
+        hasTrait(traitId: string): boolean;
         getName(): string;
         getChildren(ofType: string): IElementReadOnlyApi[]
         hasStereotype(nameOrDefinitionId: string): boolean;
@@ -242,6 +291,7 @@ declare namespace MacroApi.Context {
         getStereotype(nameOrDefinitionId: string): IStereotypeReadOnlyApi;
         getMetadata(key: string): string;
         hasMetadata(key: string): boolean;
+        getParent(): IPackageReadOnlyApi;
         getPackage(): IPackageReadOnlyApi;
         /**
          * Expands this package in the designer model.
@@ -357,6 +407,12 @@ declare namespace MacroApi.Context {
         height: number;
     }
 
+    interface IIcon {
+        type: string;
+        source: string;
+    }
+
+
     interface IBackwardCompatibleElementApi extends IElementApi {
         name: string;
         comment: string;
@@ -383,6 +439,13 @@ declare namespace MacroApi.Context {
     }
 
     interface IElementReadOnlyApi {
+        /**
+         * Returns the display text components of the element as an array.
+         */
+        getDisplayTextComponents(): MacroApi.Context.IDisplayTextComponent[];
+        /**
+         * Returns the display name of the element.
+         */
         getDisplay(): string;
         /**
          * The human-readable specialization type (e.g. "Class", "Attribute", etc.)
@@ -397,6 +460,10 @@ declare namespace MacroApi.Context {
          */
         id: string;
         /**
+         * Returns true if the element implements a trait identified by the provided traitId
+         */
+        hasTrait(traitId: string): boolean;
+        /**
          * Returns the name of the element.
          */
         getName(): string;
@@ -408,6 +475,10 @@ declare namespace MacroApi.Context {
          * Returns the value of the element.
          */
         getValue(): string;
+        /**
+         * Returns icon of the element
+         */
+        getIcon(): IIcon;
         /**
          * Returns true if the element has been indicated 'Is Abstract'.
          */
@@ -425,6 +496,10 @@ declare namespace MacroApi.Context {
          */
         getGenericTypesDisplay(): string;
         /**
+         * Returns the order of this element in relation to it's adjacent elements under the same parent.
+         */
+        getOrder(): number;
+        /**
          * Returns true if the element is configured to have a typeReference.
          */
         hasType: boolean;
@@ -438,9 +513,22 @@ declare namespace MacroApi.Context {
          */
         getChildren(type?: string): IElementReadOnlyApi[];
         /**
+         * Finds and returns the first child element that matches the provided function. The function will search all
+         * children in the hierarchy if the provided searchHierarchy parameter is true.
+         */
+        getChild(matchFunction: ((child: MacroApi.Context.IElementReadOnlyApi) => boolean), searchHierarchy?: boolean): IElementApi;
+        /**
          * Returns this element's parent
          */
         getParent(type?: string): IElementReadOnlyApi;
+        /**
+         * Returns all parents for this element, ordered from the root to the immediate parent.
+         **/
+        getParents(type?: string | ((element: MacroApi.Context.IElementReadOnlyApi) => boolean)): IElementReadOnlyApi[];
+        /**
+         * Returns parents for this element from the matched root and includes this element itself, ordered from the root to the element.
+         **/
+        getPath(matchRoot?: (element: MacroApi.Context.IElementReadOnlyApi) => boolean): MacroApi.Context.IElementReadOnlyApi[];
         /**
          * Returns the owning package for this element.
          */
@@ -485,7 +573,7 @@ declare namespace MacroApi.Context {
         /**
          * Sets the name of the element.
          */
-        setName(value: string): void;
+        setName(value: string, ensureUnique: boolean): void;
         /**
          * Sets the comment of the element.
          */
@@ -548,6 +636,27 @@ declare namespace MacroApi.Context {
          */
         launchMappingDialog(mappingSettingsId?: string): Promise<void>
         /**
+         * Launches the advanced mapping dialog for the specified mappingSettingsId.
+         * 
+         * If the mappingTypeNameOrId is not provided and there is only one mapping type configured, then that mapping type will
+         * be used. Otherwise, an error will be thrown.
+         */
+        launchAdvancedMappingDialog(mappingSettingsId?: string): Promise<void>
+        /**
+         * Returns the mapping model for the supplied mapping type name or id. Returns null if the mapping does not exist.
+         * 
+         * If the mappingTypeNameOrId is not provided and there is only one mapping type configured, then that mapping type will
+         * be used. Otherwise, an error will be thrown.
+         */
+        getAdvancedMapping(mappingTypeNameOrId?: string): MacroApi.Context.IElementToElementMappingApi;
+        /**
+         * Creates a new element-to-element mapping and returns its API.
+         * 
+         * If the mappingTypeNameOrId is not provided and there is only one mapping type configured, then that mapping type will
+         * be used. Otherwise, an error will be thrown.
+         */
+        createAdvancedMapping(mappingTypeNameOrId?: string): MacroApi.Context.IElementToElementMappingApi
+        /**
          * Applies the stereotype with definition id of stereotypeDefinitionId to this element.
          */
         addStereotype(stereotypeDefinitionId: string): IStereotypeApi;
@@ -600,8 +709,10 @@ declare namespace MacroApi.Context {
          * Returns the stereotype that matches the specified name or definition identifier
          */
         getStereotype(nameOrDefinitionId: string): IStereotypeApi;
+    }
 
-        getAssociations(type?: string): IAssociationApi[];
+    interface IMappableElementApi extends IElementApi {
+        getMappedToElements(): MacroApi.Context.IMappableElementApi[];
     }
 
     interface IBackwardCompatibleIAssociationReadOnlyApi extends IAssociationReadOnlyApi {
@@ -610,6 +721,18 @@ declare namespace MacroApi.Context {
 
     interface IBackwardCompatibleIAssociationApi extends IAssociationApi {
         name: string;
+        /**
+         * DEPRECATED: Use getAdvancedMapping
+         */
+        getMapping(mappingTypeNameOrId?: string): IElementToElementMappingApi;
+        /**
+         * DEPRECATED: Use getAdvancedMappings
+         */
+        getMappings(): IElementToElementMappingApi[];
+        /**
+         * DEPRECATED: Use createAdvancedMapping
+         */
+        createMapping(sourceId?: string, targetId?: string, mappingTypeId?: string): IElementToElementMappingApi;
     }
 
     interface IAssociationReadOnlyApi {
@@ -618,13 +741,25 @@ declare namespace MacroApi.Context {
          */
         specialization: string;
         /**
+         * The specialization type identifier. This is a more robust way to check the type of the element.
+         */
+        specializationId: string;
+        /**
          * The unique identifier for the element.
          */
         id: string;
         /**
+         * Returns true if the element implements a trait identified by the provided traitId
+         */
+        hasTrait(traitId: string): boolean;
+        /**
          * Returns the name of the element.
          */
         getName(): string;
+        /**
+         * Returns the value of the element.
+         */
+        getValue(): string;
         /**
          * The typeReference property of the element
          */
@@ -637,6 +772,10 @@ declare namespace MacroApi.Context {
          * Returns true if this association end is the target-end of the association.
          */
         isTargetEnd(): boolean;
+        /**
+         * Returns the order of this association in relation to it's adjacent elements under the same parent.
+         */
+        getOrder(): number;
         /**
          * Returns the other-end of the association.
          */
@@ -661,6 +800,11 @@ declare namespace MacroApi.Context {
          * Returns the stereotype that matches the specified name or definition identifier
          */
         getStereotype(nameOrDefinitionId: string): IStereotypeReadOnlyApi;
+        /**
+         * Finds and returns the first child element that matches the provided function. The function will search all
+         * children in the hierarchy if the provided searchHierarchy parameter is true.
+         */
+        getChild(matchFunction: ((child: MacroApi.Context.IElementReadOnlyApi) => boolean), searchHierarchy?: boolean): IElementApi;
         /**
          * Returns all the child elements of this element. If a type argument is provided, the children will
          * be filtered to those that match on specialization. 
@@ -691,6 +835,10 @@ declare namespace MacroApi.Context {
          */
         setName(value: string): void;
         /**
+         * Sets the value of the element.
+         */
+        setValue(value: string): void;
+        /**
          * Returns the other-end of the association.
          */
         getOtherEnd(): IAssociationApi;
@@ -720,10 +868,20 @@ declare namespace MacroApi.Context {
          */
         hasMappings(mappingTypeNameOrId?: string): boolean;
         /**
-         * Returns the mapping model for the supplied mapping type name or id. Returns null if the mapping does not exist.
+         * Launches the advanced mapping dialog for the specified mappingSettingsId.
+         * 
+         * If the mappingTypeNameOrId is not provided and there is only one mapping type configured, then that mapping type will
+         * be used. Otherwise, an error will be thrown.
          */
-        getMapping(mappingTypeNameOrId: string): IElementToElementMappingApi;
-        getMappings(): IElementToElementMappingApi[];
+        launchAdvancedMappingDialog(mappingSettingsId?: string): Promise<void>
+        /**
+         * Returns the mapping model for the supplied mapping type name or id. Returns null if the mapping does not exist.
+         *          
+         * If the mappingTypeNameOrId is not provided and there is only one mapping type configured, then that mapping type will
+         * be used. Otherwise, an error will be thrown.
+         */
+        getAdvancedMapping(mappingTypeNameOrId?: string): IElementToElementMappingApi;
+        getAdvancedMappings(): IElementToElementMappingApi[];
         /**
          * Creates a new element-to-element mapping and returns its API. If the sourceId and/or targetId are not provided,
          * then the mapping will by default be between the sourceEnd and targetEnd elements of this association. 
@@ -731,7 +889,11 @@ declare namespace MacroApi.Context {
          * If the mappingTypeId is not provided and there is only one mapping type configured, then that mapping type will
          * be used. Otherwise, an error will be thrown.
          */
-        createMapping(sourceId?: string, targetId?: string, mappingTypeId?: string): IElementToElementMappingApi;
+        createAdvancedMapping(sourceId?: string, targetId?: string, mappingTypeId?: string): IElementToElementMappingApi;
+        /**
+         * Activates the editing mode for this association end.
+         */
+        enableEditing(): void;
         /**
          * Gets the metadata value for the specified key.
          */

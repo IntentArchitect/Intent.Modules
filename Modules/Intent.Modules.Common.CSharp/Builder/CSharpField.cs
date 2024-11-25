@@ -92,7 +92,7 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
 
     public CSharpField PrivateConstant(string value)
     {
-        AccessModifier = "public const ";
+        AccessModifier = "private const ";
         Assignment = value;
         return this;
     }

@@ -83,18 +83,36 @@ namespace Intent.Metadata.WebApi.Api
             return true;
         }
 
-        public static Secured GetSecured(this ServiceModel model)
+        // Kept for binary compatibility, stereotypes have been moved to Intent.Metadata.Security
+        [IntentIgnore]
+        public static Secured GetSecured(ServiceModel model)
         {
             var stereotype = model.GetStereotype(Secured.DefinitionId);
             return stereotype != null ? new Secured(stereotype) : null;
         }
 
-        public static bool HasSecured(this ServiceModel model)
+        // Kept for binary compatibility, stereotypes have been moved to Intent.Metadata.Security
+        [IntentIgnore]
+        public static IReadOnlyCollection<Secured> GetSecureds(ServiceModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes(Secured.DefinitionId)
+                .Select(stereotype => new Secured(stereotype))
+                .ToArray();
+
+            return stereotypes;
+        }
+
+        // Kept for binary compatibility, stereotypes have been moved to Intent.Metadata.Security
+        [IntentIgnore]
+        public static bool HasSecured(ServiceModel model)
         {
             return model.HasStereotype(Secured.DefinitionId);
         }
 
-        public static bool TryGetSecured(this ServiceModel model, out Secured stereotype)
+        // Kept for binary compatibility, stereotypes have been moved to Intent.Metadata.Security
+        [IntentIgnore]
+        public static bool TryGetSecured(ServiceModel model, out Secured stereotype)
         {
             if (!HasSecured(model))
             {
@@ -106,18 +124,24 @@ namespace Intent.Metadata.WebApi.Api
             return true;
         }
 
-        public static Unsecured GetUnsecured(this ServiceModel model)
+        // Kept for binary compatibility, stereotypes have been moved to Intent.Metadata.Security
+        [IntentIgnore]
+        public static Unsecured GetUnsecured(ServiceModel model)
         {
             var stereotype = model.GetStereotype(Unsecured.DefinitionId);
             return stereotype != null ? new Unsecured(stereotype) : null;
         }
 
-        public static bool HasUnsecured(this ServiceModel model)
+        // Kept for binary compatibility, stereotypes have been moved to Intent.Metadata.Security
+        [IntentIgnore]
+        public static bool HasUnsecured(ServiceModel model)
         {
             return model.HasStereotype(Unsecured.DefinitionId);
         }
 
-        public static bool TryGetUnsecured(this ServiceModel model, out Unsecured stereotype)
+        // Kept for binary compatibility, stereotypes have been moved to Intent.Metadata.Security
+        [IntentIgnore]
+        public static bool TryGetUnsecured(ServiceModel model, out Unsecured stereotype)
         {
             if (!HasUnsecured(model))
             {
@@ -192,6 +216,8 @@ namespace Intent.Metadata.WebApi.Api
 
         }
 
+        // Kept for binary compatibility, stereotypes have been moved to Intent.Metadata.Security
+        [IntentIgnore]
         public class Secured
         {
             private IStereotype _stereotype;
@@ -226,6 +252,8 @@ namespace Intent.Metadata.WebApi.Api
 
         }
 
+        // Kept for binary compatibility, stereotypes have been moved to Intent.Metadata.Security
+        [IntentIgnore]
         public class Unsecured
         {
             private IStereotype _stereotype;

@@ -115,9 +115,17 @@ public abstract class CSharpMetadataBase : ICSharpMetadataBase
 public abstract class CSharpMetadataBase<TCSharp> : CSharpMetadataBase
     where TCSharp : CSharpMetadataBase<TCSharp>
 {
+    /// <summary>
+    /// This is used to store the model for which the element represents
+    /// This is stored so that it can be used to make more context aware decisions
+    /// when generating the code
+    /// </summary>
+    public IMetadataModel RepresentedModel { get; private set; }
+
     public new TCSharp RepresentsModel(IMetadataModel model)
     {
         base.RepresentsModel(model);
+        RepresentedModel = model;
         return (TCSharp)this;
     }
 

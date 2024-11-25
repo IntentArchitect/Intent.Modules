@@ -36,9 +36,9 @@ namespace Intent.Modelers.Eventing.Api
 
         public string Id => _association.Id;
 
-        public MessagePublishAssocationSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new MessagePublishAssocationSourceEndModel(_association.SourceEnd, this));
+        public MessagePublishAssocationSourceEndModel SourceEnd => _sourceEnd ??= new MessagePublishAssocationSourceEndModel(_association.SourceEnd, this);
 
-        public MessagePublishAssocationTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new MessagePublishAssocationTargetEndModel(_association.TargetEnd, this));
+        public MessagePublishAssocationTargetEndModel TargetEnd => _targetEnd ??= new MessagePublishAssocationTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 

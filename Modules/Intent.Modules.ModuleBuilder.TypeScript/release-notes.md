@@ -1,3 +1,7 @@
+### Version 3.5.2
+
+- Improvement: The templates for the templates no longer use T4.
+
 ### Version 3.5.1
 
 - Fixed: Module and nuget package installation will target stable version.

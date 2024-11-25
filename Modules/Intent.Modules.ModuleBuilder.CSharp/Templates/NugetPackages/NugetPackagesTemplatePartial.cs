@@ -52,9 +52,9 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                             foreach (var version in package.PackageVersions.OrderByDescending(v => GetFrameworkMajorVerion(v)))
                             {
                                 var packageSettings = package.GetPackageSettings();
-                                var majorFrameworkVersion = GetFrameworkMajorVerion(version);
+                                var versionNo = GetFrameworkMajorVerion(version);
                                 versionInfo.AppendLine();
-                                versionInfo.Append($"                        ( >= {majorFrameworkVersion}, 0) => new PackageVersion(\"{version.Name}\"");
+                                versionInfo.Append($"                        ( >= {versionNo.Major}, {versionNo.Minor}) => new PackageVersion(\"{version.Name}\"");
                                 if (version.GetPackageVersionSettings()?.Locked() == true || packageSettings.Locked() == true)
                                 {
                                     versionInfo.Append(", locked: true");
@@ -107,15 +107,14 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                 });
         }
 
-        private int GetFrameworkMajorVerion(PackageVersionModel model)
+        private Version GetFrameworkMajorVerion(PackageVersionModel model)
         {
-            var result = 0;
             if (!string.IsNullOrEmpty(model.GetPackageVersionSettings()?.MinimumTargetFramework()?.Value))
             {
                 var frameworkVersion = NuGetFramework.Parse(model.GetPackageVersionSettings()?.MinimumTargetFramework().Value);
-                result = frameworkVersion.Version.Major;
+                return frameworkVersion.Version;
             }
-            return result;
+            return new Version(0, 0);
         }
 
         private string GetPackageConstant(NuGetPackageModel package)

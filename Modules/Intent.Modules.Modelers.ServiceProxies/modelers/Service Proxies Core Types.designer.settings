@@ -34,6 +34,8 @@
         <type type="Folder" order="0" />
         <type type="Service Proxy" order="1" />
       </typeOrder>
+      <childElementSettings />
+      <childElementExtensions />
     </packageSetting>
   </packageSettings>
   <packageExtensions>
@@ -118,6 +120,7 @@ else {
 </script>
         </macro>
       </macros>
+      <childElementExtensions />
     </packageExtension>
   </packageExtensions>
   <elementSettings />

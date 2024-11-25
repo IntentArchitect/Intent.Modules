@@ -25,11 +25,5 @@ namespace Intent.Metadata.WebApi.Api
             .Select(x => new ApiVersionModel(x))
             .SingleOrDefault();
 
-        [IntentManaged(Mode.Fully)]
-        public SecurityConfigurationModel SecurityConfiguration => UnderlyingPackage.ChildElements
-            .GetElementsOfType(SecurityConfigurationModel.SpecializationTypeId)
-            .Select(x => new SecurityConfigurationModel(x))
-            .SingleOrDefault();
-
     }
 }

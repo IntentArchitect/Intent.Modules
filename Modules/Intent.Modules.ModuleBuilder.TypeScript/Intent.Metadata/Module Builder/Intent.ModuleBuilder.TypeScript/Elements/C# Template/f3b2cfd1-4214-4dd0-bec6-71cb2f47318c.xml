@@ -38,7 +38,7 @@
       <definitionPackageName>Intent.ModuleBuilder.CSharp</definitionPackageName>
       <definitionPackageId>f2bfb0f7-d304-466f-b923-021d4016b48d</definitionPackageId>
       <properties>
-        <property name="3b9e1f1b-e253-4c04-89aa-30fef0a9bfa8" display="Templating Method" value="T4 Template" isActive="true" />
+        <property name="3b9e1f1b-e253-4c04-89aa-30fef0a9bfa8" display="Templating Method" value="C# File Builder" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

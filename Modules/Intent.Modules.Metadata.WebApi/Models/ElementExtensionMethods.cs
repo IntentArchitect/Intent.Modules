@@ -1,5 +1,6 @@
 ﻿#nullable enable
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Metadata.WebApi.Api;
@@ -116,7 +117,7 @@ public static class ElementExtensionMethods
         return true;
     }
 
-    public static bool TryGetApiVersion(this IElement element, out ApiVersion? apiVersion)
+    public static bool TryGetApiVersion(this IElement element, [NotNullWhen(true)] out ApiVersion? apiVersion)
     {
         var stereotype = element.Stereotypes.SingleOrDefault(x => x.Name == "Api Version Settings");
         if (stereotype == null)
@@ -125,7 +126,7 @@ public static class ElementExtensionMethods
             return false;
         }
 
-        var applicableVersionElements = stereotype.GetProperty<IElement[]>("Applicable Versions") 
+        var applicableVersionElements = stereotype.GetProperty<IElement[]>("Applicable Versions")
                                         ?? Array.Empty<IElement>();
         var versions = applicableVersionElements
             .Select(s => s.AsVersionModel())

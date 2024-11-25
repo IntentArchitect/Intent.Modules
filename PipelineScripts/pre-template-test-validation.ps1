@@ -2,6 +2,7 @@
 
 param(
     [string]$buildArtifactStagingDirectory,
+    [string]$modulesIntentSolutionRelativePath,
     [string]$testsIntentSolutionRelativePath
 )
 
@@ -51,16 +52,23 @@ $moduleFileNames = Get-ChildItem "$buildArtifactStagingDirectory/*.imod" | % {
 $curLocation = Get-Location;
 Write-Host "`$curLocation = $curLocation"
 
-$testSln = [xml] (Get-Content "./$testsIntentSolutionRelativePath" -Encoding UTF8)
+$moduleSlnDir = [System.IO.Path]::GetDirectoryName($modulesIntentSolutionRelativePath)
+Write-Host "`$moduleSlnDir = $moduleSlnDir"
+
+$moduleRepoPath = [System.IO.Path]::Combine($curLocation, $moduleSlnDir, "intent.repositories.config")
+Write-Host "`$moduleRepoPath = $moduleRepoPath"
+$repoConfigContent | Set-Content $moduleRepoPath -Encoding UTF8
+
 $testSlnDir = [System.IO.Path]::GetDirectoryName($testsIntentSolutionRelativePath)
 Write-Host "`$testSlnDir = $testSlnDir"
 
-$repoPath = [System.IO.Path]::Combine($curLocation, $testSlnDir, "intent.repositories.config")
-Write-Host "`$repoPath = $repoPath"
-$repoConfigContent | Set-Content $repoPath -Encoding UTF8
+$testsRepoPath = [System.IO.Path]::Combine($curLocation, $testSlnDir, "intent.repositories.config")
+Write-Host "`$testsRepoPath = $testsRepoPath"
+$repoConfigContent | Set-Content $testsRepoPath -Encoding UTF8
 
 $discrepanciesFound = $false
 
+$testSln = [xml] (Get-Content "./$testsIntentSolutionRelativePath" -Encoding UTF8)
 $testSln.solution.applications.application | % {
     $appRelPath = [System.IO.Path]::Combine($curLocation, $testSlnDir, $_.relativePath)
     $basePath = [System.IO.Path]::GetDirectoryName($appRelPath)

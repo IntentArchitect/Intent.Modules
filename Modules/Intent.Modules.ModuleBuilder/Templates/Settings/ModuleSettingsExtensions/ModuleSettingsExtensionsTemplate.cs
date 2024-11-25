@@ -23,7 +23,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+    #line 1 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
     public partial class ModuleSettingsExtensionsTemplate : CSharpTemplateBase<Intent.ModuleBuilder.Api.IntentModuleModel>
     {
@@ -37,28 +37,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
                     "dules.Common.Templates;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnames" +
                     "pace ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 18 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 20 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
   if (Model.SettingsGroups.Any()) { 
             
             #line default
             #line hidden
             this.Write("    public static class ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 21 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 22 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
         foreach(var settingsGroup in Model.SettingsGroups) { 
             
@@ -66,55 +66,55 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("\r\n        public static ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 25 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsGroup.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" Get");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 25 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsGroup.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(this IApplicationSettingsProvider settings)\r\n        {\r\n            return new ");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 27 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsGroup.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(settings.GetGroup(\"");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 27 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsGroup.Id));
             
             #line default
             #line hidden
             this.Write("\"));\r\n        }\r\n");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 29 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("    }\r\n");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 31 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
   } 
             
             #line default
             #line hidden
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 32 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
   foreach(var settingsGroup in Model.SettingsGroups) { 
             
             #line default
             #line hidden
             this.Write("\r\n    public class ");
             
-            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 34 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsGroup.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
@@ -122,7 +122,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write(" : IGroupSettings\r\n    {\r\n        private readonly IGroupSettings _groupSettings;" +
                     "\r\n\r\n        public ");
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 38 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsGroup.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
@@ -146,7 +146,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
         }
 ");
             
-            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 55 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
         foreach(var settingsField in settingsGroup.Fields)
         {
@@ -161,21 +161,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("\r\n        public string ");
             
-            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 65 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("() => _groupSettings.GetSetting(\"");
             
-            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 65 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Id));
             
             #line default
             #line hidden
             this.Write("\")?.Value;\r\n");
             
-            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 66 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
                     break;
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Checkbox:
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Switch:
@@ -185,21 +185,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("\r\n        public bool ");
             
-            #line 71 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 71 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("() => bool.TryParse(_groupSettings.GetSetting(\"");
             
-            #line 71 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 71 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Id));
             
             #line default
             #line hidden
             this.Write("\")?.Value.ToPascalCase(), out var result) && result;\r\n");
             
-            #line 72 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 72 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
                     break;
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Select:
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.MultiSelect:
@@ -210,91 +210,95 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line default
             #line hidden
             
-            #line 78 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 78 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
                   if (settingsField.GetFieldConfiguration().ControlType().IsSelect()) { 
             
             #line default
             #line hidden
             this.Write("        public ");
             
-            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 79 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsClassName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 79 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("() => new ");
             
-            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 79 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsClassName));
             
             #line default
             #line hidden
             this.Write("(_groupSettings.GetSetting(\"");
             
-            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 79 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Id));
             
             #line default
             #line hidden
             this.Write("\")?.Value);\r\n");
             
-            #line 80 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
-                  } else if (settingsField.GetFieldConfiguration().ControlType().IsMultiSelect()) { 
+            #line 80 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+                  } else if (settingsField.GetFieldConfiguration().ControlType().IsMultiSelect())
+                    {
+                        AddUsing("System.Linq");
+                        AddUsing("System.Text.Json");
+
             
             #line default
             #line hidden
             this.Write("        public ");
             
-            #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 85 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsClassName));
             
             #line default
             #line hidden
             this.Write("[] ");
             
-            #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 85 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("() => JsonSerializer.Deserialize<string[]>(_groupSettings.GetSetting(\"");
             
-            #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 85 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Id));
             
             #line default
             #line hidden
             this.Write("\")?.Value ?? \"[]\")?.Select(x => new ");
             
-            #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 85 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsClassName));
             
             #line default
             #line hidden
             this.Write("(x)).ToArray();\r\n");
             
-            #line 82 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 86 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
                   } 
             
             #line default
             #line hidden
             this.Write("\r\n        public class ");
             
-            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 88 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsClassName));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n            public readonly string Value;\r\n\r\n            public ");
             
-            #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 92 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsClassName));
             
             #line default
@@ -302,7 +306,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write("(string value)\r\n            {\r\n                Value = value;\r\n            }\r\n\r\n " +
                     "           public ");
             
-            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 97 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsEnumName));
             
             #line default
@@ -310,7 +314,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write(" AsEnum()\r\n            {\r\n                return Value switch\r\n                {\r" +
                     "\n");
             
-            #line 97 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 101 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
                     foreach (var option in settingsField.Options)
                     {
@@ -320,28 +324,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("                    \"");
             
-            #line 101 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 105 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value : option.Name));
             
             #line default
             #line hidden
             this.Write("\" => ");
             
-            #line 101 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 105 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsEnumName));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 101 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 105 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(",\r\n");
             
-            #line 102 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 106 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
                     }
 
@@ -351,7 +355,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write("                    _ => throw new ArgumentOutOfRangeException(nameof(Value), $\"{" +
                     "Value} is out of range\")\r\n                };\r\n            }\r\n");
             
-            #line 108 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 112 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
                     foreach (var option in settingsField.Options)
                     {
@@ -361,21 +365,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("\r\n            public bool Is");
             
-            #line 113 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 117 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("()\r\n            {\r\n                return Value == \"");
             
-            #line 115 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 119 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value : option.Name));
             
             #line default
             #line hidden
             this.Write("\";\r\n            }\r\n");
             
-            #line 117 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 121 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
                     }
 
@@ -384,14 +388,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("        }\r\n\r\n        public enum ");
             
-            #line 122 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 126 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsEnumName));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n");
             
-            #line 124 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 128 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
                     foreach (var option in settingsField.Options)
                     {
@@ -401,14 +405,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("            ");
             
-            #line 128 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 132 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(",\r\n");
             
-            #line 129 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 133 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
                     }
 
@@ -417,7 +421,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("        }\r\n");
             
-            #line 133 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 137 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -426,34 +430,34 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line default
             #line hidden
             
-            #line 137 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 141 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("    }\r\n");
             
-            #line 139 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 143 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
   } 
             
             #line default
             #line hidden
             
-            #line 140 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 144 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
   foreach(var settingsExtension in Model.SettingsExtensions) { 
             
             #line default
             #line hidden
             this.Write("\r\n    public static class ");
             
-            #line 142 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 146 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsExtension.TypeReference.Element.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("Extensions\r\n    {\r\n");
             
-            #line 144 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 148 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
         foreach(var settingsField in settingsExtension.Fields)
         {
@@ -468,28 +472,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("\r\n        public static string ");
             
-            #line 154 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 158 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(this ");
             
-            #line 154 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 158 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsExtension.TypeReference.Element.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" groupSettings) => groupSettings.GetSetting(\"");
             
-            #line 154 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 158 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Id));
             
             #line default
             #line hidden
             this.Write("\")?.Value;\r\n");
             
-            #line 155 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 159 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
                     break;
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Checkbox:
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Switch:
@@ -499,28 +503,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("\r\n        public static bool ");
             
-            #line 160 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 164 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(this ");
             
-            #line 160 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 164 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsExtension.TypeReference.Element.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" groupSettings) => bool.TryParse(groupSettings.GetSetting(\"");
             
-            #line 160 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 164 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Id));
             
             #line default
             #line hidden
             this.Write("\")?.Value.ToPascalCase(), out var result) && result;\r\n");
             
-            #line 161 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 165 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
                     break;
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Select:
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.MultiSelect:
@@ -531,70 +535,74 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line default
             #line hidden
             
-            #line 167 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 171 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
                   if (settingsField.GetFieldConfiguration().ControlType().IsSelect()) { 
             
             #line default
             #line hidden
             this.Write("        public static ");
             
-            #line 168 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 172 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsClassName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 168 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 172 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(this ");
             
-            #line 168 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 172 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsExtension.TypeReference.Element.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" groupSettings) => new ");
             
-            #line 168 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 172 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsClassName));
             
             #line default
             #line hidden
             this.Write("(groupSettings.GetSetting(\"");
             
-            #line 168 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 172 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Id));
             
             #line default
             #line hidden
             this.Write("\")?.Value);\r\n");
             
-            #line 169 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
-                  } else if (settingsField.GetFieldConfiguration().ControlType().IsMultiSelect()) { 
+            #line 173 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+                  } else if (settingsField.GetFieldConfiguration().ControlType().IsMultiSelect())
+                    {
+                        AddUsing("System.Linq");
+                        AddUsing("System.Text.Json");
+
             
             #line default
             #line hidden
             this.Write("        public static ");
             
-            #line 170 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 178 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsClassName));
             
             #line default
             #line hidden
             this.Write("[] ");
             
-            #line 170 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 178 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(this ");
             
-            #line 170 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 178 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsExtension.TypeReference.Element.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
@@ -602,35 +610,35 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write(" groupSettings) => JsonSerializer.Deserialize<string[]>(groupSettings.GetSetting(" +
                     "\"");
             
-            #line 170 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 178 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(settingsField.Id));
             
             #line default
             #line hidden
             this.Write("\")?.Value ?? \"[]\")?.Select(x => new ");
             
-            #line 170 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 178 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsClassName));
             
             #line default
             #line hidden
             this.Write("(x)).ToArray();\r\n");
             
-            #line 171 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 179 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
                   } 
             
             #line default
             #line hidden
             this.Write("\r\n        public class ");
             
-            #line 173 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 181 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsClassName));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n            public readonly string Value;\r\n\r\n            public ");
             
-            #line 177 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 185 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsClassName));
             
             #line default
@@ -638,7 +646,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write("(string value)\r\n            {\r\n                Value = value;\r\n            }\r\n\r\n " +
                     "           public ");
             
-            #line 182 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 190 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsEnumName));
             
             #line default
@@ -646,7 +654,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write(" AsEnum()\r\n            {\r\n                return Value switch\r\n                {\r" +
                     "\n");
             
-            #line 186 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 194 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
                     foreach (var option in settingsField.Options)
                     {
@@ -656,28 +664,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("                    \"");
             
-            #line 190 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 198 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value : option.Name));
             
             #line default
             #line hidden
             this.Write("\" => ");
             
-            #line 190 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 198 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsEnumName));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 190 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 198 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(",\r\n");
             
-            #line 191 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 199 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
                     }
 
@@ -687,7 +695,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write("                    _ => throw new ArgumentOutOfRangeException(nameof(Value), $\"{" +
                     "Value} is out of range\")\r\n                };\r\n            }\r\n");
             
-            #line 197 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 205 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
                     foreach (var option in settingsField.Options)
                     {
@@ -697,21 +705,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("\r\n            public bool Is");
             
-            #line 202 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 210 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("()\r\n            {\r\n                return Value == \"");
             
-            #line 204 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 212 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value : option.Name));
             
             #line default
             #line hidden
             this.Write("\";\r\n            }\r\n");
             
-            #line 206 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 214 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
                     }
 
@@ -720,14 +728,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("        }\r\n\r\n        public enum ");
             
-            #line 211 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 219 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(optionsEnumName));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n");
             
-            #line 213 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 221 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
                     foreach (var option in settingsField.Options)
                     {
@@ -737,14 +745,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("            ");
             
-            #line 217 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 225 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(",\r\n");
             
-            #line 218 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 226 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
 
                     }
 
@@ -753,7 +761,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line hidden
             this.Write("        }\r\n");
             
-            #line 222 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 230 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -762,14 +770,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             #line default
             #line hidden
             
-            #line 226 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 234 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("    }\r\n");
             
-            #line 228 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
+            #line 236 "D:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
   } 
             
             #line default

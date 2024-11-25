@@ -59,11 +59,11 @@ namespace Intent.ModuleBuilder.Api
             return new DiagramSettings()
             {
                 ContextMenuOptions = MenuOptions?.ToPersistable(),
-                CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistableOld()).ToList(),
-                ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
+                CreationOptions = MenuOptions?.ElementCreations.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistableOld()).ToList(),
+                ScriptOptions = MenuOptions?.RunScriptOptions.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
                 AddNewElementsTo = DiagramAddNewElementsTo.Package,
-                ElementVisualSettings = ElementVisualSettings.Select(x => x.ToPersistable()).ToList(),
-                AssociationVisualSettings = AssociationVisualSettings.Select(x => x.ToPersistable()).ToList()
+                ElementVisualSettings = ElementVisualSettings.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                AssociationVisualSettings = AssociationVisualSettings.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList()
             };
         }
 

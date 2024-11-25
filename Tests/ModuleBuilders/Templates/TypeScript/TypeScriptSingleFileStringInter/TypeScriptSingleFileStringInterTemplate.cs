@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation", Version = "1.0")]
 
 namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileStringInter
@@ -11,7 +10,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileStringInter
     [IntentManaged(Mode.Fully, Body = Mode.Merge)]
     public partial class TypeScriptSingleFileStringInterTemplate
     {
-        [IntentManaged(Mode.Fully, Body = Mode.Fully)]
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             return $@"export class {ClassName} {{{string.Join(Environment.NewLine, GetMembers())}
@@ -19,7 +18,6 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileStringInter
 ";
         }
 
-        [IntentManaged(Mode.Ignore)]
         private IEnumerable<string> GetMembers()
         {
             var members = new List<string>();
@@ -28,6 +26,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileStringInter
             members.Add($@"
     constructor() {{
     }}");
+
             return members;
         }
     }

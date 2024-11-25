@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Metadata.Security</id>
+  <version>1.0.0-pre.0</version>
+  <supportedClientVersions>[4.3.0-a,5.0.0)</supportedClientVersions>
+  <summary>Support for describing security on services.</summary>
+  <description>Support for describing security on services.</description>
+  <authors>Intent Architect</authors>
+  <iconUrl>data:image/png;base64,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</iconUrl>
+  <releaseNotes>release-notes.md</releaseNotes>
+  <tags>security</tags>
+  <templates></templates>
+  <decorators></decorators>
+  <factoryExtensions></factoryExtensions>
+  <moduleSettings></moduleSettings>
+  <dependencies>
+    <dependency id="Intent.Common" version="3.7.2-pre.0" />
+    <dependency id="Intent.Common.Types" version="3.4.0" />
+    <dependency id="Intent.Modelers.Services" version="3.8.2" />
+    <dependency id="Intent.Modelers.Services.CQRS" version="5.0.1" />
+  </dependencies>
+  <interoperability>
+    <detect id="Intent.Metadata.WebApi">
+      <install>
+        <package id="Intent.Metadata.WebApi" version="4.6.4-pre.0" />
+      </install>
+    </detect>
+  </interoperability>
+  <files>
+    <file src="$outDir$/$id$.dll" />
+    <file src="$outDir$/$id$.pdb" />
+  </files>
+  <tags />
+  <moduleSettingsExtensions />
+  <metadata>
+    <install target="Services" src="modelers/Security Extensions.designer.settings" externalReference="cd3ea7d2-e3c2-4ce3-98e1-39b4dfe87d10" />
+    <install target="Services" src="Intent.Metadata/Module Builder/Intent.Metadata.Security/Intent.Metadata.Security.pkg.config" externalReference="a6fa1088-0064-43e3-a7fc-36c97b2b9285" />
+  </metadata>
+</package>

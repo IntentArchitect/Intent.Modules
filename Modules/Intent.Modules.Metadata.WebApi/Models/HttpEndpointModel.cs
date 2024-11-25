@@ -1,8 +1,9 @@
 ﻿#nullable enable
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Exceptions;
 using Intent.Metadata.Models;
+using Intent.Modules.Metadata.Security.Models;
 
 namespace Intent.Modules.Metadata.WebApi.Models;
 
@@ -15,7 +16,8 @@ internal class HttpEndpointModel : IHttpEndpointModel
         string? baseRoute,
         string? subRoute,
         HttpMediaType? mediaType,
-        bool requiresAuthorization,
+        IReadOnlyCollection<ISecurityModel> securityModels,
+        bool securedByDefault,
         bool allowAnonymous,
         IElement internalElement,
         IReadOnlyCollection<IHttpEndpointInputModel> inputs)
@@ -23,10 +25,7 @@ internal class HttpEndpointModel : IHttpEndpointModel
         if (verb is not (HttpVerb.Patch or HttpVerb.Post or HttpVerb.Put) &&
             inputs.Any(x => x.Source == HttpInputSource.FromBody))
         {
-            throw new InvalidOperationException(
-                $"One ore more inputs have a source of body for an endpoint with verb " +
-                $"{verb.ToString().ToUpperInvariant()}. Source element: " +
-                $"\"{internalElement.Name}\" [{internalElement.Id}]");
+            throw new ElementException(internalElement, $"Cannot set an HTTP endpoint's source to \"body\" when it has a verb of {verb.ToString().ToUpperInvariant()}");
         }
 
         Name = name;
@@ -35,10 +34,11 @@ internal class HttpEndpointModel : IHttpEndpointModel
         BaseRoute = baseRoute;
         SubRoute = subRoute;
         MediaType = mediaType;
-        RequiresAuthorization = requiresAuthorization;
         AllowAnonymous = allowAnonymous;
         InternalElement = internalElement;
         Inputs = inputs;
+        SecuredByDefault = securedByDefault;
+        SecurityModels = securityModels;
     }
 
     public string Id => InternalElement.Id;
@@ -49,7 +49,8 @@ internal class HttpEndpointModel : IHttpEndpointModel
     public string? BaseRoute { get; }
     public string? SubRoute { get; }
     public HttpMediaType? MediaType { get; }
-    public bool RequiresAuthorization { get; }
+    public bool SecuredByDefault { get; }
+    public IReadOnlyCollection<ISecurityModel> SecurityModels { get; }
     public bool AllowAnonymous { get; }
     public IElement InternalElement { get; }
     public IReadOnlyCollection<IHttpEndpointInputModel> Inputs { get; }

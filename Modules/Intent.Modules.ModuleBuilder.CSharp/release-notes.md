@@ -1,3 +1,7 @@
+### Version 3.7.3
+
+- Improvement: NuGet packages better support for Minor versions.
+
 ### Version 3.7.2
 
 - Improvement: Added `.NETStandard,Version=v2.1` as a minimum target framework for NuGet modeling.

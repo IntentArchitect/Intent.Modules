@@ -45,19 +45,24 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
 
             var packageMetadataResource = await sourceRepository.GetResourceAsync<PackageMetadataResource>();
             var searchMetadata = await packageMetadataResource.GetMetadataAsync(packageName, includePrerelease: false, includeUnlisted: false, new SourceCacheContext(), NullLogger.Instance, CancellationToken.None);
-
+            
+            if (!searchMetadata.Any())
+            {
+                //Try pre-releases
+                searchMetadata = await packageMetadataResource.GetMetadataAsync(packageName, includePrerelease: true, includeUnlisted: false, new SourceCacheContext(), NullLogger.Instance, CancellationToken.None);
+            }
 
             var versionsForFrameworks = GetLatestVersionPerFramework(searchMetadata, _frameworks);
 
             if (!versionsForFrameworks.Any())
             {
-                versionsForFrameworks = GetLatestVersionPerFramework(searchMetadata, _fallBackFrameworks);
+                versionsForFrameworks = GetLatestVersionPerFramework(searchMetadata, _fallBackFrameworks, forceOne: true);
             }
 
             return versionsForFrameworks;
         }
 
-        private static List<NugetVersionInfo> GetLatestVersionPerFramework(IEnumerable<IPackageSearchMetadata>? searchMetadata, List<NuGetFramework> frameworks)
+        private static List<NugetVersionInfo> GetLatestVersionPerFramework(IEnumerable<IPackageSearchMetadata>? searchMetadata, List<NuGetFramework> frameworks, bool forceOne = false)
         {
             var result = new List<NugetVersionInfo>();
             foreach (var framework in frameworks)
@@ -73,8 +78,42 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
                     result.Add(new NugetVersionInfo(framework, latestPackage.Identity.Version, dependencies.Packages.Select(p => new NugetDependencyInfo(p.Id, p.VersionRange)).ToList()));
                 }
             }
+            if (forceOne && result.Count == 0)
+            {
+                var latestPackage = searchMetadata?
+                    .OrderByDescending(p => p.Identity.Version)
+                    .FirstOrDefault();
+                result.Add(new NugetVersionInfo(_fallBackFrameworks[0], latestPackage.Identity.Version, new List<NugetDependencyInfo>()));
+            }
+
+            result = result.OrderBy(n => n.FrameworkVersion.Version).ToList();
+            //This is to deal with where newer version of the package infer working for example
+            // MediatR 12.4.1 is configured for 6.0 and 2.0
+            // MediatR 11.1.1 is configured for 2.1
+            // if you are running 2.1 you can use 12.4.1 because it works for 2.0
+            // Step 2: Remove entries where a higher framework has a lower version than a lower framework
+            int i = 0;
+            while (i < result.Count - 1)
+            {
+                var current = result[i];
+                var next = result[i + 1];
+
+                // Compare only if the previous framework is lower than the current framework
+                if (current.FrameworkVersion.Version < next.FrameworkVersion.Version &&
+                    current.PackageVersion.Version > next.PackageVersion.Version)
+                {
+                    result.RemoveAt(i + 1);
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            //Latest Framework first
+            result.Reverse();
             return result;
         }
+
 
         internal class NugetVersionInfo
         {

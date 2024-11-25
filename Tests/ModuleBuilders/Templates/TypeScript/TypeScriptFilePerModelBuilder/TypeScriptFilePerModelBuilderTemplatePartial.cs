@@ -10,7 +10,6 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelBuilder
@@ -22,7 +21,9 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelBuilder
         public const string TemplateId = "ModuleBuilders.TypeScript.TypeScriptFilePerModelBuilder";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TypeScriptFilePerModelBuilderTemplate(IOutputTarget outputTarget, Intent.Modelers.Domain.Api.ClassModel model) : base(TemplateId, outputTarget, model)
+        public TypeScriptFilePerModelBuilderTemplate(IOutputTarget outputTarget,
+            Intent.Modelers.Domain.Api.ClassModel model)
+             : base(TemplateId, outputTarget, model)
         {
             TypescriptFile = new TypescriptFile(this.GetFolderPath())
                 .AddClass($"{Model.Name}", @class =>

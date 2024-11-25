@@ -22,12 +22,14 @@ namespace convertToAdvancedMapping {
         let entity = target.getParent("Class") ?? target;
         if (command.getName().startsWith("Create")) {
             let action = createAssociation("Create Entity Action", command.id, target.id);
-            let mapping = action.createMapping(command.id, entity.id);
+            // JPS & GB: Updated the createMapping call to use createAdvancedMapping. If you are debugging
+            // and this is not working, chat to JPS or GB
+            let mapping = action.createAdvancedMapping(command.id, entity.id);
             mapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
             mapContract("Data Mapping", command, command, [command.id], [target.id], mapping);
         } else if (command.getName().startsWith("Delete")) {
             let action = createAssociation("Delete Entity Action", command.id, entity.id);
-            let mapping = action.createMapping(command.id, entity.id);
+            let mapping = action.createAdvancedMapping(command.id, entity.id);
 
             // Query Entity Mapping
             addFilterMapping(mapping, command, entity);
@@ -36,10 +38,10 @@ namespace convertToAdvancedMapping {
             let action = createAssociation("Update Entity Action", command.id, target.id);
 
             // Query Entity Mapping
-            let queryMapping = action.createMapping(command.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            let queryMapping = action.createAdvancedMapping(command.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
             addFilterMapping(queryMapping, command, entity);
             // Update Entity Mapping
-            let updateMapping = action.createMapping(command.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
+            let updateMapping = action.createAdvancedMapping(command.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
             if (target.id != entity.id) {
                 updateMapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
             }
@@ -81,7 +83,7 @@ namespace convertToAdvancedMapping {
         if (query.typeReference.getIsCollection()) {
             action.typeReference.setIsCollection(true);
         }
-        let mapping = action.createMapping(query.id, entity.id);
+        let mapping = action.createAdvancedMapping(query.id, entity.id);
         mapContract("Filter Mapping", query, query, [query.id], [entity.id], mapping);
     }
 

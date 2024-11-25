@@ -1,3 +1,7 @@
+### Version 3.6.1
+
+- Improvement: Updated module icon
+
 ### Version 3.6.0
 
 - Improvement: Upgraded module to use Intent Architect 4.3 metadata improvements.

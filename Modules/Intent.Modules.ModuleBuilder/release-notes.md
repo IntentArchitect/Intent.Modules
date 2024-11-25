@@ -3,6 +3,10 @@
 - Feature: Support for "suggestions" scripts that will be made available to users as part of Intent Architect 4.4.x and later.
 - Improvement: Mappings and Script context menu options can now be configured to trigger on double-click of the element.
 
+### Version 3.12.1
+
+- Fixed: When using a multi-select setting type using directives were missing for `System.Linq` and `System.Text.Json`.
+
 ### Version 3.12.0
 
 - Feature: Support for adding documentation to the module which will generate a `documentation.json` file. This file can be consumed by the new Documentation Dialog feature in Intent Architect 4.4.x and later.

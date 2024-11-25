@@ -2,6 +2,10 @@
 
 - Removes the `Eventing` designer from the application. All eventing related design work must now happen in the `Services` designer.
 
+### Version 5.1.1
+
+- Improvement: Updated module icon
+
 ### Version 5.1.0
 
 - Improvement: Updated Module from .NET Core 3.5 to .NET 8.
