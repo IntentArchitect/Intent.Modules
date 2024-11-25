@@ -295,7 +295,7 @@ const metadataKeyName = "initialized";
             label: "Select Elements",
             fieldType: "tree-view",
             treeViewOptions: { 
-                rootId: getPackages()[0].id,
+                rootId: getCurrentDiagram().getOwner().getPackage().id,
                 isMultiSelect: true,
                 submitFormTriggers: ["double-click", "enter"],
                 hasFilter: true,
@@ -368,7 +368,7 @@ getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePo
             label: "Select Elements",
             fieldType: "tree-view",
             treeViewOptions: { 
-                rootId: getPackages()[0].id,
+                rootId: getCurrentDiagram().getOwner().getPackage().id,
                 isMultiSelect: true,
                 submitFormTriggers: ["double-click", "enter"],
                 hasFilter: true,
