@@ -208,5 +208,13 @@
       <ProjectRelativeFilePath>release-notes.md</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
+    <FileLog>
+      <ProjectId>4c8e17cd-36b5-4a07-a3c9-52efeb87b96d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.DocumentationTemplate#7e246060-b3bf-4183-a03c-c4119d713cdc</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>resources/documentation.json</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>documentation.json</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
   </FileLogs>
 </outputLog>

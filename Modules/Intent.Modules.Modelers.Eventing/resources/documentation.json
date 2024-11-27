@@ -1,0 +1,108 @@
+{
+  "topics": [
+      {
+          "title": "Create an Integration Command",
+          "description": "How to create an Integration Command",
+          "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDZlY2M4NGYyLTgwN2QtNGJiNS05YTkxLTIxNTk3MTE4ZGNjYiIgeDE9IjI0LjMiIHkxPSI0Ni43IiB4Mj0iMjQuMyIgeTI9IjE1LjYiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNikiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZWU3NTIzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Y1YWQyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTI2ZWNjODRmMi04MDdkLTRiYjUtOWE5MS0yMTU5NzExOGRjY2IiIHgxPSIyNC4zIiB5MT0iNDgiIHgyPSIyNC4zIiB5Mj0iMTQuMiIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC02KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlZTc1MjMiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjVhZDI0Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMzZlY2M4NGYyLTgwN2QtNGJiNS05YTkxLTIxNTk3MTE4ZGNjYiIgeDE9Ii02MDguNyIgeTE9Ii0xMTA2IiB4Mj0iLTYyMi4yIiB5Mj0iLTExMDYiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEwNjMuNCAtNTc2LjYpIHJvdGF0ZSgtOTApIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZlZTA0ZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmOTlmMjEiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC43LjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAxLjIuMCBCdWlsZCAxNTQpICAtLT4KICA8Zz4KICAgIDxnIGlkPSJFbnZlbG9wZS12NCI+CiAgICAgIDxnIGlkPSJfeDNDX0VudmVsb3BlX3gzRV8iPgogICAgICAgIDxwb2x5Z29uIGlkPSJfeDNDX0ZvbGRfeDNFXyIgcG9pbnRzPSIyMC4xIDI3LjMgMjQuMyAzMC44IDI4LjQgMjcuMyAzNi4xIDMzLjcgMzkuOSAzMy43IDM5LjkgMzIuMyAzMS4xIDI1LjEgMzkuOSAxNy44IDM5LjkgMTYuNCAzNi4xIDE2LjQgMjQuMyAyNi4zIDEyLjQgMTYuNCA4LjcgMTYuNCA4LjcgMTcuOCAxNy40IDI1IDguNyAzMi4zIDguNyAzMy43IDEyLjQgMzMuNyAyMC4xIDI3LjMiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50NmVjYzg0ZjItODA3ZC00YmI1LTlhOTEtMjE1OTcxMThkY2NiKSIvPgogICAgICAgIDxwYXRoIGlkPSJfeDNDX0JvcmRlcl94M0VfIiBkPSJNMS44LDguMXYzMy44aDQ1VjguMUgxLjhaTTQzLjMsMzguNUg1LjJWMTEuNmgzOC4xczAsMjYuOSwwLDI2LjlaIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0yNmVjYzg0ZjItODA3ZC00YmI1LTlhOTEtMjE1OTcxMThkY2NiKSIvPgogICAgICA8L2c+CiAgICAgIDxnIGlkPSJ1dWlkLWEzM2E1MjlmLWMzYmUtNDlkYy1iNDg1LTNhZGFiM2RmODgxNyI+CiAgICAgICAgPHBhdGggZD0iTTQyLjEsMzEuMWgxLjFjLjQsMCwuNi4zLjYuN3Y0LjhoNC44Yy40LDAsLjYuMy42LjZ2MS4xYzAsLjQtLjMuNi0uNi42aC00Ljh2NC44YzAsLjQtLjMuNi0uNi42aC0xLjFjLS40LDAtLjYtLjMtLjYtLjZ2LTQuOGgtNC44Yy0uMywwLS43LS4zLS43LS42di0xLjFjMC0uNC4zLS42LjctLjZoNC44di00LjhjMC0uMy4zLS43LjYtLjZaIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0zNmVjYzg0ZjItODA3ZC00YmI1LTlhOTEtMjE1OTcxMThkY2NiKSIvPgogICAgICA8L2c+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=",
+          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#create-an-integration-command",
+          "contextIds": [
+              "81104ae6-2bc5-4bae-b05a-f987b0372d81"
+            ],
+          "tags": [
+              "create",
+              "",
+              "integration",
+              "message",
+              "command"
+            ]
+        },
+      {
+          "title": "Create an Integration Message",
+          "description": "How to create an Integration Message",
+          "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDRkZjc4M2I3LTVmNDUtNDQ4NC1hMWExLTk0YWFlMDYyZTI4ZCIgeDE9IjI0LjMiIHkxPSI1MC43IiB4Mj0iMjQuMyIgeTI9IjE5LjYiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMTApIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzRhOTkyNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4NmRlMzMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0yNGRmNzgzYjctNWY0NS00NDg0LWExYTEtOTRhYWUwNjJlMjhkIiB4MT0iMjQuMyIgeTE9IjUyIiB4Mj0iMjQuMyIgeTI9IjE4LjIiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMTApIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzRhOTkyNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4NmRlMzMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0zNGRmNzgzYjctNWY0NS00NDg0LWExYTEtOTRhYWUwNjJlMjhkIiB4MT0iLTExNTIuNyIgeTE9Ii0xNjQ2IiB4Mj0iLTExNjYuMiIgeTI9Ii0xNjQ2IiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNjAzLjQgLTExMjAuNikgcm90YXRlKC05MCkgc2NhbGUoMSAtMSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmVlMDRmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Y5OWYyMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI4LjcuMywgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDEuMi4wIEJ1aWxkIDE2NCkgIC0tPgogIDxnPgogICAgPGcgaWQ9IkxheWVyXzEiPgogICAgICA8cG9seWdvbiBpZD0iX3gzQ19Gb2xkX3gzRV8iIHBvaW50cz0iMjAuMSAyNy4zIDI0LjMgMzAuOCAyOC40IDI3LjMgMzYuMSAzMy43IDM5LjkgMzMuNyAzOS45IDMyLjMgMzEuMSAyNS4xIDM5LjkgMTcuOCAzOS45IDE2LjQgMzYuMSAxNi40IDI0LjMgMjYuMyAxMi40IDE2LjQgOC43IDE2LjQgOC43IDE3LjggMTcuNCAyNSA4LjcgMzIuMyA4LjcgMzMuNyAxMi40IDMzLjcgMjAuMSAyNy4zIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudDRkZjc4M2I3LTVmNDUtNDQ4NC1hMWExLTk0YWFlMDYyZTI4ZCkiLz4KICAgICAgPHBhdGggaWQ9Il94M0NfQm9yZGVyX3gzRV8iIGQ9Ik0xLjgsOC4xdjMzLjhoNDVWOC4xSDEuOFpNNDMuMywzOC41SDUuMlYxMS42aDM4LjF2MjYuOVoiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTI0ZGY3ODNiNy01ZjQ1LTQ0ODQtYTFhMS05NGFhZTA2MmUyOGQpIi8+CiAgICAgIDxwYXRoIGQ9Ik00Mi4xLDMxLjFoMS4xYy40LDAsLjYuMy42Ljd2NC44aDQuOGMuNCwwLC42LjMuNi42djEuMWMwLC40LS4zLjYtLjYuNmgtNC44djQuOGMwLC40LS4zLjYtLjYuNmgtMS4xYy0uNCwwLS42LS4zLS42LS42di00LjhoLTQuOGMtLjMsMC0uNy0uMy0uNy0uNnYtMS4xYzAtLjQuMy0uNi43LS42aDQuOHYtNC44YzAtLjMuMy0uNy42LS42aDBaIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0zNGRmNzgzYjctNWY0NS00NDg0LWExYTEtOTRhYWUwNjJlMjhkKSIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+",
+          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#create-an-integration-message",
+          "contextIds": [
+              "81104ae6-2bc5-4bae-b05a-f987b0372d81"
+            ],
+          "tags": [
+              "create",
+              "",
+              "integration",
+              "message",
+              "event"
+            ]
+        },
+      {
+          "title": "How to Model Message-Based Integration",
+          "description": "Core concepts for designing  messaged-based integration in your applications.",
+          "iconUrl": "data:image/png;base64,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",
+          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#how-to-model-message-based-integrations",
+          "contextIds": [
+              "81104ae6-2bc5-4bae-b05a-f987b0372d81"
+            ],
+          "tags": [
+              "event-driven",
+              "event",
+              "publish",
+              "subscribe",
+              "messaging",
+              "message"
+            ]
+        },
+      {
+          "title": "Integration Message Naming Conventions",
+          "description": "General advice on naming integration messages.",
+          "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAyhJREFUaEPtWV1IU2EYft5v85zN2ZzM+VOIFZOM0n406Zeuk/6EoJsuJEq6iC4CC4Lu6kIvuqibjIi6KIggLMq6DPojSSxtpDAqjXIyx3T+zB2388U5MnExdZtz7sD54OM7nPN+z/s+3/Oe8/0cgsYLaTx+6ARWW0FdAV2BZY7AoinU9d1dU17i+CzLMgeHBEbjHPAZCB5w+JVKjAY48BMMfXar9QsRSYvFxDkXfIHAdsioJGADl3k5CAVKjXDuYJwKOWAFQWBEbMDjra3Z7OxaCHNRAt397rayIkdTwoPE+TQROjnort1mfRwlowY9GjhJ4Gc4Rx2ITIliDg5723ZWOs8lTcDlcuVJTPxTVuKwJupsvh2XeZfDbqtV7g37/Z8MYHWp4AwOeyckA1+3u6IiEK9/jAKll3p41Kh+kxHn9wkoK3ak4lft8677m9ru37E1ZYzfw17cei/hVX94DmOotXou7gUJ3DxmgtPOsoKA2yfjwrPp5Ah0nM5VO6ykArd7CI/6CacqOZqq5sSPUUtRQCn196ayj8DBJwxTYcCSA7w5IcdNs6wmcKeX8LBvVoGzWlQgkTc7qxXQPIH6dgZvEHCYgY7jGnwHdAJA7I5s/kyciXlAV0BXYInv4FKLOT2F9BTSU0jjM7Hm10I6gdX+CukKLKXAZHAaI/4xMEZgxGA0MBgMBhij1WiAKOTAJAgwiyIsZpNqGy3xZmLlkE/BDYZCmJYkhKQZhMMRhCOzNaK2MmQuQ7F1FNiQaxaT39S/aDThr9eHSCT+RiPuIRMxrLGYUWIvQKEtHx++ulSzvdu2YGR0DB6fH+OTQXCeOCZjDGuL7DhyP8ljlQcNEqaCoUTSNK6NNc+CwMSk+izfYsHY5Ox1KsVsEtHYLiR3rJKKo2ifvLfNoNBYDAQXbZg40Loc2MwREN1PIfx6HROstP4QQs4GbRCAHIb44zlyhj6qAc+U7kFo41GAGVeWQDrQSy/3XgfnV+JiEa4NtVRfTYefKMaK/CMrbu49zEi+CBm7FEdE1CkzuuFpqXqZzuBV7HQDZhpPJ5DpEf/fn66ArsAyR0DzKfQPjShhT3bD+xwAAAAASUVORK5CYII=",
+          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#integration-message-naming-conventions",
+          "contextIds": [
+              "7f01ca8e-0e3c-4735-ae23-a45169f71625",
+              "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e"
+            ],
+          "tags": [
+              "message",
+              "event",
+              "naming",
+              "integration",
+              "command",
+              "convention"
+            ]
+        },
+      {
+          "title": "Integration Messages vs Integration Commands",
+          "description": "What is the difference between Integration Messages and Integration Commands",
+          "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAg1JREFUaEPtmL1KA0EQx/976YRTDMZOMFpY5hGMFtoKgr1CBOMDaBk7G7GKhYo+QASfICZWVqLYBAuTgNoYMSSnIpq9kfMD/NjLfUZv4a69mdn/b2Z2dlkGyT8muX6EAP9dwbACga7AcPZxQGd8nQgTjEH1SywRNIUhT6DlSrr73Etc0xZ6E0/8FAqiXhaw8K0rFElcLHZdul3DFCC+oe0BmHYb2IFfrpJWZxzYfzM1BRjMak0/28ZMIAHNalrt8R0gvqGR26BO/Spp1fU0bNdCIYDdSoQVEGUq3AN2+weA9C10f3IswCWNwPLg+vLtzrjpaR2IKSQG+GAiqnOuJO52R4WndfABDA5CrradFJ7WcgAAzdpWUnhaywKA2lZSqDUEcDAthabEOR7OTi3DBLYCrXodT9WypAC8hcdSCfrLs1wApOvgjQaer69siTfofGkhYshUF9SVr+mKpYp/cu32DCASb4BIAWAmXgqAduIDD2AlPtAAQ1ktU15UM1bzLbB7wEr45/9YqtAEmG+vdmbrOp5CdgH6UsV9BkzZtXdr1zmAuYMRprAjMNbrVpwdv44BGItHZw8HIhFaA8MkgG47gpzadBTAqZh29rHU4RJAqz9tpAF4H82/IaQCEEFIB/ATQkqArxDSAhgQ/fOFzM3mmPBW4Ppd3s/J4yVWCOAle374hhXwI4teYkhfgVdUuA5A3tndTwAAAABJRU5ErkJggg==",
+          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#integration-messages-vs-integration-commands",
+          "contextIds": [
+              "81104ae6-2bc5-4bae-b05a-f987b0372d81",
+              "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e",
+              "7f01ca8e-0e3c-4735-ae23-a45169f71625"
+            ],
+          "tags": [
+              "integration",
+              "message",
+              "command",
+              "event"
+            ]
+        },
+      {
+          "title": "Making Integration Messages Available in Other Applications",
+          "description": "How to make integration messages you publish or define in an application, available to other applications.",
+          "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA2VJREFUaEPtWE1PE1EUPffNUC3yUWo0SAFNQHcC0V/gxg0rDbowuGliWGE00QBqlIiREpckLExgYWShMbjRrVuXJcaVX4mlVFRiC0gxZfqumcQq9GvmTbFTknbZue/NOffe9849Q9jlP9rl+FEl4HYFqxWoVqDEDFREC3U8WDpoGPIyE/eC+ajJSRK9I9BLjyYmP15v/laIp+sE2sej5wBMg6g+L0jmNQgEI0Otz/I9d5XAH/BPQFQcBzND4Hw+Eq4RMNtm0zA+FMx8VroZcnVT6p1LNw593/rINQKHx2P3mPimyhlmprGFkZbbFUGgLbQ4T0C3CgEJhKPDgROuEugcfL8nWZs8rTftnwNIVyEA5rXISGuDKwQCQ2+7JaeDDPQTyK83+S3PbjY58xwsDLc1lo3AkSth3y+PuEBMQRBObn2x3uAD6ZpSAcrTQqMsAsk3pyRTkMFniWhvPpTCWwvN61UiAOBuZDhwx3YFVBSy9ep8QNaIfoAvMajDChkJAa3RZ7uNGLSS1tEZu9aybIuAHYUUkAOpRPwnM10E4wwISodSeDzQ9tXD0pUwMwnR93moZS47MXl1wL5CAun1NchUyirh258zS0l4LZgeefwN65K0KYLYdrtkFpiZF4RgPvBmTA4BZYVkhpFIACwtSUjCIjEes8DDr6GuT5kFzfe/HKghHgTJXgKOmf8zYA5zLwydJrPbpmgLOVHI9MYG5EaywCzGv4joOUnMxOqOv8IoWTO1TMW/gJwKOFFIThswVla2vZaBsABmdIHZSKgrroBJKTSHQHsougZQncou5rBoxH+AGXGwnBU6ZmKhnrDKHk5jcwmMR1ftToh/D1pFEQgtmpnrUclIRbVQWyg2RuBbKgQq6hA7ukZXEoC0vlwKXaMqim9PyCaifZB4aqnzXLqQ1fgakxDa1I574vaJaB8zTxdTSI15IJVYTpZjlHDkiVUU8v8Pc+XyxDbHac1bC6E4TpfdExc1NOYorVWioSlw/2Zbyhq/P98sWfz2dtMTZ5BlTL3m888RCSX/UHZPXCyd7Q4Uvzye2KaEO1F8ZU9sE4ujMGXFV/XEjlApLjLF0p7iK3piRRwlhdtRfCVPXBIah4tVFN/WMOcQhyvLXPu8vlNsqwR2KpNO96lWwGnmdmrdrq/AbzQB9UB3QW6xAAAAAElFTkSuQmCC",
+          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#making-integration-messages-available-in-other-applications",
+          "contextIds": [
+              "81104ae6-2bc5-4bae-b05a-f987b0372d81",
+              "7f01ca8e-0e3c-4735-ae23-a45169f71625",
+              "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e"
+            ],
+          "tags": [
+              "integration",
+              "message",
+              "command",
+              "event",
+              "package",
+              "reference",
+              "shared"
+            ]
+        }
+    ]
+}

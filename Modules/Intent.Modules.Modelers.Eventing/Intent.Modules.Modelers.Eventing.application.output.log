@@ -128,5 +128,13 @@
       <ProjectRelativeFilePath>Core Eventing Types.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
+    <FileLog>
+      <ProjectId>4941eb27-7d38-425e-8c9a-5822c4b4831f</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.DocumentationTemplate#0b1c0738-4cd5-4deb-8471-833740b5173e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>resources/documentation.json</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>documentation.json</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
   </FileLogs>
 </outputLog>

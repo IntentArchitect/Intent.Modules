@@ -1,3 +1,7 @@
+### Version 6.0.1
+
+- Improvement: Added help documentation.
+
 ### Version 6.0.0
 
 - Removes the `Eventing` designer from the application. All eventing related design work must now happen in the `Services` designer.

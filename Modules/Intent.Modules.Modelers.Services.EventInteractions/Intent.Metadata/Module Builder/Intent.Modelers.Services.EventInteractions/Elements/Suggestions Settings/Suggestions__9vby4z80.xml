@@ -39,7 +39,7 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
-            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const integrationEventHandlerAssociationId = &quot;16fa2952-79e6-4150-b5ab-45aa4c106de4&quot;;&#xD;&#xA;return lookupTypesOf(integrationEventHandlerAssociationId).every(x =&gt; x.typeReference.getTypeId() != element.id)" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const associationIds = [&#xD;&#xA;  &quot;16fa2952-79e6-4150-b5ab-45aa4c106de4&quot;,//integrationEventHandlerAssociation&#xD;&#xA;  &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;//publishIntegrationEventAssociation&#xD;&#xA;];&#xD;&#xA;&#xD;&#xA;return !lookupTypesOf(associationIds).some(x =&gt; x.typeReference.getTypeId() == element.id);&#xD;&#xA;//return !element.getAssociations().some(a =&gt; associationIds.includes(a.specializationId));&#xD;&#xA;&#xD;&#xA;" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
             <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const integrationEventHandlerId = &quot;c0582230-22f5-4f74-8eb0-ec6fc9364900&quot;;&#xD;&#xA;const integrationEventHandlerAssociationId = &quot;16fa2952-79e6-4150-b5ab-45aa4c106de4&quot;;&#xD;&#xA;&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();&#xD;&#xA;if (position) {&#xD;&#xA;    const handler = getCurrentDiagram().createElement(integrationEventHandlerId, toPascalCase(element.getName()) + &quot;Handler&quot;, { x: position.x + 100, y: position.y - 5 });&#xD;&#xA;    const association = createAssociation(integrationEventHandlerAssociationId, handler.id, element.id)&#xD;&#xA;    getCurrentDiagram().layoutVisuals([association.id]);&#xD;&#xA;}" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
@@ -76,7 +76,7 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
-            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const subscribeIntegrationCommandTargetEndId = &quot;efa73bdb-69b7-4f52-aa10-15c19874b394&quot;;&#xD;&#xA;return lookupTypesOf(subscribeIntegrationCommandTargetEndId).every(x =&gt; x.typeReference.getTypeId() != element.id)" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const associationIds = [&#xD;&#xA;  &quot;efa73bdb-69b7-4f52-aa10-15c19874b394&quot;, // subscribeIntegrationCommand&#xD;&#xA;  &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;, // publishIntegrationCommandAssocaition&#xD;&#xA;];&#xD;&#xA;&#xD;&#xA;return !lookupTypesOf(associationIds).some(x =&gt; x.typeReference.getTypeId() == element.id);&#xD;&#xA;//return !element.getAssociations().some(a =&gt; associationIds.includes(a.specializationId));&#xD;&#xA;" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
             <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const integrationEventHandlerId = &quot;c0582230-22f5-4f74-8eb0-ec6fc9364900&quot;;&#xD;&#xA;const subscribeIntegrationCommandTargetEndId = &quot;efa73bdb-69b7-4f52-aa10-15c19874b394&quot;;&#xD;&#xA;&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();&#xD;&#xA;if (position) {&#xD;&#xA;    const handler = getCurrentDiagram().createElement(integrationEventHandlerId, toPascalCase(element.getName()) + &quot;Handler&quot;, { x: position.x + 100, y: position.y - 5 });&#xD;&#xA;    const association = createAssociation(subscribeIntegrationCommandTargetEndId, handler.id, element.id)&#xD;&#xA;    getCurrentDiagram().layoutVisuals([association.id]);&#xD;&#xA;}" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
@@ -113,10 +113,47 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
-            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const associationIds = [&#xD;&#xA;  &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;,//publishIntegrationCommandAssocaition&#xD;&#xA;  &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;//publishIntegrationEventAssociation&#xD;&#xA;];&#xD;&#xA;&#xD;&#xA;return !element.getAssociations().some(a =&gt; associationIds.includes(a.specializationId));&#xD;&#xA;" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
-            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const integrationCommandId = &quot;7f01ca8e-0e3c-4735-ae23-a45169f71625&quot;;&#xD;&#xA;const publishIntegrationCommandAssociationId = &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;;&#xD;&#xA;&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();&#xD;&#xA;if (position) {&#xD;&#xA;    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, &quot;NewIntegrationCommand&quot;, { x: position.x + 100, y: position.y - 5 });&#xD;&#xA;    const association = createAssociation(publishIntegrationCommandAssociationId, element.id, integrationCommand.id)&#xD;&#xA;    getCurrentDiagram().layoutVisuals([association.id]);&#xD;&#xA;}" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const integrationCommandId = &quot;7f01ca8e-0e3c-4735-ae23-a45169f71625&quot;;&#xD;&#xA;const publishIntegrationCommandAssociationId = &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;;&#xD;&#xA;&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();&#xD;&#xA;if (position) {&#xD;&#xA;    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, &quot;NewIntegrationCommand&quot;, { x: position.x + 100, y: position.y - 5 });&#xD;&#xA;    const association = createAssociation(publishIntegrationCommandAssociationId, element.id, integrationCommand.id)&#xD;&#xA;    getCurrentDiagram().layoutVisuals([association.id]);&#xD;&#xA;&#xD;&#xA;    //Allow user to rename&#xD;&#xA;    await integrationCommand.enableEditing();&#xD;&#xA;    await association.launchAdvancedMappingDialog();&#xD;&#xA;}" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="f0919167-8a27-4e64-9316-ccc763f5c874" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Publish Integration Command</name>
+      <display>Publish Integration Command: Operation</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="48a51b21-6fa4-4aa6-9afc-128911575f05">
+        <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Services</typePackageName>
+        <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>c9be858e-cb0d-4206-b1c6-32a335a01296</parentFolderId>
+      <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
+      <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const associationIds = [&#xD;&#xA;  &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;,//publishIntegrationCommandAssocaition&#xD;&#xA;  &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;//publishIntegrationEventAssociation&#xD;&#xA;];&#xD;&#xA;&#xD;&#xA;return !element.getAssociations().some(a =&gt; associationIds.includes(a.specializationId));&#xD;&#xA;" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const integrationCommandId = &quot;7f01ca8e-0e3c-4735-ae23-a45169f71625&quot;;&#xD;&#xA;const publishIntegrationCommandAssocationId = &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;;&#xD;&#xA;&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();&#xD;&#xA;if (position) {&#xD;&#xA;    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, &quot;NewIntegrationCommand&quot;, { x: position.x + 100, y: position.y - 5 });&#xD;&#xA;    const association = createAssociation(publishIntegrationCommandAssocationId, element.id, integrationCommand.id)&#xD;&#xA;    getCurrentDiagram().layoutVisuals([association.id]);&#xD;&#xA;&#xD;&#xA;    //Allow user to rename&#xD;&#xA;    await integrationCommand.enableEditing();&#xD;&#xA;    await association.launchAdvancedMappingDialog();&#xD;&#xA;}" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -150,10 +187,47 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
-            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const associationIds = [&#xD;&#xA;  &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;,//publishIntegrationCommandAssocaition&#xD;&#xA;  &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;//publishIntegrationEventAssociation&#xD;&#xA;];&#xD;&#xA;&#xD;&#xA;return !element.getAssociations().some(a =&gt; associationIds.includes(a.specializationId));&#xD;&#xA;" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
-            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const messageId = &quot;cbe970af-5bad-4d92-a3ed-a24b9fdaa23e&quot;;&#xD;&#xA;const publishIntegrationEventAssociationId = &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;;&#xD;&#xA;&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();&#xD;&#xA;if (position) {&#xD;&#xA;    const message = getCurrentDiagram().createElement(messageId, &quot;NewMessage&quot;, { x: position.x + 100, y: position.y - 5 });&#xD;&#xA;    const association = createAssociation(publishIntegrationEventAssociationId, element.id, message.id)&#xD;&#xA;    getCurrentDiagram().layoutVisuals([association.id]);&#xD;&#xA;}" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const messageId = &quot;cbe970af-5bad-4d92-a3ed-a24b9fdaa23e&quot;;&#xD;&#xA;const publishIntegrationEventAssociationId = &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;;&#xD;&#xA;&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();&#xD;&#xA;if (position) {&#xD;&#xA;    const message = getCurrentDiagram().createElement(messageId, &quot;NewMessage&quot;, { x: position.x + 100, y: position.y - 5 });&#xD;&#xA;    const association = createAssociation(publishIntegrationEventAssociationId, element.id, message.id)&#xD;&#xA;    getCurrentDiagram().layoutVisuals([association.id]);&#xD;&#xA;&#xD;&#xA;    //Allow user to rename&#xD;&#xA;    await message.enableEditing();&#xD;&#xA;    await association.launchAdvancedMappingDialog();&#xD;&#xA;}" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="042930cf-10a0-45d3-9be9-795540cf198a" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Publish Integration Event</name>
+      <display>Publish Integration Event: Operation</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="0643c224-fcf4-4823-a659-fb587d93b408">
+        <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Services</typePackageName>
+        <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>c9be858e-cb0d-4206-b1c6-32a335a01296</parentFolderId>
+      <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
+      <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const associationIds = [&#xD;&#xA;  &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;,//publishIntegrationCommandAssocaition&#xD;&#xA;  &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;//publishIntegrationEventAssociation&#xD;&#xA;];&#xD;&#xA;&#xD;&#xA;return !element.getAssociations().some(a =&gt; associationIds.includes(a.specializationId));&#xD;&#xA;" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const messageId = &quot;cbe970af-5bad-4d92-a3ed-a24b9fdaa23e&quot;;&#xD;&#xA;const publishIntegrationEventId = &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;;&#xD;&#xA;&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();&#xD;&#xA;if (position) {&#xD;&#xA;    const message = getCurrentDiagram().createElement(messageId, &quot;NewMessage&quot;, { x: position.x + 100, y: position.y - 5 });&#xD;&#xA;    const association = createAssociation(publishIntegrationEventId, element.id, message.id)&#xD;&#xA;    getCurrentDiagram().layoutVisuals([association.id]);&#xD;&#xA;    &#xD;&#xA;    //Allow user to rename&#xD;&#xA;    await message.enableEditing();&#xD;&#xA;    await association.launchAdvancedMappingDialog();&#xD;&#xA;}" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
