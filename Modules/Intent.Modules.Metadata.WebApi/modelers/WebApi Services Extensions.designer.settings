@@ -191,9 +191,425 @@ function validateRestRoutesOperation(element) {
 //Comment / UnComment below when you publish
 return validateRestRoutesOperation(lookup(id));
 </validateFunctionOverride>
+      <contextMenuOptions>
+        <runScript type="run-script">
+          <text>Expose as Http Endpoint</text>
+          <shortcut>ctrl + shift + e</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAA7DgAAOw4BzLahgwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAABDsSURBVHicxVt7fFTVnf/+7ty5c++8Mpkkk4QkgBE0QFR8gvCBivIoUlmf7eJ+VFZXtLa+ttiP7T9d/cMW29pKa1fKrvXBgo/q2iqoEOrWBwKLZFXCm4hAQhImmWQmM/fO6579YzLh3nvuTCYY2u9fM7/zuOf8zjm/1/kdwllGLBYLORyOuUQ0jTHWBOA8AOUAAgC8Q9UGAfQDiAA4QET7GWNt2Wz2Q5/P13M2x0dno9N4PH45ES0jogWMsWlf4zuMiNoYY5sZYxs8Hs+usRwnMIYMYIz5VVVdwRi7k4imjFW/lm/sJaI/KIqyhohiY9Hn12bAwMBAUBTFB4nofuS29t8CEcbY6nQ6/XQgEIh8nY7OmAGMMdI07TbG2C8AVBWql9EZWntT2NadxIGBNA4NZNCRyKA/qSOeYQAAj0gIuATUe0RM8otoCjgxq1rG9KATolB0iH0AHlcU5TdEpJ/JPM6IAZqmTdJ1/QUAs+zKUzrDu8dVrD8Sx/udGmLpMxobfE4B8+tkLDvXi4X1MqTCzPhYEIQ7ZFk+MtpvjJoBiUTiBgDPISfFTQhrOp7ZG8Xa/TH0Jc9s0oVQ4RJw71Q/vjvFh6BLsKsSA7DC7Xa/PJp+S2YAY0xQVfWXAB6ylg2mdaz6LIpn98cQP8PVLhUep4AHpvnxgwt8cIu2jHhKUZRHSj0SJTGAMSapqvo8gGXWsreOJfCD7RGciGdK6WrMMN4r4lczg1jcoNgVr1cUZTkRpUfqZ0QGMMYkTdP+mzF2rZGuZRlWbu/DcwcHSx81gJDiwNuLqhF0CSiXBDgEIJ5hWLipC22REcfLDf6eKT48cXk5ZId5KkS0UZblG0Zigu0eyoMxRolEYq118h3xLL7x9smik3cQMMnv5Oj3NvnQXO7EOLcDikiQBEK5JODxS3kN2lzuxI0T3QWFHwPw7L4Y5m/qQreatY59iaqqLzDGis6xaKGqqk8R0e1G2oH+NK7Z1IUv+uwZKwmE5ef50HrjOFxcKZnK3KKAFVN8tu0WNyiYVe0y0Q5FM/jlzCDabq7DfVN9BRmxO5zCvI1dODjAjWmZqqqrikyxMAMSicQtsAi8A/1pLHinC8cG7c/7ldUu7LqhFr+bHUSN4sDGY6qp/PqJ7kISHADwyIVlpv/JLMPv9w+izuPAL2YE8fHSWlxmYWoeR2MZLH63G+1RbmwrE4kEJ7vysB2NpmnnEtFaI60jnsXSzT0Ia7xwlR2EJy4vx+bFNcPb/u1jKhIZc93bJnkKjQMAsLBewZSAeYIvHIwhm7OXMK3cife/VYtVV5TD5eB3w8lEFt/a3I2TCfNxIKJ/1zSt0e6bHAMYY6Tr+ouMseHl0LIMN7Z047iNpA9IAjYuqsZDzX4Yx/Rqe9xUb4JXxNxa2W4MpwcK4P5p5iPSmchiS8fpneQg4P5pfvxpQQh+J8+Eo7EMbn3/FFI6M86pTNf15xljXAOOAYlE4i5YLLyV2/tsz3yt24GWJTW40nJ2oykdWzs1E23pBHdJOvemc9ycfl9/OM7Vm1sro2VJLWrdDq5sR08SP9rJuQhzNE273Uo0fWlgYCBIRD810v78VcJW2le4BLRcW4OpAV7Sf9CVRNqwAgCwxF5fc/A5BVw33lz3vRMqklnG1W0ud2LL4hpbufLsvhj+0mmWQYyxJyORiMmCNbUURfEhAJX5/4NpHSt38M6WKBDWzavCOT7RdhItHeYPl0sCJ+GLYdkkr+l/LK3jf05qtnUb/SJeuqqSc5oYgAc+6YOaMTEuJMvyA0bCMAMYY34i+r6xcNVnUVsL7yeXlOEbRc7zJz3mwc6qdo3k1ZlwVa0LXqd5VTefUAvUBuaNU/DEZZxrgvZoBk/viZpojLEHGWPDgmb4K6qqroDBnw9rOp7dbx9zeGz3AOZt7MJju/vxfqdq8vYSGR37+s1Ms8qIkSAJhNmWNh918ztAZ8CucAqPt/ZjnY2cAIDVbVEMpEzaKKiq6t35P8N7mIjuYOz0dnlmb7SgY5PRGXb0JLGjJ4lVnwECAZPLnLikQkLQJSBjOf8zQ8Wlvx2uGSfjPcOqt0XSODaYwVeDGXwaTmF3OIUPujT0WCxAK/pTOQ/1x9NP7xDG2F0AngKGfIGhGN7OfIWUztD48okxc2nnjVMwzu1ApSygUhYQkBwQCfBJvPAaTOtI6cDnvUn8x4HR+RmFUO8Rse+WOpOaZoxd4vF4WkUAICKTpfTOcZWbvCQQPCIhkho9U97vLHx+zwYEyh2PPE7EM2jpULGo/rR2IaJbAbQKQ38WGjvYcIQ/T0snuHHs1gZ8eF0tHrs0gKtqZc4D+3vBQcCcGhk/u6IcbTfX4eZzeIvz9S8TVtJ8AKChuH0Xho5DRmeo33ACUctK/3lhNebXmc9yWmfYE0kPn8lPwxraImnovMoeUzgFwrRyJy6rlDAz5MI3G8w+RkuHhqWbu01tQooD7d+ph0EZsUwmExIdDsdcGOICrb0pbvJ+ScBVtbwkdwqEiyskXFwhAefnaOe8fMLkms4MuTDeK+JkIouwpiOsZZDWc8LJDgFJgCjkDKL+pG46cuWSgDcWhHBRhVR0911V64LfSYimT69Ej5rFF5EULgoO+xokiuJckTHWTHS6s23dSa7DOaPQ41GL5rh9shfLz/Pa1k3rbDgy7HMKsM5pzf4YHv6kb/h/hgEzQiOrVFEgzKmRsfG4Wfa0hk0MABFNE4jofGOlA7xPjVnVpamxZJZZLS/4bSR9Hk6BEJAEBCR+8kBuNxgxmNY5FVsIdmP+oi9l+s8YO18AMNlIPDTAW35Tynl73w4DNtu6zMZjKxXlLrOjwwAMpEtjQJONj3KQjxWcJ8Bg+wOwNX0n+e1tfitsGeDivbVSEZB45kWSxQ2fPOzG3J3g5lYpADA54FYBCADBEieRYfzqOIsG3YpDIJ4BNp+wRVDmx3yKD+b4BJy+ogaAYaFkhEcsbRu7BH62VpkwGkRT/GoXuAvg4LUZc4S3bH0l9WazELawC1PZ+fGlImZz3r0lypRSxywgl5xQ9AMtHRoX4LCDXVv1azCg37JiDiptN6Z0Zmf52Y0vJiJ3pxbMU8pdDs4PuLmlB2WSgIX1CpY0KFhUr6DMRr2VSQJkB0EzTLqLFzwloz1mbtvgFYvaIwf601h3OI6XDg/aeok2KjkmAggDmJCnjPeKOBLlbYGBlI7X2uN4rT0Op0C4vErCjJALM0MuzKhyIaTkhE5IcZjC5p2J0qS2Hfb1m/V2o8+s2hiAPX1pbDyWwOtH4yPeLI33cpohLAI4CODSPGWid2SJn9YZtnUnTVZjo1/EzJDMnfnO+JkzYL8lsFKtCPioS0Nrbwo7TyXx15OabZi+EBr5EN4BkYgOGAMh0ytcsIiFktAezaA9yrd742gCX8WzqFYcqBqKB/icAiQB8Es8s/tTOtQMg5bV8WXMvKIbjsRtPdVSYQ3gEtEBkTG2x0i8xObmhQD8wwQ3PuoeHceB3IS2dvzt4gEE4OJKCbvDKa7Mah4zxtrEbDb7ocPhYENtMb1CQrkkmLwwBuCfJnuxbl4VPu9LoaVDxdZODTt6kiaB9/eCg4DLqly4bryCm8/x4ItIGre0mLPr/JKAiypMi6tnMpkPRZ/P16OqahtjrDnf2cJ6Ba9YbnbWHx7EkgYF0yskTK+QsPLCMqR1hn39aewOJ9Ham0JrOIU9kfRZZ4ooEKYFnLgiJGFOjYxr6hSUGyT8D/lLEXyzXrE6XJ/5/f6wCACMsS0AmvMltzR6OAZsOq7iRDyDes9pQeIUCBcGJVwYlLB8iKZlGerWHzdZgJPLnKhWHOjVdPQms9CyzNbkBnLb0CcJXPniBgU3TXSjKSChKSAWtAg7E1m8e5w/cjZRohZgKCrMGFtPRA/nSxbWyahWHKbARjLL8ORnA1g9q8L2w3nIDsKllS581HU6jD0l4MTLV/OJZMZ4gEckOId0/AsHB/Hdj3tNdX9ySQAXBu1vho14orXfdC8IAFWygAWWaJau6+uBoXsBj8ezi4iGhaEoEFY08UGMFw/F7a6fOcyossT0uzTbMJkxHuA0GDivHzVbcRO8YkmTPzSQxos29wP3TPGZzHTG2F6v1/t/gPlm6AVjo3un+uGzuHIpneG+bb0jxvxm15gZ0JfUsSfCS2U7hDX+Guy6Ce4R2+kMeGh7hAuYeJwC7pniN9GI6D/zv4dnqCjKGuSSlQHk4m8PN5sbAsAHJzWsKXBjlMecahcXs3uvyNWWEa+2x7lJ/GNj8bwCIHcDZBd+f7jZhwrz5WmfoijDuQ/DJUQUY4z9xljzwWa/nfmIH/9vxDZ2mIfHKWB2jfnMvfUV75zY4fmDZuY2BZy2tokRO3qS+LdP+zl6vUfEQ83c6v/amGdsYk06nf41gFP5/4pI+O2sIHevn8wyfHtrDw7b+Ax5LLIInU/DqRH9gl1DatSIW88tvvr7+tO4cUsPJ/gIwDOzK6zaoltV1dVGgqk0EAhEiOhRI21+nYIVTXxiU19Sx5J3e7C/354J1080J0QwAG8eLb4L1lqOluzIJVwVwuFoGte91217W3V3k4+T/ET0SDAYHDDSOGUqy/IfAHxspK2aUW4bjj4ez2D+pi7sPMUfh3qPyLX5r8OFfYzORBavWOz8bzd6UCnb6/u/ntTwjbe6bHfV5VUu/OwKLu3uA1mW11mJXO9ExARBuIOIhjklCYQNV9snRPQldSx6pxur26KwKoebLMZHa28KewvsmN+2Rblt/L2pvBDWWa7u0s09titf7xHxyjVVViHcLwjCPxMRp79s2SvL8hHG2L8YaTWKA28trEaNwntwySzDozsjWLq5x5Sr951GD5fb99IhfhdE04xLw5lbK+OCoNl729efwvxNXfjhzohthGqc24GNi0J2Y7xLluV2u7kWjAm63e4/YugOPY9Gv4iWa2swsUBqzNYOFZe9eRIPbOtFZyKLSlnAtZbcoBcPDnKB0rX7o5zpe58hofJINI3vfdyLK//Uhe099tqnwSPi3cXVmFzG3Qc86Xa73yg0z6IBtqFU2eeIaLmR3qVmsewvp7CjwGCAnDW5uF7BeK8Dz+w1C7ffzQ4OC7dklmHqHztMuX0TfSK2L63F1k4Nr7XH8daxBIr5VzNCLrxyddVwVMqA9Yqi3FYsc7yUZGmnpmlvWvOFU3pu26/ZF+PO/ki4IOjEe4tr4BYJGw7HObu/ShYwmOGv2ewGv6LJh59ewSdLA3hbUZQbR0qWLjVdXkwkEmuI6E5r2dYOFd/f1oevCqTPni00eEQ8MzuI+XW26XfrFEW5c0zS5fNgjJGqqk8CWGktUzMMq9uieOqL6Bk/jykVXqeAf23248FmPxQ+RM4A/FxRlEftJL4dRn1zGY/Hryei52DzQqw/pePZvTH8fn8MXSMkL40WIcWBe5t8WFHgyQxjLEpEd7vd7ldH0++ZPppq1HX9eQBz7MqzDNjSoeK19jg2n1DRe4bJVn4nYXGDG7c0ejC/ruijqQ+IaLmiKF+O9htj8Wzu5wBCherpDPi8L4Vd4RRaw0kcHcziRDyDU2oWiSEh5xYJQTn3bO5cn4ip5RJmV7twQVCyzRswoI8x9iO327221C1vxdfOcopEIgFZlh9gjD0Iww3TWUYvET2tqupqq20/Wozl01mvqqoriOjOoffCYw4i2sMYe05RlLVENCZJhGfr8fTFQ3l4CwBcgBGe5hSBDuBzAFt0XV+fD2ONJc56ol80Gq0URXEuEU1ljE1B7vl8EPbP5/tgeD6fyWQ+9Pv94bM5vv8HL1XvcJZxOykAAAAASUVORK5CYII=" />
+          <script>function getDefaultRoutePrefix(includeLastPathSeparator) {
+    const defaultApiRoutePrefix = "api";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+    let settingsGroup = application.getSettings(apiSettingsId);
+    let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
+    if (!route) {
+        route = defaultApiRoutePrefix;
+    }
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    }
+    else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+    return route;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
+function exposeAsHttpEndPoint(element) {
+    let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
+    if (!element.getParent().hasStereotype(httpServiceSettingsId)) {
+        element.getParent().addStereotype(httpServiceSettingsId);
+        let serviceBaseName = removeSuffix(element.getParent().getName(), "Service");
+        element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
+    }
+    applyHttpSettingsToOperations(element);
+}
+function getRoute(serviceBaseName) {
+    return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
+}
+function applyHttpSettingsToOperations(operation) {
+    var _a;
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
+    const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
+    if (!operation.hasStereotype(httpSettingsId)) {
+        operation.addStereotype(httpSettingsId);
+    }
+    const httpSettings = operation.getStereotype(httpSettingsId);
+    if (operation.getName().startsWith("Create")) {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(``);
+    }
+    else if (operation.getName().startsWith("Update")) {
+        httpSettings.getProperty("Verb").setValue("PUT");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Delete")) {
+        httpSettings.getProperty("Verb").setValue("DELETE");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Get") || operation.getName().startsWith("Find") || operation.getName().startsWith("Lookup")) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.typeReference.getType() != null) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `/{id}` : "")}`);
+    }
+    else {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}`);
+    }
+    operation.getChildren("Parameter").forEach(parameter =&gt; {
+        if (!parameter.hasStereotype(parameterSettingsId)) {
+            parameter.addStereotype(parameterSettingsId);
+        }
+    });
+    if (((_a = operation.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
+}
+/// &lt;reference path="shared.ts" /&gt;
+/**
+ * Used by Intent.Modules\Modules\Intent.Metadata.WebApi
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/operation/expose-as-http-endpoint.ts
+ */
+exposeAsHttpEndPoint(element);
+</script>
+        </runScript>
+        <runScript type="run-script">
+          <text>Expose as Http File Download</text>
+          <icon type="FontAwesome" source="file-download" />
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function makeReturnTypeFileDownloadDto(element) {
+    var _a;
+    const commonTypes = {
+        string: "d384db9c-a279-45e1-801e-e4e8099625f2",
+        stream: "fd4ead8e-92e9-47c2-97a6-81d898525ea0"
+    };
+    let returnResultType = lookupTypesOf("DTO").find(x =&gt; x.getName() == "FileDownloadDto");
+    if (!returnResultType) {
+        let folderName = "Common";
+        const folder = (_a = element.getPackage().getChildren("Folder").find(x =&gt; x.getName() == folderName)) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", folderName, element.getPackage().id);
+        returnResultType = createElement("DTO", "FileDownloadDto", folder.id);
+        returnResultType.id;
+        let stream = createElement("DTO-Field", "Content", returnResultType.id);
+        stream.typeReference.setType(commonTypes.stream);
+        let filename = createElement("DTO-Field", "Filename", returnResultType.id);
+        filename.typeReference.setType(commonTypes.string);
+        filename.typeReference.setIsNullable(true);
+        let contentType = createElement("DTO-Field", "ContentType", returnResultType.id);
+        contentType.typeReference.setType(commonTypes.string);
+        contentType.typeReference.setIsNullable(true);
+    }
+    element.typeReference.setType(returnResultType.id);
+    element.typeReference.setIsCollection(false);
+    element.typeReference.setIsNullable(false);
+}
+function applyFileTransferStereoType(element) {
+    var _a;
+    const fileTransferId = "d30e48e8-389e-4b70-84fd-e3bac44cfe19";
+    (_a = element.getStereotype(fileTransferId)) !== null &amp;&amp; _a !== void 0 ? _a : element.addStereotype(fileTransferId);
+}
+function addUploadFields(element, childType) {
+    const commonTypes = {
+        string: "d384db9c-a279-45e1-801e-e4e8099625f2",
+        long: "33013006-E404-48C2-AC46-24EF5A5774FD",
+        stream: "fd4ead8e-92e9-47c2-97a6-81d898525ea0"
+    };
+    const parameterSettingId = "d01df110-1208-4af8-a913-92a49d219552";
+    var existing = element.getChildren().find(x =&gt; x.getName() == "Content");
+    if (!existing) {
+        let stream = createElement(childType, "Content", element.id);
+        stream.typeReference.setType(commonTypes.stream);
+    }
+    var existing = element.getChildren().find(x =&gt; x.getName() == "Filename");
+    if (!existing) {
+        let filename = createElement(childType, "Filename", element.id);
+        filename.typeReference.setType(commonTypes.string);
+        filename.typeReference.setIsNullable(true);
+        let parameterSetting = filename.addStereotype(parameterSettingId);
+    }
+    var existing = element.getChildren().find(x =&gt; x.getName() == "ContentType");
+    if (!existing) {
+        let contentType = createElement(childType, "ContentType", element.id);
+        contentType.typeReference.setType(commonTypes.string);
+        contentType.typeReference.setIsNullable(true);
+        let parameterSetting = contentType.addStereotype(parameterSettingId);
+        parameterSetting.getProperty("Source").setValue("From Header");
+        parameterSetting.getProperty("Header Name").setValue("Content-Type");
+    }
+    var existing = element.getChildren().find(x =&gt; x.getName() == "ContentLength");
+    if (!existing) {
+        let contentType = createElement(childType, "ContentLength", element.id);
+        contentType.typeReference.setType(commonTypes.long);
+        contentType.typeReference.setIsNullable(true);
+        let parameterSetting = contentType.addStereotype(parameterSettingId);
+        parameterSetting.getProperty("Source").setValue("From Header");
+        parameterSetting.getProperty("Header Name").setValue("Content-Length");
+    }
+}
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    var _a;
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+    let settingsGroup = application.getSettings(apiSettingsId);
+    if (!settingsGroup) {
+        return defaultApiRoutePrefix;
+    }
+    let field = settingsGroup.getField("Default API Route Prefix");
+    if (!field) {
+        return defaultApiRoutePrefix;
+    }
+    let route = (_a = field.value) !== null &amp;&amp; _a !== void 0 ? _a : "";
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    }
+    else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+    return route;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
+function exposeAsHttpEndPoint(element) {
+    let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
+    if (!element.getParent().hasStereotype(httpServiceSettingsId)) {
+        element.getParent().addStereotype(httpServiceSettingsId);
+        let serviceBaseName = removeSuffix(element.getParent().getName(), "Service");
+        element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
+    }
+    applyHttpSettingsToOperations(element);
+}
+function getRoute(serviceBaseName) {
+    return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
+}
+function applyHttpSettingsToOperations(operation) {
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
+    const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    if (!operation.hasStereotype(httpSettingsId)) {
+        operation.addStereotype(httpSettingsId);
+    }
+    const httpSettings = operation.getStereotype(httpSettingsId);
+    if (operation.getName().startsWith("Create")) {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(``);
+    }
+    else if (operation.getName().startsWith("Update")) {
+        httpSettings.getProperty("Verb").setValue("PUT");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Delete")) {
+        httpSettings.getProperty("Verb").setValue("DELETE");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Get") || operation.getName().startsWith("Find") || operation.getName().startsWith("Lookup")) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.typeReference.getType() != null) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `/{id}` : "")}`);
+    }
+    else {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}`);
+    }
+    operation.getChildren("Parameter").forEach(parameter =&gt; {
+        if (!parameter.hasStereotype(parameterSettingsId)) {
+            parameter.addStereotype(parameterSettingsId);
+        }
+    });
+}
+/// &lt;reference path="../common/common-file-transfer.ts" /&gt;
+/// &lt;reference path="../../services-expose-as-http-endpoint/operation/shared.ts" /&gt;
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/expose-as-file-download-operation/expose-as-file-download-operation.ts
+ */
+function configureDownload(element) {
+    applyFileTransferStereoType(element);
+    makeReturnTypeFileDownloadDto(element);
+    exposeAsHttpEndPoint(element);
+}
+configureDownload(element);
+</script>
+        </runScript>
+        <runScript type="run-script">
+          <text>Expose as Http File Upload</text>
+          <icon type="FontAwesome" source="file-upload" />
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function makeReturnTypeFileDownloadDto(element) {
+    var _a;
+    const commonTypes = {
+        string: "d384db9c-a279-45e1-801e-e4e8099625f2",
+        stream: "fd4ead8e-92e9-47c2-97a6-81d898525ea0"
+    };
+    let returnResultType = lookupTypesOf("DTO").find(x =&gt; x.getName() == "FileDownloadDto");
+    if (!returnResultType) {
+        let folderName = "Common";
+        const folder = (_a = element.getPackage().getChildren("Folder").find(x =&gt; x.getName() == folderName)) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", folderName, element.getPackage().id);
+        returnResultType = createElement("DTO", "FileDownloadDto", folder.id);
+        returnResultType.id;
+        let stream = createElement("DTO-Field", "Content", returnResultType.id);
+        stream.typeReference.setType(commonTypes.stream);
+        let filename = createElement("DTO-Field", "Filename", returnResultType.id);
+        filename.typeReference.setType(commonTypes.string);
+        filename.typeReference.setIsNullable(true);
+        let contentType = createElement("DTO-Field", "ContentType", returnResultType.id);
+        contentType.typeReference.setType(commonTypes.string);
+        contentType.typeReference.setIsNullable(true);
+    }
+    element.typeReference.setType(returnResultType.id);
+    element.typeReference.setIsCollection(false);
+    element.typeReference.setIsNullable(false);
+}
+function applyFileTransferStereoType(element) {
+    var _a;
+    const fileTransferId = "d30e48e8-389e-4b70-84fd-e3bac44cfe19";
+    (_a = element.getStereotype(fileTransferId)) !== null &amp;&amp; _a !== void 0 ? _a : element.addStereotype(fileTransferId);
+}
+function makePost(element) {
+    var _a;
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    const httpSettings = (_a = element.getStereotype(httpSettingsId)) !== null &amp;&amp; _a !== void 0 ? _a : element.addStereotype(httpSettingsId);
+    httpSettings.getProperty("Verb").setValue("POST");
+}
+function addUploadFields(element, childType) {
+    const commonTypes = {
+        string: "d384db9c-a279-45e1-801e-e4e8099625f2",
+        long: "33013006-E404-48C2-AC46-24EF5A5774FD",
+        stream: "fd4ead8e-92e9-47c2-97a6-81d898525ea0"
+    };
+    const parameterSettingId = "d01df110-1208-4af8-a913-92a49d219552";
+    var existing = element.getChildren().find(x =&gt; x.getName() == "Content");
+    if (!existing) {
+        let stream = createElement(childType, "Content", element.id);
+        stream.typeReference.setType(commonTypes.stream);
+    }
+    var existing = element.getChildren().find(x =&gt; x.getName() == "Filename");
+    if (!existing) {
+        let filename = createElement(childType, "Filename", element.id);
+        filename.typeReference.setType(commonTypes.string);
+        filename.typeReference.setIsNullable(true);
+    }
+    var existing = element.getChildren().find(x =&gt; x.getName() == "ContentType");
+    if (!existing) {
+        let contentType = createElement(childType, "ContentType", element.id);
+        contentType.typeReference.setType(commonTypes.string);
+        contentType.typeReference.setIsNullable(true);
+        let parameterSetting = contentType.addStereotype(parameterSettingId);
+        parameterSetting.getProperty("Source").setValue("From Header");
+        parameterSetting.getProperty("Header Name").setValue("Content-Type");
+    }
+    var existing = element.getChildren().find(x =&gt; x.getName() == "ContentLength");
+    if (!existing) {
+        let contentType = createElement(childType, "ContentLength", element.id);
+        contentType.typeReference.setType(commonTypes.long);
+        contentType.typeReference.setIsNullable(true);
+        let parameterSetting = contentType.addStereotype(parameterSettingId);
+        parameterSetting.getProperty("Source").setValue("From Header");
+        parameterSetting.getProperty("Header Name").setValue("Content-Length");
+    }
+}
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    var _a;
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+    let settingsGroup = application.getSettings(apiSettingsId);
+    if (!settingsGroup) {
+        return defaultApiRoutePrefix;
+    }
+    let field = settingsGroup.getField("Default API Route Prefix");
+    if (!field) {
+        return defaultApiRoutePrefix;
+    }
+    let route = (_a = field.value) !== null &amp;&amp; _a !== void 0 ? _a : "";
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    }
+    else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+    return route;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
+function exposeAsHttpEndPoint(element) {
+    let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
+    if (!element.getParent().hasStereotype(httpServiceSettingsId)) {
+        element.getParent().addStereotype(httpServiceSettingsId);
+        let serviceBaseName = removeSuffix(element.getParent().getName(), "Service");
+        element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
+    }
+    applyHttpSettingsToOperations(element);
+}
+function getRoute(serviceBaseName) {
+    return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
+}
+function applyHttpSettingsToOperations(operation) {
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
+    const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    if (!operation.hasStereotype(httpSettingsId)) {
+        operation.addStereotype(httpSettingsId);
+    }
+    const httpSettings = operation.getStereotype(httpSettingsId);
+    if (operation.getName().startsWith("Create")) {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(``);
+    }
+    else if (operation.getName().startsWith("Update")) {
+        httpSettings.getProperty("Verb").setValue("PUT");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Delete")) {
+        httpSettings.getProperty("Verb").setValue("DELETE");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Get") || operation.getName().startsWith("Find") || operation.getName().startsWith("Lookup")) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.typeReference.getType() != null) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `/{id}` : "")}`);
+    }
+    else {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}`);
+    }
+    operation.getChildren("Parameter").forEach(parameter =&gt; {
+        if (!parameter.hasStereotype(parameterSettingsId)) {
+            parameter.addStereotype(parameterSettingsId);
+        }
+    });
+}
+/// &lt;reference path="../common/common-file-transfer.ts" /&gt;
+/// &lt;reference path="../../services-expose-as-http-endpoint/operation/shared.ts" /&gt;
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/expose-as-file-upload-operation/expose-as-file-upload-operation.ts
+ */
+function configureUpload(element) {
+    applyFileTransferStereoType(element);
+    addUploadFields(element, "Parameter");
+    exposeAsHttpEndPoint(element);
+    makePost(element);
+}
+configureUpload(element);
+</script>
+        </runScript>
+      </contextMenuOptions>
       <creationOptions />
       <scriptOptions>
-        <option>
+        <option type="run-script">
           <text>Expose as Http Endpoint</text>
           <shortcut>ctrl + shift + e</shortcut>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
@@ -279,7 +695,7 @@ function applyHttpSettingsToOperations(operation) {
 exposeAsHttpEndPoint(element);
 </script>
         </option>
-        <option>
+        <option type="run-script">
           <text>Expose as Http File Download</text>
           <icon type="FontAwesome" source="file-download" />
           <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
@@ -440,7 +856,7 @@ function configureDownload(element) {
 configureDownload(element);
 </script>
         </option>
-        <option>
+        <option type="run-script">
           <text>Expose as Http File Upload</text>
           <icon type="FontAwesome" source="file-upload" />
           <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
@@ -637,9 +1053,98 @@ return "";</validateFunctionOverride>
       <mappingSettings />
     </elementExtension>
     <elementExtension type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
+      <contextMenuOptions>
+        <runScript type="run-script">
+          <text>Expose as Http Endpoint</text>
+          <shortcut>ctrl + shift + e</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <script>function getDefaultRoutePrefix(includeLastPathSeparator) {
+    const defaultApiRoutePrefix = "api";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+    let settingsGroup = application.getSettings(apiSettingsId);
+    let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
+    if (!route) {
+        route = defaultApiRoutePrefix;
+    }
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    }
+    else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+    return route;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
+function exposeAsHttpEndPoint(element) {
+    const httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
+    if (!element.hasStereotype(httpServiceSettingsId)) {
+        element.addStereotype(httpServiceSettingsId);
+        let serviceBaseName = removeSuffix(element.getName(), "Service");
+        element.getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
+    }
+    element.getChildren("Operation").forEach(x =&gt; {
+        applyHttpSettingsToOperations(x);
+    });
+}
+function getRoute(serviceBaseName) {
+    return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
+}
+function applyHttpSettingsToOperations(operation) {
+    var _a;
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
+    const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
+    if (!operation.hasStereotype(httpSettingsId)) {
+        operation.addStereotype(httpSettingsId);
+    }
+    let httpSettings = operation.getStereotype(httpSettingsId);
+    if (operation.getName().startsWith("Create")) {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(``);
+    }
+    else if (operation.getName().startsWith("Update")) {
+        httpSettings.getProperty("Verb").setValue("PUT");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Delete")) {
+        httpSettings.getProperty("Verb").setValue("DELETE");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Get") || operation.getName().startsWith("Find") || operation.getName().startsWith("Lookup")) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.typeReference.getType() != null) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `/{id}` : "")}`);
+    }
+    else {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}`);
+    }
+    operation.getChildren("Parameter").forEach(parameter =&gt; {
+        if (!parameter.hasStereotype(parameterSettingsId)) {
+            parameter.addStereotype(parameterSettingsId);
+        }
+    });
+    if (((_a = operation.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
+}
+/**
+ * Used by Intent.Modules\Modules\Intent.Metadata.WebApi
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/service/expose-as-http-endpoint.ts
+ */
+exposeAsHttpEndPoint(element);
+</script>
+        </runScript>
+      </contextMenuOptions>
       <creationOptions />
       <scriptOptions>
-        <option>
+        <option type="run-script">
           <text>Expose as Http Endpoint</text>
           <shortcut>ctrl + shift + e</shortcut>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
@@ -787,5 +1292,180 @@ execute();</script>
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <suggestionSettings>
+    <suggestionSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" locations="diagram, model">
+      <name>Expose as Http Endpoint</name>
+      <filterFunction>return !element.hasStereotype("Http Settings");</filterFunction>
+      <dependencies />
+      <script>function getDefaultRoutePrefix(includeLastPathSeparator) {
+    const defaultApiRoutePrefix = "api";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+    let settingsGroup = application.getSettings(apiSettingsId);
+    let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
+    if (!route) {
+        route = defaultApiRoutePrefix;
+    }
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    }
+    else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+    return route;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
+function exposeAsHttpEndPoint(element) {
+    let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
+    if (!element.getParent().hasStereotype(httpServiceSettingsId)) {
+        element.getParent().addStereotype(httpServiceSettingsId);
+        let serviceBaseName = removeSuffix(element.getParent().getName(), "Service");
+        element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
+    }
+    applyHttpSettingsToOperations(element);
+}
+function getRoute(serviceBaseName) {
+    return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
+}
+function applyHttpSettingsToOperations(operation) {
+    var _a;
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
+    const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
+    if (!operation.hasStereotype(httpSettingsId)) {
+        operation.addStereotype(httpSettingsId);
+    }
+    const httpSettings = operation.getStereotype(httpSettingsId);
+    if (operation.getName().startsWith("Create")) {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(``);
+    }
+    else if (operation.getName().startsWith("Update")) {
+        httpSettings.getProperty("Verb").setValue("PUT");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Delete")) {
+        httpSettings.getProperty("Verb").setValue("DELETE");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Get") || operation.getName().startsWith("Find") || operation.getName().startsWith("Lookup")) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.typeReference.getType() != null) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `/{id}` : "")}`);
+    }
+    else {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}`);
+    }
+    operation.getChildren("Parameter").forEach(parameter =&gt; {
+        if (!parameter.hasStereotype(parameterSettingsId)) {
+            parameter.addStereotype(parameterSettingsId);
+        }
+    });
+    if (((_a = operation.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
+}
+/// &lt;reference path="shared.ts" /&gt;
+/**
+ * Used by Intent.Modules\Modules\Intent.Metadata.WebApi
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/operation/expose-as-http-endpoint.ts
+ */
+exposeAsHttpEndPoint(element);
+</script>
+    </suggestionSetting>
+    <suggestionSetting type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd" locations="diagram, model">
+      <name>Expose as Http Endpoint</name>
+      <filterFunction>return !element.hasStereotype("Http Settings");</filterFunction>
+      <dependencies />
+      <script>function getDefaultRoutePrefix(includeLastPathSeparator) {
+    const defaultApiRoutePrefix = "api";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+    let settingsGroup = application.getSettings(apiSettingsId);
+    let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
+    if (!route) {
+        route = defaultApiRoutePrefix;
+    }
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    }
+    else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+    return route;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
+function exposeAsHttpEndPoint(element) {
+    const httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
+    if (!element.hasStereotype(httpServiceSettingsId)) {
+        element.addStereotype(httpServiceSettingsId);
+        let serviceBaseName = removeSuffix(element.getName(), "Service");
+        element.getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
+    }
+    element.getChildren("Operation").forEach(x =&gt; {
+        applyHttpSettingsToOperations(x);
+    });
+}
+function getRoute(serviceBaseName) {
+    return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
+}
+function applyHttpSettingsToOperations(operation) {
+    var _a;
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
+    const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
+    if (!operation.hasStereotype(httpSettingsId)) {
+        operation.addStereotype(httpSettingsId);
+    }
+    let httpSettings = operation.getStereotype(httpSettingsId);
+    if (operation.getName().startsWith("Create")) {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(``);
+    }
+    else if (operation.getName().startsWith("Update")) {
+        httpSettings.getProperty("Verb").setValue("PUT");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Delete")) {
+        httpSettings.getProperty("Verb").setValue("DELETE");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.getName().startsWith("Get") || operation.getName().startsWith("Find") || operation.getName().startsWith("Lookup")) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `{id}` : "")}`);
+    }
+    else if (operation.typeReference.getType() != null) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `/{id}` : "")}`);
+    }
+    else {
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(`${toKebabCase(operation.getName())}`);
+    }
+    operation.getChildren("Parameter").forEach(parameter =&gt; {
+        if (!parameter.hasStereotype(parameterSettingsId)) {
+            parameter.addStereotype(parameterSettingsId);
+        }
+    });
+    if (((_a = operation.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
+}
+/**
+ * Used by Intent.Modules\Modules\Intent.Metadata.WebApi
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/service/expose-as-http-endpoint.ts
+ */
+exposeAsHttpEndPoint(element);
+</script>
+    </suggestionSetting>
+  </suggestionSettings>
   <scripts />
 </settings>

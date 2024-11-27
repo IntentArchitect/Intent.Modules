@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="bc00d8de-55b6-4368-be90-1b035f0d2236" type="Suggestions Settings" typeId="f68b5446-19f2-402d-a940-f62b3a592906">
+  <name>Suggestions</name>
+  <display>Suggestions</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>35553b8d-e014-46ef-88d4-429dbeba18ed</parentFolderId>
+  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+  <packageName>Intent.Metadata.WebApi</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="e0e3efb3-c7ac-480f-b372-19e62b4bcc58" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Expose as Http Endpoint</name>
+      <display>Expose as Http Endpoint: Operation</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="f9ed773e-d02f-4bfd-af97-4e00a39a396c">
+        <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Services</typePackageName>
+        <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>bc00d8de-55b6-4368-be90-1b035f0d2236</parentFolderId>
+      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+      <packageName>Intent.Metadata.WebApi</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return !element.hasStereotype(&quot;Http Settings&quot;);" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="function getDefaultRoutePrefix(includeLastPathSeparator) {&#xD;&#xA;    const defaultApiRoutePrefix = &quot;api&quot;;&#xD;&#xA;    const apiSettingsId = &quot;4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb&quot;;&#xD;&#xA;    let settingsGroup = application.getSettings(apiSettingsId);&#xD;&#xA;    let route = settingsGroup ? settingsGroup.getField(&quot;Default API Route Prefix&quot;).value : null;&#xD;&#xA;    if (!route) {&#xD;&#xA;        route = defaultApiRoutePrefix;&#xD;&#xA;    }&#xD;&#xA;    if (includeLastPathSeparator &amp;&amp; !route.endsWith(&quot;/&quot;)) {&#xD;&#xA;        route += &quot;/&quot;;&#xD;&#xA;    }&#xD;&#xA;    else if (!includeLastPathSeparator &amp;&amp; route.endsWith(&quot;/&quot;)) {&#xD;&#xA;        route = removeSuffix(route, &quot;/&quot;);&#xD;&#xA;    }&#xD;&#xA;    return route;&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;/// &lt;reference path=&quot;../_common/getDefaultRoutePrefix.ts&quot; /&gt;&#xD;&#xA;function exposeAsHttpEndPoint(element) {&#xD;&#xA;    let httpServiceSettingsId = &quot;c29224ec-d473-4b95-ad4a-ec55c676c4fd&quot;; // from WebApi module&#xD;&#xA;    if (!element.getParent().hasStereotype(httpServiceSettingsId)) {&#xD;&#xA;        element.getParent().addStereotype(httpServiceSettingsId);&#xD;&#xA;        let serviceBaseName = removeSuffix(element.getParent().getName(), &quot;Service&quot;);&#xD;&#xA;        element.getParent().getStereotype(httpServiceSettingsId).getProperty(&quot;Route&quot;).setValue(getRoute(serviceBaseName));&#xD;&#xA;    }&#xD;&#xA;    applyHttpSettingsToOperations(element);&#xD;&#xA;}&#xD;&#xA;function getRoute(serviceBaseName) {&#xD;&#xA;    return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;&#xD;&#xA;}&#xD;&#xA;function applyHttpSettingsToOperations(operation) {&#xD;&#xA;    var _a;&#xD;&#xA;    const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;; // from WebApi module&#xD;&#xA;    const parameterSettingsId = &quot;d01df110-1208-4af8-a913-92a49d219552&quot;; // from WebApi module&#xD;&#xA;    const httpSettingsMediatypeId = &quot;4490e212-1e99-43ce-b3dd-048ed2a6bae8&quot;;&#xD;&#xA;    if (!operation.hasStereotype(httpSettingsId)) {&#xD;&#xA;        operation.addStereotype(httpSettingsId);&#xD;&#xA;    }&#xD;&#xA;    const httpSettings = operation.getStereotype(httpSettingsId);&#xD;&#xA;    if (operation.getName().startsWith(&quot;Create&quot;)) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;POST&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(``);&#xD;&#xA;    }&#xD;&#xA;    else if (operation.getName().startsWith(&quot;Update&quot;)) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;PUT&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == &quot;id&quot;) ? `{id}` : &quot;&quot;)}`);&#xD;&#xA;    }&#xD;&#xA;    else if (operation.getName().startsWith(&quot;Delete&quot;)) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;DELETE&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == &quot;id&quot;) ? `{id}` : &quot;&quot;)}`);&#xD;&#xA;    }&#xD;&#xA;    else if (operation.getName().startsWith(&quot;Get&quot;) || operation.getName().startsWith(&quot;Find&quot;) || operation.getName().startsWith(&quot;Lookup&quot;)) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;GET&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == &quot;id&quot;) ? `{id}` : &quot;&quot;)}`);&#xD;&#xA;    }&#xD;&#xA;    else if (operation.typeReference.getType() != null) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;GET&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${toKebabCase(operation.getName())}${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == &quot;id&quot;) ? `/{id}` : &quot;&quot;)}`);&#xD;&#xA;    }&#xD;&#xA;    else {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;POST&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${toKebabCase(operation.getName())}`);&#xD;&#xA;    }&#xD;&#xA;    operation.getChildren(&quot;Parameter&quot;).forEach(parameter =&gt; {&#xD;&#xA;        if (!parameter.hasStereotype(parameterSettingsId)) {&#xD;&#xA;            parameter.addStereotype(parameterSettingsId);&#xD;&#xA;        }&#xD;&#xA;    });&#xD;&#xA;    if (((_a = operation.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) == &quot;Type-Definition&quot;) {&#xD;&#xA;        httpSettings.getProperty(httpSettingsMediatypeId).setValue(&quot;application/json&quot;);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;shared.ts&quot; /&gt;&#xD;&#xA;/**&#xD;&#xA; * Used by Intent.Modules\Modules\Intent.Metadata.WebApi&#xD;&#xA; *&#xD;&#xA; * Source code here:&#xD;&#xA; * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/operation/expose-as-http-endpoint.ts&#xD;&#xA; */&#xD;&#xA;exposeAsHttpEndPoint(element);&#xD;&#xA;" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="825ef452-a280-4b28-a300-35270953d7c5" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Expose as Http Endpoint</name>
+      <display>Expose as Http Endpoint: Service</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="27455a2b-b322-465a-87b9-3218a5704a3e">
+        <typeId>b16578a5-27b1-4047-a8df-f0b783d706bd</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Services</typePackageName>
+        <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>bc00d8de-55b6-4368-be90-1b035f0d2236</parentFolderId>
+      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+      <packageName>Intent.Metadata.WebApi</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return !element.hasStereotype(&quot;Http Settings&quot;);" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="function getDefaultRoutePrefix(includeLastPathSeparator) {&#xD;&#xA;    const defaultApiRoutePrefix = &quot;api&quot;;&#xD;&#xA;    const apiSettingsId = &quot;4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb&quot;;&#xD;&#xA;    let settingsGroup = application.getSettings(apiSettingsId);&#xD;&#xA;    let route = settingsGroup ? settingsGroup.getField(&quot;Default API Route Prefix&quot;).value : null;&#xD;&#xA;    if (!route) {&#xD;&#xA;        route = defaultApiRoutePrefix;&#xD;&#xA;    }&#xD;&#xA;    if (includeLastPathSeparator &amp;&amp; !route.endsWith(&quot;/&quot;)) {&#xD;&#xA;        route += &quot;/&quot;;&#xD;&#xA;    }&#xD;&#xA;    else if (!includeLastPathSeparator &amp;&amp; route.endsWith(&quot;/&quot;)) {&#xD;&#xA;        route = removeSuffix(route, &quot;/&quot;);&#xD;&#xA;    }&#xD;&#xA;    return route;&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;/// &lt;reference path=&quot;../_common/getDefaultRoutePrefix.ts&quot; /&gt;&#xD;&#xA;function exposeAsHttpEndPoint(element) {&#xD;&#xA;    const httpServiceSettingsId = &quot;c29224ec-d473-4b95-ad4a-ec55c676c4fd&quot;; // from WebApi module&#xD;&#xA;    if (!element.hasStereotype(httpServiceSettingsId)) {&#xD;&#xA;        element.addStereotype(httpServiceSettingsId);&#xD;&#xA;        let serviceBaseName = removeSuffix(element.getName(), &quot;Service&quot;);&#xD;&#xA;        element.getStereotype(httpServiceSettingsId).getProperty(&quot;Route&quot;).setValue(getRoute(serviceBaseName));&#xD;&#xA;    }&#xD;&#xA;    element.getChildren(&quot;Operation&quot;).forEach(x =&gt; {&#xD;&#xA;        applyHttpSettingsToOperations(x);&#xD;&#xA;    });&#xD;&#xA;}&#xD;&#xA;function getRoute(serviceBaseName) {&#xD;&#xA;    return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;&#xD;&#xA;}&#xD;&#xA;function applyHttpSettingsToOperations(operation) {&#xD;&#xA;    var _a;&#xD;&#xA;    const httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;; // from WebApi module&#xD;&#xA;    const parameterSettingsId = &quot;d01df110-1208-4af8-a913-92a49d219552&quot;; // from WebApi module&#xD;&#xA;    const httpSettingsMediatypeId = &quot;4490e212-1e99-43ce-b3dd-048ed2a6bae8&quot;;&#xD;&#xA;    if (!operation.hasStereotype(httpSettingsId)) {&#xD;&#xA;        operation.addStereotype(httpSettingsId);&#xD;&#xA;    }&#xD;&#xA;    let httpSettings = operation.getStereotype(httpSettingsId);&#xD;&#xA;    if (operation.getName().startsWith(&quot;Create&quot;)) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;POST&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(``);&#xD;&#xA;    }&#xD;&#xA;    else if (operation.getName().startsWith(&quot;Update&quot;)) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;PUT&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == &quot;id&quot;) ? `{id}` : &quot;&quot;)}`);&#xD;&#xA;    }&#xD;&#xA;    else if (operation.getName().startsWith(&quot;Delete&quot;)) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;DELETE&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == &quot;id&quot;) ? `{id}` : &quot;&quot;)}`);&#xD;&#xA;    }&#xD;&#xA;    else if (operation.getName().startsWith(&quot;Get&quot;) || operation.getName().startsWith(&quot;Find&quot;) || operation.getName().startsWith(&quot;Lookup&quot;)) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;GET&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == &quot;id&quot;) ? `{id}` : &quot;&quot;)}`);&#xD;&#xA;    }&#xD;&#xA;    else if (operation.typeReference.getType() != null) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;GET&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${toKebabCase(operation.getName())}${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == &quot;id&quot;) ? `/{id}` : &quot;&quot;)}`);&#xD;&#xA;    }&#xD;&#xA;    else {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;POST&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${toKebabCase(operation.getName())}`);&#xD;&#xA;    }&#xD;&#xA;    operation.getChildren(&quot;Parameter&quot;).forEach(parameter =&gt; {&#xD;&#xA;        if (!parameter.hasStereotype(parameterSettingsId)) {&#xD;&#xA;            parameter.addStereotype(parameterSettingsId);&#xD;&#xA;        }&#xD;&#xA;    });&#xD;&#xA;    if (((_a = operation.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) == &quot;Type-Definition&quot;) {&#xD;&#xA;        httpSettings.getProperty(httpSettingsMediatypeId).setValue(&quot;application/json&quot;);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;/**&#xD;&#xA; * Used by Intent.Modules\Modules\Intent.Metadata.WebApi&#xD;&#xA; *&#xD;&#xA; * Source code here:&#xD;&#xA; * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/service/expose-as-http-endpoint.ts&#xD;&#xA; */&#xD;&#xA;exposeAsHttpEndPoint(element);&#xD;&#xA;" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

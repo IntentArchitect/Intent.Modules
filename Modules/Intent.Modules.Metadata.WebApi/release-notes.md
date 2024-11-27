@@ -1,3 +1,7 @@
+### Version 4.6.5
+
+- Improvement: Added `Suggestion` for `Exposing as Http Endpoint` as well as a number of documentation topics
+
 ### Version 4.6.4
 
 - Improvement: The `Secured` Stereotype can now be applied multiple times to an element to represent an `AND` security requirement.
