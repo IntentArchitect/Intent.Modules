@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.WebApi</id>
-  <version>4.6.5-alpha.0</version>
+  <version>4.7.0-alpha.0</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Support for describing Services in HTTP Web API terms.</summary>
   <description>Support for describing Services in HTTP Web API terms.</description>
