@@ -1,4 +1,4 @@
-### Version 4.6.5
+### Version 4.7.0
 
 - Improvement: Added `Suggestion` for `Exposing as Http Endpoint` as well as a number of documentation topics
 
