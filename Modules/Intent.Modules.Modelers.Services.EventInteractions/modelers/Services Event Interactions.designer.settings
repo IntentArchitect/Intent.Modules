@@ -1537,9 +1537,10 @@ return !element.getAssociations().some(a =&gt; associationIds.includes(a.special
       <script>const integrationCommandId = "7f01ca8e-0e3c-4735-ae23-a45169f71625";
 const publishIntegrationCommandAssociationId = "35a14f76-71e0-45f2-a17f-f8d1483510f7";
 
-const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
 if (position) {
-    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, "NewIntegrationCommand", { x: position.x + 100, y: position.y - 5 });
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, "NewIntegrationCommand", position);
     const association = createAssociation(publishIntegrationCommandAssociationId, element.id, integrationCommand.id)
     getCurrentDiagram().layoutVisuals([association.id]);
 
@@ -1561,9 +1562,10 @@ return !element.getAssociations().some(a =&gt; associationIds.includes(a.special
       <script>const messageId = "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e";
 const publishIntegrationEventAssociationId = "6feb1511-849a-4aa3-85eb-d0c736ac1fec";
 
-const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
 if (position) {
-    const message = getCurrentDiagram().createElement(messageId, "NewMessage", { x: position.x + 100, y: position.y - 5 });
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const message = getCurrentDiagram().createElement(messageId, "NewMessage", position);
     const association = createAssociation(publishIntegrationEventAssociationId, element.id, message.id)
     getCurrentDiagram().layoutVisuals([association.id]);
 
@@ -1586,9 +1588,10 @@ return !lookupTypesOf(associationIds).some(x =&gt; x.getOtherEnd().typeReference
       <script>const integrationCommandId = "7f01ca8e-0e3c-4735-ae23-a45169f71625";
 const publishIntegrationCommandAssociationId = "35a14f76-71e0-45f2-a17f-f8d1483510f7";
 
-const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
 if (position) {
-    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, "NewIntegrationCommand", { x: position.x + 100, y: position.y - 5 });
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, "NewIntegrationCommand", position);
     const association = createAssociation(publishIntegrationCommandAssociationId, element.id, integrationCommand.id)
     getCurrentDiagram().layoutVisuals([association.id]);
 
@@ -1611,9 +1614,10 @@ return !lookupTypesOf(associationIds).some(x =&gt; x.getOtherEnd().typeReference
       <script>const messageId = "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e";
 const publishIntegrationEventId = "6feb1511-849a-4aa3-85eb-d0c736ac1fec";
 
-const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
 if (position) {
-    const message = getCurrentDiagram().createElement(messageId, "NewMessage", { x: position.x + 100, y: position.y - 5 });
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const message = getCurrentDiagram().createElement(messageId, "NewMessage", position);
     const association = createAssociation(publishIntegrationEventId, element.id, message.id)
     getCurrentDiagram().layoutVisuals([association.id]);
     
@@ -1636,9 +1640,10 @@ return !lookupTypesOf(associationIds).some(x =&gt; x.typeReference.getTypeId() =
       <script>const integrationEventHandlerId = "c0582230-22f5-4f74-8eb0-ec6fc9364900";
 const subscribeIntegrationCommandTargetEndId = "efa73bdb-69b7-4f52-aa10-15c19874b394";
 
-const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
 if (position) {
-    const handler = getCurrentDiagram().createElement(integrationEventHandlerId, toPascalCase(element.getName()) + "Handler", { x: position.x + 100, y: position.y - 5 });
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const handler = getCurrentDiagram().createElement(integrationEventHandlerId, toPascalCase(element.getName()) + "Handler", position);
     const association = createAssociation(subscribeIntegrationCommandTargetEndId, handler.id, element.id)
     getCurrentDiagram().layoutVisuals([association.id]);
 }</script>
@@ -1658,9 +1663,10 @@ return !lookupTypesOf(associationIds).some(x =&gt; x.typeReference.getTypeId() =
       <script>const integrationEventHandlerId = "c0582230-22f5-4f74-8eb0-ec6fc9364900";
 const integrationEventHandlerAssociationId = "16fa2952-79e6-4150-b5ab-45aa4c106de4";
 
-const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
 if (position) {
-    const handler = getCurrentDiagram().createElement(integrationEventHandlerId, toPascalCase(element.getName()) + "Handler", { x: position.x + 100, y: position.y - 5 });
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const handler = getCurrentDiagram().createElement(integrationEventHandlerId, toPascalCase(element.getName()) + "Handler", position);
     const association = createAssociation(integrationEventHandlerAssociationId, handler.id, element.id)
     getCurrentDiagram().layoutVisuals([association.id]);
 }</script>
@@ -1678,9 +1684,10 @@ return !element.getAssociations().some(a =&gt; associationIds.includes(a.special
       <script>const integrationCommandId = "7f01ca8e-0e3c-4735-ae23-a45169f71625";
 const publishIntegrationCommandAssocationId = "35a14f76-71e0-45f2-a17f-f8d1483510f7";
 
-const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
 if (position) {
-    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, "NewIntegrationCommand", { x: position.x + 100, y: position.y - 5 });
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, "NewIntegrationCommand", position);
     const association = createAssociation(publishIntegrationCommandAssocationId, element.id, integrationCommand.id)
     getCurrentDiagram().layoutVisuals([association.id]);
 
@@ -1702,9 +1709,114 @@ return !element.getAssociations().some(a =&gt; associationIds.includes(a.special
       <script>const messageId = "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e";
 const publishIntegrationEventId = "6feb1511-849a-4aa3-85eb-d0c736ac1fec";
 
-const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
 if (position) {
-    const message = getCurrentDiagram().createElement(messageId, "NewMessage", { x: position.x + 100, y: position.y - 5 });
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const message = getCurrentDiagram().createElement(messageId, "NewMessage", position);
+    const association = createAssociation(publishIntegrationEventId, element.id, message.id)
+    getCurrentDiagram().layoutVisuals([association.id]);
+    
+    //Allow user to rename
+    await message.enableEditing();
+    await association.launchAdvancedMappingDialog();
+}</script>
+    </suggestionSetting>
+    <suggestionSetting type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" locations="diagram, model">
+      <name>Publish Integration Command</name>
+      <filterFunction>const associationIds = [
+  "35a14f76-71e0-45f2-a17f-f8d1483510f7",// publishIntegrationCommandAssocaition
+  "6feb1511-849a-4aa3-85eb-d0c736ac1fec", // publishIntegrationEventAssociation
+];
+
+return !lookupTypesOf(associationIds).some(x =&gt; x.getOtherEnd().typeReference.getTypeId() == element.id);
+
+</filterFunction>
+      <dependencies />
+      <script>const integrationCommandId = "7f01ca8e-0e3c-4735-ae23-a45169f71625";
+const publishIntegrationCommandAssociationId = "35a14f76-71e0-45f2-a17f-f8d1483510f7";
+
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+if (position) {
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, "NewIntegrationCommand", position);
+    const association = createAssociation(publishIntegrationCommandAssociationId, element.id, integrationCommand.id)
+    getCurrentDiagram().layoutVisuals([association.id]);
+
+    //Allow user to rename
+    await integrationCommand.enableEditing();
+    await association.launchAdvancedMappingDialog();
+}</script>
+    </suggestionSetting>
+    <suggestionSetting type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" locations="diagram, model">
+      <name>Publish Integration Event</name>
+      <filterFunction>const associationIds = [
+  "35a14f76-71e0-45f2-a17f-f8d1483510f7",// publishIntegrationCommandAssocaition
+  "6feb1511-849a-4aa3-85eb-d0c736ac1fec", // publishIntegrationEventAssociation
+];
+
+return !lookupTypesOf(associationIds).some(x =&gt; x.getOtherEnd().typeReference.getTypeId() == element.id);
+
+</filterFunction>
+      <dependencies />
+      <script>const messageId = "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e";
+const publishIntegrationEventId = "6feb1511-849a-4aa3-85eb-d0c736ac1fec";
+
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+if (position) {
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const message = getCurrentDiagram().createElement(messageId, "NewMessage", position);
+    const association = createAssociation(publishIntegrationEventId, element.id, message.id)
+    getCurrentDiagram().layoutVisuals([association.id]);
+    
+    //Allow user to rename
+    await message.enableEditing();
+    await association.launchAdvancedMappingDialog();
+}</script>
+    </suggestionSetting>
+    <suggestionSetting type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" locations="diagram, model">
+      <name>Publish Integration Command</name>
+      <filterFunction>const associationIds = [
+  "35a14f76-71e0-45f2-a17f-f8d1483510f7",// publishIntegrationCommandAssocaition
+  "6feb1511-849a-4aa3-85eb-d0c736ac1fec", // publishIntegrationEventAssociation
+];
+
+return !lookupTypesOf(associationIds).some(x =&gt; x.getOtherEnd().typeReference.getTypeId() == element.id);
+
+</filterFunction>
+      <dependencies />
+      <script>const integrationCommandId = "7f01ca8e-0e3c-4735-ae23-a45169f71625";
+const publishIntegrationCommandAssociationId = "35a14f76-71e0-45f2-a17f-f8d1483510f7";
+
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+if (position) {
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, "NewIntegrationCommand", position);
+    const association = createAssociation(publishIntegrationCommandAssociationId, element.id, integrationCommand.id)
+    getCurrentDiagram().layoutVisuals([association.id]);
+
+    //Allow user to rename
+    await integrationCommand.enableEditing();
+    await association.launchAdvancedMappingDialog();
+}</script>
+    </suggestionSetting>
+    <suggestionSetting type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" locations="diagram, model">
+      <name>Publish Integration Event</name>
+      <filterFunction>const associationIds = [
+  "35a14f76-71e0-45f2-a17f-f8d1483510f7",// publishIntegrationCommandAssocaition
+  "6feb1511-849a-4aa3-85eb-d0c736ac1fec", // publishIntegrationEventAssociation
+];
+
+return !lookupTypesOf(associationIds).some(x =&gt; x.getOtherEnd().typeReference.getTypeId() == element.id);
+
+</filterFunction>
+      <dependencies />
+      <script>const messageId = "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e";
+const publishIntegrationEventId = "6feb1511-849a-4aa3-85eb-d0c736ac1fec";
+
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+if (position) {
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const message = getCurrentDiagram().createElement(messageId, "NewMessage", position);
     const association = createAssociation(publishIntegrationEventId, element.id, message.id)
     getCurrentDiagram().layoutVisuals([association.id]);
     
