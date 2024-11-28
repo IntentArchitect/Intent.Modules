@@ -50,7 +50,7 @@ declare namespace MacroApi.Context {
          * Must be called with await.
          * @param options The available options of which one can be selected.
          */
-        lookupFromOptions(options: { id: string, name: string }[]): Promise<string>;
+        lookupFromOptions(options: { id: string, name: string, additionalInfo?: string }[]): Promise<string>;
 
         /**
          * Shows a dynamic form dialog which displays fields as per it's provided config and returns
@@ -94,6 +94,7 @@ declare namespace MacroApi.Context {
     interface IDynamicFormFieldSelectOption {
         id: string;
         description: string;
+        additionalInfo?: string;
         icon?: IIcon;
     }
 
@@ -329,6 +330,11 @@ declare namespace MacroApi.Context {
 
     interface IDiagramApi {
         /**
+         * Return the element that owns this diagram
+         */
+        getOwner(): IElementApi;
+
+        /**
          * The mouse position of the last user activated event.
          */
         mousePosition: IPoint;
@@ -346,6 +352,16 @@ declare namespace MacroApi.Context {
          * Automatically lays out the specified elements and associations using the Dagre algorithm around the provided position.
          */
         layoutVisuals: (elementIds: string | string[] | any, position?: { x: number, y: number }, includeAllChildren?: boolean) => void;
+
+        /**
+         * Creates an element and adds it to the diagram at the specified position. The parent of the element is determined by the diagram.
+         * If no parent can be found, an exception will be thrown.
+         *
+         * @param specialization The specialization id or name for the element to be created.
+         * @param name The name of the element.
+         * @param position The position to place the element visual. Will use the last mouse position if the position argument isn't provided.
+         */
+        createElement: (specialization: string, name: string, position?: { x: number, y: number }) => IElementApi;
 
         /**
          * Adds an element visual to the diagram.
@@ -369,6 +385,11 @@ declare namespace MacroApi.Context {
          * Hides the visual with the specified visual identifier.
          */
         hideVisual: (visualId: string | any) => void;
+
+        /**
+         * Finds the nearest empty space, searching vertically, incrementing by the specified increment (defaults to 100 if not specified).
+         */
+        findEmptySpace: (point: { x: number, y: number }, increment?: number) => { x: number, y: number };
     }
 
     interface IElementVisualApi {
@@ -390,6 +411,10 @@ declare namespace MacroApi.Context {
         right: number;
         top: number;
         bottom: number;
+        getTopLeft(): IPoint;
+        getTopRight(): IPoint;
+        getBottomLeft(): IPoint;
+        getBottomRight(): IPoint;
         getCenterTop(): IPoint;
         getCenterBottom(): IPoint;
         getCenterLeft(): IPoint;
@@ -675,7 +700,7 @@ declare namespace MacroApi.Context {
         /**
          * Activates the editing mode for this element.
          */
-        enableEditing(): void;
+        enableEditing(): Promise<void>;
         /**
          * Deletes this element.
          */
@@ -815,11 +840,6 @@ declare namespace MacroApi.Context {
          */
         hasMappings(mappingTypeNameOrId?: string): boolean;
         /**
-         * Returns the mapping model for the supplied mapping type name or id. Returns null if the mapping does not exist.
-         */
-        getMapping(mappingTypeNameOrId: string): IElementToElementMappingApi;
-        getMappings(): IElementToElementMappingApi[];
-        /**
          * Gets the metadata value for the specified key.
          */
         getMetadata(key: string): string;
@@ -893,7 +913,7 @@ declare namespace MacroApi.Context {
         /**
          * Activates the editing mode for this association end.
          */
-        enableEditing(): void;
+        enableEditing(): Promise<void>;
         /**
          * Gets the metadata value for the specified key.
          */
