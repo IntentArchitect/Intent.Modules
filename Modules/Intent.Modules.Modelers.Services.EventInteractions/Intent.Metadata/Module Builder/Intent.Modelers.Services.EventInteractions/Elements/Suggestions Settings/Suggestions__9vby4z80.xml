@@ -160,6 +160,43 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="257468e9-afac-44ae-bb0b-1854e1ed1844" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Publish Integration Command</name>
+      <display>Publish Integration Command: Domain Event Handler Association Target End</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="9fc51b3a-aa49-4aaf-9286-36be4a48beb3">
+        <typeId>f45dfee9-f62b-45ac-bfce-a3878e04b73f</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Domain.Events</typePackageName>
+        <typePackageId>31710880-215c-4fed-9c79-a129a4b9cdb1</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>c9be858e-cb0d-4206-b1c6-32a335a01296</parentFolderId>
+      <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
+      <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const associationIds = [&#xD;&#xA;  &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;,// publishIntegrationCommandAssocaition&#xD;&#xA;  &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;, // publishIntegrationEventAssociation&#xD;&#xA;];&#xD;&#xA;&#xD;&#xA;return !lookupTypesOf(associationIds).some(x =&gt; x.getOtherEnd().typeReference.getTypeId() == element.id);&#xD;&#xA;&#xD;&#xA;" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const integrationCommandId = &quot;7f01ca8e-0e3c-4735-ae23-a45169f71625&quot;;&#xD;&#xA;const publishIntegrationCommandAssociationId = &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;;&#xD;&#xA;&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();&#xD;&#xA;if (position) {&#xD;&#xA;    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, &quot;NewIntegrationCommand&quot;, { x: position.x + 100, y: position.y - 5 });&#xD;&#xA;    const association = createAssociation(publishIntegrationCommandAssociationId, element.id, integrationCommand.id)&#xD;&#xA;    getCurrentDiagram().layoutVisuals([association.id]);&#xD;&#xA;&#xD;&#xA;    //Allow user to rename&#xD;&#xA;    await integrationCommand.enableEditing();&#xD;&#xA;    await association.launchAdvancedMappingDialog();&#xD;&#xA;}" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
     <childElement id="06507048-dd1f-4912-8aa7-165403b19c70" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
       <name>Publish Integration Event</name>
       <display>Publish Integration Event: Command</display>
@@ -224,7 +261,44 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
-            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const associationIds = [&#xD;&#xA;  &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;,//publishIntegrationCommandAssocaition&#xD;&#xA;  &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;//publishIntegrationEventAssociation&#xD;&#xA;];&#xD;&#xA;&#xD;&#xA;return !element.getAssociations().some(a =&gt; associationIds.includes(a.specializationId));&#xD;&#xA;" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const associationIds = [&#xD;&#xA;  &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;,// publishIntegrationCommandAssocaition&#xD;&#xA;  &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;, // publishIntegrationEventAssociation&#xD;&#xA;];&#xD;&#xA;&#xD;&#xA;return !element.getAssociations().some(a =&gt; associationIds.includes(a.specializationId));&#xD;&#xA;" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const messageId = &quot;cbe970af-5bad-4d92-a3ed-a24b9fdaa23e&quot;;&#xD;&#xA;const publishIntegrationEventId = &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;;&#xD;&#xA;&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();&#xD;&#xA;if (position) {&#xD;&#xA;    const message = getCurrentDiagram().createElement(messageId, &quot;NewMessage&quot;, { x: position.x + 100, y: position.y - 5 });&#xD;&#xA;    const association = createAssociation(publishIntegrationEventId, element.id, message.id)&#xD;&#xA;    getCurrentDiagram().layoutVisuals([association.id]);&#xD;&#xA;    &#xD;&#xA;    //Allow user to rename&#xD;&#xA;    await message.enableEditing();&#xD;&#xA;    await association.launchAdvancedMappingDialog();&#xD;&#xA;}" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="5a38d399-14a4-4c45-a0a7-d3b7a74160ed" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Publish Integration Event</name>
+      <display>Publish Integration Event: Domain Event Handler Association Target End</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="f933b390-8be7-4565-9d3d-1fa46dc535c7">
+        <typeId>f45dfee9-f62b-45ac-bfce-a3878e04b73f</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Domain.Events</typePackageName>
+        <typePackageId>31710880-215c-4fed-9c79-a129a4b9cdb1</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>c9be858e-cb0d-4206-b1c6-32a335a01296</parentFolderId>
+      <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
+      <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const associationIds = [&#xD;&#xA;  &quot;35a14f76-71e0-45f2-a17f-f8d1483510f7&quot;,// publishIntegrationCommandAssocaition&#xD;&#xA;  &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;, // publishIntegrationEventAssociation&#xD;&#xA;];&#xD;&#xA;&#xD;&#xA;return !lookupTypesOf(associationIds).some(x =&gt; x.getOtherEnd().typeReference.getTypeId() == element.id);&#xD;&#xA;&#xD;&#xA;" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
             <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const messageId = &quot;cbe970af-5bad-4d92-a3ed-a24b9fdaa23e&quot;;&#xD;&#xA;const publishIntegrationEventId = &quot;6feb1511-849a-4aa3-85eb-d0c736ac1fec&quot;;&#xD;&#xA;&#xD;&#xA;const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();&#xD;&#xA;if (position) {&#xD;&#xA;    const message = getCurrentDiagram().createElement(messageId, &quot;NewMessage&quot;, { x: position.x + 100, y: position.y - 5 });&#xD;&#xA;    const association = createAssociation(publishIntegrationEventId, element.id, message.id)&#xD;&#xA;    getCurrentDiagram().layoutVisuals([association.id]);&#xD;&#xA;    &#xD;&#xA;    //Allow user to rename&#xD;&#xA;    await message.enableEditing();&#xD;&#xA;    await association.launchAdvancedMappingDialog();&#xD;&#xA;}" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
