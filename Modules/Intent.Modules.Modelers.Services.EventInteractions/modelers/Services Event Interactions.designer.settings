@@ -1572,6 +1572,56 @@ if (position) {
     await association.launchAdvancedMappingDialog();
 }</script>
     </suggestionSetting>
+    <suggestionSetting type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" locations="diagram, model">
+      <name>Publish Integration Command</name>
+      <filterFunction>const associationIds = [
+  "35a14f76-71e0-45f2-a17f-f8d1483510f7",// publishIntegrationCommandAssocaition
+  "6feb1511-849a-4aa3-85eb-d0c736ac1fec", // publishIntegrationEventAssociation
+];
+
+return !lookupTypesOf(associationIds).some(x =&gt; x.getOtherEnd().typeReference.getTypeId() == element.id);
+
+</filterFunction>
+      <dependencies />
+      <script>const integrationCommandId = "7f01ca8e-0e3c-4735-ae23-a45169f71625";
+const publishIntegrationCommandAssociationId = "35a14f76-71e0-45f2-a17f-f8d1483510f7";
+
+const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+if (position) {
+    const integrationCommand = getCurrentDiagram().createElement(integrationCommandId, "NewIntegrationCommand", { x: position.x + 100, y: position.y - 5 });
+    const association = createAssociation(publishIntegrationCommandAssociationId, element.id, integrationCommand.id)
+    getCurrentDiagram().layoutVisuals([association.id]);
+
+    //Allow user to rename
+    await integrationCommand.enableEditing();
+    await association.launchAdvancedMappingDialog();
+}</script>
+    </suggestionSetting>
+    <suggestionSetting type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" locations="diagram, model">
+      <name>Publish Integration Event</name>
+      <filterFunction>const associationIds = [
+  "35a14f76-71e0-45f2-a17f-f8d1483510f7",// publishIntegrationCommandAssocaition
+  "6feb1511-849a-4aa3-85eb-d0c736ac1fec", // publishIntegrationEventAssociation
+];
+
+return !lookupTypesOf(associationIds).some(x =&gt; x.getOtherEnd().typeReference.getTypeId() == element.id);
+
+</filterFunction>
+      <dependencies />
+      <script>const messageId = "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e";
+const publishIntegrationEventId = "6feb1511-849a-4aa3-85eb-d0c736ac1fec";
+
+const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+if (position) {
+    const message = getCurrentDiagram().createElement(messageId, "NewMessage", { x: position.x + 100, y: position.y - 5 });
+    const association = createAssociation(publishIntegrationEventId, element.id, message.id)
+    getCurrentDiagram().layoutVisuals([association.id]);
+    
+    //Allow user to rename
+    await message.enableEditing();
+    await association.launchAdvancedMappingDialog();
+}</script>
+    </suggestionSetting>
     <suggestionSetting type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" locations="diagram, model">
       <name>Create Integration Event Handler</name>
       <filterFunction>const associationIds = [
@@ -1642,8 +1692,8 @@ if (position) {
     <suggestionSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" locations="diagram, model">
       <name>Publish Integration Event</name>
       <filterFunction>const associationIds = [
-  "35a14f76-71e0-45f2-a17f-f8d1483510f7",//publishIntegrationCommandAssocaition
-  "6feb1511-849a-4aa3-85eb-d0c736ac1fec"//publishIntegrationEventAssociation
+  "35a14f76-71e0-45f2-a17f-f8d1483510f7",// publishIntegrationCommandAssocaition
+  "6feb1511-849a-4aa3-85eb-d0c736ac1fec", // publishIntegrationEventAssociation
 ];
 
 return !element.getAssociations().some(a =&gt; associationIds.includes(a.specializationId));

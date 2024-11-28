@@ -330,11 +330,13 @@ return lookupTypesOf(domainEventHandlerAssociationTargetTypeId).every(x =&gt; x.
       <script>const domainEventHandlerId = "d80e61c5-7e4c-4175-9df1-0413f664824c";
 const domainEventHandlerAssociationTargetTypeId = "f45dfee9-f62b-45ac-bfce-a3878e04b73f";
 
-const handler = createElement(domainEventHandlerId, toPascalCase(element.getName()) + "Handler", getPackages()[0].id);
-const association = createAssociation(domainEventHandlerAssociationTargetTypeId, handler.id, element.id)
-const position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getCenterRight();
+
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
 if (position) {
-    getCurrentDiagram().layoutVisuals([handler.id], { x: position.x + 200, y: position.y }, true)
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 10 });
+    const handler = getCurrentDiagram().createElement(domainEventHandlerId, toPascalCase(element.getName()) + "Handler", position);
+    const association = createAssociation(domainEventHandlerAssociationTargetTypeId, handler.id, element.id)
+    getCurrentDiagram().layoutVisuals([association.id], position, true);
 }</script>
     </suggestionSetting>
   </suggestionSettings>

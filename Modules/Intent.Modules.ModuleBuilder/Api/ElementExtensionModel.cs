@@ -102,7 +102,8 @@ namespace Intent.ModuleBuilder.Api
                         DisplayName = this.GetTypeReferenceExtensionSettings().DisplayName(),
                         Hint = this.GetTypeReferenceExtensionSettings().Hint()
                     } : null,
-                Macros = this.EventSettings?.ToPersistable()
+                Macros = this.EventSettings?.ToPersistable(),
+                ChildElementExtensions = this.ElementExtensions.Select(x => x.ToPersistable()).ToArray(),
             };
         }
 

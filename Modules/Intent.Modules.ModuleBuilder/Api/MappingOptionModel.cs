@@ -70,7 +70,7 @@ namespace Intent.ModuleBuilder.Api
             return new MappingOption()
             {
                 Type = ContextMenuOptionType.OpenAdvancedMapping,
-                Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                Order = this.GetOptionSettings().Order()?.ToString(),
                 MappingTypeId = _element.TypeReference.Element.Id,
                 MappingType = _element.TypeReference.Element.Name,
                 Text = this.Name,

@@ -23,7 +23,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(new MetadataRegistrationRequiredEvent(
+            ExecutionContext.EventDispatcher.Publish(new MetadataRegistrationRequiredEvent(
                 Model.Id,
                 Model.GetDesignerSettings().ExtendDesigners()?.Select(x => (x.Id, x.Name)).ToList() ?? new List<(string Id, string Name)>(),
                 GetMetadata().GetFilePath()));

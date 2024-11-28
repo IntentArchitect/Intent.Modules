@@ -91,14 +91,14 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Trigger On Double-Click");
             }
 
-            public int? TypeOrder()
-            {
-                return _stereotype.GetProperty<int?>("Type Order");
-            }
-
             public string IsOptionVisibleFunction()
             {
                 return _stereotype.GetProperty<string>("Is Option Visible Function");
+            }
+
+            public int? Order()
+            {
+                return _stereotype.GetProperty<int?>("Order");
             }
 
             public bool BottomDivider()

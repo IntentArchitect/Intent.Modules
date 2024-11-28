@@ -270,7 +270,7 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
           <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
           <subMenuOptions>
             <createAssociation type="association">
-              <text>One-to-One</text>
+              <text>One to One</text>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <specializationType>Association Target End</specializationType>
               <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
@@ -280,7 +280,17 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
               <targetEndDefaults isNavigable="true" isNullable="false" isCollection="false" />
             </createAssociation>
             <createAssociation type="association">
-              <text>One-to-Many</text>
+              <text>One to Zero-or-One</text>
+              <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+              <specializationType>Association Target End</specializationType>
+              <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
+              <defaultName>NewAssociation</defaultName>
+              <allowMultiple>true</allowMultiple>
+              <sourceEndDefault isNavigable="false" isNullable="false" isCollection="false" />
+              <targetEndDefaults isNavigable="true" isNullable="true" isCollection="false" />
+            </createAssociation>
+            <createAssociation type="association">
+              <text>One to Many</text>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <specializationType>Association Target End</specializationType>
               <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
@@ -290,7 +300,7 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
               <targetEndDefaults isNavigable="true" isNullable="false" isCollection="true" />
             </createAssociation>
             <createAssociation type="association">
-              <text>Many-to-One</text>
+              <text>Many to One</text>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <specializationType>Association Target End</specializationType>
               <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
@@ -300,7 +310,17 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
               <targetEndDefaults isNavigable="true" isNullable="false" isCollection="false" />
             </createAssociation>
             <createAssociation type="association">
-              <text>Many-to-Many</text>
+              <text>Many to Zero-or-One</text>
+              <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+              <specializationType>Association Target End</specializationType>
+              <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
+              <defaultName>NewAssociation</defaultName>
+              <allowMultiple>true</allowMultiple>
+              <sourceEndDefault isNavigable="false" isNullable="false" isCollection="true" />
+              <targetEndDefaults isNavigable="true" isNullable="true" isCollection="false" />
+            </createAssociation>
+            <createAssociation type="association">
+              <text>Many to Many</text>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <specializationType>Association Target End</specializationType>
               <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>

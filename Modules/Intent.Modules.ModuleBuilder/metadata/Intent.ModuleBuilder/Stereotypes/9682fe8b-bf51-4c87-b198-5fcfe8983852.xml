@@ -63,16 +63,6 @@ return `[${shortcut}]`;</displayFunction>
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="eb46bd10-e8b6-4852-8e6b-659f42c82797">
-      <comment>Sets the order of the type against the other types</comment>
-      <name>Type Order</name>
-      <type>number</type>
-      <controlType>number</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-    </property>
     <property id="aa9aed36-437b-4f74-896d-5cffef1817a2">
       <name>Allow Multiple</name>
       <type>string</type>
@@ -92,6 +82,16 @@ return `[${shortcut}]`;</displayFunction>
       <valueOptions />
       <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
+    </property>
+    <property id="eb46bd10-e8b6-4852-8e6b-659f42c82797">
+      <comment>Sets the order of the type against the other types</comment>
+      <name>Type Order</name>
+      <type>number</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
     </property>
     <property id="5ca38df4-1f60-4be6-a1f7-18935a05681a">
       <name>Top Divider</name>

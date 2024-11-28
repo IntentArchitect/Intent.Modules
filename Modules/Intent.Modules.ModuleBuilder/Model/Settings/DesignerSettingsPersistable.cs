@@ -169,14 +169,6 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("childElementExtension")]
         public ElementSettingExtensionPersistable[] ChildElementExtensions { get; set; } = [];
         public bool ShouldSerializeChildElementExtensions() => ChildElementExtensions.Any();
-
-        public void OnLoad(DesignerSettingsPersistable designerSettings)
-        {
-            foreach (var macro in Macros)
-            {
-                macro.Source = $"{designerSettings.Name} ({designerSettings.Source})";
-            }
-        }
     }
 
     public class ElementCreationOption : ContextMenuOption
