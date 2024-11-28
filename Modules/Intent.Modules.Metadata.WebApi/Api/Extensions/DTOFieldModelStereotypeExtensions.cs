@@ -13,6 +13,29 @@ namespace Intent.Metadata.WebApi.Api
 {
     public static class DTOFieldModelStereotypeExtensions
     {
+        public static OpenAPISettings GetOpenAPISettings(this DTOFieldModel model)
+        {
+            var stereotype = model.GetStereotype(OpenAPISettings.DefinitionId);
+            return stereotype != null ? new OpenAPISettings(stereotype) : null;
+        }
+
+
+        public static bool HasOpenAPISettings(this DTOFieldModel model)
+        {
+            return model.HasStereotype(OpenAPISettings.DefinitionId);
+        }
+
+        public static bool TryGetOpenAPISettings(this DTOFieldModel model, out OpenAPISettings stereotype)
+        {
+            if (!HasOpenAPISettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new OpenAPISettings(model.GetStereotype(OpenAPISettings.DefinitionId));
+            return true;
+        }
         public static ParameterSettings GetParameterSettings(this DTOFieldModel model)
         {
             var stereotype = model.GetStereotype(ParameterSettings.DefinitionId);
@@ -58,6 +81,25 @@ namespace Intent.Metadata.WebApi.Api
 
             stereotype = new SerializationSettings(model.GetStereotype(SerializationSettings.DefinitionId));
             return true;
+        }
+
+        public class OpenAPISettings
+        {
+            private IStereotype _stereotype;
+            public const string DefinitionId = "27f9efb0-dc5d-4347-9c85-238ea6fdec1f";
+
+            public OpenAPISettings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string ExampleValue()
+            {
+                return _stereotype.GetProperty<string>("Example Value");
+            }
+
         }
 
         public class ParameterSettings
