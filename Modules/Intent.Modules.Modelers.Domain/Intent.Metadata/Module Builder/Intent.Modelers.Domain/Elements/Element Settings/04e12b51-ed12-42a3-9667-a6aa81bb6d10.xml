@@ -265,8 +265,8 @@
               <metadata />
               <childElements>
                 <childElement id="e199e014-06b5-41ba-883d-e4658ee2a50b" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-                  <name>One-to-One</name>
-                  <display>One-to-One: Association</display>
+                  <name>One to One</name>
+                  <display>One to One: Association</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
                   <typeReference id="b84e0441-e153-4a27-874c-c4510efa03dd">
@@ -325,9 +325,70 @@
                   <metadata />
                   <childElements />
                 </childElement>
+                <childElement id="a92cae62-8543-40d8-9ded-f9481b2d4b90" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+                  <name>One to Zero-or-One</name>
+                  <display>One to Zero-or-One: Association</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <typeReference id="c8c521d2-b2b6-401e-987e-de887ca6edae">
+                    <typeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</typeId>
+                    <isNavigable>true</isNavigable>
+                    <isNullable>false</isNullable>
+                    <isCollection>false</isCollection>
+                    <isRequired>true</isRequired>
+                    <typePackageName>Intent.Modelers.Domain</typePackageName>
+                    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+                    <stereotypes />
+                    <genericTypeParameters />
+                  </typeReference>
+                  <isMapped>false</isMapped>
+                  <parentFolderId>320c9031-ed9d-48a0-bee0-79924a093536</parentFolderId>
+                  <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                  <packageName>Intent.Modelers.Domain</packageName>
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+                      <comment />
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
+                        <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                        <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                        <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                        <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                        <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+                        <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
+                        <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="0238ed04-0e7b-42e8-9674-f7d1fd67275b" name="Source End Defaults">
+                      <addedByDefault>false</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="fcb73371-e64e-4599-8b5f-f6c616da6978" display="Is Navigable" value="false" isActive="true" />
+                        <property name="1b3a99ec-1bbd-4e74-9bd3-9e24d1b7fbd4" display="Is Nullable" value="false" isActive="true" />
+                        <property name="e9a100c6-cf0e-4b74-973a-6e90687fbc8a" display="Is Collection" value="false" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="99511817-15b6-462a-9c3c-449da1b49451" name="Target End Defaults">
+                      <addedByDefault>false</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="1588b020-7a75-44bd-9617-509826857f64" display="Is Navigable" value="true" isActive="true" />
+                        <property name="8983add9-cbe1-4a05-b3c2-638a17dccc3e" display="Is Nullable" value="true" isActive="true" />
+                        <property name="087bc413-4179-40c2-81d2-63b6f757ae0d" display="Is Collection" value="false" isActive="true" />
+                      </properties>
+                    </stereotype>
+                  </stereotypes>
+                  <metadata />
+                  <childElements />
+                </childElement>
                 <childElement id="0fb443f7-ebea-4bfc-bb03-a625fc687ad5" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-                  <name>One-to-Many</name>
-                  <display>One-to-Many: Association</display>
+                  <name>One to Many</name>
+                  <display>One to Many: Association</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
                   <typeReference id="4d6abf5b-3fcd-4083-92d4-70c1f6142092">
@@ -387,8 +448,8 @@
                   <childElements />
                 </childElement>
                 <childElement id="45ea923d-4c23-44c5-a84d-97bd9805320e" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-                  <name>Many-to-One</name>
-                  <display>Many-to-One: Association</display>
+                  <name>Many to One</name>
+                  <display>Many to One: Association</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
                   <typeReference id="45bfafa9-8596-45db-9d4d-25839d6136ce">
@@ -447,9 +508,70 @@
                   <metadata />
                   <childElements />
                 </childElement>
+                <childElement id="93e28a77-59a2-4755-8365-fbd40e51ed91" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+                  <name>Many to Zero-or-One</name>
+                  <display>Many to Zero-or-One: Association</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <typeReference id="0abb49b0-a7db-464f-9ac5-5acddcdf13df">
+                    <typeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</typeId>
+                    <isNavigable>true</isNavigable>
+                    <isNullable>false</isNullable>
+                    <isCollection>false</isCollection>
+                    <isRequired>true</isRequired>
+                    <typePackageName>Intent.Modelers.Domain</typePackageName>
+                    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+                    <stereotypes />
+                    <genericTypeParameters />
+                  </typeReference>
+                  <isMapped>false</isMapped>
+                  <parentFolderId>320c9031-ed9d-48a0-bee0-79924a093536</parentFolderId>
+                  <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                  <packageName>Intent.Modelers.Domain</packageName>
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+                      <comment />
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
+                        <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                        <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                        <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                        <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                        <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+                        <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
+                        <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="0238ed04-0e7b-42e8-9674-f7d1fd67275b" name="Source End Defaults">
+                      <addedByDefault>false</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="fcb73371-e64e-4599-8b5f-f6c616da6978" display="Is Navigable" value="false" isActive="true" />
+                        <property name="1b3a99ec-1bbd-4e74-9bd3-9e24d1b7fbd4" display="Is Nullable" value="false" isActive="true" />
+                        <property name="e9a100c6-cf0e-4b74-973a-6e90687fbc8a" display="Is Collection" value="true" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="99511817-15b6-462a-9c3c-449da1b49451" name="Target End Defaults">
+                      <addedByDefault>false</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="1588b020-7a75-44bd-9617-509826857f64" display="Is Navigable" value="true" isActive="true" />
+                        <property name="8983add9-cbe1-4a05-b3c2-638a17dccc3e" display="Is Nullable" value="true" isActive="true" />
+                        <property name="087bc413-4179-40c2-81d2-63b6f757ae0d" display="Is Collection" value="false" isActive="true" />
+                      </properties>
+                    </stereotype>
+                  </stereotypes>
+                  <metadata />
+                  <childElements />
+                </childElement>
                 <childElement id="15751cf7-38cd-4c19-afec-b302606dd441" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-                  <name>Many-to-Many</name>
-                  <display>Many-to-Many: Association</display>
+                  <name>Many to Many</name>
+                  <display>Many to Many: Association</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
                   <typeReference id="b8865d9d-a54d-4e57-bb0f-f40bd509df70">
