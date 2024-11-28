@@ -63,11 +63,6 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Trigger On Double-Click");
             }
 
-            public int? TypeOrder()
-            {
-                return _stereotype.GetProperty<int?>("Type Order");
-            }
-
             public IIconModel Icon()
             {
                 return _stereotype.GetProperty<IIconModel>("Icon");
@@ -76,6 +71,11 @@ namespace Intent.ModuleBuilder.Api
             public string IsOptionVisibleFunction()
             {
                 return _stereotype.GetProperty<string>("Is Option Visible Function");
+            }
+
+            public int? Order()
+            {
+                return _stereotype.GetProperty<int?>("Order");
             }
 
             public bool BottomDivider()

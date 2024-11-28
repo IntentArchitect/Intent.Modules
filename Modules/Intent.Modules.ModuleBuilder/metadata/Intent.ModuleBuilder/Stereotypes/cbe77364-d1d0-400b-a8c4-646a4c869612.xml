@@ -73,16 +73,6 @@ return `[${shortcut}]`;</displayFunction>
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="e034a0ca-0101-4594-8384-43048b714578">
-      <comment>Sets the order of the type against the other types</comment>
-      <name>Type Order</name>
-      <type>number</type>
-      <controlType>number</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-    </property>
     <property id="c03841e5-a1e9-4e95-b699-5a466dde7d7d">
       <name>Is Option Visible Function</name>
       <type>string</type>
@@ -92,6 +82,16 @@ return `[${shortcut}]`;</displayFunction>
       <valueOptions />
       <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
+    </property>
+    <property id="e034a0ca-0101-4594-8384-43048b714578">
+      <comment />
+      <name>Order</name>
+      <type>number</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
     </property>
     <property id="3e93529e-2110-414e-aec1-2656e1a99b22">
       <name>Top Divider</name>

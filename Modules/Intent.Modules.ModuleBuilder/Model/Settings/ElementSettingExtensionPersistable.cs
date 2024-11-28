@@ -60,5 +60,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArray("macros")]
         [XmlArrayItem("macro")]
         public List<MacroPersistable> Macros { get; set; } = new List<MacroPersistable>();
+
+        [XmlArray("childElementExtensions")]
+        [XmlArrayItem("childElementExtension")]
+        public ElementSettingExtensionPersistable[] ChildElementExtensions { get; set; } = [];
+        public bool ShouldSerializeChildElementExtensions() => ChildElementExtensions.Any();
     }
 }

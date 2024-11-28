@@ -52,21 +52,18 @@ namespace Intent.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
-        [Obsolete("Replaced with ToPersistable() which returns List<ContextMenuOption>")]
         public IList<ElementCreationOptionModel> ElementCreations => _element.ChildElements
             .GetElementsOfType(ElementCreationOptionModel.SpecializationTypeId)
             .Select(x => new ElementCreationOptionModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
-        [Obsolete("Replaced with ToPersistable() which returns List<ContextMenuOption>")]
         public IList<AssociationCreationOptionModel> AssociationCreations => _element.ChildElements
             .GetElementsOfType(AssociationCreationOptionModel.SpecializationTypeId)
             .Select(x => new AssociationCreationOptionModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
-        [Obsolete("Replaced with ToPersistable() which returns List<ContextMenuOption>")]
         public StereotypeDefinitionCreationOptionModel StereotypeDefinitionCreation => _element.ChildElements
             .GetElementsOfType(StereotypeDefinitionCreationOptionModel.SpecializationTypeId)
             .Select(x => new StereotypeDefinitionCreationOptionModel(x))

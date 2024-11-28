@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.ModuleBuilder.Api;
@@ -35,7 +36,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<ElementExtensionModel> GetModels(IApplication application)
         {
-            return _metadataManager.ModuleBuilder(application).GetElementExtensionModels();
+            return _metadataManager.ModuleBuilder(application).GetElementExtensionModels()
+                .Where(x => (x.MenuOptions != null && x.MenuOptions.ElementCreations.Any()) || x.MappingSettings.Any())
+                .ToList();
         }
     }
 }

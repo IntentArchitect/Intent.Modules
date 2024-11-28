@@ -63,7 +63,7 @@ namespace Intent.ModuleBuilder.Api
                 return new RunScriptOption
                 {
                     Type = ContextMenuOptionType.RunScript,
-                    Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                    Order = this.GetOptionSettings().Order()?.ToString(),
                     Text = this.Name,
                     Shortcut = this.GetOptionSettings().Shortcut(),
                     MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
@@ -82,7 +82,7 @@ namespace Intent.ModuleBuilder.Api
                 return new RunScriptOption
                 {
                     Type = ContextMenuOptionType.RunScript,
-                    Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                    Order = this.GetOptionSettings().Order()?.ToString(),
                     Text = this.Name,
                     Shortcut = this.GetOptionSettings().Shortcut(),
                     MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
