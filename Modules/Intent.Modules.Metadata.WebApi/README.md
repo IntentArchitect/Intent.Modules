@@ -122,10 +122,8 @@ The binding source of an Operation `Parameter` or incoming `DTO Field` can be ch
     - From Query: the `Query String Name` must also be supplied if this option is chosen
     - From Route
 
-![Http Parameter Binding](docs/http-param-binding.png)
-[](#changing-parameter-binding-source)
 
-## OpenAPI Configuration
+## Operation OpenAPI Configuration
 
 To change the way in which a `Service`, `Operation`, `Command`, `Query` or `Azure Function` is reflected in the OpenAPI specification, the `OpenAPI Settings` stereotype is used.
 
@@ -135,3 +133,13 @@ To change the way in which a `Service`, `Operation`, `Command`, `Query` or `Azur
 
     - `Ignore`: Whether to hide the endpoint from the OpenAPI spec.
     - `OperationId`: Allows controlling the [`operationId`](https://swagger.io/docs/specification/paths-and-operations/) for the endpoint of the operation. When blank it will use the endpoint's "method" name by default
+
+## Parameter OpenAPI Configuration
+
+To change the way in which a `Parameter`, `DTO Field` is reflected in the OpenAPI specification, the `OpenAPI Settings` stereotype is used.
+
+1. Right-click on a `Parameter`, `DTO Field` and select `Apply Stereotype`
+2. Click `OpenAPI Settings`
+3. On the item's properties, under `Open Settings`, the following options are available:
+
+    - `Example Value`: Allows customization of the `example value` which is generated in the OpenAPI spec (and therefor what appears on the Swagger UI)
