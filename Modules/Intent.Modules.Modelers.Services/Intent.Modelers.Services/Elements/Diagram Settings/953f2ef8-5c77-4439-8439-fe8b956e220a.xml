@@ -69,7 +69,7 @@
                 <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" value="0" isActive="true" />
                 <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
                 <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
-                <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+                <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="true" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
