@@ -14,7 +14,7 @@
   <tags>eventing message publish subscribe pubsub designer</tags>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.7.2-pre.0" />
+    <dependency id="Intent.Common" version="3.7.2" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
   </dependencies>
   <files>
