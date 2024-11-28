@@ -1,104 +1,36 @@
 {
   "topics": [
       {
-          "title": "Publishing an Existing Integration Command from a Service Command",
-          "description": "How to model the publishing of an existing Integration Command from a Service Command",
+          "title": "Publishing an Integration Command",
+          "description": "How to model the publishing of an Integration Command.",
           "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDExMDVmYTcyLTFjYmEtNDUwNi1hN2Y1LTk5MDc5NWZiZDQ3NCIgeDE9IjI0LjYiIHkxPSI0OC41IiB4Mj0iMjQuNiIgeTI9IjE3LjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMTApIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzRhOTkyNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4NmRlMzMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0yMTEwNWZhNzItMWNiYS00NTA2LWE3ZjUtOTkwNzk1ZmJkNDc0IiB4MT0iMjQuNiIgeTE9IjQ5LjgiIHgyPSIyNC42IiB5Mj0iMTYuMSIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0xMCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNGE5OTI0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzg2ZGUzMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTMxMTA1ZmE3Mi0xY2JhLTQ1MDYtYTdmNS05OTA3OTVmYmQ0NzQiIHgxPSIzNyIgeTE9IjUxLjUiIHgyPSIzNyIgeTI9IjM1LjkiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA3MGMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA5YzRmZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI4LjcuMywgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDEuMi4wIEJ1aWxkIDE2NCkgIC0tPgogIDxnPgogICAgPGcgaWQ9IkxheWVyXzEiPgogICAgICA8cG9seWdvbiBpZD0iX3gzQ19Gb2xkX3gzRV8iIHBvaW50cz0iMjAuNCAyNS4xIDI0LjYgMjguNiAyOC43IDI1LjEgMzYuNCAzMS41IDQwLjIgMzEuNSA0MC4yIDMwLjEgMzEuNCAyMi45IDQwLjIgMTUuNiA0MC4yIDE0LjIgMzYuNCAxNC4yIDI0LjYgMjQuMSAxMi43IDE0LjIgOSAxNC4yIDkgMTUuNiAxNy43IDIyLjggOSAzMC4xIDkgMzEuNSAxMi43IDMxLjUgMjAuNCAyNS4xIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudDExMDVmYTcyLTFjYmEtNDUwNi1hN2Y1LTk5MDc5NWZiZDQ3NCkiLz4KICAgICAgPHBhdGggaWQ9Il94M0NfQm9yZGVyX3gzRV8iIGQ9Ik0yLjEsNS45djMzLjhoNDVWNS45SDIuMVpNNDMuNiwzNi4zSDUuNVY5LjRoMzguMXYyNi45WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtMjExMDVmYTcyLTFjYmEtNDUwNi1hN2Y1LTk5MDc5NWZiZDQ3NCkiLz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSI0OC4yIDM5LjcgNDAuNCA0Ny41IDM4LjIgNDUuMyA0Mi4yIDQxLjIgMjUuOCA0MS4yIDI1LjggMzguMiA0Mi40IDM4LjIgMzguMiAzNCA0MC40IDMxLjkgNDguMiAzOS43IiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0zMTEwNWZhNzItMWNiYS00NTA2LWE3ZjUtOTkwNzk1ZmJkNDc0KSIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+",
-          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#publishing-an-existing-integration-command-from-a-service-command",
+          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#publishing-an-integration-command",
           "contextIds": [
               "81104ae6-2bc5-4bae-b05a-f987b0372d81",
               "ccf14eb6-3a55-4d81-b5b9-d27311c70cb9",
-              "7f01ca8e-0e3c-4735-ae23-a45169f71625"
-            ],
-          "tags": [
-              "publish",
-              "",
-              "integration",
-              "message",
-              "command"
-            ]
-        },
-      {
-          "title": "Publishing an Existing Integration Message from a Service Command",
-          "description": "How to model the publishing of an existing Integration Message from a Service Command.",
-          "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDEzZGViMThhLWY4MjUtNDM2Zi1iMDA4LTgwYzQ5M2Y3NmM3NCIgeDE9IjI0LjYiIHkxPSI0NC41IiB4Mj0iMjQuNiIgeTI9IjEzLjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNikiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZWU3NTIzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Y1YWQyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIxM2RlYjE4YS1mODI1LTQzNmYtYjAwOC04MGM0OTNmNzZjNzQiIHgxPSIyNC42IiB5MT0iNDUuOCIgeDI9IjI0LjYiIHkyPSIxMi4xIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTYpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2VlNzUyMyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmNWFkMjQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0zMTNkZWIxOGEtZjgyNS00MzZmLWIwMDgtODBjNDkzZjc2Yzc0IiB4MT0iMzciIHkxPSI0Ny41IiB4Mj0iMzciIHkyPSIzMS45IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwNzBjMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC43LjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAxLjIuMCBCdWlsZCAxNTQpICAtLT4KICA8Zz4KICAgIDxnIGlkPSJFbnZlbG9wZS12NCI+CiAgICAgIDxnIGlkPSJfeDNDX0VudmVsb3BlX3gzRV8iPgogICAgICAgIDxwb2x5Z29uIGlkPSJfeDNDX0ZvbGRfeDNFXyIgcG9pbnRzPSIyMC40IDI1LjEgMjQuNiAyOC42IDI4LjcgMjUuMSAzNi40IDMxLjUgNDAuMiAzMS41IDQwLjIgMzAuMSAzMS40IDIyLjkgNDAuMiAxNS42IDQwLjIgMTQuMiAzNi40IDE0LjIgMjQuNiAyNC4xIDEyLjcgMTQuMiA5IDE0LjIgOSAxNS42IDE3LjcgMjIuOCA5IDMwLjEgOSAzMS41IDEyLjcgMzEuNSAyMC40IDI1LjEiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50MTNkZWIxOGEtZjgyNS00MzZmLWIwMDgtODBjNDkzZjc2Yzc0KSIvPgogICAgICAgIDxwYXRoIGlkPSJfeDNDX0JvcmRlcl94M0VfIiBkPSJNMi4xLDUuOXYzMy44aDQ1VjUuOUgyLjFaTTQzLjYsMzYuM0g1LjVWOS40aDM4LjFzMCwyNi45LDAsMjYuOVoiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTIxM2RlYjE4YS1mODI1LTQzNmYtYjAwOC04MGM0OTNmNzZjNzQpIi8+CiAgICAgIDwvZz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSI0OC4yIDM5LjcgNDAuNCA0Ny41IDM4LjIgNDUuMyA0Mi4yIDQxLjIgMjUuOCA0MS4yIDI1LjggMzguMiA0Mi40IDM4LjIgMzguMiAzNCA0MC40IDMxLjkgNDguMiAzOS43IiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0zMTNkZWIxOGEtZjgyNS00MzZmLWIwMDgtODBjNDkzZjc2Yzc0KSIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+",
-          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#publishing-an-existing-integration-message-from-a-service-command",
-          "contextIds": [
-              "81104ae6-2bc5-4bae-b05a-f987b0372d81",
-              "ccf14eb6-3a55-4d81-b5b9-d27311c70cb9"
-            ],
-          "tags": [
-              "publish",
-              "",
-              "integration",
-              "message",
-              "event"
-            ]
-        },
-      {
-          "title": "Publishing an Integration Command from a Service",
-          "description": "How to model the publishing of an Integration Command from a Service.",
-          "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDExMDVmYTcyLTFjYmEtNDUwNi1hN2Y1LTk5MDc5NWZiZDQ3NCIgeDE9IjI0LjYiIHkxPSI0OC41IiB4Mj0iMjQuNiIgeTI9IjE3LjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMTApIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzRhOTkyNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4NmRlMzMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0yMTEwNWZhNzItMWNiYS00NTA2LWE3ZjUtOTkwNzk1ZmJkNDc0IiB4MT0iMjQuNiIgeTE9IjQ5LjgiIHgyPSIyNC42IiB5Mj0iMTYuMSIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0xMCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNGE5OTI0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzg2ZGUzMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTMxMTA1ZmE3Mi0xY2JhLTQ1MDYtYTdmNS05OTA3OTVmYmQ0NzQiIHgxPSIzNyIgeTE9IjUxLjUiIHgyPSIzNyIgeTI9IjM1LjkiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA3MGMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA5YzRmZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI4LjcuMywgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDEuMi4wIEJ1aWxkIDE2NCkgIC0tPgogIDxnPgogICAgPGcgaWQ9IkxheWVyXzEiPgogICAgICA8cG9seWdvbiBpZD0iX3gzQ19Gb2xkX3gzRV8iIHBvaW50cz0iMjAuNCAyNS4xIDI0LjYgMjguNiAyOC43IDI1LjEgMzYuNCAzMS41IDQwLjIgMzEuNSA0MC4yIDMwLjEgMzEuNCAyMi45IDQwLjIgMTUuNiA0MC4yIDE0LjIgMzYuNCAxNC4yIDI0LjYgMjQuMSAxMi43IDE0LjIgOSAxNC4yIDkgMTUuNiAxNy43IDIyLjggOSAzMC4xIDkgMzEuNSAxMi43IDMxLjUgMjAuNCAyNS4xIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudDExMDVmYTcyLTFjYmEtNDUwNi1hN2Y1LTk5MDc5NWZiZDQ3NCkiLz4KICAgICAgPHBhdGggaWQ9Il94M0NfQm9yZGVyX3gzRV8iIGQ9Ik0yLjEsNS45djMzLjhoNDVWNS45SDIuMVpNNDMuNiwzNi4zSDUuNVY5LjRoMzguMXYyNi45WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtMjExMDVmYTcyLTFjYmEtNDUwNi1hN2Y1LTk5MDc5NWZiZDQ3NCkiLz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSI0OC4yIDM5LjcgNDAuNCA0Ny41IDM4LjIgNDUuMyA0Mi4yIDQxLjIgMjUuOCA0MS4yIDI1LjggMzguMiA0Mi40IDM4LjIgMzguMiAzNCA0MC40IDMxLjkgNDguMiAzOS43IiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0zMTEwNWZhNzItMWNiYS00NTA2LWE3ZjUtOTkwNzk1ZmJkNDc0KSIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+",
-          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#publishing-an-integration-command-from-a-service",
-          "contextIds": [
-              "81104ae6-2bc5-4bae-b05a-f987b0372d81",
-              "b16578a5-27b1-4047-a8df-f0b783d706bd",
-              "e042bb67-a1df-480c-9935-b26210f78591",
-              "e030c97a-e066-40a7-8188-808c275df3cb"
-            ],
-          "tags": [
-              "publish",
-              "",
-              "integration",
-              "message",
-              "command"
-            ]
-        },
-      {
-          "title": "Publishing an Integration Command from a Service Command",
-          "description": "How to model the publishing of an Integration Command from a Service Command",
-          "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDExMDVmYTcyLTFjYmEtNDUwNi1hN2Y1LTk5MDc5NWZiZDQ3NCIgeDE9IjI0LjYiIHkxPSI0OC41IiB4Mj0iMjQuNiIgeTI9IjE3LjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMTApIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzRhOTkyNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4NmRlMzMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0yMTEwNWZhNzItMWNiYS00NTA2LWE3ZjUtOTkwNzk1ZmJkNDc0IiB4MT0iMjQuNiIgeTE9IjQ5LjgiIHgyPSIyNC42IiB5Mj0iMTYuMSIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0xMCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNGE5OTI0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzg2ZGUzMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTMxMTA1ZmE3Mi0xY2JhLTQ1MDYtYTdmNS05OTA3OTVmYmQ0NzQiIHgxPSIzNyIgeTE9IjUxLjUiIHgyPSIzNyIgeTI9IjM1LjkiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA3MGMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzA5YzRmZiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI4LjcuMywgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDEuMi4wIEJ1aWxkIDE2NCkgIC0tPgogIDxnPgogICAgPGcgaWQ9IkxheWVyXzEiPgogICAgICA8cG9seWdvbiBpZD0iX3gzQ19Gb2xkX3gzRV8iIHBvaW50cz0iMjAuNCAyNS4xIDI0LjYgMjguNiAyOC43IDI1LjEgMzYuNCAzMS41IDQwLjIgMzEuNSA0MC4yIDMwLjEgMzEuNCAyMi45IDQwLjIgMTUuNiA0MC4yIDE0LjIgMzYuNCAxNC4yIDI0LjYgMjQuMSAxMi43IDE0LjIgOSAxNC4yIDkgMTUuNiAxNy43IDIyLjggOSAzMC4xIDkgMzEuNSAxMi43IDMxLjUgMjAuNCAyNS4xIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudDExMDVmYTcyLTFjYmEtNDUwNi1hN2Y1LTk5MDc5NWZiZDQ3NCkiLz4KICAgICAgPHBhdGggaWQ9Il94M0NfQm9yZGVyX3gzRV8iIGQ9Ik0yLjEsNS45djMzLjhoNDVWNS45SDIuMVpNNDMuNiwzNi4zSDUuNVY5LjRoMzguMXYyNi45WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtMjExMDVmYTcyLTFjYmEtNDUwNi1hN2Y1LTk5MDc5NWZiZDQ3NCkiLz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSI0OC4yIDM5LjcgNDAuNCA0Ny41IDM4LjIgNDUuMyA0Mi4yIDQxLjIgMjUuOCA0MS4yIDI1LjggMzguMiA0Mi40IDM4LjIgMzguMiAzNCA0MC40IDMxLjkgNDguMiAzOS43IiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0zMTEwNWZhNzItMWNiYS00NTA2LWE3ZjUtOTkwNzk1ZmJkNDc0KSIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+",
-          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#publishing-an-integration-command-from-a-service-command",
-          "contextIds": [
-              "81104ae6-2bc5-4bae-b05a-f987b0372d81",
-              "ccf14eb6-3a55-4d81-b5b9-d27311c70cb9"
-            ],
-          "tags": [
-              "publish",
-              "",
-              "integration",
-              "message",
-              "command"
-            ]
-        },
-      {
-          "title": "Publishing an Integration Message from a Service",
-          "description": "How to model the publishing of an Integration Message from a Service.",
-          "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDEzZGViMThhLWY4MjUtNDM2Zi1iMDA4LTgwYzQ5M2Y3NmM3NCIgeDE9IjI0LjYiIHkxPSI0NC41IiB4Mj0iMjQuNiIgeTI9IjEzLjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNikiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZWU3NTIzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Y1YWQyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIxM2RlYjE4YS1mODI1LTQzNmYtYjAwOC04MGM0OTNmNzZjNzQiIHgxPSIyNC42IiB5MT0iNDUuOCIgeDI9IjI0LjYiIHkyPSIxMi4xIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTYpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2VlNzUyMyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmNWFkMjQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0zMTNkZWIxOGEtZjgyNS00MzZmLWIwMDgtODBjNDkzZjc2Yzc0IiB4MT0iMzciIHkxPSI0Ny41IiB4Mj0iMzciIHkyPSIzMS45IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwNzBjMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC43LjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAxLjIuMCBCdWlsZCAxNTQpICAtLT4KICA8Zz4KICAgIDxnIGlkPSJFbnZlbG9wZS12NCI+CiAgICAgIDxnIGlkPSJfeDNDX0VudmVsb3BlX3gzRV8iPgogICAgICAgIDxwb2x5Z29uIGlkPSJfeDNDX0ZvbGRfeDNFXyIgcG9pbnRzPSIyMC40IDI1LjEgMjQuNiAyOC42IDI4LjcgMjUuMSAzNi40IDMxLjUgNDAuMiAzMS41IDQwLjIgMzAuMSAzMS40IDIyLjkgNDAuMiAxNS42IDQwLjIgMTQuMiAzNi40IDE0LjIgMjQuNiAyNC4xIDEyLjcgMTQuMiA5IDE0LjIgOSAxNS42IDE3LjcgMjIuOCA5IDMwLjEgOSAzMS41IDEyLjcgMzEuNSAyMC40IDI1LjEiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50MTNkZWIxOGEtZjgyNS00MzZmLWIwMDgtODBjNDkzZjc2Yzc0KSIvPgogICAgICAgIDxwYXRoIGlkPSJfeDNDX0JvcmRlcl94M0VfIiBkPSJNMi4xLDUuOXYzMy44aDQ1VjUuOUgyLjFaTTQzLjYsMzYuM0g1LjVWOS40aDM4LjFzMCwyNi45LDAsMjYuOVoiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTIxM2RlYjE4YS1mODI1LTQzNmYtYjAwOC04MGM0OTNmNzZjNzQpIi8+CiAgICAgIDwvZz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSI0OC4yIDM5LjcgNDAuNCA0Ny41IDM4LjIgNDUuMyA0Mi4yIDQxLjIgMjUuOCA0MS4yIDI1LjggMzguMiA0Mi40IDM4LjIgMzguMiAzNCA0MC40IDMxLjkgNDguMiAzOS43IiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0zMTNkZWIxOGEtZjgyNS00MzZmLWIwMDgtODBjNDkzZjc2Yzc0KSIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+",
-          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#publishing-an-integration-message-from-a-service",
-          "contextIds": [
-              "81104ae6-2bc5-4bae-b05a-f987b0372d81",
               "b16578a5-27b1-4047-a8df-f0b783d706bd",
               "e030c97a-e066-40a7-8188-808c275df3cb",
-              "e042bb67-a1df-480c-9935-b26210f78591"
+              "f45dfee9-f62b-45ac-bfce-a3878e04b73f"
             ],
           "tags": [
               "publish",
               "",
               "integration",
               "message",
-              "event",
-              "service"
+              "command"
             ]
         },
       {
-          "title": "Publishing an Integration Message from a Service Command",
-          "description": "How to model the publishing of an Integration Message from a Service Command.",
+          "title": "Publishing an Integration Event",
+          "description": "How to model the publishing of an Integration Event.",
           "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDEzZGViMThhLWY4MjUtNDM2Zi1iMDA4LTgwYzQ5M2Y3NmM3NCIgeDE9IjI0LjYiIHkxPSI0NC41IiB4Mj0iMjQuNiIgeTI9IjEzLjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNikiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZWU3NTIzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Y1YWQyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIxM2RlYjE4YS1mODI1LTQzNmYtYjAwOC04MGM0OTNmNzZjNzQiIHgxPSIyNC42IiB5MT0iNDUuOCIgeDI9IjI0LjYiIHkyPSIxMi4xIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTYpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2VlNzUyMyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmNWFkMjQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0zMTNkZWIxOGEtZjgyNS00MzZmLWIwMDgtODBjNDkzZjc2Yzc0IiB4MT0iMzciIHkxPSI0Ny41IiB4Mj0iMzciIHkyPSIzMS45IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwNzBjMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC43LjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAxLjIuMCBCdWlsZCAxNTQpICAtLT4KICA8Zz4KICAgIDxnIGlkPSJFbnZlbG9wZS12NCI+CiAgICAgIDxnIGlkPSJfeDNDX0VudmVsb3BlX3gzRV8iPgogICAgICAgIDxwb2x5Z29uIGlkPSJfeDNDX0ZvbGRfeDNFXyIgcG9pbnRzPSIyMC40IDI1LjEgMjQuNiAyOC42IDI4LjcgMjUuMSAzNi40IDMxLjUgNDAuMiAzMS41IDQwLjIgMzAuMSAzMS40IDIyLjkgNDAuMiAxNS42IDQwLjIgMTQuMiAzNi40IDE0LjIgMjQuNiAyNC4xIDEyLjcgMTQuMiA5IDE0LjIgOSAxNS42IDE3LjcgMjIuOCA5IDMwLjEgOSAzMS41IDEyLjcgMzEuNSAyMC40IDI1LjEiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50MTNkZWIxOGEtZjgyNS00MzZmLWIwMDgtODBjNDkzZjc2Yzc0KSIvPgogICAgICAgIDxwYXRoIGlkPSJfeDNDX0JvcmRlcl94M0VfIiBkPSJNMi4xLDUuOXYzMy44aDQ1VjUuOUgyLjFaTTQzLjYsMzYuM0g1LjVWOS40aDM4LjFzMCwyNi45LDAsMjYuOVoiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTIxM2RlYjE4YS1mODI1LTQzNmYtYjAwOC04MGM0OTNmNzZjNzQpIi8+CiAgICAgIDwvZz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSI0OC4yIDM5LjcgNDAuNCA0Ny41IDM4LjIgNDUuMyA0Mi4yIDQxLjIgMjUuOCA0MS4yIDI1LjggMzguMiA0Mi40IDM4LjIgMzguMiAzNCA0MC40IDMxLjkgNDguMiAzOS43IiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0zMTNkZWIxOGEtZjgyNS00MzZmLWIwMDgtODBjNDkzZjc2Yzc0KSIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+",
-          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#publishing-an-integration-message-from-a-service-command",
+          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#publishing-an-integration-event",
           "contextIds": [
               "81104ae6-2bc5-4bae-b05a-f987b0372d81",
-              "ccf14eb6-3a55-4d81-b5b9-d27311c70cb9"
+              "ccf14eb6-3a55-4d81-b5b9-d27311c70cb9",
+              "b16578a5-27b1-4047-a8df-f0b783d706bd",
+              "e030c97a-e066-40a7-8188-808c275df3cb",
+              "f45dfee9-f62b-45ac-bfce-a3878e04b73f"
             ],
           "tags": [
               "publish",
@@ -110,7 +42,7 @@
         },
       {
           "title": "Subscribing to an Integration Command",
-          "description": "How to model the subscriptionof an Integration Command",
+          "description": "How to model the subscription of an Integration Command",
           "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDcxNGIxMjJjLWFkYmItNGY2Ni1hN2FhLTI2YjdiMDJhY2Q4YSIgeDE9IjI2LjQiIHkxPSI0OC41IiB4Mj0iMjYuNCIgeTI9IjE3LjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMTApIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzRhOTkyNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4NmRlMzMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0yNzE0YjEyMmMtYWRiYi00ZjY2LWE3YWEtMjZiN2IwMmFjZDhhIiB4MT0iMjYuNCIgeTE9IjQ5LjgiIHgyPSIyNi40IiB5Mj0iMTYuMSIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0xMCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNGE5OTI0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzg2ZGUzMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTM3MTRiMTIyYy1hZGJiLTRmNjYtYTdhYS0yNmI3YjAyYWNkOGEiIHgxPSIxMi4xIiB5MT0iMzgiIHgyPSIxMi4xIiB5Mj0iNTAuOSIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC00KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNzg1NGEzIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNy4zLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgMTY0KSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxwb2x5Z29uIGlkPSJfeDNDX0ZvbGRfeDNFXyIgcG9pbnRzPSIyMi4yIDI1LjIgMjYuNCAyOC43IDMwLjUgMjUuMiAzOC4yIDMxLjYgNDIgMzEuNiA0MiAzMC4yIDMzLjIgMjMgNDIgMTUuNyA0MiAxNC4zIDM4LjIgMTQuMyAyNi40IDI0LjIgMTQuNSAxNC4zIDEwLjggMTQuMyAxMC44IDE1LjcgMTkuNSAyMi45IDEwLjggMzAuMiAxMC44IDMxLjYgMTQuNSAzMS42IDIyLjIgMjUuMiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQ3MTRiMTIyYy1hZGJiLTRmNjYtYTdhYS0yNmI3YjAyYWNkOGEpIi8+CiAgICAgIDxwYXRoIGlkPSJfeDNDX0JvcmRlcl94M0VfIiBkPSJNMy45LDZ2MzMuOGg0NVY2SDMuOVpNNDUuNCwzNi40SDcuM1Y5LjVoMzguMXMwLDI2LjksMCwyNi45WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtMjcxNGIxMjJjLWFkYmItNGY2Ni1hN2FhLTI2YjdiMDJhY2Q4YSkiLz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIyMy40IDM5LjcgMTUuNSA0Ny41IDEzLjMgNDUuMyAxNy40IDQxLjIgLjkgNDEuMiAuOSAzOC4yIDE3LjYgMzguMiAxMy40IDM0IDE1LjUgMzEuOSAyMy40IDM5LjciIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTM3MTRiMTIyYy1hZGJiLTRmNjYtYTdhYS0yNmI3YjAyYWNkOGEpIi8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=",
           "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#subscribing-to-an-integration-command",
           "contextIds": [
@@ -125,47 +57,13 @@
             ]
         },
       {
-          "title": "Subscribing to an Integration Command with an existing Integration Event Handler",
-          "description": "How to model the subscription of an Integration Command using an existing Integration Event Handler.",
-          "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDcxNGIxMjJjLWFkYmItNGY2Ni1hN2FhLTI2YjdiMDJhY2Q4YSIgeDE9IjI2LjQiIHkxPSI0OC41IiB4Mj0iMjYuNCIgeTI9IjE3LjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMTApIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzRhOTkyNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4NmRlMzMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0yNzE0YjEyMmMtYWRiYi00ZjY2LWE3YWEtMjZiN2IwMmFjZDhhIiB4MT0iMjYuNCIgeTE9IjQ5LjgiIHgyPSIyNi40IiB5Mj0iMTYuMSIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0xMCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNGE5OTI0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzg2ZGUzMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTM3MTRiMTIyYy1hZGJiLTRmNjYtYTdhYS0yNmI3YjAyYWNkOGEiIHgxPSIxMi4xIiB5MT0iMzgiIHgyPSIxMi4xIiB5Mj0iNTAuOSIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC00KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNzg1NGEzIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNy4zLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgMTY0KSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxwb2x5Z29uIGlkPSJfeDNDX0ZvbGRfeDNFXyIgcG9pbnRzPSIyMi4yIDI1LjIgMjYuNCAyOC43IDMwLjUgMjUuMiAzOC4yIDMxLjYgNDIgMzEuNiA0MiAzMC4yIDMzLjIgMjMgNDIgMTUuNyA0MiAxNC4zIDM4LjIgMTQuMyAyNi40IDI0LjIgMTQuNSAxNC4zIDEwLjggMTQuMyAxMC44IDE1LjcgMTkuNSAyMi45IDEwLjggMzAuMiAxMC44IDMxLjYgMTQuNSAzMS42IDIyLjIgMjUuMiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQ3MTRiMTIyYy1hZGJiLTRmNjYtYTdhYS0yNmI3YjAyYWNkOGEpIi8+CiAgICAgIDxwYXRoIGlkPSJfeDNDX0JvcmRlcl94M0VfIiBkPSJNMy45LDZ2MzMuOGg0NVY2SDMuOVpNNDUuNCwzNi40SDcuM1Y5LjVoMzguMXMwLDI2LjksMCwyNi45WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtMjcxNGIxMjJjLWFkYmItNGY2Ni1hN2FhLTI2YjdiMDJhY2Q4YSkiLz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIyMy40IDM5LjcgMTUuNSA0Ny41IDEzLjMgNDUuMyAxNy40IDQxLjIgLjkgNDEuMiAuOSAzOC4yIDE3LjYgMzguMiAxMy40IDM0IDE1LjUgMzEuOSAyMy40IDM5LjciIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTM3MTRiMTIyYy1hZGJiLTRmNjYtYTdhYS0yNmI3YjAyYWNkOGEpIi8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=",
-          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#subscribing-to-an-integration-command-with-an-existing-integration-event-handler",
-          "contextIds": [
-              "81104ae6-2bc5-4bae-b05a-f987b0372d81",
-              "7f01ca8e-0e3c-4735-ae23-a45169f71625",
-              "c0582230-22f5-4f74-8eb0-ec6fc9364900"
-            ],
-          "tags": [
-              "subscribe",
-              "integration",
-              "message",
-              "command"
-            ]
-        },
-      {
-          "title": "Subscribing to an Integration Message",
-          "description": "How to model the subscription of an Integration Message.",
+          "title": "Subscribing to an Integration Event",
+          "description": "How to model the subscription of an Integration Event.",
           "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDA1OWI2MzA0LTAzYWQtNGQ1NC05OWMwLTY0NjQzOTY4YjIwNiIgeDE9IjI2LjQiIHkxPSI0NC41IiB4Mj0iMjYuNCIgeTI9IjEzLjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNikiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZWU3NTIzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Y1YWQyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIwNTliNjMwNC0wM2FkLTRkNTQtOTljMC02NDY0Mzk2OGIyMDYiIHgxPSIyNi40IiB5MT0iNDUuOCIgeDI9IjI2LjQiIHkyPSIxMi4xIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTYpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2VlNzUyMyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmNWFkMjQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0zMDU5YjYzMDQtMDNhZC00ZDU0LTk5YzAtNjQ2NDM5NjhiMjA2IiB4MT0iMTIuMSIgeTE9IjM0IiB4Mj0iMTIuMSIgeTI9IjQ2LjkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYTk4OGJmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzc4NTRhMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI4LjcuMiwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDEuMi4wIEJ1aWxkIDE1NCkgIC0tPgogIDxnPgogICAgPGcgaWQ9IkVudmVsb3BlLXY0Ij4KICAgICAgPGcgaWQ9Il94M0NfRW52ZWxvcGVfeDNFXyI+CiAgICAgICAgPHBvbHlnb24gaWQ9Il94M0NfRm9sZF94M0VfIiBwb2ludHM9IjIyLjIgMjUuMiAyNi40IDI4LjcgMzAuNSAyNS4yIDM4LjIgMzEuNiA0MiAzMS42IDQyIDMwLjIgMzMuMiAyMyA0MiAxNS43IDQyIDE0LjMgMzguMiAxNC4zIDI2LjQgMjQuMiAxNC41IDE0LjMgMTAuOCAxNC4zIDEwLjggMTUuNyAxOS41IDIyLjkgMTAuOCAzMC4yIDEwLjggMzEuNiAxNC41IDMxLjYgMjIuMiAyNS4yIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudDA1OWI2MzA0LTAzYWQtNGQ1NC05OWMwLTY0NjQzOTY4YjIwNikiLz4KICAgICAgICA8cGF0aCBpZD0iX3gzQ19Cb3JkZXJfeDNFXyIgZD0iTTMuOSw2djMzLjhoNDVWNkgzLjlaTTQ1LjQsMzYuNEg3LjNWOS41aDM4LjFzMCwyNi45LDAsMjYuOVoiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTIwNTliNjMwNC0wM2FkLTRkNTQtOTljMC02NDY0Mzk2OGIyMDYpIi8+CiAgICAgIDwvZz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIyMy40IDM5LjcgMTUuNSA0Ny41IDEzLjMgNDUuMyAxNy40IDQxLjIgLjkgNDEuMiAuOSAzOC4yIDE3LjYgMzguMiAxMy40IDM0IDE1LjUgMzEuOSAyMy40IDM5LjciIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTMwNTliNjMwNC0wM2FkLTRkNTQtOTljMC02NDY0Mzk2OGIyMDYpIi8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=",
-          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#subscribing-to-an-integration-message",
+          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#subscribing-to-an-integration-event",
           "contextIds": [
               "81104ae6-2bc5-4bae-b05a-f987b0372d81",
               "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e"
-            ],
-          "tags": [
-              "subscribe",
-              "integration",
-              "message",
-              "event"
-            ]
-        },
-      {
-          "title": "Subscribing to an Integration Message with an existing Integration Event Handler",
-          "description": "How to model the subscription of an Integration Message with an existing Integration Event Handler.",
-          "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDA1OWI2MzA0LTAzYWQtNGQ1NC05OWMwLTY0NjQzOTY4YjIwNiIgeDE9IjI2LjQiIHkxPSI0NC41IiB4Mj0iMjYuNCIgeTI9IjEzLjQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNikiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZWU3NTIzIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Y1YWQyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIwNTliNjMwNC0wM2FkLTRkNTQtOTljMC02NDY0Mzk2OGIyMDYiIHgxPSIyNi40IiB5MT0iNDUuOCIgeDI9IjI2LjQiIHkyPSIxMi4xIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTYpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2VlNzUyMyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmNWFkMjQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0zMDU5YjYzMDQtMDNhZC00ZDU0LTk5YzAtNjQ2NDM5NjhiMjA2IiB4MT0iMTIuMSIgeTE9IjM0IiB4Mj0iMTIuMSIgeTI9IjQ2LjkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYTk4OGJmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzc4NTRhMyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI4LjcuMiwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDEuMi4wIEJ1aWxkIDE1NCkgIC0tPgogIDxnPgogICAgPGcgaWQ9IkVudmVsb3BlLXY0Ij4KICAgICAgPGcgaWQ9Il94M0NfRW52ZWxvcGVfeDNFXyI+CiAgICAgICAgPHBvbHlnb24gaWQ9Il94M0NfRm9sZF94M0VfIiBwb2ludHM9IjIyLjIgMjUuMiAyNi40IDI4LjcgMzAuNSAyNS4yIDM4LjIgMzEuNiA0MiAzMS42IDQyIDMwLjIgMzMuMiAyMyA0MiAxNS43IDQyIDE0LjMgMzguMiAxNC4zIDI2LjQgMjQuMiAxNC41IDE0LjMgMTAuOCAxNC4zIDEwLjggMTUuNyAxOS41IDIyLjkgMTAuOCAzMC4yIDEwLjggMzEuNiAxNC41IDMxLjYgMjIuMiAyNS4yIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudDA1OWI2MzA0LTAzYWQtNGQ1NC05OWMwLTY0NjQzOTY4YjIwNikiLz4KICAgICAgICA8cGF0aCBpZD0iX3gzQ19Cb3JkZXJfeDNFXyIgZD0iTTMuOSw2djMzLjhoNDVWNkgzLjlaTTQ1LjQsMzYuNEg3LjNWOS41aDM4LjFzMCwyNi45LDAsMjYuOVoiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTIwNTliNjMwNC0wM2FkLTRkNTQtOTljMC02NDY0Mzk2OGIyMDYpIi8+CiAgICAgIDwvZz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIyMy40IDM5LjcgMTUuNSA0Ny41IDEzLjMgNDUuMyAxNy40IDQxLjIgLjkgNDEuMiAuOSAzOC4yIDE3LjYgMzguMiAxMy40IDM0IDE1LjUgMzEuOSAyMy40IDM5LjciIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTMwNTliNjMwNC0wM2FkLTRkNTQtOTljMC02NDY0Mzk2OGIyMDYpIi8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=",
-          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#subscribing-to-an-integration-message-with-an-existing-integration-event-handler",
-          "contextIds": [
-              "81104ae6-2bc5-4bae-b05a-f987b0372d81",
-              "cbe970af-5bad-4d92-a3ed-a24b9fdaa23e",
-              "c0582230-22f5-4f74-8eb0-ec6fc9364900"
             ],
           "tags": [
               "subscribe",
