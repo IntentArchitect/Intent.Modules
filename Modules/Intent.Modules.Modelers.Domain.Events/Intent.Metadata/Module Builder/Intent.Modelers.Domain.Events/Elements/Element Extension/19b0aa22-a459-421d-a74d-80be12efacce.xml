@@ -3,7 +3,6 @@
   <name>Class Extension</name>
   <display>Class Extension: Class</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="7d7f2f3d-41f3-4810-94f8-df6fe8991512">
     <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>

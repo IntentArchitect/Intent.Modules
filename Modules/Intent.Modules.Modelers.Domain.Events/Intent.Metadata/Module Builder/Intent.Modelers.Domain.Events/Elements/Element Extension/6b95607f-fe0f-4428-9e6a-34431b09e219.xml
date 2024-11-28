@@ -4,7 +4,6 @@
   <display>Class Constructor Extension: Class Constructor</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>1</order>
   <genericTypes />
   <typeReference id="d464ada8-dc38-4c73-8213-564209934550">
     <typeId>dec2bd12-4699-4f45-8ec9-3b62dc692d2b</typeId>
@@ -18,7 +17,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>19b0aa22-a459-421d-a74d-80be12efacce</parentFolderId>
+  <parentFolderId>79480502-761f-4883-a4f3-3b03654db367</parentFolderId>
   <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
   <packageName>Intent.Modelers.Domain.Events</packageName>
   <stereotypes>
@@ -95,6 +94,8 @@
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" value="100" isActive="true" />
                 <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
                 <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+                <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
+                <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

@@ -106,27 +106,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#7d13b40e-5cd3-4c79-ae02-3c0a3b27b032</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/OperationExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>OperationExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b4d69073-5abb-4968-b41b-545b2f7408ed</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/PropertyModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>PropertyModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#fa160bd4-a0e3-4035-806f-009106231c7b</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ServicesDiagramExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ServicesDiagramExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
