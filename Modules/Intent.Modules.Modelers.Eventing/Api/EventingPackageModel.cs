@@ -34,6 +34,11 @@ namespace Intent.Modelers.Eventing.Api
         public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
         public string FileLocation => UnderlyingPackage.FileLocation;
 
+        public IList<MessageModel> IntegrationEvents => UnderlyingPackage.ChildElements
+    .GetElementsOfType(MessageModel.SpecializationTypeId)
+    .Select(x => new MessageModel(x))
+    .ToList();
+
         public IList<MessageModel> Messages => UnderlyingPackage.ChildElements
             .GetElementsOfType(MessageModel.SpecializationTypeId)
             .Select(x => new MessageModel(x))

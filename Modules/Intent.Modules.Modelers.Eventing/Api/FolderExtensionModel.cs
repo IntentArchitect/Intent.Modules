@@ -19,6 +19,11 @@ namespace Intent.Modelers.Eventing.Api
         {
         }
 
+        public IList<MessageModel> IntegrationEvents => _element.ChildElements
+            .GetElementsOfType(MessageModel.SpecializationTypeId)
+            .Select(x => new MessageModel(x))
+            .ToList();
+
         public IList<MessageModel> Messages => _element.ChildElements
             .GetElementsOfType(MessageModel.SpecializationTypeId)
             .Select(x => new MessageModel(x))

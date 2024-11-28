@@ -27,8 +27,8 @@
       <metadata />
       <childElements>
         <childElement id="573d1de5-3b75-4013-9ab2-3dd1dadf7e05" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Message</name>
-          <display>New Message: Message</display>
+          <name>New Integration Event</name>
+          <display>New Integration Event: Message</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="369068b0-c9ff-4b1a-b51c-15c3d9de6eca">
