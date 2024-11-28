@@ -1,4 +1,4 @@
-### Version 4.2.3
+### Version 4.3.0
 
 - Improvment: Added `Suggestion` (4.4.x feature) to auto-create a `Domain Event Handler` element from the `Domain Event`.
 
