@@ -5,6 +5,7 @@
 ### Version 4.6.4
 
 - Improvement: The `Secured` Stereotype can now be applied multiple times to an element to represent an `AND` security requirement.
+- Improvement: An `OpenAPI Settings` Stereotype can now be applied to the types `DTO Field` and `Parameter`, allowing for example values to be set to reflect in the OpenApi spec.
 
 ### Version 4.6.3
 
