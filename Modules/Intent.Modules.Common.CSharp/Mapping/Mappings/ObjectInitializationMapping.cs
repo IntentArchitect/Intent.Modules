@@ -155,7 +155,19 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     ctorInit.AddArgument(match?.GetSourceStatement() ?? "default");
                 }
 
-                return ctorInit;
+                if (childMappings.Count == targetCtor.Ctor.Parameters.Count)
+                {
+                    return ctorInit;
+                }
+                else
+                {
+                    // use constructor and object initialization syntax:
+                    var hybridInit = new CSharpObjectInitializerBlock(ctorInit);
+                    hybridInit.AddStatements(childMappings
+                        .Where(x => !targetCtor.Ctor.Parameters.Any(ctorParameter => ctorParameter.TryGetReferenceForModel(x.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name))
+                        .Select(x => new CSharpAssignmentStatement(x.GetTargetStatement(), x.GetSourceStatement())));
+                    return hybridInit;
+                }
             }
 
             var propInit = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
