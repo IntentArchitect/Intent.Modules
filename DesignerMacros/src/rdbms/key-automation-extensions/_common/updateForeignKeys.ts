@@ -3,7 +3,7 @@
 /// <reference path="../../../common/applyAttributeNamingConvention.ts" />
 /// <reference path="../_common/constants.ts" />
 
-function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationApi): void {
+function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationReadOnlyApi): void {
     if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit") {
         return;
     }
@@ -35,7 +35,7 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationApi): void {
         });
 
     function updateForeignKeyAttribute(
-        thisEnd: MacroApi.Context.IAssociationApi,
+        thisEnd: MacroApi.Context.IAssociationReadOnlyApi,
         thisEndType: MacroApi.Context.IElementApi,
         otherEndType: MacroApi.Context.IElementApi,
         targetEndId: string
@@ -51,7 +51,7 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationApi): void {
             let fkNameToUse = `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
             if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
                 if (!fkAttribute.hasMetadata(metadataKey.fkOriginalName) || (fkAttribute.getMetadata(metadataKey.fkOriginalName) == fkAttribute.getName())) {
-                    fkAttribute.setName(fkNameToUse);
+                    fkAttribute.setName(fkNameToUse, false);
                     fkAttribute.setMetadata(metadataKey.fkOriginalName, fkAttribute.getName());
                 }
             }
@@ -91,7 +91,7 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationApi): void {
         }
     }
 
-    function requiresForeignKey(associationEnd: MacroApi.Context.IAssociationApi): boolean {
+    function requiresForeignKey(associationEnd: MacroApi.Context.IAssociationReadOnlyApi): boolean {
         const isSelfReferencingWithoutManyToMany = () => 
             associationEnd.typeReference.getTypeId() === associationEnd.getOtherEnd().typeReference.getTypeId() &&
             (!associationEnd.typeReference.isCollection || !associationEnd.getOtherEnd().typeReference.isCollection);
