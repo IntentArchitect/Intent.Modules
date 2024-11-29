@@ -10,34 +10,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#d96bba63-cb67-4568-b8cf-aea1d90ee1d1</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AttributeExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AttributeExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#1da42774-fe46-4bde-b372-75d70e5bce45</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AttributeKeyExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AttributeKeyExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#d69223e1-2c8c-4cce-af02-cc90cfb0ecf0</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ClassExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ClassExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#e7d6ec8a-49a1-40b2-9075-8c91a2b298bb</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ClassKeyExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ClassKeyExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -166,6 +142,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/RDBMS Types.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>RDBMS Types.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>c1757629-0490-4edd-b22d-368a45601cdf</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.DocumentationTemplate#72ee9ec9-e748-48a5-a286-188f8e557713</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>resources/documentation.json</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>documentation.json</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

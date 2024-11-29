@@ -29,9 +29,11 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
-            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
             <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Select the default data type to be used for all surrogate and foreign keys." isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="guid" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -39,7 +41,7 @@
       <childElements>
         <childElement id="7c216890-3f73-4de3-b10d-04dbca2db4a5" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>guid</name>
-          <display>guid</display>
+          <display>guid = guid</display>
           <isAbstract>false</isAbstract>
           <value>guid</value>
           <genericTypes />
@@ -53,7 +55,7 @@
         </childElement>
         <childElement id="155d19d9-6021-4123-ba8e-38d4f088602b" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>long</name>
-          <display>long</display>
+          <display>long = long</display>
           <isAbstract>false</isAbstract>
           <value>long</value>
           <genericTypes />
@@ -67,7 +69,7 @@
         </childElement>
         <childElement id="836ace2d-f119-4fc9-9df2-5aba083a5d3b" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>int</name>
-          <display>int</display>
+          <display>int = int</display>
           <isAbstract>false</isAbstract>
           <value>int</value>
           <genericTypes />
@@ -98,9 +100,11 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
-            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
             <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="If and how the designer should create and manage the PKs and FKs" isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="explicit" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -108,7 +112,7 @@
       <childElements>
         <childElement id="80f5cb0d-327d-4767-a066-089ce2534974" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Manually add PKs and FKs</name>
-          <display>Manually add PKs and FKs</display>
+          <display>Manually add PKs and FKs = manual</display>
           <isAbstract>false</isAbstract>
           <value>manual</value>
           <genericTypes />
@@ -122,7 +126,7 @@
         </childElement>
         <childElement id="b0baec9c-8f61-4f81-ab93-68e30c7c767c" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Explicitly add PKs and FKs automatically</name>
-          <display>Explicitly add PKs and FKs automatically</display>
+          <display>Explicitly add PKs and FKs automatically = explicit</display>
           <isAbstract>false</isAbstract>
           <value>explicit</value>
           <genericTypes />
@@ -136,7 +140,7 @@
         </childElement>
         <childElement id="8ecefc89-95dd-4dc8-9ad4-1e6ab1b1aa53" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Remove all managed PKs and FKs</name>
-          <display>Remove all managed PKs and FKs</display>
+          <display>Remove all managed PKs and FKs = implicit</display>
           <isAbstract>false</isAbstract>
           <value>implicit</value>
           <genericTypes />
@@ -166,9 +170,11 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
-            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
             <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Format : precision, scale e.g. 16,4" isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
