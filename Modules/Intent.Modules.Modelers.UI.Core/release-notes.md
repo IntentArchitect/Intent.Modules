@@ -1,3 +1,7 @@
+### Version 1.1.0
+
+- Improvement: Unnecessary code no longer generated
+
 ### Version 1.0.0
 
 - Initial release.

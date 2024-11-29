@@ -81,14 +81,6 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#857e6d3d-76a1-47ca-b65c-a265d2fe6e58</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ServicesDiagramExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ServicesDiagramExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <ProjectId>556e7bcc-4e9b-45ee-8a05-6022c1084a2c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

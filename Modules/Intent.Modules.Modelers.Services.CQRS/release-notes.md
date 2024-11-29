@@ -1,3 +1,7 @@
+### Version 5.1.0
+
+- Improvement: Unnecessary code no longer generated
+
 ### Version 5.0.1
 
 - Improvement: Commands and Queries supporting syntax highlighting in the diagrams.
