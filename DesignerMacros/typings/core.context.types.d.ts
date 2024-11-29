@@ -840,6 +840,11 @@ declare namespace MacroApi.Context {
          */
         hasMappings(mappingTypeNameOrId?: string): boolean;
         /**
+         * Returns the mapping model for the supplied mapping type name or id. Returns null if the mapping does not exist.
+         */
+        getMapping(mappingTypeNameOrId: string): IElementToElementMappingApi;
+        getMappings(): IElementToElementMappingApi[];
+        /**
          * Gets the metadata value for the specified key.
          */
         getMetadata(key: string): string;
