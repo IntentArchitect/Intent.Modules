@@ -25,7 +25,7 @@ interface INugetDependency {
     version: string;
 }
 
-async function getLatestNugetPackages(nugetPackageIds: string[]): Promise<ITaskResponse > {
+async function getLatestNugetPackages(nugetPackageIds: string[]): Promise<ITaskResponse> {
 
     let taskConfig: ITaskConfig = {
         nugetPackageIds: nugetPackageIds,
@@ -35,7 +35,9 @@ async function getLatestNugetPackages(nugetPackageIds: string[]): Promise<ITaskR
 
     if (result?.errorMessage) {
         await dialogService.error(result?.errorMessage);
-        return null; // Exit if there's an error
+        return {
+            nugetPackages: []
+        };
     }
 
     // Assuming the response matches the ITaskResponse structure
@@ -104,7 +106,7 @@ function synchronizeModel(packageElement : MacroApi.Context.IElementApi, nugetPa
         let existingElement = packageElement.getChildren().find(c => c.getStereotype(packageVersionSettings).getProperty("Minimum Target Framework").value == key);
         if (existingElement){
             //Update Version No
-            existingElement.setName(value.version);
+            existingElement.setName(value.version, false);
             updateNugetDependencies(existingElement, value.dependencies);
         }else{
             //Create new framework element

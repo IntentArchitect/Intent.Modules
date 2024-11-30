@@ -120,7 +120,7 @@ function getMappedRequestDetails(
 
             return {
                 existingId: existingField?.id,
-                mappingPath: [],
+                mappingPath: [] as string[],
                 name: fieldName,
                 typeId: pk.typeId,
                 isCollection: pk.isCollection,

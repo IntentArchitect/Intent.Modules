@@ -4,7 +4,25 @@
   <name>Security Extensions</name>
   <designerReferences />
   <packageSettings />
-  <packageExtensions />
+  <packageExtensions>
+    <packageExtension type="Services Package" typeId="df45eaf6-9202-4c25-8dd5-677e9ba1e906">
+      <requiredPackages />
+      <creationOptions>
+        <option type="element">
+          <text>Add Security Configuration</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <specializationType>Security Configuration</specializationType>
+          <specializationTypeId>35a8b318-fd7e-40ec-b3b7-dd79cf26524a</specializationTypeId>
+          <defaultName>Security</defaultName>
+          <allowMultiple>false</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type type="Security Configuration" typeId="35a8b318-fd7e-40ec-b3b7-dd79cf26524a" />
+      </typeOrder>
+    </packageExtension>
+  </packageExtensions>
   <elementSettings>
     <elementSetting type="Policy" typeId="9f37c60e-ad88-4484-98ca-6c9aa7ca3134">
       <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAABIJJREFUaEPt2F9MW1UcB/Dv77a9vS0tLQM2DI4QkBHcdGayRR9Q49wcysAZx6ZuMTExe5m4B81I5kyjcYw3I2YqamLkhQ0esJsDwhxZJpFMSNRoyBiby2C6KUgZtL1tufeYe7vChUIX/pRbDH1r77k9v8/5nXPP71zCMv/QMo8f/3/AR5cCLC5ZIlQf2myuXOh/3zMD8QBYeYIvyIBFQOgC2LHOiIvXJXgXAaELYNd6E/whtigI3QDK3F8MhK6AxUDoDlgoIiEAC0EkDGC+iIQCzAeRcIDpiENbzDFj1AUwl/JhBRCPWmglA5oRWFkDc5kO82m7sojjvYhtJsJqK4E3AoFxYNDPMKqcE+5+EjoDyWbCWnv0MrzlZRjyhxEJDchN4SAYgGst3+BGhxuZm7cjb+cbABEiiIQGPJjGqa9FLhwthxT0qyN+X+EzKHipYgKx/yE+AUsJAtKF8NxXBJebPsPNH7+bmPdaxLYcU4IBCLjfRnBoarSfm77CjfMnYbOYoxDbchMpA5rgKeSF+YdKyKIH9WcHMOYNwWmzRiH+9Y8ZXC6XPNsesnQ78bTghQsV4AZ/U+PyeAnfdhnhCxBS7BYkCZOZAKGm6lRLhb6AGMFHApsdwUarGlqTdQWkWwirkwjKtNGO/PSgFMSZX6zI2boPFoRwq/t7SAHfh8caWt9dcoCDJ6RZCWYjQMqeRIDQ/iYMty/FLIlCjnUIFtdNtNHlKWTnCVnJ0cuLP7sfpju9MQFSxhaIT9XoC8h1chCMwNWWOgx0uJFRuBUiePS11eH5jX6k2md+4e3xmeB55CjSNz2rL6AgjQOn7rC7IQVFNRivGMDwqB8CL6P0USkK4fEZ0dnnBOPteMJVry8gkoFe9+cY6DgzEcxsCGXkO/scCEkc8go3Iav0LTDzKvU+fdcAY+hp/Bh/dZ2LQthtJuwpzgRncaI/uQw97i+RvT4fBVILZGceRopqwCel6ANQok0VCBk2AmMMvU2f4mZn8xRE1tN7sbHs9SkLmgLDENor8IdnFa5eG8HDr72HF4vy9auFUi2EjCQCZshE5uMlyH/hAMAAvwS1rCYCgt5hdNW8DXH4bxjNFkii+NyxxuZJ/bRnWNxLidkQBrMVT75/EjIDeoZktazOchCUE5r3dj+6T7yDcdELgEmMuCPHTzVXz/T8jTtAnU6aTFw5/QX+/KkNa4vKkLN9n3qM7POEazUDATlODrwBGLrcjV+//gBMltRrBNQOpvxzsLa2O6SFLAlgCmLaMA7cYRjRnIF5LowwcEB/x2lccddq7qA2GaHd1Q3nRiI/LhlA6VDZodOV8sIAiBIw6Jt6gI8EZTUB2Y7wae384dJPAHZQo/idGVByvL7l+t3MxNzZEe+3ErP17hQImTZC7eFXjA9grAlgJZq2Q2BsV1Vj68UlzUDsoYq+usZKeHkDT65Xi5PFIDoIbEOkFWMQDRyV3xMw107j1b5y745sjFMnEVsz2QcbWDYAJegje4ofkyTWTgRB+c5k9C8rgIooL94pM/kEk4lxRAf+A4n0dgPfGmhtAAAAAElFTkSuQmCC" />

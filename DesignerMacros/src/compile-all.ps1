@@ -8,6 +8,6 @@ foreach ($file in $files) {
 
     if ($LASTEXITCODE -ne 0) {
         Write-Host "Exited early as build failed for $file"
-        exit
+        exit 1
     }
 }

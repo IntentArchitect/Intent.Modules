@@ -2,7 +2,6 @@
 /// <reference path="mappingStore.ts" />
 /// <reference path="elementManager.ts" />
 
-
 enum CrudType {
     Create,
     Read,
@@ -80,7 +79,7 @@ class ProxyServiceHelper {
             ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
 
             let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
-            let mapping = callOp.createMapping(operationElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             
             for (let entry of mappingStore.getMappings()) {
@@ -134,7 +133,7 @@ class ProxyServiceHelper {
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
 
         let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
-        let mapping = callOp.createMapping(actionElement.id, operation.id);
+        let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
         mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
         
         for (let entry of mappingStore.getMappings()) {
