@@ -6,7 +6,7 @@ This Intent Architect module provides programming language agnostic metadata for
 
 This package provides a `Secured` and `Unsecured` stereotype which can be applied to the Service Packages, Services, Service Operations and CQRS Operations:
 
-![Secured and Unsecured stereotypes](image.png)
+![Secured and Unsecured stereotypes](docs/images/secured-and-unsecured-stereotypes.png)
 
 The `Secured` stereotype allows specifying that a resource is only accessible to authorized users and optionally that the authorized user must be within a Role or adhere to a security Policy.
 
