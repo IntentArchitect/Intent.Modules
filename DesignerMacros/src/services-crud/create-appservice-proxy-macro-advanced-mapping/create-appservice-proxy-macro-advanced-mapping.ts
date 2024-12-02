@@ -25,6 +25,6 @@ async function execute(proxy: MacroApi.Context.IElementApi) {
  * Used by Intent.Modelers.Services.ProxyInteractions
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-appservice-proxy-macro-advanced-mapping/create-appservice-proxy-macro-advanced-mapping.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-crud/create-appservice-proxy-macro-advanced-mapping/create-appservice-proxy-macro-advanced-mapping.ts
  */
 //await execute(element);

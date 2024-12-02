@@ -64,7 +64,7 @@ function execute(proxyElement: IElementApi) {
                 existing = createElement("Parameter", param.name, operation.id);
                 operation.collapse();
             }
-            existing.setName(param.name);
+            existing.setName(param.name, false);
             existing.setOrder(index);
             existing.typeReference.setType(param.typeId);
             existing.typeReference.setIsCollection(param.isCollection);

@@ -1,6 +1,6 @@
 /// <reference path="../common/getPrimaryKeysWithMapPath.ts" />
 
-function updateForeignKeyAttribute(startingEndType: MacroApi.Context.IElementApi, destinationEndType: MacroApi.Context.IElementApi, associationEnd: MacroApi.Context.IAssociationApi, associationId: string) {
+function updateForeignKeyAttribute(startingEndType: MacroApi.Context.IElementApi, destinationEndType: MacroApi.Context.IElementApi, associationEnd: MacroApi.Context.IAssociationReadOnlyApi, associationId: string) {
     const ForeignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
     let primaryKeyDict = getPrimaryKeysWithMapPath(destinationEndType);
     let primaryKeyObjects = Object.values(primaryKeyDict);
@@ -18,7 +18,7 @@ function updateForeignKeyAttribute(startingEndType: MacroApi.Context.IElementApi
         if (fk.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
             if (!fk.hasMetadata("fk-original-name") || (fk.getMetadata("fk-original-name") == fk.getName())) {
                 if (fkNameToUse != fk.getName()) {
-                    fk.setName(fkNameToUse);
+                    fk.setName(fkNameToUse, false);
                 }
                 fk.setMetadata("fk-original-name", fk.getName());
             }

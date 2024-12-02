@@ -43,7 +43,7 @@ async function execute(): Promise<void> {
     }
 
     if (pkAttribute.getName().toLowerCase() !== "id") {
-        pkAttribute.setName("id");
+        pkAttribute.setName("id", false);
     }
 
     if (!pkAttribute.hasStereotype(pkStereotypeId)) {

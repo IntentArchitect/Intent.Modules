@@ -50,26 +50,35 @@ function getAsText(values){
   <order>0</order>
   <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
   <packageName>Intent.Metadata.Security</packageName>
+  <validateFunction>const securedStereotypeId = "a9eade71-1d56-4be7-a80c-81046c0c978b";
+const unsecuredStereotypeId = "8b65c29e-1448-43ac-a92a-0e0f86efd6c6";
+
+if (element.hasStereotype(securedStereotypeId) &amp;&amp; element.hasStereotype(unsecuredStereotypeId)) {
+    return "Both the \"Secured\" and \"Unsecured\" stereotypes are applied to the same element";
+}
+
+return null;</validateFunction>
   <properties>
     <property id="2b39acef-6079-48c9-b85e-2b0981f9de70">
-      <comment>A comma delimited list of roles that are allowed to access the resource</comment>
-      <hint>A comma separated list of roles</hint>
+      <comment />
+      <hint>Comma separated list of role names.</hint>
       <name>Roles</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
+      <placeholder>(optional)</placeholder>
       <valueOptions />
       <lookupTypes />
       <isActiveFunction>let securityElementsDefined = lookupTypesOf("Security Configuration")[0]?.getChildren()?.length &gt; 0;
 return !securityElementsDefined || (securityElementsDefined &amp;&amp;  (Roles !== null &amp;&amp; Roles !== undefined &amp;&amp; Roles.trim() !== ''));</isActiveFunction>
     </property>
     <property id="ae5251ff-40a1-4e46-be66-6b176f329f98">
+      <hint>Comma separated list of policy names.</hint>
       <name>Policy</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
+      <placeholder>(optional)</placeholder>
       <valueOptions />
       <lookupTypes />
       <isActiveFunction>let securityElementsDefined = lookupTypesOf("Security Configuration")[0]?.getChildren()?.length &gt; 0;
