@@ -2794,13 +2794,11 @@ To avoid this limitation in the future, either disable private setters or add a 
     const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
     const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x =&gt; x.getName() == pluralize(serviceName));
     const service = existingService !== null &amp;&amp; existingService !== void 0 ? existingService : createElement("Service", serviceName, package.id);
-    const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
-    const existingFolder = package.getChildren("Folder").find(x =&gt; x.getName() == pluralize(folderName));
-    const folder = existingFolder !== null &amp;&amp; existingFolder !== void 0 ? existingFolder : createElement("Folder", pluralize(folderName), package.id);
+    const targetFolder = getOrCreateEntityFolder(element, entity);
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
-    const resultDto = servicesCrud.createMappedResultDto(entity, folder);
+    const resultDto = servicesCrud.createMappedResultDto(entity, targetFolder);
     if (!privateSettersOnly || hasConstructor(entity)) {
-        servicesCrud.createStandardCreateOperation(service, entity, folder);
+        servicesCrud.createStandardCreateOperation(service, entity, targetFolder);
     }
     if (primaryKeys.length &gt; 0) {
         servicesCrud.createStandardFindByIdOperation(service, entity, resultDto);
@@ -2808,17 +2806,29 @@ To avoid this limitation in the future, either disable private setters or add a 
     servicesCrud.createStandardFindAllOperation(service, entity, resultDto);
     if (primaryKeys.length &gt; 0) {
         if (!privateSettersOnly) {
-            servicesCrud.createStandardUpdateOperation(service, entity, folder);
+            servicesCrud.createStandardUpdateOperation(service, entity, targetFolder);
         }
         servicesCrud.createStandardDeleteOperation(service, entity);
         const operations = DomainHelper.getCommandOperations(entity);
         for (const operation of operations) {
-            servicesCrud.createCallOperationCommand(service, operation, entity, folder);
+            servicesCrud.createCallOperationCommand(service, operation, entity, targetFolder);
         }
     }
     service.getChildren("Operation").forEach(operation =&gt; {
         convertToAdvancedMapping.convertOperation(operation, entity);
     });
+}
+function getAggregateRootFolderName(entity) {
+    return pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
+}
+function getOrCreateEntityFolder(folderOrPackage, entity) {
+    var _a;
+    if (folderOrPackage.specialization == "Folder") {
+        return element;
+    }
+    const folderName = getAggregateRootFolderName(entity);
+    const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+    return folder;
 }
 function hasConstructor(entity) {
     return entity.getChildren("Class Constructor").length &gt; 0;
@@ -4342,13 +4352,8 @@ await cqrsCrud.execute(element);
           <text>Create CRUD CQRS Operations</text>
           <shortcut>alt + c</shortcut>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
-          <isOptionVisibleFunction>function folderHasCommandOrQueries(element) {
-    return element.specialization === "Folder" &amp;&amp; (element.getChildren("Command").length &gt; 0 || element.getChildren("Query").length &gt; 0);
-}
-
-return application.isModuleInstalled("Intent.Modelers.Services.CQRS") &amp;&amp;
-    application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa").value == "advanced" &amp;&amp;
-    !folderHasCommandOrQueries(element);</isOptionVisibleFunction>
+          <isOptionVisibleFunction>return application.isModuleInstalled("Intent.Modelers.Services.CQRS") &amp;&amp;
+    application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa").value == "advanced";</isOptionVisibleFunction>
           <script>/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
 function getSurrogateKeyType() {
     var _a, _b, _c;
@@ -5174,7 +5179,7 @@ function getParent(element, parentSpecializationType) {
         .find(x =&gt; x.getChildren(element.specialization)
         .some(child =&gt; child.id === element.id));
     if (parent == null) {
-        throw new Error("Could not find parent");
+        throw new Error(`Could not find parent for ${element.id}, ${element.getName()}, ${element.specialization}`);
     }
     return parent;
 }
@@ -5831,8 +5836,9 @@ To avoid this limitation in the future, either disable private setters or add a 
         }
     }
     function getBaseNameForElement(owningAggregate, entity, entityIsMany) {
+        // We can get rid of the 'owningAggregate'
         let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
-        return owningAggregate ? `${toPascalCase(owningAggregate.getName())}${entityName}` : entityName;
+        return entityName;
     }
 })(cqrsCrud || (cqrsCrud = {}));
 /**
@@ -5981,7 +5987,7 @@ var convertToAdvancedMapping;
 /// &lt;reference path="../create-crud-macro/create-crud-macro.ts"/&gt;
 /// &lt;reference path="../_common/convertToAdvancedMapping.ts"/&gt;
 async function execute(element, domainClass) {
-    var _a, _b;
+    var _a;
     let entity = !domainClass ? await DomainHelper.openSelectEntityDialog() : domainClass;
     if (entity == null) {
         return;
@@ -5992,33 +5998,46 @@ Some CQRS operations were created successfully, but was limited due to private s
 
 To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
     }
-    const owningEntity = DomainHelper.getOwningAggregate(entity);
-    const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
-    const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+    const targetFolder = getOrCreateEntityFolder(element, entity);
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
     const hasPrimaryKey = primaryKeys.length &gt; 0;
-    const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, folder);
+    const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, targetFolder);
     if (!privateSettersOnly || hasConstructor(entity)) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, folder, primaryKeys));
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, targetFolder, primaryKeys));
     }
     if (hasPrimaryKey) {
-        convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, folder, resultDto));
+        convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, targetFolder, resultDto));
     }
-    convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, folder, resultDto));
+    convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, targetFolder, resultDto));
     if (hasPrimaryKey &amp;&amp; !privateSettersOnly) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, folder));
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, targetFolder));
     }
     const operations = DomainHelper.getCommandOperations(entity);
     for (const operation of operations) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, folder));
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, targetFolder));
     }
     if (hasPrimaryKey) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, folder));
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, targetFolder));
     }
-    const diagramElement = (_b = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName)) !== null &amp;&amp; _b !== void 0 ? _b : createElement("Diagram", folderName, folder.id);
-    diagramElement.loadDiagram();
-    const diagram = getCurrentDiagram();
-    diagram.layoutVisuals(folder, null, true);
+    if (DomainHelper.isAggregateRoot(entity)) {
+        const aggregateRootFolderName = getAggregateRootFolderName(entity);
+        const diagramElement = (_a = targetFolder.getChildren("Diagram").find(x =&gt; x.getName() == aggregateRootFolderName)) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Diagram", aggregateRootFolderName, targetFolder.id);
+        diagramElement.loadDiagram();
+        const diagram = getCurrentDiagram();
+        diagram.layoutVisuals(targetFolder, null, true);
+    }
+}
+function getAggregateRootFolderName(entity) {
+    return pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
+}
+function getOrCreateEntityFolder(folderOrPackage, entity) {
+    var _a;
+    if (folderOrPackage.specialization == "Folder") {
+        return element;
+    }
+    const folderName = getAggregateRootFolderName(entity);
+    const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+    return folder;
 }
 function hasConstructor(entity) {
     return entity.getChildren("Class Constructor").length &gt; 0;
@@ -9600,13 +9619,11 @@ To avoid this limitation in the future, either disable private setters or add a 
     const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
     const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x =&gt; x.getName() == pluralize(serviceName));
     const service = existingService !== null &amp;&amp; existingService !== void 0 ? existingService : createElement("Service", serviceName, package.id);
-    const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
-    const existingFolder = package.getChildren("Folder").find(x =&gt; x.getName() == pluralize(folderName));
-    const folder = existingFolder !== null &amp;&amp; existingFolder !== void 0 ? existingFolder : createElement("Folder", pluralize(folderName), package.id);
+    const targetFolder = getOrCreateEntityFolder(element, entity);
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
-    const resultDto = servicesCrud.createMappedResultDto(entity, folder);
+    const resultDto = servicesCrud.createMappedResultDto(entity, targetFolder);
     if (!privateSettersOnly || hasConstructor(entity)) {
-        servicesCrud.createStandardCreateOperation(service, entity, folder);
+        servicesCrud.createStandardCreateOperation(service, entity, targetFolder);
     }
     if (primaryKeys.length &gt; 0) {
         servicesCrud.createStandardFindByIdOperation(service, entity, resultDto);
@@ -9614,17 +9631,29 @@ To avoid this limitation in the future, either disable private setters or add a 
     servicesCrud.createStandardFindAllOperation(service, entity, resultDto);
     if (primaryKeys.length &gt; 0) {
         if (!privateSettersOnly) {
-            servicesCrud.createStandardUpdateOperation(service, entity, folder);
+            servicesCrud.createStandardUpdateOperation(service, entity, targetFolder);
         }
         servicesCrud.createStandardDeleteOperation(service, entity);
         const operations = DomainHelper.getCommandOperations(entity);
         for (const operation of operations) {
-            servicesCrud.createCallOperationCommand(service, operation, entity, folder);
+            servicesCrud.createCallOperationCommand(service, operation, entity, targetFolder);
         }
     }
     service.getChildren("Operation").forEach(operation =&gt; {
         convertToAdvancedMapping.convertOperation(operation, entity);
     });
+}
+function getAggregateRootFolderName(entity) {
+    return pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
+}
+function getOrCreateEntityFolder(folderOrPackage, entity) {
+    var _a;
+    if (folderOrPackage.specialization == "Folder") {
+        return element;
+    }
+    const folderName = getAggregateRootFolderName(entity);
+    const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+    return folder;
 }
 function hasConstructor(entity) {
     return entity.getChildren("Class Constructor").length &gt; 0;
@@ -11148,13 +11177,8 @@ await cqrsCrud.execute(element);
           <text>Create CRUD CQRS Operations</text>
           <shortcut>ctrl + shift + u</shortcut>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
-          <isOptionVisibleFunction>function folderHasCommandOrQueries(element) {
-    return element.specialization === "Folder" &amp;&amp; (element.getChildren("Command").length &gt; 0 || element.getChildren("Query").length &gt; 0);
-}
-
-return application.isModuleInstalled("Intent.Modelers.Services.CQRS") &amp;&amp;
-    application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa").value == "advanced" &amp;&amp;
-    !folderHasCommandOrQueries(element);</isOptionVisibleFunction>
+          <isOptionVisibleFunction>return application.isModuleInstalled("Intent.Modelers.Services.CQRS") &amp;&amp;
+    application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa").value == "advanced";</isOptionVisibleFunction>
           <script>/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
 function getSurrogateKeyType() {
     var _a, _b, _c;
@@ -11980,7 +12004,7 @@ function getParent(element, parentSpecializationType) {
         .find(x =&gt; x.getChildren(element.specialization)
         .some(child =&gt; child.id === element.id));
     if (parent == null) {
-        throw new Error("Could not find parent");
+        throw new Error(`Could not find parent for ${element.id}, ${element.getName()}, ${element.specialization}`);
     }
     return parent;
 }
@@ -12637,8 +12661,9 @@ To avoid this limitation in the future, either disable private setters or add a 
         }
     }
     function getBaseNameForElement(owningAggregate, entity, entityIsMany) {
+        // We can get rid of the 'owningAggregate'
         let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
-        return owningAggregate ? `${toPascalCase(owningAggregate.getName())}${entityName}` : entityName;
+        return entityName;
     }
 })(cqrsCrud || (cqrsCrud = {}));
 /**
@@ -12787,7 +12812,7 @@ var convertToAdvancedMapping;
 /// &lt;reference path="../create-crud-macro/create-crud-macro.ts"/&gt;
 /// &lt;reference path="../_common/convertToAdvancedMapping.ts"/&gt;
 async function execute(element, domainClass) {
-    var _a, _b;
+    var _a;
     let entity = !domainClass ? await DomainHelper.openSelectEntityDialog() : domainClass;
     if (entity == null) {
         return;
@@ -12798,33 +12823,46 @@ Some CQRS operations were created successfully, but was limited due to private s
 
 To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
     }
-    const owningEntity = DomainHelper.getOwningAggregate(entity);
-    const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
-    const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+    const targetFolder = getOrCreateEntityFolder(element, entity);
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
     const hasPrimaryKey = primaryKeys.length &gt; 0;
-    const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, folder);
+    const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, targetFolder);
     if (!privateSettersOnly || hasConstructor(entity)) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, folder, primaryKeys));
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, targetFolder, primaryKeys));
     }
     if (hasPrimaryKey) {
-        convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, folder, resultDto));
+        convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, targetFolder, resultDto));
     }
-    convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, folder, resultDto));
+    convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, targetFolder, resultDto));
     if (hasPrimaryKey &amp;&amp; !privateSettersOnly) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, folder));
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, targetFolder));
     }
     const operations = DomainHelper.getCommandOperations(entity);
     for (const operation of operations) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, folder));
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, targetFolder));
     }
     if (hasPrimaryKey) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, folder));
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, targetFolder));
     }
-    const diagramElement = (_b = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName)) !== null &amp;&amp; _b !== void 0 ? _b : createElement("Diagram", folderName, folder.id);
-    diagramElement.loadDiagram();
-    const diagram = getCurrentDiagram();
-    diagram.layoutVisuals(folder, null, true);
+    if (DomainHelper.isAggregateRoot(entity)) {
+        const aggregateRootFolderName = getAggregateRootFolderName(entity);
+        const diagramElement = (_a = targetFolder.getChildren("Diagram").find(x =&gt; x.getName() == aggregateRootFolderName)) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Diagram", aggregateRootFolderName, targetFolder.id);
+        diagramElement.loadDiagram();
+        const diagram = getCurrentDiagram();
+        diagram.layoutVisuals(targetFolder, null, true);
+    }
+}
+function getAggregateRootFolderName(entity) {
+    return pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
+}
+function getOrCreateEntityFolder(folderOrPackage, entity) {
+    var _a;
+    if (folderOrPackage.specialization == "Folder") {
+        return element;
+    }
+    const folderName = getAggregateRootFolderName(entity);
+    const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+    return folder;
 }
 function hasConstructor(entity) {
     return entity.getChildren("Class Constructor").length &gt; 0;

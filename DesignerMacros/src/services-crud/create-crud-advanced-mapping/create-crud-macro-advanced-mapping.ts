@@ -20,15 +20,13 @@ To avoid this limitation in the future, either disable private setters or add a 
     const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x => x.getName() == pluralize(serviceName));
     const service = existingService ?? createElement("Service", serviceName, package.id);
 
-    const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
-    const existingFolder = package.getChildren("Folder").find(x => x.getName() == pluralize(folderName));
-    const folder = existingFolder ?? createElement("Folder", pluralize(folderName), package.id);
+    const targetFolder = getOrCreateEntityFolder(element, entity);
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
 
-    const resultDto = servicesCrud.createMappedResultDto(entity, folder);
+    const resultDto = servicesCrud.createMappedResultDto(entity, targetFolder);
 
     if (!privateSettersOnly || hasConstructor(entity)) {
-        servicesCrud.createStandardCreateOperation(service, entity, folder);
+        servicesCrud.createStandardCreateOperation(service, entity, targetFolder);
     }
 
     if (primaryKeys.length > 0) {
@@ -39,13 +37,13 @@ To avoid this limitation in the future, either disable private setters or add a 
 
     if (primaryKeys.length > 0) {
         if (!privateSettersOnly){
-            servicesCrud.createStandardUpdateOperation(service, entity, folder);
+            servicesCrud.createStandardUpdateOperation(service, entity, targetFolder);
         }
         servicesCrud.createStandardDeleteOperation(service, entity);
 
         const operations = DomainHelper.getCommandOperations(entity);     
         for (const operation of operations) {
-            servicesCrud.createCallOperationCommand(service, operation, entity, folder);
+            servicesCrud.createCallOperationCommand(service, operation, entity, targetFolder);
         }
 
     }
@@ -53,6 +51,20 @@ To avoid this limitation in the future, either disable private setters or add a 
     service.getChildren("Operation").forEach(operation => {
         convertToAdvancedMapping.convertOperation(operation, entity);
     })
+}
+
+function getAggregateRootFolderName(entity: MacroApi.Context.IElementApi) {
+    return pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
+}
+
+function getOrCreateEntityFolder(folderOrPackage: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
+    if (folderOrPackage.specialization == "Folder") {
+        return element;
+    }
+
+    const folderName = getAggregateRootFolderName(entity);
+    const folder = element.getChildren().find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), element.id);
+    return folder;
 }
 
 function hasConstructor(entity: MacroApi.Context.IElementApi): boolean {

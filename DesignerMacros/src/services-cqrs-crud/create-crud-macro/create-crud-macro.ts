@@ -359,8 +359,9 @@ To avoid this limitation in the future, either disable private setters or add a 
     }
 
     function getBaseNameForElement(owningAggregate: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi, entityIsMany: boolean): string {
+        // Keeping 'owningAggregate' in case we still need to use it as part of the name one day
         let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
-        return owningAggregate ? `${toPascalCase(owningAggregate.getName())}${entityName}` : entityName;
+        return entityName;
     }
 }
 /**
