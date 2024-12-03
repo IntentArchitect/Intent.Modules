@@ -259,7 +259,7 @@ steps:
       foreach ($file in $files) {
         $number++
         Write-Host ""
-        Write-Host "$number of $($files.Length), $($file.Name)"
+        Write-Host "Processing $($file.Name) ($number of $($files.Length))..."
 
         if ($file.Name -like "*-alpha.*.imod") {
             $expression = "module-server-client-cli `"upload-module`" `"$serverUrl`" `"$apiKey`" `"$($file.FullName)`" --unlisted"
@@ -288,7 +288,7 @@ steps:
             continue
         }
 
-        Write-Host "No action for $($file.Name)"
+        Write-Host "Not applicable, skipped."
       }
 
 - task: DotNetCoreCLI@2
