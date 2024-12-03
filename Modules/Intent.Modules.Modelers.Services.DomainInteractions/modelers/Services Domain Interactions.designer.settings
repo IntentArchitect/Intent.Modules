@@ -1623,6 +1623,150 @@ class DomainHelper {
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
     }
 }
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../common/domainHelper.ts" /&gt;
+var convertToAdvancedMapping;
+(function (convertToAdvancedMapping) {
+    function execute() {
+        var _a, _b, _c, _d, _e, _f;
+        if (element.specialization == "Service") {
+            let entity = (_c = (_b = (_a = element.getChildren("Operation").find(x =&gt; x.getName().startsWith("Find"))) === null || _a === void 0 ? void 0 : _a.typeReference.getType()) === null || _b === void 0 ? void 0 : _b.getMapping()) === null || _c === void 0 ? void 0 : _c.getElement();
+            element.getChildren("Operation").forEach(operation =&gt; {
+                convertOperation(operation, entity);
+            });
+        }
+        else if (element.specialization == "Operation") {
+            let dtoParam = element.getChildren("Parameter").find(x =&gt; x.typeReference.getType().specialization == "DTO");
+            let dto = (_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType()) !== null &amp;&amp; _d !== void 0 ? _d : (_e = element.typeReference) === null || _e === void 0 ? void 0 : _e.getType();
+            let entity = (_f = dto === null || dto === void 0 ? void 0 : dto.getMapping().getElement()) !== null &amp;&amp; _f !== void 0 ? _f : lookupTypesOf("Class").find(x =&gt; x.getName() == element.getName().replace("Delete", ""));
+            if (entity) {
+                convertOperation(element, entity);
+            }
+            else {
+                console.warn("Cannot execute conversion script on Operation " + element.getName());
+            }
+        }
+        else {
+            console.error("Cannot qualify this script. Please contact Intent Architect support.");
+        }
+    }
+    convertToAdvancedMapping.execute = execute;
+    function convertOperation(operation, entity) {
+        var _a, _b, _c, _d;
+        let dtoParam = operation.getChildren("Parameter").find(x =&gt; x.typeReference.getType().specialization == "DTO");
+        let dto = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType();
+        let target = (_b = (_a = dto === null || dto === void 0 ? void 0 : dto.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) !== null &amp;&amp; _b !== void 0 ? _b : entity;
+        let targetEntity = (_c = target.getParent("Class")) !== null &amp;&amp; _c !== void 0 ? _c : target;
+        // CREATE OPERATION:
+        if (operation.getName().startsWith("Create") /*&amp;&amp; dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
+            let action = createAssociation("Create Entity Action", operation.id, target.id);
+            let mapping = action.createAdvancedMapping(operation.id, targetEntity.id);
+            mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
+            // DELETE OPERATION:
+        }
+        else if (operation.getName().startsWith("Delete") &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
+            let action = createAssociation("Delete Entity Action", operation.id, entity.id);
+            let mapping = action.createAdvancedMapping(operation.id, entity.id);
+            addFilterMapping(mapping, operation, entity);
+            // UPDATE OPERATION:
+        }
+        else if (operation.getName().startsWith("Update") &amp;&amp; ((_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _d === void 0 ? void 0 : _d.getElement().id) == entity.id) {
+            let action = createAssociation("Update Entity Action", operation.id, target.id);
+            // Query Entity Mapping
+            let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, operation, entity);
+            // Update Entity Mapping
+            let updateMapping = action.createAdvancedMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+            // FIND BY ID OPERATION:
+        }
+        else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
+            let action = createAssociation("Query Entity Action", operation.id, target.id);
+            let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, operation, entity);
+            // FIND ALL OPERATION:
+        }
+        else if (operation.getName().startsWith("Find" + pluralize(entity.getName()))) {
+            let action = createAssociation("Query Entity Action", operation.id, target.id);
+            action.typeReference.setIsCollection(true);
+            let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, operation, entity);
+            //Operations (Command)
+        }
+        else if (dto.isMapped()) {
+            let action = createAssociation("Update Entity Action", operation.id, target.id);
+            // Query Entity Mapping
+            let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, operation, entity);
+            // Update Entity Mapping
+            let updateMapping = action.createAdvancedMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
+            updateMapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+        }
+        else {
+            console.warn(`Could not convert operation: ${operation.getName()} (For entity ${entity.getName()}. Has parameters: (${operation.getChildren("Parameter").map(x =&gt; x.getName())}))`);
+        }
+    }
+    convertToAdvancedMapping.convertOperation = convertOperation;
+    function addFilterMapping(mapping, operation, entity) {
+        var _a;
+        let pkFields = DomainHelper.getPrimaryKeys(entity);
+        if (pkFields.length == 1) {
+            let idField = operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id");
+            let pk = pkFields[0];
+            if (idField &amp;&amp; pk) {
+                mapping.addMappedEnd("Filter Mapping", [idField.id], (_a = pk.mapPath) !== null &amp;&amp; _a !== void 0 ? _a : [pk.id]);
+            }
+        }
+        else {
+            pkFields.forEach(pk =&gt; {
+                var _a;
+                let idField = operation.getChildren("Parameter").find(x =&gt; (x.getName().toLowerCase() == pk.name.toLowerCase()));
+                if (idField) {
+                    mapping.addMappedEnd("Filter Mapping", [idField.id], (_a = pk.mapPath) !== null &amp;&amp; _a !== void 0 ? _a : [pk.id]);
+                }
+            });
+        }
+    }
+    function mapContract(mappingType, root, dto, sourcePath, targetPathIds, mapping, isCommand = false) {
+        if (dto.isMapped() &amp;&amp; dto.getMapping().getElement().specialization == "Class Constructor") {
+            if (targetPathIds[targetPathIds.length - 1] != dto.getMapping().getElement().id) {
+                targetPathIds.push(dto.getMapping().getElement().id);
+                console.warn("Invocation Mapping : " + root.id + "-&gt;" + dto.getMapping().getElement().id);
+                mapping.addMappedEnd("Invocation Mapping", [root.id], targetPathIds);
+            }
+        }
+        dto.getChildren("DTO-Field").filter(x =&gt; x.isMapped() &amp;&amp; !fieldsToSkip(isCommand, dto, x)).forEach(field =&gt; {
+            var _a, _b;
+            if (((_a = field.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" || field.typeReference.getIsCollection()) {
+                mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));
+                updateElementWithMappedElement(field);
+            }
+            if (((_b = field.typeReference.getType()) === null || _b === void 0 ? void 0 : _b.specialization) == "DTO") {
+                mapContract(mappingType, root, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)), mapping, isCommand);
+            }
+            field.clearMapping();
+        });
+        dto.clearMapping();
+    }
+    function fieldsToSkip(isCommand, dto, field) {
+        return isCommand &amp;&amp;
+            field.getMapping().getElement().hasStereotype("Primary Key") &amp;&amp;
+            (!field.getMapping().getElement().getStereotype("Primary Key").hasProperty("Data source") || field.getMapping().getElement().getStereotype("Primary Key").getProperty("Data source").value != "User supplied");
+    }
+    function updateElementWithMappedElement(field) {
+        let lastMappedPathElement = field.getMapping().getPath().slice(-1)[0];
+        if (!lastMappedPathElement) {
+            return;
+        }
+        let mappedElement = lastMappedPathElement.getElement();
+        if (!mappedElement) {
+            return;
+        }
+        field.typeReference.setIsNullable(mappedElement.typeReference.isNullable);
+    }
+})(convertToAdvancedMapping || (convertToAdvancedMapping = {}));
 /// &lt;reference path="../common/domainHelper.ts" /&gt;
 class CrudConstants {
 }
@@ -1654,6 +1798,7 @@ class CrudHelper {
         }
     }
     static async openCrudCreationDialog(options) {
+        var _a, _b;
         let classes = lookupTypesOf("Class").filter(x =&gt; CrudHelper.filterClassSelection(x, options));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
@@ -1722,7 +1867,7 @@ class CrudHelper {
             canQueryAll: dialogResult.queryAll == "true",
             canDelete: dialogResult.delete == "true",
             canDomain: dialogResult.domain == "true",
-            selectedDomainOperations: []
+            selectedDomainOperationIds: []
         };
         if (result.canDomain &amp;&amp; foundEntity.getChildren("Operation").length &gt; 0) {
             dialogResult = await dialogService.openForm({
@@ -1737,6 +1882,12 @@ class CrudHelper {
                             submitFormTriggers: ["double-click", "enter"],
                             selectableTypes: [
                                 {
+                                    specializationId: "Class",
+                                    autoExpand: true,
+                                    autoSelectChildren: true,
+                                    isSelectable: false
+                                },
+                                {
                                     specializationId: "Operation",
                                     isSelectable: true
                                 }
@@ -1745,7 +1896,7 @@ class CrudHelper {
                     }
                 ]
             });
-            result.selectedDomainOperations = dialogResult.tree;
+            result.selectedDomainOperationIds = (_b = (_a = dialogResult.tree) === null || _a === void 0 ? void 0 : _a.filter((x) =&gt; x != "0")) !== null &amp;&amp; _b !== void 0 ? _b : [];
         }
         return result;
         function getClassAdditionalInfo(element) {
@@ -2733,7 +2884,86 @@ To avoid this limitation in the future, either disable private setters or add a 
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-crud/create-crud/create-crud.ts
  */
-await servicesCrud.execute();
+//await servicesCrud.execute();
+/// &lt;reference path="../_common/convertToAdvancedMapping.ts"/&gt;
+/// &lt;reference path="../create-crud/create-crud.ts"/&gt;
+async function execute(element) {
+    const package = element.getPackage();
+    let dialogResult = await CrudHelper.openCrudCreationDialog({
+        includeOwnedRelationships: false,
+        allowAbstract: false
+    });
+    if (!dialogResult) {
+        return;
+    }
+    let entity = dialogResult.selectedEntity;
+    if (privateSettersOnly &amp;&amp; !hasConstructor(entity) &amp;&amp; dialogResult.canCreate) {
+        await dialogService.warn(`Partial Service Operation Creation.
+Some service operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
+
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
+    }
+    const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
+    const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x =&gt; x.getName() == serviceName);
+    const service = existingService !== null &amp;&amp; existingService !== void 0 ? existingService : createElement("Service", serviceName, package.id);
+    const targetFolder = getOrCreateEntityFolder(element, entity);
+    const primaryKeys = DomainHelper.getPrimaryKeys(entity);
+    let resultDto = null;
+    if (dialogResult.canQueryById || dialogResult.canQueryAll) {
+        resultDto = servicesCrud.createMappedResultDto(entity, targetFolder);
+    }
+    if ((!privateSettersOnly || hasConstructor(entity)) &amp;&amp; dialogResult.canCreate) {
+        servicesCrud.createStandardCreateOperation(service, entity, targetFolder);
+    }
+    if (primaryKeys.length &gt; 0 &amp;&amp; (!privateSettersOnly &amp;&amp; dialogResult.canUpdate)) {
+        servicesCrud.createStandardUpdateOperation(service, entity, targetFolder);
+    }
+    if (primaryKeys.length &gt; 0 &amp;&amp; dialogResult.canQueryById) {
+        servicesCrud.createStandardFindByIdOperation(service, entity, resultDto);
+    }
+    if (dialogResult.canQueryAll) {
+        servicesCrud.createStandardFindAllOperation(service, entity, resultDto);
+    }
+    if (primaryKeys.length &gt; 0) {
+        if (dialogResult.canDelete) {
+            servicesCrud.createStandardDeleteOperation(service, entity);
+        }
+        if (dialogResult.canDomain) {
+            const operations = DomainHelper.getCommandOperations(entity);
+            for (const operation of operations) {
+                if (!dialogResult.selectedDomainOperationIds.some(x =&gt; x == operation.id)) {
+                    continue;
+                }
+                servicesCrud.createCallOperationCommand(service, operation, entity, targetFolder);
+            }
+        }
+    }
+    service.getChildren("Operation").forEach(operation =&gt; {
+        convertToAdvancedMapping.convertOperation(operation, entity);
+    });
+}
+function getAggregateRootFolderName(entity) {
+    return pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
+}
+function getOrCreateEntityFolder(folderOrPackage, entity) {
+    var _a;
+    if (folderOrPackage.specialization == "Folder") {
+        return element;
+    }
+    const folderName = getAggregateRootFolderName(entity);
+    const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+    return folder;
+}
+function hasConstructor(entity) {
+    return entity.getChildren("Class Constructor").length &gt; 0;
+}
+/**
+ * Used by Intent.Modelers.Services.DomainInteractions
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-crud/create-crud-advanced-mapping/create-crud-advanced-mapping.ts
+ */
+await execute(element);
 </script>
         </option>
         <option>
@@ -4809,6 +5039,7 @@ class CrudHelper {
         }
     }
     static async openCrudCreationDialog(options) {
+        var _a, _b;
         let classes = lookupTypesOf("Class").filter(x =&gt; CrudHelper.filterClassSelection(x, options));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
@@ -4890,23 +5121,24 @@ class CrudHelper {
                         treeViewOptions: {
                             rootId: foundEntity.id,
                             submitFormTriggers: ["double-click", "enter"],
+                            isMultiSelect: true,
                             selectableTypes: [
                                 {
                                     specializationId: "Class",
                                     autoExpand: true,
                                     autoSelectChildren: true,
-                                    isSelectable: false
+                                    isSelectable: (x) =&gt; true
                                 },
                                 {
                                     specializationId: "Operation",
-                                    isSelectable: true
+                                    isSelectable: (x) =&gt; true
                                 }
                             ]
                         }
                     }
                 ]
             });
-            result.selectedDomainOperationIds = dialogResult.tree.filter((x) =&gt; x != "0");
+            result.selectedDomainOperationIds = (_b = (_a = dialogResult.tree) === null || _a === void 0 ? void 0 : _a.filter((x) =&gt; x != "0")) !== null &amp;&amp; _b !== void 0 ? _b : [];
         }
         return result;
         function getClassAdditionalInfo(element) {
@@ -8482,6 +8714,150 @@ class DomainHelper {
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
     }
 }
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../common/domainHelper.ts" /&gt;
+var convertToAdvancedMapping;
+(function (convertToAdvancedMapping) {
+    function execute() {
+        var _a, _b, _c, _d, _e, _f;
+        if (element.specialization == "Service") {
+            let entity = (_c = (_b = (_a = element.getChildren("Operation").find(x =&gt; x.getName().startsWith("Find"))) === null || _a === void 0 ? void 0 : _a.typeReference.getType()) === null || _b === void 0 ? void 0 : _b.getMapping()) === null || _c === void 0 ? void 0 : _c.getElement();
+            element.getChildren("Operation").forEach(operation =&gt; {
+                convertOperation(operation, entity);
+            });
+        }
+        else if (element.specialization == "Operation") {
+            let dtoParam = element.getChildren("Parameter").find(x =&gt; x.typeReference.getType().specialization == "DTO");
+            let dto = (_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType()) !== null &amp;&amp; _d !== void 0 ? _d : (_e = element.typeReference) === null || _e === void 0 ? void 0 : _e.getType();
+            let entity = (_f = dto === null || dto === void 0 ? void 0 : dto.getMapping().getElement()) !== null &amp;&amp; _f !== void 0 ? _f : lookupTypesOf("Class").find(x =&gt; x.getName() == element.getName().replace("Delete", ""));
+            if (entity) {
+                convertOperation(element, entity);
+            }
+            else {
+                console.warn("Cannot execute conversion script on Operation " + element.getName());
+            }
+        }
+        else {
+            console.error("Cannot qualify this script. Please contact Intent Architect support.");
+        }
+    }
+    convertToAdvancedMapping.execute = execute;
+    function convertOperation(operation, entity) {
+        var _a, _b, _c, _d;
+        let dtoParam = operation.getChildren("Parameter").find(x =&gt; x.typeReference.getType().specialization == "DTO");
+        let dto = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType();
+        let target = (_b = (_a = dto === null || dto === void 0 ? void 0 : dto.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) !== null &amp;&amp; _b !== void 0 ? _b : entity;
+        let targetEntity = (_c = target.getParent("Class")) !== null &amp;&amp; _c !== void 0 ? _c : target;
+        // CREATE OPERATION:
+        if (operation.getName().startsWith("Create") /*&amp;&amp; dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
+            let action = createAssociation("Create Entity Action", operation.id, target.id);
+            let mapping = action.createAdvancedMapping(operation.id, targetEntity.id);
+            mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
+            // DELETE OPERATION:
+        }
+        else if (operation.getName().startsWith("Delete") &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
+            let action = createAssociation("Delete Entity Action", operation.id, entity.id);
+            let mapping = action.createAdvancedMapping(operation.id, entity.id);
+            addFilterMapping(mapping, operation, entity);
+            // UPDATE OPERATION:
+        }
+        else if (operation.getName().startsWith("Update") &amp;&amp; ((_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _d === void 0 ? void 0 : _d.getElement().id) == entity.id) {
+            let action = createAssociation("Update Entity Action", operation.id, target.id);
+            // Query Entity Mapping
+            let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, operation, entity);
+            // Update Entity Mapping
+            let updateMapping = action.createAdvancedMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+            // FIND BY ID OPERATION:
+        }
+        else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
+            let action = createAssociation("Query Entity Action", operation.id, target.id);
+            let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, operation, entity);
+            // FIND ALL OPERATION:
+        }
+        else if (operation.getName().startsWith("Find" + pluralize(entity.getName()))) {
+            let action = createAssociation("Query Entity Action", operation.id, target.id);
+            action.typeReference.setIsCollection(true);
+            let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, operation, entity);
+            //Operations (Command)
+        }
+        else if (dto.isMapped()) {
+            let action = createAssociation("Update Entity Action", operation.id, target.id);
+            // Query Entity Mapping
+            let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+            addFilterMapping(queryMapping, operation, entity);
+            // Update Entity Mapping
+            let updateMapping = action.createAdvancedMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
+            updateMapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
+            mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
+        }
+        else {
+            console.warn(`Could not convert operation: ${operation.getName()} (For entity ${entity.getName()}. Has parameters: (${operation.getChildren("Parameter").map(x =&gt; x.getName())}))`);
+        }
+    }
+    convertToAdvancedMapping.convertOperation = convertOperation;
+    function addFilterMapping(mapping, operation, entity) {
+        var _a;
+        let pkFields = DomainHelper.getPrimaryKeys(entity);
+        if (pkFields.length == 1) {
+            let idField = operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id");
+            let pk = pkFields[0];
+            if (idField &amp;&amp; pk) {
+                mapping.addMappedEnd("Filter Mapping", [idField.id], (_a = pk.mapPath) !== null &amp;&amp; _a !== void 0 ? _a : [pk.id]);
+            }
+        }
+        else {
+            pkFields.forEach(pk =&gt; {
+                var _a;
+                let idField = operation.getChildren("Parameter").find(x =&gt; (x.getName().toLowerCase() == pk.name.toLowerCase()));
+                if (idField) {
+                    mapping.addMappedEnd("Filter Mapping", [idField.id], (_a = pk.mapPath) !== null &amp;&amp; _a !== void 0 ? _a : [pk.id]);
+                }
+            });
+        }
+    }
+    function mapContract(mappingType, root, dto, sourcePath, targetPathIds, mapping, isCommand = false) {
+        if (dto.isMapped() &amp;&amp; dto.getMapping().getElement().specialization == "Class Constructor") {
+            if (targetPathIds[targetPathIds.length - 1] != dto.getMapping().getElement().id) {
+                targetPathIds.push(dto.getMapping().getElement().id);
+                console.warn("Invocation Mapping : " + root.id + "-&gt;" + dto.getMapping().getElement().id);
+                mapping.addMappedEnd("Invocation Mapping", [root.id], targetPathIds);
+            }
+        }
+        dto.getChildren("DTO-Field").filter(x =&gt; x.isMapped() &amp;&amp; !fieldsToSkip(isCommand, dto, x)).forEach(field =&gt; {
+            var _a, _b;
+            if (((_a = field.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" || field.typeReference.getIsCollection()) {
+                mapping.addMappedEnd(mappingType, sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)));
+                updateElementWithMappedElement(field);
+            }
+            if (((_b = field.typeReference.getType()) === null || _b === void 0 ? void 0 : _b.specialization) == "DTO") {
+                mapContract(mappingType, root, field.typeReference.getType(), sourcePath.concat([field.id]), targetPathIds.concat(field.getMapping().getPath().map(x =&gt; x.id)), mapping, isCommand);
+            }
+            field.clearMapping();
+        });
+        dto.clearMapping();
+    }
+    function fieldsToSkip(isCommand, dto, field) {
+        return isCommand &amp;&amp;
+            field.getMapping().getElement().hasStereotype("Primary Key") &amp;&amp;
+            (!field.getMapping().getElement().getStereotype("Primary Key").hasProperty("Data source") || field.getMapping().getElement().getStereotype("Primary Key").getProperty("Data source").value != "User supplied");
+    }
+    function updateElementWithMappedElement(field) {
+        let lastMappedPathElement = field.getMapping().getPath().slice(-1)[0];
+        if (!lastMappedPathElement) {
+            return;
+        }
+        let mappedElement = lastMappedPathElement.getElement();
+        if (!mappedElement) {
+            return;
+        }
+        field.typeReference.setIsNullable(mappedElement.typeReference.isNullable);
+    }
+})(convertToAdvancedMapping || (convertToAdvancedMapping = {}));
 /// &lt;reference path="../common/domainHelper.ts" /&gt;
 class CrudConstants {
 }
@@ -8513,6 +8889,7 @@ class CrudHelper {
         }
     }
     static async openCrudCreationDialog(options) {
+        var _a, _b;
         let classes = lookupTypesOf("Class").filter(x =&gt; CrudHelper.filterClassSelection(x, options));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
@@ -8581,7 +8958,7 @@ class CrudHelper {
             canQueryAll: dialogResult.queryAll == "true",
             canDelete: dialogResult.delete == "true",
             canDomain: dialogResult.domain == "true",
-            selectedDomainOperations: []
+            selectedDomainOperationIds: []
         };
         if (result.canDomain &amp;&amp; foundEntity.getChildren("Operation").length &gt; 0) {
             dialogResult = await dialogService.openForm({
@@ -8596,6 +8973,12 @@ class CrudHelper {
                             submitFormTriggers: ["double-click", "enter"],
                             selectableTypes: [
                                 {
+                                    specializationId: "Class",
+                                    autoExpand: true,
+                                    autoSelectChildren: true,
+                                    isSelectable: false
+                                },
+                                {
                                     specializationId: "Operation",
                                     isSelectable: true
                                 }
@@ -8604,7 +8987,7 @@ class CrudHelper {
                     }
                 ]
             });
-            result.selectedDomainOperations = dialogResult.tree;
+            result.selectedDomainOperationIds = (_b = (_a = dialogResult.tree) === null || _a === void 0 ? void 0 : _a.filter((x) =&gt; x != "0")) !== null &amp;&amp; _b !== void 0 ? _b : [];
         }
         return result;
         function getClassAdditionalInfo(element) {
@@ -9592,7 +9975,86 @@ To avoid this limitation in the future, either disable private setters or add a 
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-crud/create-crud/create-crud.ts
  */
-await servicesCrud.execute();
+//await servicesCrud.execute();
+/// &lt;reference path="../_common/convertToAdvancedMapping.ts"/&gt;
+/// &lt;reference path="../create-crud/create-crud.ts"/&gt;
+async function execute(element) {
+    const package = element.getPackage();
+    let dialogResult = await CrudHelper.openCrudCreationDialog({
+        includeOwnedRelationships: false,
+        allowAbstract: false
+    });
+    if (!dialogResult) {
+        return;
+    }
+    let entity = dialogResult.selectedEntity;
+    if (privateSettersOnly &amp;&amp; !hasConstructor(entity) &amp;&amp; dialogResult.canCreate) {
+        await dialogService.warn(`Partial Service Operation Creation.
+Some service operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
+
+To avoid this limitation in the future, either disable private setters or add a constructor element to the entity.`);
+    }
+    const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
+    const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x =&gt; x.getName() == serviceName);
+    const service = existingService !== null &amp;&amp; existingService !== void 0 ? existingService : createElement("Service", serviceName, package.id);
+    const targetFolder = getOrCreateEntityFolder(element, entity);
+    const primaryKeys = DomainHelper.getPrimaryKeys(entity);
+    let resultDto = null;
+    if (dialogResult.canQueryById || dialogResult.canQueryAll) {
+        resultDto = servicesCrud.createMappedResultDto(entity, targetFolder);
+    }
+    if ((!privateSettersOnly || hasConstructor(entity)) &amp;&amp; dialogResult.canCreate) {
+        servicesCrud.createStandardCreateOperation(service, entity, targetFolder);
+    }
+    if (primaryKeys.length &gt; 0 &amp;&amp; (!privateSettersOnly &amp;&amp; dialogResult.canUpdate)) {
+        servicesCrud.createStandardUpdateOperation(service, entity, targetFolder);
+    }
+    if (primaryKeys.length &gt; 0 &amp;&amp; dialogResult.canQueryById) {
+        servicesCrud.createStandardFindByIdOperation(service, entity, resultDto);
+    }
+    if (dialogResult.canQueryAll) {
+        servicesCrud.createStandardFindAllOperation(service, entity, resultDto);
+    }
+    if (primaryKeys.length &gt; 0) {
+        if (dialogResult.canDelete) {
+            servicesCrud.createStandardDeleteOperation(service, entity);
+        }
+        if (dialogResult.canDomain) {
+            const operations = DomainHelper.getCommandOperations(entity);
+            for (const operation of operations) {
+                if (!dialogResult.selectedDomainOperationIds.some(x =&gt; x == operation.id)) {
+                    continue;
+                }
+                servicesCrud.createCallOperationCommand(service, operation, entity, targetFolder);
+            }
+        }
+    }
+    service.getChildren("Operation").forEach(operation =&gt; {
+        convertToAdvancedMapping.convertOperation(operation, entity);
+    });
+}
+function getAggregateRootFolderName(entity) {
+    return pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
+}
+function getOrCreateEntityFolder(folderOrPackage, entity) {
+    var _a;
+    if (folderOrPackage.specialization == "Folder") {
+        return element;
+    }
+    const folderName = getAggregateRootFolderName(entity);
+    const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+    return folder;
+}
+function hasConstructor(entity) {
+    return entity.getChildren("Class Constructor").length &gt; 0;
+}
+/**
+ * Used by Intent.Modelers.Services.DomainInteractions
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-crud/create-crud-advanced-mapping/create-crud-advanced-mapping.ts
+ */
+await execute(element);
 </script>
         </option>
         <option>
@@ -11668,6 +12130,7 @@ class CrudHelper {
         }
     }
     static async openCrudCreationDialog(options) {
+        var _a, _b;
         let classes = lookupTypesOf("Class").filter(x =&gt; CrudHelper.filterClassSelection(x, options));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
@@ -11749,23 +12212,24 @@ class CrudHelper {
                         treeViewOptions: {
                             rootId: foundEntity.id,
                             submitFormTriggers: ["double-click", "enter"],
+                            isMultiSelect: true,
                             selectableTypes: [
                                 {
                                     specializationId: "Class",
                                     autoExpand: true,
                                     autoSelectChildren: true,
-                                    isSelectable: false
+                                    isSelectable: (x) =&gt; true
                                 },
                                 {
                                     specializationId: "Operation",
-                                    isSelectable: true
+                                    isSelectable: (x) =&gt; true
                                 }
                             ]
                         }
                     }
                 ]
             });
-            result.selectedDomainOperationIds = dialogResult.tree.filter((x) =&gt; x != "0");
+            result.selectedDomainOperationIds = (_b = (_a = dialogResult.tree) === null || _a === void 0 ? void 0 : _a.filter((x) =&gt; x != "0")) !== null &amp;&amp; _b !== void 0 ? _b : [];
         }
         return result;
         function getClassAdditionalInfo(element) {

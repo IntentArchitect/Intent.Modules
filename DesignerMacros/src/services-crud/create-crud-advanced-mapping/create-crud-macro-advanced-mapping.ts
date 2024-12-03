@@ -5,7 +5,7 @@ async function execute(element: IElementApi) {
     const package = element.getPackage();
 
     let dialogResult = await CrudHelper.openCrudCreationDialog({
-        includeOwnedRelationships: true,
+        includeOwnedRelationships: false, // App Service doesn't support nested (yet)
         allowAbstract: false
     });
 
@@ -24,7 +24,7 @@ To avoid this limitation in the future, either disable private setters or add a 
     }
 
     const serviceName = `${toPascalCase(pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName()))}Service`;
-    const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x => x.getName() == pluralize(serviceName));
+    const existingService = element.specialization == "Service" ? element : package.getChildren("Service").find(x => x.getName() == serviceName);
     const service = existingService ?? createElement("Service", serviceName, package.id);
 
     const targetFolder = getOrCreateEntityFolder(element, entity);

@@ -122,16 +122,17 @@ class CrudHelper {
                         treeViewOptions: {
                             rootId: foundEntity.id,
                             submitFormTriggers: ["double-click", "enter"],
+                            isMultiSelect: true,
                             selectableTypes: [
                                 {
                                     specializationId: "Class",
                                     autoExpand: true,
                                     autoSelectChildren: true,
-                                    isSelectable: false
+                                    isSelectable: (x) => true
                                 },
                                 {
                                     specializationId: "Operation",
-                                    isSelectable: true
+                                    isSelectable: (x) => true
                                 }
                             ]
                         }
