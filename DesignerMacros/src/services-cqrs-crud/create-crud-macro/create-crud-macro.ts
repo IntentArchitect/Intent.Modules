@@ -5,6 +5,7 @@
 /// <reference path="../_common/onMapQuery.ts" />
 /// <reference path="../../common/attributeWithMapPath.ts" />
 /// <reference path="../../common/elementManager.ts" />
+/// <reference path="../../common/crudHelper.ts" />
 
 const privateSettersOnly = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")?.value == "true";
 const mapToDomainOperationSettingId = "7c31c459-6229-4f10-bf13-507348cd8828";
@@ -12,7 +13,7 @@ const mapToDomainOperationSettingId = "7c31c459-6229-4f10-bf13-507348cd8828";
 namespace cqrsCrud {
 
     export async function execute(element: IElementApi) {
-        let entity = await DomainHelper.openSelectEntityDialog();
+        let entity = await CrudHelper.openBasicSelectEntityDialog();
         if (entity == null) {
             return;
         }

@@ -1,68 +1,7 @@
 /// <reference path="getSurrogateKeyType.ts"/>
 /// <reference path="attributeWithMapPath.ts"/>
 
-interface IISelectEntityDialogOptions {
-    includeOwnedRelationships: boolean;
-    allowAbstract?: boolean;
-}
-
 class DomainHelper {
-
-    // Super basic selection dialog.
-    public static async openSelectEntityDialog(options?: IISelectEntityDialogOptions): Promise<MacroApi.Context.IElementApi> {
-        let classes = lookupTypesOf("Class").filter(x => DomainHelper.filterClassSelection(x, options));
-        if (classes.length == 0) {
-            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-            return null;
-        }
-
-        let classId = await dialogService.lookupFromOptions(classes.map((x) => ({
-            id: x.id,
-            name: this.getFriendlyDisplayNameForClassSelection(x),
-            additionalInfo: `(${x.getParents().map(item => item.getName()).join("/")})`
-        })));
-
-        if (classId == null) {
-            await dialogService.error(`No class found with id "${classId}".`);
-            return null;
-        }
-
-        let foundEntity = lookup(classId);
-        return foundEntity;
-    }
-
-    public static filterClassSelection(element: MacroApi.Context.IElementApi, options?: IISelectEntityDialogOptions) : boolean {
-
-        if (!(options?.allowAbstract ?? false) && element.getIsAbstract()){
-            return false;
-        }
-
-        if (element.hasStereotype("Repository")){
-            return true;
-        }
-
-        if (options?.includeOwnedRelationships != false && DomainHelper.ownerIsAggregateRoot(element)){
-            return  DomainHelper.hasPrimaryKey(element);
-        }
-
-
-        if ( DomainHelper.isAggregateRoot(element)){
-            let generalizations = element.getAssociations("Generalization").filter(x => x.isTargetEnd());
-            if (generalizations.length == 0) {
-                return true;
-            }
-            let generalization = generalizations[0];
-            let parentEntity = generalization.typeReference.getType();
-            //Could propagate options here but then we need to update compositional crud to support inheritance and it's already a bit of a hack
-            return DomainHelper.filterClassSelection(parentEntity, {includeOwnedRelationships: false, allowAbstract: true});
-        }
-        return false;
-    } 
-
-    private static getFriendlyDisplayNameForClassSelection(element: MacroApi.Context.IElementApi): string {
-        let found = DomainHelper.getOwningAggregate(element);
-        return !found ? element.getName() : `${element.getName()} (${found.getName()})`;
-    }
 
     static isAggregateRoot(element: MacroApi.Context.IElementApi): boolean {
         let result = !element.getAssociations("Association")

@@ -1352,50 +1352,6 @@ function getSurrogateKeyType() {
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
 /// &lt;reference path="attributeWithMapPath.ts"/&gt;
 class DomainHelper {
-    static async openSelectEntityDialog(options) {
-        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.filterClassSelection(x, options));
-        if (classes.length == 0) {
-            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-            return null;
-        }
-        let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
-            id: x.id,
-            name: this.getFriendlyDisplayNameForClassSelection(x),
-            additionalInfo: `(${x.getParents().map(item =&gt; item.getName()).join("/")})`
-        })));
-        if (classId == null) {
-            await dialogService.error(`No class found with id "${classId}".`);
-            return null;
-        }
-        let foundEntity = lookup(classId);
-        return foundEntity;
-    }
-    static filterClassSelection(element, options, allowAbstract = false) {
-        if (!allowAbstract &amp;&amp; element.getIsAbstract()) {
-            return false;
-        }
-        if (element.hasStereotype("Repository")) {
-            return true;
-        }
-        if ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(element)) {
-            return DomainHelper.hasPrimaryKey(element);
-        }
-        if (DomainHelper.isAggregateRoot(element)) {
-            let generalizations = element.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
-            if (generalizations.length == 0) {
-                return true;
-            }
-            let generalization = generalizations[0];
-            let parentEntity = generalization.typeReference.getType();
-            //Could propagate options here but then we need to update compositional crud to support inheritance and it's already a bit of a hack
-            return DomainHelper.filterClassSelection(parentEntity, { includeOwnedRelationships: false }, true);
-        }
-        return false;
-    }
-    static getFriendlyDisplayNameForClassSelection(element) {
-        let found = DomainHelper.getOwningAggregate(element);
-        return !found ? element.getName() : `${element.getName()} (${found.getName()})`;
-    }
     static isAggregateRoot(element) {
         let result = !element.getAssociations("Association")
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
@@ -1818,6 +1774,121 @@ CrudConstants.mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b
 CrudConstants.mapToDomainConstructorForDtosSettingId = "8d1f6a8a-77c8-43a2-8e60-421559725419";
 CrudConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
 class CrudHelper {
+    // Super basic selection dialog.
+    static async openBasicSelectEntityDialog(options) {
+        let classes = lookupTypesOf("Class").filter(x =&gt; CrudHelper.filterClassSelection(x, options));
+        if (classes.length == 0) {
+            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
+            return null;
+        }
+        let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
+            id: x.id,
+            name: getFriendlyDisplayNameForClassSelection(x),
+            additionalInfo: `(${x.getParents().map(item =&gt; item.getName()).join("/")})`
+        })));
+        if (classId == null) {
+            await dialogService.error(`No class found with id "${classId}".`);
+            return null;
+        }
+        let foundEntity = lookup(classId);
+        return foundEntity;
+        function getFriendlyDisplayNameForClassSelection(element) {
+            let aggregateEntity = DomainHelper.getOwningAggregate(element);
+            return !aggregateEntity ? element.getName() : `${element.getName()} (${aggregateEntity.getName()})`;
+        }
+    }
+    static async openCrudCreationDialog(options) {
+        let classes = lookupTypesOf("Class").filter(x =&gt; CrudHelper.filterClassSelection(x, options));
+        if (classes.length == 0) {
+            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
+            return null;
+        }
+        let result = await dialogService.openForm({
+            title: "CRUD Creation Options",
+            fields: [
+                {
+                    id: "entityId",
+                    fieldType: "select",
+                    label: "Entity for CRUD operations",
+                    selectOptions: classes.map(x =&gt; {
+                        return {
+                            id: x.id,
+                            description: x.getName(),
+                            additionalInfo: getClassAdditionalInfo(x)
+                        };
+                    }),
+                    isRequired: true
+                },
+                {
+                    id: "create",
+                    fieldType: "checkbox",
+                    label: "Create Operations",
+                    value: "true"
+                },
+                {
+                    id: "update",
+                    fieldType: "checkbox",
+                    label: "Update Operations",
+                    value: "true"
+                },
+                {
+                    id: "query",
+                    fieldType: "checkbox",
+                    label: "Query Operations",
+                    value: "true"
+                },
+                {
+                    id: "delete",
+                    fieldType: "checkbox",
+                    label: "Delete Operations",
+                    value: "true"
+                },
+                {
+                    id: "domain",
+                    fieldType: "checkbox",
+                    label: "Domain Operations",
+                    value: "true"
+                }
+            ]
+        });
+        let foundEntity = lookup(result.entityId);
+        return {
+            selectedEntity: foundEntity,
+            canCreate: result.create == "true",
+            canUpdate: result.update == "true",
+            canDelete: result.delete == "true",
+            canQuery: result.query == "true",
+            canDomain: result.domain == "true"
+        };
+        function getClassAdditionalInfo(element) {
+            let aggregateEntity = DomainHelper.getOwningAggregate(element);
+            let prefix = aggregateEntity ? `: ${aggregateEntity.getName()}  ` : "";
+            return `${prefix}(${element.getParents().map(item =&gt; item.getName()).join("/")})`;
+        }
+    }
+    static filterClassSelection(element, options) {
+        var _a;
+        if (!((_a = options === null || options === void 0 ? void 0 : options.allowAbstract) !== null &amp;&amp; _a !== void 0 ? _a : false) &amp;&amp; element.getIsAbstract()) {
+            return false;
+        }
+        if (element.hasStereotype("Repository")) {
+            return true;
+        }
+        if ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(element)) {
+            return DomainHelper.hasPrimaryKey(element);
+        }
+        if (DomainHelper.isAggregateRoot(element)) {
+            let generalizations = element.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+            if (generalizations.length == 0) {
+                return true;
+            }
+            let generalization = generalizations[0];
+            let parentEntity = generalization.typeReference.getType();
+            //Could propagate options here but then we need to update compositional crud to support inheritance and it's already a bit of a hack
+            return CrudHelper.filterClassSelection(parentEntity, { includeOwnedRelationships: false, allowAbstract: true });
+        }
+        return false;
+    }
     static getName(command, mappedElement, dtoPrefix = null) {
         if (mappedElement.typeReference != null)
             mappedElement = mappedElement.typeReference.getType();
@@ -2399,7 +2470,7 @@ var servicesCrud;
 (function (servicesCrud) {
     async function execute() {
         const package = element.getPackage();
-        const entity = await DomainHelper.openSelectEntityDialog({
+        const entity = await CrudHelper.openBasicSelectEntityDialog({
             includeOwnedRelationships: false
         });
         if (!entity) {
@@ -2779,13 +2850,15 @@ To avoid this limitation in the future, either disable private setters or add a 
 /// &lt;reference path="../create-crud/create-crud.ts"/&gt;
 async function execute(element) {
     const package = element.getPackage();
-    const entity = await DomainHelper.openSelectEntityDialog({
-        includeOwnedRelationships: false
+    let dialogResult = await CrudHelper.openCrudCreationDialog({
+        includeOwnedRelationships: true,
+        allowAbstract: false
     });
-    if (!entity) {
+    if (!dialogResult) {
         return;
     }
-    if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
+    let entity = dialogResult.selectedEntity;
+    if (privateSettersOnly &amp;&amp; !hasConstructor(entity) &amp;&amp; dialogResult.canCreate) {
         await dialogService.warn(`Partial Service Operation Creation.
 Some service operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
@@ -2796,22 +2869,31 @@ To avoid this limitation in the future, either disable private setters or add a 
     const service = existingService !== null &amp;&amp; existingService !== void 0 ? existingService : createElement("Service", serviceName, package.id);
     const targetFolder = getOrCreateEntityFolder(element, entity);
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
-    const resultDto = servicesCrud.createMappedResultDto(entity, targetFolder);
-    if (!privateSettersOnly || hasConstructor(entity)) {
+    let resultDto = null;
+    if (dialogResult.canQuery) {
+        resultDto = servicesCrud.createMappedResultDto(entity, targetFolder);
+    }
+    if ((!privateSettersOnly || hasConstructor(entity)) &amp;&amp; dialogResult.canCreate) {
         servicesCrud.createStandardCreateOperation(service, entity, targetFolder);
     }
-    if (primaryKeys.length &gt; 0) {
+    if (primaryKeys.length &gt; 0 &amp;&amp; dialogResult.canQuery) {
         servicesCrud.createStandardFindByIdOperation(service, entity, resultDto);
     }
-    servicesCrud.createStandardFindAllOperation(service, entity, resultDto);
+    if (dialogResult.canQuery) {
+        servicesCrud.createStandardFindAllOperation(service, entity, resultDto);
+    }
     if (primaryKeys.length &gt; 0) {
-        if (!privateSettersOnly) {
+        if (!privateSettersOnly &amp;&amp; dialogResult.canUpdate) {
             servicesCrud.createStandardUpdateOperation(service, entity, targetFolder);
         }
-        servicesCrud.createStandardDeleteOperation(service, entity);
-        const operations = DomainHelper.getCommandOperations(entity);
-        for (const operation of operations) {
-            servicesCrud.createCallOperationCommand(service, operation, entity, targetFolder);
+        if (dialogResult.canDelete) {
+            servicesCrud.createStandardDeleteOperation(service, entity);
+        }
+        if (dialogResult.canDomain) {
+            const operations = DomainHelper.getCommandOperations(entity);
+            for (const operation of operations) {
+                servicesCrud.createCallOperationCommand(service, operation, entity, targetFolder);
+            }
         }
     }
     service.getChildren("Operation").forEach(operation =&gt; {
@@ -4380,50 +4462,6 @@ function getSurrogateKeyType() {
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
 /// &lt;reference path="attributeWithMapPath.ts"/&gt;
 class DomainHelper {
-    static async openSelectEntityDialog(options) {
-        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.filterClassSelection(x, options));
-        if (classes.length == 0) {
-            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-            return null;
-        }
-        let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
-            id: x.id,
-            name: this.getFriendlyDisplayNameForClassSelection(x),
-            additionalInfo: `(${x.getParents().map(item =&gt; item.getName()).join("/")})`
-        })));
-        if (classId == null) {
-            await dialogService.error(`No class found with id "${classId}".`);
-            return null;
-        }
-        let foundEntity = lookup(classId);
-        return foundEntity;
-    }
-    static filterClassSelection(element, options, allowAbstract = false) {
-        if (!allowAbstract &amp;&amp; element.getIsAbstract()) {
-            return false;
-        }
-        if (element.hasStereotype("Repository")) {
-            return true;
-        }
-        if ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(element)) {
-            return DomainHelper.hasPrimaryKey(element);
-        }
-        if (DomainHelper.isAggregateRoot(element)) {
-            let generalizations = element.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
-            if (generalizations.length == 0) {
-                return true;
-            }
-            let generalization = generalizations[0];
-            let parentEntity = generalization.typeReference.getType();
-            //Could propagate options here but then we need to update compositional crud to support inheritance and it's already a bit of a hack
-            return DomainHelper.filterClassSelection(parentEntity, { includeOwnedRelationships: false }, true);
-        }
-        return false;
-    }
-    static getFriendlyDisplayNameForClassSelection(element) {
-        let found = DomainHelper.getOwningAggregate(element);
-        return !found ? element.getName() : `${element.getName()} (${found.getName()})`;
-    }
     static isAggregateRoot(element) {
         let result = !element.getAssociations("Association")
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
@@ -4935,6 +4973,121 @@ CrudConstants.mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b
 CrudConstants.mapToDomainConstructorForDtosSettingId = "8d1f6a8a-77c8-43a2-8e60-421559725419";
 CrudConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
 class CrudHelper {
+    // Super basic selection dialog.
+    static async openBasicSelectEntityDialog(options) {
+        let classes = lookupTypesOf("Class").filter(x =&gt; CrudHelper.filterClassSelection(x, options));
+        if (classes.length == 0) {
+            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
+            return null;
+        }
+        let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
+            id: x.id,
+            name: getFriendlyDisplayNameForClassSelection(x),
+            additionalInfo: `(${x.getParents().map(item =&gt; item.getName()).join("/")})`
+        })));
+        if (classId == null) {
+            await dialogService.error(`No class found with id "${classId}".`);
+            return null;
+        }
+        let foundEntity = lookup(classId);
+        return foundEntity;
+        function getFriendlyDisplayNameForClassSelection(element) {
+            let aggregateEntity = DomainHelper.getOwningAggregate(element);
+            return !aggregateEntity ? element.getName() : `${element.getName()} (${aggregateEntity.getName()})`;
+        }
+    }
+    static async openCrudCreationDialog(options) {
+        let classes = lookupTypesOf("Class").filter(x =&gt; CrudHelper.filterClassSelection(x, options));
+        if (classes.length == 0) {
+            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
+            return null;
+        }
+        let result = await dialogService.openForm({
+            title: "CRUD Creation Options",
+            fields: [
+                {
+                    id: "entityId",
+                    fieldType: "select",
+                    label: "Entity for CRUD operations",
+                    selectOptions: classes.map(x =&gt; {
+                        return {
+                            id: x.id,
+                            description: x.getName(),
+                            additionalInfo: getClassAdditionalInfo(x)
+                        };
+                    }),
+                    isRequired: true
+                },
+                {
+                    id: "create",
+                    fieldType: "checkbox",
+                    label: "Create Operations",
+                    value: "true"
+                },
+                {
+                    id: "update",
+                    fieldType: "checkbox",
+                    label: "Update Operations",
+                    value: "true"
+                },
+                {
+                    id: "query",
+                    fieldType: "checkbox",
+                    label: "Query Operations",
+                    value: "true"
+                },
+                {
+                    id: "delete",
+                    fieldType: "checkbox",
+                    label: "Delete Operations",
+                    value: "true"
+                },
+                {
+                    id: "domain",
+                    fieldType: "checkbox",
+                    label: "Domain Operations",
+                    value: "true"
+                }
+            ]
+        });
+        let foundEntity = lookup(result.entityId);
+        return {
+            selectedEntity: foundEntity,
+            canCreate: result.create == "true",
+            canUpdate: result.update == "true",
+            canDelete: result.delete == "true",
+            canQuery: result.query == "true",
+            canDomain: result.domain == "true"
+        };
+        function getClassAdditionalInfo(element) {
+            let aggregateEntity = DomainHelper.getOwningAggregate(element);
+            let prefix = aggregateEntity ? `: ${aggregateEntity.getName()}  ` : "";
+            return `${prefix}(${element.getParents().map(item =&gt; item.getName()).join("/")})`;
+        }
+    }
+    static filterClassSelection(element, options) {
+        var _a;
+        if (!((_a = options === null || options === void 0 ? void 0 : options.allowAbstract) !== null &amp;&amp; _a !== void 0 ? _a : false) &amp;&amp; element.getIsAbstract()) {
+            return false;
+        }
+        if (element.hasStereotype("Repository")) {
+            return true;
+        }
+        if ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(element)) {
+            return DomainHelper.hasPrimaryKey(element);
+        }
+        if (DomainHelper.isAggregateRoot(element)) {
+            let generalizations = element.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+            if (generalizations.length == 0) {
+                return true;
+            }
+            let generalization = generalizations[0];
+            let parentEntity = generalization.typeReference.getType();
+            //Could propagate options here but then we need to update compositional crud to support inheritance and it's already a bit of a hack
+            return CrudHelper.filterClassSelection(parentEntity, { includeOwnedRelationships: false, allowAbstract: true });
+        }
+        return false;
+    }
     static getName(command, mappedElement, dtoPrefix = null) {
         if (mappedElement.typeReference != null)
             mappedElement = mappedElement.typeReference.getType();
@@ -5536,6 +5689,7 @@ class ElementManager {
 /// &lt;reference path="../_common/onMapQuery.ts" /&gt;
 /// &lt;reference path="../../common/attributeWithMapPath.ts" /&gt;
 /// &lt;reference path="../../common/elementManager.ts" /&gt;
+/// &lt;reference path="../../common/crudHelper.ts" /&gt;
 var _a, _b;
 const privateSettersOnly = ((_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")) === null || _b === void 0 ? void 0 : _b.value) == "true";
 const mapToDomainOperationSettingId = "7c31c459-6229-4f10-bf13-507348cd8828";
@@ -5543,7 +5697,7 @@ var cqrsCrud;
 (function (cqrsCrud) {
     async function execute(element) {
         var _a;
-        let entity = await DomainHelper.openSelectEntityDialog();
+        let entity = await CrudHelper.openBasicSelectEntityDialog();
         if (entity == null) {
             return;
         }
@@ -5836,7 +5990,7 @@ To avoid this limitation in the future, either disable private setters or add a 
         }
     }
     function getBaseNameForElement(owningAggregate, entity, entityIsMany) {
-        // We can get rid of the 'owningAggregate'
+        // Keeping 'owningAggregate' in case we still need to use it as part of the name one day
         let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
         return entityName;
     }
@@ -5985,14 +6139,32 @@ var convertToAdvancedMapping;
     }
 })(convertToAdvancedMapping || (convertToAdvancedMapping = {}));
 /// &lt;reference path="../create-crud-macro/create-crud-macro.ts"/&gt;
+/// &lt;reference path="../../common/crudHelper.ts" /&gt;
 /// &lt;reference path="../_common/convertToAdvancedMapping.ts"/&gt;
-async function execute(element, domainClass) {
+async function execute(element, preselectedClass) {
     var _a;
-    let entity = !domainClass ? await DomainHelper.openSelectEntityDialog() : domainClass;
-    if (entity == null) {
-        return;
+    let dialogResult = null;
+    if (!preselectedClass) {
+        dialogResult = await CrudHelper.openCrudCreationDialog({
+            includeOwnedRelationships: true,
+            allowAbstract: false
+        });
+        if (!dialogResult) {
+            return;
+        }
     }
-    if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
+    else {
+        dialogResult = {
+            selectedEntity: preselectedClass,
+            canCreate: true,
+            canDelete: true,
+            canDomain: true,
+            canQuery: true,
+            canUpdate: true
+        };
+    }
+    let entity = dialogResult.selectedEntity;
+    if ((privateSettersOnly &amp;&amp; !hasConstructor(entity)) &amp;&amp; dialogResult.canCreate) {
         await dialogService.warn(`Partial CQRS Operation Creation.
 Some CQRS operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
@@ -6001,22 +6173,29 @@ To avoid this limitation in the future, either disable private setters or add a 
     const targetFolder = getOrCreateEntityFolder(element, entity);
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
     const hasPrimaryKey = primaryKeys.length &gt; 0;
-    const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, targetFolder);
-    if (!privateSettersOnly || hasConstructor(entity)) {
+    let resultDto = null;
+    if (dialogResult.canQuery) {
+        resultDto = cqrsCrud.createCqrsResultTypeDto(entity, targetFolder);
+    }
+    if ((!privateSettersOnly || hasConstructor(entity)) &amp;&amp; dialogResult.canCreate) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, targetFolder, primaryKeys));
     }
-    if (hasPrimaryKey) {
+    if (hasPrimaryKey &amp;&amp; dialogResult.canQuery) {
         convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, targetFolder, resultDto));
     }
-    convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, targetFolder, resultDto));
-    if (hasPrimaryKey &amp;&amp; !privateSettersOnly) {
+    if (dialogResult.canQuery) {
+        convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, targetFolder, resultDto));
+    }
+    if ((hasPrimaryKey &amp;&amp; !privateSettersOnly) &amp;&amp; dialogResult.canUpdate) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, targetFolder));
     }
-    const operations = DomainHelper.getCommandOperations(entity);
-    for (const operation of operations) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, targetFolder));
+    if (dialogResult.canDomain) {
+        const operations = DomainHelper.getCommandOperations(entity);
+        for (const operation of operations) {
+            convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, targetFolder));
+        }
     }
-    if (hasPrimaryKey) {
+    if (hasPrimaryKey &amp;&amp; dialogResult.canDelete) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, targetFolder));
     }
     if (DomainHelper.isAggregateRoot(entity)) {
@@ -8177,50 +8356,6 @@ function getSurrogateKeyType() {
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
 /// &lt;reference path="attributeWithMapPath.ts"/&gt;
 class DomainHelper {
-    static async openSelectEntityDialog(options) {
-        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.filterClassSelection(x, options));
-        if (classes.length == 0) {
-            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-            return null;
-        }
-        let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
-            id: x.id,
-            name: this.getFriendlyDisplayNameForClassSelection(x),
-            additionalInfo: `(${x.getParents().map(item =&gt; item.getName()).join("/")})`
-        })));
-        if (classId == null) {
-            await dialogService.error(`No class found with id "${classId}".`);
-            return null;
-        }
-        let foundEntity = lookup(classId);
-        return foundEntity;
-    }
-    static filterClassSelection(element, options, allowAbstract = false) {
-        if (!allowAbstract &amp;&amp; element.getIsAbstract()) {
-            return false;
-        }
-        if (element.hasStereotype("Repository")) {
-            return true;
-        }
-        if ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(element)) {
-            return DomainHelper.hasPrimaryKey(element);
-        }
-        if (DomainHelper.isAggregateRoot(element)) {
-            let generalizations = element.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
-            if (generalizations.length == 0) {
-                return true;
-            }
-            let generalization = generalizations[0];
-            let parentEntity = generalization.typeReference.getType();
-            //Could propagate options here but then we need to update compositional crud to support inheritance and it's already a bit of a hack
-            return DomainHelper.filterClassSelection(parentEntity, { includeOwnedRelationships: false }, true);
-        }
-        return false;
-    }
-    static getFriendlyDisplayNameForClassSelection(element) {
-        let found = DomainHelper.getOwningAggregate(element);
-        return !found ? element.getName() : `${element.getName()} (${found.getName()})`;
-    }
     static isAggregateRoot(element) {
         let result = !element.getAssociations("Association")
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
@@ -8643,6 +8778,121 @@ CrudConstants.mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b
 CrudConstants.mapToDomainConstructorForDtosSettingId = "8d1f6a8a-77c8-43a2-8e60-421559725419";
 CrudConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
 class CrudHelper {
+    // Super basic selection dialog.
+    static async openBasicSelectEntityDialog(options) {
+        let classes = lookupTypesOf("Class").filter(x =&gt; CrudHelper.filterClassSelection(x, options));
+        if (classes.length == 0) {
+            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
+            return null;
+        }
+        let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
+            id: x.id,
+            name: getFriendlyDisplayNameForClassSelection(x),
+            additionalInfo: `(${x.getParents().map(item =&gt; item.getName()).join("/")})`
+        })));
+        if (classId == null) {
+            await dialogService.error(`No class found with id "${classId}".`);
+            return null;
+        }
+        let foundEntity = lookup(classId);
+        return foundEntity;
+        function getFriendlyDisplayNameForClassSelection(element) {
+            let aggregateEntity = DomainHelper.getOwningAggregate(element);
+            return !aggregateEntity ? element.getName() : `${element.getName()} (${aggregateEntity.getName()})`;
+        }
+    }
+    static async openCrudCreationDialog(options) {
+        let classes = lookupTypesOf("Class").filter(x =&gt; CrudHelper.filterClassSelection(x, options));
+        if (classes.length == 0) {
+            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
+            return null;
+        }
+        let result = await dialogService.openForm({
+            title: "CRUD Creation Options",
+            fields: [
+                {
+                    id: "entityId",
+                    fieldType: "select",
+                    label: "Entity for CRUD operations",
+                    selectOptions: classes.map(x =&gt; {
+                        return {
+                            id: x.id,
+                            description: x.getName(),
+                            additionalInfo: getClassAdditionalInfo(x)
+                        };
+                    }),
+                    isRequired: true
+                },
+                {
+                    id: "create",
+                    fieldType: "checkbox",
+                    label: "Create Operations",
+                    value: "true"
+                },
+                {
+                    id: "update",
+                    fieldType: "checkbox",
+                    label: "Update Operations",
+                    value: "true"
+                },
+                {
+                    id: "query",
+                    fieldType: "checkbox",
+                    label: "Query Operations",
+                    value: "true"
+                },
+                {
+                    id: "delete",
+                    fieldType: "checkbox",
+                    label: "Delete Operations",
+                    value: "true"
+                },
+                {
+                    id: "domain",
+                    fieldType: "checkbox",
+                    label: "Domain Operations",
+                    value: "true"
+                }
+            ]
+        });
+        let foundEntity = lookup(result.entityId);
+        return {
+            selectedEntity: foundEntity,
+            canCreate: result.create == "true",
+            canUpdate: result.update == "true",
+            canDelete: result.delete == "true",
+            canQuery: result.query == "true",
+            canDomain: result.domain == "true"
+        };
+        function getClassAdditionalInfo(element) {
+            let aggregateEntity = DomainHelper.getOwningAggregate(element);
+            let prefix = aggregateEntity ? `: ${aggregateEntity.getName()}  ` : "";
+            return `${prefix}(${element.getParents().map(item =&gt; item.getName()).join("/")})`;
+        }
+    }
+    static filterClassSelection(element, options) {
+        var _a;
+        if (!((_a = options === null || options === void 0 ? void 0 : options.allowAbstract) !== null &amp;&amp; _a !== void 0 ? _a : false) &amp;&amp; element.getIsAbstract()) {
+            return false;
+        }
+        if (element.hasStereotype("Repository")) {
+            return true;
+        }
+        if ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(element)) {
+            return DomainHelper.hasPrimaryKey(element);
+        }
+        if (DomainHelper.isAggregateRoot(element)) {
+            let generalizations = element.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+            if (generalizations.length == 0) {
+                return true;
+            }
+            let generalization = generalizations[0];
+            let parentEntity = generalization.typeReference.getType();
+            //Could propagate options here but then we need to update compositional crud to support inheritance and it's already a bit of a hack
+            return CrudHelper.filterClassSelection(parentEntity, { includeOwnedRelationships: false, allowAbstract: true });
+        }
+        return false;
+    }
     static getName(command, mappedElement, dtoPrefix = null) {
         if (mappedElement.typeReference != null)
             mappedElement = mappedElement.typeReference.getType();
@@ -9224,7 +9474,7 @@ var servicesCrud;
 (function (servicesCrud) {
     async function execute() {
         const package = element.getPackage();
-        const entity = await DomainHelper.openSelectEntityDialog({
+        const entity = await CrudHelper.openBasicSelectEntityDialog({
             includeOwnedRelationships: false
         });
         if (!entity) {
@@ -9604,13 +9854,15 @@ To avoid this limitation in the future, either disable private setters or add a 
 /// &lt;reference path="../create-crud/create-crud.ts"/&gt;
 async function execute(element) {
     const package = element.getPackage();
-    const entity = await DomainHelper.openSelectEntityDialog({
-        includeOwnedRelationships: false
+    let dialogResult = await CrudHelper.openCrudCreationDialog({
+        includeOwnedRelationships: true,
+        allowAbstract: false
     });
-    if (!entity) {
+    if (!dialogResult) {
         return;
     }
-    if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
+    let entity = dialogResult.selectedEntity;
+    if (privateSettersOnly &amp;&amp; !hasConstructor(entity) &amp;&amp; dialogResult.canCreate) {
         await dialogService.warn(`Partial Service Operation Creation.
 Some service operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
@@ -9621,22 +9873,31 @@ To avoid this limitation in the future, either disable private setters or add a 
     const service = existingService !== null &amp;&amp; existingService !== void 0 ? existingService : createElement("Service", serviceName, package.id);
     const targetFolder = getOrCreateEntityFolder(element, entity);
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
-    const resultDto = servicesCrud.createMappedResultDto(entity, targetFolder);
-    if (!privateSettersOnly || hasConstructor(entity)) {
+    let resultDto = null;
+    if (dialogResult.canQuery) {
+        resultDto = servicesCrud.createMappedResultDto(entity, targetFolder);
+    }
+    if ((!privateSettersOnly || hasConstructor(entity)) &amp;&amp; dialogResult.canCreate) {
         servicesCrud.createStandardCreateOperation(service, entity, targetFolder);
     }
-    if (primaryKeys.length &gt; 0) {
+    if (primaryKeys.length &gt; 0 &amp;&amp; dialogResult.canQuery) {
         servicesCrud.createStandardFindByIdOperation(service, entity, resultDto);
     }
-    servicesCrud.createStandardFindAllOperation(service, entity, resultDto);
+    if (dialogResult.canQuery) {
+        servicesCrud.createStandardFindAllOperation(service, entity, resultDto);
+    }
     if (primaryKeys.length &gt; 0) {
-        if (!privateSettersOnly) {
+        if (!privateSettersOnly &amp;&amp; dialogResult.canUpdate) {
             servicesCrud.createStandardUpdateOperation(service, entity, targetFolder);
         }
-        servicesCrud.createStandardDeleteOperation(service, entity);
-        const operations = DomainHelper.getCommandOperations(entity);
-        for (const operation of operations) {
-            servicesCrud.createCallOperationCommand(service, operation, entity, targetFolder);
+        if (dialogResult.canDelete) {
+            servicesCrud.createStandardDeleteOperation(service, entity);
+        }
+        if (dialogResult.canDomain) {
+            const operations = DomainHelper.getCommandOperations(entity);
+            for (const operation of operations) {
+                servicesCrud.createCallOperationCommand(service, operation, entity, targetFolder);
+            }
         }
     }
     service.getChildren("Operation").forEach(operation =&gt; {
@@ -11205,50 +11466,6 @@ function getSurrogateKeyType() {
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
 /// &lt;reference path="attributeWithMapPath.ts"/&gt;
 class DomainHelper {
-    static async openSelectEntityDialog(options) {
-        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.filterClassSelection(x, options));
-        if (classes.length == 0) {
-            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-            return null;
-        }
-        let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
-            id: x.id,
-            name: this.getFriendlyDisplayNameForClassSelection(x),
-            additionalInfo: `(${x.getParents().map(item =&gt; item.getName()).join("/")})`
-        })));
-        if (classId == null) {
-            await dialogService.error(`No class found with id "${classId}".`);
-            return null;
-        }
-        let foundEntity = lookup(classId);
-        return foundEntity;
-    }
-    static filterClassSelection(element, options, allowAbstract = false) {
-        if (!allowAbstract &amp;&amp; element.getIsAbstract()) {
-            return false;
-        }
-        if (element.hasStereotype("Repository")) {
-            return true;
-        }
-        if ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(element)) {
-            return DomainHelper.hasPrimaryKey(element);
-        }
-        if (DomainHelper.isAggregateRoot(element)) {
-            let generalizations = element.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
-            if (generalizations.length == 0) {
-                return true;
-            }
-            let generalization = generalizations[0];
-            let parentEntity = generalization.typeReference.getType();
-            //Could propagate options here but then we need to update compositional crud to support inheritance and it's already a bit of a hack
-            return DomainHelper.filterClassSelection(parentEntity, { includeOwnedRelationships: false }, true);
-        }
-        return false;
-    }
-    static getFriendlyDisplayNameForClassSelection(element) {
-        let found = DomainHelper.getOwningAggregate(element);
-        return !found ? element.getName() : `${element.getName()} (${found.getName()})`;
-    }
     static isAggregateRoot(element) {
         let result = !element.getAssociations("Association")
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
@@ -11760,6 +11977,121 @@ CrudConstants.mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b
 CrudConstants.mapToDomainConstructorForDtosSettingId = "8d1f6a8a-77c8-43a2-8e60-421559725419";
 CrudConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
 class CrudHelper {
+    // Super basic selection dialog.
+    static async openBasicSelectEntityDialog(options) {
+        let classes = lookupTypesOf("Class").filter(x =&gt; CrudHelper.filterClassSelection(x, options));
+        if (classes.length == 0) {
+            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
+            return null;
+        }
+        let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
+            id: x.id,
+            name: getFriendlyDisplayNameForClassSelection(x),
+            additionalInfo: `(${x.getParents().map(item =&gt; item.getName()).join("/")})`
+        })));
+        if (classId == null) {
+            await dialogService.error(`No class found with id "${classId}".`);
+            return null;
+        }
+        let foundEntity = lookup(classId);
+        return foundEntity;
+        function getFriendlyDisplayNameForClassSelection(element) {
+            let aggregateEntity = DomainHelper.getOwningAggregate(element);
+            return !aggregateEntity ? element.getName() : `${element.getName()} (${aggregateEntity.getName()})`;
+        }
+    }
+    static async openCrudCreationDialog(options) {
+        let classes = lookupTypesOf("Class").filter(x =&gt; CrudHelper.filterClassSelection(x, options));
+        if (classes.length == 0) {
+            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
+            return null;
+        }
+        let result = await dialogService.openForm({
+            title: "CRUD Creation Options",
+            fields: [
+                {
+                    id: "entityId",
+                    fieldType: "select",
+                    label: "Entity for CRUD operations",
+                    selectOptions: classes.map(x =&gt; {
+                        return {
+                            id: x.id,
+                            description: x.getName(),
+                            additionalInfo: getClassAdditionalInfo(x)
+                        };
+                    }),
+                    isRequired: true
+                },
+                {
+                    id: "create",
+                    fieldType: "checkbox",
+                    label: "Create Operations",
+                    value: "true"
+                },
+                {
+                    id: "update",
+                    fieldType: "checkbox",
+                    label: "Update Operations",
+                    value: "true"
+                },
+                {
+                    id: "query",
+                    fieldType: "checkbox",
+                    label: "Query Operations",
+                    value: "true"
+                },
+                {
+                    id: "delete",
+                    fieldType: "checkbox",
+                    label: "Delete Operations",
+                    value: "true"
+                },
+                {
+                    id: "domain",
+                    fieldType: "checkbox",
+                    label: "Domain Operations",
+                    value: "true"
+                }
+            ]
+        });
+        let foundEntity = lookup(result.entityId);
+        return {
+            selectedEntity: foundEntity,
+            canCreate: result.create == "true",
+            canUpdate: result.update == "true",
+            canDelete: result.delete == "true",
+            canQuery: result.query == "true",
+            canDomain: result.domain == "true"
+        };
+        function getClassAdditionalInfo(element) {
+            let aggregateEntity = DomainHelper.getOwningAggregate(element);
+            let prefix = aggregateEntity ? `: ${aggregateEntity.getName()}  ` : "";
+            return `${prefix}(${element.getParents().map(item =&gt; item.getName()).join("/")})`;
+        }
+    }
+    static filterClassSelection(element, options) {
+        var _a;
+        if (!((_a = options === null || options === void 0 ? void 0 : options.allowAbstract) !== null &amp;&amp; _a !== void 0 ? _a : false) &amp;&amp; element.getIsAbstract()) {
+            return false;
+        }
+        if (element.hasStereotype("Repository")) {
+            return true;
+        }
+        if ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(element)) {
+            return DomainHelper.hasPrimaryKey(element);
+        }
+        if (DomainHelper.isAggregateRoot(element)) {
+            let generalizations = element.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+            if (generalizations.length == 0) {
+                return true;
+            }
+            let generalization = generalizations[0];
+            let parentEntity = generalization.typeReference.getType();
+            //Could propagate options here but then we need to update compositional crud to support inheritance and it's already a bit of a hack
+            return CrudHelper.filterClassSelection(parentEntity, { includeOwnedRelationships: false, allowAbstract: true });
+        }
+        return false;
+    }
     static getName(command, mappedElement, dtoPrefix = null) {
         if (mappedElement.typeReference != null)
             mappedElement = mappedElement.typeReference.getType();
@@ -12361,6 +12693,7 @@ class ElementManager {
 /// &lt;reference path="../_common/onMapQuery.ts" /&gt;
 /// &lt;reference path="../../common/attributeWithMapPath.ts" /&gt;
 /// &lt;reference path="../../common/elementManager.ts" /&gt;
+/// &lt;reference path="../../common/crudHelper.ts" /&gt;
 var _a, _b;
 const privateSettersOnly = ((_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")) === null || _b === void 0 ? void 0 : _b.value) == "true";
 const mapToDomainOperationSettingId = "7c31c459-6229-4f10-bf13-507348cd8828";
@@ -12368,7 +12701,7 @@ var cqrsCrud;
 (function (cqrsCrud) {
     async function execute(element) {
         var _a;
-        let entity = await DomainHelper.openSelectEntityDialog();
+        let entity = await CrudHelper.openBasicSelectEntityDialog();
         if (entity == null) {
             return;
         }
@@ -12661,7 +12994,7 @@ To avoid this limitation in the future, either disable private setters or add a 
         }
     }
     function getBaseNameForElement(owningAggregate, entity, entityIsMany) {
-        // We can get rid of the 'owningAggregate'
+        // Keeping 'owningAggregate' in case we still need to use it as part of the name one day
         let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
         return entityName;
     }
@@ -12810,14 +13143,32 @@ var convertToAdvancedMapping;
     }
 })(convertToAdvancedMapping || (convertToAdvancedMapping = {}));
 /// &lt;reference path="../create-crud-macro/create-crud-macro.ts"/&gt;
+/// &lt;reference path="../../common/crudHelper.ts" /&gt;
 /// &lt;reference path="../_common/convertToAdvancedMapping.ts"/&gt;
-async function execute(element, domainClass) {
+async function execute(element, preselectedClass) {
     var _a;
-    let entity = !domainClass ? await DomainHelper.openSelectEntityDialog() : domainClass;
-    if (entity == null) {
-        return;
+    let dialogResult = null;
+    if (!preselectedClass) {
+        dialogResult = await CrudHelper.openCrudCreationDialog({
+            includeOwnedRelationships: true,
+            allowAbstract: false
+        });
+        if (!dialogResult) {
+            return;
+        }
     }
-    if (privateSettersOnly &amp;&amp; !hasConstructor(entity)) {
+    else {
+        dialogResult = {
+            selectedEntity: preselectedClass,
+            canCreate: true,
+            canDelete: true,
+            canDomain: true,
+            canQuery: true,
+            canUpdate: true
+        };
+    }
+    let entity = dialogResult.selectedEntity;
+    if ((privateSettersOnly &amp;&amp; !hasConstructor(entity)) &amp;&amp; dialogResult.canCreate) {
         await dialogService.warn(`Partial CQRS Operation Creation.
 Some CQRS operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
 
@@ -12826,22 +13177,29 @@ To avoid this limitation in the future, either disable private setters or add a 
     const targetFolder = getOrCreateEntityFolder(element, entity);
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
     const hasPrimaryKey = primaryKeys.length &gt; 0;
-    const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, targetFolder);
-    if (!privateSettersOnly || hasConstructor(entity)) {
+    let resultDto = null;
+    if (dialogResult.canQuery) {
+        resultDto = cqrsCrud.createCqrsResultTypeDto(entity, targetFolder);
+    }
+    if ((!privateSettersOnly || hasConstructor(entity)) &amp;&amp; dialogResult.canCreate) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, targetFolder, primaryKeys));
     }
-    if (hasPrimaryKey) {
+    if (hasPrimaryKey &amp;&amp; dialogResult.canQuery) {
         convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, targetFolder, resultDto));
     }
-    convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, targetFolder, resultDto));
-    if (hasPrimaryKey &amp;&amp; !privateSettersOnly) {
+    if (dialogResult.canQuery) {
+        convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, targetFolder, resultDto));
+    }
+    if ((hasPrimaryKey &amp;&amp; !privateSettersOnly) &amp;&amp; dialogResult.canUpdate) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, targetFolder));
     }
-    const operations = DomainHelper.getCommandOperations(entity);
-    for (const operation of operations) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, targetFolder));
+    if (dialogResult.canDomain) {
+        const operations = DomainHelper.getCommandOperations(entity);
+        for (const operation of operations) {
+            convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, targetFolder));
+        }
     }
-    if (hasPrimaryKey) {
+    if (hasPrimaryKey &amp;&amp; dialogResult.canDelete) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, targetFolder));
     }
     if (DomainHelper.isAggregateRoot(entity)) {

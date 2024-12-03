@@ -1,14 +1,33 @@
 /// <reference path="../create-crud-macro/create-crud-macro.ts"/>
+/// <reference path="../../common/crudHelper.ts" />
 /// <reference path="../_common/convertToAdvancedMapping.ts"/>
 
-async function execute(element: IElementApi, domainClass?: IElementApi) {
+async function execute(element: IElementApi, preselectedClass?: IElementApi) {
 
-    let entity = !domainClass ? await DomainHelper.openSelectEntityDialog() : domainClass;
-    if (entity == null) {
-        return;
+    let dialogResult: ICrudCreationResult = null;
+    if (!preselectedClass) {
+        dialogResult = await CrudHelper.openCrudCreationDialog({
+            includeOwnedRelationships: true,
+            allowAbstract: false
+        });
+
+        if (!dialogResult) {
+            return;
+        }
+    } else {
+        dialogResult = {
+            selectedEntity: preselectedClass,
+            canCreate: true,
+            canDelete: true,
+            canDomain: true,
+            canQuery: true,
+            canUpdate: true
+        };
     }
 
-    if (privateSettersOnly && !hasConstructor(entity)) {
+    let entity: MacroApi.Context.IElementApi = dialogResult.selectedEntity;
+
+    if ((privateSettersOnly && !hasConstructor(entity)) && dialogResult.canCreate) {
         await dialogService.warn(
 `Partial CQRS Operation Creation.
 Some CQRS operations were created successfully, but was limited due to private setters being enabled, and no constructor is present for entity '${entity.getName()}'.
@@ -20,32 +39,38 @@ To avoid this limitation in the future, either disable private setters or add a 
 
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
     const hasPrimaryKey = primaryKeys.length > 0;
+    
+    let resultDto: MacroApi.Context.IElementApi = null;
+    if (dialogResult.canQuery) {
+        resultDto = cqrsCrud.createCqrsResultTypeDto(entity, targetFolder);
+    }
 
-    const resultDto = cqrsCrud.createCqrsResultTypeDto(entity, targetFolder);
-
-    if (!privateSettersOnly || hasConstructor(entity)) {
+    if ((!privateSettersOnly || hasConstructor(entity)) && dialogResult.canCreate) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, targetFolder, primaryKeys));
     }
 
-    if (hasPrimaryKey) {
+    if (hasPrimaryKey && dialogResult.canQuery) {
         convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, targetFolder, resultDto));
     }
 
-    convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, targetFolder, resultDto));
+    if (dialogResult.canQuery) {
+        convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, targetFolder, resultDto));
+    }
 
-    if (hasPrimaryKey && !privateSettersOnly) {
+    if ((hasPrimaryKey && !privateSettersOnly) && dialogResult.canUpdate) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, targetFolder));
     }
 
-    const operations = DomainHelper.getCommandOperations(entity);     
-    for (const operation of operations) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, targetFolder));
+    if (dialogResult.canDomain) {
+        const operations = DomainHelper.getCommandOperations(entity);     
+        for (const operation of operations) {
+            convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, targetFolder));
+        }
     }
 
-    if (hasPrimaryKey) {
+    if (hasPrimaryKey && dialogResult.canDelete) {
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, targetFolder));
     }
-
     
     if (DomainHelper.isAggregateRoot(entity)) {
         const aggregateRootFolderName = getAggregateRootFolderName(entity);
