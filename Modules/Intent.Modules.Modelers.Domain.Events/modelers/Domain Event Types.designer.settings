@@ -975,5 +975,49 @@ if (namingConvention == "pascal-case") {
   </mappingSettings>
   <mappableElementPackages />
   <mappableElementPackageExtensions />
+  <suggestionSettings>
+    <suggestionSetting type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" locations="diagram, model">
+      <name>Publish Domain Event</name>
+      <filterFunction>let publishDomainEventAssociation = "4c0cc50b-8a9d-43cd-b731-9f354f69f3c9";
+
+return element.getAssociations(publishDomainEventAssociation).length == 0;</filterFunction>
+      <dependencies />
+      <script>const domainEventId = "0814e459-fb9b-47db-b7eb-32ce30397e8a";
+const publishDomainEventId = "17046427-14e2-4081-8463-ef16c0fda399";
+
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+if (position) {
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const domainEvent = getCurrentDiagram().createElement(domainEventId, "NewDomainEvent", position);
+    const association = createAssociation(publishDomainEventId, element.id, domainEvent.id)
+    getCurrentDiagram().layoutVisuals([association.id]);
+    
+    //Allow user to rename
+    await domainEvent.enableEditing();
+    await association.launchAdvancedMappingDialog();
+}</script>
+    </suggestionSetting>
+    <suggestionSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" locations="diagram, model">
+      <name>Publish Domain Event</name>
+      <filterFunction>let publishDomainEventAssociation = "4c0cc50b-8a9d-43cd-b731-9f354f69f3c9";
+
+return element.getAssociations(publishDomainEventAssociation).length == 0;</filterFunction>
+      <dependencies />
+      <script>const domainEventId = "0814e459-fb9b-47db-b7eb-32ce30397e8a";
+const publishDomainEventId = "17046427-14e2-4081-8463-ef16c0fda399";
+
+let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();
+if (position) {
+    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 5 });
+    const domainEvent = getCurrentDiagram().createElement(domainEventId, "NewDomainEvent", position);
+    const association = createAssociation(publishDomainEventId, element.id, domainEvent.id)
+    getCurrentDiagram().layoutVisuals([association.id]);
+    
+    //Allow user to rename
+    await domainEvent.enableEditing();
+    await association.launchAdvancedMappingDialog();
+}</script>
+    </suggestionSetting>
+  </suggestionSettings>
   <scripts />
 </settings>
