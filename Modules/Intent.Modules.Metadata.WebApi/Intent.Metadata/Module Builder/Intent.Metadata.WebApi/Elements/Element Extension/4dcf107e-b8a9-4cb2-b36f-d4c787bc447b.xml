@@ -101,8 +101,8 @@
                 <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="ctrl + shift + e" isActive="true" />
                 <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                 <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
-                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
                 <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
                 <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
                 <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
               </properties>
@@ -147,12 +147,12 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;file-download&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA11JREFUeF7t3F1v0lAcBvAeWl7cvouAt2bXshF1+CG88WbxNVKY2ygYl7ksXvklZGDchteLt67gV3FE2lMx7VZGcEton572LPy57nN6zq9PoSVNmUIfSIBBaQor0gA+qh6NgxyPr62yFHOXYhIunAu4snJ/LsPT0x8KAc5QEeBc3bl5IwIkQFAAjFMDCRAUAOPUQAIEBcA4NZAAQQEwTg0kQFAAjFMDCRAUAOPUQAIEBcA4NZAAQQEwTg0kQFAAjFMDCRAUAOPUQAIEBcA4NZAAQQEwTg0kQFAAjFMDCRAUAOPUQAIEBcA4NZAAQQEwTg0kQFAAjC98Ax/q356ysfJZUVjoB9eDPGQe/niNx4yxjW6z/Cn8GFfJ0Iu9bueVau9ZKpPaLeTvLuVyuSjmF9kYo5GlmKY5dBynfthY3Y9q4EgB3UlV9JPnKTVlFIuFO9lcNqp5QuNc4PWHNrdbXWOtCQ02E44c0B1/vXb8QtW0nWI+v5Q0ojWylDNBeO5ahQDKgniBZw5tziNvnl9EYYBJI3p4fXPILed9p7lqRHnaTo8lFDApxLjwhJ7C00epoh+/VLX0VuFefjmbyYgqgzeuZVnK2c/BOXf4h45RagjdmcjvwNmJx4EYN15sDfQxK7WTV6qqvRPRRB/P5ny32yztiG5eLD8i115sC0B08fr9wW/rj73Xaa1ux4UXewP9ha3Xe6+1lLpZLOaXM1nsO9HFM83BuWOP9tpGeStOvMQA3R0/rvXepFW1jiAmjZcoIIooA17igN51YvXorZbN1NzbvnlPZw+vPxjalvWxY6xtxn3axnohPc/igiDatq2YZ/2hZSePJ0UDfeAn+nFVTaf1QuHmJk7w+Gi/0yjX5zk4orcRfisXZAEeYuYSceaOxcfjf5399vYDKfCkauDVxfZ3XUunql4TLxE9PPPXucOtgy87pVqQgyJ6W6kaeB0iY0xaPCkbOEHc7Bmaqm0wpjDu8IP2dkkX3aYw40vZwAlivef9/X7YkBNP6gaGaUMSGakbmARI0H0SYFCxme0JkABBATBODYwKMOgbJMH93vq4/wLISQODPB1161cPLmD6DZoEGAKTAEOgTUcIkABBATBODSRAUACMUwNFAYLjLlT8vwvphVp9hIule2EQ8x9db3hvh9xYWgAAAABJRU5ErkJggg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
                 <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
                 <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                 <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
-                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
                 <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
                 <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
                 <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
               </properties>
@@ -197,12 +197,12 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;file-upload&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAyVJREFUeF7t21tP2mAABuBWKCd/jwful0z+w6IFtuzW7MRJN+dEkLjN7MYbbN2y/yAmu1fx70zsQcICpgrOiPh+bb+Et7d870f79P1oG0BVuEECKpRmWJEaMGeWqv1zZGRrFVnPlbSA+cPyVkzTVlWlpzpX3b3mSlVKRCkBs4flSiIaKS/NpVOqqiqt87OO7TrfD/TtNdmaKB3gAC8SKS/Np1PJeHzgZTmO0jo/vbBdd082RKkA78PzGicrojSAObNUjkejleHm3V2u14gnHdvtfjvQq+syLGcpAB+DN9pEeRBDB8wb5ZKmRdYyQ59545rlNdFynK9Gtv5x3Hg/Xw8V8Cl4Hsal4yjH7bOO5VqhIoYGqDeLhWRCW1+aS896V9tJm9JHbLVPL2zb3TXy2xuT5kWMDwVQBN5wE8NEDBxQJJ4MiIEC6mbxfTyqfcrML86m4gkRK+hmjuvlfPbXdq1dI1v/LHTyByYLDNBPvNEmnlxYV3bD1Hc2g0AMBDBrFN7FtNiGH827i3Tp2NcXFtfZMbL1L34j+g4YJN5tE4ND9BVw5bD4Nj4T3czML6ZmE0m/yzAyf8eyvMe+mpmrbfn15r4BhonnYQWB6AvgAE+NbGYW0oE3727T/EYUDigT3nATj85PO07X3Tb1+uBrAlGbUEDdLLyJzWhbmYXFZNCfeeNAOralHLXFIwoDXG4WXiu93r6iPv2LqhfPno9zGLz++8/xo8bdO6in9FRFWf35qvHj6ZPcJoUBojuz3PzQmwTw18uGFPsuxU708QkIVpCABAQFwDgbSEBQAIyzgQQEBcA4G0hAUACMs4EEBAXAOBtIQFAAjLOBBAQFwDgbSEBQAIyzgQQEBcA4G0hAUACMs4EEBAXAOBtIQFAAjLOBBAQFwDgbSEBQAIyzgQQEBcA4G0hAUACMs4EEBAXAOBsoAHCSKfgj80m0JB4rza/0JTZ6cNcICJ45AhIQFADjbKAowP59GDjXVMW926ibBk5yIztVUvccbP/fogQEWkBAAK8fJSABQQEwzgYSEBQA42ygX4DgvFMV/+8+cKqOXuDB8lkYxPwHrMp6b1nCHuoAAAAASUVORK5CYII=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
                 <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
                 <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                 <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
-                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
                 <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
                 <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
                 <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
               </properties>

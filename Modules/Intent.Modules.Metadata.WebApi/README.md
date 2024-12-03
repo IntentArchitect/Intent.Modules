@@ -2,7 +2,7 @@
 
 This Intent Architect module provides programming language-agnostic metadata for use in Intent Architect designers around modeling "WebApi" concepts, such as verbs, routes, and other HTTP-related settings for endpoints.
 
-## Exposing an HTTP Endpoint
+## Expose an HTTP Endpoint
 
 To create an HTTP Endpoint for an external party to invoke, an existing `Service`, `Operation`, `Command`, or `Query` needs to be _exposed as an HTTP endpoint_.
 
@@ -20,13 +20,13 @@ To create an HTTP Endpoint for an external party to invoke, an existing `Service
 
 ![Http Settings](docs/http-settings.png)
 
-## Exposing a File Download Endpoint
+## Expose a File Download Endpoint
 
 To create an HTTP Endpoint that provides file downloading capabilities, an existing `Operation`, `Command`, or `Query` needs to be exposed.
 
 1. In the Services Designer, either in the tree view or in a diagram, select one or more of the following types: `Operation`, `Command`, or `Query`.
 2. Right-click on any of the highlighted items and select `Expose as Http File Download`.
-3. Items exposed as HTTP endpoints are indicated with a visual icon. You can view and configure [HTTP-related](#exposing-an-http-endpoint) properties by accessing the endpoint's properties. These property values are automatically set based on the item's heuristics but can be manually adjusted if necessary.
+3. Items exposed as HTTP endpoints are indicated with a visual icon. You can view and configure [HTTP-related](#expose-an-http-endpoint) properties by accessing the endpoint's properties. These property values are automatically set based on the item's heuristics but can be manually adjusted if necessary.
 
 When exposing the item as a file download endpoint, the following configuration is automatically applied:
 
@@ -37,13 +37,13 @@ When exposing the item as a file download endpoint, the following configuration 
 
 2. The `Operation`, `Command`, or `Query` being exposed is updated to have a `Return Type` of `FileDownloadDto`.
 
-## Exposing a File Upload Endpoint
+## Expose a File Upload Endpoint
 
 To create an HTTP Endpoint that provides file upload capabilities, an existing `Operation` or `Command` needs to be exposed.
 
 1. In the Services Designer, either in the tree view or in a diagram, select one or more `Operation` or `Command` types.
 2. Right-click on any of the highlighted items and select `Expose as Http File Upload`.
-3. Items exposed as HTTP endpoints are indicated with a visual icon. You can view and configure [HTTP-related](#exposing-an-http-endpoint) properties by accessing the endpoint's properties. These property values are automatically set based on the item's heuristics but can be manually adjusted if necessary.
+3. Items exposed as HTTP endpoints are indicated with a visual icon. You can view and configure [HTTP-related](#expose-an-http-endpoint) properties by accessing the endpoint's properties. These property values are automatically set based on the item's heuristics but can be manually adjusted if necessary.
 
 When exposing the item as a file upload endpoint, the following configuration is automatically applied:
 
@@ -53,13 +53,15 @@ When exposing the item as a file upload endpoint, the following configuration is
     - **ContentType**: string (from header)
     - **ContentLength**: long (from header)
 
-2. In addition to the [HTTP Settings](#exposing-an-http-endpoint) properties available on the item for configuration, properties related to the `File Transfer` are also available and configurable:
+2. In addition to the [HTTP Settings](#expose-an-http-endpoint) properties available on the item for configuration, properties related to the `File Transfer` are also available and configurable:
     - **Mime Type Filter**: Restricts mime types allowed for upload.
     - **Maximum File Size (in bytes)**: The maximum file size allowed for upload.
 
 ![Http Upload Endpoint](docs/http-upload.png)
 
-## Configuring Route Parameters
+## Configure Http Endpoint
+
+### Configuring Route Parameters
 
 The `URI template` format can be used to specify a `route parameter` in the `Http Settings` `Route`. The variable name used as the placeholder must exist either:
 
@@ -70,70 +72,65 @@ For example, when a `route` is specified as `api/product/{id}`, a property/param
 
 ![Http Route Parameters](docs/http-route-parameter.png)
 
-## Versioning an Endpoint
+### Versioning an Endpoint
 
 Versioning capabilities can be applied to an existing `Service`, `Operation`, `Command`, or `Query`. The following steps are required:
 
-### 1. Configure the Available Versions
+#### 1. Configure the Available Versions
 
 1. Right-click on the Service Package (the root item in the tree view) and select `Add Api Version`. An item called `Api Version` should be added to the tree.
 2. Right-click on the `Api Version` and select `Add Version`. Change the auto-generated version name if required.
 3. Add multiple versions by repeating step two above.
 
-### 2. Enable Versioning on Endpoint
+#### 2. Enable Versioning on Endpoint
 
 1. Right-click on the `Service`, `Operation`, `Command`, or `Query` being versioned, and select `Apply Stereotype`.
 2. Click `Api Version Settings`.
 
-### 3. Configure Endpoint Version(s)
+#### 3. Configure Endpoint Version(s)
 
 1. An `Applicable Versions` property will now be available on the item to which the stereotype was applied.
 2. Select one or more versions to apply to the endpoint.
-3. The [Http Settings Route](#exposing-an-http-endpoint) configuration will now also contain a required `{version}` placeholder. This placeholder can be manually relocated within the `Route`, but it must be present.
+3. The [Http Settings Route](#expose-an-http-endpoint) configuration will now also contain a required `{version}` placeholder. This placeholder can be manually relocated within the `Route`, but it must be present.
 
 ![Http Versioning](docs/http-version.png)
 
-## Changing Serialization Naming Conventions
+### Changing Serialization Naming Conventions
 
 The JSON property name used when serializing or deserializing a field on a `DTO` can be configured using the `Serialization Settings` stereotype.
 
-1. Right-click on the `DTO` (to apply the serialization settings to all fields), or on a specific `DTO Field` (to apply it only to that field) and select `Apply Stereotype`.
-2. Click `Serialization Settings`.
-3. In the `DTO` or `DTO Field` properties, select the `Field Naming Convention` to use.
+Once the stereotype is applied to the `DTO` or `DTO Field`, the `Field Naming Convention` to use can be selected.
 
 Selecting the `Custom` option for `Field Naming Convention` allows you to specify a custom name for the serialization of the property.
 
-## Changing Parameter Binding Source
+### Changing Parameter Binding Source
 
 The binding source of an `Operation Parameter` or incoming `DTO Field` can be changed using the `Parameter Settings` stereotype.
 
-1. Right-click on the `Parameter` or `DTO Field` and select `Apply Stereotype`.
-2. Click `Parameter Settings`.
-3. In the `Parameter` or `DTO Field` properties, under `Parameter Settings`, configure the `Source` of the information for the parameter.
+Once the stereotype is applied to a `Parameter` or `DTO Field`, the `Source` of the information for the parameter can be selected.
 
-    Available options include:
-    - **Default**: A heuristic is used by Intent to make a "best guess" as to what the source should be.
-    - **From Body**.
-    - **From Form**.
-    - **From Header**: The `Header Name` must also be supplied if this option is chosen.
-    - **From Query**: The `Query String Name` must also be supplied if this option is chosen.
-    - **From Route**.
+Available options include:
 
-## Operation OpenAPI Configuration
+- **Default**: A heuristic is used by Intent to make a "best guess" as to what the source should be.
+- **From Body**.
+- **From Form**.
+- **From Header**: The `Header Name` must also be supplied if this option is chosen.
+- **From Query**: The `Query String Name` must also be supplied if this option is chosen.
+- **From Route**.
+
+### Operation OpenAPI Configuration
 
 To change the way in which a `Service`, `Operation`, `Command`, `Query`, or `Azure Function` is reflected in the OpenAPI specification, the `OpenAPI Settings` stereotype is used.
 
-1. Right-click on a `Service`, `Operation`, `Command`, or `Query` and select `Apply Stereotype`.
-2. Click `OpenAPI Settings`.
-3. In the item's properties, under `Open Settings`, the following options are available:
-    - **Ignore**: Whether to hide the endpoint from the OpenAPI spec.
-    - **OperationId**: Allows controlling the [`operationId`](https://swagger.io/docs/specification/paths-and-operations/) for the endpoint of the operation. When blank, it will use the endpoint's "method" name by default.
+Once the stereotype is applied to a `Service`, `Operation`, `Command`, or `Query`, the following properties are available:
 
-## Parameter OpenAPI Configuration
+- **Ignore**: Whether to hide the endpoint from the OpenAPI spec.
+- **OperationId**: Allows controlling the [`operationId`](https://swagger.io/docs/specification/paths-and-operations/) for the endpoint of the operation. When blank, it will use the endpoint's "method" name by default.
+
+### Parameter OpenAPI Configuration
 
 To change the way in which a `Parameter`, `DTO Field` is reflected in the OpenAPI specification, the `OpenAPI Settings` stereotype is used.
 
-1. Right-click on a `Parameter` or `DTO Field` and select `Apply Stereotype`.
-2. Click `OpenAPI Settings`.
-3. In the item's properties, under `Open Settings`, the following options are available:
-    - **Example Value**: Allows customization of the `example value` generated in the OpenAPI spec (and thus what appears in the Swagger UI).
+Once the stereotype is applied to a `Parameter` or `DTO Field`, the following properties are available:
+
+- **Example Value**: Allows customization of the `example value` generated in the OpenAPI spec (and thus what appears in the Swagger UI).
