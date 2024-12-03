@@ -229,7 +229,7 @@ steps:
       Get-ChildItem "$artifactsFolder" | ForEach-Object { Write-Host $_.Name }
 
 - task: PowerShell@2
-  displayName: 'Install Module Server CLI'
+  displayName: 'Install Module Server Client CLI'
   condition: and(succeeded(), in('True', variables.isMaster, variables.isDevelopment))
   inputs:
     targetType: 'inline'
@@ -252,6 +252,9 @@ steps:
       $artifactsFolder = '$(Build.ArtifactStagingDirectory)'
       $serverUrl = 'https://intentarchitect.com/'
       $apiKey = '$(intent-architect-module-server-api-key)'
+
+      $files = (Get-ChildItem "$artifactsFolder/*.*");
+      $number = 0
 
       foreach ($file in $files) {
         $number++
