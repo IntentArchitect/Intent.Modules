@@ -23,7 +23,7 @@
     <!-- Minimum Compatible Versions -->
     <detect id="Intent.VisualStudio.Projects">
       <install>
-        <package id="Intent.VisualStudio.Projects" version="3.8.5-pre.1" />
+        <package id="Intent.VisualStudio.Projects" version="3.8.5" />
       </install>
     </detect>
     <!-- /Minimum Compatible Versions -->
@@ -40,7 +40,7 @@
       <settings>
         <setting id="0c43b221-fec0-4df7-96d2-e7281ddf9207" title="Constructor Initializer" type="select">
           <isRequired>false</isRequired>
-          <hint>Constructor initializers placement. More information can be found in the [readme](https://github.com/IntentArchitect/Intent.Modules/blob/development/Modules/Intent.Modules.Common.CSharp/README.md). Relates to [StyleCop rule SA1128](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1128.md)</hint>
+          <hint>Constructor initializers placement. More information can be found in the [readme](https://github.com/IntentArchitect/Intent.Modules/blob/master/Modules/Intent.Modules.Common.CSharp/README.md). Relates to [StyleCop rule SA1128](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1128.md)</hint>
           <defaultValue>same-line</defaultValue>
           <options>
             <option value="same-line" description="Same line" />
@@ -50,7 +50,7 @@
         </setting>
         <setting id="6483b559-92bb-43d7-a0b4-af20ded10a1b" title="Parameter Placement" type="select">
           <isRequired>false</isRequired>
-          <hint>Parameter placement. More information can be found in the [readme](https://github.com/IntentArchitect/Intent.Modules/blob/development/Modules/Intent.Modules.Common.CSharp/README.md). Relates to [StyleCop rule SA1116](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1116.md)</hint>
+          <hint>Parameter placement. More information can be found in the [readme](https://github.com/IntentArchitect/Intent.Modules/blob/master/Modules/Intent.Modules.Common.CSharp/README.md). Relates to [StyleCop rule SA1116](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1116.md)</hint>
           <defaultValue>default</defaultValue>
           <options>
             <option value="same-line" description="Same Line" />
