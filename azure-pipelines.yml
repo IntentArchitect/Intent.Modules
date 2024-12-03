@@ -171,7 +171,7 @@ steps:
       --filter Requirement!=CosmosDB
 
 - task: PowerShell@2
-  displayName: 'Install Intent CLI'
+  displayName: 'Install Intent SF CLI'
   inputs:
     targetType: 'inline'
     pwsh: true
@@ -250,7 +250,7 @@ steps:
     pwsh: true
     script: |
       $artifactsFolder = '$(Build.ArtifactStagingDirectory)'
-      $serverUrl = 'https://intentarchitect.com/'
+      $serverUrl = 'https://app-module-server-prod-zanorth-001.azurewebsites.net/'
       $apiKey = '$(intent-architect-module-server-api-key)'
 
       $files = (Get-ChildItem "$artifactsFolder/*.*");
