@@ -43,7 +43,7 @@ class CrudHelper {
             return null;
         }
         
-        let result = await dialogService.openForm({
+        let dialogResult = await dialogService.openForm({
             title: "CRUD Creation Options",
             fields: [
                 {
@@ -62,26 +62,31 @@ class CrudHelper {
                 {
                     id: "create",
                     fieldType: "checkbox",
-                    label: "Create Operations",
-                    value: "true"
-                }
-                ,
-                {
-                    id: "update",
-                    fieldType: "checkbox",
-                    label: "Update Operations",
+                    label: "Create",
                     value: "true"
                 },
                 {
-                    id: "query",
+                    id: "update",
                     fieldType: "checkbox",
-                    label: "Query Operations",
+                    label: "Update",
+                    value: "true"
+                },
+                {
+                    id: "queryById",
+                    fieldType: "checkbox",
+                    label: "Query By Id",
+                    value: "true"
+                },
+                {
+                    id: "queryAll",
+                    fieldType: "checkbox",
+                    label: "Query All",
                     value: "true"
                 },
                 {
                     id: "delete",
                     fieldType: "checkbox",
-                    label: "Delete Operations",
+                    label: "Delete",
                     value: "true"
                 },
                 {
@@ -93,16 +98,51 @@ class CrudHelper {
             ]
         });
 
-        let foundEntity = lookup(result.entityId);
+        let foundEntity = lookup(dialogResult.entityId);
 
-        return {
+        var result: ICrudCreationResult = {
             selectedEntity: foundEntity,
-            canCreate: result.create == "true",
-            canUpdate: result.update == "true",
-            canDelete: result.delete == "true",
-            canQuery: result.query == "true",
-            canDomain: result.domain == "true"
+            canCreate: dialogResult.create == "true",
+            canUpdate: dialogResult.update == "true",
+            canQueryById: dialogResult.queryById == "true",
+            canQueryAll: dialogResult.queryAll == "true",
+            canDelete: dialogResult.delete == "true",
+            canDomain: dialogResult.domain == "true",
+            selectedDomainOperationIds: []
         };
+
+        if (result.canDomain && foundEntity.getChildren("Operation").length > 0) {
+            dialogResult = await dialogService.openForm({
+                title: "Select Domain Operations",
+                fields: [
+                    {
+                        id: "tree",
+                        fieldType: "tree-view",
+                        label: "Domain Operations",
+                        treeViewOptions: {
+                            rootId: foundEntity.id,
+                            submitFormTriggers: ["double-click", "enter"],
+                            selectableTypes: [
+                                {
+                                    specializationId: "Class",
+                                    autoExpand: true,
+                                    autoSelectChildren: true,
+                                    isSelectable: false
+                                },
+                                {
+                                    specializationId: "Operation",
+                                    isSelectable: true
+                                }
+                            ]
+                        }
+                    }
+                ]
+            });
+
+            result.selectedDomainOperationIds = dialogResult.tree?.filter((x:any) => x != "0") ?? [];
+        }
+
+        return result;
 
         function getClassAdditionalInfo(element: MacroApi.Context.IElementApi): any {
             let aggregateEntity = DomainHelper.getOwningAggregate(element);
@@ -421,10 +461,12 @@ interface IISelectEntityDialogOptions {
 
 interface ICrudCreationResult {
     selectedEntity: MacroApi.Context.IElementApi,
+    selectedDomainOperationIds: string[],
     canCreate: boolean,
     canUpdate: boolean,
+    canQueryById: boolean,
+    canQueryAll: boolean,
     canDelete: boolean,
-    canQuery: boolean,
     canDomain: boolean
 }
 

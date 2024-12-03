@@ -18,10 +18,12 @@ async function execute(element: IElementApi, preselectedClass?: IElementApi) {
         dialogResult = {
             selectedEntity: preselectedClass,
             canCreate: true,
+            canUpdate: true,
+            canQueryById: true,
+            canQueryAll: true,
             canDelete: true,
             canDomain: true,
-            canQuery: true,
-            canUpdate: true
+            selectedDomainOperationIds: []
         };
     }
 
@@ -41,7 +43,7 @@ To avoid this limitation in the future, either disable private setters or add a 
     const hasPrimaryKey = primaryKeys.length > 0;
     
     let resultDto: MacroApi.Context.IElementApi = null;
-    if (dialogResult.canQuery) {
+    if (dialogResult.canQueryById || dialogResult.canQueryAll) {
         resultDto = cqrsCrud.createCqrsResultTypeDto(entity, targetFolder);
     }
 
@@ -49,27 +51,30 @@ To avoid this limitation in the future, either disable private setters or add a 
         convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCreateCommand(entity, targetFolder, primaryKeys));
     }
 
-    if (hasPrimaryKey && dialogResult.canQuery) {
+    if ((hasPrimaryKey && !privateSettersOnly) && dialogResult.canUpdate) {
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, targetFolder));
+    }
+
+    if (hasPrimaryKey && dialogResult.canQueryById) {
         convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindByIdQuery(entity, targetFolder, resultDto));
     }
 
-    if (dialogResult.canQuery) {
+    if (dialogResult.canQueryAll) {
         convertToAdvancedMapping.convertQuery(cqrsCrud.createCqrsFindAllQuery(entity, targetFolder, resultDto));
     }
 
-    if ((hasPrimaryKey && !privateSettersOnly) && dialogResult.canUpdate) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsUpdateCommand(entity, targetFolder));
+    if (hasPrimaryKey && dialogResult.canDelete) {
+        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, targetFolder));
     }
 
     if (dialogResult.canDomain) {
         const operations = DomainHelper.getCommandOperations(entity);     
         for (const operation of operations) {
+            if (!dialogResult.selectedDomainOperationIds.some(x => x == operation.id)) {
+                continue;
+            }
             convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsCallOperationCommand(entity, operation, targetFolder));
         }
-    }
-
-    if (hasPrimaryKey && dialogResult.canDelete) {
-        convertToAdvancedMapping.convertCommand(cqrsCrud.createCqrsDeleteCommand(entity, targetFolder));
     }
     
     if (DomainHelper.isAggregateRoot(entity)) {

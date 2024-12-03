@@ -31,7 +31,7 @@ To avoid this limitation in the future, either disable private setters or add a 
     const primaryKeys = DomainHelper.getPrimaryKeys(entity);
 
     let resultDto: MacroApi.Context.IElementApi = null;
-    if (dialogResult.canQuery) {
+    if (dialogResult.canQueryById || dialogResult.canQueryAll) {
         resultDto = servicesCrud.createMappedResultDto(entity, targetFolder);
     }
 
@@ -39,19 +39,19 @@ To avoid this limitation in the future, either disable private setters or add a 
         servicesCrud.createStandardCreateOperation(service, entity, targetFolder);
     }
 
-    if (primaryKeys.length > 0 && dialogResult.canQuery) {
+    if (primaryKeys.length > 0 && (!privateSettersOnly && dialogResult.canUpdate)) {
+        servicesCrud.createStandardUpdateOperation(service, entity, targetFolder);
+    }
+
+    if (primaryKeys.length > 0 && dialogResult.canQueryById) {
         servicesCrud.createStandardFindByIdOperation(service, entity, resultDto);
     }
 
-    if (dialogResult.canQuery) {
+    if (dialogResult.canQueryAll) {
         servicesCrud.createStandardFindAllOperation(service, entity, resultDto);
     }
 
     if (primaryKeys.length > 0) {
-        if (!privateSettersOnly && dialogResult.canUpdate){
-            servicesCrud.createStandardUpdateOperation(service, entity, targetFolder);
-        }
-
         if (dialogResult.canDelete) {
             servicesCrud.createStandardDeleteOperation(service, entity);
         }
@@ -59,6 +59,9 @@ To avoid this limitation in the future, either disable private setters or add a 
         if (dialogResult.canDomain) {
             const operations = DomainHelper.getCommandOperations(entity);     
             for (const operation of operations) {
+                if (!dialogResult.selectedDomainOperationIds.some(x => x == operation.id)) {
+                    continue;
+                }
                 servicesCrud.createCallOperationCommand(service, operation, entity, targetFolder);
             }
         }
