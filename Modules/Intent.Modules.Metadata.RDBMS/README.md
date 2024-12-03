@@ -88,16 +88,20 @@ Once applied, the following properties can be set:
 
 ![Check Constraint](resources/images/check-constraint.png)
 
-### Create a Table Trigger
+### Communicate Trigger Existence
 
-To create a `trigger` on a table, use the `Add Trigger` option.
+In certain scenarios, it's necessary to inform the underlying provider (specifically, Entity Framework Core) that a table has an associated trigger. For more information on why this may be required, see. See [here for more details](https://learn.microsoft.com/en-us/ef/core/providers/sql-server/misc#savechanges-and-database-triggers) as to why this might be required.
+
+This is modeled in the `Domain Designer` with the `Add Trigger` option.
 
 1. Right-click on the `Class` that requires the `trigger`, and select `Add Trigger`.
-2. Choose one or more columns to associate with the trigger.
 
-The following properties can be set for the trigger:
+The following properties can be configured for the trigger:
 
 - **Name**: Defines the name of the trigger.
+
+> [!NOTE]  
+> The actual `trigger` implementation is not modeled in the `Domain Designer`. The `trigger` stereotype is used only to mark to the underlying provider (specifically, Entity Framework Core) that the table has an existing trigger. This allows Entity Framework to correctly generate the appropriate SQL statements.
 
 ### Create Join Table Constraint
 
