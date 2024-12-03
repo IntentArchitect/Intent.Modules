@@ -1,3 +1,7 @@
+### Version 3.7.0
+
+- Improvement: Improvemed documentation and added a number of help topics
+
 ### Version 3.6.2
 
 - Improvement: Added `Order` to the `Column` stereotype.
