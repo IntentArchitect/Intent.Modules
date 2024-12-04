@@ -171,7 +171,7 @@ steps:
       --filter Requirement!=CosmosDB
 
 - task: PowerShell@2
-  displayName: 'Install Intent CLI'
+  displayName: 'Install Intent SF CLI'
   inputs:
     targetType: 'inline'
     pwsh: true
@@ -200,15 +200,6 @@ steps:
     script: intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH" --check-deviations
 
 - task: PowerShell@2
-  displayName: 'Install Intent Packager'
-  condition: and(succeeded(), in('True', variables.isMaster, variables.isDevelopment))
-  inputs:
-    targetType: 'inline'
-    pwsh: true
-    script: |
-      dotnet tool install Intent.IArchitect.Packager.CommandLine --global --prerelease --add-source '$(vstsFeedUrl)'
-
-- task: PowerShell@2
   displayName: 'Filter artifacts to publish'
   condition: and(succeeded(), in('True', variables.isMaster, variables.isDevelopment))
   inputs:
@@ -226,7 +217,7 @@ steps:
       Write-Host "All files:"
       Get-ChildItem "$artifactsFolder" | ForEach-Object { Write-Host $_.Name }
 
-      $filesToRemove = Get-ChildItem "$artifactsFolder/*.*" | Where-Object { (-Not $isMaster -And ($_.Name -NotMatch $isPreReleaseRegex)) -Or ($_.Name.Contains('-alpha')) }
+      $filesToRemove = Get-ChildItem "$artifactsFolder/*.*" | Where-Object { (-Not $isMaster -And ($_.Name -NotMatch $isPreReleaseRegex)) }
 
       Write-Host
       Write-Host "Deleting the following files to prevent them being published:"
@@ -236,6 +227,15 @@ steps:
       Write-Host
       Write-Host "Remaining files:"
       Get-ChildItem "$artifactsFolder" | ForEach-Object { Write-Host $_.Name }
+
+- task: PowerShell@2
+  displayName: 'Install Module Server Client CLI'
+  condition: and(succeeded(), in('True', variables.isMaster, variables.isDevelopment))
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      dotnet tool install Intent.ModuleServer.Client.CLI --global --prerelease
 
 - task: PowerShell@2
   displayName: 'Publish modules'
@@ -249,13 +249,47 @@ steps:
     targetType: inline
     pwsh: true
     script: |
-      $directory = '$(Build.ArtifactStagingDirectory)'
-      $address = 'https://intentarchitect.com/'
-      $username = '$(intent-architect-user)'
-      $password = '$(intent-architect-password)'
+      $artifactsFolder = '$(Build.ArtifactStagingDirectory)'
+      $serverUrl = 'https://app-module-server-prod-zanorth-001.azurewebsites.net/'
+      $apiKey = '$(intent-architect-module-server-api-key)'
 
-      intent-package-management BulkUploadModules -directory "$directory" -address "$address" -username "$username" -password "$password"
-      intent-package-management BulkUploadApplicationTemplates -directory "$directory" -address "$address" -username "$username" -password "$password"
+      $files = (Get-ChildItem "$artifactsFolder/*.*");
+      $number = 0
+
+      foreach ($file in $files) {
+        $number++
+        Write-Host ""
+        Write-Host "Processing $($file.Name) ($number of $($files.Length))..."
+
+        if ($file.Name -like "*-alpha.*.imod") {
+            $expression = "module-server-client-cli `"upload-module`" `"$serverUrl`" `"$apiKey`" `"$($file.FullName)`" --unlisted"
+
+            Write-Host "Invoking $($expression.Replace($apiKey, "****"))..."
+            Invoke-Expression $expression
+
+            continue
+        }
+
+        if ($file.Name -like "*.imod") {
+            $expression = "module-server-client-cli `"upload-module`" `"$serverUrl`" `"$apiKey`" `"$($file.FullName)`""
+
+            Write-Host "Invoking $($expression.Replace($apiKey, "****"))..."
+            Invoke-Expression $expression
+
+            continue
+        }
+
+        if ($file.Name -like "*.iat") {
+            $expression = "module-server-client-cli `"upload-application-template`" `"$serverUrl`" `"$apiKey`" `"$($file.FullName)`""
+
+            Write-Host "Invoking $($expression.Replace($apiKey, "****"))..."
+            Invoke-Expression $expression
+
+            continue
+        }
+
+        Write-Host "Not applicable, skipped."
+      }
 
 - task: DotNetCoreCLI@2
   displayName: 'Push *.nupkg to nuget.org (Final Release)'

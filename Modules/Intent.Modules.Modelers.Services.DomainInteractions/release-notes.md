@@ -1,3 +1,7 @@
+### Version 2.1.0
+
+- Improvement: Help topics added.
+
 ### Version 2.0.3
 
 - Improvement: The full path of the class is now displayed on the `Create CRUD Service` and `Create CRUD CQRS Operations` class selection dropdown.

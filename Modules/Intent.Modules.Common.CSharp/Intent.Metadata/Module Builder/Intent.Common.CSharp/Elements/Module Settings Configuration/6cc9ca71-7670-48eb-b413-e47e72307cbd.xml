@@ -31,7 +31,7 @@
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
-            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Constructor initializers placement. More information can be found in the [readme](https://github.com/IntentArchitect/Intent.Modules/blob/development/Modules/Intent.Modules.Common.CSharp/README.md). Relates to [StyleCop rule SA1128](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1128.md)" isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Constructor initializers placement. More information can be found in the [readme](https://github.com/IntentArchitect/Intent.Modules/blob/master/Modules/Intent.Modules.Common.CSharp/README.md). Relates to [StyleCop rule SA1128](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1128.md)" isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="same-line" isActive="true" />
           </properties>
         </stereotype>
@@ -100,7 +100,7 @@
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
-            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Parameter placement. More information can be found in the [readme](https://github.com/IntentArchitect/Intent.Modules/blob/development/Modules/Intent.Modules.Common.CSharp/README.md). Relates to [StyleCop rule SA1116](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1116.md)" isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Parameter placement. More information can be found in the [readme](https://github.com/IntentArchitect/Intent.Modules/blob/master/Modules/Intent.Modules.Common.CSharp/README.md). Relates to [StyleCop rule SA1116](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1116.md)" isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="default" isActive="true" />
           </properties>
         </stereotype>
