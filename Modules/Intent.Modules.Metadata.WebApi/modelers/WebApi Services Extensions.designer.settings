@@ -280,7 +280,7 @@ exposeAsHttpEndPoint(element);
         </runScript>
         <runScript type="run-script">
           <text>Expose as Http File Download</text>
-          <icon type="FontAwesome" source="file-download" />
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA11JREFUeF7t3F1v0lAcBvAeWl7cvouAt2bXshF1+CG88WbxNVKY2ygYl7ksXvklZGDchteLt67gV3FE2lMx7VZGcEton572LPy57nN6zq9PoSVNmUIfSIBBaQor0gA+qh6NgxyPr62yFHOXYhIunAu4snJ/LsPT0x8KAc5QEeBc3bl5IwIkQFAAjFMDCRAUAOPUQAIEBcA4NZAAQQEwTg0kQFAAjFMDCRAUAOPUQAIEBcA4NZAAQQEwTg0kQFAAjFMDCRAUAOPUQAIEBcA4NZAAQQEwTg0kQFAAjFMDCRAUAOPUQAIEBcA4NZAAQQEwTg0kQFAAjC98Ax/q356ysfJZUVjoB9eDPGQe/niNx4yxjW6z/Cn8GFfJ0Iu9bueVau9ZKpPaLeTvLuVyuSjmF9kYo5GlmKY5dBynfthY3Y9q4EgB3UlV9JPnKTVlFIuFO9lcNqp5QuNc4PWHNrdbXWOtCQ02E44c0B1/vXb8QtW0nWI+v5Q0ojWylDNBeO5ahQDKgniBZw5tziNvnl9EYYBJI3p4fXPILed9p7lqRHnaTo8lFDApxLjwhJ7C00epoh+/VLX0VuFefjmbyYgqgzeuZVnK2c/BOXf4h45RagjdmcjvwNmJx4EYN15sDfQxK7WTV6qqvRPRRB/P5ny32yztiG5eLD8i115sC0B08fr9wW/rj73Xaa1ux4UXewP9ha3Xe6+1lLpZLOaXM1nsO9HFM83BuWOP9tpGeStOvMQA3R0/rvXepFW1jiAmjZcoIIooA17igN51YvXorZbN1NzbvnlPZw+vPxjalvWxY6xtxn3axnohPc/igiDatq2YZ/2hZSePJ0UDfeAn+nFVTaf1QuHmJk7w+Gi/0yjX5zk4orcRfisXZAEeYuYSceaOxcfjf5399vYDKfCkauDVxfZ3XUunql4TLxE9PPPXucOtgy87pVqQgyJ6W6kaeB0iY0xaPCkbOEHc7Bmaqm0wpjDu8IP2dkkX3aYw40vZwAlivef9/X7YkBNP6gaGaUMSGakbmARI0H0SYFCxme0JkABBATBODYwKMOgbJMH93vq4/wLISQODPB1161cPLmD6DZoEGAKTAEOgTUcIkABBATBODSRAUACMUwNFAYLjLlT8vwvphVp9hIule2EQ8x9db3hvh9xYWgAAAABJRU5ErkJggg==" />
           <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function makeReturnTypeFileDownloadDto(element) {
@@ -441,7 +441,7 @@ configureDownload(element);
         </runScript>
         <runScript type="run-script">
           <text>Expose as Http File Upload</text>
-          <icon type="FontAwesome" source="file-upload" />
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAyVJREFUeF7t21tP2mAABuBWKCd/jwful0z+w6IFtuzW7MRJN+dEkLjN7MYbbN2y/yAmu1fx70zsQcICpgrOiPh+bb+Et7d870f79P1oG0BVuEECKpRmWJEaMGeWqv1zZGRrFVnPlbSA+cPyVkzTVlWlpzpX3b3mSlVKRCkBs4flSiIaKS/NpVOqqiqt87OO7TrfD/TtNdmaKB3gAC8SKS/Np1PJeHzgZTmO0jo/vbBdd082RKkA78PzGicrojSAObNUjkejleHm3V2u14gnHdvtfjvQq+syLGcpAB+DN9pEeRBDB8wb5ZKmRdYyQ59545rlNdFynK9Gtv5x3Hg/Xw8V8Cl4Hsal4yjH7bOO5VqhIoYGqDeLhWRCW1+aS896V9tJm9JHbLVPL2zb3TXy2xuT5kWMDwVQBN5wE8NEDBxQJJ4MiIEC6mbxfTyqfcrML86m4gkRK+hmjuvlfPbXdq1dI1v/LHTyByYLDNBPvNEmnlxYV3bD1Hc2g0AMBDBrFN7FtNiGH827i3Tp2NcXFtfZMbL1L34j+g4YJN5tE4ND9BVw5bD4Nj4T3czML6ZmE0m/yzAyf8eyvMe+mpmrbfn15r4BhonnYQWB6AvgAE+NbGYW0oE3727T/EYUDigT3nATj85PO07X3Tb1+uBrAlGbUEDdLLyJzWhbmYXFZNCfeeNAOralHLXFIwoDXG4WXiu93r6iPv2LqhfPno9zGLz++8/xo8bdO6in9FRFWf35qvHj6ZPcJoUBojuz3PzQmwTw18uGFPsuxU708QkIVpCABAQFwDgbSEBQAIyzgQQEBcA4G0hAUACMs4EEBAXAOBtIQFAAjLOBBAQFwDgbSEBQAIyzgQQEBcA4G0hAUACMs4EEBAXAOBtIQFAAjLOBBAQFwDgbSEBQAIyzgQQEBcA4G0hAUACMs4EEBAXAOBsoAHCSKfgj80m0JB4rza/0JTZ6cNcICJ45AhIQFADjbKAowP59GDjXVMW926ibBk5yIztVUvccbP/fogQEWkBAAK8fJSABQQEwzgYSEBQA42ygX4DgvFMV/+8+cKqOXuDB8lkYxPwHrMp6b1nCHuoAAAAASUVORK5CYII=" />
           <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function makeReturnTypeFileDownloadDto(element) {
@@ -697,7 +697,7 @@ exposeAsHttpEndPoint(element);
         </option>
         <option type="run-script">
           <text>Expose as Http File Download</text>
-          <icon type="FontAwesome" source="file-download" />
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA11JREFUeF7t3F1v0lAcBvAeWl7cvouAt2bXshF1+CG88WbxNVKY2ygYl7ksXvklZGDchteLt67gV3FE2lMx7VZGcEton572LPy57nN6zq9PoSVNmUIfSIBBaQor0gA+qh6NgxyPr62yFHOXYhIunAu4snJ/LsPT0x8KAc5QEeBc3bl5IwIkQFAAjFMDCRAUAOPUQAIEBcA4NZAAQQEwTg0kQFAAjFMDCRAUAOPUQAIEBcA4NZAAQQEwTg0kQFAAjFMDCRAUAOPUQAIEBcA4NZAAQQEwTg0kQFAAjFMDCRAUAOPUQAIEBcA4NZAAQQEwTg0kQFAAjC98Ax/q356ysfJZUVjoB9eDPGQe/niNx4yxjW6z/Cn8GFfJ0Iu9bueVau9ZKpPaLeTvLuVyuSjmF9kYo5GlmKY5dBynfthY3Y9q4EgB3UlV9JPnKTVlFIuFO9lcNqp5QuNc4PWHNrdbXWOtCQ02E44c0B1/vXb8QtW0nWI+v5Q0ojWylDNBeO5ahQDKgniBZw5tziNvnl9EYYBJI3p4fXPILed9p7lqRHnaTo8lFDApxLjwhJ7C00epoh+/VLX0VuFefjmbyYgqgzeuZVnK2c/BOXf4h45RagjdmcjvwNmJx4EYN15sDfQxK7WTV6qqvRPRRB/P5ny32yztiG5eLD8i115sC0B08fr9wW/rj73Xaa1ux4UXewP9ha3Xe6+1lLpZLOaXM1nsO9HFM83BuWOP9tpGeStOvMQA3R0/rvXepFW1jiAmjZcoIIooA17igN51YvXorZbN1NzbvnlPZw+vPxjalvWxY6xtxn3axnohPc/igiDatq2YZ/2hZSePJ0UDfeAn+nFVTaf1QuHmJk7w+Gi/0yjX5zk4orcRfisXZAEeYuYSceaOxcfjf5399vYDKfCkauDVxfZ3XUunql4TLxE9PPPXucOtgy87pVqQgyJ6W6kaeB0iY0xaPCkbOEHc7Bmaqm0wpjDu8IP2dkkX3aYw40vZwAlivef9/X7YkBNP6gaGaUMSGakbmARI0H0SYFCxme0JkABBATBODYwKMOgbJMH93vq4/wLISQODPB1161cPLmD6DZoEGAKTAEOgTUcIkABBATBODSRAUACMUwNFAYLjLlT8vwvphVp9hIule2EQ8x9db3hvh9xYWgAAAABJRU5ErkJggg==" />
           <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function makeReturnTypeFileDownloadDto(element) {
@@ -858,7 +858,7 @@ configureDownload(element);
         </option>
         <option type="run-script">
           <text>Expose as Http File Upload</text>
-          <icon type="FontAwesome" source="file-upload" />
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAyVJREFUeF7t21tP2mAABuBWKCd/jwful0z+w6IFtuzW7MRJN+dEkLjN7MYbbN2y/yAmu1fx70zsQcICpgrOiPh+bb+Et7d870f79P1oG0BVuEECKpRmWJEaMGeWqv1zZGRrFVnPlbSA+cPyVkzTVlWlpzpX3b3mSlVKRCkBs4flSiIaKS/NpVOqqiqt87OO7TrfD/TtNdmaKB3gAC8SKS/Np1PJeHzgZTmO0jo/vbBdd082RKkA78PzGicrojSAObNUjkejleHm3V2u14gnHdvtfjvQq+syLGcpAB+DN9pEeRBDB8wb5ZKmRdYyQ59545rlNdFynK9Gtv5x3Hg/Xw8V8Cl4Hsal4yjH7bOO5VqhIoYGqDeLhWRCW1+aS896V9tJm9JHbLVPL2zb3TXy2xuT5kWMDwVQBN5wE8NEDBxQJJ4MiIEC6mbxfTyqfcrML86m4gkRK+hmjuvlfPbXdq1dI1v/LHTyByYLDNBPvNEmnlxYV3bD1Hc2g0AMBDBrFN7FtNiGH827i3Tp2NcXFtfZMbL1L34j+g4YJN5tE4ND9BVw5bD4Nj4T3czML6ZmE0m/yzAyf8eyvMe+mpmrbfn15r4BhonnYQWB6AvgAE+NbGYW0oE3727T/EYUDigT3nATj85PO07X3Tb1+uBrAlGbUEDdLLyJzWhbmYXFZNCfeeNAOralHLXFIwoDXG4WXiu93r6iPv2LqhfPno9zGLz++8/xo8bdO6in9FRFWf35qvHj6ZPcJoUBojuz3PzQmwTw18uGFPsuxU708QkIVpCABAQFwDgbSEBQAIyzgQQEBcA4G0hAUACMs4EEBAXAOBtIQFAAjLOBBAQFwDgbSEBQAIyzgQQEBcA4G0hAUACMs4EEBAXAOBtIQFAAjLOBBAQFwDgbSEBQAIyzgQQEBcA4G0hAUACMs4EEBAXAOBsoAHCSKfgj80m0JB4rza/0JTZ6cNcICJ45AhIQFADjbKAowP59GDjXVMW926ibBk5yIztVUvccbP/fogQEWkBAAK8fJSABQQEwzgYSEBQA42ygX4DgvFMV/+8+cKqOXuDB8lkYxPwHrMp6b1nCHuoAAAAASUVORK5CYII=" />
           <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function makeReturnTypeFileDownloadDto(element) {

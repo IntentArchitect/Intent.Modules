@@ -59,7 +59,7 @@ When exposing the item as a file upload endpoint, the following configuration is
 
 ![Http Upload Endpoint](docs/http-upload.png)
 
-## Configure Http Endpoint
+## Configure an Http Endpoint
 
 ### Configuring Route Parameters
 
