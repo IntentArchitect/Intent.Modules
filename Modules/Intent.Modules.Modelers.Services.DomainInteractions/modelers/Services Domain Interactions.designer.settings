@@ -1880,16 +1880,17 @@ class CrudHelper {
                         treeViewOptions: {
                             rootId: foundEntity.id,
                             submitFormTriggers: ["double-click", "enter"],
+                            isMultiSelect: true,
                             selectableTypes: [
                                 {
                                     specializationId: "Class",
                                     autoExpand: true,
                                     autoSelectChildren: true,
-                                    isSelectable: false
+                                    isSelectable: (x) =&gt; true
                                 },
                                 {
                                     specializationId: "Operation",
-                                    isSelectable: true
+                                    isSelectable: (x) =&gt; true
                                 }
                             ]
                         }
@@ -2890,7 +2891,7 @@ To avoid this limitation in the future, either disable private setters or add a 
 async function execute(element) {
     const package = element.getPackage();
     let dialogResult = await CrudHelper.openCrudCreationDialog({
-        includeOwnedRelationships: false,
+        includeOwnedRelationships: false, // App Service doesn't support nested (yet)
         allowAbstract: false
     });
     if (!dialogResult) {
@@ -8971,16 +8972,17 @@ class CrudHelper {
                         treeViewOptions: {
                             rootId: foundEntity.id,
                             submitFormTriggers: ["double-click", "enter"],
+                            isMultiSelect: true,
                             selectableTypes: [
                                 {
                                     specializationId: "Class",
                                     autoExpand: true,
                                     autoSelectChildren: true,
-                                    isSelectable: false
+                                    isSelectable: (x) =&gt; true
                                 },
                                 {
                                     specializationId: "Operation",
-                                    isSelectable: true
+                                    isSelectable: (x) =&gt; true
                                 }
                             ]
                         }
@@ -9981,7 +9983,7 @@ To avoid this limitation in the future, either disable private setters or add a 
 async function execute(element) {
     const package = element.getPackage();
     let dialogResult = await CrudHelper.openCrudCreationDialog({
-        includeOwnedRelationships: false,
+        includeOwnedRelationships: false, // App Service doesn't support nested (yet)
         allowAbstract: false
     });
     if (!dialogResult) {
