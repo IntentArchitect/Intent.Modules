@@ -1,3 +1,7 @@
+### Version 1.3.0
+
+- Improvement: Improvemed documentation and added a number of help topics
+
 ### Version 1.2.1
 
 - Fixed: Resolved an issue with self-reference associations in DocumentDB, ensuring proper foreign key creation.

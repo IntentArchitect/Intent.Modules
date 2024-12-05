@@ -32,6 +32,39 @@ This stereotype is visualized as a golden key icon.
 
 ![Primary Key visual](./docs/images/primary-key-stereotype.png)
 
+#### Primary Key Type
+
+The default type for the `Primary Key` is `Object ID` (string). This can be changed using the `Document Database > Id Type` application setting.
+
+The available options are:
+
+- **Object ID (string)** - the default
+- **GUID**
+
+![Primary Key Type](./docs/images/primary-key-types.png)
+
+#### Primary Key Creation
+
+The default behavior in terms of `Primary Key` creation, is for the `Primary Key` to be created on **all** entities (with the exception of child entities with one-to-one relationships)
+
+This behavior change be changed using the `Document Database > Key Creation Mode` application setting.
+
+The available options are:
+
+- **All** - the default. All modeled entities, except for *child entities with one-to-one relationships*, will automatically be assigned a `Primary Key`.
+- **Only on Documents** - Only parent entities (no *child entities*) will automatically be assigned a `Primary Key`.
+
+A visual example of an `All` modeled *one-to-many* relationship - the child entity (OrderItem) **has** a `Primary Key`:
+
+![Child Primary Key](./docs/images/all-primary-key.png)
+
+A visual example of an `Only on Documents` modeled *one-to-many* relationship - the child entity (OrderItem) **does not** have a `Primary Key`:
+
+![Child Primary Key](./docs/images/only-documents-primary-key.png)
+
+> [!NOTE]
+> The `Create CRUD CQRS Operations` accelerator in the `Service Designer` requires that an entity has a `Primary Key` (that the `Key Creation Mode` is set to `All`). If a child entity does not have a `Primary Key`, then entity will not be available for selection when using the `Create CRUD CQRS Operations` accelerator.
+
 ### Foreign Key - Attribute stereotype
 
 The `Foreign Key` stereotype indicates an `Attribute` has been introduced to a `Class` as a result of a modeled `Association`, for example:
@@ -43,3 +76,23 @@ In this diagram you can see the `CustomerId` attribute has been introduced, with
 For the Document DB paradigm, association between different aggregate roots are denotes by dotted line associations as these are references between documents.
 
 The `Foreign Key` stereotype's are automatically managed when modeling associations. This stereotype is visualized as a silver key icon.
+
+#### Compositional Relationship
+
+This is the default relationship when modeling an `Association` and is represented by a **black diamond** on the source end of the relationship, and a **solid line** between the two entities.
+
+With this relationship, the child entity is consisted part of the parent entity, and cannot exist without a parent.
+
+In this example, an *OrderItem* has a `Compositional Relationship` with *Order*, and cannot exist independently of an *Order*. It is considered part of the *Order*.
+
+![Compositional Relationship](./docs/images/compositional-relationship.png)
+
+#### Aggregational Relationship
+
+When the `Source End` of the `Association` has been set as `Is Nullable`, the relationship is considered an `Aggregational Relationship`. This is represented by a **white diamond** on the source end of the relationship, and a **dotted line** between the two entities.
+
+This relationship is modeled by setting the `Is Nullable` property of the `Source End` of the `Association` to **true**. With this relationship, the "child" entity, can exist independently of the "parent" entity.
+
+In this example, an *Address* has a `Aggregational Relationship` with *Order*, and can exist independently of an *Order*.
+
+![Aggregational Relationship](./docs/images/aggregational-relationship.png)
