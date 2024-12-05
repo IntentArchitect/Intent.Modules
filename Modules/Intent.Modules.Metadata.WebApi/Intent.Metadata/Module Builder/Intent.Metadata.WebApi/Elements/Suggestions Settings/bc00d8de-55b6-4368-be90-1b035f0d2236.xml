@@ -13,8 +13,8 @@
   <metadata />
   <childElements>
     <childElement id="e0e3efb3-c7ac-480f-b372-19e62b4bcc58" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
-      <name>Expose as Http Endpoint</name>
-      <display>Expose as Http Endpoint: Operation</display>
+      <name>Expose as HTTP Endpoint</name>
+      <display>Expose as HTTP Endpoint: Operation</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="f9ed773e-d02f-4bfd-af97-4e00a39a396c">
@@ -50,8 +50,8 @@
       <childElements />
     </childElement>
     <childElement id="825ef452-a280-4b28-a300-35270953d7c5" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
-      <name>Expose as Http Endpoint</name>
-      <display>Expose as Http Endpoint: Service</display>
+      <name>Expose as HTTP Endpoint</name>
+      <display>Expose as HTTP Endpoint: Service</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="27455a2b-b322-465a-87b9-3218a5704a3e">

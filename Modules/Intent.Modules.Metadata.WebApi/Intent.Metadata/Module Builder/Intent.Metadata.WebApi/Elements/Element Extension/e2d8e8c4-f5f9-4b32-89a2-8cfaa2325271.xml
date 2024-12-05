@@ -62,8 +62,8 @@
       <metadata />
       <childElements>
         <childElement id="81c22c58-30d5-433c-b251-f24efdef5b8c" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
-          <name>Expose as Http Endpoint</name>
-          <display>Expose as Http Endpoint: Inline Script</display>
+          <name>Expose as HTTP Endpoint</name>
+          <display>Expose as HTTP Endpoint: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="e8508a33-faa7-479a-9f21-2cbeae6e7005">

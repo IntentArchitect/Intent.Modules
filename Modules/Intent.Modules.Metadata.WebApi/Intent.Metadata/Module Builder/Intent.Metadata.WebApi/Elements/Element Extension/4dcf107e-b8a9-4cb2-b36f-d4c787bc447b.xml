@@ -62,8 +62,8 @@
       <metadata />
       <childElements>
         <childElement id="2c1f2346-2358-4bf7-98a7-715a23d640f8" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
-          <name>Expose as Http Endpoint</name>
-          <display>Expose as Http Endpoint: Inline Script</display>
+          <name>Expose as HTTP Endpoint</name>
+          <display>Expose as HTTP Endpoint: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="8e93471f-48e4-4105-be5c-7717019725d7">
@@ -112,8 +112,8 @@
           <childElements />
         </childElement>
         <childElement id="431f6640-20ce-4308-ad19-bf668dc90fb2" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
-          <name>Expose as Http File Download</name>
-          <display>Expose as Http File Download: Inline Script</display>
+          <name>Expose as HTTP File Download</name>
+          <display>Expose as HTTP File Download: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="ff9d5961-716c-473f-8cfc-1c68ec01d807">
@@ -162,8 +162,8 @@
           <childElements />
         </childElement>
         <childElement id="24de65a0-4be7-410b-a2f3-ab53a4074c9f" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
-          <name>Expose as Http File Upload</name>
-          <display>Expose as Http File Upload: Inline Script</display>
+          <name>Expose as HTTP  File Upload</name>
+          <display>Expose as HTTP  File Upload: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="fbdeab5f-c20a-41d4-a700-f8f3ef619844">

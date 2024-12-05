@@ -2,12 +2,12 @@
 
 This Intent Architect module provides programming language-agnostic metadata for use in Intent Architect designers around modeling "WebApi" concepts, such as verbs, routes, and other HTTP-related settings for endpoints.
 
-## Expose an HTTP Endpoint
+## Expose Service as an HTTP Endpoint
 
 To create an HTTP Endpoint for an external party to invoke, an existing `Service`, `Operation`, `Command`, or `Query` needs to be _exposed as an HTTP endpoint_.
 
 1. On the diagram, hover your mouse over the `Service`, `Operation`, `Command`, or `Query` to be exposed and click the `Suggestion` (:bulb:) icon.
-2. Select the `Expose as Http Endpoint` option.
+2. Select the `Expose as HTTP Endpoint` option.
 3. Items exposed as HTTP endpoints are indicated with a visual icon. You can view and configure HTTP-related properties by accessing the endpoint's properties. These property values are automatically set based on the item's heuristics but can be manually adjusted if necessary:
 
     - **Verb**: HTTP method to define the action performed by the endpoint.
@@ -16,16 +16,16 @@ To create an HTTP Endpoint for an external party to invoke, an existing `Service
     - **Success Response Code**: The HTTP response code returned on successful invocation of the endpoint.
 
 > [!TIP]
-> Multiple items of type `Service`, `Operation`, `Command`, or `Query` can be exposed at once. Select multiple items to expose in the diagram or tree view using the Ctrl key, right-click on one of the selected items, and select `Expose as Http Endpoint`.
+> Multiple items of type `Service`, `Operation`, `Command`, or `Query` can be exposed at once. Select multiple items to expose in the diagram or tree view using the Ctrl key, right-click on one of the selected items, and select `Expose as HTTP Endpoint`.
 
 ![Http Settings](docs/http-settings.png)
 
-## Expose a File Download Endpoint
+## Expose Service as an HTTP File Download Endpoint
 
 To create an HTTP Endpoint that provides file downloading capabilities, an existing `Operation`, `Command`, or `Query` needs to be exposed.
 
 1. In the Services Designer, either in the tree view or in a diagram, select one or more of the following types: `Operation`, `Command`, or `Query`.
-2. Right-click on any of the highlighted items and select `Expose as Http File Download`.
+2. Right-click on any of the highlighted items and select `Expose as HTTP File Download`.
 3. Items exposed as HTTP endpoints are indicated with a visual icon. You can view and configure [HTTP-related](#expose-an-http-endpoint) properties by accessing the endpoint's properties. These property values are automatically set based on the item's heuristics but can be manually adjusted if necessary.
 
 When exposing the item as a file download endpoint, the following configuration is automatically applied:
@@ -37,12 +37,12 @@ When exposing the item as a file download endpoint, the following configuration 
 
 2. The `Operation`, `Command`, or `Query` being exposed is updated to have a `Return Type` of `FileDownloadDto`.
 
-## Expose a File Upload Endpoint
+## Expose Service as an HTTP File Upload Endpoint
 
 To create an HTTP Endpoint that provides file upload capabilities, an existing `Operation` or `Command` needs to be exposed.
 
 1. In the Services Designer, either in the tree view or in a diagram, select one or more `Operation` or `Command` types.
-2. Right-click on any of the highlighted items and select `Expose as Http File Upload`.
+2. Right-click on any of the highlighted items and select `Expose as HTTP File Upload`.
 3. Items exposed as HTTP endpoints are indicated with a visual icon. You can view and configure [HTTP-related](#expose-an-http-endpoint) properties by accessing the endpoint's properties. These property values are automatically set based on the item's heuristics but can be manually adjusted if necessary.
 
 When exposing the item as a file upload endpoint, the following configuration is automatically applied:
@@ -59,7 +59,7 @@ When exposing the item as a file upload endpoint, the following configuration is
 
 ![Http Upload Endpoint](docs/http-upload.png)
 
-## Configure an Http Endpoint
+## Configure an HTTP Endpoint
 
 ### Configuring Route Parameters
 
