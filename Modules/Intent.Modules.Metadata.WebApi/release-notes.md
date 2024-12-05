@@ -1,6 +1,7 @@
 ### Version 4.7.0
 
 - Improvement: Added `Suggestion` for `Exposing as Http Endpoint` as well as a number of documentation topics
+- Improvement: Updated `Expose HTTP` menu item icon to align with module icon
 
 ### Version 4.6.4
 
