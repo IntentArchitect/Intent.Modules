@@ -63,37 +63,43 @@ class CrudHelper {
                     id: "create",
                     fieldType: "checkbox",
                     label: "Create",
-                    value: "true"
+                    value: "true",
+                    hint: "Generate the \"Create\" operation"
                 },
                 {
                     id: "update",
                     fieldType: "checkbox",
                     label: "Update",
-                    value: "true"
+                    value: "true",
+                    hint: "Generate the \"Update\" operation"
                 },
                 {
                     id: "queryById",
                     fieldType: "checkbox",
                     label: "Query By Id",
-                    value: "true"
+                    value: "true",
+                    hint: "Generate the \"Query By Id\" operation"
                 },
                 {
                     id: "queryAll",
                     fieldType: "checkbox",
                     label: "Query All",
-                    value: "true"
+                    value: "true",
+                    hint: "Generate the \"Query All\" operation"
                 },
                 {
                     id: "delete",
                     fieldType: "checkbox",
                     label: "Delete",
-                    value: "true"
+                    value: "true",
+                    hint: "Generate the \"Delete\" operation"
                 },
                 {
                     id: "domain",
                     fieldType: "checkbox",
                     label: "Domain Operations",
-                    value: "true"
+                    value: "true",
+                    hint: "Generate operations for Domain Entity operations"
                 }
             ]
         });
@@ -119,6 +125,7 @@ class CrudHelper {
                         id: "tree",
                         fieldType: "tree-view",
                         label: "Domain Operations",
+                        hint: "Generate operations from selected domain entity operations",
                         treeViewOptions: {
                             rootId: foundEntity.id,
                             submitFormTriggers: ["double-click", "enter"],
@@ -127,8 +134,8 @@ class CrudHelper {
                                 {
                                     specializationId: "Class",
                                     autoExpand: true,
-                                    autoSelectChildren: true,
-                                    isSelectable: (x) => true
+                                    autoSelectChildren: false,
+                                    isSelectable: (x) => false
                                 },
                                 {
                                     specializationId: "Operation",
