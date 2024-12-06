@@ -28316,8 +28316,6 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
             <type type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" />
             <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
             <type type="Stored Procedure" typeId="575edd35-9438-406d-b0a7-b99d6f29b560" />
-            <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
-            <type type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" />
             <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
           </targetTypes>
           <allowIsNavigable>true</allowIsNavigable>

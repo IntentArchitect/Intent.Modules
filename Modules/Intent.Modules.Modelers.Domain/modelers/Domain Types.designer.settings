@@ -633,7 +633,7 @@ return result;</displayFunction>
           <contextMenuOptions>
             <createElement type="element">
               <text>Add Parameter</text>
-              <shortcut>ctrl + shift + p</shortcut>
+              <shortcut>ctrl + shift + a</shortcut>
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
               <specializationType>Parameter</specializationType>
               <specializationTypeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</specializationTypeId>
@@ -644,7 +644,7 @@ return result;</displayFunction>
           <creationOptions>
             <option type="element">
               <text>Add Parameter</text>
-              <shortcut>ctrl + shift + p</shortcut>
+              <shortcut>ctrl + shift + a</shortcut>
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
               <specializationType>Parameter</specializationType>
               <specializationTypeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</specializationTypeId>
@@ -828,7 +828,7 @@ validateOperation(element);
           <contextMenuOptions>
             <createElement type="element">
               <text>Add Parameter</text>
-              <shortcut>ctrl + shift + p</shortcut>
+              <shortcut>ctrl + shift + a</shortcut>
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
               <specializationType>Parameter</specializationType>
               <specializationTypeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</specializationTypeId>
@@ -839,7 +839,7 @@ validateOperation(element);
           <creationOptions>
             <option type="element">
               <text>Add Parameter</text>
-              <shortcut>ctrl + shift + p</shortcut>
+              <shortcut>ctrl + shift + a</shortcut>
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
               <specializationType>Parameter</specializationType>
               <specializationTypeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</specializationTypeId>
