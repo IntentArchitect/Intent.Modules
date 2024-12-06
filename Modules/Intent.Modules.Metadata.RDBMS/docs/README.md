@@ -14,9 +14,9 @@ The available options are:
 
 - **Explicitly Add PKs and FKs automatically** (default): Automatically adds keys during modeling.
 - **Manually add PKs and FKs**: Allows for manual addition of keys during modeling.
-- **Remove all managed PKs and FKs**: Removes all automatically added keys.
+- **Remove all managed PKs and FKs**: To support legacy functionality.
 
-![Key Creation Mode](resources/images/key-creation-mode.png)
+![Key Creation Mode](images/key-creation-mode.png)
 
 ### Primary Key Type
 
@@ -28,7 +28,7 @@ The available options for primary key types are:
 - **int**
 - **long**
 
-![Key Type](resources/images/key-type.png)
+![Key Type](images/key-type.png)
 
 ## Modify Table Properties
 
@@ -49,7 +49,7 @@ Once applied, the following properties can be set:
 
 - **Name**: Defines the name of the schema.
 
-![Schema](resources/images/database-schema.png)
+![Schema](images/database-schema.png)
 
 ### Create an Index
 
@@ -70,7 +70,7 @@ The following properties can be set for the index:
 - **Filter Custom Value** (only available when **Filter** type is _Custom_): Defines the SQL expression used for filtering (e.g., `WHERE Status = 'active'`).
 - **Fill Factor**: Specifies the percentage of index page space to fill, leaving room for future growth.
 
-![Table Index](resources/images/table-index.png)
+![Table Index](images/table-index.png)
 
 For index columns, the following properties can be set:
 
@@ -86,7 +86,7 @@ Once applied, the following properties can be set:
 - **Name**: Defines the name of the constraint.
 - **SQL**: Specifies the SQL expression for defining the check constraint.
 
-![Check Constraint](resources/images/check-constraint.png)
+![Check Constraint](images/check-constraint.png)
 
 ### Communicate Trigger Existence
 
@@ -113,7 +113,7 @@ Once applied, the following property can be set:
 
 - **Name**: Defines the name of the join table.
 
-![Join Table](resources/images/join-table.png)
+![Join Table](images/join-table.png)
 
 ## Modify Column Properties
 
@@ -129,7 +129,7 @@ Once applied, the following properties can be set:
 - **Type**: Overwrites the default type of the column.
 - **Order**: Overwrites the default order of the column.
 
-![Column Properties](resources/images/column-properties.png)
+![Column Properties](images/column-properties.png)
 
 ### Create a Primary Key Constraint
 
@@ -142,13 +142,13 @@ Once applied, the following properties can be set for the `Attribute`:
 - **Identity**: Indicates if the primary key is an _Identity_.
 - **Data Source**: Specifies the source of the primary key.
 
-![Primary Key](resources/images/primary-key.png)
+![Primary Key](images/primary-key.png)
 
 ### Foreign Key Constraints
 
 The `Foreign Key` stereotype indicates an attribute has been introduced to a `Class` as a result of a modeled `Association`. The `Foreign Key` stereotype is automatically managed when modeling associations. It is represented by a silver key icon.
 
-![Foreign Key](resources/images/foreign-key.png)
+![Foreign Key](images/foreign-key.png)
 
 ### Create a Column Index
 
@@ -163,7 +163,7 @@ The following properties can be set for the attribute:
 - **IsUnique**: A flag to determine if the index is unique.
 - **Sort Direction**: Specifies the sort order (ascending or descending).
 
-![Index](resources/images/index.png)
+![Index](images/index.png)
 
 ### Create a Computed Column
 
@@ -173,7 +173,7 @@ Once applied, the following property can be set:
 
 - **SQL**: Defines the formula used to compute the calculated value.
 
-![Computed Column](resources/images/computed-comlumn.png)
+![Computed Column](images/computed-comlumn.png)
 
 ### Set Column Decimal Precision
 
@@ -184,7 +184,7 @@ The following properties can be set:
 - **Precision**: Defines the total number of digits that can be stored, both before and after the decimal point.
 - **Scale**: Defines the number of digits allowed after the decimal point.
 
-![Decimal Precision](resources/images/column-precision.png)
+![Decimal Precision](images/column-precision.png)
 
 > [!NOTE]  
 > The decimal precision can also be set globally (for all entities) using the `Decimal Precision and Scale` setting on the application `Settings` screen. If set, this value will automatically be applied to any decimal attribute modeled in the `Domain Designer`.
@@ -201,8 +201,8 @@ Once applied, the following properties can be set:
 
 - **Treat as SQL Expression**: Flags whether the **Value** field is a `literal` or `expression`.
 
-![Default Constraint Literal](resources/images/default-constraint-literal.png)
-![Default Constraint Expression](resources/images/default-constraint-expression.png)
+![Default Constraint Literal](images/default-constraint-literal.png)
+![Default Constraint Expression](images/default-constraint-expression.png)
 
 ### Create a Text Constraint
 
@@ -215,7 +215,7 @@ Once applied to a `string` attribute, the following properties are available to 
 
 By default, `strings` are represented in SQL as `nvarchar(max)`. The `Text Constraint` stereotype is automatically applied to any attributes of type `string` and is visualized by the `[{size}]` text next to the string type.
 
-![Text Constraint](resources/images/text-constraint.png)
+![Text Constraint](images/text-constraint.png)
 
 ## Create a View
 
@@ -228,4 +228,4 @@ Once applied to a `Class`, the stereotype is visualized by its icon in the top r
 
 If the **Name** is not specified, it will default to the pluralized version of the `Class` name. If the **Schema** is not specified, it will default to the `dbo` schema. The SQL view must exist in the database for this to work.
 
-![View](resources/images/view.png)
+![View](images/view.png)

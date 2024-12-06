@@ -20,7 +20,7 @@ This stereotype includes a **Provider** property, which specifies which specific
 
 If you have multiple Document DB technologies, you must configure which Domain Packages are mapped to which Document DB technologies.
 
-![Document Database](./docs/images/document-database-stereotype.png)
+![Document Database](images/document-database-stereotype.png)
 
 ### Primary Key - Attribute Stereotype
 
@@ -30,7 +30,7 @@ By default, any `Class` added to your domain will have an `Attribute` named `Id`
 
 This stereotype is visualized with a golden key icon.
 
-![Primary Key Visual](./docs/images/primary-key-stereotype.png)
+![Primary Key Visual](images/primary-key-stereotype.png)
 
 #### Primary Key Type
 
@@ -41,7 +41,7 @@ The available options are:
 - **Object ID (string)** - the default
 - **GUID**
 
-![Primary Key Type](./docs/images/primary-key-types.png)
+![Primary Key Type](images/primary-key-types.png)
 
 #### Primary Key Creation
 
@@ -56,11 +56,11 @@ The available options are:
 
 **Visual example** of an `All` modeled *one-to-many* relationship where the child entity (OrderItem) **has** a `Primary Key`:
 
-![Child Primary Key](./docs/images/all-primary-key.png)
+![Child Primary Key](images/all-primary-key.png)
 
 **Visual example** of an `Only on Documents` modeled *one-to-many* relationship where the child entity (OrderItem) **does not** have a `Primary Key`:
 
-![Child Primary Key](./docs/images/only-documents-primary-key.png)
+![Child Primary Key](images/only-documents-primary-key.png)
 
 > [!NOTE]
 > The `Create CRUD CQRS Operations` accelerator in the `Service Designer` requires that an entity has a `Primary Key` (i.e., that the `Key Creation Mode` is set to `All`). If a child entity does not have a `Primary Key`, it will not be available for selection when using the `Create CRUD CQRS Operations` accelerator.
@@ -69,7 +69,7 @@ The available options are:
 
 The `Foreign Key` stereotype indicates that an `Attribute` has been introduced to a `Class` as a result of a modeled `Association`. For example:
 
-![Foreign Key Visual](./docs/images/foreign-key-stereotype.png)
+![Foreign Key Visual](images/foreign-key-stereotype.png)
 
 In this diagram, you can see that the `CustomerId` attribute has been introduced, with the `Foreign Key` stereotype, as a result of the many-to-one relationship between `Basket` and `Customer`.
 
@@ -85,7 +85,7 @@ With this relationship, the child entity is considered a part of the parent enti
 
 In this example, an *OrderItem* has a `Compositional Relationship` with *Order* and cannot exist independently of an *Order*. It is considered part of the *Order*.
 
-![Compositional Relationship](./docs/images/compositional-relationship.png)
+![Compositional Relationship](images/compositional-relationship.png)
 
 #### Aggregational Relationship
 
@@ -95,4 +95,4 @@ This relationship is modeled by setting the `Is Nullable` property of the `Sourc
 
 In this example, an *Address* has an `Aggregational Relationship` with *Order* and can exist independently of an *Order*.
 
-![Aggregational Relationship](./docs/images/aggregational-relationship.png)
+![Aggregational Relationship](images/aggregational-relationship.png)

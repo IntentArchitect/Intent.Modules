@@ -18,7 +18,7 @@ To create an HTTP Endpoint for an external party to invoke, an existing `Service
 > [!TIP]
 > Multiple items of type `Service`, `Operation`, `Command`, or `Query` can be exposed at once. Select multiple items to expose in the diagram or tree view using the Ctrl key, right-click on one of the selected items, and select `Expose as HTTP Endpoint`.
 
-![Http Settings](docs/http-settings.png)
+![Http Settings](images/http-settings.png)
 
 ## Expose Service as an HTTP File Download Endpoint
 
@@ -26,7 +26,7 @@ To create an HTTP Endpoint that provides file downloading capabilities, an exist
 
 1. In the Services Designer, either in the tree view or in a diagram, select one or more of the following types: `Operation`, `Command`, or `Query`.
 2. Right-click on any of the highlighted items and select `Expose as HTTP File Download`.
-3. Items exposed as HTTP endpoints are indicated with a visual icon. You can view and configure [HTTP-related](#expose-an-http-endpoint) properties by accessing the endpoint's properties. These property values are automatically set based on the item's heuristics but can be manually adjusted if necessary.
+3. Items exposed as HTTP endpoints are indicated with a visual icon. You can view and configure [HTTP-related](#expose-service-as-an-http-endpoint) properties by accessing the endpoint's properties. These property values are automatically set based on the item's heuristics but can be manually adjusted if necessary.
 
 When exposing the item as a file download endpoint, the following configuration is automatically applied:
 
@@ -43,7 +43,7 @@ To create an HTTP Endpoint that provides file upload capabilities, an existing `
 
 1. In the Services Designer, either in the tree view or in a diagram, select one or more `Operation` or `Command` types.
 2. Right-click on any of the highlighted items and select `Expose as HTTP File Upload`.
-3. Items exposed as HTTP endpoints are indicated with a visual icon. You can view and configure [HTTP-related](#expose-an-http-endpoint) properties by accessing the endpoint's properties. These property values are automatically set based on the item's heuristics but can be manually adjusted if necessary.
+3. Items exposed as HTTP endpoints are indicated with a visual icon. You can view and configure [HTTP-related](#expose-service-as-an-http-endpoint) properties by accessing the endpoint's properties. These property values are automatically set based on the item's heuristics but can be manually adjusted if necessary.
 
 When exposing the item as a file upload endpoint, the following configuration is automatically applied:
 
@@ -53,11 +53,11 @@ When exposing the item as a file upload endpoint, the following configuration is
     - **ContentType**: string (from header)
     - **ContentLength**: long (from header)
 
-2. In addition to the [HTTP Settings](#expose-an-http-endpoint) properties available on the item for configuration, properties related to the `File Transfer` are also available and configurable:
+2. In addition to the [HTTP Settings](#expose-service-as-an-http-endpoint) properties available on the item for configuration, properties related to the `File Transfer` are also available and configurable:
     - **Mime Type Filter**: Restricts mime types allowed for upload.
     - **Maximum File Size (in bytes)**: The maximum file size allowed for upload.
 
-![Http Upload Endpoint](docs/http-upload.png)
+![Http Upload Endpoint](images/http-upload.png)
 
 ## Configure an HTTP Endpoint
 
@@ -70,7 +70,7 @@ The `URI template` format can be used to specify a `route parameter` in the `Htt
 
 For example, when a `route` is specified as `api/product/{id}`, a property/parameter named `id` is required.
 
-![Http Route Parameters](docs/http-route-parameter.png)
+![Http Route Parameters](images/http-route-parameter.png)
 
 ### Versioning an Endpoint
 
@@ -91,9 +91,9 @@ Versioning capabilities can be applied to an existing `Service`, `Operation`, `C
 
 1. An `Applicable Versions` property will now be available on the item to which the stereotype was applied.
 2. Select one or more versions to apply to the endpoint.
-3. The [Http Settings Route](#expose-an-http-endpoint) configuration will now also contain a required `{version}` placeholder. This placeholder can be manually relocated within the `Route`, but it must be present.
+3. The [Http Settings Route](#expose-service-as-an-http-endpoint) configuration will now also contain a required `{version}` placeholder. This placeholder can be manually relocated within the `Route`, but it must be present.
 
-![Http Versioning](docs/http-version.png)
+![Http Versioning](images/http-version.png)
 
 ### Changing Serialization Naming Conventions
 
