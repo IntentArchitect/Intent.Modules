@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.RDBMS</id>
-  <version>3.7.0-alpha.1</version>
+  <version>3.7.0-alpha.2</version>
   <supportedClientVersions>[4.0.0-beta.7, 5.0.0-a)</supportedClientVersions>
   <summary>Support for describing Entities in Relational DB terms.</summary>
   <description>Support for describing Entities in Relational DB terms.</description>
@@ -42,7 +42,6 @@
           <options>
             <option value="manual" description="Manually add PKs and FKs" />
             <option value="explicit" description="Explicitly add PKs and FKs automatically" />
-            <option value="implicit" description="Remove all managed PKs and FKs" />
           </options>
         </setting>
         <setting id="684582e0-125a-4ddd-a950-714e2af41f15" title="Decimal precision and scale" type="text">

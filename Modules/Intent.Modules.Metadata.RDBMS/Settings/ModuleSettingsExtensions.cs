@@ -101,7 +101,6 @@ namespace Intent.Modules.Metadata.RDBMS.Settings
                 {
                     "manual" => KeyCreationModeOptionsEnum.Manual,
                     "explicit" => KeyCreationModeOptionsEnum.Explicit,
-                    "implicit" => KeyCreationModeOptionsEnum.Implicit,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
@@ -109,11 +108,6 @@ namespace Intent.Modules.Metadata.RDBMS.Settings
             public bool IsManual()
             {
                 return Value == "manual";
-            }
-
-            public bool IsImplicit()
-            {
-                return Value == "implicit";
             }
 
             public bool IsExplicit()
@@ -125,7 +119,6 @@ namespace Intent.Modules.Metadata.RDBMS.Settings
         public enum KeyCreationModeOptionsEnum
         {
             Manual,
-            Implicit,
             Explicit,
         }
 

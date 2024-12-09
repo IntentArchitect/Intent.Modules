@@ -14,7 +14,6 @@ The available options are:
 
 - **Explicitly Add PKs and FKs automatically** (default): Automatically adds keys during modeling.
 - **Manually add PKs and FKs**: Allows for manual addition of keys during modeling.
-- **Remove all managed PKs and FKs**: To support legacy functionality.
 
 ![Key Creation Mode](images/key-creation-mode.png)
 

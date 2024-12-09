@@ -138,20 +138,6 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="8ecefc89-95dd-4dc8-9ad4-1e6ab1b1aa53" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Remove all managed PKs and FKs</name>
-          <display>Remove all managed PKs and FKs = implicit</display>
-          <isAbstract>false</isAbstract>
-          <value>implicit</value>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>5aca6e0c-1b64-425b-9046-f0bc81c44311</parentFolderId>
-          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
-          <packageName>Intent.Metadata.RDBMS</packageName>
-          <stereotypes />
-          <metadata />
-          <childElements />
-        </childElement>
       </childElements>
     </childElement>
     <childElement id="684582e0-125a-4ddd-a950-714e2af41f15" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">

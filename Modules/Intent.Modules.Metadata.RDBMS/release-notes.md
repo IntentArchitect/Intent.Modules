@@ -1,6 +1,7 @@
 ### Version 3.7.0
 
 - Improvement: Improvemed documentation and added a number of help topics
+- Improvement: Removed legacy `Key Creation Mode` option `Remove all managed PKs and FKs`
 
 ### Version 3.6.2
 
