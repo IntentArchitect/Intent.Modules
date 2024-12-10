@@ -1,4 +1,8 @@
-﻿### Version 3.8.5
+﻿### Version 3.8.6
+
+- Improvement: Changed the `.ConcatCode(...)` extension method from `internal` to `public`.
+
+### Version 3.8.5
 
 - Improvement: Added `AddNullForgivingConstructor` method to `CSharpClass`. This method will create a parameterless constructor, which sets all relevent qualifying properties on the class to `null!`
 - Improvement: Added ability to specify a `constructor` as `internal`
