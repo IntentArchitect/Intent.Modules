@@ -11,7 +11,7 @@ function getParent(element: MacroApi.Context.IElementApi, parentSpecializationTy
             .some(child => child.id === element.id));
 
     if (parent == null) {
-        throw new Error("Could not find parent");
+        throw new Error(`Could not find parent for ${element.id}, ${element.getName()}, ${element.specialization}`);
     }
 
     return parent;
