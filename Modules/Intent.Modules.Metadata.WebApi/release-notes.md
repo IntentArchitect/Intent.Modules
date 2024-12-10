@@ -1,3 +1,7 @@
+### Version 4.7.0
+
+- Fixed: Exposing Services/Commands/Queries as HTTP Endpoints will now correctly position the route parameters and include the operation names for Domain Entity Operations being exposed through Commands/Queries.
+
 ### Version 4.6.4
 
 - Improvement: The `Secured` Stereotype can now be applied multiple times to an element to represent an `AND` security requirement.
