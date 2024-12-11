@@ -1,5 +1,6 @@
 ### Version 4.7.0
 
+- Fixed: Exposing Services/Commands/Queries as HTTP Endpoints will now correctly position the route parameters and include the operation names for Domain Entity Operations being exposed through Commands/Queries.
 - Improvement: Added `Suggestion` for `Exposing as Http Endpoint` as well as a number of documentation topics
 - Improvement: Updated `Expose HTTP` menu item icon to align with module icon
 

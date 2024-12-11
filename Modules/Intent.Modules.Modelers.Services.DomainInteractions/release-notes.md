@@ -1,6 +1,10 @@
 ### Version 2.1.0
 
 - Improvement: Help topics added.
+### Version 2.0.4
+
+- Fixed: Creating CRUD operations for Nested Entities can now be targeted in a specific folder and no longer contains the parent element name in the operation/element names.
+- Improvement: New CRUD Creation screen added.
 
 ### Version 2.0.3
 

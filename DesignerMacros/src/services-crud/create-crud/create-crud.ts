@@ -10,7 +10,7 @@ const privateSettersOnly = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f1
 namespace servicesCrud {
     export async function execute() {
         const package = element.getPackage();
-        const entity = await DomainHelper.openSelectEntityDialog({
+        const entity = await CrudHelper.openBasicSelectEntityDialog({
             includeOwnedRelationships: false
         });
         if (!entity) { return; }

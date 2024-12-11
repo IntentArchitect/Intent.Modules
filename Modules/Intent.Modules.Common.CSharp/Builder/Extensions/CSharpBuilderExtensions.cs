@@ -50,8 +50,8 @@ public static class CSharpBuilderExtensions
         }
     }
 
-    internal delegate string CodeTextTransformer(int codeBlockIndex, ICodeBlock codeBlock, string indentation);
-    internal static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation, CodeTextTransformer codeTextTransformer = null)
+    public delegate string CodeTextTransformer(int codeBlockIndex, ICodeBlock codeBlock, string indentation);
+    public static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation, CodeTextTransformer codeTextTransformer = null)
     {
         // It's conventional to always have local methods at the bottom of a code block
         var orderedCodeBlocks = codeBlocks

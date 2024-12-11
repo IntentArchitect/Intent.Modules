@@ -19,6 +19,7 @@ interface IFieldDetails {
  */
 interface IMappedRequestDetails {
     mappingTargetType: "Class" | "Operation" | "Class Constructor";
+    mappingElement: IElementApi;
     entity: IElementApi;
     owningEntity?: IElementApi;
     entityKeyFields: IFieldDetails[];
@@ -38,6 +39,7 @@ function getMappedRequestDetails(
 ): IMappedRequestDetails {
     const queryEntityMappingTypeId = "25f25af9-c38b-4053-9474-b0fabe9d7ea7";
     const createEntityMappingTypeId = "5f172141-fdba-426b-980e-163e782ff53e";
+    const updateEntityMappingTypeId = "01721b1a-a85d-4320-a5cd-8bd39247196a";
 
     // Basic mapping:
     let mappedElement = request.getMapping()?.getElement();
@@ -45,15 +47,15 @@ function getMappedRequestDetails(
     // Advanced mapping:
     if (mappedElement == null) {
         const advancedMappings = request.getAssociations()
-            .filter(x =>
-                x.hasMappings(queryEntityMappingTypeId) ||
-                x.hasMappings(createEntityMappingTypeId))
-            .map(x =>
-                x.getMapping(queryEntityMappingTypeId) ||
-                x.getMapping(createEntityMappingTypeId));
+            .map(association => {
+                return association.getMapping(createEntityMappingTypeId) ||
+                    association.getMapping(updateEntityMappingTypeId) ||
+                    association.getMapping(queryEntityMappingTypeId); 
+            })
+            .filter(mapping => mapping != null);
 
         if (advancedMappings.length === 1) {
-            mappedElement = advancedMappings[0].getTargetElement();
+            mappedElement = advancedMappings[0].getMappedEnds()[0]?.getTargetElement();
         }
     }
 
@@ -65,9 +67,9 @@ function getMappedRequestDetails(
     if (entity.specialization !== "Class") {
         entity = getParent(entity, "Class");
     }
-
     const result: IMappedRequestDetails = {
         entity: entity,
+        mappingElement: mappedElement,
         mappingTargetType: mappedElement.specialization as any,
         entityKeyFields: [],
         ownerKeyFields: []

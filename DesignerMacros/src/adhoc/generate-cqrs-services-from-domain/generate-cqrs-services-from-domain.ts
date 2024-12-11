@@ -5,7 +5,7 @@ async function runMe() {
 
     type IDynamicFormFieldConfig = MacroApi.Context.IDynamicFormFieldConfig;
 
-    let classes = lookupTypesOf("Class").filter(x => DomainHelper.filterClassSelection(x, null));
+    let classes = lookupTypesOf("Class").filter(x => CrudHelper.filterClassSelection(x, null));
     let folder = getPackages()[0];//getPackages()[0].getChildren("Folder")[0]  
     
     
