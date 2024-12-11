@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.DocumentDB</id>
-  <version>1.3.0-alpha.2</version>
+  <version>1.3.0-pre.0</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Support for describing Entities in Document DB terms.</summary>
   <description>Support for describing Entities in Document DB terms.</description>
