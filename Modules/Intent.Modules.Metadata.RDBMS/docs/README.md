@@ -29,7 +29,7 @@ The available options for primary key types are:
 
 ![Key Type](images/key-type.png)
 
-## Modify Table Properties
+## Configure SQL Table specifics
 
 ### Modify Schema
 
@@ -114,7 +114,7 @@ Once applied, the following property can be set:
 
 ![Join Table](images/join-table.png)
 
-## Modify Column Properties
+## Configure SQL Column specifics
 
 ### Modify Column Type
 
@@ -216,7 +216,7 @@ By default, `strings` are represented in SQL as `nvarchar(max)`. The `Text Const
 
 ![Text Constraint](images/text-constraint.png)
 
-## Create a View
+## Entities Backed by SQL Views
 
 If there are SQL Views in your database that you want to reference in your domain, you can model these views as `Class`es and apply the `View` stereotype to them.
 
