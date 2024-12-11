@@ -215,49 +215,6 @@ function getSurrogateKeyType() {
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
 /// &lt;reference path="attributeWithMapPath.ts"/&gt;
 class DomainHelper {
-    static async openSelectEntityDialog(options) {
-        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.filterClassSelection(x, options));
-        if (classes.length == 0) {
-            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-            return null;
-        }
-        let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
-            id: x.id,
-            name: this.getFriendlyDisplayNameForClassSelection(x)
-        })));
-        if (classId == null) {
-            await dialogService.error(`No class found with id "${classId}".`);
-            return null;
-        }
-        let foundEntity = lookup(classId);
-        return foundEntity;
-    }
-    static filterClassSelection(element, options, allowAbstract = false) {
-        if (!allowAbstract &amp;&amp; element.getIsAbstract()) {
-            return false;
-        }
-        if (element.hasStereotype("Repository")) {
-            return true;
-        }
-        if ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(element)) {
-            return DomainHelper.hasPrimaryKey(element);
-        }
-        if (DomainHelper.isAggregateRoot(element)) {
-            let generalizations = element.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
-            if (generalizations.length == 0) {
-                return true;
-            }
-            let generalization = generalizations[0];
-            let parentEntity = generalization.typeReference.getType();
-            //Could propagate options here but then we need to update compositional crud to support inheritance and it's already a bit of a hack
-            return DomainHelper.filterClassSelection(parentEntity, { includeOwnedRelationships: false }, true);
-        }
-        return false;
-    }
-    static getFriendlyDisplayNameForClassSelection(element) {
-        let found = DomainHelper.getOwningAggregate(element);
-        return !found ? element.getName() : `${element.getName()} (${found.getName()})`;
-    }
     static isAggregateRoot(element) {
         let result = !element.getAssociations("Association")
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
@@ -400,6 +357,16 @@ class DomainHelper {
             isNullable: x.typeReference.isNullable,
             element: x
         }));
+    }
+    /**
+     * Returns true if the attribute is a foreign key on a compositional one-to-many relationship (i.e. is managed by the DB and should not be set).
+     * @param attribute
+     * @returns
+     */
+    static isManagedForeignKey(attribute) {
+        var _a, _b;
+        let fkAssociation = (_b = (_a = attribute.getStereotype("Foreign Key")) === null || _a === void 0 ? void 0 : _a.getProperty("Association")) === null || _b === void 0 ? void 0 : _b.getSelected();
+        return fkAssociation != null &amp;&amp; !fkAssociation.getOtherEnd().typeReference.getIsCollection() &amp;&amp; !fkAssociation.getOtherEnd().typeReference.getIsNullable();
     }
     static getChildrenOfType(entity, type) {
         let attrDict = Object.create(null);
@@ -621,7 +588,7 @@ function getParent(element, parentSpecializationType) {
         .find(x =&gt; x.getChildren(element.specialization)
         .some(child =&gt; child.id === element.id));
     if (parent == null) {
-        throw new Error("Could not find parent");
+        throw new Error(`Could not find parent for ${element.id}, ${element.getName()}, ${element.specialization}`);
     }
     return parent;
 }
@@ -637,20 +604,23 @@ function getParent(element, parentSpecializationType) {
  * @param request The Command or Query that has been mapped
  */
 function getMappedRequestDetails(request) {
-    var _a;
+    var _a, _b;
     const queryEntityMappingTypeId = "25f25af9-c38b-4053-9474-b0fabe9d7ea7";
     const createEntityMappingTypeId = "5f172141-fdba-426b-980e-163e782ff53e";
+    const updateEntityMappingTypeId = "01721b1a-a85d-4320-a5cd-8bd39247196a";
     // Basic mapping:
     let mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
     // Advanced mapping:
     if (mappedElement == null) {
         const advancedMappings = request.getAssociations()
-            .filter(x =&gt; x.hasMappings(queryEntityMappingTypeId) ||
-            x.hasMappings(createEntityMappingTypeId))
-            .map(x =&gt; x.getMapping(queryEntityMappingTypeId) ||
-            x.getMapping(createEntityMappingTypeId));
+            .map(association =&gt; {
+            return association.getMapping(createEntityMappingTypeId) ||
+                association.getMapping(updateEntityMappingTypeId) ||
+                association.getMapping(queryEntityMappingTypeId);
+        })
+            .filter(mapping =&gt; mapping != null);
         if (advancedMappings.length === 1) {
-            mappedElement = advancedMappings[0].getTargetElement();
+            mappedElement = (_b = advancedMappings[0].getMappedEnds()[0]) === null || _b === void 0 ? void 0 : _b.getTargetElement();
         }
     }
     if (mappedElement == null) {
@@ -662,6 +632,7 @@ function getMappedRequestDetails(request) {
     }
     const result = {
         entity: entity,
+        mappingElement: mappedElement,
         mappingTargetType: mappedElement.specialization,
         entityKeyFields: [],
         ownerKeyFields: []
@@ -732,125 +703,47 @@ function getMappedRequestDetails(request) {
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
 function getRouteParts(request, domainElement) {
+    var _a;
     if (domainElement == null) {
         throw new Error("entity is required");
     }
-    let routeParts;
-    routeParts = updateRoutePathsFromBasicMapping(request, domainElement);
-    if (routeParts.length &gt; 0) {
-        return routeParts;
-    }
-    routeParts = updateRoutePathsFromAdvancedMapping(request, domainElement);
-    if (routeParts.length &gt; 0) {
-        return routeParts;
-    }
-    return [];
-}
-function updateRoutePathsFromBasicMapping(request, domainElement) {
-    var _a, _b;
+    // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
+    // RESTful naming conventions applied, with the exception of Operation names.
+    // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
-    const mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
-    if (mappedElement != null) {
-        const mappedDetails = getMappedRequestDetails(request);
-        // Add the owning entity's ids as parts surrounded with curly braces
-        if (((_b = domainElement.entityDomainElementDetails) === null || _b === void 0 ? void 0 : _b.hasOwningEntity()) == true) {
-            routeParts.push(...mappedDetails.ownerKeyFields
+    const mappedDetails = getMappedRequestDetails(request);
+    if (!mappedDetails) {
+        return routeParts;
+    }
+    // Add the owning entity's ids as parts surrounded with curly braces
+    if (((_a = domainElement.entityDomainElementDetails) === null || _a === void 0 ? void 0 : _a.hasOwningEntity()) == true) {
+        let parentIdRouteParts = [...mappedDetails.ownerKeyFields
                 .filter(x =&gt; x.existingId != null)
                 .map(x =&gt; {
                 const field = request
                     .getChildren("DTO-Field")
                     .find(field =&gt; field.id === x.existingId);
                 return `{${toCamelCase(field.getName())}}`;
-            }));
-            // Add a part for name of the owned entity
-            routeParts.push(toKebabCase(singularize(domainElement.getName())));
-        }
-        // Add the entity's ids as parts surrounded with curly braces
-        routeParts.push(...mappedDetails.entityKeyFields
+            })];
+        routeParts.push(...parentIdRouteParts);
+        // Add a part for name of the owned entity
+        let ownedEntName = toKebabCase(pluralize(domainElement.getName()));
+        routeParts.push(ownedEntName);
+    }
+    // Add the entity's ids as parts surrounded with curly braces
+    let entIdRouteParts = [...mappedDetails.entityKeyFields
             .filter(x =&gt; x.existingId != null)
             .map(x =&gt; {
             const field = request
                 .getChildren("DTO-Field")
                 .find(field =&gt; field.id === x.existingId);
             return `{${toCamelCase(field.getName())}}`;
-        }));
-        // Add the operation's name:
-        if (mappedDetails.mappingTargetType === "Operation") {
-            const entityName = domainElement.getName();
-            let routePart = removePrefix(mappedElement.getName(), "Create", "Update", "Delete", "Add", "Remove");
-            routePart = removeSuffix(routePart, "Request", "Query", "Command");
-            routeParts.push(removePrefix(toKebabCase(routePart), toKebabCase(singularize(entityName)), toKebabCase(entityName), "-"));
-        }
-    }
-    return routeParts;
-}
-function updateRoutePathsFromAdvancedMapping(request, domainElement) {
-    var _a, _b, _c;
-    let routeParts = [];
-    const queryEntityMappingTypeId = "25f25af9-c38b-4053-9474-b0fabe9d7ea7";
-    const createEntityMappingTypeId = "5f172141-fdba-426b-980e-163e782ff53e";
-    const updateEntityMappingTypeId = "01721b1a-a85d-4320-a5cd-8bd39247196a";
-    const mappingTypeIds = [queryEntityMappingTypeId, createEntityMappingTypeId, updateEntityMappingTypeId];
-    const associationWithMapping = request
-        .getAssociations()
-        .find(association =&gt; association.hasMappings() &amp;&amp; association
-        .getMappings()
-        .every(mapping =&gt; {
-        if (!mappingTypeIds.includes(mapping.mappingTypeId)) {
-            return false;
-        }
-        let element = mapping.getTargetElement();
-        while (element != null) {
-            if (element.specialization === "Class") {
-                break;
-            }
-            element = getParent(element, "Class");
-        }
-        if (element == null) {
-            return false;
-        }
-        return element.id === domainElement.getId();
-    }));
-    if (associationWithMapping != null) {
-        const mappings = associationWithMapping.getMappings();
-        const queryMapping = mappings.find(x =&gt; x.mappingTypeId === queryEntityMappingTypeId);
-        const createMapping = mappings.find(x =&gt; x.mappingTypeId === createEntityMappingTypeId);
-        const updateMapping = mappings.find(x =&gt; x.mappingTypeId === updateEntityMappingTypeId);
-        // Add the owning entity's ids as parts surrounded with curly braces
-        if (((_a = domainElement.entityDomainElementDetails) === null || _a === void 0 ? void 0 : _a.hasOwningEntity()) == true) {
-            if (queryMapping != null) {
-                let applicableClassIds = getEntityInheritanceHierarchyIds((_b = domainElement === null || domainElement === void 0 ? void 0 : domainElement.entityDomainElementDetails) === null || _b === void 0 ? void 0 : _b.owningEntity);
-                routeParts.push(...queryMapping.getMappedEnds()
-                    .filter(end =&gt; applicableClassIds.some(x =&gt; x === getParent(end.getTargetElement(), "Class").id))
-                    .map(x =&gt; `{${toCamelCase(x.getSourceElement().getName())}}`));
-            }
-            // Add a part for name of the owned entity
-            routeParts.push(toKebabCase(singularize(domainElement.getName())));
-        }
-        // Add the entity's ids as parts surrounded with curly braces
-        if (queryMapping != null) {
-            let applicableClassIds = getEntityInheritanceHierarchyIds((_c = domainElement === null || domainElement === void 0 ? void 0 : domainElement.entityDomainElementDetails) === null || _c === void 0 ? void 0 : _c.entity);
-            routeParts.push(...queryMapping.getMappedEnds()
-                .filter(end =&gt; applicableClassIds.some(x =&gt; x === getParent(end.getTargetElement(), "Class").id))
-                .map(x =&gt; `{${toCamelCase(x.getSourceElement().getName())}}`));
-        }
-        // Add the operation's name:
-        const mapping = createMapping !== null &amp;&amp; createMapping !== void 0 ? createMapping : updateMapping;
-        if (mapping == null) {
-            return routeParts;
-        }
-        var mappingEnd = mapping.getMappedEnds().find(x =&gt; x.getSourceElement().id === request.id);
-        if (mappingEnd == null) {
-            return routeParts;
-        }
-        const mappedElement = mappingEnd.getTargetElement();
-        if ((mappedElement === null || mappedElement === void 0 ? void 0 : mappedElement.specialization) === "Operation") {
-            const entityName = domainElement.getName();
-            let routePart = removePrefix(mappedElement.getName(), "Create", "Update", "Delete", "Add", "Remove");
-            routePart = removeSuffix(routePart, "Request", "Query", "Command");
-            routeParts.push(removePrefix(toKebabCase(routePart), toKebabCase(singularize(entityName)), toKebabCase(entityName), "-"));
-        }
-        return routeParts;
+        })];
+    routeParts.push(...entIdRouteParts);
+    // Add the operation's name:
+    if (mappedDetails.mappingTargetType === "Operation") {
+        let operationName = mappedDetails.mappingElement.getName();
+        routeParts.push(toKebabCase(operationName));
     }
     return routeParts;
 }
@@ -5371,49 +5264,6 @@ function getSurrogateKeyType() {
 /// &lt;reference path="getSurrogateKeyType.ts"/&gt;
 /// &lt;reference path="attributeWithMapPath.ts"/&gt;
 class DomainHelper {
-    static async openSelectEntityDialog(options) {
-        let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.filterClassSelection(x, options));
-        if (classes.length == 0) {
-            await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-            return null;
-        }
-        let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
-            id: x.id,
-            name: this.getFriendlyDisplayNameForClassSelection(x)
-        })));
-        if (classId == null) {
-            await dialogService.error(`No class found with id "${classId}".`);
-            return null;
-        }
-        let foundEntity = lookup(classId);
-        return foundEntity;
-    }
-    static filterClassSelection(element, options, allowAbstract = false) {
-        if (!allowAbstract &amp;&amp; element.getIsAbstract()) {
-            return false;
-        }
-        if (element.hasStereotype("Repository")) {
-            return true;
-        }
-        if ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(element)) {
-            return DomainHelper.hasPrimaryKey(element);
-        }
-        if (DomainHelper.isAggregateRoot(element)) {
-            let generalizations = element.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
-            if (generalizations.length == 0) {
-                return true;
-            }
-            let generalization = generalizations[0];
-            let parentEntity = generalization.typeReference.getType();
-            //Could propagate options here but then we need to update compositional crud to support inheritance and it's already a bit of a hack
-            return DomainHelper.filterClassSelection(parentEntity, { includeOwnedRelationships: false }, true);
-        }
-        return false;
-    }
-    static getFriendlyDisplayNameForClassSelection(element) {
-        let found = DomainHelper.getOwningAggregate(element);
-        return !found ? element.getName() : `${element.getName()} (${found.getName()})`;
-    }
     static isAggregateRoot(element) {
         let result = !element.getAssociations("Association")
             .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
@@ -5556,6 +5406,16 @@ class DomainHelper {
             isNullable: x.typeReference.isNullable,
             element: x
         }));
+    }
+    /**
+     * Returns true if the attribute is a foreign key on a compositional one-to-many relationship (i.e. is managed by the DB and should not be set).
+     * @param attribute
+     * @returns
+     */
+    static isManagedForeignKey(attribute) {
+        var _a, _b;
+        let fkAssociation = (_b = (_a = attribute.getStereotype("Foreign Key")) === null || _a === void 0 ? void 0 : _a.getProperty("Association")) === null || _b === void 0 ? void 0 : _b.getSelected();
+        return fkAssociation != null &amp;&amp; !fkAssociation.getOtherEnd().typeReference.getIsCollection() &amp;&amp; !fkAssociation.getOtherEnd().typeReference.getIsNullable();
     }
     static getChildrenOfType(entity, type) {
         let attrDict = Object.create(null);
@@ -5777,7 +5637,7 @@ function getParent(element, parentSpecializationType) {
         .find(x =&gt; x.getChildren(element.specialization)
         .some(child =&gt; child.id === element.id));
     if (parent == null) {
-        throw new Error("Could not find parent");
+        throw new Error(`Could not find parent for ${element.id}, ${element.getName()}, ${element.specialization}`);
     }
     return parent;
 }
@@ -5793,20 +5653,23 @@ function getParent(element, parentSpecializationType) {
  * @param request The Command or Query that has been mapped
  */
 function getMappedRequestDetails(request) {
-    var _a;
+    var _a, _b;
     const queryEntityMappingTypeId = "25f25af9-c38b-4053-9474-b0fabe9d7ea7";
     const createEntityMappingTypeId = "5f172141-fdba-426b-980e-163e782ff53e";
+    const updateEntityMappingTypeId = "01721b1a-a85d-4320-a5cd-8bd39247196a";
     // Basic mapping:
     let mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
     // Advanced mapping:
     if (mappedElement == null) {
         const advancedMappings = request.getAssociations()
-            .filter(x =&gt; x.hasMappings(queryEntityMappingTypeId) ||
-            x.hasMappings(createEntityMappingTypeId))
-            .map(x =&gt; x.getMapping(queryEntityMappingTypeId) ||
-            x.getMapping(createEntityMappingTypeId));
+            .map(association =&gt; {
+            return association.getMapping(createEntityMappingTypeId) ||
+                association.getMapping(updateEntityMappingTypeId) ||
+                association.getMapping(queryEntityMappingTypeId);
+        })
+            .filter(mapping =&gt; mapping != null);
         if (advancedMappings.length === 1) {
-            mappedElement = advancedMappings[0].getTargetElement();
+            mappedElement = (_b = advancedMappings[0].getMappedEnds()[0]) === null || _b === void 0 ? void 0 : _b.getTargetElement();
         }
     }
     if (mappedElement == null) {
@@ -5818,6 +5681,7 @@ function getMappedRequestDetails(request) {
     }
     const result = {
         entity: entity,
+        mappingElement: mappedElement,
         mappingTargetType: mappedElement.specialization,
         entityKeyFields: [],
         ownerKeyFields: []
@@ -5888,125 +5752,47 @@ function getMappedRequestDetails(request) {
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
 function getRouteParts(request, domainElement) {
+    var _a;
     if (domainElement == null) {
         throw new Error("entity is required");
     }
-    let routeParts;
-    routeParts = updateRoutePathsFromBasicMapping(request, domainElement);
-    if (routeParts.length &gt; 0) {
-        return routeParts;
-    }
-    routeParts = updateRoutePathsFromAdvancedMapping(request, domainElement);
-    if (routeParts.length &gt; 0) {
-        return routeParts;
-    }
-    return [];
-}
-function updateRoutePathsFromBasicMapping(request, domainElement) {
-    var _a, _b;
+    // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
+    // RESTful naming conventions applied, with the exception of Operation names.
+    // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
-    const mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
-    if (mappedElement != null) {
-        const mappedDetails = getMappedRequestDetails(request);
-        // Add the owning entity's ids as parts surrounded with curly braces
-        if (((_b = domainElement.entityDomainElementDetails) === null || _b === void 0 ? void 0 : _b.hasOwningEntity()) == true) {
-            routeParts.push(...mappedDetails.ownerKeyFields
+    const mappedDetails = getMappedRequestDetails(request);
+    if (!mappedDetails) {
+        return routeParts;
+    }
+    // Add the owning entity's ids as parts surrounded with curly braces
+    if (((_a = domainElement.entityDomainElementDetails) === null || _a === void 0 ? void 0 : _a.hasOwningEntity()) == true) {
+        let parentIdRouteParts = [...mappedDetails.ownerKeyFields
                 .filter(x =&gt; x.existingId != null)
                 .map(x =&gt; {
                 const field = request
                     .getChildren("DTO-Field")
                     .find(field =&gt; field.id === x.existingId);
                 return `{${toCamelCase(field.getName())}}`;
-            }));
-            // Add a part for name of the owned entity
-            routeParts.push(toKebabCase(singularize(domainElement.getName())));
-        }
-        // Add the entity's ids as parts surrounded with curly braces
-        routeParts.push(...mappedDetails.entityKeyFields
+            })];
+        routeParts.push(...parentIdRouteParts);
+        // Add a part for name of the owned entity
+        let ownedEntName = toKebabCase(pluralize(domainElement.getName()));
+        routeParts.push(ownedEntName);
+    }
+    // Add the entity's ids as parts surrounded with curly braces
+    let entIdRouteParts = [...mappedDetails.entityKeyFields
             .filter(x =&gt; x.existingId != null)
             .map(x =&gt; {
             const field = request
                 .getChildren("DTO-Field")
                 .find(field =&gt; field.id === x.existingId);
             return `{${toCamelCase(field.getName())}}`;
-        }));
-        // Add the operation's name:
-        if (mappedDetails.mappingTargetType === "Operation") {
-            const entityName = domainElement.getName();
-            let routePart = removePrefix(mappedElement.getName(), "Create", "Update", "Delete", "Add", "Remove");
-            routePart = removeSuffix(routePart, "Request", "Query", "Command");
-            routeParts.push(removePrefix(toKebabCase(routePart), toKebabCase(singularize(entityName)), toKebabCase(entityName), "-"));
-        }
-    }
-    return routeParts;
-}
-function updateRoutePathsFromAdvancedMapping(request, domainElement) {
-    var _a, _b, _c;
-    let routeParts = [];
-    const queryEntityMappingTypeId = "25f25af9-c38b-4053-9474-b0fabe9d7ea7";
-    const createEntityMappingTypeId = "5f172141-fdba-426b-980e-163e782ff53e";
-    const updateEntityMappingTypeId = "01721b1a-a85d-4320-a5cd-8bd39247196a";
-    const mappingTypeIds = [queryEntityMappingTypeId, createEntityMappingTypeId, updateEntityMappingTypeId];
-    const associationWithMapping = request
-        .getAssociations()
-        .find(association =&gt; association.hasMappings() &amp;&amp; association
-        .getMappings()
-        .every(mapping =&gt; {
-        if (!mappingTypeIds.includes(mapping.mappingTypeId)) {
-            return false;
-        }
-        let element = mapping.getTargetElement();
-        while (element != null) {
-            if (element.specialization === "Class") {
-                break;
-            }
-            element = getParent(element, "Class");
-        }
-        if (element == null) {
-            return false;
-        }
-        return element.id === domainElement.getId();
-    }));
-    if (associationWithMapping != null) {
-        const mappings = associationWithMapping.getMappings();
-        const queryMapping = mappings.find(x =&gt; x.mappingTypeId === queryEntityMappingTypeId);
-        const createMapping = mappings.find(x =&gt; x.mappingTypeId === createEntityMappingTypeId);
-        const updateMapping = mappings.find(x =&gt; x.mappingTypeId === updateEntityMappingTypeId);
-        // Add the owning entity's ids as parts surrounded with curly braces
-        if (((_a = domainElement.entityDomainElementDetails) === null || _a === void 0 ? void 0 : _a.hasOwningEntity()) == true) {
-            if (queryMapping != null) {
-                let applicableClassIds = getEntityInheritanceHierarchyIds((_b = domainElement === null || domainElement === void 0 ? void 0 : domainElement.entityDomainElementDetails) === null || _b === void 0 ? void 0 : _b.owningEntity);
-                routeParts.push(...queryMapping.getMappedEnds()
-                    .filter(end =&gt; applicableClassIds.some(x =&gt; x === getParent(end.getTargetElement(), "Class").id))
-                    .map(x =&gt; `{${toCamelCase(x.getSourceElement().getName())}}`));
-            }
-            // Add a part for name of the owned entity
-            routeParts.push(toKebabCase(singularize(domainElement.getName())));
-        }
-        // Add the entity's ids as parts surrounded with curly braces
-        if (queryMapping != null) {
-            let applicableClassIds = getEntityInheritanceHierarchyIds((_c = domainElement === null || domainElement === void 0 ? void 0 : domainElement.entityDomainElementDetails) === null || _c === void 0 ? void 0 : _c.entity);
-            routeParts.push(...queryMapping.getMappedEnds()
-                .filter(end =&gt; applicableClassIds.some(x =&gt; x === getParent(end.getTargetElement(), "Class").id))
-                .map(x =&gt; `{${toCamelCase(x.getSourceElement().getName())}}`));
-        }
-        // Add the operation's name:
-        const mapping = createMapping !== null &amp;&amp; createMapping !== void 0 ? createMapping : updateMapping;
-        if (mapping == null) {
-            return routeParts;
-        }
-        var mappingEnd = mapping.getMappedEnds().find(x =&gt; x.getSourceElement().id === request.id);
-        if (mappingEnd == null) {
-            return routeParts;
-        }
-        const mappedElement = mappingEnd.getTargetElement();
-        if ((mappedElement === null || mappedElement === void 0 ? void 0 : mappedElement.specialization) === "Operation") {
-            const entityName = domainElement.getName();
-            let routePart = removePrefix(mappedElement.getName(), "Create", "Update", "Delete", "Add", "Remove");
-            routePart = removeSuffix(routePart, "Request", "Query", "Command");
-            routeParts.push(removePrefix(toKebabCase(routePart), toKebabCase(singularize(entityName)), toKebabCase(entityName), "-"));
-        }
-        return routeParts;
+        })];
+    routeParts.push(...entIdRouteParts);
+    // Add the operation's name:
+    if (mappedDetails.mappingTargetType === "Operation") {
+        let operationName = mappedDetails.mappingElement.getName();
+        routeParts.push(toKebabCase(operationName));
     }
     return routeParts;
 }
