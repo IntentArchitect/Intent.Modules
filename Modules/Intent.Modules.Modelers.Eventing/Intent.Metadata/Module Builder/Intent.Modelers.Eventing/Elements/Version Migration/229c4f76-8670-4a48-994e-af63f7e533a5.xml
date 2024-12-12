@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="229c4f76-8670-4a48-994e-af63f7e533a5" type="Version Migration" typeId="03f24c57-66d8-4868-95a7-6daef900dc7f">
+  <name>6.0.0-pre.2</name>
+  <display>6.0.0-pre.2</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>028e8fe4-33d2-4bd1-8382-9cc02a29212c</parentFolderId>
+  <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+  <packageName>Intent.Modelers.Eventing</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
