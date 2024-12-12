@@ -23,12 +23,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Migrations.OnUninstallMigration
         public OnUninstallMigrationTemplate(IOutputTarget outputTarget, OnUninstallMigrationModel model) : base(TemplateId, outputTarget, model)
         {
             CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
+                .IntentManagedMerge()
                 .AddClass($"{Model.Name}Migration".ToCSharpIdentifier(), @class =>
                 {
                     @class.ImplementsInterface(UseType("Intent.Plugins.IModuleOnUninstallMigration"));
                     @class.AddConstructor();
 
-                    @class.AddProperty("string", "ModuleId", prop => prop.ReadOnly().WithInitialValue($"\"{model.ParentModule.Name}\""));
+                    @class.AddProperty("string", "ModuleId", prop => prop
+                        .AddAttribute("IntentFully")
+                        .WithoutSetter()
+                        .Getter.WithExpressionImplementation($"\"{model.ParentModule.Name}\""));
 
                     @class.AddMethod("void", "OnUninstall");
                 });

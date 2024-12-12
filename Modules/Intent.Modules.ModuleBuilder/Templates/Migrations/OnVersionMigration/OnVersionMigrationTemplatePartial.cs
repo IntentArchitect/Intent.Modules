@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using Intent.Engine;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
@@ -23,17 +24,47 @@ namespace Intent.Modules.ModuleBuilder.Templates.Migrations.OnVersionMigration
         public OnVersionMigrationTemplate(IOutputTarget outputTarget, VersionMigrationModel model) : base(TemplateId, outputTarget, model)
         {
             CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
-                .AddClass($"Migration_{Model.Name.Replace(".", "_").Replace("-", "_")}".ToCSharpIdentifier(), @class =>
+                .IntentManagedMerge()
+                .AddClass(GetClassName(), @class =>
                 {
                     @class.ImplementsInterface(UseType("Intent.Plugins.IModuleMigration"));
                     @class.AddConstructor();
 
-                    @class.AddProperty("string", "ModuleId", prop => prop.ReadOnly().WithInitialValue($"\"{model.ParentModule.Name}\""));
-                    @class.AddProperty("string", "ModuleVersion", prop => prop.ReadOnly().WithInitialValue($"\"{Model.Name}\""));
+                    @class.AddProperty("string", "ModuleId", prop => prop
+                        .AddAttribute("IntentFully")
+                        .WithoutSetter()
+                        .Getter.WithExpressionImplementation($"\"{model.ParentModule.Name}\""));
+
+                    @class.AddProperty("string", "ModuleVersion", prop => prop
+                        .AddAttribute("IntentFully")
+                        .WithoutSetter()
+                        .Getter.WithExpressionImplementation($"\"{Model.Name}\""));
 
                     @class.AddMethod("void", "Up");
                     @class.AddMethod("void", "Down");
                 });
+        }
+
+        private string GetClassName()
+        {
+            var migration = $"Migration_{Model.Name.Replace(".", "_").Replace("-", "_")}".ToCSharpIdentifier();
+
+            var parts = migration.Split('_');
+            for (var index = 0; index < parts.Length; index++)
+            {
+                var part = parts[index];
+
+                // Pad numbers with zeros so that string sorting also works with the file names
+                if (int.TryParse(part, out var @int))
+                {
+                    parts[index] = @int.ToString("D2");
+                    continue;
+                }
+
+                parts[index] = part.ToPascalCase();
+            }
+
+            return string.Join("_", parts);
         }
 
         [IntentManaged(Mode.Fully)]

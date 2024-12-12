@@ -23,12 +23,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Migrations.OnInstallMigration
         public OnInstallMigrationTemplate(IOutputTarget outputTarget, OnInstallMigrationModel model) : base(TemplateId, outputTarget, model)
         {
             CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
+                .IntentManagedMerge()
                 .AddClass($"{Model.Name}Migration".ToCSharpIdentifier(), @class =>
                 {
                     @class.ImplementsInterface(UseType("Intent.Plugins.IModuleOnInstallMigration"));
                     @class.AddConstructor();
 
-                    @class.AddProperty("string", "ModuleId", prop => prop.ReadOnly().WithInitialValue($"\"{model.ParentModule.Name}\""));
+                    @class.AddProperty("string", "ModuleId", prop => prop
+                        .AddAttribute("IntentFully")
+                        .WithoutSetter()
+                        .Getter.WithExpressionImplementation($"\"{model.ParentModule.Name}\""));
 
                     @class.AddMethod("void", "OnInstall");
                 });
