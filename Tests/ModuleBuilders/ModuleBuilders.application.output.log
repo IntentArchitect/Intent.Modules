@@ -25,7 +25,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>22c603f3-c552-4349-8bf2-3727d258da8d</ProjectId>
+      <ProjectId>ab8faa86-876b-469c-9c0f-cb809f856769</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.StaticContentOutputReadme#f0cb4747-033a-4862-8600-128e3243ee5f</CorrelationId>
       <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>content/readme.txt</ApplicationRelativeFilePath>
@@ -41,15 +41,15 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>22c603f3-c552-4349-8bf2-3727d258da8d</ProjectId>
-      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#22c603f3-c552-4349-8bf2-3727d258da8d</CorrelationId>
+      <ProjectId>ab8faa86-876b-469c-9c0f-cb809f856769</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#ab8faa86-876b-469c-9c0f-cb809f856769</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ModuleBuilders.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ModuleBuilders.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>22c603f3-c552-4349-8bf2-3727d258da8d</ProjectId>
+      <ProjectId>ab8faa86-876b-469c-9c0f-cb809f856769</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ModuleBuilders.imodspec</ApplicationRelativeFilePath>
