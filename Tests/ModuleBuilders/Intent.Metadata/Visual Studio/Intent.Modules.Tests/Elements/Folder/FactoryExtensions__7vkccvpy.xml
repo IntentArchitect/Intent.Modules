@@ -6,7 +6,7 @@
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>22c603f3-c552-4349-8bf2-3727d258da8d</parentFolderId>
+  <parentFolderId>ab8faa86-876b-469c-9c0f-cb809f856769</parentFolderId>
   <packageId>b0adc644-dd99-4c18-9db1-35de730fa4b2</packageId>
   <packageName>Intent.Modules.Tests</packageName>
   <stereotypes>
