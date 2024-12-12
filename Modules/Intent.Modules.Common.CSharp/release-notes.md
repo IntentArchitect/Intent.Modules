@@ -1,7 +1,8 @@
 ﻿### Version 3.8.6
 
-- Fixed: Mappings not discovering and resolving their C# references in certain circumstances.
 - Improvement: Changed the `.ConcatCode(...)` extension method from `internal` to `public`.
+- Fixed: Mappings not discovering and resolving their C# references in certain circumstances.
+- Fixed: NuGet package dependencies would not get detected from templates which did not implement `ICSharpTemplate`, now any template implementing `ITemplate` will work again.
 
 ### Version 3.8.5
 

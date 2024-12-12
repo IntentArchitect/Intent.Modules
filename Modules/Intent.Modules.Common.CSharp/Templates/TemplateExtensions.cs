@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Globalization;
 using System.Linq;
 using Intent.Modules.Common.CSharp.Nuget;
@@ -18,16 +17,18 @@ namespace Intent.Modules.Common.CSharp.Templates
     {
         public static IEnumerable<NuGetInstall> GetAllNuGetInstalls(this ITemplate template)
         {
-            return template.GetAll<ICSharpTemplate, NuGetInstall>((instance) =>
+            return template.GetAll<ITemplate, NuGetInstall>((instance) =>
             {
                 if (instance is CSharpTemplateBase x)
                 {
                     return x.NugetInstalls;
                 }
-                else if (instance is IHasNugetDependencies hasNuGetDependencies)
+
+                if (instance is IHasNugetDependencies hasNuGetDependencies)
                 {
                     return hasNuGetDependencies.GetNugetDependencies().Select(p => new NuGetInstall(p));
                 }
+
                 return [];
             });
         }
@@ -179,8 +180,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// The following rules are applied to the <paramref name="identifier"/> in the following order:
         /// <list type="bullet">
         /// <item>If the string is null or whitespace, an empty string is returned.</item>
-        /// <item>Occurrences of '#' are replaced with 'Sharp`.</item>
-        /// <item>Occurrences of '&amp;' are replaced with 'And`.</item>
+        /// <item>Occurrences of '#' are replaced with 'Sharp'.</item>
+        /// <item>Occurrences of '&amp;' are replaced with 'And'.</item>
         /// <item>Any invalid characters are replaced with a ' ' (these spaces are removed in a subsequent step).</item>
         /// <item>In the event there are multiple words, each except for the first has its first letter capitalized and are then joined together.</item>
         /// <item><paramref name="capitalizationBehaviour"/> is applied to first character.</item>
