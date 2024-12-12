@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.ProxyInteractions</id>
-  <version>1.0.2-pre.0</version>
+  <version>1.0.2-pre.1</version>
   <supportedClientVersions>[4.1.0-beta.21,5.0.0)</supportedClientVersions>
   <summary>Services modeler extensions for describing interactions between an application's services and service proxies.</summary>
   <description>Services modeler extensions for describing interactions between an application's services and service proxies.</description>
