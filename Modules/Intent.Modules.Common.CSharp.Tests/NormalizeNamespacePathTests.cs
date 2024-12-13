@@ -535,4 +535,18 @@ public class NormalizeNamespacePathTests
 
         Assert.Equal("Vobill.Common.ContactPerson", result);
     }
+
+    [Fact]
+    public void Scenario25()
+    {
+        var result = CSharpTemplateBase.NormalizeNamespace(
+            localNamespace: "CompanyName.MassTransit.Api",
+            fullyQualifiedType: "MassTransit.MessageDto",
+            knownOtherNamespaceNames: [],
+            usingPaths: [],
+            outputTargetNames: new TypeRegistry(),
+            knownTypes: new TypeRegistry().WithTypes([]));
+
+        Assert.Equal("global::MassTransit.MessageDto", result);
+    }
 }

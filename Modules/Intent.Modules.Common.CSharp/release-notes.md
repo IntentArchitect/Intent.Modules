@@ -3,6 +3,7 @@
 - Improvement: Changed the `.ConcatCode(...)` extension method from `internal` to `public`.
 - Fixed: Mappings not discovering and resolving their C# references in certain circumstances.
 - Fixed: NuGet package dependencies would not get detected from templates which did not implement `ICSharpTemplate`, now any template implementing `ITemplate` will work again.
+- Fixed: Namespace normalization would not add a `global::` prefix to resolved types when their first namespace part was the same as a non-first namespace part of the local namespace.
 
 ### Version 3.8.5
 

@@ -441,7 +441,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 if (!hasConflict &&
                     localNamespaceParts.AsSpan(0, partIndex + 1).SequenceEqual(originalTypeNamespaceParts))
                 {
-                    return string.Join('.', typePartsToReturn.ToArray());
+                    return PrefixWithGlobalMaybe(string.Join('.', typePartsToReturn.ToArray()));
                 }
 
                 // We need to also check on each namespace part from most to least significant
@@ -495,7 +495,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             // need to qualify the type.
             if (hasConflict)
             {
-                return string.Join(".", typePartsToReturn.ToArray());
+                return PrefixWithGlobalMaybe(string.Join(".", typePartsToReturn.ToArray()));
             }
 
             // Check if we have a using containing the type:
@@ -519,7 +519,7 @@ namespace Intent.Modules.Common.CSharp.Templates
 
             if (count == 1)
             {
-                return string.Join('.', originalTypeParts);
+                return PrefixWithGlobalMaybe(string.Join('.', originalTypeParts));
             }
 
             // Either multiple or no usings with the type, meaning we can't use the usings to help
@@ -536,7 +536,21 @@ namespace Intent.Modules.Common.CSharp.Templates
                     break;
                 }
 
-                return string.Join('.', fullyQualifiedTypeParts.Skip(skipCount));
+                return PrefixWithGlobalMaybe(string.Join('.', fullyQualifiedTypeParts.Skip(skipCount)));
+            }
+
+            string PrefixWithGlobalMaybe(string normalizedTypeName)
+            {
+                // If the current namespace's non-first part is the first part of the type we're resolving
+                // then we have to prefix with global::
+                if (normalizedTypeName == fullyQualifiedType &&
+                    fullyQualifiedType.Contains('.') &&
+                    localNamespaceParts.Skip(1).Any(x => x == fullyQualifiedTypeParts[0]))
+                {
+                    return $"global::{fullyQualifiedType}";
+                }
+
+                return normalizedTypeName;
             }
         }
 
