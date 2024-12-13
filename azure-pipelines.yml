@@ -55,14 +55,16 @@ steps:
   fetchDepth: '1'
   submodules: 'recursive'
 
-# Try use newer version until Microsoft managed pipeline agents are updated:
-# https://github.com/NuGet/Home/issues/13729#issuecomment-2372495471
 - task: UseDotNet@2
   displayName: 'Install latest .NET 8 SDK'
   inputs:
-    includePreviewVersions: true
     version: '8.x'
-    performMultiLevelLookup: true
+
+# Required for the Software Factory CLI
+- task: UseDotNet@2
+  displayName: 'Install latest .NET 9 SDK'
+  inputs:
+    version: '9.x'
 
 - task: PowerShell@2
   displayName: 'Imodspec validation'

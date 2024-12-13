@@ -31,11 +31,9 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type type="Folder" order="0" />
-        <type type="Service Proxy" order="1" />
+        <type order="0" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f" />
+        <type order="1" type="Service Proxy" typeId="07d8d1a9-6b9f-4676-b7d3-8db06299e35c" />
       </typeOrder>
-      <childElementSettings />
-      <childElementExtensions />
     </packageSetting>
   </packageSettings>
   <packageExtensions>
@@ -120,13 +118,11 @@ else {
 </script>
         </macro>
       </macros>
-      <childElementExtensions />
     </packageExtension>
   </packageExtensions>
   <elementSettings />
   <elementExtensions>
     <elementExtension type="Service Proxy" typeId="07d8d1a9-6b9f-4676-b7d3-8db06299e35c">
-      <implements />
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
