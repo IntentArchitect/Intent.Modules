@@ -16,7 +16,6 @@ namespace Intent.Modules.Modelers.Eventing.Migrations
 {
     public class Migration_06_00_00_Pre_02 : IModuleMigration
     {
-        private const string EventingDesignerId = "822e4254-9ced-4dd1-ad56-500b861f7e4d";
         private const string ServicesDesignerId = "81104ae6-2bc5-4bae-b05a-f987b0372d81";
         private readonly IApplicationConfigurationProvider _configurationProvider;
 

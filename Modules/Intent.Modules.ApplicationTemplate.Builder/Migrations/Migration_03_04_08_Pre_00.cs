@@ -1,7 +1,11 @@
-﻿using System.Linq;
+using System.Linq;
 using Intent.Engine;
 using Intent.IArchitect.Agent.Persistence.Model;
 using Intent.Plugins;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration", Version = "1.0")]
 
 namespace Intent.Modules.ApplicationTemplate.Builder.Migrations
 {
@@ -16,7 +20,9 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Migrations
             _configurationProvider = configurationProvider;
         }
 
+        [IntentFully]
         public string ModuleId => "Intent.ApplicationTemplate.Builder";
+        [IntentFully]
         public string ModuleVersion => "3.4.8-pre.0";
 
         public void Up()

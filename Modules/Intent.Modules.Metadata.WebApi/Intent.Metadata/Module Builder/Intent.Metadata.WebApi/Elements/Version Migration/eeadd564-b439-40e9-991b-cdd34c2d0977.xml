@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="eeadd564-b439-40e9-991b-cdd34c2d0977" type="Version Migration" typeId="03f24c57-66d8-4868-95a7-6daef900dc7f">
+  <name>4.5.5-pre.4</name>
+  <display>4.5.5-pre.4</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>378b3bdd-3f6b-4f4d-963f-047807d59e3e</parentFolderId>
+  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+  <packageName>Intent.Metadata.WebApi</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

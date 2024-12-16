@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="3aea6d50-1249-4013-b3e1-7cc596ae12c6" type="Version Migration" typeId="03f24c57-66d8-4868-95a7-6daef900dc7f">
+  <name>3.4.8-pre.0</name>
+  <display>3.4.8-pre.0</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>2abebf7d-4710-4f3e-ab75-b95b2cb51ec4</parentFolderId>
+  <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+  <packageName>Intent.ApplicationTemplate.Builder</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

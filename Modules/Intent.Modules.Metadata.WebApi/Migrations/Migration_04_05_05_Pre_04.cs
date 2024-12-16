@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.IArchitect.Agent.Persistence.Model;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Plugins;
+using Intent.RoslynWeaver.Attributes;
 
-namespace Intent.Modules.Metadata.WebApi.Builder.Migrations
+[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration", Version = "1.0")]
+
+namespace Intent.Modules.Metadata.WebApi.Migrations
 {
     public class Migration_04_05_05_Pre_04 : IModuleMigration
     {
@@ -18,14 +22,16 @@ namespace Intent.Modules.Metadata.WebApi.Builder.Migrations
             _configurationProvider = configurationProvider;
         }
 
+        [IntentFully]
         public string ModuleId => "Intent.Metadata.WebApi";
+        [IntentFully]
         public string ModuleVersion => "4.5.5-pre.4";
 
-        // On Elements that have the Open API stereotype, ensure that the OperationId field
-        // is populated with the "{MethodName}" tag
-        
         public void Up()
         {
+            // On Elements that have the Open API stereotype, ensure that the OperationId field
+            // is populated with the "{MethodName}" tag
+
             var app = ApplicationPersistable.Load(_configurationProvider.GetApplicationConfig().FilePath);
             var designer = app.GetDesigner(ServicesDesignerId);
             var packages = designer.GetPackages();

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="be6c9ca5-c469-4f24-a86e-e9d6d033cf51" type="Version Migration" typeId="03f24c57-66d8-4868-95a7-6daef900dc7f">
+  <name>3.6.0-pre.8</name>
+  <display>3.6.0-pre.8</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>59ec7e4d-8546-4e06-9631-dda2840c4daf</parentFolderId>
+  <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
+  <packageName>Intent.Common.CSharp</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

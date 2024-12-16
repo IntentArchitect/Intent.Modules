@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="378b3bdd-3f6b-4f4d-963f-047807d59e3e" type="Module Migrations" typeId="8cfd2eab-c1bf-46bc-a86f-3ed0263a380f">
+  <name>Migrations</name>
+  <display>Migrations</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>0011387a-b122-45d7-9cdb-8e21b315ab9f</parentFolderId>
+  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+  <packageName>Intent.Metadata.WebApi</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

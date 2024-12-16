@@ -3,11 +3,13 @@ using System.Linq;
 using Intent.Engine;
 using Intent.IArchitect.Agent.Persistence.Model;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
-using Intent.Metadata.WebApi.Api;
-using Intent.Modelers.Services.Api;
 using Intent.Plugins;
+using Intent.RoslynWeaver.Attributes;
 
-namespace Intent.Modules.Metadata.WebApi.Builder.Migrations;
+[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration", Version = "1.0")]
+
+namespace Intent.Modules.Metadata.WebApi.Migrations;
 
 public class Migration_04_06_00_Pre_03 : IModuleMigration
 {
@@ -22,28 +24,30 @@ public class Migration_04_06_00_Pre_03 : IModuleMigration
     {
         _configurationProvider = configurationProvider;
     }
-    
+
+    [IntentFully]
     public string ModuleId => "Intent.Metadata.WebApi";
+    [IntentFully]
     public string ModuleVersion => "4.6.0-pre.3";
-    
-    // This migration deals with the legacy ASP.NET Core Controller logic where a missing
-    // Http Service Settings stereotype would mean that the Route assigned to the Controller
-    // will be `api/[controller]` which is a bad take on convention and tech stacks.
-    // So this will create a Http Service Settings stereotype with that base route if missing
-    // and only when Intent.AspNetCore.Controllers are installed.
-    
+
     public void Up()
     {
+        // This migration deals with the legacy ASP.NET Core Controller logic where a missing
+        // Http Service Settings stereotype would mean that the Route assigned to the Controller
+        // will be `api/[controller]` which is a bad take on convention and tech stacks.
+        // So this will create a Http Service Settings stereotype with that base route if missing
+        // and only when Intent.AspNetCore.Controllers are installed.
+
         var app = ApplicationPersistable.Load(_configurationProvider.GetApplicationConfig().FilePath);
-        
+
         if (!app.Modules.Any(p => p.ModuleId == "Intent.AspNetCore.Controllers"))
         {
             return;
         }
-        
+
         var designer = app.GetDesigner(ServicesDesignerId);
         var packages = designer.GetPackages();
-        
+
         foreach (var package in packages)
         {
             var needsSave = false;
@@ -70,7 +74,7 @@ public class Migration_04_06_00_Pre_03 : IModuleMigration
                             }
                         ]
                     };
-                    
+
                     element.Stereotypes.Add(httpServiceSettings);
                     needsSave = true;
                 }
@@ -97,26 +101,26 @@ public class Migration_04_06_00_Pre_03 : IModuleMigration
                     }
                 }
             }
-            
+
             if (needsSave)
             {
                 package.Save(true);
             }
         }
     }
-    
+
     public void Down()
     {
         var app = ApplicationPersistable.Load(_configurationProvider.GetApplicationConfig().FilePath);
-    
+
         if (!app.Modules.Any(p => p.ModuleId == "Intent.AspNetCore.Controllers"))
         {
             return;
         }
-    
+
         var designer = app.GetDesigner(ServicesDesignerId);
         var packages = designer.GetPackages();
-    
+
         foreach (var package in packages)
         {
             var needsSave = false;
@@ -134,14 +138,14 @@ public class Migration_04_06_00_Pre_03 : IModuleMigration
                     }
                 }
             }
-        
+
             if (needsSave)
             {
                 package.Save(true);
             }
         }
     }
-    
+
     private static IEnumerable<ElementPersistable> GetAllElements(PackageModelPersistable package)
     {
         return package.ChildElements.SelectMany(GetAllElements);

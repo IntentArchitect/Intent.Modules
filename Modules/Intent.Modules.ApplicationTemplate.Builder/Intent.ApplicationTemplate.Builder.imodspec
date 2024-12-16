@@ -35,4 +35,7 @@
   <moduleSettings />
   <moduleSettingsExtensions />
   <tags>app template builder</tags>
+  <migrations>
+    <migration version="3.4.8-pre.0" />
+  </migrations>
 </package>

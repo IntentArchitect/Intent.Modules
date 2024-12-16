@@ -129,6 +129,22 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>171b1b81-c5f2-47b1-a6c0-4920ac069484</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#eeadd564-b439-40e9-991b-cdd34c2d0977</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Migrations/Migration_04_05_05_Pre_04.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Migration_04_05_05_Pre_04.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>171b1b81-c5f2-47b1-a6c0-4920ac069484</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#f78ec643-0c87-42e3-a9a9-940b6ce15529</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Migrations/Migration_04_06_00_Pre_03.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Migration_04_06_00_Pre_03.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>fbbe3c09-70f6-47d7-af27-c18d9712d6a7</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#03bfccb7-d845-411f-ba08-4fddb01bbbda</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

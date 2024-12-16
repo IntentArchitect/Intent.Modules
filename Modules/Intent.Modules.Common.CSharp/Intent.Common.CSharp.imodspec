@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.CSharp</id>
   <version>3.8.6</version>
@@ -39,7 +39,6 @@
     <group id="6cc9ca71-7670-48eb-b413-e47e72307cbd" title="C# Style Configuration" externalReference="6cc9ca71-7670-48eb-b413-e47e72307cbd">
       <settings>
         <setting id="0c43b221-fec0-4df7-96d2-e7281ddf9207" title="Constructor Initializer" type="select">
-          <isRequired>false</isRequired>
           <hint>Constructor initializers placement. More information can be found in the [readme](https://github.com/IntentArchitect/Intent.Modules/blob/master/Modules/Intent.Modules.Common.CSharp/README.md). Relates to [StyleCop rule SA1128](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1128.md)</hint>
           <defaultValue>same-line</defaultValue>
           <options>
@@ -49,7 +48,6 @@
           </options>
         </setting>
         <setting id="6483b559-92bb-43d7-a0b4-af20ded10a1b" title="Parameter Placement" type="select">
-          <isRequired>false</isRequired>
           <hint>Parameter placement. More information can be found in the [readme](https://github.com/IntentArchitect/Intent.Modules/blob/master/Modules/Intent.Modules.Common.CSharp/README.md). Relates to [StyleCop rule SA1116](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1116.md)</hint>
           <defaultValue>default</defaultValue>
           <options>
@@ -63,4 +61,7 @@
   </moduleSettings>
   <moduleSettingsExtensions />
   <tags>common csharp</tags>
+  <migrations>
+    <migration version="3.6.0-pre.8" />
+  </migrations>
 </package>
