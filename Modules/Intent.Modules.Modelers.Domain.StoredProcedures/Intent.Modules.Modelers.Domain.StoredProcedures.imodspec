@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modules.Modelers.Domain.StoredProcedures</id>
-  <version>1.1.2-pre.0</version>
+  <version>1.1.2</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0)</supportedClientVersions>
   <summary>Modeler capability for working with Stored Procedures.</summary>
   <description>Modeler capability for working with Stored Procedures.</description>
