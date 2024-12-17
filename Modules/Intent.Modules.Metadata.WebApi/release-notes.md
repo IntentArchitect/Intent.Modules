@@ -1,3 +1,7 @@
+### Version 4.7.1
+
+- Improvement: `Services Designer` warning if the HTTP route contains double forward slash (`//`)
+
 ### Version 4.7.0
 
 - Fixed: Exposing Services/Commands/Queries as HTTP Endpoints will now correctly position the route parameters and include the operation names for Domain Entity Operations being exposed through Commands/Queries.

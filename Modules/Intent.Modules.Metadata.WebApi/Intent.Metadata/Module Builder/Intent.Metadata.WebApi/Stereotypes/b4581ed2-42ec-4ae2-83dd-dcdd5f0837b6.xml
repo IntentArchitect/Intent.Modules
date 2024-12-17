@@ -23,6 +23,12 @@
   <order>0</order>
   <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
   <packageName>Intent.Metadata.WebApi</packageName>
+  <validateFunction>const httpSettings = getStereotype("Http Settings");
+const route = httpSettings?.getProperty("Route").getValue()?.toString()
+
+return route.includes('//')
+    ? "'Route' value contains double forward-slash (//)"
+    : null;</validateFunction>
   <properties>
     <property id="801c3e61-4431-4d81-93fa-7e57d33cb3fa">
       <name>Verb</name>
