@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <applicationTemplate>
   <id>Intent.ApplicationTemplateBuilder</id>
-  <version>4.0.5</version>
+  <version>4.0.6</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <displayName>Intent Application Template Builder</displayName>
   <shortDescription>Build application templates for your tech stack.</shortDescription>
@@ -77,7 +77,7 @@
   </additionalSettings>
   <minimumDependencyVersions>
     <module id="Intent.Common" version="3.7.3" />
-    <module id="Intent.Common.CSharp" version="3.8.5" />
+    <module id="Intent.Common.CSharp" version="3.8.6" />
     <module id="Intent.Common.Types" version="4.1.0" />
     <module id="Intent.OutputManager.RoslynWeaver" version="4.8.3" />
   </minimumDependencyVersions>
