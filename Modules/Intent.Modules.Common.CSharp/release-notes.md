@@ -1,4 +1,9 @@
-﻿### Version 3.8.6
+﻿### Version 3.8.7
+
+- Fixed: Path Replacement logic in `GetParsedExpressionMap` didn't take `nulls` into account (especially since they can respond with `null` values).
+- Fixed: Some methods didn't handle null return cases.
+
+### Version 3.8.6
 
 - Improvement: Changed the `.ConcatCode(...)` extension method from `internal` to `public`.
 - Fixed: Mappings not discovering and resolving their C# references in certain circumstances.

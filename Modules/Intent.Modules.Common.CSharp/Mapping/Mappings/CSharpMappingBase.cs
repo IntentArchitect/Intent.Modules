@@ -8,6 +8,8 @@ using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 
+#nullable enable
+
 namespace Intent.Modules.Common.CSharp.Mapping;
 
 public abstract class CSharpMappingBase : ICSharpMapping
@@ -154,21 +156,21 @@ public abstract class CSharpMappingBase : ICSharpMapping
     protected string GetSourcePathText(bool targetIsNullable)
     {
         var result = Mapping?.MappingExpression ?? throw new Exception($"Could not resolve source path. Mapping expected on '{Model.DisplayText ?? Model.Name}' [{Model.SpecializationType}]. Check that you have a MappingTypeResolver that addresses this scenario.");
-        foreach (var map in GetParsedExpressionMap(Mapping?.MappingExpression, path => GetSourcePathText(Mapping.GetSource(path).Path, targetIsNullable)))
+        foreach (var map in GetParsedExpressionMap(Mapping.MappingExpression, path => GetSourcePathText(Mapping.GetSource(path).Path, targetIsNullable)))
         {
             result = result.Replace(map.Key, map.Value);
         }
         return result;
     }
 
-    protected string GetSourcePathText(IList<IElementMappingPathTarget> mappingPaths) => GetSourcePathText(mappingPaths, false);
+    protected string? GetSourcePathText(IList<IElementMappingPathTarget> mappingPaths) => GetSourcePathText(mappingPaths, false);
 
-    protected string GetSourcePathText(IList<IElementMappingPathTarget> mappingPaths, bool targetIsNullable)
+    protected string? GetSourcePathText(IList<IElementMappingPathTarget> mappingPaths, bool targetIsNullable)
     {
-        return GetSourcePathExpression(mappingPaths, targetIsNullable).ToString();
+        return GetSourcePathExpression(mappingPaths, targetIsNullable)?.ToString();
     }
 
-    protected IDictionary<string, string> GetParsedExpressionMap(string str, Func<string, string> replacePathFunc)
+    protected IDictionary<string, string> GetParsedExpressionMap(string str, Func<string, string?> replacePathFunc)
     {
         var result = new Dictionary<string, string>();
         while (str.IndexOf("{", StringComparison.Ordinal) != -1 && str.IndexOf("}", StringComparison.Ordinal) != -1)
@@ -178,7 +180,8 @@ public abstract class CSharpMappingBase : ICSharpMapping
             var expression = str[fromPos..toPos];
             var expressionFromPos = 0;
             var resultExpression = expression;
-            foreach (var part in Regex.Split(expression, @"[\(\)?:!=+|&]").Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x.Trim()))
+            var parts = Regex.Split(expression, @"[\(\)?:!=+|&]").Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x.Trim());
+            foreach (var part in parts)
             {
                 // if is literal:
                 if (part == "true" ||
@@ -189,8 +192,10 @@ public abstract class CSharpMappingBase : ICSharpMapping
                     continue;
                 }
 
+                var replaceResult = replacePathFunc(part) ?? string.Empty;
                 expressionFromPos = resultExpression.IndexOf(part, expressionFromPos, StringComparison.Ordinal);
-                resultExpression = resultExpression.Remove(expressionFromPos, part.Length).Insert(expressionFromPos, replacePathFunc(part));
+                resultExpression = resultExpression.Remove(expressionFromPos, part.Length);
+                resultExpression = resultExpression.Insert(expressionFromPos, replaceResult);
             }
 
             result.TryAdd($"{{{expression}}}", resultExpression);
@@ -199,14 +204,14 @@ public abstract class CSharpMappingBase : ICSharpMapping
         return result;
     }
 
-    protected ICSharpExpression GetSourcePathExpression(IList<IElementMappingPathTarget> mappingPaths, bool targetIsNullable)
+    protected ICSharpExpression? GetSourcePathExpression(IList<IElementMappingPathTarget> mappingPaths, bool targetIsNullable)
     {
         // TODO: GCB - The check for inheritance like this is a hack.
         // Consider making associations indicating inheritance a first-class citizen via the settings.
         // Alternatively, consider using the metadata to indicate this.
         mappingPaths = mappingPaths.Where(x => x.Element.SpecializationType != "Generalization Target End").ToList();
 
-        CSharpStatement result = default;
+        CSharpStatement? result = default;
         foreach (var mappingPathTarget in mappingPaths)
         {
             if (TryGetSourceReplacement(mappingPathTarget.Element, out var replacement))
@@ -249,25 +254,28 @@ public abstract class CSharpMappingBase : ICSharpMapping
         return result;
     }
 
-    private bool IsTransitional(IElementMappingPathTarget previousMappingPath, IElementMappingPathTarget mappingPathTarget)
+    private static bool IsTransitional(IElementMappingPathTarget? previousMappingPath, IElementMappingPathTarget mappingPathTarget)
     {
-        if (previousMappingPath == null) return false;
-        return !((IElement)previousMappingPath?.Element).ChildElements.Contains((IElement)mappingPathTarget?.Element);
+        if (previousMappingPath == null)
+        {
+            return false;
+        }
+        return !((IElement)previousMappingPath.Element).ChildElements.Contains((IElement)mappingPathTarget.Element);
     }
 
-    protected string GetTargetPathText()
+    protected string? GetTargetPathText()
     {
         var targetPathExpression = GetTargetPathExpression();
         if (targetPathExpression == null)
         {
             throw new Exception($"The target path text returned null for mapping {GetType().Name}. Check that you are resolving the appropriate mapping type for this model: {Model}");
         }
-        return GetTargetPathExpression().ToString();
+        return GetTargetPathExpression()?.ToString();
     }
 
-    protected ICSharpExpression GetTargetPathExpression()
+    protected ICSharpExpression? GetTargetPathExpression()
     {
-        CSharpStatement result = default;
+        CSharpStatement? result = default;
         var mappingPaths = GetTargetPath();
         foreach (var mappingPathTarget in mappingPaths)
         {
@@ -277,7 +285,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
             }
             else
             {
-                CSharpStatement member = null;
+                CSharpStatement member;
                 var relativeMappingPath = mappingPaths.Take(mappingPaths.IndexOf(mappingPathTarget) + 1).ToList();
                 if (TryGetReferenceName(mappingPathTarget, out var referenceName))
                 {
@@ -328,7 +336,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         // First try the previous mapping element, but only if it has children (e.g. a command / query):
         if (previousPathTarget.ChildElements.Any() && TryFindTemplates(Template, previousPathTarget, out var foundTypeTemplates))
         {
-            foreach (var context in foundTypeTemplates)
+            foreach (var context in foundTypeTemplates ?? [])
             {
                 if (context.RootCodeContext.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
                 {
@@ -339,7 +347,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         // Second try the previous mapping element's type reference (e.g. an attribute with a complex type):
         if (TryFindTemplates(Template, previousPathTarget.TypeReference?.Element as IElement, out foundTypeTemplates))
         {
-            foreach (var context in foundTypeTemplates)
+            foreach (var context in foundTypeTemplates ?? [])
             {
                 if (context.RootCodeContext.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
                 {
@@ -351,7 +359,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         // Finally try the previous mapping element's parent (e.g. when you're mapping to an injected service's operation):
         if (TryFindTemplates(Template, previousPathTarget.ParentElement, out foundTypeTemplates))
         {
-            foreach (var context in foundTypeTemplates)
+            foreach (var context in foundTypeTemplates ?? [])
             {
                 if (context.RootCodeContext.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
                 {
@@ -363,7 +371,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         return false;
     }
 
-    private static bool TryFindTemplates(ICSharpTemplate template, IElement elementToLookup, out IList<ICSharpFileBuilderTemplate> foundTemplates)
+    private static bool TryFindTemplates(ICSharpTemplate template, IElement? elementToLookup, out IList<ICSharpFileBuilderTemplate>? foundTemplates)
     {
         if (elementToLookup is null)
         {
@@ -390,7 +398,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
     /// <param name="mappingPath"></param>
     /// <param name="reference"></param>
     /// <returns></returns>
-    protected virtual bool TryGetReferenceName(IElementMappingPathTarget mappingPath, out string reference)
+    protected virtual bool TryGetReferenceName(IElementMappingPathTarget mappingPath, out string? reference)
     {
         reference = null;
         return false;
