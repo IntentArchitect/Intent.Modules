@@ -312,6 +312,7 @@ const metadataKeyName = "initialized";
                     { specializationId: "Domain Service", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
                     { specializationId: "Repository", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
                     { specializationId: "Service", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Service Proxy", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
                 ],
             }
         }
@@ -387,6 +388,7 @@ getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePo
                     { specializationId: "Domain Service", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
                     { specializationId: "Repository", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
                     { specializationId: "Service", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Service Proxy", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
                 ],
             }
         }

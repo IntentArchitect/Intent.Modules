@@ -1,3 +1,8 @@
+### Version 3.9.1
+
+- Improvement: Added `Service Proxy`s element type to `Add to Diagram`.
+
+
 ### Version 3.9.0
 
 - Improvement: Added `Add to Diagram` option to the `Services` diagrams.
@@ -8,7 +13,7 @@
 
 ### Version 3.8.2
 
-- Improvment: Updated icons.
+- Improvement: Updated icons.
 - Improvement: Inherited DTO fields are now displayed on the mapping screen
 
 ### Version 3.8.1
