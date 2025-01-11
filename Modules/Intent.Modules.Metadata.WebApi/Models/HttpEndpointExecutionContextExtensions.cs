@@ -71,6 +71,12 @@ public static class HttpEndpointExecutionContextExtensions
 
     private static bool GetSecuredByDefaultSetting(ISoftwareFactoryExecutionContext context, string applicationId)
     {
+        // There might be cases where an applicationId is missing, then just ignore.
+        if (applicationId == null!)
+        {
+            return false;
+        }
+        
         // Until we migrate this setting over to the WebAPI module form the ASP.NET Core Controllers module,
         // we'll need to make use of the soft-linking for that setting.
         var defaultApiSecuritySetting = context.GetSolutionConfig().GetApplicationConfig(applicationId)

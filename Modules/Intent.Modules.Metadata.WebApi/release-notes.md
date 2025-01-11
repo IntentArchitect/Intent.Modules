@@ -1,6 +1,7 @@
 ### Version 4.7.1
 
 - Improvement: `Services Designer` warning if the HTTP route contains double forward slash (`//`)
+- Improvement: New extension methods introduced (`HttpEndpointExecutionContextExtensions`) that would now also attempt to include the API Setting `Secure By Default` to determine whether services are secure or not.
 
 ### Version 4.7.0
 
