@@ -1,5 +1,6 @@
 ﻿### Version 3.8.7
 
+- Improvement: API added for controlling Razor Weaving configuration, in particular for registering element and attribute names for syntax node matching behaviour. For more information refer to the [documentation](https://docs.intentarchitect.com/articles/application-development/code-management/code-management-razor/code-management-razor.html#component-specific-attribute-matching-configuration).
 - Fixed: Path Replacement logic in `GetParsedExpressionMap` didn't take `nulls` into account (especially since they can respond with `null` values).
 - Fixed: Some methods didn't handle null return cases.
 
