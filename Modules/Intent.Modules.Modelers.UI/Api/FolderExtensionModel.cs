@@ -34,6 +34,11 @@ namespace Intent.Modelers.UI.Api
             .Select(x => new ModelDefinitionModel(x))
             .ToList();
 
+        public IList<ServiceModel> Services => _element.ChildElements
+            .GetElementsOfType(ServiceModel.SpecializationTypeId)
+            .Select(x => new ServiceModel(x))
+            .ToList();
+
         public IList<DiagramModel> Diagrams => _element.ChildElements
             .GetElementsOfType(DiagramModel.SpecializationTypeId)
             .Select(x => new DiagramModel(x))

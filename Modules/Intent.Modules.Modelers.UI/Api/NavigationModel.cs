@@ -37,9 +37,9 @@ namespace Intent.Modelers.UI.Api
 
         public string Id => _association.Id;
 
-        public NavigationSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new NavigationSourceEndModel(_association.SourceEnd, this));
+        public NavigationSourceEndModel SourceEnd => _sourceEnd ??= new NavigationSourceEndModel(_association.SourceEnd, this);
 
-        public NavigationTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new NavigationTargetEndModel(_association.TargetEnd, this));
+        public NavigationTargetEndModel TargetEnd => _targetEnd ??= new NavigationTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 

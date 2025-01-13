@@ -47,5 +47,12 @@ namespace Intent.Modelers.UI.Api
                 .ToList();
         }
 
+        public static IList<ServiceModel> GetServiceModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(ServiceModel.SpecializationTypeId)
+                .Select(x => new ServiceModel(x))
+                .ToList();
+        }
+
     }
 }

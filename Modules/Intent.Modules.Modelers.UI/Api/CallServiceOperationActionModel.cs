@@ -36,9 +36,9 @@ namespace Intent.Modelers.UI.Api
 
         public string Id => _association.Id;
 
-        public CallServiceOperationActionSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new CallServiceOperationActionSourceEndModel(_association.SourceEnd, this));
+        public CallServiceOperationActionSourceEndModel SourceEnd => _sourceEnd ??= new CallServiceOperationActionSourceEndModel(_association.SourceEnd, this);
 
-        public CallServiceOperationActionTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new CallServiceOperationActionTargetEndModel(_association.TargetEnd, this));
+        public CallServiceOperationActionTargetEndModel TargetEnd => _targetEnd ??= new CallServiceOperationActionTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 

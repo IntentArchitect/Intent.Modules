@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.UI</id>
-  <version>1.0.0-beta.2</version>
+  <version>1.0.0-beta.3</version>
   <supportedClientVersions>[4.3.0-beta.4, 5.0.0-a)</supportedClientVersions>
   <summary>A designer for describing user interfaces.</summary>
   <description>A designer for describing user interfaces.</description>
@@ -14,7 +14,7 @@
   <factoryExtensions></factoryExtensions>
   <moduleSettings />
   <dependencies>
-    <dependency id="Intent.Common" version="3.6.0" />
+    <dependency id="Intent.Common" version="3.7.2" />
     <dependency id="Intent.Common.Types" version="4.0.0-pre.1" />
   </dependencies>
   <interoperability>
@@ -36,4 +36,5 @@
     <install src="modelers/User Interface.designer.config" externalReference="f492faed-0665-4513-9853-5a230721786f" />
     <install src="modelers/User Interface Packages.designer.settings" externalReference="93058b8a-4d1d-4f88-ac14-332c87666418" target="User Interface" />
   </metadata>
+  <migrations />
 </package>
