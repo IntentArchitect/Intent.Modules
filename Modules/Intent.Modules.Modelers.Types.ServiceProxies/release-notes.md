@@ -1,4 +1,8 @@
-﻿### Version 5.4.0
+﻿### Version 5.4.1
+
+- Fixed: In some cases DTOs used more than once would cause duplicate registration errors in the software factory.
+
+### Version 5.4.0
 
 - Service Proxy elements now have the "Injectable Service" trait, allowing them to be used as targets on particular advanced mapping dialogues.
 - Operation elements now have the "Processing Handler" trait, allowing them to be used as targets on particular advanced mapping dialogues.

@@ -30,7 +30,7 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
         {
             return designer.GetServiceProxyModels()
                 .SelectMany(proxyModel => GetReferencedDTOModels(proxyModel, stereotypeNames))
-                .Distinct()
+                .DistinctBy(x => x.Id)
                 .ToList();
         }
 
@@ -48,7 +48,7 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
         {
             return designer.GetServiceProxyModels()
                 .SelectMany(proxyModel => GetReferencedDTOModels(proxyModel, includeReturnTypes: false, stereotypeNames))
-                .Distinct()
+                .DistinctBy(x => x.Id)
                 .ToList();
         }
 
@@ -66,7 +66,7 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
         {
             return designer.GetServiceProxyModels()
                 .SelectMany(proxyModel => GetReferencedEnumModels(proxyModel, stereotypeNames))
-                .Distinct()
+                .DistinctBy(x => x.Id)
                 .ToList();
         }
 
@@ -91,11 +91,11 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
                 .ToList();
         }
 
-        private static ISet<IElement> DeepGetDistinctReferencedElements(
+        private static HashSet<IElement> DeepGetDistinctReferencedElements(
             IEnumerable<IElement> elements,
             bool includeReturnTypes = true)
         {
-            var referencedElements = new HashSet<IElement>();
+            var referencedElements = new HashSet<IElement>(ElementComparer.Instance);
             var workingStack = new Stack<IElement>(elements);
 
             while (workingStack.Any())
@@ -167,6 +167,27 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
                 .Select(x => x.Mapping?.Element)
                 .Cast<IElement>()
                 .Where(x => x.Stereotypes.Any(s => stereotypeSet.Contains(s.Name)));
+        }
+
+        private class ElementComparer : IEqualityComparer<IElement>
+        {
+            private ElementComparer() { }
+
+            public static ElementComparer Instance { get; } = new ElementComparer();
+
+            public bool Equals(IElement x, IElement y)
+            {
+                if (ReferenceEquals(x, y)) return true;
+                if (x is null) return false;
+                if (y is null) return false;
+                if (x.GetType() != y.GetType()) return false;
+                return x.Id == y.Id;
+            }
+
+            public int GetHashCode(IElement obj)
+            {
+                return (obj.Id != null ? obj.Id.GetHashCode() : 0);
+            }
         }
     }
 }
