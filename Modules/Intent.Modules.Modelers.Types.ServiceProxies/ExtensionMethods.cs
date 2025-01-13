@@ -79,7 +79,7 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
         {
             return DeepGetDistinctReferencedElements(GetMappedEndpoints(proxy, stereotypeNames), includeReturnTypes)
                 .Where(x => x.SpecializationTypeId is not (TypeDefinitionModel.SpecializationTypeId or EnumModel.SpecializationTypeId))
-                .Select(x => new DTOModel(x))
+                .Select(x => new DTOModel(x is IClosedGenericElement closedGenericElement ? closedGenericElement.OpenGenericElement : x))
                 .ToList();
         }
 
