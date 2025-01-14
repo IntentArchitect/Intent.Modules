@@ -1,4 +1,8 @@
-﻿### Version 5.4.1
+﻿### Version 5.4.2
+
+- Fixed: Referenced DTOs with generic type parameters would incorrectly contain their closed generic forms ultimately resulting in incorrectly generated DTOs.
+
+### Version 5.4.1
 
 - Fixed: In some cases DTOs used more than once would cause duplicate registration errors in the software factory.
 
