@@ -1,4 +1,8 @@
-﻿### Version 3.12.0
+﻿### Version 3.12.1
+
+- Improvement: Added additional help topics.
+
+### Version 3.12.0
 
 - Improvement: Added `ctrl + space` and `double-click` shortcuts to `Operation` and `Constructor` mappings.
 
