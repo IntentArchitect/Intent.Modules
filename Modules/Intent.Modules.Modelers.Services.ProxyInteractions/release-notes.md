@@ -1,3 +1,7 @@
+### Version 1.1.0
+
+- Improvement: Added discoverable documentation for Service Proxy Interactions.
+
 ### Version 1.0.2
 
 - Fixed: Implement `ServiceReferencesValidationExtension` that validates mappings in proxy service calls.
