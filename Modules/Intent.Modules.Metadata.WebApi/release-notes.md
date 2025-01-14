@@ -1,3 +1,7 @@
+### Version 4.7.2
+
+- Improvement: Added new documentation topics around securing services.
+
 ### Version 4.7.1
 
 - Improvement: `Services Designer` warning if the HTTP route contains double forward slash (`//`)

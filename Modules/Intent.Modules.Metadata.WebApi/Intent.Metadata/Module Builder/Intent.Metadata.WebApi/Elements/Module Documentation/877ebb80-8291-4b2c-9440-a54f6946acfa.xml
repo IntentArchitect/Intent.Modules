@@ -120,5 +120,32 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="3f9895ce-628c-461c-a1bc-0f37c111fc67" type="Documentation Topic" typeId="5cc56ebc-6b61-41a6-a452-8efd9382da6f">
+      <name>How to Secure Services</name>
+      <display>How to Secure Services</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>877ebb80-8291-4b2c-9440-a54f6946acfa</parentFolderId>
+      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+      <packageName>Intent.Metadata.WebApi</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="83dfd8ae-5086-4e41-94c2-7110d5a49b4c" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="2792ad9a-2afd-4350-bac6-bdcf4b701ff1" display="Description" value="How to model authentication and authorization for your services." isActive="true" />
+            <property name="4fa553d3-1b96-4f63-bdb9-3237eca31f6b" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+            <property name="207e8583-2ba5-4ea3-84aa-2f65cd5915ca" display="Href" value="https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/securing-services/securing-services.html" isActive="true" />
+            <property name="21d13790-2910-475c-b58f-9d350f2e13c6" display="Designers" value="[&quot;81104ae6-2bc5-4bae-b05a-f987b0372d81&quot;]" isActive="true" />
+            <property name="8642b1d1-93f9-4f5f-b5ae-ad5fc20d7a46" display="Elements" value="[&quot;ccf14eb6-3a55-4d81-b5b9-d27311c70cb9&quot;,&quot;e71b0662-e29d-4db2-868b-8a12464b25d0&quot;,&quot;e030c97a-e066-40a7-8188-808c275df3cb&quot;]" isActive="true" />
+            <property name="f55a1f0c-40dd-48b4-b985-8360933e6a47" display="Tags" value="role policy security authenticate authorize secure" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
   </childElements>
 </class>
