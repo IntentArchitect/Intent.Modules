@@ -18,6 +18,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>3e7c3578-2dc0-4da4-bb53-596dbf3dec06</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#823a34a9-2da9-4064-9c2c-a6c7dcddf7d4</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DomainPackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DomainPackageExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3e7c3578-2dc0-4da4-bb53-596dbf3dec06</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#e030c97a-e066-40a7-8188-808c275df3cb</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/OperationModelStereotypeExtensions.cs</ApplicationRelativeFilePath>

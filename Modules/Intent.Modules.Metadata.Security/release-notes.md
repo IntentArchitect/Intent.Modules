@@ -1,6 +1,7 @@
 ### Version 1.0.2
 
 - Improvement: Moved module documentation to website, with link in module docs.
+- Improvement: Roles and Policies can now be added to the `Domain Designer` (to initially support data masking)
 
 ### Version 1.0.1
 

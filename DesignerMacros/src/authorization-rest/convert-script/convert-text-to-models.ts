@@ -14,7 +14,8 @@ function convertTextToModel(securityElement: MacroApi.Context.IElementApi): void
     let commands = lookupTypesOf("Command").filter(c => hasRoleOrPolicy(c)).map(x => getSecurityStereotype(x));
     let queries = lookupTypesOf("Query").filter(c => hasRoleOrPolicy(c)).map(x => getSecurityStereotype(x));
     let operations = lookupTypesOf("Operation").filter(x => hasRoleOrPolicy(x)).map(x => getSecurityStereotype(x));
-    let allStereotypes = [...commands, ...queries, ...operations];
+    let attributes = lookupTypesOf("Attribute").filter(x => hasRoleOrPolicy(x)).map(x => getSecurityStereotype(x));
+    let allStereotypes = [...commands, ...queries, ...operations, ...attributes];
     
     allStereotypes.forEach(stereotype =>{
         if (hasConvertibleValues(stereotype.getProperty("Roles")?.value)){
@@ -81,6 +82,9 @@ function getSecurityStereotype(x: MacroApi.Context.IElementApi): MacroApi.Contex
     if (x.hasStereotype("Secured")){
         return x.getStereotype("Secured");
     }
+    if (x.hasStereotype("Data Masking")){
+        return x.getStereotype("Data Masking");
+    }
     return null;
 }
 
@@ -101,6 +105,15 @@ function hasRoleOrPolicy(x: MacroApi.Context.IElementApi): boolean{
             return true;
         }
     }
+    if (x.hasStereotype("Data Masking")){
+        var dm = x.getStereotype("Data Masking");
+        if (dm.getProperty("Roles")?.value){
+            return true;
+        }
+        if (dm.getProperty("Policy")?.value){
+            return true;
+        }
+    }
     return false;
 }
 
@@ -108,7 +121,7 @@ function getOrCreateSecurityChildElement(securityElement: MacroApi.Context.IElem
 
     let roleOrPolicy = securityElement.getChildren(elementType).find(x => x.getName() == elementName);
     if (!roleOrPolicy){
-        //Create a new attributye
+        //Create a new attribute
         roleOrPolicy = createElement(elementType, elementName, securityElement.id);
     }
     return roleOrPolicy;
