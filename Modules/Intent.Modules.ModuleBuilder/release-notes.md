@@ -1,3 +1,7 @@
+### Version 3.13.1
+
+- Fixed: `AttributeModel` extension methods now using Domain model not the Common Types model.
+
 ### Version 3.13.0
 
 - Feature: Support for "suggestions" scripts that will be made available to users as part of Intent Architect 4.4.x and later.

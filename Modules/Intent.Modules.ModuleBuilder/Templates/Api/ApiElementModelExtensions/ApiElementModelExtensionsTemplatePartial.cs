@@ -51,7 +51,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 
         public IEnumerable<string> DeclareUsings()
         {
-            yield return Model.Type.ApiNamespace;
+#warning this is a hack to deal with the current issue of having 2 AttributeModels, until we get to do this refactor
+            if (Model.Type.ApiClassName == "AttributeModel" && Model.Type.ApiNamespace == "Intent.Modules.Common.Types.Api")
+            {
+                yield return "Intent.Modelers.Domain.Api";
+            }
+            else
+            {
+                yield return Model.Type.ApiNamespace;
+            }
         }
 
         private static string ForcePluralize(string value)
