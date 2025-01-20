@@ -64,6 +64,12 @@ namespace Intent.Modules.Modelers.Eventing.Migrations
                     Logging.Log.Info($"Skipping as package already referenced in Services designer");
                     continue;
                 }
+                eventingPackage.Load();
+                if (!eventingPackage.Classes.Any(ep => ep.SpecializationType == "Message" || ep.SpecializationType == "Integration Command"))
+                {
+                    Logging.Log.Info($"Skipping as package no Integration Messages or Integration Commands");
+                    continue;
+                }
 
                 Logging.Log.Info($"Adding package reference to Services designer");
                 hasChange = true;

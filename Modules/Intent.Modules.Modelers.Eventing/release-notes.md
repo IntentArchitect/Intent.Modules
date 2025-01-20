@@ -1,10 +1,14 @@
-﻿### Version 6.0.0
+﻿### Version 6.0.1
+
+- Improvement: Improved the Eventing Designer Migration.
+
+### Version 6.0.0
 
 > ⚠️ WARNING
 >
-> This version removes the Eventing Designer and any integration message modelling will now need to be performed in the Services Designer.
+> This version removes the Eventing Designer and any integration message modeling will now need to be performed in the Services Designer.
 >
-> Any existing messages in the Eventing Designer can simply be used as is in the Services Designer, but existing subscriptions will need to be re-modelled by creating subscription associations from the messages to Integration Event Handlers.
+> Any existing messages in the Eventing Designer can simply be used as is in the Services Designer, but existing subscriptions will need to be re-modeled by creating subscription associations from the messages to Integration Event Handlers.
 >
 > For more information refer to the [migration documentation](https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#migrating-from-the-eventing-designer) or otherwise reach out to [Intent Architect Support](https://github.com/IntentArchitect/Support).
 
