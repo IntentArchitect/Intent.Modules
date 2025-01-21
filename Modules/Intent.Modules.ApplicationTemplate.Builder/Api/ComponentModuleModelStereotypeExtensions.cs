@@ -63,9 +63,29 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return _stereotype.GetProperty<bool>("Is Required");
             }
 
-            public bool InstallMetadataOnly()
+            public bool EnableFactoryExtensions()
             {
-                return _stereotype.GetProperty<bool>("Install Metadata Only");
+                return _stereotype.GetProperty<bool>("Enable Factory Extensions");
+            }
+
+            public bool InstallApplicationSettings()
+            {
+                return _stereotype.GetProperty<bool>("Install Application Settings");
+            }
+
+            public bool InstallDesignerMetadata()
+            {
+                return _stereotype.GetProperty<bool>("Install Designer Metadata");
+            }
+
+            public bool InstallDesigners()
+            {
+                return _stereotype.GetProperty<bool>("Install Designers");
+            }
+
+            public bool InstallTemplateOutputs()
+            {
+                return _stereotype.GetProperty<bool>("Install Template Outputs");
             }
 
         }

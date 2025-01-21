@@ -45,7 +45,19 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         public bool IsRequired => this.GetModuleSettings().IsRequired();
 
         [IntentManaged(Mode.Ignore)]
-        public bool InstallMetadataOnly => this.GetModuleSettings().InstallMetadataOnly();
+        public bool EnableFactoryExtensions => this.GetModuleSettings().EnableFactoryExtensions();
+
+        [IntentManaged(Mode.Ignore)]
+        public bool InstallApplicationSettings => this.GetModuleSettings().InstallApplicationSettings();
+
+        [IntentManaged(Mode.Ignore)]
+        public bool InstallDesignerMetadata => this.GetModuleSettings().InstallDesignerMetadata();
+
+        [IntentManaged(Mode.Ignore)]
+        public bool InstallDesigners => this.GetModuleSettings().InstallDesigners();
+
+        [IntentManaged(Mode.Ignore)]
+        public bool InstallTemplateOutputs => this.GetModuleSettings().InstallTemplateOutputs();
 
         public override string ToString()
         {

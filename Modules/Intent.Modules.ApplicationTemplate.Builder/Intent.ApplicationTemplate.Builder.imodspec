@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ApplicationTemplate.Builder</id>
-  <version>3.4.9</version>
+  <version>3.5.0-pre.0</version>
   <supportedClientVersions>[4.3.0-beta.8, 5.0.0-a)</supportedClientVersions>
   <summary>For the creation of Application Templates used to create new Applications in Intent Architect.</summary>
   <description>For the creation of Application Templates used to create new Applications in Intent Architect.</description>
@@ -37,5 +37,6 @@
   <tags>app template builder</tags>
   <migrations>
     <migration version="3.4.8-pre.0" />
+    <migration version="3.5.0-pre.0" />
   </migrations>
 </package>

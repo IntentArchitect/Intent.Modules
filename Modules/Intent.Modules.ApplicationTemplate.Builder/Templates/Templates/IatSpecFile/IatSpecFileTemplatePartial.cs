@@ -7,19 +7,17 @@ using System.Xml;
 using System.Xml.Serialization;
 using Intent.Engine;
 using Intent.Exceptions;
-using Intent.IArchitect.Agent.Persistence.Model;
-using Intent.IArchitect.Agent.Persistence.Model.ApplicationTemplate;
-using Intent.IArchitect.Agent.Persistence.Model.Common;
-using Intent.IArchitect.Agent.Persistence.Model.Module;
 using Intent.IArchitect.Common.NuGet.Versioning;
 using Intent.Metadata.Models;
 using Intent.Modules.ApplicationTemplate.Builder.Api;
+using Intent.Modules.ApplicationTemplate.Builder.Model;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-using IconType = Intent.IArchitect.Common.Types.IconType;
+using static Intent.Modules.ApplicationTemplate.Builder.Api.ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration;
+using static Intent.Modules.ApplicationTemplate.Builder.Api.ComponentGroupModelStereotypeExtensions.ComponentGroupSettings;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -43,7 +41,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new TemplateFileConfig(
-                fileName: $"metadata",
+                fileName: "metadata",
                 fileExtension: "iatspec",
                 relativeLocation: Model.Name
             );
@@ -63,10 +61,10 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
                 Priority = int.TryParse(Model.Priority, out var priority) ? priority : 0,
                 Icon = new IconModelPersistable()
                 {
-                    Type = (IconType)Icon.Type,
+                    Type = Icon.Type,
                     Source = Icon.Source
                 },
-                Defaults = new ApplicationTemplate_Defaults
+                Defaults = new ApplicationTemplateDefaults
                 {
                     Name = Model.Defaults.Name,
                     RelativeOutputLocation = Model.Defaults.RelativeOutputLocation,
@@ -75,11 +73,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
                     SetGitIgnoreEntries = Model.Defaults.SetGitIgnoreEntries,
                     CreateFolderForSolution = Model.Defaults.CreateFolderForSolution,
                 },
-                ComponentGroups = Model.Groups.Select(g => new ApplicationTemplate_ComponentGroup
+                ComponentGroups = Model.Groups.Select(g => new ApplicationTemplateComponentGroup
                 {
                     Name = g.Name,
                     SelectionMode = GetSelectionMode(g),
-                    Components = g.Components.Select(c => new ApplicationTemplate_Component()
+                    Components = g.Components.Select(c => new ApplicationTemplateComponent()
                     {
                         Id = c.Id,
                         Name = c.Name,
@@ -88,18 +86,22 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
                         Description = c.Description,
                         Icon = new IconModelPersistable()
                         {
-                            Type = (IconType)c.Icon.Type,
+                            Type = c.Icon.Type,
                             Source = c.Icon.Source
                         },
-                        Modules = c.Modules.Select(m => new ApplicationTemplate_ComponentModule()
+                        Modules = c.Modules.Select(m => new ApplicationTemplateComponentModule
                         {
                             Id = m.Name,
                             Version = m.Version,
+                            EnableFactoryExtensions = m.EnableFactoryExtensions,
+                            InstallApplicationSettings = m.InstallApplicationSettings,
+                            InstallDesignerMetadata = m.InstallDesignerMetadata,
+                            InstallDesigners = m.InstallDesigners,
+                            InstallTemplateOutputs = m.InstallTemplateOutputs,
                             IsIncludedByDefault = m.IsIncludedByDefault,
                             IsRequired = m.IsRequired,
-                            MetadataOnly = m.InstallMetadataOnly
                         }).ToList(),
-                        Dependencies = c.GetComponentSettings().Dependencies().Select(d => new ApplicationTemplate_ComponentDependency()
+                        Dependencies = c.GetComponentSettings().Dependencies().Select(d => new ApplicationTemplateComponentDependency()
                         {
                             Id = d.Id,
                             Name = d.Name
@@ -151,21 +153,18 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
             return Serialize(result);
         }
 
-        private string GetDefaultValue(ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration settingsFieldConfiguration)
+        private static string GetDefaultValue(ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration settingsFieldConfiguration)
         {
-            switch (settingsFieldConfiguration.ControlType().AsEnum())
+            return settingsFieldConfiguration.ControlType().AsEnum() switch
             {
-                case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.Checkbox:
-                case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.Switch:
-                    return settingsFieldConfiguration.DefaultValue() ?? "false";
-                default:
-                    return settingsFieldConfiguration.DefaultValue();
-            }
+                ControlTypeOptionsEnum.Checkbox or ControlTypeOptionsEnum.Switch => settingsFieldConfiguration.DefaultValue() ?? "false",
+                _ => settingsFieldConfiguration.DefaultValue()
+            };
         }
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
-            return new[] { IntentNugetPackages.IntentPackager };
+            return [IntentNugetPackages.IntentPackager];
         }
 
         private static string Serialize<T>(T @object)
@@ -188,45 +187,30 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
             return stringWriter.ToString();
         }
 
-        private ComponentGroupSelectionMode GetSelectionMode(ComponentGroupModel @group)
+        private static ComponentGroupSelectionMode GetSelectionMode(ComponentGroupModel group)
         {
-            switch (@group.GetComponentGroupSettings()?.SelectionMode().AsEnum())
+            return group.GetComponentGroupSettings()?.SelectionMode().AsEnum() switch
             {
-                case ComponentGroupModelStereotypeExtensions.ComponentGroupSettings.SelectionModeOptionsEnum.AllowMultiple:
-                    return ComponentGroupSelectionMode.AllowSelectMultiple;
-                //return "allow-multiple";
-                case ComponentGroupModelStereotypeExtensions.ComponentGroupSettings.SelectionModeOptionsEnum.AllowSingleOnly:
-                    return ComponentGroupSelectionMode.AllowSingleOnly;
-                //return "allow-single-only";
-                default:
-                    return ComponentGroupSelectionMode.AllowSelectMultiple;
-            }
-
+                SelectionModeOptionsEnum.AllowMultiple => ComponentGroupSelectionMode.AllowSelectMultiple,
+                SelectionModeOptionsEnum.AllowSingleOnly => ComponentGroupSelectionMode.AllowSingleOnly,
+                _ => ComponentGroupSelectionMode.AllowSelectMultiple
+            };
         }
 
-        private ModuleSettingControlType GetControlType(ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum settingsField)
+        private static ModuleSettingControlType GetControlType(ControlTypeOptionsEnum settingsField)
         {
-            switch (settingsField)
+            return settingsField switch
             {
-                case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.Hidden:
-                    return ModuleSettingControlType.Hidden;
-                case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.TextBox:
-                    return ModuleSettingControlType.TextBox;
-                case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.Number:
-                    return ModuleSettingControlType.Number;
-                case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.Checkbox:
-                    return ModuleSettingControlType.Checkbox;
-                case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.Switch:
-                    return ModuleSettingControlType.Switch;
-                case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.TextArea:
-                    return ModuleSettingControlType.TextArea;
-                case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.Select:
-                    return ModuleSettingControlType.Select;
-                case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.MultiSelect:
-                    return ModuleSettingControlType.MultiSelect;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(settingsField), settingsField, null);
-            }
+                ControlTypeOptionsEnum.Hidden => ModuleSettingControlType.Hidden,
+                ControlTypeOptionsEnum.TextBox => ModuleSettingControlType.TextBox,
+                ControlTypeOptionsEnum.Number => ModuleSettingControlType.Number,
+                ControlTypeOptionsEnum.Checkbox => ModuleSettingControlType.Checkbox,
+                ControlTypeOptionsEnum.Switch => ModuleSettingControlType.Switch,
+                ControlTypeOptionsEnum.TextArea => ModuleSettingControlType.TextArea,
+                ControlTypeOptionsEnum.Select => ModuleSettingControlType.Select,
+                ControlTypeOptionsEnum.MultiSelect => ModuleSettingControlType.MultiSelect,
+                _ => throw new ArgumentOutOfRangeException(nameof(settingsField), settingsField, null)
+            };
         }
 
         private class Utf8StringWriter : StringWriter
@@ -234,4 +218,5 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
             public override Encoding Encoding => Encoding.UTF8;
         }
     }
+
 }

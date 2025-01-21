@@ -21,8 +21,13 @@ else if (properties["Include By Default"].value) {
     options.push("include by default");
 }
 
-if (properties["Install Metadata Only"].value) {
-    options.push("metadata only");
+if (!properties["Enable Factory Extensions"].value ||
+    !properties["Install Application Settings"].value ||
+    !properties["Install Designer Metadata"].value ||
+    !properties["Install Designers"].value ||
+    !properties["Install Template Outputs"].value 
+) {
+    options.push("custom installation settings");
 }
 
 return options.length == 0
@@ -68,13 +73,53 @@ return options.length == 0
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="3f426089-6e92-49cf-a938-bda52e02b949">
-      <name>Install Metadata Only</name>
+    <property id="8a49ebad-ccb5-4860-aa4d-1dd6a4470ddc">
+      <name>Enable Factory Extensions</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <defaultValue>false</defaultValue>
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="e20913c9-8fd0-4802-b55c-754bd660c0db">
+      <name>Install Application Settings</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="42c467e4-4863-4bb4-a7b0-63a53cee1cb7">
+      <name>Install Designer Metadata</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="1c1e1606-2ad5-4924-8d0f-8ed33623c5bd">
+      <name>Install Designers</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="b1fdba70-0330-4dbe-9318-8bf756b5f506">
+      <name>Install Template Outputs</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>

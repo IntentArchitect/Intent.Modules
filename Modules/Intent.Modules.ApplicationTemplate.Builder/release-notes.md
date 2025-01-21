@@ -1,3 +1,11 @@
+﻿### Version 3.5.0
+
+- Improvement: Added support for granular module installation settings introduced in Intent Architect 4.4.0.
+
+  > ⚠️ **NOTE**
+  >
+  > Generated application templates will now have a minimum client version of 4.4.0.
+
 ### Version 3.4.9
 
 - Improvement: Added ability to specify default `Create folder for solution` value.
