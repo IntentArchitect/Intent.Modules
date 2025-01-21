@@ -484,6 +484,40 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="ecd4b29c-df18-4609-b706-8d9871d341c6" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Type Changed</name>
+          <display>On Type Changed: Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="3b7a4d3e-77c8-49a7-a218-bf39ac80bb1b">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>9e6d99b2-8b74-4ffc-829c-efb2b914d24a</parentFolderId>
+          <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+          <packageName>Intent.Modelers.Services.CQRS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (isCrudImplementedQuery(element)){ &#xD;&#xA;  let queryAction = element.getAssociations()[0];&#xD;&#xA;  if (returnTypesDiffer(queryAction, element)){&#xD;&#xA;        queryAction.typeReference.setIsCollection(element.typeReference.isCollection);&#xD;&#xA;        queryAction.typeReference.setIsNullable(element.typeReference.isNullable);&#xD;&#xA;      }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function isCrudImplementedQuery(element){&#xD;&#xA;  return element.getAssociations().length == 1 &amp;&amp;&#xD;&#xA;    //Query Entity Action Target End&#xD;&#xA;    element.getAssociations()[0].specializationId == &quot;93ef6675-cba4-4998-adff-cb22d5343ed4&quot;; &#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function returnTypesDiffer(queryAction, element){&#xD;&#xA;  return queryAction.typeReference.isCollection != element.typeReference.isCollection ||&#xD;&#xA;      queryAction.typeReference.isNullable != element.typeReference.isNullable; &#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
       </childElements>
     </childElement>
   </childElements>

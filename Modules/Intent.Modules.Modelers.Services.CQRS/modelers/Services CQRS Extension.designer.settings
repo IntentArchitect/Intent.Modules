@@ -450,6 +450,27 @@ element.getChildren("DTO-Field").forEach(x =&gt; {
     }
 })</script>
         </macro>
+        <macro trigger="on-type-changed">
+          <script>if (isCrudImplementedQuery(element)){ 
+  let queryAction = element.getAssociations()[0];
+  if (returnTypesDiffer(queryAction, element)){
+        queryAction.typeReference.setIsCollection(element.typeReference.isCollection);
+        queryAction.typeReference.setIsNullable(element.typeReference.isNullable);
+      }
+}
+
+function isCrudImplementedQuery(element){
+  return element.getAssociations().length == 1 &amp;&amp;
+    //Query Entity Action Target End
+    element.getAssociations()[0].specializationId == "93ef6675-cba4-4998-adff-cb22d5343ed4"; 
+}
+
+function returnTypesDiffer(queryAction, element){
+  return queryAction.typeReference.isCollection != element.typeReference.isCollection ||
+      queryAction.typeReference.isNullable != element.typeReference.isNullable; 
+}
+</script>
+        </macro>
       </macros>
     </elementSetting>
   </elementSettings>

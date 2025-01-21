@@ -1,5 +1,9 @@
 ### Version 5.1.0
 
+- Improvement: `Query Action`s synchronize type info, when modifying `Query` return type.
+
+### Version 5.1.0
+
 - Improvement: Unnecessary code no longer generated
 
 ### Version 5.0.1
