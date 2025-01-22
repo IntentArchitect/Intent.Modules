@@ -1,4 +1,4 @@
-### Version 2.1.0
+### Version 2.1.1
 
 - Fixed: Accelorator for creating CRUD services will now correctly map operations named `Delete` or `Create`.
 
