@@ -1,5 +1,9 @@
 ### Version 2.1.0
 
+- Fixed: Accelorator for creating CRUD services will now correctly map operations named `Delete` or `Create`.
+
+### Version 2.1.0
+
 - Improvement: Help topics added.
 - Improvement: New CRUD Creation screen added.
 - Fixed: Creating CRUD operations for Nested Entities can now be targeted in a specific folder and no longer contains the parent element name in the operation/element names.

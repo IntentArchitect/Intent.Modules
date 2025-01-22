@@ -297,6 +297,7 @@ To avoid this limitation in the future, either disable private setters or add a 
             childSpecialization: "Parameter",
             childType: "parameter"
         });
+        operationManager.getElement().setMetadata("isOperationInvoke", "true");
 
         dtoManager.mapToElement(operation, ServicesConstants.dtoToDomainOperation);
         dtoManager.getElement().setMapping([entity.id, operation.id], ServicesConstants.dtoToDomainOperation);

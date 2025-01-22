@@ -244,6 +244,7 @@ To avoid this limitation in the future, either disable private setters or add a 
 
         const commandElement = createElement("Command", commandName, folder.id);
         commandElement.setMetadata("baseName", baseName);
+        commandElement.setMetadata("isOperationCommand", "true");
 
         const commandManager = new ElementManager(commandElement, { childSpecialization: "DTO-Field" });
         commandManager.mapToElement([entity.id, operation.id], mapToDomainOperationSettingId);

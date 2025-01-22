@@ -1656,21 +1656,23 @@ var convertToAdvancedMapping;
         let dto = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType();
         let target = (_b = (_a = dto === null || dto === void 0 ? void 0 : dto.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) !== null &amp;&amp; _b !== void 0 ? _b : entity;
         let targetEntity = (_c = target.getParent("Class")) !== null &amp;&amp; _c !== void 0 ? _c : target;
+        let isOperationCommand = operation.hasMetadata("isOperationCommand") &amp;&amp; operation.getMetadata("isOperationCommand") == "true";
+
         // CREATE OPERATION:
-        if (operation.getName().startsWith("Create") /*&amp;&amp; dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
+        if (operation.getName().startsWith("Create") &amp;&amp; !isOperationCommand /*&amp;&amp; dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
             let action = createAssociation("Create Entity Action", operation.id, target.id);
             let mapping = action.createAdvancedMapping(operation.id, targetEntity.id);
             mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
             mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
             // DELETE OPERATION:
         }
-        else if (operation.getName().startsWith("Delete") &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
+        else if (operation.getName().startsWith("Delete") &amp;&amp; !isOperationCommand &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Delete Entity Action", operation.id, entity.id);
             let mapping = action.createAdvancedMapping(operation.id, entity.id);
             addFilterMapping(mapping, operation, entity);
             // UPDATE OPERATION:
         }
-        else if (operation.getName().startsWith("Update") &amp;&amp; ((_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _d === void 0 ? void 0 : _d.getElement().id) == entity.id) {
+        else if (operation.getName().startsWith("Update") &amp;&amp; !isOperationCommand &amp;&amp; ((_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _d === void 0 ? void 0 : _d.getElement().id) == entity.id) {
             let action = createAssociation("Update Entity Action", operation.id, target.id);
             // Query Entity Mapping
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
@@ -1680,13 +1682,13 @@ var convertToAdvancedMapping;
             mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
             // FIND BY ID OPERATION:
         }
-        else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
+        else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; !isOperationCommand &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
             addFilterMapping(queryMapping, operation, entity);
             // FIND ALL OPERATION:
         }
-        else if (operation.getName().startsWith("Find" + pluralize(entity.getName()))) {
+        else if (operation.getName().startsWith("Find" + pluralize(entity.getName())) &amp;&amp; !isOperationCommand) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
             action.typeReference.setIsCollection(true);
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
@@ -2759,6 +2761,7 @@ To avoid this limitation in the future, either disable private setters or add a 
             childSpecialization: "Parameter",
             childType: "parameter"
         });
+        operationManager.getElement().setMetadata("isOperationCommand", "true");
         dtoManager.mapToElement(operation, ServicesConstants.dtoToDomainOperation);
         dtoManager.getElement().setMapping([entity.id, operation.id], ServicesConstants.dtoToDomainOperation);
         if (owningAggregate) {
@@ -5991,6 +5994,7 @@ To avoid this limitation in the future, either disable private setters or add a 
         }
         const commandElement = createElement("Command", commandName, folder.id);
         commandElement.setMetadata("baseName", baseName);
+        commandElement.setMetadata("isOperationCommand", "true");
         const commandManager = new ElementManager(commandElement, { childSpecialization: "DTO-Field" });
         commandManager.mapToElement([entity.id, operation.id], mapToDomainOperationSettingId);
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
@@ -6126,8 +6130,10 @@ var convertToAdvancedMapping;
             return;
         }
         let target = command.getMapping().getElement();
+        // operation commands should always be treated as "update/put" action below
+        let isOperationCommand = command.hasMetadata("isOperationCommand") &amp;&amp; command.getMetadata("isOperationCommand") == "true";
         let entity = (_a = target.getParent("Class")) !== null &amp;&amp; _a !== void 0 ? _a : target;
-        if (command.getName().startsWith("Create")) {
+        if (command.getName().startsWith("Create") &amp;&amp; !isOperationCommand) {
             let action = createAssociation("Create Entity Action", command.id, target.id);
             // JPS &amp; GB: Updated the createMapping call to use createAdvancedMapping. If you are debugging
             // and this is not working, chat to JPS or GB
@@ -6135,7 +6141,7 @@ var convertToAdvancedMapping;
             mapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
             mapContract("Data Mapping", command, command, [command.id], [target.id], mapping);
         }
-        else if (command.getName().startsWith("Delete")) {
+        else if (command.getName().startsWith("Delete") &amp;&amp; !isOperationCommand) {
             let action = createAssociation("Delete Entity Action", command.id, entity.id);
             let mapping = action.createAdvancedMapping(command.id, entity.id);
             // Query Entity Mapping
@@ -6332,8 +6338,7 @@ function hasConstructor(entity) {
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro-advanced-mapping/create-crud-macro-advanced-mapping.ts
  */
-await execute(element);
-</script>
+await execute(element);</script>
         </runScript>
       </contextMenuOptions>
       <creationOptions />
@@ -7986,21 +7991,23 @@ var convertToAdvancedMapping;
         let dto = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType();
         let target = (_b = (_a = dto === null || dto === void 0 ? void 0 : dto.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) !== null &amp;&amp; _b !== void 0 ? _b : entity;
         let targetEntity = (_c = target.getParent("Class")) !== null &amp;&amp; _c !== void 0 ? _c : target;
+        let isOperationCommand = operation.hasMetadata("isOperationCommand") &amp;&amp; operation.getMetadata("isOperationCommand") == "true";
+
         // CREATE OPERATION:
-        if (operation.getName().startsWith("Create") /*&amp;&amp; dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
+        if (operation.getName().startsWith("Create") &amp;&amp; !isOperationCommand /*&amp;&amp; dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
             let action = createAssociation("Create Entity Action", operation.id, target.id);
             let mapping = action.createAdvancedMapping(operation.id, targetEntity.id);
             mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
             mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
             // DELETE OPERATION:
         }
-        else if (operation.getName().startsWith("Delete") &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
+        else if (operation.getName().startsWith("Delete") &amp;&amp; !isOperationCommand &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Delete Entity Action", operation.id, entity.id);
             let mapping = action.createAdvancedMapping(operation.id, entity.id);
             addFilterMapping(mapping, operation, entity);
             // UPDATE OPERATION:
         }
-        else if (operation.getName().startsWith("Update") &amp;&amp; ((_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _d === void 0 ? void 0 : _d.getElement().id) == entity.id) {
+        else if (operation.getName().startsWith("Update") &amp;&amp; !isOperationCommand &amp;&amp; ((_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _d === void 0 ? void 0 : _d.getElement().id) == entity.id) {
             let action = createAssociation("Update Entity Action", operation.id, target.id);
             // Query Entity Mapping
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
@@ -8010,13 +8017,13 @@ var convertToAdvancedMapping;
             mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
             // FIND BY ID OPERATION:
         }
-        else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
+        else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; !isOperationCommand &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
             addFilterMapping(queryMapping, operation, entity);
             // FIND ALL OPERATION:
         }
-        else if (operation.getName().startsWith("Find" + pluralize(entity.getName()))) {
+        else if (operation.getName().startsWith("Find" + pluralize(entity.getName())) &amp;&amp; !isOperationCommand) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
             action.typeReference.setIsCollection(true);
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
@@ -9089,6 +9096,7 @@ To avoid this limitation in the future, either disable private setters or add a 
             childSpecialization: "Parameter",
             childType: "parameter"
         });
+        operationManager.getElement().setMetadata("isOperationCommand", "true");
         dtoManager.mapToElement(operation, ServicesConstants.dtoToDomainOperation);
         dtoManager.getElement().setMapping([entity.id, operation.id], ServicesConstants.dtoToDomainOperation);
         if (owningAggregate) {
@@ -12321,6 +12329,7 @@ To avoid this limitation in the future, either disable private setters or add a 
         }
         const commandElement = createElement("Command", commandName, folder.id);
         commandElement.setMetadata("baseName", baseName);
+        commandElement.setMetadata("isOperationCommand", "true");
         const commandManager = new ElementManager(commandElement, { childSpecialization: "DTO-Field" });
         commandManager.mapToElement([entity.id, operation.id], mapToDomainOperationSettingId);
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
@@ -12456,8 +12465,10 @@ var convertToAdvancedMapping;
             return;
         }
         let target = command.getMapping().getElement();
+        // operation commands should always be treated as "update/put" action below
+        let isOperationCommand = command.hasMetadata("isOperationCommand") &amp;&amp; command.getMetadata("isOperationCommand") == "true";
         let entity = (_a = target.getParent("Class")) !== null &amp;&amp; _a !== void 0 ? _a : target;
-        if (command.getName().startsWith("Create")) {
+        if (command.getName().startsWith("Create") &amp;&amp; !isOperationCommand) {
             let action = createAssociation("Create Entity Action", command.id, target.id);
             // JPS &amp; GB: Updated the createMapping call to use createAdvancedMapping. If you are debugging
             // and this is not working, chat to JPS or GB
@@ -12465,7 +12476,7 @@ var convertToAdvancedMapping;
             mapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
             mapContract("Data Mapping", command, command, [command.id], [target.id], mapping);
         }
-        else if (command.getName().startsWith("Delete")) {
+        else if (command.getName().startsWith("Delete") &amp;&amp; !isOperationCommand) {
             let action = createAssociation("Delete Entity Action", command.id, entity.id);
             let mapping = action.createAdvancedMapping(command.id, entity.id);
             // Query Entity Mapping
@@ -12662,8 +12673,7 @@ function hasConstructor(entity) {
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro-advanced-mapping/create-crud-macro-advanced-mapping.ts
  */
-await execute(element);
-</script>
+await execute(element);</script>
         </option>
       </scriptOptions>
       <typeOrder />
@@ -15623,21 +15633,22 @@ var convertToAdvancedMapping;
         let dto = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType();
         let target = (_b = (_a = dto === null || dto === void 0 ? void 0 : dto.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) !== null &amp;&amp; _b !== void 0 ? _b : entity;
         let targetEntity = (_c = target.getParent("Class")) !== null &amp;&amp; _c !== void 0 ? _c : target;
+        let isOperationInvoke = operation.hasMetadata("isOperationInvoke") &amp;&amp; operation.getMetadata("isOperationInvoke") == "true";
         // CREATE OPERATION:
-        if (operation.getName().startsWith("Create") /*&amp;&amp; dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
+        if (operation.getName().startsWith("Create") &amp;&amp; !isOperationInvoke /*&amp;&amp; dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
             let action = createAssociation("Create Entity Action", operation.id, target.id);
             let mapping = action.createAdvancedMapping(operation.id, targetEntity.id);
             mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
             mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
             // DELETE OPERATION:
         }
-        else if (operation.getName().startsWith("Delete") &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
+        else if (operation.getName().startsWith("Delete") &amp;&amp; !isOperationInvoke &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Delete Entity Action", operation.id, entity.id);
             let mapping = action.createAdvancedMapping(operation.id, entity.id);
             addFilterMapping(mapping, operation, entity);
             // UPDATE OPERATION:
         }
-        else if (operation.getName().startsWith("Update") &amp;&amp; ((_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _d === void 0 ? void 0 : _d.getElement().id) == entity.id) {
+        else if (operation.getName().startsWith("Update") &amp;&amp; !isOperationInvoke &amp;&amp; ((_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _d === void 0 ? void 0 : _d.getElement().id) == entity.id) {
             let action = createAssociation("Update Entity Action", operation.id, target.id);
             // Query Entity Mapping
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
@@ -15647,13 +15658,13 @@ var convertToAdvancedMapping;
             mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
             // FIND BY ID OPERATION:
         }
-        else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
+        else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; !isOperationInvoke &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
             addFilterMapping(queryMapping, operation, entity);
             // FIND ALL OPERATION:
         }
-        else if (operation.getName().startsWith("Find" + pluralize(entity.getName()))) {
+        else if (operation.getName().startsWith("Find" + pluralize(entity.getName())) &amp;&amp; !isOperationInvoke) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
             action.typeReference.setIsCollection(true);
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
@@ -16726,6 +16737,7 @@ To avoid this limitation in the future, either disable private setters or add a 
             childSpecialization: "Parameter",
             childType: "parameter"
         });
+        operationManager.getElement().setMetadata("isOperationInvoke", "true");
         dtoManager.mapToElement(operation, ServicesConstants.dtoToDomainOperation);
         dtoManager.getElement().setMapping([entity.id, operation.id], ServicesConstants.dtoToDomainOperation);
         if (owningAggregate) {
@@ -19958,6 +19970,7 @@ To avoid this limitation in the future, either disable private setters or add a 
         }
         const commandElement = createElement("Command", commandName, folder.id);
         commandElement.setMetadata("baseName", baseName);
+        commandElement.setMetadata("isOperationCommand", "true");
         const commandManager = new ElementManager(commandElement, { childSpecialization: "DTO-Field" });
         commandManager.mapToElement([entity.id, operation.id], mapToDomainOperationSettingId);
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
@@ -20093,8 +20106,10 @@ var convertToAdvancedMapping;
             return;
         }
         let target = command.getMapping().getElement();
+        // operation commands should always be treated as "update/put" action below
+        let isOperationCommand = command.hasMetadata("isOperationCommand") &amp;&amp; command.getMetadata("isOperationCommand") == "true";
         let entity = (_a = target.getParent("Class")) !== null &amp;&amp; _a !== void 0 ? _a : target;
-        if (command.getName().startsWith("Create")) {
+        if (command.getName().startsWith("Create") &amp;&amp; !isOperationCommand) {
             let action = createAssociation("Create Entity Action", command.id, target.id);
             // JPS &amp; GB: Updated the createMapping call to use createAdvancedMapping. If you are debugging
             // and this is not working, chat to JPS or GB
@@ -20102,7 +20117,7 @@ var convertToAdvancedMapping;
             mapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
             mapContract("Data Mapping", command, command, [command.id], [target.id], mapping);
         }
-        else if (command.getName().startsWith("Delete")) {
+        else if (command.getName().startsWith("Delete") &amp;&amp; !isOperationCommand) {
             let action = createAssociation("Delete Entity Action", command.id, entity.id);
             let mapping = action.createAdvancedMapping(command.id, entity.id);
             // Query Entity Mapping
@@ -20299,8 +20314,7 @@ function hasConstructor(entity) {
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro-advanced-mapping/create-crud-macro-advanced-mapping.ts
  */
-await execute(element);
-</script>
+await execute(element);</script>
         </runScript>
       </contextMenuOptions>
       <creationOptions />
@@ -21953,21 +21967,22 @@ var convertToAdvancedMapping;
         let dto = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType();
         let target = (_b = (_a = dto === null || dto === void 0 ? void 0 : dto.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) !== null &amp;&amp; _b !== void 0 ? _b : entity;
         let targetEntity = (_c = target.getParent("Class")) !== null &amp;&amp; _c !== void 0 ? _c : target;
+        let isOperationInvoke = operation.hasMetadata("isOperationInvoke") &amp;&amp; operation.getMetadata("isOperationInvoke") == "true";
         // CREATE OPERATION:
-        if (operation.getName().startsWith("Create") /*&amp;&amp; dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
+        if (operation.getName().startsWith("Create") &amp;&amp; !isOperationInvoke /*&amp;&amp; dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
             let action = createAssociation("Create Entity Action", operation.id, target.id);
             let mapping = action.createAdvancedMapping(operation.id, targetEntity.id);
             mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
             mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
             // DELETE OPERATION:
         }
-        else if (operation.getName().startsWith("Delete") &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
+        else if (operation.getName().startsWith("Delete") &amp;&amp; !isOperationInvoke &amp;&amp; operation.getChildren("Parameter").find(x =&gt; x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Delete Entity Action", operation.id, entity.id);
             let mapping = action.createAdvancedMapping(operation.id, entity.id);
             addFilterMapping(mapping, operation, entity);
             // UPDATE OPERATION:
         }
-        else if (operation.getName().startsWith("Update") &amp;&amp; ((_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _d === void 0 ? void 0 : _d.getElement().id) == entity.id) {
+        else if (operation.getName().startsWith("Update") &amp;&amp; !isOperationInvoke &amp;&amp; ((_d = dtoParam === null || dtoParam === void 0 ? void 0 : dtoParam.typeReference.getType().getMapping()) === null || _d === void 0 ? void 0 : _d.getElement().id) == entity.id) {
             let action = createAssociation("Update Entity Action", operation.id, target.id);
             // Query Entity Mapping
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
@@ -21977,13 +21992,13 @@ var convertToAdvancedMapping;
             mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
             // FIND BY ID OPERATION:
         }
-        else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
+        else if (operation.getName().startsWith("Find" + entity.getName()) &amp;&amp; !isOperationInvoke &amp;&amp; operation.getChildren("Parameter").some(x =&gt; x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
             addFilterMapping(queryMapping, operation, entity);
             // FIND ALL OPERATION:
         }
-        else if (operation.getName().startsWith("Find" + pluralize(entity.getName()))) {
+        else if (operation.getName().startsWith("Find" + pluralize(entity.getName())) &amp;&amp; !isOperationInvoke) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
             action.typeReference.setIsCollection(true);
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
@@ -23056,6 +23071,7 @@ To avoid this limitation in the future, either disable private setters or add a 
             childSpecialization: "Parameter",
             childType: "parameter"
         });
+        operationManager.getElement().setMetadata("isOperationInvoke", "true");
         dtoManager.mapToElement(operation, ServicesConstants.dtoToDomainOperation);
         dtoManager.getElement().setMapping([entity.id, operation.id], ServicesConstants.dtoToDomainOperation);
         if (owningAggregate) {
@@ -26288,6 +26304,7 @@ To avoid this limitation in the future, either disable private setters or add a 
         }
         const commandElement = createElement("Command", commandName, folder.id);
         commandElement.setMetadata("baseName", baseName);
+        commandElement.setMetadata("isOperationCommand", "true");
         const commandManager = new ElementManager(commandElement, { childSpecialization: "DTO-Field" });
         commandManager.mapToElement([entity.id, operation.id], mapToDomainOperationSettingId);
         const primaryKeys = DomainHelper.getPrimaryKeys(entity);
@@ -26423,8 +26440,10 @@ var convertToAdvancedMapping;
             return;
         }
         let target = command.getMapping().getElement();
+        // operation commands should always be treated as "update/put" action below
+        let isOperationCommand = command.hasMetadata("isOperationCommand") &amp;&amp; command.getMetadata("isOperationCommand") == "true";
         let entity = (_a = target.getParent("Class")) !== null &amp;&amp; _a !== void 0 ? _a : target;
-        if (command.getName().startsWith("Create")) {
+        if (command.getName().startsWith("Create") &amp;&amp; !isOperationCommand) {
             let action = createAssociation("Create Entity Action", command.id, target.id);
             // JPS &amp; GB: Updated the createMapping call to use createAdvancedMapping. If you are debugging
             // and this is not working, chat to JPS or GB
@@ -26432,7 +26451,7 @@ var convertToAdvancedMapping;
             mapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
             mapContract("Data Mapping", command, command, [command.id], [target.id], mapping);
         }
-        else if (command.getName().startsWith("Delete")) {
+        else if (command.getName().startsWith("Delete") &amp;&amp; !isOperationCommand) {
             let action = createAssociation("Delete Entity Action", command.id, entity.id);
             let mapping = action.createAdvancedMapping(command.id, entity.id);
             // Query Entity Mapping
@@ -26629,8 +26648,7 @@ function hasConstructor(entity) {
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro-advanced-mapping/create-crud-macro-advanced-mapping.ts
  */
-await execute(element);
-</script>
+await execute(element);</script>
         </option>
       </scriptOptions>
       <mappingOptions />

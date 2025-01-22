@@ -19,15 +19,17 @@ namespace convertToAdvancedMapping {
             return;
         }
         let target = command.getMapping().getElement();
+        // operation commands should always be treated as "update/put" action below
+        let isOperationCommand = command.hasMetadata("isOperationCommand") && command.getMetadata("isOperationCommand") == "true";
         let entity = target.getParent("Class") ?? target;
-        if (command.getName().startsWith("Create")) {
+        if (command.getName().startsWith("Create") && !isOperationCommand) {
             let action = createAssociation("Create Entity Action", command.id, target.id);
             // JPS & GB: Updated the createMapping call to use createAdvancedMapping. If you are debugging
             // and this is not working, chat to JPS or GB
             let mapping = action.createAdvancedMapping(command.id, entity.id);
             mapping.addMappedEnd("Invocation Mapping", [command.id], [target.id]);
             mapContract("Data Mapping", command, command, [command.id], [target.id], mapping);
-        } else if (command.getName().startsWith("Delete")) {
+        } else if (command.getName().startsWith("Delete") && !isOperationCommand) {
             let action = createAssociation("Delete Entity Action", command.id, entity.id);
             let mapping = action.createAdvancedMapping(command.id, entity.id);
 

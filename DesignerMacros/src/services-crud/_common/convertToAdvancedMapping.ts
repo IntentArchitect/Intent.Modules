@@ -28,21 +28,22 @@ namespace convertToAdvancedMapping {
         let dto = dtoParam?.typeReference.getType();
         let target = dto?.getMapping()?.getElement() ?? entity;
         let targetEntity = target.getParent("Class") ?? target;
+        let isOperationInvoke = operation.hasMetadata("isOperationInvoke") && operation.getMetadata("isOperationInvoke") == "true";
 
         // CREATE OPERATION:
-        if (operation.getName().startsWith("Create") /*&& dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
+        if (operation.getName().startsWith("Create") && !isOperationInvoke /*&& dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id*/) {
             let action = createAssociation("Create Entity Action", operation.id, target.id);
             let mapping = action.createAdvancedMapping(operation.id, targetEntity.id);
             mapping.addMappedEnd("Invocation Mapping", [operation.id], [target.id]);
             mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], mapping, true);
             // DELETE OPERATION:
-        } else if (operation.getName().startsWith("Delete") && operation.getChildren("Parameter").find(x => x.getName().toLowerCase() == "id")) {
+        } else if (operation.getName().startsWith("Delete") && !isOperationInvoke && operation.getChildren("Parameter").find(x => x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Delete Entity Action", operation.id, entity.id);
             let mapping = action.createAdvancedMapping(operation.id, entity.id);
 
             addFilterMapping(mapping, operation, entity);
             // UPDATE OPERATION:
-        } else if (operation.getName().startsWith("Update") && dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id) {
+        } else if (operation.getName().startsWith("Update") && !isOperationInvoke && dtoParam?.typeReference.getType().getMapping()?.getElement().id == entity.id) {
             let action = createAssociation("Update Entity Action", operation.id, target.id);
 
             // Query Entity Mapping
@@ -52,12 +53,12 @@ namespace convertToAdvancedMapping {
             let updateMapping = action.createAdvancedMapping(operation.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
             mapContract("Data Mapping", operation, dto, [operation.id, dtoParam.id], [target.id], updateMapping, true);
             // FIND BY ID OPERATION:
-        } else if (operation.getName().startsWith("Find" + entity.getName()) && operation.getChildren("Parameter").some(x => x.getName().toLowerCase() == "id")) {
+        } else if (operation.getName().startsWith("Find" + entity.getName()) && !isOperationInvoke && operation.getChildren("Parameter").some(x => x.getName().toLowerCase() == "id")) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
             addFilterMapping(queryMapping, operation, entity);
             // FIND ALL OPERATION:
-        } else if (operation.getName().startsWith("Find" + pluralize(entity.getName()))) {
+        } else if (operation.getName().startsWith("Find" + pluralize(entity.getName())) && !isOperationInvoke) {
             let action = createAssociation("Query Entity Action", operation.id, target.id);
             action.typeReference.setIsCollection(true);
             let queryMapping = action.createAdvancedMapping(operation.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
