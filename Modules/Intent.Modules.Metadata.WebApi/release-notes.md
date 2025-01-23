@@ -1,6 +1,7 @@
 ### Version 4.7.2
 
 - Improvement: Added new documentation topics around securing services.
+- Fixed: Route path is now correctly calculated when the "Default API Route Prefix" is set to blank.
 
 ### Version 4.7.1
 

@@ -197,12 +197,18 @@ return validateRestRoutesOperation(lookup(id));
           <shortcut>ctrl + shift + e</shortcut>
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDc4ODQ3N2YxLTMzMDYtNGJiMS1iNzdjLTg4ZGQ3YWM2YjBmZSIgeDE9IjI1IiB5MT0iMy4yIiB4Mj0iMjUiIHkyPSI0Ni40IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwYzBmMiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDU5OWMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC43LjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAxLjIuMCBCdWlsZCAxNTQpICAtLT4KICA8Zz4KICAgIDxnIGlkPSJrZXkteWVsbG93Ij4KICAgICAgPHBhdGggZD0iTTMuOSwyMC45aDBzMCwwLDAsMGMwLDAsMC0uMiwwLS4zLDAsMCwwLC4yLDAsLjJaIiBmaWxsPSIjZmYwMDEzIi8+CiAgICAgIDxwYXRoIGQ9Ik00NiwyMC43Yy0uMi0uOC0uNC0xLjYtLjYtMi4zLS40LTEuMi0uOS0yLjQtMS41LTMuNS0uNC0uOC0xLTEuNy0xLjUtMi40LS41LS43LTEuMS0xLjQtMS43LTIuMS0xLjMtMS40LTIuNy0yLjYtNC4zLTMuNi0xLjktMS4yLTQuMS0yLjEtNi4zLTIuNy0uNS0uMS0uOS0uMi0xLjQtLjMtLjgtLjItMS42LS4yLTIuNS0uMy0uNCwwLS45LDAtMS4zLDBzLS45LDAtMS4zLDBjLS44LDAtMS42LjEtMi40LjMtLjUsMC0uOS4yLTEuMy4zLTIuMy41LTQuNCwxLjUtNi40LDIuNy0xLjYsMS0zLDIuMi00LjMsMy42LS42LjctMS4yLDEuMy0xLjcsMi4xLTEuMSwxLjYtMiwzLjMtMi43LDUuMS0uNCwxLS43LDIuMS0uOSwzLjEsMCwwLDAsLjIsMCwuMywwLDAsMCwwLDAsMC0uMywxLjMtLjQsMi43LS40LDRzLjIsMy43LjcsNS40YzEuNCw1LjMsNC44LDkuOSw5LjMsMTIuNywyLDEuMiw0LjIsMi4yLDYuNSwyLjcuNCwwLC44LjIsMS4yLjIuOC4yLDEuNS4yLDIuMy4zLjUsMCwuOSwwLDEuNCwwcy45LDAsMS40LDBjLjgsMCwxLjYtLjEsMi40LS4zLjQsMCwuOC0uMiwxLjItLjIsMi4zLS41LDQuNS0xLjUsNi41LTIuNyw0LjUtMi45LDcuOS03LjQsOS4zLTEyLjcuNS0xLjcuNy0zLjUuNy01LjRzLS4yLTIuOS0uNC00LjNaTTQwLjIsMTRjLjksMS4yLDEuNiwyLjUsMi4yLDMuOS0xLjUsMi4xLTMuNiw0LTYuMiw1LjQtLjEtMi40LS41LTQuNy0xLjEtNi45LDEuOC0uNiwzLjYtMS40LDUuMS0yLjRaTTM4LjUsMTIuMWMtMS4zLjgtMi43LDEuNS00LjMsMi4xLTEtMi43LTIuNS01LjItNC4yLTcuMiwzLjMuOSw2LjIsMi43LDguNSw1LjFaTTMzLjksMjQuNGMtMywxLjMtNi41LDItMTAuMiwycy01LjItLjQtNy42LTEuMXYtLjNjMC0yLjguNC01LjQsMS4yLTcuOSwyLjQuNiw1LDEsNy43LDFzNS4zLS4zLDcuNy0xYy43LDIuMywxLjEsNC43LDEuMSw3LjNaTTI0LjgsNi4zaC40YzIuOCwxLjksNS4yLDQuOSw2LjcsOC42LTIuMi42LTQuNS45LTYuOS45cy00LjctLjMtNi45LS45YzEuNS0zLjcsMy45LTYuNyw2LjctOC42Wk0yMCw3Yy0xLjcsMi0zLjIsNC41LTQuMiw3LjItMS41LS42LTMtMS4zLTQuMy0yLjEsMi4zLTIuNCw1LjItNC4yLDguNS01LjFaTTkuOCwxNGMxLjYsMSwzLjMsMS44LDUuMSwyLjQtLjcsMi41LTEuMSw1LjItMS4yLDguMS0yLjctMS4xLTUtMi42LTYuOS00LjQuNi0yLjIsMS42LTQuMywyLjktNi4xWk02LjcsMjljLS4zLTEuMy0uNC0yLjYtLjQtNHMwLTEuMiwwLTEuOGMyLjEsMS43LDQuNywzLDcuNSw0LC4yLDIuOS44LDUuNywxLjcsOC4yLTMuNy0xLjQtNi44LTMuNi04LjgtNi4zWk05LjEsMzQuOWMyLjIsMS41LDQuOSwyLjcsNy43LDMuNS45LDEuNywxLjksMy4zLDMuMSw0LjctNC41LTEuMy04LjQtNC4yLTEwLjgtOC4yWk0yNS4zLDQzLjdoLS42Yy0xLjctMS4yLTMuMy0yLjgtNC41LTQuNywxLjYuMiwzLjIuNCw0LjguNHMzLjItLjEsNC44LS40Yy0xLjMsMS45LTIuOCwzLjUtNC41LDQuN1pNMjUsMzcuMWMtMi4yLDAtNC40LS4zLTYuNC0uOGgwYy0xLjItMi41LTItNS40LTIuMy04LjQsMi4zLjYsNC44LjksNy40LjlzNy0uNiwxMC4xLTEuN2MtLjIsMy40LTEuMSw2LjUtMi40LDkuMi0yLC41LTQuMi44LTYuNC44Wk0zMC4xLDQzYzEuMi0xLjQsMi4yLTIuOSwzLjEtNC43LDIuOC0uOCw1LjUtMiw3LjctMy41LTIuNCwzLjktNi4yLDYuOC0xMC44LDguMVpNNDMuMywyOWMtMi4xLDIuNy01LjEsNC45LTguOCw2LjMsMS0yLjgsMS42LTYsMS44LTkuMywyLjgtMS4zLDUuMi0zLDcuMS01LC4zLDEuMi40LDIuNS40LDMuOXMtLjIsMi43LS40LDRaIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudDc4ODQ3N2YxLTMzMDYtNGJiMS1iNzdjLTg4ZGQ3YWM2YjBmZSkiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==" />
           <script>function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "api";
+    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
     let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
-    if (!route) {
+    // if the group is not present, use the default value
+    if (!settingsGroup) {
         route = defaultApiRoutePrefix;
+    }
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -313,6 +319,12 @@ function applyFileTransferStereoType(element) {
     const fileTransferId = "d30e48e8-389e-4b70-84fd-e3bac44cfe19";
     (_a = element.getStereotype(fileTransferId)) !== null &amp;&amp; _a !== void 0 ? _a : element.addStereotype(fileTransferId);
 }
+function makePost(element) {
+    var _a;
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    const httpSettings = (_a = element.getStereotype(httpSettingsId)) !== null &amp;&amp; _a !== void 0 ? _a : element.addStereotype(httpSettingsId);
+    httpSettings.getProperty("Verb").setValue("POST");
+}
 function addUploadFields(element, childType) {
     const commonTypes = {
         string: "d384db9c-a279-45e1-801e-e4e8099625f2",
@@ -330,7 +342,6 @@ function addUploadFields(element, childType) {
         let filename = createElement(childType, "Filename", element.id);
         filename.typeReference.setType(commonTypes.string);
         filename.typeReference.setIsNullable(true);
-        let parameterSetting = filename.addStereotype(parameterSettingId);
     }
     var existing = element.getChildren().find(x =&gt; x.getName() == "ContentType");
     if (!existing) {
@@ -352,18 +363,19 @@ function addUploadFields(element, childType) {
     }
 }
 function getDefaultRoutePrefix(includeLastPathSeparator) {
-    var _a;
     const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
+    let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
+    // if the group is not present, use the default value
     if (!settingsGroup) {
-        return defaultApiRoutePrefix;
+        route = defaultApiRoutePrefix;
     }
-    let field = settingsGroup.getField("Default API Route Prefix");
-    if (!field) {
-        return defaultApiRoutePrefix;
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
-    let route = (_a = field.value) !== null &amp;&amp; _a !== void 0 ? _a : "";
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
     }
@@ -387,8 +399,10 @@ function getRoute(serviceBaseName) {
     return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
 }
 function applyHttpSettingsToOperations(operation) {
+    var _a;
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
     const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
     if (!operation.hasStereotype(httpSettingsId)) {
         operation.addStereotype(httpSettingsId);
     }
@@ -422,6 +436,9 @@ function applyHttpSettingsToOperations(operation) {
             parameter.addStereotype(parameterSettingsId);
         }
     });
+    if (((_a = operation.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
 }
 /// &lt;reference path="../common/common-file-transfer.ts" /&gt;
 /// &lt;reference path="../../services-expose-as-http-endpoint/operation/shared.ts" /&gt;
@@ -518,18 +535,19 @@ function addUploadFields(element, childType) {
     }
 }
 function getDefaultRoutePrefix(includeLastPathSeparator) {
-    var _a;
     const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
+    let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
+    // if the group is not present, use the default value
     if (!settingsGroup) {
-        return defaultApiRoutePrefix;
+        route = defaultApiRoutePrefix;
     }
-    let field = settingsGroup.getField("Default API Route Prefix");
-    if (!field) {
-        return defaultApiRoutePrefix;
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
-    let route = (_a = field.value) !== null &amp;&amp; _a !== void 0 ? _a : "";
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
     }
@@ -553,8 +571,10 @@ function getRoute(serviceBaseName) {
     return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
 }
 function applyHttpSettingsToOperations(operation) {
+    var _a;
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
     const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
     if (!operation.hasStereotype(httpSettingsId)) {
         operation.addStereotype(httpSettingsId);
     }
@@ -588,6 +608,9 @@ function applyHttpSettingsToOperations(operation) {
             parameter.addStereotype(parameterSettingsId);
         }
     });
+    if (((_a = operation.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
 }
 /// &lt;reference path="../common/common-file-transfer.ts" /&gt;
 /// &lt;reference path="../../services-expose-as-http-endpoint/operation/shared.ts" /&gt;
@@ -614,12 +637,18 @@ configureUpload(element);
           <shortcut>ctrl + shift + e</shortcut>
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDc4ODQ3N2YxLTMzMDYtNGJiMS1iNzdjLTg4ZGQ3YWM2YjBmZSIgeDE9IjI1IiB5MT0iMy4yIiB4Mj0iMjUiIHkyPSI0Ni40IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwYzBmMiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDU5OWMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC43LjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAxLjIuMCBCdWlsZCAxNTQpICAtLT4KICA8Zz4KICAgIDxnIGlkPSJrZXkteWVsbG93Ij4KICAgICAgPHBhdGggZD0iTTMuOSwyMC45aDBzMCwwLDAsMGMwLDAsMC0uMiwwLS4zLDAsMCwwLC4yLDAsLjJaIiBmaWxsPSIjZmYwMDEzIi8+CiAgICAgIDxwYXRoIGQ9Ik00NiwyMC43Yy0uMi0uOC0uNC0xLjYtLjYtMi4zLS40LTEuMi0uOS0yLjQtMS41LTMuNS0uNC0uOC0xLTEuNy0xLjUtMi40LS41LS43LTEuMS0xLjQtMS43LTIuMS0xLjMtMS40LTIuNy0yLjYtNC4zLTMuNi0xLjktMS4yLTQuMS0yLjEtNi4zLTIuNy0uNS0uMS0uOS0uMi0xLjQtLjMtLjgtLjItMS42LS4yLTIuNS0uMy0uNCwwLS45LDAtMS4zLDBzLS45LDAtMS4zLDBjLS44LDAtMS42LjEtMi40LjMtLjUsMC0uOS4yLTEuMy4zLTIuMy41LTQuNCwxLjUtNi40LDIuNy0xLjYsMS0zLDIuMi00LjMsMy42LS42LjctMS4yLDEuMy0xLjcsMi4xLTEuMSwxLjYtMiwzLjMtMi43LDUuMS0uNCwxLS43LDIuMS0uOSwzLjEsMCwwLDAsLjIsMCwuMywwLDAsMCwwLDAsMC0uMywxLjMtLjQsMi43LS40LDRzLjIsMy43LjcsNS40YzEuNCw1LjMsNC44LDkuOSw5LjMsMTIuNywyLDEuMiw0LjIsMi4yLDYuNSwyLjcuNCwwLC44LjIsMS4yLjIuOC4yLDEuNS4yLDIuMy4zLjUsMCwuOSwwLDEuNCwwcy45LDAsMS40LDBjLjgsMCwxLjYtLjEsMi40LS4zLjQsMCwuOC0uMiwxLjItLjIsMi4zLS41LDQuNS0xLjUsNi41LTIuNyw0LjUtMi45LDcuOS03LjQsOS4zLTEyLjcuNS0xLjcuNy0zLjUuNy01LjRzLS4yLTIuOS0uNC00LjNaTTQwLjIsMTRjLjksMS4yLDEuNiwyLjUsMi4yLDMuOS0xLjUsMi4xLTMuNiw0LTYuMiw1LjQtLjEtMi40LS41LTQuNy0xLjEtNi45LDEuOC0uNiwzLjYtMS40LDUuMS0yLjRaTTM4LjUsMTIuMWMtMS4zLjgtMi43LDEuNS00LjMsMi4xLTEtMi43LTIuNS01LjItNC4yLTcuMiwzLjMuOSw2LjIsMi43LDguNSw1LjFaTTMzLjksMjQuNGMtMywxLjMtNi41LDItMTAuMiwycy01LjItLjQtNy42LTEuMXYtLjNjMC0yLjguNC01LjQsMS4yLTcuOSwyLjQuNiw1LDEsNy43LDFzNS4zLS4zLDcuNy0xYy43LDIuMywxLjEsNC43LDEuMSw3LjNaTTI0LjgsNi4zaC40YzIuOCwxLjksNS4yLDQuOSw2LjcsOC42LTIuMi42LTQuNS45LTYuOS45cy00LjctLjMtNi45LS45YzEuNS0zLjcsMy45LTYuNyw2LjctOC42Wk0yMCw3Yy0xLjcsMi0zLjIsNC41LTQuMiw3LjItMS41LS42LTMtMS4zLTQuMy0yLjEsMi4zLTIuNCw1LjItNC4yLDguNS01LjFaTTkuOCwxNGMxLjYsMSwzLjMsMS44LDUuMSwyLjQtLjcsMi41LTEuMSw1LjItMS4yLDguMS0yLjctMS4xLTUtMi42LTYuOS00LjQuNi0yLjIsMS42LTQuMywyLjktNi4xWk02LjcsMjljLS4zLTEuMy0uNC0yLjYtLjQtNHMwLTEuMiwwLTEuOGMyLjEsMS43LDQuNywzLDcuNSw0LC4yLDIuOS44LDUuNywxLjcsOC4yLTMuNy0xLjQtNi44LTMuNi04LjgtNi4zWk05LjEsMzQuOWMyLjIsMS41LDQuOSwyLjcsNy43LDMuNS45LDEuNywxLjksMy4zLDMuMSw0LjctNC41LTEuMy04LjQtNC4yLTEwLjgtOC4yWk0yNS4zLDQzLjdoLS42Yy0xLjctMS4yLTMuMy0yLjgtNC41LTQuNywxLjYuMiwzLjIuNCw0LjguNHMzLjItLjEsNC44LS40Yy0xLjMsMS45LTIuOCwzLjUtNC41LDQuN1pNMjUsMzcuMWMtMi4yLDAtNC40LS4zLTYuNC0uOGgwYy0xLjItMi41LTItNS40LTIuMy04LjQsMi4zLjYsNC44LjksNy40LjlzNy0uNiwxMC4xLTEuN2MtLjIsMy40LTEuMSw2LjUtMi40LDkuMi0yLC41LTQuMi44LTYuNC44Wk0zMC4xLDQzYzEuMi0xLjQsMi4yLTIuOSwzLjEtNC43LDIuOC0uOCw1LjUtMiw3LjctMy41LTIuNCwzLjktNi4yLDYuOC0xMC44LDguMVpNNDMuMywyOWMtMi4xLDIuNy01LjEsNC45LTguOCw2LjMsMS0yLjgsMS42LTYsMS44LTkuMywyLjgtMS4zLDUuMi0zLDcuMS01LC4zLDEuMi40LDIuNS40LDMuOXMtLjIsMi43LS40LDRaIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudDc4ODQ3N2YxLTMzMDYtNGJiMS1iNzdjLTg4ZGQ3YWM2YjBmZSkiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==" />
           <script>function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "api";
+    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
     let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
-    if (!route) {
+    // if the group is not present, use the default value
+    if (!settingsGroup) {
         route = defaultApiRoutePrefix;
+    }
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -730,6 +759,12 @@ function applyFileTransferStereoType(element) {
     const fileTransferId = "d30e48e8-389e-4b70-84fd-e3bac44cfe19";
     (_a = element.getStereotype(fileTransferId)) !== null &amp;&amp; _a !== void 0 ? _a : element.addStereotype(fileTransferId);
 }
+function makePost(element) {
+    var _a;
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    const httpSettings = (_a = element.getStereotype(httpSettingsId)) !== null &amp;&amp; _a !== void 0 ? _a : element.addStereotype(httpSettingsId);
+    httpSettings.getProperty("Verb").setValue("POST");
+}
 function addUploadFields(element, childType) {
     const commonTypes = {
         string: "d384db9c-a279-45e1-801e-e4e8099625f2",
@@ -747,7 +782,6 @@ function addUploadFields(element, childType) {
         let filename = createElement(childType, "Filename", element.id);
         filename.typeReference.setType(commonTypes.string);
         filename.typeReference.setIsNullable(true);
-        let parameterSetting = filename.addStereotype(parameterSettingId);
     }
     var existing = element.getChildren().find(x =&gt; x.getName() == "ContentType");
     if (!existing) {
@@ -769,18 +803,19 @@ function addUploadFields(element, childType) {
     }
 }
 function getDefaultRoutePrefix(includeLastPathSeparator) {
-    var _a;
     const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
+    let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
+    // if the group is not present, use the default value
     if (!settingsGroup) {
-        return defaultApiRoutePrefix;
+        route = defaultApiRoutePrefix;
     }
-    let field = settingsGroup.getField("Default API Route Prefix");
-    if (!field) {
-        return defaultApiRoutePrefix;
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
-    let route = (_a = field.value) !== null &amp;&amp; _a !== void 0 ? _a : "";
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
     }
@@ -804,8 +839,10 @@ function getRoute(serviceBaseName) {
     return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
 }
 function applyHttpSettingsToOperations(operation) {
+    var _a;
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
     const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
     if (!operation.hasStereotype(httpSettingsId)) {
         operation.addStereotype(httpSettingsId);
     }
@@ -839,6 +876,9 @@ function applyHttpSettingsToOperations(operation) {
             parameter.addStereotype(parameterSettingsId);
         }
     });
+    if (((_a = operation.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
 }
 /// &lt;reference path="../common/common-file-transfer.ts" /&gt;
 /// &lt;reference path="../../services-expose-as-http-endpoint/operation/shared.ts" /&gt;
@@ -935,18 +975,19 @@ function addUploadFields(element, childType) {
     }
 }
 function getDefaultRoutePrefix(includeLastPathSeparator) {
-    var _a;
     const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
+    let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
+    // if the group is not present, use the default value
     if (!settingsGroup) {
-        return defaultApiRoutePrefix;
+        route = defaultApiRoutePrefix;
     }
-    let field = settingsGroup.getField("Default API Route Prefix");
-    if (!field) {
-        return defaultApiRoutePrefix;
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
-    let route = (_a = field.value) !== null &amp;&amp; _a !== void 0 ? _a : "";
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
     }
@@ -970,8 +1011,10 @@ function getRoute(serviceBaseName) {
     return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
 }
 function applyHttpSettingsToOperations(operation) {
+    var _a;
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
     const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
     if (!operation.hasStereotype(httpSettingsId)) {
         operation.addStereotype(httpSettingsId);
     }
@@ -1005,6 +1048,9 @@ function applyHttpSettingsToOperations(operation) {
             parameter.addStereotype(parameterSettingsId);
         }
     });
+    if (((_a = operation.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
 }
 /// &lt;reference path="../common/common-file-transfer.ts" /&gt;
 /// &lt;reference path="../../services-expose-as-http-endpoint/operation/shared.ts" /&gt;
@@ -1059,12 +1105,18 @@ return "";</validateFunctionOverride>
           <shortcut>ctrl + shift + e</shortcut>
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDc4ODQ3N2YxLTMzMDYtNGJiMS1iNzdjLTg4ZGQ3YWM2YjBmZSIgeDE9IjI1IiB5MT0iMy4yIiB4Mj0iMjUiIHkyPSI0Ni40IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwYzBmMiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDU5OWMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC43LjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAxLjIuMCBCdWlsZCAxNTQpICAtLT4KICA8Zz4KICAgIDxnIGlkPSJrZXkteWVsbG93Ij4KICAgICAgPHBhdGggZD0iTTMuOSwyMC45aDBzMCwwLDAsMGMwLDAsMC0uMiwwLS4zLDAsMCwwLC4yLDAsLjJaIiBmaWxsPSIjZmYwMDEzIi8+CiAgICAgIDxwYXRoIGQ9Ik00NiwyMC43Yy0uMi0uOC0uNC0xLjYtLjYtMi4zLS40LTEuMi0uOS0yLjQtMS41LTMuNS0uNC0uOC0xLTEuNy0xLjUtMi40LS41LS43LTEuMS0xLjQtMS43LTIuMS0xLjMtMS40LTIuNy0yLjYtNC4zLTMuNi0xLjktMS4yLTQuMS0yLjEtNi4zLTIuNy0uNS0uMS0uOS0uMi0xLjQtLjMtLjgtLjItMS42LS4yLTIuNS0uMy0uNCwwLS45LDAtMS4zLDBzLS45LDAtMS4zLDBjLS44LDAtMS42LjEtMi40LjMtLjUsMC0uOS4yLTEuMy4zLTIuMy41LTQuNCwxLjUtNi40LDIuNy0xLjYsMS0zLDIuMi00LjMsMy42LS42LjctMS4yLDEuMy0xLjcsMi4xLTEuMSwxLjYtMiwzLjMtMi43LDUuMS0uNCwxLS43LDIuMS0uOSwzLjEsMCwwLDAsLjIsMCwuMywwLDAsMCwwLDAsMC0uMywxLjMtLjQsMi43LS40LDRzLjIsMy43LjcsNS40YzEuNCw1LjMsNC44LDkuOSw5LjMsMTIuNywyLDEuMiw0LjIsMi4yLDYuNSwyLjcuNCwwLC44LjIsMS4yLjIuOC4yLDEuNS4yLDIuMy4zLjUsMCwuOSwwLDEuNCwwcy45LDAsMS40LDBjLjgsMCwxLjYtLjEsMi40LS4zLjQsMCwuOC0uMiwxLjItLjIsMi4zLS41LDQuNS0xLjUsNi41LTIuNyw0LjUtMi45LDcuOS03LjQsOS4zLTEyLjcuNS0xLjcuNy0zLjUuNy01LjRzLS4yLTIuOS0uNC00LjNaTTQwLjIsMTRjLjksMS4yLDEuNiwyLjUsMi4yLDMuOS0xLjUsMi4xLTMuNiw0LTYuMiw1LjQtLjEtMi40LS41LTQuNy0xLjEtNi45LDEuOC0uNiwzLjYtMS40LDUuMS0yLjRaTTM4LjUsMTIuMWMtMS4zLjgtMi43LDEuNS00LjMsMi4xLTEtMi43LTIuNS01LjItNC4yLTcuMiwzLjMuOSw2LjIsMi43LDguNSw1LjFaTTMzLjksMjQuNGMtMywxLjMtNi41LDItMTAuMiwycy01LjItLjQtNy42LTEuMXYtLjNjMC0yLjguNC01LjQsMS4yLTcuOSwyLjQuNiw1LDEsNy43LDFzNS4zLS4zLDcuNy0xYy43LDIuMywxLjEsNC43LDEuMSw3LjNaTTI0LjgsNi4zaC40YzIuOCwxLjksNS4yLDQuOSw2LjcsOC42LTIuMi42LTQuNS45LTYuOS45cy00LjctLjMtNi45LS45YzEuNS0zLjcsMy45LTYuNyw2LjctOC42Wk0yMCw3Yy0xLjcsMi0zLjIsNC41LTQuMiw3LjItMS41LS42LTMtMS4zLTQuMy0yLjEsMi4zLTIuNCw1LjItNC4yLDguNS01LjFaTTkuOCwxNGMxLjYsMSwzLjMsMS44LDUuMSwyLjQtLjcsMi41LTEuMSw1LjItMS4yLDguMS0yLjctMS4xLTUtMi42LTYuOS00LjQuNi0yLjIsMS42LTQuMywyLjktNi4xWk02LjcsMjljLS4zLTEuMy0uNC0yLjYtLjQtNHMwLTEuMiwwLTEuOGMyLjEsMS43LDQuNywzLDcuNSw0LC4yLDIuOS44LDUuNywxLjcsOC4yLTMuNy0xLjQtNi44LTMuNi04LjgtNi4zWk05LjEsMzQuOWMyLjIsMS41LDQuOSwyLjcsNy43LDMuNS45LDEuNywxLjksMy4zLDMuMSw0LjctNC41LTEuMy04LjQtNC4yLTEwLjgtOC4yWk0yNS4zLDQzLjdoLS42Yy0xLjctMS4yLTMuMy0yLjgtNC41LTQuNywxLjYuMiwzLjIuNCw0LjguNHMzLjItLjEsNC44LS40Yy0xLjMsMS45LTIuOCwzLjUtNC41LDQuN1pNMjUsMzcuMWMtMi4yLDAtNC40LS4zLTYuNC0uOGgwYy0xLjItMi41LTItNS40LTIuMy04LjQsMi4zLjYsNC44LjksNy40LjlzNy0uNiwxMC4xLTEuN2MtLjIsMy40LTEuMSw2LjUtMi40LDkuMi0yLC41LTQuMi44LTYuNC44Wk0zMC4xLDQzYzEuMi0xLjQsMi4yLTIuOSwzLjEtNC43LDIuOC0uOCw1LjUtMiw3LjctMy41LTIuNCwzLjktNi4yLDYuOC0xMC44LDguMVpNNDMuMywyOWMtMi4xLDIuNy01LjEsNC45LTguOCw2LjMsMS0yLjgsMS42LTYsMS44LTkuMywyLjgtMS4zLDUuMi0zLDcuMS01LC4zLDEuMi40LDIuNS40LDMuOXMtLjIsMi43LS40LDRaIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudDc4ODQ3N2YxLTMzMDYtNGJiMS1iNzdjLTg4ZGQ3YWM2YjBmZSkiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==" />
           <script>function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "api";
+    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
     let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
-    if (!route) {
+    // if the group is not present, use the default value
+    if (!settingsGroup) {
         route = defaultApiRoutePrefix;
+    }
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -1149,12 +1201,18 @@ exposeAsHttpEndPoint(element);
           <shortcut>ctrl + shift + e</shortcut>
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDc4ODQ3N2YxLTMzMDYtNGJiMS1iNzdjLTg4ZGQ3YWM2YjBmZSIgeDE9IjI1IiB5MT0iMy4yIiB4Mj0iMjUiIHkyPSI0Ni40IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwYzBmMiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDU5OWMiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC43LjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAxLjIuMCBCdWlsZCAxNTQpICAtLT4KICA8Zz4KICAgIDxnIGlkPSJrZXkteWVsbG93Ij4KICAgICAgPHBhdGggZD0iTTMuOSwyMC45aDBzMCwwLDAsMGMwLDAsMC0uMiwwLS4zLDAsMCwwLC4yLDAsLjJaIiBmaWxsPSIjZmYwMDEzIi8+CiAgICAgIDxwYXRoIGQ9Ik00NiwyMC43Yy0uMi0uOC0uNC0xLjYtLjYtMi4zLS40LTEuMi0uOS0yLjQtMS41LTMuNS0uNC0uOC0xLTEuNy0xLjUtMi40LS41LS43LTEuMS0xLjQtMS43LTIuMS0xLjMtMS40LTIuNy0yLjYtNC4zLTMuNi0xLjktMS4yLTQuMS0yLjEtNi4zLTIuNy0uNS0uMS0uOS0uMi0xLjQtLjMtLjgtLjItMS42LS4yLTIuNS0uMy0uNCwwLS45LDAtMS4zLDBzLS45LDAtMS4zLDBjLS44LDAtMS42LjEtMi40LjMtLjUsMC0uOS4yLTEuMy4zLTIuMy41LTQuNCwxLjUtNi40LDIuNy0xLjYsMS0zLDIuMi00LjMsMy42LS42LjctMS4yLDEuMy0xLjcsMi4xLTEuMSwxLjYtMiwzLjMtMi43LDUuMS0uNCwxLS43LDIuMS0uOSwzLjEsMCwwLDAsLjIsMCwuMywwLDAsMCwwLDAsMC0uMywxLjMtLjQsMi43LS40LDRzLjIsMy43LjcsNS40YzEuNCw1LjMsNC44LDkuOSw5LjMsMTIuNywyLDEuMiw0LjIsMi4yLDYuNSwyLjcuNCwwLC44LjIsMS4yLjIuOC4yLDEuNS4yLDIuMy4zLjUsMCwuOSwwLDEuNCwwcy45LDAsMS40LDBjLjgsMCwxLjYtLjEsMi40LS4zLjQsMCwuOC0uMiwxLjItLjIsMi4zLS41LDQuNS0xLjUsNi41LTIuNyw0LjUtMi45LDcuOS03LjQsOS4zLTEyLjcuNS0xLjcuNy0zLjUuNy01LjRzLS4yLTIuOS0uNC00LjNaTTQwLjIsMTRjLjksMS4yLDEuNiwyLjUsMi4yLDMuOS0xLjUsMi4xLTMuNiw0LTYuMiw1LjQtLjEtMi40LS41LTQuNy0xLjEtNi45LDEuOC0uNiwzLjYtMS40LDUuMS0yLjRaTTM4LjUsMTIuMWMtMS4zLjgtMi43LDEuNS00LjMsMi4xLTEtMi43LTIuNS01LjItNC4yLTcuMiwzLjMuOSw2LjIsMi43LDguNSw1LjFaTTMzLjksMjQuNGMtMywxLjMtNi41LDItMTAuMiwycy01LjItLjQtNy42LTEuMXYtLjNjMC0yLjguNC01LjQsMS4yLTcuOSwyLjQuNiw1LDEsNy43LDFzNS4zLS4zLDcuNy0xYy43LDIuMywxLjEsNC43LDEuMSw3LjNaTTI0LjgsNi4zaC40YzIuOCwxLjksNS4yLDQuOSw2LjcsOC42LTIuMi42LTQuNS45LTYuOS45cy00LjctLjMtNi45LS45YzEuNS0zLjcsMy45LTYuNyw2LjctOC42Wk0yMCw3Yy0xLjcsMi0zLjIsNC41LTQuMiw3LjItMS41LS42LTMtMS4zLTQuMy0yLjEsMi4zLTIuNCw1LjItNC4yLDguNS01LjFaTTkuOCwxNGMxLjYsMSwzLjMsMS44LDUuMSwyLjQtLjcsMi41LTEuMSw1LjItMS4yLDguMS0yLjctMS4xLTUtMi42LTYuOS00LjQuNi0yLjIsMS42LTQuMywyLjktNi4xWk02LjcsMjljLS4zLTEuMy0uNC0yLjYtLjQtNHMwLTEuMiwwLTEuOGMyLjEsMS43LDQuNywzLDcuNSw0LC4yLDIuOS44LDUuNywxLjcsOC4yLTMuNy0xLjQtNi44LTMuNi04LjgtNi4zWk05LjEsMzQuOWMyLjIsMS41LDQuOSwyLjcsNy43LDMuNS45LDEuNywxLjksMy4zLDMuMSw0LjctNC41LTEuMy04LjQtNC4yLTEwLjgtOC4yWk0yNS4zLDQzLjdoLS42Yy0xLjctMS4yLTMuMy0yLjgtNC41LTQuNywxLjYuMiwzLjIuNCw0LjguNHMzLjItLjEsNC44LS40Yy0xLjMsMS45LTIuOCwzLjUtNC41LDQuN1pNMjUsMzcuMWMtMi4yLDAtNC40LS4zLTYuNC0uOGgwYy0xLjItMi41LTItNS40LTIuMy04LjQsMi4zLjYsNC44LjksNy40LjlzNy0uNiwxMC4xLTEuN2MtLjIsMy40LTEuMSw2LjUtMi40LDkuMi0yLC41LTQuMi44LTYuNC44Wk0zMC4xLDQzYzEuMi0xLjQsMi4yLTIuOSwzLjEtNC43LDIuOC0uOCw1LjUtMiw3LjctMy41LTIuNCwzLjktNi4yLDYuOC0xMC44LDguMVpNNDMuMywyOWMtMi4xLDIuNy01LjEsNC45LTguOCw2LjMsMS0yLjgsMS42LTYsMS44LTkuMywyLjgtMS4zLDUuMi0zLDcuMS01LC4zLDEuMi40LDIuNS40LDMuOXMtLjIsMi43LS40LDRaIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudDc4ODQ3N2YxLTMzMDYtNGJiMS1iNzdjLTg4ZGQ3YWM2YjBmZSkiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==" />
           <script>function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "api";
+    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
     let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
-    if (!route) {
+    // if the group is not present, use the default value
+    if (!settingsGroup) {
         route = defaultApiRoutePrefix;
+    }
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -1298,12 +1356,18 @@ execute();</script>
       <filterFunction>return !element.hasStereotype("Http Settings");</filterFunction>
       <dependencies />
       <script>function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "api";
+    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
     let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
-    if (!route) {
+    // if the group is not present, use the default value
+    if (!settingsGroup) {
         route = defaultApiRoutePrefix;
+    }
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -1384,12 +1448,18 @@ exposeAsHttpEndPoint(element);
       <filterFunction>return !element.hasStereotype("Http Settings");</filterFunction>
       <dependencies />
       <script>function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "api";
+    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
     let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
-    if (!route) {
+    // if the group is not present, use the default value
+    if (!settingsGroup) {
         route = defaultApiRoutePrefix;
+    }
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
