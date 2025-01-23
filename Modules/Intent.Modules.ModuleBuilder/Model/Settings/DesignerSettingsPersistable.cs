@@ -146,7 +146,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("createAssociation", typeof(AssociationCreationOption))]
         [XmlArrayItem("createStereotype", typeof(StereotypeCreationOption))]
         [XmlArrayItem("runScript", typeof(RunScriptOption))]
-        [XmlArrayItem("defineMapping", typeof(MappingOption))]
+        [XmlArrayItem("openMapping", typeof(MappingOption))]
         public required List<ContextMenuOption> ContextMenuOptions { get; set; } = new();
 
         [XmlArray("creationOptions")]
@@ -311,7 +311,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("createAssociation", typeof(AssociationCreationOption))]
         [XmlArrayItem("createStereotype", typeof(StereotypeCreationOption))]
         [XmlArrayItem("runScript", typeof(RunScriptOption))]
-        [XmlArrayItem("defineMapping", typeof(MappingOption))]
+        [XmlArrayItem("openMapping", typeof(MappingOption))]
         public List<ContextMenuOption> SubMenuOptions { get; set; } = [];
         public bool ShouldSerializeSubMenuOptions() => SubMenuOptions?.Any() == true;
     }
