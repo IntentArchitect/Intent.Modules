@@ -47,5 +47,14 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="b3b1b7ec-7913-4b58-854e-9582ba5ab8a0">
+      <name>On Selected</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

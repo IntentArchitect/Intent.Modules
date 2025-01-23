@@ -87,6 +87,11 @@ namespace Intent.Modelers.UI.Core.Api
                 return _stereotype.GetProperty<string>("Value");
             }
 
+            public string OnSelected()
+            {
+                return _stereotype.GetProperty<string>("On Selected");
+            }
+
         }
 
         public class LabelAddon
