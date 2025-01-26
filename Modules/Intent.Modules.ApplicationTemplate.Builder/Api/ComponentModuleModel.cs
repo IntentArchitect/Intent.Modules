@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
+using static Intent.Modules.ApplicationTemplate.Builder.Api.ComponentModuleModelStereotypeExtensions.ModuleSettings;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -45,19 +47,16 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         public bool IsRequired => this.GetModuleSettings().IsRequired();
 
         [IntentManaged(Mode.Ignore)]
-        public bool EnableFactoryExtensions => this.GetModuleSettings().EnableFactoryExtensions();
+        public bool AssetTypeIsIncluded(IncludedAssetsOptionsEnum assetType)
+        {
+            if (this.GetModuleSettings().IncludeAssets().IsAll())
+            {
+                return true;
+            }
 
-        [IntentManaged(Mode.Ignore)]
-        public bool InstallApplicationSettings => this.GetModuleSettings().InstallApplicationSettings();
-
-        [IntentManaged(Mode.Ignore)]
-        public bool InstallDesignerMetadata => this.GetModuleSettings().InstallDesignerMetadata();
-
-        [IntentManaged(Mode.Ignore)]
-        public bool InstallDesigners => this.GetModuleSettings().InstallDesigners();
-
-        [IntentManaged(Mode.Ignore)]
-        public bool InstallTemplateOutputs => this.GetModuleSettings().InstallTemplateOutputs();
+            return this.GetModuleSettings().IncludeAssets().IsSelect() &&
+                   this.GetModuleSettings().IncludedAssets().Any(x => x.AsEnum() == assetType);
+        }
 
         public override string ToString()
         {

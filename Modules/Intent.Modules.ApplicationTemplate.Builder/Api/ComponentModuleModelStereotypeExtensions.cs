@@ -63,29 +63,117 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return _stereotype.GetProperty<bool>("Is Required");
             }
 
-            public bool EnableFactoryExtensions()
+            public IncludeAssetsOptions IncludeAssets()
             {
-                return _stereotype.GetProperty<bool>("Enable Factory Extensions");
+                return new IncludeAssetsOptions(_stereotype.GetProperty<string>("Include Assets"));
             }
 
-            public bool InstallApplicationSettings()
+            public IncludedAssetsOptions[] IncludedAssets()
             {
-                return _stereotype.GetProperty<bool>("Install Application Settings");
+                return _stereotype.GetProperty<string[]>("Included Assets")?.Select(x => new IncludedAssetsOptions(x)).ToArray() ?? new IncludedAssetsOptions[0];
             }
 
-            public bool InstallDesignerMetadata()
+            public class IncludeAssetsOptions
             {
-                return _stereotype.GetProperty<bool>("Install Designer Metadata");
+                public readonly string Value;
+
+                public IncludeAssetsOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public IncludeAssetsOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "All":
+                            return IncludeAssetsOptionsEnum.All;
+                        case "None":
+                            return IncludeAssetsOptionsEnum.None;
+                        case "Select":
+                            return IncludeAssetsOptionsEnum.Select;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsAll()
+                {
+                    return Value == "All";
+                }
+                public bool IsNone()
+                {
+                    return Value == "None";
+                }
+                public bool IsSelect()
+                {
+                    return Value == "Select";
+                }
             }
 
-            public bool InstallDesigners()
+            public enum IncludeAssetsOptionsEnum
             {
-                return _stereotype.GetProperty<bool>("Install Designers");
+                All,
+                None,
+                Select
+            }
+            public class IncludedAssetsOptions
+            {
+                public readonly string Value;
+
+                public IncludedAssetsOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public IncludedAssetsOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Application Settings":
+                            return IncludedAssetsOptionsEnum.ApplicationSettings;
+                        case "Designer Metadata":
+                            return IncludedAssetsOptionsEnum.DesignerMetadata;
+                        case "Designers":
+                            return IncludedAssetsOptionsEnum.Designers;
+                        case "Factory Extensions":
+                            return IncludedAssetsOptionsEnum.FactoryExtensions;
+                        case "Template Outputs":
+                            return IncludedAssetsOptionsEnum.TemplateOutputs;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsApplicationSettings()
+                {
+                    return Value == "Application Settings";
+                }
+                public bool IsDesignerMetadata()
+                {
+                    return Value == "Designer Metadata";
+                }
+                public bool IsDesigners()
+                {
+                    return Value == "Designers";
+                }
+                public bool IsFactoryExtensions()
+                {
+                    return Value == "Factory Extensions";
+                }
+                public bool IsTemplateOutputs()
+                {
+                    return Value == "Template Outputs";
+                }
             }
 
-            public bool InstallTemplateOutputs()
+            public enum IncludedAssetsOptionsEnum
             {
-                return _stereotype.GetProperty<bool>("Install Template Outputs");
+                ApplicationSettings,
+                DesignerMetadata,
+                Designers,
+                FactoryExtensions,
+                TemplateOutputs
             }
 
         }

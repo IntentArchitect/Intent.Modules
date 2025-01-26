@@ -24,6 +24,8 @@ using static Intent.Modules.ApplicationTemplate.Builder.Api.ComponentGroupModelS
 
 namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpecFile
 {
+    using static ComponentModuleModelStereotypeExtensions.ModuleSettings;
+
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     partial class IatSpecFileTemplate : IntentTemplateBase<ApplicationTemplateModel>, IHasNugetDependencies
     {
@@ -93,11 +95,12 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
                         {
                             Id = m.Name,
                             Version = m.Version,
-                            EnableFactoryExtensions = m.EnableFactoryExtensions,
-                            InstallApplicationSettings = m.InstallApplicationSettings,
-                            InstallDesignerMetadata = m.InstallDesignerMetadata,
-                            InstallDesigners = m.InstallDesigners,
-                            InstallTemplateOutputs = m.InstallTemplateOutputs,
+                            IncludeAssets = IncludeAssetsHelper.GetIncludeAssetsString(
+                                applicationSettings: m.AssetTypeIsIncluded(IncludedAssetsOptionsEnum.ApplicationSettings),
+                                designerMetadata: m.AssetTypeIsIncluded(IncludedAssetsOptionsEnum.DesignerMetadata),
+                                designers: m.AssetTypeIsIncluded(IncludedAssetsOptionsEnum.Designers),
+                                factoryExtensions: m.AssetTypeIsIncluded(IncludedAssetsOptionsEnum.FactoryExtensions),
+                                templateOutputs: m.AssetTypeIsIncluded(IncludedAssetsOptionsEnum.TemplateOutputs)),
                             IsIncludedByDefault = m.IsIncludedByDefault,
                             IsRequired = m.IsRequired,
                         }).ToList(),
