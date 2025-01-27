@@ -22,7 +22,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DomainPackageExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DomainPackageExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>3e7c3578-2dc0-4da4-bb53-596dbf3dec06</ProjectId>

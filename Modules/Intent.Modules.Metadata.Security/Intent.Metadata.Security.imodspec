@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.Security</id>
-  <version>1.0.2-pre.1</version>
+  <version>1.0.2</version>
   <supportedClientVersions>[4.3.0-a,5.0.0)</supportedClientVersions>
   <summary>Support for describing security on services.</summary>
   <description>Support for describing security on services.</description>
@@ -18,7 +18,6 @@
     <dependency id="Intent.Common" version="3.7.2" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
     <dependency id="Intent.Modelers.Services" version="3.8.2" />
-	<dependency id="Intent.Modelers.Domain" version="3.12.0" />
   </dependencies>
   <interoperability>
     <detect id="Intent.Metadata.WebApi">
