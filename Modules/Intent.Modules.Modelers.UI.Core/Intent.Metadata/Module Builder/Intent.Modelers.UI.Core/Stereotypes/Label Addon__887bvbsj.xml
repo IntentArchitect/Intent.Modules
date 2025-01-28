@@ -7,6 +7,7 @@
     <type id="be9ecdbd-6ded-4057-af76-1b09f3a6cea3">Checkbox</type>
     <type id="78e0bdf7-424f-4820-95d5-b756b0ebc87a">Select</type>
     <type id="9451fcdc-9406-4323-b354-2eaaabbf9ac5">Date Picker</type>
+    <type id="ff1ddb80-16e4-4e63-ace3-4ef96a03b4b0">AutoComplete</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>
