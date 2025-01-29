@@ -1,3 +1,7 @@
+### Version 3.7.5
+
+- Improvement: Added Software Factory Execution help topics.
+
 ### Version 3.7.4
 
 - Improvement: Added `Element Extensions` to the targetable types for the core trait stereotypes.

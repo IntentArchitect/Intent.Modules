@@ -48,5 +48,13 @@
       <ProjectRelativeFilePath>Intent.Modules.Common.csproj</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
     </FileLog>
+    <FileLog>
+      <ProjectId>aa8c3509-9638-4e44-961c-38b7e8053699</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.DocumentationTemplate#1207d4e5-3f83-4e84-b513-caa7dc76bbd0</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>resources/documentation.json</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>documentation.json</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
   </FileLogs>
 </outputLog>

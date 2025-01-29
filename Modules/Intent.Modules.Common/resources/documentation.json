@@ -1,0 +1,79 @@
+{
+  "topics": [
+      {
+          "title": "About Software Factory Execution",
+          "description": "Learn about Software Factory Execution.",
+          "iconUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciDQogICAgdmlld0JveD0iMCAwIDUxMiA1MTIiPjwhLS0hRm9udCBBd2Vzb21lIEZyZWUgNi43LjIgYnkgQGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20gTGljZW5zZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tL2xpY2Vuc2UvZnJlZSBDb3B5cmlnaHQgMjAyNSBGb250aWNvbnMsIEluYy4tLT4NCiAgICA8cGF0aA0KICAgICAgICBmaWxsPSIjNmFjMTU3Ig0KICAgICAgICBkPSJNMzcxLjcgMjM4bC0xNzYtMTA3Yy0xNS44LTguOC0zNS43IDIuNS0zNS43IDIxdjIwOGMwIDE4LjQgMTkuOCAyOS44IDM1LjcgMjFsMTc2LTEwMWMxNi40LTkuMSAxNi40LTMyLjggMC00MnpNNTA0IDI1NkM1MDQgMTE5IDM5MyA4IDI1NiA4UzggMTE5IDggMjU2czExMSAyNDggMjQ4IDI0OCAyNDgtMTExIDI0OC0yNDh6bS00NDggMGMwLTExMC41IDg5LjUtMjAwIDIwMC0yMDBzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwUzU2IDM2Ni41IDU2IDI1NnoiIC8+DQo8L3N2Zz4=",
+          "href": "https://docs.intentarchitect.com/articles/application-development/software-factory/about-software-factory-execution/about-software-factory-execution.html",
+          "tags": [
+              "software",
+              "factory",
+              "execution",
+              "generation",
+              "generate"
+            ]
+        },
+      {
+          "title": "About Template Output Targeting",
+          "description": "How Intent Architect determines where a Template's output should be placed.",
+          "iconUrl": "data:image/png;base64,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",
+          "href": "https://docs.intentarchitect.com/articles/application-development/software-factory/about-template-output-targeting/about-template-output-targeting.html",
+          "tags": [
+              "template",
+              "output",
+              "generation",
+              "targeting"
+            ]
+        },
+      {
+          "title": "Factors Slowing Software Factory Execution",
+          "description": "Environmental factors which can slow down Software Factory execution.",
+          "iconUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciDQogICAgdmlld0JveD0iMCAwIDUxMiA1MTIiPjwhLS0hRm9udCBBd2Vzb21lIEZyZWUgNi43LjIgYnkgQGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20gTGljZW5zZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tL2xpY2Vuc2UvZnJlZSBDb3B5cmlnaHQgMjAyNSBGb250aWNvbnMsIEluYy4tLT4NCiAgICA8cGF0aA0KICAgICAgICBmaWxsPSIjNmFjMTU3Ig0KICAgICAgICBkPSJNMzcxLjcgMjM4bC0xNzYtMTA3Yy0xNS44LTguOC0zNS43IDIuNS0zNS43IDIxdjIwOGMwIDE4LjQgMTkuOCAyOS44IDM1LjcgMjFsMTc2LTEwMWMxNi40LTkuMSAxNi40LTMyLjggMC00MnpNNTA0IDI1NkM1MDQgMTE5IDM5MyA4IDI1NiA4UzggMTE5IDggMjU2czExMSAyNDggMjQ4IDI0OCAyNDgtMTExIDI0OC0yNDh6bS00NDggMGMwLTExMC41IDg5LjUtMjAwIDIwMC0yMDBzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwUzU2IDM2Ni41IDU2IDI1NnoiIC8+DQo8L3N2Zz4=",
+          "href": "https://docs.intentarchitect.com/articles/application-development/software-factory/environmental-factors-which-can-slow-down-software-factory-execution/environmental-factors-which-can-slow-down-software-factory-execution.html",
+          "tags": [
+              "software",
+              "factory",
+              "execution",
+              "generation",
+              "generate",
+              "slow",
+              "performance"
+            ]
+        },
+      {
+          "title": "Software Factory Deviations",
+          "description": "Understanding the Software Factory Execution deviations screen.",
+          "iconUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciDQogICAgdmlld0JveD0iMCAwIDUxMiA1MTIiPjwhLS0hRm9udCBBd2Vzb21lIEZyZWUgNi43LjIgYnkgQGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20gTGljZW5zZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tL2xpY2Vuc2UvZnJlZSBDb3B5cmlnaHQgMjAyNSBGb250aWNvbnMsIEluYy4tLT4NCiAgICA8cGF0aA0KICAgICAgICBmaWxsPSIjNmFjMTU3Ig0KICAgICAgICBkPSJNMzcxLjcgMjM4bC0xNzYtMTA3Yy0xNS44LTguOC0zNS43IDIuNS0zNS43IDIxdjIwOGMwIDE4LjQgMTkuOCAyOS44IDM1LjcgMjFsMTc2LTEwMWMxNi40LTkuMSAxNi40LTMyLjggMC00MnpNNTA0IDI1NkM1MDQgMTE5IDM5MyA4IDI1NiA4UzggMTE5IDggMjU2czExMSAyNDggMjQ4IDI0OCAyNDgtMTExIDI0OC0yNDh6bS00NDggMGMwLTExMC41IDg5LjUtMjAwIDIwMC0yMDBzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwUzU2IDM2Ni41IDU2IDI1NnoiIC8+DQo8L3N2Zz4=",
+          "href": "https://docs.intentarchitect.com/articles/application-development/software-factory/about-software-factory-execution/about-software-factory-execution.html#the-deviations-screen",
+          "tags": [
+              "software",
+              "factory",
+              "execution",
+              "generation",
+              "generate",
+              "deviation",
+              "ignore",
+              "intentignore",
+              "approve"
+            ]
+        },
+      {
+          "title": "Troubleshooting Software Factory errors",
+          "description": "How to review the Software Factory logs to resolve error.",
+          "iconUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciDQogICAgdmlld0JveD0iMCAwIDUxMiA1MTIiPjwhLS0hRm9udCBBd2Vzb21lIEZyZWUgNi43LjIgYnkgQGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20gTGljZW5zZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tL2xpY2Vuc2UvZnJlZSBDb3B5cmlnaHQgMjAyNSBGb250aWNvbnMsIEluYy4tLT4NCiAgICA8cGF0aA0KICAgICAgICBmaWxsPSIjNmFjMTU3Ig0KICAgICAgICBkPSJNMzcxLjcgMjM4bC0xNzYtMTA3Yy0xNS44LTguOC0zNS43IDIuNS0zNS43IDIxdjIwOGMwIDE4LjQgMTkuOCAyOS44IDM1LjcgMjFsMTc2LTEwMWMxNi40LTkuMSAxNi40LTMyLjggMC00MnpNNTA0IDI1NkM1MDQgMTE5IDM5MyA4IDI1NiA4UzggMTE5IDggMjU2czExMSAyNDggMjQ4IDI0OCAyNDgtMTExIDI0OC0yNDh6bS00NDggMGMwLTExMC41IDg5LjUtMjAwIDIwMC0yMDBzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwUzU2IDM2Ni41IDU2IDI1NnoiIC8+DQo8L3N2Zz4=",
+          "href": "https://docs.intentarchitect.com/articles/application-development/software-factory/troubleshooting-software-factory-errors/troubleshooting-software-factory-errors.html",
+          "tags": [
+              "software",
+              "factory",
+              "execution",
+              "generation",
+              "generate",
+              "error",
+              "troubleshoot",
+              "element",
+              "",
+              "exception"
+            ]
+        }
+    ]
+}
