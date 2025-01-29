@@ -29522,6 +29522,7 @@ convertToAdvancedMapping.execute();
             <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
             <type type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" />
             <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
+            <type type="Operation" typeId="aee6811e-b2f6-4562-a8eb-502029f63bc8" />
             <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>

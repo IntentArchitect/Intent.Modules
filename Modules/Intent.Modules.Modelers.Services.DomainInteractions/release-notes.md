@@ -1,3 +1,7 @@
+### Version 2.1.2
+
+- Fixed: Added reference to Proxy `Operation`, so now mapping can correctly be done.
+
 ### Version 2.1.1
 
 - Fixed: Accelorator for creating CRUD services will now correctly map operations named `Delete` or `Create`.

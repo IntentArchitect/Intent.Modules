@@ -1,3 +1,8 @@
+### Version 1.1.1
+
+- Fixed: Proxy `Commands` and `Queries` are now created with the same attribute default values as the original `Command` or `Query`.
+
+
 ### Version 1.1.0
 
 - Improvement: Added discoverable documentation for Service Proxy Interactions.
