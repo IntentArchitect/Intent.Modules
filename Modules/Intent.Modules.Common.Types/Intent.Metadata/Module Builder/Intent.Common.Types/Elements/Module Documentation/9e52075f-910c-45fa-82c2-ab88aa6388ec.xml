@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9e52075f-910c-45fa-82c2-ab88aa6388ec" type="Module Documentation" typeId="a869a2c4-bf24-477c-9d19-87fb24d4209f">
+  <name>Documentation</name>
+  <display>Documentation</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</parentFolderId>
+  <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
+  <packageName>Intent.Common.Types</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="4d7dbae3-6054-4dc4-939b-8f013b2a059f" type="Documentation Topic" typeId="5cc56ebc-6b61-41a6-a452-8efd9382da6f">
+      <name>Referencing external Types in your Designer</name>
+      <display>Referencing external Types in your Designer</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9e52075f-910c-45fa-82c2-ab88aa6388ec</parentFolderId>
+      <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
+      <packageName>Intent.Common.Types</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="83dfd8ae-5086-4e41-94c2-7110d5a49b4c" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="2792ad9a-2afd-4350-bac6-bdcf4b701ff1" display="Description" value="Reference any Types you have defined in your codebase inside your designers in Intent Architect by using Type Definitions." isActive="true" />
+            <property name="4fa553d3-1b96-4f63-bdb9-3237eca31f6b" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+            <property name="207e8583-2ba5-4ea3-84aa-2f65cd5915ca" display="Href" value="https://docs.intentarchitect.com/articles/application-development/modelling/type-definitions/type-definitions.html" isActive="true" />
+            <property name="21d13790-2910-475c-b58f-9d350f2e13c6" display="Designers" isActive="true" />
+            <property name="8642b1d1-93f9-4f5f-b5ae-ad5fc20d7a46" display="Elements" value="[]" isActive="true" />
+            <property name="f55a1f0c-40dd-48b4-b985-8360933e6a47" display="Tags" value="external type definition reference existing" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

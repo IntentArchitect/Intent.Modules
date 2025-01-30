@@ -1,3 +1,7 @@
+### Version 4.1.1
+
+- Improvement: Added Documentation topic regarding `Type Definitions`.
+
 ### Version 4.1.0
 
 - Improvement: Updated icons.
