@@ -220,7 +220,9 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+        let existingField = this.innerElement.getChildren(this.settings.childSpecialization)
+            .find(c =&gt; c.getName().toLowerCase() == ServicesHelper.formatName(name, this.settings.childType ?? "property").toLowerCase());
+        let field = existingField ?? createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -316,7 +318,7 @@ class ProxyServiceHelper {
         }
         return serviceElement;
     }
-    static createAppServiceOperationAction(operation, folder, service) {
+    static createAppServiceOperationAction(operation, folder, service, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async");
         operationName = toPascalCase(operationName);
@@ -324,7 +326,11 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
-        let operationElement = createElement("Operation", operationName, service.id);
+        const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        if (existing &amp;&amp; !syncElement) {
+            return existing;
+        }
+        let operationElement = existing ?? createElement("Operation", operationName, service.id);
         let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
         let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
@@ -332,12 +338,14 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             operationElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -346,7 +354,7 @@ class ProxyServiceHelper {
         }
         return operationElement;
     }
-    static createCqrsAction(operation, folder) {
+    static createCqrsAction(operation, folder, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async", "Command", "Query");
         operationName = toPascalCase(operationName);
@@ -362,23 +370,26 @@ class ProxyServiceHelper {
         }
         const actionName = `${operationName}${actionTypeName}`;
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
-        if (existing) {
+        if (existing &amp;&amp; !syncElement) {
             return existing;
         }
-        const actionElement = createElement(actionTypeName, actionName, folder.id);
-        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
-        let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
+        const actionElement = existing ?? createElement(actionTypeName, actionName, folder.id);
+        // let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        // let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
         // let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
+        // don't recreate the association if it the entity exists exists
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             actionElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -453,7 +464,7 @@ class ProxyServiceHelper {
             httpRouteParams: httpRouteParams
         };
     }
-    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore) {
+    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore, isExistingElement = false) {
         const childSpecialization = flattenFieldsFromComplexTypes
             ? "DTO-Field"
             : proxyFields.length &gt; 0
@@ -470,20 +481,20 @@ class ProxyServiceHelper {
                     let proxyRefType = proxyField.typeReference.getType();
                     if (flattenFieldsFromComplexTypes) {
                         mappingStore.pushTargetPath(proxyField.id);
-                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore);
+                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore, isExistingElement);
                         mappingStore.popTargetPath();
                     }
                     else {
                         let actionField = elementManager.addChild(proxyField.getName(), null);
                         mappingStore.pushSourcePath(actionField.id);
                         mappingStore.pushTargetPath(proxyField.id);
-                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore);
+                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore, isExistingElement);
                         mappingStore.popSourcePath();
                         mappingStore.popTargetPath();
                         actionField.typeReference.setType(actionDto.id);
                         actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
                         actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
-                        if (proxyField.hasMetadata("endpoint-input-id")) {
+                        if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                             actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                         }
                     }
@@ -491,14 +502,16 @@ class ProxyServiceHelper {
                 default:
                     // Non-Complex type
                     let fieldName = proxyField.getName();
-                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
+                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName) &amp;&amp; !isExistingElement) {
                         let parentName = proxyField.getParent().getName();
                         fieldName = parentName + fieldName;
                     }
                     let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
                     actionField.setValue(proxyField.getValue());
-                    mappingStore.addMapping(actionField.id, proxyField.id);
-                    if (proxyField.hasMetadata("endpoint-input-id")) {
+                    if (!isExistingElement) {
+                        mappingStore.addMapping(actionField.id, proxyField.id);
+                    }
+                    if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                         actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                     }
                     break;
@@ -506,10 +519,12 @@ class ProxyServiceHelper {
         }
         elementManager.collapse();
     }
-    static replicateDto(proxyDto, folder, mappingStore) {
-        let newDto = createElement("DTO", proxyDto.getName(), folder.id);
+    static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
+        let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
-            let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
+            let existingField = newDto.getChildren().find(c =&gt; c.getName() == proxyField.getName());
+            let actionField = (existingField &amp;&amp; isExistingElement) ? existingField : createElement("DTO-Field", proxyField.getName(), newDto.id);
             let fieldRefType = proxyField.typeReference?.getType()?.specialization;
             switch (fieldRefType) {
                 case "Command":
@@ -518,7 +533,7 @@ class ProxyServiceHelper {
                     // Complex type
                     mappingStore.pushSourcePath(actionField.id);
                     mappingStore.pushTargetPath(proxyField.id);
-                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
+                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore, isExistingElement);
                     mappingStore.popSourcePath();
                     mappingStore.popTargetPath();
                     actionField.typeReference.setType(nestedDto.id);
@@ -777,7 +792,9 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+        let existingField = this.innerElement.getChildren(this.settings.childSpecialization)
+            .find(c =&gt; c.getName().toLowerCase() == ServicesHelper.formatName(name, this.settings.childType ?? "property").toLowerCase());
+        let field = existingField ?? createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -873,7 +890,7 @@ class ProxyServiceHelper {
         }
         return serviceElement;
     }
-    static createAppServiceOperationAction(operation, folder, service) {
+    static createAppServiceOperationAction(operation, folder, service, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async");
         operationName = toPascalCase(operationName);
@@ -881,7 +898,11 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
-        let operationElement = createElement("Operation", operationName, service.id);
+        const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        if (existing &amp;&amp; !syncElement) {
+            return existing;
+        }
+        let operationElement = existing ?? createElement("Operation", operationName, service.id);
         let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
         let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
@@ -889,12 +910,14 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             operationElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -903,7 +926,7 @@ class ProxyServiceHelper {
         }
         return operationElement;
     }
-    static createCqrsAction(operation, folder) {
+    static createCqrsAction(operation, folder, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async", "Command", "Query");
         operationName = toPascalCase(operationName);
@@ -919,23 +942,26 @@ class ProxyServiceHelper {
         }
         const actionName = `${operationName}${actionTypeName}`;
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
-        if (existing) {
+        if (existing &amp;&amp; !syncElement) {
             return existing;
         }
-        const actionElement = createElement(actionTypeName, actionName, folder.id);
-        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
-        let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
+        const actionElement = existing ?? createElement(actionTypeName, actionName, folder.id);
+        // let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        // let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
         // let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
+        // don't recreate the association if it the entity exists exists
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             actionElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -1010,7 +1036,7 @@ class ProxyServiceHelper {
             httpRouteParams: httpRouteParams
         };
     }
-    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore) {
+    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore, isExistingElement = false) {
         const childSpecialization = flattenFieldsFromComplexTypes
             ? "DTO-Field"
             : proxyFields.length &gt; 0
@@ -1027,20 +1053,20 @@ class ProxyServiceHelper {
                     let proxyRefType = proxyField.typeReference.getType();
                     if (flattenFieldsFromComplexTypes) {
                         mappingStore.pushTargetPath(proxyField.id);
-                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore);
+                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore, isExistingElement);
                         mappingStore.popTargetPath();
                     }
                     else {
                         let actionField = elementManager.addChild(proxyField.getName(), null);
                         mappingStore.pushSourcePath(actionField.id);
                         mappingStore.pushTargetPath(proxyField.id);
-                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore);
+                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore, isExistingElement);
                         mappingStore.popSourcePath();
                         mappingStore.popTargetPath();
                         actionField.typeReference.setType(actionDto.id);
                         actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
                         actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
-                        if (proxyField.hasMetadata("endpoint-input-id")) {
+                        if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                             actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                         }
                     }
@@ -1048,14 +1074,16 @@ class ProxyServiceHelper {
                 default:
                     // Non-Complex type
                     let fieldName = proxyField.getName();
-                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
+                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName) &amp;&amp; !isExistingElement) {
                         let parentName = proxyField.getParent().getName();
                         fieldName = parentName + fieldName;
                     }
                     let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
                     actionField.setValue(proxyField.getValue());
-                    mappingStore.addMapping(actionField.id, proxyField.id);
-                    if (proxyField.hasMetadata("endpoint-input-id")) {
+                    if (!isExistingElement) {
+                        mappingStore.addMapping(actionField.id, proxyField.id);
+                    }
+                    if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                         actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                     }
                     break;
@@ -1063,10 +1091,12 @@ class ProxyServiceHelper {
         }
         elementManager.collapse();
     }
-    static replicateDto(proxyDto, folder, mappingStore) {
-        let newDto = createElement("DTO", proxyDto.getName(), folder.id);
+    static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
+        let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
-            let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
+            let existingField = newDto.getChildren().find(c =&gt; c.getName() == proxyField.getName());
+            let actionField = (existingField &amp;&amp; isExistingElement) ? existingField : createElement("DTO-Field", proxyField.getName(), newDto.id);
             let fieldRefType = proxyField.typeReference?.getType()?.specialization;
             switch (fieldRefType) {
                 case "Command":
@@ -1075,7 +1105,7 @@ class ProxyServiceHelper {
                     // Complex type
                     mappingStore.pushSourcePath(actionField.id);
                     mappingStore.pushTargetPath(proxyField.id);
-                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
+                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore, isExistingElement);
                     mappingStore.popSourcePath();
                     mappingStore.popTargetPath();
                     actionField.typeReference.setType(nestedDto.id);
@@ -1335,7 +1365,9 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+        let existingField = this.innerElement.getChildren(this.settings.childSpecialization)
+            .find(c =&gt; c.getName().toLowerCase() == ServicesHelper.formatName(name, this.settings.childType ?? "property").toLowerCase());
+        let field = existingField ?? createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -1431,7 +1463,7 @@ class ProxyServiceHelper {
         }
         return serviceElement;
     }
-    static createAppServiceOperationAction(operation, folder, service) {
+    static createAppServiceOperationAction(operation, folder, service, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async");
         operationName = toPascalCase(operationName);
@@ -1439,7 +1471,11 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
-        let operationElement = createElement("Operation", operationName, service.id);
+        const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        if (existing &amp;&amp; !syncElement) {
+            return existing;
+        }
+        let operationElement = existing ?? createElement("Operation", operationName, service.id);
         let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
         let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
@@ -1447,12 +1483,14 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             operationElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -1461,7 +1499,7 @@ class ProxyServiceHelper {
         }
         return operationElement;
     }
-    static createCqrsAction(operation, folder) {
+    static createCqrsAction(operation, folder, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async", "Command", "Query");
         operationName = toPascalCase(operationName);
@@ -1477,23 +1515,26 @@ class ProxyServiceHelper {
         }
         const actionName = `${operationName}${actionTypeName}`;
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
-        if (existing) {
+        if (existing &amp;&amp; !syncElement) {
             return existing;
         }
-        const actionElement = createElement(actionTypeName, actionName, folder.id);
-        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
-        let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
+        const actionElement = existing ?? createElement(actionTypeName, actionName, folder.id);
+        // let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        // let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
         // let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
+        // don't recreate the association if it the entity exists exists
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             actionElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -1568,7 +1609,7 @@ class ProxyServiceHelper {
             httpRouteParams: httpRouteParams
         };
     }
-    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore) {
+    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore, isExistingElement = false) {
         const childSpecialization = flattenFieldsFromComplexTypes
             ? "DTO-Field"
             : proxyFields.length &gt; 0
@@ -1585,20 +1626,20 @@ class ProxyServiceHelper {
                     let proxyRefType = proxyField.typeReference.getType();
                     if (flattenFieldsFromComplexTypes) {
                         mappingStore.pushTargetPath(proxyField.id);
-                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore);
+                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore, isExistingElement);
                         mappingStore.popTargetPath();
                     }
                     else {
                         let actionField = elementManager.addChild(proxyField.getName(), null);
                         mappingStore.pushSourcePath(actionField.id);
                         mappingStore.pushTargetPath(proxyField.id);
-                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore);
+                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore, isExistingElement);
                         mappingStore.popSourcePath();
                         mappingStore.popTargetPath();
                         actionField.typeReference.setType(actionDto.id);
                         actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
                         actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
-                        if (proxyField.hasMetadata("endpoint-input-id")) {
+                        if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                             actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                         }
                     }
@@ -1606,14 +1647,16 @@ class ProxyServiceHelper {
                 default:
                     // Non-Complex type
                     let fieldName = proxyField.getName();
-                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
+                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName) &amp;&amp; !isExistingElement) {
                         let parentName = proxyField.getParent().getName();
                         fieldName = parentName + fieldName;
                     }
                     let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
                     actionField.setValue(proxyField.getValue());
-                    mappingStore.addMapping(actionField.id, proxyField.id);
-                    if (proxyField.hasMetadata("endpoint-input-id")) {
+                    if (!isExistingElement) {
+                        mappingStore.addMapping(actionField.id, proxyField.id);
+                    }
+                    if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                         actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                     }
                     break;
@@ -1621,10 +1664,12 @@ class ProxyServiceHelper {
         }
         elementManager.collapse();
     }
-    static replicateDto(proxyDto, folder, mappingStore) {
-        let newDto = createElement("DTO", proxyDto.getName(), folder.id);
+    static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
+        let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
-            let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
+            let existingField = newDto.getChildren().find(c =&gt; c.getName() == proxyField.getName());
+            let actionField = (existingField &amp;&amp; isExistingElement) ? existingField : createElement("DTO-Field", proxyField.getName(), newDto.id);
             let fieldRefType = proxyField.typeReference?.getType()?.specialization;
             switch (fieldRefType) {
                 case "Command":
@@ -1633,7 +1678,7 @@ class ProxyServiceHelper {
                     // Complex type
                     mappingStore.pushSourcePath(actionField.id);
                     mappingStore.pushTargetPath(proxyField.id);
-                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
+                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore, isExistingElement);
                     mappingStore.popSourcePath();
                     mappingStore.popTargetPath();
                     actionField.typeReference.setType(nestedDto.id);
@@ -1892,7 +1937,9 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+        let existingField = this.innerElement.getChildren(this.settings.childSpecialization)
+            .find(c =&gt; c.getName().toLowerCase() == ServicesHelper.formatName(name, this.settings.childType ?? "property").toLowerCase());
+        let field = existingField ?? createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -1988,7 +2035,7 @@ class ProxyServiceHelper {
         }
         return serviceElement;
     }
-    static createAppServiceOperationAction(operation, folder, service) {
+    static createAppServiceOperationAction(operation, folder, service, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async");
         operationName = toPascalCase(operationName);
@@ -1996,7 +2043,11 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
-        let operationElement = createElement("Operation", operationName, service.id);
+        const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        if (existing &amp;&amp; !syncElement) {
+            return existing;
+        }
+        let operationElement = existing ?? createElement("Operation", operationName, service.id);
         let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
         let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
@@ -2004,12 +2055,14 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             operationElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -2018,7 +2071,7 @@ class ProxyServiceHelper {
         }
         return operationElement;
     }
-    static createCqrsAction(operation, folder) {
+    static createCqrsAction(operation, folder, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async", "Command", "Query");
         operationName = toPascalCase(operationName);
@@ -2034,23 +2087,26 @@ class ProxyServiceHelper {
         }
         const actionName = `${operationName}${actionTypeName}`;
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
-        if (existing) {
+        if (existing &amp;&amp; !syncElement) {
             return existing;
         }
-        const actionElement = createElement(actionTypeName, actionName, folder.id);
-        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
-        let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
+        const actionElement = existing ?? createElement(actionTypeName, actionName, folder.id);
+        // let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        // let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
         // let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
+        // don't recreate the association if it the entity exists exists
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             actionElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -2125,7 +2181,7 @@ class ProxyServiceHelper {
             httpRouteParams: httpRouteParams
         };
     }
-    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore) {
+    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore, isExistingElement = false) {
         const childSpecialization = flattenFieldsFromComplexTypes
             ? "DTO-Field"
             : proxyFields.length &gt; 0
@@ -2142,20 +2198,20 @@ class ProxyServiceHelper {
                     let proxyRefType = proxyField.typeReference.getType();
                     if (flattenFieldsFromComplexTypes) {
                         mappingStore.pushTargetPath(proxyField.id);
-                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore);
+                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore, isExistingElement);
                         mappingStore.popTargetPath();
                     }
                     else {
                         let actionField = elementManager.addChild(proxyField.getName(), null);
                         mappingStore.pushSourcePath(actionField.id);
                         mappingStore.pushTargetPath(proxyField.id);
-                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore);
+                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore, isExistingElement);
                         mappingStore.popSourcePath();
                         mappingStore.popTargetPath();
                         actionField.typeReference.setType(actionDto.id);
                         actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
                         actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
-                        if (proxyField.hasMetadata("endpoint-input-id")) {
+                        if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                             actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                         }
                     }
@@ -2163,14 +2219,16 @@ class ProxyServiceHelper {
                 default:
                     // Non-Complex type
                     let fieldName = proxyField.getName();
-                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
+                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName) &amp;&amp; !isExistingElement) {
                         let parentName = proxyField.getParent().getName();
                         fieldName = parentName + fieldName;
                     }
                     let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
                     actionField.setValue(proxyField.getValue());
-                    mappingStore.addMapping(actionField.id, proxyField.id);
-                    if (proxyField.hasMetadata("endpoint-input-id")) {
+                    if (!isExistingElement) {
+                        mappingStore.addMapping(actionField.id, proxyField.id);
+                    }
+                    if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                         actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                     }
                     break;
@@ -2178,10 +2236,12 @@ class ProxyServiceHelper {
         }
         elementManager.collapse();
     }
-    static replicateDto(proxyDto, folder, mappingStore) {
-        let newDto = createElement("DTO", proxyDto.getName(), folder.id);
+    static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
+        let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
-            let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
+            let existingField = newDto.getChildren().find(c =&gt; c.getName() == proxyField.getName());
+            let actionField = (existingField &amp;&amp; isExistingElement) ? existingField : createElement("DTO-Field", proxyField.getName(), newDto.id);
             let fieldRefType = proxyField.typeReference?.getType()?.specialization;
             switch (fieldRefType) {
                 case "Command":
@@ -2190,7 +2250,7 @@ class ProxyServiceHelper {
                     // Complex type
                     mappingStore.pushSourcePath(actionField.id);
                     mappingStore.pushTargetPath(proxyField.id);
-                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
+                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore, isExistingElement);
                     mappingStore.popSourcePath();
                     mappingStore.popTargetPath();
                     actionField.typeReference.setType(nestedDto.id);
@@ -2454,7 +2514,9 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+        let existingField = this.innerElement.getChildren(this.settings.childSpecialization)
+            .find(c =&gt; c.getName().toLowerCase() == ServicesHelper.formatName(name, this.settings.childType ?? "property").toLowerCase());
+        let field = existingField ?? createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -2550,7 +2612,7 @@ class ProxyServiceHelper {
         }
         return serviceElement;
     }
-    static createAppServiceOperationAction(operation, folder, service) {
+    static createAppServiceOperationAction(operation, folder, service, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async");
         operationName = toPascalCase(operationName);
@@ -2558,7 +2620,11 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
-        let operationElement = createElement("Operation", operationName, service.id);
+        const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        if (existing &amp;&amp; !syncElement) {
+            return existing;
+        }
+        let operationElement = existing ?? createElement("Operation", operationName, service.id);
         let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
         let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
@@ -2566,12 +2632,14 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             operationElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -2580,7 +2648,7 @@ class ProxyServiceHelper {
         }
         return operationElement;
     }
-    static createCqrsAction(operation, folder) {
+    static createCqrsAction(operation, folder, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async", "Command", "Query");
         operationName = toPascalCase(operationName);
@@ -2596,23 +2664,26 @@ class ProxyServiceHelper {
         }
         const actionName = `${operationName}${actionTypeName}`;
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
-        if (existing) {
+        if (existing &amp;&amp; !syncElement) {
             return existing;
         }
-        const actionElement = createElement(actionTypeName, actionName, folder.id);
-        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
-        let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
+        const actionElement = existing ?? createElement(actionTypeName, actionName, folder.id);
+        // let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        // let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
         // let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
+        // don't recreate the association if it the entity exists exists
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             actionElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -2687,7 +2758,7 @@ class ProxyServiceHelper {
             httpRouteParams: httpRouteParams
         };
     }
-    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore) {
+    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore, isExistingElement = false) {
         const childSpecialization = flattenFieldsFromComplexTypes
             ? "DTO-Field"
             : proxyFields.length &gt; 0
@@ -2704,20 +2775,20 @@ class ProxyServiceHelper {
                     let proxyRefType = proxyField.typeReference.getType();
                     if (flattenFieldsFromComplexTypes) {
                         mappingStore.pushTargetPath(proxyField.id);
-                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore);
+                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore, isExistingElement);
                         mappingStore.popTargetPath();
                     }
                     else {
                         let actionField = elementManager.addChild(proxyField.getName(), null);
                         mappingStore.pushSourcePath(actionField.id);
                         mappingStore.pushTargetPath(proxyField.id);
-                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore);
+                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore, isExistingElement);
                         mappingStore.popSourcePath();
                         mappingStore.popTargetPath();
                         actionField.typeReference.setType(actionDto.id);
                         actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
                         actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
-                        if (proxyField.hasMetadata("endpoint-input-id")) {
+                        if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                             actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                         }
                     }
@@ -2725,14 +2796,16 @@ class ProxyServiceHelper {
                 default:
                     // Non-Complex type
                     let fieldName = proxyField.getName();
-                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
+                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName) &amp;&amp; !isExistingElement) {
                         let parentName = proxyField.getParent().getName();
                         fieldName = parentName + fieldName;
                     }
                     let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
                     actionField.setValue(proxyField.getValue());
-                    mappingStore.addMapping(actionField.id, proxyField.id);
-                    if (proxyField.hasMetadata("endpoint-input-id")) {
+                    if (!isExistingElement) {
+                        mappingStore.addMapping(actionField.id, proxyField.id);
+                    }
+                    if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                         actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                     }
                     break;
@@ -2740,10 +2813,12 @@ class ProxyServiceHelper {
         }
         elementManager.collapse();
     }
-    static replicateDto(proxyDto, folder, mappingStore) {
-        let newDto = createElement("DTO", proxyDto.getName(), folder.id);
+    static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
+        let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
-            let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
+            let existingField = newDto.getChildren().find(c =&gt; c.getName() == proxyField.getName());
+            let actionField = (existingField &amp;&amp; isExistingElement) ? existingField : createElement("DTO-Field", proxyField.getName(), newDto.id);
             let fieldRefType = proxyField.typeReference?.getType()?.specialization;
             switch (fieldRefType) {
                 case "Command":
@@ -2752,7 +2827,7 @@ class ProxyServiceHelper {
                     // Complex type
                     mappingStore.pushSourcePath(actionField.id);
                     mappingStore.pushTargetPath(proxyField.id);
-                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
+                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore, isExistingElement);
                     mappingStore.popSourcePath();
                     mappingStore.popTargetPath();
                     actionField.typeReference.setType(nestedDto.id);
@@ -2784,7 +2859,7 @@ async function execute(proxyOperation) {
     const proxy = proxyOperation.getParent();
     const folderName = pluralize(proxy.getName());
     const folder = selectedPackage.getChildren("Folder").find(x =&gt; x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
-    ProxyServiceHelper.createCqrsAction(proxyOperation, folder);
+    ProxyServiceHelper.createCqrsAction(proxyOperation, folder, true);
     const diagramElement = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id);
     diagramElement.loadDiagram();
     const diagram = getCurrentDiagram();
@@ -3026,7 +3101,9 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+        let existingField = this.innerElement.getChildren(this.settings.childSpecialization)
+            .find(c =&gt; c.getName().toLowerCase() == ServicesHelper.formatName(name, this.settings.childType ?? "property").toLowerCase());
+        let field = existingField ?? createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -3122,7 +3199,7 @@ class ProxyServiceHelper {
         }
         return serviceElement;
     }
-    static createAppServiceOperationAction(operation, folder, service) {
+    static createAppServiceOperationAction(operation, folder, service, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async");
         operationName = toPascalCase(operationName);
@@ -3130,7 +3207,11 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
-        let operationElement = createElement("Operation", operationName, service.id);
+        const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        if (existing &amp;&amp; !syncElement) {
+            return existing;
+        }
+        let operationElement = existing ?? createElement("Operation", operationName, service.id);
         let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
         let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
@@ -3138,12 +3219,14 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             operationElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -3152,7 +3235,7 @@ class ProxyServiceHelper {
         }
         return operationElement;
     }
-    static createCqrsAction(operation, folder) {
+    static createCqrsAction(operation, folder, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async", "Command", "Query");
         operationName = toPascalCase(operationName);
@@ -3168,23 +3251,26 @@ class ProxyServiceHelper {
         }
         const actionName = `${operationName}${actionTypeName}`;
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
-        if (existing) {
+        if (existing &amp;&amp; !syncElement) {
             return existing;
         }
-        const actionElement = createElement(actionTypeName, actionName, folder.id);
-        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
-        let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
+        const actionElement = existing ?? createElement(actionTypeName, actionName, folder.id);
+        // let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        // let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
         // let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
+        // don't recreate the association if it the entity exists exists
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             actionElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -3259,7 +3345,7 @@ class ProxyServiceHelper {
             httpRouteParams: httpRouteParams
         };
     }
-    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore) {
+    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore, isExistingElement = false) {
         const childSpecialization = flattenFieldsFromComplexTypes
             ? "DTO-Field"
             : proxyFields.length &gt; 0
@@ -3276,20 +3362,20 @@ class ProxyServiceHelper {
                     let proxyRefType = proxyField.typeReference.getType();
                     if (flattenFieldsFromComplexTypes) {
                         mappingStore.pushTargetPath(proxyField.id);
-                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore);
+                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore, isExistingElement);
                         mappingStore.popTargetPath();
                     }
                     else {
                         let actionField = elementManager.addChild(proxyField.getName(), null);
                         mappingStore.pushSourcePath(actionField.id);
                         mappingStore.pushTargetPath(proxyField.id);
-                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore);
+                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore, isExistingElement);
                         mappingStore.popSourcePath();
                         mappingStore.popTargetPath();
                         actionField.typeReference.setType(actionDto.id);
                         actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
                         actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
-                        if (proxyField.hasMetadata("endpoint-input-id")) {
+                        if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                             actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                         }
                     }
@@ -3297,14 +3383,16 @@ class ProxyServiceHelper {
                 default:
                     // Non-Complex type
                     let fieldName = proxyField.getName();
-                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
+                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName) &amp;&amp; !isExistingElement) {
                         let parentName = proxyField.getParent().getName();
                         fieldName = parentName + fieldName;
                     }
                     let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
                     actionField.setValue(proxyField.getValue());
-                    mappingStore.addMapping(actionField.id, proxyField.id);
-                    if (proxyField.hasMetadata("endpoint-input-id")) {
+                    if (!isExistingElement) {
+                        mappingStore.addMapping(actionField.id, proxyField.id);
+                    }
+                    if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                         actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                     }
                     break;
@@ -3312,10 +3400,12 @@ class ProxyServiceHelper {
         }
         elementManager.collapse();
     }
-    static replicateDto(proxyDto, folder, mappingStore) {
-        let newDto = createElement("DTO", proxyDto.getName(), folder.id);
+    static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
+        let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
-            let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
+            let existingField = newDto.getChildren().find(c =&gt; c.getName() == proxyField.getName());
+            let actionField = (existingField &amp;&amp; isExistingElement) ? existingField : createElement("DTO-Field", proxyField.getName(), newDto.id);
             let fieldRefType = proxyField.typeReference?.getType()?.specialization;
             switch (fieldRefType) {
                 case "Command":
@@ -3324,7 +3414,7 @@ class ProxyServiceHelper {
                     // Complex type
                     mappingStore.pushSourcePath(actionField.id);
                     mappingStore.pushTargetPath(proxyField.id);
-                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
+                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore, isExistingElement);
                     mappingStore.popSourcePath();
                     mappingStore.popTargetPath();
                     actionField.typeReference.setType(nestedDto.id);
@@ -3356,7 +3446,7 @@ async function execute(operation) {
     const proxy = operation.getParent();
     const folderName = pluralize(ProxyServiceHelper.sanitizeServiceName(proxy.getName()));
     const folder = selectedPackage.getChildren("Folder").find(x =&gt; x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
-    let newOperation = ProxyServiceHelper.createAppServiceOperationAction(operation, folder);
+    let newOperation = ProxyServiceHelper.createAppServiceOperationAction(operation, folder, null, true);
     const diagramElement = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id);
     diagramElement.loadDiagram();
     const diagram = getCurrentDiagram();
@@ -3585,7 +3675,9 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+        let existingField = this.innerElement.getChildren(this.settings.childSpecialization)
+            .find(c =&gt; c.getName().toLowerCase() == ServicesHelper.formatName(name, this.settings.childType ?? "property").toLowerCase());
+        let field = existingField ?? createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -3681,7 +3773,7 @@ class ProxyServiceHelper {
         }
         return serviceElement;
     }
-    static createAppServiceOperationAction(operation, folder, service) {
+    static createAppServiceOperationAction(operation, folder, service, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async");
         operationName = toPascalCase(operationName);
@@ -3689,7 +3781,11 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
-        let operationElement = createElement("Operation", operationName, service.id);
+        const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        if (existing &amp;&amp; !syncElement) {
+            return existing;
+        }
+        let operationElement = existing ?? createElement("Operation", operationName, service.id);
         let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
         let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
@@ -3697,12 +3793,14 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             operationElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -3711,7 +3809,7 @@ class ProxyServiceHelper {
         }
         return operationElement;
     }
-    static createCqrsAction(operation, folder) {
+    static createCqrsAction(operation, folder, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async", "Command", "Query");
         operationName = toPascalCase(operationName);
@@ -3727,23 +3825,26 @@ class ProxyServiceHelper {
         }
         const actionName = `${operationName}${actionTypeName}`;
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
-        if (existing) {
+        if (existing &amp;&amp; !syncElement) {
             return existing;
         }
-        const actionElement = createElement(actionTypeName, actionName, folder.id);
-        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
-        let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
+        const actionElement = existing ?? createElement(actionTypeName, actionName, folder.id);
+        // let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        // let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
         // let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
+        // don't recreate the association if it the entity exists exists
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             actionElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -3818,7 +3919,7 @@ class ProxyServiceHelper {
             httpRouteParams: httpRouteParams
         };
     }
-    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore) {
+    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore, isExistingElement = false) {
         const childSpecialization = flattenFieldsFromComplexTypes
             ? "DTO-Field"
             : proxyFields.length &gt; 0
@@ -3835,20 +3936,20 @@ class ProxyServiceHelper {
                     let proxyRefType = proxyField.typeReference.getType();
                     if (flattenFieldsFromComplexTypes) {
                         mappingStore.pushTargetPath(proxyField.id);
-                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore);
+                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore, isExistingElement);
                         mappingStore.popTargetPath();
                     }
                     else {
                         let actionField = elementManager.addChild(proxyField.getName(), null);
                         mappingStore.pushSourcePath(actionField.id);
                         mappingStore.pushTargetPath(proxyField.id);
-                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore);
+                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore, isExistingElement);
                         mappingStore.popSourcePath();
                         mappingStore.popTargetPath();
                         actionField.typeReference.setType(actionDto.id);
                         actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
                         actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
-                        if (proxyField.hasMetadata("endpoint-input-id")) {
+                        if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                             actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                         }
                     }
@@ -3856,14 +3957,16 @@ class ProxyServiceHelper {
                 default:
                     // Non-Complex type
                     let fieldName = proxyField.getName();
-                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
+                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName) &amp;&amp; !isExistingElement) {
                         let parentName = proxyField.getParent().getName();
                         fieldName = parentName + fieldName;
                     }
                     let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
                     actionField.setValue(proxyField.getValue());
-                    mappingStore.addMapping(actionField.id, proxyField.id);
-                    if (proxyField.hasMetadata("endpoint-input-id")) {
+                    if (!isExistingElement) {
+                        mappingStore.addMapping(actionField.id, proxyField.id);
+                    }
+                    if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                         actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                     }
                     break;
@@ -3871,10 +3974,12 @@ class ProxyServiceHelper {
         }
         elementManager.collapse();
     }
-    static replicateDto(proxyDto, folder, mappingStore) {
-        let newDto = createElement("DTO", proxyDto.getName(), folder.id);
+    static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
+        let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
-            let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
+            let existingField = newDto.getChildren().find(c =&gt; c.getName() == proxyField.getName());
+            let actionField = (existingField &amp;&amp; isExistingElement) ? existingField : createElement("DTO-Field", proxyField.getName(), newDto.id);
             let fieldRefType = proxyField.typeReference?.getType()?.specialization;
             switch (fieldRefType) {
                 case "Command":
@@ -3883,7 +3988,7 @@ class ProxyServiceHelper {
                     // Complex type
                     mappingStore.pushSourcePath(actionField.id);
                     mappingStore.pushTargetPath(proxyField.id);
-                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
+                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore, isExistingElement);
                     mappingStore.popSourcePath();
                     mappingStore.popTargetPath();
                     actionField.typeReference.setType(nestedDto.id);
@@ -3915,7 +4020,7 @@ async function execute(proxyOperation) {
     const proxy = proxyOperation.getParent();
     const folderName = pluralize(proxy.getName());
     const folder = selectedPackage.getChildren("Folder").find(x =&gt; x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
-    ProxyServiceHelper.createCqrsAction(proxyOperation, folder);
+    ProxyServiceHelper.createCqrsAction(proxyOperation, folder, true);
     const diagramElement = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id);
     diagramElement.loadDiagram();
     const diagram = getCurrentDiagram();
@@ -4157,7 +4262,9 @@ class ElementManager {
         return this;
     }
     addChild(name, type) {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+        let existingField = this.innerElement.getChildren(this.settings.childSpecialization)
+            .find(c =&gt; c.getName().toLowerCase() == ServicesHelper.formatName(name, this.settings.childType ?? "property").toLowerCase());
+        let field = existingField ?? createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"
@@ -4253,7 +4360,7 @@ class ProxyServiceHelper {
         }
         return serviceElement;
     }
-    static createAppServiceOperationAction(operation, folder, service) {
+    static createAppServiceOperationAction(operation, folder, service, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async");
         operationName = toPascalCase(operationName);
@@ -4261,7 +4368,11 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
-        let operationElement = createElement("Operation", operationName, service.id);
+        const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        if (existing &amp;&amp; !syncElement) {
+            return existing;
+        }
+        let operationElement = existing ?? createElement("Operation", operationName, service.id);
         let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
         let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
@@ -4269,12 +4380,14 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             operationElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -4283,7 +4396,7 @@ class ProxyServiceHelper {
         }
         return operationElement;
     }
-    static createCqrsAction(operation, folder) {
+    static createCqrsAction(operation, folder, syncElement = false) {
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async", "Command", "Query");
         operationName = toPascalCase(operationName);
@@ -4299,23 +4412,26 @@ class ProxyServiceHelper {
         }
         const actionName = `${operationName}${actionTypeName}`;
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
-        if (existing) {
+        if (existing &amp;&amp; !syncElement) {
             return existing;
         }
-        const actionElement = createElement(actionTypeName, actionName, folder.id);
-        let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
-        let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
+        const actionElement = existing ?? createElement(actionTypeName, actionName, folder.id);
+        // let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
+        // let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
         // const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
         // let httpSettings = actionElement.getStereotype(httpSettingsStereotypeId) ?? actionElement.addStereotype(httpSettingsStereotypeId);
         // httpSettings.getProperty("Verb").setValue(verb);
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
-        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore);
-        let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
-        let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
-        mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
-        for (let entry of mappingStore.getMappings()) {
-            mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+        ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
+        // don't recreate the association if it the entity exists exists
+        if (!existing) {
+            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
+            mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
+            for (let entry of mappingStore.getMappings()) {
+                mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
+            }
         }
         if (operation.typeReference?.getTypeId()) {
             actionElement.typeReference.setType(operation.typeReference.getTypeId());
@@ -4390,7 +4506,7 @@ class ProxyServiceHelper {
             httpRouteParams: httpRouteParams
         };
     }
-    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore) {
+    static recreateAction(proxyFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore, isExistingElement = false) {
         const childSpecialization = flattenFieldsFromComplexTypes
             ? "DTO-Field"
             : proxyFields.length &gt; 0
@@ -4407,20 +4523,20 @@ class ProxyServiceHelper {
                     let proxyRefType = proxyField.typeReference.getType();
                     if (flattenFieldsFromComplexTypes) {
                         mappingStore.pushTargetPath(proxyField.id);
-                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore);
+                        ProxyServiceHelper.recreateAction(proxyRefType.getChildren("DTO-Field"), elementManager.getElement(), false, folder, mappingStore, isExistingElement);
                         mappingStore.popTargetPath();
                     }
                     else {
                         let actionField = elementManager.addChild(proxyField.getName(), null);
                         mappingStore.pushSourcePath(actionField.id);
                         mappingStore.pushTargetPath(proxyField.id);
-                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore);
+                        let actionDto = ProxyServiceHelper.replicateDto(proxyRefType, folder, mappingStore, isExistingElement);
                         mappingStore.popSourcePath();
                         mappingStore.popTargetPath();
                         actionField.typeReference.setType(actionDto.id);
                         actionField.typeReference.setIsCollection(proxyField.typeReference.isCollection);
                         actionField.typeReference.setIsNullable(proxyField.typeReference.isNullable);
-                        if (proxyField.hasMetadata("endpoint-input-id")) {
+                        if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                             actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                         }
                     }
@@ -4428,14 +4544,16 @@ class ProxyServiceHelper {
                 default:
                     // Non-Complex type
                     let fieldName = proxyField.getName();
-                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName)) {
+                    if (elementManager.getElement().getChildren().some(x =&gt; x.getName() === fieldName) &amp;&amp; !isExistingElement) {
                         let parentName = proxyField.getParent().getName();
                         fieldName = parentName + fieldName;
                     }
                     let actionField = elementManager.addChild(fieldName, proxyField.typeReference);
                     actionField.setValue(proxyField.getValue());
-                    mappingStore.addMapping(actionField.id, proxyField.id);
-                    if (proxyField.hasMetadata("endpoint-input-id")) {
+                    if (!isExistingElement) {
+                        mappingStore.addMapping(actionField.id, proxyField.id);
+                    }
+                    if (proxyField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
                         actionField.addMetadata("endpoint-input-id", proxyField.getMetadata("endpoint-input-id"));
                     }
                     break;
@@ -4443,10 +4561,12 @@ class ProxyServiceHelper {
         }
         elementManager.collapse();
     }
-    static replicateDto(proxyDto, folder, mappingStore) {
-        let newDto = createElement("DTO", proxyDto.getName(), folder.id);
+    static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
+        let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
-            let actionField = createElement("DTO-Field", proxyField.getName(), newDto.id);
+            let existingField = newDto.getChildren().find(c =&gt; c.getName() == proxyField.getName());
+            let actionField = (existingField &amp;&amp; isExistingElement) ? existingField : createElement("DTO-Field", proxyField.getName(), newDto.id);
             let fieldRefType = proxyField.typeReference?.getType()?.specialization;
             switch (fieldRefType) {
                 case "Command":
@@ -4455,7 +4575,7 @@ class ProxyServiceHelper {
                     // Complex type
                     mappingStore.pushSourcePath(actionField.id);
                     mappingStore.pushTargetPath(proxyField.id);
-                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore);
+                    let nestedDto = ProxyServiceHelper.replicateDto(proxyField.typeReference.getType(), folder, mappingStore, isExistingElement);
                     mappingStore.popSourcePath();
                     mappingStore.popTargetPath();
                     actionField.typeReference.setType(nestedDto.id);
@@ -4487,7 +4607,7 @@ async function execute(operation) {
     const proxy = operation.getParent();
     const folderName = pluralize(ProxyServiceHelper.sanitizeServiceName(proxy.getName()));
     const folder = selectedPackage.getChildren("Folder").find(x =&gt; x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
-    let newOperation = ProxyServiceHelper.createAppServiceOperationAction(operation, folder);
+    let newOperation = ProxyServiceHelper.createAppServiceOperationAction(operation, folder, null, true);
     const diagramElement = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id);
     diagramElement.loadDiagram();
     const diagram = getCurrentDiagram();

@@ -55,3 +55,9 @@ Which will generate the following:
 ![The result of using Creates Service on a Service Proxy in the Services designer](images/13-create-service-result.png)
 
 When you run the Software Factory, it will now generate implementations for the CQRS Operations or Services which inject the service proxy interface, call the methods and return the result.
+
+> [!NOTE]
+> The `Create CQRS Operations` and `Create Service` options are available at a **Proxy Service** level. These options will accelerate the creation of the `commands/queries/operations` that don't already exist. Selecting them again will have no effect if all `commands/queries/operations` have already been created.
+
+> [!NOTE]
+> The `Create CQRS Operation` and `Create Service Operations` options are available at the **Proxy Operation** level. These options will accelerate the **creation or updating** of the selected `command/query/operation`. If selected for a proxy operation which is already linked to a proxy `command/query/operation`, the proxy `command/query/operation` synced with the source `command/query/operation`. Attributes, attribute types, and default values will be updated to match the source as closely as possible. Be aware this could result in a loss of manual changes which have been made to linked proxy `command/query/operation`.

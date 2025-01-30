@@ -19,7 +19,10 @@ class ElementManager {
     }
 
     addChild(name: string, type?: string | MacroApi.Context.ITypeReference): MacroApi.Context.IElementApi {
-        let field = createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+        let existingField = this.innerElement.getChildren(this.settings.childSpecialization)
+            .find(c => c.getName().toLowerCase() == ServicesHelper.formatName(name, this.settings.childType ?? "property").toLowerCase());
+        
+        let field = existingField ?? createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
         const typeReferenceDetails = type == null
             ? null
             : typeof (type) === "string"

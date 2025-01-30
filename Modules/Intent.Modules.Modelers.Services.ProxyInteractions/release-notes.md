@@ -1,6 +1,7 @@
 ### Version 1.1.1
 
-- Fixed: Proxy `Commands` and `Queries` are now created with the same attribute default values as the original `Command` or `Query`.
+- Fixed: Proxy `Commands/Queries/Operations` are now created with the same attribute default values as the original `Command` or `Query`.
+- Fixed: When executing the `Create CQRS/Service Operation` command on an *Operation*, the proxy element will now sync with the source element
 
 
 ### Version 1.1.0

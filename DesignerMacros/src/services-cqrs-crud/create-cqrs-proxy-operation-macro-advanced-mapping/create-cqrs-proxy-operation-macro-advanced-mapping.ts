@@ -2,6 +2,7 @@
 /// <reference path="../../common/proxyServiceHelper.ts" />
 
 async function execute(proxyOperation: MacroApi.Context.IElementApi) {
+
     let servicePackages = getPackages().filter(pkg => pkg.specialization === "Services Package");
     let selectedPackage: MacroApi.Context.IPackageApi;
     if (servicePackages.length == 1) {
@@ -14,7 +15,7 @@ async function execute(proxyOperation: MacroApi.Context.IElementApi) {
     const folderName = pluralize(proxy.getName());
     const folder = selectedPackage.getChildren("Folder").find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
 
-    ProxyServiceHelper.createCqrsAction(proxyOperation, folder);
+    ProxyServiceHelper.createCqrsAction(proxyOperation, folder, true);
 
     const diagramElement = folder.getChildren("Diagram").find(x => x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id)
     diagramElement.loadDiagram();

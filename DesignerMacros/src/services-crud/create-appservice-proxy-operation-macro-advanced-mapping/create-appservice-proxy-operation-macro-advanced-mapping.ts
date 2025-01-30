@@ -14,7 +14,7 @@ async function execute(operation: MacroApi.Context.IElementApi) {
     const folderName = pluralize(ProxyServiceHelper.sanitizeServiceName(proxy.getName()));
     const folder = selectedPackage.getChildren("Folder").find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
 
-    let newOperation = ProxyServiceHelper.createAppServiceOperationAction(operation, folder);
+    let newOperation = ProxyServiceHelper.createAppServiceOperationAction(operation, folder, null, true);
  
     const diagramElement = folder.getChildren("Diagram").find(x => x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id)
     diagramElement.loadDiagram();
