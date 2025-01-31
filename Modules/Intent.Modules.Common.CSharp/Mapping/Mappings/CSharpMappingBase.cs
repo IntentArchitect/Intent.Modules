@@ -315,7 +315,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         // e.g. We won't target "request.FieldName" (flat mappings pose problems) but rather "request.NavProp.FieldName" for source elements.
         if (model is IElement end &&
             end.TypeReference is { IsNullable: true, IsCollection: false } &&
-            children.All(c => c.Mapping.SourcePath.SkipLast(1).Count() > 1) &&
+            CheckChildrenRecursive(children, c => c.Mapping != null && c.Mapping.SourcePath.SkipLast(1).Count() > 1) &&
             GetSourcePath().Last().Element.TypeReference.IsNullable)
         {
             // GCB - this code (now commented out) was seriously hacky and broke in a simple use case of assigning a DTO to a Model (UI)
@@ -325,6 +325,11 @@ public abstract class CSharpMappingBase : ICSharpMapping
         }
 
         return instantiationStatement;
+    }
+
+    private bool CheckChildrenRecursive(IList<ICSharpMapping> children, Func<ICSharpMapping, bool> predicate)
+    {
+        return children.All(c => predicate(c) || CheckChildrenRecursive(c.Children, predicate));
     }
 
     private bool TryGetReference(IList<IElementMappingPathTarget> mappingPath, out IHasCSharpName reference)

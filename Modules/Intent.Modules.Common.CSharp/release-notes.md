@@ -1,4 +1,9 @@
-﻿### Version 3.8.7
+﻿### Version 3.8.8
+
+- Fixed: Fixed a "Null-Reference" issue around unmapped children on nullable parents.
+- Fixed: Fixed a Mapping issue around nullable parents not have null checks when there are mapping in descendants but in it's immediate children.
+
+### Version 3.8.7
 
 - Improvement: API added for controlling Razor Weaving configuration, in particular for registering element and attribute names for syntax node matching behaviour. For more information refer to the [documentation](https://docs.intentarchitect.com/articles/application-development/code-management/code-management-razor/code-management-razor.html#component-specific-attribute-matching-configuration).
 - Fixed: Path Replacement logic in `GetParsedExpressionMap` didn't take `nulls` into account (especially since they can respond with `null` values).
