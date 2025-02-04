@@ -5,12 +5,11 @@ type IDynamicFormFieldConfig = MacroApi.Context.IDynamicFormFieldConfig;
 interface ISqlImportPackageSettings {
     entityNameConvention: string;
     tableStereotypes: string;
-    schemaFilter: string;
     includeTables: string;
     includeViews: string;
     includeStoredProcedures: string;
     includeIndexes: string;
-    tableViewFilterFilePath: string;
+    importFilterFilePath: string;
     storedProcedureType: string;
     connectionString: string;
     settingPersistence: string;
@@ -23,8 +22,7 @@ interface IDatabaseImportModel {
     entityNameConvention: string;
     tableStereotype: string;
     typesToExport: string[];
-    schemaFilter: string[];
-    tableViewFilterFilePath: string;
+    importFilterFilePath: string;
     storedProcedureType: string;
     connectionString: string;
     // Ignoring PackageFileName
@@ -63,15 +61,6 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
         hint: "",
         value: defaults.entityNameConvention,
         selectOptions: [{ id: "SingularEntity", description: "Singularized table name" }, { id: "MatchTable", description: "Table name, as is" }]
-    };
-
-    let schemaFilter: IDynamicFormFieldConfig = {
-        id: "schemaFilter",
-        fieldType: "text",
-        label: "Schema Filter",
-        placeholder: "all",
-        hint: "Specify which SQL schemas to export. (default is all) e.g dbo;accounts;security",
-        value: defaults.schemaFilter
     };
 
     let includeTables: IDynamicFormFieldConfig = {
@@ -120,13 +109,13 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
         ]
     };
 
-    let tableViewFilterFilePath: IDynamicFormFieldConfig = {
-        id: "tableViewFilterFilePath",
+    let importFilterFilePath: IDynamicFormFieldConfig = {
+        id: "importFilterFilePath",
         fieldType: "text",
-        label: "Table / View Filter",
-        hint: "Import selection file path (Tables/Views, one per line)",
+        label: "Import Filter File",
+        hint: "Path to import filter JSON file (see documentation)",
         placeholder: "(optional)",
-        value: defaults.tableViewFilterFilePath
+        value: defaults.importFilterFilePath
     };
 
     let storedProcedureType: IDynamicFormFieldConfig = {
@@ -147,12 +136,11 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
             connectionString,
             entityNameConvention,
             tableStereotypes,
-            schemaFilter,
             includeTables,
             includeViews,
             includeStoredProcedures,
             includeIndexes,
-            tableViewFilterFilePath,
+            importFilterFilePath,
             storedProcedureType,
             settingPersistence
         ]
@@ -183,8 +171,7 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
         entityNameConvention: inputs.entityNameConvention,
         tableStereotype: inputs.tableStereotypes,
         typesToExport: typesToExport,
-        schemaFilter: inputs.schemaFilter ? inputs.schemaFilter.split(";") : [],
-        tableViewFilterFilePath: inputs.tableViewFilterFilePath,
+        importFilterFilePath: inputs.importFilterFilePath,
         storedProcedureType: inputs.storedProcedureType,
         connectionString: inputs.connectionString,
         settingPersistence: inputs.settingPersistence
@@ -239,12 +226,11 @@ function getDialogDefaults(element: MacroApi.Context.IElementApi): ISqlImportPac
         
         entityNameConvention: getSettingValue(package, "sql-import:entityNameConvention", "SingularEntity"),
         tableStereotypes: getSettingValue(package, "sql-import:tableStereotypes", "WhenDifferent"),
-        schemaFilter: getSettingValue(package, "sql-import:schemaFilter", ""),
         includeTables: includeTables,
         includeViews: includeViews,
         includeStoredProcedures: includeStoredProcedures,
         includeIndexes: includeIndexes,
-        tableViewFilterFilePath: getSettingValue(package, "sql-import:tableViewFilterFilePath", null),
+        importFilterFilePath: getSettingValue(package, "sql-import:importFilterFilePath", null),
         connectionString: getSettingValue(package, "sql-import:connectionString", null),
         storedProcedureType: getSettingValue(package, "sql-import:storedProcedureType", ""),
         settingPersistence: getSettingValue(package, "sql-import:settingPersistence", "None")
