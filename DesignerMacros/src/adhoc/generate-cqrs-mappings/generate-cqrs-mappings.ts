@@ -50,7 +50,7 @@ async function executeMapping() {
         const entity = entities.get(entityName);
         
         if (entity) {
-            
+            mapQueryToEntity(query, entity);
             convertToAdvancedMapping.convertQuery(query);
             mappingsCreated++;
             matched = true;
@@ -75,22 +75,52 @@ async function executeMapping() {
 
 function mapCommandToEntity(command: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi) {
     let isOperationCommand = command.hasMetadata("isOperationCommand") && command.getMetadata("isOperationCommand") == "true";
-    const primaryKeys = DomainHelper.getPrimaryKeys(entity);
     if (command.getName().startsWith("Create") && !isOperationCommand) {
         let action = createAssociation("Create Entity Action", command.id, entity.id);
         let mapping = action.createAdvancedMapping(command.id, entity.id);
         mapping.addMappedEnd("Invocation Mapping", [command.id], [entity.id]);
-        dataMapDtoToEntity(command, entity, [command.id], [entity.id], mapping, primaryKeys.map(x => x.id), []);
+        dataMapDtoToEntity(command, entity, [command.id], [entity.id], mapping, []);
     } else if (command.getName().startsWith("Delete") && !isOperationCommand) {
-        
+        let action = createAssociation("Delete Entity Action", command.id, entity.id);
+        let queryMapping = action.createAdvancedMapping(command.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+        filterMapDtoToEntity(command, entity, queryMapping);
     } else {
         let action = createAssociation("Update Entity Action", command.id, entity.id);
+        let queryMapping = action.createAdvancedMapping(command.id, entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
+        filterMapDtoToEntity(command, entity, queryMapping);
         let dataMapping = action.createAdvancedMapping(command.id, entity.id, "01721b1a-a85d-4320-a5cd-8bd39247196a");
-        dataMapDtoToEntity(command, entity, [command.id], [entity.id], dataMapping, primaryKeys.map(x => x.id), []);
+        dataMapDtoToEntity(command, entity, [command.id], [entity.id], dataMapping, []);
     }
 }
 
-function dataMapDtoToEntity(dto: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi, sourcePath: string[], targetPath: string[], mapping: MacroApi.Context.IElementToElementMappingApi, targetIdsToAvoid: string[], mappingChain: string[] = []) {
+function mapQueryToEntity(query: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi) {
+    let action = createAssociation("Query Entity Action", query.id, entity.id);
+    if (query.typeReference.getIsCollection()) {
+        action.typeReference.setIsCollection(true);
+    }
+    let queryMapping = action.createAdvancedMapping(query.id, entity.id);
+    filterMapDtoToEntity(query, entity, queryMapping);
+}
+
+function filterMapDtoToEntity(dto: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi, mapping: MacroApi.Context.IElementToElementMappingApi) {
+    let pkFields = DomainHelper.getPrimaryKeys(entity);
+    if (pkFields.length == 1) {
+        let idField = dto.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("Primary Key")) || (x.getName() == "Id" || x.getName() == `${entity.getName()}Id`));
+        let entityPk = pkFields[0];
+        if (idField && (idField.isMapped() || entityPk)) {
+            mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? entityPk.mapPath ?? [entityPk.id]);
+        }
+    } else {
+        pkFields.forEach(pk => {
+            let idField = dto.getChildren("DTO-Field").find(x => (x.isMapped() && x.getMapping().getElement().hasStereotype("Primary Key") && x.getMapping().getElement().getName() == pk.name) || (x.getName() == pk.name));
+            if (idField) {
+                mapping.addMappedEnd("Filter Mapping", [idField.id], idField.getMapping()?.getPath().map(x => x.id) ?? pk.mapPath ?? [pk.id]);
+            }
+        });
+    }
+}
+
+function dataMapDtoToEntity(dto: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi, sourcePath: string[], targetPath: string[], mapping: MacroApi.Context.IElementToElementMappingApi, mappingChain: string[] = []) {
     // Check if this exact type is already being mapped in our current chain
     // This detects circular references like: A -> B -> A
     if (mappingChain.includes(dto.id)) {
@@ -99,6 +129,7 @@ function dataMapDtoToEntity(dto: MacroApi.Context.IElementApi, entity: MacroApi.
     }
     for (let field of dto.getChildren("DTO-Field")) {
         let attribute = entity.getChildren("Attribute").filter(x => x.getName() === field.getName())[0];
+        var targetIdsToAvoid = DomainHelper.getPrimaryKeys(entity).map(x => x.id);
         if (attribute && targetIdsToAvoid.indexOf(attribute.id) < 0) {
             mapping.addMappedEnd("Data Mapping", sourcePath.concat([field.id]), targetPath.concat([attribute.id]));
             continue;
@@ -109,7 +140,6 @@ function dataMapDtoToEntity(dto: MacroApi.Context.IElementApi, entity: MacroApi.
             if (association.typeReference.isCollection) {
                 mapping.addMappedEnd("Data Mapping", sourcePath.concat([field.id]), targetPath.concat([association.id]));
             }
-            const primaryKeys = DomainHelper.getPrimaryKeys(association.typeReference.getType());
             // Add the current type to the chain when mapping nested objects
             dataMapDtoToEntity(
                 field.typeReference.getType(), 
@@ -117,7 +147,6 @@ function dataMapDtoToEntity(dto: MacroApi.Context.IElementApi, entity: MacroApi.
                 sourcePath.concat([field.id]), 
                 targetPath.concat([association.id]), 
                 mapping, 
-                primaryKeys.map(x => x.id), 
                 [...mappingChain, dto.id] // Pass the current chain + this type
             );
             continue;
