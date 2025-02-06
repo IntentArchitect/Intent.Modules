@@ -1,4 +1,4 @@
-### Veraion 3.9.2
+### Version 3.9.2
 
 - Improvement: Mapping from Domain to DTO will now try to match the fields by name as opposed to just adding new fields to the DTO with the mapping information alongside the original fields.
 
