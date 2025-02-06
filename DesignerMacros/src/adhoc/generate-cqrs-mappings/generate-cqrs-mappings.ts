@@ -1,5 +1,4 @@
-/// <reference path="../../services-cqrs-crud/create-crud-macro-advanced-mapping/create-crud-macro-advanced-mapping.ts"/>
-/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
+/// <reference path="../../common/domainHelper.ts" />
 
 async function executeMapping() {
     const domainEntities = lookupTypesOf("Class");
@@ -51,7 +50,6 @@ async function executeMapping() {
         
         if (entity) {
             mapQueryToEntity(query, entity);
-            convertToAdvancedMapping.convertQuery(query);
             mappingsCreated++;
             matched = true;
         }
