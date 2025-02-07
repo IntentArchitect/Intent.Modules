@@ -11,7 +11,10 @@ function onMapDto(element: MacroApi.Context.IElementApi, folder: MacroApi.Contex
         let unmappedFields = element.getChildren("DTO-Field").filter(x => !x.getMapping());
         for (let mappedField of mappedFields) {
             // Unfortunately have to take into account Intent's ability to disambiguate newly created fields... (the "1")
-            let matchedUnmappedField = unmappedFields.filter(x => `${x.getName()}1` === mappedField.getName())[0];
+            let matchedUnmappedField = unmappedFields
+                .filter(x => 
+                    `${x.getName()}1` === mappedField.getName() || 
+                    x.getName() === mappedField.getName())[0];
             if (!matchedUnmappedField) { continue; }
             matchedUnmappedField.setMapping(mappedField.getMapping().getElement().id, mappedField.getMapping().mappingSettingsId);
             mappedField.delete();
