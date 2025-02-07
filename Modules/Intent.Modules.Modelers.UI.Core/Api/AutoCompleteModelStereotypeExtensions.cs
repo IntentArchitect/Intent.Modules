@@ -72,21 +72,6 @@ namespace Intent.Modelers.UI.Core.Api
 
             public string Name => _stereotype.Name;
 
-            public string Options()
-            {
-                return _stereotype.GetProperty<string>("Options");
-            }
-
-            public string Key()
-            {
-                return _stereotype.GetProperty<string>("Key");
-            }
-
-            public string Value()
-            {
-                return _stereotype.GetProperty<string>("Value");
-            }
-
             public string OnSelected()
             {
                 return _stereotype.GetProperty<string>("On Selected");

@@ -20,33 +20,6 @@
   <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
   <packageName>Intent.Modelers.UI.Core</packageName>
   <properties>
-    <property id="cbffba33-4c42-435a-869a-dc002dae7617">
-      <name>Options</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
-    </property>
-    <property id="b3a5b94a-f3ff-4860-acaf-297fdac66dd1">
-      <name>Key</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
-    </property>
-    <property id="bf75f566-f520-4b32-a311-5ee858aec2bf">
-      <name>Value</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
-    </property>
     <property id="fcc2a89f-5c1d-4d25-a26e-8bab029d7061">
       <name>On Selected</name>
       <type>string</type>
