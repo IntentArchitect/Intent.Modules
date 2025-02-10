@@ -108,7 +108,13 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
         _onNewLine = true;
         return this;
     }
-    
+
+    public override CSharpStatement WithSemicolon()
+    {
+        _withSemicolon = true;
+        return this;
+    }
+
     public CSharpInvocationStatement WithoutSemicolon()
     {
         _withSemicolon = false;

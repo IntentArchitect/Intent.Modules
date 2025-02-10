@@ -2,6 +2,7 @@
 
 - Fixed: Fixed a "Null-Reference" issue around unmapped children on nullable parents.
 - Fixed: Fixed a Mapping issue around nullable parents not have null checks when there are mapping in descendants but in it's immediate children.
+- Fixed: `WithSemicolon()` function not working on `CSharpInvocationStatement`.
 
 ### Version 3.8.7
 
