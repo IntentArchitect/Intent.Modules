@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>Intent.Modules.Common.Types</PackageId>
-    <Version>4.1.1-pre.0</Version>
+    <Version>4.1.1</Version>
     <Authors>Intent Architect</Authors>
     <Product>Intent - Modules Common</Product>
     <Description>Base classes and helpers for building your own modules for Intent Architect.</Description>
