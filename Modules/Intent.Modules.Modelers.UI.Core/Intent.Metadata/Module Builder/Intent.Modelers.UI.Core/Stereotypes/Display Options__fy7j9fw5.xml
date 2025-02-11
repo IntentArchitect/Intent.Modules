@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="0773bfc9-e976-4549-aa31-47713105614d" version="3.1.0">
+  <name>Display Options</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="4af9a7f0-ca24-4681-8e32-2a8d3dacb6ed">Radio Group</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="data:image/png;base64,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" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>a2a95421-3e55-43c7-96ad-355610b43c4d</parentFolderId>
+  <order>0</order>
+  <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+  <packageName>Intent.Modelers.UI.Core</packageName>
+  <properties>
+    <property id="84da210c-ac75-43e1-8141-12640338a73e">
+      <name>Alignment</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Horizontal</defaultValue>
+      <valueOptions>
+        <option>Horizontal</option>
+        <option>Vertical</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

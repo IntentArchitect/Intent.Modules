@@ -210,6 +210,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>30a4e6bb-5d5d-4fb2-bbbd-aa628b661ea2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4af9a7f0-ca24-4681-8e32-2a8d3dacb6ed</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/RadioGroupModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>RadioGroupModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>30a4e6bb-5d5d-4fb2-bbbd-aa628b661ea2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4af9a7f0-ca24-4681-8e32-2a8d3dacb6ed</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/RadioGroupModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>RadioGroupModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>30a4e6bb-5d5d-4fb2-bbbd-aa628b661ea2</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#78e0bdf7-424f-4820-95d5-b756b0ebc87a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/SelectModel.cs</ApplicationRelativeFilePath>
