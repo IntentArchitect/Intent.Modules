@@ -1,3 +1,7 @@
+### Version 4.7.3
+
+- Improvement: Enhanced the heuristics for auto-generating routes for Commands, Queries, and Operations. 
+
 ### Version 4.7.2
 
 - Improvement: Added new documentation topics around securing services.

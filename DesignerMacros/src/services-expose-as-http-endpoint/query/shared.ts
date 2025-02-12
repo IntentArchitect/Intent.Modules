@@ -11,13 +11,15 @@ function exposeAsHttpEndPoint(request: MacroApi.Context.IElementApi): void {
     const routeParts: string[] = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(request, domainElement));
+
+    let folderParts = getFolderParts(request, domainElement);
+    routeParts.push(...folderParts);
 
     if (domainElement != null) {
         routeParts.push(...getRouteParts(request, domainElement));
     }
-    else if (!["Get", "Find", "Lookup"].some(x => request.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(request.getName(), "Request", "Query")));
+    else { 
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, ``, folderParts));
     }
     
     let endpointInputIdElement = request.getChildren().filter(x => x.hasMetadata("endpoint-input-id"))[0];

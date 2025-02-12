@@ -707,12 +707,22 @@ function getRouteParts(request, domainElement) {
     if (domainElement == null) {
         throw new Error("entity is required");
     }
+    // all the default CQRS endpoints
+    let defaultCQRSEndpoints = [`Create${domainElement.getName()}Command`, `Delete${domainElement.getName()}Command`,
+        `Update${domainElement.getName()}Command`, `Get${pluralize(domainElement.getName())}Query`,
+        `Get${domainElement.getName()}ByIdQuery`
+    ];
+    let isDefaultEndpoint = defaultCQRSEndpoints.includes(request.getName());
     // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
     // RESTful naming conventions applied, with the exception of Operation names.
     // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
     const mappedDetails = getMappedRequestDetails(request);
-    if (!mappedDetails) {
+    if (!mappedDetails &amp;&amp; isDefaultEndpoint) {
+        return routeParts;
+    }
+    else if (!mappedDetails &amp;&amp; !isDefaultEndpoint) {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
         return routeParts;
     }
     // Add the owning entity's ids as parts surrounded with curly braces
@@ -745,6 +755,44 @@ function getRouteParts(request, domainElement) {
         let operationName = mappedDetails.mappingElement.getName();
         routeParts.push(toKebabCase(operationName));
     }
+    if (!isDefaultEndpoint &amp;&amp; mappedDetails.mappingTargetType !== "Operation") {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
+    }
+    return routeParts;
+}
+function generateNonDefaultEndpointRouteName(operation, domainName, additionalReplacement = []) {
+    let operationName = operation.getName();
+    let routeParts = [];
+    // filter out some common phrases
+    let toReplace = [
+        `Get${pluralize(domainName)}`, `Find${pluralize(domainName)}`, `Lookup${pluralize(domainName)}`,
+        `Get${domainName}`, `Find${domainName}`, `Lookup${domainName}`,
+        `${domainName}`, `${pluralize(domainName)}`,
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`, `Add`, `Set`, `List`, `Command`
+    ];
+    // additionalReplacement will mostly contain the folder paths. So if in the Service designer there is a Query/Command in a folder, 
+    // we would want to replace that in the generated route. E.g. A query called "GetSpecialProductDataQuery", NOT linked to a domain
+    // put in the product folder, instead of it generating "special-product-data", it should generate "special-data".
+    // additionalReplacement will contain "product", so we supplement it with "Product", "Products" and "products"
+    let supplementAdditionalReplacement = [];
+    additionalReplacement.forEach((replacement) =&gt; {
+        supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(pluralize(replacement));
+        supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+        supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(singularize(replacement));
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    toReplace.push(...additionalReplacement);
+    // sort longest to shortest
+    toReplace.sort((a, b) =&gt; b.length - a.length).forEach((search) =&gt; {
+        operationName = operationName.replace(search, '');
+    });
+    // convert to kebab case, and then correct it based on acronyms (e.g. SMS)
+    let cleanedOperationName = kebabCaseAcronymCorrection(toKebabCase(operationName), operationName);
+    if (cleanedOperationName) {
+        routeParts.push(cleanedOperationName);
+    }
     return routeParts;
 }
 function getEntityInheritanceHierarchyIds(curEntity) {
@@ -754,6 +802,36 @@ function getEntityInheritanceHierarchyIds(curEntity) {
     }
     let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
     return other.concat(curEntity.id);
+}
+// this method will correct incorrect acronym/initialism in the kebab case.
+// For example, "SendSMS" will become "send-s-m-s", and this method will correct it to "send-sms"
+function kebabCaseAcronymCorrection(kebabInput, originalInput) {
+    // Split the kebab-case result into individual parts
+    let parts = kebabInput.split('-');
+    let correctedParts = [];
+    var currentPosition = originalInput;
+    var currentWord = "";
+    for (let part of parts) {
+        if (part.length != 1) {
+            if (currentWord != "") {
+                correctedParts.push(currentWord);
+                currentWord = "";
+            }
+            correctedParts.push(part);
+            currentPosition = currentPosition.substring(part.length);
+            continue;
+        }
+        if (currentPosition.startsWith(part.toUpperCase())) {
+            currentWord = currentWord + part;
+            currentPosition = currentPosition.substring(part.length);
+        }
+    }
+    if (currentWord != "") {
+        correctedParts.push(currentWord);
+        currentWord = "";
+    }
+    // Join the corrected parts back into a kebab-case string
+    return correctedParts.join('-');
 }
 function getDefaultRoutePrefix(includeLastPathSeparator) {
     const defaultApiRoutePrefix = "api/";
@@ -841,12 +919,13 @@ function exposeAsHttpEndPoint(command) {
     const routeParts = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(command, domainElement));
+    let folderParts = getFolderParts(command, domainElement);
+    routeParts.push(...folderParts);
     if (domainElement != null) {
         routeParts.push(...getRouteParts(command, domainElement));
     }
-    else if (!["Create", "Update", "Delete"].some(x =&gt; command.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(command.getName(), "Request", "Command")));
+    else {
+        routeParts.push(...generateNonDefaultEndpointRouteName(command, ``, folderParts));
     }
     let endpointInputIdElement = command.getChildren().filter(x =&gt; x.hasMetadata("endpoint-input-id"))[0];
     if (endpointInputIdElement) {
@@ -1475,12 +1554,22 @@ function getRouteParts(request, domainElement) {
     if (domainElement == null) {
         throw new Error("entity is required");
     }
+    // all the default CQRS endpoints
+    let defaultCQRSEndpoints = [`Create${domainElement.getName()}Command`, `Delete${domainElement.getName()}Command`,
+        `Update${domainElement.getName()}Command`, `Get${pluralize(domainElement.getName())}Query`,
+        `Get${domainElement.getName()}ByIdQuery`
+    ];
+    let isDefaultEndpoint = defaultCQRSEndpoints.includes(request.getName());
     // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
     // RESTful naming conventions applied, with the exception of Operation names.
     // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
     const mappedDetails = getMappedRequestDetails(request);
-    if (!mappedDetails) {
+    if (!mappedDetails &amp;&amp; isDefaultEndpoint) {
+        return routeParts;
+    }
+    else if (!mappedDetails &amp;&amp; !isDefaultEndpoint) {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
         return routeParts;
     }
     // Add the owning entity's ids as parts surrounded with curly braces
@@ -1513,6 +1602,44 @@ function getRouteParts(request, domainElement) {
         let operationName = mappedDetails.mappingElement.getName();
         routeParts.push(toKebabCase(operationName));
     }
+    if (!isDefaultEndpoint &amp;&amp; mappedDetails.mappingTargetType !== "Operation") {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
+    }
+    return routeParts;
+}
+function generateNonDefaultEndpointRouteName(operation, domainName, additionalReplacement = []) {
+    let operationName = operation.getName();
+    let routeParts = [];
+    // filter out some common phrases
+    let toReplace = [
+        `Get${pluralize(domainName)}`, `Find${pluralize(domainName)}`, `Lookup${pluralize(domainName)}`,
+        `Get${domainName}`, `Find${domainName}`, `Lookup${domainName}`,
+        `${domainName}`, `${pluralize(domainName)}`,
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`, `Add`, `Set`, `List`, `Command`
+    ];
+    // additionalReplacement will mostly contain the folder paths. So if in the Service designer there is a Query/Command in a folder, 
+    // we would want to replace that in the generated route. E.g. A query called "GetSpecialProductDataQuery", NOT linked to a domain
+    // put in the product folder, instead of it generating "special-product-data", it should generate "special-data".
+    // additionalReplacement will contain "product", so we supplement it with "Product", "Products" and "products"
+    let supplementAdditionalReplacement = [];
+    additionalReplacement.forEach((replacement) =&gt; {
+        supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(pluralize(replacement));
+        supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+        supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(singularize(replacement));
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    toReplace.push(...additionalReplacement);
+    // sort longest to shortest
+    toReplace.sort((a, b) =&gt; b.length - a.length).forEach((search) =&gt; {
+        operationName = operationName.replace(search, '');
+    });
+    // convert to kebab case, and then correct it based on acronyms (e.g. SMS)
+    let cleanedOperationName = kebabCaseAcronymCorrection(toKebabCase(operationName), operationName);
+    if (cleanedOperationName) {
+        routeParts.push(cleanedOperationName);
+    }
     return routeParts;
 }
 function getEntityInheritanceHierarchyIds(curEntity) {
@@ -1523,13 +1650,49 @@ function getEntityInheritanceHierarchyIds(curEntity) {
     let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
     return other.concat(curEntity.id);
 }
+// this method will correct incorrect acronym/initialism in the kebab case.
+// For example, "SendSMS" will become "send-s-m-s", and this method will correct it to "send-sms"
+function kebabCaseAcronymCorrection(kebabInput, originalInput) {
+    // Split the kebab-case result into individual parts
+    let parts = kebabInput.split('-');
+    let correctedParts = [];
+    var currentPosition = originalInput;
+    var currentWord = "";
+    for (let part of parts) {
+        if (part.length != 1) {
+            if (currentWord != "") {
+                correctedParts.push(currentWord);
+                currentWord = "";
+            }
+            correctedParts.push(part);
+            currentPosition = currentPosition.substring(part.length);
+            continue;
+        }
+        if (currentPosition.startsWith(part.toUpperCase())) {
+            currentWord = currentWord + part;
+            currentPosition = currentPosition.substring(part.length);
+        }
+    }
+    if (currentWord != "") {
+        correctedParts.push(currentWord);
+        currentWord = "";
+    }
+    // Join the corrected parts back into a kebab-case string
+    return correctedParts.join('-');
+}
 function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "";
+    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
     let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
-    if (!route) {
+    // if the group is not present, use the default value
+    if (!settingsGroup) {
         route = defaultApiRoutePrefix;
+    }
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -1603,12 +1766,13 @@ function exposeAsHttpEndPoint(command) {
     const routeParts = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(command, domainElement));
+    let folderParts = getFolderParts(command, domainElement);
+    routeParts.push(...folderParts);
     if (domainElement != null) {
         routeParts.push(...getRouteParts(command, domainElement));
     }
-    else if (!["Create", "Update", "Delete"].some(x =&gt; command.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(command.getName(), "Request", "Command")));
+    else {
+        routeParts.push(...generateNonDefaultEndpointRouteName(command, ``, folderParts));
     }
     let endpointInputIdElement = command.getChildren().filter(x =&gt; x.hasMetadata("endpoint-input-id"))[0];
     if (endpointInputIdElement) {
@@ -2243,12 +2407,22 @@ function getRouteParts(request, domainElement) {
     if (domainElement == null) {
         throw new Error("entity is required");
     }
+    // all the default CQRS endpoints
+    let defaultCQRSEndpoints = [`Create${domainElement.getName()}Command`, `Delete${domainElement.getName()}Command`,
+        `Update${domainElement.getName()}Command`, `Get${pluralize(domainElement.getName())}Query`,
+        `Get${domainElement.getName()}ByIdQuery`
+    ];
+    let isDefaultEndpoint = defaultCQRSEndpoints.includes(request.getName());
     // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
     // RESTful naming conventions applied, with the exception of Operation names.
     // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
     const mappedDetails = getMappedRequestDetails(request);
-    if (!mappedDetails) {
+    if (!mappedDetails &amp;&amp; isDefaultEndpoint) {
+        return routeParts;
+    }
+    else if (!mappedDetails &amp;&amp; !isDefaultEndpoint) {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
         return routeParts;
     }
     // Add the owning entity's ids as parts surrounded with curly braces
@@ -2281,6 +2455,44 @@ function getRouteParts(request, domainElement) {
         let operationName = mappedDetails.mappingElement.getName();
         routeParts.push(toKebabCase(operationName));
     }
+    if (!isDefaultEndpoint &amp;&amp; mappedDetails.mappingTargetType !== "Operation") {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
+    }
+    return routeParts;
+}
+function generateNonDefaultEndpointRouteName(operation, domainName, additionalReplacement = []) {
+    let operationName = operation.getName();
+    let routeParts = [];
+    // filter out some common phrases
+    let toReplace = [
+        `Get${pluralize(domainName)}`, `Find${pluralize(domainName)}`, `Lookup${pluralize(domainName)}`,
+        `Get${domainName}`, `Find${domainName}`, `Lookup${domainName}`,
+        `${domainName}`, `${pluralize(domainName)}`,
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`, `Add`, `Set`, `List`, `Command`
+    ];
+    // additionalReplacement will mostly contain the folder paths. So if in the Service designer there is a Query/Command in a folder, 
+    // we would want to replace that in the generated route. E.g. A query called "GetSpecialProductDataQuery", NOT linked to a domain
+    // put in the product folder, instead of it generating "special-product-data", it should generate "special-data".
+    // additionalReplacement will contain "product", so we supplement it with "Product", "Products" and "products"
+    let supplementAdditionalReplacement = [];
+    additionalReplacement.forEach((replacement) =&gt; {
+        supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(pluralize(replacement));
+        supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+        supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(singularize(replacement));
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    toReplace.push(...additionalReplacement);
+    // sort longest to shortest
+    toReplace.sort((a, b) =&gt; b.length - a.length).forEach((search) =&gt; {
+        operationName = operationName.replace(search, '');
+    });
+    // convert to kebab case, and then correct it based on acronyms (e.g. SMS)
+    let cleanedOperationName = kebabCaseAcronymCorrection(toKebabCase(operationName), operationName);
+    if (cleanedOperationName) {
+        routeParts.push(cleanedOperationName);
+    }
     return routeParts;
 }
 function getEntityInheritanceHierarchyIds(curEntity) {
@@ -2291,13 +2503,49 @@ function getEntityInheritanceHierarchyIds(curEntity) {
     let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
     return other.concat(curEntity.id);
 }
+// this method will correct incorrect acronym/initialism in the kebab case.
+// For example, "SendSMS" will become "send-s-m-s", and this method will correct it to "send-sms"
+function kebabCaseAcronymCorrection(kebabInput, originalInput) {
+    // Split the kebab-case result into individual parts
+    let parts = kebabInput.split('-');
+    let correctedParts = [];
+    var currentPosition = originalInput;
+    var currentWord = "";
+    for (let part of parts) {
+        if (part.length != 1) {
+            if (currentWord != "") {
+                correctedParts.push(currentWord);
+                currentWord = "";
+            }
+            correctedParts.push(part);
+            currentPosition = currentPosition.substring(part.length);
+            continue;
+        }
+        if (currentPosition.startsWith(part.toUpperCase())) {
+            currentWord = currentWord + part;
+            currentPosition = currentPosition.substring(part.length);
+        }
+    }
+    if (currentWord != "") {
+        correctedParts.push(currentWord);
+        currentWord = "";
+    }
+    // Join the corrected parts back into a kebab-case string
+    return correctedParts.join('-');
+}
 function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "";
+    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
     let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
-    if (!route) {
+    // if the group is not present, use the default value
+    if (!settingsGroup) {
         route = defaultApiRoutePrefix;
+    }
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -2371,12 +2619,13 @@ function exposeAsHttpEndPoint(command) {
     const routeParts = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(command, domainElement));
+    let folderParts = getFolderParts(command, domainElement);
+    routeParts.push(...folderParts);
     if (domainElement != null) {
         routeParts.push(...getRouteParts(command, domainElement));
     }
-    else if (!["Create", "Update", "Delete"].some(x =&gt; command.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(command.getName(), "Request", "Command")));
+    else {
+        routeParts.push(...generateNonDefaultEndpointRouteName(command, ``, folderParts));
     }
     let endpointInputIdElement = command.getChildren().filter(x =&gt; x.hasMetadata("endpoint-input-id"))[0];
     if (endpointInputIdElement) {
@@ -2941,12 +3190,22 @@ function getRouteParts(request, domainElement) {
     if (domainElement == null) {
         throw new Error("entity is required");
     }
+    // all the default CQRS endpoints
+    let defaultCQRSEndpoints = [`Create${domainElement.getName()}Command`, `Delete${domainElement.getName()}Command`,
+        `Update${domainElement.getName()}Command`, `Get${pluralize(domainElement.getName())}Query`,
+        `Get${domainElement.getName()}ByIdQuery`
+    ];
+    let isDefaultEndpoint = defaultCQRSEndpoints.includes(request.getName());
     // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
     // RESTful naming conventions applied, with the exception of Operation names.
     // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
     const mappedDetails = getMappedRequestDetails(request);
-    if (!mappedDetails) {
+    if (!mappedDetails &amp;&amp; isDefaultEndpoint) {
+        return routeParts;
+    }
+    else if (!mappedDetails &amp;&amp; !isDefaultEndpoint) {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
         return routeParts;
     }
     // Add the owning entity's ids as parts surrounded with curly braces
@@ -2979,6 +3238,44 @@ function getRouteParts(request, domainElement) {
         let operationName = mappedDetails.mappingElement.getName();
         routeParts.push(toKebabCase(operationName));
     }
+    if (!isDefaultEndpoint &amp;&amp; mappedDetails.mappingTargetType !== "Operation") {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
+    }
+    return routeParts;
+}
+function generateNonDefaultEndpointRouteName(operation, domainName, additionalReplacement = []) {
+    let operationName = operation.getName();
+    let routeParts = [];
+    // filter out some common phrases
+    let toReplace = [
+        `Get${pluralize(domainName)}`, `Find${pluralize(domainName)}`, `Lookup${pluralize(domainName)}`,
+        `Get${domainName}`, `Find${domainName}`, `Lookup${domainName}`,
+        `${domainName}`, `${pluralize(domainName)}`,
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`, `Add`, `Set`, `List`, `Command`
+    ];
+    // additionalReplacement will mostly contain the folder paths. So if in the Service designer there is a Query/Command in a folder, 
+    // we would want to replace that in the generated route. E.g. A query called "GetSpecialProductDataQuery", NOT linked to a domain
+    // put in the product folder, instead of it generating "special-product-data", it should generate "special-data".
+    // additionalReplacement will contain "product", so we supplement it with "Product", "Products" and "products"
+    let supplementAdditionalReplacement = [];
+    additionalReplacement.forEach((replacement) =&gt; {
+        supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(pluralize(replacement));
+        supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+        supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(singularize(replacement));
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    toReplace.push(...additionalReplacement);
+    // sort longest to shortest
+    toReplace.sort((a, b) =&gt; b.length - a.length).forEach((search) =&gt; {
+        operationName = operationName.replace(search, '');
+    });
+    // convert to kebab case, and then correct it based on acronyms (e.g. SMS)
+    let cleanedOperationName = kebabCaseAcronymCorrection(toKebabCase(operationName), operationName);
+    if (cleanedOperationName) {
+        routeParts.push(cleanedOperationName);
+    }
     return routeParts;
 }
 function getEntityInheritanceHierarchyIds(curEntity) {
@@ -2988,6 +3285,36 @@ function getEntityInheritanceHierarchyIds(curEntity) {
     }
     let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
     return other.concat(curEntity.id);
+}
+// this method will correct incorrect acronym/initialism in the kebab case.
+// For example, "SendSMS" will become "send-s-m-s", and this method will correct it to "send-sms"
+function kebabCaseAcronymCorrection(kebabInput, originalInput) {
+    // Split the kebab-case result into individual parts
+    let parts = kebabInput.split('-');
+    let correctedParts = [];
+    var currentPosition = originalInput;
+    var currentWord = "";
+    for (let part of parts) {
+        if (part.length != 1) {
+            if (currentWord != "") {
+                correctedParts.push(currentWord);
+                currentWord = "";
+            }
+            correctedParts.push(part);
+            currentPosition = currentPosition.substring(part.length);
+            continue;
+        }
+        if (currentPosition.startsWith(part.toUpperCase())) {
+            currentWord = currentWord + part;
+            currentPosition = currentPosition.substring(part.length);
+        }
+    }
+    if (currentWord != "") {
+        correctedParts.push(currentWord);
+        currentWord = "";
+    }
+    // Join the corrected parts back into a kebab-case string
+    return correctedParts.join('-');
 }
 function getDefaultRoutePrefix(includeLastPathSeparator) {
     const defaultApiRoutePrefix = "api/";
@@ -3075,12 +3402,13 @@ function exposeAsHttpEndPoint(command) {
     const routeParts = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(command, domainElement));
+    let folderParts = getFolderParts(command, domainElement);
+    routeParts.push(...folderParts);
     if (domainElement != null) {
         routeParts.push(...getRouteParts(command, domainElement));
     }
-    else if (!["Create", "Update", "Delete"].some(x =&gt; command.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(command.getName(), "Request", "Command")));
+    else {
+        routeParts.push(...generateNonDefaultEndpointRouteName(command, ``, folderParts));
     }
     let endpointInputIdElement = command.getChildren().filter(x =&gt; x.hasMetadata("endpoint-input-id"))[0];
     if (endpointInputIdElement) {
@@ -3709,12 +4037,22 @@ function getRouteParts(request, domainElement) {
     if (domainElement == null) {
         throw new Error("entity is required");
     }
+    // all the default CQRS endpoints
+    let defaultCQRSEndpoints = [`Create${domainElement.getName()}Command`, `Delete${domainElement.getName()}Command`,
+        `Update${domainElement.getName()}Command`, `Get${pluralize(domainElement.getName())}Query`,
+        `Get${domainElement.getName()}ByIdQuery`
+    ];
+    let isDefaultEndpoint = defaultCQRSEndpoints.includes(request.getName());
     // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
     // RESTful naming conventions applied, with the exception of Operation names.
     // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
     const mappedDetails = getMappedRequestDetails(request);
-    if (!mappedDetails) {
+    if (!mappedDetails &amp;&amp; isDefaultEndpoint) {
+        return routeParts;
+    }
+    else if (!mappedDetails &amp;&amp; !isDefaultEndpoint) {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
         return routeParts;
     }
     // Add the owning entity's ids as parts surrounded with curly braces
@@ -3747,6 +4085,44 @@ function getRouteParts(request, domainElement) {
         let operationName = mappedDetails.mappingElement.getName();
         routeParts.push(toKebabCase(operationName));
     }
+    if (!isDefaultEndpoint &amp;&amp; mappedDetails.mappingTargetType !== "Operation") {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
+    }
+    return routeParts;
+}
+function generateNonDefaultEndpointRouteName(operation, domainName, additionalReplacement = []) {
+    let operationName = operation.getName();
+    let routeParts = [];
+    // filter out some common phrases
+    let toReplace = [
+        `Get${pluralize(domainName)}`, `Find${pluralize(domainName)}`, `Lookup${pluralize(domainName)}`,
+        `Get${domainName}`, `Find${domainName}`, `Lookup${domainName}`,
+        `${domainName}`, `${pluralize(domainName)}`,
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`, `Add`, `Set`, `List`, `Command`
+    ];
+    // additionalReplacement will mostly contain the folder paths. So if in the Service designer there is a Query/Command in a folder, 
+    // we would want to replace that in the generated route. E.g. A query called "GetSpecialProductDataQuery", NOT linked to a domain
+    // put in the product folder, instead of it generating "special-product-data", it should generate "special-data".
+    // additionalReplacement will contain "product", so we supplement it with "Product", "Products" and "products"
+    let supplementAdditionalReplacement = [];
+    additionalReplacement.forEach((replacement) =&gt; {
+        supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(pluralize(replacement));
+        supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+        supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(singularize(replacement));
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    toReplace.push(...additionalReplacement);
+    // sort longest to shortest
+    toReplace.sort((a, b) =&gt; b.length - a.length).forEach((search) =&gt; {
+        operationName = operationName.replace(search, '');
+    });
+    // convert to kebab case, and then correct it based on acronyms (e.g. SMS)
+    let cleanedOperationName = kebabCaseAcronymCorrection(toKebabCase(operationName), operationName);
+    if (cleanedOperationName) {
+        routeParts.push(cleanedOperationName);
+    }
     return routeParts;
 }
 function getEntityInheritanceHierarchyIds(curEntity) {
@@ -3757,13 +4133,49 @@ function getEntityInheritanceHierarchyIds(curEntity) {
     let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
     return other.concat(curEntity.id);
 }
+// this method will correct incorrect acronym/initialism in the kebab case.
+// For example, "SendSMS" will become "send-s-m-s", and this method will correct it to "send-sms"
+function kebabCaseAcronymCorrection(kebabInput, originalInput) {
+    // Split the kebab-case result into individual parts
+    let parts = kebabInput.split('-');
+    let correctedParts = [];
+    var currentPosition = originalInput;
+    var currentWord = "";
+    for (let part of parts) {
+        if (part.length != 1) {
+            if (currentWord != "") {
+                correctedParts.push(currentWord);
+                currentWord = "";
+            }
+            correctedParts.push(part);
+            currentPosition = currentPosition.substring(part.length);
+            continue;
+        }
+        if (currentPosition.startsWith(part.toUpperCase())) {
+            currentWord = currentWord + part;
+            currentPosition = currentPosition.substring(part.length);
+        }
+    }
+    if (currentWord != "") {
+        correctedParts.push(currentWord);
+        currentWord = "";
+    }
+    // Join the corrected parts back into a kebab-case string
+    return correctedParts.join('-');
+}
 function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "";
+    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
     let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
-    if (!route) {
+    // if the group is not present, use the default value
+    if (!settingsGroup) {
         route = defaultApiRoutePrefix;
+    }
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -3837,12 +4249,13 @@ function exposeAsHttpEndPoint(command) {
     const routeParts = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(command, domainElement));
+    let folderParts = getFolderParts(command, domainElement);
+    routeParts.push(...folderParts);
     if (domainElement != null) {
         routeParts.push(...getRouteParts(command, domainElement));
     }
-    else if (!["Create", "Update", "Delete"].some(x =&gt; command.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(command.getName(), "Request", "Command")));
+    else {
+        routeParts.push(...generateNonDefaultEndpointRouteName(command, ``, folderParts));
     }
     let endpointInputIdElement = command.getChildren().filter(x =&gt; x.hasMetadata("endpoint-input-id"))[0];
     if (endpointInputIdElement) {
@@ -4477,12 +4890,22 @@ function getRouteParts(request, domainElement) {
     if (domainElement == null) {
         throw new Error("entity is required");
     }
+    // all the default CQRS endpoints
+    let defaultCQRSEndpoints = [`Create${domainElement.getName()}Command`, `Delete${domainElement.getName()}Command`,
+        `Update${domainElement.getName()}Command`, `Get${pluralize(domainElement.getName())}Query`,
+        `Get${domainElement.getName()}ByIdQuery`
+    ];
+    let isDefaultEndpoint = defaultCQRSEndpoints.includes(request.getName());
     // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
     // RESTful naming conventions applied, with the exception of Operation names.
     // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
     const mappedDetails = getMappedRequestDetails(request);
-    if (!mappedDetails) {
+    if (!mappedDetails &amp;&amp; isDefaultEndpoint) {
+        return routeParts;
+    }
+    else if (!mappedDetails &amp;&amp; !isDefaultEndpoint) {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
         return routeParts;
     }
     // Add the owning entity's ids as parts surrounded with curly braces
@@ -4515,6 +4938,44 @@ function getRouteParts(request, domainElement) {
         let operationName = mappedDetails.mappingElement.getName();
         routeParts.push(toKebabCase(operationName));
     }
+    if (!isDefaultEndpoint &amp;&amp; mappedDetails.mappingTargetType !== "Operation") {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
+    }
+    return routeParts;
+}
+function generateNonDefaultEndpointRouteName(operation, domainName, additionalReplacement = []) {
+    let operationName = operation.getName();
+    let routeParts = [];
+    // filter out some common phrases
+    let toReplace = [
+        `Get${pluralize(domainName)}`, `Find${pluralize(domainName)}`, `Lookup${pluralize(domainName)}`,
+        `Get${domainName}`, `Find${domainName}`, `Lookup${domainName}`,
+        `${domainName}`, `${pluralize(domainName)}`,
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`, `Add`, `Set`, `List`, `Command`
+    ];
+    // additionalReplacement will mostly contain the folder paths. So if in the Service designer there is a Query/Command in a folder, 
+    // we would want to replace that in the generated route. E.g. A query called "GetSpecialProductDataQuery", NOT linked to a domain
+    // put in the product folder, instead of it generating "special-product-data", it should generate "special-data".
+    // additionalReplacement will contain "product", so we supplement it with "Product", "Products" and "products"
+    let supplementAdditionalReplacement = [];
+    additionalReplacement.forEach((replacement) =&gt; {
+        supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(pluralize(replacement));
+        supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+        supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(singularize(replacement));
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    toReplace.push(...additionalReplacement);
+    // sort longest to shortest
+    toReplace.sort((a, b) =&gt; b.length - a.length).forEach((search) =&gt; {
+        operationName = operationName.replace(search, '');
+    });
+    // convert to kebab case, and then correct it based on acronyms (e.g. SMS)
+    let cleanedOperationName = kebabCaseAcronymCorrection(toKebabCase(operationName), operationName);
+    if (cleanedOperationName) {
+        routeParts.push(cleanedOperationName);
+    }
     return routeParts;
 }
 function getEntityInheritanceHierarchyIds(curEntity) {
@@ -4525,13 +4986,49 @@ function getEntityInheritanceHierarchyIds(curEntity) {
     let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
     return other.concat(curEntity.id);
 }
+// this method will correct incorrect acronym/initialism in the kebab case.
+// For example, "SendSMS" will become "send-s-m-s", and this method will correct it to "send-sms"
+function kebabCaseAcronymCorrection(kebabInput, originalInput) {
+    // Split the kebab-case result into individual parts
+    let parts = kebabInput.split('-');
+    let correctedParts = [];
+    var currentPosition = originalInput;
+    var currentWord = "";
+    for (let part of parts) {
+        if (part.length != 1) {
+            if (currentWord != "") {
+                correctedParts.push(currentWord);
+                currentWord = "";
+            }
+            correctedParts.push(part);
+            currentPosition = currentPosition.substring(part.length);
+            continue;
+        }
+        if (currentPosition.startsWith(part.toUpperCase())) {
+            currentWord = currentWord + part;
+            currentPosition = currentPosition.substring(part.length);
+        }
+    }
+    if (currentWord != "") {
+        correctedParts.push(currentWord);
+        currentWord = "";
+    }
+    // Join the corrected parts back into a kebab-case string
+    return correctedParts.join('-');
+}
 function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "";
+    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
     let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
-    if (!route) {
+    // if the group is not present, use the default value
+    if (!settingsGroup) {
         route = defaultApiRoutePrefix;
+    }
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -4605,12 +5102,13 @@ function exposeAsHttpEndPoint(command) {
     const routeParts = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(command, domainElement));
+    let folderParts = getFolderParts(command, domainElement);
+    routeParts.push(...folderParts);
     if (domainElement != null) {
         routeParts.push(...getRouteParts(command, domainElement));
     }
-    else if (!["Create", "Update", "Delete"].some(x =&gt; command.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(command.getName(), "Request", "Command")));
+    else {
+        routeParts.push(...generateNonDefaultEndpointRouteName(command, ``, folderParts));
     }
     let endpointInputIdElement = command.getChildren().filter(x =&gt; x.hasMetadata("endpoint-input-id"))[0];
     if (endpointInputIdElement) {
@@ -5406,12 +5904,22 @@ function getRouteParts(request, domainElement) {
     if (domainElement == null) {
         throw new Error("entity is required");
     }
+    // all the default CQRS endpoints
+    let defaultCQRSEndpoints = [`Create${domainElement.getName()}Command`, `Delete${domainElement.getName()}Command`,
+        `Update${domainElement.getName()}Command`, `Get${pluralize(domainElement.getName())}Query`,
+        `Get${domainElement.getName()}ByIdQuery`
+    ];
+    let isDefaultEndpoint = defaultCQRSEndpoints.includes(request.getName());
     // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
     // RESTful naming conventions applied, with the exception of Operation names.
     // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
     const mappedDetails = getMappedRequestDetails(request);
-    if (!mappedDetails) {
+    if (!mappedDetails &amp;&amp; isDefaultEndpoint) {
+        return routeParts;
+    }
+    else if (!mappedDetails &amp;&amp; !isDefaultEndpoint) {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
         return routeParts;
     }
     // Add the owning entity's ids as parts surrounded with curly braces
@@ -5444,6 +5952,44 @@ function getRouteParts(request, domainElement) {
         let operationName = mappedDetails.mappingElement.getName();
         routeParts.push(toKebabCase(operationName));
     }
+    if (!isDefaultEndpoint &amp;&amp; mappedDetails.mappingTargetType !== "Operation") {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
+    }
+    return routeParts;
+}
+function generateNonDefaultEndpointRouteName(operation, domainName, additionalReplacement = []) {
+    let operationName = operation.getName();
+    let routeParts = [];
+    // filter out some common phrases
+    let toReplace = [
+        `Get${pluralize(domainName)}`, `Find${pluralize(domainName)}`, `Lookup${pluralize(domainName)}`,
+        `Get${domainName}`, `Find${domainName}`, `Lookup${domainName}`,
+        `${domainName}`, `${pluralize(domainName)}`,
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`, `Add`, `Set`, `List`, `Command`
+    ];
+    // additionalReplacement will mostly contain the folder paths. So if in the Service designer there is a Query/Command in a folder, 
+    // we would want to replace that in the generated route. E.g. A query called "GetSpecialProductDataQuery", NOT linked to a domain
+    // put in the product folder, instead of it generating "special-product-data", it should generate "special-data".
+    // additionalReplacement will contain "product", so we supplement it with "Product", "Products" and "products"
+    let supplementAdditionalReplacement = [];
+    additionalReplacement.forEach((replacement) =&gt; {
+        supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(pluralize(replacement));
+        supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+        supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(singularize(replacement));
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    toReplace.push(...additionalReplacement);
+    // sort longest to shortest
+    toReplace.sort((a, b) =&gt; b.length - a.length).forEach((search) =&gt; {
+        operationName = operationName.replace(search, '');
+    });
+    // convert to kebab case, and then correct it based on acronyms (e.g. SMS)
+    let cleanedOperationName = kebabCaseAcronymCorrection(toKebabCase(operationName), operationName);
+    if (cleanedOperationName) {
+        routeParts.push(cleanedOperationName);
+    }
     return routeParts;
 }
 function getEntityInheritanceHierarchyIds(curEntity) {
@@ -5454,13 +6000,49 @@ function getEntityInheritanceHierarchyIds(curEntity) {
     let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
     return other.concat(curEntity.id);
 }
+// this method will correct incorrect acronym/initialism in the kebab case.
+// For example, "SendSMS" will become "send-s-m-s", and this method will correct it to "send-sms"
+function kebabCaseAcronymCorrection(kebabInput, originalInput) {
+    // Split the kebab-case result into individual parts
+    let parts = kebabInput.split('-');
+    let correctedParts = [];
+    var currentPosition = originalInput;
+    var currentWord = "";
+    for (let part of parts) {
+        if (part.length != 1) {
+            if (currentWord != "") {
+                correctedParts.push(currentWord);
+                currentWord = "";
+            }
+            correctedParts.push(part);
+            currentPosition = currentPosition.substring(part.length);
+            continue;
+        }
+        if (currentPosition.startsWith(part.toUpperCase())) {
+            currentWord = currentWord + part;
+            currentPosition = currentPosition.substring(part.length);
+        }
+    }
+    if (currentWord != "") {
+        correctedParts.push(currentWord);
+        currentWord = "";
+    }
+    // Join the corrected parts back into a kebab-case string
+    return correctedParts.join('-');
+}
 function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "";
+    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
     let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
-    if (!route) {
+    // if the group is not present, use the default value
+    if (!settingsGroup) {
         route = defaultApiRoutePrefix;
+    }
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -5535,12 +6117,13 @@ function exposeAsHttpEndPoint(request) {
     const routeParts = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(request, domainElement));
+    let folderParts = getFolderParts(request, domainElement);
+    routeParts.push(...folderParts);
     if (domainElement != null) {
         routeParts.push(...getRouteParts(request, domainElement));
     }
-    else if (!["Get", "Find", "Lookup"].some(x =&gt; request.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(request.getName(), "Request", "Query")));
+    else {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, ``, folderParts));
     }
     let endpointInputIdElement = request.getChildren().filter(x =&gt; x.hasMetadata("endpoint-input-id"))[0];
     if (endpointInputIdElement) {
@@ -6161,12 +6744,22 @@ function getRouteParts(request, domainElement) {
     if (domainElement == null) {
         throw new Error("entity is required");
     }
+    // all the default CQRS endpoints
+    let defaultCQRSEndpoints = [`Create${domainElement.getName()}Command`, `Delete${domainElement.getName()}Command`,
+        `Update${domainElement.getName()}Command`, `Get${pluralize(domainElement.getName())}Query`,
+        `Get${domainElement.getName()}ByIdQuery`
+    ];
+    let isDefaultEndpoint = defaultCQRSEndpoints.includes(request.getName());
     // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
     // RESTful naming conventions applied, with the exception of Operation names.
     // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
     const mappedDetails = getMappedRequestDetails(request);
-    if (!mappedDetails) {
+    if (!mappedDetails &amp;&amp; isDefaultEndpoint) {
+        return routeParts;
+    }
+    else if (!mappedDetails &amp;&amp; !isDefaultEndpoint) {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
         return routeParts;
     }
     // Add the owning entity's ids as parts surrounded with curly braces
@@ -6199,6 +6792,44 @@ function getRouteParts(request, domainElement) {
         let operationName = mappedDetails.mappingElement.getName();
         routeParts.push(toKebabCase(operationName));
     }
+    if (!isDefaultEndpoint &amp;&amp; mappedDetails.mappingTargetType !== "Operation") {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
+    }
+    return routeParts;
+}
+function generateNonDefaultEndpointRouteName(operation, domainName, additionalReplacement = []) {
+    let operationName = operation.getName();
+    let routeParts = [];
+    // filter out some common phrases
+    let toReplace = [
+        `Get${pluralize(domainName)}`, `Find${pluralize(domainName)}`, `Lookup${pluralize(domainName)}`,
+        `Get${domainName}`, `Find${domainName}`, `Lookup${domainName}`,
+        `${domainName}`, `${pluralize(domainName)}`,
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`, `Add`, `Set`, `List`, `Command`
+    ];
+    // additionalReplacement will mostly contain the folder paths. So if in the Service designer there is a Query/Command in a folder, 
+    // we would want to replace that in the generated route. E.g. A query called "GetSpecialProductDataQuery", NOT linked to a domain
+    // put in the product folder, instead of it generating "special-product-data", it should generate "special-data".
+    // additionalReplacement will contain "product", so we supplement it with "Product", "Products" and "products"
+    let supplementAdditionalReplacement = [];
+    additionalReplacement.forEach((replacement) =&gt; {
+        supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(pluralize(replacement));
+        supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+        supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(singularize(replacement));
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    toReplace.push(...additionalReplacement);
+    // sort longest to shortest
+    toReplace.sort((a, b) =&gt; b.length - a.length).forEach((search) =&gt; {
+        operationName = operationName.replace(search, '');
+    });
+    // convert to kebab case, and then correct it based on acronyms (e.g. SMS)
+    let cleanedOperationName = kebabCaseAcronymCorrection(toKebabCase(operationName), operationName);
+    if (cleanedOperationName) {
+        routeParts.push(cleanedOperationName);
+    }
     return routeParts;
 }
 function getEntityInheritanceHierarchyIds(curEntity) {
@@ -6208,6 +6839,36 @@ function getEntityInheritanceHierarchyIds(curEntity) {
     }
     let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
     return other.concat(curEntity.id);
+}
+// this method will correct incorrect acronym/initialism in the kebab case.
+// For example, "SendSMS" will become "send-s-m-s", and this method will correct it to "send-sms"
+function kebabCaseAcronymCorrection(kebabInput, originalInput) {
+    // Split the kebab-case result into individual parts
+    let parts = kebabInput.split('-');
+    let correctedParts = [];
+    var currentPosition = originalInput;
+    var currentWord = "";
+    for (let part of parts) {
+        if (part.length != 1) {
+            if (currentWord != "") {
+                correctedParts.push(currentWord);
+                currentWord = "";
+            }
+            correctedParts.push(part);
+            currentPosition = currentPosition.substring(part.length);
+            continue;
+        }
+        if (currentPosition.startsWith(part.toUpperCase())) {
+            currentWord = currentWord + part;
+            currentPosition = currentPosition.substring(part.length);
+        }
+    }
+    if (currentWord != "") {
+        correctedParts.push(currentWord);
+        currentWord = "";
+    }
+    // Join the corrected parts back into a kebab-case string
+    return correctedParts.join('-');
 }
 function getDefaultRoutePrefix(includeLastPathSeparator) {
     const defaultApiRoutePrefix = "api/";
@@ -6296,12 +6957,13 @@ function exposeAsHttpEndPoint(request) {
     const routeParts = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(request, domainElement));
+    let folderParts = getFolderParts(request, domainElement);
+    routeParts.push(...folderParts);
     if (domainElement != null) {
         routeParts.push(...getRouteParts(request, domainElement));
     }
-    else if (!["Get", "Find", "Lookup"].some(x =&gt; request.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(request.getName(), "Request", "Query")));
+    else {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, ``, folderParts));
     }
     let endpointInputIdElement = request.getChildren().filter(x =&gt; x.hasMetadata("endpoint-input-id"))[0];
     if (endpointInputIdElement) {
@@ -6857,12 +7519,22 @@ function getRouteParts(request, domainElement) {
     if (domainElement == null) {
         throw new Error("entity is required");
     }
+    // all the default CQRS endpoints
+    let defaultCQRSEndpoints = [`Create${domainElement.getName()}Command`, `Delete${domainElement.getName()}Command`,
+        `Update${domainElement.getName()}Command`, `Get${pluralize(domainElement.getName())}Query`,
+        `Get${domainElement.getName()}ByIdQuery`
+    ];
+    let isDefaultEndpoint = defaultCQRSEndpoints.includes(request.getName());
     // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
     // RESTful naming conventions applied, with the exception of Operation names.
     // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
     const mappedDetails = getMappedRequestDetails(request);
-    if (!mappedDetails) {
+    if (!mappedDetails &amp;&amp; isDefaultEndpoint) {
+        return routeParts;
+    }
+    else if (!mappedDetails &amp;&amp; !isDefaultEndpoint) {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
         return routeParts;
     }
     // Add the owning entity's ids as parts surrounded with curly braces
@@ -6895,6 +7567,44 @@ function getRouteParts(request, domainElement) {
         let operationName = mappedDetails.mappingElement.getName();
         routeParts.push(toKebabCase(operationName));
     }
+    if (!isDefaultEndpoint &amp;&amp; mappedDetails.mappingTargetType !== "Operation") {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
+    }
+    return routeParts;
+}
+function generateNonDefaultEndpointRouteName(operation, domainName, additionalReplacement = []) {
+    let operationName = operation.getName();
+    let routeParts = [];
+    // filter out some common phrases
+    let toReplace = [
+        `Get${pluralize(domainName)}`, `Find${pluralize(domainName)}`, `Lookup${pluralize(domainName)}`,
+        `Get${domainName}`, `Find${domainName}`, `Lookup${domainName}`,
+        `${domainName}`, `${pluralize(domainName)}`,
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`, `Add`, `Set`, `List`, `Command`
+    ];
+    // additionalReplacement will mostly contain the folder paths. So if in the Service designer there is a Query/Command in a folder, 
+    // we would want to replace that in the generated route. E.g. A query called "GetSpecialProductDataQuery", NOT linked to a domain
+    // put in the product folder, instead of it generating "special-product-data", it should generate "special-data".
+    // additionalReplacement will contain "product", so we supplement it with "Product", "Products" and "products"
+    let supplementAdditionalReplacement = [];
+    additionalReplacement.forEach((replacement) =&gt; {
+        supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(pluralize(replacement));
+        supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+        supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(singularize(replacement));
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    toReplace.push(...additionalReplacement);
+    // sort longest to shortest
+    toReplace.sort((a, b) =&gt; b.length - a.length).forEach((search) =&gt; {
+        operationName = operationName.replace(search, '');
+    });
+    // convert to kebab case, and then correct it based on acronyms (e.g. SMS)
+    let cleanedOperationName = kebabCaseAcronymCorrection(toKebabCase(operationName), operationName);
+    if (cleanedOperationName) {
+        routeParts.push(cleanedOperationName);
+    }
     return routeParts;
 }
 function getEntityInheritanceHierarchyIds(curEntity) {
@@ -6905,13 +7615,49 @@ function getEntityInheritanceHierarchyIds(curEntity) {
     let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
     return other.concat(curEntity.id);
 }
+// this method will correct incorrect acronym/initialism in the kebab case.
+// For example, "SendSMS" will become "send-s-m-s", and this method will correct it to "send-sms"
+function kebabCaseAcronymCorrection(kebabInput, originalInput) {
+    // Split the kebab-case result into individual parts
+    let parts = kebabInput.split('-');
+    let correctedParts = [];
+    var currentPosition = originalInput;
+    var currentWord = "";
+    for (let part of parts) {
+        if (part.length != 1) {
+            if (currentWord != "") {
+                correctedParts.push(currentWord);
+                currentWord = "";
+            }
+            correctedParts.push(part);
+            currentPosition = currentPosition.substring(part.length);
+            continue;
+        }
+        if (currentPosition.startsWith(part.toUpperCase())) {
+            currentWord = currentWord + part;
+            currentPosition = currentPosition.substring(part.length);
+        }
+    }
+    if (currentWord != "") {
+        correctedParts.push(currentWord);
+        currentWord = "";
+    }
+    // Join the corrected parts back into a kebab-case string
+    return correctedParts.join('-');
+}
 function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const defaultApiRoutePrefix = "";
+    const defaultApiRoutePrefix = "api/";
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
     let settingsGroup = application.getSettings(apiSettingsId);
     let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
-    if (!route) {
+    // if the group is not present, use the default value
+    if (!settingsGroup) {
         route = defaultApiRoutePrefix;
+    }
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route) {
+        route = "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -6986,12 +7732,13 @@ function exposeAsHttpEndPoint(request) {
     const routeParts = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(request, domainElement));
+    let folderParts = getFolderParts(request, domainElement);
+    routeParts.push(...folderParts);
     if (domainElement != null) {
         routeParts.push(...getRouteParts(request, domainElement));
     }
-    else if (!["Get", "Find", "Lookup"].some(x =&gt; request.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(request.getName(), "Request", "Query")));
+    else {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, ``, folderParts));
     }
     let endpointInputIdElement = request.getChildren().filter(x =&gt; x.hasMetadata("endpoint-input-id"))[0];
     if (endpointInputIdElement) {
@@ -7612,12 +8359,22 @@ function getRouteParts(request, domainElement) {
     if (domainElement == null) {
         throw new Error("entity is required");
     }
+    // all the default CQRS endpoints
+    let defaultCQRSEndpoints = [`Create${domainElement.getName()}Command`, `Delete${domainElement.getName()}Command`,
+        `Update${domainElement.getName()}Command`, `Get${pluralize(domainElement.getName())}Query`,
+        `Get${domainElement.getName()}ByIdQuery`
+    ];
+    let isDefaultEndpoint = defaultCQRSEndpoints.includes(request.getName());
     // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
     // RESTful naming conventions applied, with the exception of Operation names.
     // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
     const mappedDetails = getMappedRequestDetails(request);
-    if (!mappedDetails) {
+    if (!mappedDetails &amp;&amp; isDefaultEndpoint) {
+        return routeParts;
+    }
+    else if (!mappedDetails &amp;&amp; !isDefaultEndpoint) {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
         return routeParts;
     }
     // Add the owning entity's ids as parts surrounded with curly braces
@@ -7650,6 +8407,44 @@ function getRouteParts(request, domainElement) {
         let operationName = mappedDetails.mappingElement.getName();
         routeParts.push(toKebabCase(operationName));
     }
+    if (!isDefaultEndpoint &amp;&amp; mappedDetails.mappingTargetType !== "Operation") {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
+    }
+    return routeParts;
+}
+function generateNonDefaultEndpointRouteName(operation, domainName, additionalReplacement = []) {
+    let operationName = operation.getName();
+    let routeParts = [];
+    // filter out some common phrases
+    let toReplace = [
+        `Get${pluralize(domainName)}`, `Find${pluralize(domainName)}`, `Lookup${pluralize(domainName)}`,
+        `Get${domainName}`, `Find${domainName}`, `Lookup${domainName}`,
+        `${domainName}`, `${pluralize(domainName)}`,
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`, `Add`, `Set`, `List`, `Command`
+    ];
+    // additionalReplacement will mostly contain the folder paths. So if in the Service designer there is a Query/Command in a folder, 
+    // we would want to replace that in the generated route. E.g. A query called "GetSpecialProductDataQuery", NOT linked to a domain
+    // put in the product folder, instead of it generating "special-product-data", it should generate "special-data".
+    // additionalReplacement will contain "product", so we supplement it with "Product", "Products" and "products"
+    let supplementAdditionalReplacement = [];
+    additionalReplacement.forEach((replacement) =&gt; {
+        supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(pluralize(replacement));
+        supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+        supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(singularize(replacement));
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    toReplace.push(...additionalReplacement);
+    // sort longest to shortest
+    toReplace.sort((a, b) =&gt; b.length - a.length).forEach((search) =&gt; {
+        operationName = operationName.replace(search, '');
+    });
+    // convert to kebab case, and then correct it based on acronyms (e.g. SMS)
+    let cleanedOperationName = kebabCaseAcronymCorrection(toKebabCase(operationName), operationName);
+    if (cleanedOperationName) {
+        routeParts.push(cleanedOperationName);
+    }
     return routeParts;
 }
 function getEntityInheritanceHierarchyIds(curEntity) {
@@ -7659,6 +8454,36 @@ function getEntityInheritanceHierarchyIds(curEntity) {
     }
     let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
     return other.concat(curEntity.id);
+}
+// this method will correct incorrect acronym/initialism in the kebab case.
+// For example, "SendSMS" will become "send-s-m-s", and this method will correct it to "send-sms"
+function kebabCaseAcronymCorrection(kebabInput, originalInput) {
+    // Split the kebab-case result into individual parts
+    let parts = kebabInput.split('-');
+    let correctedParts = [];
+    var currentPosition = originalInput;
+    var currentWord = "";
+    for (let part of parts) {
+        if (part.length != 1) {
+            if (currentWord != "") {
+                correctedParts.push(currentWord);
+                currentWord = "";
+            }
+            correctedParts.push(part);
+            currentPosition = currentPosition.substring(part.length);
+            continue;
+        }
+        if (currentPosition.startsWith(part.toUpperCase())) {
+            currentWord = currentWord + part;
+            currentPosition = currentPosition.substring(part.length);
+        }
+    }
+    if (currentWord != "") {
+        correctedParts.push(currentWord);
+        currentWord = "";
+    }
+    // Join the corrected parts back into a kebab-case string
+    return correctedParts.join('-');
 }
 function getDefaultRoutePrefix(includeLastPathSeparator) {
     const defaultApiRoutePrefix = "api/";
@@ -7747,12 +8572,13 @@ function exposeAsHttpEndPoint(request) {
     const routeParts = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(request, domainElement));
+    let folderParts = getFolderParts(request, domainElement);
+    routeParts.push(...folderParts);
     if (domainElement != null) {
         routeParts.push(...getRouteParts(request, domainElement));
     }
-    else if (!["Get", "Find", "Lookup"].some(x =&gt; request.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(request.getName(), "Request", "Query")));
+    else {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, ``, folderParts));
     }
     let endpointInputIdElement = request.getChildren().filter(x =&gt; x.hasMetadata("endpoint-input-id"))[0];
     if (endpointInputIdElement) {
@@ -8368,12 +9194,22 @@ function getRouteParts(request, domainElement) {
     if (domainElement == null) {
         throw new Error("entity is required");
     }
+    // all the default CQRS endpoints
+    let defaultCQRSEndpoints = [`Create${domainElement.getName()}Command`, `Delete${domainElement.getName()}Command`,
+        `Update${domainElement.getName()}Command`, `Get${pluralize(domainElement.getName())}Query`,
+        `Get${domainElement.getName()}ByIdQuery`
+    ];
+    let isDefaultEndpoint = defaultCQRSEndpoints.includes(request.getName());
     // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
     // RESTful naming conventions applied, with the exception of Operation names.
     // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
     const mappedDetails = getMappedRequestDetails(request);
-    if (!mappedDetails) {
+    if (!mappedDetails &amp;&amp; isDefaultEndpoint) {
+        return routeParts;
+    }
+    else if (!mappedDetails &amp;&amp; !isDefaultEndpoint) {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
         return routeParts;
     }
     // Add the owning entity's ids as parts surrounded with curly braces
@@ -8406,6 +9242,44 @@ function getRouteParts(request, domainElement) {
         let operationName = mappedDetails.mappingElement.getName();
         routeParts.push(toKebabCase(operationName));
     }
+    if (!isDefaultEndpoint &amp;&amp; mappedDetails.mappingTargetType !== "Operation") {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
+    }
+    return routeParts;
+}
+function generateNonDefaultEndpointRouteName(operation, domainName, additionalReplacement = []) {
+    let operationName = operation.getName();
+    let routeParts = [];
+    // filter out some common phrases
+    let toReplace = [
+        `Get${pluralize(domainName)}`, `Find${pluralize(domainName)}`, `Lookup${pluralize(domainName)}`,
+        `Get${domainName}`, `Find${domainName}`, `Lookup${domainName}`,
+        `${domainName}`, `${pluralize(domainName)}`,
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`, `Add`, `Set`, `List`, `Command`
+    ];
+    // additionalReplacement will mostly contain the folder paths. So if in the Service designer there is a Query/Command in a folder, 
+    // we would want to replace that in the generated route. E.g. A query called "GetSpecialProductDataQuery", NOT linked to a domain
+    // put in the product folder, instead of it generating "special-product-data", it should generate "special-data".
+    // additionalReplacement will contain "product", so we supplement it with "Product", "Products" and "products"
+    let supplementAdditionalReplacement = [];
+    additionalReplacement.forEach((replacement) =&gt; {
+        supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(pluralize(replacement));
+        supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+        supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(singularize(replacement));
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    toReplace.push(...additionalReplacement);
+    // sort longest to shortest
+    toReplace.sort((a, b) =&gt; b.length - a.length).forEach((search) =&gt; {
+        operationName = operationName.replace(search, '');
+    });
+    // convert to kebab case, and then correct it based on acronyms (e.g. SMS)
+    let cleanedOperationName = kebabCaseAcronymCorrection(toKebabCase(operationName), operationName);
+    if (cleanedOperationName) {
+        routeParts.push(cleanedOperationName);
+    }
     return routeParts;
 }
 function getEntityInheritanceHierarchyIds(curEntity) {
@@ -8415,6 +9289,36 @@ function getEntityInheritanceHierarchyIds(curEntity) {
     }
     let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
     return other.concat(curEntity.id);
+}
+// this method will correct incorrect acronym/initialism in the kebab case.
+// For example, "SendSMS" will become "send-s-m-s", and this method will correct it to "send-sms"
+function kebabCaseAcronymCorrection(kebabInput, originalInput) {
+    // Split the kebab-case result into individual parts
+    let parts = kebabInput.split('-');
+    let correctedParts = [];
+    var currentPosition = originalInput;
+    var currentWord = "";
+    for (let part of parts) {
+        if (part.length != 1) {
+            if (currentWord != "") {
+                correctedParts.push(currentWord);
+                currentWord = "";
+            }
+            correctedParts.push(part);
+            currentPosition = currentPosition.substring(part.length);
+            continue;
+        }
+        if (currentPosition.startsWith(part.toUpperCase())) {
+            currentWord = currentWord + part;
+            currentPosition = currentPosition.substring(part.length);
+        }
+    }
+    if (currentWord != "") {
+        correctedParts.push(currentWord);
+        currentWord = "";
+    }
+    // Join the corrected parts back into a kebab-case string
+    return correctedParts.join('-');
 }
 function getDefaultRoutePrefix(includeLastPathSeparator) {
     const defaultApiRoutePrefix = "api/";
@@ -8502,12 +9406,13 @@ function exposeAsHttpEndPoint(command) {
     const routeParts = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(command, domainElement));
+    let folderParts = getFolderParts(command, domainElement);
+    routeParts.push(...folderParts);
     if (domainElement != null) {
         routeParts.push(...getRouteParts(command, domainElement));
     }
-    else if (!["Create", "Update", "Delete"].some(x =&gt; command.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(command.getName(), "Request", "Command")));
+    else {
+        routeParts.push(...generateNonDefaultEndpointRouteName(command, ``, folderParts));
     }
     let endpointInputIdElement = command.getChildren().filter(x =&gt; x.hasMetadata("endpoint-input-id"))[0];
     if (endpointInputIdElement) {
@@ -9062,12 +9967,22 @@ function getRouteParts(request, domainElement) {
     if (domainElement == null) {
         throw new Error("entity is required");
     }
+    // all the default CQRS endpoints
+    let defaultCQRSEndpoints = [`Create${domainElement.getName()}Command`, `Delete${domainElement.getName()}Command`,
+        `Update${domainElement.getName()}Command`, `Get${pluralize(domainElement.getName())}Query`,
+        `Get${domainElement.getName()}ByIdQuery`
+    ];
+    let isDefaultEndpoint = defaultCQRSEndpoints.includes(request.getName());
     // Following the RESTful naming conventions from https://restfulapi.net/resource-naming/.
     // RESTful naming conventions applied, with the exception of Operation names.
     // Operation names are developer-defined and should be left as-is to avoid potential unintended side effects.
     let routeParts = [];
     const mappedDetails = getMappedRequestDetails(request);
-    if (!mappedDetails) {
+    if (!mappedDetails &amp;&amp; isDefaultEndpoint) {
+        return routeParts;
+    }
+    else if (!mappedDetails &amp;&amp; !isDefaultEndpoint) {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
         return routeParts;
     }
     // Add the owning entity's ids as parts surrounded with curly braces
@@ -9100,6 +10015,44 @@ function getRouteParts(request, domainElement) {
         let operationName = mappedDetails.mappingElement.getName();
         routeParts.push(toKebabCase(operationName));
     }
+    if (!isDefaultEndpoint &amp;&amp; mappedDetails.mappingTargetType !== "Operation") {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
+    }
+    return routeParts;
+}
+function generateNonDefaultEndpointRouteName(operation, domainName, additionalReplacement = []) {
+    let operationName = operation.getName();
+    let routeParts = [];
+    // filter out some common phrases
+    let toReplace = [
+        `Get${pluralize(domainName)}`, `Find${pluralize(domainName)}`, `Lookup${pluralize(domainName)}`,
+        `Get${domainName}`, `Find${domainName}`, `Lookup${domainName}`,
+        `${domainName}`, `${pluralize(domainName)}`,
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`, `Add`, `Set`, `List`, `Command`
+    ];
+    // additionalReplacement will mostly contain the folder paths. So if in the Service designer there is a Query/Command in a folder, 
+    // we would want to replace that in the generated route. E.g. A query called "GetSpecialProductDataQuery", NOT linked to a domain
+    // put in the product folder, instead of it generating "special-product-data", it should generate "special-data".
+    // additionalReplacement will contain "product", so we supplement it with "Product", "Products" and "products"
+    let supplementAdditionalReplacement = [];
+    additionalReplacement.forEach((replacement) =&gt; {
+        supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(pluralize(replacement));
+        supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+        supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+        supplementAdditionalReplacement.push(singularize(replacement));
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    toReplace.push(...additionalReplacement);
+    // sort longest to shortest
+    toReplace.sort((a, b) =&gt; b.length - a.length).forEach((search) =&gt; {
+        operationName = operationName.replace(search, '');
+    });
+    // convert to kebab case, and then correct it based on acronyms (e.g. SMS)
+    let cleanedOperationName = kebabCaseAcronymCorrection(toKebabCase(operationName), operationName);
+    if (cleanedOperationName) {
+        routeParts.push(cleanedOperationName);
+    }
     return routeParts;
 }
 function getEntityInheritanceHierarchyIds(curEntity) {
@@ -9109,6 +10062,36 @@ function getEntityInheritanceHierarchyIds(curEntity) {
     }
     let other = getEntityInheritanceHierarchyIds(generalizations[0].typeReference.getType());
     return other.concat(curEntity.id);
+}
+// this method will correct incorrect acronym/initialism in the kebab case.
+// For example, "SendSMS" will become "send-s-m-s", and this method will correct it to "send-sms"
+function kebabCaseAcronymCorrection(kebabInput, originalInput) {
+    // Split the kebab-case result into individual parts
+    let parts = kebabInput.split('-');
+    let correctedParts = [];
+    var currentPosition = originalInput;
+    var currentWord = "";
+    for (let part of parts) {
+        if (part.length != 1) {
+            if (currentWord != "") {
+                correctedParts.push(currentWord);
+                currentWord = "";
+            }
+            correctedParts.push(part);
+            currentPosition = currentPosition.substring(part.length);
+            continue;
+        }
+        if (currentPosition.startsWith(part.toUpperCase())) {
+            currentWord = currentWord + part;
+            currentPosition = currentPosition.substring(part.length);
+        }
+    }
+    if (currentWord != "") {
+        correctedParts.push(currentWord);
+        currentWord = "";
+    }
+    // Join the corrected parts back into a kebab-case string
+    return correctedParts.join('-');
 }
 function getDefaultRoutePrefix(includeLastPathSeparator) {
     const defaultApiRoutePrefix = "api/";
@@ -9197,12 +10180,13 @@ function exposeAsHttpEndPoint(request) {
     const routeParts = [];
     const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
     routeParts.push(...defaultRoutePrefixParts);
-    routeParts.push(...getFolderParts(request, domainElement));
+    let folderParts = getFolderParts(request, domainElement);
+    routeParts.push(...folderParts);
     if (domainElement != null) {
         routeParts.push(...getRouteParts(request, domainElement));
     }
-    else if (!["Get", "Find", "Lookup"].some(x =&gt; request.getName().startsWith(x))) {
-        routeParts.push(toKebabCase(removeSuffix(request.getName(), "Request", "Query")));
+    else {
+        routeParts.push(...generateNonDefaultEndpointRouteName(request, ``, folderParts));
     }
     let endpointInputIdElement = request.getChildren().filter(x =&gt; x.hasMetadata("endpoint-input-id"))[0];
     if (endpointInputIdElement) {
