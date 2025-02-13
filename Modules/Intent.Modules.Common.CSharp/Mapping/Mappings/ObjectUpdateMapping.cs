@@ -102,19 +102,21 @@ public class ObjectUpdateMapping : CSharpMappingBase
         var fieldIsNullable = fromField.TypeReference.IsNullable;
         var fromFieldNullable = fieldIsNullable ? "?" : string.Empty;
         string nullableChar = _template.OutputTarget.GetProject().NullableEnabled ? "?" : "";
-
-        var @class = _template.CSharpFile.Classes.First();
-        var existingMethod = @class.FindMethod(x => x.Name == updateMethodName &&
-                                                    x.ReturnType == interfaceName &&
-                                                    x.Parameters.FirstOrDefault()?.Type == interfaceName &&
-                                                    x.Parameters.Skip(1).FirstOrDefault()?.Type == _template.GetTypeName((IElement)fromField.TypeReference.Element));
-        if (existingMethod != null)
-        {
-            return;
-        }
+       
         _template.CSharpFile.AfterBuild(file =>
         {
             var @class = file.Classes.FirstOrDefault(c => c.HasMetadata("handler")) ?? file.Classes.First();
+
+            var existingMethod = @class.FindMethod(x => x.Name == updateMethodName &&
+                            x.ReturnType == interfaceName &&
+                            (x.Parameters.FirstOrDefault()?.Type == interfaceName || x.Parameters.FirstOrDefault()?.Type == $"{interfaceName}{nullableChar}") && 
+                            x.Parameters.Skip(1).FirstOrDefault()?.Type == _template.GetTypeName((IElement)fromField.TypeReference.Element));
+
+            if (existingMethod != null)
+            {
+                return;
+            }
+            
             @class.AddMethod($"{interfaceName}{fromFieldNullable}", updateMethodName, method =>
             {
                 method.AddAttribute(CSharpIntentManagedAttribute.Fully());

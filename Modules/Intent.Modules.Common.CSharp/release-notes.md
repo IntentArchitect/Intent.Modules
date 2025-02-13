@@ -1,4 +1,8 @@
-﻿### Version 3.8.8
+﻿### Version 3.8.9
+
+- Fixed: Fixed an issue where duplicate object update mappings were being created on a single handler.
+
+### Version 3.8.8
 
 - Fixed: Fixed a "Null-Reference" issue around unmapped children on nullable parents.
 - Fixed: Fixed a Mapping issue around nullable parents not have null checks when there are mapping in descendants but in it's immediate children.
