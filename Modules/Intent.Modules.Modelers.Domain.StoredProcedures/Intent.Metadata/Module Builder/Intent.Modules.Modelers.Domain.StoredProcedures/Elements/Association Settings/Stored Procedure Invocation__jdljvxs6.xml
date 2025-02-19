@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="adf062ed-c0a4-421f-9940-318a91e9a52c" type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272">
+  <name>Stored Procedure Invocation</name>
+  <display>Stored Procedure Invocation</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>276019e5-fc1a-401e-9450-ef8468606781</parentFolderId>
+  <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
+  <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="7b7d3fd8-5e32-4f8c-b4cc-7b92f45a8577" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
+      <name>Stored Procedure Invocation Source End</name>
+      <display>Stored Procedure Invocation Source End</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>adf062ed-c0a4-421f-9940-318a91e9a52c</parentFolderId>
+      <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
+      <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
+            <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;e042bb67-a1df-480c-9935-b26210f78591&quot;]" isActive="true" />
+            <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" value="[]" isActive="true" />
+            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" isActive="true" />
+            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="" isActive="true" />
+            <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" value="" isActive="true" />
+            <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Disabled" isActive="true" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
+            <property name="2d07ed88-82bf-4d30-9280-1488f0f927e0" display="Name Must Be Unique" value="true" isActive="true" />
+            <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
+            <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
+            <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="false" isActive="true" />
+            <property name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="false" isActive="true" />
+            <property name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
+            <property name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
+            <property name="c8c2530e-8048-40aa-838c-7c5d870d492b" display="Allow Set Value" value="false" isActive="true" />
+            <property name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="false" isActive="true" />
+            <property name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="false" isActive="true" />
+            <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="d0b0b24a-db0f-4aff-873a-a0e9c2dce12d" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
+      <name>Stored Procedure Invocation Target End</name>
+      <display>Stored Procedure Invocation Target End</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>adf062ed-c0a4-421f-9940-318a91e9a52c</parentFolderId>
+      <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
+      <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
+            <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;575edd35-9438-406d-b0a7-b99d6f29b560&quot;]" isActive="true" />
+            <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" value="[]" isActive="true" />
+            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" isActive="true" />
+            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="" isActive="true" />
+            <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" value="" isActive="true" />
+            <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Disabled" isActive="true" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="return &quot;mappedResult&quot;;" isActive="true" />
+            <property name="2d07ed88-82bf-4d30-9280-1488f0f927e0" display="Name Must Be Unique" value="true" isActive="true" />
+            <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="true" isActive="true" />
+            <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="true" isActive="true" />
+            <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="true" isActive="true" />
+            <property name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="true" isActive="true" />
+            <property name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
+            <property name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
+            <property name="c8c2530e-8048-40aa-838c-7c5d870d492b" display="Allow Set Value" value="false" isActive="true" />
+            <property name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="true" isActive="true" />
+            <property name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="true" isActive="true" />
+            <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="a9fbdb14-1e30-4622-a6b9-a5348908bdc3" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+          <name>[context menu]</name>
+          <display>[context menu]</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>manually</sort-children>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>d0b0b24a-db0f-4aff-873a-a0e9c2dce12d</parentFolderId>
+          <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
+          <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements>
+            <childElement id="cf8907e5-cfdf-4b00-9cca-2e46bf50a612" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
+              <name>Map Stored Procedure Invocation</name>
+              <display>Map Stored Procedure Invocation: Stored Procedure Invocation</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="fc659291-f84b-4883-90b1-938fec10fa9e">
+                <typeId>a7dbfc5c-f4f4-4f61-a176-6b652192ebfc</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <isRequired>true</isRequired>
+                <typePackageName>Intent.Modules.Modelers.Domain.StoredProcedures</typePackageName>
+                <typePackageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</typePackageId>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>a9fbdb14-1e30-4622-a6b9-a5348908bdc3</parentFolderId>
+              <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
+              <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="6c209f86-87f6-4fc3-802e-e6e553dfbeca" name="Option Settings">
+                  <comment />
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" isActive="true" />
+                    <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
+                    <property name="e92b2832-9ed6-4ccb-bf58-8b34975c16dc" display="Trigger On Double-Click" value="false" isActive="true" />
+                    <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
+                    <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" isActive="true" />
+                    <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Order" isActive="true" />
+                    <property name="d0b53563-f62e-4989-98d5-69ff87f460f3" display="Top Divider" value="false" isActive="true" />
+                    <property name="1bb3ebe0-6015-42e1-b1ca-29b7e53c0d56" display="Bottom Divider" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+            <childElement id="03411baa-4c20-49d8-bcea-7eb2e79d0071" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
+              <name>Map Stored Procedure Result</name>
+              <display>Map Stored Procedure Result: Stored Procedure Result</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="3ea4b2a2-5094-4d57-b12f-522a4da089a2">
+                <typeId>0af211bd-11c4-4981-b7bc-c42923a884d8</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <isRequired>true</isRequired>
+                <typePackageName>Intent.Modules.Modelers.Domain.StoredProcedures</typePackageName>
+                <typePackageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</typePackageId>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>a9fbdb14-1e30-4622-a6b9-a5348908bdc3</parentFolderId>
+              <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
+              <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="6c209f86-87f6-4fc3-802e-e6e553dfbeca" name="Option Settings">
+                  <comment />
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" isActive="true" />
+                    <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
+                    <property name="e92b2832-9ed6-4ccb-bf58-8b34975c16dc" display="Trigger On Double-Click" value="false" isActive="true" />
+                    <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
+                    <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" isActive="true" />
+                    <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Order" isActive="true" />
+                    <property name="d0b53563-f62e-4989-98d5-69ff87f460f3" display="Top Divider" value="false" isActive="true" />
+                    <property name="1bb3ebe0-6015-42e1-b1ca-29b7e53c0d56" display="Bottom Divider" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="15d353c2-e4b3-42df-8a8e-71d2a7cf0884" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
+      <name>[events]</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>adf062ed-c0a4-421f-9940-318a91e9a52c</parentFolderId>
+      <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
+      <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

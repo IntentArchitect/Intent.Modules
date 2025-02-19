@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="c560f66d-72d1-4abe-813a-9a3e9957ff04" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>Package Extension</name>
+  <display>Package Extension: Domain Package</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <typeReference id="935b1d2b-02bb-4859-96ac-43dfe0035244">
+    <typeId>1a824508-4623-45d9-accc-f572091ade5a</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Domain</typePackageName>
+    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>276019e5-fc1a-401e-9450-ef8468606781</parentFolderId>
+  <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
+  <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="36bf4c84-9df4-4e16-b07f-5b847f03b716" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>c560f66d-72d1-4abe-813a-9a3e9957ff04</parentFolderId>
+      <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
+      <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="07239158-0bd8-439e-9955-37f0754a8adb" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Stored Procedure</name>
+          <display>Stored Procedure: Stored Procedure</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="c9726595-e8b4-4024-83c1-2743f638bc47">
+            <typeId>575edd35-9438-406d-b0a7-b99d6f29b560</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modules.Modelers.Domain.StoredProcedures</typePackageName>
+            <typePackageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>36bf4c84-9df4-4e16-b07f-5b847f03b716</parentFolderId>
+          <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
+          <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="aeaeff9b-f55b-4888-92e9-5317b5c14016" display="Top Divider" value="false" isActive="true" />
+                <property name="543cc5f5-0b0c-40cc-9df7-3ce45b555dd0" display="Bottom Divider" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

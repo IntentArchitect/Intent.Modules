@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -11,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.Modelers.Domain.StoredProcedures.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class StoredProcedureModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    public class StoredProcedureModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference, IHasFolder
     {
         public const string SpecializationType = "Stored Procedure";
         public const string SpecializationTypeId = "575edd35-9438-406d-b0a7-b99d6f29b560";
@@ -25,6 +26,7 @@ namespace Intent.Modules.Modelers.Domain.StoredProcedures.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -34,6 +36,8 @@ namespace Intent.Modules.Modelers.Domain.StoredProcedures.Api
         public string Comment => _element.Comment;
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        public FolderModel Folder { get; }
 
         public ITypeReference TypeReference => _element.TypeReference;
 

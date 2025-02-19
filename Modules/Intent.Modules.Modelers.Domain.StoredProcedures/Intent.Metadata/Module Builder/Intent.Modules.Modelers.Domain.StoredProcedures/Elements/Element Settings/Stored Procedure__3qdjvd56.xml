@@ -94,10 +94,53 @@
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + p" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
                 <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="aeaeff9b-f55b-4888-92e9-5317b5c14016" display="Top Divider" value="false" isActive="true" />
+                <property name="543cc5f5-0b0c-40cc-9df7-3ce45b555dd0" display="Bottom Divider" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="afdaa01a-8a18-4acc-b3fb-77cf089305d0" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Map Result</name>
+          <display>Map Result: Stored Procedure Invocation</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="974ba3ca-c440-4aaf-b632-268021cdf0fc">
+            <typeId>adf062ed-c0a4-421f-9940-318a91e9a52c</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modules.Modelers.Domain.StoredProcedures</typePackageName>
+            <typePackageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>b1721851-14d7-4008-9f39-b8cd98e3e062</parentFolderId>
+          <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
+          <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
+                <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

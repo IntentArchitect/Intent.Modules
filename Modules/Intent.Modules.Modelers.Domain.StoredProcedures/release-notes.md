@@ -1,3 +1,7 @@
+### Version 1.1.3
+
+- Improvement: It is now possible to map Custom Repository operations to Stored Procedures calls and results so that Service Operations, Commands and Queries can now interact with Stored Procedures with output parameters.
+
 ### Version 1.1.2
 
 - Fixed bug in script for Stored Procedure Parameter Settings for Target Filter Function.
