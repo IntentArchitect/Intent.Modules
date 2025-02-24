@@ -269,6 +269,7 @@ return `${output}${getName()}: ${typeReference.display}`;
         <contextMenuOptions>
           <openMapping type="open-advanced-mapping" mappingType="Stored Procedure Invocation" mappingTypeId="a7dbfc5c-f4f4-4f61-a176-6b652192ebfc">
             <text>Map Stored Procedure Invocation</text>
+            <shortcut>Ctrl + Space</shortcut>
           </openMapping>
           <openMapping type="open-advanced-mapping" mappingType="Stored Procedure Result" mappingTypeId="0af211bd-11c4-4981-b7bc-c42923a884d8">
             <text>Map Stored Procedure Result</text>
@@ -279,6 +280,7 @@ return `${output}${getName()}: ${typeReference.display}`;
         <mappingOptions>
           <option type="open-advanced-mapping" mappingType="Stored Procedure Invocation" mappingTypeId="a7dbfc5c-f4f4-4f61-a176-6b652192ebfc">
             <text>Map Stored Procedure Invocation</text>
+            <shortcut>Ctrl + Space</shortcut>
           </option>
           <option type="open-advanced-mapping" mappingType="Stored Procedure Result" mappingTypeId="0af211bd-11c4-4981-b7bc-c42923a884d8">
             <text>Map Stored Procedure Result</text>
