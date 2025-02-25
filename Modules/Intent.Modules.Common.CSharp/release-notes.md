@@ -1,4 +1,8 @@
-﻿### Version 3.8.9
+﻿### Version 3.8.10
+
+- Improvement: Introduced `ExposeProgramClass()` to `IAppStartupFile` to allow for referencing the Program class under certain circumstances such as in WebApplicationFactories.
+
+### Version 3.8.9
 
 - Fixed: Fixed an issue where duplicate object update mappings were being created on a single handler.
 
