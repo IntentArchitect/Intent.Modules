@@ -1,3 +1,7 @@
+### Version 1.1.4
+
+- Improvement: Added documentation.
+
 ### Version 1.1.3
 
 - Improvement: It is now possible to map Custom Repository operations to Stored Procedures calls and results so that Service Operations, Commands and Queries can now interact with Stored Procedures with output parameters.
