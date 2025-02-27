@@ -80,15 +80,11 @@
         <position x="${x}" y="${y}" />
         <display>
           <drawText>
-            <text>const ApiGatewayRouteSettings = "1ad354a7-9ef2-440f-acb2-d9cb11be3352";
-const ApiGatewayRoute = "83bfc247-76f5-476d-8741-0ecd7f9971ed";
-const ApiGatewayMethod = "b8999d96-2f39-41bc-830a-9444114cb82e";
-
-function getMethodAndRoute(element) {
+            <text>function getMethodAndRoute(element) {
     // Get custom settings
-    const customSettings = element.getStereotype(ApiGatewayRouteSettings);
-    const customRoute = customSettings?.getProperty(ApiGatewayRoute)?.getValue() || "";
-    const customMethod = customSettings?.getProperty(ApiGatewayMethod)?.getValue() || "";
+    const customSettings = element.getStereotype("Http Settings");
+    const customRoute = customSettings?.getProperty("Route")?.getValue() || "";
+    const customMethod = customSettings?.getProperty("Verb")?.getValue() || "";
 
     // Get HTTP settings
     const endpoints = element.getAssociations("Route Association")
@@ -104,28 +100,84 @@ function getMethodAndRoute(element) {
 
     const httpSettings = endpoints[0].getStereotype("Http Settings");
     const httpMethod = httpSettings.getProperty("Verb").getValue();
-    const httpRoute = httpSettings.getProperty("Route").getValue();
+    let httpRoute = httpSettings.getProperty("Route").getValue();
+
+    if (endpoints[0].getParent()?.hasStereotype("Http Service Settings")) {
+        let serviceRoute = endpoints[0].getParent().getStereotype("Http Service Settings")?.getProperty("Route")?.getValue() || "";
+        const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
+        httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
+    }
 
     // Use custom values if available, otherwise fall back to HTTP settings
     return {
-        method: customMethod || httpMethod,
+        verb: customMethod || httpMethod,
         route: customRoute || httpRoute
     };
 }
 
 function formatMethodAndRoute(element) {
-    const { method, route, result } = getMethodAndRoute(element);
+    const { verb, route, result } = getMethodAndRoute(element);
     
     if (result === "None") return "[Disconnected]";
     if (result === "Aggregate") return "[Aggregate]";
     
-    return `${method} "${route}"`;
+    return `${route}`;
 }
 
 return formatMethodAndRoute(element);</text>
             <style>`font-size: 12px; font-family: Helvetica; font-weight: bold; text-align: center; white-space: inherit;vertical-align: center`</style>
             <size width="${w}" height="18" />
             <position x="${x}" y="${y + 48}" />
+          </drawText>
+          <drawText>
+            <text>function getMethodAndRoute(element) {
+    // Get custom settings
+    const customSettings = element.getStereotype("Http Settings");
+    const customRoute = customSettings?.getProperty("Route")?.getValue() || "";
+    const customMethod = customSettings?.getProperty("Verb")?.getValue() || "";
+
+    // Get HTTP settings
+    const endpoints = element.getAssociations("Route Association")
+        .map(x =&gt; x.typeReference.getType())
+        .filter(x =&gt; x);
+
+    if (endpoints.length === 0) {
+        return { method: "", route: "", result: "None" };
+    }
+    if (endpoints.length &gt; 1) {
+        return { method: "", route: "", result: "Aggregate" };
+    }
+
+    const httpSettings = endpoints[0].getStereotype("Http Settings");
+    const httpMethod = httpSettings.getProperty("Verb").getValue();
+    let httpRoute = httpSettings.getProperty("Route").getValue();
+
+    if (endpoints[0].getParent()?.hasStereotype("Http Service Settings")) {
+        let serviceRoute = endpoints[0].getParent().getStereotype("Http Service Settings")?.getProperty("Route")?.getValue() || "";
+        const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
+        httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
+    }
+
+    // Use custom values if available, otherwise fall back to HTTP settings
+    return {
+        verb: customMethod || httpMethod,
+        route: customRoute || httpRoute
+    };
+}
+
+function formatMethodAndRoute(element) {
+    const { verb, route, result } = getMethodAndRoute(element);
+    
+    if (result === "None") return "";
+    if (result === "Aggregate") return "";
+    
+    return `${verb}`;
+}
+
+return formatMethodAndRoute(element);</text>
+            <style>`font-size: 12px; font-family: Helvetica; font-weight: bold; text-align: center; white-space: inherit;vertical-align: center`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + 68}" />
           </drawText>
           <drawSvgResource>
             <path>api-gateway.svg</path>
@@ -167,8 +219,6 @@ const httpSettings = endpoints[0]?.getStereotype("Http Settings");
 const httpRoute = httpSettings?.getProperty("Route")?.getValue();
 
 let upstreamRoute = customRoute || httpRoute;
-
-console.log(upstreamRoute);
 
 if (!upstreamRoute) {
     element.getChildren("DTO-Field").forEach(x =&gt; x.delete());
@@ -320,12 +370,132 @@ routeVars.forEach(routeVar =&gt; {
       </visualSettings>
       <macros>
         <macro trigger="on-changed">
-          <script>let source = association.getOtherEnd().typeReference.getType();
+          <script>function getMethodAndRoute(element) {
+    // Get custom settings
+    const customSettings = element.getStereotype("Http Settings");
+    const customRoute = customSettings?.getProperty("Route")?.getValue() || "";
+    const customMethod = customSettings?.getProperty("Verb")?.getValue() || "";
+
+    // Get HTTP settings
+    const endpoints = element.getAssociations("Route Association")
+        .map(x =&gt; x.typeReference.getType())
+        .filter(x =&gt; x);
+
+    if (endpoints.length === 0) {
+        return { method: "", route: "", result: "None" };
+    }
+    if (endpoints.length &gt; 1) {
+        return { method: "", route: "", result: "Aggregate" };
+    }
+
+    const httpSettings = endpoints[0].getStereotype("Http Settings");
+    const httpMethod = httpSettings.getProperty("Verb").getValue();
+    let httpRoute = httpSettings.getProperty("Route").getValue();
+
+    if (endpoints[0].getParent()?.hasStereotype("Http Service Settings")) {
+        let serviceRoute = endpoints[0].getParent().getStereotype("Http Service Settings")?.getProperty("Route")?.getValue() || "";
+        const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
+        httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
+    }
+
+    // Use custom values if available, otherwise fall back to HTTP settings
+    return {
+        verb: customMethod || httpMethod,
+        route: customRoute || httpRoute
+    };
+}
+
+let source = association.getOtherEnd().typeReference.getType();
 let target = association.typeReference.getType();
-if (source.getAssociations("Route Association").length &gt; 1) {
-    source.setName(`AggregateGatewayRoute`);
-} else {
+
+if (!source) {
+    return;
+}
+
+if (source.getAssociations("Route Association").length === 0) {
+    source.setName(`DetachedGatewayRoute`, true);
+} else if (source.getAssociations("Route Association").length &gt; 1) {
+    source.setName(`AggregateGatewayRoute`, true);
+} else if (target) {
     source.setName(`${target.getName()}GatewayRoute`);
+}
+
+if (target) {
+    const { verb, route, result } = getMethodAndRoute(source);
+
+    const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+
+    let httpSettings = source.getStereotype(HttpSettings);
+    if (!httpSettings) {
+        httpSettings = source.addStereotype(HttpSettings);
+    }
+    httpSettings.getProperty("Route").setValue(route);
+    httpSettings.getProperty("Verb").setValue(verb);
+} else {
+    const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+
+    let httpSettings = source.getStereotype(HttpSettings);
+    if (httpSettings) {
+        source.removeStereotype(HttpSettings);
+    }
+}</script>
+        </macro>
+        <macro trigger="on-deleted">
+          <script>function getMethodAndRoute(element) {
+    // Get custom settings
+    const customSettings = element.getStereotype("Http Settings");
+    const customRoute = customSettings?.getProperty("Route")?.getValue() || "";
+    const customMethod = customSettings?.getProperty("Verb")?.getValue() || "";
+
+    // Get HTTP settings
+    const endpoints = element.getAssociations("Route Association")
+        .map(x =&gt; x.typeReference.getType())
+        .filter(x =&gt; x);
+
+    if (endpoints.length === 0) {
+        return { method: "", route: "", result: "None" };
+    }
+    if (endpoints.length &gt; 1) {
+        return { method: "", route: "", result: "Aggregate" };
+    }
+
+    const httpSettings = endpoints[0].getStereotype("Http Settings");
+    const httpMethod = httpSettings.getProperty("Verb").getValue();
+    let httpRoute = httpSettings.getProperty("Route").getValue();
+
+    if (endpoints[0].getParent()?.hasStereotype("Http Service Settings")) {
+        let serviceRoute = endpoints[0].getParent().getStereotype("Http Service Settings")?.getProperty("Route")?.getValue() || "";
+        const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
+        httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
+    }
+
+    // Use custom values if available, otherwise fall back to HTTP settings
+    return {
+        verb: customMethod || httpMethod,
+        route: customRoute || httpRoute
+    };
+}
+
+let source = association.getOtherEnd().typeReference.getType();
+let target = association.typeReference.getType();
+
+if (!source) {
+    return;
+}
+
+if (source.getAssociations("Route Association").length === 0) {
+    source.setName(`DetachedGatewayRoute`, true);
+} else if (source.getAssociations("Route Association").length &gt; 1) {
+    source.setName(`AggregateGatewayRoute`, true);
+} else if (target) {
+    source.setName(`${target.getName()}GatewayRoute`);
+}
+
+const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    
+let httpSettings = source.getStereotype(HttpSettings);
+if (httpSettings) {
+    source.removeStereotype(HttpSettings);
 }</script>
         </macro>
       </macros>
