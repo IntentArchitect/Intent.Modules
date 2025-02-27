@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services</id>
-  <version>3.9.2</version>
+  <version>3.9.3-pre.0</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Services modeler for describing an application's web services.</summary>
   <description>Services modeler for describing an application's web services.</description>
@@ -31,7 +31,39 @@
   </metadata>
   <files></files>
   <factoryExtensions />
-  <moduleSettings />
+  <moduleSettings>
+    <group id="370723b8-0896-465f-acc7-099d8f36e052" title="Service Settings" externalReference="370723b8-0896-465f-acc7-099d8f36e052">
+      <settings>
+        <setting id="8df5e8ae-1a56-4507-87e9-4f73cd69ba50" title="Property Naming Convention" type="select">
+          <hint>Convention applied when creating and renaming properties.</hint>
+          <defaultValue>manual</defaultValue>
+          <options>
+            <option value="manual" description="Manual" />
+            <option value="pascal-case" description="Pascal Case" />
+            <option value="camel-case" description="Camel Case" />
+          </options>
+        </setting>
+        <setting id="625c6211-0dc7-4190-af49-6eadb82c7015" title="Entity Naming Convention" type="select">
+          <hint>Convention applied when creating and renaming entities.</hint>
+          <defaultValue>manual</defaultValue>
+          <options>
+            <option value="pascal-case" description="Pascal Case" />
+            <option value="camel-case" description="Camel Case" />
+            <option value="manual" description="Manual" />
+          </options>
+        </setting>
+        <setting id="9add7769-0034-4c7f-987e-bb592cfd335e" title="Operation Naming Convention" type="select">
+          <hint>Convention applied when creating and renaming operations.</hint>
+          <defaultValue>manual</defaultValue>
+          <options>
+            <option value="camel-case" description="Camel Case" />
+            <option value="manual" description="Manual" />
+            <option value="pascal-case" description="Pascal Case" />
+          </options>
+        </setting>
+      </settings>
+    </group>
+  </moduleSettings>
   <moduleSettingsExtensions />
   <migrations />
 </package>

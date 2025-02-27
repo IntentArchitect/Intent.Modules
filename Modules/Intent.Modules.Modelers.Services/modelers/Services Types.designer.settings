@@ -1766,6 +1766,15 @@ function onMapDto(element, folder, autoAddPrimaryKey = true, dtoPrefix = null, i
 onMapDto(element, element.getParent("Folder"));
 </script>
         </macro>
+        <macro trigger="on-name-changed">
+          <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("625c6211-0dc7-4190-af49-6eadb82c7015")?.value;
+
+if (namingConvention == "pascal-case") {
+    element.setName(toPascalCase(element.getName()))
+} else if (namingConvention == "camel-case") {
+    element.setName(toCamelCase(element.getName()))
+}</script>
+        </macro>
       </macros>
       <childElementSettings>
         <childElementSetting type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
@@ -1803,6 +1812,17 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <mappingSettings />
+          <macros>
+            <macro trigger="on-name-changed">
+              <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("8df5e8ae-1a56-4507-87e9-4f73cd69ba50")?.value;
+
+if (namingConvention == "pascal-case") {
+    element.setName(toPascalCase(element.getName()))
+} else if (namingConvention == "camel-case") {
+    element.setName(toCamelCase(element.getName()))
+}</script>
+            </macro>
+          </macros>
         </childElementSetting>
       </childElementSettings>
     </elementSetting>
@@ -1849,6 +1869,17 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
       <scriptOptions />
       <mappingOptions />
       <mappingSettings />
+      <macros>
+        <macro trigger="on-name-changed">
+          <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("625c6211-0dc7-4190-af49-6eadb82c7015")?.value;
+
+if (namingConvention == "pascal-case") {
+    element.setName(toPascalCase(element.getName()))
+} else if (namingConvention == "camel-case") {
+    element.setName(toCamelCase(element.getName()))
+}</script>
+        </macro>
+      </macros>
       <childElementSettings>
         <childElementSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My43MDc2IiB4Mj0iMjUiIHkyPSI0LjMwNzYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00NC4xLDExLjlMMjUuNSwyLjhjLTAuMy0wLjEtMC42LTAuMS0wLjksMEw1LjksMTEuOQ0KCWMtMC40LDAuMi0wLjYsMC41LTAuNiwwLjl2MjQuM2MwLDAuNCwwLjIsMC43LDAuNiwwLjlsMTguNiw5LjJjMC4xLDAuMSwwLjMsMC4xLDAuNSwwLjFzMC4zLDAsMC41LTAuMUw0NC4xLDM4DQoJYzAuNC0wLjIsMC42LTAuNSwwLjYtMC45VjEyLjlDNDQuNywxMi41LDQ0LjUsMTIuMSw0NC4xLDExLjl6IE0yNSw1LjlsMTQsNi45bC0xNCw2LjlsLTE0LTYuOUwyNSw1Ljl6IE04LjQsMzUuOVYxNWwxNS4xLDcuNHYyMC45DQoJTDExLDM3LjFMOC40LDM1Ljl6IE0yNi41LDQzLjNWMjIuNEw0MS42LDE1djIwLjlMMzksMzcuMUwyNi41LDQzLjN6Ii8+DQo8L3N2Zz4NCg==" />
@@ -1979,6 +2010,15 @@ return validateOperation(lookup(id));
               <script>element.getChildren("00208d20-469d-41cb-8501-768fd5eb796b").forEach(x =&gt; {
     x.setName(toCamelCase(x.getName()));
 });</script>
+            </macro>
+            <macro trigger="on-name-changed">
+              <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("9add7769-0034-4c7f-987e-bb592cfd335e")?.value;
+
+if (namingConvention == "pascal-case") {
+    element.setName(toPascalCase(element.getName()))
+} else if (namingConvention == "camel-case") {
+    element.setName(toCamelCase(element.getName()))
+}</script>
             </macro>
           </macros>
           <childElementSettings>
