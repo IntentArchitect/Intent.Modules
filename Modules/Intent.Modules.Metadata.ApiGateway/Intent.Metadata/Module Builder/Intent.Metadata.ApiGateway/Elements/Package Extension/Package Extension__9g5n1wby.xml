@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="017fd788-f67f-4500-9e99-8212c775ab52" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>Package Extension</name>
+  <display>Package Extension: Services Package</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <typeReference id="172077d7-37f7-4dab-9ba8-08d1b41f0d8d">
+    <typeId>df45eaf6-9202-4c25-8dd5-677e9ba1e906</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Services</typePackageName>
+    <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>3f6cd7b9-04a8-4044-8f98-7bf380f7df3d</parentFolderId>
+  <packageId>775b96aa-24f0-4348-a06a-ab62d463a582</packageId>
+  <packageName>Intent.Metadata.ApiGateway</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="45097296-1536-42d4-bdfe-eb6cbf8fd0de" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>017fd788-f67f-4500-9e99-8212c775ab52</parentFolderId>
+      <packageId>775b96aa-24f0-4348-a06a-ab62d463a582</packageId>
+      <packageName>Intent.Metadata.ApiGateway</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="fe10bd76-9b28-43a5-8eaf-0a1b0543a9dd" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Api Gateway Route</name>
+          <display>New Api Gateway Route: Api Gateway Route</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="f098bea6-a0d9-4b23-8be3-2fb40ce62a7d">
+            <typeId>b09d7684-5dde-4d4b-9cb5-0707bfd8578f</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Metadata.ApiGateway</typePackageName>
+            <typePackageId>775b96aa-24f0-4348-a06a-ab62d463a582</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>45097296-1536-42d4-bdfe-eb6cbf8fd0de</parentFolderId>
+          <packageId>775b96aa-24f0-4348-a06a-ab62d463a582</packageId>
+          <packageName>Intent.Metadata.ApiGateway</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="ApiGatewayRoute" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="aeaeff9b-f55b-4888-92e9-5317b5c14016" display="Top Divider" value="false" isActive="true" />
+                <property name="543cc5f5-0b0c-40cc-9df7-3ce45b555dd0" display="Bottom Divider" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>
