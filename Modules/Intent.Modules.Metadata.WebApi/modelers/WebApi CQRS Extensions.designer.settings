@@ -5202,6 +5202,15 @@ function getDefaultRoutePrefix(includeLastPathSeparator) {
 
 execute();</script>
         </macro>
+        <macro trigger="on-name-changed">
+          <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("625c6211-0dc7-4190-af49-6eadb82c7015")?.value;
+
+if (namingConvention == "pascal-case") {
+    element.setName(toPascalCase(element.getName()))
+} else if (namingConvention == "camel-case") {
+    element.setName(toCamelCase(element.getName()))
+}</script>
+        </macro>
       </macros>
     </elementExtension>
     <elementExtension type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">

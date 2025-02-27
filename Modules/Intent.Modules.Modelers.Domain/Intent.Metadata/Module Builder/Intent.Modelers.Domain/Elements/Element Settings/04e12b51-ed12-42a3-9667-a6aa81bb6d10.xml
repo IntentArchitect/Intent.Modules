@@ -716,7 +716,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="element.getChildren(&quot;Class Constructor&quot;).forEach(x =&gt; x.refresh ? x.refresh() : null)" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="var namingConvention = application.getSettings(&quot;c4d1e35c-7c0d-4926-afe0-18f17563ce17&quot;)?.getField(&quot;dcb5114c-39d0-4880-b6c6-312bbb3ceac1&quot;)?.value;&#xD;&#xA;&#xD;&#xA;if (namingConvention == &quot;pascal-case&quot;) {&#xD;&#xA;    element.setName(toPascalCase(element.getName()))&#xD;&#xA;} else if (namingConvention == &quot;camel-case&quot;) {&#xD;&#xA;    element.setName(toCamelCase(element.getName()))&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;element.getChildren(&quot;Class Constructor&quot;).forEach(x =&gt; x.refresh ? x.refresh() : null)" isActive="true" />
                 <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>

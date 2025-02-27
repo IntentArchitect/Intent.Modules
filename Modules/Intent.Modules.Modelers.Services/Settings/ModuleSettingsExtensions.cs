@@ -5,24 +5,23 @@ using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: DefaultIntentManaged(Mode.Ignore, Targets = Targets.Namespaces)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.Domain.Settings
+namespace Intent.Modules.Modelers.Services.Settings
 {
     public static class ModuleSettingsExtensions
     {
-        public static DomainSettings GetDomainSettings(this IApplicationSettingsProvider settings)
+        public static ServiceSettings GetServiceSettings(this IApplicationSettingsProvider settings)
         {
-            return new DomainSettings(settings.GetGroup("c4d1e35c-7c0d-4926-afe0-18f17563ce17"));
+            return new ServiceSettings(settings.GetGroup("370723b8-0896-465f-acc7-099d8f36e052"));
         }
     }
 
-    public class DomainSettings : IGroupSettings
+    public class ServiceSettings : IGroupSettings
     {
         private readonly IGroupSettings _groupSettings;
 
-        public DomainSettings(IGroupSettings groupSettings)
+        public ServiceSettings(IGroupSettings groupSettings)
         {
             _groupSettings = groupSettings;
         }
@@ -39,24 +38,24 @@ namespace Intent.Modules.Modelers.Domain.Settings
         {
             return _groupSettings.GetSetting(settingId);
         }
-        public AttributeNamingConventionOptions AttributeNamingConvention() => new AttributeNamingConventionOptions(_groupSettings.GetSetting("c3789138-6649-47e4-901b-5f6469583cb7")?.Value);
+        public PropertyNamingConventionOptions PropertyNamingConvention() => new PropertyNamingConventionOptions(_groupSettings.GetSetting("8df5e8ae-1a56-4507-87e9-4f73cd69ba50")?.Value);
 
-        public class AttributeNamingConventionOptions
+        public class PropertyNamingConventionOptions
         {
             public readonly string Value;
 
-            public AttributeNamingConventionOptions(string value)
+            public PropertyNamingConventionOptions(string value)
             {
                 Value = value;
             }
 
-            public AttributeNamingConventionOptionsEnum AsEnum()
+            public PropertyNamingConventionOptionsEnum AsEnum()
             {
                 return Value switch
                 {
-                    "manual" => AttributeNamingConventionOptionsEnum.Manual,
-                    "pascal-case" => AttributeNamingConventionOptionsEnum.PascalCase,
-                    "camel-case" => AttributeNamingConventionOptionsEnum.CamelCase,
+                    "manual" => PropertyNamingConventionOptionsEnum.Manual,
+                    "pascal-case" => PropertyNamingConventionOptionsEnum.PascalCase,
+                    "camel-case" => PropertyNamingConventionOptionsEnum.CamelCase,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
@@ -77,14 +76,13 @@ namespace Intent.Modules.Modelers.Domain.Settings
             }
         }
 
-        public enum AttributeNamingConventionOptionsEnum
+        public enum PropertyNamingConventionOptionsEnum
         {
             Manual,
             PascalCase,
             CamelCase,
         }
-
-        public EntityNamingConventionOptions EntityNamingConvention() => new EntityNamingConventionOptions(_groupSettings.GetSetting("dcb5114c-39d0-4880-b6c6-312bbb3ceac1")?.Value);
+        public EntityNamingConventionOptions EntityNamingConvention() => new EntityNamingConventionOptions(_groupSettings.GetSetting("625c6211-0dc7-4190-af49-6eadb82c7015")?.Value);
 
         public class EntityNamingConventionOptions
         {
@@ -99,16 +97,11 @@ namespace Intent.Modules.Modelers.Domain.Settings
             {
                 return Value switch
                 {
-                    "manual" => EntityNamingConventionOptionsEnum.Manual,
                     "pascal-case" => EntityNamingConventionOptionsEnum.PascalCase,
                     "camel-case" => EntityNamingConventionOptionsEnum.CamelCase,
+                    "manual" => EntityNamingConventionOptionsEnum.Manual,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
-            }
-
-            public bool IsManual()
-            {
-                return Value == "manual";
             }
 
             public bool IsPascalCase()
@@ -120,16 +113,20 @@ namespace Intent.Modules.Modelers.Domain.Settings
             {
                 return Value == "camel-case";
             }
+
+            public bool IsManual()
+            {
+                return Value == "manual";
+            }
         }
 
         public enum EntityNamingConventionOptionsEnum
         {
-            Manual,
             PascalCase,
             CamelCase,
+            Manual,
         }
-
-        public OperationNamingConventionOptions OperationNamingConvention() => new OperationNamingConventionOptions(_groupSettings.GetSetting("128d9880-cbf7-469f-a5af-915bc3d71874")?.Value);
+        public OperationNamingConventionOptions OperationNamingConvention() => new OperationNamingConventionOptions(_groupSettings.GetSetting("9add7769-0034-4c7f-987e-bb592cfd335e")?.Value);
 
         public class OperationNamingConventionOptions
         {
@@ -144,11 +141,16 @@ namespace Intent.Modules.Modelers.Domain.Settings
             {
                 return Value switch
                 {
+                    "camel-case" => OperationNamingConventionOptionsEnum.CamelCase,
                     "manual" => OperationNamingConventionOptionsEnum.Manual,
                     "pascal-case" => OperationNamingConventionOptionsEnum.PascalCase,
-                    "camel-case" => OperationNamingConventionOptionsEnum.CamelCase,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
+            }
+
+            public bool IsCamelCase()
+            {
+                return Value == "camel-case";
             }
 
             public bool IsManual()
@@ -160,18 +162,13 @@ namespace Intent.Modules.Modelers.Domain.Settings
             {
                 return Value == "pascal-case";
             }
-
-            public bool IsCamelCase()
-            {
-                return Value == "camel-case";
-            }
         }
 
         public enum OperationNamingConventionOptionsEnum
         {
+            CamelCase,
             Manual,
             PascalCase,
-            CamelCase,
         }
     }
 }

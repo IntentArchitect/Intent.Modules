@@ -214,7 +214,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     public CSharpClass AddProperty<TModel>(string type, TModel model, Action<CSharpProperty>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddProperty(type, model.Name.ToPropertyName(), prop =>
+        return AddProperty(type, model.Name, prop =>
         {
             prop.RepresentsModel(model);
             configure?.Invoke(prop);
@@ -232,7 +232,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     public CSharpClass AddProperty<TModel>(TModel model, Action<CSharpProperty>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddProperty(File.GetModelType(model), model.Name.ToPropertyName(), prop =>
+        return AddProperty(File.GetModelType(model), model.Name, prop =>
         {
             prop.RepresentsModel(model);
             configure?.Invoke(prop);
@@ -310,7 +310,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
             if (addStatement)
             {
                 ctorStatements.Add(new CSharpStatement($"// IntentMerge"));
-                ctorStatements.Add(new CSharpStatement($"{property.Name.ToPascalCase()} = null!;"));
+                ctorStatements.Add(new CSharpStatement($"{property.Name} = null!;"));
             }
         }
 
@@ -356,7 +356,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     public CSharpClass AddMethod<TModel>(string returnType, TModel model, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddMethod(returnType, model.Name.ToPropertyName(), prop =>
+        return AddMethod(returnType, model.Name, prop =>
         {
             prop.RepresentsModel(model);
             configure?.Invoke(prop);
@@ -366,7 +366,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     public CSharpClass AddMethod<TModel>(TModel returnType, Action<CSharpClassMethod>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddMethod(File.GetModelType(returnType), returnType.Name.ToPropertyName(), prop =>
+        return AddMethod(File.GetModelType(returnType), returnType.Name, prop =>
         {
             prop.RepresentsModel(returnType);
             configure?.Invoke(prop);

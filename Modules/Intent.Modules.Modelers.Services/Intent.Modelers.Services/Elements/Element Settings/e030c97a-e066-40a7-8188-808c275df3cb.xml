@@ -156,6 +156,40 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="6da8ef09-ffbf-4f13-a3e2-7695094ee359" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Name Changed</name>
+          <display>On Name Changed: Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="78010423-e8b9-4250-9d37-bfc0d71b9386">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3dbff654-ac5d-4b93-a631-3130a407d5d1</parentFolderId>
+          <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+          <packageName>Intent.Modelers.Services</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="var namingConvention = application.getSettings(&quot;370723b8-0896-465f-acc7-099d8f36e052&quot;)?.getField(&quot;9add7769-0034-4c7f-987e-bb592cfd335e&quot;)?.value;&#xD;&#xA;&#xD;&#xA;if (namingConvention == &quot;pascal-case&quot;) {&#xD;&#xA;    element.setName(toPascalCase(element.getName()))&#xD;&#xA;} else if (namingConvention == &quot;camel-case&quot;) {&#xD;&#xA;    element.setName(toCamelCase(element.getName()))&#xD;&#xA;}" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
       </childElements>
     </childElement>
   </childElements>
