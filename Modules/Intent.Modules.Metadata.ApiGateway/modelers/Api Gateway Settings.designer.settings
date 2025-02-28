@@ -111,7 +111,8 @@
     // Use custom values if available, otherwise fall back to HTTP settings
     return {
         verb: customMethod || httpMethod,
-        route: customRoute || httpRoute
+        route: customRoute || httpRoute,
+        result: null
     };
 }
 
@@ -161,7 +162,8 @@ return formatMethodAndRoute(element);</text>
     // Use custom values if available, otherwise fall back to HTTP settings
     return {
         verb: customMethod || httpMethod,
-        route: customRoute || httpRoute
+        route: customRoute || httpRoute,
+        result: null
     };
 }
 
@@ -401,7 +403,8 @@ routeVars.forEach(routeVar =&gt; {
     // Use custom values if available, otherwise fall back to HTTP settings
     return {
         verb: customMethod || httpMethod,
-        route: customRoute || httpRoute
+        route: customRoute || httpRoute,
+        result: null
     };
 }
 
@@ -441,42 +444,7 @@ if (target) {
 }</script>
         </macro>
         <macro trigger="on-deleted">
-          <script>function getMethodAndRoute(element) {
-    // Get custom settings
-    const customSettings = element.getStereotype("Http Settings");
-    const customRoute = customSettings?.getProperty("Route")?.getValue() || "";
-    const customMethod = customSettings?.getProperty("Verb")?.getValue() || "";
-
-    // Get HTTP settings
-    const endpoints = element.getAssociations("Route Association")
-        .map(x =&gt; x.typeReference.getType())
-        .filter(x =&gt; x);
-
-    if (endpoints.length === 0) {
-        return { method: "", route: "", result: "None" };
-    }
-    if (endpoints.length &gt; 1) {
-        return { method: "", route: "", result: "Aggregate" };
-    }
-
-    const httpSettings = endpoints[0].getStereotype("Http Settings");
-    const httpMethod = httpSettings.getProperty("Verb").getValue();
-    let httpRoute = httpSettings.getProperty("Route").getValue();
-
-    if (endpoints[0].getParent()?.hasStereotype("Http Service Settings")) {
-        let serviceRoute = endpoints[0].getParent().getStereotype("Http Service Settings")?.getProperty("Route")?.getValue() || "";
-        const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
-        httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
-    }
-
-    // Use custom values if available, otherwise fall back to HTTP settings
-    return {
-        verb: customMethod || httpMethod,
-        route: customRoute || httpRoute
-    };
-}
-
-let source = association.getOtherEnd().typeReference.getType();
+          <script>let source = association.getOtherEnd().typeReference.getType();
 let target = association.typeReference.getType();
 
 if (!source) {
