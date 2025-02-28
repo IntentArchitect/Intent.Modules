@@ -2399,10 +2399,19 @@ return element.hasStereotype(bindableId);</isMappableFunction>
               <shortcut>space</shortcut>
               <icon type="FontAwesome" source="code" />
               <isOptionVisibleFunction>return !element.getIsMapped();</isOptionVisibleFunction>
-              <script>const invocationMappingTYpeId = "e4f0c63b-0f00-42bd-a703-00adf44f3364";
+              <script>const invocationMappingTypeId = "e4f0c63b-0f00-42bd-a703-00adf44f3364";
 const parentElement = mapping.getSourceElement();
-const newElement = createElement("Component Operation", `On${(element.getName().replace("On", "")).replace(" ", "")}`, parentElement.id);
-mapping.addMappedEnd(invocationMappingTYpeId, newElement.getMappingPath(), element.getMappingPath());</script>
+const newOperation = createElement("Component Operation", `On${(element.getName().replace("On", "")).replace(" ", "")}`, parentElement.id);
+if (element.typeReference.getTypeId()) {
+    let param = createElement("Parameter", "param", newOperation.id);
+    param.typeReference.setType(element.typeReference.getTypeId());
+}
+mapping.addMappedEnd(invocationMappingTypeId, newOperation.getMappingPath(), element.getMappingPath());
+
+let eventEmitterParam = element.getChildren("Parameter").filter(x =&gt; x.getName() == "param")[0];
+if (eventEmitterParam) {
+    mapping.addMappingExpression(element.getMappingPath().concat([eventEmitterParam.id]), "value");
+}</script>
             </option>
           </scriptOptions>
         </mappableElement>
