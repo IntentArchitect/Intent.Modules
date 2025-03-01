@@ -193,7 +193,8 @@ return formatMethodAndRoute(element);</text>
       </visualSettings>
       <macros>
         <macro trigger="on-changed">
-          <script>function extractRouteVariables(routePath) {
+          <script>return;
+function extractRouteVariables(routePath) {
     // Match any text between curly braces
     const variablePattern = /\{([^}]+)\}/g;
     const variables = [];
@@ -223,12 +224,12 @@ const httpRoute = httpSettings?.getProperty("Route")?.getValue();
 let upstreamRoute = customRoute || httpRoute;
 
 if (!upstreamRoute) {
-    element.getChildren("DTO-Field").forEach(x =&gt; x.delete());
+    element.getChildren("DTO-Field").filter(field =&gt; !field.hasMetadata("upstream")).forEach(x =&gt; x.delete());
     return;
 }
 
 let routeVars = extractRouteVariables(upstreamRoute);
-element.getChildren("DTO-Field").forEach(field =&gt; {
+element.getChildren("DTO-Field").filter(field =&gt; !field.hasMetadata("upstream")).forEach(field =&gt; {
     let routeVar = field.getMetadata("routeVar");
     if (routeVars.indexOf(routeVar) &lt; 0) {
         field.delete();
@@ -408,6 +409,70 @@ routeVars.forEach(routeVar =&gt; {
     };
 }
 
+function isForBody(field) {
+    let operation = field.getParent();
+    let httpSettingsRoute = operation.getStereotype("Http Settings")?.getProperty("Route").getValue();
+    let paramSource = field.getStereotype("Parameter Settings")?.getProperty("Source")?.getValue();
+    if (!paramSource || paramSource == "Default") {
+        return httpSettingsRoute.toLowerCase().indexOf(`{${field.getName().toLowerCase()}}`) &lt;= 0;
+    }
+    return paramSource == "Body";
+}
+
+function syncDownstreamContract(source, target) {
+    let bodyFields = target.getChildren("DTO-Field").filter(x =&gt; isForBody(x));
+    // If there are no body fields, nothing to do
+    if (!bodyFields || bodyFields.length === 0) {
+        return;
+    }
+    
+    // Get the parent of the source (where we'll create the new DTO)
+    const sourceParent = source.getParent();
+    
+    // Check if there's already a DTO with the upstream metadata matching the source ID
+    let existingDto = null;
+    sourceParent.getChildren().forEach(child =&gt; {
+        if (child.hasMetadata("upstream") &amp;&amp; child.getMetadata("upstream") === source.id) {
+            existingDto = child;
+        }
+    });
+    
+    // Use existing DTO or create a new one
+    let dto;
+    if (existingDto) {
+        dto = existingDto;
+        // Clear existing fields to update with fresh ones
+        existingDto.getChildren("DTO-Field").forEach(field =&gt; field.delete());
+    } else {
+        // Create a new DTO with name based on source
+        const dtoName = target.getName();
+        dto = createElement("DTO", dtoName, sourceParent.id);
+        // Add metadata to track relationship with source
+        dto.addMetadata("upstream", source.id);
+    }
+    
+    // Copy the body fields into the DTO
+    bodyFields.forEach(field =&gt; {
+        const newField = createElement("DTO-Field", field.getName(), dto.id);
+        newField.addMetadata("upstream", source.id);
+        
+        // Copy properties from the original field
+        if (field.typeReference?.getTypeId()) {
+            newField.typeReference.setType(field.typeReference.getTypeId());
+        }
+    });
+    
+    let bodyField = source.getChildren("DTO-Field").filter(x =&gt; x.getName() == "Body")[0];
+    
+    // Create a new Body field if it doesn't exist
+    if (!bodyField) {
+        bodyField = createElement("DTO-Field", "Body", source.id);
+    }
+    
+    // Set the type reference to the DTO
+    bodyField.typeReference.setType(dto.id);
+}
+
 let source = association.getOtherEnd().typeReference.getType();
 let target = association.typeReference.getType();
 
@@ -434,6 +499,8 @@ if (target) {
     }
     httpSettings.getProperty("Route").setValue(route);
     httpSettings.getProperty("Verb").setValue(verb);
+
+    syncDownstreamContract(source, target);
 } else {
     const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
