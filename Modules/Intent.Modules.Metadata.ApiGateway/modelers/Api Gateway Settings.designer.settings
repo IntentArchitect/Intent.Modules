@@ -193,53 +193,49 @@ return formatMethodAndRoute(element);</text>
       </visualSettings>
       <macros>
         <macro trigger="on-changed">
-          <script>return;
-function extractRouteVariables(routePath) {
+          <script>function extractRouteVariables(routePath) {
     // Match any text between curly braces
     const variablePattern = /\{([^}]+)\}/g;
     const variables = [];
-    
     // Find all matches in the route path
     let match;
     while ((match = variablePattern.exec(routePath)) !== null) {
         variables.push(match[1]);
     }
-    
     return variables;
 }
-
-const ApiGatewayRouteSettings = "1ad354a7-9ef2-440f-acb2-d9cb11be3352";
-const ApiGatewayRoute = "83bfc247-76f5-476d-8741-0ecd7f9971ed";
-
-const customSettings = element.getStereotype(ApiGatewayRouteSettings);
-const customRoute = customSettings?.getProperty(ApiGatewayRoute)?.getValue() || "";
-
-const endpoints = element.getAssociations("Route Association")
-    .map(x =&gt; x.typeReference.getType())
-    .filter(x =&gt; x);
-
-const httpSettings = endpoints[0]?.getStereotype("Http Settings");
-const httpRoute = httpSettings?.getProperty("Route")?.getValue();
-
-let upstreamRoute = customRoute || httpRoute;
-
-if (!upstreamRoute) {
-    element.getChildren("DTO-Field").filter(field =&gt; !field.hasMetadata("upstream")).forEach(x =&gt; x.delete());
-    return;
-}
-
-let routeVars = extractRouteVariables(upstreamRoute);
-element.getChildren("DTO-Field").filter(field =&gt; !field.hasMetadata("upstream")).forEach(field =&gt; {
-    let routeVar = field.getMetadata("routeVar");
-    if (routeVars.indexOf(routeVar) &lt; 0) {
-        field.delete();
+/// &lt;reference path="../_common/extractRouteVariables.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function applyOnChangedApiGatewayRouteBehavior() {
+    var _a, _b, _c;
+    const customSettings = element === null || element === void 0 ? void 0 : element.getStereotype("Http Settings");
+    const customRoute = ((_a = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Route")) === null || _a === void 0 ? void 0 : _a.getValue()) || "";
+    const endpoints = element.getAssociations("Route Association")
+        .map(x =&gt; x.typeReference.getType())
+        .filter(x =&gt; x);
+    const httpSettings = (_b = endpoints[0]) === null || _b === void 0 ? void 0 : _b.getStereotype("Http Settings");
+    const httpRoute = (_c = httpSettings === null || httpSettings === void 0 ? void 0 : httpSettings.getProperty("Route")) === null || _c === void 0 ? void 0 : _c.getValue();
+    let upstreamRoute = customRoute || httpRoute;
+    if (!upstreamRoute) {
+        element.getChildren("DTO-Field").filter(field =&gt; field.getName() !== "Body").forEach(x =&gt; x.delete());
+        return;
     }
-});
-routeVars.forEach(routeVar =&gt; {
-    let field = element.getChildren("DTO-Field").filter(x =&gt; x.getMetadata("routeVar") === routeVar)[0] 
-        ?? createElement("DTO-Field", toPascalCase(routeVar), element.id);
-    field.setMetadata("routeVar", routeVar);
-});</script>
+    let routeVars = extractRouteVariables(upstreamRoute);
+    element.getChildren("DTO-Field").filter(field =&gt; field.getName() !== "Body")
+        .forEach(field =&gt; {
+        let routeVar = field.getMetadata("routeVar");
+        if (routeVars.indexOf(routeVar) &lt; 0) {
+            field.delete();
+        }
+    });
+    routeVars.forEach(routeVar =&gt; {
+        var _a;
+        let field = (_a = element.getChildren("DTO-Field").filter(x =&gt; x.getMetadata("routeVar") === routeVar)[0]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("DTO-Field", toPascalCase(routeVar), element.id);
+        field.setMetadata("routeVar", routeVar);
+    });
+}
+applyOnChangedApiGatewayRouteBehavior();
+</script>
         </macro>
       </macros>
     </elementSetting>
@@ -373,34 +369,47 @@ routeVars.forEach(routeVar =&gt; {
       </visualSettings>
       <macros>
         <macro trigger="on-changed">
-          <script>function getMethodAndRoute(element) {
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isFieldFromBody(downStreamOperation, dtoField) {
+    var _a, _b, _c, _d;
+    if (dtoField.specialization != "DTO-Field") {
+        throw Error(`Element "${dtoField.id}, ${dtoField.getName()}" is not of type DTO-Field.`);
+    }
+    let httpSpecifiedElement = downStreamOperation.specialization === "Operation"
+        ? downStreamOperation.getChildren("Parameter").filter(param =&gt; { var _a; return ((_a = param.typeReference) === null || _a === void 0 ? void 0 : _a.getType().specialization) === "DTO"; })[0]
+        : downStreamOperation;
+    let httpSettingsRoute = (_b = (_a = httpSpecifiedElement.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Route")) === null || _b === void 0 ? void 0 : _b.getValue();
+    let paramSource = (_d = (_c = dtoField.getStereotype("Parameter Settings")) === null || _c === void 0 ? void 0 : _c.getProperty("Source")) === null || _d === void 0 ? void 0 : _d.getValue();
+    if (!paramSource || paramSource == "Default") {
+        return httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`) &gt;= 0;
+    }
+    return paramSource == "Body";
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function getMethodAndRoute(element) {
+    var _a, _b, _c, _d, _e;
     // Get custom settings
     const customSettings = element.getStereotype("Http Settings");
-    const customRoute = customSettings?.getProperty("Route")?.getValue() || "";
-    const customMethod = customSettings?.getProperty("Verb")?.getValue() || "";
-
+    const customRoute = ((_a = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Route")) === null || _a === void 0 ? void 0 : _a.getValue()) || "";
+    const customMethod = ((_b = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Verb")) === null || _b === void 0 ? void 0 : _b.getValue()) || "";
     // Get HTTP settings
     const endpoints = element.getAssociations("Route Association")
         .map(x =&gt; x.typeReference.getType())
         .filter(x =&gt; x);
-
     if (endpoints.length === 0) {
-        return { method: "", route: "", result: "None" };
+        return { verb: "", route: "", result: "None" };
     }
     if (endpoints.length &gt; 1) {
-        return { method: "", route: "", result: "Aggregate" };
+        return { verb: "", route: "", result: "Aggregate" };
     }
-
     const httpSettings = endpoints[0].getStereotype("Http Settings");
     const httpMethod = httpSettings.getProperty("Verb").getValue();
     let httpRoute = httpSettings.getProperty("Route").getValue();
-
-    if (endpoints[0].getParent()?.hasStereotype("Http Service Settings")) {
-        let serviceRoute = endpoints[0].getParent().getStereotype("Http Service Settings")?.getProperty("Route")?.getValue() || "";
+    if ((_c = endpoints[0].getParent()) === null || _c === void 0 ? void 0 : _c.hasStereotype("Http Service Settings")) {
+        let serviceRoute = ((_e = (_d = endpoints[0].getParent().getStereotype("Http Service Settings")) === null || _d === void 0 ? void 0 : _d.getProperty("Route")) === null || _e === void 0 ? void 0 : _e.getValue()) || "";
         const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
         httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
     }
-
     // Use custom values if available, otherwise fall back to HTTP settings
     return {
         verb: customMethod || httpMethod,
@@ -408,130 +417,125 @@ routeVars.forEach(routeVar =&gt; {
         result: null
     };
 }
-
-function isForBody(field) {
-    let operation = field.getParent();
-    let httpSettingsRoute = operation.getStereotype("Http Settings")?.getProperty("Route").getValue();
-    let paramSource = field.getStereotype("Parameter Settings")?.getProperty("Source")?.getValue();
-    if (!paramSource || paramSource == "Default") {
-        return httpSettingsRoute.toLowerCase().indexOf(`{${field.getName().toLowerCase()}}`) &lt;= 0;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function updateApiGatewayRouteName(apiGatewayRoute, downstreamService) {
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
     }
-    return paramSource == "Body";
+    if (apiGatewayRoute.getAssociations("Route Association").length === 0) {
+        apiGatewayRoute.setName(`DetachedGatewayRoute`, true);
+    }
+    else if (apiGatewayRoute.getAssociations("Route Association").length &gt; 1) {
+        apiGatewayRoute.setName(`AggregateGatewayRoute`, true);
+    }
+    else if (downstreamService) {
+        apiGatewayRoute.setName(`${downstreamService.getName()}GatewayRoute`, false);
+    }
 }
-
-function syncDownstreamContract(source, target) {
-    let bodyFields = target.getChildren("DTO-Field").filter(x =&gt; isForBody(x));
-    // If there are no body fields, nothing to do
-    if (!bodyFields || bodyFields.length === 0) {
+/// &lt;reference path="../_common/isFieldFromBody.ts" /&gt;
+/// &lt;reference path="../_common/getMethodAndRoute.ts" /&gt;
+/// &lt;reference path="../_common/updateApiGatewayRouteName.ts" /&gt;
+function applyRouteAssociationOnChangedBehavior() {
+    let source = association.getOtherEnd().typeReference.getType();
+    let target = association.typeReference.getType();
+    if (!source) {
         return;
     }
-    
-    // Get the parent of the source (where we'll create the new DTO)
-    const sourceParent = source.getParent();
-    
-    // Check if there's already a DTO with the upstream metadata matching the source ID
-    let existingDto = null;
-    sourceParent.getChildren().forEach(child =&gt; {
-        if (child.hasMetadata("upstream") &amp;&amp; child.getMetadata("upstream") === source.id) {
-            existingDto = child;
-        }
-    });
-    
-    // Use existing DTO or create a new one
-    let dto;
-    if (existingDto) {
-        dto = existingDto;
-        // Clear existing fields to update with fresh ones
-        existingDto.getChildren("DTO-Field").forEach(field =&gt; field.delete());
-    } else {
-        // Create a new DTO with name based on source
-        const dtoName = target.getName();
-        dto = createElement("DTO", dtoName, sourceParent.id);
-        // Add metadata to track relationship with source
-        dto.addMetadata("upstream", source.id);
+    updateApiGatewayRouteName(source, target);
+    if (!target) {
+        return;
     }
-    
-    // Copy the body fields into the DTO
-    bodyFields.forEach(field =&gt; {
-        const newField = createElement("DTO-Field", field.getName(), dto.id);
-        newField.addMetadata("upstream", source.id);
-        
-        // Copy properties from the original field
-        if (field.typeReference?.getTypeId()) {
-            newField.typeReference.setType(field.typeReference.getTypeId());
-        }
-    });
-    
-    let bodyField = source.getChildren("DTO-Field").filter(x =&gt; x.getName() == "Body")[0];
-    
-    // Create a new Body field if it doesn't exist
-    if (!bodyField) {
-        bodyField = createElement("DTO-Field", "Body", source.id);
-    }
-    
-    // Set the type reference to the DTO
-    bodyField.typeReference.setType(dto.id);
-}
-
-let source = association.getOtherEnd().typeReference.getType();
-let target = association.typeReference.getType();
-
-if (!source) {
-    return;
-}
-
-if (source.getAssociations("Route Association").length === 0) {
-    source.setName(`DetachedGatewayRoute`, true);
-} else if (source.getAssociations("Route Association").length &gt; 1) {
-    source.setName(`AggregateGatewayRoute`, true);
-} else if (target) {
-    source.setName(`${target.getName()}GatewayRoute`);
-}
-
-if (target) {
     const { verb, route, result } = getMethodAndRoute(source);
-
     const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-
     let httpSettings = source.getStereotype(HttpSettings);
     if (!httpSettings) {
         httpSettings = source.addStereotype(HttpSettings);
     }
     httpSettings.getProperty("Route").setValue(route);
     httpSettings.getProperty("Verb").setValue(verb);
-
     syncDownstreamContract(source, target);
-} else {
+}
+function syncDownstreamContract(source, target) {
+    var _a, _b;
+    let downstreamFields = target.getChildren("DTO-Field").filter(x =&gt; isFieldFromBody(target, x));
+    if (!downstreamFields || downstreamFields.length === 0) {
+        return;
+    }
+    const sourceParent = source.getParent();
+    let existingDto = sourceParent
+        .getChildren()
+        .filter(child =&gt; child.hasMetadata("upstream") &amp;&amp; child.getMetadata("upstream") === source.id)[0];
+    let dto = existingDto;
+    if (!dto) {
+        const dtoName = target.getName();
+        dto = createElement("DTO", dtoName, sourceParent.id);
+        dto.addMetadata("upstream", source.id);
+    }
+    for (let downstreamField of downstreamFields) {
+        let field = dto.getChildren("DTO-Field").filter(field =&gt; field.getName() === downstreamField.getName())[0];
+        if (!field) {
+            field = createElement("DTO-Field", downstreamField.getName(), dto.id);
+            (_a = field.typeReference) === null || _a === void 0 ? void 0 : _a.setType(downstreamField.typeReference.getTypeId());
+        }
+    }
+    for (let upstreamField of dto.getChildren("DTO-Field")) {
+        if (!downstreamFields.some(field =&gt; upstreamField.getName() === field.getName())) {
+            upstreamField.delete();
+        }
+    }
+    let bodyField = source.getChildren("DTO-Field").filter(x =&gt; x.getName() === "Body")[0];
+    if (!bodyField) {
+        bodyField = createElement("DTO-Field", "Body", source.id);
+    }
+    (_b = bodyField.typeReference) === null || _b === void 0 ? void 0 : _b.setType(dto.id);
+}
+applyRouteAssociationOnChangedBehavior();
+</script>
+        </macro>
+        <macro trigger="on-deleted">
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function updateApiGatewayRouteName(apiGatewayRoute, downstreamService) {
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
+    if (apiGatewayRoute.getAssociations("Route Association").length === 0) {
+        apiGatewayRoute.setName(`DetachedGatewayRoute`, true);
+    }
+    else if (apiGatewayRoute.getAssociations("Route Association").length &gt; 1) {
+        apiGatewayRoute.setName(`AggregateGatewayRoute`, true);
+    }
+    else if (downstreamService) {
+        apiGatewayRoute.setName(`${downstreamService.getName()}GatewayRoute`, false);
+    }
+}
+/// &lt;reference path="../_common/updateApiGatewayRouteName.ts" /&gt;
+function applyRouteAssociationOnDeletedBehavior() {
+    let source = association.getOtherEnd().typeReference.getType();
+    let target = association.typeReference.getType();
+    if (!source) {
+        return;
+    }
+    updateApiGatewayRouteName(source, target);
     const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-
     let httpSettings = source.getStereotype(HttpSettings);
     if (httpSettings) {
         source.removeStereotype(HttpSettings);
     }
-}</script>
-        </macro>
-        <macro trigger="on-deleted">
-          <script>let source = association.getOtherEnd().typeReference.getType();
-let target = association.typeReference.getType();
-
-if (!source) {
-    return;
+    syncDownstreamContract(source);
 }
-
-if (source.getAssociations("Route Association").length === 0) {
-    source.setName(`DetachedGatewayRoute`, true);
-} else if (source.getAssociations("Route Association").length &gt; 1) {
-    source.setName(`AggregateGatewayRoute`, true);
-} else if (target) {
-    source.setName(`${target.getName()}GatewayRoute`);
+function syncDownstreamContract(source) {
+    var _a;
+    const sourceParent = source.getParent();
+    let existingDtos = sourceParent
+        .getChildren()
+        .filter(child =&gt; child.hasMetadata("upstream") &amp;&amp; child.getMetadata("upstream") === source.id);
+    (_a = source.getChildren("DTO-Field").filter(field =&gt; field.getName() === "Body")[0]) === null || _a === void 0 ? void 0 : _a.delete();
+    for (let dto of existingDtos) {
+        dto.delete();
+    }
 }
-
-const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    
-let httpSettings = source.getStereotype(HttpSettings);
-if (httpSettings) {
-    source.removeStereotype(HttpSettings);
-}</script>
+applyRouteAssociationOnDeletedBehavior();
+</script>
         </macro>
       </macros>
     </associationSetting>
@@ -549,7 +553,8 @@ if (httpSettings) {
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="623689eb-0fe5-49d5-b541-b0eb9abf7ad8" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+            <childSetting id="623689eb-0fe5-49d5-b541-b0eb9abf7ad8" name="Route Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <filterFunction>return element.hasMetadata("routeVar");</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>false</isTraversable>
@@ -587,7 +592,18 @@ if (httpSettings) {
           <canBeModified>false</canBeModified>
           <represents>data</represents>
           <childSettings>
-            <childSetting id="e7f3ae07-618e-4574-b1dd-42206eff4566" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+            <childSetting id="e7f3ae07-618e-4574-b1dd-42206eff4566" name="Dto Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <filterFunction>function isForRoute(field) {
+    let operation = field.getParent();
+    let httpSettingsRoute = operation.getStereotype("Http Settings")?.getProperty("Route").getValue();
+    let paramSource = field.getStereotype("Parameter Settings")?.getProperty("Source")?.getValue();
+    if (!paramSource || paramSource == "Default" || paramSource == "Route") {
+        return httpSettingsRoute.toLowerCase().indexOf(`{${field.getName().toLowerCase()}}`) &gt;= 0;
+    }
+    return false;
+}
+
+return isForRoute(element);</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -604,11 +620,11 @@ if (httpSettings) {
         <mappingType type="Data Mapping" typeId="b419f885-7eaa-4c32-a931-25b160eb258c">
           <represents>data</represents>
           <sources>
-            <source id="623689eb-0fe5-49d5-b541-b0eb9abf7ad8" name="Field" />
+            <source id="623689eb-0fe5-49d5-b541-b0eb9abf7ad8" name="Route Field" />
           </sources>
           <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
-            <target id="e7f3ae07-618e-4574-b1dd-42206eff4566" name="Field" />
+            <target id="e7f3ae07-618e-4574-b1dd-42206eff4566" name="Dto Field" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
