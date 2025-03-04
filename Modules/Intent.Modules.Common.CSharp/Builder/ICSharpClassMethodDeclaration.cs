@@ -5,4 +5,5 @@ namespace Intent.Modules.Common.CSharp.Builder;
 public interface ICSharpClassMethodDeclaration : ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>
 {
     ICSharpClass Class { get; }
+    ICSharpClassMethodDeclaration Operator(bool isOperator = true);
 }

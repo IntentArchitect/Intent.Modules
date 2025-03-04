@@ -16,6 +16,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     private readonly ICSharpClassMethodDeclaration _wrapper;
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     public bool IsAsync { get; private set; }
+    public bool IsOperator { get; set; }
     internal string AccessModifier { get; private set; } = "public ";
     protected string OverrideModifier { get; private set; } = string.Empty;
     public bool IsAbstract { get; private set; }
@@ -240,6 +241,12 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
         return this;
     }
 
+    public CSharpClassMethod Operator(bool isOperator = true)
+    {
+        IsOperator = isOperator;
+        return this;
+    }
+
     public CSharpClassMethod Protected()
     {
         AccessModifier = "protected ";
@@ -411,6 +418,11 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
         declaration.Append(ReturnType);
         declaration.Append(' ');
 
+        if (IsOperator)
+        {
+            declaration.Append("operator ");
+        }
+
         if (!string.IsNullOrWhiteSpace(ExplicitImplementationFor))
         {
             declaration.Append(ExplicitImplementationFor);
@@ -568,6 +580,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.IsExplicitImplementationFor(string @interface) => _wrapper.IsExplicitImplementationFor(@interface);
 
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.New() => _wrapper.New();
+
+    ICSharpClassMethodDeclaration ICSharpClassMethodDeclaration.Operator(bool isOperator) => _wrapper.Operator(isOperator);
 
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Override() => _wrapper.Override();
 
