@@ -25,5 +25,6 @@
   <metadata>
     <install target="Services" src="modelers/Api Gateway Settings.designer.settings" externalReference="3f6cd7b9-04a8-4044-8f98-7bf380f7df3d" />
   </metadata>
+  <releaseNotes>release-notes.md</releaseNotes>
   <migrations />
 </package>
