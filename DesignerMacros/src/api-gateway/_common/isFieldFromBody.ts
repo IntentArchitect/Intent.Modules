@@ -1,6 +1,6 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
-function isFieldFromBody(downStreamOperation: MacroApi.Context.IElementApi , dtoField: MacroApi.Context.IElementApi) {
+function isFieldFromBody(downStreamOperation: MacroApi.Context.IElementApi , dtoField: MacroApi.Context.IElementApi): boolean {
     if (dtoField.specialization != "DTO-Field") {
         throw Error(`Element "${dtoField.id}, ${dtoField.getName()}" is not of type DTO-Field.`);
     }
@@ -10,7 +10,7 @@ function isFieldFromBody(downStreamOperation: MacroApi.Context.IElementApi , dto
     let httpSettingsRoute = httpSpecifiedElement.getStereotype("Http Settings")?.getProperty("Route")?.getValue() as string;
     let paramSource = dtoField.getStereotype("Parameter Settings")?.getProperty("Source")?.getValue();
     if (!paramSource || paramSource == "Default") {
-        return httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`) >= 0;
+        return httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`) < 0;
     }
     return paramSource == "Body";
 }

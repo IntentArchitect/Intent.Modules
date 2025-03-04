@@ -1,20 +1,24 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="./extractRouteVariables.ts" />
+/// <reference path="./isParamOrFieldFromRoute.ts" />
 
-function syncApiGatewayRouteWithVariables(apiGatewayRoute: MacroApi.Context.IElementApi) {
+function getHttpRouteFromOperation(operation: MacroApi.Context.IElementApi): string {
+    const httpSettings = operation?.getStereotype("Http Settings");
+    const route = httpSettings?.getProperty("Route")?.getValue() as string || "";
+    return route;
+}
+
+function syncApiGatewayRouteWithVariables(
+    apiGatewayRoute: MacroApi.Context.IElementApi, 
+    downstreamAssociationEnd: MacroApi.Context.IAssociationApi): void {
+
     if (apiGatewayRoute.specialization !== "Api Gateway Route") {
         throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
     }
 
-    const customSettings = element?.getStereotype("Http Settings");
-    const customRoute = customSettings?.getProperty("Route")?.getValue() as string || "";
-
-    const endpoints = element.getAssociations("Route Association")
-        .map(x => x.typeReference.getType())
-        .filter(x => x);
-
-    const httpSettings = endpoints[0]?.getStereotype("Http Settings");
-    const httpRoute = httpSettings?.getProperty("Route")?.getValue() as string;
+    const downstreamOperation = downstreamAssociationEnd.typeReference.getType();
+    const customRoute = getHttpRouteFromOperation(apiGatewayRoute);
+    const httpRoute = getHttpRouteFromOperation(downstreamOperation);
 
     let upstreamRoute = customRoute || httpRoute;
     
@@ -35,5 +39,17 @@ function syncApiGatewayRouteWithVariables(apiGatewayRoute: MacroApi.Context.IEle
         let field = apiGatewayRoute.getChildren("DTO-Field").filter(x => x.getMetadata("routeVar") === routeVar)[0] 
             ?? createElement("DTO-Field", toPascalCase(routeVar), apiGatewayRoute.id);
         field.setMetadata("routeVar", routeVar);
+        
+        let downstreamField = downstreamOperation.getChildren()
+            .filter(x => isParamOrFieldFromRoute(downstreamOperation, x) && extractRouteVariables(getHttpRouteFromOperation(downstreamOperation).toLowerCase()).indexOf(routeVar) >= 0)[0];
+
+        if (downstreamField) {
+            const routeMappingId = "48776d2f-ee28-4738-844f-d2ee610b516f";
+            let mapping = downstreamAssociationEnd.getMapping(routeMappingId);
+            if (!mapping) {
+                mapping = downstreamAssociationEnd.createAdvancedMapping(apiGatewayRoute.id, downstreamOperation.id, routeMappingId);
+            }
+            mapping.addMappedEnd("Data Mapping", [apiGatewayRoute.id, field.id], [downstreamOperation.id, downstreamField.id]);
+        }
     });
 }

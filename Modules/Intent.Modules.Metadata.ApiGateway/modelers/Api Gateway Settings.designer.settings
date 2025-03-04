@@ -80,34 +80,34 @@
         <position x="${x}" y="${y}" />
         <display>
           <drawText>
-            <text>function getMethodAndRoute(element) {
+            <text>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function getMethodAndRoute(apiGatewayRoute) {
+    var _a, _b, _c, _d, _e;
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
     // Get custom settings
-    const customSettings = element.getStereotype("Http Settings");
-    const customRoute = customSettings?.getProperty("Route")?.getValue() || "";
-    const customMethod = customSettings?.getProperty("Verb")?.getValue() || "";
-
+    const customSettings = apiGatewayRoute.getStereotype("Http Settings");
+    const customRoute = ((_a = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Route")) === null || _a === void 0 ? void 0 : _a.getValue()) || "";
+    const customMethod = ((_b = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Verb")) === null || _b === void 0 ? void 0 : _b.getValue()) || "";
     // Get HTTP settings
-    const endpoints = element.getAssociations("Route Association")
+    const endpoints = apiGatewayRoute.getAssociations("Route Association")
         .map(x =&gt; x.typeReference.getType())
         .filter(x =&gt; x);
-
     if (endpoints.length === 0) {
-        return { method: "", route: "", result: "None" };
+        return { verb: "", route: "", result: "None" };
     }
     if (endpoints.length &gt; 1) {
-        return { method: "", route: "", result: "Aggregate" };
+        return { verb: "", route: "", result: "Aggregate" };
     }
-
     const httpSettings = endpoints[0].getStereotype("Http Settings");
     const httpMethod = httpSettings.getProperty("Verb").getValue();
     let httpRoute = httpSettings.getProperty("Route").getValue();
-
-    if (endpoints[0].getParent()?.hasStereotype("Http Service Settings")) {
-        let serviceRoute = endpoints[0].getParent().getStereotype("Http Service Settings")?.getProperty("Route")?.getValue() || "";
+    if ((_c = endpoints[0].getParent()) === null || _c === void 0 ? void 0 : _c.hasStereotype("Http Service Settings")) {
+        let serviceRoute = ((_e = (_d = endpoints[0].getParent().getStereotype("Http Service Settings")) === null || _d === void 0 ? void 0 : _d.getProperty("Route")) === null || _e === void 0 ? void 0 : _e.getValue()) || "";
         const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
         httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
     }
-
     // Use custom values if available, otherwise fall back to HTTP settings
     return {
         verb: customMethod || httpMethod,
@@ -115,50 +115,51 @@
         result: null
     };
 }
-
+/// &lt;reference path="../_common/getMethodAndRoute.ts" /&gt;
 function formatMethodAndRoute(element) {
     const { verb, route, result } = getMethodAndRoute(element);
-    
-    if (result === "None") return "[Disconnected]";
-    if (result === "Aggregate") return "[Aggregate]";
-    
+    if (result === "None")
+        return "[Disconnected]";
+    if (result === "Aggregate")
+        return "[Aggregate]";
     return `${route}`;
 }
-
-return formatMethodAndRoute(element);</text>
+// Uncomment the following:
+return formatMethodAndRoute(element);
+</text>
             <style>`font-size: 12px; font-family: Helvetica; font-weight: bold; text-align: center; white-space: inherit;vertical-align: center`</style>
             <size width="${w}" height="18" />
             <position x="${x}" y="${y + 48}" />
           </drawText>
           <drawText>
-            <text>function getMethodAndRoute(element) {
+            <text>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function getMethodAndRoute(apiGatewayRoute) {
+    var _a, _b, _c, _d, _e;
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
     // Get custom settings
-    const customSettings = element.getStereotype("Http Settings");
-    const customRoute = customSettings?.getProperty("Route")?.getValue() || "";
-    const customMethod = customSettings?.getProperty("Verb")?.getValue() || "";
-
+    const customSettings = apiGatewayRoute.getStereotype("Http Settings");
+    const customRoute = ((_a = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Route")) === null || _a === void 0 ? void 0 : _a.getValue()) || "";
+    const customMethod = ((_b = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Verb")) === null || _b === void 0 ? void 0 : _b.getValue()) || "";
     // Get HTTP settings
-    const endpoints = element.getAssociations("Route Association")
+    const endpoints = apiGatewayRoute.getAssociations("Route Association")
         .map(x =&gt; x.typeReference.getType())
         .filter(x =&gt; x);
-
     if (endpoints.length === 0) {
-        return { method: "", route: "", result: "None" };
+        return { verb: "", route: "", result: "None" };
     }
     if (endpoints.length &gt; 1) {
-        return { method: "", route: "", result: "Aggregate" };
+        return { verb: "", route: "", result: "Aggregate" };
     }
-
     const httpSettings = endpoints[0].getStereotype("Http Settings");
     const httpMethod = httpSettings.getProperty("Verb").getValue();
     let httpRoute = httpSettings.getProperty("Route").getValue();
-
-    if (endpoints[0].getParent()?.hasStereotype("Http Service Settings")) {
-        let serviceRoute = endpoints[0].getParent().getStereotype("Http Service Settings")?.getProperty("Route")?.getValue() || "";
+    if ((_c = endpoints[0].getParent()) === null || _c === void 0 ? void 0 : _c.hasStereotype("Http Service Settings")) {
+        let serviceRoute = ((_e = (_d = endpoints[0].getParent().getStereotype("Http Service Settings")) === null || _d === void 0 ? void 0 : _d.getProperty("Route")) === null || _e === void 0 ? void 0 : _e.getValue()) || "";
         const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
         httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
     }
-
     // Use custom values if available, otherwise fall back to HTTP settings
     return {
         verb: customMethod || httpMethod,
@@ -166,17 +167,18 @@ return formatMethodAndRoute(element);</text>
         result: null
     };
 }
-
+/// &lt;reference path="../_common/getMethodAndRoute.ts" /&gt;
 function formatMethodAndRoute(element) {
     const { verb, route, result } = getMethodAndRoute(element);
-    
-    if (result === "None") return "";
-    if (result === "Aggregate") return "";
-    
+    if (result === "None")
+        return "";
+    if (result === "Aggregate")
+        return "";
     return `${verb}`;
 }
-
-return formatMethodAndRoute(element);</text>
+// Uncomment the following:
+return formatMethodAndRoute(element);
+</text>
             <style>`font-size: 12px; font-family: Helvetica; font-weight: bold; text-align: center; white-space: inherit;vertical-align: center`</style>
             <size width="${w}" height="18" />
             <position x="${x}" y="${y + 68}" />
@@ -205,19 +207,31 @@ return formatMethodAndRoute(element);</text>
     return variables;
 }
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isParamOrFieldFromRoute(downStreamOperation, paramOrField) {
+    var _a, _b, _c, _d;
+    let httpSettingsRoute = (_b = (_a = downStreamOperation.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Route")) === null || _b === void 0 ? void 0 : _b.getValue();
+    let paramSource = (_d = (_c = paramOrField.getStereotype("Parameter Settings")) === null || _c === void 0 ? void 0 : _c.getProperty("Source")) === null || _d === void 0 ? void 0 : _d.getValue();
+    if (!paramSource || paramSource == "Default" || paramSource == "Route") {
+        return httpSettingsRoute.toLowerCase().indexOf(`{${paramOrField.getName().toLowerCase()}}`) &gt;= 0;
+    }
+    return false;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="./extractRouteVariables.ts" /&gt;
-function syncApiGatewayRouteWithVariables(apiGatewayRoute) {
-    var _a, _b, _c;
+/// &lt;reference path="./isParamOrFieldFromRoute.ts" /&gt;
+function getHttpRouteFromOperation(operation) {
+    var _a;
+    const httpSettings = operation === null || operation === void 0 ? void 0 : operation.getStereotype("Http Settings");
+    const route = ((_a = httpSettings === null || httpSettings === void 0 ? void 0 : httpSettings.getProperty("Route")) === null || _a === void 0 ? void 0 : _a.getValue()) || "";
+    return route;
+}
+function syncApiGatewayRouteWithVariables(apiGatewayRoute, downstreamAssociationEnd) {
     if (apiGatewayRoute.specialization !== "Api Gateway Route") {
         throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
     }
-    const customSettings = element === null || element === void 0 ? void 0 : element.getStereotype("Http Settings");
-    const customRoute = ((_a = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Route")) === null || _a === void 0 ? void 0 : _a.getValue()) || "";
-    const endpoints = element.getAssociations("Route Association")
-        .map(x =&gt; x.typeReference.getType())
-        .filter(x =&gt; x);
-    const httpSettings = (_b = endpoints[0]) === null || _b === void 0 ? void 0 : _b.getStereotype("Http Settings");
-    const httpRoute = (_c = httpSettings === null || httpSettings === void 0 ? void 0 : httpSettings.getProperty("Route")) === null || _c === void 0 ? void 0 : _c.getValue();
+    const downstreamOperation = downstreamAssociationEnd.typeReference.getType();
+    const customRoute = getHttpRouteFromOperation(apiGatewayRoute);
+    const httpRoute = getHttpRouteFromOperation(downstreamOperation);
     let upstreamRoute = customRoute || httpRoute;
     if (!upstreamRoute) {
         apiGatewayRoute.getChildren("DTO-Field").filter(field =&gt; field.getName() !== "Body").forEach(x =&gt; x.delete());
@@ -235,6 +249,16 @@ function syncApiGatewayRouteWithVariables(apiGatewayRoute) {
         var _a;
         let field = (_a = apiGatewayRoute.getChildren("DTO-Field").filter(x =&gt; x.getMetadata("routeVar") === routeVar)[0]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("DTO-Field", toPascalCase(routeVar), apiGatewayRoute.id);
         field.setMetadata("routeVar", routeVar);
+        let downstreamField = downstreamOperation.getChildren()
+            .filter(x =&gt; isParamOrFieldFromRoute(downstreamOperation, x) &amp;&amp; extractRouteVariables(getHttpRouteFromOperation(downstreamOperation).toLowerCase()).indexOf(routeVar) &gt;= 0)[0];
+        if (downstreamField) {
+            const routeMappingId = "48776d2f-ee28-4738-844f-d2ee610b516f";
+            let mapping = downstreamAssociationEnd.getMapping(routeMappingId);
+            if (!mapping) {
+                mapping = downstreamAssociationEnd.createAdvancedMapping(apiGatewayRoute.id, downstreamOperation.id, routeMappingId);
+            }
+            mapping.addMappedEnd("Data Mapping", [apiGatewayRoute.id, field.id], [downstreamOperation.id, downstreamField.id]);
+        }
     });
 }
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
@@ -249,7 +273,7 @@ function isFieldFromBody(downStreamOperation, dtoField) {
     let httpSettingsRoute = (_b = (_a = httpSpecifiedElement.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Route")) === null || _b === void 0 ? void 0 : _b.getValue();
     let paramSource = (_d = (_c = dtoField.getStereotype("Parameter Settings")) === null || _c === void 0 ? void 0 : _c.getProperty("Source")) === null || _d === void 0 ? void 0 : _d.getValue();
     if (!paramSource || paramSource == "Default") {
-        return httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`) &gt;= 0;
+        return httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`) &lt; 0;
     }
     return paramSource == "Body";
 }
@@ -298,8 +322,8 @@ function applyOnChangedApiGatewayRouteBehavior() {
     let targets = element.getAssociations("Route Association");
     for (let targetEnd of targets.filter(x =&gt; { var _a; return (_a = x.typeReference) === null || _a === void 0 ? void 0 : _a.getType(); })) {
         syncDownstreamContract(element, targetEnd.typeReference.getType());
+        syncApiGatewayRouteWithVariables(element, targetEnd);
     }
-    syncApiGatewayRouteWithVariables(element);
 }
 applyOnChangedApiGatewayRouteBehavior();
 </script>
@@ -498,7 +522,7 @@ function isFieldFromBody(downStreamOperation, dtoField) {
     let httpSettingsRoute = (_b = (_a = httpSpecifiedElement.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Route")) === null || _b === void 0 ? void 0 : _b.getValue();
     let paramSource = (_d = (_c = dtoField.getStereotype("Parameter Settings")) === null || _c === void 0 ? void 0 : _c.getProperty("Source")) === null || _d === void 0 ? void 0 : _d.getValue();
     if (!paramSource || paramSource == "Default") {
-        return httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`) &gt;= 0;
+        return httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`) &lt; 0;
     }
     return paramSource == "Body";
 }
@@ -665,17 +689,48 @@ applyRouteAssociationOnDeletedBehavior();
           <represents>data</represents>
           <childSettings>
             <childSetting id="e7f3ae07-618e-4574-b1dd-42206eff4566" name="Dto Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
-              <filterFunction>function isForRoute(field) {
-    let operation = field.getParent();
-    let httpSettingsRoute = operation.getStereotype("Http Settings")?.getProperty("Route").getValue();
-    let paramSource = field.getStereotype("Parameter Settings")?.getProperty("Source")?.getValue();
+              <filterFunction>function isParamOrFieldFromRoute(downStreamOperation, paramOrField) {
+    let httpSettingsRoute = downStreamOperation.getStereotype("Http Settings")?.getProperty("Route")?.getValue();
+    let paramSource = paramOrField.getStereotype("Parameter Settings")?.getProperty("Source")?.getValue();
     if (!paramSource || paramSource == "Default" || paramSource == "Route") {
-        return httpSettingsRoute.toLowerCase().indexOf(`{${field.getName().toLowerCase()}}`) &gt;= 0;
+        return httpSettingsRoute.toLowerCase().indexOf(`{${paramOrField.getName().toLowerCase()}}`) &gt;= 0;
     }
     return false;
 }
 
-return isForRoute(element);</filterFunction>
+return isParamOrFieldFromRoute(element.getParent(), element);</filterFunction>
+              <isRequiredFunction>return true;</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>f3615f9a-5a34-4b21-aadc-329da6bf8ac7</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="78ab2845-3666-4dfa-ac6b-36d3f75925e1" name="Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="e53ffb20-07a1-4b57-9039-717410b0603c" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
+              <filterFunction>function isParamOrFieldFromRoute(downStreamOperation, paramOrField) {
+    let httpSettingsRoute = downStreamOperation.getStereotype("Http Settings")?.getProperty("Route")?.getValue();
+    let paramSource = paramOrField.getStereotype("Parameter Settings")?.getProperty("Source")?.getValue();
+    if (!paramSource || paramSource == "Default" || paramSource == "Route") {
+        return httpSettingsRoute.toLowerCase().indexOf(`{${paramOrField.getName().toLowerCase()}}`) &gt;= 0;
+    }
+    return false;
+}
+
+return isParamOrFieldFromRoute(element.getParent(), element);</filterFunction>
+              <isRequiredFunction>return true;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
@@ -697,6 +752,7 @@ return isForRoute(element);</filterFunction>
           <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
             <target id="e7f3ae07-618e-4574-b1dd-42206eff4566" name="Dto Field" />
+            <target id="e53ffb20-07a1-4b57-9039-717410b0603c" name="Parameter" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
