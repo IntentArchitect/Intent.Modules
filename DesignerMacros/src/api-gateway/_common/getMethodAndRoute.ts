@@ -6,14 +6,18 @@ interface IMethodAndRouteResult {
     result: string|null;
 }
 
-function getMethodAndRoute(element: MacroApi.Context.IElementApi): IMethodAndRouteResult {
+function getMethodAndRoute(apiGatewayRoute: MacroApi.Context.IElementApi): IMethodAndRouteResult {
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
+
     // Get custom settings
-    const customSettings = element.getStereotype("Http Settings");
+    const customSettings = apiGatewayRoute.getStereotype("Http Settings");
     const customRoute = customSettings?.getProperty("Route")?.getValue() as string || "";
     const customMethod = customSettings?.getProperty("Verb")?.getValue() as string || "";
 
     // Get HTTP settings
-    const endpoints = element.getAssociations("Route Association")
+    const endpoints = apiGatewayRoute.getAssociations("Route Association")
         .map(x => x.typeReference.getType())
         .filter(x => x);
 

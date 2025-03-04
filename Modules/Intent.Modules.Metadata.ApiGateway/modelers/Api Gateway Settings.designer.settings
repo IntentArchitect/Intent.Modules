@@ -59,7 +59,7 @@
           <specializationType>Downstream End</specializationType>
           <specializationTypeId>17084378-a3d8-4233-b275-c856eea4dd61</specializationTypeId>
           <defaultName>NewRouteAssociation</defaultName>
-          <allowMultiple>true</allowMultiple>
+          <allowMultiple>false</allowMultiple>
         </createAssociation>
       </contextMenuOptions>
       <creationOptions>
@@ -69,7 +69,7 @@
           <specializationType>Downstream End</specializationType>
           <specializationTypeId>17084378-a3d8-4233-b275-c856eea4dd61</specializationTypeId>
           <defaultName>NewRouteAssociation</defaultName>
-          <allowMultiple>true</allowMultiple>
+          <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />
@@ -204,10 +204,13 @@ return formatMethodAndRoute(element);</text>
     }
     return variables;
 }
-/// &lt;reference path="../_common/extractRouteVariables.ts" /&gt;
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function applyOnChangedApiGatewayRouteBehavior() {
+/// &lt;reference path="./extractRouteVariables.ts" /&gt;
+function syncApiGatewayRouteWithVariables(apiGatewayRoute) {
     var _a, _b, _c;
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
     const customSettings = element === null || element === void 0 ? void 0 : element.getStereotype("Http Settings");
     const customRoute = ((_a = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Route")) === null || _a === void 0 ? void 0 : _a.getValue()) || "";
     const endpoints = element.getAssociations("Route Association")
@@ -217,11 +220,11 @@ function applyOnChangedApiGatewayRouteBehavior() {
     const httpRoute = (_c = httpSettings === null || httpSettings === void 0 ? void 0 : httpSettings.getProperty("Route")) === null || _c === void 0 ? void 0 : _c.getValue();
     let upstreamRoute = customRoute || httpRoute;
     if (!upstreamRoute) {
-        element.getChildren("DTO-Field").filter(field =&gt; field.getName() !== "Body").forEach(x =&gt; x.delete());
+        apiGatewayRoute.getChildren("DTO-Field").filter(field =&gt; field.getName() !== "Body").forEach(x =&gt; x.delete());
         return;
     }
     let routeVars = extractRouteVariables(upstreamRoute);
-    element.getChildren("DTO-Field").filter(field =&gt; field.getName() !== "Body")
+    apiGatewayRoute.getChildren("DTO-Field").filter(field =&gt; field.getName() !== "Body")
         .forEach(field =&gt; {
         let routeVar = field.getMetadata("routeVar");
         if (routeVars.indexOf(routeVar) &lt; 0) {
@@ -230,9 +233,73 @@ function applyOnChangedApiGatewayRouteBehavior() {
     });
     routeVars.forEach(routeVar =&gt; {
         var _a;
-        let field = (_a = element.getChildren("DTO-Field").filter(x =&gt; x.getMetadata("routeVar") === routeVar)[0]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("DTO-Field", toPascalCase(routeVar), element.id);
+        let field = (_a = apiGatewayRoute.getChildren("DTO-Field").filter(x =&gt; x.getMetadata("routeVar") === routeVar)[0]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("DTO-Field", toPascalCase(routeVar), apiGatewayRoute.id);
         field.setMetadata("routeVar", routeVar);
     });
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isFieldFromBody(downStreamOperation, dtoField) {
+    var _a, _b, _c, _d;
+    if (dtoField.specialization != "DTO-Field") {
+        throw Error(`Element "${dtoField.id}, ${dtoField.getName()}" is not of type DTO-Field.`);
+    }
+    let httpSpecifiedElement = downStreamOperation.specialization === "Operation"
+        ? downStreamOperation.getChildren("Parameter").filter(param =&gt; { var _a; return ((_a = param.typeReference) === null || _a === void 0 ? void 0 : _a.getType().specialization) === "DTO"; })[0]
+        : downStreamOperation;
+    let httpSettingsRoute = (_b = (_a = httpSpecifiedElement.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Route")) === null || _b === void 0 ? void 0 : _b.getValue();
+    let paramSource = (_d = (_c = dtoField.getStereotype("Parameter Settings")) === null || _c === void 0 ? void 0 : _c.getProperty("Source")) === null || _d === void 0 ? void 0 : _d.getValue();
+    if (!paramSource || paramSource == "Default") {
+        return httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`) &gt;= 0;
+    }
+    return paramSource == "Body";
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/isFieldFromBody.ts" /&gt;
+function syncDownstreamContract(apiGatewayRoute, downstreamService) {
+    var _a, _b;
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
+    let downstreamFields = downstreamService.getChildren("DTO-Field").filter(x =&gt; isFieldFromBody(downstreamService, x));
+    if (!downstreamFields || downstreamFields.length === 0) {
+        return;
+    }
+    const sourceParent = apiGatewayRoute.getParent();
+    let existingDto = sourceParent
+        .getChildren()
+        .filter(child =&gt; child.hasMetadata("upstream") &amp;&amp; child.getMetadata("upstream") === apiGatewayRoute.id)[0];
+    let dto = existingDto;
+    if (!dto) {
+        const dtoName = downstreamService.getName();
+        dto = createElement("DTO", dtoName, sourceParent.id);
+        dto.addMetadata("upstream", apiGatewayRoute.id);
+    }
+    for (let downstreamField of downstreamFields) {
+        let field = dto.getChildren("DTO-Field").filter(field =&gt; field.getName() === downstreamField.getName())[0];
+        if (!field) {
+            field = createElement("DTO-Field", downstreamField.getName(), dto.id);
+            (_a = field.typeReference) === null || _a === void 0 ? void 0 : _a.setType(downstreamField.typeReference.getTypeId());
+        }
+    }
+    for (let upstreamField of dto.getChildren("DTO-Field")) {
+        if (!downstreamFields.some(field =&gt; upstreamField.getName() === field.getName())) {
+            upstreamField.delete();
+        }
+    }
+    let bodyField = apiGatewayRoute.getChildren("DTO-Field").filter(x =&gt; x.getName() === "Body")[0];
+    if (!bodyField) {
+        bodyField = createElement("DTO-Field", "Body", apiGatewayRoute.id);
+    }
+    (_b = bodyField.typeReference) === null || _b === void 0 ? void 0 : _b.setType(dto.id);
+}
+/// &lt;reference path="../_common/syncApiGatewayRouteWithVariables.ts" /&gt;
+/// &lt;reference path="../_common/syncDownstreamContract.ts" /&gt;
+function applyOnChangedApiGatewayRouteBehavior() {
+    let targets = element.getAssociations("Route Association");
+    for (let targetEnd of targets.filter(x =&gt; { var _a; return (_a = x.typeReference) === null || _a === void 0 ? void 0 : _a.getType(); })) {
+        syncDownstreamContract(element, targetEnd.typeReference.getType());
+    }
+    syncApiGatewayRouteWithVariables(element);
 }
 applyOnChangedApiGatewayRouteBehavior();
 </script>
@@ -370,30 +437,17 @@ applyOnChangedApiGatewayRouteBehavior();
       <macros>
         <macro trigger="on-changed">
           <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function isFieldFromBody(downStreamOperation, dtoField) {
-    var _a, _b, _c, _d;
-    if (dtoField.specialization != "DTO-Field") {
-        throw Error(`Element "${dtoField.id}, ${dtoField.getName()}" is not of type DTO-Field.`);
-    }
-    let httpSpecifiedElement = downStreamOperation.specialization === "Operation"
-        ? downStreamOperation.getChildren("Parameter").filter(param =&gt; { var _a; return ((_a = param.typeReference) === null || _a === void 0 ? void 0 : _a.getType().specialization) === "DTO"; })[0]
-        : downStreamOperation;
-    let httpSettingsRoute = (_b = (_a = httpSpecifiedElement.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Route")) === null || _b === void 0 ? void 0 : _b.getValue();
-    let paramSource = (_d = (_c = dtoField.getStereotype("Parameter Settings")) === null || _c === void 0 ? void 0 : _c.getProperty("Source")) === null || _d === void 0 ? void 0 : _d.getValue();
-    if (!paramSource || paramSource == "Default") {
-        return httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`) &gt;= 0;
-    }
-    return paramSource == "Body";
-}
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-function getMethodAndRoute(element) {
+function getMethodAndRoute(apiGatewayRoute) {
     var _a, _b, _c, _d, _e;
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
     // Get custom settings
-    const customSettings = element.getStereotype("Http Settings");
+    const customSettings = apiGatewayRoute.getStereotype("Http Settings");
     const customRoute = ((_a = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Route")) === null || _a === void 0 ? void 0 : _a.getValue()) || "";
     const customMethod = ((_b = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Verb")) === null || _b === void 0 ? void 0 : _b.getValue()) || "";
     // Get HTTP settings
-    const endpoints = element.getAssociations("Route Association")
+    const endpoints = apiGatewayRoute.getAssociations("Route Association")
         .map(x =&gt; x.typeReference.getType())
         .filter(x =&gt; x);
     if (endpoints.length === 0) {
@@ -432,9 +486,64 @@ function updateApiGatewayRouteName(apiGatewayRoute, downstreamService) {
         apiGatewayRoute.setName(`${downstreamService.getName()}GatewayRoute`, false);
     }
 }
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isFieldFromBody(downStreamOperation, dtoField) {
+    var _a, _b, _c, _d;
+    if (dtoField.specialization != "DTO-Field") {
+        throw Error(`Element "${dtoField.id}, ${dtoField.getName()}" is not of type DTO-Field.`);
+    }
+    let httpSpecifiedElement = downStreamOperation.specialization === "Operation"
+        ? downStreamOperation.getChildren("Parameter").filter(param =&gt; { var _a; return ((_a = param.typeReference) === null || _a === void 0 ? void 0 : _a.getType().specialization) === "DTO"; })[0]
+        : downStreamOperation;
+    let httpSettingsRoute = (_b = (_a = httpSpecifiedElement.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Route")) === null || _b === void 0 ? void 0 : _b.getValue();
+    let paramSource = (_d = (_c = dtoField.getStereotype("Parameter Settings")) === null || _c === void 0 ? void 0 : _c.getProperty("Source")) === null || _d === void 0 ? void 0 : _d.getValue();
+    if (!paramSource || paramSource == "Default") {
+        return httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`) &gt;= 0;
+    }
+    return paramSource == "Body";
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../_common/isFieldFromBody.ts" /&gt;
+function syncDownstreamContract(apiGatewayRoute, downstreamService) {
+    var _a, _b;
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
+    let downstreamFields = downstreamService.getChildren("DTO-Field").filter(x =&gt; isFieldFromBody(downstreamService, x));
+    if (!downstreamFields || downstreamFields.length === 0) {
+        return;
+    }
+    const sourceParent = apiGatewayRoute.getParent();
+    let existingDto = sourceParent
+        .getChildren()
+        .filter(child =&gt; child.hasMetadata("upstream") &amp;&amp; child.getMetadata("upstream") === apiGatewayRoute.id)[0];
+    let dto = existingDto;
+    if (!dto) {
+        const dtoName = downstreamService.getName();
+        dto = createElement("DTO", dtoName, sourceParent.id);
+        dto.addMetadata("upstream", apiGatewayRoute.id);
+    }
+    for (let downstreamField of downstreamFields) {
+        let field = dto.getChildren("DTO-Field").filter(field =&gt; field.getName() === downstreamField.getName())[0];
+        if (!field) {
+            field = createElement("DTO-Field", downstreamField.getName(), dto.id);
+            (_a = field.typeReference) === null || _a === void 0 ? void 0 : _a.setType(downstreamField.typeReference.getTypeId());
+        }
+    }
+    for (let upstreamField of dto.getChildren("DTO-Field")) {
+        if (!downstreamFields.some(field =&gt; upstreamField.getName() === field.getName())) {
+            upstreamField.delete();
+        }
+    }
+    let bodyField = apiGatewayRoute.getChildren("DTO-Field").filter(x =&gt; x.getName() === "Body")[0];
+    if (!bodyField) {
+        bodyField = createElement("DTO-Field", "Body", apiGatewayRoute.id);
+    }
+    (_b = bodyField.typeReference) === null || _b === void 0 ? void 0 : _b.setType(dto.id);
+}
 /// &lt;reference path="../_common/getMethodAndRoute.ts" /&gt;
 /// &lt;reference path="../_common/updateApiGatewayRouteName.ts" /&gt;
+/// &lt;reference path="../_common/syncDownstreamContract.ts" /&gt;
 function applyRouteAssociationOnChangedBehavior() {
     let source = association.getOtherEnd().typeReference.getType();
     let target = association.typeReference.getType();
@@ -454,40 +563,6 @@ function applyRouteAssociationOnChangedBehavior() {
     httpSettings.getProperty("Route").setValue(route);
     httpSettings.getProperty("Verb").setValue(verb);
     syncDownstreamContract(source, target);
-}
-function syncDownstreamContract(source, target) {
-    var _a, _b;
-    let downstreamFields = target.getChildren("DTO-Field").filter(x =&gt; isFieldFromBody(target, x));
-    if (!downstreamFields || downstreamFields.length === 0) {
-        return;
-    }
-    const sourceParent = source.getParent();
-    let existingDto = sourceParent
-        .getChildren()
-        .filter(child =&gt; child.hasMetadata("upstream") &amp;&amp; child.getMetadata("upstream") === source.id)[0];
-    let dto = existingDto;
-    if (!dto) {
-        const dtoName = target.getName();
-        dto = createElement("DTO", dtoName, sourceParent.id);
-        dto.addMetadata("upstream", source.id);
-    }
-    for (let downstreamField of downstreamFields) {
-        let field = dto.getChildren("DTO-Field").filter(field =&gt; field.getName() === downstreamField.getName())[0];
-        if (!field) {
-            field = createElement("DTO-Field", downstreamField.getName(), dto.id);
-            (_a = field.typeReference) === null || _a === void 0 ? void 0 : _a.setType(downstreamField.typeReference.getTypeId());
-        }
-    }
-    for (let upstreamField of dto.getChildren("DTO-Field")) {
-        if (!downstreamFields.some(field =&gt; upstreamField.getName() === field.getName())) {
-            upstreamField.delete();
-        }
-    }
-    let bodyField = source.getChildren("DTO-Field").filter(x =&gt; x.getName() === "Body")[0];
-    if (!bodyField) {
-        bodyField = createElement("DTO-Field", "Body", source.id);
-    }
-    (_b = bodyField.typeReference) === null || _b === void 0 ? void 0 : _b.setType(dto.id);
 }
 applyRouteAssociationOnChangedBehavior();
 </script>
@@ -510,6 +585,7 @@ function updateApiGatewayRouteName(apiGatewayRoute, downstreamService) {
 }
 /// &lt;reference path="../_common/updateApiGatewayRouteName.ts" /&gt;
 function applyRouteAssociationOnDeletedBehavior() {
+    var _a;
     let source = association.getOtherEnd().typeReference.getType();
     let target = association.typeReference.getType();
     if (!source) {
@@ -521,10 +597,6 @@ function applyRouteAssociationOnDeletedBehavior() {
     if (httpSettings) {
         source.removeStereotype(HttpSettings);
     }
-    syncDownstreamContract(source);
-}
-function syncDownstreamContract(source) {
-    var _a;
     const sourceParent = source.getParent();
     let existingDtos = sourceParent
         .getChildren()

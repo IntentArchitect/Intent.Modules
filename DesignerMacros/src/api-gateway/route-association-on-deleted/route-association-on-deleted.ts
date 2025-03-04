@@ -17,10 +17,6 @@ function applyRouteAssociationOnDeletedBehavior(): void {
         source.removeStereotype(HttpSettings);
     }
 
-    syncDownstreamContract(source);
-}
-
-function syncDownstreamContract(source: MacroApi.Context.IElementApi): void {
     const sourceParent = source.getParent();
     
     let existingDtos = sourceParent
