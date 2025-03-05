@@ -454,7 +454,10 @@ element.getChildren("DTO-Field").forEach(x =&gt; {
           <script>if (isCrudImplementedQuery(element)){ 
   let queryAction = element.getAssociations()[0];
   if (returnTypesDiffer(queryAction, element)){
-        queryAction.typeReference.setIsCollection(element.typeReference.isCollection);
+        // if explicitly set as a collection, or its of type "PagedResult", then its considered a collection return type
+        let isCollection = (element.typeReference.isCollection || element.typeReference.typeId == `9204e067-bdc8-45e7-8970-8a833fdc5253`);
+        
+        queryAction.typeReference.setIsCollection(isCollection);
         queryAction.typeReference.setIsNullable(element.typeReference.isNullable);
       }
 }

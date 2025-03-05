@@ -1,3 +1,7 @@
+### Version 5.1.2
+
+- Fixed: Synronization of `Query` type info and return type now takes into account `Pagination` and return type of `PagedResult`.
+
 ### Version 5.1.1
 
 - Improvement: `Query Action`s synchronize type info, when modifying `Query` return type.
