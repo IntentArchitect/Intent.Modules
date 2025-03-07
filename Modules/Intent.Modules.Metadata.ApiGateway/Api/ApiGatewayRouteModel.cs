@@ -41,6 +41,38 @@ namespace Intent.Metadata.ApiGateway.Api
 
         public IElement InternalElement => _element;
 
+        [IntentIgnore]
+        public UpstreamRouteInfo GetUpstreamRouteInfo()
+        {
+            var upstreamRoute = this.GetStereotype("Http Settings")?.GetProperty("Route")?.Value;
+            var upstreamVerb = this.GetStereotype("Http Settings")?.GetProperty("Verb")?.Value;
+            var upstreamVerbEnum = !string.IsNullOrWhiteSpace(upstreamVerb) ? (HttpVerb?)Enum.Parse(typeof(HttpVerb), upstreamVerb, true) : null;
+
+            var downstreamOperation = this.DownstreamEndpoints().FirstOrDefault()?.Element as IElement;
+            if (string.IsNullOrWhiteSpace(upstreamRoute))
+            {
+                var downstreamRoute = downstreamOperation?.GetStereotype("Http Settings")?.GetProperty("Route")?.Value;
+                var downstreamServiceRoute = downstreamOperation?.ParentElement?.GetStereotype("Http Service Settings")?.GetProperty("Route")?.Value;
+                var separator = string.IsNullOrWhiteSpace(downstreamServiceRoute) || downstreamServiceRoute.EndsWith("/") 
+                    ? string.Empty 
+                    : !string.IsNullOrWhiteSpace(downstreamRoute) 
+                        ? "/" 
+                        : string.Empty;
+                upstreamRoute = $"{downstreamServiceRoute}{separator}{downstreamRoute}";
+            }
+
+            if (!upstreamVerbEnum.HasValue)
+            {
+                var downstreamVerb = downstreamOperation?.GetStereotype("Http Settings")?.GetProperty("Verb")?.Value;
+                var downstreamVerbEnum = !string.IsNullOrWhiteSpace(downstreamVerb) ? (HttpVerb?)Enum.Parse(typeof(HttpVerb), downstreamVerb, true) : null;
+                upstreamVerbEnum = downstreamVerbEnum;
+            }
+
+            return new UpstreamRouteInfo(
+                Route: upstreamRoute,
+                Verb: upstreamVerbEnum);
+        }
+
         public override string ToString()
         {
             return _element.ToString();
@@ -63,6 +95,19 @@ namespace Intent.Metadata.ApiGateway.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+    }
+
+    [IntentIgnore]
+    public record UpstreamRouteInfo(string? Route, HttpVerb? Verb);
+
+    [IntentIgnore]
+    public enum HttpVerb
+    {
+        Get,
+        Post,
+        Put,
+        Patch,
+        Delete,
     }
 
     [IntentManaged(Mode.Fully)]

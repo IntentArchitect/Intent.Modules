@@ -14,6 +14,7 @@
   <dependencies>
     <dependency id="Intent.Common" version="3.7.2" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
+    <dependency id="Intent.Metadata.WebApi" version="4.7.4-pre.0" />
     <dependency id="Intent.Modelers.Services" version="3.9.2" />
   </dependencies>
   <files>
@@ -24,6 +25,7 @@
   <moduleSettingsExtensions />
   <metadata>
     <install target="Services" src="modelers/Api Gateway Settings.designer.settings" externalReference="3f6cd7b9-04a8-4044-8f98-7bf380f7df3d" />
+    <install target="Services" src="Intent.Metadata/Module Builder/Intent.Metadata.ApiGateway/Intent.Metadata.ApiGateway.pkg.config" externalReference="775b96aa-24f0-4348-a06a-ab62d463a582" />
   </metadata>
   <releaseNotes>release-notes.md</releaseNotes>
   <migrations />
