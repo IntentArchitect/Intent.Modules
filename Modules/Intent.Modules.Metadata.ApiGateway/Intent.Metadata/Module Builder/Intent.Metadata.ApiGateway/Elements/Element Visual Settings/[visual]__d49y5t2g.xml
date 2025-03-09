@@ -4,7 +4,7 @@
   <display>[visual]: Api Gateway Route</display>
   <isAbstract>false</isAbstract>
   <sort-children>manually</sort-children>
-  <order>2</order>
+  <order>3</order>
   <genericTypes />
   <typeReference id="93023aae-5619-4344-877c-bd5a9c13998e">
     <typeId>b09d7684-5dde-4d4b-9cb5-0707bfd8578f</typeId>

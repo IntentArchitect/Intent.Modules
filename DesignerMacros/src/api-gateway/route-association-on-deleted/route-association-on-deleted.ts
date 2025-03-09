@@ -17,17 +17,8 @@ function applyRouteAssociationOnDeletedBehavior(): void {
         source.removeStereotype(HttpSettings);
     }
 
-    const sourceParent = source.getParent();
-    
-    let existingDtos = sourceParent
-        .getChildren()
-        .filter(child => child.hasMetadata("upstream") && child.getMetadata("upstream") === source.id);
-    
-    source.getChildren("DTO-Field").filter(field => field.getName() === "Body")[0]?.delete();
-
-    for (let dto of existingDtos) {
-        dto.delete();
-    }
+    let bodyField = source.getChildren("Body Field")[0];
+    bodyField?.delete();
 }
 
 applyRouteAssociationOnDeletedBehavior();

@@ -53,10 +53,10 @@ namespace Intent.Metadata.ApiGateway.Api
             {
                 var downstreamRoute = downstreamOperation?.GetStereotype("Http Settings")?.GetProperty("Route")?.Value;
                 var downstreamServiceRoute = downstreamOperation?.ParentElement?.GetStereotype("Http Service Settings")?.GetProperty("Route")?.Value;
-                var separator = string.IsNullOrWhiteSpace(downstreamServiceRoute) || downstreamServiceRoute.EndsWith("/") 
-                    ? string.Empty 
-                    : !string.IsNullOrWhiteSpace(downstreamRoute) 
-                        ? "/" 
+                var separator = string.IsNullOrWhiteSpace(downstreamServiceRoute) || downstreamServiceRoute.EndsWith("/")
+                    ? string.Empty
+                    : !string.IsNullOrWhiteSpace(downstreamRoute)
+                        ? "/"
                         : string.Empty;
                 upstreamRoute = $"{downstreamServiceRoute}{separator}{downstreamRoute}";
             }

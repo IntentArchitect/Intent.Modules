@@ -8,6 +8,11 @@ function applyOnChangedApiGatewayRouteBehavior(): void {
         syncDownstreamContract(element, targetEnd.typeReference.getType());
         syncApiGatewayRouteWithVariables(element, targetEnd);
     }
+
+    const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    if (!element.hasStereotype(HttpSettings)) {
+        syncApiGatewayRouteWithVariables(element, null);
+    }
 }
 
 applyOnChangedApiGatewayRouteBehavior();

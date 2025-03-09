@@ -16,19 +16,19 @@ function syncApiGatewayRouteWithVariables(
         throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
     }
 
-    const downstreamOperation = downstreamAssociationEnd.typeReference.getType();
+    const downstreamOperation = downstreamAssociationEnd?.typeReference.getType();
     const customRoute = getHttpRouteFromOperation(apiGatewayRoute);
-    const httpRoute = getHttpRouteFromOperation(downstreamOperation);
+    const httpRoute = downstreamOperation ? getHttpRouteFromOperation(downstreamOperation) : null;
 
     let upstreamRoute = customRoute || httpRoute;
     
     if (!upstreamRoute) {
-        apiGatewayRoute.getChildren("DTO-Field").filter(field => field.getName() !== "Body").forEach(x => x.delete());
+        apiGatewayRoute.getChildren("DTO-Field").forEach(x => x.delete());
         return;
     }
 
     let routeVars = extractRouteVariables(upstreamRoute);
-    apiGatewayRoute.getChildren("DTO-Field").filter(field => field.getName() !== "Body")
+    apiGatewayRoute.getChildren("DTO-Field")
         .forEach(field => {
             let routeVar = field.getMetadata("routeVar");
             if (routeVars.indexOf(routeVar) < 0) {
@@ -39,17 +39,7 @@ function syncApiGatewayRouteWithVariables(
         let field = apiGatewayRoute.getChildren("DTO-Field").filter(x => x.getMetadata("routeVar") === routeVar)[0] 
             ?? createElement("DTO-Field", toPascalCase(routeVar), apiGatewayRoute.id);
         field.setMetadata("routeVar", routeVar);
-        
-        let downstreamField = downstreamOperation.getChildren()
-            .filter(x => isParamOrFieldFromRoute(downstreamOperation, x) && extractRouteVariables(getHttpRouteFromOperation(downstreamOperation).toLowerCase()).indexOf(routeVar) >= 0)[0];
 
-        if (downstreamField) {
-            const routeMappingId = "48776d2f-ee28-4738-844f-d2ee610b516f";
-            let mapping = downstreamAssociationEnd.getMapping(routeMappingId);
-            if (!mapping) {
-                mapping = downstreamAssociationEnd.createAdvancedMapping(apiGatewayRoute.id, downstreamOperation.id, routeMappingId);
-            }
-            mapping.addMappedEnd("Data Mapping", [apiGatewayRoute.id, field.id], [downstreamOperation.id, downstreamField.id]);
-        }
+        // Go back to commit [755e8b97d879661be312ae7cb0e22cd0c5bf1d2c] when you need the Mappings
     });
 }

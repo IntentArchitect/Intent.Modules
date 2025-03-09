@@ -18,6 +18,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>a5323694-21df-44d8-8655-07716c30cbf6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#6b201f1e-03e3-4a9d-923f-ca3976c998c5</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/BodyFieldModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>BodyFieldModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>a5323694-21df-44d8-8655-07716c30cbf6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#c31a4a1d-4147-4f21-bc7e-4fde15eee971</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FolderExtensoinModel.cs</ApplicationRelativeFilePath>

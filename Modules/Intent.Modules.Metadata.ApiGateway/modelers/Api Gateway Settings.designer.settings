@@ -51,6 +51,7 @@
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+        <type order="1" type="Body Field" typeId="6b201f1e-03e3-4a9d-923f-ca3976c998c5" />
       </typeOrder>
       <contextMenuOptions>
         <createAssociation type="association">
@@ -229,16 +230,16 @@ function syncApiGatewayRouteWithVariables(apiGatewayRoute, downstreamAssociation
     if (apiGatewayRoute.specialization !== "Api Gateway Route") {
         throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
     }
-    const downstreamOperation = downstreamAssociationEnd.typeReference.getType();
+    const downstreamOperation = downstreamAssociationEnd === null || downstreamAssociationEnd === void 0 ? void 0 : downstreamAssociationEnd.typeReference.getType();
     const customRoute = getHttpRouteFromOperation(apiGatewayRoute);
-    const httpRoute = getHttpRouteFromOperation(downstreamOperation);
+    const httpRoute = downstreamOperation ? getHttpRouteFromOperation(downstreamOperation) : null;
     let upstreamRoute = customRoute || httpRoute;
     if (!upstreamRoute) {
-        apiGatewayRoute.getChildren("DTO-Field").filter(field =&gt; field.getName() !== "Body").forEach(x =&gt; x.delete());
+        apiGatewayRoute.getChildren("DTO-Field").forEach(x =&gt; x.delete());
         return;
     }
     let routeVars = extractRouteVariables(upstreamRoute);
-    apiGatewayRoute.getChildren("DTO-Field").filter(field =&gt; field.getName() !== "Body")
+    apiGatewayRoute.getChildren("DTO-Field")
         .forEach(field =&gt; {
         let routeVar = field.getMetadata("routeVar");
         if (routeVars.indexOf(routeVar) &lt; 0) {
@@ -249,16 +250,7 @@ function syncApiGatewayRouteWithVariables(apiGatewayRoute, downstreamAssociation
         var _a;
         let field = (_a = apiGatewayRoute.getChildren("DTO-Field").filter(x =&gt; x.getMetadata("routeVar") === routeVar)[0]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("DTO-Field", toPascalCase(routeVar), apiGatewayRoute.id);
         field.setMetadata("routeVar", routeVar);
-        let downstreamField = downstreamOperation.getChildren()
-            .filter(x =&gt; isParamOrFieldFromRoute(downstreamOperation, x) &amp;&amp; extractRouteVariables(getHttpRouteFromOperation(downstreamOperation).toLowerCase()).indexOf(routeVar) &gt;= 0)[0];
-        if (downstreamField) {
-            const routeMappingId = "48776d2f-ee28-4738-844f-d2ee610b516f";
-            let mapping = downstreamAssociationEnd.getMapping(routeMappingId);
-            if (!mapping) {
-                mapping = downstreamAssociationEnd.createAdvancedMapping(apiGatewayRoute.id, downstreamOperation.id, routeMappingId);
-            }
-            mapping.addMappedEnd("Data Mapping", [apiGatewayRoute.id, field.id], [downstreamOperation.id, downstreamField.id]);
-        }
+        // Go back to commit [755e8b97d879661be312ae7cb0e22cd0c5bf1d2c] when you need the Mappings
     });
 }
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
@@ -273,7 +265,7 @@ function isFieldFromBody(downStreamOperation, dtoField) {
     let httpSettingsRoute = (_b = (_a = httpSpecifiedElement.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Route")) === null || _b === void 0 ? void 0 : _b.getValue();
     let paramSource = (_d = (_c = dtoField.getStereotype("Parameter Settings")) === null || _c === void 0 ? void 0 : _c.getProperty("Source")) === null || _d === void 0 ? void 0 : _d.getValue();
     if (!paramSource || paramSource == "Default") {
-        return httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`) &lt; 0;
+        return (httpSettingsRoute === null || httpSettingsRoute === void 0 ? void 0 : httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`)) &lt; 0;
     }
     return paramSource == "Body";
 }
@@ -284,37 +276,23 @@ function syncDownstreamContract(apiGatewayRoute, downstreamService) {
     if (apiGatewayRoute.specialization !== "Api Gateway Route") {
         throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
     }
-    let downstreamFields = downstreamService.getChildren("DTO-Field").filter(x =&gt; isFieldFromBody(downstreamService, x));
+    let downstreamContract = downstreamService.specialization === "Operation"
+        ? downstreamService.getChildren("Parameter")
+            .map(x =&gt; { var _a; return (_a = x.typeReference) === null || _a === void 0 ? void 0 : _a.getType(); })
+            .filter(x =&gt; x &amp;&amp; x.specialization === "DTO")[0]
+        : downstreamService;
+    let downstreamFields = downstreamService.specialization === "Operation"
+        ? downstreamContract === null || downstreamContract === void 0 ? void 0 : downstreamContract.getChildren("DTO-Field")
+        : downstreamContract.getChildren("DTO-Field").filter(x =&gt; isFieldFromBody(downstreamService, x));
     if (!downstreamFields || downstreamFields.length === 0) {
+        (_a = apiGatewayRoute.getChildren("Body Field")[0]) === null || _a === void 0 ? void 0 : _a.delete();
         return;
     }
-    const sourceParent = apiGatewayRoute.getParent();
-    let existingDto = sourceParent
-        .getChildren()
-        .filter(child =&gt; child.hasMetadata("upstream") &amp;&amp; child.getMetadata("upstream") === apiGatewayRoute.id)[0];
-    let dto = existingDto;
-    if (!dto) {
-        const dtoName = downstreamService.getName();
-        dto = createElement("DTO", dtoName, sourceParent.id);
-        dto.addMetadata("upstream", apiGatewayRoute.id);
-    }
-    for (let downstreamField of downstreamFields) {
-        let field = dto.getChildren("DTO-Field").filter(field =&gt; field.getName() === downstreamField.getName())[0];
-        if (!field) {
-            field = createElement("DTO-Field", downstreamField.getName(), dto.id);
-            (_a = field.typeReference) === null || _a === void 0 ? void 0 : _a.setType(downstreamField.typeReference.getTypeId());
-        }
-    }
-    for (let upstreamField of dto.getChildren("DTO-Field")) {
-        if (!downstreamFields.some(field =&gt; upstreamField.getName() === field.getName())) {
-            upstreamField.delete();
-        }
-    }
-    let bodyField = apiGatewayRoute.getChildren("DTO-Field").filter(x =&gt; x.getName() === "Body")[0];
+    let bodyField = apiGatewayRoute.getChildren("Body Field")[0];
     if (!bodyField) {
-        bodyField = createElement("DTO-Field", "Body", apiGatewayRoute.id);
+        bodyField = createElement("Body Field", "Body", apiGatewayRoute.id);
     }
-    (_b = bodyField.typeReference) === null || _b === void 0 ? void 0 : _b.setType(dto.id);
+    (_b = bodyField.typeReference) === null || _b === void 0 ? void 0 : _b.setType(downstreamContract.id);
 }
 /// &lt;reference path="../_common/syncApiGatewayRouteWithVariables.ts" /&gt;
 /// &lt;reference path="../_common/syncDownstreamContract.ts" /&gt;
@@ -324,11 +302,48 @@ function applyOnChangedApiGatewayRouteBehavior() {
         syncDownstreamContract(element, targetEnd.typeReference.getType());
         syncApiGatewayRouteWithVariables(element, targetEnd);
     }
+    const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    if (!element.hasStereotype(HttpSettings)) {
+        syncApiGatewayRouteWithVariables(element, null);
+    }
 }
 applyOnChangedApiGatewayRouteBehavior();
 </script>
         </macro>
       </macros>
+      <childElementSettings>
+        <childElementSetting type="Body Field" typeId="6b201f1e-03e3-4a9d-923f-ca3976c998c5">
+          <icon type="FontAwesome" source="file-o" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>false</allowRename>
+          <nameMustBeUnique>false</nameMustBeUnique>
+          <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <sortChildren>by-type-then-by-name</sortChildren>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+              <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
+              <type type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" />
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <mappingSettings />
+        </childElementSetting>
+      </childElementSettings>
     </elementSetting>
   </elementSettings>
   <elementExtensions>
@@ -429,19 +444,6 @@ applyOnChangedApiGatewayRouteBehavior();
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
-        <typeOrder />
-        <contextMenuOptions>
-          <openMapping type="open-advanced-mapping" mappingType="Route Mapping" mappingTypeId="48776d2f-ee28-4738-844f-d2ee610b516f">
-            <text>Add Route Mapping</text>
-          </openMapping>
-        </contextMenuOptions>
-        <creationOptions />
-        <scriptOptions />
-        <mappingOptions>
-          <option type="open-advanced-mapping" mappingType="Route Mapping" mappingTypeId="48776d2f-ee28-4738-844f-d2ee610b516f">
-            <text>Add Route Mapping</text>
-          </option>
-        </mappingOptions>
       </targetEnd>
       <visualSettings type="Route Association" typeId="dd35ed32-76bb-4abf-a4e0-370f230765cf">
         <lineType>Curved</lineType>
@@ -522,7 +524,7 @@ function isFieldFromBody(downStreamOperation, dtoField) {
     let httpSettingsRoute = (_b = (_a = httpSpecifiedElement.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Route")) === null || _b === void 0 ? void 0 : _b.getValue();
     let paramSource = (_d = (_c = dtoField.getStereotype("Parameter Settings")) === null || _c === void 0 ? void 0 : _c.getProperty("Source")) === null || _d === void 0 ? void 0 : _d.getValue();
     if (!paramSource || paramSource == "Default") {
-        return httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`) &lt; 0;
+        return (httpSettingsRoute === null || httpSettingsRoute === void 0 ? void 0 : httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`)) &lt; 0;
     }
     return paramSource == "Body";
 }
@@ -533,37 +535,23 @@ function syncDownstreamContract(apiGatewayRoute, downstreamService) {
     if (apiGatewayRoute.specialization !== "Api Gateway Route") {
         throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
     }
-    let downstreamFields = downstreamService.getChildren("DTO-Field").filter(x =&gt; isFieldFromBody(downstreamService, x));
+    let downstreamContract = downstreamService.specialization === "Operation"
+        ? downstreamService.getChildren("Parameter")
+            .map(x =&gt; { var _a; return (_a = x.typeReference) === null || _a === void 0 ? void 0 : _a.getType(); })
+            .filter(x =&gt; x &amp;&amp; x.specialization === "DTO")[0]
+        : downstreamService;
+    let downstreamFields = downstreamService.specialization === "Operation"
+        ? downstreamContract === null || downstreamContract === void 0 ? void 0 : downstreamContract.getChildren("DTO-Field")
+        : downstreamContract.getChildren("DTO-Field").filter(x =&gt; isFieldFromBody(downstreamService, x));
     if (!downstreamFields || downstreamFields.length === 0) {
+        (_a = apiGatewayRoute.getChildren("Body Field")[0]) === null || _a === void 0 ? void 0 : _a.delete();
         return;
     }
-    const sourceParent = apiGatewayRoute.getParent();
-    let existingDto = sourceParent
-        .getChildren()
-        .filter(child =&gt; child.hasMetadata("upstream") &amp;&amp; child.getMetadata("upstream") === apiGatewayRoute.id)[0];
-    let dto = existingDto;
-    if (!dto) {
-        const dtoName = downstreamService.getName();
-        dto = createElement("DTO", dtoName, sourceParent.id);
-        dto.addMetadata("upstream", apiGatewayRoute.id);
-    }
-    for (let downstreamField of downstreamFields) {
-        let field = dto.getChildren("DTO-Field").filter(field =&gt; field.getName() === downstreamField.getName())[0];
-        if (!field) {
-            field = createElement("DTO-Field", downstreamField.getName(), dto.id);
-            (_a = field.typeReference) === null || _a === void 0 ? void 0 : _a.setType(downstreamField.typeReference.getTypeId());
-        }
-    }
-    for (let upstreamField of dto.getChildren("DTO-Field")) {
-        if (!downstreamFields.some(field =&gt; upstreamField.getName() === field.getName())) {
-            upstreamField.delete();
-        }
-    }
-    let bodyField = apiGatewayRoute.getChildren("DTO-Field").filter(x =&gt; x.getName() === "Body")[0];
+    let bodyField = apiGatewayRoute.getChildren("Body Field")[0];
     if (!bodyField) {
-        bodyField = createElement("DTO-Field", "Body", apiGatewayRoute.id);
+        bodyField = createElement("Body Field", "Body", apiGatewayRoute.id);
     }
-    (_b = bodyField.typeReference) === null || _b === void 0 ? void 0 : _b.setType(dto.id);
+    (_b = bodyField.typeReference) === null || _b === void 0 ? void 0 : _b.setType(downstreamContract.id);
 }
 /// &lt;reference path="../_common/getMethodAndRoute.ts" /&gt;
 /// &lt;reference path="../_common/updateApiGatewayRouteName.ts" /&gt;
@@ -609,7 +597,6 @@ function updateApiGatewayRouteName(apiGatewayRoute, downstreamService) {
 }
 /// &lt;reference path="../_common/updateApiGatewayRouteName.ts" /&gt;
 function applyRouteAssociationOnDeletedBehavior() {
-    var _a;
     let source = association.getOtherEnd().typeReference.getType();
     let target = association.typeReference.getType();
     if (!source) {
@@ -621,14 +608,8 @@ function applyRouteAssociationOnDeletedBehavior() {
     if (httpSettings) {
         source.removeStereotype(HttpSettings);
     }
-    const sourceParent = source.getParent();
-    let existingDtos = sourceParent
-        .getChildren()
-        .filter(child =&gt; child.hasMetadata("upstream") &amp;&amp; child.getMetadata("upstream") === source.id);
-    (_a = source.getChildren("DTO-Field").filter(field =&gt; field.getName() === "Body")[0]) === null || _a === void 0 ? void 0 : _a.delete();
-    for (let dto of existingDtos) {
-        dto.delete();
-    }
+    let bodyField = source.getChildren("Body Field")[0];
+    bodyField === null || bodyField === void 0 ? void 0 : bodyField.delete();
 }
 applyRouteAssociationOnDeletedBehavior();
 </script>
@@ -637,129 +618,7 @@ applyRouteAssociationOnDeletedBehavior();
     </associationSetting>
   </associationSettings>
   <associationExtensions />
-  <mappingSettings>
-    <mappingSetting type="Route Mapping" typeId="48776d2f-ee28-4738-844f-d2ee610b516f">
-      <title>Route Mapping</title>
-      <sourceMappings>
-        <mapping id="ca0f6762-39bc-446b-88c1-4a3ca5bc73c9" name="Api Gateway Route" type="Api Gateway Route" typeId="b09d7684-5dde-4d4b-9cb5-0707bfd8578f" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="623689eb-0fe5-49d5-b541-b0eb9abf7ad8" name="Route Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
-              <filterFunction>return element.hasMetadata("routeVar");</filterFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-          </childSettings>
-        </mapping>
-      </sourceMappings>
-      <targetMappings>
-        <mapping id="003f6a4e-6fe4-4484-9440-19fad5161c4a" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <useChildSettingsFrom>f3615f9a-5a34-4b21-aadc-329da6bf8ac7</useChildSettingsFrom>
-          <represents>data</represents>
-        </mapping>
-        <mapping id="83323e9a-6205-4b40-8407-7016bc0c162a" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <useChildSettingsFrom>f3615f9a-5a34-4b21-aadc-329da6bf8ac7</useChildSettingsFrom>
-          <represents>data</represents>
-        </mapping>
-        <mapping id="f3615f9a-5a34-4b21-aadc-329da6bf8ac7" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="e7f3ae07-618e-4574-b1dd-42206eff4566" name="Dto Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
-              <filterFunction>function isParamOrFieldFromRoute(downStreamOperation, paramOrField) {
-    let httpSettingsRoute = downStreamOperation.getStereotype("Http Settings")?.getProperty("Route")?.getValue();
-    let paramSource = paramOrField.getStereotype("Parameter Settings")?.getProperty("Source")?.getValue();
-    if (!paramSource || paramSource == "Default" || paramSource == "Route") {
-        return httpSettingsRoute.toLowerCase().indexOf(`{${paramOrField.getName().toLowerCase()}}`) &gt;= 0;
-    }
-    return false;
-}
-
-return isParamOrFieldFromRoute(element.getParent(), element);</filterFunction>
-              <isRequiredFunction>return true;</isRequiredFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>f3615f9a-5a34-4b21-aadc-329da6bf8ac7</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-          </childSettings>
-        </mapping>
-        <mapping id="78ab2845-3666-4dfa-ac6b-36d3f75925e1" name="Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="e53ffb20-07a1-4b57-9039-717410b0603c" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
-              <filterFunction>function isParamOrFieldFromRoute(downStreamOperation, paramOrField) {
-    let httpSettingsRoute = downStreamOperation.getStereotype("Http Settings")?.getProperty("Route")?.getValue();
-    let paramSource = paramOrField.getStereotype("Parameter Settings")?.getProperty("Source")?.getValue();
-    if (!paramSource || paramSource == "Default" || paramSource == "Route") {
-        return httpSettingsRoute.toLowerCase().indexOf(`{${paramOrField.getName().toLowerCase()}}`) &gt;= 0;
-    }
-    return false;
-}
-
-return isParamOrFieldFromRoute(element.getParent(), element);</filterFunction>
-              <isRequiredFunction>return true;</isRequiredFunction>
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>f3615f9a-5a34-4b21-aadc-329da6bf8ac7</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-          </childSettings>
-        </mapping>
-      </targetMappings>
-      <mappingTypes>
-        <mappingType type="Data Mapping" typeId="b419f885-7eaa-4c32-a931-25b160eb258c">
-          <represents>data</represents>
-          <sources>
-            <source id="623689eb-0fe5-49d5-b541-b0eb9abf7ad8" name="Route Field" />
-          </sources>
-          <sourceArrowFunction>return null</sourceArrowFunction>
-          <targets>
-            <target id="e7f3ae07-618e-4574-b1dd-42206eff4566" name="Dto Field" />
-            <target id="e53ffb20-07a1-4b57-9039-717410b0603c" name="Parameter" />
-          </targets>
-          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
-          <allowAutoMap>true</allowAutoMap>
-        </mappingType>
-      </mappingTypes>
-    </mappingSetting>
-  </mappingSettings>
+  <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
   <scripts />

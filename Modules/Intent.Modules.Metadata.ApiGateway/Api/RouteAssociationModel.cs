@@ -86,8 +86,6 @@ namespace Intent.Metadata.ApiGateway.Api
         public DownstreamEndModel(IAssociationEnd associationEnd, RouteAssociationModel association) : base(associationEnd, association)
         {
         }
-
-        public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
     }
 
     [IntentManaged(Mode.Fully)]
