@@ -50,5 +50,11 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         /// representations of <see cref="VisualStudio.MsBuildFileItemGenerationBehaviour"/>.
         /// </summary>
         public static readonly string MsBuildFileItemGenerationBehaviour = "VisualStudio.MsBuildFileItem.GenerationBehaviour";
+
+        /// <summary>
+        /// Key value for <see cref="ITemplateFileConfig.CustomMetadata"/> to indicate the element
+        /// type for the file in the MSBuild file was added implicitly.
+        /// </summary>
+        public static readonly string WasAddedImplicitly = "VisualStudio.MsBuildFileItem.WasAddedImplicitly";
     }
 }

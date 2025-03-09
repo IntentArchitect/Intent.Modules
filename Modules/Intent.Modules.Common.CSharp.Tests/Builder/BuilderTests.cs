@@ -885,4 +885,24 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task CollectionInitializer()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddObjectInitializerBlock("var outer = new Outer", outer =>
+                    {
+                        outer.AddInitStatement("Details", new CSharpObjectInitializerBlock(null)
+                            .AddStatement("\"item\""));
+                    });
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

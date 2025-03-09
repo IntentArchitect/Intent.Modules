@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -18,7 +19,13 @@ public class CSharpObjectInitStatement : CSharpStatement, IHasCSharpStatements
 
     public override string GetText(string indentation)
     {
-        return $@"{indentation}{RelativeIndentation}{_lhs} = {_rhs.GetText(indentation).TrimStart()}";
+        var rhs = _rhs.GetText(indentation).TrimStart();
+        if (rhs.StartsWith('{'))
+        {
+            rhs = $"{Environment.NewLine}{indentation}{rhs}";
+        }
+
+        return $@"{indentation}{RelativeIndentation}{_lhs} = {rhs}";
     }
 
     bool IHasCSharpStatementsActual.IsCodeBlock => false;

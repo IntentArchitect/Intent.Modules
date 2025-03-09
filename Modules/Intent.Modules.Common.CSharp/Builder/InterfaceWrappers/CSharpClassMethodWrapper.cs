@@ -80,6 +80,7 @@ internal class CSharpClassMethodWrapper(CSharpClassMethod wrapped) :
     bool ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.IsAbstract => wrapped.IsAbstract;
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.IsExplicitImplementationFor(string @interface) => wrapped.IsExplicitImplementationFor(@interface);
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.New() => wrapped.New();
+    ICSharpClassMethodDeclaration ICSharpClassMethodDeclaration.Operator(bool isOperator) => wrapped.Operator(isOperator);
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Override() => wrapped.Override();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Private() => wrapped.Private();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Protected() => wrapped.Protected();

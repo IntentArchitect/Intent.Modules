@@ -140,7 +140,20 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         /// </summary>
         public static T WithItemType<T>(this T templateFileConfig, string itemType) where T : ITemplateFileConfig
         {
+            return templateFileConfig.WithItemType(itemType, wasAddedImplicitly: true);
+        }
+
+        /// <summary>
+        /// Indicate that the file entry in the MSBuild file should have the provided <paramref name="itemType"/>, ie,
+        /// <c>&lt;&lt;itemType&gt; Update="&lt;fileName&gt;"/&gt;</c> should be added to the .csproj file. If
+        /// <see cref="WithRemoveItemType{T}"/> has been used or <paramref name="wasAddedImplicitly"/> is
+        /// <see langword="false"/>, then <c>&lt;&lt;itemType&gt; Include="&lt;fileName&gt;"/&gt;</c> will be generated
+        /// instead.
+        /// </summary>
+        public static T WithItemType<T>(this T templateFileConfig, string itemType, bool wasAddedImplicitly) where T : ITemplateFileConfig
+        {
             templateFileConfig.CustomMetadata[CustomMetadataKeys.ItemType] = itemType;
+            templateFileConfig.CustomMetadata[CustomMetadataKeys.WasAddedImplicitly] = wasAddedImplicitly.ToString();
             return templateFileConfig;
         }
 
