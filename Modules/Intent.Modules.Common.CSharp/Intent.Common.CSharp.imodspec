@@ -31,6 +31,11 @@
         <package id="Intent.AspNetCore" version="6.1.0-pre.2" />
       </install>
     </detect>
+    <detect id="Intent.WindowsServiceHost">
+      <install>
+        <package id="Intent.WindowsServiceHost" version="1.0.5-pre.0" />
+      </install>
+    </detect>
     <!-- /Minimum Compatible Versions -->
   </interoperability>
   <files>
