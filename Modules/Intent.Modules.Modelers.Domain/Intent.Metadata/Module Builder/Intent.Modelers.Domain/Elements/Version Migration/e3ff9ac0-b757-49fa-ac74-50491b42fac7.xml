@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="e3ff9ac0-b757-49fa-ac74-50491b42fac7" type="Version Migration" typeId="03f24c57-66d8-4868-95a7-6daef900dc7f">
+  <name>3.12.2-pre.0</name>
+  <display>3.12.2-pre.0</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>c7cdf05b-feeb-4ea3-9f98-779a956c764c</parentFolderId>
+  <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+  <packageName>Intent.Modelers.Domain</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
