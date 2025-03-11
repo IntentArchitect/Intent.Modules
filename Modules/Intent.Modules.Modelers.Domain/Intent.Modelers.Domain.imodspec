@@ -58,5 +58,7 @@
     </group>
   </moduleSettings>
   <moduleSettingsExtensions />
-  <migrations />
+  <migrations has-on-install-migration="true">
+    <migration version="3.12.2-pre.0" />
+  </migrations>
 </package>
