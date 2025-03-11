@@ -6,7 +6,8 @@
     <type id="e030c97a-e066-40a7-8188-808c275df3cb">Operation</type>
     <type id="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">Command</type>
     <type id="e71b0662-e29d-4db2-868b-8a12464b25d0">Query</type>
-    <type id="702f57ca-3b5a-413b-a084-9f2d154154e7">Azure Function</type>
+    <type id="702f57ca-3b5a-413b-a084-9f2d154154e7">702f57ca-3b5a-413b-a084-9f2d154154e7</type>
+    <type id="b09d7684-5dde-4d4b-9cb5-0707bfd8578f">Api Gateway Route</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>
@@ -70,6 +71,8 @@ return route.includes('//')
         <option>application/json</option>
       </valueOptions>
       <lookupTypes />
+      <isActiveFunction>const ApiGatewayRouteElement = "b09d7684-5dde-4d4b-9cb5-0707bfd8578f";
+return element.specializationId != ApiGatewayRouteElement;</isActiveFunction>
     </property>
     <property id="e3870725-34b3-4684-85f2-ec4a667207fb">
       <name>Success Response Code</name>
@@ -90,6 +93,8 @@ return route.includes('//')
         <option>226 (IM Used)</option>
       </valueOptions>
       <lookupTypes />
+      <isActiveFunction>const ApiGatewayRouteElement = "b09d7684-5dde-4d4b-9cb5-0707bfd8578f";
+return element.specializationId != ApiGatewayRouteElement;</isActiveFunction>
     </property>
   </properties>
 </stereotypeDefinition>

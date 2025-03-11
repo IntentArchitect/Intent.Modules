@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Humanizer;
@@ -228,6 +229,82 @@ namespace Intent.Modules.Common.Templates
         public static string Singularize(this string word, bool inputIsKnownToBePlural = false)
         {
             return InflectorExtensions.Singularize(word, inputIsKnownToBePlural);
+        }
+
+        /// <summary>
+        /// This is based on (but not entirely the same) as the `ToPropertyName` method in Common.CSharp.
+        /// This does a cleanup of the string in a very similar/same manner as the UI does a cleanup of the 
+        /// attribute name, removing any special characters etc
+        /// </summary>
+        /// <param name="value">The string value to sanitize</param>
+        /// <returns>The sanitized value</returns>
+        public static string ToSanitized(this string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return value;
+            }
+
+            var asCharArray = value.ToCharArray();
+            for (var i = 0; i < asCharArray.Length; i++)
+            {
+                switch (char.GetUnicodeCategory(asCharArray[i]))
+                {
+                    case UnicodeCategory.DecimalDigitNumber:
+                    case UnicodeCategory.LetterNumber:
+                    case UnicodeCategory.LowercaseLetter:
+                    case UnicodeCategory.ModifierLetter:
+                    case UnicodeCategory.OtherLetter:
+                    case UnicodeCategory.TitlecaseLetter:
+                    case UnicodeCategory.UppercaseLetter:
+                    case UnicodeCategory.Format:
+                        break;
+                    case UnicodeCategory.ClosePunctuation:
+                    case UnicodeCategory.ConnectorPunctuation:
+                    case UnicodeCategory.Control:
+                    case UnicodeCategory.CurrencySymbol:
+                    case UnicodeCategory.DashPunctuation:
+                    case UnicodeCategory.EnclosingMark:
+                    case UnicodeCategory.FinalQuotePunctuation:
+                    case UnicodeCategory.InitialQuotePunctuation:
+                    case UnicodeCategory.LineSeparator:
+                    case UnicodeCategory.MathSymbol:
+                    case UnicodeCategory.ModifierSymbol:
+                    case UnicodeCategory.NonSpacingMark:
+                    case UnicodeCategory.OpenPunctuation:
+                    case UnicodeCategory.OtherNotAssigned:
+                    case UnicodeCategory.OtherNumber:
+                    case UnicodeCategory.OtherPunctuation:
+                    case UnicodeCategory.OtherSymbol:
+                    case UnicodeCategory.ParagraphSeparator:
+                    case UnicodeCategory.PrivateUse:
+                    case UnicodeCategory.SpaceSeparator:
+                    case UnicodeCategory.SpacingCombiningMark:
+                    case UnicodeCategory.Surrogate:
+                        asCharArray[i] = ' ';
+                        break;
+                    default:
+                        asCharArray[i] = ' ';
+                        break;
+                }
+            }
+
+            value = new string(asCharArray);
+
+            // Replace double spaces
+            while (value.Contains("  "))
+            {
+                value = value.Replace("  ", " ");
+            }
+
+            value = string.Concat(value
+                .Split(' ')
+                .Where(element => !string.IsNullOrWhiteSpace(element))
+                .Select((element, index) => index == 0
+                    ? element
+                    : element.ToPascalCase()));
+            
+            return value;
         }
     }
 

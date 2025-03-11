@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>3f6cd7b9-04a8-4044-8f98-7bf380f7df3d</id>
+  <name>Api Gateway Settings</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions>
+    <packageExtension type="Services Package" typeId="df45eaf6-9202-4c25-8dd5-677e9ba1e906">
+      <requiredPackages />
+      <contextMenuOptions>
+        <createElement type="element">
+          <text>New Api Gateway Route</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <specializationType>Api Gateway Route</specializationType>
+          <specializationTypeId>b09d7684-5dde-4d4b-9cb5-0707bfd8578f</specializationTypeId>
+          <defaultName>ApiGatewayRoute</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </createElement>
+      </contextMenuOptions>
+      <creationOptions>
+        <option type="element">
+          <text>New Api Gateway Route</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <specializationType>Api Gateway Route</specializationType>
+          <specializationTypeId>b09d7684-5dde-4d4b-9cb5-0707bfd8578f</specializationTypeId>
+          <defaultName>ApiGatewayRoute</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type type="Api Gateway Route" typeId="b09d7684-5dde-4d4b-9cb5-0707bfd8578f" />
+      </typeOrder>
+    </packageExtension>
+  </packageExtensions>
+  <elementSettings>
+    <elementSetting type="Api Gateway Route" typeId="b09d7684-5dde-4d4b-9cb5-0707bfd8578f">
+      <icon type="UrlImagePath" source="data:image/png;base64,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" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <nameMustBeUnique>true</nameMustBeUnique>
+      <allowAbstract>false</allowAbstract>
+      <allowStatic>false</allowStatic>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren>by-type-then-by-name</sortChildren>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+        <type order="1" type="Body Field" typeId="6b201f1e-03e3-4a9d-923f-ca3976c998c5" />
+      </typeOrder>
+      <contextMenuOptions>
+        <createAssociation type="association">
+          <text>New Route Association</text>
+          <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+          <specializationType>Downstream End</specializationType>
+          <specializationTypeId>17084378-a3d8-4233-b275-c856eea4dd61</specializationTypeId>
+          <defaultName>NewRouteAssociation</defaultName>
+          <allowMultiple>false</allowMultiple>
+        </createAssociation>
+      </contextMenuOptions>
+      <creationOptions>
+        <option type="association">
+          <text>New Route Association</text>
+          <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+          <specializationType>Downstream End</specializationType>
+          <specializationTypeId>17084378-a3d8-4233-b275-c856eea4dd61</specializationTypeId>
+          <defaultName>NewRouteAssociation</defaultName>
+          <allowMultiple>false</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <mappingSettings />
+      <visualSettings type="Api Gateway Route" typeId="b09d7684-5dde-4d4b-9cb5-0707bfd8578f">
+        <size width="${w}" height="${h}" />
+        <position x="${x}" y="${y}" />
+        <display>
+          <drawText>
+            <text>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function getMethodAndRoute(apiGatewayRoute) {
+    var _a, _b, _c, _d, _e;
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
+    // Get custom settings
+    const customSettings = apiGatewayRoute.getStereotype("Http Settings");
+    const customRoute = ((_a = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Route")) === null || _a === void 0 ? void 0 : _a.getValue()) || "";
+    const customMethod = ((_b = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Verb")) === null || _b === void 0 ? void 0 : _b.getValue()) || "";
+    // Get HTTP settings
+    const endpoints = apiGatewayRoute.getAssociations("Route Association")
+        .map(x =&gt; x.typeReference.getType())
+        .filter(x =&gt; x);
+    if (endpoints.length === 0) {
+        return { verb: "", route: "", result: "None" };
+    }
+    if (endpoints.length &gt; 1) {
+        return { verb: "", route: "", result: "Aggregate" };
+    }
+    const httpSettings = endpoints[0].getStereotype("Http Settings");
+    const httpMethod = httpSettings.getProperty("Verb").getValue();
+    let httpRoute = httpSettings.getProperty("Route").getValue();
+    if ((_c = endpoints[0].getParent()) === null || _c === void 0 ? void 0 : _c.hasStereotype("Http Service Settings")) {
+        let serviceRoute = ((_e = (_d = endpoints[0].getParent().getStereotype("Http Service Settings")) === null || _d === void 0 ? void 0 : _d.getProperty("Route")) === null || _e === void 0 ? void 0 : _e.getValue()) || "";
+        const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
+        httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
+    }
+    // Use custom values if available, otherwise fall back to HTTP settings
+    return {
+        verb: customMethod || httpMethod,
+        route: customRoute || httpRoute,
+        result: null
+    };
+}
+/// &lt;reference path="../_common/getMethodAndRoute.ts" /&gt;
+function formatMethodAndRoute(element) {
+    const { verb, route, result } = getMethodAndRoute(element);
+    if (result === "None")
+        return "[Disconnected]";
+    if (result === "Aggregate")
+        return "[Aggregate]";
+    return `${route}`;
+}
+// Uncomment the following:
+return formatMethodAndRoute(element);
+</text>
+            <style>`font-size: 12px; font-family: Helvetica; font-weight: bold; text-align: center; white-space: inherit;vertical-align: center`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + 48}" />
+          </drawText>
+          <drawText>
+            <text>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function getMethodAndRoute(apiGatewayRoute) {
+    var _a, _b, _c, _d, _e;
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
+    // Get custom settings
+    const customSettings = apiGatewayRoute.getStereotype("Http Settings");
+    const customRoute = ((_a = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Route")) === null || _a === void 0 ? void 0 : _a.getValue()) || "";
+    const customMethod = ((_b = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Verb")) === null || _b === void 0 ? void 0 : _b.getValue()) || "";
+    // Get HTTP settings
+    const endpoints = apiGatewayRoute.getAssociations("Route Association")
+        .map(x =&gt; x.typeReference.getType())
+        .filter(x =&gt; x);
+    if (endpoints.length === 0) {
+        return { verb: "", route: "", result: "None" };
+    }
+    if (endpoints.length &gt; 1) {
+        return { verb: "", route: "", result: "Aggregate" };
+    }
+    const httpSettings = endpoints[0].getStereotype("Http Settings");
+    const httpMethod = httpSettings.getProperty("Verb").getValue();
+    let httpRoute = httpSettings.getProperty("Route").getValue();
+    if ((_c = endpoints[0].getParent()) === null || _c === void 0 ? void 0 : _c.hasStereotype("Http Service Settings")) {
+        let serviceRoute = ((_e = (_d = endpoints[0].getParent().getStereotype("Http Service Settings")) === null || _d === void 0 ? void 0 : _d.getProperty("Route")) === null || _e === void 0 ? void 0 : _e.getValue()) || "";
+        const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
+        httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
+    }
+    // Use custom values if available, otherwise fall back to HTTP settings
+    return {
+        verb: customMethod || httpMethod,
+        route: customRoute || httpRoute,
+        result: null
+    };
+}
+/// &lt;reference path="../_common/getMethodAndRoute.ts" /&gt;
+function formatMethodAndRoute(element) {
+    const { verb, route, result } = getMethodAndRoute(element);
+    if (result === "None")
+        return "";
+    if (result === "Aggregate")
+        return "";
+    return `${verb}`;
+}
+// Uncomment the following:
+return formatMethodAndRoute(element);
+</text>
+            <style>`font-size: 12px; font-family: Helvetica; font-weight: bold; text-align: center; white-space: inherit;vertical-align: center`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + 68}" />
+          </drawText>
+          <drawSvgResource>
+            <path>api-gateway.svg</path>
+            <size width="${w}" height="40" />
+            <position x="${x}" y="${y + 6}" />
+          </drawSvgResource>
+        </display>
+        <defaultSize width="${x}" height="${y}" />
+        <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+        <childElementVisualSettings />
+      </visualSettings>
+      <macros>
+        <macro trigger="on-changed">
+          <script>function extractRouteVariables(routePath) {
+    // Match any text between curly braces
+    const variablePattern = /\{([^}]+)\}/g;
+    const variables = [];
+    // Find all matches in the route path
+    let match;
+    while ((match = variablePattern.exec(routePath)) !== null) {
+        variables.push(match[1]);
+    }
+    return variables;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isParamOrFieldFromRoute(downStreamOperation, paramOrField) {
+    var _a, _b, _c, _d;
+    let httpSettingsRoute = (_b = (_a = downStreamOperation.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Route")) === null || _b === void 0 ? void 0 : _b.getValue();
+    let paramSource = (_d = (_c = paramOrField.getStereotype("Parameter Settings")) === null || _c === void 0 ? void 0 : _c.getProperty("Source")) === null || _d === void 0 ? void 0 : _d.getValue();
+    if (!paramSource || paramSource == "Default" || paramSource == "Route") {
+        return httpSettingsRoute.toLowerCase().indexOf(`{${paramOrField.getName().toLowerCase()}}`) &gt;= 0;
+    }
+    return false;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="./extractRouteVariables.ts" /&gt;
+/// &lt;reference path="./isParamOrFieldFromRoute.ts" /&gt;
+function getHttpRouteFromOperation(operation) {
+    var _a;
+    const httpSettings = operation === null || operation === void 0 ? void 0 : operation.getStereotype("Http Settings");
+    const route = ((_a = httpSettings === null || httpSettings === void 0 ? void 0 : httpSettings.getProperty("Route")) === null || _a === void 0 ? void 0 : _a.getValue()) || "";
+    return route;
+}
+function syncApiGatewayRouteWithVariables(apiGatewayRoute, downstreamAssociationEnd) {
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
+    const downstreamOperation = downstreamAssociationEnd === null || downstreamAssociationEnd === void 0 ? void 0 : downstreamAssociationEnd.typeReference.getType();
+    const customRoute = getHttpRouteFromOperation(apiGatewayRoute);
+    const httpRoute = downstreamOperation ? getHttpRouteFromOperation(downstreamOperation) : null;
+    let upstreamRoute = customRoute || httpRoute;
+    if (!upstreamRoute) {
+        apiGatewayRoute.getChildren("DTO-Field").forEach(x =&gt; x.delete());
+        return;
+    }
+    let routeVars = extractRouteVariables(upstreamRoute);
+    apiGatewayRoute.getChildren("DTO-Field")
+        .forEach(field =&gt; {
+        let routeVar = field.getMetadata("routeVar");
+        if (routeVars.indexOf(routeVar) &lt; 0) {
+            field.delete();
+        }
+    });
+    routeVars.forEach(routeVar =&gt; {
+        var _a;
+        let field = (_a = apiGatewayRoute.getChildren("DTO-Field").filter(x =&gt; x.getMetadata("routeVar") === routeVar)[0]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("DTO-Field", toPascalCase(routeVar), apiGatewayRoute.id);
+        field.setMetadata("routeVar", routeVar);
+        // Go back to commit [755e8b97d879661be312ae7cb0e22cd0c5bf1d2c] when you need the Mappings
+    });
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isFieldFromBody(downStreamOperation, dtoField) {
+    var _a, _b, _c, _d;
+    if (dtoField.specialization != "DTO-Field") {
+        throw Error(`Element "${dtoField.id}, ${dtoField.getName()}" is not of type DTO-Field.`);
+    }
+    let httpSpecifiedElement = downStreamOperation.specialization === "Operation"
+        ? downStreamOperation.getChildren("Parameter").filter(param =&gt; { var _a; return ((_a = param.typeReference) === null || _a === void 0 ? void 0 : _a.getType().specialization) === "DTO"; })[0]
+        : downStreamOperation;
+    let httpSettingsRoute = (_b = (_a = httpSpecifiedElement.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Route")) === null || _b === void 0 ? void 0 : _b.getValue();
+    let paramSource = (_d = (_c = dtoField.getStereotype("Parameter Settings")) === null || _c === void 0 ? void 0 : _c.getProperty("Source")) === null || _d === void 0 ? void 0 : _d.getValue();
+    if (!paramSource || paramSource == "Default") {
+        return (httpSettingsRoute === null || httpSettingsRoute === void 0 ? void 0 : httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`)) &lt; 0;
+    }
+    return paramSource == "Body";
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/isFieldFromBody.ts" /&gt;
+function syncDownstreamContract(apiGatewayRoute, downstreamService) {
+    var _a, _b;
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
+    let downstreamContract = downstreamService.specialization === "Operation"
+        ? downstreamService.getChildren("Parameter")
+            .map(x =&gt; { var _a; return (_a = x.typeReference) === null || _a === void 0 ? void 0 : _a.getType(); })
+            .filter(x =&gt; x &amp;&amp; x.specialization === "DTO")[0]
+        : downstreamService;
+    let downstreamFields = downstreamService.specialization === "Operation"
+        ? downstreamContract === null || downstreamContract === void 0 ? void 0 : downstreamContract.getChildren("DTO-Field")
+        : downstreamContract.getChildren("DTO-Field").filter(x =&gt; isFieldFromBody(downstreamService, x));
+    if (!downstreamFields || downstreamFields.length === 0) {
+        (_a = apiGatewayRoute.getChildren("Body Field")[0]) === null || _a === void 0 ? void 0 : _a.delete();
+        return;
+    }
+    let bodyField = apiGatewayRoute.getChildren("Body Field")[0];
+    if (!bodyField) {
+        bodyField = createElement("Body Field", "Body", apiGatewayRoute.id);
+    }
+    (_b = bodyField.typeReference) === null || _b === void 0 ? void 0 : _b.setType(downstreamContract.id);
+}
+/// &lt;reference path="../_common/syncApiGatewayRouteWithVariables.ts" /&gt;
+/// &lt;reference path="../_common/syncDownstreamContract.ts" /&gt;
+function applyOnChangedApiGatewayRouteBehavior() {
+    let targets = element.getAssociations("Route Association");
+    for (let targetEnd of targets.filter(x =&gt; { var _a; return (_a = x.typeReference) === null || _a === void 0 ? void 0 : _a.getType(); })) {
+        syncDownstreamContract(element, targetEnd.typeReference.getType());
+        syncApiGatewayRouteWithVariables(element, targetEnd);
+    }
+    const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    if (!element.hasStereotype(HttpSettings)) {
+        syncApiGatewayRouteWithVariables(element, null);
+    }
+}
+applyOnChangedApiGatewayRouteBehavior();
+</script>
+        </macro>
+      </macros>
+      <childElementSettings>
+        <childElementSetting type="Body Field" typeId="6b201f1e-03e3-4a9d-923f-ca3976c998c5">
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTAgNTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHZlcnNpb249IjEuMSI+CiA8ZGVmcz4KICA8bGluZWFyR3JhZGllbnQgeTI9IjAuOTk5MTgiIHgyPSIwLjUiIHkxPSItMC4wMDM5NSIgeDE9IjAuNSIgaWQ9IlNWR0lEXzFfIj4KICAgPHN0b3Agc3RvcC1jb2xvcj0iIzAwNzBDMCIgb2Zmc2V0PSIwIi8+CiAgIDxzdG9wIHN0b3AtY29sb3I9IiMwOUM0RkYiIG9mZnNldD0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IHkyPSIwLjg1Mzg5IiB4Mj0iMC43Njk5NiIgeTE9Ii0wLjA5MjI1IiB4MT0iMC4wNjk5NSIgaWQ9IlNWR0lEXzAwMDAwMTU3MjczNTYxNjEzMTczOTA4NDAwMDAwMDExMjY3MzgzNjA2NTk1MTE4OTgwXyI+CiAgIDxzdG9wIHN0b3AtY29sb3I9IiMxMDJCNTEiIG9mZnNldD0iMCIvPgogICA8c3RvcCBzdG9wLWNvbG9yPSIjMTYzQjc0IiBvZmZzZXQ9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxsaW5lYXJHcmFkaWVudCB5Mj0iMC45OTMwOSIgeDI9IjAuNSIgeTE9IjAiIHgxPSIwLjUiIGlkPSJTVkdJRF8wMDAwMDA1NDIyNTYyMjA5Nzc4MjQ5NzAyMDAwMDAxMDgzMTU5NzU5MjI2ODcwOTI1M18iPgogICA8c3RvcCBzdG9wLWNvbG9yPSIjMDA3MEMwIiBvZmZzZXQ9IjAiLz4KICAgPHN0b3Agc3RvcC1jb2xvcj0iIzA5QzRGRiIgb2Zmc2V0PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgeTI9IjAuODQ4OTEiIHgyPSIwLjc2NTA0IiB5MT0iLTAuMDg2OTYiIHgxPSIwLjA2NTA0IiBpZD0iU1ZHSURfMDAwMDAwOTg5MTQyOTUwNjU0NzExNzY4NDAwMDAwMDI1ODM4MDI5NzkzNTQwNTM1NTdfIj4KICAgPHN0b3Agc3RvcC1jb2xvcj0iIzEwMkI1MSIgb2Zmc2V0PSIwIi8+CiAgIDxzdG9wIHN0b3AtY29sb3I9IiMxNjNCNzQiIG9mZnNldD0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IHkyPSIwLjk5Njc1IiB4Mj0iMC41IiB5MT0iMC4wMDM2NSIgeDE9IjAuNSIgaWQ9IlNWR0lEXzAwMDAwMTAwMzgwMjcxMzkxMTE2NTY1NDgwMDAwMDEzMTM5MzM5MDAxODAwMzUzOTc4XyI+CiAgIDxzdG9wIHN0b3AtY29sb3I9IiMwMDcwQzAiIG9mZnNldD0iMCIvPgogICA8c3RvcCBzdG9wLWNvbG9yPSIjMDlDNEZGIiBvZmZzZXQ9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxsaW5lYXJHcmFkaWVudCB5Mj0iMC44NTAwMSIgeDI9IjAuNzcxMTQiIHkxPSItMC4wOTYxNSIgeDE9IjAuMDcxMTQiIGlkPSJTVkdJRF8wMDAwMDEwMzIyMzMzNjI5MTQwODUyNzQyMDAwMDAwNTM4NTk4OTQ4OTEyMzQzNDExN18iPgogICA8c3RvcCBzdG9wLWNvbG9yPSIjMTAyQjUxIiBvZmZzZXQ9IjAiLz4KICAgPHN0b3Agc3RvcC1jb2xvcj0iIzE2M0I3NCIgb2Zmc2V0PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgeTI9IkluZmluaXR5IiB4Mj0iSW5maW5pdHkiIHkxPSJJbmZpbml0eSIgeDE9IkluZmluaXR5IiBpZD0iU1ZHSURfMDAwMDAwNDg0ODU4MTMwNzUwNzA1MzQ3NjAwMDAwMTA5MDQ0ODQ4OTUwOTY5ODI0NTRfIj4KICAgPHN0b3Agc3RvcC1jb2xvcj0iIzAwNTk5QyIgb2Zmc2V0PSIwIi8+CiAgIDxzdG9wIHN0b3AtY29sb3I9IiMwMEMwRjIiIG9mZnNldD0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IHkyPSJJbmZpbml0eSIgeDI9IkluZmluaXR5IiB5MT0iSW5maW5pdHkiIHgxPSJJbmZpbml0eSIgaWQ9IlNWR0lEXzAwMDAwMDc2NTY2MTc3ODA5MTYxMDY0MjAwMDAwMDE1NDk1OTE1MzQwNTQ0NTI4MDM4XyI+CiAgIDxzdG9wIHN0b3AtY29sb3I9IiMwMDU5OUMiIG9mZnNldD0iMCIvPgogICA8c3RvcCBzdG9wLWNvbG9yPSIjMDBDMEYyIiBvZmZzZXQ9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxsaW5lYXJHcmFkaWVudCB5Mj0iLTAuMDA5NTMiIHgyPSIwLjUwMzg1IiB5MT0iMC45ODg1NiIgeDE9IjAuNDk3MzYiIGlkPSJzdmdfMjYiPgogICA8c3RvcCBzdG9wLW9wYWNpdHk9IjAuOTg4MjgiIHN0b3AtY29sb3I9IiMyNGFhYzEiIG9mZnNldD0iMCIvPgogICA8c3RvcCBzdG9wLW9wYWNpdHk9IjAuOTg0MzgiIHN0b3AtY29sb3I9IiMzZDQxYWYiIG9mZnNldD0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiA8L2RlZnM+CiA8Zz4KICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+CiAgPGcgaWQ9InN2Z18xIj4KICAgPGcgaWQ9InN2Z18yIiBkaXNwbGF5PSJub25lIj4KICAgIDxnIGlkPSJzdmdfMyIgZGlzcGxheT0iaW5saW5lIj4KICAgICA8cG9seWdvbiBpZD0ic3ZnXzQiIHBvaW50cz0iNTAsNDAuNCA0Ny4xLDQzLjMgNDQuNyw0MC45IDQ0LjMsNDAuNCA0Mi4yLDM4LjQgNDIuMiwzOC40IDQwLDM2LjIgNDIuOSwzMy40ICAgICIgZmlsbD0idXJsKCNTVkdJRF8xXykiLz4KICAgIDwvZz4KICAgIDxwb2x5Z29uIGlkPSJzdmdfNSIgcG9pbnRzPSI0Ny4xLDQzLjMgNDIuOSw0Ny41ICAgICA0Mi43LDQ3LjMgNDAuNSw0NS4xIDQwLjEsNDQuNiA0Mi4yLDQyLjUgMzQuOCw0Mi41IDM0LjgsMzguNCA0Mi4yLDM4LjQgNDQuMyw0MC40IDQ0LjcsNDAuOSAgICIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDE1NzI3MzU2MTYxMzE3MzkwODQwMDAwMDAxMTI2NzM4MzYwNjU5NTExODk4MF8pIiBkaXNwbGF5PSJpbmxpbmUiLz4KICAgPC9nPgogIDwvZz4KICA8ZyBpZD0ic3ZnXzYiPgogICA8ZyBpZD0ic3ZnXzciIGRpc3BsYXk9Im5vbmUiPgogICAgPGcgaWQ9InN2Z184IiBkaXNwbGF5PSJpbmxpbmUiPgogICAgIDxwb2x5Z29uIGlkPSJzdmdfOSIgcG9pbnRzPSI0Ni44LDE1LjQgNDQsMTguMyA0MS41LDE1LjggICAgICA0MS4xLDE1LjQgMzksMTMuMyAzOS4xLDEzLjMgMzYuOSwxMS4yIDM5LjgsOC4zICAgICIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDA1NDIyNTYyMjA5Nzc4MjQ5NzAyMDAwMDAxMDgzMTU5NzU5MjI2ODcwOTI1M18pIi8+CiAgICA8L2c+CiAgICA8cG9seWdvbiBpZD0ic3ZnXzEwIiBwb2ludHM9IjQ0LDE4LjMgMzkuOCwyMi41ICAgICAzOS42LDIyLjIgMzcuMywyMCAzNi45LDE5LjYgMzkuMSwxNy40IDMxLjcsMTcuNCAzMS43LDEzLjMgMzksMTMuMyA0MS4xLDE1LjQgNDEuNSwxNS44ICAgIiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMDk4OTE0Mjk1MDY1NDcxMTc2ODQwMDAwMDAyNTgzODAyOTc5MzU0MDUzNTU3XykiIGRpc3BsYXk9ImlubGluZSIvPgogICA8L2c+CiAgPC9nPgogIDxnIGlkPSJzdmdfMTEiPgogICA8ZyBpZD0ic3ZnXzEyIiBkaXNwbGF5PSJub25lIj4KICAgIDxnIGlkPSJzdmdfMTMiIGRpc3BsYXk9ImlubGluZSI+CiAgICAgPHBvbHlnb24gaWQ9InN2Z18xNCIgcG9pbnRzPSI0Ny43LDE2LjUgNDQuOCwxOS40IDQyLjQsMTYuOSAgICAgIDQxLjksMTYuNSAzOS45LDE0LjUgMzkuOSwxNC41IDM3LjcsMTIuMyA0MC42LDkuNCAgICAiIGZpbGw9InVybCgjU1ZHSURfMDAwMDAxMDAzODAyNzEzOTExMTY1NjU0ODAwMDAwMTMxMzkzMzkwMDE4MDAzNTM5NzhfKSIvPgogICAgPC9nPgogICAgPHBvbHlnb24gaWQ9InN2Z18xNSIgcG9pbnRzPSI0NC44LDE5LjQgNDAuNiwyMy42ICAgICA0MC40LDIzLjQgMzguMiwyMS4xIDM3LjcsMjAuNyAzOS45LDE4LjUgMzIuNSwxOC41IDMyLjUsMTQuNSAzOS45LDE0LjUgNDEuOSwxNi41IDQyLjQsMTYuOSAgICIgZmlsbD0idXJsKCNTVkdJRF8wMDAwMDEwMzIyMzMzNjI5MTQwODUyNzQyMDAwMDAwNTM4NTk4OTQ4OTEyMzQzNDExN18pIiBkaXNwbGF5PSJpbmxpbmUiLz4KICAgPC9nPgogIDwvZz4KICA8ZyBpZD0ic3ZnXzE2Ij4KICAgPHBhdGggaWQ9InN2Z18xNyIgZD0ibTM4LjMsMTkuOWMtMC4zLDAgLTAuNSwtMC4zIC0wLjQsLTAuNWMwLC0wLjQgMC4xLC0wLjggMC4xLC0xLjJjMCwtNS44IC00LjcsLTEwLjYgLTEwLjYsLTEwLjZjLTQuMywwIC04LDIuNiAtOS43LDYuM2MtMC4xLDAuMyAtMC40LDAuNCAtMC43LDAuM2MtMS4zLC0wLjYgLTIuOSwtMC43IC00LjYsLTAuMWMtMi40LDAuOCAtMy45LDMuMSAtMy44LDUuNmMwLDAuMiAwLDAuMyAwLDAuNXMtMC4xLDAuNCAtMC4zLDAuNWMtMy40LDEuMyAtNS44LDQuMiAtNS44LDcuNmMwLDQuNiA0LjUsOC40IDEwLjEsOC40bDI0LjQsMGM1LjgsMCAxMC42LC0zLjggMTAuNiwtOC40Yy0wLjEsLTQuMyAtNC4xLC03LjkgLTkuMywtOC40em0tMC4yLDE0LjlsLTI2LjgsMGwwLDBjLTIuNCwwIC00LjUsLTEuMiAtNS42LC0yLjlsMCwwYy0wLjgsLTEgLTEuMiwtMi4yIC0xLjIsLTMuNmMwLC0yLjggMS45LC01LjEgNC41LC01LjljMC41LC0wLjEgMS4xLC0wLjIgMS43LC0wLjJjMC4xLDAgMC4zLDAgMC40LDBjLTAuNSwtMC42IC0wLjgsLTEuNCAtMC44LC0yLjJjMCwtMC4xIDAsLTAuMSAwLC0wLjJjMCwtMi4zIDIsLTQuMiA0LjQsLTQuMmMwLjgsMCAxLjUsMC4yIDIuMSwwLjVjMC44LDAuNCAxLjQsMSAxLjgsMS43YzAsLTAuNyAwLjEsLTEuNSAwLjQsLTIuMWMxLjEsLTMuNiA0LjMsLTYuMiA4LjMsLTYuMmM0LjgsMCA4LjYsMy45IDguNiw4LjZjMCwwLjYgLTAuMSwxLjEgLTAuMiwxLjdjLTAuMiwwLjkgLTAuNSwxLjggLTEsMi42YzAuNywtMC4zIDEuNSwtMC41IDIuNCwtMC42bDAsMGMwLjMsMCAwLjYsMCAwLjksMGM0LjIsMCA3LjYsMi45IDcuNiw2LjVjMC4xLDMuNiAtMy4zLDYuNSAtNy41LDYuNXoiIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwNDg0ODU4MTMwNzUwNzA1MzQ3NjAwMDAwMTA5MDQ0ODQ4OTUwOTY5ODI0NTRfKSIgZGlzcGxheT0ibm9uZSIvPgogICA8cGF0aCBpZD0ic3ZnXzE4IiBkPSJtNDguNywyNC41YzAsMy42IC0yLjksNi43IC02LjksNy45Yy0wLjksMC4yIC0xLjgsLTAuNCAtMS44LC0xLjRsMCwtMC4yYzAsLTAuNiAwLjQsLTEgMC45LC0xLjJjMi42LC0wLjggNC40LC0yLjcgNC40LC00LjljMCwtMi45IC0zLjIsLTUuMyAtNy4yLC01LjNjLTAuNCwwIC0wLjgsMCAtMS4yLDAuMWwwLDBjLTAuMSwwIC0wLjIsMCAtMC4zLDBjLTAuOSwwIC0xLjcsLTAuNyAtMS43LC0xLjdjMCwtMC4yIDAsLTAuNCAwLjEsLTAuNWwwLC0wLjFjMC4zLC0wLjggMC40LC0xLjYgMC40LC0yLjRjMCwtNCAtMy4yLC03LjIgLTcuMiwtNy4yYy0zLjQsMCAtNi4yLDIuNCAtNyw1LjVsMCwwYy0wLjIsMC44IC0wLjgsMS4zIC0xLjYsMS4zYy0wLjUsMCAtMC45LC0wLjIgLTEuMiwtMC41bDAsMGMtMC42LC0wLjYgLTEuNSwtMSAtMi41LC0xYy0xLjksMCAtMy41LDEuNSAtMy41LDMuNWMwLDAuNCAwLDAuNiAwLjEsMC45YzAuMSwwLjIgMC4yLDAuNiAwLjIsMC45YzAuMSwwLjggLTAuNiwxLjUgLTEuMywxLjZsMCwwYy0yLjcsMC40IC00LjUsMi43IC00LjUsNC45YzAsMi41IDIuMyw0LjYgNS41LDUuMmMwLjcsMC4xIDEuMSwwLjcgMS4xLDEuM2wwLDAuMWMwLDAuOSAtMC43LDEuNiAtMS42LDEuNGMtNC44LC0wLjYgLTguNSwtNC4xIC04LjUsLTguM2MwLC0zLjMgMi4yLC02IDUuNSwtNy40YzAuMSwwIDAuMywtMC4xIDAuNCwtMC4yYzAsLTAuMSAwLjEsLTAuMSAwLjEsLTAuM2MwLC0wLjEgMCwtMC40IDAsLTAuNWMtMC4yLC0yLjcgMS43LC01LjIgNC40LC01LjljMS41LC0wLjMgMi44LC0wLjIgNCwwLjNjMC4zLDAuMSAwLjUsMCAwLjcsLTAuM2MxLjksLTQuMyA2LjYsLTcuMSAxMS44LC02LjFjNS4xLDEgOC43LDUuNyA4LjUsMTAuOGMwLDAuMiAwLDAuNSAtMC4xLDAuN2MwLDAuMyAwLjIsMC41IDAuNCwwLjVjNS41LDAuNyA5LjYsNC4yIDkuNiw4LjV6IiBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMDc2NTY2MTc3ODA5MTYxMDY0MjAwMDAwMDE1NDk1OTE1MzQwNTQ0NTI4MDM4XykiIGRpc3BsYXk9Im5vbmUiLz4KICA8L2c+CiAgPGcgaWQ9InN2Z18xOSI+CiAgIDxwYXRoIGlkPSJzdmdfMjAiIGQ9Im00Ny43LDE0LjljMCw3IC01LjcsMTIuNyAtMTIuNywxMi43Yy0xLjYsMCAtMywtMC4zIC00LjQsLTAuOGwtNS4zLDUuMmwtMTMuNywxMy44bDAsMGMtMS41LDEuNSAtMy43LDEuOSAtNS42LDEuMmMtMC43LC0wLjIgLTEuMywtMC43IC0xLjksLTEuMmMtMS43LC0xLjcgLTIsLTQuMyAtMC45LC02LjNsMCwwbDAsMGMwLjEsLTAuMSAwLjEsLTAuMiAwLjIsLTAuM2MwLjEsLTAuMSAwLjIsLTAuMyAwLjMsLTAuNGwwLDBjMCwtMC4xIDAuMSwtMC4xIDAuMSwtMC4ybDAsMGMwLjIsLTAuMSAwLjIsLTAuMiAwLjIsLTAuMmwwLjEsLTAuMWwwLDBsMC45LC0wLjlsMC4xLC0wLjFsMTcuOSwtMTcuOWMtMC41LC0xLjQgLTAuOCwtMi45IC0wLjgsLTQuNWMwLC03IDUuNywtMTIuNyAxMi43LC0xMi43YzAuMiwwIDAuNSwwIDAuOCwwYzEuNywwLjEgMy4zLDAuNSA0LjgsMS4ybC02LjcsNi43bDAuNywyLjZsMC41LDJsMiwwLjZsMi43LDAuN2w2LjcsLTYuN2MwLjcsMS41IDEuMiwzLjEgMS4yLDQuOGMwLDAuMyAwLjEsMC42IDAuMSwwLjh6IiBmaWxsPSJ1cmwoI3N2Z18yNikiLz4KICA8L2c+CiA8L2c+Cjwvc3ZnPg==" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>false</allowRename>
+          <nameMustBeUnique>false</nameMustBeUnique>
+          <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <sortChildren>by-type-then-by-name</sortChildren>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+              <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
+              <type type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" />
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <mappingSettings />
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
+  </elementSettings>
+  <elementExtensions>
+    <elementExtension type="Diagram" typeId="8c90aca5-86f4-47f1-bd58-116fe79f5c55">
+      <mappingSettings />
+      <diagramSettings>
+        <addNewElementsTo>Package</addNewElementsTo>
+        <contextMenuOptions>
+          <createElement type="element">
+            <text>New Api Gateway Route</text>
+            <icon type="UrlImagePath" source="data:image/png;base64,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" />
+            <specializationType>Api Gateway Route</specializationType>
+            <specializationTypeId>b09d7684-5dde-4d4b-9cb5-0707bfd8578f</specializationTypeId>
+            <defaultName>ApiGatewayRoute</defaultName>
+            <allowMultiple>true</allowMultiple>
+          </createElement>
+        </contextMenuOptions>
+        <creationOptions>
+          <option type="element">
+            <text>New Api Gateway Route</text>
+            <icon type="UrlImagePath" source="data:image/png;base64,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" />
+            <specializationType>Api Gateway Route</specializationType>
+            <specializationTypeId>b09d7684-5dde-4d4b-9cb5-0707bfd8578f</specializationTypeId>
+            <defaultName>ApiGatewayRoute</defaultName>
+            <allowMultiple>true</allowMultiple>
+          </option>
+        </creationOptions>
+        <scriptOptions />
+        <elementVisualSettings />
+        <associationVisualSettings />
+      </diagramSettings>
+    </elementExtension>
+    <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <contextMenuOptions>
+        <createElement type="element">
+          <text>New Api Gateway Route</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAGltJREFUeF7tXXdYFcfXfu0FRVFiYhdigVgQbNEIWFEx9oqK2EXsDQFREyOCiLHXWEAU7CVRASsCGhVFsWHvPfYCImh+vrv37r17C/dSjH9833kenwR2Znbm7Myc9p5DLnx9+glACcU/ewD82RJAfo2pfQBwA8ARALEAniv+8eevRrm+2pvFF/cF8IcOZhk7LTJ18GeGrzW2Q063+9oMvA+gTDYX9eDzRyibzTGy3P1rMrA4gCsAvsmVKxeKFy+NBvU6orZNK1hY2CJvXvkJTk9PxY2bZ3AmMQon4nfg5cuH+Pfff7nwfwBUBfAyy1zIRsevycCWACIA5DExMcOMX2NgavqNUUt5/fof+E5zwLt3L9j+I4A2n+/OfUZ1zuFGX4uBxQCMADCD6yle/DvMCTyTqaWN96yNly8fKftMAbAQwKtMDZIDjXOSgd8CeGxgThYA9gMo+nnBJQHkZvsWzQbBpafAS6MpfIMv9h9cqWz/CcAzAG84HICbBgYyZq5GzSUnGOjx+cuPBVAZwFkAswCEAxAuKAAmAMYBcAFgrWtWyxbfQr58BY2asLJRWtp7uA+vpK9PkmIOvwN4p2jEtXIOEwHUBnAdAJ8vydSLNRpnh4FcsTuAuTom8BeAoQDqAPgTgNZ7ChUyRYEChdGxvSfsG/fK0hpi48Kw489AfEhNRnLKa11j8CO2B3AKwPLP/22no9EYxbP3WZlEVhnII7hNcVz0vZfHSjii6lSrZgs0ceiLcuWsUbJk+azMWavPs2f3cO/eRcTErcOZxL26xtQ5F7WGBwB0UlwBmZpTVhhYBcAJ3v3KN5UtUw2jRq7DipXDcP36Sa0JULpaWtiib58gFCtWKlMTzGzjN2+eIjhkHG7cOg1Ka02ytKwD98HLMG9hHzx4cFn9MQVQPQBXM/POrDCQ+halqEB167bDALf5wnGkrpZwOgIrVnrg33/50YFuXafC/icXUFUxRCnv3+Dkqb+EXXTndiI+iXoecufKjQoVaqJWzZZoUL8jChYsYmgovHv3Ekf/3ogNm6YJbXPlyo0hg5bAtnYb5MtXAKmpyVgdMhonT/K2kYhMlDaGwZfoupsy6MSdF6/OPJcev6FZ0wHInTuPrNuLFw8QExeG+vU6ovR3lC3axDvrcMxavH79FImJe/H4Cc1c46lUqUqwtWkt6I4ODq4oXMhUZ+eHj64JirdD414wM5MbPZ8+fcSh6GCEbZic5Z1o7A7k7O4p1A/kzp0bHu6rYVu7tfErpsb7MQ2vXj3B6pAxSEqiPyDnyNrKHgP6zROuiDx58mVq4DOJkVi8dAA+fRJPjeIuLPdZe9ApmdQHN4aBhQBEAnBQdhw5fC1q29CQMKa72OvSlaPYuTMQV64e07u4fHnzolH16mhua4saFpWQN4+4s9M/fsT5W7dwMOE0jly4gLT0dL1jVK3yIzp28ES1qo0ywcR/hWtj4WI39T6HFRZOSkYDGcMB6k2BykF6u8wUjq2xROkYHbNWOCqaVKVsWVhVqIAOjRrB1akl8ufNa9SwH9LSEBy1F7uOHUPSnTu4dp8+CTk1dXSDo6Mbypf7wagx2ejgodVYH+6j3t7zsx47OzsMHAVgvnIA+596oa/rbK07T98Lki7FYsEiN3z4kCxrUrpkCRxZsADmpqYoWriw0QvU1fB1cjKevnoF+9Fj8OAZjREV5c9fCMPdV6FGjWZGvYN3YvDa8ThydIN6+9GffZUL9A1gaAfeBlCBncuVtYaP125B2hpDS5YNxKmE3bKmTnXrYECbNujRpIkxQ2S6zcboaKyOiMTek3JVys7WGcOHrTZqPEpnvwBn3L9/Sdn+rpIHugbIiIGNFZ5fod+8OedRtKi5wUmkpr6D1+QGgnRVUpFChRAR4I/GNWoY7J8TDY4lJaHlRE+8TVFdX6ZFzeHvd8woFejN22cYM666+lToJT+aWQaSuZS8guynDjZyeHCGx/dd8ksEzemKO3fPS+/q06IFvHu54IeKFQ3y5tKdO1iwfQfu/aOtALNzKbPiGN+tG6wrCIciQ+LdGBAWjrX7VF6u8uWqY8K4zShShBEE3cRjTGFy9hx9HgI9VDhslba9rKOhI9wPwBplj1Ej1sKmlpPON3PnBQR2kJhHJ6lryxZY4+mJ3Ll0v4bSdH9CArbFxmFVRITSQWqIN+DYbq2c0N3RUZDY+fPpVlvocO0XOBvr9u2TlHIKFS/PnShYkNaoNp09uw/zF7mqP+gPQFsCKloYYiBt2WsA6IYSvMQL510GL2dNGjuhhuzY+vTuBb8B+qX1hkOHMHbJUjx+8cJoxmm+k4z81swMc9yHolfz5noZPy04GNND10nPeZznzlGdEuWDDx9SMHJMNaSnM9QiEN1itAQkBVFrDgY/t3iEeZQFZnfu6I22zhRMKlIXGFyUt4sL/AbqZl5kfDw8V/yBcze0LQ8TExO0dXZGtao0erTp8pWr2L1nD969U3qoVG1qWFggaOhQtKpXV2ffqcHB8Fu3XtqJNAJGeMg31q4987B9R4CyP48slWnGXPSSoR3IjuTEKv4PmTM7IAFmZqWlAS9disPs37tKP/d1ckLIJKpPcqJdO3nVKgSEy1QEFClSBKVLl8buP3egUiW9/j3ZYLdu3ULb9h3w8OFDvH0rZ6aXS0/4DRyo89roNysQIXtV3hrNK+nFi4eY6GWnfiIyPL4CTwzsQLpOJC+zm2sQHOz7SF3u3UuCX0BbSc+jwFjrNUlgtDpRGg6YHYTNh6ncq2j2rAC0cmoJKysrA9PQ/Tjp0iVERe2Dp5eXrEE3R0es9pyIIgXlTlreiQODgrAmMkpoz6vIZ9IulC+vkrgxsesREjpefTzyQLdUM4KBv322pHw5Gg3x6dMOoXBhyRGDdWFekoVBVeX44kVa0pbMGzp3HsIO0OUmkp2dLQID/OFgzzh69ikmNk5gYkLCaWkw3okrxo2FiQYTL929i/rDPPBGoeI4Oriibx+VsZGc/ApTf20KOkQURB5M1TdLQzuQIvw7dq5XtwPch9CpK9LlK0cRGNRZ+vnowgVo+IPcbOKxdZkxA5uiVTuvSuXKOBV/HAU1FpZdNr5//x516v+Iq1dV7jxK6fApvlrHOeHqVdRxHya9csLYTbC2lkx9LFsxBPEn6UgXiJEr1Z2lMdGMGEh3vKTSL1l4Q7JC6FUJ+r2b5BighRE1i6EQOXmvXCm78zp36oQNYSppmF2m6erv0rsPtm7bLj3ineg/aJBW0zZe3qBAI1Wp3AATx2+RvDi0RjxGEl0iESUTwwJalBEDJdSAo30f9HUNkjo/e34fnl7kr0gbfH3Ro6ncPOPkOEklValSGRfOJn4JnmmNWb2mDa5eo/YlUiTv2rpy6bw9Lg6dp/0itQn0P4mSJSl0RQoOHY/Y2PXKH/WiH/QxkMf2ggLwg9EjQwVLRElz5nbHxaQY4cfvSpTAw82btBZRa9BgnLspRhd550Uf2J/jx1bf1+BxbtK8hXQn1rSwwNmVhODIqaKLC+48EeVDtaoN4TlBtXPPntuH+QslhZpAJkoaKRCtHEmTgfS781PRDhYuTrri/abHSnYwPckjRxNJIdKNdaGwKC2/IsIPHkQvv5lSm/1RkXBwyBmBoY9pmr+PiY1FCyeVwzfc1xc9NU7J7cePUalXb6krjQSlkGRsZfJUeyX6gW2mK5BhPPcCJIKkZCBRAjxvBKSQiZKPXhM1EBG1CFu2ikFw+vNOLVsqc0l9SE9HRZdeePScHw2gqjJ61Ehj152j7ebNXwBPxTXCk3I7PEzmc3yTnIy6wzxw5R7tBKBrZ1+0aU1WiKSBfuCvaJFwYTRVuEMWk4G0gagYyQMbikGorau77jdu/gV79y0TnrZr2BB/zqCUV1HEiRNo6zNZUEaLFDHB0diYLOt52eUm9cSf7B0EZZu66e6ZfmhTv75s2Pa+U/DX338Lv3NuPRJdOqviI6fPRGLREroDdBIxOa3IQAaedwrbMVcuFC5cXIha1bVri65dpmghBrx9G+LJE/Fu+2P8OAxydpaNToV5TSQjAECVKlVw4axuzMumzVvg6tYPhQoVwu0b11CsmEq/VA7oM9kXQb9rx+1p7q1YtgTffKMCI338+BENG9vjzJlEdO3SBWHrRMhg9Vo2uHpVFCgD2rTGqgkTZPMNP3AQvWfOFGAUnTp64WdnxtlVlJ6ehq3b/YTAVHpaKuhxUqDC2KgDGci4nyCOeJG6D1mRIUpq4BBBLRQoNTJCyxOSu0VL6QVXki7oNc+Kl/wGycmip9rGxgbxx+TutvepqWjewgnxGs5R5btLliyJtcFr0LKF6ES4cPEiGjs0EexkPjufeFr4782bt1DtB9HS4Ab5tF8bxLX72HFcf2OKj+aOKGaqP25NP+HSZYNw+Yq4YyknyECGxyg0hLhpg/oq5Vj2KQC8f/8Ww0eJYUoGgD5EiTtNSZfu3IV1f5qPFD4mePH0ieYQws/BISEY4k5IjUimpqaIP/43LNRs4eTkFDg2bYbEs4Tb6KZmTZsics8u4WHC6dNo2rwFUlLew8zMDGdOxQs2NsnMvJTkgEgKXgOr8tqIiHfp+bDxdjW971I+OHZ8G/5YJc09lgxkiEu4/5YuuoH8+fW77OOOhGNNCHFEgEOtWjg8l9gcFQ2dOxcrdolu/O7dumHdWt1utE5dugleFXXavnUL2joT5ieSJgOXL12C1q2cBNWkU9duUrsPKaIzISMG9unrBl4ZpKE//4xlY+XHVDnY6uuGPeYaSnY6GSh5Wlet0FJzZItctKQ/Tp8hJhL4tZ8bprrKHI9Qv5CnTPbBFF9ZwFro988/T2FVvQbevCESTUU1a9bAqRPH9TJwY3gYOnXsIDyvYGGJR49EH8ffR2JRx84uQwb+NsMPvynUKl2CLzMMZFv1ayxTDJw4yQ7PFUb21l9+QWd74eRLZAwDd+zYie4uIhorX758SE9Pl+7MB3fvwNycsEHtHcjd3KF9e7x+/RplK6jcXq+ePxUEUUY70BADGSaNPXce22+Yo7aNk8GoY5YZqK4XUX3h18wsA4sUM8OHD6LHd31oCNaHb8CePeKudunZAyFrxOiZ5hGmKWhW3AxJSUl48/at0KZMmTK4dV10HmSHgZEn4uHs4yN8SGJvhgwS1TR99NUY+NeuXejSrYcwryImJricdAHrwsIxSaHsWllVE/RGOlmNESJkNpmebQbGx6Ott4/graYQpTD9IgzM7hGe9suv8J8lghzy5s0Lc3NzpKam4sULyTISdEJKz4wYyCMbdzgavDeVlJ0dyCN89MIFbL1eUgiaaYKlNJmZ5R24aGl/nD6tECJubpjaN3NCpFTpsnj5MuNshPr16iEuJlqLgSNHDIedrS0sLCqhkcbVkd0dqGSQMVKYbTUZmMYNwQfqPj9dWzjuaDjWBOtXY9znzsPyXaJe1r1bV6xbGyINQ7WF6osx9PjBfRQoUECmB27ZtBHt2/2st3tGO7C3a19s3rJV6Overh2WjpEHxTLDQIZvPUZ+r+wiqDEqRXrgEjRoYKwinQcfosTYgpIu370Lq366FWnLKlVx754IAvKa5IkG9QkGFenjx0/4dfpvOHdeDDX6/TYdwz08coyBZiW/wTuF1XM5eA2q6lCk36bnx6bbKi+Tvi917PhW/LFquPKxoEjTbfUrf0NTbujg5RnCcNW37/vICBTQCGqrm3IUErQueMfRyfn02TNBdaH1YN9YrgINHuKOkNBQYWLekzzh4+2FZmqmHPvQ8tBH+ky5GzdvwuoH8a7UZ8pFxcfj0ssiyFemTYbQD7q4liwbjCtX5aachjOhmOBAqGPXFl06TdYCE/n4NpLQpAzaDG7bVramgUFzsDpCvCfVvdCubv2xcdMm2Na2wdG4WORRYP+UnWnD8o5MS0tD1J7daNq0CXynTENgUBDKli2Lq5cuCoJHH9GZ8JO9o6DOqF8f6t7pgc5tsHK8LOKGjdGH0WvGDEECa7qz+C6mU2zb4Y8T8TuRlpaKZB3OhC/nzjIxwZHYGFhbZy1sqZdbRj5ISlK4s96J7qw9M/3QOgN3Fj0x9MgoyYA7iyaw4M4iMUTF8GWmHKqVFQ5VUzWMn6ZDdVaAP8aOJszwv6ff586Hl48ImCytcKjSCaIkOlTrDPPA1aw5VOlVXqrp0idCnbe7zKU/Y3osiCchpaS8xggDLv0Nh6KFcKaS9kVGwNFRFTb8L1gZffgwnFqrfJUbp/iiuwYu8dajx7DonWmXPlM8JF0si0GlHriYJMZ6vy1hhkebN2vxRBZUsrXFoYP7USiHY8H6PoQQVGrWQrgPSbUsLZH4xwqt5uV79MS9pyKO0apaI0wcz9whkbIaVFJ/iRTWdLDvDTfXOdKz58/vY6JaWDPcdzJ6akjIqJMn0XqS6j75/ntLJJ0/919sPvxQoxauXWcqnEhRgbPgVEcVhuXvtsbGousvgvIhUGDASZQsoRbWXDsesXFZD2tyTKMD6y3r1MHeQO3Aus/KVfAPZ96hSHRH0S31Jalnr97Ytn2H9AovFxf4Dxqo9crWXt6g+kKqUqUBJo5TD6zLlGUlLxJ0zdsQtIMBZcGtW69ue8HdrySmK8ya3VH6OXbePDRWs035QIR2+GFTdLTU7ntLSyScis/x45xCaEfderh2XQWb697EEQxnagI8T16+jHoekjKMCeO2wNpKpZdqQDsIb9FblsAQAxkLZTKzAGmbPi1aBi5aH+aNg9EigJUgHoKLqmtA1N69fw+aeOv2S5BZwab1n+mHpk0cc2QzRkcfhpfPZOnO46C9WzTH8rHa4CJCf+t7DJfw000c3eDaW3V6RHBRExDqpqBsgYsY9pICG0QxEc2kpHv3kzDTvy1SFWkMvZs3x1pvL60vTiYOmD1bBjLiGLP8Z6J161awziq8LekSIiKjJFVFOS9K29UTJ2ghs+jv6x84W8IICvA2r92yXJKY2FCEhDI1RqJswds4ihpOOheCZskBloxQBQYxU1Skvk4tETJpktbOEgGWqxGgdieyEf2CdF/99ecOWFoISGKDRPOsXfuOePDwoRZalejYGQMH6ARYus0KxFo1gOWYUWGoqZZDogNgybWrPCI6ZmboCLOLDOLbqaM3ftaC+A7CqQTRC0ONn4iomQO1L24+33vyFCYuX46zuiC+hQvD2bkNrKrpjo4lXbqMPRERUjhUfT3Ev8wZ5g4KNF3ku3oNZoaFSeEDW9s2GDFMws8LXb4ExJcgc+oDQhAiY5B5TVl+LlMb9DGRY205HINRixbhUQ6AzOd6DNNSo9SZOGXNGsxYJ6kkglFgJMiciUbEuWUZZK6R5hAKm1oqlJb6JBnuCwhsn+k0hwMJp7EtLhYr92QuzaF/61bo5uCIZra1DaY5hO7bJ+08wnm9JjLNQXfOcU6mOfB4U5kW1BgyjjiZjNzdlGCz53SRJdpQsHA3akpnXceMIJ8F27bjzhPdAXkChCZ074aq5VQKr74L8+Lt28KRXb9fBS2uUL6GoLKYmOjPqWaiDfEwiWclBANjvbzGMp1ow/SmOOUEjU/1Slakeqlw2VRx9vj7w6FWTYMCIicaxJ07hzbePvJUL1Omeh1HwQIsIpIx0e83ZrwsyJ6lVC++RUo2LFvWCpO99mQi2VAlWJTT5QXPo+fSzLjsSUML1XwedvAggiOjsO+UHI1L36aHu5CpYZB0JBve+ZytpTdPzZAUJrBPSvVs1LA7+rvNNRi1Us6SQPT5C/pIeqLy98wuIijdvFgxqLvCDK5ORwOmuzLbqfGo0XiiEbAqkL8wRg4PgbW1ceBOHl9CV47+LUPcZivdlVMmHkzKA+jV0w/Nm+lWUXQxgMo2ayMcPCRXGdi2cpkysK5YET//2ABurVpphQf0MTQ1LU3IrWNAnHfd9QfayURMCqfSzzRdY+nAoVUIC5fBUahRq8DhOgYytAPZhYlxRAJJKHJmbdrUaqWVUJPRRK9cO47t2/0zTPlniv+P1tZobmeHmpYWEpqUDLtw6xb2J5zGsYsXhRIA+ohxHaajVa4sB1JmNDdaKIlno7BwsQxMSQOeDsVsp/zz3Sw6wcRjoTSGWHRilVBCJDOkLDoREjoB5y8cykxXg22rV2+Cfq5zUKzYt8iTx7jSAcpB6bpfskxWdILFJoiBy5GiE8r3aJU96dl9unCcNVUbApBYlqlenfYoU0Z3qJCe7eiYULxh2ZNze/Hokcp/Z5BbdOSWshSgx0WLlhSOKktJ6aJHj67hePwOoXZNiRLyOo288w4cWo0NGwV/iZIyVYDHmCOsOS/iMCRFihJuYP+FegvvECbMmi3GFN4hgJNlAhLP7sXNW2fABZK4oypVtAHLRtWt294oVYS1BeOObMSmLWIuiK7CO6vWjJJMUMUiv2jhHfWdSCCfVIqoTJlqGD0iVCz9dEM7ocfU1BwWlezQt0+gUCvwSxLLPbFwxE19pZ8s7DB0yHLM1y79xDgHL84vXvqJ62e6N7ESuu06kUM6C37VqN4UTZv0R7myVjA3N5y6bwyznz27i7v3RGmvlqqv3tVQ8TGaHV3+q+JjyokVUJS/m6djkczUY2k8u8+hARan0roqlOXvOrSbIEuhNYZhyjYxseuw86/ZSE1NEaKFOojmFwE1jC4R9EcQgSZ9lfJ36pMgoxjuJ/qcOQ3ErzGrWmk7EnStLMCoswrO0sU3kT+fdhmBjJhpoADjRbUCjMqiNfyIPRUFGG0VXiZGypZm5qNpts2KENH3PmJz5ZVvtFvSJKJvn0khLJ0hgNtzoAQopQ0ziCgEWAKUJmhGZMxcjeJrTjLQqBcqGlHnoJmYU0VoiapY/DVKIX8tBpKP2SyDzERAASDwf7IMMhfOY0yVQSzEXew7oZgjC3FbWtpp3Ykf0lJw40aCUIibRRNfvnqkXoibSv5/XgKZi/iaO5Dv//9S8Jm5+HS0ZYyUxaA1/3KDscMyX4KuoS9bRyCD2XztHcipKf8cBi0b9T+HQT1TnVIVfw6DXnL+o0lJyftV/xzG/wA9m8R2iWBTCwAAAABJRU5ErkJggg==" />
+          <specializationType>Api Gateway Route</specializationType>
+          <specializationTypeId>b09d7684-5dde-4d4b-9cb5-0707bfd8578f</specializationTypeId>
+          <defaultName>ApiGatewayRoute</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </createElement>
+      </contextMenuOptions>
+      <creationOptions>
+        <option type="element">
+          <text>New Api Gateway Route</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <specializationType>Api Gateway Route</specializationType>
+          <specializationTypeId>b09d7684-5dde-4d4b-9cb5-0707bfd8578f</specializationTypeId>
+          <defaultName>ApiGatewayRoute</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingOptions />
+      <typeOrder>
+        <type type="Api Gateway Route" typeId="b09d7684-5dde-4d4b-9cb5-0707bfd8578f" />
+      </typeOrder>
+      <mappingSettings />
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings>
+    <associationSetting type="Route Association" typeId="dd35ed32-76bb-4abf-a4e0-370f230765cf">
+      <sourceEnd type="Upstream End" typeId="4143dbe5-12ce-4705-ba69-2683c46b1b96">
+        <nameAccessibilityMode>hidden</nameAccessibilityMode>
+        <allowSorting>false</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type type="Api Gateway Route" typeId="b09d7684-5dde-4d4b-9cb5-0707bfd8578f" />
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>false</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </sourceEnd>
+      <targetEnd type="Downstream End" typeId="17084378-a3d8-4233-b275-c856eea4dd61">
+        <nameAccessibilityMode>hidden</nameAccessibilityMode>
+        <defaultNameFunction>return "[call]";</defaultNameFunction>
+        <nameMustBeUnique>false</nameMustBeUnique>
+        <allowSorting>false</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+            <type type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" />
+            <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </targetEnd>
+      <visualSettings type="Route Association" typeId="dd35ed32-76bb-4abf-a4e0-370f230765cf">
+        <lineType>Curved</lineType>
+        <lineDashArray>return "3,7";</lineDashArray>
+        <sourceEnd>
+          <pointIndicator>
+            <lineWidth>return 3;</lineWidth>
+            <path>return `a 4,4 0 1,0 4,4         a 4,4 0 1,0 -4,4`;</path>
+          </pointIndicator>
+        </sourceEnd>
+        <targetEnd>
+          <pointIndicator>
+            <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>
+          </pointIndicator>
+        </targetEnd>
+      </visualSettings>
+      <macros>
+        <macro trigger="on-changed">
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function getMethodAndRoute(apiGatewayRoute) {
+    var _a, _b, _c, _d, _e;
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
+    // Get custom settings
+    const customSettings = apiGatewayRoute.getStereotype("Http Settings");
+    const customRoute = ((_a = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Route")) === null || _a === void 0 ? void 0 : _a.getValue()) || "";
+    const customMethod = ((_b = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty("Verb")) === null || _b === void 0 ? void 0 : _b.getValue()) || "";
+    // Get HTTP settings
+    const endpoints = apiGatewayRoute.getAssociations("Route Association")
+        .map(x =&gt; x.typeReference.getType())
+        .filter(x =&gt; x);
+    if (endpoints.length === 0) {
+        return { verb: "", route: "", result: "None" };
+    }
+    if (endpoints.length &gt; 1) {
+        return { verb: "", route: "", result: "Aggregate" };
+    }
+    const httpSettings = endpoints[0].getStereotype("Http Settings");
+    const httpMethod = httpSettings.getProperty("Verb").getValue();
+    let httpRoute = httpSettings.getProperty("Route").getValue();
+    if ((_c = endpoints[0].getParent()) === null || _c === void 0 ? void 0 : _c.hasStereotype("Http Service Settings")) {
+        let serviceRoute = ((_e = (_d = endpoints[0].getParent().getStereotype("Http Service Settings")) === null || _d === void 0 ? void 0 : _d.getProperty("Route")) === null || _e === void 0 ? void 0 : _e.getValue()) || "";
+        const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
+        httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
+    }
+    // Use custom values if available, otherwise fall back to HTTP settings
+    return {
+        verb: customMethod || httpMethod,
+        route: customRoute || httpRoute,
+        result: null
+    };
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function updateApiGatewayRouteName(apiGatewayRoute, downstreamService) {
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
+    if (apiGatewayRoute.getAssociations("Route Association").length === 0) {
+        apiGatewayRoute.setName(`DetachedGatewayRoute`, true);
+    }
+    else if (apiGatewayRoute.getAssociations("Route Association").length &gt; 1) {
+        apiGatewayRoute.setName(`AggregateGatewayRoute`, true);
+    }
+    else if (downstreamService) {
+        apiGatewayRoute.setName(`${downstreamService.getName()}GatewayRoute`, false);
+    }
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isFieldFromBody(downStreamOperation, dtoField) {
+    var _a, _b, _c, _d;
+    if (dtoField.specialization != "DTO-Field") {
+        throw Error(`Element "${dtoField.id}, ${dtoField.getName()}" is not of type DTO-Field.`);
+    }
+    let httpSpecifiedElement = downStreamOperation.specialization === "Operation"
+        ? downStreamOperation.getChildren("Parameter").filter(param =&gt; { var _a; return ((_a = param.typeReference) === null || _a === void 0 ? void 0 : _a.getType().specialization) === "DTO"; })[0]
+        : downStreamOperation;
+    let httpSettingsRoute = (_b = (_a = httpSpecifiedElement.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Route")) === null || _b === void 0 ? void 0 : _b.getValue();
+    let paramSource = (_d = (_c = dtoField.getStereotype("Parameter Settings")) === null || _c === void 0 ? void 0 : _c.getProperty("Source")) === null || _d === void 0 ? void 0 : _d.getValue();
+    if (!paramSource || paramSource == "Default") {
+        return (httpSettingsRoute === null || httpSettingsRoute === void 0 ? void 0 : httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`)) &lt; 0;
+    }
+    return paramSource == "Body";
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/isFieldFromBody.ts" /&gt;
+function syncDownstreamContract(apiGatewayRoute, downstreamService) {
+    var _a, _b;
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
+    let downstreamContract = downstreamService.specialization === "Operation"
+        ? downstreamService.getChildren("Parameter")
+            .map(x =&gt; { var _a; return (_a = x.typeReference) === null || _a === void 0 ? void 0 : _a.getType(); })
+            .filter(x =&gt; x &amp;&amp; x.specialization === "DTO")[0]
+        : downstreamService;
+    let downstreamFields = downstreamService.specialization === "Operation"
+        ? downstreamContract === null || downstreamContract === void 0 ? void 0 : downstreamContract.getChildren("DTO-Field")
+        : downstreamContract.getChildren("DTO-Field").filter(x =&gt; isFieldFromBody(downstreamService, x));
+    if (!downstreamFields || downstreamFields.length === 0) {
+        (_a = apiGatewayRoute.getChildren("Body Field")[0]) === null || _a === void 0 ? void 0 : _a.delete();
+        return;
+    }
+    let bodyField = apiGatewayRoute.getChildren("Body Field")[0];
+    if (!bodyField) {
+        bodyField = createElement("Body Field", "Body", apiGatewayRoute.id);
+    }
+    (_b = bodyField.typeReference) === null || _b === void 0 ? void 0 : _b.setType(downstreamContract.id);
+}
+/// &lt;reference path="../_common/getMethodAndRoute.ts" /&gt;
+/// &lt;reference path="../_common/updateApiGatewayRouteName.ts" /&gt;
+/// &lt;reference path="../_common/syncDownstreamContract.ts" /&gt;
+function applyRouteAssociationOnChangedBehavior() {
+    let source = association.getOtherEnd().typeReference.getType();
+    let target = association.typeReference.getType();
+    if (!source) {
+        return;
+    }
+    updateApiGatewayRouteName(source, target);
+    if (!target) {
+        return;
+    }
+    const { verb, route, result } = getMethodAndRoute(source);
+    const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let httpSettings = source.getStereotype(HttpSettings);
+    if (!httpSettings) {
+        httpSettings = source.addStereotype(HttpSettings);
+    }
+    httpSettings.getProperty("Route").setValue(route);
+    httpSettings.getProperty("Verb").setValue(verb);
+    syncDownstreamContract(source, target);
+}
+applyRouteAssociationOnChangedBehavior();
+</script>
+        </macro>
+        <macro trigger="on-deleted">
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function updateApiGatewayRouteName(apiGatewayRoute, downstreamService) {
+    if (apiGatewayRoute.specialization !== "Api Gateway Route") {
+        throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
+    }
+    if (apiGatewayRoute.getAssociations("Route Association").length === 0) {
+        apiGatewayRoute.setName(`DetachedGatewayRoute`, true);
+    }
+    else if (apiGatewayRoute.getAssociations("Route Association").length &gt; 1) {
+        apiGatewayRoute.setName(`AggregateGatewayRoute`, true);
+    }
+    else if (downstreamService) {
+        apiGatewayRoute.setName(`${downstreamService.getName()}GatewayRoute`, false);
+    }
+}
+/// &lt;reference path="../_common/updateApiGatewayRouteName.ts" /&gt;
+function applyRouteAssociationOnDeletedBehavior() {
+    let source = association.getOtherEnd().typeReference.getType();
+    let target = association.typeReference.getType();
+    if (!source) {
+        return;
+    }
+    updateApiGatewayRouteName(source, target);
+    const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let httpSettings = source.getStereotype(HttpSettings);
+    if (httpSettings) {
+        source.removeStereotype(HttpSettings);
+    }
+    let bodyField = source.getChildren("Body Field")[0];
+    bodyField === null || bodyField === void 0 ? void 0 : bodyField.delete();
+}
+applyRouteAssociationOnDeletedBehavior();
+</script>
+        </macro>
+      </macros>
+    </associationSetting>
+  </associationSettings>
+  <associationExtensions />
+  <mappingSettings />
+  <mappableElementPackages />
+  <mappableElementPackageExtensions />
+  <scripts />
+</settings>

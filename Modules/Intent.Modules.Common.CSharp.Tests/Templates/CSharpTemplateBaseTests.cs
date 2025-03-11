@@ -1,6 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
@@ -132,6 +133,131 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
 
                 // Assert
                 result.ShouldBe("Dictionary<String, String>");
+            }
+
+            private class TestableCSharpTemplateBase : CSharpTemplateBase
+            {
+                public TestableCSharpTemplateBase() : base(string.Empty, Substitute.For<IOutputTarget>())
+                {
+                    var fileMetadata = Substitute.For<IFileMetadata>();
+                    fileMetadata.CustomMetadata.Returns(new Dictionary<string, string>());
+                    fileMetadata.GetFullLocationPath().Returns($"{Guid.NewGuid()}");
+
+                    ConfigureFileMetadata(fileMetadata);
+                }
+
+                public override string TransformText()
+                {
+                    throw new NotImplementedException();
+                }
+
+                protected override CSharpFileConfig DefineFileConfig()
+                {
+                    throw new NotImplementedException();
+                    //return new CSharpFileConfig(string.Empty, string.Empty);
+                }
+            }
+        }
+
+        public class UseType_Usings
+        { 
+            [Fact]
+            public void ItShouldAddCorrectUsingsWithGenericWithQualifiedArgument()
+            {
+                // Arrange
+                var template = new TestableCSharpTemplateBase();
+                // Act
+                var resolvedType = template.UseType("Microsoft.Azure.CosmosRepository.IRepository<EntityNamespace.Entity>");
+
+                // Assert
+                resolvedType.ShouldBe("IRepository<EntityNamespace.Entity>");
+                template.DependencyUsings.ShouldBe("using Microsoft.Azure.CosmosRepository;");
+            }
+
+            [Fact]
+            public void ItShouldAddCorrectUsingsWithNestedGenericWithQualifiedArgument()
+            {
+                // Arrange
+                var template = new TestableCSharpTemplateBase();
+                // Act
+                var resolvedType = template.UseType("Microsoft.Azure.CosmosRepository.IRepository<NestedOne.Entity<NestedOne.EntityTwo>>");
+
+                // Assert
+                resolvedType.ShouldBe("IRepository<NestedOne.Entity<NestedOne.EntityTwo>>");
+                template.DependencyUsings.ShouldBe("using Microsoft.Azure.CosmosRepository;");
+            }
+
+            [Fact]
+            public void ItShouldAddCorrectUsingsWithNestedGenericWithUnQualifiedArgument()
+            {
+                // Arrange
+                var template = new TestableCSharpTemplateBase();
+                var useTypeString = "IRepository<Entity<EntityTwo>>";
+
+                // Act
+                var resolvedType = template.UseType(useTypeString);
+
+                // Assert
+                resolvedType.ShouldBe(useTypeString);
+                template.DependencyUsings.ShouldBe("");
+            }
+
+            [Fact]
+            public void ItShouldAddCorrectUsingsWithNestedGenericWithPartialQualifiedArgument()
+            {
+                // Arrange
+                var template = new TestableCSharpTemplateBase();
+
+                // Act
+                var resolvedType = template.UseType("Microsoft.Azure.CosmosRepository.IRepository<Entity>");
+
+                // Assert
+                resolvedType.ShouldBe("IRepository<Entity>");
+                template.DependencyUsings.ShouldBe("using Microsoft.Azure.CosmosRepository;");
+            }
+
+            [Fact]
+            public void ItShouldNotAddUsingsUnqualifiedName()
+            {
+                // Arrange
+                var template = new TestableCSharpTemplateBase();
+
+                // Act
+                var resolvedType = template.UseType("IRepository");
+
+                // Assert
+                resolvedType.ShouldBe("IRepository");
+                template.DependencyUsings.ShouldBe("");
+            }
+
+            [Fact]
+            public void ItShouldNotAddUsingsUnqualifiedGenericName()
+            {
+                // Arrange
+                var template = new TestableCSharpTemplateBase();
+
+                // Act
+                var resolvedType = template.UseType("IRepository<Entity>");
+
+                // Assert
+                resolvedType.ShouldBe("IRepository<Entity>");
+                template.DependencyUsings.ShouldBe("");
+            }
+
+
+
+            [Fact]
+            public void ItShouldNotAddUsingsQualifiedName()
+            {
+                // Arrange
+                var template = new TestableCSharpTemplateBase();
+
+                // Act
+                var resolvedType = template.UseType("MyNamespace.IRepository");
+
+                // Assert
+                resolvedType.ShouldBe("IRepository");
+                template.DependencyUsings.ShouldBe("using MyNamespace;");
             }
 
             private class TestableCSharpTemplateBase : CSharpTemplateBase

@@ -1,7 +1,4 @@
 ﻿#nullable enable
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
@@ -14,6 +11,9 @@ using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Templates
 {
@@ -197,9 +197,14 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         public string UseType(string fullName)
         {
-            var elements = new List<string>(fullName.Split(".", StringSplitOptions.RemoveEmptyEntries));
-            elements.RemoveAt(elements.Count - 1);
-            AddUsing(string.Join(".", elements));
+            var angleOpenIndex = fullName.IndexOf('<');
+            var lastDotIndex = angleOpenIndex != -1 ? fullName[..angleOpenIndex].LastIndexOf('.')
+                : fullName.LastIndexOf('.');
+            var usingToAdd = lastDotIndex != -1 ? fullName[..lastDotIndex]
+                : string.Empty;
+
+            AddUsing(usingToAdd);
+            
             return NormalizeNamespace(fullName);
         }
 

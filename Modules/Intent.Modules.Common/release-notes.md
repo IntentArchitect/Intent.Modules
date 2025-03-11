@@ -1,3 +1,7 @@
+### Version 3.7.6
+
+- Improvement: Added `ToSanitized` method to remove special characters from a string
+
 ### Version 3.7.5
 
 - Improvement: Added Software Factory Execution help topics.

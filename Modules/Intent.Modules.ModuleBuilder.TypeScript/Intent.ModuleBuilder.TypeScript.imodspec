@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.TypeScript</id>
   <version>3.5.2</version>
@@ -39,9 +39,9 @@
     <dependency id="Intent.Common" version="3.7.3" />
     <dependency id="Intent.Common.CSharp" version="3.8.4" />
     <dependency id="Intent.Common.Types" version="4.0.0" />
-    <dependency id="Intent.Common.TypeScript" version="4.0.0" />
-    <dependency id="Intent.ModuleBuilder" version="3.6.3" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="4.1.1" />
+    <dependency id="Intent.Common.TypeScript" version="4.1.2" />
+    <dependency id="Intent.ModuleBuilder" version="3.12.0" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="4.5.1" />
   </dependencies>
   <metadata>
     <install src="modelers/Typescript.designer.settings" externalReference="ac7fa580-f66f-4257-a160-0bb82b56f4f9" target="Module Builder" />

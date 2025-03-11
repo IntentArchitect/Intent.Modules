@@ -17,7 +17,7 @@
       <name>Intent.Common</name>
       <display>Intent.Common 3.7.4</display>
       <isAbstract>false</isAbstract>
-      <value>3.7.5</value>
+      <value>3.7.6</value>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>fc939cf2-3ba0-4072-972b-d251f553828e</parentFolderId>
@@ -31,7 +31,7 @@
       <name>Intent.Common.CSharp</name>
       <display>Intent.Common.CSharp 3.8.7</display>
       <isAbstract>false</isAbstract>
-      <value>3.8.9</value>
+      <value>3.8.10</value>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>fc939cf2-3ba0-4072-972b-d251f553828e</parentFolderId>

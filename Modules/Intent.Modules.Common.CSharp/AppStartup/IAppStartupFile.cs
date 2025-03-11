@@ -5,10 +5,10 @@ using Intent.Modules.Common.CSharp.Builder;
 namespace Intent.Modules.Common.CSharp.AppStartup;
 
 /// <summary>
-/// Abstracts working with application startup concerns as the exact statements to generate and where to place
-/// them can vary depending on whether or not the use <see href="https://learn.microsoft.com/aspnet/core/migration/50-to-60#new-hosting-model">
-/// minimal hosting model</see> and use <see href="https://learn.microsoft.com/dotnet/csharp/fundamentals/program-structure/top-level-statements">
-/// top-level statements</see> options have been selected.
+/// Abstracts the management of application startup code, addressing the variable placement and generation of 
+/// C# statements when using the <see href="https://learn.microsoft.com/aspnet/core/migration/50-to-60#new-hosting-model">
+/// minimal hosting model</see> and <see href="https://learn.microsoft.com/dotnet/csharp/fundamentals/program-structure/top-level-statements">
+/// top-level statements</see> based on project configuration.
 /// </summary>
 public interface IAppStartupFile
 {
@@ -57,6 +57,13 @@ public interface IAppStartupFile
 
     IAppStartupFile AddMethod(string returnType, string name, Action<IStartupMethod> configure = null, int? priority = null);
 
+    /// <summary>
+    /// When using Top level statements one cannot reference the Program class. Invoking this will expose it as a Public class.
+    /// Invoke this inside the "AfterTemplateRegistrations" phase.
+    /// </summary>
+    /// <remarks>This will do nothing if not using Top level statements.</remarks>
+    IAppStartupFile ExposeProgramClass();
+    
     ///// <summary>
     ///// Adds a statement which can configure services of an application. The
     ///// <see cref="IServiceConfigurationContext"/> can be used to get expressions

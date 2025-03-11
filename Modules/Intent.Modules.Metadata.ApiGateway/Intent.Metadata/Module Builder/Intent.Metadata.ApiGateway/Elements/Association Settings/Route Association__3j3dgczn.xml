@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="dd35ed32-76bb-4abf-a4e0-370f230765cf" type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272">
+  <name>Route Association</name>
+  <display>Route Association</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>3f6cd7b9-04a8-4044-8f98-7bf380f7df3d</parentFolderId>
+  <packageId>775b96aa-24f0-4348-a06a-ab62d463a582</packageId>
+  <packageName>Intent.Metadata.ApiGateway</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="4143dbe5-12ce-4705-ba69-2683c46b1b96" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
+      <name>Upstream End</name>
+      <display>Upstream End</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>dd35ed32-76bb-4abf-a4e0-370f230765cf</parentFolderId>
+      <packageId>775b96aa-24f0-4348-a06a-ab62d463a582</packageId>
+      <packageName>Intent.Metadata.ApiGateway</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
+            <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;b09d7684-5dde-4d4b-9cb5-0707bfd8578f&quot;]" isActive="true" />
+            <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" value="[]" isActive="true" />
+            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="UpstreamEndpoints" isActive="true" />
+            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="" isActive="true" />
+            <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" value="" isActive="true" />
+            <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />
+            <property name="2d07ed88-82bf-4d30-9280-1488f0f927e0" display="Name Must Be Unique" value="false" isActive="true" />
+            <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
+            <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
+            <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="false" isActive="true" />
+            <property name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="false" isActive="true" />
+            <property name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
+            <property name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
+            <property name="c8c2530e-8048-40aa-838c-7c5d870d492b" display="Allow Set Value" value="false" isActive="true" />
+            <property name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="false" isActive="true" />
+            <property name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="false" isActive="true" />
+            <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="17084378-a3d8-4233-b275-c856eea4dd61" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
+      <name>Downstream End</name>
+      <display>Downstream End</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>dd35ed32-76bb-4abf-a4e0-370f230765cf</parentFolderId>
+      <packageId>775b96aa-24f0-4348-a06a-ab62d463a582</packageId>
+      <packageName>Intent.Metadata.ApiGateway</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
+            <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;ccf14eb6-3a55-4d81-b5b9-d27311c70cb9&quot;,&quot;e71b0662-e29d-4db2-868b-8a12464b25d0&quot;,&quot;e030c97a-e066-40a7-8188-808c275df3cb&quot;]" isActive="true" />
+            <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" value="[]" isActive="true" />
+            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="DownstreamEndpoints" isActive="true" />
+            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="" isActive="true" />
+            <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" value="" isActive="true" />
+            <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="return &quot;[call]&quot;;" isActive="true" />
+            <property name="2d07ed88-82bf-4d30-9280-1488f0f927e0" display="Name Must Be Unique" value="false" isActive="true" />
+            <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
+            <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
+            <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="false" isActive="true" />
+            <property name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="true" isActive="true" />
+            <property name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
+            <property name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
+            <property name="c8c2530e-8048-40aa-838c-7c5d870d492b" display="Allow Set Value" value="false" isActive="true" />
+            <property name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="false" isActive="true" />
+            <property name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="false" isActive="true" />
+            <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="7dcd827d-e325-4a14-82fb-31640a8ce8ad" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
+      <name>NewAssociationEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>dd35ed32-76bb-4abf-a4e0-370f230765cf</parentFolderId>
+      <packageId>775b96aa-24f0-4348-a06a-ab62d463a582</packageId>
+      <packageName>Intent.Metadata.ApiGateway</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="fab34874-40c6-41ff-9c55-7fc1acbf09d7" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
+          <name>On Changed</name>
+          <display>On Changed: Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="bc393802-476a-4683-afb3-67351aed7192">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>7dcd827d-e325-4a14-82fb-31640a8ce8ad</parentFolderId>
+          <packageId>775b96aa-24f0-4348-a06a-ab62d463a582</packageId>
+          <packageName>Intent.Metadata.ApiGateway</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1f88f1ac-b96a-4ae7-9047-883c2fa3b3df" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;function getMethodAndRoute(apiGatewayRoute) {&#xD;&#xA;    var _a, _b, _c, _d, _e;&#xD;&#xA;    if (apiGatewayRoute.specialization !== &quot;Api Gateway Route&quot;) {&#xD;&#xA;        throw Error(`Element &quot;${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}&quot; is not of type Api Gateway Route`);&#xD;&#xA;    }&#xD;&#xA;    // Get custom settings&#xD;&#xA;    const customSettings = apiGatewayRoute.getStereotype(&quot;Http Settings&quot;);&#xD;&#xA;    const customRoute = ((_a = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty(&quot;Route&quot;)) === null || _a === void 0 ? void 0 : _a.getValue()) || &quot;&quot;;&#xD;&#xA;    const customMethod = ((_b = customSettings === null || customSettings === void 0 ? void 0 : customSettings.getProperty(&quot;Verb&quot;)) === null || _b === void 0 ? void 0 : _b.getValue()) || &quot;&quot;;&#xD;&#xA;    // Get HTTP settings&#xD;&#xA;    const endpoints = apiGatewayRoute.getAssociations(&quot;Route Association&quot;)&#xD;&#xA;        .map(x =&gt; x.typeReference.getType())&#xD;&#xA;        .filter(x =&gt; x);&#xD;&#xA;    if (endpoints.length === 0) {&#xD;&#xA;        return { verb: &quot;&quot;, route: &quot;&quot;, result: &quot;None&quot; };&#xD;&#xA;    }&#xD;&#xA;    if (endpoints.length &gt; 1) {&#xD;&#xA;        return { verb: &quot;&quot;, route: &quot;&quot;, result: &quot;Aggregate&quot; };&#xD;&#xA;    }&#xD;&#xA;    const httpSettings = endpoints[0].getStereotype(&quot;Http Settings&quot;);&#xD;&#xA;    const httpMethod = httpSettings.getProperty(&quot;Verb&quot;).getValue();&#xD;&#xA;    let httpRoute = httpSettings.getProperty(&quot;Route&quot;).getValue();&#xD;&#xA;    if ((_c = endpoints[0].getParent()) === null || _c === void 0 ? void 0 : _c.hasStereotype(&quot;Http Service Settings&quot;)) {&#xD;&#xA;        let serviceRoute = ((_e = (_d = endpoints[0].getParent().getStereotype(&quot;Http Service Settings&quot;)) === null || _d === void 0 ? void 0 : _d.getProperty(&quot;Route&quot;)) === null || _e === void 0 ? void 0 : _e.getValue()) || &quot;&quot;;&#xD;&#xA;        const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? &quot;/&quot; : &quot;&quot;;&#xD;&#xA;        httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;&#xD;&#xA;    }&#xD;&#xA;    // Use custom values if available, otherwise fall back to HTTP settings&#xD;&#xA;    return {&#xD;&#xA;        verb: customMethod || httpMethod,&#xD;&#xA;        route: customRoute || httpRoute,&#xD;&#xA;        result: null&#xD;&#xA;    };&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;function updateApiGatewayRouteName(apiGatewayRoute, downstreamService) {&#xD;&#xA;    if (apiGatewayRoute.specialization !== &quot;Api Gateway Route&quot;) {&#xD;&#xA;        throw Error(`Element &quot;${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}&quot; is not of type Api Gateway Route`);&#xD;&#xA;    }&#xD;&#xA;    if (apiGatewayRoute.getAssociations(&quot;Route Association&quot;).length === 0) {&#xD;&#xA;        apiGatewayRoute.setName(`DetachedGatewayRoute`, true);&#xD;&#xA;    }&#xD;&#xA;    else if (apiGatewayRoute.getAssociations(&quot;Route Association&quot;).length &gt; 1) {&#xD;&#xA;        apiGatewayRoute.setName(`AggregateGatewayRoute`, true);&#xD;&#xA;    }&#xD;&#xA;    else if (downstreamService) {&#xD;&#xA;        apiGatewayRoute.setName(`${downstreamService.getName()}GatewayRoute`, false);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;function isFieldFromBody(downStreamOperation, dtoField) {&#xD;&#xA;    var _a, _b, _c, _d;&#xD;&#xA;    if (dtoField.specialization != &quot;DTO-Field&quot;) {&#xD;&#xA;        throw Error(`Element &quot;${dtoField.id}, ${dtoField.getName()}&quot; is not of type DTO-Field.`);&#xD;&#xA;    }&#xD;&#xA;    let httpSpecifiedElement = downStreamOperation.specialization === &quot;Operation&quot;&#xD;&#xA;        ? downStreamOperation.getChildren(&quot;Parameter&quot;).filter(param =&gt; { var _a; return ((_a = param.typeReference) === null || _a === void 0 ? void 0 : _a.getType().specialization) === &quot;DTO&quot;; })[0]&#xD;&#xA;        : downStreamOperation;&#xD;&#xA;    let httpSettingsRoute = (_b = (_a = httpSpecifiedElement.getStereotype(&quot;Http Settings&quot;)) === null || _a === void 0 ? void 0 : _a.getProperty(&quot;Route&quot;)) === null || _b === void 0 ? void 0 : _b.getValue();&#xD;&#xA;    let paramSource = (_d = (_c = dtoField.getStereotype(&quot;Parameter Settings&quot;)) === null || _c === void 0 ? void 0 : _c.getProperty(&quot;Source&quot;)) === null || _d === void 0 ? void 0 : _d.getValue();&#xD;&#xA;    if (!paramSource || paramSource == &quot;Default&quot;) {&#xD;&#xA;        return (httpSettingsRoute === null || httpSettingsRoute === void 0 ? void 0 : httpSettingsRoute.toLowerCase().indexOf(`{${dtoField.getName().toLowerCase()}}`)) &lt; 0;&#xD;&#xA;    }&#xD;&#xA;    return paramSource == &quot;Body&quot;;&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;/// &lt;reference path=&quot;../_common/isFieldFromBody.ts&quot; /&gt;&#xD;&#xA;function syncDownstreamContract(apiGatewayRoute, downstreamService) {&#xD;&#xA;    var _a, _b;&#xD;&#xA;    if (apiGatewayRoute.specialization !== &quot;Api Gateway Route&quot;) {&#xD;&#xA;        throw Error(`Element &quot;${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}&quot; is not of type Api Gateway Route`);&#xD;&#xA;    }&#xD;&#xA;    let downstreamContract = downstreamService.specialization === &quot;Operation&quot;&#xD;&#xA;        ? downstreamService.getChildren(&quot;Parameter&quot;)&#xD;&#xA;            .map(x =&gt; { var _a; return (_a = x.typeReference) === null || _a === void 0 ? void 0 : _a.getType(); })&#xD;&#xA;            .filter(x =&gt; x &amp;&amp; x.specialization === &quot;DTO&quot;)[0]&#xD;&#xA;        : downstreamService;&#xD;&#xA;    let downstreamFields = downstreamService.specialization === &quot;Operation&quot;&#xD;&#xA;        ? downstreamContract === null || downstreamContract === void 0 ? void 0 : downstreamContract.getChildren(&quot;DTO-Field&quot;)&#xD;&#xA;        : downstreamContract.getChildren(&quot;DTO-Field&quot;).filter(x =&gt; isFieldFromBody(downstreamService, x));&#xD;&#xA;    if (!downstreamFields || downstreamFields.length === 0) {&#xD;&#xA;        (_a = apiGatewayRoute.getChildren(&quot;Body Field&quot;)[0]) === null || _a === void 0 ? void 0 : _a.delete();&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    let bodyField = apiGatewayRoute.getChildren(&quot;Body Field&quot;)[0];&#xD;&#xA;    if (!bodyField) {&#xD;&#xA;        bodyField = createElement(&quot;Body Field&quot;, &quot;Body&quot;, apiGatewayRoute.id);&#xD;&#xA;    }&#xD;&#xA;    (_b = bodyField.typeReference) === null || _b === void 0 ? void 0 : _b.setType(downstreamContract.id);&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../_common/getMethodAndRoute.ts&quot; /&gt;&#xD;&#xA;/// &lt;reference path=&quot;../_common/updateApiGatewayRouteName.ts&quot; /&gt;&#xD;&#xA;/// &lt;reference path=&quot;../_common/syncDownstreamContract.ts&quot; /&gt;&#xD;&#xA;function applyRouteAssociationOnChangedBehavior() {&#xD;&#xA;    let source = association.getOtherEnd().typeReference.getType();&#xD;&#xA;    let target = association.typeReference.getType();&#xD;&#xA;    if (!source) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    updateApiGatewayRouteName(source, target);&#xD;&#xA;    if (!target) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    const { verb, route, result } = getMethodAndRoute(source);&#xD;&#xA;    const HttpSettings = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;    let httpSettings = source.getStereotype(HttpSettings);&#xD;&#xA;    if (!httpSettings) {&#xD;&#xA;        httpSettings = source.addStereotype(HttpSettings);&#xD;&#xA;    }&#xD;&#xA;    httpSettings.getProperty(&quot;Route&quot;).setValue(route);&#xD;&#xA;    httpSettings.getProperty(&quot;Verb&quot;).setValue(verb);&#xD;&#xA;    syncDownstreamContract(source, target);&#xD;&#xA;}&#xD;&#xA;applyRouteAssociationOnChangedBehavior();&#xD;&#xA;" isActive="true" />
+                <property name="7d1114d8-e27d-4cb8-b5d5-3fd75bf7dea1" display="Dependencies" value="[]" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="58fec7c8-dc55-4a17-ac8b-7e0a2c98df8e" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
+          <name>On Deleted</name>
+          <display>On Deleted: Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="b0d65508-893c-4289-9312-de31e073d18a">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>7dcd827d-e325-4a14-82fb-31640a8ce8ad</parentFolderId>
+          <packageId>775b96aa-24f0-4348-a06a-ab62d463a582</packageId>
+          <packageName>Intent.Metadata.ApiGateway</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1f88f1ac-b96a-4ae7-9047-883c2fa3b3df" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;function updateApiGatewayRouteName(apiGatewayRoute, downstreamService) {&#xD;&#xA;    if (apiGatewayRoute.specialization !== &quot;Api Gateway Route&quot;) {&#xD;&#xA;        throw Error(`Element &quot;${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}&quot; is not of type Api Gateway Route`);&#xD;&#xA;    }&#xD;&#xA;    if (apiGatewayRoute.getAssociations(&quot;Route Association&quot;).length === 0) {&#xD;&#xA;        apiGatewayRoute.setName(`DetachedGatewayRoute`, true);&#xD;&#xA;    }&#xD;&#xA;    else if (apiGatewayRoute.getAssociations(&quot;Route Association&quot;).length &gt; 1) {&#xD;&#xA;        apiGatewayRoute.setName(`AggregateGatewayRoute`, true);&#xD;&#xA;    }&#xD;&#xA;    else if (downstreamService) {&#xD;&#xA;        apiGatewayRoute.setName(`${downstreamService.getName()}GatewayRoute`, false);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../_common/updateApiGatewayRouteName.ts&quot; /&gt;&#xD;&#xA;function applyRouteAssociationOnDeletedBehavior() {&#xD;&#xA;    let source = association.getOtherEnd().typeReference.getType();&#xD;&#xA;    let target = association.typeReference.getType();&#xD;&#xA;    if (!source) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    updateApiGatewayRouteName(source, target);&#xD;&#xA;    const HttpSettings = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;    let httpSettings = source.getStereotype(HttpSettings);&#xD;&#xA;    if (httpSettings) {&#xD;&#xA;        source.removeStereotype(HttpSettings);&#xD;&#xA;    }&#xD;&#xA;    let bodyField = source.getChildren(&quot;Body Field&quot;)[0];&#xD;&#xA;    bodyField === null || bodyField === void 0 ? void 0 : bodyField.delete();&#xD;&#xA;}&#xD;&#xA;applyRouteAssociationOnDeletedBehavior();&#xD;&#xA;" isActive="true" />
+                <property name="7d1114d8-e27d-4cb8-b5d5-3fd75bf7dea1" display="Dependencies" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

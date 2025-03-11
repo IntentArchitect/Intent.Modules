@@ -77,7 +77,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
             }
             else if (Model.TypeReference.IsCollection)
             {
-                var from = $"{_template.GetTypeName("Domain.Common.UpdateHelper")}.CreateOrUpdateCollection({GetTargetPathText()}, {GetSourcePathText()}, (e, d) => e.Id == d.Id, CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()})";
+                var from = $"{_template.GetTypeName("Domain.Common.UpdateHelper")}.CreateOrUpdateCollection({GetTargetPathText()}, {GetSourcePathText()}, (e, d) => {GetPrimaryKeyComparisonMappings()}, CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()})";
 
                 CreateUpdateMethod($"CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()}");
 
@@ -86,6 +86,20 @@ public class ObjectUpdateMapping : CSharpMappingBase
         }
 
         return null;
+    }
+
+    private string GetPrimaryKeyComparisonMappings()
+    {
+        // get all elements on the target element (which is a primary key)
+        var qualifyingMappings = Children.Select(c => c.Mapping).Where(m => m.TargetElement.HasStereotype("Primary Key"));
+
+        // return a default if there are no primary keys.
+        if (!qualifyingMappings.Any())
+        {
+            return "true";
+        }
+
+        return string.Join(" && ", qualifyingMappings.Select(m => $"e.{m.TargetElement?.Name ?? "Id"} == d.{m.SourceElement?.Name ?? "Id"}"));
     }
 
     //ExecutionContext.Settings.GetDomainSettings().CreateEntityInterfaces();

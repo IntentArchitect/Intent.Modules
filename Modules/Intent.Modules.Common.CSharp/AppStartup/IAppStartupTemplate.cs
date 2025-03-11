@@ -6,4 +6,5 @@ public interface IAppStartupTemplate : ICSharpFileBuilderTemplate
 {
     public static string RoleName => "AppStartupTemplate";
     IAppStartupFile StartupFile { get; }
+    bool HasStartupFile { get; }
 }

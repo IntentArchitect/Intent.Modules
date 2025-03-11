@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deviationsLog>
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b09d7684-5dde-4d4b-9cb5-0707bfd8578f</correlationId>
+      <path>Intent.Modules.Metadata.ApiGateway/Api/ApiGatewayRouteModel.cs</path>
+      <count>3</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-03-06T13:15:24.6909936Z</updatedAt>
+      <deviationsHash>72AF20C5C43F03B108EDB50E6BFAF8F508D64F8EDEF53CF3B8E4EA7A5BE59B9C</deviationsHash>
+      <fileHash>72C532A8FB01001A2497FAFEA20BDE00972DB4A9D9DF97FC040C1C9DC689BE4D</fileHash>
+    </file>
+  </files>
+</deviationsLog>
