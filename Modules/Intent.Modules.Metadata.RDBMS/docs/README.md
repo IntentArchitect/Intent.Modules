@@ -198,9 +198,14 @@ Once applied, the following properties can be set:
   - **Literal**: Specifies the constant value assigned to the column when no value is provided.
   - **Expression**: Defines the dynamic formula or function used to generate the default value.
 
-- **Treat as SQL Expression**: Flags whether the **Value** field is a `literal` or `expression`.
+- **Treat as SQL Expression**: Indicates whether the **Value** field should be interpreted as an `expression` (instead of a literal) to be executed by the underlying database provider. Set to true when the **Value** is an `expression`.
+
+An example of a `literal` default value constraint:
 
 ![Default Constraint Literal](images/default-constraint-literal.png)
+
+An example of a `expression` default value constraint:
+
 ![Default Constraint Expression](images/default-constraint-expression.png)
 
 ### Create a Text Constraint

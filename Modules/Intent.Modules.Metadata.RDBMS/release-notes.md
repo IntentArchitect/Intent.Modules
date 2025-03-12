@@ -1,6 +1,10 @@
+### Version 3.7.1
+
+- Improvement: Improved documentation around the `Default Constraint` stereotype, as well as improved in-application hints.
+
 ### Version 3.7.0
 
-- Improvement: Improvemed documentation and added a number of help topics
+- Improvement: Improved documentation and added a number of help topics
 - Improvement: Removed legacy `Key Creation Mode` option `Remove all managed PKs and FKs`
 
 ### Version 3.6.2
