@@ -68,5 +68,14 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="8bde99c0-4d3e-47d2-92f1-e299b05e5543">
+      <name>Disabled</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

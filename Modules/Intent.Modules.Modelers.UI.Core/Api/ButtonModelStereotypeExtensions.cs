@@ -68,6 +68,11 @@ namespace Intent.Modelers.UI.Core.Api
                 return _stereotype.GetProperty<string>("Link To");
             }
 
+            public string Disabled()
+            {
+                return _stereotype.GetProperty<string>("Disabled");
+            }
+
             public class TypeOptions
             {
                 public readonly string Value;
