@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="296ad757-c198-45b1-917a-5b89bb914d8d" type="On-Install Migration" typeId="4ba35747-deea-43a9-acd4-26d57edb5bb9">
-  <name>On-Install</name>
-  <display>On-Install</display>
+<class id="bda031ec-5d4e-4e51-b54e-18c3c2215b64" type="Version Migration" typeId="03f24c57-66d8-4868-95a7-6daef900dc7f">
+  <name>3.9.3-pre.0</name>
+  <display>3.9.3-pre.0</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

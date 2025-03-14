@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="e3ff9ac0-b757-49fa-ac74-50491b42fac7" type="Version Migration" typeId="03f24c57-66d8-4868-95a7-6daef900dc7f">
-  <name>3.12.2-pre.0</name>
-  <display>3.12.2-pre.0</display>
+  <name>3.12.2-pre.1</name>
+  <display>3.12.2-pre.1</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

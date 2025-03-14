@@ -143,13 +143,13 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#e3ff9ac0-b757-49fa-ac74-50491b42fac7</correlationId>
-      <path>Intent.Modules.Modelers.Domain/Migrations/Migration_03_12_02_Pre_00.cs</path>
+      <path>Intent.Modules.Modelers.Domain/Migrations/Migration_03_12_02_Pre_01.cs</path>
       <count>3</count>
       <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>JP Seini</updatedByDisplayName>
-      <updatedAt>2025-03-13T12:45:38.8802641Z</updatedAt>
-      <deviationsHash>23CC57E26F56EF2A38911F986A507DDD3DCB48D7E230AC039B17A5A3FAC772EF</deviationsHash>
-      <fileHash>5E8DE7917243A89F6F47375A185ECBF6924B2E7F9BCE2DC47EF147B9C6A6B3AC</fileHash>
+      <updatedAt>2025-03-14T12:46:15.535578Z</updatedAt>
+      <deviationsHash>5AEB22B40755AE1B1F458BE13F443F65EB4BE2F6440048EA4B65E8E31B54053F</deviationsHash>
+      <fileHash>FB7E1633FCF61E4C37DAE271FC478DE87074AD171BEE90E36098627F6DE7531E</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration#757ed2d2-d804-474a-a72d-2b21fbda6842</correlationId>
@@ -159,7 +159,7 @@
       <updatedByDisplayName>JP Seini</updatedByDisplayName>
       <updatedAt>2025-03-13T12:45:38.8802002Z</updatedAt>
       <deviationsHash>60B15F4438A329EF376A24573421236B612DF7AA4C8D71059A913DF6C1A1F6DD</deviationsHash>
-      <fileHash>BDE93C183B00E980F995A9844F6D25D3FED0701A1267D41469A51464760C53F8</fileHash>
+      <fileHash>9DD84CE767AA3C61A25056DD645CC76AFFFC83B53701475B0F8D97ADEB9E328C</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions#6572b98d-5e13-4d4b-9ffc-820057da974e</correlationId>

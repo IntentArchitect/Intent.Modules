@@ -61,6 +61,6 @@
   </moduleSettings>
   <moduleSettingsExtensions />
   <migrations has-on-install-migration="true">
-    <migration version="3.12.2-pre.0" />
+    <migration version="3.12.2-pre.1" />
   </migrations>
 </package>

@@ -1,9 +1,9 @@
+using System.Diagnostics;
+using System.Linq;
 using Intent.Engine;
 using Intent.IArchitect.Agent.Persistence.Model;
 using Intent.Plugins;
 using Intent.RoslynWeaver.Attributes;
-using System.Diagnostics;
-using System.Linq;
 
 [assembly: DefaultIntentManaged(Mode.Ignore)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration", Version = "1.0")]
@@ -53,9 +53,9 @@ namespace Intent.Modules.Modelers.Services.Migrations
                     Value = app.Modules.Any(m => m.ModuleId == "Intent.Common.CSharp") ? "pascal-case" : "manual",
                     Options =
                     [
-                        new SettingFieldOptionPersistable{ Description = "Manual", Value = "manual"},
-                        new SettingFieldOptionPersistable{ Description = "Pascal Case", Value = "pascal-case"},
-                        new SettingFieldOptionPersistable{ Description = "Camel Case", Value = "camel-case"},
+                        new SettingFieldOptionPersistable { Description = "Manual", Value = "manual" },
+                        new SettingFieldOptionPersistable { Description = "Pascal Case", Value = "pascal-case" },
+                        new SettingFieldOptionPersistable { Description = "Camel Case", Value = "camel-case" },
                     ]
                 });
             }
@@ -74,9 +74,9 @@ namespace Intent.Modules.Modelers.Services.Migrations
                     Value = app.Modules.Any(m => m.ModuleId == "Intent.Common.CSharp") ? "pascal-case" : "manual",
                     Options =
                     [
-                        new SettingFieldOptionPersistable{ Description = "Manual", Value = "manual"},
-                        new SettingFieldOptionPersistable{ Description = "Pascal Case", Value = "pascal-case"},
-                        new SettingFieldOptionPersistable{ Description = "Camel Case", Value = "camel-case"},
+                        new SettingFieldOptionPersistable { Description = "Manual", Value = "manual" },
+                        new SettingFieldOptionPersistable { Description = "Pascal Case", Value = "pascal-case" },
+                        new SettingFieldOptionPersistable { Description = "Camel Case", Value = "camel-case" },
                     ]
                 });
             }
@@ -95,9 +95,9 @@ namespace Intent.Modules.Modelers.Services.Migrations
                     Value = app.Modules.Any(m => m.ModuleId == "Intent.Common.CSharp") ? "pascal-case" : "manual",
                     Options =
                     [
-                        new SettingFieldOptionPersistable{ Description = "Manual", Value = "manual"},
-                        new SettingFieldOptionPersistable{ Description = "Pascal Case", Value = "pascal-case"},
-                        new SettingFieldOptionPersistable{ Description = "Camel Case", Value = "camel-case"},
+                        new SettingFieldOptionPersistable { Description = "Manual", Value = "manual" },
+                        new SettingFieldOptionPersistable { Description = "Pascal Case", Value = "pascal-case" },
+                        new SettingFieldOptionPersistable { Description = "Camel Case", Value = "camel-case" },
                     ]
                 });
             }
