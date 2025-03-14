@@ -1,3 +1,7 @@
+### Version 4.7.5
+
+- Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.
+
 ### Version 4.7.4
 
 - Improvement: `Http Settings` can now be applied to `API Gateway Routes`.

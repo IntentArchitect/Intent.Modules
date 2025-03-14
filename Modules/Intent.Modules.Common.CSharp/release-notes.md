@@ -1,4 +1,8 @@
-﻿### Version 3.8.10
+﻿### Version 3.8.11
+
+- Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.
+
+### Version 3.8.10
 
 - Improvement: Introduced `ExposeProgramClass()` to `IAppStartupFile` to allow for referencing the Program class under certain circumstances such as in WebApplicationFactories.
 - Improvement: Added `ToListMapping` to cater for `Enum Collection` to `Enum Collection` mapping (but can be used more generally if required)

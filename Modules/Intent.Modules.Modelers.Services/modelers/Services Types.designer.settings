@@ -1871,7 +1871,7 @@ if (namingConvention == "pascal-case") {
       <mappingSettings />
       <macros>
         <macro trigger="on-name-changed">
-          <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("625c6211-0dc7-4190-af49-6eadb82c7015")?.value;
+          <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("9add7769-0034-4c7f-987e-bb592cfd335e")?.value;
 
 if (namingConvention == "pascal-case") {
     element.setName(toPascalCase(element.getName()))

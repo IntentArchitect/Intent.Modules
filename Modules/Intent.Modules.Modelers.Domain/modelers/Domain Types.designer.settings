@@ -194,33 +194,6 @@ const diagramElementType = "Diagram";
     }
 })();</script>
         </macro>
-        <macro trigger="on-loaded">
-          <script>let cSharpModuleInstalled = application.isModuleInstalled("Intent.Common.CSharp");
-let domainSettingsGroup = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17");
-
-if(domainSettingsGroup == null) {
-    return;
-}
-
-let entityNamingConvention = domainSettingsGroup.getField("dcb5114c-39d0-4880-b6c6-312bbb3ceac1");
-let operationNamingConvention = domainSettingsGroup.getField("128d9880-cbf7-469f-a5af-915bc3d71874");
-
-if(entityNamingConvention == null &amp;&amp; operationNamingConvention == null) {
-    return;
-}
-
-dialogService.info(entityNamingConvention.title);
-
-entityNamingConvention.value = `pascal-case`;
-
-dialogService.info(entityNamingConvention.value);
-
-// entityNamingConvention.value = (cSharpModuleInstalled &amp;&amp; entityNamingConvention != null 
-//     &amp;&amp; (entityNamingConvention.value === '' ||  entityNamingConvention.value == null)) ? "pascal-case" : "manual";
-
-// operationNamingConvention.value = (cSharpModuleInstalled &amp;&amp; operationNamingConvention != null 
-//     &amp;&amp; (operationNamingConvention.value == "" ||  operationNamingConvention.value == null)) ? "pascal-case" : "manual";</script>
-        </macro>
       </macros>
     </packageSetting>
   </packageSettings>

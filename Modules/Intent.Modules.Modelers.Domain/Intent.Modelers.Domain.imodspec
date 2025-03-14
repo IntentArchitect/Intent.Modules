@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain</id>
-  <version>3.12.2-pre.0</version>
+  <version>3.12.2-pre.1</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>A domain designer based on UML class diagrams for expressing entity relationships.</summary>
   <description>A domain designer based on UML class diagrams for expressing entity relationships.</description>
@@ -40,6 +40,7 @@
         </setting>
         <setting id="dcb5114c-39d0-4880-b6c6-312bbb3ceac1" title="Entity Naming Convention" type="select">
           <hint>Convention applied when creating and renaming entities.</hint>
+          <defaultValue>manual</defaultValue>
           <options>
             <option value="manual" description="Manual" />
             <option value="pascal-case" description="Pascal Case" />
@@ -48,6 +49,7 @@
         </setting>
         <setting id="128d9880-cbf7-469f-a5af-915bc3d71874" title="Operation Naming Convention" type="select">
           <hint>Convention applied when creating and renaming operations.</hint>
+          <defaultValue>manual</defaultValue>
           <options>
             <option value="manual" description="Manual" />
             <option value="pascal-case" description="Pascal Case" />

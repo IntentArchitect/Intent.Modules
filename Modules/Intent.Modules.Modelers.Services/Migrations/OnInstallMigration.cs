@@ -1,14 +1,13 @@
-using System.Diagnostics;
-using System.Linq;
 using Intent.Engine;
 using Intent.IArchitect.Agent.Persistence.Model;
 using Intent.Plugins;
 using Intent.RoslynWeaver.Attributes;
+using System.Linq;
 
 [assembly: DefaultIntentManaged(Mode.Ignore)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration", Version = "1.0")]
 
-namespace Intent.Modelers.Domain.Migrations
+namespace Intent.Modules.Modelers.Services.Migrations
 {
     public class OnInstallMigration : IModuleOnInstallMigration
     {
@@ -19,35 +18,55 @@ namespace Intent.Modelers.Domain.Migrations
             _configurationProvider = configurationProvider;
         }
 
-        public string ModuleId { get; } = "Intent.Modelers.Domain";
+        public string ModuleId { get; } = "Intent.Modelers.Services";
 
         public void OnInstall()
         {
             var app = ApplicationPersistable.Load(_configurationProvider.GetApplicationConfig().FilePath);
 
-            var group = app.ModuleSettingGroups.FirstOrDefault(x => x.Id == "c4d1e35c-7c0d-4926-afe0-18f17563ce17");
+            var group = app.ModuleSettingGroups.FirstOrDefault(x => x.Id == "370723b8-0896-465f-acc7-099d8f36e052");
             if (group == null)
             {
                 group = new ApplicationModuleSettingsPersistable
                 {
-                    Id = "c4d1e35c-7c0d-4926-afe0-18f17563ce17",
+                    Id = "370723b8-0896-465f-acc7-099d8f36e052",
                     Module = "Intent.Modelers.Domain",
-                    Title = "Domain Settings",
-                    Settings = []
+                    Title = "Service Settings"
                 };
 
                 app.ModuleSettingGroups.Add(group);
             }
 
-            var entityConvention = group.Settings.FirstOrDefault(s => s.Title == "dcb5114c-39d0-4880-b6c6-312bbb3ceac1");
+            var propertyConvention = group.Settings.FirstOrDefault(s => s.Title == "8df5e8ae-1a56-4507-87e9-4f73cd69ba50");
+
+            if (propertyConvention == null)
+            {
+                group.Settings.Add(new ModuleSettingPersistable
+                {
+                    Id = "8df5e8ae-1a56-4507-87e9-4f73cd69ba50",
+                    Title = "Property Naming Convention",
+                    Module = "Intent.Modelers.Services",
+                    Hint = "Convention applied when creating and renaming properties.",
+                    ControlType = ModuleSettingControlType.Select,
+                    Value = app.Modules.Any(m => m.ModuleId == "Intent.Common.CSharp") ? "pascal-case" : "manual",
+                    Options =
+                    [
+                        new SettingFieldOptionPersistable{ Description = "Manual", Value = "manual"},
+                        new SettingFieldOptionPersistable{ Description = "Pascal Case", Value = "pascal-case"},
+                        new SettingFieldOptionPersistable{ Description = "Camel Case", Value = "camel-case"},
+                    ]
+                });
+            }
+
+            var entityConvention = group.Settings.FirstOrDefault(s => s.Title == "625c6211-0dc7-4190-af49-6eadb82c7015");
 
             if (entityConvention == null)
             {
                 group.Settings.Add(new ModuleSettingPersistable
                 {
-                    Id = "dcb5114c-39d0-4880-b6c6-312bbb3ceac1",
+                    Id = "625c6211-0dc7-4190-af49-6eadb82c7015",
                     Title = "Entity Naming Convention",
-                    Module = "Intent.Modelers.Domain",
+                    Module = "Intent.Modelers.Services",
                     Hint = "Convention applied when creating and renaming entities.",
                     ControlType = ModuleSettingControlType.Select,
                     Value = app.Modules.Any(m => m.ModuleId == "Intent.Common.CSharp") ? "pascal-case" : "manual",
@@ -60,15 +79,15 @@ namespace Intent.Modelers.Domain.Migrations
                 });
             }
 
-            var operationConvention = group.Settings.FirstOrDefault(s => s.Title == "dcb5114c-39d0-4880-b6c6-312bbb3ceac1");
+            var operationConvention = group.Settings.FirstOrDefault(s => s.Title == "9add7769-0034-4c7f-987e-bb592cfd335e");
 
             if (operationConvention == null)
             {
                 group.Settings.Add(new ModuleSettingPersistable
                 {
-                    Id = "128d9880-cbf7-469f-a5af-915bc3d71874",
+                    Id = "9add7769-0034-4c7f-987e-bb592cfd335e",
                     Title = "Operation Naming Convention",
-                    Module = "Intent.Modelers.Domain",
+                    Module = "Intent.Modelers.Services",
                     Hint = "Convention applied when creating and renaming operation.",
                     ControlType = ModuleSettingControlType.Select,
                     Value = app.Modules.Any(m => m.ModuleId == "Intent.Common.CSharp") ? "pascal-case" : "manual",

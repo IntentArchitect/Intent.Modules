@@ -744,12 +744,12 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="868371c2-0392-4c44-bd57-d385128232f5" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Type Changed</name>
-          <display>On Type Changed: Inline Script</display>
+        <childElement id="2b8e974e-ff90-4f6e-bfc7-9ab84ddbe82b" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Name Changed</name>
+          <display>On Name Changed: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="812f3bc9-55d0-4cda-9eef-7a3b0e335539">
+          <typeReference id="85e4b84b-5703-4adb-b5c0-f146b8dbc88e">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>

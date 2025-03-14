@@ -1,3 +1,7 @@
+### Version 5.1.3
+
+- Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.
+
 ### Version 5.1.2
 
 - Fixed: Synronization of `Query` type info and return type now takes into account `Pagination` and return type of `PagedResult`.

@@ -1,3 +1,7 @@
+### Version 3.9.3
+
+- Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.
+
 ### Version 3.9.2
 
 - Improvement: Mapping from Domain to DTO will now try to match the fields by name as opposed to just adding new fields to the DTO with the mapping information alongside the original fields.

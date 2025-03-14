@@ -6,7 +6,6 @@
     <type id="e030c97a-e066-40a7-8188-808c275df3cb">Operation</type>
     <type id="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">Command</type>
     <type id="e71b0662-e29d-4db2-868b-8a12464b25d0">Query</type>
-    <type id="702f57ca-3b5a-413b-a084-9f2d154154e7">702f57ca-3b5a-413b-a084-9f2d154154e7</type>
     <type id="b16578a5-27b1-4047-a8df-f0b783d706bd">Service</type>
   </targetTypes>
   <targetReferenceTypes />

@@ -142,6 +142,26 @@
       <fileHash>0DE7AF3DE6E84DC93982461CBB2C31C7B657CB2D95B44AF6E422AE8272D63EC3</fileHash>
     </file>
     <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#e3ff9ac0-b757-49fa-ac74-50491b42fac7</correlationId>
+      <path>Intent.Modules.Modelers.Domain/Migrations/Migration_03_12_02_Pre_00.cs</path>
+      <count>3</count>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2025-03-13T12:45:38.8802641Z</updatedAt>
+      <deviationsHash>23CC57E26F56EF2A38911F986A507DDD3DCB48D7E230AC039B17A5A3FAC772EF</deviationsHash>
+      <fileHash>5E8DE7917243A89F6F47375A185ECBF6924B2E7F9BCE2DC47EF147B9C6A6B3AC</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration#757ed2d2-d804-474a-a72d-2b21fbda6842</correlationId>
+      <path>Intent.Modules.Modelers.Domain/Migrations/OnInstallMigration.cs</path>
+      <count>2</count>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2025-03-13T12:45:38.8802002Z</updatedAt>
+      <deviationsHash>60B15F4438A329EF376A24573421236B612DF7AA4C8D71059A913DF6C1A1F6DD</deviationsHash>
+      <fileHash>BDE93C183B00E980F995A9844F6D25D3FED0701A1267D41469A51464760C53F8</fileHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions#6572b98d-5e13-4d4b-9ffc-820057da974e</correlationId>
       <path>Intent.Modules.Modelers.Domain/Settings/ModuleSettingsExtensions.cs</path>
       <count>1</count>

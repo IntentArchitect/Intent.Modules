@@ -6,22 +6,23 @@ using Intent.Plugins;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Ignore)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration", Version = "1.0")]
 
 namespace Intent.Modelers.Domain.Migrations
 {
-    public class OnInstallMigration : IModuleOnInstallMigration
+    public class Migration_03_12_02_Pre_00 : IModuleMigration
     {
         private readonly IApplicationConfigurationProvider _configurationProvider;
 
-        public OnInstallMigration(IApplicationConfigurationProvider configurationProvider)
+        public Migration_03_12_02_Pre_00(IApplicationConfigurationProvider configurationProvider)
         {
             _configurationProvider = configurationProvider;
         }
 
         public string ModuleId { get; } = "Intent.Modelers.Domain";
+        public string ModuleVersion { get; } = "3.12.2-pre.1";
 
-        public void OnInstall()
+        public void Up()
         {
             var app = ApplicationPersistable.Load(_configurationProvider.GetApplicationConfig().FilePath);
 
@@ -32,8 +33,7 @@ namespace Intent.Modelers.Domain.Migrations
                 {
                     Id = "c4d1e35c-7c0d-4926-afe0-18f17563ce17",
                     Module = "Intent.Modelers.Domain",
-                    Title = "Domain Settings",
-                    Settings = []
+                    Title = "Domain Settings"
                 };
 
                 app.ModuleSettingGroups.Add(group);
@@ -60,7 +60,7 @@ namespace Intent.Modelers.Domain.Migrations
                 });
             }
 
-            var operationConvention = group.Settings.FirstOrDefault(s => s.Title == "dcb5114c-39d0-4880-b6c6-312bbb3ceac1");
+            var operationConvention = group.Settings.FirstOrDefault(s => s.Title == "128d9880-cbf7-469f-a5af-915bc3d71874");
 
             if (operationConvention == null)
             {
@@ -82,6 +82,10 @@ namespace Intent.Modelers.Domain.Migrations
             }
 
             app.SaveAllChanges();
+        }
+
+        public void Down()
+        {
         }
     }
 }

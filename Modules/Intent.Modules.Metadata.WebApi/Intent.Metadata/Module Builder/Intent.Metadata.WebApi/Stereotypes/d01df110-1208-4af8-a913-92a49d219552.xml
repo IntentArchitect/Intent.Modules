@@ -5,7 +5,6 @@
   <targetTypes>
     <type id="00208d20-469d-41cb-8501-768fd5eb796b">Parameter</type>
     <type id="7baed1fd-469b-4980-8fd9-4cefb8331eb2">DTO-Field</type>
-    <type id="b6d4f537-eebe-4c56-8cb0-7687cf5bbe16">b6d4f537-eebe-4c56-8cb0-7687cf5bbe16</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>

@@ -146,9 +146,9 @@ namespace Intent.Modules.Common.CSharp.Templates
             {
                 if (FileMetadata.CustomMetadata.ContainsKey("ClassName"))
                 {
-                    return FileMetadata.CustomMetadata["ClassName"];
+                    return FileMetadata.CustomMetadata["ClassName"].ToCSharpIdentifier(CapitalizationBehaviour.AsIs);
                 }
-                return FileMetadata.FileName;
+                return FileMetadata.FileName.ToCSharpIdentifier(CapitalizationBehaviour.AsIs);
             }
         }
 

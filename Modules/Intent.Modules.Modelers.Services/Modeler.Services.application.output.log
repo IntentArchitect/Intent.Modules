@@ -225,6 +225,22 @@
       <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>9d3f78d5-8d56-4c7a-929f-de9227ad1bb6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#70a91a48-80eb-49dd-9333-a1358bb0d0c2</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Migrations/Migration_3_9_3_pre_0.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Migration_3_9_3_pre_0.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9d3f78d5-8d56-4c7a-929f-de9227ad1bb6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration#296ad757-c198-45b1-917a-5b89bb914d8d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Migrations/OnInstallMigration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>OnInstallMigration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>4ae770a3-14b1-48ff-b4f7-be2652e65462</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#55e213e3-1e43-4bb5-abe6-6ff77af23f39</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

@@ -455,40 +455,6 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="87c5645c-f691-416e-abc1-c9f58d2c74a2" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Loaded</name>
-          <display>On Loaded: Inline Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="632fd7b7-33ac-46fb-9fc8-0a929f1bf6e0">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>433832bf-a1a5-4005-b62f-7cfcdb4c2e4e</parentFolderId>
-          <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
-          <packageName>Intent.Modelers.Domain</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let cSharpModuleInstalled = application.isModuleInstalled(&quot;Intent.Common.CSharp&quot;);&#xD;&#xA;let domainSettingsGroup = application.getSettings(&quot;c4d1e35c-7c0d-4926-afe0-18f17563ce17&quot;);&#xD;&#xA;&#xD;&#xA;if(domainSettingsGroup == null) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let entityNamingConvention = domainSettingsGroup.getField(&quot;dcb5114c-39d0-4880-b6c6-312bbb3ceac1&quot;);&#xD;&#xA;let operationNamingConvention = domainSettingsGroup.getField(&quot;128d9880-cbf7-469f-a5af-915bc3d71874&quot;);&#xD;&#xA;&#xD;&#xA;if(entityNamingConvention == null &amp;&amp; operationNamingConvention == null) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;dialogService.info(entityNamingConvention.title);&#xD;&#xA;&#xD;&#xA;entityNamingConvention.value = `pascal-case`;&#xD;&#xA;&#xD;&#xA;dialogService.info(entityNamingConvention.value);&#xD;&#xA;&#xD;&#xA;// entityNamingConvention.value = (cSharpModuleInstalled &amp;&amp; entityNamingConvention != null &#xD;&#xA;//     &amp;&amp; (entityNamingConvention.value === '' ||  entityNamingConvention.value == null)) ? &quot;pascal-case&quot; : &quot;manual&quot;;&#xD;&#xA;&#xD;&#xA;// operationNamingConvention.value = (cSharpModuleInstalled &amp;&amp; operationNamingConvention != null &#xD;&#xA;//     &amp;&amp; (operationNamingConvention.value == &quot;&quot; ||  operationNamingConvention.value == null)) ? &quot;pascal-case&quot; : &quot;manual&quot;;" isActive="true" />
-                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
       </childElements>
     </childElement>
   </childElements>
