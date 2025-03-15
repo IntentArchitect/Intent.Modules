@@ -214,7 +214,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     public CSharpClass AddProperty<TModel>(string type, TModel model, Action<CSharpProperty>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddProperty(type, model.Name.ToCSharpIdentifier(CapitalizationBehaviour.AsIs), prop =>
+        return AddProperty(type, model.Name.ToCSharpIdentifier(CapitalizationBehaviour.MakeFirstLetterUpper), prop =>
         {
             prop.RepresentsModel(model);
             configure?.Invoke(prop);
@@ -232,7 +232,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     public CSharpClass AddProperty<TModel>(TModel model, Action<CSharpProperty>? configure = null)
         where TModel : IMetadataModel, IHasName
     {
-        return AddProperty(File.GetModelType(model), model.Name.ToCSharpIdentifier(CapitalizationBehaviour.AsIs), prop =>
+        return AddProperty(File.GetModelType(model), model.Name.ToCSharpIdentifier(CapitalizationBehaviour.MakeFirstLetterUpper), prop =>
         {
             prop.RepresentsModel(model);
             configure?.Invoke(prop);
