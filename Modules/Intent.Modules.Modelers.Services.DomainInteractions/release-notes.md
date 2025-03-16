@@ -1,3 +1,8 @@
+### Version 2.1.3
+
+- Fixed: `Call Service Operation` mapping didn't allow mapping a 1 -> * association on an Entity that is supplied to the operation.
+- Fixed: Creating DTOs off of Entities on the Advanced mapping screen will also happen consistently when done from Service Operations.
+
 ### Version 2.1.2
 
 - Fixed: Added reference to Proxy `Operation`, so now mapping can correctly be done.

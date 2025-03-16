@@ -1,6 +1,7 @@
 ### Version 3.9.3
 
 - Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.
+- Fixed: Creating DTOs off of Entities on the Advanced mapping screen will also happen consistently when done from Service Operations.
 
 ### Version 3.9.2
 

@@ -2408,7 +2408,7 @@ return result;
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
-          <createNameFunction>return element.getParent('Command').getName() + toPascalCase(element.getName()) + 'Dto'</createNameFunction>
+          <createNameFunction>return (element.getParent('Command') || element.getParent('Operation')).getName() + element.getName() + 'Dto'</createNameFunction>
           <represents>data</represents>
           <childSettings>
             <childSetting id="98041049-0f91-4c21-99dc-50cd18fd1dae" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
