@@ -1,6 +1,7 @@
 ### Version 3.7.1
 
 - Improvement: Improved documentation around the `Default Constraint` stereotype, as well as improved in-application hints.
+- Fixed: Domain packages without any stereotypes at all would be regarded as having a "Relational Database" Stereotype applied. This was due to compatibility reasons for version 3.5.0 which added support for multiple persistence paradigms being used within the same Intent Architect Application. Module migrations now exist and will automatically add a "Relational Database" Stereotype for Intent Architect Applications which have never had their Domain Designer opened and saved with version 3.5.0 or higher of this module.
 
 ### Version 3.7.0
 
