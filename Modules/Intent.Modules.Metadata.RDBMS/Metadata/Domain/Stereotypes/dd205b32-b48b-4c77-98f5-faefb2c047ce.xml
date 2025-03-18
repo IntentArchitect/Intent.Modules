@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="dd205b32-b48b-4c77-98f5-faefb2c047ce" version="3.1.0">
+  <comment>Configures the underlying table's name and schema. It also ensures that this entity is represented by a table in the database, in case a split table or table per hierarchy would've defaulted otherwise.</comment>
   <name>Table</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
