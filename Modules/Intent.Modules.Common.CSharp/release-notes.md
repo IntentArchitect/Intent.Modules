@@ -1,6 +1,7 @@
 ﻿### Version 3.8.11
 
 - Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.
+- Fixed: `ObjectUpdateMapping` would crash in the event where `Children` mappings were `null`.
 
 ### Version 3.8.10
 

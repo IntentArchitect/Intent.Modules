@@ -91,7 +91,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
     private string GetPrimaryKeyComparisonMappings()
     {
         // get all elements on the target element (which is a primary key)
-        var qualifyingMappings = Children.Select(c => c.Mapping).Where(m => m.TargetElement.HasStereotype("Primary Key"));
+        var qualifyingMappings = Children.Select(c => c.Mapping).Where(m => m is not null && m.TargetElement.HasStereotype("Primary Key"));
 
         // return a default if there are no primary keys.
         if (!qualifyingMappings.Any())
