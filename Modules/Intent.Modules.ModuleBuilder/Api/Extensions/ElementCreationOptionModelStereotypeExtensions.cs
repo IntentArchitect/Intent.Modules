@@ -68,6 +68,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<int?>("Type Order");
             }
 
+            public int? MenuGroup()
+            {
+                return _stereotype.GetProperty<int?>("Menu Group");
+            }
+
             public bool AllowMultiple()
             {
                 return _stereotype.GetProperty<bool>("Allow Multiple");

@@ -101,6 +101,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<int?>("Order");
             }
 
+            public int? MenuGroup()
+            {
+                return _stereotype.GetProperty<int?>("Menu Group");
+            }
+
             public bool BottomDivider()
             {
                 return _stereotype.GetProperty<bool>("Bottom Divider");

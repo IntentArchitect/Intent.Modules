@@ -56,6 +56,7 @@ namespace Intent.ModuleBuilder.Api
             {
                 SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
+                Comment = Comment,
                 Implements = this.Stereotypes
                     .Where(x => x.DefinitionId != ElementSettingsModelStereotypeExtensions.Settings.DefinitionId &&
                                 x.DefinitionId != ElementSettingsModelStereotypeExtensions.TypeReferenceSettings.DefinitionId)

@@ -51,6 +51,7 @@ namespace Intent.ModuleBuilder.Api
             return new StereotypeCreationOption
             {
                 Type = ContextMenuOptionType.StereotypeDefinition,
+                MenuGroup = this.GetOptionSettings().MenuGroup().GetValueOrDefault(0),
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
                 SpecializationTypeId = this.Type.Name,
                 SpecializationType = this.Type.Name,
@@ -72,6 +73,7 @@ namespace Intent.ModuleBuilder.Api
             return new ElementCreationOptionOld
             {
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                MenuGroup = this.GetOptionSettings().MenuGroup().GetValueOrDefault(0),
                 Type = ContextMenuOptionType.StereotypeDefinition,
                 SpecializationTypeId = this.Type.Name,
                 SpecializationType = this.Type.Name,

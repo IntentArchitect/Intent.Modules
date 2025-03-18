@@ -65,6 +65,7 @@ namespace Intent.ModuleBuilder.Api
             {
                 SpecializationTypeId = Id,
                 SpecializationType = Name,
+                Comment = Comment,
                 DefaultName = this.GetPackageSettings().DefaultNameFunction(),
                 SortChildren = DetermineSortingOption(),
                 Icon = this.GetPackageSettings().Icon()?.ToPersistable(),

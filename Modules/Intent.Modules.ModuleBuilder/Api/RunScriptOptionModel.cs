@@ -63,6 +63,7 @@ namespace Intent.ModuleBuilder.Api
                 return new RunScriptOption
                 {
                     Type = ContextMenuOptionType.RunScript,
+                    MenuGroup = this.GetOptionSettings().MenuGroup().GetValueOrDefault(0),
                     Order = this.GetOptionSettings().Order()?.ToString(),
                     Text = this.Name,
                     Shortcut = this.GetOptionSettings().Shortcut(),
@@ -82,6 +83,7 @@ namespace Intent.ModuleBuilder.Api
                 return new RunScriptOption
                 {
                     Type = ContextMenuOptionType.RunScript,
+                    MenuGroup = this.GetOptionSettings().MenuGroup().GetValueOrDefault(0),
                     Order = this.GetOptionSettings().Order()?.ToString(),
                     Text = this.Name,
                     Shortcut = this.GetOptionSettings().Shortcut(),

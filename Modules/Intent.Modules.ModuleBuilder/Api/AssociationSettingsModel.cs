@@ -65,6 +65,7 @@ namespace Intent.ModuleBuilder.Api
             {
                 SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
+                Comment = Comment,
                 SourceEnd = this.SourceEnd.ToPersistable(),
                 TargetEnd = this.TargetEnd.ToPersistable(),
                 VisualSettings = VisualSettings?.ToPersistable(),

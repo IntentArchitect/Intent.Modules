@@ -70,6 +70,7 @@ namespace Intent.ModuleBuilder.Api
             return new AssociationCreationOption()
             {
                 Type = ContextMenuOptionType.Association,
+                MenuGroup = this.GetOptionSettings().MenuGroup().GetValueOrDefault(0),
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
                 SpecializationTypeId = Type.IsAssociationSettingsModel() ? Type.AsAssociationSettingsModel().TargetEnd.Id : Type.Id,
                 SpecializationType = Type.IsAssociationSettingsModel() ? Type.AsAssociationSettingsModel().TargetEnd.Name : Type.Name,
@@ -103,6 +104,7 @@ namespace Intent.ModuleBuilder.Api
             return new ElementCreationOptionOld
             {
                 Type = ContextMenuOptionType.Association,
+                MenuGroup = this.GetOptionSettings().MenuGroup().GetValueOrDefault(0),
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
                 SpecializationTypeId = Type.IsAssociationSettingsModel() ? Type.AsAssociationSettingsModel().TargetEnd.Id : Type.Id,
                 SpecializationType = Type.IsAssociationSettingsModel() ? Type.AsAssociationSettingsModel().TargetEnd.Name : Type.Name,

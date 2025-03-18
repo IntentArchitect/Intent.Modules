@@ -1,3 +1,8 @@
+### Version 3.14.0
+
+- Improvement: Menu Items can now be grouped with a group number, respected in Intent Architect 4.5.x and later.
+- Improvement: Comments made against Element Settings and Stereotypes will now get propaged and made visible in Intent Architect 4.5.x and later.
+
 ### Version 3.13.1
 
 - Fixed: `AttributeModel` extension methods now using Domain model not the Common Types model.

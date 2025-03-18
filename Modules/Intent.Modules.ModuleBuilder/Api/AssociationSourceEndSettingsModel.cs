@@ -58,6 +58,7 @@ namespace Intent.ModuleBuilder.Api
             {
                 SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
+                Comment = Comment,
                 Implements = this.Stereotypes
                     .Where(x => x.DefinitionId != AssociationDestinationEndSettingsModelStereotypeExtensions.Settings.DefinitionId)
                     .Select(x => new ImplementedTraitPersistable() { Id = x.DefinitionId, Name = x.Name })

@@ -93,7 +93,18 @@ return `[${shortcut}]`;</displayFunction>
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="da4fd235-9d62-4c1d-afb7-17c856a14715">
+      <comment>This menu option will be added to the specified menu group, which is the first one by default (Group 0). Menu groups are separated by dividers and ordered by their number.</comment>
+      <name>Menu Group</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default = 0)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="5ca38df4-1f60-4be6-a1f7-18935a05681a">
+      <comment>Whether a divider must be added above this option. Note that it is typically recommended to use _Menu Group_ to create dividers.</comment>
       <name>Top Divider</name>
       <type>string</type>
       <controlType>checkbox</controlType>
@@ -104,6 +115,7 @@ return `[${shortcut}]`;</displayFunction>
       <lookupTypes />
     </property>
     <property id="cd37f0a2-3a8f-49f5-8b23-6a4544257935">
+      <comment>Whether a divider must be added below this option. Note that it is typically recommended to use _Menu Group_ to create dividers.</comment>
       <name>Bottom Divider</name>
       <type>string</type>
       <controlType>checkbox</controlType>

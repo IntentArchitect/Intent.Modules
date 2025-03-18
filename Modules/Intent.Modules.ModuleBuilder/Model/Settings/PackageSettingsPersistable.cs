@@ -27,6 +27,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlAttribute("typeId")]
         public string SpecializationTypeId { get; set; }
 
+        [XmlElement("comment")]
+        public string Comment { get; set; }
+
         [XmlElement("sortChildren")]
         public SortChildrenOptions SortChildren { get; set; }
 

@@ -58,6 +58,7 @@ namespace Intent.ModuleBuilder.Api
             return new ElementCreationOptionOld
             {
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                MenuGroup = this.GetOptionSettings().MenuGroup().GetValueOrDefault(0),
                 Type = ContextMenuOptionType.Element,
                 SpecializationTypeId = _element.TypeReference.Element.Id,
                 SpecializationType = _element.TypeReference.Element.Name,
@@ -78,6 +79,7 @@ namespace Intent.ModuleBuilder.Api
             return new ElementCreationOption
             {
                 Type = ContextMenuOptionType.Element,
+                MenuGroup = this.GetOptionSettings().MenuGroup().GetValueOrDefault(0),
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
                 SpecializationTypeId = _element.TypeReference.Element.Id,
                 SpecializationType = _element.TypeReference.Element.Name,

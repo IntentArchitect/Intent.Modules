@@ -34,6 +34,7 @@ return `[${shortcut}]`;</displayFunction>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
     <property id="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b">
+      <comment>What shortcut can be used to trigger this option (e.g. ctrl + shift + e)</comment>
       <name>Shortcut</name>
       <type>string</type>
       <controlType>text</controlType>
@@ -67,6 +68,7 @@ return `[${shortcut}]`;</displayFunction>
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="8e092aa6-7d1a-4a06-af82-903e7642cef6">
+      <comment>Sets whether this option be applied multiple times to this element.</comment>
       <name>Allow Multiple</name>
       <type>string</type>
       <controlType>checkbox</controlType>
@@ -77,6 +79,7 @@ return `[${shortcut}]`;</displayFunction>
       <lookupTypes />
     </property>
     <property id="719e9dff-2b8d-407d-912d-fac99a158721">
+      <comment>Specifies the underlying C# property name that must be generated for this option.</comment>
       <name>Api Model Name</name>
       <type>string</type>
       <controlType>text</controlType>
@@ -86,6 +89,7 @@ return `[${shortcut}]`;</displayFunction>
       <lookupTypes />
     </property>
     <property id="77a9993c-40ba-47a9-a2a4-0974548a3f27">
+      <comment>A JavaScript function to dynamically determine whether this option is visible on the menu.</comment>
       <name>Is Option Visible Function</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -105,7 +109,18 @@ return `[${shortcut}]`;</displayFunction>
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="fdea9028-8611-4eb0-b1a5-4d54d267af41">
+      <comment>This menu option will be added to the specified menu group, which is the first one by default (Group 0). Menu groups are separated by dividers and ordered by their number.</comment>
+      <name>Menu Group</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default = 0)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="aeaeff9b-f55b-4888-92e9-5317b5c14016">
+      <comment>Whether a divider must be added above this option. Note that it is typically recommended to use _Menu Group_ to create dividers.</comment>
       <name>Top Divider</name>
       <type>string</type>
       <controlType>checkbox</controlType>
@@ -116,6 +131,7 @@ return `[${shortcut}]`;</displayFunction>
       <lookupTypes />
     </property>
     <property id="543cc5f5-0b0c-40cc-9df7-3ce45b555dd0">
+      <comment>Whether a divider must be added below this option. Note that it is typically recommended to use _Menu Group_ to create dividers.</comment>
       <name>Bottom Divider</name>
       <type>string</type>
       <controlType>checkbox</controlType>

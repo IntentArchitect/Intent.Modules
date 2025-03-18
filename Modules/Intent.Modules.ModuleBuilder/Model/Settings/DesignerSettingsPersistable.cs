@@ -272,8 +272,12 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public abstract class ContextMenuOption
     {
+        [XmlAttribute("group")]
+        public required int MenuGroup { get; set; }
+
         [XmlAttribute("order")]
         public required string Order { get; set; }
+        public bool ShouldSerializeOrder() => !string.IsNullOrWhiteSpace(Order);
 
         [XmlAttribute("type")]
         public required ContextMenuOptionType Type { get; set; }
