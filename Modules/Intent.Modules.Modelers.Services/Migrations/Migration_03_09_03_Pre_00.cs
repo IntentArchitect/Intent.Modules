@@ -10,11 +10,11 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.Modelers.Services.Migrations
 {
-    public class Migration_3_9_3_pre_0 : IModuleMigration
+    public class Migration_03_09_03_Pre_00 : IModuleMigration
     {
         private readonly IApplicationConfigurationProvider _configurationProvider;
 
-        public Migration_3_9_3_pre_0(IApplicationConfigurationProvider configurationProvider)
+        public Migration_03_09_03_Pre_00(IApplicationConfigurationProvider configurationProvider)
         {
             _configurationProvider = configurationProvider;
         }
