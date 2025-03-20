@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>1.1.1</Version>
+    <Version>1.1.2-pre.0</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent Architect</Product>
@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.7.2" />
+    <PackageReference Include="Intent.Modules.Modelers.Services" Version="3.7.3" />
     <PackageReference Include="Intent.Modules.Modelers.Types.ServiceProxies" Version="5.3.0" />
     <PackageReference Include="Intent.Packager" Version="3.5.0">
       <PrivateAssets>all</PrivateAssets>

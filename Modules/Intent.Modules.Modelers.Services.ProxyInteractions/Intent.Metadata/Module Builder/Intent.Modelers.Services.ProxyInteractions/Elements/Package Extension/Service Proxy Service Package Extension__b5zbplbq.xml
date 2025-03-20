@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="c8687b93-3b21-4c4f-8ae6-e3303b814d72" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>Service Proxy Service Package Extension</name>
+  <display>Service Proxy Service Package Extension: Services Package</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <typeReference id="e0c69699-4a6e-4b2f-ab08-20a5d38738dc">
+    <typeId>df45eaf6-9202-4c25-8dd5-677e9ba1e906</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Services</typePackageName>
+    <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>c42185b8-f247-42a6-9006-a968ffcf0c12</parentFolderId>
+  <packageId>53353621-7752-4a01-90f3-cd2e83ec19a4</packageId>
+  <packageName>Intent.Modelers.Services.ProxyInteractions</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="72dc5fb9-e155-4ba9-b2eb-c8a8877d7435" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>c8687b93-3b21-4c4f-8ae6-e3303b814d72</parentFolderId>
+      <packageId>53353621-7752-4a01-90f3-cd2e83ec19a4</packageId>
+      <packageName>Intent.Modelers.Services.ProxyInteractions</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="2f2c35d0-b644-4e47-85c2-f111acedffc1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Service Proxy</name>
+          <display>New Service Proxy: Service Proxy</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e5214dff-2b9e-4b9b-a8de-cf3dc256783d">
+            <typeId>07d8d1a9-6b9f-4676-b7d3-8db06299e35c</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Types.ServiceProxies</typePackageName>
+            <typePackageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>72dc5fb9-e155-4ba9-b2eb-c8a8877d7435</parentFolderId>
+          <packageId>53353621-7752-4a01-90f3-cd2e83ec19a4</packageId>
+          <packageName>Intent.Modelers.Services.ProxyInteractions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + p" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Service" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="aeaeff9b-f55b-4888-92e9-5317b5c14016" display="Top Divider" value="false" isActive="true" />
+                <property name="543cc5f5-0b0c-40cc-9df7-3ce45b555dd0" display="Bottom Divider" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

@@ -1,3 +1,7 @@
+### Version 1.1.2
+
+- Improvement: Allow ``Service Proxies`` to be created on Services Package and not just a folder.
+
 ### Version 1.1.1
 
 - Fixed: Proxy `Commands/Queries/Operations` are now created with the same attribute default values as the original `Command` or `Query`.
