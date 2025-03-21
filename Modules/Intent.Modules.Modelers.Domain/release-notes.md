@@ -2,6 +2,7 @@
 
 - Improvement: Newly created entities now have a default name of *NewEntity* and not *NewClass*.
 - Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.
+- Improvement: Updated help topics.
 
 ### Version 3.12.1
 
