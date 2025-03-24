@@ -844,8 +844,8 @@ function getDefaultRoutePrefix(includeLastPathSeparator) {
     }
     // if the route is null (or set to blank in settings, which results in null)
     // set it to blank (the actual value in settings)
-    if (!route) {
-        route = "";
+    if (!route || route == "") {
+        return "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -917,8 +917,11 @@ function exposeAsHttpEndPoint(command) {
     const domainElement = getMappedDomainElement(command);
     // Add the folder parts
     const routeParts = [];
-    const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
-    routeParts.push(...defaultRoutePrefixParts);
+    const defaultRoutePrefix = getDefaultRoutePrefix(false);
+    const defaultRoutePrefixParts = (!defaultRoutePrefix || defaultRoutePrefix == "") ? [] : defaultRoutePrefix.split("/");
+    if ((defaultRoutePrefixParts === null || defaultRoutePrefixParts === void 0 ? void 0 : defaultRoutePrefixParts.length) &gt; 0) {
+        routeParts.push(...defaultRoutePrefixParts);
+    }
     let folderParts = getFolderParts(command, domainElement);
     routeParts.push(...folderParts);
     if (domainElement != null) {
@@ -3327,8 +3330,8 @@ function getDefaultRoutePrefix(includeLastPathSeparator) {
     }
     // if the route is null (or set to blank in settings, which results in null)
     // set it to blank (the actual value in settings)
-    if (!route) {
-        route = "";
+    if (!route || route == "") {
+        return "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -3400,8 +3403,11 @@ function exposeAsHttpEndPoint(command) {
     const domainElement = getMappedDomainElement(command);
     // Add the folder parts
     const routeParts = [];
-    const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
-    routeParts.push(...defaultRoutePrefixParts);
+    const defaultRoutePrefix = getDefaultRoutePrefix(false);
+    const defaultRoutePrefixParts = (!defaultRoutePrefix || defaultRoutePrefix == "") ? [] : defaultRoutePrefix.split("/");
+    if ((defaultRoutePrefixParts === null || defaultRoutePrefixParts === void 0 ? void 0 : defaultRoutePrefixParts.length) &gt; 0) {
+        routeParts.push(...defaultRoutePrefixParts);
+    }
     let folderParts = getFolderParts(command, domainElement);
     routeParts.push(...folderParts);
     if (domainElement != null) {
@@ -6050,8 +6056,8 @@ function getDefaultRoutePrefix(includeLastPathSeparator) {
     }
     // if the route is null (or set to blank in settings, which results in null)
     // set it to blank (the actual value in settings)
-    if (!route) {
-        route = "";
+    if (!route || route == "") {
+        return "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -6124,8 +6130,11 @@ function exposeAsHttpEndPoint(request) {
     const domainElement = getMappedDomainElement(request);
     // Add the folder parts
     const routeParts = [];
-    const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
-    routeParts.push(...defaultRoutePrefixParts);
+    const defaultRoutePrefix = getDefaultRoutePrefix(false);
+    const defaultRoutePrefixParts = (!defaultRoutePrefix || defaultRoutePrefix == "") ? [] : defaultRoutePrefix.split("/");
+    if ((defaultRoutePrefixParts === null || defaultRoutePrefixParts === void 0 ? void 0 : defaultRoutePrefixParts.length) &gt; 0) {
+        routeParts.push(...defaultRoutePrefixParts);
+    }
     let folderParts = getFolderParts(request, domainElement);
     routeParts.push(...folderParts);
     if (domainElement != null) {
@@ -7665,8 +7674,8 @@ function getDefaultRoutePrefix(includeLastPathSeparator) {
     }
     // if the route is null (or set to blank in settings, which results in null)
     // set it to blank (the actual value in settings)
-    if (!route) {
-        route = "";
+    if (!route || route == "") {
+        return "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -7739,8 +7748,11 @@ function exposeAsHttpEndPoint(request) {
     const domainElement = getMappedDomainElement(request);
     // Add the folder parts
     const routeParts = [];
-    const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
-    routeParts.push(...defaultRoutePrefixParts);
+    const defaultRoutePrefix = getDefaultRoutePrefix(false);
+    const defaultRoutePrefixParts = (!defaultRoutePrefix || defaultRoutePrefix == "") ? [] : defaultRoutePrefix.split("/");
+    if ((defaultRoutePrefixParts === null || defaultRoutePrefixParts === void 0 ? void 0 : defaultRoutePrefixParts.length) &gt; 0) {
+        routeParts.push(...defaultRoutePrefixParts);
+    }
     let folderParts = getFolderParts(request, domainElement);
     routeParts.push(...folderParts);
     if (domainElement != null) {

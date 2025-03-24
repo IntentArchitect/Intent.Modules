@@ -8,8 +8,11 @@ function exposeAsHttpEndPoint(command: MacroApi.Context.IElementApi): void {
 
     // Add the folder parts
     const routeParts: string[] = [];
-    const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
-    routeParts.push(...defaultRoutePrefixParts);
+    const defaultRoutePrefix = getDefaultRoutePrefix(false);
+    const defaultRoutePrefixParts = (!defaultRoutePrefix || defaultRoutePrefix == "") ? [] : defaultRoutePrefix.split("/");
+    if (defaultRoutePrefixParts?.length > 0) {
+        routeParts.push(...defaultRoutePrefixParts);
+    }
 
     let folderParts = getFolderParts(command, domainElement);
     routeParts.push(...folderParts);

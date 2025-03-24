@@ -10,10 +10,11 @@ function getDefaultRoutePrefix(includeLastPathSeparator: boolean): string {
     {
         route = defaultApiRoutePrefix;
     }
+    
     // if the route is null (or set to blank in settings, which results in null)
     // set it to blank (the actual value in settings)
-    if (!route) {
-        route = "";
+    if (!route || route == "") {
+        return "";
     }
 
     if (includeLastPathSeparator && !route.endsWith("/")) {

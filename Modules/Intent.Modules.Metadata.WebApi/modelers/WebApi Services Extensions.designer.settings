@@ -207,8 +207,8 @@ return validateRestRoutesOperation(lookup(id));
     }
     // if the route is null (or set to blank in settings, which results in null)
     // set it to blank (the actual value in settings)
-    if (!route) {
-        route = "";
+    if (!route || route == "") {
+        return "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -2798,8 +2798,8 @@ configureUpload(element);
     }
     // if the route is null (or set to blank in settings, which results in null)
     // set it to blank (the actual value in settings)
-    if (!route) {
-        route = "";
+    if (!route || route == "") {
+        return "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -5417,8 +5417,8 @@ return "";</validateFunctionOverride>
     }
     // if the route is null (or set to blank in settings, which results in null)
     // set it to blank (the actual value in settings)
-    if (!route) {
-        route = "";
+    if (!route || route == "") {
+        return "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";
@@ -6230,8 +6230,8 @@ exposeAsHttpEndPoint(element);
     }
     // if the route is null (or set to blank in settings, which results in null)
     // set it to blank (the actual value in settings)
-    if (!route) {
-        route = "";
+    if (!route || route == "") {
+        return "";
     }
     if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
         route += "/";

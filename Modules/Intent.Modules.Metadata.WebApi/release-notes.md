@@ -1,6 +1,7 @@
 ### Version 4.7.5
 
 - Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.
+- Fixed: When an empty `Default API Route Prefix` is supplied, it will no longer create a route starting with `/`.
 
 ### Version 4.7.4
 
