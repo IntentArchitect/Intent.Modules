@@ -20,9 +20,9 @@ public class CSharpTypeParsingException : Exception
         return new CSharpTypeParsingException($"Invalid character '{character}' found at position {position}.");
     }
 
-    public static CSharpTypeParsingException UnknownType(int postition)
+    public static CSharpTypeParsingException UnknownType(int position)
     {
-        return new CSharpTypeParsingException($"Could not determine type at position {postition}.");
+        return new CSharpTypeParsingException($"Could not determine type at position {position}.");
     }
 }
 

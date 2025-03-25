@@ -135,6 +135,43 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
                 result.ShouldBe("Dictionary<String, String>");
             }
 
+            [Fact]
+            public void ItShouldHandleVeryComplexTypesCorrectly()
+            {
+                // Arrange
+                var foreignType = "Media.Api.Application.Common.Pagination.PagedResult<System.Collections.Generic.Dictionary<System.Guid, System.Collections.Generic.Dictionary<string, byte[]>>>";
+                var csharpTemplateBase = new TestableCSharpTemplateBase();
+                csharpTemplateBase.AddUsing("System");
+                csharpTemplateBase.AddUsing("System.Collections.Generic");
+                csharpTemplateBase.AddUsing("Media.Api.Application.Common.Pagination");
+                Logging.SetTracing(Substitute.For<ITracing>());
+
+                // Act
+                var result = csharpTemplateBase.NormalizeNamespace(foreignType);
+
+                // Assert
+                result.ShouldBe("PagedResult<Dictionary<Guid, Dictionary<string, byte[]>>>");
+            }
+
+            // [Fact]
+            // public void TypesWithSameNamesButDifferentNamespacesAreDoneCorrectly()
+            // {
+            //     var csharpTemplateBase = new TestableCSharpTemplateBase();
+            //     csharpTemplateBase.Namespace = "AdvancedMappingCrud.Cosmos.Tests.Domain.Repositories";
+            //     csharpTemplateBase.AddUsing("System");
+            //     csharpTemplateBase.AddUsing("System.Collections.Generic");
+            //     csharpTemplateBase.AddUsing("Microsoft.Azure.CosmosRepository");
+            //     csharpTemplateBase.AddUsing("AdvancedMappingCrud.Cosmos.Tests.Domain.Repositories");
+            //     
+            //     // Act
+            //     var externalType = csharpTemplateBase.NormalizeNamespace("Microsoft.Azure.CosmosRepository.IRepository<TDocument>");
+            //     var internalType = csharpTemplateBase.NormalizeNamespace("AdvancedMappingCrud.Cosmos.Tests.Domain.Repositories.IRepository<TDocument>");
+            //
+            //     // Assert
+            //     externalType.ShouldBe("IRepository<TDocument>");
+            //     internalType.ShouldBe("");
+            // }
+
             private class TestableCSharpTemplateBase : CSharpTemplateBase
             {
                 public TestableCSharpTemplateBase() : base(string.Empty, Substitute.For<IOutputTarget>())
@@ -144,6 +181,12 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
                     fileMetadata.GetFullLocationPath().Returns($"{Guid.NewGuid()}");
 
                     ConfigureFileMetadata(fileMetadata);
+                }
+
+                public string Namespace
+                {
+                    get => base.Namespace;
+                    set => FileMetadata.CustomMetadata["Namespace"] = value;
                 }
 
                 public override string TransformText()

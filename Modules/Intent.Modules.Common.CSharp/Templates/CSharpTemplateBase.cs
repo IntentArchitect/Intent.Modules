@@ -14,6 +14,7 @@ using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.CSharp.Utils;
 
 namespace Intent.Modules.Common.CSharp.Templates
 {
@@ -83,8 +84,8 @@ namespace Intent.Modules.Common.CSharp.Templates
     {
         private readonly ICollection<IAssemblyReference> _assemblyDependencies = new List<IAssemblyReference>();
         private readonly HashSet<string> _additionalUsingNamespaces = new();
-        private IEnumerable<string> _templateUsings;
-        private IEnumerable<string> _existingContentUsings;
+        private IEnumerable<string>? _templateUsings;
+        private IEnumerable<string>? _existingContentUsings;
 
         /// <summary>
         /// Creates a new instance of <see cref="CSharpTemplateBase{TModel}"/>.
@@ -253,53 +254,76 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <param name="foreignType">The foreign type which is ideally fully qualified</param>
         public virtual string NormalizeNamespace(string foreignType)
         {
-            foreignType = foreignType.Trim();
-
-            var isNullable = false;
-            if (foreignType.EndsWith("?", StringComparison.OrdinalIgnoreCase))
-            {
-                isNullable = true;
-                foreignType = foreignType[..^1];
-            }
+            var alteredForeignType = foreignType.Trim();
 
             // Handle Generics recursively:
-            var normalizedGenericTypes = default(string);
-            if (foreignType.Contains('<') && foreignType.Contains('>'))
+            if (alteredForeignType.Contains('<') && alteredForeignType.Contains('>'))
             {
-                var genericTypes = foreignType.Substring(foreignType.IndexOf('<', StringComparison.Ordinal) + 1, foreignType.Length - foreignType.IndexOf('<', StringComparison.Ordinal) - 2);
+                if (GenericCSharpTypeParser.TryParse(alteredForeignType, name =>
+                    {
+                        if (name is null)
+                        {
+                            return null;
+                        }
 
-                normalizedGenericTypes = genericTypes
-                    .Split(',')
-                    .Select(NormalizeNamespace)
-                    .Aggregate((x, y) => x + ", " + y);
-                foreignType = $"{foreignType[..foreignType.IndexOf('<', StringComparison.Ordinal)]}";
+                        return InternalNormalizeNamespace(name);
+                    }, out var parsed))
+                {
+                    alteredForeignType = parsed!;
+                }
             }
 
-            var usingPaths = ResolveAllUsings()
-                .Concat(_templateUsings ??= GetUsingsFromContent(GenerationEnvironment?.ToString() ?? string.Empty))
-                .Concat(_existingContentUsings ??= GetUsingsFromContent(TryGetExistingFileContent(out var existingContent) ? existingContent : string.Empty))
-                .Concat(_additionalUsingNamespaces)
-                .Concat(CSharpTypesCache.GetGlobalUsings(this))
-                // ReSharper disable once SuspiciousTypeConversion.Global
-                .Concat((this as ICSharpFileBuilderTemplate)?.CSharpFile.Usings.Select(u => u.Namespace) ?? [])
-                .Distinct()
-                .ToArray();
-            var localNamespace = Namespace;
-            var knownOtherPaths = usingPaths
-                .Where(x => !string.IsNullOrWhiteSpace(x))
-                .Distinct()
-                .ToArray();
+            return InternalNormalizeNamespace(alteredForeignType);
 
-            var nullable = isNullable ? "?" : string.Empty;
+            string InternalNormalizeNamespace(string fullTypeName)
+            {
+                var usingPaths = ResolveAllUsings()
+                    .Concat(_templateUsings ??= GetUsingsFromContent(GenerationEnvironment?.ToString() ?? string.Empty))
+                    .Concat(_existingContentUsings ??= GetUsingsFromContent(TryGetExistingFileContent(out var existingContent) ? existingContent : string.Empty))
+                    .Concat(_additionalUsingNamespaces)
+                    .Concat(CSharpTypesCache.GetGlobalUsings(this))
+                    // ReSharper disable once SuspiciousTypeConversion.Global
+                    .Concat((this as ICSharpFileBuilderTemplate)?.CSharpFile.Usings.Select(u => u.Namespace) ?? [])
+                    .Distinct()
+                    .ToArray();
+                var localNamespace = Namespace;
+                var knownOtherPaths = usingPaths
+                    .Where(x => !string.IsNullOrWhiteSpace(x))
+                    .Distinct()
+                    .ToArray();
 
-            return NormalizeNamespace(
-                       localNamespace: localNamespace,
-                       fullyQualifiedType: foreignType,
-                       knownOtherNamespaceNames: knownOtherPaths,
-                       usingPaths: usingPaths,
-                       outputTargetNames: CSharpTypesCache.GetOutputTargetNames(),
-                       knownTypes: CSharpTypesCache.GetKnownTypes()) +
-                   (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>{nullable}" : nullable);
+                string alteredFullTypeName = fullTypeName;
+                
+                var nullableFullTypeName = false;
+                if (fullTypeName.EndsWith("?", StringComparison.OrdinalIgnoreCase))
+                {
+                    nullableFullTypeName = true;
+                    alteredFullTypeName = alteredFullTypeName[..^1];
+                }
+                
+                string? genericTypes = null;
+                if (alteredFullTypeName.Contains('<') && alteredFullTypeName.Contains('>'))
+                {
+                    var innerBracketPosition = alteredFullTypeName.IndexOf('<', StringComparison.Ordinal) + 1;
+                    var lastCharIndex = alteredFullTypeName.Length - 1;
+                    var bracketContentLength = lastCharIndex - innerBracketPosition;
+                    genericTypes = alteredFullTypeName.Substring(innerBracketPosition, bracketContentLength);
+                    
+                    alteredFullTypeName = $"{alteredFullTypeName[..alteredFullTypeName.IndexOf('<', StringComparison.Ordinal)]}";
+                }
+                
+                var nullable = nullableFullTypeName ? "?" : string.Empty;
+
+                var normalizedType = NormalizeNamespace(
+                    localNamespace: localNamespace,
+                    fullyQualifiedType: alteredFullTypeName,
+                    knownOtherNamespaceNames: knownOtherPaths,
+                    usingPaths: usingPaths,
+                    outputTargetNames: CSharpTypesCache.GetOutputTargetNames(),
+                    knownTypes: CSharpTypesCache.GetKnownTypes());
+
+                return $"{normalizedType}{(!string.IsNullOrEmpty(genericTypes) ? $"<{genericTypes}>" : string.Empty)}{nullable}";
+            }
         }
 
         private class CompositeRegistry
@@ -382,6 +406,8 @@ namespace Intent.Modules.Common.CSharp.Templates
             TypeRegistry outputTargetNames,
             TypeRegistry knownTypes)
         {
+            ArgumentNullException.ThrowIfNull(fullyQualifiedType);
+            
             // NB: If changing this method, please run the unit tests against it
 
             var fullyQualifiedTypeParts = fullyQualifiedType.Split('.');
@@ -576,7 +602,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             var relevantContent = new List<string>();
             foreach (var line in lines)
             {
-                if (line.TrimStart().StartsWith("using ") && !line.Contains("="))
+                if (line.TrimStart().StartsWith("using ") && !line.Contains('='))
                 {
                     relevantContent.Add(line
                         .Replace(";", string.Empty)
@@ -602,7 +628,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         [Obsolete("See XML doc comments")]
 #pragma warning disable CS0618 // Type or member is obsolete
         public virtual RoslynMergeConfig ConfigureRoslynMerger() => _roslynMergeConfig ??= new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        private RoslynMergeConfig _roslynMergeConfig;
+        private RoslynMergeConfig? _roslynMergeConfig;
 #pragma warning restore CS0618 // Type or member is obsolete
 
         /// <inheritdoc />

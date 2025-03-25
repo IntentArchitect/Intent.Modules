@@ -2,6 +2,7 @@
 
 - Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.
 - Fixed: `ObjectUpdateMapping` would crash in the event where `Children` mappings were `null`.
+- Fixed: `NormalizeNamespace` has been fixed to ensure that it parses C# types correctly.
 
 ### Version 3.8.10
 
