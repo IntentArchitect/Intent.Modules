@@ -58,6 +58,30 @@ public class CSharpTypeParserTests
         var type = CSharpTypeParser.Parse(testTypeName);
         Assert.Equal(new CSharpTypeGeneric(genericName, [new CSharpTypeName(elementName)]), type);
     }
+
+    [Fact]
+    public void TryParseStringForType_VeryComplexType_1()
+    {
+        var type = CSharpTypeParser.Parse(
+            "System.Threading.Tasks.Task<Media.Api.Application.Common.Pagination.PagedResult<System.Collection.Generics.Dictionary<System.Guid, System.Collection.Generics.Dictionary<string, byte[]>>>>");
+        Assert.Equal(
+            new CSharpTypeGeneric("System.Threading.Tasks.Task",
+            [
+                new CSharpTypeGeneric("Media.Api.Application.Common.Pagination.PagedResult",
+                [
+                    new CSharpTypeGeneric("System.Collection.Generics.Dictionary",
+                    [
+                        new CSharpTypeName("System.Guid"),
+                        new CSharpTypeGeneric("System.Collection.Generics.Dictionary",
+                        [
+                            new CSharpTypeName("string"),
+                            new CSharpTypeArray(new CSharpTypeName("byte"))
+                        ])
+                    ])
+                ])
+            ]),
+            type);
+    }
     
     [Fact]
     public void TryParseStringForType_Tuple_PredefinedTypes()
