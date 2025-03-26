@@ -20,4 +20,5 @@ public interface ICSharpMethodDeclaration<out TCSharpMethodDeclaration> : ICShar
     TCSharpMethodDeclaration New();
     TCSharpMethodDeclaration Virtual();
     TCSharpMethodDeclaration Abstract();
+    TCSharpMethodDeclaration WithoutMethodModifier();
 }

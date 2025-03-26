@@ -1,0 +1,12 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class MyClass
+    {
+        public void TestMethod()
+        {
+            var y = 789;
+        }
+    }
+}

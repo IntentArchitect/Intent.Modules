@@ -69,6 +69,13 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         return this;
     }
 
+    public CSharpInterfaceMethod WithoutMethodModifier()
+    {
+        AccessModifier = string.Empty;
+        IsStatic = false;
+        return this;
+    }
+
     public CSharpInterfaceMethod(string returnType, string name, CSharpInterface parent)
         : this(CSharpTypeParser.Parse(returnType), name, parent)
     {
@@ -459,6 +466,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Protected() => _wrapper.Protected();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Virtual() => _wrapper.Virtual();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.WithoutAccessModifier() => _wrapper.WithoutAccessModifier();
+    ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.WithoutMethodModifier() => _wrapper.WithoutMethodModifier();
     string IHasCSharpName.Name => _wrapper.Name;
     IList<ICSharpStatement> IHasCSharpStatementsActual.Statements => _wrapper.Statements;
     IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => _wrapper.Parameters;

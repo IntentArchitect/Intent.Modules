@@ -5,8 +5,8 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpObjectInitStatement : CSharpStatement, IHasCSharpStatements
 {
-    private readonly string _lhs;
-    private readonly CSharpStatement _rhs;
+    private string _lhs;
+    private CSharpStatement _rhs;
 
     public CSharpObjectInitStatement(string lhs, CSharpStatement rhs) : base(null)
     {
@@ -16,6 +16,22 @@ public class CSharpObjectInitStatement : CSharpStatement, IHasCSharpStatements
     }
 
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
+
+    public string LeftHandSide => _lhs;
+
+    public CSharpObjectInitStatement WithLeftHandSide(string lhs)
+    {
+        _lhs = lhs; 
+        return this;
+    }
+
+    public CSharpStatement RightHandSide => _rhs;
+
+    public CSharpObjectInitStatement WithRightHandSide(CSharpStatement rhs)
+    {
+        _rhs = rhs;
+        return this;
+    }
 
     public override string GetText(string indentation)
     {

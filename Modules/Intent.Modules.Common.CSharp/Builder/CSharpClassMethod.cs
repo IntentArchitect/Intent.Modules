@@ -314,6 +314,14 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
         return this;
     }
 
+    public CSharpClassMethod WithoutMethodModifier()
+    {
+        OverrideModifier = string.Empty;
+        IsAbstract = false;
+
+        return this;
+    }
+
     public CSharpClassMethod Sync()
     {
         IsAsync = false;
@@ -592,6 +600,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Virtual() => _wrapper.Virtual();
 
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.WithoutAccessModifier() => _wrapper.WithoutAccessModifier();
+
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.WithoutMethodModifier() => _wrapper.WithoutMethodModifier();
 
     IList<ICSharpStatement> IHasCSharpStatementsActual.Statements => _wrapper.Statements;
 
