@@ -104,7 +104,7 @@ internal class GenericCSharpTypeParser
     {
         if (expectedType is not null && _currentScope.DetectedType != expectedType)
         {
-            throw GenericCSharpTypeParsingException.InvalidCharacter(endingChar, _positionIndex);
+            throw GenericCSharpTypeParsingException.InvalidCharacter(_currentChar, _positionIndex);
         }
 
         _currentScope.DetectedType = newType;

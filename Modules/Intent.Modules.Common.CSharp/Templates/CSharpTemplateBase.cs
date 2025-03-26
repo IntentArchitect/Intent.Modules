@@ -256,73 +256,46 @@ namespace Intent.Modules.Common.CSharp.Templates
         {
             var alteredForeignType = foreignType.Trim();
 
-            // Handle Generics recursively:
-            if (alteredForeignType.Contains('<') && alteredForeignType.Contains('>'))
-            {
-                if (GenericCSharpTypeParser.TryParse(alteredForeignType, name =>
-                    {
-                        if (name is null)
-                        {
-                            return null;
-                        }
-
-                        return InternalNormalizeNamespace(name);
-                    }, out var parsed))
+            var usingPaths = ResolveAllUsings()
+                .Concat(_templateUsings ??= GetUsingsFromContent(GenerationEnvironment?.ToString() ?? string.Empty))
+                .Concat(_existingContentUsings ??= GetUsingsFromContent(TryGetExistingFileContent(out var existingContent) ? existingContent : string.Empty))
+                .Concat(_additionalUsingNamespaces)
+                .Concat(CSharpTypesCache.GetGlobalUsings(this))
+                // ReSharper disable once SuspiciousTypeConversion.Global
+                .Concat((this as ICSharpFileBuilderTemplate)?.CSharpFile.Usings.Select(u => u.Namespace) ?? [])
+                .Distinct()
+                .ToArray();
+            var localNamespace = Namespace;
+            var knownOtherPaths = usingPaths
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Distinct()
+                .ToArray();
+            
+            if (GenericCSharpTypeParser.TryParse(alteredForeignType, name =>
                 {
-                    alteredForeignType = parsed!;
-                }
+                    if (name is null)
+                    {
+                        return null;
+                    }
+
+                    return InternalNormalizeNamespace(name);
+                }, out var parsed))
+            {
+                alteredForeignType = parsed!;
             }
 
-            return InternalNormalizeNamespace(alteredForeignType);
+            return alteredForeignType;
 
             string InternalNormalizeNamespace(string fullTypeName)
             {
-                var usingPaths = ResolveAllUsings()
-                    .Concat(_templateUsings ??= GetUsingsFromContent(GenerationEnvironment?.ToString() ?? string.Empty))
-                    .Concat(_existingContentUsings ??= GetUsingsFromContent(TryGetExistingFileContent(out var existingContent) ? existingContent : string.Empty))
-                    .Concat(_additionalUsingNamespaces)
-                    .Concat(CSharpTypesCache.GetGlobalUsings(this))
-                    // ReSharper disable once SuspiciousTypeConversion.Global
-                    .Concat((this as ICSharpFileBuilderTemplate)?.CSharpFile.Usings.Select(u => u.Namespace) ?? [])
-                    .Distinct()
-                    .ToArray();
-                var localNamespace = Namespace;
-                var knownOtherPaths = usingPaths
-                    .Where(x => !string.IsNullOrWhiteSpace(x))
-                    .Distinct()
-                    .ToArray();
-
-                string alteredFullTypeName = fullTypeName;
-                
-                var nullableFullTypeName = false;
-                if (fullTypeName.EndsWith("?", StringComparison.OrdinalIgnoreCase))
-                {
-                    nullableFullTypeName = true;
-                    alteredFullTypeName = alteredFullTypeName[..^1];
-                }
-                
-                string? genericTypes = null;
-                if (alteredFullTypeName.Contains('<') && alteredFullTypeName.Contains('>'))
-                {
-                    var innerBracketPosition = alteredFullTypeName.IndexOf('<', StringComparison.Ordinal) + 1;
-                    var lastCharIndex = alteredFullTypeName.Length - 1;
-                    var bracketContentLength = lastCharIndex - innerBracketPosition;
-                    genericTypes = alteredFullTypeName.Substring(innerBracketPosition, bracketContentLength);
-                    
-                    alteredFullTypeName = $"{alteredFullTypeName[..alteredFullTypeName.IndexOf('<', StringComparison.Ordinal)]}";
-                }
-                
-                var nullable = nullableFullTypeName ? "?" : string.Empty;
-
                 var normalizedType = NormalizeNamespace(
                     localNamespace: localNamespace,
-                    fullyQualifiedType: alteredFullTypeName,
+                    fullyQualifiedType: fullTypeName,
                     knownOtherNamespaceNames: knownOtherPaths,
                     usingPaths: usingPaths,
                     outputTargetNames: CSharpTypesCache.GetOutputTargetNames(),
                     knownTypes: CSharpTypesCache.GetKnownTypes());
-
-                return $"{normalizedType}{(!string.IsNullOrEmpty(genericTypes) ? $"<{genericTypes}>" : string.Empty)}{nullable}";
+                return normalizedType;
             }
         }
 
