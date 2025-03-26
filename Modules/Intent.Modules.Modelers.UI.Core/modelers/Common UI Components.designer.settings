@@ -1185,7 +1185,7 @@ return display;
               <isRequiredFunction>return !element.typeReference.getIsNullable();</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>false</isTraversable>
+              <isTraversable>true</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
               <represents>data</represents>

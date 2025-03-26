@@ -1778,7 +1778,7 @@ return display;
                 <childSetting id="db5b4461-17f3-4f50-af26-980b01311bb3" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return element.getParent().isHostSource();</isMappableFunction>
-                  <isTraversable>false</isTraversable>
+                  <isTraversable>true</isTraversable>
                   <traversableTypes />
                   <canBeModified>false</canBeModified>
                   <represents>data</represents>
