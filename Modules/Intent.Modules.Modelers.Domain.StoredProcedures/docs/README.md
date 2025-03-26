@@ -6,7 +6,7 @@ Stored procedures are exposed through `Repository` element types on the designer
 
 ![New Repository context menu option](images/new-repository-context-menu-option.png)
 
-> ![NOTE]
+> [!NOTE]
 > `Stored Procedure` elements created on a `Folder` or `Package` are not generally generated but [can be used as mapping targets for operations](#mapping-stored-procedure-invocations).
 
 ## Creating a stored procedure
@@ -51,7 +51,7 @@ To be able to use both returned results, we will want to model an `Operation` on
 
   ![GetSumAndProductResult Data Contract](images/get-sum-and-product-result-data-contract.png)
 
-  > ![HINT]
+  > [!TIP]
   > To create a `Data Contract` you use the `New Domain Contract` context menu option.
 
 2. Create an `Operation` on the `Repository`, setting its return type to the `Data Contract` and adding input parameters:
@@ -98,7 +98,7 @@ We have now completed exposing the stored procedure through an `Operation`. We a
 
   ![Choosing the type for the Call Service Operation](images/choosing-the-type-for-call-service-operation.png)
 
-  > ![!HINT]
+  > [!TIP]
   >
   > You can hover over the types to see their full path in their respective packages.
 
