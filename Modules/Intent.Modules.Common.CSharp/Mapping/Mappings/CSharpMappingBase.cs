@@ -7,6 +7,7 @@ using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
+using Intent.Modules.Common.Types.Api;
 
 #nullable enable
 
@@ -85,7 +86,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
     /// In the case where it isn't mapped, it will work out it's mapping based on child mappings.
     /// </summary>
     /// <returns></returns>
-    protected IList<IElementMappingPathTarget> GetSourcePath()
+    protected virtual IList<IElementMappingPathTarget> GetSourcePath()
     {
         if (Mapping != null)
         {
@@ -321,7 +322,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
             // GCB - this code (now commented out) was seriously hacky and broke in a simple use case of assigning a DTO to a Model (UI)
             //var child = children.First();
             //var accessPath = child.Mapping.SourcePath.SkipLast(1).Select(s => child.TryGetSourceReplacement(s.Element, out var a) ? a : s.Name).ToArray();
-            return new CSharpConditionalExpressionStatement($"{GetSourcePathText(GetSourcePath())} is not null", instantiationStatement, "null");
+            return new CSharpConditionalExpressionStatement($"{GetSourcePathText(GetSourcePath(), true)} is not null", instantiationStatement, "null");
         }
 
         return instantiationStatement;

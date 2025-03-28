@@ -46,7 +46,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 {
                     var m = new SelectToListMapping(_mappingModel, _template);
                     m.Parent = this.Parent;
-                    return m.GetSourceStatement();
+                    return m.GetSourceStatement(Model.TypeReference.IsNullable);
                     /*
                     ANYONE, YOU CAN DELETE WHEN YOU SEE THIS:
                     Template.AddUsing("System.Linq");
@@ -179,6 +179,51 @@ namespace Intent.Modules.Common.CSharp.Mapping
             }
 
             return GetNullableAwareInstantiation(Model, Children, propInit);
+        }
+
+        protected override IList<IElementMappingPathTarget> GetSourcePath()
+        {
+            if (Mapping != null)
+            {
+                return Mapping.SourcePath;
+            }
+
+            // get all mappings
+            var childMappings = GetAllChildren().Where(c => c.Mapping != null).ToList();
+            // get the depth from the end heirarchy of children and get the lowest child as well
+            var depthDetails = GetMaxDepthWithChild(this, [.. childMappings]);
+
+            // get the mapping based off the lowest child.
+            // when we calculate the depth from the bottom, we want to make sure the "bottom" is the same child mapping
+            // so we calculate it from the lowest item
+            int pathDepth = depthDetails.maxDepth;
+            var mapping = childMappings.FirstOrDefault(c => c == depthDetails.deepestChild)?.Mapping ?? childMappings.First().Mapping;
+
+            // if this has a mix of object init statements (mapping is null) and normal mapping, then adjust the depth by 1
+            // this is to cater for scenarios where there is a heirarchy of objects without any mappings inside them
+            //pathDepth = pathDepth - (Children.Any(x => x.Mapping != null) && Children.Any(x => x.Mapping == null) ||
+            //            // adjust the depth for colletions
+            //            (mapping.SourcePath.ToList().Any(s => s.Element.TypeReference.IsCollection)) ? 1 : 0);
+
+
+            var toPath = mapping.SourcePath.ToList();
+
+            return toPath.Take(toPath.Count - pathDepth).ToList();
+        }
+
+        // 
+        private static (int maxDepth, ICSharpMapping? deepestChild) GetMaxDepthWithChild(ICSharpMapping mapping, HashSet<ICSharpMapping> childMappingsSet)
+        {
+            if (!mapping.Children.Any())
+                return (0, childMappingsSet.Contains(mapping) ? mapping : null);
+
+            var deepest = mapping.Children
+                .Select(child => GetMaxDepthWithChild(child, childMappingsSet)) // Recursively get depth for each child
+                .MaxBy(result => result.maxDepth); // Find the child with the max depth
+
+            var validChild = deepest.deepestChild ?? (childMappingsSet.Contains(mapping) ? mapping : null);
+
+            return (deepest.maxDepth + 1, validChild);
         }
 
         private IReadOnlyList<(CSharpConstructor Ctor, IElement Element)> GetFileBuilderConstructors()
