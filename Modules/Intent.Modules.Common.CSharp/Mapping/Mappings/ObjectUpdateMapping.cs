@@ -34,7 +34,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
             {
                 foreach (var statement in Children.SelectMany(x => x.GetMappingStatements()))
                 {
-                    yield return statement.WithSemicolon();
+                    yield return statement is CSharpIfStatement or CSharpElseStatement ? statement : statement.WithSemicolon();
                 }
             }
             else if (Model is IAssociationEnd associationEnd
@@ -43,11 +43,33 @@ public class ObjectUpdateMapping : CSharpMappingBase
             {
                 if (associationEnd.TypeReference.IsNullable)
                 {
-                    yield return $"{GetTargetPathText()} ??= new {_template.GetTypeName((IElement)associationEnd.TypeReference.Element)}();";
+                    var ifStatement = new CSharpIfStatement($"{GetSourcePathText(GetSourcePath(), true)} != null");
+
+                    ifStatement.SeparatedFromPrevious(false);
+                    ifStatement.AddStatement($"{GetTargetPathText()} ??= new {_template.GetTypeName((IElement)associationEnd.TypeReference.Element)}();");
+
+                    foreach (var statement in Children.SelectMany(x => x.GetMappingStatements()))
+                    {
+                        ifStatement.AddStatement(statement is CSharpIfStatement or CSharpElseStatement ? statement : statement.WithSemicolon());
+                    }
+
+                    yield return ifStatement;
+
+                    // only add the else if the configuration has been set
+                    if (ShouldAddElse())
+                    {
+                        var @else = new CSharpElseStatement();
+                        @else.AddStatement($"{GetTargetPathText().Replace("?", "")} = null;");
+
+                        yield return @else;
+                    }
                 }
-                foreach (var statement in Children.SelectMany(x => x.GetMappingStatements()))
+                else
                 {
-                    yield return statement.WithSemicolon();
+                    foreach (var statement in Children.SelectMany(x => x.GetMappingStatements()))
+                    {
+                        yield return statement is CSharpIfStatement or CSharpElseStatement ? statement : statement.WithSemicolon();
+                    }
                 }
             }
             else
@@ -88,6 +110,26 @@ public class ObjectUpdateMapping : CSharpMappingBase
         return null;
     }
 
+    private bool ShouldAddElse()
+    {
+        // get the domain interactions setting
+        var groupSetting = Template.ExecutionContext.GetSettings().GetGroup("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad");
+
+        if(groupSetting == null)
+        {
+            return false;
+        }
+
+        var nullChildEntitySetting = groupSetting.GetSetting("4a1bc3ad-9ec2-499e-99d8-beba03a1d5bb");
+
+        if (nullChildEntitySetting == null)
+        {
+            return false;
+        }
+
+        return nullChildEntitySetting.Value == "set-to-null";
+    }
+
     private string GetPrimaryKeyComparisonMappings()
     {
         // get all elements on the target element (which is a primary key)
@@ -122,7 +164,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
             var @class = file.Classes.FirstOrDefault(c => c.HasMetadata("handler")) ?? file.Classes.First();
 
             var existingMethod = @class.FindMethod(x => x.Name == updateMethodName &&
-                            x.ReturnType == interfaceName &&
+                            (x.ReturnType == interfaceName || x.ReturnType == $"{interfaceName}?") &&
                             (x.Parameters.FirstOrDefault()?.Type == interfaceName || x.Parameters.FirstOrDefault()?.Type == $"{interfaceName}{nullableChar}") && 
                             x.Parameters.Skip(1).FirstOrDefault()?.Type == _template.GetTypeName((IElement)fromField.TypeReference.Element));
 
@@ -148,7 +190,10 @@ public class ObjectUpdateMapping : CSharpMappingBase
 
                 SetSourceReplacement(GetSourcePath().Last().Element, "dto");
                 SetTargetReplacement(GetTargetPath().Last().Element, "entity");
-                method.AddStatements(Children.SelectMany(x => x.GetMappingStatements()).Select(x => x.WithSemicolon()));
+                method.AddStatements(Children.SelectMany(x => x.GetMappingStatements()).Select(x =>
+                {
+                    return x is CSharpIfStatement or CSharpElseStatement ? x : x.WithSemicolon();
+                }));
 
                 method.AddStatement("return entity;");
             });

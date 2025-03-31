@@ -1,3 +1,7 @@
+### Version 2.1.4
+
+- Improvement: New setting to control how null child entities should be handled when performing an *update*.
+
 ### Version 2.1.3
 
 - Fixed: `Call Service Operation` mapping didn't allow mapping a 1 -> * association on an Entity that is supplied to the operation.

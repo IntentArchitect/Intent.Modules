@@ -113,5 +113,42 @@ namespace Intent.Modules.Modelers.Services.DomainInteractions.Settings
             Default,
             ProjectTo,
         }
+        public NullChildUpdateImplementationOptions NullChildUpdateImplementation() => new NullChildUpdateImplementationOptions(_groupSettings.GetSetting("4a1bc3ad-9ec2-499e-99d8-beba03a1d5bb")?.Value);
+
+        public class NullChildUpdateImplementationOptions
+        {
+            public readonly string Value;
+
+            public NullChildUpdateImplementationOptions(string value)
+            {
+                Value = value;
+            }
+
+            public NullChildUpdateImplementationOptionsEnum AsEnum()
+            {
+                return Value switch
+                {
+                    "ignore" => NullChildUpdateImplementationOptionsEnum.Ignore,
+                    "set-to-null" => NullChildUpdateImplementationOptionsEnum.SetToNull,
+                    _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
+                };
+            }
+
+            public bool IsIgnore()
+            {
+                return Value == "ignore";
+            }
+
+            public bool IsSetToNull()
+            {
+                return Value == "set-to-null";
+            }
+        }
+
+        public enum NullChildUpdateImplementationOptionsEnum
+        {
+            Ignore,
+            SetToNull,
+        }
     }
 }

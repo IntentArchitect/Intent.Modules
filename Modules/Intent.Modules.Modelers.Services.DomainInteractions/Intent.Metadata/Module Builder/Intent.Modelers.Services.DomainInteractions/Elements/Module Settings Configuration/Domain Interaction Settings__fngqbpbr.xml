@@ -126,5 +126,62 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="4a1bc3ad-9ec2-499e-99d8-beba03a1d5bb" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Null Child Update Implementation</name>
+      <display>Null Child Update Implementation</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad</parentFolderId>
+      <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+      <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="How NULL child entities should be handled when [updating a domain entity.](https://docs.intentarchitect.com/articles/modules-common/intent-modelers-services-domaininteractions/intent-modelers-services-domaininteractions.html#null-child-update-implementation)" isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="set-to-null" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="c1b54ca0-78e2-4c53-aa79-a81d5b6e5fd2" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Ignore</name>
+          <display>Ignore = ignore</display>
+          <isAbstract>false</isAbstract>
+          <value>ignore</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>4a1bc3ad-9ec2-499e-99d8-beba03a1d5bb</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="24c83ae9-1999-49bf-b1fc-576595e79d7e" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Set to NULL</name>
+          <display>Set to NULL = set-to-null</display>
+          <isAbstract>false</isAbstract>
+          <value>set-to-null</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>4a1bc3ad-9ec2-499e-99d8-beba03a1d5bb</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>
