@@ -43,6 +43,19 @@ public class ObjectUpdateMapping : CSharpMappingBase
             {
                 if (associationEnd.TypeReference.IsNullable)
                 {
+                    // if we are at the root, then we don't do the null check on the request object
+                    if (GetSourcePath().Count == 1)
+                    {
+                        yield return $"{GetTargetPathText()} ??= new {_template.GetTypeName((IElement)associationEnd.TypeReference.Element)}();";
+                        
+                        foreach (var statement in Children.SelectMany(x => x.GetMappingStatements()))
+                        {
+                            yield return statement is CSharpIfStatement or CSharpElseStatement ? statement : statement.WithSemicolon();
+                        }
+
+                        yield break;
+                    }
+
                     var ifStatement = new CSharpIfStatement($"{GetSourcePathText(GetSourcePath(), true)} != null");
 
                     ifStatement.SeparatedFromPrevious(false);
@@ -115,7 +128,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
         // get the domain interactions setting
         var groupSetting = Template.ExecutionContext.GetSettings().GetGroup("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad");
 
-        if(groupSetting == null)
+        if (groupSetting == null)
         {
             return false;
         }
@@ -158,21 +171,21 @@ public class ObjectUpdateMapping : CSharpMappingBase
         var fieldIsNullable = fromField.TypeReference.IsNullable;
         var fromFieldNullable = fieldIsNullable ? "?" : string.Empty;
         string nullableChar = _template.OutputTarget.GetProject().NullableEnabled ? "?" : "";
-       
+
         _template.CSharpFile.AfterBuild(file =>
         {
             var @class = file.Classes.FirstOrDefault(c => c.HasMetadata("handler")) ?? file.Classes.First();
 
             var existingMethod = @class.FindMethod(x => x.Name == updateMethodName &&
                             (x.ReturnType == interfaceName || x.ReturnType == $"{interfaceName}?") &&
-                            (x.Parameters.FirstOrDefault()?.Type == interfaceName || x.Parameters.FirstOrDefault()?.Type == $"{interfaceName}{nullableChar}") && 
+                            (x.Parameters.FirstOrDefault()?.Type == interfaceName || x.Parameters.FirstOrDefault()?.Type == $"{interfaceName}{nullableChar}") &&
                             x.Parameters.Skip(1).FirstOrDefault()?.Type == _template.GetTypeName((IElement)fromField.TypeReference.Element));
 
             if (existingMethod != null)
             {
                 return;
             }
-            
+
             @class.AddMethod($"{interfaceName}{fromFieldNullable}", updateMethodName, method =>
             {
                 method.AddAttribute(CSharpIntentManagedAttribute.Fully());
