@@ -4,6 +4,7 @@
 - Improvement: `WithoutMethodModifier` added to CSharpClassMethod to remvoe any method modifiers (e.g. `new`, `override`, `static`, `abstract`)
 - Improvement: `Lhs` and `Rhs` values of `CSharpObjectInitStatement` can now be read and modified.
 - Fixed: `NormalizeNamespace` has been fixed to ensure that it parses C# types correctly.
+- Fixed: Advanced mapping issue across aggregates.
 
 ### Version 3.8.11
 

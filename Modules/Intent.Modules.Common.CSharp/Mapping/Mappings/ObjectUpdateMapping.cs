@@ -102,7 +102,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
     {
         if (Mapping == null) // is traversal
         {
-            return GetSourcePathText();
+            return GetSourcePathText(GetSourcePath());
         }
         else
         {
@@ -191,7 +191,12 @@ public class ObjectUpdateMapping : CSharpMappingBase
                 method.AddAttribute(CSharpIntentManagedAttribute.Fully());
                 method.Private().Static();
                 method.AddParameter($"{interfaceName}{nullableChar}", "entity");
-                method.AddParameter(_template.GetTypeName((IElement)GetSourcePath().Last().Element.TypeReference.Element), "dto");
+
+                // this is to cater for when the last element is actually the root dto
+                IElement dtoParameterType = GetSourcePath().Last().Element.TypeReference.Element is null ? GetSourcePath().Last().Element as IElement :
+                    GetSourcePath().Last().Element.TypeReference.Element as IElement;
+
+                method.AddParameter(_template.GetTypeName(dtoParameterType), "dto");
 
                 if (fieldIsNullable)
                 {
