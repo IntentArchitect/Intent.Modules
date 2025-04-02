@@ -1,6 +1,7 @@
 ### Version 2.1.4
 
 - Improvement: New setting to control how null child entities should be handled when performing an *update*.
+- Improvement: A validation message will show when a "Call Service Operation" or "Query Entity Action" has a name which conflicts with a sibling element (such as a field on a Command) as such conflicts can cause ambiguities in mappings.
 
 ### Version 2.1.3
 
