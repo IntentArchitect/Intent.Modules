@@ -1,3 +1,7 @@
+### Version 3.5.1
+
+- Improvement: Added accelerator to easily create an entity repository as well as improved documentation.
+
 ### Version 3.5.0
 
 - New Feature: Repositories can now have their own Operations modeled for both Bespoke and Entity-based Repositories.

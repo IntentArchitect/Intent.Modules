@@ -1,3 +1,7 @@
+### Version 2.1.5
+
+- Improvement: Accelerators added to easily add a CQRS or Traditional service to invoke a repository operation.
+
 ### Version 2.1.4
 
 - Improvement: New setting to control how null child entities should be handled when performing an *update*.

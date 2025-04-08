@@ -10,6 +10,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>b62f476a-6929-4c1a-8ea1-127593e18731</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#bed8b38a-f2c1-4ff2-9221-a6397799c2d7</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ClassExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ClassExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>b62f476a-6929-4c1a-8ea1-127593e18731</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#17a62c8a-f8cf-40c7-b39c-7d80d8dbb096</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DiagramExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DiagramExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>b62f476a-6929-4c1a-8ea1-127593e18731</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#a81ce420-c177-4035-9d07-31bae2308a36</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FolderExtensionsModel.cs</ApplicationRelativeFilePath>
@@ -62,6 +78,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Domain Extensions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Domain Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aabe27ca-0e9f-47f0-98e9-f55da1a17805</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.DocumentationTemplate#df333e89-d72a-4fd3-be2e-5b9fa6287cdd</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>resources/documentation.json</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>documentation.json</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="bed8b38a-f2c1-4ff2-9221-a6397799c2d7" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>Class Extensions</name>
+  <display>Class Extensions: Class</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <typeReference id="eb95386c-9c68-4896-9c9d-5cc31f7e2af5">
+    <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Domain</typePackageName>
+    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>79735715-7042-41f3-bf1f-5dc9167efa2c</parentFolderId>
+  <packageId>464e0fa3-c4c0-497e-b252-a5df39f59158</packageId>
+  <packageName>Intent.Modelers.Domain.Repositories</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="35226a83-3965-4224-8aef-20c68a0c5180" display="Mode" value="Inherit" isActive="true" />
+        <property name="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0" display="Display Name" isActive="false" />
+        <property name="17223dbd-8df0-4700-8b81-02274ca3ed7f" display="Hint" isActive="false" />
+        <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" isActive="false" />
+        <property name="08ec0581-c90a-489b-858f-ee265327c948" display="Target Traits" isActive="true" />
+        <property name="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e" display="Default Type Id" isActive="false" />
+        <property name="7a0c4185-1c08-4d3e-9185-14683d7a3bd0" display="Allow Collection" value="Inherit" isActive="false" />
+        <property name="e3dc90ec-4f5f-4f20-b271-e28a5094dc91" display="Allow Nullable" value="Inherit" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="312eab00-f6db-492e-bbb4-e41383c8d3d8" name="Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" value="" isActive="true" />
+        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="946473cc-72b4-4b86-85f1-fa5c02174438" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>bed8b38a-f2c1-4ff2-9221-a6397799c2d7</parentFolderId>
+      <packageId>464e0fa3-c4c0-497e-b252-a5df39f59158</packageId>
+      <packageName>Intent.Modelers.Domain.Repositories</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="9f372ad7-5bd9-40cb-a28a-87e48dea88a5" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Model Repository</name>
+          <display>Model Repository: Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="80087a9f-bdbc-462a-aa76-7ddc505529fb">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>946473cc-72b4-4b86-85f1-fa5c02174438</parentFolderId>
+          <packageId>464e0fa3-c4c0-497e-b252-a5df39f59158</packageId>
+          <packageName>Intent.Modelers.Domain.Repositories</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="var elementParent = element.getParent();&#xD;&#xA;let repoName = `${element.getName()}Repository`&#xD;&#xA;&#xD;&#xA;// should never be null&#xD;&#xA;if(elementParent == null)&#xD;&#xA;{&#xD;&#xA;    elementParent = elementParent.getPackage();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// don't create duplicates&#xD;&#xA;if(elementParent.getChildren(&quot;Repository&quot;).filter(r =&gt; r.getName() == repoName) &lt;= 0) {&#xD;&#xA;    var repo = createElement(&quot;Repository&quot;, repoName, elementParent.id);&#xD;&#xA;    repo.typeReference.setType(element.id);&#xD;&#xA;}" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="ctrl + shift + r" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

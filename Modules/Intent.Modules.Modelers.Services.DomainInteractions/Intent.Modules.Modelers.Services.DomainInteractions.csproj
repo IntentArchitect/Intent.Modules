@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>2.1.4</Version>
+    <Version>2.1.5-pre.0</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent Architect</Product>
@@ -34,6 +34,21 @@
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.5" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="modelers\Services Domain Interactions.designer.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Services Domain Interactions.designer.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="modelers\Services Domain Interactions.designer.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Services Domain Interactions.designer.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
