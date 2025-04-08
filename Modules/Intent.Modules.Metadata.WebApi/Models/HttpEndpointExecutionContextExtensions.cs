@@ -76,14 +76,22 @@ public static class HttpEndpointExecutionContextExtensions
         {
             return false;
         }
-        
-        // Until we migrate this setting over to the WebAPI module form the ASP.NET Core Controllers module,
-        // we'll need to make use of the soft-linking for that setting.
-        var defaultApiSecuritySetting = context.GetSolutionConfig().GetApplicationConfig(applicationId)
+
+        try
+        {
+
+            // Until we migrate this setting over to the WebAPI module form the ASP.NET Core Controllers module,
+            // we'll need to make use of the soft-linking for that setting.
+            var defaultApiSecuritySetting = context.GetSolutionConfig().GetApplicationConfig(applicationId)
             .ModuleSetting
             .FirstOrDefault(p => p.Id == "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb") // APISettings
             ?.GetSetting("061a559a-0d54-4eb1-8c70-ed0baa238a59"); //DefaultAPISecurityOptions
-        
-        return defaultApiSecuritySetting?.Value == "secured";
+
+            return defaultApiSecuritySetting?.Value == "secured";
+        }
+        catch //GetApplicationConfig throws an exception if application is not found need a TryGetApplciationConfig
+        {
+            return false;
+        }
     }
 }

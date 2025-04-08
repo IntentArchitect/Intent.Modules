@@ -1,3 +1,7 @@
+### Version 4.7.7
+
+- Fixed: A scenario proxies attempt to get information from Applications which are not in the current solution.
+
 ### Version 4.7.6
 
 - Fixed: `Http Settings` stereotype could not be applied on `Azure Function` elements.
