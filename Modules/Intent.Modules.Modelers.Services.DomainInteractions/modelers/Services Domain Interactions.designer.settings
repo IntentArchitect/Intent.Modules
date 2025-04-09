@@ -32500,9 +32500,6 @@ class RepositoryServiceHelper {
             return existing;
         }
         let serviceElement = createElement("Service", serviceName, folder.getPackage().id);
-        //const httpServiceSettingsStereotypeId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
-        // let httpServiceSettings = serviceElement.getStereotype(httpServiceSettingsStereotypeId) ?? serviceElement.addStereotype(httpServiceSettingsStereotypeId);
-        // httpServiceSettings.getProperty("Route").setValue(`api/${toKebabCase(serviceName)}`);
         return serviceElement;
     }
     static sanitizeServiceName(name) {
@@ -32533,7 +32530,6 @@ class RepositoryServiceHelper {
             let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings().reverse()) {
-                //console.warn("source: " + entry.sourcePath + " to target: " + entry.targetPath);
                 mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
             }
         }
@@ -32579,7 +32575,6 @@ class RepositoryServiceHelper {
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings().reverse()) {
-                //console.warn("source: " + entry.sourcePath + " to target: " + entry.targetPath);
                 mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
             }
         }
@@ -32664,16 +32659,10 @@ class RepositoryServiceHelper {
         };
     }
     static createAction(repositoryFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore, isExistingElement = false) {
-        // console.warn("recreateAction called with actionElement: " + actionElement.getName());
-        // console.warn("repositoryFields.length: " + repositoryFields.length);
-        // console.warn("actionElement specializationId:" + actionElement.specialization);
         const childSpecialization = actionElement.specialization == "Operation" ? "Parameter" : "DTO-Field";
-        //console.warn("childSpecialization: " + childSpecialization);
         let elementManager = new ElementManager(actionElement, { childSpecialization: childSpecialization });
         for (let repositoryField of repositoryFields) {
             let paramRefType = repositoryField.typeReference?.getType()?.specialization;
-            //console.warn("Field specialization: " + childSpecialization);
-            //console.warn("paramRefType: " + paramRefType);
             switch (paramRefType) {
                 case "Class":
                 case "Data Contract":
@@ -32685,10 +32674,7 @@ class RepositoryServiceHelper {
                         mappingStore.popTargetPath();
                     }
                     else {
-                        //console.warn("in the else:");
                         let actionField = elementManager.addChild(repositoryField.getName(), null);
-                        //console.warn("Pushing source: " + actionField.getName());
-                        //console.warn("Pushing target: " + repositoryField.getName());
                         mappingStore.pushSourcePath(actionField.id);
                         mappingStore.pushTargetPath(repositoryField.id);
                         let actionDto = RepositoryServiceHelper.replicateDto(repositoryRefType, folder, mappingStore, isExistingElement);
@@ -32701,11 +32687,8 @@ class RepositoryServiceHelper {
                             actionField.addMetadata("endpoint-input-id", repositoryField.getMetadata("endpoint-input-id"));
                         }
                         if (repositoryField.typeReference?.isCollection) {
-                            //console.warn("setting values and stuff");
-                            //console.warn("actionDto.getValue: " + actionDto.getValue());
                             actionField.setValue(actionDto.getValue());
                             if (!isExistingElement) {
-                                //console.warn("Adding mapping");
                                 mappingStore.addMapping(actionField.id, repositoryField.id);
                             }
                         }
@@ -32722,14 +32705,9 @@ class RepositoryServiceHelper {
                         let parentName = repositoryField.getParent().getName();
                         fieldName = parentName + fieldName;
                     }
-                    // console.warn("Adding simple field: " + fieldName);
-                    // console.warn("repositoryField.typeReference: " + repositoryField.typeReference.getType().getName());
                     let actionField = elementManager.addChild(fieldName, repositoryField.typeReference);
                     actionField.setValue(repositoryField.getValue());
-                    //console.warn("isExistingElement: " + isExistingElement);
                     if (!isExistingElement) {
-                        //console.warn("adding child mapping for action:" + actionField.getName());
-                        //console.warn("adding child mapping for repo:" + repositoryField.getName());
                         mappingStore.addMapping(actionField.id, repositoryField.id);
                     }
                     if (repositoryField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
@@ -32782,7 +32760,6 @@ class RepositoryServiceHelper {
         return dto;
     }
     static replicateDto(repositoryDto, folder, mappingStore, isExistingElement = false) {
-        console.warn("replicateDto:" + repositoryDto.getName());
         var expectedName = `${repositoryDto.getName()}Dto`;
         // check to see if there is a DTO with the same name, and only if there is and we are working with an existing element do we update
         // this is to preserve backwards compatibility
@@ -32794,8 +32771,6 @@ class RepositoryServiceHelper {
             //let actionField =  (existingField &amp;&amp; isExistingElement) ? existingField :  createElement("DTO-Field", repositoryField.getName(), newDto.id);
             let actionField = (existingField &amp;&amp; isExistingElement) ? existingField : elementManager.addChild(repositoryField.getName(), null);
             let fieldRefType = repositoryField.typeReference?.getType()?.specialization;
-            console.warn("actionField: " + actionField.getName());
-            console.warn("repositoryField: " + repositoryField.getName());
             switch (fieldRefType) {
                 case "Class":
                 case "Data Contract":
@@ -32827,7 +32802,6 @@ class RepositoryServiceHelper {
             actionField.typeReference.setIsCollection(repositoryField.typeReference.isCollection);
             actionField.typeReference.setIsNullable(repositoryField.typeReference.isNullable);
         });
-        console.warn("Returning dto:" + newDto.getName());
         return newDto;
     }
 }
@@ -34095,9 +34069,6 @@ class RepositoryServiceHelper {
             return existing;
         }
         let serviceElement = createElement("Service", serviceName, folder.getPackage().id);
-        //const httpServiceSettingsStereotypeId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
-        // let httpServiceSettings = serviceElement.getStereotype(httpServiceSettingsStereotypeId) ?? serviceElement.addStereotype(httpServiceSettingsStereotypeId);
-        // httpServiceSettings.getProperty("Route").setValue(`api/${toKebabCase(serviceName)}`);
         return serviceElement;
     }
     static sanitizeServiceName(name) {
@@ -34128,7 +34099,6 @@ class RepositoryServiceHelper {
             let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings().reverse()) {
-                //console.warn("source: " + entry.sourcePath + " to target: " + entry.targetPath);
                 mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
             }
         }
@@ -34174,7 +34144,6 @@ class RepositoryServiceHelper {
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings().reverse()) {
-                //console.warn("source: " + entry.sourcePath + " to target: " + entry.targetPath);
                 mapping.addMappedEnd("Data Mapping", entry.sourcePath, entry.targetPath);
             }
         }
@@ -34259,16 +34228,10 @@ class RepositoryServiceHelper {
         };
     }
     static createAction(repositoryFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore, isExistingElement = false) {
-        // console.warn("recreateAction called with actionElement: " + actionElement.getName());
-        // console.warn("repositoryFields.length: " + repositoryFields.length);
-        // console.warn("actionElement specializationId:" + actionElement.specialization);
         const childSpecialization = actionElement.specialization == "Operation" ? "Parameter" : "DTO-Field";
-        //console.warn("childSpecialization: " + childSpecialization);
         let elementManager = new ElementManager(actionElement, { childSpecialization: childSpecialization });
         for (let repositoryField of repositoryFields) {
             let paramRefType = repositoryField.typeReference?.getType()?.specialization;
-            //console.warn("Field specialization: " + childSpecialization);
-            //console.warn("paramRefType: " + paramRefType);
             switch (paramRefType) {
                 case "Class":
                 case "Data Contract":
@@ -34280,10 +34243,7 @@ class RepositoryServiceHelper {
                         mappingStore.popTargetPath();
                     }
                     else {
-                        //console.warn("in the else:");
                         let actionField = elementManager.addChild(repositoryField.getName(), null);
-                        //console.warn("Pushing source: " + actionField.getName());
-                        //console.warn("Pushing target: " + repositoryField.getName());
                         mappingStore.pushSourcePath(actionField.id);
                         mappingStore.pushTargetPath(repositoryField.id);
                         let actionDto = RepositoryServiceHelper.replicateDto(repositoryRefType, folder, mappingStore, isExistingElement);
@@ -34296,11 +34256,8 @@ class RepositoryServiceHelper {
                             actionField.addMetadata("endpoint-input-id", repositoryField.getMetadata("endpoint-input-id"));
                         }
                         if (repositoryField.typeReference?.isCollection) {
-                            //console.warn("setting values and stuff");
-                            //console.warn("actionDto.getValue: " + actionDto.getValue());
                             actionField.setValue(actionDto.getValue());
                             if (!isExistingElement) {
-                                //console.warn("Adding mapping");
                                 mappingStore.addMapping(actionField.id, repositoryField.id);
                             }
                         }
@@ -34317,14 +34274,9 @@ class RepositoryServiceHelper {
                         let parentName = repositoryField.getParent().getName();
                         fieldName = parentName + fieldName;
                     }
-                    // console.warn("Adding simple field: " + fieldName);
-                    // console.warn("repositoryField.typeReference: " + repositoryField.typeReference.getType().getName());
                     let actionField = elementManager.addChild(fieldName, repositoryField.typeReference);
                     actionField.setValue(repositoryField.getValue());
-                    //console.warn("isExistingElement: " + isExistingElement);
                     if (!isExistingElement) {
-                        //console.warn("adding child mapping for action:" + actionField.getName());
-                        //console.warn("adding child mapping for repo:" + repositoryField.getName());
                         mappingStore.addMapping(actionField.id, repositoryField.id);
                     }
                     if (repositoryField.hasMetadata("endpoint-input-id") &amp;&amp; !actionField.hasMetadata("endpoint-input-id")) {
@@ -34377,7 +34329,6 @@ class RepositoryServiceHelper {
         return dto;
     }
     static replicateDto(repositoryDto, folder, mappingStore, isExistingElement = false) {
-        console.warn("replicateDto:" + repositoryDto.getName());
         var expectedName = `${repositoryDto.getName()}Dto`;
         // check to see if there is a DTO with the same name, and only if there is and we are working with an existing element do we update
         // this is to preserve backwards compatibility
@@ -34389,8 +34340,6 @@ class RepositoryServiceHelper {
             //let actionField =  (existingField &amp;&amp; isExistingElement) ? existingField :  createElement("DTO-Field", repositoryField.getName(), newDto.id);
             let actionField = (existingField &amp;&amp; isExistingElement) ? existingField : elementManager.addChild(repositoryField.getName(), null);
             let fieldRefType = repositoryField.typeReference?.getType()?.specialization;
-            console.warn("actionField: " + actionField.getName());
-            console.warn("repositoryField: " + repositoryField.getName());
             switch (fieldRefType) {
                 case "Class":
                 case "Data Contract":
@@ -34422,7 +34371,6 @@ class RepositoryServiceHelper {
             actionField.typeReference.setIsCollection(repositoryField.typeReference.isCollection);
             actionField.typeReference.setIsNullable(repositoryField.typeReference.isNullable);
         });
-        console.warn("Returning dto:" + newDto.getName());
         return newDto;
     }
 }

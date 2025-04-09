@@ -67,8 +67,8 @@
       <childElements />
     </childElement>
     <childElement id="0f535663-103b-4fa2-bd54-3fccb61436e4" type="Documentation Topic" typeId="5cc56ebc-6b61-41a6-a452-8efd9382da6f">
-      <name>Modeling a Repository Operation Call</name>
-      <display>Modeling a Repository Operation Call</display>
+      <name>Mapping CQRS Operations and Services to Repository Operations</name>
+      <display>Mapping CQRS Operations and Services to Repository Operations</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
