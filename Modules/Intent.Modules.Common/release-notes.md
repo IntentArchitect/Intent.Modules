@@ -1,3 +1,7 @@
+### Version 3.7.7
+
+- Improvement: Added support for JSON merging.
+
 ### Version 3.7.6
 
 - Improvement: Added `ToSanitized` method to remove special characters from a string

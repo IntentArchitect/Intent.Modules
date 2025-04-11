@@ -12,4 +12,14 @@ public interface IDataFile : IFileBuilderBase<IDataFile>
     IDataFile WithOclWriter();
     IDataFile WithRootObject(IDataFileBuilderTemplate template, Action<IDataFileObjectValue> configure);
     IDataFile WithWriter(Func<DataFileWriter> writerProvider, string fileExtension);
+
+    /// <summary>
+    /// Use one of the following values:
+    /// <list type="bullet">
+    /// <item><see cref="CustomMetadataValues.MergeModeFully"/></item>
+    /// <item><see cref="CustomMetadataValues.MergeModeIgnore"/></item>
+    /// <item><see cref="CustomMetadataValues.MergeModeMerge"/></item>
+    /// </list>
+    /// </summary>
+    IDataFile WithDefaultMergeMode(string mode);
 }

@@ -5,7 +5,7 @@ using Intent.Templates;
 namespace Intent.Modules.Common.CSharp.VisualStudio
 {
     /// <summary>
-    /// Dictionary keys <see cref="ITemplateFileConfig.CustomMetadata"/>.
+    /// Dictionary keys for <see cref="ITemplateFileConfig.CustomMetadata"/>.
     /// </summary>
     /// <remarks>
     /// All are intentionally <see keyword="static"/> as <see keyword="const"/> embeds the
