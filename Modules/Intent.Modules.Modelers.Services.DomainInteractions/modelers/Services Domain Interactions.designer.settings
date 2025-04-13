@@ -32820,8 +32820,7 @@ async function execute(repositoryOperation) {
     const folderName = pluralize(repository.getName().replace("Repository", ""));
     const folder = selectedPackage.getChildren("Folder").find(x =&gt; x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
     RepositoryServiceHelper.createCqrsAction(repositoryOperation, folder, true);
-    const diagramElement = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id);
-    diagramElement.loadDiagram();
+    // this can only be triggered from the diagram, so there will always be one.
     const diagram = getCurrentDiagram();
     //Since we're adding a single new element on the diagram, it may not be positioned below the last created one.
     let lastActionVisual = null;
@@ -34389,8 +34388,7 @@ async function execute(repositoryOperation) {
     const folderName = pluralize(repository.getName().replace("Repository", ""));
     const folder = selectedPackage.getChildren("Folder").find(x =&gt; x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
     let newOperation = RepositoryServiceHelper.createAppServiceOperationAction(repositoryOperation, folder, null, true);
-    const diagramElement = folder.getChildren("Diagram").find(x =&gt; x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id);
-    diagramElement.loadDiagram();
+    // this can only be triggered from the diagram, so there will always be one.
     const diagram = getCurrentDiagram();
     let newPosition = null;
     let repoElement = diagram.getVisual(repository.id);

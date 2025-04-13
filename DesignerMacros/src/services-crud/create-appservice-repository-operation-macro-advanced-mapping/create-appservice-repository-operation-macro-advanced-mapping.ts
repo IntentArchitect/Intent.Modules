@@ -16,8 +16,7 @@ async function execute(repositoryOperation: MacroApi.Context.IElementApi) {
 
     let newOperation = RepositoryServiceHelper.createAppServiceOperationAction(repositoryOperation, folder, null, true);
  
-    const diagramElement = folder.getChildren("Diagram").find(x => x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id)
-    diagramElement.loadDiagram();
+    // this can only be triggered from the diagram, so there will always be one.
     const diagram = getCurrentDiagram();
 
     let newPosition: MacroApi.Context.IPoint = null;

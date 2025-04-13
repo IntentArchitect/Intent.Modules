@@ -17,8 +17,7 @@ async function execute(repositoryOperation: MacroApi.Context.IElementApi) {
 
     RepositoryServiceHelper.createCqrsAction(repositoryOperation, folder, true);
 
-    const diagramElement = folder.getChildren("Diagram").find(x => x.getName() == folderName) ?? createElement("Diagram", folderName, folder.id)
-    diagramElement.loadDiagram();
+    // this can only be triggered from the diagram, so there will always be one.
     const diagram = getCurrentDiagram();
     
     //Since we're adding a single new element on the diagram, it may not be positioned below the last created one.
