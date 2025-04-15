@@ -1,4 +1,8 @@
-﻿### Version 3.8.12
+﻿### Version 3.8.13
+
+- Improvement: When performing updates on `collections` of entities without a primary key, the default behavior will be to replace the existing list with the one supplied.
+
+### Version 3.8.12
 
 - Improvement: Better handling of `nullable` child entities when generating *create* and *update* handlers
 - Improvement: `WithoutMethodModifier` added to CSharpClassMethod to remvoe any method modifiers (e.g. `new`, `override`, `static`, `abstract`)

@@ -151,7 +151,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
         // return a default if there are no primary keys.
         if (!qualifyingMappings.Any())
         {
-            return "true";
+            return "false";
         }
 
         return string.Join(" && ", qualifyingMappings.Select(m => $"e.{m.TargetElement?.Name ?? "Id"} == d.{m.SourceElement?.Name ?? "Id"}"));
