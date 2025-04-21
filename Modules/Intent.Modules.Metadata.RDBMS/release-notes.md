@@ -1,3 +1,7 @@
+### Version 3.7.2
+
+- Improvement: `Schema` can now be applied to `Stored Procedures`.
+
 ### Version 3.7.1
 
 - Improvement: Improved documentation around the `Default Constraint` stereotype, as well as improved in-application hints.

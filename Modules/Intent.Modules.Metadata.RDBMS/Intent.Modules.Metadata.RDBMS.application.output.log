@@ -81,6 +81,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#575edd35-9438-406d-b0a7-b99d6f29b560</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/StoredProcedureModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>StoredProcedureModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c5ba925d-5c08-4809-a848-585a0cd4ddd3</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
