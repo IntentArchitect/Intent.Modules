@@ -1,6 +1,7 @@
 ### Version 3.7.2
 
 - Improvement: `Schema` can now be applied to `Stored Procedures`.
+- Improvement: Removed `Identity` flag from `Primary Key` stereotype. The intended direction is to use `Data Source` to determine the `IDENTITY` of a Primary Key.
 
 ### Version 3.7.1
 
