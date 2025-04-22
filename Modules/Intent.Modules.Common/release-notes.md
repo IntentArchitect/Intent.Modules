@@ -1,6 +1,7 @@
 ### Version 3.7.7
 
 - Improvement: Added support for JSON merging.
+- Improvement: Added support for YAML merging.
 
 ### Version 3.7.6
 
