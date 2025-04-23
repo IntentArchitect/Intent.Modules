@@ -134,12 +134,14 @@ Once applied, the following properties can be set:
 
 By default, each `Class` in your domain will have an `Attribute` named `Id` with the `Primary Key` stereotype. The type of this attribute will default to the configured `Database Settings > Key Type`.
 
-This stereotype can be manually applied to `Attributes`, and can also be applied to multiple `Attributes` to create composite primary keys. The stereotype is represented by a golden key icon.
+This stereotype can be manually applied to an `Attribute`, and can also be applied to multiple `Attributes` to create composite primary keys. The stereotype is represented by a golden key icon.
 
 Once applied, the following properties can be set for the `Attribute`:
 
-- **Identity**: Indicates if the primary key is an _Identity_.
-- **Data Source**: Specifies the source of the primary key.
+- **Data Source**: Specifies the source of the Primary Key.
+  - **Auto-generated**: Allow for the underlying database provider to generate the Primary Key value (e.g., SQL Server `IDENTITY`, PostgreSQL `SERIAL`, Oracle `SEQUENCE`). Prevents user-specified values in some mapping instances.
+  - **Default**: Uses the default configuration settings for key generation as defined in the database settings for the underlying database provider. Prevents user-specified values in some mapping instances.
+  - **User supplied**: No automatic generation occurs; values must be explicitly provided (e.g., natural keys like ISBN for books).
 
 ![Primary Key](images/primary-key.png)
 
