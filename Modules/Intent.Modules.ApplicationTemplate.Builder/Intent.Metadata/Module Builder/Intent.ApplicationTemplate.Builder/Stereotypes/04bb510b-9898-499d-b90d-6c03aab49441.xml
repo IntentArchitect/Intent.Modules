@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="04bb510b-9898-499d-b90d-6c03aab49441" version="3.1.0">
+  <name>Image Details</name>
+  <targetMode>all</targetMode>
+  <targetTypes>
+    <type id="cf385bd9-e92f-453d-a3e1-00b9922b57b3">Application Template</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>62ad437e-2b3e-4db1-9a0a-c2da4fc211b7</parentFolderId>
+  <order>0</order>
+  <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+  <packageName>Intent.ApplicationTemplate.Builder</packageName>
+  <properties>
+    <property id="904ac9e5-b292-451b-a0de-223c1a08cea3">
+      <name>Url</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

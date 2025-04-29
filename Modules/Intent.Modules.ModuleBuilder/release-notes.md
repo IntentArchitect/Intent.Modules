@@ -2,6 +2,7 @@
 
 - Improvement: Menu Items can now be grouped with a group number, respected in Intent Architect 4.5.x and later.
 - Improvement: Comments made against Element Settings and Stereotypes will now get propaged and made visible in Intent Architect 4.5.x and later.
+- Improvement: Support for extension methods for `Item Lists` control types on Stereotype Properties (supported in Intent Architect 4.5.x and later)
 
 ### Version 3.13.1
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="f4250b35-559d-4c0b-91ee-c3d7aa239814" version="3.1.0">
   <comment />
+  <hint />
   <name>Option Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
