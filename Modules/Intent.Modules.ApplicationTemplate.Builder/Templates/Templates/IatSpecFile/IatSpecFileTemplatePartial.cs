@@ -58,6 +58,8 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
                 Version = Model.Version,
                 SupportedClientVersions = Model.SupportedClientVersions,
                 DisplayName = Model.DisplayName,
+                CoverImageUrl = Model.CoverImageUrl != null ? new ApplicationTemplate_Image() { Src = Model.CoverImageUrl.Url() } : null,
+                AdditionalImages = Model.AdditionalImages.Select(x => new ApplicationTemplate_Image { Src = x.Url() }).ToList(),
                 ShortDescription = Model.Description,
                 Authors = Model.Authors,
                 Priority = int.TryParse(Model.Priority, out var priority) ? priority : 0,

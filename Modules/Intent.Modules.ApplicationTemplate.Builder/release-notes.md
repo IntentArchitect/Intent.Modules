@@ -1,4 +1,8 @@
-﻿### Version 3.5.0
+﻿### Version 3.6.0
+
+- Improvement: Supports adding `Images` to Application Templates. These are supported and displayed in Intent Architect 4.5.0 and later.
+
+### Version 3.5.0
 
 - Improvement: Added support for granular module installation settings introduced in Intent Architect 4.4.0.
 

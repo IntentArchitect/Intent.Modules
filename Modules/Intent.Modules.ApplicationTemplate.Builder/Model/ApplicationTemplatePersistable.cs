@@ -19,6 +19,13 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
         [XmlElement("displayName")]
         public string DisplayName { get; set; }
 
+        [XmlElement("coverImageUrl")]
+        public ApplicationTemplate_Image CoverImageUrl { get; set; }
+
+        [XmlArray("additionalImages")]
+        [XmlArrayItem("image")]
+        public List<ApplicationTemplate_Image> AdditionalImages { get; set; } = [];
+
         [XmlElement("shortDescription")]
         public string ShortDescription { get; set; }
 
@@ -55,5 +62,14 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
         [XmlArray("minimumDependencyVersions")]
         [XmlArrayItem("module")]
         public List<MinimumDependencyVersion> MinimumDependencyVersions { get; set; }
+    }
+
+    public class ApplicationTemplate_Image
+    {
+        //[XmlAttribute("href")]
+        //public string Href { get; set; } // to open external links (To Do)
+
+        [XmlAttribute("src")]
+        public string Src { get; set; } // url of image
     }
 }

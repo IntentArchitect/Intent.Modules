@@ -58,6 +58,30 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             return true;
         }
 
+        public static ImageDetails GetImageDetails(this ApplicationTemplateModel model)
+        {
+            var stereotype = model.GetStereotype(ImageDetails.DefinitionId);
+            return stereotype != null ? new ImageDetails(stereotype) : null;
+        }
+
+
+        public static bool HasImageDetails(this ApplicationTemplateModel model)
+        {
+            return model.HasStereotype(ImageDetails.DefinitionId);
+        }
+
+        public static bool TryGetImageDetails(this ApplicationTemplateModel model, out ImageDetails stereotype)
+        {
+            if (!HasImageDetails(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new ImageDetails(model.GetStereotype(ImageDetails.DefinitionId));
+            return true;
+        }
+
 
         public class ApplicationTemplateDefaults
         {
@@ -131,6 +155,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return _stereotype.GetProperty<string>("Display Name");
             }
 
+            public IStereotype[] Images()
+            {
+                return _stereotype.GetProperty<IStereotype[]>("Images") ?? new IStereotype[0];
+            }
+
             public string Description()
             {
                 return _stereotype.GetProperty<string>("Description");
@@ -149,6 +178,25 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             public string SupportedClientVersions()
             {
                 return _stereotype.GetProperty<string>("Supported Client Versions");
+            }
+
+        }
+
+        public class ImageDetails
+        {
+            private IStereotype _stereotype;
+            public const string DefinitionId = "04bb510b-9898-499d-b90d-6c03aab49441";
+
+            public ImageDetails(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string Url()
+            {
+                return _stereotype.GetProperty<string>("Url");
             }
 
         }

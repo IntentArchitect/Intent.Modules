@@ -6,6 +6,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
+using static Intent.Modules.ApplicationTemplate.Builder.Api.ApplicationTemplateModelStereotypeExtensions;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
@@ -59,6 +60,12 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         [IntentManaged(Mode.Ignore)]
         public string DisplayName => this.GetApplicationTemplateSettings().DisplayName();
+
+        [IntentManaged(Mode.Ignore)]
+        public ImageDetails? CoverImageUrl => this.GetApplicationTemplateSettings().Images().Select(x => new ImageDetails(x)).FirstOrDefault();
+
+        [IntentManaged(Mode.Ignore)]
+        public List<ImageDetails> AdditionalImages => this.GetApplicationTemplateSettings().Images().Skip(1).Select(x => new ImageDetails(x)).ToList();
 
         [IntentManaged(Mode.Ignore)]
         public string Description => this.GetApplicationTemplateSettings().Description();
