@@ -1,5 +1,6 @@
 ### Version 3.14.0
 
+- Improvement: Advanced mapping `Mapping Settings` now have a `Override Map To Parent Function` which allows the user to override which parent is used to add automatically mapped fields. This improvement addresses the friction in mapping `Service Operation` elements to the domain.
 - Improvement: Menu Items can now be grouped with a group number, respected in Intent Architect 4.5.x and later.
 - Improvement: Comments made against Element Settings and Stereotypes will now get propaged and made visible in Intent Architect 4.5.x and later.
 
