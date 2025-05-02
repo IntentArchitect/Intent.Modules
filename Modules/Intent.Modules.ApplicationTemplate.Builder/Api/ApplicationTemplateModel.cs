@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.ApplicationTemplate.Builder.Model;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
@@ -52,6 +53,10 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             .Select(x => new ApplicationTemplateSettingsConfigurationModel(x))
             .ToList();
 
+
+        [IntentManaged(Mode.Ignore)]
+        public TemplateType TemplateType => ConvertToTemplateTypeEnum(this.GetApplicationTemplateSettings().TemplateType().AsEnum());
+
         [IntentManaged(Mode.Ignore)]
         public string Version => this.GetApplicationTemplateSettings().Version();
 
@@ -81,6 +86,20 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         [IntentManaged(Mode.Ignore)]
         public ApplicationTemplateDefaultsModel Defaults { get; }
+
+
+        private TemplateType ConvertToTemplateTypeEnum(ApplicationTemplateSettings.TemplateTypeOptionsEnum value)
+        {
+            switch (value)
+            {
+                case ApplicationTemplateSettings.TemplateTypeOptionsEnum.ArchitectureTemplate:
+                    return TemplateType.ApplicationTemplate;
+                case ApplicationTemplateSettings.TemplateTypeOptionsEnum.ModuleBuilding:
+                    return TemplateType.ModuleBuilding;
+                default:
+                    return TemplateType.ApplicationTemplate;
+            }
+        }
 
         [IntentManaged(Mode.Ignore)]
         public class ApplicationTemplateDefaultsModel

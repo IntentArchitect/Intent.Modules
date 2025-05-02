@@ -20,6 +20,19 @@
   <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
   <packageName>Intent.ApplicationTemplate.Builder</packageName>
   <properties>
+    <property id="478ac92b-3d4f-4703-8fdc-e25540ca2564">
+      <comment>This will determine under which heading this template is listed when creating new solutions and applications.</comment>
+      <name>Template Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <defaultValue>Architecture Template</defaultValue>
+      <valueOptions>
+        <option>Architecture Template</option>
+        <option>Module Building</option>
+      </valueOptions>
+      <isRequiredFunction>return true</isRequiredFunction>
+    </property>
     <property id="50b17c87-a6af-4b1f-bc27-70c21b0249cb">
       <name>Icon</name>
       <type>string</type>

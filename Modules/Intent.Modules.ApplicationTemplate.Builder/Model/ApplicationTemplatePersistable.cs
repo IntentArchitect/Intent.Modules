@@ -7,6 +7,9 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
     [XmlRoot("applicationTemplate")]
     public class ApplicationTemplatePersistable
     {
+        [XmlAttribute("type")]
+        public TemplateType TemplateType { get; set; } = TemplateType.ApplicationTemplate;
+
         [XmlElement("id")]
         public string Id { get; set; }
 
@@ -25,6 +28,8 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
         [XmlArray("additionalImages")]
         [XmlArrayItem("image")]
         public List<ApplicationTemplate_Image> AdditionalImages { get; set; } = [];
+
+        public bool ShouldSerializeAdditionalImages() => AdditionalImages.Count > 0;
 
         [XmlElement("shortDescription")]
         public string ShortDescription { get; set; }
@@ -71,5 +76,15 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
 
         [XmlAttribute("src")]
         public string Src { get; set; } // url of image
+    }
+    public enum TemplateType
+    {
+        [XmlEnum("application-template")]
+        ApplicationTemplate = 1,
+        [XmlEnum("module-building")]
+        ModuleBuilding = 2,
+        [XmlEnum("sample-solution")]
+        SampleSolution = 3,
+
     }
 }

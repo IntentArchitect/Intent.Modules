@@ -54,6 +54,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
         {
             var result = new ApplicationTemplatePersistable()
             {
+                TemplateType = Model.TemplateType,
                 Id = Model.Name,
                 Version = Model.Version,
                 SupportedClientVersions = Model.SupportedClientVersions,

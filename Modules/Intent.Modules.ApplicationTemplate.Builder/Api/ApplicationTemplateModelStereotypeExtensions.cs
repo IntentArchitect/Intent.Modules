@@ -140,6 +140,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
             public string Name => _stereotype.Name;
 
+            public TemplateTypeOptions TemplateType()
+            {
+                return new TemplateTypeOptions(_stereotype.GetProperty<string>("Template Type"));
+            }
+
             public IIconModel Icon()
             {
                 return _stereotype.GetProperty<IIconModel>("Icon");
@@ -178,6 +183,44 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             public string SupportedClientVersions()
             {
                 return _stereotype.GetProperty<string>("Supported Client Versions");
+            }
+
+            public class TemplateTypeOptions
+            {
+                public readonly string Value;
+
+                public TemplateTypeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public TemplateTypeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Architecture Template":
+                            return TemplateTypeOptionsEnum.ArchitectureTemplate;
+                        case "Module Building":
+                            return TemplateTypeOptionsEnum.ModuleBuilding;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsArchitectureTemplate()
+                {
+                    return Value == "Architecture Template";
+                }
+                public bool IsModuleBuilding()
+                {
+                    return Value == "Module Building";
+                }
+            }
+
+            public enum TemplateTypeOptionsEnum
+            {
+                ArchitectureTemplate,
+                ModuleBuilding
             }
 
         }
