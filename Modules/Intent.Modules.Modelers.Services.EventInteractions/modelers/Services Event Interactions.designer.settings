@@ -382,129 +382,8 @@ vertical-align: center`</style>
       <typeOrder />
       <mappingSettings />
     </elementExtension>
-    <elementExtension type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
-      <contextMenuOptions>
-        <createAssociation type="association">
-          <text>Publish Integration Event</text>
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-          <isOptionVisibleFunction>return getParent("Service");</isOptionVisibleFunction>
-          <specializationType>Publish Integration Event Target End</specializationType>
-          <specializationTypeId>6feb1511-849a-4aa3-85eb-d0c736ac1fec</specializationTypeId>
-          <defaultName>NewPublishIntegrationEvent</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </createAssociation>
-        <createAssociation type="association">
-          <text>Send Integration Command</text>
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-          <isOptionVisibleFunction>return getParent("Service");</isOptionVisibleFunction>
-          <specializationType>Send Integration Command Target End</specializationType>
-          <specializationTypeId>35a14f76-71e0-45f2-a17f-f8d1483510f7</specializationTypeId>
-          <defaultName>NewSendIntegrationCommand</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </createAssociation>
-      </contextMenuOptions>
-      <creationOptions>
-        <option type="association">
-          <text>Publish Integration Event</text>
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-          <isOptionVisibleFunction>return getParent("Service");</isOptionVisibleFunction>
-          <specializationType>Publish Integration Event Target End</specializationType>
-          <specializationTypeId>6feb1511-849a-4aa3-85eb-d0c736ac1fec</specializationTypeId>
-          <defaultName>NewPublishIntegrationEvent</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="association">
-          <text>Send Integration Command</text>
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-          <isOptionVisibleFunction>return getParent("Service");</isOptionVisibleFunction>
-          <specializationType>Send Integration Command Target End</specializationType>
-          <specializationTypeId>35a14f76-71e0-45f2-a17f-f8d1483510f7</specializationTypeId>
-          <defaultName>NewSendIntegrationCommand</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <scriptOptions />
-      <mappingOptions />
-      <typeOrder>
-        <type type="Publish Integration Event Target End" typeId="6feb1511-849a-4aa3-85eb-d0c736ac1fec" />
-        <type type="Send Integration Command Target End" typeId="35a14f76-71e0-45f2-a17f-f8d1483510f7" />
-      </typeOrder>
-      <mappingSettings />
-    </elementExtension>
   </elementExtensions>
   <associationSettings>
-    <associationSetting type="Call Service Operation" typeId="9510ff76-fba3-4eca-a5dd-0cfefc8f5bb6">
-      <sourceEnd type="Call Service Operation Source End" typeId="01693f59-b89f-4e03-934a-dfcb4cbd90df">
-        <displayFunction>return `called by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
-        <nameAccessibilityMode>hidden</nameAccessibilityMode>
-        <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABGpJREFUeF7tWk1vE1cUPfdlgUWFknGqLlD5WrZFrQpS6YqSik/ROKzYAO2qP6BItkNV6EQqNGNX/ACWwMorPOarJZBCNyAkkBCt1FWBrmu7qhSEBHOrCXZij+fjzcybwZJntnlz7rnnnXtz3xsTRvyhEc8fmQCZA0ZcgawERtwAWRPMSiArgRFXICuBETdA9l8gK4HYJVCrjU38tWYnCbEHzBs6eM+YeaH9/OFt6LoVK0atNjb+NPeZYOwBbHxiEP3NlnWjveXFHRw+/CoOfiwH5Ocv72NhnQXwvgeJ3wl0vFma/iUKyXylvp9BNv57Hu//QZY43pz94uco+PY7kQXQKvUSQD8CEAHBLTDNtsrT1TAkNcMsg3BGCh98olWaqYTB766NJEDeqOtM9H2ogASjVSzMyryTr5hzDJySWbuyJgR+L25oASIlvyp3oAhJ4ztFDSVALHISIiSN7+YoaQGUkOswIOa5ZnlG7yW0WV/M/bv2v18B7AhlfZfFbvhemFICqEzer2a1+do4RO46gE/jigDJnhAoQCLJ+zihI8ItANviiiDjBF8BkkzezwlvG/X1r4juA1gfV4QgJ3gKkEryPk4Yr5qfC8bN2ALYw45Lz/GdAzpDyLyK4PIYXHYOM5rRuAzig/IYfisH8V0nwc74eUViAlPDaxXFItCB3rF50mh8YhHfUxRoAH9QgFptTHuSe+Qz2yvi4gnzZ2tp3VboUy+7K7SK+QTAJkWBB/D7esCEUZ8iIrsDv7GHiabaxWl7Hlh+NKN+DkRfqyLkxO8TQKs2zoD5hKpgkXAYp1vlwnerAjSKII500HGN78DvF6BSvwjQkUjEVb1EuNAqFr5cEaBaPwqmC6rg4cB3CGDagY4qCxYJiM+3SjNfdV+dMMxjRDgfCcrdAn34TgFOA/hWXbDwSAT+oVmaOZlUCTjx+5tgtbGLmBfD01b3BgO72qXC7cSaoAO/fxLUdaGt3fYQwIfqUgqF9Li19OCjlXtEZtKq5jOA3g2F4r24H9/tSixfaexl8LU3MQgJsvb9Uzy00OU/Wb20w2JxV1HylhPfxnU9C3Tu+wxFgaVgCCg2S4WfehdrhnkVhANSAAGL3PA9BbD/kOZhiIn0dnF6rjeHyeql3RaLGyqSd8Pv4voeh9M4FLmR0+bNjSRwn4F34grgl7yvA7qBk3SCe/K1cVBuEYSPk05eSgB7URJO8Exe5OyPHLHvBYN2XqoEendApRPcyKm8FJVNXtoBq0PJ8teaWBclfuRUOC1M8qEFiFsOMuTiiCCD7+wrgbfCbo0oCskw5JLG780pkgCvnbB8TrfLIfDjKAFl55AT1OGTxg/dBN0Id8Zm+/P1Bx4JPRZkfdM73gYl3td4X4/lieFH6gEDCei6mHhr+06yeDcENi6DMj+1QAvtpQe/xf6BRML4kUsgzE4O89pMgGHenTS4ZQ5IQ+VhjpE5YJh3Jw1umQPSUHmYY2QOGObdSYNb5oA0VB7mGJkDhnl30uD2P6Sq8VCQLRDUAAAAAElFTkSuQmCC" />
-        <allowSorting>true</allowSorting>
-        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
-        <typeReferenceSetting>
-          <isRequired>true</isRequired>
-          <targetTypes>
-            <type type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" />
-            <type type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" />
-          </targetTypes>
-          <allowIsNavigable>false</allowIsNavigable>
-          <allowIsNullable>false</allowIsNullable>
-          <allowIsCollection>false</allowIsCollection>
-          <isNavigableDefault>false</isNavigableDefault>
-          <isNullableDefault>false</isNullableDefault>
-          <isCollectionDefault>false</isCollectionDefault>
-        </typeReferenceSetting>
-      </sourceEnd>
-      <targetEnd type="Call Service Operation Target End" typeId="752c289a-5961-4172-9017-0eca6fa09fd9">
-        <displayFunction>return `call: ${typeReference.display}`</displayFunction>
-        <nameAccessibilityMode>hidden</nameAccessibilityMode>
-        <nameMustBeUnique>false</nameMustBeUnique>
-        <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-        <allowSorting>true</allowSorting>
-        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
-        <typeReferenceSetting>
-          <isRequired>true</isRequired>
-          <targetTypes>
-            <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
-          </targetTypes>
-          <allowIsNavigable>false</allowIsNavigable>
-          <allowIsNullable>false</allowIsNullable>
-          <allowIsCollection>false</allowIsCollection>
-          <isNavigableDefault>true</isNavigableDefault>
-          <isNullableDefault>false</isNullableDefault>
-          <isCollectionDefault>false</isCollectionDefault>
-        </typeReferenceSetting>
-        <typeOrder />
-        <contextMenuOptions>
-          <defineMapping type="open-advanced-mapping" mappingType="Service Operation Mapping" mappingTypeId="df692ffe-5d0c-40ee-9362-a483d929a8ec">
-            <text>Map to Service Operation</text>
-            <shortcut>ctrl + shift + m</shortcut>
-          </defineMapping>
-        </contextMenuOptions>
-        <creationOptions />
-        <scriptOptions />
-        <mappingOptions>
-          <option type="open-advanced-mapping" mappingType="Service Operation Mapping" mappingTypeId="df692ffe-5d0c-40ee-9362-a483d929a8ec">
-            <text>Map to Service Operation</text>
-            <shortcut>ctrl + shift + m</shortcut>
-          </option>
-        </mappingOptions>
-      </targetEnd>
-      <visualSettings>
-        <lineType>Curved</lineType>
-        <lineDashArray>return "3,7";</lineDashArray>
-        <sourceEnd>
-          <pointIndicator>
-            <path>return `a 4,4 0 1,0 4,4 
-        a 4,4 0 1,0 -4,4`;</path>
-          </pointIndicator>
-        </sourceEnd>
-        <targetEnd>
-          <pointIndicator>
-            <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>
-          </pointIndicator>
-        </targetEnd>
-      </visualSettings>
-    </associationSetting>
     <associationSetting type="Publish Integration Event" typeId="580b6b26-eab5-4602-a408-e76e2d292d2c">
       <sourceEnd type="Publish Integration Event Source End" typeId="eab91b3a-9903-40a2-90e8-ddb714883eab">
         <displayFunction>return `published by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
@@ -695,17 +574,17 @@ vertical-align: center`</style>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
         <typeOrder>
-          <type order="0" type="Call Service Operation Target End" typeId="752c289a-5961-4172-9017-0eca6fa09fd9" />
+          <type order="0" type="Service Invocation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" />
           <type order="1" type="Publish Integration Event Target End" typeId="6feb1511-849a-4aa3-85eb-d0c736ac1fec" />
           <type order="2" type="Send Integration Command Target End" typeId="35a14f76-71e0-45f2-a17f-f8d1483510f7" />
         </typeOrder>
         <contextMenuOptions>
           <createAssociation type="association">
-            <text>Call Service Operation</text>
-            <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-            <specializationType>Call Service Operation Target End</specializationType>
-            <specializationTypeId>752c289a-5961-4172-9017-0eca6fa09fd9</specializationTypeId>
-            <defaultName>NewCallServiceOperation</defaultName>
+            <text>Invoke Service</text>
+            <icon type="UrlImagePath" source="data:image/png;base64,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" />
+            <specializationType>Service Invocation Target End</specializationType>
+            <specializationTypeId>093e5909-ffe4-4510-b3ea-532f30212f3c</specializationTypeId>
+            <defaultName>NewServiceInvocation</defaultName>
             <allowMultiple>true</allowMultiple>
           </createAssociation>
           <createAssociation type="association">
@@ -728,11 +607,11 @@ vertical-align: center`</style>
         </contextMenuOptions>
         <creationOptions>
           <option type="association">
-            <text>Call Service Operation</text>
-            <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-            <specializationType>Call Service Operation Target End</specializationType>
-            <specializationTypeId>752c289a-5961-4172-9017-0eca6fa09fd9</specializationTypeId>
-            <defaultName>NewCallServiceOperation</defaultName>
+            <text>Invoke Service</text>
+            <icon type="UrlImagePath" source="data:image/png;base64,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" />
+            <specializationType>Service Invocation Target End</specializationType>
+            <specializationTypeId>093e5909-ffe4-4510-b3ea-532f30212f3c</specializationTypeId>
+            <defaultName>NewServiceInvocation</defaultName>
             <allowMultiple>true</allowMultiple>
           </option>
           <option type="association">
@@ -827,17 +706,17 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
         <typeOrder>
-          <type order="0" type="Call Service Operation Target End" typeId="752c289a-5961-4172-9017-0eca6fa09fd9" />
+          <type order="0" type="Service Invocation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" />
           <type order="1" type="Publish Integration Event Target End" typeId="6feb1511-849a-4aa3-85eb-d0c736ac1fec" />
           <type order="2" type="Send Integration Command Target End" typeId="35a14f76-71e0-45f2-a17f-f8d1483510f7" />
         </typeOrder>
         <contextMenuOptions>
           <createAssociation type="association">
-            <text>Call Service Operation</text>
-            <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-            <specializationType>Call Service Operation Target End</specializationType>
-            <specializationTypeId>752c289a-5961-4172-9017-0eca6fa09fd9</specializationTypeId>
-            <defaultName>NewCallServiceOperation</defaultName>
+            <text>Invoke Service</text>
+            <icon type="UrlImagePath" source="data:image/png;base64,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" />
+            <specializationType>Service Invocation Target End</specializationType>
+            <specializationTypeId>093e5909-ffe4-4510-b3ea-532f30212f3c</specializationTypeId>
+            <defaultName>NewServiceInvocation</defaultName>
             <allowMultiple>true</allowMultiple>
           </createAssociation>
           <createAssociation type="association">
@@ -860,11 +739,11 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
         </contextMenuOptions>
         <creationOptions>
           <option type="association">
-            <text>Call Service Operation</text>
-            <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-            <specializationType>Call Service Operation Target End</specializationType>
-            <specializationTypeId>752c289a-5961-4172-9017-0eca6fa09fd9</specializationTypeId>
-            <defaultName>NewCallServiceOperation</defaultName>
+            <text>Invoke Service</text>
+            <icon type="UrlImagePath" source="data:image/png;base64,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" />
+            <specializationType>Service Invocation Target End</specializationType>
+            <specializationTypeId>093e5909-ffe4-4510-b3ea-532f30212f3c</specializationTypeId>
+            <defaultName>NewServiceInvocation</defaultName>
             <allowMultiple>true</allowMultiple>
           </option>
           <option type="association">
@@ -987,163 +866,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
     <mappingSetting type="Publish Message Mapping" typeId="7ff48a4c-ee8b-4e66-9dbb-c014eb0542fb">
       <title>Publish Message Mapping</title>
       <sourceMappings>
-        <mapping id="265955ac-b061-484b-9cf8-76789b1f364a" name="Integration Event Handler" type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <isTraversable>true</isTraversable>
-          <traversableTypes>
-            <mappingId>667fcad0-81e1-4a54-840c-d0c26ebc21b0</mappingId>
-          </traversableTypes>
-          <canBeModified>false</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="43641e69-b46d-4841-bc67-0b0f723f6f6d" name="Create Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-            <childSetting id="3decf5a5-f780-4db7-9071-f17da45182c6" name="Update Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-            <childSetting id="a30606c9-594e-4fff-8cab-225e0b3d1d68" name="Query Action" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-            <childSetting id="667fcad0-81e1-4a54-840c-d0c26ebc21b0" name="Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>true</canBeModified>
-              <represents>data</represents>
-              <childSettings>
-                <childSetting id="678ea51f-f715-4219-82bf-1b42c8e3caad" name="Message Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
-                  <allowMultipleMappings>true</allowMultipleMappings>
-                  <isMappableFunction>return true;</isMappableFunction>
-                  <isTraversable>true</isTraversable>
-                  <traversableTypes>
-                    <mappingId>3bfa697e-b0e8-4776-b4b4-b34f9101ea34</mappingId>
-                  </traversableTypes>
-                  <canBeModified>true</canBeModified>
-                  <represents>data</represents>
-                </childSetting>
-                <childSetting id="3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
-                  <allowMultipleMappings>true</allowMultipleMappings>
-                  <isMappableFunction>return true;</isMappableFunction>
-                  <isTraversable>true</isTraversable>
-                  <traversableTypes>
-                    <mappingId>3bfa697e-b0e8-4776-b4b4-b34f9101ea34</mappingId>
-                  </traversableTypes>
-                  <canBeModified>true</canBeModified>
-                  <represents>data</represents>
-                </childSetting>
-              </childSettings>
-            </childSetting>
-            <childSetting id="3bfa697e-b0e8-4776-b4b4-b34f9101ea34" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>true</canBeModified>
-              <createNameFunction>return (element.getParent('Message') ?? element.getParent('Integration Command')).getName() + element.getName() + 'Dto'</createNameFunction>
-              <represents>data</represents>
-              <childSettings>
-                <childSetting id="4a6afd7d-ae76-4831-9010-39f18999a595" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="2.0.0">
-                  <allowMultipleMappings>true</allowMultipleMappings>
-                  <isMappableFunction>return true;</isMappableFunction>
-                  <isTraversable>true</isTraversable>
-                  <traversableTypes>
-                    <mappingId>3bfa697e-b0e8-4776-b4b4-b34f9101ea34</mappingId>
-                  </traversableTypes>
-                  <canBeModified>true</canBeModified>
-                  <represents>data</represents>
-                </childSetting>
-              </childSettings>
-            </childSetting>
-          </childSettings>
-        </mapping>
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Invocation Source Mappables" />
-        <mapping id="f5afadc5-6bab-4385-8cb5-9aff339433c8" name="Integration Command Handler" type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <isTraversable>true</isTraversable>
-          <traversableTypes>
-            <mappingId>b30396fa-5a24-498c-ad0c-53b09f80c9b3</mappingId>
-          </traversableTypes>
-          <canBeModified>false</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="b30396fa-5a24-498c-ad0c-53b09f80c9b3" name="Integration Command" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>true</canBeModified>
-              <represents>data</represents>
-              <childSettings>
-                <childSetting id="f79156cb-9ac7-4224-becc-138355a3767b" name="Message Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
-                  <allowMultipleMappings>true</allowMultipleMappings>
-                  <isMappableFunction>return true;</isMappableFunction>
-                  <isTraversable>true</isTraversable>
-                  <traversableTypes>
-                    <mappingId>3bfa697e-b0e8-4776-b4b4-b34f9101ea34</mappingId>
-                  </traversableTypes>
-                  <canBeModified>true</canBeModified>
-                  <represents>data</represents>
-                </childSetting>
-                <childSetting id="843b3195-7bfb-40a3-aea2-cbcef9a6a68a" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
-                  <allowMultipleMappings>true</allowMultipleMappings>
-                  <isMappableFunction>return true;</isMappableFunction>
-                  <isTraversable>true</isTraversable>
-                  <traversableTypes>
-                    <mappingId>3bfa697e-b0e8-4776-b4b4-b34f9101ea34</mappingId>
-                  </traversableTypes>
-                  <canBeModified>true</canBeModified>
-                  <represents>data</represents>
-                </childSetting>
-              </childSettings>
-            </childSetting>
-            <childSetting id="06b6db13-0e42-47e5-acf1-5262e7a54767" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;</isMappableFunction>
-              <isTraversable>false</isTraversable>
-              <traversableTypes />
-              <canBeModified>true</canBeModified>
-              <createNameFunction>return (element.getParent('Message') ?? element.getParent('Integration Command')).getName() + element.getName() + 'Dto'</createNameFunction>
-              <represents>data</represents>
-              <childSettings>
-                <childSetting id="d622e90a-b247-4960-8e86-c4594521938f" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="2.0.0">
-                  <allowMultipleMappings>true</allowMultipleMappings>
-                  <isMappableFunction>return true;</isMappableFunction>
-                  <isTraversable>true</isTraversable>
-                  <traversableTypes>
-                    <mappingId>06b6db13-0e42-47e5-acf1-5262e7a54767</mappingId>
-                  </traversableTypes>
-                  <canBeModified>true</canBeModified>
-                  <represents>data</represents>
-                </childSetting>
-              </childSettings>
-            </childSetting>
-          </childSettings>
-        </mapping>
       </sourceMappings>
       <targetMappings>
         <mapping id="5522e13c-4b8a-464d-802a-83a6d1e5b211" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" version="2.0.0">
@@ -1284,7 +1007,229 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
     </mappingSetting>
   </mappingSettings>
   <mappableElementPackages />
-  <mappableElementPackageExtensions />
+  <mappableElementPackageExtensions>
+    <mappableElementPackageExtension id="9fbf96e4-2696-4e8b-98e1-6a48e2df32e7" name="Interaction Event Send Command Source Extension" extendPackageId="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" extendPackage="Invocation Source Mappables">
+      <mappableElementSettings>
+        <mappableElement id="b5626f4a-fc65-4cdd-b921-e7d1b347c9f4" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <createNameFunction>return element.getParent('Message').getName() + element.getName() + 'Dto'</createNameFunction>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>b5626f4a-fc65-4cdd-b921-e7d1b347c9f4</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="f5afadc5-6bab-4385-8cb5-9aff339433c8" name="Integration Command Handler" type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>true</isTraversable>
+          <traversableTypes>
+            <mappingId>b30396fa-5a24-498c-ad0c-53b09f80c9b3</mappingId>
+          </traversableTypes>
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="b30396fa-5a24-498c-ad0c-53b09f80c9b3" name="Integration Command" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+              <childSettings>
+                <childSetting id="f79156cb-9ac7-4224-becc-138355a3767b" name="Message Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
+                  <traversableTypes>
+                    <mappingId>3bfa697e-b0e8-4776-b4b4-b34f9101ea34</mappingId>
+                  </traversableTypes>
+                  <canBeModified>true</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+                <childSetting id="843b3195-7bfb-40a3-aea2-cbcef9a6a68a" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
+                  <traversableTypes>
+                    <mappingId>3bfa697e-b0e8-4776-b4b4-b34f9101ea34</mappingId>
+                  </traversableTypes>
+                  <canBeModified>true</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+              </childSettings>
+            </childSetting>
+            <childSetting id="06b6db13-0e42-47e5-acf1-5262e7a54767" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>true</canBeModified>
+              <createNameFunction>return (element.getParent('Message') ?? element.getParent('Integration Command')).getName() + element.getName() + 'Dto'</createNameFunction>
+              <represents>data</represents>
+              <childSettings>
+                <childSetting id="d622e90a-b247-4960-8e86-c4594521938f" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
+                  <traversableTypes>
+                    <mappingId>06b6db13-0e42-47e5-acf1-5262e7a54767</mappingId>
+                  </traversableTypes>
+                  <canBeModified>true</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+              </childSettings>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="265955ac-b061-484b-9cf8-76789b1f364a" name="Integration Event Handler" type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>true</isTraversable>
+          <traversableTypes>
+            <mappingId>667fcad0-81e1-4a54-840c-d0c26ebc21b0</mappingId>
+          </traversableTypes>
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="43641e69-b46d-4841-bc67-0b0f723f6f6d" name="Create Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="3decf5a5-f780-4db7-9071-f17da45182c6" name="Update Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="a30606c9-594e-4fff-8cab-225e0b3d1d68" name="Query Action" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="667fcad0-81e1-4a54-840c-d0c26ebc21b0" name="Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+              <childSettings>
+                <childSetting id="678ea51f-f715-4219-82bf-1b42c8e3caad" name="Message Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
+                  <traversableTypes>
+                    <mappingId>3bfa697e-b0e8-4776-b4b4-b34f9101ea34</mappingId>
+                  </traversableTypes>
+                  <canBeModified>true</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+                <childSetting id="3b2a3a1f-bbe6-499e-be6f-aa0f47865eb1" name="Message DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
+                  <traversableTypes>
+                    <mappingId>3bfa697e-b0e8-4776-b4b4-b34f9101ea34</mappingId>
+                  </traversableTypes>
+                  <canBeModified>true</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+              </childSettings>
+            </childSetting>
+            <childSetting id="3bfa697e-b0e8-4776-b4b4-b34f9101ea34" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>true</canBeModified>
+              <createNameFunction>return (element.getParent('Message') ?? element.getParent('Integration Command')).getName() + element.getName() + 'Dto'</createNameFunction>
+              <represents>data</represents>
+              <childSettings>
+                <childSetting id="4a6afd7d-ae76-4831-9010-39f18999a595" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
+                  <traversableTypes>
+                    <mappingId>3bfa697e-b0e8-4776-b4b4-b34f9101ea34</mappingId>
+                  </traversableTypes>
+                  <canBeModified>true</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+              </childSettings>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="2893a19b-523a-49e9-b828-2961b0fba28f" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>b5626f4a-fc65-4cdd-b921-e7d1b347c9f4</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="5b3901e5-0d98-4df2-bc64-57d0edce0a3a" name="Send Integration Command" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="432fd702-af2b-43c0-9d8c-e6f1fef9860d" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>b5626f4a-fc65-4cdd-b921-e7d1b347c9f4</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackageExtension>
+  </mappableElementPackageExtensions>
   <suggestionSettings>
     <suggestionSetting type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" locations="diagram, model">
       <name>Publish Integration Command</name>

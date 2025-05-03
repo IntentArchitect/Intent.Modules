@@ -112,18 +112,18 @@
           <metadata />
           <childElements>
             <childElement id="b8a5a871-b568-4fde-b3ba-f08c4142da56" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-              <name>Call Service Operation</name>
-              <display>Call Service Operation: Call Service Operation</display>
+              <name>Invoke Service</name>
+              <display>Invoke Service: Service Invocation</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="9ca2f3e1-7881-42bb-86e7-5b5bccaa73c9">
-                <typeId>9510ff76-fba3-4eca-a5dd-0cfefc8f5bb6</typeId>
+                <typeId>3e69085c-fa2f-44bd-93eb-41075fd472f8</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.EventInteractions</typePackageName>
-                <typePackageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</typePackageId>
+                <typePackageName>Intent.Modelers.Services</typePackageName>
+                <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>

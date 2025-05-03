@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="df7785ce-6ad7-445e-aa14-874c08e025cd" type="Module Migrations" typeId="8cfd2eab-c1bf-46bc-a86f-3ed0263a380f">
+  <name>Migrations</name>
+  <display>Migrations</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</parentFolderId>
+  <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
+  <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="b9cdda93-9f1a-484e-bf3e-14e507e06c05" type="Version Migration" typeId="03f24c57-66d8-4868-95a7-6daef900dc7f">
+  <name>2.0.0-pre.0</name>
+  <display>2.0.0-pre.0</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>df7785ce-6ad7-445e-aa14-874c08e025cd</parentFolderId>
+  <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
+  <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
