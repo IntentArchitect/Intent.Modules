@@ -133,6 +133,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<IElement>("Use Child Mappings From");
             }
 
+            public string OverrideMapToParentFunction()
+            {
+                return _stereotype.GetProperty<string>("Override Map To Parent Function");
+            }
+
             public string OnMappingChangedScript()
             {
                 return _stereotype.GetProperty<string>("On Mapping Changed Script");

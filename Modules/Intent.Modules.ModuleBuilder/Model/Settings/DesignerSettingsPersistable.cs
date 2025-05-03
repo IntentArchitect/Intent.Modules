@@ -274,6 +274,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
     {
         [XmlAttribute("group")]
         public required int MenuGroup { get; set; }
+        public bool ShouldSerializeMenuGroup() => MenuGroup > 0;
 
         [XmlAttribute("order")]
         public required string Order { get; set; }

@@ -102,6 +102,7 @@ namespace Intent.ModuleBuilder.Api
                 OverrideTypeReferenceFunction = this.GetMappableSettings().OverrideTypeReferenceFunction(),
                 GetTraversableTypeFunction = this.GetMappableSettings().GetTraversableTypeFunction(),
                 UseChildSettingsFrom = this.GetMappableSettings().UseChildMappingsFrom()?.Id,
+                OverrideMapToParentFunction = this.GetMappableSettings().OverrideMapToParentFunction(),
                 ChildSettings = ElementMappings.Select(x => x.ToPersistable()).ToList(),
                 CanBeModified = this.GetMappableSettings().CanBeModified(),
                 CreateNameFunction = this.GetMappableSettings().CreateNameFunction(),

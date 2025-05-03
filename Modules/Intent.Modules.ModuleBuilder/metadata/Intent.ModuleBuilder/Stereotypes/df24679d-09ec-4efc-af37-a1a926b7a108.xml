@@ -329,5 +329,16 @@ const getAllPackageIds = (mappablePackage) =&gt; {
 
 return getAllPackageIds(mappablePackage);</lookupInternalTargetPropertyId>
     </property>
+    <property id="72082228-cb81-4bce-a85e-8b44e8c23808">
+      <comment>When automatically creating mappings that create new elements (e.g. by double clicking properties), the parent to create the new element is selected automatically. This function allows you to override that parent element and select one of its children. The function must return the id of the child element.</comment>
+      <name>Override Map To Parent Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+    </property>
   </properties>
 </stereotypeDefinition>

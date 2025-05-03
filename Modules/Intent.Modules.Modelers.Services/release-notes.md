@@ -1,3 +1,7 @@
+### Version 3.9.4
+
+- Improvement: Mapping from the Domain to `Operations` on `Services` will now add automatically add new fields to the first parameter of type `DTO`.
+
 ### Version 3.9.3
 
 - Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.
