@@ -8,18 +8,18 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiAssociationModel", Version = "1.0")]
 
-namespace Intent.Modelers.Services.EventInteractions
+namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class SendCommandModel : IMetadataModel
+    public class ServiceInvocationModel : IMetadataModel
     {
-        public const string SpecializationType = "Send Command";
+        public const string SpecializationType = "Service Invocation";
         public const string SpecializationTypeId = "38a3de5a-ca88-4f6e-88b9-88e5953936b2";
         protected readonly IAssociation _association;
-        protected SendCommandSourceEndModel _sourceEnd;
-        protected SendCommandTargetEndModel _targetEnd;
+        protected ServiceInvocationSourceEndModel _sourceEnd;
+        protected ServiceInvocationTargetEndModel _targetEnd;
 
-        public SendCommandModel(IAssociation association, string requiredType = SpecializationType)
+        public ServiceInvocationModel(IAssociation association, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(association.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -28,17 +28,17 @@ namespace Intent.Modelers.Services.EventInteractions
             _association = association;
         }
 
-        public static SendCommandModel CreateFromEnd(IAssociationEnd associationEnd)
+        public static ServiceInvocationModel CreateFromEnd(IAssociationEnd associationEnd)
         {
-            var association = new SendCommandModel(associationEnd.Association);
+            var association = new ServiceInvocationModel(associationEnd.Association);
             return association;
         }
 
         public string Id => _association.Id;
 
-        public SendCommandSourceEndModel SourceEnd => _sourceEnd ??= new SendCommandSourceEndModel(_association.SourceEnd, this);
+        public ServiceInvocationSourceEndModel SourceEnd => _sourceEnd ??= new ServiceInvocationSourceEndModel(_association.SourceEnd, this);
 
-        public SendCommandTargetEndModel TargetEnd => _targetEnd ??= new SendCommandTargetEndModel(_association.TargetEnd, this);
+        public ServiceInvocationTargetEndModel TargetEnd => _targetEnd ??= new ServiceInvocationTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 
@@ -47,7 +47,7 @@ namespace Intent.Modelers.Services.EventInteractions
             return _association.ToString();
         }
 
-        public bool Equals(SendCommandModel other)
+        public bool Equals(ServiceInvocationModel other)
         {
             return Equals(_association, other?._association);
         }
@@ -57,7 +57,7 @@ namespace Intent.Modelers.Services.EventInteractions
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((SendCommandModel)obj);
+            return Equals((ServiceInvocationModel)obj);
         }
 
         public override int GetHashCode()
@@ -67,23 +67,23 @@ namespace Intent.Modelers.Services.EventInteractions
     }
 
     [IntentManaged(Mode.Fully)]
-    public class SendCommandSourceEndModel : SendCommandEndModel
+    public class ServiceInvocationSourceEndModel : ServiceInvocationEndModel
     {
         public const string SpecializationTypeId = "6b9e34dd-b50f-4998-a3cf-93dde7b2d51e";
-        public const string SpecializationType = "Send Command Source End";
+        public const string SpecializationType = "Service Invocation Source End";
 
-        public SendCommandSourceEndModel(IAssociationEnd associationEnd, SendCommandModel association) : base(associationEnd, association)
+        public ServiceInvocationSourceEndModel(IAssociationEnd associationEnd, ServiceInvocationModel association) : base(associationEnd, association)
         {
         }
     }
 
     [IntentManaged(Mode.Fully)]
-    public class SendCommandTargetEndModel : SendCommandEndModel
+    public class ServiceInvocationTargetEndModel : ServiceInvocationEndModel
     {
         public const string SpecializationTypeId = "d3096261-1268-440f-8db3-0a6b8b4786cc";
-        public const string SpecializationType = "Send Command Target End";
+        public const string SpecializationType = "Service Invocation Target End";
 
-        public SendCommandTargetEndModel(IAssociationEnd associationEnd, SendCommandModel association) : base(associationEnd, association)
+        public ServiceInvocationTargetEndModel(IAssociationEnd associationEnd, ServiceInvocationModel association) : base(associationEnd, association)
         {
         }
 
@@ -91,28 +91,28 @@ namespace Intent.Modelers.Services.EventInteractions
     }
 
     [IntentManaged(Mode.Fully)]
-    public class SendCommandEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
+    public class ServiceInvocationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
-        private readonly SendCommandModel _association;
+        private readonly ServiceInvocationModel _association;
 
-        public SendCommandEndModel(IAssociationEnd associationEnd, SendCommandModel association)
+        public ServiceInvocationEndModel(IAssociationEnd associationEnd, ServiceInvocationModel association)
         {
             _associationEnd = associationEnd;
             _association = association;
         }
 
-        public static SendCommandEndModel Create(IAssociationEnd associationEnd)
+        public static ServiceInvocationEndModel Create(IAssociationEnd associationEnd)
         {
-            var association = new SendCommandModel(associationEnd.Association);
-            return association.TargetEnd.Id == associationEnd.Id ? (SendCommandEndModel)association.TargetEnd : association.SourceEnd;
+            var association = new ServiceInvocationModel(associationEnd.Association);
+            return association.TargetEnd.Id == associationEnd.Id ? (ServiceInvocationEndModel)association.TargetEnd : association.SourceEnd;
         }
 
         public string Id => _associationEnd.Id;
         public string SpecializationType => _associationEnd.SpecializationType;
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
-        public SendCommandModel Association => _association;
+        public ServiceInvocationModel Association => _association;
         public IElement InternalElement => _associationEnd;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
         public IAssociation InternalAssociation => _association.InternalAssociation;
@@ -126,9 +126,9 @@ namespace Intent.Modelers.Services.EventInteractions
         public string Comment => _associationEnd.Comment;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
 
-        public SendCommandEndModel OtherEnd()
+        public ServiceInvocationEndModel OtherEnd()
         {
-            return this.Equals(_association.SourceEnd) ? (SendCommandEndModel)_association.TargetEnd : (SendCommandEndModel)_association.SourceEnd;
+            return this.Equals(_association.SourceEnd) ? (ServiceInvocationEndModel)_association.TargetEnd : (ServiceInvocationEndModel)_association.SourceEnd;
         }
 
         public bool IsTargetEnd()
@@ -146,7 +146,7 @@ namespace Intent.Modelers.Services.EventInteractions
             return _associationEnd.ToString();
         }
 
-        public bool Equals(SendCommandEndModel other)
+        public bool Equals(ServiceInvocationEndModel other)
         {
             return Equals(_associationEnd, other._associationEnd);
         }
@@ -156,7 +156,7 @@ namespace Intent.Modelers.Services.EventInteractions
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((SendCommandEndModel)obj);
+            return Equals((ServiceInvocationEndModel)obj);
         }
 
         public override int GetHashCode()
@@ -166,36 +166,36 @@ namespace Intent.Modelers.Services.EventInteractions
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class SendCommandEndModelExtensions
+    public static class ServiceInvocationEndModelExtensions
     {
-        public static bool IsSendCommandEndModel(this ICanBeReferencedType type)
+        public static bool IsServiceInvocationEndModel(this ICanBeReferencedType type)
         {
-            return IsSendCommandTargetEndModel(type) || IsSendCommandSourceEndModel(type);
+            return IsServiceInvocationTargetEndModel(type) || IsServiceInvocationSourceEndModel(type);
         }
 
-        public static SendCommandEndModel AsSendCommandEndModel(this ICanBeReferencedType type)
+        public static ServiceInvocationEndModel AsServiceInvocationEndModel(this ICanBeReferencedType type)
         {
-            return (SendCommandEndModel)type.AsSendCommandTargetEndModel() ?? (SendCommandEndModel)type.AsSendCommandSourceEndModel();
+            return (ServiceInvocationEndModel)type.AsServiceInvocationTargetEndModel() ?? (ServiceInvocationEndModel)type.AsServiceInvocationSourceEndModel();
         }
 
-        public static bool IsSendCommandTargetEndModel(this ICanBeReferencedType type)
+        public static bool IsServiceInvocationTargetEndModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == SendCommandTargetEndModel.SpecializationTypeId;
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == ServiceInvocationTargetEndModel.SpecializationTypeId;
         }
 
-        public static SendCommandTargetEndModel AsSendCommandTargetEndModel(this ICanBeReferencedType type)
+        public static ServiceInvocationTargetEndModel AsServiceInvocationTargetEndModel(this ICanBeReferencedType type)
         {
-            return type.IsSendCommandTargetEndModel() ? new SendCommandModel(((IAssociationEnd)type).Association).TargetEnd : null;
+            return type.IsServiceInvocationTargetEndModel() ? new ServiceInvocationModel(((IAssociationEnd)type).Association).TargetEnd : null;
         }
 
-        public static bool IsSendCommandSourceEndModel(this ICanBeReferencedType type)
+        public static bool IsServiceInvocationSourceEndModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == SendCommandSourceEndModel.SpecializationTypeId;
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == ServiceInvocationSourceEndModel.SpecializationTypeId;
         }
 
-        public static SendCommandSourceEndModel AsSendCommandSourceEndModel(this ICanBeReferencedType type)
+        public static ServiceInvocationSourceEndModel AsServiceInvocationSourceEndModel(this ICanBeReferencedType type)
         {
-            return type.IsSendCommandSourceEndModel() ? new SendCommandModel(((IAssociationEnd)type).Association).SourceEnd : null;
+            return type.IsServiceInvocationSourceEndModel() ? new ServiceInvocationModel(((IAssociationEnd)type).Association).SourceEnd : null;
         }
     }
 }

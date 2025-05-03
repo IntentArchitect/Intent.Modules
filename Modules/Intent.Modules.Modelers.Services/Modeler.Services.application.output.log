@@ -113,6 +113,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>b5edfc2b-9624-4308-ae8a-b533cf3733d4</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#38a3de5a-ca88-4f6e-88b9-88e5953936b2</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/ServiceInvocationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServiceInvocationModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>3043ab47-170b-4d78-ba2d-3673f8381213</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#9b6f281b-71be-4e61-bb4c-b474c3be6d04</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -158,6 +166,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ParameterModel.partial.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ParameterModel.partial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3043ab47-170b-4d78-ba2d-3673f8381213</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#38a3de5a-ca88-4f6e-88b9-88e5953936b2</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ServiceInvocationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServiceInvocationModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -238,6 +254,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Migrations/OnInstallMigration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>OnInstallMigration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>4ae770a3-14b1-48ff-b4f7-be2652e65462</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#a62352ef-3960-46e8-9939-816f20940675</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Services Interactions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Services Interactions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

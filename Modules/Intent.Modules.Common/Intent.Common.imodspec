@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common</id>
-  <version>3.7.7</version>
+  <version>3.7.8-pre.0</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Base Implementation and Helper classes for modules.</summary>
   <description>Base Implementation and Helper classes for modules.</description>
@@ -24,4 +24,5 @@
   <metadata>
     <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Common/Intent.Common.pkg.config" externalReference="caccdda9-26f4-49bf-8b73-cadc2220de16" />
   </metadata>
+  <migrations />
 </package>

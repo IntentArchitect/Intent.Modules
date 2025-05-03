@@ -107,7 +107,7 @@
           <childElements>
             <childElement id="ac95887d-1f69-4dc0-8bfd-50eb75a13546" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
               <name>Map to Service Operation</name>
-              <display>Map to Service Operation: Integration Event Handler Mapping</display>
+              <display>Map to Service Operation: Send Command Mapping</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="70c79b16-4574-4486-bb7b-3a16a2587fed">
@@ -116,8 +116,8 @@
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.EventInteractions</typePackageName>
-                <typePackageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</typePackageId>
+                <typePackageName>Intent.Modelers.Services.CQRS</typePackageName>
+                <typePackageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
@@ -135,9 +135,9 @@
                     <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" value="ctrl + shift + m" isActive="true" />
                     <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
                     <property name="e92b2832-9ed6-4ccb-bf58-8b34975c16dc" display="Trigger On Double-Click" value="false" isActive="true" />
-                    <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
                     <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
                     <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" isActive="true" />
+                    <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Order" isActive="true" />
                     <property name="d0b53563-f62e-4989-98d5-69ff87f460f3" display="Top Divider" value="false" isActive="true" />
                     <property name="1bb3ebe0-6015-42e1-b1ca-29b7e53c0d56" display="Bottom Divider" value="false" isActive="true" />
                   </properties>

@@ -65,6 +65,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>e6b22230-24fd-4b6c-8ad3-acb527181cd3</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#3c98cd00-4505-4257-8d67-a1ea79a8fe3c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Services CQRS Interactions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Services CQRS Interactions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>71563a62-e1b2-4700-882f-dcbd92614d95</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.DocumentationTemplate#ba749b7a-382b-407a-ad0f-bae9d2703e5a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

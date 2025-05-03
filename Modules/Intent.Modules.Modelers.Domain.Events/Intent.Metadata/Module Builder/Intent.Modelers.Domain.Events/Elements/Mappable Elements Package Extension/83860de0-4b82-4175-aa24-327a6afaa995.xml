@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="83860de0-4b82-4175-aa24-327a6afaa995" type="Mappable Elements Package Extension" typeId="bddb69f0-e2c8-4373-b5cb-d701f311f935">
   <name>Domain Event Handler Exension</name>
-  <display>Domain Event Handler Exension: Application Source Mappables</display>
+  <display>Domain Event Handler Exension: Invocation Source Mappables</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />

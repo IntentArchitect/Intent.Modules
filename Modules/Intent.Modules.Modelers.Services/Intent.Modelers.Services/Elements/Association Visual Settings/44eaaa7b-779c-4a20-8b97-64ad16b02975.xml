@@ -15,8 +15,8 @@
   </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>38a3de5a-ca88-4f6e-88b9-88e5953936b2</parentFolderId>
-  <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-  <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+  <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+  <packageName>Intent.Modelers.Services</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="e21d9a65-36b8-4664-9c61-d70f3615023c" name="Setting">
       <addedByDefault>true</addedByDefault>
@@ -40,8 +40,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>44eaaa7b-779c-4a20-8b97-64ad16b02975</parentFolderId>
-      <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-      <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+      <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+      <packageName>Intent.Modelers.Services</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="1434703f-9e9e-4321-af00-1e857a2e6b80" name="Point Settings">
           <addedByDefault>true</addedByDefault>
@@ -87,8 +87,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>44eaaa7b-779c-4a20-8b97-64ad16b02975</parentFolderId>
-      <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-      <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+      <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+      <packageName>Intent.Modelers.Services</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="1434703f-9e9e-4321-af00-1e857a2e6b80" name="Point Settings">
           <addedByDefault>true</addedByDefault>
