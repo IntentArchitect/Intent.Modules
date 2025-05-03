@@ -104,8 +104,8 @@
           <childElements />
         </childElement>
         <childElement id="81bcbdde-b7ea-49f6-9ded-6425f79474c4" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Call Service Operation</name>
-          <display>Call Service Operation: Call Service Operation</display>
+          <name>Invoke Service</name>
+          <display>Invoke Service: Service Invocation</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="b7328cce-5fab-4f3d-9573-bdea73fd2cef">
@@ -114,8 +114,8 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-            <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+            <typePackageName>Intent.Modelers.Services</typePackageName>
+            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>

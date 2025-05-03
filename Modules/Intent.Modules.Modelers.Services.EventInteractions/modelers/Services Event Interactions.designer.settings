@@ -475,7 +475,7 @@ vertical-align: center`</style>
         </typeReferenceSetting>
         <typeOrder />
         <contextMenuOptions>
-          <defineMapping type="open-advanced-mapping" mappingType="Send Command Mapping" mappingTypeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
+          <defineMapping type="open-advanced-mapping" mappingType="Service Operation Mapping" mappingTypeId="df692ffe-5d0c-40ee-9362-a483d929a8ec">
             <text>Map to Service Operation</text>
             <shortcut>ctrl + shift + m</shortcut>
           </defineMapping>
@@ -483,7 +483,7 @@ vertical-align: center`</style>
         <creationOptions />
         <scriptOptions />
         <mappingOptions>
-          <option type="open-advanced-mapping" mappingType="Send Command Mapping" mappingTypeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
+          <option type="open-advanced-mapping" mappingType="Service Operation Mapping" mappingTypeId="df692ffe-5d0c-40ee-9362-a483d929a8ec">
             <text>Map to Service Operation</text>
             <shortcut>ctrl + shift + m</shortcut>
           </option>
@@ -1080,7 +1080,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
             </childSetting>
           </childSettings>
         </mapping>
-        <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Application Source Mappables" />
+        <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Invocation Source Mappables" />
         <mapping id="f5afadc5-6bab-4385-8cb5-9aff339433c8" name="Integration Command Handler" type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
@@ -1284,73 +1284,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
     </mappingSetting>
   </mappingSettings>
   <mappableElementPackages />
-  <mappableElementPackageExtensions>
-    <mappableElementPackageExtension id="9fbf96e4-2696-4e8b-98e1-6a48e2df32e7" name="Interaction Event Send Command Source Extension" extendPackageId="e4edacb6-080f-4f51-8c2b-3c1edf5177b4" extendPackage="Command Mapping Source">
-      <mappableElementSettings>
-        <mappableElement id="b5626f4a-fc65-4cdd-b921-e7d1b347c9f4" name="Eventing DTO" type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>true</canBeModified>
-          <createNameFunction>return element.getParent('Message').getName() + element.getName() + 'Dto'</createNameFunction>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>b5626f4a-fc65-4cdd-b921-e7d1b347c9f4</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-          </childSettings>
-        </mappableElement>
-        <mappableElement id="2893a19b-523a-49e9-b828-2961b0fba28f" name="Publish Message" type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>true</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>b5626f4a-fc65-4cdd-b921-e7d1b347c9f4</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-          </childSettings>
-        </mappableElement>
-        <mappableElement id="5b3901e5-0d98-4df2-bc64-57d0edce0a3a" name="Send Integration Command" type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <isTraversable>false</isTraversable>
-          <traversableTypes />
-          <canBeModified>false</canBeModified>
-          <represents>data</represents>
-          <childSettings>
-            <childSetting id="432fd702-af2b-43c0-9d8c-e6f1fef9860d" name="Property" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" version="2.0.0">
-              <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>b5626f4a-fc65-4cdd-b921-e7d1b347c9f4</mappingId>
-              </traversableTypes>
-              <canBeModified>false</canBeModified>
-              <represents>data</represents>
-            </childSetting>
-          </childSettings>
-        </mappableElement>
-      </mappableElementSettings>
-    </mappableElementPackageExtension>
-  </mappableElementPackageExtensions>
+  <mappableElementPackageExtensions />
   <suggestionSettings>
     <suggestionSetting type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" locations="diagram, model">
       <name>Publish Integration Command</name>

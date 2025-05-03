@@ -134,7 +134,7 @@
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <typeReference id="1a77f417-5073-44cf-b01d-0fc0fde7b9bf">
-        <typeId>d3096261-1268-440f-8db3-0a6b8b4786cc</typeId>
+        <typeId>093e5909-ffe4-4510-b3ea-532f30212f3c</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>

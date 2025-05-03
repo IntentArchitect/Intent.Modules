@@ -107,17 +107,17 @@
           <childElements>
             <childElement id="ac95887d-1f69-4dc0-8bfd-50eb75a13546" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
               <name>Map to Service Operation</name>
-              <display>Map to Service Operation: Send Command Mapping</display>
+              <display>Map to Service Operation: Service Operation Mapping</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="70c79b16-4574-4486-bb7b-3a16a2587fed">
-                <typeId>a4c4c5cc-76df-48ed-9d4e-c35caf44b567</typeId>
+                <typeId>df692ffe-5d0c-40ee-9362-a483d929a8ec</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.CQRS</typePackageName>
-                <typePackageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</typePackageId>
+                <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
+                <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>

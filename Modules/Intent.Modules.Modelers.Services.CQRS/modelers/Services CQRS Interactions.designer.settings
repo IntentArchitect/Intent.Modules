@@ -54,7 +54,7 @@
           <useChildSettingsFrom>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</useChildSettingsFrom>
           <represents>data</represents>
         </mappableElement>
-        <mappableElement id="d70e0dac-3464-426c-bb01-5c6b1140390e" name="Service Invocation" type="Service Invocation Target End" typeId="d3096261-1268-440f-8db3-0a6b8b4786cc" version="2.0.0">
+        <mappableElement id="d70e0dac-3464-426c-bb01-5c6b1140390e" name="Service Invocation" type="Service Invocation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>false</isTraversable>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="44eaaa7b-779c-4a20-8b97-64ad16b02975" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
+<class id="9d49f1da-2157-454c-8a06-bfee205ed69b" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
   <name>[visual]</name>
   <display>[visual]: void</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="0bd565e4-092d-437f-ba25-ca69e0756ed8">
+  <typeReference id="93c54fca-7512-4a78-a276-d46e0e7daca5">
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -14,7 +14,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>38a3de5a-ca88-4f6e-88b9-88e5953936b2</parentFolderId>
+  <parentFolderId>3e69085c-fa2f-44bd-93eb-41075fd472f8</parentFolderId>
   <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
   <packageName>Intent.Modelers.Services</packageName>
   <stereotypes>
@@ -33,13 +33,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="9dbb5b3c-5193-4103-81c4-b7114f7b6ebd" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
+    <childElement id="a9fc5bbb-7aaf-49ac-9fc3-e7b9245f84b6" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
       <name>[source]</name>
       <display>[source]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>44eaaa7b-779c-4a20-8b97-64ad16b02975</parentFolderId>
+      <parentFolderId>9d49f1da-2157-454c-8a06-bfee205ed69b</parentFolderId>
       <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
       <packageName>Intent.Modelers.Services</packageName>
       <stereotypes>
@@ -50,9 +50,9 @@
           <properties>
             <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="return `a 4,4 0 1,0 4,4 &#xD;&#xA;        a 4,4 0 1,0 -4,4`;" isActive="true" />
             <property name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" isActive="true" />
-            <property name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" isActive="true" />
+            <property name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" value="return 3;" isActive="true" />
             <property name="33bc633b-e627-49df-b105-398e32e080ee" display="Line Dash Array" isActive="true" />
-            <property name="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f" display="Fill Color" isActive="true" />
+            <property name="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f" display="Fill Color" value="" isActive="true" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="6b16c65c-f348-40b1-96b0-6423917b9356" name="Label Settings">
@@ -80,13 +80,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="2a25862f-4c83-425b-95eb-cc44f2d0f5e7" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
+    <childElement id="2dc80b4d-970a-4116-8a34-0652dbe8c439" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
       <name>[desintation]</name>
       <display>[destination]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>44eaaa7b-779c-4a20-8b97-64ad16b02975</parentFolderId>
+      <parentFolderId>9d49f1da-2157-454c-8a06-bfee205ed69b</parentFolderId>
       <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
       <packageName>Intent.Modelers.Services</packageName>
       <stereotypes>

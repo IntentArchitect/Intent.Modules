@@ -14,7 +14,7 @@ namespace Intent.Modelers.Services.Api
     public class ServiceInvocationModel : IMetadataModel
     {
         public const string SpecializationType = "Service Invocation";
-        public const string SpecializationTypeId = "38a3de5a-ca88-4f6e-88b9-88e5953936b2";
+        public const string SpecializationTypeId = "3e69085c-fa2f-44bd-93eb-41075fd472f8";
         protected readonly IAssociation _association;
         protected ServiceInvocationSourceEndModel _sourceEnd;
         protected ServiceInvocationTargetEndModel _targetEnd;
@@ -69,7 +69,7 @@ namespace Intent.Modelers.Services.Api
     [IntentManaged(Mode.Fully)]
     public class ServiceInvocationSourceEndModel : ServiceInvocationEndModel
     {
-        public const string SpecializationTypeId = "6b9e34dd-b50f-4998-a3cf-93dde7b2d51e";
+        public const string SpecializationTypeId = "ee56bd48-8eff-4fff-8d3a-87731d002335";
         public const string SpecializationType = "Service Invocation Source End";
 
         public ServiceInvocationSourceEndModel(IAssociationEnd associationEnd, ServiceInvocationModel association) : base(associationEnd, association)
@@ -80,7 +80,7 @@ namespace Intent.Modelers.Services.Api
     [IntentManaged(Mode.Fully)]
     public class ServiceInvocationTargetEndModel : ServiceInvocationEndModel
     {
-        public const string SpecializationTypeId = "d3096261-1268-440f-8db3-0a6b8b4786cc";
+        public const string SpecializationTypeId = "093e5909-ffe4-4510-b3ea-532f30212f3c";
         public const string SpecializationType = "Service Invocation Target End";
 
         public ServiceInvocationTargetEndModel(IAssociationEnd associationEnd, ServiceInvocationModel association) : base(associationEnd, association)

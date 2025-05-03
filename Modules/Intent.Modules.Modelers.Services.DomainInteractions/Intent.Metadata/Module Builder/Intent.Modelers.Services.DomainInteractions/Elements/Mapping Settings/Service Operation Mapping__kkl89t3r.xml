@@ -45,7 +45,7 @@
       <childElements>
         <childElement id="230e495b-2286-4ccc-983b-a457a3d88abd" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05">
           <name>Import</name>
-          <display>[import] Application Source Mappables</display>
+          <display>[import] Invocation Source Mappables</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="17cbf1a9-514a-417e-8ac8-9f44e2049f8a">
@@ -233,8 +233,8 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Domain</typePackageName>
-            <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -284,8 +284,8 @@
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Domain</typePackageName>
-                <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+                <typePackageName>Intent.Common.Types</typePackageName>
+                <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
@@ -810,8 +810,8 @@
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Domain</typePackageName>
-                <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+                <typePackageName>Intent.Common.Types</typePackageName>
+                <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
@@ -1018,8 +1018,8 @@
                     <isNullable>false</isNullable>
                     <isCollection>false</isCollection>
                     <isRequired>true</isRequired>
-                    <typePackageName>Intent.Modelers.Domain</typePackageName>
-                    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+                    <typePackageName>Intent.Common.Types</typePackageName>
+                    <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
                     <stereotypes />
                     <genericTypeParameters />
                   </typeReference>

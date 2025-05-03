@@ -16,7 +16,7 @@
     <dependency id="Intent.Common.Types" version="3.4.0" />
     <dependency id="Intent.Modelers.Domain" version="3.11.1" />
     <dependency id="Intent.Modelers.Eventing" version="5.1.0" />
-    <dependency id="Intent.Modelers.Services" version="3.8.3" />
+    <dependency id="Intent.Modelers.Services" version="4.0.0-pre.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
