@@ -26,7 +26,6 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Data</defaultValue>
       <valueOptions>
         <option>Data</option>
@@ -34,7 +33,6 @@
         <option>Class</option>
         <option>Event</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb">
@@ -42,9 +40,6 @@
       <type>string</type>
       <controlType>icon</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41">
       <hint>Filters whether this setting can be applied to the underlying element.</hint>
@@ -53,10 +48,7 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(Default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
-      <isActiveFunction />
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="e2bbf8a7-e342-4221-a628-f3ef35dcc251">
@@ -65,8 +57,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(Default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
     </property>
     <property id="9b689fcf-4060-4bff-b23e-6f150ecadd65">
@@ -75,10 +65,7 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(Default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
-      <isActiveFunction />
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="fe1fd512-566d-427a-a9a8-ed16c6ae8f98">
@@ -89,10 +76,7 @@
       <optionsSource>n/a</optionsSource>
       <placeholder>(Default)</placeholder>
       <defaultValue>return true;</defaultValue>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
-      <isActiveFunction />
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="8729cf25-6468-4ad0-aed2-2f7c854c2438">
@@ -103,10 +87,7 @@
       <optionsSource>n/a</optionsSource>
       <placeholder>(Default)</placeholder>
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
-      <isActiveFunction />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="6da92064-59ef-4361-8ad6-c73b54c18cc2">
@@ -114,22 +95,18 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Not Traversable</defaultValue>
       <valueOptions>
         <option>Not Traversable</option>
         <option>Traverse Specific Types</option>
         <option>Traverse All Types</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="3f279b0b-8772-4dd5-bf54-1fde024420e7">
       <name>Traversable Types</name>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
@@ -183,8 +160,6 @@ return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traver
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(Default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
       <isRequiredFunction>return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7")?.value?.length &gt; 0 // indicate that there is old scripts that need to be converted.</isRequiredFunction>
     </property>
@@ -194,8 +169,6 @@ return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traver
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(Default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
       <isActiveFunction>// Traversal Mode == Traverse Specific Types
 return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 // this field is deprecated. remove if no value
@@ -207,14 +180,12 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Disabled</defaultValue>
       <valueOptions>
         <option>Disabled</option>
         <option>Element Value</option>
         <option>Stereotype Property Value</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="73a079b1-5720-4b70-ada3-7af8a98b7510">
       <name>Sync Stereotype</name>
@@ -222,8 +193,6 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <controlType>select</controlType>
       <optionsSource>lookup-stereotype</optionsSource>
       <placeholder>(Stereotype Id)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return getProperty("69bfe770-9fcd-40dc-8505-2de5a699887e").getValue() == "Stereotype Property Value"</isActiveFunction>
       <isRequiredFunction>return getProperty("69bfe770-9fcd-40dc-8505-2de5a699887e").getValue() == "Stereotype Property Value"</isRequiredFunction>
     </property>
@@ -233,8 +202,6 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <controlType>text</controlType>
       <optionsSource>lookup-children</optionsSource>
       <placeholder>(Stereotype Property Id)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return getProperty("69bfe770-9fcd-40dc-8505-2de5a699887e").getValue() == "Stereotype Property Value"</isActiveFunction>
       <isRequiredFunction>return getProperty("69bfe770-9fcd-40dc-8505-2de5a699887e").getValue() == "Stereotype Property Value"</isRequiredFunction>
     </property>
@@ -243,9 +210,6 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>advanced-mapping-macro-api</apiTypeDefinition>
     </property>
     <property id="55e6149c-91a6-4381-b324-7eab4395fa59">
@@ -253,9 +217,6 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>advanced-mapping-macro-api</apiTypeDefinition>
     </property>
     <property id="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3">
@@ -263,10 +224,7 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="2782bc72-02b8-4e25-9fd7-b625bf8a11d2">
       <name>Create Name Function</name>
@@ -274,9 +232,6 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(Default)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
       <isActiveFunction>return CanBeModified == true;</isActiveFunction>
     </property>
@@ -285,8 +240,6 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>lookup-children</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
@@ -335,9 +288,6 @@ return getAllPackageIds(mappablePackage);</lookupInternalTargetPropertyId>
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
     </property>
   </properties>

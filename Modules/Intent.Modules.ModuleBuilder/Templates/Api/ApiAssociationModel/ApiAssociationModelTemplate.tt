@@ -76,7 +76,7 @@ namespace <#= Namespace #>
     }
 
     [IntentManaged(Mode.Fully)]
-    public class <#=AssociationSourceEndClassName #> : <#=AssociationEndClassName #>
+    public class <#=AssociationSourceEndClassName #> : <#=AssociationEndClassName #><#= GetSourceEndInterfaces() #>
     {
         public const string SpecializationTypeId = "<#= Model.SourceEnd.Id #>";
         public const string SpecializationType = "<#= Model.SourceEnd.Name #>";
@@ -108,7 +108,7 @@ namespace <#= Namespace #>
     }
 
     [IntentManaged(Mode.Fully)]
-    public class <#=AssociationTargetEndClassName #> : <#=AssociationEndClassName #>
+    public class <#=AssociationTargetEndClassName #> : <#=AssociationEndClassName #><#= GetTargetEndInterfaces() #>
     {
         public const string SpecializationTypeId = "<#= Model.TargetEnd.Id #>";
         public const string SpecializationType = "<#= Model.TargetEnd.Name #>";

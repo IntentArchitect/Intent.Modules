@@ -52,6 +52,11 @@ namespace Intent.ModuleBuilder.Api
             return this.GetSettings().TargetTypes().ToList();
         }
 
+        public List<IStereotypeDefinition> TargetTraits()
+        {
+            return this.GetSettings().TargetTraits()?.ToList() ?? [];
+        }
+
         public AssociationEndSettingsPersistable ToPersistable()
         {
             return new AssociationEndSettingsPersistable
@@ -60,7 +65,7 @@ namespace Intent.ModuleBuilder.Api
                 SpecializationType = this.Name,
                 Comment = Comment,
                 Implements = this.Stereotypes
-                    .Where(x => x.DefinitionId != AssociationDestinationEndSettingsModelStereotypeExtensions.Settings.DefinitionId)
+                    .Where(x => x.Definition.IsTrait)
                     .Select(x => new ImplementedTraitPersistable() { Id = x.DefinitionId, Name = x.Name })
                     .ToList(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),

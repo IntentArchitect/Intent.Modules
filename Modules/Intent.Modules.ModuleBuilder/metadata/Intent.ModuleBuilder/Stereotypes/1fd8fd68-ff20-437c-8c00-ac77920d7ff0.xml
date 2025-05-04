@@ -26,9 +26,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="52e01775-62a6-4b04-86ee-9d36efe20f70">
       <hint>[File Glob patterns ](https://learn.microsoft.com/en-us/dotnet/core/extensions/file-globbing) to identify binary files.</hint>
@@ -36,14 +33,11 @@
       <type>string</type>
       <controlType>textarea</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>*.jpg
 *.png
 *.xlsx
 *.ico
 *.pdf</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="db0f79b6-2905-4771-9400-ed2bc024d1e1">
       <name>Role</name>
@@ -51,9 +45,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="1b9fff50-1498-482a-a64d-11c5b92d0856">
@@ -62,8 +53,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

@@ -27,13 +27,11 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Inline Script</defaultValue>
       <valueOptions>
         <option>Inline Script</option>
         <option>File Resource</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="3256efdd-5d71-46f3-bd51-ef08a8d95526">
@@ -41,12 +39,8 @@
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
       <isActiveFunction>return getProperty("Type").getValue() == "Inline Script"</isActiveFunction>
-      <isRequiredFunction />
     </property>
     <property id="41cc0d56-3141-40fe-ae97-c024866d441e">
       <hint>File location relative to the _resources_ folder in this module.</hint>
@@ -54,9 +48,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return getProperty("Type").getValue() == "File Resource"</isActiveFunction>
     </property>
     <property id="540780ad-f54e-4bd5-95f3-20a58fd59105">
@@ -65,7 +56,6 @@
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(none)</placeholder>
-      <valueOptions />
       <lookupTypes>
         <type>101fd5b6-3159-4810-9490-a103ef323e9c</type>
       </lookupTypes>

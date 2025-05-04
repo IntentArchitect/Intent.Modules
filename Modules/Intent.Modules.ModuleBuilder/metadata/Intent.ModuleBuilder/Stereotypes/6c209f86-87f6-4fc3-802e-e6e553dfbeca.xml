@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="6c209f86-87f6-4fc3-802e-e6e553dfbeca" version="3.1.0">
-  <comment />
   <name>Option Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -38,9 +37,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="36d5eeba-2483-450e-b51b-b156836f6d3a">
       <comment>Optional. If unspecified, then the "Shortcut" property is automatically used with uses of "Ctrl" changed to "Command".</comment>
@@ -49,19 +45,13 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="e92b2832-9ed6-4ccb-bf58-8b34975c16dc">
       <name>Trigger On Double-Click</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="5e97216b-6c99-4fa2-971d-575a27f212cc">
       <name>Icon</name>
@@ -69,18 +59,12 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>icon</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="63039244-aaad-49eb-84bf-0396a6dd0fe9">
       <name>Is Option Visible Function</name>
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="08fac0bc-4cf9-45ec-8362-e452a185efee">
@@ -90,8 +74,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="db48afcc-848b-4c46-82ff-249895203638">
       <comment>This menu option will be added to the specified menu group, which is the first one by default (Group 0). Menu groups are separated by dividers and ordered by their number.</comment>
@@ -100,8 +82,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default = 0)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="d0b53563-f62e-4989-98d5-69ff87f460f3">
       <comment>Whether a divider must be added above this option. Note that it is typically recommended to use _Menu Group_ to create dividers.</comment>
@@ -109,10 +89,7 @@ return `[${shortcut}]`;</displayFunction>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="1bb3ebe0-6015-42e1-b1ca-29b7e53c0d56">
       <comment>Whether a divider must be added below this option. Note that it is typically recommended to use _Menu Group_ to create dividers.</comment>
@@ -120,10 +97,7 @@ return `[${shortcut}]`;</displayFunction>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

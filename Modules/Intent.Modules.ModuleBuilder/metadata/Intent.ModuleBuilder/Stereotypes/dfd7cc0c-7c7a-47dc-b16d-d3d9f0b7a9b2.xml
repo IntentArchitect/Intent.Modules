@@ -25,8 +25,6 @@
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-children</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
         <type>c776bc38-c0e8-4535-87dd-79cfd33be2ad</type>
@@ -40,9 +38,6 @@ return [packageId].concat(lookupTypesOf(mappablePackageExtensionId).filter(x =&g
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>advanced-mapping-macro-api</apiTypeDefinition>
     </property>
   </properties>

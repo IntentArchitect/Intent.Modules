@@ -25,15 +25,7 @@
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions>
-        <option>Yes</option>
-        <option>No</option>
-        <option>Not Applicable</option>
-      </valueOptions>
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
   </properties>
 </stereotypeDefinition>

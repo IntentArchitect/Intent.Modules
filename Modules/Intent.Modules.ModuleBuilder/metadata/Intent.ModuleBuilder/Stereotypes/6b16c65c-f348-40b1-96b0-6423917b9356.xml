@@ -26,11 +26,7 @@
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
-      <isRequiredFunction />
     </property>
     <property id="9c086eb0-801b-413b-a666-24a96cfabe49">
       <name>Secondary Label</name>
@@ -38,10 +34,7 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
-      <isRequiredFunction />
     </property>
   </properties>
 </stereotypeDefinition>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="cbe77364-d1d0-400b-a8c4-646a4c869612" version="3.1.0">
-  <comment />
   <name>Option Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -39,9 +38,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>icon</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="0abff08a-3986-40b1-a28f-4cc03c4fc1ec">
       <comment>What shortcut can be used to trigger this option (e.g. ctrl + shift + e)</comment>
@@ -50,9 +46,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="79f6973f-5e3a-4618-9d4c-d7cc604bffe0">
       <comment>Optional. If unspecified, then the "Shortcut" property is automatically used with uses of "Ctrl" changed to "Command".</comment>
@@ -61,9 +54,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="6087e660-9599-47fb-9ff4-1ad901ce2a00">
       <comment>Whether this option should be triggered when double-clicking on the element.</comment>
@@ -71,10 +61,7 @@ return `[${shortcut}]`;</displayFunction>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="c03841e5-a1e9-4e95-b699-5a466dde7d7d">
       <comment>A JavaScript function to dynamically determine whether this option is visible on the menu.</comment>
@@ -82,9 +69,6 @@ return `[${shortcut}]`;</displayFunction>
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="e034a0ca-0101-4594-8384-43048b714578">
@@ -94,8 +78,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="c37d8704-0003-4886-b6c2-4e51aa22a8f9">
       <comment>This menu option will be added to the specified menu group, which is the first one by default (Group 0). Menu groups are separated by dividers and ordered by their number.</comment>
@@ -104,8 +86,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default = 0)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="3e93529e-2110-414e-aec1-2656e1a99b22">
       <comment>Whether a divider must be added above this option. Note that it is typically recommended to use _Menu Group_ to create dividers.</comment>
@@ -113,10 +93,7 @@ return `[${shortcut}]`;</displayFunction>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="d2572c08-f02e-40b2-8a06-4d5251bb3352">
       <comment>Whether a divider must be added below this option. Note that it is typically recommended to use _Menu Group_ to create dividers.</comment>
@@ -124,10 +101,7 @@ return `[${shortcut}]`;</displayFunction>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

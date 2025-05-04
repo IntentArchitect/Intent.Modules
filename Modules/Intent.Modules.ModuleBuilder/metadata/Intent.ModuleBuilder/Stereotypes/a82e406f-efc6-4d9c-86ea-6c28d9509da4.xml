@@ -26,9 +26,6 @@
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-visual-api</apiTypeDefinition>
       <isRequiredFunction>true;</isRequiredFunction>
     </property>
@@ -38,10 +35,7 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-visual-api</apiTypeDefinition>
-      <isRequiredFunction />
     </property>
     <property id="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24">
       <name>Line Color</name>
@@ -49,8 +43,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-visual-api</apiTypeDefinition>
     </property>
     <property id="d644b3e2-bb71-4d18-8a2a-e222a02da4ae">
@@ -59,8 +51,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-visual-api</apiTypeDefinition>
     </property>
     <property id="30ba379d-6d61-4e6e-b038-81cd322241e6">
@@ -69,8 +59,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-visual-api</apiTypeDefinition>
     </property>
     <property id="4fb316a4-ebee-45c1-96e0-636698f52976">
@@ -79,8 +67,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-visual-api</apiTypeDefinition>
     </property>
   </properties>

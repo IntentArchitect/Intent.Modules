@@ -26,14 +26,12 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Default</defaultValue>
       <valueOptions>
         <option>Default</option>
         <option>Own File</option>
         <option>As Child</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="736b1337-6f35-4e38-85a8-69ff5d69fb7d">
@@ -43,9 +41,6 @@
       <controlType>icon</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="32086823-bd72-4be0-a765-2d9530f4ce06">
       <name>Expanded Icon</name>
@@ -53,8 +48,6 @@
       <controlType>icon</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="b966a8e9-f298-4741-8397-fe49f29c248b">
       <hint>Uses default icons if this function returns null.</hint>
@@ -62,9 +55,6 @@
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="0632053a-6b40-47a0-857f-6840e322344c">
@@ -73,9 +63,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="1e5a5798-220b-4a92-993d-c4ebd4123e53">
@@ -84,9 +71,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(disabled)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="c48d9593-c1f4-4610-9cb3-54de9c2f0c06">
@@ -94,21 +78,14 @@
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
-      <isActiveFunction />
     </property>
     <property id="581e77d6-4587-4041-86f6-880bd57d5848">
       <name>Name Must Be Unique</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return getProperty("c48d9593-c1f4-4610-9cb3-54de9c2f0c06").getValue() == true</isActiveFunction>
     </property>
     <property id="4b17e907-bd58-4f70-b376-383c6046ad8a">
@@ -116,50 +93,35 @@
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="ad2bbaa1-becc-477b-83d2-97179678e4bb">
       <name>Allow Static</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536">
       <name>Allow Set Value</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac">
       <name>Allow Generic Types</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb">
       <name>Allow Sorting</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="3a68e3cb-8014-4c43-9965-f6fc35589d37">
       <name>Sort Children</name>
@@ -174,19 +136,13 @@
         <option>By type then name</option>
         <option>By name</option>
       </valueOptions>
-      <lookupTypes />
-      <isActiveFunction />
-      <isRequiredFunction />
     </property>
     <property id="46180320-9a7e-4fe3-8351-f7524612a52c">
       <name>Allow Find in View</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

@@ -28,11 +28,7 @@
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
-      <isActiveFunction />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="7df9c3b9-91a0-4cb7-bc3a-15d72f160054">
@@ -41,7 +37,6 @@
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(none)</placeholder>
-      <valueOptions />
       <lookupTypes>
         <type>101fd5b6-3159-4810-9490-a103ef323e9c</type>
       </lookupTypes>

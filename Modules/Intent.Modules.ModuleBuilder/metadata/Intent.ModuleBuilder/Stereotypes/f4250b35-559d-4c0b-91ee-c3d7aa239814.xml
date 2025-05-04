@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="f4250b35-559d-4c0b-91ee-c3d7aa239814" version="3.1.0">
-  <comment />
-  <hint />
   <name>Option Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -41,9 +39,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="5572d05e-dd37-47f6-944a-73710c07f4f1">
       <comment>Optional. If unspecified, then the "Shortcut" property is automatically used with uses of "Ctrl" changed to "Command".</comment>
@@ -52,9 +47,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="ba8a3ecd-0f08-499e-bb5b-929d40f56a45">
       <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>
@@ -63,9 +55,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="8e092aa6-7d1a-4a06-af82-903e7642cef6">
@@ -74,10 +63,7 @@ return `[${shortcut}]`;</displayFunction>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="719e9dff-2b8d-407d-912d-fac99a158721">
       <comment>Specifies the underlying C# property name that must be generated for this option.</comment>
@@ -86,8 +72,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="77a9993c-40ba-47a9-a2a4-0974548a3f27">
       <comment>A JavaScript function to dynamically determine whether this option is visible on the menu.</comment>
@@ -95,9 +79,6 @@ return `[${shortcut}]`;</displayFunction>
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="A43F388B-DAFF-422C-BD8D-FB433EFEC51B">
@@ -107,8 +88,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="fdea9028-8611-4eb0-b1a5-4d54d267af41">
       <comment>This menu option will be added to the specified menu group, which is the first one by default (Group 0). Menu groups are separated by dividers and ordered by their number.</comment>
@@ -117,8 +96,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default = 0)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="aeaeff9b-f55b-4888-92e9-5317b5c14016">
       <comment>Whether a divider must be added above this option. Note that it is typically recommended to use _Menu Group_ to create dividers.</comment>
@@ -126,10 +103,7 @@ return `[${shortcut}]`;</displayFunction>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="543cc5f5-0b0c-40cc-9df7-3ce45b555dd0">
       <comment>Whether a divider must be added below this option. Note that it is typically recommended to use _Menu Group_ to create dividers.</comment>
@@ -137,10 +111,7 @@ return `[${shortcut}]`;</displayFunction>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

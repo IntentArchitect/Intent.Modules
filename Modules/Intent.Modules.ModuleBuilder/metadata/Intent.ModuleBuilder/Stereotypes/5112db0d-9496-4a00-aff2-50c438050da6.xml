@@ -25,7 +25,6 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>[]</defaultValue>
       <valueOptions>
         <option>Data Types</option>
@@ -34,15 +33,12 @@
         <option>Specific Types</option>
         <option>All Types</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="3c1c64cb-01ce-4bc4-af99-f76ae8350ebf">
       <name>Source Types</name>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-children</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
@@ -82,8 +78,6 @@ return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(Ignored)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
       <isActiveFunction>return getProperty("Sources").getValue() == "Specific Types" || getProperty("Sources").getValue() == "All Types"</isActiveFunction>
       <isRequiredFunction>return false</isRequiredFunction>
@@ -99,15 +93,12 @@ return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
         <option>None</option>
         <option>Solid Arrow</option>
       </valueOptions>
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="68504875-ebf6-47d6-ac36-c506431cf57c">
       <name>Targets</name>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>[]</defaultValue>
       <valueOptions>
         <option>Data Types</option>
@@ -116,15 +107,12 @@ return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
         <option>Specific Types</option>
         <option>All Types</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="8050a21c-c6ff-46fd-8677-eeda40f10719">
       <name>Target Types</name>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-children</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
@@ -165,8 +153,6 @@ return getAllPackageIds(targetMappables);</lookupInternalTargetPropertyId>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(Ignored)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
       <isActiveFunction>return getProperty("Sources").getValue() == "Specific Types" || getProperty("Sources").getValue() == "All Types"</isActiveFunction>
       <isRequiredFunction>return false</isRequiredFunction>
@@ -182,20 +168,17 @@ return getAllPackageIds(targetMappables);</lookupInternalTargetPropertyId>
         <option>None</option>
         <option>Solid Arrow</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="6ee5b3e3-628e-4996-87b5-08649e101887">
       <name>Represents</name>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>[]</defaultValue>
       <valueOptions>
         <option>Data</option>
         <option>Invokable</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="ba7b9885-1d77-4dc2-ba45-16fd368076b6">
@@ -204,7 +187,6 @@ return getAllPackageIds(targetMappables);</lookupInternalTargetPropertyId>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(Sync Disabled)</placeholder>
-      <valueOptions />
       <lookupTypes>
         <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
       </lookupTypes>
@@ -235,17 +217,12 @@ const getAllPackageIds = (mappablePackage) =&gt; {
 }
 
 return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
-      <isActiveFunction />
-      <isRequiredFunction />
     </property>
     <property id="ace10cc2-ece7-458a-bafb-2fc185f99335">
       <name>Line Color</name>
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="715395d8-db84-459f-bf9e-f910e2aff883">
@@ -253,9 +230,6 @@ return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="78717792-0cfa-4792-9ec2-57ab39d5e1e0">
@@ -263,9 +237,6 @@ return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
   </properties>

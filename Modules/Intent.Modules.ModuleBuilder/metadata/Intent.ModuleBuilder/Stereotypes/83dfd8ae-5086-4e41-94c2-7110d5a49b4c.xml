@@ -25,9 +25,6 @@
       <type>string</type>
       <controlType>textarea</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="4fa553d3-1b96-4f63-bdb9-3237eca31f6b">
@@ -35,19 +32,12 @@
       <type>string</type>
       <controlType>icon</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="207e8583-2ba5-4ea3-84aa-2f65cd5915ca">
       <name>Href</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="21d13790-2910-475c-b58f-9d350f2e13c6">
@@ -56,7 +46,6 @@
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(default global)</placeholder>
-      <valueOptions />
       <lookupTypes>
         <type>7f5fcc9f-c721-4a31-bfe2-7909f4289420</type>
       </lookupTypes>
@@ -66,9 +55,7 @@
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
       <defaultValue>(Not applicable to any particular element)</defaultValue>
-      <valueOptions />
       <lookupTypes>
         <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
         <type>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</type>
@@ -82,9 +69,6 @@
       <type>string</type>
       <controlType>textarea</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

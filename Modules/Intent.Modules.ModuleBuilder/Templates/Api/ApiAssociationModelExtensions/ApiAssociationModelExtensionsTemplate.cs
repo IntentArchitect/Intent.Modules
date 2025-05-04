@@ -48,10 +48,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n");
+            this.Write("\r\n    {\r\n    ");
             
             #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
-  foreach(var targetType in Model.SourceEnd.TargetTypes()) {  
+  foreach(var targetType in Model.SourceEnd.TargetTraits()) {  
             
             #line default
             #line hidden
@@ -69,15 +69,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
             
             #line default
             #line hidden
-            this.Write("(this ");
+            this.Write("(this I");
             
             #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(targetType.GetApiModelName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(targetType.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
-            this.Write(" model)\r\n        {\r\n            return model.InternalElement.AssociatedElements\r\n" +
-                    "                .Where(x => x.Association.SpecializationType == ");
+            this.Write("Model model)\r\n        {\r\n            return model.InternalElement.AssociatedEleme" +
+                    "nts\r\n                .Where(x => x.Association.SpecializationType == ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.ApiModelName));
@@ -100,7 +100,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
             #line hidden
             
             #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
-  foreach(var targetType in Model.TargetEnd.TargetTypes()) {  
+  foreach(var targetType in Model.TargetEnd.TargetTraits()) {  
             
             #line default
             #line hidden
@@ -118,15 +118,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
             
             #line default
             #line hidden
-            this.Write("(this ");
+            this.Write("(this I");
             
             #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(targetType.GetApiModelName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(targetType.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
-            this.Write(" model)\r\n        {\r\n            return model.InternalElement.AssociatedElements\r\n" +
-                    "                .Where(x => x.Association.SpecializationType == ");
+            this.Write("Model model)\r\n        {\r\n            return model.InternalElement.AssociatedEleme" +
+                    "nts\r\n                .Where(x => x.Association.SpecializationType == ");
             
             #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.ApiModelName));
@@ -149,25 +149,25 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
             #line hidden
             
             #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
-  foreach(var targetType in Model.TargetEnd.TargetTypes().Intersect(Model.SourceEnd.TargetTypes())) {  
+  foreach(var targetType in Model.SourceEnd.TargetTypes()) {  
             
             #line default
             #line hidden
             this.Write("        [IntentManaged(Mode.Fully)]\r\n        public static IList<");
             
             #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToCSharpIdentifier()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.TargetEnd.ApiModelName));
             
             #line default
             #line hidden
-            this.Write("EndModel> ");
+            this.Write("> ");
             
             #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToCSharpIdentifier()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.TargetEnd.ApiPropertyName));
             
             #line default
             #line hidden
-            this.Write("Ends(this ");
+            this.Write("(this ");
             
             #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(targetType.GetApiModelName()));
@@ -175,23 +175,121 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
             #line default
             #line hidden
             this.Write(" model)\r\n        {\r\n            return model.InternalElement.AssociatedElements\r\n" +
-                    "                .Where(x => x.Is");
+                    "                .Where(x => x.Association.SpecializationType == ");
             
             #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ApiModelName));
+            
+            #line default
+            #line hidden
+            this.Write(".SpecializationType && x.IsTargetEnd())\r\n                .Select(x => ");
+            
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ApiModelName));
+            
+            #line default
+            #line hidden
+            this.Write(".CreateFromEnd(x).TargetEnd)\r\n                .ToList();\r\n        }\r\n\r\n");
+            
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+  }  
+            
+            #line default
+            #line hidden
+            
+            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+  foreach(var targetType in Model.TargetEnd.TargetTypes()) {  
+            
+            #line default
+            #line hidden
+            this.Write("        [IntentManaged(Mode.Fully)]\r\n        public static IList<");
+            
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.SourceEnd.ApiModelName));
+            
+            #line default
+            #line hidden
+            this.Write("> ");
+            
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.SourceEnd.ApiPropertyName));
+            
+            #line default
+            #line hidden
+            this.Write("(this ");
+            
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(targetType.GetApiModelName()));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n        {\r\n            return model.InternalElement.AssociatedElements\r\n" +
+                    "                .Where(x => x.Association.SpecializationType == ");
+            
+            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ApiModelName));
+            
+            #line default
+            #line hidden
+            this.Write(".SpecializationType && x.IsSourceEnd())\r\n                .Select(x => ");
+            
+            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ApiModelName));
+            
+            #line default
+            #line hidden
+            this.Write(".CreateFromEnd(x).SourceEnd)\r\n                .ToList();\r\n        }\r\n\r\n");
+            
+            #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+  }  
+            
+            #line default
+            #line hidden
+            
+            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+  foreach(var targetType in Model.TargetEnd.TargetTypes().Intersect(Model.SourceEnd.TargetTypes())) {  
+            
+            #line default
+            #line hidden
+            this.Write("        [IntentManaged(Mode.Fully)]\r\n        public static IList<");
+            
+            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToCSharpIdentifier()));
+            
+            #line default
+            #line hidden
+            this.Write("EndModel> ");
+            
+            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToCSharpIdentifier()));
+            
+            #line default
+            #line hidden
+            this.Write("Ends(this ");
+            
+            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(targetType.GetApiModelName()));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n        {\r\n            return model.InternalElement.AssociatedElements\r\n" +
+                    "                .Where(x => x.Is");
+            
+            #line 69 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("EndModel())\r\n                .Select(");
             
-            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+            #line 70 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("EndModel.Create)\r\n                .ToList();\r\n        }\r\n\r\n");
             
-            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
+            #line 74 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt"
   }  
             
             #line default

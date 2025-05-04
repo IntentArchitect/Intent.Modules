@@ -25,10 +25,7 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>1.0.0</defaultValue>
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="177a2415-e749-46e7-8257-440e19ecfb5e">
@@ -37,10 +34,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isActiveFunction />
-      <isRequiredFunction />
     </property>
     <property id="0d2ae582-090e-42d6-a7d6-689144433254">
       <name>NuGet Package Id</name>
@@ -48,10 +41,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(optional)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isActiveFunction />
-      <isRequiredFunction />
     </property>
     <property id="27cf6544-a9a2-4992-9fef-51d0ed49e66e">
       <name>NuGet Package Version</name>
@@ -59,42 +48,30 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(optional)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
-      <isActiveFunction />
-      <isRequiredFunction />
     </property>
     <property id="d40394fc-ed23-45a0-9c56-cbcf1c928e47">
       <name>Include in Module</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="959b2f6f-bc0f-42d3-8cae-7b3686037b2f">
       <name>Reference in</name>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Selected Designers</defaultValue>
       <valueOptions>
         <option>All Designers</option>
         <option>Selected Designers</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="27d378b6-9011-4ced-86b7-b976d690ceb7">
       <name>Reference in Designer</name>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>7f5fcc9f-c721-4a31-bfe2-7909f4289420</type>
       </lookupTypes>
@@ -105,20 +82,13 @@
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="8f423f80-4722-41bd-9060-2273c723cb2c">
       <name>Project URL</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

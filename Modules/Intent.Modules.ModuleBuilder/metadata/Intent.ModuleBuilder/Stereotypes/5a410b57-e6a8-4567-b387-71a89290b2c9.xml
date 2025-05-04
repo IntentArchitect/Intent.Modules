@@ -27,17 +27,12 @@
       <controlType>icon</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="763a1f02-cdc2-4b43-a763-5ff38d59af60">
       <name>Target Types</name>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
         <type>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</type>
@@ -50,9 +45,6 @@
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-stereotype</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="b534060a-c8a3-4631-b4a9-db0baeecd1b3">
       <name>Api Property Name</name>
@@ -60,8 +52,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>return false;</isRequiredFunction>
     </property>
     <property id="65b99db7-ec8e-408d-a0fd-a98245d1fbcc">
@@ -70,9 +60,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="f2b3038c-188e-4777-833b-15969e3923d7">
@@ -81,9 +68,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(disabled)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="6bf94b78-382a-4002-ac88-a569b59e16e6">
@@ -99,7 +83,6 @@
         <option>Disabled</option>
         <option>Hidden</option>
       </valueOptions>
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
@@ -109,112 +92,77 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
-      <isActiveFunction />
     </property>
     <property id="2d07ed88-82bf-4d30-9280-1488f0f927e0">
       <name>Name Must Be Unique</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
-      <isActiveFunction />
     </property>
     <property id="c81dddd3-8e13-4fe9-b923-1ad339b30746">
       <name>Is Navigable Enabled</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="9419ab85-5421-4b54-82f2-da502a9651d6">
       <name>Is Nullable Enabled</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="9b861271-feb0-4d57-ae86-7e053ed441ae">
       <name>Is Collection Enabled</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="18131f3e-1c29-4c21-a32a-3946204d0d29">
       <name>Is Navigable Default</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0">
       <name>Is Nullable Default</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="bb49808b-06e1-45f1-9f6b-08dede577305">
       <name>Is Collection Default</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="c8c2530e-8048-40aa-838c-7c5d870d492b">
       <name>Allow Set Value</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="77a800bb-e76a-4b1d-bbc1-32cf7baed608">
       <name>Allow Multiple</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a">
       <name>Allow Sorting</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="9ae87826-7f34-4cab-b371-5cd2da9331dd">
       <name>Sort Children</name>
@@ -228,9 +176,6 @@
         <option>By type then name</option>
         <option>By name</option>
       </valueOptions>
-      <lookupTypes />
-      <isActiveFunction />
-      <isRequiredFunction />
     </property>
   </properties>
 </stereotypeDefinition>
