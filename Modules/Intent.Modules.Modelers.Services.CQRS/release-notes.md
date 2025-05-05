@@ -1,3 +1,7 @@
+### Version 5.1.4
+
+- Improvement: Queries will now warn if default values have been set on properties which are proceeded by properties without default values
+
 ### Version 5.1.3
 
 - Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.

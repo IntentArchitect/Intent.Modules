@@ -72,6 +72,10 @@ public class MappableElementSettingPersistable
     [XmlElement("useChildSettingsFrom")]
     public string UseChildSettingsFrom { get; set; }
 
+    [XmlElement("overrideMapToParentFunction")]
+    public string OverrideMapToParentFunction { get; set; }
+    public bool ShouldSerializeOverrideMapToParentFunction() => !string.IsNullOrWhiteSpace(OverrideMapToParentFunction);
+
     [XmlElement("represents")]
     public string Represents { get; set; }
 

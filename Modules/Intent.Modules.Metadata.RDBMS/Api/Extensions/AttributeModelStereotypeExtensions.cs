@@ -502,11 +502,6 @@ namespace Intent.Metadata.RDBMS.Api
 
             public string Name => _stereotype.Name;
 
-            public bool Identity()
-            {
-                return _stereotype.GetProperty<bool>("Identity");
-            }
-
             public DataSourceOptions DataSource()
             {
                 return new DataSourceOptions(_stereotype.GetProperty<string>("Data source"));
