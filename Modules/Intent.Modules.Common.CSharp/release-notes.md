@@ -1,4 +1,8 @@
-﻿### Version 3.8.13
+﻿### Version 3.8.14
+
+- Improvement: Added `Public()` to CSharpClassMethod.
+
+### Version 3.8.13
 
 - Improvement: When performing updates on `collections` of entities without a primary key, the default behavior will be to replace the existing list with the one supplied.
 
