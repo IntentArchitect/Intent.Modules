@@ -315,7 +315,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
-                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="return element.getChildren(&quot;Command&quot;).length &gt; 0 || element.getChildren(&quot;Query&quot;).length &gt; 0" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="return element.getChildren(&quot;Command&quot;).length &gt; 0 || element.getChildren(&quot;Query&quot;).length &gt; 0;&#xD;&#xA;&#xD;&#xA;" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -409,6 +409,50 @@
                   <metadata />
                   <childElements />
                 </childElement>
+                <childElement id="85914722-c101-4e40-b165-72879b09e485" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+                  <name>NewElementMapping</name>
+                  <display>[mapping]: Folder -&gt; Folder (Traverse)</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <isMapped>false</isMapped>
+                  <parentFolderId>cc28eb62-9cd7-45f3-ac20-343fdcb67ee7</parentFolderId>
+                  <packageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</packageId>
+                  <packageName>Intent.Modelers.Types.ServiceProxies</packageName>
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="true" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Traverse" isActive="true" />
+                        <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="4d95d53a-8855-4f35-aa82-e312643f5c5f" isActive="true" />
+                        <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" value="cc28eb62-9cd7-45f3-ac20-343fdcb67ee7" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="4d95d53a-8855-4f35-aa82-e312643f5c5f" isActive="true" />
+                        <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                        <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                        <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                        <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="return element.getChildren(&quot;Command&quot;).length &gt; 0 || element.getChildren(&quot;Query&quot;).length &gt; 0 || element.getChildren(&quot;Folder&quot;).length &gt; 0;" isActive="true" />
+                      </properties>
+                    </stereotype>
+                  </stereotypes>
+                  <metadata />
+                  <childElements />
+                </childElement>
               </childElements>
             </childElement>
             <childElement id="7746e02b-1804-4aaf-a74b-fd572381bfbf" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
@@ -426,7 +470,7 @@
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
-                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="true" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
@@ -448,7 +492,7 @@
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                     <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
-                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="return element.getChildren(&quot;Command&quot;).length == 0 &amp;&amp; element.getChildren(&quot;Query&quot;).length == 0" isActive="true" />
+                    <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="return element.getChildren(&quot;Command&quot;).length &gt; 0 || element.getChildren(&quot;Query&quot;).length &gt; 0 || element.getChildren(&quot;Folder&quot;).length &gt; 0;" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -456,6 +500,50 @@
               <childElements />
             </childElement>
           </childElements>
+        </childElement>
+        <childElement id="ffe46ce5-f812-4f56-947e-807d81df6edd" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+          <name>NewElementMapping</name>
+          <display>[mapping]: Folder -&gt; [None] (Traverse)</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>df491bea-8a85-4bc9-a93d-41b7abb80ffb</parentFolderId>
+          <packageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</packageId>
+          <packageName>Intent.Modelers.Types.ServiceProxies</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Traverse" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="true" />
+                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" value="be57ff66-f953-48da-8e7f-6cb9a7b33332" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="4d95d53a-8855-4f35-aa82-e312643f5c5f" isActive="true" />
+                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                <property name="72dba0b6-607b-4bc4-a511-ff480691aae1" display="Filter Function" value="return element.getChildren(&quot;Command&quot;).length &gt; 0 || element.getChildren(&quot;Query&quot;).length &gt; 0 || element.getChildren(&quot;Folder&quot;).length &gt; 0;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
         </childElement>
       </childElements>
     </childElement>
@@ -474,7 +562,7 @@
       <childElements>
         <childElement id="99d85c52-5c96-44f2-bc23-d29af15e04ba" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
-          <display>On Created: Script</display>
+          <display>On Created: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="acd96291-0cc3-41b6-8f61-2f611aa3cd6e">
@@ -499,6 +587,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="element.launchMappingDialog(&quot;df491bea-8a85-4bc9-a93d-41b7abb80ffb&quot;);&#xD;&#xA;" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -507,7 +596,7 @@
         </childElement>
         <childElement id="7407d479-9959-490a-8d2e-9c61919e0233" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Mapped</name>
-          <display>On Mapped: Script</display>
+          <display>On Mapped: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="6e502da8-12c6-4845-a1e5-0be39ebf18d7">
@@ -532,6 +621,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getName() === &quot;Service&quot; || element.getName() === &quot;NewServiceProxy&quot;) {&#xD;&#xA;    const elementName = removeSuffix(element.getMapping().getElement().getName(), &quot;Service&quot;, &quot;Proxy&quot;);&#xD;&#xA;    element.setName(`${elementName}Service`);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;element.getChildren(&quot;Service Proxy Operation&quot;).forEach(operation =&gt; {&#xD;&#xA;    operation.setName(removeSuffix(operation.getName(), &quot;Command&quot;, &quot;Query&quot;));&#xD;&#xA;});&#xD;&#xA;" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

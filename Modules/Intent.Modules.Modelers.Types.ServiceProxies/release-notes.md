@@ -1,4 +1,8 @@
-﻿### Version 5.4.2
+﻿### Version 5.4.3
+
+- Improvement: Services defined in sub folders can now be included when creating a `Service Proxy`.
+
+### Version 5.4.2
 
 - Fixed: Referenced DTOs with generic type parameters would incorrectly contain their closed generic forms ultimately resulting in incorrectly generated DTOs.
 
