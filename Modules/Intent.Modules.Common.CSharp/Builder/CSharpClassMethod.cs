@@ -258,6 +258,12 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
         AccessModifier = "private ";
         return this;
     }
+    public CSharpClassMethod Public()
+    {
+        AccessModifier = "public ";
+        return this;
+    }
+
 
     public CSharpClassMethod WithReturnType(CSharpType returnType)
     {

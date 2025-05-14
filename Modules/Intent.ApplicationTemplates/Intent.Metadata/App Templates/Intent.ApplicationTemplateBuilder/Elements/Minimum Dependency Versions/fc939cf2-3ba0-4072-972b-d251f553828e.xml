@@ -59,7 +59,7 @@
       <name>Intent.OutputManager.RoslynWeaver</name>
       <display>Intent.OutputManager.RoslynWeaver 4.9.6</display>
       <isAbstract>false</isAbstract>
-      <value>4.9.6</value>
+      <value>4.9.7</value>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>fc939cf2-3ba0-4072-972b-d251f553828e</parentFolderId>
