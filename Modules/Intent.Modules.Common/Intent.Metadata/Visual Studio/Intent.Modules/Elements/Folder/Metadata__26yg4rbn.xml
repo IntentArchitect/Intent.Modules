@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="aa8c3509-9638-4e44-961c-38b7e8053699" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
-  <name>resources</name>
-  <display>resources</display>
+<class id="bda92e20-e032-4098-b65f-777a10dd24e0" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>Metadata</name>
+  <display>Metadata</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
@@ -15,20 +15,20 @@
       <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
       <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
       <properties>
-        <property name="4bfbefd0-d22e-4ca0-9723-92ae273feca4" display="Namespace Provider" value="true" isActive="true" />
+        <property name="4bfbefd0-d22e-4ca0-9723-92ae273feca4" display="Namespace Provider" value="false" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="5d64b5db-f0d8-4db5-b60f-546601f5692b" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.Templates.DocumentationTemplate</name>
-      <display>Intent.ModuleBuilder.Templates.DocumentationTemplate</display>
+    <childElement id="fd6c8fd2-a458-4d65-8382-53cc01868f19" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.Api.ApiTraitModel</name>
+      <display>Intent.ModuleBuilder.Templates.Api.ApiTraitModel</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>aa8c3509-9638-4e44-961c-38b7e8053699</parentFolderId>
+      <parentFolderId>bda92e20-e032-4098-b65f-777a10dd24e0</parentFolderId>
       <packageId>9902cd5d-c634-47d6-a48c-de10732bf817</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />

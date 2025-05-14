@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" version="3.1.0">
+  <comment>Indicates that the model represents a processing point in the application. This can then be used to discover interactions that have been modeled against this processing point.</comment>
   <name>[Processing Handler]</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -7,6 +8,7 @@
     <type id="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">Element Extension</type>
   </targetTypes>
   <targetReferenceTypes />
+  <isTrait>true</isTrait>
   <applyMode>manually</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>false</displayIcon>
@@ -16,7 +18,7 @@
   <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
-  <parentFolderId>caccdda9-26f4-49bf-8b73-cadc2220de16</parentFolderId>
+  <parentFolderId>7c5bb3f6-ee74-4413-a215-f2ef325fd1ec</parentFolderId>
   <order>0</order>
   <packageId>caccdda9-26f4-49bf-8b73-cadc2220de16</packageId>
   <packageName>Intent.Common</packageName>
