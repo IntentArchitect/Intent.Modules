@@ -51,7 +51,7 @@ namespace Intent.Modules.Metadata.Security.Migrations
                 var services = package.GetElementsOfType("b16578a5-27b1-4047-a8df-f0b783d706bd");
                 ConvertElementPoliciesUp(services);
 
-                foreach(var service in services)
+                foreach (var service in services)
                 {
                     var operations = service.ChildElements.Where(c => c.SpecializationTypeId == "e030c97a-e066-40a7-8188-808c275df3cb").ToList().AsReadOnly();
                     ConvertElementPoliciesUp(operations);
@@ -282,7 +282,7 @@ namespace Intent.Modules.Metadata.Security.Migrations
         {
             var secPoliciesProp = stereo.Properties.FirstOrDefault(p => p.DefinitionId == Secured.Properties.Policies);
 
-            if(secPoliciesProp == null)
+            if (secPoliciesProp == null)
             {
                 return;
             }
