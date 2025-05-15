@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.Security</id>
-  <version>1.0.2</version>
+  <version>1.0.3-pre.0</version>
   <supportedClientVersions>[4.3.0-a,5.0.0)</supportedClientVersions>
   <summary>Support for describing security on services.</summary>
   <description>Support for describing security on services.</description>
@@ -36,4 +36,7 @@
     <install target="Services;Domain" src="modelers/Security Extensions.designer.settings" externalReference="cd3ea7d2-e3c2-4ce3-98e1-39b4dfe87d10" />
     <install target="Services;Domain" src="Intent.Metadata/Module Builder/Intent.Metadata.Security/Intent.Metadata.Security.pkg.config" externalReference="a6fa1088-0064-43e3-a7fc-36c97b2b9285" />
   </metadata>
+  <migrations>
+	<migration version="1.0.3-pre.0" />
+  </migrations>
 </package>

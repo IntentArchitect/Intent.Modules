@@ -17,13 +17,23 @@
   <displayFunction>if (Policy || Roles){
     return `[Authorize(${Roles ? `Roles = \"${Roles}\"` : ""}${Roles &amp;&amp; Policy ? ", " : ""}${Policy ? `Policy = \"${Policy}\"` : ""})]`;
 }else if (SecurityPolicies || SecurityRoles){
-    return `[Authorize(${hasElements(SecurityRoles) ? `Roles = \"${getAsText(SecurityRoles)}\"` : ""}${ hasElements(SecurityRoles) &amp;&amp; hasElements(SecurityPolicies) ? ", " : ""}${hasElements(SecurityPolicies) ? `Policy = \"${getAsText(SecurityPolicies)}\"` : ""})]`;
+    return `[Authorize(${hasElements(SecurityRoles) ? `Roles = \"${getAsText(SecurityRoles)}\"` : ""}${ hasElements(SecurityRoles) &amp;&amp; isSelected(SecurityPolicies) ? ", " : ""}${isSelected(SecurityPolicies) ? `Policy = \"${getTextFromId(SecurityPolicies)}\"` : ""})]`;
 }else{
     return `[Authorize]`
 }
 
 function hasElements(setting){
     return setting &amp;&amp; setting != '[]';
+}
+
+function isSelected(setting){
+    console.info("setting: " + setting);
+    return setting &amp;&amp; setting != '';
+}
+
+function getTextFromId(value) {
+    const obj = lookup(value);
+    return obj ? obj.getName() : null;
 }
 
 function getAsText(values){
@@ -73,7 +83,7 @@ return null;</validateFunction>
 return !securityElementsDefined || (securityElementsDefined &amp;&amp;  (Roles !== null &amp;&amp; Roles !== undefined &amp;&amp; Roles.trim() !== ''));</isActiveFunction>
     </property>
     <property id="ae5251ff-40a1-4e46-be66-6b176f329f98">
-      <hint>Comma separated list of policy names.</hint>
+      <hint>The policy name. To apply multiple policies use multiple Secured stereotypes.</hint>
       <name>Policy</name>
       <type>string</type>
       <controlType>text</controlType>
@@ -97,9 +107,10 @@ return !securityElementsDefined || (securityElementsDefined &amp;&amp;  (Policy 
       <isActiveFunction>return lookupTypesOf("Security Configuration")[0]?.getChildren()?.length &gt; 0;</isActiveFunction>
     </property>
     <property id="68cbcd05-cd5c-49f3-a982-8ee9caf554bb">
+      <hint>To apply multiple policies use multiple Secured stereotypes.</hint>
       <name>Security Policies</name>
       <type>string</type>
-      <controlType>multi-select</controlType>
+      <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder />
       <valueOptions />
@@ -107,6 +118,7 @@ return !securityElementsDefined || (securityElementsDefined &amp;&amp;  (Policy 
         <type>9f37c60e-ad88-4484-98ca-6c9aa7ca3134</type>
       </lookupTypes>
       <isActiveFunction>return lookupTypesOf("Security Configuration")[0]?.getChildren()?.length &gt; 0;</isActiveFunction>
+      <isRequiredFunction />
     </property>
   </properties>
 </stereotypeDefinition>

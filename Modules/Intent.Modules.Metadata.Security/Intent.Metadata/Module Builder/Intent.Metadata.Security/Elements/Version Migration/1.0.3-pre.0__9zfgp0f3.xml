@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d2746d90-f164-4f01-910e-682ee5fb8578" type="Version Migration" typeId="03f24c57-66d8-4868-95a7-6daef900dc7f">
+  <name>1.0.3-pre.0</name>
+  <display>1.0.3-pre.0</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d3e9f620-62fe-43c9-bd0b-26893dcc6013</parentFolderId>
+  <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+  <packageName>Intent.Metadata.Security</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
