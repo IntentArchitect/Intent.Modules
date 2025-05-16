@@ -1,3 +1,7 @@
+### Version 1.3.1
+
+- Fixed: Removed obsolete script which was causing associations to be created incorrectly
+
 ### Version 1.3.0
 
 - Improvement: Improvemed documentation and added a number of help topics
