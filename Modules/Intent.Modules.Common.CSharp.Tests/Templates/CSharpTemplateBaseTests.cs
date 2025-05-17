@@ -205,19 +205,6 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
         public class UseType_Usings
         { 
             [Fact]
-            public void ItShouldAddCorrectUsingsWithGenericWithQualifiedArgument()
-            {
-                // Arrange
-                var template = new TestableCSharpTemplateBase();
-                // Act
-                var resolvedType = template.UseType("Microsoft.Azure.CosmosRepository.IRepository<EntityNamespace.Entity>");
-
-                // Assert
-                resolvedType.ShouldBe("IRepository<EntityNamespace.Entity>");
-                template.DependencyUsings.ShouldBe("using Microsoft.Azure.CosmosRepository;");
-            }
-
-            [Fact]
             public void ItShouldAddCorrectUsingsWithNestedGenericWithQualifiedArgument()
             {
                 // Arrange
@@ -226,8 +213,8 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
                 var resolvedType = template.UseType("Microsoft.Azure.CosmosRepository.IRepository<NestedOne.Entity<NestedOne.EntityTwo>>");
 
                 // Assert
-                resolvedType.ShouldBe("IRepository<NestedOne.Entity<NestedOne.EntityTwo>>");
-                template.DependencyUsings.ShouldBe("using Microsoft.Azure.CosmosRepository;");
+                resolvedType.ShouldBe("IRepository<Entity<EntityTwo>>");
+                template.DeclareUsings().ShouldBe(["Microsoft.Azure.CosmosRepository", "NestedOne"]);
             }
 
             [Fact]
@@ -301,6 +288,20 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
                 // Assert
                 resolvedType.ShouldBe("IRepository");
                 template.DependencyUsings.ShouldBe("using MyNamespace;");
+            }
+
+            [Fact]
+            public void ItShouldRecursivelySimplifyGenericArguments()
+            {
+                // Arrange
+                var template = new TestableCSharpTemplateBase();
+
+                // Act
+                var resolvedType = template.UseType("Namespace1.Type1<Namespace2.Type2, Namespace3.Type3>");
+
+                // Assert
+                resolvedType.ShouldBe("Type1<Type2, Type3>");
+                template.DeclareUsings().ShouldBe(["Namespace1", "Namespace2", "Namespace3"]);
             }
 
             private class TestableCSharpTemplateBase : CSharpTemplateBase

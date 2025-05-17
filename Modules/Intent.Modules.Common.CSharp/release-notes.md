@@ -1,6 +1,7 @@
 ﻿### Version 3.8.14
 
 - Improvement: Added `Public()` to CSharpClassMethod.
+- Fixed: `CSharpTemplateBase.UseType(...)` would not add usings for generic type arguments.
 
 ### Version 3.8.13
 
