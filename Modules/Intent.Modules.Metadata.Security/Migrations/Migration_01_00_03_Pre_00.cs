@@ -168,7 +168,7 @@ namespace Intent.Modules.Metadata.Security.Migrations
         {
             var secPoliciesProp = stereo.Properties.FirstOrDefault(p => p.DefinitionId == Secured.Properties.Policies);
 
-            if(secPoliciesProp is null)
+            if (secPoliciesProp is null)
             {
                 return;
             }
