@@ -92,9 +92,14 @@ namespace Intent.Modules.Metadata.Security.Migrations
         {
             var legacyPolicy = stereo.Properties.FirstOrDefault(p => p.DefinitionId == Secured.Properties.TextPolicy);
 
+            if (legacyPolicy is null)
+            {
+                return;
+            }
+
             var policies = legacyPolicy?.Value?.Split(",");
 
-            legacyPolicy.Value = !string.IsNullOrWhiteSpace(legacyPolicy.Value) ? policies.First() : null;
+            legacyPolicy.Value = !string.IsNullOrWhiteSpace(legacyPolicy?.Value) ? policies.First() : null;
 
             if (policies != null && policies.Length > 1)
             {
@@ -125,9 +130,14 @@ namespace Intent.Modules.Metadata.Security.Migrations
         {
             var legacyPolicy = stereo.Properties.FirstOrDefault(p => p.DefinitionId == Secured.Properties.TextPolicy);
 
+            if (legacyPolicy is null)
+            {
+                return;
+            }
+
             var policies = legacyPolicy?.Value?.Split(",");
 
-            legacyPolicy.Value = !string.IsNullOrWhiteSpace(legacyPolicy.Value) ? policies.First() : null;
+            legacyPolicy.Value = !string.IsNullOrWhiteSpace(legacyPolicy?.Value) ? policies.First() : null;
 
             if (policies != null && policies.Length > 1)
             {
@@ -158,13 +168,18 @@ namespace Intent.Modules.Metadata.Security.Migrations
         {
             var secPoliciesProp = stereo.Properties.FirstOrDefault(p => p.DefinitionId == Secured.Properties.Policies);
 
-            var policies = !string.IsNullOrWhiteSpace(secPoliciesProp.Value)
+            if(secPoliciesProp is null)
+            {
+                return;
+            }
+
+            var policies = secPoliciesProp != null && !string.IsNullOrWhiteSpace(secPoliciesProp.Value)
             ? JsonSerializer.Deserialize<List<string>>(secPoliciesProp.Value)
             : [];
 
-            secPoliciesProp.Value = policies.Any() ? policies.First() : null;
+            secPoliciesProp.Value = (policies != null && policies.Count != 0) ? policies.First() : null;
 
-            if (policies.Count > 1)
+            if (policies != null && policies.Count > 1)
             {
                 foreach (var policy in policies.Skip(1))
                 {
@@ -193,13 +208,19 @@ namespace Intent.Modules.Metadata.Security.Migrations
         {
             var secPoliciesProp = stereo.Properties.FirstOrDefault(p => p.DefinitionId == Secured.Properties.Policies);
 
-            var policies = !string.IsNullOrWhiteSpace(secPoliciesProp.Value)
+            if (secPoliciesProp is null)
+            {
+                return;
+            }
+
+            var policies = secPoliciesProp != null && !string.IsNullOrWhiteSpace(secPoliciesProp.Value)
             ? JsonSerializer.Deserialize<List<string>>(secPoliciesProp.Value)
             : [];
 
-            secPoliciesProp.Value = policies.Any() ? policies.First() : null;
+            secPoliciesProp.Value = (policies != null && policies.Count != 0) ? policies.First() : null;
 
-            if (policies.Count > 1)
+
+            if (policies != null && policies.Count > 1)
             {
                 foreach (var policy in policies.Skip(1))
                 {
@@ -291,7 +312,7 @@ namespace Intent.Modules.Metadata.Security.Migrations
             ? [secPoliciesProp.Value]
             : Array.Empty<string>();
 
-            secPoliciesProp.Value = policies.Any() ? JsonSerializer.Serialize(policies) : null;
+            secPoliciesProp.Value = (policies != null && policies.Length != 0) ? JsonSerializer.Serialize(policies) : null;
         }
 
     }
