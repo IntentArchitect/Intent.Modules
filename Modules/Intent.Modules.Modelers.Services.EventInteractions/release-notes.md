@@ -1,3 +1,7 @@
+### Version 1.2.1
+
+- Improvement: `ApiMetadataManagerCustomExtensions` been updated to have method overloads accepting `Application Id` parameters.
+
 ### Version 1.2.0
 
 - Improvement: Added `Suggestion` (4.4.x feature) for `Message` and `Integration Command` to auto-create an `Integration Event Handler`.
