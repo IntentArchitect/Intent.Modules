@@ -17,7 +17,7 @@
     <application id="ff3070c6-4626-4a8b-85ab-7d56887a1445" solutionFolder="Common" relativePath="Intent.Modules.Common.Types/Common.Types.application.config" />
     <application id="4c43397f-638c-4889-bb6b-fb7b064d5562" solutionFolder="Common" relativePath="Intent.Modules.Common.Sql/Common.Sql.application.config" />
     <application id="c5d9d6eb-8953-4b30-8e4d-a8d2890d31b4" relativePath="Intent.Modules.ModuleBuilder.Sql/ModuleBuilder.Sql.application.config" />
-    <application id="fbb9e269-8250-4831-a2ec-f73b68658e77" relativePath="Intent.Modules.ModuleBuilder.Java/ModuleBuilder.Java.application.config" />
+    <application id="fbb9e269-8250-4831-a2ec-f73b68658e77" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.Java/ModuleBuilder.Java.application.config" />
     <application id="275030c0-f660-4c46-8156-ce592d267b38" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.Html/ModuleBuilder.Html.application.config" />
     <application id="6c53239e-354a-4005-baa3-1fabf4a5dc11" name="OutputTargets.Folders" solutionFolder="Designers" relativePath="Intent.Modules.OutputTargets.Folders/OutputTargets.Folders.application.config" />
     <application id="d80e91fc-ff6c-4960-b18c-7fb30c4e81e3" name="Intent.Modules.ApplicationTemplate.Builder" solutionFolder="Application Template Builder" relativePath="Intent.Modules.ApplicationTemplate.Builder/Intent.Modules.ApplicationTemplate.Builder.application.config" />
