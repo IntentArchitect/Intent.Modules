@@ -25,10 +25,7 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>NewApplication</defaultValue>
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="61743c96-5b08-4925-8902-28db41244bf3">
@@ -39,48 +36,34 @@
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
       <defaultValue>${application.name}</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="48469188-f2bb-43e6-a83c-349d90fb7433">
       <name>Place solution and application in the same directory</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="5c7741b1-0d43-4c93-a254-45252a87fa70">
       <name>Create folder for solution</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="54abe4ba-f663-4f73-8072-5c2da7ebbcd7">
       <name>Store Intent Architect files separate to codebase</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="1c02193b-a3b6-4411-88d0-802335e160cb">
       <name>Set .gitignore entries</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>
