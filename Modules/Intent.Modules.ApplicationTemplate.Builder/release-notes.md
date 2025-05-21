@@ -1,4 +1,8 @@
-﻿### Version 3.5.0
+﻿### Version 3.5.1
+
+- Improvement: Added validation to prevent Modules being configured as `required` but not `included by default`, which caused them not to be installed when creating a new application, even if selected.
+
+### Version 3.5.0
 
 - Improvement: Added support for granular module installation settings introduced in Intent Architect 4.4.0.
 
