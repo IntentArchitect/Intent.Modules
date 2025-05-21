@@ -35,7 +35,7 @@ public class CSharpConstructorCall : ICSharpConstructorCall
         if (Arguments.Any())
         {
             var arguments = Arguments
-                .Select(x => x.EnsureNotKeyword(defaultKeywordIsAllowed: true));
+                .Select(x => x.EnsureVerbatimIdentifierForArgument());
 
             return $" : {_type}({string.Join(", ", arguments)})";
         }
