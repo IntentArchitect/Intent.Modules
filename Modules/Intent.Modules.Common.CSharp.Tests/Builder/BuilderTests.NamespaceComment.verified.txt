@@ -1,0 +1,9 @@
+﻿#pragma warning disable IDE0130 // Namespace does not match folder structure
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+    }
+}
