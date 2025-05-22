@@ -82,7 +82,6 @@ return null;</iconFunction>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <mappingSettings />
-          <childElementSettings />
         </childElementSetting>
       </childElementSettings>
     </elementSetting>

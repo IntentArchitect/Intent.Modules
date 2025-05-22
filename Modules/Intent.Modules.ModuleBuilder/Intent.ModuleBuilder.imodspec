@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
   <version>3.14.0</version>
@@ -253,7 +253,7 @@
   <decorators></decorators>
   <dependencies>
     <dependency id="Intent.Common" version="3.7.2" />
-    <dependency id="Intent.Common.CSharp" version="3.6.0" />
+    <dependency id="Intent.Common.CSharp" version="3.8.0" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="4.5.1" />
   </dependencies>

@@ -16,9 +16,9 @@ namespace Intent.Modules.ModuleBuilder.CSharp
         public void RegisterPackages()
         {
             NugetRegistry.Register(IntentModulesCommonCSharpPackageName,
-                (framework) => framework switch
+                (framework) => (framework.Major, framework.Minor) switch
                     {
-                        ( >= 8, 0) => new PackageVersion("3.8.1")
+                        ( >= 8, >= 0) => new PackageVersion("3.8.1")
                             .WithNugetDependency("Intent.Architect.Persistence", "3.6.0")
                             .WithNugetDependency("Intent.Modules.Common", "3.7.1")
                             .WithNugetDependency("Intent.Modules.Common.Types", "4.0.0")
