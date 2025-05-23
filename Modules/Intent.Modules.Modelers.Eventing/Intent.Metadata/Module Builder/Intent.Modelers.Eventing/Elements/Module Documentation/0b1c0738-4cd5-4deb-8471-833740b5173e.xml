@@ -93,6 +93,33 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="34dd51f2-e7d0-48d0-b149-a9f5418caf35" type="Documentation Topic" typeId="5cc56ebc-6b61-41a6-a452-8efd9382da6f">
+      <name>Integration Event/Command not appearing</name>
+      <display>Integration Event/Command not appearing</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>0b1c0738-4cd5-4deb-8471-833740b5173e</parentFolderId>
+      <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+      <packageName>Intent.Modelers.Eventing</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="83dfd8ae-5086-4e41-94c2-7110d5a49b4c" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="2792ad9a-2afd-4350-bac6-bdcf4b701ff1" display="Description" value="How to resolve the issue where an Integration Event or Command does not appear." isActive="true" />
+            <property name="4fa553d3-1b96-4f63-bdb9-3237eca31f6b" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iRW52ZWxvcGUtcmVkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI5LjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS4wIEJ1aWxkIDE0MSkgIC0tPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtOTQ1dGJuc2V1OTQ4aG50Zzg5MzQ1N2dic3c4ZTUiIHgxPSIyNS4yIiB5MT0iNDIiIHgyPSIyNS4yIiB5Mj0iMTAuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQ5LjUpIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2RlNGQ1MiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNiZDIwMjUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDEtOTQ1dGJuc2V1OTQ4aG50Zzg5MzQ1N2dic3c4ZTUiIHgxPSIyNS4yIiB5MT0iNDIiIHgyPSIyNS4yIiB5Mj0iMTAuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQ5LjUpIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2RlNGQ1MiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNiZDIwMjUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwb2x5Z29uIGlkPSJfeDNDX0ZvbGRfeDNFXyIgcG9pbnRzPSIyMSAyNyAyNS4yIDMwLjUgMjkuMyAyNyAzNyAzMy40IDQwLjggMzMuNCA0MC44IDMyIDMyIDI0LjggNDAuOCAxNy41IDQwLjggMTYuMSAzNyAxNi4xIDI1LjIgMjYgMTMuMyAxNi4xIDkuNiAxNi4xIDkuNiAxNy41IDE4LjMgMjQuNyA5LjYgMzIgOS42IDMzLjQgMTMuMyAzMy40IDIxIDI3IiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC05NDV0Ym5zZXU5NDhobnRnODkzNDU3Z2JzdzhlNSkiLz4KICA8cGF0aCBpZD0iX3gzQ19Cb3JkZXJfeDNFXyIgZD0iTTIuNyw3Ljh2MzMuOGg0NVY3LjhIMi43Wk00NC4yLDM4LjJINi4xVjExLjNoMzguMXMwLDI2LjksMCwyNi45WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQxLTk0NXRibnNldTk0OGhudGc4OTM0NTdnYnN3OGU1KSIvPgo8L3N2Zz4=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+            <property name="207e8583-2ba5-4ea3-84aa-2f65cd5915ca" display="Href" value="https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#new-integration-event-or-command-doesnt-appear" isActive="true" />
+            <property name="21d13790-2910-475c-b58f-9d350f2e13c6" display="Designers" value="[&quot;81104ae6-2bc5-4bae-b05a-f987b0372d81&quot;]" isActive="true" />
+            <property name="8642b1d1-93f9-4f5f-b5ae-ad5fc20d7a46" display="Elements" value="[]" isActive="true" />
+            <property name="f55a1f0c-40dd-48b4-b985-8360933e6a47" display="Tags" value="create  integration message command error appear available nothing" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
     <childElement id="a710c2a9-4ab8-45a6-a18e-979ade0455f5" type="Documentation Topic" typeId="5cc56ebc-6b61-41a6-a452-8efd9382da6f">
       <name>Integration Message Naming Conventions</name>
       <display>Integration Message Naming Conventions</display>
