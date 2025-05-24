@@ -128,6 +128,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.Sec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.ApiGateway", "Intent.Modules.Metadata.ApiGateway\Intent.Modules.Metadata.ApiGateway.csproj", "{61EAFB82-FCF1-465E-B58C-70C4A26F201A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.AI", "Intent.Modules.Common.AI\Intent.Modules.Common.AI.csproj", "{81AE7F80-FF93-4C7D-8CAC-08FF0249991B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -346,6 +348,10 @@ Global
 		{61EAFB82-FCF1-465E-B58C-70C4A26F201A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61EAFB82-FCF1-465E-B58C-70C4A26F201A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61EAFB82-FCF1-465E-B58C-70C4A26F201A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81AE7F80-FF93-4C7D-8CAC-08FF0249991B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81AE7F80-FF93-4C7D-8CAC-08FF0249991B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81AE7F80-FF93-4C7D-8CAC-08FF0249991B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81AE7F80-FF93-4C7D-8CAC-08FF0249991B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -409,6 +415,7 @@ Global
 		{D6BBCA39-00E9-49F0-95A5-9F1BCE9F15B9} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{F105BE41-3D25-4ECC-919C-0088AFD099A4} = {E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}
 		{61EAFB82-FCF1-465E-B58C-70C4A26F201A} = {E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}
+		{81AE7F80-FF93-4C7D-8CAC-08FF0249991B} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}
