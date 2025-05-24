@@ -14,7 +14,7 @@
     <PackageReference Include="Intent.Modules.Common.Sql" Version="3.4.0" />
     <PackageReference Include="Intent.Modules.Common.TypeScript" Version="4.0.0" />
     <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.12.2" />
-    <PackageReference Include="Intent.Packager" Version="3.5.0">
+    <PackageReference Include="Intent.Packager" Version="3.6.0-pre.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

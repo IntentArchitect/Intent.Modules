@@ -348,7 +348,7 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <moduleSettings>
-    <group id="141601aa-92b2-4462-bf45-eda256a91148" title="New Module Settings Group" externalReference="141601aa-92b2-4462-bf45-eda256a91148">
+    <group id="141601aa-92b2-4462-bf45-eda256a91148" title="New Module Settings Group" externalReference="141601aa-92b2-4462-bf45-eda256a91148" type="application-settings">
       <settings>
         <setting id="a12ffcca-336e-4509-ac5c-f795c4a689b0" title="New Settings Field" type="multi-select">
           <options>

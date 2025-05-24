@@ -324,7 +324,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
 
                 existing.SetAttributeValue("title", settingsGroup.Name);
-                existing.SetAttributeValue("type", ConvertToSettingGroupType(settingsGroup.GetConfiguration().SettingsType().AsEnum()));
+                existing.SetAttributeValue("type", ConvertToSettingGroupType(settingsGroup.GetConfiguration()?.SettingsType().AsEnum()));
 
                 var settings = new XElement("settings");
                 foreach (var settingsField in settingsGroup.Fields)
@@ -589,8 +589,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             return doc.ToStringUTF8();
         }
 
-        private string ConvertToSettingGroupType(ModuleSettingsConfigurationModelStereotypeExtensions.Configuration.SettingsTypeOptionsEnum asEnum)
+        private string ConvertToSettingGroupType(ModuleSettingsConfigurationModelStereotypeExtensions.Configuration.SettingsTypeOptionsEnum? asEnum)
         {
+            if (asEnum == null)
+            {
+                return "application-settings";
+            }
             switch (asEnum)
             {
                 case ModuleSettingsConfigurationModelStereotypeExtensions.Configuration.SettingsTypeOptionsEnum.ApplicationSettings:
