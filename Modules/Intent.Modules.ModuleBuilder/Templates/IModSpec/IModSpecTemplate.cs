@@ -594,7 +594,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             if (asEnum == null)
             {
                 return "application-settings";
-            }d
+            }
             switch (asEnum)
             {
                 case ModuleSettingsConfigurationModelStereotypeExtensions.Configuration.SettingsTypeOptionsEnum.ApplicationSettings:
