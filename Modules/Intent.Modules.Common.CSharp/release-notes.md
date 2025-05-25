@@ -1,6 +1,7 @@
 ﻿### Version 3.8.15
 
 - Improvement: Added `CSharpFile.WithLeadingTrivia` method for adding leading trivia (such as comments or pragmas) to the top of files.
+- Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 
 - Fixed: `CSharpConstructorCall` incorrectly making things like `null`, `true`, `false`, verbatim identifiers (`@null`).
 
 ### Version 3.8.14

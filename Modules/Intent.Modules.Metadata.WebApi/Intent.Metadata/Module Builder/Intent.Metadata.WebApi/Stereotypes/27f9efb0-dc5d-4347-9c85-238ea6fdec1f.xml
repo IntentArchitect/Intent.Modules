@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="27f9efb0-dc5d-4347-9c85-238ea6fdec1f" version="3.1.0">
+  <comment>Configures how the field/parameter appears in generated API documentation and tools (OpenAPI)</comment>
   <name>OpenAPI Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -27,9 +28,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

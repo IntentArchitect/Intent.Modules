@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="20855f03-c663-4ec6-b106-de06be98f1fe" version="3.1.0">
+  <comment>Configures which API versions the endpoint is associated with, enabling version-based routing and control.</comment>
   <name>Api Version Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -42,8 +43,6 @@ return versions;</displayFunction>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>95f4362b-8193-41cb-bd65-c17d6be3f96b</type>
       </lookupTypes>

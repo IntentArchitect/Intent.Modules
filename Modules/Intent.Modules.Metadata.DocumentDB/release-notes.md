@@ -1,3 +1,7 @@
+### Version 1.3.2
+
+- Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 
+
 ### Version 1.3.1
 
 - Fixed: Removed obsolete script which was causing associations to be created incorrectly

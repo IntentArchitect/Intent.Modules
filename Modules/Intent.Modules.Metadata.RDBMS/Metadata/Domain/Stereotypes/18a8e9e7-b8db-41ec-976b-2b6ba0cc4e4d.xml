@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="18a8e9e7-b8db-41ec-976b-2b6ba0cc4e4d" version="3.1.0">
+  <comment>Configuration options for customizing the behavior and structure of the index.</comment>
   <name>Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -25,20 +26,14 @@
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="7cb9624c-677e-4e71-b674-7a109c674d49">
       <name>Unique</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="b591c208-51fa-4507-bd7c-337a738772e0">
       <hint>Whether or not to filter what is indexed.</hint>
@@ -46,14 +41,12 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Default</defaultValue>
       <valueOptions>
         <option>Default</option>
         <option>None</option>
         <option>Custom</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="aef6b276-e7fd-4e16-8b30-f7d74a0b402b">
@@ -62,9 +55,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return properties["Filter"].value === "Custom";</isActiveFunction>
       <isRequiredFunction>return properties["Filter"].value === "Custom";</isRequiredFunction>
     </property>
@@ -75,8 +65,6 @@
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="6347286E-A637-44D6-A5D7-D9BE5789CA7A" version="3.1.0">
+  <comment>Configures constraints to control the storage format and length of textual data in the database.</comment>
   <name>Text Constraints</name>
   <targetMode>that-reference</targetMode>
   <targetTypes>
@@ -36,7 +37,6 @@
         <option>NTEXT</option>
         <option>DEFAULT</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD">
@@ -45,18 +45,13 @@
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(MAX)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF">
       <name>IsUnicode</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

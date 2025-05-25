@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="a9eade71-1d56-4be7-a80c-81046c0c978b" version="3.1.0">
+  <comment>Configures security requirements of the endpoint, governing access through role and policy configurations.</comment>
   <name>Secured</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -77,8 +78,6 @@ return null;</validateFunction>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(optional)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>let securityElementsDefined = lookupTypesOf("Security Configuration")[0]?.getChildren()?.length &gt; 0;
 return !securityElementsDefined || (securityElementsDefined &amp;&amp;  (Roles !== null &amp;&amp; Roles !== undefined &amp;&amp; Roles.trim() !== ''));</isActiveFunction>
     </property>
@@ -89,8 +88,6 @@ return !securityElementsDefined || (securityElementsDefined &amp;&amp;  (Roles !
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(optional)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>let securityElementsDefined = lookupTypesOf("Security Configuration")[0]?.getChildren()?.length &gt; 0;
 return !securityElementsDefined || (securityElementsDefined &amp;&amp;  (Policy !== null &amp;&amp; Policy !== undefined &amp;&amp; Policy.trim() !== ''));</isActiveFunction>
     </property>
@@ -99,8 +96,6 @@ return !securityElementsDefined || (securityElementsDefined &amp;&amp;  (Policy 
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>d6ce4e4c-fdd1-4fa1-82d8-f3405e114ec5</type>
       </lookupTypes>
@@ -112,13 +107,10 @@ return !securityElementsDefined || (securityElementsDefined &amp;&amp;  (Policy 
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>9f37c60e-ad88-4484-98ca-6c9aa7ca3134</type>
       </lookupTypes>
       <isActiveFunction>return lookupTypesOf("Security Configuration")[0]?.getChildren()?.length &gt; 0;</isActiveFunction>
-      <isRequiredFunction />
     </property>
   </properties>
 </stereotypeDefinition>

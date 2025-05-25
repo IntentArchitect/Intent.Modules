@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6" version="3.1.0">
+  <comment>Defines HTTP-specific settings for an endpoint, typically used with the "Expose at HTTP Endpoint" option.</comment>
   <name>Http Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -44,8 +45,6 @@ return route.includes('//')
         <option>PATCH</option>
         <option>DELETE</option>
       </valueOptions>
-      <lookupTypes />
-      <isActiveFunction />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="5dd3e07d-76eb-45d4-9956-4325fb068acc">
@@ -53,24 +52,17 @@ return route.includes('//')
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
-      <isActiveFunction />
     </property>
     <property id="4490e212-1e99-43ce-b3dd-048ed2a6bae8">
       <name>Return Type Mediatype</name>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Default</defaultValue>
       <valueOptions>
         <option>Default</option>
         <option>application/json</option>
       </valueOptions>
-      <lookupTypes />
       <isActiveFunction>const ApiGatewayRouteElement = "b09d7684-5dde-4d4b-9cb5-0707bfd8578f";
 return element.specializationId != ApiGatewayRouteElement;</isActiveFunction>
     </property>
@@ -92,7 +84,6 @@ return element.specializationId != ApiGatewayRouteElement;</isActiveFunction>
         <option>208 (Already Reported)</option>
         <option>226 (IM Used)</option>
       </valueOptions>
-      <lookupTypes />
       <isActiveFunction>const ApiGatewayRouteElement = "b09d7684-5dde-4d4b-9cb5-0707bfd8578f";
 return element.specializationId != ApiGatewayRouteElement;</isActiveFunction>
     </property>

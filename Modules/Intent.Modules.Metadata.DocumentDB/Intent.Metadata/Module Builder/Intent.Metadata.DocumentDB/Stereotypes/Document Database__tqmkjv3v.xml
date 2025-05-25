@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="8b68020c-6652-484b-85e8-6c33e1d8031f" version="3.1.0">
+  <comment>Indicates that the package models a DocumentDB-based data structure.</comment>
   <name>Document Database</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -26,7 +27,6 @@
       <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder>Default</placeholder>
-      <valueOptions />
       <lookupTypes>
         <type>fcfbd83f-a3eb-4eff-b341-5a812b016d31</type>
       </lookupTypes>

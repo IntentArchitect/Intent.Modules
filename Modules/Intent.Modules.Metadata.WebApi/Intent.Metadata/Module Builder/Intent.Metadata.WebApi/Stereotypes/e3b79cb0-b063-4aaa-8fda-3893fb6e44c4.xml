@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="e3b79cb0-b063-4aaa-8fda-3893fb6e44c4" version="3.1.0">
+  <comment>Configure the naming convention for when an entity or field is de/serialized.</comment>
   <name>Serialization Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -8,7 +9,7 @@
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>
-  <icon type="FontAwesome" source="cogs" />
+  <icon type="UrlImagePath" source="data:image/png;base64,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" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
   <displayFunction />
@@ -26,14 +27,12 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <valueOptions>
         <option>Camel Case</option>
         <option>Kebab Case</option>
         <option>Pascal Case</option>
         <option>Snake Case</option>
       </valueOptions>
-      <lookupTypes />
       <isActiveFunction>return element.specialization === "DTO";</isActiveFunction>
     </property>
     <property id="0b9a414c-639b-4133-8597-8520e4f5e4b3">
@@ -41,7 +40,6 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <valueOptions>
         <option>Camel Case</option>
         <option>Kebab Case</option>
@@ -49,7 +47,6 @@
         <option>Snake Case</option>
         <option>Custom</option>
       </valueOptions>
-      <lookupTypes />
       <isActiveFunction>return element.specialization === "DTO-Field";</isActiveFunction>
     </property>
     <property id="a4b6fd4f-62a9-4a5c-9c31-c666e0d7d9c0">
@@ -57,9 +54,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return element.specialization === "DTO-Field" &amp;&amp; properties["Naming Convention"].value === "Custom";</isActiveFunction>
       <isRequiredFunction>return element.specialization === "DTO-Field" &amp;&amp; properties["Naming Convention"].value === "Custom";</isRequiredFunction>
     </property>

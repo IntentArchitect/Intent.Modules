@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="5679fb86-e403-4dc0-bf25-8446ef2d1d03" version="3.1.0">
+  <comment>Configures the table name used to manage a many-to-many association.</comment>
   <hint>Override specifications for any existing Join Tables</hint>
   <name>Join Table</name>
   <targetMode>of-type</targetMode>
@@ -27,8 +28,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

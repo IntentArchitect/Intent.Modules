@@ -1,3 +1,7 @@
+### Version 4.7.8
+
+- Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 
+
 ### Version 4.7.7
 
 - Fixed: A scenario proxies attempt to get information from Applications which are not in the current solution.
