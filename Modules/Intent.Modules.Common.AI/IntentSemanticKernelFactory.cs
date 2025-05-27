@@ -18,7 +18,9 @@ public class IntentSemanticKernelFactory
         _userSettingsProvider = userSettingsProvider;
     }
 
-    public Kernel BuildSemanticKernel()
+
+    public Kernel BuildSemanticKernel() => BuildSemanticKernel(null);
+    public Kernel BuildSemanticKernel(Action<IKernelBuilder> configure)
     {
         var settings = _userSettingsProvider.GetAISettings();
         var model = string.IsNullOrWhiteSpace(settings.Model()) ? "gpt-4o" : settings.Model();
@@ -27,6 +29,10 @@ public class IntentSemanticKernelFactory
         // Replace <your-openai-key> with your actual OpenAI API key and adjust the model name as needed.
         var builder = Kernel.CreateBuilder();
         builder.Services.AddLogging(b => b.AddProvider(new SoftwareFactoryLoggingProvider()).SetMinimumLevel(LogLevel.Trace));
+        if (configure != null)
+        {
+            configure(builder);
+        }
 
         switch (settings.Provider().AsEnum())
         {
