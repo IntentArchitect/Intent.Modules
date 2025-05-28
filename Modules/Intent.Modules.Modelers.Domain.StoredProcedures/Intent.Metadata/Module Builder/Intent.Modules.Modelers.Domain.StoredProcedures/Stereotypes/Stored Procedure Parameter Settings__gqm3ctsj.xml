@@ -49,9 +49,6 @@ return `[${words.join(" ")}]`;
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="39491728-8327-4b94-b9a2-9851dd4b4a01">
@@ -59,14 +56,12 @@ return `[${words.join(" ")}]`;
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>In</defaultValue>
       <valueOptions>
         <option>In</option>
         <option>Out</option>
         <option>Both</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="8ba486d3-853c-42b8-acfb-bafb1e2cdb6e">
@@ -74,7 +69,6 @@ return `[${words.join(" ")}]`;
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>VarChar</defaultValue>
       <valueOptions>
         <option>VarChar</option>
@@ -84,7 +78,6 @@ return `[${words.join(" ")}]`;
         <option>Text</option>
         <option>NText</option>
       </valueOptions>
-      <lookupTypes />
       <isActiveFunction>const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
 return properties["Direction"].value != "In" &amp;&amp; element.typeReference?.getTypeId() == stringTypeId;</isActiveFunction>
     </property>
@@ -93,9 +86,6 @@ return properties["Direction"].value != "In" &amp;&amp; element.typeReference?.g
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
 return properties["Direction"].value != "In" &amp;&amp; element.typeReference?.getTypeId() == stringTypeId;</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
@@ -105,9 +95,6 @@ return properties["Direction"].value != "In" &amp;&amp; element.typeReference?.g
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>const decimalTypeId = "675c7b84-997a-44e0-82b9-cd724c07c9e6";
 return properties["Direction"].value != "In" &amp;&amp; element.typeReference?.getTypeId() == decimalTypeId;
 </isActiveFunction>
@@ -117,9 +104,6 @@ return properties["Direction"].value != "In" &amp;&amp; element.typeReference?.g
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>const decimalTypeId = "675c7b84-997a-44e0-82b9-cd724c07c9e6";
 return properties["Direction"].value != "In" &amp;&amp; element.typeReference?.getTypeId() == decimalTypeId;
 </isActiveFunction>
