@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="2c099977-e5ca-4a80-ba70-6f2edc593681" version="3.1.0">
+  <comment>Configures a custom label for the component.</comment>
   <name>Label Addon</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -12,7 +13,7 @@
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>
-  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <icon type="UrlImagePath" source="data:image/png;base64,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" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
   <displayFunction>return getProperty("66fc3478-6e87-4226-97a9-d9bd72d2fbaf").getValue();</displayFunction>
@@ -30,11 +31,8 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <represents>data</represents>
       <defaultValue>Label</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="44dcdc3d-3445-435c-9013-197ab9836f09" version="3.1.0">
+  <comment>Configures interaction and data retrieval behavior for the autocomplete component.</comment>
   <name>Interaction</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -25,18 +26,12 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="d3d16611-f218-457e-a0ca-df626c1e60e3">
       <name>Search Function</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

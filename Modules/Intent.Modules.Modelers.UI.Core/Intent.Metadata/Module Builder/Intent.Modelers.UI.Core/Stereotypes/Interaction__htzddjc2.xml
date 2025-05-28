@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="a7de29e5-4bee-4e5d-93f0-740569ac6130" version="3.1.0">
+  <comment>Configures the behavior and interaction settings for the button component.</comment>
   <name>Interaction</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -27,13 +28,11 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Default</defaultValue>
       <valueOptions>
         <option>Default</option>
         <option>Submit</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="2265736b-4381-42dc-9dbf-b757188837bc">
       <name>Form</name>
@@ -41,7 +40,6 @@
       <controlType>select</controlType>
       <optionsSource>lookup-children</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
       <lookupTypes>
         <type>1cfd2d9d-1061-4c45-8b4e-074cfa8dacfd</type>
       </lookupTypes>
@@ -54,28 +52,19 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <represents>invokable</represents>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="86aeb4ba-54e8-4327-bcb0-166fb9b9968c">
       <name>Link To</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="8bde99c0-4d3e-47d2-92f1-e299b05e5543">
       <name>Disabled</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

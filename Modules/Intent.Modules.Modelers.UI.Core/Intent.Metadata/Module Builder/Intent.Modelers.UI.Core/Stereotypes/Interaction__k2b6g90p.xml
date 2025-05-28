@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="5d0a10f7-ef5c-4f1e-af13-3471671b46a7" version="3.1.0">
+  <comment>Configures interactive behavior, such as click handling and navigation targets.</comment>
   <name>Interaction</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -25,19 +26,13 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <represents>invokable</represents>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="257ead90-2cc1-44a3-9dc0-5bebf44bff91">
       <name>Link To</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

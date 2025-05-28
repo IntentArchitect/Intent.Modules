@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="b407aace-ad14-484e-ac93-4762a3d182d8" version="3.1.0">
+  <comment>Marks the element as a reusable UI component, representing a piece of the user interface with its own logic, parameters, and rendering behavior.</comment>
   <name>[Component]</name>
   <targetMode>of-type</targetMode>
   <targetTypes>

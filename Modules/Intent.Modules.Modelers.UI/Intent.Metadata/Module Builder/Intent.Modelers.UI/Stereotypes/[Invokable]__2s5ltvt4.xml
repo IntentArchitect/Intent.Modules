@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="dc813928-0ce1-4f66-ae31-b5e5d506b4a3" version="3.1.0">
+  <comment>Marks the element as directly callable.</comment>
   <name>[Invokable]</name>
   <targetMode>of-type</targetMode>
   <targetTypes>

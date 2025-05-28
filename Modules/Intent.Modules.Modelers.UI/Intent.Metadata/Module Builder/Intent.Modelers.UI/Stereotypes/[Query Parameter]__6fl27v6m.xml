@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="5c99275d-be5b-4bc9-849a-a283cdb80b75" version="3.1.0">
+  <comment>Marks the property as bound to a query parameter in the URL, enabling value extraction from the request query string.</comment>
   <name>[Query Parameter]</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
