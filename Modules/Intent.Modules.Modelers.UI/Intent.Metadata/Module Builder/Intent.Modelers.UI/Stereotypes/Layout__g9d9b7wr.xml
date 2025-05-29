@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="7936f4ce-2243-4fb1-ad9e-5af331a0f1d2" version="3.1.0">
+  <comment>Defines a shared layout where components are rendered, providing consistent structure across pages.</comment>
   <name>Layout</name>
   <targetMode>filter-function</targetMode>
   <targetTypes />
@@ -40,56 +41,37 @@ return `[${display.join(" ")}]`;</displayFunction>
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>12</defaultValue>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="9561bc34-a1f1-4167-938a-84e2a3a9446f">
       <name>sm</name>
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="3a6d24b8-6761-40e2-8277-b8a21e158fb9">
       <name>md</name>
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="d45056ab-9ce5-467d-a05f-24f43bd79ff3">
       <name>lg</name>
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="6cd2eeb6-9dc4-46f2-ac0f-ac370fd0d894">
       <name>xl</name>
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="475fd55a-540c-4a64-bb7d-174c0171f9be">
       <name>xxl</name>
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

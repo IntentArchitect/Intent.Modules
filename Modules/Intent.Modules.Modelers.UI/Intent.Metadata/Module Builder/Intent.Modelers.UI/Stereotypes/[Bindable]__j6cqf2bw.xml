@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="12ba7bea-ceb9-44d4-8819-835fe36af7b3" version="3.1.0">
+  <comment>Marks the property as bindable, enabling it to participate in component data binding and state synchronization.</comment>
   <name>[Bindable]</name>
   <targetMode>of-type</targetMode>
   <targetTypes>

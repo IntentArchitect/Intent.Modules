@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="4ced3df6-2827-461d-bf1b-6512f521f2c6" version="3.1.0">
+  <comment>Configures the value object to be stored as a single serialized column in the parent entity, instead of mapping its attributes as separate columns.</comment>
   <name>Serialization Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -25,12 +26,10 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>JSON</defaultValue>
       <valueOptions>
         <option>JSON</option>
       </valueOptions>
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>
