@@ -1,6 +1,7 @@
 ### Version 1.2.1
 
 - Improvement: `ApiMetadataManagerCustomExtensions` been updated to have method overloads accepting `Application Id` parameters.
+- Fixed: `GetExplicitlySentIntegrationCommandModels` and `GetExplicitlyPublishedMessageModels` implementations have been fixed.
 
 ### Version 1.2.0
 
