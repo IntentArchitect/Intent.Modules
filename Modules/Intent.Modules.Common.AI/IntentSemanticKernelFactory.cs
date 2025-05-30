@@ -24,7 +24,7 @@ public class IntentSemanticKernelFactory
     {
         var settings = _userSettingsProvider.GetAISettings();
         var model = string.IsNullOrWhiteSpace(settings.Model()) ? "gpt-4o" : settings.Model();
-        var apiKey = settings.APIKey();
+        var apiKey = string.Empty;
         // Create the Semantic Kernel instance with your LLM service.
         // Replace <your-openai-key> with your actual OpenAI API key and adjust the model name as needed.
         var builder = Kernel.CreateBuilder();
@@ -37,6 +37,8 @@ public class IntentSemanticKernelFactory
         switch (settings.Provider().AsEnum())
         {
             case AISettings.ProviderOptionsEnum.OpenAi:
+
+                apiKey = settings.OpenAIAPIKey();
                 if (string.IsNullOrWhiteSpace(apiKey))
                 {
                     apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
@@ -47,6 +49,8 @@ public class IntentSemanticKernelFactory
                     apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the ChatDrivenDomainSettings App Settings or set the OPENAI_API_KEY environment variable."));
                 break;
             case AISettings.ProviderOptionsEnum.AzureOpenAi:
+
+                apiKey = settings.AzureOpenAIAPIKey();
                 if (string.IsNullOrWhiteSpace(apiKey))
                 {
                     apiKey = Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY");
