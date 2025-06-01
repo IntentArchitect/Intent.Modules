@@ -51,9 +51,6 @@ return options.length == 0
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>return true</isRequiredFunction>
     </property>
     <property id="860a2a3a-9812-4fff-acc6-b342ddb23f96">
@@ -61,41 +58,32 @@ return options.length == 0
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7">
       <name>Is Required</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="4bdd0a51-5a47-4119-b0bb-cd1240ac7850">
       <name>Include Assets</name>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>[]</defaultValue>
       <valueOptions>
         <option>All</option>
         <option>None</option>
         <option>Select</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="478326e2-5290-428e-aef9-10f2c67f24c2">
       <name>Included Assets</name>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>[]</defaultValue>
       <valueOptions>
         <option>Application Settings</option>
@@ -104,7 +92,6 @@ return options.length == 0
         <option>Factory Extensions</option>
         <option>Template Outputs</option>
       </valueOptions>
-      <lookupTypes />
       <isActiveFunction>return properties["Include Assets"].value == "Select";</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>

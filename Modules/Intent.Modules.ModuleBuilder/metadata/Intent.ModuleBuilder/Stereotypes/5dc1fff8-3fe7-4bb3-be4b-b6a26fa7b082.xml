@@ -27,9 +27,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-visual-api</apiTypeDefinition>
       <isRequiredFunction>return true</isRequiredFunction>
     </property>
@@ -39,10 +36,7 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-visual-api</apiTypeDefinition>
-      <isRequiredFunction />
     </property>
   </properties>
 </stereotypeDefinition>

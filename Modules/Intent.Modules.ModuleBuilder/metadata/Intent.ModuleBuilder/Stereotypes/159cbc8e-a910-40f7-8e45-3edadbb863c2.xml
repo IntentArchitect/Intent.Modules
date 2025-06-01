@@ -32,7 +32,6 @@
         <option>Required</option>
         <option>Inherit</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0">
@@ -41,9 +40,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
     </property>
     <property id="17223dbd-8df0-4700-8b81-02274ca3ed7f">
@@ -52,9 +48,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
     </property>
     <property id="b2cef034-5706-45d2-8554-f4dc582a18ff">
@@ -63,21 +56,16 @@
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(Inherit from base element)</placeholder>
-      <valueOptions />
       <lookupTypes>
         <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
       </lookupTypes>
       <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
-      <isRequiredFunction />
     </property>
     <property id="08ec0581-c90a-489b-858f-ee265327c948">
       <name>Target Traits</name>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-stereotype</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e">
       <name>Default Type Id</name>
@@ -85,8 +73,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(Inherit from base element)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
     </property>
     <property id="7a0c4185-1c08-4d3e-9185-14683d7a3bd0">
@@ -94,14 +80,12 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Inherit</defaultValue>
       <valueOptions>
         <option>Inherit</option>
         <option>Allow</option>
         <option>Disallow</option>
       </valueOptions>
-      <lookupTypes />
       <isActiveFunction>return (properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required');</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
@@ -110,14 +94,12 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Inherit</defaultValue>
       <valueOptions>
         <option>Inherit</option>
         <option>Allow</option>
         <option>Disallow</option>
       </valueOptions>
-      <lookupTypes />
       <isActiveFunction>return (properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required');</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>

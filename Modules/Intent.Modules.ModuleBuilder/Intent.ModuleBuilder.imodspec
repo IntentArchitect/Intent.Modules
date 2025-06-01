@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
-  <version>3.14.0-pre.0</version>
+  <version>3.15.0-alpha.1</version>
   <supportedClientVersions>[4.3.0-beta.4, 5.0.0-a)</supportedClientVersions>
   <summary>For the creation of Intent Architect Modules</summary>
   <description>For the creation of Intent Architect Modules</description>
@@ -138,6 +138,14 @@
       <location>Api</location>
     </template>
     <template id="Intent.ModuleBuilder.Templates.Api.ApiPackageModel" externalReference="12d0509f-a513-4263-9c31-3786f61b44bd">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+      <location>Api</location>
+    </template>
+    <template id="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" externalReference="9e217237-04d2-471d-9c0a-b62581462b26">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
@@ -313,4 +321,5 @@
     </group>
   </moduleSettings>
   <moduleSettingsExtensions />
+  <migrations />
 </package>

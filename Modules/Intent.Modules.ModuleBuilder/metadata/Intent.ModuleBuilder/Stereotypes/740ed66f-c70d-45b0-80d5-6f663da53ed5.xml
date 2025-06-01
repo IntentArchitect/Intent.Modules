@@ -25,13 +25,11 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Map to Type</defaultValue>
       <valueOptions>
         <option>Map to Type</option>
         <option>Traverse</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="0b8166de-1c91-41d3-ae3f-155687be6220">
       <name>To Type</name>
@@ -39,11 +37,9 @@
       <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(Not Mapped to Type)</placeholder>
-      <valueOptions />
       <lookupTypes>
         <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
       </lookupTypes>
-      <isActiveFunction />
       <isRequiredFunction>return properties['Child Mapping Mode'].value == "Map to Type"</isRequiredFunction>
     </property>
     <property id="f87c0289-fb95-46aa-a06d-3599e312324a">
@@ -51,8 +47,6 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>lookup-children</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>4a16943b-702c-4fb0-bfcc-2afd98b8814c</type>
       </lookupTypes>

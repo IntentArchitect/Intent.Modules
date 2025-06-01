@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="15b3e709-aeb8-410a-9172-1273eb7b0864" version="3.1.0">
+  <name>Configuration</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="37e678f8-370a-4b05-ae44-69bb3d2b39b6">Module Settings Configuration</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction>return `[${getProperty("ce4eefa2-657c-42b0-a8cf-bbe35ef1d8a9").getValue()}]`</displayFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>38248e66-d0c0-44ff-900a-ebe5aebb6458</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="ce4eefa2-657c-42b0-a8cf-bbe35ef1d8a9">
+      <comment>Ultimately determines where these settings will be stored:
+* Application Settings - will be stored inline with the application's metadata and therefore will be checked into version control.
+* User Settings - will be stored in a user specific file and can be edited from the user settings.</comment>
+      <hint />
+      <name>Settings Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <defaultValue>Application Settings</defaultValue>
+      <valueOptions>
+        <option>Application Settings</option>
+        <option>User Settings</option>
+      </valueOptions>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

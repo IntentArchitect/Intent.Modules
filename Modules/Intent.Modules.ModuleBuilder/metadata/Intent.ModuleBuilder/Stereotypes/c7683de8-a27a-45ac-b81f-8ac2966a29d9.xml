@@ -25,19 +25,13 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="532712d5-c141-47f4-a605-9b564fc19478">
       <name>Open On Double-Click</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="d233d3f9-934a-4690-a476-778e0c4927ef">
       <name>Default Designer</name>
@@ -45,7 +39,6 @@
       <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(e.g. Domain)</placeholder>
-      <valueOptions />
       <lookupTypes>
         <type>7f5fcc9f-c721-4a31-bfe2-7909f4289420</type>
       </lookupTypes>
@@ -62,7 +55,6 @@
         <option>Elements of Type</option>
         <option>Lookup Element</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true</isRequiredFunction>
     </property>
     <property id="5bed7f14-ebd8-4055-be29-3a2f8407eb5d">
@@ -71,8 +63,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(E.g getParent().id)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
       <isActiveFunction>return properties["Option Source"].value == "Lookup Element";</isActiveFunction>
       <isRequiredFunction>return true</isRequiredFunction>
@@ -82,8 +72,6 @@
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
         <type>89333f72-3960-4159-bf61-9c40d4b65088</type>
@@ -96,13 +84,11 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Root Element</defaultValue>
       <valueOptions>
         <option>Root Element</option>
         <option>Child Elements</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true</isRequiredFunction>
     </property>
     <property id="02e7f455-ba13-4e99-ac6c-a46490980134">
@@ -111,10 +97,7 @@
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="d881ebc8-282a-4d04-91af-4aba9f040804">
       <hint>Uses font-awesome icons (e.g. fa-long-arrow-right)</hint>
@@ -123,8 +106,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="5ced3423-774f-427e-b93e-67b5a16bdf7d">
       <hint>Optional specification for styling in CSS</hint>
@@ -133,17 +114,12 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="227be852-5202-4bc7-a8ce-db0ed31b2e14">
       <name>Is Option Visible Function</name>
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
   </properties>

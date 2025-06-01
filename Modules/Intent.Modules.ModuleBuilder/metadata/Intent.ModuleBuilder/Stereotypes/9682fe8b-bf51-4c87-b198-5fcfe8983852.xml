@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="9682fe8b-bf51-4c87-b198-5fcfe8983852" version="3.1.0">
-  <comment />
   <name>Option Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -38,9 +37,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="78e777be-eeac-4959-8196-8377fe677cc2">
       <comment>Optional. If unspecified, then the "Shortcut" property is automatically used with uses of "Ctrl" changed to "Command".</comment>
@@ -49,9 +45,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="10f05e81-2da2-403f-9c7d-b712c7d202ba">
       <comment />
@@ -60,27 +53,19 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="aa9aed36-437b-4f74-896d-5cffef1817a2">
       <name>Allow Multiple</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="f0268cd4-f075-4743-9d04-9dd4e7752c73">
       <name>Is Option Visible Function</name>
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="eb46bd10-e8b6-4852-8e6b-659f42c82797">
@@ -90,8 +75,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="da4fd235-9d62-4c1d-afb7-17c856a14715">
       <comment>This menu option will be added to the specified menu group, which is the first one by default (Group 0). Menu groups are separated by dividers and ordered by their number.</comment>
@@ -100,8 +83,6 @@ return `[${shortcut}]`;</displayFunction>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default = 0)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="5ca38df4-1f60-4be6-a1f7-18935a05681a">
       <comment>Whether a divider must be added above this option. Note that it is typically recommended to use _Menu Group_ to create dividers.</comment>
@@ -109,10 +90,7 @@ return `[${shortcut}]`;</displayFunction>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="cd37f0a2-3a8f-49f5-8b23-6a4544257935">
       <comment>Whether a divider must be added below this option. Note that it is typically recommended to use _Menu Group_ to create dividers.</comment>
@@ -120,10 +98,7 @@ return `[${shortcut}]`;</displayFunction>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="797ec9a2-8a05-42e7-96a3-3c2d02f89062" type="Component Group" typeId="027f8bb9-9b28-4c1d-a516-8c3daa70e46d">
   <name>Tooling</name>
-  <display>Tooling</display>
+  <display>Tooling (2)</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <order>5</order>
@@ -24,7 +24,7 @@
   <childElements>
     <childElement id="466a8715-8175-4b39-b912-cee9bfd3504a" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Visual Studio Integration</name>
-      <display>Visual Studio Integration</display>
+      <display>Visual Studio Integration (1)</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
@@ -66,7 +66,8 @@
                 <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.8.11" isActive="true" />
                 <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
                 <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
-                <property name="3f426089-6e92-49cf-a938-bda52e02b949" display="Install Metadata Only" value="false" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="All" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -77,7 +78,7 @@
     </childElement>
     <childElement id="a8137c53-3ebf-443a-8c86-ab2d5f3d3f64" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Auto-Build Module</name>
-      <display>Auto-Build Module</display>
+      <display>Auto-Build Module (1)</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
@@ -119,7 +120,8 @@
                 <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.4.1" isActive="true" />
                 <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
                 <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
-                <property name="3f426089-6e92-49cf-a938-bda52e02b949" display="Install Metadata Only" value="false" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="All" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
               </properties>
             </stereotype>
           </stereotypes>

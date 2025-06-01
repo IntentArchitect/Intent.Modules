@@ -98,51 +98,6 @@ namespace Intent.ModuleBuilder.Api
             {
                 return _stereotype.GetProperty<bool>("Auto-select Children");
             }
-
-            public class AutoSelectChildrenOptions
-            {
-                public readonly string Value;
-
-                public AutoSelectChildrenOptions(string value)
-                {
-                    Value = value;
-                }
-
-                public AutoSelectChildrenOptionsEnum AsEnum()
-                {
-                    switch (Value)
-                    {
-                        case "Yes":
-                            return AutoSelectChildrenOptionsEnum.Yes;
-                        case "No":
-                            return AutoSelectChildrenOptionsEnum.No;
-                        case "Not Applicable":
-                            return AutoSelectChildrenOptionsEnum.NotApplicable;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                }
-
-                public bool IsYes()
-                {
-                    return Value == "Yes";
-                }
-                public bool IsNo()
-                {
-                    return Value == "No";
-                }
-                public bool IsNotApplicable()
-                {
-                    return Value == "Not Applicable";
-                }
-            }
-
-            public enum AutoSelectChildrenOptionsEnum
-            {
-                Yes,
-                No,
-                NotApplicable
-            }
         }
 
         public class CriteriaSettings

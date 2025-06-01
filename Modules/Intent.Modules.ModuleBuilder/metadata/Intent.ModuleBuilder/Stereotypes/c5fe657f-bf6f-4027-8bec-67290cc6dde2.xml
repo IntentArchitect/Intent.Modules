@@ -26,9 +26,6 @@
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
     </property>
   </properties>

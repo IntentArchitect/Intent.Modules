@@ -25,8 +25,6 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
         <type>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</type>
@@ -40,14 +38,12 @@
       <type>boolean</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Not Applicable</defaultValue>
       <valueOptions>
         <option>Yes</option>
         <option>No</option>
         <option>Not Applicable</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="315a6b58-efa4-421c-8345-1cde99ba7262">
@@ -55,14 +51,12 @@
       <type>boolean</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Not Applicable</defaultValue>
       <valueOptions>
         <option>Yes</option>
         <option>No</option>
         <option>Not Applicable</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912">
@@ -70,14 +64,12 @@
       <type>boolean</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Not Applicable</defaultValue>
       <valueOptions>
         <option>Yes</option>
         <option>No</option>
         <option>Not Applicable</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="72dba0b6-607b-4bc4-a511-ff480691aae1">
@@ -85,9 +77,6 @@
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
     </property>
   </properties>

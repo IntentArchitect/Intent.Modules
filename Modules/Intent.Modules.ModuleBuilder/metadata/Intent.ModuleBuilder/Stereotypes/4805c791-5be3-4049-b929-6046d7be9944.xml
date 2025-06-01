@@ -25,7 +25,6 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Text Box</defaultValue>
       <valueOptions>
         <option>Text Box</option>
@@ -36,7 +35,6 @@
         <option>Select</option>
         <option>Multi-Select</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="7070a9ce-ff31-422e-9cff-d82876c5efdf">
@@ -46,10 +44,7 @@ Use "Is Required Function"</comment>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return getProperty("7070a9ce-ff31-422e-9cff-d82876c5efdf").getValue() == true &amp;&amp; getProperty("fa54329f-d4e5-48bc-8027-e17206e9fc89").getValue() == null</isActiveFunction>
     </property>
     <property id="01489021-8311-43d5-b41b-e7628a512c1d">
@@ -57,18 +52,12 @@ Use "Is Required Function"</comment>
       <type>string</type>
       <controlType>textarea</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="653d889c-626f-45c5-a6e6-72b74a2f805c">
       <name>Default Value</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="c3456e79-0607-41a5-9b85-e0712f4f4834">
       <name>Is Active Function</name>
@@ -76,9 +65,6 @@ Use "Is Required Function"</comment>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default = true)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>module-settings-api</apiTypeDefinition>
     </property>
     <property id="fa54329f-d4e5-48bc-8027-e17206e9fc89">
@@ -87,9 +73,6 @@ Use "Is Required Function"</comment>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default = false)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>module-settings-api</apiTypeDefinition>
     </property>
   </properties>

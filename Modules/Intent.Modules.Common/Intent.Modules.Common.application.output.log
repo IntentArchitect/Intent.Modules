@@ -49,6 +49,30 @@
       <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>bda92e20-e032-4098-b65f-777a10dd24e0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiTraitModel#9e587d4d-f317-4ab8-9bbb-9394234d2a88</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Metadata/IAllowCommentModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IAllowCommentModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>bda92e20-e032-4098-b65f-777a10dd24e0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiTraitModel#d00a2ab0-9a23-4192-b8bb-166798fc7dba</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Metadata/IProcessingActionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IProcessingActionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>bda92e20-e032-4098-b65f-777a10dd24e0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiTraitModel#2b6729eb-e2ae-4b5f-86fe-4f611d1f912e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Metadata/IProcessingHandlerModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IProcessingHandlerModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>aa8c3509-9638-4e44-961c-38b7e8053699</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.DocumentationTemplate#1207d4e5-3f83-4e84-b513-caa7dc76bbd0</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

@@ -5,9 +5,9 @@
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>4ba53041-59f9-4446-a207-6da4fbdf86fe</parentFolderId>
-  <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
-  <packageName>Intent.Modelers.Services</packageName>
+  <parentFolderId>caccdda9-26f4-49bf-8b73-cadc2220de16</parentFolderId>
+  <packageId>caccdda9-26f4-49bf-8b73-cadc2220de16</packageId>
+  <packageName>Intent.Common</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="66fd9e66-42c7-4ef9-a778-b68e009272b9" name="Folder Options">
       <addedByDefault>true</addedByDefault>

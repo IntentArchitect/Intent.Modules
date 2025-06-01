@@ -1,0 +1,81 @@
+﻿using System;
+using System.Net.Http;
+using Intent.Engine;
+using Intent.Modules.Common.AI.Settings;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.SemanticKernel;
+using OllamaSharp;
+
+namespace Intent.Modules.Common.AI;
+
+public class IntentSemanticKernelFactory
+{
+    private readonly IUserSettingsProvider _userSettingsProvider;
+
+    public IntentSemanticKernelFactory(IUserSettingsProvider userSettingsProvider)
+    {
+        _userSettingsProvider = userSettingsProvider;
+    }
+
+
+    public Kernel BuildSemanticKernel() => BuildSemanticKernel(null);
+    public Kernel BuildSemanticKernel(Action<IKernelBuilder> configure)
+    {
+        var settings = _userSettingsProvider.GetAISettings();
+        var model = string.IsNullOrWhiteSpace(settings.Model()) ? "gpt-4o" : settings.Model();
+        var apiKey = settings.APIKey();
+        // Create the Semantic Kernel instance with your LLM service.
+        // Replace <your-openai-key> with your actual OpenAI API key and adjust the model name as needed.
+        var builder = Kernel.CreateBuilder();
+        builder.Services.AddLogging(b => b.AddProvider(new SoftwareFactoryLoggingProvider()).SetMinimumLevel(LogLevel.Trace));
+        if (configure != null)
+        {
+            configure(builder);
+        }
+
+        switch (settings.Provider().AsEnum())
+        {
+            case AISettings.ProviderOptionsEnum.OpenAi:
+                if (string.IsNullOrWhiteSpace(apiKey))
+                {
+                    apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+                }
+
+                builder.Services.AddOpenAIChatCompletion(
+                    modelId: model,
+                    apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the ChatDrivenDomainSettings App Settings or set the OPENAI_API_KEY environment variable."));
+                break;
+            case AISettings.ProviderOptionsEnum.AzureOpenAi:
+                if (string.IsNullOrWhiteSpace(apiKey))
+                {
+                    apiKey = Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY");
+                }
+
+                builder.Services.AddAzureOpenAIChatCompletion(
+                    deploymentName: settings.DeploymentName(),
+                    endpoint: settings.APIUrl(),
+                    apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the ChatDrivenDomainSettings App Settings or set the AZURE_OPENAI_API_KEY environment variable."),
+                    modelId: model);
+                break;
+            case AISettings.ProviderOptionsEnum.Ollama:
+#pragma warning disable SKEXP0070
+                builder.Services.AddOllamaChatCompletion(
+                    new OllamaApiClient(
+                        new HttpClient
+                        {
+                            Timeout = TimeSpan.FromMinutes(10),
+                            BaseAddress = new Uri(settings.APIUrl())
+                        },
+                        model)
+                );
+#pragma warning restore SKEXP0070
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        var kernel = builder.Build();
+        return kernel;
+    }
+}

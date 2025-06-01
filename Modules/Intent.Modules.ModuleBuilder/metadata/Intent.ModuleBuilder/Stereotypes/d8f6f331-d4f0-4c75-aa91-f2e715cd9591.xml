@@ -25,14 +25,12 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Disabled</defaultValue>
       <valueOptions>
         <option>Disabled</option>
         <option>Optional</option>
         <option>Required</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="07613cf6-d1bf-411c-96db-65daad7d07f4">
       <hint>Optional. When set will override the _Type_  text for the property name.</hint>
@@ -40,9 +38,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
     </property>
     <property id="3941cc0b-503e-495a-bef3-9923a6554cee">
@@ -51,9 +46,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
     </property>
     <property id="b94f760c-0ce7-4176-bbae-97e26914b39c">
@@ -62,7 +54,6 @@
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(required)</placeholder>
-      <valueOptions />
       <lookupTypes>
         <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
         <type>89333f72-3960-4159-bf61-9c40d4b65088</type>
@@ -76,9 +67,6 @@
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-stereotype</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8">
       <name>Represents</name>
@@ -91,7 +79,6 @@
         <option>Reference</option>
         <option>Inheritance</option>
       </valueOptions>
-      <lookupTypes />
       <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
@@ -101,8 +88,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(optional)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
     </property>
     <property id="229dcbe7-f000-4ee9-a06a-febad727f7e1">
@@ -110,10 +95,7 @@
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return properties['Represents'].value == 'Reference' &amp;&amp; (properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required');</isActiveFunction>
     </property>
     <property id="d04ec558-6f6a-462b-b16a-9da1d7b4e9db">
@@ -121,10 +103,7 @@
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return properties['Represents'].value == 'Reference' &amp;&amp; (properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required');</isActiveFunction>
     </property>
   </properties>

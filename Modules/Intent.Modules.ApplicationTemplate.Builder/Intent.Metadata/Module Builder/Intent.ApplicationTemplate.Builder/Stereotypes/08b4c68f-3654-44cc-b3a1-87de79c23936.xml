@@ -26,13 +26,11 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Allow Multiple</defaultValue>
       <valueOptions>
         <option>Allow Multiple</option>
         <option>Allow Single Only</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true</isRequiredFunction>
     </property>
   </properties>

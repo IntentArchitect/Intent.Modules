@@ -40,14 +40,11 @@ return `[.${this.properties['File Extension'].value}]`;</displayFunction>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Text</defaultValue>
       <valueOptions>
         <option>Text</option>
         <option>Binary</option>
       </valueOptions>
-      <lookupTypes />
-      <isActiveFunction />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe">
@@ -64,7 +61,6 @@ return `[.${this.properties['File Extension'].value}]`;</displayFunction>
         <option>T4 Template</option>
         <option>Custom</option>
       </valueOptions>
-      <lookupTypes />
       <isActiveFunction>return OutputFileContent === "Text";</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
@@ -73,7 +69,6 @@ return `[.${this.properties['File Extension'].value}]`;</displayFunction>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>JSON</defaultValue>
       <valueOptions>
         <option>JSON</option>
@@ -81,7 +76,6 @@ return `[.${this.properties['File Extension'].value}]`;</displayFunction>
         <option>OCL</option>
         <option>Custom</option>
       </valueOptions>
-      <lookupTypes />
       <isActiveFunction>return OutputFileContent === "Text" &amp;&amp; TemplatingMethod === "Data File Builder";</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
@@ -92,8 +86,6 @@ return `[.${this.properties['File Extension'].value}]`;</displayFunction>
       <optionsSource>n/a</optionsSource>
       <placeholder>(required)</placeholder>
       <defaultValue>txt</defaultValue>
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return TemplatingMethod !== "Data File Builder" || DataFileOutputType === "Custom";</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>

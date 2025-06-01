@@ -37,7 +37,6 @@
         <option>Lookup Type</option>
         <option>Custom Type</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="00d3537c-f71f-4450-8cc8-d9e87c12baee">
@@ -45,8 +44,6 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
-      <valueOptions />
       <lookupTypes>
         <type>7f5fcc9f-c721-4a31-bfe2-7909f4289420</type>
       </lookupTypes>
@@ -59,8 +56,6 @@
       <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(optional)</placeholder>
-      <defaultValue />
-      <valueOptions />
       <lookupTypes>
         <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
         <type>89333f72-3960-4159-bf61-9c40d4b65088</type>
@@ -82,7 +77,6 @@
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(required)</placeholder>
       <defaultValue>object</defaultValue>
-      <valueOptions />
       <lookupTypes>
         <type>Element Settings</type>
       </lookupTypes>
@@ -97,8 +91,6 @@
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
       <defaultValue>Default</defaultValue>
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>return element.typeReference.typeId != "d2931361-7cf0-4c79-9847-621c60886ef9";</isRequiredFunction>
     </property>
     <property id="1ac0fa39-ecea-48f8-92e4-41616a639586">
@@ -107,8 +99,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

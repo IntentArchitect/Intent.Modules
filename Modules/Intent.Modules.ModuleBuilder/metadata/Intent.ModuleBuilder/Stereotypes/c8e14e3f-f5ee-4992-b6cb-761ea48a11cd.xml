@@ -25,9 +25,6 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>lookup-stereotype</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

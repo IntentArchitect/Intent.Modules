@@ -7,6 +7,9 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
     [XmlRoot("applicationTemplate")]
     public class ApplicationTemplatePersistable
     {
+        [XmlAttribute("type")]
+        public TemplateType TemplateType { get; set; } = TemplateType.ApplicationTemplate;
+
         [XmlElement("id")]
         public string Id { get; set; }
 
@@ -18,6 +21,15 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
 
         [XmlElement("displayName")]
         public string DisplayName { get; set; }
+
+        [XmlElement("coverImageUrl")]
+        public ApplicationTemplate_Image CoverImageUrl { get; set; }
+
+        [XmlArray("additionalImages")]
+        [XmlArrayItem("image")]
+        public List<ApplicationTemplate_Image> AdditionalImages { get; set; } = [];
+
+        public bool ShouldSerializeAdditionalImages() => AdditionalImages.Count > 0;
 
         [XmlElement("shortDescription")]
         public string ShortDescription { get; set; }
@@ -55,5 +67,24 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
         [XmlArray("minimumDependencyVersions")]
         [XmlArrayItem("module")]
         public List<MinimumDependencyVersion> MinimumDependencyVersions { get; set; }
+    }
+
+    public class ApplicationTemplate_Image
+    {
+        //[XmlAttribute("href")]
+        //public string Href { get; set; } // to open external links (To Do)
+
+        [XmlAttribute("src")]
+        public string Src { get; set; } // url of image
+    }
+    public enum TemplateType
+    {
+        [XmlEnum("application-template")]
+        ApplicationTemplate = 1,
+        [XmlEnum("module-building")]
+        ModuleBuilding = 2,
+        [XmlEnum("sample-solution")]
+        SampleSolution = 3,
+
     }
 }

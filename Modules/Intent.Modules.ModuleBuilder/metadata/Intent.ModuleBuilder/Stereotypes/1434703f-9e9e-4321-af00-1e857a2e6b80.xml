@@ -27,11 +27,7 @@
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
-      <isRequiredFunction />
     </property>
     <property id="39eb4c46-204c-4f3d-9cf9-348f137f43dc">
       <name>Line Color</name>
@@ -39,8 +35,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df">
@@ -49,8 +43,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="33bc633b-e627-49df-b105-398e32e080ee">
@@ -60,8 +52,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f">
@@ -70,8 +60,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
   </properties>

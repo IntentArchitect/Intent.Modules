@@ -27,20 +27,14 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(optional)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-visual-api</apiTypeDefinition>
-      <isRequiredFunction />
     </property>
     <property id="43c4e468-1139-42b3-a064-fb49f679b72b">
       <name>Auto-Resize Default</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

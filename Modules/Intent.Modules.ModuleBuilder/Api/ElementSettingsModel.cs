@@ -58,8 +58,7 @@ namespace Intent.ModuleBuilder.Api
                 SpecializationType = this.Name,
                 Comment = Comment,
                 Implements = this.Stereotypes
-                    .Where(x => x.DefinitionId != ElementSettingsModelStereotypeExtensions.Settings.DefinitionId &&
-                                x.DefinitionId != ElementSettingsModelStereotypeExtensions.TypeReferenceSettings.DefinitionId)
+                    .Where(x => x.Definition.IsTrait)
                     .Select(x => new ImplementedTraitPersistable() { Id = x.DefinitionId, Name = x.Name })
                     .OrderBy(x => x.Name)
                     .ThenBy(x => x.Id)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -317,11 +318,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 if (existing == null)
                 {
                     existing = new XElement("group", new XAttribute("id", settingsGroup.Id), new XAttribute("title", settingsGroup.Name),
+                        new XAttribute("type", ConvertToSettingGroupType(settingsGroup.GetConfiguration().SettingsType().AsEnum())),
                         new XAttribute("externalReference", settingsGroup.Id));
                     moduleSettings.Add(existing);
                 }
 
                 existing.SetAttributeValue("title", settingsGroup.Name);
+                existing.SetAttributeValue("type", ConvertToSettingGroupType(settingsGroup.GetConfiguration()?.SettingsType().AsEnum()));
 
                 var settings = new XElement("settings");
                 foreach (var settingsField in settingsGroup.Fields)
@@ -584,6 +587,25 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             }
 
             return doc.ToStringUTF8();
+        }
+
+        private string ConvertToSettingGroupType(ModuleSettingsConfigurationModelStereotypeExtensions.Configuration.SettingsTypeOptionsEnum? asEnum)
+        {
+            if (asEnum == null)
+            {
+                return "application-settings";
+            }
+            switch (asEnum)
+            {
+                case ModuleSettingsConfigurationModelStereotypeExtensions.Configuration.SettingsTypeOptionsEnum.ApplicationSettings:
+                    return "application-settings";
+                    break;
+                case ModuleSettingsConfigurationModelStereotypeExtensions.Configuration.SettingsTypeOptionsEnum.UserSettings:
+                    return "user-settings";
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(asEnum), asEnum, null);
+            }
         }
 
         private static void SortChildElementsByAttribute(XElement element, string attributeName)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="970a0d7c-3e08-4480-8b35-083e3522accd" type="Component Group" typeId="027f8bb9-9b28-4c1d-a516-8c3daa70e46d">
   <name>Designer Integration</name>
-  <display>Designer Integration</display>
+  <display>Designer Integration (3)</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <order>4</order>
@@ -24,7 +24,7 @@
   <childElements>
     <childElement id="d51b196d-2498-4238-8b75-200b4da92a55" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Domain</name>
-      <display>Domain</display>
+      <display>Domain (1)</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
@@ -66,7 +66,8 @@
                 <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.12.2" isActive="true" />
                 <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
                 <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
-                <property name="3f426089-6e92-49cf-a938-bda52e02b949" display="Install Metadata Only" value="true" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="None" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -77,7 +78,7 @@
     </childElement>
     <childElement id="f73c881e-8508-411d-974e-eb698737d833" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Services</name>
-      <display>Services</display>
+      <display>Services (1)</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
@@ -116,10 +117,11 @@
               <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
               <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
               <properties>
-                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.9.3" isActive="true" />
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.9.4" isActive="true" />
                 <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
                 <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
-                <property name="3f426089-6e92-49cf-a938-bda52e02b949" display="Install Metadata Only" value="true" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="None" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -130,7 +132,7 @@
     </childElement>
     <childElement id="ae6d7280-4fba-431e-9b69-870c55d5b3bc" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Eventing</name>
-      <display>Eventing</display>
+      <display>Eventing (1)</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
@@ -172,7 +174,8 @@
                 <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="6.0.1" isActive="true" />
                 <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
                 <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
-                <property name="3f426089-6e92-49cf-a938-bda52e02b949" display="Install Metadata Only" value="true" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="None" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
               </properties>
             </stereotype>
           </stereotypes>

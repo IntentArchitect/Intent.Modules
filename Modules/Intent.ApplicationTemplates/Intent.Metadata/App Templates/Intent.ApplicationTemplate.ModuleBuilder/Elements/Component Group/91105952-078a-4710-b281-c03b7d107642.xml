@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="91105952-078a-4710-b281-c03b7d107642" type="Component Group" typeId="027f8bb9-9b28-4c1d-a516-8c3daa70e46d">
   <name>Additional Language Support</name>
-  <display>Additional Language Support</display>
+  <display>Additional Language Support (7)</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <order>3</order>
@@ -24,7 +24,7 @@
   <childElements>
     <childElement id="0544ce11-fd3d-4411-af63-06bf253f9957" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Module Builder - C#</name>
-      <display>Module Builder - C#</display>
+      <display>Module Builder - C# (1)</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
@@ -66,7 +66,8 @@
                 <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.7.3" isActive="true" />
                 <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
                 <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
-                <property name="3f426089-6e92-49cf-a938-bda52e02b949" display="Install Metadata Only" value="false" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="All" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -77,7 +78,7 @@
     </childElement>
     <childElement id="7a9d1e28-8095-44da-b4d7-044105589023" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Module Builder - Dart</name>
-      <display>Module Builder - Dart</display>
+      <display>Module Builder - Dart (1)</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
@@ -119,7 +120,8 @@
                 <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="1.2.1" isActive="true" />
                 <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
                 <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
-                <property name="3f426089-6e92-49cf-a938-bda52e02b949" display="Install Metadata Only" value="false" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="All" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -130,7 +132,7 @@
     </childElement>
     <childElement id="9f0b5f90-5cd7-4c44-a2ca-ca04d890a5f8" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Module Builder - Java</name>
-      <display>Module Builder - Java</display>
+      <display>Module Builder - Java (1)</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
@@ -172,7 +174,8 @@
                 <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.6.1" isActive="true" />
                 <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
                 <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
-                <property name="3f426089-6e92-49cf-a938-bda52e02b949" display="Install Metadata Only" value="false" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="All" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -183,7 +186,7 @@
     </childElement>
     <childElement id="5aaa3860-3519-472c-bc1e-bc5fa2fa47bc" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Module Builder - Kotlin</name>
-      <display>Module Builder - Kotlin</display>
+      <display>Module Builder - Kotlin (1)</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
@@ -225,7 +228,8 @@
                 <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.5.1" isActive="true" />
                 <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
                 <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
-                <property name="3f426089-6e92-49cf-a938-bda52e02b949" display="Install Metadata Only" value="false" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="All" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -236,7 +240,7 @@
     </childElement>
     <childElement id="49a7c771-1d2d-4e07-a5d7-a2204a2cab4d" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Module Builder - JavaScript / TypeScript</name>
-      <display>Module Builder - JavaScript / TypeScript</display>
+      <display>Module Builder - JavaScript / TypeScript (1)</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
@@ -278,7 +282,8 @@
                 <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.5.2" isActive="true" />
                 <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
                 <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
-                <property name="3f426089-6e92-49cf-a938-bda52e02b949" display="Install Metadata Only" value="false" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="All" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -289,7 +294,7 @@
     </childElement>
     <childElement id="474ea0c8-4199-44ab-b7f3-3320b5a14b96" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Module Builder - Html</name>
-      <display>Module Builder - Html</display>
+      <display>Module Builder - Html (1)</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
@@ -331,7 +336,8 @@
                 <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.5.1" isActive="true" />
                 <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
                 <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
-                <property name="3f426089-6e92-49cf-a938-bda52e02b949" display="Install Metadata Only" value="false" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="All" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -342,7 +348,7 @@
     </childElement>
     <childElement id="6823fb6a-7d61-42ea-8ad3-f70e76c8688b" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Module Builder - SQL</name>
-      <display>Module Builder - SQL</display>
+      <display>Module Builder - SQL (1)</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
@@ -384,7 +390,8 @@
                 <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.5.1" isActive="true" />
                 <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
                 <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
-                <property name="3f426089-6e92-49cf-a938-bda52e02b949" display="Install Metadata Only" value="false" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="All" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
               </properties>
             </stereotype>
           </stereotypes>

@@ -25,13 +25,11 @@
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>[]</defaultValue>
       <valueOptions>
         <option>Diagram</option>
         <option>Model</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="8d51eb08-f4a9-4703-ba70-de87c9417d46">
@@ -40,8 +38,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default is true)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
     </property>
     <property id="ecb7abbb-0297-486e-bd99-cded3226d2a4">
@@ -50,8 +46,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default's to name)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
     </property>
     <property id="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c">
@@ -59,11 +53,7 @@
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
-      <isActiveFunction />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="1d9dd994-46c3-4fdc-a24b-c69f689ca283">
@@ -72,7 +62,6 @@
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(none)</placeholder>
-      <valueOptions />
       <lookupTypes>
         <type>101fd5b6-3159-4810-9490-a103ef323e9c</type>
       </lookupTypes>

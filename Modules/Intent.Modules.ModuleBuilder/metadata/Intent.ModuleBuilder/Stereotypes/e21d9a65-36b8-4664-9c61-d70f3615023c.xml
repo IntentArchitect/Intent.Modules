@@ -25,13 +25,11 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Elbow Connector</defaultValue>
       <valueOptions>
         <option>Elbow Connector</option>
         <option>Curved</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="4d46ba5f-c4c5-4160-989e-1e76128d3efa">
@@ -40,8 +38,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="f248a382-66c9-4107-aa92-5ee83dd3d08c">
@@ -50,8 +46,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="93499f0b-8590-42ea-bdbf-e943597e8e1e">
@@ -61,8 +55,6 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="85aa1be2-62f1-45d1-84d0-acb5bb5d1752">
@@ -71,10 +63,7 @@
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

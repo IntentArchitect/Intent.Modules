@@ -47,7 +47,11 @@ namespace Intent.ModuleBuilder.Api
         {
             return this.GetSettings().TargetTypes().ToList();
         }
-
+        
+        public List<IStereotypeDefinition> TargetTraits()
+        {
+            return this.GetSettings().TargetTraits()?.ToList() ?? [];
+        }
         public string ApiModelName => _element.GetApiModelName();
 
         public string ApiPropertyName => this.GetSettings().ApiPropertyName() ?? Name.RemoveSuffix("End").ToCSharpIdentifier().Pluralize(true);
@@ -59,7 +63,7 @@ namespace Intent.ModuleBuilder.Api
                 SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
                 Implements = this.Stereotypes
-                    .Where(x => x.DefinitionId != AssociationDestinationEndSettingsModelStereotypeExtensions.Settings.DefinitionId)
+                    .Where(x => x.Definition.IsTrait)
                     .Select(x => new ImplementedTraitPersistable() { Id = x.DefinitionId, Name = x.Name })
                     .ToList(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
