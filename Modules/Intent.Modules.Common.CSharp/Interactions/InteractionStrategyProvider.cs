@@ -17,7 +17,7 @@ namespace Intent.Modules.Common.CSharp.Interactions;
 public interface IInteractionStrategy
 {
     bool IsMatch(IAssociationEnd interaction);
-    void AddInteractionStatements(CSharpClassMethod method, IAssociationEnd interaction);
+    void ImplementInteraction(CSharpClassMethod method, IAssociationEnd interaction);
 }
 
 public class InteractionStrategyProvider
@@ -51,26 +51,21 @@ public class InteractionStrategyProvider
 public static class CSharpClassMethodInteractionExtensions
 {
 
-    public static void AddInteractionStatements(this CSharpClassMethod method, IProcessingHandlerModel processingHandlerModel)
+    public static void ImplementInteraction(this CSharpClassMethod method, IProcessingHandlerModel processingHandlerModel)
     {
-        var result = new List<CSharpStatement>();
         foreach (var association in processingHandlerModel.InternalElement.AssociatedElements.Where(x => x.Traits.Any(t => t.Id == "d00a2ab0-9a23-4192-b8bb-166798fc7dba")))
         {
-            result.AddRange(CreateInteractionStatements(method, association));
+            ImplementInteraction(method, association);
         }
-
-        return result;
     }
 
-    public static void CreateInteractionStatements(this CSharpClassMethod method, IAssociationEnd callServiceOperation)
+    public static void ImplementInteraction(this CSharpClassMethod method, IAssociationEnd callServiceOperation)
     {
         var strategy = InteractionStrategyProvider.Instance.GetInteractionStrategy(callServiceOperation);
         if (strategy is not null)
         {
-            return strategy.AddInteractionStatements(method, callServiceOperation);
+            strategy.ImplementInteraction(method, callServiceOperation);
         }
-
-        return [];
     }
 }
 
