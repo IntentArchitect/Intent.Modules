@@ -409,6 +409,9 @@ vertical-align: center`</style>
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Publish Integration Event Target End" typeId="6feb1511-849a-4aa3-85eb-d0c736ac1fec">
+        <implements>
+          <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+        </implements>
         <displayFunction>return `[publish] ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>false</nameMustBeUnique>
@@ -484,6 +487,9 @@ vertical-align: center`</style>
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Send Integration Command Target End" typeId="35a14f76-71e0-45f2-a17f-f8d1483510f7">
+        <implements>
+          <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+        </implements>
         <displayFunction>return `[send] ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <nameMustBeUnique>false</nameMustBeUnique>

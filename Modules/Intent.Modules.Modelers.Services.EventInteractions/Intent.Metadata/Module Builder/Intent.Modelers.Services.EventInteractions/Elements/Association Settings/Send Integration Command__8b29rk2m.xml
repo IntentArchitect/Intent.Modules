@@ -62,6 +62,9 @@
       <parentFolderId>389a7478-a8f1-4acc-adff-a73ce4aa7e6d</parentFolderId>
       <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
       <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+      <traits>
+        <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+      </traits>
       <stereotypes>
         <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
           <addedByDefault>true</addedByDefault>
@@ -88,6 +91,13 @@
             <property name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="true" isActive="true" />
             <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
           </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]">
+          <comment>Indicates that this element represents a processing action within a &lt;see cref="IProcessingHandlerModel"/&gt;</comment>
+          <addedByDefault>false</addedByDefault>
+          <definitionPackageName>Intent.Common</definitionPackageName>
+          <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
+          <properties />
         </stereotype>
       </stereotypes>
       <metadata />

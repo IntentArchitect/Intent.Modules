@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 using Intent.IArchitect.Common.Publishing;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
+using Intent.Utils;
+using Serilog.Core;
 
 namespace Intent.Modules.Common.CSharp.Interactions;
 public interface IInteractionStrategy
 {
     bool IsMatch(IAssociationEnd interaction);
-    IEnumerable<CSharpStatement> GetStatements(CSharpClass handlerClass, IAssociationEnd interaction, CSharpClassMappingManager csharpMapping);
+    void AddInteractionStatements(CSharpClassMethod method, IAssociationEnd interaction);
 }
 
 public class InteractionStrategyProvider
@@ -30,43 +32,46 @@ public class InteractionStrategyProvider
 
     public IInteractionStrategy? GetInteractionStrategy(IAssociationEnd interaction)
     {
-        return _strategies.FirstOrDefault(x => x.IsMatch(interaction));
+        var matched = _strategies.Where(x => x.IsMatch(interaction)).ToList();
+        if (matched.Count == 0)
+        {
+            Logging.Log.Warning($"No interaction strategy matched for {interaction}");
+            return null;
+        }
+        
+        if (matched.Count > 1)
+        {
+            Logging.Log.Warning($"Multiple interaction strategies found for {interaction}: [{string.Join(", ", matched)}]");
+        }
+
+        return matched.First();
     }
 }
 
-public class StandardInteractions
+public static class CSharpClassMethodInteractionExtensions
 {
-    private readonly ICSharpFileBuilderTemplate _template;
-    private readonly CSharpClassMappingManager _csharpMapping;
 
-    public StandardInteractions(ICSharpFileBuilderTemplate template, CSharpClassMappingManager csharpMapping)
-    {
-        _template = template;
-        _csharpMapping = csharpMapping;
-    }
-
-    public IEnumerable<CSharpStatement> GetStatements(CSharpClass handlerClass, IProcessingHandlerModel processingHandlerModel)
+    public static void AddInteractionStatements(this CSharpClassMethod method, IProcessingHandlerModel processingHandlerModel)
     {
         var result = new List<CSharpStatement>();
-        foreach (var association in processingHandlerModel.InternalElement.AssociatedElements)
+        foreach (var association in processingHandlerModel.InternalElement.AssociatedElements.Where(x => x.Traits.Any(t => t.Id == "d00a2ab0-9a23-4192-b8bb-166798fc7dba")))
         {
-            result.AddRange(GetStatements(handlerClass, association));
+            result.AddRange(CreateInteractionStatements(method, association));
         }
 
         return result;
     }
 
-    public IEnumerable<CSharpStatement> GetStatements(CSharpClass handlerClass, IAssociationEnd callServiceOperation)
+    public static void CreateInteractionStatements(this CSharpClassMethod method, IAssociationEnd callServiceOperation)
     {
         var strategy = InteractionStrategyProvider.Instance.GetInteractionStrategy(callServiceOperation);
         if (strategy is not null)
         {
-            return strategy.GetStatements(handlerClass, callServiceOperation, _csharpMapping);
+            return strategy.AddInteractionStatements(method, callServiceOperation);
         }
 
         return [];
     }
-
 }
 
 public static class CSharpClassExtensions
@@ -93,6 +98,7 @@ public static class CSharpClassExtensions
         if (!method.TryGetMetadata<CSharpClassMappingManager>("mapping-manager", out var csharpMapping))
         {
             csharpMapping = new CSharpClassMappingManager(method.File.Template);
+            method.AddMetadata("mapping-manager", csharpMapping);
         }
 
         return csharpMapping;
