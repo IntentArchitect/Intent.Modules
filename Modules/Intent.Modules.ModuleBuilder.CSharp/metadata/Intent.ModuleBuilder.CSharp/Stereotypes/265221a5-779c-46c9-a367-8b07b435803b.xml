@@ -26,27 +26,19 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
     <property id="67c7c4d8-40ed-48f9-a83c-985eedb32141">
       <name>Locked</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="c166c7cf-45e3-484b-9ec5-f7300951f897">
       <name>Private Assets</name>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <valueOptions>
         <option>all</option>
         <option>analyzers</option>
@@ -57,14 +49,12 @@
         <option>native</option>
         <option>runtime</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="6bd6430c-8011-435e-bb73-6013477a875d">
       <name>Include Assets</name>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <valueOptions>
         <option>all</option>
         <option>analyzers</option>
@@ -75,7 +65,6 @@
         <option>native</option>
         <option>runtime</option>
       </valueOptions>
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>
