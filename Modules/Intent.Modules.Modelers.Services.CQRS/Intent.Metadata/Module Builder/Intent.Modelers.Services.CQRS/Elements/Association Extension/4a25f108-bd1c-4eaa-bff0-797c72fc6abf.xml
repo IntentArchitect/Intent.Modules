@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="4a25f108-bd1c-4eaa-bff0-797c72fc6abf" type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb">
+  <name>Comment Association Extension</name>
+  <display>Comment Association Extension: Comment Association</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <typeReference id="7858a41e-e5c9-4b9a-8929-8d84dafa6f7c">
+    <typeId>eea9b48a-e5e9-48c2-b3ae-cd51d3f7b7bf</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Services</typePackageName>
+    <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>6ac83417-e6d5-4699-b88c-aa1d7f894326</parentFolderId>
+  <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+  <packageName>Intent.Modelers.Services.CQRS</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="5431a4a1-b55e-44cf-87ef-0749d68365c7" type="Association Source End Extension" typeId="66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3">
+      <name>[source]</name>
+      <display>[source end extension]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>4a25f108-bd1c-4eaa-bff0-797c72fc6abf</parentFolderId>
+      <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+      <packageName>Intent.Modelers.Services.CQRS</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1cd7ee9e-614e-4770-a831-d6cdaa56027c" name="Association End Extension Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
+            <property name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
+            <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" isActive="true" />
+            <property name="57c5e973-3a0a-42d7-912f-3e7ff3af2c0b" display="Target Traits" isActive="true" />
+            <property name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" isActive="true" />
+            <property name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
+            <property name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />
+            <property name="558c27e8-dc8b-40ae-8633-fd42f0077268" display="Allow Collection" value="Inherit" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="9733dc0a-c15c-4c61-afbd-809aa83b9053" type="Association Target End Extension" typeId="1cc6c731-af5f-41a0-9e82-44486f45b903">
+      <name>[destination]</name>
+      <display>[target end extension]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>4a25f108-bd1c-4eaa-bff0-797c72fc6abf</parentFolderId>
+      <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+      <packageName>Intent.Modelers.Services.CQRS</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1cd7ee9e-614e-4770-a831-d6cdaa56027c" name="Association End Extension Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
+            <property name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
+            <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" value="[&quot;ccf14eb6-3a55-4d81-b5b9-d27311c70cb9&quot;,&quot;e71b0662-e29d-4db2-868b-8a12464b25d0&quot;]" isActive="true" />
+            <property name="57c5e973-3a0a-42d7-912f-3e7ff3af2c0b" display="Target Traits" isActive="true" />
+            <property name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" isActive="true" />
+            <property name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
+            <property name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />
+            <property name="558c27e8-dc8b-40ae-8633-fd42f0077268" display="Allow Collection" value="Inherit" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="7278e65d-b4c2-4226-9b1a-5134febb9f7e" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
+      <name>[events]</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>4a25f108-bd1c-4eaa-bff0-797c72fc6abf</parentFolderId>
+      <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+      <packageName>Intent.Modelers.Services.CQRS</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

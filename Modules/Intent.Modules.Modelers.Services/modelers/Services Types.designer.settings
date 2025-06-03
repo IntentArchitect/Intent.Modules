@@ -406,11 +406,13 @@ getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePo
             <display>
               <drawText>
                 <text>return getName();</text>
-                <style>`font-size: 12px; 
+                <style>
+return `font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
 text-align: center; 
 white-space: inherit;
+color: ${(element.isReference() ? theme.isDark ? "#aaddaa" : "#224422" : "inherit")};
 vertical-align: center`</style>
                 <size width="${w}" height="18" />
                 <position x="${x}" y="${y + 48}" />
@@ -1983,6 +1985,7 @@ return validateOperation(lookup(id));
           </typeReferenceSetting>
           <typeOrder>
             <type order="0" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" />
+            <type order="1" type="[Processing Action]" typeId="d00a2ab0-9a23-4192-b8bb-166798fc7dba" />
           </typeOrder>
           <contextMenuOptions>
             <createElement type="element">
@@ -2029,7 +2032,20 @@ if (namingConvention == "pascal-case") {
             <childElementSetting type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
               <saveAsOwnFile>false</saveAsOwnFile>
-              <displayFunction>`in : ${this.name}: ${this.typeReference.display}${(this.getValue() ? ` = ${this.getValue()}` : "")}`</displayFunction>
+              <displayFunction>const getTypeReferenceCssClass = (typeReference) =&gt; {
+    if (typeReference.typeId == null || typeReference.getType()?.specialization == "Type-Definition") {
+        return 'keyword';
+    } else {
+        return 'typeref';
+    }
+}
+const result = [
+    { text: 'in : ', cssClass: 'annotation' }, 
+    { text: `${ name }${ genericTypes }`, cssClass: 'muted' },
+    { text: ': ', cssClass: 'annotation' },
+    { text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId }
+];
+return result;</displayFunction>
               <validateFunction>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function validateDuplicateOperation(operation) {
     var possibleDuplicates = findPeerOperations(operation);

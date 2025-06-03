@@ -14,7 +14,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.CQRS.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class CommandModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder, IElementWrapper, IProcessingHandlerModel
+    public class CommandModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder, IElementWrapper, IProcessingHandlerModel, IInvokableServiceModel
     {
         public const string SpecializationType = "Command";
         public const string SpecializationTypeId = "ccf14eb6-3a55-4d81-b5b9-d27311c70cb9";

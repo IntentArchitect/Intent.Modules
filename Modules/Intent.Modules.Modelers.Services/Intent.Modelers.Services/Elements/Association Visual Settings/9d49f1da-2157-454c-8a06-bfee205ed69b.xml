@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="9d49f1da-2157-454c-8a06-bfee205ed69b" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
   <name>[visual]</name>
-  <display>[visual]: void</display>
+  <display>[visual]: Service Invocation</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="93c54fca-7512-4a78-a276-d46e0e7daca5">
+    <typeId>3e69085c-fa2f-44bd-93eb-41075fd472f8</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Services</typePackageName>
+    <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
@@ -26,7 +29,7 @@
         <property name="3ff8fe05-f379-4b5e-a965-cc6f6cab4c21" display="Line Type" value="Curved" isActive="true" />
         <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" value="" isActive="true" />
         <property name="f248a382-66c9-4107-aa92-5ee83dd3d08c" display="Line Width" isActive="true" />
-        <property name="93499f0b-8590-42ea-bdbf-e943597e8e1e" display="Line Dash Array" value="return &quot;3,7&quot;;" isActive="true" />
+        <property name="93499f0b-8590-42ea-bdbf-e943597e8e1e" display="Line Dash Array" value="return getMappings().length &gt; 0 ? null : &quot;3,7&quot;;" isActive="true" />
         <property name="85aa1be2-62f1-45d1-84d0-acb5bb5d1752" display="Reverse Flow Direction" value="false" isActive="true" />
       </properties>
     </stereotype>

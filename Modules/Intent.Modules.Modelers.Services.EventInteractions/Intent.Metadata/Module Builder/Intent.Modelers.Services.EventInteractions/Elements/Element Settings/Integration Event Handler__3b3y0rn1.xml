@@ -9,6 +9,9 @@
   <parentFolderId>bcc2079b-d8d7-4d7a-a3b5-79ebd687a02e</parentFolderId>
   <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
   <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+  <traits>
+    <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+  </traits>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>

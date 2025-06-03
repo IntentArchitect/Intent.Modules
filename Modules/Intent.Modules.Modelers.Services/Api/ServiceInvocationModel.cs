@@ -78,7 +78,7 @@ namespace Intent.Modelers.Services.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class ServiceInvocationTargetEndModel : ServiceInvocationEndModel
+    public class ServiceInvocationTargetEndModel : ServiceInvocationEndModel, IProcessingActionModel
     {
         public const string SpecializationTypeId = "093e5909-ffe4-4510-b3ea-532f30212f3c";
         public const string SpecializationType = "Service Invocation Target End";

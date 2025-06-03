@@ -56,7 +56,7 @@
         </mappableElement>
         <mappableElement id="d70e0dac-3464-426c-bb01-5c6b1140390e" name="Service Invocation" type="Service Invocation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
+          <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>

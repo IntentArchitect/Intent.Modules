@@ -431,7 +431,7 @@ vertical-align: center`</style>
         <contextMenuOptions>
           <defineMapping type="open-advanced-mapping" mappingType="Publish Message Mapping" mappingTypeId="7ff48a4c-ee8b-4e66-9dbb-c014eb0542fb">
             <text>Map to Message</text>
-            <shortcut>ctrl + shift + m</shortcut>
+            <shortcut>ctrl + space</shortcut>
           </defineMapping>
         </contextMenuOptions>
         <creationOptions />
@@ -439,7 +439,7 @@ vertical-align: center`</style>
         <mappingOptions>
           <option type="open-advanced-mapping" mappingType="Publish Message Mapping" mappingTypeId="7ff48a4c-ee8b-4e66-9dbb-c014eb0542fb">
             <text>Map to Message</text>
-            <shortcut>ctrl + shift + m</shortcut>
+            <shortcut>ctrl + space</shortcut>
           </option>
         </mappingOptions>
       </targetEnd>

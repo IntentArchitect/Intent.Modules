@@ -19,6 +19,10 @@
   <parentFolderId>a62352ef-3960-46e8-9939-816f20940675</parentFolderId>
   <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
   <packageName>Intent.Modelers.Services</packageName>
+  <traits>
+    <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable Service]" />
+    <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+  </traits>
   <stereotypes>
     <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
       <addedByDefault>true</addedByDefault>
