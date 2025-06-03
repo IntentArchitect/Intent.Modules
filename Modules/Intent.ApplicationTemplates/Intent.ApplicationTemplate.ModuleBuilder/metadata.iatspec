@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<applicationTemplate>
+<applicationTemplate type="application-template">
   <id>Intent.ApplicationTemplate.ModuleBuilder</id>
-  <version>4.0.17-pre.0</version>
+  <version>4.0.17</version>
   <supportedClientVersions>[4.4.0-a, 5.0.0-a)</supportedClientVersions>
   <displayName>Intent Module Builder</displayName>
+  <additionalImages />
   <shortDescription>Create an Intent Module to automate patterns &amp; code-structures specific to your project and technologies.</shortDescription>
   <authors>Intent Architect</authors>
   <priority>-1000</priority>
@@ -182,7 +183,7 @@
     </group>
   </componentGroups>
   <additionalSettings>
-    <group id="ef08465f-71d9-4f4a-810a-94d37d51b41d" title="Basic Settings">
+    <group id="ef08465f-71d9-4f4a-810a-94d37d51b41d" title="Basic Settings" type="application-settings">
       <settings>
         <setting id="target-framework" title="Target Framework" type="select">
           <defaultValue>f8b1618d-1e64-4c2c-9787-e0725c3633a1</defaultValue>
