@@ -229,6 +229,9 @@ vertical-align: center`</style>
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f">
+        <implements>
+          <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+        </implements>
         <displayFunction>return `handles : ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <defaultNameFunction>return `handler`;</defaultNameFunction>
@@ -283,7 +286,7 @@ if ((!handler.getName() || handler.getName() == "NewDomainEventHandler") &amp;&a
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions>
-    <mappableElementPackageExtension id="83860de0-4b82-4175-aa24-327a6afaa995" name="Domain Event Handler Exension" extendPackageId="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" extendPackage="Application Source Mappables">
+    <mappableElementPackageExtension id="83860de0-4b82-4175-aa24-327a6afaa995" name="Domain Event Handler Exension" extendPackageId="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" extendPackage="Invocation Source Mappables">
       <mappableElementSettings>
         <mappableElement id="5b5676ef-333f-4f52-859d-925ee8c43578" name="Domain Event Handler Association" type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
