@@ -14,7 +14,7 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <moduleSettings>
-    <group id="0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad" title="Domain Interaction Settings" externalReference="0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad">
+    <group id="0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad" title="Domain Interaction Settings" externalReference="0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad" type="application-settings">
       <settings>
         <setting id="14bc1e98-930b-494c-97a9-5da4e1f3a5fa" title="Default Mapping Mode" type="select">
           <hint>Determines which mapping Services designer CRUD scripts will execute</hint>
