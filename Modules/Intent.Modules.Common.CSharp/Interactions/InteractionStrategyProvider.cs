@@ -17,8 +17,8 @@ using Serilog.Core;
 namespace Intent.Modules.Common.CSharp.Interactions;
 public interface IInteractionStrategy
 {
-    bool IsMatch(IAssociationEnd interaction);
-    void ImplementInteraction(CSharpClassMethod method, IAssociationEnd interaction);
+    bool IsMatch(IElement interaction);
+    void ImplementInteraction(CSharpClassMethod method, IElement interaction);
 }
 
 public class InteractionStrategyProvider
@@ -31,7 +31,7 @@ public class InteractionStrategyProvider
         _strategies.Add(strategy);
     }
 
-    public IInteractionStrategy? GetInteractionStrategy(IAssociationEnd interaction)
+    public IInteractionStrategy? GetInteractionStrategy(IElement interaction)
     {
         var matched = _strategies.Where(x => x.IsMatch(interaction)).ToList();
         if (matched.Count == 0)
@@ -51,21 +51,38 @@ public class InteractionStrategyProvider
 
 public static class CSharpClassMethodInteractionExtensions
 {
+    public static CSharpClassMappingManager GetMappingManager(this CSharpClassMethod method)
+    {
+        if (!method.TryGetMetadata<CSharpClassMappingManager>("mapping-manager", out var csharpMapping))
+        {
+            csharpMapping = new CSharpClassMappingManager(method.File.Template);
+            csharpMapping.AddMappingResolver(new TypeConvertingMappingResolver(method.File.Template));
+            method.AddMetadata("mapping-manager", csharpMapping);
+        }
+
+        return csharpMapping;
+    }
 
     public static void ImplementInteractions(this CSharpClassMethod method, IProcessingHandlerModel processingHandlerModel)
     {
-        foreach (var association in processingHandlerModel.InternalElement.AssociatedElements.Where(x => x.Traits.Any(t => t.Id == "d00a2ab0-9a23-4192-b8bb-166798fc7dba")))
+        var interactions = new List<IElement>();
+        interactions.AddRange(processingHandlerModel.InternalElement.ChildElements);
+        foreach(var interaction in processingHandlerModel.InternalElement.AssociatedElements.OrderBy(x => x.Order))
         {
-            ImplementInteraction(method, association);
+            interactions.Insert(interaction.Order, interaction);
+        }
+        foreach (var interaction in interactions.Where(x => x.Traits.Any(t => t.Id == "d00a2ab0-9a23-4192-b8bb-166798fc7dba")))
+        {
+            ImplementInteraction(method, interaction);
         }
     }
 
-    public static void ImplementInteraction(this CSharpClassMethod method, IAssociationEnd callServiceOperation)
+    public static void ImplementInteraction(this CSharpClassMethod method, IElement processionAction)
     {
-        var strategy = InteractionStrategyProvider.Instance.GetInteractionStrategy(callServiceOperation);
+        var strategy = InteractionStrategyProvider.Instance.GetInteractionStrategy(processionAction);
         if (strategy is not null)
         {
-            strategy.ImplementInteraction(method, callServiceOperation);
+            strategy.ImplementInteraction(method, processionAction);
         }
     }
 }
@@ -106,15 +123,4 @@ public static class CSharpClassExtensions
         return fieldName;
     }
 
-    public static CSharpClassMappingManager GetMappingManager(this CSharpClassMethod method)
-    {
-        if (!method.TryGetMetadata<CSharpClassMappingManager>("mapping-manager", out var csharpMapping))
-        {
-            csharpMapping = new CSharpClassMappingManager(method.File.Template);
-            csharpMapping.AddMappingResolver(new TypeConvertingMappingResolver(method.File.Template));
-            method.AddMetadata("mapping-manager", csharpMapping);
-        }
-
-        return csharpMapping;
-    }
 }
