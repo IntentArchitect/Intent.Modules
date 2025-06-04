@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="05321832-016e-49f4-acae-f2923a16b4aa" version="3.1.0">
+  <comment>Configures the column's value source as a SQL expression, with control over whether results are stored or dynamically computed.</comment>
   <name>Computed Value</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -25,19 +26,13 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="baaf3703-322c-4917-a365-8c27fa44ad7a">
       <name>Stored</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

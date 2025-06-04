@@ -31,9 +31,9 @@ public static class SecurityModelHelpers
             {
                 hasAuthorization = true;
                 var commaSeparatedRoles = stereotype.GetProperty<string?>(Constants.Stereotypes.Secured.Properties.CommaSeparatedRoles);
-                var commaSeparatedPolicies = stereotype.GetProperty<string?>(Constants.Stereotypes.Secured.Properties.CommaSeparatedPolicies);
+                var textPolicy = stereotype.GetProperty<string?>(Constants.Stereotypes.Secured.Properties.TextPolicy);
                 var roles = stereotype.GetProperty<IElement[]?>(Constants.Stereotypes.Secured.Properties.Roles);
-                var policies = stereotype.GetProperty<IElement[]?>(Constants.Stereotypes.Secured.Properties.Policies);
+                var policy = stereotype.GetProperty<IElement?>(Constants.Stereotypes.Secured.Properties.Policies);
 
                 // Based on looking at old controller logic, this convention for plus signs to
                 // indicate ANDing the requirements never seemed to apply to policies.
@@ -55,9 +55,7 @@ public static class SecurityModelHelpers
                     roles: (roles?.Length ?? 0) > 0
                         ? roles!.Select(x => x.Name).ToArray()
                         : Split(commaSeparatedRoles),
-                    policies: (policies?.Length ?? 0) > 0
-                        ? policies!.Select(x => x.Name).ToArray()
-                        : Split(commaSeparatedPolicies));
+                    policies: !string.IsNullOrWhiteSpace(policy?.Name) ? [policy.Name] : string.IsNullOrWhiteSpace(textPolicy) ? [] : [textPolicy]);
 
             }
 

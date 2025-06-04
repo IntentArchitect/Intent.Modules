@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="0773bfc9-e976-4549-aa31-47713105614d" version="3.1.0">
+  <comment>Configures how the radio button is rendered.</comment>
   <name>Display Options</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -25,13 +26,11 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Horizontal</defaultValue>
       <valueOptions>
         <option>Horizontal</option>
         <option>Vertical</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>

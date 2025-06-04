@@ -14,6 +14,7 @@ using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Intent.Modules.Common.CSharp.Utils;
 
 namespace Intent.Modules.Common.CSharp.Templates
@@ -194,18 +195,47 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Adds the namespace of the <paramref name="fullName"/> as a dependent namespace and returns the normalized name.
+        /// Adds the namespace parts of the <paramref name="fullName"/> as a dependent namespace and returns the normalized name.
         /// </summary>
         public string UseType(string fullName)
         {
-            var angleOpenIndex = fullName.IndexOf('<');
-            var lastDotIndex = angleOpenIndex != -1 ? fullName[..angleOpenIndex].LastIndexOf('.')
-                : fullName.LastIndexOf('.');
-            var usingToAdd = lastDotIndex != -1 ? fullName[..lastDotIndex]
-                : string.Empty;
+            var sb = new StringBuilder(fullName.Length);
+            var namespaceLength = -1;
 
-            AddUsing(usingToAdd);
-            
+            foreach (var c in fullName)
+            {
+                if (c is ',' or '<' or '>')
+                {
+                    if (namespaceLength > 0)
+                    {
+                        sb.Length = namespaceLength;
+                        AddUsing(sb.ToString());
+                    }
+
+                    namespaceLength = -1;
+                    sb.Length = 0;
+                    continue;
+                }
+
+                if (c is ' ')
+                {
+                    continue;
+                }
+
+                if (c is '.')
+                {
+                    namespaceLength = sb.Length;
+                }
+
+                sb.Append(c);
+            }
+
+            if (namespaceLength > 0)
+            {
+                sb.Length = namespaceLength;
+                AddUsing(sb.ToString());
+            }
+
             return NormalizeNamespace(fullName);
         }
 

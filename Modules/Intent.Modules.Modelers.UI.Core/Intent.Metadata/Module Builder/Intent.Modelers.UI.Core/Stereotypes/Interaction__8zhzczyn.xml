@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="6e04ff81-f043-4ac6-8632-798aedbaaf20" version="3.1.0">
+  <comment>Configures interaction and validation behavior for the input component.</comment>
   <name>Interaction</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -26,31 +27,22 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="a230fb6d-62fc-47c6-b09a-ff1b98359967">
       <name>Is Required</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <represents>data</represents>
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="b9d6ff0c-3fe9-4faf-b966-20016a5989a3">
       <name>Is Enabled</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <represents>data</represents>
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

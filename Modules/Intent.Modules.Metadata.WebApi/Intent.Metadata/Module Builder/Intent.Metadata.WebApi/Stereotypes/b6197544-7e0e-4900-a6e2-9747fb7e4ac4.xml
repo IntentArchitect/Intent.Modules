@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="b6197544-7e0e-4900-a6e2-9747fb7e4ac4" version="3.1.0">
+  <comment>Configures how the endpoint appears in generated API documentation and tools (OpenAPI)</comment>
   <name>OpenAPI Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -29,10 +30,7 @@
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="c6b0e60f-000b-4afb-a226-e3622119e996">
       <hint>Customize the [operationId](https://swagger.io/docs/specification/paths-and-operations/) of the operation. Supports substitution of `{MethodName}` and `{ServiceName}`.</hint>
@@ -41,8 +39,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <isActiveFunction>return Ignore != "true" &amp;&amp; element.specialization != "Service";</isActiveFunction>
     </property>
   </properties>

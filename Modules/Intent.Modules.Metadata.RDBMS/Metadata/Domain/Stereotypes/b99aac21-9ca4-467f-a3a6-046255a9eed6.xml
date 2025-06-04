@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="b99aac21-9ca4-467f-a3a6-046255a9eed6" version="3.1.0">
+  <comment>Configures the attribute as the unique identifier for the entity and specifies how its value is sourced.</comment>
   <name>Primary Key</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -25,14 +26,12 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Default</defaultValue>
       <valueOptions>
         <option>Default</option>
         <option>Auto-generated</option>
         <option>User supplied</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return  true;</isRequiredFunction>
     </property>
   </properties>

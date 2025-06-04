@@ -1,3 +1,11 @@
+### Version 1.0.4
+
+- Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 
+
+### Version 1.0.3
+
+- Improvement: Only one policy can now be applied on the `Secured` stereotype. To supply multiple, multiple stereotypes are to be applied.
+
 ### Version 1.0.2
 
 - Improvement: Moved module documentation to website, with link in module docs.

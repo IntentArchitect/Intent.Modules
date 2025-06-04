@@ -42,7 +42,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
                 fileExtension: "cs",
                 relativeLocation: $"{FolderPath}",
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic);
+                codeGenType: Modules.Common.CodeGenType.Basic);
 
             metadata.CustomMetadata.Add("Depends On", $"{TemplateName}.tt");
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="c29224ec-d473-4b95-ad4a-ec55c676c4fd" version="3.1.0">
+  <comment>Configures HTTP-related configuration for a service, such as defining its route.</comment>
   <name>Http Service Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -26,9 +27,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

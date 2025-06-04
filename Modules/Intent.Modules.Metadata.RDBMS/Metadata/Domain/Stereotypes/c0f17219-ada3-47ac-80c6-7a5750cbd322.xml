@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="c0f17219-ada3-47ac-80c6-7a5750cbd322" version="3.1.0">
+  <comment>Configures the schema name to be applied to the element and relevant child elements.</comment>
   <name>Schema</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -28,9 +29,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>

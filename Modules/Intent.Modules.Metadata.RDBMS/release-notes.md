@@ -1,3 +1,7 @@
+### Version 3.7.4
+
+- Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 
+
 ### Version 3.7.3
 
 - Improvement: Removed `Identity` flag from `Primary Key` stereotype. The intended direction is to use `Data Source` to determine the `IDENTITY` of a Primary Key.

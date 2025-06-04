@@ -50,6 +50,29 @@
             ]
         },
       {
+          "title": "Integration Event/Command Not Generating",
+          "description": "Steps to resolve integration events or commands not being generated.",
+          "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iRW52ZWxvcGUtcmVkIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI5LjUuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDIuMS4wIEJ1aWxkIDE0MSkgIC0tPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtOTQ1dGJuc2V1OTQ4aG50Zzg5MzQ1N2dic3c4ZTUiIHgxPSIyNS4yIiB5MT0iNDIiIHgyPSIyNS4yIiB5Mj0iMTAuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQ5LjUpIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2RlNGQ1MiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNiZDIwMjUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudDEtOTQ1dGJuc2V1OTQ4aG50Zzg5MzQ1N2dic3c4ZTUiIHgxPSIyNS4yIiB5MT0iNDIiIHgyPSIyNS4yIiB5Mj0iMTAuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDQ5LjUpIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2RlNGQ1MiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNiZDIwMjUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwb2x5Z29uIGlkPSJfeDNDX0ZvbGRfeDNFXyIgcG9pbnRzPSIyMSAyNyAyNS4yIDMwLjUgMjkuMyAyNyAzNyAzMy40IDQwLjggMzMuNCA0MC44IDMyIDMyIDI0LjggNDAuOCAxNy41IDQwLjggMTYuMSAzNyAxNi4xIDI1LjIgMjYgMTMuMyAxNi4xIDkuNiAxNi4xIDkuNiAxNy41IDE4LjMgMjQuNyA5LjYgMzIgOS42IDMzLjQgMTMuMyAzMy40IDIxIDI3IiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC05NDV0Ym5zZXU5NDhobnRnODkzNDU3Z2JzdzhlNSkiLz4KICA8cGF0aCBpZD0iX3gzQ19Cb3JkZXJfeDNFXyIgZD0iTTIuNyw3Ljh2MzMuOGg0NVY3LjhIMi43Wk00NC4yLDM4LjJINi4xVjExLjNoMzguMXMwLDI2LjksMCwyNi45WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQxLTk0NXRibnNldTk0OGhudGc4OTM0NTdnYnN3OGU1KSIvPgo8L3N2Zz4=",
+          "href": "https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/message-based-integration-modeling/message-based-integration-modeling.html#new-integration-event-or-command-not-generating",
+          "contextIds": [
+              "81104ae6-2bc5-4bae-b05a-f987b0372d81"
+            ],
+          "tags": [
+              "create",
+              "",
+              "integration",
+              "message",
+              "command",
+              "error",
+              "appear",
+              "available",
+              "nothing",
+              "created",
+              "generated",
+              "generating"
+            ]
+        },
+      {
           "title": "Integration Message Naming Conventions",
           "description": "General advice on naming integration messages.",
           "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAyhJREFUaEPtWV1IU2EYft5v85zN2ZzM+VOIFZOM0n406Zeuk/6EoJsuJEq6iC4CC4Lu6kIvuqibjIi6KIggLMq6DPojSSxtpDAqjXIyx3T+zB2388U5MnExdZtz7sD54OM7nPN+z/s+3/Oe8/0cgsYLaTx+6ARWW0FdAV2BZY7AoinU9d1dU17i+CzLMgeHBEbjHPAZCB5w+JVKjAY48BMMfXar9QsRSYvFxDkXfIHAdsioJGADl3k5CAVKjXDuYJwKOWAFQWBEbMDjra3Z7OxaCHNRAt397rayIkdTwoPE+TQROjnort1mfRwlowY9GjhJ4Gc4Rx2ITIliDg5723ZWOs8lTcDlcuVJTPxTVuKwJupsvh2XeZfDbqtV7g37/Z8MYHWp4AwOeyckA1+3u6IiEK9/jAKll3p41Kh+kxHn9wkoK3ak4lft8677m9ru37E1ZYzfw17cei/hVX94DmOotXou7gUJ3DxmgtPOsoKA2yfjwrPp5Ah0nM5VO6ykArd7CI/6CacqOZqq5sSPUUtRQCn196ayj8DBJwxTYcCSA7w5IcdNs6wmcKeX8LBvVoGzWlQgkTc7qxXQPIH6dgZvEHCYgY7jGnwHdAJA7I5s/kyciXlAV0BXYInv4FKLOT2F9BTSU0jjM7Hm10I6gdX+CukKLKXAZHAaI/4xMEZgxGA0MBgMBhij1WiAKOTAJAgwiyIsZpNqGy3xZmLlkE/BDYZCmJYkhKQZhMMRhCOzNaK2MmQuQ7F1FNiQaxaT39S/aDThr9eHSCT+RiPuIRMxrLGYUWIvQKEtHx++ulSzvdu2YGR0DB6fH+OTQXCeOCZjDGuL7DhyP8ljlQcNEqaCoUTSNK6NNc+CwMSk+izfYsHY5Ox1KsVsEtHYLiR3rJKKo2ifvLfNoNBYDAQXbZg40Loc2MwREN1PIfx6HROstP4QQs4GbRCAHIb44zlyhj6qAc+U7kFo41GAGVeWQDrQSy/3XgfnV+JiEa4NtVRfTYefKMaK/CMrbu49zEi+CBm7FEdE1CkzuuFpqXqZzuBV7HQDZhpPJ5DpEf/fn66ArsAyR0DzKfQPjShhT3bD+xwAAAAASUVORK5CYII=",
