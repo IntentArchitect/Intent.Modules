@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Intent.IArchitect.Common.Publishing;
+using Intent.Modules.Common.CSharp.Mapping.Resolvers;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
 using Intent.Utils;
@@ -51,7 +52,7 @@ public class InteractionStrategyProvider
 public static class CSharpClassMethodInteractionExtensions
 {
 
-    public static void ImplementInteraction(this CSharpClassMethod method, IProcessingHandlerModel processingHandlerModel)
+    public static void ImplementInteractions(this CSharpClassMethod method, IProcessingHandlerModel processingHandlerModel)
     {
         foreach (var association in processingHandlerModel.InternalElement.AssociatedElements.Where(x => x.Traits.Any(t => t.Id == "d00a2ab0-9a23-4192-b8bb-166798fc7dba")))
         {
@@ -68,6 +69,23 @@ public static class CSharpClassMethodInteractionExtensions
         }
     }
 }
+public record EntityDetails(IElement ElementModel, string VariableName, IDataAccessProvider DataAccessProvider, bool IsNew, string ProjectedType = null, bool IsCollection = false);
+
+public interface IDataAccessProvider
+{
+    bool IsUsingProjections { get; }
+    CSharpStatement SaveChangesAsync();
+    CSharpStatement AddEntity(string entityName);
+    CSharpStatement Update(string entityName);
+    CSharpStatement Remove(string entityName);
+    CSharpStatement FindByIdAsync(List<PrimaryKeyFilterMapping> pkMaps);
+    CSharpStatement FindByIdsAsync(List<PrimaryKeyFilterMapping> pkMaps);
+    CSharpStatement FindAllAsync(IElementToElementMapping queryMapping, out IList<CSharpStatement> prerequisiteStatements);
+    CSharpStatement FindAllAsync(IElementToElementMapping queryMapping, string pageNo, string pageSize, string? orderBy, bool orderByIsNUllable, out IList<CSharpStatement> prerequisiteStatements);
+    CSharpStatement FindAsync(IElementToElementMapping queryMapping, out IList<CSharpStatement> prerequisiteStatements);
+}
+
+public record PrimaryKeyFilterMapping(CSharpStatement ValueExpression, CSharpStatement Property, IElementToElementMappedEnd Mapping);
 
 public static class CSharpClassExtensions
 {
@@ -93,6 +111,7 @@ public static class CSharpClassExtensions
         if (!method.TryGetMetadata<CSharpClassMappingManager>("mapping-manager", out var csharpMapping))
         {
             csharpMapping = new CSharpClassMappingManager(method.File.Template);
+            csharpMapping.AddMappingResolver(new TypeConvertingMappingResolver(method.File.Template));
             method.AddMetadata("mapping-manager", csharpMapping);
         }
 
