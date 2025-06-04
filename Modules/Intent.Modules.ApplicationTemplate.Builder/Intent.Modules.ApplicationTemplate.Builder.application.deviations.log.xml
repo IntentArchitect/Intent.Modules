@@ -4,12 +4,12 @@
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#cf385bd9-e92f-453d-a3e1-00b9922b57b3</correlationId>
       <path>Intent.Modules.ApplicationTemplate.Builder/Api/ApplicationTemplateModel.cs</path>
-      <count>11</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2025-04-29T10:45:44.0970327Z</updatedAt>
-      <deviationsHash>3AD4479FF5AA0024C5E4D9ECAEC937ECCE60BA7297976659B792289870A4C8E2</deviationsHash>
-      <fileHash>1D8562A9CFDCAB0783CEB9D30C8D6F9098474CF9E6750264984F6F956252D199</fileHash>
+      <count>13</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2025-06-04T08:41:24.5873615Z</updatedAt>
+      <deviationsHash>45205CE484C6E26985355292C18B3EA180294533E534F892DFA915517C9C7AF3</deviationsHash>
+      <fileHash>3F67073A82A52C99385E88D2393A5AF145972063E2F8385C0D18321ECEC70F27</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#69000b7e-8bc8-49d0-80f5-eb65a6f7653a</correlationId>
@@ -99,7 +99,7 @@
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
       <updatedAt>2024-11-22T13:12:08.5285389Z</updatedAt>
       <deviationsHash>B9AA3D04A07F6B74B4B2DB1FFA398C373DB67998E799DCFFA870A1871A0FC64D</deviationsHash>
-      <fileHash>FD6B4193773B3B1ACE8993A7A2FC74F478E6C06F89DA8E2AC0856BAACC6136DE</fileHash>
+      <fileHash>A5376203EE76A7625CBB8F83547239A764593CB27A3D48D6EBD2CC246CA4B887</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#a706c8ba-fe99-4eaf-9734-fc3fd07e901e</correlationId>

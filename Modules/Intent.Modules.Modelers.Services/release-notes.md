@@ -1,3 +1,7 @@
+### Version 3.9.5
+
+- Improvement: Services can now be associated with comments in designer diagrams.
+
 ### Version 3.9.4
 
 - Improvement: Mapping from the Domain to `Operations` on `Services` will now add automatically add new fields to the first parameter of type `DTO`.
