@@ -160,7 +160,7 @@ steps:
   inputs:
     targetType: 'inline'
     pwsh: true
-    script: ./PipelineScripts/pre-template-test-validation.ps1 "$(Build.ArtifactStagingDirectory)" "$(intent-module-solution)" "$(intent-solution)"
+    script: ./PipelineScripts/pre-template-test-validation.ps1 "$(Build.ArtifactStagingDirectory)" "$(Build.SourceBranch)" "$(intent-module-solution)" "$(intent-solution)"
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
@@ -253,7 +253,8 @@ steps:
     pwsh: true
     script: |
       $artifactsFolder = '$(Build.ArtifactStagingDirectory)'
-      $serverUrl = 'https://app-module-server-prod-zanorth-001.azurewebsites.net/'
+      $sourceBranch = '$(Build.SourceBranch)'
+      $serverUrl = $sourceBranch -like 'refs/heads/development-*' ? 'https://dev-modules.intentarchitect.com/' : 'https://app-module-server-prod-zanorth-001.azurewebsites.net/'
       $apiKey = '$(intent-architect-module-server-api-key)'
 
       $files = (Get-ChildItem "$artifactsFolder/*.*");

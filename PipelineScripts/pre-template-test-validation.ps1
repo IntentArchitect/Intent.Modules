@@ -2,6 +2,7 @@
 
 param(
     [string]$buildArtifactStagingDirectory,
+    [string]$sourceBranch,
     [string]$modulesIntentSolutionRelativePath,
     [string]$testsIntentSolutionRelativePath
 )
@@ -9,12 +10,25 @@ param(
 $repoConfigContent = 
 "<?xml version=""1.0"" encoding=""utf-8""?>
 <assetRepositories>
-  <entries>
+  <entries>"
+
+if ($sourceBranch -like 'refs/heads/development-*')
+{
+    $repoConfigContent += '
+    <entry>
+      <name>Dev Modules</name>
+      <address>https://dev-modules.intentarchitect.com/</address>
+      <isBuiltIn>false</isBuiltIn>
+      <order>9</order>
+    </entry>'
+}
+
+$repoConfigContent += "
     <entry>
       <name>Pipeline build artifact staging directory</name>
       <address>$buildArtifactStagingDirectory</address>
       <isBuiltIn>false</isBuiltIn>
-      <order>3</order>
+      <order>10</order>
     </entry>
   </entries>
 </assetRepositories>"
