@@ -56,6 +56,13 @@ steps:
   fetchDepth: '1'
   submodules: 'recursive'
 
+- task: PowerShell@2
+  displayName: 'Imodspec validation'
+  inputs:
+    pwsh: true
+    filePath: 'PipelineScripts/pre-build-validation.ps1'
+    arguments: 'true'
+
 - task: UseDotNet@2
   displayName: 'Install latest .NET 8 SDK'
   inputs:
@@ -66,13 +73,6 @@ steps:
   displayName: 'Install latest .NET 9 SDK'
   inputs:
     version: '9.x'
-
-- task: PowerShell@2
-  displayName: 'Imodspec validation'
-  inputs:
-    pwsh: true
-    filePath: 'PipelineScripts/pre-build-validation.ps1'
-    arguments: 'true'
 
 - task: PowerShell@2
   displayName: 'Check TypeScript version'
@@ -196,7 +196,7 @@ steps:
     script: |
       $toolsDirectory = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
 
-      $toolsDirectory/intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_MODULE_SOLUTION_PATH"
+      & "$toolsDirectory/intent-cli" ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_MODULE_SOLUTION_PATH"
 
 - task: PowerShell@2
   displayName: 'Run SF CLI on tests solution'
@@ -210,7 +210,7 @@ steps:
     script:  |
       $toolsDirectory = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
 
-      $toolsDirectory/intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH" --check-deviations
+      & "$toolsDirectory/intent-cli" ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH" --check-deviations
 
 - task: PowerShell@2
   displayName: 'Filter artifacts to publish'
