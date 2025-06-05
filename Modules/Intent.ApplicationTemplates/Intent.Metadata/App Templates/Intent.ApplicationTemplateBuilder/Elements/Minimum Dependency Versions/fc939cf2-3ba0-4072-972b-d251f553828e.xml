@@ -29,7 +29,7 @@
     </childElement>
     <childElement id="77f68af6-c825-4157-9d58-c23754546807" type="Module" typeId="6a811790-b322-4340-8b68-84dae5ffafa8">
       <name>Intent.Common.CSharp</name>
-      <display>Intent.Common.CSharp 3.8.13</display>
+      <display>Intent.Common.CSharp 3.8.15</display>
       <isAbstract>false</isAbstract>
       <value>3.8.15</value>
       <genericTypes />
@@ -57,7 +57,7 @@
     </childElement>
     <childElement id="3e0264d0-c69e-41e3-ae32-2a530dc9e169" type="Module" typeId="6a811790-b322-4340-8b68-84dae5ffafa8">
       <name>Intent.OutputManager.RoslynWeaver</name>
-      <display>Intent.OutputManager.RoslynWeaver 4.9.7</display>
+      <display>Intent.OutputManager.RoslynWeaver 4.9.8</display>
       <isAbstract>false</isAbstract>
       <value>4.9.8</value>
       <genericTypes />
