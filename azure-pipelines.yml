@@ -178,7 +178,11 @@ steps:
   inputs:
     targetType: 'inline'
     pwsh: true
-    script: dotnet tool install Intent.SoftwareFactory.CLI --global --prerelease
+    script: |
+      $toolsDirectory = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
+      $nightly = '$(Build.SourceBranch)' -like 'refs/heads/development-*' ? '.nightly' : ''
+
+      dotnet tool install Intent.SoftwareFactory.CLI$nightly --prerelease --tool-path $toolsDirectory
 
 - task: PowerShell@2
   displayName: 'Run SF CLI on module solution'
@@ -189,7 +193,10 @@ steps:
   inputs:
     targetType: 'inline'
     pwsh: true
-    script: intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_MODULE_SOLUTION_PATH"
+    script: |
+      $toolsDirectory = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
+
+      $toolsDirectory/intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_MODULE_SOLUTION_PATH"
 
 - task: PowerShell@2
   displayName: 'Run SF CLI on tests solution'
@@ -200,7 +207,10 @@ steps:
   inputs:
     targetType: 'inline'
     pwsh: true
-    script: intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH" --check-deviations
+    script:  |
+      $toolsDirectory = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
+
+      $toolsDirectory/intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH" --check-deviations
 
 - task: PowerShell@2
   displayName: 'Filter artifacts to publish'
