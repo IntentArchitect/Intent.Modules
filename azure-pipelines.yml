@@ -182,7 +182,11 @@ steps:
       $toolsDirectory = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
       $nightly = '$(Build.SourceBranch)' -like 'refs/heads/development-*' ? '.nightly' : ''
 
-      Remove-Item -Recurse -Force $toolsDirectory
+      if (Test-Path $toolsDirectory)
+      {
+        Remove-Item -Recurse -Force $toolsDirectory
+      }
+
       dotnet tool install Intent.SoftwareFactory.CLI$nightly --prerelease --tool-path  
 
 - task: PowerShell@2
