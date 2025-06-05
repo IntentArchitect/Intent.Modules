@@ -182,7 +182,8 @@ steps:
       $toolsDirectory = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
       $nightly = '$(Build.SourceBranch)' -like 'refs/heads/development-*' ? '.nightly' : ''
 
-      dotnet tool install Intent.SoftwareFactory.CLI$nightly --prerelease --tool-path $toolsDirectory
+      Remove-Item -Recurse -Force $toolsDirectory
+      dotnet tool install Intent.SoftwareFactory.CLI$nightly --prerelease --tool-path  
 
 - task: PowerShell@2
   displayName: 'Run SF CLI on module solution'
@@ -195,7 +196,6 @@ steps:
     pwsh: true
     script: |
       $toolsDirectory = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
-      Remove-Item -Recurse -Force $toolsDirectory
 
       & "$toolsDirectory/intent-cli" ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_MODULE_SOLUTION_PATH"
 
