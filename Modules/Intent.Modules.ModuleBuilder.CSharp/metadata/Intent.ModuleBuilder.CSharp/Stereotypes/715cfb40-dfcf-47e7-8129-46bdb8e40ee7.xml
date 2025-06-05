@@ -25,13 +25,11 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Razor File Builder</defaultValue>
       <valueOptions>
         <option>String Interpolation</option>
         <option>Razor File Builder</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>

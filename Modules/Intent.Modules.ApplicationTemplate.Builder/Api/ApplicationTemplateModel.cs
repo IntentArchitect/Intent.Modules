@@ -87,7 +87,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         [IntentManaged(Mode.Ignore)]
         public ApplicationTemplateDefaultsModel Defaults { get; }
 
-
+        [IntentManaged(Mode.Ignore)]
         private TemplateType ConvertToTemplateTypeEnum(ApplicationTemplateSettings.TemplateTypeOptionsEnum value)
         {
             switch (value)

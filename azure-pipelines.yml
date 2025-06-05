@@ -56,6 +56,13 @@ steps:
   fetchDepth: '1'
   submodules: 'recursive'
 
+- task: PowerShell@2
+  displayName: 'Imodspec validation'
+  inputs:
+    pwsh: true
+    filePath: 'PipelineScripts/pre-build-validation.ps1'
+    arguments: 'true'
+
 - task: UseDotNet@2
   displayName: 'Install latest .NET 8 SDK'
   inputs:
@@ -66,13 +73,6 @@ steps:
   displayName: 'Install latest .NET 9 SDK'
   inputs:
     version: '9.x'
-
-- task: PowerShell@2
-  displayName: 'Imodspec validation'
-  inputs:
-    pwsh: true
-    filePath: 'PipelineScripts/pre-build-validation.ps1'
-    arguments: 'true'
 
 - task: PowerShell@2
   displayName: 'Check TypeScript version'
@@ -160,7 +160,7 @@ steps:
   inputs:
     targetType: 'inline'
     pwsh: true
-    script: ./PipelineScripts/pre-template-test-validation.ps1 "$(Build.ArtifactStagingDirectory)" "$(intent-module-solution)" "$(intent-solution)"
+    script: ./PipelineScripts/pre-template-test-validation.ps1 "$(Build.ArtifactStagingDirectory)" "$(Build.SourceBranch)" "$(intent-module-solution)" "$(intent-solution)"
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
@@ -178,7 +178,16 @@ steps:
   inputs:
     targetType: 'inline'
     pwsh: true
-    script: dotnet tool install Intent.SoftwareFactory.CLI --global --prerelease
+    script: |
+      $toolPath = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
+      $nightly = '$(Build.SourceBranch)' -like 'refs/heads/development-*' ? '.nightly' : ''
+
+      if (Test-Path $toolPath)
+      {
+        Remove-Item -Recurse -Force $toolPath
+      }
+
+      dotnet tool install Intent.SoftwareFactory.CLI$nightly --prerelease --tool-path $toolPath
 
 - task: PowerShell@2
   displayName: 'Run SF CLI on module solution'
@@ -189,7 +198,10 @@ steps:
   inputs:
     targetType: 'inline'
     pwsh: true
-    script: intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_MODULE_SOLUTION_PATH"
+    script: |
+      $toolPath = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
+
+      & "$toolPath/intent-cli" ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_MODULE_SOLUTION_PATH"
 
 - task: PowerShell@2
   displayName: 'Run SF CLI on tests solution'
@@ -200,7 +212,10 @@ steps:
   inputs:
     targetType: 'inline'
     pwsh: true
-    script: intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH" --check-deviations
+    script:  |
+      $toolPath = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
+
+      & "$toolPath/intent-cli" ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH" --check-deviations
 
 - task: PowerShell@2
   displayName: 'Filter artifacts to publish'
@@ -253,7 +268,8 @@ steps:
     pwsh: true
     script: |
       $artifactsFolder = '$(Build.ArtifactStagingDirectory)'
-      $serverUrl = 'https://app-module-server-prod-zanorth-001.azurewebsites.net/'
+      $sourceBranch = '$(Build.SourceBranch)'
+      $serverUrl = $sourceBranch -like 'refs/heads/development-*' ? 'https://dev-modules.intentarchitect.com/' : 'https://app-module-server-prod-zanorth-001.azurewebsites.net/'
       $apiKey = '$(intent-architect-module-server-api-key)'
 
       $files = (Get-ChildItem "$artifactsFolder/*.*");

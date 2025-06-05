@@ -35,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplateT4
         {
             return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
+                codeGenType: Modules.Common.CodeGenType.Basic,
                 fileName: $"{TemplateName}",
                 fileExtension: "tt",
                 relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name.ToCSharpIdentifier().RemoveSuffix("Template"))}");

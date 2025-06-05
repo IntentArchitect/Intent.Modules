@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="0b630b29-9513-4bbb-87fa-6cb3e6f65199" version="3.1.0">
+  <comment>Configures the underlying SQL column's name, type and order, replacing values specified in the designer.</comment>
   <name>Column</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -33,27 +34,19 @@ return `${name}${type}`;</displayFunction>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="bc03d4fc-b9cc-4ac0-8869-b3e2cb18f1ef">
+      <comment />
       <name>Type</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="94f5a58f-b340-4a8b-b5dd-b618ecd7fc95">
       <name>Order</name>
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

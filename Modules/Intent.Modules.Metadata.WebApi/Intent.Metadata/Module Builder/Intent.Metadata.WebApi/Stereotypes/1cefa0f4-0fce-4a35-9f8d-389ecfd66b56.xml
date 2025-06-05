@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="1cefa0f4-0fce-4a35-9f8d-389ecfd66b56" version="3.1.0">
+  <comment>Configure version-related settings, such as marking a version as deprecated.</comment>
   <name>Version Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -27,10 +28,7 @@ return "";</displayFunction>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

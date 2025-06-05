@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="30c5995e-17ab-4cc7-8881-3e9561ab06fe" version="3.1.0">
+  <comment>Customizes how an element maps to C# code by specifying its type, namespace, and other properties.</comment>
   <name>C#</name>
   <targetMode>all</targetMode>
   <targetTypes />
@@ -23,28 +24,19 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="8CCCD630-6AF9-41FA-8E5F-414860AD89BB">
       <name>Namespace</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="76668E7B-8FC2-4C14-B6AA-E36854E5E499">
       <name>Is Primitive</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="0a577584-e2d4-4e5a-8649-296036a91575">
       <hint>Does this type represent a collection</hint>
@@ -52,10 +44,7 @@
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

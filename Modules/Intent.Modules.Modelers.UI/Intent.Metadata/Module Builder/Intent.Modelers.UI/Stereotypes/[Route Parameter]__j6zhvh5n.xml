@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="f324c4ea-bac2-450d-b1b1-cc7f09ca3472" version="3.1.0">
+  <comment>Marks the property as bound to a segment in the URL route, enabling value extraction from the request path.</comment>
   <name>[Route Parameter]</name>
   <targetMode>of-type</targetMode>
   <targetTypes>

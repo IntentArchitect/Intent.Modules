@@ -45,6 +45,13 @@ return options.length == 0
   <order>0</order>
   <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
   <packageName>Intent.ApplicationTemplate.Builder</packageName>
+  <validateFunction>var moduleSettingsStereo = element.getStereotype("Module Settings");
+var isRequired =  moduleSettingsStereo.getProperty("Is Required").getValue();
+var includeByDefault =  moduleSettingsStereo.getProperty("Include By Default").getValue();
+
+if (isRequired &amp;&amp; !includeByDefault) {    
+    return "[Include by default] must be enabled when [s Required] is set to true."
+}</validateFunction>
   <properties>
     <property id="8235e942-6dec-4576-be44-3543b35ca44c">
       <name>Version</name>

@@ -98,9 +98,9 @@ namespace Intent.Metadata.Security.Api
                 return _stereotype.GetProperty<IElement[]>("Security Roles") ?? new IElement[0];
             }
 
-            public IElement[] SecurityPolicies()
+            public IElement SecurityPolicies()
             {
-                return _stereotype.GetProperty<IElement[]>("Security Policies") ?? new IElement[0];
+                return _stereotype.GetProperty<IElement>("Security Policies");
             }
 
         }

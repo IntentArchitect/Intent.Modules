@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="6dfa2c79-4b9a-4741-9201-95a9d7631b4d" version="3.1.0">
+  <comment>Configures the entity to reference a view rather than a physical table.</comment>
   <name>View</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -27,18 +28,12 @@ return schema != null    ? `${schema}.${name}`    : name;</displayFunction>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="877751bd-961d-49cd-952e-6a8ffd6c8064">
       <name>Schema</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

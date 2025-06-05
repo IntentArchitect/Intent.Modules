@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="1c39a537-7016-4774-a874-23248040c07e" version="3.1.0">
+  <comment>Configures index-specific options for the column, such as its role in the index and sort direction.</comment>
   <name>Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -20,18 +21,17 @@
   <packageName>Intent.Metadata.RDBMS</packageName>
   <properties>
     <property id="9c37afb1-b837-49a6-b7fb-3c25c8aab1d5">
+      <comment>Configures index-specific options for the column, such as its role in the index and sort direction.</comment>
       <hint>Ordinary 'Key' or '[Included](https://docs.microsoft.com/sql/relational-databases/indexes/create-indexes-with-included-columns)' column.</hint>
       <name>Type</name>
       <type>boolean</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Key</defaultValue>
       <valueOptions>
         <option>Key</option>
         <option>Included</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="f80ed9e2-b90b-4fff-a551-98f0461b3f86">
       <hint />
@@ -39,13 +39,11 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Ascending</defaultValue>
       <valueOptions>
         <option>Ascending</option>
         <option>Descending</option>
       </valueOptions>
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

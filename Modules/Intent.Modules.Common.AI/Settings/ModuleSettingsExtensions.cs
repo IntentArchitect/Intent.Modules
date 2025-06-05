@@ -83,7 +83,9 @@ namespace Intent.Modules.Common.AI.Settings
             Ollama,
         }
 
-        public string APIKey() => _groupSettings.GetSetting("9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8")?.Value;
+        public string OpenAIAPIKey() => _groupSettings.GetSetting("9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8")?.Value;
+
+        public string AzureOpenAIAPIKey() => _groupSettings.GetSetting("d76d0a4d-60c5-42b4-aa3b-de4f11b44ac1")?.Value;
 
         public string Model() => _groupSettings.GetSetting("effcfd41-aaed-4278-a7e7-818009584139")?.Value;
 

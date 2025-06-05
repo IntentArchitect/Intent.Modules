@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="f0663cd4-da7c-43cc-9cda-bbc7923d5431" version="3.1.0">
+  <comment>Enables and configures pagination behavior for the table component.</comment>
   <name>Pagination</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -25,27 +26,18 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="26a9615e-ee5e-4c6e-874c-934949dcebb8">
       <name>Pages Count</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="4bc0cb96-4708-4ea0-82b2-7672b4c339da">
       <name>On Page Changed</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

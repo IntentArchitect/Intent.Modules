@@ -29,6 +29,7 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
     public IList<CSharpClass> TypeDeclarations { get; } = new List<CSharpClass>();
     public CSharpTopLevelStatements TopLevelStatements { get; private set; }
     public ICSharpStyleSettings StyleSettings { get; }
+    public IList<string> LeadingTrivia { get; } = new List<string>();
 
     public IList<CSharpClass> Classes => TypeDeclarations
         .Where(td => td.TypeDefinitionType == CSharpClass.Type.Class)
@@ -205,6 +206,15 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
         return this;
     }
 
+    /// <summary>
+    /// For adding trivia (such as a comment or pragma) to the very start of the file.
+    /// </summary>
+    public CSharpFile WithLeadingTrivia(string trivia)
+    {
+        LeadingTrivia.Add(trivia);
+        return this;
+    }
+
     public CSharpFileConfig GetConfig()
     {
         var className = TopLevelStatements != null
@@ -362,6 +372,11 @@ public class CSharpFile : CSharpMetadataBase<CSharpFile>, ICSharpFile
         }
 
         var sb = new StringBuilder();
+
+        foreach (var trivia in LeadingTrivia)
+        {
+            sb.AppendLine(trivia);
+        }
 
         var usings = Usings.OrderBy(x => x.IsGlobal ? 0 : 1).ToArray();
         for (var index = 0; index < usings.Length; index++)

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="f40ff84c-68ad-405f-bda0-1237dd15fc92" version="3.1.0">
+  <comment>Marks the operation as mapped to a stored procedure, enabling automatic invocation and seamless mapping of parameters and results.</comment>
   <name>Stored Procedure</name>
   <targetMode>filter-function</targetMode>
   <targetTypes />
@@ -34,10 +35,6 @@ return `[${name}]`;
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
     </property>
   </properties>
 </stereotypeDefinition>

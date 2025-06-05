@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="51a7bcf5-0eb9-4c9a-855e-3ead1048729c" version="3.1.0">
+  <comment>Indicates that the package models a RDBMS-based data structure.</comment>
   <name>Relational Database</name>
   <targetMode>of-type</targetMode>
   <targetTypes>

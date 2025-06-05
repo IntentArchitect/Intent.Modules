@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="d30e48e8-389e-4b70-84fd-e3bac44cfe19" version="3.1.0">
+  <comment>Configures file transfer settings for an endpoint, typically used with the "Expose as HTTP File Upload/Download" options.</comment>
   <name>File Transfer</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -28,19 +29,13 @@
       <type>string</type>
       <controlType>textarea</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>*/*</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="c0ea27fb-2e0b-4542-b294-da9d2b12565e">
       <name>Maximum File Size (in bytes)</name>
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

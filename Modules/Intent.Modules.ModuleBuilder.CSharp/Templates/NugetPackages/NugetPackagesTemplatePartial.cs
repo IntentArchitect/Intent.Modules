@@ -54,7 +54,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                                 var packageSettings = package.GetPackageSettings();
                                 var versionNo = GetFrameworkMajorVerion(version);
                                 versionInfo.AppendLine();
-                                versionInfo.Append($"                        ( >= {versionNo.Major}, {versionNo.Minor}) => new PackageVersion(\"{version.Name}\"");
+                                versionInfo.Append($"                        ( >= {versionNo.Major}, >= {versionNo.Minor}) => new PackageVersion(\"{version.Name}\"");
                                 if (version.GetPackageVersionSettings()?.Locked() == true || packageSettings.Locked() == true)
                                 {
                                     versionInfo.Append(", locked: true");
@@ -85,7 +85,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.NugetPackages
                                 versionInfo.Append(",");
                             }
                             method.AddStatement($@"NugetRegistry.Register({GetPackageConstant(package)},
-                (framework) => framework switch
+                (framework) => (framework.Major, framework.Minor) switch
                     {{{versionInfo}
                         _ => throw new Exception($""Unsupported Framework `{{framework.Major}}` for NuGet package '{{{GetPackageConstant(package)}}}'""),
                     }}

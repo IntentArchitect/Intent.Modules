@@ -1,3 +1,7 @@
+### Version 5.2.0
+
+- Improvement: Commands and queries can now be associated with comments in designer diagrams.
+
 ### Version 5.1.4
 
 - Improvement: Queries will now warn if default values have been set on properties which are proceeded by properties without default values

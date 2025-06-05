@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="8565814D-EF70-40EE-A0D3-577AB7B1254C" version="3.1.0">
+  <comment>Defines a SQL condition that must be met for data in the entity, enforcing data integrity at the database level.</comment>
   <name>Check Constraint</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -25,9 +26,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="175a8968-97f7-4bfd-bfaf-83054c0671c2">
@@ -35,9 +33,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
   </properties>

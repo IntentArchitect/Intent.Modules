@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="66fd9e66-42c7-4ef9-a778-b68e009272b9" version="3.1.0">
+  <comment>Configure whether the folder influences the namespace of the elements it contains.</comment>
   <name>Folder Options</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -25,10 +26,7 @@
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public partial class CommentModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
+    public partial class CommentModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IAllowCommentModel, IHasFolder
     {
         public const string SpecializationType = "Comment";
         public const string SpecializationTypeId = "32cb9020-2896-4dc0-9a6d-2aaae3cb431f";

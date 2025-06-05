@@ -1,3 +1,7 @@
+### Version 3.6.2
+
+- Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 
+
 ### Version 3.6.1
 
 - Improvement: Updated module icon

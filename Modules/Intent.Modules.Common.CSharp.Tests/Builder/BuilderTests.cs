@@ -905,4 +905,15 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task NamespaceComment()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .WithLeadingTrivia("#pragma warning disable IDE0130 // Namespace does not match folder structure")
+            .AddClass("Class")
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }
