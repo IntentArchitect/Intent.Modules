@@ -1,4 +1,4 @@
-### Version 3.9.5
+### Version 3.10.0
 
 - Improvement: Services can now be associated with comments in designer diagrams.
 
