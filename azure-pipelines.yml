@@ -179,15 +179,15 @@ steps:
     targetType: 'inline'
     pwsh: true
     script: |
-      $toolsDirectory = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
+      $toolPath = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
       $nightly = '$(Build.SourceBranch)' -like 'refs/heads/development-*' ? '.nightly' : ''
 
-      if (Test-Path $toolsDirectory)
+      if (Test-Path $toolPath)
       {
-        Remove-Item -Recurse -Force $toolsDirectory
+        Remove-Item -Recurse -Force $toolPath
       }
 
-      dotnet tool install Intent.SoftwareFactory.CLI$nightly --prerelease --tool-path  
+      dotnet tool install Intent.SoftwareFactory.CLI$nightly --prerelease --tool-path $toolPath
 
 - task: PowerShell@2
   displayName: 'Run SF CLI on module solution'
@@ -199,9 +199,9 @@ steps:
     targetType: 'inline'
     pwsh: true
     script: |
-      $toolsDirectory = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
+      $toolPath = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
 
-      & "$toolsDirectory/intent-cli" ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_MODULE_SOLUTION_PATH"
+      & "$toolPath/intent-cli" ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_MODULE_SOLUTION_PATH"
 
 - task: PowerShell@2
   displayName: 'Run SF CLI on tests solution'
@@ -213,9 +213,9 @@ steps:
     targetType: 'inline'
     pwsh: true
     script:  |
-      $toolsDirectory = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
+      $toolPath = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
 
-      & "$toolsDirectory/intent-cli" ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH" --check-deviations
+      & "$toolPath/intent-cli" ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH" --check-deviations
 
 - task: PowerShell@2
   displayName: 'Filter artifacts to publish'
