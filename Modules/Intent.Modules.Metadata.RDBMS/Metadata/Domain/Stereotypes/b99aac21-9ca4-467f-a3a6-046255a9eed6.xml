@@ -26,12 +26,14 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
+      <placeholder />
       <defaultValue>Default</defaultValue>
       <valueOptions>
         <option>Default</option>
         <option>Auto-generated</option>
         <option>User supplied</option>
       </valueOptions>
+      <lookupTypes />
       <isRequiredFunction>return  true;</isRequiredFunction>
     </property>
   </properties>

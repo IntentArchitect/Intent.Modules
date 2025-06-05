@@ -36,12 +36,18 @@ return schema != null
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
     </property>
     <property id="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b">
       <name>Schema</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>
