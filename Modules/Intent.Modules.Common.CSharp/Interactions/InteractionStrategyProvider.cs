@@ -67,10 +67,12 @@ public static class CSharpClassMethodInteractionExtensions
     {
         var interactions = new List<IElement>();
         interactions.AddRange(processingHandlerModel.InternalElement.ChildElements);
-        foreach(var interaction in processingHandlerModel.InternalElement.AssociatedElements.OrderBy(x => x.Order))
+        foreach (var interaction in processingHandlerModel.InternalElement.AssociatedElements.Where(x => x.IsTargetEnd()).OrderBy(x => x.Order))
         {
-            interactions.Insert(interaction.Order, interaction);
+            // Math.Min because the order number of associations was being stored incorrectly - it was counting type references. This has been fixed in 4.5
+            interactions.Insert(Math.Min(interaction.Order, interactions.Count), interaction);
         }
+        // TODO: NB: Checking this trait means that nothing will work unless the user presses save in the designer.
         foreach (var interaction in interactions.Where(x => x.Traits.Any(t => t.Id == "d00a2ab0-9a23-4192-b8bb-166798fc7dba")))
         {
             ImplementInteraction(method, interaction);
@@ -86,6 +88,7 @@ public static class CSharpClassMethodInteractionExtensions
         }
     }
 }
+
 public record EntityDetails(IElement ElementModel, string VariableName, IDataAccessProvider DataAccessProvider, bool IsNew, string ProjectedType = null, bool IsCollection = false);
 
 public interface IDataAccessProvider
