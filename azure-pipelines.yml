@@ -271,7 +271,8 @@ steps:
     script: |
       $artifactsFolder = '$(Build.ArtifactStagingDirectory)'
       $sourceBranch = '$(Build.SourceBranch)'
-      $serverUrl = $sourceBranch -like 'refs/heads/development-*' ? 'https://dev-modules.intentarchitect.com/' : 'https://app-module-server-prod-zanorth-001.azurewebsites.net/'
+      $isDevWithVersion = $sourceBranch -like 'refs/heads/development-*'
+      $serverUrl = $isDevWithVersion ? 'https://dev-modules.intentarchitect.com/' : 'https://app-module-server-prod-zanorth-001.azurewebsites.net/'
       $apiKey = '$(intent-architect-module-server-api-key)'
 
       $files = (Get-ChildItem "$artifactsFolder/*.*");
@@ -282,7 +283,7 @@ steps:
         Write-Host ""
         Write-Host "Processing $($file.Name) ($number of $($files.Length))..."
 
-        if ($file.Name -like "*-alpha.*.imod") {
+        if (-not $isDevWithVersion -and $file.Name -like "*-alpha.*.imod") {
             $expression = "module-server-client-cli `"upload-module`" `"$serverUrl`" `"$apiKey`" `"$($file.FullName)`" --unlisted"
 
             Write-Host "Invoking $($expression.Replace($apiKey, "****"))..."
