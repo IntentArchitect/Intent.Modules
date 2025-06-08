@@ -296,7 +296,7 @@ if ((!handler.getName() || handler.getName() == "NewDomainEventHandler") &amp;&a
             <mappingId>92a0b71b-588d-408f-9096-5a3e335bdad7</mappingId>
           </traversableTypes>
           <canBeModified>false</canBeModified>
-          <represents>data</represents>
+          <represents>invokable</represents>
           <childSettings>
             <childSetting id="92a0b71b-588d-408f-9096-5a3e335bdad7" name="Domain Event" type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a" version="2.0.0">
               <allowMultipleMappings>true</allowMultipleMappings>

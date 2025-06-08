@@ -57,6 +57,7 @@
   <elementSettings>
     <elementSetting type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
       <implements>
+        <trait id="9e587d4d-f317-4ab8-9bbb-9394234d2a88" name="[Allow Comment]" />
         <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable Service]" />
         <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
       </implements>
@@ -316,6 +317,7 @@ if (namingConvention == "pascal-case") {
     </elementSetting>
     <elementSetting type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
       <implements>
+        <trait id="9e587d4d-f317-4ab8-9bbb-9394234d2a88" name="[Allow Comment]" />
         <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable Service]" />
         <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
       </implements>

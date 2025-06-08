@@ -30,7 +30,7 @@
           <traversableTypes />
           <canBeModified>false</canBeModified>
           <useChildSettingsFrom>13cd2ca6-9985-4222-9fb9-b2d221ae4fb5</useChildSettingsFrom>
-          <represents>data</represents>
+          <represents>invokable</represents>
         </mappableElement>
       </mappableElementSettings>
     </mappableElementPackageExtension>
@@ -43,7 +43,7 @@
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <useChildSettingsFrom>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</useChildSettingsFrom>
-          <represents>data</represents>
+          <represents>invokable</represents>
         </mappableElement>
         <mappableElement id="0556825b-177b-4093-b13a-5dfabb13c9b6" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
@@ -52,13 +52,14 @@
           <traversableTypes />
           <canBeModified>true</canBeModified>
           <useChildSettingsFrom>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</useChildSettingsFrom>
-          <represents>data</represents>
+          <represents>invokable</represents>
         </mappableElement>
         <mappableElement id="d70e0dac-3464-426c-bb01-5c6b1140390e" name="Service Invocation" type="Service Invocation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
-          <isTraversable>false</isTraversable>
+          <isTraversable>true</isTraversable>
           <traversableTypes />
+          <overrideTypeReferenceFunction>return element.typeReference.getType().typeReference.toModel();</overrideTypeReferenceFunction>
           <canBeModified>false</canBeModified>
           <represents>invokable</represents>
           <staticMappableSettings>

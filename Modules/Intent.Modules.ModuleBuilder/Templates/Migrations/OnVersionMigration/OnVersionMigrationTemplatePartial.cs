@@ -23,6 +23,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Migrations.OnVersionMigration
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public OnVersionMigrationTemplate(IOutputTarget outputTarget, VersionMigrationModel model) : base(TemplateId, outputTarget, model)
         {
+            AddNugetDependency(IntentNugetPackages.IntentPersistenceSdk);
             CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
                 .IntentManagedMerge()
                 .AddClass(GetClassName(), @class =>

@@ -80,7 +80,8 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
       </targetEnd>
       <visualSettings type="Service Invocation" typeId="3e69085c-fa2f-44bd-93eb-41075fd472f8">
         <lineType>Curved</lineType>
-        <lineDashArray>return getMappings().length &gt; 0 ? null : "3,7";</lineDashArray>
+        <lineColor>return getMappings()[0] ? null : "gray";</lineColor>
+        <lineDashArray>return "3,7";</lineDashArray>
         <sourceEnd>
           <pointIndicator>
             <lineWidth>return 3;</lineWidth>
@@ -234,7 +235,7 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
         </mappableElement>
         <mappableElement id="8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return false;</isMappableFunction>
+          <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>true</canBeModified>
@@ -341,9 +342,7 @@ return element.getChildren(parameterTypeId).filter(x =&gt; x.typeReference.getTy
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>13cd2ca6-9985-4222-9fb9-b2d221ae4fb5</mappingId>
-              </traversableTypes>
+              <traversableTypes />
               <canBeModified>true</canBeModified>
               <represents>data</represents>
             </childSetting>
@@ -353,9 +352,7 @@ return element.getChildren(parameterTypeId).filter(x =&gt; x.typeReference.getTy
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>13cd2ca6-9985-4222-9fb9-b2d221ae4fb5</mappingId>
-              </traversableTypes>
+              <traversableTypes />
               <canBeModified>true</canBeModified>
               <represents>data</represents>
             </childSetting>
