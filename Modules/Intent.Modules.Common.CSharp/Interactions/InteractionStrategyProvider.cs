@@ -31,6 +31,18 @@ public class InteractionStrategyProvider
         _strategies.Add(strategy);
     }
 
+    public bool HasInteractionStrategy(IElement interaction)
+    {
+        var matched = _strategies.Where(x => x.IsMatch(interaction)).ToList();
+
+        if (matched.Count > 1)
+        {
+            Logging.Log.Warning($"Multiple interaction strategies matched for {interaction}: [{string.Join(", ", matched)}]");
+        }
+
+        return matched.Any();
+    }
+
     public IInteractionStrategy? GetInteractionStrategy(IElement interaction)
     {
         var matched = _strategies.Where(x => x.IsMatch(interaction)).ToList();
@@ -39,7 +51,7 @@ public class InteractionStrategyProvider
             Logging.Log.Warning($"No interaction strategy matched for {interaction}");
             return null;
         }
-        
+
         if (matched.Count > 1)
         {
             Logging.Log.Warning($"Multiple interaction strategies found for {interaction}: [{string.Join(", ", matched)}]");
@@ -49,21 +61,165 @@ public class InteractionStrategyProvider
     }
 }
 
+
+public class CSharpClassMethodBuilder
+{
+    private readonly CSharpClassMethod _method;
+    private readonly List<string> _phaseOrder;
+    private readonly Dictionary<string, List<CSharpStatement>> _phaseStatements;
+
+    public CSharpClassMethodBuilder(CSharpClassMethod method, IEnumerable<string> phaseOrder)
+    {
+        _method = method;
+        _phaseOrder = phaseOrder.ToList();
+        _phaseStatements = _phaseOrder.ToDictionary(phase => phase, _ => new List<CSharpStatement>());
+    }
+
+    public void AddStatement(string phase, CSharpStatement statement)
+    {
+        EnsurePhaseExists(phase);
+        _phaseStatements[phase].Add(statement);
+        RebuildStatements();
+    }
+
+    public void AddStatements(string phase, IEnumerable<CSharpStatement> statements)
+    {
+        EnsurePhaseExists(phase);
+        _phaseStatements[phase].AddRange(statements);
+        RebuildStatements();
+    }
+
+    private void EnsurePhaseExists(string phase)
+    {
+        if (!_phaseStatements.ContainsKey(phase))
+            throw new ArgumentException($"Phase '{phase}' is not defined in the builder's phase order.");
+    }
+
+    private void RebuildStatements()
+    {
+        _method.Statements.Clear();
+
+        foreach (var phase in _phaseOrder)
+        {
+            if (_phaseStatements.TryGetValue(phase, out var statements))
+            {
+                _method.Statements.Clear();
+                _method.AddStatements(statements);
+            }
+        }
+    }
+}
+
+public class ExecutionPhases
+{
+    public const string Validation = "Validation";
+    public const string Retrieval = "Retrieval";
+    public const string BusinessLogic = "BusinessLogic";
+    public const string Persistence = "Persistence";
+    public const string IntegrationEvents = "IntegrationEvents";
+    public const string Response = "Response";
+
+    public static List<string> ExecutionPhaseOrder =
+    [
+        ExecutionPhases.Validation,
+        ExecutionPhases.Retrieval,
+        ExecutionPhases.BusinessLogic,
+        ExecutionPhases.Persistence,
+        ExecutionPhases.IntegrationEvents,
+        ExecutionPhases.Response
+    ];
+}
+
 public static class CSharpClassMethodInteractionExtensions
 {
+    private const string ExecutionPhasesKey = "execution-phases";
+    private const string ExecutionPhaseKey = "execution-phase";
+
+
+    public static void SetExecutionPhases(this CSharpClassMethod method, string[] phaseOrder)
+    {
+        if (method.HasMetadata(ExecutionPhasesKey))
+        {
+            method.Metadata.Remove(ExecutionPhasesKey);
+        }
+        method.AddMetadata(ExecutionPhasesKey, phaseOrder);
+    }
+
+    public static void AddStatement(this CSharpClassMethod method, string phase, CSharpStatement statement)
+    {
+        //if (!method.TryGetMetadata<string[]>(ExecutionPhasesKey, out var phases) || !phases.Contains(phase))
+        //{
+        //    throw new Exception("Phase " + phases + " has not been defined. Call SetExecutionPhases beforehand");
+        //}
+
+        statement.AddMetadata(ExecutionPhaseKey, phase);
+        method.InsertStatement(FindInsertionIndex(method, phase), statement);
+    }
+
+    
+
+    public static void AddStatements(this CSharpClassMethod method, string phase, IEnumerable<CSharpStatement> statements)
+    {
+        //if (!method.TryGetMetadata<string[]>(ExecutionPhasesKey, out var phases) || !phases.Contains(phase))
+        //{
+        //    throw new Exception("Phase " + phases + " has not been defined. Call SetExecutionPhases beforehand");
+        //}
+
+        foreach (var statement in statements)
+        {
+            statement.AddMetadata(ExecutionPhaseKey, phase);
+            method.InsertStatement(FindInsertionIndex(method, phase), statement);
+        }
+    }
+
+    //public static void ReorderStatments(this CSharpClassMethod method)
+    //{
+    //    var phases = method.GetMetadata<string[]>(ExecutionPhasesKey);
+    //    var statements = method.Statements.ToList();
+    //    method.Statements.Clear();
+    //    method.AddStatements(statements.Where(x => !x.HasMetadata(ExecutionPhaseKey)));
+    //    foreach (var phase in phases)
+    //    {
+    //        var phaseStatements = statements.Where(x => x.TryGetMetadata<string>(ExecutionPhaseKey, out var setPhase) && setPhase == phase);
+    //        method.AddStatements(phaseStatements);
+    //    }
+    //}
+
+    public static IEnumerable<CSharpStatement> GetStatementsInPhase(this CSharpClassMethod method, string phase)
+    {
+        var statementPhase = method.Statements.Where(s => (s.TryGetMetadata<string>(ExecutionPhaseKey, out var x) ? x : ExecutionPhases.BusinessLogic) == phase).ToList();
+        return statementPhase;
+    }
+
+    private static int FindInsertionIndex(this CSharpClassMethod method, string phase)
+    {
+        var phaseIndex = ExecutionPhases.ExecutionPhaseOrder.IndexOf(phase);
+
+        for (var i = 0; i < method.Statements.Count; i++)
+        {
+            var statementPhase = method.Statements[i].TryGetMetadata<string>(ExecutionPhaseKey, out var x) ? x : ExecutionPhases.BusinessLogic;
+            var currentPhaseIndex = ExecutionPhases.ExecutionPhaseOrder.IndexOf(statementPhase);
+            if (currentPhaseIndex > phaseIndex)
+            {
+                return i;
+            }
+        }
+
+        return method.Statements.Count; // append to end
+    }
+
     public static CSharpClassMappingManager GetMappingManager(this CSharpClassMethod method)
     {
         if (!method.TryGetMetadata<CSharpClassMappingManager>("mapping-manager", out var csharpMapping))
         {
             csharpMapping = new CSharpClassMappingManager(method.File.Template);
-            csharpMapping.AddMappingResolver(new TypeConvertingMappingResolver(method.File.Template));
             method.AddMetadata("mapping-manager", csharpMapping);
         }
 
         return csharpMapping;
     }
 
-    public static void ImplementInteractions(this CSharpClassMethod method, IProcessingHandlerModel processingHandlerModel)
+    public static IEnumerable<IElement> GetInteractions(this IProcessingHandlerModel processingHandlerModel)
     {
         var interactions = new List<IElement>();
         interactions.AddRange(processingHandlerModel.InternalElement.ChildElements);
@@ -72,8 +228,18 @@ public static class CSharpClassMethodInteractionExtensions
             // Math.Min because the order number of associations was being stored incorrectly - it was counting type references. This has been fixed in 4.5
             interactions.Insert(Math.Min(interaction.Order, interactions.Count), interaction);
         }
-        // TODO: NB: Checking this trait means that nothing will work unless the user presses save in the designer.
-        foreach (var interaction in interactions.Where(x => x.Traits.Any(t => t.Id == "d00a2ab0-9a23-4192-b8bb-166798fc7dba")))
+
+        return interactions.Where(InteractionStrategyProvider.Instance.HasInteractionStrategy).ToList();
+    }
+
+    public static void ImplementInteractions(this CSharpClassMethod method, IProcessingHandlerModel processingHandlerModel)
+    {
+        ImplementInteractions(method, processingHandlerModel.GetInteractions());
+    }
+
+    public static void ImplementInteractions(this CSharpClassMethod method, IEnumerable<IElement> interactions)
+    {
+        foreach (var interaction in interactions)
         {
             ImplementInteraction(method, interaction);
         }
@@ -86,6 +252,21 @@ public static class CSharpClassMethodInteractionExtensions
         {
             strategy.ImplementInteraction(method, processionAction);
         }
+    }
+
+    public static Dictionary<string, EntityDetails> TrackedEntities(this CSharpClassMethod method)
+    {
+        if (!method.TryGetMetadata<Dictionary<string, EntityDetails>>("tracked-entities", out var trackedEntities))
+        {
+            trackedEntities = new Dictionary<string, EntityDetails>();
+            if (method.HasMetadata("tracked-entities"))
+            {
+                method.Metadata.Remove("tracked-entities");
+            }
+            method.AddMetadata("tracked-entities", trackedEntities);
+        }
+
+        return trackedEntities;
     }
 }
 
