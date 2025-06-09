@@ -34,6 +34,10 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
         [XmlElement("shortDescription")]
         public string ShortDescription { get; set; }
 
+        [XmlElement("longDescription")]
+        public string LongDescription { get; set; }
+        public bool ShouldSerializeLongDescription() => !string.IsNullOrWhiteSpace(LongDescription);
+
         [XmlElement("authors")]
         public string Authors { get; set; }
 

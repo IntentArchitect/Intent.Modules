@@ -164,10 +164,14 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             {
                 return _stereotype.GetProperty<IStereotype[]>("Images") ?? new IStereotype[0];
             }
-
-            public string Description()
+            public string ShortDescription()
             {
-                return _stereotype.GetProperty<string>("Description");
+                return _stereotype.GetProperty<string>("Short Description");
+            }
+
+            public string LongDescription()
+            {
+                return _stereotype.GetProperty<string>("Long Description");
             }
 
             public string Authors()

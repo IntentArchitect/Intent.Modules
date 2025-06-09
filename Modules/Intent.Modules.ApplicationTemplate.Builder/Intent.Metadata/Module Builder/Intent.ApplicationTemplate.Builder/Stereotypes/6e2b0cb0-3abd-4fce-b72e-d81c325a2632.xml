@@ -62,7 +62,15 @@
       <itemTypeId>04bb510b-9898-499d-b90d-6c03aab49441</itemTypeId>
     </property>
     <property id="212c479d-1e24-4bc5-bff3-e01063010e04">
-      <name>Description</name>
+      <comment>Shows in search results, does not support line breaks or markdown.</comment>
+      <name>Short Description</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+    </property>
+    <property id="bf8013fc-fc3f-481f-8a5c-18517d552f0d">
+      <comment>Supports markdown.</comment>
+      <name>Long Description</name>
       <type>string</type>
       <controlType>textarea</controlType>
       <optionsSource>n/a</optionsSource>
