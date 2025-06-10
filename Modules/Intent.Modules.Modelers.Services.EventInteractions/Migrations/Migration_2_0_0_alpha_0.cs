@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Linq;
 using Intent.Engine;
 using Intent.Persistence;
@@ -9,12 +10,12 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.Modelers.Services.EventInteractions.Migrations
 {
-    public class Migration_2_0_0_pre_0 : IModuleMigration
+    public class Migration_2_0_0_alpha_0 : IModuleMigration
     {
         private readonly IPersistenceLoader _persistenceLoader;
         private readonly IApplicationConfigurationProvider _applicationConfigurationProvider;
 
-        public Migration_2_0_0_pre_0(IPersistenceLoader persistenceLoader, IApplicationConfigurationProvider applicationConfigurationProvider)
+        public Migration_2_0_0_alpha_0(IPersistenceLoader persistenceLoader, IApplicationConfigurationProvider applicationConfigurationProvider)
         {
             _persistenceLoader = persistenceLoader;
             _applicationConfigurationProvider = applicationConfigurationProvider;
@@ -26,6 +27,7 @@ namespace Intent.Modules.Modelers.Services.EventInteractions.Migrations
 
         public void Up()
         {
+            Debugger.Launch();
             var application = _persistenceLoader.LoadApplication(_applicationConfigurationProvider.GetApplicationConfig().FilePath);
             var designer = application.GetDesigner(ServicesDesignerId);
             var packages = designer.GetPackages();

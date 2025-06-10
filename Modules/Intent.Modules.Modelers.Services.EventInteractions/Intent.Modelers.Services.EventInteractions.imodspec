@@ -30,6 +30,6 @@
     <install target="Services;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Services.EventInteractions/Intent.Modelers.Services.EventInteractions.pkg.config" externalReference="014c4929-4a23-47d6-89d1-8dd4cb3a879c" />
   </metadata>
   <migrations>
-    <migration version="2.0.0-pre.0" />
+    <migration version="2.0.0-alpha.0" />
   </migrations>
 </package>

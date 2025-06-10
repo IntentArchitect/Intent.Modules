@@ -30497,7 +30497,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
       <mappableElementSettings>
         <mappableElement id="05cdd272-2140-4e9a-90ab-2395bfe28be0" name="Call Operation Action" type="Service Invocation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
+          <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>true</isTraversable>
           <traversableTypes />
           <overrideTypeReferenceFunction>return {
@@ -31031,7 +31031,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <isTraversable>false</isTraversable>
           <traversableTypes />
           <canBeModified>false</canBeModified>
-          <represents>data</represents>
+          <represents>invokable</represents>
           <childSettings>
             <childSetting id="dba64983-a232-4042-89f6-fe70e966fa32" name="Stored Procedure Parameter" type="Stored Procedure Parameter" typeId="5823b192-eb03-47c8-90d8-5501c922e9a5" version="2.0.0">
               <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
