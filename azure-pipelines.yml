@@ -24,6 +24,8 @@ variables:
   value: $[or(startsWith(variables['Build.SourceBranch'], 'refs/heads/development-'), in(variables['Build.SourceBranch'], 'refs/heads/development'))]
 - name: 'isMaster'
   value: $[in(variables['Build.SourceBranch'], 'refs/heads/master')]
+- name: 'isHotfix'
+  value: $[in(variables['Build.SourceBranch'], 'refs/heads/hotfix')]
 - name: 'vstsFeed'
   value: '4bb4c1b9-5b56-4972-8bac-0ad3fa64204e/intentarchitect-feed'
 - name: 'vstsFeedUrl'
@@ -110,7 +112,7 @@ steps:
 # Push the NuGet packages to the DevOps artifact feed so that they're available to this build and other pipelines
 - task: NuGetCommand@2
   displayName: 'Push Intent Nuget Packages to DevOps Artifacts'
-  condition: and(succeeded(), in('True', variables.isMaster, variables.isDevelopment))
+  condition: and(succeeded(), in('True', variables.isMaster, variables.isHotfix, variables.isDevelopment))
   inputs:
       command: 'push'
       feedsToUse: 'select'
@@ -134,7 +136,7 @@ steps:
 
 - task: PowerShell@2
   displayName: 'Update Project URLs in imodspecs'
-  condition: and(succeeded(), in('True', variables.isMaster))
+  condition: and(succeeded(), in('True', variables.isMaster, variables.isHotfix))
   inputs:
     targetType: 'inline'
     pwsh: true
@@ -219,7 +221,7 @@ steps:
 
 - task: PowerShell@2
   displayName: 'Filter artifacts to publish'
-  condition: and(succeeded(), in('True', variables.isMaster, variables.isDevelopment))
+  condition: and(succeeded(), in('True', variables.isMaster, variables.isHotfix, variables.isDevelopment))
   inputs:
     targetType: inline
     pwsh: true
@@ -248,7 +250,7 @@ steps:
 
 - task: PowerShell@2
   displayName: 'Install Module Server Client CLI'
-  condition: and(succeeded(), in('True', variables.isMaster, variables.isDevelopment))
+  condition: and(succeeded(), in('True', variables.isMaster, variables.isHotfix, variables.isDevelopment))
   inputs:
     targetType: 'inline'
     pwsh: true
@@ -257,7 +259,7 @@ steps:
 
 - task: PowerShell@2
   displayName: 'Publish modules'
-  condition: and(succeeded(), in('True', variables.isMaster, variables.isDevelopment))
+  condition: and(succeeded(), in('True', variables.isMaster, variables.isHotfix, variables.isDevelopment))
   env:
     DOTNET_NOLOGO: '1'
     # Avoid issues when attempting to run on environment without older .NET runtime version available:
@@ -269,7 +271,8 @@ steps:
     script: |
       $artifactsFolder = '$(Build.ArtifactStagingDirectory)'
       $sourceBranch = '$(Build.SourceBranch)'
-      $serverUrl = $sourceBranch -like 'refs/heads/development-*' ? 'https://dev-modules.intentarchitect.com/' : 'https://app-module-server-prod-zanorth-001.azurewebsites.net/'
+      $isDevWithVersion = $sourceBranch -like 'refs/heads/development-*'
+      $serverUrl = $isDevWithVersion ? 'https://dev-modules.intentarchitect.com/' : 'https://app-module-server-prod-zanorth-001.azurewebsites.net/'
       $apiKey = '$(intent-architect-module-server-api-key)'
 
       $files = (Get-ChildItem "$artifactsFolder/*.*");
@@ -280,7 +283,7 @@ steps:
         Write-Host ""
         Write-Host "Processing $($file.Name) ($number of $($files.Length))..."
 
-        if ($file.Name -like "*-alpha.*.imod") {
+        if (-not $isDevWithVersion -and $file.Name -like "*-alpha.*.imod") {
             $expression = "module-server-client-cli `"upload-module`" `"$serverUrl`" `"$apiKey`" `"$($file.FullName)`" --unlisted"
 
             Write-Host "Invoking $($expression.Replace($apiKey, "****"))..."
@@ -312,7 +315,7 @@ steps:
 
 - task: DotNetCoreCLI@2
   displayName: 'Push *.nupkg to nuget.org (Final Release)'
-  condition: and(succeeded(), in('True', variables.isMaster))
+  condition: and(succeeded(), in('True', variables.isMaster, variables.isHotfix))
   inputs:
     command: 'custom'
     custom: 'nuget'

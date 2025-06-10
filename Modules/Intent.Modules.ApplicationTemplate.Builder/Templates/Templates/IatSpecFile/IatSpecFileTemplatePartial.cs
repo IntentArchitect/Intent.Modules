@@ -61,7 +61,10 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
                 DisplayName = Model.DisplayName,
                 CoverImageUrl = Model.CoverImageUrl != null ? new ApplicationTemplate_Image() { Src = Model.CoverImageUrl.Url() } : null,
                 AdditionalImages = Model.AdditionalImages.Select(x => new ApplicationTemplate_Image { Src = x.Url() }).ToList(),
-                ShortDescription = Model.Description,
+                ShortDescription = Model.ShortDescription,
+                LongDescription = !string.IsNullOrWhiteSpace(Model.LongDescription)
+                    ? Model.LongDescription
+                    : null,
                 Authors = Model.Authors,
                 Priority = int.TryParse(Model.Priority, out var priority) ? priority : 0,
                 Icon = new IconModelPersistable()

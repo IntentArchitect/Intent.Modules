@@ -73,7 +73,10 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         public List<ImageDetails> AdditionalImages => this.GetApplicationTemplateSettings().Images().Skip(1).Select(x => new ImageDetails(x)).ToList();
 
         [IntentManaged(Mode.Ignore)]
-        public string Description => this.GetApplicationTemplateSettings().Description();
+        public string ShortDescription => this.GetApplicationTemplateSettings().ShortDescription();
+
+        [IntentManaged(Mode.Ignore)]
+        public string LongDescription => this.GetApplicationTemplateSettings().LongDescription();
 
         [IntentManaged(Mode.Ignore)]
         public string Authors => this.GetApplicationTemplateSettings().Authors();
