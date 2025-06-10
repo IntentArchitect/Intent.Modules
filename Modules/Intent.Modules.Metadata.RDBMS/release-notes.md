@@ -1,3 +1,7 @@
+### Version 3.7.5
+
+- Improvement: Help topic on primary key value assignment methods.
+
 ### Version 3.7.4
 
 - Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 

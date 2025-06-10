@@ -26,6 +26,9 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>lookup-children</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>
