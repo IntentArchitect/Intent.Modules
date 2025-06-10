@@ -442,6 +442,8 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
         return _wrapper.ExtendsInterface(type);
     }
 
+    IEnumerable<ICSharpAttribute> ICSharpDeclaration<ICSharpInterface>.Attributes => Attributes;
+
     ICSharpInterface ICSharpDeclaration<ICSharpInterface>.AddAttribute(string name, Action<ICSharpAttribute> configure)
     {
         return _wrapper.AddAttribute(name, configure);

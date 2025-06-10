@@ -13,6 +13,7 @@ public class CSharpLocalMethodWrapper(CSharpLocalMethod wrapped) : ICSharpLocalF
     ICSharpCodeContext ICSharpCodeContext.AddMetadata(string key, object value) => wrapped.AddMetadata(key, value);
     ICSharpFile ICSharpCodeContext.File => wrapped.File;
     object ICSharpCodeContext.GetMetadata(string key) => wrapped.GetMetadata(key);
+    public void RemoveMetadata(string key) => wrapped.RemoveMetadata(key);
     T ICSharpCodeContext.GetMetadata<T>(string key) => wrapped.GetMetadata<T>(key);
     IHasCSharpName ICSharpCodeContext.GetReferenceForModel(IMetadataModel model) => wrapped.GetReferenceForModel(model);
     IHasCSharpName ICSharpCodeContext.GetReferenceForModel(string modelId) => wrapped.GetReferenceForModel(modelId);

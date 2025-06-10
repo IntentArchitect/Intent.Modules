@@ -18,7 +18,7 @@ namespace Intent.Modules.Common.CSharp.Interactions;
 public interface IInteractionStrategy
 {
     bool IsMatch(IElement interaction);
-    void ImplementInteraction(CSharpClassMethod method, IElement interaction);
+    void ImplementInteraction(ICSharpClassMethodDeclaration method, IElement interaction);
 }
 
 public class InteractionStrategyProvider
@@ -62,13 +62,13 @@ public class InteractionStrategyProvider
 }
 
 
-public class CSharpClassMethodBuilder
+public class ICSharpClassMethodDeclarationBuilder
 {
-    private readonly CSharpClassMethod _method;
+    private readonly ICSharpClassMethodDeclaration _method;
     private readonly List<string> _phaseOrder;
     private readonly Dictionary<string, List<CSharpStatement>> _phaseStatements;
 
-    public CSharpClassMethodBuilder(CSharpClassMethod method, IEnumerable<string> phaseOrder)
+    public ICSharpClassMethodDeclarationBuilder(ICSharpClassMethodDeclaration method, IEnumerable<string> phaseOrder)
     {
         _method = method;
         _phaseOrder = phaseOrder.ToList();
@@ -130,22 +130,22 @@ public class ExecutionPhases
     ];
 }
 
-public static class CSharpClassMethodInteractionExtensions
+public static class ICSharpClassMethodDeclarationInteractionExtensions
 {
     private const string ExecutionPhasesKey = "execution-phases";
     private const string ExecutionPhaseKey = "execution-phase";
 
 
-    public static void SetExecutionPhases(this CSharpClassMethod method, string[] phaseOrder)
+    public static void SetExecutionPhases(this ICSharpClassMethodDeclaration method, string[] phaseOrder)
     {
         if (method.HasMetadata(ExecutionPhasesKey))
         {
-            method.Metadata.Remove(ExecutionPhasesKey);
+            method.RemoveMetadata(ExecutionPhasesKey);
         }
         method.AddMetadata(ExecutionPhasesKey, phaseOrder);
     }
 
-    public static void AddStatement(this CSharpClassMethod method, string phase, CSharpStatement statement)
+    public static void AddStatement(this ICSharpClassMethodDeclaration method, string phase, CSharpStatement statement)
     {
         //if (!method.TryGetMetadata<string[]>(ExecutionPhasesKey, out var phases) || !phases.Contains(phase))
         //{
@@ -158,7 +158,7 @@ public static class CSharpClassMethodInteractionExtensions
 
     
 
-    public static void AddStatements(this CSharpClassMethod method, string phase, IEnumerable<CSharpStatement> statements)
+    public static void AddStatements(this ICSharpClassMethodDeclaration method, string phase, IEnumerable<CSharpStatement> statements)
     {
         //if (!method.TryGetMetadata<string[]>(ExecutionPhasesKey, out var phases) || !phases.Contains(phase))
         //{
@@ -172,7 +172,7 @@ public static class CSharpClassMethodInteractionExtensions
         }
     }
 
-    //public static void ReorderStatments(this CSharpClassMethod method)
+    //public static void ReorderStatments(this ICSharpClassMethodDeclaration method)
     //{
     //    var phases = method.GetMetadata<string[]>(ExecutionPhasesKey);
     //    var statements = method.Statements.ToList();
@@ -185,13 +185,13 @@ public static class CSharpClassMethodInteractionExtensions
     //    }
     //}
 
-    public static IEnumerable<CSharpStatement> GetStatementsInPhase(this CSharpClassMethod method, string phase)
+    public static IEnumerable<ICSharpStatement> GetStatementsInPhase(this ICSharpClassMethodDeclaration method, string phase)
     {
         var statementPhase = method.Statements.Where(s => (s.TryGetMetadata<string>(ExecutionPhaseKey, out var x) ? x : ExecutionPhases.BusinessLogic) == phase).ToList();
         return statementPhase;
     }
 
-    private static int FindInsertionIndex(this CSharpClassMethod method, string phase)
+    private static int FindInsertionIndex(this ICSharpClassMethodDeclaration method, string phase)
     {
         var phaseIndex = ExecutionPhases.ExecutionPhaseOrder.IndexOf(phase);
 
@@ -208,7 +208,7 @@ public static class CSharpClassMethodInteractionExtensions
         return method.Statements.Count; // append to end
     }
 
-    public static CSharpClassMappingManager GetMappingManager(this CSharpClassMethod method)
+    public static CSharpClassMappingManager GetMappingManager(this ICSharpClassMethodDeclaration method)
     {
         if (!method.TryGetMetadata<CSharpClassMappingManager>("mapping-manager", out var csharpMapping))
         {
@@ -232,12 +232,12 @@ public static class CSharpClassMethodInteractionExtensions
         return interactions.Where(InteractionStrategyProvider.Instance.HasInteractionStrategy).ToList();
     }
 
-    public static void ImplementInteractions(this CSharpClassMethod method, IProcessingHandlerModel processingHandlerModel)
+    public static void ImplementInteractions(this ICSharpClassMethodDeclaration method, IProcessingHandlerModel processingHandlerModel)
     {
         ImplementInteractions(method, processingHandlerModel.GetInteractions());
     }
 
-    public static void ImplementInteractions(this CSharpClassMethod method, IEnumerable<IElement> interactions)
+    public static void ImplementInteractions(this ICSharpClassMethodDeclaration method, IEnumerable<IElement> interactions)
     {
         foreach (var interaction in interactions)
         {
@@ -245,7 +245,7 @@ public static class CSharpClassMethodInteractionExtensions
         }
     }
 
-    public static void ImplementInteraction(this CSharpClassMethod method, IElement processionAction)
+    public static void ImplementInteraction(this ICSharpClassMethodDeclaration method, IElement processionAction)
     {
         var strategy = InteractionStrategyProvider.Instance.GetInteractionStrategy(processionAction);
         if (strategy is not null)
@@ -254,15 +254,15 @@ public static class CSharpClassMethodInteractionExtensions
         }
     }
 
-    public static Dictionary<string, EntityDetails> TrackedEntities(this CSharpClassMethod method)
+    public static Dictionary<string, EntityDetails> TrackedEntities(this ICSharpClassMethodDeclaration method)
     {
         if (!method.TryGetMetadata<Dictionary<string, EntityDetails>>("tracked-entities", out var trackedEntities))
         {
             trackedEntities = new Dictionary<string, EntityDetails>();
-            if (method.HasMetadata("tracked-entities"))
-            {
-                method.Metadata.Remove("tracked-entities");
-            }
+            //if (method.HasMetadata("tracked-entities"))
+            //{
+            //    method.RemoveMetadata("tracked-entities");
+            //}
             method.AddMetadata("tracked-entities", trackedEntities);
         }
 
@@ -290,7 +290,7 @@ public record PrimaryKeyFilterMapping(CSharpStatement ValueExpression, CSharpSta
 
 public static class CSharpClassExtensions
 {
-    public static string InjectService(this CSharpClass handlerClass, string interfaceName, string parameterName = null)
+    public static string InjectService(this ICSharpClass handlerClass, string interfaceName, string parameterName = null)
     {
         var fieldName = default(string);
 

@@ -310,6 +310,8 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
 
     ICSharpConstructor ICSharpConstructor.CallsThis(Action<ICSharpConstructorCall> configure) => _wrapper.CallsThis(configure);
 
+    IEnumerable<ICSharpAttribute> ICSharpDeclaration<ICSharpConstructor>.Attributes => Attributes;
+
     ICSharpConstructor ICSharpDeclaration<ICSharpConstructor>.AddAttribute(string name, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(name, configure);
 
     ICSharpConstructor ICSharpDeclaration<ICSharpConstructor>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(attribute, configure);

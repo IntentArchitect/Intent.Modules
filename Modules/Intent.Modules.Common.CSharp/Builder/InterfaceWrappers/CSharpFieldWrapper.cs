@@ -5,6 +5,7 @@ namespace Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 internal class CSharpFieldWrapper(CSharpField wrapped) :
     CSharpMemberWrapper<CSharpField, ICSharpField>(wrapped), ICSharpField
 {
+    public string Name => wrapped.Name;
     ICSharpField ICSharpField.ProtectedReadOnly() => wrapped.ProtectedReadOnly();
 
     ICSharpField ICSharpField.Protected() => wrapped.Protected();

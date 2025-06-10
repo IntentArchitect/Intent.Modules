@@ -16,6 +16,7 @@ public interface ICSharpCodeContext
     bool HasMetadata(string key);
     T GetMetadata<T>(string key) where T : class;
     object GetMetadata(string key);
+    void RemoveMetadata(string key);
     bool TryGetMetadata<T>(string key, out T value);
     bool TryGetMetadata(string key, out object value);
     IHasCSharpName GetReferenceForModel(string modelId);

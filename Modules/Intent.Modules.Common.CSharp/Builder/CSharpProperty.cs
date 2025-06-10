@@ -247,6 +247,8 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
 
     ICSharpPropertyAccessor ICSharpProperty.Setter => _wrapper.Setter;
 
+    IEnumerable<ICSharpAttribute> ICSharpDeclaration<ICSharpProperty>.Attributes => Attributes;
+
     ICSharpProperty ICSharpDeclaration<ICSharpProperty>.AddAttribute(string name, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(name, configure);
 
     ICSharpProperty ICSharpDeclaration<ICSharpProperty>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(attribute, configure);

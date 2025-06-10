@@ -523,6 +523,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
 
     #region ICSharpMethodDeclarationActual implementation
 
+    IEnumerable<ICSharpAttribute> ICSharpDeclaration<ICSharpClassMethodDeclaration>.Attributes => Attributes;
+    
     ICSharpClassMethodDeclaration ICSharpDeclaration<ICSharpClassMethodDeclaration>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(attribute, configure);
 
     ICSharpClassMethodDeclaration ICSharpDeclaration<ICSharpClassMethodDeclaration>.AddAttribute(string name, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(name, configure);
