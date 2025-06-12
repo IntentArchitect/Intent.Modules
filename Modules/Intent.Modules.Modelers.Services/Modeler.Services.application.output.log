@@ -100,8 +100,8 @@
       <ProjectId>b5edfc2b-9624-4308-ae8a-b533cf3733d4</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#3e69085c-fa2f-44bd-93eb-41075fd472f8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/Extensions/ServiceInvocationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ServiceInvocationModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/Extensions/PerformInvocationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>PerformInvocationModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -156,8 +156,8 @@
       <ProjectId>3043ab47-170b-4d78-ba2d-3673f8381213</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#3e69085c-fa2f-44bd-93eb-41075fd472f8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ServiceInvocationModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ServiceInvocationModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/PerformInvocationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>PerformInvocationModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

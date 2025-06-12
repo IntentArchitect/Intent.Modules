@@ -8,13 +8,13 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.Services.Api
 {
-    public static class ServiceInvocationModelAssociationExtensions
+    public static class PerformInvocationModelAssociationExtensions
     {
-        public static IList<ServiceInvocationTargetEndModel> ServiceInvocationActions(this IProcessingHandlerModel model)
+        public static IList<PerformInvocationTargetEndModel> PerformInvocationActions(this IProcessingHandlerModel model)
         {
             return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == ServiceInvocationModel.SpecializationType && x.IsTargetEnd())
-                .Select(x => ServiceInvocationModel.CreateFromEnd(x).TargetEnd)
+                .Where(x => x.Association.SpecializationType == PerformInvocationModel.SpecializationType && x.IsTargetEnd())
+                .Select(x => PerformInvocationModel.CreateFromEnd(x).TargetEnd)
                 .ToList();
         }
     }

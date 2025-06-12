@@ -147,43 +147,18 @@ public static class ICSharpClassMethodDeclarationInteractionExtensions
 
     public static void AddStatement(this ICSharpClassMethodDeclaration method, string phase, CSharpStatement statement)
     {
-        //if (!method.TryGetMetadata<string[]>(ExecutionPhasesKey, out var phases) || !phases.Contains(phase))
-        //{
-        //    throw new Exception("Phase " + phases + " has not been defined. Call SetExecutionPhases beforehand");
-        //}
-
         statement.AddMetadata(ExecutionPhaseKey, phase);
         method.InsertStatement(FindInsertionIndex(method, phase), statement);
     }
 
-    
-
     public static void AddStatements(this ICSharpClassMethodDeclaration method, string phase, IEnumerable<CSharpStatement> statements)
     {
-        //if (!method.TryGetMetadata<string[]>(ExecutionPhasesKey, out var phases) || !phases.Contains(phase))
-        //{
-        //    throw new Exception("Phase " + phases + " has not been defined. Call SetExecutionPhases beforehand");
-        //}
-
         foreach (var statement in statements)
         {
             statement.AddMetadata(ExecutionPhaseKey, phase);
             method.InsertStatement(FindInsertionIndex(method, phase), statement);
         }
     }
-
-    //public static void ReorderStatments(this ICSharpClassMethodDeclaration method)
-    //{
-    //    var phases = method.GetMetadata<string[]>(ExecutionPhasesKey);
-    //    var statements = method.Statements.ToList();
-    //    method.Statements.Clear();
-    //    method.AddStatements(statements.Where(x => !x.HasMetadata(ExecutionPhaseKey)));
-    //    foreach (var phase in phases)
-    //    {
-    //        var phaseStatements = statements.Where(x => x.TryGetMetadata<string>(ExecutionPhaseKey, out var setPhase) && setPhase == phase);
-    //        method.AddStatements(phaseStatements);
-    //    }
-    //}
 
     public static IEnumerable<ICSharpStatement> GetStatementsInPhase(this ICSharpClassMethodDeclaration method, string phase)
     {

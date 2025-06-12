@@ -6,7 +6,10 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.Common
 {
-    public interface IInvokableServiceModel : IElementWrapper, IMetadataModel
+    /// <summary>
+    /// Indicates that this element can be invoked from a [Processing Handler] (e.g. Commands, Queries,  Operations on Services, etc).
+    /// </summary>
+    public interface IInvokableModel : IElementWrapper, IMetadataModel
     {
     }
 }

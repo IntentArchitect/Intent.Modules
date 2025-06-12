@@ -60,8 +60,8 @@
       <ProjectId>bda92e20-e032-4098-b65f-777a10dd24e0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiTraitModel#0a932465-ea1f-42e7-b1eb-9f90aa8961fd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Metadata/IInvokableServiceModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>IInvokableServiceModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Metadata/IInvokableModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IInvokableModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

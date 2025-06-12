@@ -9,15 +9,15 @@
   <elementExtensions>
     <elementExtension type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
       <implements>
-        <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable Service]" />
+        <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]" />
         <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
       </implements>
       <mappingSettings />
     </elementExtension>
   </elementExtensions>
   <associationSettings>
-    <associationSetting type="Service Invocation" typeId="3e69085c-fa2f-44bd-93eb-41075fd472f8">
-      <sourceEnd type="Service Invocation Source End" typeId="ee56bd48-8eff-4fff-8d3a-87731d002335">
+    <associationSetting type="Perform Invocation" typeId="3e69085c-fa2f-44bd-93eb-41075fd472f8">
+      <sourceEnd type="Perform Invocation Source End" typeId="ee56bd48-8eff-4fff-8d3a-87731d002335">
         <displayFunction>return `called by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <icon type="UrlImagePath" source="data:image/png;base64,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" />
@@ -37,7 +37,7 @@
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
       </sourceEnd>
-      <targetEnd type="Service Invocation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c">
+      <targetEnd type="Perform Invocation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c">
         <implements>
           <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
         </implements>
@@ -53,7 +53,7 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
           <isRequired>true</isRequired>
           <targetTypes>
             <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
-            <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
+            <type type="[Invokable]" typeId="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" />
           </targetTypes>
           <allowIsNavigable>true</allowIsNavigable>
           <allowIsNullable>true</allowIsNullable>
@@ -78,7 +78,7 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
           </option>
         </mappingOptions>
       </targetEnd>
-      <visualSettings type="Service Invocation" typeId="3e69085c-fa2f-44bd-93eb-41075fd472f8">
+      <visualSettings type="Perform Invocation" typeId="3e69085c-fa2f-44bd-93eb-41075fd472f8">
         <lineType>Curved</lineType>
         <lineColor>return getMappings()[0] ? null : "gray";</lineColor>
         <lineDashArray>return "3,7";</lineDashArray>

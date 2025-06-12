@@ -11,15 +11,15 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ServiceInvocationModel : IMetadataModel
+    public class PerformInvocationModel : IMetadataModel
     {
-        public const string SpecializationType = "Service Invocation";
+        public const string SpecializationType = "Perform Invocation";
         public const string SpecializationTypeId = "3e69085c-fa2f-44bd-93eb-41075fd472f8";
         protected readonly IAssociation _association;
-        protected ServiceInvocationSourceEndModel _sourceEnd;
-        protected ServiceInvocationTargetEndModel _targetEnd;
+        protected PerformInvocationSourceEndModel _sourceEnd;
+        protected PerformInvocationTargetEndModel _targetEnd;
 
-        public ServiceInvocationModel(IAssociation association, string requiredType = SpecializationType)
+        public PerformInvocationModel(IAssociation association, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(association.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -28,17 +28,17 @@ namespace Intent.Modelers.Services.Api
             _association = association;
         }
 
-        public static ServiceInvocationModel CreateFromEnd(IAssociationEnd associationEnd)
+        public static PerformInvocationModel CreateFromEnd(IAssociationEnd associationEnd)
         {
-            var association = new ServiceInvocationModel(associationEnd.Association);
+            var association = new PerformInvocationModel(associationEnd.Association);
             return association;
         }
 
         public string Id => _association.Id;
 
-        public ServiceInvocationSourceEndModel SourceEnd => _sourceEnd ??= new ServiceInvocationSourceEndModel(_association.SourceEnd, this);
+        public PerformInvocationSourceEndModel SourceEnd => _sourceEnd ??= new PerformInvocationSourceEndModel(_association.SourceEnd, this);
 
-        public ServiceInvocationTargetEndModel TargetEnd => _targetEnd ??= new ServiceInvocationTargetEndModel(_association.TargetEnd, this);
+        public PerformInvocationTargetEndModel TargetEnd => _targetEnd ??= new PerformInvocationTargetEndModel(_association.TargetEnd, this);
 
         public IAssociation InternalAssociation => _association;
 
@@ -47,7 +47,7 @@ namespace Intent.Modelers.Services.Api
             return _association.ToString();
         }
 
-        public bool Equals(ServiceInvocationModel other)
+        public bool Equals(PerformInvocationModel other)
         {
             return Equals(_association, other?._association);
         }
@@ -57,7 +57,7 @@ namespace Intent.Modelers.Services.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ServiceInvocationModel)obj);
+            return Equals((PerformInvocationModel)obj);
         }
 
         public override int GetHashCode()
@@ -67,23 +67,23 @@ namespace Intent.Modelers.Services.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class ServiceInvocationSourceEndModel : ServiceInvocationEndModel
+    public class PerformInvocationSourceEndModel : PerformInvocationEndModel
     {
         public const string SpecializationTypeId = "ee56bd48-8eff-4fff-8d3a-87731d002335";
-        public const string SpecializationType = "Service Invocation Source End";
+        public const string SpecializationType = "Perform Invocation Source End";
 
-        public ServiceInvocationSourceEndModel(IAssociationEnd associationEnd, ServiceInvocationModel association) : base(associationEnd, association)
+        public PerformInvocationSourceEndModel(IAssociationEnd associationEnd, PerformInvocationModel association) : base(associationEnd, association)
         {
         }
     }
 
     [IntentManaged(Mode.Fully)]
-    public class ServiceInvocationTargetEndModel : ServiceInvocationEndModel, IProcessingActionModel
+    public class PerformInvocationTargetEndModel : PerformInvocationEndModel, IProcessingActionModel
     {
         public const string SpecializationTypeId = "093e5909-ffe4-4510-b3ea-532f30212f3c";
-        public const string SpecializationType = "Service Invocation Target End";
+        public const string SpecializationType = "Perform Invocation Target End";
 
-        public ServiceInvocationTargetEndModel(IAssociationEnd associationEnd, ServiceInvocationModel association) : base(associationEnd, association)
+        public PerformInvocationTargetEndModel(IAssociationEnd associationEnd, PerformInvocationModel association) : base(associationEnd, association)
         {
         }
 
@@ -91,28 +91,28 @@ namespace Intent.Modelers.Services.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class ServiceInvocationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
+    public class PerformInvocationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
-        private readonly ServiceInvocationModel _association;
+        private readonly PerformInvocationModel _association;
 
-        public ServiceInvocationEndModel(IAssociationEnd associationEnd, ServiceInvocationModel association)
+        public PerformInvocationEndModel(IAssociationEnd associationEnd, PerformInvocationModel association)
         {
             _associationEnd = associationEnd;
             _association = association;
         }
 
-        public static ServiceInvocationEndModel Create(IAssociationEnd associationEnd)
+        public static PerformInvocationEndModel Create(IAssociationEnd associationEnd)
         {
-            var association = new ServiceInvocationModel(associationEnd.Association);
-            return association.TargetEnd.Id == associationEnd.Id ? (ServiceInvocationEndModel)association.TargetEnd : association.SourceEnd;
+            var association = new PerformInvocationModel(associationEnd.Association);
+            return association.TargetEnd.Id == associationEnd.Id ? (PerformInvocationEndModel)association.TargetEnd : association.SourceEnd;
         }
 
         public string Id => _associationEnd.Id;
         public string SpecializationType => _associationEnd.SpecializationType;
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
-        public ServiceInvocationModel Association => _association;
+        public PerformInvocationModel Association => _association;
         public IElement InternalElement => _associationEnd;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
         public IAssociation InternalAssociation => _association.InternalAssociation;
@@ -126,9 +126,9 @@ namespace Intent.Modelers.Services.Api
         public string Comment => _associationEnd.Comment;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
 
-        public ServiceInvocationEndModel OtherEnd()
+        public PerformInvocationEndModel OtherEnd()
         {
-            return this.Equals(_association.SourceEnd) ? (ServiceInvocationEndModel)_association.TargetEnd : (ServiceInvocationEndModel)_association.SourceEnd;
+            return this.Equals(_association.SourceEnd) ? (PerformInvocationEndModel)_association.TargetEnd : (PerformInvocationEndModel)_association.SourceEnd;
         }
 
         public bool IsTargetEnd()
@@ -146,7 +146,7 @@ namespace Intent.Modelers.Services.Api
             return _associationEnd.ToString();
         }
 
-        public bool Equals(ServiceInvocationEndModel other)
+        public bool Equals(PerformInvocationEndModel other)
         {
             return Equals(_associationEnd, other._associationEnd);
         }
@@ -156,7 +156,7 @@ namespace Intent.Modelers.Services.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ServiceInvocationEndModel)obj);
+            return Equals((PerformInvocationEndModel)obj);
         }
 
         public override int GetHashCode()
@@ -166,36 +166,36 @@ namespace Intent.Modelers.Services.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ServiceInvocationEndModelExtensions
+    public static class PerformInvocationEndModelExtensions
     {
-        public static bool IsServiceInvocationEndModel(this ICanBeReferencedType type)
+        public static bool IsPerformInvocationEndModel(this ICanBeReferencedType type)
         {
-            return IsServiceInvocationTargetEndModel(type) || IsServiceInvocationSourceEndModel(type);
+            return IsPerformInvocationTargetEndModel(type) || IsPerformInvocationSourceEndModel(type);
         }
 
-        public static ServiceInvocationEndModel AsServiceInvocationEndModel(this ICanBeReferencedType type)
+        public static PerformInvocationEndModel AsPerformInvocationEndModel(this ICanBeReferencedType type)
         {
-            return (ServiceInvocationEndModel)type.AsServiceInvocationTargetEndModel() ?? (ServiceInvocationEndModel)type.AsServiceInvocationSourceEndModel();
+            return (PerformInvocationEndModel)type.AsPerformInvocationTargetEndModel() ?? (PerformInvocationEndModel)type.AsPerformInvocationSourceEndModel();
         }
 
-        public static bool IsServiceInvocationTargetEndModel(this ICanBeReferencedType type)
+        public static bool IsPerformInvocationTargetEndModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == ServiceInvocationTargetEndModel.SpecializationTypeId;
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == PerformInvocationTargetEndModel.SpecializationTypeId;
         }
 
-        public static ServiceInvocationTargetEndModel AsServiceInvocationTargetEndModel(this ICanBeReferencedType type)
+        public static PerformInvocationTargetEndModel AsPerformInvocationTargetEndModel(this ICanBeReferencedType type)
         {
-            return type.IsServiceInvocationTargetEndModel() ? new ServiceInvocationModel(((IAssociationEnd)type).Association).TargetEnd : null;
+            return type.IsPerformInvocationTargetEndModel() ? new PerformInvocationModel(((IAssociationEnd)type).Association).TargetEnd : null;
         }
 
-        public static bool IsServiceInvocationSourceEndModel(this ICanBeReferencedType type)
+        public static bool IsPerformInvocationSourceEndModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == ServiceInvocationSourceEndModel.SpecializationTypeId;
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == PerformInvocationSourceEndModel.SpecializationTypeId;
         }
 
-        public static ServiceInvocationSourceEndModel AsServiceInvocationSourceEndModel(this ICanBeReferencedType type)
+        public static PerformInvocationSourceEndModel AsPerformInvocationSourceEndModel(this ICanBeReferencedType type)
         {
-            return type.IsServiceInvocationSourceEndModel() ? new ServiceInvocationModel(((IAssociationEnd)type).Association).SourceEnd : null;
+            return type.IsPerformInvocationSourceEndModel() ? new PerformInvocationModel(((IAssociationEnd)type).Association).SourceEnd : null;
         }
     }
 }
