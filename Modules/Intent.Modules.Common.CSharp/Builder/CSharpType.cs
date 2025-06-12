@@ -23,9 +23,12 @@ public abstract class CSharpType : ICSharpType
     internal const string IAsyncEnumerableFullTypeName = "System.Collections.Generic.IAsyncEnumerable";
     internal const string IAsyncEnumerableShortTypeName = "IAsyncEnumerable";
 
-    // This is a list of value types which are not nullable (i.e. Cannot be set to null! as is done in the AddNullForgivingConstructor)
-    // This needs to loosly align with the relevent types defined in CSharpTypeResolver
-    internal static string[] NonNullableValueTypes = ["Guid", "DateTime", "DateTimeOffset", "TimeSpan", "DateOnly", "TimeOnly", "bool", "byte", "sbyte", "char", "decimal", "double", "float", "int", "uint", "long", "ulong", "short", "ushort"];
+    /// <summary>
+    /// A list of C# value types that are non-nullable by default.
+    /// This includes primitive types, structs, and other system-defined types 
+    /// that cannot be assigned <c>null</c> unless wrapped in a nullable type (e.g., <c>int?</c>).
+    /// </summary>
+    public static string[] NonNullableValueTypes = ["Guid", "DateTime", "DateTimeOffset", "TimeSpan", "DateOnly", "TimeOnly", "bool", "byte", "sbyte", "char", "decimal", "double", "float", "int", "uint", "long", "ulong", "short", "ushort"];
 
     internal static Dictionary<string, string> CollectionMap = new()
     {
