@@ -1,3 +1,7 @@
+### Version 1.2.0
+
+- Improvement: Added `[Invokable]` trait to Stored Procedures.
+
 ### Version 1.1.5
 
 - Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 

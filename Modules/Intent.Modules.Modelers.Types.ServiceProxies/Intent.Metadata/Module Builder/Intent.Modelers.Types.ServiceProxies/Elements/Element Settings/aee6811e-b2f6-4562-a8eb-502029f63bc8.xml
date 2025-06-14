@@ -10,6 +10,9 @@
   <parentFolderId>07d8d1a9-6b9f-4676-b7d3-8db06299e35c</parentFolderId>
   <packageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</packageId>
   <packageName>Intent.Modelers.Types.ServiceProxies</packageName>
+  <traits>
+    <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]" />
+  </traits>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
@@ -49,7 +52,8 @@
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
-    <stereotype stereotypeDefinitionId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]">
+    <stereotype stereotypeDefinitionId="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]">
+      <comment>Indicates that this element can be invoked from a [Processing Handler] (e.g. Commands, Queries,  Operations on Services, etc).</comment>
       <addedByDefault>false</addedByDefault>
       <definitionPackageName>Intent.Common</definitionPackageName>
       <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>

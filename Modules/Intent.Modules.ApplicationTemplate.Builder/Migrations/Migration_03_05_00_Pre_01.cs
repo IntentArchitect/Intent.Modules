@@ -105,7 +105,6 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Migrations
 
         public void Down()
         {
-            Debugger.Launch();
             var app = ApplicationPersistable.Load(_configurationProvider.GetApplicationConfig().FilePath);
             var designer = app.GetDesigner(AppTemplatesDesignerId);
             var packages = designer.GetPackages();

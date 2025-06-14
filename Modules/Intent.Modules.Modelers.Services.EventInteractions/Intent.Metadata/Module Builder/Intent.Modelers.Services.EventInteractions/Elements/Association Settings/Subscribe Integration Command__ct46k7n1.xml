@@ -116,7 +116,7 @@
           <childElements>
             <childElement id="c76525af-695e-4b85-bc20-72d164d6e826" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
               <name>Invoke Service</name>
-              <display>Invoke Service: Service Invocation</display>
+              <display>Invoke Service: Perform Invocation</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="3ed0da8f-dd49-47e6-9188-db07a9b6085d">
@@ -147,6 +147,7 @@
                     <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
                     <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
                     <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                    <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" isActive="true" />
                     <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
                     <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
                   </properties>
@@ -188,6 +189,7 @@
                     <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
                     <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
                     <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                    <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" isActive="true" />
                     <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
                     <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
                   </properties>
@@ -229,6 +231,7 @@
                     <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
                     <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
                     <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                    <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" isActive="true" />
                     <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
                     <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
                   </properties>

@@ -1,3 +1,7 @@
+### Version 4.7.9
+
+- Improvement: Grouped context menu options for better separation of options.
+
 ### Version 4.7.8
 
 - Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 

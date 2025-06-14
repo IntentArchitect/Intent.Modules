@@ -138,7 +138,7 @@
             </childElement>
             <childElement id="3d3f5de5-88e7-48d2-95ac-811b373edcfd" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
               <name>Invoke Service</name>
-              <display>Invoke Service: Service Invocation</display>
+              <display>Invoke Service: Perform Invocation</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="cce2d332-5e0d-45e9-b702-fcdccae130a7">

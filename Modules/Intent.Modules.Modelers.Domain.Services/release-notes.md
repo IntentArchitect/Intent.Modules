@@ -1,3 +1,7 @@
+### Version 1.3.0
+
+- Improvement: Added `[Invokable]` to Domain Service Operations
+
 ### Version 1.2.1
 
 - Improvement: Updated module icon

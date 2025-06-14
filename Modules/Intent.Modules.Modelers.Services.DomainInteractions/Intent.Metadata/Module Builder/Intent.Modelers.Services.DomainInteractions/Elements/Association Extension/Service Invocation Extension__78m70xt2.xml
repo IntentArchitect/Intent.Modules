@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="7eb64e69-076c-494b-b141-ad452b950497" type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb">
   <name>Service Invocation Extension</name>
-  <display>Service Invocation Extension: Service Invocation</display>
+  <display>Service Invocation Extension: Perform Invocation</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />

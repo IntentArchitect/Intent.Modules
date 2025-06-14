@@ -26,7 +26,7 @@
     <childElement id="df404369-916e-4385-a29b-cbf86aa99846" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
       <comment>TODO: Add Data Contract</comment>
       <name>Call Operation Action</name>
-      <display>Call Operation Action: Service Invocation Target End</display>
+      <display>Call Operation Action: Perform Invocation Target End</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="c9d4fb1b-b432-40fb-aae0-887321788d83">

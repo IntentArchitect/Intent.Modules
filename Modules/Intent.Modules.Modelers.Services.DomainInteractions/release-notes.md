@@ -1,3 +1,8 @@
+### Version 2.2.0
+
+- Improvement: Updated mapping configurations to support generalized `Invoke Service` interaction system.
+- Improvement: Grouped context menu options for clearer separation of features and usability.
+
 ### Version 2.1.5
 
 - Improvement: Accelerators added to easily add a CQRS or Traditional service to invoke a repository operation.

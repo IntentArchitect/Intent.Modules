@@ -1,3 +1,7 @@
+### Version 3.8.0
+
+- Improvement: Added `[Invokable]` stereotype (trait) to this module.
+
 ### Version 3.7.8
 
 - Improvement: Moved `[Allow Comment]` stereotype to this module.
