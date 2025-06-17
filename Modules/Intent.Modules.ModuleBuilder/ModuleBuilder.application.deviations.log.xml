@@ -2,24 +2,34 @@
 <deviationsLog>
   <files>
     <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7c0e37ab-2f84-46df-ac29-1e5aaa67bf75</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/AcceptedChildTypesModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6186132Z</updatedAt>
+      <deviationsHash>352A27B929021F19CAEBCCBDBA8971CB6A18F3E8D8B2E93800677FEC7F356AC5</deviationsHash>
+      <fileHash>8ACB513DAD008645711B5FAEF5238ED465E251A30C8E922308EE513A4D477060</fileHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#3dcfa78b-17ee-45b6-be03-8407d089ce76</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/AssociationCreationOptionModel.cs</path>
       <count>12</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6623458Z</updatedAt>
-      <deviationsHash>D65169AD25BB097CCFA1B80DA3E4F6DAC6F59EB2BAA2E198D50E4250C321C16D</deviationsHash>
-      <fileHash>B5C0CD2FF2355986B6B7CEF8EF314D27E3FA5134D77570A00CE6EFFD298912C6</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6186648Z</updatedAt>
+      <deviationsHash>CA8A36C4E84C18C6BD1E3EE67F2A592351837F859A0DAEFA1FCE15EAEBC13B53</deviationsHash>
+      <fileHash>67C59DC16490EBDD4E13354476B53A6D995DDE12D20508288E0A8569BDF7C0A0</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c4c61fdc-464d-41d2-8e0e-5a734d588302</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/AssociationDestinationEndSettingsModel.cs</path>
       <count>11</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6623581Z</updatedAt>
-      <deviationsHash>BE1508A50A59B55F93B7B1A1CEBA7D7EE39236455259B05796709BF91DCC1476</deviationsHash>
-      <fileHash>1763AB03620307F1FB5CB4B69E6CF975A9EA1EC28BE83A5F713679AD7A6D5CAE</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6186848Z</updatedAt>
+      <deviationsHash>578924DBA7239385DF08C8EDF848CFBAB9E1984EA3E44ACC80C4D6122F01D024</deviationsHash>
+      <fileHash>A53CF922F1966FC0EF2E7699BA66879C5EE8A23D0714B6E2F6F2F16ECEA6993E</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b59113a4-209c-45d6-b395-352362864fd1</correlationId>
@@ -34,22 +44,22 @@
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/AssociationEventHandlerModel.cs</path>
-      <count>1</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6623743Z</updatedAt>
-      <deviationsHash>02F7C3E826E454BEA41DDB2FB5BA9A4835372890D64695DEE0240BE133272820</deviationsHash>
-      <fileHash>3D1756284524AECE185147BF20D51A2D53354E49053BBB894C6A27733BC853E3</fileHash>
+      <count>2</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6187121Z</updatedAt>
+      <deviationsHash>DD05CF5D9D931A4102388FAEC2DFE04C8375B3AEF64BF516EB65E6AB71091F80</deviationsHash>
+      <fileHash>EB4E93F9386A72B4E6F7DB2D525943ADC1D1908EEF82F64176715F4E5478908D</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#1bdee938-8569-4fbf-84b4-8522d2cbee32</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/AssociationEventSettingsModel.cs</path>
-      <count>1</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6623821Z</updatedAt>
-      <deviationsHash>2E8E171220D872C5E8B9995D7B40878227C9757BDFAD1C65A2D03F908ED4A33D</deviationsHash>
-      <fileHash>DD9AB510C19C242CAD2CB389A2F5F5721B3D40D78A1A9976A714A96A4AF3CC81</fileHash>
+      <count>2</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6187268Z</updatedAt>
+      <deviationsHash>AC5C168D57B79F4239F108A05B713544C88144EED39B4BC510E783541A515414</deviationsHash>
+      <fileHash>86C7355F73B8BE23B0E6AA839F6841E16466BFD2AAD9C0FC1901F023AC27A747</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#41cb9c1a-063e-4ff4-889a-7501235351eb</correlationId>
@@ -64,12 +74,12 @@
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#16d21684-d5ea-4fde-b648-f88d292fa272</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/AssociationSettingsModel.cs</path>
-      <count>14</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6624013Z</updatedAt>
-      <deviationsHash>390B572D1A1C6D96864BC31E349DA3D1305C349F32DF8FA758C7EDCF1F235EEB</deviationsHash>
-      <fileHash>B95C2D025FFBFA68CACB18A072AEF40086B488430DC50694BCE5B6E7D173544B</fileHash>
+      <count>15</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6187576Z</updatedAt>
+      <deviationsHash>563C91A4181C1AA2BAA8AD9FDD7AC51403495D0AF8ACE753E51B307765211848</deviationsHash>
+      <fileHash>E8329B6D7E8DBB94AD05A670D4DBBDBBDC5DE0688AA756827E962119CC26BB34</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3</correlationId>
@@ -79,17 +89,17 @@
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
       <updatedAt>2024-02-25T08:45:03.6624099Z</updatedAt>
       <deviationsHash>5C47FF75D698AD546607D5C2B8ED68FF32EE0613B2DD45F5238B2C1853504FFA</deviationsHash>
-      <fileHash>854657FCFA3630BA1B1AF0802616E6522AFA21E39AD0EEF771B2F1BBE21BD3A7</fileHash>
+      <fileHash>0331DA67E4BAA8328BD22DC90DAB506AF4DDB2F88B58090E5AFA61163C88ED74</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/AssociationSourceEndSettingsModel.cs</path>
       <count>11</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6624217Z</updatedAt>
-      <deviationsHash>37BD0C52BAF584D07CFB4B777D2CC4A3AB6196986E3EC209A1EF151FBADB7DFC</deviationsHash>
-      <fileHash>DB75E7B843551548B5DB439CC9CD9AB62A20A504889DDC7113C086A7AD0A6099</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6187924Z</updatedAt>
+      <deviationsHash>B40F049D3298A8C6549FC7E5FCD8D675A8100A30FC453C83D0D8AD45E04DDD7A</deviationsHash>
+      <fileHash>0917DE7CAD9A383541A56D42E547C5632175C31C5845D8DA59F1374FFE6A4B0F</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#77fdd377-950a-46e4-8d25-ab3c962d6105</correlationId>
@@ -109,7 +119,7 @@
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
       <updatedAt>2024-02-25T08:45:03.6624386Z</updatedAt>
       <deviationsHash>0AA91744DA332A54B44D8470DD6EEFC039C794033548F17117B6B384DEA00059</deviationsHash>
-      <fileHash>936F254528E4272EF941C3CA2B3DD61D8843024CAD8EAEAE4A82D14FA0140452</fileHash>
+      <fileHash>A2029325EA55B1F0305D8E4EE57A4B43ECA130A1230389E5833F401706C864F5</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#153a4063-82a1-4515-87f1-44c189004fad</correlationId>
@@ -124,12 +134,12 @@
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d45e383d-90ba-4b64-aca7-34ca100cea21</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/ContextMenuModel.cs</path>
-      <count>14</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6624622Z</updatedAt>
-      <deviationsHash>D19726A0BBEC7B32A707608FE795D91C75469DEB7590D74A08FBBDDEF204C1EC</deviationsHash>
-      <fileHash>D8AB344AABA115DBDBE9E9D3395CF4BFDE163771EC954FD58F0282B050A0AAA2</fileHash>
+      <count>16</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6188588Z</updatedAt>
+      <deviationsHash>CCE1ADDFDF795FCD205E63472DD23141CB49319E3582439C7D6398EBFF2166E6</deviationsHash>
+      <fileHash>FEDE2B181ADF6A5D863E8F3FC27FB2C5E3D1FDE1B3BF83ADD2EDE39AB27181BE</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#dc79fd61-7e57-44c8-ad40-14a7643b89c8</correlationId>
@@ -164,12 +174,12 @@
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7a6411a8-ffef-4209-91c6-8d12755a806a</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/DesignerSettingsModel.cs</path>
-      <count>17</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6625039Z</updatedAt>
-      <deviationsHash>FA1DEB02A98888460155B642C3D4D22E34933E04D93E57C17A12F0FBE6B6C643</deviationsHash>
-      <fileHash>E8C2AE73BCA2BA90945EFEBA048D4D6B3C82196F6B67912969C265898AAC8835</fileHash>
+      <count>20</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6189211Z</updatedAt>
+      <deviationsHash>CC6823FF12D5E48064747D6F232673AE1A3DAAA1C1F5FDBA176E27CC4EB01D52</deviationsHash>
+      <fileHash>B194541462D2F0D1BCD5D3A0358E2B9DF3F855060D637DC27454E9418742BB0E</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#dbb71aa5-0db2-4a2a-97a9-501950f36f99</correlationId>
@@ -184,22 +194,22 @@
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#67d711dd-3918-4b28-b2a0-4d845884e17a</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/DiagramSettingsModel.cs</path>
-      <count>1</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6625214Z</updatedAt>
-      <deviationsHash>58C24C193C5C3072802C97ECFB6F1CC16F867A230ABA667BF2E7217C1F13FF20</deviationsHash>
-      <fileHash>3E15E213943045A79864D846009B4CD6788AEEE3F424BCE925A08DAE1FE025FB</fileHash>
+      <count>2</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6189551Z</updatedAt>
+      <deviationsHash>E50B812572A83A5C94347A07839AF20E61C678E4DAA775C072B61D34FA01A04E</deviationsHash>
+      <fileHash>BB77E8A752B645383BCD702DABCC258634B9E55835629EBDA515A5611B2D9479</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#5fa12f89-da1e-49c5-b8e9-427b22407f19</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/ElementCreationOptionModel.cs</path>
       <count>12</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6625316Z</updatedAt>
-      <deviationsHash>31C8252650BC617394A9F7925075B42DAFE90FE0E100C61C602773EE547934B4</deviationsHash>
-      <fileHash>02DE689ED62417DE4E607A01B21783402FDC6D35E6299607A1633AB3A950319B</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6189882Z</updatedAt>
+      <deviationsHash>D2D9828689F03B1F495648F25ECDED8EEA8313F7587D7F6576B1075F84F972D4</deviationsHash>
+      <fileHash>A2117F5E8A6A051145DD0C90AC5D27F868A4168C99CCCFF11ADA470117EB4224</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0ef412e3-d15a-45d3-bcd3-f646165f2eb6</correlationId>
@@ -209,57 +219,57 @@
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
       <updatedAt>2024-02-25T08:45:03.6625388Z</updatedAt>
       <deviationsHash>00B8673D1B975E88CF9B279141AEB4E74996B1AC3E61AA3FE62FA926B96CCECE</deviationsHash>
-      <fileHash>2C50E686250E9FC0D0ABA5F969D2526468778AD4575F804207E14F272644D4AF</fileHash>
+      <fileHash>906F7D2B2B99749522AC393E634AE4970528D5176EF32184CC6EB21CDFBEBF7C</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#3c628ab0-2407-4fb0-8507-ddde986cff2e</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/ElementEventSettingsModel.cs</path>
       <count>13</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6625487Z</updatedAt>
-      <deviationsHash>8EE1648CD27459D3368CB7803045C2DFCBE557BA5E4402A1F41CF2AACF57B56A</deviationsHash>
-      <fileHash>3B13B3323FEE1D05D1D5596B7390F5F6C5DE5D6F876EED76120EEE541AF22AD0</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6190188Z</updatedAt>
+      <deviationsHash>45E4B15BC9221031535A559FFEFE0B2CD9EB22148438DD91E1CDF6622D9FD9D6</deviationsHash>
+      <fileHash>63E2BFD75F6B05F952B79A40DD2745C89F36AD211BE361A3098CE30D9E4C69E2</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e3c7b1ca-f080-45c1-b56f-8d44226c8e20</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/ElementExtensionModel.cs</path>
-      <count>15</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6625591Z</updatedAt>
-      <deviationsHash>2F97F94A91F9823AD80CB6C07BADCE2250A4E0E6D81E75C86621A7CBE3D0EABD</deviationsHash>
-      <fileHash>D8347570AC58DDC57AFA33D6C381ADFEAC940E093F778B6A9C61512501B21052</fileHash>
+      <count>17</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6190386Z</updatedAt>
+      <deviationsHash>370F612CA78C66917AF11EAE1F4C54D1B4508C1813BA9C29FCEB327EB8203CDC</deviationsHash>
+      <fileHash>376106ECF9A52FCDC2B534D10D683878881203C03B943C1D9B68BD9C3D0A9BB7</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4a16943b-702c-4fb0-bfcc-2afd98b8814c</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/ElementMappingModel.cs</path>
       <count>12</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6625678Z</updatedAt>
-      <deviationsHash>ED4B97698BCAEA18C61B03AA41BCC02550B5CC419F38871918DBD2FE68EDA216</deviationsHash>
-      <fileHash>7987078ED98CEDECBB00310F718439541CD992A13BBB1B1C3ABC487936AAB551</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6190562Z</updatedAt>
+      <deviationsHash>905041191A0014EEFABEC0ED20A256BDC9CF1D2D0CCD16DC524987E0DFDEC7CB</deviationsHash>
+      <fileHash>6C85538CF6D8EB7BAEE2D4172017BC35B1545B3D2232A7C17088E20044C02B3F</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#727577aa-3e07-4b41-be7d-7359bb1e48c8</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/ElementSettingsModel.cs</path>
-      <count>17</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6625812Z</updatedAt>
-      <deviationsHash>21BD98F6C2354381EBBA46E7835AD963C6F62135C753769B10FABD664ED3963B</deviationsHash>
-      <fileHash>21961D25E360DE13E1A8E8EDA51839CBB2D1A58A5BB70210F4C92F3E64BB6643</fileHash>
+      <count>18</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6190815Z</updatedAt>
+      <deviationsHash>6706775CF1896BACC7D616213FCD77C4E532E741E9D7128648DB325212F4EA31</deviationsHash>
+      <fileHash>988E87F5E89A26905DE24B18C26272A9269E8E3D229BF81ACFBB8BDE750ECEBC</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#5eea5fba-15df-4971-8541-6f19bad4297d</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/ElementVisualSettingsModel.cs</path>
       <count>16</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6625914Z</updatedAt>
-      <deviationsHash>5F876D37551A6922A6E63F7828DBEE50A1EB7EB14F801372B849BAF29992F6AB</deviationsHash>
-      <fileHash>D771296C792D023A6527CDEFEFA1C8C6AE22641F130352B417DF4246E7C96EB4</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6190994Z</updatedAt>
+      <deviationsHash>9C3AF7291276DA17FCC7533E4113396AE8499BA41E4A5D2BA5B6ED95144011F9</deviationsHash>
+      <fileHash>3E168DC52C6F5C555B3065741D8C7A0E3AFAA9F41F12EDEA8FCE7FBDE33C7CB1</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7d008e84-bb28-4b10-ba28-7439202fca76</correlationId>
@@ -289,7 +299,7 @@
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
       <updatedAt>2024-02-25T08:45:03.6623336Z</updatedAt>
       <deviationsHash>293D35CE05B204B67A844243ED481139AF37FFA0069D785A2217D68584323341</deviationsHash>
-      <fileHash>510F897D271947C870AA5078B10D89E687C6FA6E3E1C09C854846CA144744741</fileHash>
+      <fileHash>C348B49A9A02947B09440C66B5213A1B83087A5FF715D8CBDE6ECD7E78C1F10C</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#d2e543c7-174a-45b4-aebe-a13f9ee90214</correlationId>
@@ -302,14 +312,94 @@
       <fileHash>4E33F2951B0924E51887411BC3BA164B4009BFF45A3284FA34B3981B05444544</fileHash>
     </file>
     <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f9449923-9173-4347-a3a2-38d1eb66f6b5</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/MappableElementExtensionModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6191424Z</updatedAt>
+      <deviationsHash>8ED29789AC40C118E6DD2787531BA150DD3C2D911912B9076A5C48445D510BB9</deviationsHash>
+      <fileHash>35F7D8F6C52E8E7461BC2BA9541D4B7EC7752BF4EF405B087DCDCA7BF4A6B5C8</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#62e5b1a9-0d36-4969-9d22-ce748155afbf</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/MappableElementSettingsModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6191624Z</updatedAt>
+      <deviationsHash>B68E9A0D8C26DCEE5DC3F096A6E888C5A7BA78B68ED0EACF2F19BB6A0D87F5A2</deviationsHash>
+      <fileHash>28AB06062B00F752E1464C9E976283F37CB636BCBFBB082477C1B5E7FFCD6BAC</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#bddb69f0-e2c8-4373-b5cb-d701f311f935</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/MappableElementsPackageExtensionModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6191973Z</updatedAt>
+      <deviationsHash>91D9F4D44D7CF849778EDED3B7CEE2B8402A3516B333593914FBB526410AF839</deviationsHash>
+      <fileHash>15D99DCE2FE281D7653B72FDE792A220F43612DCA5F86C7C433B1E8BB2F33CAE</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#90892fa1-b0b9-4af9-9f3b-4fdf37db9b05</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/MappableElementsPackageImportModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6192138Z</updatedAt>
+      <deviationsHash>27040AB860A53EC1CBC94E79429624BD1FC2F86CECCE4EA058CE53928E6801C4</deviationsHash>
+      <fileHash>40C1455643D3A8C4974396DAF213CF7D0F19001B7FA091513D03E45E7625F330</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#aa2eab42-5ffc-4028-b4b6-95ff719705d4</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/MappableElementsPackageModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6191796Z</updatedAt>
+      <deviationsHash>5C142A71F251612AF12A6E0EF875DA827A423C3B829AD150D3B979B821DD3139</deviationsHash>
+      <fileHash>A6EB798B9A1DEE0CD9F5B41ED68C8B856A66ACADCADB0ADDD23033BE99DE75BE</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#00a1eb98-1fc4-4421-9d1c-8733f6bc2111</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/MappingOptionModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6192324Z</updatedAt>
+      <deviationsHash>ADA8355A3835745ABD267182CCD530F8B65CA8F1A42336D1729AB5DDB491649A</deviationsHash>
+      <fileHash>9617CA1B8F2D7B052A94E28931BF82561C7C3EF8226A7D9D76333ECC87A2392A</fileHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#178c2f55-9ca1-484d-be43-a91bdd5554dc</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/MappingProjectionSettingsModel.cs</path>
       <count>12</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6626417Z</updatedAt>
-      <deviationsHash>4969EB520519B4516A6A93D44F03E24EF334B2E16CA3EA90C829D7BB3EB47149</deviationsHash>
-      <fileHash>9747770256D8ECD153BF48EFD7600B07A6C3F19D888AF4EDF8902170F925383D</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6192498Z</updatedAt>
+      <deviationsHash>9BE94FD32617E66D0F0081F1FEFEEF6AC1C8FB972138134B5D591AE35EB54111</deviationsHash>
+      <fileHash>6D1EE1B289F7155F4015DD2ADD362E89F9743ED03D649B6740AB9749DA7526AD</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#a901c634-6482-4993-ae3c-bd1b637f78d4</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/MappingSettingsModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6192667Z</updatedAt>
+      <deviationsHash>EF7D0E55332A18AE42FDA2FCCF315DACBE76A16913C7AE44364EA4AF28D90109</deviationsHash>
+      <fileHash>2B502CC307D7572CE6720FEB88EE21F387F26C9F7F80DDF48A58B3C631AA3253</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#dd8e8a63-140c-41c8-b812-0dc923012fac</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/MappingTypeSettingsModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6192849Z</updatedAt>
+      <deviationsHash>B652F267A7C60EF402822E28F0D7CFBF865D6AFC255F841C502C88F6DA10387D</deviationsHash>
+      <fileHash>DB6125A28D6AE3AB57D3BF344BF9F93BA273430EBEE89F7A0A4A8F0F0420F2A8</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#37e678f8-370a-4b05-ae44-69bb3d2b39b6</correlationId>
@@ -342,6 +432,26 @@
       <fileHash>3DF722ECFE59B925318FCC221B5605585F5DEBA0A2B88F971B14A652FD93BCC8</fileHash>
     </file>
     <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4ba35747-deea-43a9-acd4-26d57edb5bb9</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/OnInstallMigrationModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6193893Z</updatedAt>
+      <deviationsHash>DC2408D9CC36909986D08AF202A83906C41E7E9A56920F75FC91243B214C1582</deviationsHash>
+      <fileHash>7CB0BF8619B934A6C8D733C1E43C2A93B8D789B457ED9237412099DA7205A669</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d95b829a-fabc-4f12-b044-b3fa198885aa</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/OnUninstallMigrationModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6194038Z</updatedAt>
+      <deviationsHash>13295A2BFD8D66873546CA8BEBC31256488800231B124EBCC2374FBA1F31FFEB</deviationsHash>
+      <fileHash>B4D6ACFA2A17B8B28D27966D53D833633FB7A35E5161A6B74F9707B0C97A6C9F</fileHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e59f6c30-69ba-427c-9a73-33d69e44f765</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/PackageEventHandlerModel.cs</path>
       <count>1</count>
@@ -359,27 +469,27 @@
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
       <updatedAt>2024-02-25T08:45:03.6626929Z</updatedAt>
       <deviationsHash>062445B2B645AACE9D472255860D145108AE4EC63F13B22274FD7E4AB87BB2BC</deviationsHash>
-      <fileHash>CAED732B01BEFB6AAEEB5C616FA7466B8EF4A4C33EA1B60D9298DF080AC9950D</fileHash>
+      <fileHash>A0CED5CE59B3FEF580496AA5BF49DB8D38291E38589CD9E06BF2D77BEF3D8D4B</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ab4152df-3add-4a08-81b6-0fefc7cbb204</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/PackageExtensionModel.cs</path>
-      <count>13</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6627022Z</updatedAt>
-      <deviationsHash>0CFAAAE1622FF00B3BE580C2EC531B6B5F6F09096FE9756DF2AB44F460F0C68A</deviationsHash>
-      <fileHash>0C3A09DB0D8D04A41573B4D055F997DF11C7C215CD4FBD6EA536DD395F362D6E</fileHash>
+      <count>15</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6194477Z</updatedAt>
+      <deviationsHash>0D81D1A2B0DF6C0AF505C0613A6EEE15AB0CE20F932AE775EBC643ADDB33E7B1</deviationsHash>
+      <fileHash>670939ED42A4B3F41D1FD908FA5028DB90985503BA27AE383F4B3138C7A100E2</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#89333f72-3960-4159-bf61-9c40d4b65088</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/PackageSettingsModel.cs</path>
-      <count>13</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6627135Z</updatedAt>
-      <deviationsHash>3348A40FED38E03A31FB238311A771F82E23E79CF2EA109FCCA8416F729BF55A</deviationsHash>
-      <fileHash>264376920AE3893A27D568F10565C902EFB09A502B5F50174C44383EB2D10328</fileHash>
+      <count>14</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.61954Z</updatedAt>
+      <deviationsHash>8586F91681CF414E51D79F07FFF27E3E50D7406491EAE93589FEECB5A5671276</deviationsHash>
+      <fileHash>24C1524AB3311EDF1978BA5F866427414905F2A43D0301AE61924239ADD34C36</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ac56c1f1-b259-4de8-acc9-ce0030ad4f99</correlationId>
@@ -394,12 +504,12 @@
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#345d46fb-c500-409a-88c7-26720572c9af</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/RunScriptOptionModel.cs</path>
-      <count>1</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6627301Z</updatedAt>
-      <deviationsHash>41C2D1EF5FA8F3B0910E8D15BAF7ADFE4B7A9013EA7DD25716F9819F6231217C</deviationsHash>
-      <fileHash>D985BFA92955108E1217C2A4E5DFE04DBEE6E1E21F2C26CA3AF56D73EC950301</fileHash>
+      <count>2</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6196055Z</updatedAt>
+      <deviationsHash>A33C9335EE235B176CEFD09C8DF10339BEB62523525685721E5A7E486FEBD046</deviationsHash>
+      <fileHash>E809C52D0945CBF13DC97630E4A9B82A3D06C450C547F772CF6BAC27767FBD00</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#101fd5b6-3159-4810-9490-a103ef323e9c</correlationId>
@@ -409,7 +519,17 @@
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
       <updatedAt>2024-02-25T08:45:03.662738Z</updatedAt>
       <deviationsHash>AD6E5B3FA9C8F89071A41690D6DF08B1E3C06EE50616A53116C630891B003B31</deviationsHash>
-      <fileHash>674C7E0B40D26AEAF22EAFB3F4FC719480D30562C1300DCA17E9B7C4C3ED869C</fileHash>
+      <fileHash>F5D457ED07FAF3B2814DABD30E8FAE35CC271C40C9E38DFE34E5EDFE247F7B37</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#1536425c-35f4-48e1-abe4-1f8f56533545</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/SourceMappableElementsModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6196467Z</updatedAt>
+      <deviationsHash>0E4D50130392B27A1A1BACF9B8BC983DA0AE40DC8C7237B3EFCFEC475C19F677</deviationsHash>
+      <fileHash>1B84FA3E90B5CD60E0C1C960E5355C3128B7F289B2711C873097FBBBC4CD0D9C</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b795a763-296d-476f-ab0a-1a52710444db</correlationId>
@@ -422,14 +542,24 @@
       <fileHash>2CF14988021482D6AC5591DF019332D8C62CD040D9B4407FDDF199B472B97FD9</fileHash>
     </file>
     <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c776bc38-c0e8-4535-87dd-79cfd33be2ad</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/StaticMappableSettingsModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6196747Z</updatedAt>
+      <deviationsHash>7367FC7FBC342EF329A50056AAF54D9717B762A554333D0086D0646EAAC2AFF4</deviationsHash>
+      <fileHash>3FCF73D3A34EEB2EB14240D5BCF057991DD14932152B71C57459E748EB2A3D10</fileHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0c721d5d-7721-414c-adaf-4c9f5c5531a9</correlationId>
       <path>Intent.Modules.ModuleBuilder/Api/StereotypeDefinitionCreationOptionModel.cs</path>
       <count>12</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6627627Z</updatedAt>
-      <deviationsHash>A149F778E2CCE8AC9D705BDFA4EBB45E7ADD0D90FC348BF2B09FA6F8A7397B8F</deviationsHash>
-      <fileHash>BDBA68276C2C056CA788FE5EF1FE24E719B2CAA66ECCB8F3E754E627FC601965</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.619687Z</updatedAt>
+      <deviationsHash>344F34FCFEF245EE797297D105446B46FF87D89C7DCAB64A1E5439EF83DA3112</deviationsHash>
+      <fileHash>2FE6EF0A2EF4379598A87182DE9B415574FED704873F87F5F5546D60D6259AEE</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#08620c8b-f6d3-472e-86b6-926fe110d526</correlationId>
@@ -440,6 +570,36 @@
       <updatedAt>2024-02-25T08:45:03.6627729Z</updatedAt>
       <deviationsHash>C683D0956AE24BFC85D3D0E036C8B89B0DFADCEBCE1C46C4BE22F9C2127DDED5</deviationsHash>
       <fileHash>D2A1593EC6EBD64762AFF6A94CF0DFC59A5532C3161FE935C028A34EB8DC2167</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0c21ab10-e87b-4e88-ab44-38ea7adf514a</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/SuggestionModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6197126Z</updatedAt>
+      <deviationsHash>63348A5D2952C2CACC76B80ACCEC762F09615AC0FC453E961CFC6FC49AD7225B</deviationsHash>
+      <fileHash>526E7DFE0449C62E17AA3E14D099CD566C973C1B7B2C1B0179CAE31A2B6BC11E</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b5566ace-3353-4009-9370-475b561451a0</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/SVGResourceDrawSettingsModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6197349Z</updatedAt>
+      <deviationsHash>64A72EE2A65AE801C1FB936D347A8ED4F47C54A8772E0B0967ACA4270021A09C</deviationsHash>
+      <fileHash>89A72ACA18562BD97B93BC066BC41253E649668C16D39571501E78D86FA4C586</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#a812bff7-017a-4692-8ec7-1caad0a1dd88</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/TargetMappableElementsModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6197466Z</updatedAt>
+      <deviationsHash>721DAEBE107354167037FB87046813F4103049A0D8FDF64E2E23C8F9AC4469D4</deviationsHash>
+      <fileHash>96F7E20C2E7401E5BE4D1619EBC0E32C47F9F5105E1E78809F3F9DF3918F528D</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ac1da322-377e-45cf-a2d9-d147a4d91457</correlationId>
@@ -482,14 +642,24 @@
       <fileHash>8938EFE0EB4516900A2E1FEDCE9786A2370B313B06EFE63544794DAB086D0C15</fileHash>
     </file>
     <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#03f24c57-66d8-4868-95a7-6daef900dc7f</correlationId>
+      <path>Intent.Modules.ModuleBuilder/Api/VersionMigrationModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6197984Z</updatedAt>
+      <deviationsHash>7F33886E6A44CC41C8B0B9E84EBE8FF8DD107BA006906F4872157E5FE12C313C</deviationsHash>
+      <fileHash>699BFBC2ACC92F72E47D3674F60E75877A9CC5ABAF0AC549981C12983474427E</fileHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5</correlationId>
       <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiAssociationModel/ApiAssociationModelTemplatePartial.cs</path>
       <count>3</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6619126Z</updatedAt>
-      <deviationsHash>24F6707D47A9770F8A0B45145C44F68BF2C9FAD6EFA2C43F69D32A36463ADAB4</deviationsHash>
-      <fileHash>651006500430EC5A4B57E956335F26A250F032429DB1216407BCF323AE83B8E1</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6173848Z</updatedAt>
+      <deviationsHash>E19AC64066E41305E457BB3B30A106EDA7F94E90A35A00D2ECBF775C1A7F905B</deviationsHash>
+      <fileHash>D4AF4064271EBAE5F263F7654CD087D51C9222CCD3B48B3B8D5345F5570B692C</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5</correlationId>
@@ -525,21 +695,21 @@
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#e1b7ebb7-0dad-47d8-bca2-4493e53a8ee1</correlationId>
       <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiElementExtensionModel/ApiElementExtensionModelTemplatePartial.cs</path>
       <count>4</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6620164Z</updatedAt>
-      <deviationsHash>70FD9F9DA982D9439225AD030E18E41A8DD700A25D6B36B5100482A8D938103B</deviationsHash>
-      <fileHash>5F4DF5041D14859D64C693A076027A2AE7CC3E62EE2234D908BD29648A6678A8</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6174249Z</updatedAt>
+      <deviationsHash>BF6E067867AC291576CD6C9745CFCF1C9B4B6D500083F6C07BA3D6B428893B76</deviationsHash>
+      <fileHash>4A30AADE3946167F0518C57A0E7193307AFB45D17C96CB704691D695122D3DFF</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#f9800e0d-99ea-4d27-850b-4e6d07250ede</correlationId>
       <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplatePartial.cs</path>
       <count>3</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6620252Z</updatedAt>
-      <deviationsHash>D4AFD949F9141F241755F1756FF0DB3A8594DC142ACA6A425F4CD35E37BD4E33</deviationsHash>
-      <fileHash>45ECB7BBAAF6C3D556541D676D8451AB77E4D2540DBC576C30006246DBCCA1AB</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6174409Z</updatedAt>
+      <deviationsHash>EF91F37BB1C21D17A27493FEE070764F90A6F2D2D600F50A6058966F0FF3F800</deviationsHash>
+      <fileHash>19555F0D669BA772BFE2D032336D1ED6906C2B5E98712421A46954E63B5B3D02</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#f9800e0d-99ea-4d27-850b-4e6d07250ede</correlationId>
@@ -555,11 +725,11 @@
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#3877283b-1f5c-4171-a8da-55595c1905b8</correlationId>
       <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModelExtensions/ApiElementModelExtensionsTemplatePartial.cs</path>
       <count>4</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6620346Z</updatedAt>
-      <deviationsHash>54994E526D86ACA8EC6F01E8876EEF542A5DFAF0A579A3DC140FD2AFF3FA2E58</deviationsHash>
-      <fileHash>700EAA439169286696E8546B496BBB85A5994D58FCFD22D41C3F43937236C348</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6174571Z</updatedAt>
+      <deviationsHash>82E96A77DEB9A4FE275EBBA8514241E93135B226190EA8D9060D0B9C5A342EC2</deviationsHash>
+      <fileHash>5EE9ECE711FC11A59A62FCC42D61C4D8E3468F0F21A525C74454C7AA7F0AE767</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#3877283b-1f5c-4171-a8da-55595c1905b8</correlationId>
@@ -569,7 +739,7 @@
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
       <updatedAt>2024-02-25T08:45:03.6621976Z</updatedAt>
       <deviationsHash>A50D5CCAA0F56A08E5C9A12A37DD49FD4A47F756FA9157B0EED534B59D22878E</deviationsHash>
-      <fileHash>0DB8CF524C7A7B5C038B04503CCCBF5DB4AD296F622D6EB4BDF753BCC61D0EAF</fileHash>
+      <fileHash>F2F8CDA41E56939DCA0BAA911341E4C7268B04563807AA47F502AB24DFEAD097</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#489694a7-ddf0-40d6-a055-4845826deabd</correlationId>
@@ -585,11 +755,11 @@
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#11b1ac64-5537-4301-9a1e-d8de08c2786c</correlationId>
       <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiMetadataDesignerExtensions/ApiMetadataDesignerExtensionsTemplatePartial.cs</path>
       <count>3</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6620484Z</updatedAt>
-      <deviationsHash>1D6C26C6A3F143882B3B3B9BDCFED512882FAA4160F6AA7F50D270233E0A7714</deviationsHash>
-      <fileHash>D33A7A9FE48089191206402548F375FF8B633273959998FE26F6B3E1D28C4353</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6174875Z</updatedAt>
+      <deviationsHash>B858A7E5EE866C4332D32192AD95D34432FA1C047F721EBF4EFC555626BDF61D</deviationsHash>
+      <fileHash>242CB8B9639D5A93C6A10757B1AB2EA12C24C09618EF285FB9D183A3F4698C87</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel#11b1ac64-5537-4301-9a1e-d8de08c2786c</correlationId>
@@ -645,21 +815,21 @@
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#5a307c40-0d05-4dac-a83e-6a3a553c5b9e</correlationId>
       <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiPackageExtensionModel/ApiPackageExtensionModelTemplatePartial.cs</path>
       <count>3</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6620707Z</updatedAt>
-      <deviationsHash>592D08D57468F9EEB838CBF9011F917FB3FBB109A0D66CE42CB31148E14505FA</deviationsHash>
-      <fileHash>2AC64D896D4DEE4F30496249F889079D8A4AD4168FD25028092B72F2E25CF28F</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6175336Z</updatedAt>
+      <deviationsHash>12863CF4F55734A7AA153C5CE9EEE634E9A2C9C11ACA5AD08EA763A39ACAF077</deviationsHash>
+      <fileHash>963FEE84BD2761C9CC45FC0EB5BA55FEA967B280E7F4C45C8B1B257A351A39D6</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#12d0509f-a513-4263-9c31-3786f61b44bd</correlationId>
       <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiPackageModel/ApiPackageModelTemplatePartial.cs</path>
       <count>3</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6620778Z</updatedAt>
-      <deviationsHash>3D6E0B6C8AAA7C7D8FEA5888980B70A00E3C05F36D9B5557A18C15F477A14670</deviationsHash>
-      <fileHash>680F1D6AFD92D75F7096CDCF0A45C73FEBBD553A8FB9B4D143C61DC834F83858</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6175541Z</updatedAt>
+      <deviationsHash>1FD0607D1757DD457CC0BFD7812E4489F351A6197681637CCB4EA8BD1C9B8987</deviationsHash>
+      <fileHash>8D2B7542BC1CE9539423D55CEB53D3CD5E25A0B166C14605A779FBF73EF69E71</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#12d0509f-a513-4263-9c31-3786f61b44bd</correlationId>
@@ -675,11 +845,11 @@
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#8d856f7d-a6e8-45dd-9cba-843d984cb41a</correlationId>
       <path>Intent.Modules.ModuleBuilder/Templates/FactoryExtension/FactoryExtensionTemplatePartial.cs</path>
       <count>3</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6620849Z</updatedAt>
-      <deviationsHash>2DBC68DBFD3ACB4686EF5FBDD8DF7DA64A5CD084983ABB50D6A30E33159336D5</deviationsHash>
-      <fileHash>12C4AFDB446C7CE3E93E5DD31222F798717C8150793509BF8E8BB793B54FF4DE</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.6178554Z</updatedAt>
+      <deviationsHash>EA8980DC69C974D3EEAECF0334D7C7801A05693510609974A00A23925963537D</deviationsHash>
+      <fileHash>EABDBA57204D1FDCCC02AF56BC51ABA4658F564A2FDA802C0E3258F7139B1B81</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#b33044cb-5352-40c7-97a8-a1109b7dfd59</correlationId>
@@ -689,7 +859,7 @@
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
       <updatedAt>2024-02-25T08:45:03.6621459Z</updatedAt>
       <deviationsHash>95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B</deviationsHash>
-      <fileHash>452B1007DE4130EE503F7150D72D0D0C60277FBADA6CFF0DA2A0FE9C5F38754F</fileHash>
+      <fileHash>D83C3580DA1B2DB39B1605758D04237667DEB38FCD3BFBF883AB2A450E0C5B79</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#b6551a9e-4c88-40d1-9b15-bcee1fc6ebb4</correlationId>
@@ -755,11 +925,11 @@
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#115b5ff3-8e0f-4712-9384-372eb7c2c168</correlationId>
       <path>Intent.Modules.ModuleBuilder/Templates/TemplateDecoratorContract/TemplateDecoratorContractTemplatePartial.cs</path>
       <count>3</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6621238Z</updatedAt>
-      <deviationsHash>CD987AD0DF7D04490743E2392E9E61A7105BB2C30E4EBE7217C455A7D0B49687</deviationsHash>
-      <fileHash>5DBDC2F6F2391920C9365363092A0016EFD71E6576E5360FBAF77187845621B0</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.617988Z</updatedAt>
+      <deviationsHash>4903D4C8CD6625A3365C97C2C38BCE85BA86CE137193D278F5CCD30948E870FE</deviationsHash>
+      <fileHash>75E5BC513DA97065632E2C5BF5A8795BD0178E42AC7569ED5408E880AEF772BB</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#a1972650-0420-42cf-9e21-54c0c653d5b4</correlationId>
@@ -775,11 +945,11 @@
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#05e49224-62c1-45ea-a239-e4e9bf64a00b</correlationId>
       <path>Intent.Modules.ModuleBuilder/Templates/TemplateExtensions/TemplateExtensionsTemplatePartial.cs</path>
       <count>3</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-02-25T08:45:03.6621365Z</updatedAt>
-      <deviationsHash>7D697F4F19C802987CBDE74C7B0CAE4D0599AE74FF5C861AC1356873F24584D2</deviationsHash>
-      <fileHash>A21A9172A4EB3711F9400B45B593ECADC678C615B61E9B1EDE73A031B4ABBFDD</fileHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2025-06-13T15:27:02.618016Z</updatedAt>
+      <deviationsHash>BAD445A3EF7802B43A3B27513FDE791870C04CDBCBF01FDECBCC973E3D7DEAC5</deviationsHash>
+      <fileHash>BFAB355B2E0ACD6180FF623570345E161D25DFBD94F027880D5509C2D4575329</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#05e49224-62c1-45ea-a239-e4e9bf64a00b</correlationId>
@@ -789,7 +959,7 @@
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
       <updatedAt>2024-02-25T08:45:03.6622965Z</updatedAt>
       <deviationsHash>9B7F085E7644690493537EB4DE6E4AE9CE442D4B8DD3F43B22165A2078D2E1E0</deviationsHash>
-      <fileHash>E7FA79410AC5D308993097AE4FC55D05A9F7735D7FE2181575EDD99B6E5BCEEC</fileHash>
+      <fileHash>D83ECCF308D523892F8A192053495832ADA048714980F60D5B33342019366D62</fileHash>
     </file>
   </files>
 </deviationsLog>
