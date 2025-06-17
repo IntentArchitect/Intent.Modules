@@ -1,0 +1,116 @@
+{
+  "topics": [
+      {
+          "title": "Application Settings",
+          "description": "Application Settings offer Modules the ability to let end-users customize certain parts and behaviors of it within Intent Architect.",
+          "iconUrl": "data:image/png;base64,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",
+          "href": "https://docs.intentarchitect.com/articles/module-building/application-settings/application-settings.html",
+          "contextIds": [
+              "a1c3dd87-352e-4353-853b-c79853debecb"
+            ],
+          "tags": [
+              "app",
+              "setting",
+              "group",
+              "module"
+            ]
+        },
+      {
+          "title": "Configure a Template's default output location",
+          "description": "Learn how templates are installed in order to direct where the generated output should go to.",
+          "iconUrl": "fa-folder-open",
+          "href": "https://docs.intentarchitect.com/articles/module-building/templates-general/configuring-a-templates-default-output-location/configuring-a-templates-default-output-location.html",
+          "contextIds": [
+              "a1c3dd87-352e-4353-853b-c79853debecb"
+            ],
+          "tags": [
+              "install",
+              "output",
+              "location",
+              "template",
+              "role"
+            ]
+        },
+      {
+          "title": "Document Modules with Help Topics",
+          "description": "You can make your documentation easily discoverable through the application's built-in Help feature.",
+          "iconUrl": "data:image/png;base64,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",
+          "href": "https://docs.intentarchitect.com/articles/module-building/document-modules-with-help-topics/document-modules-with-help-topics.html",
+          "contextIds": [
+              "a1c3dd87-352e-4353-853b-c79853debecb"
+            ],
+          "tags": [
+              "help",
+              "topic",
+              "doc",
+              "docs",
+              "documentation",
+              "module"
+            ]
+        },
+      {
+          "title": "How to Debug Modules",
+          "description": "Learn how to attach a debugger to your module code during the software factory execution.",
+          "iconUrl": "fa-bug",
+          "href": "https://docs.intentarchitect.com/articles/module-building/debugging-modules/debugging-modules.html",
+          "contextIds": [
+              "a1c3dd87-352e-4353-853b-c79853debecb"
+            ],
+          "tags": [
+              "attach",
+              "debugger",
+              "debug",
+              "module",
+              "visual",
+              "studio",
+              "rider"
+            ]
+        },
+      {
+          "title": "How to generate static files",
+          "description": "Learn how to embed static files in a module in order to generate them as-is during a software factory execution.",
+          "iconUrl": "fa-file",
+          "href": "https://docs.intentarchitect.com/articles/module-building/templates-general/how-to-generate-static-files/how-to-generate-static-files.html",
+          "contextIds": [
+              "a1c3dd87-352e-4353-853b-c79853debecb"
+            ],
+          "tags": [
+              "static",
+              "embed",
+              "file",
+              "module"
+            ]
+        },
+      {
+          "title": "How to use Stereotypes",
+          "description": "Add additional metadata on existing designer elements using Stereotypes. Learn here how it works.",
+          "iconUrl": "./img/icons/common/StereotypeDef_256x.png",
+          "href": "https://docs.intentarchitect.com/articles/module-building/stereotypes/how-to-use-stereotypes/how-to-use-stereotypes.html",
+          "contextIds": [
+              "a1c3dd87-352e-4353-853b-c79853debecb"
+            ],
+          "tags": [
+              "meta",
+              "data",
+              "stereotype",
+              "definition"
+            ]
+        },
+      {
+          "title": "Understand Module manifest/specification",
+          "description": "Every Module requires a Manifest .imodspec file that contains module metadata needed for it to be consumed by Intent Architect.",
+          "iconUrl": "fa-clipboard-check",
+          "href": "https://docs.intentarchitect.com/articles/module-building/module-manifest/module-manifest.html",
+          "contextIds": [
+              "a1c3dd87-352e-4353-853b-c79853debecb"
+            ],
+          "tags": [
+              "spec",
+              "version",
+              "dependency",
+              "dependencies",
+              "manifest"
+            ]
+        }
+    ]
+}

@@ -1,17 +1,18 @@
 ### Version 3.15.0
 
 - Feature: Model support for Stereotype Definition `Is Trait` option. When checked, the Stereotype Definition will generate an interface. If it is applied to `Element Settings` or `Association End Settings`, the interface will be implemented by the wrapping models and/or appropriate extension methods will be created.
+- Improvement: Documentation topics added.
 
 ### Version 3.14.0
 
 - Improvement: Advanced mapping `Mapping Settings` now have a `Override Map To Parent Function` which allows the user to override which parent is used to add automatically mapped fields. This improvement addresses the friction in mapping `Service Operation` elements to the domain.
 - Improvement: Menu Items can now be grouped with a group number, respected in Intent Architect 4.5.x and later.
-- Improvement: Comments made against Element Settings and Stereotypes will now get propaged and made visible in Intent Architect 4.5.x and later.
+- Improvement: Comments made against Element Settings and Stereotypes will now get propagated and made visible in Intent Architect 4.5.x and later.
 - Improvement: Support for extension methods for `Item Lists` control types on Stereotype Properties (supported in Intent Architect 4.5.x and later)
 
 ### Version 3.13.1
 
-- Fixed: `AttributeModel` extension methods now using Domain model not the Common Types model.
+- Fixed: `AttributeModel` extension methods now using Domain Model not the Common Types Model.
 
 ### Version 3.13.0
 
@@ -53,7 +54,7 @@
 
 ### Version 3.10.1
 
-- Improvement: Removed "Icon" from "Module Settings" stereotype as the icon can be controlled by the default Application "Settings" screen for the particular Module Builder application.
+- Improvement: Removed "Icon" from the "Module Settings" stereotype as the icon can be controlled by the default Application "Settings" screen for the particular Module Builder application.
 
 ### Version 3.10.0
 
@@ -65,7 +66,7 @@
 
 ### Version 3.8.4
 
-- Improvement: Uses more recent version of the `Intent.OutputManager.RoslynWeaver` module.
+- Improvement: Uses a more recent version of the `Intent.OutputManager.RoslynWeaver` module.
 
 ### Version 3.8.3
 
@@ -103,7 +104,7 @@
 - Manage Dependency Versions for Intent Architect Modules and nuget packages in C# projects used to build Modules.
 
 ### Version 3.6.6
-- Fixed : Fixed an issue around `File Template`s crashing the Software Factory.
+- Fixed: Fixed an issue around `File Template`s crashing the Software Factory.
 
 ### Version 3.6.4
 
@@ -139,11 +140,11 @@
 ### Version 3.4.1
 
 - Feature: Support for explicit Element / Association Vision Settings for Diagrams.
-- Fixed: Association Extensions applying source-end settings to target-end.
+- Fixed: Association Extensions applying source-end settings to the target-end.
 
 ### Version 3.4.0
 
-- Support for Package DefaultNameFunction. Allows the name of a new pacakge to be determined by a script.
+- Support for Package DefaultNameFunction. Allows the name of a new package to be determined by a script.
 
 ### Version 3.3.14
 
@@ -151,7 +152,7 @@
 
 ### Version 3.3.13
 
-- Role fields is mandatory of Template Type is not `Custom`.
+- Role fields are mandatory of Template Type is not `Custom`.
 
 ### Version 3.3.10
 

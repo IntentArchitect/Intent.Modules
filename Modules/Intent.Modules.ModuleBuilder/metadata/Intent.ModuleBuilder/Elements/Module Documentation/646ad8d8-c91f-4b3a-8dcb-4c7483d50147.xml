@@ -66,6 +66,33 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="ccae72d0-632e-4792-969c-16d6128587ba" type="Documentation Topic" typeId="5cc56ebc-6b61-41a6-a452-8efd9382da6f">
+      <name>Document Modules with Help Topics</name>
+      <display>Document Modules with Help Topics</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>646ad8d8-c91f-4b3a-8dcb-4c7483d50147</parentFolderId>
+      <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+      <packageName>Intent.ModuleBuilder</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="83dfd8ae-5086-4e41-94c2-7110d5a49b4c" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="2792ad9a-2afd-4350-bac6-bdcf4b701ff1" display="Description" value="You can make your documentation easily discoverable through the application's built-in Help feature." isActive="true" />
+            <property name="4fa553d3-1b96-4f63-bdb9-3237eca31f6b" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+            <property name="207e8583-2ba5-4ea3-84aa-2f65cd5915ca" display="Href" value="https://docs.intentarchitect.com/articles/module-building/document-modules-with-help-topics/document-modules-with-help-topics.html" isActive="true" />
+            <property name="21d13790-2910-475c-b58f-9d350f2e13c6" display="Designers" value="[&quot;a1c3dd87-352e-4353-853b-c79853debecb&quot;]" isActive="true" />
+            <property name="8642b1d1-93f9-4f5f-b5ae-ad5fc20d7a46" display="Elements" value="[]" isActive="true" />
+            <property name="f55a1f0c-40dd-48b4-b985-8360933e6a47" display="Tags" value="help topic doc docs documentation module" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
     <childElement id="f1b66ab5-b9d6-461f-8845-85c27d28b739" type="Documentation Topic" typeId="5cc56ebc-6b61-41a6-a452-8efd9382da6f">
       <name>How to Debug Modules</name>
       <display>How to Debug Modules</display>
