@@ -27,13 +27,11 @@
       <type>boolean</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Key</defaultValue>
       <valueOptions>
         <option>Key</option>
         <option>Included</option>
       </valueOptions>
-      <lookupTypes />
     </property>
     <property id="f80ed9e2-b90b-4fff-a551-98f0461b3f86">
       <hint />
@@ -41,13 +39,11 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Ascending</defaultValue>
       <valueOptions>
         <option>Ascending</option>
         <option>Descending</option>
       </valueOptions>
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

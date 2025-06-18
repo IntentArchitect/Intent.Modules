@@ -26,9 +26,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="175a8968-97f7-4bfd-bfaf-83054c0671c2">
@@ -36,9 +33,6 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
   </properties>

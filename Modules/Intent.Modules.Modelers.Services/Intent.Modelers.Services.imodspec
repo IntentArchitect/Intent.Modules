@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services</id>
-  <version>3.10.0-pre.0</version>
+  <version>3.10.0</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Services modeler for describing an application's web services.</summary>
   <description>Services modeler for describing an application's web services.</description>
@@ -20,7 +20,7 @@
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="3.7.8-pre.0" />
+    <dependency id="Intent.Common" version="3.7.8" />
     <dependency id="Intent.Common.Types" version="4.1.0" />
   </dependencies>
   <metadata>

@@ -28,20 +28,14 @@
       <type>number</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>16</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="ff13f032-826f-4ca3-9806-ea4f10b8d600">
       <name>Scale</name>
       <type>number</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>4</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

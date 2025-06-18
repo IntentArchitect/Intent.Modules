@@ -28,18 +28,12 @@ return schema != null    ? `${schema}.${name}`    : name;</displayFunction>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="877751bd-961d-49cd-952e-6a8ffd6c8064">
       <name>Schema</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

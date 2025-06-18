@@ -26,41 +26,30 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="a8f903d5-e8b6-4d15-aedb-08c6b290b733">
       <name>Order</name>
       <type>number</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="90002464-b824-40e2-9f73-32f306868897">
       <name>IsUnique</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="ab0cf6c6-9589-44cb-98fb-507e554c2d9b">
       <name>Sort Direction</name>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
       <defaultValue>Ascending</defaultValue>
       <valueOptions>
         <option>Ascending</option>
         <option>Descending</option>
       </valueOptions>
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>
