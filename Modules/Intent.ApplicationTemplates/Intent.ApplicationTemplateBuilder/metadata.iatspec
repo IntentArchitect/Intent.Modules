@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<applicationTemplate>
+<applicationTemplate type="application-template">
   <id>Intent.ApplicationTemplateBuilder</id>
-  <version>4.0.18-pre.0</version>
+  <version>4.0.18</version>
   <supportedClientVersions>[4.4.0-a, 5.0.0-a)</supportedClientVersions>
   <displayName>Intent Application Template Builder</displayName>
+  <additionalImages />
   <shortDescription>Build application templates for your tech stack.</shortDescription>
   <authors>Intent Architect</authors>
   <priority>-990</priority>
@@ -62,7 +63,7 @@
     </group>
   </componentGroups>
   <additionalSettings>
-    <group id="eb7e866f-86d9-4fd5-ab7e-e98726a92b47" title="Basic Settings">
+    <group id="eb7e866f-86d9-4fd5-ab7e-e98726a92b47" title="Basic Settings" type="application-settings">
       <settings>
         <setting id="target-framework" title="Target Framework" type="hidden">
           <defaultValue>f8b1618d-1e64-4c2c-9787-e0725c3633a1</defaultValue>
