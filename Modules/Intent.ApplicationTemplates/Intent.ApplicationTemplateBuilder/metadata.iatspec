@@ -73,7 +73,7 @@ With Architecture Templates, you can:
     </group>
   </componentGroups>
   <additionalSettings>
-    <group id="eb7e866f-86d9-4fd5-ab7e-e98726a92b47" title="Basic Settings" type="application-settings">
+    <group id="eb7e866f-86d9-4fd5-ab7e-e98726a92b47" title="Basic Settings">
       <settings>
         <setting id="target-framework" title="Target Framework" type="hidden">
           <defaultValue>f8b1618d-1e64-4c2c-9787-e0725c3633a1</defaultValue>
