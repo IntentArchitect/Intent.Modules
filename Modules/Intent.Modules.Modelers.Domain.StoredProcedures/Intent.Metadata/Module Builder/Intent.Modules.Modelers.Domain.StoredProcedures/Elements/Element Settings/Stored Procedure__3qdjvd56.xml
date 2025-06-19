@@ -9,6 +9,9 @@
   <parentFolderId>276019e5-fc1a-401e-9450-ef8468606781</parentFolderId>
   <packageId>e3eb7873-c66f-4636-a7c8-8cb1f7b34d71</packageId>
   <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
+  <traits>
+    <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]" />
+  </traits>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
@@ -48,7 +51,7 @@
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="true" isActive="true" />
       </properties>
     </stereotype>
-    <stereotype stereotypeDefinitionId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]">
+    <stereotype stereotypeDefinitionId="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]">
       <addedByDefault>false</addedByDefault>
       <definitionPackageName>Intent.Common</definitionPackageName>
       <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
@@ -92,7 +95,6 @@
           <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -134,7 +136,6 @@
           <packageName>Intent.Modules.Modelers.Domain.StoredProcedures</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
-              <comment />
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>

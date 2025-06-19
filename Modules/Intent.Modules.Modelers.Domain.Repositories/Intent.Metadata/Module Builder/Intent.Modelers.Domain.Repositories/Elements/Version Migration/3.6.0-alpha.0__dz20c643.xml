@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="b594a9bb-972c-41c0-83bf-1a74299d5a3d" type="Version Migration" typeId="03f24c57-66d8-4868-95a7-6daef900dc7f">
+  <name>3.6.0-alpha.0</name>
+  <display>3.6.0-alpha.0</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1200ef36-df1c-4f27-97eb-cc57a6464c4d</parentFolderId>
+  <packageId>464e0fa3-c4c0-497e-b252-a5df39f59158</packageId>
+  <packageName>Intent.Modelers.Domain.Repositories</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

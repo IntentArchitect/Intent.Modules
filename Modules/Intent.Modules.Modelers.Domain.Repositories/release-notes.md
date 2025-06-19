@@ -1,3 +1,7 @@
+### Version 3.6.0
+
+- Improvement: Added [Invokable] trait to Repository Operations. A migration will add these automatically.
+
 ### Version 3.5.1
 
 - Improvement: Added accelerator to easily create an entity repository as well as improved documentation.

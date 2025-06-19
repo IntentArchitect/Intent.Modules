@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain.Repositories</id>
-  <version>3.5.1</version>
+  <version>3.6.0-alpha.0</version>
   <supportedClientVersions>[3.2.0, 5.0.0-a)</supportedClientVersions>
   <releaseNotes>release-notes.md</releaseNotes>
   <summary>Introduces Repository elements in the Domain designer.</summary>
@@ -27,4 +27,7 @@
     <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Domain.Repositories/Intent.Modelers.Domain.Repositories.pkg.config" externalReference="464e0fa3-c4c0-497e-b252-a5df39f59158" />
   </metadata>
   <tags>domain designer uml repo repositories</tags>
+  <migrations>
+    <migration version="3.6.0-alpha.0" />
+  </migrations>
 </package>

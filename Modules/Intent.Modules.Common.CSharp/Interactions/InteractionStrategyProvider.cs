@@ -37,7 +37,7 @@ public class InteractionStrategyProvider
 
         if (matched.Count > 1)
         {
-            Logging.Log.Warning($"Multiple interaction strategies matched for {interaction}: [{string.Join(", ", matched)}]");
+            Logging.Log.Debug($"Multiple interaction strategies matched for {interaction}: [{string.Join(", ", matched)}]");
         }
 
         return matched.Any();
@@ -54,7 +54,7 @@ public class InteractionStrategyProvider
 
         if (matched.Count > 1)
         {
-            Logging.Log.Warning($"Multiple interaction strategies found for {interaction}: [{string.Join(", ", matched)}]");
+            Logging.Log.Debug($"Multiple interaction strategies found for {interaction}: [{string.Join(", ", matched)}]");
         }
 
         return matched.First();
