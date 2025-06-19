@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Net.Http;
+using Anthropic.SDK;
+using Anthropic.SDK.Messaging;
 using Intent.Engine;
 using Intent.Modules.Common.AI.Settings;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.ChatCompletion;
 using OllamaSharp;
 
 namespace Intent.Modules.Common.AI;
@@ -17,7 +21,6 @@ public class IntentSemanticKernelFactory
     {
         _userSettingsProvider = userSettingsProvider;
     }
-
 
     public Kernel BuildSemanticKernel() => BuildSemanticKernel(null);
     public Kernel BuildSemanticKernel(Action<IKernelBuilder> configure)
@@ -46,7 +49,7 @@ public class IntentSemanticKernelFactory
 
                 builder.Services.AddOpenAIChatCompletion(
                     modelId: model,
-                    apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the ChatDrivenDomainSettings App Settings or set the OPENAI_API_KEY environment variable."));
+                    apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the AI User Settings or set the OPENAI_API_KEY environment variable."));
                 break;
             case AISettings.ProviderOptionsEnum.AzureOpenAi:
 
@@ -59,7 +62,7 @@ public class IntentSemanticKernelFactory
                 builder.Services.AddAzureOpenAIChatCompletion(
                     deploymentName: settings.DeploymentName(),
                     endpoint: settings.APIUrl(),
-                    apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the ChatDrivenDomainSettings App Settings or set the AZURE_OPENAI_API_KEY environment variable."),
+                    apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the AI User Settings or set the AZURE_OPENAI_API_KEY environment variable."),
                     modelId: model);
                 break;
             case AISettings.ProviderOptionsEnum.Ollama:
@@ -74,6 +77,31 @@ public class IntentSemanticKernelFactory
                         model)
                 );
 #pragma warning restore SKEXP0070
+                break;
+            case AISettings.ProviderOptionsEnum.Anthropic:
+                apiKey = settings.AnthropicAPIKey();
+                if (string.IsNullOrWhiteSpace(apiKey))
+                {
+                    apiKey = Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY");
+                }
+
+#pragma warning disable SKEXP0001
+                var apiAuth = new APIAuthentication(apiKey ?? throw new Exception("No API Key defined. Locate the AI User Settings or set the ANTHROPIC_API_KEY environment variable."));
+                builder.Services.AddTransient((sp) =>
+                {
+                    var skChatService =
+                        new ChatClientBuilder(new AnthropicClient(apiAuth).Messages)
+                            .ConfigureOptions(x =>
+                            {
+                                x.ModelId = model;
+                                x.MaxOutputTokens = int.TryParse(_userSettingsProvider.GetAISettings().MaxTokens(), out var maxTokens) ? maxTokens : null;
+                            })
+                            .UseFunctionInvocation()
+                            .Build(sp)
+                            .AsChatCompletionService(sp);
+                    return skChatService;
+                });
+#pragma warning restore SKEXP0001
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

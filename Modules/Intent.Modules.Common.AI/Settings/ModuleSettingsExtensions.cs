@@ -56,6 +56,7 @@ namespace Intent.Modules.Common.AI.Settings
                     "open-ai" => ProviderOptionsEnum.OpenAi,
                     "azure-open-ai" => ProviderOptionsEnum.AzureOpenAi,
                     "ollama" => ProviderOptionsEnum.Ollama,
+                    "anthropic" => ProviderOptionsEnum.Anthropic,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
@@ -74,6 +75,11 @@ namespace Intent.Modules.Common.AI.Settings
             {
                 return Value == "ollama";
             }
+
+            public bool IsAnthropic()
+            {
+                return Value == "anthropic";
+            }
         }
 
         public enum ProviderOptionsEnum
@@ -81,11 +87,14 @@ namespace Intent.Modules.Common.AI.Settings
             OpenAi,
             AzureOpenAi,
             Ollama,
+            Anthropic,
         }
 
         public string OpenAIAPIKey() => _groupSettings.GetSetting("9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8")?.Value;
 
         public string AzureOpenAIAPIKey() => _groupSettings.GetSetting("d76d0a4d-60c5-42b4-aa3b-de4f11b44ac1")?.Value;
+
+        public string AnthropicAPIKey() => _groupSettings.GetSetting("715e2ce8-677c-467d-a876-8dc84b99ae05")?.Value;
 
         public string Model() => _groupSettings.GetSetting("effcfd41-aaed-4278-a7e7-818009584139")?.Value;
 
