@@ -58,6 +58,8 @@ return provider === "azure-open-ai";</isActiveFunction>
         </setting>
         <setting id="4cb52ca6-af4f-4dbf-9f75-5a74438cd281" title="Max Tokens" type="text">
           <defaultValue>8192</defaultValue>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "anthropic";</isActiveFunction>
           <isRequiredFunction>return true;</isRequiredFunction>
         </setting>
       </settings>
