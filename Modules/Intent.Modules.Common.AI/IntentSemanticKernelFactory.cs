@@ -15,6 +15,8 @@ namespace Intent.Modules.Common.AI;
 #pragma warning disable SKEXP0070
 #pragma warning disable SKEXP0001
 
+#nullable enable
+
 public class IntentSemanticKernelFactory
 {
     private readonly IUserSettingsProvider _userSettingsProvider;
@@ -25,11 +27,13 @@ public class IntentSemanticKernelFactory
     }
 
     public Kernel BuildSemanticKernel() => BuildSemanticKernel(null);
-    public Kernel BuildSemanticKernel(Action<IKernelBuilder> configure)
+    
+    public Kernel BuildSemanticKernel(Action<IKernelBuilder>? configure)
     {
         var settings = _userSettingsProvider.GetAISettings();
         var model = string.IsNullOrWhiteSpace(settings.Model()) ? "gpt-4o" : settings.Model();
-        var apiKey = string.Empty;
+        string? apiKey;
+        
         // Create the Semantic Kernel instance with your LLM service.
         // Replace <your-openai-key> with your actual OpenAI API key and adjust the model name as needed.
         var builder = Kernel.CreateBuilder();
@@ -39,10 +43,10 @@ public class IntentSemanticKernelFactory
             configure(builder);
         }
 
-        switch (settings.Provider().AsEnum())
+        var provider = settings.Provider().AsEnum();
+        switch (provider)
         {
             case AISettings.ProviderOptionsEnum.OpenAi:
-
                 apiKey = settings.OpenAIAPIKey();
                 if (string.IsNullOrWhiteSpace(apiKey))
                 {
@@ -53,8 +57,8 @@ public class IntentSemanticKernelFactory
                     modelId: model,
                     apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the AI User Settings or set the OPENAI_API_KEY environment variable."));
                 break;
+            
             case AISettings.ProviderOptionsEnum.AzureOpenAi:
-
                 apiKey = settings.AzureOpenAIAPIKey();
                 if (string.IsNullOrWhiteSpace(apiKey))
                 {
@@ -67,17 +71,19 @@ public class IntentSemanticKernelFactory
                     apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the AI User Settings or set the AZURE_OPENAI_API_KEY environment variable."),
                     modelId: model);
                 break;
+            
             case AISettings.ProviderOptionsEnum.Ollama:
                 builder.Services.AddOllamaChatCompletion(
                     new OllamaApiClient(
                         new HttpClient
                         {
-                            Timeout = TimeSpan.FromMinutes(10),
+                            Timeout = TimeSpan.FromMinutes(10), // Running this locally could be slow
                             BaseAddress = new Uri(settings.APIUrl())
                         },
                         model)
                 );
                 break;
+            
             case AISettings.ProviderOptionsEnum.Anthropic:
                 apiKey = settings.AnthropicAPIKey();
                 if (string.IsNullOrWhiteSpace(apiKey))
@@ -101,8 +107,9 @@ public class IntentSemanticKernelFactory
                     return skChatService;
                 });
                 break;
+            
             default:
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameof(provider), $"Unknown provider: {provider}");
         }
 
         var kernel = builder.Build();
