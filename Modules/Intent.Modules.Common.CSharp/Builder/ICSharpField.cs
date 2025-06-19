@@ -5,6 +5,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public interface ICSharpField : ICSharpMember<ICSharpField>
 {
+    string Name { get; }
     ICSharpField ProtectedReadOnly();
     ICSharpField Protected();
     ICSharpField Protected(string value);

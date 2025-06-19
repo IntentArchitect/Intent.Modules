@@ -19,6 +19,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using Intent.Engine;
 using Intent.Modules.Common.CSharp.VisualStudio;
+using System.Xml.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -983,6 +984,8 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     {
         return _wrapper.RepresentsModel(model);
     }
+
+    IEnumerable<ICSharpAttribute> ICSharpDeclaration<ICSharpClass>.Attributes => Attributes;
 
     ICSharpClass ICSharpDeclaration<ICSharpClass>.AddAttribute(string name, Action<ICSharpAttribute> configure)
     {

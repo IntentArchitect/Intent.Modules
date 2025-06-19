@@ -420,6 +420,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
 
     #region ICSharpInterfaceMethod implementation
 
+    IEnumerable<ICSharpAttribute> ICSharpDeclaration<ICSharpInterfaceMethodDeclaration>.Attributes => Attributes;
     ICSharpInterfaceMethodDeclaration ICSharpDeclaration<ICSharpInterfaceMethodDeclaration>.AddAttribute(string name, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(name, configure);
     ICSharpInterfaceMethodDeclaration ICSharpDeclaration<ICSharpInterfaceMethodDeclaration>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(attribute, configure);
     ICSharpInterfaceMethodDeclaration ICSharpDeclaration<ICSharpInterfaceMethodDeclaration>.WithComments(string xmlComments) => _wrapper.WithComments(xmlComments);

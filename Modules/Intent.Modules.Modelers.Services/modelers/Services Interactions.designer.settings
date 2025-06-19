@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>a62352ef-3960-46e8-9939-816f20940675</id>
+  <name>Services Interactions</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions />
+  <elementSettings />
+  <elementExtensions>
+    <elementExtension type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+      <implements>
+        <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]" />
+        <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+      </implements>
+      <mappingSettings />
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings>
+    <associationSetting type="Perform Invocation" typeId="3e69085c-fa2f-44bd-93eb-41075fd472f8">
+      <sourceEnd type="Perform Invocation Source End" typeId="ee56bd48-8eff-4fff-8d3a-87731d002335">
+        <displayFunction>return `called by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
+        <nameAccessibilityMode>hidden</nameAccessibilityMode>
+        <icon type="UrlImagePath" source="data:image/png;base64,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" />
+        <allowSorting>false</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+            <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>false</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </sourceEnd>
+      <targetEnd type="Perform Invocation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c">
+        <implements>
+          <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+        </implements>
+        <displayFunction>const returnType = typeReference.getType()?.typeReference?.display ?? "void";
+return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${returnType}` ?? "&lt;not set&gt;"}`</displayFunction>
+        <nameAccessibilityMode>optional</nameAccessibilityMode>
+        <defaultNameFunction>return typeReference.getType()?.typeReference.getTypeId() != null ? "result" : null;</defaultNameFunction>
+        <nameMustBeUnique>true</nameMustBeUnique>
+        <icon type="UrlImagePath" source="data:image/png;base64,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" />
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+            <type type="[Invokable]" typeId="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" />
+          </targetTypes>
+          <allowIsNavigable>true</allowIsNavigable>
+          <allowIsNullable>true</allowIsNullable>
+          <allowIsCollection>true</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+        <typeOrder />
+        <contextMenuOptions>
+          <openMapping type="open-advanced-mapping" mappingType="Invocation Mapping" mappingTypeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
+            <text>Map Call Operation</text>
+            <shortcut>ctrl + space</shortcut>
+          </openMapping>
+        </contextMenuOptions>
+        <creationOptions />
+        <scriptOptions />
+        <mappingOptions>
+          <option type="open-advanced-mapping" mappingType="Invocation Mapping" mappingTypeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
+            <text>Map Call Operation</text>
+            <shortcut>ctrl + space</shortcut>
+          </option>
+        </mappingOptions>
+      </targetEnd>
+      <visualSettings type="Perform Invocation" typeId="3e69085c-fa2f-44bd-93eb-41075fd472f8">
+        <lineType>Curved</lineType>
+        <lineColor>return getMappings()[0] ? null : "gray";</lineColor>
+        <lineDashArray>return "3,7";</lineDashArray>
+        <sourceEnd>
+          <pointIndicator>
+            <lineWidth>return 3;</lineWidth>
+            <path>return `a 4,4 0 1,0 4,4 
+        a 4,4 0 1,0 -4,4`;</path>
+          </pointIndicator>
+        </sourceEnd>
+        <targetEnd>
+          <pointIndicator>
+            <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>
+          </pointIndicator>
+        </targetEnd>
+      </visualSettings>
+      <macros>
+        <macro trigger="on-type-changed">
+          <script>if (association.isTargetEnd() &amp;&amp; association.typeReference.getType()?.typeReference != null) {
+    association.typeReference.setIsCollection(association.typeReference.getType().typeReference.getIsCollection());
+    association.typeReference.setIsNullable(association.typeReference.getType().typeReference.getIsNullable());
+}</script>
+        </macro>
+      </macros>
+    </associationSetting>
+  </associationSettings>
+  <associationExtensions />
+  <mappingSettings>
+    <mappingSetting type="Invocation Mapping" typeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
+      <title>Invocation Mapping</title>
+      <sourceMappings>
+        <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Invocation Source Mappables" />
+      </sourceMappings>
+      <targetMappings>
+        <importSettings id="1b6bf8a4-7812-4f3c-8378-ef411edb59cf" name="Invocation Target Mappables" />
+      </targetMappings>
+      <mappingTypes>
+        <mappingType type="Data Mapping" typeId="1ad97d12-2aa8-4f03-8cb0-3a8a4e71b4d9">
+          <represents>data</represents>
+          <sources />
+          <sourceFilterFunction>return element.represents == 'data'</sourceFilterFunction>
+          <sourceArrowFunction>return null</sourceArrowFunction>
+          <targets />
+          <targetFilterFunction>return element.represents == 'data'</targetFilterFunction>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+        <mappingType type="Invocation Mapping" typeId="7ca5c18a-bdbe-434b-a68a-421899a077e7">
+          <represents>invokable</represents>
+          <sources />
+          <sourceFilterFunction>return element.represents == 'invokable'</sourceFilterFunction>
+          <sourceArrowFunction>return null</sourceArrowFunction>
+          <targets />
+          <targetFilterFunction>return element.represents == 'invokable'</targetFilterFunction>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+      </mappingTypes>
+    </mappingSetting>
+  </mappingSettings>
+  <mappableElementPackages>
+    <mappableElementPackage id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Invocation Source Mappables">
+      <imports />
+      <mappableElementSettings>
+        <mappableElement id="5ef8e1c3-9626-4501-8968-6d9e432fb3b5" name="Class" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="daf3a2fa-0b35-4549-8b65-26b3a74dc7e0" name="Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>4b3a6208-67e4-44aa-b96e-7791b21659e9</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="c0682bc4-2b6a-4638-a35e-39188d253694" name="Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>4b3a6208-67e4-44aa-b96e-7791b21659e9</mappingId>
+                <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <useChildSettingsFrom>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</useChildSettingsFrom>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="cfe9c4d4-9c26-4f11-a585-f1e3863fb658" name="Invoke Domain Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return element.typeReference.isTypeFound() &amp;&amp; element.getChildren("Parameter").length == 0;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="71065ddc-0d20-4383-9655-a8f35bc5d9cc" name="Data Contract" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <useChildSettingsFrom>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</useChildSettingsFrom>
+          <represents>data</represents>
+        </mappableElement>
+        <mappableElement id="16a7127a-946d-41a3-9dd9-4f2c5429c5e9" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <createNameFunction>return (element.getParent('Command') || element.getParent('Operation')).getName() + element.getName() + 'Dto'</createNameFunction>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="98041049-0f91-4c21-99dc-50cd18fd1dae" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="eb1478af-4b69-4d33-826f-3f195ebbed79" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="1a7abde9-a764-47fb-ab55-6dd9a0e5ec24" name="Inheritence" type="Generalization Target End" typeId="e1b3d4e4-0ad0-4aec-97fb-780ab9e476db" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <overrideMapToParentFunction>const parameterTypeId = "00208d20-469d-41cb-8501-768fd5eb796b";
+const dtoTypeId = "fee0edca-4aa0-4f77-a524-6bbd84e78734";
+return element.getChildren(parameterTypeId).filter(x =&gt; x.typeReference.getType().specializationId == dtoTypeId)[0]?.id</overrideMapToParentFunction>
+          <represents>invokable</represents>
+          <childSettings>
+            <childSetting id="7767267b-2e01-42cd-8a03-103d296a6306" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
+              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8" name="Collection Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
+              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="4b3a6208-67e4-44aa-b96e-7791b21659e9" name="Value Object" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <useChildSettingsFrom>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</useChildSettingsFrom>
+          <represents>data</represents>
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackage>
+    <mappableElementPackage id="1b6bf8a4-7812-4f3c-8378-ef411edb59cf" name="Invocation Target Mappables">
+      <imports />
+      <mappableElementSettings>
+        <mappableElement id="13cd2ca6-9985-4222-9fb9-b2d221ae4fb5" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return false;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <createNameFunction>return (element.getParent()).getName() + element.getName() + 'Dto'</createNameFunction>
+          <represents>data</represents>
+          <childSettings>
+            <childSetting id="fe52269b-a0ff-4e31-8612-c72fc369b631" name="Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
+              <isRequiredFunction>return !element.typeReference.getIsNullable();</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>13cd2ca6-9985-4222-9fb9-b2d221ae4fb5</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="85eb3ad3-d0d8-4e89-a77b-de3dfb8e15d5" name="Collection Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
+              <isRequiredFunction>return !element.typeReference.getIsNullable();</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>13cd2ca6-9985-4222-9fb9-b2d221ae4fb5</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="a8714a57-5143-494b-bda3-5cb87ddcb4e9" name="Inheritence" type="Generalization Target End" typeId="e1b3d4e4-0ad0-4aec-97fb-780ab9e476db" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="53e56957-a04d-4260-a06c-81a01232be41" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>true</canBeModified>
+          <overrideMapToParentFunction>const parameterTypeId = "00208d20-469d-41cb-8501-768fd5eb796b";
+const dtoTypeId = "fee0edca-4aa0-4f77-a524-6bbd84e78734";
+return element.getChildren(parameterTypeId).filter(x =&gt; x.typeReference.getType().specializationId == dtoTypeId)[0]?.id</overrideMapToParentFunction>
+          <represents>invokable</represents>
+          <childSettings>
+            <childSetting id="0f8fb2ed-72cb-42c1-945c-38e6b122ec67" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
+              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
+              <isRequiredFunction>return !element.typeReference.getIsNullable();</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes />
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="cc8e895b-e14b-4e26-99d5-a48ac480cd0c" name="Collection Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
+              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
+              <isRequiredFunction>return !element.typeReference.getIsNullable();</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes />
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+      </mappableElementSettings>
+    </mappableElementPackage>
+  </mappableElementPackages>
+  <mappableElementPackageExtensions />
+  <scripts />
+</settings>

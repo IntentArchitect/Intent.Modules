@@ -1,4 +1,8 @@
-﻿### Version 3.8.16
+﻿### Version 3.9.0
+
+- New Feature: Added support for interaction strategies and extension methods to the `ICSharpMethodDeclaration` for ease of use.
+
+### Version 3.8.16
 
 - Improvement: Exposed `NonNullableValueTypes` as public to be used by other modules
 

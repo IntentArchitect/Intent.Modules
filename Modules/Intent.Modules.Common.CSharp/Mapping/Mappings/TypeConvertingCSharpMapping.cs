@@ -31,10 +31,6 @@ public class TypeConvertingCSharpMapping : CSharpMappingBase
             return new CSharpAccessMemberStatement(base.GetSourceStatement(), new CSharpInvocationStatement("ToString").WithoutSemicolon());
         }
 
-        if (Mapping.SourceElement.Name == "rowId")
-        {
-
-        }
         if (Mapping.IsOneToOne() &&
             Mapping.TargetElement.TypeReference.HasGuidType() == true &&
             Mapping.SourceElement.TypeReference.IsNullable == false &&

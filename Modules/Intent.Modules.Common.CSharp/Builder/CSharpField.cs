@@ -197,6 +197,8 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
 
     #region ICSharpField implementation
 
+    IEnumerable<ICSharpAttribute> ICSharpDeclaration<ICSharpField>.Attributes => Attributes;
+
     ICSharpField ICSharpDeclaration<ICSharpField>.AddAttribute(string name, Action<ICSharpAttribute> configure = null)
     {
         return _wrapping.AddAttribute(name, configure);

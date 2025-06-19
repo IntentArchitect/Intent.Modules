@@ -9,6 +9,11 @@
   <parentFolderId>6ac83417-e6d5-4699-b88c-aa1d7f894326</parentFolderId>
   <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
   <packageName>Intent.Modelers.Services.CQRS</packageName>
+  <traits>
+    <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+    <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable Service]" />
+    <trait id="9e587d4d-f317-4ab8-9bbb-9394234d2a88" name="[Allow Comment]" />
+  </traits>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
@@ -48,13 +53,19 @@
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
-    <stereotype stereotypeDefinitionId="9e587d4d-f317-4ab8-9bbb-9394234d2a88" name="[Allow Comment]">
+    <stereotype stereotypeDefinitionId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]">
       <addedByDefault>false</addedByDefault>
-      <definitionPackageName>Intent.Modelers.Services</definitionPackageName>
-      <definitionPackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</definitionPackageId>
+      <definitionPackageName>Intent.Common</definitionPackageName>
+      <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
       <properties />
     </stereotype>
-    <stereotype stereotypeDefinitionId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]">
+    <stereotype stereotypeDefinitionId="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable Service]">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Common</definitionPackageName>
+      <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
+      <properties />
+    </stereotype>
+    <stereotype stereotypeDefinitionId="9e587d4d-f317-4ab8-9bbb-9394234d2a88" name="[Allow Comment]">
       <addedByDefault>false</addedByDefault>
       <definitionPackageName>Intent.Common</definitionPackageName>
       <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
@@ -171,6 +182,7 @@
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
                 <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="fdea9028-8611-4eb0-b1a5-4d54d267af41" display="Menu Group" isActive="true" />
                 <property name="aeaeff9b-f55b-4888-92e9-5317b5c14016" display="Top Divider" value="false" isActive="true" />
                 <property name="543cc5f5-0b0c-40cc-9df7-3ce45b555dd0" display="Bottom Divider" value="false" isActive="true" />
               </properties>

@@ -1,3 +1,7 @@
+### Version 6.0.0
+
+- Improvement: Added `[Invokable]` trait to Commands and Queries.
+
 ### Version 5.2.0
 
 - Improvement: Commands and queries can now be associated with comments in designer diagrams.

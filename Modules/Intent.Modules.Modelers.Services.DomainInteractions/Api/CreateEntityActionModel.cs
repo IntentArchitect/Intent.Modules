@@ -78,7 +78,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class CreateEntityActionTargetEndModel : CreateEntityActionEndModel
+    public class CreateEntityActionTargetEndModel : CreateEntityActionEndModel, IProcessingActionModel
     {
         public const string SpecializationTypeId = "328f54e5-7bad-4b5f-90ca-03ce3105d016";
         public const string SpecializationType = "Create Entity Action Target End";

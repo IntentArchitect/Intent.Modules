@@ -61,6 +61,9 @@
       <parentFolderId>90831494-f069-44eb-b488-ab2dba7518ea</parentFolderId>
       <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
       <packageName>Intent.Modelers.Domain.Events</packageName>
+      <traits>
+        <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+      </traits>
       <stereotypes>
         <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
           <addedByDefault>true</addedByDefault>
@@ -87,6 +90,13 @@
             <property name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="true" isActive="true" />
             <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
           </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]">
+          <comment>Indicates that the model represents a processing point in the application. This can then be used to discover interactions that have been modeled against this processing point.</comment>
+          <addedByDefault>false</addedByDefault>
+          <definitionPackageName>Intent.Common</definitionPackageName>
+          <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
+          <properties />
         </stereotype>
       </stereotypes>
       <metadata />

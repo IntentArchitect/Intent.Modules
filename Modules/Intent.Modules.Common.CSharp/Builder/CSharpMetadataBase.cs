@@ -42,6 +42,11 @@ public abstract class CSharpMetadataBase : ICSharpMetadataBase
         return Metadata[key];
     }
 
+    public void RemoveMetadata(string key)
+    {
+        Metadata.Remove(key);
+    }
+
     public bool TryGetMetadata<T>(string key, out T value)
     {
         if (Metadata.TryGetValue(key, out var valueFound) && valueFound is T castValue)

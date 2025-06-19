@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="f7772228-e409-4998-92b7-d0ab6b7b338a" type="Mappable Elements Package Extension" typeId="bddb69f0-e2c8-4373-b5cb-d701f311f935">
   <name>Application Source Action Extensions</name>
-  <display>Application Source Action Extensions: Application Source Mappables</display>
+  <display>Application Source Action Extensions: Invocation Source Mappables</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
@@ -26,7 +26,7 @@
     <childElement id="df404369-916e-4385-a29b-cbf86aa99846" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
       <comment>TODO: Add Data Contract</comment>
       <name>Call Operation Action</name>
-      <display>Call Operation Action: Call Service Operation Target End</display>
+      <display>Call Operation Action: Perform Invocation Target End</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="c9d4fb1b-b432-40fb-aae0-887321788d83">
@@ -35,8 +35,8 @@
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
-        <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-        <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+        <typePackageName>Intent.Modelers.Services</typePackageName>
+        <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -69,6 +69,7 @@
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+            <property name="72082228-cb81-4bce-a85e-8b44e8c23808" display="Override Map To Parent Function" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -120,6 +121,7 @@
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+            <property name="72082228-cb81-4bce-a85e-8b44e8c23808" display="Override Map To Parent Function" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -171,6 +173,7 @@
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+            <property name="72082228-cb81-4bce-a85e-8b44e8c23808" display="Override Map To Parent Function" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -222,6 +225,7 @@
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+            <property name="72082228-cb81-4bce-a85e-8b44e8c23808" display="Override Map To Parent Function" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -273,6 +277,7 @@
             <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
             <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
             <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+            <property name="72082228-cb81-4bce-a85e-8b44e8c23808" display="Override Map To Parent Function" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

@@ -78,7 +78,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class QueryEntityActionTargetEndModel : QueryEntityActionEndModel
+    public class QueryEntityActionTargetEndModel : QueryEntityActionEndModel, IProcessingActionModel
     {
         public const string SpecializationTypeId = "93ef6675-cba4-4998-adff-cb22d5343ed4";
         public const string SpecializationType = "Query Entity Action Target End";

@@ -10,22 +10,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#3e69085c-fa2f-44bd-93eb-41075fd472f8</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/CallServiceOperationModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>CallServiceOperationModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#3e69085c-fa2f-44bd-93eb-41075fd472f8</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/CallServiceOperationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>CallServiceOperationModelAssociationExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#058e6046-75fc-4d9f-92ff-a27306f61db7</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/CommandExtensionModel.cs</ApplicationRelativeFilePath>
@@ -134,6 +118,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Migrations/Migration_02_01_04_Pre_00.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Migration_02_01_04_Pre_00.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>c827be24-93e1-47b4-8ca4-f71a83a835a5</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#53f95d9f-9210-4065-aa9b-98e226e3626b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Migrations/Migration_02_02_00_Alpha_00.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Migration_02_02_00_Alpha_00.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

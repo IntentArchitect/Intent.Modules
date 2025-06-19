@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.EventInteractions</id>
-  <version>1.2.1</version>
+  <version>2.0.0-alpha.0</version>
   <supportedClientVersions>[4.3.0-a,5.0.0-a)</supportedClientVersions>
   <summary>Services modeler extensions for describing interactions between an application's  services and integration events.</summary>
   <description>Services modeler extensions for describing interactions between an application's  services and integration events.</description>
@@ -12,11 +12,11 @@
   <factoryExtensions></factoryExtensions>
   <moduleSettings></moduleSettings>
   <dependencies>
-    <dependency id="Intent.Common" version="3.7.8" />
+    <dependency id="Intent.Common" version="3.8.0-alpha.0" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
     <dependency id="Intent.Modelers.Domain" version="3.11.1" />
     <dependency id="Intent.Modelers.Eventing" version="6.0.1" />
-    <dependency id="Intent.Modelers.Services" version="3.8.3" />
+    <dependency id="Intent.Modelers.Services" version="4.0.0-alpha.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -29,5 +29,7 @@
     <install target="Services" src="modelers/Services Event Interactions.designer.settings" externalReference="bcc2079b-d8d7-4d7a-a3b5-79ebd687a02e" />
     <install target="Services;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Services.EventInteractions/Intent.Modelers.Services.EventInteractions.pkg.config" externalReference="014c4929-4a23-47d6-89d1-8dd4cb3a879c" />
   </metadata>
-  <migrations />
+  <migrations>
+    <migration version="2.0.0-alpha.0" />
+  </migrations>
 </package>

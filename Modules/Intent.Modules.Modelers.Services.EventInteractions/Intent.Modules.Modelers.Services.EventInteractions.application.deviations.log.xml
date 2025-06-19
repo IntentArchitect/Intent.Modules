@@ -2,19 +2,6 @@
 <deviationsLog>
   <files>
     <file>
-      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#9510ff76-fba3-4eca-a5dd-0cfefc8f5bb6</correlationId>
-      <path>Intent.Modules.Modelers.Services.EventInteractions/Api/CallServiceOperationModelAssociationExtensions.cs</path>
-      <count>1</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2024-11-22T13:18:10.3683783Z</updatedAt>
-      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
-      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
-      <approvedAt>2024-11-28T10:47:48.7839423Z</approvedAt>
-      <deviationsHash>95AB2835E13F632CAA2E426C797ABB59F62D265E38246CAF7B13296304CDABAE</deviationsHash>
-      <fileHash>498C161345D076538437757E9880B8C0EF8D8B5EA21D1A019E4615A0A387A6BF</fileHash>
-    </file>
-    <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c0582230-22f5-4f74-8eb0-ec6fc9364900</correlationId>
       <path>Intent.Modules.Modelers.Services.EventInteractions/Api/IntegrationEventHandlerModel.cs</path>
       <count>1</count>
@@ -39,19 +26,6 @@
       <approvedAt>2024-11-28T10:47:51.5116361Z</approvedAt>
       <deviationsHash>473EF60C7A1985368EB251616FA1CF0A88326DFCEA1BB46243AAB8DF31328BCC</deviationsHash>
       <fileHash>65C8EC2723E62FF2C54DAAD8848F81935943AD8B8A5B7B8D3B4E40BF7EFBAF90</fileHash>
-    </file>
-    <file>
-      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#38a3de5a-ca88-4f6e-88b9-88e5953936b2</correlationId>
-      <path>Intent.Modules.Modelers.Services.EventInteractions/Api/SendCommandModelAssociationExtensions.cs</path>
-      <count>1</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2024-11-22T13:18:10.368391Z</updatedAt>
-      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
-      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
-      <approvedAt>2024-11-28T10:47:52.9498831Z</approvedAt>
-      <deviationsHash>95AB2835E13F632CAA2E426C797ABB59F62D265E38246CAF7B13296304CDABAE</deviationsHash>
-      <fileHash>0EA90B4C0A144A68403E8BE75BDC700D44CB0AD2C576523AC3C11C6F6CB3368F</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#389a7478-a8f1-4acc-adff-a73ce4aa7e6d</correlationId>

@@ -62,6 +62,9 @@
       <parentFolderId>f485e4aa-a032-4b9a-aa85-5d2c62d75799</parentFolderId>
       <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
       <packageName>Intent.Modelers.Services.EventInteractions</packageName>
+      <traits>
+        <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+      </traits>
       <stereotypes>
         <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
           <addedByDefault>true</addedByDefault>
@@ -89,6 +92,12 @@
             <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
           </properties>
         </stereotype>
+        <stereotype stereotypeDefinitionId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]">
+          <addedByDefault>false</addedByDefault>
+          <definitionPackageName>Intent.Common</definitionPackageName>
+          <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
+          <properties />
+        </stereotype>
       </stereotypes>
       <metadata />
       <childElements>
@@ -105,60 +114,19 @@
           <stereotypes />
           <metadata />
           <childElements>
-            <childElement id="5a4c028f-e8fe-4cac-8fb5-d71a19c2532f" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-              <name>Send Command</name>
-              <display>Send Command: Send Command</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="813bc982-a912-4704-b240-4cbc67d15619">
-                <typeId>38a3de5a-ca88-4f6e-88b9-88e5953936b2</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.EventInteractions</typePackageName>
-                <typePackageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>f812ef07-bceb-4b2b-a30d-658d20f7ec56</parentFolderId>
-              <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
-              <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
-                  <comment />
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + a" isActive="true" />
-                    <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
-                    <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
-                    <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
-                    <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
-                    <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
-                    <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
-                    <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
             <childElement id="c76525af-695e-4b85-bc20-72d164d6e826" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-              <name>Call Service Operation</name>
-              <display>Call Service Operation: Call Service Operation</display>
+              <name>Invoke Service</name>
+              <display>Invoke Service: Perform Invocation</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="3ed0da8f-dd49-47e6-9188-db07a9b6085d">
-                <typeId>9510ff76-fba3-4eca-a5dd-0cfefc8f5bb6</typeId>
+                <typeId>3e69085c-fa2f-44bd-93eb-41075fd472f8</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
                 <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.Services.EventInteractions</typePackageName>
-                <typePackageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</typePackageId>
+                <typePackageName>Intent.Modelers.Services</typePackageName>
+                <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
@@ -179,6 +147,7 @@
                     <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
                     <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
                     <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                    <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" isActive="true" />
                     <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
                     <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
                   </properties>
@@ -220,6 +189,7 @@
                     <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
                     <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
                     <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                    <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" isActive="true" />
                     <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
                     <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
                   </properties>
@@ -261,6 +231,7 @@
                     <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
                     <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
                     <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                    <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" isActive="true" />
                     <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
                     <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
                   </properties>

@@ -1,4 +1,8 @@
-﻿### Version 5.4.3
+﻿### Version 5.5.0
+
+- Improvement: Added `[Invokable]` trait to Proxy Operations.
+
+### Version 5.4.3
 
 - Improvement: Services defined in sub folders can now be included when creating a `Service Proxy`.
 

@@ -10,22 +10,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#9510ff76-fba3-4eca-a5dd-0cfefc8f5bb6</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/CallServiceOperationModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>CallServiceOperationModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#9510ff76-fba3-4eca-a5dd-0cfefc8f5bb6</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/CallServiceOperationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>CallServiceOperationModelAssociationExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#a7f8da59-460f-4764-89ee-6fb5dbd67642</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
@@ -54,22 +38,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/PublishIntegrationEventModelAssociationExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>PublishIntegrationEventModelAssociationExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#38a3de5a-ca88-4f6e-88b9-88e5953936b2</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/SendCommandModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>SendCommandModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#38a3de5a-ca88-4f6e-88b9-88e5953936b2</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/SendCommandModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>SendCommandModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -150,6 +118,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.EventInteractions.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.EventInteractions.csproj</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>522e8345-4af2-43a8-82d9-bd812e7b5b7a</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#b9cdda93-9f1a-484e-bf3e-14e507e06c05</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Migrations/Migration_02_00_00_Alpha_00.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Migration_02_00_00_Alpha_00.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

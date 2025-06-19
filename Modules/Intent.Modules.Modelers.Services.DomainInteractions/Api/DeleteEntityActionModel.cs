@@ -78,7 +78,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class DeleteEntityActionTargetEndModel : DeleteEntityActionEndModel
+    public class DeleteEntityActionTargetEndModel : DeleteEntityActionEndModel, IProcessingActionModel
     {
         public const string SpecializationTypeId = "4a04cfc2-5841-438c-9c16-fb58b784b365";
         public const string SpecializationType = "Delete Entity Action Target End";

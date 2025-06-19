@@ -45,7 +45,7 @@
       <childElements>
         <childElement id="9a4d5149-77f8-4321-b3fe-0c1aa91c7267" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05">
           <name>Import</name>
-          <display>[import] Application Source Mappables</display>
+          <display>[import] Invocation Source Mappables</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="af153f9e-0fb8-43f6-8cec-379086a92db4">
@@ -137,6 +137,7 @@
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="true" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="return element.getParent('DTO').getName() + element.getName() + 'Dto'" isActive="true" />
                 <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+                <property name="72082228-cb81-4bce-a85e-8b44e8c23808" display="Override Map To Parent Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -187,6 +188,7 @@
                     <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="true" isActive="true" />
                     <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="true" />
                     <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+                    <property name="72082228-cb81-4bce-a85e-8b44e8c23808" display="Override Map To Parent Function" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -240,6 +242,7 @@
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
                 <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+                <property name="72082228-cb81-4bce-a85e-8b44e8c23808" display="Override Map To Parent Function" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

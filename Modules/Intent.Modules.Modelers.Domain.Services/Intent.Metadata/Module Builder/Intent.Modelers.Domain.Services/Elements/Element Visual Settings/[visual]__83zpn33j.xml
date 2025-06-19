@@ -3,8 +3,8 @@
   <name>[visual]</name>
   <display>[visual]: Domain Service</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-manually</sort-children>
-  <order>1</order>
+  <sort-children>manually</sort-children>
+  <order>2</order>
   <genericTypes />
   <typeReference id="698515aa-f52e-4ade-a944-e8094573d7e9">
     <typeId>07f936ea-3756-48c8-babd-24ac7271daac</typeId>

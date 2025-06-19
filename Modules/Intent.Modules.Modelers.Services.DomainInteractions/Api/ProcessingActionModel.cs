@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.DomainInteractions.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ProcessingActionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class ProcessingActionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IProcessingActionModel
     {
         public const string SpecializationType = "Processing Action";
         public const string SpecializationTypeId = "405a2857-b911-431f-8142-719a0e9f15f3";

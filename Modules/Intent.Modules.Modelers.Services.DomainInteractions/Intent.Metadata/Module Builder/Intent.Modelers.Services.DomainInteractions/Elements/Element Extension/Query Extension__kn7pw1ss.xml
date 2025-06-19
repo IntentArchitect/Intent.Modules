@@ -94,7 +94,7 @@
                 <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
                 <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
-                <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" isActive="true" />
+                <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" value="1" isActive="true" />
                 <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
                 <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
               </properties>
@@ -104,8 +104,8 @@
           <childElements />
         </childElement>
         <childElement id="cc0a8bec-7d28-4178-b375-b27a49fcf91b" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Call Service Operation</name>
-          <display>Call Service Operation: Call Service Operation</display>
+          <name>Invoke Service</name>
+          <display>Invoke Service: Perform Invocation</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="9127d8e6-6b36-4b9e-969c-7d2634708525">
@@ -114,8 +114,8 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-            <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+            <typePackageName>Intent.Modelers.Services</typePackageName>
+            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -136,7 +136,7 @@
                 <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
                 <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
-                <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" isActive="true" />
+                <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" value="1" isActive="true" />
                 <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
                 <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
               </properties>
@@ -185,9 +185,9 @@
                 <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
                 <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                 <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
-                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return isMapped();" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return element.isMapped();" isActive="true" />
                 <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
-                <property name="c37d8704-0003-4886-b6c2-4e51aa22a8f9" display="Menu Group" isActive="true" />
+                <property name="c37d8704-0003-4886-b6c2-4e51aa22a8f9" display="Menu Group" value="2" isActive="true" />
                 <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
                 <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
               </properties>

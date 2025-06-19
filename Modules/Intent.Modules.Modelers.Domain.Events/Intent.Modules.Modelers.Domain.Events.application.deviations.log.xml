@@ -1,4 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#8014b71d-627b-4349-b6d7-5011dfa1bb09</correlationId>
+      <path>Intent.Modules.Modelers.Domain.Events/Api/DomainEventAssociationModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2025-06-03T19:27:46.6698116Z</updatedAt>
+      <deviationsHash>5AF01A16844071C22FE6065E6D5615B23787BC00BB7624DC077F555ABA9828B6</deviationsHash>
+      <fileHash>0D72122579285FFDE184ACE970AAF6135208FCD4CD2C9BAE3A8207F0957FC817</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#90831494-f069-44eb-b488-ab2dba7518ea</correlationId>
+      <path>Intent.Modules.Modelers.Domain.Events/Api/DomainEventHandlerAssociationModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2025-06-03T19:27:46.6698257Z</updatedAt>
+      <deviationsHash>71A376E02561894ECF1AD8292C7219CD87135D120000FEA0431B84E7CD417EEF</deviationsHash>
+      <fileHash>89958C7401A3A8C5B440FE615F6480D423C3C94CB033203815BBEC4D4B08F797</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d80e61c5-7e4c-4175-9df1-0413f664824c</correlationId>
+      <path>Intent.Modules.Modelers.Domain.Events/Api/DomainEventHandlerModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2025-06-03T19:27:46.6698719Z</updatedAt>
+      <deviationsHash>93A7D353E4206737917755050BC19AFDE10A3616D2BF09CEA233A8D861E020F5</deviationsHash>
+      <fileHash>51A321F81ECA55C2FEC5F9B935DB40DFBAEB99F847FDA0EE2CC795770E4D5AD3</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0814e459-fb9b-47db-b7eb-32ce30397e8a</correlationId>
+      <path>Intent.Modules.Modelers.Domain.Events/Api/DomainEventModel.cs</path>
+      <count>2</count>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2025-06-03T19:27:46.6698641Z</updatedAt>
+      <deviationsHash>CC7C26613FAA81CB82A858232A530C042268D3917AFCFBB8EC4CC77554DA6DBE</deviationsHash>
+      <fileHash>83B3EC990F159B0A34A2B17B020BD961680A910F1AE47959129C0658B08AECFD</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#e75da448-69ee-4f99-82e0-8e56ac7c74dc</correlationId>
+      <path>Intent.Modules.Modelers.Domain.Events/Api/FolderExtensionModel.cs</path>
+      <count>2</count>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2025-06-03T19:27:46.6698458Z</updatedAt>
+      <deviationsHash>293D35CE05B204B67A844243ED481139AF37FFA0069D785A2217D68584323341</deviationsHash>
+      <fileHash>02662269D6A868E3AFAE7BDD7B6264C01BB5A78386E9BAC1195FD8E3B9656F27</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b4d69073-5abb-4968-b41b-545b2f7408ed</correlationId>
+      <path>Intent.Modules.Modelers.Domain.Events/Api/PropertyModel.cs</path>
+      <count>2</count>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2025-06-03T19:27:46.6698801Z</updatedAt>
+      <deviationsHash>679240A618DE1F579DF5DC6148B2924D616FFD6BA7994FA995B3CB031CF0A07F</deviationsHash>
+      <fileHash>9923D10D71B926B2D8E2E83DA2F20C01EF507B637570D96D307155D30FBD3034</fileHash>
+    </file>
+  </files>
 </deviationsLog>

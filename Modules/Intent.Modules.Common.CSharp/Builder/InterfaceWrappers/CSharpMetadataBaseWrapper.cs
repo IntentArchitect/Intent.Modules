@@ -12,6 +12,8 @@ internal abstract class CSharpMetadataBaseWrapper(ICSharpMetadataBase wrapped) :
 
     object ICSharpCodeContext.GetMetadata(string key) => wrapped.GetMetadata(key);
 
+    public void RemoveMetadata(string key) => wrapped.GetMetadata(key);
+
     bool ICSharpCodeContext.TryGetMetadata<T>(string key, out T value) => wrapped.TryGetMetadata(key, out value);
 
     bool ICSharpCodeContext.TryGetMetadata(string key, out object value) => wrapped.TryGetMetadata(key, out value);

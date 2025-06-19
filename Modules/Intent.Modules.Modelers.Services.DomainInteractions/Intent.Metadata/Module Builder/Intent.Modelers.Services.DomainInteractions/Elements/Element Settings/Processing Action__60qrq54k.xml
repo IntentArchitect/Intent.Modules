@@ -9,6 +9,9 @@
   <parentFolderId>f36cb21a-faf9-46ff-85e7-41f38345253d</parentFolderId>
   <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
   <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+  <traits>
+    <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+  </traits>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>

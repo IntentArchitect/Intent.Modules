@@ -78,7 +78,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class UpdateEntityActionTargetEndModel : UpdateEntityActionEndModel
+    public class UpdateEntityActionTargetEndModel : UpdateEntityActionEndModel, IProcessingActionModel
     {
         public const string SpecializationTypeId = "516069f6-09cc-4de8-8e31-3c71ca823452";
         public const string SpecializationType = "Update Entity Action Target End";

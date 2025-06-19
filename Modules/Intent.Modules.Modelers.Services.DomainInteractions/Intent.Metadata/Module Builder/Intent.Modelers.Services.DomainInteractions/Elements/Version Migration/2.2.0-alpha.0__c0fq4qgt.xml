@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="53f95d9f-9210-4065-aa9b-98e226e3626b" type="Version Migration" typeId="03f24c57-66d8-4868-95a7-6daef900dc7f">
+  <name>2.2.0-alpha.0</name>
+  <display>2.2.0-alpha.0</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>c244945b-ce19-4288-bb18-71072297d054</parentFolderId>
+  <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+  <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

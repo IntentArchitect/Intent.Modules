@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -24,6 +25,8 @@ public class CSharpInterfaceProperty : CSharpProperty, ICSharpInterfaceProperty
         File = parent.File;
         AccessModifier = string.Empty;
     }
+
+    IEnumerable<ICSharpAttribute> ICSharpDeclaration<ICSharpProperty>.Attributes => Attributes;
 
     ICSharpInterfaceProperty ICSharpInterfaceProperty.Public() => Public();
     public CSharpInterfaceProperty Public()

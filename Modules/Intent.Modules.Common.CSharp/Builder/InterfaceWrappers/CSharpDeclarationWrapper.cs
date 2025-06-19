@@ -10,6 +10,8 @@ namespace Intent.Modules.Common.CSharp.Builder.InterfaceWrappers
         where TImpl : CSharpDeclaration<TImpl>
         where TSpecialization : class, ICSharpDeclaration<TSpecialization>
     {
+        public IEnumerable<ICSharpAttribute> Attributes { get; }
+
         public TSpecialization AddAttribute(string name, Action<ICSharpAttribute>? configure = null)
         {
             wrapped.AddAttribute(name, configure);

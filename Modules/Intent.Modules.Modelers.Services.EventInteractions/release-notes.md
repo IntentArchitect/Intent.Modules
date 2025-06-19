@@ -1,3 +1,7 @@
+### Version 2.0.0
+
+- Improvement: Added `[Processing Handler]` trait to Event Handlers.
+
 ### Version 1.2.1
 
 - Improvement: `ApiMetadataManagerCustomExtensions` been updated to have method overloads accepting `Application Id` parameters.
@@ -17,7 +21,7 @@
  
 ### Version 1.1.1
 
-- Improvement: Added Stereotype visuals for `Mesasge` and `Integration Command`.
+- Improvement: Added Stereotype visuals for `Message` and `Integration Command`.
 - Fixed: Scripting issue which would under certain circumstances rename Integration Handlers.
 
 ### Version 1.1.0

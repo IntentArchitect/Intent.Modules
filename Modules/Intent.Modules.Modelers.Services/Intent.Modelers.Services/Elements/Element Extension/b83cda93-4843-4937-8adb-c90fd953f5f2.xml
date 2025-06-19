@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="b83cda93-4843-4937-8adb-c90fd953f5f2" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>Operation Extension</name>
+  <display>Operation Extension: Operation</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="4a757acb-54ed-4d37-896d-e1b88e85577e">
+    <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Services</typePackageName>
+    <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>a62352ef-3960-46e8-9939-816f20940675</parentFolderId>
+  <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+  <packageName>Intent.Modelers.Services</packageName>
+  <traits>
+    <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]" />
+    <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+  </traits>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="35226a83-3965-4224-8aef-20c68a0c5180" display="Mode" value="Inherit" isActive="true" />
+        <property name="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0" display="Display Name" isActive="false" />
+        <property name="17223dbd-8df0-4700-8b81-02274ca3ed7f" display="Hint" isActive="false" />
+        <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" isActive="false" />
+        <property name="08ec0581-c90a-489b-858f-ee265327c948" display="Target Traits" isActive="true" />
+        <property name="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e" display="Default Type Id" isActive="false" />
+        <property name="7a0c4185-1c08-4d3e-9185-14683d7a3bd0" display="Allow Collection" value="Inherit" isActive="false" />
+        <property name="e3dc90ec-4f5f-4f20-b271-e28a5094dc91" display="Allow Nullable" value="Inherit" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="312eab00-f6db-492e-bbb4-e41383c8d3d8" name="Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" value="" isActive="true" />
+        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Common</definitionPackageName>
+      <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
+      <properties />
+    </stereotype>
+    <stereotype stereotypeDefinitionId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Common</definitionPackageName>
+      <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
+      <properties />
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

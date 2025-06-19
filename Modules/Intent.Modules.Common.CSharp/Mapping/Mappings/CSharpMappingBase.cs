@@ -217,6 +217,10 @@ public abstract class CSharpMappingBase : ICSharpMapping
         {
             if (TryGetSourceReplacement(mappingPathTarget.Element, out var replacement))
             {
+                if (replacement == string.Empty)
+                {
+                    continue;
+                }
                 result = !string.IsNullOrWhiteSpace(replacement) ? new CSharpStatement(replacement) : null;
             }
             else
@@ -278,10 +282,15 @@ public abstract class CSharpMappingBase : ICSharpMapping
     {
         CSharpStatement? result = default;
         var mappingPaths = GetTargetPath();
+        var ignorePathTarget = false;
         foreach (var mappingPathTarget in mappingPaths)
         {
             if (TryGetTargetReplacement(mappingPathTarget.Element, out var replacement))
             {
+                if (replacement == string.Empty)
+                {
+                    continue;
+                }
                 result = !string.IsNullOrWhiteSpace(replacement) ? new CSharpStatement(replacement) : null;
             }
             else

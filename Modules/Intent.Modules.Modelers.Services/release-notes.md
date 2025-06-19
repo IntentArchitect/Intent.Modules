@@ -1,3 +1,7 @@
+### Version 4.0.0
+
+- New Feature: Generalized `Perform Invocation` interactions for indicating invocations of any accessible services in the application. This replaces legacy associations like the `Call Service Operation` and `Send Command` that existed in the `Intent.Modelers.Services.EventInteractions` module.
+
 ### Version 3.10.0
 
 - Improvement: Services can now be associated with comments in designer diagrams.

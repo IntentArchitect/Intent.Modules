@@ -372,6 +372,11 @@ public abstract class MappingManagerBase
         _mappingResolvers.Add(resolver);
     }
 
+    public void ClearMappingResolvers()
+    {
+        _mappingResolvers.Clear();
+    }
+
     private ICSharpMapping CreateMapping(
         ICanBeReferencedType model,
         IList<IElementToElementMappedEnd> mappings,

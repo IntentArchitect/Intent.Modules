@@ -45,7 +45,7 @@
       <childElements>
         <childElement id="bc6d0a72-fc33-467a-aea6-1f5250b89a8f" type="Mappable Elements Package Import" typeId="90892fa1-b0b9-4af9-9f3b-4fdf37db9b05">
           <name>Import</name>
-          <display>[import] Application Source Mappables</display>
+          <display>[import] Invocation Source Mappables</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="51d3b067-e9f1-4fb1-b201-f1b33ae73f61">
