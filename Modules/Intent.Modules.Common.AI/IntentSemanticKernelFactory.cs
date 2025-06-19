@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net.Http;
 using Anthropic.SDK;
-using Anthropic.SDK.Messaging;
 using Intent.Engine;
 using Intent.Modules.Common.AI.Settings;
 using Microsoft.Extensions.AI;
@@ -12,6 +11,9 @@ using Microsoft.SemanticKernel.ChatCompletion;
 using OllamaSharp;
 
 namespace Intent.Modules.Common.AI;
+
+#pragma warning disable SKEXP0070
+#pragma warning disable SKEXP0001
 
 public class IntentSemanticKernelFactory
 {
@@ -66,7 +68,6 @@ public class IntentSemanticKernelFactory
                     modelId: model);
                 break;
             case AISettings.ProviderOptionsEnum.Ollama:
-#pragma warning disable SKEXP0070
                 builder.Services.AddOllamaChatCompletion(
                     new OllamaApiClient(
                         new HttpClient
@@ -76,7 +77,6 @@ public class IntentSemanticKernelFactory
                         },
                         model)
                 );
-#pragma warning restore SKEXP0070
                 break;
             case AISettings.ProviderOptionsEnum.Anthropic:
                 apiKey = settings.AnthropicAPIKey();
@@ -85,7 +85,6 @@ public class IntentSemanticKernelFactory
                     apiKey = Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY");
                 }
 
-#pragma warning disable SKEXP0001
                 var apiAuth = new APIAuthentication(apiKey ?? throw new Exception("No API Key defined. Locate the AI User Settings or set the ANTHROPIC_API_KEY environment variable."));
                 builder.Services.AddTransient((sp) =>
                 {
@@ -101,7 +100,6 @@ public class IntentSemanticKernelFactory
                             .AsChatCompletionService(sp);
                     return skChatService;
                 });
-#pragma warning restore SKEXP0001
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
