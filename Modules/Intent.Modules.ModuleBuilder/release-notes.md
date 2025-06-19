@@ -1,6 +1,9 @@
-### Version 3.15.0
+### Version 3.16.0
 
 - Feature: Model support for Stereotype Definition `Is Trait` option. When checked, the Stereotype Definition will generate an interface. If it is applied to `Element Settings` or `Association End Settings`, the interface will be implemented by the wrapping models and/or appropriate extension methods will be created.
+
+### Version 3.15.0
+
 - Improvement: Documentation topics added.
 
 ### Version 3.14.0
