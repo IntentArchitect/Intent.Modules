@@ -153,3 +153,5 @@ foreach ($path in $moduleConfigPaths) {
 if ($global:hasError) {
     exit -1;
 }
+
+exit 0

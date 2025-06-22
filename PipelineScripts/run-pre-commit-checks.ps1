@@ -17,7 +17,7 @@ $currentPhase = 0;
 $modulesFolder = [System.IO.Path]::GetDirectoryName($ModulesIsln)
 $testsFolder = [System.IO.Path]::GetDirectoryName($TestsIsln)
 
-if ($Env:INTENT_PRE_COMMIT_CHECK_PHASE -gt 0) {
+if ([int]$Env:INTENT_PRE_COMMIT_CHECK_PHASE -gt 0) {
     Write-Host "Resuming from last successfully completed phase, use the -Reset parameter to remove memory of successfully completed phases."
 }
 
