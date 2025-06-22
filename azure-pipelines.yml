@@ -59,11 +59,15 @@ steps:
   submodules: 'recursive'
 
 - task: PowerShell@2
-  displayName: 'Imodspec validation'
+  displayName: 'Pre-build validations'
   inputs:
     pwsh: true
-    filePath: 'PipelineScripts/pre-build-validation.ps1'
-    arguments: 'true'
+    filePath: 'PipelineScripts/pre-build-validations.ps1'
+    arguments: >
+      -ModulesFolder
+      "Modules"
+      -TestsFolder
+      "Tests"
 
 - task: UseDotNet@2
   displayName: 'Install latest .NET 8 SDK'
@@ -136,7 +140,7 @@ steps:
 
 - task: PowerShell@2
   displayName: 'Update Project URLs in imodspecs'
-  condition: and(succeeded(), in('True', variables.isMaster, variables.isHotfix))
+  condition: and(succeeded(), in('True', variables.isMaster))
   inputs:
     targetType: 'inline'
     pwsh: true
@@ -156,14 +160,6 @@ steps:
       --no-restore
       -p:IntentModuleOutputPath=$(Build.ArtifactStagingDirectory)
 
-# Run this check as early as possible as devs will forget to do this and early feedback is useful.
-- task: PowerShell@2
-  displayName: 'Template Testing Validation'
-  inputs:
-    targetType: 'inline'
-    pwsh: true
-    script: ./PipelineScripts/pre-template-test-validation.ps1 "$(Build.ArtifactStagingDirectory)" "$(Build.SourceBranch)" "$(intent-module-solution)" "$(intent-solution)"
-
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
   env:
@@ -174,6 +170,34 @@ steps:
     arguments: >
       --no-build
       --filter Requirement!=CosmosDB
+
+- task: PowerShell@2
+  displayName: 'Add repositories (modules)'
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: >
+      ./PipelineScripts/update-repositories.ps1
+      -BuildArtifactStagingDirectory 
+      "$(Build.ArtifactStagingDirectory)"
+      -SourceBranch
+      "$(Build.SourceBranch)"
+      -IslnRelativePath
+      "$(intent-module-solution)"
+
+- task: PowerShell@2
+  displayName: 'Add repositories (tests)'
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: >
+      ./PipelineScripts/update-repositories.ps1
+      -BuildArtifactStagingDirectory 
+      "$(Build.ArtifactStagingDirectory)"
+      -SourceBranch
+      "$(Build.SourceBranch)"
+      -IslnRelativePath
+      "$(intent-solution)"
 
 - task: PowerShell@2
   displayName: 'Install Intent SF CLI'
@@ -192,7 +216,7 @@ steps:
       dotnet tool install Intent.SoftwareFactory.CLI$nightly --prerelease --tool-path $toolPath
 
 - task: PowerShell@2
-  displayName: 'Run SF CLI on module solution'
+  displayName: 'Run SF CLI on modules solution'
   env:
     INTENT_USER: $(intent-architect-user)
     INTENT_PASS: $(intent-architect-password)
@@ -203,7 +227,7 @@ steps:
     script: |
       $toolPath = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
 
-      & "$toolPath/intent-cli" ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_MODULE_SOLUTION_PATH"
+      & "$toolPath/intent-cli" ensure-no-outstanding-changes -- "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_MODULE_SOLUTION_PATH"
 
 - task: PowerShell@2
   displayName: 'Run SF CLI on tests solution'
@@ -217,7 +241,7 @@ steps:
     script:  |
       $toolPath = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
 
-      & "$toolPath/intent-cli" ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH" --check-deviations
+      & "$toolPath/intent-cli" ensure-no-outstanding-changes --check-deviations -- "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH"
 
 - task: PowerShell@2
   displayName: 'Filter artifacts to publish'
