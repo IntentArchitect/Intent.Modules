@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Net.Http;
+using Anthropic.SDK;
 using Intent.Engine;
 using Intent.Modules.Common.AI.Settings;
+using Microsoft.Extensions.AI;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.ChatCompletion;
 using OllamaSharp;
 
 namespace Intent.Modules.Common.AI;
+
+#pragma warning disable SKEXP0070
+#pragma warning disable SKEXP0001
+
+#nullable enable
 
 public class IntentSemanticKernelFactory
 {
@@ -18,13 +26,14 @@ public class IntentSemanticKernelFactory
         _userSettingsProvider = userSettingsProvider;
     }
 
-
     public Kernel BuildSemanticKernel() => BuildSemanticKernel(null);
-    public Kernel BuildSemanticKernel(Action<IKernelBuilder> configure)
+    
+    public Kernel BuildSemanticKernel(Action<IKernelBuilder>? configure)
     {
         var settings = _userSettingsProvider.GetAISettings();
         var model = string.IsNullOrWhiteSpace(settings.Model()) ? "gpt-4o" : settings.Model();
-        var apiKey = string.Empty;
+        string? apiKey;
+        
         // Create the Semantic Kernel instance with your LLM service.
         // Replace <your-openai-key> with your actual OpenAI API key and adjust the model name as needed.
         var builder = Kernel.CreateBuilder();
@@ -34,10 +43,10 @@ public class IntentSemanticKernelFactory
             configure(builder);
         }
 
-        switch (settings.Provider().AsEnum())
+        var provider = settings.Provider().AsEnum();
+        switch (provider)
         {
             case AISettings.ProviderOptionsEnum.OpenAi:
-
                 apiKey = settings.OpenAIAPIKey();
                 if (string.IsNullOrWhiteSpace(apiKey))
                 {
@@ -46,10 +55,10 @@ public class IntentSemanticKernelFactory
 
                 builder.Services.AddOpenAIChatCompletion(
                     modelId: model,
-                    apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the ChatDrivenDomainSettings App Settings or set the OPENAI_API_KEY environment variable."));
+                    apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the AI User Settings or set the OPENAI_API_KEY environment variable."));
                 break;
+            
             case AISettings.ProviderOptionsEnum.AzureOpenAi:
-
                 apiKey = settings.AzureOpenAIAPIKey();
                 if (string.IsNullOrWhiteSpace(apiKey))
                 {
@@ -59,24 +68,48 @@ public class IntentSemanticKernelFactory
                 builder.Services.AddAzureOpenAIChatCompletion(
                     deploymentName: settings.DeploymentName(),
                     endpoint: settings.APIUrl(),
-                    apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the ChatDrivenDomainSettings App Settings or set the AZURE_OPENAI_API_KEY environment variable."),
+                    apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the AI User Settings or set the AZURE_OPENAI_API_KEY environment variable."),
                     modelId: model);
                 break;
+            
             case AISettings.ProviderOptionsEnum.Ollama:
-#pragma warning disable SKEXP0070
                 builder.Services.AddOllamaChatCompletion(
                     new OllamaApiClient(
                         new HttpClient
                         {
-                            Timeout = TimeSpan.FromMinutes(10),
+                            Timeout = TimeSpan.FromMinutes(10), // Running this locally could be slow
                             BaseAddress = new Uri(settings.APIUrl())
                         },
                         model)
                 );
-#pragma warning restore SKEXP0070
                 break;
+            
+            case AISettings.ProviderOptionsEnum.Anthropic:
+                apiKey = settings.AnthropicAPIKey();
+                if (string.IsNullOrWhiteSpace(apiKey))
+                {
+                    apiKey = Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY");
+                }
+
+                var apiAuth = new APIAuthentication(apiKey ?? throw new Exception("No API Key defined. Locate the AI User Settings or set the ANTHROPIC_API_KEY environment variable."));
+                builder.Services.AddTransient((sp) =>
+                {
+                    var skChatService =
+                        new ChatClientBuilder(new AnthropicClient(apiAuth).Messages)
+                            .ConfigureOptions(x =>
+                            {
+                                x.ModelId = model;
+                                x.MaxOutputTokens = int.TryParse(_userSettingsProvider.GetAISettings().MaxTokens(), out var maxTokens) ? maxTokens : null;
+                            })
+                            .UseFunctionInvocation()
+                            .Build(sp)
+                            .AsChatCompletionService(sp);
+                    return skChatService;
+                });
+                break;
+            
             default:
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameof(provider), $"Unknown provider: {provider}");
         }
 
         var kernel = builder.Build();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.AI</id>
-  <version>1.0.0-beta.1</version>
+  <version>1.0.0-beta.2</version>
   <supportedClientVersions>[4.5.0-a,5.0.0)</supportedClientVersions>
   <summary>Support for accessing LLMs via Semantic Kernel within Intent Architect module tasks.</summary>
   <description>Support for accessing LLMs via Semantic Kernel within Intent Architect module tasks.</description>
@@ -22,15 +22,23 @@
             <option value="open-ai" description="Open AI" />
             <option value="azure-open-ai" description="Azure Open AI" />
             <option value="ollama" description="Ollama (Experimental)" />
+            <option value="anthropic" description="Anthropic" />
           </options>
         </setting>
         <setting id="9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8" title="Open AI API Key" type="text">
           <hint>Will fall back to environment variable if empty.</hint>
-          <isActiveFunction>let provider = getProperty("Provider").value;return provider === "open-ai";</isActiveFunction>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "open-ai";</isActiveFunction>
         </setting>
         <setting id="d76d0a4d-60c5-42b4-aa3b-de4f11b44ac1" title="Azure Open AI API Key" type="text">
           <hint>Will fall back to environment variable if empty.</hint>
-          <isActiveFunction>let provider = getProperty("Provider").value;return provider === "azure-open-ai";</isActiveFunction>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "azure-open-ai";</isActiveFunction>
+        </setting>
+        <setting id="715e2ce8-677c-467d-a876-8dc84b99ae05" title="Anthropic API Key" type="text">
+          <hint>Will fall back to environment variable if empty.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "anthropic";</isActiveFunction>
         </setting>
         <setting id="effcfd41-aaed-4278-a7e7-818009584139" title="Model" type="text">
           <defaultValue>gpt-4o</defaultValue>
@@ -49,8 +57,9 @@ return provider === "azure-open-ai";</isActiveFunction>
           <isRequiredFunction>return true;</isRequiredFunction>
         </setting>
         <setting id="4cb52ca6-af4f-4dbf-9f75-5a74438cd281" title="Max Tokens" type="text">
-          <hint>Normally 4096 is the max but if your LLM can handle it you can increase this value.</hint>
           <defaultValue>8192</defaultValue>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "anthropic";</isActiveFunction>
           <isRequiredFunction>return true;</isRequiredFunction>
         </setting>
       </settings>
@@ -79,6 +88,7 @@ return provider === "azure-open-ai";</isActiveFunction>
     <file src="$outDir$/System.ClientModel.dll" inspect="false" />
     <file src="$outDir$/System.Memory.Data.dll" inspect="false" />
     <file src="$outDir$/OpenAI.dll" inspect="false" />
+    <file src="$outDir$/Anthropic.SDK.dll" inspect="false" />
     <file src="$outDir$/Microsoft.Extensions.AI.Abstractions.dll" inspect="false" />
     <file src="$outDir$/Microsoft.Extensions.Logging.dll" inspect="false" />
     <file src="$outDir$/Microsoft.Extensions.Options.dll" inspect="false" />
