@@ -49,7 +49,7 @@ if ([int]$Env:INTENT_PRE_COMMIT_CHECK_PHASE -ge ++$currentPhase) {
     Write-Host "Skipping `"build all modules`" phase as was successfully completed previously."
 }
 else {
-    ./PipelineScripts/build-all.ps1 -Folder "$modulesFolder"
+    ./PipelineScripts/build-all.ps1 -Folder "$modulesFolder" -RestoreFirstWithForceEvaluate
     if ($LASTEXITCODE -ne 0) {
         exit
     }
