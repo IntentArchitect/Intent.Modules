@@ -68,6 +68,7 @@ abstract class CrudStrategy {
             if (projector.getMappings().length > 0) {
                 this.addBasicMapping(projector.getMappings());
             }
+            this.resultDto.collapse();
         }
 
         if ((!privateSettersOnly || hasConstructor(this.entity)) && dialogOptions.canCreate) {
@@ -75,6 +76,7 @@ abstract class CrudStrategy {
             if (this.owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
+            x.collapse();
         }
 
         if ((hasPrimaryKey && !privateSettersOnly) && dialogOptions.canUpdate) {
@@ -82,6 +84,7 @@ abstract class CrudStrategy {
             if (this.owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
+            x.collapse();
         }
 
         if (hasPrimaryKey && dialogOptions.canQueryById) {
@@ -89,6 +92,7 @@ abstract class CrudStrategy {
             if (this.owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
+            x.collapse();
         }
 
         if (dialogOptions.canQueryAll) {
@@ -96,6 +100,7 @@ abstract class CrudStrategy {
             if (this.owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
+            x.collapse();
         }
 
         if (hasPrimaryKey && dialogOptions.canDelete) {
@@ -103,6 +108,7 @@ abstract class CrudStrategy {
             if (this.owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
+            x.collapse();
         }
 
         if (dialogOptions.canDomain) {
@@ -128,6 +134,7 @@ abstract class CrudStrategy {
                 if (this.owningAggregate != null) {
                     this.AddAggregateKeys(x);
                 }
+                x.collapse();
             }
 
         }
