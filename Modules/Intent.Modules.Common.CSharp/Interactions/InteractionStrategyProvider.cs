@@ -40,7 +40,7 @@ public class InteractionStrategyProvider
             Logging.Log.Debug($"Multiple interaction strategies matched for {interaction}: [{string.Join(", ", matched)}]");
         }
 
-        return matched.Any();
+        return matched.Count > 0;
     }
 
     public IInteractionStrategy? GetInteractionStrategy(IElement interaction)
@@ -57,7 +57,7 @@ public class InteractionStrategyProvider
             Logging.Log.Debug($"Multiple interaction strategies found for {interaction}: [{string.Join(", ", matched)}]");
         }
 
-        return matched.First();
+        return matched[0];
     }
 }
 
