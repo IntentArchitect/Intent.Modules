@@ -5,7 +5,7 @@
 
 ### Version 4.7.8
 
-- Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 
+- Improvement: Added stereotype descriptions in preparation for Intent Architect 4.5. 
 
 ### Version 4.7.7
 
