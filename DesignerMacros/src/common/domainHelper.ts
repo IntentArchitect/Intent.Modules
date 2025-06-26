@@ -1,6 +1,11 @@
 /// <reference path="getSurrogateKeyType.ts"/>
 /// <reference path="attributeWithMapPath.ts"/>
 
+interface IKeyChain {
+    attribute: IElementApi; 
+    expectedName: string; 
+}
+
 class DomainHelper {
 
     static isAggregateRoot(element: MacroApi.Context.IElementApi): boolean {
@@ -319,5 +324,81 @@ class DomainHelper {
     static isSelfReferencingZeroToOne(associationEnd: MacroApi.Context.IAssociationApi): boolean {
         return !associationEnd.typeReference.isCollection && associationEnd.typeReference.isNullable &&
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
+    }
+
+    static getOwningAggregateRecursive(entity: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi | null {
+        let owners = DomainHelper.getOwnersRecursive(entity);
+
+        if (owners.length == 0)
+            return null;
+
+        const uniqueIds = new Set(owners.map(item => item.id));
+        if (uniqueIds.size !== 1) {
+            throw new Error(`Entity : '${entity.getName()}' has more than 1 owner.`);
+        }
+        return owners[0];
+    }
+
+    static getOwnersRecursive(entity: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi[] {
+        if (!entity || entity.specialization != "Class") {
+            return null;
+        }
+        
+        let results = entity.getAssociations("Association").filter(x => DomainHelper.isOwnedByAssociation(x));        
+
+        let result: MacroApi.Context.IElementApi[] = [];
+
+        for (let i = 0; i < results.length; i++) {
+            let owner = results[i].typeReference.getType()
+            if (DomainHelper.isAggregateRoot(owner)){
+                result.push(owner);
+            } else {
+                result.push(...DomainHelper.getOwnersRecursive(owner));
+            }               
+        }        
+        return result;
+    }
+
+    static isOwnedByAssociation(association: MacroApi.Context.IAssociationReadOnlyApi) {
+        return association.isSourceEnd() &&
+            !association.typeReference.isNullable &&
+            !association.typeReference.isCollection;
+    }
+
+    static getOwningAggregateKeyChain(entity: MacroApi.Context.IElementApi): IKeyChain[] {
+        if (!entity || entity.specialization != "Class") {
+            return null;
+        }
+        
+        let results = entity.getAssociations("Association").filter(x => DomainHelper.isOwnedByAssociation(x));        
+
+        let result: IKeyChain[] = [];
+
+        if (results.length == 0)
+            return result;
+
+        let owner = results[0].typeReference.getType()
+
+        let pks = DomainHelper.getPrimaryKeys(owner);
+
+        pks.forEach(pk =>{
+            let attribute = lookup(pk.id);
+
+            //expectedName would typically be CountryId if you have a Agg: Country with a Pk: Id
+            let expectedName = attribute.getParent().getName();
+            if (!attribute.getName().startsWith(expectedName)) {
+                expectedName += attribute.getName();
+            }
+            else {
+                expectedName = attribute.getName();
+            }
+
+            result.push({ attribute: attribute, expectedName: expectedName });            
+        });
+
+        if (!DomainHelper.isAggregateRoot(owner)){
+            result.unshift(...DomainHelper.getOwningAggregateKeyChain(owner));
+        }               
+        return result;
     }
 }

@@ -19,6 +19,7 @@ function exposeAsHttpEndPoint(request: MacroApi.Context.IElementApi): void {
     routeParts.push(...folderParts);
 
     if (domainElement != null) {
+        console.warn("getRouteParts");
         routeParts.push(...getRouteParts(request, domainElement));
     }
     else { 

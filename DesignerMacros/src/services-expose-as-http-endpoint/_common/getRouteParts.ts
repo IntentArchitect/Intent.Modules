@@ -20,8 +20,10 @@ function getRouteParts(request: IElementApi, domainElement: MappedDomainElement)
 
     let routeParts: string[] = [];
     const mappedDetails = getMappedRequestDetails(request);
-
     if (!mappedDetails && isDefaultEndpoint) {
+        if (domainElement.entityDomainElementDetails?.hasOwningEntity() == true) {
+            routeParts.push( ...getOwningAggregateRouting(request, domainElement));
+        }
         return routeParts;
     }else if(!mappedDetails && !isDefaultEndpoint) {
         routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
@@ -30,20 +32,7 @@ function getRouteParts(request: IElementApi, domainElement: MappedDomainElement)
 
     // Add the owning entity's ids as parts surrounded with curly braces
     if (domainElement.entityDomainElementDetails?.hasOwningEntity() == true) {
-        let parentIdRouteParts = [...mappedDetails.ownerKeyFields
-            .filter(x => x.existingId != null)
-            .map(x => {
-                const field = request
-                    .getChildren("DTO-Field")
-                    .find(field => field.id === x.existingId);
-
-                return `{${toCamelCase(field.getName())}}`;
-            })];
-        routeParts.push(...parentIdRouteParts);
-
-        // Add a part for name of the owned entity
-        let ownedEntName = toKebabCase(pluralize(domainElement.getName()));
-        routeParts.push(ownedEntName);
+        routeParts.push( ...getOwningAggregateRouting(request, domainElement));
     }
 
     // Add the entity's ids as parts surrounded with curly braces
@@ -68,6 +57,32 @@ function getRouteParts(request: IElementApi, domainElement: MappedDomainElement)
         routeParts.push(...generateNonDefaultEndpointRouteName(request, domainElement.getName()));
     }
 
+    return routeParts;
+}
+
+function getOwningAggregateRouting( request: IElementApi, domainElement: MappedDomainElement): string[]{
+
+    let routeParts: string[] = [];
+    let keys = DomainHelper.getOwningAggregateKeyChain(domainElement.entityDomainElementDetails.entity);        
+    let parentName: string = keys[0].attribute.getParent().getName();
+    console.warn(parentName);
+
+    keys.forEach(pk => {      
+        //Always add aggregate parents event if the keys are not present
+        //countries/{countryId}/states/{stateId}/cities/{id} - With Keys
+        //country/states/cities/{id} - Without Keys
+        if (parentName != pk.attribute.getParent().getName()){
+            let newParent = toKebabCase(pluralize(pk.attribute.getParent().getName()));
+            routeParts.push(newParent);
+            parentName = pk.attribute.getParent().getName()
+        }
+        if (request.getChildren().some(x => x.getName().toLowerCase() == pk.expectedName.toLowerCase())) {
+            routeParts.push(`{${toCamelCase(pk.expectedName)}}`);
+        }
+    });
+
+    let ownedEntName = toKebabCase(pluralize(domainElement.getName()));
+    routeParts.push(ownedEntName);    
     return routeParts;
 }
 

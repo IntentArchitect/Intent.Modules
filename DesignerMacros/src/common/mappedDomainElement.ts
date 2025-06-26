@@ -4,7 +4,7 @@ class EntityDomainElementDetails {
     public readonly owningEntity?: MacroApi.Context.IElementApi;
     
     constructor (public readonly entity: MacroApi.Context.IElementApi) {
-        this.owningEntity = DomainHelper.getOwningAggregate(entity);
+        this.owningEntity = DomainHelper.getOwningAggregateRecursive(entity);
     }
 
     public getOwningOrTargetEntityName(): string {
