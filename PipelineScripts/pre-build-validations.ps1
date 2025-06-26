@@ -122,7 +122,8 @@ foreach ($info in $moduleSpecifications) {
 
         $targetVersion = "$($info.Version.Major).$($info.Version.Minor).$($info.Version.Patch)"
         if (-not (Get-Content $releaseNoteFile).Contains("### Version $targetVersion")) {
-            PrintError $info.FilePath "Could not locate version number $($targetVersion) in release notes"
+            $releaseNotesRelativePath = [System.IO.Path]::GetRelativePath($cwd, $releaseNoteFile);
+            PrintError "$($releaseNotesRelativePath): Could not locate version number $($targetVersion) in release notes"
         }
     }
 
