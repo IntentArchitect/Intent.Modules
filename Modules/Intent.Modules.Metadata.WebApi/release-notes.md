@@ -1,6 +1,7 @@
 ### Version 4.7.9
 
 - Improvement: Grouped context menu options for better separation of options.
+- Improvement: `Expose as HTTP endpoint` macros now have better support for compositional CRUD.
 
 ### Version 4.7.8
 

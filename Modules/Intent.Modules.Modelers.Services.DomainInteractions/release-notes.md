@@ -2,6 +2,7 @@
 
 - Improvement: Updated mapping configurations to support generalized `Invoke Service` interaction system.
 - Improvement: Grouped context menu options for clearer separation of features and usability.
+- Improvement: CRUD accelerator improvements, including better validation and error messaging, improved support for compositional crud.
 
 ### Version 2.1.5
 
