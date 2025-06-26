@@ -1,6 +1,7 @@
 param(
     [Parameter(Mandatory = $true)][string]$IslnPath,
-    [switch]$CheckDeviations
+    [switch]$CheckDeviations,
+    [switch]$ClearCachedModules
 )
 
 $intent_architect_user = $Env:INTENT_PACKAGER_USERNAME
@@ -18,6 +19,12 @@ if (-not $Env:INTENT_PACKAGER_PASSWORD) {
 }
 else {
     $intent_architect_password = [System.Text.Encoding]::Unicode.GetString([System.Security.Cryptography.ProtectedData]::Unprotect([System.Convert]::FromBase64String($Env:INTENT_PACKAGER_PASSWORD), $null, "CurrentUser"))
+}
+
+if ($ClearCachedModules) {
+    $folder = [System.IO.Path]::GetDirectoryName($IslnPath)
+    $cacheFolder = [System.IO.Path]::Combine($folder, ".intent")
+    Remove-Item -Path $cacheFolder -Recurse -Force
 }
 
 $params = @(

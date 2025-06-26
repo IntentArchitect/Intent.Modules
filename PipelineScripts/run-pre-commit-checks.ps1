@@ -61,7 +61,7 @@ if ([int]$Env:INTENT_PRE_COMMIT_CHECK_PHASE -ge ++$currentPhase) {
     Write-Host "Skipping `"ensure no outstanding changes to tests`" phase as was successfully completed previously."
 }
 else {
-    ./PipelineScripts/ensure-no-outstanding-sf-changes.ps1 -IslnPath "$TestsIsln" -CheckDeviations
+    ./PipelineScripts/ensure-no-outstanding-sf-changes.ps1 -IslnPath "$TestsIsln" -CheckDeviations -ClearCachedModules
     if ($LASTEXITCODE -ne 0) {
         exit
     }
