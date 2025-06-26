@@ -62,10 +62,10 @@
           <properties>
             <property name="27138300-900e-4a82-ad06-8abcedf0864a" display="Path" value="`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`" isActive="true" />
             <property name="8996260d-790c-4e7b-8607-65fa2dd4ac24" display="Condition" isActive="true" />
-            <property name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" isActive="true" />
-            <property name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" isActive="true" />
-            <property name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" isActive="true" />
-            <property name="4fb316a4-ebee-45c1-96e0-636698f52976" display="Fill Color" value="return theme.isDark &#xD;&#xA;    ? '#363d4d' // a slightly bluer gray than the default.&#xD;&#xA;//? '#181d27' // very dark&#xD;&#xA;//? '#1e232b' // a bit lighter&#xD;&#xA;    : null;" isActive="true" />
+            <property name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" value="if (element.isReference()){&#xD;&#xA;    return theme.isDark &#xD;&#xA;    ? '#FFB312'&#xD;&#xA;    : &quot;#00A2E8&quot;;&#xD;&#xA;    //: '#AD561B';&#xD;&#xA;}&#xD;&#xA;//'#679856' - External Green&#xD;&#xA;return null;" isActive="true" />
+            <property name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" value="" isActive="true" />
+            <property name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" value="" isActive="true" />
+            <property name="4fb316a4-ebee-45c1-96e0-636698f52976" display="Fill Color" value="let isAggregateRoot = !element.getAssociations(&quot;Association&quot;)&#xD;&#xA;            .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)&#xD;&#xA;if (isAggregateRoot) {&#xD;&#xA;    return theme.isDark &#xD;&#xA;        ? '#363d4d'&#xD;&#xA;        : null;&#xD;&#xA;}&#xD;&#xA;return theme.isDark &#xD;&#xA;    ? '#1e2a38' // a slightly bluer gray than the default.&#xD;&#xA;//? '#181d27' // very dark&#xD;&#xA;//? '#1e232b' // a bit lighter&#xD;&#xA;    : '#edf4fb';" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

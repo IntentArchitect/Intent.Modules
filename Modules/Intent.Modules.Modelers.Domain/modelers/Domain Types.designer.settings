@@ -404,11 +404,26 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
         <display>
           <drawPath>
             <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
-            <fillColor>return theme.isDark 
-    ? '#363d4d' // a slightly bluer gray than the default.
+            <lineColor>if (element.isReference()){
+    return theme.isDark 
+    ? '#FFB312'
+    : "#00A2E8";
+    //: '#AD561B';
+}
+//'#679856' - External Green
+return null;</lineColor>
+            <fillColor>let isAggregateRoot = !element.getAssociations("Association")
+            .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)
+if (isAggregateRoot) {
+    return theme.isDark 
+        ? '#363d4d'
+        : null;
+}
+return theme.isDark 
+    ? '#1e2a38' // a slightly bluer gray than the default.
 //? '#181d27' // very dark
 //? '#1e232b' // a bit lighter
-    : null;</fillColor>
+    : '#edf4fb';</fillColor>
           </drawPath>
           <drawText>
             <style>`font-size: 12px; 

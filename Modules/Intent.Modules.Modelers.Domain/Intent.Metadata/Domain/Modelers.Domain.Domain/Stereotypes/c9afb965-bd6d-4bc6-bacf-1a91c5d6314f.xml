@@ -9,6 +9,7 @@
   <applyMode>manually</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>true</displayIcon>
+  <displayIconFunction>return true;</displayIconFunction>
   <displayFunction />
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>

@@ -3,7 +3,7 @@
   <sourceEnd id="a291b0ca-4535-44d3-a351-81cb0a9e8349" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
     <name>NewClass1</name>
     <display>NewClass1: NewClass1</display>
-    <order>4</order>
+    <order>0</order>
     <typeReference id="12ba3dbd-6731-4d16-a4b8-c9a6e42cc03c">
       <typeId>330867e2-0c19-4ef8-9a87-75a1095e655e</typeId>
       <isNavigable>false</isNavigable>
@@ -22,7 +22,7 @@
   <targetEnd id="6b2e34f2-980f-4c88-b26e-04c69fbf3b3d" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
     <name>aaa</name>
     <display>aaa: NewClass2?</display>
-    <order>9</order>
+    <order>10</order>
     <typeReference id="12ec673e-8d48-4c63-ae95-86b1546f329b">
       <typeId>7c7ea20f-0a80-4beb-a1b1-44b1bcd63a6e</typeId>
       <isNavigable>true</isNavigable>

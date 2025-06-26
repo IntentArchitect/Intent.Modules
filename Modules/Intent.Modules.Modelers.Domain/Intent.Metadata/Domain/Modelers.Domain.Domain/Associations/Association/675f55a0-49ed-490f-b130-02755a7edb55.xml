@@ -3,7 +3,7 @@
   <sourceEnd id="55f23444-77c0-4f48-a05d-8cc08d7c455e" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
     <name>NewClass1s</name>
     <display>NewClass1s: NewClass1[*]</display>
-    <order>4</order>
+    <order>0</order>
     <typeReference id="71862d42-3aca-4c17-89e5-9f3a63bc1912">
       <typeId>330867e2-0c19-4ef8-9a87-75a1095e655e</typeId>
       <isNavigable>false</isNavigable>
@@ -22,7 +22,7 @@
   <targetEnd id="675f55a0-49ed-490f-b130-02755a7edb55" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
     <name>EmptyClass</name>
     <display>EmptyClass: TestClass</display>
-    <order>11</order>
+    <order>12</order>
     <typeReference id="1dff8ac1-164d-4c15-ab71-5cfdba930750">
       <typeId>e3ab1103-695b-43cb-9dad-feea553c2711</typeId>
       <isNavigable>true</isNavigable>

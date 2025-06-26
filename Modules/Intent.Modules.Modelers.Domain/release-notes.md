@@ -1,4 +1,8 @@
-﻿### Version 3.12.2
+﻿### Version 3.12.3
+
+- Improvement: Improved `Aggregate` and `Package referenced` visualizations.
+
+### Version 3.12.2
 
 - Improvement: Newly created entities now have a default name of *NewEntity* and not *NewClass*.
 - Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.

@@ -11,6 +11,7 @@
   <applyMode>manually</applyMode>
   <icon type="CharacterBox" source="F|#FFF176" />
   <displayIcon>true</displayIcon>
+  <displayIconFunction>return true;</displayIconFunction>
   <displayFunction />
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
@@ -26,10 +27,7 @@
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
       <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

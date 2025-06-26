@@ -3,7 +3,7 @@
   <name>NewClass2</name>
   <display>NewClass2</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>

@@ -3,10 +3,10 @@
   <sourceEnd id="8e6fcd9a-13fa-4e4c-9de2-f6bb9cfeaffa" type="Comment Source End" typeId="7e98213c-4a9c-4d6f-98fc-f185948cc9e8">
     <name>Connecting Comment</name>
     <display>Connecting Comment: Connecting Comment</display>
-    <order>1</order>
+    <order>0</order>
     <typeReference id="e5338e62-969d-436a-b9b7-fe74131fc505">
       <typeId>6d618522-361c-49ee-b530-ea15fc3d0292</typeId>
-      <isNavigable>true</isNavigable>
+      <isNavigable>false</isNavigable>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
       <isRequired>true</isRequired>

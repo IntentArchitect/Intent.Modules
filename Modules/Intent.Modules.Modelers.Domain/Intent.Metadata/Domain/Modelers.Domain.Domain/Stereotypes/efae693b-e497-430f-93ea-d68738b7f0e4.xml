@@ -10,6 +10,7 @@
   <applyMode>manually</applyMode>
   <icon type="CharacterBox" source="A|#8BC34A" />
   <displayIcon>true</displayIcon>
+  <displayIconFunction>return true;</displayIconFunction>
   <displayFunction />
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
