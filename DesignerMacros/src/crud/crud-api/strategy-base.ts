@@ -1,7 +1,7 @@
 /// <reference path="common.ts" />
 /// <reference path="crud-dialog.ts" />
 /// <reference path="../../common/servicesHelper.ts" />
-/// <reference path="../../common/CrudHelper.ts" />
+/// <reference path="../../common/crudHelper.ts" />
 /// <reference path="../../common/elementManager.ts" />
 /// <reference path="project-from-entity.ts" />
 
