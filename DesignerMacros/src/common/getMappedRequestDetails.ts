@@ -23,6 +23,7 @@ interface IMappedRequestDetails {
     entity: IElementApi;
     owningEntity?: IElementApi;
     entityKeyFields: IFieldDetails[];
+    ownerKeyFields: IFieldDetails[];
 }
 
 /**
@@ -71,6 +72,7 @@ function getMappedRequestDetails(
         mappingElement: mappedElement,
         mappingTargetType: mappedElement.specialization as any,
         entityKeyFields: [],
+        ownerKeyFields: []
     };
 
     result.owningEntity = DomainHelper.getOwningAggregate(entity);
@@ -82,6 +84,14 @@ function getMappedRequestDetails(
         result.entityKeyFields = result.mappingTargetType === "Class"
             ? getKeysForClassMapping(request, entity)
             : getKeysForOperationMapping(request, entity);
+    }
+
+    
+    // If the entity is owned, populate its fields:
+    if (result.owningEntity != null) {
+        result.ownerKeyFields = result.mappingTargetType === "Class"
+            ? getKeysForClassMapping(request, entity, result.owningEntity)
+            : getKeysForOperationMapping(request, entity, result.owningEntity);
     }
 
     return result;
