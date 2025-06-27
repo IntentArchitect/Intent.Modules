@@ -1,3 +1,7 @@
+### Version 1.1.3
+
+- Improvement: Updated referenced modules
+
 ### Version 1.1.2
 
 - Improvement: Allow ``Service Proxies`` to be created on Services Package and not just a folder.

@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <Version>1.0.0-beta.1</Version>
+    <Version>1.0.0-beta.2</Version>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Authors>Intent Architect</Authors>
     <Description>Package for accessing the Api Gateway elements.</Description>
@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.8.0-alpha.0" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.8.0-pre.0" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.4.0" />
     <PackageReference Include="Intent.Modules.Metadata.WebApi" Version="4.7.4-pre.0" />
     <PackageReference Include="Intent.Modules.Modelers.Services" Version="3.10.0" />
