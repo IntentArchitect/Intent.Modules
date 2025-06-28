@@ -2,6 +2,7 @@
 using System.Net.Http;
 using Anthropic.SDK;
 using Intent.Engine;
+using Intent.Exceptions;
 using Intent.Modules.Common.AI.Settings;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.DependencyInjection;
@@ -55,7 +56,7 @@ public class IntentSemanticKernelFactory
 
                 builder.Services.AddOpenAIChatCompletion(
                     modelId: model,
-                    apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the AI User Settings or set the OPENAI_API_KEY environment variable."));
+                    apiKey: apiKey ?? throw new FriendlyException(GetErrorMessage("OPENAI_API_KEY")));
                 break;
             
             case AISettings.ProviderOptionsEnum.AzureOpenAi:
@@ -68,7 +69,7 @@ public class IntentSemanticKernelFactory
                 builder.Services.AddAzureOpenAIChatCompletion(
                     deploymentName: settings.DeploymentName(),
                     endpoint: settings.APIUrl(),
-                    apiKey: apiKey ?? throw new Exception("No API Key defined. Locate the AI User Settings or set the AZURE_OPENAI_API_KEY environment variable."),
+                    apiKey: apiKey ?? throw new FriendlyException(GetErrorMessage("AZURE_OPENAI_API_KEY")),
                     modelId: model);
                 break;
             
@@ -91,7 +92,7 @@ public class IntentSemanticKernelFactory
                     apiKey = Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY");
                 }
 
-                var apiAuth = new APIAuthentication(apiKey ?? throw new Exception("No API Key defined. Locate the AI User Settings or set the ANTHROPIC_API_KEY environment variable."));
+                var apiAuth = new APIAuthentication(apiKey ?? throw new FriendlyException(GetErrorMessage("ANTHROPIC_API_KEY")));
                 builder.Services.AddTransient((sp) =>
                 {
                     var skChatService =
@@ -114,5 +115,10 @@ public class IntentSemanticKernelFactory
 
         var kernel = builder.Build();
         return kernel;
+    }
+
+    private string GetErrorMessage(string environmentKeyName)
+    {
+        return $"No API Key defined. Update this in your User Settings -> AI Settings or set the `{environmentKeyName.Replace("_", "\\_")}` environment variable. Documentation [here](https://docs.intentarchitect.com/articles/modules-common/intent-common-ai/intent-common-ai.html#user-settings)";
     }
 }

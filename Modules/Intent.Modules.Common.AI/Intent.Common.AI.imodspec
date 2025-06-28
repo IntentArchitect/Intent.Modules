@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.AI</id>
-  <version>1.0.0-beta.2</version>
+  <version>1.0.0-beta.3</version>
   <supportedClientVersions>[4.5.0-a,5.0.0)</supportedClientVersions>
   <summary>Support for accessing LLMs via Semantic Kernel within Intent Architect module tasks.</summary>
   <description>Support for accessing LLMs via Semantic Kernel within Intent Architect module tasks.</description>
@@ -15,7 +15,7 @@
   <moduleSettings>
     <group id="62594c9b-21fe-4c65-ac5c-b32a836a2ca5" title="AI Settings" type="user-settings" externalReference="62594c9b-21fe-4c65-ac5c-b32a836a2ca5">
       <settings>
-        <setting id="41ac1bce-6362-4b77-b588-ba3df55a2afb" title="Provider" type="select">
+        <setting id="41ac1bce-6362-4b77-b588-ba3df55a2afb" title="Provider" type="select" orderPriority="-1">
           <defaultValue>open-ai</defaultValue>
           <isRequiredFunction>return true;</isRequiredFunction>
           <options>
