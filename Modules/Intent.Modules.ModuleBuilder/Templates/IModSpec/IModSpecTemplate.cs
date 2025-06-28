@@ -333,6 +333,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                         new XAttribute("id", settingsField.Id),
                         new XAttribute("title", settingsField.Name),
                         new XAttribute("type", GetControlType(settingsField)));
+
+                    if (settingsField.GetFieldConfiguration().OrderPriority().HasValue)
+                    {
+                        fieldXml.Add(new XAttribute("orderPriority", settingsField.GetFieldConfiguration().OrderPriority().ToString()));
+                    }
+
                     if (settingsField.GetFieldConfiguration().IsRequired())
                     {
                         fieldXml.Add(new XElement("isRequired", new XText(settingsField.GetFieldConfiguration().IsRequired().ToString().ToLower())));
@@ -420,6 +426,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                         new XAttribute("id", settingsField.Id),
                         new XAttribute("title", settingsField.Name),
                         new XAttribute("type", GetControlType(settingsField)));
+
+                    if (settingsField.GetFieldConfiguration().OrderPriority().HasValue)
+                    {
+                        fieldXml.Add(new XAttribute("orderPriority", settingsField.GetFieldConfiguration().OrderPriority().ToString()));
+                    }
+
                     fieldXml.Add(new XElement("isRequired", new XText(settingsField.GetFieldConfiguration().IsRequired().ToString().ToLower())));
                     if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().Hint()))
                     {

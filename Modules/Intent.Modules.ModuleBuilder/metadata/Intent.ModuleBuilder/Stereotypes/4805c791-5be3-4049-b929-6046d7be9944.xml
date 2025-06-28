@@ -75,5 +75,13 @@ Use "Is Required Function"</comment>
       <placeholder>(default = false)</placeholder>
       <apiTypeDefinition>module-settings-api</apiTypeDefinition>
     </property>
+    <property id="29696a13-bf1d-4fbd-bdf3-adb802430cb4">
+      <comment>Allows the order of settings to be controlled. By default this value is 0. Fields are ordered by this priority first, and then their title second.</comment>
+      <name>Order Priority</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+    </property>
   </properties>
 </stereotypeDefinition>

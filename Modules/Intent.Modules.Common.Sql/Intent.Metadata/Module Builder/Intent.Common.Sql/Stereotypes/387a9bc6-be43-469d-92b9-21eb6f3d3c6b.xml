@@ -24,8 +24,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(required)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
   </properties>

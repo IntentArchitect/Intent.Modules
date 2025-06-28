@@ -78,6 +78,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Is Required Function");
             }
 
+            public int? OrderPriority()
+            {
+                return _stereotype.GetProperty<int?>("Order Priority");
+            }
+
             public class ControlTypeOptions
             {
                 public readonly string Value;

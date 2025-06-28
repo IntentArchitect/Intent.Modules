@@ -32,7 +32,6 @@
         <option>String Interpolation</option>
         <option>Custom</option>
       </valueOptions>
-      <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>

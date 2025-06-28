@@ -27,8 +27,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(optional)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
     <property id="6ac025ef-74f3-45d5-b971-7009251c6d5c">
       <name>Import From</name>
@@ -36,8 +34,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(optional)</placeholder>
-      <valueOptions />
-      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>
