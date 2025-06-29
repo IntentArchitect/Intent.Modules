@@ -977,6 +977,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>b9174071-2358-407a-b78b-f7aba4950739</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.FactoryExtension#3fc25da3-8ccd-46fd-9a99-b952d75a79e6</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>FactoryExtensions/CheckSdkClientVersionRequirement.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CheckSdkClientVersionRequirement.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

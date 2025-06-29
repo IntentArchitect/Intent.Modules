@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
-  <version>3.16.0-pre.1</version>
-  <supportedClientVersions>[4.3.0-beta.4, 5.0.0-a)</supportedClientVersions>
+  <version>3.16.0-pre.2</version>
+  <supportedClientVersions>[4.5.0-beta.3, 5.0.0-a)</supportedClientVersions>
   <summary>For the creation of Intent Architect Modules</summary>
   <description>For the creation of Intent Architect Modules</description>
   <authors>Intent Architect</authors>
@@ -11,7 +11,7 @@
   <tags>Intent Module Builder</tags>
   <releaseNotes>release-notes.md</releaseNotes>
   <factoryExtensions>
-    <factoryExtension id="Intent.ModuleBuilder.AutoCompile" enabled="false" />
+    <factoryExtension id="Intent.ModuleBuilder.CheckSdkClientVersionRequirement" externalReference="3fc25da3-8ccd-46fd-9a99-b952d75a79e6" />
   </factoryExtensions>
   <templates>
     <template id="Intent.ModuleBuilder.DecoratorRegistration.Template">
@@ -302,7 +302,7 @@
     <file src="$outDir$/System.CodeDom.dll" inspect="false" />
   </files>
   <moduleSettings>
-    <group id="b2c4252b-cfae-43c5-9682-803aa0b84c87" title="Module Builder Settings" externalReference="b2c4252b-cfae-43c5-9682-803aa0b84c87">
+    <group id="b2c4252b-cfae-43c5-9682-803aa0b84c87" title="Module Builder Settings" externalReference="b2c4252b-cfae-43c5-9682-803aa0b84c87" type="application-settings">
       <settings>
         <setting id="b06c3926-23e5-49dd-a59d-93ef16b9777e" title="Create partial API models" type="switch">
           <hint>Creates an ignored partial class for each API model which can be used for custom logic.</hint>
