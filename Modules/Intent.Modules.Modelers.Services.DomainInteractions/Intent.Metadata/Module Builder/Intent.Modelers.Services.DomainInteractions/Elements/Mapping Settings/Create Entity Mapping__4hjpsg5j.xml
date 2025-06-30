@@ -406,7 +406,7 @@
                         <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
                         <property name="e2bbf8a7-e342-4221-a628-f3ef35dcc251" display="Display Function" isActive="true" />
                         <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return (element.getValue() ?? &quot;&quot;) == &quot;&quot;;" isActive="true" />
-                        <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return element.getParent()?.getIsMapped() &amp;&amp; !element.typeReference.getType()?.hasTrait(&quot;20ce5b45-803a-4e2d-9f62-53b90f856529&quot;); // [Injectable Service] trait" isActive="true" />
+                        <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return element.getParent()?.getIsMapped() &amp;&amp; element.typeReference.getType()?.specializationId != &quot;07f936ea-3756-48c8-babd-24ac7271daac&quot;; // Domain Service" isActive="true" />
                         <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                         <property name="6da92064-59ef-4361-8ad6-c73b54c18cc2" display="Traversable Mode" value="Traverse Specific Types" isActive="true" />
                         <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;e04ab087-8c1a-42b9-aac7-d76ed674e319&quot;,&quot;15b84be5-c79b-41bf-881c-447fe70f5f5b&quot;,&quot;32b2649c-7d86-42ba-807f-d9449ed15980&quot;]" isActive="true" />
