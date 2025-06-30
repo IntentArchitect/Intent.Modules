@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services</id>
-  <version>4.0.0-pre.0</version>
+  <version>4.0.0-pre.1</version>
   <supportedClientVersions>[4.5.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Services modeler for describing an application's web services.</summary>
   <description>Services modeler for describing an application's web services.</description>
@@ -20,17 +20,17 @@
     </detect>
 	<detect id="Intent.Modelers.Services.DomainInteractions">
       <install>
-        <package id="Intent.Modelers.Services.DomainInteractions" version="2.2.0-pre.0" />
+        <package id="Intent.Modelers.Services.DomainInteractions" version="2.2.0-pre.2" />
       </install>
     </detect>
 	<detect id="Intent.Modelers.Services.EventInteractions">
 		<install>
-			<package id="Intent.Modelers.Services.EventInteractions" version="2.0.0-pre.0" />
+			<package id="Intent.Modelers.Services.EventInteractions" version="2.0.0-pre.1" />
 		</install>
 	</detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="3.8.0-pre.0" />
+    <dependency id="Intent.Common" version="3.8.0-pre.1" />
     <dependency id="Intent.Common.Types" version="4.1.0" />
   </dependencies>
   <metadata>
