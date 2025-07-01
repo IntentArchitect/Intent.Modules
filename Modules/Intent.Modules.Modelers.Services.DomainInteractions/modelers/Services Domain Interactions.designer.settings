@@ -20625,9 +20625,25 @@ async function presentCrudOptionsDialog(preselectedClass) {
     }
     return dialogResult;
 }
+function ClassSelectionFilter(element) {
+    let entity = element;
+    if (!entity || entity.specialization != "Class") {
+        return false;
+    }
+    if (DomainHelper.isAggregateRoot(element)) {
+        return true;
+    }
+    let results = entity.getAssociations("Association").filter(x =&gt; DomainHelper.isOwnedByAssociation(x));
+    for (let i = 0; i &lt; results.length; i++) {
+        if (results[i].getOtherEnd().typeReference.isCollection) {
+            return true;
+        }
+    }
+    return false;
+}
 async function openCrudCreationDialog() {
     var _a, _b;
-    let classes = lookupTypesOf("Class");
+    let classes = lookupTypesOf("Class").filter(x =&gt; ClassSelectionFilter(x));
     if (classes.length == 0) {
         await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
         return null;
@@ -21639,7 +21655,7 @@ class EntityProjector {
 /// &lt;reference path="common.ts" /&gt;
 /// &lt;reference path="crud-dialog.ts" /&gt;
 /// &lt;reference path="../../common/servicesHelper.ts" /&gt;
-/// &lt;reference path="../../common/CrudHelper.ts" /&gt;
+/// &lt;reference path="../../common/crudHelper.ts" /&gt;
 /// &lt;reference path="../../common/elementManager.ts" /&gt;
 /// &lt;reference path="project-from-entity.ts" /&gt;
 class CrudStrategy {

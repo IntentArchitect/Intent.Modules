@@ -38,8 +38,29 @@ async function presentCrudOptionsDialog(preselectedClass?: IElementApi) : Promis
     return dialogResult;
 }
 
+function ClassSelectionFilter(element: MacroApi.Context.IElementApi) : boolean {
+
+    let entity = element;
+    if (!entity || entity.specialization != "Class") {
+        return false;
+    }
+
+    if (DomainHelper.isAggregateRoot(element)){
+        return true;
+    }
+
+    let results = entity.getAssociations("Association").filter(x => DomainHelper.isOwnedByAssociation(x));       
+    for (let i = 0; i < results.length; i++) {
+
+        if (results[i].getOtherEnd().typeReference.isCollection){
+            return true;
+        }
+    }        
+    return false;
+}
+
 async function openCrudCreationDialog(): Promise<ICrudCreationResult|null> {
-    let classes = lookupTypesOf("Class");
+    let classes = lookupTypesOf("Class").filter(x => ClassSelectionFilter(x));
     if (classes.length == 0) {
         await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
         return null;
