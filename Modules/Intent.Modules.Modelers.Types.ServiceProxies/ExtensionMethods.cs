@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿#nullable enable
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modelers.Types.ServiceProxies.Api;
@@ -9,83 +12,177 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
 {
     public static class ExtensionMethods
     {
-        private static readonly IReadOnlyCollection<string> HttpSettingsStereotypeOption = ["Http Settings"];
+        private static readonly IReadOnlyList<string> HttpSettingsStereotypeOption = ["Http Settings"];
 
         public static string[] GetPackageNamespaceParts(IElement element)
         {
             return element.Package.Name.Split('.');
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetServiceProxyReferencedDtos"/> instead.
+        /// </summary>
+        [Obsolete("See XML doc comments")]
         public static IList<DTOModel> GetMappedServiceProxyDTOModels(this IDesigner designer)
         {
             return GetMappedServiceProxyDTOModels(designer, HttpSettingsStereotypeOption);
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetServiceProxyReferencedDtos"/> instead.
+        /// </summary>
+        [Obsolete("See XML doc comments")]
         public static IList<DTOModel> GetMappedServiceProxyDTOModels(this IDesigner designer, string stereotypeName)
         {
             return GetMappedServiceProxyDTOModels(designer, [stereotypeName]);
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetServiceProxyReferencedDtos"/> instead.
+        /// </summary>
+        [Obsolete("See XML doc comments")]
         public static IList<DTOModel> GetMappedServiceProxyDTOModels(this IDesigner designer, IReadOnlyCollection<string> stereotypeNames)
         {
             return designer.GetServiceProxyModels()
-                .SelectMany(proxyModel => GetReferencedDTOModels(proxyModel, stereotypeNames))
-                .DistinctBy(x => x.Id)
+                .SelectMany(proxy => GetReferencedDtoModels(GetMappedEndpointElements(proxy, stereotypeNames)))
                 .ToList();
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetServiceProxyReferencedDtos"/> instead.
+        /// </summary>
+        [Obsolete("See XML doc comments")]
         public static IList<DTOModel> GetMappedServiceProxyInboundDTOModels(this IDesigner designer)
         {
             return GetMappedServiceProxyInboundDTOModels(designer, HttpSettingsStereotypeOption);
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetServiceProxyReferencedDtos"/> instead.
+        /// </summary>
+        [Obsolete("See XML doc comments")]
         public static IList<DTOModel> GetMappedServiceProxyInboundDTOModels(this IDesigner designer, string stereotypeName)
         {
             return GetMappedServiceProxyInboundDTOModels(designer, [stereotypeName]);
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetServiceProxyReferencedDtos"/> instead.
+        /// </summary>
+        [Obsolete("See XML doc comments")]
         public static IList<DTOModel> GetMappedServiceProxyInboundDTOModels(this IDesigner designer, IReadOnlyCollection<string> stereotypeNames)
         {
             return designer.GetServiceProxyModels()
-                .SelectMany(proxyModel => GetReferencedDTOModels(proxyModel, includeReturnTypes: false, stereotypeNames))
-                .DistinctBy(x => x.Id)
+                .SelectMany(proxy => GetReferencedDtoModels(GetMappedEndpointElements(proxy, stereotypeNames), includeReturnTypes: false))
                 .ToList();
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetServiceProxyReferencedEnums"/> instead.
+        /// </summary>
+        [Obsolete("See XML doc comments")]
         public static IReadOnlyCollection<EnumModel> GetMappedServiceProxyEnumModels(this IDesigner designer)
         {
             return GetMappedServiceProxyEnumModels(designer, HttpSettingsStereotypeOption);
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetServiceProxyReferencedEnums"/> instead.
+        /// </summary>
+        [Obsolete("See XML doc comments")]
         public static IReadOnlyCollection<EnumModel> GetMappedServiceProxyEnumModels(this IDesigner designer, string stereotypeName)
         {
             return GetMappedServiceProxyEnumModels(designer, [stereotypeName]);
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetServiceProxyReferencedEnums"/> instead.
+        /// </summary>
+        [Obsolete("See XML doc comments")]
         public static IReadOnlyCollection<EnumModel> GetMappedServiceProxyEnumModels(this IDesigner designer, IReadOnlyCollection<string> stereotypeNames)
         {
             return designer.GetServiceProxyModels()
-                .SelectMany(proxyModel => GetReferencedEnumModels(proxyModel, stereotypeNames))
-                .DistinctBy(x => x.Id)
+                .SelectMany(proxyModel => GetReferencedEnumModels(GetMappedEndpointElements(proxyModel, stereotypeNames)))
                 .ToList();
         }
 
-        internal static IEnumerable<DTOModel> GetReferencedDTOModels(this ServiceProxyModel proxy, IReadOnlyCollection<string> stereotypeNames)
+        public static IReadOnlyList<DTOModel> GetServiceProxyReferencedDtos(
+            this IMetadataManager metadataManager,
+            string applicationId,
+            bool includeReturnTypes,
+            IReadOnlyList<string>? stereotypeNames,
+            IReadOnlyCollection<Func<string, IDesigner>> getDesigners)
         {
-            return GetReferencedDTOModels(proxy, includeReturnTypes: true, stereotypeNames);
+
+            stereotypeNames ??= HttpSettingsStereotypeOption;
+            var designers = getDesigners
+                .Select(getDesigner => getDesigner(applicationId))
+                .ToArray();
+
+            var endpointElements = designers
+                .SelectMany(x => x.GetServiceProxyModels())
+                .SelectMany(x => GetMappedEndpointElements(x, stereotypeNames))
+                .Concat(GetInvokedEndpointElements(designers, stereotypeNames));
+
+            return GetReferencedDtoModels(endpointElements, includeReturnTypes).ToList();
         }
 
-        internal static IEnumerable<DTOModel> GetReferencedDTOModels(this ServiceProxyModel proxy, bool includeReturnTypes, IReadOnlyCollection<string> stereotypeNames)
+        public static IReadOnlyList<EnumModel> GetServiceProxyReferencedEnums(
+            this IMetadataManager metadataManager,
+            string applicationId,
+            IReadOnlyList<string>? stereotypeNames,
+            IReadOnlyCollection<Func<string, IDesigner>> getDesigners)
         {
-            return DeepGetDistinctReferencedElements(GetMappedEndpoints(proxy, stereotypeNames), includeReturnTypes)
+
+            stereotypeNames ??= HttpSettingsStereotypeOption;
+            var designers = getDesigners
+                .Select(getDesigner => getDesigner(applicationId))
+                .ToArray();
+
+            var endpointElements = designers
+                .SelectMany(x => x.GetServiceProxyModels())
+                .SelectMany(x => GetMappedEndpointElements(x, stereotypeNames))
+                .Concat(GetInvokedEndpointElements(designers, stereotypeNames));
+
+            return GetReferencedEnumModels(endpointElements).ToList();
+        }
+
+        private static IEnumerable<IElement> GetInvokedEndpointElements(
+            IReadOnlyList<IDesigner> designers,
+            IReadOnlyList<string>? stereotypeNames)
+        {
+            const string callServiceOperationTypeId = "3e69085c-fa2f-44bd-93eb-41075fd472f8";
+
+            var localPackageIds = designers
+                .SelectMany(x => x.Packages)
+                .Select(x => x.Id)
+                .ToHashSet();
+
+            return designers
+                .SelectMany(x => x.GetAssociationsOfType(callServiceOperationTypeId))
+                .Where(x =>
+                {
+                    var targetElement = x.TargetEnd.TypeReference?.Element as IElement;
+
+                    return targetElement?.Package.Id != null &&
+                           !localPackageIds.Contains(targetElement.Package.Id) &&
+                           targetElement.Stereotypes.Any(y =>
+                               stereotypeNames.Contains(y.Name) || stereotypeNames.Contains(y.DefinitionId));
+                })
+                .Select(x => (IElement)x.TargetEnd.TypeReference.Element);
+        }
+
+        private static List<DTOModel> GetReferencedDtoModels(this IEnumerable<IElement> elements, bool includeReturnTypes = true)
+        {
+            return DeepGetDistinctReferencedElements(elements, includeReturnTypes)
                 .Where(x => x.SpecializationTypeId is not (TypeDefinitionModel.SpecializationTypeId or EnumModel.SpecializationTypeId))
                 .Select(x => new DTOModel(x is IClosedGenericElement closedGenericElement ? closedGenericElement.OpenGenericElement : x))
                 .ToList();
         }
 
-        internal static IEnumerable<EnumModel> GetReferencedEnumModels(this ServiceProxyModel proxy, IReadOnlyCollection<string> stereotypeNames)
+        private static List<EnumModel> GetReferencedEnumModels(this IEnumerable<IElement> elements)
         {
-            return DeepGetDistinctReferencedElements(GetMappedEndpoints(proxy, stereotypeNames))
+            return DeepGetDistinctReferencedElements(elements)
                 .Where(x => x.SpecializationTypeId is EnumModel.SpecializationTypeId)
                 .Select(x => new EnumModel(x))
                 .ToList();
@@ -142,7 +239,7 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
             return referencedElements;
         }
 
-        private static IEnumerable<IElement> GetMappedEndpoints(ServiceProxyModel proxyModel, IReadOnlyCollection<string> stereotypeNames)
+        private static IEnumerable<IElement> GetMappedEndpointElements(ServiceProxyModel proxyModel, IReadOnlyCollection<string> stereotypeNames)
         {
             var stereotypeSet = new HashSet<string>(stereotypeNames);
 
