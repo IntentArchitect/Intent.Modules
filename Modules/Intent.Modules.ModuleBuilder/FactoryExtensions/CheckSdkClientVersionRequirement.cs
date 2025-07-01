@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Text.Json;
 using System.Xml.Linq;
 using Intent.Compatibility;
 using Intent.Engine;
+using Intent.Exceptions;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
@@ -42,17 +44,101 @@ namespace Intent.Modules.ModuleBuilder.FactoryExtensions
         //protected override void OnAfterCommitChanges(IApplication application)
         protected override void OnAfterTemplateExecution(IApplication application)
         {
-            var location = GetRootExecutionLocation(application);
-            if (location == null)
+            var workingDirectory = GetRootExecutionLocation(application);
+            if (workingDirectory == null)
             {
                 Logging.Log.Failure("Could not find location to run dotnet build command.");
                 return;
             }
 
-            if (!Directory.Exists(Path.GetFullPath(location)))
+            // Initial run perhaps when file does not exist
+            if (!Directory.Exists(Path.GetFullPath(workingDirectory)))
             {
-                Logging.Log.Warning("Could not build module because the path was not found: " + Path.GetFullPath(location));
+                return;
             }
+
+            var csprojFiles = Directory.GetFiles(workingDirectory, "*.csproj", new EnumerationOptions
+            {
+                MatchCasing = MatchCasing.CaseInsensitive,
+                RecurseSubdirectories = false
+            });
+
+            if (csprojFiles.Length != 1)
+            {
+                Logging.Log.Debug($"Skipping check for SDK compatibility because the count of .csproj files was {csprojFiles.Length} in \"{workingDirectory}\"");
+                return;
+            }
+
+            if (!TryGetSdkVersionFromCsproj(csprojFiles[0], out var sdkPackageVersion) &&
+                !TryGetSdkVersionWithDotnetPackageList(workingDirectory, out sdkPackageVersion))
+            {
+                base.OnAfterCommitChanges(application);
+                return;
+            }
+
+            var minimumVersionRequired = _versionCompatibility.GetMinimumRequired(sdkPackageVersion, throwErrorOnUnknownVersion: true);
+            var parsedMinimumVersionRequired = NuGetVersion.Parse(minimumVersionRequired);
+
+            var supportedVersions = GetSupportedClientVersions(application, out var supportedRange);
+            if (supportedRange.MinVersion != null &&
+                (
+                    (supportedRange.IsMinInclusive && supportedRange.MinVersion < parsedMinimumVersionRequired) ||
+                    (!supportedRange.IsMinInclusive && supportedRange.MinVersion <= parsedMinimumVersionRequired)
+                ))
+            {
+                throw new FriendlyException(
+                    $"""
+                    The <supportedClientVersions/> element value in the .imodspec does not support the currently referenced version of the Intent.SoftwareFactory.SDK NuGet package.
+                    
+                    <supportedClientVersions/> value: {supportedVersions}
+                    Resolved Intent.SoftwareFactory.SDK version: {sdkPackageVersion}
+                    Minimum required version for SDK version: {minimumVersionRequired}
+                    """);
+            }
+
+            base.OnAfterCommitChanges(application);
+        }
+
+        /// <summary>
+        /// Retrieves from the .imodspec file.
+        /// </summary>
+        private static string GetSupportedClientVersions(IApplication application, out VersionRange supportedRange)
+        {
+            var imodSpecTemplate = application.FindTemplateInstance<IModSpecTemplate>(IModSpecTemplate.TemplateId);
+            var doc = XDocument.Parse(imodSpecTemplate.TransformText());
+            var supportedVersions = doc.Root?
+                .Element("supportedClientVersions")?
+                .Value!;
+            supportedRange = VersionRange.Parse(supportedVersions);
+            return supportedVersions;
+        }
+
+        private static bool TryGetSdkVersionFromCsproj(string csProjPath, [NotNullWhen(true)] out string? sdkPackageVersion)
+        {
+            var doc = XDocument.Parse(File.ReadAllText(csProjPath));
+
+            sdkPackageVersion = doc
+                .Descendants("PackageReference")
+                .FirstOrDefault(x => (string)x.Attribute("Include")! == "Intent.SoftwareFactory.SDK")
+                ?.Attribute("Version")?.Value;
+            return sdkPackageVersion != null;
+        }
+
+        /// <summary>
+        /// Runs "dotnet list package --include-transitive --format json", returns <see langword="true"/>
+        /// if the result contains the "Intent.SoftwareFactory.SDK" NuGet package and populates the
+        /// <paramref name="sdkPackageVersion"/> <see langword="out"/> parameter.
+        /// </summary>
+        /// <remarks>
+        /// Slower than <see cref="TryGetSdkVersionFromCsproj"/> so that should be tried first.
+        /// </remarks>
+        private static bool TryGetSdkVersionWithDotnetPackageList(string workingDirectory, [NotNullWhen(true)] out string? sdkPackageVersion)
+        {
+            // Otherwise the version in the "obj" folder is out of date and the version it returns
+            // may be incorrect. This is easy to reproduce by changing the in the <PackageReference />
+            // element in something like VS Code (with VS closed) and then immediately doing "dotnet
+            // list package".
+            RunDotnetRestore(workingDirectory);
 
             var process = new Process
             {
@@ -64,7 +150,7 @@ namespace Intent.Modules.ModuleBuilder.FactoryExtensions
                     RedirectStandardOutput = true,
                     CreateNoWindow = false,
                     UseShellExecute = false,
-                    WorkingDirectory = location,
+                    WorkingDirectory = workingDirectory,
                     EnvironmentVariables =
                     {
                         ["MSBUILDDISABLENODEREUSE"] = "1",
@@ -89,47 +175,44 @@ namespace Intent.Modules.ModuleBuilder.FactoryExtensions
                 .SelectMany(x => x.Frameworks)
                 .SelectMany(x => x.AllPackages)
                 .FirstOrDefault(x => string.Equals(x.Id, "Intent.SoftwareFactory.SDK"));
-            if (sdkPackage == null)
+
+            sdkPackageVersion = sdkPackage?.ResolvedVersion;
+            return sdkPackageVersion != null;
+        }
+
+        private static void RunDotnetRestore(string workingDirectory)
+        {
+            var dotnetRestoreProcess = new Process
             {
-                base.OnAfterCommitChanges(application);
-                return;
-            }
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "dotnet",
+                    Arguments = "restore",
+                    RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = false,
+                    UseShellExecute = false,
+                    WorkingDirectory = workingDirectory,
+                    EnvironmentVariables =
+                    {
+                        ["MSBUILDDISABLENODEREUSE"] = "1",
+                        ["DOTNET_CLI_UI_LANGUAGE"] = "en"
+                    }
+                }
+            };
 
-            var minimumVersionRequired = _versionCompatibility.GetMinimumRequired(sdkPackage.ResolvedVersion, throwErrorOnUnknownVersion: true);
-            var parsedMinimumVersionRequired = NuGetVersion.Parse(minimumVersionRequired);
-
-            var imodSpecTemplate = application.FindTemplateInstance<IModSpecTemplate>(IModSpecTemplate.TemplateId);
-            var doc = XDocument.Parse(imodSpecTemplate.TransformText());
-            var supportedVersions = doc.Root?
-                .Element("supportedClientVersions")?
-                .Value!;
-            var supportedRange = VersionRange.Parse(supportedVersions);
-            if (supportedRange.MinVersion != null &&
-                (
-                    (supportedRange.IsMinInclusive && supportedRange.MinVersion < parsedMinimumVersionRequired) ||
-                    (!supportedRange.IsMinInclusive && supportedRange.MinVersion <= parsedMinimumVersionRequired)
-                ))
-            {
-                throw new Exception(
-                    $"""
-                    The <supportedClientVersions/> element value in the .imodspec does not support the currently referenced version of the Intent.SoftwareFactory.SDK NuGet package.
-                    
-                    <supportedClientVersions/> value: {supportedVersions}
-                    Resolved Intent.SoftwareFactory.SDK version: {sdkPackage.ResolvedVersion}
-                    Minimum required version for SDK version: {minimumVersionRequired}
-                    
-                    """);
-            }
-
-            base.OnAfterCommitChanges(application);
+            dotnetRestoreProcess.Start();
+            dotnetRestoreProcess.WaitForExit();
         }
 
         private static string GetRootExecutionLocation(IApplication application)
         {
-            return application.OutputTargets.FirstOrDefault(x =>
+            var path = application.OutputTargets.FirstOrDefault(x =>
                 x.HasTemplateInstances("Intent.ModuleBuilder.IModSpecFile") ||
                 x.HasTemplateInstances("Intent.ApplicationTemplate.Builder.Templates.IatSpecFile") ||
                 x.IsVSProject())?.Location!;
+
+            return Path.GetFullPath(path);
         }
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
