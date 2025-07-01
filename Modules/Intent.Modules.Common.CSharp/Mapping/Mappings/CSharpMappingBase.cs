@@ -1,27 +1,25 @@
-﻿using System;
+﻿#nullable enable
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
-using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
-using Intent.Modules.Common.Types.Api;
-
-#nullable enable
 
 namespace Intent.Modules.Common.CSharp.Mapping;
 
-public abstract class CSharpMappingBase : ICSharpMapping
+public abstract partial class CSharpMappingBase : ICSharpMapping
 {
-    protected Dictionary<string, string> _sourceReplacements = new();
-    protected Dictionary<string, string> _targetReplacements = new();
-
+    protected Dictionary<string, string> SourceReplacements = new();
+    protected Dictionary<string, string?> TargetReplacements = new();
 
     public ICanBeReferencedType Model { get; }
     public IList<ICSharpMapping> Children { get; }
-    public ICSharpMapping Parent { get; set; }
+    public ICSharpMapping? Parent { get; set; }
     public IElementToElementMappedEnd Mapping { get; set; }
 
     protected readonly ICSharpTemplate Template;
@@ -65,7 +63,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
     }
 
-    public virtual CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
+    public virtual CSharpStatement GetSourceStatement(bool? targetIsNullable = null)
     {
         return GetSourcePathText(targetIsNullable ?? Mapping?.TargetElement.TypeReference?.IsNullable == true);
     }
@@ -125,32 +123,24 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     public void SetSourceReplacement(IMetadataModel type, string replacement)
     {
-        if (_sourceReplacements.ContainsKey(type.Id))
-        {
-            _sourceReplacements.Remove(type.Id);
-        }
-
-        _sourceReplacements.Add(type.Id, replacement);
+        SourceReplacements.Remove(type.Id);
+        SourceReplacements.Add(type.Id, replacement);
     }
 
-    public virtual bool TryGetSourceReplacement(IMetadataModel type, out string replacement)
+    public virtual bool TryGetSourceReplacement(IMetadataModel type, out string? replacement)
     {
-        return _sourceReplacements.TryGetValue(type.Id, out replacement) || Parent?.TryGetSourceReplacement(type, out replacement) == true;
+        return SourceReplacements.TryGetValue(type.Id, out replacement) || Parent?.TryGetSourceReplacement(type, out replacement) == true;
     }
 
-    public void SetTargetReplacement(IMetadataModel type, string replacement)
+    public void SetTargetReplacement(IMetadataModel type, string? replacement)
     {
-        if (_targetReplacements.ContainsKey(type.Id))
-        {
-            _targetReplacements.Remove(type.Id);
-        }
-
-        _targetReplacements.Add(type.Id, replacement);
+        TargetReplacements.Remove(type.Id);
+        TargetReplacements.Add(type.Id, replacement);
     }
 
-    public virtual bool TryGetTargetReplacement(IMetadataModel type, out string replacement)
+    public virtual bool TryGetTargetReplacement(IMetadataModel type, out string? replacement)
     {
-        return _targetReplacements.TryGetValue(type.Id, out replacement) || Parent?.TryGetTargetReplacement(type, out replacement) == true;
+        return TargetReplacements.TryGetValue(type.Id, out replacement) || Parent?.TryGetTargetReplacement(type, out replacement) == true;
     }
 
     protected string GetSourcePathText() => GetSourcePathText(false);
@@ -171,17 +161,20 @@ public abstract class CSharpMappingBase : ICSharpMapping
         return GetSourcePathExpression(mappingPaths, targetIsNullable)?.ToString();
     }
 
+    [GeneratedRegex(@"[\(\)?:!=+|&]")]
+    private static partial Regex GetParsedExpressionMapRegex();
+
     protected IDictionary<string, string> GetParsedExpressionMap(string str, Func<string, string?> replacePathFunc)
     {
         var result = new Dictionary<string, string>();
-        while (str.IndexOf("{", StringComparison.Ordinal) != -1 && str.IndexOf("}", StringComparison.Ordinal) != -1)
+        while (str.Contains('{', StringComparison.Ordinal) && str.Contains('}', StringComparison.Ordinal))
         {
-            var fromPos = str.IndexOf("{", StringComparison.Ordinal) + 1;
-            var toPos = str.IndexOf("}", StringComparison.Ordinal);
+            var fromPos = str.IndexOf('{', StringComparison.Ordinal) + 1;
+            var toPos = str.IndexOf('}', StringComparison.Ordinal);
             var expression = str[fromPos..toPos];
             var expressionFromPos = 0;
             var resultExpression = expression;
-            var parts = Regex.Split(expression, @"[\(\)?:!=+|&]").Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x.Trim());
+            var parts = GetParsedExpressionMapRegex().Split(expression).Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x.Trim());
             foreach (var part in parts)
             {
                 // if is literal:
@@ -200,7 +193,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
             }
 
             result.TryAdd($"{{{expression}}}", resultExpression);
-            str = str[(str.IndexOf("}", StringComparison.Ordinal) + 1)..];
+            str = str[(str.IndexOf('}', StringComparison.Ordinal) + 1)..];
         }
         return result;
     }
@@ -212,7 +205,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
         // Alternatively, consider using the metadata to indicate this.
         mappingPaths = mappingPaths.Where(x => x.Element.SpecializationType != "Generalization Target End").ToList();
 
-        CSharpStatement? result = default;
+        CSharpStatement? result = null;
         foreach (var mappingPathTarget in mappingPaths)
         {
             if (TryGetSourceReplacement(mappingPathTarget.Element, out var replacement))
@@ -226,7 +219,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
             else
             {
                 var relativeMappingPath = mappingPaths.Take(mappingPaths.IndexOf(mappingPathTarget) + 1).ToList();
-                CSharpStatement member = null;
+                CSharpStatement? member;
                 if (TryGetReferenceName(mappingPathTarget, out var referenceName))
                 {
                     member = new CSharpStatement(referenceName);
@@ -280,9 +273,8 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     protected ICSharpExpression? GetTargetPathExpression()
     {
-        CSharpStatement? result = default;
+        CSharpStatement? result = null;
         var mappingPaths = GetTargetPath();
-        var ignorePathTarget = false;
         foreach (var mappingPathTarget in mappingPaths)
         {
             if (TryGetTargetReplacement(mappingPathTarget.Element, out var replacement))
@@ -321,10 +313,9 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     protected CSharpStatement GetNullableAwareInstantiation(ICanBeReferencedType model, IList<ICSharpMapping> children, CSharpStatement instantiationStatement)
     {
-        // Only go for Target Elements that are Nullable and that have children who's Source mappings have a Map path length that is beyond the root Element.
+        // Only go for Target Elements that are Nullable and that have children whose source mappings have a Map path length that is beyond the root Element.
         // e.g. We won't target "request.FieldName" (flat mappings pose problems) but rather "request.NavProp.FieldName" for source elements.
-        if (model is IElement end &&
-            end.TypeReference is { IsNullable: true, IsCollection: false } &&
+        if (model is IElement { TypeReference: { IsNullable: true, IsCollection: false } } &&
             CheckChildrenRecursive(children, c => c.Mapping != null && c.Mapping.SourcePath.SkipLast(1).Count() > 1) &&
             GetSourcePath().Last().Element.TypeReference.IsNullable)
         {
@@ -337,12 +328,12 @@ public abstract class CSharpMappingBase : ICSharpMapping
         return instantiationStatement;
     }
 
-    private bool CheckChildrenRecursive(IList<ICSharpMapping> children, Func<ICSharpMapping, bool> predicate)
+    private static bool CheckChildrenRecursive(IList<ICSharpMapping> children, Func<ICSharpMapping, bool> predicate)
     {
         return children.All(c => predicate(c) || CheckChildrenRecursive(c.Children, predicate));
     }
 
-    private bool TryGetReference(IList<IElementMappingPathTarget> mappingPath, out IHasCSharpName reference)
+    private bool TryGetReference(IList<IElementMappingPathTarget> mappingPath, [NotNullWhen(true)] out IHasCSharpName? reference)
     {
         reference = null;
         var mappingPathTarget = mappingPath.Last();
@@ -382,7 +373,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
                 }
             }
         }
-        
+
         return false;
     }
 

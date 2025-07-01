@@ -1,34 +1,36 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
-using System.Net.Http.Headers;
 
 namespace Intent.Modules.Common.CSharp.Mapping
 {
+    /// <inheritdoc />
     public class ObjectInitializationMapping : CSharpMappingBase
     {
         private readonly MappingModel _mappingModel;
         private readonly ICSharpTemplate _template;
 
+        /// <inheritdoc />
         public ObjectInitializationMapping(MappingModel model, ICSharpTemplate template) : base(model, template)
         {
             _mappingModel = model;
             _template = template;
         }
 
+        /// <inheritdoc />
         [Obsolete("Use constructor which accepts ICSharpTemplate instead of ICSharpFileBuilderTemplate. This will be removed in later version.")]
         public ObjectInitializationMapping(MappingModel model, ICSharpFileBuilderTemplate template) : this(model, (ICSharpTemplate)template)
         {
         }
 
-        public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
+        /// <inheritdoc />
+        public override CSharpStatement GetSourceStatement(bool? targetIsNullable = null)
         {
             if (Model.TypeReference == null)
             {
@@ -43,8 +45,11 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
             if (Model.TypeReference.IsCollection)
             {
-                var m = new SelectToListMapping(_mappingModel, _template);
-                m.Parent = this.Parent;
+                var m = new SelectToListMapping(_mappingModel, _template)
+                {
+                    Parent = Parent
+                };
+
                 return m.GetSourceStatement(Model.TypeReference.IsNullable);
             }
 
@@ -59,7 +64,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             return GetConstructorStatement();
         }
 
-        private ConstructorMapping FindConstructorMappingInHierarchy(IList<ICSharpMapping> childMappings)
+        private static ConstructorMapping? FindConstructorMappingInHierarchy(IList<ICSharpMapping> childMappings)
         {
             var ctor = childMappings.SingleOrDefault(x => x is ConstructorMapping && x.Model.TypeReference == null);
             if (ctor != null)
@@ -79,11 +84,11 @@ namespace Intent.Modules.Common.CSharp.Mapping
             return null;
         }
 
-        private IList<ICSharpMapping> FindPropertyMappingsInHierarchy(IList<ICSharpMapping> childMappings)
+        private static List<ICSharpMapping> FindPropertyMappingsInHierarchy(IList<ICSharpMapping> childMappings)
         {
             if (!childMappings.Any())
             {
-                return new List<ICSharpMapping>();
+                return [];
             }
 
             var results = childMappings.Where(x => (x is not ConstructorMapping and not MapChildrenMapping) && x.Model.TypeReference != null).ToList();
@@ -91,14 +96,13 @@ namespace Intent.Modules.Common.CSharp.Mapping
             return results;
         }
 
-
         private CSharpStatement GetConstructorStatement()
         {
             var ctorMapping = FindConstructorMappingInHierarchy(Children);
             if (ctorMapping != null)
             {
                 var children = FindPropertyMappingsInHierarchy(Children).ToList();
-                if (!children.Any())
+                if (children.Count == 0)
                 {
                     // use constructor only:
                     return ctorMapping.GetSourceStatement();
@@ -110,10 +114,10 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 return hybridInit;
             }
 
-            var fileBuilderCtors = GetFileBuilderConstructors();
-            if (fileBuilderCtors.Any())
+            var fileBuilderConstructors = GetFileBuilderConstructors();
+            if (fileBuilderConstructors.Any())
             {
-                var targetCtor = fileBuilderCtors.First();
+                var targetCtor = fileBuilderConstructors[0];
                 var ctorInit = new CSharpInvocationStatement($"new {_template.GetTypeName(targetCtor.Element)}").WithoutSemicolon();
                 var childMappings = FindPropertyMappingsInHierarchy(Children).ToList();
                 foreach (var ctorParameter in targetCtor.Ctor.Parameters)
@@ -127,15 +131,13 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 {
                     return ctorInit;
                 }
-                else
-                {
-                    // use constructor and object initialization syntax:
-                    var hybridInit = new CSharpObjectInitializerBlock(ctorInit);
-                    hybridInit.AddStatements(childMappings
-                        .Where(x => !targetCtor.Ctor.Parameters.Any(ctorParameter => ctorParameter.TryGetReferenceForModel(x.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name))
-                        .Select(x => new CSharpAssignmentStatement(x.GetTargetStatement(), x.GetSourceStatement())));
-                    return hybridInit;
-                }
+
+                // use constructor and object initialization syntax:
+                var hybridInit = new CSharpObjectInitializerBlock(ctorInit);
+                hybridInit.AddStatements(childMappings
+                    .Where(x => !targetCtor.Ctor.Parameters.Any(ctorParameter => ctorParameter.TryGetReferenceForModel(x.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name))
+                    .Select(x => new CSharpAssignmentStatement(x.GetTargetStatement(), x.GetSourceStatement())));
+                return hybridInit;
             }
 
             var propInit = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
@@ -149,6 +151,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             return GetNullableAwareInstantiation(Model, Children, propInit);
         }
 
+        /// <inheritdoc />
         protected override IList<IElementMappingPathTarget> GetSourcePath()
         {
             if (Mapping != null)
@@ -158,28 +161,25 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
             // get all mappings
             var childMappings = GetAllChildren().Where(c => c.Mapping != null).ToList();
-            // get the depth from the end heirarchy of children and get the lowest child as well
-            var depthDetails = GetMaxDepthWithChild(this, [.. childMappings]);
+            // get the depth from the end hierarchy of children and get the lowest child as well
+            var (pathDepth, deepestChild) = GetMaxDepthWithChild(this, [.. childMappings]);
 
             // get the mapping based off the lowest child.
             // when we calculate the depth from the bottom, we want to make sure the "bottom" is the same child mapping
             // so we calculate it from the lowest item
-            int pathDepth = depthDetails.maxDepth;
-            var mapping = childMappings.FirstOrDefault(c => c == depthDetails.deepestChild)?.Mapping ?? childMappings.First().Mapping;
+            var mapping = childMappings.FirstOrDefault(c => c == deepestChild)?.Mapping ?? childMappings.First().Mapping;
 
             // if this has a mix of object init statements (mapping is null) and normal mapping, then adjust the depth by 1
-            // this is to cater for scenarios where there is a heirarchy of objects without any mappings inside them
+            // this is to cater for scenarios where there is a hierarchy of objects without any mappings inside them
             //pathDepth = pathDepth - (Children.Any(x => x.Mapping != null) && Children.Any(x => x.Mapping == null) ||
-            //            // adjust the depth for colletions
+            //            // adjust the depth for collections
             //            (mapping.SourcePath.ToList().Any(s => s.Element.TypeReference.IsCollection)) ? 1 : 0);
-
 
             var toPath = mapping.SourcePath.ToList();
 
             return toPath.Take(toPath.Count - pathDepth).ToList();
         }
 
-        // 
         private static (int maxDepth, ICSharpMapping? deepestChild) GetMaxDepthWithChild(ICSharpMapping mapping, HashSet<ICSharpMapping> childMappingsSet)
         {
             if (!mapping.Children.Any())
@@ -197,12 +197,8 @@ namespace Intent.Modules.Common.CSharp.Mapping
         private IReadOnlyList<(CSharpConstructor Ctor, IElement Element)> GetFileBuilderConstructors()
         {
             var returnTypeElement = ((IElement)_mappingModel.Model)?.TypeReference?.Element;
-            if (returnTypeElement is null)
-            {
-                return ArraySegment<(CSharpConstructor, IElement)>.Empty;
-            }
-
-            if (_template.GetTypeInfo(returnTypeElement.AsTypeReference())?.Template is not ICSharpFileBuilderTemplate template)
+            if (returnTypeElement is null ||
+                _template.GetTypeInfo(returnTypeElement.AsTypeReference())?.Template is not ICSharpFileBuilderTemplate template)
             {
                 return ArraySegment<(CSharpConstructor, IElement)>.Empty;
             }
@@ -217,6 +213,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 .ToList();
         }
 
+        /// <inheritdoc />
         public override CSharpStatement GetTargetStatement()
         {
             // TODO: Please revisit, this only writing out the property name and doesn't allow for accessor variables
