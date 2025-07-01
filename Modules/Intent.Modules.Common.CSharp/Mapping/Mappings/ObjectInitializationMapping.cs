@@ -35,60 +35,28 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 SetTargetReplacement(Model, null);
                 return GetConstructorStatement();
             }
-            else
+
+            if (Children.Count == 0)
             {
-                if (Children.Count == 0)
-                {
-                    return $"{GetSourcePathText()}";
-                }
-
-                if (Model.TypeReference.IsCollection)
-                {
-                    var m = new SelectToListMapping(_mappingModel, _template);
-                    m.Parent = this.Parent;
-                    return m.GetSourceStatement(Model.TypeReference.IsNullable);
-                    /*
-                    ANYONE, YOU CAN DELETE WHEN YOU SEE THIS:
-                    Template.AddUsing("System.Linq");
-                    var chain = new CSharpMethodChainStatement($"{GetSourcePathText()}{(Mapping.SourceElement.TypeReference.IsNullable ? "?" : "")}").WithoutSemicolon();
-                    var select = new CSharpInvocationStatement($"Select").WithoutSemicolon();
-
-                    var variableName = GetVariableNameForSelect();
-                    SetSourceReplacement(GetSourcePath().Last().Element, variableName);
-                    var lastTargetPathElement = GetTargetPath().Last().Element;
-                    SetTargetReplacement(lastTargetPathElement, null); // Needed for inheritance mappings - path element to be removed from invocation path
-                    if (lastTargetPathElement.TypeReference.Element is not null)
-                    {
-                        SetTargetReplacement(lastTargetPathElement.TypeReference.Element, null); // Same as above but for parameter types
-                    }
-
-                    select.AddArgument(new CSharpLambdaBlock(variableName).WithExpressionBody(GetConstructorStatement()));
-
-                    var init = chain
-                        .AddChainStatement(select)
-                        .AddChainStatement("ToList()");
-                    return init;*/
-                }
-                else
-                {
-                    if (Mapping != null)
-                    {
-                        return GetSourcePathText();
-                    }
-                    else
-                    {
-
-                        // TODO: add ternary check to mappings for when the source path could be nullable.
-                        var lastTargetPathElement = GetTargetPath().Last().Element;
-                        SetTargetReplacement(lastTargetPathElement, null); // Needed for inheritance mappings - path element to be removed from invocation path
-                        if (lastTargetPathElement.TypeReference.Element is not null)
-                        {
-                            SetTargetReplacement(lastTargetPathElement.TypeReference.Element, null); // Same as above but for parameter types
-                        }
-                        return GetConstructorStatement();
-                    }
-                }
+                return $"{GetSourcePathText()}";
             }
+
+            if (Model.TypeReference.IsCollection)
+            {
+                var m = new SelectToListMapping(_mappingModel, _template);
+                m.Parent = this.Parent;
+                return m.GetSourceStatement(Model.TypeReference.IsNullable);
+            }
+
+            // TODO: add ternary check to mappings for when the source path could be nullable.
+            var lastTargetPathElement = GetTargetPath().Last().Element;
+            SetTargetReplacement(lastTargetPathElement, null); // Needed for inheritance mappings - path element to be removed from invocation path
+            if (lastTargetPathElement.TypeReference.Element is not null)
+            {
+                SetTargetReplacement(lastTargetPathElement.TypeReference.Element, null); // Same as above but for parameter types
+            }
+
+            return GetConstructorStatement();
         }
 
         private ConstructorMapping FindConstructorMappingInHierarchy(IList<ICSharpMapping> childMappings)
