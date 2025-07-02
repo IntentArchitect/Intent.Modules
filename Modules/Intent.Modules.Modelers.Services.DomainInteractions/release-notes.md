@@ -1,3 +1,7 @@
+### Version 2.2.1
+
+- Fixed: Re-running CQRS Crud Script caused an issue on `GetAll` queries.
+
 ### Version 2.2.0
 
 - Improvement: Updated mapping configurations to support generalized `Invoke Service` interaction system.

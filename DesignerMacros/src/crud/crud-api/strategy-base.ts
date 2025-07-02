@@ -158,7 +158,7 @@ abstract class CrudStrategy {
             const owners = DomainHelper.getOwnersRecursive(this.entity).map(item => item.getName()).join(", ");
             await dialogService.warn(
                 `Entity has multiple owners.
-The entity '${this.entity.getName()}' has multiple Aggregate owning it [${owners}].
+The entity '${this.entity.getName()}' has multiple Aggregates owning it [${owners}].
 
 Compositional Entities (black diamond) must have 1 owner. Please adjust the associations accordingly.`);
             return false;
