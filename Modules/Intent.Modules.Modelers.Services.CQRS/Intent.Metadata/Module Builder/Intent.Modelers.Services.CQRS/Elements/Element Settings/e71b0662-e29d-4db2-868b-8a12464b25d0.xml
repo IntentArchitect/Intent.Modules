@@ -11,7 +11,7 @@
   <packageName>Intent.Modelers.Services.CQRS</packageName>
   <traits>
     <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
-    <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable Service]" />
+    <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]" />
     <trait id="9e587d4d-f317-4ab8-9bbb-9394234d2a88" name="[Allow Comment]" />
   </traits>
   <stereotypes>
@@ -59,7 +59,7 @@
       <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
       <properties />
     </stereotype>
-    <stereotype stereotypeDefinitionId="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable Service]">
+    <stereotype stereotypeDefinitionId="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]">
       <addedByDefault>false</addedByDefault>
       <definitionPackageName>Intent.Common</definitionPackageName>
       <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
@@ -170,7 +170,6 @@
           <packageName>Intent.Modelers.Services.CQRS</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
