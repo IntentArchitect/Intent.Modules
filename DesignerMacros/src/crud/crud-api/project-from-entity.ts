@@ -68,14 +68,7 @@ class EntityProjector {
             })[0];            
     }
 
-    public createOrGetCreateCommand(entity: IElementApi, folder: IElementApi): IElementApi {
-        let owningAggregate = DomainHelper.getOwningAggregate(entity);
-        let baseName = this.getBaseNameForElement(owningAggregate, entity, false);
-        const commandName = `Create${baseName}Command`;
-        let existing = folder.getChildren().find(x => x.getName() == commandName)
-        if (existing) {
-            return existing;
-        }
+    public createCreateCommand(commandName:string, entity: IElementApi, folder: IElementApi): IElementApi {
 
         this.addMandatoryRelationships = true;
 
@@ -124,14 +117,7 @@ class EntityProjector {
 
     }
 
-    public createOrGetUpdateCommand(entity: IElementApi, folder: IElementApi): IElementApi {
-        let owningAggregate = DomainHelper.getOwningAggregate(entity);
-        let baseName = this.getBaseNameForElement(owningAggregate, entity, false);
-        const commandName = `Update${baseName}Command`;
-        let existing = folder.getChildren().find(x => x.getName() == commandName)
-        if (existing) {
-            return existing;
-        }
+    public createUpdateCommand(commandName:string, entity: IElementApi, folder: IElementApi): IElementApi {
 
         let dto = this.getOrCreateElement(commandName, "Command", folder);
         this.addMandatoryRelationships = true;
@@ -147,15 +133,7 @@ class EntityProjector {
     }
 
 
-    public createOrGetDeleteCommand(entity: IElementApi, folder: IElementApi): IElementApi {
-        let owningAggregate = DomainHelper.getOwningAggregate(entity);
-        let baseName = this.getBaseNameForElement(owningAggregate, entity, false);
-        const commandName = `Delete${baseName}Command`;
-
-        let existing = folder.getChildren().find(x => x.getName() == commandName)
-        if (existing) {
-            return existing;
-        }
+    public createDeleteCommand(commandName:string, entity: IElementApi, folder: IElementApi): IElementApi {
 
         let dto = this.getOrCreateElement(commandName, "Command", folder);
         
@@ -165,15 +143,7 @@ class EntityProjector {
         return dto;
     }
 
-    public createOrGetFindByIdQuery(entity: IElementApi, folder: IElementApi, resultDto: IElementApi): IElementApi {
-        let owningAggregate = DomainHelper.getOwningAggregate(entity);
-        let baseName = this.getBaseNameForElement(owningAggregate, entity, false);
-        let expectedQueryName = `Get${baseName}ByIdQuery`;
-
-        let existing = folder.getChildren().find(x => x.getName() == expectedQueryName)
-        if (existing) {
-            return existing;
-        }
+    public createFindByIdQuery(expectedQueryName:string, entity: IElementApi, folder: IElementApi, resultDto: IElementApi): IElementApi {
 
         let query = createElement("Query", expectedQueryName, folder.id);
         query.typeReference.setType(resultDto.id)
@@ -186,15 +156,7 @@ class EntityProjector {
     }
 
 
-    public createOrGetFindAllQuery(entity: IElementApi, folder: IElementApi, resultDto: IElementApi): IElementApi {
-        let owningAggregate = DomainHelper.getOwningAggregate(entity);
-        let baseName = this.getBaseNameForElement(owningAggregate, entity, true);
-        let expectedQueryName = `Get${baseName}Query`;
-
-        let existing = folder.getChildren().find(x => x.getName() == expectedQueryName)
-        if (existing) {
-            return existing;
-        }
+    public createFindAllQuery(expectedQueryName:string, entity: IElementApi, folder: IElementApi, resultDto: IElementApi): IElementApi {
 
         let query = createElement("Query", expectedQueryName, folder.id);
         query.typeReference.setType(resultDto.id)

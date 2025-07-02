@@ -7,8 +7,13 @@ class CQRSCrudStrategy extends CrudStrategy{
     }
 
     protected doCreate(): IElementApi {    
+        const commandName = `Create${this.getElementBaseName(this.entity, false)}Command`;
+        const existing = this.elementExists(commandName);
+        if (existing) return existing;
+
+
         let projector = new EntityProjector();
-        let command = projector.createOrGetCreateCommand(this.entity, this.targetFolder);
+        let command = projector.createCreateCommand(commandName, this.entity, this.targetFolder);
 
         const surrogateKey = this.primaryKeys.length === 1;
         if (surrogateKey) {
@@ -19,31 +24,48 @@ class CQRSCrudStrategy extends CrudStrategy{
         return command;
     }
 
-    protected doUpdate(): IElementApi {        
-        let projector = new EntityProjector();
-        let command = projector.createOrGetUpdateCommand(this.entity, this.targetFolder);
+    protected doUpdate(): IElementApi {    
+        const commandName = `Update${this.getElementBaseName(this.entity, false)}Command`;
+        const existing = this.elementExists(commandName);
+        if (existing) return existing;
 
+        let projector = new EntityProjector();
+        let command = projector.createUpdateCommand(commandName, this.entity, this.targetFolder);
         this.doAdvancedMappingUpdate(projector, command);
         return command;
     }
 
+
+    
     protected doDelete(): IElementApi {        
+        const commandName = `Delete${this.getElementBaseName(this.entity, false)}Command`;
+        const existing = this.elementExists(commandName);
+        if (existing) return existing;
+
         let projector = new EntityProjector();
-        let command = projector.createOrGetDeleteCommand(this.entity, this.targetFolder);
+        let command = projector.createDeleteCommand(commandName, this.entity, this.targetFolder);
         this.doAdvancedMappingDelete(projector.getMappings(), command);
         return command;
     }
 
-    protected doGetById(): IElementApi {        
+    protected doGetById(): IElementApi {       
+        const queryName = `Get${this.getElementBaseName(this.entity, false)}ByIdQuery`;
+        const existing = this.elementExists(queryName);
+        if (existing) return existing;
+
         let projector = new EntityProjector();
-        let query = projector.createOrGetFindByIdQuery(this.entity, this.targetFolder, this.resultDto);
+        let query = projector.createFindByIdQuery(queryName, this.entity, this.targetFolder, this.resultDto);
         this.doAdvancedMappingGetById(projector.getMappings(), query);
         return query;
     }
 
-    protected doGetAll(): IElementApi {     
+    protected doGetAll(): IElementApi {   
+        const queryName = `Get${this.getElementBaseName(this.entity, true)}Query`;
+        const existing = this.elementExists(queryName);
+        if (existing) return existing;
+  
         let projector = new EntityProjector();
-        let query = projector.createOrGetFindAllQuery(this.entity, this.targetFolder, this.resultDto);
+        let query = projector.createFindAllQuery(queryName, this.entity, this.targetFolder, this.resultDto);
         this.doAdvancedMappingGetAll(query);
         return query;
     }
@@ -57,9 +79,16 @@ class CQRSCrudStrategy extends CrudStrategy{
             command.typeReference.setType(operationResultDto.id);
         }
 
-
         this.doAdvancedMappingCallOperation(projector, command);
         return command;
+    }
+
+    private getElementBaseName( entity: MacroApi.Context.IElementApi, entityIsMany: boolean): string {
+        let entityName = entityIsMany ? toPascalCase(pluralize(entity.getName())) : toPascalCase(entity.getName());
+        return entityName;
+    }
+    protected elementExists(elementName: string): IElementApi | undefined {
+        return this.targetFolder.getChildren().find(x => x.getName() == elementName)
     }
 
     protected doAddDiagram(): void {        
