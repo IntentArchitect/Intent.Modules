@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>1.0.0-beta.2</Version>
+    <Version>1.0.0-beta.3</Version>
     <Authors>Intent Architect</Authors>
     <Product>Intent Architect</Product>
     <Description>Support for accessing LLMs via Semantic Kernel within Intent Architect module tasks.</Description>
