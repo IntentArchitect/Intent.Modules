@@ -91,6 +91,22 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="b09668f5-3236-4c70-afd0-28d15a32c865" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.Api.ApiTraitModel</name>
+      <display>Intent.ModuleBuilder.Templates.Api.ApiTraitModel</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3259a0db-6077-4d70-a7f2-fa1b77d73aaf</parentFolderId>
+      <packageId>71f05109-84c4-4c25-bc0a-522a07028bba</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
     <childElement id="84d2ca9a-d52f-43fe-a061-7085b7a2cac5" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>ModuleBuilder.Templates.Api.ApiAssociationModel</name>
       <display>ModuleBuilder.Templates.Api.ApiAssociationModel</display>
@@ -141,20 +157,6 @@
       <packageName>Intent.Modules</packageName>
       <stereotypes />
       <metadata />
-      <childElements />
-    </childElement>
-    <childElement id="b09668f5-3236-4c70-afd0-28d15a32c865" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.Templates.Api.ApiTraitModel</name>
-      <display>Intent.ModuleBuilder.Templates.Api.ApiTraitModel</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>3259a0db-6077-4d70-a7f2-fa1b77d73aaf</parentFolderId>
-      <stereotypes />
-      <metadata>
-        <entry key="status" value="assigned" />
-      </metadata>
       <childElements />
     </childElement>
   </childElements>

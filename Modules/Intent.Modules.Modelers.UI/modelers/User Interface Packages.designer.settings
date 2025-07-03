@@ -13,7 +13,7 @@
         <createElement order="0" type="element">
           <text>New Folder</text>
           <shortcut>ctrl + shift + f</shortcut>
-          <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iZmlsZS1jbG9zZWQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCINCgkgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV9hZWJjZjU3OC0zYWI0LTQ1ZjQtOTc5Ni01ZDlmNDQ3MGNmNjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjQuODQ1MiIgeTE9IjcuOTc0NSIgeDI9IjI0LjkzNTYiIHkyPSI0NC44MTg1Ij4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRkJCMDQxIi8+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0ZDQjY0NSIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGNTdGMjAiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfYWViY2Y1NzgtM2FiNC00NWY0LTk3OTYtNWQ5ZjQ0NzBjZjYwKSIgZD0iTTQ1LjEsOEgyNi43QzI2LDgsMjUuNCw4LjMsMjUsOC43bC00LjcsNC43SDUuMWMtMS41LDAtMi43LDEuMS0yLjcsMi41djI2LjNjMCwxLjQsMS4yLDIuNSwyLjcsMi41DQoJaDM5LjZjMS41LDAsMi43LTEuMSwyLjctMi41VjEwLjJDNDcuNCw5LDQ2LjQsOCw0NS4xLDh6IE00My45LDEzLjRIMjUuMmwyLTJoMTYuN1YxMy40eiIvPg0KPC9zdmc+DQo=" />
           <specializationType>Folder</specializationType>
           <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
           <defaultName>NewFolder</defaultName>
@@ -24,7 +24,7 @@
         <option order="0" type="element">
           <text>New Folder</text>
           <shortcut>ctrl + shift + f</shortcut>
-          <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iZmlsZS1jbG9zZWQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCINCgkgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV9hZWJjZjU3OC0zYWI0LTQ1ZjQtOTc5Ni01ZDlmNDQ3MGNmNjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjQuODQ1MiIgeTE9IjcuOTc0NSIgeDI9IjI0LjkzNTYiIHkyPSI0NC44MTg1Ij4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRkJCMDQxIi8+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6I0ZDQjY0NSIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGNTdGMjAiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfYWViY2Y1NzgtM2FiNC00NWY0LTk3OTYtNWQ5ZjQ0NzBjZjYwKSIgZD0iTTQ1LjEsOEgyNi43QzI2LDgsMjUuNCw4LjMsMjUsOC43bC00LjcsNC43SDUuMWMtMS41LDAtMi43LDEuMS0yLjcsMi41djI2LjNjMCwxLjQsMS4yLDIuNSwyLjcsMi41DQoJaDM5LjZjMS41LDAsMi43LTEuMSwyLjctMi41VjEwLjJDNDcuNCw5LDQ2LjQsOCw0NS4xLDh6IE00My45LDEzLjRIMjUuMmwyLTJoMTYuN1YxMy40eiIvPg0KPC9zdmc+DQo=" />
           <specializationType>Folder</specializationType>
           <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
           <defaultName>NewFolder</defaultName>

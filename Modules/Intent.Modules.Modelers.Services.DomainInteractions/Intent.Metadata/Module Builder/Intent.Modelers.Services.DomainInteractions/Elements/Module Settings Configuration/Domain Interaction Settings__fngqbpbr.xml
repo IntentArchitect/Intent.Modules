@@ -43,6 +43,7 @@
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="advanced" isActive="true" />
             <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
             <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -100,6 +101,7 @@
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="default" isActive="true" />
             <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
             <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -157,6 +159,7 @@
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="set-to-null" isActive="true" />
             <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
             <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

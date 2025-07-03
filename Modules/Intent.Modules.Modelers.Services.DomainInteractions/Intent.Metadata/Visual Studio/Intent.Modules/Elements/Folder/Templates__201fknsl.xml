@@ -85,6 +85,38 @@
       </metadata>
       <childElements />
     </childElement>
+    <childElement id="a59487fa-0a32-47ab-adc8-952bde50dd33" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.CSharp.Templates.RazorStringInterpolationTemplate</name>
+      <display>Intent.ModuleBuilder.CSharp.Templates.RazorStringInterpolationTemplate</display>
+      <externalReference>Intent.ModuleBuilder.CSharp</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>6dbef51c-d4d8-45af-a887-1f2dcc05f909</parentFolderId>
+      <packageId>130289d2-37c6-48c5-bec9-9c2e2ec1ac2f</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="b5187d14-5d62-4efb-86e6-f9ce1ceefd27" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.CSharp.Templates.RazorTemplatePartial</name>
+      <display>Intent.ModuleBuilder.CSharp.Templates.RazorTemplatePartial</display>
+      <externalReference>Intent.ModuleBuilder.CSharp</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>6dbef51c-d4d8-45af-a887-1f2dcc05f909</parentFolderId>
+      <packageId>130289d2-37c6-48c5-bec9-9c2e2ec1ac2f</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
     <childElement id="e89e5b6e-b1c6-449c-bf4a-b11611263fa5" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.ProjectItemTemplate.Partial</name>
       <display>Intent.ModuleBuilder.ProjectItemTemplate.Partial</display>
@@ -255,34 +287,6 @@
       <parentFolderId>6dbef51c-d4d8-45af-a887-1f2dcc05f909</parentFolderId>
       <packageId>130289d2-37c6-48c5-bec9-9c2e2ec1ac2f</packageId>
       <packageName>Intent.Modules</packageName>
-      <stereotypes />
-      <metadata>
-        <entry key="status" value="assigned" />
-      </metadata>
-      <childElements />
-    </childElement>
-    <childElement id="a59487fa-0a32-47ab-adc8-952bde50dd33" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.CSharp.Templates.RazorStringInterpolationTemplate</name>
-      <display>Intent.ModuleBuilder.CSharp.Templates.RazorStringInterpolationTemplate</display>
-      <externalReference>Intent.ModuleBuilder.CSharp</externalReference>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>6dbef51c-d4d8-45af-a887-1f2dcc05f909</parentFolderId>
-      <stereotypes />
-      <metadata>
-        <entry key="status" value="assigned" />
-      </metadata>
-      <childElements />
-    </childElement>
-    <childElement id="b5187d14-5d62-4efb-86e6-f9ce1ceefd27" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.CSharp.Templates.RazorTemplatePartial</name>
-      <display>Intent.ModuleBuilder.CSharp.Templates.RazorTemplatePartial</display>
-      <externalReference>Intent.ModuleBuilder.CSharp</externalReference>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>6dbef51c-d4d8-45af-a887-1f2dcc05f909</parentFolderId>
       <stereotypes />
       <metadata>
         <entry key="status" value="assigned" />

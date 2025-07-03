@@ -1,4 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</correlationId>
+      <path>Intent.Modules.Modelers.Services.CQRS/Api/CommandModel.cs</path>
+      <count>5</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2025-07-03T09:42:51.6163021Z</updatedAt>
+      <deviationsHash>C323F1186CBB2E6BA239851EF5EAEEAAC181A82961632410CB51C5B2CD44BB3C</deviationsHash>
+      <fileHash>9BF6AC8172B6AB514710432B0EC65CA12F45C2CF5EDA09420CF24BE2941E2013</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#efbd1131-2db2-4eb7-8ef6-3b5a32f5267d</correlationId>
+      <path>Intent.Modules.Modelers.Services.CQRS/Api/FolderExtensionModel.cs</path>
+      <count>2</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2025-07-03T09:42:51.6162801Z</updatedAt>
+      <deviationsHash>62AA69250561AD1466B2DD5DA9CF536960214680E998A5B780D627FE16404378</deviationsHash>
+      <fileHash>96310300EB12BCB89B8E47BF28C568927F22B51E68B8F875DB66C2D0E2175F72</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e71b0662-e29d-4db2-868b-8a12464b25d0</correlationId>
+      <path>Intent.Modules.Modelers.Services.CQRS/Api/QueryModel.cs</path>
+      <count>3</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2025-07-03T09:42:51.6163206Z</updatedAt>
+      <deviationsHash>9C47771DCD60722CAE2E5AED6C15F8AE77A5699601405C05CDE9DBAF429FEBD2</deviationsHash>
+      <fileHash>FC18F329489581BD49791DE9CB0D99C9D638626431302EC25BE579828A7F3ABC</fileHash>
+    </file>
+  </files>
 </deviationsLog>

@@ -1,4 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#7a3f0474-3cf8-4249-baac-8c07c49465e0</correlationId>
+      <path>Intent.Modules.Modelers.Services.DomainInteractions/Api/CreateEntityActionModelAssociationExtensions.cs</path>
+      <count>2</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2025-07-03T09:45:33.154193Z</updatedAt>
+      <deviationsHash>94831BD9F9755DEFFE59ACE5BE5E476FBE55355347EA213104A7D440A3BDE550</deviationsHash>
+      <fileHash>B6A9899E065B40A6DE6C1334EF77DC156F6F5F5FE5B96862F498755A3CFFD965</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#bfc823fb-60ab-451d-ba62-12671fe7e28e</correlationId>
+      <path>Intent.Modules.Modelers.Services.DomainInteractions/Api/DeleteEntityActionModelAssociationExtensions.cs</path>
+      <count>3</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2025-07-03T09:45:33.1542042Z</updatedAt>
+      <deviationsHash>FF0861EB88C964AB49EAB910CB76A2AD2C24924046E0064783991156CD7DC520</deviationsHash>
+      <fileHash>D438F3DCAE11ABBEC03FAC406C1293D6D77065B91B50D0BBD5D6CA2A6E9E9033</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#47ab5888-a258-4bec-a9fc-a83de69eb79d</correlationId>
+      <path>Intent.Modules.Modelers.Services.DomainInteractions/Api/QueryEntityActionModelAssociationExtensions.cs</path>
+      <count>3</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2025-07-03T09:45:33.1542127Z</updatedAt>
+      <deviationsHash>6B946EB21A132C7E211F763A7423CBC59BD0E7BB728370579A96375C35BD2CB6</deviationsHash>
+      <fileHash>ABD599445F655CA6B75C5EE77A856ACA25E81395BBC7ADA2EDFF2FD88A10A284</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#9ea0382a-4617-412a-a8c8-af987bbce226</correlationId>
+      <path>Intent.Modules.Modelers.Services.DomainInteractions/Api/UpdateEntityActionModelAssociationExtensions.cs</path>
+      <count>2</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2025-07-03T09:45:33.1542207Z</updatedAt>
+      <deviationsHash>8AD699DB044E3FF2199ABF806DE7441C33461BA215EF2C53B86B35BB4118E13A</deviationsHash>
+      <fileHash>3BE11A8CAA74ADB763EEEF4AA88BBB11C6167FDD8939F00ADF2D72E939CF0BC9</fileHash>
+    </file>
+  </files>
 </deviationsLog>

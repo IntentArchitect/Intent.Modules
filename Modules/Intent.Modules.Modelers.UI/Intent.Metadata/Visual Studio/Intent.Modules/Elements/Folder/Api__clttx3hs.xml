@@ -149,5 +149,21 @@
       </metadata>
       <childElements />
     </childElement>
+    <childElement id="7b0c01a7-94d2-4f20-89b8-404a41a66d01" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.Api.ApiTraitModel</name>
+      <display>Intent.ModuleBuilder.Templates.Api.ApiTraitModel</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</parentFolderId>
+      <packageId>b7e7581d-9257-4915-8fa7-e37895091bbd</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
   </childElements>
 </class>

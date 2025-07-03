@@ -16,14 +16,13 @@
       <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
       <properties>
         <property name="1f0cdbc4-7a18-40a5-aeca-90452cce4fcf" display="SDK" value="Microsoft.NET.Sdk" isActive="true" />
-        <property name="252d4572-8255-4e87-9bd9-ede6220f44c1" display="Use top-level statements" value="false" isActive="false" />
+        <property name="252d4572-8255-4e87-9bd9-ede6220f44c1" display="Use top-level statements" value="false" isActive="true" />
         <property name="8f218e6c-9115-42d1-ad23-9b0403bfbcb4" display="Use minimal hosting model" value="false" isActive="false" />
         <property name="6a7d81d7-351e-4cdf-a596-142a74507455" display="Output Type" isActive="true" />
         <property name="9da51e12-529a-4592-9119-491d7bc9d5d5" display="Azure Functions Version" isActive="true" />
         <property name="e1cab7e9-28f1-4e82-8c02-bfb9e460d9e0" display="Target Multiple Frameworks" value="false" isActive="true" />
         <property name="d53ab03c-90cf-4b6a-b733-73b6983ab603" display="Target Framework" value="f8b1618d-1e64-4c2c-9787-e0725c3633a1" isActive="true" />
         <property name="b9685057-b337-42d8-9536-d0185ea69b73" display="Target Frameworks" value="" isActive="false" />
-        <property name="8ee6e435-e556-439c-9712-a3f287972813" display="Runtime Identifiers" isActive="true" />
         <property name="c9fc7052-9557-4485-a759-fa33363472b3" display="Configurations" isActive="true" />
         <property name="c27f8813-bee4-4289-81e5-570e755a8f30" display="Root Namespace" isActive="true" />
         <property name="a6660df2-6016-40c6-8453-8e5993f407c9" display="User Secrets Id" isActive="true" />
@@ -31,6 +30,7 @@
         <property name="94e630db-ee2b-4d4f-a423-19d3469178fa" display="Generate Documentation File" isActive="true" />
         <property name="d6c50001-ac9d-4819-94a9-8b6aa7f02e47" display="Assembly Name" isActive="true" />
         <property name="7cc174e3-ca2f-4f79-bb52-c7a3a4a7e5eb" display="Implicit Usings" isActive="true" />
+        <property name="8ee6e435-e556-439c-9712-a3f287972813" display="Runtime Identifiers" isActive="true" />
         <property name="575dbd4e-f038-4c92-a411-63c1e3e0d8d7" display="Suppress Warnings" value="$(NoWarn)" isActive="true" />
         <property name="6de4cc6f-2476-461c-9be9-b6ac0592a827" display="Manage Package Versions Centrally" isActive="true" />
       </properties>
