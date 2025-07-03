@@ -36,7 +36,7 @@ Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilde
 EndProject
 Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.Java", "Intent.Modules.ModuleBuilder.Java\Intent.Modules.ModuleBuilder.Java.csproj", "{1486EC79-2FBD-4DA7-AF1F-7DC8F7CC0AAB}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.Html", "Intent.Modules.ModuleBuilder.Html\Intent.Modules.ModuleBuilder.Html.csproj", "{4493CCFC-6BF3-4971-9E55-DA3E0E8ED660}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Html", "Intent.Modules.ModuleBuilder.Html\Intent.Modules.ModuleBuilder.Html.csproj", "{4493CCFC-6BF3-4971-9E55-DA3E0E8ED660}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.OutputTargets.Folders", "Intent.Modules.OutputTargets.Folders\Intent.Modules.OutputTargets.Folders.csproj", "{33437816-211B-4808-8AD9-E5866A7DCB27}"
 EndProject

@@ -33,7 +33,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
+      <ProjectId>2f869ddb-1b65-4cf0-9818-94e872494c0d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
@@ -41,7 +41,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
+      <ProjectId>2f869ddb-1b65-4cf0-9818-94e872494c0d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.ModuleBuilder.Html.imodspec</ApplicationRelativeFilePath>
@@ -49,8 +49,8 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
-      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#59b4ba79-7979-4102-ac26-426a9de6eb12</CorrelationId>
+      <ProjectId>2f869ddb-1b65-4cf0-9818-94e872494c0d</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#2f869ddb-1b65-4cf0-9818-94e872494c0d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.ModuleBuilder.Html.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Html.csproj</ProjectRelativeFilePath>
@@ -65,7 +65,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
+      <ProjectId>2f869ddb-1b65-4cf0-9818-94e872494c0d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#4d27f85a-03b0-4a9b-92e6-212e4d9272af</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/HtmlFile/HtmlFileTemplatePartial.cs</ApplicationRelativeFilePath>
@@ -73,7 +73,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
+      <ProjectId>2f869ddb-1b65-4cf0-9818-94e872494c0d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#4d27f85a-03b0-4a9b-92e6-212e4d9272af</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/HtmlFile/HtmlFileTemplateRegistration.cs</ApplicationRelativeFilePath>
@@ -81,7 +81,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
+      <ProjectId>2f869ddb-1b65-4cf0-9818-94e872494c0d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#64dd72e2-7896-4275-8b89-93d09749224e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplate.cs</ApplicationRelativeFilePath>
@@ -89,7 +89,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
+      <ProjectId>2f869ddb-1b65-4cf0-9818-94e872494c0d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#64dd72e2-7896-4275-8b89-93d09749224e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplate.tt</ApplicationRelativeFilePath>
@@ -97,7 +97,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
+      <ProjectId>2f869ddb-1b65-4cf0-9818-94e872494c0d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#64dd72e2-7896-4275-8b89-93d09749224e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplatePartial.cs</ApplicationRelativeFilePath>
@@ -105,7 +105,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
+      <ProjectId>2f869ddb-1b65-4cf0-9818-94e872494c0d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#64dd72e2-7896-4275-8b89-93d09749224e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>
