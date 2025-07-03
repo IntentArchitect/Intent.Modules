@@ -80,6 +80,8 @@ steps:
   inputs:
     version: '9.x'
 
+- script: dotnet --info
+
 - task: PowerShell@2
   displayName: 'Check TypeScript version'
   inputs:
