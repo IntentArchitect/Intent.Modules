@@ -113,7 +113,6 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
             IReadOnlyList<string>? stereotypeNames,
             IReadOnlyCollection<Func<string, IDesigner>> getDesigners)
         {
-
             stereotypeNames ??= HttpSettingsStereotypeOption;
             var designers = getDesigners
                 .Select(getDesigner => getDesigner(applicationId))
@@ -133,7 +132,6 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
             IReadOnlyList<string>? stereotypeNames,
             IReadOnlyCollection<Func<string, IDesigner>> getDesigners)
         {
-
             stereotypeNames ??= HttpSettingsStereotypeOption;
             var designers = getDesigners
                 .Select(getDesigner => getDesigner(applicationId))
@@ -149,7 +147,7 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
 
         private static IEnumerable<IElement> GetInvokedEndpointElements(
             IReadOnlyList<IDesigner> designers,
-            IReadOnlyList<string>? stereotypeNames)
+            IReadOnlyList<string> stereotypeNames)
         {
             const string callServiceOperationTypeId = "3e69085c-fa2f-44bd-93eb-41075fd472f8";
 
@@ -169,7 +167,8 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
                            targetElement.Stereotypes.Any(y =>
                                stereotypeNames.Contains(y.Name) || stereotypeNames.Contains(y.DefinitionId));
                 })
-                .Select(x => (IElement)x.TargetEnd.TypeReference.Element);
+                .Select(x => (IElement)x.TargetEnd.TypeReference.Element)
+                .DistinctBy(x => x.Id);
         }
 
         private static List<DTOModel> GetReferencedDtoModels(this IEnumerable<IElement> elements, bool includeReturnTypes = true)

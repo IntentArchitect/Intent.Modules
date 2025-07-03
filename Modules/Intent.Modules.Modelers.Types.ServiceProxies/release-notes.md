@@ -1,4 +1,8 @@
-﻿### Version 5.5.0
+﻿### Version 5.5.1
+
+- Fixed: When more than one "Perform Invocation" was targetting the same HTTP endpoint an exception would occur.
+
+### Version 5.5.0
 
 - Improvement: Added `[Invokable]` trait to Proxy Operations.
 
