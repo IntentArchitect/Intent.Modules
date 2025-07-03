@@ -17,9 +17,12 @@ function validateDomainEntity(entity:IElementApi):string | null{
 
     let owners = DomainHelper.getOwnersRecursive(entity);
     if (owners.length > 1){
-        let ownersDescription = owners.map(item => item.getName()).join(", ");
-        return `Entity has multiple owners. The entity '${entity.getName()}' has multiple owners. [${ownersDescription}].
+        const uniqueIds = new Set(owners.map(item => item.id));
+        if (uniqueIds.size !== 1) {
+            let ownersDescription = owners.map(item => item.getName()).join(", ");
+            return `Entity has multiple owners. The entity '${entity.getName()}' has multiple owners. [${ownersDescription}].
 Compositional entities (black diamond) must have 1 owner. Please adjust the associations accordingly.`;
+        }
     }
     return null;
 }
@@ -31,5 +34,11 @@ function isCosmosDbProvider() {
         ?.value == "cosmos";
 }
 
+/**
+ * Used by Intent.EntityFrameworkCore
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/rdbms/composite-validation/composite-validation.ts
+ */
 //return validateDomainEntity(element);
 validateDomainEntity(element);
