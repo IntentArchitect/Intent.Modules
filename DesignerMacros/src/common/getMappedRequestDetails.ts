@@ -47,7 +47,7 @@ function getMappedRequestDetails(
     // Advanced mapping:
     if (mappedElement == null) {
         const advancedMappings = request.getAssociations()
-            .map(association => {
+            .map((association: MacroApi.Context.IBackwardCompatibleIAssociationApi) => {
                 return association.getMapping(createEntityMappingTypeId) ||
                     association.getMapping(updateEntityMappingTypeId) ||
                     association.getMapping(queryEntityMappingTypeId); 

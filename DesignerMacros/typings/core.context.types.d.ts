@@ -65,6 +65,10 @@ declare namespace MacroApi.Context {
     interface IDynamicFormConfig {
         title: string;
         /**
+         * Sets the primary button text. Defaults to "Done" if not set.
+         **/
+        submitButtonText?: string;
+        /**
          * Sets the dialog's minimum width (e.g. "500px" or "60%"). If not set, the dialog's width will default to "500px".
          **/
         minWidth?: string;
@@ -76,19 +80,37 @@ declare namespace MacroApi.Context {
          * Sets the dialog's height (e.g. "500px" or "60%"). If not set, the dialog will autosize to its content.
          **/
         height?: string;
+        /**
+         * The field configurations for the fields to be added to the form.
+         **/
+        fields: IDynamicFormFieldConfig[];
+
+        sections?: IDynamicFormSectionConfig[];
+    }
+
+    interface IDynamicFormSectionConfig {
+        name: string;
+        isHidden: boolean;
+        isCollapsed: boolean;
         fields: IDynamicFormFieldConfig[];
     }
 
     interface IDynamicFormFieldConfig {
         id: string;
-        fieldType: "text" | "select" | "checkbox" | "textarea" | "tree-view" | "tiles"
+        fieldType: "text" | "select" | "checkbox" | "textarea" | "tree-view" | "tiles" | "open-file" | "button"
         label: string;
         isRequired?: boolean;
+        isHidden?: boolean;
+        isDisabled?: boolean;
         placeholder?: string,
         hint?: string,
         value?: string | string[];
-        selectOptions?: IDynamicFormFieldSelectOption[]
-        treeViewOptions?: ISelectableTreeViewOptions
+        errorMessage?: string;
+        selectOptions?: IDynamicFormFieldSelectOption[];
+        treeViewOptions?: ISelectableTreeViewOptions;
+        openFileOptions?: IDynamicFormOpenFileOptions
+        onClick?: (formApi: IDynamicFormApi) => void;
+        onChange?: (formApi: IDynamicFormApi) => void;
     }
 
     interface IDynamicFormFieldSelectOption {
@@ -98,8 +120,28 @@ declare namespace MacroApi.Context {
         icon?: IIcon;
     }
 
+    interface IDynamicFormApi {
+        getField(id: string): IDynamicFormFieldConfig;
+    }
+
+    interface IDynamicFormOpenFileOptions {
+        fileFilters: IDynamicFormOpenFileOptions_FileFilters[];
+    }
+
+    interface IDynamicFormOpenFileOptions_FileFilters {
+        name: string;
+        extensions: string[];
+    }
+
     interface ISelectableTreeViewOptions {
-        rootId: string;
+        /**
+         * Specifes the element Id in the current designer that will become the root node in this selectable tree-view.
+         */
+        rootId?: string;
+        /**
+         * Specifies the root node and its children to be displayed in this selectable tree-view. If a rootId is specified, this field will be ignored.
+         */
+        rootNode?: ISelectableTreeNode
         height?: string;
         width?: string;
         /**
@@ -110,6 +152,38 @@ declare namespace MacroApi.Context {
         selectableTypes: ISelectableTypeCriteria[];
         resultFilter?: ((element: MacroApi.Context.IElementReadOnlyApi) => boolean)
     }
+
+    export interface ISelectableTreeNode {
+        /**
+         * The specialization identifier of this node. This field is required.
+         */
+        specializationId: string;
+        /**
+         * The unique identifier of this node.
+         */
+        id: string;
+        /**
+         * The label text to display for this node.
+         */
+        label: string;
+        /**
+         * The child nodes of this node.
+         */
+        children?: ISelectableTreeNode[];
+        /**
+         * Whether this node is expanded by default or not. Default is true.
+         */
+        isExpanded?: boolean;
+        /**
+         * Whether this node is selected by default or not. Default is false.
+         */
+        isSelected?: boolean;
+        /**
+         * The icon of this node. A default icon will be used if this is not specified.
+         */
+        icon?: string | MacroApi.Context.IIcon;
+    }
+
     interface ISelectableTypeCriteria {
         specializationId: string;
         isSelectable?: boolean | ((element: MacroApi.Context.IElementReadOnlyApi) => boolean);
@@ -351,7 +425,7 @@ declare namespace MacroApi.Context {
         /**
          * Automatically lays out the specified elements and associations using the Dagre algorithm around the provided position.
          */
-        layoutVisuals: (elementIds: string | string[] | any, position?: { x: number, y: number }, includeAllChildren?: boolean) => void;
+        layoutVisuals: (elementIds: string | string[] | any, position?: IPoint, includeAllChildren?: boolean) => void;
 
         /**
          * Creates an element and adds it to the diagram at the specified position. The parent of the element is determined by the diagram.
@@ -361,7 +435,7 @@ declare namespace MacroApi.Context {
          * @param name The name of the element.
          * @param position The position to place the element visual. Will use the last mouse position if the position argument isn't provided.
          */
-        createElement: (specialization: string, name: string, position?: { x: number, y: number }) => IElementApi;
+        createElement: (specialization: string, name: string, position?: IPoint) => IElementApi;
 
         /**
          * Adds an element visual to the diagram.
@@ -370,7 +444,7 @@ declare namespace MacroApi.Context {
          * @param position The position to place the element visual.
          * @param size The size of the element visual.
          */
-        addElement: (elementId: string | any, position: { x: number, y: number }, size?: { width: number, height: number }) => void;
+        addElement: (elementId: string | any, position: IPoint, size?: { width: number, height: number }) => void;
 
         /**
          * Adds an association visual to the diagram.
@@ -379,7 +453,7 @@ declare namespace MacroApi.Context {
          * @param targetPrefPoint (optional) The relative point within the target element's visual to align the association.
          * @param fixedPoints (optional) The absolute fixed points that the association must follow.
          */
-        addAssociation: (associationId: string | any, targetPrefPoint?: { x: number, y: number }, fixedPoints?: { x: number, y: number }[]) => void;
+        addAssociation: (associationId: string | any, targetPrefPoint?: IPoint, fixedPoints?: IPoint[]) => void;
 
         /**
          * Hides the visual with the specified visual identifier.
@@ -387,9 +461,10 @@ declare namespace MacroApi.Context {
         hideVisual: (visualId: string | any) => void;
 
         /**
-         * Finds the nearest empty space, searching vertically, incrementing by the specified increment (defaults to 100 if not specified).
+         * Finds the nearest empty space, searching vertically up and then down, incrementing by the specified increment (defaults to 100 if not specified).
+         * Uses the specified size (defaults to 200 x 100 if not specified) to make sure that the space is empty.
          */
-        findEmptySpace: (point: { x: number, y: number }, increment?: number) => { x: number, y: number };
+        findEmptySpace: (point: IPoint, size?: ISize, increment?: number) => IPoint;
     }
 
     interface IElementVisualApi {
@@ -536,7 +611,7 @@ declare namespace MacroApi.Context {
          * Returns all the child elements of this element. If a type argument is provided, the children will
          * be filtered to those that match on specialization. 
          */
-        getChildren(type?: string): IElementReadOnlyApi[];
+        getChildren(type?: string | string[]): IElementReadOnlyApi[];
         /**
          * Finds and returns the first child element that matches the provided function. The function will search all
          * children in the hierarchy if the provided searchHierarchy parameter is true.
@@ -582,7 +657,11 @@ declare namespace MacroApi.Context {
          * Returns all the association connected to this element. If a type argument is provided, the associations will
          * be filtered to those that match on specialization. 
          */
-        getAssociations(type?: string): IAssociationReadOnlyApi[];
+        getAssociations(type?: string | string[]): IAssociationReadOnlyApi[];
+        /**
+         * Returns true if the element is exposed from a package reference and not part of the current package. This will change for the same element depending on context in which this function is called
+         */
+        isReference(): boolean;
         /**
          * Gets the metadata value for the specified key.
          */
@@ -639,7 +718,7 @@ declare namespace MacroApi.Context {
          * Returns all the child elements of this element. If a type argument is provided, the children will
          * be filtered to those that match on specialization. 
          */
-        getChildren(type?: string): IElementApi[];
+        getChildren(type?: string | string[]): IElementApi[];
         /**
          * Returns this element's parent
          */
@@ -839,11 +918,6 @@ declare namespace MacroApi.Context {
          * Returns true if there are mappings associated with this association end.
          */
         hasMappings(mappingTypeNameOrId?: string): boolean;
-        /**
-         * Returns the mapping model for the supplied mapping type name or id. Returns null if the mapping does not exist.
-         */
-        getMapping(mappingTypeNameOrId: string): IElementToElementMappingApi;
-        getMappings(): IElementToElementMappingApi[];
         /**
          * Gets the metadata value for the specified key.
          */

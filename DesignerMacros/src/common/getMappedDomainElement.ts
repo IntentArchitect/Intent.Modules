@@ -32,7 +32,7 @@ function getMappedDomainElement(request: MacroApi.Context.IElementApi): MappedDo
     // Advanced mappings:
     if (mappedElement == null) {
         const targetEntities = request.getAssociations()
-            .flatMap(association => association.getMappings()
+            .flatMap((association : MacroApi.Context.IBackwardCompatibleIAssociationApi) => association.getMappings()
                 .filter(mapping => mappingTypeIds.some(y => mapping.mappingTypeId == y))
                 .map(mapping => {
                     let element = mapping.getTargetElement();
