@@ -1,3 +1,7 @@
+### Version 2.0.1
+
+Fixed: Resolved issue where operation results could not be mapped to Imtegration Commands or Events.
+
 ### Version 2.0.0
 
 - Improvement: Added `[Processing Handler]` trait to Event Handlers.

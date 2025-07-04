@@ -374,6 +374,19 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
             }
         }
 
+        // Finally, Finally, try the type reference's type reference. This is for when mapping from a property on an operation result DTO
+        // e.g. The Response from a operation call is a DTO, and one of the DTO's fields is mapped
+        if (TryFindTemplates(Template, previousPathTarget.TypeReference?.Element?.TypeReference?.Element as IElement, out foundTypeTemplates))
+        {
+            foreach (var context in foundTypeTemplates ?? [])
+            {
+                if (context.RootCodeContext.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
+                {
+                    return true;
+                }
+            }
+        }
+
         return false;
     }
 

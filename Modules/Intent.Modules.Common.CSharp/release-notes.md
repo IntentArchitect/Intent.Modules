@@ -1,4 +1,8 @@
-﻿### Version 3.9.0
+﻿### Version 3.9.1
+
+- Improvement: Added additional check when performing mapping type-lookups.
+
+### Version 3.9.0
 
 - New Feature: Added support for interaction strategies and extension methods to the `ICSharpMethodDeclaration` for ease of use.
 

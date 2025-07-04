@@ -1,3 +1,7 @@
+### Version 6.0.1
+
+- Fixed: Removed "response" from incorrectly appearing on the advanced mapping screen.
+
 ### Version 6.0.0
 
 - Improvement: Added `[Invokable]` trait to Commands and Queries.

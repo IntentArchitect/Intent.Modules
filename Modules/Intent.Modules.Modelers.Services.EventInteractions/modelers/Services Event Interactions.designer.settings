@@ -996,6 +996,7 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
             <source id="4a6afd7d-ae76-4831-9010-39f18999a595" name="Eventing DTO Field" />
             <source id="843b3195-7bfb-40a3-aea2-cbcef9a6a68a" name="Message DTO-Field" />
             <source id="f79156cb-9ac7-4224-becc-138355a3767b" name="Message Property" />
+            <source id="d70e0dac-3464-426c-bb01-5c6b1140390e" name="Service Invocation" />
           </sources>
           <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>

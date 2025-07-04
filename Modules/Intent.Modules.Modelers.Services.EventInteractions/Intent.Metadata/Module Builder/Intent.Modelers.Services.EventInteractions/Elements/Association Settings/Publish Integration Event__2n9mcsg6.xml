@@ -93,7 +93,6 @@
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]">
-          <comment>Indicates that this element represents a processing action within a &lt;see cref="IProcessingHandlerModel"/&gt;</comment>
           <addedByDefault>false</addedByDefault>
           <definitionPackageName>Intent.Common</definitionPackageName>
           <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
@@ -137,7 +136,6 @@
               <packageName>Intent.Modelers.Services.EventInteractions</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="6c209f86-87f6-4fc3-802e-e6e553dfbeca" name="Option Settings">
-                  <comment />
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
