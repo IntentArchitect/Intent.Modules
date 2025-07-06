@@ -42,6 +42,21 @@ public static class BlazorFileExtensions
     }
 
     /// <summary>
+    /// Adds an <c>@attribute</c> directive.
+    /// </summary>
+    public static IRazorFile AddAttributeDirective(this IRazorFile razorFile, string? attributeText)
+    {
+        if (string.IsNullOrWhiteSpace(attributeText))
+        {
+            return razorFile;
+        }
+
+        razorFile.Directives.Add(new RazorDirective("attribute", new CSharpStatement(attributeText)));
+
+        return razorFile;
+    }
+
+    /// <summary>
     /// Adds an <c>@code</c> directive.
     /// </summary>
     public static IRazorFile AddCodeBlock(this IRazorFile razorFile, Action<IRazorCodeBlock>? configure = null)

@@ -1,6 +1,7 @@
 ﻿### Version 3.9.1
 
 - Improvement: Added additional check when performing mapping type-lookups.
+- Improvement: Added support for Razor `attribute` directive.
 
 ### Version 3.9.0
 

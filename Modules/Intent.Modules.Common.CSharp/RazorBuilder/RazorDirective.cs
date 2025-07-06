@@ -24,7 +24,8 @@ internal class RazorDirective : IRazorDirective
         {
             "page" => 0,
             "using" => 1,
-            "inject" => 2,
+            "attribute" => 2,
+            "inject" => 3,
             _ => 0
         };
     }
