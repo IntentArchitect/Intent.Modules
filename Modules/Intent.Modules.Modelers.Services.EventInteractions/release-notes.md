@@ -1,6 +1,7 @@
 ### Version 2.0.1
 
-Fixed: Resolved issue where operation results could not be mapped to Imtegration Commands or Events.
+- Fixed: Resolved issue where operation results could not be mapped to Imtegration Commands or Events.
+- Fixed: The context menu options `Publish Integration Event` and `Send Integration Command` were missing from Service Operations.
 
 ### Version 2.0.0
 
