@@ -20,13 +20,9 @@ interface IDatabaseImportModel {
     settingPersistence: string;
 }
 
-interface IStoredProcListResultModel {
-    storedProcs: { [key: string]: string[] };
-}
+async function importSqlStoredProcedure(): Promise<void> {
 
-async function importSqlStoredProcedure(element: MacroApi.Context.IElementApi): Promise<void> {
-
-    var defaults = getDialogDefaults(element);
+    var defaults = getDialogDefaults();
 
     let connectionString: IDynamicFormFieldConfig = {
         id: "connectionString",
@@ -48,7 +44,7 @@ async function importSqlStoredProcedure(element: MacroApi.Context.IElementApi): 
             {id: "RepositoryOperation", description: "Stored Procedure Operation"}
         ]
     };
-
+    
     let storedProcSelection: IDynamicFormFieldConfig = {
         id: "storedProcSelection",
         fieldType: "tree-view",
@@ -90,48 +86,31 @@ async function importSqlStoredProcedure(element: MacroApi.Context.IElementApi): 
             const selection: IDynamicFormFieldConfig = form.getField("storedProcSelection");
             const loading: IDynamicFormFieldConfig = form.getField("storedProcSelectionLoading");
 
-            try {
-                console.log("1");
-                let jsonResponse = await executeModuleTask("Intent.Modules.SqlServerImporter.Tasks.StoredProcList", JSON.stringify({"connectionString": form.getField("connectionString").value}));
-                console.log("2");
-                let spListResult = JSON.parse(jsonResponse) as IStoredProcListResultModel;
-                console.log(spListResult)
-                let schemaTree = Object.keys(spListResult.storedProcs).map(schemaName => {
-                    return {
-                        id: schemaName,
-                        label: schemaName,
-                        specializationId: "Schema",
-                        icon: schemaIcon,
-                        children: spListResult.storedProcs[schemaName].map(sp => {
-                            return {
-                                id: sp,
-                                label: sp,
-                                specializationId: "Stored-Procedure",
-                                icon: storedProcIcon
-                            } as MacroApi.Context.ISelectableTreeNode;
-                        })
-                    } as MacroApi.Context.ISelectableTreeNode;
-                });
-                console.log(schemaTree);
-
-                selection.isHidden = true;
-                loading.isHidden = false;
-                
-                selection.treeViewOptions.rootNode = {
-                        id: "database",
-                        specializationId: "Database",
-                        label: "Database",
-                        children: schemaTree
-                    };
-                
-            }
-            catch (e) {
-                await dialogService.error(e);
-            }
-            finally {
-                loading.isHidden = true;
-                selection.isHidden = false;
-            }
+            selection.isHidden = true;
+            loading.isHidden = false;
+            
+            selection.treeViewOptions.rootNode = {
+                    id: "dbo",
+                    specializationId: "Schema",
+                    label: "dbo",
+                    icon: schemaIcon,
+                    children: [
+                        {
+                            id: "sp_getName",
+                            label: "sp_getName",
+                            specializationId: "Stored-Procedure",
+                            icon: storedProcIcon
+                        },
+                        {
+                            id: "sp_getAddress",
+                            label: "sp_getAddress",
+                            specializationId: "Stored-Procedure",
+                            icon: storedProcIcon
+                        }
+                    ]
+                };
+            loading.isHidden = true;
+            selection.isHidden = false;
         }
     };
 
@@ -197,22 +176,15 @@ async function importSqlStoredProcedure(element: MacroApi.Context.IElementApi): 
 
 }
 
-function getDialogDefaults(element: MacroApi.Context.IElementApi): ISqlImportPackageSettings {
-
-    let package = element.getPackage();
+function getDialogDefaults(): ISqlImportPackageSettings {
 
     let result: ISqlImportPackageSettings = {
-        connectionString: getSettingValue(package, "sql-import-repository:connectionString", null),
-        storedProcedureType: getSettingValue(package, "sql-import-repository:storedProcedureType", ""),
+        connectionString: null,
+        storedProcedureType: "",
         storedProcNames: "",
-        settingPersistence: getSettingValue(package, "sql-import-repository:settingPersistence", "None")
+        settingPersistence: "None"
     };
     return result;
-}
-
-function getSettingValue(package: MacroApi.Context.IPackageApi, key: string, defaultValue: string): string {
-    let persistedValue = package.getMetadata(key);
-    return persistedValue ? persistedValue : defaultValue;
 }
 
 
@@ -224,4 +196,4 @@ function getSettingValue(package: MacroApi.Context.IPackageApi, key: string, def
  */
 
 //Uncomment below
-//await importSqlStoredProcedure(element);
+//await importSqlStoredProcedure();

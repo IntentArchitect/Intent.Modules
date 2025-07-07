@@ -29,120 +29,137 @@ interface IDatabaseImportModel {
     settingPersistence: string;
 }
 
+
+function createConnectionStringSectionFields(defaults: ISqlImportPackageSettings): IDynamicFormFieldConfig[] {
+    return [
+        {
+            id: "connectionString",
+            fieldType: "text",
+            label: "Connection String",
+            placeholder: null,
+            hint: null,
+            isRequired: true,
+            value: defaults.connectionString
+        },
+        {
+            id: "connectionString-Test",
+            fieldType: "button",
+            label: "Test Connection",
+            onClick: async () => {
+                await dialogService.info("Connection was successful.");
+            }
+        }
+    ];
+}
+
+function createImportSettingsSectionFields(defaults: ISqlImportPackageSettings): IDynamicFormFieldConfig[] {
+    return [
+        {
+            id: "entityNameConvention",
+            fieldType: "select",
+            label: "Entity name convention",
+            placeholder: "",
+            hint: "",
+            value: defaults.entityNameConvention,
+            selectOptions: [{ id: "SingularEntity", description: "Singularized table name" }, { id: "MatchTable", description: "Table name, as is" }]
+        },
+        {
+            id: "tableStereotypes",
+            fieldType: "select",
+            label: "Apply Table Stereotypes",
+            placeholder: "",
+            hint: "When to apply Table stereotypes to your domain entities",
+            value: defaults.tableStereotypes,
+            selectOptions: [{ id: "WhenDifferent", description: "If They Differ" }, { id: "Always", description: "Always" }]
+        },
+        {
+            id: "includeTables",
+            fieldType: "checkbox",
+            label: "Include Tables",
+            hint: "Export SQL tables",
+            value: defaults.includeTables
+        },
+        {
+            id: "includeViews",
+            fieldType: "checkbox",
+            label: "Include Views",
+            hint: "Export SQL views",
+            value: defaults.includeViews
+        },
+        {
+            id: "includeStoredProcedures",
+            fieldType: "checkbox",
+            label: "Include Stored Procedures",
+            hint: "Export SQL stored procedures",
+            value: defaults.includeStoredProcedures
+        },
+        {
+            id: "includeIndexes",
+            fieldType: "checkbox",
+            label: "Include Indexes",
+            hint: "Export SQL indexes",
+            value: defaults.includeIndexes
+        },
+        {
+            id: "importFilterFilePath",
+            fieldType: "open-file",
+            label: "Import Filter File",
+            hint: "Path to import filter JSON file (see documentation)",
+            placeholder: "(optional)",
+            value: defaults.importFilterFilePath,
+            openFileOptions: {
+                fileFilters: [{ name: "JSON", extensions: ["json"] }]
+            }
+        },
+        {
+            id: "storedProcedureType",
+            fieldType: "select",
+            label: "Stored Procedure Representation",
+            value: defaults.storedProcedureType,
+            selectOptions: [
+                { id: "Default", description: "(Default)" },
+                { id: "StoredProcedureElement", description: "Stored Procedure Element" },
+                { id: "RepositoryOperation", description: "Stored Procedure Operation" }
+            ]
+        }
+    ];
+}
+
+
 async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise<void> {
 
     var defaults = getDialogDefaults(element);
 
-    let connectionString: IDynamicFormFieldConfig = {
-        id: "connectionString",
-        fieldType: "text",
-        label: "Connection String",
-        placeholder: null,
-        hint: null,
-        isRequired: true,
-        value: defaults.connectionString
-    };
-
-    let tableStereotypes: IDynamicFormFieldConfig = {
-        id: "tableStereotypes",
-        fieldType: "select",
-        label: "Apply Table Stereotypes",
-        placeholder: "",
-        hint: "When to apply Table stereotypes to your domain entities",
-        value: defaults.tableStereotypes,
-        selectOptions: [{ id: "WhenDifferent", description: "If They Differ" }, { id: "Always", description: "Always" }]
-    };
-
-    let entityNameConvention: IDynamicFormFieldConfig = {
-        id: "entityNameConvention",
-        fieldType: "select",
-        label: "Entity name convention",
-        placeholder: "",
-        hint: "",
-        value: defaults.entityNameConvention,
-        selectOptions: [{ id: "SingularEntity", description: "Singularized table name" }, { id: "MatchTable", description: "Table name, as is" }]
-    };
-
-    let includeTables: IDynamicFormFieldConfig = {
-        id: "includeTables",
-        fieldType: "checkbox",
-        label: "Include Tables",
-        hint: "Export SQL tables",
-        value: defaults.includeTables
-    };
-
-    let includeViews: IDynamicFormFieldConfig = {
-        id: "includeViews",
-        fieldType: "checkbox",
-        label: "Include Views",
-        hint: "Export SQL views",
-        value: defaults.includeViews
-    };
-
-    let includeStoredProcedures: IDynamicFormFieldConfig = {
-        id: "includeStoredProcedures",
-        fieldType: "checkbox",
-        label: "Include Stored Procedures",
-        hint: "Export SQL stored procedures",
-        value: defaults.includeStoredProcedures
-    };
-
-    let includeIndexes: IDynamicFormFieldConfig = {
-        id: "includeIndexes",
-        fieldType: "checkbox",
-        label: "Include Indexes",
-        hint: "Export SQL indexes",
-        value: defaults.includeIndexes
-    };
-
-    let settingPersistence: IDynamicFormFieldConfig = {
-        id: "settingPersistence",
-        fieldType: "select",
-        label: "Persist Settings",
-        hint: "Remember these settings for next time you run the import",
-        value: defaults.settingPersistence,
-        selectOptions: [
-            { id: "None", description: "(None)" }, 
-            { id: "All", description: "All Settings" },
-            { id: "AllSanitisedConnectionString", description: "All (with Sanitized connection string, no password))" }, 
-            { id: "AllWithoutConnectionString", description: "All (without connection string))" }
-        ]
-    };
-
-    let importFilterFilePath: IDynamicFormFieldConfig = {
-        id: "importFilterFilePath",
-        fieldType: "text",
-        label: "Import Filter File",
-        hint: "Path to import filter JSON file (see documentation)",
-        placeholder: "(optional)",
-        value: defaults.importFilterFilePath
-    };
-
-    let storedProcedureType: IDynamicFormFieldConfig = {
-        id: "storedProcedureType",
-        fieldType: "select",
-        label: "Stored Procedure Representation",
-        value: defaults.storedProcedureType,
-        selectOptions: [
-            {id: "Default", description: "(Default)"}, 
-            {id: "StoredProcedureElement", description: "Stored Procedure Element"}, 
-            {id: "RepositoryOperation", description: "Stored Procedure Operation"}
-        ]
-    };
-
     let formConfig: MacroApi.Context.IDynamicFormConfig = {
         title: "Sql Server Import",
         fields: [
-            connectionString,
-            entityNameConvention,
-            tableStereotypes,
-            includeTables,
-            includeViews,
-            includeStoredProcedures,
-            includeIndexes,
-            importFilterFilePath,
-            storedProcedureType,
-            settingPersistence
+            {
+                id: "settingPersistence",
+                fieldType: "select",
+                label: "Persist Settings",
+                hint: "Remember these settings for next time you run the import",
+                value: defaults.settingPersistence,
+                selectOptions: [
+                    { id: "None", description: "(None)" },
+                    { id: "All", description: "All Settings" },
+                    { id: "AllSanitisedConnectionString", description: "All (with Sanitized connection string, no password))" },
+                    { id: "AllWithoutConnectionString", description: "All (without connection string))" }
+                ]
+            }
+        ],
+        sections: [
+            {
+                name: 'Connection string',
+                fields: createConnectionStringSectionFields(defaults),
+                isCollapsed: false,
+                isHidden: false
+            },
+            {
+                name: 'Import settings',
+                fields: createImportSettingsSectionFields(defaults),
+                isCollapsed: true,
+                isHidden: false
+            }
         ]
     }
 
