@@ -1,3 +1,8 @@
+### Version 2.3.0
+
+- Improvement: Added CRUD accelerators to diagrams in the Services designer.
+- Improvement: Added CRUD accelerators as suggestions on Classes in the Domain designer.
+
 ### Version 2.2.1
 
 - Fixed: Re-running CQRS Crud Script caused an issue on `GetAll` queries.

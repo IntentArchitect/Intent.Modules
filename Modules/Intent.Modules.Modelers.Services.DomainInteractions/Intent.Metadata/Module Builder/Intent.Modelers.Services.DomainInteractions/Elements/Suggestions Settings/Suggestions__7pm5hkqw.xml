@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0bdb5f6f-6162-48d8-b12a-0dfc76087731" type="Suggestions Settings" typeId="f68b5446-19f2-402d-a940-f62b3a592906">
+  <name>Suggestions</name>
+  <display>Suggestions</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>63b378af-e476-4c27-8550-a8765361284f</parentFolderId>
+  <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+  <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="fa3393cd-5287-4172-9a46-c778bb658706" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Create CRUD CQRS Services in Services designer</name>
+      <display>Create CRUD CQRS Services in Services designer: Class</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="d57cbca2-f9fe-4f87-8522-261fed9980d0">
+        <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Domain</typePackageName>
+        <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>0bdb5f6f-6162-48d8-b12a-0dfc76087731</parentFolderId>
+      <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+      <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return application.isModuleInstalled(&quot;Intent.Modelers.Services.CQRS&quot;);" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="navigateToDesigner(&quot;81104ae6-2bc5-4bae-b05a-f987b0372d81&quot;, {&#xD;&#xA;    executeScript: `await CrudApi.createCQRSService(getPackages()[0], lookup('${element.id}'));`,&#xD;&#xA;    scriptDependencies: [&quot;61a8411f-b5bc-4a00-9a37-a967e0893d9d&quot;]&#xD;&#xA;});" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="bc1c316e-ea5f-42a9-8556-06161d995cae" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Create CRUD Traditional Service in Services designer</name>
+      <display>Create CRUD Traditional Service in Services designer: Class</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="f7ca97ce-2f96-4dbf-bb74-bf1ecd6151e4">
+        <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Domain</typePackageName>
+        <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>0bdb5f6f-6162-48d8-b12a-0dfc76087731</parentFolderId>
+      <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+      <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="navigateToDesigner(&quot;81104ae6-2bc5-4bae-b05a-f987b0372d81&quot;, {&#xD;&#xA;    executeScript: `await CrudApi.createTraditionalService(getPackages()[0], lookup('${element.id}'));`,&#xD;&#xA;    scriptDependencies: [&quot;61a8411f-b5bc-4a00-9a37-a967e0893d9d&quot;]&#xD;&#xA;});" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

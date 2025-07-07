@@ -5,11 +5,12 @@ class TraditionalServicesStrategy extends CrudStrategy{
     private service: IElementApi;
 
     protected initialize(context: ICrudCreationContext): void {
-        const intentPackage = element.getPackage();
+        const intentPackage = context.element.getPackage();
         let entity = context.dialogOptions.selectedEntity;
+        const owningAggregate = DomainHelper.getOwningAggregateRecursive(this.entity);
 
-        const serviceName = `${toPascalCase(pluralize(this.owningAggregate != null ? this.owningAggregate.getName() : entity.getName()))}Service`;
-        const existingService = element.specialization == "Service" ? element : intentPackage.getChildren("Service").find(x => x.getName() == serviceName);
+        const serviceName = `${toPascalCase(pluralize(owningAggregate != null ? owningAggregate.getName() : entity.getName()))}Service`;
+        const existingService = context.element.specialization == "Service" ? context.element : intentPackage.getChildren("Service").find(x => x.getName() == serviceName);
         this.service = existingService ?? createElement("Service", serviceName, intentPackage.id);
         
     }
@@ -159,8 +160,14 @@ class TraditionalServicesStrategy extends CrudStrategy{
         return this.service.getChildren().find(x => x.getName() === operationName);
     }
 
-    protected doAddDiagram(): void {        
-        this.addDiagram( this.service);    
+    protected doAddDiagram(diagramElement?: IElementApi): void {        
+        const diagramProvided = diagramElement != null;        
+        diagramElement ??= this.getOrCreateDiagram(this.targetFolder);
+        diagramElement.loadDiagram();
+        const diagram = getCurrentDiagram();
+        const space = diagram.findEmptySpace(diagramProvided ? diagram.mousePosition : diagram.getViewPort().getCenter(), { width: 500, height: 200 });
+        const visuals = diagram.layoutVisuals(this.service, space, true);
+        diagram.selectVisualsForElements(visuals.map(x => x.id))
     }
 
     protected addMissingAggregateKey(element: IElementApi, name: string):IElementApi{

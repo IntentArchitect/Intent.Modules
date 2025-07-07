@@ -425,7 +425,7 @@ declare namespace MacroApi.Context {
         /**
          * Automatically lays out the specified elements and associations using the Dagre algorithm around the provided position.
          */
-        layoutVisuals: (elementIds: string | string[] | any, position?: IPoint, includeAllChildren?: boolean) => void;
+        layoutVisuals: (elementIds: string | string[] | any, position?: IPoint, includeAllChildren?: boolean) => IElementVisualApi[];
 
         /**
          * Creates an element and adds it to the diagram at the specified position. The parent of the element is determined by the diagram.
@@ -462,12 +462,33 @@ declare namespace MacroApi.Context {
 
         /**
          * Finds the nearest empty space, searching vertically up and then down, incrementing by the specified increment (defaults to 100 if not specified).
-         * Uses the specified size (defaults to 200 x 100 if not specified) to make sure that the space is empty.
+         * Uses the specified size (defaults to 200 x 100 if not specified) to make sure that the space is empty. The specified point is treated as the center of the size argument.
          */
         findEmptySpace: (point: IPoint, size?: ISize, increment?: number) => IPoint;
+
+        /**
+         * Will select and center the diagram on the visuals for the provided visualIds.
+         * @param visualIds
+         */
+        selectVisuals: (visualIds: string | string[]) => void;
+
+        /**
+         * Will select and center the diagram on the visuals for the provided elements with elementIds.
+         * @param elementIds
+         */
+        selectVisualsForElements: (elementIds: string | string[]) => void;
+
+        /**
+         * Returns the dimensions of the diagram's view port
+         */
+        getViewPort: () => MacroApi.Context.IDimensions;
     }
 
     interface IElementVisualApi {
+        /**
+         * Identifier of the visual 
+         */
+        id: string;
         getPosition(): IPoint;
         getSize(): ISize;
         getDimensions(): MacroApi.Context.IDimensions;

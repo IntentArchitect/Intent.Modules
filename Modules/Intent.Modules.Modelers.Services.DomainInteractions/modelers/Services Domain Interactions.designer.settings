@@ -6793,6 +6793,53 @@ convertToAdvancedMapping.execute();
       <mappingSettings />
       <diagramSettings>
         <addNewElementsTo>Package</addNewElementsTo>
+        <contextMenuOptions>
+          <runScript group="2" type="run-script">
+            <text>Create CRUD Traditional Service</text>
+            <shortcut>alt + s</shortcut>
+            <icon type="UrlImagePath" source="data:image/png;base64,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" />
+            <isOptionVisibleFunction>return application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa").value == "advanced";</isOptionVisibleFunction>
+            <dependencies>
+              <dependency name="Crud Api" id="61a8411f-b5bc-4a00-9a37-a967e0893d9d" />
+            </dependencies>
+            <script>await CrudApi.createTraditionalService(currentDiagram.getOwner().getParent(), null, currentDiagram.getOwner());</script>
+          </runScript>
+          <runScript group="2" type="run-script">
+            <text>Create CRUD CQRS Operations</text>
+            <shortcut>alt + c</shortcut>
+            <icon type="UrlImagePath" source="data:image/png;base64,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" />
+            <isOptionVisibleFunction>return application.isModuleInstalled("Intent.Modelers.Services.CQRS") &amp;&amp;
+    application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa").value == "advanced";</isOptionVisibleFunction>
+            <dependencies>
+              <dependency name="Crud Api" id="61a8411f-b5bc-4a00-9a37-a967e0893d9d" />
+            </dependencies>
+            <script>await CrudApi.createCQRSService(currentDiagram.getOwner().getParent(), null, currentDiagram.getOwner());</script>
+          </runScript>
+        </contextMenuOptions>
+        <creationOptions />
+        <scriptOptions>
+          <option group="2" type="run-script">
+            <text>Create CRUD CQRS Operations</text>
+            <shortcut>alt + c</shortcut>
+            <icon type="UrlImagePath" source="data:image/png;base64,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" />
+            <isOptionVisibleFunction>return application.isModuleInstalled("Intent.Modelers.Services.CQRS") &amp;&amp;
+    application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa").value == "advanced";</isOptionVisibleFunction>
+            <dependencies>
+              <dependency name="Crud Api" id="61a8411f-b5bc-4a00-9a37-a967e0893d9d" />
+            </dependencies>
+            <script>await CrudApi.createCQRSService(currentDiagram.getOwner().getParent(), null, currentDiagram.getOwner());</script>
+          </option>
+          <option group="2" type="run-script">
+            <text>Create CRUD Traditional Service</text>
+            <shortcut>alt + s</shortcut>
+            <icon type="UrlImagePath" source="data:image/png;base64,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" />
+            <isOptionVisibleFunction>return application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField("14bc1e98-930b-494c-97a9-5da4e1f3a5fa").value == "advanced";</isOptionVisibleFunction>
+            <dependencies>
+              <dependency name="Crud Api" id="61a8411f-b5bc-4a00-9a37-a967e0893d9d" />
+            </dependencies>
+            <script>await CrudApi.createTraditionalService(currentDiagram.getOwner().getParent(), null, currentDiagram.getOwner());</script>
+          </option>
+        </scriptOptions>
         <elementVisualSettings>
           <visualSettings type="Stored Procedure" typeId="575edd35-9438-406d-b0a7-b99d6f29b560">
             <size width="${w}" height="${h}" />
@@ -20211,7 +20258,7 @@ await execute(element);
   </suggestionSettings>
   <scripts>
     <script name="Crud Api" id="61a8411f-b5bc-4a00-9a37-a967e0893d9d">
-      <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+      <script>/// &lt;reference path="../../../typings/core.context.types.d.ts" /&gt;
 var _a, _b;
 const privateSettersOnly = ((_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")) === null || _b === void 0 ? void 0 : _b.value) == "true";
 async function notifyUserOfLimitations(entity, dialogOptions) {
@@ -21626,7 +21673,7 @@ class EntityProjector {
 class CrudStrategy {
     constructor() {
         this.resultDto = null;
-        this.owningAggregate = null;
+        //protected owningAggregate?: IElementApi = null;
         this.entity = null;
         this.context = null;
         this.targetFolder = null;
@@ -21640,19 +21687,20 @@ class CrudStrategy {
         let context = new CrudCreationContext(element, dialogOptions, primaryKeys);
         return context;
     }
-    getOrCreateEntityFolder(folderOrPackage, entity) {
+    static getOrCreateEntityFolder(folderOrPackage, entity) {
         var _a;
         if (folderOrPackage.specialization == "Folder") {
-            return element;
+            return folderOrPackage;
         }
         const folderName = this.getAggregateRootFolderName(entity);
-        const folder = (_a = element.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), element.id);
+        const folder = (_a = folderOrPackage.getChildren().find(x =&gt; x.getName() == pluralize(folderName))) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Folder", pluralize(folderName), folderOrPackage.id);
         return folder;
     }
-    getAggregateRootFolderName(entity) {
-        return pluralize(this.owningAggregate != null ? this.owningAggregate.getName() : entity.getName());
+    static getAggregateRootFolderName(entity) {
+        const owningAggregate = DomainHelper.getOwningAggregateRecursive(entity);
+        return pluralize(owningAggregate != null ? owningAggregate.getName() : entity.getName());
     }
-    async execute(element, preselectedClass) {
+    async execute(element, preselectedClass, diagramElement) {
         var _a;
         this.context = await this.askUser(element, preselectedClass);
         if (this.context == null)
@@ -21664,8 +21712,8 @@ class CrudStrategy {
         if (!await this.validate()) {
             return;
         }
-        this.owningAggregate = DomainHelper.getOwningAggregateRecursive(this.entity);
-        this.targetFolder = this.getOrCreateEntityFolder(this.context.element, this.entity);
+        const owningAggregate = DomainHelper.getOwningAggregateRecursive(this.entity);
+        this.targetFolder = CrudStrategy.getOrCreateEntityFolder(this.context.element, this.entity);
         this.initialize(this.context);
         if (dialogOptions.canQueryById || dialogOptions.canQueryAll) {
             let projector = new EntityProjector();
@@ -21677,35 +21725,35 @@ class CrudStrategy {
         }
         if ((!privateSettersOnly || hasConstructor(this.entity)) &amp;&amp; dialogOptions.canCreate) {
             let x = this.doCreate();
-            if (this.owningAggregate != null) {
+            if (owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
         }
         if ((hasPrimaryKey &amp;&amp; !privateSettersOnly) &amp;&amp; dialogOptions.canUpdate) {
             let x = this.doUpdate();
-            if (this.owningAggregate != null) {
+            if (owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
         }
         if (hasPrimaryKey &amp;&amp; dialogOptions.canQueryById) {
             let x = this.doGetById();
-            if (this.owningAggregate != null) {
+            if (owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
         }
         if (dialogOptions.canQueryAll) {
             let x = this.doGetAll();
-            if (this.owningAggregate != null) {
+            if (owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
         }
         if (hasPrimaryKey &amp;&amp; dialogOptions.canDelete) {
             let x = this.doDelete();
-            if (this.owningAggregate != null) {
+            if (owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
@@ -21728,20 +21776,20 @@ class CrudStrategy {
                     }
                 }
                 let x = this.doOperation(operation, operationResultDto);
-                if (this.owningAggregate != null) {
+                if (owningAggregate != null) {
                     this.AddAggregateKeys(x);
                 }
                 x.collapse();
             }
         }
-        this.doAddDiagram();
+        this.doAddDiagram(diagramElement);
         await notifyUserOfLimitations(dialogOptions.selectedEntity, dialogOptions);
     }
     async validate() {
         if (DomainHelper.getOwnersRecursive(this.entity).length &gt; 1) {
             const owners = DomainHelper.getOwnersRecursive(this.entity).map(item =&gt; item.getName()).join(", ");
             await dialogService.warn(`Entity has multiple owners.
-The entity '${this.entity.getName()}' has multiple Aggregate owning it [${owners}].
+The entity '${this.entity.getName()}' has multiple Aggregates owning it [${owners}].
 
 Compositional Entities (black diamond) must have 1 owner. Please adjust the associations accordingly.`);
             return false;
@@ -21820,19 +21868,15 @@ Compositional Entities (black diamond) must have 1 owner. Please adjust the asso
         }
         return queryMappingEnds;
     }
-    addDiagram(whatToAdd, diagramFolder) {
+    getOrCreateDiagram(diagramFolder) {
         var _a;
         if (diagramFolder == null) {
             diagramFolder = this.targetFolder;
         }
         let entity = this.entity;
-        if (DomainHelper.isAggregateRoot(entity)) {
-            const aggregateRootFolderName = this.getAggregateRootFolderName(entity);
-            const diagramElement = (_a = diagramFolder.getChildren("Diagram").find(x =&gt; x.getName() == aggregateRootFolderName)) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Diagram", aggregateRootFolderName, diagramFolder.id);
-            diagramElement.loadDiagram();
-            const diagram = getCurrentDiagram();
-            diagram.layoutVisuals(whatToAdd, null, true);
-        }
+        const aggregateRootFolderName = CrudStrategy.getAggregateRootFolderName(entity);
+        const diagramElement = (_a = diagramFolder.getChildren("Diagram").find(x =&gt; x.getName() == aggregateRootFolderName)) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Diagram", aggregateRootFolderName, diagramFolder.id);
+        return diagramElement;
     }
     addBasicMapping(mappings) {
         mappings.forEach(m =&gt; {
@@ -21965,8 +22009,14 @@ class CQRSCrudStrategy extends CrudStrategy {
     elementExists(elementName) {
         return this.targetFolder.getChildren().find(x =&gt; x.getName() == elementName);
     }
-    doAddDiagram() {
-        this.addDiagram(this.targetFolder);
+    doAddDiagram(diagramElement) {
+        const diagramProvided = diagramElement != null;
+        diagramElement !== null &amp;&amp; diagramElement !== void 0 ? diagramElement : (diagramElement = this.getOrCreateDiagram(this.targetFolder));
+        diagramElement.loadDiagram();
+        const diagram = getCurrentDiagram();
+        const space = diagram.findEmptySpace(diagramProvided ? diagram.mousePosition : diagram.getViewPort().getCenter(), { width: 500, height: 600 });
+        const visuals = diagram.layoutVisuals(this.targetFolder, space, true);
+        diagram.selectVisualsForElements(visuals.map(x =&gt; x.id));
     }
     addMissingAggregateKey(element, name) {
         return createElement("DTO-Field", name, element.id);
@@ -21975,10 +22025,11 @@ class CQRSCrudStrategy extends CrudStrategy {
 /// &lt;reference path="strategy-base.ts" /&gt;
 class TraditionalServicesStrategy extends CrudStrategy {
     initialize(context) {
-        const intentPackage = element.getPackage();
+        const intentPackage = context.element.getPackage();
         let entity = context.dialogOptions.selectedEntity;
-        const serviceName = `${toPascalCase(pluralize(this.owningAggregate != null ? this.owningAggregate.getName() : entity.getName()))}Service`;
-        const existingService = element.specialization == "Service" ? element : intentPackage.getChildren("Service").find(x =&gt; x.getName() == serviceName);
+        const owningAggregate = DomainHelper.getOwningAggregateRecursive(this.entity);
+        const serviceName = `${toPascalCase(pluralize(owningAggregate != null ? owningAggregate.getName() : entity.getName()))}Service`;
+        const existingService = context.element.specialization == "Service" ? context.element : intentPackage.getChildren("Service").find(x =&gt; x.getName() == serviceName);
         this.service = existingService !== null &amp;&amp; existingService !== void 0 ? existingService : createElement("Service", serviceName, intentPackage.id);
     }
     doCreate() {
@@ -22085,8 +22136,14 @@ class TraditionalServicesStrategy extends CrudStrategy {
     operationExists(operationName) {
         return this.service.getChildren().find(x =&gt; x.getName() === operationName);
     }
-    doAddDiagram() {
-        this.addDiagram(this.service);
+    doAddDiagram(diagramElement) {
+        const diagramProvided = diagramElement != null;
+        diagramElement !== null &amp;&amp; diagramElement !== void 0 ? diagramElement : (diagramElement = this.getOrCreateDiagram(this.targetFolder));
+        diagramElement.loadDiagram();
+        const diagram = getCurrentDiagram();
+        const space = diagram.findEmptySpace(diagramProvided ? diagram.mousePosition : diagram.getViewPort().getCenter(), { width: 500, height: 200 });
+        const visuals = diagram.layoutVisuals(this.service, space, true);
+        diagram.selectVisualsForElements(visuals.map(x =&gt; x.id));
     }
     addMissingAggregateKey(element, name) {
         return createElement("Parameter", toCamelCase(name), element.id);
@@ -22098,13 +22155,13 @@ let CrudApi = {
     createCQRSService,
     createTraditionalService
 };
-async function createCQRSService(element, preselectedClass) {
+async function createCQRSService(element, preselectedClass, diagramElement) {
     let strategy = new CQRSCrudStrategy();
-    await strategy.execute(element, preselectedClass);
+    await strategy.execute(element, preselectedClass, diagramElement);
 }
-async function createTraditionalService(element, preselectedClass) {
+async function createTraditionalService(element, preselectedClass, diagramElement) {
     let strategy = new TraditionalServicesStrategy();
-    await strategy.execute(element, preselectedClass);
+    await strategy.execute(element, preselectedClass, diagramElement);
 }
 </script>
     </script>

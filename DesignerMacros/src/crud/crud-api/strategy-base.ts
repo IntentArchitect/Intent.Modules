@@ -8,7 +8,7 @@
 abstract class CrudStrategy {
 
     protected resultDto: IElementApi = null;
-    protected owningAggregate?: IElementApi = null;
+    //protected owningAggregate?: IElementApi = null;
     protected entity: IElementApi = null;
     protected context: ICrudCreationContext = null;
     protected targetFolder: IElementApi = null;
@@ -29,22 +29,23 @@ abstract class CrudStrategy {
         return context;
     }
 
-    private getOrCreateEntityFolder(folderOrPackage: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
+    private static getOrCreateEntityFolder(folderOrPackage: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
         if (folderOrPackage.specialization == "Folder") {
-            return element;
+            return folderOrPackage;
         }
 
         const folderName = this.getAggregateRootFolderName(entity);
-        const folder = element.getChildren().find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), element.id);
+        const folder = folderOrPackage.getChildren().find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), folderOrPackage.id);
         return folder;
     }
 
-    private getAggregateRootFolderName(entity: MacroApi.Context.IElementApi) {
-        return pluralize(this.owningAggregate != null ? this.owningAggregate.getName() : entity.getName());
+    private static getAggregateRootFolderName(entity: MacroApi.Context.IElementApi) {
+        const owningAggregate = DomainHelper.getOwningAggregateRecursive(entity);
+        return pluralize(owningAggregate != null ? owningAggregate.getName() : entity.getName());
     }
 
 
-    public async execute(element: IElementApi, preselectedClass: IElementApi | undefined): Promise<void> {
+    public async execute(element: IElementApi, preselectedClass?: IElementApi | undefined, diagramElement?: IElementApi | undefined): Promise<void> {
         this.context = await this.askUser(element, preselectedClass);
         if (this.context == null) return;
 
@@ -57,8 +58,8 @@ abstract class CrudStrategy {
             return;
         }
 
-        this.owningAggregate = DomainHelper.getOwningAggregateRecursive(this.entity);
-        this.targetFolder = this.getOrCreateEntityFolder(this.context.element, this.entity)
+        const owningAggregate = DomainHelper.getOwningAggregateRecursive(this.entity);
+        this.targetFolder = CrudStrategy.getOrCreateEntityFolder(this.context.element, this.entity)
 
         this.initialize(this.context);
 
@@ -73,7 +74,7 @@ abstract class CrudStrategy {
 
         if ((!privateSettersOnly || hasConstructor(this.entity)) && dialogOptions.canCreate) {
             let x = this.doCreate();
-            if (this.owningAggregate != null) {
+            if (owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
@@ -81,7 +82,7 @@ abstract class CrudStrategy {
 
         if ((hasPrimaryKey && !privateSettersOnly) && dialogOptions.canUpdate) {
             let x = this.doUpdate();
-            if (this.owningAggregate != null) {
+            if (owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
@@ -89,7 +90,7 @@ abstract class CrudStrategy {
 
         if (hasPrimaryKey && dialogOptions.canQueryById) {
             let x = this.doGetById();
-            if (this.owningAggregate != null) {
+            if (owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
@@ -97,7 +98,7 @@ abstract class CrudStrategy {
 
         if (dialogOptions.canQueryAll) {
             let x = this.doGetAll();
-            if (this.owningAggregate != null) {
+            if (owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
@@ -105,7 +106,7 @@ abstract class CrudStrategy {
 
         if (hasPrimaryKey && dialogOptions.canDelete) {
             let x = this.doDelete();
-            if (this.owningAggregate != null) {
+            if (owningAggregate != null) {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
@@ -131,7 +132,7 @@ abstract class CrudStrategy {
                 }
 
                 let x = this.doOperation(operation, operationResultDto);
-                if (this.owningAggregate != null) {
+                if (owningAggregate != null) {
                     this.AddAggregateKeys(x);
                 }
                 x.collapse();
@@ -139,7 +140,7 @@ abstract class CrudStrategy {
 
         }
 
-        this.doAddDiagram();
+        this.doAddDiagram(diagramElement);
 
         await notifyUserOfLimitations(dialogOptions.selectedEntity, dialogOptions);
     }
@@ -151,7 +152,7 @@ abstract class CrudStrategy {
     protected abstract doGetById(): IElementApi;
     protected abstract doGetAll(): IElementApi;
     protected abstract doOperation(operation: IElementApi, operationResultDto?: IElementApi): IElementApi;
-    protected abstract doAddDiagram(): void;
+    protected abstract doAddDiagram(diagramElement?: IElementApi): void;
 
     protected async validate(): Promise<boolean> {
         if (DomainHelper.getOwnersRecursive(this.entity).length > 1) {
@@ -253,18 +254,14 @@ Compositional Entities (black diamond) must have 1 owner. Please adjust the asso
         return queryMappingEnds;
     }
 
-    protected addDiagram(whatToAdd: IElementApi, diagramFolder?: IElementApi) {
+    protected getOrCreateDiagram(diagramFolder?: IElementApi): IElementApi {
         if (diagramFolder == null) {
             diagramFolder = this.targetFolder;
         }
         let entity = this.entity;
-        if (DomainHelper.isAggregateRoot(entity)) {
-            const aggregateRootFolderName = this.getAggregateRootFolderName(entity);
-            const diagramElement = diagramFolder.getChildren("Diagram").find(x => x.getName() == aggregateRootFolderName) ?? createElement("Diagram", aggregateRootFolderName, diagramFolder.id)
-            diagramElement.loadDiagram();
-            const diagram = getCurrentDiagram();
-            diagram.layoutVisuals(whatToAdd, null, true);
-        }
+        const aggregateRootFolderName = CrudStrategy.getAggregateRootFolderName(entity);
+        const diagramElement = diagramFolder.getChildren("Diagram").find(x => x.getName() == aggregateRootFolderName) ?? createElement("Diagram", aggregateRootFolderName, diagramFolder.id)
+        return diagramElement;
     }
 
     protected addBasicMapping(mappings: IPathMapping[]) {

@@ -130,6 +130,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>9b946305-94cd-455c-a9f0-c6c5c6be8d69</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#63b378af-e476-4c27-8550-a8765361284f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Domain Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Domain Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9b946305-94cd-455c-a9f0-c6c5c6be8d69</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#f36cb21a-faf9-46ff-85e7-41f38345253d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Services Domain Interactions.designer.settings</ApplicationRelativeFilePath>

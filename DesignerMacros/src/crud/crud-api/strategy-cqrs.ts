@@ -91,8 +91,14 @@ class CQRSCrudStrategy extends CrudStrategy{
         return this.targetFolder.getChildren().find(x => x.getName() == elementName)
     }
 
-    protected doAddDiagram(): void {        
-        this.addDiagram(this.targetFolder);    
+    protected doAddDiagram(diagramElement?: IElementApi): void {
+        const diagramProvided = diagramElement != null;        
+        diagramElement ??= this.getOrCreateDiagram(this.targetFolder);
+        diagramElement.loadDiagram();
+        const diagram = getCurrentDiagram();
+        const space = diagram.findEmptySpace(diagramProvided ? diagram.mousePosition : diagram.getViewPort().getCenter(), { width: 500, height: 600 });
+        const visuals = diagram.layoutVisuals(this.targetFolder, space, true);
+        diagram.selectVisualsForElements(visuals.map(x => x.id))
     }
 
     protected addMissingAggregateKey(element: IElementApi, name: string):IElementApi{
