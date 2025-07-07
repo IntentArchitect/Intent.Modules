@@ -864,6 +864,44 @@ return result;</displayFunction>
       <diagramSettings>
         <addNewElementsTo>Package</addNewElementsTo>
         <contextMenuOptions>
+          <runScript order="0" type="run-script">
+            <text>Add to Diagram</text>
+            <shortcut>ctrl + shift + a</shortcut>
+            <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGx1cy12NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfUGx1c194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NpcmNsZV94M0VfXzAwMDAwMTYxNjEyMDcyMDczMjQ2MjA5NTEwMDAwMDA4NjY5NjY2NzcxODg1MzA5ODc5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzQ5MyIgeDI9IjI1LjIiIHkyPSIyLjUxMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV94M0VfIiBmaWxsPSJ1cmwoI194M0NfQ2lyY2xlX3gzRV9fMDAwMDAxNjE2MTIwNzIwNzMyNDYyMDk1MTAwMDAwMDg2Njk2NjY3NzE4ODUzMDk4NzlfKSIgZD0iTTI1LjIsMi4zDQoJCWMtMTIuNCwwLTIyLjUsMTAtMjIuNSwyMi41YzAsMTIuNCwxMC4xLDIyLjUsMjIuNSwyMi41czIyLjUtMTAuMSwyMi41LTIyLjVDNDcuNywxMi4zLDM3LjYsMi4zLDI1LjIsMi4zeiBNMjUuMiw0My44DQoJCWMtMTAuNSwwLTE5LTguNS0xOS0xOXM4LjUtMTksMTktMTlzMTksOC41LDE5LDE5QzQ0LjIsMzUuMiwzNS43LDQzLjgsMjUuMiw0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzIxMSIgeDI9IjI1LjIiIHkyPSIyLjQ4MDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19QbHVzX3gzRV9fMDAwMDAwODE2MzE4NjY4NDEyOTcxNDM5MDAwMDAwMDczMTUyNDQ3Mzk2MDkwODMyNjlfIiBmaWxsPSJ1cmwoI194M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXykiIGQ9Ig0KCQlNMzAuNCwxMi42SDIwdjYuOWgtNi45djEwLjRIMjB2Ni45aDEwLjR2LTYuOWg2LjlWMTkuNmgtNi45VjEyLjZ6IE0zMy44LDIzdjMuNWgtNi45djYuOWgtMy41di02LjloLTYuOVYyM2g2Ljl2LTYuOWgzLjVWMjNIMzMuOHoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
+            <bottomDivider>true</bottomDivider>
+            <script>const result = await dialogService.openForm({
+    title: "Add to Diagram",
+    fields: [
+        {
+            id: "elementIds",
+            label: "Select Elements",
+            fieldType: "tree-view",
+            treeViewOptions: { 
+                rootId: getCurrentDiagram().getOwner().getPackage().id,
+                isMultiSelect: true,
+                submitFormTriggers: ["double-click", "enter"],
+                hasFilter: true,
+                selectableTypes: [
+                    { specializationId: "Command", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Query", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Domain Event", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Domain Event Handler", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Message", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Integration Command", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Integration Event Handler", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Class", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Domain Service", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Repository", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Service", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Service Proxy", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                ],
+            }
+        }
+    ]
+})
+
+getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePosition, true)</script>
+          </runScript>
           <createElement type="element">
             <text>New Component</text>
             <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ29ncyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfQ29nc194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NvZ19CX3gzRV9fMDAwMDAwNTU2NzEzNjMzMzg4OTgzMTI4NjAwMDAwMTcyNjYwNTg3MjkxMjEzMDMyMDNfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjM1LjYiIHkxPSIyLjEzMDMiIHgyPSIzNS42IiB5Mj0iNDcuMjEwNyI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQ0I2NDUiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBhdGggaWQ9Il94M0NfQ29nX0JfeDNFXyIgZmlsbD0idXJsKCNfeDNDX0NvZ19CX3gzRV9fMDAwMDAwNTU2NzEzNjMzMzg4OTgzMTI4NjAwMDAwMTcyNjYwNTg3MjkxMjEzMDMyMDNfKSIgZD0iTTQ1LjEsMzZsMi42LTAuNw0KCQlsLTIuMy04LjRsLTIuNiwwLjdjLTAuMi0wLjMtMC40LTAuNS0wLjctMC44Yy0wLjItMC4yLTAuNS0wLjUtMC44LTAuN2wwLjctMi42TDQwLjIsMjNsLTEuNSw1LjRjMC4zLDAuMiwwLjYsMC41LDAuOSwwLjgNCgkJYzAuNCwwLjQsMC43LDAuOCwxLDEuMmwwLjcsMS4xbDEuNy0wLjRsMC41LDEuOGwtMS43LDAuNGwtMC4xLDEuMmMwLDEuMS0wLjMsMi4xLTAuOCwzbC0wLjYsMS4xbDEuMiwxLjJsLTEuMywxLjNMMzkuMSw0MEwzOCw0MC42DQoJCWMtMC45LDAuNS0xLjksMC44LTMsMC44bC0xLjIsMC4xbC0wLjQsMS43bC0xLjgtMC41TDMyLDQxbC0xLjEtMC43Yy0wLjQtMC4zLTAuOS0wLjYtMS4yLTFjLTAuMy0wLjMtMC41LTAuNi0wLjgtMC45bC01LjQsMS41DQoJCWwwLjUsMS44bDIuNi0wLjdjMC4yLDAuMywwLjQsMC41LDAuNywwLjhjMC4yLDAuMiwwLjUsMC41LDAuOCwwLjdMMjcuMyw0NWw4LjQsMi4ybDAuNy0yLjZjMC43LTAuMSwxLjMtMC4zLDItMC41bDEuOSwxLjlsNi4xLTYuMQ0KCQlMNDQuNiwzOEM0NC44LDM3LjMsNDUsMzYuNyw0NS4xLDM2eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfQ29nX0FfeDNFX18wMDAwMDEyMzQxODMzNjc2MjQwMTc1NjIxMDAwMDAxMzA2Nzg5MTExNTE5NzUxMDU2N18iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjAuMjUiIHkxPSIyLjEzMDIiIHgyPSIyMC4yNSIgeTI9IjQ3LjIxMjIiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRkJCMDQxIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNGQ0I2NDUiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6I0Y1N0YyMCIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBhdGggaWQ9Il94M0NfQ29nX0FfeDNFXyIgZmlsbD0idXJsKCNfeDNDX0NvZ19BX3gzRV9fMDAwMDAxMjM0MTgzMzY3NjI0MDE3NTYyMTAwMDAwMTMwNjc4OTExMTUxOTc1MTA1NjdfKSIgZD0iTTI4LjksMzEuMQ0KCQljMS0wLjgsMS45LTEuNiwyLjYtMi42bDMuNSwwLjlsMi44LTEwLjZMMzQuNCwxOGMtMC4yLTEuMi0wLjUtMi40LTEtMy42bDIuNS0yLjVsLTcuNy03LjdsLTIuNSwyLjVjLTAuNi0wLjItMS4yLTAuNC0xLjgtMC42DQoJCWMtMC42LTAuMi0xLjItMC4zLTEuOC0wLjRsLTAuOS0zLjVMMTAuNiw1LjFsMC45LDMuNWMtMSwwLjgtMS45LDEuNi0yLjYsMi42bC0zLjUtMC45TDIuNywyMC44bDMuNSwwLjljMC4yLDEuMiwwLjUsMi40LDEsMy42DQoJCWwtMi41LDIuNWw3LjcsNy43bDIuNS0yLjVjMC42LDAuMiwxLjIsMC40LDEuNywwLjZjMC42LDAuMiwxLjIsMC4zLDEuOCwwLjRsMC45LDMuNWwxMC42LTIuOEwyOC45LDMxLjF6IE0yNi4xLDI5TDI1LDI5LjdsMC43LDIuNQ0KCQlsLTQsMS4xTDIxLDMwLjdsLTEuMi0wLjFjLTAuOCwwLTEuNi0wLjItMi4zLTAuNGMtMC43LTAuMi0xLjUtMC41LTIuMi0wLjlsLTEuMS0wLjZsLTEuOSwxLjlsLTIuOS0yLjlsMS45LTEuOWwtMC42LTEuMQ0KCQljLTAuNy0xLjQtMS4yLTMtMS4yLTQuNkw5LjQsMTlsLTIuNS0wLjdsMS4xLTRsMi41LDAuN2wwLjctMS4xYzAuOC0xLjMsMi0yLjUsMy4zLTMuM2wxLjEtMC43bC0wLjctMi41bDQtMS4xbDAuNywyLjVMMjAuNyw5DQoJCWMwLjgsMCwxLjYsMC4yLDIuMywwLjRjMC44LDAuMiwxLjUsMC41LDIuMiwwLjlsMS4xLDAuNkwyOC4yLDlsMi45LDIuOWwtMS45LDEuOWwwLjYsMS4xYzAuNywxLjQsMS4yLDMsMS4yLDQuNWwwLjEsMS4ybDIuNSwwLjcNCgkJbC0xLjEsNEwzMCwyNC42bC0wLjcsMS4xQzI4LjYsMjcsMjcuNCwyOC4xLDI2LjEsMjl6Ii8+DQoJDQoJCTxsaW5lYXJHcmFkaWVudCBpZD0iX3gzQ19DaXJjbGVfQl94M0VfXzAwMDAwMDk2MDMxOTI2NzEyNDAxNTc0MTIwMDAwMDEzOTAwNDM1MzQwMTgwNDIzODY1XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyMC4zMDAyIiB5MT0iMi4xMzAxIiB4Mj0iMjAuMzAwMiIgeTI9IjQ3LjIxMDgiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRkNCNjQ1Ii8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGNTdGMjAiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV9CX3gzRV8iIGZpbGw9InVybCgjX3gzQ19DaXJjbGVfQl94M0VfXzAwMDAwMDk2MDMxOTI2NzEyNDAxNTc0MTIwMDAwMDEzOTAwNDM1MzQwMTgwNDIzODY1XykiIGQ9Ik0yMi4zLDEyLjMNCgkJYy0wLjctMC4yLTEuMy0wLjMtMi0wLjNjLTMuNSwwLTYuNiwyLjQtNy41LDUuOGMtMC41LDItMC4zLDQuMSwwLjgsNS45YzEsMS44LDIuNywzLjEsNC43LDMuNmMwLjcsMC4yLDEuMywwLjMsMiwwLjMNCgkJYzMuNSwwLDYuNi0yLjQsNy41LTUuOEMyOC45LDE3LjcsMjYuNCwxMy40LDIyLjMsMTIuM3ogTTI0LjUsMjFjLTAuNSwxLjktMi4zLDMuMy00LjMsMy4zYy0wLjQsMC0wLjgtMC4xLTEuMS0wLjINCgkJYy0xLjEtMC4zLTIuMS0xLTIuNy0yLjFjLTAuNi0xLTAuNy0yLjItMC40LTMuM2MwLjUtMS45LDIuMy0zLjMsNC4yLTMuM2MwLjQsMCwwLjgsMC4xLDEuMSwwLjJDMjMuNywxNi4yLDI1LjEsMTguNiwyNC41LDIxeiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfQ2lyY2xlX0FfeDNFX18wMDAwMDAxODkzODAzNzMyMjk2NDgyOTQzMDAwMDAwOTkwOTE5MTEyOTI0MzY3NTA2MF8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzQuNyIgeTE9IjIuMTI1IiB4Mj0iMzQuNyIgeTI9IjQ3LjIxNDYiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRkNCNjQ1Ii8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGNTdGMjAiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV9BX3gzRV8iIGZpbGw9InVybCgjX3gzQ19DaXJjbGVfQV94M0VfXzAwMDAwMDE4OTM4MDM3MzIyOTY0ODI5NDMwMDAwMDA5OTA5MTkxMTI5MjQzNjc1MDYwXykiIGQ9Ik0zMi41LDMyLjENCgkJYy0xLjIsMS4yLTEuMiwzLjIsMCw0LjRzMy4yLDEuMiw0LjQsMHMxLjItMy4yLDAtNC40QzM1LjcsMzAuOSwzMy43LDMwLjksMzIuNSwzMi4xeiIvPg0KPC9nPg0KPC9zdmc+DQo=" />
@@ -883,8 +921,159 @@ return result;</displayFunction>
             <allowMultiple>true</allowMultiple>
           </option>
         </creationOptions>
-        <scriptOptions />
-        <elementVisualSettings />
+        <scriptOptions>
+          <option order="0" type="run-script">
+            <text>Add to Diagram</text>
+            <shortcut>ctrl + shift + a</shortcut>
+            <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGx1cy12NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfUGx1c194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NpcmNsZV94M0VfXzAwMDAwMTYxNjEyMDcyMDczMjQ2MjA5NTEwMDAwMDA4NjY5NjY2NzcxODg1MzA5ODc5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzQ5MyIgeDI9IjI1LjIiIHkyPSIyLjUxMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV94M0VfIiBmaWxsPSJ1cmwoI194M0NfQ2lyY2xlX3gzRV9fMDAwMDAxNjE2MTIwNzIwNzMyNDYyMDk1MTAwMDAwMDg2Njk2NjY3NzE4ODUzMDk4NzlfKSIgZD0iTTI1LjIsMi4zDQoJCWMtMTIuNCwwLTIyLjUsMTAtMjIuNSwyMi41YzAsMTIuNCwxMC4xLDIyLjUsMjIuNSwyMi41czIyLjUtMTAuMSwyMi41LTIyLjVDNDcuNywxMi4zLDM3LjYsMi4zLDI1LjIsMi4zeiBNMjUuMiw0My44DQoJCWMtMTAuNSwwLTE5LTguNS0xOS0xOXM4LjUtMTksMTktMTlzMTksOC41LDE5LDE5QzQ0LjIsMzUuMiwzNS43LDQzLjgsMjUuMiw0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzIxMSIgeDI9IjI1LjIiIHkyPSIyLjQ4MDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19QbHVzX3gzRV9fMDAwMDAwODE2MzE4NjY4NDEyOTcxNDM5MDAwMDAwMDczMTUyNDQ3Mzk2MDkwODMyNjlfIiBmaWxsPSJ1cmwoI194M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXykiIGQ9Ig0KCQlNMzAuNCwxMi42SDIwdjYuOWgtNi45djEwLjRIMjB2Ni45aDEwLjR2LTYuOWg2LjlWMTkuNmgtNi45VjEyLjZ6IE0zMy44LDIzdjMuNWgtNi45djYuOWgtMy41di02LjloLTYuOVYyM2g2Ljl2LTYuOWgzLjVWMjNIMzMuOHoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
+            <bottomDivider>true</bottomDivider>
+            <script>const result = await dialogService.openForm({
+    title: "Add to Diagram",
+    fields: [
+        {
+            id: "elementIds",
+            label: "Select Elements",
+            fieldType: "tree-view",
+            treeViewOptions: { 
+                rootId: getCurrentDiagram().getOwner().getPackage().id,
+                isMultiSelect: true,
+                submitFormTriggers: ["double-click", "enter"],
+                hasFilter: true,
+                selectableTypes: [
+                    { specializationId: "Command", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Query", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Domain Event", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Domain Event Handler", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Message", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Integration Command", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Integration Event Handler", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Class", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Domain Service", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Repository", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Service", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Service Proxy", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                ],
+            }
+        }
+    ]
+})
+
+getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePosition, true)</script>
+          </option>
+        </scriptOptions>
+        <elementVisualSettings>
+          <visualSettings type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
+            <size width="${w}" height="70" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawText>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+                <size width="${w}" height="18" />
+                <position x="${x}" y="${y + 48}" />
+              </drawText>
+              <drawSvgResource>
+                <path>query.svg</path>
+                <size width="${w}" height="40" />
+                <position x="${x}" y="${y + 6}" />
+              </drawSvgResource>
+            </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
+            <defaultSize width="${x}" height="70" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings />
+          </visualSettings>
+          <visualSettings type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
+            <size width="${w}" height="70" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawText>
+                <text>return getName();</text>
+                <style>
+return `font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+color: ${(element.isReference() ? theme.isDark ? "#aaddaa" : "#224422" : "inherit")};
+vertical-align: center`</style>
+                <size width="${w}" height="18" />
+                <position x="${x}" y="${y + 48}" />
+              </drawText>
+              <drawSvgResource>
+                <path>service.svg</path>
+                <size width="${w}" height="40" />
+                <position x="${x}" y="${y + 6}" />
+              </drawSvgResource>
+            </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
+            <defaultSize width="${x}" height="70" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings>
+              <childElementVisualSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+                <size width="`${parent.w}`" height="18" />
+                <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 66}`" />
+                <display>
+                  <drawText>
+                    <text>return label;</text>
+                    <size width="${w - 26}" height="${h}" />
+                    <position x="${x + 24}" y="${y}" />
+                  </drawText>
+                  <drawSvgResource>
+                    <path>method.svg</path>
+                    <size width="20" height="20" />
+                    <position x="${x}" y="${y}" />
+                  </drawSvgResource>
+                </display>
+                <stereotypesVisualSettings>
+                  <size width="${w}" height="18" />
+                  <position x="${x}" y="${y}" />
+                </stereotypesVisualSettings>
+                <defaultSize width="`${parent.w}`" height="18" />
+                <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+                <childElementVisualSettings />
+              </childElementVisualSetting>
+            </childElementVisualSettings>
+          </visualSettings>
+          <visualSettings type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
+            <size width="${w}" height="70" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawText>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+                <size width="${w}" height="18" />
+                <position x="${x}" y="${y + 48}" />
+              </drawText>
+              <drawSvgResource>
+                <path>command.svg</path>
+                <size width="${w}" height="40" />
+                <position x="${x}" y="${y + 6}" />
+              </drawSvgResource>
+            </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
+            <defaultSize width="${x}" height="70" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings />
+          </visualSettings>
+        </elementVisualSettings>
         <associationVisualSettings />
       </diagramSettings>
     </elementSetting>
@@ -1553,6 +1742,7 @@ return display;</displayFunction>
           <isRequired>true</isRequired>
           <targetTypes>
             <type type="[Invokable Service Operation]" typeId="12bec4f8-487a-40f8-a6d2-c519d995eb38" />
+            <type type="[Invokable]" typeId="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" />
           </targetTypes>
           <allowIsNavigable>true</allowIsNavigable>
           <allowIsNullable>true</allowIsNullable>
@@ -2484,7 +2674,46 @@ return element.hasStereotype(bindableId) || element.hasStereotype(routeParameter
     </mappableElementPackage>
     <mappableElementPackage id="80e250fa-91d8-4bb9-95b8-e9b355bf6720" name="Call Service Targets">
       <imports />
-      <mappableElementSettings />
+      <mappableElementSettings>
+        <mappableElement id="19583ed9-5b1f-4b4a-b275-7d3800f77463" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <overrideTypeReferenceFunction>return null;</overrideTypeReferenceFunction>
+          <canBeModified>false</canBeModified>
+          <represents>invokable</represents>
+          <childSettings>
+            <childSetting id="f9a7cd3e-edf5-444d-be82-eea81c283bc6" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="e5e22fe7-8481-4a6e-a3dd-197641df7ca4" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <overrideTypeReferenceFunction>return null;</overrideTypeReferenceFunction>
+          <canBeModified>false</canBeModified>
+          <represents>invokable</represents>
+          <childSettings>
+            <childSetting id="f759f516-4a70-4b08-8a13-a205a1aa7586" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+      </mappableElementSettings>
     </mappableElementPackage>
     <mappableElementPackage id="2d30eb9d-daa0-45d7-a596-32c57d61c6bd" name="Component Code Source Mappables">
       <imports>

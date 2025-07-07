@@ -149,15 +149,17 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
             IReadOnlyList<IDesigner> designers,
             IReadOnlyList<string> stereotypeNames)
         {
-            const string callServiceOperationTypeId = "3e69085c-fa2f-44bd-93eb-41075fd472f8";
+            const string performInvocationTypeId = "3e69085c-fa2f-44bd-93eb-41075fd472f8";
+            const string callServiceOperationActionTypeId = "fe5a5cd8-aabd-472f-8d42-f5c233e658dc";
 
             var localPackageIds = designers
                 .SelectMany(x => x.Packages)
                 .Select(x => x.Id)
                 .ToHashSet();
 
-            return designers
-                .SelectMany(x => x.GetAssociationsOfType(callServiceOperationTypeId))
+            return Enumerable.Empty<IAssociation>()
+                .Concat(designers.SelectMany(x => x.GetAssociationsOfType(performInvocationTypeId)))
+                .Concat(designers.SelectMany(x => x.GetAssociationsOfType(callServiceOperationActionTypeId)))
                 .Where(x =>
                 {
                     var targetElement = x.TargetEnd.TypeReference?.Element as IElement;
