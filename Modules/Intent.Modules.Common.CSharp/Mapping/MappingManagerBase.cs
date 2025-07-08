@@ -14,7 +14,7 @@ public abstract class MappingManagerBase
     private readonly List<IMetadataModel> _fromReplacementModels = []; // Used to maintain backward compatibility
     private readonly Dictionary<string, string> _toReplacements = new();
     private readonly List<IMetadataModel> _toReplacementModels = []; // Used to maintain backward compatibility
-    private readonly List<IMappingTypeResolver> _mappingResolvers = [];
+    private readonly List<(IMappingTypeResolver Resolver, int Priority)> _mappingResolvers = [];
 
     protected MappingManagerBase(ICSharpTemplate template)
     {
@@ -106,7 +106,7 @@ public abstract class MappingManagerBase
 
     public ICSharpMapping ResolveMappings(MappingModel model, ICSharpMapping defaultMapping = null)
     {
-        foreach (var resolver in _mappingResolvers)
+        foreach (var (resolver, _) in _mappingResolvers.OrderBy(x => x.Priority))
         {
             var found = resolver.ResolveMappings(model);
             if (found != null)
@@ -118,9 +118,11 @@ public abstract class MappingManagerBase
         return defaultMapping ?? (model.Mapping != null ? new DefaultCSharpMapping(model, _template) : new MapChildrenMapping(model, _template));
     }
 
-    public void AddMappingResolver(IMappingTypeResolver resolver)
+    public void AddMappingResolver(IMappingTypeResolver resolver) => AddMappingResolver(resolver, priority: 0);
+
+    public void AddMappingResolver(IMappingTypeResolver resolver, int priority)
     {
-        _mappingResolvers.Add(resolver);
+        _mappingResolvers.Add((resolver, priority));
     }
 
     public void ClearMappingResolvers()

@@ -9,17 +9,19 @@ namespace Intent.Modules.Common.CSharp.Interactions;
 
 public class InteractionStrategyProvider
 {
-    private readonly IList<IInteractionStrategy> _strategies = [];
+    private readonly List<(IInteractionStrategy Strategy, int Priority)> _strategies = [];
     public static readonly InteractionStrategyProvider Instance = new();
 
-    public void Register(IInteractionStrategy strategy)
+    public void Register(IInteractionStrategy strategy) => Register(strategy, priority: 0);
+
+    public void Register(IInteractionStrategy strategy, int priority)
     {
-        _strategies.Add(strategy);
+        _strategies.Add((strategy, priority));
     }
 
     public bool HasInteractionStrategy(IElement interaction)
     {
-        var matched = _strategies.Where(x => x.IsMatch(interaction)).ToList();
+        var matched = _strategies.Where(x => x.Strategy.IsMatch(interaction)).ToList();
 
         if (matched.Count > 1)
         {
@@ -31,7 +33,10 @@ public class InteractionStrategyProvider
 
     public IInteractionStrategy? GetInteractionStrategy(IElement interaction)
     {
-        var matched = _strategies.Where(x => x.IsMatch(interaction)).ToList();
+        var matched = _strategies
+            .OrderBy(x => x.Priority)
+            .Where(x => x.Strategy.IsMatch(interaction)).ToList();
+
         if (matched.Count == 0)
         {
             Logging.Log.Warning($"No interaction strategy matched for {interaction}");
@@ -43,6 +48,6 @@ public class InteractionStrategyProvider
             Logging.Log.Debug($"Multiple interaction strategies found for {interaction}: [{string.Join(", ", matched)}]");
         }
 
-        return matched[0];
+        return matched[0].Strategy;
     }
 }

@@ -2,6 +2,7 @@
 
 - Improvement: Added additional check when performing mapping type-lookups.
 - Improvement: Added support for Razor `attribute` directive.
+- Improvement: Added overloads with `int priority` parameter to `MappingManagerBase.AddMappingResolver` and `InteractionStrategyProvider.Register` methods.
 
 ### Version 3.9.0
 
