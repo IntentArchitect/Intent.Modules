@@ -104,11 +104,19 @@ function createImportSettingsSectionFields(defaults: ISqlImportPackageSettings):
             id: "importFilterFilePath",
             fieldType: "open-file",
             label: "Import Filter File",
-            hint: "Path to import filter JSON file (see documentation)",
+            hint: "Path to import filter JSON file (see [documentation](https://docs.intentarchitect.com/articles/modules-dotnet/intent-sqlserverimporter/intent-sqlserverimporter.html#import-filter-file))",
             placeholder: "(optional)",
             value: defaults.importFilterFilePath,
             openFileOptions: {
                 fileFilters: [{ name: "JSON", extensions: ["json"] }]
+            }
+        },
+        {
+            id: "createFilterFile",
+            fieldType: "button",
+            label: "Create Filter File",
+            onClick: () => {
+                
             }
         },
         {
