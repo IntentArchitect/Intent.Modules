@@ -263,6 +263,7 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
 
             return proxyModel.Operations
                 .Select(x => x.Mapping?.Element)
+                .Where(x => x != null)
                 .Cast<IElement>()
                 .Where(x => x.Stereotypes.Any(s => stereotypeSet.Contains(s.Name)));
         }
