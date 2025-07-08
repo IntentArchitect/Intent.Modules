@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Modelers.Services.DomainInteractions</id>
   <version>2.3.0-pre.0</version>
-  <supportedClientVersions>[4.5.0-a, 5.0.0-a)</supportedClientVersions>
+  <supportedClientVersions>[4.5.3-a, 5.0.0-a)</supportedClientVersions>
   <summary>Services modeler extensions for describing interactions between an application's services and its domain.</summary>
   <description>Services modeler extensions for describing interactions between an application's services and its domain.</description>
   <authors>Intent Architect</authors>

@@ -1,6 +1,6 @@
 /// <reference path="strategy-base.ts" />
 
-class TraditionalServicesStrategy extends CrudStrategy{
+class TraditionalServicesStrategy extends CrudStrategy {
 
     private service: IElementApi;
 
