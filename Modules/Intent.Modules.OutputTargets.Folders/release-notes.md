@@ -1,3 +1,7 @@
+### Version 3.4.1
+
+- Improvement: Updated icon.
+
 ### Version 3.4.0
 
 - Fixed: Validation checks added to ensure no duplicate Template Outputs and no duplicate Folder names exist within the same folder. Error message takes you straight to the Folder Structure designer where the violation occurs.
