@@ -15,9 +15,3 @@ async function createTraditionalService(element: IElementApi, preselectedClass?:
     let strategy = new TraditionalServicesStrategy();
     await strategy.execute(element, preselectedClass);
 }
-
-
-
-
-
-
