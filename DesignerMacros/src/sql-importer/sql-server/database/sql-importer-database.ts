@@ -45,8 +45,18 @@ function createConnectionStringSectionFields(defaults: ISqlImportPackageSettings
             id: "connectionString-Test",
             fieldType: "button",
             label: "Test Connection",
-            onClick: async () => {
-                await dialogService.info("Connection was successful.");
+            onClick: async (form: MacroApi.Context.IDynamicFormApi) => {
+                let input = form.getField("connectionString").value;
+                let arg = JSON.stringify({
+                    connectionString: input
+                });
+                let taskResult = await executeModuleTask("Intent.Modules.SqlServerImporter.Tasks.TestConnection", arg);
+                let connectionResult = JSON.parse(taskResult);
+                if (connectionResult?.success) {
+                    await dialogService.info("Connection was successful.");
+                } else {
+                    await dialogService.error(connectionResult.message);
+                }
             }
         }
     ];
@@ -115,7 +125,7 @@ function createImportSettingsSectionFields(defaults: ISqlImportPackageSettings):
             id: "createFilterFile",
             fieldType: "button",
             label: "Create Filter File",
-            onClick: () => {
+            onClick: async () => {
                 
             }
         },
@@ -168,7 +178,8 @@ async function importSqlDatabase(element: MacroApi.Context.IElementApi): Promise
                 isCollapsed: true,
                 isHidden: false
             }
-        ]
+        ],
+        height: "60%"
     }
 
     let inputs = await dialogService.openForm(formConfig);
