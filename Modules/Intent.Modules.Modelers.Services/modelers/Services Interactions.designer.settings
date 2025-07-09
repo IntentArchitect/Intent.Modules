@@ -338,7 +338,7 @@ return element.getChildren(parameterTypeId).filter(x =&gt; x.typeReference.getTy
           <childSettings>
             <childSetting id="0f8fb2ed-72cb-42c1-945c-38e6b122ec67" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
               <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
-              <isRequiredFunction>return !element.typeReference.getIsNullable();</isRequiredFunction>
+              <isRequiredFunction>return element.getValue() == null;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
