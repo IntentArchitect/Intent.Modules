@@ -10,6 +10,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>27198197-90cd-4d82-aabf-ca88ea70cbeb</ProjectId>
+      <CorrelationId>Intent.ApplicationTemplate.Builder.Templates.IatSpecFile#1c117b60-faa1-43f5-96b3-21a3e1aa828c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.ApplicationTemplate.EmptyVisualStudioSolution/metadata.iatspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.ApplicationTemplate.EmptyVisualStudioSolution/metadata.iatspec</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>27198197-90cd-4d82-aabf-ca88ea70cbeb</ProjectId>
       <CorrelationId>Intent.ApplicationTemplate.Builder.Templates.IatSpecFile#1edb3b6a-4388-43e1-aebd-f51dc1039e69</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.ApplicationTemplate.ModuleBuilder/metadata.iatspec</ApplicationRelativeFilePath>

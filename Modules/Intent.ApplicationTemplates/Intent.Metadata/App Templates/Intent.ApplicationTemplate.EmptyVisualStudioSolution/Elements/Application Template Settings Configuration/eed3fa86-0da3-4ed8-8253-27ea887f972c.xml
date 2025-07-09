@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="eed3fa86-0da3-4ed8-8253-27ea887f972c" type="Application Template Settings Configuration" typeId="69000b7e-8bc8-49d0-80f5-eb65a6f7653a">
+  <name>Visual Studio Solution Settings</name>
+  <display>Visual Studio Solution Settings</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>manually</sort-children>
+  <order>3</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1c117b60-faa1-43f5-96b3-21a3e1aa828c</parentFolderId>
+  <packageId>1c117b60-faa1-43f5-96b3-21a3e1aa828c</packageId>
+  <packageName>Intent.ApplicationTemplate.EmptyVisualStudioSolution</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="fe3aa361-05d4-4698-a8a3-99e4d8c7fafe" type="Application Template Settings Field Configuration" typeId="053d28c8-18c9-45b9-b3cb-184ec4b19679">
+      <name>Generate Git ignore file</name>
+      <display>Generate Git ignore file = 707a9eec-1407-4fe3-bd32-7c1b31efa3f1</display>
+      <isAbstract>false</isAbstract>
+      <value>707a9eec-1407-4fe3-bd32-7c1b31efa3f1</value>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>eed3fa86-0da3-4ed8-8253-27ea887f972c</parentFolderId>
+      <packageId>1c117b60-faa1-43f5-96b3-21a3e1aa828c</packageId>
+      <packageName>Intent.ApplicationTemplate.EmptyVisualStudioSolution</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="97f6fe89-5973-447c-93b8-ac18fe446047" name="Settings Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
+          <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
+          <properties>
+            <property name="ad6b372c-58e6-4fe0-b6fe-aa7d70f95ebc" display="Control Type" value="Hidden" isActive="true" />
+            <property name="f0689c97-cb23-4ae1-8bb1-8b6af69b1504" display="Is Required" value="false" isActive="true" />
+            <property name="95738255-b024-4b7f-b789-26eb8c30665f" display="Hint" isActive="true" />
+            <property name="980bae71-ac8a-4a52-9888-9bac41f126ba" display="Default Value" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>
