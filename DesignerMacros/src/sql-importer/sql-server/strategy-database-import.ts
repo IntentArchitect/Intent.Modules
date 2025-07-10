@@ -4,7 +4,7 @@
 class DatabaseImportStrategy {
     public async execute(packageElement: MacroApi.Context.IElementApi): Promise<void> {
         let defaults = this.getDialogDefaults(packageElement);
-        let capturedInput = await this.presentImportDialog(defaults);
+        let capturedInput = await this.presentImportDialog(defaults, packageElement.id);
         if (capturedInput == null) {
             return;
         }
@@ -66,7 +66,7 @@ class DatabaseImportStrategy {
         return result;
     }
 
-    private async presentImportDialog(defaults: ISqlDatabaseImportPackageSettings): Promise<any> {
+    private async presentImportDialog(defaults: ISqlDatabaseImportPackageSettings, packageId: string): Promise<any> {
         let formConfig: MacroApi.Context.IDynamicFormConfig = {
             title: "Sql Server Import",
             fields: [
@@ -196,7 +196,7 @@ class DatabaseImportStrategy {
                                     return;
                                 }
                                 
-                                await this.presentManageFiltersDialog(connectionString, form);
+                                await this.presentManageFiltersDialog(connectionString, form, packageId);
                             }
                         },
                         {
@@ -255,105 +255,122 @@ class DatabaseImportStrategy {
         return importConfig;
     }
 
-    private async presentManageFiltersDialog(connectionString: string, parentForm: MacroApi.Context.IDynamicFormApi): Promise<void> {
+    private async presentManageFiltersDialog(connectionString: string, parentForm: MacroApi.Context.IDynamicFormApi, packageId: string): Promise<void> {
         try {
             // Get database metadata
             const metadataModel = { connectionString: connectionString };
-            const executionResult = await executeImporterModuleTask(
+            const metadataExecutionResult = await executeImporterModuleTask(
                 "Intent.Modules.SqlServerImporter.Tasks.DatabaseMetadataExtract", 
                 metadataModel);
             
-            if (executionResult.errors?.length > 0) {
-                await displayExecutionResultErrors(executionResult);
+            if (metadataExecutionResult.errors?.length > 0) {
+                await displayExecutionResultErrors(metadataExecutionResult);
                 return;
             }
             
-            const metadata = executionResult.result as IDatabaseMetadata;
+            const metadata = metadataExecutionResult.result as IDatabaseMetadata;
             if (!metadata) {
                 await dialogService.error("No database metadata received.");
                 return;
             }
+
+            const preserveExistingConfig: MacroApi.Context.IDynamicFormFieldConfig = {
+                id: "preserveExistingConfig",
+                fieldType: "checkbox",
+                label: "Preserve Existing Configuration",
+                hint: "Keep existing filter settings and merge with new selections",
+            };
+            const filterAction: MacroApi.Context.IDynamicFormFieldConfig = {
+                id: "filterAction",
+                fieldType: "select",
+                label: "Filter Mode",
+                hint: "Choose how to apply the selected components",
+                value: "include",
+                selectOptions: [
+                    { id: "include", description: "Include Only Selected (Exclude All Others)" },
+                    { id: "exclude", description: "Exclude Only Selected (Include All Others)" }
+                ]
+            };
+
+            const componentSelection: MacroApi.Context.IDynamicFormFieldConfig = {
+                id: "componentSelection",
+                fieldType: "tree-view",
+                label: "Database Component Selection",
+                isRequired: false,
+                treeViewOptions: {
+                    isMultiSelect: true,
+                    selectableTypes: [
+                        {
+                            specializationId: "Database",
+                            autoExpand: true,
+                            isSelectable: (x) => false
+                        },
+                        {
+                            specializationId: "Schema",
+                            autoExpand: true,
+                            autoSelectChildren: false,
+                            isSelectable: (x) => true
+                        },
+                        {
+                            specializationId: "Table",
+                            autoSelectChildren: false,
+                            isSelectable: (x) => true
+                        },
+                        {
+                            specializationId: "Stored-Procedure",
+                            autoSelectChildren: false,
+                            isSelectable: (x) => true
+                        },
+                        {
+                            specializationId: "View",
+                            autoSelectChildren: false,
+                            isSelectable: (x) => true
+                        }
+                    ]
+                }
+            };
+
+            let allSchemas = [...Object.keys(metadata.tables), ...Object.keys(metadata.storedProcedures), ...Object.keys(metadata.views)]
+            let distinctSchemas = [...new Set(allSchemas)];
+
+            componentSelection.treeViewOptions.rootNode = {
+                id: "Database",
+                label: "Database",
+                specializationId: "Database",
+                icon: Icons.databaseIcon,
+                children: distinctSchemas.map(schemaName => {
+                    return {
+                        id: `schema.${schemaName}`,
+                        label: schemaName,
+                        specializationId: "Schema",
+                        icon: Icons.schemaIcon,
+                        children: this.createSchemaTreeNodes(schemaName, metadata)
+                    };
+                })
+            };
+
+            const formConfig: MacroApi.Context.IDynamicFormConfig = {
+                title: "Manage Import Filters",
+                fields: [
+                    preserveExistingConfig,
+                    filterAction,
+                    componentSelection
+                ]
+            };
             
-            // Present filter selection dialog
-            const selectedFilter = await this.presentFilterSelectionDialog(metadata);
+            try {
+                const result = await dialogService.openForm(formConfig);
+                
+                
+                
+            } catch (error) {
+                console.error("Error in filter selection dialog:", error);
+            }
+            
             
         } catch (error) {
             await dialogService.error(`Error loading database metadata: ${error}`);
         }
-    }
-    
-    private async presentFilterSelectionDialog(metadata: IDatabaseMetadata): Promise<ISimpleFilter | null> {
-        const componentSelection: MacroApi.Context.IDynamicFormFieldConfig = {
-            id: "componentSelection",
-            fieldType: "tree-view",
-            label: "Database Component Selection",
-            isRequired: true,
-            treeViewOptions: {
-                isMultiSelect: true,
-                selectableTypes: [
-                    {
-                        specializationId: "Database",
-                        autoExpand: true,
-                        isSelectable: (x) => false
-                    },
-                    {
-                        specializationId: "Schema",
-                        autoExpand: true,
-                        autoSelectChildren: true,
-                        isSelectable: (x) => true
-                    },
-                    {
-                        specializationId: "Table",
-                        autoSelectChildren: true,
-                        isSelectable: (x) => true
-                    },
-                    {
-                        specializationId: "Stored-Procedure",
-                        autoSelectChildren: true,
-                        isSelectable: (x) => true
-                    },
-                    {
-                        specializationId: "View",
-                        autoSelectChildren: true,
-                        isSelectable: (x) => true
-                    }
-                ]
-            }
-        };
-
-        let allSchemas = [...Object.keys(metadata.tables), ...Object.keys(metadata.storedProcedures), ...Object.keys(metadata.views)]
-        let distinctSchemas = [...new Set(allSchemas)];
-
-        componentSelection.treeViewOptions.rootNode = {
-            id: "Database",
-            label: "Database",
-            specializationId: "Database",
-            icon: Icons.databaseIcon,
-            children: distinctSchemas.map(schemaName => {
-                return {
-                    id: `schema.${schemaName}`,
-                    label: schemaName,
-                    specializationId: "Schema",
-                    icon: Icons.schemaIcon,
-                    children: this.createSchemaTreeNodes(schemaName, metadata)
-                };
-            })
-        };
-
-        const formConfig: MacroApi.Context.IDynamicFormConfig = {
-            title: "Select Database Components to Import",
-            fields: [componentSelection],
-            height: "80%"
-        };
-        
-        try {
-            const result = await dialogService.openForm(formConfig);
-            
-        } catch (error) {
-            console.error("Error in filter selection dialog:", error);
-        }
-        
-        return null;
     }
 
     private createSchemaTreeNodes(
