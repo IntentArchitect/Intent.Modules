@@ -69,24 +69,10 @@ class DatabaseImportStrategy {
     private async presentImportDialog(defaults: ISqlDatabaseImportPackageSettings, packageId: string): Promise<any> {
         let formConfig: MacroApi.Context.IDynamicFormConfig = {
             title: "Sql Server Import",
-            fields: [
-                {
-                    id: "settingPersistence",
-                    fieldType: "select",
-                    label: "Persist Settings",
-                    hint: "Remember these settings for next time you run the import",
-                    value: defaults.settingPersistence,
-                    selectOptions: [
-                        { id: "None", description: "(None)" },
-                        { id: "All", description: "All Settings" },
-                        { id: "AllSanitisedConnectionString", description: "All (with Sanitized connection string, no password))" },
-                        { id: "AllWithoutConnectionString", description: "All (without connection string))" }
-                    ]
-                }
-            ],
+            fields: [],
             sections: [
                 {
-                    name: 'Connection string',
+                    name: "Connection & Settings",
                     fields: [
                         {
                             id: "connectionString",
@@ -119,32 +105,27 @@ class DatabaseImportStrategy {
                                     await dialogService.info("Connection established successfully.");
                                 }
                             }
+                        },
+                        {
+                            id: "settingPersistence",
+                            fieldType: "select",
+                            label: "Persist Settings",
+                            hint: "Remember these settings for next time you run the import",
+                            value: defaults.settingPersistence,
+                            selectOptions: [
+                                { id: "None", description: "(None)" },
+                                { id: "All", description: "All Settings" },
+                                { id: "AllSanitisedConnectionString", description: "All (with Sanitized connection string, no password))" },
+                                { id: "AllWithoutConnectionString", description: "All (without connection string))" }
+                            ]
                         }
                     ],
                     isCollapsed: false,
                     isHidden: false
                 },
                 {
-                    name: 'Import settings',
+                    name: "Database Objects",
                     fields: [
-                        {
-                            id: "entityNameConvention",
-                            fieldType: "select",
-                            label: "Entity name convention",
-                            placeholder: "",
-                            hint: "",
-                            value: defaults.entityNameConvention,
-                            selectOptions: [{ id: "SingularEntity", description: "Singularized table name" }, { id: "MatchTable", description: "Table name, as is" }]
-                        },
-                        {
-                            id: "tableStereotypes",
-                            fieldType: "select",
-                            label: "Apply Table Stereotypes",
-                            placeholder: "",
-                            hint: "When to apply Table stereotypes to your domain entities",
-                            value: defaults.tableStereotypes,
-                            selectOptions: [{ id: "WhenDifferent", description: "If They Differ" }, { id: "Always", description: "Always" }]
-                        },
                         {
                             id: "includeTables",
                             fieldType: "checkbox",
@@ -173,6 +154,49 @@ class DatabaseImportStrategy {
                             hint: "Export SQL indexes",
                             value: defaults.includeIndexes
                         },
+                    ],
+                    isCollapsed: true,
+                    isHidden: false
+                },
+                {
+                    name: "Import Options",
+                    fields: [
+                        {
+                            id: "entityNameConvention",
+                            fieldType: "select",
+                            label: "Entity name convention",
+                            placeholder: "",
+                            hint: "",
+                            value: defaults.entityNameConvention,
+                            selectOptions: [{ id: "SingularEntity", description: "Singularized table name" }, { id: "MatchTable", description: "Table name, as is" }]
+                        },
+                        {
+                            id: "tableStereotypes",
+                            fieldType: "select",
+                            label: "Apply Table Stereotypes",
+                            placeholder: "",
+                            hint: "When to apply Table stereotypes to your domain entities",
+                            value: defaults.tableStereotypes,
+                            selectOptions: [{ id: "WhenDifferent", description: "If They Differ" }, { id: "Always", description: "Always" }]
+                        },
+                        {
+                            id: "storedProcedureType",
+                            fieldType: "select",
+                            label: "Stored Procedure Representation",
+                            value: defaults.storedProcedureType,
+                            selectOptions: [
+                                { id: "Default", description: "(Default)" },
+                                { id: "StoredProcedureElement", description: "Stored Procedure Element" },
+                                { id: "RepositoryOperation", description: "Stored Procedure Operation" }
+                            ]
+                        }
+                    ],
+                    isCollapsed: true,
+                    isHidden: false
+                },
+                {
+                    name: 'Filtering',
+                    fields: [
                         {
                             id: "importFilterFilePath",
                             fieldType: "open-file",
@@ -199,17 +223,7 @@ class DatabaseImportStrategy {
                                 await this.presentManageFiltersDialog(connectionString, form, packageId);
                             }
                         },
-                        {
-                            id: "storedProcedureType",
-                            fieldType: "select",
-                            label: "Stored Procedure Representation",
-                            value: defaults.storedProcedureType,
-                            selectOptions: [
-                                { id: "Default", description: "(Default)" },
-                                { id: "StoredProcedureElement", description: "Stored Procedure Element" },
-                                { id: "RepositoryOperation", description: "Stored Procedure Operation" }
-                            ]
-                        }
+                        
                     ],
                     isCollapsed: true,
                     isHidden: false
