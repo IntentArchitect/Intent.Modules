@@ -1,3 +1,7 @@
+### Version 4.4.1
+
+- Improvement: Updated module references
+
 ### Version 4.4.0
 
 - Improvement: Added `[Processing Handler]` trait to `Domain Event Handler` elements.
