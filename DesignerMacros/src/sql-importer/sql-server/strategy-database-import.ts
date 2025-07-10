@@ -94,9 +94,10 @@ class DatabaseImportStrategy {
                             value: defaults.connectionString
                         },
                         {
-                            id: "connectionString-Test",
+                            id: "connectionStringTest",
                             fieldType: "button",
                             label: "Test Connection",
+                            hint: "Test whether the Connection String is valid to access the Database Server",
                             onClick: async (form: MacroApi.Context.IDynamicFormApi) => {
                                 let testConnectionModel = {
                                     connectionString: form.getField("connectionString").value as string
@@ -107,8 +108,10 @@ class DatabaseImportStrategy {
                                     testConnectionModel);
                                 
                                 if (executionResult.errors?.length > 0) {
+                                    form.getField("connectionStringTest").hint = "Failed to connect.";
                                     await displayExecutionResultErrors(executionResult);
                                 } else {
+                                    form.getField("connectionStringTest").hint = "Connection established successfully.";
                                     await dialogService.info("Connection established successfully.");
                                 }
                             }
@@ -178,9 +181,10 @@ class DatabaseImportStrategy {
                             }
                         },
                         {
-                            id: "createFilterFile",
+                            id: "manageFilters",
                             fieldType: "button",
-                            label: "Create Filter File",
+                            label: "Manage Filters",
+                            hint: "",
                             onClick: async () => {
                                 
                             }

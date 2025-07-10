@@ -59,8 +59,8 @@ class StoredProceduresImportStrategy {
                     id: "storedProcNames",
                     fieldType: "text",
                     label: "Stored Procedure Names",
-                    placeholder: "Enter stored procedure names (comma-separated) or use Browse button",
-                    hint: "Stored procedure names (comma-separated)",
+                    placeholder: "Enter Stored Procedure names (comma-separated) or use Browse button",
+                    hint: "Enter Stored procedure names (comma-separated) or use the browse button.",
                     value: defaults.storedProcNames,
                     isRequired: true
                 },
