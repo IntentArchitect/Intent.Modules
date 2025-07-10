@@ -1,9 +1,13 @@
 /// <reference path="./common.ts" />
+/// <reference path="./icons.ts" />
 
 class DatabaseImportStrategy {
     public async execute(packageElement: MacroApi.Context.IElementApi): Promise<void> {
         let defaults = this.getDialogDefaults(packageElement);
         let capturedInput = await this.presentImportDialog(defaults);
+        if (capturedInput == null) {
+            return;
+        }
         let importModel = this.createImportModel(capturedInput);
         let executionResult = await executeImporterModuleTask("Intent.Modules.SqlServerImporter.Tasks.DatabaseImport", importModel);
         
@@ -185,8 +189,14 @@ class DatabaseImportStrategy {
                             fieldType: "button",
                             label: "Manage Filters",
                             hint: "",
-                            onClick: async () => {
+                            onClick: async (form: MacroApi.Context.IDynamicFormApi) => {
+                                const connectionString = form.getField("connectionString").value as string;
+                                if (!connectionString) {
+                                    await dialogService.error("Please enter a connection string first.");
+                                    return;
+                                }
                                 
+                                await this.presentManageFiltersDialog(connectionString, form);
                             }
                         },
                         {
@@ -245,6 +255,175 @@ class DatabaseImportStrategy {
         return importConfig;
     }
 
+    private async presentManageFiltersDialog(connectionString: string, parentForm: MacroApi.Context.IDynamicFormApi): Promise<void> {
+        try {
+            // Get database metadata
+            const metadataModel = { connectionString: connectionString };
+            const executionResult = await executeImporterModuleTask(
+                "Intent.Modules.SqlServerImporter.Tasks.DatabaseMetadataExtract", 
+                metadataModel);
+            
+            if (executionResult.errors?.length > 0) {
+                await displayExecutionResultErrors(executionResult);
+                return;
+            }
+            
+            const metadata = executionResult.result as IDatabaseMetadata;
+            if (!metadata) {
+                await dialogService.error("No database metadata received.");
+                return;
+            }
+            
+            // Present filter selection dialog
+            const selectedFilter = await this.presentFilterSelectionDialog(metadata);
+            
+        } catch (error) {
+            await dialogService.error(`Error loading database metadata: ${error}`);
+        }
+    }
+    
+    private async presentFilterSelectionDialog(metadata: IDatabaseMetadata): Promise<ISimpleFilter | null> {
+        const componentSelection: MacroApi.Context.IDynamicFormFieldConfig = {
+            id: "componentSelection",
+            fieldType: "tree-view",
+            label: "Database Component Selection",
+            isRequired: true,
+            treeViewOptions: {
+                isMultiSelect: true,
+                selectableTypes: [
+                    {
+                        specializationId: "Database",
+                        autoExpand: true,
+                        isSelectable: (x) => false
+                    },
+                    {
+                        specializationId: "Schema",
+                        autoExpand: true,
+                        autoSelectChildren: true,
+                        isSelectable: (x) => true
+                    },
+                    {
+                        specializationId: "Table",
+                        autoSelectChildren: true,
+                        isSelectable: (x) => true
+                    },
+                    {
+                        specializationId: "Stored-Procedure",
+                        autoSelectChildren: true,
+                        isSelectable: (x) => true
+                    },
+                    {
+                        specializationId: "View",
+                        autoSelectChildren: true,
+                        isSelectable: (x) => true
+                    }
+                ]
+            }
+        };
+
+        let allSchemas = [...Object.keys(metadata.tables), ...Object.keys(metadata.storedProcedures), ...Object.keys(metadata.views)]
+        let distinctSchemas = [...new Set(allSchemas)];
+
+        componentSelection.treeViewOptions.rootNode = {
+            id: "Database",
+            label: "Database",
+            specializationId: "Database",
+            icon: Icons.databaseIcon,
+            children: distinctSchemas.map(schemaName => {
+                return {
+                    id: `schema.${schemaName}`,
+                    label: schemaName,
+                    specializationId: "Schema",
+                    icon: Icons.schemaIcon,
+                    children: this.createSchemaTreeNodes(schemaName, metadata)
+                };
+            })
+        };
+
+        const formConfig: MacroApi.Context.IDynamicFormConfig = {
+            title: "Select Database Components to Import",
+            fields: [componentSelection],
+            height: "80%"
+        };
+        
+        try {
+            const result = await dialogService.openForm(formConfig);
+            
+        } catch (error) {
+            console.error("Error in filter selection dialog:", error);
+        }
+        
+        return null;
+    }
+
+    private createSchemaTreeNodes(
+        schemaName: string, 
+        metadata: { 
+            tables: Record<string, string[]>, 
+            storedProcedures: Record<string, string[]>, 
+            views: Record<string, string[]> 
+        }
+    ): MacroApi.Context.ISelectableTreeNode[] {
+        const nodes: MacroApi.Context.ISelectableTreeNode[] = [];
+
+        if (metadata.tables[schemaName]?.some(x => x)) {
+            nodes.push(this.createCategoryNode(
+                schemaName,
+                "tables",
+                "Tables",
+                "Table",
+                Icons.tableIcon,
+                metadata.tables[schemaName]
+            ));
+        }
+
+        if (metadata.storedProcedures[schemaName]?.some(x => x)) {
+            nodes.push(this.createCategoryNode(
+                schemaName,
+                "storedProcedures",
+                "Stored Procedures",
+                "Stored-Procedure",
+                Icons.storedProcIcon,
+                metadata.storedProcedures[schemaName]
+            ));
+        }
+
+        if (metadata.views[schemaName]?.some(x => x)) {
+            nodes.push(this.createCategoryNode(
+                schemaName,
+                "views",
+                "Views",
+                "View",
+                Icons.viewIcon,
+                metadata.views[schemaName]
+            ));
+        }
+
+        return nodes;
+    }
+
+    private createCategoryNode(
+        schemaName: string,
+        category: string,
+        label: string,
+        specializationId: string,
+        icon: any,
+        items: string[]
+    ): MacroApi.Context.ISelectableTreeNode {
+        return {
+            id: `${schemaName}.${category}`,
+            label: label,
+            specializationId: specializationId,
+            icon: icon,
+            children: items.map(item => ({
+                id: `${schemaName}.${category}.${item}`,
+                label: item,
+                specializationId: specializationId,
+                icon: icon
+            } as MacroApi.Context.ISelectableTreeNode))
+        };
+    }
+
     private getSettingValue(domainPackage: MacroApi.Context.IPackageApi, key: string, defaultValue: string): string {
         let persistedValue = domainPackage.getMetadata(key);
         return persistedValue ? persistedValue : defaultValue;
@@ -276,4 +455,19 @@ interface IDatabaseImportModel {
     connectionString: string;
     // Ignoring PackageFileName
     settingPersistence: string;
+}
+
+interface IDatabaseMetadata {
+    tables: { [key: string]: string[] };
+    views: { [key: string]: string[] };
+    storedProcedures: { [key: string]: string[] };
+}
+
+interface ISimpleFilter {
+    includeTables: string[];
+    excludeTables: string[];
+    includeViews: string[];
+    excludeViews: string[];
+    includeStoredProcedures: string[];
+    excludeStoredProcedures: string[];
 }
