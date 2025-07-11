@@ -14,6 +14,12 @@ This module includes:
 
 AI provider details are configured in **User Settings**. These settings are user-specific, stored outside of the solution folder, and are not committed to source control.
 
+The **User Settings** are available from the `User` menu in the top-right hand corner of Intent Architect:
+
+![User Menu](images/user-settings-menu.png)
+
+Within the **User Settings**, is an **AI Settings** section:
+
 ![AI Settings](images/user-settings.png)
 
 ### Available Settings
