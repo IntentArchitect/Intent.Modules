@@ -11,9 +11,9 @@ class DatabaseImportStrategy {
         let importModel = this.createImportModel(capturedInput);
         let executionResult = await executeImporterModuleTask("Intent.Modules.SqlServerImporter.Tasks.DatabaseImport", importModel);
         
-        if (executionResult.errors?.length > 0) {
+        if ((executionResult.errors ?? []).length > 0) {
             await displayExecutionResultErrors(executionResult);
-        } else if (executionResult.warnings?.length > 0) {
+        } else if ((executionResult.warnings ?? []).length > 0) {
             await displayExecutionResultWarnings(executionResult, "Import Complete.");
         } else {
             await dialogService.info("Import Complete.");
@@ -97,7 +97,7 @@ class DatabaseImportStrategy {
                                     "Intent.Modules.SqlServerImporter.Tasks.TestConnection",
                                     testConnectionModel);
                                 
-                                if (executionResult.errors?.length > 0) {
+                                if ((executionResult.errors ?? []).length > 0) {
                                     form.getField("connectionStringTest").hint = "Failed to connect.";
                                     await displayExecutionResultErrors(executionResult);
                                 } else {
@@ -153,7 +153,7 @@ class DatabaseImportStrategy {
                             label: "Include Indexes",
                             hint: "Export SQL indexes",
                             value: defaults.includeIndexes
-                        },
+                        }
                     ],
                     isCollapsed: true,
                     isHidden: false
@@ -206,24 +206,26 @@ class DatabaseImportStrategy {
                             value: defaults.importFilterFilePath,
                             openFileOptions: {
                                 fileFilters: [{ name: "JSON", extensions: ["json"] }]
+                            },
+                            onChange: (form) => {
+                                
                             }
                         },
                         {
-                            id: "manageFilters",
+                            id: "manageIncludeFilters",
                             fieldType: "button",
-                            label: "Manage Filters",
-                            hint: "",
+                            label: "Manage Include Filters",
                             onClick: async (form: MacroApi.Context.IDynamicFormApi) => {
                                 const connectionString = form.getField("connectionString").value as string;
                                 if (!connectionString) {
                                     await dialogService.error("Please enter a connection string first.");
                                     return;
                                 }
+                                let importFilterFilePath = form.getField("importFilterFilePath").value as string;
                                 
-                                await this.presentManageFiltersDialog(connectionString, form, packageId);
+                                await this.presentManageFiltersDialog(connectionString, packageId, importFilterFilePath);
                             }
-                        },
-                        
+                        }
                     ],
                     isCollapsed: true,
                     isHidden: false
@@ -269,42 +271,12 @@ class DatabaseImportStrategy {
         return importConfig;
     }
 
-    private async presentManageFiltersDialog(connectionString: string, parentForm: MacroApi.Context.IDynamicFormApi, packageId: string): Promise<void> {
+    private async presentManageFiltersDialog(connectionString: string, packageId: string, importFilterFilePath: string): Promise<void> {
         try {
-            // Get database metadata
-            const metadataModel = { connectionString: connectionString };
-            const metadataExecutionResult = await executeImporterModuleTask(
-                "Intent.Modules.SqlServerImporter.Tasks.DatabaseMetadataExtract", 
-                metadataModel);
-            
-            if (metadataExecutionResult.errors?.length > 0) {
-                await displayExecutionResultErrors(metadataExecutionResult);
-                return;
-            }
-            
-            const metadata = metadataExecutionResult.result as IDatabaseMetadata;
+            const metadata = await this.fetchDatabaseMetadata(connectionString);
             if (!metadata) {
-                await dialogService.error("No database metadata received.");
                 return;
             }
-
-            const preserveExistingConfig: MacroApi.Context.IDynamicFormFieldConfig = {
-                id: "preserveExistingConfig",
-                fieldType: "checkbox",
-                label: "Preserve Existing Configuration",
-                hint: "Keep existing filter settings and merge with new selections",
-            };
-            const filterAction: MacroApi.Context.IDynamicFormFieldConfig = {
-                id: "filterAction",
-                fieldType: "select",
-                label: "Filter Mode",
-                hint: "Choose how to apply the selected components",
-                value: "include",
-                selectOptions: [
-                    { id: "include", description: "Include Only Selected (Exclude All Others)" },
-                    { id: "exclude", description: "Exclude Only Selected (Include All Others)" }
-                ]
-            };
 
             const componentSelection: MacroApi.Context.IDynamicFormFieldConfig = {
                 id: "componentSelection",
@@ -366,8 +338,6 @@ class DatabaseImportStrategy {
             const formConfig: MacroApi.Context.IDynamicFormConfig = {
                 title: "Manage Import Filters",
                 fields: [
-                    preserveExistingConfig,
-                    filterAction,
                     componentSelection
                 ]
             };
@@ -380,11 +350,30 @@ class DatabaseImportStrategy {
             } catch (error) {
                 console.error("Error in filter selection dialog:", error);
             }
-            
-            
         } catch (error) {
             await dialogService.error(`Error loading database metadata: ${error}`);
         }
+    }
+
+    private async fetchDatabaseMetadata(connectionString: string): Promise<IDatabaseMetadata|null> {
+        // Get database metadata
+        const metadataModel = { connectionString: connectionString };
+        const metadataExecutionResult = await executeImporterModuleTask(
+            "Intent.Modules.SqlServerImporter.Tasks.DatabaseMetadataExtract", 
+            metadataModel);
+        
+        if ((metadataExecutionResult.errors ?? []).length > 0) {
+            await displayExecutionResultErrors(metadataExecutionResult);
+            return null;
+        }
+        
+        const metadata = metadataExecutionResult.result as IDatabaseMetadata;
+        if (!metadata) {
+            await dialogService.error("No database metadata received.");
+            return null;
+        }
+
+        return metadata;
     }
 
     private createSchemaTreeNodes(
@@ -492,13 +481,4 @@ interface IDatabaseMetadata {
     tables: { [key: string]: string[] };
     views: { [key: string]: string[] };
     storedProcedures: { [key: string]: string[] };
-}
-
-interface ISimpleFilter {
-    includeTables: string[];
-    excludeTables: string[];
-    includeViews: string[];
-    excludeViews: string[];
-    includeStoredProcedures: string[];
-    excludeStoredProcedures: string[];
 }
