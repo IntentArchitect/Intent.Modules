@@ -56,7 +56,7 @@ public class IntentSemanticKernelFactory
 
                 builder.Services.AddOpenAIChatCompletion(
                     modelId: model,
-                    apiKey: apiKey ?? throw new FriendlyException(GetErrorMessage("OPENAI_API_KEY")));
+                    apiKey: !string.IsNullOrWhiteSpace(apiKey) ? apiKey : throw new FriendlyException(GetErrorMessage("OPENAI_API_KEY")));
                 break;
             
             case AISettings.ProviderOptionsEnum.AzureOpenAi:
@@ -69,7 +69,7 @@ public class IntentSemanticKernelFactory
                 builder.Services.AddAzureOpenAIChatCompletion(
                     deploymentName: settings.DeploymentName(),
                     endpoint: settings.APIUrl(),
-                    apiKey: apiKey ?? throw new FriendlyException(GetErrorMessage("AZURE_OPENAI_API_KEY")),
+                    apiKey: !string.IsNullOrWhiteSpace(apiKey) ? apiKey : throw new FriendlyException(GetErrorMessage("AZURE_OPENAI_API_KEY")),
                     modelId: model);
                 break;
             
@@ -92,7 +92,7 @@ public class IntentSemanticKernelFactory
                     apiKey = Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY");
                 }
 
-                var apiAuth = new APIAuthentication(apiKey ?? throw new FriendlyException(GetErrorMessage("ANTHROPIC_API_KEY")));
+                var apiAuth = new APIAuthentication(!string.IsNullOrWhiteSpace(apiKey) ? apiKey : throw new FriendlyException(GetErrorMessage("ANTHROPIC_API_KEY")));
                 builder.Services.AddTransient((sp) =>
                 {
                     var skChatService =
