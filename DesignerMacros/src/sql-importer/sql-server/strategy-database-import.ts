@@ -214,7 +214,7 @@ class DatabaseImportStrategy {
                         {
                             id: "manageIncludeFilters",
                             fieldType: "button",
-                            label: "Manage Include Filters",
+                            label: "Manage Filters",
                             onClick: async (form: MacroApi.Context.IDynamicFormApi) => {
                                 const connectionString = form.getField("connectionString").value as string;
                                 if (!connectionString) {
@@ -278,10 +278,69 @@ class DatabaseImportStrategy {
                 return;
             }
 
-            const componentSelection: MacroApi.Context.IDynamicFormFieldConfig = {
-                id: "componentSelection",
+            // Load existing filter data if file path exists
+            let existingFilter: ImportFilterModel | null = null;
+            if (importFilterFilePath) {
+                try {
+                    const filterLoadModel = {
+                        importFilterFilePath: importFilterFilePath,
+                        packageFileName: null as string | null // Will be resolved by the backend
+                    };
+                    const filterLoadResult = await executeImporterModuleTask(
+                        "Intent.Modules.SqlServerImporter.Tasks.FilterLoad",
+                        filterLoadModel
+                    );
+                    
+                    if ((filterLoadResult.errors ?? []).length === 0 && filterLoadResult.result) {
+                        existingFilter = filterLoadResult.result as ImportFilterModel;
+                    }
+                } catch (error) {
+                    console.warn("Could not load existing filter file:", error);
+                }
+            }
+
+            const inclusiveSelection: MacroApi.Context.IDynamicFormFieldConfig = {
+                id: "inclusiveSelection",
                 fieldType: "tree-view",
-                label: "Database Component Selection",
+                label: "Objects to Include in Import",
+                isRequired: false,
+                treeViewOptions: {
+                    isMultiSelect: true,
+                    selectableTypes: [
+                        {
+                            specializationId: "Database",
+                            autoExpand: true,
+                            isSelectable: (x) => false
+                        },
+                        {
+                            specializationId: "Schema",
+                            autoExpand: true,
+                            autoSelectChildren: false,
+                            isSelectable: (x) => true
+                        },
+                        {
+                            specializationId: "Table",
+                            autoSelectChildren: false,
+                            isSelectable: (x) => true
+                        },
+                        {
+                            specializationId: "Stored-Procedure",
+                            autoSelectChildren: false,
+                            isSelectable: (x) => true
+                        },
+                        {
+                            specializationId: "View",
+                            autoSelectChildren: false,
+                            isSelectable: (x) => true
+                        }
+                    ]
+                }
+            };
+
+            const exclusiveSelection: MacroApi.Context.IDynamicFormFieldConfig = {
+                id: "exclusiveSelection",
+                fieldType: "tree-view",
+                label: "Objects to Exclude from Import",
                 isRequired: false,
                 treeViewOptions: {
                     isMultiSelect: true,
@@ -319,7 +378,8 @@ class DatabaseImportStrategy {
             let allSchemas = [...Object.keys(metadata.tables), ...Object.keys(metadata.storedProcedures), ...Object.keys(metadata.views)]
             let distinctSchemas = [...new Set(allSchemas)];
 
-            componentSelection.treeViewOptions.rootNode = {
+            // Create tree nodes with pre-selected states for inclusive filter
+            inclusiveSelection.treeViewOptions.rootNode = {
                 id: "Database",
                 label: "Database",
                 specializationId: "Database",
@@ -330,23 +390,55 @@ class DatabaseImportStrategy {
                         label: schemaName,
                         specializationId: "Schema",
                         icon: Icons.schemaIcon,
-                        children: this.createSchemaTreeNodes(schemaName, metadata)
+                        isSelected: this.isSchemaIncluded(schemaName, existingFilter),
+                        children: this.createSchemaTreeNodes(schemaName, metadata, existingFilter, "include")
+                    };
+                })
+            };
+
+            // Create tree nodes with pre-selected states for exclusive filter
+            exclusiveSelection.treeViewOptions.rootNode = {
+                id: "Database",
+                label: "Database",
+                specializationId: "Database",
+                icon: Icons.databaseIcon,
+                children: distinctSchemas.map(schemaName => {
+                    return {
+                        id: `schema.${schemaName}`,
+                        label: schemaName,
+                        specializationId: "Schema",
+                        icon: Icons.schemaIcon,
+                        isSelected: this.isSchemaExcluded(schemaName, existingFilter),
+                        children: this.createSchemaTreeNodes(schemaName, metadata, existingFilter, "exclude")
                     };
                 })
             };
 
             const formConfig: MacroApi.Context.IDynamicFormConfig = {
-                title: "Manage Import Filters",
-                fields: [
-                    componentSelection
+                title: "Manage Filters",
+                fields: [],
+                sections: [
+                    {
+                        name: "Inclusive Objects",
+                        fields: [inclusiveSelection],
+                        isCollapsed: false,
+                        isHidden: false
+                    },
+                    {
+                        name: "Exclusive Objects", 
+                        fields: [exclusiveSelection],
+                        isCollapsed: true,
+                        isHidden: false
+                    }
                 ]
             };
             
             try {
                 const result = await dialogService.openForm(formConfig);
-                
-                
-                
+                if (result) {
+                    // Handle the save operation when dialog is closed with OK
+                    await this.saveFilterData(result, packageId, importFilterFilePath);
+                }
             } catch (error) {
                 console.error("Error in filter selection dialog:", error);
             }
@@ -382,7 +474,9 @@ class DatabaseImportStrategy {
             tables: Record<string, string[]>, 
             storedProcedures: Record<string, string[]>, 
             views: Record<string, string[]> 
-        }
+        },
+        existingFilter: ImportFilterModel | null = null,
+        filterType: "include" | "exclude" = "include"
     ): MacroApi.Context.ISelectableTreeNode[] {
         const nodes: MacroApi.Context.ISelectableTreeNode[] = [];
 
@@ -393,7 +487,9 @@ class DatabaseImportStrategy {
                 "Tables",
                 "Table",
                 Icons.tableIcon,
-                metadata.tables[schemaName]
+                metadata.tables[schemaName],
+                existingFilter,
+                filterType
             ));
         }
 
@@ -404,7 +500,9 @@ class DatabaseImportStrategy {
                 "Stored Procedures",
                 "Stored-Procedure",
                 Icons.storedProcIcon,
-                metadata.storedProcedures[schemaName]
+                metadata.storedProcedures[schemaName],
+                existingFilter,
+                filterType
             ));
         }
 
@@ -415,7 +513,9 @@ class DatabaseImportStrategy {
                 "Views",
                 "View",
                 Icons.viewIcon,
-                metadata.views[schemaName]
+                metadata.views[schemaName],
+                existingFilter,
+                filterType
             ));
         }
 
@@ -428,7 +528,9 @@ class DatabaseImportStrategy {
         label: string,
         specializationId: string,
         icon: any,
-        items: string[]
+        items: string[],
+        existingFilter: ImportFilterModel | null = null,
+        filterType: "include" | "exclude" = "include"
     ): MacroApi.Context.ISelectableTreeNode {
         return {
             id: `${schemaName}.${category}`,
@@ -439,7 +541,8 @@ class DatabaseImportStrategy {
                 id: `${schemaName}.${category}.${item}`,
                 label: item,
                 specializationId: specializationId,
-                icon: icon
+                icon: icon,
+                isSelected: this.isItemSelected(schemaName, category, item, existingFilter, filterType)
             } as MacroApi.Context.ISelectableTreeNode))
         };
     }
@@ -447,6 +550,159 @@ class DatabaseImportStrategy {
     private getSettingValue(domainPackage: MacroApi.Context.IPackageApi, key: string, defaultValue: string): string {
         let persistedValue = domainPackage.getMetadata(key);
         return persistedValue ? persistedValue : defaultValue;
+    }
+
+    private isSchemaIncluded(schemaName: string, existingFilter: ImportFilterModel | null): boolean {
+        if (!existingFilter) {
+            return false;
+        }
+        return existingFilter.schemas.includes(schemaName);
+    }
+
+    private isSchemaExcluded(schemaName: string, existingFilter: ImportFilterModel | null): boolean {
+        if (!existingFilter) {
+            return false;
+        }
+        // Check if any tables, views, or stored procedures from this schema are in exclude lists
+        const excludedTables = existingFilter.excludeTables?.some(table => table.startsWith(`${schemaName}.`)) ?? false;
+        const excludedViews = existingFilter.excludeViews?.some(view => view.startsWith(`${schemaName}.`)) ?? false;
+        const excludedStoredProcs = existingFilter.excludeStoredProcedures?.some(sp => sp.startsWith(`${schemaName}.`)) ?? false;
+        return excludedTables || excludedViews || excludedStoredProcs;
+    }
+
+    private isItemSelected(
+        schemaName: string, 
+        category: string, 
+        item: string, 
+        existingFilter: ImportFilterModel | null, 
+        filterType: "include" | "exclude"
+    ): boolean {
+        if (!existingFilter) {
+            return false;
+        }
+
+        const fullItemName = `${schemaName}.${item}`;
+
+        if (filterType === "include") {
+            switch (category) {
+                case "tables":
+                    return existingFilter.includeTables?.some(table => table.name === fullItemName) ?? false;
+                case "views":
+                    return existingFilter.includeViews?.some(view => view.name === fullItemName) ?? false;
+                case "storedProcedures":
+                    return existingFilter.includeStoredProcedures?.includes(fullItemName) ?? false;
+                default:
+                    return false;
+            }
+        } else {
+            switch (category) {
+                case "tables":
+                    return existingFilter.excludeTables?.includes(fullItemName) ?? false;
+                case "views":
+                    return existingFilter.excludeViews?.includes(fullItemName) ?? false;
+                case "storedProcedures":
+                    return existingFilter.excludeStoredProcedures?.includes(fullItemName) ?? false;
+                default:
+                    return false;
+            }
+        }
+    }
+
+    private async saveFilterData(formResult: any, packageId: string, importFilterFilePath: string): Promise<void> {
+        try {
+            // Extract selections from form result
+            const inclusiveSelections = formResult.inclusiveSelection || [];
+            const exclusiveSelections = formResult.exclusiveSelection || [];
+
+            // Create filter model from selections
+            const filterModel: ImportFilterModel = {
+                schemas: [],
+                includeTables: [],
+                includeViews: [],
+                includeStoredProcedures: [],
+                excludeTables: [],
+                excludeViews: [],
+                excludeStoredProcedures: []
+            };
+
+            // Process inclusive selections
+            inclusiveSelections.forEach((selection: string) => {
+                if (selection.startsWith('schema.')) {
+                    const schemaName = selection.replace('schema.', '');
+                    filterModel.schemas.push(schemaName);
+                } else if (selection.includes('.tables.')) {
+                    const tableName = selection.replace(/.*\.tables\./, '');
+                    filterModel.includeTables.push({ name: tableName, excludeColumns: [] });
+                } else if (selection.includes('.views.')) {
+                    const viewName = selection.replace(/.*\.views\./, '');
+                    filterModel.includeViews.push({ name: viewName, excludeColumns: [] });
+                } else if (selection.includes('.storedProcedures.')) {
+                    const spName = selection.replace(/.*\.storedProcedures\./, '');
+                    filterModel.includeStoredProcedures.push(spName);
+                }
+            });
+
+            // Process exclusive selections
+            exclusiveSelections.forEach((selection: string) => {
+                if (selection.includes('.tables.')) {
+                    const tableName = selection.replace(/.*\.tables\./, '');
+                    filterModel.excludeTables.push(tableName);
+                } else if (selection.includes('.views.')) {
+                    const viewName = selection.replace(/.*\.views\./, '');
+                    filterModel.excludeViews.push(viewName);
+                } else if (selection.includes('.storedProcedures.')) {
+                    const spName = selection.replace(/.*\.storedProcedures\./, '');
+                    filterModel.excludeStoredProcedures.push(spName);
+                }
+            });
+
+            // Determine save path
+            let savePath = importFilterFilePath;
+            if (!savePath) {
+                // Prompt for file name using input dialog
+                const fileNameConfig: MacroApi.Context.IDynamicFormConfig = {
+                    title: "Save Filter File",
+                    fields: [
+                        {
+                            id: "fileName",
+                            fieldType: "text",
+                            label: "File Name",
+                            placeholder: "filter.json",
+                            isRequired: true,
+                            value: "filter.json"
+                        }
+                    ]
+                };
+                
+                const fileNameResult = await dialogService.openForm(fileNameConfig);
+                if (!fileNameResult || !fileNameResult.fileName) {
+                    return;
+                }
+                // Note: Package directory resolution will be handled by the backend
+                savePath = fileNameResult.fileName;
+            }
+
+            // Save the filter data
+            const saveModel = {
+                importFilterFilePath: savePath,
+                packageFileName: null as string | null,
+                filterData: filterModel
+            };
+
+            const saveResult = await executeImporterModuleTask(
+                "Intent.Modules.SqlServerImporter.Tasks.FilterSave",
+                saveModel
+            );
+
+            if ((saveResult.errors ?? []).length > 0) {
+                await displayExecutionResultErrors(saveResult);
+            } else {
+                await dialogService.info("Filters saved successfully.");
+            }
+
+        } catch (error) {
+            await dialogService.error(`Error saving filters: ${error}`);
+        }
     }
 }
 
@@ -481,4 +737,24 @@ interface IDatabaseMetadata {
     tables: { [key: string]: string[] };
     views: { [key: string]: string[] };
     storedProcedures: { [key: string]: string[] };
+}
+
+interface ImportFilterModel {
+    schemas: string[];
+    includeTables: FilterTableModel[];
+    includeViews: FilterViewModel[];
+    includeStoredProcedures: string[];
+    excludeTables: string[];
+    excludeViews: string[];
+    excludeStoredProcedures: string[];
+}
+
+interface FilterTableModel {
+    name: string;
+    excludeColumns: string[];
+}
+
+interface FilterViewModel {
+    name: string;
+    excludeColumns: string[];
 }
