@@ -25,6 +25,22 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>ea6d5f42-86d2-43f6-a964-d7b6538b14fc</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#8f13f1e1-9a9f-48c8-a5e2-927aabe9a3b7</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/TestElementModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TestElementModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ab8faa86-876b-469c-9c0f-cb809f856769</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>ab8faa86-876b-469c-9c0f-cb809f856769</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.StaticContentOutputReadme#f0cb4747-033a-4862-8600-128e3243ee5f</CorrelationId>
       <OverwriteBehaviour>once-off</OverwriteBehaviour>
