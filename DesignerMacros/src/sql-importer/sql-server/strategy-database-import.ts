@@ -67,6 +67,17 @@ class DatabaseImportStrategy {
     }
 
     private async presentImportDialog(defaults: ISqlDatabaseImportPackageSettings, packageId: string): Promise<any> {
+        // Get package location once for efficiency - used by onChange callback and Manage Filters dialog
+        const packageLocationModel = {
+            applicationId: application.id,
+            packageId: packageId
+        };
+        const packageLocationResult = await executeImporterModuleTask(
+            "Intent.Modules.SqlServerImporter.Tasks.PackageLocationGet",
+            packageLocationModel
+        );
+        const packageDirectory = packageLocationResult.result?.PackageDirectory || null;
+
         let formConfig: MacroApi.Context.IDynamicFormConfig = {
             title: "Sql Server Import",
             fields: [],
@@ -207,8 +218,37 @@ class DatabaseImportStrategy {
                             openFileOptions: {
                                 fileFilters: [{ name: "JSON", extensions: ["json"] }]
                             },
-                            onChange: (form) => {
-                                
+                            onChange: async (form) => {
+                                const selectedFilePath = form.getField("importFilterFilePath").value as string;
+                                if (!selectedFilePath || !packageDirectory) {
+                                    return;
+                                }
+
+                                try {
+                                    // Normalize paths for comparison (handle different path separators)
+                                    const normalizePathForComparison = (path: string) => path.replace(/\\/g, '/').toLowerCase();
+                                    
+                                    // Get directory of selected file
+                                    const selectedFileDirectory = selectedFilePath.substring(0, selectedFilePath.lastIndexOf('\\') !== -1 
+                                        ? selectedFilePath.lastIndexOf('\\') 
+                                        : selectedFilePath.lastIndexOf('/'));
+                                    
+                                    // Compare directories (case-insensitive)
+                                    if (normalizePathForComparison(selectedFileDirectory) === normalizePathForComparison(packageDirectory)) {
+                                        // Extract just the filename
+                                        const fileName = selectedFilePath.substring(
+                                            Math.max(selectedFilePath.lastIndexOf('\\'), selectedFilePath.lastIndexOf('/')) + 1
+                                        );
+                                        
+                                        // Set relative path with "./"
+                                        const relativePath = `./${fileName}`;
+                                        form.getField("importFilterFilePath").value = relativePath;
+                                    }
+                                    // If not in same directory, keep absolute path (no change needed)
+                                } catch (error) {
+                                    console.warn("Error processing file path for relative conversion:", error);
+                                    // On error, keep the original absolute path
+                                }
                             }
                         },
                         {
@@ -223,7 +263,7 @@ class DatabaseImportStrategy {
                                 }
                                 let importFilterFilePath = form.getField("importFilterFilePath").value as string;
                                 
-                                await this.presentManageFiltersDialog(connectionString, packageId, importFilterFilePath);
+                                await this.presentManageFiltersDialog(connectionString, packageId, importFilterFilePath, packageDirectory);
                             }
                         }
                     ],
@@ -271,24 +311,15 @@ class DatabaseImportStrategy {
         return importConfig;
     }
 
-    private async presentManageFiltersDialog(connectionString: string, packageId: string, importFilterFilePath: string): Promise<void> {
+    private async presentManageFiltersDialog(connectionString: string, packageId: string, importFilterFilePath: string, packageDirectory: string | null): Promise<void> {
         try {
             const metadata = await this.fetchDatabaseMetadata(connectionString);
             if (!metadata) {
                 return;
             }
 
-            // Get package location for relative path resolution
-            const packageLocationModel = {
-                applicationId: application.id,
-                packageId: packageId
-            };
-            const packageLocationResult = await executeImporterModuleTask(
-                "Intent.Modules.SqlServerImporter.Tasks.PackageLocationGet",
-                packageLocationModel
-            );
-            
-            const packageFileName = packageLocationResult.result?.PackageDirectory || null;
+            // Use the pre-fetched package directory
+            const packageFileName = packageDirectory;
 
             // Load existing filter data if file path exists
             let existingFilter: ImportFilterModel | null = null;
