@@ -11,16 +11,16 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class AcceptedStereotypesModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class AcceptedTraitsModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Accepted Stereotypes";
+        public const string SpecializationType = "Accepted Traits";
         public const string SpecializationTypeId = "59b63cd3-4af8-4f3c-aa94-61407ac3a3bd";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public AcceptedStereotypesModel(IElement element, string requiredType = SpecializationType)
+        public AcceptedTraitsModel(IElement element, string requiredType = SpecializationTypeId)
         {
-            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase) && !requiredType.Equals(element.SpecializationTypeId, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
@@ -42,7 +42,7 @@ namespace Intent.ModuleBuilder.Api
             return _element.ToString();
         }
 
-        public bool Equals(AcceptedStereotypesModel other)
+        public bool Equals(AcceptedTraitsModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -52,7 +52,7 @@ namespace Intent.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((AcceptedStereotypesModel)obj);
+            return Equals((AcceptedTraitsModel)obj);
         }
 
         public override int GetHashCode()
@@ -62,17 +62,17 @@ namespace Intent.ModuleBuilder.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class AcceptedStereotypesModelExtensions
+    public static class AcceptedTraitsModelExtensions
     {
 
-        public static bool IsAcceptedStereotypesModel(this ICanBeReferencedType type)
+        public static bool IsAcceptedTraitsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == AcceptedStereotypesModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == AcceptedTraitsModel.SpecializationTypeId;
         }
 
-        public static AcceptedStereotypesModel AsAcceptedStereotypesModel(this ICanBeReferencedType type)
+        public static AcceptedTraitsModel AsAcceptedTraitsModel(this ICanBeReferencedType type)
         {
-            return type.IsAcceptedStereotypesModel() ? new AcceptedStereotypesModel((IElement)type) : null;
+            return type.IsAcceptedTraitsModel() ? new AcceptedTraitsModel((IElement)type) : null;
         }
     }
 }

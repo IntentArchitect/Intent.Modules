@@ -108,8 +108,8 @@
           <childElements />
         </childElement>
         <childElement id="b815a3bd-62a9-417d-a46b-667a7954455d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Accepted Stereotypes</name>
-          <display>Add Accepted Stereotypes: Accepted Stereotypes</display>
+          <name>Add Accepted Trait</name>
+          <display>Add Accepted Trait: Accepted Traits</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="6e1d03fb-aea0-47a8-bfb6-3aec809d6b6a">

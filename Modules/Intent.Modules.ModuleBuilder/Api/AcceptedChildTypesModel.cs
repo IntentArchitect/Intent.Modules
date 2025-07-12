@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Exceptions;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
@@ -19,9 +20,9 @@ namespace Intent.ModuleBuilder.Api
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public AcceptedChildTypesModel(IElement element, string requiredType = SpecializationType)
+        public AcceptedChildTypesModel(IElement element, string requiredType = SpecializationTypeId)
         {
-            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase) && !requiredType.Equals(element.SpecializationTypeId, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
@@ -43,9 +44,9 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new AcceptedTypeModel(x))
             .ToList();
 
-        public IList<AcceptedStereotypesModel> AcceptedStereotypes => _element.ChildElements
-            .GetElementsOfType(AcceptedStereotypesModel.SpecializationTypeId)
-            .Select(x => new AcceptedStereotypesModel(x))
+        public IList<AcceptedTraitsModel> AcceptedTraits => _element.ChildElements
+            .GetElementsOfType(AcceptedTraitsModel.SpecializationTypeId)
+            .Select(x => new AcceptedTraitsModel(x))
             .ToList();
 
         public override string ToString()
@@ -82,9 +83,13 @@ namespace Intent.ModuleBuilder.Api
                     var model = childElement.AsAcceptedTypeModel();
                     result.Add(new TypeOrderPersistable() { Order = order, Type = model.TypeReference.Element.Name, TypeId = model.TypeReference.Element.Id });
                 }
-                if (childElement.IsAcceptedStereotypesModel())
+                if (childElement.IsAcceptedTraitsModel())
                 {
-                    var model = childElement.AsAcceptedStereotypesModel();
+                    var model = childElement.AsAcceptedTraitsModel();
+                    if (!model.GetSettings().TypesWithStereotype().IsTrait)
+                    {
+                        throw new ElementException(childElement, $"Selected Stereotype Definition '{model.GetSettings().TypesWithStereotype().Name}' is not marked as a trait. Select another Stereotype Definition or mark the selected one as `'Is Trait' = true`");
+                    }
                     result.Add(new TypeOrderPersistable() { Order = order, Type = model.GetSettings().TypesWithStereotype().Name, TypeId = model.GetSettings().TypesWithStereotype().Id });
                 }
                 order++;

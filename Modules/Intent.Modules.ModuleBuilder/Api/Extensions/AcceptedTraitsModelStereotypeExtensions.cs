@@ -10,21 +10,21 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class AcceptedStereotypesModelStereotypeExtensions
+    public static class AcceptedTraitsModelStereotypeExtensions
     {
-        public static Settings GetSettings(this AcceptedStereotypesModel model)
+        public static Settings GetSettings(this AcceptedTraitsModel model)
         {
             var stereotype = model.GetStereotype(Settings.DefinitionId);
             return stereotype != null ? new Settings(stereotype) : null;
         }
 
 
-        public static bool HasSettings(this AcceptedStereotypesModel model)
+        public static bool HasSettings(this AcceptedTraitsModel model)
         {
             return model.HasStereotype(Settings.DefinitionId);
         }
 
-        public static bool TryGetSettings(this AcceptedStereotypesModel model, out Settings stereotype)
+        public static bool TryGetSettings(this AcceptedTraitsModel model, out Settings stereotype)
         {
             if (!HasSettings(model))
             {

@@ -1797,7 +1797,7 @@ return null;</iconFunction>
           <allowSetValue>false</allowSetValue>
           <typeOrder>
             <type order="0" type="Accepted Type" typeId="71c8431f-9f39-45fd-b61d-f75f7ba3eea6" />
-            <type order="1" type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd" />
+            <type order="1" type="Accepted Traits" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd" />
           </typeOrder>
           <contextMenuOptions>
             <createElement type="element">
@@ -1809,9 +1809,9 @@ return null;</iconFunction>
               <allowMultiple>true</allowMultiple>
             </createElement>
             <createElement type="element">
-              <text>Add Accepted Stereotypes</text>
+              <text>Add Accepted Trait</text>
               <icon type="FontAwesome" source="angle-double-right" />
-              <specializationType>Accepted Stereotypes</specializationType>
+              <specializationType>Accepted Traits</specializationType>
               <specializationTypeId>59b63cd3-4af8-4f3c-aa94-61407ac3a3bd</specializationTypeId>
               <defaultName>[type with stereotype]</defaultName>
               <allowMultiple>true</allowMultiple>
@@ -1827,9 +1827,9 @@ return null;</iconFunction>
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <text>Add Accepted Stereotypes</text>
+              <text>Add Accepted Trait</text>
               <icon type="FontAwesome" source="angle-double-right" />
-              <specializationType>Accepted Stereotypes</specializationType>
+              <specializationType>Accepted Traits</specializationType>
               <specializationTypeId>59b63cd3-4af8-4f3c-aa94-61407ac3a3bd</specializationTypeId>
               <defaultName>[type with stereotype]</defaultName>
               <allowMultiple>true</allowMultiple>
@@ -1839,11 +1839,11 @@ return null;</iconFunction>
           <mappingOptions />
           <mappingSettings />
           <childElementSettings>
-            <childElementSetting type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
+            <childElementSetting type="Accepted Traits" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
               <icon type="FontAwesome" source="angle-double-right" />
               <saveAsOwnFile>false</saveAsOwnFile>
               <displayFunction>return [
-    { text: "[type with stereotype]", cssClass: "keyword" }, 
+    { text: "[type with trait]", cssClass: "keyword" }, 
     { text: ": ", cssClass: "muted" }, 
     { 
         text: getStereotype("c8e14e3f-f5ee-4992-b6cb-761ea48a11cd").getProperty("75834c40-408b-4fcb-a50b-b96c2f81ffc0").getValue()?.name ?? "&lt;not set&gt;", 
