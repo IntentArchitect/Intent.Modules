@@ -278,13 +278,25 @@ class DatabaseImportStrategy {
                 return;
             }
 
+            // Get package location for relative path resolution
+            const packageLocationModel = {
+                applicationId: application.id,
+                packageId: packageId
+            };
+            const packageLocationResult = await executeImporterModuleTask(
+                "Intent.Modules.SqlServerImporter.Tasks.PackageLocationGet",
+                packageLocationModel
+            );
+            
+            const packageFileName = packageLocationResult.result?.PackageDirectory || null;
+
             // Load existing filter data if file path exists
             let existingFilter: ImportFilterModel | null = null;
             if (importFilterFilePath) {
                 try {
                     const filterLoadModel = {
                         importFilterFilePath: importFilterFilePath,
-                        packageFileName: null as string | null // Will be resolved by the backend
+                        packageFileName: packageFileName
                     };
                     const filterLoadResult = await executeImporterModuleTask(
                         "Intent.Modules.SqlServerImporter.Tasks.FilterLoad",
@@ -437,7 +449,7 @@ class DatabaseImportStrategy {
                 const result = await dialogService.openForm(formConfig);
                 if (result) {
                     // Handle the save operation when dialog is closed with OK
-                    await this.saveFilterData(result, packageId, importFilterFilePath);
+                    await this.saveFilterData(result, packageId, importFilterFilePath, packageFileName);
                 }
             } catch (error) {
                 console.error("Error in filter selection dialog:", error);
@@ -476,7 +488,7 @@ class DatabaseImportStrategy {
             views: Record<string, string[]> 
         },
         existingFilter: ImportFilterModel | null = null,
-        filterType: "include" | "exclude" = "include"
+        filterType: "include" | "exclude"
     ): MacroApi.Context.ISelectableTreeNode[] {
         const nodes: MacroApi.Context.ISelectableTreeNode[] = [];
 
@@ -530,13 +542,14 @@ class DatabaseImportStrategy {
         icon: any,
         items: string[],
         existingFilter: ImportFilterModel | null = null,
-        filterType: "include" | "exclude" = "include"
+        filterType: "include" | "exclude"
     ): MacroApi.Context.ISelectableTreeNode {
         return {
             id: `${schemaName}.${category}`,
             label: label,
             specializationId: specializationId,
             icon: icon,
+            isSelected: this.isCategorySelected(category, existingFilter, filterType),
             children: items.map(item => ({
                 id: `${schemaName}.${category}.${item}`,
                 label: item,
@@ -564,10 +577,44 @@ class DatabaseImportStrategy {
             return false;
         }
         // Check if any tables, views, or stored procedures from this schema are in exclude lists
-        const excludedTables = existingFilter.excludeTables?.some(table => table.startsWith(`${schemaName}.`)) ?? false;
-        const excludedViews = existingFilter.excludeViews?.some(view => view.startsWith(`${schemaName}.`)) ?? false;
-        const excludedStoredProcs = existingFilter.excludeStoredProcedures?.some(sp => sp.startsWith(`${schemaName}.`)) ?? false;
+        const excludedTables = existingFilter.exclude_tables?.some(table => table.startsWith(`${schemaName}.`)) ?? false;
+        const excludedViews = existingFilter.exclude_views?.some(view => view.startsWith(`${schemaName}.`)) ?? false;
+        const excludedStoredProcs = existingFilter.exclude_stored_procedures?.some(sp => sp.startsWith(`${schemaName}.`)) ?? false;
         return excludedTables || excludedViews || excludedStoredProcs;
+    }
+
+    private isCategorySelected(
+        category: string, 
+        existingFilter: ImportFilterModel, 
+        filterType: "include" | "exclude"
+    ): boolean {
+        if (!existingFilter) {
+            return false;
+        }
+
+        if (filterType === "include") {
+            switch (category) {
+                case "tables":
+                    return existingFilter.include_tables?.length > 0;
+                case "views":
+                    return existingFilter.include_views?.length > 0;
+                case "storedProcedures":
+                    return existingFilter.include_stored_procedures?.length > 0;
+                default:
+                    return false;
+            }
+        } else {
+            switch (category) {
+                case "tables":
+                    return existingFilter.exclude_tables?.length > 0;
+                case "views":
+                    return existingFilter.exclude_views?.length > 0;
+                case "storedProcedures":
+                    return existingFilter.exclude_stored_procedures?.length > 0;
+                default:
+                    return false;
+            }
+        }
     }
 
     private isItemSelected(
@@ -586,43 +633,44 @@ class DatabaseImportStrategy {
         if (filterType === "include") {
             switch (category) {
                 case "tables":
-                    return existingFilter.includeTables?.some(table => table.name === fullItemName) ?? false;
+                    return existingFilter.include_tables?.some(table => table.name === fullItemName) ?? false;
                 case "views":
-                    return existingFilter.includeViews?.some(view => view.name === fullItemName) ?? false;
+                    return existingFilter.include_views?.some(view => view.name === fullItemName) ?? false;
                 case "storedProcedures":
-                    return existingFilter.includeStoredProcedures?.includes(fullItemName) ?? false;
+                    return existingFilter.include_stored_procedures?.includes(fullItemName) ?? false;
                 default:
                     return false;
             }
         } else {
             switch (category) {
                 case "tables":
-                    return existingFilter.excludeTables?.includes(fullItemName) ?? false;
+                    return existingFilter.exclude_tables?.includes(fullItemName) ?? false;
                 case "views":
-                    return existingFilter.excludeViews?.includes(fullItemName) ?? false;
+                    return existingFilter.exclude_views?.includes(fullItemName) ?? false;
                 case "storedProcedures":
-                    return existingFilter.excludeStoredProcedures?.includes(fullItemName) ?? false;
+                    return existingFilter.exclude_stored_procedures?.includes(fullItemName) ?? false;
                 default:
                     return false;
             }
         }
     }
 
-    private async saveFilterData(formResult: any, packageId: string, importFilterFilePath: string): Promise<void> {
+    private async saveFilterData(formResult: any, packageId: string, importFilterFilePath: string, packageFileName: string | null): Promise<void> {
         try {
             // Extract selections from form result
             const inclusiveSelections = formResult.inclusiveSelection || [];
             const exclusiveSelections = formResult.exclusiveSelection || [];
 
+
             // Create filter model from selections
             const filterModel: ImportFilterModel = {
                 schemas: [],
-                includeTables: [],
-                includeViews: [],
-                includeStoredProcedures: [],
-                excludeTables: [],
-                excludeViews: [],
-                excludeStoredProcedures: []
+                include_tables: [],
+                include_views: [],
+                include_stored_procedures: [],
+                exclude_tables: [],
+                exclude_views: [],
+                exclude_stored_procedures: []
             };
 
             // Process inclusive selections
@@ -631,28 +679,66 @@ class DatabaseImportStrategy {
                     const schemaName = selection.replace('schema.', '');
                     filterModel.schemas.push(schemaName);
                 } else if (selection.includes('.tables.')) {
-                    const tableName = selection.replace(/.*\.tables\./, '');
-                    filterModel.includeTables.push({ name: tableName, excludeColumns: [] });
+                    // Extract schema and table name from ID like "schema.tables.tableName"
+                    const parts = selection.split('.');
+                    console.log(`INCLUDE ${selection} => ${JSON.stringify(parts)}`);
+                    if (parts.length >= 3) {
+                        const schemaName = parts[0];
+                        const tableName = parts[2];
+                        const fullTableName = `${schemaName}.${tableName}`;
+                        const filterTableModel: FilterTableModel = { name: fullTableName, exclude_columns: [] };
+                        filterModel.include_tables.push(filterTableModel);
+                    }
                 } else if (selection.includes('.views.')) {
-                    const viewName = selection.replace(/.*\.views\./, '');
-                    filterModel.includeViews.push({ name: viewName, excludeColumns: [] });
+                    // Extract schema and view name from ID like "schema.views.viewName"
+                    const parts = selection.split('.');
+                    if (parts.length >= 3) {
+                        const schemaName = parts[0];
+                        const viewName = parts[2];
+                        const fullViewName = `${schemaName}.${viewName}`;
+                        filterModel.include_views.push({ name: fullViewName, exclude_columns: [] });
+                    }
                 } else if (selection.includes('.storedProcedures.')) {
-                    const spName = selection.replace(/.*\.storedProcedures\./, '');
-                    filterModel.includeStoredProcedures.push(spName);
+                    // Extract schema and stored procedure name from ID like "schema.storedProcedures.spName"
+                    const parts = selection.split('.');
+                    if (parts.length >= 3) {
+                        const schemaName = parts[0];
+                        const spName = parts[2];
+                        const fullSpName = `${schemaName}.${spName}`;
+                        filterModel.include_stored_procedures.push(fullSpName);
+                    }
                 }
             });
 
             // Process exclusive selections
             exclusiveSelections.forEach((selection: string) => {
                 if (selection.includes('.tables.')) {
-                    const tableName = selection.replace(/.*\.tables\./, '');
-                    filterModel.excludeTables.push(tableName);
+                    // Extract schema and table name from ID like "schema.tables.tableName"
+                    const parts = selection.split('.');
+                    if (parts.length >= 3) {
+                        const schemaName = parts[0];
+                        const tableName = parts[2];
+                        const fullTableName = `${schemaName}.${tableName}`;
+                        filterModel.exclude_tables.push(fullTableName);
+                    }
                 } else if (selection.includes('.views.')) {
-                    const viewName = selection.replace(/.*\.views\./, '');
-                    filterModel.excludeViews.push(viewName);
+                    // Extract schema and view name from ID like "schema.views.viewName"
+                    const parts = selection.split('.');
+                    if (parts.length >= 3) {
+                        const schemaName = parts[0];
+                        const viewName = parts[2];
+                        const fullViewName = `${schemaName}.${viewName}`;
+                        filterModel.exclude_views.push(fullViewName);
+                    }
                 } else if (selection.includes('.storedProcedures.')) {
-                    const spName = selection.replace(/.*\.storedProcedures\./, '');
-                    filterModel.excludeStoredProcedures.push(spName);
+                    // Extract schema and stored procedure name from ID like "schema.storedProcedures.spName"
+                    const parts = selection.split('.');
+                    if (parts.length >= 3) {
+                        const schemaName = parts[0];
+                        const spName = parts[2];
+                        const fullSpName = `${schemaName}.${spName}`;
+                        filterModel.exclude_stored_procedures.push(fullSpName);
+                    }
                 }
             });
 
@@ -685,7 +771,7 @@ class DatabaseImportStrategy {
             // Save the filter data
             const saveModel = {
                 importFilterFilePath: savePath,
-                packageFileName: null as string | null,
+                packageFileName: packageFileName,
                 filterData: filterModel
             };
 
@@ -741,20 +827,20 @@ interface IDatabaseMetadata {
 
 interface ImportFilterModel {
     schemas: string[];
-    includeTables: FilterTableModel[];
-    includeViews: FilterViewModel[];
-    includeStoredProcedures: string[];
-    excludeTables: string[];
-    excludeViews: string[];
-    excludeStoredProcedures: string[];
+    include_tables: FilterTableModel[];
+    include_views: FilterViewModel[];
+    include_stored_procedures: string[];
+    exclude_tables: string[];
+    exclude_views: string[];
+    exclude_stored_procedures: string[];
 }
 
 interface FilterTableModel {
     name: string;
-    excludeColumns: string[];
+    exclude_columns: string[];
 }
 
 interface FilterViewModel {
     name: string;
-    excludeColumns: string[];
+    exclude_columns: string[];
 }
