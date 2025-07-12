@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
+using Intent.Modules.Modelers.UI.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -79,7 +80,7 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class NavigationTargetEndModel : NavigationEndModel
+    public class NavigationTargetEndModel : NavigationEndModel, IInvokableModel
     {
         public const string SpecializationTypeId = "2b191288-ecae-4743-b069-cbdd927ef349";
         public const string SpecializationType = "Navigation Target End";

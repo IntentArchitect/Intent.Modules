@@ -65,9 +65,9 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="fb52cb20-977a-4c7d-8f97-964f7944a2c4" type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
+        <childElement id="fb52cb20-977a-4c7d-8f97-964f7944a2c4" type="Accepted Traits" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
           <name>NewAcceptedStereotypes</name>
-          <display>[type with stereotype]: [Component]</display>
+          <display>[type with trait]: [Component]</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>

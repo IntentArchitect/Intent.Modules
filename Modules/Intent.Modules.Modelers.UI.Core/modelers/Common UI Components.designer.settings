@@ -1124,10 +1124,10 @@ return display;
         </typeReferenceSetting>
         <typeOrder />
         <contextMenuOptions>
-          <defineMapping type="open-advanced-mapping" mappingType="Open Dialog Mapping" mappingTypeId="f0e43df8-a662-46ec-a766-e67de9ddc0d0">
+          <openMapping type="open-advanced-mapping" mappingType="Open Dialog Mapping" mappingTypeId="f0e43df8-a662-46ec-a766-e67de9ddc0d0">
             <text>Map Dialog</text>
             <shortcut>ctrl + space</shortcut>
-          </defineMapping>
+          </openMapping>
         </contextMenuOptions>
         <creationOptions />
         <scriptOptions />

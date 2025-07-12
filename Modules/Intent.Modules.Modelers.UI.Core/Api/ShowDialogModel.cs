@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Modelers.UI.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -78,7 +79,7 @@ namespace Intent.Modelers.UI.Core.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class ShowDialogTargetEndModel : ShowDialogEndModel
+    public class ShowDialogTargetEndModel : ShowDialogEndModel, IInvokableModel
     {
         public const string SpecializationTypeId = "c44a7969-abfa-4073-ab2c-d2d0f1f6bd2f";
         public const string SpecializationType = "Show Dialog Target End";

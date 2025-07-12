@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Modelers.UI.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -11,16 +12,16 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Core.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class AutoCompleteModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class AutoCompleteModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IComponentModel
     {
         public const string SpecializationType = "AutoComplete";
         public const string SpecializationTypeId = "ff1ddb80-16e4-4e63-ace3-4ef96a03b4b0";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public AutoCompleteModel(IElement element, string requiredType = SpecializationType)
+        public AutoCompleteModel(IElement element, string requiredType = SpecializationTypeId)
         {
-            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase) && !requiredType.Equals(element.SpecializationTypeId, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }

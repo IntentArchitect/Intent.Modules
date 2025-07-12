@@ -8,6 +8,7 @@
     <type id="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">Element Extension</type>
   </targetTypes>
   <targetReferenceTypes />
+  <isTrait>true</isTrait>
   <applyMode>manually</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>false</displayIcon>

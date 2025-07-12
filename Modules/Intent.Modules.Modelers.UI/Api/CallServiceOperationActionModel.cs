@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Modelers.UI.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -78,7 +79,7 @@ namespace Intent.Modelers.UI.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class CallServiceOperationActionTargetEndModel : CallServiceOperationActionEndModel
+    public class CallServiceOperationActionTargetEndModel : CallServiceOperationActionEndModel, IInvokableModel
     {
         public const string SpecializationTypeId = "475f0810-2b4a-40da-8eb8-697cb62f7dbe";
         public const string SpecializationType = "Call Service Operation Action Target End";

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Modelers.UI.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -11,16 +12,16 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Core.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class CardModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class CardModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IComponentModel
     {
         public const string SpecializationType = "Card";
         public const string SpecializationTypeId = "dfe420aa-426a-4517-bcd1-83cf5ec074fe";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public CardModel(IElement element, string requiredType = SpecializationType)
+        public CardModel(IElement element, string requiredType = SpecializationTypeId)
         {
-            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase) && !requiredType.Equals(element.SpecializationTypeId, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }

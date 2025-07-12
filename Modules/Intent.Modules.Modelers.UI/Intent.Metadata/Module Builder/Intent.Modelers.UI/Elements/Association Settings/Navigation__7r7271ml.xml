@@ -62,6 +62,9 @@
       <parentFolderId>6d2b2070-c1cb-4cd2-88b4-4e5f8414bd9e</parentFolderId>
       <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
       <packageName>Intent.Modelers.UI</packageName>
+      <traits>
+        <trait id="dc813928-0ce1-4f66-ae31-b5e5d506b4a3" name="[Invokable]" />
+      </traits>
       <stereotypes>
         <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
           <addedByDefault>true</addedByDefault>

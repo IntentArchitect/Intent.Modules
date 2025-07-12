@@ -10,6 +10,9 @@
   <parentFolderId>624513a6-cba8-4dde-8ebe-6b19f00f0364</parentFolderId>
   <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
   <packageName>Intent.Modelers.UI</packageName>
+  <traits>
+    <trait id="b407aace-ad14-484e-ac93-4762a3d182d8" name="[Component]" />
+  </traits>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>

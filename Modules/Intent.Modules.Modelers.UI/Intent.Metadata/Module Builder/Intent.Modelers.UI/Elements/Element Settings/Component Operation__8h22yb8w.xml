@@ -89,9 +89,9 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="7c9fecdb-267e-477b-b44d-43174a2da045" type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
+        <childElement id="7c9fecdb-267e-477b-b44d-43174a2da045" type="Accepted Traits" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
           <name>[type with stereotype]</name>
-          <display>[type with stereotype]: [Invokable]</display>
+          <display>[type with trait]: [Invokable]</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>

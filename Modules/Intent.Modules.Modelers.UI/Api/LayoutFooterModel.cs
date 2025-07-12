@@ -18,9 +18,9 @@ namespace Intent.Modelers.UI.Api
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public LayoutFooterModel(IElement element, string requiredType = SpecializationType)
+        public LayoutFooterModel(IElement element, string requiredType = SpecializationTypeId)
         {
-            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase) && !requiredType.Equals(element.SpecializationTypeId, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
