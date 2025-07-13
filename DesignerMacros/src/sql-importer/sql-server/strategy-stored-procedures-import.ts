@@ -77,7 +77,7 @@ class StoredProceduresImportStrategy {
                         const settingPersistenceValue = form.getField("settingPersistence").value as string;
 
                         if (settingPersistenceValue != "InheritDb" && (connectionStringValue == null || connectionStringValue?.trim() === "")) {
-                            await dialogService.error("Please enter a connection string before browsing stored procedures.");
+                            await dialogService.error("Please enter a connection string (or inherit DB settings) before browsing stored procedures.");
                             return;
                         }
 
