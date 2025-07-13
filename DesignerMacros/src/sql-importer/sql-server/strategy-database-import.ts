@@ -124,41 +124,6 @@ class DatabaseImportStrategy {
                     isHidden: false
                 },
                 {
-                    name: "Database Objects",
-                    fields: [
-                        {
-                            id: "includeTables",
-                            fieldType: "checkbox",
-                            label: "Include Tables",
-                            hint: "Export SQL tables",
-                            value: defaults.includeTables
-                        },
-                        {
-                            id: "includeViews",
-                            fieldType: "checkbox",
-                            label: "Include Views",
-                            hint: "Export SQL views",
-                            value: defaults.includeViews
-                        },
-                        {
-                            id: "includeStoredProcedures",
-                            fieldType: "checkbox",
-                            label: "Include Stored Procedures",
-                            hint: "Export SQL stored procedures",
-                            value: defaults.includeStoredProcedures
-                        },
-                        {
-                            id: "includeIndexes",
-                            fieldType: "checkbox",
-                            label: "Include Indexes",
-                            hint: "Export SQL indexes",
-                            value: defaults.includeIndexes
-                        }
-                    ],
-                    isCollapsed: true,
-                    isHidden: false
-                },
-                {
                     name: "Import Options",
                     fields: [
                         {
@@ -197,6 +162,34 @@ class DatabaseImportStrategy {
                 {
                     name: 'Filtering',
                     fields: [
+                        {
+                            id: "includeTables",
+                            fieldType: "checkbox",
+                            label: "Include Tables",
+                            hint: "Export SQL tables",
+                            value: defaults.includeTables
+                        },
+                        {
+                            id: "includeViews",
+                            fieldType: "checkbox",
+                            label: "Include Views",
+                            hint: "Export SQL views",
+                            value: defaults.includeViews
+                        },
+                        {
+                            id: "includeStoredProcedures",
+                            fieldType: "checkbox",
+                            label: "Include Stored Procedures",
+                            hint: "Export SQL stored procedures",
+                            value: defaults.includeStoredProcedures
+                        },
+                        {
+                            id: "includeIndexes",
+                            fieldType: "checkbox",
+                            label: "Include Indexes",
+                            hint: "Export SQL indexes",
+                            value: defaults.includeIndexes
+                        },
                         {
                             id: "importFilterFilePath",
                             fieldType: "open-file",
