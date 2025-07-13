@@ -125,6 +125,19 @@ declare namespace MacroApi.Context {
     }
 
     interface IDynamicFormOpenFileOptions {
+        /**
+         * Set the title of the open file dialog.
+         */
+        title?: string;
+        /**
+         * Set the location to start browsing with the open file dialog. If not specified, it will open at your last location.  
+         */
+        defaultPath?: string;
+        /**
+         * Custom label for the confirmation button, when left empty, the default label will
+         * be used.
+         */
+        buttonLabel?: string;
         fileFilters: IDynamicFormOpenFileOptions_FileFilters[];
     }
 

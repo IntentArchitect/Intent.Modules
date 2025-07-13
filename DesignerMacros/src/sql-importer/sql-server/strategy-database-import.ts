@@ -317,7 +317,6 @@ class DatabaseImportStrategy {
                 id: "inclusiveSelection",
                 fieldType: "tree-view",
                 label: "Objects to Include in Import",
-                hint: "Objects to Include in Import",
                 isRequired: false,
                 treeViewOptions: {
                     isMultiSelect: true,
@@ -356,7 +355,6 @@ class DatabaseImportStrategy {
                 id: "exclusiveSelection",
                 fieldType: "tree-view",
                 label: "Objects to Exclude from Import",
-                hint: "Objects to Exclude from Import",
                 isRequired: false,
                 treeViewOptions: {
                     isMultiSelect: true,
