@@ -247,7 +247,10 @@ class DatabaseImportStrategy {
                                 }
                                 let importFilterFilePath = form.getField("importFilterFilePath").value as string;
                                 
-                                await this.presentManageFiltersDialog(connectionString, packageId, importFilterFilePath);
+                                let returnedImportFilterFilePath = await this.presentManageFiltersDialog(connectionString, packageId, importFilterFilePath);
+                                if (returnedImportFilterFilePath != null) {
+                                    form.getField("importFilterFilePath").value = returnedImportFilterFilePath;
+                                }
                             }
                         }
                     ],
@@ -295,11 +298,11 @@ class DatabaseImportStrategy {
         return importConfig;
     }
 
-    private async presentManageFiltersDialog(connectionString: string, packageId: string, importFilterFilePath: string): Promise<void> {
+    private async presentManageFiltersDialog(connectionString: string, packageId: string, importFilterFilePath: string): Promise<string | null> {
         try {
             const metadata = await this.fetchDatabaseMetadata(connectionString);
             if (!metadata) {
-                return;
+                return null;
             }
 
             // Load existing filter data if file path exists
@@ -462,14 +465,21 @@ class DatabaseImportStrategy {
                 const result = await dialogService.openForm(formConfig);
                 if (result) {
                     // Handle the save operation when dialog is closed with OK
-                    await this.saveFilterData(result, packageId, importFilterFilePath, );
+                    let returnedImportFilterFilePath = await this.saveFilterData(result, packageId, importFilterFilePath);
+                    if (returnedImportFilterFilePath != null) {
+                        return returnedImportFilterFilePath;
+                    }
                 }
             } catch (error) {
                 console.error("Error in filter selection dialog:", error);
+                return null;
             }
         } catch (error) {
             await dialogService.error(`Error loading database metadata: ${error}`);
+            return null;
         }
+
+        return importFilterFilePath;
     }
 
     private async fetchDatabaseMetadata(connectionString: string): Promise<IDatabaseMetadata|null> {
@@ -668,7 +678,7 @@ class DatabaseImportStrategy {
         }
     }
 
-    private async saveFilterData(formResult: any, packageId: string, importFilterFilePath: string): Promise<void> {
+    private async saveFilterData(formResult: any, packageId: string, importFilterFilePath: string): Promise<string | null> {
         try {
             // Extract selections from form result
             const inclusiveSelections = formResult.inclusiveSelection || [];
@@ -775,7 +785,7 @@ class DatabaseImportStrategy {
                 
                 const fileNameResult = await dialogService.openForm(fileNameConfig);
                 if (!fileNameResult || !fileNameResult.fileName) {
-                    return;
+                    return null;
                 }
                 // Note: Package directory resolution will be handled by the backend
                 savePath = fileNameResult.fileName;
@@ -796,12 +806,15 @@ class DatabaseImportStrategy {
 
             if ((saveResult.errors ?? []).length > 0) {
                 await displayExecutionResultErrors(saveResult);
+                return null;
             } else {
                 await dialogService.info("Filters saved successfully.");
             }
 
+            return savePath;
         } catch (error) {
             await dialogService.error(`Error saving filters: ${error}`);
+            return null;
         }
     }
 }
