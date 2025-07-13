@@ -1814,9 +1814,9 @@ mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc",
     [association.getOtherEnd().typeReference.getType().getParent().id, association.getOtherEnd().typeReference.getType().id, association.id], 
     [association.typeReference.getType().id]);
 
-if (association.typeReference.getType().getChildren().length &gt; 0) {
-    await mapping.launchDialog();
-}</script>
+// if (association.typeReference.getType().getChildren().length &gt; 0) {
+//     await mapping.launchDialog();
+// }</script>
         </macro>
       </macros>
     </associationSetting>
