@@ -560,7 +560,7 @@ class DatabaseImportStrategy {
             label: label,
             specializationId: specializationId,
             icon: icon,
-            isSelected: this.isCategorySelected(category, existingFilter, filterType),
+            isSelected: this.isCategorySelected(schemaName, category, existingFilter, filterType),
             children: items.map(item => ({
                 id: `${schemaName}.${category}.${item}`,
                 label: item,
@@ -595,6 +595,7 @@ class DatabaseImportStrategy {
     }
 
     private isCategorySelected(
+        schemaName: string,
         category: string, 
         existingFilter: ImportFilterModel, 
         filterType: "include" | "exclude"
@@ -606,22 +607,22 @@ class DatabaseImportStrategy {
         if (filterType === "include") {
             switch (category) {
                 case "tables":
-                    return existingFilter.include_tables?.length > 0;
+                    return existingFilter.include_tables?.some(x => x.name.includes(`${schemaName}.`));
                 case "views":
-                    return existingFilter.include_views?.length > 0;
+                    return existingFilter.include_views?.some(x => x.name.includes(`${schemaName}.`));
                 case "storedProcedures":
-                    return existingFilter.include_stored_procedures?.length > 0;
+                    return existingFilter.include_stored_procedures?.some(x => x.includes(`${schemaName}.`));
                 default:
                     return false;
             }
         } else {
             switch (category) {
                 case "tables":
-                    return existingFilter.exclude_tables?.length > 0;
+                    return existingFilter.exclude_tables?.some(x => x.includes(`${schemaName}.`));
                 case "views":
-                    return existingFilter.exclude_views?.length > 0;
+                    return existingFilter.exclude_views?.some(x => x.includes(`${schemaName}.`));
                 case "storedProcedures":
-                    return existingFilter.exclude_stored_procedures?.length > 0;
+                    return existingFilter.exclude_stored_procedures?.some(x => x.includes(`${schemaName}.`));
                 default:
                     return false;
             }
