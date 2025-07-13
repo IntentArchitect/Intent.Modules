@@ -678,11 +678,14 @@ class DatabaseImportStrategy {
             const filterModel: ImportFilterModel = {
                 schemas: [],
                 include_tables: [],
+                include_dependant_tables: false,
                 include_views: [],
-                include_stored_procedures: [],
                 exclude_tables: [],
                 exclude_views: [],
-                exclude_stored_procedures: []
+                include_stored_procedures: [],
+                exclude_stored_procedures: [],
+                exclude_table_columns: [],
+                exclude_view_columns: []
             };
 
             // Process inclusive selections
@@ -844,11 +847,14 @@ interface IDatabaseMetadata {
 interface ImportFilterModel {
     schemas: string[];
     include_tables: FilterTableModel[];
+    include_dependant_tables: boolean;
     include_views: FilterViewModel[];
-    include_stored_procedures: string[];
     exclude_tables: string[];
     exclude_views: string[];
+    include_stored_procedures: string[];
     exclude_stored_procedures: string[];
+    exclude_table_columns: string[];
+    exclude_view_columns: string[];
 }
 
 interface FilterTableModel {
