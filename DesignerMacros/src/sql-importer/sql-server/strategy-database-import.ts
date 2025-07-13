@@ -166,28 +166,24 @@ class DatabaseImportStrategy {
                             id: "includeTables",
                             fieldType: "checkbox",
                             label: "Include Tables",
-                            hint: "Export SQL tables",
                             value: defaults.includeTables
                         },
                         {
                             id: "includeViews",
                             fieldType: "checkbox",
                             label: "Include Views",
-                            hint: "Export SQL views",
                             value: defaults.includeViews
                         },
                         {
                             id: "includeStoredProcedures",
                             fieldType: "checkbox",
                             label: "Include Stored Procedures",
-                            hint: "Export SQL stored procedures",
                             value: defaults.includeStoredProcedures
                         },
                         {
                             id: "includeIndexes",
                             fieldType: "checkbox",
                             label: "Include Indexes",
-                            hint: "Export SQL indexes",
                             value: defaults.includeIndexes
                         },
                         {
@@ -206,25 +202,23 @@ class DatabaseImportStrategy {
                                     return;
                                 }
 
-                                try {
-                                    // Use the new PathResolution task to resolve the path
-                                    const pathResolutionModel = {
-                                        selectedFilePath: selectedFilePath,
-                                        applicationId: application.id,
-                                        packageId: packageId
-                                    };
-                                    
-                                    const pathResolutionResult = await executeImporterModuleTask(
-                                        "Intent.Modules.SqlServerImporter.Tasks.PathResolution",
-                                        pathResolutionModel
-                                    );
-                                    
-                                    if ((pathResolutionResult.errors ?? []).length === 0 && pathResolutionResult.result?.resolvedPath) {
-                                        form.getField("importFilterFilePath").value = pathResolutionResult.result.resolvedPath;
-                                    }
-                                } catch (error) {
-                                    console.warn("Error processing file path for relative conversion:", error);
-                                    // On error, keep the original absolute path
+                                // Use the new PathResolution task to resolve the path
+                                const pathResolutionModel = {
+                                    selectedFilePath: selectedFilePath,
+                                    applicationId: application.id,
+                                    packageId: packageId
+                                };
+                                
+                                const pathResolutionResult = await executeImporterModuleTask(
+                                    "Intent.Modules.SqlServerImporter.Tasks.PathResolution",
+                                    pathResolutionModel
+                                );
+                                
+                                if ((pathResolutionResult.errors ?? []).length === 0 && pathResolutionResult.result?.resolvedPath) {
+                                    form.getField("importFilterFilePath").value = pathResolutionResult.result.resolvedPath;
+                                } else if ((pathResolutionResult.errors ?? []).length > 0) {
+                                    await displayExecutionResultErrors(pathResolutionResult);
+                                    return;
                                 }
                             }
                         },
@@ -301,22 +295,21 @@ class DatabaseImportStrategy {
             // Load existing filter data if file path exists
             let existingFilter: ImportFilterModel | null = null;
             if (importFilterFilePath) {
-                try {
-                    const filterLoadModel = {
-                        importFilterFilePath: importFilterFilePath,
-                        applicationId: application.id,
-                        packageId: packageId
-                    };
-                    const filterLoadResult = await executeImporterModuleTask(
-                        "Intent.Modules.SqlServerImporter.Tasks.FilterLoad",
-                        filterLoadModel
-                    );
-                    
-                    if ((filterLoadResult.errors ?? []).length === 0 && filterLoadResult.result) {
-                        existingFilter = filterLoadResult.result as ImportFilterModel;
-                    }
-                } catch (error) {
-                    console.warn("Could not load existing filter file:", error);
+                const filterLoadModel = {
+                    importFilterFilePath: importFilterFilePath,
+                    applicationId: application.id,
+                    packageId: packageId
+                };
+                const filterLoadResult = await executeImporterModuleTask(
+                    "Intent.Modules.SqlServerImporter.Tasks.FilterLoad",
+                    filterLoadModel
+                );
+                
+                if ((filterLoadResult.errors ?? []).length === 0 && filterLoadResult.result) {
+                    existingFilter = filterLoadResult.result as ImportFilterModel;
+                } else if ((filterLoadResult.errors ?? []).length > 0) {
+                    await displayExecutionResultErrors(filterLoadResult);
+                    return null;
                 }
             }
 
@@ -324,6 +317,7 @@ class DatabaseImportStrategy {
                 id: "inclusiveSelection",
                 fieldType: "tree-view",
                 label: "Objects to Include in Import",
+                hint: "Objects to Include in Import",
                 isRequired: false,
                 treeViewOptions: {
                     isMultiSelect: true,
@@ -362,6 +356,7 @@ class DatabaseImportStrategy {
                 id: "exclusiveSelection",
                 fieldType: "tree-view",
                 label: "Objects to Exclude from Import",
+                hint: "Objects to Exclude from Import",
                 isRequired: false,
                 treeViewOptions: {
                     isMultiSelect: true,
