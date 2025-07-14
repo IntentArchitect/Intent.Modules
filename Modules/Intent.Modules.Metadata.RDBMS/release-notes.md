@@ -1,3 +1,7 @@
+### Version 3.7.6
+
+- Improvement: Added `Collation` property to the `Column` stereotype.
+
 ### Version 3.7.5
 
 - Improvement: Help topic on primary key value assignment methods.

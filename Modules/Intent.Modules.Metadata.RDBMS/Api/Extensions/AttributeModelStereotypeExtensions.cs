@@ -325,6 +325,11 @@ namespace Intent.Metadata.RDBMS.Api
                 return _stereotype.GetProperty<int?>("Order");
             }
 
+            public string Collation()
+            {
+                return _stereotype.GetProperty<string>("Collation");
+            }
+
         }
 
         public class ComputedValue

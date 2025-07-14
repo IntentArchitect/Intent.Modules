@@ -13,13 +13,17 @@
   <displayIconFunction>return true;</displayIconFunction>
   <displayFunction>const name = (Name ?? "").trim() !== ""
     ? Name
-    : element.getName();
+    : null;
 
 const type = (Type ?? "").trim() !== ""
     ? ` (${Type})`
-    : "";
+    : null;
 
-return `${name}${type}`;</displayFunction>
+if (name == null &amp;&amp; type == null) {
+    return "";
+}
+
+return `${name ?? element.getName()}${type ?? ""}`;</displayFunction>
   <displayAsAnnotation>true</displayAsAnnotation>
   <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
@@ -47,6 +51,14 @@ return `${name}${type}`;</displayFunction>
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
+    </property>
+    <property id="fae5d195-d9f0-498e-938b-922362d8c37c">
+      <name>Collation</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <isActiveFunction>const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+return element.typeReference?.getTypeId() == stringTypeId;</isActiveFunction>
     </property>
   </properties>
 </stereotypeDefinition>
