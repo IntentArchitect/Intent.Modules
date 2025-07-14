@@ -1,3 +1,7 @@
+### Version 4.7.10
+
+- Improvement: Improved route validation specifically with route parameters
+
 ### Version 4.7.9
 
 - Improvement: Grouped context menu options for better separation of options.

@@ -57,11 +57,32 @@ function __findMissingParameters(routeToValidate) {
     let missingParameters = [];
     for (let routeParam of routeToValidate.routeParams) {
         let routeParamName = routeParam.toLowerCase();
+        // if(routeParamName.includes(`:`)) {
+        //     routeParamName = routeParamName.split(":")[0];
+        // }
         if (!elementChildren.some(e =&gt; e.getName().toLowerCase() === routeParamName)) {
             missingParameters.push(routeParam);
         }
     }
+    let noMissingParams = false;
     if (missingParameters.length === 0) {
+        noMissingParams = true;
+    }
+    let missingRouteParameters = [];
+    for (let elementParam of elementChildren) {
+        if (elementParam.hasStereotype("Parameter Settings")) {
+            var paramSettings = elementParam.getStereotype("Parameter Settings");
+            var source = paramSettings.getProperty("Source");
+            if (source &amp;&amp; source.getValue() == "From Route"
+                &amp;&amp; !routeToValidate.routeParams.some(r =&gt; r.toLowerCase() == elementParam.getName().toLowerCase())) {
+                missingRouteParameters.push(elementParam.getName());
+            }
+        }
+    }
+    if (missingRouteParameters.length != 0) {
+        return `Route mismatch: some element's properties/parameters do not match route parameters. Unmatched parameters: ${missingRouteParameters.join(", ")}`;
+    }
+    if (noMissingParams) {
         return "";
     }
     return `Route mismatch: some route parameters do not match element's properties/parameters. Unmatched parameters: ${missingParameters.join(", ")}`;
@@ -125,7 +146,12 @@ class RestRoute {
         this.hashedRoute = originalRoute
             .replace(/\{([^}]*)\}/g, function (match, g1) {
             if (routeParameterExclusions.indexOf(g1) &lt; 0) {
-                localRouteParams.push(g1);
+                if (g1.includes(`:`)) {
+                    localRouteParams.push(g1.split(":")[0]);
+                }
+                else {
+                    localRouteParams.push(g1);
+                }
             }
             return (counter++).toString();
         })
@@ -165,12 +191,21 @@ class RestRoute {
                     if (servicePath.toLocaleLowerCase().includes('[controller]')) {
                         servicePath = servicePath.replace(/\[controller\]/gi, `[${serviceElement.getName()}]`);
                     }
-                    return `${servicePath}/${operationPath}`;
+                    return normalizeRoutePath(`${servicePath}/${normalizeRoutePath(operationPath)}`);
                 }
                 //We don't know how the service name will be transformed so we add [{ServiceName}] to represent the transform
-                return `[${serviceElement.getName()}]/${operationPath}`;
+                return normalizeRoutePath(`[${serviceElement.getName()}]/${normalizeRoutePath(operationPath)}`);
             }
-            return httpSettings.getProperty("Route").value;
+            return normalizeRoutePath(httpSettings.getProperty("Route").value);
+        }
+        function normalizeRoutePath(returnPath) {
+            if (returnPath.endsWith("/")) {
+                returnPath = returnPath.slice(0, -1);
+            }
+            if (returnPath.startsWith("/")) {
+                returnPath = returnPath.slice(1);
+            }
+            return returnPath;
         }
     }
 }
