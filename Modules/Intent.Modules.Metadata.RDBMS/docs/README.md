@@ -52,7 +52,7 @@ Once applied, the following properties can be set:
 
 ### Create an Index
 
-To create an index on a class, use the `Add Index`.
+To create an index on an entity class, use the `Add Index`.
 
 1. Locate the `Class` you want to add an index to, in the `Domain Designer` tree or diagram.
 2. Right-click on the `Class` and select `Add Index`.
