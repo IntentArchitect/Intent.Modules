@@ -21,7 +21,10 @@
       <name>Create CRUD CQRS Services in Services designer</name>
       <filterFunction>return application.isModuleInstalled("Intent.Modelers.Services.CQRS");</filterFunction>
       <dependencies />
-      <script>navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
+      <script>if (!await checkUnsavedChangesAsync()) {
+    return;
+}
+navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
     executeScript: `await CrudApi.createCQRSService(getPackages()[0], lookup('${element.id}'));`,
     scriptDependencies: ["61a8411f-b5bc-4a00-9a37-a967e0893d9d"]
 });</script>
@@ -29,7 +32,10 @@
     <suggestionSetting type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" locations="diagram, model">
       <name>Create CRUD Traditional Service in Services designer</name>
       <dependencies />
-      <script>navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
+      <script>if (!await checkUnsavedChangesAsync()) {
+    return;
+}
+navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
     executeScript: `await CrudApi.createTraditionalService(getPackages()[0], lookup('${element.id}'));`,
     scriptDependencies: ["61a8411f-b5bc-4a00-9a37-a967e0893d9d"]
 });</script>
