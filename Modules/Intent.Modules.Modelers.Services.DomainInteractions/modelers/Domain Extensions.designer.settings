@@ -21,7 +21,7 @@
       <name>Create CRUD CQRS Services in Services designer</name>
       <filterFunction>return application.isModuleInstalled("Intent.Modelers.Services.CQRS");</filterFunction>
       <dependencies />
-      <script>if (!await checkUnsavedChangesAsync()) {
+      <script>if (!await promptIfUnsavedChangesAsync()) {
     return;
 }
 navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
@@ -32,7 +32,7 @@ navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
     <suggestionSetting type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" locations="diagram, model">
       <name>Create CRUD Traditional Service in Services designer</name>
       <dependencies />
-      <script>if (!await checkUnsavedChangesAsync()) {
+      <script>if (!await promptIfUnsavedChangesAsync()) {
     return;
 }
 navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
