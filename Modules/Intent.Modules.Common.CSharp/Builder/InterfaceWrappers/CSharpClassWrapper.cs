@@ -163,6 +163,8 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
 
     ICSharpClass ICSharpClass.RepresentsModel(IMetadataModel model) => wrapped.RepresentsModel(model);
 
+    ICSharpClass ICSharpClass.AddProperty(string type, string name, Action<ICSharpProperty>? configure) => wrapped.AddProperty(type, name, configure);
+
     ICSharpClass ICSharpClass.AddProperty<TModel>(string type, TModel model, Action<ICSharpProperty>? configure) => wrapped.AddProperty(type, model, configure);
 
     ICSharpClass ICSharpClass.AddProperty<TModel>(TModel model, Action<ICSharpProperty>? configure) => wrapped.AddProperty(model, configure);
