@@ -1,8 +1,4 @@
-﻿### Version 3.9.2
-
-- Improvement: Added AddProperty with string name to ICSharpClass Interface
-
-### Version 3.9.1
+﻿### Version 3.9.1
 
 - Improvement: Added additional check when performing mapping type-lookups.
 - Improvement: Added support for Razor `attribute` directive.
