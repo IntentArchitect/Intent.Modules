@@ -1,3 +1,8 @@
+### Version 6.0.2
+
+- Improvement: Made `Command` and `Query` visuals on diagrams slighly more compact.
+- Improvement: Added HTTP information to the diagram visuals where a `Command` or `Query` is exposed via HTTP.
+
 ### Version 6.0.1
 
 - Fixed: Removed "response" from incorrectly appearing on the advanced mapping screen.

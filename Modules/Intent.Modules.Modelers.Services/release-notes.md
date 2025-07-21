@@ -1,3 +1,8 @@
+### Version 4.0.2
+
+- Improvement: Made `Service` visuals on diagrams slighly more compact.
+- Improvement: Added HTTP information to the diagram visuals where a Service's `Operation` is exposed via HTTP.
+
 ### Version 4.0.1
 
 - Fixed: `Operation Parameter` mapping now working correctly (double clicking and dragging)

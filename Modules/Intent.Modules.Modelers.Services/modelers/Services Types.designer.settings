@@ -401,7 +401,7 @@ getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePo
         </scriptOptions>
         <elementVisualSettings>
           <visualSettings type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
-            <size width="${w}" height="70" />
+            <size width="${w}" height="60" />
             <position x="${x}" y="${y}" />
             <display>
               <drawText>
@@ -414,42 +414,58 @@ text-align: center;
 white-space: inherit;
 color: ${(element.isReference() ? theme.isDark ? "#aaddaa" : "#224422" : "inherit")};
 vertical-align: center`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 48}" />
+                <size width="${w}" height="16" />
+                <position x="${x}" y="${y + 40}" />
               </drawText>
               <drawSvgResource>
                 <path>service.svg</path>
-                <size width="${w}" height="40" />
-                <position x="${x}" y="${y + 6}" />
+                <size width="${w}" height="36" />
+                <position x="${x}" y="${y + 2}" />
               </drawSvgResource>
             </display>
             <stereotypesVisualSettings>
               <size width="${w}" height="18" />
               <position x="${x}" y="${y}" />
             </stereotypesVisualSettings>
-            <defaultSize width="${x}" height="70" />
+            <defaultSize width="${x}" height="60" />
             <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings>
               <childElementVisualSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
-                <size width="`${parent.w}`" height="18" />
-                <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 66}`" />
+                <size width="`${parent.w}`" height="return 18 + (element.hasStereotype(&quot;Http Settings&quot;) ? 18: 0)" />
+                <position x="`${parent.x}`" y="const $previous = getPreviousVisual();&#xD;&#xA;if ($previous) {&#xD;&#xA;    return `${$previous.y + $previous.h}`;&#xD;&#xA;}&#xD;&#xA;return `${parent.y + 56}`" />
                 <display>
                   <drawText>
+                    <condition>return element.hasStereotype("Http Settings");</condition>
+                    <text>return [
+    {
+        text: element.getStereotype("Http Settings").getProperty("Verb").value,
+        cssClass: "keyword"
+    }, 
+    {
+        text: " \"" + removeSuffix(element.getParent().getStereotype("Http Service Settings")?.getProperty("Route").value + "/" + element.getStereotype("Http Settings").getProperty("Route").value, "/") + "\"",
+        cssClass: "function"
+    }
+]</text>
+                    <style>`font-size: 10px; font-family: Helvetica; font-weight: normal; text-align: left; white-space: inherit;vertical-align: center`</style>
+                    <size width="${w - 26}" height="16" />
+                    <position x="${x + 24}" y="${y + 3}" />
+                  </drawText>
+                  <drawText>
                     <text>return label;</text>
-                    <size width="${w - 26}" height="${h}" />
-                    <position x="${x + 24}" y="${y}" />
+                    <size width="${w - 26}" height="18" />
+                    <position x="${x + 24}" y="${y + (element.hasStereotype(&quot;Http Settings&quot;) ? 14: 0)}" />
                   </drawText>
                   <drawSvgResource>
                     <path>method.svg</path>
                     <size width="20" height="20" />
-                    <position x="${x}" y="${y}" />
+                    <position x="${x}" y="${y + (element.hasStereotype(&quot;Http Settings&quot;) ? 14: 0)}" />
                   </drawSvgResource>
                 </display>
                 <stereotypesVisualSettings>
                   <size width="${w}" height="18" />
                   <position x="${x}" y="${y}" />
                 </stereotypesVisualSettings>
-                <defaultSize width="`${parent.w}`" height="18" />
+                <defaultSize width="`${parent.w}`" height="return 18 + (element.hasStereotype(&quot;Http Settings&quot;) ? 18: 0)" />
                 <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
                 <childElementVisualSettings />
               </childElementVisualSetting>
