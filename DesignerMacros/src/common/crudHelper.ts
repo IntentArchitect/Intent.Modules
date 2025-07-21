@@ -108,6 +108,7 @@ class CrudHelper {
 
         var result: ICrudCreationResult = {
             selectedEntity: foundEntity,
+            diagramId: dialogResult.diagramId,
             canCreate: dialogResult.create == "true",
             canUpdate: dialogResult.update == "true",
             canQueryById: dialogResult.queryById == "true",
@@ -470,6 +471,7 @@ interface IISelectEntityDialogOptions {
 interface ICrudCreationResult {
     selectedEntity: MacroApi.Context.IElementApi,
     selectedDomainOperationIds: string[],
+    diagramId?: string,
     canCreate: boolean,
     canUpdate: boolean,
     canQueryById: boolean,

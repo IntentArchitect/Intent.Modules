@@ -14,26 +14,27 @@ class CrudCreationContext implements ICrudCreationContext {
 }
 
 
-async function presentCrudOptionsDialog(preselectedClass?: IElementApi) : Promise<ICrudCreationResult>{
+async function presentCrudOptionsDialog(preselectedClass?: IElementApi, defaultDiagramId?: string) : Promise<ICrudCreationResult>{
     let dialogResult: ICrudCreationResult = null;
-    if (!preselectedClass) {
-        dialogResult = await openCrudCreationDialog();
+    //if (!preselectedClass) {
+        dialogResult = await openCrudCreationDialog(preselectedClass?.id, defaultDiagramId);
 
         if (!dialogResult) {
             return null; 
         }
-    } else {
-        dialogResult = {
-            selectedEntity: preselectedClass,
-            canCreate: true,
-            canUpdate: true,
-            canQueryById: true,
-            canQueryAll: true,
-            canDelete: true,
-            canDomain: true,
-            selectedDomainOperationIds: []
-        };
-    }
+    // } else {
+    //     dialogResult = {
+    //         selectedEntity: preselectedClass,
+    //         diagramId: defaultDiagramId,
+    //         canCreate: true,
+    //         canUpdate: true,
+    //         canQueryById: true,
+    //         canQueryAll: true,
+    //         canDelete: true,
+    //         canDomain: true,
+    //         selectedDomainOperationIds: []
+    //     };
+    // }
 
     return dialogResult;
 }
@@ -59,13 +60,15 @@ function ClassSelectionFilter(element: MacroApi.Context.IElementApi) : boolean {
     return false;
 }
 
-async function openCrudCreationDialog(): Promise<ICrudCreationResult|null> {
+async function openCrudCreationDialog(preselectedClassId?: string, defaultDiagramId?: string): Promise<ICrudCreationResult|null> {
     let classes = lookupTypesOf("Class").filter(x => ClassSelectionFilter(x));
     if (classes.length == 0) {
         await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
         return null;
     }
     
+    let diagrams = lookupTypesOf("Diagram", false);
+
     let dialogResult = await dialogService.openForm({
         title: "CRUD Creation Options",
         fields: [
@@ -80,6 +83,7 @@ async function openCrudCreationDialog(): Promise<ICrudCreationResult|null> {
                         additionalInfo: getClassAdditionalInfo(x)
                     };
                 }),
+                value: preselectedClassId,
                 isRequired: true
             },
             {
@@ -123,7 +127,25 @@ async function openCrudCreationDialog(): Promise<ICrudCreationResult|null> {
                 label: "Domain Operations",
                 value: "true",
                 hint: "Generate operations for Domain Entity operations"
-            }
+            },
+            {
+                id: "diagramId",
+                fieldType: "select",
+                label: "Add to Diagram",
+                selectOptions: [{
+                    id: "create-new-diagram",
+                    description: "<Create New Diagram>",
+                    additionalInfo: null
+                }].concat(diagrams.map(x => {
+                    return {
+                        id: x.id,
+                        description: x.getName(),
+                        additionalInfo: getClassAdditionalInfo(x)
+                    };
+                })),
+                value: defaultDiagramId ?? "create-new-diagram",
+                isRequired: true
+            },
         ]
     });
 
@@ -131,6 +153,7 @@ async function openCrudCreationDialog(): Promise<ICrudCreationResult|null> {
 
     var result: ICrudCreationResult = {
         selectedEntity: foundEntity,
+        diagramId: dialogResult.diagramId == "create-new-diagram" ? null : dialogResult.diagramId,
         canCreate: dialogResult.create == "true",
         canUpdate: dialogResult.update == "true",
         canQueryById: dialogResult.queryById == "true",
@@ -185,6 +208,7 @@ async function openCrudCreationDialog(): Promise<ICrudCreationResult|null> {
 interface ICrudCreationResult {
     selectedEntity: MacroApi.Context.IElementApi,
     selectedDomainOperationIds: string[],
+    diagramId?: string,
     canCreate: boolean,
     canUpdate: boolean,
     canQueryById: boolean,
