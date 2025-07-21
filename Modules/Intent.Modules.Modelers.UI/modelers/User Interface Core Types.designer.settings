@@ -223,30 +223,30 @@ font-weight: bold;
 text-align: center; 
 white-space: inherit;
 vertical-align: center`</style>
-            <size width="${w}" height="18" />
-            <position x="${x}" y="${y + 48}" />
+            <size width="${w}" height="16" />
+            <position x="${x}" y="${y + 40}" />
           </drawText>
           <drawSvgResource>
             <condition>return (!element.hasStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c") // Page Stereotype
     &amp;&amp; element.getChild(x =&gt; x.specializationId == "624513a6-cba8-4dde-8ebe-6b19f00f0364") // Component View
         .getChild(x =&gt; x.specializationId == "1260ae89-b0cc-4ae0-b21c-7e26d45f16a5") == null) // Dialog Component</condition>
             <path>component.svg</path>
-            <size width="${w}" height="40" />
-            <position x="${x}" y="${y + 6}" />
+            <size width="${w}" height="36" />
+            <position x="${x}" y="${y + 2}" />
           </drawSvgResource>
           <drawSvgResource>
             <condition>return (!element.getStereotype("Page") // Page Stereotype
     &amp;&amp; element.getChildren("624513a6-cba8-4dde-8ebe-6b19f00f0364")[0] // Component View
         .getChild(x =&gt; x.specializationId == "1260ae89-b0cc-4ae0-b21c-7e26d45f16a5", true) != null) // Dialog Component</condition>
             <path>dialog.svg</path>
-            <size width="${w}" height="40" />
-            <position x="${x}" y="${y + 6}" />
+            <size width="${w}" height="36" />
+            <position x="${x}" y="${y + 2}" />
           </drawSvgResource>
           <drawSvgResource>
             <condition>return element.hasStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c");</condition>
             <path>page.svg</path>
-            <size width="${w}" height="40" />
-            <position x="${x}" y="${y + 6}" />
+            <size width="${w}" height="36" />
+            <position x="${x}" y="${y + 2}" />
           </drawSvgResource>
         </display>
         <stereotypesVisualSettings>
@@ -258,7 +258,7 @@ vertical-align: center`</style>
         <childElementVisualSettings>
           <childElementVisualSetting type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe">
             <size width="`${parent.w}`" height="18" />
-            <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 66}`" />
+            <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 56}`" />
             <display>
               <drawText>
                 <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
@@ -277,7 +277,7 @@ vertical-align: center`</style>
           </childElementVisualSetting>
           <childElementVisualSetting type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
             <size width="`${parent.w}`" height="18" />
-            <position x="`${parent.x}`" y="`${parent.y + (parent.elements['Property'].size.height) + ($index * 20) + 66}`" />
+            <position x="`${parent.x}`" y="`${parent.y + (parent.elements['Property'].size.height) + ($index * 20) + 56}`" />
             <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
             <display>
               <drawText>
@@ -982,13 +982,13 @@ font-weight: bold;
 text-align: center; 
 white-space: inherit;
 vertical-align: center`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 48}" />
+                <size width="${w}" height="16" />
+                <position x="${x}" y="${y + 40}" />
               </drawText>
               <drawSvgResource>
                 <path>query.svg</path>
-                <size width="${w}" height="40" />
-                <position x="${x}" y="${y + 6}" />
+                <size width="${w}" height="36" />
+                <position x="${x}" y="${y + 2}" />
               </drawSvgResource>
             </display>
             <stereotypesVisualSettings>
@@ -1013,13 +1013,13 @@ text-align: center;
 white-space: inherit;
 color: ${(element.isReference() ? theme.isDark ? "#aaddaa" : "#224422" : "inherit")};
 vertical-align: center`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 48}" />
+                <size width="${w}" height="16" />
+                <position x="${x}" y="${y + 40}" />
               </drawText>
               <drawSvgResource>
                 <path>service.svg</path>
-                <size width="${w}" height="40" />
-                <position x="${x}" y="${y + 6}" />
+                <size width="${w}" height="36" />
+                <position x="${x}" y="${y + 2}" />
               </drawSvgResource>
             </display>
             <stereotypesVisualSettings>
@@ -1065,13 +1065,13 @@ font-weight: bold;
 text-align: center; 
 white-space: inherit;
 vertical-align: center`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 48}" />
+                <size width="${w}" height="16" />
+                <position x="${x}" y="${y + 40}" />
               </drawText>
               <drawSvgResource>
                 <path>command.svg</path>
-                <size width="${w}" height="40" />
-                <position x="${x}" y="${y + 6}" />
+                <size width="${w}" height="36" />
+                <position x="${x}" y="${y + 2}" />
               </drawSvgResource>
             </display>
             <stereotypesVisualSettings>
@@ -1251,13 +1251,13 @@ font-weight: bold;
 text-align: center; 
 white-space: inherit;
 vertical-align: center`</style>
-            <size width="${w}" height="18" />
-            <position x="${x}" y="${y + 48}" />
+            <size width="${w}" height="16" />
+            <position x="${x}" y="${y + 40}" />
           </drawText>
           <drawSvgResource>
             <path>layout.svg</path>
-            <size width="${w}" height="40" />
-            <position x="${x}" y="${y + 6}" />
+            <size width="${w}" height="36" />
+            <position x="${x}" y="${y + 2}" />
           </drawSvgResource>
         </display>
         <stereotypesVisualSettings>
@@ -1269,7 +1269,7 @@ vertical-align: center`</style>
         <childElementVisualSettings>
           <childElementVisualSetting type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe">
             <size width="`${parent.w}`" height="18" />
-            <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 66}`" />
+            <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 56}`" />
             <display>
               <drawText>
                 <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
@@ -1288,7 +1288,7 @@ vertical-align: center`</style>
           </childElementVisualSetting>
           <childElementVisualSetting type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
             <size width="`${parent.w}`" height="18" />
-            <position x="`${parent.x}`" y="`${parent.y + (parent.elements['Property'].size.height) + ($index * 20) + 66}`" />
+            <position x="`${parent.x}`" y="`${parent.y + (parent.elements['Property'].size.height) + ($index * 20) + 56}`" />
             <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
             <display>
               <drawText>
@@ -3361,6 +3361,94 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
     </mappableElementPackage>
   </mappableElementPackages>
   <mappableElementPackageExtensions />
+  <suggestionSettings>
+    <suggestionSetting type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" locations="diagram, model">
+      <name>Call Backend Service</name>
+      <dependencies />
+      <script>const result = await dialogService.openForm({
+    title: "Add to Diagram",
+    fields: [
+        {
+            id: "selectedElementId",
+            label: "Select Elements",
+            fieldType: "tree-view",
+            treeViewOptions: { 
+                rootId: getCurrentDiagram().getOwner().getPackage().id,
+                isMultiSelect: false,
+                submitFormTriggers: ["double-click", "enter"],
+                hasFilter: true,
+                selectableTypes: [
+                    { specializationId: "Command", autoExpand: true, isSelectable: (x) =&gt; true },
+                    { specializationId: "Query", autoExpand: true, isSelectable: (x) =&gt; true },
+                    { specializationId: "Operation", autoExpand: true, isSelectable: (x) =&gt; x.getParent().specialization == "Service" },
+                ],
+            }
+        }
+    ]
+})
+
+if (result.selectedElementId.length == 0) {
+    return;
+}
+
+const component = element;
+const diagram = getCurrentDiagram();
+const componentVisual = diagram.getVisual(element.id);
+const space = diagram.findEmptySpace({ x: componentVisual.getPosition().x + 400, y: componentVisual.getPosition().y}, { width: 200, height: 100 });
+diagram.layoutVisuals(result.selectedElementId, space, true);
+const serviceRequest = lookup(result.selectedElementId);
+
+if (!serviceRequest) {
+    return;
+}
+
+
+if (serviceRequest.specialization == "Query") {
+    const query = serviceRequest;
+    const operation = createElement("Component Operation", "Load" + removePrefix(removeSuffix(query.getName(), "Query"), "Get"), component.id);
+
+    query.getChildren("DTO-Field").forEach(param =&gt; {
+        const parameter = operation.addChild("Parameter", toCamelCase(param.getName()));
+        parameter.typeReference.setType(param.typeReference.toModel())
+    });
+
+    const property = component.addChild("Property", "Model");
+    property.typeReference.setType(query.typeReference.toModel());
+
+    const callService = createAssociation("Call Service Operation Action", operation.id, query.id)
+    diagram.layoutVisuals([callService.id]);
+
+    const mapping = callService.createAdvancedMapping(operation.id, query.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
+    mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [query.id]);
+    query.getChildren("DTO-Field").forEach((param, $index) =&gt; {
+        mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", [operation.id, operation.getChildren()[$index].id], [serviceRequest.id, param.id]);
+    });
+
+    const returnMapping = callService.createAdvancedMapping(operation.id, query.id, "e60890c6-7ce7-47be-a0da-dff82b8adc02");
+    returnMapping.addMappedEnd("9cccf6be-31be-4ac0-a026-ed0c4f5578bf", [operation.id, callService.id, "2f68b1a4-a523-4987-b3da-f35e6e8e146b"], [property.id]);
+
+} else if (serviceRequest.specialization == "Command") {
+    
+    const command = serviceRequest;
+    const operation = createElement("Component Operation", removeSuffix(command.getName(), "Command"), component.id);
+
+    const callService = createAssociation("Call Service Operation Action", operation.id, command.id)
+    diagram.layoutVisuals([callService.id]);
+
+    const mapping = callService.createAdvancedMapping(operation.id, command.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
+    mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [command.id]);
+
+    // if (command.typeReference.isTypeFound())  {
+    //     const property = component.addChild("Property", "Model");
+    //     property.typeReference.setType(command.typeReference.toModel());
+
+    //     const returnMapping = callService.createAdvancedMapping(operation.id, command.id, "e60890c6-7ce7-47be-a0da-dff82b8adc02");
+    //     returnMapping.addMappedEnd("9cccf6be-31be-4ac0-a026-ed0c4f5578bf", [operation.id, callService.id, "2f68b1a4-a523-4987-b3da-f35e6e8e146b"], [property.id]);
+    // }
+    mapping.launchDialog();
+}</script>
+    </suggestionSetting>
+  </suggestionSettings>
   <scripts>
     <script name="Add Component Function" id="1832aefa-e28b-4e8f-b65d-8555a1e3b31e">
       <script>async function addComponent(elementId) {
