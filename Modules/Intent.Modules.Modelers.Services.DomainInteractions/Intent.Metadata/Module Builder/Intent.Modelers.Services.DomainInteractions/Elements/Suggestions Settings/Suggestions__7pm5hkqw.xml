@@ -41,7 +41,7 @@
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
             <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return application.isModuleInstalled(&quot;Intent.Modelers.Services.CQRS&quot;);" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
-            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="if (!await promptIfUnsavedChangesAsync()) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;navigateToDesigner(&quot;81104ae6-2bc5-4bae-b05a-f987b0372d81&quot;, {&#xD;&#xA;    executeScript: `await CrudApi.createCQRSService(getPackages()[0], lookup('${element.id}'));`,&#xD;&#xA;    scriptDependencies: [&quot;61a8411f-b5bc-4a00-9a37-a967e0893d9d&quot;]&#xD;&#xA;});" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="if (!await promptIfUnsavedChangesAsync()) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;navigateToDesigner(&quot;81104ae6-2bc5-4bae-b05a-f987b0372d81&quot;, {&#xD;&#xA;    executeScript: `await CrudApi.createCQRSService(getPackages().find(x =&gt; x.specializationId == &quot;df45eaf6-9202-4c25-8dd5-677e9ba1e906&quot;), lookup('${element.id}'));`,&#xD;&#xA;    scriptDependencies: [&quot;61a8411f-b5bc-4a00-9a37-a967e0893d9d&quot;]&#xD;&#xA;});" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
           </properties>
         </stereotype>
@@ -78,7 +78,7 @@
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
             <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
-            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="if (!await promptIfUnsavedChangesAsync()) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;navigateToDesigner(&quot;81104ae6-2bc5-4bae-b05a-f987b0372d81&quot;, {&#xD;&#xA;    executeScript: `await CrudApi.createTraditionalService(getPackages()[0], lookup('${element.id}'));`,&#xD;&#xA;    scriptDependencies: [&quot;61a8411f-b5bc-4a00-9a37-a967e0893d9d&quot;]&#xD;&#xA;});" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="if (!await promptIfUnsavedChangesAsync()) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;navigateToDesigner(&quot;81104ae6-2bc5-4bae-b05a-f987b0372d81&quot;, {&#xD;&#xA;    executeScript: `await CrudApi.createTraditionalService(getPackages().find(x =&gt; x.specializationId == &quot;df45eaf6-9202-4c25-8dd5-677e9ba1e906&quot;), lookup('${element.id}'));`,&#xD;&#xA;    scriptDependencies: [&quot;61a8411f-b5bc-4a00-9a37-a967e0893d9d&quot;]&#xD;&#xA;});" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
           </properties>
         </stereotype>
