@@ -3414,9 +3414,10 @@ if (serviceRequest.specialization == "Query") {
 
     const property = component.addChild("Property", "Model");
     property.typeReference.setType(query.typeReference.toModel());
+    property.typeReference.setIsNullable(true);
 
     const callService = createAssociation("Call Service Operation Action", operation.id, query.id)
-    diagram.layoutVisuals([callService.id]);
+    diagram.layoutVisuals([callService.id], true);
 
     const mapping = callService.createAdvancedMapping(operation.id, query.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
     mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [query.id]);
@@ -3433,10 +3434,27 @@ if (serviceRequest.specialization == "Query") {
     const operation = createElement("Component Operation", removeSuffix(command.getName(), "Command"), component.id);
 
     const callService = createAssociation("Call Service Operation Action", operation.id, command.id)
-    diagram.layoutVisuals([callService.id]);
+    diagram.layoutVisuals([callService.id], true);
 
     const mapping = callService.createAdvancedMapping(operation.id, command.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
     mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [command.id]);
+
+    if (!component.getChildren("Property").some(x =&gt; x.typeReference.getType().specialization == "Model Definition")) {
+        const newModel = component.addChild("Model Definition", removePrefix(removeSuffix(command.getName(), "Command", "Create", "Update")) + "Model")
+        const newProperty = component.addChild("Property", "Model");
+        newProperty.typeReference.setType(newModel.id);
+        if (command.getName().startsWith("Create")) {
+            newProperty.setValue("new()");
+        } else {
+            newProperty.typeReference.setIsNullable(true);
+        }
+
+        command.getChildren("DTO-Field").forEach(field =&gt; {
+            const modelProperty = newModel.addChild("Property", field.getName());
+            modelProperty.typeReference.setType(field.typeReference.toModel());
+            mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", [newProperty.id, modelProperty.id], [command.id, field.id]);
+        })
+    }
 
     // if (command.typeReference.isTypeFound())  {
     //     const property = component.addChild("Property", "Model");
