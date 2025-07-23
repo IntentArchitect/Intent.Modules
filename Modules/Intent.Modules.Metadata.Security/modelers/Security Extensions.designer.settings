@@ -416,5 +416,28 @@ function getOrCreateSecurityChildElement(securityElement, elementName, elementTy
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
-  <scripts />
+  <scripts>
+    <script name="Secure Element Script" id="5e8931d8-c1e5-492f-b5fe-11b17ded987a">
+      <script>const securedId = "a9eade71-1d56-4be7-a80c-81046c0c978b";
+const unsecuredId = "8b65c29e-1448-43ac-a92a-0e0f86efd6c6";
+
+function secureElement(element) {
+    if (element.hasStereotype(unsecuredId)) {
+        element.removeStereotype(unsecuredId);
+    }
+    if (!element.hasStereotype(securedId)) {
+        element.addStereotype(securedId);
+    }
+}
+
+function unsecureElement(element) {
+    if (element.hasStereotype(securedId)) {
+        element.removeStereotype(securedId);
+    }
+    if (!element.hasStereotype(unsecuredId)) {
+        element.addStereotype(unsecuredId);
+    }
+}</script>
+    </script>
+  </scripts>
 </settings>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="32c6c1ea-830b-4eeb-a5ac-201c2d316361" type="Suggestions Settings" typeId="f68b5446-19f2-402d-a940-f62b3a592906">
+  <name>Suggestions</name>
+  <display>Suggestions</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>e9a38a6f-45fc-4d1d-8917-0e38778c96b8</parentFolderId>
+  <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+  <packageName>Intent.Metadata.Security</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="de83a611-0843-4fb0-9c0f-914808acc43d" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Secure Command</name>
+      <display>Secure Command: Command</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="b676cfbf-a88e-418e-bd7a-12bcca563b46">
+        <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Services.CQRS</typePackageName>
+        <typePackageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>32c6c1ea-830b-4eeb-a5ac-201c2d316361</parentFolderId>
+      <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+      <packageName>Intent.Metadata.Security</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const securedId = &quot;a9eade71-1d56-4be7-a80c-81046c0c978b&quot;;&#xD;&#xA;const unsecuredId = &quot;8b65c29e-1448-43ac-a92a-0e0f86efd6c6&quot;;&#xD;&#xA;&#xD;&#xA;return !element.hasStereotype(securedId);" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="secureElement(element);" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[&quot;5e8931d8-c1e5-492f-b5fe-11b17ded987a&quot;]" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="3dece6a7-b08b-474d-b4a5-3b5315866aee" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Secure Query</name>
+      <display>Secure Query: Query</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="55774aed-7576-4686-a016-5678e26d2beb">
+        <typeId>e71b0662-e29d-4db2-868b-8a12464b25d0</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Services.CQRS</typePackageName>
+        <typePackageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>32c6c1ea-830b-4eeb-a5ac-201c2d316361</parentFolderId>
+      <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+      <packageName>Intent.Metadata.Security</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const securedId = &quot;a9eade71-1d56-4be7-a80c-81046c0c978b&quot;;&#xD;&#xA;const unsecuredId = &quot;8b65c29e-1448-43ac-a92a-0e0f86efd6c6&quot;;&#xD;&#xA;&#xD;&#xA;return !element.hasStereotype(securedId);" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="secureElement(element);" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[&quot;5e8931d8-c1e5-492f-b5fe-11b17ded987a&quot;]" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="d76f167b-1dd1-4a15-bf62-e1fc5b21f693" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Secure Service Operation</name>
+      <display>Secure Service Operation: Operation</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="09467e68-f422-44c6-8061-8791a8721316">
+        <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Services</typePackageName>
+        <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>32c6c1ea-830b-4eeb-a5ac-201c2d316361</parentFolderId>
+      <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+      <packageName>Intent.Metadata.Security</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const securedId = &quot;a9eade71-1d56-4be7-a80c-81046c0c978b&quot;;&#xD;&#xA;const unsecuredId = &quot;8b65c29e-1448-43ac-a92a-0e0f86efd6c6&quot;;&#xD;&#xA;&#xD;&#xA;return !element.hasStereotype(securedId);" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="secureElement(element);" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[&quot;5e8931d8-c1e5-492f-b5fe-11b17ded987a&quot;]" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="8ce9a17d-4f83-4f04-b84f-b700e5702ada" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Securre Service</name>
+      <display>Securre Service: Service</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="ed8c39e7-801d-4780-882c-1e46e8abe06e">
+        <typeId>b16578a5-27b1-4047-a8df-f0b783d706bd</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Services</typePackageName>
+        <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>32c6c1ea-830b-4eeb-a5ac-201c2d316361</parentFolderId>
+      <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+      <packageName>Intent.Metadata.Security</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const securedId = &quot;a9eade71-1d56-4be7-a80c-81046c0c978b&quot;;&#xD;&#xA;const unsecuredId = &quot;8b65c29e-1448-43ac-a92a-0e0f86efd6c6&quot;;&#xD;&#xA;&#xD;&#xA;return !element.hasStereotype(securedId);" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="secureElement(element);" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[&quot;5e8931d8-c1e5-492f-b5fe-11b17ded987a&quot;]" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

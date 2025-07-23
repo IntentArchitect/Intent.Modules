@@ -1,3 +1,7 @@
+### Version 1.1.0
+
+- Improvement: Added context menu options to secure and unsecure services throughout the Services designer.
+
 ### Version 1.0.4
 
 - Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 

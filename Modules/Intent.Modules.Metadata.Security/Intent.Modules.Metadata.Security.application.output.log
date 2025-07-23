@@ -128,5 +128,13 @@
       <ProjectRelativeFilePath>Security Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
+    <FileLog>
+      <ProjectId>c0e51717-ec20-413f-aa8c-165ed2a07282</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#e9a38a6f-45fc-4d1d-8917-0e38778c96b8</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Security Options Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Security Options Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
   </FileLogs>
 </outputLog>
