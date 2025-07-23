@@ -224,6 +224,18 @@ text-align: center;
 white-space: inherit;
 vertical-align: center`</style>
             <size width="${w}" height="16" />
+            <position x="${x}" y="${y + (element.hasStereotype(&quot;Page&quot;) ? 14: 0) + 42}" />
+          </drawText>
+          <drawText>
+            <condition>return element.hasStereotype("Page");</condition>
+            <text>return [
+    {
+        text: "\"" + element.getStereotype("Page").getProperty("Route").value + "\"",
+        cssClass: "function"
+    }
+]</text>
+            <style>`font-size: 10px; font-family: Helvetica; font-weight: normal; text-align: center; white-space: inherit; vertical-align: center`</style>
+            <size width="${w}" height="16" />
             <position x="${x}" y="${y + 40}" />
           </drawText>
           <drawSvgResource>
@@ -258,7 +270,7 @@ vertical-align: center`</style>
         <childElementVisualSettings>
           <childElementVisualSetting type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe">
             <size width="`${parent.w}`" height="18" />
-            <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 56}`" />
+            <position x="`${parent.x}`" y="const $previous = getPreviousVisual();&#xD;&#xA;if ($previous) {&#xD;&#xA;    return `${$previous.y + $previous.h}`;&#xD;&#xA;}&#xD;&#xA;return `${parent.y + (element.getParent().hasStereotype(&quot;Page&quot;) ? 14: 0) + 60}`" />
             <display>
               <drawText>
                 <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
@@ -277,7 +289,7 @@ vertical-align: center`</style>
           </childElementVisualSetting>
           <childElementVisualSetting type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
             <size width="`${parent.w}`" height="18" />
-            <position x="`${parent.x}`" y="`${parent.y + (parent.elements['Property'].size.height) + ($index * 20) + 56}`" />
+            <position x="`${parent.x}`" y="const $previous = getPreviousVisual();&#xD;&#xA;if ($previous) {&#xD;&#xA;    return `${$previous.y + $previous.h}`;&#xD;&#xA;}&#xD;&#xA;return `${parent.y + (element.getParent().hasStereotype(&quot;Page&quot;) ? 14: 0) + 60}`" />
             <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
             <display>
               <drawText>
