@@ -48,6 +48,12 @@
       <placeholder>(default's to name)</placeholder>
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
     </property>
+    <property id="bbf03fa4-5beb-4d27-a24f-9858af08d97f">
+      <name>Icon</name>
+      <type>string</type>
+      <controlType>icon</controlType>
+      <optionsSource>n/a</optionsSource>
+    </property>
     <property id="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c">
       <name>Script</name>
       <type>string</type>
@@ -65,6 +71,14 @@
       <lookupTypes>
         <type>101fd5b6-3159-4810-9490-a103ef323e9c</type>
       </lookupTypes>
+    </property>
+    <property id="eb1aad5a-4eb8-46aa-84a0-9e4fec251d84">
+      <comment>Allows the order of suggestions to be controlled. By default this value is 0. Suggestions are ordered by this priority first, and then their title second.</comment>
+      <name>Order Priority</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
     </property>
   </properties>
 </stereotypeDefinition>

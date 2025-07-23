@@ -63,6 +63,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Display Function");
             }
 
+            public IIconModel Icon()
+            {
+                return _stereotype.GetProperty<IIconModel>("Icon");
+            }
+
             public string Script()
             {
                 return _stereotype.GetProperty<string>("Script");
@@ -71,6 +76,11 @@ namespace Intent.ModuleBuilder.Api
             public IElement[] Dependencies()
             {
                 return _stereotype.GetProperty<IElement[]>("Dependencies") ?? new IElement[0];
+            }
+
+            public int? OrderPriority()
+            {
+                return _stereotype.GetProperty<int?>("Order Priority");
             }
 
             public class LocationsOptions
