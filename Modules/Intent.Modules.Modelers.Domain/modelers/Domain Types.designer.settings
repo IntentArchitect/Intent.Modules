@@ -328,6 +328,16 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
               <sourceEndDefault isNavigable="false" isNullable="false" isCollection="true" />
               <targetEndDefaults isNavigable="true" isNullable="false" isCollection="true" />
             </createAssociation>
+            <createAssociation type="association">
+              <text>Zero-or-One to One</text>
+              <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+              <specializationType>Association Target End</specializationType>
+              <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
+              <defaultName>NewAssociation</defaultName>
+              <allowMultiple>true</allowMultiple>
+              <sourceEndDefault isNavigable="false" isNullable="true" isCollection="false" />
+              <targetEndDefaults isNavigable="true" isNullable="false" isCollection="false" />
+            </createAssociation>
           </subMenuOptions>
           <specializationType>Association Target End</specializationType>
           <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
@@ -1521,6 +1531,199 @@ getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePo
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
+        <typeOrder />
+        <contextMenuOptions>
+          <runScript type="run-script">
+            <text>Change Association</text>
+            <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+            <subMenuOptions>
+              <runScript type="run-script">
+                <text>Invert</text>
+                <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAxCAYAAACcXioiAAAAAXNSR0IArs4c6QAAAp5JREFUaEPtmMtLVGEUwH/HQSkQohapo4tQiHJm2R8goVGbcgShVi4jclGrxlURBBrYskUQtK0gJ1tF5LgJCoweOhBBCRGKlI+KIGK8J67MRDPM3MfcZzAXZjN8j9/vnPM9+IT//JPY82cLo2CMgxwBioi8wNBpptKPTfZ4C0wUbqJ6rmaQVS4zlboaX4GJpTGUO9YVIifiK5BdXARJWwqIPImnwJVCO7/0h4P1+T2eApcW9iC7thwI/IyngEmeXfoA9NpIPIuzwEXghqWAcia+AqP3EvT1PwBO1pG4xWT6bGwEhte0r7WVr/f3ybe/wDsSqQug48CB0v/vgGkmU7dBNBYCp1a1X5Q5VZbbdnO8QqJsk327F6OtyPVDFbtT5AJleKDDZFXleV2JGrUUqUA1fJnPjURkApnPelAT5FGSNQK7JQYDMz3yxu4siESgXuRLsBuGMjjbLa/s4CO5jfoJH7qA3/ANCYx80a7t36T+Ta8Im7mkvLRKuU3NbxpwbDYpC07KpmJutx0yqzqmVfd0gfxMUo7WGyuzoocV8uWtsqqdq5qvnsP1InYrYMIbMCfQWUPQE3xDJeRGIGj4QAVs4NcNZcjpVmlV5oGUUFjwgWQgTHjfBcKG91UAOG+x2/hW84Fso8B7hPY6F7NNYMjuoHN7HpXb+7KILSYPLPJhCKxjMJjrkdeNRtdJv6AyEAq8b4u4RqQ+Auav/idcy3XJvJMoB36QNQKhyumH3XK3kb6+30YbgWgKlKIW1CK2TUp0GTBfE1oYsCW0a5Dgaa5DzAdcT5/rDHiaLYDOMrKmdk/YO9Nu7OfTvEgxAAZPQ8rwiqqTEbZb6H3UKctO2obZpikQZrRrzdXMQDMDHiPQLCGPAfTcvZkBzyH0OMAfY0yiDhzC+FMAAAAASUVORK5CYII=" />
+                <bottomDivider>true</bottomDivider>
+                <script>const targetTypeModel = association.typeReference.toModel();
+const targetName = association.getName();
+const soureTypeModel = association.getOtherEnd().typeReference.toModel();
+const sourceName = association.getOtherEnd().getName();
+
+association.typeReference.setType(soureTypeModel);
+association.setName(sourceName);
+association.getOtherEnd().typeReference.setType(targetTypeModel);
+association.getOtherEnd().setName(targetName);
+</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>One to One</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(false);
+association.typeReference.setIsCollection(false);
+association.getOtherEnd().typeReference.setIsNullable(false);
+association.getOtherEnd().typeReference.setIsCollection(false);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>One to Zero-or-One</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(true);
+association.typeReference.setIsCollection(false);
+association.getOtherEnd().typeReference.setIsNullable(false);
+association.getOtherEnd().typeReference.setIsCollection(false);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>One to Many</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(false);
+association.typeReference.setIsCollection(true);
+association.getOtherEnd().typeReference.setIsNullable(false);
+association.getOtherEnd().typeReference.setIsCollection(false);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>Many to One</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(false);
+association.typeReference.setIsCollection(false);
+association.getOtherEnd().typeReference.setIsNullable(false);
+association.getOtherEnd().typeReference.setIsCollection(true);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>Many to Zero-or-One</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(true);
+association.typeReference.setIsCollection(false);
+association.getOtherEnd().typeReference.setIsNullable(false);
+association.getOtherEnd().typeReference.setIsCollection(true);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>Many to Many</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(false);
+association.typeReference.setIsCollection(true);
+association.getOtherEnd().typeReference.setIsNullable(false);
+association.getOtherEnd().typeReference.setIsCollection(true);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>Zero-or-One to One</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(false);
+association.typeReference.setIsCollection(false);
+association.getOtherEnd().typeReference.setIsNullable(true);
+association.getOtherEnd().typeReference.setIsCollection(false);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>Bidirectional</text>
+                <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV9kOGQ4ZDY3My0yNWFiLTQzYmYtYmY0NC00MjBlZTQ2YTNjMzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI1IiB4Mj0iMjUiIHkyPSI0NyIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUxKSI+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzI2NjZDOSIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM3Nzk3QzkiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cG9seWdvbiBmaWxsPSJ1cmwoI1NWR0lEXzFfZDhkOGQ2NzMtMjVhYi00M2JmLWJmNDQtNDIwZWU0NmEzYzM2KSIgcG9pbnRzPSI0NS44LDQgNDUuOCwxOS4yIDQxLjUsMTkuMiA0MS41LDExLjMgMzguMiwxNC42IDM1LjcsMTcuMSAxMSw0MS44IDE5LjIsNDEuOCAxOS4yLDQ2IA0KCTQuMiw0NiA0LjIsMzAuOCA4LjIsMzAuOCA4LjIsMzguNyAzOC44LDguMiAzMC43LDguMiAzMC43LDQgIi8+DQo8L3N2Zz4NCg==" />
+                <isOptionVisibleFunction>return !association.getOtherEnd().typeReference.getIsNavigable();</isOptionVisibleFunction>
+                <topDivider>true</topDivider>
+                <script>association.getOtherEnd().typeReference.setIsNavigable(true);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>Unidirectional</text>
+                <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV84MWQ0MTdiYi1lNGM1LTQwMjctYjc0OS03NGNhOTViYjNhOTYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjQuMSIgeTE9IjQ2LjYiIHgyPSIyNC4xIiB5Mj0iMy42IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTEpIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzc5N0M5Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzI2NjZDOSIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwb2x5Z29uIGZpbGw9InVybCgjU1ZHSURfMV84MWQ0MTdiYi1lNGM1LTQwMjctYjc0OS03NGNhOTViYjNhOTYpIiBwb2ludHM9IjQ1LjUsNC40IDQ1LjUsMjMuNyA0MC41LDIzLjcgNDAuNSwxMy4xIDE5LjUsMzQuMSA2LjIsNDcuNCAyLjcsNDMuOSAxNiwzMC42IDE2LDMwLjYgDQoJMTcuNywyOC45IDIxLjIsMjUuMyAzNy4zLDkuNSAyNi4zLDkuNSAyNi4zLDQuNCAiLz4NCjwvc3ZnPg0K" />
+                <isOptionVisibleFunction>return association.getOtherEnd().typeReference.getIsNavigable();</isOptionVisibleFunction>
+                <topDivider>true</topDivider>
+                <script>association.getOtherEnd().typeReference.setIsNavigable(false);
+</script>
+              </runScript>
+            </subMenuOptions>
+            <script>// nop</script>
+          </runScript>
+        </contextMenuOptions>
+        <creationOptions />
+        <scriptOptions>
+          <option type="run-script">
+            <text>Change Association</text>
+            <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+            <subMenuOptions>
+              <runScript type="run-script">
+                <text>Invert</text>
+                <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAxCAYAAACcXioiAAAAAXNSR0IArs4c6QAAAp5JREFUaEPtmMtLVGEUwH/HQSkQohapo4tQiHJm2R8goVGbcgShVi4jclGrxlURBBrYskUQtK0gJ1tF5LgJCoweOhBBCRGKlI+KIGK8J67MRDPM3MfcZzAXZjN8j9/vnPM9+IT//JPY82cLo2CMgxwBioi8wNBpptKPTfZ4C0wUbqJ6rmaQVS4zlboaX4GJpTGUO9YVIifiK5BdXARJWwqIPImnwJVCO7/0h4P1+T2eApcW9iC7thwI/IyngEmeXfoA9NpIPIuzwEXghqWAcia+AqP3EvT1PwBO1pG4xWT6bGwEhte0r7WVr/f3ybe/wDsSqQug48CB0v/vgGkmU7dBNBYCp1a1X5Q5VZbbdnO8QqJsk327F6OtyPVDFbtT5AJleKDDZFXleV2JGrUUqUA1fJnPjURkApnPelAT5FGSNQK7JQYDMz3yxu4siESgXuRLsBuGMjjbLa/s4CO5jfoJH7qA3/ANCYx80a7t36T+Ta8Im7mkvLRKuU3NbxpwbDYpC07KpmJutx0yqzqmVfd0gfxMUo7WGyuzoocV8uWtsqqdq5qvnsP1InYrYMIbMCfQWUPQE3xDJeRGIGj4QAVs4NcNZcjpVmlV5oGUUFjwgWQgTHjfBcKG91UAOG+x2/hW84Fso8B7hPY6F7NNYMjuoHN7HpXb+7KILSYPLPJhCKxjMJjrkdeNRtdJv6AyEAq8b4u4RqQ+Auav/idcy3XJvJMoB36QNQKhyumH3XK3kb6+30YbgWgKlKIW1CK2TUp0GTBfE1oYsCW0a5Dgaa5DzAdcT5/rDHiaLYDOMrKmdk/YO9Nu7OfTvEgxAAZPQ8rwiqqTEbZb6H3UKctO2obZpikQZrRrzdXMQDMDHiPQLCGPAfTcvZkBzyH0OMAfY0yiDhzC+FMAAAAASUVORK5CYII=" />
+                <bottomDivider>true</bottomDivider>
+                <script>const targetTypeModel = association.typeReference.toModel();
+const targetName = association.getName();
+const soureTypeModel = association.getOtherEnd().typeReference.toModel();
+const sourceName = association.getOtherEnd().getName();
+
+association.typeReference.setType(soureTypeModel);
+association.setName(sourceName);
+association.getOtherEnd().typeReference.setType(targetTypeModel);
+association.getOtherEnd().setName(targetName);
+</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>One to One</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(false);
+association.typeReference.setIsCollection(false);
+association.getOtherEnd().typeReference.setIsNullable(false);
+association.getOtherEnd().typeReference.setIsCollection(false);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>One to Zero-or-One</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(true);
+association.typeReference.setIsCollection(false);
+association.getOtherEnd().typeReference.setIsNullable(false);
+association.getOtherEnd().typeReference.setIsCollection(false);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>One to Many</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(false);
+association.typeReference.setIsCollection(true);
+association.getOtherEnd().typeReference.setIsNullable(false);
+association.getOtherEnd().typeReference.setIsCollection(false);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>Many to One</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(false);
+association.typeReference.setIsCollection(false);
+association.getOtherEnd().typeReference.setIsNullable(false);
+association.getOtherEnd().typeReference.setIsCollection(true);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>Many to Zero-or-One</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(true);
+association.typeReference.setIsCollection(false);
+association.getOtherEnd().typeReference.setIsNullable(false);
+association.getOtherEnd().typeReference.setIsCollection(true);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>Many to Many</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(false);
+association.typeReference.setIsCollection(true);
+association.getOtherEnd().typeReference.setIsNullable(false);
+association.getOtherEnd().typeReference.setIsCollection(true);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>Zero-or-One to One</text>
+                <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+                <script>association.typeReference.setIsNullable(false);
+association.typeReference.setIsCollection(false);
+association.getOtherEnd().typeReference.setIsNullable(true);
+association.getOtherEnd().typeReference.setIsCollection(false);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>Bidirectional</text>
+                <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV9kOGQ4ZDY3My0yNWFiLTQzYmYtYmY0NC00MjBlZTQ2YTNjMzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI1IiB4Mj0iMjUiIHkyPSI0NyIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUxKSI+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzI2NjZDOSIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM3Nzk3QzkiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cG9seWdvbiBmaWxsPSJ1cmwoI1NWR0lEXzFfZDhkOGQ2NzMtMjVhYi00M2JmLWJmNDQtNDIwZWU0NmEzYzM2KSIgcG9pbnRzPSI0NS44LDQgNDUuOCwxOS4yIDQxLjUsMTkuMiA0MS41LDExLjMgMzguMiwxNC42IDM1LjcsMTcuMSAxMSw0MS44IDE5LjIsNDEuOCAxOS4yLDQ2IA0KCTQuMiw0NiA0LjIsMzAuOCA4LjIsMzAuOCA4LjIsMzguNyAzOC44LDguMiAzMC43LDguMiAzMC43LDQgIi8+DQo8L3N2Zz4NCg==" />
+                <isOptionVisibleFunction>return !association.getOtherEnd().typeReference.getIsNavigable();</isOptionVisibleFunction>
+                <topDivider>true</topDivider>
+                <script>association.getOtherEnd().typeReference.setIsNavigable(true);</script>
+              </runScript>
+              <runScript type="run-script">
+                <text>Unidirectional</text>
+                <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV84MWQ0MTdiYi1lNGM1LTQwMjctYjc0OS03NGNhOTViYjNhOTYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjQuMSIgeTE9IjQ2LjYiIHgyPSIyNC4xIiB5Mj0iMy42IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTEpIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzc5N0M5Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzI2NjZDOSIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwb2x5Z29uIGZpbGw9InVybCgjU1ZHSURfMV84MWQ0MTdiYi1lNGM1LTQwMjctYjc0OS03NGNhOTViYjNhOTYpIiBwb2ludHM9IjQ1LjUsNC40IDQ1LjUsMjMuNyA0MC41LDIzLjcgNDAuNSwxMy4xIDE5LjUsMzQuMSA2LjIsNDcuNCAyLjcsNDMuOSAxNiwzMC42IDE2LDMwLjYgDQoJMTcuNywyOC45IDIxLjIsMjUuMyAzNy4zLDkuNSAyNi4zLDkuNSAyNi4zLDQuNCAiLz4NCjwvc3ZnPg0K" />
+                <isOptionVisibleFunction>return association.getOtherEnd().typeReference.getIsNavigable();</isOptionVisibleFunction>
+                <topDivider>true</topDivider>
+                <script>association.getOtherEnd().typeReference.setIsNavigable(false);
+</script>
+              </runScript>
+            </subMenuOptions>
+            <script>// nop</script>
+          </option>
+        </scriptOptions>
+        <mappingOptions />
       </targetEnd>
       <visualSettings>
         <lineType>Elbow-Connector</lineType>

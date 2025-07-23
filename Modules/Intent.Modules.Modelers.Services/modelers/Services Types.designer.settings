@@ -433,6 +433,7 @@ vertical-align: center`</style>
               <childElementVisualSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
                 <size width="`${parent.w}`" height="return 18 + (element.hasStereotype(&quot;Http Settings&quot;) ? 18: 0)" />
                 <position x="`${parent.x}`" y="const $previous = getPreviousVisual();&#xD;&#xA;if ($previous) {&#xD;&#xA;    return `${$previous.y + $previous.h}`;&#xD;&#xA;}&#xD;&#xA;return `${parent.y + 56}`" />
+                <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
                 <display>
                   <drawText>
                     <condition>return element.hasStereotype("Http Settings");</condition>
