@@ -3950,7 +3950,7 @@ execute();</script>
     </suggestionSetting>
     <suggestionSetting type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd" locations="diagram, model">
       <name>Expose as HTTP Endpoint</name>
-      <filterFunction>return !element.hasStereotype("Http Settings");</filterFunction>
+      <filterFunction>return !element.getChildren().every(x =&gt; x.hasStereotype("Http Settings"));</filterFunction>
       <dependencies>
         <dependency name="Expose as HTTP EndPoint Service" id="a19cdcc4-6db9-45b7-888e-79147f987074" />
       </dependencies>
