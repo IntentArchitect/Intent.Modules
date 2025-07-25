@@ -1,6 +1,7 @@
 ﻿### Version 3.9.2
 
-- Improvement: Added AddProperty with string name to ICSharpClass Interface
+- Improvement: Added AddProperty with string name to ICSharpClass Interface.
+- Improvement: Multiple calls of `AddOptionalCancellationTokenParameter` on the same method will now be automatically de-duplicated.
 
 ### Version 3.9.1
 

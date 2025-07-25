@@ -1,9 +1,20 @@
-﻿using Intent.Modules.Common.CSharp.Builder;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using Intent.Engine;
+using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Builder;
+using Intent.Modules.Common.CSharp.Nuget;
+using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeResolution;
+using Intent.Modules.Common.VisualStudio;
+using Intent.Templates;
+using NSubstitute;
+using NSubstitute.Extensions;
 using VerifyXunit;
 using Xunit;
 
@@ -146,6 +157,72 @@ public class CSharpMethodTests
             .CompleteBuild();
 
         fileBuilder.Interfaces.First().Methods.First().WithoutMethodModifier();
+
+        var result = fileBuilder.ToString();
+        await Verifier.Verify(result);
+    }
+
+    [Fact]
+    public async Task MultipleAddOptionalCancellationTokenParameter_Interface()
+    {
+        var template = Substitute.For<ICSharpFileBuilderTemplate>();
+        template.UseType(Arg.Any<string>()).Returns("CancellationToken");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", template)
+            .AddInterface("IInterface", c =>
+            {
+                c.AddMethod("void", "Method", m =>
+                {
+                    m.AddOptionalCancellationTokenParameter();
+                    m.AddOptionalCancellationTokenParameter();
+                });
+            })
+            .CompleteBuild();
+
+        var result = fileBuilder.ToString();
+        await Verifier.Verify(result);
+    }
+
+    [Fact]
+    public async Task MultipleAddOptionalCancellationTokenParameter_Class()
+    {
+        var template = Substitute.For<ICSharpFileBuilderTemplate>();
+        template.UseType(Arg.Any<string>()).Returns("CancellationToken");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", template)
+            .AddClass("Class", c =>
+            {
+                c.AddMethod("void", "Method", m =>
+                {
+                    m.AddOptionalCancellationTokenParameter();
+                    m.AddOptionalCancellationTokenParameter();
+                });
+            })
+            .CompleteBuild();
+
+        var result = fileBuilder.ToString();
+        await Verifier.Verify(result);
+    }
+
+    [Fact]
+    public async Task MultipleAddOptionalCancellationTokenParameter_Local()
+    {
+        var template = Substitute.For<ICSharpFileBuilderTemplate>();
+        template.UseType(Arg.Any<string>()).Returns("CancellationToken");
+
+        var fileBuilder = new CSharpFile("Namespace", "File", template)
+            .AddClass("Class", c =>
+            {
+                c.AddMethod("void", "Method", m =>
+                {
+                    m.AddLocalMethod("void", "LocalMethod", lm =>
+                    {
+                        lm.AddOptionalCancellationTokenParameter();
+                        lm.AddOptionalCancellationTokenParameter();
+                    });
+                });
+            })
+            .CompleteBuild();
 
         var result = fileBuilder.ToString();
         await Verifier.Verify(result);
