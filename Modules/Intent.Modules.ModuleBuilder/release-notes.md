@@ -1,6 +1,7 @@
 ### Version 3.16.2
 
 - Improvement: Extended Suggestions configuration to include an `Icon` and `Order Priority` settings.
+- Fixed: Script `Dependencies` on Event Handlers not being added to the `.designer.settings` file.
 
 ### Version 3.16.1
 

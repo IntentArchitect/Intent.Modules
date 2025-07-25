@@ -3406,8 +3406,8 @@ if (result.selectedElementId.length == 0) {
 const component = element;
 const diagram = getCurrentDiagram();
 const componentVisual = diagram.getVisual(element.id);
-const space = diagram.findEmptySpace({ x: componentVisual.getPosition().x + 400, y: componentVisual.getPosition().y}, { width: 200, height: 100 });
-diagram.layoutVisuals(result.selectedElementId, space, true);
+const space = diagram.findEmptySpace({ x: componentVisual.getDimensions().right + 250, y: componentVisual.getDimensions().getCenter().y}, { width: 200, height: 100 });
+diagram.layoutVisuals([result.selectedElementId], space, false);
 const serviceRequest = lookup(result.selectedElementId);
 
 if (!serviceRequest) {

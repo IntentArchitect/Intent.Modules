@@ -452,7 +452,6 @@ vertical-align: center`</style>
                     <position x="${x + 24}" y="${y + 3}" />
                   </drawText>
                   <drawText>
-                    <text>return label;</text>
                     <size width="${w - 26}" height="18" />
                     <position x="${x + 24}" y="${y + (element.hasStereotype(&quot;Http Settings&quot;) ? 14: 0)}" />
                   </drawText>

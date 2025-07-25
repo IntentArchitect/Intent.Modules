@@ -51,7 +51,8 @@ namespace Intent.ModuleBuilder.Api
             return new MacroPersistable()
             {
                 Trigger = Name.Trim().Replace(" ", "").ToKebabCase(),
-                Script = Script
+                Script = Script,
+                Dependencies = Dependencies
             };
         }
         public new const string SpecializationType = "Element Event Handler";
