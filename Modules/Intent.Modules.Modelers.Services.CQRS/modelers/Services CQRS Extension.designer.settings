@@ -507,8 +507,9 @@ if (namingConvention == "pascal-case") {
           <script>if (isCrudImplementedQuery(element)){ 
   let queryAction = element.getAssociations()[0];
   if (returnTypesDiffer(queryAction, element)){
-        // if explicitly set as a collection, or its of type "PagedResult", then its considered a collection return type
-        let isCollection = (element.typeReference.isCollection || element.typeReference.typeId == `9204e067-bdc8-45e7-8970-8a833fdc5253`);
+        // if explicitly set as a collection, or its of type "PagedResult" or "CursorPagedResult", then its considered a collection return type
+        let isCollection = (element.typeReference.isCollection || element.typeReference.typeId == `9204e067-bdc8-45e7-8970-8a833fdc5253`
+          || element.typeReference.typeId == `2a11c92d-d27f-4faa-b6fb-c33b93a6ff12`);
         
         queryAction.typeReference.setIsCollection(isCollection);
         queryAction.typeReference.setIsNullable(element.typeReference.isNullable);

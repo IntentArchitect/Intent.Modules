@@ -8,7 +8,20 @@
   <parentFolderId>a893fe1f-2a70-4c85-a0bb-8122adce383b</parentFolderId>
   <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
   <packageName>Intent.Metadata.DocumentDB</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="03385443-bbd6-46d9-87f2-6813f7833a38" name="Query Support">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.Metadata.DocumentDB</definitionPackageName>
+      <definitionPackageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</definitionPackageId>
+      <properties>
+        <property name="ca5ed727-beb9-4e75-a89e-ff55708fd620" display="Offset Enabled" value="true" isActive="true" />
+        <property name="0ed664a9-a3c3-4e35-924d-3fc6f1f6555a" display="Cursor Enabled" value="true" isActive="true" />
+        <property name="9192a3a1-229f-4618-aecf-a97dd8ce3d96" display="Cursor Filtering" value="Disabled" isActive="true" />
+        <property name="d38848e8-b9d7-4d2a-98c1-852bd9478b3d" display="Cursor Sorting" value="Disabled" isActive="true" />
+        <property name="b2e14cac-696d-468b-8ea4-0d96b703d9e8" display="Queryable Source" value="false" isActive="false" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <metadata />
   <childElements />
 </class>

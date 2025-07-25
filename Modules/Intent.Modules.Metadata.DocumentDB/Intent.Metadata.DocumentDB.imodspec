@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.DocumentDB</id>
-  <version>1.3.2</version>
+  <version>1.3.3-pre.0</version>
   <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Support for describing Entities in Document DB terms.</summary>
   <description>Support for describing Entities in Document DB terms.</description>
@@ -54,7 +54,7 @@
   <moduleSettingsExtensions />
   <metadata>
     <install target="Domain" src="modelers/Document Db Key Automation Extensions.designer.settings" externalReference="4652d8dc-eea5-49cb-8c08-93ac1972962c" />
-    <install target="Domain" src="Intent.Metadata/Module Builder/Intent.Metadata.DocumentDB/Intent.Metadata.DocumentDB.pkg.config" externalReference="1c7eab18-9482-4b4e-b61b-1fbd2d2427b6" />
+    <install target="Domain;Module Builder" src="Intent.Metadata/Module Builder/Intent.Metadata.DocumentDB/Intent.Metadata.DocumentDB.pkg.config" externalReference="1c7eab18-9482-4b4e-b61b-1fbd2d2427b6" />
     <install target="Module Builder" src="modelers/Document Db Providers.designer.settings" externalReference="9a392e6c-361e-450b-b543-43e34059fd2d" />
   </metadata>
 </package>

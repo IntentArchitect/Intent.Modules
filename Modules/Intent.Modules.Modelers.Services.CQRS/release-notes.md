@@ -2,6 +2,7 @@
 
 - Improvement: Made `Command` and `Query` visuals on diagrams slighly more compact.
 - Improvement: Added HTTP information to the diagram visuals where a `Command` or `Query` is exposed via HTTP.
+- Improvement: Updated scripts to support cursor based pagination.
 
 ### Version 6.0.1
 

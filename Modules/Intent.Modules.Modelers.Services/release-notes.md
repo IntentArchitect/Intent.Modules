@@ -2,6 +2,7 @@
 
 - Improvement: Made `Service` visuals on diagrams slighly more compact.
 - Improvement: Added HTTP information to the diagram visuals where a Service's `Operation` is exposed via HTTP.
+- Improvement: Added `CursorPagedResult` to suport cursor based pagination.
 
 ### Version 4.0.1
 
