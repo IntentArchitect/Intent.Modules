@@ -333,7 +333,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         AddOptionalCancellationTokenParameter(File.Template);
 
     public CSharpInterfaceMethod AddOptionalCancellationTokenParameter(string? parameterName) =>
-        AddOptionalCancellationTokenParameter(File.Template);
+        AddOptionalCancellationTokenParameter(File.Template, parameterName);
 
     private CSharpInterfaceMethod AddOptionalCancellationTokenParameter(ICSharpTemplate template, string? parameterName = null)
     {

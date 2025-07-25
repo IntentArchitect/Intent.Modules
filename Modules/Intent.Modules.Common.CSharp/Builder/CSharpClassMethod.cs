@@ -146,7 +146,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
         AddOptionalCancellationTokenParameter(File.Template);
 
     public CSharpClassMethod AddOptionalCancellationTokenParameter(string? parameterName) =>
-        AddOptionalCancellationTokenParameter(File.Template);
+        AddOptionalCancellationTokenParameter(File.Template, parameterName);
 
     private CSharpClassMethod AddOptionalCancellationTokenParameter(ICSharpTemplate template, string? parameterName = null)
     {

@@ -120,7 +120,7 @@ public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, ICSharpL
         AddOptionalCancellationTokenParameter(File.Template);
 
     public CSharpLocalMethod AddOptionalCancellationTokenParameter(string? parameterName) =>
-        AddOptionalCancellationTokenParameter(File.Template);
+        AddOptionalCancellationTokenParameter(File.Template, parameterName);
 
     private CSharpLocalMethod AddOptionalCancellationTokenParameter(ICSharpTemplate template, string? parameterName = null)
     {
