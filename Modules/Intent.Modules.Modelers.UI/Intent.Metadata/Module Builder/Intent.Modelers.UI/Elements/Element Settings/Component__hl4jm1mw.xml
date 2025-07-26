@@ -414,12 +414,12 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="496d9a0f-c9fd-4518-aa9a-384937dc3ecd" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+        <childElement id="30f70b9a-2008-461c-a8e1-2d7ff1523723" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
           <display>On Created: Inline Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="968cb261-b7a4-43ac-b02c-b193507cd57a">
+          <typeReference id="e69d9150-672a-412a-a737-4a0187312599">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -440,7 +440,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="createElement(&quot;Component View&quot;, &quot;[view]&quot;, element.id);&#xD;&#xA;element.createAdvancedMapping();&#xD;&#xA;&#xD;&#xA;const folders = element.getParents(&quot;Folder&quot;);&#xD;&#xA;if (folders[0].getName() == &quot;Pages&quot; &amp;&amp; folders.every(x =&gt; x.getName() != &quot;Components&quot;)) {&#xD;&#xA;    const pageId = &quot;ea4adc09-8978-4ede-ba5f-265debb2b60c&quot;;&#xD;&#xA;    const routeId = &quot;9dff9df1-a993-4bf6-9aa7-c16811142228&quot;;&#xD;&#xA;    const stereotype = element.addStereotype(pageId);&#xD;&#xA;    stereotype.getProperty(routeId).setValue(&quot;/&quot; + folders.slice(1).map(x =&gt; toKebabCase(x.getName()) + &quot;/&quot;) + toKebabCase(element.getName()))&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="createElement(&quot;Component View&quot;, &quot;[view]&quot;, element.id);&#xD;&#xA;element.createAdvancedMapping();" isActive="true" />
                 <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>

@@ -187,7 +187,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return [&#xD;&#xA;    {&#xD;&#xA;        text: &quot;\&quot;&quot; + element.getStereotype(&quot;Page&quot;).getProperty(&quot;Route&quot;).value + &quot;\&quot;&quot;,&#xD;&#xA;        cssClass: &quot;function&quot;&#xD;&#xA;    }&#xD;&#xA;]" isActive="true" />
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return [&#xD;&#xA;    {&#xD;&#xA;        text: &quot;\&quot;&quot; + (element.getStereotype(&quot;Page&quot;).getProperty(&quot;Route&quot;).value ?? &quot;&quot;) + &quot;\&quot;&quot;,&#xD;&#xA;        cssClass: &quot;function&quot;&#xD;&#xA;    }&#xD;&#xA;]" isActive="true" />
             <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" value="return element.hasStereotype(&quot;Page&quot;);" isActive="true" />
             <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 10px; font-family: Helvetica; font-weight: normal; text-align: center; white-space: inherit; vertical-align: center`" isActive="true" />
           </properties>
