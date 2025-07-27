@@ -28,7 +28,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
         }
 
-        public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
+        public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = default)
         {
             if (Children.Count == 0)
             {

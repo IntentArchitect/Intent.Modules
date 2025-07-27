@@ -29,7 +29,7 @@ public class MethodInvocationMapping : CSharpMappingBase
     {
     }
 
-    public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
+    public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = default)
     {
 		var invocation = new CSharpInvocationStatement(GetTargetPathExpression());
 		// Determine if this model is a method on the class:

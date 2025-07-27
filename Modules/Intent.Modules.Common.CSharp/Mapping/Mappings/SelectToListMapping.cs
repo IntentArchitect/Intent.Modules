@@ -20,7 +20,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             _template = template;
         }
 
-        public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
+        public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = default)
         {
             if (Children.Count == 0)
             {

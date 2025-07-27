@@ -34,9 +34,9 @@ public class IfNotNullMapping : CSharpMappingBase
         ];
     }
 
-    public override CSharpStatement GetSourceStatement(bool? targetIsNullable = null)
+    public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = null)
     {
-        return new CSharpNullCoalescingExpression(base.GetSourceStatement(true), base.GetTargetStatement());
+        return new CSharpNullCoalescingExpression(base.GetSourceStatement(withNullConditionalOperators: true), base.GetTargetStatement(withNullConditionalOperators: true));
     }
 
     public override bool TryGetSourceReplacement(IMetadataModel type, out string replacement)
@@ -56,8 +56,8 @@ public class NullCoalesceToExistingValueMapping : CSharpMappingBase
     {
     }
 
-    public override CSharpStatement GetSourceStatement(bool? targetIsNullable = null)
+    public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = null)
     {
-        return new CSharpNullCoalescingExpression(base.GetSourceStatement(targetIsNullable), base.GetTargetStatement());
+        return new CSharpNullCoalescingExpression(base.GetSourceStatement(withNullConditionalOperators), base.GetTargetStatement());
     }
 }

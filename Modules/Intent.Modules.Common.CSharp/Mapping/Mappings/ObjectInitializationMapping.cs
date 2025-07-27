@@ -30,7 +30,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
         }
 
         /// <inheritdoc />
-        public override CSharpStatement GetSourceStatement(bool? targetIsNullable = null)
+        public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = null)
         {
             if (Model.TypeReference == null)
             {

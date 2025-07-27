@@ -1,8 +1,9 @@
-﻿using System;
-using Intent.Metadata.Models;
+﻿using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Types.Api;
+using System;
+using System.Collections.Generic;
 
 namespace Intent.Modules.Common.CSharp.Mapping;
 
@@ -17,11 +18,16 @@ public class TypeConvertingCSharpMapping : CSharpMappingBase
     {
     }
 
-    public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
+    public virtual IEnumerable<CSharpStatement> GetMappingStatements()
+    {
+        yield return new CSharpAssignmentStatement(GetTargetStatement(), GetTypeConvertedSourceStatement());
+    }
+
+    public CSharpStatement GetTypeConvertedSourceStatement()
     {
         if (!Mapping.IsOneToOne() || Mapping.TargetElement.TypeReference == null || Mapping.SourceElement.TypeReference == null)
         {
-            return base.GetSourceStatement(targetIsNullable);
+            return base.GetSourceStatement();
         }
 
         if (Mapping.IsOneToOne() &&
@@ -48,7 +54,7 @@ public class TypeConvertingCSharpMapping : CSharpMappingBase
         if (Mapping.IsOneToOne() &&
             Mapping.SourceElement.TypeReference.IsNullable &&
             !Mapping.TargetElement.TypeReference.IsNullable &&
-            Mapping.TargetElement.TypeReference.Element.IsTypeDefinitionModel() &&
+            (Mapping.TargetElement.TypeReference.Element.IsTypeDefinitionModel() || Mapping.TargetElement.TypeReference.Element.IsEnumModel()) &&
             !Mapping.TargetElement.TypeReference.Element.IsStringType())
         {
             return new CSharpAccessMemberStatement(base.GetSourceStatement(), "Value");

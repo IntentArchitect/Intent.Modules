@@ -6,6 +6,7 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public interface IMappingTypeResolver
 {
+    [Obsolete("Implement the ResolveMappings(MappingModel mappingModel, MappingTypeResolverDelegate next) overload instead.")]
     ICSharpMapping? ResolveMappings(MappingModel mappingModel)
     {
         return ResolveMappings(mappingModel, null);
