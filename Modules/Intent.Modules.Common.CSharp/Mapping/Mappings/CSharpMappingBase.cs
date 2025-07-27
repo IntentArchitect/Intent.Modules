@@ -58,6 +58,10 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
         }
     }
 
+    /// <summary>
+    /// Returns the assignment statements, assigning the source statements to the target statements.
+    /// </summary>
+    /// <returns></returns>
     public virtual IEnumerable<CSharpStatement> GetMappingStatements()
     {
         yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());

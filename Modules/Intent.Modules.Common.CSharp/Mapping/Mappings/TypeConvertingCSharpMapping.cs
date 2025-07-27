@@ -18,7 +18,9 @@ public class TypeConvertingCSharpMapping : CSharpMappingBase
     {
     }
 
-    public virtual IEnumerable<CSharpStatement> GetMappingStatements()
+    // Only apply the type conversions on assignments, not on GetSourceStatement():
+    // This is so that source statements used in null checks or queries don't get converted.
+    public override IEnumerable<CSharpStatement> GetMappingStatements()
     {
         yield return new CSharpAssignmentStatement(GetTargetStatement(), GetTypeConvertedSourceStatement());
     }
