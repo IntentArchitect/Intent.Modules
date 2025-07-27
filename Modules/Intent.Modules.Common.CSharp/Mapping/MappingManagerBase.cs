@@ -106,16 +106,58 @@ public abstract class MappingManagerBase
 
     public ICSharpMapping ResolveMappings(MappingModel model, ICSharpMapping defaultMapping = null)
     {
-        foreach (var (resolver, _) in _mappingResolvers.OrderBy(x => x.Priority))
+        var orderedResolvers = _mappingResolvers.OrderBy(x => x.Priority).Select(x => x.Resolver).ToList();
+        //foreach (var resolver in orderedResolvers)
+        //{
+        //    var found = resolver.ResolveMappings(model);
+        //    if (found != null)
+        //    {
+        //        return found;
+        //    }
+        //}
+
+        var result = BuildPipeline(orderedResolvers)(model);
+        if (result != null)
         {
-            var found = resolver.ResolveMappings(model);
-            if (found != null)
-            {
-                return found;
-            }
+            return result;
         }
 
         return defaultMapping ?? (model.Mapping != null ? new DefaultCSharpMapping(model, _template) : new MapChildrenMapping(model, _template));
+    }
+
+    private static MappingTypeResolverDelegate BuildPipeline(
+        List<IMappingTypeResolver> resolvers,
+        int index = 0)
+    {
+        // Base case: end of the chain
+        if (index >= resolvers.Count)
+        {
+            return _ => null!;
+        }
+
+        var currentResolver = resolvers[index];
+        var next = BuildPipeline(resolvers, index + 1);
+
+        return model =>
+        {
+            // Prefer ResolveMappings with delegate support
+            var result = currentResolver.ResolveMappings(model, next);
+
+            // Fallback to legacy method (optional)
+            if (result == null)
+            {
+                for (int i = index + 1; i < resolvers.Count; i++)
+                {
+                    result = resolvers[i].ResolveMappings(model);
+                    if (result != null)
+                    {
+                        return result;
+                    }
+                }
+            }
+
+            return result;
+        };
     }
 
     public void AddMappingResolver(IMappingTypeResolver resolver) => AddMappingResolver(resolver, priority: 0);

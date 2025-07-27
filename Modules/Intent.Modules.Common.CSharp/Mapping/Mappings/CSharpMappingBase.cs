@@ -14,8 +14,8 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public abstract partial class CSharpMappingBase : ICSharpMapping
 {
-    protected Dictionary<string, string> SourceReplacements = new();
-    protected Dictionary<string, string?> TargetReplacements = new();
+    internal Dictionary<string, string> SourceReplacements = new();
+    internal Dictionary<string, string?> TargetReplacements = new();
 
     public ICanBeReferencedType Model { get; }
     public IList<ICSharpMapping> Children { get; }
@@ -86,6 +86,7 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
     /// <returns></returns>
     protected virtual IList<IElementMappingPathTarget> GetSourcePath()
     {
+        // NOTE: This logic is now duplicated in the MappingModel class:
         if (Mapping != null)
         {
             return Mapping.SourcePath;
@@ -106,6 +107,7 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
 
     protected IList<IElementMappingPathTarget> GetTargetPath()
     {
+        // NOTE: This logic is now duplicated in the MappingModel class:
         if (Mapping != null)
         {
             return Mapping.TargetPath;
@@ -121,7 +123,7 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
         return Children.Concat(Children.SelectMany(x => ((CSharpMappingBase)x).GetAllChildren()).ToList());
     }
 
-    public void SetSourceReplacement(IMetadataModel type, string replacement)
+    public virtual void SetSourceReplacement(IMetadataModel type, string replacement)
     {
         SourceReplacements.Remove(type.Id);
         SourceReplacements.Add(type.Id, replacement);
@@ -132,7 +134,7 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
         return SourceReplacements.TryGetValue(type.Id, out replacement) || Parent?.TryGetSourceReplacement(type, out replacement) == true;
     }
 
-    public void SetTargetReplacement(IMetadataModel type, string? replacement)
+    public virtual void SetTargetReplacement(IMetadataModel type, string? replacement)
     {
         TargetReplacements.Remove(type.Id);
         TargetReplacements.Add(type.Id, replacement);

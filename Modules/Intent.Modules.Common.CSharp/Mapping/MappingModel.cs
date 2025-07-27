@@ -98,6 +98,49 @@ public class MappingModel
     public MappingModel Parent { get; private set; }
     public ICSharpCodeContext CodeContext { get; set; }
 
+
+    /// <summary>
+    /// This method will return the source path to this node, even if it isn't itself mapped.
+    /// In the case where it isn't mapped, it will work out it's mapping based on child mappings.
+    /// </summary>
+    /// <returns></returns>
+    public IList<IElementMappingPathTarget> GetSourcePath()
+    {
+        if (Mapping != null)
+        {
+            return Mapping.SourcePath;
+        }
+
+        var childMappings = GetAllChildren().Where(c => c.Mapping != null).ToList();
+        var mapping = childMappings.First().Mapping;
+        if (childMappings.Count == 1)
+        {
+            return mapping.SourcePath.Take(mapping.SourcePath.Count - 1).ToList();
+        }
+
+        var toPath = mapping.SourcePath.Take(mapping.SourcePath.IndexOf(
+                mapping.SourcePath.Last(x => childMappings.All(c => c.Mapping.SourcePath.Contains(x)))) + 1) // + 1 (inclusive)
+            .ToList();
+        return toPath;
+    }
+
+    public IList<IElementMappingPathTarget> GetTargetPath()
+    {
+        if (Mapping != null)
+        {
+            return Mapping.TargetPath;
+        }
+
+        var mapping = GetAllChildren().First(x => x.Mapping != null).Mapping;
+        var targetPath = mapping.TargetPath.Take(mapping.TargetPath.IndexOf(mapping.TargetPath.Single(x => x.Element.Id == Model.Id)) + 1).ToList();
+        return targetPath;
+    }
+
+    protected IEnumerable<MappingModel> GetAllChildren()
+    {
+        return Children.Concat(Children.SelectMany(x => x.GetAllChildren()).ToList());
+    }
+
     public ICSharpMapping GetMapping()
     {
         return _manager.ResolveMappings(this);
