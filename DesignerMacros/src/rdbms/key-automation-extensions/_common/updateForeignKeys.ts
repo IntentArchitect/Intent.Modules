@@ -33,6 +33,7 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationReadOnlyApi): v
             x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
             x.delete();
         });
+    return;
 
     function updateForeignKeyAttribute(
         thisEnd: MacroApi.Context.IAssociationReadOnlyApi,
@@ -47,8 +48,8 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationReadOnlyApi): v
                 createElement("Attribute", "", thisEndType.id);
 
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-            //If you change the logic around determining FK Name make sure to update the SQL Importer to have the same logic
-            let fkNameToUse = `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
+            let fkNameToUse = getForeignKeyName(thisEnd, pk);
+
             if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
                 if (!fkAttribute.hasMetadata(metadataKey.fkOriginalName) || (fkAttribute.getMetadata(metadataKey.fkOriginalName) == fkAttribute.getName())) {
                     fkAttribute.setName(fkNameToUse, false);
@@ -91,6 +92,20 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationReadOnlyApi): v
         }
     }
 
+    interface IPrimaryKey {
+        name: string;
+        typeId: string;
+    }
+
+    // If you change the logic around determining FK Name make sure to update the SQL Importer to have the same logic
+    function getForeignKeyName(thisEnd: MacroApi.Context.IAssociationReadOnlyApi, pk: IPrimaryKey): string {
+        // Is the PK's name already containing the name of the association?
+        if (pk.name.toLocaleLowerCase().includes(thisEnd.getName().toLocaleLowerCase())) {
+            return toPascalCase(pk.name);
+        }
+        return `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
+    }
+
     function requiresForeignKey(associationEnd: MacroApi.Context.IAssociationReadOnlyApi): boolean {
         const isSelfReferencingWithoutManyToMany = () => 
             associationEnd.typeReference.getTypeId() === associationEnd.getOtherEnd().typeReference.getTypeId() &&
@@ -111,7 +126,7 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationReadOnlyApi): v
         return isSelfReferencingWithoutManyToMany() || isManyToVariantsOfOne() || isSelfReferencingZeroToOne() || isAggregationalOneToOne();
     }
 
-    function getPrimaryKeys(element: MacroApi.Context.IElementApi): { name: string, typeId: string }[] {
+    function getPrimaryKeys(element: MacroApi.Context.IElementApi): IPrimaryKey[] {
         let currentClass = element;
         while (currentClass?.specialization === "Class") {
             const pkAttributes = currentClass.getChildren("Attribute").filter(x => x.hasStereotype(primaryKeyStereotypeId));
@@ -137,7 +152,7 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationReadOnlyApi): v
 
         return [createImplicitPrimaryKey()];
 
-        function createImplicitPrimaryKey(): { name: string, typeId: string } {
+        function createImplicitPrimaryKey(): IPrimaryKey {
             return {
                 name: applyAttributeNamingConvention("Id"),
                 typeId: getSurrogateKeyType()

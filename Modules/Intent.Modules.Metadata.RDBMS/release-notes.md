@@ -1,14 +1,15 @@
 ### Version 3.7.6
 
 - Improvement: Added `Collation` property to the `Column` stereotype.
+- Fixed: Added support for foreign key names that contain the association name.
 
 ### Version 3.7.5
 
-- Improvement: Help topic on primary key value assignment methods.
+- Improvement: Help topic added on primary key value assignment methods.
 
 ### Version 3.7.4
 
-- Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 
+- Improvement: Added stereotype descriptions in preparation for Intent Architect 4.5. 
 
 ### Version 3.7.3
 
