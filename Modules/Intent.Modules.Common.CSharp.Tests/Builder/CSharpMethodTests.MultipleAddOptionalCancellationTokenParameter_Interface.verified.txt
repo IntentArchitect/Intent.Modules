@@ -1,0 +1,9 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public interface IInterface
+    {
+        void Method(CancellationToken cancellationToken = default);
+    }
+}

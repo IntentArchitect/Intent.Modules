@@ -1,3 +1,8 @@
+### Version 2.3.1
+
+- Improvement: Domain CRUD service suggestions will now prompt the user if they have unsaved changes before proceeding.
+- Improvement: CRUD accelerators now offer the user a way to change the diagram into which they want to add their services.
+
 ### Version 2.3.0
 
 - Improvement: Added CRUD accelerators to diagrams in the Services designer.

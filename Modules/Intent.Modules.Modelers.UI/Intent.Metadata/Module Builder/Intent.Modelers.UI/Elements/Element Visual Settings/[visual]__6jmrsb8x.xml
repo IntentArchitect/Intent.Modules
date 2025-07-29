@@ -70,9 +70,9 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
-            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 6}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 2}" isActive="true" />
             <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
-            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="40" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="36" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -104,9 +104,9 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
-            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 6}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 2}" isActive="true" />
             <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
-            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="40" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="36" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -138,9 +138,9 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
-            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 6}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 2}" isActive="true" />
             <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
-            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="40" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="36" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -172,9 +172,44 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="984e25d0-6488-4674-924c-9f8333628ee3" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+      <name>Test for Page Route</name>
+      <display>[draw text]: Test for Page Route</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9197945e-4ef1-4815-8137-6e9001f5decb</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return [&#xD;&#xA;    {&#xD;&#xA;        text: &quot;\&quot;&quot; + (element.getStereotype(&quot;Page&quot;).getProperty(&quot;Route&quot;).value ?? &quot;&quot;) + &quot;\&quot;&quot;,&#xD;&#xA;        cssClass: &quot;function&quot;&#xD;&#xA;    }&#xD;&#xA;]" isActive="true" />
+            <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" value="return element.hasStereotype(&quot;Page&quot;);" isActive="true" />
+            <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 10px; font-family: Helvetica; font-weight: normal; text-align: center; white-space: inherit; vertical-align: center`" isActive="true" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 40}" isActive="true" />
+            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="16" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
     <childElement id="f3795591-ea13-46dd-a637-f5061ec5a21d" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-      <name>Display Label  for Symbol</name>
-      <display>[draw text]: Display Label  for Symbol</display>
+      <name>Label  for Symbol</name>
+      <display>[draw text]: Label  for Symbol</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
@@ -198,9 +233,9 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
-            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 48}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + (element.hasStereotype(&quot;Page&quot;) ? 14: 0) + 42}" isActive="true" />
             <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
-            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="16" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

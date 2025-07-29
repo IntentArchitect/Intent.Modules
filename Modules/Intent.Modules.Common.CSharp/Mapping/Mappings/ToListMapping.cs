@@ -23,11 +23,11 @@ public class ToListMapping : CSharpMappingBase
         _template = template;
     }
 
-    public override CSharpStatement GetSourceStatement(bool? targetIsNullable = null)
+    public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = null)
     {
         if((Mapping.SourceElement?.TypeReference?.IsCollection ?? false) != true && (Mapping.TargetElement?.TypeReference?.IsCollection ?? false) != true)
         {
-            return base.GetSourceStatement(targetIsNullable);
+            return base.GetSourceStatement(withNullConditionalOperators);
         }
 
         Template.AddUsing("System.Linq");

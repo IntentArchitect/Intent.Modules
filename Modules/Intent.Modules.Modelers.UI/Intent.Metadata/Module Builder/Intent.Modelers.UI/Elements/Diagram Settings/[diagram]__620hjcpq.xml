@@ -76,6 +76,56 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="37e1bde8-a401-4655-b2b6-bd956cf822e4" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>New Page</name>
+          <display>New Page: Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e7bd7005-5f25-4f69-9f07-f3630be80680">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3b41c5dc-f82d-4dac-bfd6-376b1ac9f1ce</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const pageId = &quot;ea4adc09-8978-4ede-ba5f-265debb2b60c&quot;;&#xD;&#xA;const routeId = &quot;9dff9df1-a993-4bf6-9aa7-c16811142228&quot;;&#xD;&#xA;&#xD;&#xA;const page = getCurrentDiagram().createElement(&quot;Component&quot;, &quot;NewPage&quot;);&#xD;&#xA;const stereotype = page.addStereotype(pageId);&#xD;&#xA;page.refresh();&#xD;&#xA;getCurrentDiagram().selectVisualsForElements(page.id, false);&#xD;&#xA;await page.enableEditing();&#xD;&#xA;&#xD;&#xA;const folders = page.getParents(&quot;Folder&quot;);&#xD;&#xA;stereotype.getProperty(routeId).setValue(&quot;/&quot; + folders.filter(x =&gt; x.getName() != &quot;Pages&quot; &amp;&amp; x.getName() != &quot;Components&quot;).map(x =&gt; toKebabCase(x.getName()) + &quot;/&quot;) + toKebabCase(removeSuffix(page.getName(), &quot;Page&quot;, &quot;Component&quot;, &quot;View&quot;)))&#xD;&#xA;" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[]" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IkNCMUMxOThGLTdCNzUtNDA5RC1BOEY4LUJEQzkzRjg4N0U0NyIgeDE9IjI0LjkiIHkxPSI0Ni40IiB4Mj0iMjUuMSIgeTI9IjcuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDUyKSBzY2FsZSgxIC0xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNkZTRkNTIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYmQyMDI1Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNy4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgMTQyKSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxnIGlkPSJMYXllcl8xLTIiIGRhdGEtbmFtZT0iTGF5ZXJfMSI+CiAgICAgICAgPHBhdGggZD0iTTQ0LjksNS44SDUuMWMtMS40LDAtMi42LDEuNC0yLjYsM3YzMi41YzAsMS42LDEuMiwzLDIuNiwzaDM5LjhjMS40LDAsMi42LTEuNCwyLjYtM1Y4LjhjMC0xLjYtMS4yLTMtMi42LTNaTTE5LDhjLjksMCwxLjcuOCwxLjcsMS43cy0uOCwxLjctMS43LDEuNy0xLjctLjgtMS43LTEuNy44LTEuNywxLjctMS43Wk0xNC4yLDhjLjksMCwxLjcuOCwxLjcsMS43cy0uOCwxLjctMS43LDEuNy0xLjctLjgtMS43LTEuNy44LTEuNywxLjctMS43Wk05LjUsOGMuOSwwLDEuNy44LDEuNywxLjdzLS44LDEuNy0xLjcsMS43LTEuNy0uOC0xLjctMS43LjgtMS43LDEuNy0xLjdaTTQ0LDM4LjJjMCwxLjEtMSwyLjEtMi4yLDIuMUg4LjFjLTEuMiwwLTIuMi0xLTIuMi0yLjFWMTUuMWMwLTEuMSwxLTIuMSwyLjItMi4xaDMzLjdjMS4yLDAsMi4yLDEsMi4yLDIuMSwwLDAsMCwyMy4xLDAsMjMuMVpNMzkuOCwxOXY4LjJjMCwxLjItLjgsMi4yLTEuOSwyLjJoLTYuNmMtMSwwLTEuOS0xLTEuOS0yLjJ2LTguMmMwLTEuMi44LTIuMiwxLjktMi4yaDYuNmMxLDAsMS45LDEsMS45LDIuMlpNMjYsMTkuM2MwLC42LS4yLDEuMS0uNiwxLjVzLS45LjYtMS41LjZoLTEzLjFjLTEuMiwwLTIuMi0xLTIuMi0yLjJzLjItMS4xLjYtMS41Yy40LS40LjktLjYsMS41LS42aDEzLjFjMS4yLDAsMi4yLDEsMi4yLDIuMlpNMjYsMjdjMCwuNi0uMiwxLjEtLjYsMS41cy0uOS42LTEuNS42aC0xMy4xYy0xLjIsMC0yLjItMS0yLjItMi4ycy4yLTEuMS42LTEuNWMuNC0uNC45LS42LDEuNS0uNmgxMy4xYzEuMiwwLDIuMiwxLDIuMiwyLjJaTTM5LjgsMzQuN2MwLC42LS4yLDEuMS0uNiwxLjUtLjQuNC0uOS42LTEuNS42SDEwLjdjLTEuMiwwLTIuMi0xLTIuMi0yLjJzLjItMS4xLjYtMS41Yy40LS40LjktLjYsMS41LS42aDI2LjljMS4yLDAsMi4zLDEsMi4zLDIuMmgwWiIgZmlsbD0idXJsKCNDQjFDMTk4Ri03Qjc1LTQwOUQtQThGOC1CREM5M0Y4ODdFNDcpIi8+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="ctrl + shift + p" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                <property name="c37d8704-0003-4886-b6c2-4e51aa22a8f9" display="Menu Group" isActive="true" />
+                <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="a81ff155-0e2b-46fd-a20b-495662b9a2f3" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Component</name>
           <display>New Component: Component</display>
@@ -102,7 +152,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + c" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />

@@ -507,8 +507,9 @@ if (namingConvention == "pascal-case") {
           <script>if (isCrudImplementedQuery(element)){ 
   let queryAction = element.getAssociations()[0];
   if (returnTypesDiffer(queryAction, element)){
-        // if explicitly set as a collection, or its of type "PagedResult", then its considered a collection return type
-        let isCollection = (element.typeReference.isCollection || element.typeReference.typeId == `9204e067-bdc8-45e7-8970-8a833fdc5253`);
+        // if explicitly set as a collection, or its of type "PagedResult" or "CursorPagedResult", then its considered a collection return type
+        let isCollection = (element.typeReference.isCollection || element.typeReference.typeId == `9204e067-bdc8-45e7-8970-8a833fdc5253`
+          || element.typeReference.typeId == `2a11c92d-d27f-4faa-b6fb-c33b93a6ff12`);
         
         queryAction.typeReference.setIsCollection(isCollection);
         queryAction.typeReference.setIsNullable(element.typeReference.isNullable);
@@ -578,9 +579,30 @@ function returnTypesDiffer(queryAction, element){
         <scriptOptions />
         <elementVisualSettings>
           <visualSettings type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
-            <size width="${w}" height="70" />
+            <size width="200" height="60" />
             <position x="${x}" y="${y}" />
             <display>
+              <drawText>
+                <condition>return element.hasStereotype("Http Settings");</condition>
+                <text>return [
+    {
+        text: element.getStereotype("Http Settings").getProperty("Verb").value,
+        cssClass: "keyword"
+    }, 
+    {
+        text: " \"" + element.getStereotype("Http Settings").getProperty("Route").value + "\"",
+        cssClass: "function"
+    }
+]</text>
+                <style>`font-size: 10px; 
+font-family: Helvetica; 
+font-weight: normal; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+                <size width="${w}" height="16" />
+                <position x="${x}" y="${y + 40}" />
+              </drawText>
               <drawText>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
@@ -588,27 +610,43 @@ font-weight: bold;
 text-align: center; 
 white-space: inherit;
 vertical-align: center`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 48}" />
+                <size width="${w}" height="16" />
+                <position x="${x}" y="${y + 40 + (element.hasStereotype(&quot;Http Settings&quot;) ? 14: 0)}" />
               </drawText>
               <drawSvgResource>
                 <path>command.svg</path>
-                <size width="${w}" height="40" />
-                <position x="${x}" y="${y + 6}" />
+                <size width="${w}" height="36" />
+                <position x="${x}" y="${y + 2}" />
               </drawSvgResource>
             </display>
             <stereotypesVisualSettings>
               <size width="${w}" height="18" />
               <position x="${x}" y="${y}" />
             </stereotypesVisualSettings>
-            <defaultSize width="${x}" height="70" />
+            <defaultSize width="200" height="60" />
             <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings />
           </visualSettings>
           <visualSettings type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
-            <size width="${w}" height="70" />
+            <size width="200" height="60" />
             <position x="${x}" y="${y}" />
             <display>
+              <drawText>
+                <condition>return element.hasStereotype("Http Settings");</condition>
+                <text>return [
+    {
+        text: element.getStereotype("Http Settings").getProperty("Verb").value,
+        cssClass: "keyword"
+    }, 
+    {
+        text: " \"" + element.getStereotype("Http Settings").getProperty("Route").value + "\"",
+        cssClass: "function"
+    }
+]</text>
+                <style>`font-size: 10px; font-family: Helvetica; font-weight: normal; text-align: center; white-space: inherit;vertical-align: center`</style>
+                <size width="${w}" height="16" />
+                <position x="${x}" y="${y + 40}" />
+              </drawText>
               <drawText>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
@@ -616,20 +654,20 @@ font-weight: bold;
 text-align: center; 
 white-space: inherit;
 vertical-align: center`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 48}" />
+                <size width="${w}" height="16" />
+                <position x="${x}" y="${y + 40 + (element.hasStereotype(&quot;Http Settings&quot;) ? 14: 0)}" />
               </drawText>
               <drawSvgResource>
                 <path>query.svg</path>
-                <size width="${w}" height="40" />
-                <position x="${x}" y="${y + 6}" />
+                <size width="${w}" height="36" />
+                <position x="${x}" y="${y + 2}" />
               </drawSvgResource>
             </display>
             <stereotypesVisualSettings>
               <size width="${w}" height="18" />
               <position x="${x}" y="${y}" />
             </stereotypesVisualSettings>
-            <defaultSize width="${x}" height="70" />
+            <defaultSize width="200" height="60" />
             <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings />
           </visualSettings>

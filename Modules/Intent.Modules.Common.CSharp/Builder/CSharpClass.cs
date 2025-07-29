@@ -197,6 +197,9 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     }
 
     IBuildsCSharpMembers IBuildsCSharpMembers.AddProperty(string type, string name, Action<ICSharpProperty>? configure) => AddProperty(type, name, configure);
+
+    ICSharpClass ICSharpClass.AddProperty(string type, string name, Action<ICSharpProperty>? configure) => AddProperty(type, name, configure);
+
     public CSharpClass AddProperty(string type, string name, Action<CSharpProperty>? configure = null)
     {
         var property = new CSharpProperty(type, name, this)

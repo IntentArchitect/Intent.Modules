@@ -160,12 +160,8 @@ class TraditionalServicesStrategy extends CrudStrategy {
         return this.service.getChildren().find(x => x.getName() === operationName);
     }
 
-    protected doAddDiagram(diagramElement?: IElementApi): void {        
-        const diagramProvided = diagramElement != null;        
-        diagramElement ??= this.getOrCreateDiagram(this.targetFolder);
-        diagramElement.loadDiagram();
-        const diagram = getCurrentDiagram();
-        const space = diagram.findEmptySpace(diagramProvided ? diagram.mousePosition : diagram.getViewPort().getCenter(), { width: 500, height: 200 });
+    protected doAddToDiagram(diagram: IDiagramApi, addAtPoint?: MacroApi.Context.IPoint): void {        
+        const space = diagram.findEmptySpace(addAtPoint ?? diagram.getViewPort().getCenter(), { width: 500, height: 200 });
         const visuals = diagram.layoutVisuals(this.service, space, true);
         diagram.selectVisualsForElements(visuals.map(x => x.id))
     }

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "outFile": "./_dist.js",
+    "outFile": "../../../../../Intent.Modules.NET/Modules/Intent.Modules.Application.Dtos.Pagination/resources/add-cursor-pagination.js",
     "removeComments": false,
     "sourceMap": false,
     "target": "ES2019",

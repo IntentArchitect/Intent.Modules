@@ -28,7 +28,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
         }
 
-        public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
+        public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = default)
         {
             if (Children.Count == 0)
             {
@@ -80,7 +80,6 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     method.Private().Static();
                     method.AddParameter($"{implementationName}{nullableChar}", "valueObject");
                     method.AddParameter(_template.GetTypeName((IElement)GetSourcePath().Last().Element.TypeReference.Element), "dto");
-
                     method.AddIfStatement("valueObject is null", stmt => 
                     {
                         stmt.AddStatement($"return {GetConstructorStatement("dto").GetText("                ")};");

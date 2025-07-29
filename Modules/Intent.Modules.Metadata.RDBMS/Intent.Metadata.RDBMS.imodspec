@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.RDBMS</id>
-  <version>3.7.5</version>
-  <supportedClientVersions>[4.0.0-beta.7, 5.0.0-a)</supportedClientVersions>
+  <version>3.7.6-pre.1</version>
+  <supportedClientVersions>[4.5.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Support for describing Entities in Relational DB terms.</summary>
   <description>Support for describing Entities in Relational DB terms.</description>
   <authors>Intent Architect</authors>
@@ -25,7 +25,7 @@
     <install target="Domain" src="modelers/RDBMS Key Automation Extensions.designer.settings" externalReference="ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3" />
   </metadata>
   <moduleSettings>
-    <group id="ac0a788e-d8b3-4eea-b56d-538608f1ded9" title="Database Settings" externalReference="ac0a788e-d8b3-4eea-b56d-538608f1ded9">
+    <group id="ac0a788e-d8b3-4eea-b56d-538608f1ded9" title="Database Settings" externalReference="ac0a788e-d8b3-4eea-b56d-538608f1ded9" type="application-settings">
       <settings>
         <setting id="ef83f85d-bb8d-4b10-8842-9f35f9f54165" title="Key Type" type="select">
           <hint>Select the default data type to be used for all surrogate and foreign keys.</hint>
@@ -53,5 +53,6 @@
   <moduleSettingsExtensions />
   <migrations>
     <migration version="3.7.1-pre.1" />
+    <migration version="3.7.6-pre.0" />
   </migrations>
 </package>

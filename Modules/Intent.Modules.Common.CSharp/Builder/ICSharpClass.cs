@@ -39,6 +39,8 @@ public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpM
     ICSharpClass ImplementsInterface(string type);
     ICSharpClass ImplementsInterfaces(IEnumerable<string> types);
 
+    new ICSharpClass AddProperty(string type, string name, Action<ICSharpProperty>? configure = null);
+
     /// <summary>
     /// Resolves the property name from the <paramref name="model"/>. Registers this property as representative of the <paramref name="model"/>.
     /// </summary>

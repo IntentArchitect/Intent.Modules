@@ -327,21 +327,29 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     /// </summary>
     [Obsolete]
     public CSharpInterfaceMethod AddOptionalCancellationTokenParameter<T>(CSharpTemplateBase<T> template) =>
-        AddParameter(
-            $"{template.UseType("System.Threading.CancellationToken")}", "cancellationToken",
-            parameter => parameter.WithDefaultValue("default"));
+        AddOptionalCancellationTokenParameter(template, parameterName: null);
 
     public CSharpInterfaceMethod AddOptionalCancellationTokenParameter() =>
-        AddParameter(
-            type: File.Template.UseType("System.Threading.CancellationToken"),
-            name: "cancellationToken",
-            configure: parameter => parameter.WithDefaultValue("default"));
+        AddOptionalCancellationTokenParameter(File.Template);
 
     public CSharpInterfaceMethod AddOptionalCancellationTokenParameter(string? parameterName) =>
-        AddParameter(
-            type: File.Template.UseType("System.Threading.CancellationToken"),
-            name: parameterName ?? "cancellationToken",
+        AddOptionalCancellationTokenParameter(File.Template, parameterName);
+
+    private CSharpInterfaceMethod AddOptionalCancellationTokenParameter(ICSharpTemplate template, string? parameterName = null)
+    {
+        parameterName ??= "cancellationToken";
+
+        if (Parameters.Any(x => x.Name == parameterName && 
+                                (x.Type == "CancellationToken" || x.Type.EndsWith(".CancellationToken"))))
+        {
+            return this;
+        }
+
+        return AddParameter(
+            type: template.UseType("System.Threading.CancellationToken"),
+            name: parameterName,
             configure: parameter => parameter.WithDefaultValue("default"));
+    }
 
     public CSharpInterfaceMethod WithReturnType(CSharpType returnType)
     {

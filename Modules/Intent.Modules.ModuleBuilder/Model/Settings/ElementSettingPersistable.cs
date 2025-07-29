@@ -219,6 +219,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlAttribute("trigger")]
         public string Trigger { get; set; }
 
+        [XmlArray("dependencies")]
+        [XmlArrayItem("dependency")]
+        public List<TargetReferencePersistable> Dependencies { get; set; }
+        public bool ShouldSerializeDependencies() => Dependencies?.Any() == true;
+
         [XmlElement("script")]
         public string Script { get; set; }
 

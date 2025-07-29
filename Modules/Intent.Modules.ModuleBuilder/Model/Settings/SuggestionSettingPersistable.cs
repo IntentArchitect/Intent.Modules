@@ -17,11 +17,19 @@ public class SuggestionSettingPersistable
     [XmlElement("name")]
     public string Name { get; set; }
 
+    [XmlElement("icon")]
+    public IconModelPersistable Icon { get; set; }
+
     [XmlElement("filterFunction")]
     public string FilterFunction { get; set; }
 
     [XmlElement("displayFunction")]
     public string DisplayFunction { get; set; }
+
+    [XmlElement("orderPriority")]
+    public int OrderPriority { get; set; }
+
+    public bool ShouldSerializeOrderPriority() =>  OrderPriority != 0;
 
     [XmlArray("dependencies")]
     [XmlArrayItem("dependency")]

@@ -1,3 +1,7 @@
+### Version 4.7.11
+
+- Improvement: Moved HTTP file upload / download accelerators to a submenu within the `Expose as HTTP endpoint` context menu option.
+
 ### Version 4.7.10
 
 - Improvement: Improved route validation specifically with route parameters

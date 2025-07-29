@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="03385443-bbd6-46d9-87f2-6813f7833a38" version="3.1.0">
+  <comment>Configures which paging capabilities are supported by the provider.</comment>
+  <hint>Define what pagination is supported on the database provider</hint>
+  <name>Query Support</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="fcfbd83f-a3eb-4eff-b341-5a812b016d31">Document Db Provider</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAvpJREFUeF7tnL9PFFEQx2e9i7vJGuJpQU6RYKJBGzrOoI2hkAZtJDb8ERobG620J/wR2NFAj5UWZ2lBoQ2FXmKCGnDDISZnjpAIyvKGmx/sct+rZ+a993nfeTM3F4gIHxGBSOQNZwJAoQgAEACFBITuUCAACgkI3aFAL4CTC9mScC1z9w7R+zez6UvzhfYtwFbg5ELW8dxYj2str8ymD3r07ckNAHvC9tcJAAHwAAGksFAQAAiAQgJC99OvwPNJRHFFiCnHPa5EzbHB6JVG9KeNZJkTx70K37pUocGUvSznDCY2Txoxa5Mso+4OtRppABTeNwAC4AECSOEcQeANFGaKO8Cva19oayMLbnt64gpdrZ8L2p20gTvAtQ8faWP9R/Dcj6Zu0PXhWtDupA0AUHgD7gCRwoEbQyN9OCC0MWhjhI9dUQCiCgvfQC2AWfs3tb631WVVryWUJlV2XPcqrAXwU+snLb79zD4o1/Dhnct07RgNvDvArc2Mdn7tBM9zd3SAhmpnc+36FmCQ3J5BaJwFgAGSIYDci7C2K20KW4PhxncHqFVEuAe0tistwNa3Nr1bXTflU7+Q0O2bF49co7QArYrIflrddqbb1hz1cQfIlUyoiACgsAr3bQprKZAbx9rOPYUxUC3IMMFaWdz47grU6gM1i8izmVEur//s3AFqpXDfAuRetWcbUyoFagHUHKgeZ/737/7dU1gLIDeOtZ07QK0iYg2GG7+0ADVTOA9WGlepO1Ao1HdhLQVqVuE8QIUcJhT9NxFMY7iPF8OukApk7HvXJNQHcuNY27kXEe6BAJBLKscOAI0Bag5UQ2P7QrUxXK4hBWq2MX35XRgAA1IMKRApLATIfQqs7fTbmNfZfY1N3xupPk+q1NCIZRlDHaDWZueb20sdIpXL0NrTYXEAUEgXAAFQSEDoDgUCoJCA0B0KPK0A55rbL84QjQvPZ+7+uBGz/gsc+2/lzHdc0gUAUHhxAAiAQgJCdygQAIUEhO5QIAAKCQjd/wAMGQJv/8dHOwAAAABJRU5ErkJggg==" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</parentFolderId>
+  <order>0</order>
+  <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+  <packageName>Intent.Metadata.DocumentDB</packageName>
+  <properties>
+    <property id="ca5ed727-beb9-4e75-a89e-ff55708fd620">
+      <hint>Is offset paging enabled on this provider?</hint>
+      <name>Offset Enabled</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <defaultValue>false</defaultValue>
+    </property>
+    <property id="0ed664a9-a3c3-4e35-924d-3fc6f1f6555a">
+      <hint>Is cursor paging available on this provider?</hint>
+      <name>Cursor Enabled</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>options</optionsSource>
+      <defaultValue>true</defaultValue>
+    </property>
+    <property id="9192a3a1-229f-4618-aecf-a97dd8ce3d96">
+      <hint>Is filtering supported when using cursor pagination?</hint>
+      <name>Cursor Filtering</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <defaultValue>None</defaultValue>
+      <valueOptions>
+        <option>Disabled</option>
+        <option>Enabled (Not Nullable)</option>
+        <option>Enabled (Nullable)</option>
+      </valueOptions>
+      <isActiveFunction>return CursorEnabled === true;</isActiveFunction>
+    </property>
+    <property id="d38848e8-b9d7-4d2a-98c1-852bd9478b3d">
+      <hint>Is sorting supported when using cursor pagination?</hint>
+      <name>Cursor Sorting</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <defaultValue>false</defaultValue>
+      <valueOptions>
+        <option>Disabled</option>
+        <option>Enabled (Without Direction)</option>
+        <option>Enabled (With Direction)</option>
+      </valueOptions>
+      <isActiveFunction>return CursorEnabled === true;</isActiveFunction>
+    </property>
+    <property id="b2e14cac-696d-468b-8ea4-0d96b703d9e8">
+      <comment>This is currently not used - but the intention is to enabled it when the SDK supports looking up elements of type "Document Db Provider" (i.e. - elements defined in package references)</comment>
+      <hint>Is IQueryable (or equivalent) supported?</hint>
+      <name>Queryable Source</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <defaultValue>true</defaultValue>
+      <isActiveFunction>return false;</isActiveFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

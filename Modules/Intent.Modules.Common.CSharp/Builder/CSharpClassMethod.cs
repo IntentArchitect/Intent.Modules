@@ -140,21 +140,29 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     /// </summary>
     [Obsolete]
     public CSharpClassMethod AddOptionalCancellationTokenParameter<T>(CSharpTemplateBase<T> template) =>
-        AddParameter(
-            $"{template.UseType("System.Threading.CancellationToken")}", "cancellationToken",
-            parameter => parameter.WithDefaultValue("default"));
+        AddOptionalCancellationTokenParameter(template, parameterName: null);
 
     public CSharpClassMethod AddOptionalCancellationTokenParameter() =>
-        AddParameter(
-            type: File.Template.UseType("System.Threading.CancellationToken"),
-            name: "cancellationToken",
-            configure: parameter => parameter.WithDefaultValue("default"));
+        AddOptionalCancellationTokenParameter(File.Template);
 
     public CSharpClassMethod AddOptionalCancellationTokenParameter(string? parameterName) =>
-        AddParameter(
-            type: File.Template.UseType("System.Threading.CancellationToken"),
-            name: parameterName ?? "cancellationToken",
+        AddOptionalCancellationTokenParameter(File.Template, parameterName);
+
+    private CSharpClassMethod AddOptionalCancellationTokenParameter(ICSharpTemplate template, string? parameterName = null)
+    {
+        parameterName ??= "cancellationToken";
+
+        if (Parameters.Any(x => x.Name == parameterName && 
+                                (x.Type == "CancellationToken" || x.Type.EndsWith(".CancellationToken"))))
+        {
+            return this;
+        }
+
+        return AddParameter(
+            type: template.UseType("System.Threading.CancellationToken"),
+            name: parameterName,
             configure: parameter => parameter.WithDefaultValue("default"));
+    }
 
     public CSharpClassMethod AddGenericParameter(string typeName)
     {

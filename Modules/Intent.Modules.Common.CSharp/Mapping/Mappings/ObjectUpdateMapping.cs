@@ -98,7 +98,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
         }
     }
 
-    public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
+    public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = default)
     {
         if (Mapping == null) // is traversal
         {

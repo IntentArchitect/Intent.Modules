@@ -34,6 +34,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>44057e52-d484-47f2-a541-707bb9df48a9</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#fcfbd83f-a3eb-4eff-b341-5a812b016d31</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DocumentDbProviderModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DocumentDbProviderModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>44057e52-d484-47f2-a541-707bb9df48a9</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#1a824508-4623-45d9-accc-f572091ade5a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DomainPackageModelStereotypeExtensions.cs</ApplicationRelativeFilePath>

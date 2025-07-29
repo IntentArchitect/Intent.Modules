@@ -13,8 +13,9 @@ public interface ICSharpMapping
     public IElementToElementMappedEnd Mapping { get; set; }
     IEnumerable<CSharpStatement> GetMappingStatements();
 
-    CSharpStatement GetSourceStatement(bool? targetIsNullable = default);
+    CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = default);
     CSharpStatement GetTargetStatement();
+    CSharpStatement GetTargetStatement(bool withNullConditionalOperators);
 
     IDictionary<string, CSharpStatement> GetExpressionMap();
 

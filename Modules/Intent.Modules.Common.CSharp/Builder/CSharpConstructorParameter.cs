@@ -12,7 +12,7 @@ public class CSharpConstructorParameter : CSharpMetadataBase<CSharpConstructorPa
     private readonly CSharpConstructor _constructor;
     public string Type { get; }
     public string Name { get; }
-    public string DefaultValue { get; private set; }
+    public string? DefaultValue { get; private set; }
     public string XmlDocComment { get; private set; }
     public IList<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
 

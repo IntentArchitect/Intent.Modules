@@ -57,7 +57,7 @@ declare function lookup(id: string): IElementApi;
 
 /**
  * Finds the elements of the specified type(s) across all loaded packages.
- * @param includeReferences Defaults to false if unspecified
+ * @param includeReferences Defaults to true if unspecified
  */
 declare function lookupTypesOf(type: string | string[], includeReferences?: boolean): IElementApi[];
 

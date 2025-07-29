@@ -85,7 +85,6 @@ return `${name}${genericTypes}(${parameters}): ${returnType}`;
       </typeReferenceSetting>
       <typeOrder>
         <type order="0" type="Stored Procedure Parameter" typeId="5823b192-eb03-47c8-90d8-5501c922e9a5" />
-        <type order="1" type="Stored Procedure Invocation Target End" typeId="d0b0b24a-db0f-4aff-873a-a0e9c2dce12d" />
       </typeOrder>
       <contextMenuOptions>
         <createElement type="element">
@@ -97,14 +96,6 @@ return `${name}${genericTypes}(${parameters}): ${returnType}`;
           <defaultName>NewStoredProcedureParameter</defaultName>
           <allowMultiple>true</allowMultiple>
         </createElement>
-        <createAssociation type="association">
-          <text>Map Result</text>
-          <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
-          <specializationType>Stored Procedure Invocation Target End</specializationType>
-          <specializationTypeId>d0b0b24a-db0f-4aff-873a-a0e9c2dce12d</specializationTypeId>
-          <defaultName>NewStoredProcedureInvocation</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </createAssociation>
       </contextMenuOptions>
       <creationOptions>
         <option type="element">
@@ -114,14 +105,6 @@ return `${name}${genericTypes}(${parameters}): ${returnType}`;
           <specializationType>Stored Procedure Parameter</specializationType>
           <specializationTypeId>5823b192-eb03-47c8-90d8-5501c922e9a5</specializationTypeId>
           <defaultName>NewStoredProcedureParameter</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="association">
-          <text>Map Result</text>
-          <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
-          <specializationType>Stored Procedure Invocation Target End</specializationType>
-          <specializationTypeId>d0b0b24a-db0f-4aff-873a-a0e9c2dce12d</specializationTypeId>
-          <defaultName>NewStoredProcedureInvocation</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>

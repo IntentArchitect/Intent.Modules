@@ -1,9 +1,14 @@
+### Version 3.16.2
+
+- Improvement: Extended Suggestions configuration to include an `Icon` and `Order Priority` settings.
+- Fixed: Script `Dependencies` on Event Handlers not being added to the `.designer.settings` file.
+
 ### Version 3.16.1
 
 - Improvement: Made ElementModel construction more reliable by using the `SpecializationTypeId` instead of the `SpecializationType`.
 - Improvement: Renamed `Accepted Stereotypes` to `Accepted Traits`, which is more correct to its function.
 - Improvmeent: Throws an `ElementException` if a Stereotype Definition that isn't a trait is selected by the `Accepted Traits` type.
-- 
+ 
 ### Version 3.16.0
 
 - Feature: Model support for Stereotype Definition `Is Trait` option. When checked, the Stereotype Definition will generate an interface. If it is applied to `Element Settings` or `Association End Settings`, the interface will be implemented by the wrapping models and/or appropriate extension methods will be created.

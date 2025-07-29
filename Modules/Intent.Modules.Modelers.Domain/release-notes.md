@@ -1,4 +1,8 @@
-﻿### Version 3.12.3
+﻿### Version 3.12.4
+
+- Improvement: Associations can now be changed via a `Change Association` submenu with options to invert the relationship, update cardinality, and update navigability.
+
+### Version 3.12.3
 
 - Improvement: Improved `Aggregate` and `Package referenced` visualizations.
 

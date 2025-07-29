@@ -1,3 +1,7 @@
+### Version 1.2.1
+
+- Fixed: Removed incorrectly added `Map Result` option on a Stored Procedure.
+
 ### Version 1.2.0
 
 - Improvement: Added `[Invokable]` trait to Stored Procedures.

@@ -33,7 +33,7 @@ public class ConstructorMapping : CSharpMappingBase
     [Obsolete("Use constructor which accepts ICSharpTemplate instead of ICSharpFileBuilderTemplate. This will be removed in later version.")]
     public ConstructorMapping(MappingModel model, ICSharpFileBuilderTemplate template) : this(model, (ICSharpTemplate)template) { }
 
-    public override CSharpStatement GetSourceStatement(bool? targetIsNullable = default)
+    public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = default)
     {
         if (Model.TypeReference?.IsCollection == true)
         {

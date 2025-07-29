@@ -1,3 +1,7 @@
+### Version 1.3.3
+
+- Improvement: Added `Query Support` stereotype to configure provider query/paging options.
+
 ### Version 1.3.2
 
 - Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 

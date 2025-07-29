@@ -14,8 +14,8 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public abstract partial class CSharpMappingBase : ICSharpMapping
 {
-    protected Dictionary<string, string> SourceReplacements = new();
-    protected Dictionary<string, string?> TargetReplacements = new();
+    internal Dictionary<string, string> SourceReplacements = new();
+    internal Dictionary<string, string?> TargetReplacements = new();
 
     public ICanBeReferencedType Model { get; }
     public IList<ICSharpMapping> Children { get; }
@@ -58,19 +58,24 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
         }
     }
 
+    /// <summary>
+    /// Returns the assignment statements, assigning the source statements to the target statements.
+    /// </summary>
+    /// <returns></returns>
     public virtual IEnumerable<CSharpStatement> GetMappingStatements()
     {
         yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
     }
 
-    public virtual CSharpStatement GetSourceStatement(bool? targetIsNullable = null)
+    public virtual CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = null)
     {
-        return GetSourcePathText(targetIsNullable ?? Mapping?.TargetElement.TypeReference?.IsNullable == true);
+        return GetSourcePathText(withNullConditionalOperators ?? Mapping?.TargetElement.TypeReference?.IsNullable == true);
     }
 
-    public virtual CSharpStatement GetTargetStatement()
+    public virtual CSharpStatement GetTargetStatement() => GetTargetStatement(false);
+    public virtual CSharpStatement GetTargetStatement(bool withNullConditionalOperators)
     {
-        return GetTargetPathText();
+        return GetTargetPathText(withNullConditionalOperators);
     }
 
     public virtual IDictionary<string, CSharpStatement> GetExpressionMap()
@@ -86,6 +91,7 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
     /// <returns></returns>
     protected virtual IList<IElementMappingPathTarget> GetSourcePath()
     {
+        // NOTE: This logic is now duplicated in the MappingModel class:
         if (Mapping != null)
         {
             return Mapping.SourcePath;
@@ -106,6 +112,7 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
 
     protected IList<IElementMappingPathTarget> GetTargetPath()
     {
+        // NOTE: This logic is now duplicated in the MappingModel class:
         if (Mapping != null)
         {
             return Mapping.TargetPath;
@@ -121,7 +128,7 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
         return Children.Concat(Children.SelectMany(x => ((CSharpMappingBase)x).GetAllChildren()).ToList());
     }
 
-    public void SetSourceReplacement(IMetadataModel type, string replacement)
+    public virtual void SetSourceReplacement(IMetadataModel type, string replacement)
     {
         SourceReplacements.Remove(type.Id);
         SourceReplacements.Add(type.Id, replacement);
@@ -132,7 +139,7 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
         return SourceReplacements.TryGetValue(type.Id, out replacement) || Parent?.TryGetSourceReplacement(type, out replacement) == true;
     }
 
-    public void SetTargetReplacement(IMetadataModel type, string? replacement)
+    public virtual void SetTargetReplacement(IMetadataModel type, string? replacement)
     {
         TargetReplacements.Remove(type.Id);
         TargetReplacements.Add(type.Id, replacement);
@@ -237,10 +244,9 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
 
                 result = result != null ? new CSharpAccessMemberStatement(result, member) : member;
                 var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
-                if (IsTransitional(previousMappingPath, mappingPathTarget))
+                if (targetIsNullable && IsTransitional(previousMappingPath, mappingPathTarget))
                 {
-                    if (targetIsNullable
-                        && previousMappingPath?.Element.TypeReference?.IsNullable == true
+                    if (previousMappingPath?.Element.TypeReference?.IsNullable == true
                         && result is CSharpAccessMemberStatement accessMember)
                     {
                         accessMember.IsConditional();
@@ -261,17 +267,17 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
         return !((IElement)previousMappingPath.Element).ChildElements.Contains((IElement)mappingPathTarget.Element);
     }
 
-    protected string? GetTargetPathText()
+    protected string? GetTargetPathText(bool withNullConditionalOperators = false)
     {
-        var targetPathExpression = GetTargetPathExpression();
+        var targetPathExpression = GetTargetPathExpression(withNullConditionalOperators);
         if (targetPathExpression == null)
         {
             throw new Exception($"The target path text returned null for mapping {GetType().Name}. Check that you are resolving the appropriate mapping type for this model: {Model}");
         }
-        return GetTargetPathExpression()?.ToString();
+        return GetTargetPathExpression(withNullConditionalOperators)?.ToString();
     }
 
-    protected ICSharpExpression? GetTargetPathExpression()
+    protected ICSharpExpression? GetTargetPathExpression(bool withNullConditionalOperators = false)
     {
         CSharpStatement? result = null;
         var mappingPaths = GetTargetPath();
@@ -305,6 +311,15 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
                 }
 
                 result = result != null ? new CSharpAccessMemberStatement(result, member, member.Reference) : member;
+                var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
+                if (withNullConditionalOperators && IsTransitional(previousMappingPath, mappingPathTarget))
+                {
+                    if (previousMappingPath?.Element.TypeReference?.IsNullable == true
+                        && result is CSharpAccessMemberStatement accessMember)
+                    {
+                        accessMember.IsConditional();
+                    }
+                }
             }
         }
 

@@ -56,6 +56,7 @@
       <name>Association Target End</name>
       <display>Association Target End</display>
       <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</parentFolderId>
@@ -90,7 +91,579 @@
         </stereotype>
       </stereotypes>
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="5135f73d-9df2-43b0-9f01-dfe341bd207e" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+          <name>[context menu]</name>
+          <display>[context menu]</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>manually</sort-children>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>0a66489f-30aa-417b-a75d-b945863366fd</parentFolderId>
+          <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+          <packageName>Intent.Modelers.Domain</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements>
+            <childElement id="474c6757-f19b-49a0-b1d3-91294fc52c85" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+              <name>Change Association</name>
+              <display>Change Association: Inline Script</display>
+              <isAbstract>false</isAbstract>
+              <sort-children>by-type-then-manually</sort-children>
+              <genericTypes />
+              <typeReference id="5a2f2bf3-cacd-4e55-a5ae-91b02a935363">
+                <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <isRequired>true</isRequired>
+                <typePackageName>Intent.ModuleBuilder</typePackageName>
+                <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>5135f73d-9df2-43b0-9f01-dfe341bd207e</parentFolderId>
+              <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+              <packageName>Intent.Modelers.Domain</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="// nop" isActive="true" />
+                    <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;./img/icons/uml/Association_256x.png&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                    <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                    <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                    <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                    <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                    <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                    <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                    <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements>
+                <childElement id="86d7eafe-0d99-4ae6-a4f3-711da010740f" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+                  <name>[submenu]</name>
+                  <display>[context menu]</display>
+                  <isAbstract>false</isAbstract>
+                  <sort-children>manually</sort-children>
+                  <genericTypes />
+                  <isMapped>false</isMapped>
+                  <parentFolderId>474c6757-f19b-49a0-b1d3-91294fc52c85</parentFolderId>
+                  <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                  <packageName>Intent.Modelers.Domain</packageName>
+                  <stereotypes />
+                  <metadata />
+                  <childElements>
+                    <childElement id="d4377e2f-06cc-4952-9605-3ac62890711d" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                      <name>Invert</name>
+                      <display>Invert: Inline Script</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="47b223d4-c8e4-4b00-bc5b-e8efe4ea17f7">
+                        <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <isRequired>true</isRequired>
+                        <typePackageName>Intent.ModuleBuilder</typePackageName>
+                        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>86d7eafe-0d99-4ae6-a4f3-711da010740f</parentFolderId>
+                      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                      <packageName>Intent.Modelers.Domain</packageName>
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const targetTypeModel = association.typeReference.toModel();&#xD;&#xA;const targetName = association.getName();&#xD;&#xA;const soureTypeModel = association.getOtherEnd().typeReference.toModel();&#xD;&#xA;const sourceName = association.getOtherEnd().getName();&#xD;&#xA;&#xD;&#xA;association.typeReference.setType(soureTypeModel);&#xD;&#xA;association.setName(sourceName);&#xD;&#xA;association.getOtherEnd().typeReference.setType(targetTypeModel);&#xD;&#xA;association.getOtherEnd().setName(targetName);&#xD;&#xA;" isActive="true" />
+                            <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
+                          </properties>
+                        </stereotype>
+                        <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAxCAYAAACcXioiAAAAAXNSR0IArs4c6QAAAp5JREFUaEPtmMtLVGEUwH/HQSkQohapo4tQiHJm2R8goVGbcgShVi4jclGrxlURBBrYskUQtK0gJ1tF5LgJCoweOhBBCRGKlI+KIGK8J67MRDPM3MfcZzAXZjN8j9/vnPM9+IT//JPY82cLo2CMgxwBioi8wNBpptKPTfZ4C0wUbqJ6rmaQVS4zlboaX4GJpTGUO9YVIifiK5BdXARJWwqIPImnwJVCO7/0h4P1+T2eApcW9iC7thwI/IyngEmeXfoA9NpIPIuzwEXghqWAcia+AqP3EvT1PwBO1pG4xWT6bGwEhte0r7WVr/f3ybe/wDsSqQug48CB0v/vgGkmU7dBNBYCp1a1X5Q5VZbbdnO8QqJsk327F6OtyPVDFbtT5AJleKDDZFXleV2JGrUUqUA1fJnPjURkApnPelAT5FGSNQK7JQYDMz3yxu4siESgXuRLsBuGMjjbLa/s4CO5jfoJH7qA3/ANCYx80a7t36T+Ta8Im7mkvLRKuU3NbxpwbDYpC07KpmJutx0yqzqmVfd0gfxMUo7WGyuzoocV8uWtsqqdq5qvnsP1InYrYMIbMCfQWUPQE3xDJeRGIGj4QAVs4NcNZcjpVmlV5oGUUFjwgWQgTHjfBcKG91UAOG+x2/hW84Fso8B7hPY6F7NNYMjuoHN7HpXb+7KILSYPLPJhCKxjMJjrkdeNRtdJv6AyEAq8b4u4RqQ+Auav/idcy3XJvJMoB36QNQKhyumH3XK3kb6+30YbgWgKlKIW1CK2TUp0GTBfE1oYsCW0a5Dgaa5DzAdcT5/rDHiaLYDOMrKmdk/YO9Nu7OfTvEgxAAZPQ8rwiqqTEbZb6H3UKctO2obZpikQZrRrzdXMQDMDHiPQLCGPAfTcvZkBzyH0OMAfY0yiDhzC+FMAAAAASUVORK5CYII=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                            <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                            <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                            <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                            <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                            <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                            <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                            <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="true" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <metadata />
+                      <childElements />
+                    </childElement>
+                    <childElement id="f3d0a22a-df32-491f-adeb-fff87ac538b8" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                      <name>One to One</name>
+                      <display>One to One: Inline Script</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="0e5a4444-0962-4a04-a2d9-fb37bb69e15c">
+                        <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <isRequired>true</isRequired>
+                        <typePackageName>Intent.ModuleBuilder</typePackageName>
+                        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>86d7eafe-0d99-4ae6-a4f3-711da010740f</parentFolderId>
+                      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                      <packageName>Intent.Modelers.Domain</packageName>
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="association.typeReference.setIsNullable(false);&#xD;&#xA;association.typeReference.setIsCollection(false);&#xD;&#xA;association.getOtherEnd().typeReference.setIsNullable(false);&#xD;&#xA;association.getOtherEnd().typeReference.setIsCollection(false);" isActive="true" />
+                            <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
+                          </properties>
+                        </stereotype>
+                        <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;./img/icons/uml/Association_256x.png&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                            <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                            <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                            <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                            <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                            <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                            <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                            <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <metadata />
+                      <childElements />
+                    </childElement>
+                    <childElement id="d183aeb6-5256-4de6-b6c2-f810b6e08951" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                      <name>One to Zero-or-One</name>
+                      <display>One to Zero-or-One: Inline Script</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="5ac936a7-5745-4bc7-8277-a5d346ec0e24">
+                        <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <isRequired>true</isRequired>
+                        <typePackageName>Intent.ModuleBuilder</typePackageName>
+                        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>86d7eafe-0d99-4ae6-a4f3-711da010740f</parentFolderId>
+                      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                      <packageName>Intent.Modelers.Domain</packageName>
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="association.typeReference.setIsNullable(true);&#xD;&#xA;association.typeReference.setIsCollection(false);&#xD;&#xA;association.getOtherEnd().typeReference.setIsNullable(false);&#xD;&#xA;association.getOtherEnd().typeReference.setIsCollection(false);" isActive="true" />
+                            <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[]" isActive="true" />
+                          </properties>
+                        </stereotype>
+                        <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/uml/Association_256x.png&quot;}" isActive="true" />
+                            <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                            <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                            <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                            <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                            <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                            <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                            <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <metadata />
+                      <childElements />
+                    </childElement>
+                    <childElement id="6051a8ea-771c-4cc5-8d2b-194339fae917" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                      <name>One to Many</name>
+                      <display>One to Many: Inline Script</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="c50856d6-f8d6-4fbd-b477-e12535f47728">
+                        <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <isRequired>true</isRequired>
+                        <typePackageName>Intent.ModuleBuilder</typePackageName>
+                        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>86d7eafe-0d99-4ae6-a4f3-711da010740f</parentFolderId>
+                      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                      <packageName>Intent.Modelers.Domain</packageName>
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="association.typeReference.setIsNullable(false);&#xD;&#xA;association.typeReference.setIsCollection(true);&#xD;&#xA;association.getOtherEnd().typeReference.setIsNullable(false);&#xD;&#xA;association.getOtherEnd().typeReference.setIsCollection(false);" isActive="true" />
+                            <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[]" isActive="true" />
+                          </properties>
+                        </stereotype>
+                        <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/uml/Association_256x.png&quot;}" isActive="true" />
+                            <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                            <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                            <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                            <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                            <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                            <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                            <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <metadata />
+                      <childElements />
+                    </childElement>
+                    <childElement id="e50c2f9f-b55b-4532-bee0-021d5c811987" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                      <name>Many to One</name>
+                      <display>Many to One: Inline Script</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="f477aba4-5e80-4809-9ff5-6b7ef1d3bc18">
+                        <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <isRequired>true</isRequired>
+                        <typePackageName>Intent.ModuleBuilder</typePackageName>
+                        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>86d7eafe-0d99-4ae6-a4f3-711da010740f</parentFolderId>
+                      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                      <packageName>Intent.Modelers.Domain</packageName>
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="association.typeReference.setIsNullable(false);&#xD;&#xA;association.typeReference.setIsCollection(false);&#xD;&#xA;association.getOtherEnd().typeReference.setIsNullable(false);&#xD;&#xA;association.getOtherEnd().typeReference.setIsCollection(true);" isActive="true" />
+                            <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[]" isActive="true" />
+                          </properties>
+                        </stereotype>
+                        <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/uml/Association_256x.png&quot;}" isActive="true" />
+                            <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                            <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                            <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                            <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                            <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                            <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                            <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <metadata />
+                      <childElements />
+                    </childElement>
+                    <childElement id="8cc5ff4b-5d9f-4daa-a9f9-46423ef9dad9" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                      <name>Many to Zero-or-One</name>
+                      <display>Many to Zero-or-One: Inline Script</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="10e7fe3f-5694-4c57-8d17-8c135aa0e7de">
+                        <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <isRequired>true</isRequired>
+                        <typePackageName>Intent.ModuleBuilder</typePackageName>
+                        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>86d7eafe-0d99-4ae6-a4f3-711da010740f</parentFolderId>
+                      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                      <packageName>Intent.Modelers.Domain</packageName>
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="association.typeReference.setIsNullable(true);&#xD;&#xA;association.typeReference.setIsCollection(false);&#xD;&#xA;association.getOtherEnd().typeReference.setIsNullable(false);&#xD;&#xA;association.getOtherEnd().typeReference.setIsCollection(true);" isActive="true" />
+                            <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[]" isActive="true" />
+                          </properties>
+                        </stereotype>
+                        <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/uml/Association_256x.png&quot;}" isActive="true" />
+                            <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                            <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                            <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                            <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                            <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                            <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                            <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <metadata />
+                      <childElements />
+                    </childElement>
+                    <childElement id="314c718e-d2de-4430-94c6-52768fe83baf" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                      <name>Many to Many</name>
+                      <display>Many to Many: Inline Script</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="4c3d5e8f-965e-44b6-b64b-da60fb7c0d00">
+                        <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <isRequired>true</isRequired>
+                        <typePackageName>Intent.ModuleBuilder</typePackageName>
+                        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>86d7eafe-0d99-4ae6-a4f3-711da010740f</parentFolderId>
+                      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                      <packageName>Intent.Modelers.Domain</packageName>
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="association.typeReference.setIsNullable(false);&#xD;&#xA;association.typeReference.setIsCollection(true);&#xD;&#xA;association.getOtherEnd().typeReference.setIsNullable(false);&#xD;&#xA;association.getOtherEnd().typeReference.setIsCollection(true);" isActive="true" />
+                            <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[]" isActive="true" />
+                          </properties>
+                        </stereotype>
+                        <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/uml/Association_256x.png&quot;}" isActive="true" />
+                            <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                            <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                            <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                            <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                            <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                            <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                            <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <metadata />
+                      <childElements />
+                    </childElement>
+                    <childElement id="28889c3b-d36f-4086-a604-a50391a500cb" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                      <name>Zero-or-One to One</name>
+                      <display>Zero-or-One to One: Inline Script</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="de0dbe9f-b5bc-4c6d-819a-3cdb146e1912">
+                        <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <isRequired>true</isRequired>
+                        <typePackageName>Intent.ModuleBuilder</typePackageName>
+                        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>86d7eafe-0d99-4ae6-a4f3-711da010740f</parentFolderId>
+                      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                      <packageName>Intent.Modelers.Domain</packageName>
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="association.typeReference.setIsNullable(false);&#xD;&#xA;association.typeReference.setIsCollection(false);&#xD;&#xA;association.getOtherEnd().typeReference.setIsNullable(true);&#xD;&#xA;association.getOtherEnd().typeReference.setIsCollection(false);" isActive="true" />
+                            <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[]" isActive="true" />
+                          </properties>
+                        </stereotype>
+                        <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/uml/Association_256x.png&quot;}" isActive="true" />
+                            <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                            <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                            <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                            <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                            <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                            <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                            <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <metadata />
+                      <childElements />
+                    </childElement>
+                    <childElement id="37aee14b-c0a7-4636-97f1-f1ffc790480c" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                      <name>Bidirectional</name>
+                      <display>Bidirectional: Inline Script</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="ffd26eb0-7d44-4023-845b-8da8de0d897c">
+                        <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <isRequired>true</isRequired>
+                        <typePackageName>Intent.ModuleBuilder</typePackageName>
+                        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>86d7eafe-0d99-4ae6-a4f3-711da010740f</parentFolderId>
+                      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                      <packageName>Intent.Modelers.Domain</packageName>
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="association.getOtherEnd().typeReference.setIsNavigable(true);" isActive="true" />
+                            <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[]" isActive="true" />
+                          </properties>
+                        </stereotype>
+                        <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV9kOGQ4ZDY3My0yNWFiLTQzYmYtYmY0NC00MjBlZTQ2YTNjMzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI1IiB4Mj0iMjUiIHkyPSI0NyIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUxKSI+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzI2NjZDOSIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM3Nzk3QzkiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cG9seWdvbiBmaWxsPSJ1cmwoI1NWR0lEXzFfZDhkOGQ2NzMtMjVhYi00M2JmLWJmNDQtNDIwZWU0NmEzYzM2KSIgcG9pbnRzPSI0NS44LDQgNDUuOCwxOS4yIDQxLjUsMTkuMiA0MS41LDExLjMgMzguMiwxNC42IDM1LjcsMTcuMSAxMSw0MS44IDE5LjIsNDEuOCAxOS4yLDQ2IA0KCTQuMiw0NiA0LjIsMzAuOCA4LjIsMzAuOCA4LjIsMzguNyAzOC44LDguMiAzMC43LDguMiAzMC43LDQgIi8+DQo8L3N2Zz4NCg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                            <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                            <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                            <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                            <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return !association.getOtherEnd().typeReference.getIsNavigable();" isActive="true" />
+                            <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                            <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="true" isActive="true" />
+                            <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <metadata />
+                      <childElements />
+                    </childElement>
+                    <childElement id="b7a79662-3332-40a8-89b9-c0210f803f2a" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                      <name>Unidirectional</name>
+                      <display>Unidirectional: Inline Script</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="4931c9e4-0acc-48c2-91a8-3bb53a866683">
+                        <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <isRequired>true</isRequired>
+                        <typePackageName>Intent.ModuleBuilder</typePackageName>
+                        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>86d7eafe-0d99-4ae6-a4f3-711da010740f</parentFolderId>
+                      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+                      <packageName>Intent.Modelers.Domain</packageName>
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="association.getOtherEnd().typeReference.setIsNavigable(false);&#xD;&#xA;" isActive="true" />
+                            <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[]" isActive="true" />
+                          </properties>
+                        </stereotype>
+                        <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                          <properties>
+                            <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV84MWQ0MTdiYi1lNGM1LTQwMjctYjc0OS03NGNhOTViYjNhOTYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjQuMSIgeTE9IjQ2LjYiIHgyPSIyNC4xIiB5Mj0iMy42IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgNTEpIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzc5N0M5Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzI2NjZDOSIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwb2x5Z29uIGZpbGw9InVybCgjU1ZHSURfMV84MWQ0MTdiYi1lNGM1LTQwMjctYjc0OS03NGNhOTViYjNhOTYpIiBwb2ludHM9IjQ1LjUsNC40IDQ1LjUsMjMuNyA0MC41LDIzLjcgNDAuNSwxMy4xIDE5LjUsMzQuMSA2LjIsNDcuNCAyLjcsNDMuOSAxNiwzMC42IDE2LDMwLjYgDQoJMTcuNywyOC45IDIxLjIsMjUuMyAzNy4zLDkuNSAyNi4zLDkuNSAyNi4zLDQuNCAiLz4NCjwvc3ZnPg0K&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                            <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                            <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                            <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                            <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return association.getOtherEnd().typeReference.getIsNavigable();" isActive="true" />
+                            <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                            <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="true" isActive="true" />
+                            <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <metadata />
+                      <childElements />
+                    </childElement>
+                  </childElements>
+                </childElement>
+              </childElements>
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
     </childElement>
   </childElements>
 </class>

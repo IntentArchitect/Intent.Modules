@@ -14,8 +14,17 @@ abstract class CrudStrategy {
     protected targetFolder: IElementApi = null;
     protected primaryKeys: IAttributeWithMapPath[] = null;
 
-    private async askUser(element: MacroApi.Context.IElementApi, preselectedClass: MacroApi.Context.IElementApi): Promise<ICrudCreationContext> {
-        let dialogOptions: ICrudCreationResult = await presentCrudOptionsDialog(preselectedClass);
+    private async askUser(element: MacroApi.Context.IElementApi, preselectedClass?: MacroApi.Context.IElementApi, diagram?: MacroApi.Context.IElementReadOnlyApi): Promise<ICrudCreationContext> {
+        if (diagram == null) {
+            for(const e of [element as MacroApi.Context.IElementReadOnlyApi].concat(element.getParents().reverse())) {
+                const diagramTypeId = "8c90aca5-86f4-47f1-bd58-116fe79f5c55"; // only supported in 4.5.8 and later
+                if (e.getChildren("Diagram").length > 0) {
+                    diagram = e.getChildren("Diagram")[0] as MacroApi.Context.IElementReadOnlyApi;
+                    break;
+                }
+            }
+        }
+        let dialogOptions: ICrudCreationResult = await presentCrudOptionsDialog(preselectedClass, diagram?.id);
         if (dialogOptions == null || dialogOptions.selectedEntity == null)
             return null;
 
@@ -46,10 +55,10 @@ abstract class CrudStrategy {
 
 
     public async execute(element: IElementApi, preselectedClass?: IElementApi | undefined, diagramElement?: IElementApi | undefined): Promise<void> {
-        this.context = await this.askUser(element, preselectedClass);
+        this.context = await this.askUser(element, preselectedClass, diagramElement);
         if (this.context == null) return;
 
-        let dialogOptions = this.context.dialogOptions;
+        let dialogOptions = this.context.dialogOptions; 
         this.entity = dialogOptions.selectedEntity;
         this.primaryKeys = this.context.primaryKeys;
         let hasPrimaryKey = this.context.hasPrimaryKey();
@@ -140,7 +149,11 @@ abstract class CrudStrategy {
 
         }
 
-        this.doAddDiagram(diagramElement);
+        const targetPoint = diagramElement != null && diagramElement.id == this.context.dialogOptions.diagramId ? getCurrentDiagram().mousePosition : null
+        diagramElement = lookup(this.context.dialogOptions.diagramId) ?? this.getOrCreateDiagram(this.targetFolder);
+        diagramElement.loadDiagram();
+        const diagram = getCurrentDiagram();
+        this.doAddToDiagram(diagram, targetPoint);
 
         await notifyUserOfLimitations(dialogOptions.selectedEntity, dialogOptions);
     }
@@ -152,7 +165,7 @@ abstract class CrudStrategy {
     protected abstract doGetById(): IElementApi;
     protected abstract doGetAll(): IElementApi;
     protected abstract doOperation(operation: IElementApi, operationResultDto?: IElementApi): IElementApi;
-    protected abstract doAddDiagram(diagramElement?: IElementApi): void;
+    protected abstract doAddToDiagram(diagram: IDiagramApi, addAtPoint?: MacroApi.Context.IPoint): void;
 
     protected async validate(): Promise<boolean> {
         if (DomainHelper.getOwnersRecursive(this.entity).length > 1) {

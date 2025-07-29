@@ -74,6 +74,8 @@ namespace Intent.ModuleBuilder.Api
                 SpecializationTypeId = TypeReference.Element.Id,
                 DisplayFunction = this.GetSettings().DisplayFunction(),
                 FilterFunction = this.GetSettings().FilterFunction(),
+                Icon = this.GetSettings().Icon().ToPersistable(),
+                OrderPriority = this.GetSettings().OrderPriority() ?? 0,
                 Locations = string.Join(", ", this.GetSettings().Locations().Select(x => x.Value.ToLower())),
                 Dependencies = this.GetSettings().Dependencies()?.Select(x => new TargetReferencePersistable() { Id = x.Id, Name = x.Name }).ToList() ?? [],
                 Script = this.GetSettings().Script()

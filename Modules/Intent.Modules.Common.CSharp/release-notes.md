@@ -1,4 +1,10 @@
-﻿### Version 3.9.1
+﻿### Version 3.9.2
+
+- Improvement: Added support for cursor based pagination.
+- Improvement: Added AddProperty with string name to ICSharpClass Interface.
+- Improvement: Multiple calls of `AddOptionalCancellationTokenParameter` on the same method will now be automatically de-duplicated.
+
+### Version 3.9.1
 
 - Improvement: Added additional check when performing mapping type-lookups.
 - Improvement: Added support for Razor `attribute` directive.
