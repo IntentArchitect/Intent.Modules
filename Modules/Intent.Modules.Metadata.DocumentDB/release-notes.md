@@ -1,3 +1,7 @@
+### Version 1.3.4
+
+- Improvement: The `Field Settings` stereotype has been moved from the `Intent.CosmosDB` module to allow use in other modules.
+
 ### Version 1.3.3
 
 - Improvement: Added `Query Support` stereotype to configure provider query/paging options.
