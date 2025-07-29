@@ -1,7 +1,10 @@
+### Version 3.7.7
+
+- Fixed: Added support for foreign key names that contain the association name.
+
 ### Version 3.7.6
 
 - Improvement: Added `Collation` property to the `Column` stereotype.
-- Fixed: Added support for foreign key names that contain the association name.
 
 ### Version 3.7.5
 
