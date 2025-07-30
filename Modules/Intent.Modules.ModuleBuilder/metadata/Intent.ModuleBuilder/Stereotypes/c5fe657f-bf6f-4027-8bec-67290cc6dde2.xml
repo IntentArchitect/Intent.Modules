@@ -22,6 +22,7 @@
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
     <property id="a43f67e1-742f-46c7-b6eb-e73c3d7232dd">
+      <comment>Determines the root element for the mapping end that it is applied. This function must return the `id` of the element.</comment>
       <name>Root Element Function</name>
       <type>string</type>
       <controlType>function</controlType>

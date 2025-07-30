@@ -22,6 +22,7 @@
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
     <property id="91a221f2-eb37-40cf-8cbf-9648853c3686">
+      <comment>What does this mappable element represent in the mapping context? This is used to filter the `Mapping Type Settings` that can be mapped to this element.</comment>
       <name>Represents</name>
       <type>string</type>
       <controlType>select</controlType>
@@ -36,12 +37,14 @@
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="a93d5ab2-96fd-411b-8423-3c9ec7db4ddb">
+      <comment>Overrides the icon of this mappable element. Must return a `string`.</comment>
       <name>Icon Override</name>
       <type>string</type>
       <controlType>icon</controlType>
       <optionsSource>n/a</optionsSource>
     </property>
     <property id="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41">
+      <comment>Determines if the element should be displayed in the advanced mapping view.</comment>
       <hint>Filters whether this setting can be applied to the underlying element.</hint>
       <name>Filter Function</name>
       <type>string</type>
@@ -52,6 +55,7 @@
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="e2bbf8a7-e342-4221-a628-f3ef35dcc251">
+      <comment>Overrides the default text display of the element. This function can return a simple `string` or an array display components (i.e. `{ text: string, cssClass?: string }[]`)</comment>
       <name>Display Function</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -69,6 +73,7 @@
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="fe1fd512-566d-427a-a9a8-ed16c6ae8f98">
+      <comment>If  this function returns `true` this mappable element will be available for mapping. If `false` it will appear "grayed out".</comment>
       <hint>Determines whether this mapping node can be mapped.</hint>
       <name>Is Mappable Function</name>
       <type>string</type>
@@ -80,6 +85,7 @@
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="8729cf25-6468-4ad0-aed2-2f7c854c2438">
+      <comment>Whether this element can be mapped to / from multiple times.</comment>
       <hint>Whether this type can be mapped multiple times</hint>
       <name>Allow Multiple Mappings</name>
       <type>string</type>
@@ -91,6 +97,13 @@
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="6da92064-59ef-4361-8ad6-c73b54c18cc2">
+      <comment>If an element is *traversable*, its type-reference is used to populate its mappable children. For example, a property of type `DTO` would typically be configured to be traversable so that the `DTO`'s fields can be mapped to / from.
+
+* **Not Traversable** - indicates that this element is not traversable and it's type-reference should not be "explored" for mappable children.
+
+* **Traverse Specific Types** - indicates that only type-references of specific types can be traversed. This set is specified by the `Traversable Types` dropdown which becomes available when this option is selected.
+
+* **Traverse All Types** - indicates that any type-reference can be traversed.</comment>
       <name>Traversable Mode</name>
       <type>string</type>
       <controlType>select</controlType>
@@ -103,6 +116,7 @@
       </valueOptions>
     </property>
     <property id="3f279b0b-8772-4dd5-bf54-1fde024420e7">
+      <comment>The set of types that can be traversed.</comment>
       <name>Traversable Types</name>
       <type>string</type>
       <controlType>multi-select</controlType>
@@ -154,6 +168,17 @@ return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traver
 return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traverse Specific Types";</isRequiredFunction>
     </property>
     <property id="208475f3-1bb6-40c4-87e1-20f048e5caa8">
+      <comment>This function can be used to override the type-reference that this element exposes to the mapping system. This function must return an `ITypeReferenceData` object as follows:
+
+`
+{
+        typeId: string;
+        isNullable: boolean;
+        isCollection: boolean;
+        genericTypeId?: string;
+        genericTypeParameters?: ITypeReferenceData[]
+    }
+`</comment>
       <hint>Uses the element's type reference by default.</hint>
       <name>Override Type Reference Function</name>
       <type>string</type>
@@ -164,6 +189,7 @@ return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traver
       <isRequiredFunction>return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7")?.value?.length &gt; 0 // indicate that there is old scripts that need to be converted.</isRequiredFunction>
     </property>
     <property id="a6ec44d7-f928-4221-bed6-8589176a94c7">
+      <comment>_OBSOLETE_ - Use the `Override Type Reference Function` instead.</comment>
       <name>Get Traversable Type Function</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -176,6 +202,7 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="69bfe770-9fcd-40dc-8505-2de5a699887e">
+      <comment>_EXPERIMENTAL_ - Indicates whether mappings from elements should also update base properties on this element (e.g. its `Value` or a specific Stereotype Property).</comment>
       <name>Sync Mapping To</name>
       <type>string</type>
       <controlType>select</controlType>
@@ -188,6 +215,7 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       </valueOptions>
     </property>
     <property id="73a079b1-5720-4b70-ada3-7af8a98b7510">
+      <comment>_EXPERIMENTAL_ - Indicates which Stereotype the mapping value must sync with.</comment>
       <name>Sync Stereotype</name>
       <type>string</type>
       <controlType>select</controlType>
@@ -197,6 +225,7 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <isRequiredFunction>return getProperty("69bfe770-9fcd-40dc-8505-2de5a699887e").getValue() == "Stereotype Property Value"</isRequiredFunction>
     </property>
     <property id="c6d38f6b-83f0-466d-9b89-3aa3b8c58d6f">
+      <comment>_EXPERIMENTAL_ - Indicates which Stereotype Property the mapping value must sync with. This must be the `id` of the Stereotype Property, since a dropdown for this is not yet supported by intent architect.</comment>
       <name>Sync Stereotype Property</name>
       <type>string</type>
       <controlType>text</controlType>
@@ -206,6 +235,7 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <isRequiredFunction>return getProperty("69bfe770-9fcd-40dc-8505-2de5a699887e").getValue() == "Stereotype Property Value"</isRequiredFunction>
     </property>
     <property id="5bd73806-e43e-402e-a8ab-ed63cbc1ef98">
+      <comment>A script that is triggered whenever the mapping to / from this element changes.</comment>
       <name>On Mapping Changed Script</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -213,6 +243,11 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <apiTypeDefinition>advanced-mapping-macro-api</apiTypeDefinition>
     </property>
     <property id="55e6149c-91a6-4381-b324-7eab4395fa59">
+      <comment>For validating this element. Indicates that there is an error if this function returns a `string` or validation object 
+`{
+        text: string;
+        type?: "error" | "warning"
+    }`.</comment>
       <name>Validate Function</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -220,6 +255,7 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <apiTypeDefinition>advanced-mapping-macro-api</apiTypeDefinition>
     </property>
     <property id="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3">
+      <comment>_OBSOLETE_ - This is ignored.</comment>
       <name>Can Be Modified</name>
       <type>string</type>
       <controlType>checkbox</controlType>
@@ -227,6 +263,11 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <defaultValue>false</defaultValue>
     </property>
     <property id="2782bc72-02b8-4e25-9fd7-b625bf8a11d2">
+      <comment>This function is called when "automatic" mapping occurs on a traversable element (e.g. when a user double clicks a mappable element that automatically creates a new mappable element on the other end).
+
+This function determines the name of the complex type that should be created as the type-reference for the newly created mappable element.
+
+Returns a `string`.</comment>
       <name>Create Name Function</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -236,6 +277,9 @@ return getProperty("a6ec44d7-f928-4221-bed6-8589176a94c7").value?.length &gt; 0 
       <isActiveFunction>return CanBeModified == true;</isActiveFunction>
     </property>
     <property id="51aec36f-cc2d-489e-ba6b-816aca340502">
+      <comment>This option provides a way for this mappable element to reuse settings from other `Mappable Element Settings`. The child settings of the selected option will be added as child options to this mappable element at runtime.
+
+Note that the selected option must exist in the overarching mapping context for it to be found at runtime.</comment>
       <name>Use Child Mappings From</name>
       <type>string</type>
       <controlType>select</controlType>
