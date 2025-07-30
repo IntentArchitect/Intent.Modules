@@ -1,3 +1,7 @@
+### Version 3.16.3
+
+- Improvement: Documented the `Mappable Element Settings` stereotype.
+
 ### Version 3.16.2
 
 - Improvement: Extended Suggestions configuration to include an `Icon` and `Order Priority` settings.
