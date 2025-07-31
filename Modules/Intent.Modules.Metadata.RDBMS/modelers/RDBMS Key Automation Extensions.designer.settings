@@ -192,67 +192,67 @@ function applyAttributeNamingConvention(str) {
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
 /// &lt;reference path="../../../common/applyAttributeNamingConvention.ts" /&gt;
 /// &lt;reference path="../_common/constants.ts" /&gt;
-function updateForeignKeys(thisEnd) {
+function updateForeignKeys(selectedEnd) {
     var _a, _b;
     if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit") {
         return;
     }
-    let otherEnd = thisEnd.getOtherEnd();
-    if (!otherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
+    let theOtherEnd = selectedEnd.getOtherEnd();
+    if (!theOtherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
-    let thisEndType = thisEnd.getOtherEnd().typeReference.getType();
-    let otherEndType = thisEnd.typeReference.getType();
-    if ((thisEndType === null || thisEndType === void 0 ? void 0 : thisEndType.specialization) !== "Class" || (otherEndType === null || otherEndType === void 0 ? void 0 : otherEndType.specialization) !== "Class") {
+    let theOtherEndType = theOtherEnd.typeReference.getType();
+    let theSelectedEndType = selectedEnd.typeReference.getType();
+    if ((theOtherEndType === null || theOtherEndType === void 0 ? void 0 : theOtherEndType.specialization) !== "Class" || (theSelectedEndType === null || theSelectedEndType === void 0 ? void 0 : theSelectedEndType.specialization) !== "Class") {
         return;
     }
-    const targetEndId = thisEnd.isTargetEnd() ? thisEnd.id : otherEnd.id;
-    if (requiresForeignKey(thisEnd)) {
-        updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId);
+    const targetEndId = selectedEnd.isTargetEnd() ? selectedEnd.id : theOtherEnd.id;
+    if (requiresForeignKey(selectedEnd)) {
+        updateForeignKeyAttribute(selectedEnd, theOtherEndType, theSelectedEndType, targetEndId);
         return;
     }
-    thisEndType.getChildren()
+    theOtherEndType.getChildren()
         .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
         .forEach(x =&gt; {
         x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
         x.delete();
     });
     return;
-    function updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId) {
-        const pkAttributes = getPrimaryKeys(otherEndType);
-        pkAttributes.forEach((pk, index) =&gt; {
+    function updateForeignKeyAttribute(selectedEnd, theOtherEndType, theSelectedEndType, targetEndId) {
+        const pkAttributesOfSelectedEnd = getPrimaryKeys(theSelectedEndType);
+        pkAttributesOfSelectedEnd.forEach((primaryKeyOfSelectedEnd, index) =&gt; {
             var _a;
-            let fkAttribute = (_a = thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", thisEndType.id);
+            let fkAttributeOfOtherEnd = (_a = theOtherEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", theOtherEndType.id);
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-            let fkNameToUse = getForeignKeyName(thisEnd, pk);
-            if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
-                if (!fkAttribute.hasMetadata(metadataKey.fkOriginalName) || (fkAttribute.getMetadata(metadataKey.fkOriginalName) == fkAttribute.getName())) {
-                    fkAttribute.setName(fkNameToUse, false);
-                    fkAttribute.setMetadata(metadataKey.fkOriginalName, fkAttribute.getName());
+            let fkNameToUse = getForeignKeyName(selectedEnd, theSelectedEndType, primaryKeyOfSelectedEnd, fkAttributeOfOtherEnd.getName() !== "" ? fkAttributeOfOtherEnd : null);
+            if (fkAttributeOfOtherEnd.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
+                if (!fkAttributeOfOtherEnd.hasMetadata(metadataKey.fkOriginalName) || (fkAttributeOfOtherEnd.getMetadata(metadataKey.fkOriginalName) == fkAttributeOfOtherEnd.getName())) {
+                    fkAttributeOfOtherEnd.setName(fkNameToUse, false);
+                    fkAttributeOfOtherEnd.setMetadata(metadataKey.fkOriginalName, fkAttributeOfOtherEnd.getName());
                 }
             }
-            fkAttribute.setMetadata(metadataKey.association, targetEndId);
-            fkAttribute.setMetadata(metadataKey.isManagedKey, "true");
-            let fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
+            fkAttributeOfOtherEnd.setMetadata(metadataKey.association, targetEndId);
+            fkAttributeOfOtherEnd.setMetadata(metadataKey.isManagedKey, "true");
+            let fkStereotype = fkAttributeOfOtherEnd.getStereotype(foreignKeyStereotypeId);
             if (fkStereotype == null) {
-                fkAttribute.addStereotype(foreignKeyStereotypeId);
-                fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
+                fkAttributeOfOtherEnd.addStereotype(foreignKeyStereotypeId);
+                fkStereotype = fkAttributeOfOtherEnd.getStereotype(foreignKeyStereotypeId);
             }
-            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
-            let isSelfReferencing = () =&gt; thisEnd.typeReference.getTypeId() === thisEnd.getOtherEnd().typeReference.getTypeId();
-            fkAttribute.typeReference.setType(pk.typeId);
-            if (thisEnd.isTargetEnd() || !isSelfReferencing()) {
-                fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
+            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(selectedEnd.isTargetEnd() ? selectedEnd.id : selectedEnd.getOtherEnd().id);
+            let isSelfReferencing = () =&gt; selectedEnd.typeReference.getTypeId() === selectedEnd.getOtherEnd().typeReference.getTypeId();
+            fkAttributeOfOtherEnd.typeReference.setType(primaryKeyOfSelectedEnd.typeId);
+            if (selectedEnd.isTargetEnd() || !isSelfReferencing()) {
+                fkAttributeOfOtherEnd.typeReference.setIsNullable(selectedEnd.typeReference.isNullable);
             }
         });
-        thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) =&gt; {
-            if (index &gt;= pkAttributes.length) {
+        theOtherEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) =&gt; {
+            if (index &gt;= pkAttributesOfSelectedEnd.length) {
                 attr.setMetadata(metadataKey.isBeingDeletedByScript, "true");
                 attr.delete();
             }
         });
-        if (otherEndType.id !== thisEndType.id) {
-            otherEndType.getChildren()
+        if (theSelectedEndType.id !== theOtherEndType.id) {
+            theSelectedEndType.getChildren()
                 .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
                 .forEach(x =&gt; {
                 x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
@@ -261,12 +261,22 @@ function updateForeignKeys(thisEnd) {
         }
     }
     // If you change the logic around determining FK Name make sure to update the SQL Importer to have the same logic
-    function getForeignKeyName(thisEnd, pk) {
-        // Is the PK's name already containing the name of the association?
-        if (pk.name.toLocaleLowerCase().includes(thisEnd.getName().toLocaleLowerCase())) {
-            return toPascalCase(pk.name);
+    function getForeignKeyName(selectedEnd, theSelectedEndType, primaryKeyOfSelectedEnd, fkAttributeOfOtherEnd) {
+        // If the FK already exists, just use it.
+        if (fkAttributeOfOtherEnd != null) {
+            return fkAttributeOfOtherEnd.getName();
         }
-        return `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
+        // If Association name and Selected Type name is the same and the selected-end type is in the PK name
+        if (selectedEnd.getName().toLocaleLowerCase() === theSelectedEndType.getName().toLocaleLowerCase() &amp;&amp;
+            primaryKeyOfSelectedEnd.name.toLocaleLowerCase().includes(theSelectedEndType.getName().toLocaleLowerCase())) {
+            return toPascalCase(primaryKeyOfSelectedEnd.name);
+        }
+        // If the Association name is composed of a supposed PK name and the selected-end type name
+        // then use the association name without the selected-end type name
+        if (selectedEnd.getName().includes(theSelectedEndType.getName(), 1)) {
+            return toPascalCase(selectedEnd.getName().replace(theSelectedEndType.getName(), ""));
+        }
+        return `${toCamelCase(selectedEnd.getName())}${toPascalCase(primaryKeyOfSelectedEnd.name)}`;
     }
     function requiresForeignKey(associationEnd) {
         const isSelfReferencingWithoutManyToMany = () =&gt; associationEnd.typeReference.getTypeId() === associationEnd.getOtherEnd().typeReference.getTypeId() &amp;&amp;
@@ -441,67 +451,67 @@ function applyAttributeNamingConvention(str) {
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
 /// &lt;reference path="../../../common/applyAttributeNamingConvention.ts" /&gt;
 /// &lt;reference path="../_common/constants.ts" /&gt;
-function updateForeignKeys(thisEnd) {
+function updateForeignKeys(selectedEnd) {
     var _a, _b;
     if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit") {
         return;
     }
-    let otherEnd = thisEnd.getOtherEnd();
-    if (!otherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
+    let theOtherEnd = selectedEnd.getOtherEnd();
+    if (!theOtherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
-    let thisEndType = thisEnd.getOtherEnd().typeReference.getType();
-    let otherEndType = thisEnd.typeReference.getType();
-    if ((thisEndType === null || thisEndType === void 0 ? void 0 : thisEndType.specialization) !== "Class" || (otherEndType === null || otherEndType === void 0 ? void 0 : otherEndType.specialization) !== "Class") {
+    let theOtherEndType = theOtherEnd.typeReference.getType();
+    let theSelectedEndType = selectedEnd.typeReference.getType();
+    if ((theOtherEndType === null || theOtherEndType === void 0 ? void 0 : theOtherEndType.specialization) !== "Class" || (theSelectedEndType === null || theSelectedEndType === void 0 ? void 0 : theSelectedEndType.specialization) !== "Class") {
         return;
     }
-    const targetEndId = thisEnd.isTargetEnd() ? thisEnd.id : otherEnd.id;
-    if (requiresForeignKey(thisEnd)) {
-        updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId);
+    const targetEndId = selectedEnd.isTargetEnd() ? selectedEnd.id : theOtherEnd.id;
+    if (requiresForeignKey(selectedEnd)) {
+        updateForeignKeyAttribute(selectedEnd, theOtherEndType, theSelectedEndType, targetEndId);
         return;
     }
-    thisEndType.getChildren()
+    theOtherEndType.getChildren()
         .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
         .forEach(x =&gt; {
         x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
         x.delete();
     });
     return;
-    function updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId) {
-        const pkAttributes = getPrimaryKeys(otherEndType);
-        pkAttributes.forEach((pk, index) =&gt; {
+    function updateForeignKeyAttribute(selectedEnd, theOtherEndType, theSelectedEndType, targetEndId) {
+        const pkAttributesOfSelectedEnd = getPrimaryKeys(theSelectedEndType);
+        pkAttributesOfSelectedEnd.forEach((primaryKeyOfSelectedEnd, index) =&gt; {
             var _a;
-            let fkAttribute = (_a = thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", thisEndType.id);
+            let fkAttributeOfOtherEnd = (_a = theOtherEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", theOtherEndType.id);
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-            let fkNameToUse = getForeignKeyName(thisEnd, pk);
-            if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
-                if (!fkAttribute.hasMetadata(metadataKey.fkOriginalName) || (fkAttribute.getMetadata(metadataKey.fkOriginalName) == fkAttribute.getName())) {
-                    fkAttribute.setName(fkNameToUse, false);
-                    fkAttribute.setMetadata(metadataKey.fkOriginalName, fkAttribute.getName());
+            let fkNameToUse = getForeignKeyName(selectedEnd, theSelectedEndType, primaryKeyOfSelectedEnd, fkAttributeOfOtherEnd.getName() !== "" ? fkAttributeOfOtherEnd : null);
+            if (fkAttributeOfOtherEnd.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
+                if (!fkAttributeOfOtherEnd.hasMetadata(metadataKey.fkOriginalName) || (fkAttributeOfOtherEnd.getMetadata(metadataKey.fkOriginalName) == fkAttributeOfOtherEnd.getName())) {
+                    fkAttributeOfOtherEnd.setName(fkNameToUse, false);
+                    fkAttributeOfOtherEnd.setMetadata(metadataKey.fkOriginalName, fkAttributeOfOtherEnd.getName());
                 }
             }
-            fkAttribute.setMetadata(metadataKey.association, targetEndId);
-            fkAttribute.setMetadata(metadataKey.isManagedKey, "true");
-            let fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
+            fkAttributeOfOtherEnd.setMetadata(metadataKey.association, targetEndId);
+            fkAttributeOfOtherEnd.setMetadata(metadataKey.isManagedKey, "true");
+            let fkStereotype = fkAttributeOfOtherEnd.getStereotype(foreignKeyStereotypeId);
             if (fkStereotype == null) {
-                fkAttribute.addStereotype(foreignKeyStereotypeId);
-                fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
+                fkAttributeOfOtherEnd.addStereotype(foreignKeyStereotypeId);
+                fkStereotype = fkAttributeOfOtherEnd.getStereotype(foreignKeyStereotypeId);
             }
-            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
-            let isSelfReferencing = () =&gt; thisEnd.typeReference.getTypeId() === thisEnd.getOtherEnd().typeReference.getTypeId();
-            fkAttribute.typeReference.setType(pk.typeId);
-            if (thisEnd.isTargetEnd() || !isSelfReferencing()) {
-                fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
+            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(selectedEnd.isTargetEnd() ? selectedEnd.id : selectedEnd.getOtherEnd().id);
+            let isSelfReferencing = () =&gt; selectedEnd.typeReference.getTypeId() === selectedEnd.getOtherEnd().typeReference.getTypeId();
+            fkAttributeOfOtherEnd.typeReference.setType(primaryKeyOfSelectedEnd.typeId);
+            if (selectedEnd.isTargetEnd() || !isSelfReferencing()) {
+                fkAttributeOfOtherEnd.typeReference.setIsNullable(selectedEnd.typeReference.isNullable);
             }
         });
-        thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) =&gt; {
-            if (index &gt;= pkAttributes.length) {
+        theOtherEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) =&gt; {
+            if (index &gt;= pkAttributesOfSelectedEnd.length) {
                 attr.setMetadata(metadataKey.isBeingDeletedByScript, "true");
                 attr.delete();
             }
         });
-        if (otherEndType.id !== thisEndType.id) {
-            otherEndType.getChildren()
+        if (theSelectedEndType.id !== theOtherEndType.id) {
+            theSelectedEndType.getChildren()
                 .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
                 .forEach(x =&gt; {
                 x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
@@ -510,12 +520,22 @@ function updateForeignKeys(thisEnd) {
         }
     }
     // If you change the logic around determining FK Name make sure to update the SQL Importer to have the same logic
-    function getForeignKeyName(thisEnd, pk) {
-        // Is the PK's name already containing the name of the association?
-        if (pk.name.toLocaleLowerCase().includes(thisEnd.getName().toLocaleLowerCase())) {
-            return toPascalCase(pk.name);
+    function getForeignKeyName(selectedEnd, theSelectedEndType, primaryKeyOfSelectedEnd, fkAttributeOfOtherEnd) {
+        // If the FK already exists, just use it.
+        if (fkAttributeOfOtherEnd != null) {
+            return fkAttributeOfOtherEnd.getName();
         }
-        return `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
+        // If Association name and Selected Type name is the same and the selected-end type is in the PK name
+        if (selectedEnd.getName().toLocaleLowerCase() === theSelectedEndType.getName().toLocaleLowerCase() &amp;&amp;
+            primaryKeyOfSelectedEnd.name.toLocaleLowerCase().includes(theSelectedEndType.getName().toLocaleLowerCase())) {
+            return toPascalCase(primaryKeyOfSelectedEnd.name);
+        }
+        // If the Association name is composed of a supposed PK name and the selected-end type name
+        // then use the association name without the selected-end type name
+        if (selectedEnd.getName().includes(theSelectedEndType.getName(), 1)) {
+            return toPascalCase(selectedEnd.getName().replace(theSelectedEndType.getName(), ""));
+        }
+        return `${toCamelCase(selectedEnd.getName())}${toPascalCase(primaryKeyOfSelectedEnd.name)}`;
     }
     function requiresForeignKey(associationEnd) {
         const isSelfReferencingWithoutManyToMany = () =&gt; associationEnd.typeReference.getTypeId() === associationEnd.getOtherEnd().typeReference.getTypeId() &amp;&amp;
@@ -695,67 +715,67 @@ function applyAttributeNamingConvention(str) {
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
 /// &lt;reference path="../../../common/applyAttributeNamingConvention.ts" /&gt;
 /// &lt;reference path="../_common/constants.ts" /&gt;
-function updateForeignKeys(thisEnd) {
+function updateForeignKeys(selectedEnd) {
     var _a, _b;
     if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit") {
         return;
     }
-    let otherEnd = thisEnd.getOtherEnd();
-    if (!otherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
+    let theOtherEnd = selectedEnd.getOtherEnd();
+    if (!theOtherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
-    let thisEndType = thisEnd.getOtherEnd().typeReference.getType();
-    let otherEndType = thisEnd.typeReference.getType();
-    if ((thisEndType === null || thisEndType === void 0 ? void 0 : thisEndType.specialization) !== "Class" || (otherEndType === null || otherEndType === void 0 ? void 0 : otherEndType.specialization) !== "Class") {
+    let theOtherEndType = theOtherEnd.typeReference.getType();
+    let theSelectedEndType = selectedEnd.typeReference.getType();
+    if ((theOtherEndType === null || theOtherEndType === void 0 ? void 0 : theOtherEndType.specialization) !== "Class" || (theSelectedEndType === null || theSelectedEndType === void 0 ? void 0 : theSelectedEndType.specialization) !== "Class") {
         return;
     }
-    const targetEndId = thisEnd.isTargetEnd() ? thisEnd.id : otherEnd.id;
-    if (requiresForeignKey(thisEnd)) {
-        updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId);
+    const targetEndId = selectedEnd.isTargetEnd() ? selectedEnd.id : theOtherEnd.id;
+    if (requiresForeignKey(selectedEnd)) {
+        updateForeignKeyAttribute(selectedEnd, theOtherEndType, theSelectedEndType, targetEndId);
         return;
     }
-    thisEndType.getChildren()
+    theOtherEndType.getChildren()
         .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
         .forEach(x =&gt; {
         x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
         x.delete();
     });
     return;
-    function updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId) {
-        const pkAttributes = getPrimaryKeys(otherEndType);
-        pkAttributes.forEach((pk, index) =&gt; {
+    function updateForeignKeyAttribute(selectedEnd, theOtherEndType, theSelectedEndType, targetEndId) {
+        const pkAttributesOfSelectedEnd = getPrimaryKeys(theSelectedEndType);
+        pkAttributesOfSelectedEnd.forEach((primaryKeyOfSelectedEnd, index) =&gt; {
             var _a;
-            let fkAttribute = (_a = thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", thisEndType.id);
+            let fkAttributeOfOtherEnd = (_a = theOtherEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", theOtherEndType.id);
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-            let fkNameToUse = getForeignKeyName(thisEnd, pk);
-            if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
-                if (!fkAttribute.hasMetadata(metadataKey.fkOriginalName) || (fkAttribute.getMetadata(metadataKey.fkOriginalName) == fkAttribute.getName())) {
-                    fkAttribute.setName(fkNameToUse, false);
-                    fkAttribute.setMetadata(metadataKey.fkOriginalName, fkAttribute.getName());
+            let fkNameToUse = getForeignKeyName(selectedEnd, theSelectedEndType, primaryKeyOfSelectedEnd, fkAttributeOfOtherEnd.getName() !== "" ? fkAttributeOfOtherEnd : null);
+            if (fkAttributeOfOtherEnd.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
+                if (!fkAttributeOfOtherEnd.hasMetadata(metadataKey.fkOriginalName) || (fkAttributeOfOtherEnd.getMetadata(metadataKey.fkOriginalName) == fkAttributeOfOtherEnd.getName())) {
+                    fkAttributeOfOtherEnd.setName(fkNameToUse, false);
+                    fkAttributeOfOtherEnd.setMetadata(metadataKey.fkOriginalName, fkAttributeOfOtherEnd.getName());
                 }
             }
-            fkAttribute.setMetadata(metadataKey.association, targetEndId);
-            fkAttribute.setMetadata(metadataKey.isManagedKey, "true");
-            let fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
+            fkAttributeOfOtherEnd.setMetadata(metadataKey.association, targetEndId);
+            fkAttributeOfOtherEnd.setMetadata(metadataKey.isManagedKey, "true");
+            let fkStereotype = fkAttributeOfOtherEnd.getStereotype(foreignKeyStereotypeId);
             if (fkStereotype == null) {
-                fkAttribute.addStereotype(foreignKeyStereotypeId);
-                fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
+                fkAttributeOfOtherEnd.addStereotype(foreignKeyStereotypeId);
+                fkStereotype = fkAttributeOfOtherEnd.getStereotype(foreignKeyStereotypeId);
             }
-            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
-            let isSelfReferencing = () =&gt; thisEnd.typeReference.getTypeId() === thisEnd.getOtherEnd().typeReference.getTypeId();
-            fkAttribute.typeReference.setType(pk.typeId);
-            if (thisEnd.isTargetEnd() || !isSelfReferencing()) {
-                fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
+            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(selectedEnd.isTargetEnd() ? selectedEnd.id : selectedEnd.getOtherEnd().id);
+            let isSelfReferencing = () =&gt; selectedEnd.typeReference.getTypeId() === selectedEnd.getOtherEnd().typeReference.getTypeId();
+            fkAttributeOfOtherEnd.typeReference.setType(primaryKeyOfSelectedEnd.typeId);
+            if (selectedEnd.isTargetEnd() || !isSelfReferencing()) {
+                fkAttributeOfOtherEnd.typeReference.setIsNullable(selectedEnd.typeReference.isNullable);
             }
         });
-        thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) =&gt; {
-            if (index &gt;= pkAttributes.length) {
+        theOtherEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) =&gt; {
+            if (index &gt;= pkAttributesOfSelectedEnd.length) {
                 attr.setMetadata(metadataKey.isBeingDeletedByScript, "true");
                 attr.delete();
             }
         });
-        if (otherEndType.id !== thisEndType.id) {
-            otherEndType.getChildren()
+        if (theSelectedEndType.id !== theOtherEndType.id) {
+            theSelectedEndType.getChildren()
                 .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
                 .forEach(x =&gt; {
                 x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
@@ -764,12 +784,22 @@ function updateForeignKeys(thisEnd) {
         }
     }
     // If you change the logic around determining FK Name make sure to update the SQL Importer to have the same logic
-    function getForeignKeyName(thisEnd, pk) {
-        // Is the PK's name already containing the name of the association?
-        if (pk.name.toLocaleLowerCase().includes(thisEnd.getName().toLocaleLowerCase())) {
-            return toPascalCase(pk.name);
+    function getForeignKeyName(selectedEnd, theSelectedEndType, primaryKeyOfSelectedEnd, fkAttributeOfOtherEnd) {
+        // If the FK already exists, just use it.
+        if (fkAttributeOfOtherEnd != null) {
+            return fkAttributeOfOtherEnd.getName();
         }
-        return `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
+        // If Association name and Selected Type name is the same and the selected-end type is in the PK name
+        if (selectedEnd.getName().toLocaleLowerCase() === theSelectedEndType.getName().toLocaleLowerCase() &amp;&amp;
+            primaryKeyOfSelectedEnd.name.toLocaleLowerCase().includes(theSelectedEndType.getName().toLocaleLowerCase())) {
+            return toPascalCase(primaryKeyOfSelectedEnd.name);
+        }
+        // If the Association name is composed of a supposed PK name and the selected-end type name
+        // then use the association name without the selected-end type name
+        if (selectedEnd.getName().includes(theSelectedEndType.getName(), 1)) {
+            return toPascalCase(selectedEnd.getName().replace(theSelectedEndType.getName(), ""));
+        }
+        return `${toCamelCase(selectedEnd.getName())}${toPascalCase(primaryKeyOfSelectedEnd.name)}`;
     }
     function requiresForeignKey(associationEnd) {
         const isSelfReferencingWithoutManyToMany = () =&gt; associationEnd.typeReference.getTypeId() === associationEnd.getOtherEnd().typeReference.getTypeId() &amp;&amp;
@@ -949,67 +979,67 @@ function applyAttributeNamingConvention(str) {
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
 /// &lt;reference path="../../../common/applyAttributeNamingConvention.ts" /&gt;
 /// &lt;reference path="../_common/constants.ts" /&gt;
-function updateForeignKeys(thisEnd) {
+function updateForeignKeys(selectedEnd) {
     var _a, _b;
     if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit") {
         return;
     }
-    let otherEnd = thisEnd.getOtherEnd();
-    if (!otherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
+    let theOtherEnd = selectedEnd.getOtherEnd();
+    if (!theOtherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
-    let thisEndType = thisEnd.getOtherEnd().typeReference.getType();
-    let otherEndType = thisEnd.typeReference.getType();
-    if ((thisEndType === null || thisEndType === void 0 ? void 0 : thisEndType.specialization) !== "Class" || (otherEndType === null || otherEndType === void 0 ? void 0 : otherEndType.specialization) !== "Class") {
+    let theOtherEndType = theOtherEnd.typeReference.getType();
+    let theSelectedEndType = selectedEnd.typeReference.getType();
+    if ((theOtherEndType === null || theOtherEndType === void 0 ? void 0 : theOtherEndType.specialization) !== "Class" || (theSelectedEndType === null || theSelectedEndType === void 0 ? void 0 : theSelectedEndType.specialization) !== "Class") {
         return;
     }
-    const targetEndId = thisEnd.isTargetEnd() ? thisEnd.id : otherEnd.id;
-    if (requiresForeignKey(thisEnd)) {
-        updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId);
+    const targetEndId = selectedEnd.isTargetEnd() ? selectedEnd.id : theOtherEnd.id;
+    if (requiresForeignKey(selectedEnd)) {
+        updateForeignKeyAttribute(selectedEnd, theOtherEndType, theSelectedEndType, targetEndId);
         return;
     }
-    thisEndType.getChildren()
+    theOtherEndType.getChildren()
         .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
         .forEach(x =&gt; {
         x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
         x.delete();
     });
     return;
-    function updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId) {
-        const pkAttributes = getPrimaryKeys(otherEndType);
-        pkAttributes.forEach((pk, index) =&gt; {
+    function updateForeignKeyAttribute(selectedEnd, theOtherEndType, theSelectedEndType, targetEndId) {
+        const pkAttributesOfSelectedEnd = getPrimaryKeys(theSelectedEndType);
+        pkAttributesOfSelectedEnd.forEach((primaryKeyOfSelectedEnd, index) =&gt; {
             var _a;
-            let fkAttribute = (_a = thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", thisEndType.id);
+            let fkAttributeOfOtherEnd = (_a = theOtherEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", theOtherEndType.id);
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-            let fkNameToUse = getForeignKeyName(thisEnd, pk);
-            if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
-                if (!fkAttribute.hasMetadata(metadataKey.fkOriginalName) || (fkAttribute.getMetadata(metadataKey.fkOriginalName) == fkAttribute.getName())) {
-                    fkAttribute.setName(fkNameToUse, false);
-                    fkAttribute.setMetadata(metadataKey.fkOriginalName, fkAttribute.getName());
+            let fkNameToUse = getForeignKeyName(selectedEnd, theSelectedEndType, primaryKeyOfSelectedEnd, fkAttributeOfOtherEnd.getName() !== "" ? fkAttributeOfOtherEnd : null);
+            if (fkAttributeOfOtherEnd.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
+                if (!fkAttributeOfOtherEnd.hasMetadata(metadataKey.fkOriginalName) || (fkAttributeOfOtherEnd.getMetadata(metadataKey.fkOriginalName) == fkAttributeOfOtherEnd.getName())) {
+                    fkAttributeOfOtherEnd.setName(fkNameToUse, false);
+                    fkAttributeOfOtherEnd.setMetadata(metadataKey.fkOriginalName, fkAttributeOfOtherEnd.getName());
                 }
             }
-            fkAttribute.setMetadata(metadataKey.association, targetEndId);
-            fkAttribute.setMetadata(metadataKey.isManagedKey, "true");
-            let fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
+            fkAttributeOfOtherEnd.setMetadata(metadataKey.association, targetEndId);
+            fkAttributeOfOtherEnd.setMetadata(metadataKey.isManagedKey, "true");
+            let fkStereotype = fkAttributeOfOtherEnd.getStereotype(foreignKeyStereotypeId);
             if (fkStereotype == null) {
-                fkAttribute.addStereotype(foreignKeyStereotypeId);
-                fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
+                fkAttributeOfOtherEnd.addStereotype(foreignKeyStereotypeId);
+                fkStereotype = fkAttributeOfOtherEnd.getStereotype(foreignKeyStereotypeId);
             }
-            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
-            let isSelfReferencing = () =&gt; thisEnd.typeReference.getTypeId() === thisEnd.getOtherEnd().typeReference.getTypeId();
-            fkAttribute.typeReference.setType(pk.typeId);
-            if (thisEnd.isTargetEnd() || !isSelfReferencing()) {
-                fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
+            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(selectedEnd.isTargetEnd() ? selectedEnd.id : selectedEnd.getOtherEnd().id);
+            let isSelfReferencing = () =&gt; selectedEnd.typeReference.getTypeId() === selectedEnd.getOtherEnd().typeReference.getTypeId();
+            fkAttributeOfOtherEnd.typeReference.setType(primaryKeyOfSelectedEnd.typeId);
+            if (selectedEnd.isTargetEnd() || !isSelfReferencing()) {
+                fkAttributeOfOtherEnd.typeReference.setIsNullable(selectedEnd.typeReference.isNullable);
             }
         });
-        thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) =&gt; {
-            if (index &gt;= pkAttributes.length) {
+        theOtherEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) =&gt; {
+            if (index &gt;= pkAttributesOfSelectedEnd.length) {
                 attr.setMetadata(metadataKey.isBeingDeletedByScript, "true");
                 attr.delete();
             }
         });
-        if (otherEndType.id !== thisEndType.id) {
-            otherEndType.getChildren()
+        if (theSelectedEndType.id !== theOtherEndType.id) {
+            theSelectedEndType.getChildren()
                 .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
                 .forEach(x =&gt; {
                 x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
@@ -1018,12 +1048,22 @@ function updateForeignKeys(thisEnd) {
         }
     }
     // If you change the logic around determining FK Name make sure to update the SQL Importer to have the same logic
-    function getForeignKeyName(thisEnd, pk) {
-        // Is the PK's name already containing the name of the association?
-        if (pk.name.toLocaleLowerCase().includes(thisEnd.getName().toLocaleLowerCase())) {
-            return toPascalCase(pk.name);
+    function getForeignKeyName(selectedEnd, theSelectedEndType, primaryKeyOfSelectedEnd, fkAttributeOfOtherEnd) {
+        // If the FK already exists, just use it.
+        if (fkAttributeOfOtherEnd != null) {
+            return fkAttributeOfOtherEnd.getName();
         }
-        return `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
+        // If Association name and Selected Type name is the same and the selected-end type is in the PK name
+        if (selectedEnd.getName().toLocaleLowerCase() === theSelectedEndType.getName().toLocaleLowerCase() &amp;&amp;
+            primaryKeyOfSelectedEnd.name.toLocaleLowerCase().includes(theSelectedEndType.getName().toLocaleLowerCase())) {
+            return toPascalCase(primaryKeyOfSelectedEnd.name);
+        }
+        // If the Association name is composed of a supposed PK name and the selected-end type name
+        // then use the association name without the selected-end type name
+        if (selectedEnd.getName().includes(theSelectedEndType.getName(), 1)) {
+            return toPascalCase(selectedEnd.getName().replace(theSelectedEndType.getName(), ""));
+        }
+        return `${toCamelCase(selectedEnd.getName())}${toPascalCase(primaryKeyOfSelectedEnd.name)}`;
     }
     function requiresForeignKey(associationEnd) {
         const isSelfReferencingWithoutManyToMany = () =&gt; associationEnd.typeReference.getTypeId() === associationEnd.getOtherEnd().typeReference.getTypeId() &amp;&amp;

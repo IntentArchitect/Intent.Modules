@@ -3,31 +3,31 @@
 /// <reference path="../../../common/applyAttributeNamingConvention.ts" />
 /// <reference path="../_common/constants.ts" />
 
-function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationReadOnlyApi): void {
+function updateForeignKeys(selectedEnd: MacroApi.Context.IAssociationReadOnlyApi): void {
     if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit") {
         return;
     }
 
-    let otherEnd = thisEnd.getOtherEnd();
-    if (!otherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
+    let theOtherEnd = selectedEnd.getOtherEnd();
+    if (!theOtherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
 
-    let thisEndType = thisEnd.getOtherEnd().typeReference.getType();
-    let otherEndType = thisEnd.typeReference.getType();
+    let theOtherEndType = theOtherEnd.typeReference.getType();
+    let theSelectedEndType = selectedEnd.typeReference.getType();
 
-    if (thisEndType?.specialization !== "Class" || otherEndType?.specialization !== "Class") {
+    if (theOtherEndType?.specialization !== "Class" || theSelectedEndType?.specialization !== "Class") {
         return;
     }
 
-    const targetEndId = thisEnd.isTargetEnd() ? thisEnd.id : otherEnd.id;
+    const targetEndId = selectedEnd.isTargetEnd() ? selectedEnd.id : theOtherEnd.id;
 
-    if (requiresForeignKey(thisEnd)) {
-        updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId);
+    if (requiresForeignKey(selectedEnd)) {
+        updateForeignKeyAttribute(selectedEnd, theOtherEndType, theSelectedEndType, targetEndId);
         return;
     }
 
-    thisEndType.getChildren()
+    theOtherEndType.getChildren()
         .filter(x => x.getMetadata(metadataKey.association) == targetEndId)
         .forEach(x => {
             x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
@@ -36,54 +36,58 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationReadOnlyApi): v
     return;
 
     function updateForeignKeyAttribute(
-        thisEnd: MacroApi.Context.IAssociationReadOnlyApi,
-        thisEndType: MacroApi.Context.IElementApi,
-        otherEndType: MacroApi.Context.IElementApi,
+        selectedEnd: MacroApi.Context.IAssociationReadOnlyApi,
+        theOtherEndType: MacroApi.Context.IElementApi,
+        theSelectedEndType: MacroApi.Context.IElementApi,
         targetEndId: string
     ): void {
-        const pkAttributes = getPrimaryKeys(otherEndType);
+        const pkAttributesOfSelectedEnd = getPrimaryKeys(theSelectedEndType);
 
-        pkAttributes.forEach((pk, index) => {
-            let fkAttribute = thisEndType.getChildren().filter(x => x.getMetadata(metadataKey.association) == targetEndId)[index] ??
-                createElement("Attribute", "", thisEndType.id);
+        pkAttributesOfSelectedEnd.forEach((primaryKeyOfSelectedEnd, index) => {
+            let fkAttributeOfOtherEnd = theOtherEndType.getChildren().filter(x => x.getMetadata(metadataKey.association) == targetEndId)[index] ??
+                createElement("Attribute", "", theOtherEndType.id);
 
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-            let fkNameToUse = getForeignKeyName(thisEnd, pk);
+            let fkNameToUse = getForeignKeyName(
+                selectedEnd, 
+                theSelectedEndType,
+                primaryKeyOfSelectedEnd, 
+                fkAttributeOfOtherEnd.getName() !== "" ? fkAttributeOfOtherEnd : null);
 
-            if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
-                if (!fkAttribute.hasMetadata(metadataKey.fkOriginalName) || (fkAttribute.getMetadata(metadataKey.fkOriginalName) == fkAttribute.getName())) {
-                    fkAttribute.setName(fkNameToUse, false);
-                    fkAttribute.setMetadata(metadataKey.fkOriginalName, fkAttribute.getName());
+            if (fkAttributeOfOtherEnd.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
+                if (!fkAttributeOfOtherEnd.hasMetadata(metadataKey.fkOriginalName) || (fkAttributeOfOtherEnd.getMetadata(metadataKey.fkOriginalName) == fkAttributeOfOtherEnd.getName())) {
+                    fkAttributeOfOtherEnd.setName(fkNameToUse, false);
+                    fkAttributeOfOtherEnd.setMetadata(metadataKey.fkOriginalName, fkAttributeOfOtherEnd.getName());
                 }
             }
 
-            fkAttribute.setMetadata(metadataKey.association, targetEndId);
-            fkAttribute.setMetadata(metadataKey.isManagedKey, "true");
+            fkAttributeOfOtherEnd.setMetadata(metadataKey.association, targetEndId);
+            fkAttributeOfOtherEnd.setMetadata(metadataKey.isManagedKey, "true");
 
-            let fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
+            let fkStereotype = fkAttributeOfOtherEnd.getStereotype(foreignKeyStereotypeId);
             if (fkStereotype == null) {
-                fkAttribute.addStereotype(foreignKeyStereotypeId);
-                fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
+                fkAttributeOfOtherEnd.addStereotype(foreignKeyStereotypeId);
+                fkStereotype = fkAttributeOfOtherEnd.getStereotype(foreignKeyStereotypeId);
             }
-            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
+            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(selectedEnd.isTargetEnd() ? selectedEnd.id : selectedEnd.getOtherEnd().id);
 
-            let isSelfReferencing = () => thisEnd.typeReference.getTypeId() === thisEnd.getOtherEnd().typeReference.getTypeId();
+            let isSelfReferencing = () => selectedEnd.typeReference.getTypeId() === selectedEnd.getOtherEnd().typeReference.getTypeId();
 
-            fkAttribute.typeReference.setType(pk.typeId);
-            if (thisEnd.isTargetEnd() || !isSelfReferencing()) {
-                fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
+            fkAttributeOfOtherEnd.typeReference.setType(primaryKeyOfSelectedEnd.typeId);
+            if (selectedEnd.isTargetEnd() || !isSelfReferencing()) {
+                fkAttributeOfOtherEnd.typeReference.setIsNullable(selectedEnd.typeReference.isNullable);
             }
         });
 
-        thisEndType.getChildren().filter(x => x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) => {
-            if (index >= pkAttributes.length) {
+        theOtherEndType.getChildren().filter(x => x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) => {
+            if (index >= pkAttributesOfSelectedEnd.length) {
                 attr.setMetadata(metadataKey.isBeingDeletedByScript, "true");
                 attr.delete();
             }
         });
 
-        if (otherEndType.id !== thisEndType.id) {
-            otherEndType.getChildren()
+        if (theSelectedEndType.id !== theOtherEndType.id) {
+            theSelectedEndType.getChildren()
                 .filter(x => x.getMetadata(metadataKey.association) == targetEndId)
                 .forEach(x => {
                     x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
@@ -98,12 +102,31 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationReadOnlyApi): v
     }
 
     // If you change the logic around determining FK Name make sure to update the SQL Importer to have the same logic
-    function getForeignKeyName(thisEnd: MacroApi.Context.IAssociationReadOnlyApi, pk: IPrimaryKey): string {
-        // Is the PK's name already containing the name of the association?
-        if (pk.name.toLocaleLowerCase().includes(thisEnd.getName().toLocaleLowerCase())) {
-            return toPascalCase(pk.name);
+    function getForeignKeyName(
+        selectedEnd: MacroApi.Context.IAssociationReadOnlyApi,
+        theSelectedEndType: MacroApi.Context.IElementApi,
+        primaryKeyOfSelectedEnd: IPrimaryKey,
+        fkAttributeOfOtherEnd? : MacroApi.Context.IElementApi)
+        : string {
+        // If the FK already exists, just use it.
+        if (fkAttributeOfOtherEnd != null) {
+            return fkAttributeOfOtherEnd.getName();
         }
-        return `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
+      
+        // If Association name and Selected Type name is the same and the selected-end type is in the PK name
+        if (selectedEnd.getName().toLocaleLowerCase() === theSelectedEndType.getName().toLocaleLowerCase() && 
+            primaryKeyOfSelectedEnd.name.toLocaleLowerCase().includes(theSelectedEndType.getName().toLocaleLowerCase())) {
+            return toPascalCase(primaryKeyOfSelectedEnd.name);
+        }
+
+
+        // If the Association name is composed of a supposed PK name and the selected-end type name
+        // then use the association name without the selected-end type name
+        if (selectedEnd.getName().includes(theSelectedEndType.getName(), 1)) {
+            return toPascalCase(selectedEnd.getName().replace(theSelectedEndType.getName(), ""));
+        }
+
+        return `${toCamelCase(selectedEnd.getName())}${toPascalCase(primaryKeyOfSelectedEnd.name)}`;
     }
 
     function requiresForeignKey(associationEnd: MacroApi.Context.IAssociationReadOnlyApi): boolean {

@@ -1,6 +1,6 @@
 ### Version 3.7.7
 
-- Fixed: Added support for foreign key names that contain the association name.
+- Fixed: Improved how foreign key names are handled, especially ones that are imported from a database schema.
 
 ### Version 3.7.6
 
