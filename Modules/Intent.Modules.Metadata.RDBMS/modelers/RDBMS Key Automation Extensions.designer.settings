@@ -13,59 +13,60 @@
       <typeOrder />
       <macros>
         <macro trigger="on-loaded">
-          <script>/// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
+          <script>const primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
+const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
+const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+const foreignKeyStereotypeAssociationProperty = "Association";
+const metadataKey = {
+    association: "association",
+    autoManageKeys: "auto-manage-keys",
+    fkOriginalName: "fk-original-name",
+    isBeingDeletedByScript: "is-being-deleted-by-script",
+    isManagedKey: "is-managed-key",
+};
+/// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../_common/constants.ts" /&gt;
-
-function execute(): void {
+function execute() {
     setDatabaseParadigm();
     setupForeignKeyAttributes();
 }
-
 function setDatabaseParadigm() {
     if (!element.hasMetadata("database-paradigm-selected") &amp;&amp;
         !element.hasStereotype(relationalDatabaseId) &amp;&amp;
-        !element.hasStereotype("Document Database")
-    ) {
+        !element.hasStereotype("Document Database")) {
         element.addStereotype(relationalDatabaseId);
     }
-
     element.setMetadata("database-paradigm-selected", "true");
 }
-
-
-function setupForeignKeyAttributes(): void {
+function setupForeignKeyAttributes() {
     lookupTypesOf("Attribute").forEach(attr =&gt; {
         processSingleForeignKeyAttribute(attr);
     });
 }
-
-function processSingleForeignKeyAttribute(attr: MacroApi.Context.IElementApi) {
+function processSingleForeignKeyAttribute(attr) {
+    var _a, _b;
     if (!attr.hasMetadata(metadataKey.association) ||
         attr.getPackage().specialization !== "Domain Package" ||
-        !attr.getPackage().hasStereotype(relationalDatabaseId)
-    ) {
+        !attr.getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
-
-    const associationTarget = attr.getStereotype(foreignKeyStereotypeId)?.getProperty(foreignKeyStereotypeAssociationProperty)?.getValue();
+    const associationTarget = (_b = (_a = attr.getStereotype(foreignKeyStereotypeId)) === null || _a === void 0 ? void 0 : _a.getProperty(foreignKeyStereotypeAssociationProperty)) === null || _b === void 0 ? void 0 : _b.getValue();
     if (associationTarget == null) {
         if (!attr.hasStereotype(foreignKeyStereotypeId)) {
             attr.addStereotype(foreignKeyStereotypeId);
         }
-
         const associationId = attr.getMetadata(metadataKey.association);
         attr
             .getStereotype(foreignKeyStereotypeId)
             .getProperty(foreignKeyStereotypeAssociationProperty)
             .setValue(associationId);
     }
-
     if (!attr.hasMetadata(metadataKey.fkOriginalName)) {
         attr.setMetadata(metadataKey.fkOriginalName, attr.getName());
     }
 }
-
-execute();</script>
+execute();
+</script>
         </macro>
       </macros>
     </packageExtension>
