@@ -15602,7 +15602,7 @@ convertToAdvancedMapping.execute();
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
           <allowIsCollection>false</allowIsCollection>
-          <isNavigableDefault>true</isNavigableDefault>
+          <isNavigableDefault>false</isNavigableDefault>
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
@@ -15685,7 +15685,7 @@ return typeReference.getIsCollection()
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
           <allowIsCollection>false</allowIsCollection>
-          <isNavigableDefault>true</isNavigableDefault>
+          <isNavigableDefault>false</isNavigableDefault>
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
@@ -15888,7 +15888,7 @@ return null;</validateFunction>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
           <allowIsCollection>false</allowIsCollection>
-          <isNavigableDefault>true</isNavigableDefault>
+          <isNavigableDefault>false</isNavigableDefault>
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>

@@ -1,3 +1,7 @@
+### Version 2.3.2
+
+- Fixed: Incorrect bidirectionality on Create, Update and Delete Entity Actions.
+
 ### Version 2.3.1
 
 - Improvement: Domain CRUD service suggestions will now prompt the user if they have unsaved changes before proceeding.
