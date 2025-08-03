@@ -15613,7 +15613,10 @@ convertToAdvancedMapping.execute();
         </implements>
         <displayFunction>return `[create] ${getName()}: ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
-        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName() ?? "entity"
+        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName();
+if (!name) {
+    return null;
+}
 return typeReference.getIsCollection() 
     ? pluralize(toCamelCase(name))
     : toCamelCase(name);</defaultNameFunction>
@@ -15652,7 +15655,8 @@ return typeReference.getIsCollection()
       </targetEnd>
       <visualSettings>
         <lineType>Curved</lineType>
-        <lineDashArray>return "3,7";</lineDashArray>
+        <lineColor>return getMappings()[0] || !association.typeReference.isTypeFound() ? null : "gray";</lineColor>
+        <lineDashArray>return getMappings()[0] ? "4,5" : "3,7";</lineDashArray>
         <sourceEnd>
           <pointIndicator>
             <fillColor>return 'limegreen'</fillColor>
@@ -15696,7 +15700,10 @@ return typeReference.getIsCollection()
         </implements>
         <displayFunction>return `[delete] ${getName()}: ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
-        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName() ?? "entity"
+        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName();
+if (!name) {
+    return null;
+}
 return typeReference.getIsCollection() 
     ? pluralize(toCamelCase(name))
     : toCamelCase(name);</defaultNameFunction>
@@ -15734,7 +15741,8 @@ return typeReference.getIsCollection()
       </targetEnd>
       <visualSettings>
         <lineType>Curved</lineType>
-        <lineDashArray>return "3,7";</lineDashArray>
+        <lineColor>return getMappings()[0] || !association.typeReference.isTypeFound() ? null : "gray";</lineColor>
+        <lineDashArray>return getMappings()[0] ? "4,5" : "3,7";</lineDashArray>
         <sourceEnd>
           <pointIndicator>
             <fillColor>return 'indianred'</fillColor>
@@ -15804,19 +15812,26 @@ association.typeReference.getType().getChildren("Attribute")
         </implements>
         <displayFunction>return `[query] ${getName()}: ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
-        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName() ?? "entity"
+        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName();
+if (!name) {
+    return null;
+}
 return typeReference.getIsCollection() 
     ? pluralize(toCamelCase(name))
     : toCamelCase(name);</defaultNameFunction>
         <nameMustBeUnique>true</nameMustBeUnique>
         <validateFunction>if (!typeReference.getIsCollection() &amp;&amp; getAdvancedMapping() != null) {
     if (getAdvancedMapping().getMappedEnds().length == 0) {
-        return "At least one mapping is required if this query will return a single result (i.e. Is Collection == false).";
+        const _this = association; // deal with the closure problem
+        return {
+            text: "At least one mapping is required if this query will return a single result (i.e. Is Collection == false).",
+            onClick: () =&gt; _this.launchAdvancedMappingDialog("25f25af9-c38b-4053-9474-b0fabe9d7ea7")
+        };
     }
 }
 
-const hasConflict = element.getParent().getChildren().filter(x =&gt; x.id != element.id &amp;&amp; element.getName().toLowerCase() == x.getName().toLowerCase()).length &gt; 0;
-if (hasConflict) {
+const hasDuplicateNameConflict = element.getParent().getChildren().filter(x =&gt; x.id != element.id &amp;&amp; element.getName().toLowerCase() == x.getName().toLowerCase()).length &gt; 0;
+if (hasDuplicateNameConflict) {
     return "Name is conflicting with that of a sibling element";
 }
 
@@ -15854,7 +15869,8 @@ return null;</validateFunction>
       </targetEnd>
       <visualSettings>
         <lineType>Curved</lineType>
-        <lineDashArray>return "3,7";</lineDashArray>
+        <lineColor>return getMappings()[0] || !association.typeReference.isTypeFound() ? null : "gray";</lineColor>
+        <lineDashArray>return getMappings()[0] ? "4,5" : "3,7";</lineDashArray>
         <sourceEnd>
           <pointIndicator>
             <fillColor>return 'dodgerblue'</fillColor>
@@ -15869,7 +15885,13 @@ return null;</validateFunction>
           </pointIndicator>
         </targetEnd>
       </visualSettings>
-      <macros />
+      <macros>
+        <macro trigger="on-created">
+          <script>if (association.getOtherEnd().typeReference.getType()?.typeReference?.getIsCollection()) {
+    association.typeReference.setIsCollection(true);
+}</script>
+        </macro>
+      </macros>
     </associationSetting>
     <associationSetting type="Update Entity Action" typeId="9ea0382a-4617-412a-a8c8-af987bbce226">
       <sourceEnd type="Update Entity Action Source End" typeId="6bc95978-6def-4d0c-a4f5-25bdeda8a9f6">
@@ -15899,7 +15921,10 @@ return null;</validateFunction>
         </implements>
         <displayFunction>return `[update] ${getName()}: ${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
-        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName() ?? "entity"
+        <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName();
+if (!name) {
+    return null;
+}
 return typeReference.getIsCollection() 
     ? pluralize(toCamelCase(name))
     : toCamelCase(name);</defaultNameFunction>
@@ -15946,7 +15971,8 @@ return typeReference.getIsCollection()
       </targetEnd>
       <visualSettings>
         <lineType>Curved</lineType>
-        <lineDashArray>return "3,7";</lineDashArray>
+        <lineColor>return getMappings()[0] || !association.typeReference.isTypeFound() ? null : "gray";</lineColor>
+        <lineDashArray>return getMappings()[0] ? "4,5" : "3,7";</lineDashArray>
         <sourceEnd>
           <pointIndicator>
             <fillColor>return 'orange'</fillColor>
@@ -16195,6 +16221,7 @@ let isPartOfAggregationSubEntity = (isPartOfAssociation
     &amp;&amp; element.getParent().getOtherEnd().typeReference.getIsNullable() == false);
 
 return !element.typeReference.getIsNullable() &amp;&amp; !element.typeReference.getIsCollection()
+    &amp;&amp; element.getValue() == null
     &amp;&amp; (element.getParent("Class").getIsMapped())
     &amp;&amp; !isPartOfAggregationSubEntity;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
@@ -16429,7 +16456,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
     </mappingSetting>
     <mappingSetting type="Query Entity Mapping" typeId="25f25af9-c38b-4053-9474-b0fabe9d7ea7">
       <title>Query Entity Mapping</title>
-      <isRequiredFunction>return false;</isRequiredFunction>
+      <isRequiredFunction>return element.getAdvancedMapping("25f25af9-c38b-4053-9474-b0fabe9d7ea7") == null;</isRequiredFunction>
       <targetRootElementFunction>return element.getParent("Class")?.id ?? element.id;</targetRootElementFunction>
       <sourceMappings>
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Invocation Source Mappables" />

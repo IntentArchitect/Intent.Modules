@@ -76,9 +76,9 @@
             <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="QueryEntityActions" isActive="true" />
             <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return `[query] ${getName()}: ${typeReference.display}`" isActive="true" />
-            <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" value="if (!typeReference.getIsCollection() &amp;&amp; getAdvancedMapping() != null) {&#xD;&#xA;    if (getAdvancedMapping().getMappedEnds().length == 0) {&#xD;&#xA;        return &quot;At least one mapping is required if this query will return a single result (i.e. Is Collection == false).&quot;;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const hasConflict = element.getParent().getChildren().filter(x =&gt; x.id != element.id &amp;&amp; element.getName().toLowerCase() == x.getName().toLowerCase()).length &gt; 0;&#xD;&#xA;if (hasConflict) {&#xD;&#xA;    return &quot;Name is conflicting with that of a sibling element&quot;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return null;" isActive="true" />
+            <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" value="if (!typeReference.getIsCollection() &amp;&amp; getAdvancedMapping() != null) {&#xD;&#xA;    if (getAdvancedMapping().getMappedEnds().length == 0) {&#xD;&#xA;        const _this = association; // deal with the closure problem&#xD;&#xA;        return {&#xD;&#xA;            text: &quot;At least one mapping is required if this query will return a single result (i.e. Is Collection == false).&quot;,&#xD;&#xA;            onClick: () =&gt; _this.launchAdvancedMappingDialog(&quot;25f25af9-c38b-4053-9474-b0fabe9d7ea7&quot;)&#xD;&#xA;        };&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const hasDuplicateNameConflict = element.getParent().getChildren().filter(x =&gt; x.id != element.id &amp;&amp; element.getName().toLowerCase() == x.getName().toLowerCase()).length &gt; 0;&#xD;&#xA;if (hasDuplicateNameConflict) {&#xD;&#xA;    return &quot;Name is conflicting with that of a sibling element&quot;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return null;" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Required" isActive="true" />
-            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="let name = (typeReference.getType()?.getParent(&quot;Class&quot;) ?? typeReference.getType())?.getName() ?? &quot;entity&quot;&#xD;&#xA;return typeReference.getIsCollection() &#xD;&#xA;    ? pluralize(toCamelCase(name))&#xD;&#xA;    : toCamelCase(name);" isActive="true" />
+            <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="let name = (typeReference.getType()?.getParent(&quot;Class&quot;) ?? typeReference.getType())?.getName();&#xD;&#xA;if (!name) {&#xD;&#xA;    return null;&#xD;&#xA;}&#xD;&#xA;return typeReference.getIsCollection() &#xD;&#xA;    ? pluralize(toCamelCase(name))&#xD;&#xA;    : toCamelCase(name);" isActive="true" />
             <property name="2d07ed88-82bf-4d30-9280-1488f0f927e0" display="Name Must Be Unique" value="true" isActive="true" />
             <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
             <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="true" isActive="true" />
@@ -163,6 +163,7 @@
       <name>[events]</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>47ab5888-a258-4bec-a9fc-a83de69eb79d</parentFolderId>
@@ -170,7 +171,42 @@
       <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
       <stereotypes />
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="a5c9f2ef-cc46-47ae-b7cc-19c0f3f42454" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
+          <name>On Created</name>
+          <display>On Created: Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="46cfd8ff-6228-4648-974b-bbceae592efd">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>48731816-bb0b-48d0-af10-ea7932bafde2</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1f88f1ac-b96a-4ae7-9047-883c2fa3b3df" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="if (association.getOtherEnd().typeReference.getType()?.typeReference?.getIsCollection()) {&#xD;&#xA;    association.typeReference.setIsCollection(true);&#xD;&#xA;}" isActive="true" />
+                <property name="7d1114d8-e27d-4cb8-b5d5-3fd75bf7dea1" display="Dependencies" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
     </childElement>
   </childElements>
 </class>
