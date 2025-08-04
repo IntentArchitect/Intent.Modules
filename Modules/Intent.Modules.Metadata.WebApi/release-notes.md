@@ -1,3 +1,7 @@
+### Version 4.7.12
+
+- Improvement: On `Update` mappings, the Query will now take precedence over the update when doing auto-generated URL calculations.
+
 ### Version 4.7.11
 
 - Improvement: Moved HTTP file upload / download accelerators to a submenu within the `Expose as HTTP endpoint` context menu option.

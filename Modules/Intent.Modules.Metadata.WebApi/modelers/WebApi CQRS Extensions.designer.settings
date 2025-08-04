@@ -6261,10 +6261,10 @@ function getMappedRequestDetails(request) {
     // Advanced mapping:
     if (mappedElement == null) {
         const advancedMappings = request.getAssociations()
-            .map(association =&gt; {
+            .map((association) =&gt; {
             return association.getMapping(createEntityMappingTypeId) ||
-                association.getMapping(updateEntityMappingTypeId) ||
-                association.getMapping(queryEntityMappingTypeId);
+                association.getMapping(queryEntityMappingTypeId) ||
+                association.getMapping(updateEntityMappingTypeId);
         })
             .filter(mapping =&gt; mapping != null);
         if (advancedMappings.length === 1) {
@@ -6283,6 +6283,7 @@ function getMappedRequestDetails(request) {
         mappingElement: mappedElement,
         mappingTargetType: mappedElement.specialization,
         entityKeyFields: [],
+        ownerKeyFields: []
     };
     result.owningEntity = DomainHelper.getOwningAggregate(entity);
     // As long as it's not for creation, populate the PKs of the entity:
@@ -6291,6 +6292,12 @@ function getMappedRequestDetails(request) {
         result.entityKeyFields = result.mappingTargetType === "Class"
             ? getKeysForClassMapping(request, entity)
             : getKeysForOperationMapping(request, entity);
+    }
+    // If the entity is owned, populate its fields:
+    if (result.owningEntity != null) {
+        result.ownerKeyFields = result.mappingTargetType === "Class"
+            ? getKeysForClassMapping(request, entity, result.owningEntity)
+            : getKeysForOperationMapping(request, entity, result.owningEntity);
     }
     return result;
     /**
@@ -6540,7 +6547,7 @@ function getMappedDomainElement(request) {
     // Advanced mappings:
     if (mappedElement == null) {
         const targetEntities = request.getAssociations()
-            .flatMap(association =&gt; association.getMappings()
+            .flatMap((association) =&gt; association.getMappings()
             .filter(mapping =&gt; mappingTypeIds.some(y =&gt; mapping.mappingTypeId == y))
             .map(mapping =&gt; {
             let element = mapping.getTargetElement();
@@ -7100,10 +7107,10 @@ function getMappedRequestDetails(request) {
     // Advanced mapping:
     if (mappedElement == null) {
         const advancedMappings = request.getAssociations()
-            .map(association =&gt; {
+            .map((association) =&gt; {
             return association.getMapping(createEntityMappingTypeId) ||
-                association.getMapping(updateEntityMappingTypeId) ||
-                association.getMapping(queryEntityMappingTypeId);
+                association.getMapping(queryEntityMappingTypeId) ||
+                association.getMapping(updateEntityMappingTypeId);
         })
             .filter(mapping =&gt; mapping != null);
         if (advancedMappings.length === 1) {
@@ -7122,6 +7129,7 @@ function getMappedRequestDetails(request) {
         mappingElement: mappedElement,
         mappingTargetType: mappedElement.specialization,
         entityKeyFields: [],
+        ownerKeyFields: []
     };
     result.owningEntity = DomainHelper.getOwningAggregate(entity);
     // As long as it's not for creation, populate the PKs of the entity:
@@ -7130,6 +7138,12 @@ function getMappedRequestDetails(request) {
         result.entityKeyFields = result.mappingTargetType === "Class"
             ? getKeysForClassMapping(request, entity)
             : getKeysForOperationMapping(request, entity);
+    }
+    // If the entity is owned, populate its fields:
+    if (result.owningEntity != null) {
+        result.ownerKeyFields = result.mappingTargetType === "Class"
+            ? getKeysForClassMapping(request, entity, result.owningEntity)
+            : getKeysForOperationMapping(request, entity, result.owningEntity);
     }
     return result;
     /**
@@ -7379,7 +7393,7 @@ function getMappedDomainElement(request) {
     // Advanced mappings:
     if (mappedElement == null) {
         const targetEntities = request.getAssociations()
-            .flatMap(association =&gt; association.getMappings()
+            .flatMap((association) =&gt; association.getMappings()
             .filter(mapping =&gt; mappingTypeIds.some(y =&gt; mapping.mappingTypeId == y))
             .map(mapping =&gt; {
             let element = mapping.getTargetElement();
