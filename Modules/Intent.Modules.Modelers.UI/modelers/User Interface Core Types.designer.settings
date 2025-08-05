@@ -925,7 +925,7 @@ const routeId = "9dff9df1-a993-4bf6-9aa7-c16811142228";
 const page = getCurrentDiagram().createElement("Component", "NewPage");
 const stereotype = page.addStereotype(pageId);
 page.refresh();
-getCurrentDiagram().selectVisualsForElements(page.id, false);
+getCurrentDiagram()?.selectVisualsForElements(page.id, false);
 await page.enableEditing();
 
 const folders = page.getParents("Folder");
@@ -1002,7 +1002,7 @@ const routeId = "9dff9df1-a993-4bf6-9aa7-c16811142228";
 const page = getCurrentDiagram().createElement("Component", "NewPage");
 const stereotype = page.addStereotype(pageId);
 page.refresh();
-getCurrentDiagram().selectVisualsForElements(page.id, false);
+getCurrentDiagram()?.selectVisualsForElements(page.id, false);
 await page.enableEditing();
 
 const folders = page.getParents("Folder");
@@ -1638,7 +1638,7 @@ const routeId = "9dff9df1-a993-4bf6-9aa7-c16811142228";
 const page = createElement("Component", "NewPage", element.id);
 const stereotype = page.addStereotype(pageId);
 page.refresh();
-getCurrentDiagram().selectVisualsForElements(page.id);
+getCurrentDiagram()?.selectVisualsForElements(page.id);
 await page.enableEditing();
 
 const folders = page.getParents("Folder");
@@ -1747,7 +1747,7 @@ const routeId = "9dff9df1-a993-4bf6-9aa7-c16811142228";
 const page = createElement("Component", "NewPage", element.id);
 const stereotype = page.addStereotype(pageId);
 page.refresh();
-getCurrentDiagram().selectVisualsForElements(page.id);
+getCurrentDiagram()?.selectVisualsForElements(page.id);
 await page.enableEditing();
 
 const folders = page.getParents("Folder");
