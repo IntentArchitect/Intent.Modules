@@ -24,7 +24,11 @@
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
   </files>
-  <tags />
+  <detect id="Intent.Modelers.UI">
+    <install>
+      <package id="Intent.Modelers.UI" version="1.0.0-beta.16" />
+    </install>
+  </detect>
   <moduleSettingsExtensions />
   <metadata>
     <install target="User Interface" src="modelers/Service Proxies UI Extension.designer.settings" externalReference="10144809-6397-4c64-bc01-b83b3d270ebe" />

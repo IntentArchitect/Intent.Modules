@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -25,6 +25,8 @@
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.7.2" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="4.0.0-pre.0" />
+<!-- We don't want this depencendy that module is the base for Component modules -->
+<!--    <PackageReference Include="Intent.Modules.Modelers.UI.Core" Version="1.0.0-beta.15" />-->
     <PackageReference Include="Intent.Packager" Version="3.6.0-pre.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

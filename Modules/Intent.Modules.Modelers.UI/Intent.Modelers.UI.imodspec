@@ -28,6 +28,11 @@
         <package id="Intent.Modelers.UI.Core" version="1.0.0-beta.16" />
       </install>
     </detect>
+    <detect id="Intent.Modelers.UI.ServiceProxies">
+      <install>
+        <package id="Intent.Modelers.UI.ServiceProxies" version="1.0.0-beta.1" />
+      </install>
+    </detect>
   </interoperability>
   <files>
     <file src="$outDir$/$id$.dll" />
