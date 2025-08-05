@@ -55,7 +55,21 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
 
             foreach (var nugetPackageRegistration in nugetRegistrations)
             {
-                INugetPackages current = Activator.CreateInstance(nugetPackageRegistration) as INugetPackages;
+                INugetPackages current;
+
+                // TODO: Expose an `IServiceProvider` through the SoftwareFactory.SDK to make this
+                // type resolution cleaner (not to mention allow for more injectable services).
+                if (nugetPackageRegistration.GetConstructors(BindingFlags.Public | BindingFlags.Instance)
+                    .Where(ctor => ctor.GetParameters().Length == 1)
+                    .Any(ctor => ctor.GetParameters().First().ParameterType == typeof(IApplicationSettingsProvider)))
+                {
+                    current = Activator.CreateInstance(nugetPackageRegistration, application.Settings) as INugetPackages;
+                }
+                else
+                {
+                    current = Activator.CreateInstance(nugetPackageRegistration) as INugetPackages;
+                }
+
                 current.RegisterPackages();
             }
         }
