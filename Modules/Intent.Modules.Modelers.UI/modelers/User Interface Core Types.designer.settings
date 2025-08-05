@@ -2837,6 +2837,7 @@ return element.hasStereotype(bindableId) || element.hasStereotype(routeParameter
           </childSettings>
         </mappableElement>
         <mappableElement id="7ab19370-4858-4128-af7d-541d9c545f3e" name="Service Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" version="2.0.0">
+          <filterFunction>return element.getParent().specializationId == "b16578a5-27b1-4047-a8df-f0b783d706bd";// Service</filterFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>

@@ -19,6 +19,9 @@
   <parentFolderId>10144809-6397-4c64-bc01-b83b3d270ebe</parentFolderId>
   <packageId>81e2ef41-3cd5-482c-8833-dfba6b29431b</packageId>
   <packageName>Intent.Modelers.UI.ServiceProxies</packageName>
+  <traits>
+    <trait id="12bec4f8-487a-40f8-a6d2-c519d995eb38" name="[Invokable Service Operation]" />
+  </traits>
   <stereotypes>
     <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
       <addedByDefault>true</addedByDefault>
