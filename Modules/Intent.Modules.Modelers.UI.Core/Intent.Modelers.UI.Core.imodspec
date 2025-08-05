@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.UI.Core</id>
-  <version>1.0.1-alpha.0</version>
+  <version>1.0.0-beta.16</version>
   <supportedClientVersions>[4.3.0-beta.4,5.0.0)</supportedClientVersions>
   <summary>Core user interface components for the user interface designer.</summary>
   <description>Core user interface components for the user interface designer.</description>
@@ -16,15 +16,8 @@
   <dependencies>
     <dependency id="Intent.Common" version="3.7.2" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
-    <dependency id="Intent.Modelers.UI" version="1.0.0-beta.10" />
+    <dependency id="Intent.Modelers.UI" version="1.0.0-beta.16" />
   </dependencies>
-  <interoperability>
-    <detect id="Intent.Balzor">
-      <install>
-        <package id="Intent.Balzor" version="1.0.1-alpha.0" />
-      </install>
-    </detect>
-  </interoperability>
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
