@@ -92,7 +92,6 @@
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]">
-          <comment>Indicates that the model represents a processing point in the application. This can then be used to discover interactions that have been modeled against this processing point.</comment>
           <addedByDefault>false</addedByDefault>
           <definitionPackageName>Intent.Common</definitionPackageName>
           <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
