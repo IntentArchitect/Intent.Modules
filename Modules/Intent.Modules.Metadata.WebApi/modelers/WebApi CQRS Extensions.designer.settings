@@ -3681,53 +3681,11 @@ configureUpload(element);
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
-          <script>function execute() {
-    const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
-    const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-
-    let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
-
-    if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
-        // Api version Stereotype removed
-        route = route.replace("{version}/", "");
-        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
-        return;
-    }
-
-    if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
-        // Api version Stereotype added
-        let defaultRoutePrefix = getDefaultRoutePrefix(false);
-        let startIndex = route.indexOf(defaultRoutePrefix);
-        if (startIndex == 0) {
-            route = `${defaultRoutePrefix}/{version}/${(route.substring(defaultRoutePrefix.length+1))}`;
-        } else {
-            route = `{version}/${(route)}`;
-        }
-        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
-        return;
-    }
-}
-
-function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
-
-    let route = "api/";
-
-    let defaultApiRouteField = application.getSettings(apiSettingsId)?.getField("Default API Route Prefix");
-    if (defaultApiRouteField) {
-        route = defaultApiRouteField.value ?? "";
-    }
-
-    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
-        route += "/";
-    } else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
-        route = removeSuffix(route, "/");
-    }
-
-    return route;
-}
-
-execute();</script>
+          <dependencies>
+            <dependency name="HTTP Route Update Scripts" id="abf4c85d-7709-443a-8817-ffa6cb9dd99f" />
+          </dependencies>
+          <script>updateVersionParameter(element);
+updateRouteParameters(element);</script>
         </macro>
         <macro trigger="on-name-changed">
           <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("625c6211-0dc7-4190-af49-6eadb82c7015")?.value;
@@ -5692,53 +5650,11 @@ configureDownload(element);
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
-          <script>function execute() {
-    const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
-    const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-
-    let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
-
-    if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
-        // Api version Stereotype removed
-        route = route.replace("{version}/", "");
-        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
-        return;
-    }
-
-    if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
-        // Api version Stereotype added
-        let defaultRoutePrefix = getDefaultRoutePrefix(false);
-        let startIndex = route.indexOf(defaultRoutePrefix);
-        if (startIndex == 0) {
-            route = `${defaultRoutePrefix}/{version}/${(route.substring(defaultRoutePrefix.length+1))}`;
-        } else {
-            route = `{version}/${(route)}`;
-        }
-        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
-        return;
-    }
-}
-
-function getDefaultRoutePrefix(includeLastPathSeparator) {
-    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
-
-    let route = "api/";
-
-    let defaultApiRouteField = application.getSettings(apiSettingsId)?.getField("Default API Route Prefix");
-    if (defaultApiRouteField) {
-        route = defaultApiRouteField.value ?? "";
-    }
-
-    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
-        route += "/";
-    } else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
-        route = removeSuffix(route, "/");
-    }
-
-    return route;
-}
-
-execute();</script>
+          <dependencies>
+            <dependency name="HTTP Route Update Scripts" id="abf4c85d-7709-443a-8817-ffa6cb9dd99f" />
+          </dependencies>
+          <script>updateVersionParameter(element);
+updateRouteParameters(element);</script>
         </macro>
         <macro trigger="on-name-changed">
           <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("625c6211-0dc7-4190-af49-6eadb82c7015")?.value;
@@ -7461,6 +7377,76 @@ function exposeAsHttpEndPoint(request) {
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/query/expose-as-http-endpoint.ts
  */
 //exposeAsHttpEndPoint(element);
+</script>
+    </script>
+    <script name="HTTP Route Update Scripts" id="abf4c85d-7709-443a-8817-ffa6cb9dd99f">
+      <script>function updateVersionParameter(element) {
+    const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
+    const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+
+    let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
+
+    if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
+        // Api version Stereotype removed
+        route = route.replace("{version}/", "");
+        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+        return;
+    }
+
+    if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
+        // Api version Stereotype added
+        let defaultRoutePrefix = getDefaultRoutePrefix(false);
+        let startIndex = route.indexOf(defaultRoutePrefix);
+        if (startIndex == 0) {
+            route = `${defaultRoutePrefix}/{version}/${(route.substring(defaultRoutePrefix.length+1))}`;
+        } else {
+            route = `{version}/${(route)}`;
+        }
+        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+        return;
+    }
+}
+
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+
+    let route = "api/";
+
+    let defaultApiRouteField = application.getSettings(apiSettingsId)?.getField("Default API Route Prefix");
+    if (defaultApiRouteField) {
+        route = defaultApiRouteField.value ?? "";
+    }
+
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    } else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+
+    return route;
+}
+
+function updateRouteParameters(element) {
+    const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue()?.toString() ?? null;
+    if (route == null) {
+        return;
+    }
+    let changedRouteParams = element.getChildren(["DTO-Field", "Parameter"])
+        .filter(x =&gt; x.getPreviousName &amp;&amp; x.getName() != x.getPreviousName())
+        .filter(x =&gt; route.indexOf(`{${toCamelCase(x.getPreviousName())}}` != -1 
+            || route.toLowerCase().indexOf(`{${toCamelCase(x.getName())}:` != -1 )));
+
+    if (changedRouteParams.length == 0) {
+        return;
+    }
+    changedRouteParams.forEach(x =&gt; {
+        route = route.replace(`{${toCamelCase(x.getPreviousName())}}`, `{${toCamelCase(x.getName())}}`);
+        route = route.replace(`{${toCamelCase(x.getPreviousName())}:`, `{${toCamelCase(x.getName())}:`);
+    });
+
+    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+}
 </script>
     </script>
   </scripts>

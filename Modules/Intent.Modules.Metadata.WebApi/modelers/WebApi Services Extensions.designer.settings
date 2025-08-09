@@ -3831,6 +3831,12 @@ configureUpload(element);
       <typeOrder />
       <mappingSettings />
       <macros>
+        <macro trigger="on-changed">
+          <dependencies>
+            <dependency name="HTTP Route Update Scripts" id="abf4c85d-7709-443a-8817-ffa6cb9dd99f" />
+          </dependencies>
+          <script>updateRouteParameters(element);</script>
+        </macro>
         <macro trigger="on-name-changed">
           <script>var httpVerb = element.getStereotype("Http Settings")?.getProperty("Verb").value;
 if (!httpVerb) {

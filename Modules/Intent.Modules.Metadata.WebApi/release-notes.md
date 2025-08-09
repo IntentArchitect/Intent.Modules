@@ -1,6 +1,7 @@
 ### Version 4.7.12
 
 - Improvement: On `Update` mappings, the Query will now take precedence over the update when doing auto-generated URL calculations.
+- Improvement: Route Parameter names will update appropriately if the associated Property / Parameter name is changed.
 
 ### Version 4.7.11
 
