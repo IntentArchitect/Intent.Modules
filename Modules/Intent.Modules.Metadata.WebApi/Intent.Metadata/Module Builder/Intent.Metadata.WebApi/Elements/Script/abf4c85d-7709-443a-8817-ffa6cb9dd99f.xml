@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="abf4c85d-7709-443a-8817-ffa6cb9dd99f" type="Script" typeId="101fd5b6-3159-4810-9490-a103ef323e9c">
+  <name>HTTP Route Update Scripts</name>
+  <display>HTTP Route Update Scripts</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>03bfccb7-d845-411f-ba08-4fddb01bbbda</parentFolderId>
+  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+  <packageName>Intent.Metadata.WebApi</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="da7d632f-b07f-4c83-ab01-bc6175006aa5" name="Script Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="4708b6ef-0671-4ea1-a920-ccec2c9eb3ea" display="Type" value="Inline Script" isActive="true" />
+        <property name="3256efdd-5d71-46f3-bd51-ef08a8d95526" display="Script" value="function updateVersionParameter(element) {&#xD;&#xA;    const apiVersionStereotypeId = &quot;20855f03-c663-4ec6-b106-de06be98f1fe&quot;;&#xD;&#xA;    const httpSettingsStereotypeId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;&#xD;&#xA;    let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty(&quot;Route&quot;)?.getValue();&#xD;&#xA;&#xD;&#xA;    if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf(&quot;{version}&quot;) &gt;= 0) {&#xD;&#xA;        // Api version Stereotype removed&#xD;&#xA;        route = route.replace(&quot;{version}/&quot;, &quot;&quot;);&#xD;&#xA;        element.getStereotype(httpSettingsStereotypeId).getProperty(&quot;Route&quot;).setValue(route);&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf(&quot;{version}&quot;) &lt; 0) {&#xD;&#xA;        // Api version Stereotype added&#xD;&#xA;        let defaultRoutePrefix = getDefaultRoutePrefix(false);&#xD;&#xA;        let startIndex = route.indexOf(defaultRoutePrefix);&#xD;&#xA;        if (startIndex == 0) {&#xD;&#xA;            route = `${defaultRoutePrefix}/{version}/${(route.substring(defaultRoutePrefix.length+1))}`;&#xD;&#xA;        } else {&#xD;&#xA;            route = `{version}/${(route)}`;&#xD;&#xA;        }&#xD;&#xA;        element.getStereotype(httpSettingsStereotypeId).getProperty(&quot;Route&quot;).setValue(route);&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function getDefaultRoutePrefix(includeLastPathSeparator) {&#xD;&#xA;    const apiSettingsId = &quot;4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb&quot;;&#xD;&#xA;&#xD;&#xA;    let route = &quot;api/&quot;;&#xD;&#xA;&#xD;&#xA;    let defaultApiRouteField = application.getSettings(apiSettingsId)?.getField(&quot;Default API Route Prefix&quot;);&#xD;&#xA;    if (defaultApiRouteField) {&#xD;&#xA;        route = defaultApiRouteField.value ?? &quot;&quot;;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    if (includeLastPathSeparator &amp;&amp; !route.endsWith(&quot;/&quot;)) {&#xD;&#xA;        route += &quot;/&quot;;&#xD;&#xA;    } else if (!includeLastPathSeparator &amp;&amp; route.endsWith(&quot;/&quot;)) {&#xD;&#xA;        route = removeSuffix(route, &quot;/&quot;);&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    return route;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function updateRouteParameters(element) {&#xD;&#xA;    const httpSettingsStereotypeId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;    let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty(&quot;Route&quot;)?.getValue()?.toString() ?? null;&#xD;&#xA;    if (route == null) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    let changedRouteParams = element.getChildren([&quot;DTO-Field&quot;, &quot;Parameter&quot;])&#xD;&#xA;        .filter(x =&gt; x.getPreviousName &amp;&amp; x.getName() != x.getPreviousName())&#xD;&#xA;        .filter(x =&gt; route.indexOf(`{${toCamelCase(x.getPreviousName())}}` != -1 &#xD;&#xA;            || route.toLowerCase().indexOf(`{${toCamelCase(x.getName())}:` != -1 )));&#xD;&#xA;&#xD;&#xA;    if (changedRouteParams.length == 0) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    changedRouteParams.forEach(x =&gt; {&#xD;&#xA;        route = route.replace(`{${toCamelCase(x.getPreviousName())}}`, `{${toCamelCase(x.getName())}}`);&#xD;&#xA;        route = route.replace(`{${toCamelCase(x.getPreviousName())}:`, `{${toCamelCase(x.getName())}:`);&#xD;&#xA;    });&#xD;&#xA;&#xD;&#xA;    element.getStereotype(httpSettingsStereotypeId).getProperty(&quot;Route&quot;).setValue(route);&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+        <property name="41cc0d56-3141-40fe-ae97-c024866d441e" display="File Path" isActive="false" />
+        <property name="540780ad-f54e-4bd5-95f3-20a58fd59105" display="Dependencies" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>
