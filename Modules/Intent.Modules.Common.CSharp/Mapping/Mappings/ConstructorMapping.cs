@@ -35,6 +35,11 @@ public class ConstructorMapping : CSharpMappingBase
 
     public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = default)
     {
+        if (_options.CtorToUse != null)
+        {
+            return ImplementWithCtor(_options.CtorToUse);
+        }
+
         if (Model.TypeReference?.IsCollection == true)
         {
             var m = new SelectToListMapping(_mappingMappingModel, _template);
@@ -43,39 +48,9 @@ public class ConstructorMapping : CSharpMappingBase
         }
 
         //Try find the CSharp constructor so we know what parameters are expected and in what order
-        if (TryFindModelConstructor(out var ctor)) 
+        if (TryFindModelConstructor(out var ctor))
         {
-			var inv = new CSharpInvocationStatement($"new { ctor.Name }").WithoutSemicolon();
-
-			foreach (var parameter in ctor.Parameters)
-            {
-                var optional = parameter.DefaultValue != null;
-				var child = GetAllChildren().FirstOrDefault(c => c.Model.Name.Equals(parameter.Name, StringComparison.InvariantCultureIgnoreCase));
-				if (child != null)
-				{
-					inv.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
-					{
-						if (_options.AddArgumentNames)
-						{
-							arg.WithName(parameter.Name);
-						}
-					});
-				}
-				else if (!optional)
-                {
-                    inv.AddArgument(new CSharpArgument("default"), arg => 
-                    {
-						if (_options.AddArgumentNames)
-                        {
-							arg.WithName(parameter.Name);
-						}
-					});
-    			}
-			}
-
-            inv.WithArgumentsOnNewLines();
-
-            return inv;
+            return ImplementWithCtor(ctor);
         }
 
         //This is not ideal and a best effort to realize your mapping
@@ -103,6 +78,41 @@ public class ConstructorMapping : CSharpMappingBase
         }
 
         return init;
+    }
+
+    private CSharpStatement ImplementWithCtor(CSharpConstructor ctor)
+    {
+        var inv = new CSharpInvocationStatement($"new {ctor.Name}").WithoutSemicolon();
+
+        foreach (var parameter in ctor.Parameters)
+        {
+            var optional = parameter.DefaultValue != null;
+            var child = GetAllChildren().FirstOrDefault(c => c.Model.Name.Equals(parameter.Name, StringComparison.InvariantCultureIgnoreCase));
+            if (child != null)
+            {
+                inv.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
+                {
+                    if (_options.AddArgumentNames)
+                    {
+                        arg.WithName(parameter.Name);
+                    }
+                });
+            }
+            else if (!optional)
+            {
+                inv.AddArgument(new CSharpArgument("default"), arg =>
+                {
+                    if (_options.AddArgumentNames)
+                    {
+                        arg.WithName(parameter.Name);
+                    }
+                });
+            }
+        }
+
+        inv.WithArgumentsOnNewLines();
+
+        return inv;
     }
 
     public override IEnumerable<CSharpStatement> GetMappingStatements()
@@ -157,4 +167,6 @@ public class ConstructorMapping : CSharpMappingBase
 public class ConstructorMappingOptions
 {
     public bool AddArgumentNames { get; set; } = true;
+
+    public CSharpConstructor? CtorToUse { get; set; } = null;
 }
