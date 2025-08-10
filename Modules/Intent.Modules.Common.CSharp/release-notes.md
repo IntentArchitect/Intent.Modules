@@ -1,6 +1,7 @@
 ﻿### Version 3.9.3
 
 - Fixed: Value Object update mappings generating incorrect code when collections are nested two or more levels deep.
+- Fixed: Trailing whitespace would appear for RazorCodeDirectives being generated.
 
 ### Version 3.9.2
 
