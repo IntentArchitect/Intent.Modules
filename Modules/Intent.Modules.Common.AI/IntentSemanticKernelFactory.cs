@@ -28,17 +28,30 @@ public class IntentSemanticKernelFactory
     }
 
     public Kernel BuildSemanticKernel() => BuildSemanticKernel(null);
-    
     public Kernel BuildSemanticKernel(Action<IKernelBuilder>? configure)
     {
         var settings = _userSettingsProvider.GetAISettings();
-        var model = string.IsNullOrWhiteSpace(settings.Model()) ? "gpt-4o" : settings.Model();
+        var model = string.IsNullOrWhiteSpace(settings.Model()) ? "gpt-4.1" : settings.Model();
+        return BuildSemanticKernel(model, configure);
+    }
+
+    public Kernel BuildSemanticKernel(string model, Action<IKernelBuilder>? configure)
+    {
+        var settings = _userSettingsProvider.GetAISettings();
         string? apiKey;
         
         // Create the Semantic Kernel instance with your LLM service.
         // Replace <your-openai-key> with your actual OpenAI API key and adjust the model name as needed.
         var builder = Kernel.CreateBuilder();
         builder.Services.AddLogging(b => b.AddProvider(new SoftwareFactoryLoggingProvider()).SetMinimumLevel(LogLevel.Trace));
+        builder.Services.ConfigureHttpClientDefaults(defaults =>
+        {
+            defaults.ConfigureHttpClient(client =>
+            {
+                client.Timeout = TimeSpan.FromSeconds(180); // 3 min
+            });
+        });
+
         if (configure != null)
         {
             configure(builder);
