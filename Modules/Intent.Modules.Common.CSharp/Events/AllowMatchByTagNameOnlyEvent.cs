@@ -1,7 +1,7 @@
 ﻿namespace Intent.Modules.Common.CSharp.Events;
 
 /// <summary>
-/// Payload for event fired by <see cref="IRazorConfigurator.AllowMatchByTagNameOnly"/>.
+/// Payload for event fired by <see cref="IRazorTagMatchingConfiguration.AllowMatchByTagNameOnly"/>.
 /// </summary>
 public class AllowMatchByTagNameOnlyEvent
 {

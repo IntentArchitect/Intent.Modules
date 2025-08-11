@@ -1,26 +1,39 @@
 ﻿using System;
+using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.CSharp.Events;
 
 namespace Intent.Modules.Common.CSharp;
 
 /// <summary>
-/// Contains extension methods for configuring Razor file management.
+/// Contains extension methods for configuring Razor configuration.
 /// </summary>
 public static class RazorConfigurationExtensions
 {
     /// <summary>
-    /// Allows configuring Razor.
+    /// Configure additional matching options for the specified <paramref name="tagName"/> for Razor Weaver
+    /// to use when determining matches of element/directives between existing and generated files.
     /// </summary>
-    public static ISoftwareFactoryExecutionContext ConfigureRazor(this ISoftwareFactoryExecutionContext context, Action<IRazorConfigurator> configure)
+    public static ISoftwareFactoryExecutionContext ConfigureRazorTagMatchingFor(this ISoftwareFactoryExecutionContext context, string tagName, Action<IRazorTagMatchingConfiguration> configuration)
     {
-        configure(new RazorConfigurator(context));
+        configuration(new RazorTagMatchingConfiguration(context, tagName));
         return context;
     }
 
-    private class RazorConfigurator(ISoftwareFactoryExecutionContext context) : IRazorConfigurator
+    private class RazorTagMatchingConfiguration(ISoftwareFactoryExecutionContext context, string tagName) : IRazorTagMatchingConfiguration
     {
-        public IRazorConfigurator AllowMatchByTagNameOnly(string tagName)
+        public IRazorTagMatchingConfiguration AllowMatchByDescendant(IReadOnlyList<string> path)
+        {
+            context.EventDispatcher.Publish(new AllowMatchByDescendantEvent
+            {
+                TagName = tagName,
+                Path = path
+            });
+
+            return this;
+        }
+
+        public IRazorTagMatchingConfiguration AllowMatchByNameOnly()
         {
             context.EventDispatcher.Publish(new AllowMatchByTagNameOnlyEvent
             {
@@ -30,13 +43,12 @@ public static class RazorConfigurationExtensions
             return this;
         }
 
-        public IRazorConfigurator AddTagNameAttributeMatch(string tagName, string attributeName)
+        public IRazorTagMatchingConfiguration AllowMatchByAttributes(params string[] attributeNames)
         {
-
-            context.EventDispatcher.Publish(new AddTagNameAttributeMatchEvent
+            context.EventDispatcher.Publish(new AddTagNameAttributesMatchEvent
             {
                 TagName = tagName,
-                AttributeName = attributeName
+                AttributeNames = attributeNames
             });
 
             return this;
