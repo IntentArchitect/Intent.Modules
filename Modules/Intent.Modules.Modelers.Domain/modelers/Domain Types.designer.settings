@@ -638,7 +638,7 @@ result.push(...children("Parameter")
         { text: `${ x.name }`, cssClass: "muted", targetId: x.id },
         { text: ': ' },
         { text: x.typeReference.display, cssClass: getTypeReferenceCssClass(x.typeReference), targetId: x.typeReference.typeId }
-    ]).concat(x.getValue() != null &amp;&amp; x.getValue() != "" ? [{ text: " = " + x.getValue(), cssClass: 'keyword' }] : []))
+    ].concat(x.getValue() != null &amp;&amp; x.getValue() != "" ? [{ text: " = " + x.getValue(), cssClass: 'keyword' }] : []))
     .reduce((x, y) =&gt; x.concat(x.length &gt; 0 ? [{ text: ', ' }] : []).concat(y), []));
     result.push({ text: ')' });
 if (typeReference) {
