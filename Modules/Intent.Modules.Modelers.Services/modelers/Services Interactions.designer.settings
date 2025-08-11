@@ -82,7 +82,7 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
         <lineType>Curved</lineType>
         <lineColor>if (typeReference.getType()?.isReference() &amp;&amp; typeReference.getType().getPackage()?.applicationId != getPackage()?.applicationId) {
     return getMappings()[0] 
-        ? theme.isDark ? "#FFD479" : "#826400" 
+        ? theme.isDark ? "#FFD479" : "#977c00" 
         //? theme.isDark ? "#7FBFFF" : "#005B99" //Remote Reference Text (Soft Blue)
         : "gray";
 }
