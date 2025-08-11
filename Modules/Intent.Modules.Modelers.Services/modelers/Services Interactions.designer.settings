@@ -80,8 +80,14 @@ return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${re
       </targetEnd>
       <visualSettings type="Perform Invocation" typeId="3e69085c-fa2f-44bd-93eb-41075fd472f8">
         <lineType>Curved</lineType>
-        <lineColor>return getMappings()[0] ? null : "gray";</lineColor>
-        <lineDashArray>return "3,7";</lineDashArray>
+        <lineColor>if (typeReference.getType()?.isReference() &amp;&amp; typeReference.getType().getPackage()?.applicationId != getPackage()?.applicationId) {
+    return getMappings()[0] 
+        ? theme.isDark ? "#FFD479" : "#826400" 
+        //? theme.isDark ? "#7FBFFF" : "#005B99" //Remote Reference Text (Soft Blue)
+        : "gray";
+}
+return getMappings()[0] ? null : "gray";</lineColor>
+        <lineDashArray>return getMappings()[0] ? "4,5" : "3,7";</lineDashArray>
         <sourceEnd>
           <pointIndicator>
             <lineWidth>return 3;</lineWidth>

@@ -412,7 +412,7 @@ font-family: Helvetica;
 font-weight: bold; 
 text-align: center; 
 white-space: inherit;
-color: ${(element.isReference() ? theme.isDark ? "#aaddaa" : "#224422" : "inherit")};
+color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" : "inherit")};
 vertical-align: center`</style>
                 <size width="${w}" height="16" />
                 <position x="${x}" y="${y + 40}" />
@@ -452,6 +452,8 @@ vertical-align: center`</style>
                     <position x="${x + 24}" y="${y + 3}" />
                   </drawText>
                   <drawText>
+                    <style>
+return `color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" : "inherit")};`</style>
                     <size width="${w - 26}" height="18" />
                     <position x="${x + 24}" y="${y + (element.hasStereotype(&quot;Http Settings&quot;) ? 14: 0)}" />
                   </drawText>
