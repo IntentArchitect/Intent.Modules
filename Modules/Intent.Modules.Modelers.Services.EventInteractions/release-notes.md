@@ -1,3 +1,7 @@
+### Version 2.0.2
+
+- Improvement: Subscriptions and Publishes are now colored with a yellow line to indicate that they are pushing the messages externally.
+
 ### Version 2.0.1
 
 - Fixed: Resolved issue where operation results could not be mapped to Imtegration Commands or Events.

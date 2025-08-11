@@ -272,7 +272,7 @@ vertical-align: center`</style>
             <display>
               <drawText>
                 <text>return getName();</text>
-                <style>`font-size: 12px; 
+                <style>return `font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
 text-align: center; 
@@ -493,6 +493,10 @@ vertical-align: center`</style>
       </targetEnd>
       <visualSettings>
         <lineType>Curved</lineType>
+        <lineColor>return getMappings()[0] 
+    ? theme.isDark ? "#FFD479" : "#977c00" // Remote Reference (Soft Yellow)
+    //? theme.isDark ? "#7FBFFF" : "#005B99" // Remote Reference (Soft Blue)
+    : "gray";</lineColor>
         <lineDashArray>return "3,7";</lineDashArray>
         <sourceEnd>
           <pointIndicator>
@@ -569,6 +573,10 @@ vertical-align: center`</style>
       </targetEnd>
       <visualSettings>
         <lineType>Curved</lineType>
+        <lineColor>return getMappings()[0] 
+    ? theme.isDark ? "#FFD479" : "#977c00" // Remote Reference (Soft Yellow)
+    //? theme.isDark ? "#7FBFFF" : "#005B99" // Remote Reference (Soft Blue)
+    : "gray";</lineColor>
         <lineDashArray>return "3,7";</lineDashArray>
         <sourceEnd>
           <pointIndicator>
@@ -688,6 +696,10 @@ vertical-align: center`</style>
       </targetEnd>
       <visualSettings type="Subscribe Integration Command" typeId="f485e4aa-a032-4b9a-aa85-5d2c62d75799">
         <lineType>Curved</lineType>
+        <lineColor>return true //getMappings()[0] 
+    ? theme.isDark ? "#FFD479" : "#977c00" // Remote Reference (Soft Yellow)
+    //? theme.isDark ? "#7FBFFF" : "#005B99" // Remote Reference (Soft Blue)
+    : "gray";</lineColor>
         <flowDirectionReversed>true</flowDirectionReversed>
         <sourceEnd>
           <pointIndicator>
@@ -820,6 +832,10 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
       </targetEnd>
       <visualSettings type="Subscribe Integration Event" typeId="80aa7f6d-64e5-4d24-a81e-6bc212925ca7">
         <lineType>Curved</lineType>
+        <lineColor>return true //getMappings()[0] 
+    ? theme.isDark ? "#FFD479" : "#977c00" // Remote Reference (Soft Yellow)
+    //? theme.isDark ? "#7FBFFF" : "#005B99" // Remote Reference (Soft Blue)
+    : "gray";</lineColor>
         <flowDirectionReversed>true</flowDirectionReversed>
         <sourceEnd>
           <pointIndicator>

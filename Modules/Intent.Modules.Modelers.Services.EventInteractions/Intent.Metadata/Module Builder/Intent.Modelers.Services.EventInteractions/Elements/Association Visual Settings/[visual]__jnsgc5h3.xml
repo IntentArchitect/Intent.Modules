@@ -24,7 +24,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="3ff8fe05-f379-4b5e-a965-cc6f6cab4c21" display="Line Type" value="Curved" isActive="true" />
-        <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" value="" isActive="true" />
+        <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" value="return getMappings()[0] &#xD;&#xA;    ? theme.isDark ? &quot;#FFD479&quot; : &quot;#977c00&quot; // Remote Reference (Soft Yellow)&#xD;&#xA;    //? theme.isDark ? &quot;#7FBFFF&quot; : &quot;#005B99&quot; // Remote Reference (Soft Blue)&#xD;&#xA;    : &quot;gray&quot;;" isActive="true" />
         <property name="f248a382-66c9-4107-aa92-5ee83dd3d08c" display="Line Width" isActive="true" />
         <property name="93499f0b-8590-42ea-bdbf-e943597e8e1e" display="Line Dash Array" value="return &quot;3,7&quot;;" isActive="true" />
         <property name="85aa1be2-62f1-45d1-84d0-acb5bb5d1752" display="Reverse Flow Direction" value="false" isActive="true" />
