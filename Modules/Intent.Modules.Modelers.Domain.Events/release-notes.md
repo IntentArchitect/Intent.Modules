@@ -1,3 +1,7 @@
+### Version 4.4.2
+
+- Improvement: `Publish Domain Event` suggestion now only shows for aggregate roots
+
 ### Version 4.4.1
 
 - Improvement: Updated module references

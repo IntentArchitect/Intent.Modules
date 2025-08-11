@@ -36,6 +36,40 @@ namespace Intent.Modelers.UI.Core.Api
             return true;
         }
 
+        public static Secured GetSecured(this LinkModel model)
+        {
+            var stereotype = model.GetStereotype(Secured.DefinitionId);
+            return stereotype != null ? new Secured(stereotype) : null;
+        }
+
+        public static IReadOnlyCollection<Secured> GetSecureds(this LinkModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes(Secured.DefinitionId)
+                .Select(stereotype => new Secured(stereotype))
+                .ToArray();
+
+            return stereotypes;
+        }
+
+
+        public static bool HasSecured(this LinkModel model)
+        {
+            return model.HasStereotype(Secured.DefinitionId);
+        }
+
+        public static bool TryGetSecured(this LinkModel model, out Secured stereotype)
+        {
+            if (!HasSecured(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Secured(model.GetStereotype(Secured.DefinitionId));
+            return true;
+        }
+
         public class Interaction
         {
             private IStereotype _stereotype;
@@ -56,6 +90,30 @@ namespace Intent.Modelers.UI.Core.Api
             public string LinkTo()
             {
                 return _stereotype.GetProperty<string>("Link To");
+            }
+
+        }
+
+        public class Secured
+        {
+            private IStereotype _stereotype;
+            public const string DefinitionId = "012f5173-6419-4006-a9a8-ab5c20b8a42e";
+
+            public Secured(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string Roles()
+            {
+                return _stereotype.GetProperty<string>("Roles");
+            }
+
+            public string Policy()
+            {
+                return _stereotype.GetProperty<string>("Policy");
             }
 
         }

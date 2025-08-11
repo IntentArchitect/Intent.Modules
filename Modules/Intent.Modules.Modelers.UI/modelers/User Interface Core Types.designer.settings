@@ -925,7 +925,7 @@ const routeId = "9dff9df1-a993-4bf6-9aa7-c16811142228";
 const page = getCurrentDiagram().createElement("Component", "NewPage");
 const stereotype = page.addStereotype(pageId);
 page.refresh();
-getCurrentDiagram().selectVisualsForElements(page.id, false);
+getCurrentDiagram()?.selectVisualsForElements(page.id, false);
 await page.enableEditing();
 
 const folders = page.getParents("Folder");
@@ -1002,7 +1002,7 @@ const routeId = "9dff9df1-a993-4bf6-9aa7-c16811142228";
 const page = getCurrentDiagram().createElement("Component", "NewPage");
 const stereotype = page.addStereotype(pageId);
 page.refresh();
-getCurrentDiagram().selectVisualsForElements(page.id, false);
+getCurrentDiagram()?.selectVisualsForElements(page.id, false);
 await page.enableEditing();
 
 const folders = page.getParents("Folder");
@@ -1638,7 +1638,7 @@ const routeId = "9dff9df1-a993-4bf6-9aa7-c16811142228";
 const page = createElement("Component", "NewPage", element.id);
 const stereotype = page.addStereotype(pageId);
 page.refresh();
-getCurrentDiagram().selectVisualsForElements(page.id);
+getCurrentDiagram()?.selectVisualsForElements(page.id);
 await page.enableEditing();
 
 const folders = page.getParents("Folder");
@@ -1747,7 +1747,7 @@ const routeId = "9dff9df1-a993-4bf6-9aa7-c16811142228";
 const page = createElement("Component", "NewPage", element.id);
 const stereotype = page.addStereotype(pageId);
 page.refresh();
-getCurrentDiagram().selectVisualsForElements(page.id);
+getCurrentDiagram()?.selectVisualsForElements(page.id);
 await page.enableEditing();
 
 const folders = page.getParents("Folder");
@@ -2787,6 +2787,36 @@ return element.hasStereotype(bindableId) || element.hasStereotype(routeParameter
             </childSetting>
           </childSettings>
         </mappableElement>
+        <mappableElement id="8240afcc-061f-4c10-96bc-0eac9f48c9c9" name="DTO" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" version="2.0.0">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <canBeModified>false</canBeModified>
+          <represents>class</represents>
+          <childSettings>
+            <childSetting id="c95dbaa8-5a90-4772-95f4-57642ef811ba" name="DTO-Field" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <filterFunction>return !element.typeReference.getIsCollection();</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>8240afcc-061f-4c10-96bc-0eac9f48c9c9</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="33c5c67b-3735-4e2c-8045-74c7e5e91556" name="DTO-Field Collection" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" version="2.0.0">
+              <filterFunction>return element.typeReference.getIsCollection();</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
         <mappableElement id="e5e22fe7-8481-4a6e-a3dd-197641df7ca4" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
@@ -2802,6 +2832,40 @@ return element.hasStereotype(bindableId) || element.hasStereotype(routeParameter
               <isTraversable>true</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+          </childSettings>
+        </mappableElement>
+        <mappableElement id="7ab19370-4858-4128-af7d-541d9c545f3e" name="Service Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" version="2.0.0">
+          <filterFunction>return element.getParent().specializationId == "b16578a5-27b1-4047-a8df-f0b783d706bd";// Service</filterFunction>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <isTraversable>false</isTraversable>
+          <traversableTypes />
+          <overrideTypeReferenceFunction>return null;</overrideTypeReferenceFunction>
+          <canBeModified>false</canBeModified>
+          <represents>invokable</represents>
+          <childSettings>
+            <childSetting id="0759aef0-6091-44ed-bd88-b6d77a0a9ff8" name="Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
+              <filterFunction>return !element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>8240afcc-061f-4c10-96bc-0eac9f48c9c9</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
+              <represents>data</represents>
+            </childSetting>
+            <childSetting id="fc6109ad-fb13-47a3-9687-4d006e1f3dc2" name="Collection Parameter" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b" version="2.0.0">
+              <filterFunction>return element.typeReference.getIsCollection()</filterFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>8240afcc-061f-4c10-96bc-0eac9f48c9c9</mappingId>
+              </traversableTypes>
+              <canBeModified>true</canBeModified>
               <represents>data</represents>
             </childSetting>
           </childSettings>

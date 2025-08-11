@@ -36,7 +36,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             }
             else if (Model.TypeReference.IsCollection)
             {
-                var from = $"{_template.GetTypeName("Domain.Common.UpdateHelper")}.CreateOrUpdateCollection({GetTargetPathText()}, {GetSourcePathText()}, (e, d) => e.Equals({GetConstructorStatement("d").GetText("            ")}), CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()})";
+                var from = $"{_template.GetTypeName("Domain.Common.UpdateHelper")}.CreateOrUpdateCollection({GetTargetPathText()}, {GetSourcePathText()}, (e, d) => e.Equals({GetConstructorStatement("d", "e").GetText("            ")}), CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()})";
 
                 CreateUpdateMethod($"CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()}");
 
@@ -45,36 +45,43 @@ namespace Intent.Modules.Common.CSharp.Mapping
             return null;
         }
 
-        private CSharpStatement GetConstructorStatement(string variableName)
+        private CSharpStatement GetConstructorStatement(string sourceVariable, string? targetVariable = null)
         {
+
             var ctor = new ConstructorMapping(_mappingModel.GetCollectionItemModel(), _template);
-            ctor.SetSourceReplacement(GetSourcePath().Last().Element, variableName);
+            if (targetVariable is not null)
+            {
+                ctor.SetTargetReplacement(Model, targetVariable);
+            }
+
+            ctor.SetSourceReplacement(GetSourcePath().Last().Element, sourceVariable);
             var result = ctor.GetSourceStatement();
             return result;
         }
 
         private void CreateUpdateMethod(string updateMethodName)
         {
-            var domainModel = (IElement)Model.TypeReference.Element;
-            var implementationName = _template.GetTypeName(domainModel);
-
-            var fromField = GetSourcePath().Last().Element;
-            var fieldIsNullable = fromField.TypeReference.IsNullable;
-            var fromFieldNullable = fieldIsNullable ? "?" : string.Empty;
-            string nullableChar = _template.OutputTarget.GetProject().NullableEnabled ? "?" : "";
-
-            var @class = _template.CSharpFile.Classes.First();
-            var existingMethod = @class.FindMethod(x => x.Name == updateMethodName &&
-                                                        x.ReturnType == implementationName &&
-                                                        x.Parameters.FirstOrDefault()?.Type == implementationName &&
-                                                        x.Parameters.Skip(1).FirstOrDefault()?.Type == _template.GetTypeName((IElement)fromField.TypeReference.Element));
-            if (existingMethod != null)
-            {
-                return;
-            }
             _template.CSharpFile.AfterBuild(file =>
             {
-                file.Classes.First().AddMethod($"{implementationName}{fromFieldNullable}", updateMethodName, method =>
+                var domainModel = (IElement)Model.TypeReference.Element;
+                var implementationName = _template.GetTypeName(domainModel);
+
+                var fromField = GetSourcePath().Last().Element;
+                var fieldIsNullable = fromField.TypeReference.IsNullable;
+                var fromFieldNullable = fieldIsNullable ? "?" : string.Empty;
+                string nullableChar = _template.OutputTarget.GetProject().NullableEnabled ? "?" : "";
+
+                var @class = _template.CSharpFile.Classes.First();
+                var existingMethod = @class.FindMethod(x => x.Name == updateMethodName &&
+                                                            x.ReturnType == implementationName &&
+                                                            x.Parameters.FirstOrDefault()?.Type == $"{implementationName}{nullableChar}" &&
+                                                            x.Parameters.Skip(1).FirstOrDefault()?.Type == _template.GetTypeName((IElement)fromField.TypeReference.Element));
+                if (existingMethod != null)
+                {
+                    return;
+                }
+
+                @class.AddMethod($"{implementationName}{fromFieldNullable}", updateMethodName, method =>
                 {
                     method.AddAttribute(CSharpIntentManagedAttribute.Fully());
                     method.Private().Static();
@@ -82,7 +89,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     method.AddParameter(_template.GetTypeName((IElement)GetSourcePath().Last().Element.TypeReference.Element), "dto");
                     method.AddIfStatement("valueObject is null", stmt => 
                     {
-                        stmt.AddStatement($"return {GetConstructorStatement("dto").GetText("                ")};");
+                        stmt.AddStatement($"return {GetConstructorStatement("dto", "valueObject").GetText("                ")};");
                     });
                     method.AddStatement("return valueObject;");
                 });

@@ -1,4 +1,8 @@
-﻿### Version 3.12.4
+﻿### Version 3.12.5
+
+- Fixed: Default Values set on `Attributes` and `Parameters` not showing in the tree-view Model and diagram.
+
+### Version 3.12.4
 
 - Improvement: Associations can now be changed via a `Change Association` submenu with options to invert the relationship, update cardinality, and update navigability.
 

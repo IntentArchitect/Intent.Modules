@@ -13,6 +13,29 @@ namespace Intent.Metadata.DocumentDB.Api
 {
     public static class AttributeModelStereotypeExtensions
     {
+        public static FieldSettings GetFieldSettings(this AttributeModel model)
+        {
+            var stereotype = model.GetStereotype(FieldSettings.DefinitionId);
+            return stereotype != null ? new FieldSettings(stereotype) : null;
+        }
+
+
+        public static bool HasFieldSettings(this AttributeModel model)
+        {
+            return model.HasStereotype(FieldSettings.DefinitionId);
+        }
+
+        public static bool TryGetFieldSettings(this AttributeModel model, out FieldSettings stereotype)
+        {
+            if (!HasFieldSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new FieldSettings(model.GetStereotype(FieldSettings.DefinitionId));
+            return true;
+        }
         public static ForeignKey GetForeignKey(this AttributeModel model)
         {
             var stereotype = model.GetStereotype(ForeignKey.DefinitionId);
@@ -59,6 +82,25 @@ namespace Intent.Metadata.DocumentDB.Api
 
             stereotype = new PrimaryKey(model.GetStereotype(PrimaryKey.DefinitionId));
             return true;
+        }
+
+        public class FieldSettings
+        {
+            private IStereotype _stereotype;
+            public const string DefinitionId = "fb47f1e4-447b-4a67-947d-590fc24c20c1";
+
+            public FieldSettings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string StereotypeName => _stereotype.Name;
+
+            public string Name()
+            {
+                return _stereotype.GetProperty<string>("Name");
+            }
+
         }
 
         public class ForeignKey

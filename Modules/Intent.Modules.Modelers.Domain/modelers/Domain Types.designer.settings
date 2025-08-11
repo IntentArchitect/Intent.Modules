@@ -566,6 +566,9 @@ element.getChildren("Class Constructor").forEach(x =&gt; x.refresh ? x.refresh()
 const result = [{ text: `${ name }${ genericTypes }`, cssClass: "muted" } ];
 result.push({ text: ': ', cssClass: "annotation" });
 result.push({ text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId });
+if (getValue() != null &amp;&amp; getValue() != "") {
+    result.push({ text: " = " + getValue(), cssClass: 'keyword' });
+}
 return result;</displayFunction>
           <validateFunction>let otherAttributes = getParent().getChildren("Attribute").filter(x =&gt; x.id != id);
 if (otherAttributes.some(x =&gt; x.getName() == getName())) {
@@ -635,7 +638,7 @@ result.push(...children("Parameter")
         { text: `${ x.name }`, cssClass: "muted", targetId: x.id },
         { text: ': ' },
         { text: x.typeReference.display, cssClass: getTypeReferenceCssClass(x.typeReference), targetId: x.typeReference.typeId }
-    ])
+    ]).concat(x.getValue() != null &amp;&amp; x.getValue() != "" ? [{ text: " = " + x.getValue(), cssClass: 'keyword' }] : []))
     .reduce((x, y) =&gt; x.concat(x.length &gt; 0 ? [{ text: ', ' }] : []).concat(y), []));
     result.push({ text: ')' });
 if (typeReference) {
@@ -773,7 +776,8 @@ result.push(...children("Parameter")
         { text: `${ x.name }`, cssClass: "muted", targetId: x.id },
         { text: ': ' },
         //{ text: x.typeReference.display, cssClass: getTypeReferenceCssClass(x.typeReference), targetId: x.typeReference.typeId }
-    ].concat(x.typeReference.getDisplayTextComponents()))
+    ].concat(x.typeReference.getDisplayTextComponents())
+    .concat(x.getValue() != null &amp;&amp; x.getValue() != "" ? [{ text: " = " + x.getValue(), cssClass: 'keyword' }] : []))
     .reduce((x, y) =&gt; x.concat(x.length &gt; 0 ? [{ text: ', ' }] : []).concat(y), []));
     result.push({ text: ')' });
 if (typeReference) {
@@ -975,6 +979,9 @@ const result = [
     { text: ': ', cssClass: 'annotation' },
     { text: typeReference.display, cssClass: getTypeReferenceCssClass(typeReference), targetId: typeReference.typeId }
 ];
+if (getValue() != null &amp;&amp; getValue() != "") {
+    result.push({ text: " = " + getValue(), cssClass: 'keyword' });
+}
 return result;</displayFunction>
               <allowRename>true</allowRename>
               <nameMustBeUnique>true</nameMustBeUnique>

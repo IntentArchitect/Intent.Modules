@@ -488,6 +488,11 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
 {indentation}}}";
     }
 
+    public override string ToString()
+    {
+        return GetText("");
+    }
+
     private string GetParameters(ParameterPlacementOptionsEnum option, int estimatedLength, int maxLineLength, string indentation) =>
         (option, estimatedLength > maxLineLength, Parameters.Count > 1) switch
         {

@@ -18,6 +18,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#ff1ddb80-16e4-4e63-ace3-4ef96a03b4b0</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AutoCompleteModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AutoCompleteModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4474d808-f6fd-405f-a9c7-6998cd000ede</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ButtonModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ButtonModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#fe5a5cd8-aabd-472f-8d42-f5c233e658dc</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/CallServiceOperationActionModel.cs</ApplicationRelativeFilePath>
@@ -31,6 +47,14 @@
       <ApplicationRelativeFilePath>Api/CallServiceOperationActionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>CallServiceOperationActionModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#be9ecdbd-6ded-4057-af76-1b09f3a6cea3</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/CheckboxModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CheckboxModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
@@ -194,6 +218,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#a274918b-72d1-4913-95de-0a801ac90ce4</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/LinkModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>LinkModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#adbf2fa8-6833-4c24-960a-31d8a41fd1ed</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/MenuItemModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MenuItemModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#bd3941b5-e3b3-4a40-96e6-b9c87cea0101</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ModelDefinitionModel.cs</ApplicationRelativeFilePath>
@@ -234,11 +274,43 @@
     </FileLog>
     <FileLog>
       <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4af9a7f0-ca24-4681-8e32-2a8d3dacb6ed</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/RadioGroupModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>RadioGroupModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#415ffab7-9865-4200-89a0-b592d24919dd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ReturnModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ReturnModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#78e0bdf7-424f-4820-95d5-b756b0ebc87a</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/SelectModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>SelectModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#eee93c29-3d58-4e42-aea9-c00451d17469</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/TableModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TableModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4803bf60-c626-4cbe-94ed-0f1eafff9fe3</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/TextInputModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TextInputModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>5276f3a7-b5cc-41d9-942e-1f983f39d0d1</ProjectId>
@@ -294,7 +366,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.UI.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.UI.csproj</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>1cf7c6ee-1399-4f11-b00f-719c44882e8c</ProjectId>

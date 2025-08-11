@@ -41,8 +41,10 @@
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
             <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return !element.hasStereotype(&quot;Http Settings&quot;);" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bbf03fa4-5beb-4d27-a24f-9858af08d97f" display="Icon" isActive="true" />
             <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="exposeAsHttpEndPoint(element);" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[&quot;ad88dbb7-1625-4585-bb1a-6ae2b1813e84&quot;]" isActive="true" />
+            <property name="eb1aad5a-4eb8-46aa-84a0-9e4fec251d84" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -78,8 +80,10 @@
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
             <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return !element.getChildren().every(x =&gt; x.hasStereotype(&quot;Http Settings&quot;));" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bbf03fa4-5beb-4d27-a24f-9858af08d97f" display="Icon" isActive="true" />
             <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="exposeAsHttpEndPoint(element);" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[&quot;a19cdcc4-6db9-45b7-888e-79147f987074&quot;]" isActive="true" />
+            <property name="eb1aad5a-4eb8-46aa-84a0-9e4fec251d84" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

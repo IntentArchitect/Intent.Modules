@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="fb47f1e4-447b-4a67-947d-590fc24c20c1" version="3.1.0">
+  <comment>Configures the field name used for serialization.</comment>
+  <hint>Field settings for Document DB documents.</hint>
+  <name>Field Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="0090fb93-483e-41af-a11d-5ad2dc796adf">Attribute</type>
+    <type id="0a66489f-30aa-417b-a75d-b945863366fd">Association Target End</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="data:image/png;base64,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" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return true;</displayIconFunction>
+  <displayFunction>return `{ "${Name}": … }`;</displayFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</parentFolderId>
+  <order>0</order>
+  <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+  <packageName>Intent.Metadata.DocumentDB</packageName>
+  <properties>
+    <property id="8cb53c43-7d9a-43ba-9152-02e484e09fb6">
+      <hint>Overrides the name of the field which is serialized.</hint>
+      <name>Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

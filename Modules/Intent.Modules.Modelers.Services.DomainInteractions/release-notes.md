@@ -1,3 +1,10 @@
+### Version 2.3.2
+
+- Improvement: Processing Actions now visually indicate that they aren't mapped by being slightly greyed out.
+- Improvement: Query Entity Action will now automatically indicate as a collection if the return type of the Processing Handler is a collection.
+- Fixed: Processing Actions incorrectly always naming variables `entity` and not adjusting automatically.
+- Fixed: Incorrect bidirectionality on Create, Update and Delete Entity Actions.
+
 ### Version 2.3.1
 
 - Improvement: Domain CRUD service suggestions will now prompt the user if they have unsaved changes before proceeding.

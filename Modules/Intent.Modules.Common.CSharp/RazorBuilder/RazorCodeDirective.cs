@@ -19,10 +19,13 @@ internal class RazorCodeDirective : RazorFileNodeBase<RazorCodeDirective, IRazor
         {
             return $"{indentation}{Expression.GetText(indentation)?.TrimStart()}";
         }
-        return $@"{indentation}{Expression.GetText(indentation)?.TrimStart()} 
-{indentation}{{
-{string.Join("", ChildNodes.Select(x => x.GetText($"{indentation}    "))).TrimEnd()}
-{indentation}}}
-";
+        return 
+            $$"""
+            {{indentation}}{{Expression.GetText(indentation)?.TrimStart()}}
+            {{indentation}}{
+            {{string.Join("", ChildNodes.Select(x => x.GetText($"{indentation}    "))).TrimEnd()}}
+            {{indentation}}}
+
+            """;
     }
 }

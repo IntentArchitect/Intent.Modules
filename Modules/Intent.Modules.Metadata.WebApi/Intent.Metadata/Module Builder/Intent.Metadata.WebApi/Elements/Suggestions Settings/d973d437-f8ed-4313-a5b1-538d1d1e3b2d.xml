@@ -12,6 +12,84 @@
   <stereotypes />
   <metadata />
   <childElements>
+    <childElement id="e2fa24ef-35a0-4daf-8372-5840c19096cd" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Bind as HTTP Route Parameter</name>
+      <display>Bind as HTTP Route Parameter: Parameter</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="39eaa76a-e02c-42ae-a239-812bc1ecbf45">
+        <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Services</typePackageName>
+        <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>d973d437-f8ed-4313-a5b1-538d1d1e3b2d</parentFolderId>
+      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+      <packageName>Intent.Metadata.WebApi</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="if (!element.getParent().hasStereotype(&quot;Http Settings&quot;)) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;const route = element.getParent().getStereotype(&quot;Http Settings&quot;).getProperty(&quot;Route&quot;).getValue();&#xD;&#xA;return [&quot;GET&quot;, &quot;PUT&quot;, &quot;PATCH&quot;, &quot;DELETE&quot;].some(x =&gt; element.getParent().getStereotype(&quot;Http Settings&quot;).getProperty(&quot;Verb&quot;).getValue() == x)&#xD;&#xA;    &amp;&amp; [&quot;Command&quot;, &quot;Query&quot;, &quot;Operation&quot;].some(x =&gt; element.getParent().specialization == x)&#xD;&#xA;    &amp;&amp; element.getName().endsWith(&quot;Id&quot;)&#xD;&#xA;    &amp;&amp; !element.hasStereotype(&quot;Parameter Settings&quot;)&#xD;&#xA;    &amp;&amp; route.indexOf(`{${toCamelCase(element.getName())}}`) == -1 &amp;&amp; route.indexOf(`{${toCamelCase(element.getName())}:`) == -1&#xD;&#xA;    &amp;&amp; element.typeReference.getType().specialization == &quot;Type-Definition&quot;;" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bbf03fa4-5beb-4d27-a24f-9858af08d97f" display="Icon" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const parameterSettingsStereotypeId = &quot;d01df110-1208-4af8-a913-92a49d219552&quot;;&#xD;&#xA;&#xD;&#xA;if (!element.hasStereotype(parameterSettingsStereotypeId)) {&#xD;&#xA;    element.addStereotype(parameterSettingsStereotypeId)&#xD;&#xA;}&#xD;&#xA;element.getStereotype(parameterSettingsStereotypeId).getProperty(&quot;Source&quot;).setValue(&quot;From Route&quot;)" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" isActive="true" />
+            <property name="eb1aad5a-4eb8-46aa-84a0-9e4fec251d84" display="Order Priority" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="11e8710b-7208-4dcc-bac0-b68048ac796b" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Bind as HTTP Route Parameter</name>
+      <display>Bind as HTTP Route Parameter: DTO-Field</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="25197127-7d3c-416f-bf69-53f01b707b6f">
+        <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.Services</typePackageName>
+        <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>d973d437-f8ed-4313-a5b1-538d1d1e3b2d</parentFolderId>
+      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+      <packageName>Intent.Metadata.WebApi</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="if (!element.getParent().hasStereotype(&quot;Http Settings&quot;)) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;const route = element.getParent().getStereotype(&quot;Http Settings&quot;).getProperty(&quot;Route&quot;).getValue();&#xD;&#xA;return [&quot;GET&quot;, &quot;PUT&quot;, &quot;PATCH&quot;, &quot;DELETE&quot;].some(x =&gt; element.getParent().getStereotype(&quot;Http Settings&quot;).getProperty(&quot;Verb&quot;).getValue() == x)&#xD;&#xA;    &amp;&amp; [&quot;Command&quot;, &quot;Query&quot;, &quot;Operation&quot;].some(x =&gt; element.getParent().specialization == x)&#xD;&#xA;    &amp;&amp; element.getName().endsWith(&quot;Id&quot;)&#xD;&#xA;    &amp;&amp; !element.hasStereotype(&quot;Parameter Settings&quot;)&#xD;&#xA;    &amp;&amp; route.indexOf(`{${toCamelCase(element.getName())}}`) == -1 &amp;&amp; route.indexOf(`{${toCamelCase(element.getName())}:`) == -1&#xD;&#xA;    &amp;&amp; element.typeReference.getType().specialization == &quot;Type-Definition&quot;;" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bbf03fa4-5beb-4d27-a24f-9858af08d97f" display="Icon" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const parameterSettingsStereotypeId = &quot;d01df110-1208-4af8-a913-92a49d219552&quot;;&#xD;&#xA;&#xD;&#xA;if (!element.hasStereotype(parameterSettingsStereotypeId)) {&#xD;&#xA;    element.addStereotype(parameterSettingsStereotypeId)&#xD;&#xA;}&#xD;&#xA;element.getStereotype(parameterSettingsStereotypeId).getProperty(&quot;Source&quot;).setValue(&quot;From Route&quot;)" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[]" isActive="true" />
+            <property name="eb1aad5a-4eb8-46aa-84a0-9e4fec251d84" display="Order Priority" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
     <childElement id="67b35402-6acf-4334-a5ef-a7cdf1ee500f" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
       <name>Expose as HTTP  Endpoint</name>
       <display>Expose as HTTP  Endpoint: Command</display>
@@ -41,8 +119,10 @@
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
             <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return !element.hasStereotype(&quot;Http Settings&quot;);" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
+            <property name="bbf03fa4-5beb-4d27-a24f-9858af08d97f" display="Icon" isActive="true" />
             <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="exposeAsHttpEndPoint(element);&#xD;&#xA;" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[&quot;f312c5d5-b017-4d5f-8ec4-6d1f1140f99f&quot;]" isActive="true" />
+            <property name="eb1aad5a-4eb8-46aa-84a0-9e4fec251d84" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -78,8 +158,10 @@
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
             <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return !element.hasStereotype(&quot;Http Settings&quot;);" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
+            <property name="bbf03fa4-5beb-4d27-a24f-9858af08d97f" display="Icon" isActive="true" />
             <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="exposeAsHttpEndPoint(element);" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[&quot;78a50417-4750-4fb2-9730-3d617aebb612&quot;]" isActive="true" />
+            <property name="eb1aad5a-4eb8-46aa-84a0-9e4fec251d84" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
