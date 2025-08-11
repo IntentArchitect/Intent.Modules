@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="1eff752b-ef0f-484e-bb92-aae1e487fc0f" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
-  <name>Parameter Extension</name>
-  <display>Parameter Extension: Parameter</display>
+<class id="28012133-c811-45bc-80ca-58fb5e87beba" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>DTO-Field Extension</name>
+  <display>DTO-Field Extension: DTO-Field</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>1</order>
   <genericTypes />
-  <typeReference id="6aeb39e7-2646-4028-848c-a4e78dfb0ca7">
-    <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
+  <typeReference id="46d6be19-e01f-4202-bc5b-a7381beb817f">
+    <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -18,7 +17,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>77253e5b-e752-424c-b2c7-1707996f810f</parentFolderId>
+  <parentFolderId>03bfccb7-d845-411f-ba08-4fddb01bbbda</parentFolderId>
   <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
   <packageName>Intent.Metadata.WebApi</packageName>
   <stereotypes>
@@ -42,33 +41,33 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" value="" isActive="true" />
-        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="if (getStereotype(&quot;Parameter Settings&quot;)?.getProperty(&quot;Header Name&quot;)?.value?.indexOf(&quot; &quot;) &gt; -1) {&#xD;&#xA;    return &quot;Header Name is invalid with spaces&quot;;&#xD;&#xA;}&#xD;&#xA;return &quot;&quot;;" isActive="true" />
+        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" isActive="true" />
+        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="cfc2bd1f-cf85-4d60-8d0e-a972aba14126" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="d94ebf42-f730-40eb-a987-a86cc7ee44d5" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>1eff752b-ef0f-484e-bb92-aae1e487fc0f</parentFolderId>
+      <parentFolderId>28012133-c811-45bc-80ca-58fb5e87beba</parentFolderId>
       <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
       <packageName>Intent.Metadata.WebApi</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="f45ff634-a1f4-44c3-8ce0-7b125cc5c081" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+        <childElement id="d1f7baf6-725e-48f8-b648-324c30453f93" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
           <name>Http Parameter Settings</name>
           <display>Http Parameter Settings: Inline Script</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-manually</sort-children>
           <genericTypes />
-          <typeReference id="e10257c5-3ec1-4798-b0c8-2c1fc8325ce2">
+          <typeReference id="c5bbd088-cf06-485f-928f-98cab2d552f8">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -80,7 +79,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>cfc2bd1f-cf85-4d60-8d0e-a972aba14126</parentFolderId>
+          <parentFolderId>d94ebf42-f730-40eb-a987-a86cc7ee44d5</parentFolderId>
           <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
           <packageName>Intent.Metadata.WebApi</packageName>
           <stereotypes>
@@ -102,7 +101,7 @@
                 <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
                 <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                 <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
-                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return [&quot;Command&quot;, &quot;Query&quot;].some(x =&gt; element.getParent().specialization == x);" isActive="true" />
                 <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
                 <property name="c37d8704-0003-4886-b6c2-4e51aa22a8f9" display="Menu Group" isActive="true" />
                 <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
@@ -112,25 +111,25 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="7a9e57e8-5a86-420e-ae35-a896776b45f1" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+            <childElement id="0f472f53-d6f6-4bf3-9dad-621fbac00b11" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
               <name>[submenu]</name>
               <display>[context menu]</display>
               <isAbstract>false</isAbstract>
               <sort-children>manually</sort-children>
               <genericTypes />
               <isMapped>false</isMapped>
-              <parentFolderId>f45ff634-a1f4-44c3-8ce0-7b125cc5c081</parentFolderId>
+              <parentFolderId>d1f7baf6-725e-48f8-b648-324c30453f93</parentFolderId>
               <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
               <packageName>Intent.Metadata.WebApi</packageName>
               <stereotypes />
               <metadata />
               <childElements>
-                <childElement id="c90689ea-336c-4317-ad72-ea75c40af0ef" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                <childElement id="5e06f4ea-e15f-4d6a-9d87-ae8f31a84985" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
                   <name>From Http Route</name>
                   <display>From Http Route: Inline Script</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
-                  <typeReference id="8fe51d39-f2f2-45d1-ae4a-1084d1f35c48">
+                  <typeReference id="22d5e9e5-e44a-42df-8e17-5d1e49367aed">
                     <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
@@ -142,7 +141,7 @@
                     <genericTypeParameters />
                   </typeReference>
                   <isMapped>false</isMapped>
-                  <parentFolderId>7a9e57e8-5a86-420e-ae35-a896776b45f1</parentFolderId>
+                  <parentFolderId>0f472f53-d6f6-4bf3-9dad-621fbac00b11</parentFolderId>
                   <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
                   <packageName>Intent.Metadata.WebApi</packageName>
                   <stereotypes>
@@ -175,12 +174,12 @@
                   <metadata />
                   <childElements />
                 </childElement>
-                <childElement id="317b756e-6a52-4612-b342-6e5db197c5bf" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                <childElement id="7109db71-4a17-48b7-a56f-e4b596b45863" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
                   <name>From Http Query</name>
                   <display>From Http Query: Inline Script</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
-                  <typeReference id="8a0578f1-c54e-453f-87bb-cc92ab082bf4">
+                  <typeReference id="e7556a34-2b2c-4292-bf47-eee2951d47d5">
                     <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
@@ -192,7 +191,7 @@
                     <genericTypeParameters />
                   </typeReference>
                   <isMapped>false</isMapped>
-                  <parentFolderId>7a9e57e8-5a86-420e-ae35-a896776b45f1</parentFolderId>
+                  <parentFolderId>0f472f53-d6f6-4bf3-9dad-621fbac00b11</parentFolderId>
                   <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
                   <packageName>Intent.Metadata.WebApi</packageName>
                   <stereotypes>
@@ -225,12 +224,12 @@
                   <metadata />
                   <childElements />
                 </childElement>
-                <childElement id="377daf2b-54ae-41c9-8d31-f79aafc4e592" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                <childElement id="c0e3d853-389b-4830-97d2-fff8f95050ab" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
                   <name>From Http Body</name>
                   <display>From Http Body: Inline Script</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
-                  <typeReference id="34842a4e-a741-47b8-b017-0aa6fef66fde">
+                  <typeReference id="4dd4de75-2ee1-4bc1-a52f-1fc66f632c5f">
                     <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
@@ -242,7 +241,7 @@
                     <genericTypeParameters />
                   </typeReference>
                   <isMapped>false</isMapped>
-                  <parentFolderId>7a9e57e8-5a86-420e-ae35-a896776b45f1</parentFolderId>
+                  <parentFolderId>0f472f53-d6f6-4bf3-9dad-621fbac00b11</parentFolderId>
                   <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
                   <packageName>Intent.Metadata.WebApi</packageName>
                   <stereotypes>
@@ -275,12 +274,12 @@
                   <metadata />
                   <childElements />
                 </childElement>
-                <childElement id="6052875c-1e2f-4cab-8553-e19642532a4a" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                <childElement id="e79fdb11-e5b1-4970-b106-0937afc258b1" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
                   <name>From Http Header</name>
                   <display>From Http Header: Inline Script</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
-                  <typeReference id="998105ba-175d-40c2-91d2-ba405bcbcf58">
+                  <typeReference id="4e7d2082-1ef4-4954-a74a-94ae98551377">
                     <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
@@ -292,7 +291,7 @@
                     <genericTypeParameters />
                   </typeReference>
                   <isMapped>false</isMapped>
-                  <parentFolderId>7a9e57e8-5a86-420e-ae35-a896776b45f1</parentFolderId>
+                  <parentFolderId>0f472f53-d6f6-4bf3-9dad-621fbac00b11</parentFolderId>
                   <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
                   <packageName>Intent.Metadata.WebApi</packageName>
                   <stereotypes>
@@ -325,12 +324,12 @@
                   <metadata />
                   <childElements />
                 </childElement>
-                <childElement id="763db9d7-0b74-4a8b-97a4-469ba307a5a1" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                <childElement id="58b620bf-5aaa-4c33-b9a3-5c3e950caecb" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
                   <name>From Http Form</name>
                   <display>From Http Form: Inline Script</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
-                  <typeReference id="46a03c8c-1406-4f63-b2e5-1870646d0ec9">
+                  <typeReference id="dd85743f-6898-449f-85eb-f17162348c00">
                     <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
@@ -342,7 +341,7 @@
                     <genericTypeParameters />
                   </typeReference>
                   <isMapped>false</isMapped>
-                  <parentFolderId>7a9e57e8-5a86-420e-ae35-a896776b45f1</parentFolderId>
+                  <parentFolderId>0f472f53-d6f6-4bf3-9dad-621fbac00b11</parentFolderId>
                   <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
                   <packageName>Intent.Metadata.WebApi</packageName>
                   <stereotypes>

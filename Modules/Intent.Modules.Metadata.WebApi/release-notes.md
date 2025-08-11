@@ -2,7 +2,8 @@
 
 - Improvement: On `Update` mappings, the Query will now take precedence over the update when doing auto-generated URL calculations.
 - Improvement: Route Parameter names will update appropriately if the associated Property / Parameter name is changed.
-
+- Improvement: Added `Http Parameter Settings` context menu options to Properties and Parameters for easy configuration of the Http parameter binding.
+ 
 ### Version 4.7.11
 
 - Improvement: Moved HTTP file upload / download accelerators to a submenu within the `Expose as HTTP endpoint` context menu option.
