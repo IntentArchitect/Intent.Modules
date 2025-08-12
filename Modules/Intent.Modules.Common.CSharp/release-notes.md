@@ -1,4 +1,8 @@
-﻿### Version 3.9.3
+﻿### Version 3.9.4
+
+- Improvement: Allow for `INugetPackages` to be resolved with `IApplicationSettingsProvider` instances being injected as dependencies.
+
+### Version 3.9.3
 
 - Fixed: Value Object update mappings generating incorrect code when collections are nested two or more levels deep.
 - Fixed: Trailing whitespace would appear for RazorCodeDirectives being generated.
