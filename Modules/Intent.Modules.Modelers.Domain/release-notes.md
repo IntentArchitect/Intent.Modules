@@ -1,4 +1,8 @@
-﻿### Version 3.12.5
+﻿### Version 3.12.6
+
+- Improvement: Subscriptions and Publishes are now colored with a yellow line to indicate that they are pushing the messages externally.
+
+### Version 3.12.5
 
 - Fixed: Default Values set on `Attributes` and `Parameters` not showing in the tree-view Model and diagram.
 
