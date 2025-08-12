@@ -85,7 +85,7 @@ if (namingConvention == "pascal-case") {
     }
 }
 const result = [{ text: `${ getParent().getName() }${ genericTypes }(` }];
-result.push(...children("Parameter")
+result.push(...getChildren("Parameter")
     .map(x =&gt; [
         { text: `${ x.name }`, cssClass: "muted", targetId: x.id },
         { text: ': ' },
@@ -157,7 +157,7 @@ return result;</displayFunction>
     }
 }
 const result = [{ text: `${ getName() }${ genericTypes }(` }];
-result.push(...children("Parameter")
+result.push(...getChildren("Parameter")
     .map(x =&gt; [
         { text: `${ x.name }`, cssClass: "muted", targetId: x.id },
         { text: ': ' },

@@ -1,3 +1,7 @@
+### Version 4.1.2
+
+- Fixed: Errors in `Display Text Function` scripts for Operations and Constructors.
+
 ### Version 4.1.1
 
 - Improvement: Added Documentation topic regarding `Type Definitions`.
