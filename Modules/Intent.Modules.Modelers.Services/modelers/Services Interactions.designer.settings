@@ -115,6 +115,7 @@ return getMappings()[0] ? null : "gray";</lineColor>
   <mappingSettings>
     <mappingSetting type="Invocation Mapping" typeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
       <title>Invocation Mapping</title>
+      <isRequiredFunction>return true;</isRequiredFunction>
       <sourceMappings>
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Invocation Source Mappables" />
       </sourceMappings>

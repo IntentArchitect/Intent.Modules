@@ -15,7 +15,7 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="dda7b2ec-461b-41e1-a0f3-a23268053ef4" display="Is Required Function" isActive="true" />
+        <property name="dda7b2ec-461b-41e1-a0f3-a23268053ef4" display="Is Required Function" value="return true;" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

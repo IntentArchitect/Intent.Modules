@@ -2,6 +2,7 @@
 
 - Improvement: `Perform Invocation` interactions will now color in yellow when invoking remote services from other applications.
 - Improvement: Referenced `Service` visuals will have a slight teal colored to signify that they are referenced.
+- Improvement: `Perform Invocation` will always launch the Invocation Mapping dialog.
 - Fixed: Errors in `Display Text Function` scripts for Operations.
 
 ### Version 4.0.2
