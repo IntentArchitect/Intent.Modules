@@ -3534,7 +3534,6 @@ const component = element;
 const diagram = getCurrentDiagram();
 const componentVisual = diagram.getVisual(element.id);
 const space = diagram.findEmptySpace({ x: componentVisual.getDimensions().right + 250, y: componentVisual.getDimensions().getCenter().y}, { width: 200, height: 100 });
-diagram.layoutVisuals([result.selectedElementId], space, false);
 const serviceRequest = lookup(result.selectedElementId);
 
 if (!serviceRequest) {
@@ -3544,6 +3543,7 @@ if (!serviceRequest) {
 
 if (serviceRequest.specialization == "Query") {
     const query = serviceRequest;
+    diagram.layoutVisuals([query.id], space, false);
     const operation = createElement("Component Operation", "Load" + removePrefix(removeSuffix(query.getName(), "Query"), "Get"), component.id);
 
     query.getChildren("DTO-Field").forEach(param =&gt; {
@@ -3556,7 +3556,7 @@ if (serviceRequest.specialization == "Query") {
     property.typeReference.setIsNullable(true);
 
     const callService = createAssociation("Call Service Operation Action", operation.id, query.id)
-    diagram.layoutVisuals([callService.id], true);
+    diagram.layoutVisuals([callService.id]);
 
     const mapping = callService.createAdvancedMapping(operation.id, query.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
     mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [query.id]);
@@ -3570,10 +3570,11 @@ if (serviceRequest.specialization == "Query") {
 } else if (serviceRequest.specialization == "Command") {
     
     const command = serviceRequest;
+    diagram.layoutVisuals([command.id], space, false);
     const operation = createElement("Component Operation", removeSuffix(command.getName(), "Command"), component.id);
 
     const callService = createAssociation("Call Service Operation Action", operation.id, command.id)
-    diagram.layoutVisuals([callService.id], true);
+    diagram.layoutVisuals([callService.id]);
 
     const mapping = callService.createAdvancedMapping(operation.id, command.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
     mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [command.id]);
@@ -3603,6 +3604,55 @@ if (serviceRequest.specialization == "Query") {
     //     returnMapping.addMappedEnd("9cccf6be-31be-4ac0-a026-ed0c4f5578bf", [operation.id, callService.id, "2f68b1a4-a523-4987-b3da-f35e6e8e146b"], [property.id]);
     // }
     mapping.launchDialog();
+
+} else if (serviceRequest.specialization == "Operation") {
+    const serviceOp = serviceRequest; // Service Operation
+    diagram.layoutVisuals([serviceOp.getParent().id], space, false);
+    const operation = createElement("Component Operation", serviceOp.getName(), component.id);
+
+    const callService = createAssociation("Call Service Operation Action", operation.id, serviceOp.id)
+    diagram?.layoutVisuals([callService.id]);
+
+    const mapping = callService.createAdvancedMapping(operation.id, serviceOp.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
+    mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [serviceOp.id]);
+
+
+    serviceOp.getChildren("Parameter").filter(x =&gt; x.typeReference.getType().specialization != "DTO").forEach(param =&gt; {
+        const parameter = operation.addChild("Parameter", toCamelCase(param.getName()));
+        parameter.typeReference.setType(param.typeReference.toModel())
+        mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", [operation.id, parameter.id], [serviceOp.id, param.id]);
+    });
+    
+    if (serviceOp.getStereotype("Http Settings")?.getProperty("Verb").getValue() == "GET") {
+        if (serviceOp.typeReference.getType() != null &amp;&amp; serviceOp.typeReference.getType().specialization != "Type-Definition") {
+            const property = component.addChild("Property", "Model");
+            property.typeReference.setType(serviceOp.typeReference.toModel());
+            property.typeReference.setIsNullable(true);
+            const returnMapping = callService.createAdvancedMapping(operation.id, serviceOp.id, "e60890c6-7ce7-47be-a0da-dff82b8adc02");
+            returnMapping.addMappedEnd("9cccf6be-31be-4ac0-a026-ed0c4f5578bf", [operation.id, callService.id, "2f68b1a4-a523-4987-b3da-f35e6e8e146b"], [property.id]);
+
+        }
+    } else {
+        const dtoParam = serviceOp.getChild(x =&gt; x.specialization == "Parameter" &amp;&amp; x.typeReference.getType().specialization == "DTO")
+        const dto = dtoParam?.typeReference.getType();
+        if (dto &amp;&amp; !component.getChildren("Property").some(x =&gt; x.typeReference.getType().specialization == "Model Definition")) {
+            const newModel = component.addChild("Model Definition", removePrefix(removeSuffix(dto.getName(), "DTO", "Dto")) + "Model")
+            const newProperty = component.addChild("Property", "Model");
+            newProperty.typeReference.setType(newModel.id);
+            if (dto.getName().startsWith("Create")) {
+                newProperty.setValue("new()");
+            } else {
+                newProperty.typeReference.setIsNullable(true);
+            }
+
+            dto.getChildren("DTO-Field").forEach(field =&gt; {
+                const modelProperty = newModel.addChild("Property", field.getName());
+                modelProperty.typeReference.setType(field.typeReference.toModel());
+                mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", [newProperty.id, modelProperty.id], [dtoParam.id, field.id]);
+            })
+        }
+        mapping.launchDialog();
+    }
 }</script>
     </suggestionSetting>
   </suggestionSettings>
