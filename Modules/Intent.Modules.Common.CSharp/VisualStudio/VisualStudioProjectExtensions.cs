@@ -18,7 +18,6 @@ namespace Intent.Modules.Common.VisualStudio
         private const string NUGET_PACKAGE_INSTALLS = "VS.NugetPackageInstalls";
         private const string REFERENCES = "VS.References";
         private const string FRAMEWORK_DEPENDENCY = "VS.FrameworkReferences";
-        
 
         public static void InitializeVSMetadata(this IOutputTarget outputTarget)
         {
@@ -87,8 +86,9 @@ namespace Intent.Modules.Common.VisualStudio
                     VisualStudioProjectTypeIds.SQLServerDatabaseProject,
                     VisualStudioProjectTypeIds.AzureFunctionsProject,
                     VisualStudioProjectTypeIds.CoreConsoleApp,
-					VisualStudioProjectTypeIds.SdkCSharpProject
-			}.Contains(outputTarget.Type);
+                    VisualStudioProjectTypeIds.SdkCSharpProject,
+                    VisualStudioProjectTypeIds.ServiceFabricProject
+            }.Contains(outputTarget.Type);
         }
 
         public static List<NuGetInstall> NugetPackageInstalls(this IOutputTarget outputTarget)
