@@ -356,7 +356,9 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
+        // look up if there is an existing operation with the same name
         const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        // and return the existing one if the sync is disable (which is is by default)
         if (existing &amp;&amp; !syncElement) {
             return existing;
         }
@@ -369,8 +371,9 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        // only add the association if not an existing operation
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", operationElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -399,6 +402,7 @@ class ProxyServiceHelper {
                 break;
         }
         const actionName = `${operationName}${actionTypeName}`;
+        // if sync is set to true, then don't return right away
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
         if (existing &amp;&amp; !syncElement) {
             return existing;
@@ -414,7 +418,7 @@ class ProxyServiceHelper {
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
         // don't recreate the association if it the entity exists exists
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", actionElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -550,6 +554,8 @@ class ProxyServiceHelper {
         elementManager.collapse();
     }
     static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        // check to see if there is a DTO with the same name, and only if there is and we are working with an existing element do we update
+        // this is to preseve backwards compatibility
         let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
         let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
@@ -928,7 +934,9 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
+        // look up if there is an existing operation with the same name
         const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        // and return the existing one if the sync is disable (which is is by default)
         if (existing &amp;&amp; !syncElement) {
             return existing;
         }
@@ -941,8 +949,9 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        // only add the association if not an existing operation
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", operationElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -971,6 +980,7 @@ class ProxyServiceHelper {
                 break;
         }
         const actionName = `${operationName}${actionTypeName}`;
+        // if sync is set to true, then don't return right away
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
         if (existing &amp;&amp; !syncElement) {
             return existing;
@@ -986,7 +996,7 @@ class ProxyServiceHelper {
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
         // don't recreate the association if it the entity exists exists
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", actionElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -1122,6 +1132,8 @@ class ProxyServiceHelper {
         elementManager.collapse();
     }
     static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        // check to see if there is a DTO with the same name, and only if there is and we are working with an existing element do we update
+        // this is to preseve backwards compatibility
         let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
         let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
@@ -1501,7 +1513,9 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
+        // look up if there is an existing operation with the same name
         const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        // and return the existing one if the sync is disable (which is is by default)
         if (existing &amp;&amp; !syncElement) {
             return existing;
         }
@@ -1514,8 +1528,9 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        // only add the association if not an existing operation
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", operationElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -1544,6 +1559,7 @@ class ProxyServiceHelper {
                 break;
         }
         const actionName = `${operationName}${actionTypeName}`;
+        // if sync is set to true, then don't return right away
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
         if (existing &amp;&amp; !syncElement) {
             return existing;
@@ -1559,7 +1575,7 @@ class ProxyServiceHelper {
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
         // don't recreate the association if it the entity exists exists
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", actionElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -1695,6 +1711,8 @@ class ProxyServiceHelper {
         elementManager.collapse();
     }
     static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        // check to see if there is a DTO with the same name, and only if there is and we are working with an existing element do we update
+        // this is to preseve backwards compatibility
         let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
         let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
@@ -2073,7 +2091,9 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
+        // look up if there is an existing operation with the same name
         const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        // and return the existing one if the sync is disable (which is is by default)
         if (existing &amp;&amp; !syncElement) {
             return existing;
         }
@@ -2086,8 +2106,9 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        // only add the association if not an existing operation
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", operationElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -2116,6 +2137,7 @@ class ProxyServiceHelper {
                 break;
         }
         const actionName = `${operationName}${actionTypeName}`;
+        // if sync is set to true, then don't return right away
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
         if (existing &amp;&amp; !syncElement) {
             return existing;
@@ -2131,7 +2153,7 @@ class ProxyServiceHelper {
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
         // don't recreate the association if it the entity exists exists
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", actionElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -2267,6 +2289,8 @@ class ProxyServiceHelper {
         elementManager.collapse();
     }
     static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        // check to see if there is a DTO with the same name, and only if there is and we are working with an existing element do we update
+        // this is to preseve backwards compatibility
         let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
         let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
@@ -2650,7 +2674,9 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
+        // look up if there is an existing operation with the same name
         const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        // and return the existing one if the sync is disable (which is is by default)
         if (existing &amp;&amp; !syncElement) {
             return existing;
         }
@@ -2663,8 +2689,9 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        // only add the association if not an existing operation
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", operationElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -2693,6 +2720,7 @@ class ProxyServiceHelper {
                 break;
         }
         const actionName = `${operationName}${actionTypeName}`;
+        // if sync is set to true, then don't return right away
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
         if (existing &amp;&amp; !syncElement) {
             return existing;
@@ -2708,7 +2736,7 @@ class ProxyServiceHelper {
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
         // don't recreate the association if it the entity exists exists
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", actionElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -2844,6 +2872,8 @@ class ProxyServiceHelper {
         elementManager.collapse();
     }
     static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        // check to see if there is a DTO with the same name, and only if there is and we are working with an existing element do we update
+        // this is to preseve backwards compatibility
         let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
         let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
@@ -3237,7 +3267,9 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
+        // look up if there is an existing operation with the same name
         const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        // and return the existing one if the sync is disable (which is is by default)
         if (existing &amp;&amp; !syncElement) {
             return existing;
         }
@@ -3250,8 +3282,9 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        // only add the association if not an existing operation
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", operationElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -3280,6 +3313,7 @@ class ProxyServiceHelper {
                 break;
         }
         const actionName = `${operationName}${actionTypeName}`;
+        // if sync is set to true, then don't return right away
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
         if (existing &amp;&amp; !syncElement) {
             return existing;
@@ -3295,7 +3329,7 @@ class ProxyServiceHelper {
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
         // don't recreate the association if it the entity exists exists
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", actionElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -3431,6 +3465,8 @@ class ProxyServiceHelper {
         elementManager.collapse();
     }
     static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        // check to see if there is a DTO with the same name, and only if there is and we are working with an existing element do we update
+        // this is to preseve backwards compatibility
         let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
         let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
@@ -3811,7 +3847,9 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
+        // look up if there is an existing operation with the same name
         const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        // and return the existing one if the sync is disable (which is is by default)
         if (existing &amp;&amp; !syncElement) {
             return existing;
         }
@@ -3824,8 +3862,9 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        // only add the association if not an existing operation
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", operationElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -3854,6 +3893,7 @@ class ProxyServiceHelper {
                 break;
         }
         const actionName = `${operationName}${actionTypeName}`;
+        // if sync is set to true, then don't return right away
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
         if (existing &amp;&amp; !syncElement) {
             return existing;
@@ -3869,7 +3909,7 @@ class ProxyServiceHelper {
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
         // don't recreate the association if it the entity exists exists
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", actionElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -4005,6 +4045,8 @@ class ProxyServiceHelper {
         elementManager.collapse();
     }
     static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        // check to see if there is a DTO with the same name, and only if there is and we are working with an existing element do we update
+        // this is to preseve backwards compatibility
         let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
         let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {
@@ -4398,7 +4440,9 @@ class ProxyServiceHelper {
         if (!service) {
             service = ProxyServiceHelper._createService(operation.getParent(), folder);
         }
+        // look up if there is an existing operation with the same name
         const existing = service.getChildren().find(x =&gt; x.getName() == operationName);
+        // and return the existing one if the sync is disable (which is is by default)
         if (existing &amp;&amp; !syncElement) {
             return existing;
         }
@@ -4411,8 +4455,9 @@ class ProxyServiceHelper {
         // httpSettings.getProperty("Route").setValue(route);
         let mappingStore = new MappingStore();
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
+        // only add the association if not an existing operation
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", operationElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -4441,6 +4486,7 @@ class ProxyServiceHelper {
                 break;
         }
         const actionName = `${operationName}${actionTypeName}`;
+        // if sync is set to true, then don't return right away
         const existing = folder.getChildren().find(x =&gt; x.getName() == actionName);
         if (existing &amp;&amp; !syncElement) {
             return existing;
@@ -4456,7 +4502,7 @@ class ProxyServiceHelper {
         ProxyServiceHelper.recreateAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
         // don't recreate the association if it the entity exists exists
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", actionElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings()) {
@@ -4592,6 +4638,8 @@ class ProxyServiceHelper {
         elementManager.collapse();
     }
     static replicateDto(proxyDto, folder, mappingStore, isExistingElement = false) {
+        // check to see if there is a DTO with the same name, and only if there is and we are working with an existing element do we update
+        // this is to preseve backwards compatibility
         let existingDto = folder.getChildren().find(x =&gt; x.getName() == proxyDto.getName());
         let newDto = (existingDto &amp;&amp; isExistingElement) ? existingDto : createElement("DTO", proxyDto.getName(), folder.id);
         proxyDto.getChildren("DTO-Field").forEach(proxyField =&gt; {

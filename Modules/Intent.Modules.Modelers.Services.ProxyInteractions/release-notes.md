@@ -1,3 +1,7 @@
+### Version 1.1.4
+
+- Fixed: Adjusted the creation of association from "Call Service Operation" to the new "Perform Invocation".
+
 ### Version 1.1.3
 
 - Improvement: Updated referenced modules
