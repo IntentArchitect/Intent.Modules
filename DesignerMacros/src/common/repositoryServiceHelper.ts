@@ -69,7 +69,7 @@ class RepositoryServiceHelper {
             // only add the association if not an existing operation
             if(!existing) {
 
-                let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+                let callOp = createAssociation("Perform Invocation", operationElement.id, operation.id);
                 let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
                 mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
                 
@@ -123,7 +123,7 @@ class RepositoryServiceHelper {
 
         // don't recreate the association if it the entity exists exists
         if(!existing){
-            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", actionElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             

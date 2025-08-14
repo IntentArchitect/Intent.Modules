@@ -1,3 +1,7 @@
+### Version 2.3.3
+
+- Fixed: Adjusted the creation of association from "Call Service Operation" to the new "Perform Invocation".
+
 ### Version 2.3.2
 
 - Improvement: Processing Actions now visually indicate that they aren't mapped by being slightly greyed out.

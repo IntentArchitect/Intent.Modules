@@ -17728,6 +17728,65 @@ class DomainHelper {
         return !associationEnd.typeReference.isCollection &amp;&amp; associationEnd.typeReference.isNullable &amp;&amp;
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
     }
+    static getOwningAggregateRecursive(entity) {
+        let owners = DomainHelper.getOwnersRecursive(entity);
+        if (owners.length == 0)
+            return null;
+        const uniqueIds = new Set(owners.map(item =&gt; item.id));
+        if (uniqueIds.size !== 1) {
+            throw new Error(`Entity : '${entity.getName()}' has more than 1 owner.`);
+        }
+        return owners[0];
+    }
+    static getOwnersRecursive(entity) {
+        if (!entity || entity.specialization != "Class") {
+            return null;
+        }
+        let results = entity.getAssociations("Association").filter(x =&gt; DomainHelper.isOwnedByAssociation(x));
+        let result = [];
+        for (let i = 0; i &lt; results.length; i++) {
+            let owner = results[i].typeReference.getType();
+            if (DomainHelper.isAggregateRoot(owner)) {
+                result.push(owner);
+            }
+            else {
+                result.push(...DomainHelper.getOwnersRecursive(owner));
+            }
+        }
+        return result;
+    }
+    static isOwnedByAssociation(association) {
+        return association.isSourceEnd() &amp;&amp;
+            !association.typeReference.isNullable &amp;&amp;
+            !association.typeReference.isCollection;
+    }
+    static getOwningAggregateKeyChain(entity) {
+        if (!entity || entity.specialization != "Class") {
+            return null;
+        }
+        let results = entity.getAssociations("Association").filter(x =&gt; DomainHelper.isOwnedByAssociation(x));
+        let result = [];
+        if (results.length == 0)
+            return result;
+        let owner = results[0].typeReference.getType();
+        let pks = DomainHelper.getPrimaryKeys(owner);
+        pks.forEach(pk =&gt; {
+            let attribute = lookup(pk.id);
+            //expectedName would typically be CountryId if you have a Agg: Country with a Pk: Id
+            let expectedName = attribute.getParent().getName();
+            if (!attribute.getName().startsWith(expectedName)) {
+                expectedName += attribute.getName();
+            }
+            else {
+                expectedName = attribute.getName();
+            }
+            result.push({ attribute: attribute, expectedName: expectedName });
+        });
+        if (!DomainHelper.isAggregateRoot(owner)) {
+            result.unshift(...DomainHelper.getOwningAggregateKeyChain(owner));
+        }
+        return result;
+    }
 }
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../common/getSurrogateKeyType.ts" /&gt;
@@ -18017,6 +18076,7 @@ class CrudHelper {
         let foundEntity = lookup(dialogResult.entityId);
         var result = {
             selectedEntity: foundEntity,
+            diagramId: dialogResult.diagramId,
             canCreate: dialogResult.create == "true",
             canUpdate: dialogResult.update == "true",
             canQueryById: dialogResult.queryById == "true",
@@ -18397,7 +18457,7 @@ class RepositoryServiceHelper {
         RepositoryServiceHelper.createAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
         // only add the association if not an existing operation
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", operationElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings().reverse()) {
@@ -18442,7 +18502,7 @@ class RepositoryServiceHelper {
         RepositoryServiceHelper.createAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
         // don't recreate the association if it the entity exists exists
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", actionElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings().reverse()) {
@@ -19296,6 +19356,65 @@ class DomainHelper {
         return !associationEnd.typeReference.isCollection &amp;&amp; associationEnd.typeReference.isNullable &amp;&amp;
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
     }
+    static getOwningAggregateRecursive(entity) {
+        let owners = DomainHelper.getOwnersRecursive(entity);
+        if (owners.length == 0)
+            return null;
+        const uniqueIds = new Set(owners.map(item =&gt; item.id));
+        if (uniqueIds.size !== 1) {
+            throw new Error(`Entity : '${entity.getName()}' has more than 1 owner.`);
+        }
+        return owners[0];
+    }
+    static getOwnersRecursive(entity) {
+        if (!entity || entity.specialization != "Class") {
+            return null;
+        }
+        let results = entity.getAssociations("Association").filter(x =&gt; DomainHelper.isOwnedByAssociation(x));
+        let result = [];
+        for (let i = 0; i &lt; results.length; i++) {
+            let owner = results[i].typeReference.getType();
+            if (DomainHelper.isAggregateRoot(owner)) {
+                result.push(owner);
+            }
+            else {
+                result.push(...DomainHelper.getOwnersRecursive(owner));
+            }
+        }
+        return result;
+    }
+    static isOwnedByAssociation(association) {
+        return association.isSourceEnd() &amp;&amp;
+            !association.typeReference.isNullable &amp;&amp;
+            !association.typeReference.isCollection;
+    }
+    static getOwningAggregateKeyChain(entity) {
+        if (!entity || entity.specialization != "Class") {
+            return null;
+        }
+        let results = entity.getAssociations("Association").filter(x =&gt; DomainHelper.isOwnedByAssociation(x));
+        let result = [];
+        if (results.length == 0)
+            return result;
+        let owner = results[0].typeReference.getType();
+        let pks = DomainHelper.getPrimaryKeys(owner);
+        pks.forEach(pk =&gt; {
+            let attribute = lookup(pk.id);
+            //expectedName would typically be CountryId if you have a Agg: Country with a Pk: Id
+            let expectedName = attribute.getParent().getName();
+            if (!attribute.getName().startsWith(expectedName)) {
+                expectedName += attribute.getName();
+            }
+            else {
+                expectedName = attribute.getName();
+            }
+            result.push({ attribute: attribute, expectedName: expectedName });
+        });
+        if (!DomainHelper.isAggregateRoot(owner)) {
+            result.unshift(...DomainHelper.getOwningAggregateKeyChain(owner));
+        }
+        return result;
+    }
 }
 /// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../common/getSurrogateKeyType.ts" /&gt;
@@ -19585,6 +19704,7 @@ class CrudHelper {
         let foundEntity = lookup(dialogResult.entityId);
         var result = {
             selectedEntity: foundEntity,
+            diagramId: dialogResult.diagramId,
             canCreate: dialogResult.create == "true",
             canUpdate: dialogResult.update == "true",
             canQueryById: dialogResult.queryById == "true",
@@ -19965,7 +20085,7 @@ class RepositoryServiceHelper {
         RepositoryServiceHelper.createAction(operation.getChildren("Parameter"), operationElement, false, folder, mappingStore, existing != null);
         // only add the association if not an existing operation
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", operationElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", operationElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(operationElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [operationElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings().reverse()) {
@@ -20010,7 +20130,7 @@ class RepositoryServiceHelper {
         RepositoryServiceHelper.createAction(operation.getChildren("Parameter"), actionElement, true, folder, mappingStore, existing != null);
         // don't recreate the association if it the entity exists exists
         if (!existing) {
-            let callOp = createAssociation("Call Service Operation", actionElement.id, operation.id);
+            let callOp = createAssociation("Perform Invocation", actionElement.id, operation.id);
             let mapping = callOp.createAdvancedMapping(actionElement.id, operation.id);
             mapping.addMappedEnd("Invocation Mapping", [actionElement.id], [operation.id]);
             for (let entry of mappingStore.getMappings().reverse()) {
