@@ -12,9 +12,9 @@ using Intent.Utils;
 namespace Intent.Modules.Common.CSharp.VisualStudio
 {
     internal class CSharpProject : ICSharpProject, IHasStereotypes
-	{
-        private static readonly MajorMinorVersion LatestLanguageVersion = MajorMinorVersion.Create(12, 0);
-        private static readonly MajorMinorVersion PreviewLanguageVersion = MajorMinorVersion.Create(13, 0);
+    {
+        private static readonly MajorMinorVersion LatestLanguageVersion = MajorMinorVersion.Create(13, 0);
+        private static readonly MajorMinorVersion PreviewLanguageVersion = MajorMinorVersion.Create(14, 0);
         private readonly Lazy<bool> _isNullableAwareContext;
         private readonly IOutputTarget _outputTarget;
 
@@ -91,9 +91,9 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
             .Where(x => x != null)
             .ToArray();
 
-		public IEnumerable<IStereotype> Stereotypes => InternalElement.Stereotypes;
+        public IEnumerable<IStereotype> Stereotypes => InternalElement.Stereotypes;
 
-		public bool Equals(IOutputTarget other)
+        public bool Equals(IOutputTarget other)
         {
             return _outputTarget.Equals(other);
         }
@@ -218,13 +218,15 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
                     case 8:
                         return MajorMinorVersion.Create(12, 0);
                     case 9:
-                         return MajorMinorVersion.Create(13, 0);
+                        return MajorMinorVersion.Create(13, 0);
+                    case 10:
+                        return MajorMinorVersion.Create(14, 0);
                     default:
                         // See https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version#defaults
                         Logging.Log.Warning(
                             $"Assuming language version \"{PreviewLanguageVersion}\" for project \"{Name}\" targeting " +
                             $"\"{frameworkMoniker}\". Try seeing if a new version of the \"Intent.Modules.Common.CSharp\"" +
-                            " module is available or notify Intent Architect support.");
+                            " module is available or reach out to Intent Architect support at https://github.com/IntentArchitect/Support");
 
                         return PreviewLanguageVersion;
                 }
