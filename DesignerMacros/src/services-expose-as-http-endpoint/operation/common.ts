@@ -119,8 +119,8 @@ function getRouteInfo(operation: IElementApi, routePrefix:string, addId: boolean
         }else{
             let primaryKeys = DomainHelper.getPrimaryKeys(entity);            
             for (const key of primaryKeys) {
-                if (operation.getChildren().some(x => x.getName().toLowerCase() == key.name.toLowerCase())){
-                    routeIds.push(`{${operation.getChildren().find(x => x.getName().toLowerCase() == key.name.toLowerCase()).getName()}}`);
+                if (operation.getChildren().some(x => x.getName().toLowerCase() == key.name.toLowerCase() || x.getName().toLowerCase() == "id")){
+                    routeIds.push(`{${operation.getChildren().find(x => x.getName().toLowerCase() == key.name.toLowerCase() || x.getName().toLowerCase() == "id").getName()}}`);
                 }
             }
         }

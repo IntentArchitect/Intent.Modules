@@ -119,7 +119,8 @@ function getMappedRequestDetails(
 
             fieldName = ServicesHelper.getFieldFormat(fieldName);
 
-            const existingField = request.getChildren("DTO-Field").find(field => field.getName().toLowerCase() == fieldName.toLowerCase());
+            const existingField = request.getChildren("DTO-Field")
+                .find(field => field.getName().toLowerCase() == fieldName.toLowerCase() || field.getName().toLowerCase() == "id");
 
             return {
                 existingId: existingField?.id,

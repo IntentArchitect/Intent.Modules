@@ -6408,7 +6408,8 @@ function getMappedRequestDetails(request) {
                 fieldName = `${owningEntity.getName()}${toCamelCase(fieldName)}`;
             }
             fieldName = ServicesHelper.getFieldFormat(fieldName);
-            const existingField = request.getChildren("DTO-Field").find(field =&gt; field.getName().toLowerCase() == fieldName.toLowerCase());
+            const existingField = request.getChildren("DTO-Field")
+                .find(field =&gt; field.getName().toLowerCase() == fieldName.toLowerCase() || field.getName().toLowerCase() == "id");
             return {
                 existingId: existingField === null || existingField === void 0 ? void 0 : existingField.id,
                 mappingPath: [],
@@ -7254,7 +7255,8 @@ function getMappedRequestDetails(request) {
                 fieldName = `${owningEntity.getName()}${toCamelCase(fieldName)}`;
             }
             fieldName = ServicesHelper.getFieldFormat(fieldName);
-            const existingField = request.getChildren("DTO-Field").find(field =&gt; field.getName().toLowerCase() == fieldName.toLowerCase());
+            const existingField = request.getChildren("DTO-Field")
+                .find(field =&gt; field.getName().toLowerCase() == fieldName.toLowerCase() || field.getName().toLowerCase() == "id");
             return {
                 existingId: existingField === null || existingField === void 0 ? void 0 : existingField.id,
                 mappingPath: [],

@@ -4550,10 +4550,10 @@ function getMappedRequestDetails(request) {
     // Advanced mapping:
     if (mappedElement == null) {
         const advancedMappings = request.getAssociations()
-            .map(association =&gt; {
+            .map((association) =&gt; {
             return association.getMapping(createEntityMappingTypeId) ||
-                association.getMapping(updateEntityMappingTypeId) ||
-                association.getMapping(queryEntityMappingTypeId);
+                association.getMapping(queryEntityMappingTypeId) ||
+                association.getMapping(updateEntityMappingTypeId);
         })
             .filter(mapping =&gt; mapping != null);
         if (advancedMappings.length === 1) {
@@ -4572,6 +4572,7 @@ function getMappedRequestDetails(request) {
         mappingElement: mappedElement,
         mappingTargetType: mappedElement.specialization,
         entityKeyFields: [],
+        ownerKeyFields: []
     };
     result.owningEntity = DomainHelper.getOwningAggregate(entity);
     // As long as it's not for creation, populate the PKs of the entity:
@@ -4580,6 +4581,12 @@ function getMappedRequestDetails(request) {
         result.entityKeyFields = result.mappingTargetType === "Class"
             ? getKeysForClassMapping(request, entity)
             : getKeysForOperationMapping(request, entity);
+    }
+    // If the entity is owned, populate its fields:
+    if (result.owningEntity != null) {
+        result.ownerKeyFields = result.mappingTargetType === "Class"
+            ? getKeysForClassMapping(request, entity, result.owningEntity)
+            : getKeysForOperationMapping(request, entity, result.owningEntity);
     }
     return result;
     /**
@@ -4597,7 +4604,8 @@ function getMappedRequestDetails(request) {
                 fieldName = `${owningEntity.getName()}${toCamelCase(fieldName)}`;
             }
             fieldName = ServicesHelper.getFieldFormat(fieldName);
-            const existingField = request.getChildren("DTO-Field").find(field =&gt; field.getName().toLowerCase() == fieldName.toLowerCase());
+            const existingField = request.getChildren("DTO-Field")
+                .find(field =&gt; field.getName().toLowerCase() == fieldName.toLowerCase() || field.getName().toLowerCase() == "id");
             return {
                 existingId: existingField === null || existingField === void 0 ? void 0 : existingField.id,
                 mappingPath: [],
@@ -4836,7 +4844,7 @@ function getMappedDomainElement(request) {
     // Advanced mappings:
     if (mappedElement == null) {
         const targetEntities = request.getAssociations()
-            .flatMap(association =&gt; association.getMappings()
+            .flatMap((association) =&gt; association.getMappings()
             .filter(mapping =&gt; mappingTypeIds.some(y =&gt; mapping.mappingTypeId == y))
             .map(mapping =&gt; {
             let element = mapping.getTargetElement();
@@ -4863,19 +4871,6 @@ function getMappedDomainElement(request) {
 /// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
 /// &lt;reference path="../_common/getRouteParts.ts" /&gt;
 /// &lt;reference path="../../common/getMappedDomainElement.ts" /&gt;
-function exposeAsHttpEndPoint(element) {
-    let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
-    if (!element.getParent().hasStereotype(httpServiceSettingsId)) {
-        element.getParent().addStereotype(httpServiceSettingsId);
-        let serviceBaseName = removeSuffix(element.getParent().getName(), "Service");
-        element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
-    }
-    let parentRoute = element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").getValue().toString();
-    applyHttpSettingsToOperations(element, parentRoute);
-}
-function getRoute(serviceBaseName) {
-    return `${getDefaultRoutePrefix(true)}${kebabCaseAcronymCorrection(toKebabCase(serviceBaseName), serviceBaseName)}`;
-}
 function applyHttpSettingsToOperations(operation, existingRoute = ``) {
     var _a, _b;
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
@@ -4987,8 +4982,8 @@ function getRouteInfo(operation, routePrefix, addId, entity, additionalRoute) {
         else {
             let primaryKeys = DomainHelper.getPrimaryKeys(entity);
             for (const key of primaryKeys) {
-                if (operation.getChildren().some(x =&gt; x.getName().toLowerCase() == key.name.toLowerCase())) {
-                    routeIds.push(`{${operation.getChildren().find(x =&gt; x.getName().toLowerCase() == key.name.toLowerCase()).getName()}}`);
+                if (operation.getChildren().some(x =&gt; x.getName().toLowerCase() == key.name.toLowerCase() || x.getName().toLowerCase() == "id")) {
+                    routeIds.push(`{${operation.getChildren().find(x =&gt; x.getName().toLowerCase() == key.name.toLowerCase() || x.getName().toLowerCase() == "id").getName()}}`);
                 }
             }
         }
@@ -5004,6 +4999,20 @@ function getRouteInfo(operation, routePrefix, addId, entity, additionalRoute) {
         result += additionalRoute;
     }
     return result;
+}
+/// &lt;reference path="common.ts" /&gt;
+function exposeAsHttpEndPoint(element) {
+    let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
+    if (!element.getParent().hasStereotype(httpServiceSettingsId)) {
+        element.getParent().addStereotype(httpServiceSettingsId);
+        let serviceBaseName = removeSuffix(element.getParent().getName(), "Service");
+        element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
+    }
+    let parentRoute = element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").getValue().toString();
+    applyHttpSettingsToOperations(element, parentRoute);
+}
+function getRoute(serviceBaseName) {
+    return `${getDefaultRoutePrefix(true)}${kebabCaseAcronymCorrection(toKebabCase(serviceBaseName), serviceBaseName)}`;
 }
 /// &lt;reference path="shared.ts" /&gt;
 /**
@@ -5470,10 +5479,10 @@ function getMappedRequestDetails(request) {
     // Advanced mapping:
     if (mappedElement == null) {
         const advancedMappings = request.getAssociations()
-            .map(association =&gt; {
+            .map((association) =&gt; {
             return association.getMapping(createEntityMappingTypeId) ||
-                association.getMapping(updateEntityMappingTypeId) ||
-                association.getMapping(queryEntityMappingTypeId);
+                association.getMapping(queryEntityMappingTypeId) ||
+                association.getMapping(updateEntityMappingTypeId);
         })
             .filter(mapping =&gt; mapping != null);
         if (advancedMappings.length === 1) {
@@ -5524,7 +5533,8 @@ function getMappedRequestDetails(request) {
                 fieldName = `${owningEntity.getName()}${toCamelCase(fieldName)}`;
             }
             fieldName = ServicesHelper.getFieldFormat(fieldName);
-            const existingField = request.getChildren("DTO-Field").find(field =&gt; field.getName().toLowerCase() == fieldName.toLowerCase());
+            const existingField = request.getChildren("DTO-Field")
+                .find(field =&gt; field.getName().toLowerCase() == fieldName.toLowerCase() || field.getName().toLowerCase() == "id");
             return {
                 existingId: existingField === null || existingField === void 0 ? void 0 : existingField.id,
                 mappingPath: [],
@@ -5763,7 +5773,7 @@ function getMappedDomainElement(request) {
     // Advanced mappings:
     if (mappedElement == null) {
         const targetEntities = request.getAssociations()
-            .flatMap(association =&gt; association.getMappings()
+            .flatMap((association) =&gt; association.getMappings()
             .filter(mapping =&gt; mappingTypeIds.some(y =&gt; mapping.mappingTypeId == y))
             .map(mapping =&gt; {
             let element = mapping.getTargetElement();
@@ -5901,8 +5911,8 @@ function getRouteInfo(operation, routePrefix, addId, entity, additionalRoute) {
         else {
             let primaryKeys = DomainHelper.getPrimaryKeys(entity);
             for (const key of primaryKeys) {
-                if (operation.getChildren().some(x =&gt; x.getName().toLowerCase() == key.name.toLowerCase())) {
-                    routeIds.push(`{${operation.getChildren().find(x =&gt; x.getName().toLowerCase() == key.name.toLowerCase()).getName()}}`);
+                if (operation.getChildren().some(x =&gt; x.getName().toLowerCase() == key.name.toLowerCase() || x.getName().toLowerCase() == "id")) {
+                    routeIds.push(`{${operation.getChildren().find(x =&gt; x.getName().toLowerCase() == key.name.toLowerCase() || x.getName().toLowerCase() == "id").getName()}}`);
                 }
             }
         }
@@ -6025,7 +6035,7 @@ function applyHttpSettingsToOperations(operation: MacroApi.Context.IElementApi, 
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/service/expose-as-http-endpoint.ts
  */
-exposeAsHttpEndPoint(element);
+//exposeAsHttpEndPoint(element);
 </script>
     </script>
   </scripts>
