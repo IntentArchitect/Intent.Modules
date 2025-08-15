@@ -23,6 +23,7 @@
             <option value="azure-open-ai" description="Azure Open AI" />
             <option value="ollama" description="Ollama (Experimental)" />
             <option value="anthropic" description="Anthropic" />
+            <option value="open-router" description="Open Router" />
           </options>
         </setting>
         <setting id="9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8" title="Open AI API Key" type="text">
@@ -39,6 +40,10 @@ return provider === "azure-open-ai";</isActiveFunction>
           <hint>Will fall back to environment variable if empty.</hint>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "anthropic";</isActiveFunction>
+        </setting>
+        <setting id="d615e7c5-e3d6-4ee0-a1b2-b671e03b5330" title="Open Router API Key" type="text">
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "open-router";</isActiveFunction>
         </setting>
         <setting id="effcfd41-aaed-4278-a7e7-818009584139" title="Model" type="text">
           <defaultValue>gpt-4o</defaultValue>

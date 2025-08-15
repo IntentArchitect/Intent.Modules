@@ -57,6 +57,7 @@ namespace Intent.Modules.Common.AI.Settings
                     "azure-open-ai" => ProviderOptionsEnum.AzureOpenAi,
                     "ollama" => ProviderOptionsEnum.Ollama,
                     "anthropic" => ProviderOptionsEnum.Anthropic,
+                    "open-router" => ProviderOptionsEnum.OpenRouter,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
@@ -80,6 +81,11 @@ namespace Intent.Modules.Common.AI.Settings
             {
                 return Value == "anthropic";
             }
+
+            public bool IsOpenRouter()
+            {
+                return Value == "open-router";
+            }
         }
 
         public enum ProviderOptionsEnum
@@ -88,6 +94,7 @@ namespace Intent.Modules.Common.AI.Settings
             AzureOpenAi,
             Ollama,
             Anthropic,
+            OpenRouter,
         }
 
         public string OpenAIAPIKey() => _groupSettings.GetSetting("9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8")?.Value;
@@ -95,6 +102,8 @@ namespace Intent.Modules.Common.AI.Settings
         public string AzureOpenAIAPIKey() => _groupSettings.GetSetting("d76d0a4d-60c5-42b4-aa3b-de4f11b44ac1")?.Value;
 
         public string AnthropicAPIKey() => _groupSettings.GetSetting("715e2ce8-677c-467d-a876-8dc84b99ae05")?.Value;
+
+        public string OpenRouterAPIKey() => _groupSettings.GetSetting("d615e7c5-e3d6-4ee0-a1b2-b671e03b5330")?.Value;
 
         public string Model() => _groupSettings.GetSetting("effcfd41-aaed-4278-a7e7-818009584139")?.Value;
 
