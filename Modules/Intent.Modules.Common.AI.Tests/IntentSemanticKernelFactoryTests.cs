@@ -21,7 +21,7 @@ public class IntentSemanticKernelFactoryTests
           )]
      [InlineData(AISettings.ProviderOptionsEnum.OpenAi, "gpt-4o")]
      [InlineData(AISettings.ProviderOptionsEnum.Anthropic, "claude-3-5-haiku-20241022")]
-     [InlineData(AISettings.ProviderOptionsEnum.OpenRouter, "qwen/qwen3-coder:free")] // Requires "Enable free endpoints that may train on inputs" ENABLED
+     [InlineData(AISettings.ProviderOptionsEnum.OpenRouter, "qwen/qwen3-coder")]
      public async Task AiConnectionWithCalculatorToolTest(AISettings.ProviderOptionsEnum provider, string model)
      {
           // ARRANGE
