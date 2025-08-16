@@ -116,10 +116,10 @@ public class IntentSemanticKernelFactory
                     apiKey = Environment.GetEnvironmentVariable(variable: "OPENROUTER_API_KEY");
                 }
                 
-                // builder.Services.AddOpenRouterChatCompletion(
-                //     apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
-                //         ? apiKey : throw new FriendlyException(message: GetErrorMessage("OPENROUTER_API_KEY")),
-                //     modelId: model);
+                builder.Services.AddOpenRouterChatCompletion(
+                    apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
+                        ? apiKey : throw new FriendlyException(message: GetErrorMessage("OPENROUTER_API_KEY")),
+                    modelId: model);
                 break;
             
             default:

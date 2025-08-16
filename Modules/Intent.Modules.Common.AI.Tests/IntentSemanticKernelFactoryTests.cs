@@ -26,7 +26,8 @@ public class IntentSemanticKernelFactoryTests
           )]
      [InlineData(AISettings.ProviderOptionsEnum.OpenAi, "gpt-4o")]
      [InlineData(AISettings.ProviderOptionsEnum.Anthropic, "claude-3-5-haiku-20241022")]
-     public async Task OpenAiConnectorTest(AISettings.ProviderOptionsEnum provider, string model)
+     [InlineData(AISettings.ProviderOptionsEnum.OpenRouter, "qwen/qwen3-coder:free")] // Requires "Enable free endpoints that may train on inputs" ENABLED
+     public async Task AiConnectionWithCalculatorToolTest(AISettings.ProviderOptionsEnum provider, string model)
      {
           // ARRANGE
           var settings = GetUserSettingsProvider(provider, model);
@@ -73,6 +74,7 @@ public class IntentSemanticKernelFactoryTests
                case AISettings.ProviderOptionsEnum.Anthropic:
                     return GetProviderStubConfig("ANTHROPIC_API_KEY", "anthropic", model, "715e2ce8-677c-467d-a876-8dc84b99ae05");
                case AISettings.ProviderOptionsEnum.OpenRouter:
+                    return GetProviderStubConfig("OPENROUTER_API_KEY", "open-router", model, "d615e7c5-e3d6-4ee0-a1b2-b671e03b5330");
                default:
                     throw new ArgumentOutOfRangeException(nameof(providerOptionsEnum), providerOptionsEnum, null);
           }
