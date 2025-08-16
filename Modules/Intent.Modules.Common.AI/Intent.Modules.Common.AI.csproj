@@ -46,5 +46,9 @@
   <ItemGroup>
     <Folder Include="docs\images\" />
   </ItemGroup>
+    
+  <ItemGroup>
+    <InternalsVisibleTo Include="Intent.Modules.Common.AI.Tests" />
+  </ItemGroup>
 
 </Project>
