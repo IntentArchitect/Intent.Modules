@@ -222,7 +222,7 @@
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
-            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Will fall back to environment variable if empty." isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" isActive="true" />
             <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;open-router&quot;;" isActive="true" />
             <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" isActive="true" />
