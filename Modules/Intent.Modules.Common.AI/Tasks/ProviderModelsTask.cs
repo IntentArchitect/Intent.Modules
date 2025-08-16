@@ -1,12 +1,22 @@
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Intent.Engine;
+using Intent.Modules.Common.AI.Settings;
 using Intent.Plugins;
 
 namespace Intent.Modules.Common.AI.Tasks;
 
 public class ProviderModelsTask : IModuleTask
 {
+    private readonly IUserSettingsProvider _userSettingsProvider;
+
+    public ProviderModelsTask(IUserSettingsProvider userSettingsProvider)
+    {
+        _userSettingsProvider = userSettingsProvider;
+    }
+    
     public string TaskTypeId => "Intent.Modules.Common.AI.Tasks.ProviderModelsTask";
     public string TaskTypeName => "Fetch Provider Models";
     public int Order => 0;
@@ -33,6 +43,20 @@ public class ProviderModelsTask : IModuleTask
             new("open-router", "anthropic/claude-opus-4",            "OpenRouter",  ThinkingType.ToggleThinking),
             new("open-router", "anthropic/claude-opus-4.1",          "OpenRouter",  ThinkingType.ToggleThinking)
         ];
+        
+        // Let's filter these models based on whether API keys (or their environment variable counterparts) are set.
+        var settings = _userSettingsProvider.GetAISettings();
+        providerModels = providerModels.FindAll(model =>
+            model.ProviderId switch
+            {
+                "open-ai" => !string.IsNullOrWhiteSpace(settings.OpenAIAPIKey()) ||
+                             !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENAI_API_KEY")),
+                "anthropic" => !string.IsNullOrWhiteSpace(settings.AnthropicAPIKey()) ||
+                               !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY")),
+                "open-router" => !string.IsNullOrWhiteSpace(settings.OpenRouterAPIKey()) ||
+                                 !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")),
+                _ => false
+            });
         
         return JsonSerializer.Serialize(providerModels, new JsonSerializerOptions
         {
