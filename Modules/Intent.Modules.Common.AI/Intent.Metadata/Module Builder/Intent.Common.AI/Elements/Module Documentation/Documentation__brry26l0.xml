@@ -32,7 +32,7 @@
             <property name="207e8583-2ba5-4ea3-84aa-2f65cd5915ca" display="Href" value="https://docs.intentarchitect.com/articles/modules-common/intent-common-ai/intent-common-ai.html#user-settings" isActive="true" />
             <property name="21d13790-2910-475c-b58f-9d350f2e13c6" display="Designers" value="[]" isActive="true" />
             <property name="8642b1d1-93f9-4f5f-b5ae-ad5fc20d7a46" display="Elements" value="[]" isActive="true" />
-            <property name="f55a1f0c-40dd-48b4-b985-8360933e6a47" display="Tags" value="ai openai artificial intelligence LLM agent handler generate implement command query settings model user" isActive="true" />
+            <property name="f55a1f0c-40dd-48b4-b985-8360933e6a47" display="Tags" value="ai openai artificial intelligence LLM agent handler generate implement command query settings model user api key" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

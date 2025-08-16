@@ -19,7 +19,9 @@
               "query",
               "settings",
               "model",
-              "user"
+              "user",
+              "api",
+              "key"
             ]
         }
     ]
