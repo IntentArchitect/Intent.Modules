@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
@@ -32,68 +33,70 @@ internal static class OpenRouterChatCompletionService
 
     public class OpenRouterErrorHandler : DelegatingHandler
     {
+        private static readonly JsonSerializerOptions JsonSerializerOptions = new()
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var response = await base.SendAsync(request, cancellationToken);
 
-            if (!response.IsSuccessStatusCode)
+            var content = await response.Content.ReadAsStringAsync(cancellationToken);
+            
+            // Attempt to parse OpenRouter error format
+            var normalizedError = GetNormalizeOpenRouterError(content, response.StatusCode);
+            if (normalizedError is not null)
             {
-                var content = await response.Content.ReadAsStringAsync();
-                // Attempt to parse OpenRouter error format
-                var normalizedError = NormalizeOpenRouterError(content, response.StatusCode);
-                throw new OpenAICompatibleException(normalizedError);
+                throw new Exception(normalizedError.Message);
             }
 
             return response;
         }
 
-        private OpenAIError NormalizeOpenRouterError(string content, System.Net.HttpStatusCode statusCode)
+        private static OpenAIError? GetNormalizeOpenRouterError(string content, System.Net.HttpStatusCode statusCode)
         {
             // Example: Map OpenRouter error fields to OpenAI error fields
             try
             {
-                var openRouterError = JsonSerializer.Deserialize<OpenRouterError>(content);
+                var openRouterResponse = JsonSerializer.Deserialize<OpenRouterResponse>(content, JsonSerializerOptions);
+                if (openRouterResponse?.Error is null)
+                {
+                    return null;
+                }
                 return new OpenAIError
                 {
-                    Code = (int)statusCode,
-                    Type = openRouterError?.Type ?? "unknown_error",
-                    Message = openRouterError?.Message ?? content
+                    Code = openRouterResponse.Error.Code,
+                    Message = $"{openRouterResponse.Error.Message} => {openRouterResponse.Error.Metadata?["raw"]}"
                 };
             }
-            catch
+            catch (Exception ex)
             {
                 // Fallback for unexpected error formats
                 return new OpenAIError
                 {
                     Code = (int)statusCode,
-                    Type = "unknown_error",
-                    Message = content
+                    Message = ex.Message,
                 };
             }
         }
     }
 
-// Example error classes
-    public class OpenRouterError
+    public class OpenRouterResponse
     {
-        public string Type { get; set; }
-        public string Message { get; set; }
+        public OpenRouterResponseError? Error { get; set; }
     }
 
+    public class OpenRouterResponseError
+    {
+        public int Code { get; set; }
+        public string Message { get; set; } = null!;
+        public Dictionary<string, object>? Metadata { get; set; }
+    }
+    
     public class OpenAIError
     {
         public int Code { get; set; }
-        public string Type { get; set; }
-        public string Message { get; set; }
-    }
-
-    public class OpenAICompatibleException : Exception
-    {
-        public OpenAIError Error { get; }
-
-        public OpenAICompatibleException(OpenAIError error) : base(error.Message)
-        {
-            Error = error;
-        }
+        public string Message { get; set; } = null!;
     }
 }

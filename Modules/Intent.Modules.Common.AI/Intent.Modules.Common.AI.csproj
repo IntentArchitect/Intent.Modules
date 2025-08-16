@@ -15,6 +15,7 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
