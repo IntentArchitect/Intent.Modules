@@ -33,6 +33,13 @@ public class IntentSemanticKernelFactory
     public Kernel BuildSemanticKernel(string model, Action<IKernelBuilder>? configure)
     {
         var settings = _userSettingsProvider.GetAISettings();
+        var provider = settings.Provider().AsEnum();
+        return BuildSemanticKernel(model, provider, configure);
+    }
+
+    public Kernel BuildSemanticKernel(string model, AISettings.ProviderOptionsEnum provider, Action<IKernelBuilder>? configure)
+    {
+        var settings = _userSettingsProvider.GetAISettings();
         string? apiKey;
         
         // Create the Semantic Kernel instance with your LLM service.
@@ -52,7 +59,6 @@ public class IntentSemanticKernelFactory
             configure(obj: builder);
         }
 
-        var provider = settings.Provider().AsEnum();
         switch (provider)
         {
             case AISettings.ProviderOptionsEnum.OpenAi:
