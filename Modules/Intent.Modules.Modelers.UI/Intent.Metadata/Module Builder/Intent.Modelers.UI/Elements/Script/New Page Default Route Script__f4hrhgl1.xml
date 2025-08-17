@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="3c0034be-44cc-40b1-a390-b5e88574ee46" type="Script" typeId="101fd5b6-3159-4810-9490-a103ef323e9c">
+  <name>New Page Default Route Script</name>
+  <display>New Page Default Route Script</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>444f582b-b875-4c72-9671-697b47fa367c</parentFolderId>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="da7d632f-b07f-4c83-ab01-bc6175006aa5" name="Script Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="4708b6ef-0671-4ea1-a920-ccec2c9eb3ea" display="Type" value="Inline Script" isActive="true" />
+        <property name="3256efdd-5d71-46f3-bd51-ef08a8d95526" display="Script" value="function setDefaultRoute(page, stereotype ){&#xD;&#xA;    // Ensure exactly one leading &quot;/&quot; and no trailing slash (except for &quot;/&quot;)&#xD;&#xA;    const normalizeRoute = (route) =&gt; {&#xD;&#xA;    let r = route.replace(/\/{2,}/g, &quot;/&quot;);&#xD;&#xA;    if (r.length &gt; 1 &amp;&amp; r.endsWith(&quot;/&quot;)) r = r.slice(0, -1);&#xD;&#xA;    return r.startsWith(&quot;/&quot;) ? r : `/${r}`;&#xD;&#xA;    };&#xD;&#xA;&#xD;&#xA;    const pageName = page.getName();&#xD;&#xA;    let rawRoute = &quot;&quot;;&#xD;&#xA;    const routeFolders = page.getParents(&quot;Folder&quot;).filter(x =&gt; x.getName() != &quot;Pages&quot; &amp;&amp; x.getName() != &quot;Components&quot;);&#xD;&#xA;    if (routeFolders.length == 0){&#xD;&#xA;        rawRoute = toKebabCase(removeSuffix(pageName, &quot;Page&quot;, &quot;Component&quot;)).trim();&#xD;&#xA;    }else{&#xD;&#xA;&#xD;&#xA;        const baseRoutePath = routeFolders.map(f =&gt; toKebabCase(f.getName())).join(&quot;/&quot;);&#xD;&#xA;        const parentFolder = routeFolders[routeFolders.length - 1];&#xD;&#xA;        const pageRoutePart = toKebabCase(removeSuffix(pageName, &quot;Page&quot;, &quot;Component&quot;, parentFolder.getName(), singularize(parentFolder.getName()))).trim();&#xD;&#xA;&#xD;&#xA;        rawRoute = pageRoutePart &amp;&amp; pageRoutePart.length &gt; 0&#xD;&#xA;        ? (baseRoutePath ? `${baseRoutePath}/${pageRoutePart}` : pageRoutePart)&#xD;&#xA;        : baseRoutePath;&#xD;&#xA;    }&#xD;&#xA;    stereotype.getProperty(routeId).setValue(normalizeRoute(rawRoute));    &#xD;&#xA;}" isActive="true" />
+        <property name="41cc0d56-3141-40fe-ae97-c024866d441e" display="File Path" isActive="false" />
+        <property name="540780ad-f54e-4bd5-95f3-20a58fd59105" display="Dependencies" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>
