@@ -1,6 +1,7 @@
 ### Version 2.0.2
 
 - Improvement: Subscriptions and Publishes are now colored with a yellow line to indicate that they are pushing the messages externally.
+- Fixed: `Create Event Handler` suggestions isVisible calculation updated to be more accurate as to when it shows.
 
 ### Version 2.0.1
 

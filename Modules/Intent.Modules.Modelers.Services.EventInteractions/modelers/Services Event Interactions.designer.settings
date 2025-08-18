@@ -1403,13 +1403,15 @@ if (position) {
     </suggestionSetting>
     <suggestionSetting type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" locations="diagram, model">
       <name>Create Integration Event Handler</name>
-      <filterFunction>const associationIds = [
-  "efa73bdb-69b7-4f52-aa10-15c19874b394", // subscribeIntegrationCommand
-  "35a14f76-71e0-45f2-a17f-f8d1483510f7", // publishIntegrationCommandAssocaition
-];
+      <filterFunction>
+const handlerAssociation = "efa73bdb-69b7-4f52-aa10-15c19874b394"; // subscribeIntegrationCommand
+const publishAssociation = "35a14f76-71e0-45f2-a17f-f8d1483510f7"; // publish integration command association
 
-return !lookupTypesOf(associationIds).some(x =&gt; x.typeReference.getTypeId() == element.id);
-//return !element.getAssociations().some(a =&gt; associationIds.includes(a.specializationId));
+// check that there is not already a handler associated with the message and
+// that there is not a publish, but in the same application
+return !(lookupTypesOf(handlerAssociation).some(x =&gt; x.typeReference.getTypeId() == element.id) ||
+  lookupTypesOf(publishAssociation).some(x =&gt; x.typeReference.getTypeId() == element.id &amp;&amp; x.getPackage().applicationId == application.id));
+
 </filterFunction>
       <dependencies />
       <script>const integrationEventHandlerId = "c0582230-22f5-4f74-8eb0-ec6fc9364900";
@@ -1425,13 +1427,15 @@ if (position) {
     </suggestionSetting>
     <suggestionSetting type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" locations="diagram, model">
       <name>Create Integration Event Handler</name>
-      <filterFunction>const associationIds = [
-  "16fa2952-79e6-4150-b5ab-45aa4c106de4",//integrationEventHandlerAssociation
-  "6feb1511-849a-4aa3-85eb-d0c736ac1fec"//publishIntegrationEventAssociation
-];
+      <filterFunction>
+const handlerAssociation = "16fa2952-79e6-4150-b5ab-45aa4c106de4"; // integration event handler association
+const publishAssociation = "6feb1511-849a-4aa3-85eb-d0c736ac1fec"; // publish integration event association
 
-return !lookupTypesOf(associationIds).some(x =&gt; x.typeReference.getTypeId() == element.id);
-//return !element.getAssociations().some(a =&gt; associationIds.includes(a.specializationId));
+// check that there is not already a handler associated with the message and
+// that there is not a publish, but in the same application
+return !(lookupTypesOf(handlerAssociation).some(x =&gt; x.typeReference.getTypeId() == element.id) ||
+  lookupTypesOf(publishAssociation).some(x =&gt; x.typeReference.getTypeId() == element.id &amp;&amp; x.getPackage().applicationId == application.id));
+
 
 </filterFunction>
       <dependencies />
