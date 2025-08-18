@@ -3587,7 +3587,7 @@ if (serviceRequest.specialization == "Query") {
     const mapping = callService.createAdvancedMapping(operation.id, command.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
     mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [command.id]);
 
-    addViewModel(command, component, "Command", "Create", "Update");
+    addViewModel(command, component, mapping, "Command", "Create", "Update");
 
     // if (command.typeReference.isTypeFound())  {
     //     const property = component.addChild("Property", "Model");
@@ -3628,12 +3628,12 @@ if (serviceRequest.specialization == "Query") {
     } else {
         const dtoParam = serviceOp.getChild(x =&gt; x.specialization == "Parameter" &amp;&amp; x.typeReference.getType().specialization == "DTO")
         const dto = dtoParam?.typeReference.getType();
-        addViewModel(dto, component, "DTO", "Dto");
+        addViewModel(dto, component, mapping, "DTO", "Dto");
         mapping.launchDialog();
     }
 }
 
-function addViewModel(contract, component, ...suffixesToRemove){
+function addViewModel(contract, component, mapping, ...suffixesToRemove){
 
     if (!contract) return;
 
@@ -3647,21 +3647,30 @@ function addViewModel(contract, component, ...suffixesToRemove){
             newProperty.typeReference.setIsNullable(true);
         }
 
-        addChildElementsRecursivly(newModel, contract, component, mapping);
+        addChildElementsRecursivly(newModel, contract, component, mapping,[newProperty.id], [contract.id]);
     }
 }
 
-function addChildElementsRecursivly(model, contract, component, mapping){
+function addChildElementsRecursivly(model, contract, component, mapping, srcPath, dstPath){
     contract.getChildren("DTO-Field").forEach(field =&gt; {
+
         const modelProperty = model.addChild("Property", field.getName());
-        if (field.typeReference.getType().specialization == "DTO"){
-            const complexChild = component.addChild("Model Definition", removePrefix(removeSuffix(field.typeReference.getType().getName(), "DTO", "Dto"))  + "Model")
-            modelProperty.typeReference.setType(complexChild.id);
-            addChildElementsRecursivly(complexChild, field.typeReference.getType(), component, mapping);
+        const nextSrcPath = srcPath.concat(modelProperty.id);
+        const nextDstPath = dstPath.concat(field.id);                
+
+        if (field.typeReference?.getType()?.specialization == "DTO"){
+            const complexChildType = component.addChild("Model Definition", removePrefix(removeSuffix(field.typeReference.getType().getName(), "DTO", "Dto"))  + "Model")
+            modelProperty.typeReference.setType(complexChildType.id);
+            modelProperty.typeReference.setIsNullable(field.typeReference.isNullable)
+            modelProperty.typeReference.setIsCollection(field.typeReference.isCollection)
+            if (field.typeReference.isCollection){
+                mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", nextSrcPath, nextDstPath);
+            }
+            addChildElementsRecursivly(complexChildType, field.typeReference.getType(), component, mapping, nextSrcPath, nextDstPath);
         } else {                   
             modelProperty.typeReference.setType(field.typeReference.toModel());
+            mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", nextSrcPath, nextDstPath);
         }
-        mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", [newProperty.id, modelProperty.id], [contract.id, field.id]);
     })
 }</script>
     </suggestionSetting>
