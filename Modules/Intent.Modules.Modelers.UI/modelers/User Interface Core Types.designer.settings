@@ -3617,7 +3617,8 @@ if (serviceRequest.specialization == "Query") {
     });
     
     if (serviceOp.getStereotype("Http Settings")?.getProperty("Verb").getValue() == "GET") {
-        if (serviceOp.typeReference.getType() != null &amp;&amp; serviceOp.typeReference.getType().specialization != "Type-Definition") {
+        if (serviceOp.typeReference.getType() != null 
+            &amp;&amp; (serviceOp.typeReference.getType().specialization != "Type-Definition" || (serviceOp.typeReference.getType().specialization == "Type-Definition") &amp;&amp; serviceOp.typeReference.toModel().genericTypeParameters.length &gt; 0) ) {
             const property = component.addChild("Property", "Model");
             property.typeReference.setType(serviceOp.typeReference.toModel());
             property.typeReference.setIsNullable(true);
