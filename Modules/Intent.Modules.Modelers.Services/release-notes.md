@@ -4,6 +4,7 @@
 - Improvement: Referenced `Service` visuals will have a slight teal colored to signify that they are referenced.
 - Improvement: `Perform Invocation` will always launch the Invocation Mapping dialog.
 - Fixed: Errors in `Display Text Function` scripts for Operations.
+- Fixed: DTO Mappings that create new DTOs (e.g. for new collection mappings) would not respect the `Is Nullable` and `Is Collection` settings for the automatically added child fields.
 
 ### Version 4.0.2
 

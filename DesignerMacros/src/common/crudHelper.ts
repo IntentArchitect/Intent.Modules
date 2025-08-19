@@ -396,8 +396,10 @@ class CrudHelper {
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
             mapPath: [attr.id],
-            isNullable: false,
-            isCollection: false
+            // GCB - if you're seeing this change in your script, where these used to be false, you need to check.
+            // I had to "fix" this so that basic mapping DTO projections worked properly (e.g. adding OrderLines to an Order DTO via basic mapping)
+            isNullable: attr.typeReference.isNullable,
+            isCollection: attr.typeReference.isCollection
         });
     
         traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
