@@ -279,6 +279,11 @@ class CrudHelper {
         let domainElement = mappedElement;
         let attributesWithMapPaths = CrudHelper.getAttributesWithMapPath(domainElement);
         let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true;
+    
+        if (autoAddPrimaryKey && !isCreateMode) {
+            CrudHelper.addPrimaryKeys(dto, domainElement, true);
+        }
+
         for (var keyName of Object.keys(attributesWithMapPaths)) {
             let entry = attributesWithMapPaths[keyName];
             if (isCreateMode && CrudHelper.isOwnerForeignKey(entry.name, domainElement)) {
@@ -300,10 +305,6 @@ class CrudHelper {
             field.typeReference.setIsCollection(entry.isCollection);
             dtoUpdated = true;
         }
-    
-        if (autoAddPrimaryKey && !isCreateMode) {
-            CrudHelper.addPrimaryKeys(dto, domainElement, true);
-        }    
     
         if (dtoUpdated) {
             dto.collapse();
