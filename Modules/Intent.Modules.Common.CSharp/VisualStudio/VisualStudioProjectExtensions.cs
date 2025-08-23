@@ -1,8 +1,9 @@
-﻿using System;
+﻿#nullable enable
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+#pragma warning disable IDE0130
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using Intent.Engine;
 using Intent.Modules.Common.CSharp.Nuget;
 using Intent.Modules.Common.CSharp.VisualStudio;
@@ -13,12 +14,13 @@ namespace Intent.Modules.Common.VisualStudio
 {
     public static class VisualStudioProjectExtensions
     {
+        // ReSharper disable InconsistentNaming
         private const string DEPENDENCIES = "VS.Dependencies";
         private const string NUGET_PACKAGES = "VS.NugetPackages";
         private const string NUGET_PACKAGE_INSTALLS = "VS.NugetPackageInstalls";
         private const string REFERENCES = "VS.References";
         private const string FRAMEWORK_DEPENDENCY = "VS.FrameworkReferences";
-        
+        // ReSharper restore InconsistentNaming
 
         public static void InitializeVSMetadata(this IOutputTarget outputTarget)
         {
@@ -41,7 +43,7 @@ namespace Intent.Modules.Common.VisualStudio
 
         public static IList<IOutputTarget> Dependencies(this IOutputTarget outputTarget)
         {
-            return outputTarget.Metadata[DEPENDENCIES] as IList<IOutputTarget>;
+            return (IList<IOutputTarget>)outputTarget.Metadata[DEPENDENCIES];
         }
 
         public static void AddDependency(this IOutputTarget outputTarget, IOutputTarget dependency)
@@ -87,8 +89,8 @@ namespace Intent.Modules.Common.VisualStudio
                     VisualStudioProjectTypeIds.SQLServerDatabaseProject,
                     VisualStudioProjectTypeIds.AzureFunctionsProject,
                     VisualStudioProjectTypeIds.CoreConsoleApp,
-					VisualStudioProjectTypeIds.SdkCSharpProject
-			}.Contains(outputTarget.Type);
+                    VisualStudioProjectTypeIds.SdkCSharpProject
+            }.Contains(outputTarget.Type);
         }
 
         public static List<NuGetInstall> NugetPackageInstalls(this IOutputTarget outputTarget)
@@ -99,7 +101,7 @@ namespace Intent.Modules.Common.VisualStudio
                 return nugetPackages;
             }
 
-            return new List<NuGetInstall>();
+            return [];
         }
 
         public static List<INugetPackageInfo> NugetPackages(this IOutputTarget outputTarget)
@@ -109,7 +111,7 @@ namespace Intent.Modules.Common.VisualStudio
 
         public static IList<IAssemblyReference> References(this IOutputTarget outputTarget)
         {
-            return outputTarget.Metadata[REFERENCES] as IList<IAssemblyReference>;
+            return (IList<IAssemblyReference>)outputTarget.Metadata[REFERENCES];
         }
 
         public static string TargetFramework(this IOutputTarget outputTarget)
