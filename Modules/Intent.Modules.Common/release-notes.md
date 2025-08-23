@@ -1,3 +1,7 @@
+### Version 3.9.0
+
+- Feature: Added support for filtering template instances for registrations.
+
 ### Version 3.8.0
 
 - Improvement: Added `[Invokable]` stereotype (trait) to this module.

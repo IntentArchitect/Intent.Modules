@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.SdkEvolutionHelpers;
@@ -15,15 +16,19 @@ namespace Intent.Modules.Common.Templates
         private readonly object? _context;
         private readonly Func<ITemplate, bool> _isMatch;
 
-        private TemplateDependency(string templateId, Func<ITemplate, bool> isMatch, object? context)
+        private TemplateDependency(string templateId, Func<ITemplate, bool> isMatch, object? context, IOutputTarget? accessibleTo)
         {
             TemplateId = templateId;
+            AccessibleTo = accessibleTo;
             _context = context;
             _isMatch = isMatch;
         }
 
         /// <inheritdoc />
         public string TemplateId { get; }
+
+        /// <inheritdoc />
+        public IOutputTarget? AccessibleTo { get; }
 
         /// <summary>
         /// This will be changed to a private member, please contact support@intentarchitect.com if you have a need for this.
@@ -38,31 +43,65 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
+        /// Overload of <see cref="OfType{T}(IOutputTarget)"/> to maintain binary
+        /// backwards compatibility.
+        /// </summary>
+        public static ITemplateDependency OfType<TTemplate>() =>
+            OfType<TTemplate>(accessibleTo: null);
+
+        /// <summary>
         /// Returns a <see cref="ITemplateDependency"/> which finds templates which are of the
         /// provided <typeparamref name="TTemplate"/> type.
         /// </summary>
-        public static ITemplateDependency OfType<TTemplate>()
+        /// <typeparam name="TTemplate"></typeparam>
+        /// <param name="accessibleTo">Optional. The resolved template must be accessible to the provided <see cref="IOutputTarget"/>.</param>
+        public static ITemplateDependency OfType<TTemplate>(IOutputTarget? accessibleTo)
         {
-            return OfTypeTemplateDependency<TTemplate>.Create();
+            return OfTypeTemplateDependency<TTemplate>.Create(accessibleTo);
         }
+
+        /// <summary>
+        /// Overload of <see cref="OnTemplate(string,IOutputTarget)"/> to maintain binary
+        /// backwards compatibility.
+        /// </summary>
+        public static ITemplateDependency OnTemplate(string templateIdOrRole) =>
+            OnTemplate(templateIdOrRole, accessibleTo: null);
 
         /// <summary>
         /// Returns a <see cref="ITemplateDependency"/> which finds templates which have the
         /// provided <paramref name="templateIdOrRole"/>.
         /// </summary>
-        public static ITemplateDependency OnTemplate(string templateIdOrRole)
+        /// <param name="templateIdOrRole"></param>
+        /// <param name="accessibleTo">Optional. The resolved template must be accessible to the provided <see cref="IOutputTarget"/>.</param>
+        public static ITemplateDependency OnTemplate(string templateIdOrRole, IOutputTarget? accessibleTo)
         {
-            return TemplateIdTemplateDependency.Create(templateIdOrRole);
+            return TemplateIdTemplateDependency.Create(templateIdOrRole, accessibleTo);
         }
+
+        /// <summary>
+        /// Overload of <see cref="OnTemplate(ITemplate,IOutputTarget)"/> to maintain binary
+        /// backwards compatibility.
+        /// </summary>
+        public static ITemplateDependency OnTemplate(ITemplate template) =>
+            OnTemplate(template, accessibleTo: null);
 
         /// <summary>
         /// Returns a <see cref="ITemplateDependency"/> which finds a template whose reference
         /// matches the provided <see cref="ITemplate"/>.
         /// </summary>
-        public static ITemplateDependency OnTemplate(ITemplate template)
+        /// <param name="template"></param>
+        /// <param name="accessibleTo">Optional. The resolved template must be accessible to the provided <see cref="IOutputTarget"/>.</param>
+        public static ITemplateDependency OnTemplate(ITemplate template, IOutputTarget? accessibleTo)
         {
-            return TemplateInstanceTemplateDependency.Create(template);
+            return TemplateInstanceTemplateDependency.Create(template, accessibleTo);
         }
+
+        /// <summary>
+        /// Overload of <see cref="OnModel(string,object,IOutputTarget)"/> to maintain binary
+        /// backwards compatibility.
+        /// </summary>
+        public static ITemplateDependency OnModel(string templateIdOrName, object metadataModel) =>
+            OnModel(templateIdOrName, metadataModel, accessibleTo: null);
 
         /// <summary>
         /// Returns a <see cref="ITemplateDependency"/> which finds templates which have the
@@ -70,10 +109,20 @@ namespace Intent.Modules.Common.Templates
         /// whose <see cref="ITemplateWithModel.Model"/>'s reference matches that of the provided
         /// <paramref name="metadataModel"/>.
         /// </summary>
-        public static ITemplateDependency OnModel(string templateIdOrName, object metadataModel)
+        /// <param name="templateIdOrName"></param>
+        /// <param name="metadataModel"></param>
+        /// <param name="accessibleTo">Optional. The resolved template must be accessible to the provided <see cref="IOutputTarget"/>.</param>
+        public static ITemplateDependency OnModel(string templateIdOrName, object metadataModel, IOutputTarget? accessibleTo)
         {
-            return ModelTemplateDependency.Create(templateIdOrName, metadataModel);
+            return ModelTemplateDependency.Create(templateIdOrName, metadataModel, accessibleTo);
         }
+
+        /// <summary>
+        /// Overload of <see cref="OnModel(string,IMetadataModel,IOutputTarget)"/> to maintain binary
+        /// backwards compatibility.
+        /// </summary>
+        public static ITemplateDependency OnModel(string templateIdOrName, IMetadataModel metadataModel) =>
+            OnModel(templateIdOrName, metadataModel, accessibleTo: null);
 
         /// <summary>
         /// Returns a <see cref="ITemplateDependency"/> which finds templates which have the
@@ -82,24 +131,42 @@ namespace Intent.Modules.Common.Templates
         /// <see cref="IMetadataModel"/> with its <see cref="IMetadataModel.Id"/> matching that
         /// the provided <paramref name="metadataModel"/>.
         /// </summary>
-        public static ITemplateDependency OnModel(string templateIdOrName, IMetadataModel metadataModel)
+        /// <param name="metadataModel"></param>
+        /// <param name="accessibleTo">Optional. The resolved template must be accessible to the provided <see cref="IOutputTarget"/>.</param>
+        /// <param name="templateIdOrName"></param>
+        public static ITemplateDependency OnModel(string templateIdOrName, IMetadataModel metadataModel, IOutputTarget? accessibleTo)
         {
-            return ModelIdTemplateDependency.Create(templateIdOrName, metadataModel.Id);
+            return ModelIdTemplateDependency.Create(templateIdOrName, metadataModel.Id, accessibleTo);
         }
 
-        public static ITemplateDependency OnModel<TModel>(string templateIdOrName, Func<TModel, bool> isMatch)
+        /// <summary>
+        /// Overload of <see cref="OnModel{T}(string,Func{T,bool},IOutputTarget)"/> to maintain binary
+        /// backwards compatibility.
+        /// </summary>
+        public static ITemplateDependency OnModel<TModel>(string templateIdOrName, Func<TModel, bool> isMatch) =>
+            OnModel(templateIdOrName, isMatch, accessibleTo: null);
+
+        public static ITemplateDependency OnModel<TModel>(string templateIdOrName, Func<TModel, bool> isMatch, IOutputTarget? accessibleTo)
         {
-            return TemplateDependency.OnModel(templateIdOrName, isMatch, null);
+            return OnModel(templateIdOrName, isMatch, null, accessibleTo);
         }
 
-        public static ITemplateDependency OnModel<TModel>(string templateIdOrName, Func<TModel, bool> isMatch, object? context)
+        /// <summary>
+        /// Overload of <see cref="OnModel{T}(string,Func{T,bool},object,IOutputTarget)"/> to maintain binary
+        /// backwards compatibility.
+        /// </summary>
+        public static ITemplateDependency OnModel<TModel>(string templateIdOrName, Func<TModel, bool> isMatch, object context) =>
+            OnModel(templateIdOrName, isMatch, context, accessibleTo: null);
+
+        public static ITemplateDependency OnModel<TModel>(string templateIdOrName, Func<TModel, bool> isMatch, object? context, IOutputTarget? accessibleTo)
         {
             return new TemplateDependency(
                 templateId: templateIdOrName,
                 isMatch: template =>
                     template is ITemplateWithModel { Model: TModel tModel } &&
                     isMatch(tModel),
-                context: context);
+                context: context,
+                accessibleTo: accessibleTo);
         }
 
         /// <inheritdoc />
@@ -108,20 +175,32 @@ namespace Intent.Modules.Common.Templates
             return _isMatch(template);
         }
 
-        private class TemplateInstanceTemplateDependency : FastLookupTemplateDependency<ITemplate, TemplateInstanceTemplateDependency>
+        private class TemplateInstanceTemplateDependency : FastLookupTemplateDependency<(ITemplate Template, IOutputTarget? AccessibleTo), TemplateInstanceTemplateDependency>
         {
             private readonly ITemplate _template;
 
-            private TemplateInstanceTemplateDependency(ITemplate template)
+            private TemplateInstanceTemplateDependency(ITemplate template, IOutputTarget? accessibleTo) : base(accessibleTo)
             {
                 _template = template;
             }
 
-            public static ITemplateDependency Create(ITemplate template)
+            public static ITemplateDependency Create(ITemplate template, IOutputTarget? accessibleTo)
             {
                 if (template == null) throw new ArgumentNullException(nameof(template));
 
-                return InstanceCache.GetOrAdd(template, key => new TemplateInstanceTemplateDependency(key));
+                return InstanceCache.GetOrAdd((template, accessibleTo), _ => new TemplateInstanceTemplateDependency(template, accessibleTo));
+            }
+
+            public override bool TryGetWithAccessibleTo(IOutputTarget? accessibleTo, [NotNullWhen(true)] out ITemplateDependency? templateDependency)
+            {
+                if (AccessibleTo != null || accessibleTo == null)
+                {
+                    templateDependency = null;
+                    return false;
+                }
+
+                templateDependency = Create(_template, accessibleTo);
+                return true;
             }
 
             protected override ITemplate LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
@@ -147,33 +226,33 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
-        private class TemplateIdTemplateDependency : FastLookupTemplateDependency<string, TemplateIdTemplateDependency>
+        private class TemplateIdTemplateDependency : FastLookupTemplateDependency<(string TemplateId, IOutputTarget? AccessibleTo), TemplateIdTemplateDependency>
         {
-            private TemplateIdTemplateDependency(string templateId)
+            private TemplateIdTemplateDependency(string templateId, IOutputTarget? accessibleTo) : base(accessibleTo)
             {
                 TemplateId = templateId ?? throw new ArgumentNullException(nameof(templateId));
             }
 
-            public static ITemplateDependency Create(string templateId)
+            public static ITemplateDependency Create(string templateId, IOutputTarget? accessibleTo)
             {
                 if (templateId == null) throw new ArgumentNullException(nameof(templateId));
 
-                return InstanceCache.GetOrAdd(templateId, key => new TemplateIdTemplateDependency(key));
+                return InstanceCache.GetOrAdd((templateId, accessibleTo), _ => new TemplateIdTemplateDependency(templateId, accessibleTo));
             }
 
             protected override ITemplate? LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
             {
-                return context.FindTemplateInstance(TemplateId, AlwaysReturnTrue);
+                return context.FindTemplateInstance(TemplateId, AccessibleTo, AlwaysReturnTrue);
             }
 
             protected override IEnumerable<ITemplate> LookupTemplateInstances(ISoftwareFactoryExecutionContext context)
             {
-                return context.FindTemplateInstances(TemplateId, AlwaysReturnTrue);
+                return context.FindTemplateInstances(TemplateId, AccessibleTo, AlwaysReturnTrue);
             }
 
             protected override IOutputTarget? LookupOutputTarget(ISoftwareFactoryExecutionContext context)
             {
-                return context.FindOutputTargetWithTemplate(TemplateId);
+                return context.FindOutputTargetWithTemplate(TemplateId, AccessibleTo);
             }
 
             private static bool AlwaysReturnTrue(ITemplate _) => true;
@@ -186,37 +265,37 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
-        private class ModelTemplateDependency : FastLookupTemplateDependency<(string, object), ModelTemplateDependency>
+        private class ModelTemplateDependency : FastLookupTemplateDependency<(string TemplateId, object Model, IOutputTarget? AccessibleTo), ModelTemplateDependency>
         {
             private readonly object _model;
 
-            private ModelTemplateDependency(string templateId, object model)
+            private ModelTemplateDependency(string templateId, object model, IOutputTarget? accessibleTo) : base(accessibleTo)
             {
                 TemplateId = templateId;
                 _model = model ?? throw new ArgumentNullException(nameof(model));
             }
 
-            public static ITemplateDependency Create(string templateId, object model)
+            public static ITemplateDependency Create(string templateId, object model, IOutputTarget? accessibleTo)
             {
                 if (templateId == null) throw new ArgumentNullException(nameof(templateId));
                 if (model == null) throw new ArgumentNullException(nameof(model));
 
-                return InstanceCache.GetOrAdd((templateId, model), _ => new ModelTemplateDependency(templateId, model));
+                return InstanceCache.GetOrAdd((templateId, model, accessibleTo), _ => new ModelTemplateDependency(templateId, model, accessibleTo));
             }
 
             protected override ITemplate? LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
             {
-                return context.FindTemplateInstance(TemplateId, _model);
+                return context.FindTemplateInstance(TemplateId, _model, AccessibleTo);
             }
 
             protected override IEnumerable<ITemplate> LookupTemplateInstances(ISoftwareFactoryExecutionContext context)
             {
-                return context.FindTemplateInstances(TemplateId, _model);
+                return context.FindTemplateInstances(TemplateId, _model, AccessibleTo);
             }
 
             protected override IOutputTarget? LookupOutputTarget(ISoftwareFactoryExecutionContext context)
             {
-                return context.FindOutputTargetWithTemplate(TemplateId, _model);
+                return context.FindOutputTargetWithTemplate(TemplateId, _model, AccessibleTo);
             }
 
             public override string TemplateId { get; }
@@ -228,37 +307,37 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
-        private class ModelIdTemplateDependency : FastLookupTemplateDependency<(string, string), ModelIdTemplateDependency>
+        private class ModelIdTemplateDependency : FastLookupTemplateDependency<(string TemplateId, string ModelId, IOutputTarget? AccessibleTo), ModelIdTemplateDependency>
         {
             private readonly string _modelId;
 
-            private ModelIdTemplateDependency(string templateId, string modelId)
+            private ModelIdTemplateDependency(string templateId, string modelId, IOutputTarget? accessibleTo) : base(accessibleTo)
             {
                 TemplateId = templateId;
                 _modelId = modelId;
             }
 
-            public static ITemplateDependency Create(string templateId, string modelId)
+            public static ITemplateDependency Create(string templateId, string modelId, IOutputTarget? accessibleTo)
             {
                 if (templateId == null) throw new ArgumentNullException(nameof(templateId));
                 if (modelId == null) throw new ArgumentNullException(nameof(modelId));
 
-                return InstanceCache.GetOrAdd((templateId, modelId), _ => new ModelIdTemplateDependency(templateId, modelId));
+                return InstanceCache.GetOrAdd((templateId, modelId, accessibleTo), _ => new ModelIdTemplateDependency(templateId, modelId, accessibleTo));
             }
 
             protected override ITemplate? LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
             {
-                return context.FindTemplateInstance(TemplateId, _modelId);
+                return context.FindTemplateInstance(TemplateId, _modelId, AccessibleTo);
             }
 
             protected override IEnumerable<ITemplate> LookupTemplateInstances(ISoftwareFactoryExecutionContext context)
             {
-                return context.FindTemplateInstances(TemplateId, _modelId);
+                return context.FindTemplateInstances(TemplateId, _modelId, AccessibleTo);
             }
 
             protected override IOutputTarget? LookupOutputTarget(ISoftwareFactoryExecutionContext context)
             {
-                return context.FindOutputTargetWithTemplate(TemplateId, _modelId);
+                return context.FindOutputTargetWithTemplate(TemplateId, _modelId, AccessibleTo);
             }
 
             public override string TemplateId { get; }
@@ -270,15 +349,15 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
-        private class OfTypeTemplateDependency<TTemplate> : FastLookupTemplateDependency<Type, OfTypeTemplateDependency<TTemplate>>
+        private class OfTypeTemplateDependency<TTemplate> : FastLookupTemplateDependency<(Type Type, IOutputTarget? AccessibleTo), OfTypeTemplateDependency<TTemplate>>
         {
             private readonly TemplateDependency _templateDependency = new();
 
-            private OfTypeTemplateDependency() { }
+            private OfTypeTemplateDependency(IOutputTarget? accessibleTo) : base(accessibleTo) { }
 
-            public static OfTypeTemplateDependency<TTemplate> Create()
+            public static OfTypeTemplateDependency<TTemplate> Create(IOutputTarget? accessibleTo)
             {
-                return InstanceCache.GetOrAdd(typeof(TTemplate), _ => new OfTypeTemplateDependency<TTemplate>());
+                return InstanceCache.GetOrAdd((typeof(TTemplate), accessibleTo), _ => new OfTypeTemplateDependency<TTemplate>(accessibleTo));
             }
 
             protected override ITemplate? LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
@@ -317,6 +396,11 @@ namespace Intent.Modules.Common.Templates
         private abstract class FastLookupTemplateDependency<TInstanceCacheKey, TTemplateDependency> : IFastLookupTemplateDependency
             where TTemplateDependency : ITemplateDependency where TInstanceCacheKey : notnull
         {
+            protected FastLookupTemplateDependency(IOutputTarget? accessibleTo)
+            {
+                AccessibleTo = accessibleTo;
+            }
+
             /// <summary>
             /// Avoids additional memory allocations and also improves effectiveness of <see cref="_cachedLookupTemplateInstance"/>.
             /// </summary>
@@ -341,6 +425,12 @@ namespace Intent.Modules.Common.Templates
                 return _cachedLookupOutputTarget ??= LookupOutputTarget(context);
             }
 
+            public virtual bool TryGetWithAccessibleTo(IOutputTarget? accessibleTo, [NotNullWhen(true)] out ITemplateDependency? templateDependency)
+            {
+                templateDependency = null;
+                return false;
+            }
+
             protected abstract ITemplate? LookupTemplateInstance(ISoftwareFactoryExecutionContext context);
 
             protected abstract IEnumerable<ITemplate> LookupTemplateInstances(ISoftwareFactoryExecutionContext context);
@@ -350,6 +440,8 @@ namespace Intent.Modules.Common.Templates
             public abstract string? TemplateId { get; }
 
             public abstract bool IsMatch(ITemplate template);
+
+            public IOutputTarget? AccessibleTo { get; }
         }
     }
 }

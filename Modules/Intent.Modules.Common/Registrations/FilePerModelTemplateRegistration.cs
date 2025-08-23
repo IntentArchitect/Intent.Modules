@@ -31,7 +31,7 @@ namespace Intent.Modules.Common.Registrations
         {
             foreach (var model in GetModels(application))
             {
-                registry.RegisterTemplate(TemplateId, context => CreateTemplateInstance(context, model));
+                registry.RegisterTemplateForModel(TemplateId, model, context => CreateTemplateInstance(context, model));
             }
         }
     }

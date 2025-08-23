@@ -9,6 +9,7 @@ using Intent.Modules.Common.CSharp.Nuget;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.SdkEvolutionHelpers;
+using Intent.Utils;
 
 namespace Intent.Modules.Common.VisualStudio
 {
@@ -46,17 +47,44 @@ namespace Intent.Modules.Common.VisualStudio
             return (IList<IOutputTarget>)outputTarget.Metadata[DEPENDENCIES];
         }
 
-        public static void AddDependency(this IOutputTarget outputTarget, IOutputTarget dependency)
+        /// <summary>
+        /// This is an overload of <see cref="AddDependency(IOutputTarget,IOutputTarget,string)"/> kept
+        /// for binary compatibility.
+        /// </summary>
+        public static void AddDependency(this IOutputTarget outputTarget, IOutputTarget dependency) =>
+            AddDependency(outputTarget, dependency, requestedBy: null);
+
+        public static void AddDependency(this IOutputTarget outputTarget, IOutputTarget dependency, string? requestedBy)
         {
             if (outputTarget.Equals(dependency))
             {
                 throw new Exception($"OutputTarget [{outputTarget}] cannot add a dependency to itself");
             }
-            var collection = outputTarget.Dependencies();
-            if (!collection.Contains(dependency))
+
+            var dependencies = outputTarget.Dependencies();
+            if (dependencies.Contains(dependency))
             {
-                collection.Add(dependency);
+                return;
             }
+
+            Logging.Log.Info($"Adding project dependency: \"{outputTarget.Name}\" [{outputTarget.Id}] => \"{dependency.Name}\" [{dependency.Id}], requested by {requestedBy ?? "(Unspecified)"}");
+
+            // Check for a cyclic dependency
+            var stack = new Stack<IOutputTarget>(dependency.Dependencies());
+            while (stack.TryPop(out var current))
+            {
+                if (current.Id == outputTarget.Id)
+                {
+                    throw new Exception("Cyclic dependency detected while adding project dependency");
+                }
+
+                foreach (var nestedDependency in current.Dependencies())
+                {
+                    stack.Push(nestedDependency);
+                }
+            }
+
+            dependencies.Add(dependency);
         }
 
         /// <summary>
@@ -89,7 +117,8 @@ namespace Intent.Modules.Common.VisualStudio
                     VisualStudioProjectTypeIds.SQLServerDatabaseProject,
                     VisualStudioProjectTypeIds.AzureFunctionsProject,
                     VisualStudioProjectTypeIds.CoreConsoleApp,
-                    VisualStudioProjectTypeIds.SdkCSharpProject
+                    VisualStudioProjectTypeIds.SdkCSharpProject,
+                    VisualStudioProjectTypeIds.ServiceFabricProject
             }.Contains(outputTarget.Type);
         }
 
