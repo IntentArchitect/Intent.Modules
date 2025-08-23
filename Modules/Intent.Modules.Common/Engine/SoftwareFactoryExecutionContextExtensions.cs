@@ -1,12 +1,13 @@
-﻿#pragma warning disable IDE0130
-#nullable enable
+﻿#nullable enable
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Configuration;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
 
+// ReSharper disable CheckNamespace
 namespace Intent.Modules.Common
 {
     /// <summary>
@@ -21,7 +22,7 @@ namespace Intent.Modules.Common
         {
             return templateDependency is IFastLookupTemplateDependency fastLookupTemplateDependency
                 ? fastLookupTemplateDependency.LookupOutputTarget(executionContext)
-                : executionContext.FindOutputTargetWithTemplate(templateDependency.TemplateId, templateDependency.IsMatch);
+                : executionContext.FindOutputTargetWithTemplate(templateDependency.TemplateId, templateDependency.AccessibleTo, templateDependency.IsMatch);
         }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace Intent.Modules.Common
         {
             return templateDependency is IFastLookupTemplateDependency fastLookupTemplateDependency
                 ? fastLookupTemplateDependency.LookupTemplateInstance(executionContext)
-                : executionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.IsMatch);
+                : executionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.AccessibleTo, templateDependency.IsMatch);
         }
 
         /// <summary>
@@ -62,9 +63,21 @@ namespace Intent.Modules.Common
         /// Finds the template with <see cref="ITemplate.Id" /> of <paramref name="templateIdOrRole" />
         /// and casts the result to <typeparamref name="TTemplate"/>.
         /// </summary>
-        public static TTemplate? FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole) where TTemplate : class
+        public static TTemplate? FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole) where TTemplate : class =>
+            FindTemplateInstance<TTemplate>(executionContext, templateIdOrRole, accessibleTo: null);
+
+        /// <summary>
+        /// Finds the template with <see cref="ITemplate.Id" /> of <paramref name="templateIdOrRole" />
+        /// and casts the result to <typeparamref name="TTemplate"/>.
+        /// </summary>
+        /// <typeparam name="TTemplate"></typeparam>
+        /// <param name="executionContext"></param>
+        /// <param name="templateIdOrRole"></param>
+        /// <param name="accessibleTo">Optional. Must be accessible through <see cref="IOutputTargetContainerConfig.ReferencedOutputTargetIds"/> to this when provided.</param>
+        public static TTemplate? FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole, IOutputTarget? accessibleTo)
+            where TTemplate : class
         {
-            return (TTemplate?)executionContext.FindTemplateInstance(templateIdOrRole);
+            return (TTemplate?)executionContext.FindTemplateInstance(templateIdOrRole, accessibleTo);
         }
 
         /// <summary>
@@ -97,7 +110,7 @@ namespace Intent.Modules.Common
         {
             var templateInstances = templateDependency is IFastLookupTemplateDependency fastLookupTemplateDependency
                 ? fastLookupTemplateDependency.LookupTemplateInstances(executionContext)
-                : executionContext.FindTemplateInstances(templateDependency.TemplateId, templateDependency.IsMatch);
+                : executionContext.FindTemplateInstances(templateDependency.TemplateId, templateDependency.AccessibleTo, templateDependency.IsMatch);
 
             return templateInstances.Cast<TTemplate>();
         }

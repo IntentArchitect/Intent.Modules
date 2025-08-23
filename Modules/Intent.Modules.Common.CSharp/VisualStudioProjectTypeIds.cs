@@ -1,4 +1,7 @@
-﻿namespace Intent.Modules.Constants
+﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
+// ReSharper disable once CheckNamespace
+namespace Intent.Modules.Constants
 {
     public static class VisualStudioProjectTypeIds
     {
@@ -8,6 +11,7 @@
         public const string ConsoleAppNetFramework = "673AAE96-C9B1-4B7E-9A52-ADE5F9218CFC";
         public const string NodeJsConsoleApplication = "CC13FD07-C783-4B0D-A641-4A861A22F087";
         public const string SQLServerDatabaseProject = "00D1A9C2-B5F0-4AF3-8072-F6C62B433612";
+        public const string ServiceFabricProject = "A07B5EB6-E848-4116-A8D0-A826331D98C6";
 
         // The above GUIDs are specific project type GUIDs that Visual Studio understands for
         // old-school non-SDK style .csproj files as per the following:
@@ -19,9 +23,8 @@
         public const string AzureFunctionsProject = "73e51385-5e20-4e2c-aa0b-6eb2dc8de52e";
         public const string CoreConsoleApp = "27b265c8-e185-4c33-9908-8d23d5e945d1";
 
-
-		//This seems to be the new standard for these things
-		// https://github.com/dotnet/project-system/blob/main/docs/opening-with-new-project-system.md
-		public const string SdkCSharpProject = "9A19103F-16F7-4668-BE54-9A1E7A4F7556";
-	}
+        //This seems to be the new standard for these things
+        // https://github.com/dotnet/project-system/blob/main/docs/opening-with-new-project-system.md
+        public const string SdkCSharpProject = "9A19103F-16F7-4668-BE54-9A1E7A4F7556";
+    }
 }

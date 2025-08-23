@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="ad834ed1-5737-4637-aa3d-889216569468" version="3.1.0">
+  <name>Template Output Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="09de2192-2507-41a2-8044-286c7ecadec2">Template Output</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="fa-cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>a3e2dddd-9f5f-4b9a-b13e-40e0252f0882</parentFolderId>
+  <order>0</order>
+  <packageId>a3e2dddd-9f5f-4b9a-b13e-40e0252f0882</packageId>
+  <packageName>Intent.OutputTargets.Folders</packageName>
+  <properties>
+    <property id="4541e178-fdb4-4a9e-9642-6340f13bef97">
+      <name>Registration Filter</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+    </property>
+  </properties>
+</stereotypeDefinition>

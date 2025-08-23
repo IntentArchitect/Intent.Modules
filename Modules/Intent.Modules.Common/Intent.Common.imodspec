@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common</id>
-  <version>3.8.0</version>
-  <supportedClientVersions>[4.5.0-a, 5.0.0-a)</supportedClientVersions>
+  <version>3.9.0-alpha.0</version>
+  <supportedClientVersions>[4.5.15-a, 5.0.0-a)</supportedClientVersions>
   <summary>Base Implementation and Helper classes for modules.</summary>
   <description>Base Implementation and Helper classes for modules.</description>
   <authors>Intent Architect</authors>
