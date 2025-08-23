@@ -1,30 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#pragma warning disable IDE0130
+using System;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.Modules.Common.Templates;
 using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 
 namespace Intent.Modules.Common
 {
-    public interface ITemplateDependency
-    {
-        string TemplateId { get; }
-        bool IsMatch(ITemplate template);
-    }
-
-    /// <summary>
-    /// Has dependencies on other <see cref="ITemplate"/> instances.
-    /// </summary>
-    public interface IHasTemplateDependencies
-    {
-        /// <summary>
-        /// Gets all the <see cref="ITemplateDependency"/> items for this template..
-        /// </summary>
-        IEnumerable<ITemplateDependency> GetTemplateDependencies();
-    }
-
     /// <summary>
     /// Obsolete. Use <see cref="SoftwareFactoryExecutionContextExtensions"/> instead.
     /// </summary>

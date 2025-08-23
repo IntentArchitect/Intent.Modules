@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Intent.Engine;
@@ -11,10 +12,10 @@ namespace Intent.Modules.Common.Templates
     /// <inheritdoc />
     public class TemplateDependency : ITemplateDependency
     {
-        private readonly object _context;
+        private readonly object? _context;
         private readonly Func<ITemplate, bool> _isMatch;
 
-        private TemplateDependency(string templateId, Func<ITemplate, bool> isMatch, object context)
+        private TemplateDependency(string templateId, Func<ITemplate, bool> isMatch, object? context)
         {
             TemplateId = templateId;
             _context = context;
@@ -28,7 +29,7 @@ namespace Intent.Modules.Common.Templates
         /// This will be changed to a private member, please contact support@intentarchitect.com if you have a need for this.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
-        public object Context => _context;
+        public object? Context => _context;
 
         /// <inheritdoc />
         public override string ToString()
@@ -91,7 +92,7 @@ namespace Intent.Modules.Common.Templates
             return TemplateDependency.OnModel(templateIdOrName, isMatch, null);
         }
 
-        public static ITemplateDependency OnModel<TModel>(string templateIdOrName, Func<TModel, bool> isMatch, object context)
+        public static ITemplateDependency OnModel<TModel>(string templateIdOrName, Func<TModel, bool> isMatch, object? context)
         {
             return new TemplateDependency(
                 templateId: templateIdOrName,
@@ -133,7 +134,7 @@ namespace Intent.Modules.Common.Templates
                 yield return _template;
             }
 
-            protected override IOutputTarget LookupOutputTarget(ISoftwareFactoryExecutionContext context)
+            protected override IOutputTarget? LookupOutputTarget(ISoftwareFactoryExecutionContext context)
             {
                 return context.FindOutputTargetWithTemplate(_template);
             }
@@ -160,7 +161,7 @@ namespace Intent.Modules.Common.Templates
                 return InstanceCache.GetOrAdd(templateId, key => new TemplateIdTemplateDependency(key));
             }
 
-            protected override ITemplate LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
+            protected override ITemplate? LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
             {
                 return context.FindTemplateInstance(TemplateId, AlwaysReturnTrue);
             }
@@ -170,7 +171,7 @@ namespace Intent.Modules.Common.Templates
                 return context.FindTemplateInstances(TemplateId, AlwaysReturnTrue);
             }
 
-            protected override IOutputTarget LookupOutputTarget(ISoftwareFactoryExecutionContext context)
+            protected override IOutputTarget? LookupOutputTarget(ISoftwareFactoryExecutionContext context)
             {
                 return context.FindOutputTargetWithTemplate(TemplateId);
             }
@@ -203,7 +204,7 @@ namespace Intent.Modules.Common.Templates
                 return InstanceCache.GetOrAdd((templateId, model), _ => new ModelTemplateDependency(templateId, model));
             }
 
-            protected override ITemplate LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
+            protected override ITemplate? LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
             {
                 return context.FindTemplateInstance(TemplateId, _model);
             }
@@ -213,7 +214,7 @@ namespace Intent.Modules.Common.Templates
                 return context.FindTemplateInstances(TemplateId, _model);
             }
 
-            protected override IOutputTarget LookupOutputTarget(ISoftwareFactoryExecutionContext context)
+            protected override IOutputTarget? LookupOutputTarget(ISoftwareFactoryExecutionContext context)
             {
                 return context.FindOutputTargetWithTemplate(TemplateId, _model);
             }
@@ -245,7 +246,7 @@ namespace Intent.Modules.Common.Templates
                 return InstanceCache.GetOrAdd((templateId, modelId), _ => new ModelIdTemplateDependency(templateId, modelId));
             }
 
-            protected override ITemplate LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
+            protected override ITemplate? LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
             {
                 return context.FindTemplateInstance(TemplateId, _modelId);
             }
@@ -255,7 +256,7 @@ namespace Intent.Modules.Common.Templates
                 return context.FindTemplateInstances(TemplateId, _modelId);
             }
 
-            protected override IOutputTarget LookupOutputTarget(ISoftwareFactoryExecutionContext context)
+            protected override IOutputTarget? LookupOutputTarget(ISoftwareFactoryExecutionContext context)
             {
                 return context.FindOutputTargetWithTemplate(TemplateId, _modelId);
             }
@@ -280,7 +281,7 @@ namespace Intent.Modules.Common.Templates
                 return InstanceCache.GetOrAdd(typeof(TTemplate), _ => new OfTypeTemplateDependency<TTemplate>());
             }
 
-            protected override ITemplate LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
+            protected override ITemplate? LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
             {
                 return context.FindTemplateInstance(_templateDependency);
             }
@@ -290,12 +291,12 @@ namespace Intent.Modules.Common.Templates
                 return context.FindTemplateInstances<ITemplate>(_templateDependency);
             }
 
-            protected override IOutputTarget LookupOutputTarget(ISoftwareFactoryExecutionContext context)
+            protected override IOutputTarget? LookupOutputTarget(ISoftwareFactoryExecutionContext context)
             {
                 return context.FindOutputTargetWithTemplate(_templateDependency);
             }
 
-            public override string TemplateId => null;
+            public override string? TemplateId => null;
 
             public override bool IsMatch(ITemplate template)
             {
@@ -304,7 +305,7 @@ namespace Intent.Modules.Common.Templates
 
             private class TemplateDependency : ITemplateDependency
             {
-                public string TemplateId => null;
+                public string? TemplateId => null;
 
                 public bool IsMatch(ITemplate template)
                 {
@@ -314,18 +315,18 @@ namespace Intent.Modules.Common.Templates
         }
 
         private abstract class FastLookupTemplateDependency<TInstanceCacheKey, TTemplateDependency> : IFastLookupTemplateDependency
-            where TTemplateDependency : ITemplateDependency
+            where TTemplateDependency : ITemplateDependency where TInstanceCacheKey : notnull
         {
             /// <summary>
             /// Avoids additional memory allocations and also improves effectiveness of <see cref="_cachedLookupTemplateInstance"/>.
             /// </summary>
             protected static readonly ConcurrentDictionary<TInstanceCacheKey, TTemplateDependency> InstanceCache = new();
 
-            private ITemplate _cachedLookupTemplateInstance;
-            private IEnumerable<ITemplate> _cachedLookupTemplateInstances;
-            private IOutputTarget _cachedLookupOutputTarget;
+            private ITemplate? _cachedLookupTemplateInstance;
+            private IEnumerable<ITemplate>? _cachedLookupTemplateInstances;
+            private IOutputTarget? _cachedLookupOutputTarget;
 
-            ITemplate IFastLookupTemplateDependency.LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
+            ITemplate? IFastLookupTemplateDependency.LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
             {
                 return _cachedLookupTemplateInstance ??= LookupTemplateInstance(context);
             }
@@ -335,18 +336,18 @@ namespace Intent.Modules.Common.Templates
                 return _cachedLookupTemplateInstances ??= LookupTemplateInstances(context);
             }
 
-            IOutputTarget IFastLookupTemplateDependency.LookupOutputTarget(ISoftwareFactoryExecutionContext context)
+            IOutputTarget? IFastLookupTemplateDependency.LookupOutputTarget(ISoftwareFactoryExecutionContext context)
             {
                 return _cachedLookupOutputTarget ??= LookupOutputTarget(context);
             }
 
-            protected abstract ITemplate LookupTemplateInstance(ISoftwareFactoryExecutionContext context);
+            protected abstract ITemplate? LookupTemplateInstance(ISoftwareFactoryExecutionContext context);
 
             protected abstract IEnumerable<ITemplate> LookupTemplateInstances(ISoftwareFactoryExecutionContext context);
 
-            protected abstract IOutputTarget LookupOutputTarget(ISoftwareFactoryExecutionContext context);
+            protected abstract IOutputTarget? LookupOutputTarget(ISoftwareFactoryExecutionContext context);
 
-            public abstract string TemplateId { get; }
+            public abstract string? TemplateId { get; }
 
             public abstract bool IsMatch(ITemplate template);
         }
