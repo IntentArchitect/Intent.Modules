@@ -54,7 +54,7 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Converts the input to sense casing (e.g. SomeString -> Some string).
+        /// Converts the input to sentence casing (e.g. SomeString -> Some string).
         /// </summary>
         public static string ToSentenceCase(this string name)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+using System;
 using Intent.Configuration;
 using Intent.Engine;
 using Intent.Registrations;
@@ -14,15 +15,15 @@ namespace Intent.Modules.Common.Registrations
     /// </summary>
     public abstract class TemplateRegistrationBase : ITemplateRegistration
     {
-        private bool _registrationAborted = false;
-        private bool _doRegistrationCalled = false;
+        private bool _registrationAborted;
+        private bool _doRegistrationCalled;
 
         public abstract string TemplateId { get; }
 
         public virtual void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
             _doRegistrationCalled = true;
-            var config = application.Config.GetConfig(this.TemplateId, PluginConfigType.Template);
+            var config = application.Config.GetConfig(TemplateId, PluginConfigType.Template);
             if (!config.Enabled)
             {
                 Logging.Log.Info($"Skipping disabled Template : { TemplateId }.");

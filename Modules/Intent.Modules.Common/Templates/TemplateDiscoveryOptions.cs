@@ -11,7 +11,7 @@
         public bool ThrowIfNotFound { get; set; } = true;
 
         /// <summary>
-        /// Whether or not to automatically track the template as a dependency. Defaults to <see langword="true"/>.
+        /// Whether to automatically track the template as a dependency. Defaults to <see langword="true"/>.
         /// </summary>
         public bool TrackDependency { get; set; } = true;
 
