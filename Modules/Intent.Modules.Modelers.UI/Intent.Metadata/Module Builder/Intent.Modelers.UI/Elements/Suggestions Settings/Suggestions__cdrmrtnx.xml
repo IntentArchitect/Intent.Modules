@@ -12,6 +12,43 @@
   <stereotypes />
   <metadata />
   <childElements>
+    <childElement id="a6639515-249e-49fb-bd5f-8176435dfa6f" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Add to Sider Menu</name>
+      <display>Add to Sider Menu: Component</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="36630279-8115-4905-9c75-67cb0f4b9d96">
+        <typeId>b1c481e1-e91e-4c29-9817-00ab9cad4b6b</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.UI</typePackageName>
+        <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>3e111ea5-474c-4e27-bfa0-6f4701329027</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const associationIds = [&#xD;&#xA;  &quot;2b191288-ecae-4743-b069-cbdd927ef349&quot;,// Navigation Specialization Type&#xD;&#xA;];&#xD;&#xA;const layoutSpecializationTypeId = &quot;776a9393-6b23-4a8c-8937-fd7e833fa0ef&quot;;&#xD;&#xA;&#xD;&#xA;if (lookupTypesOf(layoutSpecializationTypeId).length &gt; 0){&#xD;&#xA;&#xD;&#xA;return element.hasStereotype(&quot;ea4adc09-8978-4ede-ba5f-265debb2b60c&quot;)// Page&#xD;&#xA;  &amp;&amp; !lookupTypesOf(associationIds).some(a =&gt; &#xD;&#xA;    a.typeReference.getType().id == element.id &amp;&amp; &#xD;&#xA;    a.getOtherEnd().typeReference.getType().specializationId == layoutSpecializationTypeId);//Layout&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;//If there are no modeled Layouts dont show suggestion&#xD;&#xA;return false;" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const layoutSpecializationTypeId = &quot;5c8a19cf-410b-4ded-930e-446c3fc9bc26&quot;;&#xD;&#xA;const navigationMenuTypeId = &quot;d7282bf2-1626-4b8b-9446-1d530527db06&quot;;&#xD;&#xA;const siderTypeId = &quot;c505f35f-7148-46a3-a812-d9f53a174490&quot;;&#xD;&#xA;&#xD;&#xA;let menus = lookupTypesOf(navigationMenuTypeId);&#xD;&#xA;let siderMenu = menus.find(x =&gt; x.getParent(siderTypeId));&#xD;&#xA;let layout = siderMenu.getParent().getParent();&#xD;&#xA;&#xD;&#xA;let button = createElement(&quot;Menu Item&quot;, toTitleCase(element.getName()), siderMenu.id);&#xD;&#xA;let navAssociation = createAssociation(&quot;Navigation&quot;, layout.id, button.id);&#xD;&#xA;navAssociation.typeReference.setType(element.id);&#xD;&#xA;&#xD;&#xA;let mapping = layout.getAdvancedMapping(&quot;c33f86ad-423a-4a6f-a80c-a3206eafe5cd&quot;);// View Bindings&#xD;&#xA;let targetPath = [layout.id, siderMenu.getParent().id, siderMenu.id, button.id, &quot;a4073b81-6ddd-44cb-909f-f2c97d965112&quot;];//LinkTo&#xD;&#xA;mapping.addMappedEnd(&quot;Event Mapping&quot;&#xD;&#xA;, [layout.id, navAssociation.id ]&#xD;&#xA;, targetPath);&#xD;&#xA;mapping.addMappingExpression(targetPath, &quot;{&quot; + navAssociation.getName() + &quot;}&quot;);" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
     <childElement id="360aa2c8-c680-4784-8dd1-8d34ff325be9" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
       <name>Call Backend Service</name>
       <display>Call Backend Service: Component</display>

@@ -3510,6 +3510,43 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
   <mappableElementPackageExtensions />
   <suggestionSettings>
     <suggestionSetting type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" locations="diagram, model">
+      <name>Add to Sider Menu</name>
+      <filterFunction>const associationIds = [
+  "2b191288-ecae-4743-b069-cbdd927ef349",// Navigation Specialization Type
+];
+const layoutSpecializationTypeId = "776a9393-6b23-4a8c-8937-fd7e833fa0ef";
+
+if (lookupTypesOf(layoutSpecializationTypeId).length &gt; 0){
+
+return element.hasStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c")// Page
+  &amp;&amp; !lookupTypesOf(associationIds).some(a =&gt; 
+    a.typeReference.getType().id == element.id &amp;&amp; 
+    a.getOtherEnd().typeReference.getType().specializationId == layoutSpecializationTypeId);//Layout
+}
+
+//If there are no modeled Layouts dont show suggestion
+return false;</filterFunction>
+      <dependencies />
+      <script>const layoutSpecializationTypeId = "5c8a19cf-410b-4ded-930e-446c3fc9bc26";
+const navigationMenuTypeId = "d7282bf2-1626-4b8b-9446-1d530527db06";
+const siderTypeId = "c505f35f-7148-46a3-a812-d9f53a174490";
+
+let menus = lookupTypesOf(navigationMenuTypeId);
+let siderMenu = menus.find(x =&gt; x.getParent(siderTypeId));
+let layout = siderMenu.getParent().getParent();
+
+let button = createElement("Menu Item", toTitleCase(element.getName()), siderMenu.id);
+let navAssociation = createAssociation("Navigation", layout.id, button.id);
+navAssociation.typeReference.setType(element.id);
+
+let mapping = layout.getAdvancedMapping("c33f86ad-423a-4a6f-a80c-a3206eafe5cd");// View Bindings
+let targetPath = [layout.id, siderMenu.getParent().id, siderMenu.id, button.id, "a4073b81-6ddd-44cb-909f-f2c97d965112"];//LinkTo
+mapping.addMappedEnd("Event Mapping"
+, [layout.id, navAssociation.id ]
+, targetPath);
+mapping.addMappingExpression(targetPath, "{" + navAssociation.getName() + "}");</script>
+    </suggestionSetting>
+    <suggestionSetting type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" locations="diagram, model">
       <name>Call Backend Service</name>
       <dependencies />
       <script>const result = await dialogService.openForm({
@@ -3752,13 +3789,22 @@ function addChildElementsRecursivly(model, contract, component, mapping, srcPath
 
         const baseRoutePath = routeFolders.map(f =&gt; toKebabCase(f.getName())).join("/");
         const parentFolder = routeFolders[routeFolders.length - 1];
-        const pageRoutePart = toKebabCase(removeSuffix(pageName, "Page", "Component", parentFolder.getName(), singularize(parentFolder.getName()))).trim();
+        const pageRoutePart = toKebabCase(removeOccurrences(removeSuffix(pageName, "Page", "Component"), parentFolder.getName(), singularize(parentFolder.getName()))).trim();
 
         rawRoute = pageRoutePart &amp;&amp; pageRoutePart.length &gt; 0
         ? (baseRoutePath ? `${baseRoutePath}/${pageRoutePart}` : pageRoutePart)
         : baseRoutePath;
     }
     stereotype.getProperty(routeId).setValue(normalizeRoute(rawRoute));    
+}
+
+function removeOccurrences(str, ...patterns) {
+  let result = str;
+  for (const p of patterns) {
+    const regex = new RegExp(p, "gi"); // global + case-insensitive
+    result = result.replace(regex, "");
+  }
+  return result;
 }</script>
     </script>
   </scripts>
