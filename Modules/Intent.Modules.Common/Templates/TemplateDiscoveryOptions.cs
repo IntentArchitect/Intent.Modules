@@ -16,6 +16,14 @@
         public bool TrackDependency { get; set; } = true;
 
         /// <summary>
+        /// Whether the template instance to find must be accessible through references defined in the
+        /// output targeting designer. When <see langword="null"/> will first try to search with a value
+        /// of <see langword="true"/> and if no results are found will then try again with a value of
+        /// <see langword="false"/>.
+        /// </summary>
+        public bool? IsAccessible { get; set; }
+
+        /// <summary>
         /// An instance of <see cref="TemplateDiscoveryOptions"/> where <see cref="ThrowIfNotFound"/> is set to false.
         /// </summary>
         public static TemplateDiscoveryOptions DoNotThrow { get; } = new TemplateDiscoveryOptions { ThrowIfNotFound = false };

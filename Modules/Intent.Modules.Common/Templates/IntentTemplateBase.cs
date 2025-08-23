@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
@@ -87,7 +88,7 @@ namespace Intent.Modules.Common.Templates
 
             if (Model == null || Model is IEnumerable)
             {
-                return Id;
+                return base.GetCorrelationId();
             }
 
             return null;
@@ -110,6 +111,8 @@ namespace Intent.Modules.Common.Templates
     {
         private readonly Lazy<(bool Result, string? Path)> _tryGetExistingFilePathCache;
         private readonly Lazy<(bool Result, string? Content)> _tryGetExistingFileContentCache;
+        private bool _canRun = true;
+        private bool _isDiscoverable = true;
 
         /// <summary>
         /// Returns the known template dependencies added for this template.
@@ -226,7 +229,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public virtual string? GetCorrelationId()
         {
-            return Id;
+            return $"{Id}#{OutputTarget.GetUniqueIdentifier(Id)}";
         }
 
         /// <inheritdoc />
@@ -239,7 +242,7 @@ namespace Intent.Modules.Common.Templates
 
         private void AddTemplateDependency(ITemplate template)
         {
-            AddTemplateDependency(TemplateDependency.OnTemplate(template));
+            AddTemplateDependency(TemplateDependency.OnTemplate(template, OutputTarget));
         }
 
         /// <summary>
@@ -247,6 +250,11 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public void AddTemplateDependency(ITemplateDependency templateDependency)
         {
+            if (templateDependency.TryGetWithSource(OutputTarget, out var updated))
+            {
+                templateDependency = updated;
+            }
+
             DetectedDependencies.Add(templateDependency);
         }
 
@@ -255,7 +263,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public void AddTemplateDependency(string templateId)
         {
-            AddTemplateDependency(TemplateDependency.OnTemplate(templateId));
+            AddTemplateDependency(TemplateDependency.OnTemplate(templateId, OutputTarget));
         }
 
         /// <summary>
@@ -265,7 +273,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="model">The metadata module instance that the Template must be bound to.</param>
         public void AddTemplateDependency(string templateId, IMetadataModel model)
         {
-            AddTemplateDependency(TemplateDependency.OnModel(templateId, model));
+            AddTemplateDependency(TemplateDependency.OnModel(templateId, model, OutputTarget));
         }
 
         #endregion
@@ -1316,7 +1324,19 @@ namespace Intent.Modules.Common.Templates
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId),
+                getTemplate: () =>
+                {
+                    if (options?.IsAccessible != false)
+                    {
+                        var result = (TTemplate)ExecutionContext.FindTemplateInstance(templateId, accessibleTo: OutputTarget);
+                        if (result != null)
+                        {
+                            return result;
+                        }
+                    }
+
+                    return ExecutionContext.FindTemplateInstance<TTemplate>(templateId);
+                },
                 getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}",
                 options: options);
         }
