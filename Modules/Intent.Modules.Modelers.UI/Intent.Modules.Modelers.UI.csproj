@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>1.0.0-pre.1</Version>
+    <Version>1.0.0</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent - Modules Services Modeller</Product>
@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.7.2" />
-    <PackageReference Include="Intent.Modules.Common.Types" Version="4.0.0-pre.0" />
+    <PackageReference Include="Intent.Modules.Common.Types" Version="4.1.2" />
 <!-- We don't want this depencendy that module is the base for Component modules -->
 <!--    <PackageReference Include="Intent.Modules.Modelers.UI.Core" Version="1.0.0-beta.15" />-->
     <PackageReference Include="Intent.Packager" Version="3.6.0-pre.2">
