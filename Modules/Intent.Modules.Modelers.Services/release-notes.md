@@ -1,3 +1,7 @@
+### Version 4.0.4
+
+- Improvement: `Perform Invocation` interactions will automatically add the Invocation mapping on creation.
+
 ### Version 4.0.3
 
 - Improvement: `Perform Invocation` interactions will now color in yellow when invoking remote services from other applications.

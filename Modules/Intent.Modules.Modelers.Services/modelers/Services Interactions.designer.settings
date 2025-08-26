@@ -102,6 +102,11 @@ return getMappings()[0] ? null : "gray";</lineColor>
         </targetEnd>
       </visualSettings>
       <macros>
+        <macro trigger="on-created">
+          <script>const invocationMappingId = "7ca5c18a-bdbe-434b-a68a-421899a077e7";
+const mapping = association.createAdvancedMapping(association.getOtherEnd().typeReference.typeId, association.typeReference.typeId, "a4c4c5cc-76df-48ed-9d4e-c35caf44b567");
+mapping.addMappedEnd(invocationMappingId, [association.getOtherEnd().typeReference.typeId], [association.typeReference.typeId]);</script>
+        </macro>
         <macro trigger="on-type-changed">
           <script>if (association.isTargetEnd() &amp;&amp; association.typeReference.getType()?.typeReference != null) {
     association.typeReference.setIsCollection(association.typeReference.getType().typeReference.getIsCollection());
