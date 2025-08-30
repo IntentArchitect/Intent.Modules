@@ -1,3 +1,7 @@
+### Version 2.0.3
+
+- Improvement: Added syntax highlighting to all Publish and Subscribe Processing Actions and their visuals.
+
 ### Version 2.0.2
 
 - Improvement: Subscriptions and Publishes are now colored with a yellow line to indicate that they are pushing the messages externally.
