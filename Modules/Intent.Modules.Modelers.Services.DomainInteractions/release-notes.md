@@ -1,3 +1,8 @@
+### Version 2.3.4
+
+- Improvement: Processing Actions that are executed after the current Processing Action will not show in the Mapping Dialog.
+- Improvement: Added syntax highlighting to Processing Actions.
+
 ### Version 2.3.3
 
 - Fixed: Adjusted the creation of association from "Call Service Operation" to the new "Perform Invocation".

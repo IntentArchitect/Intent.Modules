@@ -5700,6 +5700,15 @@ await cqrsCrud.execute(element);
       </implements>
       <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAehJREFUeF7t3L1NA0EQhuE55DrYJijAEiVQAh0QEVl3XRGQQwWk/qGQRYewRGCB5G93dr6ZcT723nOv5GS0k+QHEpig6RyWBAQjSMAEBAXA8WYFll15lI18HHfHN/BMVOMwYFnKg1R5FpG79cknmZbDfJipFIDDXg24nbebvexfROT+wu+/y408RajxasAVrcyl/vXyItTYFfAH13WNGoDfjl5rVAP0WqM2oLsahwB6qnEkoIsahwOy12gFkLZGU4CMNVoEpKrRLCBLjdYBzddIAWi5RiZAkzXSAVqrkRXQTI3UgBZq9AA4tEY3gKNq9AaoXqNLQM0aPQOq1OgesHeNUQC71RgKsEeNEQGb1hgWcFWstX6eltMtsFuEbaj+txuDHExjNgFB5QRMQFAAHM8CAcBW22IR/4Wb7iuGAmxV3e/wowA2rS4UYI/qogB2q849YO/qPAOqVOcSULM6b4Dq1bkBHFWdB8Ch1VEDWqiOFdBMdXSA1qpjAjRZHQWg5eqsA5qvziwgS3UWAamqMwXIWJ0VQNrqhgOyVzcS0EV1QwA9VacN6K46NUCv1bUEfM27s4D9knU0b28DAc/jeX9gI8hoXwPtxkTDuvS8CQhWkIAJCAqA41lgAoIC4HgWmICgADieBYKAX0uidGAd9hNhAAAAAElFTkSuQmCC" />
       <saveAsOwnFile>false</saveAsOwnFile>
+      <displayFunction>return [
+    {
+        text: "[execute] ",
+        cssClass: "keyword"
+    },
+    {
+        text: element.getName(),
+    },
+]</displayFunction>
       <allowRename>true</allowRename>
       <nameMustBeUnique>true</nameMustBeUnique>
       <allowAbstract>false</allowAbstract>
@@ -15611,7 +15620,19 @@ convertToAdvancedMapping.execute();
         <implements>
           <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
         </implements>
-        <displayFunction>return `[create] ${getName()}: ${typeReference.display}`</displayFunction>
+        <displayFunction>const result = [
+    {
+        text: "[create] ",
+        cssClass: 'keyword'
+    },
+]
+.concat(getName()?.length &gt; 0 ? [
+    {
+        text: getName() + ": ",
+    }
+] : [])
+.concat(typeReference.getDisplayTextComponents());
+return result;</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
         <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName();
 if (!name) {
@@ -15698,7 +15719,19 @@ return typeReference.getIsCollection()
         <implements>
           <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
         </implements>
-        <displayFunction>return `[delete] ${getName()}: ${typeReference.display}`</displayFunction>
+        <displayFunction>const result = [
+    {
+        text: "[delete] ",
+        cssClass: 'keyword'
+    },
+]
+.concat(getName()?.length &gt; 0 ? [
+    {
+        text: getName() + ": ",
+    }
+] : [])
+.concat(typeReference.getDisplayTextComponents());
+return result;</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
         <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName();
 if (!name) {
@@ -15810,7 +15843,19 @@ association.typeReference.getType().getChildren("Attribute")
         <implements>
           <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
         </implements>
-        <displayFunction>return `[query] ${getName()}: ${typeReference.display}`</displayFunction>
+        <displayFunction>const result = [
+    {
+        text: "[query] ",
+        cssClass: 'keyword'
+    },
+]
+.concat(getName()?.length &gt; 0 ? [
+    {
+        text: getName() + ": ",
+    }
+] : [])
+.concat(typeReference.getDisplayTextComponents());
+return result;</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
         <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName();
 if (!name) {
@@ -15919,7 +15964,19 @@ return null;</validateFunction>
         <implements>
           <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
         </implements>
-        <displayFunction>return `[update] ${getName()}: ${typeReference.display}`</displayFunction>
+        <displayFunction>const result = [
+    {
+        text: "[update] ",
+        cssClass: 'keyword'
+    },
+]
+.concat(getName()?.length &gt; 0 ? [
+    {
+        text: getName() + ": ",
+    }
+] : [])
+.concat(typeReference.getDisplayTextComponents());
+return result;</displayFunction>
         <nameAccessibilityMode>required</nameAccessibilityMode>
         <defaultNameFunction>let name = (typeReference.getType()?.getParent("Class") ?? typeReference.getType())?.getName();
 if (!name) {
@@ -16904,21 +16961,8 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
   <mappableElementPackageExtensions>
     <mappableElementPackageExtension id="f7772228-e409-4998-92b7-d0ab6b7b338a" name="Application Source Action Extensions" extendPackageId="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" extendPackage="Invocation Source Mappables">
       <mappableElementSettings>
-        <mappableElement id="df404369-916e-4385-a29b-cbf86aa99846" name="Call Operation Action" type="Perform Invocation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" version="2.0.0">
-          <filterFunction>return !isHost(element)</filterFunction>
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <isTraversable>true</isTraversable>
-          <getTraversableTypeFunction>return element.typeReference.getType().typeReference.getTypeId()</getTraversableTypeFunction>
-          <traversableTypes />
-          <overrideTypeReferenceFunction>return {
-    typeId: element.typeReference.getType().typeReference.getTypeId()
-}</overrideTypeReferenceFunction>
-          <canBeModified>false</canBeModified>
-          <represents>invokable</represents>
-        </mappableElement>
         <mappableElement id="f11b799f-24a9-4a8c-ae3b-576c8571c771" name="Create Entity Action" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016" version="2.0.0">
-          <filterFunction>return !isHost(element)</filterFunction>
+          <filterFunction>return typeof(isBeforeHost) == "function" ? isBeforeHost(element) : !isHost(element);</filterFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return false;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16933,7 +16977,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <represents>data</represents>
         </mappableElement>
         <mappableElement id="a9b0bd2b-9b5a-45d5-992b-48430fc7579d" name="Delete Entity Action" type="Delete Entity Action Target End" typeId="4a04cfc2-5841-438c-9c16-fb58b784b365" version="2.0.0">
-          <filterFunction>return !isHost(element)</filterFunction>
+          <filterFunction>return typeof(isBeforeHost) == "function" ? isBeforeHost(element) : !isHost(element);</filterFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16944,7 +16988,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <represents>data</represents>
         </mappableElement>
         <mappableElement id="049127ae-ee8f-40d0-bed8-a3c9a559d7e5" name="Query Entity Action" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4" version="2.0.0">
-          <filterFunction>return !isHost(element)</filterFunction>
+          <filterFunction>return typeof(isBeforeHost) == "function" ? isBeforeHost(element) : !isHost(element);</filterFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
@@ -16955,7 +16999,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <represents>data</represents>
         </mappableElement>
         <mappableElement id="f1c2f529-7818-4f89-a9b6-1b327e100470" name="Update Entity Action" type="Update Entity Action Target End" typeId="516069f6-09cc-4de8-8e31-3c71ca823452" version="2.0.0">
-          <filterFunction>return !isHost(element)</filterFunction>
+          <filterFunction>return typeof(isBeforeHost) == "function" ? isBeforeHost(element) : !isHost(element);</filterFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>true</isTraversable>
