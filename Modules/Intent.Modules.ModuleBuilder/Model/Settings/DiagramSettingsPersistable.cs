@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace Intent.IArchitect.Agent.Persistence.Model.Common
@@ -14,15 +15,18 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("createStereotype", typeof(StereotypeCreationOption))]
         [XmlArrayItem("runScript", typeof(RunScriptOption))]
         [XmlArrayItem("openMapping", typeof(MappingOption))]
-        public required List<ContextMenuOption> ContextMenuOptions { get; set; } = new();
+        public required List<ContextMenuOption> ContextMenuOptions { get; set; } = [];
 
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
         public List<ElementCreationOptionOld> CreationOptions { get; set; } = [];
+        public bool ShouldSerializeCreationOptions() => CreationOptions.Any();
+
 
         [XmlArray("scriptOptions")]
         [XmlArrayItem("option")]
-        public List<RunScriptOption> ScriptOptions { get; set; } = new List<RunScriptOption>();
+        public List<RunScriptOption> ScriptOptions { get; set; } = [];
+        public bool ShouldSerializeScriptOptions() => ScriptOptions.Any();
 
         [XmlArray("elementVisualSettings")]
         [XmlArrayItem("visualSettings")]

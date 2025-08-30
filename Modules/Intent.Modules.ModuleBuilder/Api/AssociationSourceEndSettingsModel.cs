@@ -88,9 +88,9 @@ namespace Intent.ModuleBuilder.Api
                 SortChildren = ToSortChildrenOptions(this.GetSettings().SortChildren()),
                 TypeOrder = this.MenuOptions?.TypeOrder.Select(x => x.ToPersistable()).ToList(),
                 ContextMenuOptions = MenuOptions?.ToPersistable(),
-                CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
-                ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
-                MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
+                //CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
+                //ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
+                //MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
             };
         }
 

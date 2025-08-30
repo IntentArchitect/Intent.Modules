@@ -141,70 +141,23 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("createStereotype", typeof(StereotypeCreationOption))]
         [XmlArrayItem("runScript", typeof(RunScriptOption))]
         [XmlArrayItem("openMapping", typeof(MappingOption))]
-        public required List<ContextMenuOption> ContextMenuOptions { get; set; } = new();
+        public required List<ContextMenuOption> ContextMenuOptions { get; set; } = [];
 
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
-        public List<ElementCreationOptionOld> CreationOptions { get; set; } = new();
+        public List<ElementCreationOptionOld> CreationOptions { get; set; } = [];
+        public bool ShouldSerializeCreationOptions() => CreationOptions.Any();
+
 
         [XmlArray("scriptOptions")]
         [XmlArrayItem("option")]
-        public List<RunScriptOption> ScriptOptions { get; set; } = new();
+        public List<RunScriptOption> ScriptOptions { get; set; } = [];
+        public bool ShouldSerializeScriptOptions() => ScriptOptions.Any();
 
         [XmlArray("mappingOptions")]
         [XmlArrayItem("option")]
-        public List<MappingOption> MappingOptions { get; set; } = new();
-
-        public void AdjustFromExtension(AssociationEndSettingExtensionPersistable extension)
-        {
-            if (!string.IsNullOrWhiteSpace(extension.ValidateFunction))
-            {
-                ValidateFunctions.Add(extension.ValidateFunction);
-            }
-            TypeReferenceSetting.AdjustFromExtension(extension.TypeReferenceExtension);
-
-            foreach (var creationOption in extension.CreationOptions)
-            {
-                if (CreationOptions.Any(x => x.SpecializationTypeId == creationOption.SpecializationTypeId))
-                {
-                    throw new Exception($"Creation Option for [{creationOption.SpecializationType}] already exists for Element Setting with SpecializationType [{SpecializationType}].");
-                }
-
-                if (!int.TryParse(creationOption.Order, out var order))
-                {
-                    order = CreationOptions.Count;
-                }
-                CreationOptions.Insert(Math.Max(Math.Min(order, CreationOptions.Count), 0), creationOption);
-            }
-
-            foreach (var scriptOption in extension.ScriptOptions)
-            {
-                if (!int.TryParse(scriptOption.Order, out var order))
-                {
-                    order = ScriptOptions.Count;
-                }
-                ScriptOptions.Insert(Math.Max(Math.Min(order, ScriptOptions.Count), 0), scriptOption);
-            }
-
-            foreach (var mappingOption in extension.MappingOptions)
-            {
-                if (!int.TryParse(mappingOption.Order, out var order))
-                {
-                    order = ScriptOptions.Count;
-                }
-                MappingOptions.Insert(Math.Max(Math.Min(order, ScriptOptions.Count), 0), mappingOption);
-            }
-
-            foreach (var type in extension.TypeOrder)
-            {
-                if (TypeOrder.Any(x => x.Equals(type)))
-                {
-                    continue;
-                }
-
-                AddType(type);
-            }
-        }
+        public List<MappingOption> MappingOptions { get; set; } = [];
+        public bool ShouldSerializeMappingOptions() => MappingOptions.Any();
 
         public void AddType(TypeOrderPersistable typeOrder)
         {

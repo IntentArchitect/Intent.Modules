@@ -47,7 +47,7 @@ namespace Intent.ModuleBuilder.Api
         {
             return this.GetSettings().TargetTypes().ToList();
         }
-        
+
         public List<IStereotypeDefinition> TargetTraits()
         {
             return this.GetSettings().TargetTraits()?.ToList() ?? [];
@@ -87,12 +87,23 @@ namespace Intent.ModuleBuilder.Api
                 AllowSetValue = this.GetSettings().AllowSetValue(),
                 AllowSorting = this.GetSettings().AllowSorting(),
                 SortChildren = ToSortChildrenOptions(this.GetSettings().SortChildren()),
-                TypeOrder = this.MenuOptions?.TypeOrder.Select(x => x.ToPersistable()).ToList(),
+                TypeOrder = GetTypeOrder(),
                 ContextMenuOptions = MenuOptions?.ToPersistable(),
-                CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
-                ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
-                MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList()
+                //CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
+                //ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
+                //MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList()
             };
+        }
+
+        private List<TypeOrderPersistable> GetTypeOrder()
+        {
+            if (AcceptedChildTypes?.ToPersistable().Count > 0)
+            {
+                return AcceptedChildTypes.ToPersistable();
+            }
+            return (MenuOptions?.TypeOrder
+                    .Select((x) => x.ToPersistable()) ?? new List<TypeOrderPersistable>())
+                .ToList();
         }
 
         [IntentManaged(Mode.Fully)]
@@ -124,6 +135,11 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        public AcceptedChildTypesModel AcceptedChildTypes => _element.ChildElements
+            .GetElementsOfType(AcceptedChildTypesModel.SpecializationTypeId)
+            .Select(x => new AcceptedChildTypesModel(x))
+            .SingleOrDefault();
 
         public ContextMenuModel MenuOptions => _element.ChildElements
             .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
