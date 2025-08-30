@@ -1,3 +1,7 @@
+### Version 3.16.4
+
+- Fixed: `Mappable Element Settings` use the `Mapping Element Api` option, available in Intent Architect 4.5.15 and later.
+
 ### Version 3.16.3
 
 - Improvement: Documented the `Mappable Element Settings` stereotype.
