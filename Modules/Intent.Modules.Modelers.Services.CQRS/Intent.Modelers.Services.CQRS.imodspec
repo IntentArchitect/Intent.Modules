@@ -14,7 +14,7 @@
   <dependencies>
     <dependency id="Intent.Common" version="3.8.0" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
-    <dependency id="Intent.Modelers.Services" version="4.0.0" />
+    <dependency id="Intent.Modelers.Services" version="4.0.4-pre.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
