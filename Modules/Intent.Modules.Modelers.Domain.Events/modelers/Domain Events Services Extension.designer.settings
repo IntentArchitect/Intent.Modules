@@ -159,7 +159,6 @@ vertical-align: center`</style>
                 <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
                 <display>
                   <drawText>
-                    <text>return `handles: ${typeReference.display}`</text>
                     <size width="${w - 26}" height="${h}" />
                     <position x="${x + 24}" y="${y}" />
                   </drawText>
@@ -232,7 +231,12 @@ vertical-align: center`</style>
         <implements>
           <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
         </implements>
-        <displayFunction>return `handles : ${typeReference.display}`</displayFunction>
+        <displayFunction>return [
+    {
+        text: "[handles] ",
+        cssClass: "keyword"
+    },
+].concat(typeReference.getDisplayTextComponents())</displayFunction>
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <defaultNameFunction>return `handler`;</defaultNameFunction>
         <nameMustBeUnique>true</nameMustBeUnique>

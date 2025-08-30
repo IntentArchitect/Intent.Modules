@@ -1,3 +1,7 @@
+### Version 4.4.3
+
+- Improvement: Updated Properties icon and added syntax highlighting to visuals.
+
 ### Version 4.4.2
 
 - Improvement: `Publish Domain Event` suggestion now only shows for aggregate roots
