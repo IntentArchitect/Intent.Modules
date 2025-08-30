@@ -1,6 +1,7 @@
 ### Version 4.0.4
 
 - Improvement: `Perform Invocation` interactions will automatically add the Invocation mapping on creation.
+- Improvement: `Perform Invocation` that execute after any Processing Actions will not appear in the Mapping dialog. 
 
 ### Version 4.0.3
 
