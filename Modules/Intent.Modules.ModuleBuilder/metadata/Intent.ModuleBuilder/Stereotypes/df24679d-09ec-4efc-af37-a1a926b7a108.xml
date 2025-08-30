@@ -51,7 +51,7 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(Default)</placeholder>
-      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <apiTypeDefinition>advanced-mapping-element-api</apiTypeDefinition>
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="e2bbf8a7-e342-4221-a628-f3ef35dcc251">
@@ -69,7 +69,7 @@
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(Default)</placeholder>
-      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <apiTypeDefinition>advanced-mapping-element-api</apiTypeDefinition>
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
     <property id="fe1fd512-566d-427a-a9a8-ed16c6ae8f98">
@@ -332,7 +332,7 @@ return getAllPackageIds(mappablePackage);</lookupInternalTargetPropertyId>
       <type>string</type>
       <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
-      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <apiTypeDefinition>advanced-mapping-element-api</apiTypeDefinition>
     </property>
   </properties>
 </stereotypeDefinition>
