@@ -1,6 +1,7 @@
 ### Version 4.4.3
 
 - Improvement: Updated Properties icon and added syntax highlighting to visuals.
+- Fixed: Can't reorder Processing Actions under a `Domain Event Handler`.
 
 ### Version 4.4.2
 

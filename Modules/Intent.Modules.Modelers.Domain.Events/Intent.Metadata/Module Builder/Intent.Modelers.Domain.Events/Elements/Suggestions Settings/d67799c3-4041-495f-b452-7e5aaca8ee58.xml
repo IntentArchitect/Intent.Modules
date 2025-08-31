@@ -41,8 +41,10 @@
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
             <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const domainEventHandlerAssociationTargetTypeId = &quot;f45dfee9-f62b-45ac-bfce-a3878e04b73f&quot;;&#xD;&#xA;return lookupTypesOf(domainEventHandlerAssociationTargetTypeId).every(x =&gt; x.typeReference.getTypeId() != element.id)" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
+            <property name="bbf03fa4-5beb-4d27-a24f-9858af08d97f" display="Icon" isActive="true" />
             <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="const domainEventHandlerId = &quot;d80e61c5-7e4c-4175-9df1-0413f664824c&quot;;&#xD;&#xA;const domainEventHandlerAssociationTargetTypeId = &quot;f45dfee9-f62b-45ac-bfce-a3878e04b73f&quot;;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;let position = getCurrentDiagram().getVisual(element.id)?.getDimensions().getTopRight();&#xD;&#xA;if (position) {&#xD;&#xA;    position = getCurrentDiagram().findEmptySpace({ x: position.x + 100, y: position.y - 10 });&#xD;&#xA;    const handler = getCurrentDiagram().createElement(domainEventHandlerId, toPascalCase(element.getName()) + &quot;Handler&quot;, position);&#xD;&#xA;    const association = createAssociation(domainEventHandlerAssociationTargetTypeId, handler.id, element.id)&#xD;&#xA;    getCurrentDiagram().layoutVisuals([association.id], position, true);&#xD;&#xA;}" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" isActive="true" />
+            <property name="eb1aad5a-4eb8-46aa-84a0-9e4fec251d84" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

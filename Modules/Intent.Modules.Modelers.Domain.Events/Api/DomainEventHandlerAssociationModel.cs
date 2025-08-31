@@ -78,7 +78,7 @@ namespace Intent.Modelers.Domain.Events.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class DomainEventHandlerAssociationTargetEndModel : DomainEventHandlerAssociationEndModel
+    public class DomainEventHandlerAssociationTargetEndModel : DomainEventHandlerAssociationEndModel, IProcessingHandlerModel
     {
         public const string SpecializationTypeId = "f45dfee9-f62b-45ac-bfce-a3878e04b73f";
         public const string SpecializationType = "Domain Event Handler Association Target End";

@@ -56,6 +56,7 @@
       <name>Domain Event Handler Association Target End</name>
       <display>Domain Event Handler Association Target End</display>
       <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>90831494-f069-44eb-b488-ab2dba7518ea</parentFolderId>
@@ -99,7 +100,45 @@
         </stereotype>
       </stereotypes>
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="d3a97dbf-bf0b-4c8b-8234-8d14eb5f5e43" type="Accepted Child Types" typeId="7c0e37ab-2f84-46df-ac29-1e5aaa67bf75">
+          <name>[accepted types]</name>
+          <display>[accepted types]</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>manually</sort-children>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>f45dfee9-f62b-45ac-bfce-a3878e04b73f</parentFolderId>
+          <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+          <packageName>Intent.Modelers.Domain.Events</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements>
+            <childElement id="6d948798-c154-46b4-9a76-60f7ebb5d949" type="Accepted Traits" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
+              <name>[type with stereotype]</name>
+              <display>[type with trait]: [Processing Action]</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>d3a97dbf-bf0b-4c8b-8234-8d14eb5f5e43</parentFolderId>
+              <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+              <packageName>Intent.Modelers.Domain.Events</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="c8e14e3f-f5ee-4992-b6cb-761ea48a11cd" name="Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="75834c40-408b-4fcb-a50b-b96c2f81ffc0" display="Types with Stereotype" value="d00a2ab0-9a23-4192-b8bb-166798fc7dba" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
     </childElement>
     <childElement id="e56e6fa0-97b2-4e58-9350-98b967006bb3" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
       <name>NewAssociationEventSettings</name>
