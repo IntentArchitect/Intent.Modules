@@ -6855,7 +6855,6 @@ convertToAdvancedMapping.execute();
             <position x="${x}" y="${y}" />
             <display>
               <drawText>
-                <text>return getName();</text>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
@@ -6880,7 +6879,6 @@ vertical-align: center`</style>
             <position x="${x}" y="${y}" />
             <display>
               <drawText>
-                <text>return getName();</text>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
@@ -6905,12 +6903,11 @@ vertical-align: center`</style>
                 <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
                 <display>
                   <drawText>
-                    <text>return label;</text>
                     <size width="${w - 26}" height="${h}" />
                     <position x="${x + 24}" y="${y}" />
                   </drawText>
                   <drawSvgResource>
-                    <path>method.svg</path>
+                    <path>constructor.svg</path>
                     <size width="20" height="20" />
                     <position x="${x}" y="${y}" />
                   </drawSvgResource>
@@ -6925,12 +6922,18 @@ vertical-align: center`</style>
                 <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
                 <display>
                   <drawText>
-                    <text>return label;</text>
                     <size width="${w - 26}" height="${h}" />
                     <position x="${x + 24}" y="${y}" />
                   </drawText>
                   <drawSvgResource>
+                    <condition>return !element.getIsStatic();</condition>
                     <path>method.svg</path>
+                    <size width="20" height="20" />
+                    <position x="${x}" y="${y}" />
+                  </drawSvgResource>
+                  <drawSvgResource>
+                    <condition>return element.getIsStatic();</condition>
+                    <path>method-static.svg</path>
                     <size width="20" height="20" />
                     <position x="${x}" y="${y}" />
                   </drawSvgResource>
@@ -6946,7 +6949,6 @@ vertical-align: center`</style>
             <position x="${x}" y="${y}" />
             <display>
               <drawText>
-                <text>return getName();</text>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
@@ -6992,7 +6994,6 @@ vertical-align: center`</style>
             <position x="${x}" y="${y}" />
             <display>
               <drawText>
-                <text>return getName();</text>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
@@ -15650,6 +15651,7 @@ return typeReference.getIsCollection()
           <targetTypes>
             <type type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
             <type type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" />
+            <type type="[Static Constructor]" typeId="39a4c065-f9c5-46dc-b035-2eb025698330" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -16343,9 +16345,13 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <childSetting id="1fba46e9-3cf7-4154-ad38-451c9696c413" name="Invoke Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" version="2.0.0">
               <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
               <allowMultipleMappings>false</allowMultipleMappings>
-              <isMappableFunction>return element.id == mappingContext.targetElementId 
-    || lookup(mappingContext.targetElementId).specialization != "Class Constructor" 
-    || element.getParent("Class Constructor")?.getIsMapped();</isMappableFunction>
+              <isMappableFunction>if (element.id == mappingContext.targetElementId) {
+    return true;
+}
+const targetElement = lookup(mappingContext.targetElementId);
+return (targetElement.specialization != "Class Constructor" &amp;&amp; targetElement.specialization != "Operation")
+    || element.getParent("Class Constructor")?.getIsMapped()
+    || element.getParent("Operation")?.getIsMapped();</isMappableFunction>
               <isTraversable>false</isTraversable>
               <traversableTypes />
               <canBeModified>false</canBeModified>
@@ -16376,6 +16382,37 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <canBeModified>false</canBeModified>
               <represents>data</represents>
             </childSetting>
+            <childSetting id="8fe66303-08cc-4c0f-abfa-f3cc2256f5a3" name="Invoke Static Constructor" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" version="2.0.0">
+              <filterFunction>return element.getIsStatic() &amp;&amp; element.typeReference.getTypeId() == element.getParent().id;</filterFunction>
+              <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
+              <allowMultipleMappings>false</allowMultipleMappings>
+              <isMappableFunction>if (element.id == mappingContext.targetElementId) {
+    return true;
+}
+const targetElement = lookup(mappingContext.targetElementId);
+return (targetElement.specialization != "Class Constructor" &amp;&amp; targetElement.specialization != "Operation")
+    || element.getParent("Class Constructor")?.getIsMapped()
+    || element.getParent("Operation")?.getIsMapped();</isMappableFunction>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+              <childSettings>
+                <childSetting id="886a7d52-5575-45df-ab0e-01d777375990" name="Parameter" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" version="2.0.0">
+                  <isRequiredFunction>return (element.getValue() ?? "") == "";</isRequiredFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return element.getParent()?.getIsMapped() &amp;&amp; element.typeReference.getType()?.specializationId != "07f936ea-3756-48c8-babd-24ac7271daac"; // Domain Service</isMappableFunction>
+                  <isTraversable>true</isTraversable>
+                  <traversableTypes>
+                    <mappingId>e04ab087-8c1a-42b9-aac7-d76ed674e319</mappingId>
+                    <mappingId>15b84be5-c79b-41bf-881c-447fe70f5f5b</mappingId>
+                    <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
+                  </traversableTypes>
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
+              </childSettings>
+            </childSetting>
           </childSettings>
         </mapping>
       </targetMappings>
@@ -16391,6 +16428,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <targets>
             <target id="e04ab087-8c1a-42b9-aac7-d76ed674e319" name="Create Class" />
             <target id="1fba46e9-3cf7-4154-ad38-451c9696c413" name="Invoke Constructor" />
+            <target id="8fe66303-08cc-4c0f-abfa-f3cc2256f5a3" name="Invoke Static Constructor" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
@@ -16415,6 +16453,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <target id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" />
             <target id="82927c4e-1b48-4ab8-90ad-7c4d0b02067e" name="Set Data Contract Attribute" />
             <target id="adb76398-4759-40ce-9b58-f98c1358f8e9" name="Set Association Source End" />
+            <target id="886a7d52-5575-45df-ab0e-01d777375990" name="Parameter" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
@@ -16838,7 +16877,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
             <childSetting id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" version="2.0.0">
               <isRequiredFunction>return true;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return true;</isMappableFunction>
+              <isMappableFunction>return element.getParent(x =&gt; x.getIsMapped()) != null;</isMappableFunction>
               <isTraversable>true</isTraversable>
               <traversableTypes>
                 <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
