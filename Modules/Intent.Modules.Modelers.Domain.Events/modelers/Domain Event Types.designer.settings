@@ -429,7 +429,6 @@ if (namingConvention == "pascal-case") {
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
-        <typeOrder />
         <contextMenuOptions>
           <openMapping type="open-advanced-mapping" mappingType="Domain Event to Entity Mapping" mappingTypeId="6c77ca45-fb33-42d2-be23-ea2c2c90ea4e">
             <text>Map to Entity</text>
@@ -493,7 +492,6 @@ if (namingConvention == "pascal-case") {
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
-        <typeOrder />
         <contextMenuOptions>
           <openMapping type="open-advanced-mapping" mappingType="Entity to Domain Event Mapping" mappingTypeId="86cb62b5-412d-493b-a901-d6e08cf88059">
             <text>Map Domain Event</text>
