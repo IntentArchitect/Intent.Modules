@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain</id>
-  <version>3.12.6</version>
+  <version>3.12.7-pre.0</version>
   <supportedClientVersions>[4.5.9-a, 5.0.0-a)</supportedClientVersions>
   <summary>A domain designer based on UML class diagrams for expressing entity relationships.</summary>
   <description>A domain designer based on UML class diagrams for expressing entity relationships.</description>
@@ -27,7 +27,7 @@
     <install target="Domain;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Domain/Intent.Modelers.Domain.pkg.config" externalReference="6572b98d-5e13-4d4b-9ffc-820057da974e" />
   </metadata>
   <moduleSettings>
-    <group id="c4d1e35c-7c0d-4926-afe0-18f17563ce17" title="Domain Settings" externalReference="c4d1e35c-7c0d-4926-afe0-18f17563ce17">
+    <group id="c4d1e35c-7c0d-4926-afe0-18f17563ce17" title="Domain Settings" externalReference="c4d1e35c-7c0d-4926-afe0-18f17563ce17" type="application-settings">
       <settings>
         <setting id="c3789138-6649-47e4-901b-5f6469583cb7" title="Attribute Naming Convention" type="select">
           <hint>Convention applied when creating and renaming attributes.</hint>
