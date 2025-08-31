@@ -134,6 +134,8 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
                 UpdateTypesOrdering();
             }
         }
+        public bool ShouldSerializeTypeOrder() => TypeOrder?.Any() == true;
+
 
         [XmlArray("contextMenuOptions")]
         [XmlArrayItem("createElement", typeof(ElementCreationOption))]
