@@ -38,7 +38,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
 
             itemMapping.SetSourceReplacement(GetSourcePath().Last().Element, variableName);
             itemMapping.SetTargetReplacement(GetTargetPath().Last().Element, null);
-            select.AddArgument(new CSharpLambdaBlock(variableName).WithExpressionBody(itemMapping.GetSourceStatement()));
+            select.AddArgument(new CSharpLambdaBlock(variableName).WithExpressionBody(itemMapping.GetSourceStatement().WithoutSemicolon()));
             var init = chain
                 .AddChainStatement(select)
                 .AddChainStatement("ToList()");

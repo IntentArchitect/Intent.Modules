@@ -64,38 +64,6 @@ namespace Intent.Modules.Common.CSharp.Mapping
             return GetConstructorStatement();
         }
 
-        private static ConstructorMapping? FindConstructorMappingInHierarchy(IList<ICSharpMapping> childMappings)
-        {
-            var ctor = childMappings.SingleOrDefault(x => x is ConstructorMapping && x.Model.TypeReference == null);
-            if (ctor != null)
-            {
-                return (ConstructorMapping)ctor;
-            }
-
-            foreach (var childrenMapping in childMappings.OfType<MapChildrenMapping>())
-            {
-                ctor = FindConstructorMappingInHierarchy(childrenMapping.Children);
-                if (ctor != null)
-                {
-                    return (ConstructorMapping)ctor;
-                }
-            }
-
-            return null;
-        }
-
-        private static List<ICSharpMapping> FindPropertyMappingsInHierarchy(IList<ICSharpMapping> childMappings)
-        {
-            if (!childMappings.Any())
-            {
-                return [];
-            }
-
-            var results = childMappings.Where(x => (x is not ConstructorMapping and not MapChildrenMapping) && x.Model.TypeReference != null).ToList();
-            results.AddRange(FindPropertyMappingsInHierarchy(childMappings.OfType<MapChildrenMapping>().SelectMany(x => x.Children).ToList()));
-            return results;
-        }
-
         private CSharpStatement GetConstructorStatement()
         {
             var ctorMapping = FindConstructorMappingInHierarchy(Children);
@@ -211,6 +179,45 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     .All(target => ctor.Parameters.Any(param => param.TryGetReferenceForModel(target, out var match) && param.Name == match.Name)))
                 .Select(s => (Ctor: s, MetadataElement: (IElement)returnTypeElement))
                 .ToList();
+        }
+
+
+        private static ICSharpMapping? FindConstructorMappingInHierarchy(IList<ICSharpMapping> childMappings)
+        {
+            var ctor = childMappings.SingleOrDefault(x => x is ConstructorMapping && x.Model.TypeReference == null);
+            if (ctor != null)
+            {
+                return ctor;
+            }
+
+            ctor = childMappings.SingleOrDefault(x => x is StaticMethodInvocationMapping && x.Model.TypeReference?.ElementId == ((IElement)x.Model).ParentId);
+            if (ctor != null)
+            {
+                return ctor;
+            }
+
+            foreach (var childrenMapping in childMappings.OfType<MapChildrenMapping>())
+            {
+                ctor = FindConstructorMappingInHierarchy(childrenMapping.Children);
+                if (ctor != null)
+                {
+                    return ctor;
+                }
+            }
+
+            return null;
+        }
+
+        private static List<ICSharpMapping> FindPropertyMappingsInHierarchy(IList<ICSharpMapping> childMappings)
+        {
+            if (!childMappings.Any())
+            {
+                return [];
+            }
+
+            var results = childMappings.Where(x => (x is not ConstructorMapping and not MapChildrenMapping and not StaticMethodInvocationMapping) && x.Model.TypeReference != null).ToList();
+            results.AddRange(FindPropertyMappingsInHierarchy(childMappings.OfType<MapChildrenMapping>().SelectMany(x => x.Children).ToList()));
+            return results;
         }
 
         /// <inheritdoc />

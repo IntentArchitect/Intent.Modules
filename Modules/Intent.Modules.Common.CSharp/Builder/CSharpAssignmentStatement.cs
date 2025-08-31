@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -19,7 +20,8 @@ public class CSharpAssignmentStatement : CSharpStatement, IHasCSharpStatements
 
     public override string GetText(string indentation)
     {
-        return $@"{RelativeIndentation}{Lhs.GetText(indentation).TrimEnd()} = {Rhs.GetText(indentation).TrimStart()}{TrailingCharacter?.ToString() ?? ""}";
+        var rhs = Rhs.GetText(indentation).TrimStart();
+        return $@"{RelativeIndentation}{Lhs.GetText(indentation).TrimEnd()} = {rhs}{(TrailingCharacter != null && !rhs.EndsWith(TrailingCharacter.Value) ? TrailingCharacter.Value : "")}";
     }
 
     bool IHasCSharpStatementsActual.IsCodeBlock => Parent?.IsCodeBlock ?? false;
