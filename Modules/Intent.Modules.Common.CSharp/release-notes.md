@@ -1,6 +1,7 @@
 ﻿### Version 3.9.5
 
 - Improvement: Added `StaticMethodInvocationMapping` and support for "Static Constructors" in the `ObjectInitializationMapping`.
+- Improvement: Add properties for command line arguments, executable path, and working directory in LaunchProfileRegistrationRequest.
 
 ### Version 3.9.4
 
