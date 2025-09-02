@@ -209,6 +209,7 @@ namespace Intent.Modules.Common.CSharp.Tests.TypeResolvers
             }
 
             public string DefinitionId { get; }
+            public IStereotypeDefinition Definition { get; }
             public string Name => "C#";
 
             public IEnumerable<IStereotypeProperty> Properties { get; }

@@ -38,7 +38,7 @@
     </detect>
     <detect id="Intent.Code.Weaving.Razor">
       <install>
-        <package id="Intent.Code.Weaving.Razor" version="1.0.11" />
+        <package id="Intent.Code.Weaving.Razor" version="2.0.1-pre.0" />
       </install>
     </detect>
     <detect id="Intent.VisualStudio.Projects">
@@ -49,6 +49,11 @@
     <detect id="Intent.WindowsServiceHost">
       <install>
         <package id="Intent.WindowsServiceHost" version="1.0.5" />
+      </install>
+    </detect>
+    <detect id="Intent.OutputManager.RoslynWeaver">
+      <install>
+        <package id="Intent.OutputManager.RoslynWeaver" version="4.9.12-pre.0" />
       </install>
     </detect>
     <!-- /Minimum Compatible Versions -->
