@@ -495,7 +495,7 @@ if (namingConvention == "pascal-case") {
         <contextMenuOptions>
           <openMapping type="open-advanced-mapping" mappingType="Entity to Domain Event Mapping" mappingTypeId="86cb62b5-412d-493b-a901-d6e08cf88059">
             <text>Map Domain Event</text>
-            <shortcut>ctrl + shift + m</shortcut>
+            <shortcut>ctrl + space</shortcut>
           </openMapping>
         </contextMenuOptions>
       </targetEnd>
@@ -915,6 +915,39 @@ if (position) {
     await domainEvent.enableEditing();
     await association.launchAdvancedMappingDialog();
 }</script>
+    </suggestionSetting>
+    <suggestionSetting type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a" locations="diagram, model">
+      <name>Create Domain Event Handler</name>
+      <filterFunction>return true;</filterFunction>
+      <dependencies />
+      <script>const createServiceScript = (domainEventId) =&gt; `
+const domainEventHandlerId = "d80e61c5-7e4c-4175-9df1-0413f664824c";
+const domainEventOriginId = "2495d3ef-f7a2-441d-b749-b51b2546b45e";
+
+const element = lookup("${domainEventId}")
+const domainEventHandlerAssociationTargetTypeId = "f45dfee9-f62b-45ac-bfce-a3878e04b73f";
+
+if (!getCurrentDiagram()) {
+    await lookupTypesOf("Diagram")[0]?.loadDiagram();
+}
+
+const entityId = element.getAssociations(domainEventOriginId)[0]?.typeReference.typeId;
+const domainEventPosition = getCurrentDiagram().getVisual(element.id)?.getDimensions().getCenterRight();
+const entityPosition = getCurrentDiagram().getVisual(entityId)?.getDimensions().getCenterRight();
+const emptySpace = getCurrentDiagram().findEmptySpace(
+    domainEventPosition ? { x: domainEventPosition.x + 200, y: domainEventPosition.y } :
+    entityPosition ? { x: entityPosition.x + 200, y: entityPosition.y } :
+    getCurrentDiagram().mousePosition, { width: 500, height: 200 })
+
+const handler = createElement(domainEventHandlerId, toPascalCase(element.getName()) + "Handler", getPackages().find(x =&gt; x.specialization == "Services Package").id);
+const association = createAssociation(domainEventHandlerAssociationTargetTypeId, handler.id, element.id)
+const visuals = getCurrentDiagram().layoutVisuals([element.id, handler.id], emptySpace, true);
+getCurrentDiagram().selectVisuals(visuals.map(x =&gt; x.id))
+`;
+navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
+    executeScript: createServiceScript(element.id)
+})
+;</script>
     </suggestionSetting>
     <suggestionSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" locations="diagram, model">
       <name>Publish Domain Event</name>
