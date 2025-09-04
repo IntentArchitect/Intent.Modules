@@ -7,7 +7,6 @@ using Intent.Modules.Common.Registrations;
 using Intent.Registrations;
 using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
-using JetBrains.Annotations;
 using Microsoft.Extensions.FileSystemGlobbing;
 using SearchOption = System.IO.SearchOption;
 
@@ -55,8 +54,10 @@ namespace Intent.Modules.Common.Templates.StaticContent
         /// </summary>
         public virtual string RelativeOutputPathPrefix => "";
 
-        public virtual string[] BinaryFileGlobbingPatterns => Array.Empty<string>();
-
+        /// <summary>
+        /// Binary globbing patterns, see https://learn.microsoft.com/dotnet/core/extensions/file-globbing for more information.
+        /// </summary>
+        public virtual string[] BinaryFileGlobbingPatterns => [];
 
         /// <summary>
         /// Will look for keys in this format <code>&lt;#= {element.Key} #&gt;</code> and substitute them with <code>{element.Value}</code>.
@@ -95,18 +96,17 @@ namespace Intent.Modules.Common.Templates.StaticContent
             }
         }
 
-        private IReadOnlyCollection<string> GetBinaryFiles(string location)
+        private string[] GetBinaryFiles(string location)
         {
             if (BinaryFileGlobbingPatterns.Length <= 0)
             {
-                return Array.Empty<string>();
+                return [];
             }
 
             var matcher = new Matcher();
             matcher.AddIncludePatterns(BinaryFileGlobbingPatterns);
 
             return matcher.GetResultsInFullPath(location).ToArray();
-
         }
 
         /// <summary>
@@ -162,18 +162,27 @@ namespace Intent.Modules.Common.Templates.StaticContent
                 templateId: TemplateId,
                 outputTarget: outputTarget,
                 replacements: Replacements(outputTarget),
-                overwriteBehaviour: defaultOverwriteBehaviour);
+                overwriteBehaviour: defaultOverwriteBehaviour,
+                fileConfigConfigurationUpdater: UpdateTemplateFileConfig);
         }
+
+        /// <summary>
+        /// Allows updating or replacing of the <see cref="ITemplateFileConfig"/> returned by
+        /// <see cref="StaticContentTemplate.GetTemplateFileConfig"/>.
+        /// </summary>
+        protected virtual ITemplateFileConfig UpdateTemplateFileConfig(ITemplateFileConfig fileConfig, StaticContentTemplate template) => fileConfig;
 
         /// <summary>
         /// Use <see cref="GetDefaultOverrideBehaviour"/> instead.
         /// </summary>
         [Obsolete("Use 'GetDefaultOverrideBehaviour' instead")]
         protected virtual OverwriteBehaviour DefaultOverrideBehaviour => OverwriteBehaviour.Always;
-        
+
         /// <summary>
         /// Change this value to change the default <see cref="OverwriteBehaviour"/> of templates.
         /// </summary>
+#pragma warning disable CS0618 // Type or member is obsolete
         protected virtual OverwriteBehaviour GetDefaultOverrideBehaviour(IOutputTarget outputTarget) => DefaultOverrideBehaviour;
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 }
