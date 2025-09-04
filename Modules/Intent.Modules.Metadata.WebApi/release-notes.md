@@ -1,3 +1,7 @@
+### Version 4.7.14
+
+- Fixed: Applying a `{version}` on a route didn't apply on CQRS types.
+
 ### Version 4.7.13
 
 - Fixed: Issue where route parameters was not added when exposing a service as HTTP, if the primary key name on the entity was changed between creating the service and exposing.
