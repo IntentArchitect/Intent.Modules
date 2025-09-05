@@ -87,13 +87,21 @@ namespace Intent.Modules.Common.Templates.StaticContent
 
             foreach (var file in textFiles)
             {
-                registry.RegisterTemplate(TemplateId, outputTarget => CreateTemplate(outputTarget, file.FullPath, file.RelativePath, GetDefaultOverrideBehaviour(outputTarget)));
+                RegisterTemplate(registry, application, outputTarget => CreateTemplate(outputTarget, file.FullPath, file.RelativePath, GetDefaultOverrideBehaviour(outputTarget)));
             }
 
             foreach (var file in binaryFiles)
             {
-                registry.RegisterTemplate(TemplateId, outputTarget => CreateBinaryTemplate(outputTarget, file.FullPath, file.RelativePath, GetDefaultOverrideBehaviour(outputTarget)));
+                RegisterTemplate(registry, application, outputTarget => CreateBinaryTemplate(outputTarget, file.FullPath, file.RelativePath, GetDefaultOverrideBehaviour(outputTarget)));
             }
+        }
+
+        /// <summary>
+        /// Does the registration of individual template instances. Override if you need to customize template instance registration.
+        /// </summary>
+        protected virtual void RegisterTemplate(ITemplateInstanceRegistry registry, IApplication application, Func<IOutputTarget, ITemplate> createTemplateInstance)
+        {
+            registry.RegisterTemplate(TemplateId, createTemplateInstance);
         }
 
         private string[] GetBinaryFiles(string location)

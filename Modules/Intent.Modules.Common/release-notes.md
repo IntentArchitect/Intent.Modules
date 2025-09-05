@@ -1,7 +1,8 @@
 ### Version 3.9.0
 
 - Feature: Added support for filtering template instances for registrations.
-- Improvement: A `UpdateTemplateFileConfig` virtual method was added to `StaticContentTemplateRegistration` to allow updates or replacement of the `ITemplateFileConfig` to be used by the templates.
+- Improvement: `UpdateTemplateFileConfig` virtual method added to `StaticContentTemplateRegistration` to allow updates or replacement of the `ITemplateFileConfig` to be used by the templates.
+- Improvement: `RegisterTemplate` virtual method added to `StaticContentTemplateRegistration` to allow customization of template registration.
 
 ### Version 3.8.0
 
