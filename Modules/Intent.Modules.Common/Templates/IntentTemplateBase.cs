@@ -7,6 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using Intent.Engine;
+using Intent.Eventing;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
 using Intent.SdkEvolutionHelpers;
@@ -1425,10 +1426,60 @@ namespace Intent.Modules.Common.Templates
             return resolvedTypeInfo.ToString()!;
         }
 
+        /// <summary>
+        /// This is for compatibility of events which will first try to be handled by
+        /// <see cref="IOutputTarget.On"/> through <see cref="OnEmitOrPublished"/> or will otherwise
+        /// fall back to legacy <see cref="IApplicationEventDispatcher.Subscribe{TEvent}(string,System.Action{TEvent})"/>
+        /// handlers.
+        /// <para>
+        /// IMPORTANT: Subscribers must use <see cref="OnEmitOrPublished{T}"/> to receive these events.
+        /// </para>
+        /// </summary>
+        public void EmitOrPublish<T>(T @event)
+        {
+            var envelope = new EmitOrPublishEnvelope<T>(@event);
+            OutputTarget.Emit(envelope);
+
+            if (envelope.IsHandled)
+            {
+                return;
+            }
+
+            ExecutionContext.EventDispatcher.Publish(@event);
+        }
+
+        /// <summary>
+        /// Subscribe to events published through <see cref="EmitOrPublish{T}"/>.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="handler"></param>
+        /// <param name="stopPropagation">Whether <see cref="IOutputTargetEvent{TEventData}.StopPropagation"/> should be called.</param>
+        public void OnEmitOrPublished<T>(Action<T> handler, bool stopPropagation = true)
+        {
+            OutputTarget.On<EmitOrPublishEnvelope<T>>(@event =>
+            {
+                @event.Data.IsHandled = true;
+                handler(@event.Data.Event);
+
+                if (stopPropagation)
+                {
+                    @event.StopPropagation();
+                }
+            });
+
+            ExecutionContext.EventDispatcher.Subscribe(handler);
+        }
+
         /// <inheritdoc />
         public override string ToString()
         {
             return $"{Id}";
+        }
+
+        private class EmitOrPublishEnvelope<T>(T @event)
+        {
+            public T Event { get; } = @event;
+            public bool IsHandled { get; set; }
         }
     }
 }
