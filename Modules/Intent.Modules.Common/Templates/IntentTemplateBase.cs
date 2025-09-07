@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
@@ -22,7 +21,7 @@ namespace Intent.Modules.Common.Templates
         IHasDecorators<TDecorator>
         where TDecorator : ITemplateDecorator
     {
-        private readonly ICollection<TDecorator> _decorators = new List<TDecorator>();
+        private readonly List<TDecorator> _decorators = [];
 
         /// <summary>
         /// Constructor for <see cref="IntentTemplateBase{TModel,TDecorator}"/>.
@@ -74,7 +73,7 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Model
         /// </summary>
-        public TModel? Model { get; }
+        public TModel Model { get; }
 
         object? ITemplateWithModel.Model => Model;
 
@@ -111,8 +110,6 @@ namespace Intent.Modules.Common.Templates
     {
         private readonly Lazy<(bool Result, string? Path)> _tryGetExistingFilePathCache;
         private readonly Lazy<(bool Result, string? Content)> _tryGetExistingFileContentCache;
-        private bool _canRun = true;
-        private bool _isDiscoverable = true;
 
         /// <summary>
         /// Returns the known template dependencies added for this template.
@@ -1330,7 +1327,7 @@ namespace Intent.Modules.Common.Templates
                 {
                     if (options?.IsAccessible != false)
                     {
-                        var result = (TTemplate)ExecutionContext.FindTemplateInstance(templateId, accessibleTo: OutputTarget);
+                        var result = (TTemplate?)ExecutionContext.FindTemplateInstance(templateId, accessibleTo: OutputTarget);
                         if (result != null)
                         {
                             return result;
